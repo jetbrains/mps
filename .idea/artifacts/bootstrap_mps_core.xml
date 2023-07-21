@@ -24,6 +24,8 @@
         <element id="module-output" name="pattern-runtime" />
         <element id="module-output" name="model" />
         <element id="module-output" name="module" />
+        <element id="module-output" name="mps-messaging" />
+        <element id="module-output" name="logging" />
       </element>
       <element id="archive" name="mps-boot-util.jar">
         <element id="module-output" name="boot-util" />
@@ -48,9 +50,6 @@
         <element id="module-output" name="java-stub" />
         <element id="module-output" name="kotlin-stub" />
       </element>
-      <element id="archive" name="mps-messaging.jar">
-        <element id="module-output" name="mps-messaging" />
-      </element>
       <element id="archive" name="mps-generator.jar">
         <element id="module-output" name="generator-engine" />
       </element>
@@ -59,9 +58,6 @@
       </element>
       <element id="archive" name="mps-references.jar">
         <element id="module-output" name="baseLanguage-runtime" />
-      </element>
-      <element id="archive" name="mps-logging.jar">
-        <element id="module-output" name="logging" />
       </element>
       <element id="archive" name="mps-behavior-api.jar">
         <element id="module-output" name="behavior-api" />

@@ -12,7 +12,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:d8ab4b1c-12c3-4d88-b276-e654c4e069e6(jetbrains.mps.ide.depanalyzer@tests)/1191174875373563086">
@@ -22,7 +21,7 @@
       <node id="1400956384696156956" at="36,31,37,0" concept="11" />
       <node id="1400956384696058669" at="38,31,39,25" concept="1" />
       <node id="1400956384696105227" at="40,9,41,0" concept="11" />
-      <node id="1400956384696197198" at="43,34,44,28" concept="13" />
+      <node id="1400956384696197198" at="43,34,44,28" concept="12" />
       <node id="3813300205791310745" at="49,65,50,67" concept="7" />
       <node id="3813300205791310749" at="50,67,51,53" concept="7" />
       <node id="3813300205791310762" at="53,40,54,19" concept="1" />
@@ -174,7 +173,7 @@
       <node id="3813300205792405584" at="267,5,270,5" concept="3" />
       <node id="3813300205791546319" at="125,49,129,5" concept="3" />
       <node id="3813300205791310754" at="51,53,56,5" concept="4" />
-      <node id="1400956384696056892" at="34,45,40,9" concept="14" />
+      <node id="1400956384696056892" at="34,45,40,9" concept="13" />
       <node id="3813300205791327599" at="61,131,67,5" concept="3" />
       <node id="3813300205791384524" at="72,59,78,5" concept="3" />
       <node id="3813300205791426220" at="88,84,96,0" concept="8" />
@@ -318,95 +317,93 @@
   </root>
   <root nodeRef="r:d8ab4b1c-12c3-4d88-b276-e654c4e069e6(jetbrains.mps.ide.depanalyzer@tests)/795021053144789372">
     <file name="ModuleMpsTest.java">
-      <node id="795021053144789375" at="33,0,34,0" concept="12" trace="LOG" />
-      <node id="795021053144789381" at="34,0,35,0" concept="2" trace="myTestModuleFactory" />
-      <node id="795021053144789385" at="35,0,36,0" concept="2" trace="myEnvironment" />
-      <node id="795021053144789399" at="42,56,43,24" concept="1" />
-      <node id="795021053144789409" at="46,42,47,88" concept="1" />
-      <node id="795021053144789420" at="50,27,51,43" concept="1" />
-      <node id="795021053144789423" at="51,43,52,50" concept="1" />
-      <node id="795021053144789430" at="59,54,60,66" concept="9" />
-      <node id="795021053144789440" at="62,42,63,39" concept="9" />
-      <node id="795021053144789446" at="65,48,66,48" concept="9" />
-      <node id="795021053144789454" at="71,36,72,71" concept="7" />
-      <node id="795021053144789459" at="72,71,73,52" concept="7" />
-      <node id="795021053144789462" at="73,52,74,120" concept="9" />
-      <node id="795021053144789477" at="76,36,77,48" concept="9" />
-      <node id="795021053144789486" at="79,64,80,56" concept="9" />
-      <node id="795021053144789500" at="82,103,83,66" concept="9" />
-      <node id="795021053144789509" at="85,32,86,46" concept="9" />
-      <node id="795021053144789516" at="89,38,90,49" concept="9" />
-      <node id="795021053144789524" at="92,50,93,45" concept="1" />
-      <node id="795021053144789535" at="95,70,96,55" concept="1" />
-      <node id="795021053144789547" at="98,66,99,53" concept="1" />
-      <node id="795021053144789389" at="36,0,38,0" concept="0" trace="ModuleMpsTest#()V" />
-      <node id="795021053144789438" at="62,0,65,0" concept="6" trace="getPlatform#()Ljetbrains/mps/core/platform/Platform;" />
-      <node id="795021053144789444" at="65,0,68,0" concept="6" trace="getModelAccess#()Lorg/jetbrains/mps/openapi/module/ModelAccess;" />
-      <node id="795021053144789475" at="76,0,79,0" concept="6" trace="createLanguage#()Ljetbrains/mps/smodel/Language;" />
-      <node id="795021053144789481" at="79,0,82,0" concept="6" trace="createLanguage#(null)Ljetbrains/mps/smodel/Language;" />
-      <node id="795021053144789491" at="82,0,85,0" concept="6" trace="createLanguage#(Lorg/jetbrains/mps/openapi/module/SModuleId;Ljava/lang/String;null)Ljetbrains/mps/smodel/Language;" />
-      <node id="795021053144789507" at="85,0,88,0" concept="6" trace="createDevKit#()Ljetbrains/mps/project/DevKit;" />
-      <node id="795021053144789520" at="92,0,95,0" concept="6" trace="removeModule#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
-      <node id="795021053144789529" at="95,0,98,0" concept="6" trace="addUsedLanguage#(Ljetbrains/mps/project/AbstractModule;Ljetbrains/mps/smodel/Language;)V" />
-      <node id="795021053144789541" at="98,0,101,0" concept="6" trace="addUsedDevKit#(Ljetbrains/mps/project/AbstractModule;Ljetbrains/mps/project/DevKit;)V" />
-      <node id="795021053144789393" at="41,0,45,0" concept="6" trace="setEnvironment#(Ljetbrains/mps/tool/environment/Environment;)V" />
-      <node id="795021053144789406" at="45,0,49,0" concept="6" trace="instantiateModuleFactory#()V" />
-      <node id="795021053144789427" at="58,0,62,0" concept="6" trace="getTestRepository#()Ljetbrains/mps/extapi/module/SRepositoryExt;" />
-      <node id="795021053144789513" at="88,0,92,0" concept="6" trace="createGenerator#()Ljetbrains/mps/smodel/Generator;" />
-      <node id="795021053144789417" at="49,0,54,0" concept="6" trace="afterTest#()V" />
-      <node id="795021053144789451" at="71,0,76,0" concept="6" trace="createSolution#()Ljetbrains/mps/project/Solution;" />
-      <scope id="795021053144789391" at="36,26,36,26" />
-      <scope id="795021053144789398" at="42,56,43,24" />
-      <scope id="795021053144789408" at="46,42,47,88" />
-      <scope id="795021053144789429" at="59,54,60,66" />
-      <scope id="795021053144789439" at="62,42,63,39" />
-      <scope id="795021053144789445" at="65,48,66,48" />
-      <scope id="795021053144789476" at="76,36,77,48" />
-      <scope id="795021053144789485" at="79,64,80,56" />
-      <scope id="795021053144789499" at="82,103,83,66" />
-      <scope id="795021053144789508" at="85,32,86,46" />
-      <scope id="795021053144789515" at="89,38,90,49" />
-      <scope id="795021053144789523" at="92,50,93,45" />
-      <scope id="795021053144789534" at="95,70,96,55" />
-      <scope id="795021053144789546" at="98,66,99,53" />
-      <scope id="795021053144789389" at="36,0,38,0" />
-      <scope id="795021053144789419" at="50,27,52,50" />
-      <scope id="795021053144789438" at="62,0,65,0" />
-      <scope id="795021053144789444" at="65,0,68,0" />
-      <scope id="795021053144789452" at="71,36,74,120">
+      <node id="795021053144789381" at="32,0,33,0" concept="2" trace="myTestModuleFactory" />
+      <node id="795021053144789385" at="33,0,34,0" concept="2" trace="myEnvironment" />
+      <node id="795021053144789399" at="40,56,41,24" concept="1" />
+      <node id="795021053144789409" at="44,42,45,88" concept="1" />
+      <node id="795021053144789423" at="48,27,49,50" concept="1" />
+      <node id="795021053144789430" at="56,54,57,66" concept="9" />
+      <node id="795021053144789440" at="59,42,60,39" concept="9" />
+      <node id="795021053144789446" at="62,48,63,48" concept="9" />
+      <node id="795021053144789454" at="68,36,69,71" concept="7" />
+      <node id="795021053144789459" at="69,71,70,52" concept="7" />
+      <node id="795021053144789462" at="70,52,71,120" concept="9" />
+      <node id="795021053144789477" at="73,36,74,48" concept="9" />
+      <node id="795021053144789486" at="76,64,77,56" concept="9" />
+      <node id="795021053144789500" at="79,103,80,66" concept="9" />
+      <node id="795021053144789509" at="82,32,83,46" concept="9" />
+      <node id="795021053144789516" at="86,38,87,49" concept="9" />
+      <node id="795021053144789524" at="89,50,90,45" concept="1" />
+      <node id="795021053144789535" at="92,70,93,55" concept="1" />
+      <node id="795021053144789547" at="95,66,96,53" concept="1" />
+      <node id="795021053144789389" at="34,0,36,0" concept="0" trace="ModuleMpsTest#()V" />
+      <node id="795021053144789438" at="59,0,62,0" concept="6" trace="getPlatform#()Ljetbrains/mps/core/platform/Platform;" />
+      <node id="795021053144789444" at="62,0,65,0" concept="6" trace="getModelAccess#()Lorg/jetbrains/mps/openapi/module/ModelAccess;" />
+      <node id="795021053144789475" at="73,0,76,0" concept="6" trace="createLanguage#()Ljetbrains/mps/smodel/Language;" />
+      <node id="795021053144789481" at="76,0,79,0" concept="6" trace="createLanguage#(null)Ljetbrains/mps/smodel/Language;" />
+      <node id="795021053144789491" at="79,0,82,0" concept="6" trace="createLanguage#(Lorg/jetbrains/mps/openapi/module/SModuleId;Ljava/lang/String;null)Ljetbrains/mps/smodel/Language;" />
+      <node id="795021053144789507" at="82,0,85,0" concept="6" trace="createDevKit#()Ljetbrains/mps/project/DevKit;" />
+      <node id="795021053144789520" at="89,0,92,0" concept="6" trace="removeModule#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="795021053144789529" at="92,0,95,0" concept="6" trace="addUsedLanguage#(Ljetbrains/mps/project/AbstractModule;Ljetbrains/mps/smodel/Language;)V" />
+      <node id="795021053144789541" at="95,0,98,0" concept="6" trace="addUsedDevKit#(Ljetbrains/mps/project/AbstractModule;Ljetbrains/mps/project/DevKit;)V" />
+      <node id="795021053144789393" at="39,0,43,0" concept="6" trace="setEnvironment#(Ljetbrains/mps/tool/environment/Environment;)V" />
+      <node id="795021053144789406" at="43,0,47,0" concept="6" trace="instantiateModuleFactory#()V" />
+      <node id="795021053144789417" at="47,0,51,0" concept="6" trace="afterTest#()V" />
+      <node id="795021053144789427" at="55,0,59,0" concept="6" trace="getTestRepository#()Ljetbrains/mps/extapi/module/SRepositoryExt;" />
+      <node id="795021053144789513" at="85,0,89,0" concept="6" trace="createGenerator#()Ljetbrains/mps/smodel/Generator;" />
+      <node id="795021053144789451" at="68,0,73,0" concept="6" trace="createSolution#()Ljetbrains/mps/project/Solution;" />
+      <scope id="795021053144789391" at="34,26,34,26" />
+      <scope id="795021053144789398" at="40,56,41,24" />
+      <scope id="795021053144789408" at="44,42,45,88" />
+      <scope id="795021053144789419" at="48,27,49,50" />
+      <scope id="795021053144789429" at="56,54,57,66" />
+      <scope id="795021053144789439" at="59,42,60,39" />
+      <scope id="795021053144789445" at="62,48,63,48" />
+      <scope id="795021053144789476" at="73,36,74,48" />
+      <scope id="795021053144789485" at="76,64,77,56" />
+      <scope id="795021053144789499" at="79,103,80,66" />
+      <scope id="795021053144789508" at="82,32,83,46" />
+      <scope id="795021053144789515" at="86,38,87,49" />
+      <scope id="795021053144789523" at="89,50,90,45" />
+      <scope id="795021053144789534" at="92,70,93,55" />
+      <scope id="795021053144789546" at="95,66,96,53" />
+      <scope id="795021053144789389" at="34,0,36,0" />
+      <scope id="795021053144789438" at="59,0,62,0" />
+      <scope id="795021053144789444" at="62,0,65,0" />
+      <scope id="795021053144789452" at="68,36,71,120">
         <var name="repo" id="795021053144789458" />
         <var name="solution" id="795021053144789453" />
       </scope>
-      <scope id="795021053144789475" at="76,0,79,0" />
-      <scope id="795021053144789481" at="79,0,82,0">
+      <scope id="795021053144789475" at="73,0,76,0" />
+      <scope id="795021053144789481" at="76,0,79,0">
         <var name="runtimes" id="795021053144789482" />
       </scope>
-      <scope id="795021053144789491" at="82,0,85,0">
+      <scope id="795021053144789491" at="79,0,82,0">
         <var name="id" id="795021053144789492" />
         <var name="name" id="795021053144789494" />
         <var name="runtimes" id="795021053144789496" />
       </scope>
-      <scope id="795021053144789507" at="85,0,88,0" />
-      <scope id="795021053144789520" at="92,0,95,0">
+      <scope id="795021053144789507" at="82,0,85,0" />
+      <scope id="795021053144789520" at="89,0,92,0">
         <var name="module" id="795021053144789521" />
       </scope>
-      <scope id="795021053144789529" at="95,0,98,0">
+      <scope id="795021053144789529" at="92,0,95,0">
         <var name="client" id="795021053144789530" />
         <var name="toUse" id="795021053144789532" />
       </scope>
-      <scope id="795021053144789541" at="98,0,101,0">
+      <scope id="795021053144789541" at="95,0,98,0">
         <var name="client" id="795021053144789542" />
         <var name="toUse" id="795021053144789544" />
       </scope>
-      <scope id="795021053144789393" at="41,0,45,0">
+      <scope id="795021053144789393" at="39,0,43,0">
         <var name="env" id="795021053144789395" />
       </scope>
-      <scope id="795021053144789406" at="45,0,49,0" />
-      <scope id="795021053144789427" at="58,0,62,0" />
-      <scope id="795021053144789513" at="88,0,92,0" />
-      <scope id="795021053144789417" at="49,0,54,0" />
-      <scope id="795021053144789451" at="71,0,76,0" />
-      <unit id="795021053144789372" at="32,0,102,0" name="jetbrains.mps.ide.depanalyzer.ModuleMpsTest" />
+      <scope id="795021053144789406" at="43,0,47,0" />
+      <scope id="795021053144789417" at="47,0,51,0" />
+      <scope id="795021053144789427" at="55,0,59,0" />
+      <scope id="795021053144789513" at="85,0,89,0" />
+      <scope id="795021053144789451" at="68,0,73,0" />
+      <unit id="795021053144789372" at="31,0,99,0" name="jetbrains.mps.ide.depanalyzer.ModuleMpsTest" />
     </file>
   </root>
 </debug-info>

@@ -2178,12 +2178,6 @@
         <node concept="3_I8Xc" id="6IJvZDkykEt" role="39821P">
           <ref role="3_I8Xa" node="6IJvZDkykoo" resolve="mps-references.jar" />
         </node>
-        <node concept="3_I8Xc" id="5Lo0z0qFG0m" role="39821P">
-          <ref role="3_I8Xa" node="1s0vtrwVGmO" resolve="mps-logging.jar" />
-        </node>
-        <node concept="3_I8Xc" id="5Lo0z0qFJi3" role="39821P">
-          <ref role="3_I8Xa" node="1s0vtrwVKrN" resolve="mps-messaging.jar" />
-        </node>
         <node concept="3_I8Xc" id="1t0Ry55x9Fq" role="39821P">
           <ref role="3_I8Xa" node="1s0vtrwVKZ7" resolve="mps-annotations.jar" />
         </node>
@@ -10492,8 +10486,7 @@
         </node>
         <node concept="1SiIV0" id="L4fvOC6Nhq" role="3bR37C">
           <node concept="3bR9La" id="L4fvOC6Nhr" role="1SiIV1">
-            <property role="3bR36h" value="true" />
-            <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
+            <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
           </node>
         </node>
         <node concept="1BupzO" id="73GUf$ummkC" role="3bR31x">
@@ -52989,26 +52982,6 @@
           <ref role="Saw0g" node="5Lo0z0qFWkX" resolve="mps-openapi" />
         </node>
       </node>
-      <node concept="3981dx" id="1s0vtrwVGmO" role="39821P">
-        <node concept="Saw0i" id="1s0vtrwVHqk" role="39821P">
-          <ref role="Saw0g" node="1s0vtrwUPV$" resolve="mps-logging" />
-        </node>
-        <node concept="3_J27D" id="1s0vtrwVGmQ" role="Nbhlr">
-          <node concept="3Mxwew" id="1s0vtrwVGU2" role="3MwsjC">
-            <property role="3MwjfP" value="mps-logging.jar" />
-          </node>
-        </node>
-      </node>
-      <node concept="3981dx" id="1s0vtrwVKrN" role="39821P">
-        <node concept="Saw0i" id="1s0vtrwVKrO" role="39821P">
-          <ref role="Saw0g" node="1s0vtrwUXkd" resolve="mps-messaging" />
-        </node>
-        <node concept="3_J27D" id="1s0vtrwVKrP" role="Nbhlr">
-          <node concept="3Mxwew" id="1s0vtrwVKrQ" role="3MwsjC">
-            <property role="3MwjfP" value="mps-messaging.jar" />
-          </node>
-        </node>
-      </node>
       <node concept="3981dx" id="5d$B_bnZYWU" role="39821P">
         <node concept="3_J27D" id="5d$B_bnZYWW" role="Nbhlr">
           <node concept="3Mxwew" id="5d$B_bnZZwB" role="3MwsjC">
@@ -53171,6 +53144,12 @@
           </node>
         </node>
         <node concept="3981dx" id="wKi8DpgBJT" role="39821P">
+          <node concept="Saw0i" id="1s0vtrwVHqk" role="39821P">
+            <ref role="Saw0g" node="1s0vtrwUPV$" resolve="mps-logging" />
+          </node>
+          <node concept="Saw0i" id="1s0vtrwVKrO" role="39821P">
+            <ref role="Saw0g" node="1s0vtrwUXkd" resolve="mps-messaging" />
+          </node>
           <node concept="3_J27D" id="wKi8DpgBJV" role="Nbhlr">
             <node concept="3Mxwew" id="wKi8DpgBMp" role="3MwsjC">
               <property role="3MwjfP" value="mps-kernel.jar" />

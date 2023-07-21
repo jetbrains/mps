@@ -10,7 +10,6 @@
     <import index="ouhv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.annotation(JDK/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="uzhr" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.diagnostic(MPS.IDEA/)" />
     <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
     <import index="ni5j" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.regex(JDK/)" />
@@ -721,11 +720,13 @@
     <node concept="2ACnGN" id="3SJmozgIHwS" role="3MN40a">
       <property role="1EzhhJ" value="true" />
       <property role="TrG5h" value="level" />
-      <node concept="10M0yZ" id="3SJmozgII8m" role="1IitiX">
-        <ref role="1PxDUh" to="q7tw:~Priority" resolve="Priority" />
-        <ref role="3cqZAo" to="q7tw:~Priority.FATAL_INT" resolve="FATAL_INT" />
+      <node concept="Rm8GO" id="1fXCXU4jY4a" role="1IitiX">
+        <ref role="Rm8GQ" to="ot0m:4lRieqsIfkr" resolve="FATAL" />
+        <ref role="1Px2BO" to="ot0m:4lRieqsI9Jy" resolve="Level" />
       </node>
-      <node concept="10Oyi0" id="3SJmozgIHIk" role="3clF45" />
+      <node concept="3uibUv" id="1fXCXU4jXTw" role="3clF45">
+        <ref role="3uigEE" to="ot0m:4lRieqsI9Jy" resolve="Level" />
+      </node>
       <node concept="3Tm1VV" id="3SJmozgIHwU" role="1B3o_S" />
       <node concept="3clFbS" id="3SJmozgIHwX" role="3clF47" />
     </node>
@@ -1943,7 +1944,7 @@
                       <ref role="3cqZAo" node="4_TMdeLkPqo" resolve="myCachingAppender" />
                     </node>
                     <node concept="liA8E" id="4_TMdeLliXo" role="2OqNvi">
-                      <ref role="37wK5l" to="ot0m:4_TMdeLkP1L" resolve="expectEvent" />
+                      <ref role="37wK5l" to="ot0m:4lRieqsIFrq" resolve="expectEvent" />
                       <node concept="2OqwBi" id="4_TMdeLliXr" role="37wK5m">
                         <node concept="37vLTw" id="4_TMdeLliXq" role="2Oq$k0">
                           <ref role="3cqZAo" node="4_TMdeLkPua" resolve="expectEvent" />

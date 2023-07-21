@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.project.ProjectKt;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
@@ -46,7 +45,6 @@ import java.nio.file.Path;
  * AP
  */
 public final class ProjectStoreDirAddToVFSSnapshot implements ProjectComponent {
-  private static final Logger LOG = LogManager.getLogger(ProjectStoreDirAddToVFSSnapshot.class);
   private final Project myProject;
 
   public ProjectStoreDirAddToVFSSnapshot(@NotNull Project project) {
@@ -59,7 +57,7 @@ public final class ProjectStoreDirAddToVFSSnapshot implements ProjectComponent {
       VirtualFile virtualFile = VfsUtil.findFile(directoryStorePath, false);
       VfsUtil.markDirty(true, true, virtualFile);
     } else {
-      LOG.error("Could not find the directory store path (.mps) of the project " + myProject);
+      Logger.getLogger(ProjectStoreDirAddToVFSSnapshot.class).error("Could not find the directory store path (.mps) of the project " + myProject);
     }
   }
 }

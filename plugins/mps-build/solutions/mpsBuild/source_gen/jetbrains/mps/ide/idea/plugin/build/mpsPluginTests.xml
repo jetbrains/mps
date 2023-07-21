@@ -162,7 +162,6 @@
       <classpath>
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-openapi.jar" />
-        <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-closures.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-collections.jar" />
@@ -170,7 +169,6 @@
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-references.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-behavior-runtime.jar" />
-        <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-messaging.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-common.jar" />
@@ -224,7 +222,6 @@
       <classpath>
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-openapi.jar" />
-        <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-closures.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-collections.jar" />
@@ -232,7 +229,6 @@
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-references.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-behavior-runtime.jar" />
-        <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-messaging.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsPluginCore}/mps-core/lib/mps-common.jar" />

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,15 +21,6 @@ import org.jetbrains.annotations.TestOnly;
  * log4j logger augmented with hint object
  */
 public abstract class Logger {
-
-  /**
-   * Adapts log4j logger to our extended facility
-   * These two methods we need for a migration script
-   */
-  @SuppressWarnings({"removal", "UnstableApiUsage"})
-  public static Logger wrap(org.apache.log4j.Logger logger) {
-    return new Log4jLogger(logger);
-  }
 
   public static Logger wrap(java.util.logging.Logger juLogger) {
     return new JULogger(juLogger);

@@ -103,12 +103,6 @@
     <jar destfile="${build.layout}/mps-openapi.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-openapi" />
     </jar>
-    <jar destfile="${build.layout}/mps-logging.jar" duplicate="preserve">
-      <fileset dir="${build.tmp}/java/out/mps-logging" />
-    </jar>
-    <jar destfile="${build.layout}/mps-messaging.jar" duplicate="preserve">
-      <fileset dir="${build.tmp}/java/out/mps-messaging" />
-    </jar>
     <jar destfile="${build.layout}/mps-boot-util.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-boot-util" />
     </jar>
@@ -157,6 +151,8 @@
       <fileset dir="${build.tmp}/java/out/mps-smodel" />
     </jar>
     <jar destfile="${build.layout}/to-be-imported/mps-kernel.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/mps-logging" />
+      <fileset dir="${build.tmp}/java/out/mps-messaging" />
       <fileset dir="${build.tmp}/java/out/mps-kernel" />
     </jar>
     <jar destfile="${build.layout}/to-be-imported/mps-project.jar" duplicate="preserve">

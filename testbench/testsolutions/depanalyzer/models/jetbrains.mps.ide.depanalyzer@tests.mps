@@ -2,8 +2,6 @@
 <model ref="r:d8ab4b1c-12c3-4d88-b276-e654c4e069e6(jetbrains.mps.ide.depanalyzer@tests)">
   <persistence version="9" />
   <languages>
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
-    <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
@@ -24,7 +22,6 @@
     <import index="4rfc" ref="r:3cf16c72-eb63-43af-9e50-31efa02178ea(jetbrains.mps.baseLanguage.unitTest.runtime)" />
     <import index="yqm7" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(org.junit.junit5/)" />
     <import index="79ha" ref="r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" />
     <import index="4o98" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.core.platform(MPS.Core/)" />
@@ -79,10 +76,6 @@
       </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
-      </concept>
-      <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
-      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
-        <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
       <concept id="4952749571008284462" name="jetbrains.mps.baseLanguage.structure.CatchVariable" flags="ng" index="XOnhg" />
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
@@ -5236,21 +5229,6 @@
     <node concept="3uibUv" id="G8uQY5DK4w" role="EKbjA">
       <ref role="3uigEE" to="79ha:7KC1aYnI6jD" resolve="EnvironmentAware" />
     </node>
-    <node concept="Wx3nA" id="G8uQY5DJ5Z" role="jymVt">
-      <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="G8uQY5DJ60" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-      </node>
-      <node concept="2YIFZM" id="G8uQY5DPbJ" role="33vP2m">
-        <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-        <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
-        <node concept="3VsKOn" id="G8uQY5DPbK" role="37wK5m">
-          <ref role="3VsUkX" node="G8uQY5DJ5W" resolve="ModuleMpsTest" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="G8uQY5DJ64" role="1B3o_S" />
-    </node>
     <node concept="312cEg" id="G8uQY5DJ65" role="jymVt">
       <property role="TrG5h" value="myTestModuleFactory" />
       <node concept="3uibUv" id="G8uQY5DJ67" role="1tU5fm">
@@ -5340,19 +5318,6 @@
         <ref role="2AI5Lk" to="yqm7:~AfterEach" resolve="AfterEach" />
       </node>
       <node concept="3clFbS" id="G8uQY5DJ6F" role="3clF47">
-        <node concept="3clFbF" id="G8uQY5DJ6G" role="3cqZAp">
-          <node concept="2OqwBi" id="G8uQY5DPbA" role="3clFbG">
-            <node concept="37vLTw" id="G8uQY5DKfG" role="2Oq$k0">
-              <ref role="3cqZAo" node="G8uQY5DJ5Z" resolve="LOG" />
-            </node>
-            <node concept="liA8E" id="G8uQY5DPbB" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:~Category.info(java.lang.Object)" resolve="info" />
-              <node concept="Xl_RD" id="G8uQY5DPbC" role="37wK5m">
-                <property role="Xl_RC" value="Cleaning up after the test" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="G8uQY5DJ6J" role="3cqZAp">
           <node concept="2OqwBi" id="G8uQY5DL3U" role="3clFbG">
             <node concept="37vLTw" id="G8uQY5DKfS" role="2Oq$k0">

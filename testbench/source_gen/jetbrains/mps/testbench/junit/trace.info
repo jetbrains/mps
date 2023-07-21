@@ -102,7 +102,7 @@
   </root>
   <root nodeRef="r:7eb6d2ae-f266-42d4-885f-016951b158e4(jetbrains.mps.testbench.junit)/5294483648489411978">
     <file name="ExpectLogEvent.java">
-      <node id="4480898598409263160" at="16,0,17,0" concept="0" trace="level#()I" />
+      <node id="4480898598409263160" at="16,0,17,0" concept="0" trace="level#()Ljetbrains/mps/testbench/util/CachingAppender/Level;" />
       <node id="4480898598409266572" at="17,0,18,0" concept="0" trace="text#()[Ljava/lang/String;" />
       <scope id="4480898598409263160" at="16,0,17,0" />
       <scope id="4480898598409266572" at="17,0,18,0" />

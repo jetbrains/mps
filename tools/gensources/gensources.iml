@@ -1590,7 +1590,6 @@
     <orderEntry type="library" name="JUnit4" level="project" />
     <orderEntry type="library" name="Idea-platform" level="project" />
     <orderEntry type="library" name="gnu.trove" level="project" />
-    <orderEntry type="library" name="org.apache.log4j" level="project" />
     <orderEntry type="module" module-name="debugger-api-api" />
     <orderEntry type="module" module-name="mps-icons" />
     <orderEntry type="module" module-name="persistence" />

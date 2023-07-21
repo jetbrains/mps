@@ -39,28 +39,6 @@ public class CachingAppender implements Output {
 
   }
 
-  @SuppressWarnings("UnstableApiUsage")
-  /*package*/ static Level fromLog4jLevel(int log4jLevel) {
-    // ALL as default not to miss any event just in case
-    switch (log4jLevel) {
-      case org.apache.log4j.Level.TRACE_INT:
-        return Level.TRACE;
-      case org.apache.log4j.Level.DEBUG_INT:
-        return Level.DEBUG;
-      case org.apache.log4j.Level.INFO_INT:
-        return Level.INFO;
-      case org.apache.log4j.Level.WARN_INT:
-        return Level.WARN;
-      case org.apache.log4j.Level.ERROR_INT:
-        return Level.ERROR;
-      case org.apache.log4j.Level.FATAL_INT:
-        return Level.FATAL;
-      case org.apache.log4j.Level.OFF_INT:
-        return Level.OFF;
-      default:
-        return Level.ALL;
-    }
-  }
   /*package*/ static Level fromJUL(java.util.logging.Level julLevel) {
     // ALL as default not to miss any event just in case
     if (java.util.logging.Level.ALL == julLevel || java.util.logging.Level.FINEST == julLevel || java.util.logging.Level.FINER == julLevel) {
@@ -204,11 +182,6 @@ public class CachingAppender implements Output {
       myEventCount++;
       myMessages.add(String.format("MISSING: [%s] %s", pr.level, pr.text));
     }
-  }
-
-  @Deprecated(since = "2021.3.1", forRemoval = true)
-  public void expectEvent(int level, String text) {
-    myExpectedEvents.add(new EE(fromLog4jLevel(level), text));
   }
 
   public void expectEvent(Level level, String text) {

@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.messages;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Priority;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -46,21 +44,6 @@ public enum MessageKind {
    */
   public boolean is(IMessage msg) {
     return msg.getKind() == this;
-  }
-
-  /**
-   * @deprecated Keep while we transit log4j uses; new code shall use {@link java.util.logging.Level}
-   */
-  @SuppressWarnings("UnstableApiUsage")
-  @Deprecated(since = "2022.1", forRemoval = true)
-  @NotNull
-  public static MessageKind fromPriority(Priority level) {
-    if (level.equals(Level.FATAL) || level.equals(Level.ERROR)) {
-      return MessageKind.ERROR;
-    } else if (level.equals(Level.WARN)) {
-      return MessageKind.WARNING;
-    }
-    return MessageKind.INFORMATION;
   }
 
   @NotNull

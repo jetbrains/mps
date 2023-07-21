@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,11 +26,6 @@ public class LogHandler implements IMessageHandler {
 
   public LogHandler(@NotNull Logger log) {
     myLog = log;
-  }
-
-  @Deprecated(since = "2022.2", forRemoval = true)
-  public LogHandler(@SuppressWarnings("UnstableApiUsage") @NotNull org.apache.log4j.Logger log) {
-    myLog = Logger.wrap(log);
   }
 
   @Override
