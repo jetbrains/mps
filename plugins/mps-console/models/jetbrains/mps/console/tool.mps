@@ -1564,6 +1564,13 @@
         <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
       </node>
     </node>
+    <node concept="312cEg" id="2FkQk2QWknY" role="jymVt">
+      <property role="TrG5h" value="myContentManager" />
+      <node concept="3Tm6S6" id="2FkQk2QWaVQ" role="1B3o_S" />
+      <node concept="3uibUv" id="2FkQk2QWk3Q" role="1tU5fm">
+        <ref role="3uigEE" to="v7ux:~ContentManager" resolve="ContentManager" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="1iC2RjkY3mf" role="jymVt" />
     <node concept="3Tm1VV" id="1iC2RjkXjZP" role="1B3o_S" />
     <node concept="3clFbW" id="1iC2RjkXSrN" role="jymVt">
@@ -2052,9 +2059,97 @@
       <node concept="3Tmbuc" id="11UfqYTPC0N" role="1B3o_S" />
       <node concept="3cqZAl" id="11UfqYTPC0P" role="3clF45" />
       <node concept="3clFbS" id="11UfqYTPC0S" role="3clF47">
-        <node concept="3clFbF" id="11UfqYTPEat" role="3cqZAp">
-          <node concept="3nyPlj" id="11UfqYTPEas" role="3clFbG">
-            <ref role="37wK5l" to="71xd:~BaseTool.doRegister()" resolve="doRegister" />
+        <node concept="3SKdUt" id="2FkQk2QWX3z" role="3cqZAp">
+          <node concept="1PaTwC" id="2FkQk2QWX3$" role="1aUNEU">
+            <node concept="3oM_SD" id="2FkQk2QWYEv" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYFn" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYFq" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYFu" role="1PaTwD">
+              <property role="3oM_SC" value="access" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYGp" role="1PaTwD">
+              <property role="3oM_SC" value="CM" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYHl" role="1PaTwD">
+              <property role="3oM_SC" value="e.g." />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYIi" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYIq" role="1PaTwD">
+              <property role="3oM_SC" value="saveState" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYKf" role="1PaTwD">
+              <property role="3oM_SC" value="which" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYLf" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYLq" role="1PaTwD">
+              <property role="3oM_SC" value="no" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYMs" role="1PaTwD">
+              <property role="3oM_SC" value="longer" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYMD" role="1PaTwD">
+              <property role="3oM_SC" value="guaranteed" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYOz" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYQZ" role="1PaTwD">
+              <property role="3oM_SC" value="get" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYS5" role="1PaTwD">
+              <property role="3oM_SC" value="executed" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYTc" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QWYTu" role="1PaTwD">
+              <property role="3oM_SC" value="EDT," />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="2FkQk2QWZo6" role="3cqZAp">
+          <node concept="1PaTwC" id="2FkQk2QWZo7" role="1aUNEU">
+            <node concept="3oM_SD" id="2FkQk2QX4re" role="1PaTwD">
+              <property role="3oM_SC" value="while" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QX4tr" role="1PaTwD">
+              <property role="3oM_SC" value="getCM()" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QX4uk" role="1PaTwD">
+              <property role="3oM_SC" value="needs" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QX4w4" role="1PaTwD">
+              <property role="3oM_SC" value="ToolWindow" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QX4$n" role="1PaTwD">
+              <property role="3oM_SC" value="which" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QX4_j" role="1PaTwD">
+              <property role="3oM_SC" value="asserts" />
+            </node>
+            <node concept="3oM_SD" id="2FkQk2QX4Ag" role="1PaTwD">
+              <property role="3oM_SC" value="EDT." />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2FkQk2QWB8H" role="3cqZAp">
+          <node concept="37vLTI" id="2FkQk2QWHZ4" role="3clFbG">
+            <node concept="1rXfSq" id="2FkQk2QWLWT" role="37vLTx">
+              <ref role="37wK5l" to="71xd:~BaseTool.getContentManager()" resolve="getContentManager" />
+            </node>
+            <node concept="37vLTw" id="2FkQk2QWB8F" role="37vLTJ">
+              <ref role="3cqZAo" node="2FkQk2QWknY" resolve="myContentManager" />
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="7GtYJ30PQ3W" role="3cqZAp">
@@ -2065,6 +2160,26 @@
       </node>
       <node concept="2AHcQZ" id="11UfqYTPEar" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2FkQk2QXVUg" role="jymVt" />
+    <node concept="2tJIrI" id="2FkQk2QXW3i" role="jymVt" />
+    <node concept="3clFb_" id="2FkQk2QY2h5" role="jymVt">
+      <property role="TrG5h" value="doUnregister" />
+      <node concept="3Tmbuc" id="2FkQk2QY2h6" role="1B3o_S" />
+      <node concept="3cqZAl" id="2FkQk2QY2h8" role="3clF45" />
+      <node concept="3clFbS" id="2FkQk2QY2h9" role="3clF47">
+        <node concept="3clFbF" id="2FkQk2QYg7q" role="3cqZAp">
+          <node concept="37vLTI" id="2FkQk2QYmhB" role="3clFbG">
+            <node concept="10Nm6u" id="2FkQk2QYr7N" role="37vLTx" />
+            <node concept="37vLTw" id="2FkQk2QYg7n" role="37vLTJ">
+              <ref role="3cqZAo" node="2FkQk2QWknY" resolve="myContentManager" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="2FkQk2QY2ha" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="147lksmIiMM" role="jymVt" />
@@ -2110,8 +2225,8 @@
                 <node concept="3clFbF" id="1mK8QXd_zDi" role="3cqZAp">
                   <node concept="2OqwBi" id="1mK8QXd_zDj" role="3clFbG">
                     <node concept="2OqwBi" id="1mK8QXd_zDk" role="2Oq$k0">
-                      <node concept="1rXfSq" id="1mK8QXd_zDl" role="2Oq$k0">
-                        <ref role="37wK5l" to="71xd:~BaseTool.getContentManager()" resolve="getContentManager" />
+                      <node concept="37vLTw" id="2FkQk2QX9xD" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2FkQk2QWknY" resolve="myContentManager" />
                       </node>
                       <node concept="liA8E" id="1mK8QXd_zDm" role="2OqNvi">
                         <ref role="37wK5l" to="v7ux:~ContentManager.getContent(javax.swing.JComponent)" resolve="getContent" />
@@ -2159,14 +2274,14 @@
             <node concept="3clFbF" id="1mK8QXd_4WN" role="3cqZAp">
               <node concept="2OqwBi" id="1mK8QXd_bvd" role="3clFbG">
                 <node concept="2OqwBi" id="1mK8QXd_7hG" role="2Oq$k0">
-                  <node concept="1rXfSq" id="1mK8QXd_4WM" role="2Oq$k0">
-                    <ref role="37wK5l" to="71xd:~BaseTool.getContentManager()" resolve="getContentManager" />
-                  </node>
                   <node concept="liA8E" id="1mK8QXd_9gx" role="2OqNvi">
                     <ref role="37wK5l" to="v7ux:~ContentManager.getContent(javax.swing.JComponent)" resolve="getContent" />
                     <node concept="37vLTw" id="1mK8QXd_bo9" role="37wK5m">
                       <ref role="3cqZAo" node="1mK8QXd$Wi0" resolve="tab" />
                     </node>
+                  </node>
+                  <node concept="37vLTw" id="2FkQk2QXbWD" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2FkQk2QWknY" resolve="myContentManager" />
                   </node>
                 </node>
                 <node concept="liA8E" id="1mK8QXd_etv" role="2OqNvi">
@@ -2193,14 +2308,14 @@
         <node concept="3clFbF" id="4SwrQttQi$6" role="3cqZAp">
           <node concept="2EnYce" id="4SwrQttQFFF" role="3clFbG">
             <node concept="2OqwBi" id="4SwrQttQi$8" role="2Oq$k0">
-              <node concept="1rXfSq" id="4SwrQttQi$9" role="2Oq$k0">
-                <ref role="37wK5l" to="71xd:~BaseTool.getContentManager()" resolve="getContentManager" />
-              </node>
               <node concept="liA8E" id="4SwrQttQi$a" role="2OqNvi">
                 <ref role="37wK5l" to="v7ux:~ContentManager.getContent(int)" resolve="getContent" />
                 <node concept="3cmrfG" id="4SwrQttQFrw" role="37wK5m">
                   <property role="3cmrfH" value="0" />
                 </node>
+              </node>
+              <node concept="37vLTw" id="2FkQk2QXh0G" role="2Oq$k0">
+                <ref role="3cqZAo" node="2FkQk2QWknY" resolve="myContentManager" />
               </node>
             </node>
             <node concept="liA8E" id="4SwrQttQi$c" role="2OqNvi">
@@ -2214,14 +2329,14 @@
         <node concept="3clFbF" id="5VzHAnc0tha" role="3cqZAp">
           <node concept="2EnYce" id="5VzHAnc1y7E" role="3clFbG">
             <node concept="2OqwBi" id="5VzHAnc0zbq" role="2Oq$k0">
-              <node concept="1rXfSq" id="5VzHAnc0th9" role="2Oq$k0">
-                <ref role="37wK5l" to="71xd:~BaseTool.getContentManager()" resolve="getContentManager" />
-              </node>
               <node concept="liA8E" id="5VzHAnc0_uc" role="2OqNvi">
                 <ref role="37wK5l" to="v7ux:~ContentManager.getContent(int)" resolve="getContent" />
                 <node concept="3cmrfG" id="5VzHAnc2cg5" role="37wK5m">
                   <property role="3cmrfH" value="0" />
                 </node>
+              </node>
+              <node concept="37vLTw" id="2FkQk2QXi_b" role="2Oq$k0">
+                <ref role="3cqZAo" node="2FkQk2QWknY" resolve="myContentManager" />
               </node>
             </node>
             <node concept="liA8E" id="5VzHAnc0ELk" role="2OqNvi">
@@ -2234,22 +2349,22 @@
         </node>
         <node concept="3clFbF" id="6ImRKzlZw6f" role="3cqZAp">
           <node concept="2OqwBi" id="6ImRKzlZw6g" role="3clFbG">
-            <node concept="1rXfSq" id="6ImRKzlZw6h" role="2Oq$k0">
-              <ref role="37wK5l" to="71xd:~BaseTool.getContentManager()" resolve="getContentManager" />
-            </node>
             <node concept="liA8E" id="6ImRKzlZw6i" role="2OqNvi">
               <ref role="37wK5l" to="v7ux:~ContentManager.setSelectedContent(com.intellij.ui.content.Content)" resolve="setSelectedContent" />
               <node concept="2OqwBi" id="6ImRKzlZw6j" role="37wK5m">
-                <node concept="1rXfSq" id="6ImRKzlZw6k" role="2Oq$k0">
-                  <ref role="37wK5l" to="71xd:~BaseTool.getContentManager()" resolve="getContentManager" />
-                </node>
                 <node concept="liA8E" id="6ImRKzlZw6l" role="2OqNvi">
                   <ref role="37wK5l" to="v7ux:~ContentManager.getContent(int)" resolve="getContent" />
                   <node concept="3cmrfG" id="6ImRKzlZAyd" role="37wK5m">
                     <property role="3cmrfH" value="0" />
                   </node>
                 </node>
+                <node concept="37vLTw" id="2FkQk2QXqP1" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2FkQk2QWknY" resolve="myContentManager" />
+                </node>
               </node>
+            </node>
+            <node concept="37vLTw" id="2FkQk2QXkbx" role="2Oq$k0">
+              <ref role="3cqZAo" node="2FkQk2QWknY" resolve="myContentManager" />
             </node>
           </node>
         </node>
@@ -2266,22 +2381,22 @@
       <node concept="3clFbS" id="6ImRKzlZaor" role="3clF47">
         <node concept="3clFbF" id="6ImRKzlYczC" role="3cqZAp">
           <node concept="2OqwBi" id="6ImRKzlYfue" role="3clFbG">
-            <node concept="1rXfSq" id="6ImRKzlYczB" role="2Oq$k0">
-              <ref role="37wK5l" to="71xd:~BaseTool.getContentManager()" resolve="getContentManager" />
-            </node>
             <node concept="liA8E" id="6ImRKzlYxi7" role="2OqNvi">
               <ref role="37wK5l" to="v7ux:~ContentManager.setSelectedContent(com.intellij.ui.content.Content)" resolve="setSelectedContent" />
               <node concept="2OqwBi" id="6ImRKzlY$5Y" role="37wK5m">
-                <node concept="1rXfSq" id="6ImRKzlYzGg" role="2Oq$k0">
-                  <ref role="37wK5l" to="71xd:~BaseTool.getContentManager()" resolve="getContentManager" />
-                </node>
                 <node concept="liA8E" id="6ImRKzlYA6N" role="2OqNvi">
                   <ref role="37wK5l" to="v7ux:~ContentManager.getContent(javax.swing.JComponent)" resolve="getContent" />
                   <node concept="37vLTw" id="6ImRKzlZm8x" role="37wK5m">
                     <ref role="3cqZAo" node="6ImRKzlZfnC" resolve="tab" />
                   </node>
                 </node>
+                <node concept="37vLTw" id="2FkQk2QXsoW" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2FkQk2QWknY" resolve="myContentManager" />
+                </node>
               </node>
+            </node>
+            <node concept="37vLTw" id="2FkQk2QXlKb" role="2Oq$k0">
+              <ref role="3cqZAo" node="2FkQk2QWknY" resolve="myContentManager" />
             </node>
           </node>
         </node>
@@ -2653,6 +2768,21 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="2FkQk2QX_NU" role="3cqZAp">
+          <node concept="3clFbS" id="2FkQk2QX_NW" role="3clFbx">
+            <node concept="3cpWs6" id="2FkQk2QXN6a" role="3cqZAp">
+              <node concept="37vLTw" id="2FkQk2QXUgN" role="3cqZAk">
+                <ref role="3cqZAo" node="5lgJV$ohAsJ" resolve="result" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="2FkQk2QXETW" role="3clFbw">
+            <node concept="10Nm6u" id="2FkQk2QXJP9" role="3uHU7w" />
+            <node concept="37vLTw" id="2FkQk2QXCYO" role="3uHU7B">
+              <ref role="3cqZAo" node="2FkQk2QWknY" resolve="myContentManager" />
+            </node>
+          </node>
+        </node>
         <node concept="2Gpval" id="6ysF3v1JNzr" role="3cqZAp">
           <node concept="2GrKxI" id="6ysF3v1JNzt" role="2Gsz3X">
             <property role="TrG5h" value="tab" />
@@ -2668,14 +2798,14 @@
               <node concept="3fqX7Q" id="1mK8QXd$Re2" role="3clFbw">
                 <node concept="2OqwBi" id="1mK8QXd$Re4" role="3fr31v">
                   <node concept="2OqwBi" id="1mK8QXd$Re5" role="2Oq$k0">
-                    <node concept="1rXfSq" id="1mK8QXd$Re6" role="2Oq$k0">
-                      <ref role="37wK5l" to="71xd:~BaseTool.getContentManager()" resolve="getContentManager" />
-                    </node>
                     <node concept="liA8E" id="1mK8QXd$Re7" role="2OqNvi">
                       <ref role="37wK5l" to="v7ux:~ContentManager.getContent(javax.swing.JComponent)" resolve="getContent" />
                       <node concept="2GrUjf" id="1mK8QXd$Re8" role="37wK5m">
                         <ref role="2Gs0qQ" node="6ysF3v1JNzt" resolve="tab" />
                       </node>
+                    </node>
+                    <node concept="37vLTw" id="2FkQk2QXtYq" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2FkQk2QWknY" resolve="myContentManager" />
                     </node>
                   </node>
                   <node concept="liA8E" id="1mK8QXd$Re9" role="2OqNvi">
