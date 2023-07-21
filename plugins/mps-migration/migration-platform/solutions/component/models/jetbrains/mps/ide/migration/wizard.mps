@@ -56,6 +56,7 @@
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
     <import index="hlw7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.save(MPS.Platform/)" />
     <import index="t335" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui.update(MPS.IDEA/)" />
+    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="53vh" ref="r:53885008-7612-46ff-8b11-27f1d42c3adb(jetbrains.mps.lang.migration.structure)" implicit="true" />
   </imports>
   <registry>
@@ -250,6 +251,7 @@
         <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
+      <concept id="1171903607971" name="jetbrains.mps.baseLanguage.structure.WildCardType" flags="in" index="3qTvmN" />
       <concept id="7812454656619025416" name="jetbrains.mps.baseLanguage.structure.MethodDeclaration" flags="ng" index="1rXfSm">
         <property id="8355037393041754995" name="isNative" index="2aFKle" />
       </concept>
@@ -487,7 +489,7 @@
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
       <property role="TrG5h" value="myProgress" />
-      <property role="3TUv4t" value="false" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="6dkZ8D0FZ1W" role="1B3o_S" />
       <node concept="3uibUv" id="7rK8qWGDK7a" role="1tU5fm">
         <ref role="3uigEE" to="nd9s:~InlineProgressIndicator" resolve="InlineProgressIndicator" />
@@ -495,6 +497,7 @@
     </node>
     <node concept="312cEg" id="2htE_P_MyAB" role="jymVt">
       <property role="TrG5h" value="mySession" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="6dkZ8D0FZ_d" role="1B3o_S" />
       <node concept="3uibUv" id="2htE_P_PFkt" role="1tU5fm">
         <ref role="3uigEE" node="2htE_P_Pzio" resolve="MigrationSession" />
@@ -504,7 +507,7 @@
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
       <property role="TrG5h" value="myTask" />
-      <property role="3TUv4t" value="false" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="6dkZ8D0FZJl" role="1B3o_S" />
       <node concept="3uibUv" id="6dkZ8D0DGc_" role="1tU5fm">
         <ref role="3uigEE" node="PobQbOdOMD" resolve="MigrationTask" />
@@ -556,18 +559,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="PobQbOfPjk" role="3cqZAp">
-          <node concept="37vLTI" id="PobQbOfR8W" role="3clFbG">
-            <node concept="37vLTw" id="PobQbOfPji" role="37vLTJ">
-              <ref role="3cqZAo" node="7rK8qWGDnm$" resolve="myProgress" />
-            </node>
-            <node concept="2ShNRf" id="PobQbOf7ap" role="37vLTx">
-              <node concept="1pGfFk" id="6dkZ8D0Fa9U" role="2ShVmc">
-                <ref role="37wK5l" node="6dkZ8D0Fa9N" resolve="MigrationStep.MyInlineProgressIndicator" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="7rK8qWGEVf8" role="3cqZAp">
           <node concept="37vLTI" id="7rK8qWGEVf9" role="3clFbG">
             <node concept="37vLTw" id="142tJsBfS7X" role="37vLTJ">
@@ -578,6 +569,36 @@
                 <ref role="37wK5l" node="PobQbOdOMH" resolve="MigrationTask" />
                 <node concept="37vLTw" id="PobQbOdSRz" role="37wK5m">
                   <ref role="3cqZAo" node="2htE_P_Mysn" resolve="session" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="PobQbOfPjk" role="3cqZAp">
+          <node concept="37vLTI" id="PobQbOfR8W" role="3clFbG">
+            <node concept="37vLTw" id="PobQbOfPji" role="37vLTJ">
+              <ref role="3cqZAo" node="7rK8qWGDnm$" resolve="myProgress" />
+            </node>
+            <node concept="2ShNRf" id="PobQbOf7ap" role="37vLTx">
+              <node concept="1pGfFk" id="6dkZ8D0Fa9U" role="2ShVmc">
+                <ref role="37wK5l" node="6dkZ8D0Fa9N" resolve="MyInlineProgressIndicator" />
+                <node concept="1bVj0M" id="RsG97Q15ad" role="37wK5m">
+                  <node concept="gl6BB" id="RsG97Q19WN" role="1bW2Oz">
+                    <property role="TrG5h" value="p" />
+                    <node concept="2jxLKc" id="RsG97Q19WO" role="1tU5fm" />
+                  </node>
+                  <node concept="3clFbS" id="RsG97Q15az" role="1bW5cS">
+                    <node concept="3clFbF" id="RsG97Q18gH" role="3cqZAp">
+                      <node concept="2OqwBi" id="RsG97Q18Kf" role="3clFbG">
+                        <node concept="37vLTw" id="RsG97Q18gG" role="2Oq$k0">
+                          <ref role="3cqZAo" node="PobQbOgkyz" resolve="myTask" />
+                        </node>
+                        <node concept="liA8E" id="RsG97Q19kd" role="2OqNvi">
+                          <ref role="37wK5l" node="PobQbOdfwK" resolve="isComplete" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -1846,7 +1867,16 @@
     </node>
     <node concept="312cEu" id="6dkZ8D0Fa9J" role="jymVt">
       <property role="TrG5h" value="MyInlineProgressIndicator" />
-      <property role="2bfB8j" value="true" />
+      <node concept="312cEg" id="RsG97Q0BE7" role="jymVt">
+        <property role="TrG5h" value="myTaskCompleted" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3Tm6S6" id="RsG97Q0BE8" role="1B3o_S" />
+        <node concept="3uibUv" id="RsG97Q0BEa" role="1tU5fm">
+          <ref role="3uigEE" to="82uw:~Predicate" resolve="Predicate" />
+          <node concept="3qTvmN" id="RsG97Q0BEb" role="11_B2D" />
+        </node>
+      </node>
+      <node concept="2tJIrI" id="RsG97Q0CwL" role="jymVt" />
       <node concept="3clFbW" id="6dkZ8D0Fa9N" role="jymVt">
         <node concept="3clFbS" id="6dkZ8D0Fa9O" role="3clF47">
           <node concept="XkiVB" id="6dkZ8D0Fa9T" role="3cqZAp">
@@ -1952,6 +1982,16 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbF" id="RsG97Q0BEc" role="3cqZAp">
+            <node concept="37vLTI" id="RsG97Q0BEe" role="3clFbG">
+              <node concept="37vLTw" id="RsG97Q0BEh" role="37vLTJ">
+                <ref role="3cqZAo" node="RsG97Q0BE7" resolve="myTaskCompleted" />
+              </node>
+              <node concept="37vLTw" id="RsG97Q0BEi" role="37vLTx">
+                <ref role="3cqZAo" node="RsG97Q0_pL" resolve="taskCompleted" />
+              </node>
+            </node>
+          </node>
           <node concept="3clFbF" id="1zaRC58wH9j" role="3cqZAp">
             <node concept="1rXfSq" id="1zaRC58wH9h" role="3clFbG">
               <ref role="37wK5l" to="ot7:~AbstractProgressIndicatorExBase.setIndeterminate(boolean)" resolve="setIndeterminate" />
@@ -1971,6 +2011,13 @@
         </node>
         <node concept="3Tm1VV" id="6dkZ8D0Fa9P" role="1B3o_S" />
         <node concept="3cqZAl" id="6dkZ8D0Fa9Q" role="3clF45" />
+        <node concept="37vLTG" id="RsG97Q0_pL" role="3clF46">
+          <property role="TrG5h" value="taskCompleted" />
+          <node concept="3uibUv" id="RsG97Q0_pK" role="1tU5fm">
+            <ref role="3uigEE" to="82uw:~Predicate" resolve="Predicate" />
+            <node concept="3qTvmN" id="RsG97Q0ARb" role="11_B2D" />
+          </node>
+        </node>
       </node>
       <node concept="3Tm6S6" id="6dkZ8D0Fa9L" role="1B3o_S" />
       <node concept="2tJIrI" id="4cEc5tJeyvP" role="jymVt" />
@@ -2069,13 +2116,14 @@
         <node concept="3Tmbuc" id="PobQbOf7b1" role="1B3o_S" />
         <node concept="10P_77" id="PobQbOf7b2" role="3clF45" />
         <node concept="3clFbS" id="PobQbOf7b3" role="3clF47">
-          <node concept="3clFbF" id="PobQbOgsQm" role="3cqZAp">
-            <node concept="2OqwBi" id="PobQbOgtrA" role="3clFbG">
-              <node concept="37vLTw" id="PobQbOgsQk" role="2Oq$k0">
-                <ref role="3cqZAo" node="PobQbOgkyz" resolve="myTask" />
+          <node concept="3cpWs6" id="RsG97Q0Jwd" role="3cqZAp">
+            <node concept="2OqwBi" id="RsG97Q0O2c" role="3cqZAk">
+              <node concept="37vLTw" id="RsG97Q0Mbv" role="2Oq$k0">
+                <ref role="3cqZAo" node="RsG97Q0BE7" resolve="myTaskCompleted" />
               </node>
-              <node concept="liA8E" id="PobQbOgOQ8" role="2OqNvi">
-                <ref role="37wK5l" node="PobQbOdfwK" resolve="isComplete" />
+              <node concept="liA8E" id="RsG97Q0QFe" role="2OqNvi">
+                <ref role="37wK5l" to="82uw:~Predicate.test(java.lang.Object)" resolve="test" />
+                <node concept="10Nm6u" id="RsG97Q0TWn" role="37wK5m" />
               </node>
             </node>
           </node>

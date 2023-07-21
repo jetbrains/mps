@@ -17,6 +17,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProgressManager;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.application.ModalityState;
+import java.util.function.Predicate;
 import com.intellij.openapi.progress.TaskInfo;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NonNls;
@@ -27,9 +28,9 @@ public class MigrationStep extends BaseStep {
   private static final Logger LOG = Logger.getLogger(MigrationStep.class);
   public static final String ID = "migration";
 
-  private InlineProgressIndicator myProgress;
-  private MigrationSession mySession;
-  private MigrationTask myTask;
+  private final InlineProgressIndicator myProgress;
+  private final MigrationSession mySession;
+  private final MigrationTask myTask;
 
   private JPanel myErrorPanel;
   private JLabel myErrorLabel;
@@ -37,8 +38,8 @@ public class MigrationStep extends BaseStep {
   public MigrationStep(MigrationSession session) {
     super("Migration in Progress", ID);
     mySession = session;
-    myProgress = new MyInlineProgressIndicator();
     myTask = new MigrationTask(session);
+    myProgress = new MyInlineProgressIndicator((p) -> myTask.isComplete());
   }
 
   @Override
@@ -166,8 +167,10 @@ public class MigrationStep extends BaseStep {
     }
   }
 
-  private class MyInlineProgressIndicator extends InlineProgressIndicator {
-    public MyInlineProgressIndicator() {
+  private static class MyInlineProgressIndicator extends InlineProgressIndicator {
+    private final Predicate<?> myTaskCompleted;
+
+    public MyInlineProgressIndicator(Predicate<?> taskCompleted) {
       super(false, new TaskInfo() {
         @NotNull
         public String getTitle() {
@@ -187,6 +190,7 @@ public class MigrationStep extends BaseStep {
           return "migration";
         }
       });
+      myTaskCompleted = taskCompleted;
       setIndeterminate(false);
       setFraction(0.0);
     }
@@ -207,7 +211,7 @@ public class MigrationStep extends BaseStep {
 
     @Override
     protected boolean isFinished() {
-      return myTask.isComplete();
+      return myTaskCompleted.test(null);
     }
   }
 }
