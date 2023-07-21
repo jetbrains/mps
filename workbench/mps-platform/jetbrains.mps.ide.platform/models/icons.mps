@@ -33,6 +33,7 @@
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
+    <import index="ze1j" ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.smodel.runtime(jetbrains.mps.lang.constraints.rules.runtime/)" implicit="true" />
     <import index="3iga" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.icons(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
@@ -1394,7 +1395,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="1zjDZIUDXHg" role="2OqNvi">
-                    <ref role="37wK5l" to="ze1i:~ConstraintsDescriptor.getInstanceIcon(org.jetbrains.mps.openapi.model.SNode)" resolve="getInstanceIcon" />
+                    <ref role="37wK5l" to="ze1j:~ConstraintsDescriptor.getInstanceIcon(org.jetbrains.mps.openapi.model.SNode)" resolve="getInstanceIcon" />
                     <node concept="37vLTw" id="1zjDZIUDXHh" role="37wK5m">
                       <ref role="3cqZAo" node="192HKKPOepX" resolve="node" />
                     </node>

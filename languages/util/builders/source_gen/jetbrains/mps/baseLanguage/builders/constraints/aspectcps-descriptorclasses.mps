@@ -21,6 +21,7 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="35tq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.scope(MPS.Core/)" />
     <import index="pmg0" ref="r:77052501-5144-48a7-be50-7535fc6d1073(jetbrains.mps.baseLanguage.builders.structure)" />
+    <import index="ze1j" ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.smodel.runtime(jetbrains.mps.lang.constraints.rules.runtime/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
   </imports>
@@ -1409,7 +1410,7 @@
     <property role="TrG5h" value="ConstraintsAspectDescriptor" />
     <property role="3GE5qa" value="Constraints" />
     <node concept="3uibUv" id="4z" role="1zkMxy">
-      <ref role="3uigEE" to="ze1i:~BaseConstraintsAspectDescriptor" resolve="BaseConstraintsAspectDescriptor" />
+      <ref role="3uigEE" to="ze1j:~BaseConstraintsAspectDescriptor" resolve="BaseConstraintsAspectDescriptor" />
     </node>
     <node concept="3Tm1VV" id="4$" role="1B3o_S" />
     <node concept="3clFbW" id="4_" role="jymVt">
@@ -1427,7 +1428,7 @@
       </node>
       <node concept="3Tm1VV" id="4G" role="1B3o_S" />
       <node concept="3uibUv" id="4H" role="3clF45">
-        <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+        <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
       </node>
       <node concept="37vLTG" id="4I" role="3clF46">
         <property role="TrG5h" value="concept" />
@@ -1444,7 +1445,7 @@
                 <node concept="1nCR9W" id="54" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.builders.constraints.ResultExpression_Constraints" />
                   <node concept="3uibUv" id="55" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -1459,7 +1460,7 @@
                 <node concept="1nCR9W" id="59" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderExpression_Constraints" />
                   <node concept="3uibUv" id="5a" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -1474,7 +1475,7 @@
                 <node concept="1nCR9W" id="5e" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilder_Constraints" />
                   <node concept="3uibUv" id="5f" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -1489,7 +1490,7 @@
                 <node concept="1nCR9W" id="5j" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderParameterReference_Constraints" />
                   <node concept="3uibUv" id="5k" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -1504,7 +1505,7 @@
                 <node concept="1nCR9W" id="5o" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.builders.constraints.BeanPropertyBuilder_Constraints" />
                   <node concept="3uibUv" id="5p" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -1519,7 +1520,7 @@
                 <node concept="1nCR9W" id="5t" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.builders.constraints.BeanBuilder_Constraints" />
                   <node concept="3uibUv" id="5u" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -1534,7 +1535,7 @@
                 <node concept="1nCR9W" id="5y" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.builders.constraints.AsTypeBuilder_Constraints" />
                   <node concept="3uibUv" id="5z" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -1549,7 +1550,7 @@
                 <node concept="1nCR9W" id="5B" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderChildExpression_Constraints" />
                   <node concept="3uibUv" id="5C" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -1564,7 +1565,7 @@
                 <node concept="1nCR9W" id="5G" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderPropertyExpression_Constraints" />
                   <node concept="3uibUv" id="5H" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -1579,7 +1580,7 @@
                 <node concept="1nCR9W" id="5L" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderPropertyBuilder_Constraints" />
                   <node concept="3uibUv" id="5M" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -1594,7 +1595,7 @@
                 <node concept="1nCR9W" id="5Q" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.builders.constraints.SimpleBuilderDeclaration_Constraints" />
                   <node concept="3uibUv" id="5R" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -1609,7 +1610,7 @@
                 <node concept="1nCR9W" id="5V" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.baseLanguage.builders.constraints.BaseSimpleBuilderDeclaration_Constraints" />
                   <node concept="3uibUv" id="5W" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -1859,7 +1860,7 @@
         <ref role="3uigEE" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
         <uo k="s:originTrace" v="n:7288041816792309049" />
         <node concept="3uibUv" id="7a" role="11_B2D">
-          <ref role="3uigEE" to="ze1i:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
+          <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
           <uo k="s:originTrace" v="n:7288041816792309049" />
         </node>
         <node concept="3uibUv" id="7b" role="11_B2D">
@@ -1904,7 +1905,7 @@
                     <property role="TrG5h" value="context" />
                     <uo k="s:originTrace" v="n:7288041816792309049" />
                     <node concept="3uibUv" id="7q" role="1tU5fm">
-                      <ref role="3uigEE" to="ze1i:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
+                      <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
                       <uo k="s:originTrace" v="n:7288041816792309049" />
                     </node>
                     <node concept="2AHcQZ" id="7r" role="2AJF6D">
@@ -1944,7 +1945,7 @@
                               <uo k="s:originTrace" v="n:7288041816792309049" />
                             </node>
                             <node concept="liA8E" id="7F" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
                               <uo k="s:originTrace" v="n:7288041816792309049" />
                             </node>
                           </node>
@@ -1955,7 +1956,7 @@
                               <uo k="s:originTrace" v="n:7288041816792309049" />
                             </node>
                             <node concept="liA8E" id="7H" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
                               <uo k="s:originTrace" v="n:7288041816792309049" />
                             </node>
                           </node>
@@ -1966,7 +1967,7 @@
                               <uo k="s:originTrace" v="n:7288041816792309049" />
                             </node>
                             <node concept="liA8E" id="7J" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
                               <uo k="s:originTrace" v="n:7288041816792309049" />
                             </node>
                           </node>
@@ -1977,7 +1978,7 @@
                               <uo k="s:originTrace" v="n:7288041816792309049" />
                             </node>
                             <node concept="liA8E" id="7L" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getLink()" resolve="getLink" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getLink()" resolve="getLink" />
                               <uo k="s:originTrace" v="n:7288041816792309049" />
                             </node>
                           </node>
@@ -2059,7 +2060,7 @@
                   </node>
                 </node>
                 <node concept="3uibUv" id="7i" role="2Ghqu4">
-                  <ref role="3uigEE" to="ze1i:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
+                  <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
                   <uo k="s:originTrace" v="n:7288041816792309049" />
                 </node>
                 <node concept="3uibUv" id="7j" role="2Ghqu4">
@@ -2762,7 +2763,7 @@
         <ref role="3uigEE" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
         <uo k="s:originTrace" v="n:7288041816792577346" />
         <node concept="3uibUv" id="aY" role="11_B2D">
-          <ref role="3uigEE" to="ze1i:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
+          <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
           <uo k="s:originTrace" v="n:7288041816792577346" />
         </node>
         <node concept="3uibUv" id="aZ" role="11_B2D">
@@ -2807,7 +2808,7 @@
                     <property role="TrG5h" value="context" />
                     <uo k="s:originTrace" v="n:7288041816792577346" />
                     <node concept="3uibUv" id="be" role="1tU5fm">
-                      <ref role="3uigEE" to="ze1i:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
+                      <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
                       <uo k="s:originTrace" v="n:7288041816792577346" />
                     </node>
                     <node concept="2AHcQZ" id="bf" role="2AJF6D">
@@ -2847,7 +2848,7 @@
                               <uo k="s:originTrace" v="n:7288041816792577346" />
                             </node>
                             <node concept="liA8E" id="bv" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
                               <uo k="s:originTrace" v="n:7288041816792577346" />
                             </node>
                           </node>
@@ -2858,7 +2859,7 @@
                               <uo k="s:originTrace" v="n:7288041816792577346" />
                             </node>
                             <node concept="liA8E" id="bx" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
                               <uo k="s:originTrace" v="n:7288041816792577346" />
                             </node>
                           </node>
@@ -2869,7 +2870,7 @@
                               <uo k="s:originTrace" v="n:7288041816792577346" />
                             </node>
                             <node concept="liA8E" id="bz" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
                               <uo k="s:originTrace" v="n:7288041816792577346" />
                             </node>
                           </node>
@@ -2880,7 +2881,7 @@
                               <uo k="s:originTrace" v="n:7288041816792577346" />
                             </node>
                             <node concept="liA8E" id="b_" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getLink()" resolve="getLink" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getLink()" resolve="getLink" />
                               <uo k="s:originTrace" v="n:7288041816792577346" />
                             </node>
                           </node>
@@ -2962,7 +2963,7 @@
                   </node>
                 </node>
                 <node concept="3uibUv" id="b6" role="2Ghqu4">
-                  <ref role="3uigEE" to="ze1i:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
+                  <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
                   <uo k="s:originTrace" v="n:7288041816792577346" />
                 </node>
                 <node concept="3uibUv" id="b7" role="2Ghqu4">
@@ -4139,7 +4140,7 @@
         <ref role="3uigEE" to="ze1i:~ConstraintFunction" resolve="ConstraintFunction" />
         <uo k="s:originTrace" v="n:5389689214217242852" />
         <node concept="3uibUv" id="gP" role="11_B2D">
-          <ref role="3uigEE" to="ze1i:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
+          <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
           <uo k="s:originTrace" v="n:5389689214217242852" />
         </node>
         <node concept="3uibUv" id="gQ" role="11_B2D">
@@ -4184,7 +4185,7 @@
                     <property role="TrG5h" value="context" />
                     <uo k="s:originTrace" v="n:5389689214217242852" />
                     <node concept="3uibUv" id="h5" role="1tU5fm">
-                      <ref role="3uigEE" to="ze1i:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
+                      <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
                       <uo k="s:originTrace" v="n:5389689214217242852" />
                     </node>
                     <node concept="2AHcQZ" id="h6" role="2AJF6D">
@@ -4224,7 +4225,7 @@
                               <uo k="s:originTrace" v="n:5389689214217242852" />
                             </node>
                             <node concept="liA8E" id="hm" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getNode()" resolve="getNode" />
                               <uo k="s:originTrace" v="n:5389689214217242852" />
                             </node>
                           </node>
@@ -4235,7 +4236,7 @@
                               <uo k="s:originTrace" v="n:5389689214217242852" />
                             </node>
                             <node concept="liA8E" id="ho" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getParentNode()" resolve="getParentNode" />
                               <uo k="s:originTrace" v="n:5389689214217242852" />
                             </node>
                           </node>
@@ -4246,7 +4247,7 @@
                               <uo k="s:originTrace" v="n:5389689214217242852" />
                             </node>
                             <node concept="liA8E" id="hq" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getConcept()" resolve="getConcept" />
                               <uo k="s:originTrace" v="n:5389689214217242852" />
                             </node>
                           </node>
@@ -4257,7 +4258,7 @@
                               <uo k="s:originTrace" v="n:5389689214217242852" />
                             </node>
                             <node concept="liA8E" id="hs" role="2OqNvi">
-                              <ref role="37wK5l" to="ze1i:~ConstraintContext_CanBeChild.getLink()" resolve="getLink" />
+                              <ref role="37wK5l" to="ze1j:~ConstraintContext_CanBeChild.getLink()" resolve="getLink" />
                               <uo k="s:originTrace" v="n:5389689214217242852" />
                             </node>
                           </node>
@@ -4339,7 +4340,7 @@
                   </node>
                 </node>
                 <node concept="3uibUv" id="gX" role="2Ghqu4">
-                  <ref role="3uigEE" to="ze1i:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
+                  <ref role="3uigEE" to="ze1j:~ConstraintContext_CanBeChild" resolve="ConstraintContext_CanBeChild" />
                   <uo k="s:originTrace" v="n:5389689214217242852" />
                 </node>
                 <node concept="3uibUv" id="gY" role="2Ghqu4">

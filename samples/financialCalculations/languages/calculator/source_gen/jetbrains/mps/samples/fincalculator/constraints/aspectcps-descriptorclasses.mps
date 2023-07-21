@@ -13,6 +13,7 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="79pl" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime.base(MPS.Core/)" />
     <import index="64eg" ref="r:87765d2d-a756-4883-9acc-6a42e5bf6c24(jetbrains.mps.samples.fincalculator.structure)" />
+    <import index="ze1j" ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.smodel.runtime(jetbrains.mps.lang.constraints.rules.runtime/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
@@ -826,7 +827,7 @@
     <property role="TrG5h" value="ConstraintsAspectDescriptor" />
     <property role="3GE5qa" value="Constraints" />
     <node concept="3uibUv" id="2E" role="1zkMxy">
-      <ref role="3uigEE" to="ze1i:~BaseConstraintsAspectDescriptor" resolve="BaseConstraintsAspectDescriptor" />
+      <ref role="3uigEE" to="ze1j:~BaseConstraintsAspectDescriptor" resolve="BaseConstraintsAspectDescriptor" />
     </node>
     <node concept="3Tm1VV" id="2F" role="1B3o_S" />
     <node concept="3clFbW" id="2G" role="jymVt">
@@ -844,7 +845,7 @@
       </node>
       <node concept="3Tm1VV" id="2N" role="1B3o_S" />
       <node concept="3uibUv" id="2O" role="3clF45">
-        <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+        <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
       </node>
       <node concept="37vLTG" id="2P" role="3clF46">
         <property role="TrG5h" value="concept" />
@@ -861,7 +862,7 @@
                 <node concept="1nCR9W" id="35" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.samples.fincalculator.constraints.FieldReference_Constraints" />
                   <node concept="3uibUv" id="36" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -876,7 +877,7 @@
                 <node concept="1nCR9W" id="3a" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.samples.fincalculator.constraints.Command_Constraints" />
                   <node concept="3uibUv" id="3b" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -891,7 +892,7 @@
                 <node concept="1nCR9W" id="3f" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.samples.fincalculator.constraints.LogicalReference_Constraints" />
                   <node concept="3uibUv" id="3g" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -906,7 +907,7 @@
                 <node concept="1nCR9W" id="3k" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.samples.fincalculator.constraints.SelectorReference_Constraints" />
                   <node concept="3uibUv" id="3l" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -921,7 +922,7 @@
                 <node concept="1nCR9W" id="3p" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.samples.fincalculator.constraints.CalculationReference_Constraints" />
                   <node concept="3uibUv" id="3q" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -936,7 +937,7 @@
                 <node concept="1nCR9W" id="3u" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.samples.fincalculator.constraints.CalculationValueReference_Constraints" />
                   <node concept="3uibUv" id="3v" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>

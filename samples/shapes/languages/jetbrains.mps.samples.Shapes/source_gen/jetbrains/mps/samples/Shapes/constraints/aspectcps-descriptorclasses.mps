@@ -14,6 +14,7 @@
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="79pl" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime.base(MPS.Core/)" />
+    <import index="ze1j" ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.smodel.runtime(jetbrains.mps.lang.constraints.rules.runtime/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
   </imports>
   <registry>
@@ -301,7 +302,7 @@
           <property role="TrG5h" value="container" />
           <uo k="s:originTrace" v="n:1082824515534982564" />
           <node concept="3uibUv" id="A" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+            <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
             <uo k="s:originTrace" v="n:1082824515534982564" />
           </node>
         </node>
@@ -565,7 +566,7 @@
     <property role="TrG5h" value="ConstraintsAspectDescriptor" />
     <property role="3GE5qa" value="Constraints" />
     <node concept="3uibUv" id="1B" role="1zkMxy">
-      <ref role="3uigEE" to="ze1i:~BaseConstraintsAspectDescriptor" resolve="BaseConstraintsAspectDescriptor" />
+      <ref role="3uigEE" to="ze1j:~BaseConstraintsAspectDescriptor" resolve="BaseConstraintsAspectDescriptor" />
     </node>
     <node concept="3Tm1VV" id="1C" role="1B3o_S" />
     <node concept="3clFbW" id="1D" role="jymVt">
@@ -583,7 +584,7 @@
       </node>
       <node concept="3Tm1VV" id="1K" role="1B3o_S" />
       <node concept="3uibUv" id="1L" role="3clF45">
-        <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+        <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
       </node>
       <node concept="37vLTG" id="1M" role="3clF46">
         <property role="TrG5h" value="concept" />
@@ -600,7 +601,7 @@
                 <node concept="1nCR9W" id="1Y" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.samples.Shapes.constraints.Square_Constraints" />
                   <node concept="3uibUv" id="1Z" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -615,7 +616,7 @@
                 <node concept="1nCR9W" id="23" role="3cqZAk">
                   <property role="1nD$Q0" value="jetbrains.mps.samples.Shapes.constraints.Circle_Constraints" />
                   <node concept="3uibUv" id="24" role="2lIhxL">
-                    <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+                    <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
                 </node>
               </node>
@@ -798,7 +799,7 @@
           <property role="TrG5h" value="container" />
           <uo k="s:originTrace" v="n:1082824515534700364" />
           <node concept="3uibUv" id="2V" role="1tU5fm">
-            <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
+            <ref role="3uigEE" to="ze1j:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
             <uo k="s:originTrace" v="n:1082824515534700364" />
           </node>
         </node>

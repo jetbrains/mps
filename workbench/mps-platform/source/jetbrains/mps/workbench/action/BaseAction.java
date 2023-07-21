@@ -154,7 +154,7 @@ public abstract class BaseAction extends AnAction {
   }
 
   @Override
-  public final void update(final AnActionEvent e) {
+  public void update(final AnActionEvent e) {
     super.update(e);
 
     ActionPlace place = e.getData(MPSCommonDataKeys.PLACE);

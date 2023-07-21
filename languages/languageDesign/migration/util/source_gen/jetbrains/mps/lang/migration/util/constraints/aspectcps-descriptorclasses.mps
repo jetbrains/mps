@@ -7,8 +7,8 @@
   <languages />
   <imports>
     <import index="brc8" ref="9882f4ad-1955-46fe-8269-94189e5dbbf2/r:e492bdcd-6643-43a7-9109-e38bb05f5ec9(jetbrains.mps.lang.migration.util/jetbrains.mps.lang.migration.util.constraints)" />
-    <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="79pl" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime.base(MPS.Core/)" />
+    <import index="ze1i" ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.smodel.runtime(jetbrains.mps.lang.constraints.rules.runtime/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
   </imports>
   <registry>
