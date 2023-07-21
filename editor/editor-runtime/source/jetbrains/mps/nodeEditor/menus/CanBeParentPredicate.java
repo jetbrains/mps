@@ -37,11 +37,6 @@ public class CanBeParentPredicate implements Predicate<SAbstractConcept> {
   @Nullable
   private final SContainmentLink myContainmentLink;
 
-@Deprecated(since = "2017.2", forRemoval = true)
-  public CanBeParentPredicate(@Nullable SNode parentNode, @Nullable SContainmentLink link, @NotNull SRepository repository) {
-    this(parentNode, link);
-  }
-
   public CanBeParentPredicate(@Nullable SNode parentNode, @Nullable SContainmentLink containmentLink) {
     myParentNode = parentNode;
     myContainmentLink = containmentLink;

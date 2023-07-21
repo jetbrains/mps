@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,16 +71,6 @@ public final class LegacyAndRulesConstraintsDescriptor implements RulesConstrain
     }
     myConcept = concept;
     myRulesDescriptor = rulesDescriptor;
-  }
-
-@Deprecated(since = "301", forRemoval = true)
-  public LegacyAndRulesConstraintsDescriptor(@NotNull SAbstractConcept concept, @NotNull RulesConstraintsDescriptor rulesDescriptor) {
-    if (rulesDescriptor instanceof LegacyAndRulesConstraintsDescriptor) {
-      throw new IllegalArgumentException("Cannot construct a legacy wrapper over a legacy wrapper, " + concept);
-    }
-    myConcept = concept;
-    myRulesDescriptor = rulesDescriptor;
-    myMro = new SConceptC3StarMRO();
   }
 
   @Override

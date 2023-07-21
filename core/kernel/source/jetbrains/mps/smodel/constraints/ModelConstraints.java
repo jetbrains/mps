@@ -61,6 +61,11 @@ public class ModelConstraints {
    * TODO: ashatalin: make containmentLink @NotNull and expose this parameter inside canBeAncestor constraint in MPS DSL.
    * TODO: For now I did not expose it because editor is calling this method with null containmentLink from time
    * TODO: to time -> additional refactoring is required in editor framework in order to achieve it.
+   *
+   * XXX AFAIU, use of this method can be replaced with ConstraintsCanBeFacade.checkCanBeAncestor check, just need to
+   *     mimic logic of parentNode hierarchy walking (checkCanBeAncestor sticks to single concept check).
+   *     Nullable containment link is not an obstacle, CanBeAncestorContext constructor tolerates nullable link,
+   *     just need to be careful to supply both parent and ancestor nodes
    */
   @Deprecated
   @Internal
