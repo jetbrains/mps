@@ -29951,7 +29951,7 @@
         </node>
         <node concept="1SiIV0" id="16mx0EU4l3q" role="3bR37C">
           <node concept="3bR9La" id="16mx0EU4l3r" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
+            <ref role="3bR37D" node="7Kfy9QB6KXW" resolve="jetbrains.mps.lang.core" />
           </node>
         </node>
         <node concept="1SiIV0" id="16mx0EU4l3s" role="3bR37C">

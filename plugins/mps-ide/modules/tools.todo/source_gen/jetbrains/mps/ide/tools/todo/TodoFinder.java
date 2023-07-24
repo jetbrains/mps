@@ -14,9 +14,8 @@ import java.util.Set;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
-import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.IGenericComment__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TodoFinder implements IFinder {
@@ -29,16 +28,20 @@ public class TodoFinder implements IFinder {
   @Override
   @NotNull
   public SearchResults find(SearchQuery query, ProgressMonitor monitor) {
-    ArrayList<SearchResult<SNode>> results = new ArrayList<>();
+    final ArrayList<SearchResult<SNode>> results = new ArrayList<>();
 
     Set<SInterfaceConcept> searchFor = Collections.singleton(CONCEPTS.IGenericComment$bD);
-    Set<SNode> comments = FindUsagesFacade.getInstance().findInstances(query.getScope(), searchFor, false, new EmptyProgressMonitor());
-    for (SNode node : SNodeOperations.ofConcept(comments, CONCEPTS.IGenericComment$bD)) {
-      if ((boolean) IGenericComment__BehaviorDescriptor.isTODOComment_idfB3l7ZufMD.invoke(node)) {
-        results.add(new SearchResult<SNode>(node, "TODO items"));
+    FindUsagesFacade.getInstance().findInstances(query.getScope(), searchFor, false, (gc) -> {
+      if ((boolean) IGenericComment__BehaviorDescriptor.isTODOComment_idfB3l7ZufMD.invoke(SNodeOperations.cast(gc, CONCEPTS.IGenericComment$bD))) {
+        results.add(new SearchResult<SNode>(gc, "TODO items"));
       }
+    }, monitor);
+    if (results.isEmpty()) {
+      return SearchResults.empty();
     }
-    return new SearchResults<>(searchFor, results);
+    // intentionally don't supply what we've searched for as it's our impl knowledge, users are interested in 
+    // results only
+    return new SearchResults<>(Collections.emptySet(), results);
   }
 
   private static final class CONCEPTS {
