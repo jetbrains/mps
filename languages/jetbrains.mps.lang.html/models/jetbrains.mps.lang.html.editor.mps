@@ -675,18 +675,18 @@
           </node>
         </node>
       </node>
-      <node concept="3F0ifn" id="2YAlhTtRVR" role="3EZMnx">
+      <node concept="3F0ifn" id="dX4qbK6PuV" role="3EZMnx">
         <property role="3F0ifm" value="&gt;" />
         <ref role="1ERwB7" node="5MT8pi2_2S$" resolve="Tag_RightBrace_ActionMap" />
         <ref role="34QXea" node="5MT8pi2$bGr" resolve="Tag_RightBrace_KeyMap" />
-        <node concept="11LMrY" id="4IPEwEe29SN" role="3F10Kt">
+        <node concept="11L4FC" id="dX4qbK6PuW" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
-        <node concept="11L4FC" id="4IPEwEe29SO" role="3F10Kt">
+      </node>
+      <node concept="3F0ifn" id="dX4qbK6PuX" role="3EZMnx">
+        <ref role="1k5W1q" node="5M4a$b5iSSc" resolve="htmlTagPunctuation" />
+        <node concept="11L4FC" id="dX4qbK6PuY" role="3F10Kt">
           <property role="VOm3f" value="true" />
-        </node>
-        <node concept="3mYdg7" id="4IPEwEe29SP" role="3F10Kt">
-          <property role="1413C4" value="openTag" />
         </node>
       </node>
       <node concept="l2Vlx" id="1v8pb4C9gPu" role="2iSdaV" />
@@ -724,20 +724,16 @@
           <property role="VOm3f" value="true" />
         </node>
       </node>
-      <node concept="3F0ifn" id="2YAlhTAJ0J" role="3EZMnx">
+      <node concept="3F0ifn" id="dX4qbK6lEw" role="3EZMnx">
         <property role="3F0ifm" value="&gt;" />
         <ref role="1ERwB7" node="5MT8pi2_2S$" resolve="Tag_RightBrace_ActionMap" />
         <ref role="34QXea" node="5MT8pi2$bGr" resolve="Tag_RightBrace_KeyMap" />
-        <node concept="11L4FC" id="4IPEwEe2sVg" role="3F10Kt">
+        <node concept="11L4FC" id="dX4qbK6lEx" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
-        <node concept="11LMrY" id="4IPEwEe2sVh" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-        <node concept="3mYdg7" id="4IPEwEe2sVi" role="3F10Kt">
-          <property role="1413C4" value="openTag" />
-        </node>
-        <node concept="3CIbrd" id="4IPEwEe2Mvh" role="3F10Kt">
+      </node>
+      <node concept="3F0ifn" id="dX4qbK6lEy" role="3EZMnx">
+        <node concept="11L4FC" id="dX4qbK6lEz" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
       </node>
@@ -1982,7 +1978,6 @@
             </node>
           </node>
           <node concept="3F0ifn" id="5M4a$b5iL37" role="3EZMnx">
-            <ref role="1k5W1q" node="5M4a$b5iSSc" resolve="htmlTagPunctuation" />
             <node concept="11L4FC" id="5M4a$b5iSRx" role="3F10Kt">
               <property role="VOm3f" value="true" />
             </node>
