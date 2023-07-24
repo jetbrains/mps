@@ -5124,11 +5124,6 @@
             <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
           </node>
         </node>
-        <node concept="1SiIV0" id="2a9bszgruOW" role="3bR37C">
-          <node concept="3bR9La" id="2a9bszgruOV" role="1SiIV1">
-            <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
-          </node>
-        </node>
         <node concept="1E1SXE" id="4Gy9vLLbz_O" role="3bR37C">
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="1nB28rXacP" resolve="mps-environment" />
@@ -52134,6 +52129,9 @@
       <node concept="2sjeV3" id="6NgXkpBaBt9" role="nCB5Z">
         <property role="2a2d0E" value="false" />
         <ref role="2sjeV2" node="1FaKCGJSzMS" resolve="idea-ant" />
+      </node>
+      <node concept="2sjeV3" id="1F1lRkaVb4i" role="nCB5Z">
+        <ref role="2sjeV2" node="4YmhUESdVsA" resolve="com.intellij.openapi" />
       </node>
       <node concept="2sjeV3" id="5k$na7$gDKn" role="nCB5Z">
         <ref role="2sjeV2" node="6FsijxbePt8" resolve="org.jdom" />
