@@ -641,5 +641,57 @@
       <unit id="251376545713623112" at="14,0,41,0" name="jetbrains.mps.lang.html.test.tests.BackspaceBetweenEmptyWordAndTag_Test" />
     </file>
   </root>
+  <root nodeRef="r:16787a38-3459-4ea1-9150-b215a73f5d27(jetbrains.mps.lang.html.test.tests@tests)/8766879755154455203">
+    <file name="NewLineOnTheMiddleOfTheWord_Test.java">
+      <node id="8766879755154455203" at="19,45,20,60" concept="5" />
+      <node id="8766879755154455203" at="24,67,25,36" concept="1" />
+      <node id="8766879755154455203" at="30,52,31,19" concept="5" />
+      <node id="8766879755154455203" at="35,51,36,72" concept="1" />
+      <node id="8766879755154456266" at="36,72,37,69" concept="1" />
+      <node id="8766879755154455203" at="16,0,18,0" concept="4" trace="ourParametersCacheExtension" />
+      <node id="8766879755154455203" at="19,0,22,0" concept="0" trace="NewLineOnTheMiddleOfTheWord_Test#()V" />
+      <node id="8766879755154455203" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8766879755154455203" at="23,0,27,0" concept="2" trace="test_NewLineOnTheMiddleOfTheWord#()V" />
+      <node id="8766879755154455203" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="8766879755154455203" at="19,45,20,60" />
+      <scope id="8766879755154455203" at="24,67,25,36" />
+      <scope id="8766879755154455203" at="30,52,31,19" />
+      <scope id="8766879755154455203" at="35,51,37,69" />
+      <scope id="8766879755154455203" at="19,0,22,0" />
+      <scope id="8766879755154455203" at="30,0,33,0">
+        <var name="owner" id="8766879755154455203" />
+      </scope>
+      <scope id="8766879755154455203" at="23,0,27,0" />
+      <scope id="8766879755154455203" at="34,0,39,0" />
+      <unit id="8766879755154455203" at="28,0,40,0" name="jetbrains.mps.lang.html.test.tests.NewLineOnTheMiddleOfTheWord_Test$TestBody" />
+      <unit id="8766879755154455203" at="14,0,41,0" name="jetbrains.mps.lang.html.test.tests.NewLineOnTheMiddleOfTheWord_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:16787a38-3459-4ea1-9150-b215a73f5d27(jetbrains.mps.lang.html.test.tests@tests)/8766879755154957154">
+    <file name="SplitWord_Test.java">
+      <node id="8766879755154957154" at="19,27,20,60" concept="5" />
+      <node id="8766879755154957154" at="24,49,25,36" concept="1" />
+      <node id="8766879755154957154" at="30,52,31,19" concept="5" />
+      <node id="8766879755154957154" at="35,51,36,72" concept="1" />
+      <node id="8766879755154957716" at="36,72,37,22" concept="1" />
+      <node id="8766879755154957154" at="16,0,18,0" concept="4" trace="ourParametersCacheExtension" />
+      <node id="8766879755154957154" at="19,0,22,0" concept="0" trace="SplitWord_Test#()V" />
+      <node id="8766879755154957154" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8766879755154957154" at="23,0,27,0" concept="2" trace="test_SplitWord#()V" />
+      <node id="8766879755154957154" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
+      <scope id="8766879755154957154" at="19,27,20,60" />
+      <scope id="8766879755154957154" at="24,49,25,36" />
+      <scope id="8766879755154957154" at="30,52,31,19" />
+      <scope id="8766879755154957154" at="35,51,37,22" />
+      <scope id="8766879755154957154" at="19,0,22,0" />
+      <scope id="8766879755154957154" at="30,0,33,0">
+        <var name="owner" id="8766879755154957154" />
+      </scope>
+      <scope id="8766879755154957154" at="23,0,27,0" />
+      <scope id="8766879755154957154" at="34,0,39,0" />
+      <unit id="8766879755154957154" at="28,0,40,0" name="jetbrains.mps.lang.html.test.tests.SplitWord_Test$TestBody" />
+      <unit id="8766879755154957154" at="14,0,41,0" name="jetbrains.mps.lang.html.test.tests.SplitWord_Test" />
+    </file>
+  </root>
 </debug-info>
 
