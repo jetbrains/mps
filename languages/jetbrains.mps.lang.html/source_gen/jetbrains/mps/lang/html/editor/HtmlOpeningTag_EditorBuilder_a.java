@@ -113,7 +113,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("property_tagName");
       Style style = new StyleImpl();
       new htmlTagNameStyleClass(this).apply(style, editorCell);
-      style.set(StyleAttributes.MATCHING_LABEL, "htmltag");
       editorCell.getStyle().putAll(style);
       editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.HtmlOpeningTag$K));
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
