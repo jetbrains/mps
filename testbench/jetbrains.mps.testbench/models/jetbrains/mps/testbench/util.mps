@@ -1272,7 +1272,7 @@
               <node concept="liA8E" id="3m4z3Ef4RUy" role="2OqNvi">
                 <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                 <node concept="Xl_RD" id="3m4z3Ef4RUz" role="37wK5m">
-                  <property role="Xl_RC" value="|(process reaper)" />
+                  <property role="Xl_RC" value="|(process reaper.*)" />
                 </node>
               </node>
             </node>

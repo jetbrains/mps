@@ -128,7 +128,7 @@ public class ThreadWatcher implements Output {
       builder.append("|(Poller SunPKCS11-Darwin)");
 
       // Linux specific thread
-      builder.append("|(process reaper)");
+      builder.append("|(process reaper.*)");
 
       // org.apache.batik.util.CleanerThread from batik-util library
       builder.append("|(Batik CleanerThread)");
