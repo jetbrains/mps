@@ -8,6 +8,7 @@
   </languages>
   <imports>
     <import index="7j7i" ref="r:647e430d-4f1a-4d18-8ace-69f2d9711419(jetbrains.mps.lang.descriptor.aspects@genplan)" />
+    <import index="wf37" ref="r:d60a90cf-2588-4702-a0e4-f4d58abef57b(jetbrains.mps.lang.descriptor.structure_doc@genplan)" />
   </imports>
   <registry>
     <language id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan">
@@ -23,6 +24,10 @@
       <concept id="1820634577908471810" name="jetbrains.mps.lang.generator.plan.structure.Transform" flags="ng" index="2VgMA2">
         <child id="1152961914448142326" name="entries" index="2Qf7GQ" />
       </concept>
+      <concept id="3167863533095527371" name="jetbrains.mps.lang.generator.plan.structure.Fork" flags="ng" index="10T23i">
+        <property id="3723372171378241981" name="gentarget" index="afMbY" />
+        <reference id="3167863533095527372" name="plan" index="10T23l" />
+      </concept>
       <concept id="3750601816081740541" name="jetbrains.mps.lang.generator.plan.structure.DeclaredCheckpointSpec" flags="ng" index="3ps6a7">
         <reference id="3750601816081740544" name="cpDecl" index="3ps6dU" />
       </concept>
@@ -34,13 +39,17 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
   </registry>
   <node concept="2VgMpV" id="52lx2FqHOn$">
     <property role="TrG5h" value="LangStructurePlan" />
+    <node concept="10T23i" id="70x5HTumdo_" role="2VgMA7">
+      <property role="afMbY" value="documentation" />
+      <ref role="10T23l" to="wf37:2iKjvgosNNj" resolve="DocumentationPlan" />
+    </node>
     <node concept="2VgMA2" id="52lx2FqHOnA" role="2VgMA7">
       <node concept="2Qf6Nf" id="6pkKjyUzzBP" role="2Qf7GQ">
         <node concept="2V$Bhx" id="52lx2FqHOnF" role="2Qf6Ng">
