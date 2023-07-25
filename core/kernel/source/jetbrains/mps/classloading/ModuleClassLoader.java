@@ -88,8 +88,10 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     }
   }
 
+  // FIXME I don't think ModuleClassLoaderSupport and ModuleClassLoader knowing about each other is right. If it's the former to instantiate latter,
+  //       it shall pass all relevant initialization pieces in here, instead of `this`.
   public ModuleClassLoader(@NotNull ModuleClassLoaderSupport support) {
-    super(NameUtil.compactNamespace(support.getModule().getModuleName()), support.getRootClassLoader());
+    super(support.suggestClassLoaderName(), support.getRootClassLoader());
     mySupport = support;
   }
 

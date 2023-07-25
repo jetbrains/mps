@@ -20,6 +20,7 @@ import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.reloading.ClassBytesProvider.ClassBytes;
 import jetbrains.mps.reloading.IClassPathItem;
+import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.net.URL;
@@ -35,6 +36,8 @@ public class ModuleClassLoaderSupport {
 
   private ModuleClassLoader myModuleClassLoader;
 
+  private final ClassLoader myRootClassLoader;
+
   private static IClassPathItem calcClassPath(@NotNull ReloadableModule module) {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
     assert facet != null;
@@ -47,6 +50,8 @@ public class ModuleClassLoaderSupport {
     myModule = module;
     myDependenciesSupplier = dependencySupplier;
     myClassPathItem = classPathItem;
+    // module access needs model lock, walk it as long as the instance is valid, do not delay.
+    myRootClassLoader = new RootClassloaderLookup(module).get();
   }
 
   /**
@@ -86,6 +91,8 @@ public class ModuleClassLoaderSupport {
 
   @NotNull
   public ReloadableModule getModule() {
+    // seems to be necessary for reporting purposes only. Means can get replaced with a value not retaining SModule instance, e.g. important for
+    // scenarios where module is gone but CL is still in use. OTOH, CL is an intimate friend of a module, might be worth keeping the bond.
     return myModule;
   }
 
@@ -119,6 +126,10 @@ public class ModuleClassLoaderSupport {
    * @return parent classloader for a module classloader, see {@link RootClassloaderLookup}
    */
   /*package*/ ClassLoader getRootClassLoader() {
-    return new RootClassloaderLookup(myModule).get();
+    return myRootClassLoader;
+  }
+
+  /*package*/ String suggestClassLoaderName() {
+    return NameUtil.compactNamespace(myModule.getModuleName());
   }
 }
