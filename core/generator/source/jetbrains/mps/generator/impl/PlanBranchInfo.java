@@ -30,6 +30,7 @@ import java.util.List;
   int majorStepAtFork;
   int minorStepAtFork;
   List<Step> branch;
+  String generationTarget;
 
   // just an identifier of a branch for later reference (e.g. distinguish models of different branches in UI)
   final int serial;
