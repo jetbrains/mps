@@ -4,10 +4,11 @@ package jetbrains.mps.lang.doctext.generator.templates;
 
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.impl.query.QueryProviderBase;
+import jetbrains.mps.generator.template.DropRootRuleContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -25,8 +26,12 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.generator.template.TemplateVarContext;
+import jetbrains.mps.generator.template.TemplateQueryContext;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.smodel.Language;
+import jetbrains.mps.generator.template.TemplateVarContext;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -34,6 +39,8 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
+import jetbrains.mps.generator.impl.query.DropRuleCondition;
+import jetbrains.mps.generator.impl.query.MapConfigurationCondition;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
@@ -54,6 +61,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class QueriesGenerated extends QueryProviderBase {
   public QueriesGenerated() {
     super(1);
+  }
+  public static boolean dropRootRule_Condition_0_0(final DropRootRuleContext _context) {
+    // the only root we care about is created by this same template config
+    return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.HtmlFile$vS));
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
     return SPropertyOperations.getBoolean(_context.getNode(), PROPS.bold$SBR1);
@@ -366,6 +377,15 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_11_4(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.linkDeclaration$YU1f);
   }
+  public static boolean mc_Condition_0(final TemplateQueryContext _context) {
+    SModule module = _context.getOriginalInputModel().getModule();
+    SModuleFacet docFacet = module.getFacetOfType("documentation");
+    if (docFacet == null) {
+      return false;
+    }
+    String name = SModelOperations.getModelName(_context.getOriginalInputModel());
+    return module instanceof Language && name.endsWith(".structure");
+  }
   public static Object varMacro_Value_9_0(final TemplateVarContext _context) {
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.AbstractConceptDeclaration$KA)).sort((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL), true);
   }
@@ -413,6 +433,58 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.rule_Condition_0_7(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for rule %s (key: #%d)", ctx.getTemplateReference(), methodKey));
+      }
+    }
+  }
+  private final Map<String, DropRuleCondition> drcMethods = new HashMap<String, DropRuleCondition>();
+  {
+    int i = 0;
+    drcMethods.put("5260183393150452428", new DRC(i++));
+  }
+  @Override
+  @NotNull
+  public DropRuleCondition getDropRuleCondition(@NotNull QueryKey identity) {
+    DropRuleCondition query = identity.forTemplateNode(drcMethods);
+    return (query != null ? query : super.getDropRuleCondition(identity));
+  }
+  private static class DRC implements DropRuleCondition {
+    private final int methodKey;
+    public DRC(int methodKey) {
+      this.methodKey = methodKey;
+    }
+    @Override
+    public boolean check(@NotNull DropRootRuleContext ctx) throws GenerationFailureException {
+      switch (methodKey) {
+        case 0:
+          return QueriesGenerated.dropRootRule_Condition_0_0(ctx);
+        default:
+          throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for rule %s (key: #%d)", ctx.getTemplateReference(), methodKey));
+      }
+    }
+  }
+  private final Map<String, MapConfigurationCondition> mccMethods = new HashMap<String, MapConfigurationCondition>();
+  {
+    int i = 0;
+    mccMethods.put("747542936069461527", new MCC(i++));
+  }
+  @Override
+  @NotNull
+  public MapConfigurationCondition getMapConfigurationCondition(@NotNull QueryKey identity) {
+    MapConfigurationCondition query = identity.forTemplateNode(mccMethods);
+    return (query != null ? query : super.getMapConfigurationCondition(identity));
+  }
+  private static class MCC implements MapConfigurationCondition {
+    private final int methodKey;
+    public MCC(int methodKey) {
+      this.methodKey = methodKey;
+    }
+    @Override
+    public boolean check(TemplateQueryContext ctx) throws GenerationFailureException {
+      switch (methodKey) {
+        case 0:
+          return QueriesGenerated.mc_Condition_0(ctx);
+        default:
+          throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for map configuration %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
   }
@@ -779,6 +851,16 @@ public class QueriesGenerated extends QueryProviderBase {
     return str != null && str.length() > 0;
   }
 
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept HtmlFile$vS = MetaAdapterFactory.getConcept(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x5c842a42c54c94c0L, "jetbrains.mps.lang.html.structure.HtmlFile");
+    /*package*/ static final SConcept Header$d7 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, "jetbrains.mps.lang.text.structure.Header");
+    /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept DocumentedNodeAnnotation$ug = MetaAdapterFactory.getConcept(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, "jetbrains.mps.lang.core.doc.structure.DocumentedNodeAnnotation");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+  }
+
   private static final class PROPS {
     /*package*/ static final SProperty bold$SBR1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
     /*package*/ static final SProperty italic$SC$4 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
@@ -791,15 +873,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SProperty conceptShortDescription$is9d = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772bbe20L, "conceptShortDescription");
     /*package*/ static final SProperty sourceCardinality$cxYK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
     /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept Header$d7 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, "jetbrains.mps.lang.text.structure.Header");
-    /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
-    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
-    /*package*/ static final SConcept DocumentedNodeAnnotation$ug = MetaAdapterFactory.getConcept(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, "jetbrains.mps.lang.core.doc.structure.DocumentedNodeAnnotation");
-    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class LINKS {
