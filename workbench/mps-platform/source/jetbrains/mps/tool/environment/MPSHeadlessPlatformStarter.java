@@ -11,6 +11,7 @@ import com.intellij.openapi.application.ApplicationStarter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedHashMap;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -28,16 +29,10 @@ import java.util.concurrent.locks.ReentrantLock;
 public final class MPSHeadlessPlatformStarter implements ApplicationStarter {
   /*package*/ enum Holder {
     IT;
-    private final Lock myLock = new ReentrantLock();
-    private final Condition myInitializedCondition = myLock.newCondition();
+    private final CountDownLatch myInitializedLatch = new CountDownLatch(1);
 
     /*package*/ void signalInitialized() {
-      myLock.lock();
-      try {
-        myInitializedCondition.signal();
-      } finally {
-        myLock.unlock();
-      }
+      myInitializedLatch.countDown();
     }
 
     /**
@@ -57,13 +52,12 @@ public final class MPSHeadlessPlatformStarter implements ApplicationStarter {
         throw new RuntimeException("FAILED TO START CMDLINE IJ", e);
       }
 
-      myLock.lock();
       try {
-        myInitializedCondition.await(100, TimeUnit.SECONDS);
+        if (!myInitializedLatch.await(100, TimeUnit.SECONDS)) {
+          throw new RuntimeException("FAILED TO START CMDLINE IJ: TIMED OUT WAITING");
+        }
       } catch (InterruptedException e) {
         throw new RuntimeException("FAILED TO START CMDLINE IJ", e);
-      } finally {
-        myLock.unlock();
       }
       return ApplicationManager.getApplication();
     }
