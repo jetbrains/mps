@@ -9,6 +9,8 @@ import java.util.Map;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.make.MakeServiceComponent;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
 import jetbrains.mps.generator.GenerationFacade;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
@@ -66,6 +68,11 @@ public class DocPreviewModel_Action extends BaseAction {
       return false;
     }
     SModel md = DocPreviewModel_Action.this.modelToGenerate(event);
+    SModule module = md.getModule();
+    SModuleFacet docFacet = module.getFacetOfType("documentation");
+    if (docFacet == null) {
+      return false;
+    }
     return md != null && GenerationFacade.canGenerate(md);
   }
   @Override
