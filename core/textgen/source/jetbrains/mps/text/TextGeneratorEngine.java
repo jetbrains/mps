@@ -81,6 +81,10 @@ public final class TextGeneratorEngine {
     return myExecutor.submit(queue::take);
   }
 
+  public void schedule(@NotNull final SModel model, @NotNull final BlockingQueue<TextGenResult> resultQueue) {
+    schedule(model, resultQueue, null);
+  }
+
   /**
    * requires read access
    * Contract: for each model there'd be a TextGenResult instance in the queue (unless interrupted)
@@ -88,10 +92,10 @@ public final class TextGeneratorEngine {
    * might add schedule(SModel):Future&lt;Result&gt; (one more async alternative) and generate(SModel):Result (synchronous alternative)
    * @param model model to produce text for
    */
-  public void schedule(@NotNull final SModel model, @NotNull final BlockingQueue<TextGenResult> resultQueue) {
+  public void schedule(@NotNull final SModel model, @NotNull final BlockingQueue<TextGenResult> resultQueue, String generationTarget) {
     final List<TextUnit> textUnits = breakdownToUnits(model);
     if (textUnits.size() == 0) {
-      resultQueue.offer(new TextGenResult(model, textUnits));
+      resultQueue.offer(new TextGenResult(model, textUnits, generationTarget));
     }
     final ModelAccess modelAccess = model.getRepository() != null ? model.getRepository().getModelAccess() : null;
     final AtomicInteger unitsCount = new AtomicInteger(textUnits.size());
@@ -111,7 +115,7 @@ public final class TextGeneratorEngine {
             // once the last unit of the model is completed (either failed or succeeded), notify consumer
             if (unitsCount.decrementAndGet() == 0) {
               try {
-                resultQueue.put(new TextGenResult(model, textUnits));
+                resultQueue.put(new TextGenResult(model, textUnits, generationTarget));
               } catch (InterruptedException ex) {
                 // it's ok, it's likely caller to stop the queue, thus it knows how to deal with incomplete state
                 myMessages.handle(new Message(MessageKind.WARNING, String.format("TextGen interrupted for model %s", model.getName())).setException(ex));
