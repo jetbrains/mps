@@ -64,7 +64,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -304,6 +304,11 @@
     </node>
     <node concept="t5JxF" id="2JQwL_F4Efe" role="lGtFl">
       <property role="t5JxN" value="Fork transformation sequence into two branches, one goes on with active plan, another spins off with another plan." />
+    </node>
+    <node concept="1TJgyi" id="3eG4OcT$N6X" role="1TKVEl">
+      <property role="IQ2nx" value="3723372171378241981" />
+      <property role="TrG5h" value="gentarget" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
   </node>
   <node concept="1TIwiD" id="1009c2Af4wf">
