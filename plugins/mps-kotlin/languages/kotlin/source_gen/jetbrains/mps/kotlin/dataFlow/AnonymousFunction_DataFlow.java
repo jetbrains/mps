@@ -4,6 +4,7 @@ package jetbrains.mps.kotlin.dataFlow;
 
 import jetbrains.mps.lang.dataFlow.DataFlowBuilder;
 import jetbrains.mps.lang.dataFlow.DataFlowBuilderContext;
+import jetbrains.mps.kotlin.dataflow.instructions.ResetBooleanStateMarker;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -12,6 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AnonymousFunction_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
+    _context.getBuilder().emitWrite(_context.getNode(), ResetBooleanStateMarker.get(), "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/3280047453045051419");
     _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331414500");
     // dataflow happens here, but not in the main branch
     ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.statements$R3pt)).visitAll((it) -> _context.getBuilder().build((SNode) it));

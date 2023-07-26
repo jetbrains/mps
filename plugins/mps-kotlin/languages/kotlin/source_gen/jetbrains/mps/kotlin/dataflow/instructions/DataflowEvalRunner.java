@@ -68,7 +68,7 @@ public class DataflowEvalRunner {
           return Stream.of(it.copy(jump.getIndex() + 1, BooleanState.FALSE));
         }
       });
-    } else if (instruction instanceof WriteInstruction && ((WriteInstruction) instruction).getValue() == null) {
+    } else if (instruction instanceof WriteInstruction && ((WriteInstruction) instruction).getValue() == ResetBooleanStateMarker.get()) {
       // Write is here used as a way to reset the state
       combined = applicable.map((it) -> it.copy(index + 1, BooleanState.UNKNOWN));
 

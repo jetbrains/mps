@@ -7,6 +7,7 @@ import jetbrains.mps.lang.dataFlow.DataFlowBuilderContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.kotlin.dataflow.instructions.ResetBooleanStateMarker;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -14,7 +15,7 @@ public class DoWhileStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.statements$R3pt)).visitAll((it) -> _context.getBuilder().build((SNode) it));
 
-    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$2cvd), null, "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/8386893935424150539");
+    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$2cvd), ResetBooleanStateMarker.get(), "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/8386893935424150539");
     _context.getBuilder().emitMayBeUnreachable(() -> _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.condition$2cvd)));
 
     // Branch assumes to be true

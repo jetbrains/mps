@@ -5,6 +5,7 @@ package jetbrains.mps.kotlin.dataFlow;
 import jetbrains.mps.lang.dataFlow.DataFlowBuilder;
 import jetbrains.mps.lang.dataFlow.DataFlowBuilderContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.dataflow.instructions.ResetBooleanStateMarker;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -13,7 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class IfExpression_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     // Reset boolean state before instruction (in case condition do not reset it)
-    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$$T1H), null, "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/7914615281050634569");
+    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$$T1H), ResetBooleanStateMarker.get(), "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/7914615281050634569");
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.condition$$T1H));
     // Branch assumed to be true
     _context.getBuilder().emitIfJump(_context.getBuilder().label(_context.getNode(), "ifTrue"), "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/7914615281050641793");

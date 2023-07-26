@@ -6,6 +6,7 @@ import jetbrains.mps.lang.dataFlow.DataFlowBuilder;
 import jetbrains.mps.lang.dataFlow.DataFlowBuilderContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.dataflow.instructions.ResetBooleanStateMarker;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -13,7 +14,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class WhenEntry_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.conditions$jFw5)).visitAll((it) -> {
-      _context.getBuilder().emitWrite(it, null, "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/7914615281050609833");
+      _context.getBuilder().emitWrite(it, ResetBooleanStateMarker.get(), "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/7914615281050609833");
       _context.getBuilder().build((SNode) it);
 
       // Branch assumed to be true

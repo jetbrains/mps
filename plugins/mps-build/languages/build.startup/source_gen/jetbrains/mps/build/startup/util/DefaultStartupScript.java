@@ -59,9 +59,9 @@ public class DefaultStartupScript {
       SNodeBuilder n20 = n19.forSibling().init(CONCEPTS.ClassPathItem$TJ);
       n20.setProperty(PROPS.path$jtyZ, "lib/junit4.jar");
       SNodeBuilder n21 = n20.forSibling().init(CONCEPTS.ClassPathItem$TJ);
-      n21.setProperty(PROPS.path$jtyZ, "lib/kotlin-compiler-client-embeddable-1.8.22.jar");
+      n21.setProperty(PROPS.path$jtyZ, "lib/kotlin-compiler-client-embeddable-1.9.0.jar");
       SNodeBuilder n22 = n21.forSibling().init(CONCEPTS.ClassPathItem$TJ);
-      n22.setProperty(PROPS.path$jtyZ, "lib/kotlinx-metadata-jvm-0.6.2.jar");
+      n22.setProperty(PROPS.path$jtyZ, "lib/kotlinx-metadata-jvm-0.7.0.jar");
       SNodeBuilder n23 = n22.forSibling().init(CONCEPTS.ClassPathItem$TJ);
       n23.setProperty(PROPS.path$jtyZ, "lib/mps-annotations.jar");
       SNodeBuilder n24 = n23.forSibling().init(CONCEPTS.ClassPathItem$TJ);

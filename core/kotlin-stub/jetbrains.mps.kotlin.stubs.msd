@@ -6,13 +6,13 @@
       <sourceRoot location="models" />
     </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <sourceRoot location="kotlinx-metadata-jvm-0.6.2.jar" />
+      <sourceRoot location="kotlinx-metadata-jvm-0.7.0.jar" />
     </modelRoot>
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="yes">
       <classes generated="true" />
-      <library location="${platform_lib}/kotlinx-metadata-jvm-0.6.2.jar" />
+      <library location="${platform_lib}/kotlinx-metadata-jvm-0.7.0.jar" />
     </facet>
   </facets>
   <dependencies>

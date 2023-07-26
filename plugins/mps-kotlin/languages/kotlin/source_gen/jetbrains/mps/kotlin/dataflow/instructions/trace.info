@@ -11,8 +11,25 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
+  <root nodeRef="r:33afce8a-1e6b-46dd-9933-2b3acd4b9849(jetbrains.mps.kotlin.dataflow.instructions)/3280047453045023747">
+    <file name="ResetBooleanStateMarker.java">
+      <node id="3280047453045024190" at="22,0,23,0" concept="11" trace="INSTANCE" />
+      <node id="3280047453045025185" at="26,27,27,47" concept="3" />
+      <node id="3280047453045026673" at="28,5,29,20" concept="8" />
+      <node id="3280047453045026971" at="23,0,25,0" concept="2" trace="ResetBooleanStateMarker#()V" />
+      <node id="3280047453045024015" at="25,47,28,5" concept="5" />
+      <node id="3280047453045023897" at="25,0,31,0" concept="12" trace="get#()Ljetbrains/mps/kotlin/dataflow/instructions/ResetBooleanStateMarker;" />
+      <scope id="3280047453045026975" at="23,37,23,37" />
+      <scope id="3280047453045024017" at="26,27,27,47" />
+      <scope id="3280047453045026971" at="23,0,25,0" />
+      <scope id="3280047453045023900" at="25,47,29,20" />
+      <scope id="3280047453045023897" at="25,0,31,0" />
+      <unit id="3280047453045023747" at="20,0,32,0" name="jetbrains.mps.kotlin.dataflow.instructions.ResetBooleanStateMarker" />
+    </file>
+  </root>
   <root nodeRef="r:33afce8a-1e6b-46dd-9933-2b3acd4b9849(jetbrains.mps.kotlin.dataflow.instructions)/5712768052207131238">
     <file name="State.java">
       <node id="5712768052207131238" at="16,0,17,0" concept="4" trace="myTargetInstruction" />
@@ -72,11 +89,11 @@
       <node id="5712768052207194360" at="96,0,99,0" concept="6" trace="copy#(I)Ljetbrains/mps/kotlin/dataflow/instructions/State;" />
       <node id="5745248974078404081" at="99,50,102,5" concept="5" />
       <node id="5712768052207194648" at="105,0,108,0" concept="6" trace="copy#(ILjetbrains/mps/kotlin/dataflow/instructions/BooleanState;)Ljetbrains/mps/kotlin/dataflow/instructions/State;" />
-      <node id="1768019175242216198" at="109,0,112,0" concept="11" trace="of#(nullI)Ljetbrains/mps/kotlin/dataflow/instructions/State;" />
-      <node id="5712768052207200637" at="112,0,115,0" concept="11" trace="of#(nullILjetbrains/mps/kotlin/dataflow/instructions/BooleanState;)Ljetbrains/mps/kotlin/dataflow/instructions/State;" />
+      <node id="1768019175242216198" at="109,0,112,0" concept="12" trace="of#(nullI)Ljetbrains/mps/kotlin/dataflow/instructions/State;" />
+      <node id="5712768052207200637" at="112,0,115,0" concept="12" trace="of#(nullILjetbrains/mps/kotlin/dataflow/instructions/BooleanState;)Ljetbrains/mps/kotlin/dataflow/instructions/State;" />
       <node id="8610627324510108539" at="122,35,125,5" concept="5" />
       <node id="3973123074802658333" at="126,54,129,5" concept="5" />
-      <node id="8610627324510108549" at="133,0,136,0" concept="11" trace="as_nvj94_a0a1a13#(Ljava/lang/Object;Ljava/lang/Class;)null" />
+      <node id="8610627324510108549" at="133,0,136,0" concept="12" trace="as_nvj94_a0a1a13#(Ljava/lang/Object;Ljava/lang/Class;)null" />
       <node id="5712768052207131238" at="23,0,27,0" concept="6" trace="setTargetInstruction#(I)I" />
       <node id="5712768052207131238" at="44,0,48,0" concept="6" trace="setBooleanState#(Ljetbrains/mps/kotlin/dataflow/instructions/BooleanState;)Ljetbrains/mps/kotlin/dataflow/instructions/BooleanState;" />
       <node id="5712768052207131238" at="65,0,69,0" concept="6" trace="setData#(null)null" />
@@ -250,7 +267,7 @@
       <node id="5712768052207326579" at="21,0,22,0" concept="6" trace="acceptIsType#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;ZILjetbrains/mps/kotlin/dataflow/instructions/State;)Ljava/util/stream/Stream;" />
       <node id="8132605767562530328" at="22,0,23,0" concept="6" trace="acceptBackedge#(Ljetbrains/mps/lang/dataFlow/framework/instructions/AbstractJumpInstruction;Ljetbrains/mps/kotlin/dataflow/instructions/State;)Ljava/util/stream/Stream;" />
       <node id="1768019175238063717" at="24,47,25,60" concept="8" />
-      <node id="1768019175238062949" at="24,0,27,0" concept="11" trace="booleanStates#()Ljava/util/stream/Stream;" />
+      <node id="1768019175238062949" at="24,0,27,0" concept="12" trace="booleanStates#()Ljava/util/stream/Stream;" />
       <scope id="5712768052207331754" at="17,0,18,0">
         <var name="left" id="5712768052207331886" />
         <var name="right" id="5712768052207332072" />
@@ -307,7 +324,7 @@
       <node id="8386893935426206398" at="64,45,65,73" concept="8" />
       <node id="8386893935426206412" at="66,16,67,42" concept="9" />
       <node id="8386893935426206418" at="67,42,68,77" concept="8" />
-      <node id="8386893935430231704" at="71,112,72,55" concept="9" />
+      <node id="8386893935430231704" at="71,137,72,55" concept="9" />
       <node id="8386893935436091208" at="72,55,73,82" concept="3" />
       <node id="8386893935430774201" at="73,82,74,0" concept="10" />
       <node id="8386893935436728198" at="75,112,76,109" concept="3" />
@@ -377,13 +394,13 @@
       <node id="8386893935432390894" at="44,82,54,9" concept="3" />
       <node id="8386893935426206358" at="59,45,69,9" concept="5" />
       <node id="8386893935435167550" at="58,59,70,9" concept="3" />
-      <node id="1768019175246484922" at="95,0,108,0" concept="11" trace="mergeInputs#(Ljava/util/stream/Stream;Ljetbrains/mps/kotlin/dataflow/instructions/DataflowEvaluator;)Ljava/util/stream/Stream;" />
-      <node id="5712768052208417731" at="119,37,135,7" concept="12" />
+      <node id="1768019175246484922" at="95,0,108,0" concept="12" trace="mergeInputs#(Ljava/util/stream/Stream;Ljetbrains/mps/kotlin/dataflow/instructions/DataflowEvaluator;)Ljava/util/stream/Stream;" />
+      <node id="5712768052208417731" at="119,37,135,7" concept="13" />
       <node id="5712768052208363439" at="118,0,137,0" concept="2" trace="InstructionState#(Ljetbrains/mps/kotlin/dataflow/instructions/DataflowEvaluator;Ljetbrains/mps/kotlin/dataflow/instructions/State;)V" />
-      <node id="5712768052208852889" at="146,63,175,7" concept="12" />
+      <node id="5712768052208852889" at="146,63,175,7" concept="13" />
       <node id="5712768052207932101" at="146,0,178,0" concept="6" trace="mergeWith#(Ljetbrains/mps/kotlin/dataflow/instructions/State;)Ljetbrains/mps/kotlin/dataflow/instructions/DataflowEvalRunner/InstructionState;" />
       <node id="5745248974069723937" at="42,0,80,5" concept="5" />
-      <node id="5712768052210083287" at="35,0,84,0" concept="11" trace="evaluate#(Ljetbrains/mps/lang/dataFlow/framework/instructions/Instruction;Ljava/util/List;Ljetbrains/mps/kotlin/dataflow/instructions/DataflowEvaluator;)Ljava/util/List;" />
+      <node id="5712768052210083287" at="35,0,84,0" concept="12" trace="evaluate#(Ljetbrains/mps/lang/dataFlow/framework/instructions/Instruction;Ljava/util/List;Ljetbrains/mps/kotlin/dataflow/instructions/DataflowEvaluator;)Ljava/util/List;" />
       <scope id="8386893935425421583" at="46,55,47,160" />
       <scope id="8386893935425632010" at="48,62,49,160" />
       <scope id="8386893935425837245" at="50,62,51,160" />
@@ -402,7 +419,7 @@
       <scope id="763915685529914683" at="152,27,154,61" />
       <scope id="763915685530329981" at="161,27,163,58" />
       <scope id="5712768052207989510" at="170,18,172,35" />
-      <scope id="8386893935429852646" at="71,112,74,0" />
+      <scope id="8386893935429852646" at="71,137,74,0" />
       <scope id="5712768052208480409" at="121,18,124,16" />
       <scope id="5712768052208586779" at="125,19,129,0" />
       <scope id="5712768052208648454" at="130,16,134,16" />

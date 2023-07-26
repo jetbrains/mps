@@ -5,13 +5,14 @@ package jetbrains.mps.kotlin.dataFlow;
 import jetbrains.mps.lang.dataFlow.DataFlowBuilder;
 import jetbrains.mps.lang.dataFlow.DataFlowBuilderContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.dataflow.instructions.ResetBooleanStateMarker;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class OrExpression_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.left$yQgK), null, "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/8386893935424268931");
+    _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.left$yQgK), ResetBooleanStateMarker.get(), "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/8386893935424268931");
     _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.left$yQgK));
 
     // Branch assumed true

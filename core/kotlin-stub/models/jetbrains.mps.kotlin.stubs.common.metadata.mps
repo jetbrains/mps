@@ -36,6 +36,7 @@
     <import index="pyn1" ref="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be/java:kotlinx.metadata.internal.extensions(jetbrains.mps.kotlin.stubs/)" />
     <import index="3kj6" ref="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be/java:kotlinx.metadata.jvm.internal(jetbrains.mps.kotlin.stubs/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
+    <import index="nhf8" ref="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be/java:kotlinx.metadata.internal.common(jetbrains.mps.kotlin.stubs/)" />
     <import index="5m2i" ref="r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)" implicit="true" />
   </imports>
   <registry>
@@ -890,7 +891,7 @@
       <node concept="37vLTG" id="2bJGON6Q24Y" role="3clF46">
         <property role="TrG5h" value="visitor" />
         <node concept="3uibUv" id="2bJGON6Q24Z" role="1tU5fm">
-          <ref role="3uigEE" to="z352:~KmModuleFragmentVisitor" resolve="KmModuleFragmentVisitor" />
+          <ref role="3uigEE" to="nhf8:~KmModuleFragmentVisitor" resolve="KmModuleFragmentVisitor" />
         </node>
         <node concept="2AHcQZ" id="2bJGON6Q250" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -1537,7 +1538,7 @@
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
       <node concept="3uibUv" id="2bJGON6Q2VH" role="3clF45">
-        <ref role="3uigEE" to="z352:~KmModuleFragmentExtensionVisitor" resolve="KmModuleFragmentExtensionVisitor" />
+        <ref role="3uigEE" to="nhf8:~KmModuleFragmentExtensionVisitor" resolve="KmModuleFragmentExtensionVisitor" />
       </node>
       <node concept="37vLTG" id="2bJGON6Q2VI" role="3clF46">
         <property role="TrG5h" value="type" />
@@ -2114,7 +2115,7 @@
                   <node concept="37vLTG" id="4cBk2Tz6ojP" role="3clF46">
                     <property role="TrG5h" value="visitor" />
                     <node concept="3uibUv" id="4cBk2Tz6ojX" role="1tU5fm">
-                      <ref role="3uigEE" to="z352:~KmModuleFragmentExtensionVisitor" resolve="KmModuleFragmentExtensionVisitor" />
+                      <ref role="3uigEE" to="nhf8:~KmModuleFragmentExtensionVisitor" resolve="KmModuleFragmentExtensionVisitor" />
                     </node>
                     <node concept="2AHcQZ" id="4cBk2Tz6ojR" role="2AJF6D">
                       <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
@@ -13080,7 +13081,7 @@
       <node concept="37vLTG" id="4s8_snw8VnC" role="3clF46">
         <property role="TrG5h" value="fragment" />
         <node concept="3uibUv" id="4s8_snw8VnD" role="1tU5fm">
-          <ref role="3uigEE" to="z352:~KmModuleFragment" resolve="KmModuleFragment" />
+          <ref role="3uigEE" to="nhf8:~KmModuleFragment" resolve="KmModuleFragment" />
         </node>
       </node>
       <node concept="37vLTG" id="4s8_snw8VnE" role="3clF46">
@@ -13110,7 +13111,7 @@
                 <ref role="3cqZAo" node="30flKNoIOkm" resolve="fragment" />
               </node>
               <node concept="liA8E" id="30flKNoq8z8" role="2OqNvi">
-                <ref role="37wK5l" to="z352:~KmModuleFragment.getClasses()" resolve="getClasses" />
+                <ref role="37wK5l" to="nhf8:~KmModuleFragment.getClasses()" resolve="getClasses" />
               </node>
             </node>
             <node concept="liA8E" id="30flKNoqaWE" role="2OqNvi">
@@ -13166,7 +13167,7 @@
                     <ref role="3cqZAo" node="30flKNoIOkm" resolve="fragment" />
                   </node>
                   <node concept="liA8E" id="30flKNoJpVX" role="2OqNvi">
-                    <ref role="37wK5l" to="z352:~KmModuleFragment.getPkg()" resolve="getPkg" />
+                    <ref role="37wK5l" to="nhf8:~KmModuleFragment.getPkg()" resolve="getPkg" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="4s8_snw5wUH" role="37wK5m">
@@ -13200,7 +13201,7 @@
       <node concept="37vLTG" id="30flKNoIOkm" role="3clF46">
         <property role="TrG5h" value="fragment" />
         <node concept="3uibUv" id="30flKNoIOkn" role="1tU5fm">
-          <ref role="3uigEE" to="z352:~KmModuleFragment" resolve="KmModuleFragment" />
+          <ref role="3uigEE" to="nhf8:~KmModuleFragment" resolve="KmModuleFragment" />
         </node>
       </node>
       <node concept="37vLTG" id="30flKNoIOko" role="3clF46">

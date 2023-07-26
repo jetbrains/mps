@@ -128,7 +128,6 @@
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
-        <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
@@ -3164,7 +3163,7 @@
                 <ref role="3cqZAo" node="6mOpgvBuDqJ" resolve="fragment" />
               </node>
               <node concept="liA8E" id="6mOpgvBvb_c" role="2OqNvi">
-                <ref role="37wK5l" to="z352:~KmModuleFragment.getClasses()" resolve="getClasses" />
+                <ref role="37wK5l" to="nhf8:~KmModuleFragment.getClasses()" resolve="getClasses" />
               </node>
             </node>
             <node concept="liA8E" id="4Jt4BnvnK6r" role="2OqNvi">
@@ -3187,7 +3186,7 @@
                 <ref role="3cqZAo" node="6mOpgvBuDqJ" resolve="fragment" />
               </node>
               <node concept="liA8E" id="4Jt4BnvpFhq" role="2OqNvi">
-                <ref role="37wK5l" to="z352:~KmModuleFragment.getPkg()" resolve="getPkg" />
+                <ref role="37wK5l" to="nhf8:~KmModuleFragment.getPkg()" resolve="getPkg" />
               </node>
             </node>
           </node>
@@ -3265,7 +3264,7 @@
       <node concept="37vLTG" id="6mOpgvBuDqJ" role="3clF46">
         <property role="TrG5h" value="fragment" />
         <node concept="3uibUv" id="6mOpgvBuDqK" role="1tU5fm">
-          <ref role="3uigEE" to="z352:~KmModuleFragment" resolve="KmModuleFragment" />
+          <ref role="3uigEE" to="nhf8:~KmModuleFragment" resolve="KmModuleFragment" />
         </node>
       </node>
     </node>
@@ -5262,9 +5261,6 @@
       <node concept="3Tm1VV" id="41oFpARdyrY" role="1B3o_S" />
     </node>
     <node concept="3Tm1VV" id="7qDCdpGd80J" role="1B3o_S" />
-    <node concept="3uibUv" id="7qDCdpGdbnV" role="1zkMxy">
-      <ref role="3uigEE" to="z352:~KmModuleFragmentVisitor" resolve="KmModuleFragmentVisitor" />
-    </node>
     <node concept="3UR2Jj" id="7qDCdpGdhPB" role="lGtFl">
       <node concept="TZ5HA" id="7qDCdpGdhPC" role="TZ5H$">
         <node concept="1dT_AC" id="7qDCdpGdhPD" role="1dT_Ay">

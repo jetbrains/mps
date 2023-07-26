@@ -7,6 +7,7 @@ import jetbrains.mps.lang.dataFlow.DataFlowBuilderContext;
 import jetbrains.mps.kotlin.behavior.AbstractConditionalLoop__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.dataflow.instructions.ResetBooleanStateMarker;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -17,7 +18,7 @@ public class WhileStatement_DataFlow extends DataFlowBuilder {
       _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.condition$2cvd));
       _context.getBuilder().emitJump(_context.getBuilder().after(_context.getNode()), "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830330945462");
     } else {
-      _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$2cvd), null, "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/8386893935424195186");
+      _context.getBuilder().emitWrite(SLinkOperations.getTarget(_context.getNode(), LINKS.condition$2cvd), ResetBooleanStateMarker.get(), "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/8386893935424195186");
       _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.condition$2cvd));
 
       // Branch assumed to be true

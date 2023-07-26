@@ -7,6 +7,7 @@ import jetbrains.mps.lang.dataFlow.DataFlowBuilderContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.kotlin.dataflow.instructions.ResetBooleanStateMarker;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -17,7 +18,7 @@ public class ForStatement_DataFlow extends DataFlowBuilder {
     _context.getBuilder().emitLabel("start");
 
     // No explicit condition: set state to unknown
-    _context.getBuilder().emitWrite(_context.getNode(), null, "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/8386893935424170029");
+    _context.getBuilder().emitWrite(_context.getNode(), ResetBooleanStateMarker.get(), "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/8386893935424170029");
     _context.getBuilder().emitIfJump(_context.getBuilder().after(_context.getNode()), "r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)/6374444830331253097");
 
     ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.statements$R3pt)).visitAll((it) -> _context.getBuilder().build((SNode) it));

@@ -327,7 +327,7 @@
                   <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
                   <node concept="WxPPo" id="3rleFKvpGY4" role="28ntcv">
                     <node concept="Xl_RD" id="3rleFKvpGY5" role="WxPPp">
-                      <property role="Xl_RC" value="lib/kotlin-compiler-client-embeddable-1.8.22.jar" />
+                      <property role="Xl_RC" value="lib/kotlin-compiler-client-embeddable-1.9.0.jar" />
                     </node>
                   </node>
                 </node>
@@ -338,7 +338,7 @@
                   <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
                   <node concept="WxPPo" id="3rleFKvpGY8" role="28ntcv">
                     <node concept="Xl_RD" id="3rleFKvpGY9" role="WxPPp">
-                      <property role="Xl_RC" value="lib/kotlinx-metadata-jvm-0.6.2.jar" />
+                      <property role="Xl_RC" value="lib/kotlinx-metadata-jvm-0.7.0.jar" />
                     </node>
                   </node>
                 </node>

@@ -75,7 +75,7 @@
       <node id="4838924484792928856" at="191,66,194,7" concept="7" />
       <node id="4838924484793969203" at="208,0,211,0" concept="8" trace="getType#()Lkotlinx/metadata/KmExtensionType;" />
       <node id="4838924484794172147" at="221,0,224,0" concept="8" trace="getType#()Lkotlinx/metadata/KmExtensionType;" />
-      <node id="4838924484794221809" at="224,0,227,0" concept="8" trace="accept#(Lkotlinx/metadata/KmModuleFragmentExtensionVisitor;)V" />
+      <node id="4838924484794221809" at="224,0,227,0" concept="8" trace="accept#(Lkotlinx/metadata/internal/common/KmModuleFragmentExtensionVisitor;)V" />
       <node id="4838924484792713982" at="233,69,236,7" concept="7" />
       <node id="4838924484792597746" at="248,69,251,7" concept="7" />
       <node id="4838924484792487475" at="263,72,266,7" concept="7" />
@@ -84,13 +84,13 @@
       <node id="4838924484791898476" at="314,75,317,7" concept="7" />
       <node id="4838924484793573017" at="325,0,328,0" concept="14" trace="as_p8h4kj_a0a0a1#(Ljava/lang/Object;Ljava/lang/Class;)null" />
       <node id="2517427859058336043" at="92,0,96,0" concept="8" trace="readPackageExtensions#(Lkotlinx/metadata/KmPackageVisitor;Lkotlinx/metadata/internal/metadata/ProtoBuf/Package;Lkotlinx/metadata/internal/ReadContext;)V" />
-      <node id="2517427859058336058" at="96,0,100,0" concept="8" trace="readModuleFragmentExtensions#(Lkotlinx/metadata/KmModuleFragmentVisitor;Lkotlinx/metadata/internal/metadata/ProtoBuf/PackageFragment;Lkotlinx/metadata/internal/ReadContext;)V" />
+      <node id="2517427859058336058" at="96,0,100,0" concept="8" trace="readModuleFragmentExtensions#(Lkotlinx/metadata/internal/common/KmModuleFragmentVisitor;Lkotlinx/metadata/internal/metadata/ProtoBuf/PackageFragment;Lkotlinx/metadata/internal/ReadContext;)V" />
       <node id="2517427859058336118" at="118,0,122,0" concept="8" trace="readTypeParameterExtensions#(Lkotlinx/metadata/KmTypeParameterVisitor;Lkotlinx/metadata/internal/metadata/ProtoBuf/TypeParameter;Lkotlinx/metadata/internal/ReadContext;)V" />
       <node id="2517427859058336133" at="122,0,126,0" concept="8" trace="readTypeExtensions#(Lkotlinx/metadata/KmTypeVisitor;Lkotlinx/metadata/internal/metadata/ProtoBuf/Type;Lkotlinx/metadata/internal/ReadContext;)V" />
       <node id="2517427859058336148" at="126,0,130,0" concept="8" trace="readTypeAliasExtensions#(Lkotlinx/metadata/KmTypeAliasVisitor;Lkotlinx/metadata/internal/metadata/ProtoBuf/TypeAlias;Lkotlinx/metadata/internal/ReadContext;)V" />
       <node id="2517427859058339525" at="137,0,142,0" concept="8" trace="writeClassExtensions#(Lkotlinx/metadata/KmExtensionType;Lkotlinx/metadata/internal/metadata/ProtoBuf/Class/Builder;Lkotlinx/metadata/internal/WriteContext;)Lkotlinx/metadata/KmClassExtensionVisitor;" />
       <node id="2517427859058339543" at="142,0,147,0" concept="8" trace="writePackageExtensions#(Lkotlinx/metadata/KmExtensionType;Lkotlinx/metadata/internal/metadata/ProtoBuf/Package/Builder;Lkotlinx/metadata/internal/WriteContext;)Lkotlinx/metadata/KmPackageExtensionVisitor;" />
-      <node id="2517427859058339561" at="147,0,152,0" concept="8" trace="writeModuleFragmentExtensions#(Lkotlinx/metadata/KmExtensionType;Lkotlinx/metadata/internal/metadata/ProtoBuf/PackageFragment/Builder;Lkotlinx/metadata/internal/WriteContext;)Lkotlinx/metadata/KmModuleFragmentExtensionVisitor;" />
+      <node id="2517427859058339561" at="147,0,152,0" concept="8" trace="writeModuleFragmentExtensions#(Lkotlinx/metadata/KmExtensionType;Lkotlinx/metadata/internal/metadata/ProtoBuf/PackageFragment/Builder;Lkotlinx/metadata/internal/WriteContext;)Lkotlinx/metadata/internal/common/KmModuleFragmentExtensionVisitor;" />
       <node id="2517427859058339579" at="152,0,157,0" concept="8" trace="writeFunctionExtensions#(Lkotlinx/metadata/KmExtensionType;Lkotlinx/metadata/internal/metadata/ProtoBuf/Function/Builder;Lkotlinx/metadata/internal/WriteContext;)Lkotlinx/metadata/KmFunctionExtensionVisitor;" />
       <node id="2517427859058339597" at="157,0,162,0" concept="8" trace="writePropertyExtensions#(Lkotlinx/metadata/KmExtensionType;Lkotlinx/metadata/internal/metadata/ProtoBuf/Property/Builder;Lkotlinx/metadata/internal/WriteContext;)Lkotlinx/metadata/KmPropertyExtensionVisitor;" />
       <node id="2517427859058339615" at="162,0,167,0" concept="8" trace="writeConstructorExtensions#(Lkotlinx/metadata/KmExtensionType;Lkotlinx/metadata/internal/metadata/ProtoBuf/Constructor/Builder;Lkotlinx/metadata/internal/WriteContext;)Lkotlinx/metadata/KmConstructorExtensionVisitor;" />
@@ -1149,8 +1149,8 @@
       <node id="5118505653607351363" at="35,141,36,0" concept="12" />
       <node id="5118505653607104813" at="36,0,37,17" concept="10" />
       <node id="3463082351152539737" at="41,0,42,0" concept="13" trace="declarations$NgHw" />
-      <node id="5118505653608101304" at="19,0,22,0" concept="14" trace="parseModule#(Lkotlinx/metadata/KmModuleFragment;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/kotlin/stubs/common/references/KotlinJvmReferenceSolver;Ljava/lang/String;)V" />
-      <node id="3463082351158576275" at="22,0,27,0" concept="14" trace="parseModule#(Lkotlinx/metadata/KmModuleFragment;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/kotlin/stubs/common/metadata/VisitorContext;)V" />
+      <node id="5118505653608101304" at="19,0,22,0" concept="14" trace="parseModule#(Lkotlinx/metadata/internal/common/KmModuleFragment;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/kotlin/stubs/common/references/KotlinJvmReferenceSolver;Ljava/lang/String;)V" />
+      <node id="3463082351158576275" at="22,0,27,0" concept="14" trace="parseModule#(Lkotlinx/metadata/internal/common/KmModuleFragment;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/kotlin/stubs/common/metadata/VisitorContext;)V" />
       <node id="5118505653607192352" at="28,0,39,0" concept="14" trace="parseDeclarations#(Lkotlinx/metadata/KmDeclarationContainer;Ljava/lang/String;Ljetbrains/mps/kotlin/stubs/common/metadata/VisitorContext;)Ljava/util/List;" />
       <scope id="5118505653608101305" at="19,125,20,78" />
       <scope id="5118505653608101304" at="19,0,22,0">
