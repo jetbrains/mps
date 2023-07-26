@@ -53,7 +53,7 @@
       <concept id="2073504467208335362" name="jetbrains.mps.samples.Expressions.structure.SimpleMathWrapper" flags="ng" index="2$Tu5h">
         <child id="2073504467208335735" name="expressions" index="2$Tu0$" />
       </concept>
-      <concept id="2073504467208672407" name="jetbrains.mps.samples.Expressions.structure.ArithmeticSimpleMathExpression" flags="nn" index="2$Vwn4">
+      <concept id="2073504467208672407" name="jetbrains.mps.samples.Expressions.structure.ArithmeticSimpleMathExpression" flags="ng" index="2$Vwn4">
         <property id="2073504467208672490" name="operator" index="2$VwmT" />
       </concept>
       <concept id="2073504467209342143" name="jetbrains.mps.samples.Expressions.structure.SimpleMathVarDeclaration" flags="ng" index="2$X5RG">
@@ -168,7 +168,12 @@
       </node>
       <node concept="TZ5HA" id="7ux8w67aNS0" role="TZ5H$">
         <node concept="1dT_AC" id="7ux8w67aNS1" role="1dT_Ay">
-          <property role="1dT_AB" value="Check types of the variables by inspecting their type - Control/Cmd + Shift + T." />
+          <property role="1dT_AB" value="Check types of the variables by inspecting their type - right-click " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7jGRdu8060n" role="TZ5H$">
+        <node concept="1dT_AC" id="7jGRdu8060o" role="1dT_Ay">
+          <property role="1dT_AB" value="and in the context menu invoke &quot;Language Debug -&gt; Show Type&quot; (Control/Cmd + Shift + P)." />
         </node>
       </node>
       <node concept="TZ5HA" id="7ux8w67aNRH" role="TZ5H$">
