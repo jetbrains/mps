@@ -77,7 +77,11 @@
     <import index="ge2m" ref="r:bd8551c6-e2e3-4499-a261-45b0c886d1d1(jetbrains.mps.refactoring.framework)" />
     <import index="l7us" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.icons(MPS.Platform/)" />
     <import index="ze1j" ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.smodel.runtime(jetbrains.mps.lang.constraints.rules.runtime/)" />
+    <import index="4o98" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.core.platform(MPS.Core/)" />
+    <import index="y38" ref="r:4c8c6241-8bf4-4d04-84a1-f7fd7fcbdc2c(jetbrains.mps.refactoring.runtime.access)" />
+    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" implicit="true" />
+    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -5912,63 +5916,73 @@
       <property role="TrG5h" value="myAccessImpl" />
       <node concept="3Tm6S6" id="2sJZShLL0e7" role="1B3o_S" />
       <node concept="3uibUv" id="2sJZShLL0j0" role="1tU5fm">
-        <ref role="3uigEE" to="6tbz:52KjdOfMVHq" resolve="RefactoringAccessImpl" />
+        <ref role="3uigEE" to="4o98:~DynamicComponentWarden$Token" resolve="Token" />
       </node>
     </node>
     <node concept="2uRRBj" id="2sJZShLKBhF" role="2uRRBE">
       <node concept="3clFbS" id="2sJZShLKBhG" role="2VODD2">
-        <node concept="3SKdUt" id="2sJZShLLaYZ" role="3cqZAp">
-          <node concept="1PaTwC" id="2sJZShLLaZ0" role="1aUNEU">
-            <node concept="3oM_SD" id="2sJZShLLb0F" role="1PaTwD">
-              <property role="3oM_SC" value="FIXME" />
+        <node concept="3cpWs8" id="36u$e0Phva$" role="3cqZAp">
+          <node concept="3cpWsn" id="36u$e0Phva_" role="3cpWs9">
+            <property role="TrG5h" value="dcw" />
+            <node concept="3uibUv" id="36u$e0Phv0V" role="1tU5fm">
+              <ref role="3uigEE" to="4o98:~DynamicComponentWarden" resolve="DynamicComponentWarden" />
             </node>
-            <node concept="3oM_SD" id="2sJZShLLb0M" role="1PaTwD">
-              <property role="3oM_SC" value="register" />
-            </node>
-            <node concept="3oM_SD" id="2sJZShLLb1r" role="1PaTwD">
-              <property role="3oM_SC" value="with" />
-            </node>
-            <node concept="3oM_SD" id="2sJZShLLb0T" role="1PaTwD">
-              <property role="3oM_SC" value="DynamicComponent" />
-            </node>
-            <node concept="3oM_SD" id="2sJZShLLb1_" role="1PaTwD">
-              <property role="3oM_SC" value="once" />
-            </node>
-            <node concept="3oM_SD" id="2sJZShLLb1K" role="1PaTwD">
-              <property role="3oM_SC" value="RefactorAccess.getInstance()" />
-            </node>
-            <node concept="3oM_SD" id="2sJZShLLb2k" role="1PaTwD">
-              <property role="3oM_SC" value="gone" />
+            <node concept="2OqwBi" id="36u$e0PhvaA" role="33vP2m">
+              <node concept="XUXob" id="36u$e0PhvaB" role="2Oq$k0" />
+              <node concept="liA8E" id="36u$e0PhvaC" role="2OqNvi">
+                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                <node concept="3VsKOn" id="36u$e0PhvaD" role="37wK5m">
+                  <ref role="3VsUkX" to="4o98:~DynamicComponentWarden" resolve="DynamicComponentWarden" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2sJZShLL0N8" role="3cqZAp">
-          <node concept="37vLTI" id="2sJZShLL1f1" role="3clFbG">
-            <node concept="2OqwBi" id="2sJZShLL0N2" role="37vLTJ">
-              <node concept="2WthIp" id="2sJZShLL0N5" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="2sJZShLL0N7" role="2OqNvi">
-                <ref role="2WH_rO" node="2sJZShLL0e6" resolve="myAccessImpl" />
+        <node concept="3cpWs8" id="36u$e0PiGQ6" role="3cqZAp">
+          <node concept="3cpWsn" id="36u$e0PiGQ7" role="3cpWs9">
+            <property role="TrG5h" value="instantiateOnDemand" />
+            <node concept="3uibUv" id="36u$e0PiIfe" role="1tU5fm">
+              <ref role="3uigEE" to="82uw:~Supplier" resolve="Supplier" />
+              <node concept="3uibUv" id="36u$e0PiJtW" role="11_B2D">
+                <ref role="3uigEE" to="6tbz:52KjdOfMVHq" resolve="RefactoringAccessImpl" />
               </node>
             </node>
-            <node concept="2ShNRf" id="2sJZShLL0dd" role="37vLTx">
-              <node concept="1pGfFk" id="2sJZShLL0de" role="2ShVmc">
-                <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="6tbz:52KjdOfMVHs" resolve="RefactoringAccessImpl" />
-                <node concept="XUXob" id="2sJZShLL0df" role="37wK5m" />
+            <node concept="1bVj0M" id="36u$e0PiGQ8" role="33vP2m">
+              <node concept="3clFbS" id="36u$e0PiGQ9" role="1bW5cS">
+                <node concept="3clFbF" id="36u$e0PiGQa" role="3cqZAp">
+                  <node concept="2ShNRf" id="36u$e0PiGQb" role="3clFbG">
+                    <node concept="1pGfFk" id="36u$e0PiGQc" role="2ShVmc">
+                      <property role="373rjd" value="true" />
+                      <ref role="37wK5l" to="6tbz:52KjdOfMVHs" resolve="RefactoringAccessImpl" />
+                      <node concept="XUXob" id="36u$e0PiGQd" role="37wK5m" />
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="2sJZShLL8GF" role="3cqZAp">
-          <node concept="2OqwBi" id="2sJZShLL8IK" role="3clFbG">
-            <node concept="2OqwBi" id="2sJZShLL8G_" role="2Oq$k0">
+          <node concept="37vLTI" id="36u$e0PhzaU" role="3clFbG">
+            <node concept="2OqwBi" id="2sJZShLL8G_" role="37vLTJ">
               <node concept="2WthIp" id="2sJZShLL8GC" role="2Oq$k0" />
               <node concept="2BZ7hE" id="2sJZShLL8GE" role="2OqNvi">
                 <ref role="2WH_rO" node="2sJZShLL0e6" resolve="myAccessImpl" />
               </node>
             </node>
-            <node concept="liA8E" id="2sJZShLL8KR" role="2OqNvi">
-              <ref role="37wK5l" to="6tbz:52KjdOfMXhO" resolve="init" />
+            <node concept="2OqwBi" id="36u$e0Phvu7" role="37vLTx">
+              <node concept="37vLTw" id="36u$e0PhvaE" role="2Oq$k0">
+                <ref role="3cqZAo" node="36u$e0Phva_" resolve="dcw" />
+              </node>
+              <node concept="liA8E" id="36u$e0PhvNt" role="2OqNvi">
+                <ref role="37wK5l" to="4o98:~DynamicComponentWarden.publish(java.lang.Class,java.util.function.Supplier)" resolve="publish" />
+                <node concept="3VsKOn" id="36u$e0Phwoc" role="37wK5m">
+                  <ref role="3VsUkX" to="y38:3dEPKBAxz0O" resolve="RefactoringAccess" />
+                </node>
+                <node concept="37vLTw" id="36u$e0PiGQe" role="37wK5m">
+                  <ref role="3cqZAo" node="36u$e0PiGQ7" resolve="function" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -5996,7 +6010,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="2sJZShLL7Gn" role="2OqNvi">
-                  <ref role="37wK5l" to="6tbz:52KjdOfMXhS" resolve="dispose" />
+                  <ref role="37wK5l" to="4o98:~DynamicComponentWarden$Token.discard()" resolve="discard" />
                 </node>
               </node>
             </node>

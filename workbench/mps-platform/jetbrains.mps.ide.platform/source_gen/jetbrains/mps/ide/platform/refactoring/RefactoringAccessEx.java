@@ -11,6 +11,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.model.SearchTask;
 import jetbrains.mps.refactoring.framework.RefactoringContext;
+import jetbrains.mps.ide.MPSCoreComponents;
 import java.util.Collection;
 import jetbrains.mps.refactoring.framework.IRefactoring;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -43,12 +44,17 @@ public abstract class RefactoringAccessEx extends RefactoringAccess {
 
   public abstract void showRefactoringView(RefactoringContext refactoringContext, RefactoringViewAction refactoringViewAction, Runnable disposeAction, SearchResults searchResults, SearchTask searchTask, String name);
 
+  /**
+   * 
+   * @deprecated RefactoringAccess is CoreComponent, use regular ComponentHost.findComponent() mechanism to access.
+   */
+  @Deprecated
   public static RefactoringAccessEx getInstance() {
-    return (RefactoringAccessEx) RefactoringAccess.getInstance();
-  }
-
-  protected static void setInstance(RefactoringAccessEx instance) {
-    RefactoringAccess.setInstance(instance);
+    // FIXME provisional code, shall pass ComponentHost/Platform/Project (a context) in here,
+    //      the same as in RefactoringAccess.getInstance(Project). However, as long as we have access to 
+    //      MPSCoreComponents here, provisionally use this singleton to access dynamic CC instance
+    RefactoringAccess raInstance = MPSCoreComponents.getInstance().getPlatform().findComponent(RefactoringAccess.class);
+    return (RefactoringAccessEx) raInstance;
   }
 
   @Override

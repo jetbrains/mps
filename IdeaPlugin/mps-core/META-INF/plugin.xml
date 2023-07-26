@@ -35,7 +35,7 @@
       <implementation-class>jetbrains.mps.idea.core.navigation.NavigationSupportImpl</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.idea.core.refactoring.RefactoringAccessImpl</implementation-class>
+      <implementation-class>jetbrains.mps.idea.core.refactoring.RefactoringAccessImpl$Plug</implementation-class>
     </component>
     <component>
       <implementation-class>jetbrains.mps.idea.core.project.stubs.MPSGlobalLibImporter</implementation-class>

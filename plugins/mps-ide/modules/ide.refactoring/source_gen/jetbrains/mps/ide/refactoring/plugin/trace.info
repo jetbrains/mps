@@ -270,24 +270,27 @@
   </root>
   <root nodeRef="r:97d6b60a-b381-42e8-9ea4-402ec93eaf11(jetbrains.mps.ide.refactoring.plugin)/2823756435693909189">
     <file name="AccessImpl_AppPluginPart.java">
-      <node id="2823756435694027654" at="9,0,10,0" concept="7" trace="myAccessImpl" />
-      <node id="2823756435694071743" at="13,22,14,82" concept="14" />
-      <node id="2823756435694030024" at="14,82,15,90" concept="6" />
-      <node id="2823756435694062379" at="15,90,16,54" concept="6" />
-      <node id="2823756435694055881" at="20,61,21,59" concept="6" />
-      <node id="2823756435694060104" at="21,59,22,56" concept="6" />
-      <node id="2823756435693909189" at="10,0,12,0" concept="4" trace="AccessImpl_AppPluginPart#()V" />
-      <node id="2823756435694052068" at="19,25,23,5" concept="10" />
-      <node id="2823756435693909189" at="12,0,18,0" concept="11" trace="init#()V" />
-      <node id="2823756435693909189" at="18,0,25,0" concept="11" trace="dispose#()V" />
-      <scope id="2823756435693909189" at="10,37,10,37" />
-      <scope id="2823756435693909189" at="10,0,12,0" />
-      <scope id="2823756435694052070" at="20,61,22,56" />
-      <scope id="2823756435693925484" at="13,22,16,54" />
-      <scope id="2823756435694051140" at="19,25,23,5" />
-      <scope id="2823756435693909189" at="12,0,18,0" />
-      <scope id="2823756435693909189" at="18,0,25,0" />
-      <unit id="2823756435693909189" at="8,0,26,0" name="jetbrains.mps.ide.refactoring.plugin.AccessImpl_AppPluginPart" />
+      <node id="2823756435694027654" at="12,0,13,0" concept="7" trace="myAccessImpl" />
+      <node id="3575454446819603108" at="16,22,17,91" concept="12" />
+      <node id="3575454446819921286" at="17,91,18,105" concept="12" />
+      <node id="2823756435694062379" at="18,105,19,107" concept="6" />
+      <node id="2823756435694055881" at="23,61,24,59" concept="6" />
+      <node id="2823756435694060104" at="24,59,25,56" concept="6" />
+      <node id="2823756435693909189" at="13,0,15,0" concept="4" trace="AccessImpl_AppPluginPart#()V" />
+      <node id="2823756435694052068" at="22,25,26,5" concept="10" />
+      <node id="2823756435693909189" at="15,0,21,0" concept="11" trace="init#()V" />
+      <node id="2823756435693909189" at="21,0,28,0" concept="11" trace="dispose#()V" />
+      <scope id="2823756435693909189" at="13,37,13,37" />
+      <scope id="2823756435693909189" at="13,0,15,0" />
+      <scope id="2823756435694052070" at="23,61,25,56" />
+      <scope id="2823756435693925484" at="16,22,19,107">
+        <var name="dcw" id="3575454446819603109" />
+        <var name="instantiateOnDemand" id="3575454446819921287" />
+      </scope>
+      <scope id="2823756435694051140" at="22,25,26,5" />
+      <scope id="2823756435693909189" at="15,0,21,0" />
+      <scope id="2823756435693909189" at="21,0,28,0" />
+      <unit id="2823756435693909189" at="11,0,29,0" name="jetbrains.mps.ide.refactoring.plugin.AccessImpl_AppPluginPart" />
     </file>
     <file name="Refactoring_ApplicationPlugin.java">
       <node id="2823756435693909189" at="69,66,70,46" concept="6" />

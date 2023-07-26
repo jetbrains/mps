@@ -870,97 +870,11 @@
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="GzQDfj5DJ2" role="3cqZAp">
-          <node concept="1PaTwC" id="GzQDfj5DJ3" role="1aUNEU">
-            <node concept="3oM_SD" id="GzQDfj5E11" role="1PaTwD">
-              <property role="3oM_SC" value="FIXME" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E13" role="1PaTwD">
-              <property role="3oM_SC" value="refactoring" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E16" role="1PaTwD">
-              <property role="3oM_SC" value="rt" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E1a" role="1PaTwD">
-              <property role="3oM_SC" value="as" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E1f" role="1PaTwD">
-              <property role="3oM_SC" value="core" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E1l" role="1PaTwD">
-              <property role="3oM_SC" value="module" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E1s" role="1PaTwD">
-              <property role="3oM_SC" value="is" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E1$" role="1PaTwD">
-              <property role="3oM_SC" value="bad;" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E1H" role="1PaTwD">
-              <property role="3oM_SC" value="static" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E1R" role="1PaTwD">
-              <property role="3oM_SC" value="field" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E22" role="1PaTwD">
-              <property role="3oM_SC" value="init" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E2e" role="1PaTwD">
-              <property role="3oM_SC" value="with" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E2r" role="1PaTwD">
-              <property role="3oM_SC" value="an" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E2D" role="1PaTwD">
-              <property role="3oM_SC" value="app" />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E2S" role="1PaTwD">
-              <property role="3oM_SC" value="component," />
-            </node>
-            <node concept="3oM_SD" id="GzQDfj5E38" role="1PaTwD">
-              <property role="3oM_SC" value="too." />
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="37vLTG" id="2sJZShLKVge" role="3clF46">
         <property role="TrG5h" value="mpsPlatform" />
         <node concept="3uibUv" id="2sJZShLKVgd" role="1tU5fm">
           <ref role="3uigEE" to="4o98:~Platform" resolve="Platform" />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4f1p$bqrkwX" role="jymVt" />
-    <node concept="3clFb_" id="52KjdOfMXhO" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="init" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="52KjdOfMXhP" role="1B3o_S" />
-      <node concept="3cqZAl" id="52KjdOfMXhQ" role="3clF45" />
-      <node concept="3clFbS" id="52KjdOfMXhR" role="3clF47">
-        <node concept="3clFbF" id="52KjdOfMXi8" role="3cqZAp">
-          <node concept="2YIFZM" id="52KjdOfMXia" role="3clFbG">
-            <ref role="37wK5l" to="u42p:1dH5fOG2bPM" resolve="setInstance" />
-            <ref role="1Pybhc" to="u42p:1dH5fOG2bOi" resolve="RefactoringAccessEx" />
-            <node concept="Xjq3P" id="52KjdOfMXib" role="37wK5m" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4f1p$bqrkwY" role="jymVt" />
-    <node concept="3clFb_" id="52KjdOfMXhS" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="dispose" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="52KjdOfMXhT" role="1B3o_S" />
-      <node concept="3cqZAl" id="52KjdOfMXhU" role="3clF45" />
-      <node concept="3clFbS" id="52KjdOfMXhV" role="3clF47">
-        <node concept="3clFbF" id="52KjdOfMXic" role="3cqZAp">
-          <node concept="2YIFZM" id="52KjdOfMXie" role="3clFbG">
-            <ref role="37wK5l" to="u42p:1dH5fOG2bPM" resolve="setInstance" />
-            <ref role="1Pybhc" to="u42p:1dH5fOG2bOi" resolve="RefactoringAccessEx" />
-            <node concept="10Nm6u" id="52KjdOfMXif" role="37wK5m" />
-          </node>
         </node>
       </node>
     </node>

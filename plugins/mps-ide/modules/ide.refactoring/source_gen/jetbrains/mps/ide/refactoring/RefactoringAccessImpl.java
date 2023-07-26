@@ -25,15 +25,6 @@ public class RefactoringAccessImpl extends RefactoringAccessEx {
   public RefactoringAccessImpl(Platform mpsPlatform) {
     super(mpsPlatform);
     // MPS Workbench-specific Refactoring Access implementation
-    // FIXME refactoring rt as core module is bad; static field init with an app component, too.
-  }
-
-  public void init() {
-    RefactoringAccessEx.setInstance(this);
-  }
-
-  public void dispose() {
-    RefactoringAccessEx.setInstance(null);
   }
 
   @Override
