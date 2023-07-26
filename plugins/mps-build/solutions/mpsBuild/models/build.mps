@@ -3094,6 +3094,30 @@
           </node>
           <node concept="L2wRC" id="3A3gNhef2z9" role="39821P">
             <ref role="L2wRA" node="5cCcm$KATVz" resolve="jetbrains.mps.lang.migration.runtime" />
+            <node concept="3yLZsm" id="2qP59qVK6JL" role="3yL2VB">
+              <property role="3yLZsk" value="/lib/mps-platform.jar" />
+              <node concept="398BVA" id="2qP59qVK7vS" role="3yLZsn">
+                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="2qP59qVK7Hb" role="iGT6I">
+                  <property role="2Ry0Am" value="languages" />
+                  <node concept="2Ry0Ak" id="2qP59qVK7RV" role="2Ry0An">
+                    <property role="2Ry0Am" value="languageDesign" />
+                    <node concept="2Ry0Ak" id="2qP59qVK82F" role="2Ry0An">
+                      <property role="2Ry0Am" value="migration" />
+                      <node concept="2Ry0Ak" id="2qP59qVK8eh" role="2Ry0An">
+                        <property role="2Ry0Am" value="solutions" />
+                        <node concept="2Ry0Ak" id="2qP59qVK8em" role="2Ry0An">
+                          <property role="2Ry0Am" value="runtime" />
+                          <node concept="2Ry0Ak" id="2qP59qVK8p4" role="2Ry0An">
+                            <property role="2Ry0Am" value="classes" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
         </node>
         <node concept="398223" id="2d0qgmCdfZo" role="39821P">
@@ -18867,6 +18891,27 @@
         <node concept="1E1SXE" id="1M_KWzLkW1T" role="3bR37C">
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="1WZWsoqIz7X" resolve="mps-migration" />
+          <node concept="398BVA" id="2qP59qVK4a4" role="17Grwy">
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="2qP59qVK4lF" role="iGT6I">
+              <property role="2Ry0Am" value="languages" />
+              <node concept="2Ry0Ak" id="2qP59qVK4OV" role="2Ry0An">
+                <property role="2Ry0Am" value="languageDesign" />
+                <node concept="2Ry0Ak" id="2qP59qVK59w" role="2Ry0An">
+                  <property role="2Ry0Am" value="migration" />
+                  <node concept="2Ry0Ak" id="2qP59qVK5uV" role="2Ry0An">
+                    <property role="2Ry0Am" value="solutions" />
+                    <node concept="2Ry0Ak" id="2qP59qVK5Om" role="2Ry0An">
+                      <property role="2Ry0Am" value="runtime" />
+                      <node concept="2Ry0Ak" id="2qP59qVK5Z6" role="2Ry0An">
+                        <property role="2Ry0Am" value="classes" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
         <node concept="1SiIV0" id="5cCcm$KATV$" role="3bR37C">
           <node concept="3bR9La" id="5cCcm$KATV_" role="1SiIV1">

@@ -2995,6 +2995,7 @@
           <language id="l:69b8a993-9b87-4d96-bf0c-3559f4bb0c63:jetbrains.mps.lang.slanguage" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
         </uses>
+        <library jar="/lib/mps-platform.jar" />
         <sources jar="jetbrains.mps.lang.migration.runtime-src.jar" descriptor="jetbrains.mps.lang.migration.runtime.msd" />
       </module>
     </echoxml>

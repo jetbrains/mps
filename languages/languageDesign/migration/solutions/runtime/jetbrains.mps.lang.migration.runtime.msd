@@ -9,6 +9,7 @@
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
+      <library location="${module}/classes" />
     </facet>
   </facets>
   <dependencies>
