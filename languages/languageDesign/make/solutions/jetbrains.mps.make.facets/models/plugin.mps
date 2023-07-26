@@ -902,8 +902,13 @@
                             <node concept="1pGfFk" id="70x5HTuysHX" role="2ShVmc">
                               <property role="373rjd" value="true" />
                               <ref role="37wK5l" node="70x5HTuoxyW" resolve="Foobar" />
-                              <node concept="37vLTw" id="3ZuY2RH20Nj" role="37wK5m">
-                                <ref role="3cqZAo" node="3ZuY2RH1lgB" resolve="model" />
+                              <node concept="2OqwBi" id="3oypqxvgZgr" role="37wK5m">
+                                <node concept="2GrUjf" id="3oypqxvgWoi" role="2Oq$k0">
+                                  <ref role="2Gs0qQ" node="22g6WSZINo" resolve="inputData" />
+                                </node>
+                                <node concept="2sxana" id="3oypqxvh8Pb" role="2OqNvi">
+                                  <ref role="2sxfKC" to="fn29:1Xl3kQ1uadB" resolve="model" />
+                                </node>
                               </node>
                               <node concept="37vLTw" id="2Cc4DRuDZ9I" role="37wK5m">
                                 <ref role="3cqZAo" node="2Cc4DRuDKjv" resolve="generationTarget" />
@@ -2548,11 +2553,11 @@
                       </node>
                       <node concept="2OqwBi" id="3xnl$BhH4Co" role="1VXZjo">
                         <node concept="2OqwBi" id="3xnl$BhH4dp" role="2Oq$k0">
-                          <node concept="liA8E" id="3xnl$BhH4Bw" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
-                          </node>
                           <node concept="37vLTw" id="3ZuY2RH5UWr" role="2Oq$k0">
                             <ref role="3cqZAo" node="3ZuY2RH5UWn" resolve="outputModel" />
+                          </node>
+                          <node concept="liA8E" id="3xnl$BhH4Bw" role="2OqNvi">
+                            <ref role="37wK5l" to="mhbf:~SModel.getReference()" resolve="getReference" />
                           </node>
                         </node>
                         <node concept="liA8E" id="3xnl$BhH52H" role="2OqNvi">

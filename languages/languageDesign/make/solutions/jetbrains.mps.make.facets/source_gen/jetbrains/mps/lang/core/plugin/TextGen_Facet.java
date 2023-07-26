@@ -193,7 +193,7 @@ public class TextGen_Facet extends IFacet.Stub {
 
                 for (SModel model : outputModels) {
                   String generationTarget = inputData.status().getGenerationTarget(model.getReference());
-                  ModuleStaleFileManager.ModelStaleFileManager msfm = sfm.new ModelStaleFileManager(model, generationTarget);
+                  ModuleStaleFileManager.ModelStaleFileManager msfm = sfm.new ModelStaleFileManager(inputData.model(), generationTarget);
 
                   // Perhaps, shall check res.status.isError(), however not sure if there
                   // couldn't be an output model with error state, and we'd like to see erroneous text to localize error
