@@ -39814,9 +39814,6 @@
       <property role="2eq24a" value="true" />
       <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
     </node>
-    <node concept="26EafG" id="4nX__hM7qzd" role="26Ea7d">
-      <property role="26EafJ" value="lib/3rd-party-rt.jar" />
-    </node>
     <node concept="26EafG" id="4nX__hM7qzi" role="26Ea7d">
       <property role="26EafJ" value="lib/annotations.jar" />
     </node>
@@ -39824,10 +39821,16 @@
       <property role="26EafJ" value="lib/app.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7qzv" role="26Ea7d">
+      <property role="26EafJ" value="lib/bouncy-castle.jar" />
+    </node>
+    <node concept="26EafG" id="9nERkLKyGf" role="26Ea7d">
       <property role="26EafJ" value="lib/branding.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7qzB" role="26Ea7d">
       <property role="26EafJ" value="lib/byte-buddy-agent.jar" />
+    </node>
+    <node concept="26EafG" id="9nERkLKyIm" role="26Ea7d">
+      <property role="26EafJ" value="lib/debugger-memory-agent.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7qzK" role="26Ea7d">
       <property role="26EafJ" value="lib/eclipse.jar" />
@@ -39847,11 +39850,14 @@
     <node concept="26EafG" id="4nX__hM7q$G" role="26Ea7d">
       <property role="26EafJ" value="lib/groovy.jar" />
     </node>
+    <node concept="26EafG" id="9nERkLKyJr" role="26Ea7d">
+      <property role="26EafJ" value="lib/grpc.jar" />
+    </node>
     <node concept="26EafG" id="4nX__hM7q$V" role="26Ea7d">
       <property role="26EafJ" value="lib/idea_rt.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7q_b" role="26Ea7d">
-      <property role="26EafJ" value="lib/intellij-coverage-agent-1.0.682.jar" />
+      <property role="26EafJ" value="lib/intellij-coverage-agent-1.0.723.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7q_s" role="26Ea7d">
       <property role="26EafJ" value="lib/intellij-test-discovery.jar" />
@@ -39876,6 +39882,9 @@
     </node>
     <node concept="26EafG" id="4nX__hM7qCy" role="26Ea7d">
       <property role="26EafJ" value="lib/kotlinx-metadata-jvm-0.6.2.jar" />
+    </node>
+    <node concept="26EafG" id="9nERkLKyHi" role="26Ea7d">
+      <property role="26EafJ" value="lib/lib.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7qCX" role="26Ea7d">
       <property role="26EafJ" value="lib/mps-annotations.jar" />
@@ -39928,9 +39937,6 @@
     <node concept="26EafG" id="4nX__hM7qLP" role="26Ea7d">
       <property role="26EafJ" value="lib/mps-icons.jar" />
     </node>
-    <node concept="26EafG" id="4nX__hM7qMx" role="26Ea7d">
-      <property role="26EafJ" value="lib/mps-logging.jar" />
-    </node>
     <node concept="26EafG" id="4nX__hM7qNe" role="26Ea7d">
       <property role="26EafJ" value="lib/mps-messages-api.jar" />
     </node>
@@ -39942,9 +39948,6 @@
     </node>
     <node concept="26EafG" id="4nX__hM7qPr" role="26Ea7d">
       <property role="26EafJ" value="lib/mps-messages-for-structure.jar" />
-    </node>
-    <node concept="26EafG" id="4nX__hM7qQc" role="26Ea7d">
-      <property role="26EafJ" value="lib/mps-messaging.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7qQY" role="26Ea7d">
       <property role="26EafJ" value="lib/mps-openapi.jar" />
@@ -39984,6 +39987,9 @@
     </node>
     <node concept="26EafG" id="4nX__hM7r7q" role="26Ea7d">
       <property role="26EafJ" value="lib/mps-workbench.jar" />
+    </node>
+    <node concept="26EafG" id="9nERkLKyMC" role="26Ea7d">
+      <property role="26EafJ" value="lib/platform-loader.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7raA" role="26Ea7d">
       <property role="26EafJ" value="lib/protobuf.jar" />
