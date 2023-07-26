@@ -1907,5 +1907,136 @@
       </node>
     </node>
   </node>
+  <node concept="312cEu" id="2Qfj$4YV7PJ">
+    <property role="TrG5h" value="NonMPSProjectCheckoutListener" />
+    <node concept="3Tm1VV" id="2Qfj$4YV7PK" role="1B3o_S" />
+    <node concept="3uibUv" id="2Qfj$4YV7PL" role="EKbjA">
+      <ref role="3uigEE" to="2lau:~CheckoutListener" resolve="CheckoutListener" />
+    </node>
+    <node concept="3clFb_" id="2Qfj$4YV7PM" role="jymVt">
+      <property role="TrG5h" value="processCheckedOutDirectory" />
+      <node concept="3Tm1VV" id="2Qfj$4YV7PN" role="1B3o_S" />
+      <node concept="10P_77" id="2Qfj$4YV7PO" role="3clF45" />
+      <node concept="37vLTG" id="2Qfj$4YV7PP" role="3clF46">
+        <property role="TrG5h" value="project" />
+        <node concept="3uibUv" id="2Qfj$4YV7PQ" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+        </node>
+        <node concept="2AHcQZ" id="2Qfj$4YV7PR" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="2Qfj$4YV7PS" role="3clF46">
+        <property role="TrG5h" value="directory" />
+        <node concept="3uibUv" id="2Qfj$4YV7PT" role="1tU5fm">
+          <ref role="3uigEE" to="eoo2:~Path" resolve="Path" />
+        </node>
+        <node concept="2AHcQZ" id="2Qfj$4YV7PU" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="2Qfj$4YV7PV" role="3clF47">
+        <node concept="3SKdUt" id="2Qfj$4YV7QV" role="3cqZAp">
+          <node concept="1PaTwC" id="2Qfj$4YV7QW" role="1aUNEU">
+            <node concept="3oM_SD" id="2Qfj$4YV7QX" role="1PaTwD">
+              <property role="3oM_SC" value="This" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7QY" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7QZ" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7R0" role="1PaTwD">
+              <property role="3oM_SC" value="an" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7R1" role="1PaTwD">
+              <property role="3oM_SC" value="MPS" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7R2" role="1PaTwD">
+              <property role="3oM_SC" value="project," />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7R3" role="1PaTwD">
+              <property role="3oM_SC" value="skip" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7R4" role="1PaTwD">
+              <property role="3oM_SC" value="all" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7R5" role="1PaTwD">
+              <property role="3oM_SC" value="subsequently" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7R6" role="1PaTwD">
+              <property role="3oM_SC" value="registered" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7R7" role="1PaTwD">
+              <property role="3oM_SC" value="checkout" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7R8" role="1PaTwD">
+              <property role="3oM_SC" value="listeners" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7R9" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7Ra" role="1PaTwD">
+              <property role="3oM_SC" value="mimic" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7Rb" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7Rc" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7Rd" role="1PaTwD">
+              <property role="3oM_SC" value="PlatformProjectCheckoutListener" />
+            </node>
+            <node concept="3oM_SD" id="2Qfj$4YV7Re" role="1PaTwD">
+              <property role="3oM_SC" value="here." />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="2Qfj$4YV7Rf" role="3cqZAp">
+          <node concept="2YIFZM" id="2Qfj$4YV7Rg" role="3clFbw">
+            <ref role="1Pybhc" to="2ny0:~OpenMPSProjectTrustProjectHelper" resolve="OpenMPSProjectTrustProjectHelper" />
+            <ref role="37wK5l" to="2ny0:~OpenMPSProjectTrustProjectHelper.checkTrust(java.nio.file.Path)" resolve="checkTrust" />
+            <node concept="37vLTw" id="2Qfj$4YV7Rh" role="37wK5m">
+              <ref role="3cqZAo" node="2Qfj$4YV7PS" resolve="directory" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="2Qfj$4YV7Ri" role="3clFbx">
+            <node concept="3clFbF" id="2Qfj$4YV7Rj" role="3cqZAp">
+              <node concept="2YIFZM" id="2Qfj$4YV7Rk" role="3clFbG">
+                <ref role="37wK5l" to="btn2:~ProjectUtil.openOrImport(java.nio.file.Path,com.intellij.ide.impl.OpenProjectTask)" resolve="openOrImport" />
+                <ref role="1Pybhc" to="btn2:~ProjectUtil" resolve="ProjectUtil" />
+                <node concept="37vLTw" id="2Qfj$4YV7Rl" role="37wK5m">
+                  <ref role="3cqZAo" node="2Qfj$4YV7PS" resolve="directory" />
+                </node>
+                <node concept="2OqwBi" id="2Qfj$4YV7Rm" role="37wK5m">
+                  <node concept="2YIFZM" id="2Qfj$4YV7Rn" role="2Oq$k0">
+                    <ref role="1Pybhc" to="btn2:~OpenProjectTask" resolve="OpenProjectTask" />
+                    <ref role="37wK5l" to="btn2:~OpenProjectTask.build()" resolve="build" />
+                  </node>
+                  <node concept="liA8E" id="2Qfj$4YV7Ro" role="2OqNvi">
+                    <ref role="37wK5l" to="btn2:~OpenProjectTask.withProjectToClose(com.intellij.openapi.project.Project)" resolve="withProjectToClose" />
+                    <node concept="37vLTw" id="2Qfj$4YV7Rp" role="37wK5m">
+                      <ref role="3cqZAo" node="2Qfj$4YV7PP" resolve="project" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="2Qfj$4YV7Rq" role="3cqZAp" />
+        <node concept="3cpWs6" id="2Qfj$4YV7Rr" role="3cqZAp">
+          <node concept="3clFbT" id="2Qfj$4YV7Rs" role="3cqZAk">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="2Qfj$4YV7Rt" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+  </node>
 </model>
 

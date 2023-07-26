@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="azlm72tp754giqhll1pb1t4ac72h1zq">
-  <files names="GeneratedFileConflictResolving.java:ModuleVcsPathPresenter.java:ProjectCheckoutListener.java:ProjectDirMPSCheckoutListener.java" />
+<product version="3" modelHash="33y8svikv8ghom6vkyx45hnqzm2xanf">
+  <files names="GeneratedFileConflictResolving.java:ModuleVcsPathPresenter.java:NonMPSProjectCheckoutListener.java:ProjectCheckoutListener.java:ProjectDirMPSCheckoutListener.java" />
 </product>
 
