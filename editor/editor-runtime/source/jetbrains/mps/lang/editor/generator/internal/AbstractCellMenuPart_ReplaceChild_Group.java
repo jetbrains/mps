@@ -1,6 +1,5 @@
 /*
-/*
-1 * Copyright 2003-2020 JetBrains s.r.o.
+1 * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,12 +24,10 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.DefaultChildNodeSubstituteAction;
 import jetbrains.mps.smodel.action.DefaultSChildSetter;
 import jetbrains.mps.smodel.action.IChildNodeSetter;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -100,17 +97,7 @@ public abstract class AbstractCellMenuPart_ReplaceChild_Group implements Substit
   }
 
   protected SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
-    // remove once 2020.3 is out
-    return customCreateChildNode(parameterObject, node, currentChild, defaultChildConcept, model, editorContext.getOperationContext(), editorContext);
-  }
-
-  /**
-   * @deprecated left for compatibility with code generated in 2020.2, override {@link #customCreateChildNode(Object, SNode, SNode, SAbstractConcept, SModel, EditorContext)} instead
-   */
-  @Deprecated(since = "2020.3", forRemoval = true)
-  @Nullable
-  protected SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model,
-                                        IOperationContext context, EditorContext editorContext) {
+    // overridden only if isCustomCreateChildNode() == true
     return null;
   }
 
@@ -133,17 +120,5 @@ public abstract class AbstractCellMenuPart_ReplaceChild_Group implements Substit
     return null;
   }
 
-  protected List createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, EditorContext editorContext) {
-    return createParameterObjects(node, currentChild, defaultConceptOfChild, editorContext.getOperationContext(), editorContext);
-  }
-
-  /**
-   * @deprecated left for compatibility with code generated in 2020.2, override {@link #createParameterObjects(SNode, SNode, SAbstractConcept, EditorContext)} instead
-   */
-  @Deprecated(since = "2020.3", forRemoval = true)
-  @Nullable
-  protected List createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, IOperationContext operationContext,
-                                        EditorContext editorContext) {
-    return null;
-  }
+  protected abstract List createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, EditorContext editorContext);
 }

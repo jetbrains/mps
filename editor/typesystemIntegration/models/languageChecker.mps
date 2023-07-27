@@ -37,12 +37,12 @@
     <import index="ykok" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.constraints(MPS.Core/)" />
     <import index="35tq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.scope(MPS.Core/)" />
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
-    <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
     <import index="k2t0" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.checkers(MPS.Core/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="7a0s" ref="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)" />
+    <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -3487,31 +3487,21 @@
                   <ref role="3uigEE" to="z60i:~Component" resolve="Component" />
                 </node>
               </node>
-              <node concept="1eOMI4" id="7jONrOsQrmm" role="3K4E3e">
-                <node concept="10QFUN" id="7jONrOsQrmj" role="1eOMHV">
-                  <node concept="37vLTw" id="7jONrOsQrmk" role="10QFUP">
-                    <ref role="3cqZAo" node="7jONrOsQrmb" resolve="ec" />
-                  </node>
-                  <node concept="3uibUv" id="7jONrOsQrml" role="10QFUM">
-                    <ref role="3uigEE" to="z60i:~Component" resolve="Component" />
-                  </node>
+              <node concept="10QFUN" id="7jONrOsQrmj" role="3K4E3e">
+                <node concept="37vLTw" id="7jONrOsQrmk" role="10QFUP">
+                  <ref role="3cqZAo" node="7jONrOsQrmb" resolve="ec" />
+                </node>
+                <node concept="3uibUv" id="7jONrOsQrml" role="10QFUM">
+                  <ref role="3uigEE" to="z60i:~Component" resolve="Component" />
                 </node>
               </node>
-              <node concept="2YIFZM" id="7jONrOsRtF2" role="3K4GZi">
-                <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-                <ref role="37wK5l" to="alof:~ProjectHelper.toMainFrame(jetbrains.mps.project.Project)" resolve="toMainFrame" />
-                <node concept="2OqwBi" id="7jONrOsQrmo" role="37wK5m">
-                  <node concept="2OqwBi" id="7jONrOsQwIR" role="2Oq$k0">
-                    <node concept="37vLTw" id="7jONrOsSr8R" role="2Oq$k0">
-                      <ref role="3cqZAo" node="7jONrOsSpuj" resolve="editorContext" />
-                    </node>
-                    <node concept="liA8E" id="7jONrOsQwIS" role="2OqNvi">
-                      <ref role="37wK5l" to="cj4x:~EditorContext.getOperationContext()" resolve="getOperationContext" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="7jONrOsQrmq" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~IOperationContext.getProject()" resolve="getProject" />
-                  </node>
+              <node concept="2OqwBi" id="FV_t59XVOe" role="3K4GZi">
+                <node concept="2YIFZM" id="FV_t59XUUM" role="2Oq$k0">
+                  <ref role="37wK5l" to="jkny:~WindowManager.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="jkny:~WindowManager" resolve="WindowManager" />
+                </node>
+                <node concept="liA8E" id="FV_t59XXkv" role="2OqNvi">
+                  <ref role="37wK5l" to="jkny:~WindowManager.getMostRecentFocusedWindow()" resolve="getMostRecentFocusedWindow" />
                 </node>
               </node>
             </node>

@@ -31,7 +31,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.project.ModelImporter;
 import java.awt.Component;
 import jetbrains.mps.openapi.editor.EditorComponent;
-import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.openapi.wm.WindowManager;
 import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.editor.runtime.ReferenceResolveInEditor;
 
@@ -134,7 +134,7 @@ public class RefScopeCheckerInEditor extends RefScopeChecker {
     }
     private Component getParentComponent(EditorContext editorContext) {
       EditorComponent ec = editorContext.getEditorComponent();
-      return (ec instanceof Component ? ((Component) ec) : ProjectHelper.toMainFrame(editorContext.getOperationContext().getProject()));
+      return (ec instanceof Component ? (Component) ec : WindowManager.getInstance().getMostRecentFocusedWindow());
     }
     @Override
     public void execute(SRepository repository) {

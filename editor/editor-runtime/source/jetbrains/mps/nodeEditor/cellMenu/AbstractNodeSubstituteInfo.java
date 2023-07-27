@@ -50,7 +50,7 @@ public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
   private List<SubstituteAction> myCachedActionList;
 
   private String myOriginalText;
-  private EditorContext myEditorContext;
+  private final EditorContext myEditorContext;
 
   public AbstractNodeSubstituteInfo(EditorContext editorContext) {
     myEditorContext = editorContext;
@@ -58,10 +58,6 @@ public abstract class AbstractNodeSubstituteInfo implements SubstituteInfo {
 
   public EditorContext getEditorContext() {
     return myEditorContext;
-  }
-
-  public IOperationContext getOperationContext() {
-    return myEditorContext.getOperationContext();
   }
 
   @Override
