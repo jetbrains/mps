@@ -17,7 +17,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.editor.EditorPanelManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -72,7 +72,10 @@ public final class ConvertConceptAndInterface_Intention extends AbstractIntentio
       }
       SNodeOperations.deleteNode(node);
 
-      NavigationSupport.getInstance().openNode(editorContext.getOperationContext().getProject(), created, true, false);
+      EditorPanelManager epm = editorContext.getEditorPanelManager();
+      if (epm != null) {
+        epm.openEditor(created);
+      }
     }
 
     @Override

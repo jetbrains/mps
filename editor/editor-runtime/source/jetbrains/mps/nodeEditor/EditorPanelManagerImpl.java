@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package jetbrains.mps.nodeEditor;
 
 import jetbrains.mps.openapi.editor.EditorPanelManager;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.model.SNode;
  * Date: 16/06/16
  */
 public class EditorPanelManagerImpl implements EditorPanelManager {
-  private Project myProject;
+  private final Project myProject;
 
   public EditorPanelManagerImpl(Project project) {
     myProject = project;
@@ -38,6 +38,10 @@ public class EditorPanelManagerImpl implements EditorPanelManager {
     // model access state and EDT thread anyway, so using NavigationSupport here directly is ok.
     // OTOH, why not use EditorNavigator directly, instead of EditorPanelManager? Perhaps, just to deal with embedded editors
     // that are not allowed to open others?
-    NavigationSupport.getInstance().openNode(myProject, node, true, false);
+    //
+    // Well, the reason not to use NavigationSupport here is that model read for the `node` not necessarily match that of
+    // the project. This is sort of implicit assumption I'd like to avoid at all costs.
+    // And the reason not to use EditorNavigator directly is that we generally don't have access to Project in editors.
+    new EditorNavigator(myProject).shallFocus(true).open(node.getReference());
   }
 }
