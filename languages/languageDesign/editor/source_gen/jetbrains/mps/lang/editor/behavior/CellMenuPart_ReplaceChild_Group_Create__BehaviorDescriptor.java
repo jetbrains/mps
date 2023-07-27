@@ -54,7 +54,6 @@ public final class CellMenuPart_ReplaceChild_Group_Create__BehaviorDescriptor ex
     ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_ReplaceChild_currentChild$MV);
     ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_AbstractGroup_parameterObject$3i);
     ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_editorContext$vJ);
-    ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_ReplaceChild_defaultConceptOfChild$v6);
     return result;
   }
 
@@ -123,7 +122,6 @@ public final class CellMenuPart_ReplaceChild_Group_Create__BehaviorDescriptor ex
     /*package*/ static final SConcept CellMenuPart_ReplaceChild_currentChild$MV = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eaa3a3c68L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_currentChild");
     /*package*/ static final SConcept CellMenuPart_AbstractGroup_parameterObject$3i = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eecc5b3feL, "jetbrains.mps.lang.editor.structure.CellMenuPart_AbstractGroup_parameterObject");
     /*package*/ static final SConcept ConceptFunctionParameter_editorContext$vJ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext");
-    /*package*/ static final SConcept CellMenuPart_ReplaceChild_defaultConceptOfChild$v6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eaa4bf8b2L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_defaultConceptOfChild");
   }
 
   private static final class LINKS {

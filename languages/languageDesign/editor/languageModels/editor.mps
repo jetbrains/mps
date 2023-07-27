@@ -26123,10 +26123,6 @@
     <ref role="aqKnT" to="tpc2:u0TBa40TxV" resolve="SubstituteMenuVariableDeclaration" />
     <node concept="22hDWj" id="xzgvwPPpck" role="22hAXT" />
   </node>
-  <node concept="22mcaB" id="1wEcoXjJtNR">
-    <ref role="aqKnT" to="tpc2:gUEiZyM" resolve="CellMenuPart_ReplaceChild_defaultConceptOfChild" />
-    <node concept="22hDWj" id="xzgvwPPpcl" role="22hAXT" />
-  </node>
   <node concept="22mcaB" id="1wEcoXjJtNS">
     <ref role="aqKnT" to="tpc2:77L_peG_tVD" resolve="SubstituteMenuReference_DefaultWithFunction" />
     <node concept="22hDWj" id="xzgvwPPpcm" role="22hAXT" />

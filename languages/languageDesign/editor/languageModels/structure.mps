@@ -1288,19 +1288,6 @@
     <property role="EcuMT" value="1162497113192" />
     <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
   </node>
-  <node concept="1TIwiD" id="gUEiZyM">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="CellMenuPart_ReplaceChild_defaultConceptOfChild" />
-    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
-    <property role="3GE5qa" value="CellMenu" />
-    <property role="34LRSv" value="defaultConceptOfChild_deprecated" />
-    <property role="EcuMT" value="1162498275506" />
-    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
-    <node concept="asaX9" id="31F3x8CXY$W" role="lGtFl">
-      <property role="YLPcu" value="3.5" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="gVGJtLf">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
