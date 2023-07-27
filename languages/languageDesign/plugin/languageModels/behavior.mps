@@ -5427,31 +5427,6 @@
       </node>
     </node>
   </node>
-  <node concept="13h7C7" id="4IGpg_YjLoQ">
-    <ref role="13h7C2" to="tp4k:hxml1zb" resolve="ConceptFunctionParameter_OperationContext" />
-    <node concept="13hLZK" id="4IGpg_YjLoR" role="13h7CW">
-      <node concept="3clFbS" id="4IGpg_YjLoS" role="2VODD2" />
-    </node>
-    <node concept="13i0hz" id="4IGpg_YjLoU" role="13h7CS">
-      <property role="TrG5h" value="getType" />
-      <property role="13i0it" value="false" />
-      <property role="13i0iv" value="false" />
-      <ref role="13i0hy" to="tpek:27DJnJtIQ9C" resolve="getType" />
-      <node concept="3Tm1VV" id="4IGpg_YjLoV" role="1B3o_S" />
-      <node concept="3clFbS" id="4IGpg_YjLoW" role="3clF47">
-        <node concept="3cpWs6" id="4IGpg_YjLoX" role="3cqZAp">
-          <node concept="2c44tf" id="4IGpg_YjLoT" role="3cqZAk">
-            <node concept="3uibUv" id="hzmigsV" role="2c44tc">
-              <ref role="3uigEE" to="w1kc:~IOperationContext" resolve="IOperationContext" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tqbb2" id="4IGpg_YjLoY" role="3clF45">
-        <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
-      </node>
-    </node>
-  </node>
   <node concept="13h7C7" id="4IGpg_YjLp5">
     <ref role="13h7C2" to="tp4k:54Z8GiUTfGl" resolve="ConceptFunctionParameter_Model" />
     <node concept="13hLZK" id="4IGpg_YjLp6" role="13h7CW">

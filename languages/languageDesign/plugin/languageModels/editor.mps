@@ -6961,10 +6961,6 @@
     <ref role="aqKnT" to="tp4k:hxFG8h3" resolve="InterfaceExtentionPoint" />
     <node concept="22hDWj" id="xzgvwPPpwW" role="22hAXT" />
   </node>
-  <node concept="22mcaB" id="1wEcoXjJl4o">
-    <ref role="aqKnT" to="tp4k:hxml1zb" resolve="ConceptFunctionParameter_OperationContext" />
-    <node concept="22hDWj" id="xzgvwPPpwX" role="22hAXT" />
-  </node>
   <node concept="22mcaB" id="1wEcoXjJl4p">
     <ref role="aqKnT" to="tp4k:lUOfkjgAa6" resolve="ToolActionPlace" />
     <node concept="22hDWj" id="xzgvwPPpwY" role="22hAXT" />

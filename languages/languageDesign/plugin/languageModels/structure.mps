@@ -328,21 +328,6 @@
     <property role="EcuMT" value="1203853034639" />
     <ref role="1TJDcQ" node="54Z8GiUTfGr" resolve="ConceptFunctionParameter_CreatorType" />
   </node>
-  <node concept="1TIwiD" id="hxml1zb">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="R4oN_" value="function parameter" />
-    <property role="TrG5h" value="ConceptFunctionParameter_OperationContext" />
-    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
-    <property role="3GE5qa" value="Shared" />
-    <property role="34LRSv" value="context" />
-    <property role="EcuMT" value="1204039194827" />
-    <ref role="1TJDcQ" to="tpee:g76ryKb" resolve="ConceptFunctionParameter" />
-    <node concept="asaX9" id="6NfPCDKtfEC" role="lGtFl">
-      <property role="YLPcu" value="2018.3" />
-      <property role="YLQ7P" value="IOperationContext has been deprecated for years, don't use it." />
-    </node>
-  </node>
   <node concept="1TIwiD" id="hxESbW1">
     <property role="19KtqR" value="true" />
     <property role="R5$K7" value="false" />
