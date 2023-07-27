@@ -41,7 +41,6 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.IOperationContext;
 import java.util.ArrayList;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.behavior.VariableDeclaration__BehaviorDescriptor;
@@ -124,12 +123,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
 
     protected List<String> getPostfixes(SNode node, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
       List<String> result = ListSequence.fromList(new ArrayList<String>());
       SNode nodeType = SLinkOperations.getTarget(node, LINKS.type$a1UY);
       if (nodeType != null) {
         List<String> names = Type__BehaviorDescriptor.getVariableSuffixes_idhEwIzNo.invoke(nodeType);
-        Project project = operationContext.getProject();
+        Project project = editorContext.getOperationContext().getProject();
         for (String name : names) {
           String prefix = VariableDeclaration__BehaviorDescriptor.getPrefix_id2Bet8mWh2lw.invoke(node, project);
           String suffix = VariableDeclaration__BehaviorDescriptor.getSuffix_id2Bet8mWh3pg.invoke(node, project);
