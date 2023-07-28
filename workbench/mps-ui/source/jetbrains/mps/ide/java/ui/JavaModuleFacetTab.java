@@ -627,6 +627,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
 
     /*package*/ void addNew(VirtualFile[] files) {
       myPaths.addAll(Arrays.asList(files));
+      fireTableDataChanged();
     }
 
     /*package*/ PathSpecBundle toPathBundle(Collection<String> provisionalHackCollectPaths) {
