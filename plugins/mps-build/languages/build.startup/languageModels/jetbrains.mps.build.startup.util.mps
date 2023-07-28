@@ -101,28 +101,6 @@
           <node concept="2pIpSj" id="3rleFKvpGWK" role="2pJxcM">
             <ref role="2pIpSl" to="s7om:3nFPImNgRsC" resolve="bootClasspath" />
             <node concept="36be1Y" id="3rleFKvpGWL" role="28nt2d">
-              <node concept="2pJPED" id="3rleFKvpGWM" role="36be1Z">
-                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
-                <node concept="2pJxcG" id="3rleFKvpGWN" role="2pJxcM">
-                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
-                  <node concept="WxPPo" id="3rleFKvpGWO" role="28ntcv">
-                    <node concept="Xl_RD" id="3rleFKvpGWP" role="WxPPp">
-                      <property role="Xl_RC" value="lib/3rd-party-native.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="2pJPED" id="3rleFKvpGWQ" role="36be1Z">
-                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
-                <node concept="2pJxcG" id="3rleFKvpGWR" role="2pJxcM">
-                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
-                  <node concept="WxPPo" id="3rleFKvpGWS" role="28ntcv">
-                    <node concept="Xl_RD" id="3rleFKvpGWT" role="WxPPp">
-                      <property role="Xl_RC" value="lib/3rd-party-rt.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
               <node concept="2pJPED" id="3rleFKvpGWU" role="36be1Z">
                 <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
                 <node concept="2pJxcG" id="3rleFKvpGWV" role="2pJxcM">
@@ -151,6 +129,17 @@
                   <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
                   <node concept="WxPPo" id="3rleFKvpGX4" role="28ntcv">
                     <node concept="Xl_RD" id="3rleFKvpGX5" role="WxPPp">
+                      <property role="Xl_RC" value="lib/bouncy-castle.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="3XqwRgLWTEJ" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="3XqwRgLWTEK" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="3XqwRgLWTEL" role="28ntcv">
+                    <node concept="Xl_RD" id="3XqwRgLWTEM" role="WxPPp">
                       <property role="Xl_RC" value="lib/branding.jar" />
                     </node>
                   </node>
@@ -233,6 +222,17 @@
                   </node>
                 </node>
               </node>
+              <node concept="2pJPED" id="3XqwRgLWTMF" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="3XqwRgLWTMG" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="3XqwRgLWTMH" role="28ntcv">
+                    <node concept="Xl_RD" id="3XqwRgLWTMI" role="WxPPp">
+                      <property role="Xl_RC" value="lib/grpc.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="2pJPED" id="3rleFKvpGXy" role="36be1Z">
                 <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
                 <node concept="2pJxcG" id="3rleFKvpGXz" role="2pJxcM">
@@ -250,7 +250,7 @@
                   <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
                   <node concept="WxPPo" id="3rleFKvpGXC" role="28ntcv">
                     <node concept="Xl_RD" id="3rleFKvpGXD" role="WxPPp">
-                      <property role="Xl_RC" value="lib/intellij-coverage-agent-1.0.682.jar" />
+                      <property role="Xl_RC" value="lib/intellij-coverage-agent-1.0.723.jar" />
                     </node>
                   </node>
                 </node>
@@ -349,6 +349,17 @@
                   <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
                   <node concept="WxPPo" id="3rleFKvpGYc" role="28ntcv">
                     <node concept="Xl_RD" id="3rleFKvpGYd" role="WxPPp">
+                      <property role="Xl_RC" value="lib/lib.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="3XqwRgLWUl8" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="3XqwRgLWUl9" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="3XqwRgLWUla" role="28ntcv">
+                    <node concept="Xl_RD" id="3XqwRgLWUlb" role="WxPPp">
                       <property role="Xl_RC" value="lib/mps-annotations.jar" />
                     </node>
                   </node>
@@ -530,17 +541,6 @@
                   </node>
                 </node>
               </node>
-              <node concept="2pJPED" id="3rleFKvpGZe" role="36be1Z">
-                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
-                <node concept="2pJxcG" id="3rleFKvpGZf" role="2pJxcM">
-                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
-                  <node concept="WxPPo" id="3rleFKvpGZg" role="28ntcv">
-                    <node concept="Xl_RD" id="3rleFKvpGZh" role="WxPPp">
-                      <property role="Xl_RC" value="lib/mps-logging.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
               <node concept="2pJPED" id="3rleFKvpGZi" role="36be1Z">
                 <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
                 <node concept="2pJxcG" id="3rleFKvpGZj" role="2pJxcM">
@@ -581,17 +581,6 @@
                   <node concept="WxPPo" id="3rleFKvpGZw" role="28ntcv">
                     <node concept="Xl_RD" id="3rleFKvpGZx" role="WxPPp">
                       <property role="Xl_RC" value="lib/mps-messages-for-structure.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="2pJPED" id="3rleFKvpGZy" role="36be1Z">
-                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
-                <node concept="2pJxcG" id="3rleFKvpGZz" role="2pJxcM">
-                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
-                  <node concept="WxPPo" id="3rleFKvpGZ$" role="28ntcv">
-                    <node concept="Xl_RD" id="3rleFKvpGZ_" role="WxPPp">
-                      <property role="Xl_RC" value="lib/mps-messaging.jar" />
                     </node>
                   </node>
                 </node>
@@ -739,24 +728,13 @@
                   </node>
                 </node>
               </node>
-              <node concept="2pJPED" id="3rleFKvpH0q" role="36be1Z">
-                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
-                <node concept="2pJxcG" id="3rleFKvpH0r" role="2pJxcM">
-                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
-                  <node concept="WxPPo" id="3rleFKvpH0s" role="28ntcv">
-                    <node concept="Xl_RD" id="3rleFKvpH0t" role="WxPPp">
-                      <property role="Xl_RC" value="lib/platform-objectSerializer-annotations.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
               <node concept="2pJPED" id="3rleFKvpH0u" role="36be1Z">
                 <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
                 <node concept="2pJxcG" id="3rleFKvpH0v" role="2pJxcM">
                   <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
                   <node concept="WxPPo" id="3rleFKvpH0w" role="28ntcv">
                     <node concept="Xl_RD" id="3rleFKvpH0x" role="WxPPp">
-                      <property role="Xl_RC" value="lib/platform-statistics-devkit.jar" />
+                      <property role="Xl_RC" value="lib/platform-loader.jar" />
                     </node>
                   </node>
                 </node>
@@ -816,23 +794,23 @@
                   </node>
                 </node>
               </node>
-              <node concept="2pJPED" id="3rleFKvpH0Q" role="36be1Z">
-                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
-                <node concept="2pJxcG" id="3rleFKvpH0R" role="2pJxcM">
-                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
-                  <node concept="WxPPo" id="3rleFKvpH0S" role="28ntcv">
-                    <node concept="Xl_RD" id="3rleFKvpH0T" role="WxPPp">
-                      <property role="Xl_RC" value="lib/tools-testsBootstrap.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
               <node concept="2pJPED" id="3rleFKvpH0U" role="36be1Z">
                 <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
                 <node concept="2pJxcG" id="3rleFKvpH0V" role="2pJxcM">
                   <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
                   <node concept="WxPPo" id="3rleFKvpH0W" role="28ntcv">
                     <node concept="Xl_RD" id="3rleFKvpH0X" role="WxPPp">
+                      <property role="Xl_RC" value="lib/util-8.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="3XqwRgLWUW0" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="3XqwRgLWUW1" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="3XqwRgLWUW2" role="28ntcv">
+                    <node concept="Xl_RD" id="3XqwRgLWUW3" role="WxPPp">
                       <property role="Xl_RC" value="lib/util.jar" />
                     </node>
                   </node>
@@ -845,17 +823,6 @@
                   <node concept="WxPPo" id="3rleFKvpH10" role="28ntcv">
                     <node concept="Xl_RD" id="3rleFKvpH11" role="WxPPp">
                       <property role="Xl_RC" value="lib/util_rt.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="2pJPED" id="3rleFKvpH12" role="36be1Z">
-                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
-                <node concept="2pJxcG" id="3rleFKvpH13" role="2pJxcM">
-                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
-                  <node concept="WxPPo" id="3rleFKvpH14" role="28ntcv">
-                    <node concept="Xl_RD" id="3rleFKvpH15" role="WxPPp">
-                      <property role="Xl_RC" value="lib/xml-dom-impl.jar" />
                     </node>
                   </node>
                 </node>

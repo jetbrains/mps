@@ -39877,9 +39877,6 @@
     <node concept="26EafG" id="4nX__hM7qzB" role="26Ea7d">
       <property role="26EafJ" value="lib/byte-buddy-agent.jar" />
     </node>
-    <node concept="26EafG" id="9nERkLKyIm" role="26Ea7d">
-      <property role="26EafJ" value="lib/debugger-memory-agent.jar" />
-    </node>
     <node concept="26EafG" id="4nX__hM7qzK" role="26Ea7d">
       <property role="26EafJ" value="lib/eclipse.jar" />
     </node>
