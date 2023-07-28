@@ -979,11 +979,11 @@
         <path location="${project_home}/languages/Constants/source_gen" />
       </src>
       <classpath>
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
@@ -1038,11 +1038,11 @@
         <path location="${project_home}/languages/Constants/generator/source_gen" />
       </src>
       <classpath>
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
@@ -1094,11 +1094,11 @@
         <path location="${project_home}/languages/SampleExtensions/source_gen" />
       </src>
       <classpath>
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
@@ -1153,11 +1153,11 @@
         <path location="${project_home}/languages/SampleExtensions/generator/source_gen" />
       </src>
       <classpath>
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
@@ -1314,11 +1314,11 @@
         <path location="${project_home}/languages/Money/generator/source_gen" />
       </src>
       <classpath>
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
@@ -1372,11 +1372,11 @@
         <path location="${project_home}/languages/ParallelFor/source_gen" />
       </src>
       <classpath>
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
@@ -1431,11 +1431,11 @@
         <path location="${project_home}/languages/ParallelFor/generator/source_gen" />
       </src>
       <classpath>
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
