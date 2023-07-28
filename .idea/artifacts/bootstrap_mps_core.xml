@@ -9,8 +9,6 @@
         <element id="module-output" name="typesystemEngine" />
         <element id="module-output" name="typechecking" />
         <element id="module-output" name="scripts-runtime" />
-        <element id="module-output" name="refactoring" />
-        <element id="module-output" name="refactoring-runtime" />
         <element id="module-output" name="project" />
         <element id="module-output" name="components" />
         <element id="module-output" name="findUsages-runtime" />

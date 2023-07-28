@@ -39,8 +39,6 @@
       <modulePath path="$PROJECT_DIR$/core/make-runtime/solutions/jetbrains.mps.make/jetbrains.mps.make.msd" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/core/persistence/jetbrains.mps.persistence.msd" folder="core.kernel" />
       <modulePath path="$PROJECT_DIR$/core/project/jetbrains.mps.project.msd" folder="core.kernel" />
-      <modulePath path="$PROJECT_DIR$/core/refactoring-runtime/jetbrains.mps.refactoring.runtime.msd" folder="core.aspects.refactoring" />
-      <modulePath path="$PROJECT_DIR$/core/refactoring/jetbrains.mps.refactoring.msd" folder="core.aspects.refactoring" />
       <modulePath path="$PROJECT_DIR$/core/resources/jetbrains.mps.smodel.resources.msd" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/core/tool/ant/jetbrains.mps.tool.ant.msd" folder="core.tool" />
       <modulePath path="$PROJECT_DIR$/core/tool/builder/jetbrains.mps.tool.builder.msd" folder="core.tool" />
@@ -668,6 +666,8 @@
       <modulePath path="$PROJECT_DIR$/workbench/mps-debugger/jetbrains.mps.debugger.core.msd" folder="workbench.debugger" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-editor/jetbrains.mps.ide.editor.msd" folder="workbench.editor" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-platform/jetbrains.mps.ide.platform/jetbrains.mps.ide.platform.msd" folder="platform" />
+      <modulePath path="$PROJECT_DIR$/workbench/mps-refactoring/j.m.refactoring.runtime/jetbrains.mps.refactoring.runtime.msd" folder="core.aspects.refactoring" />
+      <modulePath path="$PROJECT_DIR$/workbench/mps-refactoring/j.m.refactoring/jetbrains.mps.refactoring.msd" folder="core.aspects.refactoring" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-refactoring/jetbrains.mps.ide.refactoring.platform/jetbrains.mps.ide.refactoring.platform.msd" folder="platform" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-ui/jetbrains.mps.ide.ui.msd" folder="workbench.ui" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-workbench/jetbrains.mps.ide/jetbrains.mps.ide.msd" folder="workbench" />

@@ -14,6 +14,8 @@
         <element id="module-output" name="vfs-tracking" />
         <element id="module-output" name="psi" />
         <element id="module-output" name="mps-refactoring" />
+        <element id="module-output" name="refactoring" />
+        <element id="module-output" name="refactoring-runtime" />
       </element>
     </root>
   </artifact>
