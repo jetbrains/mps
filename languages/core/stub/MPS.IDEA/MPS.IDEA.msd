@@ -51,6 +51,7 @@
       <library location="${platform_lib}/stats.jar" /> <!-- to satisfy dependencies of com.intellij.ide.impl.TrustedPathsSettings -->
       <library location="${platform_lib}/platform-loader.jar" />
       <library location="${platform_lib}/util.jar" />
+      <library location="${platform_lib}/util-8.jar" />
       <library location="${platform_lib}/util_rt.jar" />
       <library location="${platform_lib}/jps-model.jar" />
       <library location="${platform_lib}/forms_rt.jar" />
