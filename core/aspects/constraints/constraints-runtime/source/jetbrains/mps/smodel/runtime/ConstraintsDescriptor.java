@@ -45,6 +45,7 @@ public interface ConstraintsDescriptor {
     return true;
   }
 
+  @Nullable
   PropertyConstraintsDescriptor getProperty(SProperty property);
 
   @Nullable

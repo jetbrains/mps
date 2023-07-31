@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.smodel.runtime.base;
 
-import jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
@@ -45,9 +44,9 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDes
     //       And I feel it wasn't right to keep an d use  hasOwn() check in 1feba01a. After all, each parent already got 'something' using
     //       inheritance, and getParentCalculatedDescriptor() method name suggests we expect this pre-'calculated' value.
     //       Therefore, I feel approach I take here, with direct access to parent 'pre-calculated' value, is the right one.
-    getterDescriptor = ownGet ? this : getSomethingUsingInheritance(GETTER_INHERITANCE_PARAMETERS, property, container);
-    setterDescriptor = ownSet ? this : getSomethingUsingInheritance(SETTER_INHERITANCE_PARAMETERS, property, container);
-    validatorDescriptor = ownValidate ? this : getSomethingUsingInheritance(VALIDATOR_INHERITANCE_PARAMETERS, property, container);
+    getterDescriptor = ownGet ? this : getSomethingUsingInheritance(pd -> pd.getterDescriptor, property, container);
+    setterDescriptor = ownSet ? this : getSomethingUsingInheritance(pd -> pd.setterDescriptor, property, container);
+    validatorDescriptor = ownValidate ? this : getSomethingUsingInheritance(pd -> pd.validatorDescriptor, property, container);
   }
 
   @Nullable
@@ -58,9 +57,6 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDes
     assert container.getConcept().equals(parent);
     while (it.hasNext()) {
       parent = it.next();
-      if (!((SAbstractConceptAdapter) parent).hasProperty(property)) {
-        continue;
-      }
 
       ConstraintsDescriptor parentDescriptor = ConceptRegistry.getInstance().getConstraintsDescriptor(parent);
       PropertyConstraintsDescriptor parentPropertyDescriptor = parentDescriptor.getProperty(property);
@@ -139,7 +135,4 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDes
     PropertyConstraintsDescriptor getParentCalculatedDescriptor(BasePropertyConstraintsDescriptor parentDescriptor);
   }
 
-  private static final InheritanceCalculateParameters GETTER_INHERITANCE_PARAMETERS = parentDescriptor -> parentDescriptor.getterDescriptor;
-  private static final InheritanceCalculateParameters SETTER_INHERITANCE_PARAMETERS = parentDescriptor -> parentDescriptor.setterDescriptor;
-  private static final InheritanceCalculateParameters VALIDATOR_INHERITANCE_PARAMETERS = parentDescriptor -> parentDescriptor.validatorDescriptor;
 }

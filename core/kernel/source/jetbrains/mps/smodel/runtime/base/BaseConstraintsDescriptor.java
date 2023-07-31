@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -242,6 +242,8 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
     return myCanBeAncestorConstraint.invoke(context, checkingNodeContext);
   }
 
+  @Override
+  @Nullable
   public PropertyConstraintsDescriptor getProperty(SProperty property) {
     if (propertiesConstraints.containsKey(property)) {
       return propertiesConstraints.get(property);
@@ -256,6 +258,7 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
     return propertiesConstraints.get(property);
   }
 
+  @Override
   @Nullable
   public ReferenceConstraintsDescriptor getReference(SReferenceLink ref) {
     if (referencesConstraints.containsKey(ref)) {
