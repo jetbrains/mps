@@ -48,15 +48,27 @@ public class AutomaticResolutionHelper {
         // Now, fix reference if needed
         SReference reference = functionHolder.getReference(functionLink);
         if (resolved != null && (reference == null || !(Objects.equals(resolved.getNode().getNodeId(), reference.getTargetNodeId())))) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(functionHolder, "wrong overload target", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "219803515060660834", null, errorTarget);
+          if (SNodeOperations.isInstanceOf(resolved.getNode(), SNodeOperations.asSConcept(functionLink.getTargetConcept()))) {
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.FunctionCall_FixReference_QuickFix", "219803515060660835", true);
-              intentionProvider.putArgument("call", functionHolder);
-              intentionProvider.putArgument("newTarget", resolved.getNode());
-              intentionProvider.putArgument("targetLink", functionLink);
-              _reporter_2309309498.addIntentionProvider(intentionProvider);
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(functionHolder, "wrong overload target", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "219803515060660834", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.FunctionCall_FixReference_QuickFix", "219803515060660835", true);
+                intentionProvider.putArgument("call", functionHolder);
+                intentionProvider.putArgument("newTarget", resolved.getNode());
+                intentionProvider.putArgument("targetLink", functionLink);
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
+            }
+          } else {
+            // Why? Current scopes in MPS are not generic enough (one reference concept can only support a target of given concepts) to accommodate this situation (result of resolution is a foreign concept).
+            // In an ideal case, there should be with the FunctionDeclaration a way to replace the existing call with a compatible version, but we would need to ensure compatibility between previous state and new state (eg. additional properties?)
+            // A previous idea was to have a node as a reference (node extending IFunctionReference, providing a generic FunctionDeclaration object, and used in a generic FunctionCallExpression), which would solve this situation and potentially improve scope performances (single scope and computations instead of one per call concept)
+            SNode receiverType = resolved.getReceiverType();
+            String receiverString = (receiverType == null ? "" : SNodeOperations.present(receiverType) + ".");
+            {
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(functionHolder, "Function " + receiverString + resolved.getFunctionPresentation(false) + " is better suited for this call, but its concept (" + SNodeOperations.getConcept(resolved.getNode()).getName() + ") is not supported by current call implementation. Please manually pick this method or use a compatible concept.", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "192512837082705263", null, errorTarget);
             }
           }
         }

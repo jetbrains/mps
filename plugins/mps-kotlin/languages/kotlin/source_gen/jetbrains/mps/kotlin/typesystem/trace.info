@@ -625,68 +625,87 @@
       <node id="2830822894491845037" at="46,9,47,0" concept="12" />
       <node id="2830822894491847182" at="47,0,48,39" concept="11" />
       <node id="219803515060660824" at="48,39,49,73" concept="9" />
-      <node id="219803515060660834" at="51,11,52,70" concept="9" />
-      <node id="219803515060660834" at="52,70,53,243" concept="9" />
-      <node id="219803515060660835" at="54,13,55,178" concept="9" />
-      <node id="219803515060660836" at="55,178,56,68" concept="4" />
-      <node id="219803515060660838" at="56,68,57,77" concept="4" />
-      <node id="219803515060687226" at="57,77,58,72" concept="4" />
-      <node id="219803515060660835" at="58,72,59,75" concept="4" />
-      <node id="219803515060651304" at="62,9,63,0" concept="12" />
-      <node id="2830822894493087468" at="65,9,66,68" concept="9" />
-      <node id="2830822894493087468" at="66,68,67,242" concept="9" />
-      <node id="5244127163020193543" at="70,9,71,68" concept="9" />
-      <node id="5244127163020193543" at="71,68,72,261" concept="9" />
-      <node id="2830822894489996786" at="79,0,80,0" concept="13" trace="FunctionType$ig" />
+      <node id="219803515060660834" at="52,13,53,72" concept="9" />
+      <node id="219803515060660834" at="53,72,54,245" concept="9" />
+      <node id="219803515060660835" at="55,15,56,180" concept="9" />
+      <node id="219803515060660836" at="56,180,57,70" concept="4" />
+      <node id="219803515060660838" at="57,70,58,79" concept="4" />
+      <node id="219803515060687226" at="58,79,59,74" concept="4" />
+      <node id="219803515060660835" at="59,74,60,77" concept="4" />
+      <node id="192512837082807532" at="63,18,64,207" concept="11" />
+      <node id="192512837082836997" at="64,207,65,247" concept="11" />
+      <node id="192512837082859924" at="65,247,66,335" concept="11" />
+      <node id="192512837084831605" at="66,335,67,60" concept="9" />
+      <node id="192512837084828272" at="67,60,68,110" concept="9" />
+      <node id="192512837082705263" at="69,13,70,72" concept="9" />
+      <node id="192512837082705263" at="70,72,71,523" concept="9" />
+      <node id="219803515060651304" at="74,9,75,0" concept="12" />
+      <node id="2830822894493087468" at="77,9,78,68" concept="9" />
+      <node id="2830822894493087468" at="78,68,79,242" concept="9" />
+      <node id="5244127163020193543" at="82,9,83,68" concept="9" />
+      <node id="5244127163020193543" at="83,68,84,261" concept="9" />
+      <node id="2830822894489996786" at="91,0,92,0" concept="13" trace="FunctionType$ig" />
       <node id="2830822894493087540" at="43,204,46,9" concept="7" />
-      <node id="2830822894493087468" at="64,42,68,9" concept="0" />
-      <node id="5244127163020193543" at="69,46,73,9" concept="0" />
-      <node id="219803515060660835" at="53,243,60,13" concept="0" />
-      <node id="219803515060660834" at="50,136,61,11" concept="0" />
-      <node id="219803515060660832" at="49,73,62,9" concept="7" />
-      <node id="2830822894493087462" at="38,31,74,7" concept="16" />
-      <node id="2830822894493087460" at="37,65,75,5" concept="7" />
-      <node id="2830822894490201114" at="34,0,77,0" concept="14" trace="improveCall#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/kotlin/overloading/FunctionCall;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SReferenceLink;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P0_E0;)V" />
+      <node id="192512837082705263" at="68,110,72,13" concept="0" />
+      <node id="2830822894493087468" at="76,42,80,9" concept="0" />
+      <node id="5244127163020193543" at="81,46,85,9" concept="0" />
+      <node id="219803515060660835" at="54,245,61,15" concept="0" />
+      <node id="192512837082703527" at="63,16,73,11" concept="0" />
+      <node id="219803515060660834" at="51,126,62,13" concept="0" />
+      <node id="192512837082674851" at="50,136,73,11" concept="7" />
+      <node id="219803515060660832" at="49,73,74,9" concept="7" />
+      <node id="2830822894493087462" at="38,31,86,7" concept="16" />
+      <node id="2830822894493087460" at="37,65,87,5" concept="7" />
+      <node id="2830822894490201114" at="34,0,89,0" concept="14" trace="improveCall#(Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/kotlin/overloading/FunctionCall;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SReferenceLink;Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P0_E0;)V" />
       <scope id="2830822894493087541" at="44,168,45,17" />
-      <scope id="2830822894493087468" at="65,9,67,242">
+      <scope id="192512837082705263" at="69,13,71,523">
+        <var name="_reporter_2309309498" id="192512837082705263" />
+        <var name="errorTarget" id="192512837082705263" />
+      </scope>
+      <scope id="2830822894493087468" at="77,9,79,242">
         <var name="_reporter_2309309498" id="2830822894493087468" />
         <var name="errorTarget" id="2830822894493087468" />
       </scope>
-      <scope id="5244127163020193543" at="70,9,72,261">
+      <scope id="5244127163020193543" at="82,9,84,261">
         <var name="_reporter_2309309498" id="5244127163020193543" />
         <var name="errorTarget" id="5244127163020193543" />
       </scope>
-      <scope id="2830822894493087467" at="64,42,68,9" />
-      <scope id="5244127163020190660" at="69,46,73,9" />
-      <scope id="219803515060660835" at="54,13,59,75">
+      <scope id="2830822894493087467" at="76,42,80,9" />
+      <scope id="5244127163020190660" at="81,46,85,9" />
+      <scope id="219803515060660835" at="55,15,60,77">
         <var name="intentionProvider" id="219803515060660835" />
       </scope>
-      <scope id="2830822894493087463" at="64,7,69,7">
+      <scope id="2830822894493087463" at="76,7,81,7">
         <var name="error" id="2830822894493087464" />
       </scope>
-      <scope id="5244127163020190659" at="69,7,74,7">
+      <scope id="5244127163020190659" at="81,7,86,7">
         <var name="e" id="5244127163020190661" />
       </scope>
-      <scope id="219803515060660834" at="51,11,60,13">
+      <scope id="219803515060660834" at="52,13,61,15">
         <var name="_reporter_2309309498" id="219803515060660834" />
         <var name="errorTarget" id="219803515060660834" />
       </scope>
-      <scope id="219803515060660833" at="50,136,61,11" />
-      <scope id="2830822894493087470" at="39,11,63,0">
+      <scope id="192512837082703528" at="63,18,72,13">
+        <var name="receiverString" id="192512837084828275" />
+        <var name="receiverType" id="192512837084831606" />
+      </scope>
+      <scope id="192512837082674853" at="51,126,62,13" />
+      <scope id="219803515060660833" at="50,136,73,11" />
+      <scope id="2830822894493087470" at="39,11,75,0">
         <var name="reference" id="219803515060660825" />
         <var name="resolved" id="2830822894493087472" />
       </scope>
-      <scope id="2830822894493087461" at="38,31,74,7" />
-      <scope id="2830822894489998046" at="35,239,75,5" />
-      <scope id="2830822894490201114" at="34,0,77,0">
+      <scope id="2830822894493087461" at="38,31,86,7" />
+      <scope id="2830822894489998046" at="35,239,87,5" />
+      <scope id="2830822894490201114" at="34,0,89,0">
         <var name="call" id="2830822894490009988" />
         <var name="functionHolder" id="2830822894490004570" />
         <var name="functionLink" id="2830822894490005093" />
         <var name="scopeProviderFunction" id="7162518405727974659" />
         <var name="typeCheckingContext" id="2830822894490201114" />
       </scope>
-      <unit id="2830822894489996786" at="78,0,81,0" name="jetbrains.mps.kotlin.typesystem.AutomaticResolutionHelper$CONCEPTS" />
-      <unit id="2830822894489996786" at="26,0,82,0" name="jetbrains.mps.kotlin.typesystem.AutomaticResolutionHelper" />
+      <unit id="2830822894489996786" at="90,0,93,0" name="jetbrains.mps.kotlin.typesystem.AutomaticResolutionHelper$CONCEPTS" />
+      <unit id="2830822894489996786" at="26,0,94,0" name="jetbrains.mps.kotlin.typesystem.AutomaticResolutionHelper" />
     </file>
   </root>
   <root nodeRef="r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)/2830822894491900434">
