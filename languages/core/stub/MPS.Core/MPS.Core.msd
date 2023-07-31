@@ -11,7 +11,6 @@
     </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <!-- For historical reasons, next libraries were exposed through MPS.Core; need to write migration code to update references to proper solutions -->
-      <sourceRoot location="util.jar" />
       <sourceRoot location="util-8.jar" />
       <sourceRoot location="util_rt.jar" />
       <PackageScope>
@@ -24,7 +23,6 @@
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
       <library location="${mps_home}/lib/mps-core.jar" />
-      <library location="${mps_home}/lib/mps-boot-util.jar" />
       <library location="${mps_home}/lib/mps-project-check.jar" />
 
       <!-- shall extract next out of MPS.Core -->
@@ -34,9 +32,8 @@
       <library location="${mps_home}/lib/mps-collections.jar" />
       <library location="${mps_home}/lib/mps-tuples.jar" />
       <!-- Some code expects MPS.Core to provide next libraries as classpath. Don't want to add guava, xstream, asm-all unless have to do so-->
-      <library location="${platform_lib}/util.jar" /> <!-- likely, don't need one once there's no trove4j -->
       <library location="${platform_lib}/util-8.jar" /> <!-- this one is for jdom -->
-      <library location="${platform_lib}/util_rt.jar" />
+      <library location="${platform_lib}/util_rt.jar" /> <!-- this one is for trove -->
     </facet>
   </facets>
   <sourcePath />
