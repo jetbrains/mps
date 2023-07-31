@@ -143,7 +143,7 @@ public final class MacrosFactory implements MacroHelper.Source {
       if (a.stream().anyMatch(MacrosFactory::containsMacro)) {
         // HomeMacros superclass found some global path var to substitute, go on then
         alternatives.addAll(a);
-        return;
+        // fall-through, collect other alternatives, just in case
       }
       // try ${module}/../
       final IFile anchorParent = anchorFolder.getParent();
