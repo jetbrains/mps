@@ -20,6 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.structure.constraints.Scopes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -85,7 +86,7 @@ public class LinkDeclaration_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return Sequence.fromIterable(Scopes.forConcepts(_context.getParentNode(), CONCEPTS.AbstractConceptDeclaration$KA).getAvailableElements("")).select((it) -> SNodeOperations.as(it, CONCEPTS.AbstractConceptDeclaration$KA)).where((it) -> it != null).toList();
+        return Sequence.fromIterable(Scopes.forConcepts(_context.getParentNode(), CONCEPTS.AbstractConceptDeclaration$KA).getAvailableElements("")).select((it) -> SNodeOperations.as(it, CONCEPTS.AbstractConceptDeclaration$KA)).where(new NotNullWhereFilter()).toList();
       }
       private class SMP_Action_3looc_a0a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;

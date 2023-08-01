@@ -715,6 +715,7 @@
       <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
       <concept id="1172254888721" name="jetbrains.mps.baseLanguage.collections.structure.ContainsOperation" flags="nn" index="3JPx81" />
+      <concept id="31378964227347002" name="jetbrains.mps.baseLanguage.collections.structure.SelectNotNullOperation" flags="ng" index="1KnU$U" />
       <concept id="5686963296372573083" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerType" flags="in" index="3O5elB">
         <child id="5686963296372573084" name="elementType" index="3O5elw" />
       </concept>
@@ -10428,24 +10429,7 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="3zZkjj" id="1wEcoXjJfjH" role="2OqNvi">
-                    <node concept="1bVj0M" id="1wEcoXjJfjI" role="23t8la">
-                      <node concept="3clFbS" id="1wEcoXjJfjJ" role="1bW5cS">
-                        <node concept="3clFbF" id="1wEcoXjJfjK" role="3cqZAp">
-                          <node concept="3y3z36" id="1wEcoXjJfjL" role="3clFbG">
-                            <node concept="10Nm6u" id="1wEcoXjJfjM" role="3uHU7w" />
-                            <node concept="37vLTw" id="1wEcoXjJfjN" role="3uHU7B">
-                              <ref role="3cqZAo" node="5W7E4fV0Wv7" resolve="it" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="gl6BB" id="5W7E4fV0Wv7" role="1bW2Oz">
-                        <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="5W7E4fV0Wv8" role="1tU5fm" />
-                      </node>
-                    </node>
-                  </node>
+                  <node concept="1KnU$U" id="6W7kgSAm_vu" role="2OqNvi" />
                 </node>
                 <node concept="ANE8D" id="1wEcoXjJfjQ" role="2OqNvi" />
               </node>

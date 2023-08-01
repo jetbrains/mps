@@ -22,6 +22,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
 /**
+ * NOTE: use of this class is discouraged. It's still referenced in some MPS templates
+ * (namely in j.m.lang.resources, ConceptIconResourceExpression) and in use from editor runtime. Latter shall get
+ * replaced with editor-specific impl, and j.m.lang.resources likely deserves own runtime (not MPS.Core).
+ * Then, this class shall become history - [kernel] or MPS.Core shall not be a runtime for everything.
+ *
  * @author simon
  */
 public class IconResourceUtil {

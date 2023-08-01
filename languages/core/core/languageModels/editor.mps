@@ -56,10 +56,6 @@
       <concept id="784421273959493166" name="jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_TargetNode" flags="ig" index="mvVNg" />
       <concept id="1142886221719" name="jetbrains.mps.lang.editor.structure.QueryFunction_NodeCondition" flags="in" index="pkWqt" />
       <concept id="1142886811589" name="jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node" flags="nn" index="pncrf" />
-      <concept id="8478191136886962269" name="jetbrains.mps.lang.editor.structure.SubstituteFeature_Icon" flags="ng" index="pEUQQ">
-        <child id="8478191136886962270" name="query" index="pEUQP" />
-      </concept>
-      <concept id="8478191136886971898" name="jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_Icon" flags="in" index="pEWwh" />
       <concept id="1237385578942" name="jetbrains.mps.lang.editor.structure.IndentLayoutOnNewLineStyleClassItem" flags="ln" index="pVoyu" />
       <concept id="4820515453818318288" name="jetbrains.mps.lang.editor.structure.ConceptEditorHintDeclarationReferenceExpression" flags="ng" index="2pYGij">
         <reference id="4820515453818318891" name="hint" index="2pYH_C" />
@@ -1955,19 +1951,6 @@
                       <node concept="Xl_RD" id="2jnOeKLan3j" role="3uHU7B">
                         <property role="Xl_RC" value="lang: " />
                       </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="pEUQQ" id="3FNV1f3zNhY" role="upBLP">
-              <node concept="pEWwh" id="3FNV1f3zNhZ" role="pEUQP">
-                <node concept="3clFbS" id="3FNV1f3zNi0" role="2VODD2">
-                  <node concept="3clFbF" id="3FNV1f3_6Ar" role="3cqZAp">
-                    <node concept="2YIFZM" id="3FNV1f3_6Gt" role="3clFbG">
-                      <ref role="37wK5l" to="ze1i:~IconResourceUtil.getIconResourceForConcept(org.jetbrains.mps.openapi.language.SAbstractConcept)" resolve="getIconResourceForConcept" />
-                      <ref role="1Pybhc" to="ze1i:~IconResourceUtil" resolve="IconResourceUtil" />
-                      <node concept="2ZBlsa" id="2wOKyujLcUw" role="37wK5m" />
                     </node>
                   </node>
                 </node>

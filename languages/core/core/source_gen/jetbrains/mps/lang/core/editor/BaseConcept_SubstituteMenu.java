@@ -26,7 +26,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
-import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.lang.editor.menus.substitute.IncludeSubstituteMenuSubstituteMenuPart;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -155,6 +154,11 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
             }
             @Nullable
             @Override
+            public IconResource getIcon(@NotNull String pattern) {
+              return defaultIconForParameter(myParameterObject, pattern);
+            }
+            @Nullable
+            @Override
             public String getMatchingText(@NotNull String pattern) {
               return myParameterObject.getName();
             }
@@ -162,11 +166,6 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
             @Override
             public String getDescriptionText(@NotNull String pattern) {
               return "lang: " + myParameterObject.getLanguage().getQualifiedName();
-            }
-            @Nullable
-            @Override
-            public IconResource getIcon(@NotNull String pattern) {
-              return IconResourceUtil.getIconResourceForConcept(myParameterObject);
             }
           }
         }

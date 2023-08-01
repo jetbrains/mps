@@ -62938,32 +62938,6 @@
             </node>
           </node>
         </node>
-        <node concept="pEUQQ" id="6SIgReOQGe_" role="upBLP">
-          <node concept="pEWwh" id="6SIgReOQGeA" role="pEUQP">
-            <node concept="3clFbS" id="6SIgReOQGeB" role="2VODD2">
-              <node concept="3SKdUt" id="6SIgReOUE4r" role="3cqZAp">
-                <node concept="1PaTwC" id="6SIgReOUE4s" role="1aUNEU">
-                  <node concept="3oM_SD" id="6SIgReOUE4u" role="1PaTwD">
-                    <property role="3oM_SC" value="todo:" />
-                  </node>
-                  <node concept="3oM_SD" id="6SIgReOUE5u" role="1PaTwD">
-                    <property role="3oM_SC" value="visibility" />
-                  </node>
-                  <node concept="3oM_SD" id="6SIgReOUE5K" role="1PaTwD">
-                    <property role="3oM_SC" value="icon" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="6SIgReOUDJy" role="3cqZAp">
-                <node concept="2YIFZM" id="6SIgReOUDRM" role="3clFbG">
-                  <ref role="37wK5l" to="ze1i:~IconResourceUtil.getIconResourceForNode(org.jetbrains.mps.openapi.model.SNode)" resolve="getIconResourceForNode" />
-                  <ref role="1Pybhc" to="ze1i:~IconResourceUtil" resolve="IconResourceUtil" />
-                  <node concept="2ZBlsa" id="6SIgReOUDTc" role="37wK5m" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="3Tqbb2" id="7S22xyp2exA" role="2ZBHrp" />
       <node concept="2$S_p_" id="7S22xyp2ezo" role="2$S_pT">
