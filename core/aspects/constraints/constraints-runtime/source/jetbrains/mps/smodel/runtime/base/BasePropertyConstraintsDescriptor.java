@@ -40,10 +40,6 @@ public class BasePropertyConstraintsDescriptor implements PropertyConstraintsDes
     myProperty = property;
     myContainer = container;
 
-    // FIXME for whatever reason similar logic in BaseReferenceConstraintsDescriptor is different with respect to ownXXX check
-    //       And I feel it wasn't right to keep an d use  hasOwn() check in 1feba01a. After all, each parent already got 'something' using
-    //       inheritance, and getParentCalculatedDescriptor() method name suggests we expect this pre-'calculated' value.
-    //       Therefore, I feel approach I take here, with direct access to parent 'pre-calculated' value, is the right one.
     getterDescriptor = ownGet ? this : getSomethingUsingInheritance(pd -> pd.getterDescriptor, property, container);
     setterDescriptor = ownSet ? this : getSomethingUsingInheritance(pd -> pd.setterDescriptor, property, container);
     validatorDescriptor = ownValidate ? this : getSomethingUsingInheritance(pd -> pd.validatorDescriptor, property, container);

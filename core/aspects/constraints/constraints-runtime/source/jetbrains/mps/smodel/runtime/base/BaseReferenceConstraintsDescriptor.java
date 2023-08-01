@@ -29,8 +29,6 @@ public class BaseReferenceConstraintsDescriptor implements ReferenceConstraintsD
   private final SReferenceLink myReferenceLink;
   private final ConstraintsDescriptor container;
 
-  private final boolean myOwnScope, myOwnRefHandler;
-
   private final ReferenceConstraintsDescriptor scopeProviderDescriptor;
   private final ReferenceConstraintsDescriptor onReferenceSetHandlerDescriptor;
 
@@ -40,10 +38,8 @@ public class BaseReferenceConstraintsDescriptor implements ReferenceConstraintsD
   public BaseReferenceConstraintsDescriptor(SReferenceLink referenceLink, ConstraintsDescriptor container, boolean ownScope, boolean ownRefHandler) {
     myReferenceLink = referenceLink;
     this.container = container;
-    myOwnScope = ownScope;
-    myOwnRefHandler = ownRefHandler;
-    scopeProviderDescriptor = ownScope ? this : getSomethingUsingInheritance(container, referenceLink, SCOPE_INHERITANCE_PARAMETERS);
-    onReferenceSetHandlerDescriptor = ownRefHandler ? this : getSomethingUsingInheritance(container, referenceLink, ON_SET_HANDLER_INHERITANCE_PARAMETERS);
+    scopeProviderDescriptor = ownScope ? this : getSomethingUsingInheritance(container, referenceLink, pd -> pd.scopeProviderDescriptor);
+    onReferenceSetHandlerDescriptor = ownRefHandler ? this : getSomethingUsingInheritance(container, referenceLink, pd -> pd.onReferenceSetHandlerDescriptor);
   }
 
   @Nullable
@@ -111,9 +107,4 @@ public class BaseReferenceConstraintsDescriptor implements ReferenceConstraintsD
   private interface InheritanceCalculateParameters {
     ReferenceConstraintsDescriptor getParentCalculatedDescriptor(BaseReferenceConstraintsDescriptor parentDescriptor);
   }
-
-  private static final InheritanceCalculateParameters SCOPE_INHERITANCE_PARAMETERS =
-      parentDescriptor -> parentDescriptor.myOwnScope ? parentDescriptor.scopeProviderDescriptor : null;
-  private static final InheritanceCalculateParameters ON_SET_HANDLER_INHERITANCE_PARAMETERS =
-      parentDescriptor -> parentDescriptor.myOwnRefHandler ? parentDescriptor.onReferenceSetHandlerDescriptor : null;
 }
