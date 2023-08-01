@@ -139,7 +139,7 @@ public class ModelConstraints {
                                               SProperty property,
                                               Object propertyValue,
                                               @Nullable CheckingNodeContext checkingNodeContext) {
-    // there's 1 use in mps-extensions
+    // there's 1 use in mps-extensions, removed in mps/2023.2 branch
     FailingPropertyConstraintContext context = new FailingPropertyConstraintContext(node, property, propertyValue);
     List<FailingPropertyConstraintProblem> result = ConstraintsChildAndPropFacade.checkPropertyValue(context);
     if (result.isEmpty()) {
