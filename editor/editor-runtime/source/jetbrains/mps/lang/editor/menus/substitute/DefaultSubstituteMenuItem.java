@@ -19,12 +19,14 @@ import jetbrains.mps.actions.runtime.impl.ActionsUtil;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.menus.EditorMenuTrace;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
@@ -39,6 +41,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 /**
  * @author simon
@@ -58,7 +61,7 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
 
   @NotNull
   private final EditorContext myEditorContext;
-  private final EditorMenuTraceInfo myTraceInfo;
+  private EditorMenuTraceInfo myTraceInfo;
 
   protected final SubstituteMenuContext myContext;
 
@@ -69,6 +72,21 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
     myEditorContext = context.getEditorContext();
     myTraceInfo = context.getEditorMenuTrace().getTraceInfo();
     myContext = context;
+  }
+
+  // occasionally there's a need to change EMTraceInfo *after* creation of an item.
+  // Proper way is to pass correct info right into cons, however present templates for parameterized actions
+  // access this item's information to build description, hence this update() method. Keep 'protected' to limit uses to specific
+  // scenarios. Would be great to pass as arg cons, eventually.
+  protected void updateTraceInfo(String description, SNodeReference menuPointer) {
+    final EditorMenuTrace emt = myContext.getEditorMenuTrace();
+    emt.pushTraceInfo();
+    try {
+      emt.setDescriptor(new EditorMenuDescriptorBase(description, menuPointer));
+      myTraceInfo = emt.getTraceInfo();
+    } finally {
+      emt.popTraceInfo();
+    }
   }
 
   @Nullable
@@ -204,5 +222,35 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
         customizer.customize(style, compositeContext);
       }
     }
+  }
+
+  protected final String defaultMatchingTextForParameter(Object parameterObject, String pattern) {
+    if (parameterObject instanceof SNode) {
+      return NodePresentationUtil.visibleMatchingText((SNode) parameterObject, null);
+    }
+    if (parameterObject instanceof SAbstractConcept) {
+      return NodePresentationUtil.matchingText((SAbstractConcept) parameterObject);
+    }
+    return String.valueOf(parameterObject);
+  }
+
+  protected final String defaultDescriptionTextForParameter(Object parameterObject, String pattern) {
+    if (parameterObject instanceof SNode) {
+      return NodePresentationUtil.descriptionText((SNode) parameterObject);
+    }
+    if (parameterObject instanceof SAbstractConcept) {
+      return NodePresentationUtil.descriptionText((SAbstractConcept) parameterObject);
+    }
+    return String.valueOf(parameterObject);
+  }
+
+  protected final IconResource defaultIconForParameter(Object parameterObject, String pattern) {
+    if (parameterObject instanceof SNode) {
+      return IconResourceUtil.getIconResourceForNode((SNode) parameterObject);
+    }
+    if (parameterObject instanceof SAbstractConcept) {
+      return IconResourceUtil.getIconResourceForConcept((SAbstractConcept) parameterObject);
+    }
+    return null;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.lang.editor.menus.substitute;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import org.jetbrains.annotations.NotNull;
@@ -30,10 +31,18 @@ public class SingleItemSubstituteMenuPart implements SubstituteMenuPart {
   @NotNull
   @Override
   public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-    SubstituteMenuItem item = createItem(context);
-    if (item == null) return Collections.emptyList();
-
-    return Collections.singletonList(item);
+    try {
+      SubstituteMenuItem item = createItem(context);
+      if (item != null) {
+        return Collections.singletonList(item);
+      }
+    } catch (Throwable th) {
+      // there's a test TestSubstituteExceptionActionMatchingTextChild_SubstituteMenu intentionally
+      // throwing an exception from getMatchingText()
+      Logger.getLogger(getClass()).error("Exception while creating substitute menu item", th);
+      // fall-through
+    }
+    return Collections.emptyList();
   }
 
   @Nullable
