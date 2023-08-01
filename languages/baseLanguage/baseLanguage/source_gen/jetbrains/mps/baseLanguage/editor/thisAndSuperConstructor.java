@@ -20,15 +20,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
-import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -102,35 +99,20 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
           Item item = new Item(_context);
-          String description;
-          try {
-            description = "Substitute item: " + item.getMatchingText("");
-            description += ". Parameter object: " + myParameterObject;
-          } catch (Throwable t) {
-            Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-            return null;
-          }
-
-          _context.getEditorMenuTrace().pushTraceInfo();
-          try {
-            _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586962716")));
-            item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-          } finally {
-            _context.getEditorMenuTrace().popTraceInfo();
-          }
-
+          item.resetTraceInfo();
           return item;
         }
         private class Item extends DefaultSubstituteMenuItem {
           private final SubstituteMenuContext _context;
-          private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
             super(CONCEPTS.ThisConstructorInvocation$q$, context);
             _context = context;
           }
 
-          private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-            myTraceInfo = traceInfo;
+          /*package*/ void resetTraceInfo() {
+            String description = "Substitute item: " + getMatchingText("");
+            description += ". Parameter object: " + myParameterObject;
+            updateTraceInfo(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586962716"));
           }
 
           @Nullable
@@ -146,10 +128,6 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
             return newNode;
           }
 
-          @Override
-          public EditorMenuTraceInfo getTraceInfo() {
-            return myTraceInfo;
-          }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
             return new CompletionItemInformation(myParameterObject, CONCEPTS.ThisConstructorInvocation$q$, getMatchingText(pattern), getDescriptionText(pattern));
@@ -157,10 +135,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           @Nullable
           @Override
           public IconResource getIcon(@NotNull String pattern) {
-            if (myParameterObject instanceof SNode) {
-              return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
-            }
-            return null;
+            return defaultIconForParameter(myParameterObject, pattern);
           }
           @Nullable
           @Override
@@ -213,35 +188,20 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
           Item item = new Item(_context);
-          String description;
-          try {
-            description = "Substitute item: " + item.getMatchingText("");
-            description += ". Parameter object: " + myParameterObject;
-          } catch (Throwable t) {
-            Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-            return null;
-          }
-
-          _context.getEditorMenuTrace().pushTraceInfo();
-          try {
-            _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586962919")));
-            item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-          } finally {
-            _context.getEditorMenuTrace().popTraceInfo();
-          }
-
+          item.resetTraceInfo();
           return item;
         }
         private class Item extends DefaultSubstituteMenuItem {
           private final SubstituteMenuContext _context;
-          private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
             super(CONCEPTS.SuperConstructorInvocation$wU, context);
             _context = context;
           }
 
-          private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-            myTraceInfo = traceInfo;
+          /*package*/ void resetTraceInfo() {
+            String description = "Substitute item: " + getMatchingText("");
+            description += ". Parameter object: " + myParameterObject;
+            updateTraceInfo(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586962919"));
           }
 
           @Nullable
@@ -257,10 +217,6 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
             return newNode;
           }
 
-          @Override
-          public EditorMenuTraceInfo getTraceInfo() {
-            return myTraceInfo;
-          }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
             return new CompletionItemInformation(myParameterObject, CONCEPTS.SuperConstructorInvocation$wU, getMatchingText(pattern), getDescriptionText(pattern));
@@ -268,10 +224,7 @@ public class thisAndSuperConstructor extends SubstituteMenuBase {
           @Nullable
           @Override
           public IconResource getIcon(@NotNull String pattern) {
-            if (myParameterObject instanceof SNode) {
-              return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
-            }
-            return null;
+            return defaultIconForParameter(myParameterObject, pattern);
           }
           @Nullable
           @Override

@@ -23,13 +23,9 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
-import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
-import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -142,35 +138,20 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
           @Override
           protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
             Item item = new Item(_context);
-            String description;
-            try {
-              description = "Substitute item: " + item.getMatchingText("");
-              description += ". Parameter object: " + myParameterObject;
-            } catch (Throwable t) {
-              Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-              return null;
-            }
-
-            _context.getEditorMenuTrace().pushTraceInfo();
-            try {
-              _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586959425")));
-              item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-            } finally {
-              _context.getEditorMenuTrace().popTraceInfo();
-            }
-
+            item.resetTraceInfo();
             return item;
           }
           private class Item extends DefaultSubstituteMenuItem {
             private final SubstituteMenuContext _context;
-            private EditorMenuTraceInfo myTraceInfo;
             public Item(SubstituteMenuContext context) {
               super(CONCEPTS.TypeVariableReference$WL, context);
               _context = context;
             }
 
-            private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-              myTraceInfo = traceInfo;
+            /*package*/ void resetTraceInfo() {
+              String description = "Substitute item: " + getMatchingText("");
+              description += ". Parameter object: " + myParameterObject;
+              updateTraceInfo(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586959425"));
             }
 
             @Nullable
@@ -179,10 +160,6 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
               return _quotation_createNode_mqq6an_a0a0a0a0(myParameterObject);
             }
 
-            @Override
-            public EditorMenuTraceInfo getTraceInfo() {
-              return myTraceInfo;
-            }
             @NotNull
             protected CompletionItemInformation createInformation(String pattern) {
               return new CompletionItemInformation(myParameterObject, CONCEPTS.TypeVariableReference$WL, getMatchingText(pattern), getDescriptionText(pattern));
@@ -190,26 +167,17 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
             @Nullable
             @Override
             public String getMatchingText(@NotNull String pattern) {
-              if (myParameterObject instanceof SNode) {
-                return NodePresentationUtil.visibleMatchingText((SNode) myParameterObject, null);
-              }
-              return "" + myParameterObject;
+              return defaultMatchingTextForParameter(myParameterObject, pattern);
             }
             @Nullable
             @Override
             public String getDescriptionText(@NotNull String pattern) {
-              if (myParameterObject instanceof SNode) {
-                return NodePresentationUtil.descriptionText((SNode) myParameterObject);
-              }
-              return "" + myParameterObject;
+              return defaultDescriptionTextForParameter(myParameterObject, pattern);
             }
             @Nullable
             @Override
             public IconResource getIcon(@NotNull String pattern) {
-              if (myParameterObject instanceof SNode) {
-                return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
-              }
-              return null;
+              return defaultIconForParameter(myParameterObject, pattern);
             }
           }
         }
@@ -247,35 +215,20 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
           @Override
           protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
             Item item = new Item(_context);
-            String description;
-            try {
-              description = "Substitute item: " + item.getMatchingText("");
-              description += ". Parameter object: " + myParameterObject;
-            } catch (Throwable t) {
-              Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-              return null;
-            }
-
-            _context.getEditorMenuTrace().pushTraceInfo();
-            try {
-              _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586959503")));
-              item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-            } finally {
-              _context.getEditorMenuTrace().popTraceInfo();
-            }
-
+            item.resetTraceInfo();
             return item;
           }
           private class Item extends DefaultSubstituteMenuItem {
             private final SubstituteMenuContext _context;
-            private EditorMenuTraceInfo myTraceInfo;
             public Item(SubstituteMenuContext context) {
               super(CONCEPTS.ClassifierType$bL, context);
               _context = context;
             }
 
-            private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-              myTraceInfo = traceInfo;
+            /*package*/ void resetTraceInfo() {
+              String description = "Substitute item: " + getMatchingText("");
+              description += ". Parameter object: " + myParameterObject;
+              updateTraceInfo(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586959503"));
             }
 
             @Nullable
@@ -286,10 +239,6 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
               return result;
             }
 
-            @Override
-            public EditorMenuTraceInfo getTraceInfo() {
-              return myTraceInfo;
-            }
             @NotNull
             protected CompletionItemInformation createInformation(String pattern) {
               return new CompletionItemInformation(myParameterObject, CONCEPTS.ClassifierType$bL, getMatchingText(pattern), getDescriptionText(pattern));
@@ -297,26 +246,17 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
             @Nullable
             @Override
             public String getMatchingText(@NotNull String pattern) {
-              if (myParameterObject instanceof SNode) {
-                return NodePresentationUtil.visibleMatchingText((SNode) myParameterObject, null);
-              }
-              return "" + myParameterObject;
+              return defaultMatchingTextForParameter(myParameterObject, pattern);
             }
             @Nullable
             @Override
             public String getDescriptionText(@NotNull String pattern) {
-              if (myParameterObject instanceof SNode) {
-                return NodePresentationUtil.descriptionText((SNode) myParameterObject);
-              }
-              return "" + myParameterObject;
+              return defaultDescriptionTextForParameter(myParameterObject, pattern);
             }
             @Nullable
             @Override
             public IconResource getIcon(@NotNull String pattern) {
-              if (myParameterObject instanceof SNode) {
-                return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
-              }
-              return null;
+              return defaultIconForParameter(myParameterObject, pattern);
             }
           }
         }
@@ -350,34 +290,19 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
           Item item = new Item(_context);
-          String description;
-          try {
-            description = "Substitute item: " + item.getMatchingText("");
-          } catch (Throwable t) {
-            Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-            return null;
-          }
-
-          _context.getEditorMenuTrace().pushTraceInfo();
-          try {
-            _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "2120006842514245709")));
-            item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-          } finally {
-            _context.getEditorMenuTrace().popTraceInfo();
-          }
-
+          item.resetTraceInfo();
           return item;
         }
         private class Item extends DefaultSubstituteMenuItem {
           private final SubstituteMenuContext _context;
-          private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
             super(CONCEPTS.Type$bu, context);
             _context = context;
           }
 
-          private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-            myTraceInfo = traceInfo;
+          /*package*/ void resetTraceInfo() {
+            String description = "Substitute item: " + getMatchingText("");
+            updateTraceInfo(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "2120006842514245709"));
           }
 
           @Nullable
@@ -387,10 +312,6 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
             return _context.getCurrentTargetNode();
           }
 
-          @Override
-          public EditorMenuTraceInfo getTraceInfo() {
-            return myTraceInfo;
-          }
           @Override
           public boolean canExecute(@NotNull String pattern) {
             return canExecute_internal(pattern, false);

@@ -22,13 +22,9 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
-import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
-import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -100,35 +96,20 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
           Item item = new Item(_context);
-          String description;
-          try {
-            description = "Substitute item: " + item.getMatchingText("");
-            description += ". Parameter object: " + myParameterObject;
-          } catch (Throwable t) {
-            Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-            return null;
-          }
-
-          _context.getEditorMenuTrace().pushTraceInfo();
-          try {
-            _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:a841fea4-52c0-4064-96f2-7687a509aba5(jetbrains.mps.baseLanguage.tuples.editor)", "1741258697587121023")));
-            item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-          } finally {
-            _context.getEditorMenuTrace().popTraceInfo();
-          }
-
+          item.resetTraceInfo();
           return item;
         }
         private class Item extends DefaultSubstituteMenuItem {
           private final SubstituteMenuContext _context;
-          private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
             super(CONCEPTS.ClassifierType$bL, context);
             _context = context;
           }
 
-          private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-            myTraceInfo = traceInfo;
+          /*package*/ void resetTraceInfo() {
+            String description = "Substitute item: " + getMatchingText("");
+            description += ". Parameter object: " + myParameterObject;
+            updateTraceInfo(description, new SNodePointer("r:a841fea4-52c0-4064-96f2-7687a509aba5(jetbrains.mps.baseLanguage.tuples.editor)", "1741258697587121023"));
           }
 
           @Nullable
@@ -137,10 +118,6 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
             return _quotation_createNode_evf1f9_a0a0a0a(myParameterObject);
           }
 
-          @Override
-          public EditorMenuTraceInfo getTraceInfo() {
-            return myTraceInfo;
-          }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
             return new CompletionItemInformation(myParameterObject, CONCEPTS.ClassifierType$bL, getMatchingText(pattern), getDescriptionText(pattern));
@@ -148,26 +125,17 @@ public class namedTupleDeclaration_extends_Contribution extends SubstituteMenuBa
           @Nullable
           @Override
           public String getMatchingText(@NotNull String pattern) {
-            if (myParameterObject instanceof SNode) {
-              return NodePresentationUtil.visibleMatchingText((SNode) myParameterObject, null);
-            }
-            return "" + myParameterObject;
+            return defaultMatchingTextForParameter(myParameterObject, pattern);
           }
           @Nullable
           @Override
           public String getDescriptionText(@NotNull String pattern) {
-            if (myParameterObject instanceof SNode) {
-              return NodePresentationUtil.descriptionText((SNode) myParameterObject);
-            }
-            return "" + myParameterObject;
+            return defaultDescriptionTextForParameter(myParameterObject, pattern);
           }
           @Nullable
           @Override
           public IconResource getIcon(@NotNull String pattern) {
-            if (myParameterObject instanceof SNode) {
-              return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
-            }
-            return null;
+            return defaultIconForParameter(myParameterObject, pattern);
           }
         }
       }

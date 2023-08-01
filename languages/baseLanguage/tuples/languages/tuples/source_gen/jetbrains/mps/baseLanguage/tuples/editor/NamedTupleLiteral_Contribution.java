@@ -19,16 +19,12 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.baseLanguage.scopes.VisibilityUtil;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.tuples.behavior.NamedTupleDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
-import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
-import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -81,35 +77,20 @@ public class NamedTupleLiteral_Contribution extends SubstituteMenuBase {
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
         Item item = new Item(_context);
-        String description;
-        try {
-          description = "Substitute item: " + item.getMatchingText("");
-          description += ". Parameter object: " + myParameterObject;
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-          return null;
-        }
-
-        _context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:a841fea4-52c0-4064-96f2-7687a509aba5(jetbrains.mps.baseLanguage.tuples.editor)", "1741258697587121111")));
-          item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          _context.getEditorMenuTrace().popTraceInfo();
-        }
-
+        item.resetTraceInfo();
         return item;
       }
       private class Item extends DefaultSubstituteMenuItem {
         private final SubstituteMenuContext _context;
-        private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
           super(CONCEPTS.NamedTupleLiteral$rD, context);
           _context = context;
         }
 
-        private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-          myTraceInfo = traceInfo;
+        /*package*/ void resetTraceInfo() {
+          String description = "Substitute item: " + getMatchingText("");
+          description += ". Parameter object: " + myParameterObject;
+          updateTraceInfo(description, new SNodePointer("r:a841fea4-52c0-4064-96f2-7687a509aba5(jetbrains.mps.baseLanguage.tuples.editor)", "1741258697587121111"));
         }
 
         @Nullable
@@ -119,10 +100,6 @@ public class NamedTupleLiteral_Contribution extends SubstituteMenuBase {
           return _quotation_createNode_4kfnt3_a1a0a0(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(myParameterObject)).reversedList().translate((ntd) -> SLinkOperations.getChildren(ntd, LINKS.component$wCHx)).select(toRef).toList(), myParameterObject);
         }
 
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myTraceInfo;
-        }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
           return new CompletionItemInformation(myParameterObject, CONCEPTS.NamedTupleLiteral$rD, getMatchingText(pattern), getDescriptionText(pattern));
@@ -130,18 +107,12 @@ public class NamedTupleLiteral_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
-          if (myParameterObject instanceof SNode) {
-            return NodePresentationUtil.descriptionText((SNode) myParameterObject);
-          }
-          return "" + myParameterObject;
+          return defaultDescriptionTextForParameter(myParameterObject, pattern);
         }
         @Nullable
         @Override
         public IconResource getIcon(@NotNull String pattern) {
-          if (myParameterObject instanceof SNode) {
-            return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
-          }
-          return null;
+          return defaultIconForParameter(myParameterObject, pattern);
         }
         @Nullable
         @Override

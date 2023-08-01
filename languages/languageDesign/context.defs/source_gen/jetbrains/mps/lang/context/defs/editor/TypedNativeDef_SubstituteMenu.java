@@ -14,9 +14,7 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.editor.runtime.cells.CellIdManager;
@@ -53,34 +51,19 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
     @Override
     protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
       Item item = new Item(_context);
-      String description;
-      try {
-        description = "Substitute item: " + item.getMatchingText("");
-      } catch (Throwable t) {
-        Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-        return null;
-      }
-
-      _context.getEditorMenuTrace().pushTraceInfo();
-      try {
-        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:5441ac19-e3a2-4d9e-bc0b-a714425f0db4(jetbrains.mps.lang.context.defs.editor)", "315923949159579505")));
-        item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-      } finally {
-        _context.getEditorMenuTrace().popTraceInfo();
-      }
-
+      item.resetTraceInfo();
       return item;
     }
     private class Item extends DefaultSubstituteMenuItem {
       private final SubstituteMenuContext _context;
-      private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
         super(CONCEPTS.TypedNativeDef$33, context);
         _context = context;
       }
 
-      private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-        myTraceInfo = traceInfo;
+      /*package*/ void resetTraceInfo() {
+        String description = "Substitute item: " + getMatchingText("");
+        updateTraceInfo(description, new SNodePointer("r:5441ac19-e3a2-4d9e-bc0b-a714425f0db4(jetbrains.mps.lang.context.defs.editor)", "315923949159579505"));
       }
 
       @Nullable
@@ -89,10 +72,6 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
         return createTypedNativeDef_m53iyy_a0a0a(pattern);
       }
 
-      @Override
-      public EditorMenuTraceInfo getTraceInfo() {
-        return myTraceInfo;
-      }
       @Nullable
       @Override
       public String getMatchingText(@NotNull String pattern) {

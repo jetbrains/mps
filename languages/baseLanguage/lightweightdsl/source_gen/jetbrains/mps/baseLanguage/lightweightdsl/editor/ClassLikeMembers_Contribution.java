@@ -18,16 +18,12 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.lightweightdsl.actions.SubstituteUtil;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLClassMember__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
-import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -82,35 +78,20 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
         Item item = new Item(_context);
-        String description;
-        try {
-          description = "Substitute item: " + item.getMatchingText("");
-          description += ". Parameter object: " + myParameterObject;
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-          return null;
-        }
-
-        _context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:60fc5d65-00f5-411a-8513-c8d5fe6ffc51(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.editor)", "1741258697586929297")));
-          item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          _context.getEditorMenuTrace().popTraceInfo();
-        }
-
+        item.resetTraceInfo();
         return item;
       }
       private class Item extends DefaultSubstituteMenuItem {
         private final SubstituteMenuContext _context;
-        private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
           super(CONCEPTS.MethodInstance$jE, context);
           _context = context;
         }
 
-        private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-          myTraceInfo = traceInfo;
+        /*package*/ void resetTraceInfo() {
+          String description = "Substitute item: " + getMatchingText("");
+          description += ". Parameter object: " + myParameterObject;
+          updateTraceInfo(description, new SNodePointer("c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:60fc5d65-00f5-411a-8513-c8d5fe6ffc51(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.editor)", "1741258697586929297"));
         }
 
         @Nullable
@@ -120,10 +101,6 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
           return ((SNode) DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(myParameterObject, _context.getModel()));
         }
 
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myTraceInfo;
-        }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
           return new CompletionItemInformation(myParameterObject, CONCEPTS.MethodInstance$jE, getMatchingText(pattern), getDescriptionText(pattern));
@@ -131,10 +108,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public IconResource getIcon(@NotNull String pattern) {
-          if (myParameterObject instanceof SNode) {
-            return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
-          }
-          return null;
+          return defaultIconForParameter(myParameterObject, pattern);
         }
         @Nullable
         @Override
@@ -182,35 +156,20 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
         Item item = new Item(_context);
-        String description;
-        try {
-          description = "Substitute item: " + item.getMatchingText("");
-          description += ". Parameter object: " + myParameterObject;
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-          return null;
-        }
-
-        _context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:60fc5d65-00f5-411a-8513-c8d5fe6ffc51(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.editor)", "1741258697586929456")));
-          item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          _context.getEditorMenuTrace().popTraceInfo();
-        }
-
+        item.resetTraceInfo();
         return item;
       }
       private class Item extends DefaultSubstituteMenuItem {
         private final SubstituteMenuContext _context;
-        private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
           super(CONCEPTS.PropertyInstance$7w, context);
           _context = context;
         }
 
-        private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-          myTraceInfo = traceInfo;
+        /*package*/ void resetTraceInfo() {
+          String description = "Substitute item: " + getMatchingText("");
+          description += ". Parameter object: " + myParameterObject;
+          updateTraceInfo(description, new SNodePointer("c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:60fc5d65-00f5-411a-8513-c8d5fe6ffc51(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.editor)", "1741258697586929456"));
         }
 
         @Nullable
@@ -220,10 +179,6 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
           return ((SNode) DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(myParameterObject, _context.getModel()));
         }
 
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myTraceInfo;
-        }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
           return new CompletionItemInformation(myParameterObject, CONCEPTS.PropertyInstance$7w, getMatchingText(pattern), getDescriptionText(pattern));
@@ -231,10 +186,7 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public IconResource getIcon(@NotNull String pattern) {
-          if (myParameterObject instanceof SNode) {
-            return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
-          }
-          return null;
+          return defaultIconForParameter(myParameterObject, pattern);
         }
         @Nullable
         @Override
@@ -282,35 +234,20 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
         Item item = new Item(_context);
-        String description;
-        try {
-          description = "Substitute item: " + item.getMatchingText("");
-          description += ". Parameter object: " + myParameterObject;
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-          return null;
-        }
-
-        _context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:60fc5d65-00f5-411a-8513-c8d5fe6ffc51(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.editor)", "1741258697586929615")));
-          item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          _context.getEditorMenuTrace().popTraceInfo();
-        }
-
+        item.resetTraceInfo();
         return item;
       }
       private class Item extends DefaultSubstituteMenuItem {
         private final SubstituteMenuContext _context;
-        private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
           super(CONCEPTS.ClassifierMember$At, context);
           _context = context;
         }
 
-        private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-          myTraceInfo = traceInfo;
+        /*package*/ void resetTraceInfo() {
+          String description = "Substitute item: " + getMatchingText("");
+          description += ". Parameter object: " + myParameterObject;
+          updateTraceInfo(description, new SNodePointer("c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:60fc5d65-00f5-411a-8513-c8d5fe6ffc51(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.editor)", "1741258697586929615"));
         }
 
         @Nullable
@@ -320,10 +257,6 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
           return ((SNode) DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(myParameterObject, _context.getModel()));
         }
 
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myTraceInfo;
-        }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
           return new CompletionItemInformation(myParameterObject, CONCEPTS.ClassifierMember$At, getMatchingText(pattern), getDescriptionText(pattern));
@@ -331,18 +264,12 @@ public class ClassLikeMembers_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
-          if (myParameterObject instanceof SNode) {
-            return NodePresentationUtil.descriptionText((SNode) myParameterObject);
-          }
-          return "" + myParameterObject;
+          return defaultDescriptionTextForParameter(myParameterObject, pattern);
         }
         @Nullable
         @Override
         public IconResource getIcon(@NotNull String pattern) {
-          if (myParameterObject instanceof SNode) {
-            return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
-          }
-          return null;
+          return defaultIconForParameter(myParameterObject, pattern);
         }
         @Nullable
         @Override

@@ -18,9 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.modelapi.behavior.ModulePointer__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -78,35 +76,20 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
         Item item = new Item(_context);
-        String description;
-        try {
-          description = "Substitute item: " + item.getMatchingText("");
-          description += ". Parameter object: " + myParameterObject;
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-          return null;
-        }
-
-        _context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:7bd127a5-e641-4c13-b150-b9c9b96f76ae(jetbrains.mps.lang.modelapi.editor)", "8440876301206564019")));
-          item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          _context.getEditorMenuTrace().popTraceInfo();
-        }
-
+        item.resetTraceInfo();
         return item;
       }
       private class Item extends DefaultSubstituteMenuItem {
         private final SubstituteMenuContext _context;
-        private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
           super(CONCEPTS.ModulePointer$7i, context);
           _context = context;
         }
 
-        private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-          myTraceInfo = traceInfo;
+        /*package*/ void resetTraceInfo() {
+          String description = "Substitute item: " + getMatchingText("");
+          description += ". Parameter object: " + myParameterObject;
+          updateTraceInfo(description, new SNodePointer("r:7bd127a5-e641-4c13-b150-b9c9b96f76ae(jetbrains.mps.lang.modelapi.editor)", "8440876301206564019"));
         }
 
         @Nullable
@@ -115,10 +98,6 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
           return (SNode) ModulePointer__BehaviorDescriptor.create_id1Bs_61$mIAC.invoke(SNodeOperations.asSConcept(CONCEPTS.ModulePointer$7i), _context.getModel(), myParameterObject);
         }
 
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myTraceInfo;
-        }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
           return new CompletionItemInformation(myParameterObject, CONCEPTS.ModulePointer$7i, getMatchingText(pattern), getDescriptionText(pattern));
@@ -126,7 +105,7 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
-          return "";
+          return defaultDescriptionTextForParameter(myParameterObject, pattern);
         }
         @Nullable
         @Override
@@ -160,16 +139,16 @@ public class ContextRepositoryModules_SM extends SubstituteMenuBase {
         public IconResource getIcon(@NotNull String pattern) {
           SModule module = myParameterObject.resolve(_context.getEditorContext().getRepository());
           if (module instanceof Solution) {
-            return IconContainer.RESOURCE_a0a1a51e3d;
+            return IconContainer.RESOURCE_a0a1a31e3d;
           }
           if (module instanceof Language) {
-            return IconContainer.RESOURCE_a0a2a51e3d;
+            return IconContainer.RESOURCE_a0a2a31e3d;
           }
           if (module instanceof Generator) {
-            return IconContainer.RESOURCE_a0a3a51e3d;
+            return IconContainer.RESOURCE_a0a3a31e3d;
           }
           if (module instanceof DevKit) {
-            return IconContainer.RESOURCE_a0a4a51e3d;
+            return IconContainer.RESOURCE_a0a4a31e3d;
           }
           return null;
         }

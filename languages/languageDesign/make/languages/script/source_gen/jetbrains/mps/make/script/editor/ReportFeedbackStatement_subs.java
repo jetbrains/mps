@@ -21,9 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
@@ -96,35 +94,20 @@ public class ReportFeedbackStatement_subs extends SubstituteMenuBase {
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
           Item item = new Item(_context);
-          String description;
-          try {
-            description = "Substitute item: " + item.getMatchingText("");
-            description += ". Parameter object: " + myParameterObject;
-          } catch (Throwable t) {
-            Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-            return null;
-          }
-
-          _context.getEditorMenuTrace().pushTraceInfo();
-          try {
-            _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)", "1741258697587105293")));
-            item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-          } finally {
-            _context.getEditorMenuTrace().popTraceInfo();
-          }
-
+          item.resetTraceInfo();
           return item;
         }
         private class Item extends DefaultSubstituteMenuItem {
           private final SubstituteMenuContext _context;
-          private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
             super(CONCEPTS.ReportFeedbackStatement$s$, context);
             _context = context;
           }
 
-          private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-            myTraceInfo = traceInfo;
+          /*package*/ void resetTraceInfo() {
+            String description = "Substitute item: " + getMatchingText("");
+            description += ". Parameter object: " + myParameterObject;
+            updateTraceInfo(description, new SNodePointer("r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)", "1741258697587105293"));
           }
 
           @Nullable
@@ -133,10 +116,6 @@ public class ReportFeedbackStatement_subs extends SubstituteMenuBase {
             return _quotation_createNode_hskkdq_a0a0a0a(SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b82aL, "jetbrains.mps.make.script.structure.Feedback"), SEnumOperations.getMemberName0(myParameterObject)));
           }
 
-          @Override
-          public EditorMenuTraceInfo getTraceInfo() {
-            return myTraceInfo;
-          }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
             return new CompletionItemInformation(myParameterObject, CONCEPTS.ReportFeedbackStatement$s$, getMatchingText(pattern), getDescriptionText(pattern));
@@ -144,12 +123,12 @@ public class ReportFeedbackStatement_subs extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getDescriptionText(@NotNull String pattern) {
-            return "";
+            return defaultDescriptionTextForParameter(myParameterObject, pattern);
           }
           @Nullable
           @Override
           public IconResource getIcon(@NotNull String pattern) {
-            return null;
+            return defaultIconForParameter(myParameterObject, pattern);
           }
           @Nullable
           @Override

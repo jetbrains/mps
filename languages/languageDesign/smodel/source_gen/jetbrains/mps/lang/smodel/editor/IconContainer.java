@@ -5,7 +5,7 @@ package jetbrains.mps.lang.smodel.editor;
 import jetbrains.mps.smodel.runtime.IconResource;
 
 public class IconContainer {
-  protected static IconResource RESOURCE_a0a51e3d = new IconResource("language.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a51e3d_0 = new IconResource("lang-rt.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a51e3d_1 = new IconResource("devkit.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a31e3d = new IconResource("language.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a31e3d_0 = new IconResource("lang-rt.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a31e3d_1 = new IconResource("devkit.png", IconContainer.class);
 }

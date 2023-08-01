@@ -22,14 +22,10 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
-import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
-import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -101,35 +97,20 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
           Item item = new Item(_context);
-          String description;
-          try {
-            description = "Substitute item: " + item.getMatchingText("");
-            description += ". Parameter object: " + myParameterObject;
-          } catch (Throwable t) {
-            Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-            return null;
-          }
-
-          _context.getEditorMenuTrace().pushTraceInfo();
-          try {
-            _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:dc79d042-ba38-4e91-9392-42f38106ae44(jetbrains.mps.lang.behavior.editor)", "1741258697587172347")));
-            item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-          } finally {
-            _context.getEditorMenuTrace().popTraceInfo();
-          }
-
+          item.resetTraceInfo();
           return item;
         }
         private class Item extends DefaultSubstituteMenuItem {
           private final SubstituteMenuContext _context;
-          private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
             super(CONCEPTS.DotExpression$yW, context);
             _context = context;
           }
 
-          private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-            myTraceInfo = traceInfo;
+          /*package*/ void resetTraceInfo() {
+            String description = "Substitute item: " + getMatchingText("");
+            description += ". Parameter object: " + myParameterObject;
+            updateTraceInfo(description, new SNodePointer("r:dc79d042-ba38-4e91-9392-42f38106ae44(jetbrains.mps.lang.behavior.editor)", "1741258697587172347"));
           }
 
           @Nullable
@@ -143,10 +124,6 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
             return expr;
           }
 
-          @Override
-          public EditorMenuTraceInfo getTraceInfo() {
-            return myTraceInfo;
-          }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
             return new CompletionItemInformation(myParameterObject, CONCEPTS.DotExpression$yW, getMatchingText(pattern), getDescriptionText(pattern));
@@ -154,26 +131,17 @@ public class ConceptMethodsWithoutThis_Contribution extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getMatchingText(@NotNull String pattern) {
-            if (myParameterObject instanceof SNode) {
-              return NodePresentationUtil.visibleMatchingText((SNode) myParameterObject, null);
-            }
-            return "" + myParameterObject;
+            return defaultMatchingTextForParameter(myParameterObject, pattern);
           }
           @Nullable
           @Override
           public String getDescriptionText(@NotNull String pattern) {
-            if (myParameterObject instanceof SNode) {
-              return NodePresentationUtil.descriptionText((SNode) myParameterObject);
-            }
-            return "" + myParameterObject;
+            return defaultDescriptionTextForParameter(myParameterObject, pattern);
           }
           @Nullable
           @Override
           public IconResource getIcon(@NotNull String pattern) {
-            if (myParameterObject instanceof SNode) {
-              return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
-            }
-            return null;
+            return defaultIconForParameter(myParameterObject, pattern);
           }
         }
       }

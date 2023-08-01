@@ -21,16 +21,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
-import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class conceptFunctionParameters extends SubstituteMenuBase {
@@ -83,51 +78,32 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
       @Override
       protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
         Item item = new Item(_context);
-        String description;
-        try {
-          description = "Substitute item: " + item.getMatchingText("");
-          description += ". Parameter object: " + myParameterObject;
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-          return null;
-        }
-
-        _context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "9079830899487412016")));
-          item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          _context.getEditorMenuTrace().popTraceInfo();
-        }
-
+        item.resetTraceInfo();
         return item;
       }
       private class Item extends DefaultSubstituteMenuItem {
         private final SubstituteMenuContext _context;
-        private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
           super(CONCEPTS.Expression$mB, context);
           _context = context;
         }
 
-        private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-          myTraceInfo = traceInfo;
+        /*package*/ void resetTraceInfo() {
+          String description = "Substitute item: " + getMatchingText("");
+          description += ". Parameter object: " + myParameterObject;
+          updateTraceInfo(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "9079830899487412016"));
         }
 
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SModelInternal sModelInternal = as_4x8do5_a0a0a6e3d(_context.getModel(), SModelInternal.class);
+          SModelInternal sModelInternal = as_4x8do5_a0a0a5e3d(_context.getModel(), SModelInternal.class);
           if (!(sModelInternal.importedLanguageIds().contains(myParameterObject.getLanguage()))) {
             sModelInternal.addLanguage(myParameterObject.getLanguage());
           }
           return SNodeFactoryOperations.createNewNode(myParameterObject, null);
         }
 
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myTraceInfo;
-        }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
           return new CompletionItemInformation(myParameterObject, CONCEPTS.Expression$mB, getMatchingText(pattern), getDescriptionText(pattern));
@@ -135,32 +111,23 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          if (myParameterObject instanceof SAbstractConcept) {
-            return NodePresentationUtil.matchingText((SAbstractConcept) myParameterObject);
-          }
-          return "" + myParameterObject;
+          return defaultMatchingTextForParameter(myParameterObject, pattern);
         }
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
-          if (myParameterObject instanceof SAbstractConcept) {
-            return NodePresentationUtil.descriptionText((SAbstractConcept) myParameterObject);
-          }
-          return "" + myParameterObject;
+          return defaultDescriptionTextForParameter(myParameterObject, pattern);
         }
         @Nullable
         @Override
         public IconResource getIcon(@NotNull String pattern) {
-          if (myParameterObject instanceof SAbstractConcept) {
-            return IconResourceUtil.getIconResourceForConcept(((SAbstractConcept) myParameterObject));
-          }
-          return null;
+          return defaultIconForParameter(myParameterObject, pattern);
         }
       }
     }
 
   }
-  private static <T> T as_4x8do5_a0a0a6e3d(Object o, Class<T> type) {
+  private static <T> T as_4x8do5_a0a0a5e3d(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

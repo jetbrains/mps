@@ -21,9 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
@@ -104,35 +102,20 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
         @Override
         protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
           Item item = new Item(_context);
-          String description;
-          try {
-            description = "Substitute item: " + item.getMatchingText("");
-            description += ". Parameter object: " + myParameterObject;
-          } catch (Throwable t) {
-            Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-            return null;
-          }
-
-          _context.getEditorMenuTrace().pushTraceInfo();
-          try {
-            _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:7d438dd6-fddd-4f98-b0ae-eed9d2bebdce(jetbrains.mps.execution.configurations.editor)", "1741258697586939539")));
-            item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-          } finally {
-            _context.getEditorMenuTrace().popTraceInfo();
-          }
-
+          item.resetTraceInfo();
           return item;
         }
         private class Item extends DefaultSubstituteMenuItem {
           private final SubstituteMenuContext _context;
-          private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
             super(CONCEPTS.ConfigurationFromExecutorReference$3p, context);
             _context = context;
           }
 
-          private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-            myTraceInfo = traceInfo;
+          /*package*/ void resetTraceInfo() {
+            String description = "Substitute item: " + getMatchingText("");
+            description += ". Parameter object: " + myParameterObject;
+            updateTraceInfo(description, new SNodePointer("r:7d438dd6-fddd-4f98-b0ae-eed9d2bebdce(jetbrains.mps.execution.configurations.editor)", "1741258697586939539"));
           }
 
           @Nullable
@@ -141,10 +124,6 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
             return SNodeFactoryOperations.createNewNode(CONCEPTS.ConfigurationFromExecutorReference$3p, null);
           }
 
-          @Override
-          public EditorMenuTraceInfo getTraceInfo() {
-            return myTraceInfo;
-          }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
             return new CompletionItemInformation(myParameterObject, CONCEPTS.ConfigurationFromExecutorReference$3p, getMatchingText(pattern), getDescriptionText(pattern));
@@ -152,17 +131,17 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
           @Nullable
           @Override
           public String getMatchingText(@NotNull String pattern) {
-            return "" + myParameterObject;
+            return defaultMatchingTextForParameter(myParameterObject, pattern);
           }
           @Nullable
           @Override
           public String getDescriptionText(@NotNull String pattern) {
-            return "";
+            return defaultDescriptionTextForParameter(myParameterObject, pattern);
           }
           @Nullable
           @Override
           public IconResource getIcon(@NotNull String pattern) {
-            return null;
+            return defaultIconForParameter(myParameterObject, pattern);
           }
         }
       }
