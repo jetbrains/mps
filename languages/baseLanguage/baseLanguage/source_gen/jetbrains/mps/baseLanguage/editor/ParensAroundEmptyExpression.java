@@ -42,22 +42,13 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
   }
 
   public class SMP_Group_z82rnb_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_z82rnb_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586963518")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return Objects.equals(SNodeOperations.getConcept(_context.getCurrentTargetNode()), CONCEPTS.Expression$mB);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586963518")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_z82rnb_a0(), CONCEPTS.ParenthesizedExpression$Ws));
@@ -122,23 +113,14 @@ public class ParensAroundEmptyExpression extends SubstituteMenuBase {
     }
   }
   public class SMP_Group_z82rnb_b extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_z82rnb_b() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586963727")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       SConcept c = SNodeOperations.getConcept(_context.getCurrentTargetNode());
       return c != null && c.isAbstract();
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586963727")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_z82rnb_a1(), CONCEPTS.NotExpression$Pc));

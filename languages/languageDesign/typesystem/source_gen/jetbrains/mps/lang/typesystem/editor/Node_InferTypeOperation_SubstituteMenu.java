@@ -32,22 +32,13 @@ public class Node_InferTypeOperation_SubstituteMenu extends SubstituteMenuBase {
   }
 
   public class SMP_Group_no6eem_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_no6eem_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "1786743323642818035")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return !(RulesUtil.withinInferenceItem(_context.getParentNode())) && !(RulesUtil.withinTypeManagingItem(_context.getParentNode()));
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "1786743323642818035")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.Node_InferTypeOperation$x, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "Node_InferTypeOperation", new SNodePointer("r:00000000-0000-4000-0000-011c895902b0(jetbrains.mps.lang.typesystem.editor)", "1786743323642818047"))), CONCEPTS.Node_InferTypeOperation$x));

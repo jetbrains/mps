@@ -223,18 +223,9 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
     }
   }
   public class SMP_Group_fxbim_h extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806081893")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Group_fxbim_h() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806081893")));
     }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_fxbim_a7(), CONCEPTS.MenuTraceSubstituteChild$3B));

@@ -38,23 +38,14 @@ public class YieldStatement_SubstituteMenu extends SubstituteMenuBase {
   }
 
   public class SMP_Group_i2hqa3_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_i2hqa3_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590336(jetbrains.mps.baseLanguage.closures.editor)", "2722384699544264499")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       SNode anc = SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.ClosureLiteral$rp}, true, false);
       return anc != null;
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590336(jetbrains.mps.baseLanguage.closures.editor)", "2722384699544264499")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_i2hqa3_a0(), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.YieldStatement$yx, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "YieldStatement", new SNodePointer("r:00000000-0000-4000-0000-011c89590336(jetbrains.mps.baseLanguage.closures.editor)", "2722384699544270758"))), CONCEPTS.YieldStatement$yx));

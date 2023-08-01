@@ -77,21 +77,12 @@ public class dowcast_Contribution extends TransformationMenuBase {
   }
 
   public class TMP_Group_9reugi_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_9reugi_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:1725327f-608f-49f4-82f5-b90b00e35b3f(jetbrains.mps.debugger.java.evaluation.editor)", "1741258697587209506")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return (TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.DebuggedType$zx) != null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:1725327f-608f-49f4-82f5-b90b00e35b3f(jetbrains.mps.debugger.java.evaluation.editor)", "1741258697587209506")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

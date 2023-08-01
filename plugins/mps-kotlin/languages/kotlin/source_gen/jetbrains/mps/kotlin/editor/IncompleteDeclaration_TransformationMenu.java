@@ -93,21 +93,12 @@ public class IncompleteDeclaration_TransformationMenu extends TransformationMenu
   }
 
   public class TMP_Group_jyycyd_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_jyycyd_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2998782254613164203")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return (SLinkOperations.getTarget(_context.getNode(), LINKS.visibility$vnSV) == null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2998782254613164203")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
@@ -317,21 +308,12 @@ public class IncompleteDeclaration_TransformationMenu extends TransformationMenu
     }
   }
   public class TMP_Group_jyycyd_d0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_jyycyd_d0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1806979145044505716")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return (SLinkOperations.getTarget(_context.getNode(), LINKS.classModifier$gUVP) == null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1806979145044505716")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
@@ -406,21 +388,12 @@ public class IncompleteDeclaration_TransformationMenu extends TransformationMenu
     }
   }
   public class TMP_Group_jyycyd_e0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_jyycyd_e0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2998782254613208769")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return (SLinkOperations.getTarget(_context.getNode(), LINKS.inheritance$TFvr) == null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2998782254613208769")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

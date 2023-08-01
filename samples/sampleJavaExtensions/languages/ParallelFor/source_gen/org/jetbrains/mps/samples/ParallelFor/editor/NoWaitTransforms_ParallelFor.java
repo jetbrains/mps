@@ -66,21 +66,12 @@ public class NoWaitTransforms_ParallelFor extends TransformationMenuBase {
   }
 
   public class TMP_Group_rnbvuo_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_rnbvuo_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:356cdff9-223c-480e-a34e-0b9eab641194(org.jetbrains.mps.samples.ParallelFor.editor)", "1741258697587112691")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.nowait$gGom));
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:356cdff9-223c-480e-a34e-0b9eab641194(org.jetbrains.mps.samples.ParallelFor.editor)", "1741258697587112691")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

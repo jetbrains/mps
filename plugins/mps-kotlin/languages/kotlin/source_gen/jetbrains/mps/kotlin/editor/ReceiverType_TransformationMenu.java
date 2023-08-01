@@ -91,6 +91,9 @@ public class ReceiverType_TransformationMenu extends TransformationMenuBase {
 
   public class TMP_Group_6rg7xb_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     private _FunctionTypes._return_P0_E0<? extends SNode> substitute;
+    public TMP_Group_6rg7xb_b0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2954821879859293091")));
+    }
     @Override
     protected void initialize(TransformationMenuContext _context) {
       super.initialize(_context);
@@ -103,18 +106,6 @@ public class ReceiverType_TransformationMenu extends TransformationMenuBase {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return substitute != null;
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2954821879859293091")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

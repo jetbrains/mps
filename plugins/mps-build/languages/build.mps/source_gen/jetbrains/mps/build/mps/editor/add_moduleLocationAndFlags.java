@@ -72,22 +72,13 @@ public class add_moduleLocationAndFlags extends TransformationMenuBase {
   }
 
   public class TMP_Group_vydzh3_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_vydzh3_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)", "1741258697587175852")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       String sourcesKind = SEnumOperations.getMemberPresentation(SPropertyOperations.getEnum(_context.getNode(), PROPS.sourcesKind$cgod));
       return (sourcesKind == null || sourcesKind.length() == 0) || sourcesKind.equals(SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleSourcesKind"), 0x3be316509db4552L, "sources")));
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)", "1741258697587175852")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

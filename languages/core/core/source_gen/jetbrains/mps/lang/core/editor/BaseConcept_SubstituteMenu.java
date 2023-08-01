@@ -48,6 +48,9 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Group_s3h0kg_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     private boolean isChildNullOrExactlyBaseConcept;
+    public SMP_Group_s3h0kg_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "6524522039911462403")));
+    }
     @Override
     protected void initialize(SubstituteMenuContext _context) {
       super.initialize(_context);
@@ -57,39 +60,18 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
         }
       }.compute();
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "6524522039911462403")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Group_s3h0kg_a0(), new SMP_Group_s3h0kg_b0());
     }
     public class SMP_Group_s3h0kg_a0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+      public SMP_Group_s3h0kg_a0() {
+        super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "2654820218214078752")));
+      }
       @Override
       protected boolean isApplicable(SubstituteMenuContext _context) {
         return isChildNullOrExactlyBaseConcept;
       }
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "2654820218214078752")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-      }
-
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
         return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_s3h0kg_a0a(), CONCEPTS.BaseConcept$gP));
@@ -165,22 +147,13 @@ public class BaseConcept_SubstituteMenu extends SubstituteMenuBase {
       }
     }
     public class SMP_Group_s3h0kg_b0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+      public SMP_Group_s3h0kg_b0() {
+        super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "960304987045279860")));
+      }
       @Override
       protected boolean isApplicable(SubstituteMenuContext _context) {
         return !(isChildNullOrExactlyBaseConcept);
       }
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "960304987045279860")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-      }
-
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
         return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Include_s3h0kg_a1a());

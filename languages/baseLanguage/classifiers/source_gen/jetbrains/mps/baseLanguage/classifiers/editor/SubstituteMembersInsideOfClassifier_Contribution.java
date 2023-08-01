@@ -51,6 +51,9 @@ public class SubstituteMembersInsideOfClassifier_Contribution extends Substitute
   public class SMP_Group_c574em_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     private SNode contextClassifier;
     private boolean multipleClassifiers;
+    public SMP_Group_c574em_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590370(jetbrains.mps.baseLanguage.classifiers.editor)", "1741258697587053624")));
+    }
     @Override
     protected void initialize(SubstituteMenuContext _context) {
       super.initialize(_context);
@@ -74,18 +77,6 @@ public class SubstituteMembersInsideOfClassifier_Contribution extends Substitute
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.IClassifier$BZ, CONCEPTS.IClassifierPart$TX}, true, false) != null;
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590370(jetbrains.mps.baseLanguage.classifiers.editor)", "1741258697587053624")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_c574em_a0(), CONCEPTS.DotExpression$yW));

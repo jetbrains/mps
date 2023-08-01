@@ -81,6 +81,9 @@ public class expressionStatement extends TransformationMenuBase {
 
   public class TMP_Group_qgb0t7_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     private SNode stmt;
+    public TMP_Group_qgb0t7_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586945760")));
+    }
     @Override
     protected void initialize(TransformationMenuContext _context) {
       super.initialize(_context);
@@ -94,18 +97,6 @@ public class expressionStatement extends TransformationMenuBase {
     protected boolean isApplicable(TransformationMenuContext _context) {
       final List<SNode> desc = SNodeOperations.getNodeDescendants(stmt, null, false, new SAbstractConcept[]{});
       return (boolean) Expression__BehaviorDescriptor.isLeftMostExpression_id7q$fTYk8pKO.invoke(_context.getNode()) && (stmt != null) && ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), null, false)).where((it) -> !(SNodeOperations.isInstanceOf(it, CONCEPTS.Expression$mB))).all((it) -> !(ListSequence.fromList(desc).contains(it)));
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586945760")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
@@ -184,22 +175,13 @@ public class expressionStatement extends TransformationMenuBase {
       }
     }
     public class TMP_Group_qgb0t7_b0a extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+      public TMP_Group_qgb0t7_b0a() {
+        super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "8549027947273611767")));
+      }
       @Override
       protected boolean isApplicable(TransformationMenuContext _context) {
         return (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(stmt, LINKS.expression$5L7M)), CONCEPTS.BooleanType$_u) || Objects.equals(SLinkOperations.getPointer(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(stmt, LINKS.expression$5L7M)), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean")));
 
-      }
-
-      @NotNull
-      @Override
-      public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "8549027947273611767")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
       }
       @Override
       protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

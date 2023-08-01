@@ -49,22 +49,13 @@ public class ctor_MemberBasedOnIncomplete extends SubstituteMenuBase {
   }
 
   public class SMP_Group_v6z9n9_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_v6z9n9_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586955990")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IncompleteMemberDeclaration$jI) && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ClassConcept$bK);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586955990")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_v6z9n9_a0(), CONCEPTS.ClassifierMember$At), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_v6z9n9_b0(), CONCEPTS.ClassifierMember$At), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_v6z9n9_c0(), CONCEPTS.ClassifierMember$At), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_v6z9n9_d0(), CONCEPTS.ClassifierMember$At), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_v6z9n9_e0(), CONCEPTS.ClassifierMember$At), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_v6z9n9_f0(), CONCEPTS.ClassifierMember$At));
@@ -474,22 +465,13 @@ public class ctor_MemberBasedOnIncomplete extends SubstituteMenuBase {
     }
   }
   public class SMP_Group_v6z9n9_b extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_v6z9n9_b() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586957266")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IncompleteMemberDeclaration$jI) || SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.PlaceholderMember$s8)) && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ClassConcept$bK);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586957266")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_v6z9n9_a1(), CONCEPTS.ClassifierMember$At));
@@ -563,6 +545,9 @@ public class ctor_MemberBasedOnIncomplete extends SubstituteMenuBase {
     }
   }
   public class SMP_Group_v6z9n9_c extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_v6z9n9_c() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586957589")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       if (!(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ClassConcept$bK))) {
@@ -579,18 +564,6 @@ public class ctor_MemberBasedOnIncomplete extends SubstituteMenuBase {
 
       return SPropertyOperations.getBoolean(curr, PROPS.static$G1Ho);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586957589")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_v6z9n9_a2(), CONCEPTS.ClassifierMember$At));

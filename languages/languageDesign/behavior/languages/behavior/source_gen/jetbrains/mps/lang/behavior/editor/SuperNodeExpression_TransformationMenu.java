@@ -89,21 +89,12 @@ public class SuperNodeExpression_TransformationMenu extends TransformationMenuBa
   }
 
   public class TMP_Group_gori8p_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_gori8p_a1() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:dc79d042-ba38-4e91-9392-42f38106ae44(jetbrains.mps.lang.behavior.editor)", "1741258697587172191")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return (SLinkOperations.getTarget(_context.getNode(), LINKS.superConcept$8P5p) == null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:dc79d042-ba38-4e91-9392-42f38106ae44(jetbrains.mps.lang.behavior.editor)", "1741258697587172191")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

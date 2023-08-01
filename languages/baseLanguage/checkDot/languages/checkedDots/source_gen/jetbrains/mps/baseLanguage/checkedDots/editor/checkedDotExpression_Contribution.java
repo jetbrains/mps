@@ -77,21 +77,12 @@ public class checkedDotExpression_Contribution extends TransformationMenuBase {
   }
 
   public class TMP_Group_y6cflm_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_y6cflm_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:87dca7c3-9c03-4bb2-90a6-6d5e60f0974a(jetbrains.mps.baseLanguage.checkedDots.editor)", "1741258697587213172")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return (TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()) != null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:87dca7c3-9c03-4bb2-90a6-6d5e60f0974a(jetbrains.mps.baseLanguage.checkedDots.editor)", "1741258697587213172")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

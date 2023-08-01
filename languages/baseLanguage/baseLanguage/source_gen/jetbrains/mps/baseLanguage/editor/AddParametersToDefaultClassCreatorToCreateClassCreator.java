@@ -81,6 +81,9 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
 
   public class TMP_Group_tsvgb1_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     private Iterable<SNode> constructorsWithParams;
+    public TMP_Group_tsvgb1_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "4099409426603872429")));
+    }
     @Override
     protected void initialize(TransformationMenuContext _context) {
       super.initialize(_context);
@@ -93,18 +96,6 @@ public class AddParametersToDefaultClassCreatorToCreateClassCreator extends Tran
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return Sequence.fromIterable(constructorsWithParams).isNotEmpty();
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "4099409426603872429")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

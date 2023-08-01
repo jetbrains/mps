@@ -51,22 +51,13 @@ public class IncompleteDeclaration_SubstituteMenu extends SubstituteMenuBase {
   }
 
   public class SMP_Group_ewjhwe_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_ewjhwe_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2998782254615691088")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IncompleteDeclaration$r_));
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2998782254615691088")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_ewjhwe_a0(), CONCEPTS.IncompleteDeclaration$r_), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_ewjhwe_b0(), CONCEPTS.IncompleteDeclaration$r_), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_ewjhwe_c0(), CONCEPTS.IncompleteDeclaration$r_), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_ewjhwe_d0(), CONCEPTS.IncompleteDeclaration$r_), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_ewjhwe_e0(), CONCEPTS.IncompleteDeclaration$r_));

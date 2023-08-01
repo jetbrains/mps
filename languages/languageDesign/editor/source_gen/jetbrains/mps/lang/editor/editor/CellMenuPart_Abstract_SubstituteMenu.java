@@ -45,69 +45,42 @@ public class CellMenuPart_Abstract_SubstituteMenu extends SubstituteMenuBase {
   }
 
   public class SMP_Group_uhoyad_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_uhoyad_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153474")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       SNode editedFeature = CellMenuUtil.getEditedFeature(_context.getParentNode());
       return SNodeOperations.isInstanceOf(editedFeature, CONCEPTS.PropertyDeclaration$1S);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153474")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.CellMenuPart_PropertyValues$kb, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "CellMenuPart_PropertyValues", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153514"))), CONCEPTS.CellMenuPart_PropertyValues$kb), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.CellMenuPart_PropertyPostfixHints$cd, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "CellMenuPart_PropertyPostfixHints", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153516"))), CONCEPTS.CellMenuPart_PropertyPostfixHints$cd));
     }
   }
   public class SMP_Group_uhoyad_b extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_uhoyad_b() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153520")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       SNode editedFeature = CellMenuUtil.getEditedFeature(_context.getParentNode());
       return SNodeOperations.isInstanceOf(editedFeature, CONCEPTS.LinkDeclaration$1p) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(editedFeature, CONCEPTS.LinkDeclaration$1p), PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153520")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.CellMenuPart_ReferentPrimary$uH, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "CellMenuPart_ReferentPrimary", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153568"))), CONCEPTS.CellMenuPart_ReferentPrimary$uH));
     }
   }
   public class SMP_Group_uhoyad_c extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_uhoyad_c() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153572")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       SNode editedFeature = CellMenuUtil.getEditedFeature(_context.getParentNode());
       return SNodeOperations.isInstanceOf(editedFeature, CONCEPTS.LinkDeclaration$1p) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(editedFeature, CONCEPTS.LinkDeclaration$1p), PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153572")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.CellMenuPart_ReplaceChild_Group$7X, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "CellMenuPart_ReplaceChild_Group", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153620"))), CONCEPTS.CellMenuPart_ReplaceChild_Group$7X), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.CellMenuPart_ReplaceChild_Item$lA, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "CellMenuPart_ReplaceChild_Item", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153622"))), CONCEPTS.CellMenuPart_ReplaceChild_Item$lA), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.CellMenuPart_ReplaceChild_CustomChildConcept$Oy, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "CellMenuPart_ReplaceChild_CustomChildConcept", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153624"))), CONCEPTS.CellMenuPart_ReplaceChild_CustomChildConcept$Oy), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.CellMenuPart_ReplaceChildPrimary$lI, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "CellMenuPart_ReplaceChildPrimary", new SNodePointer("r:00000000-0000-4000-0000-011c89590299(jetbrains.mps.lang.editor.editor)", "1741258697587153626"))), CONCEPTS.CellMenuPart_ReplaceChildPrimary$lI));

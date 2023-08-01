@@ -93,21 +93,12 @@ public class AbstractNodeRefExpression_TransformationMenu extends Transformation
   }
 
   public class TMP_Group_wxvpf4_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_wxvpf4_a1() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "1741258697587099014")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return Sequence.fromIterable(AbstractNodeRefExpression__BehaviorDescriptor.getPossibleTargetNodes_id4x3U0fpSqvX.invoke(_context.getNode())).isNotEmpty();
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "1741258697587099014")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

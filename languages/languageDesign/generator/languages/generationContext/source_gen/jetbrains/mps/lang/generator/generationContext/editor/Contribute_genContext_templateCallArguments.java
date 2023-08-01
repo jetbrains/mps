@@ -33,24 +33,15 @@ public class Contribute_genContext_templateCallArguments extends SubstituteMenuB
   }
 
   public class SMP_Group_my4xy0_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_my4xy0_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902f0(jetbrains.mps.lang.generator.generationContext.editor)", "1741258697587212796")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       // Allow use of genContext expression inside template calls without need to wrap them with ConceptFunction instance
       // but don't show it twice inside a CF, where CFPs get contributed by dedicated menu contributor
       return (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ITemplateCall$ab, true, false) != null) && (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ConceptFunction$mf, true, false) == null);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902f0(jetbrains.mps.lang.generator.generationContext.editor)", "1741258697587212796")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TemplateFunctionParameter_generationContext$Yo, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "TemplateFunctionParameter_generationContext", new SNodePointer("r:00000000-0000-4000-0000-011c895902f0(jetbrains.mps.lang.generator.generationContext.editor)", "1741258697587212835"))), CONCEPTS.TemplateFunctionParameter_generationContext$Yo));

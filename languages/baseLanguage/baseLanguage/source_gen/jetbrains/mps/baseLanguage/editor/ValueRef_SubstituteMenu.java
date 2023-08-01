@@ -35,6 +35,9 @@ public class ValueRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   public class SMP_Group_tudm17_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_tudm17_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "3140757037543536326")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.GenericLValueExpression$8r)) {
@@ -50,18 +53,6 @@ public class ValueRef_SubstituteMenu extends SubstituteMenuBase {
       }
       return Objects.equals(SNodeOperations.getContainingLink(contextNode), LINKS.assignValueExression$XV8v);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "3140757037543536326")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ValueRef$i, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "ValueRef", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "3140757037545155627"))), CONCEPTS.ValueRef$i));

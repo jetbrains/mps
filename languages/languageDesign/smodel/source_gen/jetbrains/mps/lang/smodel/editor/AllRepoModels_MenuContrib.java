@@ -37,22 +37,13 @@ public class AllRepoModels_MenuContrib extends SubstituteMenuBase {
   }
 
   public class SMP_Group_ngt524_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_ngt524_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "7899164836083749982")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ModelPointerExpression$R5) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.NodePointerExpression$Fo) || (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.Link_SetTargetPointerOperation$6D, true, false) != null) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Node_IsOperation$Kh);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "7899164836083749982")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Include_ngt524_a0());

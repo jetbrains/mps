@@ -63,6 +63,9 @@ public class ISuperTypeSpecifier_TransformationMenu extends TransformationMenuBa
 
   public class TMP_Group_gmcxx6_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     private SNode klass;
+    public TMP_Group_gmcxx6_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2178249719431944644")));
+    }
     @Override
     protected void initialize(TransformationMenuContext _context) {
       super.initialize(_context);
@@ -75,18 +78,6 @@ public class ISuperTypeSpecifier_TransformationMenu extends TransformationMenuBa
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return (klass != null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2178249719431944644")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
@@ -123,6 +114,9 @@ public class ISuperTypeSpecifier_TransformationMenu extends TransformationMenuBa
   }
   public class TMP_Group_gmcxx6_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     private SNode object;
+    public TMP_Group_gmcxx6_b0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2178249719431964100")));
+    }
     @Override
     protected void initialize(TransformationMenuContext _context) {
       super.initialize(_context);
@@ -135,18 +129,6 @@ public class ISuperTypeSpecifier_TransformationMenu extends TransformationMenuBa
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return (object != null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2178249719431964100")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

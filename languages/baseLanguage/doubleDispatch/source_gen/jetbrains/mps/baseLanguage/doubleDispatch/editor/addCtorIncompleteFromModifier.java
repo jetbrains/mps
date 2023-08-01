@@ -39,18 +39,9 @@ public class addCtorIncompleteFromModifier extends SubstituteMenuBase {
   }
 
   public class SMP_Group_oxmga2_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:fc8d3ef4-4153-4861-a13a-e9c4b97a4b06(jetbrains.mps.baseLanguage.doubleDispatch.editor)", "8727913099384214350")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
+    public SMP_Group_oxmga2_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:fc8d3ef4-4153-4861-a13a-e9c4b97a4b06(jetbrains.mps.baseLanguage.doubleDispatch.editor)", "8727913099384214350")));
     }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_oxmga2_a0(), CONCEPTS.IncompleteMemberDeclaration$jI));

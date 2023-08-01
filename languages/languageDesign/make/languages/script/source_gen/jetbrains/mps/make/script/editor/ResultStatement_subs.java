@@ -45,23 +45,14 @@ public class ResultStatement_subs extends SubstituteMenuBase {
   }
 
   public class SMP_Group_358bbk_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_358bbk_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)", "1741258697587105006")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       SNode anc = SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.JobDefinition$Sj, CONCEPTS.ConfigDefinition$YG, CONCEPTS.IStatementListContainer$xz}, false, false);
       return SNodeOperations.isInstanceOf(anc, CONCEPTS.JobDefinition$Sj) || SNodeOperations.isInstanceOf(anc, CONCEPTS.ConfigDefinition$YG);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:997bd332-957d-4e59-bb10-bc8a630d5568(jetbrains.mps.make.script.editor)", "1741258697587105006")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_358bbk_a0(), CONCEPTS.ResultStatement$fI));

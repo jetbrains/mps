@@ -53,22 +53,13 @@ public class BuildInputSingleFileAbsolutePath_SubstituteMenu extends SubstituteM
     }
   }
   public class SMP_Group_n2gsvi_b extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_n2gsvi_b() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)", "8266314125996871407")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return SModelStereotype.isGeneratorModel(_context.getModel());
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)", "8266314125996871407")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.BuildInputSingleFileAbsolutePath$u_, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "BuildInputSingleFileAbsolutePath", new SNodePointer("r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)", "8266314125996871408"))), CONCEPTS.BuildInputSingleFileAbsolutePath$u_));

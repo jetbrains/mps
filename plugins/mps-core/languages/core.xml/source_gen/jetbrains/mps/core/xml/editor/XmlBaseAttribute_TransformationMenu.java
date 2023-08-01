@@ -102,21 +102,12 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
   }
 
   public class TMP_Group_xjbv2x_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_xjbv2x_a1() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:2f32078d-2a84-4fef-b050-97e346d25159(jetbrains.mps.core.xml.editor)", "1741258697587213731")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$fP);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:2f32078d-2a84-4fef-b050-97e346d25159(jetbrains.mps.core.xml.editor)", "1741258697587213731")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
@@ -192,6 +183,9 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
     }
   }
   public class TMP_Group_xjbv2x_b1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_xjbv2x_b1() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:2f32078d-2a84-4fef-b050-97e346d25159(jetbrains.mps.core.xml.editor)", "1741258697587213784")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$fP)) || (SNodeOperations.getNextSibling(_context.getNode()) != null)) {
@@ -199,18 +193,6 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
       }
       SNode elem = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$fP);
       return !(SPropertyOperations.getBoolean(elem, PROPS.shortEmptyNotation$B8Gv));
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:2f32078d-2a84-4fef-b050-97e346d25159(jetbrains.mps.core.xml.editor)", "1741258697587213784")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

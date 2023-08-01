@@ -90,6 +90,9 @@ public class SNodeOperation_TransformationMenu extends TransformationMenuBase {
   }
 
   public class TMP_Group_umtya2_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_umtya2_a1() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "1741258697587099092")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       boolean alreadyHasParms = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameter$mzxB)).isNotEmpty();
@@ -97,18 +100,6 @@ public class SNodeOperation_TransformationMenu extends TransformationMenuBase {
         return false;
       }
       return ListSequence.fromList(SNodeOperation__BehaviorDescriptor.getParameterConcepts_id6ALWH9fQysn.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode())))).isNotEmpty();
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "1741258697587099092")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

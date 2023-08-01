@@ -88,6 +88,9 @@ public class EnumMemberReference_TransformationMenu extends TransformationMenuBa
   public class TMP_Group_5klijv_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     private SNode enumSwitchCase;
     private SNode enumSwitchExpression;
+    public TMP_Group_5klijv_b0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "6456024106304015463")));
+    }
     @Override
     protected void initialize(TransformationMenuContext _context) {
       super.initialize(_context);
@@ -105,18 +108,6 @@ public class EnumMemberReference_TransformationMenu extends TransformationMenuBa
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return (enumSwitchExpression != null) && (SNodeOperations.getNextSibling(enumSwitchCase) == null) && ListSequence.fromList(SNodeOperations.getAllSiblings(_context.getNode(), false)).isEmpty() && (SLinkOperations.getTarget(enumSwitchExpression, LINKS.otherwiseBody$l_3i) == null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)", "6456024106304015463")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

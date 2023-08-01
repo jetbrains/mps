@@ -48,66 +48,39 @@ public class TestSubstituteAbstractChildAmbigousPosition_SubstituteMenu extends 
   }
 
   public class SMP_Group_cu4p6c_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_cu4p6c_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873152872235")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return Objects.equals(_context.getLink(), LINKS.ambigousSameConcepts$tQMo);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873152872235")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TestSubstituteChildAmbigousPosition1$Sx, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "TestSubstituteChildAmbigousPosition1", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873152845002"))), CONCEPTS.TestSubstituteChildAmbigousPosition1$Sx), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TestSubstituteChildAmbigousPosition1$Sx, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "TestSubstituteChildAmbigousPosition1", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873152845005"))), CONCEPTS.TestSubstituteChildAmbigousPosition1$Sx));
     }
   }
   public class SMP_Group_cu4p6c_b extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_cu4p6c_b() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873153070686")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return Objects.equals(_context.getLink(), LINKS.ambigousDifferentConcepts$graQ);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873153070686")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TestSubstituteChildAmbigousPosition1$Sx, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "TestSubstituteChildAmbigousPosition1", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873153070693"))), CONCEPTS.TestSubstituteChildAmbigousPosition1$Sx), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.TestSubstituteChildAmbigousPosition2$bW, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "TestSubstituteChildAmbigousPosition2", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873153070694"))), CONCEPTS.TestSubstituteChildAmbigousPosition2$bW));
     }
   }
   public class SMP_Group_cu4p6c_c extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_cu4p6c_c() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873152876806")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return Objects.equals(_context.getLink(), LINKS.ambigousWrapSameConcepts$bpAO);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873152876806")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cu4p6c_a2(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$tQ), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cu4p6c_b2(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$tQ));
@@ -202,22 +175,13 @@ public class TestSubstituteAbstractChildAmbigousPosition_SubstituteMenu extends 
     }
   }
   public class SMP_Group_cu4p6c_d extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_cu4p6c_d() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873153072684")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return Objects.equals(_context.getLink(), LINKS.ambigousWrapDifferentConcepts$gLek);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:d793eea9-8b7b-4c58-a7a2-62336f54dcce(jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor)", "9174907873153072684")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cu4p6c_a3(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$tQ), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cu4p6c_b3(), CONCEPTS.TestSubstituteAbstractChildAmbigousPosition$tQ));

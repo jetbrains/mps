@@ -57,21 +57,12 @@ public class LambdaLiteral_AsArgumentRightTransform extends TransformationMenuBa
   }
 
   public class TMP_Group_r5ioq3_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_r5ioq3_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1752885245477355855")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return Objects.equals(SNodeOperations.getContainingLink(_context.getNode()), LINKS.lambda$U$kC);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1752885245477355855")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
@@ -99,21 +90,12 @@ public class LambdaLiteral_AsArgumentRightTransform extends TransformationMenuBa
     }
   }
   public class TMP_Group_r5ioq3_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_r5ioq3_b0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1752885245477333714")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return !(Objects.equals(SNodeOperations.getContainingLink(_context.getNode()), LINKS.lambda$U$kC));
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1752885245477333714")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

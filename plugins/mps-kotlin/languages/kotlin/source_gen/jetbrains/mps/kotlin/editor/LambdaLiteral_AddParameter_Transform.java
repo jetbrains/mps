@@ -157,21 +157,12 @@ public class LambdaLiteral_AddParameter_Transform extends TransformationMenuBase
 
   }
   public class TMP_Group_a9ci3q_b1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_a9ci3q_b1() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "9222034819271310241")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return Objects.equals(SNodeOperations.getContainingLink(_context.getNode()), LINKS.lambda$U$kC);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "9222034819271310241")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

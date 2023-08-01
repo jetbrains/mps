@@ -78,6 +78,9 @@ public class convertVariableAssignmentToVarDeclaration extends TransformationMen
   }
 
   public class TMP_Group_lavomd_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_lavomd_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "2660922206085080884")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41))) {
@@ -89,18 +92,6 @@ public class convertVariableAssignmentToVarDeclaration extends TransformationMen
       SNode assignment = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.AssignmentExpression$SE);
       return (boolean) AssignmentExpression__BehaviorDescriptor.canConvertToLocalVariableDeclaration_idhLFstkU.invoke(assignment) && SLinkOperations.getTarget(assignment, LINKS.lValue$splI) == _context.getNode();
     }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "2660922206085080884")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
       return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_lavomd_a0a());
@@ -108,6 +99,9 @@ public class convertVariableAssignmentToVarDeclaration extends TransformationMen
     public class TMP_Group_lavomd_a0a extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
       private SNode assignment;
       private SNode type;
+      public TMP_Group_lavomd_a0a() {
+        super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586946907")));
+      }
       @Override
       protected void initialize(TransformationMenuContext _context) {
         super.initialize(_context);
@@ -121,18 +115,6 @@ public class convertVariableAssignmentToVarDeclaration extends TransformationMen
             return (SNode) TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(assignment, LINKS.rValue$spNK));
           }
         }.compute();
-      }
-
-      @NotNull
-      @Override
-      public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586946907")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
       }
       @Override
       protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

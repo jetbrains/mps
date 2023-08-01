@@ -53,22 +53,13 @@ public class ctor_IncompleteMember extends SubstituteMenuBase {
   }
 
   public class SMP_Group_lzobpd_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_lzobpd_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586955455")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ClassConcept$bK) && !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IncompleteMemberDeclaration$jI));
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586955455")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_a0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_b0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_c0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_d0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_e0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_f0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_lzobpd_g0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_lzobpd_h0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_lzobpd_i0(), CONCEPTS.IncompleteMemberDeclaration$jI), new SMP_Include_lzobpd_j0());

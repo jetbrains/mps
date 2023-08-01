@@ -47,22 +47,13 @@ public class ctor_InterfaceMemberBasedOnIncomplete extends SubstituteMenuBase {
   }
 
   public class SMP_Group_4h4lbo_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_4h4lbo_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586961274")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IncompleteMemberDeclaration$jI) && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Interface$db);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586961274")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4h4lbo_a0(), CONCEPTS.ClassifierMethodMember$ot), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4h4lbo_b0(), CONCEPTS.StaticFieldDeclaration$jR), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4h4lbo_c0(), CONCEPTS.Classifier$Ix), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4h4lbo_d0(), CONCEPTS.Classifier$Ix), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4h4lbo_e0(), CONCEPTS.Classifier$Ix), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4h4lbo_f0(), CONCEPTS.Classifier$Ix));

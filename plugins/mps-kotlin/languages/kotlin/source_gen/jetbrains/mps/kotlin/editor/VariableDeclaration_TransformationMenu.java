@@ -57,6 +57,9 @@ public class VariableDeclaration_TransformationMenu extends TransformationMenuBa
 
   public class TMP_Group_fh1jz8_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     private SNode property;
+    public TMP_Group_fh1jz8_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2465168547709957012")));
+    }
     @Override
     protected void initialize(TransformationMenuContext _context) {
       super.initialize(_context);
@@ -69,18 +72,6 @@ public class VariableDeclaration_TransformationMenu extends TransformationMenuBa
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return (property != null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2465168547709957012")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

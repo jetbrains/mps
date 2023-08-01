@@ -32,22 +32,13 @@ public class ThisNodeExpression_SubstituteMenu extends SubstituteMenuBase {
   }
 
   public class SMP_Group_mpxvc0_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_mpxvc0_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:dc79d042-ba38-4e91-9392-42f38106ae44(jetbrains.mps.lang.behavior.editor)", "6189745377886678722")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return ConstraintsUtil.isInsideOfBehavior(_context.getParentNode(), false);
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:dc79d042-ba38-4e91-9392-42f38106ae44(jetbrains.mps.lang.behavior.editor)", "6189745377886678722")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ThisNodeExpression$v1, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "ThisNodeExpression", new SNodePointer("r:dc79d042-ba38-4e91-9392-42f38106ae44(jetbrains.mps.lang.behavior.editor)", "6189745377886682185"))), CONCEPTS.ThisNodeExpression$v1));

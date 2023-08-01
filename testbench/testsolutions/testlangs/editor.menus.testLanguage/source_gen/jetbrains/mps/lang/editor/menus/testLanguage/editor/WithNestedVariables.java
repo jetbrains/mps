@@ -56,6 +56,9 @@ public class WithNestedVariables extends TransformationMenuBase {
   public class TMP_Group_foze4d_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     private int v;
     private int x;
+    public TMP_Group_foze4d_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "7655327340756249209")));
+    }
     @Override
     protected void initialize(TransformationMenuContext _context) {
       super.initialize(_context);
@@ -74,24 +77,15 @@ public class WithNestedVariables extends TransformationMenuBase {
     protected boolean isApplicable(TransformationMenuContext _context) {
       return true;
     }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "7655327340756249209")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
       return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Group_foze4d_a0a());
     }
     public class TMP_Group_foze4d_a0a extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
       private int t;
+      public TMP_Group_foze4d_a0a() {
+        super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "7655327340757282617")));
+      }
       @Override
       protected void initialize(TransformationMenuContext _context) {
         super.initialize(_context);
@@ -100,18 +94,6 @@ public class WithNestedVariables extends TransformationMenuBase {
             return v + 1;
           }
         }.compute();
-      }
-
-      @NotNull
-      @Override
-      public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "7655327340757282617")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
       }
       @Override
       protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

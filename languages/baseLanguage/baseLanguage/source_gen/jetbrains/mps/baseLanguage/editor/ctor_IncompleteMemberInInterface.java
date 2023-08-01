@@ -53,22 +53,13 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
   }
 
   public class SMP_Group_4je5xk_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_4je5xk_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586963062")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Interface$db) && !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IncompleteMemberDeclaration$jI));
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586963062")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4je5xk_a0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4je5xk_b0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4je5xk_c0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_4je5xk_d0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_4je5xk_e0(), CONCEPTS.IncompleteMemberDeclaration$jI), new SMP_Include_4je5xk_f0());

@@ -35,6 +35,9 @@ public class XmlDoctypeDeclaration_SubstituteMenu extends SubstituteMenuBase {
   }
 
   public class SMP_Group_bnzz5o_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_bnzz5o_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:2f32078d-2a84-4fef-b050-97e346d25159(jetbrains.mps.core.xml.editor)", "4193262598831527016")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       List<SNode> descendants = SNodeOperations.getNodeDescendants(_context.getParentNode(), CONCEPTS.XmlDoctypeDeclaration$GQ, false, new SAbstractConcept[]{});
@@ -43,18 +46,6 @@ public class XmlDoctypeDeclaration_SubstituteMenu extends SubstituteMenuBase {
       }
       return ListSequence.fromList(descendants).isEmpty();
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:2f32078d-2a84-4fef-b050-97e346d25159(jetbrains.mps.core.xml.editor)", "4193262598831527016")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.XmlDoctypeDeclaration$GQ, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "XmlDoctypeDeclaration", new SNodePointer("r:2f32078d-2a84-4fef-b050-97e346d25159(jetbrains.mps.core.xml.editor)", "4193262598831559170"))), CONCEPTS.XmlDoctypeDeclaration$GQ));

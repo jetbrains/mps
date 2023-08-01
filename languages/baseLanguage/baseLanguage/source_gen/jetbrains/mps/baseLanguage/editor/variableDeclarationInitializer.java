@@ -72,21 +72,12 @@ public class variableDeclarationInitializer extends TransformationMenuBase {
   }
 
   public class TMP_Group_9r06s2_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_9r06s2_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586939965")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$2twD) == null && (boolean) VariableDeclaration__BehaviorDescriptor.isInitializable_idhEwJfMK.invoke(_context.getNode());
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586939965")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

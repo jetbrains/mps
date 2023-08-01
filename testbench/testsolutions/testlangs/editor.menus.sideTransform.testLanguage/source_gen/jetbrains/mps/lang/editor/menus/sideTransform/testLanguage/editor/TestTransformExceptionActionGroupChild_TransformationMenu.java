@@ -64,21 +64,12 @@ public class TestTransformExceptionActionGroupChild_TransformationMenu extends T
   }
 
   public class TMP_Group_gjd3xr_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_gjd3xr_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:73252a8a-5dfe-41ab-9452-7c5453e47c1f(jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.editor)", "8955468859940929741")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       throw new RuntimeException("Intentional exception - ignore this");
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:73252a8a-5dfe-41ab-9452-7c5453e47c1f(jetbrains.mps.lang.editor.menus.sideTransform.testLanguage.editor)", "8955468859940929741")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

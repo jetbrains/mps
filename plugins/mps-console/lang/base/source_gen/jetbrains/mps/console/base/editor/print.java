@@ -75,6 +75,9 @@ public class print extends TransformationMenuBase {
   }
 
   public class TMP_Group_vtzrq_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_vtzrq_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:f09c85c2-fb88-4283-852e-78d5fc87420e(jetbrains.mps.console.base.editor)", "5286186381821481451")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       if ((SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Statement$P6, true, false) != null)) {
@@ -83,18 +86,6 @@ public class print extends TransformationMenuBase {
         return true;
       } else {
         return false;
-      }
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:f09c85c2-fb88-4283-852e-78d5fc87420e(jetbrains.mps.console.base.editor)", "5286186381821481451")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
       }
     }
     @Override

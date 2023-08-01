@@ -38,24 +38,15 @@ public class SkipStatement_SubstituteMenu extends SubstituteMenuBase {
   }
 
   public class SMP_Group_yf7yw4_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    public SMP_Group_yf7yw4_a() {
+      super(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "2722384699545525269")));
+    }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
       SNode cl = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ClosureLiteral$rp, true, false);
       SNode parent = SNodeOperations.getParent(cl);
       return (cl != null) && (SNodeOperations.isInstanceOf(parent, CONCEPTS.VisitAllOperation$tW) || SNodeOperations.isInstanceOf(parent, CONCEPTS.TranslateOperation$EB));
     }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "2722384699545525269")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
       return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.SkipStatement$vx, new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "SkipStatement", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "2722384699545533328"))), CONCEPTS.SkipStatement$vx), new SMP_Subconcepts_yf7yw4_b0());

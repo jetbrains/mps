@@ -76,6 +76,9 @@ public class BLC_rtansform extends TransformationMenuBase {
 
   public class TMP_Group_ahju1d_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     private SNode mapType;
+    public TMP_Group_ahju1d_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697587177385")));
+    }
     @Override
     protected void initialize(TransformationMenuContext _context) {
       super.initialize(_context);
@@ -89,18 +92,6 @@ public class BLC_rtansform extends TransformationMenuBase {
     protected boolean isApplicable(TransformationMenuContext _context) {
       SNode type = TypecheckingFacade.getFromContext().getTypeOf(_context.getNode());
       return (TypecheckingFacade.getFromContext().strongCoerceType(type, CONCEPTS.MapType$h0) != null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697587177385")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

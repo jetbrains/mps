@@ -57,22 +57,13 @@ public class INavigationTarget_TransformationMenu extends TransformationMenuBase
   }
 
   public class TMP_Group_xqgi98_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_xqgi98_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "4100182522256653085")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       // Apply parent menu for non-expression navigation target
       return Objects.equals(SNodeOperations.getContainingLink(_context.getNode()), LINKS.target$C6zp) && !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.IExpression$2i));
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "4100182522256653085")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

@@ -71,21 +71,12 @@ public class add_parameters_to_container_creator extends TransformationMenuBase 
   }
 
   public class TMP_Group_wtne74_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_wtne74_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586931359")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return (boolean) AbstractContainerCreator__BehaviorDescriptor.canHaveParameter_id1XyaNs207wP.invoke(_context.getNode()) && ((SLinkOperations.getTarget(_context.getNode(), LINKS.initSize$VCLN) == null) || !((boolean) AbstractContainerCreator__BehaviorDescriptor.hasInitSize_id1653mnvAgtY.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getNode()))))) && ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.initValue$Wx_W)).isEmpty() && (SLinkOperations.getTarget(_context.getNode(), LINKS.copyFrom$DKAJ) == null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697586931359")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

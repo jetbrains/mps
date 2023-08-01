@@ -93,6 +93,9 @@ public class PlaceholderMember_TransformationMenu extends TransformationMenuBase
   }
 
   public class TMP_Group_29uwod_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_29uwod_a1() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586941965")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       SNode nextSibling = SNodeOperations.getNextSibling(_context.getNode());
@@ -100,18 +103,6 @@ public class PlaceholderMember_TransformationMenu extends TransformationMenuBase
         nextSibling = SNodeOperations.getNextSibling(nextSibling);
       }
       return nextSibling != null && ((SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.FieldDeclaration$ie) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(SNodeOperations.cast(nextSibling, CONCEPTS.FieldDeclaration$ie)) == null)) || (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.StaticFieldDeclaration$jR) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(SNodeOperations.cast(nextSibling, CONCEPTS.StaticFieldDeclaration$jR)) == null)) || (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.BaseMethodDeclaration$kD) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(SNodeOperations.cast(nextSibling, CONCEPTS.BaseMethodDeclaration$kD)) == null)));
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586941965")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

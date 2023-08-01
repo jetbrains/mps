@@ -279,6 +279,9 @@ public class CompoundComponent_TransformationMenu extends TransformationMenuBase
   }
   public class TMP_Group_w5eney_d0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     private SNode compound;
+    public TMP_Group_w5eney_d0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "7995886393883497609")));
+    }
     @Override
     protected void initialize(TransformationMenuContext _context) {
       super.initialize(_context);
@@ -291,18 +294,6 @@ public class CompoundComponent_TransformationMenu extends TransformationMenuBase
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return !(SPropertyOperations.getBoolean(compound, PROPS.cardinalityVisible$7IlK)) && (SNodeOperations.getPrevSibling(_context.getNode()) == null);
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:563c5369-4649-4929-a845-37c7045ffecd(jetbrains.mps.samples.ChemMastery.editor)", "7995886393883497609")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {

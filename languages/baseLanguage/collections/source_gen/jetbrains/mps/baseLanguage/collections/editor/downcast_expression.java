@@ -74,22 +74,13 @@ public class downcast_expression extends TransformationMenuBase {
   }
 
   public class TMP_Group_ryktp7_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_ryktp7_a0() {
+      super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697587177313")));
+    }
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       Iterable<SAbstractConcept> accepted = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.SequenceType$_s, CONCEPTS.ListType$LR, CONCEPTS.MapType$h0, CONCEPTS.SetType$g6);
       return Sequence.fromIterable(accepted).contains(SNodeOperations.getConcept(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode())));
-    }
-
-    @NotNull
-    @Override
-    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c8959032a(jetbrains.mps.baseLanguage.collections.editor)", "1741258697587177313")));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
