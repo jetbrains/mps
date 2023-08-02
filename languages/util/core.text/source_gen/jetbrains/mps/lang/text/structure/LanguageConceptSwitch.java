@@ -16,21 +16,20 @@ public final class LanguageConceptSwitch {
   public static final int IHoldComment = 4;
   public static final int IHoldLines = 5;
   public static final int IHoldParagraphs = 6;
-  public static final int IListLine = 7;
-  public static final int IParagraph = 8;
-  public static final int IndentedPoint = 9;
-  public static final int Letter = 10;
-  public static final int Line = 11;
-  public static final int NodeWrapperElement = 12;
-  public static final int NodeWrapperTextualElement = 13;
-  public static final int NumberedLine = 14;
-  public static final int NumberedPoint = 15;
-  public static final int Paragraph = 16;
-  public static final int Text = 17;
-  public static final int TextElement = 18;
-  public static final int TextualElement = 19;
-  public static final int UrlTextualElement = 20;
-  public static final int Word = 21;
+  public static final int IParagraph = 7;
+  public static final int IndentedPoint = 8;
+  public static final int Letter = 9;
+  public static final int Line = 10;
+  public static final int NodeWrapperElement = 11;
+  public static final int NodeWrapperTextualElement = 12;
+  public static final int NumberedLine = 13;
+  public static final int NumberedPoint = 14;
+  public static final int Paragraph = 15;
+  public static final int Text = 16;
+  public static final int TextElement = 17;
+  public static final int TextualElement = 18;
+  public static final int UrlTextualElement = 19;
+  public static final int Word = 20;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L);
@@ -41,7 +40,6 @@ public final class LanguageConceptSwitch {
     builder.put(0x18ce7fcc0a02c1ffL, IHoldComment);
     builder.put(0x6b2f47401707d876L, IHoldLines);
     builder.put(0x2c99af34e20dd8a1L, IHoldParagraphs);
-    builder.put(0x6669744e66ae4467L, IListLine);
     builder.put(0x17b83ed298d64ecfL, IParagraph);
     builder.put(0x46ded40cf13ae6c4L, IndentedPoint);
     builder.put(0x7ee31bf598f4ac1dL, Letter);

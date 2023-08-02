@@ -17,15 +17,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x603abc0b9c5e5042L, "jetbrains.mps.lang.text.structure.NumberedLine");
@@ -58,7 +55,7 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
     return b;
   }
   /*package*/ static String wrapTextForClipboard_id2iG$EWuTXuU(@NotNull SNode __thisNode__, String text) {
-    return IndentedPoint__BehaviorDescriptor.getIndentString_idfcFkhVQ0er.invoke(__thisNode__) + ((int) IListLine__BehaviorDescriptor.calculatePosition_id6pDt4TAS5pe.invoke(__thisNode__)) + ". " + text;
+    return IndentedPoint__BehaviorDescriptor.getIndentString_idfcFkhVQ0er.invoke(__thisNode__) + ((int) IndentedPoint__BehaviorDescriptor.calculatePosition_id6pDt4TBBQHh.invoke(__thisNode__)) + ". " + text;
   }
   /*package*/ static SNode createParagraphInstance_id7q4Ywce6rMl(@NotNull SNode __thisNode__) {
     return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x5d9ea196218822ebL, "jetbrains.mps.lang.text.structure.NumberedPoint"));
@@ -70,46 +67,24 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static boolean isFirstLine_id647WjQal7cZ(@NotNull SNode __thisNode__) {
-    return ((int) IListLine__BehaviorDescriptor.calculatePosition_id6pDt4TAS5pe.invoke(__thisNode__)) == 1;
+    return ((int) IndentedPoint__BehaviorDescriptor.calculatePosition_id6pDt4TBBQHh.invoke(__thisNode__)) == 1;
   }
   /*package*/ static boolean isLastLine_id647WjQalOgm(@NotNull SNode __thisNode__) {
     SNode nextSibling = SNodeOperations.getNextSibling(__thisNode__);
-    if (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.IListLine$Hf)) {
-      if (SPropertyOperations.getInteger(SNodeOperations.as(nextSibling, CONCEPTS.IListLine$Hf), PROPS.indentation$8ZOp) == SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
+    if (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.IndentedPoint$BF)) {
+      if (SPropertyOperations.getInteger(SNodeOperations.as(nextSibling, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp) == SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
         if (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.NumberedLine$k0)) {
           return false;
         } else {
           return true;
         }
       }
-      if (SPropertyOperations.getInteger(SNodeOperations.as(nextSibling, CONCEPTS.IListLine$Hf), PROPS.indentation$8ZOp) < SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
+      if (SPropertyOperations.getInteger(SNodeOperations.as(nextSibling, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp) < SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
         return true;
       }
     } else {
       return true;
     }
-
-    // the line has a nested list
-    // determine if there is a continuation of the list or if the list ends with a nested list 
-    for (SNode p : SNodeOperations.getNextSiblings(__thisNode__, false)) {
-      if (SNodeOperations.isInstanceOf(p, CONCEPTS.IListLine$Hf)) {
-        if (SPropertyOperations.getInteger(SNodeOperations.as(p, CONCEPTS.IListLine$Hf), PROPS.indentation$8ZOp) == SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
-          if (SNodeOperations.isInstanceOf(p, CONCEPTS.NumberedLine$k0)) {
-            return false;
-          } else {
-            ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(p), CONCEPTS.IListLine$Hf), LINKS.parentLists$2JxE)).addElement(__thisNode__);
-            return false;
-          }
-        } else if (SPropertyOperations.getInteger(SNodeOperations.as(p, CONCEPTS.IListLine$Hf), PROPS.indentation$8ZOp) < SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
-          ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(p), CONCEPTS.IListLine$Hf), LINKS.parentLists$2JxE)).addElement(__thisNode__);
-          return false;
-        }
-      } else {
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(p), CONCEPTS.IListLine$Hf), LINKS.parentLists$2JxE)).addElement(__thisNode__);
-        return false;
-      }
-    }
-    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(ListSequence.fromList(SNodeOperations.getNextSiblings(__thisNode__, false)).last(), CONCEPTS.IListLine$Hf), LINKS.parentLists$2JxE)).addElement(__thisNode__);
     return false;
   }
 
@@ -177,15 +152,10 @@ public final class NumberedLine__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SConcept NumberedLine$k0 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x603abc0b9c5e5042L, "jetbrains.mps.lang.text.structure.NumberedLine");
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
     /*package*/ static final SInterfaceConcept IndentedPoint$BF = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, "jetbrains.mps.lang.text.structure.IndentedPoint");
-    /*package*/ static final SInterfaceConcept IListLine$Hf = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6669744e66ae4467L, "jetbrains.mps.lang.text.structure.IListLine");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
     /*package*/ static final SProperty indentation$8ZOp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, 0x46ded40cf13ae6fbL, "indentation");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink parentLists$2JxE = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6669744e66ae4467L, 0x6669744e66c93562L, "parentLists");
   }
 }

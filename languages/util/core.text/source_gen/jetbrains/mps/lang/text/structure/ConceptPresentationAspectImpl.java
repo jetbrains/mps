@@ -16,7 +16,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_IHoldComment;
   private ConceptPresentation props_IHoldLines;
   private ConceptPresentation props_IHoldParagraphs;
-  private ConceptPresentation props_IListLine;
   private ConceptPresentation props_IParagraph;
   private ConceptPresentation props_IndentedPoint;
   private ConceptPresentation props_Letter;
@@ -83,12 +82,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IHoldParagraphs = cpb.create();
         }
         return props_IHoldParagraphs;
-      case LanguageConceptSwitch.IListLine:
-        if (props_IListLine == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_IListLine = cpb.create();
-        }
-        return props_IListLine;
       case LanguageConceptSwitch.IParagraph:
         if (props_IParagraph == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

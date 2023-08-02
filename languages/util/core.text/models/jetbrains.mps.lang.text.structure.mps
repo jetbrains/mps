@@ -34,9 +34,7 @@
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
         <child id="1071489727084" name="propertyDeclaration" index="1TKVEl" />
       </concept>
-      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ">
-        <child id="1169127546356" name="extends" index="PrDN$" />
-      </concept>
+      <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
@@ -356,7 +354,7 @@
     <property role="34LRSv" value="numbered line" />
     <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
     <node concept="PrWs8" id="6pDt4TAF$oY" role="PzmwI">
-      <ref role="PrY4T" node="6pDt4TAF$hB" resolve="IListLine" />
+      <ref role="PrY4T" node="4ruP0NLeIr4" resolve="IndentedPoint" />
     </node>
   </node>
   <node concept="PlHQZ" id="1zevWKa0GFG">
@@ -373,7 +371,7 @@
     <property role="34LRSv" value="bullet line" />
     <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
     <node concept="PrWs8" id="6pDt4TAF$rt" role="PzmwI">
-      <ref role="PrY4T" node="6pDt4TAF$hB" resolve="IListLine" />
+      <ref role="PrY4T" node="4ruP0NLeIr4" resolve="IndentedPoint" />
     </node>
   </node>
   <node concept="1TIwiD" id="6MMfM8JH7Fc">
@@ -412,20 +410,6 @@
     <property role="3F6X1D" value="6991822193150408942" />
     <property role="TrG5h" value="Url" />
     <property role="FLfZY" value="https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&amp;//=]*)" />
-  </node>
-  <node concept="PlHQZ" id="6pDt4TAF$hB">
-    <property role="EcuMT" value="7379557344502236263" />
-    <property role="TrG5h" value="IListLine" />
-    <node concept="1TJgyj" id="6pDt4TAMjly" role="1TKVEi">
-      <property role="IQ2ns" value="7379557344504001890" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="parentLists" />
-      <property role="20lbJX" value="fLJekj5/_0__n" />
-      <ref role="20lvS9" node="6pDt4TAF$hB" resolve="IListLine" />
-    </node>
-    <node concept="PrWs8" id="6pDt4TAQWW0" role="PrDN$">
-      <ref role="PrY4T" node="4ruP0NLeIr4" resolve="IndentedPoint" />
-    </node>
   </node>
 </model>
 

@@ -27,7 +27,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptIHoldComment = createDescriptorForIHoldComment();
   /*package*/ final ConceptDescriptor myConceptIHoldLines = createDescriptorForIHoldLines();
   /*package*/ final ConceptDescriptor myConceptIHoldParagraphs = createDescriptorForIHoldParagraphs();
-  /*package*/ final ConceptDescriptor myConceptIListLine = createDescriptorForIListLine();
   /*package*/ final ConceptDescriptor myConceptIParagraph = createDescriptorForIParagraph();
   /*package*/ final ConceptDescriptor myConceptIndentedPoint = createDescriptorForIndentedPoint();
   /*package*/ final ConceptDescriptor myConceptLetter = createDescriptorForLetter();
@@ -60,7 +59,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBulletLine, myConceptBulletPoint, myConceptEmptyParagraphLetter, myConceptHeader, myConceptIHoldComment, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptIListLine, myConceptIParagraph, myConceptIndentedPoint, myConceptLetter, myConceptLine, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptNumberedLine, myConceptNumberedPoint, myConceptParagraph, myConceptText, myConceptTextElement, myConceptTextualElement, myConceptUrlTextualElement, myConceptWord);
+    return Arrays.asList(myConceptBulletLine, myConceptBulletPoint, myConceptEmptyParagraphLetter, myConceptHeader, myConceptIHoldComment, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptIParagraph, myConceptIndentedPoint, myConceptLetter, myConceptLine, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptNumberedLine, myConceptNumberedPoint, myConceptParagraph, myConceptText, myConceptTextElement, myConceptTextualElement, myConceptUrlTextualElement, myConceptWord);
   }
 
   @Override
@@ -81,8 +80,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptIHoldLines;
       case LanguageConceptSwitch.IHoldParagraphs:
         return myConceptIHoldParagraphs;
-      case LanguageConceptSwitch.IListLine:
-        return myConceptIListLine;
       case LanguageConceptSwitch.IParagraph:
         return myConceptIParagraph;
       case LanguageConceptSwitch.IndentedPoint:
@@ -130,7 +127,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     // extends: jetbrains.mps.lang.text.structure.Line
     b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L);
-    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6669744e66ae4467L);
+    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L);
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/1094247804558289146");
     b.version(3);
     b.alias("bullet line");
@@ -185,15 +182,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.interface_();
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/3213792450771277985");
     b.version(3);
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForIListLine() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "IListLine", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6669744e66ae4467L);
-    b.interface_();
-    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L);
-    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/7379557344502236263");
-    b.version(3);
-    b.aggregate("parentLists", 0x6669744e66c93562L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6669744e66ae4467L).optional(true).ordered(true).multiple(true).origin("7379557344504001890").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForIParagraph() {
@@ -266,7 +254,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     // extends: jetbrains.mps.lang.text.structure.Line
     b.super_(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L);
-    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6669744e66ae4467L);
+    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L);
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/6934061334344388674");
     b.version(3);
     b.alias("numbered line");
