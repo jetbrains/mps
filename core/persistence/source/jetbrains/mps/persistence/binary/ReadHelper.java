@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,12 @@
 package jetbrains.mps.persistence.binary;
 
 import gnu.trove.TIntObjectHashMap;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.registry.ConceptInfo;
 import jetbrains.mps.persistence.registry.IdInfoRegistry;
 import jetbrains.mps.persistence.registry.LangInfo;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
@@ -32,6 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
@@ -51,7 +54,9 @@ class ReadHelper {
   private SAbstractConcept myConceptMO;
   // TODO with indices being just a persistence position, shall use arrays instead
   // FIXME has to be SAbstractConcept, see idInfoReadHelper for more info!
+  //       Although not so sure now. With separate handling of SInterfaceConcepts, perhaps, worth keeping it this way
   private final TIntObjectHashMap<SConcept> myConcepts = new TIntObjectHashMap<>();
+  private final TIntObjectHashMap<SInterfaceConcept> myInterfaceConcepts = new TIntObjectHashMap<>();
   private final TIntObjectHashMap<SProperty> myProperties = new TIntObjectHashMap<>();
   private final TIntObjectHashMap<SReferenceLink> myAssociations = new TIntObjectHashMap<>();
   private final TIntObjectHashMap<SContainmentLink> myAggregations = new TIntObjectHashMap<>();
@@ -75,17 +80,26 @@ class ReadHelper {
   }
 
   // @param stub is optional
-  public void withConcept(SConceptId concept, String name, StaticScope scope, ConceptKind kind, SConceptId stub, int index) {
+  public void withConcept(SConceptId concept, String name, StaticScope scope, ConceptKind kind, boolean isInterfaceConcept, SConceptId stub, int index) {
     myActualConcept = myMetaInfo.registerConcept(concept, name);
     myActualConcept.setImplementationKind(scope, kind);
     myActualConcept.setIntIndex(index);
-    final SConcept ccc = MetaAdapterFactory.getConcept(concept, name);
-    myConceptMO = ccc;
-    myConcepts.put(index, ccc);
+    if (isInterfaceConcept) {
+      myActualConcept.markAsInterfaceConcept();
+      myMetaInfoProvider.setInterfaceConcept(concept);
+      final SInterfaceConcept ccc = MetaAdapterFactory.getInterfaceConcept(concept, name);
+      myConceptMO = ccc;
+      myInterfaceConcepts.put(index, ccc);
+    } else {
+      final SConcept ccc = MetaAdapterFactory.getConcept(concept, name);
+      myConceptMO = ccc;
+      myConcepts.put(index, ccc);
+    }
     myMetaInfoProvider.setConceptName(concept, name);
     myActualConcept.setStubCounterpart(stub);
     myMetaInfoProvider.setStubConcept(concept, stub);
   }
+
 
   public void property(SPropertyId property, String name, int index) {
     myActualConcept.addProperty(property, name).setIntIndex(index);
@@ -106,6 +120,18 @@ class ReadHelper {
   }
 
   public SConcept readConcept(int index) {
+    if (myInterfaceConcepts.contains(index)) {
+      String m = "Attempt to instantiate a node with an interface concept. Id:%s";
+      assert !myConcepts.contains(index) : "Same index registered as SConcept and SInterfaceConcept";
+      final SInterfaceConcept iface = myInterfaceConcepts.get(index);
+      // XXX has to be an error, indeed, but there are quite a lot of uses in MPS itself (e.g. templates)
+      //     and I need to get tests watching for ERROR in the log pass.
+      Logger.getLogger(getClass()).warning(String.format(m, iface));
+      // fallback, just in case. I don't like it but not brave enough to go on with just
+      //   assert !myInterfaceConcepts.contains(index)
+      // few weeks before 2023.2 release
+      return MetaAdapterByDeclaration.asInstanceConcept(iface);
+    }
     return myConcepts.get(index);
   }
 
@@ -121,7 +147,7 @@ class ReadHelper {
     return myAggregations.get(index);
   }
 
-  public boolean isInterface(@NotNull SConcept concept) {
+  public boolean isInterfacePart(@NotNull SConcept concept) {
     return ConceptKind.INTERFACE == myMetaInfo.find(concept).getKind();
   }
 

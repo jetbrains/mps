@@ -33,4 +33,10 @@ public enum ConceptKind {
    * concept instances get replaced with stubs that may indicate hidden implementation (by means of a custom editor)
    */
   IMPLEMENTATION_WITH_STUB
+
+
+  /*
+     ImplNote: in binary persistence, there are 3 bits available to store ordinal of the member.
+     I don't expect this enum to grow, but just in case it does, keep in mind that up to 8 members is ok
+   */
 }
