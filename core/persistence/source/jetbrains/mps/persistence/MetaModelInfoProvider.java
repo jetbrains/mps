@@ -35,7 +35,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * PROVISIONAL API, DO NOT USE
@@ -115,6 +117,11 @@ public interface MetaModelInfoProvider {
   StaticScope getScope(SConceptId concept);
 
   void setScope(SConceptId concept, StaticScope scope);
+
+  // since 2023.2
+  Boolean isInterfaceConcept(SConceptId concept);
+
+  void setInterfaceConcept(SConceptId concept);
 
   Boolean isUnordered(SContainmentLinkId link);
 
@@ -207,6 +214,16 @@ public interface MetaModelInfoProvider {
 
     @Override
     public void setScope(SConceptId concept, StaticScope scope) {
+      // intentionally no-op
+    }
+
+    @Override
+    public Boolean isInterfaceConcept(SConceptId concept) {
+      return null;
+    }
+
+    @Override
+    public void setInterfaceConcept(SConceptId concept) {
       // intentionally no-op
     }
 
@@ -340,6 +357,16 @@ public interface MetaModelInfoProvider {
     }
 
     @Override
+    public Boolean isInterfaceConcept(SConceptId concept) {
+      ConceptDescriptor descriptor = ConceptRegistryUtil.getConceptDescriptor(concept);
+      if (descriptor != null) {
+        return descriptor.isInterfaceConcept();
+      }
+      // in persistence, we used to treat everything with SConceptId as a Concept
+      return Boolean.FALSE;
+    }
+
+    @Override
     public Boolean isUnordered(SContainmentLinkId link) {
       ConceptDescriptor descriptor = ConceptRegistryUtil.getConceptDescriptor(link.getConceptId());
       if (descriptor != null) {
@@ -428,6 +455,7 @@ public interface MetaModelInfoProvider {
     private final Map<SConceptId, StaticScope> myScope = new HashMap<>();
     private final Map<SConceptId, ConceptKind> myKind = new HashMap<>();
     private final Map<SConceptId, SConceptId> myStubs = new HashMap<>();
+    private final Set<SConceptId> myInterfaceConcepts = new HashSet<>();
     private final MetaModelInfoProvider myDelegate;
 
     public StuffedMetaModelInfo(@NotNull MetaModelInfoProvider delegate) {
@@ -526,6 +554,12 @@ public interface MetaModelInfoProvider {
     }
 
     @Override
+    public void setInterfaceConcept(SConceptId concept) {
+      myInterfaceConcepts.add(concept);
+      myDelegate.setInterfaceConcept(concept);
+    }
+
+    @Override
     public void setUnordered(SContainmentLinkId link, boolean unordered) {
       myUnordered.put(link, unordered);
       myDelegate.setUnordered(link, unordered);
@@ -606,6 +640,11 @@ public interface MetaModelInfoProvider {
         return scope;
       }
       return myDelegate.getScope(concept);
+    }
+
+    @Override
+    public Boolean isInterfaceConcept(SConceptId concept) {
+      return myInterfaceConcepts.contains(concept) || myDelegate.isInterfaceConcept(concept);
     }
 
     @Override

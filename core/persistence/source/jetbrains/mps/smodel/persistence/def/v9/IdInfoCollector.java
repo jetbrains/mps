@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.smodel.persistence.def.v9;
 
-import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.registry.ConceptInfo;
 import jetbrains.mps.persistence.registry.IdInfoRegistry;
@@ -32,6 +32,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -42,7 +43,7 @@ import org.jetbrains.mps.openapi.model.SReference;
  * Populate a data structure that keeps meta-information actually used for the nodes supplied.
  * Cares about meta-model source alternatives, and consults {@link jetbrains.mps.persistence.MetaModelInfoProvider} for actual
  * meta-model information necessary for current persistence session.
- *
+ * <br/>
  * XXX in fact, ConceptInfo and other are pretty much what we keep in MetaModelInfoProvider. Perhaps, better code would emerge
  * if there is hierarchy of ConceptInfo, PropertyInfo plus two distinct mechanism to fill it: one for regular use, with ConceptDescriptors and alike,
  * and second for ant/merge, which populates exactly same structure but from information extracted from other models.
@@ -133,6 +134,8 @@ public class IdInfoCollector {
 
   /**
    * find info object for already registered concept, or register both concept and its language if it's the first time we see the concept.
+   * Deals with identity objects and MMIP, doesn't care if concepts exists/known/valid (well, it's up to MMIP where it takes
+   * necessary meta-information)
    */
   @NotNull
   private ConceptInfo registerConcept(SConceptId concept) {
@@ -159,6 +162,10 @@ public class IdInfoCollector {
     final StaticScope scope = myMetaInfoProvider.getScope(concept);
     final ConceptKind kind = myMetaInfoProvider.getKind(concept);
     ci.setImplementationKind(scope, kind);
+    final Boolean interfaceConcept = myMetaInfoProvider.isInterfaceConcept(concept);
+    if (interfaceConcept != null && interfaceConcept) {
+      ci.markAsInterfaceConcept();
+    }
     if (kind == ConceptKind.IMPLEMENTATION_WITH_STUB) {
       ci.setStubCounterpart(myMetaInfoProvider.getStubConcept(concept));
     }
@@ -166,11 +173,23 @@ public class IdInfoCollector {
 
   private ConceptInfo registerConcept(SAbstractConcept c) {
     final SConceptId conceptId = MetaIdHelper.getConcept(c);
-    if (!RuntimeFlags.isMergeDriverMode() && (c.isValid() || MetaIdHelper.unrecognized(c))) {
+    if (myRegistry.knows(conceptId)) {
+      return myRegistry.get(conceptId);
+    }
+    if (MetaIdHelper.unrecognized(c)) {
       return registerConcept(conceptId);
     }
+    // accessing 'c' instance with care. We might be in a 'persistence-only' mode w/o access to
+    // ConceptRegistry/ConceptDescriptor and as long as some SAbstractConcept impl methods resort
+    // to CD for reply, we may face IllegalConceptDescriptor errors (see MPS-35421). However, as we delegate
+    // most of the queries to MMIP, it's subject to correct external configuration (caller to supply properly
+    // configured MMIP to avoid accessing CR/CD)
     if (!myRegistry.knows(conceptId.getLanguageId())) {
-      myRegistry.registerLanguage(conceptId.getLanguageId(), c.getLanguage().getQualifiedName());
+      String langName = myMetaInfoProvider.getLanguageName(conceptId.getLanguageId());
+      if (langName == null || langName.isEmpty()) {
+        langName = c.getLanguage().getQualifiedName();
+      }
+      myRegistry.registerLanguage(conceptId.getLanguageId(), langName);
     }
     String conceptName = myMetaInfoProvider.getConceptName(conceptId);
     ConceptInfo ci = myRegistry.registerConcept(conceptId, conceptName == null || conceptName.isEmpty() ? c.getQualifiedName() : conceptName);
@@ -178,6 +197,12 @@ public class IdInfoCollector {
     //     however, it's all the same for a concept with isValid() == false, there's no place to extract this data from either
     //     therefore, I resort here to the same code as in a general case
     fillFromMMMIP(ci, conceptId);
+    if (c instanceof SInterfaceConcept && !ci.isInterfaceConcept()) {
+      // XXX here we could do ci.markAsInterfaceConcept() based on c instanceof SInterfaceConcept, but as long as we rely on MMIP for
+      //     other attributes (like scope, kind, etc), follow the same approach (i.e. consult ConceptDescriptor) for SConcept/SInterfaceConcept as well.
+      // OTOH, MMIP is expected to answer null when doesn't know, perhaps, shall respect this case here (like it's done for conceptName, above)?
+      Logger.getLogger(getClass()).warning(String.format("InterfaceConcept %s was not recognized as such. MMIP answer: %s", c, myMetaInfoProvider.isInterfaceConcept(conceptId)));
+    }
     return ci;
   }
 

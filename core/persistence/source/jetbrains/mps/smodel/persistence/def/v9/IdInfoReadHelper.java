@@ -15,10 +15,13 @@
  */
 package jetbrains.mps.smodel.persistence.def.v9;
 
+import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.registry.ConceptInfo;
 import jetbrains.mps.persistence.registry.IdInfoRegistry;
 import jetbrains.mps.persistence.registry.LangInfo;
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
@@ -32,6 +35,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -41,8 +45,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Facility to read meta-model information persisted in a model file, to fill {@link jetbrains.mps.smodel.persistence.def.v9.IdInfoCollector} back from the
+ * Facility to read meta-model information persisted in a model file, to fill {@link IdInfoRegistry} back from the
  * serialized registry. Serves the task to parametrize ModelReader as well.
+ *
+ * {@link IdInfoCollector} counterpart, where this class represents "read instances from persistence format" side, and
+ * {@link IdInfoCollector} represents "write instances into persistence format".
  *
  * Although barely a mediator to few other facilities, grabs great portion of code one would otherwise write in ModelReaderHandler.
  *
@@ -56,9 +63,10 @@ class IdInfoReadHelper {
   private LangInfo myActualLang;
   private ConceptInfo myActualConcept;
   private SAbstractConcept myConceptMO;
-  // FIXME how come I record SConcept here, when I can encounter references to InterfaceConcept in the registry
-  //       (e.g. INamedConcept/name) ?!
+  // We record SConcept/SInterfaceConcept separately. We may encounter references to InterfaceConcept in the registry
+  //       (e.g. INamedConcept/name) and shall use specific S* class to avoid issues like MPS-35421 or MPS-35503
   private final Map<String, SConcept> myConcepts = new HashMap<>();
+  private final Map<String, SInterfaceConcept> myInterfaceConcepts = new HashMap<>();
   private final Map<String, SProperty> myProperties = new HashMap<>();
   private final Map<String, SReferenceLink> myAssociations = new HashMap<>();
   private final Map<String, SContainmentLink> myAggregations = new HashMap<>();
@@ -101,9 +109,17 @@ class IdInfoReadHelper {
     SConceptId conceptId = myIdEncoder.parseConceptId(myActualLang.getLanguageId(), id);
     myActualConcept = myMetaRegistry.registerConcept(conceptId, name);
     myActualConcept.parseImplementationKind(nodeInfo);
-    final SConcept ccc = MetaAdapterFactory.getConcept(conceptId, name);
-    myConceptMO = ccc;
-    myConcepts.put(index, ccc);
+    if (myActualConcept.isInterfaceConcept()) {
+      // unlike ReadHelper in Binary persistence, no need for myActualConcept.markInterfaceConcept() as it's part of parseImplementationKind()
+      final SInterfaceConcept ccc = MetaAdapterFactory.getInterfaceConcept(conceptId, name);
+      myConceptMO = ccc;
+      myInterfaceConcepts.put(index,ccc);
+      myMetaInfoProvider.setInterfaceConcept(conceptId);
+    } else {
+      final SConcept ccc = MetaAdapterFactory.getConcept(conceptId, name);
+      myConceptMO = ccc;
+      myConcepts.put(index, ccc);
+    }
     myMetaInfoProvider.setConceptName(conceptId, name);
     myMetaInfoProvider.setKind(conceptId, myActualConcept.getKind());
     myMetaInfoProvider.setScope(conceptId, myActualConcept.getScope());
@@ -143,6 +159,20 @@ class IdInfoReadHelper {
   // Query. De-serialize ids, resolve indexes and retrieve meta-objects according to myInfoCollector state
 
   public SConcept readConcept(@NotNull String index) {
+    if (myInterfaceConcepts.containsKey(index)) {
+      final String m1 = "Same index %s for concept/interface concept %s";
+      assert !myConcepts.containsKey(index) : String.format(m1, index, myInterfaceConcepts.get(index));
+      final String m2 = "Attempt to instantiate a node with an interface concept. index: %s, concept: %s";
+      // happens e.g. in templates, where macros produce legitimate nodes but are attached to a throw-away instance
+      // still, it's better not to do this
+      final String msg = String.format(m2, index, myInterfaceConcepts.get(index));
+//      if (RuntimeFlags.isInternalMode()) {
+//        Logger.getLogger(getClass()).error(msg, new Throwable());
+//      } else {
+        Logger.getLogger(getClass()).warning(msg);
+//      }
+      return MetaAdapterByDeclaration.asInstanceConcept(myInterfaceConcepts.get(index));
+    }
     assert myConcepts.containsKey(index) : String.format("Bad concept index key: %s", index);
     return myConcepts.get(index);
   }
