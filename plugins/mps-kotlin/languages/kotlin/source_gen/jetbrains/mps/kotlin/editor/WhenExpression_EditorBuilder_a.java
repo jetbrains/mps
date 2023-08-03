@@ -25,6 +25,21 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
+import jetbrains.mps.lang.editor.cellProviders.AggregationCellContext;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
+import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
+import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
+import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
+import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.editor.generator.internal.PrimaryReplaceChildMenuCellMenuPart;
+import jetbrains.mps.nodeEditor.cellMenu.CellContext;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.RParenthesisStyleClass;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.LBraceStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -38,6 +53,7 @@ import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.ArrowStyleClass;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.RBraceStyleClass;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /*package*/ class WhenExpression_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -220,7 +236,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
       if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new AggregationCellContext(myNode, child, LINKS.target$I2XO, CONCEPTS.IExpression$2i), new SubstituteInfoPartExt[]{new WhenExpression_generic_cellMenu_150k19_a0d0(), new WhenExpression_target_cellMenu_150k19_b0d0(), new SChildSubstituteInfoPartEx(editorCell)}));
       }
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.target$I2XO);
@@ -242,6 +258,51 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     protected String getNoTargetText() {
       return "<no target>";
+    }
+    public static class WhenExpression_generic_cellMenu_150k19_a0d0 extends AbstractCellMenuPart_Generic_Group {
+      public WhenExpression_generic_cellMenu_150k19_a0d0() {
+      }
+
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+        List<String> list = ListSequence.fromList(new ArrayList<>());
+        if ((SLinkOperations.getTarget(node, LINKS.variableDeclaration$jXBd) == null)) {
+          ListSequence.fromList(list).addElement("=");
+          ListSequence.fromList(list).addElement("val");
+        }
+        return list;
+
+      }
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
+      }
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        editorContext.selectWRTFocusPolicy(SNodeFactoryOperations.setNewChild(node, LINKS.variableDeclaration$jXBd, null));
+      }
+      protected boolean isReferentPresentation() {
+        return false;
+      }
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
+        return parameterObject;
+      }
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
+        return "insert variable";
+      }
+
+      @Override
+      protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
+        return new EditorMenuDescriptorBase("generic group with parameter: " + ((parameterObject == null ? "null" : parameterObject.toString())), new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "3813681878983867899"));
+      }
+    }
+    public static class WhenExpression_target_cellMenu_150k19_b0d0 extends PrimaryReplaceChildMenuCellMenuPart {
+      public WhenExpression_target_cellMenu_150k19_b0d0() {
+      }
+
+      @Override
+      protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
+        return new EditorMenuDescriptorBase("primary replace child menu", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "3813681878982076365"));
+      }
     }
   }
   private EditorCell createConstant_4() {
@@ -464,6 +525,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept WhenExpression$iN = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af532L, "jetbrains.mps.kotlin.structure.WhenExpression");
+    /*package*/ static final SInterfaceConcept IExpression$2i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression");
     /*package*/ static final SConcept WhenEntry$Ki = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af391L, "jetbrains.mps.kotlin.structure.WhenEntry");
   }
 }

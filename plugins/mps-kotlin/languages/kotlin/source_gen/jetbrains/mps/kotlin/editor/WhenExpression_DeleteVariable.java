@@ -8,8 +8,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -30,7 +28,7 @@ public class WhenExpression_DeleteVariable {
           return;
         }
         SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.variableDeclaration$jXBd));
-        SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.target$I2XO), SelectionManager.FIRST_EDITABLE_CELL, 0);
+        editorContext.selectWRTFocusPolicy(node);
       }
 
     };
@@ -79,6 +77,5 @@ public class WhenExpression_DeleteVariable {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink variableDeclaration$jXBd = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af532L, 0x11400bb790af4cf0L, "variableDeclaration");
-    /*package*/ static final SContainmentLink target$I2XO = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af532L, 0x11400bb790af49eaL, "target");
   }
 }
