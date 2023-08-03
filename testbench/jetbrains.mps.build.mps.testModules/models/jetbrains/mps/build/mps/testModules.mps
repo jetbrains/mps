@@ -13,7 +13,6 @@
     <import index="8ytb" ref="r:0fc0617b-a58c-4b18-af63-dc67be77023b(mps.test.findusages@tests)" />
     <import index="5lan" ref="r:4201854c-2b50-4609-9031-1ebdf87d3bf7(JavaCompilationXmlConflict.test.test@tests)" />
     <import index="5fgz" ref="r:306699ac-7981-4117-bc07-ec2d425bff05(TestModelRename.test@tests)" />
-    <import index="z4zz" ref="r:1f73e653-ef8a-439c-b71e-24bf7593da7f(sample.a_model_to_rename)" />
   </imports>
   <registry>
     <language id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest">
@@ -59,9 +58,6 @@
     </node>
     <node concept="2Uj$md" id="1fvQcDvH7Oa" role="2Uj_Yd">
       <ref role="2Uj$mc" to="5fgz:1fvQcDvHjaU" resolve="ModelRename" />
-    </node>
-    <node concept="2Uj$md" id="1fvQcDvH_T3" role="2Uj_Yd">
-      <ref role="2Uj$mc" to="z4zz:1fvQcDvH_PZ" resolve="SampleSolutionToRename" />
     </node>
     <node concept="1dCxOl" id="4JE22xb2zS5" role="3cVaLd">
       <property role="1XweGQ" value="r:12897c41-1d23-444a-8c3d-8a254e74f9b6" />

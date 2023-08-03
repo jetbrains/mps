@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="jetbrains.mps.build.mps.testModules" uuid="e2309f95-1261-44f8-a001-ea5c9cf826d7" moduleVersion="0" compileInMPS="true">
   <models>
-    <modelRoot contentPath="${module}" type="default">
+    <modelRoot type="default" contentPath="${module}">
       <sourceRoot location="models" />
     </modelRoot>
   </models>
@@ -18,7 +18,6 @@
     <dependency reexport="false">9ebe73c6-437b-4a56-95a7-1d7eec081f24(mps.test.findusages)</dependency>
     <dependency reexport="false">b0a89157-db40-4955-b2ac-edf8fcc90dde(JavaCompilationXmlConflict.test)</dependency>
     <dependency reexport="false">5de85764-70e6-4e9a-8618-d85dc0eb0843(TestModelRename)</dependency>
-    <dependency reexport="false">cea8814f-0f47-4ffe-8d0a-783b568230cb(sampleSolution)</dependency>
   </dependencies>
   <languageVersions>
     <language slang="l:9f846aef-4e4a-4a84-828e-7e83fe2697f2:jetbrains.mps.build.mps.testManifest" version="0" />

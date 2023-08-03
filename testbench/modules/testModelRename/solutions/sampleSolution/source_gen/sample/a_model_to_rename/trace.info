@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<debug-info version="2">
-  <root nodeRef="r:1f73e653-ef8a-439c-b71e-24bf7593da7f(sample.a_model_to_rename)/1432101570225878714">
-    <file name="A.java">
-      <unit id="1432101570225878714" at="6,0,8,0" name="sample.a_model_to_rename.A" />
-    </file>
-  </root>
-</debug-info>
-
