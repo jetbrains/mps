@@ -118,6 +118,10 @@
       <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
+      <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
+        <child id="1160998896846" name="condition" index="1gVkn0" />
+        <child id="1160998916832" name="message" index="1gVpfI" />
+      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -502,6 +506,29 @@
                     <ref role="3cqZAo" node="o2FwARl4n1" resolve="em" />
                   </node>
                 </node>
+              </node>
+            </node>
+            <node concept="1gVbGN" id="2XTo$x8JwBi" role="3cqZAp">
+              <node concept="2OqwBi" id="2XTo$x8JxDI" role="1gVkn0">
+                <node concept="2OqwBi" id="2XTo$x8JxDJ" role="2Oq$k0">
+                  <node concept="2OqwBi" id="2XTo$x8JxDK" role="2Oq$k0">
+                    <node concept="37vLTw" id="2XTo$x8JxDL" role="2Oq$k0">
+                      <ref role="3cqZAo" node="o2FwARg$Jv" resolve="testSolution" />
+                    </node>
+                    <node concept="liA8E" id="2XTo$x8JxDM" role="2OqNvi">
+                      <ref role="37wK5l" to="z1c3:~AbstractModule.getModelRoots()" resolve="getModelRoots" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="2XTo$x8JxDN" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Iterable.iterator()" resolve="iterator" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="2XTo$x8JxDO" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~Iterator.hasNext()" resolve="hasNext" />
+                </node>
+              </node>
+              <node concept="Xl_RD" id="2XTo$x8J$T1" role="1gVpfI">
+                <property role="Xl_RC" value="The test solution is expected to have a model root available" />
               </node>
             </node>
             <node concept="3clFbF" id="2XTo$x8u$2p" role="3cqZAp">

@@ -115,6 +115,7 @@ public class RenameModel_Test extends BaseTransformationTest {
         SModel createdModel = persistence.create(ds, name);
         EditableSModelBase em = (EditableSModelBase) createdModel;
         testSolution.registerModel(em);
+        assert testSolution.getModelRoots().iterator().hasNext() : "The test solution is expected to have a model root available";
         em.setModelRoot(testSolution.getModelRoots().iterator().next());
         em.save();
         testSolution.save();
