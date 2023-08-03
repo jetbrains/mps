@@ -70,10 +70,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Collection_63jtul_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
-    editorCell.addEditorCell(createProperty_0());
     editorCell.addEditorCell(createComponent_0());
-    editorCell.addEditorCell(createCollection_1());
+    editorCell.addEditorCell(createProperty_0());
     editorCell.addEditorCell(createComponent_1());
+    editorCell.addEditorCell(createCollection_1());
+    editorCell.addEditorCell(createComponent_2());
+    return editorCell;
+  }
+  private EditorCell createComponent_0() {
+    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.kotlin.editor.Annotations_Component");
     return editorCell;
   }
   private EditorCell createProperty_0() {
@@ -101,13 +106,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
       getCellFactory().popCellContext();
     }
   }
-  private EditorCell createComponent_0() {
+  private EditorCell createComponent_1() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.kotlin.editor.TypeArguments_Component");
     return editorCell;
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_63jtul_c0");
+    editorCell.setCellId("Collection_63jtul_d0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
@@ -118,7 +123,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
-    editorCell.setCellId("Constant_63jtul_a2a");
+    editorCell.setCellId("Constant_63jtul_a3a");
     Style style = new StyleImpl();
     new LParenthesisStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
@@ -127,7 +132,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new argumentsListHandler_63jtul_b2a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new argumentsListHandler_63jtul_b3a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_arguments");
     if (true) {
@@ -136,11 +141,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class argumentsListHandler_63jtul_b2a extends RefNodeListHandler {
+  private static class argumentsListHandler_63jtul_b3a extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public argumentsListHandler_63jtul_b2a(SNode ownerNode, EditorContext context) {
+    public argumentsListHandler_63jtul_b3a(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -163,7 +168,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(argumentsListHandler_63jtul_b2a.this.getNode(), LINKS.arguments$zJyV));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(argumentsListHandler_63jtul_b3a.this.getNode(), LINKS.arguments$zJyV));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_1();
@@ -217,7 +222,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     private EditorCell createConstant_1() {
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
-      editorCell.setCellId("Constant_63jtul_a1c0");
+      editorCell.setCellId("Constant_63jtul_a1d0");
       Style style = new StyleImpl();
       style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
@@ -230,7 +235,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
-    editorCell.setCellId("Constant_63jtul_c2a");
+    editorCell.setCellId("Constant_63jtul_c3a");
     Style style = new StyleImpl();
     new RParenthesisStyleClass(this).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
@@ -239,7 +244,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
-  private EditorCell createComponent_1() {
+  private EditorCell createComponent_2() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.kotlin.editor.ClassBody_Component");
     return editorCell;
   }

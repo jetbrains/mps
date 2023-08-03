@@ -3862,6 +3862,9 @@
     <ref role="1XX52x" to="hcm8:2yYXHtl6JkN" resolve="EnumEntry" />
     <node concept="3EZMnI" id="2yYXHtl6KsW" role="2wV5jI">
       <node concept="l2Vlx" id="2yYXHtl6KsX" role="2iSdaV" />
+      <node concept="PMmxH" id="3jGURqhQE3Z" role="3EZMnx">
+        <ref role="PMmxG" node="6TRHYuCB$Cn" resolve="Annotations_Component" />
+      </node>
       <node concept="3F0A7n" id="11vq$BtFkVW" role="3EZMnx">
         <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
         <ref role="1k5W1q" node="54Gi6NCBcjr" resolve="Field" />
