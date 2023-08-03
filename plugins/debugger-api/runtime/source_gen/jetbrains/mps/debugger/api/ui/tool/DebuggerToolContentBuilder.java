@@ -24,7 +24,7 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import jetbrains.mps.debug.api.AbstractDebugSession;
 import jetbrains.mps.debug.api.DebugSessionManagerComponent;
 import com.intellij.ui.content.Content;
-import com.intellij.openapi.util.IconLoader;
+import com.intellij.icons.AllIcons;
 import com.intellij.execution.ui.layout.PlaceInGrid;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -90,8 +90,7 @@ public class DebuggerToolContentBuilder implements Disposable {
     } else {
       new DebuggerToolPanel(myProject, debugSession, ui);
     }
-    // FTR, /debugger/console.png is part of app.jar. There's also AllIcons.Debugger.Console, which uses console.svg and looks differently
-    Content consoleContent = ui.createContent("Console2.0", console.getComponent(), "Console", IconLoader.getIcon("/debugger/console.png", DebuggerToolContentBuilder.class), console.getPreferredFocusableComponent());
+    Content consoleContent = ui.createContent("Console2.0", console.getComponent(), "Console", AllIcons.Debugger.Console, console.getPreferredFocusableComponent());
     consoleContent.setSearchComponent(console.getComponent());
     consoleContent.setCloseable(false);
     ui.addContent(consoleContent, 1, PlaceInGrid.center, false);

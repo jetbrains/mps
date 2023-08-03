@@ -36,6 +36,7 @@
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="ddhc" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide(MPS.IDEA/)" />
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
+    <import index="z2i8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.icons(MPS.IDEA/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="7e8u" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.ui.tree(MPS.Platform/)" implicit="true" />
   </imports>
@@ -217,9 +218,6 @@
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
-      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
-        <reference id="1116615189566" name="classifier" index="3VsUkX" />
-      </concept>
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
         <child id="1201186121363" name="typeParameter" index="2Ghqu4" />
@@ -931,55 +929,6 @@
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="4mp1052wz2K" role="3cqZAp">
-          <node concept="1PaTwC" id="4mp1052wz2L" role="1aUNEU">
-            <node concept="3oM_SD" id="4mp1052w$Vt" role="1PaTwD">
-              <property role="3oM_SC" value="FTR," />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w$WD" role="1PaTwD">
-              <property role="3oM_SC" value="/debugger/console.png" />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w$WW" role="1PaTwD">
-              <property role="3oM_SC" value="is" />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w$X0" role="1PaTwD">
-              <property role="3oM_SC" value="part" />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w$X5" role="1PaTwD">
-              <property role="3oM_SC" value="of" />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w$Xb" role="1PaTwD">
-              <property role="3oM_SC" value="app.jar." />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w_t1" role="1PaTwD">
-              <property role="3oM_SC" value="There's" />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w_t9" role="1PaTwD">
-              <property role="3oM_SC" value="also" />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w_ti" role="1PaTwD">
-              <property role="3oM_SC" value="AllIcons.Debugger.Console," />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w_tG" role="1PaTwD">
-              <property role="3oM_SC" value="which" />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w_u7" role="1PaTwD">
-              <property role="3oM_SC" value="uses" />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w_uj" role="1PaTwD">
-              <property role="3oM_SC" value="console.svg" />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w_vg" role="1PaTwD">
-              <property role="3oM_SC" value="and" />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w_vu" role="1PaTwD">
-              <property role="3oM_SC" value="looks" />
-            </node>
-            <node concept="3oM_SD" id="4mp1052w_vH" role="1PaTwD">
-              <property role="3oM_SC" value="differently" />
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="3SnNvqCbxPu" role="3cqZAp">
           <node concept="3cpWsn" id="3SnNvqCbxPv" role="3cpWs9">
             <property role="TrG5h" value="consoleContent" />
@@ -1007,15 +956,9 @@
                 <node concept="Xl_RD" id="3SnNvqCbxPC" role="37wK5m">
                   <property role="Xl_RC" value="Console" />
                 </node>
-                <node concept="2YIFZM" id="3SnNvqCbxPD" role="37wK5m">
-                  <ref role="1Pybhc" to="zn9m:~IconLoader" resolve="IconLoader" />
-                  <ref role="37wK5l" to="zn9m:~IconLoader.getIcon(java.lang.String,java.lang.Class)" resolve="getIcon" />
-                  <node concept="Xl_RD" id="3SnNvqCbxPE" role="37wK5m">
-                    <property role="Xl_RC" value="/debugger/console.png" />
-                  </node>
-                  <node concept="3VsKOn" id="4mp1052wtcg" role="37wK5m">
-                    <ref role="3VsUkX" node="3SnNvqCbxLP" resolve="DebuggerToolContentBuilder" />
-                  </node>
+                <node concept="10M0yZ" id="2WwZUT5eEUb" role="37wK5m">
+                  <ref role="3cqZAo" to="z2i8:~AllIcons$Debugger.Console" resolve="Console" />
+                  <ref role="1PxDUh" to="z2i8:~AllIcons$Debugger" resolve="Debugger" />
                 </node>
                 <node concept="2OqwBi" id="3SnNvqCbxPF" role="37wK5m">
                   <node concept="37vLTw" id="2BHiRxgmihk" role="2Oq$k0">
