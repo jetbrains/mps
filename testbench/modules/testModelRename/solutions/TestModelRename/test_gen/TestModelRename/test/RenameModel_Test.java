@@ -9,15 +9,21 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.junit.Assert;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.model.EditableSModelBase;
+import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.project.modules.SolutionProducer;
+import jetbrains.mps.project.Solution;
+import jetbrains.mps.persistence.DefaultModelPersistence;
+import java.io.File;
+import jetbrains.mps.vfs.IFile;
+import org.jetbrains.mps.openapi.persistence.DataSource;
+import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 
 @MPSLaunch
 public class RenameModel_Test extends BaseTransformationTest {
@@ -44,46 +50,80 @@ public class RenameModel_Test extends BaseTransformationTest {
     }
 
     public void test_renameModel() throws Exception {
-      runWithinCommand(() -> addNodeById("1432101570225893009"));
       runWithinCommand(() -> {
-        SRepository repository = SNodeOperations.getModel(getNodeById("1432101570225893013")).getModule().getRepository();
-        SModel modelToRename = SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("r:1f73e653-ef8a-439c-b71e-24bf7593da7f(sampleSolution.a_model_to_rename)"), repository);
-        String oldName = SModelOperations.getModelName(modelToRename);
-        Assert.assertEquals("sample.a_model_to_rename", oldName);
-        String oldFileName = ((FileDataSource) ((EditableSModelBase) modelToRename).getSource()).getFile().getName();
-        Assert.assertEquals("sample.a_model_to_rename", TestBody.this.fileNameWithoutPrefix(oldFileName));
+        SModel modelToRename = TestBody.this.initializeModel("1");
+        if (modelToRename == null) {
+          return;
+        }
 
-        ((EditableSModelBase) modelToRename).rename("sample.a_model_after_rename", true);
+        String oldName = SModelOperations.getModelName(modelToRename);
+        Assert.assertEquals("a_model_to_rename", oldName);
+        String oldFileName = ((FileDataSource) ((EditableSModelBase) modelToRename).getSource()).getFile().getName();
+        Assert.assertEquals("a_model_to_rename", TestBody.this.fileNameWithoutPrefix(oldFileName));
+
+        ((EditableSModelBase) modelToRename).rename("a_model_after_rename", true);
 
         String newName = SModelOperations.getModelName(modelToRename);
-        Assert.assertEquals("sample.a_model_after_rename", newName);
+        Assert.assertEquals("a_model_after_rename", newName);
         String newFileName = ((FileDataSource) ((EditableSModelBase) modelToRename).getSource()).getFile().getName();
-        Assert.assertEquals("sample.a_model_after_rename", TestBody.this.fileNameWithoutPrefix(newFileName));
-
+        Assert.assertEquals("a_model_after_rename", TestBody.this.fileNameWithoutPrefix(newFileName));
       });
     }
     public void test_caseSensitiveRenameModel() throws Exception {
-      runWithinCommand(() -> addNodeById("1432101570225893009"));
       runWithinCommand(() -> {
-        SRepository repository = SNodeOperations.getModel(getNodeById("1432101570225893013")).getModule().getRepository();
-        SModel modelToRename = SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("r:b2b4a366-8dde-4780-bf06-be3743f6ccc6(sampleSolution.a_model_to_casesensitive_rename)"), repository);
-        String oldName = SModelOperations.getModelName(modelToRename);
-        Assert.assertEquals("sample.a_model_to_casesensitive_rename", oldName);
-        String oldFileName = ((FileDataSource) ((EditableSModelBase) modelToRename).getSource()).getFile().getName();
-        Assert.assertEquals("sample.a_model_to_casesensitive_rename", TestBody.this.fileNameWithoutPrefix(oldFileName));
+        SModel modelToRename = TestBody.this.initializeModel("2");
+        if (modelToRename == null) {
+          return;
+        }
 
-        ((EditableSModelBase) modelToRename).rename("sample.a_model_to_casesensitive_REName", true);
+        String oldName = SModelOperations.getModelName(modelToRename);
+        Assert.assertEquals("a_model_to_rename", oldName);
+        String oldFileName = ((FileDataSource) ((EditableSModelBase) modelToRename).getSource()).getFile().getName();
+        Assert.assertEquals("a_model_to_rename", TestBody.this.fileNameWithoutPrefix(oldFileName));
+
+        ((EditableSModelBase) modelToRename).rename("a_model_to_REName", true);
 
         String newName = SModelOperations.getModelName(modelToRename);
-        Assert.assertEquals("sample.a_model_to_casesensitive_REName", newName);
+        Assert.assertEquals("a_model_to_REName", newName);
         String newFileName = ((FileDataSource) ((EditableSModelBase) modelToRename).getSource()).getFile().getName();
-        Assert.assertEquals("sample.a_model_to_casesensitive_REName", TestBody.this.fileNameWithoutPrefix(newFileName));
-
+        Assert.assertEquals("a_model_to_REName", TestBody.this.fileNameWithoutPrefix(newFileName));
       });
     }
 
     public String fileNameWithoutPrefix(String fileName) {
       return fileName.substring(0, fileName.lastIndexOf("."));
+    }
+    public EditableSModelBase initializeModel(String testId) {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(ProjectHelper.toIdeaProject(myProject));
+      if (mpsProject == null) {
+        return null;
+      }
+
+      SolutionProducer producer = new SolutionProducer(mpsProject);
+      String basePath = ProjectHelper.toIdeaProject(myProject).getBasePath();
+      String solutionsDirAbsolutePath = basePath + "/solutions_" + testId;
+      Solution testSolution = producer.create("TestModelHolder", mpsProject.getFileSystem().getFile(solutionsDirAbsolutePath));
+
+      DefaultModelPersistence persistence = new DefaultModelPersistence();
+      File modelFile = new File(solutionsDirAbsolutePath + File.separator + "models" + File.separator + "/a_model_to_rename.mps");
+      IFile iFile = mpsProject.getFileSystem().getFile(modelFile);
+
+      DataSource ds = new FileDataSource(iFile);
+      SModelName name = new SModelName("a_model_to_rename");
+
+      try {
+        SModel createdModel = persistence.create(ds, name);
+        EditableSModelBase em = (EditableSModelBase) createdModel;
+        testSolution.registerModel(em);
+        em.setModelRoot(testSolution.getModelRoots().iterator().next());
+        em.save();
+        testSolution.save();
+        return em;
+      } catch (UnsupportedDataSourceException e) {
+        e.printStackTrace();
+        Assert.fail("Unable to create a model to perform the rename tests " + e.getMessage());
+        return null;
+      }
     }
   }
 }
