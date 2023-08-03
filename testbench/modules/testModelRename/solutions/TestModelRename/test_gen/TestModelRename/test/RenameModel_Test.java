@@ -60,27 +60,25 @@ public class RenameModel_Test extends BaseTransformationTest {
         String newFileName = ((FileDataSource) ((EditableSModelBase) modelToRename).getSource()).getFile().getName();
         Assert.assertEquals("sample.a_model_after_rename", TestBody.this.fileNameWithoutPrefix(newFileName));
 
-        ((EditableSModelBase) modelToRename).rename("sample.a_model_to_rename", true);
       });
     }
     public void test_caseSensitiveRenameModel() throws Exception {
       runWithinCommand(() -> addNodeById("1432101570225893009"));
       runWithinCommand(() -> {
         SRepository repository = SNodeOperations.getModel(getNodeById("1432101570225893013")).getModule().getRepository();
-        SModel modelToRename = SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("r:1f73e653-ef8a-439c-b71e-24bf7593da7f(sampleSolution.a_model_to_rename)"), repository);
+        SModel modelToRename = SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("r:b2b4a366-8dde-4780-bf06-be3743f6ccc6(sampleSolution.a_model_to_casesensitive_rename)"), repository);
         String oldName = SModelOperations.getModelName(modelToRename);
-        Assert.assertEquals("sample.a_model_to_rename", oldName);
+        Assert.assertEquals("sample.a_model_to_casesensitive_rename", oldName);
         String oldFileName = ((FileDataSource) ((EditableSModelBase) modelToRename).getSource()).getFile().getName();
-        Assert.assertEquals("sample.a_model_to_rename", TestBody.this.fileNameWithoutPrefix(oldFileName));
+        Assert.assertEquals("sample.a_model_to_casesensitive_rename", TestBody.this.fileNameWithoutPrefix(oldFileName));
 
-        ((EditableSModelBase) modelToRename).rename("sample.a_model_to_REName", true);
+        ((EditableSModelBase) modelToRename).rename("sample.a_model_to_casesensitive_REName", true);
 
         String newName = SModelOperations.getModelName(modelToRename);
-        Assert.assertEquals("sample.a_model_to_REName", newName);
+        Assert.assertEquals("sample.a_model_to_casesensitive_REName", newName);
         String newFileName = ((FileDataSource) ((EditableSModelBase) modelToRename).getSource()).getFile().getName();
-        Assert.assertEquals("sample.a_model_to_REName", TestBody.this.fileNameWithoutPrefix(newFileName));
+        Assert.assertEquals("sample.a_model_to_casesensitive_REName", TestBody.this.fileNameWithoutPrefix(newFileName));
 
-        ((EditableSModelBase) modelToRename).rename("sample.a_model_to_rename", true);
       });
     }
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <root nodeRef="r:b2b4a366-8dde-4780-bf06-be3743f6ccc6(sample.a_model_to_casesensitive_rename)/3640314854484346340">
+    <file name="B.java">
+      <unit id="3640314854484346340" at="6,0,8,0" name="sample.a_model_to_casesensitive_rename.B" />
+    </file>
+  </root>
+</debug-info>
+

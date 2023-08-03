@@ -28,50 +28,48 @@
       <node id="1432101570225955008" at="58,70,59,68" concept="1" />
       <node id="1432101570227602138" at="59,68,60,117" concept="3" />
       <node id="1432101570227603662" at="60,117,61,109" concept="1" />
-      <node id="1432101570227665568" at="61,109,62,0" concept="5" />
-      <node id="1432101570227667061" at="62,0,63,86" concept="1" />
-      <node id="1432101570225956383" at="66,66,67,65" concept="1" />
-      <node id="1432101570225956386" at="68,30,69,122" concept="3" />
-      <node id="1432101570225956402" at="69,122,70,205" concept="3" />
-      <node id="1432101570225956411" at="70,205,71,70" concept="3" />
-      <node id="1432101570225956417" at="71,70,72,65" concept="1" />
-      <node id="1432101570227648306" at="72,65,73,117" concept="3" />
-      <node id="1432101570227648322" at="73,117,74,106" concept="1" />
-      <node id="1432101570227648023" at="74,106,75,0" concept="5" />
-      <node id="1432101570225956420" at="75,0,76,86" concept="1" />
-      <node id="1432101570227648916" at="76,86,77,0" concept="5" />
-      <node id="1432101570225956429" at="77,0,78,70" concept="3" />
-      <node id="1432101570225956435" at="78,70,79,65" concept="1" />
-      <node id="1432101570227650849" at="79,65,80,117" concept="3" />
-      <node id="1432101570227650865" at="80,117,81,106" concept="1" />
-      <node id="1432101570227669836" at="81,106,82,0" concept="5" />
-      <node id="1432101570227670580" at="82,0,83,86" concept="1" />
-      <node id="743317908309870634" at="87,58,88,62" concept="4" />
+      <node id="3640314854484370909" at="61,109,62,0" concept="5" />
+      <node id="1432101570225956383" at="65,66,66,65" concept="1" />
+      <node id="1432101570225956386" at="67,30,68,122" concept="3" />
+      <node id="1432101570225956402" at="68,122,69,219" concept="3" />
+      <node id="1432101570225956411" at="69,219,70,70" concept="3" />
+      <node id="1432101570225956417" at="70,70,71,79" concept="1" />
+      <node id="1432101570227648306" at="71,79,72,117" concept="3" />
+      <node id="1432101570227648322" at="72,117,73,120" concept="1" />
+      <node id="1432101570227648023" at="73,120,74,0" concept="5" />
+      <node id="1432101570225956420" at="74,0,75,100" concept="1" />
+      <node id="1432101570227648916" at="75,100,76,0" concept="5" />
+      <node id="1432101570225956429" at="76,0,77,70" concept="3" />
+      <node id="1432101570225956435" at="77,70,78,79" concept="1" />
+      <node id="1432101570227650849" at="78,79,79,117" concept="3" />
+      <node id="1432101570227650865" at="79,117,80,120" concept="1" />
+      <node id="3640314854484382032" at="80,120,81,0" concept="5" />
+      <node id="743317908309870634" at="85,58,86,62" concept="4" />
       <node id="1432101570225893008" at="24,0,26,0" concept="6" trace="ourParamCache" />
       <node id="1432101570225893008" at="27,0,30,0" concept="0" trace="RenameModel_Test#()V" />
       <node id="1432101570225893008" at="42,0,45,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="743317908309865375" at="87,0,90,0" concept="2" trace="fileNameWithoutPrefix#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="743317908309865375" at="85,0,88,0" concept="2" trace="fileNameWithoutPrefix#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="1432101570225893106" at="31,0,35,0" concept="2" trace="test_renameModel#()V" />
       <node id="1432101570225956383" at="35,0,39,0" concept="2" trace="test_caseSensitiveRenameModel#()V" />
-      <node id="1432101570225893106" at="47,65,64,9" concept="1" />
-      <node id="1432101570225956383" at="67,65,84,9" concept="1" />
-      <node id="1432101570225893106" at="46,0,66,0" concept="2" trace="test_renameModel#()V" />
-      <node id="1432101570225956383" at="66,0,86,0" concept="2" trace="test_caseSensitiveRenameModel#()V" />
+      <node id="1432101570225893106" at="47,65,63,9" concept="1" />
+      <node id="1432101570225956383" at="66,65,82,9" concept="1" />
+      <node id="1432101570225893106" at="46,0,65,0" concept="2" trace="test_renameModel#()V" />
+      <node id="1432101570225956383" at="65,0,84,0" concept="2" trace="test_caseSensitiveRenameModel#()V" />
       <scope id="1432101570225893008" at="27,29,28,25" />
       <scope id="1432101570225893106" at="32,51,33,42" />
       <scope id="1432101570225956383" at="36,64,37,55" />
       <scope id="1432101570225893008" at="42,52,43,19" />
-      <scope id="743317908309865375" at="87,58,88,62" />
+      <scope id="743317908309865375" at="85,58,86,62" />
       <scope id="1432101570225893008" at="27,0,30,0" />
       <scope id="1432101570225893008" at="42,0,45,0">
         <var name="owner" id="1432101570225893008" />
       </scope>
-      <scope id="743317908309865375" at="87,0,90,0">
+      <scope id="743317908309865375" at="85,0,88,0">
         <var name="fileName" id="743317908309870167" />
       </scope>
       <scope id="1432101570225893106" at="31,0,35,0" />
       <scope id="1432101570225956383" at="35,0,39,0" />
-      <scope id="1432101570225893106" at="48,30,63,86">
+      <scope id="1432101570225893106" at="48,30,62,0">
         <var name="modelToRename" id="1432101570225932563" />
         <var name="newFileName" id="1432101570227602139" />
         <var name="newName" id="1432101570225955003" />
@@ -79,7 +77,7 @@
         <var name="oldName" id="1432101570225950928" />
         <var name="repository" id="1432101570225931350" />
       </scope>
-      <scope id="1432101570225956383" at="68,30,83,86">
+      <scope id="1432101570225956383" at="67,30,81,0">
         <var name="modelToRename" id="1432101570225956403" />
         <var name="newFileName" id="1432101570227650850" />
         <var name="newName" id="1432101570225956430" />
@@ -87,12 +85,12 @@
         <var name="oldName" id="1432101570225956412" />
         <var name="repository" id="1432101570225956387" />
       </scope>
-      <scope id="1432101570225893106" at="46,53,64,9" />
-      <scope id="1432101570225956383" at="66,66,84,9" />
-      <scope id="1432101570225893106" at="46,0,66,0" />
-      <scope id="1432101570225956383" at="66,0,86,0" />
-      <unit id="1432101570225893008" at="40,0,91,0" name="TestModelRename.test.RenameModel_Test$TestBody" />
-      <unit id="1432101570225893008" at="22,0,92,0" name="TestModelRename.test.RenameModel_Test" />
+      <scope id="1432101570225893106" at="46,53,63,9" />
+      <scope id="1432101570225956383" at="65,66,82,9" />
+      <scope id="1432101570225893106" at="46,0,65,0" />
+      <scope id="1432101570225956383" at="65,0,84,0" />
+      <unit id="1432101570225893008" at="40,0,89,0" name="TestModelRename.test.RenameModel_Test$TestBody" />
+      <unit id="1432101570225893008" at="22,0,90,0" name="TestModelRename.test.RenameModel_Test" />
     </file>
   </root>
 </debug-info>

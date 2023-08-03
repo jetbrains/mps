@@ -153,6 +153,13 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
+      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
+        <property id="709746936026609031" name="linkId" index="3V$3ak" />
+        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
+      </concept>
+      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
+        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
     </language>
   </registry>
   <node concept="1lH9Xt" id="1fvQcDv_YUg">
@@ -416,26 +423,30 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="1fvQcDvGJEw" role="3cqZAp" />
-        <node concept="3clFbF" id="1fvQcDvGK1P" role="3cqZAp">
-          <node concept="2OqwBi" id="1fvQcDvGK1Q" role="3clFbG">
-            <node concept="1eOMI4" id="1fvQcDvGK1R" role="2Oq$k0">
-              <node concept="10QFUN" id="1fvQcDvGK1S" role="1eOMHV">
-                <node concept="3uibUv" id="1fvQcDvGK1T" role="10QFUM">
-                  <ref role="3uigEE" to="g3l6:~EditableSModelBase" resolve="EditableSModelBase" />
-                </node>
-                <node concept="37vLTw" id="1fvQcDvGK1U" role="10QFUP">
-                  <ref role="3cqZAo" node="1fvQcDvA8$j" resolve="modelToRename" />
+        <node concept="3clFbH" id="3a4ZLaG7Ant" role="3cqZAp" />
+        <node concept="1X3_iC" id="3a4ZLaG7H2v" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3clFbF" id="3a4ZLaG7AK6" role="8Wnug">
+            <node concept="2OqwBi" id="3a4ZLaG7AK7" role="3clFbG">
+              <node concept="1eOMI4" id="3a4ZLaG7AK8" role="2Oq$k0">
+                <node concept="10QFUN" id="3a4ZLaG7AK9" role="1eOMHV">
+                  <node concept="3uibUv" id="3a4ZLaG7AKa" role="10QFUM">
+                    <ref role="3uigEE" to="g3l6:~EditableSModelBase" resolve="EditableSModelBase" />
+                  </node>
+                  <node concept="37vLTw" id="3a4ZLaG7AKb" role="10QFUP">
+                    <ref role="3cqZAo" node="1fvQcDvA8$j" resolve="modelToRename" />
+                  </node>
                 </node>
               </node>
-            </node>
-            <node concept="liA8E" id="1fvQcDvGK1V" role="2OqNvi">
-              <ref role="37wK5l" to="g3l6:~EditableSModelBase.rename(java.lang.String,boolean)" resolve="rename" />
-              <node concept="Xl_RD" id="1fvQcDvGK1W" role="37wK5m">
-                <property role="Xl_RC" value="sample.a_model_to_rename" />
-              </node>
-              <node concept="3clFbT" id="1fvQcDvGK1X" role="37wK5m">
-                <property role="3clFbU" value="true" />
+              <node concept="liA8E" id="3a4ZLaG7AKc" role="2OqNvi">
+                <ref role="37wK5l" to="g3l6:~EditableSModelBase.rename(java.lang.String,boolean)" resolve="rename" />
+                <node concept="Xl_RD" id="3a4ZLaG7AKd" role="37wK5m">
+                  <property role="Xl_RC" value="sample.a_model_to_rename" />
+                </node>
+                <node concept="3clFbT" id="3a4ZLaG7AKe" role="37wK5m">
+                  <property role="3clFbU" value="true" />
+                </node>
               </node>
             </node>
           </node>
@@ -478,10 +489,10 @@
             <node concept="H_c77" id="1fvQcDvAeoO" role="1tU5fm" />
             <node concept="2OqwBi" id="1fvQcDvAeoP" role="33vP2m">
               <node concept="1Xw6AR" id="1fvQcDvAeoQ" role="2Oq$k0">
-                <node concept="1dCxOl" id="1fvQcDvAeoR" role="1XwpL7">
-                  <property role="1XweGQ" value="r:1f73e653-ef8a-439c-b71e-24bf7593da7f" />
-                  <node concept="1j_P7g" id="1fvQcDvAeoS" role="1j$8Uc">
-                    <property role="1j_P7h" value="sampleSolution.a_model_to_rename" />
+                <node concept="1dCxOl" id="3a4ZLaG7ymX" role="1XwpL7">
+                  <property role="1XweGQ" value="r:b2b4a366-8dde-4780-bf06-be3743f6ccc6" />
+                  <node concept="1j_P7g" id="3a4ZLaG7ymY" role="1j$8Uc">
+                    <property role="1j_P7h" value="sampleSolution.a_model_to_casesensitive_rename" />
                   </node>
                 </node>
               </node>
@@ -507,7 +518,7 @@
         </node>
         <node concept="3vlDli" id="1fvQcDvAep1" role="3cqZAp">
           <node concept="Xl_RD" id="1fvQcDvAep2" role="3tpDZB">
-            <property role="Xl_RC" value="sample.a_model_to_rename" />
+            <property role="Xl_RC" value="sample.a_model_to_casesensitive_rename" />
           </node>
           <node concept="37vLTw" id="1fvQcDvAep3" role="3tpDZA">
             <ref role="3cqZAo" node="1fvQcDvAeoW" resolve="oldName" />
@@ -555,7 +566,7 @@
         </node>
         <node concept="3vlDli" id="1fvQcDvGFt2" role="3cqZAp">
           <node concept="Xl_RD" id="1fvQcDvGFt3" role="3tpDZB">
-            <property role="Xl_RC" value="sample.a_model_to_rename" />
+            <property role="Xl_RC" value="sample.a_model_to_casesensitive_rename" />
           </node>
           <node concept="2OqwBi" id="DgMVc7ZQ9r" role="3tpDZA">
             <node concept="2WthIp" id="DgMVc7ZQ9s" role="2Oq$k0" />
@@ -583,7 +594,7 @@
             <node concept="liA8E" id="1fvQcDvAepa" role="2OqNvi">
               <ref role="37wK5l" to="g3l6:~EditableSModelBase.rename(java.lang.String,boolean)" resolve="rename" />
               <node concept="Xl_RD" id="1fvQcDvAepb" role="37wK5m">
-                <property role="Xl_RC" value="sample.a_model_to_REName" />
+                <property role="Xl_RC" value="sample.a_model_to_casesensitive_REName" />
               </node>
               <node concept="3clFbT" id="1fvQcDvAepc" role="37wK5m">
                 <property role="3clFbU" value="true" />
@@ -606,7 +617,7 @@
         </node>
         <node concept="3vlDli" id="1fvQcDvAepj" role="3cqZAp">
           <node concept="Xl_RD" id="1fvQcDvAepk" role="3tpDZB">
-            <property role="Xl_RC" value="sample.a_model_to_REName" />
+            <property role="Xl_RC" value="sample.a_model_to_casesensitive_REName" />
           </node>
           <node concept="37vLTw" id="1fvQcDvAepl" role="3tpDZA">
             <ref role="3cqZAo" node="1fvQcDvAepe" resolve="newName" />
@@ -654,7 +665,7 @@
         </node>
         <node concept="3vlDli" id="1fvQcDvGG4L" role="3cqZAp">
           <node concept="Xl_RD" id="1fvQcDvGG4M" role="3tpDZB">
-            <property role="Xl_RC" value="sample.a_model_to_REName" />
+            <property role="Xl_RC" value="sample.a_model_to_casesensitive_REName" />
           </node>
           <node concept="2OqwBi" id="DgMVc7ZQGJ" role="3tpDZA">
             <node concept="2WthIp" id="DgMVc7ZQGK" role="2Oq$k0" />
@@ -666,26 +677,30 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="1fvQcDvGKHc" role="3cqZAp" />
-        <node concept="3clFbF" id="1fvQcDvGKSO" role="3cqZAp">
-          <node concept="2OqwBi" id="1fvQcDvGKSP" role="3clFbG">
-            <node concept="1eOMI4" id="1fvQcDvGKSQ" role="2Oq$k0">
-              <node concept="10QFUN" id="1fvQcDvGKSR" role="1eOMHV">
-                <node concept="3uibUv" id="1fvQcDvGKSS" role="10QFUM">
-                  <ref role="3uigEE" to="g3l6:~EditableSModelBase" resolve="EditableSModelBase" />
-                </node>
-                <node concept="37vLTw" id="1fvQcDvGKST" role="10QFUP">
-                  <ref role="3cqZAo" node="1fvQcDvAeoN" resolve="modelToRename" />
+        <node concept="3clFbH" id="3a4ZLaG7D5g" role="3cqZAp" />
+        <node concept="1X3_iC" id="3a4ZLaG7GEN" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3clFbF" id="3a4ZLaG7Dhd" role="8Wnug">
+            <node concept="2OqwBi" id="3a4ZLaG7Dhe" role="3clFbG">
+              <node concept="1eOMI4" id="3a4ZLaG7Dhf" role="2Oq$k0">
+                <node concept="10QFUN" id="3a4ZLaG7Dhg" role="1eOMHV">
+                  <node concept="3uibUv" id="3a4ZLaG7Dhh" role="10QFUM">
+                    <ref role="3uigEE" to="g3l6:~EditableSModelBase" resolve="EditableSModelBase" />
+                  </node>
+                  <node concept="37vLTw" id="3a4ZLaG7Dhi" role="10QFUP">
+                    <ref role="3cqZAo" node="1fvQcDvAeoN" resolve="modelToRename" />
+                  </node>
                 </node>
               </node>
-            </node>
-            <node concept="liA8E" id="1fvQcDvGKSU" role="2OqNvi">
-              <ref role="37wK5l" to="g3l6:~EditableSModelBase.rename(java.lang.String,boolean)" resolve="rename" />
-              <node concept="Xl_RD" id="1fvQcDvGKSV" role="37wK5m">
-                <property role="Xl_RC" value="sample.a_model_to_rename" />
-              </node>
-              <node concept="3clFbT" id="1fvQcDvGKSW" role="37wK5m">
-                <property role="3clFbU" value="true" />
+              <node concept="liA8E" id="3a4ZLaG7Dhj" role="2OqNvi">
+                <ref role="37wK5l" to="g3l6:~EditableSModelBase.rename(java.lang.String,boolean)" resolve="rename" />
+                <node concept="Xl_RD" id="3a4ZLaG7Dhk" role="37wK5m">
+                  <property role="Xl_RC" value="sample.a_model_to_casesensitive_rename" />
+                </node>
+                <node concept="3clFbT" id="3a4ZLaG7Dhl" role="37wK5m">
+                  <property role="3clFbU" value="true" />
+                </node>
               </node>
             </node>
           </node>
