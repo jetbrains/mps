@@ -13,7 +13,6 @@
     <import index="8ytb" ref="r:0fc0617b-a58c-4b18-af63-dc67be77023b(mps.test.findusages@tests)" />
     <import index="5lan" ref="r:4201854c-2b50-4609-9031-1ebdf87d3bf7(JavaCompilationXmlConflict.test.test@tests)" />
     <import index="dlic" ref="r:688f53d4-3997-403e-9588-25640f0414aa(jetbrains.mps.persistence.transients.tests@tests)" />
-    <import index="5fgz" ref="r:306699ac-7981-4117-bc07-ec2d425bff05(TestModelRename.test@tests)" />
     <import index="68g4" ref="r:dc1e5ac6-993e-4ca9-bf73-f993261504b8(testModelRenaming.tests@tests)" />
   </imports>
   <registry>

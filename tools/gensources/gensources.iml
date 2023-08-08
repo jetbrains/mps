@@ -1341,8 +1341,9 @@
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testMigrationTaskAdditionalPlugin/languages/jetbrains.mps.test.testMigrationAdditionalPlugin/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testMigrationTaskAdditionalPlugin/languages/jetbrains.mps.test.testMigrationAdditionalPlugin/source_gen" isTestSource="false" />
     </content>
-    <content url="file://$MODULE_DIR$/../../testbench/modules/testModelRename">
-      <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testModelRename/solutions/TestModelRename/test_gen" isTestSource="false" />
+    <content url="file://$MODULE_DIR$/../../testbench/modules/testModelRenaming">
+      <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testModelRenaming/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../testbench/modules/testModelRenaming/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../testbench/modules/testMoveElements">
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/testMoveElements/languages/testMoveElements/source_gen" isTestSource="false" />

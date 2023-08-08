@@ -17,7 +17,6 @@
     <dependency reexport="false">9ebe73c6-437b-4a56-95a7-1d7eec081f24(mps.test.findusages)</dependency>
     <dependency reexport="false">b0a89157-db40-4955-b2ac-edf8fcc90dde(JavaCompilationXmlConflict.test)</dependency>
     <dependency reexport="false">744e8fdc-be86-476c-90fa-c51c36b899e5(jetbrains.mps.persistence.transients.tests)</dependency>
-    <dependency reexport="false">5de85764-70e6-4e9a-8618-d85dc0eb0843(TestModelRename)</dependency>
     <dependency reexport="false">7cb9725f-b441-49fd-97a7-f8cc78dc90bd(testModelRenaming)</dependency>
   </dependencies>
   <languageVersions>
