@@ -12,7 +12,7 @@
     <import index="q08g" ref="r:7da8cb5d-b937-4ac8-a4e8-0f345dfd2711(jetbrains.mps.refactoring.test.test@tests)" />
     <import index="8ytb" ref="r:0fc0617b-a58c-4b18-af63-dc67be77023b(mps.test.findusages@tests)" />
     <import index="5lan" ref="r:4201854c-2b50-4609-9031-1ebdf87d3bf7(JavaCompilationXmlConflict.test.test@tests)" />
-    <import index="5fgz" ref="r:306699ac-7981-4117-bc07-ec2d425bff05(TestModelRename.test@tests)" />
+    <import index="n2vi" ref="r:669fd631-5dbf-406f-b776-b59f9b35d48f(TestModelRenamer.tests@tests)" />
   </imports>
   <registry>
     <language id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest">
@@ -57,7 +57,7 @@
       <ref role="2Uj$mc" to="8ytb:4tzJw0sqrF_" resolve="FindUsages" />
     </node>
     <node concept="2Uj$md" id="1fvQcDvH7Oa" role="2Uj_Yd">
-      <ref role="2Uj$mc" to="5fgz:1fvQcDvHjaU" resolve="ModelRename" />
+      <ref role="2Uj$mc" to="n2vi:1fvQcDvHjaU" resolve="ModelRenamer" />
     </node>
     <node concept="1dCxOl" id="4JE22xb2zS5" role="3cVaLd">
       <property role="1XweGQ" value="r:12897c41-1d23-444a-8c3d-8a254e74f9b6" />

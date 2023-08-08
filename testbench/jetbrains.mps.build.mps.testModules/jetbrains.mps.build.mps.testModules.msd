@@ -17,7 +17,7 @@
     <dependency reexport="false">64b24ebe-97a2-466e-83d8-bd3afefcbb41(refactoring.test)</dependency>
     <dependency reexport="false">9ebe73c6-437b-4a56-95a7-1d7eec081f24(mps.test.findusages)</dependency>
     <dependency reexport="false">b0a89157-db40-4955-b2ac-edf8fcc90dde(JavaCompilationXmlConflict.test)</dependency>
-    <dependency reexport="false">5de85764-70e6-4e9a-8618-d85dc0eb0843(TestModelRename)</dependency>
+    <dependency reexport="false">c22cf3c5-d44f-4bce-99da-1e273b4fb2d0(TestModelRenamer)</dependency>
   </dependencies>
   <languageVersions>
     <language slang="l:9f846aef-4e4a-4a84-828e-7e83fe2697f2:jetbrains.mps.build.mps.testManifest" version="0" />
@@ -35,7 +35,7 @@
     <module reference="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" version="0" />
     <module reference="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" version="0" />
     <module reference="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" version="0" />
-    <module reference="5de85764-70e6-4e9a-8618-d85dc0eb0843(TestModelRename)" version="0" />
+    <module reference="c22cf3c5-d44f-4bce-99da-1e273b4fb2d0(TestModelRenamer)" version="0" />
     <module reference="920eaa0e-ecca-46bc-bee7-4e5c59213dd6(Testbench)" version="0" />
     <module reference="e2309f95-1261-44f8-a001-ea5c9cf826d7(jetbrains.mps.build.mps.testModules)" version="0" />
     <module reference="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" version="0" />

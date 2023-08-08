@@ -536,6 +536,7 @@
       <modulePath path="$PROJECT_DIR$/testbench/modules/testBehavior/languages/L5/BHL5.mpl" folder="tests.testBehavior" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/testBehavior/languages/L6/BHL6.mpl" folder="tests.testBehavior" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/testBehavior/languages/L7/BHL7.mpl" folder="tests.testBehavior" />
+      <modulePath path="$PROJECT_DIR$/testbench/modules/testBehavior/solutions/TestBehavior/TestBehavior.msd" folder="tests.testBehavior" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/testBehavior/solutions/TestBehaviorReflective/TestBehaviorReflective.msd" folder="tests.testBehavior" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/testBehavior/solutions/UtilSolution/UtilSolution.msd" folder="tests.testBehavior" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/testClassLoading/languages/L1/L1.mpl" folder="tests.testClassLoading" />
@@ -552,7 +553,7 @@
       <modulePath path="$PROJECT_DIR$/testbench/modules/testDefaultEditor/languages/testDefaultEditor/testDefaultEditor.mpl" folder="tests" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/testDepViewer/tests.testDepViewer.msd" folder="tests" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/testFindUsages/mps.test.findusages.msd" folder="tests" />
-      <modulePath path="$PROJECT_DIR$/testbench/modules/testModelRename/solutions/TestModelRename/TestModelRename.msd" folder="tests.testModelRename" />
+      <modulePath path="$PROJECT_DIR$/testbench/modules/testModelRenamer/solutions/TestModelRenamer.msd" folder="tests.testModelRenamer" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/testMoveElements/languages/testMoveElements/testMoveElements.mpl" folder="tests" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/testPackaged/testPackagedLanguage.test/testPackagedLanguage.test.msd" folder="tests.testPackaged" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/testPackaged/testPackagedLanguage/testPackagedLanguage.mpl" folder="tests.testPackaged" />

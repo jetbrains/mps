@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:306699ac-7981-4117-bc07-ec2d425bff05(TestModelRename.test@tests)">
+<model ref="r:669fd631-5dbf-406f-b776-b59f9b35d48f(TestModelRenamer.tests@tests)">
   <persistence version="9" />
   <languages>
+    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="6" />
     <use id="9f846aef-4e4a-4a84-828e-7e83fe2697f2" name="jetbrains.mps.build.mps.testManifest" version="0" />
   </languages>
   <imports>
-    <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
-    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
-    <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
-    <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
-    <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
-    <import index="ends" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence(MPS.Core/)" />
-    <import index="mqhh" ref="r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)" />
-    <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
-    <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
-    <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
-    <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
-    <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
-    <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
+    <import index="mqhh" ref="r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)" />
+    <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
+    <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
+    <import index="ends" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence(MPS.Core/)" />
+    <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
+    <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
+    <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
+    <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" />
+    <import index="z1c4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
+    <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
+    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
+    <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
+    <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" />
+    <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
-    <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" implicit="true" />
-    <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" implicit="true" />
-    <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" implicit="true" />
-    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -180,6 +176,9 @@
       </concept>
     </language>
   </registry>
+  <node concept="2UguNb" id="1fvQcDvHjaU">
+    <property role="TrG5h" value="ModelRenamer" />
+  </node>
   <node concept="1lH9Xt" id="1fvQcDv_YUg">
     <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <property role="TrG5h" value="RenameModel" />
@@ -227,7 +226,7 @@
           <node concept="3cpWsn" id="o2FwARgxMU" role="3cpWs9">
             <property role="TrG5h" value="mpsProject" />
             <node concept="3uibUv" id="o2FwARgw2g" role="1tU5fm">
-              <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
+              <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
             </node>
             <node concept="2YIFZM" id="o2FwARgxMV" role="33vP2m">
               <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
@@ -310,7 +309,7 @@
           <node concept="3cpWsn" id="o2FwARg$Jv" role="3cpWs9">
             <property role="TrG5h" value="testSolution" />
             <node concept="3uibUv" id="o2FwARg$gb" role="1tU5fm">
-              <ref role="3uigEE" to="z1c3:~Solution" resolve="Solution" />
+              <ref role="3uigEE" to="z1c4:~Solution" resolve="Solution" />
             </node>
             <node concept="2OqwBi" id="o2FwARg$Jw" role="33vP2m">
               <node concept="37vLTw" id="o2FwARg$Jx" role="2Oq$k0">
@@ -327,7 +326,7 @@
                       <ref role="3cqZAo" node="o2FwARgxMU" resolve="mpsProject" />
                     </node>
                     <node concept="liA8E" id="o2FwARg$JB" role="2OqNvi">
-                      <ref role="37wK5l" to="z1c4:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                      <ref role="37wK5l" to="z1c3:~MPSProject.getFileSystem()" resolve="getFileSystem" />
                     </node>
                   </node>
                   <node concept="liA8E" id="o2FwARg$JC" role="2OqNvi">
@@ -407,7 +406,7 @@
                   <ref role="3cqZAo" node="o2FwARgxMU" resolve="mpsProject" />
                 </node>
                 <node concept="liA8E" id="o2FwARiECR" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c4:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                  <ref role="37wK5l" to="z1c3:~MPSProject.getFileSystem()" resolve="getFileSystem" />
                 </node>
               </node>
               <node concept="liA8E" id="o2FwARiECS" role="2OqNvi">
@@ -516,7 +515,7 @@
                       <ref role="3cqZAo" node="o2FwARg$Jv" resolve="testSolution" />
                     </node>
                     <node concept="liA8E" id="2XTo$x8JxDM" role="2OqNvi">
-                      <ref role="37wK5l" to="z1c3:~AbstractModule.getModelRoots()" resolve="getModelRoots" />
+                      <ref role="37wK5l" to="z1c4:~AbstractModule.getModelRoots()" resolve="getModelRoots" />
                     </node>
                   </node>
                   <node concept="liA8E" id="2XTo$x8JxDN" role="2OqNvi">
@@ -545,7 +544,7 @@
                           <ref role="3cqZAo" node="o2FwARg$Jv" resolve="testSolution" />
                         </node>
                         <node concept="liA8E" id="2XTo$x8uCRx" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~AbstractModule.getModelRoots()" resolve="getModelRoots" />
+                          <ref role="37wK5l" to="z1c4:~AbstractModule.getModelRoots()" resolve="getModelRoots" />
                         </node>
                       </node>
                       <node concept="liA8E" id="2XTo$x8uKJs" role="2OqNvi">
@@ -575,7 +574,7 @@
                   <ref role="3cqZAo" node="o2FwARg$Jv" resolve="testSolution" />
                 </node>
                 <node concept="liA8E" id="o2FwARkuCm" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~Solution.save()" resolve="save" />
+                  <ref role="37wK5l" to="z1c4:~Solution.save()" resolve="save" />
                 </node>
               </node>
             </node>
@@ -1049,9 +1048,6 @@
   </node>
   <node concept="2XOHcx" id="1fvQcDvAhsL">
     <property role="2XOHcw" value="${mps_home}" />
-  </node>
-  <node concept="2UguNb" id="1fvQcDvHjaU">
-    <property role="TrG5h" value="ModelRename" />
   </node>
 </model>
 
