@@ -18621,7 +18621,6 @@
         <property role="3F0ifm" value="class" />
         <property role="1cu_pB" value="1" />
         <ref role="1k5W1q" node="hgVS8CF" resolve="KeyWord" />
-        <ref role="1ERwB7" node="4d8Vyfy9COK" resolve="QualifierReference_DeleteToDot" />
       </node>
       <node concept="l2Vlx" id="3XnUzqXsajF" role="2iSdaV" />
     </node>
