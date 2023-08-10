@@ -100,7 +100,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -240,7 +240,7 @@
         <property id="1757699476691236117" name="name_DebugInfo" index="2qtEX9" />
         <property id="1341860900487648621" name="propertyId" index="P4ACc" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -2795,22 +2795,10 @@
       <property role="2DPR8u" value=")" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm0n$t" role="2DRAPQ" />
-    <node concept="2DRAP_" id="1QEui$pmQpu" role="2DRAPQ">
-      <property role="2DPR8u" value="IF &quot;%PROCESSOR_ARCHITECTURE%&quot; == &quot;AMD64&quot; (" />
-    </node>
     <node concept="2DRAP_" id="2XRBtU2epmd" role="2DRAPQ">
-      <property role="2DPR8u" value="  IF EXIST &quot;%IDE_HOME%\jbr&quot; SET JDK=%IDE_HOME%\jbr" />
+      <property role="2DPR8u" value="IF EXIST &quot;%IDE_HOME%\jbr&quot; SET JDK=%IDE_HOME%\jbr" />
     </node>
     <node concept="2DRAP_" id="2XRBtU2epme" role="2DRAPQ">
-      <property role="2DPR8u" value="  IF EXIST &quot;%JDK%&quot; GOTO check" />
-    </node>
-    <node concept="2DRAP_" id="2XRBtU2epmf" role="2DRAPQ">
-      <property role="2DPR8u" value=")" />
-    </node>
-    <node concept="2DRAP_" id="4eWOtEm0ohb" role="2DRAPQ">
-      <property role="2DPR8u" value="IF EXIST &quot;%IDE_HOME%\jbr-x86&quot; SET JDK=%IDE_HOME%\jbr-x86" />
-    </node>
-    <node concept="2DRAP_" id="4eWOtEm0pS8" role="2DRAPQ">
       <property role="2DPR8u" value="IF EXIST &quot;%JDK%&quot; GOTO check" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm0r2h" role="2DRAPQ" />
