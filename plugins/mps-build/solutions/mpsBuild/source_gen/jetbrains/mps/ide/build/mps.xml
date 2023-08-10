@@ -68,6 +68,7 @@
     <copy todir="${build.layout}/lib">
       <fileset dir="${artifacts.mpsStandalone}/lib">
         <exclude name="jna/" />
+        <exclude name="pty4j/" />
       </fileset>
     </copy>
     <mkdir dir="${build.tmp}/default/branding.jar" />

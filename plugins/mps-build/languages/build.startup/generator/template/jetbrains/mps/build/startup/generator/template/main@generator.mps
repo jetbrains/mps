@@ -1748,6 +1748,19 @@
                   <property role="3o6i5n" value="$APP_PACKAGE/Contents" />
                 </node>
               </node>
+              <node concept="3o6iSG" id="6DuhW0rrvg6" role="3o6s8t" />
+              <node concept="2pNNFK" id="6DuhW0rruDA" role="3o6s8t">
+                <property role="2pNNFO" value="key" />
+                <node concept="3o6iSG" id="6DuhW0rruDB" role="3o6s8t">
+                  <property role="3o6i5n" value="pty4j.preferred.native.folder" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="6DuhW0rruD$" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="6DuhW0rruD_" role="3o6s8t">
+                  <property role="3o6i5n" value="$APP_PACKAGE/Contents/lib/pty4j" />
+                </node>
+              </node>
               <node concept="3o6iSG" id="6iw9wCyw4UQ" role="3o6s8t" />
               <node concept="2pNNFK" id="6iw9wCyw3i0" role="3o6s8t">
                 <property role="2pNNFO" value="key" />
@@ -3327,7 +3340,7 @@
       <property role="2DPR8u" value="SET COMMON_JVM_ARGS=&quot;-XX:ErrorFile=%USERPROFILE%\java_error_in_%PRODUCT%_%%p.log&quot; &quot;-XX:HeapDumpPath=%USERPROFILE%\java_error_in_%PRODUCT%.hprof&quot; -Didea.paths.selector=%IDEA_PATHS_SELECTOR% -Didea.vendor.name=&quot;%IDEA_VENDOR_NAME%&quot; %IDE_PROPERTIES_PROPERTY%" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm22ts" role="2DRAPQ">
-      <property role="2DPR8u" value="SET IDE_JVM_ARGS=-Didea.platform.prefix=Idea -Didea.jre.check=true -Djna.boot.library.path=&quot;%IDE_HOME%/lib/jna&quot; -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader" />
+      <property role="2DPR8u" value="SET IDE_JVM_ARGS=-Didea.platform.prefix=Idea -Didea.jre.check=true -Dpty4j.preferred.native.folder=%IDE_HOME%/lib/pty4j -Djna.boot.library.path=&quot;%IDE_HOME%/lib/jna&quot; -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm264z" role="2DRAPQ">
       <property role="2DPR8u" value="SET ALL_JVM_ARGS=%ACC% %COMMON_JVM_ARGS% %IDE_JVM_ARGS%" />
@@ -5401,6 +5414,9 @@
     </node>
     <node concept="2DRAP_" id="5gb82DdXPMj" role="2DRAPQ">
       <property role="2DPR8u" value="  -Djna.boot.library.path=&quot;${IDE_HOME}/lib/jna&quot; \" />
+    </node>
+    <node concept="2DRAP_" id="6DuhW0rr$9H" role="2DRAPQ">
+      <property role="2DPR8u" value="  -Dpty4j.preferred.native.folder=&quot;${IDE_HOME}/lib/pty4j&quot; \" />
     </node>
     <node concept="2DRAP_" id="68UXn6W6HUA" role="2DRAPQ">
       <property role="2DPR8u" value="  -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader \" />

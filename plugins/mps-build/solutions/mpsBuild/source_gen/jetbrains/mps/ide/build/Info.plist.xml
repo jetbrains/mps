@@ -160,6 +160,9 @@
         <key>idea.home.path</key>
         <string>$APP_PACKAGE/Contents</string>
         
+        <key>pty4j.preferred.native.folder</key>
+        <string>$APP_PACKAGE/Contents/lib/pty4j</string>
+        
         <key>jbScreenMenuBar.enabled</key>
         <string>true</string>
         

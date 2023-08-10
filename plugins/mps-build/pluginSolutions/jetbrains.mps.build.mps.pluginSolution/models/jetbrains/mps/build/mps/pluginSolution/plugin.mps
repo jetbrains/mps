@@ -13228,6 +13228,9 @@
                             <node concept="3LWZYq" id="2CLHf7OpY_j" role="1juEy9">
                               <property role="3LWZYl" value="jna/" />
                             </node>
+                            <node concept="3LWZYq" id="6DuhW0rs4n8" role="1juEy9">
+                              <property role="3LWZYl" value="pty4j/" />
+                            </node>
                             <node concept="3LWZYq" id="2OJWaFGOVpE" role="1juEy9">
                               <property role="3LWZYl" value="MPS-src.zip" />
                             </node>
@@ -14273,6 +14276,58 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="398223" id="6DuhW0rs4rU" role="39821P">
+                    <node concept="398223" id="3pnk$CVLa2C" role="39821P">
+                      <node concept="3_J27D" id="3pnk$CVLa2E" role="Nbhlr">
+                        <node concept="3Mxwew" id="3pnk$CVLaar" role="3MwsjC">
+                          <property role="3MwjfP" value="linux" />
+                        </node>
+                      </node>
+                      <node concept="398223" id="3pnk$CVLacB" role="39821P">
+                        <node concept="28jJK3" id="6DuhW0rs4rV" role="39821P">
+                          <node concept="55IIr" id="6DuhW0rs4rW" role="28jJRO">
+                            <node concept="2c44te" id="6DuhW0rs4rX" role="lGtFl">
+                              <node concept="1rXfSq" id="6DuhW0rs4rY" role="2c44t1">
+                                <ref role="37wK5l" node="3f6C5dcXlgg" resolve="convertToMacroRelative" />
+                                <node concept="2c44tf" id="6DuhW0rs4rZ" role="37wK5m">
+                                  <node concept="55IIr" id="6DuhW0rs4s0" role="2c44tc">
+                                    <node concept="2Ry0Ak" id="6DuhW0rs4s1" role="iGT6I">
+                                      <property role="2Ry0Am" value="lib" />
+                                      <node concept="2Ry0Ak" id="6DuhW0rs4s2" role="2Ry0An">
+                                        <property role="2Ry0Am" value="pty4j" />
+                                        <node concept="2Ry0Ak" id="6DuhW0rs4s3" role="2Ry0An">
+                                          <property role="2Ry0Am" value="linux" />
+                                          <node concept="2Ry0Ak" id="6DuhW0rs4s4" role="2Ry0An">
+                                            <property role="2Ry0Am" value="x86-64" />
+                                            <node concept="2Ry0Ak" id="6DuhW0rs7tO" role="2Ry0An">
+                                              <property role="2Ry0Am" value="libpty.so" />
+                                            </node>
+                                          </node>
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="37vLTw" id="6DuhW0rs4s5" role="37wK5m">
+                                  <ref role="3cqZAo" node="3f6C5dcXlfs" resolve="mpsHomeMacro" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3_J27D" id="3pnk$CVLacC" role="Nbhlr">
+                          <node concept="3Mxwew" id="3pnk$CVLahx" role="3MwsjC">
+                            <property role="3MwjfP" value="x86-64" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3_J27D" id="6DuhW0rs4s6" role="Nbhlr">
+                      <node concept="3Mxwew" id="6DuhW0rs7r7" role="3MwsjC">
+                        <property role="3MwjfP" value="pty4j" />
+                      </node>
+                    </node>
+                  </node>
                   <node concept="3_J27D" id="9EkhGyQfUd" role="Nbhlr">
                     <node concept="3Mxwew" id="9EkhGyQqrc" role="3MwsjC">
                       <property role="3MwjfP" value="lib" />
@@ -14654,6 +14709,151 @@
                             </node>
                           </node>
                         </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="398223" id="6DuhW0rsdiI" role="39821P">
+                    <node concept="398223" id="3pnk$CVLgBI" role="39821P">
+                      <node concept="398223" id="3pnk$CVLgUw" role="39821P">
+                        <node concept="28jJK3" id="6DuhW0rsdiL" role="39821P">
+                          <node concept="55IIr" id="6DuhW0rsdiM" role="28jJRO">
+                            <node concept="2c44te" id="6DuhW0rsdiN" role="lGtFl">
+                              <node concept="1rXfSq" id="6DuhW0rsdiO" role="2c44t1">
+                                <ref role="37wK5l" node="3f6C5dcXlgg" resolve="convertToMacroRelative" />
+                                <node concept="2c44tf" id="6DuhW0rsdiP" role="37wK5m">
+                                  <node concept="55IIr" id="6DuhW0rsdiQ" role="2c44tc">
+                                    <node concept="2Ry0Ak" id="6DuhW0rsdiR" role="iGT6I">
+                                      <property role="2Ry0Am" value="lib" />
+                                      <node concept="2Ry0Ak" id="6DuhW0rsdiS" role="2Ry0An">
+                                        <property role="2Ry0Am" value="pty4j" />
+                                        <node concept="2Ry0Ak" id="6DuhW0rsdiT" role="2Ry0An">
+                                          <property role="2Ry0Am" value="win" />
+                                          <node concept="2Ry0Ak" id="6DuhW0rsdiU" role="2Ry0An">
+                                            <property role="2Ry0Am" value="x86-64" />
+                                            <node concept="2Ry0Ak" id="6DuhW0rsgDs" role="2Ry0An">
+                                              <property role="2Ry0Am" value="cyglaunch.exe" />
+                                            </node>
+                                          </node>
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="37vLTw" id="6DuhW0rsdiV" role="37wK5m">
+                                  <ref role="3cqZAo" node="3f6C5dcXlfs" resolve="mpsHomeMacro" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="28jJK3" id="6DuhW0rsgOD" role="39821P">
+                          <node concept="55IIr" id="6DuhW0rsgOE" role="28jJRO">
+                            <node concept="2c44te" id="6DuhW0rsgOF" role="lGtFl">
+                              <node concept="1rXfSq" id="6DuhW0rsgOG" role="2c44t1">
+                                <ref role="37wK5l" node="3f6C5dcXlgg" resolve="convertToMacroRelative" />
+                                <node concept="2c44tf" id="6DuhW0rsgOH" role="37wK5m">
+                                  <node concept="55IIr" id="6DuhW0rsgOI" role="2c44tc">
+                                    <node concept="2Ry0Ak" id="6DuhW0rsgOJ" role="iGT6I">
+                                      <property role="2Ry0Am" value="lib" />
+                                      <node concept="2Ry0Ak" id="6DuhW0rsgOK" role="2Ry0An">
+                                        <property role="2Ry0Am" value="pty4j" />
+                                        <node concept="2Ry0Ak" id="6DuhW0rsgOL" role="2Ry0An">
+                                          <property role="2Ry0Am" value="win" />
+                                          <node concept="2Ry0Ak" id="6DuhW0rsgOM" role="2Ry0An">
+                                            <property role="2Ry0Am" value="x86-64" />
+                                            <node concept="2Ry0Ak" id="6DuhW0rsgON" role="2Ry0An">
+                                              <property role="2Ry0Am" value="win-helper.dll" />
+                                            </node>
+                                          </node>
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="37vLTw" id="6DuhW0rsgOO" role="37wK5m">
+                                  <ref role="3cqZAo" node="3f6C5dcXlfs" resolve="mpsHomeMacro" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="28jJK3" id="6DuhW0rsjz6" role="39821P">
+                          <node concept="55IIr" id="6DuhW0rsjz7" role="28jJRO">
+                            <node concept="2c44te" id="6DuhW0rsjz8" role="lGtFl">
+                              <node concept="1rXfSq" id="6DuhW0rsjz9" role="2c44t1">
+                                <ref role="37wK5l" node="3f6C5dcXlgg" resolve="convertToMacroRelative" />
+                                <node concept="2c44tf" id="6DuhW0rsjza" role="37wK5m">
+                                  <node concept="55IIr" id="6DuhW0rsjzb" role="2c44tc">
+                                    <node concept="2Ry0Ak" id="6DuhW0rsjzc" role="iGT6I">
+                                      <property role="2Ry0Am" value="lib" />
+                                      <node concept="2Ry0Ak" id="6DuhW0rsjzd" role="2Ry0An">
+                                        <property role="2Ry0Am" value="pty4j" />
+                                        <node concept="2Ry0Ak" id="6DuhW0rsjze" role="2Ry0An">
+                                          <property role="2Ry0Am" value="win" />
+                                          <node concept="2Ry0Ak" id="6DuhW0rsjzf" role="2Ry0An">
+                                            <property role="2Ry0Am" value="x86-64" />
+                                            <node concept="2Ry0Ak" id="6DuhW0rsjzg" role="2Ry0An">
+                                              <property role="2Ry0Am" value="winpty-agent.exe" />
+                                            </node>
+                                          </node>
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="37vLTw" id="6DuhW0rsjzh" role="37wK5m">
+                                  <ref role="3cqZAo" node="3f6C5dcXlfs" resolve="mpsHomeMacro" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="28jJK3" id="6DuhW0rsl63" role="39821P">
+                          <node concept="55IIr" id="6DuhW0rsl64" role="28jJRO">
+                            <node concept="2c44te" id="6DuhW0rsl65" role="lGtFl">
+                              <node concept="1rXfSq" id="6DuhW0rsl66" role="2c44t1">
+                                <ref role="37wK5l" node="3f6C5dcXlgg" resolve="convertToMacroRelative" />
+                                <node concept="2c44tf" id="6DuhW0rsl67" role="37wK5m">
+                                  <node concept="55IIr" id="6DuhW0rsl68" role="2c44tc">
+                                    <node concept="2Ry0Ak" id="6DuhW0rsl69" role="iGT6I">
+                                      <property role="2Ry0Am" value="lib" />
+                                      <node concept="2Ry0Ak" id="6DuhW0rsl6a" role="2Ry0An">
+                                        <property role="2Ry0Am" value="pty4j" />
+                                        <node concept="2Ry0Ak" id="6DuhW0rsl6b" role="2Ry0An">
+                                          <property role="2Ry0Am" value="win" />
+                                          <node concept="2Ry0Ak" id="6DuhW0rsl6c" role="2Ry0An">
+                                            <property role="2Ry0Am" value="x86-64" />
+                                            <node concept="2Ry0Ak" id="6DuhW0rsl6d" role="2Ry0An">
+                                              <property role="2Ry0Am" value="winpty.dll" />
+                                            </node>
+                                          </node>
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="37vLTw" id="6DuhW0rsl6e" role="37wK5m">
+                                  <ref role="3cqZAo" node="3f6C5dcXlfs" resolve="mpsHomeMacro" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3_J27D" id="3pnk$CVLgUy" role="Nbhlr">
+                          <node concept="3Mxwew" id="3pnk$CVLgYn" role="3MwsjC">
+                            <property role="3MwjfP" value="x86-64" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3_J27D" id="3pnk$CVLgBK" role="Nbhlr">
+                        <node concept="3Mxwew" id="3pnk$CVLgPC" role="3MwsjC">
+                          <property role="3MwjfP" value="win" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3_J27D" id="6DuhW0rsdiJ" role="Nbhlr">
+                      <node concept="3Mxwew" id="6DuhW0rsgj1" role="3MwsjC">
+                        <property role="3MwjfP" value="pty4j" />
                       </node>
                     </node>
                   </node>
@@ -15184,6 +15384,48 @@
                         <node concept="3_J27D" id="3wRozBgeTxC" role="Nbhlr">
                           <node concept="3Mxwew" id="3wRozBgeTxD" role="3MwsjC">
                             <property role="3MwjfP" value="jna" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="398223" id="6DuhW0rso4b" role="39821P">
+                        <node concept="398223" id="3pnk$CVLnf1" role="39821P">
+                          <node concept="28jJK3" id="6DuhW0rso4c" role="39821P">
+                            <node concept="55IIr" id="6DuhW0rso4d" role="28jJRO">
+                              <node concept="2c44te" id="6DuhW0rso4e" role="lGtFl">
+                                <node concept="1rXfSq" id="6DuhW0rso4f" role="2c44t1">
+                                  <ref role="37wK5l" node="3f6C5dcXlgg" resolve="convertToMacroRelative" />
+                                  <node concept="2c44tf" id="6DuhW0rso4g" role="37wK5m">
+                                    <node concept="55IIr" id="6DuhW0rso4h" role="2c44tc">
+                                      <node concept="2Ry0Ak" id="6DuhW0rso4i" role="iGT6I">
+                                        <property role="2Ry0Am" value="lib" />
+                                        <node concept="2Ry0Ak" id="6DuhW0rso4j" role="2Ry0An">
+                                          <property role="2Ry0Am" value="pty4j" />
+                                          <node concept="2Ry0Ak" id="6DuhW0rsrur" role="2Ry0An">
+                                            <property role="2Ry0Am" value="darwin" />
+                                            <node concept="2Ry0Ak" id="6DuhW0rsruY" role="2Ry0An">
+                                              <property role="2Ry0Am" value="libpty.dylib" />
+                                            </node>
+                                          </node>
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                  <node concept="37vLTw" id="6DuhW0rso4m" role="37wK5m">
+                                    <ref role="3cqZAo" node="3f6C5dcXlfs" resolve="mpsHomeMacro" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="3_J27D" id="3pnk$CVLnf3" role="Nbhlr">
+                            <node concept="3Mxwew" id="3pnk$CVLnmN" role="3MwsjC">
+                              <property role="3MwjfP" value="darwin" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3_J27D" id="6DuhW0rso4n" role="Nbhlr">
+                          <node concept="3Mxwew" id="6DuhW0rsr8Q" role="3MwsjC">
+                            <property role="3MwjfP" value="pty4j" />
                           </node>
                         </node>
                       </node>
