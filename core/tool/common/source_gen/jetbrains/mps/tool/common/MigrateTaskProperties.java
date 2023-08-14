@@ -11,6 +11,7 @@ import java.io.File;
 @GeneratedClass(node = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/4031029858776329668", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
 public class MigrateTaskProperties {
   private static final String PRE_CHECK_HALT = "migrate.pre-check-halt";
+  private static final String DEPS_ERROR_HALT = "migrate.deps-error-halt";
   private static final String OUT_FILE_NAME = "migrate.output-prop-file";
   private static final String ERR_CODE_KEY = "migrate.errcode-key";
   private static final String MAKE_DISTRIB_MODULES = "migrate.make-distrib-modules";
@@ -29,6 +30,15 @@ public class MigrateTaskProperties {
 
   public boolean getPreCheckFailureHalt() {
     return Boolean.parseBoolean(myScript.getProperty(PRE_CHECK_HALT));
+  }
+
+  public MigrateTaskProperties setHaltOnDependencyError(boolean haltOnDependencyError) {
+    myScript.putProperty(DEPS_ERROR_HALT, Boolean.toString(haltOnDependencyError));
+    return this;
+  }
+
+  public boolean getHaltOnDependencyError() {
+    return Boolean.parseBoolean(myScript.getProperty(DEPS_ERROR_HALT));
   }
 
   public MigrateTaskProperties setOutputPropertyFile(File file) {

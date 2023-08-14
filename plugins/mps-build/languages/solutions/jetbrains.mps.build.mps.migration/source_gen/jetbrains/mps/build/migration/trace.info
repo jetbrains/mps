@@ -36,8 +36,8 @@
       <node id="6744798568373387724" at="65,108,66,121" concept="3" />
       <node id="4031029858776886137" at="67,5,68,0" concept="10" />
       <node id="4031029858776832215" at="68,0,69,75" concept="7" />
-      <node id="4031029858780028067" at="69,75,70,0" concept="10" />
-      <node id="4031029858780035767" at="70,0,71,65" concept="7" />
+      <node id="6156844957557709036" at="69,75,70,77" concept="7" />
+      <node id="4031029858780035767" at="70,77,71,65" concept="7" />
       <node id="6214111756401866602" at="71,65,72,0" concept="10" />
       <node id="6214111756401954965" at="72,0,73,174" concept="7" />
       <node id="6744798568373152222" at="73,174,74,0" concept="10" />
@@ -64,8 +64,8 @@
       <node id="4451025160316364565" at="99,123,100,40" concept="9" />
       <node id="4451025160315281919" at="100,40,101,79" concept="7" />
       <node id="4451025160315378926" at="101,79,102,64" concept="3" />
-      <node id="4451025160316451857" at="102,64,103,96" concept="7" />
-      <node id="4031029858779138114" at="103,96,104,72" concept="7" />
+      <node id="4451025160316451857" at="102,64,103,110" concept="7" />
+      <node id="4031029858779138114" at="103,110,104,93" concept="7" />
       <node id="4031029858780074369" at="105,38,106,41" concept="3" />
       <node id="4031029858779862295" at="107,18,108,125" concept="3" />
       <node id="4451025160316664972" at="108,125,109,33" concept="3" />
@@ -94,7 +94,7 @@
       <node id="3307120220353975254" at="39,0,45,0" concept="6" trace="createEnvironment#()Ljetbrains/mps/tool/environment/Environment;" />
       <node id="6720224224384620768" at="48,104,54,5" concept="5" />
       <node id="4031029858780627573" at="61,0,67,5" concept="5" />
-      <node id="4031029858779218021" at="104,72,110,11" concept="5" />
+      <node id="4031029858779218021" at="104,93,110,11" concept="5" />
       <node id="4031029858779312143" at="125,54,134,5" concept="5" />
       <node id="6214111756403679558" at="46,0,56,0" concept="6" trace="initEnvironmentConfig#()Ljetbrains/mps/tool/environment/EnvironmentConfig;" />
       <node id="8164581507602755196" at="93,63,117,9" concept="14" />
@@ -158,6 +158,7 @@
       </scope>
       <scope id="878521226301294269" at="58,22,134,5">
         <var name="compileReloadHelper" id="4557701054992411665" />
+        <var name="dependencyErrorHalt" id="6156844957557709034" />
         <var name="execClassModule" id="6214111756401954966" />
         <var name="preCheckFailureHalt" id="4031029858776832216" />
         <var name="propFile" id="4031029858779393470" />

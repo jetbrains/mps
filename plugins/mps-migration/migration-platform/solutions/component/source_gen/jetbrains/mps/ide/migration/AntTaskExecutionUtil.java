@@ -26,7 +26,7 @@ public class AntTaskExecutionUtil {
    * Do not change this method's signature. It is used from MigrationWorker
    */
   @Nullable
-  public static Boolean migrate(final Project project, boolean haltOnPrecheckFailure) throws Exception {
+  public static Boolean migrate(final Project project, boolean haltOnPrecheckFailure, boolean haltOnDependencyError) throws Exception {
     final AtomicReference<Boolean> rv = new AtomicReference<>(null);
 
     MigrationExecutorImpl tracingExecutor = new MigrationExecutorImpl(project) {
@@ -52,7 +52,7 @@ public class AntTaskExecutionUtil {
 
     rv.set(Boolean.TRUE);
 
-    MigrationTask task = new MigrationTask(session, progress, haltOnPrecheckFailure) {
+    MigrationTask task = new MigrationTask(session, progress, haltOnPrecheckFailure, haltOnDependencyError) {
       @Override
       protected void error(@NotNull final MigrationError error) {
         if (LOG.isEnabledFor(Level.ERROR)) {

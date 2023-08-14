@@ -1170,7 +1170,7 @@
       <node concept="3clFbS" id="g9$9d2C0XT" role="3clF47">
         <node concept="3clFbF" id="g9$9d2C0XX" role="3cqZAp">
           <node concept="3nyPlj" id="g9$9d2C0XW" role="3clFbG">
-            <ref role="37wK5l" to="644x:g9$9d2AipS" resolve="finalizeSciptSettings" />
+            <ref role="37wK5l" to="644x:g9$9d2AipS" resolve="finalizeScriptSettings" />
             <node concept="37vLTw" id="g9$9d2C0XV" role="37wK5m">
               <ref role="3cqZAo" node="g9$9d2C0XF" resolve="whatToDo" />
             </node>
@@ -1683,7 +1683,7 @@
       <node concept="3clFbS" id="g9$9d2EHqW" role="3clF47">
         <node concept="3clFbF" id="g9$9d2EHqZ" role="3cqZAp">
           <node concept="3nyPlj" id="g9$9d2EHqY" role="3clFbG">
-            <ref role="37wK5l" node="g9$9d2C0X6" resolve="finalizeSciptSettings" />
+            <ref role="37wK5l" node="g9$9d2C0X6" resolve="finalizeScriptSettings" />
             <node concept="37vLTw" id="g9$9d2EHqX" role="37wK5m">
               <ref role="3cqZAo" node="g9$9d2EHqa" resolve="whatToDo" />
             </node>

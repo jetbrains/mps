@@ -67,7 +67,7 @@ public class MigrationWorker extends WorkerBase {
     }
 
     final boolean preCheckFailureHalt = taskProps.getPreCheckFailureHalt();
-
+    final boolean dependencyErrorHalt = taskProps.getHaltOnDependencyError();
     final Wrappers._boolean result = new Wrappers._boolean(true);
 
     final SModuleReference execClassModule = PersistenceFacade.getInstance().createModuleReference("a5b1c28d-abeb-49a6-a58c-559039616d64(jetbrains.mps.migration.component)");
@@ -100,8 +100,8 @@ public class MigrationWorker extends WorkerBase {
           // to the code to start IDEA).
           ModuleClassCode cc = new ModuleClassCode(execClassModule.toString());
           cc.load(myEnvironment.getPlatform(), TASK_EXEC_CLASS);
-          Method method = cc.staticMethod("migrate", Project.class, Boolean.TYPE).orElseThrow();
-          Object rv = method.invoke(null, project, preCheckFailureHalt);
+          Method method = cc.staticMethod("migrate", Project.class, Boolean.TYPE, Boolean.TYPE).orElseThrow();
+          Object rv = method.invoke(null, project, preCheckFailureHalt, dependencyErrorHalt);
           if (rv instanceof Boolean) {
             result.value &= (Boolean) rv;
           } else {

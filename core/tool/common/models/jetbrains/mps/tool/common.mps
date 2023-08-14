@@ -11385,6 +11385,15 @@
         <property role="Xl_RC" value="migrate.pre-check-halt" />
       </node>
     </node>
+    <node concept="Wx3nA" id="5lLwtTooSJc" role="jymVt">
+      <property role="TrG5h" value="DEPS_ERROR_HALT" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="5lLwtTooSJd" role="1B3o_S" />
+      <node concept="17QB3L" id="5lLwtTooSJe" role="1tU5fm" />
+      <node concept="Xl_RD" id="5lLwtTooSJf" role="33vP2m">
+        <property role="Xl_RC" value="migrate.deps-error-halt" />
+      </node>
+    </node>
     <node concept="Wx3nA" id="7zEA_IIJpWz" role="jymVt">
       <property role="3TUv4t" value="true" />
       <property role="TrG5h" value="OUT_FILE_NAME" />
@@ -11496,8 +11505,8 @@
       <node concept="3clFbS" id="3vL64Mrni5$" role="3clF47">
         <node concept="3cpWs6" id="3vL64Mrni9Q" role="3cqZAp">
           <node concept="2YIFZM" id="3vL64Mrnjdz" role="3cqZAk">
-            <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String)" resolve="parseBoolean" />
             <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+            <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String)" resolve="parseBoolean" />
             <node concept="2OqwBi" id="3vL64Mrnimp" role="37wK5m">
               <node concept="37vLTw" id="3vL64Mrnid4" role="2Oq$k0">
                 <ref role="3cqZAo" node="3vL64Mrnfwb" resolve="myScript" />
@@ -11514,6 +11523,68 @@
       </node>
       <node concept="3Tm1VV" id="3vL64Mrni05" role="1B3o_S" />
       <node concept="10P_77" id="3vL64Mrni4T" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="5lLwtTooGff" role="jymVt" />
+    <node concept="3clFb_" id="5lLwtTooXpW" role="jymVt">
+      <property role="TrG5h" value="setHaltOnDependencyError" />
+      <node concept="3uibUv" id="5lLwtTooXpX" role="3clF45">
+        <ref role="3uigEE" node="3vL64MrmMR4" resolve="MigrateTaskProperties" />
+      </node>
+      <node concept="3Tm1VV" id="5lLwtTooXpY" role="1B3o_S" />
+      <node concept="3clFbS" id="5lLwtTooXpZ" role="3clF47">
+        <node concept="3clFbF" id="5lLwtTooXq0" role="3cqZAp">
+          <node concept="2OqwBi" id="5lLwtTooXq1" role="3clFbG">
+            <node concept="37vLTw" id="5lLwtTooXq2" role="2Oq$k0">
+              <ref role="3cqZAo" node="3vL64Mrnfwb" resolve="myScript" />
+            </node>
+            <node concept="liA8E" id="5lLwtTooXq3" role="2OqNvi">
+              <ref role="37wK5l" node="KL8Aql8eBe" resolve="putProperty" />
+              <node concept="37vLTw" id="5lLwtTooXq4" role="37wK5m">
+                <ref role="3cqZAo" node="5lLwtTooSJc" resolve="DEPS_ERROR_HALT" />
+              </node>
+              <node concept="2YIFZM" id="5lLwtTooXq5" role="37wK5m">
+                <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
+                <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+                <node concept="37vLTw" id="5lLwtTooXq6" role="37wK5m">
+                  <ref role="3cqZAo" node="5lLwtTooXq9" resolve="haltOnDependencyError" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="5lLwtTooXq7" role="3cqZAp">
+          <node concept="Xjq3P" id="5lLwtTooXq8" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="5lLwtTooXq9" role="3clF46">
+        <property role="TrG5h" value="haltOnDependencyError" />
+        <node concept="10P_77" id="5lLwtTooXqa" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="5lLwtTooXmD" role="jymVt" />
+    <node concept="3clFb_" id="5lLwtTooEmF" role="jymVt">
+      <property role="TrG5h" value="getHaltOnDependencyError" />
+      <node concept="3clFbS" id="5lLwtTooEmG" role="3clF47">
+        <node concept="3cpWs6" id="5lLwtTooEmH" role="3cqZAp">
+          <node concept="2YIFZM" id="5lLwtTooEmI" role="3cqZAk">
+            <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+            <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String)" resolve="parseBoolean" />
+            <node concept="2OqwBi" id="5lLwtTooEmJ" role="37wK5m">
+              <node concept="37vLTw" id="5lLwtTooEmK" role="2Oq$k0">
+                <ref role="3cqZAo" node="3vL64Mrnfwb" resolve="myScript" />
+              </node>
+              <node concept="liA8E" id="5lLwtTooEmL" role="2OqNvi">
+                <ref role="37wK5l" node="KL8Aql8eBs" resolve="getProperty" />
+                <node concept="37vLTw" id="5lLwtTooEmM" role="37wK5m">
+                  <ref role="3cqZAo" node="5lLwtTooSJc" resolve="DEPS_ERROR_HALT" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5lLwtTooEmN" role="1B3o_S" />
+      <node concept="10P_77" id="5lLwtTooEmO" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="3vL64MruuXu" role="jymVt" />
     <node concept="3clFb_" id="3vL64Mruv9h" role="jymVt">

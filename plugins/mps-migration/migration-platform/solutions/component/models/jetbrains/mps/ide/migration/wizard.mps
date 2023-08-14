@@ -9618,6 +9618,12 @@
       <node concept="3Tm6S6" id="61n5glKhkKP" role="1B3o_S" />
       <node concept="10P_77" id="61n5glKhoaE" role="1tU5fm" />
     </node>
+    <node concept="312cEg" id="5lLwtTodJ3Y" role="jymVt">
+      <property role="TrG5h" value="myHaltOnNotMigratedLibs" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="5lLwtTodJ3Z" role="1B3o_S" />
+      <node concept="10P_77" id="5lLwtTodJ41" role="1tU5fm" />
+    </node>
     <node concept="2tJIrI" id="2LHmEReYgJp" role="jymVt" />
     <node concept="312cEg" id="6dkZ8D0H4WB" role="jymVt">
       <property role="TrG5h" value="myMonitor" />
@@ -9639,6 +9645,9 @@
             <ref role="3cqZAo" node="6dkZ8D0LyiK" resolve="monitor" />
           </node>
           <node concept="3clFbT" id="61n5glKhwaV" role="37wK5m">
+            <property role="3clFbU" value="true" />
+          </node>
+          <node concept="3clFbT" id="5lLwtTodTAP" role="37wK5m">
             <property role="3clFbU" value="true" />
           </node>
         </node>
@@ -9720,6 +9729,16 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="5lLwtTodJ42" role="3cqZAp">
+          <node concept="37vLTI" id="5lLwtTodJ44" role="3clFbG">
+            <node concept="37vLTw" id="5lLwtTodJ47" role="37vLTJ">
+              <ref role="3cqZAo" node="5lLwtTodJ3Y" resolve="myHaltOnNotMigratedLibs" />
+            </node>
+            <node concept="37vLTw" id="5lLwtTodJ48" role="37vLTx">
+              <ref role="3cqZAo" node="5lLwtTodrKB" resolve="haltOnNotMigratedLibs" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="3Tm1VV" id="61n5glKhrA3" role="1B3o_S" />
       <node concept="3cqZAl" id="61n5glKhrA4" role="3clF45" />
@@ -9738,6 +9757,10 @@
       <node concept="37vLTG" id="61n5glKhuWE" role="3clF46">
         <property role="TrG5h" value="haltOnFailedPrecheck" />
         <node concept="10P_77" id="61n5glKhv5h" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="5lLwtTodrKB" role="3clF46">
+        <property role="TrG5h" value="haltOnNotMigratedLibs" />
+        <node concept="10P_77" id="5lLwtTodImj" role="1tU5fm" />
       </node>
     </node>
     <node concept="2tJIrI" id="6dkZ8D0ENkg" role="jymVt" />
@@ -10447,12 +10470,87 @@
             </node>
             <node concept="3clFbJ" id="4hH4xQo_tOF" role="3cqZAp">
               <node concept="3clFbS" id="4hH4xQo_tOG" role="3clFbx">
-                <node concept="YS8fn" id="5cfG2XjDR94" role="3cqZAp">
-                  <node concept="2ShNRf" id="4hH4xQo_tOL" role="YScLw">
-                    <node concept="1pGfFk" id="4hH4xQo_tOM" role="2ShVmc">
-                      <ref role="37wK5l" node="ANqTy7mxf6" resolve="NotMigratedLibsError" />
-                      <node concept="37vLTw" id="4hH4xQo_tON" role="37wK5m">
-                        <ref role="3cqZAo" node="4hH4xQo_tO5" resolve="errsToShow" />
+                <node concept="3cpWs8" id="5lLwtToex7p" role="3cqZAp">
+                  <node concept="3cpWsn" id="5lLwtToex7q" role="3cpWs9">
+                    <property role="TrG5h" value="error" />
+                    <node concept="3uibUv" id="5lLwtToevRT" role="1tU5fm">
+                      <ref role="3uigEE" node="ANqTy7mxf1" resolve="NotMigratedLibsError" />
+                    </node>
+                    <node concept="2ShNRf" id="5lLwtToex7r" role="33vP2m">
+                      <node concept="1pGfFk" id="5lLwtToex7s" role="2ShVmc">
+                        <ref role="37wK5l" node="ANqTy7mxf6" resolve="NotMigratedLibsError" />
+                        <node concept="37vLTw" id="5lLwtToex7t" role="37wK5m">
+                          <ref role="3cqZAo" node="4hH4xQo_tO5" resolve="errsToShow" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbJ" id="5lLwtTodXrK" role="3cqZAp">
+                  <node concept="3clFbS" id="5lLwtTodXrM" role="3clFbx">
+                    <node concept="YS8fn" id="5cfG2XjDR94" role="3cqZAp">
+                      <node concept="37vLTw" id="5lLwtToex7u" role="YScLw">
+                        <ref role="3cqZAo" node="5lLwtToex7q" resolve="error" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="5lLwtToe0MN" role="3clFbw">
+                    <ref role="3cqZAo" node="5lLwtTodJ3Y" resolve="myHaltOnNotMigratedLibs" />
+                  </node>
+                  <node concept="9aQIb" id="5lLwtToecdc" role="9aQIa">
+                    <node concept="3clFbS" id="5lLwtToecdd" role="9aQI4">
+                      <node concept="RRSsy" id="5lLwtToefpb" role="3cqZAp">
+                        <property role="RRSoG" value="gZ5fksE/warn" />
+                        <node concept="Xl_RD" id="5lLwtToefpd" role="RRSoy">
+                          <property role="Xl_RC" value="Some dependent modules are not migrated, ignoring..." />
+                        </node>
+                      </node>
+                      <node concept="3clFbF" id="5lLwtToeGpX" role="3cqZAp">
+                        <node concept="2OqwBi" id="5lLwtTof2YQ" role="3clFbG">
+                          <node concept="2OqwBi" id="5lLwtToeVCY" role="2Oq$k0">
+                            <node concept="2OqwBi" id="5lLwtToeIOR" role="2Oq$k0">
+                              <node concept="37vLTw" id="5lLwtToeGpV" role="2Oq$k0">
+                                <ref role="3cqZAo" node="78xBDbK6Z6y" resolve="mySession" />
+                              </node>
+                              <node concept="liA8E" id="5lLwtToeMUz" role="2OqNvi">
+                                <ref role="37wK5l" node="4hH4xQoNqF2" resolve="getProject" />
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="5lLwtTof03S" role="2OqNvi">
+                              <ref role="37wK5l" to="z1c3:~Project.getModelAccess()" resolve="getModelAccess" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="5lLwtTof6Qt" role="2OqNvi">
+                            <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
+                            <node concept="1bVj0M" id="5lLwtTof9q0" role="37wK5m">
+                              <node concept="3clFbS" id="5lLwtTof9q1" role="1bW5cS">
+                                <node concept="3clFbF" id="5lLwtTofusq" role="3cqZAp">
+                                  <node concept="2OqwBi" id="5lLwtTofxjt" role="3clFbG">
+                                    <node concept="37vLTw" id="5lLwtTofuso" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="5lLwtToex7q" resolve="error" />
+                                    </node>
+                                    <node concept="liA8E" id="5lLwtTof_qc" role="2OqNvi">
+                                      <ref role="37wK5l" node="61n5glKgCIJ" resolve="logProblems" />
+                                      <node concept="2ShNRf" id="5lLwtTofBUT" role="37wK5m">
+                                        <node concept="1pGfFk" id="5lLwtToglTx" role="2ShVmc">
+                                          <property role="373rjd" value="true" />
+                                          <ref role="37wK5l" to="et5u:~LogHandler.&lt;init&gt;(org.apache.log4j.Logger)" resolve="LogHandler" />
+                                          <node concept="2YIFZM" id="5lLwtTofhwz" role="37wK5m">
+                                            <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
+                                            <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
+                                            <node concept="3VsKOn" id="5lLwtTofok0" role="37wK5m">
+                                              <ref role="3VsUkX" node="PobQbOdOMD" resolve="MigrationTask" />
+                                            </node>
+                                          </node>
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -10594,54 +10692,38 @@
                           </node>
                           <node concept="liA8E" id="61n5glKiQR_" role="2OqNvi">
                             <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
-                            <node concept="2ShNRf" id="61n5glKiSEY" role="37wK5m">
-                              <node concept="YeOm9" id="61n5glKjkRr" role="2ShVmc">
-                                <node concept="1Y3b0j" id="61n5glKjkRu" role="YeSDq">
-                                  <property role="2bfB8j" value="true" />
-                                  <ref role="1Y3XeK" to="wyt6:~Runnable" resolve="Runnable" />
-                                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                                  <node concept="3Tm1VV" id="61n5glKjkRv" role="1B3o_S" />
-                                  <node concept="3clFb_" id="61n5glKjkR$" role="jymVt">
-                                    <property role="TrG5h" value="run" />
-                                    <node concept="3Tm1VV" id="61n5glKjkR_" role="1B3o_S" />
-                                    <node concept="3cqZAl" id="61n5glKjkRB" role="3clF45" />
-                                    <node concept="3clFbS" id="61n5glKjkRC" role="3clF47">
-                                      <node concept="3cpWs8" id="7kOTsA1_tcn" role="3cqZAp">
-                                        <node concept="3cpWsn" id="7kOTsA1_tco" role="3cpWs9">
-                                          <property role="TrG5h" value="logger" />
-                                          <node concept="3uibUv" id="7kOTsA1_qin" role="1tU5fm">
-                                            <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-                                          </node>
-                                          <node concept="2YIFZM" id="7kOTsA1_tcp" role="33vP2m">
-                                            <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-                                            <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-                                            <node concept="3VsKOn" id="7kOTsA1_tcq" role="37wK5m">
-                                              <ref role="3VsUkX" node="PobQbOdOMD" resolve="MigrationTask" />
-                                            </node>
-                                          </node>
-                                        </node>
-                                      </node>
-                                      <node concept="3clFbF" id="61n5glKjohf" role="3cqZAp">
-                                        <node concept="2OqwBi" id="61n5glKjqYh" role="3clFbG">
-                                          <node concept="37vLTw" id="61n5glKjohe" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="61n5glKhENy" resolve="preCheckError" />
-                                          </node>
-                                          <node concept="liA8E" id="61n5glKjuW9" role="2OqNvi">
-                                            <ref role="37wK5l" node="61n5glKgCIJ" resolve="logProblems" />
-                                            <node concept="2ShNRf" id="7kOTsA1_wlN" role="37wK5m">
-                                              <node concept="1pGfFk" id="7kOTsA1_Z7w" role="2ShVmc">
-                                                <ref role="37wK5l" to="et5u:~LogHandler.&lt;init&gt;(org.apache.log4j.Logger)" resolve="LogHandler" />
-                                                <node concept="37vLTw" id="7kOTsA1A2ti" role="37wK5m">
-                                                  <ref role="3cqZAo" node="7kOTsA1_tco" resolve="logger" />
-                                                </node>
-                                              </node>
-                                            </node>
-                                          </node>
-                                        </node>
+                            <node concept="1bVj0M" id="5lLwtTol7gi" role="37wK5m">
+                              <node concept="3clFbS" id="5lLwtTol7gk" role="1bW5cS">
+                                <node concept="3cpWs8" id="7kOTsA1_tcn" role="3cqZAp">
+                                  <node concept="3cpWsn" id="7kOTsA1_tco" role="3cpWs9">
+                                    <property role="TrG5h" value="logger" />
+                                    <node concept="3uibUv" id="7kOTsA1_qin" role="1tU5fm">
+                                      <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+                                    </node>
+                                    <node concept="2YIFZM" id="7kOTsA1_tcp" role="33vP2m">
+                                      <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
+                                      <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
+                                      <node concept="3VsKOn" id="7kOTsA1_tcq" role="37wK5m">
+                                        <ref role="3VsUkX" node="PobQbOdOMD" resolve="MigrationTask" />
                                       </node>
                                     </node>
-                                    <node concept="2AHcQZ" id="61n5glKjkRE" role="2AJF6D">
-                                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                                  </node>
+                                </node>
+                                <node concept="3clFbF" id="61n5glKjohf" role="3cqZAp">
+                                  <node concept="2OqwBi" id="61n5glKjqYh" role="3clFbG">
+                                    <node concept="37vLTw" id="61n5glKjohe" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="61n5glKhENy" resolve="preCheckError" />
+                                    </node>
+                                    <node concept="liA8E" id="61n5glKjuW9" role="2OqNvi">
+                                      <ref role="37wK5l" node="61n5glKgCIJ" resolve="logProblems" />
+                                      <node concept="2ShNRf" id="7kOTsA1_wlN" role="37wK5m">
+                                        <node concept="1pGfFk" id="7kOTsA1_Z7w" role="2ShVmc">
+                                          <ref role="37wK5l" to="et5u:~LogHandler.&lt;init&gt;(org.apache.log4j.Logger)" resolve="LogHandler" />
+                                          <node concept="37vLTw" id="7kOTsA1A2ti" role="37wK5m">
+                                            <ref role="3cqZAo" node="7kOTsA1_tco" resolve="logger" />
+                                          </node>
+                                        </node>
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
