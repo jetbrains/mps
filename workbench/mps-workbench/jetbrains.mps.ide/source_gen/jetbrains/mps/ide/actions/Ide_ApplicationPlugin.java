@@ -95,6 +95,7 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ShowNodeInInspector_Action());
     addAction(new ShowNodeInfo_Action());
     addAction(new ShowParameters_Action());
+    addAction(new ShowQuickDocumentation_Action());
     addAction(new SubmitToTracker_Action());
     // actions w/o parameters that override existing actions
     replaceAction(new AnalyzeStacktrace_Action());
