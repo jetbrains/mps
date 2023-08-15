@@ -14295,13 +14295,10 @@
                                       <property role="2Ry0Am" value="lib" />
                                       <node concept="2Ry0Ak" id="6DuhW0rs4s2" role="2Ry0An">
                                         <property role="2Ry0Am" value="pty4j" />
-                                        <node concept="2Ry0Ak" id="6DuhW0rs4s3" role="2Ry0An">
-                                          <property role="2Ry0Am" value="linux" />
-                                          <node concept="2Ry0Ak" id="6DuhW0rs4s4" role="2Ry0An">
-                                            <property role="2Ry0Am" value="x86-64" />
-                                            <node concept="2Ry0Ak" id="6DuhW0rs7tO" role="2Ry0An">
-                                              <property role="2Ry0Am" value="libpty.so" />
-                                            </node>
+                                        <node concept="2Ry0Ak" id="6DuhW0rs4s4" role="2Ry0An">
+                                          <property role="2Ry0Am" value="x86-64" />
+                                          <node concept="2Ry0Ak" id="6DuhW0rs7tO" role="2Ry0An">
+                                            <property role="2Ry0Am" value="libpty.so" />
                                           </node>
                                         </node>
                                       </node>
@@ -14726,13 +14723,10 @@
                                       <property role="2Ry0Am" value="lib" />
                                       <node concept="2Ry0Ak" id="6DuhW0rsdiS" role="2Ry0An">
                                         <property role="2Ry0Am" value="pty4j" />
-                                        <node concept="2Ry0Ak" id="6DuhW0rsdiT" role="2Ry0An">
-                                          <property role="2Ry0Am" value="win" />
-                                          <node concept="2Ry0Ak" id="6DuhW0rsdiU" role="2Ry0An">
-                                            <property role="2Ry0Am" value="x86-64" />
-                                            <node concept="2Ry0Ak" id="6DuhW0rsgDs" role="2Ry0An">
-                                              <property role="2Ry0Am" value="cyglaunch.exe" />
-                                            </node>
+                                        <node concept="2Ry0Ak" id="6DuhW0rsdiU" role="2Ry0An">
+                                          <property role="2Ry0Am" value="x86-64" />
+                                          <node concept="2Ry0Ak" id="6DuhW0rsgDs" role="2Ry0An">
+                                            <property role="2Ry0Am" value="cyglaunch.exe" />
                                           </node>
                                         </node>
                                       </node>
@@ -14757,13 +14751,10 @@
                                       <property role="2Ry0Am" value="lib" />
                                       <node concept="2Ry0Ak" id="6DuhW0rsgOK" role="2Ry0An">
                                         <property role="2Ry0Am" value="pty4j" />
-                                        <node concept="2Ry0Ak" id="6DuhW0rsgOL" role="2Ry0An">
-                                          <property role="2Ry0Am" value="win" />
-                                          <node concept="2Ry0Ak" id="6DuhW0rsgOM" role="2Ry0An">
-                                            <property role="2Ry0Am" value="x86-64" />
-                                            <node concept="2Ry0Ak" id="6DuhW0rsgON" role="2Ry0An">
-                                              <property role="2Ry0Am" value="win-helper.dll" />
-                                            </node>
+                                        <node concept="2Ry0Ak" id="6DuhW0rsgOM" role="2Ry0An">
+                                          <property role="2Ry0Am" value="x86-64" />
+                                          <node concept="2Ry0Ak" id="6DuhW0rsgON" role="2Ry0An">
+                                            <property role="2Ry0Am" value="win-helper.dll" />
                                           </node>
                                         </node>
                                       </node>
@@ -14788,13 +14779,10 @@
                                       <property role="2Ry0Am" value="lib" />
                                       <node concept="2Ry0Ak" id="6DuhW0rsjzd" role="2Ry0An">
                                         <property role="2Ry0Am" value="pty4j" />
-                                        <node concept="2Ry0Ak" id="6DuhW0rsjze" role="2Ry0An">
-                                          <property role="2Ry0Am" value="win" />
-                                          <node concept="2Ry0Ak" id="6DuhW0rsjzf" role="2Ry0An">
-                                            <property role="2Ry0Am" value="x86-64" />
-                                            <node concept="2Ry0Ak" id="6DuhW0rsjzg" role="2Ry0An">
-                                              <property role="2Ry0Am" value="winpty-agent.exe" />
-                                            </node>
+                                        <node concept="2Ry0Ak" id="6DuhW0rsjzf" role="2Ry0An">
+                                          <property role="2Ry0Am" value="x86-64" />
+                                          <node concept="2Ry0Ak" id="6DuhW0rsjzg" role="2Ry0An">
+                                            <property role="2Ry0Am" value="winpty-agent.exe" />
                                           </node>
                                         </node>
                                       </node>
@@ -14819,13 +14807,10 @@
                                       <property role="2Ry0Am" value="lib" />
                                       <node concept="2Ry0Ak" id="6DuhW0rsl6a" role="2Ry0An">
                                         <property role="2Ry0Am" value="pty4j" />
-                                        <node concept="2Ry0Ak" id="6DuhW0rsl6b" role="2Ry0An">
-                                          <property role="2Ry0Am" value="win" />
-                                          <node concept="2Ry0Ak" id="6DuhW0rsl6c" role="2Ry0An">
-                                            <property role="2Ry0Am" value="x86-64" />
-                                            <node concept="2Ry0Ak" id="6DuhW0rsl6d" role="2Ry0An">
-                                              <property role="2Ry0Am" value="winpty.dll" />
-                                            </node>
+                                        <node concept="2Ry0Ak" id="6DuhW0rsl6c" role="2Ry0An">
+                                          <property role="2Ry0Am" value="x86-64" />
+                                          <node concept="2Ry0Ak" id="6DuhW0rsl6d" role="2Ry0An">
+                                            <property role="2Ry0Am" value="winpty.dll" />
                                           </node>
                                         </node>
                                       </node>
@@ -15401,7 +15386,7 @@
                                         <node concept="2Ry0Ak" id="6DuhW0rso4j" role="2Ry0An">
                                           <property role="2Ry0Am" value="pty4j" />
                                           <node concept="2Ry0Ak" id="6DuhW0rsrur" role="2Ry0An">
-                                            <property role="2Ry0Am" value="darwin" />
+                                            <property role="2Ry0Am" value="x86-64" />
                                             <node concept="2Ry0Ak" id="6DuhW0rsruY" role="2Ry0An">
                                               <property role="2Ry0Am" value="libpty.dylib" />
                                             </node>
