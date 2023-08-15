@@ -50,7 +50,7 @@ public class MPSNavBarExtension implements NavBarModelExtension {
         return false; // otherwise, we do as we do with any psi element
       }
     }
-    if (object instanceof PsiElement) {
+    if (object instanceof MPSPsiElement) {
       for (var c : ((PsiElement) object).getChildren()) {
         processor.process(c);
       }
