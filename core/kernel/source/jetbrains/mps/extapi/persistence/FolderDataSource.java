@@ -64,6 +64,7 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   public FolderDataSource(@NotNull IFile folder, @NotNull Predicate<IFile> filterOnChildren) {
     checkFolderExistsAndItIsFolder(folder);
     myFolder = folder;
+    // XXX not clear whether this filter shall be applied to newly created files
     myChildFilter = filterOnChildren;
   }
 
@@ -107,6 +108,9 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   @NotNull
   @Override
   public Stream<StreamDataSource> getSubStreams() {
+    // FIXME this approach (with new FileDataSource each time) renders DataSourceListeners, attached to such object, useless
+    //       shall I return another FileDataSource subclass that delegates registered listener to some central mediator/broker?
+    //       Perhaps, the whole idea of DataSourceListener shall be revised (clear split into different interfaces?)
     return getChildrenFiles().filter(this::isIncluded)
                              .map(FileDataSource::new);
   }
@@ -121,9 +125,10 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   @NotNull
   @Override
   public StreamDataSource getStreamByNameOrCreate(@NotNull String name) {
-    if (getStreamByName(name) != null) {
-      return getStreamByName(name);
-    }
+    // FileDataSource is sort of a 'proxy', we don't keep track of the instances, although this is definitely
+    // a potential problem (see getSubStreams(), above).
+    // Besides, it's not clear if we shall respect isIncluded() outcome here or not. I didn't quite get the
+    // intention behind this condition.
     return new FileDataSource(myFolder.findChild(name));
   }
 
