@@ -692,6 +692,7 @@
       <directory url="file://$PROJECT_DIR$/testbench/modules/textgen.folders/sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/xmodel.build/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/xmodel.build/test_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/projects/PerRootPersistence/jetbrains.mps.tests.perroot1/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testbench.suite.pluginSolution/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testbench.suite/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/testbench.suite/source_gen" includeSubdirectories="true" />
