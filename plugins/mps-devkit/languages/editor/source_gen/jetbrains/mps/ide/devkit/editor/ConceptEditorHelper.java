@@ -68,7 +68,7 @@ public class ConceptEditorHelper {
     Consumer<SConcept> ff = (SConcept c) -> {
       if (c.isSubConceptOf(CONCEPTS.IConceptAspect$Z3)) {
         SAbstractConcept ica = (SAbstractConcept) c;
-        if ((boolean) IConceptAspect__BehaviorDescriptor.canBeAppliedToNode_id7IH442d05tK.invoke(SNodeOperations.asSConcept(ica), cd)) {
+        if ((boolean) IConceptAspect__BehaviorDescriptor.canBeAppliedToNode_id7IH442d05tK.invoke(SNodeOperations.asSConcept(ica), cd) && (!(ica instanceof SConcept) || ((SConcept) ica).isRootable())) {
           ListSequence.fromList(rv).addElement(c);
         }
       }
