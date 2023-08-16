@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ import jetbrains.mps.vfs.refresh.FileSystemListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.DataSourceListener;
-import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSource;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSourceListener;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
@@ -110,6 +109,13 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   public Stream<StreamDataSource> getSubStreams() {
     return getChildrenFiles().filter(this::isIncluded)
                              .map(FileDataSource::new);
+  }
+
+  @Nullable
+  @Override
+  public StreamDataSource getStreamByName(@NotNull String name) {
+    final IFile file = getFile(name);
+    return file.exists() && isIncluded(file) ? new FileDataSource(file) : null;
   }
 
   @NotNull
