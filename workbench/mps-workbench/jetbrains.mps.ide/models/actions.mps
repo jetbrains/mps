@@ -177,9 +177,9 @@
     <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
     <import index="mqhh" ref="r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)" />
     <import index="o2jy" ref="r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)" />
-    <import index="a6r3" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.ui(MPS.Workbench/)" />
     <import index="hdb0" ref="r:818648d2-4985-4d36-93cd-2c5b9b2eaf23(jetbrains.mps.lang.core.doc.structure)" />
     <import index="7a0s" ref="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)" />
+    <import index="a6r3" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.ui(MPS.Workbench/)" />
     <import index="prsh" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.documentation(MPS.Editor/)" />
     <import index="3ra0" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.lang(MPS.IDEA/)" />
     <import index="sn11" ref="r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)" />
@@ -46957,6 +46957,57 @@
             <node concept="2ShNRf" id="2tUtjEnzQ0j" role="33vP2m">
               <node concept="1pGfFk" id="2tUtjEnzPSd" role="2ShVmc">
                 <ref role="37wK5l" to="wyt6:~StringBuilder.&lt;init&gt;()" resolve="StringBuilder" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4b1hQOJ9qrX" role="3cqZAp">
+          <node concept="2OqwBi" id="4b1hQOJ9tDq" role="3clFbG">
+            <node concept="37vLTw" id="4b1hQOJ9qrV" role="2Oq$k0">
+              <ref role="3cqZAo" node="2tUtjEnzJlx" resolve="sb" />
+            </node>
+            <node concept="liA8E" id="4b1hQOJ9w$R" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+              <node concept="10M0yZ" id="4b1hQOJ9$ia" role="37wK5m">
+                <ref role="3cqZAo" to="g84:~DocumentationMarkup.DEFINITION_START" resolve="DEFINITION_START" />
+                <ref role="1PxDUh" to="prsh:~MPSDocumentationMarkup" resolve="MPSDocumentationMarkup" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4b1hQOJ9Ogk" role="3cqZAp">
+          <node concept="2OqwBi" id="4b1hQOJ9OzX" role="3clFbG">
+            <node concept="37vLTw" id="4b1hQOJ9Ogi" role="2Oq$k0">
+              <ref role="3cqZAo" node="2tUtjEnzJlx" resolve="sb" />
+            </node>
+            <node concept="liA8E" id="4b1hQOJ9R_n" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+              <node concept="3cpWs3" id="4b1hQOJa0SD" role="37wK5m">
+                <node concept="Xl_RD" id="4b1hQOJa22l" role="3uHU7B">
+                  <property role="Xl_RC" value="Node name: " />
+                </node>
+                <node concept="2OqwBi" id="4b1hQOJ9XwW" role="3uHU7w">
+                  <node concept="37vLTw" id="4b1hQOJ9UqM" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5c8BzTYRzOA" resolve="myNode" />
+                  </node>
+                  <node concept="liA8E" id="4b1hQOJ9YGb" role="2OqNvi">
+                    <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4b1hQOJ9Cmr" role="3cqZAp">
+          <node concept="2OqwBi" id="4b1hQOJ9FpZ" role="3clFbG">
+            <node concept="37vLTw" id="4b1hQOJ9Cmp" role="2Oq$k0">
+              <ref role="3cqZAo" node="2tUtjEnzJlx" resolve="sb" />
+            </node>
+            <node concept="liA8E" id="4b1hQOJ9JiY" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+              <node concept="10M0yZ" id="4b1hQOJ9LPL" role="37wK5m">
+                <ref role="3cqZAo" to="g84:~DocumentationMarkup.DEFINITION_END" resolve="DEFINITION_END" />
+                <ref role="1PxDUh" to="prsh:~MPSDocumentationMarkup" resolve="MPSDocumentationMarkup" />
               </node>
             </node>
           </node>
