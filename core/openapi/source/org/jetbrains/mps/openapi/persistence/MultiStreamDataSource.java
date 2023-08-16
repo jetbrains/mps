@@ -31,7 +31,7 @@ import java.util.stream.Stream;
  * A data source with multiple input/output stream data sources (streams), each identified by a unique name.
  * It may be useful if we want to read/write data from different places independently.
  *
- * For instance I want to store metadata in one place and the real stuff in the other place.
+ * For instance, I want to store metadata in one place and the real stuff in the other place.
  * Or I can store my special meta-data nodes in-memory, while the main data on disk.
  *
  * FolderDataSource may serve as a good example of a concrete implementation.
@@ -40,15 +40,6 @@ import java.util.stream.Stream;
  * @author apyshkin
  */
 public interface MultiStreamDataSource extends DataSource {
-  /**
-   * @deprecated use {@link #getSubStreams()}
-   */
-  @Deprecated(forRemoval = true)
-  @NotNull
-  default Iterable<String> getAvailableStreams() {
-    return getSubStreams().map(StreamDataSource::getStreamName)
-                          .collect(Collectors.toList());
-  }
 
   /**
    * return a sequence of possible streams;
@@ -125,14 +116,5 @@ public interface MultiStreamDataSource extends DataSource {
   default boolean delete() {
     return getSubStreams().map(StreamDataSource::delete)
                           .reduce(true, (a, b) -> a && b);
-  }
-
-  /**
-   * @return if successfully deleted
-   * @deprecated use {@link StreamDataSource#delete()} and {@link #getStreamByName(String)}
-   */
-  @Deprecated
-  default boolean delete(@NotNull String name) {
-    return getStreamByNameOrFail(name).delete();
   }
 }

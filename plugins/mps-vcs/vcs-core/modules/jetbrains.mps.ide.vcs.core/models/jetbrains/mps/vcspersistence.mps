@@ -38,6 +38,7 @@
     <import index="bxo2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence.datasource(MPS.OpenAPI/)" />
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
+    <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -213,11 +214,11 @@
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
-      <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
-        <child id="1144226360166" name="iterable" index="1DdaDG" />
-      </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
+      </concept>
+      <concept id="1144231330558" name="jetbrains.mps.baseLanguage.structure.ForStatement" flags="nn" index="1Dw8fO">
+        <child id="1144231399730" name="condition" index="1Dwp0S" />
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
@@ -2970,26 +2971,32 @@
               </node>
               <node concept="9aQIb" id="3oQv0AQ8DLD" role="9aQIa">
                 <node concept="3clFbS" id="3oQv0AQ8DLE" role="9aQI4">
-                  <node concept="1DcWWT" id="3oQv0AQ8DLF" role="3cqZAp">
-                    <node concept="2OqwBi" id="3oQv0AQ8F4_" role="1DdaDG">
-                      <node concept="37vLTw" id="3oQv0AQ8F4$" role="2Oq$k0">
-                        <ref role="3cqZAo" node="3oQv0AQ8DLp" resolve="source" />
+                  <node concept="1Dw8fO" id="10F3j9VCo_u" role="3cqZAp">
+                    <node concept="3clFbS" id="10F3j9VCo_w" role="2LFqv$">
+                      <node concept="3cpWs8" id="10F3j9VCvaE" role="3cqZAp">
+                        <node concept="3cpWsn" id="10F3j9VCvaC" role="3cpWs9">
+                          <property role="3TUv4t" value="true" />
+                          <property role="TrG5h" value="name" />
+                          <node concept="17QB3L" id="10F3j9VCvwy" role="1tU5fm" />
+                          <node concept="2OqwBi" id="10F3j9VCyuL" role="33vP2m">
+                            <node concept="2OqwBi" id="10F3j9VCx$V" role="2Oq$k0">
+                              <node concept="37vLTw" id="10F3j9VCx98" role="2Oq$k0">
+                                <ref role="3cqZAo" node="10F3j9VCo_x" resolve="ids" />
+                              </node>
+                              <node concept="liA8E" id="10F3j9VCybL" role="2OqNvi">
+                                <ref role="37wK5l" to="33ny:~Iterator.next()" resolve="next" />
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="10F3j9VCz2T" role="2OqNvi">
+                              <ref role="37wK5l" to="dush:~StreamDataSource.getStreamName()" resolve="getStreamName" />
+                            </node>
+                          </node>
+                        </node>
                       </node>
-                      <node concept="liA8E" id="6ww30Znll9P" role="2OqNvi">
-                        <ref role="37wK5l" to="dush:~MultiStreamDataSource.getAvailableStreams()" resolve="getAvailableStreams" />
-                      </node>
-                    </node>
-                    <node concept="3cpWsn" id="3oQv0AQ8DLR" role="1Duv9x">
-                      <property role="TrG5h" value="name" />
-                      <node concept="3uibUv" id="3oQv0AQ8DLT" role="1tU5fm">
-                        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                      </node>
-                    </node>
-                    <node concept="3clFbS" id="3oQv0AQ8DLH" role="2LFqv$">
                       <node concept="3clFbJ" id="3oQv0AQ8DLI" role="3cqZAp">
                         <node concept="2OqwBi" id="3oQv0AQ8EZj" role="3clFbw">
                           <node concept="37vLTw" id="3oQv0AQ8EZi" role="2Oq$k0">
-                            <ref role="3cqZAo" node="3oQv0AQ8DLR" resolve="name" />
+                            <ref role="3cqZAo" node="10F3j9VCvaC" resolve="name" />
                           </node>
                           <node concept="liA8E" id="3oQv0AQ8EZk" role="2OqNvi">
                             <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
@@ -3003,6 +3010,107 @@
                           <node concept="3N13vt" id="3oQv0AQ8DLL" role="3cqZAp" />
                         </node>
                       </node>
+                      <node concept="3SKdUt" id="10F3j9VCCdh" role="3cqZAp">
+                        <node concept="1PaTwC" id="10F3j9VCCdi" role="1aUNEU">
+                          <node concept="3oM_SD" id="10F3j9VCCEG" role="1PaTwD">
+                            <property role="3oM_SC" value="InMemoryMSDS" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCCHg" role="1PaTwD">
+                            <property role="3oM_SC" value="doesn't" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCCIZ" role="1PaTwD">
+                            <property role="3oM_SC" value="support" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCCJ3" role="1PaTwD">
+                            <property role="3oM_SC" value="openInputStream()," />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCCLE" role="1PaTwD">
+                            <property role="3oM_SC" value="it's" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCCMA" role="1PaTwD">
+                            <property role="3oM_SC" value="intended" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCCNz" role="1PaTwD">
+                            <property role="3oM_SC" value="for" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCCOx" role="1PaTwD">
+                            <property role="3oM_SC" value="write," />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCCOE" role="1PaTwD">
+                            <property role="3oM_SC" value="hence" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCCPE" role="1PaTwD">
+                            <property role="3oM_SC" value="use" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCCQF" role="1PaTwD">
+                            <property role="3oM_SC" value="of" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCCQR" role="1PaTwD">
+                            <property role="3oM_SC" value="getContent(name)." />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3SKdUt" id="10F3j9VCEml" role="3cqZAp">
+                        <node concept="1PaTwC" id="10F3j9VCEmm" role="1aUNEU">
+                          <node concept="3oM_SD" id="10F3j9VCEMi" role="1PaTwD">
+                            <property role="3oM_SC" value="FTR," />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCENa" role="1PaTwD">
+                            <property role="3oM_SC" value="this" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCEO3" role="1PaTwD">
+                            <property role="3oM_SC" value="explanation" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCEO7" role="1PaTwD">
+                            <property role="3oM_SC" value="doesn't" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCEPS" role="1PaTwD">
+                            <property role="3oM_SC" value="make" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCEPY" role="1PaTwD">
+                            <property role="3oM_SC" value="this" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCEQV" role="1PaTwD">
+                            <property role="3oM_SC" value="code" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCERT" role="1PaTwD">
+                            <property role="3oM_SC" value="any" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCES2" role="1PaTwD">
+                            <property role="3oM_SC" value="better" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCET2" role="1PaTwD">
+                            <property role="3oM_SC" value="nor" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCETd" role="1PaTwD">
+                            <property role="3oM_SC" value="justifies" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCEWm" role="1PaTwD">
+                            <property role="3oM_SC" value="its" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCEWz" role="1PaTwD">
+                            <property role="3oM_SC" value="existence," />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCEYt" role="1PaTwD">
+                            <property role="3oM_SC" value="still" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCEZy" role="1PaTwD">
+                            <property role="3oM_SC" value="cries" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCF6f" role="1PaTwD">
+                            <property role="3oM_SC" value="out" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCF7o" role="1PaTwD">
+                            <property role="3oM_SC" value="loud" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCF1u" role="1PaTwD">
+                            <property role="3oM_SC" value="for" />
+                          </node>
+                          <node concept="3oM_SD" id="10F3j9VCF1J" role="1PaTwD">
+                            <property role="3oM_SC" value="refactoring." />
+                          </node>
+                        </node>
+                      </node>
                       <node concept="3cpWs6" id="3oQv0AQ8DLN" role="3cqZAp">
                         <node concept="2OqwBi" id="3oQv0AQ8F0D" role="3cqZAk">
                           <node concept="37vLTw" id="3oQv0AQ8F0C" role="2Oq$k0">
@@ -3011,7 +3119,7 @@
                           <node concept="liA8E" id="3oQv0AQ8F0E" role="2OqNvi">
                             <ref role="37wK5l" to="pa15:~PersistenceUtil$InMemoryMultiStreamDataSource.getContent(java.lang.String,java.lang.String)" resolve="getContent" />
                             <node concept="37vLTw" id="3oQv0AQ8F0F" role="37wK5m">
-                              <ref role="3cqZAo" node="3oQv0AQ8DLR" resolve="name" />
+                              <ref role="3cqZAo" node="10F3j9VCvaC" resolve="name" />
                             </node>
                             <node concept="10M0yZ" id="3oQv0AQ8Fol" role="37wK5m">
                               <ref role="1PxDUh" to="18ew:~FileUtil" resolve="FileUtil" />
@@ -3019,6 +3127,36 @@
                             </node>
                           </node>
                         </node>
+                      </node>
+                    </node>
+                    <node concept="3cpWsn" id="10F3j9VCo_x" role="1Duv9x">
+                      <property role="TrG5h" value="ids" />
+                      <node concept="3uibUv" id="10F3j9VCp50" role="1tU5fm">
+                        <ref role="3uigEE" to="33ny:~Iterator" resolve="Iterator" />
+                        <node concept="3uibUv" id="10F3j9VCpRK" role="11_B2D">
+                          <ref role="3uigEE" to="dush:~StreamDataSource" resolve="StreamDataSource" />
+                        </node>
+                      </node>
+                      <node concept="2OqwBi" id="10F3j9VCinB" role="33vP2m">
+                        <node concept="2OqwBi" id="10F3j9VC9UF" role="2Oq$k0">
+                          <node concept="37vLTw" id="10F3j9VC9qT" role="2Oq$k0">
+                            <ref role="3cqZAo" node="3oQv0AQ8DLp" resolve="source" />
+                          </node>
+                          <node concept="liA8E" id="10F3j9VCanJ" role="2OqNvi">
+                            <ref role="37wK5l" to="pa15:~PersistenceUtil$InMemoryMultiStreamDataSource.getSubStreams()" resolve="getSubStreams" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="10F3j9VCj5q" role="2OqNvi">
+                          <ref role="37wK5l" to="1ctc:~BaseStream.iterator()" resolve="iterator" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="2OqwBi" id="10F3j9VCsJ1" role="1Dwp0S">
+                      <node concept="37vLTw" id="10F3j9VCsjY" role="2Oq$k0">
+                        <ref role="3cqZAo" node="10F3j9VCo_x" resolve="ids" />
+                      </node>
+                      <node concept="liA8E" id="10F3j9VCtSQ" role="2OqNvi">
+                        <ref role="37wK5l" to="33ny:~Iterator.hasNext()" resolve="hasNext" />
                       </node>
                     </node>
                   </node>

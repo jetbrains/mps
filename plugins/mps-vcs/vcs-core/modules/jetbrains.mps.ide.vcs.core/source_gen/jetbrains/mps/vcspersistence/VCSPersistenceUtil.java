@@ -14,6 +14,8 @@ import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.persistence.PersistenceUtil;
+import java.util.Iterator;
+import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 import java.io.IOException;
 import jetbrains.mps.logging.Logger;
@@ -97,10 +99,13 @@ public class VCSPersistenceUtil {
       if (isHeader) {
         return source.getContent(MPSExtentions.DOT_MODEL_HEADER, FileUtil.DEFAULT_CHARSET_NAME);
       } else {
-        for (String name : source.getAvailableStreams()) {
+        for (Iterator<StreamDataSource> ids = source.getSubStreams().iterator(); ids.hasNext();) {
+          final String name = ids.next().getStreamName();
           if (name.equals(MPSExtentions.DOT_MODEL_HEADER)) {
             continue;
           }
+          // InMemoryMSDS doesn't support openInputStream(), it's intended for write, hence use of getContent(name).
+          // FTR, this explanation doesn't make this code any better nor justifies its existence, still cries out loud for refactoring.
           return source.getContent(name, FileUtil.DEFAULT_CHARSET_NAME);
         }
       }
