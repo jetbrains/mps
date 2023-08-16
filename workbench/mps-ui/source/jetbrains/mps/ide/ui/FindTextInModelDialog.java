@@ -384,7 +384,7 @@ public class FindTextInModelDialog extends DialogWrapper {
       @Override
       protected void doFindResults(@NotNull SearchQuery q, @NotNull final IFinder.FindCallback cb, @NotNull ProgressMonitor pm) {
         final String text = ((StringHolder) q.getObjectHolder()).getObject();
-        final FindTextInModelTask task = new FindTextInModelTask(myProject, text, (n, p, value) -> cb.onUsageFound(new SearchResult<>(p, n, "usage")));
+        final FindTextInModelTask task = new FindTextInModelTask(myProject, text, new FindReferencesSink(myProject, (n, p, value) -> cb.onUsageFound(new SearchResult<>(p, n, "usage"))));
         task.performLookup(pm);
       }
     };
@@ -449,7 +449,7 @@ public class FindTextInModelDialog extends DialogWrapper {
       return;
     }
     stopCurrentSearch();
-    myCurrentSearchTask = new FindTextInModelTask(myProject, text, new MatchHandlerEx() {
+    myCurrentSearchTask = new FindTextInModelTask(myProject, text, new FindReferencesSink(myProject, new MatchHandlerEx() {
       @Override
       public void handleMatch(SNode one, SProperty p, String value) {
         final TableEntry tableEntry = toEntry(one, p, value);
@@ -467,15 +467,17 @@ public class FindTextInModelDialog extends DialogWrapper {
       }
 
       @Override
-      public void done() {
+      public void done(ProgressMonitor monitor) {
         ApplicationManager.getApplication().invokeLater(() -> {
           mySearchEntry.setInfoText(MessageFormat.format("{0} {0,choice, 0# matches|1# match|2# matches}", model.getRowCount()));
           if (model.getRowCount() == 0) {
             myResultsPreviewTable.getEmptyText().setText("Nothing found");
           }
         });
+
+        MatchHandlerEx.super.done(monitor);
       }
-    });
+    }));
     myResultsPreviewTable.setModel(model);
     myResultsPreviewTable.getEmptyText().setText("Searching...");
     myResultsPreviewTable.getColumnModel().getColumn(0).setCellRenderer(new UsageTableCellRenderer());
