@@ -218,6 +218,8 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
     if (!correctnessChecker.doesMFSupportDS(model)) {
       return null;
     }
+    // FIXME seem that we don't handle nodes with the same name correctly. Check NodeHistoryUtil and its use of
+    //       FilePerRootFormatUtil.getStreamNames(). Here, all nodes with the same name would retrieve the same stream
     MultiStreamDataSource source = (MultiStreamDataSource) model.getSource();
     String fileName = node.getContainingRoot().getName() + MPSExtentions.DOT_MODEL_ROOT;
     return source.getStreamByName(FilePerRootFormatUtil.asFileName(fileName));

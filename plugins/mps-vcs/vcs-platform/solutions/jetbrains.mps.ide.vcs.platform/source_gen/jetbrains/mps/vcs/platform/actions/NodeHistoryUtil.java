@@ -4,8 +4,12 @@ package jetbrains.mps.vcs.platform.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.MPSProject;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vcs.AbstractVcs;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.persistence.DataSource;
@@ -15,24 +19,38 @@ import jetbrains.mps.persistence.FilePerRootDataSource;
 import java.util.Map;
 import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
 import jetbrains.mps.vfs.IFile;
-import com.intellij.openapi.vcs.ProjectLevelVcsManager;
-import com.intellij.openapi.vcs.AbstractVcs;
 import com.intellij.openapi.vcs.history.VcsCachingHistory;
 import com.intellij.vcsUtil.VcsUtil;
 import com.intellij.openapi.vcs.impl.VcsBackgroundableActions;
 import com.intellij.openapi.vcs.history.VcsHistorySession;
 import jetbrains.mps.vcs.diff.ui.RootHistoryDialog;
 import java.util.Collections;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
+import com.intellij.openapi.progress.ProgressManager;
+import jetbrains.mps.vcs.annotate.AnnotateBackgroundableTask;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/3612072891625285929", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public final class NodeHistoryUtil {
   private final MPSProject myProject;
+  private VirtualFile myIdeaFile;
+  private AbstractVcs myActiveVcs;
 
   public NodeHistoryUtil(@NotNull MPSProject mpsProject) {
     myProject = mpsProject;
   }
 
-  public VirtualFile getFileFromModel(SModel model, SNodeId rootNodeId) {
+  public void initFileAndVcs(SNode node) {
+    // I planned to use  DataLocationAwareModelFactory.nodeLocation(SNode):DataSource to access node's source in 
+    // an uniform and what seems to be endorsed way, but noticed FilePerRootModelFactory.nodeLocation logic
+    // is likely to mishandle nodes with the same name, while FilePerRootFormatUtil.getStreamNames(Iterable<SNode>):Map<SNodeId,String> at least leaves
+    // a chance to handle such nodes correctly
+    myIdeaFile = getFileFromModel(SNodeOperations.getModel(node), SNodeOperations.getContainingRoot(node).getNodeId());
+    myActiveVcs = (myIdeaFile == null ? null : ProjectLevelVcsManager.getInstance(myProject.getProject()).getVcsFor(myIdeaFile));
+
+  }
+
+  private VirtualFile getFileFromModel(SModel model, SNodeId rootNodeId) {
     DataSource ds = model.getSource();
     FileSystemBridge fileSystem = myProject.getFileSystem();
     if (ds instanceof FileDataSource) {
@@ -51,34 +69,34 @@ public final class NodeHistoryUtil {
     return null;
   }
 
-  public boolean modelHistoryIsTrackedInVcs(SModel model, SNodeId rootNodeId) {
-    VirtualFile vf = getFileFromModel(model, rootNodeId);
-    if (vf == null) {
-      return false;
-    }
-    if (ProjectLevelVcsManager.getInstance(myProject.getProject()).getVcsFor(vf) == null) {
-      return false;
-    }
-    return AbstractVcs.fileInVcsByFileStatus(myProject.getProject(), vf);
+  public boolean isHistoryTracked() {
+    return myIdeaFile != null && myActiveVcs != null && AbstractVcs.fileInVcsByFileStatus(myProject.getProject(), myIdeaFile);
   }
 
-  public void showNodeHistory(SModel model, SNodeId rootNodeId, final SNodeId nodeId, final String dialogTitle, final boolean compareModels) {
-    final VirtualFile vf = getFileFromModel(model, rootNodeId);
-    if (vf == null) {
-      // modelHistoryIsTrackedInVcs() == true is precondition for this method, but doesn't hurt to avoid NPE anyway
+  public void showNodeHistory(final SNodeId nodeId, final String dialogTitle, final boolean compareModels) {
+    if (myIdeaFile == null || myActiveVcs == null) {
+      // isHistoryTracked() == true is precondition for this method, but doesn't hurt to avoid NPE anyway
       return;
     }
-    final AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(myProject.getProject()).getVcsFor(vf);
     // see RootHistoryDialog.show for explanation why I resort to roots. The reason I do it here, not in show(), as I don't want to care about model read access there (it's likely in background).
     // copied from IDEA's SelectedBlockHistoryAction
-    VcsCachingHistory.collectInBackground(activeVCS, VcsUtil.getFilePath(vf), VcsBackgroundableActions.HISTORY_FOR_SELECTION, (VcsHistorySession vcsSession) -> {
+    VcsCachingHistory.collectInBackground(myActiveVcs, VcsUtil.getFilePath(myIdeaFile), VcsBackgroundableActions.HISTORY_FOR_SELECTION, (VcsHistorySession vcsSession) -> {
       if (vcsSession != null) {
-        RootHistoryDialog dlg = new RootHistoryDialog(myProject, vf, activeVCS, vcsSession, compareModels);
+        RootHistoryDialog dlg = new RootHistoryDialog(myProject, myIdeaFile, myActiveVcs, vcsSession, compareModels);
         dlg.setTitle(dialogTitle);
         dlg.show(Collections.singleton(nodeId));
       }
     });
   }
 
+  public void runAnnotate(EditorComponent editor, BackgroundableActionLock actionLock) {
+    if (myIdeaFile == null || myActiveVcs == null) {
+      // isHistoryTracked() == true is precondition for this method, but doesn't hurt to avoid NPE anyway
+      return;
+    }
+    actionLock.lock();
+    // wrong placement of the method, stupid Util class, but as long as showNodeHistory() is here, why bother
+    ProgressManager.getInstance().run(new AnnotateBackgroundableTask(myProject, editor, myIdeaFile, myActiveVcs, actionLock));
+  }
 
 }

@@ -8,15 +8,14 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelName;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.util.NameUtil;
 import com.intellij.openapi.util.registry.Registry;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/6427926084137613936", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
@@ -34,8 +33,10 @@ public class ShowRootHistory_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    SNodeId rootId = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getContainingRoot().getNodeId();
-    return new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT)).modelHistoryIsTrackedInVcs(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), rootId);
+    SNode editedNode = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode();
+    NodeHistoryUtil nh = new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT));
+    nh.initFileAndVcs(SNodeOperations.getContainingRoot(editedNode));
+    return nh.isHistoryTracked();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -61,21 +62,15 @@ public class ShowRootHistory_Action extends BaseAction {
         return false;
       }
     }
-    {
-      SModel p = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
-      if (p == null) {
-        return false;
-      }
-    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final SModelName modelName = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName();
     SNode containingRoot = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getContainingRoot();
-    String rootName = containingRoot.getPresentation();
-    SNodeId rootId = containingRoot.getNodeId();
-    String dialogTitle = modelName.getLongName() + '/' + rootName;
-    new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT)).showNodeHistory(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), rootId, rootId, dialogTitle, Registry.is("vcs.show.root.history.compare.models"));
+    NodeHistoryUtil nh = new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT));
+    nh.initFileAndVcs(containingRoot);
+    final String modelName = NameUtil.compactModelName(SNodeOperations.getModel(containingRoot).getReference());
+    String dialogTitle = String.format("%s/%s", modelName, SNodeOperations.present(containingRoot));
+    nh.showNodeHistory(containingRoot.getNodeId(), dialogTitle, Registry.is("vcs.show.root.history.compare.models"));
   }
 }
