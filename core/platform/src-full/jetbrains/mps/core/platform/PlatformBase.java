@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import jetbrains.mps.generator.MPSGenerator;
 import jetbrains.mps.ide.findusages.MPSFindUsages;
 import jetbrains.mps.make.facets.MPSMake;
 import jetbrains.mps.persistence.MPSPersistence;
+import jetbrains.mps.persistence.ModelDigestHelper;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.text.impl.MPSTextGenerator;
 import jetbrains.mps.typechecking.internal.MPSTypechecking;
@@ -44,10 +45,15 @@ class PlatformBase implements Platform {
 
   PlatformBase(PlatformOptionsBuilder options) {
     MPSCore myCore = initAndRegister(new MPSCore());
+    final MPSPersistence mpsPersistence;
     if (options.loadsPersistence()) {
-      initAndRegister(new MPSPersistence(myCore));
+      mpsPersistence = initAndRegister(new MPSPersistence(myCore));
+    } else {
+      mpsPersistence = null;
     }
     if (options.loadsOthers()) {
+      assert options.loadsPersistence();
+      assert mpsPersistence != null;
       // XXX IMPORTANT: this odd code is to deal with a puzzling classloading peculiarity we've faced, keep it unless you've tested your alternative
       //     (e.g. Ant 'Binaries' build to bundle MPS itself, with copyModels task that starts the platform up to 'PERSISTENCE' level, shall not require e.g.
       //     MPSGenerator or MPSTextGenerator in classpath).
@@ -68,7 +74,7 @@ class PlatformBase implements Platform {
                                                                 myCore.findComponent(MPSModuleRepository.class));
           initAndRegister(mpsTypechecking);
           initAndRegister(new MPSTypesystem(myCore.getLanguageRegistry(), myCore.getClassLoaderManager(), mpsTypechecking));
-          initAndRegister(new MPSGenerator(myCore));
+          initAndRegister(new MPSGenerator(myCore, mpsPersistence.findComponent(ModelDigestHelper.class)));
           initAndRegister(new MPSFindUsages(myCore.getLanguageRegistry()));
           initAndRegister(new MPSTextGenerator(myCore.getLanguageRegistry()));
           initAndRegister(new MPSFeedbackPlugin(myCore.getLanguageRegistry()));

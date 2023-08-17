@@ -108,8 +108,8 @@ public class ModelGenerationStatusManager implements CoreComponent {
     }
   };
 
-  // neither arg is null
-  public ModelGenerationStatusManager(SRepositoryRegistry repositoryRegistry, GenerationDependenciesCache depsCache) {
+  // no argument is null
+  public ModelGenerationStatusManager(SRepositoryRegistry repositoryRegistry, GenerationDependenciesCache depsCache, ModelDigestHelper modelDigest) {
     // FIXME MGSM could take ModelStreamManager.Provider so that (a) we don't need to cache IFile (b) clients like JPS build in IDEA plugin could
     // FIXME   control where cache files are read from (at least, the use of GenerationDependenciesCache.CachePathRedirect recently removed from MPSMakeMediator
     // FIXME   suggests there are/were scenarios when it's needed.
@@ -117,11 +117,7 @@ public class ModelGenerationStatusManager implements CoreComponent {
     //         or a workspace-wide mechanism that dispatches smth like SModelListener#modelStreamsChanged() event, I have no idea yet.
     myRepositoryRegistry = repositoryRegistry;
     myModelHashCache = depsCache;
-    // FIXME has to access one through ComponentHost, but at the moment
-    // MGSM lives under MPSGenerator CP umbrella, which has access to MPSCore but not MPSPersistence
-    // where MDH resides. Need to fix Platform init code to pass combined CH for downstream components
-    // (unless I want to move MGSM into different module - is it truly specific to generator?)
-    myDigestHelper = ModelDigestHelper.getInstance();
+    myDigestHelper = modelDigest;
   }
 
   @Override
