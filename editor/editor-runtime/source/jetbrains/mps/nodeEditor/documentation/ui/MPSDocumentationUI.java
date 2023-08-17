@@ -3,43 +3,26 @@
  */
 package jetbrains.mps.nodeEditor.documentation.ui;
 
-import com.intellij.codeInsight.documentation.DocumentationHintEditorPane;
-import com.intellij.codeInsight.documentation.DocumentationScrollPane;
 import com.intellij.ide.DataManager;
-import com.intellij.lang.documentation.DocumentationImageResolver;
-import com.intellij.lang.documentation.ide.ui.DocumentationFontSizeModel;
-import com.intellij.lang.documentation.ide.ui.FontSizeMouseWheelListener;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.DataProvider;
-import com.intellij.openapi.project.Project;
-import com.intellij.ui.FontSizeModel;
-import org.jetbrains.annotations.NonNls;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationEditorPane;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationScrollPane;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
 import javax.swing.JScrollPane;
-import java.awt.Image;
 
 public class MPSDocumentationUI implements DataProvider, Disposable {
 
-  private JScrollPane myScrollPane;
-  private DocumentationHintEditorPane myEditorPane;
-  private FontSizeModel myFontSize;
+  JScrollPane myScrollPane;
+  MPSDocumentationEditorPane myEditorPane;
 
-  public MPSDocumentationUI(Project project, String documentation){
-    myFontSize = new DocumentationFontSizeModel();
-    myScrollPane =  new DocumentationScrollPane();
-    myEditorPane = new DocumentationHintEditorPane(project, com.intellij.codeInsight.documentation.DocumentationScrollPane.keyboardActions(myScrollPane),
-                                                   new DocumentationImageResolver() {
-                                                     @Override
-                                                     public @Nullable Image resolveImage(@NotNull String url) {
-                                                       return null;
-                                                     }
-                                                   });
+  public MPSDocumentationUI(String documentation){
+    myScrollPane =  new MPSDocumentationScrollPane();
+    myEditorPane = new MPSDocumentationEditorPane();;
+    myEditorPane = new MPSDocumentationEditorPane();
     myScrollPane.setViewportView(myEditorPane);
-    myScrollPane.addMouseWheelListener(new FontSizeMouseWheelListener(myFontSize));
     DataManager.registerDataProvider(myEditorPane, this);
-
     myEditorPane.setText(documentation);
   }
 
@@ -49,16 +32,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
   }
 
   @Override
-  public @Nullable Object getData(@NotNull @NonNls String dataId) {
+  public @Nullable Object getData(@NotNull String dataId) {
     return null;
   }
-
-  public DocumentationHintEditorPane getEditorPane(){
-    return myEditorPane;
-  }
-
-  public JScrollPane getScrollPane(){
-    return myScrollPane;
-  }
-
 }

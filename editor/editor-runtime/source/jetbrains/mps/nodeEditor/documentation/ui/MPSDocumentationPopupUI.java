@@ -3,36 +3,54 @@
  */
 package jetbrains.mps.nodeEditor.documentation.ui;
 
-import com.intellij.codeInsight.documentation.DocumentationHintEditorPane;
-import com.intellij.codeInsight.documentation.PopupDragListener;
-import com.intellij.lang.documentation.ide.ui.DocumentationPopupPane;
+import com.intellij.icons.AllIcons;
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.actionSystem.ActionToolbar;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.openapi.actionSystem.impl.ActionButton;
+import com.intellij.ui.IdeBorderFactory;
+import com.intellij.ui.SideBorder;
+import com.intellij.ui.components.JBLayeredPane;
 import com.intellij.ui.popup.AbstractPopup;
+import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationEditorPane;
+import jetbrains.mps.nodeEditor.documentation.PopupMouseListener;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.JComponent;
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MPSDocumentationPopupUI implements Disposable {
-  private MPSDocumentationUI myUI;
-  private JComponent myToolbarComponent;
-  private JComponent myCorner;
-  private JComponent myComponent;
+  private final MPSDocumentationUI myUI;
+  private final JScrollPane myScrollPane;
+  private final MPSDocumentationEditorPane myEditorPane;
+  private final JComponent myToolbarComponent;
+  private final ActionButton myCorner;
+  private final JComponent myComponent;
   private  boolean myToolbarSelected = true;
 
 
   public MPSDocumentationPopupUI(MPSDocumentationUI ui){
     myUI = ui;
+    myEditorPane = ui.myEditorPane;
+    myScrollPane = ui.myScrollPane;
 
-    DocumentationHintEditorPane editorPane = ui.getEditorPane();
-
-    ToggleAction showToolbarAction = new ToggleAction("Show toolbar") {
+    ToggleAction showToolbarAction = new ToggleAction("Show Toolbar") {
 
       @Override
       public boolean isSelected(@NotNull AnActionEvent e) {
@@ -43,6 +61,12 @@ public class MPSDocumentationPopupUI implements Disposable {
       public void setSelected(@NotNull AnActionEvent e, boolean state) {
         myToolbarSelected = state;
         showToolbar(state);
+      }
+
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return super.getActionUpdateThread();
       }
     };
 
@@ -59,13 +83,46 @@ public class MPSDocumentationPopupUI implements Disposable {
     gearActions.addAll(secondaryActions);
 
 
-    myToolbarComponent = com.intellij.lang.documentation.ide.ui.UiKt.toolbarComponent(toolbarActionGroup, editorPane);
-    myCorner = com.intellij.lang.documentation.ide.ui.UiKt.actionButton(gearActions, editorPane);
-    myComponent = new DocumentationPopupPane(myUI.getScrollPane());
+    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, toolbarActionGroup, true);
+    toolbar.setTargetComponent(myEditorPane);
+    toolbar.setSecondaryActionsIcon(AllIcons.Actions.More, true);
+    myToolbarComponent = toolbar.getComponent();
+    myToolbarComponent.setBorder(IdeBorderFactory.createBorder(UIUtil.getTooltipSeparatorColor(), SideBorder.BOTTOM));
+
+    Presentation presentation = new Presentation();
+    presentation.setIcon(AllIcons.Actions.More);
+    presentation.putClientProperty(ActionButton.HIDE_DROPDOWN_ICON, true);
+    myCorner = new ActionButton(gearActions, presentation, ActionPlaces.UNKNOWN, new Dimension(20, 20));
+    myCorner.setNoIconsInPopup(true);
+
+    myComponent = new JPanel(new BorderLayout());
     myComponent.add(myToolbarComponent, BorderLayout.NORTH);
-    myComponent.add(com.intellij.lang.documentation.ide.ui.UiKt.scrollPaneWithCorner(this, ui.getScrollPane(), myCorner), BorderLayout.CENTER);
+    JLayeredPane layeredPane = new JBLayeredPane() {
+      @Override
+      public void doLayout() {
+        Rectangle r = getBounds();
+        for (Component component:
+             getComponents()) {
+          if (component == myScrollPane) {
+            component.setBounds(0, 0, r.width, r.height);
+          } if (component == myCorner) {
+            Dimension d = component.getPreferredSize();
+            component.setBounds(r.width - d.width - 2, r.height - d.height - 2, d.width, d.height);
+          }
+        }
+      }
 
+      @Override
+      public Dimension getPreferredSize() {
+        return myScrollPane.getPreferredSize();
+      }
+    };
 
+    layeredPane.setLayer(myScrollPane, JLayeredPane.DEFAULT_LAYER);
+    layeredPane.add(myScrollPane);
+    layeredPane.setLayer(myCorner, JLayeredPane.PALETTE_LAYER);
+    layeredPane.add(myCorner);
+    myComponent.add(layeredPane, BorderLayout.CENTER);
     showToolbar(myToolbarSelected);
   }
 
@@ -79,19 +136,16 @@ public class MPSDocumentationPopupUI implements Disposable {
   }
 
   public JComponent getPreferableFocusComponent(){
-    return myUI.getEditorPane();
+    return myEditorPane;
   }
 
   public void setPopup(AbstractPopup popup){
-    myUI.getEditorPane().setHint(popup);
-    PopupDragListener.dragPopupByComponent(popup, myToolbarComponent);
+    PopupMouseListener.dragPopupByComponent(popup, myToolbarComponent);
   }
-
 
   private void showToolbar(boolean value){
     myToolbarComponent.setVisible(value);
     myCorner.setVisible(!value);
   }
-
 
 }
