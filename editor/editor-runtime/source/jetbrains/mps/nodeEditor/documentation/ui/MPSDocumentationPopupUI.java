@@ -15,6 +15,7 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.actionSystem.impl.ActionButton;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.SideBorder;
 import com.intellij.ui.components.JBLayeredPane;
@@ -36,17 +37,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MPSDocumentationPopupUI implements Disposable {
-  private final MPSDocumentationUI myUI;
+  private MPSDocumentationUI myUI;
   private final JScrollPane myScrollPane;
   private final MPSDocumentationEditorPane myEditorPane;
   private final JComponent myToolbarComponent;
   private final ActionButton myCorner;
   private final JComponent myComponent;
   private  boolean myToolbarSelected = true;
-
+  private AbstractPopup myPopup;
 
   public MPSDocumentationPopupUI(MPSDocumentationUI ui){
-    myUI = ui;
     myEditorPane = ui.myEditorPane;
     myScrollPane = ui.myScrollPane;
 
@@ -78,7 +78,6 @@ public class MPSDocumentationPopupUI implements Disposable {
       toolbarActionGroup.addAction(secondaryAction).setAsSecondary(true);
     }
     DefaultActionGroup gearActions = new DefaultActionGroup();
-    // TODO should be closed after removing corner
     gearActions.setPopup(true);
     gearActions.addAll(secondaryActions);
 
@@ -128,7 +127,10 @@ public class MPSDocumentationPopupUI implements Disposable {
 
   @Override
   public void dispose() {
-
+    if (myUI != null){
+      Disposer.dispose(myUI);
+      myUI = null;
+    }
   }
 
   public JComponent getComponent(){
@@ -140,12 +142,20 @@ public class MPSDocumentationPopupUI implements Disposable {
   }
 
   public void setPopup(AbstractPopup popup){
+    myPopup = popup;
     PopupMouseListener.dragPopupByComponent(popup, myToolbarComponent);
   }
 
   private void showToolbar(boolean value){
     myToolbarComponent.setVisible(value);
     myCorner.setVisible(!value);
+    updateSize();
+  }
+
+  private void updateSize(){
+    if (myPopup != null) {
+      myPopup.setSize(myPopup.getPreferredContentSize());
+    }
   }
 
 }
