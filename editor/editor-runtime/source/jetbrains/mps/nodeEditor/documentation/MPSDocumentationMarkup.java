@@ -4,9 +4,8 @@
 package jetbrains.mps.nodeEditor.documentation;
 
 import com.intellij.lang.documentation.DocumentationMarkup;
-import com.intellij.openapi.util.NlsSafe;
 
 public interface MPSDocumentationMarkup extends DocumentationMarkup {
-  @NlsSafe String MPS_PREFORMATTED_TEXT_START = "<pre>";
-  @NlsSafe String MPS_PREFORMATTED_TEXT_END= "</pre>";
+  String MPS_PREFORMATTED_TEXT_START = "<pre>";
+  String MPS_PREFORMATTED_TEXT_END= "</pre>";
 }
