@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package jetbrains.mps.generator;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
-import jetbrains.mps.extapi.persistence.FolderDataSource;
+import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependencies;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
 import jetbrains.mps.persistence.ModelDigestHelper;
@@ -43,6 +43,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ModelGenerationStatusManager implements CoreComponent {
   private final SRepositoryRegistry myRepositoryRegistry;
@@ -133,44 +134,49 @@ public class ModelGenerationStatusManager implements CoreComponent {
     myRepositoryRegistry.removeGlobalListener(myModelReloadListener);
   }
 
+  // 'current' here means actual state of the model (precisely, of its persisted state as we look at DataSource)
+  //  see getLastKnownHash() for access to a value stored in 'generated' file
   @Nullable
   private String currentHash(GeneratableSModel md) {
-    String currentHash = null;
-    if (md.getSource() instanceof StreamDataSource) {
+    final Stream<String>  currentHash;
+    if (md.getSource() instanceof FileSystemBasedDataSource) {
+      // this branch covers most regular data sources
+      final FileSystemBasedDataSource fsds = (FileSystemBasedDataSource) md.getSource();
+      currentHash = fsds.getAffectedFilesWithDirsExtracted().map(myDigestHelper::getGenerationHash);
+    } else if (md.getSource() instanceof StreamDataSource) {
       // XXX would be great to clarify contract, what does null return value mean for getModelHash
       // for now I assume it's "no idea what's the value".
-      currentHash = myDigestHelper.getModelHash((StreamDataSource) md.getSource());
+      currentHash = Stream.ofNullable(myDigestHelper.getModelHash((StreamDataSource) md.getSource()));
       // FTR, I'm not sure having MDH here is the best choice. Indeed, much better than
       // to keep in inside SModel implementation (LazyLoadFacility), still it's not clear
       // whether optimization of IDEA index for hash value is worth it, and if yes, if
       // GenStatusUpdater, the only(?) getModelHash()-intense client, could be more suited
       // for index check.
     } else if (md.getSource() instanceof MultiStreamDataSource) {
-      // from FilePerRootModelFactory.
       // FIXME Here we consult ModelDigestHelper, though eventually shall
       //       refactor it to answer generation hash for model right away, without distinct streams/files.
       //       Besides, it's more effective to ask index for few files at once, rather than do it one by one.
-      final MultiStreamDataSource source = (MultiStreamDataSource) md.getSource();
-      currentHash = source.getSubStreams()
-                   .map(streamDataSource -> {
-                     String streamHash = null;
-                     String streamName = streamDataSource.getStreamName();
-                     if (source instanceof FolderDataSource) {
-                       IFile file = ((FolderDataSource) source).getFile(streamName); // fixme
-                       streamHash = file == null ? null
-                                                 : myDigestHelper.getGenerationHash(file);
-                     }
-                     if (streamHash == null) {
-                       streamHash = ModelDigestUtil.hash(streamDataSource, true);
-                     }
-                     return streamHash;
-                   }).filter(Objects::nonNull)
-                   .map(hash -> new BigInteger(hash, Character.MAX_RADIX))
-                   .reduce(BigInteger.ZERO, BigInteger::xor)
-                   .toString(Character.MAX_RADIX);
-
+      // here used to be odd fallback to ModelDigestUtil.hash(streamDataSource, true),
+      // which implied (a) text presentation; (b) bypassed MDH with no obvious reason (although,
+      // MDH for whatever reason doesn't fall back to MDU to calculate hash for StreamDataSource; quite puzzling, indeed -
+      // perhaps, not to guess text/binary for the file?)
+      currentHash = ((MultiStreamDataSource) md.getSource()).getSubStreams().map(myDigestHelper::getModelHash);
+    } else {
+      currentHash = Stream.empty();
     }
-    return currentHash == null ? md.getModelHash() : currentHash;
+    final BigInteger value = currentHash.filter(Objects::nonNull)
+                                         .map(hash -> new BigInteger(hash, Character.MAX_RADIX))
+                                         .reduce(BigInteger.ZERO, BigInteger::xor);
+
+    // XXX why fall-back to md.getModelHash()? null and deal outside?
+    //     the idea of the method, as I see it now, is to try to get hash value w/o accessing the model itself, rather
+    //     through the MDH index, based on the knowledge of DS kind. If fails, then resort to the model itself, where it calculates
+    //     the actual value (usually through its persistence, which is well aware of text/binary distinction).
+    //     However, I don't like the fact we keep knowledge about hash calculation logic (xor, radix) in different code locations
+    //     I'd rather switch MDH to answer per-model (and individual DigestProvider to deal with model, not IFile) and never get
+    //     to IFile or DataSource here (so that we compare md.getModelHash() with the return value of the same method, just in
+    //     different point in time)
+    return BigInteger.ZERO.equals(value) ? md.getModelHash() : value.toString(Character.MAX_RADIX);
   }
 
   public boolean generationRequired(SModel md) {
