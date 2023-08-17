@@ -197,6 +197,7 @@
     <import index="lz1h" ref="r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)" />
     <import index="clxi" ref="r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)" />
     <import index="tprr" ref="r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)" />
+    <import index="a6r3" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.ui(MPS.Workbench/)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
@@ -46742,11 +46743,11 @@
           <node concept="3cpWsn" id="7KZgf2c$brA" role="3cpWs9">
             <property role="TrG5h" value="dialog" />
             <node concept="3uibUv" id="7KZgf2c$br8" role="1tU5fm">
-              <ref role="3uigEE" to="a6r2:~FindTextInModelDialog" resolve="FindTextInModelDialog" />
+              <ref role="3uigEE" to="a6r3:~FindTextInModelDialog" resolve="FindTextInModelDialog" />
             </node>
             <node concept="2ShNRf" id="7KZgf2c$brB" role="33vP2m">
               <node concept="1pGfFk" id="7KZgf2c$brC" role="2ShVmc">
-                <ref role="37wK5l" to="a6r2:~FindTextInModelDialog.&lt;init&gt;(jetbrains.mps.project.MPSProject)" resolve="FindTextInModelDialog" />
+                <ref role="37wK5l" to="a6r3:~FindTextInModelDialog.&lt;init&gt;(jetbrains.mps.project.MPSProject)" resolve="FindTextInModelDialog" />
                 <node concept="37vLTw" id="7KZgf2c$brD" role="37wK5m">
                   <ref role="3cqZAo" node="CYSHSSsOL3" resolve="mpsProject" />
                 </node>
@@ -46887,7 +46888,7 @@
                       <ref role="3cqZAo" node="7KZgf2c$brA" resolve="dialog" />
                     </node>
                     <node concept="liA8E" id="7VU42f2DgKe" role="2OqNvi">
-                      <ref role="37wK5l" to="a6r2:~FindTextInModelDialog.setText(java.lang.String)" resolve="setText" />
+                      <ref role="37wK5l" to="a6r3:~FindTextInModelDialog.setText(java.lang.String)" resolve="setText" />
                       <node concept="2OqwBi" id="7VU42f2Dg16" role="37wK5m">
                         <node concept="2OqwBi" id="7VU42f2DftN" role="2Oq$k0">
                           <node concept="1eOMI4" id="7VU42f2Df30" role="2Oq$k0">
@@ -46951,7 +46952,7 @@
               <ref role="3cqZAo" node="7KZgf2c$brA" resolve="dialog" />
             </node>
             <node concept="liA8E" id="1tinHSP8ra9" role="2OqNvi">
-              <ref role="37wK5l" to="a6r2:~FindTextInModelDialog.show()" resolve="show" />
+              <ref role="37wK5l" to="a6r3:~FindTextInModelDialog.show()" resolve="show" />
             </node>
           </node>
         </node>
