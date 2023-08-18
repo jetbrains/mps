@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +47,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
  *
  * XXX CoreComponent: what if we introduce notion of 'services' for an SRepository, so that there's no need to use static accessor (getInstance(SRepo))?
  *                    i.e. instead we'd have smth like SRepo.getService(SModelFileTracker.class)
+ *
+ * FTR, there's {@code jetbrains.mps.workbench.FileSystemModelHelper} and a lot of loose code scattered around that tries to address reverse task
  */
 public class SModelFileTracker {
   private static final List<SModelFileTracker> ourModelTrackers = new CopyOnWriteArrayList<>();

@@ -28,9 +28,6 @@
 
   <application-components>
     <component>
-      <implementation-class>jetbrains.mps.idea.java.fastFind.JavaPsiStubsNavigationContributor</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.idea.java.fastFind.EmptyJavaStubsFindUsages</implementation-class>
     </component>
   </application-components>
@@ -92,6 +89,7 @@
     <findUsagesHandlerFactory implementation="jetbrains.mps.idea.java.usages.MPSFindUsagesHandlerFactory" id="mps"
                               order="before java"/>
     <refactoring.elementListenerProvider implementation="jetbrains.mps.idea.java.refactoring.PackageRenameListener"/>
+    <mps.gotoParticipant implementation="jetbrains.mps.idea.java.fastFind.JavaPsiStubsNavigationContributor"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">

@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.workbench;
 
@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * Utility for {@link MPSModelsFastFindSupport}б {@link StubModelsFastFindSupport} and other facilities that use IDEA index
+ * Utility for {@link MPSModelsFastFindSupport}, {@link StubModelsFastFindSupport} and other facilities that use IDEA index
  * as we need to pass IDEA project down to FileBasedIndex queries through an MPS API which often 'global' and doesn't
  * distinguish models from different projects/repositories.
  *
@@ -36,7 +36,7 @@ public final class ProjectModelFilter {
   }
 
   /**
-   * FIXME notion of 'project' model is well-defined here. Now, this code
+   * FIXME notion of 'project' model is ill-defined here. Now, this code
    *   makes sure the model is 'available' to the project, not that it belongs to
    *   one of project modules.
    */

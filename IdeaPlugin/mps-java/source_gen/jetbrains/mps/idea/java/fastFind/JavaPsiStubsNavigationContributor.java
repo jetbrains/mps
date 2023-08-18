@@ -4,9 +4,7 @@ package jetbrains.mps.idea.java.fastFind;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant;
-import com.intellij.openapi.Disposable;
-import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.ide.MPSCoreComponents;
+import com.intellij.openapi.project.Project;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.util.Consumer;
@@ -19,12 +17,9 @@ import jetbrains.mps.idea.java.psiStubs.JavaForeignIdBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:714e1a8b-f5ef-43ca-864f-d3aa5fa2e53e(jetbrains.mps.idea.java.fastFind)/3335509261457006477", model = "r:714e1a8b-f5ef-43ca-864f-d3aa5fa2e53e(jetbrains.mps.idea.java.fastFind)")
-public class JavaPsiStubsNavigationContributor implements NavigationParticipant, Disposable {
-  private PersistenceRegistry myRegistry;
+public class JavaPsiStubsNavigationContributor implements NavigationParticipant {
 
-  public JavaPsiStubsNavigationContributor(MPSCoreComponents mpsCore) {
-    myRegistry = mpsCore.getPlatform().findComponent(PersistenceRegistry.class);
-    myRegistry.addNavigationParticipant(this);
+  public JavaPsiStubsNavigationContributor(Project ideaProject) {
   }
 
   public void findTargets(NavigationParticipant.TargetKind kind, Collection<SModel> collection, Consumer<NavigationParticipant.NavigationTarget> consumer, Consumer<SModel> processedConsumer) {
@@ -66,11 +61,6 @@ public class JavaPsiStubsNavigationContributor implements NavigationParticipant,
 
       processedConsumer.consume(model);
     }
-  }
-
-  @Override
-  public void dispose() {
-    myRegistry.removeNavigationParticipant(this);
   }
 
   private static final class CONCEPTS {

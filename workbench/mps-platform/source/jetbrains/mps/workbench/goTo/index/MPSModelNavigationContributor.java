@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -76,9 +76,13 @@ public class MPSModelNavigationContributor implements NavigationParticipant {
       VirtualFile vf = fsBridge.asVirtualFile(modelFile);
 
       if (vf == null) {
-        continue; // e.g. model was deleted or we are in headless mode
+        continue; // e.g. model was deleted, or we are in headless mode
       }
 
+      // Here, we use IDEA index as a per-VF cache of navigation targets
+      // Worth to explore idea expressed in ClassifierSuccessorsFinder, namely not to collect VF scope but to get all
+      // possible answers from IDEA Index and filter based on MPS scope (SModelFileTracker answers IFile->SModel, while
+      // fsBridge gives IFile for VF). In this scenario, however, might be an overkill if the `scope` is narrow.
       Collection<NavigationTarget> descriptors = RootNodeNameIndex.getValues(myProject, vf);
       if (descriptors.isEmpty()) {
         continue;
