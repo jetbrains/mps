@@ -38,13 +38,13 @@ import jetbrains.mps.vcs.diff.ChangeSetImpl;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import jetbrains.mps.persistence.DataLocationAwareModelFactory;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
-import java.util.function.Predicate;
+import java.util.function.Function;
 import jetbrains.mps.vfs.IFile;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vcs.FileStatusManager;
-import java.util.function.Function;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.function.Predicate;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -276,17 +276,8 @@ public final class ChangesTracking {
   }
 
   private boolean isAdded() {
-    DataSource ds = DataLocationAwareModelFactory.metaInfoLocation(myModelDescriptor);
-    if (!(ds instanceof FileSystemBasedDataSource)) {
-      return false;
-    }
-    return ((FileSystemBasedDataSource) ds).getAffectedFilesWithDirsExtracted().allMatch(new Predicate<IFile>() {
-      @Override
-      public boolean test(IFile f) {
-        VirtualFile vFile = asVirtualFile(f);
-        return vFile != null && FileStatusManager.getInstance(myProject).getStatus(vFile) == FileStatus.ADDED;
-      }
-    });
+    FileStatus status = getStatusOfMetaDescriptor();
+    return status == FileStatus.ADDED;
   }
 
   public boolean isTracked() {
