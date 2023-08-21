@@ -225,7 +225,12 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
   }
   @Override
   public boolean canCreateModel(@NotNull SModelName modelName) {
-    return processCanModelBeCreated(modelName, null);
+    return processCanModelBeCreated(modelName, new ModelNameRejectionHandler() {
+      @Override
+      public boolean handleRejection(DataSource dataSource) {
+        return false;
+      }
+    });
   }
 
   @Override
