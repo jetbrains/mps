@@ -105,7 +105,9 @@
         <reference id="2324909103760693884" name="target" index="KYurZ" />
       </concept>
       <concept id="2936055411798373620" name="jetbrains.mps.kotlin.structure.OpenInheritanceModifier" flags="ng" index="1XD08z" />
+      <concept id="2936055411798373627" name="jetbrains.mps.kotlin.structure.StringLiteral" flags="ng" index="1XD08G" />
       <concept id="2936055411798373537" name="jetbrains.mps.kotlin.structure.PropertyDeclaration" flags="ng" index="1XD09Q">
+        <property id="4908873500000018026" name="isOverride" index="3qMSKq" />
         <child id="1314219036499436525" name="declaration" index="TDYyH" />
       </concept>
       <concept id="2936055411798373544" name="jetbrains.mps.kotlin.structure.FinallyBlock" flags="ng" index="1XD09Z" />
@@ -113,7 +115,11 @@
         <child id="2936055411798374203" name="target" index="1XD07G" />
       </concept>
       <concept id="2936055411798373481" name="jetbrains.mps.kotlin.structure.ClassDeclaration" flags="ng" index="1XD0aY">
+        <child id="2324909103763444261" name="primaryConstructor" index="KDYUA" />
         <child id="2936055411798374242" name="modifier" index="1XD06P" />
+      </concept>
+      <concept id="2936055411798373400" name="jetbrains.mps.kotlin.structure.PrimaryConstructor" flags="ng" index="1XD0bf">
+        <child id="2936055411798374111" name="parameters" index="1XD008" />
       </concept>
       <concept id="2936055411798373381" name="jetbrains.mps.kotlin.structure.FunctionParameter" flags="ng" index="1XD0bi" />
       <concept id="2936055411798373385" name="jetbrains.mps.kotlin.structure.AnnotationClassModifier" flags="ng" index="1XD0bu" />
@@ -127,7 +133,9 @@
       <concept id="2936055411798373697" name="jetbrains.mps.kotlin.structure.ReceiverType" flags="ng" index="1XD0em">
         <child id="2936055411798374592" name="type" index="1XD0Sn" />
       </concept>
-      <concept id="2936055411798373745" name="jetbrains.mps.kotlin.structure.VariableDeclaration" flags="ng" index="1XD0eA" />
+      <concept id="2936055411798373745" name="jetbrains.mps.kotlin.structure.VariableDeclaration" flags="ng" index="1XD0eA">
+        <child id="2936055411798374679" name="type" index="1XD0Z0" />
+      </concept>
       <concept id="2936055411798373753" name="jetbrains.mps.kotlin.structure.ValueArgument" flags="ng" index="1XD0eI">
         <child id="2936055411798374692" name="expression" index="1XD0ZN" />
       </concept>
@@ -136,6 +144,11 @@
         <child id="5533310174486461754" name="catches" index="UAV_N" />
       </concept>
       <concept id="2936055411798373645" name="jetbrains.mps.kotlin.structure.TypeParameter" flags="ng" index="1XD0fq" />
+      <concept id="2936055411798373690" name="jetbrains.mps.kotlin.structure.ClassParameter" flags="ng" index="1XD0fH">
+        <property id="1243006380188597514" name="isReadOnly" index="21VRqX" />
+        <property id="1243006380188597512" name="isProperty" index="21VRqZ" />
+        <property id="8282399442078311962" name="isOverride" index="1E25xN" />
+      </concept>
       <concept id="2936055411798373673" name="jetbrains.mps.kotlin.structure.KotlinFile" flags="ng" index="1XD0fY">
         <child id="2936055411798374537" name="declarations" index="1XD0Tu" />
       </concept>
@@ -1464,6 +1477,294 @@
             </node>
           </node>
         </node>
+        <node concept="eKYAL" id="CSooUmjqE0" role="1XD0Tu" />
+        <node concept="1XXB1C" id="CSooUmjqJr" role="1XD0Tu">
+          <property role="TrG5h" value="ExpectProperty" />
+          <node concept="1XD09Q" id="CSooUmjrVR" role="KS$fE">
+            <property role="1Xb$ne" value="true" />
+            <node concept="1XD0eA" id="CSooUmjrVS" role="TDYyH">
+              <property role="TrG5h" value="expectedVal" />
+              <node concept="1XD088" id="CSooUmjrVT" role="1XD0Z0">
+                <ref role="1SePDO" to="0:~kotlin/Int" resolve="Int" />
+              </node>
+            </node>
+          </node>
+          <node concept="1XD09Q" id="CSooUmjqN7" role="KS$fE">
+            <node concept="1XD0eA" id="CSooUmjqN9" role="TDYyH">
+              <property role="TrG5h" value="expectedVar" />
+              <node concept="1XD088" id="CSooUmjqOg" role="1XD0Z0">
+                <ref role="1SePDO" to="0:~kotlin/String" resolve="String" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="eKYAL" id="CSooUmjrKg" role="1XD0Tu" />
+        <node concept="1XD0aY" id="CSooUmjuxs" role="1XD0Tu">
+          <property role="TrG5h" value="Class6" />
+          <node concept="KYwOn" id="CSooUmjuxt" role="AST3G">
+            <ref role="KYwOm" node="CSooUmjqJr" resolve="ExpectProperty" />
+          </node>
+          <node concept="1XD0bf" id="CSooUmjuxu" role="KDYUA">
+            <node concept="1XD0fH" id="CSooUmjuxv" role="1XD008">
+              <property role="TrG5h" value="expectedVal" />
+              <property role="1E25xN" value="true" />
+              <property role="21VRqZ" value="true" />
+              <property role="21VRqX" value="true" />
+              <node concept="1XD088" id="CSooUmjuxw" role="37iW8f">
+                <ref role="1SePDO" to="0:~kotlin/Int" resolve="Int" />
+              </node>
+            </node>
+            <node concept="1XD0fH" id="CSooUmjuxx" role="1XD008">
+              <property role="TrG5h" value="expectedVar" />
+              <property role="1E25xN" value="true" />
+              <property role="21VRqZ" value="true" />
+              <node concept="1XD088" id="CSooUmjuxy" role="37iW8f">
+                <ref role="1SePDO" to="0:~kotlin/String" resolve="String" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1XD0aY" id="CSooUmjrEG" role="1XD0Tu">
+          <property role="TrG5h" value="Class7" />
+          <node concept="KYwOn" id="CSooUmjrEM" role="AST3G">
+            <ref role="KYwOm" node="CSooUmjqJr" resolve="ExpectProperty" />
+          </node>
+          <node concept="1XD09Q" id="CSooUmjuGx" role="KS$fE">
+            <property role="3qMSKq" value="true" />
+            <property role="1Xb$ne" value="true" />
+            <node concept="1XD0eA" id="CSooUmjuGz" role="TDYyH">
+              <property role="TrG5h" value="expectedVal" />
+              <node concept="1XD088" id="CSooUmjuHE" role="1XD0Z0">
+                <ref role="1SePDO" to="0:~kotlin/Int" resolve="Int" />
+              </node>
+            </node>
+            <node concept="1XD0mK" id="CSooUmjuPn" role="1XD05H">
+              <node concept="1XD0k7" id="CSooUmjuRh" role="1XD0cX">
+                <property role="1XD01k" value="3" />
+              </node>
+            </node>
+          </node>
+          <node concept="1XD09Q" id="CSooUmjuKu" role="KS$fE">
+            <property role="3qMSKq" value="true" />
+            <node concept="1XD0eA" id="CSooUmjuKw" role="TDYyH">
+              <property role="TrG5h" value="expectedVar" />
+              <node concept="1XD088" id="CSooUmjuLK" role="1XD0Z0">
+                <ref role="1SePDO" to="0:~kotlin/String" resolve="String" />
+              </node>
+            </node>
+            <node concept="1XD0mK" id="CSooUmjuRG" role="1XD05H">
+              <node concept="1XD08G" id="CSooUmjuTA" role="1XD0cX" />
+            </node>
+          </node>
+          <node concept="1XD08z" id="CSooUmjCkj" role="ICcUN" />
+        </node>
+        <node concept="gXE$l" id="CSooUmz7yX" role="1XD0Tu">
+          <node concept="1PaTwC" id="CSooUmz7yZ" role="gXG0x">
+            <node concept="3oM_SD" id="CSooUmz7A2" role="1PaTwD">
+              <property role="3oM_SC" value="Note:" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7A4" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7A7" role="1PaTwD">
+              <property role="3oM_SC" value="error" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7Ab" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7Ag" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7Am" role="1PaTwD">
+              <property role="3oM_SC" value="because" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7At" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7A_" role="1PaTwD">
+              <property role="3oM_SC" value="override" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7B3" role="1PaTwD">
+              <property role="3oM_SC" value="var" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7B$" role="1PaTwD">
+              <property role="3oM_SC" value="expectedVar" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7BJ" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7BV" role="1PaTwD">
+              <property role="3oM_SC" value="val," />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7C8" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7Cm" role="1PaTwD">
+              <property role="3oM_SC" value="better" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7C_" role="1PaTwD">
+              <property role="3oM_SC" value="naming" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7CP" role="1PaTwD">
+              <property role="3oM_SC" value="should" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7D6" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7Do" role="1PaTwD">
+              <property role="3oM_SC" value="found" />
+            </node>
+            <node concept="3oM_SD" id="CSooUmz7DF" role="1PaTwD">
+              <property role="3oM_SC" value="though..." />
+            </node>
+          </node>
+        </node>
+        <node concept="1XD0aY" id="CSooUmjuTI" role="1XD0Tu">
+          <property role="TrG5h" value="Class8" />
+          <node concept="KYwOn" id="CSooUmjuTJ" role="AST3G">
+            <ref role="KYwOm" node="CSooUmjqJr" resolve="ExpectProperty" />
+          </node>
+          <node concept="1XD09Q" id="CSooUmjuTK" role="KS$fE">
+            <property role="3qMSKq" value="true" />
+            <property role="1Xb$ne" value="true" />
+            <node concept="1XD0eA" id="CSooUmjuTL" role="TDYyH">
+              <property role="TrG5h" value="expectedVal_" />
+              <node concept="1XD088" id="CSooUmjuTM" role="1XD0Z0">
+                <ref role="1SePDO" to="0:~kotlin/Int" resolve="Int" />
+              </node>
+              <node concept="7CXmI" id="CSooUmj$vY" role="lGtFl">
+                <node concept="1TM$A" id="CSooUmjAc6" role="7EUXB">
+                  <node concept="2PYRI3" id="CSooUmjAc7" role="3lydEf">
+                    <ref role="39XzEq" to="lrl3:$q1KckZojn" />
+                  </node>
+                  <node concept="1DMPye" id="CSooUmjAc8" role="1DMPz9">
+                    <property role="1DMPyf" value="Error: 'expectedVal_' overrides nothing" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="1XD0mK" id="CSooUmjxyL" role="1XD05H">
+              <node concept="1XD0k7" id="CSooUmjx_I" role="1XD0cX">
+                <property role="1XD01k" value="0" />
+              </node>
+            </node>
+          </node>
+          <node concept="gXE$l" id="CSooUmE$PD" role="KS$fE">
+            <node concept="1PaTwC" id="CSooUmE$PF" role="gXG0x">
+              <node concept="3oM_SD" id="CSooUmE$Q9" role="1PaTwD">
+                <property role="3oM_SC" value="Special" />
+              </node>
+              <node concept="3oM_SD" id="CSooUmE$Qb" role="1PaTwD">
+                <property role="3oM_SC" value="case:" />
+              </node>
+              <node concept="3oM_SD" id="CSooUmE$Qe" role="1PaTwD">
+                <property role="3oM_SC" value="expects" />
+              </node>
+              <node concept="3oM_SD" id="CSooUmE$Qi" role="1PaTwD">
+                <property role="3oM_SC" value="var," />
+              </node>
+              <node concept="3oM_SD" id="CSooUmE$Qn" role="1PaTwD">
+                <property role="3oM_SC" value="implements" />
+              </node>
+              <node concept="3oM_SD" id="CSooUmE$Qt" role="1PaTwD">
+                <property role="3oM_SC" value="with" />
+              </node>
+              <node concept="3oM_SD" id="CSooUmE$Q$" role="1PaTwD">
+                <property role="3oM_SC" value="val" />
+              </node>
+            </node>
+          </node>
+          <node concept="1XD09Q" id="CSooUmjC8s" role="KS$fE">
+            <property role="3qMSKq" value="true" />
+            <node concept="1XD0eA" id="CSooUmjC8u" role="TDYyH">
+              <property role="TrG5h" value="expectedVal" />
+            </node>
+            <node concept="1XD0mK" id="CSooUmjCa7" role="1XD05H">
+              <node concept="1XD0k7" id="CSooUmjCd3" role="1XD0cX">
+                <property role="1XD01k" value="0" />
+              </node>
+            </node>
+          </node>
+          <node concept="1XD09Q" id="CSooUmjuTP" role="KS$fE">
+            <property role="3qMSKq" value="true" />
+            <property role="1Xb$ne" value="true" />
+            <node concept="1XD0eA" id="CSooUmjuTQ" role="TDYyH">
+              <property role="TrG5h" value="expectedVar" />
+              <node concept="1XD088" id="CSooUmjuTR" role="1XD0Z0">
+                <ref role="1SePDO" to="0:~kotlin/String" resolve="String" />
+              </node>
+            </node>
+            <node concept="1XD0mK" id="CSooUmjuTS" role="1XD05H">
+              <node concept="1XD08G" id="CSooUmjuTT" role="1XD0cX" />
+            </node>
+          </node>
+          <node concept="7CXmI" id="CSooUmz7t8" role="lGtFl">
+            <node concept="1TM$A" id="CSooUmz7v3" role="7EUXB">
+              <node concept="2PYRI3" id="CSooUmz7v4" role="3lydEf">
+                <ref role="39XzEq" to="lrl3:$q1Kcl07E5" />
+              </node>
+              <node concept="1DMPye" id="CSooUmz7v5" role="1DMPz9">
+                <property role="1DMPyf" value="Error: Class 'Class8' is not abstract and does not implement abstract base class member expectedVar" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1XD0aY" id="CSooUmjrOt" role="1XD0Tu">
+          <property role="TrG5h" value="Class9" />
+          <node concept="1XD09Q" id="CSooUmjAis" role="KS$fE">
+            <property role="1Xb$ne" value="true" />
+            <node concept="1XD0eA" id="CSooUmjAiu" role="TDYyH">
+              <property role="TrG5h" value="expectedVal" />
+              <node concept="1XD088" id="CSooUmjAkg" role="1XD0Z0">
+                <ref role="1SePDO" to="0:~kotlin/Int" resolve="Int" />
+              </node>
+              <node concept="7CXmI" id="CSooUmjAs5" role="lGtFl">
+                <node concept="1TM$A" id="CSooUmjC0Q" role="7EUXB">
+                  <node concept="2PYRI3" id="CSooUmjC0R" role="3lydEf">
+                    <ref role="39XzEq" to="lrl3:$q1Kcl0pSd" />
+                  </node>
+                  <node concept="1DMPye" id="CSooUmjC0S" role="1DMPz9">
+                    <property role="1DMPyf" value="Error: 'expectedVal' hides member of supertype and needs 'override' modifier" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="1XD0mK" id="CSooUmjAm4" role="1XD05H">
+              <node concept="1XD0k7" id="CSooUmjAne" role="1XD0cX">
+                <property role="1XD01k" value="1" />
+              </node>
+            </node>
+          </node>
+          <node concept="1XD08x" id="CSooUmjCjg" role="AST3G">
+            <ref role="KYurZ" node="CSooUmjrEG" resolve="Class7" />
+          </node>
+        </node>
+        <node concept="1XD0aY" id="CSooUmjrEN" role="1XD0Tu">
+          <property role="TrG5h" value="Class10" />
+          <node concept="KYwOn" id="CSooUmjrFj" role="AST3G">
+            <ref role="KYwOm" node="CSooUmjqJr" resolve="ExpectProperty" />
+          </node>
+          <node concept="7CXmI" id="CSooUmr_gM" role="lGtFl">
+            <node concept="1TM$A" id="CSooUmE$OZ" role="7EUXB">
+              <node concept="2PYRI3" id="CSooUmE$P0" role="3lydEf">
+                <ref role="39XzEq" to="lrl3:$q1Kcl07E5" />
+              </node>
+              <node concept="1DMPye" id="CSooUmE$P1" role="1DMPz9">
+                <property role="1DMPyf" value="Error: Class 'Class10' is not abstract and does not implement abstract base class member expectedVal" />
+              </node>
+            </node>
+          </node>
+          <node concept="1XD09Q" id="CSooUmE$G7" role="KS$fE">
+            <property role="3qMSKq" value="true" />
+            <node concept="1XD0eA" id="CSooUmE$G9" role="TDYyH">
+              <property role="TrG5h" value="expectedVar" />
+            </node>
+            <node concept="1XD0mK" id="CSooUmE$LU" role="1XD05H">
+              <node concept="1XD08G" id="CSooUmE$MU" role="1XD0cX" />
+            </node>
+          </node>
+        </node>
+        <node concept="eKYAL" id="CSooUmjrBU" role="1XD0Tu" />
         <node concept="7CXmI" id="41oFOFuWHlR" role="lGtFl">
           <node concept="7OXhh" id="41oFOFuWHmg" role="7EUXB">
             <property role="GvXf4" value="true" />
