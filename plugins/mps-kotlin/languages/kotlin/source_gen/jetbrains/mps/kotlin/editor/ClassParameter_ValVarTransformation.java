@@ -63,10 +63,12 @@ public class ClassParameter_ValVarTransformation extends TransformationMenuBase 
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
       result.add(new TMP_Action_dszage_a0());
       result.add(new TMP_Action_dszage_b0());
+      result.add(new TMP_Action_dszage_c0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
       result.add(new TMP_Action_dszage_a0());
       result.add(new TMP_Action_dszage_b0());
+      result.add(new TMP_Action_dszage_c0());
     }
     return result;
   }
@@ -153,6 +155,71 @@ public class ClassParameter_ValVarTransformation extends TransformationMenuBase 
       }
       context.getEditorMenuTrace().pushTraceInfo();
       try {
+        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "8282399442080240392")));
+        item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+      return item;
+    }
+
+    private class Item extends ActionItemBase implements SideTransformCompletionActionItem, SubstituteCompletionActionItem {
+      private final TransformationMenuContext _context;
+      private EditorMenuTraceInfo myEditorMenuTraceInfo;
+      private Item(TransformationMenuContext context) {
+        _context = context;
+      }
+      private void setTraceInfo(EditorMenuTraceInfo info) {
+        myEditorMenuTraceInfo = info;
+      }
+      @Nullable
+      @Override
+      public String getLabelText(String pattern) {
+        return "override";
+      }
+
+      @Override
+      public void execute(@NotNull String pattern) {
+        SPropertyOperations.assign(_context.getNode(), PROPS.isOverride$Os0k, true);
+        if (!(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isProperty$MCKN))) {
+          // Override does not make sense otherwise
+          SPropertyOperations.assign(_context.getNode(), PROPS.isProperty$MCKN, true);
+        }
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "overrideCell", -1);
+      }
+
+
+
+
+      @Override
+      public EditorMenuTraceInfo getTraceInfo() {
+        return myEditorMenuTraceInfo;
+      }
+
+      public void customize(String pattern, EditorMenuItemStyle style) {
+        EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
+        SAbstractConcept outputConcept = null;
+        EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
+        for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
+          customizer.customize(style, compositeContext);
+        }
+      }
+    }
+
+  }
+  private class TMP_Action_dszage_c0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    @Nullable
+    protected TransformationMenuItem createItem(TransformationMenuContext context) {
+      Item item = new Item(context);
+      String description;
+      try {
+        description = "single item: " + item.getLabelText("");
+      } catch (Throwable t) {
+        Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
+        return null;
+      }
+      context.getEditorMenuTrace().pushTraceInfo();
+      try {
         context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2998782254606461142")));
         item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
       } finally {
@@ -215,5 +282,6 @@ public class ClassParameter_ValVarTransformation extends TransformationMenuBase 
     /*package*/ static final SProperty isProperty$MCKN = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d08L, "isProperty");
     /*package*/ static final SProperty isReadOnly$MDeP = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d0aL, "isReadOnly");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isOverride$Os0k = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x72f0fe6918f8a61aL, "isOverride");
   }
 }

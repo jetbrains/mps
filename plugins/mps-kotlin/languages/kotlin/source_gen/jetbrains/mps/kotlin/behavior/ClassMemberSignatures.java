@@ -5,6 +5,7 @@ package jetbrains.mps.kotlin.behavior;
 import jetbrains.mps.kotlin.signatures.MemberSignature;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -21,24 +22,25 @@ public class ClassMemberSignatures {
    * @param isOverride whether signatures override others
    * @return builder
    */
-  public static <T extends MemberSignature, U extends SNode> SignatureBuilder<T, U> addClassMemberAttributes(SignatureBuilder<T, U> builder, final SNode visible, final SNode inheritable, final boolean isOverride) {
-    if ((visible != null)) {
-      builder.withAttribute(SignatureAttributeKey.VISIBILITY, (sig, node) -> SNodeOperations.getConcept(SLinkOperations.getTarget(visible, LINKS.visibility$vnSV)));
+  public static <T extends MemberSignature, U extends SNode> SignatureBuilder<T, U> addClassMemberAttributes(SignatureBuilder<T, U> builder, final _FunctionTypes._return_P1_E0<? extends SNode, ? super U> visible, final _FunctionTypes._return_P1_E0<? extends SNode, ? super U> inheritable, final _FunctionTypes._return_P1_E0<? extends Boolean, ? super U> isOverride) {
+    if (visible != null) {
+      builder.withAttribute(SignatureAttributeKey.VISIBILITY, (sig, node) -> SNodeOperations.getConcept(SLinkOperations.getTarget(visible.invoke(node), LINKS.visibility$vnSV)));
     }
 
-    if ((inheritable != null)) {
-      builder.withAttribute(SignatureAttributeKey.ABSTRACT, (sig, node) -> (boolean) IInheritable__BehaviorDescriptor.isAbstract_id4KPNZIZDjbY.invoke(inheritable));
+    if (inheritable != null) {
+      builder.withAttribute(SignatureAttributeKey.ABSTRACT, (sig, node) -> (boolean) IInheritable__BehaviorDescriptor.isAbstract_id4KPNZIZDjbY.invoke(inheritable.invoke(node)));
       builder.withAttribute(SignatureAttributeKey.MODALITY, (sig, node) -> {
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(inheritable, LINKS.inheritance$TFvr), CONCEPTS.AbstractInheritanceModifier$GA)) {
+        SNode inheritance = SLinkOperations.getTarget(inheritable.invoke(node), LINKS.inheritance$TFvr);
+        if (SNodeOperations.isInstanceOf(inheritance, CONCEPTS.AbstractInheritanceModifier$GA)) {
           // abstract => isAbstract=true + open
           return CONCEPTS.OpenInheritanceModifier$RJ;
         } else {
-          return SNodeOperations.getConcept(SLinkOperations.getTarget(inheritable, LINKS.inheritance$TFvr));
+          return SNodeOperations.getConcept(inheritance);
         }
       });
     }
 
-    builder.withAttribute(SignatureAttributeKey.OVERRIDE, (sig, node) -> isOverride);
+    builder.withAttribute(SignatureAttributeKey.OVERRIDE, (sig, node) -> isOverride.invoke(node));
 
     return builder;
   }

@@ -269,12 +269,13 @@ public final class LanguageConceptSwitch {
   public static final int UnresolvedParsedReference = 257;
   public static final int UnsignedLiteral = 258;
   public static final int ValueArgument = 259;
-  public static final int VariableDeclaration = 260;
-  public static final int VariableRefExpression = 261;
-  public static final int VisibilityModifier = 262;
-  public static final int WhenEntry = 263;
-  public static final int WhenExpression = 264;
-  public static final int WhileStatement = 265;
+  public static final int ValueClassModifier = 260;
+  public static final int VariableDeclaration = 261;
+  public static final int VariableRefExpression = 262;
+  public static final int VisibilityModifier = 263;
+  public static final int WhenEntry = 264;
+  public static final int WhenExpression = 265;
+  public static final int WhileStatement = 266;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L);
@@ -538,6 +539,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x430acdda9dcb793eL, UnresolvedParsedReference);
     builder.put(0x28bef6d7551af3d7L, UnsignedLiteral);
     builder.put(0x28bef6d7551af579L, ValueArgument);
+    builder.put(0x72f0fe6919167bdaL, ValueClassModifier);
     builder.put(0x28bef6d7551af571L, VariableDeclaration);
     builder.put(0x4cca44497635e571L, VariableRefExpression);
     builder.put(0x43c4f08bd9cc2f8cL, VisibilityModifier);

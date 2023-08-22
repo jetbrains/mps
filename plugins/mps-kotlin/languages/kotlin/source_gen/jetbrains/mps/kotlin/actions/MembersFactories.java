@@ -44,6 +44,16 @@ public class MembersFactories {
       }
     }
   }
+  public static class NodeFactory_3272375779459908002 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
+      {
+        final SNode incomplete = sampleNode;
+        if (SNodeOperations.isInstanceOf(incomplete, CONCEPTS.IncompleteDeclaration$r_)) {
+          SPropertyOperations.assign(newNode, PROPS.isData$I8Hj, SNodeOperations.isInstanceOf(SLinkOperations.getTarget(incomplete, LINKS.classModifier$gUVP), CONCEPTS.DataClassModifier$wi));
+        }
+      }
+    }
+  }
   public static class NodeFactory_1806979145044527064 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
       {
@@ -69,6 +79,7 @@ public class MembersFactories {
     /*package*/ static final SInterfaceConcept IVisible$LZ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, "jetbrains.mps.kotlin.structure.IVisible");
     /*package*/ static final SInterfaceConcept IInheritable$pc = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, "jetbrains.mps.kotlin.structure.IInheritable");
     /*package*/ static final SConcept IncompleteDeclaration$r_ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x299dd09284f401caL, "jetbrains.mps.kotlin.structure.IncompleteDeclaration");
+    /*package*/ static final SConcept DataClassModifier$wi = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af40aL, "jetbrains.mps.kotlin.structure.DataClassModifier");
   }
 
   private static final class LINKS {
@@ -76,13 +87,14 @@ public class MembersFactories {
     /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
     /*package*/ static final SContainmentLink modifiers$XKtM = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, 0x28bef6d75568d1adL, "modifiers");
     /*package*/ static final SContainmentLink funModifiers$vmCQ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x299dd09284f401caL, 0x1913adf568d1fd3dL, "funModifiers");
-    /*package*/ static final SContainmentLink modifier$C$4W = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, 0x28bef6d7551af762L, "modifier");
     /*package*/ static final SContainmentLink classModifier$gUVP = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x299dd09284f401caL, 0x1913adf568e9b69cL, "classModifier");
+    /*package*/ static final SContainmentLink modifier$C$4W = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, 0x28bef6d7551af762L, "modifier");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty isOverride$Gfqk = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, 0x441fd2709ecea6bdL, "isOverride");
     /*package*/ static final SProperty isOverride$3ngh = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x299dd09284f401caL, 0x299dd0928588bc10L, "isOverride");
+    /*package*/ static final SProperty isData$I8Hj = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af364L, 0x72f0fe6919168a33L, "isData");
     /*package*/ static final SProperty isOverride$4zN7 = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x441fd2709ed45e6aL, "isOverride");
   }
 }

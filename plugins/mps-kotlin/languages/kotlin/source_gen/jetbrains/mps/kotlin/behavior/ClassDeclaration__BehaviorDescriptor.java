@@ -17,16 +17,16 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
+import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.kotlin.signatures.AccessorKind;
-import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -56,13 +56,13 @@ public final class ClassDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static void populateNonMemberSignatures_id1pD7IS2T3rZ(@NotNull final SNode __thisNode__, final SignatureCollector visitor) {
+  /*package*/ static void populateNonMemberSignatures_id1pD7IS2T3rZ(@NotNull SNode __thisNode__, final SignatureCollector visitor) {
     // Primary constructor properties signature
     final SNode primary = SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc);
 
     if ((primary != null)) {
       // General properties
-      SignatureBuilder.create(ListSequence.fromList(SLinkOperations.getChildren(primary, LINKS.parameters$$EEQ)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.isProperty$MCKN)), PropertySignature.class).withSignatures((SNode it) -> {
+      SignatureBuilder<PropertySignature, SNode> builder = SignatureBuilder.create(ListSequence.fromList(SLinkOperations.getChildren(primary, LINKS.parameters$$EEQ)).where((it) -> SPropertyOperations.getBoolean(it, PROPS.isProperty$MCKN)), PropertySignature.class).withSignatures((SNode it) -> {
         return (Iterable<PropertySignature>) () -> {
           return new YieldingIterator<PropertySignature>() {
             private int __CP__ = 0;
@@ -113,7 +113,9 @@ __switch__:
             }
           };
         };
-      }).withAttribute(SignatureAttributeKey.VISIBILITY, (_sig, _node) -> SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$vnSV))).declareTo(visitor);
+      });
+      ClassMemberSignatures.addClassMemberAttributes(builder, (it) -> it, (it) -> it, (it) -> SPropertyOperations.getBoolean(it, PROPS.isOverride$Os0k));
+      builder.declareTo(visitor);
 
       // Data class: parameter also expose componentN functions
       if (((boolean) IClassLike__BehaviorDescriptor.hasModifier_id2NtWm0y2Y2A.invoke(__thisNode__, CONCEPTS.DataClassModifier$wi))) {
@@ -256,8 +258,8 @@ __switch__:
   private static final class LINKS {
     /*package*/ static final SContainmentLink primaryConstructor$QvZc = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, 0x2043bc8310e45225L, "primaryConstructor");
     /*package*/ static final SContainmentLink parameters$$EEQ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af418L, 0x28bef6d7551af6dfL, "parameters");
-    /*package*/ static final SContainmentLink visibility$vnSV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, 0x631027d1c4c4e040L, "visibility");
     /*package*/ static final SContainmentLink superclasses$6CkZ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, 0x1ba36e493d40fea5L, "superclasses");
+    /*package*/ static final SContainmentLink visibility$vnSV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, 0x631027d1c4c4e040L, "visibility");
     /*package*/ static final SContainmentLink members$gqdV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310a1ff68L, 0x2043bc8310a1ff69L, "members");
     /*package*/ static final SContainmentLink modifier$C$4W = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, 0x28bef6d7551af762L, "modifier");
   }
@@ -266,6 +268,7 @@ __switch__:
     /*package*/ static final SProperty isProperty$MCKN = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d08L, "isProperty");
     /*package*/ static final SProperty isReadOnly$MDeP = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d0aL, "isReadOnly");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isOverride$Os0k = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x72f0fe6918f8a61aL, "isOverride");
   }
 
   private static final class CONCEPTS {

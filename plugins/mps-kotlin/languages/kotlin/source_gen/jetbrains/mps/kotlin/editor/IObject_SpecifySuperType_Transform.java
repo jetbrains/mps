@@ -69,6 +69,7 @@ public class IObject_SpecifySuperType_Transform extends TransformationMenuBase {
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
       result.add(new TMP_Action_1vrky4_a0());
       result.add(new TMP_Include_1vrky4_b0());
+      result.add(new TMP_Include_1vrky4_c0());
     }
     return result;
   }
@@ -158,6 +159,21 @@ public class IObject_SpecifySuperType_Transform extends TransformationMenuBase {
 
       return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.IWithClassBody$QD, "jetbrains.mps.kotlin.editor.IClassBody_Insert_Transform");
     }
+
+  }
+  public class TMP_Include_1vrky4_c0 extends IncludeTransformationMenuTransformationMenuPart {
+    @NotNull
+    @Override
+    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include default transformation menu", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "3272375779461727444")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
 
   }
 

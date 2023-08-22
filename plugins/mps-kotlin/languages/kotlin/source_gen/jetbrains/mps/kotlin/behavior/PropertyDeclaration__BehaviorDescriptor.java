@@ -58,9 +58,11 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<Iterable<TypeReference>> getThisTypeReferences_idxpyqH1FuA0 = new SMethodBuilder<Iterable<TypeReference>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeReference>>) ((Class) Object.class))).name("getThisTypeReferences").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(601663393865001344L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isAnnotationTargetAllowed_id6nA1THM505G = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAnnotationTargetAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7342564606689411436L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
   public static final SMethod<SConcept> getDefaultVisibility_id2WVyZr43qIN = new SMethodBuilder<SConcept>(new SJavaCompoundTypeImpl((Class<SConcept>) ((Class) Object.class))).name("getDefaultVisibility").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3403467835375987635L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SAbstractConcept> getDefaultInheritance_id6jE_6dusz0P = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getDefaultInheritance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7271787702850302005L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isAbstract_id4KPNZIZDjbY = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAbstract").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5491524000807203582L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isChildVariableAssignable_idCy8Bus9qei = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isChildVariableAssignable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(730183986703606674L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, declareToCollector_id4oNDtEQKIUN, getDeclarations_id7RZWrHVaXCH, getScope_id52_Geb4QDV$, getPresentation_idhEwIMiw, getVariablesReceiverType_id75chmMYhcwP, getVariablesTypeParameters_id73s7TtK_Wrc, collectScope_id7DyvjiA20yV, getThisTypeReferences_idxpyqH1FuA0, isAnnotationTargetAllowed_id6nA1THM505G, getDefaultVisibility_id2WVyZr43qIN, isChildVariableAssignable_idCy8Bus9qei);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, declareToCollector_id4oNDtEQKIUN, getDeclarations_id7RZWrHVaXCH, getScope_id52_Geb4QDV$, getPresentation_idhEwIMiw, getVariablesReceiverType_id75chmMYhcwP, getVariablesTypeParameters_id73s7TtK_Wrc, collectScope_id7DyvjiA20yV, getThisTypeReferences_idxpyqH1FuA0, isAnnotationTargetAllowed_id6nA1THM505G, getDefaultVisibility_id2WVyZr43qIN, getDefaultInheritance_id6jE_6dusz0P, isAbstract_id4KPNZIZDjbY, isChildVariableAssignable_idCy8Bus9qei);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -81,7 +83,7 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
 
     // Attributes only matter in an instance context
     if (isInstance) {
-      ClassMemberSignatures.addClassMemberAttributes(signatureBuilder, null, __thisNode__, SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$4zN7)).withAttribute(SignatureAttributeKey.VISIBILITY, (signature, node) -> {
+      ClassMemberSignatures.addClassMemberAttributes(signatureBuilder, null, (it) -> __thisNode__, (it) -> SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$4zN7)).withAttribute(SignatureAttributeKey.VISIBILITY, (signature, node) -> {
         // Setter has its own visibility (if applicable)
         if (signature.getKind() == AccessorKind.SETTER && (SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.setter$C2Xy), LINKS.visibility$vnSV) != null)) {
           return SNodeOperations.getConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.setter$C2Xy), LINKS.visibility$vnSV));
@@ -164,8 +166,32 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
     }
     return ((SConcept) IVisible__BehaviorDescriptor.getDefaultVisibility_id2WVyZr43qIN.invoke0(__thisNode__, CONCEPTS.IVisible$LZ));
   }
+  @NotNull
+  /*package*/ static SAbstractConcept getDefaultInheritance_id6jE_6dusz0P(@NotNull SNode __thisNode__) {
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$4zN7)) {
+      PropertySignature signature = new PropertySignature(__thisNode__, AccessorKind.GETTER);
+      SAbstractConcept parent = InheritorHelper.findInheritedInheritanceModifier(__thisNode__, signature);
+      if (parent != null) {
+        return parent;
+      }
+    }
+
+    SNode containingClass = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IClassLike$go, true, false);
+    {
+      final SNode inheritable = containingClass;
+      if (SNodeOperations.isInstanceOf(inheritable, CONCEPTS.IInheritable$pc)) {
+        return IInheritable__BehaviorDescriptor.getDefaultInheritance_id6jE_6dusz0P.invoke(inheritable);
+      }
+    }
+
+    return IInheritable__BehaviorDescriptor.getDefaultInheritance_id6jE_6dusz0P.invoke0(__thisNode__, CONCEPTS.IInheritable$pc);
+  }
+  /*package*/ static boolean isAbstract_id4KPNZIZDjbY(@NotNull SNode __thisNode__) {
+    // GetInheritance call another visitor if override. Besides, why override an abstract method with an abstract one?
+    return SConceptOperations.isExactly(SNodeOperations.asSConcept(((SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$4zN7) ? SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.inheritance$TFvr)) : IInheritable__BehaviorDescriptor.getInheritance_id6jE_6duswG9.invoke(__thisNode__)))), CONCEPTS.AbstractInheritanceModifier$GA);
+  }
   /*package*/ static boolean isChildVariableAssignable_idCy8Bus9qei(@NotNull SNode __thisNode__) {
-    return (!(SPropertyOperations.getBoolean(__thisNode__, PROPS.isReadonly$jzqd)) && !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isConstant$zvIz))) || ((SLinkOperations.getTarget(__thisNode__, LINKS.assignment$nl1j) == null) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.inheritance$TFvr), CONCEPTS.AbstractInheritanceModifier$GA)));
+    return (!(SPropertyOperations.getBoolean(__thisNode__, PROPS.isReadonly$jzqd)) && !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isConstant$zvIz))) || ((SLinkOperations.getTarget(__thisNode__, LINKS.assignment$nl1j) == null) && !((boolean) IInheritable__BehaviorDescriptor.isAbstract_id4KPNZIZDjbY.invoke(__thisNode__)));
   }
 
   /*package*/ PropertyDeclaration__BehaviorDescriptor() {
@@ -211,6 +237,10 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
       case 11:
         return (T) ((SConcept) getDefaultVisibility_id2WVyZr43qIN(node));
       case 12:
+        return (T) ((SAbstractConcept) getDefaultInheritance_id6jE_6dusz0P(node));
+      case 13:
+        return (T) ((Boolean) isAbstract_id4KPNZIZDjbY(node));
+      case 14:
         return (T) ((Boolean) isChildVariableAssignable_idCy8Bus9qei(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -263,6 +293,7 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
     /*package*/ static final SConcept SetparamUseSiteTarget$en = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3faL, "jetbrains.mps.kotlin.structure.SetparamUseSiteTarget");
     /*package*/ static final SConcept SetUseSiteTarget$2J = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f7L, "jetbrains.mps.kotlin.structure.SetUseSiteTarget");
     /*package*/ static final SInterfaceConcept IVisible$LZ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, "jetbrains.mps.kotlin.structure.IVisible");
+    /*package*/ static final SInterfaceConcept IInheritable$pc = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, "jetbrains.mps.kotlin.structure.IInheritable");
     /*package*/ static final SConcept AbstractInheritanceModifier$GA = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f2L, "jetbrains.mps.kotlin.structure.AbstractInheritanceModifier");
   }
 

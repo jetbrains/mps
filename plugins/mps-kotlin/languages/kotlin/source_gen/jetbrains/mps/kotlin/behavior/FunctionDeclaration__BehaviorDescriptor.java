@@ -83,7 +83,7 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
     // Provide the receiver type to test against
     SignatureBuilder<FunctionSignature, SNode> builder = SignatureBuilder.create(__thisNode__, FunctionSignature.class).withExtensionReceiverType(SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT)).withSignature((_node) -> new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__), collector));
 
-    ClassMemberSignatures.addClassMemberAttributes(builder, __thisNode__, __thisNode__, SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$Gfqk)).declareTo(collector);
+    ClassMemberSignatures.addClassMemberAttributes(builder, (it) -> it, (it) -> it, (it) -> SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$Gfqk)).declareTo(collector);
   }
   /*package*/ static boolean isAbstract_id4KPNZIZDjbY(@NotNull SNode __thisNode__) {
     // GetInheritance call another visitor if override. Besides, why override an abstract method with an abstract one?

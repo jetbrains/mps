@@ -10,17 +10,21 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.kotlin.signatures.MemberSignature;
+import jetbrains.mps.kotlin.signatures.PropertySignature;
+import jetbrains.mps.kotlin.signatures.AccessorKind;
+import jetbrains.mps.kotlin.scopes.InheritorHelper;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
@@ -29,8 +33,9 @@ public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isLocal_id1vYW8S3rTh_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLocal").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1729083799690515557L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> isAnnotationTargetAllowed_id6nA1THM505G = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAnnotationTargetAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7342564606689411436L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getReceiverType_id75chmMYh8YE = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiverType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8163976557866815402L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SConcept> getDefaultVisibility_id2WVyZr43qIN = new SMethodBuilder<SConcept>(new SJavaCompoundTypeImpl((Class<SConcept>) ((Class) Object.class))).name("getDefaultVisibility").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3403467835375987635L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, isAnnotationTargetAllowed_id6nA1THM505G, getReceiverType_id75chmMYh8YE);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, isAnnotationTargetAllowed_id6nA1THM505G, getReceiverType_id75chmMYh8YE, getDefaultVisibility_id2WVyZr43qIN);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -58,6 +63,20 @@ public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode getReceiverType_id75chmMYh8YE(@NotNull SNode __thisNode__) {
     return IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IClassLike$go, false, false));
   }
+  @NotNull
+  /*package*/ static SConcept getDefaultVisibility_id2WVyZr43qIN(@NotNull SNode __thisNode__) {
+    // Note: same as Property declaration
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$Os0k)) {
+      // Visibility here is the one of the getter by default
+      MemberSignature signature = new PropertySignature(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL), AccessorKind.GETTER);
+      SConcept inherited = InheritorHelper.findInheritedVisibility(__thisNode__, signature);
+      if (inherited != null) {
+        return inherited;
+      }
+
+    }
+    return ((SConcept) IVisible__BehaviorDescriptor.getDefaultVisibility_id2WVyZr43qIN.invoke0(__thisNode__, CONCEPTS.IVisible$LZ));
+  }
 
   /*package*/ ClassParameter__BehaviorDescriptor() {
   }
@@ -80,6 +99,8 @@ public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Boolean) isAnnotationTargetAllowed_id6nA1THM505G(node, (SAbstractConcept) parameters[0]));
       case 2:
         return (T) ((SNode) getReceiverType_id75chmMYh8YE(node));
+      case 3:
+        return (T) ((SConcept) getDefaultVisibility_id2WVyZr43qIN(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -112,6 +133,8 @@ public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
   private static final class PROPS {
     /*package*/ static final SProperty isProperty$MCKN = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d08L, "isProperty");
     /*package*/ static final SProperty isReadOnly$MDeP = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d0aL, "isReadOnly");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isOverride$Os0k = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x72f0fe6918f8a61aL, "isOverride");
   }
 
   private static final class CONCEPTS {
@@ -122,5 +145,6 @@ public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SConcept SetparamUseSiteTarget$en = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3faL, "jetbrains.mps.kotlin.structure.SetparamUseSiteTarget");
     /*package*/ static final SConcept SetUseSiteTarget$2J = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f7L, "jetbrains.mps.kotlin.structure.SetUseSiteTarget");
     /*package*/ static final SInterfaceConcept IClassLike$go = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L, "jetbrains.mps.kotlin.structure.IClassLike");
+    /*package*/ static final SInterfaceConcept IVisible$LZ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, "jetbrains.mps.kotlin.structure.IVisible");
   }
 }

@@ -45,6 +45,22 @@ public class SignatureInheritance_Test extends BaseTransformationTest {
     new TestBody(this).test_NodeClassIsNotAbstractAndCheck4636648552480824816();
   }
   @Test
+  public void test_NodeOverridesNothingCheck736445804110045958() throws Throwable {
+    new TestBody(this).test_NodeOverridesNothingCheck736445804110045958();
+  }
+  @Test
+  public void test_NodeClassIsNotAbstractAndCheck736445804114114499() throws Throwable {
+    new TestBody(this).test_NodeClassIsNotAbstractAndCheck736445804114114499();
+  }
+  @Test
+  public void test_NodeHidesMemberOfSupertypeCheck736445804110053430() throws Throwable {
+    new TestBody(this).test_NodeHidesMemberOfSupertypeCheck736445804110053430();
+  }
+  @Test
+  public void test_NodeClassIsNotAbstractAndCheck736445804116069695() throws Throwable {
+    new TestBody(this).test_NodeClassIsNotAbstractAndCheck736445804116069695();
+  }
+  @Test
   public void test_ErrorMessagesCheck4636648552480822672() throws Throwable {
     new TestBody(this).test_ErrorMessagesCheck4636648552480822672();
   }
@@ -87,12 +103,44 @@ public class SignatureInheritance_Test extends BaseTransformationTest {
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554477701"), "Error: Class 'Class5' is not abstract and does not implement abstract base class member expect((() -> Int)?)", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
+    public void test_NodeOverridesNothingCheck736445804110045958() throws Exception {
+
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getRealNodeById("736445804110016113");
+        SNode operation = getRealNodeById("736445804110045958");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554283735"), "Error: 'expectedVal_' overrides nothing", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      });
+    }
+    public void test_NodeClassIsNotAbstractAndCheck736445804114114499() throws Exception {
+
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getRealNodeById("736445804110016110");
+        SNode operation = getRealNodeById("736445804114114499");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554477701"), "Error: Class 'Class8' is not abstract and does not implement abstract base class member expectedVar", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      });
+    }
+    public void test_NodeHidesMemberOfSupertypeCheck736445804110053430() throws Exception {
+
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getRealNodeById("736445804110046366");
+        SNode operation = getRealNodeById("736445804110053430");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554552333"), "Error: 'expectedVal' hides member of supertype and needs 'override' modifier", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      });
+    }
+    public void test_NodeClassIsNotAbstractAndCheck736445804116069695() throws Exception {
+
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getRealNodeById("736445804110002867");
+        SNode operation = getRealNodeById("736445804116069695");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554477701"), "Error: Class 'Class10' is not abstract and does not implement abstract base class member expectedVal", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+      });
+    }
     public void test_ErrorMessagesCheck4636648552480822672() throws Exception {
 
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4636648552480821104");
         SNode operation = getRealNodeById("4636648552480822672");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4636648552480821521"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554283735"), "Error: 'equals(Any)' overrides nothing", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4636648552480822194"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554552333"), "Error: 'equals(Any?)' hides member of supertype and needs 'override' modifier", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4636648552480824207"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554283735"), "Error: 'expect(() -> Int?)' overrides nothing", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4636648552480824206"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554477701"), "Error: Class 'Class5' is not abstract and does not implement abstract base class member expect((() -> Int)?)", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4636648552480821521"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554283735"), "Error: 'equals(Any)' overrides nothing", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4636648552480822194"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554552333"), "Error: 'equals(Any?)' hides member of supertype and needs 'override' modifier", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4636648552480824207"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554283735"), "Error: 'expect(() -> Int?)' overrides nothing", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4636648552480824206"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554477701"), "Error: Class 'Class5' is not abstract and does not implement abstract base class member expect((() -> Int)?)", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("736445804110016113"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554283735"), "Error: 'expectedVal_' overrides nothing", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("736445804110016110"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554477701"), "Error: Class 'Class8' is not abstract and does not implement abstract base class member expectedVar", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("736445804110046366"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554552333"), "Error: 'expectedVal' hides member of supertype and needs 'override' modifier", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("736445804110002867"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554477701"), "Error: Class 'Class10' is not abstract and does not implement abstract base class member expectedVal", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
       });
     }
 

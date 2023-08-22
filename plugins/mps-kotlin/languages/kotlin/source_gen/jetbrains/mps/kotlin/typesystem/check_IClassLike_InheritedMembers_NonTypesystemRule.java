@@ -33,6 +33,8 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.signatures.PropertySignature;
+import jetbrains.mps.kotlin.signatures.AccessorKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -112,6 +114,14 @@ public class check_IClassLike_InheritedMembers_NonTypesystemRule extends Abstrac
 
     ListSequence.fromList(newSignatures).visitAll((it) -> {
       if (it.getAttribute(SignatureAttributeKey.OVERRIDE) == Boolean.TRUE) {
+        // Special case: property setter whose getter is overridden
+        if (check_r0vpyi_a0b0a0a0a22a1(as_r0vpyi_a0a0b0a0a0a22a1(it.getSignature(), PropertySignature.class)) == AccessorKind.SETTER) {
+          PropertySignature getter = new PropertySignature(as_r0vpyi_a0a0a0a0b0a0a0a22a1(it.getSignature(), PropertySignature.class).getName(), AccessorKind.GETTER);
+          if (MapSequence.fromMap(superSignatures).containsKey(getter)) {
+            return;
+          }
+        }
+
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it.getSource(), "'" + it.getSignature().getDescriptionText() + "' overrides nothing", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "655844405554283735", null, errorTarget);
@@ -165,6 +175,18 @@ public class check_IClassLike_InheritedMembers_NonTypesystemRule extends Abstrac
   }
   public boolean overrides() {
     return false;
+  }
+  private static AccessorKind check_r0vpyi_a0b0a0a0a22a1(PropertySignature checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getKind();
+    }
+    return null;
+  }
+  private static <T> T as_r0vpyi_a0a0a0a0b0a0a0a22a1(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_r0vpyi_a0a0b0a0a0a22a1(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 
   private static final class PROPS {

@@ -43,6 +43,7 @@ public class ImportContext {
   }
 
   public Iterable<String> getImports() {
+    // Note: distinct is important even though the initial importedRefs is a set, since some may clash (arbitrary imports, same import for different declarations...)
     return SetSequence.fromSet(importedRefs).select((it) -> {
       String packageName = IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(SNodeOperations.getNodeAncestor(it, CONCEPTS.IKotlinRoot$xV, true, false));
       String name = ((boolean) IIdentifier__BehaviorDescriptor.isRegular_idnhyiqtKtUT.invoke(SNodeOperations.asSConcept(CONCEPTS.IIdentifier$wg), SPropertyOperations.getString(it, PROPS.name$MnvL)) ? SPropertyOperations.getString(it, PROPS.name$MnvL) : "`" + SPropertyOperations.getString(it, PROPS.name$MnvL) + "`");
@@ -51,7 +52,7 @@ public class ImportContext {
         return name;
       }
       return packageName + "." + name;
-    }).union(SetSequence.fromSet(arbitraryImports)).sort((it) -> it, true);
+    }).union(SetSequence.fromSet(arbitraryImports)).sort((it) -> it, true).distinct();
   }
 
   private static final class CONCEPTS {

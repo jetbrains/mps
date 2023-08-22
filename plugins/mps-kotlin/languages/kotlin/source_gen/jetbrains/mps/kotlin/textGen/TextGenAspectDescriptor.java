@@ -276,6 +276,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new TypeTest_TextGen();
       case LanguageConceptSwitch.ValueArgument:
         return new ValueArgument_TextGen();
+      case LanguageConceptSwitch.ValueClassModifier:
+        return new ValueClassModifier_TextGen();
       case LanguageConceptSwitch.VariableDeclaration:
         return new VariableDeclaration_TextGen();
       case LanguageConceptSwitch.VariableRefExpression:
