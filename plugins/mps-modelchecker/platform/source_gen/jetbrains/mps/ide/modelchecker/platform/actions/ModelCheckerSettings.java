@@ -102,12 +102,19 @@ public class ModelCheckerSettings implements PersistentStateComponent<ModelCheck
   public void setCheckBeforeCommit(boolean checkBeforeCommit) {
     myState.myCheckBeforeCommit = checkBeforeCommit;
   }
+  public boolean isRunInParallel() {
+    return myState.myRunInParallel;
+  }
+  public void setRunInParallel(boolean runInParallel) {
+    myState.myRunInParallel = runInParallel;
+  }
 
   public static class MyState {
     public CheckingLevel myCheckingLevel = CheckingLevel.TYPESYSTEM;
     public boolean myIncludeAdditionalChecks = true;
     public boolean myCheckBeforeCommit = true;
     public boolean myCheckStubs = false;
+    public boolean myRunInParallel = true;
     public MyState() {
     }
   }

@@ -34,6 +34,7 @@ public class ModelCheckerPreferencesPage implements SearchableConfigurable {
   private final JSlider myCheckingLevelSlider = new JSlider(JSlider.VERTICAL, 0, ModelCheckerSettings.CheckingLevel.values().length - 1, 0);
   private final JCheckBox myCheckStubsCheckBox = new JCheckBox("Check stub models");
   private final JCheckBox myCheckSpecificCheckBox = new JCheckBox("Perform additional checks");
+  private final JCheckBox myRunInParallelCheckBox = new JCheckBox("Run in parallel");
   private final ModelCheckerSettings myModelCheckerSettings;
   private final JTextArea myDescriptionText = new JTextArea();
 
@@ -85,6 +86,9 @@ public class ModelCheckerPreferencesPage implements SearchableConfigurable {
     myPage.add(myCheckSpecificCheckBox, c);
 
     c.gridy++;
+    myPage.add(myRunInParallelCheckBox, c);
+
+    c.gridy++;
     c.weightx = 1.0;
     c.weighty = 1.0;
     c.fill = GridBagConstraints.BOTH;
@@ -107,11 +111,13 @@ public class ModelCheckerPreferencesPage implements SearchableConfigurable {
     myModelCheckerSettings.setCheckingLevel(ModelCheckerSettings.CheckingLevel.values()[myCheckingLevelSlider.getValue()]);
     myModelCheckerSettings.setCheckStubs(myCheckStubsCheckBox.isSelected());
     myModelCheckerSettings.setIncludeAdditionalChecks(myCheckSpecificCheckBox.isSelected());
+    myModelCheckerSettings.setRunInParallel(myRunInParallelCheckBox.isSelected());
   }
   public void reset() {
     myCheckingLevelSlider.setValue(Arrays.binarySearch(ModelCheckerSettings.CheckingLevel.values(), myModelCheckerSettings.getCheckingLevel()));
     myCheckStubsCheckBox.setSelected(myModelCheckerSettings.isCheckStubs());
     myCheckSpecificCheckBox.setSelected(myModelCheckerSettings.isIncludeAdditionalChecks());
+    myRunInParallelCheckBox.setSelected(myModelCheckerSettings.isRunInParallel());
   }
   @Override
   public boolean isModified() {
@@ -122,6 +128,9 @@ public class ModelCheckerPreferencesPage implements SearchableConfigurable {
       return true;
     }
     if (myModelCheckerSettings.isIncludeAdditionalChecks() != myCheckSpecificCheckBox.isSelected()) {
+      return true;
+    }
+    if (myModelCheckerSettings.isRunInParallel() != myRunInParallelCheckBox.isSelected()) {
       return true;
     }
     return false;

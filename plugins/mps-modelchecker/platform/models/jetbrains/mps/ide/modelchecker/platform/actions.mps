@@ -1069,6 +1069,49 @@
         </node>
       </node>
     </node>
+    <node concept="3clFb_" id="2H4SLalWHQB" role="jymVt">
+      <property role="TrG5h" value="isRunInParallel" />
+      <node concept="10P_77" id="2H4SLalWKav" role="3clF45" />
+      <node concept="3Tm1VV" id="2H4SLalWHQE" role="1B3o_S" />
+      <node concept="3clFbS" id="2H4SLalWHQF" role="3clF47">
+        <node concept="3clFbF" id="2H4SLalWQFb" role="3cqZAp">
+          <node concept="2OqwBi" id="2H4SLalWRF$" role="3clFbG">
+            <node concept="37vLTw" id="2H4SLalWQFa" role="2Oq$k0">
+              <ref role="3cqZAo" node="3etVqSRKzph" resolve="myState" />
+            </node>
+            <node concept="2OwXpG" id="2H4SLalWT9w" role="2OqNvi">
+              <ref role="2Oxat5" node="2H4SLalWEmA" resolve="myRunInParallel" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3clFb_" id="2H4SLalWVdm" role="jymVt">
+      <property role="TrG5h" value="setRunInParallel" />
+      <node concept="37vLTG" id="2H4SLalX0lK" role="3clF46">
+        <property role="TrG5h" value="runInParallel" />
+        <node concept="10P_77" id="2H4SLalX1EZ" role="1tU5fm" />
+      </node>
+      <node concept="3cqZAl" id="2H4SLalWVdo" role="3clF45" />
+      <node concept="3Tm1VV" id="2H4SLalWVdp" role="1B3o_S" />
+      <node concept="3clFbS" id="2H4SLalWVdq" role="3clF47">
+        <node concept="3clFbF" id="2H4SLalX3o6" role="3cqZAp">
+          <node concept="37vLTI" id="2H4SLalX701" role="3clFbG">
+            <node concept="37vLTw" id="2H4SLalX8Xt" role="37vLTx">
+              <ref role="3cqZAo" node="2H4SLalX0lK" resolve="runInParallel" />
+            </node>
+            <node concept="2OqwBi" id="2H4SLalX56V" role="37vLTJ">
+              <node concept="37vLTw" id="2H4SLalX3o5" role="2Oq$k0">
+                <ref role="3cqZAo" node="3etVqSRKzph" resolve="myState" />
+              </node>
+              <node concept="2OwXpG" id="2H4SLalX62p" role="2OqNvi">
+                <ref role="2Oxat5" node="2H4SLalWEmA" resolve="myRunInParallel" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="1VtEqfXHDv3" role="jymVt" />
     <node concept="312cEu" id="3etVqSRKzvk" role="jymVt">
       <property role="TrG5h" value="MyState" />
@@ -1113,6 +1156,14 @@
           <property role="3clFbU" value="false" />
         </node>
         <node concept="10P_77" id="3etVqSRKzvH" role="1tU5fm" />
+      </node>
+      <node concept="312cEg" id="2H4SLalWEmA" role="jymVt">
+        <property role="TrG5h" value="myRunInParallel" />
+        <node concept="3Tm1VV" id="2H4SLalWEmB" role="1B3o_S" />
+        <node concept="3clFbT" id="2H4SLalWEmC" role="33vP2m">
+          <property role="3clFbU" value="true" />
+        </node>
+        <node concept="10P_77" id="2H4SLalWEmD" role="1tU5fm" />
       </node>
       <node concept="3clFbW" id="3etVqSRKzvI" role="jymVt">
         <node concept="3clFbS" id="3etVqSRKzvJ" role="3clF47" />
@@ -2072,40 +2123,28 @@
                     </node>
                   </node>
                   <node concept="3clFbH" id="4QyE5Pyi3W_" role="3cqZAp" />
-                  <node concept="3SKdUt" id="4QyE5PyhV7v" role="3cqZAp">
-                    <node concept="1PaTwC" id="4QyE5PyhV7w" role="1aUNEU">
-                      <node concept="3oM_SD" id="4QyE5PyhVa7" role="1PaTwD">
-                        <property role="3oM_SC" value="FIXME" />
-                      </node>
-                      <node concept="3oM_SD" id="4QyE5PyhXnb" role="1PaTwD">
-                        <property role="3oM_SC" value="extract" />
-                      </node>
-                      <node concept="3oM_SD" id="4QyE5Pyi67h" role="1PaTwD">
-                        <property role="3oM_SC" value="the" />
-                      </node>
-                      <node concept="3oM_SD" id="4QyE5Pyi8Fr" role="1PaTwD">
-                        <property role="3oM_SC" value="option" />
-                      </node>
-                      <node concept="3oM_SD" id="4QyE5Pyibv7" role="1PaTwD">
-                        <property role="3oM_SC" value="to" />
-                      </node>
-                      <node concept="3oM_SD" id="4QyE5Pyibvd" role="1PaTwD">
-                        <property role="3oM_SC" value="use" />
-                      </node>
-                      <node concept="3oM_SD" id="4QyE5PyidEH" role="1PaTwD">
-                        <property role="3oM_SC" value="parallel" />
-                      </node>
-                      <node concept="3oM_SD" id="4QyE5PyihZ2" role="1PaTwD">
-                        <property role="3oM_SC" value="model" />
-                      </node>
-                      <node concept="3oM_SD" id="4QyE5Pyik9J" role="1PaTwD">
-                        <property role="3oM_SC" value="checking" />
-                      </node>
-                      <node concept="3oM_SD" id="4QyE5PyipBp" role="1PaTwD">
-                        <property role="3oM_SC" value="to" />
-                      </node>
-                      <node concept="3oM_SD" id="4QyE5Pyiwrn" role="1PaTwD">
-                        <property role="3oM_SC" value="options" />
+                  <node concept="3cpWs8" id="5748vgL5NAw" role="3cqZAp">
+                    <node concept="3cpWsn" id="5748vgL5NAx" role="3cpWs9">
+                      <property role="TrG5h" value="runInParallel" />
+                      <node concept="10P_77" id="5748vgL5kPh" role="1tU5fm" />
+                      <node concept="1Wc70l" id="5748vgL5NAy" role="33vP2m">
+                        <node concept="1eOMI4" id="5748vgL5NA_" role="3uHU7B">
+                          <node concept="3y3z36" id="5748vgL5NAA" role="1eOMHV">
+                            <node concept="10Nm6u" id="5748vgL5NAB" role="3uHU7w" />
+                            <node concept="37vLTw" id="5748vgL5NAC" role="3uHU7B">
+                              <ref role="3cqZAo" node="2$qlEUMAil9" resolve="myMpsProject" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="2OqwBi" id="5748vgL60R6" role="3uHU7w">
+                          <node concept="2YIFZM" id="5748vgL5Xze" role="2Oq$k0">
+                            <ref role="1Pybhc" node="3etVqSRKzpg" resolve="ModelCheckerSettings" />
+                            <ref role="37wK5l" node="3etVqSRKzvb" resolve="getInstance" />
+                          </node>
+                          <node concept="liA8E" id="5748vgL64al" role="2OqNvi">
+                            <ref role="37wK5l" node="2H4SLalWHQB" resolve="isRunInParallel" />
+                          </node>
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -2122,22 +2161,8 @@
                             <ref role="HV5vE" to="xzav:3LCCkArgRyb" resolve="DefaultTaskScheduler" />
                           </node>
                         </node>
-                        <node concept="1Wc70l" id="2$qlEUMB7Bi" role="3K4Cdx">
-                          <node concept="2YIFZM" id="2$qlEUMBdxt" role="3uHU7w">
-                            <ref role="37wK5l" to="rfhd:~Registry.is(java.lang.String)" resolve="is" />
-                            <ref role="1Pybhc" to="rfhd:~Registry" resolve="Registry" />
-                            <node concept="Xl_RD" id="2$qlEUMBdDK" role="37wK5m">
-                              <property role="Xl_RC" value="mps.modelchecker.parallel" />
-                            </node>
-                          </node>
-                          <node concept="1eOMI4" id="2$qlEUMB4U4" role="3uHU7B">
-                            <node concept="3y3z36" id="2$qlEUMAF36" role="1eOMHV">
-                              <node concept="10Nm6u" id="2$qlEUMAI7m" role="3uHU7w" />
-                              <node concept="37vLTw" id="2$qlEUMACbj" role="3uHU7B">
-                                <ref role="3cqZAo" node="2$qlEUMAil9" resolve="myMpsProject" />
-                              </node>
-                            </node>
-                          </node>
+                        <node concept="37vLTw" id="5748vgL5NAD" role="3K4Cdx">
+                          <ref role="3cqZAo" node="5748vgL5NAx" resolve="b" />
                         </node>
                         <node concept="2ShNRf" id="2$qlEUMArwi" role="3K4E3e">
                           <node concept="1pGfFk" id="2$qlEUMArwj" role="2ShVmc">
@@ -3335,6 +3360,22 @@
         <ref role="3uigEE" to="dxuu:~JCheckBox" resolve="JCheckBox" />
       </node>
     </node>
+    <node concept="312cEg" id="2H4SLalXqDJ" role="jymVt">
+      <property role="TrG5h" value="myRunInParallelCheckBox" />
+      <property role="3TUv4t" value="true" />
+      <node concept="2ShNRf" id="2H4SLalXqDK" role="33vP2m">
+        <node concept="1pGfFk" id="2H4SLalXqDL" role="2ShVmc">
+          <ref role="37wK5l" to="dxuu:~JCheckBox.&lt;init&gt;(java.lang.String)" resolve="JCheckBox" />
+          <node concept="Xl_RD" id="2H4SLalXqDM" role="37wK5m">
+            <property role="Xl_RC" value="Run in parallel" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="2H4SLalXqDN" role="1B3o_S" />
+      <node concept="3uibUv" id="2H4SLalXqDO" role="1tU5fm">
+        <ref role="3uigEE" to="dxuu:~JCheckBox" resolve="JCheckBox" />
+      </node>
+    </node>
     <node concept="312cEg" id="3etVqSRKzPW" role="jymVt">
       <property role="TrG5h" value="myModelCheckerSettings" />
       <property role="3TUv4t" value="true" />
@@ -3934,6 +3975,35 @@
           </node>
         </node>
         <node concept="3clFbH" id="3etVqSRKzRd" role="3cqZAp" />
+        <node concept="3clFbF" id="2H4SLalXntq" role="3cqZAp">
+          <node concept="3uNrnE" id="2H4SLalXntr" role="3clFbG">
+            <node concept="2OqwBi" id="2H4SLalXnts" role="2$L3a6">
+              <node concept="37vLTw" id="2H4SLalXntt" role="2Oq$k0">
+                <ref role="3cqZAo" node="2_P6NuFlISc" resolve="c" />
+              </node>
+              <node concept="2OwXpG" id="2H4SLalXntu" role="2OqNvi">
+                <ref role="2Oxat5" to="z60i:~GridBagConstraints.gridy" resolve="gridy" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2H4SLalXntk" role="3cqZAp">
+          <node concept="2OqwBi" id="2H4SLalXntl" role="3clFbG">
+            <node concept="liA8E" id="2H4SLalXntm" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
+              <node concept="37vLTw" id="2H4SLalXntn" role="37wK5m">
+                <ref role="3cqZAo" node="2H4SLalXqDJ" resolve="myRunInParallelCheckBox" />
+              </node>
+              <node concept="37vLTw" id="2H4SLalXnto" role="37wK5m">
+                <ref role="3cqZAo" node="2_P6NuFlISc" resolve="c" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="2H4SLalXntp" role="2Oq$k0">
+              <ref role="3cqZAo" node="3etVqSRKzPr" resolve="myPage" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="2H4SLalXntj" role="3cqZAp" />
         <node concept="3clFbF" id="3iLJjxdySOz" role="3cqZAp">
           <node concept="3uNrnE" id="3iLJjxdySO$" role="3clFbG">
             <node concept="2OqwBi" id="3iLJjxdySO_" role="2$L3a6">
@@ -4123,6 +4193,24 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="2H4SLalXDps" role="3cqZAp">
+          <node concept="2OqwBi" id="2H4SLalXPV4" role="3clFbG">
+            <node concept="37vLTw" id="2H4SLalXDpq" role="2Oq$k0">
+              <ref role="3cqZAo" node="3etVqSRKzPW" resolve="myModelCheckerSettings" />
+            </node>
+            <node concept="liA8E" id="2H4SLalXUph" role="2OqNvi">
+              <ref role="37wK5l" node="2H4SLalWVdm" resolve="setRunInParallel" />
+              <node concept="2OqwBi" id="2H4SLalY3kK" role="37wK5m">
+                <node concept="37vLTw" id="2H4SLalXYka" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2H4SLalXqDJ" resolve="myRunInParallelCheckBox" />
+                </node>
+                <node concept="liA8E" id="2H4SLalY8GF" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~AbstractButton.isSelected()" resolve="isSelected" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="3clFb_" id="3KDENWMZ09v" role="jymVt">
@@ -4190,6 +4278,24 @@
             </node>
             <node concept="37vLTw" id="63oasX2f_96" role="2Oq$k0">
               <ref role="3cqZAo" node="63oasX2fgy1" resolve="myCheckSpecificCheckBox" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2H4SLalYgHg" role="3cqZAp">
+          <node concept="2OqwBi" id="2H4SLalYll0" role="3clFbG">
+            <node concept="37vLTw" id="2H4SLalYgHe" role="2Oq$k0">
+              <ref role="3cqZAo" node="2H4SLalXqDJ" resolve="myRunInParallelCheckBox" />
+            </node>
+            <node concept="liA8E" id="2H4SLalYrcO" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~AbstractButton.setSelected(boolean)" resolve="setSelected" />
+              <node concept="2OqwBi" id="2H4SLalYzg2" role="37wK5m">
+                <node concept="37vLTw" id="2H4SLalYuFa" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3etVqSRKzPW" resolve="myModelCheckerSettings" />
+                </node>
+                <node concept="liA8E" id="2H4SLalYAkS" role="2OqNvi">
+                  <ref role="37wK5l" node="2H4SLalWHQB" resolve="isRunInParallel" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -4285,6 +4391,33 @@
               </node>
               <node concept="37vLTw" id="63oasX2fCd_" role="2Oq$k0">
                 <ref role="3cqZAo" node="3etVqSRKzPW" resolve="myModelCheckerSettings" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="2H4SLalYJ4M" role="3cqZAp">
+          <node concept="3clFbS" id="2H4SLalYJ4O" role="3clFbx">
+            <node concept="3cpWs6" id="2H4SLalZofa" role="3cqZAp">
+              <node concept="3clFbT" id="2H4SLalZoPf" role="3cqZAk">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="2H4SLalYV4R" role="3clFbw">
+            <node concept="2OqwBi" id="2H4SLalZfy_" role="3uHU7w">
+              <node concept="37vLTw" id="2H4SLalZasi" role="2Oq$k0">
+                <ref role="3cqZAo" node="2H4SLalXqDJ" resolve="myRunInParallelCheckBox" />
+              </node>
+              <node concept="liA8E" id="2H4SLalZiUM" role="2OqNvi">
+                <ref role="37wK5l" to="dxuu:~AbstractButton.isSelected()" resolve="isSelected" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="2H4SLalYRc3" role="3uHU7B">
+              <node concept="37vLTw" id="2H4SLalYMVb" role="2Oq$k0">
+                <ref role="3cqZAo" node="3etVqSRKzPW" resolve="myModelCheckerSettings" />
+              </node>
+              <node concept="liA8E" id="2H4SLalYT8c" role="2OqNvi">
+                <ref role="37wK5l" node="2H4SLalWHQB" resolve="isRunInParallel" />
               </node>
             </node>
           </node>
