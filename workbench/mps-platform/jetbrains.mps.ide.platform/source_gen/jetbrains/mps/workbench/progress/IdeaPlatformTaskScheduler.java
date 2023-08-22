@@ -76,6 +76,11 @@ public class IdeaPlatformTaskScheduler extends AbstractBackgroundTaskScheduler<T
       return new BackgroundableTaskRunnable(task, pind, afterTask);
     }
 
+    @Override
+    protected void runBlocking(AbstractTaskQueue.Blocking blocking) throws InterruptedException {
+      blocking.run();
+    }
+
     private ProgressIndicator getProgressIndicator(ProgressMonitor monitor) {
       ProgressIndicator pind = null;
       if (monitor instanceof ProgressMonitorBase) {

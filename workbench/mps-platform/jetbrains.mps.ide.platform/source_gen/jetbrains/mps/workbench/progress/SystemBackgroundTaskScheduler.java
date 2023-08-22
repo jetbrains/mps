@@ -9,13 +9,13 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.progress.ProgressMonitorDecorator;
 import jetbrains.mps.progress.TaskScheduler;
 import java.util.function.BooleanSupplier;
+import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.CompletableFuture;
 import com.intellij.openapi.progress.impl.ProgressResult;
 import javax.swing.SwingUtilities;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.concurrent.ForkJoinPool;
 import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletionException;
 import java.util.concurrent.ExecutionException;
@@ -64,6 +64,21 @@ public class SystemBackgroundTaskScheduler extends AbstractBackgroundTaskSchedul
     @Override
     protected TaskRunnable createRunnable(AbstractTask task, Runnable afterTask, ProgressMonitor progressMonitor) {
       return new AsyncTaskRunnable(task, afterTask, new TaskSchedulerProgressMonitor(progressMonitor, myTaskScheduler));
+    }
+
+    @Override
+    protected void runBlocking(final AbstractTaskQueue.Blocking blocking) throws InterruptedException {
+      ForkJoinPool.managedBlock(new ForkJoinPool.ManagedBlocker() {
+        @Override
+        public boolean block() throws InterruptedException {
+          return !(blocking.run());
+        }
+
+        @Override
+        public boolean isReleasable() {
+          return !(blocking.willBlock());
+        }
+      });
     }
   }
 

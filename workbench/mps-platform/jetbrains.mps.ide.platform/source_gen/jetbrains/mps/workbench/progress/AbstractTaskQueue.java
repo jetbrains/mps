@@ -9,15 +9,21 @@ import java.util.function.BooleanSupplier;
 import com.intellij.openapi.util.Condition;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import com.intellij.openapi.application.ModalityState;
+import java.util.concurrent.TimeUnit;
 
 @GeneratedClass(node = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)/5860855079808123124", model = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)")
 public abstract class AbstractTaskQueue<TASK> {
 
+  public interface Blocking {
+    boolean willBlock();
+    boolean run() throws InterruptedException;
+  }
+
   private final QueueProcessor<TaskRunnable> myProcessor;
   private final CountDownLatch myLatch;
 
-  public AbstractTaskQueue(int queueSize, final BooleanSupplier shouldFinish) {
-    Condition<Object> condition = (Object __) -> shouldFinish.getAsBoolean();
+  public AbstractTaskQueue(int queueSize, final BooleanSupplier shouldStop) {
+    Condition<Object> condition = (Object __) -> shouldStop.getAsBoolean();
     // FIXME what's the reason to use POOLED thread for dispatching the runnables here?
     this.myProcessor = new QueueProcessor<TaskRunnable>((TaskRunnable bgRunnable, Runnable continuation) -> bgRunnable.accept(continuation), true, QueueProcessor.ThreadToUse.POOLED, condition);
     this.myLatch = new CountDownLatch(queueSize);
@@ -25,16 +31,29 @@ public abstract class AbstractTaskQueue<TASK> {
 
   protected abstract TaskRunnable createRunnable(TASK task, Runnable afterTask, ProgressMonitor monitor);
 
+  protected abstract void runBlocking(Blocking blocking) throws InterruptedException;
+
   public void run(TASK bgTask, ProgressMonitor monitor) {
     myProcessor.add(createRunnable(bgTask, myLatch::countDown, monitor), ModalityState.NON_MODAL);
   }
 
   public void waitForTasksToFinish() {
-    while (myLatch.getCount() > 0) {
-      try {
-        myLatch.await();
-      } catch (InterruptedException ignore) {
-      }
+    try {
+      runBlocking(new Blocking() {
+        @Override
+        public boolean willBlock() {
+          return myLatch.getCount() > 0;
+        }
+
+        @Override
+        public boolean run() throws InterruptedException {
+          myLatch.await(100, TimeUnit.MILLISECONDS);
+          return myLatch.getCount() > 0;
+        }
+      });
+    } catch (InterruptedException e) {
+      // FIXME report exception
     }
+    assert myLatch.getCount() <= 0;
   }
 }
