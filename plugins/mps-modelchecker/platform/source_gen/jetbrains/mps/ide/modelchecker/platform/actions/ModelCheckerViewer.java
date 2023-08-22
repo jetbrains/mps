@@ -5,6 +5,7 @@ package jetbrains.mps.ide.modelchecker.platform.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.JPanel;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.findusages.view.UsagesView;
 import javax.swing.JButton;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -60,7 +61,7 @@ import jetbrains.mps.ide.findusages.CantLoadSomethingException;
 @GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199795365573", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class ModelCheckerViewer extends JPanel {
   private final Project myIdeaProject;
-  private final jetbrains.mps.project.Project myProject;
+  private final MPSProject myProject;
   private UsagesView myUsagesView;
   private JButton myFixButton;
   private UsagesView.RerunAction myCheckAction;
@@ -70,7 +71,7 @@ public class ModelCheckerViewer extends JPanel {
 
   public ModelCheckerViewer(Project project, boolean canFix) {
     myIdeaProject = project;
-    myProject = ProjectHelper.toMPSProject(project);
+    myProject = ProjectHelper.fromIdeaProject(project);
 
     setLayout(new BorderLayout());
     ViewOptions viewOptions = new ViewOptions(true, false, false, false, false);
@@ -202,7 +203,7 @@ public class ModelCheckerViewer extends JPanel {
     myUsagesView.setContents(issues);
   }
   private ModelCheckerIssueFinder newModelChecker() {
-    return new ModelCheckerIssueFinder(myProject.getRepository(), ModelCheckerSettings.getInstance().getSpecificCheckers(myProject));
+    return new ModelCheckerIssueFinder(myProject, ModelCheckerSettings.getInstance().getSpecificCheckers(myProject));
   }
   public static class MyNodeRepresentator extends NodeRepresentatorBase<IssueKindReportItem> {
     public MyNodeRepresentator() {
