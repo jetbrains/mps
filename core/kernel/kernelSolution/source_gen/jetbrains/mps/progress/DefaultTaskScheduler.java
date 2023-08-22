@@ -5,25 +5,20 @@ package jetbrains.mps.progress;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.Collection;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 @GeneratedClass(node = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)/4352906377363159179", model = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)")
 public class DefaultTaskScheduler implements TaskScheduler {
 
   @Override
-  public Completable schedule(final AbstractTask task, final ProgressMonitor monitor) {
-    return Completable.Support.eval(() -> runAndWait(task, monitor));
+  public IdleWork schedule(final ProgressTask task, final ProgressMonitor monitor) {
+    return IdleWork.Support.run(() -> runAndWait(task, monitor));
   }
 
   @Override
-  public Completable scheduleSequential(final Collection<AbstractTask> tasks, final ProgressMonitor monitor) {
-    return Completable.Support.eval(() -> {
+  public IdleWork scheduleSequential(final Collection<ProgressTask> tasks, final ProgressMonitor monitor) {
+    return IdleWork.Support.run(() -> {
       boolean success = true;
-      for (AbstractTask task : tasks) {
+      for (ProgressTask task : tasks) {
         runAndWait(task, monitor);
         // FIXME reimplement cancellation
         if (!(success)) {
@@ -31,62 +26,28 @@ public class DefaultTaskScheduler implements TaskScheduler {
         }
       }
     });
-
   }
 
   @Override
-  public Completable scheduleParallel(Collection<AbstractTask> tasks, ProgressMonitor monitor) {
+  public IdleWork scheduleParallel(Collection<ProgressTask> tasks, ProgressMonitor monitor) {
     return scheduleSequential(tasks, monitor);
   }
 
-  private void runAndWait(AbstractTask task, ProgressMonitor monitor) {
-    List<Throwable> suppressed = ListSequence.fromList(new ArrayList<Throwable>());
-    final Wrappers._T<TaskCompletionException> tce = new Wrappers._T<TaskCompletionException>(null);
+  private void runAndWait(ProgressTask task, ProgressMonitor monitor) {
     try {
       // FIXME track task state
       task.initMonitor(monitor);
       if (task.isReady()) {
-        Completable completable = task.submit(this);
-        completable.complete();
-        try {
-          task.onSuccess();
-        } catch (Throwable t) {
-          ListSequence.fromList(suppressed).addElement(t);
-        }
+        IdleWork work = task.schedule(this);
+        work.finish();
+        task.onSuccess();
       } else {
-        try {
-          task.onCancel();
-        } catch (Throwable t) {
-          ListSequence.fromList(suppressed).addElement(t);
-        }
+        task.onCancel();
       }
-    } catch (TaskCompletionException ex) {
-      tce.value = ex;
     } catch (Throwable err) {
-      try {
-        task.onThrowable(err);
-      } catch (Throwable t) {
-        ListSequence.fromList(suppressed).addElement(t);
-      }
-      tce.value = new TaskCompletionException(err);
+      task.onThrowable(err);
     } finally {
-      try {
-        task.onFinished();
-      } catch (Throwable t) {
-        tce.value = new TaskCompletionException();
-        tce.value.addSuppressed(t);
-      }
-      if (tce.value == null && ListSequence.fromList(suppressed).isNotEmpty()) {
-        tce.value = new TaskCompletionException();
-      }
-    }
-    if (tce.value != null) {
-      ListSequence.fromList(suppressed).visitAll(new IVisitor<Throwable>() {
-        public void visit(Throwable it) {
-          tce.value.addSuppressed(it);
-        }
-      });
-      throw tce.value;
+      task.onFinished();
     }
   }
 

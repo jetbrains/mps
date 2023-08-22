@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.progress.Task;
 import jetbrains.mps.project.Project;
 import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.progress.AbstractTask;
+import jetbrains.mps.progress.ProgressTask;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
@@ -28,19 +28,19 @@ public class IdeaPlatformTaskScheduler extends AbstractBackgroundTaskScheduler<T
   }
 
   @Override
-  protected AbstractTaskQueue<Task.Backgroundable> createQueue(int size) {
+  protected AbstractBackgroundTaskScheduler.AbstractTaskQueue<Task.Backgroundable> createQueue(int size) {
     return new BackgroundTaskQueue(size, () -> (getMpsProject() != null ? getMpsProject().isDisposed() : ApplicationManager.getApplication().isDisposed()));
   }
 
   @Override
-  protected Task.Backgroundable createTask(final AbstractTask task, final ProgressMonitor monitor) {
+  protected Task.Backgroundable createTask(final ProgressTask task, final ProgressMonitor monitor) {
     com.intellij.openapi.project.Project ideaProject = (getMpsProject() instanceof MPSProject ? ((MPSProject) getMpsProject()).getProject() : null);
     Task.Backgroundable btask = new Task.Backgroundable(ideaProject, task.getTitle(), true) {
       @Override
       public void run(@NotNull ProgressIndicator pind) {
         task.initMonitor(monitor);
         if (task.isReady()) {
-          task.submit(IdeaPlatformTaskScheduler.this).complete();
+          task.schedule(IdeaPlatformTaskScheduler.this).finish();
         }
       }
       @Override
@@ -64,9 +64,9 @@ public class IdeaPlatformTaskScheduler extends AbstractBackgroundTaskScheduler<T
     return btask;
   }
 
-  protected static class BackgroundTaskQueue extends AbstractTaskQueue<Task.Backgroundable> {
+  protected static class BackgroundTaskQueue extends AbstractBackgroundTaskScheduler.AbstractTaskQueue<Task.Backgroundable> {
 
-    public BackgroundTaskQueue(int queueSize, BooleanSupplier shouldFinish) {
+    protected BackgroundTaskQueue(int queueSize, BooleanSupplier shouldFinish) {
       super(queueSize, shouldFinish);
     }
 
@@ -77,8 +77,12 @@ public class IdeaPlatformTaskScheduler extends AbstractBackgroundTaskScheduler<T
     }
 
     @Override
-    protected void runBlocking(AbstractTaskQueue.Blocking blocking) throws InterruptedException {
-      blocking.run();
+    protected void runBlocking(AbstractBackgroundTaskScheduler.AbstractTaskQueue.Blocking blocking) throws InterruptedException {
+      while (blocking.willBlock()) {
+        if (!(blocking.run())) {
+          break;
+        }
+      }
     }
 
     private ProgressIndicator getProgressIndicator(ProgressMonitor monitor) {
@@ -99,7 +103,7 @@ public class IdeaPlatformTaskScheduler extends AbstractBackgroundTaskScheduler<T
 
   }
 
-  protected static class BackgroundableTaskRunnable implements TaskRunnable {
+  protected static class BackgroundableTaskRunnable implements AbstractBackgroundTaskScheduler.TaskRunnable {
 
     private final Task.Backgroundable myTaskBackgroundable;
     private final ProgressIndicator myProgressIndicator;

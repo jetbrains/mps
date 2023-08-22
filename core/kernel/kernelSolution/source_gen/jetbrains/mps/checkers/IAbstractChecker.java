@@ -7,7 +7,8 @@ import jetbrains.mps.errors.item.ReportItem;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.progress.AbstractTask;
+import org.jetbrains.annotations.ApiStatus;
+import jetbrains.mps.progress.ProgressTask;
 
 /**
  * A misnomer composite checker.
@@ -21,8 +22,16 @@ public interface IAbstractChecker<O, I extends ReportItem> {
 
   void check(O toCheck, SRepository repository, Consumer<? super I> errorCollector, ProgressMonitor monitor);
 
-  default AbstractTask checkTask(final O toCheck, final SRepository repository, final Consumer<? super I> errorCollector) {
-    return new AbstractTask.SimpleTask(String.format("check(%s)", toCheck)) {
+  /**
+   * Alternative way to construct a composite checker: instead of running all aggregated checkers in sequence
+   * one may choose to construct a batch job with optionally launching a certain "branch" in background. 
+   * <p>
+   * See {@link jetbrains.mps.progress.ProgressTask }.<br>
+   * See {@link jetbrains.mps.progress.TaskScheduler }.<br>
+   */
+  @ApiStatus.Experimental
+  default ProgressTask checkTask(final O toCheck, final SRepository repository, final Consumer<? super I> errorCollector) {
+    return new ProgressTask.SimpleTask(String.format("check(%s)", toCheck)) {
       @Override
       protected void run() {
         check(toCheck, repository, errorCollector, myMonitor);

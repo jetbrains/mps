@@ -5,11 +5,18 @@ package jetbrains.mps.workbench.progress;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.progress.DefaultTaskScheduler;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.progress.Completable;
+import jetbrains.mps.progress.IdleWork;
 import java.util.Collection;
-import jetbrains.mps.progress.AbstractTask;
+import jetbrains.mps.progress.ProgressTask;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import com.intellij.util.concurrency.QueueProcessor;
+import java.util.concurrent.CountDownLatch;
+import java.util.function.BooleanSupplier;
+import com.intellij.openapi.util.Condition;
+import com.intellij.openapi.application.ModalityState;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 @GeneratedClass(node = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)/5860855079808959130", model = "r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)")
 public abstract class AbstractBackgroundTaskScheduler<TASK> extends DefaultTaskScheduler {
@@ -20,26 +27,78 @@ public abstract class AbstractBackgroundTaskScheduler<TASK> extends DefaultTaskS
   }
 
   @Override
-  public Completable scheduleParallel(final Collection<AbstractTask> tasks, final ProgressMonitor monitor) {
+  public IdleWork scheduleParallel(final Collection<ProgressTask> tasks, final ProgressMonitor monitor) {
     final AbstractTaskQueue<TASK> queue = createQueue(CollectionSequence.fromCollection(tasks).count());
-    return Completable.Support.eval(() -> {
+    return IdleWork.Support.run(() -> {
       runWithQueue(tasks, queue, monitor);
       queue.waitForTasksToFinish();
     });
   }
 
-  protected void runWithQueue(Collection<AbstractTask> tasks, AbstractTaskQueue<TASK> queue, final ProgressMonitor monitor) {
-    for (final AbstractTask task : tasks) {
+  protected void runWithQueue(Collection<ProgressTask> tasks, AbstractTaskQueue<TASK> queue, final ProgressMonitor monitor) {
+    for (final ProgressTask task : tasks) {
       TASK btask = createTask(task, monitor);
-      queue.run(btask, monitor);
+      queue.runWithMonitor(btask, monitor);
     }
   }
 
   protected abstract AbstractTaskQueue<TASK> createQueue(int size);
 
-  protected abstract TASK createTask(AbstractTask task, ProgressMonitor monitor);
+  protected abstract TASK createTask(ProgressTask task, ProgressMonitor monitor);
 
   protected Project getMpsProject() {
     return this.myMpsProject;
+  }
+
+  protected static abstract class AbstractTaskQueue<TASK> {
+
+    public interface Blocking {
+      boolean willBlock();
+      boolean run() throws InterruptedException;
+    }
+
+    private final QueueProcessor<TaskRunnable> myProcessor;
+    private final CountDownLatch myLatch;
+
+    protected AbstractTaskQueue(int queueSize, final BooleanSupplier shouldStop) {
+      // Condition must be imported here explicitly to avoid generation failure
+      Condition<Object> condition = (Object __) -> shouldStop.getAsBoolean();
+      // ThreadToUse.POOLED is preferrable here because IDEA application may not be available
+      this.myProcessor = new QueueProcessor<TaskRunnable>((TaskRunnable bgRunnable, Runnable continuation) -> bgRunnable.accept(continuation), true, QueueProcessor.ThreadToUse.POOLED, condition);
+      this.myLatch = new CountDownLatch(queueSize);
+    }
+
+    protected abstract TaskRunnable createRunnable(TASK task, Runnable afterTask, ProgressMonitor monitor);
+
+    protected abstract void runBlocking(Blocking blocking) throws InterruptedException;
+
+    protected void runWithMonitor(TASK bgTask, ProgressMonitor monitor) {
+      myProcessor.add(createRunnable(bgTask, myLatch::countDown, monitor), ModalityState.NON_MODAL);
+    }
+
+    protected void waitForTasksToFinish() {
+      try {
+        runBlocking(new Blocking() {
+          @Override
+          public boolean willBlock() {
+            return myLatch.getCount() > 0;
+          }
+
+          @Override
+          public boolean run() throws InterruptedException {
+            myLatch.await(100, TimeUnit.MILLISECONDS);
+            return myLatch.getCount() > 0;
+          }
+        });
+      } catch (InterruptedException e) {
+        // FIXME report exception
+      }
+      assert myLatch.getCount() <= 0;
+    }
+  }
+
+  @FunctionalInterface
+  public interface TaskRunnable extends Consumer<Runnable> {
+
   }
 }

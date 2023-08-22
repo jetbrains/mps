@@ -8,7 +8,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.progress.AbstractTask;
+import jetbrains.mps.progress.ProgressTask;
 
 /**
  * Conditionally applies the checker passed as {@code origin} parameter to the constructor, based on 
@@ -27,11 +27,11 @@ public class SkippingChecker<O, I extends ReportItem> implements IAbstractChecke
     throw new UnsupportedOperationException();
   }
   @Override
-  public AbstractTask checkTask(final O toCheck, final SRepository repository, final Consumer<? super I> errorCollector) {
+  public ProgressTask checkTask(final O toCheck, final SRepository repository, final Consumer<? super I> errorCollector) {
     if (myAccept.invoke(toCheck, repository)) {
       return myOrigin.checkTask(toCheck, repository, errorCollector);
     } else {
-      return AbstractTask.nop();
+      return ProgressTask.nop();
     }
   }
 }

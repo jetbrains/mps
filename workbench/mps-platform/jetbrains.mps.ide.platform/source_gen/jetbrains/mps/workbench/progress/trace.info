@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1160998861373:jetbrains.mps.baseLanguage.structure.AssertStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081855346303:jetbrains.mps.baseLanguage.structure.BreakStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
+  <root nodeRef="r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)/2961775013264836716">
+    <file name="IdeaPlatformTaskScheduler.java">
+      <node id="5860855079811179968" at="26,56,27,22" concept="14" />
+      <node id="5860855079811420308" at="31,106,32,156" concept="10" />
+      <node id="5860855079811126790" at="36,100,37,148" concept="9" />
+      <node id="5860855079808776580" at="40,56,41,34" concept="4" />
+      <node id="5860855079808776587" at="42,29,43,65" concept="4" />
+      <node id="5860855079808776607" at="47,30,48,24" concept="4" />
+      <node id="5860855079808776616" at="51,31,52,25" concept="4" />
+      <node id="5860855079808776628" at="55,57,56,32" concept="4" />
+      <node id="5860855079808776638" at="59,32,60,26" concept="4" />
+      <node id="5860855079808776643" at="62,6,63,0" concept="12" />
+      <node id="5860855079808776644" at="63,0,64,17" concept="10" />
+      <node id="5860855079809521037" at="69,80,70,37" concept="14" />
+      <node id="5860855079810262048" at="74,125,75,107" concept="9" />
+      <node id="5860855079810302870" at="75,107,76,67" concept="10" />
+      <node id="1811458392136268914" at="82,32,83,16" concept="2" />
+      <node id="2961775013269634060" at="88,77,89,36" concept="9" />
+      <node id="6433688206472223678" at="90,51,91,64" concept="9" />
+      <node id="6433688206472329235" at="92,71,93,75" concept="4" />
+      <node id="6433688206472564374" at="95,52,96,63" concept="4" />
+      <node id="6433688206472621160" at="98,14,99,67" concept="4" />
+      <node id="2961775013269634078" at="100,7,101,18" concept="10" />
+      <node id="4689546451258487657" at="108,0,109,0" concept="5" trace="myTaskBackgroundable" />
+      <node id="4689546451258686693" at="109,0,110,0" concept="5" trace="myProgressIndicator" />
+      <node id="5860855079808429114" at="110,0,111,0" concept="5" trace="myTaskContinuation" />
+      <node id="4689546451258487661" at="112,131,113,36" concept="4" />
+      <node id="4689546451258686697" at="113,36,114,46" concept="4" />
+      <node id="5860855079808429118" at="114,46,115,44" concept="4" />
+      <node id="4689546451258504368" at="119,47,120,87" concept="9" />
+      <node id="4689546451258560037" at="121,52,122,49" concept="11" />
+      <node id="4689546451258543403" at="122,49,123,27" concept="4" />
+      <node id="4689546451258553718" at="123,27,124,15" concept="10" />
+      <node id="4689546451258555042" at="125,7,126,0" concept="12" />
+      <node id="4689546451258605552" at="127,11,128,71" concept="9" />
+      <node id="4689546451258585993" at="128,71,129,149" concept="4" />
+      <node id="687779516720951628" at="129,149,130,0" concept="12" />
+      <node id="687779516720967283" at="131,17,132,27" concept="4" />
+      <node id="4689546451258608699" at="136,65,137,65" concept="10" />
+      <node id="6433688206472613996" at="98,12,100,7" concept="1" />
+      <node id="2961775013264841152" at="26,0,29,0" concept="3" trace="IdeaPlatformTaskScheduler#(Ljetbrains/mps/project/Project;)V" />
+      <node id="5860855079808776585" at="41,34,44,9" concept="7" />
+      <node id="4689546451258916007" at="69,0,72,0" concept="3" trace="BackgroundTaskQueue#(ILjava/util/function/BooleanSupplier;)V" />
+      <node id="1811458392136257778" at="81,36,84,9" concept="7" />
+      <node id="6433688206472254768" at="91,64,94,9" concept="17" />
+      <node id="6433688206472310296" at="94,9,97,9" concept="7" />
+      <node id="4689546451258619690" at="136,0,139,0" concept="13" trace="getCoreProgressManager#()Lcom/intellij/openapi/progress/impl/ProgressManagerImpl;" />
+      <node id="5860855079811309881" at="30,0,34,0" concept="8" trace="createQueue#(I)Ljetbrains/mps/workbench/progress/AbstractBackgroundTaskScheduler/AbstractTaskQueue;" />
+      <node id="5860855079808776603" at="46,0,50,0" concept="8" trace="onCancel#()V" />
+      <node id="5860855079808776612" at="50,0,54,0" concept="8" trace="onSuccess#()V" />
+      <node id="5860855079808776621" at="54,0,58,0" concept="8" trace="onThrowable#(Ljava/lang/Throwable;)V" />
+      <node id="5860855079808776634" at="58,0,62,0" concept="8" trace="onFinished#()V" />
+      <node id="5860855079810186945" at="73,0,78,0" concept="8" trace="createRunnable#(Lcom/intellij/openapi/progress/Task/Backgroundable;Ljava/lang/Runnable;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljetbrains/mps/workbench/progress/IdeaPlatformTaskScheduler/BackgroundableTaskRunnable;" />
+      <node id="1811458392136222653" at="80,129,85,7" concept="17" />
+      <node id="4689546451258474588" at="112,0,117,0" concept="3" trace="BackgroundableTaskRunnable#(Lcom/intellij/openapi/progress/Task/Backgroundable;Lcom/intellij/openapi/progress/ProgressIndicator;Ljava/lang/Runnable;)V" />
+      <node id="4689546451258535230" at="120,87,125,7" concept="7" />
+      <node id="5860855079808776573" at="39,0,46,0" concept="8" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
+      <node id="5860855079808546597" at="126,0,133,7" concept="16" />
+      <node id="1185176746686394358" at="79,0,87,0" concept="8" trace="runBlocking#(Ljetbrains/mps/workbench/progress/AbstractBackgroundTaskScheduler/AbstractTaskQueue/Blocking;)V" />
+      <node id="6433688206472346445" at="89,36,100,7" concept="7" />
+      <node id="2961775013269634086" at="88,0,103,0" concept="8" trace="getProgressIndicator#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Lcom/intellij/openapi/progress/ProgressIndicator;" />
+      <node id="4689546451258463525" at="118,0,135,0" concept="8" trace="accept#(Ljava/lang/Runnable;)V" />
+      <node id="5860855079808776566" at="37,148,62,6" concept="9" />
+      <node id="5860855079808776664" at="35,0,66,0" concept="8" trace="createTask#(Ljetbrains/mps/progress/ProgressTask;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Lcom/intellij/openapi/progress/Task/Backgroundable;" />
+      <scope id="2961775013264841156" at="26,56,27,22" />
+      <scope id="5860855079811309887" at="31,106,32,156" />
+      <scope id="5860855079808776586" at="42,29,43,65" />
+      <scope id="5860855079808776606" at="47,30,48,24" />
+      <scope id="5860855079808776615" at="51,31,52,25" />
+      <scope id="5860855079808776627" at="55,57,56,32" />
+      <scope id="5860855079808776637" at="59,32,60,26" />
+      <scope id="4689546451258916011" at="69,80,70,37" />
+      <scope id="1811458392136257803" at="82,32,83,16" />
+      <scope id="6433688206472254770" at="92,71,93,75" />
+      <scope id="6433688206472310298" at="95,52,96,63" />
+      <scope id="6433688206472613997" at="98,14,99,67" />
+      <scope id="5860855079808557303" at="131,17,132,27" />
+      <scope id="4689546451258608698" at="136,65,137,65" />
+      <scope id="5860855079810186957" at="74,125,76,67">
+        <var name="pind" id="5860855079810262049" />
+      </scope>
+      <scope id="2961775013264841152" at="26,0,29,0">
+        <var name="mpsProject" id="2961775013268949019" />
+      </scope>
+      <scope id="4689546451258916007" at="69,0,72,0">
+        <var name="queueSize" id="3248735082133953831" />
+        <var name="shouldFinish" id="5860855079809208877" />
+      </scope>
+      <scope id="1811458392136222654" at="81,36,84,9" />
+      <scope id="4689546451258474592" at="112,131,115,44" />
+      <scope id="4689546451258535258" at="121,52,124,15" />
+      <scope id="5860855079808546599" at="127,11,130,0">
+        <var name="progressManager" id="4689546451258605553" />
+      </scope>
+      <scope id="4689546451258619690" at="136,0,139,0" />
+      <scope id="5860855079811309881" at="30,0,34,0">
+        <var name="size" id="5860855079811406247" />
+      </scope>
+      <scope id="5860855079808776579" at="40,56,44,9" />
+      <scope id="5860855079808776603" at="46,0,50,0" />
+      <scope id="5860855079808776612" at="50,0,54,0" />
+      <scope id="5860855079808776621" at="54,0,58,0">
+        <var name="error" id="5860855079808776624" />
+      </scope>
+      <scope id="5860855079808776634" at="58,0,62,0" />
+      <scope id="5860855079810186945" at="73,0,78,0">
+        <var name="afterTask" id="5860855079810186948" />
+        <var name="monitor" id="5860855079810186950" />
+        <var name="task" id="5860855079810186946" />
+      </scope>
+      <scope id="1185176746686394365" at="80,129,85,7" />
+      <scope id="4689546451258474588" at="112,0,117,0">
+        <var name="bgTask" id="4689546451258475466" />
+        <var name="progressIndicator" id="4689546451258676847" />
+        <var name="taskContinuation" id="5860855079808353997" />
+      </scope>
+      <scope id="5860855079808776573" at="39,0,46,0">
+        <var name="pind" id="5860855079808776576" />
+      </scope>
+      <scope id="6433688206472346447" at="90,51,97,9">
+        <var name="pmb" id="6433688206472223679" />
+      </scope>
+      <scope id="1185176746686394358" at="79,0,87,0">
+        <var name="blocking" id="1185176746686394359" />
+      </scope>
+      <scope id="2961775013269634057" at="88,77,101,18">
+        <var name="pind" id="2961775013269634061" />
+      </scope>
+      <scope id="4689546451258463534" at="119,47,133,7">
+        <var name="project" id="4689546451258504369" />
+      </scope>
+      <scope id="2961775013269634086" at="88,0,103,0">
+        <var name="monitor" id="2961775013269634080" />
+      </scope>
+      <scope id="4689546451258463525" at="118,0,135,0">
+        <var name="continuation" id="4689546451258463529" />
+      </scope>
+      <scope id="5860855079808776563" at="36,100,64,17">
+        <var name="btask" id="5860855079808776567" />
+        <var name="ideaProject" id="5860855079811126791" />
+      </scope>
+      <scope id="5860855079808776664" at="35,0,66,0">
+        <var name="monitor" id="5860855079808776646" />
+        <var name="task" id="5860855079808776648" />
+      </scope>
+      <unit id="5860855079808776571" at="38,36,62,5" name="jetbrains.mps.workbench.progress.IdeaPlatformTaskScheduler$1" />
+      <unit id="4689546451258437357" at="106,0,141,0" name="jetbrains.mps.workbench.progress.IdeaPlatformTaskScheduler$BackgroundableTaskRunnable" />
+      <unit id="4689546451258360544" at="67,0,105,0" name="jetbrains.mps.workbench.progress.IdeaPlatformTaskScheduler$BackgroundTaskQueue" />
+      <unit id="2961775013264836716" at="23,0,143,0" name="jetbrains.mps.workbench.progress.IdeaPlatformTaskScheduler" />
+    </file>
+  </root>
+  <root nodeRef="r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)/5860855079808959130">
+    <file name="AbstractBackgroundTaskScheduler.java">
+      <node id="5860855079811143724" at="23,0,24,0" concept="5" trace="myMpsProject" />
+      <node id="5860855079811158324" at="25,62,26,35" concept="4" />
+      <node id="5860855079811796216" at="30,105,31,104" concept="9" />
+      <node id="5860855079811796228" at="32,39,33,42" concept="4" />
+      <node id="5860855079811796233" at="33,42,34,35" concept="4" />
+      <node id="5860855079811837152" at="39,43,40,45" concept="9" />
+      <node id="5860855079811837158" at="40,45,41,43" concept="4" />
+      <node id="5860855079810544491" at="45,0,46,0" concept="8" trace="createQueue#(I)Ljetbrains/mps/workbench/progress/AbstractBackgroundTaskScheduler/AbstractTaskQueue;" />
+      <node id="5860855079811089899" at="47,0,48,0" concept="8" trace="createTask#(Ljetbrains/mps/progress/ProgressTask;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)null" />
+      <node id="5860855079811475588" at="49,37,50,29" concept="10" />
+      <node id="1185176746685877931" at="56,0,57,0" concept="8" trace="willBlock#()Z" />
+      <node id="1185176746685886049" at="57,0,58,0" concept="8" trace="run#()Z" />
+      <node id="5860855079809362067" at="60,0,61,0" concept="5" trace="myProcessor" />
+      <node id="5860855079809362071" at="61,0,62,0" concept="5" trace="myLatch" />
+      <node id="2183028874564905291" at="63,82,64,79" concept="11" />
+      <node id="5860855079809375307" at="64,79,65,77" concept="9" />
+      <node id="5860855079809500690" at="65,77,66,93" concept="11" />
+      <node id="5860855079809375326" at="66,93,67,195" concept="4" />
+      <node id="5860855079809375354" at="67,195,68,51" concept="4" />
+      <node id="5860855079810078059" at="71,0,72,0" concept="8" trace="createRunnable#(nullLjava/lang/Runnable;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljetbrains/mps/workbench/progress/AbstractBackgroundTaskScheduler/TaskRunnable;" />
+      <node id="1185176746685955817" at="73,0,74,0" concept="8" trace="runBlocking#(Ljetbrains/mps/workbench/progress/AbstractBackgroundTaskScheduler/AbstractTaskQueue/Blocking;)V" />
+      <node id="5860855079809941945" at="75,73,76,100" concept="4" />
+      <node id="1185176746686018684" at="83,38,84,42" concept="10" />
+      <node id="1185176746686021993" at="88,60,89,54" concept="4" />
+      <node id="1185176746686082609" at="89,54,90,42" concept="10" />
+      <node id="1185176746686386862" at="93,40,94,33" concept="11" />
+      <node id="1185176746686844425" at="95,7,96,37" concept="0" />
+      <node id="5860855079808961901" at="25,0,28,0" concept="3" trace="AbstractBackgroundTaskScheduler#(Ljetbrains/mps/project/Project;)V" />
+      <node id="5860855079811475584" at="49,0,52,0" concept="8" trace="getMpsProject#()Ljetbrains/mps/project/Project;" />
+      <node id="5860855079809941925" at="75,0,78,0" concept="8" trace="runWithMonitor#(nullLorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />
+      <node id="5860855079811796224" at="31,104,35,7" concept="10" />
+      <node id="5860855079811837150" at="38,125,42,5" concept="6" />
+      <node id="1185176746686007231" at="82,0,86,0" concept="8" trace="willBlock#()Z" />
+      <node id="1185176746686007239" at="87,0,92,0" concept="8" trace="run#()Z" />
+      <node id="5860855079811837138" at="38,0,44,0" concept="8" trace="runWithQueue#(Ljava/util/Collection;Ljetbrains/mps/workbench/progress/AbstractBackgroundTaskScheduler/AbstractTaskQueue;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />
+      <node id="5860855079809347103" at="63,0,70,0" concept="3" trace="AbstractTaskQueue#(ILjava/util/function/BooleanSupplier;)V" />
+      <node id="5860855079811768908" at="29,0,37,0" concept="8" trace="scheduleParallel#(Ljava/util/Collection;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljetbrains/mps/progress/IdleWork;" />
+      <node id="1185176746685991559" at="80,11,92,11" concept="4" />
+      <node id="1185176746686374399" at="79,43,95,7" concept="16" />
+      <node id="8425916099484481392" at="79,0,98,0" concept="8" trace="waitForTasksToFinish#()V" />
+      <scope id="5860855079808961905" at="25,62,26,35" />
+      <scope id="5860855079810544491" at="45,0,46,0">
+        <var name="size" id="5860855079811447430" />
+      </scope>
+      <scope id="5860855079811089899" at="47,0,48,0">
+        <var name="monitor" id="5860855079811265590" />
+        <var name="task" id="5860855079811111583" />
+      </scope>
+      <scope id="5860855079811475587" at="49,37,50,29" />
+      <scope id="1185176746685877931" at="56,0,57,0" />
+      <scope id="1185176746685886049" at="57,0,58,0" />
+      <scope id="5860855079810078059" at="71,0,72,0">
+        <var name="afterTask" id="5860855079810115452" />
+        <var name="monitor" id="5860855079810109252" />
+        <var name="task" id="5860855079810085431" />
+      </scope>
+      <scope id="1185176746685955817" at="73,0,74,0">
+        <var name="blocking" id="1185176746685980043" />
+      </scope>
+      <scope id="5860855079809941928" at="75,73,76,100" />
+      <scope id="1185176746686007235" at="83,38,84,42" />
+      <scope id="1185176746686374405" at="93,40,94,33" />
+      <scope id="5860855079811796227" at="32,39,34,35" />
+      <scope id="5860855079811837151" at="39,43,41,43">
+        <var name="btask" id="5860855079811837153" />
+      </scope>
+      <scope id="1185176746686007243" at="88,60,90,42" />
+      <scope id="1185176746686374402" at="93,7,95,7">
+        <var name="e" id="1185176746686374406" />
+      </scope>
+      <scope id="5860855079808961901" at="25,0,28,0">
+        <var name="mpsProject" id="5860855079811138941" />
+      </scope>
+      <scope id="5860855079811475584" at="49,0,52,0" />
+      <scope id="5860855079809941925" at="75,0,78,0">
+        <var name="bgTask" id="5860855079809941951" />
+        <var name="monitor" id="5860855079809941953" />
+      </scope>
+      <scope id="5860855079811837149" at="38,125,42,5" />
+      <scope id="5860855079811837150" at="38,125,42,5">
+        <var name="task" id="5860855079811837164" />
+      </scope>
+      <scope id="1185176746686007231" at="82,0,86,0" />
+      <scope id="5860855079811768917" at="30,105,35,7">
+        <var name="queue" id="5860855079811796217" />
+      </scope>
+      <scope id="5860855079809347107" at="63,82,68,51">
+        <var name="condition" id="5860855079809375308" />
+      </scope>
+      <scope id="1185176746686007239" at="87,0,92,0" />
+      <scope id="5860855079811837138" at="38,0,44,0">
+        <var name="monitor" id="5860855079811837147" />
+        <var name="queue" id="5860855079811837144" />
+        <var name="tasks" id="5860855079811837141" />
+      </scope>
+      <scope id="5860855079809347103" at="63,0,70,0">
+        <var name="queueSize" id="5860855079809361024" />
+        <var name="shouldStop" id="5860855079810641297" />
+      </scope>
+      <scope id="5860855079811768908" at="29,0,37,0">
+        <var name="monitor" id="5860855079811768915" />
+        <var name="tasks" id="5860855079811768912" />
+      </scope>
+      <scope id="1185176746686374400" at="80,11,92,11" />
+      <scope id="8425916099484481396" at="79,43,96,37" />
+      <scope id="8425916099484481392" at="79,0,98,0" />
+      <unit id="1185176746685858104" at="55,0,59,0" name="jetbrains.mps.workbench.progress.AbstractBackgroundTaskScheduler$AbstractTaskQueue$Blocking" />
+      <unit id="4689546451258397404" at="100,0,104,0" name="jetbrains.mps.workbench.progress.AbstractBackgroundTaskScheduler$TaskRunnable" />
+      <unit id="1185176746686007213" at="81,24,92,9" name="jetbrains.mps.workbench.progress.AbstractBackgroundTaskScheduler$AbstractTaskQueue$1" />
+      <unit id="5860855079808123124" at="53,0,99,0" name="jetbrains.mps.workbench.progress.AbstractBackgroundTaskScheduler$AbstractTaskQueue" />
+      <unit id="5860855079808959130" at="21,0,105,0" name="jetbrains.mps.workbench.progress.AbstractBackgroundTaskScheduler" />
+    </file>
+  </root>
+  <root nodeRef="r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)/5860855079812039016">
+    <file name="SystemBackgroundTaskScheduler.java">
+      <node id="1903072132127830257" at="24,60,25,22" concept="14" />
+      <node id="1903072132127740069" at="29,99,30,55" concept="10" />
+      <node id="1903072132127311140" at="34,81,35,16" concept="10" />
+      <node id="5860855079813088159" at="40,0,41,0" concept="5" trace="myScheduler" />
+      <node id="5860855079813062906" at="42,92,43,22" concept="14" />
+      <node id="5860855079813088163" at="43,22,44,30" concept="4" />
+      <node id="5860855079813092702" at="47,41,48,30" concept="10" />
+      <node id="1185176746684383423" at="54,0,55,0" concept="5" trace="myTaskScheduler" />
+      <node id="1903072132127665640" at="55,104,56,37" concept="14" />
+      <node id="1185176746684383427" at="56,37,57,38" concept="4" />
+      <node id="1903072132127689367" at="61,147,62,120" concept="10" />
+      <node id="1185176746686222480" at="69,60,70,35" concept="10" />
+      <node id="1185176746686281492" at="74,39,75,41" concept="10" />
+      <node id="5860855079812819966" at="83,0,84,0" concept="5" trace="myTask" />
+      <node id="5860855079812864965" at="84,0,85,0" concept="5" trace="myProgressMonitor" />
+      <node id="5860855079812913469" at="85,0,86,0" concept="5" trace="myAfterTask" />
+      <node id="5860855079812819970" at="87,102,88,20" concept="4" />
+      <node id="5860855079812864969" at="88,20,89,42" concept="4" />
+      <node id="5860855079812913473" at="89,42,90,30" concept="4" />
+      <node id="5860855079812171449" at="95,11,96,66" concept="4" />
+      <node id="5860855079812088163" at="97,17,98,27" concept="4" />
+      <node id="4929162834196404622" at="103,53,104,44" concept="4" />
+      <node id="4929162834196470848" at="104,44,105,0" concept="12" />
+      <node id="5860855079812760397" at="107,42,108,87" concept="4" />
+      <node id="4929162834196477525" at="108,87,109,0" concept="12" />
+      <node id="5860855079807388475" at="110,11,111,0" concept="12" />
+      <node id="1185176746684584326" at="116,11,117,98" concept="9" />
+      <node id="1185176746684603200" at="117,98,118,42" concept="4" />
+      <node id="5860855079805919843" at="118,42,119,42" concept="4" />
+      <node id="5860855079805956804" at="121,35,122,29" concept="4" />
+      <node id="5860855079805322135" at="129,26,130,32" concept="4" />
+      <node id="5860855079805346246" at="131,31,132,26" concept="4" />
+      <node id="5860855079805360608" at="133,16,134,27" concept="4" />
+      <node id="5860855079805291000" at="136,17,137,26" concept="4" />
+      <node id="5860855079806656727" at="142,41,143,42" concept="4" />
+      <node id="5860855079806650206" at="143,42,144,0" concept="12" />
+      <node id="5860855079807001385" at="146,125,147,52" concept="9" />
+      <node id="9139961235262329741" at="148,43,149,72" concept="9" />
+      <node id="9139961235262356241" at="150,26,151,39" concept="4" />
+      <node id="9139961235262219211" at="152,11,153,26" concept="15" />
+      <node id="9139961235262538999" at="154,9,155,22" concept="10" />
+      <node id="5860855079806954111" at="159,68,160,134" concept="10" />
+      <node id="5860855079805355450" at="133,14,135,9" concept="1" />
+      <node id="1903072132127830251" at="24,0,27,0" concept="3" trace="SystemBackgroundTaskScheduler#(Ljetbrains/mps/project/Project;)V" />
+      <node id="5860855079813092698" at="47,0,50,0" concept="8" trace="getScheduler#()Ljetbrains/mps/progress/TaskScheduler;" />
+      <node id="5860855079805936280" at="120,17,123,9" concept="7" />
+      <node id="9139961235262422032" at="149,72,152,11" concept="7" />
+      <node id="5860855079806954106" at="159,0,162,0" concept="13" trace="unwrap#(Ljava/lang/Throwable;)Ljava/lang/Throwable;" />
+      <node id="5860855079812128676" at="28,0,32,0" concept="8" trace="createQueue#(I)Ljetbrains/mps/workbench/progress/AbstractBackgroundTaskScheduler/AbstractTaskQueue;" />
+      <node id="5860855079812128688" at="33,0,37,0" concept="8" trace="createTask#(Ljetbrains/mps/progress/ProgressTask;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljetbrains/mps/progress/ProgressTask;" />
+      <node id="5860855079813062900" at="42,0,46,0" concept="3" trace="TaskSchedulerProgressMonitor#(Lorg/jetbrains/mps/openapi/util/ProgressMonitor;Ljetbrains/mps/progress/TaskScheduler;)V" />
+      <node id="1903072132127665634" at="55,0,59,0" concept="3" trace="AsyncTaskQueue#(Ljetbrains/mps/progress/TaskScheduler;ILjava/util/function/BooleanSupplier;)V" />
+      <node id="1903072132127669393" at="60,0,64,0" concept="8" trace="createRunnable#(Ljetbrains/mps/progress/ProgressTask;Ljava/lang/Runnable;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljetbrains/mps/workbench/progress/AbstractBackgroundTaskScheduler/TaskRunnable;" />
+      <node id="1185176746686179180" at="68,0,72,0" concept="8" trace="block#()Z" />
+      <node id="1185176746686179189" at="73,0,77,0" concept="8" trace="isReleasable#()Z" />
+      <node id="5860855079807388455" at="106,78,110,11" concept="4" />
+      <node id="5860855079806635617" at="141,147,145,8" concept="9" />
+      <node id="5860855079812801732" at="87,0,92,0" concept="3" trace="AsyncTaskRunnable#(Ljetbrains/mps/progress/ProgressTask;Ljava/lang/Runnable;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />
+      <node id="5860855079812083077" at="94,47,99,7" concept="16" />
+      <node id="5860855079805300974" at="128,11,135,9" concept="7" />
+      <node id="9139961235262195151" at="147,52,154,9" concept="7" />
+      <node id="5860855079812064365" at="93,0,101,0" concept="8" trace="accept#(Ljava/lang/Runnable;)V" />
+      <node id="5860855079805911584" at="115,103,124,7" concept="16" />
+      <node id="5860855079807267317" at="102,123,112,9" concept="4" />
+      <node id="1185176746686154083" at="66,135,77,9" concept="4" />
+      <node id="5860855079812549217" at="115,0,126,0" concept="8" trace="startTask#(Ljetbrains/mps/progress/ProgressTask;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;Ljava/lang/Runnable;)V" />
+      <node id="5860855079805282909" at="127,82,138,7" concept="16" />
+      <node id="5860855079806793305" at="145,8,156,9" concept="10" />
+      <node id="5860855079812711684" at="102,0,114,0" concept="8" trace="runAsynchronously#(Ljetbrains/mps/progress/ProgressTask;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;Ljava/lang/Runnable;)V" />
+      <node id="5860855079812556969" at="127,0,140,0" concept="8" trace="finishTask#(Ljetbrains/mps/progress/ProgressTask;ZLjava/lang/Throwable;)V" />
+      <node id="1185176746686126387" at="65,0,79,0" concept="8" trace="runBlocking#(Ljetbrains/mps/workbench/progress/AbstractBackgroundTaskScheduler/AbstractTaskQueue/Blocking;)V" />
+      <node id="5860855079806569625" at="141,0,158,0" concept="8" trace="runWithFJCommonPool#(Ljava/util/function/Consumer;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljava/util/concurrent/CompletableFuture;" />
+      <scope id="1903072132127830255" at="24,60,25,22" />
+      <scope id="5860855079812128684" at="29,99,30,55" />
+      <scope id="5860855079812128697" at="34,81,35,16" />
+      <scope id="5860855079813092701" at="47,41,48,30" />
+      <scope id="1903072132127669404" at="61,147,62,120" />
+      <scope id="1185176746686179185" at="69,60,70,35" />
+      <scope id="1185176746686179193" at="74,39,75,41" />
+      <scope id="5860855079812083078" at="95,11,96,66" />
+      <scope id="5860855079812083474" at="97,17,98,27" />
+      <scope id="5860855079805936282" at="121,35,122,29" />
+      <scope id="5860855079805300976" at="129,26,130,32" />
+      <scope id="5860855079805335887" at="131,31,132,26" />
+      <scope id="5860855079805355451" at="133,16,134,27" />
+      <scope id="5860855079805285651" at="136,17,137,26" />
+      <scope id="9139961235262422034" at="150,26,151,39" />
+      <scope id="5860855079806954110" at="159,68,160,134" />
+      <scope id="5860855079813062904" at="42,92,44,30" />
+      <scope id="1903072132127665638" at="55,104,57,38" />
+      <scope id="4929162834196404621" at="103,53,105,0" />
+      <scope id="5860855079807388458" at="107,42,109,0" />
+      <scope id="5860855079806646990" at="142,41,144,0" />
+      <scope id="1903072132127830251" at="24,0,27,0">
+        <var name="mpsProject" id="1903072132127830258" />
+      </scope>
+      <scope id="5860855079813092698" at="47,0,50,0" />
+      <scope id="5860855079812801736" at="87,102,90,30" />
+      <scope id="5860855079805911585" at="116,11,119,42">
+        <var name="scheduler" id="1185176746684584327" />
+      </scope>
+      <scope id="5860855079805914490" at="120,17,123,9" />
+      <scope id="5860855079806954106" at="159,0,162,0">
+        <var name="exception" id="5860855079806954107" />
+      </scope>
+      <scope id="5860855079812128676" at="28,0,32,0">
+        <var name="size" id="5860855079812128677" />
+      </scope>
+      <scope id="5860855079812128688" at="33,0,37,0">
+        <var name="monitor" id="5860855079812128691" />
+        <var name="task" id="5860855079812128689" />
+      </scope>
+      <scope id="5860855079813062900" at="42,0,46,0">
+        <var name="delegate" id="5860855079813062907" />
+        <var name="scheduler" id="5860855079813067839" />
+      </scope>
+      <scope id="1903072132127665634" at="55,0,59,0">
+        <var name="queueSize" id="1903072132127665641" />
+        <var name="shouldFinish" id="1903072132127665645" />
+        <var name="taskScheduler" id="1185176746684351663" />
+      </scope>
+      <scope id="1903072132127669393" at="60,0,64,0">
+        <var name="afterTask" id="1903072132127669396" />
+        <var name="progressMonitor" id="1903072132127669398" />
+        <var name="task" id="1903072132127669394" />
+      </scope>
+      <scope id="1185176746686179180" at="68,0,72,0" />
+      <scope id="1185176746686179189" at="73,0,77,0" />
+      <scope id="5860855079812801732" at="87,0,92,0">
+        <var name="afterTask" id="5860855079812905489" />
+        <var name="progressMonitor" id="5860855079812859129" />
+        <var name="task" id="5860855079812815031" />
+      </scope>
+      <scope id="5860855079812064374" at="94,47,99,7" />
+      <scope id="5860855079807388454" at="106,78,111,0" />
+      <scope id="9139961235262195153" at="148,43,153,26">
+        <var name="exception" id="9139961235262329742" />
+      </scope>
+      <scope id="5860855079805282910" at="128,11,135,9" />
+      <scope id="5860855079812064365" at="93,0,101,0">
+        <var name="continuation" id="5860855079812064369" />
+      </scope>
+      <scope id="5860855079805042623" at="115,103,124,7" />
+      <scope id="5860855079806895394" at="146,125,155,22">
+        <var name="t" id="5860855079807001386" />
+      </scope>
+      <scope id="5860855079804957478" at="102,123,112,9" />
+      <scope id="1185176746686126393" at="66,135,77,9" />
+      <scope id="5860855079812549217" at="115,0,126,0">
+        <var name="continuation" id="5860855079805063313" />
+        <var name="progressMonitor" id="5860855079805059541" />
+        <var name="task" id="5860855079805053828" />
+      </scope>
+      <scope id="5860855079805239011" at="127,82,138,7" />
+      <scope id="5860855079812711684" at="102,0,114,0">
+        <var name="continuation" id="5860855079804983137" />
+        <var name="progressMonitor" id="5860855079804978744" />
+        <var name="task" id="5860855079804974298" />
+      </scope>
+      <scope id="5860855079812556969" at="127,0,140,0">
+        <var name="cancelled" id="5860855079805239005" />
+        <var name="err" id="5860855079805239007" />
+        <var name="task" id="5860855079805239003" />
+      </scope>
+      <scope id="1185176746686126387" at="65,0,79,0">
+        <var name="blocking" id="1185176746686126388" />
+      </scope>
+      <scope id="5860855079806569629" at="141,147,156,9">
+        <var name="onThreadCallable" id="5860855079806635623" />
+      </scope>
+      <scope id="5860855079806569625" at="141,0,158,0">
+        <var name="progressMonitor" id="4929162834196201771" />
+        <var name="taskToRun" id="4929162834196201767" />
+      </scope>
+      <unit id="1185176746686179164" at="67,36,77,7" name="jetbrains.mps.workbench.progress.SystemBackgroundTaskScheduler$AsyncTaskQueue$1" />
+      <unit id="5860855079813023914" at="38,0,51,0" name="jetbrains.mps.workbench.progress.SystemBackgroundTaskScheduler$TaskSchedulerProgressMonitor" />
+      <unit id="1903072132127638241" at="52,0,80,0" name="jetbrains.mps.workbench.progress.SystemBackgroundTaskScheduler$AsyncTaskQueue" />
+      <unit id="5860855079812052266" at="81,0,164,0" name="jetbrains.mps.workbench.progress.SystemBackgroundTaskScheduler$AsyncTaskRunnable" />
+      <unit id="5860855079812039016" at="21,0,166,0" name="jetbrains.mps.workbench.progress.SystemBackgroundTaskScheduler" />
+    </file>
+  </root>
+</debug-info>
+

@@ -9,11 +9,10 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.progress.AbstractTask;
+import jetbrains.mps.progress.ProgressTask;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.util.CollectConsumer;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.HashSet;
+import jetbrains.mps.util.containers.ConcurrentHashSet;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import java.util.Map;
@@ -52,21 +51,21 @@ public class AggregatingChecker<O> implements IAbstractChecker<O, IssueKindRepor
   }
 
   @Override
-  public AbstractTask checkTask(final O toCheck, final SRepository repository, final Consumer<? super IssueKindReportItem> errorCollector) {
+  public ProgressTask checkTask(final O toCheck, final SRepository repository, final Consumer<? super IssueKindReportItem> errorCollector) {
 
-    AbstractTask.Builder taskBuilder = new AbstractTask.Builder();
-    taskBuilder.addTask(new AbstractTask.SimpleTask("Checking " + myNameGetter.invoke(toCheck)) {
+    ProgressTask.Builder taskBuilder = new ProgressTask.Builder();
+    taskBuilder.addTask(new ProgressTask.SimpleTask("Checking " + myNameGetter.invoke(toCheck)) {
       @Override
       protected void run() {
         myMonitor.start(getTitle(), ListSequence.fromList(myOrigins).count());
       }
     });
 
-    final CollectConsumer<IssueKindReportItem> consumer = new CollectConsumer<IssueKindReportItem>(SetSequence.fromSet(new HashSet<IssueKindReportItem>()));
-    AbstractTask.Builder builder;
-    builder = new AbstractTask.Builder();
+    final CollectConsumer<IssueKindReportItem> consumer = new CollectConsumer<IssueKindReportItem>(new ConcurrentHashSet<>());
+    ProgressTask.Builder builder;
+    builder = new ProgressTask.Builder();
     for (final IChecker<O, ? extends IssueKindReportItem> origin : ListSequence.fromList(myOrigins)) {
-      builder.addTask(new AbstractTask.SimpleTask(String.format("apply %s", origin)) {
+      builder.addTask(new ProgressTask.SimpleTask(String.format("apply %s", origin)) {
         @Override
         protected void run() {
           final ProgressMonitor subTask = myMonitor.subTask(1, SubProgressKind.DEFAULT);
@@ -83,11 +82,11 @@ public class AggregatingChecker<O> implements IAbstractChecker<O, IssueKindRepor
         }
       });
     }
-    AbstractTask callCheckers = builder.asSequential();
+    ProgressTask callCheckers = builder.asSequential();
 
     final Map<IssueKindReportItem.PathObject, Collection<MySuppressableError>> consumerResultMap = MapSequence.fromMap(new HashMap<IssueKindReportItem.PathObject, Collection<MySuppressableError>>());
 
-    AbstractTask wrapReportItems = AbstractTask.just(() -> {
+    ProgressTask wrapReportItems = ProgressTask.just(() -> {
       Collection<? extends IssueKindReportItem> consumerResult = consumer.getResult();
       for (IssueKindReportItem reported : consumerResult) {
         if (MapSequence.fromMap(consumerResultMap).get(IssueKindReportItem.PATH_OBJECT.get(reported)) == null) {
@@ -97,11 +96,11 @@ public class AggregatingChecker<O> implements IAbstractChecker<O, IssueKindRepor
       }
     });
 
-    builder = new AbstractTask.Builder();
+    builder = new ProgressTask.Builder();
     for (IChecker<O, ? extends IssueKindReportItem> origin : myOrigins) {
       final ICheckingPostprocessor<? extends IssueKindReportItem> postprocessor = origin.getPostprocessor();
       if (postprocessor != null) {
-        builder.addTask(new AbstractTask.SimpleTask("postprocessing") {
+        builder.addTask(new ProgressTask.SimpleTask("postprocessing") {
           @Override
           protected void run() {
             new ModelAccessHelper(repository).runReadAction(() -> {
@@ -121,9 +120,9 @@ public class AggregatingChecker<O> implements IAbstractChecker<O, IssueKindRepor
 
       }
     }
-    AbstractTask callPostProcessors = builder.asSequential();
+    ProgressTask callPostProcessors = builder.asSequential();
 
-    AbstractTask collectErrors = AbstractTask.just(() -> {
+    ProgressTask collectErrors = ProgressTask.just(() -> {
       for (MySuppressableError approved : Sequence.fromIterable(MapSequence.fromMap(consumerResultMap).values()).translate(new ITranslator2<Collection<MySuppressableError>, MySuppressableError>() {
         public Iterable<MySuppressableError> translate(Collection<MySuppressableError> it) {
           return it;
@@ -137,7 +136,7 @@ public class AggregatingChecker<O> implements IAbstractChecker<O, IssueKindRepor
 
     taskBuilder.addTask(callCheckers.then(wrapReportItems).then(callPostProcessors).then(collectErrors));
 
-    taskBuilder.addTask(new AbstractTask.SimpleTask("Checking finished") {
+    taskBuilder.addTask(new ProgressTask.SimpleTask("Checking finished") {
       @Override
       public void onFinished() {
         myMonitor.done();

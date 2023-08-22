@@ -23,7 +23,7 @@ import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.progress.AbstractTask;
+import jetbrains.mps.progress.ProgressTask;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -147,12 +147,12 @@ public class ModelCheckerBuilder {
   private IAbstractChecker<ItemsToCheck, IssueKindReportItem> createChecker(final List<IChecker<SModel, ? extends IssueKindReportItem>> specificModelCheckers, final List<IChecker<SModule, ? extends IssueKindReportItem>> specificModuleCheckers) {
     return new IAbstractChecker<ItemsToCheck, IssueKindReportItem>() {
       public void check(ItemsToCheck itemsToCheck, SRepository repository, Consumer<? super IssueKindReportItem> errorCollector, ProgressMonitor monitor) {
-        AbstractTask checkTask = checkTask(itemsToCheck, repository, errorCollector);
-        myTaskScheduler.schedule(checkTask, monitor).complete();
+        ProgressTask checkTask = checkTask(itemsToCheck, repository, errorCollector);
+        myTaskScheduler.schedule(checkTask, monitor).finish();
       }
 
       @Override
-      public AbstractTask checkTask(final ItemsToCheck itemsToCheck, final SRepository repository, final Consumer<? super IssueKindReportItem> errorCollector) {
+      public ProgressTask checkTask(final ItemsToCheck itemsToCheck, final SRepository repository, final Consumer<? super IssueKindReportItem> errorCollector) {
         List<SModule> modules = ListSequence.fromList(itemsToCheck.modules).translate(new ITranslator2<SModule, SModule>() {
           public Iterable<SModule> translate(SModule it) {
             return myModelExtractor.getSubModules(it);
@@ -165,31 +165,20 @@ public class ModelCheckerBuilder {
           }
         }).count();
 
-        AbstractTask.Builder taskBuilder = new AbstractTask.Builder();
-        taskBuilder.addTask(() -> {
-        });
-        taskBuilder.addTask(new AbstractTask.SimpleTask("checking") {
+        ProgressTask.Builder taskBuilder = new ProgressTask.Builder();
+        taskBuilder.addTask(new ProgressTask.SimpleTask("checking") {
           @Override
           protected void run() {
             myMonitor.start("Checking", work);
           }
         });
 
-        AbstractTask.Builder builder = new AbstractTask.Builder();
+        ProgressTask.Builder builder = new ProgressTask.Builder();
         IAbstractChecker<SModule, ? extends IssueKindReportItem> generalModuleChecker = aggreagateSpecificCheckers(specificModuleCheckers, (SModule m) -> m.getModuleName());
         IAbstractChecker<SModel, ? extends IssueKindReportItem> generalModelChecker = skipNullModules(aggreagateSpecificCheckers(specificModelCheckers, (SModel m) -> m.getName().getLongName()));
 
         for (SModel model : ListSequence.fromList(models)) {
-          builder.addTask(new AbstractTask.DelegatingTask(generalModelChecker.checkTask(model, repository, errorCollector)) {
-
-            @Override
-            public void initMonitor(ProgressMonitor monitor) {
-              myMonitor = monitor.subTask(1, SubProgressKind.REPLACING);
-            }
-            @Override
-            public boolean isReady() {
-              return !(myMonitor.isCanceled());
-            }
+          builder.addTask(new DelegatingSubtask(generalModelChecker.checkTask(model, repository, errorCollector)) {
             @Override
             public void onThrowable(Throwable t) {
               if (LOG.isEnabledFor(Level.ERROR)) {
@@ -198,24 +187,11 @@ public class ModelCheckerBuilder {
               IssueKindReportItem ri = new ExceptionForModel(model.getReference(), new RuntimeException(t));
               errorCollector.accept(ri);
             }
-            @Override
-            public void onFinished() {
-              myMonitor.done();
-            }
           });
         }
 
         for (SModule module : ListSequence.fromList(modules)) {
-          builder.addTask(new AbstractTask.DelegatingTask(generalModuleChecker.checkTask(module, repository, errorCollector)) {
-
-            @Override
-            public void initMonitor(ProgressMonitor monitor) {
-              myMonitor = monitor.subTask(1, SubProgressKind.REPLACING);
-            }
-            @Override
-            public boolean isReady() {
-              return !(myMonitor.isCanceled());
-            }
+          builder.addTask(new DelegatingSubtask(generalModuleChecker.checkTask(module, repository, errorCollector)) {
             @Override
             public void onThrowable(Throwable t) {
               if (LOG.isEnabledFor(Level.ERROR)) {
@@ -224,23 +200,10 @@ public class ModelCheckerBuilder {
               IssueKindReportItem ri = new ExceptionForModule(module.getModuleReference(), new RuntimeException(t));
               errorCollector.accept(ri);
             }
-            @Override
-            public void onFinished() {
-              myMonitor.done();
-            }
           });
 
           for (SModel model : ListSequence.fromList(myModelExtractor.getModels(module))) {
-            builder.addTask(new AbstractTask.DelegatingTask(generalModelChecker.checkTask(model, repository, errorCollector)) {
-
-              @Override
-              public void initMonitor(ProgressMonitor monitor) {
-                myMonitor = monitor.subTask(1, SubProgressKind.REPLACING);
-              }
-              @Override
-              public boolean isReady() {
-                return !(myMonitor.isCanceled());
-              }
+            builder.addTask(new DelegatingSubtask(generalModelChecker.checkTask(model, repository, errorCollector)) {
               @Override
               public void onThrowable(Throwable t) {
                 if (LOG.isEnabledFor(Level.ERROR)) {
@@ -249,17 +212,12 @@ public class ModelCheckerBuilder {
                 IssueKindReportItem ri = new ExceptionForModel(model.getReference(), new RuntimeException(t));
                 errorCollector.accept(ri);
               }
-              @Override
-              public void onFinished() {
-                myMonitor.done();
-              }
             });
           }
         }
         taskBuilder.addTask(builder.asParallel());
 
-        taskBuilder.addTask(new AbstractTask.SimpleTask("checking finished") {
-
+        taskBuilder.addTask(new ProgressTask.SimpleTask("checking finished") {
           @Override
           public void onFinished() {
             myMonitor.done();
@@ -268,6 +226,24 @@ public class ModelCheckerBuilder {
         return taskBuilder.asSequential();
       }
     };
+  }
+
+  private static class DelegatingSubtask extends ProgressTask.DelegatingTask {
+    public DelegatingSubtask(ProgressTask delegate) {
+      super(delegate);
+    }
+    @Override
+    public void initMonitor(ProgressMonitor parentMonitor) {
+      myMonitor = parentMonitor.subTask(1, SubProgressKind.REPLACING);
+    }
+    @Override
+    public boolean isReady() {
+      return !(myMonitor.isCanceled());
+    }
+    @Override
+    public void onFinished() {
+      myMonitor.done();
+    }
   }
 
   public static IAbstractChecker<SModel, IssueKindReportItem> skipNullModules(IAbstractChecker<SModel, IssueKindReportItem> checker) {

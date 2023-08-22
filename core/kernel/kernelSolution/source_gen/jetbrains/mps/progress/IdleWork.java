@@ -5,28 +5,29 @@ package jetbrains.mps.progress;
 import jetbrains.mps.annotations.GeneratedClass;
 
 /**
- * Stands for a portion of executable code that can be completed.
+ * Stands for a job (a portion of executable code) that can be asked to be performed explicitly
+ * at a later time.
  * <p>
  * Not a functional interface (other methods may be declared later). 
  */
 @GeneratedClass(node = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)/3277940153836195198", model = "r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)")
-public interface Completable {
+public interface IdleWork {
 
   class Support {
-    public static Completable eval(Runnable runnable) {
-      return new RunnableCompletable(runnable);
+    public static IdleWork run(Runnable runnable) {
+      return new RunnableWork(runnable);
     }
   }
 
-  void complete();
+  void finish();
 
-  class RunnableCompletable implements Completable {
+  class RunnableWork implements IdleWork {
     private final Runnable myRunnable;
-    public RunnableCompletable(Runnable runnable) {
+    public RunnableWork(Runnable runnable) {
       this.myRunnable = runnable;
     }
     @Override
-    public void complete() {
+    public void finish() {
       myRunnable.run();
     }
   }
