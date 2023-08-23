@@ -309,7 +309,6 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.closures.typesystem.typeof_CompactInvokeFunctionExpression_InferenceRule">
     <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
