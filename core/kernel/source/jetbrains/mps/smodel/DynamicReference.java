@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -117,7 +117,7 @@ public final class DynamicReference extends SReferenceBase {
   protected SNode getTargetNode_internal(ProblemReporter report) {
     // seems like getTargetNode() doesn't make sense if source node is detached
     if (mySourceNode.getModel() == null) {
-      LOG.error("Taking target node of dynamic reference whose source node is not in a model");
+      report.error("Taking target node of dynamic reference whose source node is not in a model");
       return null;
     }
 
