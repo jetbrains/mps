@@ -78,7 +78,7 @@ public final class MakeExecutor implements Runnable {
       //      better yet, reuse MakeActionImpl that already does that!
       return new MakeSequence(new ModelsToResources(projectModels).resources(), null, session);
     });
-    CoreMakeTask task = new CoreMakeTask("Make " + project.toString(), seq, ctl, session.getMessageHandler());
+    CoreMakeTask task = new CoreMakeTask(seq, ctl, session.getMessageHandler());
     // XXX perhaps, run in a separate thread?
     // XXX would be great to give some progress reporting into ant task if possible
     task.run(new EmptyProgressMonitor());

@@ -123,7 +123,6 @@
       <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
-      <concept id="1068581242875" name="jetbrains.mps.baseLanguage.structure.PlusExpression" flags="nn" index="3cpWs3" />
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
         <child id="1068581517676" name="expression" index="3cqZAk" />
       </concept>
@@ -1250,20 +1249,7 @@
             <node concept="2ShNRf" id="3w1$bnwwDAP" role="33vP2m">
               <node concept="1pGfFk" id="3w1$bnwwDAQ" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="4rvk:41innpAgd54" resolve="CoreMakeTask" />
-                <node concept="3cpWs3" id="3w1$bnwwDAR" role="37wK5m">
-                  <node concept="2OqwBi" id="3w1$bnwwDAS" role="3uHU7w">
-                    <node concept="37vLTw" id="3w1$bnwwDAT" role="2Oq$k0">
-                      <ref role="3cqZAo" node="3w1$bnwwaOv" resolve="project" />
-                    </node>
-                    <node concept="liA8E" id="3w1$bnwwDAU" role="2OqNvi">
-                      <ref role="37wK5l" to="z1c3:~Project.toString()" resolve="toString" />
-                    </node>
-                  </node>
-                  <node concept="Xl_RD" id="3w1$bnwwDAV" role="3uHU7B">
-                    <property role="Xl_RC" value="Make " />
-                  </node>
-                </node>
+                <ref role="37wK5l" to="4rvk:4uO1VCfEygl" resolve="CoreMakeTask" />
                 <node concept="37vLTw" id="3w1$bnwwDAW" role="37wK5m">
                   <ref role="3cqZAo" node="3w1$bnww_x5" resolve="seq" />
                 </node>

@@ -3994,83 +3994,6 @@
         </node>
       </node>
       <node concept="3clFbS" id="43l$qHE8Uhf" role="3clF47">
-        <node concept="3cpWs8" id="3$29j12NTCK" role="3cqZAp">
-          <node concept="3cpWsn" id="3$29j12NTCL" role="3cpWs9">
-            <property role="TrG5h" value="scrName" />
-            <node concept="17QB3L" id="3$29j12NTCM" role="1tU5fm" />
-            <node concept="Xl_RD" id="3$29j12NTCN" role="33vP2m">
-              <property role="Xl_RC" value="Build" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="3$29j12NTCP" role="3cqZAp">
-          <node concept="3clFbS" id="3$29j12NTCQ" role="3clFbx">
-            <node concept="3cpWs8" id="3$29j12NTCR" role="3cqZAp">
-              <node concept="3cpWsn" id="3$29j12NTCS" role="3cpWs9">
-                <property role="TrG5h" value="msg" />
-                <node concept="17QB3L" id="3$29j12NTCT" role="1tU5fm" />
-                <node concept="3cpWs3" id="3$29j12NTCU" role="33vP2m">
-                  <node concept="37vLTw" id="3$29j12NTCV" role="3uHU7B">
-                    <ref role="3cqZAo" node="3$29j12NTCL" resolve="scrName" />
-                  </node>
-                  <node concept="Xl_RD" id="3$29j12NTCW" role="3uHU7w">
-                    <property role="Xl_RC" value=" aborted: nothing to do" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="2BjwmTy4lwt" role="3cqZAp">
-              <node concept="2OqwBi" id="2BjwmTy4meN" role="3clFbG">
-                <node concept="2OqwBi" id="2BjwmTy4lLp" role="2Oq$k0">
-                  <node concept="37vLTw" id="2BjwmTy4lwr" role="2Oq$k0">
-                    <ref role="3cqZAo" node="43l$qHE8Uh2" resolve="session" />
-                  </node>
-                  <node concept="liA8E" id="2BjwmTy4lX9" role="2OqNvi">
-                    <ref role="37wK5l" to="hfuk:7yGn3z4N4Nw" resolve="getMessageHandler" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="2BjwmTy4mxV" role="2OqNvi">
-                  <ref role="37wK5l" to="et5u:~IMessageHandler.handle(jetbrains.mps.messages.IMessage)" resolve="handle" />
-                  <node concept="2ShNRf" id="5oXcJSdWLtG" role="37wK5m">
-                    <node concept="1pGfFk" id="5oXcJSdWLtH" role="2ShVmc">
-                      <ref role="37wK5l" to="et5u:~Message.&lt;init&gt;(jetbrains.mps.messages.MessageKind,java.lang.String)" resolve="Message" />
-                      <node concept="Rm8GO" id="5oXcJSdWLtI" role="37wK5m">
-                        <ref role="1Px2BO" to="et5u:~MessageKind" resolve="MessageKind" />
-                        <ref role="Rm8GQ" to="et5u:~MessageKind.ERROR" resolve="ERROR" />
-                      </node>
-                      <node concept="37vLTw" id="2BjwmTy4mWR" role="37wK5m">
-                        <ref role="3cqZAo" node="3$29j12NTCS" resolve="msg" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs6" id="3$29j12NTD2" role="3cqZAp">
-              <node concept="2ShNRf" id="3$29j12NTD3" role="3cqZAk">
-                <node concept="1pGfFk" id="3$29j12NTD4" role="2ShVmc">
-                  <ref role="37wK5l" to="rk9m:7UmW2QiY4tP" resolve="FutureValue" />
-                  <node concept="2ShNRf" id="3$29j12NTD5" role="37wK5m">
-                    <node concept="1pGfFk" id="3$29j12NTD6" role="2ShVmc">
-                      <ref role="37wK5l" to="i9so:40Y6fh$WLpG" resolve="IResult.FAILURE" />
-                      <node concept="10Nm6u" id="3$29j12NTD7" role="37wK5m" />
-                    </node>
-                  </node>
-                  <node concept="3uibUv" id="41innpAtK0u" role="1pMfVU">
-                    <ref role="3uigEE" to="i9so:17I1R__cQ5X" resolve="IResult" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="3$29j12NTD8" role="3clFbw">
-            <node concept="37vLTw" id="3$29j12NVmE" role="2Oq$k0">
-              <ref role="3cqZAo" node="43l$qHE8Uh4" resolve="resources" />
-            </node>
-            <node concept="1v1jN8" id="3$29j12NTDa" role="2OqNvi" />
-          </node>
-        </node>
-        <node concept="3clFbH" id="41innpAlTYO" role="3cqZAp" />
         <node concept="3cpWs8" id="41innpAkY8J" role="3cqZAp">
           <node concept="3cpWsn" id="41innpAkY8K" role="3cpWs9">
             <property role="TrG5h" value="makeSeq" />
@@ -4123,10 +4046,7 @@
             </node>
             <node concept="2ShNRf" id="41innpAm34J" role="33vP2m">
               <node concept="1pGfFk" id="41innpAm34K" role="2ShVmc">
-                <ref role="37wK5l" to="4rvk:41innpAgd54" resolve="CoreMakeTask" />
-                <node concept="37vLTw" id="41innpAm9Q6" role="37wK5m">
-                  <ref role="3cqZAo" node="3$29j12NTCL" resolve="scrName" />
-                </node>
+                <ref role="37wK5l" to="4rvk:4uO1VCfEygl" resolve="CoreMakeTask" />
                 <node concept="37vLTw" id="41innpAm8rh" role="37wK5m">
                   <ref role="3cqZAo" node="41innpAkY8K" resolve="makeSeq" />
                 </node>
@@ -4395,6 +4315,11 @@
       <node concept="TZ5HA" id="5Pnc_qQmCXE" role="TZ5H$">
         <node concept="1dT_AC" id="5Pnc_qQmCXF" role="1dT_Ay">
           <property role="1dT_AB" value="Simplistic make service tailored for MPS own tests" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="6CCHl8GAhaj" role="TZ5H$">
+        <node concept="1dT_AC" id="6CCHl8GAhak" role="1dT_Ay">
+          <property role="1dT_AB" value="XXX pretty much identical to BuildMakeService, do we care to keep both?" />
         </node>
       </node>
     </node>

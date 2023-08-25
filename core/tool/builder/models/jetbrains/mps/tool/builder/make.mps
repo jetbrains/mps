@@ -734,83 +734,6 @@
         </node>
       </node>
       <node concept="3clFbS" id="KL8Aqll4bs" role="3clF47">
-        <node concept="3cpWs8" id="KL8Aqll4bt" role="3cqZAp">
-          <node concept="3cpWsn" id="KL8Aqll4bu" role="3cpWs9">
-            <property role="TrG5h" value="scrName" />
-            <node concept="17QB3L" id="KL8Aqll4bv" role="1tU5fm" />
-            <node concept="Xl_RD" id="KL8Aqll4bw" role="33vP2m">
-              <property role="Xl_RC" value="Build" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="KL8Aqll4bx" role="3cqZAp" />
-        <node concept="3clFbJ" id="KL8Aqll4by" role="3cqZAp">
-          <node concept="3clFbS" id="KL8Aqll4bz" role="3clFbx">
-            <node concept="3cpWs8" id="KL8Aqll4b$" role="3cqZAp">
-              <node concept="3cpWsn" id="KL8Aqll4b_" role="3cpWs9">
-                <property role="TrG5h" value="msg" />
-                <node concept="17QB3L" id="KL8Aqll4bA" role="1tU5fm" />
-                <node concept="3cpWs3" id="KL8Aqll4bB" role="33vP2m">
-                  <node concept="37vLTw" id="3GM_nagTsMQ" role="3uHU7B">
-                    <ref role="3cqZAo" node="KL8Aqll4bu" resolve="scrName" />
-                  </node>
-                  <node concept="Xl_RD" id="KL8Aqll4bD" role="3uHU7w">
-                    <property role="Xl_RC" value=" aborted: nothing to do" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="KL8Aqll4bE" role="3cqZAp">
-              <node concept="2OqwBi" id="KL8Aqll4bF" role="3clFbG">
-                <node concept="2OqwBi" id="KL8Aqll4bG" role="2Oq$k0">
-                  <node concept="37vLTw" id="2BHiRxgmI71" role="2Oq$k0">
-                    <ref role="3cqZAo" node="KL8Aqll4be" resolve="makeSession" />
-                  </node>
-                  <node concept="liA8E" id="KL8Aqll4bI" role="2OqNvi">
-                    <ref role="37wK5l" to="hfuk:7yGn3z4N4Nw" resolve="getMessageHandler" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="KL8Aqll4bJ" role="2OqNvi">
-                  <ref role="37wK5l" to="et5u:~IMessageHandler.handle(jetbrains.mps.messages.IMessage)" resolve="handle" />
-                  <node concept="2ShNRf" id="KL8Aqll4bK" role="37wK5m">
-                    <node concept="1pGfFk" id="KL8Aqll4bL" role="2ShVmc">
-                      <ref role="37wK5l" to="et5u:~Message.&lt;init&gt;(jetbrains.mps.messages.MessageKind,java.lang.String)" resolve="Message" />
-                      <node concept="Rm8GO" id="KL8Aqll4bM" role="37wK5m">
-                        <ref role="1Px2BO" to="et5u:~MessageKind" resolve="MessageKind" />
-                        <ref role="Rm8GQ" to="et5u:~MessageKind.ERROR" resolve="ERROR" />
-                      </node>
-                      <node concept="37vLTw" id="3GM_nagTBYl" role="37wK5m">
-                        <ref role="3cqZAo" node="KL8Aqll4b_" resolve="msg" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs6" id="KL8Aqll4bO" role="3cqZAp">
-              <node concept="2ShNRf" id="KL8Aqll4bP" role="3cqZAk">
-                <node concept="1pGfFk" id="KL8Aqll4bQ" role="2ShVmc">
-                  <ref role="37wK5l" to="rk9m:7UmW2QiY4tP" resolve="FutureValue" />
-                  <node concept="3uibUv" id="7DOpv1qxF$d" role="1pMfVU">
-                    <ref role="3uigEE" to="i9so:17I1R__cQ5X" resolve="IResult" />
-                  </node>
-                  <node concept="2ShNRf" id="KL8Aqll4bR" role="37wK5m">
-                    <node concept="1pGfFk" id="KL8Aqll4bS" role="2ShVmc">
-                      <ref role="37wK5l" to="i9so:40Y6fh$WLpG" resolve="IResult.FAILURE" />
-                      <node concept="10Nm6u" id="KL8Aqll4bT" role="37wK5m" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="KL8Aqll4bU" role="3clFbw">
-            <node concept="37vLTw" id="2BHiRxgmzp0" role="2Oq$k0">
-              <ref role="3cqZAo" node="KL8Aqll4bg" resolve="inputRes" />
-            </node>
-            <node concept="1v1jN8" id="KL8Aqll4bW" role="2OqNvi" />
-          </node>
-        </node>
         <node concept="3cpWs8" id="41innpAkY8J" role="3cqZAp">
           <node concept="3cpWsn" id="41innpAkY8K" role="3cpWs9">
             <property role="TrG5h" value="makeSeq" />
@@ -863,10 +786,7 @@
             </node>
             <node concept="2ShNRf" id="KL8Aqll4fh" role="33vP2m">
               <node concept="1pGfFk" id="KL8Aqll4fi" role="2ShVmc">
-                <ref role="37wK5l" to="4rvk:41innpAgd54" resolve="CoreMakeTask" />
-                <node concept="37vLTw" id="41innpAlp1$" role="37wK5m">
-                  <ref role="3cqZAo" node="KL8Aqll4bu" resolve="scrName" />
-                </node>
+                <ref role="37wK5l" to="4rvk:4uO1VCfEygl" resolve="CoreMakeTask" />
                 <node concept="37vLTw" id="41innpAlyKs" role="37wK5m">
                   <ref role="3cqZAo" node="41innpAkY8K" resolve="makeSeq" />
                 </node>
