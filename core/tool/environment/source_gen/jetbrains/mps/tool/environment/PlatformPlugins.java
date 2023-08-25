@@ -10,9 +10,13 @@ import java.util.regex.Pattern;
 import jetbrains.mps.tool.common.PluginData;
 import java.io.File;
 import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.jar.JarFile;
+import java.util.jar.JarEntry;
 import java.util.regex.Matcher;
 import java.io.FileReader;
 import java.nio.CharBuffer;
+import java.io.InputStreamReader;
 import java.util.Collection;
 import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
@@ -44,7 +48,32 @@ import java.net.URLClassLoader;
     for (PluginData pd : config.getPlugins()) {
       File pluginLocation = new File(pd.path);
       List<File> cp = detectClasspath(pluginLocation);
-      final CharSequence pluginXmlContent = readFile(new File(pluginLocation, PLUGIN_DESCRIPTOR_LOCATION), 8192);
+      CharSequence pluginXmlContent = "";
+      File pluginXmlFile = new File(pluginLocation, PLUGIN_DESCRIPTOR_LOCATION);
+      if (pluginXmlFile.isFile()) {
+        pluginXmlContent = readFile(pluginXmlFile, 8192);
+      } else {
+        for (File cpElement : ListSequence.fromList(cp)) {
+          if (!(cpElement.isFile())) {
+            continue;
+          }
+          try {
+            JarFile jarFile = new JarFile(cpElement);
+            // confirmed getJarEntry("path/file") works @jbrsdk-17.0.7
+            JarEntry jarEntry = jarFile.getJarEntry(PLUGIN_DESCRIPTOR_LOCATION);
+            if (jarEntry == null) {
+              continue;
+            }
+            pluginXmlContent = readJarEntry(jarFile, jarEntry, 8192);
+            if (pluginXmlContent.length() > 0) {
+              break;
+            }
+          } catch (Exception ex) {
+            // ignore
+            continue;
+          }
+        }
+      }
       List<File> langLibs = detectLanguageLibraries(pluginLocation, pluginXmlContent);
       final Matcher idMatcher = myPluginIdPattern.matcher(pluginXmlContent);
       final String detectedId = (idMatcher.find() ? idMatcher.group(1) : null);
@@ -68,7 +97,7 @@ import java.net.URLClassLoader;
           // regular scenario, when <plugin> has path only and no id (e.g. <generate> task), use the one from plugin.xml
           pluginId = detectedId;
         } else {
-          // use uniqie value not to overwrite map entries
+          // use unique value not to overwrite map entries
           pluginId = String.format("plugin.%x", System.identityHashCode(pd));
           if (LOG.isWarningLevel()) {
             LOG.warning(String.format("Could not detect id for plugin at %s", pluginLocation));
@@ -87,23 +116,25 @@ import java.net.URLClassLoader;
   }
 
   private static CharSequence readFile(File f, int howMuch) {
-    FileReader reader = null;
-    try {
-      reader = new FileReader(f);
+    try (FileReader reader = new FileReader(f)) {
       CharBuffer cb = CharBuffer.allocate(howMuch);
       reader.read(cb);
       cb.flip();
       return cb;
     } catch (Exception ex) {
       // ignore
-    } finally {
-      try {
-        if (reader != null) {
-          reader.close();
-        }
-      } catch (Exception ex) {
-        // ignore
-      }
+    }
+    return "";
+  }
+
+  private static CharSequence readJarEntry(JarFile jarFile, JarEntry jarEntry, int howMuch) {
+    try (InputStreamReader reader = new InputStreamReader(jarFile.getInputStream(jarEntry))) {
+      CharBuffer cb = CharBuffer.allocate(howMuch);
+      reader.read(cb);
+      cb.flip();
+      return cb;
+    } catch (Exception ex) {
+      // ignore
     }
     return "";
   }
