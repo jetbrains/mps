@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-bkni4w4fko1xoxm8f8azaegshfir2qc">
-  <files names="ClosureLiteraltargetFunType_Test.java:ClosureLiteraltargetIface_Test.java:Generics_Test.java:MockTemplateQueryContext.java" />
+<product version="3" modelHash="8p9tazdnrr6v4gqyhnolyhzl3gjyp24">
+  <files names="ClosureLiteraltargetFunType_Test.java:ClosureLiteraltargetIface_Test.java:Generics_Test.java:MockTemplateQueryContext.java:NestedClosures_Test.java" />
 </product>
 
