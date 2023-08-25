@@ -26,6 +26,7 @@ public class Annotate_Action extends BaseAction {
     super("Annotate", "", ICON);
     this.setIsAlwaysVisible(true);
     this.setActionAccess(ActionAccess.READ_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

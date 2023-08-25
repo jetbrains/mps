@@ -3761,6 +3761,7 @@
     <property role="2uzpH1" value="Annotate" />
     <property role="3GE5qa" value="Actions" />
     <property role="2YLI8m" value="6u2MFnph2yg/read" />
+    <property role="1rBW0U" value="true" />
     <node concept="tnohg" id="3WCIgQv3c7U" role="tncku">
       <node concept="3clFbS" id="3WCIgQv3c7V" role="2VODD2">
         <node concept="3cpWs8" id="13$TqNLIgvg" role="3cqZAp">
