@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import jetbrains.mps.newTypesystem.operation.ProcessReplacementRuleOperation;
 import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.newTypesystem.state.Equations;
 import jetbrains.mps.newTypesystem.state.State;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
@@ -42,7 +43,7 @@ import java.util.List;
 import java.util.Set;
 
 public class InequalityBlock extends RelationBlock {
-  private boolean lessThan;
+  private final boolean lessThan;
 
   public SNode getOutput() {
     if (lessThan) {
@@ -164,9 +165,9 @@ public class InequalityBlock extends RelationBlock {
 
   private String getPresentationInternal(SNode left, SNode right) {
     if (lessThan) {
-      return left + myRelationKind.getRelationSign() + right;
+      return SNodeUtil.getPresentation(left) + myRelationKind.getRelationSign() + SNodeUtil.getPresentation(right);
     } else {
-      return right + myRelationKind.getReversedRelationSign() + left;
+      return SNodeUtil.getPresentation(right) + myRelationKind.getReversedRelationSign() + SNodeUtil.getPresentation(left);
     }
   }
 

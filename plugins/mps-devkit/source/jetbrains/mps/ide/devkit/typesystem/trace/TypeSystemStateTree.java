@@ -25,6 +25,7 @@ import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.workbench.action.BaseAction;
 import org.jetbrains.annotations.NonNls;
@@ -46,6 +47,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class TypeSystemStateTree extends MPSTree implements DataProvider {
   private final Project myProject;
@@ -175,7 +177,7 @@ public class TypeSystemStateTree extends MPSTree implements DataProvider {
       if (key.isEmpty() || entry.getValue().size() <= 1) {
         current = result;
       } else {
-        current = new TypeSystemStateTreeNode(key.toString());
+        current = new TypeSystemStateTreeNode(key.stream().map(SNodeUtil::getPresentation).collect(Collectors.joining(", ", "[", "]")));
       }
       nodePresentations.clear();
       for (InequalityBlock block : entry.getValue()) {
