@@ -30,6 +30,14 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.HashSet;
 import com.intellij.openapi.application.ApplicationManager;
 
+/**
+ * A part of {@link jetbrains.mps.editor.runtime.LanguageEditorChecker }.
+ * <p>
+ * Aggregates several instances of {@link jetbrains.mps.checkers.LanguageErrorsComponent } by maintaining a map
+ * from {@link org.jetbrains.mps.openapi.model.SModel } to a set of {@link jetbrains.mps.nodeEditor.EditorComponent },
+ * and for each editor component a map to the the corresponding instance of 
+ * {@link jetbrains.mps.checkers.LanguageErrorsComponent }.
+ */
 @GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/8288306652661982667", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 /*package*/ class ErrorComponents {
   private final SRepository myRepository;

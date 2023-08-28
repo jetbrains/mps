@@ -223,77 +223,89 @@
   <root nodeRef="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/4031029858776329668">
     <file name="MigrateTaskProperties.java">
       <node id="4031029858776345161" at="13,0,14,0" concept="13" trace="PRE_CHECK_HALT" />
-      <node id="8712946147666009891" at="14,0,15,0" concept="13" trace="OUT_FILE_NAME" />
-      <node id="8712946147663860780" at="15,0,16,0" concept="13" trace="ERR_CODE_KEY" />
-      <node id="4031029858780536412" at="16,0,17,0" concept="13" trace="MAKE_DISTRIB_MODULES" />
-      <node id="3889828152326168342" at="17,0,18,0" concept="13" trace="FORCE" />
-      <node id="4031029858776446987" at="19,0,20,0" concept="4" trace="myScript" />
-      <node id="4031029858776447148" at="21,47,22,22" concept="3" />
-      <node id="4031029858776452832" at="25,86,26,82" concept="3" />
-      <node id="4031029858776448160" at="26,82,27,16" concept="10" />
-      <node id="4031029858776457846" at="30,43,31,70" concept="10" />
-      <node id="4031029858778350433" at="34,65,35,56" concept="3" />
-      <node id="4031029858778346842" at="35,56,36,16" concept="10" />
-      <node id="4031029858778358932" at="39,39,40,58" concept="9" />
-      <node id="4031029858778349181" at="40,58,41,58" concept="10" />
-      <node id="4031029858778452985" at="44,77,45,51" concept="3" />
-      <node id="4031029858778437923" at="45,51,46,16" concept="10" />
-      <node id="4031029858778459320" at="49,45,50,46" concept="10" />
-      <node id="4031029858780565523" at="53,69,54,82" concept="11" />
-      <node id="4031029858780556527" at="54,82,55,72" concept="3" />
-      <node id="4031029858780563136" at="55,72,56,16" concept="10" />
-      <node id="4031029858780573908" at="59,42,60,76" concept="10" />
-      <node id="3889828152326159839" at="63,60,64,57" concept="3" />
-      <node id="3889828152326159846" at="64,57,65,16" concept="10" />
-      <node id="3889828152326164516" at="68,33,69,61" concept="10" />
-      <node id="4031029858776352121" at="21,0,24,0" concept="2" trace="MigrateTaskProperties#(Ljetbrains/mps/tool/common/Script;)V" />
-      <node id="4031029858776457569" at="30,0,33,0" concept="8" trace="getPreCheckFailureHalt#()Z" />
-      <node id="4031029858778458052" at="49,0,52,0" concept="8" trace="getOutputPropertyErrorKey#()Ljava/lang/String;" />
-      <node id="4031029858780568430" at="59,0,62,0" concept="8" trace="getMakeDistribModules#()Z" />
-      <node id="3889828152326164512" at="68,0,71,0" concept="8" trace="getForceFlag#()Z" />
-      <node id="4031029858776447921" at="25,0,29,0" concept="8" trace="setPreCheckFailureHalt#(Z)Ljetbrains/mps/tool/common/MigrateTaskProperties;" />
-      <node id="4031029858778346065" at="34,0,38,0" concept="8" trace="setOutputPropertyFile#(Ljava/io/File;)Ljetbrains/mps/tool/common/MigrateTaskProperties;" />
-      <node id="4031029858778349177" at="39,0,43,0" concept="8" trace="getOutputPropertyFile#()Ljava/io/File;" />
-      <node id="4031029858778436815" at="44,0,48,0" concept="8" trace="setOutputPropertyErrorKey#(Ljava/lang/String;)Ljetbrains/mps/tool/common/MigrateTaskProperties;" />
-      <node id="3889828152326159820" at="63,0,67,0" concept="8" trace="setForceFlag#(Z)Ljetbrains/mps/tool/common/MigrateTaskProperties;" />
-      <node id="4031029858780552375" at="53,0,58,0" concept="8" trace="setMakeDistribModules#(Z)Ljetbrains/mps/tool/common/MigrateTaskProperties;" />
-      <scope id="4031029858776352125" at="21,47,22,22" />
-      <scope id="4031029858776457572" at="30,43,31,70" />
-      <scope id="4031029858778458055" at="49,45,50,46" />
-      <scope id="4031029858780568434" at="59,42,60,76" />
-      <scope id="3889828152326164515" at="68,33,69,61" />
-      <scope id="4031029858776447925" at="25,86,27,16" />
-      <scope id="4031029858778346069" at="34,65,36,16" />
-      <scope id="4031029858778349180" at="39,39,41,58">
+      <node id="6156844957557820364" at="14,0,15,0" concept="13" trace="DEPS_ERROR_HALT" />
+      <node id="8712946147666009891" at="15,0,16,0" concept="13" trace="OUT_FILE_NAME" />
+      <node id="8712946147663860780" at="16,0,17,0" concept="13" trace="ERR_CODE_KEY" />
+      <node id="4031029858780536412" at="17,0,18,0" concept="13" trace="MAKE_DISTRIB_MODULES" />
+      <node id="3889828152326168342" at="18,0,19,0" concept="13" trace="FORCE" />
+      <node id="4031029858776446987" at="20,0,21,0" concept="4" trace="myScript" />
+      <node id="4031029858776447148" at="22,47,23,22" concept="3" />
+      <node id="4031029858776452832" at="26,86,27,82" concept="3" />
+      <node id="4031029858776448160" at="27,82,28,16" concept="10" />
+      <node id="4031029858776457846" at="31,43,32,70" concept="10" />
+      <node id="6156844957557839488" at="35,88,36,83" concept="3" />
+      <node id="6156844957557839495" at="36,83,37,16" concept="10" />
+      <node id="6156844957557761453" at="40,45,41,71" concept="10" />
+      <node id="4031029858778350433" at="44,65,45,56" concept="3" />
+      <node id="4031029858778346842" at="45,56,46,16" concept="10" />
+      <node id="4031029858778358932" at="49,39,50,58" concept="9" />
+      <node id="4031029858778349181" at="50,58,51,58" concept="10" />
+      <node id="4031029858778452985" at="54,77,55,51" concept="3" />
+      <node id="4031029858778437923" at="55,51,56,16" concept="10" />
+      <node id="4031029858778459320" at="59,45,60,46" concept="10" />
+      <node id="4031029858780565523" at="63,69,64,82" concept="11" />
+      <node id="4031029858780556527" at="64,82,65,72" concept="3" />
+      <node id="4031029858780563136" at="65,72,66,16" concept="10" />
+      <node id="4031029858780573908" at="69,42,70,76" concept="10" />
+      <node id="3889828152326159839" at="73,60,74,57" concept="3" />
+      <node id="3889828152326159846" at="74,57,75,16" concept="10" />
+      <node id="3889828152326164516" at="78,33,79,61" concept="10" />
+      <node id="4031029858776352121" at="22,0,25,0" concept="2" trace="MigrateTaskProperties#(Ljetbrains/mps/tool/common/Script;)V" />
+      <node id="4031029858776457569" at="31,0,34,0" concept="8" trace="getPreCheckFailureHalt#()Z" />
+      <node id="6156844957557761451" at="40,0,43,0" concept="8" trace="getHaltOnDependencyError#()Z" />
+      <node id="4031029858778458052" at="59,0,62,0" concept="8" trace="getOutputPropertyErrorKey#()Ljava/lang/String;" />
+      <node id="4031029858780568430" at="69,0,72,0" concept="8" trace="getMakeDistribModules#()Z" />
+      <node id="3889828152326164512" at="78,0,81,0" concept="8" trace="getForceFlag#()Z" />
+      <node id="4031029858776447921" at="26,0,30,0" concept="8" trace="setPreCheckFailureHalt#(Z)Ljetbrains/mps/tool/common/MigrateTaskProperties;" />
+      <node id="6156844957557839484" at="35,0,39,0" concept="8" trace="setHaltOnDependencyError#(Z)Ljetbrains/mps/tool/common/MigrateTaskProperties;" />
+      <node id="4031029858778346065" at="44,0,48,0" concept="8" trace="setOutputPropertyFile#(Ljava/io/File;)Ljetbrains/mps/tool/common/MigrateTaskProperties;" />
+      <node id="4031029858778349177" at="49,0,53,0" concept="8" trace="getOutputPropertyFile#()Ljava/io/File;" />
+      <node id="4031029858778436815" at="54,0,58,0" concept="8" trace="setOutputPropertyErrorKey#(Ljava/lang/String;)Ljetbrains/mps/tool/common/MigrateTaskProperties;" />
+      <node id="3889828152326159820" at="73,0,77,0" concept="8" trace="setForceFlag#(Z)Ljetbrains/mps/tool/common/MigrateTaskProperties;" />
+      <node id="4031029858780552375" at="63,0,68,0" concept="8" trace="setMakeDistribModules#(Z)Ljetbrains/mps/tool/common/MigrateTaskProperties;" />
+      <scope id="4031029858776352125" at="22,47,23,22" />
+      <scope id="4031029858776457572" at="31,43,32,70" />
+      <scope id="6156844957557761452" at="40,45,41,71" />
+      <scope id="4031029858778458055" at="59,45,60,46" />
+      <scope id="4031029858780568434" at="69,42,70,76" />
+      <scope id="3889828152326164515" at="78,33,79,61" />
+      <scope id="4031029858776447925" at="26,86,28,16" />
+      <scope id="6156844957557839487" at="35,88,37,16" />
+      <scope id="4031029858778346069" at="44,65,46,16" />
+      <scope id="4031029858778349180" at="49,39,51,58">
         <var name="filename" id="4031029858778358933" />
       </scope>
-      <scope id="4031029858778436819" at="44,77,46,16" />
-      <scope id="3889828152326159823" at="63,60,65,16" />
-      <scope id="4031029858776352121" at="21,0,24,0">
+      <scope id="4031029858778436819" at="54,77,56,16" />
+      <scope id="3889828152326159823" at="73,60,75,16" />
+      <scope id="4031029858776352121" at="22,0,25,0">
         <var name="script" id="4031029858776352183" />
       </scope>
-      <scope id="4031029858776457569" at="30,0,33,0" />
-      <scope id="4031029858778458052" at="49,0,52,0" />
-      <scope id="4031029858780552379" at="53,69,56,16" />
-      <scope id="4031029858780568430" at="59,0,62,0" />
-      <scope id="3889828152326164512" at="68,0,71,0" />
-      <scope id="4031029858776447921" at="25,0,29,0">
+      <scope id="4031029858776457569" at="31,0,34,0" />
+      <scope id="6156844957557761451" at="40,0,43,0" />
+      <scope id="4031029858778458052" at="59,0,62,0" />
+      <scope id="4031029858780552379" at="63,69,66,16" />
+      <scope id="4031029858780568430" at="69,0,72,0" />
+      <scope id="3889828152326164512" at="78,0,81,0" />
+      <scope id="4031029858776447921" at="26,0,30,0">
         <var name="haltOnPreCheckFailure" id="4031029858776451935" />
       </scope>
-      <scope id="4031029858778346065" at="34,0,38,0">
+      <scope id="6156844957557839484" at="35,0,39,0">
+        <var name="haltOnDependencyError" id="6156844957557839497" />
+      </scope>
+      <scope id="4031029858778346065" at="44,0,48,0">
         <var name="file" id="4031029858778348258" />
       </scope>
-      <scope id="4031029858778349177" at="39,0,43,0" />
-      <scope id="4031029858778436815" at="44,0,48,0">
+      <scope id="4031029858778349177" at="49,0,53,0" />
+      <scope id="4031029858778436815" at="54,0,58,0">
         <var name="errCodeKey" id="4031029858778441590" />
       </scope>
-      <scope id="3889828152326159820" at="63,0,67,0">
+      <scope id="3889828152326159820" at="73,0,77,0">
         <var name="value" id="3889828152326159848" />
       </scope>
-      <scope id="4031029858780552375" at="53,0,58,0">
+      <scope id="4031029858780552375" at="63,0,68,0">
         <var name="value" id="4031029858780555820" />
       </scope>
-      <unit id="4031029858776329668" at="11,0,72,0" name="jetbrains.mps.tool.common.MigrateTaskProperties" />
+      <unit id="4031029858776329668" at="11,0,82,0" name="jetbrains.mps.tool.common.MigrateTaskProperties" />
     </file>
   </root>
   <root nodeRef="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/4774692914340655529">

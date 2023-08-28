@@ -54,15 +54,17 @@ public class MigrationTask {
   private volatile boolean myIsComplete = false;
   private LocalHistoryAction myCurrentChange = null;
   private final boolean myHaltOnFailedPrecheck;
+  private final boolean myHaltOnNotMigratedLibs;
 
   public MigrationTask(MigrationSession session) {
-    this(session, true);
+    this(session, true, true);
   }
 
-  public MigrationTask(MigrationSession session, boolean haltOnFailedPrecheck) {
+  public MigrationTask(MigrationSession session, boolean haltOnFailedPrecheck, boolean haltOnNotMigratedLibs) {
     mySession = session;
     mySession.setCurrentStage(0);
     myHaltOnFailedPrecheck = haltOnFailedPrecheck;
+    myHaltOnNotMigratedLibs = haltOnNotMigratedLibs;
   }
 
   public void run(ProgressMonitor pm) {
@@ -133,7 +135,15 @@ public class MigrationTask {
     if (checkAndIncStage(3)) {
       Map<SModule, SModule> errsToShow = checkMigratedLibs(monitor.subTask(5, SubProgressKind.REPLACING));
       if (MapSequence.fromMap(errsToShow).isNotEmpty()) {
-        throw new NotMigratedLibsError(errsToShow);
+        final NotMigratedLibsError error = new NotMigratedLibsError(errsToShow);
+        if (myHaltOnNotMigratedLibs) {
+          throw error;
+        } else {
+          if (LOG.isWarningLevel()) {
+            LOG.warning("Some dependent modules are not migrated, ignoring...");
+          }
+          mySession.getProject().getModelAccess().runReadAction(() -> error.logProblems(new LogHandler(Logger.getLogger(MigrationTask.class))));
+        }
       }
     }
 
@@ -148,12 +158,7 @@ public class MigrationTask {
           if (LOG.isWarningLevel()) {
             LOG.warning("Migration pre-check has failed, ignoring...");
           }
-          mySession.getProject().getModelAccess().runReadAction(new Runnable() {
-            @Override
-            public void run() {
-              preCheckError.logProblems(new LogHandler(Logger.getLogger(MigrationTask.class)));
-            }
-          });
+          mySession.getProject().getModelAccess().runReadAction(() -> preCheckError.logProblems(new LogHandler(Logger.getLogger(MigrationTask.class))));
         }
       }
     }

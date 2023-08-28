@@ -11,6 +11,7 @@ import com.intellij.openapi.wm.ToolWindowAnchor;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.checkers.IChecker;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -39,15 +40,19 @@ public class ModelCheckerTool extends BaseTabbedProjectTool {
     newViewer.checkModels(models, "models");
     return newViewer;
   }
+  /**
+   * Does what the name says. For convenience, checkers specified explicitly, if any, override the default  "specific" 
+   * checkers that are returned by {@link jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerSettings#getSpecificCheckers(jetbrains.mps.project.Project) }.
+   */
   public void checkModelsAndShowResult(List<SModel> models, IChecker<?, ?>... checkers) {
     ModelCheckerViewer newViewer = createViewerForTab();
     ModelCheckerIssueFinder finder;
-    jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
+    MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
     assert mpsProject != null;
     if (checkers == null || checkers.length == 0) {
-      finder = new ModelCheckerIssueFinder(mpsProject.getRepository(), ModelCheckerSettings.getInstance().getSpecificCheckers(mpsProject));
+      finder = new ModelCheckerIssueFinder(mpsProject, ModelCheckerSettings.getInstance().getSpecificCheckers(mpsProject));
     } else {
-      finder = new ModelCheckerIssueFinder(mpsProject.getRepository(), Sequence.fromIterable(Sequence.fromArray(checkers)).toList());
+      finder = new ModelCheckerIssueFinder(mpsProject, Sequence.fromIterable(Sequence.fromArray(checkers)).toList());
     }
     String title = (ListSequence.fromList(models).count() == 1 ? ListSequence.fromList(models).first().getName().getValue() : String.format("%d models", ListSequence.fromList(models).count()));
     finder.addModelScope(models);

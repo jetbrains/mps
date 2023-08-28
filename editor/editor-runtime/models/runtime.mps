@@ -8529,6 +8529,93 @@
     <node concept="3uibUv" id="5uC6IZdwjEE" role="EKbjA">
       <ref role="3uigEE" to="n70j:~DisposableEditorChecker" resolve="DisposableEditorChecker" />
     </node>
+    <node concept="3UR2Jj" id="3LCCkAqmkWS" role="lGtFl">
+      <node concept="TZ5HA" id="3LCCkAqmkWT" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqmkWU" role="1dT_Ay">
+          <property role="1dT_AB" value="A composite editor checker (see " />
+        </node>
+        <node concept="1dT_AA" id="3LCCkAqmnEs" role="1dT_Ay">
+          <node concept="92FcH" id="3LCCkAqmnGu" role="qph3F">
+            <node concept="TZ5HA" id="3LCCkAqmnGw" role="2XjZqd" />
+            <node concept="VXe08" id="3LCCkAqmzgr" role="92FcQ">
+              <ref role="VXe09" to="n70j:~EditorChecker" resolve="EditorChecker" />
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="3LCCkAqmnEr" role="1dT_Ay">
+          <property role="1dT_AB" value=") that delegates all " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqmzVv" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqmzVw" role="1dT_Ay">
+          <property role="1dT_AB" value="work to instances of " />
+        </node>
+        <node concept="1dT_AA" id="3LCCkAqmAuq" role="1dT_Ay">
+          <node concept="92FcH" id="3LCCkAqmAvu" role="qph3F">
+            <node concept="TZ5HA" id="3LCCkAqmAvw" role="2XjZqd" />
+            <node concept="VXe08" id="3LCCkAqmAyx" role="92FcQ">
+              <ref role="VXe09" to="wsw7:6qi2OtU3u$c" resolve="AbstractNodeCheckerInEditor" />
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="3LCCkAqmAup" role="1dT_Ay">
+          <property role="1dT_AB" value=" that are passed as a parameter" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqmAIc" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqmAId" role="1dT_Ay">
+          <property role="1dT_AB" value="to the only constructor of this class." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqGZWP" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqGZWQ" role="1dT_Ay">
+          <property role="1dT_AB" value="&lt;p&gt;" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqH5cL" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqH5cM" role="1dT_Ay">
+          <property role="1dT_AB" value="Also applies quickfixes." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqH84o" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqH84p" role="1dT_Ay">
+          <property role="1dT_AB" value="&lt;p&gt;" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqHas6" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqHas7" role="1dT_Ay">
+          <property role="1dT_AB" value="See " />
+        </node>
+        <node concept="1dT_AA" id="3LCCkAqHcSV" role="1dT_Ay">
+          <node concept="92FcH" id="3LCCkAqHcT1" role="qph3F">
+            <node concept="TZ5HA" id="3LCCkAqHcT3" role="2XjZqd" />
+            <node concept="VXe08" id="3LCCkAqHxMV" role="92FcQ">
+              <ref role="VXe09" to="d6hs:~QuickFixReportItem" resolve="QuickFixReportItem" />
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="3LCCkAqHcSU" role="1dT_Ay">
+          <property role="1dT_AB" value="&lt;br&gt;" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqHVg$" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqHVg_" role="1dT_Ay">
+          <property role="1dT_AB" value="See " />
+        </node>
+        <node concept="1dT_AA" id="3LCCkAqHXs6" role="1dT_Ay">
+          <node concept="VVOAv" id="3LCCkAqHXLV" role="qph3F">
+            <node concept="TZ5HA" id="3LCCkAqHXLX" role="2Xj1qM">
+              <node concept="1dT_AC" id="3LCCkAqHXMZ" role="1dT_Ay">
+                <property role="1dT_AB" value="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerViewer" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="3LCCkAqHXs5" role="1dT_Ay">
+          <property role="1dT_AB" value="&lt;br&gt;" />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="7c5YJMXranb">
     <property role="2bfB8j" value="false" />
@@ -9707,6 +9794,93 @@
       </node>
     </node>
     <node concept="2tJIrI" id="7c5YJMXrN31" role="jymVt" />
+    <node concept="3UR2Jj" id="3LCCkAqt8F_" role="lGtFl">
+      <node concept="TZ5HA" id="3LCCkAqt8FA" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqt8FB" role="1dT_Ay">
+          <property role="1dT_AB" value="A part of " />
+        </node>
+        <node concept="1dT_AA" id="3LCCkAqty8D" role="1dT_Ay">
+          <node concept="92FcH" id="3LCCkAqty9H" role="qph3F">
+            <node concept="TZ5HA" id="3LCCkAqty9J" role="2XjZqd" />
+            <node concept="VXe08" id="3LCCkAqtNT4" role="92FcQ">
+              <ref role="VXe09" node="6qi2OtU3ufq" resolve="LanguageEditorChecker" />
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="3LCCkAqty8C" role="1dT_Ay">
+          <property role="1dT_AB" value="." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqtT3O" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqtT3P" role="1dT_Ay">
+          <property role="1dT_AB" value="&lt;p&gt;" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqtWcY" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqtWcZ" role="1dT_Ay">
+          <property role="1dT_AB" value="Aggregates several instances of " />
+        </node>
+        <node concept="1dT_AA" id="3LCCkAqtY_7" role="1dT_Ay">
+          <node concept="92FcH" id="3LCCkAqtYAb" role="qph3F">
+            <node concept="TZ5HA" id="3LCCkAqtYAd" role="2XjZqd" />
+            <node concept="VXe08" id="3LCCkAqtZi4" role="92FcQ">
+              <ref role="VXe09" to="wsw7:6qi2OtU3u0m" resolve="LanguageErrorsComponent" />
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="3LCCkAqtY_6" role="1dT_Ay">
+          <property role="1dT_AB" value=" by maintaining a map" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqtZHx" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqtZHy" role="1dT_Ay">
+          <property role="1dT_AB" value="from " />
+        </node>
+        <node concept="1dT_AA" id="3LCCkAqu32V" role="1dT_Ay">
+          <node concept="92FcH" id="3LCCkAqu33Z" role="qph3F">
+            <node concept="TZ5HA" id="3LCCkAqu341" role="2XjZqd" />
+            <node concept="VXe08" id="3LCCkAqu3sm" role="92FcQ">
+              <ref role="VXe09" to="mhbf:~SModel" resolve="SModel" />
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="3LCCkAqu32U" role="1dT_Ay">
+          <property role="1dT_AB" value=" to a set of " />
+        </node>
+        <node concept="1dT_AA" id="3LCCkAqu4mZ" role="1dT_Ay">
+          <node concept="92FcH" id="3LCCkAqu4o8" role="qph3F">
+            <node concept="TZ5HA" id="3LCCkAqu4oa" role="2XjZqd" />
+            <node concept="VXe08" id="3LCCkAqu4xX" role="92FcQ">
+              <ref role="VXe09" to="exr9:~EditorComponent" resolve="EditorComponent" />
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="3LCCkAqu4mY" role="1dT_Ay">
+          <property role="1dT_AB" value="," />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqu5cT" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqu5cU" role="1dT_Ay">
+          <property role="1dT_AB" value="and for each editor component a map to the the corresponding instance of " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqu8sP" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqu8sQ" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+        <node concept="1dT_AA" id="3LCCkAqu7Qv" role="1dT_Ay">
+          <node concept="92FcH" id="3LCCkAqu7Tv" role="qph3F">
+            <node concept="TZ5HA" id="3LCCkAqu7Tx" role="2XjZqd" />
+            <node concept="VXe08" id="3LCCkAqu7Yu" role="92FcQ">
+              <ref role="VXe09" to="wsw7:6qi2OtU3u0m" resolve="LanguageErrorsComponent" />
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="3LCCkAqu7Qu" role="1dT_Ay">
+          <property role="1dT_AB" value="." />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="4kev0f6DOx0">
     <property role="3GE5qa" value="highlighters" />

@@ -31,11 +31,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This component contributes several checkers to {@link CheckerRegistry}.
+ * <ul>
+ *   <li>See {@link  StructureChecker#withoutBrokenReferences}</li>
+ *   <li>See {@link  ModelPropertiesChecker}</li>
+ *   <li>See {@link  ModuleChecker}</li>
+ *   <li>See {@link  ConstraintsChecker}</li>
+ * </ul>
+ * <p>
+ *   The following original text shall be preserved for posterity.
+ * <blockquote>
  * Provides validation code for project modules.
  * Could be CoreComponent to get initialized from MPSCore, indeed. However, I intend to try alternative approach and not to bundle
  * everything into mps-core.jar and try smaller pieces(jars) instead. After all, some RCP configurations might not need project checking code at all.
  * This approach doesn't require MPSCore to move outside of [kernel] (though one day it likely get back to its own `umbrella` module anyway)
- *
+ *</blockquote>
  * @author Artem Tikhomirov
  * @since 2019.1
  */

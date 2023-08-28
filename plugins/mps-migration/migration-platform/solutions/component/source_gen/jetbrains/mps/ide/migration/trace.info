@@ -2292,7 +2292,7 @@
   <root nodeRef="a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/8164581507603015291">
     <file name="AntTaskExecutionUtil.java">
       <node id="8164581507603015291" at="22,0,23,0" concept="15" trace="LOG" />
-      <node id="7799855680903823096" at="28,104,29,47" concept="13" />
+      <node id="7799855680903823096" at="28,135,29,47" concept="13" />
       <node id="4031029858778965422" at="29,47,30,68" concept="11" />
       <node id="8164581507603022235" at="30,68,31,0" concept="14" />
       <node id="5493972767265224043" at="35,33,36,34" concept="5" />
@@ -2331,7 +2331,7 @@
       <node id="2885477569139391238" at="64,0,77,0" concept="10" trace="error#(Ljetbrains/mps/ide/migration/wizard/MigrationError;)V" />
       <node id="2885477569139391230" at="62,0,77,6" concept="11" />
       <node id="5493972767265224030" at="31,0,55,6" concept="11" />
-      <node id="8164581507603020265" at="27,0,85,0" concept="16" trace="migrate#(Ljetbrains/mps/project/Project;Z)Ljava/lang/Boolean;" />
+      <node id="8164581507603020265" at="27,0,85,0" concept="16" trace="migrate#(Ljetbrains/mps/project/Project;ZZ)Ljava/lang/Boolean;" />
       <scope id="5493972767265224043" at="35,33,36,34" />
       <scope id="5493972767265224057" at="42,33,43,35" />
       <scope id="1520098040410979883" at="50,33,51,35" />
@@ -2353,7 +2353,7 @@
       <scope id="2885477569139391238" at="64,0,77,0">
         <var name="error" id="2885477569139391243" />
       </scope>
-      <scope id="878521226301294123" at="28,104,83,20">
+      <scope id="878521226301294123" at="28,135,83,20">
         <var name="rv" id="4031029858778965423" />
         <var name="session" id="2885477569139370609" />
         <var name="setup" id="5493972767265259423" />
@@ -2361,6 +2361,7 @@
         <var name="tracingExecutor" id="5493972767265224031" />
       </scope>
       <scope id="8164581507603020265" at="27,0,85,0">
+        <var name="haltOnDependencyError" id="6156844957557562308" />
         <var name="haltOnPrecheckFailure" id="6942040463718304676" />
         <var name="project" id="878521226301294119" />
       </scope>

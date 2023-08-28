@@ -64,6 +64,7 @@
     <import index="y49u" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.util(MPS.OpenAPI/)" />
     <import index="zf81" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.net(JDK/)" />
     <import index="7x5y" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.charset(JDK/)" />
+    <import index="u3gh" ref="r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
@@ -5241,22 +5242,47 @@
           </node>
         </node>
         <node concept="3clFbH" id="34euvBSFl$S" role="3cqZAp" />
-        <node concept="3clFbH" id="34euvBSFDD1" role="3cqZAp" />
+        <node concept="3cpWs8" id="55lWainYYrS" role="3cqZAp">
+          <node concept="3cpWsn" id="55lWainYYrT" role="3cpWs9">
+            <property role="TrG5h" value="scheduler" />
+            <node concept="3uibUv" id="55lWainYYrU" role="1tU5fm">
+              <ref role="3uigEE" to="mk8z:~TaskScheduler" resolve="TaskScheduler" />
+            </node>
+            <node concept="2ShNRf" id="55lWainYYrV" role="33vP2m">
+              <node concept="1pGfFk" id="55lWainZr2N" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="u3gh:1DD4wlLrb3F" resolve="SystemBackgroundTaskScheduler" />
+                <node concept="2YIFZM" id="1DD4wlLsHdD" role="37wK5m">
+                  <ref role="37wK5l" node="7X3$Ctw3Yvw" resolve="getContextProject" />
+                  <ref role="1Pybhc" node="7X3$Ctw3YsX" resolve="BaseCheckModulesTest" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="34euvBSFlYj" role="3cqZAp">
           <node concept="2OqwBi" id="34euvBSFBrh" role="3clFbG">
             <node concept="2OqwBi" id="34euvBSFncQ" role="2Oq$k0">
-              <node concept="2ShNRf" id="34euvBSFmn5" role="2Oq$k0">
-                <node concept="1pGfFk" id="34euvBSFmWY" role="2ShVmc">
-                  <ref role="37wK5l" to="wsw7:6nj_ILmBNrL" resolve="ModelCheckerBuilder" />
-                  <node concept="37vLTw" id="34euvBSFn37" role="37wK5m">
-                    <ref role="3cqZAo" node="34euvBSFgQG" resolve="modelExtractor" />
-                  </node>
-                </node>
-              </node>
               <node concept="liA8E" id="34euvBSFqp5" role="2OqNvi">
                 <ref role="37wK5l" to="wsw7:6bXa3O$aFCh" resolve="createChecker" />
                 <node concept="37vLTw" id="34euvBSFqy2" role="37wK5m">
                   <ref role="3cqZAo" node="2$EeqAz24yW" resolve="checkers" />
+                </node>
+              </node>
+              <node concept="2OqwBi" id="55lWainuhx3" role="2Oq$k0">
+                <node concept="2ShNRf" id="34euvBSFmn5" role="2Oq$k0">
+                  <node concept="1pGfFk" id="34euvBSFmWY" role="2ShVmc">
+                    <ref role="37wK5l" to="wsw7:6nj_ILmBNrL" resolve="ModelCheckerBuilder" />
+                    <node concept="37vLTw" id="34euvBSFn37" role="37wK5m">
+                      <ref role="3cqZAo" node="34euvBSFgQG" resolve="modelExtractor" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="55lWainujDh" role="2OqNvi">
+                  <ref role="37wK5l" to="wsw7:2$qlEUMfF6r" resolve="withTaskScheduler" />
+                  <node concept="37vLTw" id="55lWainNKuy" role="37wK5m">
+                    <ref role="3cqZAo" node="55lWainYYrT" resolve="scheduler" />
+                  </node>
                 </node>
               </node>
             </node>

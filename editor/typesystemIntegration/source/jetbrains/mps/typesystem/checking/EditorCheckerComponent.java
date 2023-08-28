@@ -22,6 +22,14 @@ import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker;
 import jetbrains.mps.typesystemEngine.checker.TypesystemChecker;
 import typesystemIntegration.languageChecker.RefScopeCheckerInEditor;
 
+/**
+ *  This component contributes several checkers to {@link CheckerRegistry}.
+ *  <ul>
+ *    <li>See {@link  RefScopeCheckerInEditor}</li>
+ *    <li>See {@link  TypesystemChecker}</li>
+ *    <li>See {@link  NonTypesystemChecker}</li>
+ *  </ul>
+ */
 // XXX this one could be ProjectComponent if needs to pass context down to checkers (e.g. TypesystemChecker)
 public class EditorCheckerComponent implements Disposable {
   private TypesystemChecker myTypesystemChecker;
@@ -32,6 +40,7 @@ public class EditorCheckerComponent implements Disposable {
     MPSCoreComponents cc = MPSCoreComponents.getInstance();
     final CheckerRegistry registry = cc.getPlatform().findComponent(CheckerRegistry.class);
     if (registry != null) {
+      // FIXME: why "in editor" checker? 
       myRefScopeCheckerInEditor = new RefScopeCheckerInEditor(cc.getPlatform());
       myTypesystemChecker = new TypesystemChecker();
       myNonTypesystemChecker = new NonTypesystemChecker();

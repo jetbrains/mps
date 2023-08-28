@@ -117,9 +117,7 @@
         <child id="1068580123134" name="parameter" index="3clF46" />
         <child id="1068580123135" name="body" index="3clF47" />
       </concept>
-      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_">
-        <property id="1178608670077" name="isAbstract" index="1EzhhJ" />
-      </concept>
+      <concept id="1068580123165" name="jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" flags="ig" index="3clFb_" />
       <concept id="1068580123152" name="jetbrains.mps.baseLanguage.structure.EqualsExpression" flags="nn" index="3clFbC" />
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
@@ -2705,7 +2703,6 @@
   <node concept="3HP615" id="35QfjTUxgYp">
     <property role="TrG5h" value="TooltipComponent" />
     <node concept="3clFb_" id="35QfjTUxgYr" role="jymVt">
-      <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getMPSTooltipText" />
       <node concept="3Tm1VV" id="35QfjTUxgYt" role="1B3o_S" />
       <node concept="3clFbS" id="35QfjTUxgYu" role="3clF47" />

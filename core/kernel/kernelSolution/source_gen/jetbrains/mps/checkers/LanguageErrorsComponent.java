@@ -43,6 +43,17 @@ import org.jetbrains.mps.openapi.model.SModelListenerBase;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
+/**
+ * Used by {@code jetbrains.mps.editor.runtime.ErrorComponent}. 
+ * Responsible for collecting and tracking errors reported by instances of
+ * {@link jetbrains.mps.checkers.AbstractNodeCheckerInEditor } for a specific editor component.
+ * <p>
+ * Maintains internal map of nodes to error items reported, and tries to correctly guess when entries in this map
+ * are to be cleared (invalidated).
+ * <p>
+ * See {@code jetbrains.mps.editor.runtime.ErrorComponents}<br>
+ * See {@code jetbrains.mps.editor.runtime.LanguageEditorChecker}<br>
+ */
 @GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/7390982340086718486", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class LanguageErrorsComponent extends LanguageErrorsCollector {
   /**

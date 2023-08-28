@@ -633,7 +633,21 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="3vL64Mr$TMz" role="3cqZAp" />
+        <node concept="3cpWs8" id="5lLwtTootzG" role="3cqZAp">
+          <node concept="3cpWsn" id="5lLwtTootzE" role="3cpWs9">
+            <property role="3TUv4t" value="true" />
+            <property role="TrG5h" value="dependencyErrorHalt" />
+            <node concept="10P_77" id="5lLwtToovzg" role="1tU5fm" />
+            <node concept="2OqwBi" id="5lLwtTooCWg" role="33vP2m">
+              <node concept="37vLTw" id="5lLwtTooBum" role="2Oq$k0">
+                <ref role="3cqZAo" node="3vL64Mrye0t" resolve="taskProps" />
+              </node>
+              <node concept="liA8E" id="5lLwtTooKeM" role="2OqNvi">
+                <ref role="37wK5l" to="asz6:5lLwtTooEmF" resolve="getHaltOnDependencyError" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="3vL64Mr$VER" role="3cqZAp">
           <node concept="3cpWsn" id="3vL64Mr$VEU" role="3cpWs9">
             <property role="TrG5h" value="result" />
@@ -1310,6 +1324,10 @@
                                       <ref role="3cqZAo" to="wyt6:~Boolean.TYPE" resolve="TYPE" />
                                       <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
                                     </node>
+                                    <node concept="10M0yZ" id="5lLwtTooqCn" role="37wK5m">
+                                      <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
+                                      <ref role="3cqZAo" to="wyt6:~Boolean.TYPE" resolve="TYPE" />
+                                    </node>
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="3R5dWNYZfKq" role="2OqNvi">
@@ -1336,6 +1354,9 @@
                                   </node>
                                   <node concept="37vLTw" id="3vL64Mrxwx9" role="37wK5m">
                                     <ref role="3cqZAo" node="3vL64MroHzo" resolve="preCheckFailureHalt" />
+                                  </node>
+                                  <node concept="37vLTw" id="5lLwtTooOcm" role="37wK5m">
+                                    <ref role="3cqZAo" node="5lLwtTootzE" resolve="dependencyErrorHalt" />
                                   </node>
                                 </node>
                               </node>

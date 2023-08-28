@@ -44,6 +44,16 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.nodeEditor.EditorSettings;
 
+/**
+ * A composite editor checker (see {@link jetbrains.mps.nodeEditor.checking.EditorChecker }) that delegates all 
+ * work to instances of {@link jetbrains.mps.checkers.AbstractNodeCheckerInEditor } that are passed as a parameter
+ * to the only constructor of this class.
+ * <p>
+ * Also applies quickfixes.
+ * <p>
+ * See {@link jetbrains.mps.errors.item.QuickFixReportItem }<br>
+ * See {@code jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerViewer}<br>
+ */
 @GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/7390982340086719450", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class LanguageEditorChecker extends BaseEditorChecker implements DisposableEditorChecker {
   private static final Logger LOG = Logger.getLogger(LanguageEditorChecker.class);

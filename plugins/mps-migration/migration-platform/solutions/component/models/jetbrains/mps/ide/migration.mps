@@ -5835,6 +5835,9 @@
                   <node concept="37vLTw" id="61n5glKkpAd" role="37wK5m">
                     <ref role="3cqZAo" node="61n5glKkkI$" resolve="haltOnPrecheckFailure" />
                   </node>
+                  <node concept="37vLTw" id="5lLwtTonX3k" role="37wK5m">
+                    <ref role="3cqZAo" node="5lLwtTonTJ4" resolve="haltOnDependencyError" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -5991,6 +5994,10 @@
       <node concept="37vLTG" id="61n5glKkkI$" role="3clF46">
         <property role="TrG5h" value="haltOnPrecheckFailure" />
         <node concept="10P_77" id="61n5glKkoiU" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="5lLwtTonTJ4" role="3clF46">
+        <property role="TrG5h" value="haltOnDependencyError" />
+        <node concept="10P_77" id="5lLwtTonUpj" role="1tU5fm" />
       </node>
       <node concept="2AHcQZ" id="3vL64MrxjQt" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />

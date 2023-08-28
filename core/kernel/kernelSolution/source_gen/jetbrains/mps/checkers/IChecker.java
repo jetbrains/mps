@@ -39,6 +39,12 @@ public interface IChecker<O, I extends IssueKindReportItem> {
   ICheckingPostprocessor<I> getPostprocessor();
 
 
+  /**
+   * NB! Not to be confused with {@link jetbrains.mps.checkers.IAbstractChecker }!
+   * <p>
+   * An abstract superclass for all checkers that are processing one SModel object at a time: 
+   * a module, a model, a node. 
+   */
   abstract class AbstractChecker<O, I extends IssueKindReportItem> implements IChecker<O, I> {
     @Nullable
     @Override

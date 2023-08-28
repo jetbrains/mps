@@ -40,6 +40,21 @@ import java.util.Stack;
 import java.util.stream.Collectors;
 
 /**
+ * Configures editor's aspects that are responsible for highlighting and checking the open root node. Maintains an
+ * instance of {@link Highlighter} that performs the actual checks in the background.
+ * <p>
+ * NB! Aside from all "editor checkers" (instances of {@link jetbrains.mps.checkers.AbstractNodeCheckerInEditor})
+ * that are returned by {@link CheckerRegistry#getEditorCheckers()} and wrapped by an instance of {@link LanguageEditorChecker},
+ * also the following checkers are hardcoded:
+ * <ul>
+ *   <li>{@link TypesEditorChecker}</li>
+ *   <li>{@link NonTypesystemEditorChecker}</li>
+ *   <li>{@link AutoResolver}</li>
+ *   <li>{@link LanguageEditorChecker}</li>
+ *   <li>{@link jetbrains.mps.checkers.SuppressErrorsChecker}</li>
+ *   <li>{@link ModelProblemsChecker}</li>
+ * </ul>
+ *
  * evgeny, 12/27/11
  */
 public class MPSValidationComponent implements ProjectComponent {

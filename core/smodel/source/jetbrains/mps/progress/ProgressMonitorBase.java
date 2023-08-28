@@ -30,8 +30,6 @@ public abstract class ProgressMonitorBase implements ProgressMonitor {
   // if totalWork==0, step() can be called, advance(>0) can't
   private int myTotal = -1;
   private int myDone = 0;
-  private SubProgressMonitor myActiveChild;
-  private int myAfterActiveChild;
   private String myName;
   private String myStepName;
 
@@ -43,8 +41,6 @@ public abstract class ProgressMonitorBase implements ProgressMonitor {
     if (myTotal >= 0) {
       throw new IllegalStateException("start() is called twice");
     }
-
-    myActiveChild = null;
     myDone = 0;
     assert totalWork >= 0 : "totalWork=" + totalWork;
     myTotal = totalWork;
@@ -98,6 +94,17 @@ public abstract class ProgressMonitorBase implements ProgressMonitor {
     update();
   }
 
+  /**
+   * The value of {@code workDone} is expected to be less than or equal to {@code myTotal - myDone}.
+   * @param workDone the amount of work done
+   */
+  protected void incUpdate(int workDone) {
+    int workLeft = Math.max(0, myTotal - myDone);
+    workDone = Math.max(0, Math.min(workLeft, workDone));
+    myDone += workDone;
+    update();
+  }
+
   protected abstract void update(double fraction);
 
   protected abstract void startInternal(String text);
@@ -117,12 +124,9 @@ public abstract class ProgressMonitorBase implements ProgressMonitor {
   }
 
   protected final void check() {
-    if (myActiveChild != null) {
-      myDone = myAfterActiveChild;
-      myActiveChild = null;
-      setTitleInternal(myName);
-      setStepInternal(myStepName);
-    }
+    // paranoid reset
+    setTitleInternal(myName);
+    setStepInternal(myStepName);
   }
 
   @Override
@@ -140,12 +144,9 @@ public abstract class ProgressMonitorBase implements ProgressMonitor {
     //todo replace with exception and remove overflow check when MPS-24455 is fixed
     if (myTotal < myDone + work || myDone + work < 0) {
       LOG.warning("subTask(work): work is too big: total=" + myTotal + "; done=" + myDone + "; work=" + work);
-      myAfterActiveChild = myTotal;
-    } else {
-      myAfterActiveChild = myDone + work;
     }
 
-    return (myActiveChild = subTaskInternal(work, kind));
+    return subTaskInternal(work, kind);
   }
 
   protected SubProgressMonitor subTaskInternal(int work, SubProgressKind kind) {
@@ -155,6 +156,7 @@ public abstract class ProgressMonitorBase implements ProgressMonitor {
   public static class SubProgressMonitor extends ProgressMonitorBase {
     private final ProgressMonitorBase parent;
     private final int parentTotalWork;
+    private int parentDoneWork = 0;
     private final SubProgressKind kind;
 
     public SubProgressMonitor(ProgressMonitorBase parent, int work, SubProgressKind kind) {
@@ -165,19 +167,23 @@ public abstract class ProgressMonitorBase implements ProgressMonitor {
 
     @Override
     protected void setTitleInternal(String name) {
-      if (kind == SubProgressKind.DEFAULT) {
-        parent.setTitleInternal(combineTasks(parent.getTaskName(), name));
-      } else if (kind == SubProgressKind.REPLACING) {
-        parent.setTitleInternal(name);
-      } else if (kind == SubProgressKind.AS_COMMENT) {
-        parent.setStepInternal(name);
+      synchronized (parent) {
+        if (kind == SubProgressKind.DEFAULT) {
+          parent.setTitleInternal(combineTasks(parent.getTaskName(), name));
+        } else if (kind == SubProgressKind.REPLACING) {
+          parent.setTitleInternal(name);
+        } else if (kind == SubProgressKind.AS_COMMENT) {
+          parent.setStepInternal(name);
+        }
       }
     }
 
     @Override
     protected void setStepInternal(String comment) {
-      if (kind == SubProgressKind.DEFAULT || kind == SubProgressKind.REPLACING) {
-        parent.setStepInternal(comment);
+      synchronized (parent) {
+        if (kind == SubProgressKind.DEFAULT || kind == SubProgressKind.REPLACING) {
+          parent.setStepInternal(comment);
+        }
       }
     }
 
@@ -205,16 +211,15 @@ public abstract class ProgressMonitorBase implements ProgressMonitor {
 
     @Override
     protected void update(double fraction) {
-      if (parent.myActiveChild == this) {
-        int startTicks = parent.myAfterActiveChild - parentTotalWork;
-        double parentFraction = (startTicks + fraction * parentTotalWork) / parent.myTotal;
-        if (parentFraction < 0d) {
-          parentFraction = 0d;
+      // normalize fraction
+      fraction = Double.max(0d, Double.min(1d, fraction));
+      int parentDoneWorkUpdated = Math.min(parentTotalWork, (int) Math.floor(parentTotalWork * fraction));
+      int parentDoneWorkInc = Math.max(0, parentDoneWorkUpdated - parentDoneWork);
+      if (parentDoneWorkInc > 0) {
+        this.parentDoneWork += parentDoneWorkInc;
+        synchronized (parent) {
+          parent.incUpdate(parentDoneWorkInc);
         }
-        if (parentFraction > 1d) {
-          parentFraction = 1d;
-        }
-        parent.update(parentFraction);
       }
     }
   }

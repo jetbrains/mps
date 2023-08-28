@@ -25,6 +25,21 @@ import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.util.Consumer;
 
+/**
+ * A special kind of checker that does nothing, but does have a {@link jetbrains.mps.checkers.ICheckingPostprocessor } to process errors
+ * reported by other checkers. 
+ * <p>
+ * The only action this checker does in its "post processor" is to try to see whether there is an
+ * instance of {@code ISuppressErrors} concept interface in the ancestor of the node that is the target of the
+ * reported error. If yes, it is consulted via a call to {@code ISuppressErrors#suppress} behaviour method, and 
+ * if that method returns true, the error is suppressed and a replacement (an instance of {@link jetbrains.mps.checkers.SuppressErrorsChecker.SuppressedWrapperReportItem }) is added to the list of error items. 
+ * <p>
+ * Only instances of {@link jetbrains.mps.errors.item.NodeReportItem } are taken into consideration.
+ * <p>
+ * See {@link jetbrains.mps.checkers.ErrorReportHelper }<br>
+ * See {@link jetbrains.mps.errors.item.NodeReportItem }<br>
+ * See {@link jetbrains.mps.checkers.CheckingSession }<br>
+ */
 @GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/4829978961957335527", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
   private static final Logger LOG = Logger.getLogger(SuppressErrorsChecker.class);
