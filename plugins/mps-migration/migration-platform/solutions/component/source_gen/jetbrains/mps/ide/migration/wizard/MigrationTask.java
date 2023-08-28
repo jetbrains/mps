@@ -145,7 +145,7 @@ public class MigrationTask {
           if (LOG.isWarningLevel()) {
             LOG.warning("Some dependent modules are not migrated, ignoring...");
           }
-          mySession.getProject().getModelAccess().runReadAction(() -> error.logProblems(new LogHandler(org.apache.log4j.Logger.getLogger(MigrationTask.class))));
+          mySession.getProject().getModelAccess().runReadAction(() -> error.logProblems(new LogHandler(Logger.getLogger(MigrationTask.class))));
         }
       }
     }

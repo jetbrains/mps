@@ -55,7 +55,6 @@
     <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" />
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="53vh" ref="r:53885008-7612-46ff-8b11-27f1d42c3adb(jetbrains.mps.lang.migration.structure)" implicit="true" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -10566,10 +10565,10 @@
                                       <node concept="2ShNRf" id="3PLE6WbQBnP" role="37wK5m">
                                         <node concept="1pGfFk" id="3PLE6WbQBnQ" role="2ShVmc">
                                           <ref role="37wK5l" to="et5u:~LogHandler.&lt;init&gt;(jetbrains.mps.logging.Logger)" resolve="LogHandler" />
-                                          <node concept="2YIFZM" id="3PLE6WbQBnR" role="37wK5m">
-                                            <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
+                                          <node concept="2YIFZM" id="7dXxQs$wFKH" role="37wK5m">
                                             <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
-                                            <node concept="3VsKOn" id="3PLE6WbQBnS" role="37wK5m">
+                                            <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                                            <node concept="3VsKOn" id="7dXxQs$wFKI" role="37wK5m">
                                               <ref role="3VsUkX" node="PobQbOdOMD" resolve="MigrationTask" />
                                             </node>
                                           </node>
