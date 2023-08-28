@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,10 @@ import com.intellij.openapi.util.IconLoader;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -33,7 +35,6 @@ import javax.swing.ImageIcon;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
@@ -160,7 +161,7 @@ public class EditorCell_Image extends EditorCell_Basic {
 
   @Override
   public int getDescent() {
-    return myDescent >= 0 ? myDescent : 0;
+    return Math.max(myDescent, 0);
   }
 
   public void setDescent(int descent) {
@@ -225,21 +226,31 @@ public class EditorCell_Image extends EditorCell_Basic {
         return null;
       }
       String fullPath = MacrosFactory.forModule(m).expandPath(myPath);
-      if (fullPath == null) {
+      if (fullPath == null || !(m instanceof AbstractModule)) {
         return null;
       }
 
       jetbrains.mps.nodeEditor.EditorContext ec = (jetbrains.mps.nodeEditor.EditorContext) context;
       Map<String, Icon> iconCache = ec.getIconCache();
       if (!iconCache.containsKey(fullPath)) {
-        // MPS-29452: this will not work with bundled icons (File -> URL do not mix well with jar protocol)
-        //            if there is a need for that, we would need some valid (non-deprecated) way to convert this
-        //            path to a proper URL (using deprecated FileSystem is not a great option)
-        File iconFile = new File(fullPath);
+        // MPS-29452: we need this to work with bundled icons (java.io.File -> URL doesn't mix well with jar protocol),
+        //            therefore we stick to IFile that is capable constructing proper URL.
+        //            However, perhaps using InputStream/byte[] instead of URL is a better alternative
+        //            (at least ImageIcon can handle these). AbstractModule.getOwnResource():InputStream?
+        // Broader context: here we need to reference resource both from source and deployed modules. For deployed
+        // resource scenario, there's IconResource; there's no proper one when we need both. Consider hiding this logic
+        // into EditorContext implementation (which could use ModuleRuntime.getOwnResource() for deployed modules)
+        // or even under some IconManager (BaseIconManager alternative) so that there's single place to look for modules
+        // come and go.
+        IFile iconFile = ((AbstractModule) m).getFileSystem().findExistingFile(fullPath);
+        if (iconFile == null) {
+          LOG.info(String.format("Can't find image '%s' in module %s", myPath, m.getModuleName()));
+          return null;
+        }
 
         try {
-          URL iconUrl = iconFile.toURI().toURL();
-          String extension = FileUtil.getExtension(fullPath);
+          URL iconUrl = iconFile.getUrl();
+          String extension = FileUtil.getExtension(iconFile.getName());
           if ("svg".equals(extension) || "png".equals(extension)) {
             // IconLoader only supports SVG and PNG, which are also the supported formats for MPS images
             iconCache.put(fullPath, IconLoader.findIcon(iconUrl, false));

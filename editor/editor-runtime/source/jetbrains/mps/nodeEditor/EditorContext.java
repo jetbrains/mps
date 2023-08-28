@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -321,6 +321,9 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
     return myEditorManager;
   }
 
+  // FIXME quite an odd exposure of EC internals for the sake of single EditorCell impl. Perhaps,
+  //       EC_Image shall delegate here, and this code may use cache or consult some global icon
+  //       registry?
   public Map<String, Icon> getIconCache() {
     return myIconCache;
   }
