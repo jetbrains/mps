@@ -141,6 +141,11 @@ public class SNodeTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
     if (isInitialized()) {
       return this.getChildCount() == 0;
     }
+
+    NodeChildrenProvider provider = getAncestor(NodeChildrenProvider.class);
+    if (provider != null) {
+      return !provider.isShowMembers();
+    }
     return super.isLeaf();
   }
 
@@ -217,5 +222,8 @@ public class SNodeTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
 
   public interface NodeChildrenProvider {
     void populate(SNodeTreeNode treeNode);
+    default boolean isShowMembers() {
+      return true;
+    }
   }
 }

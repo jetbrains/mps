@@ -311,6 +311,11 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
   }
 
   @Override
+  public boolean isShowMembers() {
+    return myProjectPane.showNodeStructure();
+  }
+
+  @Override
   public boolean populate(MPSTreeNode treeNode, Language language) {
     return false;
   }
