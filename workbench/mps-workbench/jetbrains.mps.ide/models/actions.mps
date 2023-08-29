@@ -179,9 +179,9 @@
     <import index="o2jy" ref="r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)" />
     <import index="hdb0" ref="r:818648d2-4985-4d36-93cd-2c5b9b2eaf23(jetbrains.mps.lang.core.doc.structure)" />
     <import index="7a0s" ref="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)" />
-    <import index="prsh" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.documentation(MPS.Editor/)" />
     <import index="g84" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.lang.documentation(MPS.IDEA/)" />
     <import index="zdap" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.text(MPS.IDEA/)" />
+    <import index="prsh" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.documentation(MPS.Editor/)" />
     <import index="a6r3" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.ui(MPS.Workbench/)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
@@ -47002,11 +47002,11 @@
           <node concept="3cpWsn" id="4bmJRoNyKLv" role="3cpWs9">
             <property role="TrG5h" value="manager" />
             <node concept="3uibUv" id="4bmJRoNyKLw" role="1tU5fm">
-              <ref role="3uigEE" to="exr9:~MPSDocumentationManager" resolve="MPSDocumentationManager" />
+              <ref role="3uigEE" to="prsh:~MPSDocumentationManager" resolve="MPSDocumentationManager" />
             </node>
             <node concept="2YIFZM" id="4bmJRoNyL6H" role="33vP2m">
-              <ref role="37wK5l" to="exr9:~MPSDocumentationManager.getInstance()" resolve="getInstance" />
-              <ref role="1Pybhc" to="exr9:~MPSDocumentationManager" resolve="MPSDocumentationManager" />
+              <ref role="37wK5l" to="prsh:~MPSDocumentationManager.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="prsh:~MPSDocumentationManager" resolve="MPSDocumentationManager" />
             </node>
           </node>
         </node>
@@ -47086,10 +47086,10 @@
         <node concept="3cpWs8" id="3K7ZN$5A9ls" role="3cqZAp">
           <node concept="3cpWsn" id="3K7ZN$5A9lv" role="3cpWs9">
             <property role="TrG5h" value="documentation" />
+            <node concept="17QB3L" id="2tUtjEnB3qf" role="1tU5fm" />
             <node concept="Xl_RD" id="1ejQSxgxSdL" role="33vP2m">
               <property role="Xl_RC" value="" />
             </node>
-            <node concept="17QB3L" id="2tUtjEnB3qf" role="1tU5fm" />
           </node>
         </node>
         <node concept="1QHqEK" id="yRIyp4fO2Y" role="3cqZAp">
@@ -47139,7 +47139,7 @@
               <ref role="3cqZAo" node="4bmJRoNyKLv" resolve="manager" />
             </node>
             <node concept="liA8E" id="4bmJRoNyMCq" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~MPSDocumentationManager.showQuickDocumentation(java.awt.Frame,com.intellij.openapi.project.Project,java.awt.Point,java.lang.String)" resolve="showQuickDocumentation" />
+              <ref role="37wK5l" to="prsh:~MPSDocumentationManager.showQuickDocumentation(java.awt.Frame,com.intellij.openapi.project.Project,java.awt.Point,java.lang.String)" resolve="showQuickDocumentation" />
               <node concept="2OqwBi" id="4bmJRoNyPSp" role="37wK5m">
                 <node concept="2WthIp" id="4bmJRoNyPGj" role="2Oq$k0" />
                 <node concept="1DTwFV" id="4bmJRoNyQbt" role="2OqNvi">
@@ -47381,10 +47381,9 @@
           </node>
         </node>
       </node>
-      <node concept="17QB3L" id="5c8BzTYRF2j" role="3clF45" />
       <node concept="3Tm6S6" id="2tUtjEnAjqT" role="1B3o_S" />
+      <node concept="17QB3L" id="5c8BzTYRF2j" role="3clF45" />
     </node>
-    <node concept="3Tm1VV" id="5c8BzTYR3b9" role="1B3o_S" />
     <node concept="2tJIrI" id="2tUtjEnySr$" role="jymVt" />
     <node concept="3clFb_" id="2tUtjEnzmzo" role="jymVt">
       <property role="TrG5h" value="getDecoratedDocumentation" />
@@ -47642,6 +47641,7 @@
       </node>
     </node>
     <node concept="2tJIrI" id="2tUtjEnyTAO" role="jymVt" />
+    <node concept="3Tm1VV" id="5c8BzTYR3b9" role="1B3o_S" />
   </node>
 </model>
 
