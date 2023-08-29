@@ -902,6 +902,7 @@
       <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.script.rt.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.smodel.query.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.refactoring.runtime.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/text/jetbrains.mps.lang.css.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/text/jetbrains.mps.lang.doctext.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/text/jetbrains.mps.lang.html.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/text/jetbrains.mps.lang.text.jar" />
