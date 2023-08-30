@@ -50,19 +50,7 @@ public class SubTypingRelation extends AbstractRelation {
     leftTypesList.replaceAll(t -> LatticeUtil.isMeet(t) ? TypesUtil.cleanupMeet(t) : t);
 
     String pullUp = node.getProperty(SNodeUtil.property_RuntimeTypeVariable_pullUp);
-
-    // try to optimize type inference using heuristics about relation kinds (WEAK/STRONG)
-    Set<RelationKind> leftKinds = leftTypesList.stream().map(b -> typesToBlocks.get(b).getRelationKind()).collect(Collectors.toSet());
-    Set<RelationKind> rightKinds = rightTypesList.stream().map(b -> typesToBlocks.get(b).getRelationKind()).collect(Collectors.toSet());
-    if (!Objects.equals(leftKinds, rightKinds)) {
-      if (leftKinds.size() == rightKinds.size() || rightKinds.size() > 1) {
-        // either WEAK-STRONG or vice versa
-        // drop "right" types that have WEAK relation -- expect "left" types to take precedence then
-        rightTypesList.removeIf((t) -> typesToBlocks.get(t).getRelationKind() == RelationKind.WEAK);
-      }
-    }
-
-    // ensure "right" types get preference
+    // ensure "right" types get preference, but only if !pullUp
     if (!leftTypes.isEmpty() && (rightTypesList.isEmpty() || !Boolean.parseBoolean(pullUp))) {
       result = SubtypingUtil.createLeastCommonSupertype(leftTypesList, state.getTypeCheckingContext());
       if (LatticeUtil.isMeet(result)) {
