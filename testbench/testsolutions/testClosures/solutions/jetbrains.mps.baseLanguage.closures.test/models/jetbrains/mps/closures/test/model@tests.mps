@@ -1561,139 +1561,9 @@
       </node>
     </node>
   </node>
-  <node concept="1lH9Xt" id="7Gunk0ZoCVH">
-    <property role="3DII0k" value="2hh8MJdVwqX/command" />
-    <property role="TrG5h" value="AdvancedFunctionParameter" />
-    <node concept="1qefOq" id="7Gunk0ZoCVK" role="1SKRRt">
-      <node concept="312cEu" id="7Gunk0ZoCVI" role="1qenE9">
-        <property role="TrG5h" value="ComplexFunctions" />
-        <node concept="3clFb_" id="7Gunk0ZoCXM" role="jymVt">
-          <property role="TrG5h" value="iterate" />
-          <node concept="3clFbS" id="7Gunk0ZoCXP" role="3clF47">
-            <node concept="3SKdUt" id="7Gunk0ZoDCJ" role="3cqZAp">
-              <node concept="1PaTwC" id="7Gunk0ZoDCK" role="1aUNEU">
-                <node concept="3oM_SD" id="7Gunk0ZoE5o" role="1PaTwD">
-                  <property role="3oM_SC" value="Inference" />
-                </node>
-                <node concept="3oM_SD" id="7Gunk0ZoE5q" role="1PaTwD">
-                  <property role="3oM_SC" value="of" />
-                </node>
-                <node concept="3oM_SD" id="7Gunk0ZoE5t" role="1PaTwD">
-                  <property role="3oM_SC" value="the" />
-                </node>
-                <node concept="3oM_SD" id="7Gunk0ZoE5x" role="1PaTwD">
-                  <property role="3oM_SC" value="type" />
-                </node>
-                <node concept="3oM_SD" id="7Gunk0ZoE5A" role="1PaTwD">
-                  <property role="3oM_SC" value="parameter" />
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs8" id="_PB_1P9tYd" role="3cqZAp">
-              <node concept="3cpWsn" id="_PB_1P9tYe" role="3cpWs9">
-                <property role="TrG5h" value="intStream" />
-                <node concept="3uibUv" id="_PB_1P9tyK" role="1tU5fm">
-                  <ref role="3uigEE" to="1ctc:~Stream" resolve="Stream" />
-                  <node concept="3uibUv" id="_PB_1P9uKM" role="11_B2D">
-                    <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
-                  </node>
-                </node>
-                <node concept="2YIFZM" id="_PB_1P9tYf" role="33vP2m">
-                  <ref role="37wK5l" to="1ctc:~Stream.iterate(java.lang.Object,java.util.function.UnaryOperator)" resolve="iterate" />
-                  <ref role="1Pybhc" to="1ctc:~Stream" resolve="Stream" />
-                  <node concept="3cmrfG" id="_PB_1P9tYg" role="37wK5m">
-                    <property role="3cmrfH" value="0" />
-                  </node>
-                  <node concept="1bVj0M" id="_PB_1P9tYh" role="37wK5m">
-                    <node concept="gl6BB" id="_PB_1P9tYi" role="1bW2Oz">
-                      <property role="TrG5h" value="p" />
-                      <node concept="2jxLKc" id="_PB_1P9tYj" role="1tU5fm" />
-                    </node>
-                    <node concept="3clFbS" id="_PB_1P9tYk" role="1bW5cS">
-                      <node concept="3clFbF" id="_PB_1P9tYl" role="3cqZAp">
-                        <node concept="3cpWs3" id="_PB_1P9tYm" role="3clFbG">
-                          <node concept="3cmrfG" id="_PB_1P9tYn" role="3uHU7w">
-                            <property role="3cmrfH" value="1" />
-                          </node>
-                          <node concept="37vLTw" id="_PB_1P9tYo" role="3uHU7B">
-                            <ref role="3cqZAo" node="_PB_1P9tYi" resolve="p" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs8" id="_PB_1P9pzo" role="3cqZAp">
-              <node concept="3cpWsn" id="_PB_1P9pzp" role="3cpWs9">
-                <property role="TrG5h" value="stringStream" />
-                <node concept="3uibUv" id="_PB_1P9pj_" role="1tU5fm">
-                  <ref role="3uigEE" to="1ctc:~Stream" resolve="Stream" />
-                  <node concept="17QB3L" id="_PB_1P9pjC" role="11_B2D" />
-                </node>
-                <node concept="2YIFZM" id="_PB_1P9pzq" role="33vP2m">
-                  <ref role="37wK5l" to="1ctc:~Stream.iterate(java.lang.Object,java.util.function.UnaryOperator)" resolve="iterate" />
-                  <ref role="1Pybhc" to="1ctc:~Stream" resolve="Stream" />
-                  <node concept="Xl_RD" id="_PB_1P9pzr" role="37wK5m">
-                    <property role="Xl_RC" value="a" />
-                  </node>
-                  <node concept="1bVj0M" id="_PB_1P9pzs" role="37wK5m">
-                    <node concept="gl6BB" id="_PB_1P9pzt" role="1bW2Oz">
-                      <property role="TrG5h" value="p" />
-                      <node concept="2jxLKc" id="_PB_1P9pzu" role="1tU5fm" />
-                    </node>
-                    <node concept="3clFbS" id="_PB_1P9pzv" role="1bW5cS">
-                      <node concept="3clFbF" id="_PB_1P9pzw" role="3cqZAp">
-                        <node concept="3cpWs3" id="_PB_1P9pzx" role="3clFbG">
-                          <node concept="37vLTw" id="_PB_1P9pzy" role="3uHU7B">
-                            <ref role="3cqZAo" node="_PB_1P9pzt" resolve="p" />
-                          </node>
-                          <node concept="Xl_RD" id="_PB_1P9pzz" role="3uHU7w">
-                            <property role="Xl_RC" value="_" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="2H1iQD9ae9Q" role="3cqZAp">
-              <node concept="2OqwBi" id="2H1iQD9af0h" role="3clFbG">
-                <node concept="37vLTw" id="2H1iQD9ae9O" role="2Oq$k0">
-                  <ref role="3cqZAo" node="_PB_1P9tYe" resolve="intStream" />
-                </node>
-                <node concept="liA8E" id="2H1iQD9afVD" role="2OqNvi">
-                  <ref role="37wK5l" to="1ctc:~BaseStream.close()" resolve="close" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="2H1iQD9agEw" role="3cqZAp">
-              <node concept="2OqwBi" id="2H1iQD9ahng" role="3clFbG">
-                <node concept="37vLTw" id="2H1iQD9agEu" role="2Oq$k0">
-                  <ref role="3cqZAo" node="_PB_1P9pzp" resolve="stringStream" />
-                </node>
-                <node concept="liA8E" id="2H1iQD9aj0j" role="2OqNvi">
-                  <ref role="37wK5l" to="1ctc:~BaseStream.close()" resolve="close" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3cqZAl" id="7Gunk0ZoCXz" role="3clF45" />
-          <node concept="3Tm1VV" id="7Gunk0ZoDva" role="1B3o_S" />
-        </node>
-        <node concept="3Tm1VV" id="7Gunk0ZoCVJ" role="1B3o_S" />
-        <node concept="7CXmI" id="2H1iQD9ajnp" role="lGtFl">
-          <node concept="7OXhh" id="2H1iQD9ajR0" role="7EUXB">
-            <property role="GvXf4" value="true" />
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="1lH9Xt" id="6KEnv7l_cAn">
     <property role="TrG5h" value="NestedClosures" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="6KEnv7l_h6Z" role="1SL9yI">
       <property role="TrG5h" value="nestedClosuresWithNullInvoke" />
       <node concept="3cqZAl" id="6KEnv7l_h70" role="3clF45" />
@@ -1966,6 +1836,137 @@
                 <property role="TrG5h" value="compactInvoke2" />
               </node>
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1lH9Xt" id="7Gunk0ZoCVH">
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
+    <property role="TrG5h" value="AdvancedFunctionParameter" />
+    <node concept="1qefOq" id="7Gunk0ZoCVK" role="1SKRRt">
+      <node concept="312cEu" id="7Gunk0ZoCVI" role="1qenE9">
+        <property role="TrG5h" value="ComplexFunctions" />
+        <node concept="3clFb_" id="7Gunk0ZoCXM" role="jymVt">
+          <property role="TrG5h" value="iterate" />
+          <node concept="3clFbS" id="7Gunk0ZoCXP" role="3clF47">
+            <node concept="3SKdUt" id="7Gunk0ZoDCJ" role="3cqZAp">
+              <node concept="1PaTwC" id="7Gunk0ZoDCK" role="1aUNEU">
+                <node concept="3oM_SD" id="7Gunk0ZoE5o" role="1PaTwD">
+                  <property role="3oM_SC" value="Inference" />
+                </node>
+                <node concept="3oM_SD" id="7Gunk0ZoE5q" role="1PaTwD">
+                  <property role="3oM_SC" value="of" />
+                </node>
+                <node concept="3oM_SD" id="7Gunk0ZoE5t" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="7Gunk0ZoE5x" role="1PaTwD">
+                  <property role="3oM_SC" value="type" />
+                </node>
+                <node concept="3oM_SD" id="7Gunk0ZoE5A" role="1PaTwD">
+                  <property role="3oM_SC" value="parameter" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="_PB_1P9tYd" role="3cqZAp">
+              <node concept="3cpWsn" id="_PB_1P9tYe" role="3cpWs9">
+                <property role="TrG5h" value="intStream" />
+                <node concept="3uibUv" id="_PB_1P9tyK" role="1tU5fm">
+                  <ref role="3uigEE" to="1ctc:~Stream" resolve="Stream" />
+                  <node concept="3uibUv" id="_PB_1P9uKM" role="11_B2D">
+                    <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
+                  </node>
+                </node>
+                <node concept="2YIFZM" id="_PB_1P9tYf" role="33vP2m">
+                  <ref role="37wK5l" to="1ctc:~Stream.iterate(java.lang.Object,java.util.function.UnaryOperator)" resolve="iterate" />
+                  <ref role="1Pybhc" to="1ctc:~Stream" resolve="Stream" />
+                  <node concept="3cmrfG" id="_PB_1P9tYg" role="37wK5m">
+                    <property role="3cmrfH" value="0" />
+                  </node>
+                  <node concept="1bVj0M" id="_PB_1P9tYh" role="37wK5m">
+                    <node concept="gl6BB" id="_PB_1P9tYi" role="1bW2Oz">
+                      <property role="TrG5h" value="p" />
+                      <node concept="2jxLKc" id="_PB_1P9tYj" role="1tU5fm" />
+                    </node>
+                    <node concept="3clFbS" id="_PB_1P9tYk" role="1bW5cS">
+                      <node concept="3clFbF" id="_PB_1P9tYl" role="3cqZAp">
+                        <node concept="3cpWs3" id="_PB_1P9tYm" role="3clFbG">
+                          <node concept="3cmrfG" id="_PB_1P9tYn" role="3uHU7w">
+                            <property role="3cmrfH" value="1" />
+                          </node>
+                          <node concept="37vLTw" id="_PB_1P9tYo" role="3uHU7B">
+                            <ref role="3cqZAo" node="_PB_1P9tYi" resolve="p" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="_PB_1P9pzo" role="3cqZAp">
+              <node concept="3cpWsn" id="_PB_1P9pzp" role="3cpWs9">
+                <property role="TrG5h" value="stringStream" />
+                <node concept="3uibUv" id="_PB_1P9pj_" role="1tU5fm">
+                  <ref role="3uigEE" to="1ctc:~Stream" resolve="Stream" />
+                  <node concept="17QB3L" id="_PB_1P9pjC" role="11_B2D" />
+                </node>
+                <node concept="2YIFZM" id="_PB_1P9pzq" role="33vP2m">
+                  <ref role="37wK5l" to="1ctc:~Stream.iterate(java.lang.Object,java.util.function.UnaryOperator)" resolve="iterate" />
+                  <ref role="1Pybhc" to="1ctc:~Stream" resolve="Stream" />
+                  <node concept="Xl_RD" id="_PB_1P9pzr" role="37wK5m">
+                    <property role="Xl_RC" value="a" />
+                  </node>
+                  <node concept="1bVj0M" id="_PB_1P9pzs" role="37wK5m">
+                    <node concept="gl6BB" id="_PB_1P9pzt" role="1bW2Oz">
+                      <property role="TrG5h" value="p" />
+                      <node concept="2jxLKc" id="_PB_1P9pzu" role="1tU5fm" />
+                    </node>
+                    <node concept="3clFbS" id="_PB_1P9pzv" role="1bW5cS">
+                      <node concept="3clFbF" id="_PB_1P9pzw" role="3cqZAp">
+                        <node concept="3cpWs3" id="_PB_1P9pzx" role="3clFbG">
+                          <node concept="37vLTw" id="_PB_1P9pzy" role="3uHU7B">
+                            <ref role="3cqZAo" node="_PB_1P9pzt" resolve="p" />
+                          </node>
+                          <node concept="Xl_RD" id="_PB_1P9pzz" role="3uHU7w">
+                            <property role="Xl_RC" value="_" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="2H1iQD9ae9Q" role="3cqZAp">
+              <node concept="2OqwBi" id="2H1iQD9af0h" role="3clFbG">
+                <node concept="37vLTw" id="2H1iQD9ae9O" role="2Oq$k0">
+                  <ref role="3cqZAo" node="_PB_1P9tYe" resolve="intStream" />
+                </node>
+                <node concept="liA8E" id="2H1iQD9afVD" role="2OqNvi">
+                  <ref role="37wK5l" to="1ctc:~BaseStream.close()" resolve="close" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="2H1iQD9agEw" role="3cqZAp">
+              <node concept="2OqwBi" id="2H1iQD9ahng" role="3clFbG">
+                <node concept="37vLTw" id="2H1iQD9agEu" role="2Oq$k0">
+                  <ref role="3cqZAo" node="_PB_1P9pzp" resolve="stringStream" />
+                </node>
+                <node concept="liA8E" id="2H1iQD9aj0j" role="2OqNvi">
+                  <ref role="37wK5l" to="1ctc:~BaseStream.close()" resolve="close" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cqZAl" id="7Gunk0ZoCXz" role="3clF45" />
+          <node concept="3Tm1VV" id="7Gunk0ZoDva" role="1B3o_S" />
+        </node>
+        <node concept="3Tm1VV" id="7Gunk0ZoCVJ" role="1B3o_S" />
+        <node concept="7CXmI" id="2H1iQD9ajnp" role="lGtFl">
+          <node concept="7OXhh" id="2H1iQD9ajR0" role="7EUXB">
+            <property role="GvXf4" value="true" />
           </node>
         </node>
       </node>
