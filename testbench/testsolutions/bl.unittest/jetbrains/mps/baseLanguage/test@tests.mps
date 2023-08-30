@@ -36955,6 +36955,7 @@
   <node concept="1lH9Xt" id="6KEnv7lA1jM">
     <property role="3GE5qa" value="typeSystem" />
     <property role="TrG5h" value="StaticMethodCallTypeInference" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="6KEnv7lAgwB" role="1SKRRt">
       <node concept="312cEu" id="4OWJMTiBP96" role="1qenE9">
         <property role="TrG5h" value="StaticMethodCallInference" />

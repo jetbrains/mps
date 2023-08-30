@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)">
+<model ref="r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model)">
   <persistence version="9" />
   <languages>
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
@@ -1532,6 +1532,7 @@
   </node>
   <node concept="1lH9Xt" id="6KEnv7l_cAn">
     <property role="TrG5h" value="NestedClosures" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="6KEnv7l_h6Z" role="1SL9yI">
       <property role="TrG5h" value="nestedClosuresWithNullInvoke" />
       <node concept="3cqZAl" id="6KEnv7l_h70" role="3clF45" />
