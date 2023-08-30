@@ -668,7 +668,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-devkit/languages/editor/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-devkit/languages/mpsdevkit/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-devkit/languages/pluginSolutions/baseLanguage/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-devkit/languages/pluginSolutions/lang.actions/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-devkit/languages/pluginSolutions/lang.dataFlow/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-devkit/languages/pluginSolutions/lang.generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-devkit/languages/pluginSolutions/lang.migration/classes_gen" />
@@ -699,7 +698,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.lang.editor.diagram.tests/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.lang.editor.figures.sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.testHybridEditor.diagram.generated/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.testHybridEditor.sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-diagram-editor/test/jetbrains.mps.testHybridEditor/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/language">
@@ -1020,7 +1018,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../samples/calculator-tutorial/solutions/jetbrains.mps.calculator.sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/chemmastery/languages/jetbrains.mps.samples.ChemMastery/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/chemmastery/languages/jetbrains.mps.samples.ChemMastery/generator/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../samples/chemmastery/languages/jetbrains.mps.samples.ChemMastery/sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/complexLanguage/languages/complex/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/complexLanguage/languages/complex/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/complexLanguage/solutions/jetbrains.mps.complex.runtime/classes_gen" />
@@ -1035,7 +1032,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../samples/customAspect/languages/jetbrains.mps.samples.customAspect.docLanguage/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/customAspect/languages/jetbrains.mps.samples.customAspect.docLanguage/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/customAspect/languages/jetbrains.mps.samples.customAspect.sampleLanguage/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../samples/customAspect/languages/jetbrains.mps.samples.customAspect.sampleLanguage/sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/customAspect/solutions/SampleCustomAspect.build/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/customAspect/solutions/jetbrains.mps.samples.customAspect.documentation.pluginSolution/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/customAspect/solutions/jetbrains.mps.samples.customAspect.documentation.runtime/classes_gen" />
@@ -1082,7 +1078,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../samples/generator_demo/solutions/test_models/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/heating/jetbrains.mps.samples.heating.tabular/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/heating/jetbrains.mps.samples.heating/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../samples/heating/jetbrains.mps.samples.heating/sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/highLevelMetaLanguages/languages/jetbrains.mps.samples.highlevel.sampleLanguage/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/highLevelMetaLanguages/languages/jetbrains.mps.samples.highlevel.simpleEditor/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/highLevelMetaLanguages/languages/jetbrains.mps.samples.highlevel.simpleEditor/generator/classes_gen" />
@@ -1113,7 +1108,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../samples/migrations/languages/references/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/migrations/solutions/migartions.test/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/migrations/solutions/migr.test/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../samples/mindmaps/jetbrains.mps.samples.mindmaps.sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/mindmaps/jetbrains.mps.samples.mindmaps/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/money/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/money/generator/classes_gen" />
@@ -1128,7 +1122,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../samples/multipleProjections/languages/org.jetbrains.mps.requestTracking/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/multipleProjections/languages/org.jetbrains.mps.stateMachine.tabular/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/multipleProjections/languages/org.jetbrains.mps.stateMachine/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../samples/multipleProjections/solutions/org.jetbrains.mps.stateMachine.sadbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/sandbox/classes_gen" />
@@ -1136,7 +1129,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../samples/progressIndicator/solutions/ActionWithProgress/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/propertyPersistence/languages/jetbrains.mps.samples.PropertyDefinition/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/propertyPersistence/languages/jetbrains.mps.samples.PropertyDefinition/generator/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../samples/propertyPersistence/languages/jetbrains.mps.samples.PropertyDefinition/sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/propertyPersistence/solutions/jetbrains.mps.samples.propertyPersistence.build/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/propertyPersistence/solutions/jetbrains.mps.samples.propertyPersistence.ideaPlugin/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/propertyPersistence/solutions/jetbrains.mps.samples.propertyPersistenceDef/classes_gen" />
@@ -1180,7 +1172,6 @@
       <excludeFolder url="file://$MODULE_DIR$/../../samples/stateChart/languages/jetbrains.mps.samples.StateChart/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/stateChart/languages/jetbrains.mps.samples.StateChart/sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/tooltips/tooltips.example/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../samples/tooltips/tooltips.example/sandbox/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/xmlLiterals/languages/xmlLiterals/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/xmlLiterals/languages/xmlLiterals/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/xmlLiterals/solutions/jetbrains.mps.samples.xmlLiterals.sandbox/classes_gen" />
