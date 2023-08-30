@@ -9,17 +9,16 @@
     <import index="tp2j" ref="r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)" />
     <import index="tpeh" ref="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)" />
     <import index="2gg1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors(MPS.Core/)" />
-    <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="7jhi" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern(MPS.Core/)" />
+    <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
-    <import index="zavc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.messageTargets(MPS.Core/)" />
-    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
+    <import index="zavc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.messageTargets(MPS.Core/)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
-    <import index="ggp6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern.util(MPS.Core/)" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
-    <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="tp2g" ref="r:00000000-0000-4000-0000-011c89590334(jetbrains.mps.baseLanguage.closures.constraints)" />
+    <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="tpd4" ref="r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)" />
     <import index="2k9e" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)" />
     <import index="qurh" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.typesystem.runtime(MPS.Core/)" />
@@ -322,6 +321,7 @@
         <child id="1145567471833" name="createdType" index="2T96Bj" />
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
+      <concept id="1227264722563" name="jetbrains.mps.lang.smodel.structure.EqualsStructurallyExpression" flags="nn" index="2YFouu" />
       <concept id="1171500988903" name="jetbrains.mps.lang.smodel.structure.Node_GetChildrenOperation" flags="nn" index="32TBzR" />
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
@@ -11973,17 +11973,15 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="2YIFZM" id="SP" role="3clFbw">
-                        <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-                        <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-                        <uo k="s:originTrace" v="n:1221579075843" />
-                        <node concept="37vLTw" id="SS" role="37wK5m">
-                          <ref role="3cqZAo" node="Sg" resolve="one" />
-                          <uo k="s:originTrace" v="n:4265636116363064445" />
-                        </node>
-                        <node concept="37vLTw" id="ST" role="37wK5m">
+                      <node concept="2YFouu" id="SP" role="3clFbw">
+                        <uo k="s:originTrace" v="n:4790220682174411725" />
+                        <node concept="37vLTw" id="SS" role="3uHU7w">
                           <ref role="3cqZAo" node="S3" resolve="another" />
-                          <uo k="s:originTrace" v="n:4265636116363070837" />
+                          <uo k="s:originTrace" v="n:4790220682174412279" />
+                        </node>
+                        <node concept="37vLTw" id="ST" role="3uHU7B">
+                          <ref role="3cqZAo" node="Sg" resolve="one" />
+                          <uo k="s:originTrace" v="n:4790220682174408826" />
                         </node>
                       </node>
                     </node>
@@ -12134,17 +12132,15 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="2YIFZM" id="Ty" role="3clFbw">
-                        <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-                        <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-                        <uo k="s:originTrace" v="n:2403854473132738547" />
-                        <node concept="37vLTw" id="T_" role="37wK5m">
-                          <ref role="3cqZAo" node="SW" resolve="caught" />
-                          <uo k="s:originTrace" v="n:4265636116363089067" />
-                        </node>
-                        <node concept="37vLTw" id="TA" role="37wK5m">
+                      <node concept="2YFouu" id="Ty" role="3clFbw">
+                        <uo k="s:originTrace" v="n:4790220682174416949" />
+                        <node concept="37vLTw" id="T_" role="3uHU7w">
                           <ref role="3cqZAo" node="S3" resolve="another" />
-                          <uo k="s:originTrace" v="n:4265636116363067288" />
+                          <uo k="s:originTrace" v="n:4790220682174417142" />
+                        </node>
+                        <node concept="37vLTw" id="TA" role="3uHU7B">
+                          <ref role="3cqZAo" node="SW" resolve="caught" />
+                          <uo k="s:originTrace" v="n:4790220682174416053" />
                         </node>
                       </node>
                     </node>

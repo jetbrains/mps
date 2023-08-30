@@ -27,7 +27,6 @@
   <uses language="l:28f9e497-3b42-4291-aeba-0a1039153ab1:jetbrains.mps.lang.plugin" />
   <uses language="l:86ef8290-12bb-4ca7-947f-093788f263a9:jetbrains.mps.lang.project" />
   <uses language="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
-  <uses language="l:982eb8df-2c96-4bd7-9963-11712ea622e5:jetbrains.mps.lang.resources" />
   <uses language="l:b3551702-269c-4f05-ba61-58060cef4292:jetbrains.mps.lang.rulesAndMessages" />
   <uses language="l:d8f591ec-4d86-4af2-9f92-a9e93c803ffa:jetbrains.mps.lang.scopes" />
   <uses language="l:0eddeefa-c2d6-4437-bc2c-de50fd4ce470:jetbrains.mps.lang.script" />
@@ -68,40 +67,5 @@
   <uses module="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
   <uses module="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="rt" />
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
-  <dependency className="jetbrains.mps.baseLanguage.collections.Language">
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.editor.EditorAspectDescriptorImpl" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.intentions.IntentionsDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.scripts.ScriptsDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.structure.ConceptPresentationAspectImpl" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.structure.StructureAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptPresentationAspect" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.migration.MigrationDescriptor" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="jetbrains.mps.lang.script.runtime.ScriptAspectDescriptor" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SLanguage" />
-    <classNode dependClassName="jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.openapi.intentions.IntentionAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.StructureAspectDescriptor" />
-    <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.constraints.ConstraintsAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.behavior.BehaviorAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.actions.ActionAspectDescriptorImpl" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.typesystem.TypesystemDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.dataFlow.DataFlowAspectDescriptorImpl" />
-    <classNode dependClassName="java.lang.Class" />
-    <classNode dependClassName="jetbrains.mps.smodel.language.LanguageExtensions" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode extendsClassName="jetbrains.mps.smodel.language.LanguageRuntime" />
-  </dependency>
 </dependenciesRoot>
 

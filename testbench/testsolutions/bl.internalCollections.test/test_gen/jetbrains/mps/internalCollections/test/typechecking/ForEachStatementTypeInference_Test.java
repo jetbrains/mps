@@ -6,8 +6,6 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.ClassRule;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -22,8 +20,6 @@ import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 public class ForEachStatementTypeInference_Test extends BaseTransformationTest {
   @ClassRule
   public static final TestParametersCache ourParamCache = new TestParametersCache(ForEachStatementTypeInference_Test.class, "${mps_home}", "r:ea0833ca-e474-4ae3-b6d3-3f8d18af5a89(jetbrains.mps.internalCollections.test.typechecking@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
 
   public ForEachStatementTypeInference_Test() {
     super(ourParamCache);
@@ -41,9 +37,12 @@ public class ForEachStatementTypeInference_Test extends BaseTransformationTest {
     }
 
     public void test_ErrorMessagesCheck4985370212424024062() throws Exception {
-      SNode nodeToCheck = getRealNodeById("4985370212423199438");
-      SNode operation = getRealNodeById("4985370212424024062");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getRealNodeById("4985370212423199438");
+        SNode operation = getRealNodeById("4985370212424024062");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+      });
     }
 
   }

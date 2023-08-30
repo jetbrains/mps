@@ -27,7 +27,6 @@
   <uses language="l:86ef8290-12bb-4ca7-947f-093788f263a9:jetbrains.mps.lang.project" />
   <uses language="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
   <uses language="l:3ecd7c84-cde3-45de-886c-135ecc69b742:jetbrains.mps.lang.refactoring" />
-  <uses language="l:982eb8df-2c96-4bd7-9963-11712ea622e5:jetbrains.mps.lang.resources" />
   <uses language="l:b3551702-269c-4f05-ba61-58060cef4292:jetbrains.mps.lang.rulesAndMessages" />
   <uses language="l:d8f591ec-4d86-4af2-9f92-a9e93c803ffa:jetbrains.mps.lang.scopes" />
   <uses language="l:0eddeefa-c2d6-4437-bc2c-de50fd4ce470:jetbrains.mps.lang.script" />
@@ -67,46 +66,5 @@
   <uses module="31f56055-9d30-42b3-a2b1-fb3f554d7075(jetbrains.mps.lang.smodel.query.runtime)" kind="rt" />
   <uses module="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="rt+dp" />
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
-  <dependency className="jetbrains.mps.baseLanguage.Language">
-    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.EditorAspectDescriptorImpl" />
-    <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.ILanguageAspect" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.refactorings.RefactoringAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.ids.SLanguageId" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.findUsages.FindUsagesDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.FindUsageAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.textGen.TextGenAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.constraints.ConstraintsAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.DataFlowAspectDescriptorImpl" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConceptPresentationAspect" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.migration.MigrationDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.script.runtime.ScriptAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.actions.ActionAspectDescriptorImpl" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SLanguage" />
-    <classNode dependClassName="jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.openapi.intentions.IntentionAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.StructureAspectDescriptor" />
-    <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.intentions.IntentionsDescriptor" />
-    <classNode dependClassName="jetbrains.mps.refactoring.runtime.RefactoringAspect" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.scripts.ScriptsDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.structure.StructureAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor" />
-    <classNode dependClassName="java.lang.Class" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.structure.ConceptPresentationAspectImpl" />
-    <classNode dependClassName="jetbrains.mps.text.rt.TextGenAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.smodel.language.LanguageExtensions" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.BehaviorAspectDescriptor" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.typesystem.TypesystemDescriptor" />
-    <classNode extendsClassName="jetbrains.mps.smodel.language.LanguageRuntime" />
-  </dependency>
 </dependenciesRoot>
 

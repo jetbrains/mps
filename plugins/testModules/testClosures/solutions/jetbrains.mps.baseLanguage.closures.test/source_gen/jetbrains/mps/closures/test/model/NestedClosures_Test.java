@@ -6,8 +6,6 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.ClassRule;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -25,8 +23,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class NestedClosures_Test extends BaseTransformationTest {
   @ClassRule
   public static final TestParametersCache ourParamCache = new TestParametersCache(NestedClosures_Test.class, "${mps_home}", "r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
 
   public NestedClosures_Test() {
     super(ourParamCache);
@@ -48,67 +44,75 @@ public class NestedClosures_Test extends BaseTransformationTest {
     }
 
     public void test_nestedClosuresWithNullInvoke() throws Exception {
-      addNodeById("7794145398369864922");
-      addNodeById("7794145398370003456");
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("8064771679623824010")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0c0d8());
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("8237239636117693349")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0d0d8());
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("8237239636117681932")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0e0d8());
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("8064771679623817626")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0f0d8());
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
+      runWithinCommand(() -> {
+        addNodeById("7794145398369864922");
+        addNodeById("7794145398370003456");
+      });
+      runWithinCommand(() -> {
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("8064771679623824010")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0a0a0b0d7());
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("8237239636117693349")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0b0a0b0d7());
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("8237239636117681932")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0c0a0b0d7());
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("8064771679623817626")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0d0a0b0d7());
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+      });
     }
     public void test_nestedClosuresWithNullCompactInvoke() throws Exception {
-      addNodeById("7794145398369864922");
-      addNodeById("7794145398370003456");
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("7794145398369968591")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0c0e8());
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("7794145398369968585")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0d0e8());
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("7794145398369968586")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0e0e8());
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
-      {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("7794145398369968592")));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0f0e8());
-        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-      }
+      runWithinCommand(() -> {
+        addNodeById("7794145398369864922");
+        addNodeById("7794145398370003456");
+      });
+      runWithinCommand(() -> {
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("7794145398369968591")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0a0a0b0e7());
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("7794145398369968585")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0b0a0b0e7());
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("7794145398369968586")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0c0a0b0e7());
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+        {
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), TypecheckingFacade.getFromContext().getTypeOf(getNodeById("7794145398369968592")));
+          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_z5xbip_a0a0b0d0a0b0e7());
+          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
+        }
+      });
     }
 
-    private static SNode _quotation_createNode_z5xbip_a0a0b0c0d8() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0a0a0b0d7() {
       SNode quotedNode_1 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
       quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0d0d8() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0b0a0b0d7() {
       SNode quotedNode_1 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
       quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0e0d8() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0c0a0b0d7() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0xe8770ba07b68051L, "ClosureLiteralType"));
@@ -118,7 +122,7 @@ public class NestedClosures_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), quotedNode_2);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0f0d8() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0d0a0b0d7() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0xe8770ba07b68051L, "ClosureLiteralType"));
@@ -128,19 +132,19 @@ public class NestedClosures_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), quotedNode_2);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0c0e8() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0a0a0b0e7() {
       SNode quotedNode_1 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
       quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0d0e8() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0b0a0b0e7() {
       SNode quotedNode_1 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
       quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0e0e8() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0c0a0b0e7() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0xe8770ba07b68051L, "ClosureLiteralType"));
@@ -150,7 +154,7 @@ public class NestedClosures_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), quotedNode_2);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_z5xbip_a0a0b0f0e8() {
+    private static SNode _quotation_createNode_z5xbip_a0a0b0d0a0b0e7() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0xe8770ba07b68051L, "ClosureLiteralType"));
