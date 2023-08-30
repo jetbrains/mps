@@ -19,10 +19,12 @@ public class typeOf_WhenConcreteStatement_InferenceRule extends AbstractInferenc
   public typeOf_WhenConcreteStatement_InferenceRule() {
   }
   public void applyRule(final SNode whenConcreteStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(whenConcreteStatement, LINKS.argument$GyjL);
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1185805532321", 0, null);
-      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1185805519376", true), (SNode) _quotation_createNode_pdvj18_a1a0c0a0b(), false, true, _info_12389875345);
+    if (!(typeCheckingContext.isSingleTypeComputation())) {
+      {
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(whenConcreteStatement, LINKS.argument$GyjL);
+        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1185805532321", 0, null);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "1185805519376", true), (SNode) _quotation_createNode_pdvj18_a1a0c0a0a0b(), true, true, _info_12389875345);
+      }
     }
     if ((SLinkOperations.getTarget(whenConcreteStatement, LINKS.warning$lLiT) != null)) {
       if (!(typeCheckingContext.isSingleTypeComputation())) {
@@ -43,7 +45,7 @@ public class typeOf_WhenConcreteStatement_InferenceRule extends AbstractInferenc
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_pdvj18_a1a0c0a0b() {
+  private static SNode _quotation_createNode_pdvj18_a1a0c0a0a0b() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
