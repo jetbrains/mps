@@ -1542,6 +1542,7 @@
   </node>
   <node concept="1lH9Xt" id="6KEnv7l_cAn">
     <property role="TrG5h" value="NestedClosures" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1LZb2c" id="6KEnv7l_h6Z" role="1SL9yI">
       <property role="TrG5h" value="nestedClosuresWithNullInvoke" />
       <node concept="3cqZAl" id="6KEnv7l_h70" role="3clF45" />

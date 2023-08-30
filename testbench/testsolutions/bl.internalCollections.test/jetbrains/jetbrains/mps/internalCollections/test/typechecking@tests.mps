@@ -823,6 +823,7 @@
   </node>
   <node concept="1lH9Xt" id="4kJ_WHDiVUh">
     <property role="TrG5h" value="ForEachStatementTypeInference" />
+    <property role="3DII0k" value="2hh8MJdVwqX/command" />
     <node concept="1qefOq" id="4kJ_WHDiWfq" role="1SKRRt">
       <node concept="312cEu" id="4kJ_WHDj6sl" role="1qenE9">
         <property role="TrG5h" value="__" />
