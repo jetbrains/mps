@@ -258,10 +258,7 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
-      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
-        <property id="8575328350543493365" name="message" index="huDt6" />
-        <property id="2423417345669755629" name="filter" index="1eyWvh" />
-      </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7" />
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
       <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
@@ -2244,10 +2241,6 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="3PMO5H7XzuB" role="3clF47">
         <node concept="3cpWs8" id="15Pz4SXRNDM" role="3cqZAp">
-          <node concept="15s5l7" id="5fth5jB6cf2" role="lGtFl">
-            <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager is not a strong subtype of @ExtensionPointName.T&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/1636362938497524944]&quot;;" />
-            <property role="huDt6" value="Error: type jetbrains.mps.ide.httpsupport.manager.plugin.MPSInternalPortManager is not a strong subtype of @ExtensionPointName.T" />
-          </node>
           <node concept="3cpWsn" id="15Pz4SXRNDN" role="3cpWs9">
             <property role="TrG5h" value="ext" />
             <node concept="3uibUv" id="15Pz4SXRLJd" role="1tU5fm">
@@ -2267,7 +2260,6 @@
           </node>
         </node>
         <node concept="3clFbF" id="3PMO5H7Xz_4" role="3cqZAp">
-          <node concept="15s5l7" id="3PMO5H7X$G7" role="lGtFl" />
           <node concept="1Wc70l" id="15Pz4SXROHD" role="3clFbG">
             <node concept="3y3z36" id="15Pz4SXROsd" role="3uHU7B">
               <node concept="37vLTw" id="15Pz4SXROba" role="3uHU7B">

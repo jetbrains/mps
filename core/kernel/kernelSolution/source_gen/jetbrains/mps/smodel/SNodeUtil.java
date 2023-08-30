@@ -75,6 +75,8 @@ public final class SNodeUtil {
   public static final SContainmentLink link_BaseConcept_smodelAttribute = BootstrapAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   public static final SProperty property_EnumerationMemberDeclaration_memberId = BootstrapAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
 
+  public static final SProperty property_RuntimeTypeVariable_pullUp = BootstrapAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, 0x36a9a25a86aee366L, "pullUp");
+
   private SNodeUtil() {
   }
   public static String getPresentation(SNode node) {
