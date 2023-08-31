@@ -6,9 +6,9 @@ import jetbrains.mps.lang.typesystem.dependencies.InferenceMethod;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
+import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.closures.constraints.ClassifierTypeUtil;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -22,6 +22,13 @@ public class OperationInference {
     {
       final SNode operandType = typeCheckingContext.typeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(operation), "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2321665441774762101", true);
       typeCheckingContext.whenConcrete(operandType, () -> {
+        if (!(typeCheckingContext.isSingleTypeComputation())) {
+          {
+            SNode _nodeToCheck_1029348928467 = null;
+            EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5449465669808508138", 0, null);
+            typeCheckingContext.createGreaterThanInequality((SNode) createSequenceType_z5jmtl_a0a0c0a0a0b0a1a0a0(elemType), (SNode) typeCheckingContext.getExpandedNode(operandType), true, true, _info_12389875345);
+          }
+        }
         SNode sequenceType = SNodeOperations.as(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.SequenceType$_s);
         if ((sequenceType == null)) {
           sequenceType = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(operandType), CONCEPTS.SequenceType$_s);
@@ -32,11 +39,6 @@ public class OperationInference {
           typeCheckingContext.createEquation((SNode) elemType, (SNode) SLinkOperations.getTarget(sequenceType, LINKS.elementType$KpjL), _info_12389875345);
         }
       }, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2321665441774761274", false, false);
-    }
-    {
-      SNode _nodeToCheck_1029348928467 = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(operation);
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5449465669808508138", 0, null);
-      typeCheckingContext.createGreaterThanInequality((SNode) createSequenceType_z5jmtl_a0a0c0b0a(elemType), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5449465669808508147", true), false, true, _info_12389875345);
     }
   }
   @InferenceMethod
@@ -96,7 +98,7 @@ public class OperationInference {
     inferFilteringOperation(typeCheckingContext, operation, typeCheckingContext.getRepresentative(elementType_typevar_5449465669808470068));
   }
 
-  private static SNode createSequenceType_z5jmtl_a0a0c0b0a(SNode p0) {
+  private static SNode createSequenceType_z5jmtl_a0a0c0a0a0b0a1a0a0(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SequenceType$_s);
     n0.forChild(LINKS.elementType$KpjL).initNode(p0, CONCEPTS.Type$bu, true);
     return n0.getResult();
