@@ -552,7 +552,7 @@ public class TypeSystemTraceTree extends MPSTree implements DataProvider {
         return rule;
       }
       if (TraceDataKeys.SOURCE_NODE.is(id) && source != null) {
-        return source;
+        return source.getReference();
       }
       return null;
     }
