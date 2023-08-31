@@ -15748,10 +15748,8 @@
     </node>
     <node concept="Zd509" id="76zGCcGpKfV" role="Zd508">
       <ref role="1bYAoF" node="2hI9OxsGUC7" resolve="ShowQuickDocumentation" />
-      <node concept="pLAjd" id="76zGCcGpKfX" role="Zd501">
-        <property role="pLAjc" value="ctrl" />
-        <property role="pLAjf" value="VK_W" />
-        <property role="3hacHL" value="5SFo3Mf0QpD/replace_all" />
+      <node concept="pLAjd" id="39L2Bh0t740" role="Zd501">
+        <property role="pLAjf" value="VK_F1" />
       </node>
     </node>
     <node concept="1bYApB" id="73o9OgiF_r2" role="Zd508">
@@ -23195,9 +23193,8 @@
     </node>
     <node concept="Zd509" id="6Gn1y1S6m2e" role="Zd508">
       <ref role="1bYAoF" node="2hI9OxsGUC7" resolve="ShowQuickDocumentation" />
-      <node concept="pLAjd" id="6Gn1y1S6m2g" role="Zd501">
-        <property role="pLAjc" value="ctrl" />
-        <property role="pLAjf" value="VK_W" />
+      <node concept="pLAjd" id="39L2Bh0t6Am" role="Zd501">
+        <property role="pLAjf" value="VK_F1" />
       </node>
     </node>
     <node concept="Zd509" id="60tTF90rSBQ" role="Zd508">
@@ -29096,9 +29093,8 @@
     </node>
     <node concept="Zd509" id="1cfRHfcXFfY" role="Zd508">
       <ref role="1bYAoF" node="2hI9OxsGUC7" resolve="ShowQuickDocumentation" />
-      <node concept="pLAjd" id="1cfRHfcXFg0" role="Zd501">
-        <property role="pLAjc" value="ctrl" />
-        <property role="pLAjf" value="VK_W" />
+      <node concept="pLAjd" id="39L2Bh0t78X" role="Zd501">
+        <property role="pLAjf" value="VK_F1" />
       </node>
     </node>
     <node concept="1bYApB" id="2HiVo5Pctgp" role="Zd508">

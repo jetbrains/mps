@@ -14,7 +14,7 @@ public final class Mac_10_5_KeymapChanges extends BaseKeymapChanges {
     add("jetbrains.mps.ide.actions.ShowDefinitionInMenu_Action", "meta Y");
     add("jetbrains.mps.ide.actions.ShowDefinition_Action", "alt SPACE");
     add("jetbrains.mps.ide.actions.ShowDefinition_Action", "meta Y");
-    add("jetbrains.mps.ide.actions.ShowQuickDocumentation_Action", "ctrl W");
+    add("jetbrains.mps.ide.actions.ShowQuickDocumentation_Action", " F1");
     remove("jetbrains.mps.ide.actions.NewElement_Action", "alt INSERT");
     remove("jetbrains.mps.ide.actions.NewElement_Action", "ctrl alt INSERT");
     replace("jetbrains.mps.ide.actions.FindTextInProject_Action", "ctrl alt shift F");

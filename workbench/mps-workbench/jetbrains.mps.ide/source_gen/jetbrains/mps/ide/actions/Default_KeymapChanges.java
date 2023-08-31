@@ -50,7 +50,7 @@ public final class Default_KeymapChanges extends BaseKeymapChanges {
     add("jetbrains.mps.ide.actions.ShowNodeInInspector_Action", "ctrl alt I");
     add("jetbrains.mps.ide.actions.ShowNodeInfo_Action", "ctrl Q");
     add("jetbrains.mps.ide.actions.ShowParameters_Action", "ctrl P");
-    add("jetbrains.mps.ide.actions.ShowQuickDocumentation_Action", "ctrl W");
+    add("jetbrains.mps.ide.actions.ShowQuickDocumentation_Action", " F1");
     // parameterized
     addTemplate("jetbrains.mps.ide.actions.FileDelete_Action", " DELETE");
     addTemplate("jetbrains.mps.ide.actions.GoToAction_Action", "ctrl shift A");
