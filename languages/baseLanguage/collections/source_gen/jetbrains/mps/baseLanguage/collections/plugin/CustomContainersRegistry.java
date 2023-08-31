@@ -23,9 +23,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CustomContainersRegistry {
   /*package*/ static CustomContainersRegistry INSTANCE = new CustomContainersRegistry();
-  private List<_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository>> providers = ListSequence.fromList(new ArrayList<_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository>>());
+  private List<_FunctionTypes._return_P1_E0<? extends Iterable<SNode>, ? super SRepository>> providers = ListSequence.fromList(new ArrayList<_FunctionTypes._return_P1_E0<? extends Iterable<SNode>, ? super SRepository>>());
   private CustomContainersRegistry() {
-    for (_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository> provider : new ExtensionPoint<_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository>>("jetbrains.mps.baseLanguage.collections.customContainers").getObjects()) {
+    for (_FunctionTypes._return_P1_E0<? extends Iterable<SNode>, ? super SRepository> provider : new ExtensionPoint<_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository>>("jetbrains.mps.baseLanguage.collections.customContainers").getObjects()) {
       ListSequence.fromList(providers).addElement(provider);
     }
   }
@@ -51,11 +51,14 @@ public class CustomContainersRegistry {
     return (fmdesc != null ? fmdesc.getModule() : null);
   }
   private Iterable<SNode> primAllCustomContainers(final SRepository repo) {
-    List<_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository>> providersCopy;
+    List<_FunctionTypes._return_P1_E0<? extends Iterable<SNode>, ? super SRepository>> providersCopy;
     synchronized (this) {
-      providersCopy = ListSequence.fromListWithValues(new ArrayList<_FunctionTypes._return_P1_E0<? extends List<SNode>, ? super SRepository>>(), this.providers);
+      providersCopy = ListSequence.fromListWithValues(new ArrayList<_FunctionTypes._return_P1_E0<? extends Iterable<SNode>, ? super SRepository>>(), this.providers);
     }
-    return ListSequence.fromList(providersCopy).translate((prov) -> prov.invoke(repo));
+    return ListSequence.fromList(providersCopy).translate((prov) -> {
+      _FunctionTypes._return_P1_E0<? extends Iterable<SNode>, ? super SRepository> function = prov;
+      return function.invoke(repo);
+    });
   }
 
   private static final class LINKS {
