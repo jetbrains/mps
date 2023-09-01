@@ -16,14 +16,24 @@
              uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
   </target>
 
-  <target name="getOpenjdkWin" depends="install-ivy" description="--> Retreive openJDK/jbr_windows_x64.tar.gz">
+  <target name="getOpenjdkWin" depends="install-ivy" description="--> Retreive openJDK/jbr-windows-x64.tar.gz">
     <ivy:resolve file="ivyOpenjdkWin.xml"/>
     <ivy:retrieve file="ivyOpenjdkWin.xml" pattern="${get.dir}/[artifact].[ext]"/>
   </target>
 
-  <target name="getOpenjdkMac" depends="install-ivy" description="--> Retreive openJDK/jbr_ocx_x64.tar.gz">
+  <target name="getOpenjdkMac" depends="install-ivy" description="--> Retreive openJDK/jbr-osx-x64.tar.gz">
     <ivy:resolve file="ivyOpenjdkMac.xml"/>
     <ivy:retrieve file="ivyOpenjdkMac.xml" pattern="${get.dir}/[artifact].[ext]"/>
+  </target>
+
+  <target name="getOpenjdkMacM1" depends="install-ivy" description="--> Retreive openJDK/jbr-osx-aarch64.tar.gz">
+    <ivy:resolve file="ivyOpenjdkMacM1.xml"/>
+    <ivy:retrieve file="ivyOpenjdkMacM1.xml" pattern="${get.dir}/[artifact].[ext]"/>
+  </target>
+
+  <target name="getOpenjdkLinux" depends="install-ivy" description="--> Retreive openJDK/jbr-linux-x64.tar.gz">
+    <ivy:resolve file="ivyOpenjdkLinux.xml"/>
+    <ivy:retrieve file="ivyOpenjdkLinux.xml" pattern="${get.dir}/[artifact].[ext]"/>
   </target>
 
 </project>

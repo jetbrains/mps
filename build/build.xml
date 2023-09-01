@@ -6,8 +6,23 @@
     <ant antfile="getDependencies.xml" target="install" inheritAll="true" useNativeBasedir="true"/>
   </target>
 
-  <target name="getResourcesAndBuildAll">
+  <target name="getOpenjdkWin">
     <ant antfile="getResources.xml" inheritall="true" usenativebasedir="true" target="getOpenjdkWin" />
+  </target>
+
+  <target name="getOpenjdkMac">
+    <ant antfile="getResources.xml" inheritall="true" usenativebasedir="true" target="getOpenjdkMac" />
+  </target>
+
+  <target name="getOpenjdkMacM1">
+    <ant antfile="getResources.xml" inheritall="true" usenativebasedir="true" target="getOpenjdkMacM1" />
+  </target>
+
+  <target name="getOpenjdkLinux">
+    <ant antfile="getResources.xml" inheritall="true" usenativebasedir="true" target="getOpenjdkLinux" />
+  </target>
+
+  <target name="getResourcesAndBuildAll" depends="getOpenjdkWin">
     <ant antfile="mpsDistribution.xml" inheritAll="true" useNativeBasedir="true" target="buildDependents"/>
   </target>
 
