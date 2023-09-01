@@ -49,8 +49,7 @@ public class SubTypingRelation extends AbstractRelation {
     // "cleanup" meet types
     leftTypesList.replaceAll(t -> LatticeUtil.isMeet(t) ? TypesUtil.cleanupMeet(t) : t);
 
-    // FIXME temporarily disable "pullUp" feature until all issues with generation are resolved
-    String pullUp = "false" ; //node.getProperty(SNodeUtil.property_RuntimeTypeVariable_pullUp);
+    String pullUp = node.getProperty(SNodeUtil.property_RuntimeTypeVariable_pullUp);
     // ensure "right" types get preference, but only if !pullUp
     if (!leftTypes.isEmpty() && (rightTypesList.isEmpty() || !Boolean.parseBoolean(pullUp))) {
       result = SubtypingUtil.createLeastCommonSupertype(leftTypesList, state.getTypeCheckingContext());
