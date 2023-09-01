@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,15 +22,17 @@ import com.intellij.util.CommonProcessors.CollectProcessor;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.util.indexing.FileBasedIndex.ValueProcessor;
 import gnu.trove.TObjectIntHashMap;
-import jetbrains.mps.ide.vfs.IdeaFileSystem;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayList;
@@ -76,11 +78,13 @@ public final class PropertyValueProcessor {
         return;
       }
       final ProgressMonitor sub1 = progressMonitor.subTask(2);
-      SModelFileTracker modelFileTracker = SModelFileTracker.getInstance(myProject.getRepository());
-      final IdeaFileSystem fs = myProject.getFileSystem();
+      final SRepository repo = myProject.getRepository();
+      SModelFileTracker modelFileTracker = SModelFileTracker.getInstance(repo);
+      final FileSystemBridge fs = myProject.getFileSystem();
       sub1.start("Processing files...", files.size());
       for (VirtualFile vf : files) {
         if (!fs.canConvert(vf)) {
+          sub1.advance(1);
           continue;
         }
         // only nodes that are mentioned for all keys
@@ -92,12 +96,28 @@ public final class PropertyValueProcessor {
           }
         }
         final IFile mpsFile = fs.fromVirtualFile(vf);
+        final SModelReference modelRef;
+        if (modelFileTracker.modelFor(mpsFile) != null) {
+          modelRef = modelFileTracker.modelFor(mpsFile);
+        } else if (modelFileTracker.modelFor(mpsFile.getParent()) != null) {
+          // HACK for per-root persistence. SModelFileTracker doesn't answer 'model' for individual files (see 19fd1e76 for reason),
+          //      therefore here we assume per-root persistence files are right under a folder tracked by SModelFileTracker.
+          // XXX Perhaps, a dedicated method in SModelFileTracker would be better.
+          modelRef = modelFileTracker.modelFor(mpsFile.getParent());
+        } else {
+          modelRef = null;
+        }
+        if (modelRef == null) {
+          sub1.advance(1);
+          continue;
+        }
+
         if (valueProcessor.intersection.count() == 0) {
           // though vf has to contain all keys (I assume #processFilesContainingAllKeys() does that)
           // it's still possible that the values belong to different nodes
           // However, there are cases, like CommentLine that contains distinct Words, need to try to detect these, too
           myProject.getModelAccess().runReadAction(() -> {
-            final SModel model = modelFileTracker.findModel(mpsFile);
+            final SModel model = modelRef.resolve(repo);
             if (model == null) {
               return;
             }
@@ -199,7 +219,7 @@ public final class PropertyValueProcessor {
           }); // model read
         } else {
           myProject.getModelAccess().runReadAction(() -> {
-            final SModel model = modelFileTracker.findModel(mpsFile);
+            final SModel model = modelRef.resolve(repo);
             if (model == null) {
               return;
             }
