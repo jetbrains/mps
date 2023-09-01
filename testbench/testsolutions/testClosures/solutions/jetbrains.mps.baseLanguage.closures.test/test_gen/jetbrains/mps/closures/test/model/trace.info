@@ -11,6 +11,55 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)/5533324111883035574">
+    <file name="ComplexInference_Test.java">
+      <node id="5533324111883035574" at="25,34,26,60" concept="10" />
+      <node id="5533324111883090506" at="30,77,31,68" concept="2" />
+      <node id="5533324111883110405" at="34,77,35,68" concept="2" />
+      <node id="5533324111883035574" at="40,52,41,19" concept="10" />
+      <node id="5533324111883090506" at="44,79,45,0" concept="7" />
+      <node id="5533324111883090506" at="46,30,47,67" concept="5" />
+      <node id="5533324111883090506" at="47,67,48,65" concept="5" />
+      <node id="5533324111883090506" at="48,65,49,209" concept="2" />
+      <node id="5533324111883110405" at="52,79,53,0" concept="7" />
+      <node id="5533324111883110405" at="54,30,55,67" concept="5" />
+      <node id="5533324111883110405" at="55,67,56,65" concept="5" />
+      <node id="5533324111883110405" at="56,65,57,209" concept="2" />
+      <node id="5533324111883035574" at="22,0,24,0" concept="8" trace="ourParametersCacheExtension" />
+      <node id="5533324111883035574" at="25,0,28,0" concept="1" trace="ComplexInference_Test#()V" />
+      <node id="5533324111883035574" at="40,0,43,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5533324111883090506" at="29,0,33,0" concept="4" trace="test_ErrorMessagesCheck5533324111883090506#()V" />
+      <node id="5533324111883110405" at="33,0,37,0" concept="4" trace="test_ErrorMessagesCheck5533324111883110405#()V" />
+      <node id="5533324111883090506" at="45,0,50,9" concept="2" />
+      <node id="5533324111883110405" at="53,0,58,9" concept="2" />
+      <node id="5533324111883090506" at="44,0,52,0" concept="4" trace="test_ErrorMessagesCheck5533324111883090506#()V" />
+      <node id="5533324111883110405" at="52,0,60,0" concept="4" trace="test_ErrorMessagesCheck5533324111883110405#()V" />
+      <scope id="5533324111883035574" at="25,34,26,60" />
+      <scope id="5533324111883090506" at="30,77,31,68" />
+      <scope id="5533324111883110405" at="34,77,35,68" />
+      <scope id="5533324111883035574" at="40,52,41,19" />
+      <scope id="5533324111883035574" at="25,0,28,0" />
+      <scope id="5533324111883035574" at="40,0,43,0">
+        <var name="owner" id="5533324111883035574" />
+      </scope>
+      <scope id="5533324111883090506" at="46,30,49,209">
+        <var name="nodeToCheck" id="5533324111883090506" />
+        <var name="operation" id="5533324111883090506" />
+      </scope>
+      <scope id="5533324111883110405" at="54,30,57,209">
+        <var name="nodeToCheck" id="5533324111883110405" />
+        <var name="operation" id="5533324111883110405" />
+      </scope>
+      <scope id="5533324111883090506" at="29,0,33,0" />
+      <scope id="5533324111883110405" at="33,0,37,0" />
+      <scope id="5533324111883090506" at="44,79,50,9" />
+      <scope id="5533324111883110405" at="52,79,58,9" />
+      <scope id="5533324111883090506" at="44,0,52,0" />
+      <scope id="5533324111883110405" at="52,0,60,0" />
+      <unit id="5533324111883035574" at="38,0,62,0" name="jetbrains.mps.closures.test.model.ComplexInference_Test$TestBody" />
+      <unit id="5533324111883035574" at="20,0,63,0" name="jetbrains.mps.closures.test.model.ComplexInference_Test" />
+    </file>
+  </root>
   <root nodeRef="r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)/6374750171056867477">
     <file name="ClosureLiteraltargetFunType_Test.java">
       <node id="6374750171056867477" at="31,45,32,60" concept="10" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="evo9vsute1on3okv50oqs6mnkyjkv5">
-  <files names="AdvancedFunctionParameter_Test.java:ClosureLiteraltargetFunType_Test.java:ClosureLiteraltargetIface_Test.java:Generics_Test.java:MockTemplateQueryContext.java:NestedClosures_Test.java" />
+<product version="3" modelHash="-4eeubsrx05v0ge2xq8f907lg42mbz4q">
+  <files names="AdvancedFunctionParameter_Test.java:ClosureLiteraltargetFunType_Test.java:ClosureLiteraltargetIface_Test.java:ComplexInference_Test.java:Generics_Test.java:MockTemplateQueryContext.java:NestedClosures_Test.java" />
 </product>
 
