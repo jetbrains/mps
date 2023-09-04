@@ -408,6 +408,11 @@ public class ContainerTests<T> extends AbstractContainerParameterizedTest<T> {
     }
 
     @Override
+    public TextBuilder renderHtml() {
+      return null;
+    }
+
+    @Override
     public void setBig(boolean big) {
     }
 

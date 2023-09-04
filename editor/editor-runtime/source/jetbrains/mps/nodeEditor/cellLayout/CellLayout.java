@@ -29,6 +29,8 @@ public interface CellLayout extends jetbrains.mps.openapi.editor.cells.CellLayou
 
   TextBuilder doLayoutText(Iterable<EditorCell> editorCells);
 
+  TextBuilder doLayoutHtml(Iterable<EditorCell> editorCells);
+
   int getAscent(EditorCell_Collection editorCells);
 
   int getDescent(EditorCell_Collection editorCell_collection);

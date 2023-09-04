@@ -321,6 +321,11 @@ public class CellLayout_Flow extends AbstractCellLayout {
     return result;
   }
 
+  @Override
+  public TextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    return doLayoutText(editorCells);
+  }
+
   private TextBuilder doLayoutRow(Iterator<EditorCell> it) {
     TextBuilder result = new TextBuilderImpl();
     for (; it.hasNext(); ) {

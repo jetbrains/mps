@@ -703,6 +703,11 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
   }
 
   @Override
+  public TextBuilder renderHtml() {
+    return myCellLayout.doLayoutHtml(this);
+  }
+
+  @Override
   public void synchronizeViewWithModel() {
     for (EditorCell myEditorCell : getEditorCells()) {
       ((jetbrains.mps.nodeEditor.cells.EditorCell) myEditorCell).synchronizeViewWithModel();

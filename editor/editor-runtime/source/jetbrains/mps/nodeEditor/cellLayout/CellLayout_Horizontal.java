@@ -142,6 +142,15 @@ public class CellLayout_Horizontal extends AbstractCellLayout {
     return result;
   }
 
+  @Override
+  public TextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    TextBuilder result = new TextBuilderImpl();
+    for (EditorCell editorCell : editorCells){
+      result.appendToTheRight(editorCell.renderHtml(), PunctuationUtil.hasLeftGap(editorCell));
+    }
+    return result;
+  }
+
   public String toString() {
     return "Horizontal";
   }

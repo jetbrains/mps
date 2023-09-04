@@ -206,6 +206,15 @@ public class CellLayout_Vertical extends AbstractCellLayout {
   }
 
   @Override
+  public TextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    TextBuilder result = new TextBuilderImpl();
+    for (EditorCell editorCell : editorCells) {
+      result.appendToTheBottom(editorCell.renderHtml());
+    }
+    return result;
+  }
+
+  @Override
   public int getAscent(EditorCell_Collection editorCells) {
     for (EditorCell cell : editorCells) {
       if (cell.getStyle().get(StyleAttributes.BASE_LINE_CELL)) {

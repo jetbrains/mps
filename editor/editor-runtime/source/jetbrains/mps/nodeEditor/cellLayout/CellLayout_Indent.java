@@ -216,6 +216,43 @@ public class CellLayout_Indent extends AbstractCellLayout {
   }
 
   @Override
+  public TextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    Set<EditorCell> editorCellsSet = new HashSet<>();
+    for (EditorCell editorCell : editorCells) {
+      editorCellsSet.add(editorCell);
+    }
+    TextBuilder result = new TextBuilderImpl();
+    Iterator<EditorCell> iterator = editorCells.iterator();
+    if (iterator.hasNext()) {
+      boolean newLineAfter = false;
+      EditorCell_Collection rootCell = iterator.next().getParent();
+      for (EditorCell current : getIndentLeafs(rootCell)) {
+        EditorCell childCell = current;
+        while (childCell.getParent() != rootCell) {
+          childCell = childCell.getParent();
+        }
+        if (!editorCellsSet.contains(childCell)) {
+          continue;
+        }
+        if (isOnNewLine(rootCell, current) || newLineAfter) {
+          newLineAfter = false;
+          result.appendToTheRight(new TextBuilderImpl("\n"), true);
+          for (int i = 0; i < getIndent(rootCell, current, false); i++) {
+            result.appendToTheRight(new TextBuilderImpl(EditorCell_Indent.getIndentText()), false);
+          }
+        }
+
+        result.appendToTheRight(current.renderHtml(), PunctuationUtil.hasLeftGap(current));
+
+        if (isNewLineAfter(rootCell, current)) {
+          newLineAfter = true;
+        }
+      }
+    }
+    return result;
+  }
+
+  @Override
   public List<? extends EditorCell> getSelectionCells(EditorCell_Collection editorCells) {
     return getIndentLeafs(editorCells);
   }

@@ -776,6 +776,10 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
     return new TextBuilderImpl();
   }
 
+  public TextBuilder renderHtml(){
+    return new TextBuilderImpl();
+  }
+
   @Override
   public final void relayout() {
     if (!myIsNeedRelayout) {

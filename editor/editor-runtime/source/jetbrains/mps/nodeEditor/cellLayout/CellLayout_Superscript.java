@@ -151,6 +151,15 @@ public class CellLayout_Superscript extends AbstractCellLayout {
   }
 
   @Override
+  public TextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    TextBuilder result = new TextBuilderImpl();
+    for (EditorCell editorCell : editorCells) {
+      result.appendToTheBottom(editorCell.renderHtml());
+    }
+    return result;
+  }
+
+  @Override
   public int getAscent(EditorCell_Collection editorCells) {
     int floor2 = 0;
     int floor3 = 0;

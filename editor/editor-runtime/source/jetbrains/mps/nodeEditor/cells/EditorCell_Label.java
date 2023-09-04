@@ -127,6 +127,47 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     return getRenderedTextLine().getText();
   }
 
+  private String getRenderedHtml() {
+    StringBuilder sb = new StringBuilder(getRenderedText());
+
+    // format
+    boolean isBold = this.getRenderedTextLine().getFont().isBold();
+    boolean isItalic = this.getRenderedTextLine().getFont().isItalic();
+    boolean isUnderlined = this.getRenderedTextLine().isUnderlined();
+    if (isBold) {
+      sb.insert(0, "<b>");
+      sb.append("</b>");
+    }
+    if (isItalic) {
+      sb.insert(0, "<i>");
+      sb.append("</i>");
+    }
+    if (isUnderlined) {
+      sb.insert(0, "<u>");
+      sb.append("</u>");
+    }
+
+    // color
+    Color color = this.getRenderedTextLine().getTextColor();
+    String rgbString = "rgb(" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ")";
+    String rgbBlack1 = "rgb(8, 8, 8)";
+    String rgbBlack2 = "rgb(0, 0, 0)";
+    if (!(rgbBlack1.equals(rgbString) || rgbBlack2.equals(rgbString))) {
+      sb.insert(0, "<font color=\"rgb(" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ")\">");
+      sb.append("</font>");
+    }
+
+    // font-size
+//    int fontSize = StartupUiUtil.getLabelFont().getSize();
+//    float cellFontSize = this.getRenderedTextLine().getFont().getSize2D();
+//    if (fontSize != cellFontSize) {
+//      sb.insert(0, "<span style=\"font-size:" + cellFontSize + "\">");
+//      sb.append("</span>");
+//    }
+
+    return sb.toString();
+  }
+
   public Font getFont() {
     return getRenderedTextLine().getFont();
   }
@@ -827,6 +868,14 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   @Override
   public TextBuilder renderText() {
     return new TextBuilderImpl(getRenderedText());
+  }
+
+  @Override
+  public TextBuilder renderHtml() {
+    if (getRenderedText().isEmpty() || " ".equals(getRenderedText())) {
+      return new TextBuilderImpl(getRenderedText());
+    }
+    return new TextBuilderImpl(getRenderedHtml());
   }
 
   public int getCharWidth() {
