@@ -49,6 +49,7 @@ import java.util.stream.Collectors;
 public class DocumentationFacetTab extends BaseTab implements FacetTab {
 
   private final DocumentationFacet myDocumentationFacet;
+  private SModule myModule;
   private JTextField myOutputFiled;
   private IFileSystem fs;
   private final String DOC_DEVKIT_NAME = "jetbrains.mps.devkit.documentation";
@@ -96,14 +97,23 @@ public class DocumentationFacetTab extends BaseTab implements FacetTab {
     return !Objects.equals(myDocumentationFacet.getLocation().getPath(), myOutputFiled.getText());
   }
 
+  /**
+   * use apply(@NotNull SModule module)
+   */
   @Override
   public void apply() {
+  }
+
+  public void apply(@NotNull SModule module) {
     myDocumentationFacet.setLocation(fs.getFile(myOutputFiled.getText()));
+
+    assert module instanceof Language;
+    myModule = module;
     addDocDevKit();
   }
 
-  @Override
-  public void unapply() {
+  public void unapply(@NotNull SModule module) {
+    myModule = module;
     removeDocDevKit();
   }
 
@@ -114,7 +124,6 @@ public class DocumentationFacetTab extends BaseTab implements FacetTab {
 
 
   private void addDocDevKit() {
-    assert myDocumentationFacet.getModule() instanceof Language;
     SModel structureAspect = LanguageAspect.STRUCTURE.get((Language) myDocumentationFacet.getModule());
     ModelImports imports = new ModelImports(structureAspect);
     SModuleReference docDevkit = new jetbrains.mps.project.structure.modules.ModuleReference(DOC_DEVKIT_NAME, DOC_DEVKIT_ID);
@@ -125,11 +134,10 @@ public class DocumentationFacetTab extends BaseTab implements FacetTab {
    * removing document.devkit if no devkit languages are used
    */
   private void removeDocDevKit() {
-    SModule module = myDocumentationFacet.getModule();
-    SModel structureAspect = LanguageAspect.STRUCTURE.get(((Language) module));
+    SModel structureAspect = LanguageAspect.STRUCTURE.get(((Language) myModule));
     ModelImports imports = new ModelImports(structureAspect);
     SModuleReference docDevKitSModelRef = new jetbrains.mps.project.structure.modules.ModuleReference(DOC_DEVKIT_NAME, DOC_DEVKIT_ID);
-    DevKit documentationDevKit = (DevKit) docDevKitSModelRef.resolve(module.getRepository());
+    DevKit documentationDevKit = (DevKit) docDevKitSModelRef.resolve(myModule.getRepository());
 
     // finding languages that are actually used
     final ModelDependencyScanner ms = new ModelDependencyScanner().usedLanguages(true).crossModelReferences(false);

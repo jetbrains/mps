@@ -58,6 +58,7 @@ import jetbrains.mps.VisibleModuleRegistry;
 import jetbrains.mps.extapi.module.FacetsRegistry;
 import jetbrains.mps.findUsages.CompositeFinder;
 import jetbrains.mps.icons.MPSIcons.General;
+import jetbrains.mps.ide.documentation.DocumentationFacetTab;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.holders.GenericHolder;
@@ -1563,12 +1564,21 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
             // The reason is that apply() for AddFacetsTab comes earlier than apply to any newly added tab (due to natural order of tab addition).
             // Should not be an issue to apply twice (once here and subsequently from MPSPropertiesConfigurable#apply())
             tab.apply();
+            if (tab instanceof DocumentationFacetTab) {
+              // DocumentationFacetTab#apply() requires SModule, which is unavailable
+              // due to `DocumentationFacet.module` being null.
+              // That's why I use DocumentationFacetTab#apply(SModule).
+              ((DocumentationFacetTab) tab).apply(myModule);
+            }
           }
           myModuleDescriptor.addFacetDescriptor(facet);
           checkBox.created();
         } else if (checkBox.isExistingToRemove()) {
           if (tab != null) {
             tab.unapply();
+            if (tab instanceof DocumentationFacetTab){
+              ((DocumentationFacetTab) tab).unapply(myModule);
+            }
           }
           myModuleDescriptor.removeFacetDescriptor(checkBox.getFacet());
           checkBox.existingRemoved();
