@@ -38,7 +38,8 @@ public final class ConceptFunctionParameter_node__BehaviorDescriptor extends Bas
       SNode editorTab = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.EditorTab$zO, false, false);
       return _quotation_createNode_luv170_a1a0a0(SLinkOperations.getTarget(editorTab, LINKS.baseNodeConcept$FtgS));
     } else {
-      return _quotation_createNode_luv170_a0a0a0a();
+      // Necessary for generation
+      return _quotation_createNode_luv170_a1a0a0a();
     }
   }
 
@@ -94,7 +95,7 @@ public final class ConceptFunctionParameter_node__BehaviorDescriptor extends Bas
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept"), (SNode) parameter_1);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_luv170_a0a0a0a() {
+  private static SNode _quotation_createNode_luv170_a1a0a0a() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x108f968b3caL, "SNodeType"));
     quotedNode_1 = nb.getResult();

@@ -2331,7 +2331,7 @@
       <node id="619751709318099333" at="206,5,207,49" concept="2" />
       <node id="1759523241426349690" at="210,86,211,117" concept="10" />
       <node id="664925514884896932" at="217,54,218,29" concept="10" />
-      <node id="664925514884987306" at="221,60,222,29" concept="10" />
+      <node id="664925514884987306" at="221,64,222,29" concept="10" />
       <node id="7532618171362662192" at="228,116,229,69" concept="8" />
       <node id="3870006070748294381" at="229,69,230,208" concept="8" />
       <node id="8250534441696953288" at="231,78,232,108" concept="2" />
@@ -2366,7 +2366,7 @@
       <node id="2695624922999318025" at="203,53,206,5" concept="6" />
       <node id="1759523241426327780" at="210,0,213,0" concept="14" trace="getRelevantChanges#(Ljava/util/List;)Ljava/util/List;" />
       <node id="664925514884880073" at="217,0,220,0" concept="7" trace="invoke#(Ljetbrains/mps/vcs/diff/changes/ModifiedNodesGroup;)Ljava/lang/Boolean;" />
-      <node id="664925514884970154" at="221,0,224,0" concept="7" trace="invoke#(Ljetbrains/mps/vcs/diff/changes/ModifiedNodesGroup;)Ljava/util/List;" />
+      <node id="664925514884970154" at="221,0,224,0" concept="7" trace="invoke#(Ljetbrains/mps/vcs/diff/changes/ModifiedNodesGroup;)Ljava/lang/Iterable;" />
       <node id="8250534441696512953" at="230,208,233,5" concept="6" />
       <node id="409501615353135596" at="248,63,251,5" concept="6" />
       <node id="409501615353159028" at="251,5,254,5" concept="6" />
@@ -2421,7 +2421,7 @@
       <scope id="2695624922999318027" at="204,205,205,13" />
       <scope id="1759523241426327783" at="210,86,211,117" />
       <scope id="664925514884880074" at="217,54,218,29" />
-      <scope id="664925514884970155" at="221,60,222,29" />
+      <scope id="664925514884970155" at="221,64,222,29" />
       <scope id="8250534441696512955" at="231,78,232,108" />
       <scope id="409501615353135598" at="249,41,250,19" />
       <scope id="409501615353159030" at="252,100,253,19" />

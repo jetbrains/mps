@@ -15,7 +15,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringRuntime;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.internal.collections.runtime.ISequence;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -47,8 +46,8 @@ public class Migrate_MovePropertyUp_4 extends MigrationScriptBase {
       SearchScope scope_9fvht1_a0f = CommandUtil.createScope(m);
       final SearchScope scope_9fvht1_a0f_0 = new EditableFilteringScope(scope_9fvht1_a0f);
       final QueryExecutionContext context = () -> scope_9fvht1_a0f_0;
-      return Sequence.fromClosure(new _FunctionTypes._return_P0_E0<ISequence<Problem>>() {
-        public ISequence<Problem> invoke() {
+      return Sequence.fromClosure(new _FunctionTypes._return_P0_E0<Iterable<Problem>>() {
+        public Iterable<Problem> invoke() {
           return Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x28bef6d7551af50dL, "TypeParameter"))) || SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(MetaAdapterFactory.getInterfaceConcept(MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"), 0x4da39967d13161a1L, "ITypeParameter")))).where((it) -> it.hasProperty(MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, 0x21e0c923289a58c0L, "variance_old"))).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
             public Problem invoke(SNode it) {
               return DeprecatedConceptMemberNotMigratedProblem.deprecatedProperty(it, MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, 0x21e0c923289a58c0L, "variance_old"));

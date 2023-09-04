@@ -189,7 +189,7 @@
       <node id="4855017442954272590" at="39,48,40,42" concept="7" />
       <node id="8354823221613018902" at="40,42,41,41" concept="8" />
       <node id="4855017442954450552" at="49,93,50,49" concept="7" />
-      <node id="4855017442954486889" at="52,44,53,59" concept="8" />
+      <node id="4855017442954486889" at="52,48,53,59" concept="8" />
       <node id="4855017442954291590" at="59,26,60,54" concept="8" />
       <node id="4855017442954543627" at="61,5,62,42" concept="7" />
       <node id="4855017442954567604" at="63,20,64,36" concept="8" />
@@ -204,7 +204,7 @@
       <node id="8118629307786932838" at="100,0,101,0" concept="6" trace="getDerivedClassifiers#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SearchScope;)Ljava/util/List;" />
       <node id="8118629307786920925" at="101,0,102,0" concept="6" trace="isIndexReady#()Z" />
       <node id="3896109655413979711" at="26,0,28,0" concept="1" trace="ClassifierSuccessors#()V" />
-      <node id="4855017442954483622" at="52,0,55,0" concept="6" trace="invoke#(Ljetbrains/mps/baseLanguage/search/ClassifierSuccessors/Finder;)Ljava/util/List;" />
+      <node id="4855017442954483622" at="52,0,55,0" concept="6" trace="invoke#(Ljetbrains/mps/baseLanguage/search/ClassifierSuccessors/Finder;)Ljava/lang/Iterable;" />
       <node id="4855017442954285589" at="58,98,61,5" concept="5" />
       <node id="4855017442954550622" at="62,42,65,5" concept="5" />
       <node id="4855017442954775927" at="71,39,74,5" concept="5" />
@@ -223,7 +223,7 @@
       <scope id="3896109655413979714" at="26,33,26,33" />
       <scope id="3896109655413989211" at="30,25,31,20" />
       <scope id="3896109655413989215" at="35,22,36,20" />
-      <scope id="4855017442954483623" at="52,44,53,59" />
+      <scope id="4855017442954483623" at="52,48,53,59" />
       <scope id="4855017442954285591" at="59,26,60,54" />
       <scope id="4855017442954550624" at="63,20,64,36" />
       <scope id="4855017442954775927" at="72,29,73,84" />

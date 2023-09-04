@@ -217,8 +217,8 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
         public Boolean invoke(ModifiedNodesGroup it) {
           return it.isMove();
         }
-      }).translate(new _FunctionTypes._return_P1_E0<List<SNodeId>, ModifiedNodesGroup>() {
-        public List<SNodeId> invoke(ModifiedNodesGroup it) {
+      }).translate(new _FunctionTypes._return_P1_E0<Iterable<SNodeId>, ModifiedNodesGroup>() {
+        public Iterable<SNodeId> invoke(ModifiedNodesGroup it) {
           return it.getIds();
         }
       });

@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.migration.runtime.base.RefactoringRuntime;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.internal.collections.runtime.ISequence;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptMemberNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -50,8 +49,8 @@ public class ExtensionPoint_name extends MigrationScriptBase {
       SearchScope scope_3c5dbg_a0f = CommandUtil.createScope(m);
       final SearchScope scope_3c5dbg_a0f_0 = new EditableFilteringScope(scope_3c5dbg_a0f);
       final QueryExecutionContext context = () -> scope_3c5dbg_a0f_0;
-      return Sequence.fromClosure(new _FunctionTypes._return_P0_E0<ISequence<Problem>>() {
-        public ISequence<Problem> invoke() {
+      return Sequence.fromClosure(new _FunctionTypes._return_P0_E0<Iterable<Problem>>() {
+        public Iterable<Problem> invoke() {
           return Sequence.fromIterable(CommandUtil.nodes(CommandUtil.selectScope(null, context))).where((it) -> SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(CONCEPTS.ExtensionPointDeclaration$sb)) || SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd))).where((it) -> it.hasProperty(PROPS.extensionName$fXXK)).select(new _FunctionTypes._return_P1_E0<Problem, SNode>() {
             public Problem invoke(SNode it) {
               return DeprecatedConceptMemberNotMigratedProblem.deprecatedProperty(it, PROPS.extensionName$fXXK);

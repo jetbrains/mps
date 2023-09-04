@@ -48,8 +48,8 @@ public class ClassifierSuccessors implements CoreComponent {
   @Deprecated(forRemoval = true)
   public List<SNode> getDerivedClassifiers(final SNode classifier, final SearchScope scope) {
     Iterable<Finder> ff = myFastFinders.values();
-    return Sequence.fromIterable(ff).translate(new _FunctionTypes._return_P1_E0<List<SNode>, Finder>() {
-      public List<SNode> invoke(Finder it) {
+    return Sequence.fromIterable(ff).translate(new _FunctionTypes._return_P1_E0<Iterable<SNode>, Finder>() {
+      public Iterable<SNode> invoke(Finder it) {
         return it.getDerivedClassifiers(classifier, scope);
       }
     }).toList();

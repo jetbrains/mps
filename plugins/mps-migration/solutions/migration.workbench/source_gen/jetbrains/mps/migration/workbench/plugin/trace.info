@@ -1149,7 +1149,7 @@
       <node id="4682389101768333920" at="53,11,54,0" concept="13" />
       <node id="4682389101767968132" at="54,0,55,81" concept="12" />
       <node id="4682389101768134719" at="55,81,56,79" concept="10" />
-      <node id="4682389101768194620" at="58,54,59,36" concept="11" />
+      <node id="4682389101768194620" at="58,58,59,36" concept="11" />
       <node id="6550156053360537063" at="62,68,63,101" concept="12" />
       <node id="7983203488415466943" at="63,101,64,91" concept="4" />
       <node id="7133788473464689645" at="64,91,65,0" concept="13" />
@@ -1173,7 +1173,7 @@
       <node id="6550156053360215899" at="37,108,40,5" concept="8" />
       <node id="4682389101767729392" at="46,44,49,11" concept="8" />
       <node id="4682389101767826197" at="50,0,53,11" concept="8" />
-      <node id="4682389101768188097" at="58,0,61,0" concept="9" trace="invoke#(Ljetbrains/mps/smodel/Generator;)Ljava/util/List;" />
+      <node id="4682389101768188097" at="58,0,61,0" concept="9" trace="invoke#(Ljetbrains/mps/smodel/Generator;)Ljava/lang/Iterable;" />
       <node id="7133788473465020823" at="79,0,82,0" concept="9" trace="invoke#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljetbrains/mps/baseLanguage/tuples/runtime/MultiTuple/_2;" />
       <node id="6550156053360218504" at="95,43,98,5" concept="8" />
       <node id="4682389101768254649" at="56,79,61,63" concept="11" />
@@ -1191,7 +1191,7 @@
       <scope id="6550156053360215901" at="38,73,39,13" />
       <scope id="4682389101767729394" at="47,31,48,51" />
       <scope id="4682389101767826199" at="51,46,52,38" />
-      <scope id="4682389101768188098" at="58,54,59,36" />
+      <scope id="4682389101768188098" at="58,58,59,36" />
       <scope id="7133788473465020824" at="79,63,80,131" />
       <scope id="7526186345427790258" at="84,35,85,50" />
       <scope id="5510448103905251794" at="86,20,87,48" />
@@ -1374,7 +1374,7 @@
       <node id="4068647021705243130" at="160,86,161,118" concept="0" />
       <node id="4068647021706968181" at="164,86,165,150" concept="12" />
       <node id="4068647021706991447" at="165,150,166,44" concept="12" />
-      <node id="4068647021706907496" at="168,55,169,93" concept="11" />
+      <node id="4068647021706907496" at="168,61,169,93" concept="11" />
       <node id="2325052247838242016" at="175,66,176,89" concept="12" />
       <node id="2950003852470434912" at="180,7,181,15" concept="11" />
       <node id="6344052339644224900" at="185,31,186,41" concept="4" />
@@ -1419,7 +1419,7 @@
       <node id="4815078419492250534" at="67,91,70,7" concept="8" />
       <node id="4068647021705965565" at="140,58,143,5" concept="8" />
       <node id="4068647021704693855" at="155,77,158,11" concept="8" />
-      <node id="4068647021706907494" at="168,0,171,0" concept="9" trace="invoke#(Ljetbrains/mps/ide/migration/ScriptApplied;)Ljava/lang/Integer;" />
+      <node id="4068647021706907494" at="168,0,171,0" concept="9" trace="invoke#(Ljetbrains/mps/ide/migration/ScriptApplied;)Ljava/lang/Comparable;" />
       <node id="6344052339644206722" at="184,50,187,5" concept="8" />
       <node id="6344052339644249628" at="190,48,193,5" concept="8" />
       <node id="7300402066448417391" at="207,0,210,0" concept="9" trace="createLanguageMigs#()Ljava/util/List;" />
@@ -1489,7 +1489,7 @@
       <scope id="5697208778653428261" at="135,62,136,27" />
       <scope id="4068647021705965567" at="141,28,142,43" />
       <scope id="4068647021704693857" at="156,39,157,96" />
-      <scope id="4068647021706907495" at="168,55,169,93" />
+      <scope id="4068647021706907495" at="168,61,169,93" />
       <scope id="2325052247838196564" at="175,66,176,89" />
       <scope id="6344052339644206724" at="185,31,186,41" />
       <scope id="6344052339644249630" at="191,30,192,41" />

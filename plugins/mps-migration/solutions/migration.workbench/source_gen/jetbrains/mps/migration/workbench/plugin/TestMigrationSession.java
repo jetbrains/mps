@@ -164,8 +164,8 @@ import jetbrains.mps.migration.global.MigrationOptions;
           public Collection<ScriptApplied> toBeExecutedImmediately(SRepository repo) {
             // XXX here we rely on fact asLegacy gives same ScriptApplied values again and again, and when they get executed and recorded in passedM, 
             //    we can safely use except. 
-            return Sequence.fromIterable(asLegacy()).subtract(ListSequence.fromList(passedM)).sort(new _FunctionTypes._return_P1_E0<Integer, ScriptApplied>() {
-              public Integer invoke(ScriptApplied it) {
+            return Sequence.fromIterable(asLegacy()).subtract(ListSequence.fromList(passedM)).sort(new _FunctionTypes._return_P1_E0<Comparable<?>, ScriptApplied>() {
+              public Comparable<?> invoke(ScriptApplied it) {
                 return ((MigrationScriptReference) it.getScriptReference()).getFromVersion();
               }
             }, true).toList();

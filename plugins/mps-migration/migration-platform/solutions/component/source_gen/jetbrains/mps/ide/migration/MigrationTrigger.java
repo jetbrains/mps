@@ -52,7 +52,6 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.internal.collections.runtime.ISequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.language.LanguageRuntime;
@@ -353,8 +352,8 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       // FIXME and in ExecuteRerunnableMigrations!
       // XXX quite suspicious use - why do we collect MigrationScripts here for all version languages just to collect MS necessary
       //    for migration with MigrationSetup next to this activity?
-      Iterable<ScriptApplied> checks = ListSequence.fromList(modules).translate(new _FunctionTypes._return_P1_E0<ISequence<ScriptApplied>, SModule>() {
-        public ISequence<ScriptApplied> invoke(final SModule module) {
+      Iterable<ScriptApplied> checks = ListSequence.fromList(modules).translate(new _FunctionTypes._return_P1_E0<Iterable<ScriptApplied>, SModule>() {
+        public Iterable<ScriptApplied> invoke(final SModule module) {
           List<MigrationScript> scripts = ListSequence.fromList(new ArrayList<MigrationScript>());
           new SLanguageHierarchy(myLanguageRegistry, module.getUsedLanguages()).forEachExtended(new SLanguageHierarchy.HierarchyVisitor() {
             @Override

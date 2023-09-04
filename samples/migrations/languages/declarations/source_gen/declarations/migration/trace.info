@@ -21,7 +21,7 @@
       <node id="1233082194732500533" at="34,41,35,17" concept="0" />
       <node id="1233082194732500533" at="35,17,36,16" concept="5" />
       <node id="1986963296983773087" at="38,42,39,150" concept="4" />
-      <node id="6057591418743455269" at="41,43,42,67" concept="5" />
+      <node id="6057591418743455269" at="41,47,42,67" concept="5" />
       <node id="6057591418743451651" at="44,30,45,176" concept="4" />
       <node id="6057591418743451665" at="45,176,46,103" concept="0" />
       <node id="6057591418743451680" at="46,103,47,59" concept="0" />
@@ -37,7 +37,7 @@
       <node id="1233082194732500533" at="71,0,72,0" concept="6" trace="member$oURK" />
       <node id="1233082194732500533" at="75,0,76,0" concept="6" trace="name$MnvL" />
       <node id="1233082194732500533" at="27,0,30,0" concept="3" trace="getCaption#()Ljava/lang/String;" />
-      <node id="6057591418743451635" at="41,0,44,0" concept="3" trace="invoke#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/util/List;" />
+      <node id="6057591418743451635" at="41,0,44,0" concept="3" trace="invoke#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
       <node id="1233082194732500533" at="50,0,53,0" concept="3" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
       <node id="6057591418743451654" at="59,187,62,5" concept="2" />
       <node id="1233082194732500533" at="30,0,34,0" concept="3" trace="isRerunnable#()Z" />
@@ -47,7 +47,7 @@
       <node id="1233082194732500533" at="38,0,50,0" concept="3" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
       <scope id="1233082194732500533" at="27,30,28,23" />
       <scope id="1233082194732500533" at="31,33,32,17" />
-      <scope id="6057591418743451636" at="41,43,42,67" />
+      <scope id="6057591418743451636" at="41,47,42,67" />
       <scope id="1233082194732500533" at="50,50,51,133" />
       <scope id="6057591418743451654" at="60,51,61,201" />
       <scope id="1233082194732500533" at="34,41,36,16" />

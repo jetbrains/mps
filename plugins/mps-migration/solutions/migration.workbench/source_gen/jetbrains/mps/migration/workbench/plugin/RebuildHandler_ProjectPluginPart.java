@@ -54,8 +54,8 @@ public class RebuildHandler_ProjectPluginPart extends ProjectPluginPart {
 
           // this code is only to fix some UI problems, see MPS-30636 for details
           Iterable<Generator> generators = ((Language) module).getGenerators();
-          return Sequence.fromIterable(generators).translate(new _FunctionTypes._return_P1_E0<List<SModel>, Generator>() {
-            public List<SModel> invoke(Generator it) {
+          return Sequence.fromIterable(generators).translate(new _FunctionTypes._return_P1_E0<Iterable<SModel>, Generator>() {
+            public Iterable<SModel> invoke(Generator it) {
               return it.getModels();
             }
           }).concat(Sequence.fromIterable(module.getModels()));
