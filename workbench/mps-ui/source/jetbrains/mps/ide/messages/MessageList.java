@@ -94,19 +94,19 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public abstract class MessageList implements IMessageList, SearchHistoryStorage, Disposable {
 
-  private final MyToggleAction myWarningsAction = new MyToggleAction("Show Warning Messages", Icons.WARNING_ICON) {
+  private final MessageListToggleAction myWarningsAction = new MessageListToggleAction("Warning Messages", "Show Warning Messages", Icons.WARNING_ICON) {
     @Override
     protected boolean isEnabled() {
       return hasWarnings();
     }
   };
-  private final MyToggleAction myInfoAction = new MyToggleAction("Show Informational Messages", Icons.INFORMATION_ICON) {
+  private final MessageListToggleAction myInfoAction = new MessageListToggleAction("Informational Messages", "Show Informational Messages", Icons.INFORMATION_ICON) {
     @Override
     protected boolean isEnabled() {
       return hasInfo();
     }
   };
-  private final MyToggleAction myAutoscrollToSourceAction = new MyToggleAction("Autoscroll to Source", Icons.AUTOSCROLLS_ICON) {
+  private final MessageListToggleAction myAutoscrollToSourceAction = new MessageListToggleAction("Autoscroll to Source", "Autoscroll to Source", Icons.AUTOSCROLLS_ICON) {
     @Override
     protected boolean isEnabled() {
       return hasHintObjects();
@@ -663,12 +663,12 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     }
   }
 
-  private class MyToggleAction extends ToggleAction {
+  private class MessageListToggleAction extends ToggleAction {
     private boolean mySelected;
     private final Icon myIcon;
 
-    public MyToggleAction(String tooltip, Icon icon) {
-      super("", tooltip, icon);
+    public MessageListToggleAction(String text, String tooltip, Icon icon) {
+      super(text, tooltip, icon);
       myIcon = icon;
       mySelected = true;
     }
