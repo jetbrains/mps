@@ -137,7 +137,11 @@ public class QueriesGenerated extends QueryProviderBase {
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
-    return tb.value.getText().substring(1);
+    String returnValue = tb.value.getText();
+    if (" <no node> ".equals(returnValue)) {
+      return "empty block of code";
+    }
+    return returnValue.substring(1);
   }
   public static Object propertyMacro_GetValue_8_0(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.reference$xWiG), PROPS.name$MnvL);
