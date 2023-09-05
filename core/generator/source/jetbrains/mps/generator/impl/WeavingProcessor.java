@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -158,8 +158,12 @@ public class WeavingProcessor {
 
       SNode inputRoot = myApplicableNode.getContainingRoot();
       if (originalContextRoot != inputRoot) {
-        String msg = "bad context for weaving rule: %s is generated from %s , while input node is from %s";
-        return reportErrorIfStrict(String.format(msg, contextRoot, originalContextRoot, inputRoot));
+        // originally introduced in 245611d0, it was an error in strict mode, which I assume was intended for per-root generation
+        // now, with a CP-backed approach to incremental generation, there's no per-root generation, and seems we shall not bother with weaving into
+        // sibling roots. However, left information message just in case it helps to nail down unexpected behavior.
+        String msg = "unexpected context for weaving rule: %s is generated from %s , while input node is from %s";
+        generator.getLogger().info(myRule.getRuleNode(), String.format(msg, contextRoot, originalContextRoot, inputRoot));
+        // fall-through
       }
 
       return true;
