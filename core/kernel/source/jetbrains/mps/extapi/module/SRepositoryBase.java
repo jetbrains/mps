@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,6 +86,10 @@ public abstract class SRepositoryBase implements SRepository {
     // However, decided that getModel(ModelId) implementation, above, is aligned with 'incomplete' modules, as it walks all modules
     // and asks them for a model, triggering model load, if necessary, hence no-op here.
   }
+  public void markCompleteModelSet(/*not null*/ SModule module) {
+    // counterpart for markIncompleteModelSet() to tell module (previously reported as incomplete) done loading its models
+  }
+
 
   @Override
   public RepositoryAccess getRepositoryAccess() {

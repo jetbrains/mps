@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -299,8 +299,8 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
       //noinspection deprecation
       final SModel md = myModelRepository.getModelDescriptor(modelId);
       if (md == null) {
-        SModule peek;
-        while ((peek = myIncompleteModelLoad.removeAny()) != null) {
+        final Collection<SModule> incompleteModules = myIncompleteModelLoad.detachedCopy();
+        for (SModule peek : incompleteModules) {
           final SModel model = peek.getModel(modelId);
           if (model != null) {
             return model;
@@ -323,6 +323,11 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   @Override
   public void markIncompleteModelSet(SModule module) {
     myIncompleteModelLoad.offer(module);
+  }
+
+  @Override
+  public void markCompleteModelSet(SModule module) {
+    myIncompleteModelLoad.forget(module);
   }
 
   //------------------listeners--------------------
@@ -429,6 +434,12 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     void forget(V element) {
       synchronized (myElements) {
         myElements.remove(element);
+      }
+    }
+
+    Collection<V> detachedCopy() {
+      synchronized (myElements) {
+        return new ArrayList<>(myElements);
       }
     }
     @Nullable
