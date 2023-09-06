@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
+import jetbrains.mps.editor.runtime.HtmlBuilder;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.style.ScriptKind;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -151,8 +152,8 @@ public class CellLayout_Superscript extends AbstractCellLayout {
   }
 
   @Override
-  public TextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
-    TextBuilder result = new TextBuilderImpl();
+  public HtmlBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    HtmlBuilder result = new HtmlBuilder();
     for (EditorCell editorCell : editorCells) {
       result.appendToTheBottom(editorCell.renderHtml());
     }

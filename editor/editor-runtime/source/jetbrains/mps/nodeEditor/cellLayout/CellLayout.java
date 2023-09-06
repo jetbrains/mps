@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
+import jetbrains.mps.editor.runtime.HtmlBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
@@ -29,7 +30,7 @@ public interface CellLayout extends jetbrains.mps.openapi.editor.cells.CellLayou
 
   TextBuilder doLayoutText(Iterable<EditorCell> editorCells);
 
-  TextBuilder doLayoutHtml(Iterable<EditorCell> editorCells);
+  HtmlBuilder doLayoutHtml(Iterable<EditorCell> editorCells);
 
   int getAscent(EditorCell_Collection editorCells);
 

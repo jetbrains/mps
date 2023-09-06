@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
+import jetbrains.mps.editor.runtime.HtmlBuilder;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.style.DefaultBaseLine;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -216,12 +217,12 @@ public class CellLayout_Indent extends AbstractCellLayout {
   }
 
   @Override
-  public TextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+  public HtmlBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
     Set<EditorCell> editorCellsSet = new HashSet<>();
     for (EditorCell editorCell : editorCells) {
       editorCellsSet.add(editorCell);
     }
-    TextBuilder result = new TextBuilderImpl();
+    HtmlBuilder result = new HtmlBuilder();
     Iterator<EditorCell> iterator = editorCells.iterator();
     if (iterator.hasNext()) {
       boolean newLineAfter = false;

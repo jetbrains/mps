@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
+import jetbrains.mps.editor.runtime.HtmlBuilder;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.impl.LayoutConstraints;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -322,8 +323,13 @@ public class CellLayout_Flow extends AbstractCellLayout {
   }
 
   @Override
-  public TextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
-    return doLayoutText(editorCells);
+  public HtmlBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    HtmlBuilder result = new HtmlBuilder();
+    Iterator<EditorCell> it = editorCells.iterator();
+    while (it.hasNext()) {
+      result.appendToTheBottom(doLayoutRow(it));
+    }
+    return result;
   }
 
   private TextBuilder doLayoutRow(Iterator<EditorCell> it) {
