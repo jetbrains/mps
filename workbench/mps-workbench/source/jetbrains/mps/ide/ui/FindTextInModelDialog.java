@@ -17,8 +17,11 @@ package jetbrains.mps.ide.ui;
 
 import com.intellij.find.SearchTextArea;
 import com.intellij.ide.IdeEventQueue;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.actionSystem.CommonShortcuts;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
 import com.intellij.openapi.actionSystem.ShortcutSet;
 import com.intellij.openapi.application.ApplicationManager;
@@ -26,34 +29,43 @@ import com.intellij.openapi.keymap.Keymap;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.progress.util.ProgressIndicatorUtils;
 import com.intellij.openapi.project.DumbAwareAction;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogPanel;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.OnePixelDivider;
 import com.intellij.openapi.ui.popup.JBPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
+import com.intellij.openapi.ui.popup.util.PopupUtil;
 import com.intellij.openapi.util.DimensionService;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.wm.IdeGlassPane;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.impl.IdeGlassPaneImpl;
+import com.intellij.ui.AnimatedIcon;
 import com.intellij.ui.DocumentAdapter;
 import com.intellij.ui.DoubleClickListener;
+import com.intellij.ui.ExperimentalUI;
+import com.intellij.ui.JBColor;
+import com.intellij.ui.OnePixelSplitter;
 import com.intellij.ui.PopupBorder;
 import com.intellij.ui.ScrollingUtil;
+import com.intellij.ui.SimpleColoredComponent;
 import com.intellij.ui.WindowMoveListener;
 import com.intellij.ui.WindowResizeListener;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.JBTextArea;
+import com.intellij.ui.scale.JBUIScale;
 import com.intellij.ui.table.JBTable;
 import com.intellij.util.Alarm;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.JBEmptyBorder;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBUI.Borders;
+import com.intellij.util.ui.JBUI.CurrentTheme.CustomFrameDecorations;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
 import jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes.BaseNode;
@@ -68,6 +80,7 @@ import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.scope.EmptySearchScope;
 import jetbrains.mps.smodel.SNodeUtil;
+import net.miginfocom.swing.MigLayout;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -77,7 +90,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
-import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
@@ -92,10 +104,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.KeyboardFocusManager;
 import java.awt.Point;
 import java.awt.Window;
@@ -113,10 +127,11 @@ import java.util.List;
  * @author Artem Tikhomirov
  * @since 2019.2
  */
-public class FindTextInModelDialog extends DialogWrapper {
+public final class FindTextInModelDialog extends DialogWrapper {
   private static final KeyStroke ENTER = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0);
 
   private static final String SERVICE_KEY = "mps.find.text.popup";
+  private static final String SPLITTER_SERVICE_KEY = "mps.find.text.popup.splitter";
 
   private final MPSProject myProject;
   private final Alarm mySearchSchedule;
@@ -124,6 +139,9 @@ public class FindTextInModelDialog extends DialogWrapper {
   private JBTable myResultsPreviewTable;
   private String myText;
   private FindTextInModelTask myCurrentSearchTask;
+  private FindTextResultPreview myUsagePreviewPanel;
+  private FindTextInModelDialogHeader myHeader;
+  private OnePixelSplitter myPreviewSplitter;
 
   public FindTextInModelDialog(@NotNull MPSProject mpsProject) {
     // inspired by FindPopupPanel
@@ -133,10 +151,13 @@ public class FindTextInModelDialog extends DialogWrapper {
     setOKButtonText("Open in Find Usages");
     setUndecorated(true);
     init();
-    final Window window = WindowManager.getInstance().suggestParentWindow(mpsProject.getProject());
+
+    getRootPane().setDefaultButton(null);
+    Project project = myProject.getProject();
+    final Window window = WindowManager.getInstance().suggestParentWindow(project);
     Component parent = UIUtil.findUltimateParent(window);
     RelativePoint showPoint = null;
-    Point screenPoint = DimensionService.getInstance().getLocation(getDimensionServiceKey());
+    Point screenPoint = DimensionService.getInstance().getLocation(getDimensionServiceKey(), project);
     if (screenPoint != null) {
       if (parent != null) {
         SwingUtilities.convertPointFromScreen(screenPoint, parent);
@@ -145,31 +166,46 @@ public class FindTextInModelDialog extends DialogWrapper {
         showPoint = new RelativePoint(screenPoint);
       }
     }
+    Window dialogWindow = getPeer().getWindow();
     if (showPoint != null) {
       setLocation(showPoint.getScreenPoint());
     } else {
-      getPeer().getWindow().setLocationRelativeTo(parent);
+      dialogWindow.setLocationRelativeTo(parent);
     }
     // Add reaction to drag by mouse to top most component
-    WindowMoveListener windowListener = new WindowMoveListener(getContentPanel());
-    getContentPanel().addMouseListener(windowListener);
-    getContentPanel().addMouseMotionListener(windowListener);
-    getPeer().getWindow().setLocationRelativeTo(parent);
-    JRootPane root = ((RootPaneContainer) getPeer().getWindow()).getRootPane();
+    new WindowMoveListener(getContentPanel())
+        .installTo(getContentPanel())
+        .installTo(myHeader.getPanel());
+
+    Dimension panelSize = getPreferredSize();
+    Dimension prev = DimensionService.getInstance().getSize(getDimensionServiceKey(), project);
+    panelSize.width += JBUIScale.scale(24); //hidden 'loading' icon
+    panelSize.height *= 2;
+    if (prev != null && prev.height < panelSize.height) {
+      prev.height = panelSize.height;
+    }
+    dialogWindow.setMinimumSize(panelSize);
+    dialogWindow.setBackground(UIUtil.getPanelBackground());
+    if (prev == null) {
+      panelSize.height *= 1.5;
+      panelSize.width *= 1.15;
+    }
+    dialogWindow.setSize(prev != null ? prev : panelSize);
+
+    JRootPane root = ((RootPaneContainer) dialogWindow).getRootPane();
     if (SystemInfo.isMac && UIUtil.isUnderDarcula()) {
       root.setBorder(PopupBorder.Factory.createColored(OnePixelDivider.BACKGROUND));
     } else {
       root.setBorder(PopupBorder.Factory.create(true, true));
     }
     IdeGlassPane glass = (IdeGlassPane) root.getGlassPane();
-    int i = Registry.intValue("ide.popup.resizable.border.sensitivity", 4);
     // Override WindowResizeListener#setCursor to show resize cursor in expected places
     WindowResizeListener resizeListener = new WindowResizeListener(
-        root, JBUI.insets(i), null) {
+        root, JBUI.insets(4), null) {
       private Cursor myCursor;
 
       @Override
-      protected void setCursor(Component content, Cursor cursor) {
+      protected void setCursor(@NotNull Component content, Cursor cursor) {
         if (myCursor != cursor || myCursor != Cursor.getDefaultCursor()) {
           glass.setCursor(cursor, this);
           myCursor = cursor;
@@ -186,9 +222,22 @@ public class FindTextInModelDialog extends DialogWrapper {
     //
     // XXX perhaps, shall move the next line to UI action?
     IdeEventQueue.getInstance().getPopupManager().closeAllPopups(false);
-    // close dialog on esc. Looks like I don't need this as long as there's standard 'cancel' button.
-//    final AnAction escape = ActionManager.getInstance().getAction("EditorEscape");
-//    DumbAwareAction.create(e -> doCancelAction()).registerCustomShortcutSet(escape == null ? CommonShortcuts.ESCAPE : escape.getShortcutSet(), root, getDisposable());
+    final AnAction escape = ActionManager.getInstance().getAction("EditorEscape");
+    DumbAwareAction.create(e -> doCancelAction())
+                   .registerCustomShortcutSet(escape == null ? CommonShortcuts.ESCAPE : escape.getShortcutSet(), root, getDisposable());
+  }
+
+  protected JComponent createSouthPanel() {
+    JComponent southPanel = super.createSouthPanel();
+
+    if (ExperimentalUI.isNewUI()) {
+      southPanel.setBorder(JBUI.Borders.empty(5, 18));
+      southPanel.setBackground(JBUI.CurrentTheme.Advertiser.background());
+    } else {
+      southPanel.setBorder(JBUI.Borders.empty(5));
+    }
+
+    return southPanel;
   }
 
   public void setText(@Nullable String text) {
@@ -218,7 +267,7 @@ public class FindTextInModelDialog extends DialogWrapper {
   @Override
   protected JComponent createCenterPanel() {
     DialogPanel dialogPanel = new DialogPanel();
-    dialogPanel.setLayout(new BorderLayout());
+    dialogPanel.setLayout(new MigLayout("flowx, ins 0, gap 0, fillx, hidemode 3"));
     final JBLabel title = new JBLabel("Find Text in Node Properties");
     title.setFont(title.getFont().deriveFont(Font.BOLD));
     JBTextArea textArea = new JBTextArea(1, 25); // values from FindPopupPanel
@@ -248,7 +297,7 @@ public class FindTextInModelDialog extends DialogWrapper {
     myResultsPreviewTable.setIntercellSpacing(JBUI.emptySize());
     new DoubleClickListener() {
       @Override
-      protected boolean onDoubleClick(MouseEvent event) {
+      protected boolean onDoubleClick(@NotNull MouseEvent event) {
         if (event.getSource() != myResultsPreviewTable) {
           return false;
         }
@@ -256,17 +305,10 @@ public class FindTextInModelDialog extends DialogWrapper {
         return true;
       }
     }.installOn(myResultsPreviewTable);
-    myResultsPreviewTable.setCellSelectionEnabled(false);
-    myResultsPreviewTable.setFillsViewportHeight(true); // JBTable does that, can remove?
-    myResultsPreviewTable.setRowSelectionAllowed(false);
-    myResultsPreviewTable.setColumnSelectionAllowed(false);
-    final Dimension minSize = new Dimension(mySearchEntry.getWidth(), 1 + myResultsPreviewTable.getRowHeight() * 4);
-    myResultsPreviewTable.setPreferredScrollableViewportSize(minSize);
-    myResultsPreviewTable.setMinimumSize(minSize);
+
     myResultsPreviewTable.getEmptyText().setText("Enter property value to look up");
     JBScrollPane scrollPane = new JBScrollPane(myResultsPreviewTable);
     scrollPane.setBorder(JBUI.Borders.empty());
-    scrollPane.setMinimumSize(minSize);
 
     // Add default find next/previous result shortcuts on dialog components to navigate results
     JComponent[] tableAware = {textArea};
@@ -299,21 +341,72 @@ public class FindTextInModelDialog extends DialogWrapper {
       }
     }
 
-    boolean enterAsOK = Registry.is("ide.find.enter.as.ok", false);
+    new MyEnterAction().registerCustomShortcutSet(new CustomShortcutSet(ENTER), dialogPanel);
 
-    new MyEnterAction(enterAsOK).registerCustomShortcutSet(new CustomShortcutSet(ENTER), dialogPanel);
+    myUsagePreviewPanel = new FindTextResultPreview(myProject) {
+      @Override
+      public Dimension getPreferredSize() {
+        // TODO get editor line height, replace 0 by it * 15
+        return new Dimension(myResultsPreviewTable.getWidth(), Math.max(getHeight(), 0));
+      }
+    };
+    Disposer.register(getDisposable(), myUsagePreviewPanel);
 
-    final JBEmptyBorder border = Borders.empty(4, 10);
-    // for whatever stupid reason, SearchTextArea implementation overrides its border, therefore have to wrap with another panel to set these
-    // Don't try to use NonOpaquePanel as a wrap (somehow it affects alignment of the label above), let alone NonOpaque for "transparent" is gloomily funny.
-    Box north = Box.createVerticalBox();
-    north.setBorder(border);
-    north.add(title);
-    north.add(Box.createVerticalStrut(4));
-    north.add(mySearchEntry);
-    dialogPanel.add(north, BorderLayout.NORTH);
-    dialogPanel.add(scrollPane, BorderLayout.CENTER);
+    myResultsPreviewTable.getSelectionModel().addListSelectionListener(e -> {
+      if (myResultsPreviewTable.getSelectedRow() >= 0) {
+        final Object valueAt = myResultsPreviewTable.getValueAt(myResultsPreviewTable.getSelectedRow(), 0);
+        if (valueAt instanceof TableEntry) {
+          myProject.getRepository().getModelAccess().runReadAction(() -> {
+            SNode node = ((TableEntry) valueAt).node.resolve(myProject.getRepository());
+            SNode root = node.getContainingRoot();
+            myPreviewSplitter.getSecondComponent().setVisible(node != null);
+            myUsagePreviewPanel.editNode(root);
+            myUsagePreviewPanel.selectNode(node);
+          });
+        }
+      } else {
+        myPreviewSplitter.getSecondComponent().setVisible(false);
+      }
+    });
+
+    myPreviewSplitter = new OnePixelSplitter(true, .33f);
+    myPreviewSplitter.setSplitterProportionKey(SPLITTER_SERVICE_KEY);
+    myPreviewSplitter.getDivider().setBackground(OnePixelDivider.BACKGROUND);
+    myPreviewSplitter.setFirstComponent(scrollPane);
+    myPreviewSplitter.setSecondComponent(myUsagePreviewPanel);
+
+    // Not visible before result come in
+    myPreviewSplitter.getSecondComponent().setVisible(false);
+
+    myHeader = new FindTextInModelDialogHeader();
+
+    dialogPanel.add(myHeader.getPanel(), "growx, pushx, wrap");
+    dialogPanel.add(mySearchEntry, "growx, pushx, wrap");
+    dialogPanel.add(myPreviewSplitter, "growx, pushx, growy, pushy, wrap");
     dialogPanel.setPreferredFocusedComponent(textArea);
+
+    if (ExperimentalUI.isNewUI()) {
+      Color background = JBUI.CurrentTheme.Popup.BACKGROUND;
+
+      myHeader.getPanel().setBorder(JBUI.Borders.compound(JBUI.Borders.customLineBottom(JBUI.CurrentTheme.CustomFrameDecorations.separatorForeground()),
+                                                          PopupUtil.getComplexPopupHorizontalHeaderBorder()));
+      myHeader.getPanel().setBackground(JBUI.CurrentTheme.ComplexPopup.HEADER_BACKGROUND);
+      dialogPanel.setBackground(background);
+      mySearchEntry.setOpaque(false);
+      mySearchEntry.setBorder(PopupUtil.createComplexPopupTextFieldBorder());
+      myResultsPreviewTable.setBackground(background);
+
+      var textFieldBorderInsets = JBUI.CurrentTheme.ComplexPopup.textFieldBorderInsets();
+      // noinspection UseDPIAwareInsets
+      myPreviewSplitter.setBlindZone(() -> new Insets(0, textFieldBorderInsets.left, 0, textFieldBorderInsets.right));
+      scrollPane.setBorder(JBUI.Borders.emptyBottom(4));
+    } else {
+      myHeader.getPanel().setBorder(JBUI.Borders.empty(2, 5));
+      mySearchEntry.setBorder(JBUI.Borders.compound(
+          JBUI.Borders.customLine(JBUI.CurrentTheme.BigPopup.searchFieldBorderColor(), 1, 0, 1, 0),
+          JBUI.Borders.empty(1, 0, 2, 0)));
+      scrollPane.setBorder(JBUI.Borders.empty());
+    }
     return dialogPanel;
   }
 
@@ -327,8 +420,8 @@ public class FindTextInModelDialog extends DialogWrapper {
       public void windowOpened(WindowEvent e) {
         window.addWindowFocusListener(new WindowAdapter() {
           @Override
-          public void windowLostFocus(WindowEvent e) {
-            Window oppositeWindow = e.getOppositeWindow();
+          public void windowLostFocus(WindowEvent evt) {
+            Window oppositeWindow = evt.getOppositeWindow();
             if (oppositeWindow == window || oppositeWindow != null && oppositeWindow.getOwner() == window) {
               return;
             }
@@ -384,7 +477,7 @@ public class FindTextInModelDialog extends DialogWrapper {
       @Override
       protected void doFindResults(@NotNull SearchQuery q, @NotNull final IFinder.FindCallback cb, @NotNull ProgressMonitor pm) {
         final String text = ((StringHolder) q.getObjectHolder()).getObject();
-        final FindTextInModelTask task = new FindTextInModelTask(myProject, text, (n, p, value) -> cb.onUsageFound(new SearchResult<>(p, n, "usage")));
+        final FindTextInModelTask task = new FindTextInModelTask(myProject, text, new FindReferencesSink(myProject, (n, p, value) -> cb.onUsageFound(new SearchResult<>(p, n, "usage"))));
         task.performLookup(pm);
       }
     };
@@ -392,7 +485,7 @@ public class FindTextInModelDialog extends DialogWrapper {
   }
 
   @Override
-  protected final String getDimensionServiceKey() {
+  protected String getDimensionServiceKey() {
     return SERVICE_KEY;
   }
 
@@ -445,11 +538,20 @@ public class FindTextInModelDialog extends DialogWrapper {
     };
     model.addColumn("usages");
     final String text = mySearchEntry.getTextArea().getText();
-    if (text == null) {
+
+    // Reset regardless of the text value
+    myPreviewSplitter.getSecondComponent().setVisible(false);
+    myResultsPreviewTable.setModel(model);
+    myResultsPreviewTable.getColumnModel().getColumn(0).setCellRenderer(new UsageTableCellRenderer());
+    stopCurrentSearch();
+
+    if (text == null || text.isEmpty()) {
+      myResultsPreviewTable.getEmptyText().setText("Enter property value to look up");
+      myHeader.updateStatus(null, "");
       return;
     }
-    stopCurrentSearch();
-    myCurrentSearchTask = new FindTextInModelTask(myProject, text, new MatchHandlerEx() {
+
+    myCurrentSearchTask = new FindTextInModelTask(myProject, text, new FindReferencesSink(myProject, new MatchHandlerEx() {
       @Override
       public void handleMatch(SNode one, SProperty p, String value) {
         final TableEntry tableEntry = toEntry(one, p, value);
@@ -463,22 +565,38 @@ public class FindTextInModelDialog extends DialogWrapper {
 
       @Override
       public void reset() {
+        // TODO might serve no purpose here (we issue new search with new callback every time)
         model.setRowCount(0);
       }
 
       @Override
-      public void done() {
+      public void done(ProgressMonitor monitor) {
         ApplicationManager.getApplication().invokeLater(() -> {
-          mySearchEntry.setInfoText(MessageFormat.format("{0} {0,choice, 0# matches|1# match|2# matches}", model.getRowCount()));
-          if (model.getRowCount() == 0) {
-            myResultsPreviewTable.getEmptyText().setText("Nothing found");
+          // Ensure model hasn't changed (on new search issued)
+          if (myResultsPreviewTable.getModel() == model) {
+            myHeader.updateStatus(null, MessageFormat.format("{0} {0,choice, 0# matches|1# match|2# matches}", model.getRowCount()));
+            if (model.getRowCount() == 0) {
+              myResultsPreviewTable.getEmptyText().setText("Nothing found");
+            }
+          }
+        });
+
+        MatchHandlerEx.super.done(monitor);
+      }
+
+      @Override
+      public void aborted() {
+        ApplicationManager.getApplication().invokeLater(() -> {
+          // Ensure model hasn't changed (on new search issued)
+          if (myResultsPreviewTable.getModel() != model) {
+            myHeader.updateStatus(null, "Search aborted");
           }
         });
       }
-    });
-    myResultsPreviewTable.setModel(model);
+    }));
+
     myResultsPreviewTable.getEmptyText().setText("Searching...");
-    myResultsPreviewTable.getColumnModel().getColumn(0).setCellRenderer(new UsageTableCellRenderer());
+    myHeader.updateStatus(AnimatedIcon.Default.INSTANCE, "");
     ProgressIndicatorUtils.scheduleWithWriteActionPriority(myCurrentSearchTask);
   }
 
@@ -503,11 +621,11 @@ public class FindTextInModelDialog extends DialogWrapper {
     public final String nodePresentation;
     public final boolean fromChangedModel;
 
-    /*package*/ TableEntry(SNodeReference ptr, String pv, String np, boolean fromChangedModel) {
+    /*package*/ TableEntry(SNodeReference ptr, String pv, String np, boolean changedModel) {
       node = ptr;
       value = pv;
       nodePresentation = np;
-      this.fromChangedModel = fromChangedModel;
+      this.fromChangedModel = changedModel;
     }
   }
 
@@ -515,14 +633,18 @@ public class FindTextInModelDialog extends DialogWrapper {
     private static final int MARGIN = 2;
 
     private final JBLabel myChangedIndicator;
-    private final JBLabel myValue;
-    private final JBLabel myLocation;
+    private final SimpleColoredComponent myValue;
+    private final SimpleColoredComponent myLocation;
 
     UsageTableCellRenderer() {
       setLayout(new BorderLayout());
       add(myChangedIndicator = new JBLabel(), BorderLayout.WEST);
-      add(myValue = new JBLabel(), BorderLayout.CENTER);
-      add(myLocation = new JBLabel(), BorderLayout.EAST);
+
+      // These components are used rather than JBLabel since JBLabel accepts HTML content and we don't want it
+      add(myValue = new SimpleColoredComponent(), BorderLayout.CENTER);
+      add(myLocation = new SimpleColoredComponent(), BorderLayout.EAST);
+      myValue.setOpaque(false);
+      myLocation.setOpaque(false);
       myChangedIndicator.setForeground(FileStatus.MODIFIED.getColor());
       myLocation.setForeground(UIUtil.getInactiveTextColor());
       /* As we don't have a line number on the right side as in IntelliJ IDEA,
@@ -532,27 +654,25 @@ public class FindTextInModelDialog extends DialogWrapper {
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-      // Table is not focusable, but we want make rows appear selected and focused
+      // Table is not focusable, but we want to make rows appear selected and focused
       isSelected = table.getSelectedRow() == row;
       setBackground(UIUtil.getTableBackground(isSelected, isSelected));
       myValue.setForeground(UIUtil.getTableForeground(isSelected, isSelected));
       if (value instanceof TableEntry) {
         final TableEntry te = (TableEntry) value;
         myChangedIndicator.setText(te.fromChangedModel ? "*" : " ");
-        myValue.setText(te.value);
-        myLocation.setText(te.nodePresentation);
+
+        myValue.clear();
+        myValue.append(te.value);
+        myLocation.clear();
+        myLocation.append(te.nodePresentation);
       }
       return this;
     }
+
   }
 
   private class MyEnterAction extends DumbAwareAction {
-    private final boolean myEnterAsOK;
-
-    private MyEnterAction(boolean enterAsOK) {
-      myEnterAsOK = enterAsOK;
-    }
-
     @Override
     public void update(@NotNull AnActionEvent e) {
       e.getPresentation().setEnabled(e.getData(CommonDataKeys.EDITOR) == null);
@@ -560,11 +680,7 @@ public class FindTextInModelDialog extends DialogWrapper {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-      if (myEnterAsOK) {
-        doOKAction();
-      } else {
-        navigateToSelectedUsage();
-      }
+      navigateToSelectedUsage();
     }
   }
 }

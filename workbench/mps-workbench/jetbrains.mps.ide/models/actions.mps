@@ -181,6 +181,7 @@
     <import index="mqhh" ref="r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)" />
     <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
     <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
+    <import index="a6r3" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.ui(MPS.Workbench/)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
   </imports>
@@ -40561,11 +40562,11 @@
           <node concept="3cpWsn" id="7KZgf2c$brA" role="3cpWs9">
             <property role="TrG5h" value="dialog" />
             <node concept="3uibUv" id="7KZgf2c$br8" role="1tU5fm">
-              <ref role="3uigEE" to="a6r2:~FindTextInModelDialog" resolve="FindTextInModelDialog" />
+              <ref role="3uigEE" to="a6r3:~FindTextInModelDialog" resolve="FindTextInModelDialog" />
             </node>
             <node concept="2ShNRf" id="7KZgf2c$brB" role="33vP2m">
               <node concept="1pGfFk" id="7KZgf2c$brC" role="2ShVmc">
-                <ref role="37wK5l" to="a6r2:~FindTextInModelDialog.&lt;init&gt;(jetbrains.mps.project.MPSProject)" resolve="FindTextInModelDialog" />
+                <ref role="37wK5l" to="a6r3:~FindTextInModelDialog.&lt;init&gt;(jetbrains.mps.project.MPSProject)" resolve="FindTextInModelDialog" />
                 <node concept="37vLTw" id="7KZgf2c$brD" role="37wK5m">
                   <ref role="3cqZAo" node="CYSHSSsOL3" resolve="mpsProject" />
                 </node>
@@ -40706,7 +40707,7 @@
                       <ref role="3cqZAo" node="7KZgf2c$brA" resolve="dialog" />
                     </node>
                     <node concept="liA8E" id="7VU42f2DgKe" role="2OqNvi">
-                      <ref role="37wK5l" to="a6r2:~FindTextInModelDialog.setText(java.lang.String)" resolve="setText" />
+                      <ref role="37wK5l" to="a6r3:~FindTextInModelDialog.setText(java.lang.String)" resolve="setText" />
                       <node concept="2OqwBi" id="7VU42f2Dg16" role="37wK5m">
                         <node concept="2OqwBi" id="7VU42f2DftN" role="2Oq$k0">
                           <node concept="1eOMI4" id="7VU42f2Df30" role="2Oq$k0">
@@ -40770,7 +40771,7 @@
               <ref role="3cqZAo" node="7KZgf2c$brA" resolve="dialog" />
             </node>
             <node concept="liA8E" id="1tinHSP8ra9" role="2OqNvi">
-              <ref role="37wK5l" to="a6r2:~FindTextInModelDialog.show()" resolve="show" />
+              <ref role="37wK5l" to="a6r3:~FindTextInModelDialog.show()" resolve="show" />
             </node>
           </node>
         </node>
@@ -45269,62 +45270,62 @@
               <node concept="3clFbS" id="fQeG$Zsck_" role="2LFqv$">
                 <node concept="3clFbF" id="fQeG$ZsckA" role="3cqZAp">
                   <node concept="2OqwBi" id="fQeG$ZsckB" role="3clFbG">
+                    <node concept="37vLTw" id="fQeG$ZsckC" role="2Oq$k0">
+                      <ref role="3cqZAo" node="fQeG$Zsckv" resolve="builder" />
+                    </node>
                     <node concept="liA8E" id="fQeG$ZsckD" role="2OqNvi">
                       <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                       <node concept="Xl_RD" id="fQeG$ZsckE" role="37wK5m">
                         <property role="Xl_RC" value="&lt;li&gt;" />
                       </node>
                     </node>
-                    <node concept="37vLTw" id="fQeG$ZsckC" role="2Oq$k0">
-                      <ref role="3cqZAo" node="fQeG$Zsckv" resolve="builder" />
-                    </node>
                   </node>
                 </node>
                 <node concept="3clFbF" id="fQeG$ZsckF" role="3cqZAp">
                   <node concept="2OqwBi" id="fQeG$ZsckG" role="3clFbG">
+                    <node concept="37vLTw" id="fQeG$ZsckH" role="2Oq$k0">
+                      <ref role="3cqZAo" node="fQeG$Zsckv" resolve="builder" />
+                    </node>
                     <node concept="liA8E" id="fQeG$ZsckI" role="2OqNvi">
                       <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                       <node concept="37vLTw" id="fQeG$ZsckJ" role="37wK5m">
                         <ref role="3cqZAo" node="fQeG$ZsckP" resolve="error" />
                       </node>
                     </node>
-                    <node concept="37vLTw" id="fQeG$ZsckH" role="2Oq$k0">
-                      <ref role="3cqZAo" node="fQeG$Zsckv" resolve="builder" />
-                    </node>
                   </node>
                 </node>
                 <node concept="3clFbF" id="fQeG$ZsckK" role="3cqZAp">
                   <node concept="2OqwBi" id="fQeG$ZsckL" role="3clFbG">
+                    <node concept="37vLTw" id="fQeG$ZsckM" role="2Oq$k0">
+                      <ref role="3cqZAo" node="fQeG$Zsckv" resolve="builder" />
+                    </node>
                     <node concept="liA8E" id="fQeG$ZsckN" role="2OqNvi">
                       <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                       <node concept="Xl_RD" id="fQeG$ZsckO" role="37wK5m">
                         <property role="Xl_RC" value="&lt;/li&gt;" />
                       </node>
                     </node>
-                    <node concept="37vLTw" id="fQeG$ZsckM" role="2Oq$k0">
-                      <ref role="3cqZAo" node="fQeG$Zsckv" resolve="builder" />
-                    </node>
                   </node>
                 </node>
-              </node>
-              <node concept="37vLTw" id="fQeG$ZsckR" role="1DdaDG">
-                <ref role="3cqZAo" node="7i1Zd7TZlNq" resolve="errors" />
               </node>
               <node concept="3cpWsn" id="fQeG$ZsckP" role="1Duv9x">
                 <property role="TrG5h" value="error" />
                 <node concept="17QB3L" id="fQeG$ZsckQ" role="1tU5fm" />
               </node>
+              <node concept="37vLTw" id="fQeG$ZsckR" role="1DdaDG">
+                <ref role="3cqZAo" node="7i1Zd7TZlNq" resolve="errors" />
+              </node>
             </node>
             <node concept="3clFbF" id="fQeG$ZsckS" role="3cqZAp">
               <node concept="2OqwBi" id="fQeG$ZsckT" role="3clFbG">
+                <node concept="37vLTw" id="fQeG$ZsckU" role="2Oq$k0">
+                  <ref role="3cqZAo" node="fQeG$Zsckv" resolve="builder" />
+                </node>
                 <node concept="liA8E" id="fQeG$ZsckV" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                   <node concept="Xl_RD" id="fQeG$ZsckW" role="37wK5m">
                     <property role="Xl_RC" value="&lt;/ul&gt;&lt;/html&gt;" />
                   </node>
-                </node>
-                <node concept="37vLTw" id="fQeG$ZsckU" role="2Oq$k0">
-                  <ref role="3cqZAo" node="fQeG$Zsckv" resolve="builder" />
                 </node>
               </node>
             </node>
