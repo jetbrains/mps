@@ -16,6 +16,8 @@
 package jetbrains.mps.nodeEditor.cells;
 
 import com.intellij.openapi.command.CommandProcessor;
+import com.intellij.openapi.util.text.HtmlChunk;
+import com.intellij.util.ui.StartupUiUtil;
 import jetbrains.mps.editor.runtime.HtmlBuilder;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
@@ -129,23 +131,20 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   }
 
   private String getRenderedHtml() {
-    StringBuilder sb = new StringBuilder(getRenderedText());
+    HtmlChunk htmlChunk = HtmlChunk.text(getRenderedText());
 
     // format
     boolean isBold = this.getRenderedTextLine().getFont().isBold();
-    boolean isItalic = this.getRenderedTextLine().getFont().isItalic();
-    boolean isUnderlined = this.getRenderedTextLine().isUnderlined();
     if (isBold) {
-      sb.insert(0, "<b>");
-      sb.append("</b>");
+      htmlChunk = htmlChunk.bold();
     }
+    boolean isItalic = this.getRenderedTextLine().getFont().isItalic();
     if (isItalic) {
-      sb.insert(0, "<i>");
-      sb.append("</i>");
+      htmlChunk = htmlChunk.italic();
     }
+    boolean isUnderlined = this.getRenderedTextLine().isUnderlined();
     if (isUnderlined) {
-      sb.insert(0, "<u>");
-      sb.append("</u>");
+      htmlChunk = htmlChunk.wrapWith("u");
     }
 
     // color
@@ -154,19 +153,16 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     String rgbBlack1 = "rgb(8, 8, 8)";
     String rgbBlack2 = "rgb(0, 0, 0)";
     if (!(rgbBlack1.equals(rgbString) || rgbBlack2.equals(rgbString))) {
-      sb.insert(0, "<font color=\"rgb(" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ")\">");
-      sb.append("</font>");
+      htmlChunk = HtmlChunk.font("rgb(" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ")").child(htmlChunk);
     }
 
     // font-size
-//    int fontSize = StartupUiUtil.getLabelFont().getSize();
-//    float cellFontSize = this.getRenderedTextLine().getFont().getSize2D();
-//    if (fontSize != cellFontSize) {
-//      sb.insert(0, "<span style=\"font-size:" + cellFontSize + "\">");
-//      sb.append("</span>");
-//    }
-
-    return sb.toString();
+    int fontSize = StartupUiUtil.getLabelFont().getSize();
+    float cellFontSize = this.getRenderedTextLine().getFont().getSize2D();
+    if (fontSize != cellFontSize) {
+      htmlChunk = HtmlChunk.span("font-size: " + cellFontSize + "px").child(htmlChunk);
+    }
+    return htmlChunk.toString();
   }
 
   public Font getFont() {
@@ -517,7 +513,8 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     if (isEditable()) {
       ModelAccess modelAccess = getContext().getRepository().getModelAccess();
       buildActions(modelAccess);
-      IntelligentCellProcessor cellProcessor = getEditorComponent().isAutomaticSubstitutionEnabled() ? IntelligentInputUtil.getIntelligentCellProcessor(this, getContext(), side) : null;
+      IntelligentCellProcessor cellProcessor =
+          getEditorComponent().isAutomaticSubstitutionEnabled() ? IntelligentInputUtil.getIntelligentCellProcessor(this, getContext(), side) : null;
       ModifyTextCommand command = new ModifyTextCommand(keyEvent, text, allowErrors, side, getContext(), cellProcessor);
       modelAccess.executeCommand(command);
       getEditor().relayout();
@@ -561,7 +558,9 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     if (cellText.isEmpty() || isErrorState()) {
       return false;
     }
-    if (!getEditorComponent().isAutomaticSubstitutionEnabled()) return false;
+    if (!getEditorComponent().isAutomaticSubstitutionEnabled()) {
+      return false;
+    }
 
     EditorCell nextCell = CellTraversalUtil.getNextLeaf(this);
     ActionHandler actionHandler = getContext().getEditorComponent().getActionHandler();
@@ -1271,7 +1270,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
             CommandProcessor.getInstance().setCurrentCommandGroupId(null);
           } else {
             if (isTypeOverExistingText() && myKeyEvent != null && typeOverExistingText(myKeyEvent)) {
-                return true;
+              return true;
             }
             commit(newText);
           }
