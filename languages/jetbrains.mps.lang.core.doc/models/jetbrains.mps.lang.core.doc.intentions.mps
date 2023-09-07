@@ -79,7 +79,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -96,10 +96,10 @@
         <node concept="3cpWs6" id="6OtXG9KaFjH" role="3cqZAp">
           <node concept="3K4zz7" id="6OtXG9KaGic" role="3cqZAk">
             <node concept="Xl_RD" id="6OtXG9KaGBj" role="3K4GZi">
-              <property role="Xl_RC" value="Remove documentation (new)" />
+              <property role="Xl_RC" value="Remove documentation" />
             </node>
             <node concept="Xl_RD" id="6OtXG9KaFu5" role="3K4E3e">
-              <property role="Xl_RC" value="Document (new)" />
+              <property role="Xl_RC" value="Add documentation" />
             </node>
             <node concept="2OqwBi" id="3In7kjTA8Ee" role="3K4Cdx">
               <node concept="2OqwBi" id="3In7kjTA8a6" role="2Oq$k0">
