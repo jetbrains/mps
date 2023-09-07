@@ -29,6 +29,7 @@ import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.TableUtil;
 import com.intellij.ui.TitledSeparator;
 import com.intellij.ui.ToolbarDecorator;
+import com.intellij.ui.border.IdeaTitledBorder;
 import com.intellij.ui.components.ActionLink;
 import com.intellij.ui.components.JBBox;
 import com.intellij.ui.components.JBCheckBox;
@@ -39,6 +40,7 @@ import com.intellij.ui.table.JBTable;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.ui.ItemRemovable;
+import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.icons.MPSIcons.General;
@@ -75,6 +77,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.io.File;
@@ -85,6 +88,8 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.function.Function;
+
+import static com.intellij.openapi.util.registry.Registry.intValue;
 
 // FIXME #apply() shall not deal with ModuleDescriptor directly, instead, JavaModuleFacet.save() shall put that there (better yet,
 // to memento, not to be different from other facets, provided we don't use isCompileInMPS and getKind directly from descriptor)
@@ -372,7 +377,10 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     decorator.setPreferredSize(new Dimension(500, 100));
 
     JPanel table = decorator.createPanel();
-    table.setBorder(IdeBorderFactory.createTitledBorder(PropertiesBundle.message("facet.java.sourcepath"), false));
+    Insets insets = new JBInsets(-1, -1, -1, -1);
+    final IdeaTitledBorder border = IdeBorderFactory.createTitledBorder(PropertiesBundle.message("facet.java.sourcepath"), false, insets);
+    border.setShowLine(false);
+    table.setBorder(border);
     return table;
   }
 
@@ -458,7 +466,9 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     decorator.setPreferredSize(new Dimension(500, 100));
 
     JPanel table = decorator.createPanel();
-    table.setBorder(IdeBorderFactory.createTitledBorder(PropertiesBundle.message("facet.java.libraries"), false));
+    final IdeaTitledBorder border = IdeBorderFactory.createTitledBorder(PropertiesBundle.message("facet.java.libraries"), false);
+    border.setShowLine(false);
+    table.setBorder(border);
     return table;
   }
 
