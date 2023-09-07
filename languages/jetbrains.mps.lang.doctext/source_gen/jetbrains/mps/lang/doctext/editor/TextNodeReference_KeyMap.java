@@ -12,10 +12,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.lang.text.editor.NewElementStrategyFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
@@ -26,16 +26,18 @@ public class TextNodeReference_KeyMap extends KeyMapImpl {
     action = new TextNodeReference_KeyMap_Action0();
     this.putAction("any", " ", action);
     action = new TextNodeReference_KeyMap_Action1();
-    this.putAction("ctrl", "VK_1", action);
+    this.putAction("ctrl", "VK_0", action);
     action = new TextNodeReference_KeyMap_Action2();
-    this.putAction("ctrl", "VK_2", action);
+    this.putAction("ctrl", "VK_1", action);
     action = new TextNodeReference_KeyMap_Action3();
-    this.putAction("ctrl", "VK_3", action);
+    this.putAction("ctrl", "VK_2", action);
     action = new TextNodeReference_KeyMap_Action4();
-    this.putAction("ctrl", "VK_4", action);
+    this.putAction("ctrl", "VK_3", action);
     action = new TextNodeReference_KeyMap_Action5();
-    this.putAction("ctrl", "VK_5", action);
+    this.putAction("ctrl", "VK_4", action);
     action = new TextNodeReference_KeyMap_Action6();
+    this.putAction("ctrl", "VK_5", action);
+    action = new TextNodeReference_KeyMap_Action7();
     this.putAction("ctrl", "VK_6", action);
   }
   public static class TextNodeReference_KeyMap_Action0 extends KeyMapActionImpl {
@@ -103,6 +105,41 @@ public class TextNodeReference_KeyMap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Line$yC) && !(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SNodeOperations.getParent(node))), CONCEPTS.Line$yC));
+    }
+    private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
+      SNodeFactoryOperations.replaceWithNewChild(SNodeOperations.getParent(node), CONCEPTS.Line$yC);
+    }
+    public String getKeyStroke() {
+      return "ctrl 0";
+    }
+  }
+  public static class TextNodeReference_KeyMap_Action2 extends KeyMapActionImpl {
+    public TextNodeReference_KeyMap_Action2() {
+      this.setShownInPopupMenu(false);
+    }
+    public boolean isMenuAlwaysShown() {
+      return false;
+    }
+    public boolean canExecute(final EditorContext editorContext) {
+      EditorCell contextCell = editorContext.getContextCell();
+      if ((contextCell == null)) {
+        return false;
+      }
+      SNode contextNode = contextCell.getSNode();
+      if (contextNode == null) {
+        return false;
+      }
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.TextNodeReference$_8))) {
+        return false;
+      }
+      return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
+    }
+    public void execute(final EditorContext editorContext) {
+      EditorCell contextCell = editorContext.getContextCell();
+      this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
+    }
+    private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Line$yC);
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
@@ -117,8 +154,8 @@ public class TextNodeReference_KeyMap extends KeyMapImpl {
       return "ctrl 1";
     }
   }
-  public static class TextNodeReference_KeyMap_Action2 extends KeyMapActionImpl {
-    public TextNodeReference_KeyMap_Action2() {
+  public static class TextNodeReference_KeyMap_Action3 extends KeyMapActionImpl {
+    public TextNodeReference_KeyMap_Action3() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -157,8 +194,8 @@ public class TextNodeReference_KeyMap extends KeyMapImpl {
       return "ctrl 2";
     }
   }
-  public static class TextNodeReference_KeyMap_Action3 extends KeyMapActionImpl {
-    public TextNodeReference_KeyMap_Action3() {
+  public static class TextNodeReference_KeyMap_Action4 extends KeyMapActionImpl {
+    public TextNodeReference_KeyMap_Action4() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -197,8 +234,8 @@ public class TextNodeReference_KeyMap extends KeyMapImpl {
       return "ctrl 3";
     }
   }
-  public static class TextNodeReference_KeyMap_Action4 extends KeyMapActionImpl {
-    public TextNodeReference_KeyMap_Action4() {
+  public static class TextNodeReference_KeyMap_Action5 extends KeyMapActionImpl {
+    public TextNodeReference_KeyMap_Action5() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -237,8 +274,8 @@ public class TextNodeReference_KeyMap extends KeyMapImpl {
       return "ctrl 4";
     }
   }
-  public static class TextNodeReference_KeyMap_Action5 extends KeyMapActionImpl {
-    public TextNodeReference_KeyMap_Action5() {
+  public static class TextNodeReference_KeyMap_Action6 extends KeyMapActionImpl {
+    public TextNodeReference_KeyMap_Action6() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -277,8 +314,8 @@ public class TextNodeReference_KeyMap extends KeyMapImpl {
       return "ctrl 5";
     }
   }
-  public static class TextNodeReference_KeyMap_Action6 extends KeyMapActionImpl {
-    public TextNodeReference_KeyMap_Action6() {
+  public static class TextNodeReference_KeyMap_Action7 extends KeyMapActionImpl {
+    public TextNodeReference_KeyMap_Action7() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {

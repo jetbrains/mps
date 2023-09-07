@@ -224,6 +224,21 @@ public class NewElementStrategyFactory {
             SPropertyOperations.assignEnum(SNodeOperations.as(newParentLine, CONCEPTS.Header$d7), PROPS.level$YKTp, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L, "jetbrains.mps.lang.text.structure.HeaderEnum"), 0x6cb23f222fb40fdfL, "Header3"));
             changeParent = true;
             break;
+          case "####":
+            newParentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, "jetbrains.mps.lang.text.structure.Header"));
+            SPropertyOperations.assignEnum(SNodeOperations.as(newParentLine, CONCEPTS.Header$d7), PROPS.level$YKTp, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L, "jetbrains.mps.lang.text.structure.HeaderEnum"), 0x2ef408c1b21eff0fL, "Header4"));
+            changeParent = true;
+            break;
+          case "#####":
+            newParentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, "jetbrains.mps.lang.text.structure.Header"));
+            SPropertyOperations.assignEnum(SNodeOperations.as(newParentLine, CONCEPTS.Header$d7), PROPS.level$YKTp, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L, "jetbrains.mps.lang.text.structure.HeaderEnum"), 0x2ef408c1b21eff14L, "Header5"));
+            changeParent = true;
+            break;
+          case "######":
+            newParentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, "jetbrains.mps.lang.text.structure.Header"));
+            SPropertyOperations.assignEnum(SNodeOperations.as(newParentLine, CONCEPTS.Header$d7), PROPS.level$YKTp, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L, "jetbrains.mps.lang.text.structure.HeaderEnum"), 0x2ef408c1b21eff1aL, "Header6"));
+            changeParent = true;
+            break;
         }
         if (changeParent) {
           SNodeOperations.replaceWithAnother(SNodeOperations.getParent(myElement), newParentLine);

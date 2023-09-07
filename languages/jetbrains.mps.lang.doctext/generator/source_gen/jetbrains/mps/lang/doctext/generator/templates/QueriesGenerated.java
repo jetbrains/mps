@@ -120,6 +120,12 @@ public class QueriesGenerated extends QueryProviderBase {
         return "h2";
       case 2:
         return "h3";
+      case 3:
+        return "h4";
+      case 4:
+        return "h5";
+      case 5:
+        return "h6";
       default:
         return "h1";
     }
@@ -821,7 +827,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static final EnumerationLiteralsIndex enumSwitchIndex = EnumerationLiteralsIndex.build(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L, 0x6cb23f222fb40ea3L, 0x6cb23f222fb40f40L, 0x6cb23f222fb40fdfL);
+  private static final EnumerationLiteralsIndex enumSwitchIndex = EnumerationLiteralsIndex.build(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb40ea2L, 0x6cb23f222fb40ea3L, 0x6cb23f222fb40f40L, 0x6cb23f222fb40fdfL, 0x2ef408c1b21eff0fL, 0x2ef408c1b21eff14L, 0x2ef408c1b21eff1aL);
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
