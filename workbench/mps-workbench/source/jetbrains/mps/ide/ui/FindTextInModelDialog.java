@@ -54,6 +54,7 @@ import com.intellij.ui.ScrollingUtil;
 import com.intellij.ui.SimpleColoredComponent;
 import com.intellij.ui.WindowMoveListener;
 import com.intellij.ui.WindowResizeListener;
+import com.intellij.ui.WindowRoundedCornersManager;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBScrollPane;
@@ -90,6 +91,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
+import javax.swing.Action;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
@@ -175,7 +178,11 @@ public final class FindTextInModelDialog extends DialogWrapper {
     // Add reaction to drag by mouse to top most component
     new WindowMoveListener(getContentPanel())
         .installTo(getContentPanel())
-        .installTo(myHeader.getPanel());
+        .installTo(myHeader.panel);
+
+    if (WindowRoundedCornersManager.isAvailable()) {
+      WindowRoundedCornersManager.setRoundedCorners(dialogWindow);
+    }
 
     Dimension panelSize = getPreferredSize();
     Dimension prev = DimensionService.getInstance().getSize(getDimensionServiceKey(), project);
@@ -227,11 +234,18 @@ public final class FindTextInModelDialog extends DialogWrapper {
                    .registerCustomShortcutSet(escape == null ? CommonShortcuts.ESCAPE : escape.getShortcutSet(), root, getDisposable());
   }
 
+  @Override
+  protected JButton createJButtonForAction(Action action) {
+    JButton button = super.createJButtonForAction(action);
+    button.setOpaque(false);
+    return button;
+  }
+
   protected JComponent createSouthPanel() {
     JComponent southPanel = super.createSouthPanel();
 
     if (ExperimentalUI.isNewUI()) {
-      southPanel.setBorder(JBUI.Borders.empty(5, 18));
+      southPanel.setBorder(JBUI.Borders.empty(JBUI.CurrentTheme.FindPopup.bottomPanelInsets()));
       southPanel.setBackground(JBUI.CurrentTheme.Advertiser.background());
     } else {
       southPanel.setBorder(JBUI.Borders.empty(5));
@@ -380,7 +394,7 @@ public final class FindTextInModelDialog extends DialogWrapper {
 
     myHeader = new FindTextInModelDialogHeader();
 
-    dialogPanel.add(myHeader.getPanel(), "growx, pushx, wrap");
+    dialogPanel.add(myHeader.panel, "growx, pushx, wrap");
     dialogPanel.add(mySearchEntry, "growx, pushx, wrap");
     dialogPanel.add(myPreviewSplitter, "growx, pushx, growy, pushy, wrap");
     dialogPanel.setPreferredFocusedComponent(textArea);
@@ -388,9 +402,9 @@ public final class FindTextInModelDialog extends DialogWrapper {
     if (ExperimentalUI.isNewUI()) {
       Color background = JBUI.CurrentTheme.Popup.BACKGROUND;
 
-      myHeader.getPanel().setBorder(JBUI.Borders.compound(JBUI.Borders.customLineBottom(JBUI.CurrentTheme.CustomFrameDecorations.separatorForeground()),
+      myHeader.panel.setBorder(JBUI.Borders.compound(JBUI.Borders.customLineBottom(JBUI.CurrentTheme.CustomFrameDecorations.separatorForeground()),
                                                           PopupUtil.getComplexPopupHorizontalHeaderBorder()));
-      myHeader.getPanel().setBackground(JBUI.CurrentTheme.ComplexPopup.HEADER_BACKGROUND);
+      myHeader.panel.setBackground(JBUI.CurrentTheme.ComplexPopup.HEADER_BACKGROUND);
       dialogPanel.setBackground(background);
       mySearchEntry.setOpaque(false);
       mySearchEntry.setBorder(PopupUtil.createComplexPopupTextFieldBorder());
@@ -401,7 +415,7 @@ public final class FindTextInModelDialog extends DialogWrapper {
       myPreviewSplitter.setBlindZone(() -> new Insets(0, textFieldBorderInsets.left, 0, textFieldBorderInsets.right));
       scrollPane.setBorder(JBUI.Borders.emptyBottom(4));
     } else {
-      myHeader.getPanel().setBorder(JBUI.Borders.empty(2, 5));
+      myHeader.panel.setBorder(JBUI.Borders.empty(2, 5));
       mySearchEntry.setBorder(JBUI.Borders.compound(
           JBUI.Borders.customLine(JBUI.CurrentTheme.BigPopup.searchFieldBorderColor(), 1, 0, 1, 0),
           JBUI.Borders.empty(1, 0, 2, 0)));
