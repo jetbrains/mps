@@ -65,7 +65,7 @@ import java.util.function.Supplier;
 
   // requires model read
   /*package*/ void performLookup(ProgressMonitor pm) {
-    pm.start("", 5);
+    pm.start("", 6);
     myDialogCallback.reset();
     final FindInNodeSink sink = new FindInNodeSink(myText, PropertyValueIndex.splitToWord(), myDialogCallback);
     final Supplier<Set<WordIndexEntry>> indexEntrySupplier = () -> PropertyValueIndex.splitToIndexEntry().apply(myText);
@@ -75,8 +75,9 @@ import java.util.function.Supplier;
     }
     if (pm.isCanceled() || isCancelState()) {
       myDialogCallback.aborted();
+      pm.advance(1);
     } else {
-      myDialogCallback.done();
+      myDialogCallback.done(pm.subTask(1, SubProgressKind.REPLACING));
     }
     pm.done();
   }
@@ -136,8 +137,8 @@ import java.util.function.Supplier;
     private final MatchHandler myMatchHandler;
     private final Function<String, Set<String>> myWordSplit;
 
-    public FindInNodeSink(String text, Function<String, Set<String>> wordSplit, MatchHandler matchHandler) {
-      myLookupValue = text.toLowerCase(); // XXX would be great to keep this outside, as a 'case sensitive' option
+    FindInNodeSink(String text, Function<String, Set<String>> wordSplit, MatchHandler matchHandler) {
+      myLookupValue = text.toLowerCase(); // XXX would be great to keep this outside, as a 'case-sensitive' option
       myLookupWords = wordSplit.apply(myLookupValue);
       myWordSplit = wordSplit;
       myMatchHandler = matchHandler;
@@ -151,7 +152,7 @@ import java.util.function.Supplier;
           continue;
         }
         final String lcv = v.toLowerCase();
-        // Account for multi-word lookup. see if there any intersection in lookup words and words in the property, report as match if any.
+        // Account for multi-word lookup. see if there is any intersection in lookup words and words in the property, report as match if any.
         // note, here we rely on PropertyValueProcessor logic that supplies SNode where all trigrams of lookup text have been found
         // and don't care to use allMatch(), although it's a reasonable alternative.
         // Note, despite the fact myLookupWords.size() could be 1, we may not see lcv.contains as there could be
@@ -168,8 +169,17 @@ import java.util.function.Supplier;
   }
 
   /*package*/ interface MatchHandlerEx extends MatchHandler {
-    default void done() {};
-    default void reset() {};
-    default void aborted() {};
+    /**
+     * Notify the search is done
+     * @param monitor monitor to use if the callback requires additional processing within the task scope
+     */
+    default void done(ProgressMonitor monitor) {
+      monitor.done();
+    }
+    default void reset() {}
+    /**
+     * Notify the search is aborted
+     */
+    default void aborted() {}
   }
 }
