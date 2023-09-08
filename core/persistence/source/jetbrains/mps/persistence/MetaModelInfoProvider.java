@@ -644,7 +644,7 @@ public interface MetaModelInfoProvider {
 
     @Override
     public Boolean isInterfaceConcept(SConceptId concept) {
-      return myInterfaceConcepts.contains(concept) || myDelegate.isInterfaceConcept(concept);
+      return myInterfaceConcepts.contains(concept) ? Boolean.TRUE : myDelegate.isInterfaceConcept(concept);
     }
 
     @Override
