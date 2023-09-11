@@ -16,7 +16,6 @@
 package jetbrains.mps.nodeEditor.cells;
 
 import com.intellij.ui.JBColor;
-import jetbrains.mps.editor.runtime.HtmlBuilder;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -37,6 +36,7 @@ import jetbrains.mps.nodeEditor.cells.collections.EmptyContainer;
 import jetbrains.mps.nodeEditor.cells.collections.SingletonContainer;
 import jetbrains.mps.nodeEditor.cells.collections.UnmodifiableIterator;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -704,7 +704,7 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
   }
 
   @Override
-  public HtmlBuilder renderHtml() {
+  public HtmlTextBuilder renderHtml() {
     return myCellLayout.doLayoutHtml(this);
   }
 

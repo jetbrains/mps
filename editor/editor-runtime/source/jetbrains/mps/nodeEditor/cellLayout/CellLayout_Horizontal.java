@@ -15,11 +15,11 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
-import jetbrains.mps.editor.runtime.HtmlBuilder;
+import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.style.CellAlign;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.EditorSettings;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
@@ -144,8 +144,8 @@ public class CellLayout_Horizontal extends AbstractCellLayout {
   }
 
   @Override
-  public HtmlBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
-    HtmlBuilder result = new HtmlBuilder();
+  public HtmlTextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    HtmlTextBuilderImpl result = new HtmlTextBuilderImpl();
     for (EditorCell editorCell : editorCells){
       result.appendToTheRight(editorCell.renderHtml(), PunctuationUtil.hasLeftGap(editorCell));
     }

@@ -3,13 +3,15 @@
  */
 package jetbrains.mps.editor.runtime;
 
-public class HtmlBuilder extends TextBuilderImpl{
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 
-  public HtmlBuilder(){
+public class HtmlTextBuilderImpl extends TextBuilderImpl implements HtmlTextBuilder{
+
+  public HtmlTextBuilderImpl(){
     super();
   }
 
-  public HtmlBuilder(String text) {
+  public HtmlTextBuilderImpl(String text) {
     super(text);
   }
 

@@ -15,13 +15,14 @@
  */
 package jetbrains.mps.nodeEditor.cellLayout;
 
-import jetbrains.mps.editor.runtime.HtmlBuilder;
+import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.impl.LayoutConstraints;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import jetbrains.mps.nodeEditor.cells.GeometryUtil;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -323,8 +324,8 @@ public class CellLayout_Flow extends AbstractCellLayout {
   }
 
   @Override
-  public HtmlBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
-    HtmlBuilder result = new HtmlBuilder();
+  public HtmlTextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    HtmlTextBuilder result = new HtmlTextBuilderImpl();
     Iterator<EditorCell> it = editorCells.iterator();
     while (it.hasNext()) {
       result.appendToTheBottom(doLayoutRow(it));

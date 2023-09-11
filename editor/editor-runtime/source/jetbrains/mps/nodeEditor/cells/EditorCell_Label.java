@@ -18,7 +18,7 @@ package jetbrains.mps.nodeEditor.cells;
 import com.intellij.openapi.command.CommandProcessor;
 import com.intellij.openapi.util.text.HtmlChunk;
 import com.intellij.util.ui.StartupUiUtil;
-import jetbrains.mps.editor.runtime.HtmlBuilder;
+import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.editor.runtime.cells.CaretState;
@@ -40,6 +40,7 @@ import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 import jetbrains.mps.openapi.editor.ActionHandler;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
@@ -871,11 +872,11 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   }
 
   @Override
-  public HtmlBuilder renderHtml() {
+  public HtmlTextBuilder renderHtml() {
     if (getRenderedText().isEmpty() || " ".equals(getRenderedText())) {
-      return new HtmlBuilder(getRenderedText());
+      return new HtmlTextBuilderImpl(getRenderedText());
     }
-    return new HtmlBuilder(getRenderedHtml());
+    return new HtmlTextBuilderImpl(getRenderedHtml());
   }
 
   public int getCharWidth() {
