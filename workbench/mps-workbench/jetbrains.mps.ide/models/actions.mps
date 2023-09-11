@@ -183,8 +183,8 @@
     <import index="zdap" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.text(MPS.IDEA/)" />
     <import index="prsh" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.documentation(MPS.Editor/)" />
     <import index="uddc" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.menus.transformation(MPS.Editor/)" />
-    <import index="a6r3" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.ui(MPS.Workbench/)" />
     <import index="hhnx" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.editor.runtime(MPS.Editor/)" />
+    <import index="a6r3" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.ui(MPS.Workbench/)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
   </imports>
@@ -47346,7 +47346,7 @@
           <node concept="3cpWsn" id="5JgJuLBWE36" role="3cpWs9">
             <property role="TrG5h" value="tb" />
             <node concept="3uibUv" id="5JgJuLBWE37" role="1tU5fm">
-              <ref role="3uigEE" to="hhnx:~HtmlBuilder" resolve="HtmlBuilder" />
+              <ref role="3uigEE" to="cj4x:~HtmlTextBuilder" resolve="HtmlTextBuilder" />
             </node>
           </node>
         </node>
@@ -47376,7 +47376,7 @@
               <ref role="3cqZAo" node="5JgJuLBWE36" resolve="tb" />
             </node>
             <node concept="liA8E" id="7jItmCRfBVW" role="2OqNvi">
-              <ref role="37wK5l" to="hhnx:~HtmlBuilder.getHtmlText()" resolve="getHtmlText" />
+              <ref role="37wK5l" to="cj4x:~HtmlTextBuilder.getHtmlText()" resolve="getHtmlText" />
             </node>
           </node>
         </node>

@@ -11,7 +11,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.editor.runtime.HeadlessEditorComponent;
-import jetbrains.mps.editor.runtime.HtmlBuilder;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationMarkup;
 import com.intellij.openapi.util.text.HtmlChunk;
 import javax.swing.Icon;
@@ -38,7 +38,7 @@ public class PlainTextDocumentationProvider {
     SRepository repo = model.getRepository();
     HeadlessEditorComponent component = new HeadlessEditorComponent(repo);
     component.editNode(docTextNode);
-    HtmlBuilder tb;
+    HtmlTextBuilder tb;
     tb = component.getRootCell().renderHtml();
     return tb.getHtmlText();
   }
