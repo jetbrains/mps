@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -243,7 +243,7 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   @Nullable
   @Override
   public Collection<SNode> trySwitch(SNodeReference _switch, TemplateContext context) throws GenerationException {
-    FastRuleFinder rf = generator.getRuleManager().getSwitchRules(_switch);
+    FastRuleFinder<TemplateReductionRule> rf = generator.getRuleManager().getSwitchRules(_switch);
     Collection<SNode> outputNodes = tryToReduce(rf, context.withNewExecutionPath());
     if (outputNodes != null) {
       // XXX it seems odd we do not do TracingUtil.fillOriginalNode(context.getInput(), outputNodes.get(0), false)
