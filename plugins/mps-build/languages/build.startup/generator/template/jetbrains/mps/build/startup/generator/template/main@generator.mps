@@ -1396,6 +1396,30 @@
                 </node>
               </node>
             </node>
+            <node concept="2pNNFK" id="1auiF7gADnB" role="3o6s8t">
+              <property role="2pNNFO" value="key" />
+              <node concept="3o6iSG" id="1auiF7gADR9" role="3o6s8t">
+                <property role="3o6i5n" value="ErrorFile" />
+              </node>
+            </node>
+            <node concept="2pNNFK" id="1auiF7gAE32" role="3o6s8t">
+              <property role="2pNNFO" value="string" />
+              <node concept="3o6iSG" id="1auiF7gAFYF" role="3o6s8t">
+                <property role="3o6i5n" value="-XX:ErrorFile=$USER_HOME/java_error_in_idea_%p.log" />
+              </node>
+            </node>
+            <node concept="2pNNFK" id="1auiF7gAHJD" role="3o6s8t">
+              <property role="2pNNFO" value="key" />
+              <node concept="3o6iSG" id="1auiF7gAHJE" role="3o6s8t">
+                <property role="3o6i5n" value="HeapDump" />
+              </node>
+            </node>
+            <node concept="2pNNFK" id="1auiF7gAHJF" role="3o6s8t">
+              <property role="2pNNFO" value="string" />
+              <node concept="3o6iSG" id="1auiF7gAHJG" role="3o6s8t">
+                <property role="3o6i5n" value="-XX:HeapDumpPath=$USER_HOME/java_error_in_idea.hprof" />
+              </node>
+            </node>
             <node concept="2pNNFK" id="2Y7_ei6iJUU" role="3o6s8t">
               <property role="2pNNFO" value="key" />
               <node concept="3o6iSG" id="2Y7_ei6iKk2" role="3o6s8t">

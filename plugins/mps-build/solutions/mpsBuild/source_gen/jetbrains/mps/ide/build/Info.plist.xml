@@ -93,6 +93,10 @@
       <string>1.8+</string>
       <key>MainClass</key>
       <string>jetbrains/mps/Launcher</string>
+      <key>ErrorFile</key>
+      <string>-XX:ErrorFile=$USER_HOME/java_error_in_idea_%p.log</string>
+      <key>HeapDump</key>
+      <string>-XX:HeapDumpPath=$USER_HOME/java_error_in_idea.hprof</string>
       <key>Options</key>
       <array>
         <string>--add-opens=java.base/java.io=ALL-UNNAMED</string>
