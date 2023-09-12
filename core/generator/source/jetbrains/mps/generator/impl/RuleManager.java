@@ -28,6 +28,7 @@ import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import jetbrains.mps.generator.runtime.TemplateWeavingRule;
 import jetbrains.mps.util.FlattenIterable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -153,6 +154,7 @@ public class RuleManager {
     return rules;
   }
 
+  @Nullable
   public FastRuleFinder<TemplateReductionRule> getSwitchRules(SNodeReference switch_) {
     return myTemplateSwitchGraph.getRuleFinder(switch_);
   }

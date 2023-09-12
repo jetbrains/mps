@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,6 +81,8 @@ public class TemplateSwitchMappingInterpreted implements TemplateSwitchMapping {
       if (modifies == null) {
         return null;
       }
+      // FIXME this is flawed. Resort to "base" switch's default has to be either general or abandoned altogether. Now it's part of
+      //       interpreted templates only; besides, requires access to generator internals. Drop or move the logic to TEEI!
       TemplateSwitchMapping switchMapping = context.getEnvironment().getGenerator().getSwitch(modifies);
       if (switchMapping == null) {
         return null;

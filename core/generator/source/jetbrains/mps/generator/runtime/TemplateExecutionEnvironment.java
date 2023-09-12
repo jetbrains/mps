@@ -47,7 +47,7 @@ import java.util.List;
  * Unlike {@link jetbrains.mps.generator.runtime.TemplateContext}, which is call stack for particular template/rule, this class is of broader scope/life-cycle.
  * <p/>
  * This interface is not deemed to be implemented by clients. Generator subsystem provides implementation of this interface, which is an API to generator
- * facilities. New API methods may be added as needed, depecation of existing methods shall respect generated code out there.
+ * facilities. New API methods may be added as needed, deprecation of existing methods shall respect generated code out there.
  *
  * @see jetbrains.mps.generator.runtime.TemplateContext
  * Evgeny Gryaznov, 10/22/10

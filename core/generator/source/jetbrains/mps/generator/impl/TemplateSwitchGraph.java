@@ -19,6 +19,7 @@ import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.generator.runtime.TemplateReductionRule;
 import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import jetbrains.mps.util.FlattenIterable;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.Collection;
@@ -66,8 +67,13 @@ public class TemplateSwitchGraph {
     }
   }
 
+  // returns null to indicate no switch found (if found, FastRuleFinder could still be empty)
+  @Nullable
   public FastRuleFinder<TemplateReductionRule> getRuleFinder(SNodeReference baseSwitch) {
     Node bottom = mySwitchToNode.get(baseSwitch);
+    if (bottom == null) {
+      return null;
+    }
     while (bottom.myModified != null) {
       bottom = bottom.myModified;
     }

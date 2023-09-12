@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -871,6 +871,9 @@ public final class TemplateProcessor implements ITemplateProcessor {
       try {
         collection = templateContext.getEnvironment().trySwitch(switchPtr, switchContext);
       } catch (GenerationCanceledException | GenerationFailureException | DismissTopMappingRuleException e) {
+        if (e.getTemplateModelLocation() == null) {
+          e.setTemplateModelLocation(getMacroNodeRef());
+        }
         throw e;
       } catch (GenerationException e) {
         getLogger().error(switchPtr, "internal error in switch: " + e.toString(), GeneratorUtil.describe(macro, "macro"));

@@ -234,7 +234,7 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
 
   @Override
   public void nullInputSwitch(SNodeReference _switch) throws GenerationCanceledException, GenerationFailureException {
-    final TemplateSwitchMapping templateSwitch = generator.getSwitch(_switch);
+    final TemplateSwitchMapping templateSwitch = generator.getRuleManager().getSwitch(_switch);
     if (templateSwitch != null) {
       templateSwitch.processNull(this);
     }
@@ -244,6 +244,11 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   @Override
   public Collection<SNode> trySwitch(SNodeReference _switch, TemplateContext context) throws GenerationException {
     FastRuleFinder<TemplateReductionRule> rf = generator.getRuleManager().getSwitchRules(_switch);
+    if (rf == null) {
+      // we know _switch points to existing 'switch' node, see TemplateProcessor$SwitchMacro code. For some reason, however, we didn't
+      // collect any rules for the switch at the given transformation step, consider this as a show-stopper.
+      throw new GenerationFailureException("Current transformation step doesn't include rules for switch " + _switch);
+    }
     Collection<SNode> outputNodes = tryToReduce(rf, context.withNewExecutionPath());
     if (outputNodes != null) {
       // XXX it seems odd we do not do TracingUtil.fillOriginalNode(context.getInput(), outputNodes.get(0), false)
@@ -267,7 +272,7 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     }
 
     // try the default case
-    TemplateSwitchMapping current = generator.getSwitch(_switch);
+    TemplateSwitchMapping current = generator.getRuleManager().getSwitch(_switch);
     if (current != null) {
       outputNodes = current.applyDefault(context);
       generator.recordTransformInputTrace(context.getInput(), outputNodes);
@@ -533,7 +538,7 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
 
   @Nullable
   Collection<SNode> tryToReduce(@NotNull SNode inputNode) throws GenerationFailureException, GenerationCanceledException {
-    FastRuleFinder rf = generator.getRuleManager().getReductionRules();
+    FastRuleFinder<TemplateReductionRule> rf = generator.getRuleManager().getReductionRules();
     Collection<SNode> outputNodes = tryToReduce(rf, new DefaultTemplateContext(this, inputNode, null));
     if (outputNodes != null) {
       if (outputNodes.size() == 1) {
@@ -625,6 +630,9 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
         getLogger().error(ruleNode, String.format("Reduction rule failed: %s", ex.getMessage()), ex.asProblemDescription());
       }
     } catch (GenerationFailureException | GenerationCanceledException ex) {
+      if (ex.getTemplateModelLocation() == null) {
+        ex.setTemplateModelLocation(reductionRule.getRuleNode());
+      }
       throw ex;
     } catch (GenerationException ex) {
       // ignore
