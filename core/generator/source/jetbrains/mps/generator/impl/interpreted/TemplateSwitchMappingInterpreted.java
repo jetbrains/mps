@@ -77,17 +77,7 @@ public class TemplateSwitchMappingInterpreted implements TemplateSwitchMapping {
   public Collection<SNode> applyDefault(TemplateContext context) throws GenerationException {
     SNode defaultConsequence = RuleUtil.getSwitchDefaultConsequence(mySwitch);
     if (defaultConsequence == null) {
-      SNodeReference modifies = getModifiesSwitch();
-      if (modifies == null) {
-        return null;
-      }
-      // FIXME this is flawed. Resort to "base" switch's default has to be either general or abandoned altogether. Now it's part of
-      //       interpreted templates only; besides, requires access to generator internals. Drop or move the logic to TEEI!
-      TemplateSwitchMapping switchMapping = context.getEnvironment().getGenerator().getSwitch(modifies);
-      if (switchMapping == null) {
-        return null;
-      }
-      return switchMapping.applyDefault(context);
+      return null;
     }
 
     try {

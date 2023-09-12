@@ -275,6 +275,11 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     TemplateSwitchMapping current = generator.getRuleManager().getSwitch(_switch);
     if (current != null) {
       outputNodes = current.applyDefault(context);
+      while (outputNodes == null && current.getModifiesSwitch() != null) {
+        // not that I believe in more than Sw2 extends Sw1, but why not to iterate all (Sw3->Sw2-Sw1), unless it hurts
+        current = generator.getRuleManager().getSwitch(current.getModifiesSwitch());
+        outputNodes = current == null ? null : current.applyDefault(context);
+      }
       generator.recordTransformInputTrace(context.getInput(), outputNodes);
       return outputNodes;
     }

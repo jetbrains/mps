@@ -34,11 +34,13 @@ public interface TemplateSwitchMapping {
   Iterable<TemplateReductionRule> getReductionRules();
 
   /**
+   * @return null indicates no 'default' template provided in the switch, and holding node shall get processed;
+   *         empty collection if template produced no results (ignore node switch is attached to)
    * @since 2020.1
    */
   @Nullable
   default Collection<SNode> applyDefault(TemplateContext context) throws GenerationException {
-    return Collections.emptyList();
+    return null;
   }
 
   /**
