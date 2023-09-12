@@ -22,10 +22,11 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.openapi.editor.cells.EditorCellContext;
-import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.openapi.editor.cells.EditorCellContext;
+import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2625078824549984775", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ShowQuickDocumentation_Action extends BaseAction {
@@ -81,43 +82,69 @@ public class ShowQuickDocumentation_Action extends BaseAction {
     SwingUtilities.convertPointToScreen(point, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
 
     MPSDocumentationManager manager = MPSDocumentationManager.getInstance();
+    SNode rootNode = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode();
+    SModel rootModel = SNodeOperations.getModel(rootNode);
+    final SRepository rootRepository = rootModel.getRepository();
+    final Wrappers._T<String> documentation = new Wrappers._T<String>("");
 
-    final SNode targetNode = ShowQuickDocumentation_Action.this.findTargetNode(event);
-
-    if (targetNode == null) {
+    final Wrappers._T<SNode> targetNode = new Wrappers._T<SNode>();
+    rootRepository.getModelAccess().runReadAction(() -> targetNode.value = ShowQuickDocumentation_Action.this.findTargetNode(rootRepository, event));
+    if (targetNode.value == null) {
       return;
     }
 
-    SNode rootNode = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode();
-    SModel rootModel = SNodeOperations.getModel(rootNode);
-    SRepository rootRepository = rootModel.getRepository();
-    final Wrappers._T<String> documentation = new Wrappers._T<String>("");
     rootRepository.getModelAccess().runReadAction(() -> {
-      PlainTextDocumentationProvider provider = new PlainTextDocumentationProvider(targetNode);
+      PlainTextDocumentationProvider provider = new PlainTextDocumentationProvider(targetNode.value);
       documentation.value = provider.getDecoratedDocumentation();
     });
     manager.showQuickDocumentation(event.getData(MPSCommonDataKeys.FRAME), event.getData(CommonDataKeys.PROJECT), point, documentation.value);
   }
-  private SNode findTargetNode(final AnActionEvent event) {
-    final SNode selectedNode = event.getData(MPSEditorDataKeys.EDITOR_CELL).getSNode();
-    SModel selectedNodeModel = SNodeOperations.getModel(selectedNode);
-    final EditorCellContext context = event.getData(MPSEditorDataKeys.EDITOR_CELL).getCellContext();
-    final SConceptFeature role = event.getData(MPSEditorDataKeys.EDITOR_CELL).getSRole();
-    final Wrappers._T<SNode> targetNode = new Wrappers._T<SNode>(null);
+  /**
+   * Must be called in read action
+   */
+  private SNode findTargetNode(SRepository repository, final AnActionEvent event) {
+    EditorCell currentCell = event.getData(MPSEditorDataKeys.EDITOR_CELL);
+    SNode contextNode = null;
+    SReferenceLink referenceLink = null;
+    SProperty property = null;
+    do {
+      if (currentCell.getSRole() instanceof SReferenceLink) {
+        contextNode = currentCell.getSNode();
+        referenceLink = ((SReferenceLink) currentCell.getSRole());
+        break;
+      } else {
+        EditorCellContext cellContext = currentCell.getCellContext();
+        if (cellContext != null) {
+          SPropertyInfo propertyInfo = cellContext.getPropertyInfo();
+          if (propertyInfo != null) {
+            contextNode = currentCell.getSNode();
+            property = propertyInfo.getProperty();
+            break;
+          }
+          if (cellContext.getNodeLocation() != null) {
+            contextNode = cellContext.getNodeLocation().getContextNode();
 
-    selectedNodeModel.getRepository().getModelAccess().runReadAction(() -> {
-      if (role instanceof SReferenceLink) {
-        targetNode.value = ListSequence.fromList(SNodeOperations.getReferences(selectedNode)).first().getTargetNode();
-        return;
-      }
-      if (context != null) {
-        if (context.getPropertyInfo().getProperty().getName() == "name") {
-          targetNode.value = selectedNode;
+          }
         }
-        return;
       }
-    });
+      if (currentCell.isBig()) {
+        contextNode = currentCell.getSNode();
+        break;
+      }
+      currentCell = currentCell.getParent();
+    } while (currentCell != null);
 
-    return targetNode.value;
+    if (property == null && referenceLink == null && event.getData(MPSEditorDataKeys.EDITOR_CELL).isBig()) {
+      return contextNode.getParent();
+
+    } else if (referenceLink != null) {
+      return SLinkOperations.getTarget(contextNode, referenceLink);
+
+    } else if (property != null) {
+      return property.getSourceNode().resolve(repository);
+
+    } else {
+      return contextNode;
+    }
   }
 }
