@@ -111,6 +111,9 @@
     <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
       <library file="${artifacts.mpsBootstrapCore}/languages/mps-stubs.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.feedback.context.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.feedback.problem.legacy-constraints.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.lang.feedback.problem.rt.jar" />
       <chunk>
         <module file="${mps_home}/plugins/jetpad/solutions/jetbrains.jetpad/jetbrains.jetpad.msd" />
       </chunk>
