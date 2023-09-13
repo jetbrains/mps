@@ -67,10 +67,7 @@ public class DSLDescriptor_Constraints extends BaseConstraintsDescriptor {
             return new FilteringScope(Scopes.forConcepts(_context.getContextNode(), CONCEPTS.AbstractConceptDeclaration$KA)) {
               @Override
               public boolean isExcluded(SNode node) {
-                if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA))) {
-                  return false;
-                }
-                return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), CONCEPTS.ClassConcept$bK));
+                return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(node, CONCEPTS.ClassConcept$bK));
               }
             };
           }

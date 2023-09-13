@@ -25,7 +25,6 @@ import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.structure.constraints.Scopes;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -69,10 +68,11 @@ public class CustomMemberDescriptor_Constraints extends BaseConstraintsDescripto
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new FilteringScope(Scopes.forConcepts(_context.getContextNode(), CONCEPTS.INamedConcept$Kd)) {
+            return new FilteringScope(Scopes.forConcepts(_context.getContextNode(), CONCEPTS.AbstractConceptDeclaration$KA)) {
               @Override
               public boolean isExcluded(SNode node) {
-                return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(SNodeOperations.as(node, CONCEPTS.AbstractConceptDeclaration$KA), CONCEPTS.ClassifierMember$At));
+                // XXX don't quite understand this condition. What kind of ACD is ClassifierMember as well?
+                return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(node, CONCEPTS.ClassifierMember$At));
               }
             };
           }
@@ -86,7 +86,6 @@ public class CustomMemberDescriptor_Constraints extends BaseConstraintsDescripto
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept CustomMemberDescriptor$8z = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.CustomMemberDescriptor");
-    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
     /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
     /*package*/ static final SInterfaceConcept ClassifierMember$At = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
   }

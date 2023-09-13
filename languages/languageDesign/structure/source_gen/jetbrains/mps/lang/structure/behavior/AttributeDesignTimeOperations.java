@@ -17,6 +17,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.Set;
 import java.util.LinkedHashSet;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -33,7 +34,7 @@ public class AttributeDesignTimeOperations {
       return null;
     }
     Scope conceptsScope = Scopes.forConcepts(accessNode, CONCEPTS.ConceptDeclaration$gH);
-    return Sequence.fromIterable(conceptsScope.getAvailableElements(null)).select((it) -> SNodeOperations.cast(it, CONCEPTS.ConceptDeclaration$gH)).where((it) -> {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(conceptsScope.getAvailableElements(null), CONCEPTS.ConceptDeclaration$gH)).where((it) -> {
       return SetSequence.fromSet(getSuperConcepts(it)).any(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode it) {
           return Objects.equals(SNodeOperations.getPointer(it), attributeType);
@@ -82,7 +83,7 @@ public class AttributeDesignTimeOperations {
     if (!(isAttributeDeclaration(attributeDeclaration))) {
       return null;
     }
-    return SetSequence.fromSet(getSuperConcepts(attributeDeclaration)).translate((it) -> SLinkOperations.collect(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg).get(it), LINKS.attributed$sGW5), LINKS.concept$sRY2)).distinct().where((it) -> (it != null));
+    return SetSequence.fromSet(getSuperConcepts(attributeDeclaration)).translate((it) -> SLinkOperations.collect(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg).get(it), LINKS.attributed$sGW5), LINKS.concept$sRY2)).distinct().where(new NotNullWhereFilter());
   }
 
   private static Set<SNode> getSuperConcepts(SNode conceptDeclaration) {

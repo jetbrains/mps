@@ -11450,7 +11450,7 @@
         <property role="TrG5h" value="metaConcept" />
         <uo k="s:originTrace" v="n:5773544763888586836" />
         <node concept="3bZ5Sz" id="JP" role="1tU5fm">
-          <ref role="3bZ5Sy" to="tpck:h0TrEE$" resolve="INamedConcept" />
+          <ref role="3bZ5Sy" to="tpce:1ob16QT2yIl" resolve="INamedStructureElement" />
           <uo k="s:originTrace" v="n:5773544763888586863" />
         </node>
       </node>

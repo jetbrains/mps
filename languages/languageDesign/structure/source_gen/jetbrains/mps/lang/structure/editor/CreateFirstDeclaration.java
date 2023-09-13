@@ -40,8 +40,9 @@ import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.structure.constraints.Scopes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.structure.constraints.Scopes;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -177,7 +178,7 @@ public class CreateFirstDeclaration extends TransformationMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-        return Sequence.fromIterable(Scopes.forConcepts(_context.getNode(), CONCEPTS.DataTypeDeclaration$AD).getAvailableElements("")).select((it) -> SNodeOperations.as(it, CONCEPTS.DataTypeDeclaration$AD)).where((it) -> it != null).toList();
+        return Sequence.fromIterable(SNodeOperations.ofConcept(Scopes.forConcepts(_context.getNode(), CONCEPTS.DataTypeDeclaration$AD).getAvailableElements(""), CONCEPTS.DataTypeDeclaration$AD)).where(new NotNullWhereFilter()).toList();
       }
 
       private class TMP_Action_ofqub7_a1a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
