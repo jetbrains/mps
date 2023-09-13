@@ -31,9 +31,12 @@ public class Scopes {
     return new FullyQualifiedNamedElementsScope(SNodeOperations.ofConcept(slc.getAvailableElements(null), CONCEPTS.INamedStructureElement$gD));
   }
   public static Scope forConcepts(SNode contextNode, SAbstractConcept metaConcept) {
-    return new FullyQualifiedNamedElementsScope(ConstraintsUtilConcepts.getAvailableConcepts(contextNode, metaConcept));
+    return forConcepts(SNodeOperations.getModel(contextNode), metaConcept);
   }
   public static Scope forConcepts(SModel contextModel, SAbstractConcept metaConcept) {
+    if (contextModel == null) {
+      return new EmptyScope();
+    }
     SModule contextModule = contextModel.getModule();
     if (contextModule == null) {
       return new EmptyScope();
@@ -44,8 +47,14 @@ public class Scopes {
 
     return new FullyQualifiedNamedElementsScope(SNodeOperations.ofConcept(slc.getAvailableElements(null), CONCEPTS.INamedStructureElement$gD));
   }
+
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.lang.structure.constraints.Scopes#forConcepts(SNode, SAbstractConcept) } instead
+   */
+  @Deprecated(forRemoval = true, since = "2023.2")
   public static Scope forLanguageConcepts(SNode contextNode, SAbstractConcept metaConcept) {
-    return new FullyQualifiedNamedElementsScope(ConstraintsUtilConcepts.getAvailableLanguageConcepts(contextNode, metaConcept));
+    return forConcepts(contextNode, metaConcept);
   }
   public static Scope forSubconcepts(SNode contextNode, final SNode conceptNode) {
     if (conceptNode == null) {

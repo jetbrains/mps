@@ -22761,11 +22761,11 @@
               </node>
             </node>
             <node concept="3cpWs6" id="1quYWAD4KFA" role="3cqZAp">
-              <node concept="2YIFZM" id="1quYWAD4KFB" role="3cqZAk">
+              <node concept="2YIFZM" id="32ywuM39tTt" role="3cqZAk">
+                <ref role="37wK5l" to="tpcg:50vK5YapkBB" resolve="forConcepts" />
                 <ref role="1Pybhc" to="tpcg:6dmIS6MscR9" resolve="Scopes" />
-                <ref role="37wK5l" to="tpcg:50vK5Yas08Z" resolve="forLanguageConcepts" />
-                <node concept="13iPFW" id="1quYWAD4KFC" role="37wK5m" />
-                <node concept="35c_gC" id="1quYWAD4KFD" role="37wK5m">
+                <node concept="13iPFW" id="32ywuM39tTu" role="37wK5m" />
+                <node concept="35c_gC" id="32ywuM39tTv" role="37wK5m">
                   <ref role="35c_gD" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
                 </node>
               </node>

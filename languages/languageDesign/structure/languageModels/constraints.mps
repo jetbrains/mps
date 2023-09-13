@@ -59,9 +59,14 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -243,6 +248,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
+        <child id="2546654756694997556" name="reference" index="92FcQ" />
+        <child id="3106559687488913694" name="line" index="2XjZqd" />
+      </concept>
       <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
         <property id="5858074156537516431" name="text" index="x79VB" />
       </concept>
@@ -253,6 +262,15 @@
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
+      </concept>
+      <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
+        <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
+      </concept>
+      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
+        <child id="6962838954693749192" name="tag" index="qph3F" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -1700,26 +1718,21 @@
         <ref role="3uigEE" to="o8zo:3fifI_xCtN$" resolve="Scope" />
       </node>
     </node>
+    <node concept="2tJIrI" id="1sVIztzIjc9" role="jymVt" />
     <node concept="2YIFZL" id="50vK5Yas08Z" role="jymVt">
       <property role="TrG5h" value="forLanguageConcepts" />
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="50vK5Yas092" role="3clF47">
-        <node concept="3clFbF" id="50vK5Yas0eY" role="3cqZAp">
-          <node concept="2ShNRf" id="50vK5Yas0eW" role="3clFbG">
-            <node concept="1pGfFk" id="50vK5Yas0wt" role="2ShVmc">
-              <ref role="37wK5l" node="50vK5YapiA6" resolve="FullyQualifiedNamedElementsScope" />
-              <node concept="2YIFZM" id="50vK5Yas0$L" role="37wK5m">
-                <ref role="37wK5l" node="50vK5YaqpAo" resolve="getAvailableLanguageConcepts" />
-                <ref role="1Pybhc" node="50vK5Yaq2E7" resolve="ConstraintsUtilConcepts" />
-                <node concept="37vLTw" id="50vK5Yas0Fx" role="37wK5m">
-                  <ref role="3cqZAo" node="50vK5Yas0Ci" resolve="contextNode" />
-                </node>
-                <node concept="37vLTw" id="50vK5Yas0RZ" role="37wK5m">
-                  <ref role="3cqZAo" node="50vK5Yas0P9" resolve="metaConcept" />
-                </node>
-              </node>
+        <node concept="3cpWs6" id="1sVIztzIm5K" role="3cqZAp">
+          <node concept="1rXfSq" id="1sVIztzImDF" role="3cqZAk">
+            <ref role="37wK5l" node="50vK5YapkBB" resolve="forConcepts" />
+            <node concept="37vLTw" id="1sVIztzIn1n" role="37wK5m">
+              <ref role="3cqZAo" node="50vK5Yas0Ci" resolve="contextNode" />
+            </node>
+            <node concept="37vLTw" id="1sVIztzInFJ" role="37wK5m">
+              <ref role="3cqZAo" node="50vK5Yas0P9" resolve="metaConcept" />
             </node>
           </node>
         </node>
@@ -1735,7 +1748,42 @@
       <node concept="37vLTG" id="50vK5Yas0P9" role="3clF46">
         <property role="TrG5h" value="metaConcept" />
         <node concept="3bZ5Sz" id="50vK5Yas0Pa" role="1tU5fm">
-          <ref role="3bZ5Sy" to="tpck:h0TrEE$" resolve="INamedConcept" />
+          <ref role="3bZ5Sy" to="tpce:1ob16QT2yIl" resolve="INamedStructureElement" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="1sVIztzIkoN" role="lGtFl">
+        <node concept="TZ5HI" id="1sVIztzIkoO" role="3nqlJM">
+          <node concept="TZ5HA" id="1sVIztzIkoP" role="3HnX3l">
+            <node concept="1dT_AC" id="1sVIztzIkBP" role="1dT_Ay">
+              <property role="1dT_AB" value="use " />
+            </node>
+            <node concept="1dT_AA" id="1sVIztzIkD$" role="1dT_Ay">
+              <node concept="92FcH" id="1sVIztzIkEw" role="qph3F">
+                <node concept="TZ5HA" id="1sVIztzIkEy" role="2XjZqd" />
+                <node concept="VXe0Z" id="1sVIztzIlit" role="92FcQ">
+                  <ref role="VXe0S" node="50vK5YapkBB" resolve="forConcepts" />
+                </node>
+              </node>
+            </node>
+            <node concept="1dT_AC" id="1sVIztzIkDz" role="1dT_Ay">
+              <property role="1dT_AB" value=" instead" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="1sVIztzIkoQ" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <node concept="2B6LJw" id="32ywuM39pan" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="32ywuM39pk5" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="32ywuM39pks" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="32ywuM39pAy" role="2B70Vg">
+            <property role="Xl_RC" value="2023.2" />
+          </node>
         </node>
       </node>
     </node>
@@ -2384,6 +2432,30 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="50vK5Yaqqea" role="1B3o_S" />
+      <node concept="P$JXv" id="32ywuM3bB8T" role="lGtFl">
+        <node concept="TZ5HI" id="32ywuM3bB8U" role="3nqlJM">
+          <node concept="TZ5HA" id="32ywuM3bB8V" role="3HnX3l">
+            <node concept="1dT_AC" id="32ywuM3bBO0" role="1dT_Ay">
+              <property role="1dT_AB" value="not in use in MPS (nor mbeddr/mps-extensions); logic of dubious value, consider using VisibleDepsSearchScope if necessary" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="32ywuM3bB8W" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <node concept="2B6LJw" id="32ywuM3bBEX" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="32ywuM3bBHh" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="32ywuM3bBIu" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="32ywuM3bBLi" role="2B70Vg">
+            <property role="Xl_RC" value="2023.2" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3Tm1VV" id="50vK5Yaq2E8" role="1B3o_S" />
   </node>

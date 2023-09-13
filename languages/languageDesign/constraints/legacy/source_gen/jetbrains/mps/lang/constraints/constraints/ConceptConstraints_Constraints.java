@@ -120,12 +120,11 @@ public class ConceptConstraints_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode conceptNode = SLinkOperations.getTarget(SNodeOperations.as(_context.getReferenceNode(), CONCEPTS.ConceptConstraints$Yt), LINKS.concept$EVpZ);
-            // why not for the same language?
-            return new FilteringScope(Scopes.forLanguageConcepts(conceptNode, CONCEPTS.ConceptDeclaration$gH)) {
+            // limited to the concepts of the same as we look for sub-concepts of constraint owner only.
+            return new FilteringScope(Scopes.forConceptsInSameLanguage(SNodeOperations.getModel(conceptNode), CONCEPTS.ConceptDeclaration$gH)) {
               @Override
-              public boolean isExcluded(SNode n) {
-                SNode otherConceptNode = SNodeOperations.cast(n, CONCEPTS.ConceptDeclaration$gH);
-                return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(otherConceptNode, conceptNode)) || SPropertyOperations.getBoolean(otherConceptNode, PROPS.abstract$ibpT);
+              public boolean isExcluded(SNode otherConceptNode) {
+                return SPropertyOperations.getBoolean(otherConceptNode, PROPS.abstract$ibpT) || !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(otherConceptNode, conceptNode));
               }
             };
           }

@@ -43,7 +43,7 @@ public final class IMenu_Contribution__BehaviorDescriptor extends BaseBHDescript
       if (Language.getLanguageFor(SNodeOperations.getModel(__thisNode__)) == null) {
         return ScopeUtils.lazyParentScope(__thisNode__, kind);
       }
-      return Scopes.forLanguageConcepts(__thisNode__, CONCEPTS.AbstractConceptDeclaration$KA);
+      return Scopes.forConcepts(__thisNode__, CONCEPTS.AbstractConceptDeclaration$KA);
     }
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child));
   }

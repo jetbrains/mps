@@ -15,10 +15,10 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.scope.ModelPlusImportedScope;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.constraints.Scopes;
+import jetbrains.mps.scope.ModelPlusImportedScope;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,10 +42,10 @@ public class IMenu_Named_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SConcept acd = CONCEPTS.AbstractConceptDeclaration$KA;
-            if (!(SNodeOperations.getModel(_context.getContextNode()).getModule() instanceof Language)) {
-              return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, acd);
+            if (Language.getLanguageFor(SNodeOperations.getModel(_context.getContextNode())) != null) {
+              return Scopes.forConcepts(_context.getContextNode(), acd);
             }
-            return Scopes.forLanguageConcepts(_context.getContextNode(), acd);
+            return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, acd);
           }
         };
       }

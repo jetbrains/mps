@@ -4,16 +4,9 @@ package jetbrains.mps.lang.structure.constraints;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Collections;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.scope.VisibleDepsSearchScope;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
-import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Collections;
 import java.util.Deque;
 import jetbrains.mps.internal.collections.runtime.DequeSequence;
 import java.util.LinkedList;
@@ -21,27 +14,19 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 
 public class ConstraintsUtilConcepts {
-  public static Iterable<SNode> getAvailableConcepts(SNode contextNode, final SAbstractConcept metaConcept) {
-    if (contextNode == null) {
-      return Sequence.fromIterable(Collections.<SNode>emptyList());
-    }
-    SModel model = contextNode.getModel();
-    if (model == null) {
-      return Sequence.fromIterable(Collections.<SNode>emptyList());
-    }
-    SModule contextModule = model.getModule();
 
-    Iterable<SModule> visibleModules = new VisibleDepsSearchScope(contextModule.getRepository(), contextModule).getModules();
-
-    Iterable<SModel> strucModels = Sequence.fromIterable(visibleModules).ofType(Language.class).select((it) -> SModuleOperations.getAspect(it, "structure")).where(new NotNullWhereFilter());
-
-    return Sequence.fromIterable(strucModels).translate((it) -> SModelOperations.roots(it, SNodeOperations.asSConcept(metaConcept)));
-  }
-
+  /**
+   * 
+   * @deprecated not in use in MPS (nor mbeddr/mps-extensions); logic of dubious value, consider using VisibleDepsSearchScope if necessary
+   */
+  @Deprecated(forRemoval = true, since = "2023.2")
   public static Iterable<SNode> getAvailableLanguageConcepts(SNode contextNode, final SAbstractConcept metaConcept) {
-    Language language = as_rcd0dt_a0a0a2(SNodeOperations.getModel(contextNode).getModule(), Language.class);
+    Language language = as_rcd0dt_a0a0a1(SNodeOperations.getModel(contextNode).getModule(), Language.class);
     if (language == null) {
       return Collections.emptyList();
     }
@@ -53,7 +38,7 @@ public class ConstraintsUtilConcepts {
     while (DequeSequence.fromDequeNew(languagesToVisit).isNotEmpty()) {
       Language nextLanguage = DequeSequence.fromDequeNew(languagesToVisit).removeFirstElement();
       for (SModuleReference extendedLangRef : SetSequence.fromSet(nextLanguage.getExtendedLanguageRefs())) {
-        Language extendedLanguage = as_rcd0dt_a0a0a1a7a2(extendedLangRef.resolve(nextLanguage.getRepository()), Language.class);
+        Language extendedLanguage = as_rcd0dt_a0a0a1a7a1(extendedLangRef.resolve(nextLanguage.getRepository()), Language.class);
         if (extendedLanguage != null && !(SetSequence.fromSet(visibleLanguages).contains(extendedLanguage))) {
           SetSequence.fromSet(visibleLanguages).addElement(extendedLanguage);
           DequeSequence.fromDequeNew(languagesToVisit).addLastElement(extendedLanguage);
@@ -62,32 +47,10 @@ public class ConstraintsUtilConcepts {
     }
     return SetSequence.fromSet(visibleLanguages).select((it) -> SModuleOperations.getAspect(it, "structure")).where(new NotNullWhereFilter()).translate((it) -> SModelOperations.roots(it, SNodeOperations.asSConcept(metaConcept)));
   }
-
-  /**
-   * 
-   * @deprecated utility method for MPS purposes, not in use and has to be removed
-   */
-  @Deprecated(forRemoval = true, since = "2021.2")
-  public static Iterable<SNode> getConceptsInSameLanguage(SModel model, SAbstractConcept metaConcept) {
-    Language language = as_rcd0dt_a0a0a4(model.getModule(), Language.class);
-    if (language == null) {
-      return Collections.emptyList();
-    }
-
-    SModel structureModel = SModuleOperations.getAspect(language, "structure");
-    if (structureModel == null) {
-      return Collections.emptyList();
-    }
-
-    return SModelOperations.roots(structureModel, SNodeOperations.asSConcept(metaConcept));
-  }
-  private static <T> T as_rcd0dt_a0a0a2(Object o, Class<T> type) {
+  private static <T> T as_rcd0dt_a0a0a1(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_rcd0dt_a0a0a1a7a2(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
-  }
-  private static <T> T as_rcd0dt_a0a0a4(Object o, Class<T> type) {
+  private static <T> T as_rcd0dt_a0a0a1a7a1(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }
