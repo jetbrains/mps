@@ -45,6 +45,10 @@
         <keyboard-shortcut first-keystroke="DELETE" keymap="$default"/>
       </action>
       <action id="jetbrains.mps.ui.usage.tree.selected-only" text="Include selected only" class="jetbrains.mps.ide.findusages.view.SelectedOnlyAction"/>
+      <action id="jetbrains.mps.ui.usage.tree.copy"
+              text="Copy Text"
+              class="jetbrains.mps.ide.findusages.view.CopyUsagesTextAction"
+              icon="AllIcons.Actions.Copy"/>
     </group>
   </actions>
 
