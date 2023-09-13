@@ -282,6 +282,9 @@ public class UsagesView implements IExternalizeable {
       if (USAGE_VIEW.is(dataId)) {
         return UsagesView.this;
       }
+      if (PlatformDataKeys.COPY_PROVIDER.is(dataId)) {
+        return new UsagesCopyProvider();
+      }
       return null;
     }
 
