@@ -31,6 +31,7 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
+import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import jetbrains.mps.smodel.runtime.ModuleRuntime.Flags;
@@ -387,6 +388,18 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
     }
   }
 
+  /**
+   * Access specific present (non-null) aspect instance of supplied languages.
+   * @since 2023.2
+   */
+  public <T extends ILanguageAspect> void withAvailableAspects(@NotNull Stream<SLanguage> languages, @NotNull Class<T> aspectClass, @NotNull Consumer<T> aspectOperation) {
+    withAvailableLanguages(languages, lr -> {
+      final T aspectInstance = lr.getAspect(aspectClass);
+      if (aspectInstance != null) {
+        aspectOperation.accept(aspectInstance);
+      }
+    });
+  }
   /**
    * @return snapshot of languages known to the registry at the given moment.
    *         May not reflect actual state (a language might get unloaded), but as long as it's about identity objects, it's not that important to

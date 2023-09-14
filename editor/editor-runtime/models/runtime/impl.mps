@@ -779,7 +779,7 @@
               <property role="3oM_SC" value="inside" />
             </node>
             <node concept="3oM_SD" id="35xCTfLvTnc" role="1PaTwD">
-              <property role="3oM_SC" value="EdiatorAspectDescriptorImpl," />
+              <property role="3oM_SC" value="EditorAspectDescriptorImpl," />
             </node>
             <node concept="3oM_SD" id="35xCTfLvTn$" role="1PaTwD">
               <property role="3oM_SC" value="where" />
@@ -1004,6 +1004,30 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="11BHxZ7C7LX" role="1B3o_S" />
+    <node concept="3UR2Jj" id="14vDHf9wo7C" role="lGtFl">
+      <node concept="TZ5HI" id="14vDHf9wo7D" role="3nqlJM">
+        <node concept="TZ5HA" id="14vDHf9wo7E" role="3HnX3l">
+          <node concept="1dT_AC" id="14vDHf9woRg" role="1dT_Ay">
+            <property role="1dT_AB" value="not in use in MPS, not of a great value as an API anyway (LanguageRegistry.withAvailableAspects(,EditorAspectDescriptor.class,) does the trick" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2AHcQZ" id="14vDHf9wo7F" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      <node concept="2B6LJw" id="14vDHf9woBY" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+        <node concept="3clFbT" id="14vDHf9woDR" role="2B70Vg">
+          <property role="3clFbU" value="true" />
+        </node>
+      </node>
+      <node concept="2B6LJw" id="14vDHf9woEO" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+        <node concept="Xl_RD" id="14vDHf9woJj" role="2B70Vg">
+          <property role="Xl_RC" value="2023.2" />
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 

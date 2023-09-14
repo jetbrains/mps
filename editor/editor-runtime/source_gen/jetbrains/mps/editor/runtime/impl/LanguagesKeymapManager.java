@@ -17,22 +17,29 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
+/**
+ * 
+ * @deprecated not in use in MPS, not of a great value as an API anyway (LanguageRegistry.withAvailableAspects(,EditorAspectDescriptor.class,) does the trick
+ */
+@Deprecated(forRemoval = true, since = "2023.2")
 @GeneratedClass(node = "r:8095f777-2745-40ce-ad34-6655ef50b7cc(jetbrains.mps.editor.runtime.impl)/1182113674817469564", model = "r:8095f777-2745-40ce-ad34-6655ef50b7cc(jetbrains.mps.editor.runtime.impl)")
 public class LanguagesKeymapManager {
   private final LanguageRegistry myLanguageRegistry;
 
+  @Deprecated
   public LanguagesKeymapManager() {
     this(MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class));
     // "Language KeyMap Manager
   }
 
+  @Deprecated
   public LanguagesKeymapManager(@NotNull LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
   }
 
   public List<KeyMap> getKeyMapsForLanguage(@NotNull SLanguage l) {
     // I don't see a point in caching this information as it used to be. If there's need to, shall do it 
-    // inside EdiatorAspectDescriptorImpl, where we do cache already for other parts.
+    // inside EditorAspectDescriptorImpl, where we do cache already for other parts.
     EditorAspectDescriptor ead = LanguageRegistryHelper.getEditorAspectDescriptor(myLanguageRegistry, l);
     if (ead == null) {
       return Collections.<KeyMap>emptyList();

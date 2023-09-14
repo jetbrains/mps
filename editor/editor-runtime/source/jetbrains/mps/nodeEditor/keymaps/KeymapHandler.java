@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.nodeEditor.keymaps;
 
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
-import jetbrains.mps.editor.runtime.impl.LanguagesKeymapManager;
 import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.logging.Logger;
@@ -27,6 +26,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.KeyMap;
 import jetbrains.mps.openapi.editor.cells.KeyMap.ActionKey;
 import jetbrains.mps.openapi.editor.cells.KeyMapAction;
+import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.smodel.SLanguageHierarchy;
@@ -112,22 +112,14 @@ public abstract class KeymapHandler<E> {
       // to find out possible editors/keymaps declared for super-concepts. This code has to change into generated
       // factory for keymaps, so that we don't need to walk hierarchy here.
       final LanguageRegistry languageRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
-      // FWIW, LanguagesKeymapManager needs instance of LR, yet I hope to remove its listener code and LKM altogether.
-      //  Likely I don't need LanguagesKeymapManager here at all, may consult EAD directly.
-      final LanguagesKeymapManager lkm = new LanguagesKeymapManager(languageRegistry);
       final ModelDependencyResolver mdr = new ModelDependencyResolver(languageRegistry, editorContext.getRepository());
       final Set<SLanguage> extLangSet = new SLanguageHierarchy(languageRegistry, mdr.usedLanguages(model)).getExtended();
-      languageRegistry.withAvailableLanguages(extLangSet.stream(), l -> {
-        // FIXME use LanguageRuntime!
-        List<KeyMap> keyMapsForNamespace = lkm.getKeyMapsForLanguage(l.getIdentity());
-        if (keyMapsForNamespace != null) {
-          for (KeyMap keymap : keyMapsForNamespace) {
-            if (!addedKeymaps.contains(keymap.getClass())) {
-              keyMapsAndCells.add(new Pair<>(keymap, selectedCell));
-              addedKeymaps.add(keymap.getClass());
-            }
-          }
-        }
+      languageRegistry.withAvailableAspects(extLangSet.stream(), EditorAspectDescriptor.class, ead -> {
+        Collection<KeyMap> allKM = ead.getDeclaredKeyMaps();
+        allKM.stream().filter(KeyMap::isApplicableToEveryModel).filter(keymap -> !addedKeymaps.contains(keymap.getClass())).forEach(keymap -> {
+          keyMapsAndCells.add(new Pair<>(keymap, selectedCell));
+          addedKeymaps.add(keymap.getClass());
+        });
       });
     }
 
