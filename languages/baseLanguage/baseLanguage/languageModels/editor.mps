@@ -1020,9 +1020,6 @@
       <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
         <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
       </concept>
-      <concept id="4065387505485742749" name="jetbrains.mps.lang.smodel.structure.AbstractPointerResolveOperation" flags="ng" index="2yCiFS">
-        <child id="3648723375513868575" name="repositoryArg" index="Vysub" />
-      </concept>
       <concept id="7453996997717780434" name="jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation" flags="nn" index="2yIwOk" />
       <concept id="8758390115029295477" name="jetbrains.mps.lang.smodel.structure.SReferenceType" flags="in" index="2z4iKi" />
       <concept id="1138757581985" name="jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation" flags="nn" index="zfrQC">
@@ -1066,7 +1063,6 @@
         <child id="1145567471833" name="createdType" index="2T96Bj" />
       </concept>
       <concept id="1145573345940" name="jetbrains.mps.lang.smodel.structure.Node_GetAllSiblingsOperation" flags="nn" index="2TvwIu" />
-      <concept id="3648723375513868532" name="jetbrains.mps.lang.smodel.structure.NodePointer_ResolveOperation" flags="ng" index="Vyspw" />
       <concept id="1139184414036" name="jetbrains.mps.lang.smodel.structure.LinkList_AddNewChildOperation" flags="nn" index="WFELt">
         <reference id="1139877738879" name="concept" index="1A0vxQ" />
       </concept>
@@ -34802,30 +34798,8 @@
               </node>
             </node>
             <node concept="1Wc70l" id="3_wGmWBNDVr" role="3uHU7w">
-              <node concept="17R0WA" id="3_wGmWBNPzR" role="3uHU7w">
-                <node concept="2OqwBi" id="3_wGmWBNQM2" role="3uHU7w">
-                  <node concept="2tJFMh" id="3_wGmWBNPQl" role="2Oq$k0">
-                    <node concept="ZC_QK" id="3_wGmWBNQcq" role="2tJFKM">
-                      <ref role="2aWVGs" to="wyt6:~Boolean" resolve="Boolean" />
-                    </node>
-                  </node>
-                  <node concept="Vyspw" id="3_wGmWBNRBC" role="2OqNvi">
-                    <node concept="2OqwBi" id="3_wGmWBNVm7" role="Vysub">
-                      <node concept="2JrnkZ" id="3_wGmWBNV28" role="2Oq$k0">
-                        <node concept="2OqwBi" id="3_wGmWBNSpm" role="2JrQYb">
-                          <node concept="37vLTw" id="ETPn3v9hvo" role="2Oq$k0">
-                            <ref role="3cqZAo" node="ETPn3v9gDJ" resolve="node" />
-                          </node>
-                          <node concept="I4A8Y" id="3_wGmWBNSQ_" role="2OqNvi" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="3_wGmWBNVPm" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="3_wGmWBNHt9" role="3uHU7B">
+              <node concept="2OqwBi" id="14vDHf9jAgb" role="3uHU7w">
+                <node concept="2OqwBi" id="3_wGmWBNHt9" role="2Oq$k0">
                   <node concept="1PxgMI" id="3_wGmWBNFVA" role="2Oq$k0">
                     <node concept="chp4Y" id="3_wGmWBNGcM" role="3oSUPX">
                       <ref role="cht4Q" to="tpee:g7uibYu" resolve="ClassifierType" />
@@ -34836,6 +34810,11 @@
                   </node>
                   <node concept="3TrEf2" id="3_wGmWBNHZb" role="2OqNvi">
                     <ref role="3Tt5mk" to="tpee:g7uigIF" resolve="classifier" />
+                  </node>
+                </node>
+                <node concept="1QLmlb" id="14vDHf9jBbV" role="2OqNvi">
+                  <node concept="ZC_QK" id="14vDHf9jBPr" role="1QLmnL">
+                    <ref role="2aWVGs" to="wyt6:~Boolean" resolve="Boolean" />
                   </node>
                 </node>
               </node>
