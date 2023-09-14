@@ -600,7 +600,7 @@
     <mkdir dir="${mps_home}/workbench/mps-workbench/source" />
     <mkdir dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide/source_gen" />
     <mkdir dir="${build.tmp}/java/out/mps-workbench" />
-    <javac2 destdir="${build.tmp}/java/out/mps-workbench" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
+    <javac destdir="${build.tmp}/java/out/mps-workbench" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="mps-workbench">        
         <compilerarg value="-jvm-target=11"></compilerarg>
       </withKotlin>
@@ -645,9 +645,8 @@
         <fileset file="${artifacts.IDEA}/lib/testFramework.jar" />
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
-        <path refid="path.jdk.classpath" />
       </classpath>
-    </javac2>
+    </javac>
     <copy todir="${build.tmp}/java/out/mps-workbench">
       <fileset dir="${mps_home}/workbench/mps-workbench/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info">
         <exclude name="idea/IdeaApplicationInfo.xml" />
