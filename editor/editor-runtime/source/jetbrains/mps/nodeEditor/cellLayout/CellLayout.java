@@ -30,7 +30,9 @@ public interface CellLayout extends jetbrains.mps.openapi.editor.cells.CellLayou
 
   TextBuilder doLayoutText(Iterable<EditorCell> editorCells);
 
-  HtmlTextBuilder doLayoutHtml(Iterable<EditorCell> editorCells);
+  default HtmlTextBuilder doLayoutHtml(Iterable<EditorCell> editorCells) {
+    throw new UnsupportedOperationException("not implemented");
+  }
 
   int getAscent(EditorCell_Collection editorCells);
 
