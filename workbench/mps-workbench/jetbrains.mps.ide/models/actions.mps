@@ -184,8 +184,8 @@
     <import index="prsh" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.documentation(MPS.Editor/)" />
     <import index="uddc" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.menus.transformation(MPS.Editor/)" />
     <import index="hhnx" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.editor.runtime(MPS.Editor/)" />
-    <import index="a6r3" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.ui(MPS.Workbench/)" />
     <import index="i8bi" ref="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)" />
+    <import index="a6r3" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.ui(MPS.Workbench/)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
   </imports>
@@ -46740,6 +46740,12 @@
     <property role="1rBW0U" value="true" />
     <node concept="2XrIbr" id="6upYUvM06xg" role="32lrUH">
       <property role="TrG5h" value="findTargetNode" />
+      <node concept="37vLTG" id="457m5gV3J_g" role="3clF46">
+        <property role="TrG5h" value="repository" />
+        <node concept="3uibUv" id="457m5gV3KkZ" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+        </node>
+      </node>
       <node concept="3uibUv" id="6upYUvM0oMK" role="3clF45">
         <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
       </node>
@@ -47122,12 +47128,6 @@
         </node>
       </node>
       <node concept="3Tm6S6" id="6upYUvM06xj" role="1B3o_S" />
-      <node concept="37vLTG" id="457m5gV3J_g" role="3clF46">
-        <property role="TrG5h" value="repository" />
-        <node concept="3uibUv" id="457m5gV3KkZ" role="1tU5fm">
-          <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
-        </node>
-      </node>
       <node concept="P$JXv" id="457m5gV3KoQ" role="lGtFl">
         <node concept="TZ5HA" id="457m5gV3KoR" role="TZ5H$">
           <node concept="1dT_AC" id="457m5gV3KoS" role="1dT_Ay">
@@ -47574,7 +47574,7 @@
           <node concept="3cpWsn" id="5JgJuLBWE36" role="3cpWs9">
             <property role="TrG5h" value="tb" />
             <node concept="3uibUv" id="5JgJuLBWE37" role="1tU5fm">
-              <ref role="3uigEE" to="hhnx:~HtmlBuilder" resolve="HtmlBuilder" />
+              <ref role="3uigEE" to="cj4x:~HtmlTextBuilder" resolve="HtmlTextBuilder" />
             </node>
           </node>
         </node>
@@ -47604,7 +47604,7 @@
               <ref role="3cqZAo" node="5JgJuLBWE36" resolve="tb" />
             </node>
             <node concept="liA8E" id="7jItmCRfBVW" role="2OqNvi">
-              <ref role="37wK5l" to="hhnx:~HtmlBuilder.getHtmlText()" resolve="getHtmlText" />
+              <ref role="37wK5l" to="cj4x:~HtmlTextBuilder.getHtmlText()" resolve="getHtmlText" />
             </node>
           </node>
         </node>
