@@ -6,9 +6,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet compile="off" classes="off" ext="no" type="java">
-      <classes generated="true" path="${module}/classes_gen" />
-    </facet>
+    <facet folders="true" type="plaintext" />
   </facets>
   <languageVersions>
     <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="2" />
