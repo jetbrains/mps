@@ -337,6 +337,9 @@ public class CompoundComponent_TransformationMenu extends TransformationMenuBase
 
         @Override
         public void execute(@NotNull String pattern) {
+          if (!(PatternDetectionUtil.isNumeric(pattern))) {
+            return;
+          }
           SPropertyOperations.assign(compound, PROPS.cardinality$ubQr, Integer.parseInt(pattern));
           SPropertyOperations.assign(compound, PROPS.cardinalityVisible$7IlK, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), compound, SelectionManager.FIRST_EDITABLE_CELL, -1);
