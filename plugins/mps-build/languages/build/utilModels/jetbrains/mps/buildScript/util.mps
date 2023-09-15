@@ -26,7 +26,7 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
-    <import index="ap4t" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator(MPS.Generator/)" />
+    <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -1016,7 +1016,7 @@
           <node concept="1Wc70l" id="1AfwOXhJtMT" role="3clFbw">
             <node concept="2ZW3vV" id="3nCzltNmdU6" role="3uHU7B">
               <node concept="3uibUv" id="3nCzltNmdU7" role="2ZW6by">
-                <ref role="3uigEE" to="ap4t:~TransientModelsModule" resolve="TransientModelsModule" />
+                <ref role="3uigEE" to="31cb:~TransientSModule" resolve="TransientSModule" />
               </node>
               <node concept="2OqwBi" id="3nCzltNmdU8" role="2ZW6bz">
                 <node concept="liA8E" id="3nCzltNmdU9" role="2OqNvi">
@@ -1058,7 +1058,7 @@
         <node concept="3clFbJ" id="1AfwOXhJ9Qe" role="3cqZAp">
           <node concept="2ZW3vV" id="3nCzltNmdU0" role="3clFbw">
             <node concept="3uibUv" id="3nCzltNmdU1" role="2ZW6by">
-              <ref role="3uigEE" to="ap4t:~TransientModelsModule" resolve="TransientModelsModule" />
+              <ref role="3uigEE" to="31cb:~TransientSModule" resolve="TransientSModule" />
             </node>
             <node concept="37vLTw" id="3hM683lIPd7" role="2ZW6bz">
               <ref role="3cqZAo" node="1AfwOXhJach" resolve="module" />
@@ -1627,7 +1627,7 @@
         <node concept="3clFbJ" id="1bWeed$o7N6" role="3cqZAp">
           <node concept="2ZW3vV" id="3nCzltNmdTC" role="3clFbw">
             <node concept="3uibUv" id="3nCzltNmdTD" role="2ZW6by">
-              <ref role="3uigEE" to="ap4t:~TransientModelsModule" resolve="TransientModelsModule" />
+              <ref role="3uigEE" to="31cb:~TransientSModule" resolve="TransientSModule" />
             </node>
             <node concept="2OqwBi" id="3nCzltNmdTE" role="2ZW6bz">
               <node concept="liA8E" id="3nCzltNmdTF" role="2OqNvi">
@@ -1644,27 +1644,6 @@
             </node>
           </node>
           <node concept="3clFbS" id="1bWeed$o7N8" role="3clFbx">
-            <node concept="3cpWs8" id="1bWeed$oEFz" role="3cqZAp">
-              <node concept="3cpWsn" id="1bWeed$oEF$" role="3cpWs9">
-                <property role="TrG5h" value="transientModule" />
-                <node concept="2OqwBi" id="256tImPkKI7" role="33vP2m">
-                  <node concept="2JrnkZ" id="256tImPkKIb" role="2Oq$k0">
-                    <node concept="2OqwBi" id="256tImPkKIc" role="2JrQYb">
-                      <node concept="I4A8Y" id="256tImPkKId" role="2OqNvi" />
-                      <node concept="37vLTw" id="2BHiRxglp62" role="2Oq$k0">
-                        <ref role="3cqZAo" node="1bWeed$o7s7" resolve="project" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="256tImPkKI8" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                  </node>
-                </node>
-                <node concept="3uibUv" id="1bWeed$oEF_" role="1tU5fm">
-                  <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
-                </node>
-              </node>
-            </node>
             <node concept="3cpWs6" id="1bWeed$oEFK" role="3cqZAp">
               <node concept="2ShNRf" id="1bWeed$oEFM" role="3cqZAk">
                 <node concept="1pGfFk" id="1bWeed$oEFO" role="2ShVmc">
@@ -1717,7 +1696,7 @@
         <node concept="3clFbJ" id="5WMFzVNueXP" role="3cqZAp">
           <node concept="2ZW3vV" id="3nCzltNmdTK" role="3clFbw">
             <node concept="3uibUv" id="3nCzltNmdTL" role="2ZW6by">
-              <ref role="3uigEE" to="ap4t:~TransientModelsModule" resolve="TransientModelsModule" />
+              <ref role="3uigEE" to="31cb:~TransientSModule" resolve="TransientSModule" />
             </node>
             <node concept="2OqwBi" id="3nCzltNmdTM" role="2ZW6bz">
               <node concept="liA8E" id="3nCzltNmdTN" role="2OqNvi">
@@ -1734,27 +1713,6 @@
             </node>
           </node>
           <node concept="3clFbS" id="5WMFzVNueXW" role="3clFbx">
-            <node concept="3cpWs8" id="5WMFzVNueXX" role="3cqZAp">
-              <node concept="3cpWsn" id="5WMFzVNueXY" role="3cpWs9">
-                <property role="TrG5h" value="transientModule" />
-                <node concept="2OqwBi" id="256tImPkKFD" role="33vP2m">
-                  <node concept="2JrnkZ" id="256tImPkKFG" role="2Oq$k0">
-                    <node concept="2OqwBi" id="256tImPkKFH" role="2JrQYb">
-                      <node concept="I4A8Y" id="256tImPkKFI" role="2OqNvi" />
-                      <node concept="37vLTw" id="2BHiRxgmzsG" role="2Oq$k0">
-                        <ref role="3cqZAo" node="5WMFzVNueXN" resolve="project" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="256tImPkKFE" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                  </node>
-                </node>
-                <node concept="3uibUv" id="5WMFzVNueXZ" role="1tU5fm">
-                  <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
-                </node>
-              </node>
-            </node>
             <node concept="3cpWs6" id="5WMFzVNueY8" role="3cqZAp">
               <node concept="2ShNRf" id="5WMFzVNueY9" role="3cqZAk">
                 <node concept="1pGfFk" id="5WMFzVNueYa" role="2ShVmc">
@@ -1826,7 +1784,7 @@
         <node concept="3clFbJ" id="2vaDE4tApKX" role="3cqZAp">
           <node concept="2ZW3vV" id="3nCzltNmdTS" role="3clFbw">
             <node concept="3uibUv" id="3nCzltNmdTT" role="2ZW6by">
-              <ref role="3uigEE" to="ap4t:~TransientModelsModule" resolve="TransientModelsModule" />
+              <ref role="3uigEE" to="31cb:~TransientSModule" resolve="TransientSModule" />
             </node>
             <node concept="2OqwBi" id="3nCzltNmdTU" role="2ZW6bz">
               <node concept="liA8E" id="3nCzltNmdTV" role="2OqNvi">
@@ -1843,27 +1801,6 @@
             </node>
           </node>
           <node concept="3clFbS" id="2vaDE4tApL4" role="3clFbx">
-            <node concept="3cpWs8" id="2vaDE4tApL5" role="3cqZAp">
-              <node concept="3cpWsn" id="2vaDE4tApL6" role="3cpWs9">
-                <property role="TrG5h" value="transientModule" />
-                <node concept="2OqwBi" id="256tImPkKGI" role="33vP2m">
-                  <node concept="2JrnkZ" id="256tImPkKGM" role="2Oq$k0">
-                    <node concept="2OqwBi" id="256tImPkKGN" role="2JrQYb">
-                      <node concept="I4A8Y" id="256tImPkKGO" role="2OqNvi" />
-                      <node concept="37vLTw" id="2BHiRxgmFl$" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2vaDE4tApKS" resolve="project" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="256tImPkKGJ" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                  </node>
-                </node>
-                <node concept="3uibUv" id="2vaDE4tApL7" role="1tU5fm">
-                  <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
-                </node>
-              </node>
-            </node>
             <node concept="3cpWs6" id="2vaDE4tApLg" role="3cqZAp">
               <node concept="2ShNRf" id="2vaDE4tApLh" role="3cqZAk">
                 <node concept="1pGfFk" id="2vaDE4tApLi" role="2ShVmc">
@@ -6193,7 +6130,7 @@
           <node concept="3fqX7Q" id="3vW0fDNS80J" role="1gVkn0">
             <node concept="2ZW3vV" id="3vW0fDNS80K" role="3fr31v">
               <node concept="3uibUv" id="3vW0fDNS80L" role="2ZW6by">
-                <ref role="3uigEE" to="ap4t:~TransientModelsModule" resolve="TransientModelsModule" />
+                <ref role="3uigEE" to="31cb:~TransientSModule" resolve="TransientSModule" />
               </node>
               <node concept="2OqwBi" id="3vW0fDNS80M" role="2ZW6bz">
                 <node concept="liA8E" id="3vW0fDNS80N" role="2OqNvi">

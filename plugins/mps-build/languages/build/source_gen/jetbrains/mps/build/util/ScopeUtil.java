@@ -17,8 +17,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.scope.DelegatingScope;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.generator.TransientModelsModule;
-import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.build.behavior.BuildLayout_Node__BehaviorDescriptor;
 import java.util.List;
@@ -78,8 +77,7 @@ public class ScopeUtil {
   }
 
   public static Scope getVisibleArtifactsScope(SNode project, boolean includeLayoutRoots) {
-    if (SNodeOperations.getModel(project).getModule() instanceof TransientModelsModule) {
-      SModule transientModule = SNodeOperations.getModel(project).getModule();
+    if (SNodeOperations.getModel(project).getModule() instanceof TransientSModule) {
       return new ModelPlusImportedScope(SNodeOperations.getModel(project), false, CONCEPTS.BuildLayout_Node$Rb);
     }
     return new VisibleArtifactsScope(VisibleArtifacts.createExternalFor(project), includeLayoutRoots);
@@ -89,16 +87,14 @@ public class ScopeUtil {
    * returns the external jars which are visible for a build project
    */
   public static Scope getVisibleJarsScope(SNode project) {
-    if (SNodeOperations.getModel(project).getModule() instanceof TransientModelsModule) {
-      SModule transientModule = SNodeOperations.getModel(project).getModule();
+    if (SNodeOperations.getModel(project).getModule() instanceof TransientSModule) {
       return new ModelPlusImportedScope(SNodeOperations.getModel(project), false, CONCEPTS.BuildSource_SingleFile$o8);
     }
     return new VisibleJarsScope(VisibleArtifacts.createExternalFor(project));
   }
 
   public static Scope getVisibleJarFoldersScope(SNode project) {
-    if (SNodeOperations.getModel(project).getModule() instanceof TransientModelsModule) {
-      SModule transientModule = SNodeOperations.getModel(project).getModule();
+    if (SNodeOperations.getModel(project).getModule() instanceof TransientSModule) {
       return new ModelPlusImportedScope(SNodeOperations.getModel(project), false, CONCEPTS.BuildSource_SingleFolder$14);
     }
     return new VisibleJarFoldersScope(VisibleArtifacts.createExternalFor(project));
