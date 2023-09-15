@@ -6015,7 +6015,7 @@
         <node concept="3clFbF" id="hGNnGsE" role="3cqZAp">
           <node concept="2YIFZM" id="5PsMh9oEh$r" role="3clFbG">
             <ref role="1Pybhc" to="exr9:~CreateFromUsageUtil" resolve="CreateFromUsageUtil" />
-            <ref role="37wK5l" to="exr9:~CreateFromUsageUtil.showCreateNewRootMenu(jetbrains.mps.openapi.editor.EditorContext,jetbrains.mps.util.Setter,org.jetbrains.mps.util.Condition)" resolve="showCreateNewRootMenu" />
+            <ref role="37wK5l" to="exr9:~CreateFromUsageUtil.showCreateNewRootMenu(jetbrains.mps.openapi.editor.EditorContext,java.util.function.Consumer,org.jetbrains.mps.util.Condition)" resolve="showCreateNewRootMenu" />
             <node concept="37vLTw" id="3eu_V9oANIi" role="37wK5m">
               <ref role="3cqZAo" node="3eu_V9oANId" resolve="editorContext" />
             </node>
@@ -6353,7 +6353,7 @@
         <node concept="3clFbF" id="hGNctpJ" role="3cqZAp">
           <node concept="2YIFZM" id="7S2IGmHMbkt" role="3clFbG">
             <ref role="1Pybhc" to="exr9:~CreateFromUsageUtil" resolve="CreateFromUsageUtil" />
-            <ref role="37wK5l" to="exr9:~CreateFromUsageUtil.showCreateNewRootMenu(jetbrains.mps.openapi.editor.EditorContext,jetbrains.mps.util.Setter,org.jetbrains.mps.util.Condition)" resolve="showCreateNewRootMenu" />
+            <ref role="37wK5l" to="exr9:~CreateFromUsageUtil.showCreateNewRootMenu(jetbrains.mps.openapi.editor.EditorContext,java.util.function.Consumer,org.jetbrains.mps.util.Condition)" resolve="showCreateNewRootMenu" />
             <node concept="37vLTw" id="3eu_V9oAVnA" role="37wK5m">
               <ref role="3cqZAo" node="3eu_V9oAZe$" resolve="editorContext" />
             </node>
