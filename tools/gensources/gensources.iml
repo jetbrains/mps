@@ -54,8 +54,10 @@
       <sourceFolder url="file://$MODULE_DIR$/../../languages/core/core/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/core/core/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/jetbrains.mps.lang.core.doc/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../languages/jetbrains.mps.lang.css/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/jetbrains.mps.lang.doctext/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/jetbrains.mps.lang.doctext/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../languages/jetbrains.mps.lang.html/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/access/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/access/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../languages/languageDesign/actions/generator/source_gen" isTestSource="false" />
@@ -279,8 +281,10 @@
       <excludeFolder url="file://$MODULE_DIR$/../../languages/core/core/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/core/core/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/jetbrains.mps.lang.core.doc/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../languages/jetbrains.mps.lang.css/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/jetbrains.mps.lang.doctext/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/jetbrains.mps.lang.doctext/generator/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../languages/jetbrains.mps.lang.html/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/access/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/access/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../languages/languageDesign/actions/classes_gen" />
