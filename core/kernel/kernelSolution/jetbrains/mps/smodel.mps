@@ -3679,6 +3679,101 @@
             </node>
           </node>
         </node>
+        <node concept="1DcWWT" id="2rC_CqzbP4S" role="3cqZAp">
+          <node concept="3clFbS" id="2rC_CqzbP4U" role="2LFqv$">
+            <node concept="3cpWs8" id="2rC_Cqzc7_6" role="3cqZAp">
+              <node concept="3cpWsn" id="2rC_Cqzc7_7" role="3cpWs9">
+                <property role="TrG5h" value="cd" />
+                <node concept="3Tqbb2" id="2rC_Cqzc7jx" role="1tU5fm">
+                  <ref role="ehGHo" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+                </node>
+                <node concept="2OqwBi" id="2rC_Cqzc7_8" role="33vP2m">
+                  <node concept="37vLTw" id="2rC_Cqzc7_9" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2rC_CqzbP4V" resolve="mcc" />
+                  </node>
+                  <node concept="3TrEf2" id="2rC_Cqzc7_a" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpc2:7U0pk79ej2_" resolve="conceptDeclaration" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="2rC_Cqzcaby" role="3cqZAp">
+              <node concept="3clFbS" id="2rC_Cqzcabz" role="3clFbx">
+                <node concept="3clFbF" id="2rC_Cqzcab$" role="3cqZAp">
+                  <node concept="2OqwBi" id="2rC_Cqzcab_" role="3clFbG">
+                    <node concept="37vLTw" id="2rC_CqzcabA" role="2Oq$k0">
+                      <ref role="3cqZAo" node="3MTO4OYcNlr" resolve="myExternalConcepts" />
+                    </node>
+                    <node concept="liA8E" id="2rC_CqzcabB" role="2OqNvi">
+                      <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+                      <node concept="37vLTw" id="2rC_CqzcabC" role="37wK5m">
+                        <ref role="3cqZAo" node="2rC_Cqzc7_7" resolve="cd" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="2rC_CqzcabD" role="3cqZAp">
+                  <node concept="2OqwBi" id="2rC_CqzcabE" role="3clFbG">
+                    <node concept="37vLTw" id="2rC_CqzcabF" role="2Oq$k0">
+                      <ref role="3cqZAo" node="3MTO4OYcZ4f" resolve="myExtendedModels" />
+                    </node>
+                    <node concept="liA8E" id="2rC_CqzcabG" role="2OqNvi">
+                      <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+                      <node concept="2OqwBi" id="2rC_CqzcabH" role="37wK5m">
+                        <node concept="37vLTw" id="2rC_CqzcabI" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2rC_Cqzc7_7" resolve="cd" />
+                        </node>
+                        <node concept="I4A8Y" id="2rC_CqzcabJ" role="2OqNvi" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1Wc70l" id="2rC_CqzcabK" role="3clFbw">
+                <node concept="3y3z36" id="2rC_CqzcabL" role="3uHU7w">
+                  <node concept="37vLTw" id="2rC_CqzcabM" role="3uHU7w">
+                    <ref role="3cqZAo" node="3MTO4OYcTjy" resolve="owner" />
+                  </node>
+                  <node concept="2OqwBi" id="2rC_CqzcabN" role="3uHU7B">
+                    <node concept="2JrnkZ" id="2rC_CqzcabO" role="2Oq$k0">
+                      <node concept="2OqwBi" id="2rC_CqzcabP" role="2JrQYb">
+                        <node concept="37vLTw" id="2rC_CqzcabQ" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2rC_Cqzc7_7" resolve="cd" />
+                        </node>
+                        <node concept="I4A8Y" id="2rC_CqzcabR" role="2OqNvi" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="2rC_CqzcabS" role="2OqNvi">
+                      <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3y3z36" id="2rC_CqzcabT" role="3uHU7B">
+                  <node concept="37vLTw" id="2rC_CqzcabU" role="3uHU7B">
+                    <ref role="3cqZAo" node="2rC_Cqzc7_7" resolve="cd" />
+                  </node>
+                  <node concept="10Nm6u" id="2rC_CqzcabV" role="3uHU7w" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWsn" id="2rC_CqzbP4V" role="1Duv9x">
+            <property role="TrG5h" value="mcc" />
+            <node concept="3Tqbb2" id="2rC_CqzbQLJ" role="1tU5fm">
+              <ref role="ehGHo" to="tpc2:6iw7UxkrgbU" resolve="CompletionCustomizationContextSpecificator_Concept" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="2rC_CqzbTJe" role="1DdaDG">
+            <node concept="37vLTw" id="2rC_CqzbSBv" role="2Oq$k0">
+              <ref role="3cqZAo" node="3MTO4OYcD1V" resolve="m" />
+            </node>
+            <node concept="2SmgA7" id="2rC_CqzbUQb" role="2OqNvi">
+              <node concept="chp4Y" id="2rC_CqzbWSH" role="1dBWTz">
+                <ref role="cht4Q" to="tpc2:6iw7UxkrgbU" resolve="CompletionCustomizationContextSpecificator_Concept" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="1DcWWT" id="3MTO4OYd22a" role="3cqZAp">
           <node concept="3clFbS" id="3MTO4OYd22b" role="2LFqv$">
             <node concept="3clFbF" id="3MTO4OYd22c" role="3cqZAp">
@@ -3817,6 +3912,31 @@
       <node concept="TZ5HA" id="3MTO4OYcBoD" role="TZ5H$">
         <node concept="1dT_AC" id="3MTO4OYcBoE" role="1dT_Ay">
           <property role="1dT_AB" value="extends dependency between languages due to editor aspect dependencies" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2rC_Cqzcelx" role="TZ5H$">
+        <node concept="1dT_AC" id="2rC_Cqzcely" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2rC_CqzccnS" role="TZ5H$">
+        <node concept="1dT_AC" id="2rC_CqzccnT" role="1dT_Ay">
+          <property role="1dT_AB" value="NOTE, 'extends' dependency is a design-time dependency, not necessarily manifested as 'extends' for " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2rC_Cqzcf_E" role="TZ5H$">
+        <node concept="1dT_AC" id="2rC_Cqzcf_F" role="1dT_Ay">
+          <property role="1dT_AB" value="language runtime. Here we collect references to other structure models and their languages, implying " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2rC_Cqzchx2" role="TZ5H$">
+        <node concept="1dT_AC" id="2rC_Cqzchx3" role="1dT_Ay">
+          <property role="1dT_AB" value="use of a concept from a foreign language is sort of &quot;extension&quot;. Discovered dependencies shall not get " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2rC_Cqzcjjr" role="TZ5H$">
+        <node concept="1dT_AC" id="2rC_Cqzcjjs" role="1dT_Ay">
+          <property role="1dT_AB" value="translated directly into 'extends' between languages, rather as a notion of a general extension contribution." />
         </node>
       </node>
     </node>

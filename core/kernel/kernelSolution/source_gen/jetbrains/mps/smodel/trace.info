@@ -199,69 +199,83 @@
   </root>
   <root nodeRef="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)/4375757543141667420">
     <file name="EditorDeclarationScanner.java">
-      <node id="4375757543141750107" at="29,0,30,0" concept="5" trace="myExternalConcepts" />
-      <node id="4375757543141798159" at="30,0,31,0" concept="5" trace="myExtendedModels" />
-      <node id="4375757543141798166" at="31,0,32,0" concept="5" trace="myExtendedModules" />
-      <node id="4375757543141774561" at="37,50,38,34" concept="9" />
-      <node id="4375757543141776023" at="39,79,40,78" concept="9" />
-      <node id="4375757543141758679" at="41,76,42,35" concept="4" />
-      <node id="4375757543141819660" at="42,35,43,59" concept="4" />
-      <node id="2512598151680918001" at="46,81,47,172" concept="9" />
-      <node id="2512598151680927766" at="48,76,49,35" concept="4" />
-      <node id="2512598151680927771" at="49,35,50,59" concept="4" />
-      <node id="4375757543141810316" at="53,40,54,44" concept="4" />
-      <node id="4375757543141736610" at="55,5,56,16" concept="10" />
-      <node id="4375757543141805824" at="59,51,60,57" concept="10" />
-      <node id="4375757543141805833" at="63,46,64,58" concept="10" />
-      <node id="4375757543141744293" at="67,43,68,59" concept="10" />
-      <node id="4375757543141667420" at="72,0,73,0" concept="13" trace="conceptDeclaration$HJmJ" />
-      <node id="4375757543141667420" at="76,0,77,0" concept="13" trace="AbstractComponent$YR" />
-      <node id="4375757543141667420" at="77,0,78,0" concept="13" trace="IMenuReference$GI" />
-      <node id="4375757543141702344" at="34,0,36,0" concept="2" trace="EditorDeclarationScanner#()V" />
-      <node id="4375757543141810314" at="52,5,55,5" concept="6" />
-      <node id="4375757543141805819" at="59,0,62,0" concept="8" trace="getExternalStructureModels#()Ljava/util/Set;" />
-      <node id="4375757543141805828" at="63,0,66,0" concept="8" trace="getDependencyModules#()Ljava/util/Set;" />
-      <node id="4375757543141744291" at="67,0,70,0" concept="8" trace="getExternalConcepts#()Ljava/util/Set;" />
-      <node id="4375757543141779971" at="40,78,44,7" concept="7" />
-      <node id="2512598151680918207" at="47,172,51,7" concept="7" />
-      <node id="4375757543141718726" at="38,34,45,5" concept="6" />
-      <node id="2512598151680871151" at="45,5,52,5" concept="6" />
-      <node id="4375757543141707871" at="37,0,58,0" concept="8" trace="scan#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/smodel/EditorDeclarationScanner;" />
-      <scope id="4375757543141702349" at="34,37,34,37" />
-      <scope id="4375757543141810315" at="53,40,54,44" />
-      <scope id="4375757543141805823" at="59,51,60,57" />
-      <scope id="4375757543141805832" at="63,46,64,58" />
-      <scope id="4375757543141744292" at="67,43,68,59" />
-      <scope id="4375757543141702344" at="34,0,36,0" />
-      <scope id="4375757543141779973" at="41,76,43,59" />
-      <scope id="2512598151680918209" at="48,76,50,59" />
-      <scope id="4375757543141810314" at="52,5,55,5">
+      <node id="4375757543141750107" at="34,0,35,0" concept="5" trace="myExternalConcepts" />
+      <node id="4375757543141798159" at="35,0,36,0" concept="5" trace="myExtendedModels" />
+      <node id="4375757543141798166" at="36,0,37,0" concept="5" trace="myExtendedModules" />
+      <node id="4375757543141774561" at="42,50,43,34" concept="9" />
+      <node id="4375757543141776023" at="44,79,45,78" concept="9" />
+      <node id="4375757543141758679" at="46,76,47,35" concept="4" />
+      <node id="4375757543141819660" at="47,35,48,59" concept="4" />
+      <node id="2512598151680918001" at="51,81,52,172" concept="9" />
+      <node id="2512598151680927766" at="53,76,54,35" concept="4" />
+      <node id="2512598151680927771" at="54,35,55,59" concept="4" />
+      <node id="2803656273045780806" at="58,113,59,79" concept="9" />
+      <node id="2803656273045791460" at="60,76,61,35" concept="4" />
+      <node id="2803656273045791465" at="61,35,62,59" concept="4" />
+      <node id="4375757543141810316" at="65,40,66,44" concept="4" />
+      <node id="4375757543141736610" at="67,5,68,16" concept="10" />
+      <node id="4375757543141805824" at="71,51,72,57" concept="10" />
+      <node id="4375757543141805833" at="75,46,76,58" concept="10" />
+      <node id="4375757543141744293" at="79,43,80,59" concept="10" />
+      <node id="4375757543141667420" at="84,0,85,0" concept="13" trace="conceptDeclaration$HJmJ" />
+      <node id="4375757543141667420" at="85,0,86,0" concept="13" trace="conceptDeclaration$q9iq" />
+      <node id="4375757543141667420" at="89,0,90,0" concept="13" trace="AbstractComponent$YR" />
+      <node id="4375757543141667420" at="90,0,91,0" concept="13" trace="IMenuReference$GI" />
+      <node id="4375757543141667420" at="91,0,92,0" concept="13" trace="CompletionCustomizationContextSpecificator_Concept$tH" />
+      <node id="4375757543141702344" at="39,0,41,0" concept="2" trace="EditorDeclarationScanner#()V" />
+      <node id="4375757543141810314" at="64,5,67,5" concept="6" />
+      <node id="4375757543141805819" at="71,0,74,0" concept="8" trace="getExternalStructureModels#()Ljava/util/Set;" />
+      <node id="4375757543141805828" at="75,0,78,0" concept="8" trace="getDependencyModules#()Ljava/util/Set;" />
+      <node id="4375757543141744291" at="79,0,82,0" concept="8" trace="getExternalConcepts#()Ljava/util/Set;" />
+      <node id="4375757543141779971" at="45,78,49,7" concept="7" />
+      <node id="2512598151680918207" at="52,172,56,7" concept="7" />
+      <node id="2803656273045791458" at="59,79,63,7" concept="7" />
+      <node id="4375757543141718726" at="43,34,50,5" concept="6" />
+      <node id="2512598151680871151" at="50,5,57,5" concept="6" />
+      <node id="2803656273045705016" at="57,5,64,5" concept="6" />
+      <node id="4375757543141707871" at="42,0,70,0" concept="8" trace="scan#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/smodel/EditorDeclarationScanner;" />
+      <scope id="4375757543141702349" at="39,37,39,37" />
+      <scope id="4375757543141810315" at="65,40,66,44" />
+      <scope id="4375757543141805823" at="71,51,72,57" />
+      <scope id="4375757543141805832" at="75,46,76,58" />
+      <scope id="4375757543141744292" at="79,43,80,59" />
+      <scope id="4375757543141702344" at="39,0,41,0" />
+      <scope id="4375757543141779973" at="46,76,48,59" />
+      <scope id="2512598151680918209" at="53,76,55,59" />
+      <scope id="2803656273045791459" at="60,76,62,59" />
+      <scope id="4375757543141810314" at="64,5,67,5">
         <var name="em" id="4375757543141810324" />
       </scope>
-      <scope id="4375757543141805819" at="59,0,62,0" />
-      <scope id="4375757543141805828" at="63,0,66,0" />
-      <scope id="4375757543141744291" at="67,0,70,0" />
-      <scope id="4375757543141718729" at="39,79,44,7">
+      <scope id="4375757543141805819" at="71,0,74,0" />
+      <scope id="4375757543141805828" at="75,0,78,0" />
+      <scope id="4375757543141744291" at="79,0,82,0" />
+      <scope id="4375757543141718729" at="44,79,49,7">
         <var name="cd" id="4375757543141776024" />
       </scope>
-      <scope id="2512598151680871154" at="46,81,51,7">
+      <scope id="2512598151680871154" at="51,81,56,7">
         <var name="cd" id="2512598151680918002" />
       </scope>
-      <scope id="4375757543141718726" at="38,34,45,5">
+      <scope id="2803656273045705018" at="58,113,63,7">
+        <var name="cd" id="2803656273045780807" />
+      </scope>
+      <scope id="4375757543141718726" at="43,34,50,5">
         <var name="ac" id="4375757543141718730" />
       </scope>
-      <scope id="2512598151680871151" at="45,5,52,5">
+      <scope id="2512598151680871151" at="50,5,57,5">
         <var name="menuRef" id="2512598151680871155" />
       </scope>
-      <scope id="4375757543141707874" at="37,50,56,16">
+      <scope id="2803656273045705016" at="57,5,64,5">
+        <var name="mcc" id="2803656273045705019" />
+      </scope>
+      <scope id="4375757543141707874" at="42,50,68,16">
         <var name="owner" id="4375757543141774562" />
       </scope>
-      <scope id="4375757543141707871" at="37,0,58,0">
+      <scope id="4375757543141707871" at="42,0,70,0">
         <var name="m" id="4375757543141707899" />
       </scope>
-      <unit id="4375757543141667420" at="71,0,74,0" name="jetbrains.mps.smodel.EditorDeclarationScanner$LINKS" />
-      <unit id="4375757543141667420" at="75,0,79,0" name="jetbrains.mps.smodel.EditorDeclarationScanner$CONCEPTS" />
-      <unit id="4375757543141667420" at="27,0,80,0" name="jetbrains.mps.smodel.EditorDeclarationScanner" />
+      <unit id="4375757543141667420" at="83,0,87,0" name="jetbrains.mps.smodel.EditorDeclarationScanner$LINKS" />
+      <unit id="4375757543141667420" at="88,0,93,0" name="jetbrains.mps.smodel.EditorDeclarationScanner$CONCEPTS" />
+      <unit id="4375757543141667420" at="32,0,94,0" name="jetbrains.mps.smodel.EditorDeclarationScanner" />
     </file>
   </root>
   <root nodeRef="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)/5073169472575923460">

@@ -23,6 +23,11 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
  * Scan an editor aspect model to find cross-model dependencies.
  * Similar to {@link jetbrains.mps.smodel.ConceptDeclarationScanner }, tailored to figure out necessary 
  * extends dependency between languages due to editor aspect dependencies
+ * 
+ * NOTE, 'extends' dependency is a design-time dependency, not necessarily manifested as 'extends' for 
+ * language runtime. Here we collect references to other structure models and their languages, implying 
+ * use of a concept from a foreign language is sort of "extension". Discovered dependencies shall not get 
+ * translated directly into 'extends' between languages, rather as a notion of a general extension contribution.
  */
 @GeneratedClass(node = "r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)/4375757543141667420", model = "r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)")
 public class EditorDeclarationScanner {
@@ -50,6 +55,13 @@ public class EditorDeclarationScanner {
         myExtendedModels.add(SNodeOperations.getModel(cd));
       }
     }
+    for (SNode mcc : SModelOperations.nodes(m, CONCEPTS.CompletionCustomizationContextSpecificator_Concept$tH)) {
+      SNode cd = SLinkOperations.getTarget(mcc, LINKS.conceptDeclaration$q9iq);
+      if (cd != null && SNodeOperations.getModel(cd).getModule() != owner) {
+        myExternalConcepts.add(cd);
+        myExtendedModels.add(SNodeOperations.getModel(cd));
+      }
+    }
     for (SModel em : myExtendedModels) {
       myExtendedModules.add(em.getModule());
     }
@@ -70,10 +82,12 @@ public class EditorDeclarationScanner {
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink conceptDeclaration$HJmJ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$q9iq = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02faL, 0x7e806541c93930a5L, "conceptDeclaration");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AbstractComponent$YR = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent");
     /*package*/ static final SInterfaceConcept IMenuReference$GI = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41b3L, "jetbrains.mps.lang.editor.structure.IMenuReference");
+    /*package*/ static final SConcept CompletionCustomizationContextSpecificator_Concept$tH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02faL, "jetbrains.mps.lang.editor.structure.CompletionCustomizationContextSpecificator_Concept");
   }
 }
