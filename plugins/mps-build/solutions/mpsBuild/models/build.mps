@@ -38807,8 +38807,11 @@
             </node>
             <node concept="3_J27D" id="6_DCGR5tCwn" role="Nbhlr">
               <node concept="3Mxwew" id="6_DCGR5tCwG" role="3MwsjC">
-                <property role="3MwjfP" value="text" />
+                <property role="3MwjfP" value="doctext" />
               </node>
+            </node>
+            <node concept="L2wRC" id="1HBfXdlWaJl" role="39821P">
+              <ref role="L2wRA" node="6_DCGR5trr0" resolve="jetbrains.mps.lang.descriptor.doc.aspects" />
             </node>
           </node>
           <node concept="398223" id="ymnOULBdbY" role="39821P">
