@@ -462,6 +462,9 @@
         <reference id="2644386474301421078" name="conceptDeclaration" index="359W_E" />
         <reference id="2644386474301421079" name="linkDeclaration" index="359W_F" />
       </concept>
+      <concept id="3609773094169249792" name="jetbrains.mps.lang.smodel.structure.Node_GetReferenceOperation" flags="nn" index="37Cfm0">
+        <child id="3609773094169252180" name="linkQualifier" index="37CeNk" />
+      </concept>
       <concept id="5168775467716640652" name="jetbrains.mps.lang.smodel.structure.OperationParm_LinkQualifier" flags="ng" index="1aIX9F">
         <child id="5168775467716640653" name="linkQualifier" index="1aIX9E" />
       </concept>
@@ -11461,21 +11464,19 @@
           <node concept="3cpWsn" id="4UZLrJIeCZh" role="3cpWs9">
             <property role="TrG5h" value="ref" />
             <node concept="2z4iKi" id="4UZLrJIeEf5" role="1tU5fm" />
-            <node concept="10QFUN" id="4UZLrJIeEMA" role="33vP2m">
-              <node concept="2OqwBi" id="4UZLrJIeCZi" role="10QFUP">
-                <node concept="2JrnkZ" id="4UZLrJIeCZj" role="2Oq$k0">
-                  <node concept="37vLTw" id="4UZLrJIeCZk" role="2JrQYb">
-                    <ref role="3cqZAo" node="4UZLrJIeraa" resolve="sourceNode" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="4UZLrJIeCZl" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SNode.getReference(org.jetbrains.mps.openapi.language.SReferenceLink)" resolve="getReference" />
-                  <node concept="37vLTw" id="4UZLrJIeCZm" role="37wK5m">
-                    <ref role="3cqZAo" node="4UZLrJIerfr" resolve="refLink" />
+            <node concept="2OqwBi" id="3TdPJoXDew_" role="33vP2m">
+              <node concept="37vLTw" id="3TdPJoXDdV2" role="2Oq$k0">
+                <ref role="3cqZAo" node="4UZLrJIeraa" resolve="sourceNode" />
+              </node>
+              <node concept="37Cfm0" id="3TdPJoXDg$u" role="2OqNvi">
+                <node concept="1aIX9F" id="3TdPJoXDg$w" role="37CeNk">
+                  <node concept="25Kdxt" id="3TdPJoXDgPC" role="1aIX9E">
+                    <node concept="37vLTw" id="3TdPJoXDhEP" role="25KhWn">
+                      <ref role="3cqZAo" node="4UZLrJIerfr" resolve="refLink" />
+                    </node>
                   </node>
                 </node>
               </node>
-              <node concept="2z4iKi" id="4UZLrJIeEMB" role="10QFUM" />
             </node>
           </node>
         </node>

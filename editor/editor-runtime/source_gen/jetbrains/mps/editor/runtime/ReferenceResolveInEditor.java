@@ -10,9 +10,9 @@ import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
@@ -56,7 +56,7 @@ public class ReferenceResolveInEditor {
 
   private static String resolveInfo(SNode sourceNode, SReferenceLink refLink) {
     // based on ReferenceResolverUtil.getResolveInfo() code.
-    SReference ref = (SReference) sourceNode.getReference(refLink);
+    SReference ref = SNodeOperations.getReference(sourceNode, refLink);
     String ri = SLinkOperations.getResolveInfo(ref);
     if (ri != null) {
       return ri;
