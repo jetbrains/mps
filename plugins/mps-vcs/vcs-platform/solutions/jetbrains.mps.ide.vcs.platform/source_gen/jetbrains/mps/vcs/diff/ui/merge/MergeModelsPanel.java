@@ -310,6 +310,7 @@ public class MergeModelsPanel extends JPanel {
         DefaultActionGroup actionGroup = new DefaultActionGroup();
         actionGroup.addAll(myMergeRootsPane.getActions());
         ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, actionGroup, true);
+        toolbar.setTargetComponent(myMergeRootsPane.getPanel());
         myMergeRootsPane.registerShortcuts(MergeModelsPanel.this);
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(toolbar.getComponent(), BorderLayout.NORTH);

@@ -9504,6 +9504,24 @@
                           </node>
                         </node>
                       </node>
+                      <node concept="3clFbF" id="43vcy4zHzFM" role="3cqZAp">
+                        <node concept="2OqwBi" id="43vcy4zHDco" role="3clFbG">
+                          <node concept="37vLTw" id="43vcy4zHzFK" role="2Oq$k0">
+                            <ref role="3cqZAo" node="1KUoCipv$SD" resolve="toolbar" />
+                          </node>
+                          <node concept="liA8E" id="43vcy4zHOLn" role="2OqNvi">
+                            <ref role="37wK5l" to="qkt:~ActionToolbar.setTargetComponent(javax.swing.JComponent)" resolve="setTargetComponent" />
+                            <node concept="2OqwBi" id="43vcy4zL4Hf" role="37wK5m">
+                              <node concept="liA8E" id="43vcy4zL4Hg" role="2OqNvi">
+                                <ref role="37wK5l" node="3SMO48FPvtW" resolve="getPanel" />
+                              </node>
+                              <node concept="37vLTw" id="43vcy4zL4Hh" role="2Oq$k0">
+                                <ref role="3cqZAo" node="2jv$fqwJhl5" resolve="myMergeRootsPane" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                       <node concept="3clFbF" id="1KUoCipv$SL" role="3cqZAp">
                         <node concept="2OqwBi" id="1KUoCipv$SM" role="3clFbG">
                           <node concept="37vLTw" id="1KUoCipv$SN" role="2Oq$k0">
