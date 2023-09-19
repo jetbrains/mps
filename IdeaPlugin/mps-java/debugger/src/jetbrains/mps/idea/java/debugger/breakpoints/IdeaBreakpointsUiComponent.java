@@ -29,6 +29,7 @@ import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiMethod;
 import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.xdebugger.XDebuggerManager;
 import com.intellij.xdebugger.XDebuggerUtil;
 import com.intellij.xdebugger.breakpoints.XBreakpoint;
@@ -54,7 +55,7 @@ import java.util.Set;
 
 public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpoint, BreakpointWithHighlighter> implements ProjectComponent {
   private DebuggerManagerEx myDebuggerManager;
-  private final XBreakpointListener myBreakpointListener = new MyBreakpointListener();
+  private MessageBusConnection myMessageBusConnection;
 
   public IdeaBreakpointsUiComponent(Project project) {
     super(project);
@@ -72,13 +73,13 @@ public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpo
   public void initComponent() {
     super.init();
     myDebuggerManager = DebuggerManagerEx.getInstanceEx(myProject);
-    XDebuggerManager.getInstance(myProject).getBreakpointManager().addBreakpointListener(myBreakpointListener);
-  }
+    myMessageBusConnection = myProject.getMessageBus().connect();
+    myMessageBusConnection.subscribe(XBreakpointListener.TOPIC, new MyBreakpointListener());  }
 
   @Override
   public void disposeComponent() {
     super.dispose();
-    XDebuggerManager.getInstance(myProject).getBreakpointManager().removeBreakpointListener(myBreakpointListener);
+    myMessageBusConnection.disconnect();
     myDebuggerManager = null;
   }
 
