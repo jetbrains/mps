@@ -18,12 +18,10 @@
       <root url="jar://$PROJECT_DIR$/lib/mps-boot-util.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mps-behavior-runtime.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mps-references.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/mps-messaging.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mps-tuples.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mps-closures.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mps-textgen.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mps-constraints-runtime.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/mps-logging.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mps-collections.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mps-messages-for-rules.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mps-context.jar!/" />

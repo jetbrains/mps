@@ -25,8 +25,8 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 public class EmptyJavaStubsFindUsages implements FindUsagesParticipant, Disposable {
   private PersistenceRegistry myRegistry;
 
-  public EmptyJavaStubsFindUsages(MPSCoreComponents mpsCore) {
-    myRegistry = mpsCore.getPlatform().findComponent(PersistenceRegistry.class);
+  public EmptyJavaStubsFindUsages() {
+    myRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(PersistenceRegistry.class);
     myRegistry.addFindUsagesParticipant(this);
   }
 

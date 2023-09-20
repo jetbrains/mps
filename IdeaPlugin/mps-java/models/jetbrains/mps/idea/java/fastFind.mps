@@ -1125,8 +1125,9 @@
           <node concept="37vLTI" id="2ZTHkJGLX98" role="3clFbG">
             <node concept="2OqwBi" id="2ZTHkJGLXXI" role="37vLTx">
               <node concept="2OqwBi" id="2ZTHkJGLXxx" role="2Oq$k0">
-                <node concept="37vLTw" id="2ZTHkJGLXor" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2ZTHkJGLSBb" resolve="mpsCore" />
+                <node concept="2YIFZM" id="2ZTHkJGLXor" role="2Oq$k0">
+                  <ref role="37wK5l" to="3a50:~MPSCoreComponents.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
                 </node>
                 <node concept="liA8E" id="2ZTHkJGLXL9" role="2OqNvi">
                   <ref role="37wK5l" to="3a50:~MPSCoreComponents.getPlatform()" resolve="getPlatform" />
@@ -1154,12 +1155,6 @@
               <node concept="Xjq3P" id="77V35QMLt8k" role="37wK5m" />
             </node>
           </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="2ZTHkJGLSBb" role="3clF46">
-        <property role="TrG5h" value="mpsCore" />
-        <node concept="3uibUv" id="2ZTHkJGLSBa" role="1tU5fm">
-          <ref role="3uigEE" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
         </node>
       </node>
     </node>
