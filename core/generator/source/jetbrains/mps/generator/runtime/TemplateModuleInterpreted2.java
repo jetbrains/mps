@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,12 +63,13 @@ public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
   public Collection<TemplateModel> getModels() {
     // XXX copied from TemplateModuleInterpreted#getModels()
     // FIXME need to deal with scenario when template models change (distinct from scenario when set of models change, which is important, too)
-    if (modelsUpToDate()) {
-      return Collections.unmodifiableCollection(myModels);
+    Collection<TemplateModel> actualTM = modelsUpToDate();
+    if (actualTM != null) {
+      return actualTM;
     }
     synchronized (this) {
-      if (modelsUpToDate()) {
-        return Collections.unmodifiableCollection(myModels);
+      if ((actualTM = modelsUpToDate()) != null) {
+        return actualTM;
       }
       TemplateModels tm = new TemplateModels();
       fillTemplateModels(tm);
@@ -76,7 +77,7 @@ public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
         myModelWatchDog.watchIsEnded();
       }
       myModelWatchDog = new WatchModelChanges();
-      myModels = new ArrayList<>(tm.myModels.size());
+      ArrayList<TemplateModelInterpreted> newModels = new ArrayList<>(tm.myModels.size());
       for (Entry<SModelId, Class<? extends GeneratorQueryProvider>> e : tm.myModels.entrySet()) {
         SModel templateModel = myGenerator.getModel(e.getKey());
         if (templateModel == null) {
@@ -89,29 +90,30 @@ public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
         // XXX need to account for the fact TMI cons reads templateModel and therefore might trigger modelLoaded event.
         //     perhaps, shall construct TMI first, then watch().
         myModelWatchDog.watch(templateModel);
-        myModels.add(new TemplateModelInterpreted(this, templateModel, e.getValue()));
+        newModels.add(new TemplateModelInterpreted(this, templateModel, e.getValue()));
       }
+      myModels = newModels;
+      return Collections.unmodifiableCollection(myModels);
     }
-    return Collections.unmodifiableCollection(myModels);
   }
 
-  private boolean modelsUpToDate() {
+  private Collection<TemplateModel> modelsUpToDate() {
     if (myModels == null) {
-      return false;
+      return null;
     }
     if (myModelWatchDog != null && myModelWatchDog.alarmed()) {
-      return false;
+      return null;
     }
     synchronized (this) {
       for (TemplateModelInterpreted tm : myModels) {
         if (tm.isStale()) {
           myModels = null;
-          // watchdog model listener would get cleaned once modelsUpToDate returns false
-          return false;
+          // watchdog model listener would get cleaned once modelsUpToDate returns null
+          return null;
         }
       }
+      return Collections.unmodifiableCollection(myModels);
     }
-    return true;
   }
 
   /**
