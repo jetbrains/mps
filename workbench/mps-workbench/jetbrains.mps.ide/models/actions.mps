@@ -46740,12 +46740,6 @@
     <property role="1rBW0U" value="true" />
     <node concept="2XrIbr" id="6upYUvM06xg" role="32lrUH">
       <property role="TrG5h" value="findTargetNode" />
-      <node concept="37vLTG" id="457m5gV3J_g" role="3clF46">
-        <property role="TrG5h" value="repository" />
-        <node concept="3uibUv" id="457m5gV3KkZ" role="1tU5fm">
-          <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
-        </node>
-      </node>
       <node concept="3uibUv" id="6upYUvM0oMK" role="3clF45">
         <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
       </node>
@@ -46946,7 +46940,7 @@
                               </node>
                             </node>
                           </node>
-                          <node concept="3clFbH" id="457m5gV3utZ" role="3cqZAp" />
+                          <node concept="3zACq4" id="4qqpAQ40zQe" role="3cqZAp" />
                         </node>
                         <node concept="3y3z36" id="24YgvK2eoFa" role="3clFbw">
                           <node concept="10Nm6u" id="24YgvK2ep2b" role="3uHU7w" />
@@ -47024,68 +47018,20 @@
         </node>
         <node concept="3clFbH" id="1PX7$RoJjCl" role="3cqZAp" />
         <node concept="3clFbJ" id="1PX7$RoJiXI" role="3cqZAp">
-          <node concept="3clFbS" id="1PX7$RoJiXK" role="3clFbx">
-            <node concept="3cpWs6" id="1PX7$RoJsGd" role="3cqZAp">
-              <node concept="2OqwBi" id="457m5gV3$nE" role="3cqZAk">
-                <node concept="37vLTw" id="457m5gV3zR6" role="2Oq$k0">
+          <node concept="3clFbS" id="1PX7$RoJvy1" role="3clFbx">
+            <node concept="3cpWs6" id="1PX7$RoJAFr" role="3cqZAp">
+              <node concept="2YIFZM" id="1PX7$RoJCzY" role="3cqZAk">
+                <ref role="37wK5l" to="i8bi:1pwnB5DiIwY" resolve="getTarget" />
+                <ref role="1Pybhc" to="i8bi:5IkW5anFcpd" resolve="SLinkOperations" />
+                <node concept="37vLTw" id="457m5gV3_se" role="37wK5m">
                   <ref role="3cqZAo" node="457m5gV3mhY" resolve="contextNode" />
                 </node>
-                <node concept="liA8E" id="457m5gV3_5H" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SNode.getParent()" resolve="getParent" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbH" id="457m5gV3DOa" role="3cqZAp" />
-          </node>
-          <node concept="1Wc70l" id="1PX7$RoJo2c" role="3clFbw">
-            <node concept="2OqwBi" id="1PX7$RoJr$s" role="3uHU7w">
-              <node concept="2OqwBi" id="1PX7$RoJq8v" role="2Oq$k0">
-                <node concept="2WthIp" id="1PX7$RoJokm" role="2Oq$k0" />
-                <node concept="1DTwFV" id="1PX7$RoJrey" role="2OqNvi">
-                  <ref role="2WH_rO" node="2hI9OxsGUDV" resolve="cell" />
-                </node>
-              </node>
-              <node concept="liA8E" id="1PX7$RoJs0E" role="2OqNvi">
-                <ref role="37wK5l" to="f4zo:~EditorCell.isBig()" resolve="isBig" />
-              </node>
-            </node>
-            <node concept="1Wc70l" id="1PX7$RoJm4e" role="3uHU7B">
-              <node concept="3clFbC" id="1PX7$RoJn3u" role="3uHU7B">
-                <node concept="10Nm6u" id="1PX7$RoJnsQ" role="3uHU7w" />
-                <node concept="37vLTw" id="1PX7$RoJmlL" role="3uHU7B">
-                  <ref role="3cqZAo" node="24YgvK2ehup" resolve="property" />
-                </node>
-              </node>
-              <node concept="3clFbC" id="1PX7$RoJltY" role="3uHU7w">
-                <node concept="37vLTw" id="1PX7$RoJjZi" role="3uHU7B">
+                <node concept="37vLTw" id="1PX7$RoJE1X" role="37wK5m">
                   <ref role="3cqZAo" node="24YgvK2dZj_" resolve="referenceLink" />
                 </node>
-                <node concept="10Nm6u" id="1PX7$RoJlvl" role="3uHU7w" />
               </node>
             </node>
-          </node>
-          <node concept="3eNFk2" id="1PX7$RoJvxZ" role="3eNLev">
-            <node concept="3y3z36" id="1PX7$RoJxa2" role="3eO9$A">
-              <node concept="10Nm6u" id="1PX7$RoJxAi" role="3uHU7w" />
-              <node concept="37vLTw" id="1PX7$RoJwb5" role="3uHU7B">
-                <ref role="3cqZAo" node="24YgvK2dZj_" resolve="referenceLink" />
-              </node>
-            </node>
-            <node concept="3clFbS" id="1PX7$RoJvy1" role="3eOfB_">
-              <node concept="3cpWs6" id="1PX7$RoJAFr" role="3cqZAp">
-                <node concept="2YIFZM" id="1PX7$RoJCzY" role="3cqZAk">
-                  <ref role="37wK5l" to="i8bi:1pwnB5DiIwY" resolve="getTarget" />
-                  <ref role="1Pybhc" to="i8bi:5IkW5anFcpd" resolve="SLinkOperations" />
-                  <node concept="37vLTw" id="457m5gV3_se" role="37wK5m">
-                    <ref role="3cqZAo" node="457m5gV3mhY" resolve="contextNode" />
-                  </node>
-                  <node concept="37vLTw" id="1PX7$RoJE1X" role="37wK5m">
-                    <ref role="3cqZAo" node="24YgvK2dZj_" resolve="referenceLink" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbH" id="457m5gV3E5X" role="3cqZAp" />
-            </node>
+            <node concept="3clFbH" id="457m5gV3E5X" role="3cqZAp" />
           </node>
           <node concept="3eNFk2" id="457m5gV2rUJ" role="3eNLev">
             <node concept="3y3z36" id="457m5gV38wu" role="3eO9$A">
@@ -47125,6 +47071,12 @@
               </node>
             </node>
           </node>
+          <node concept="3y3z36" id="1PX7$RoJxa2" role="3clFbw">
+            <node concept="10Nm6u" id="1PX7$RoJxAi" role="3uHU7w" />
+            <node concept="37vLTw" id="1PX7$RoJwb5" role="3uHU7B">
+              <ref role="3cqZAo" node="24YgvK2dZj_" resolve="referenceLink" />
+            </node>
+          </node>
         </node>
       </node>
       <node concept="3Tm6S6" id="6upYUvM06xj" role="1B3o_S" />
@@ -47133,6 +47085,12 @@
           <node concept="1dT_AC" id="457m5gV3KoS" role="1dT_Ay">
             <property role="1dT_AB" value="Must be called in read action" />
           </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="457m5gV3J_g" role="3clF46">
+        <property role="TrG5h" value="repository" />
+        <node concept="3uibUv" id="457m5gV3KkZ" role="1tU5fm">
+          <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
         </node>
       </node>
     </node>

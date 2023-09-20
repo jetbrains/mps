@@ -123,7 +123,7 @@ public class ShowQuickDocumentation_Action extends BaseAction {
           }
           if (cellContext.getNodeLocation() != null) {
             contextNode = cellContext.getNodeLocation().getContextNode();
-
+            break;
           }
         }
       }
@@ -134,10 +134,7 @@ public class ShowQuickDocumentation_Action extends BaseAction {
       currentCell = currentCell.getParent();
     } while (currentCell != null);
 
-    if (property == null && referenceLink == null && event.getData(MPSEditorDataKeys.EDITOR_CELL).isBig()) {
-      return contextNode.getParent();
-
-    } else if (referenceLink != null) {
+    if (referenceLink != null) {
       return SLinkOperations.getTarget(contextNode, referenceLink);
 
     } else if (property != null) {
