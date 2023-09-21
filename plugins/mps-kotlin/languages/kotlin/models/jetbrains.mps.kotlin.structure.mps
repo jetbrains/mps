@@ -1082,10 +1082,7 @@
       <ref role="PrY4T" node="6TRHYuCB$BU" resolve="IAnnotated" />
     </node>
     <node concept="PrWs8" id="2yYXHtlqdf0" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtlqd9D" resolve="ITypeConstrained" />
-    </node>
-    <node concept="PrWs8" id="2yYXHtlq_lr" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtlq$RP" resolve="ITypeParameters" />
+      <ref role="PrY4T" node="2yYXHtlqd9D" resolve="ITypeConstrainedParameters" />
     </node>
     <node concept="PrWs8" id="2yYXHtl$9Ak" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl$9A0" resolve="IFunctionParameters" />
@@ -1375,7 +1372,7 @@
       <ref role="20lvS9" node="2yYXHtl6Jj_" resolve="PropertySetter" />
     </node>
     <node concept="PrWs8" id="1A1RTX6k2JZ" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtlq$RP" resolve="ITypeParameters" />
+      <ref role="PrY4T" node="2yYXHtlqd9D" resolve="ITypeConstrainedParameters" />
     </node>
     <node concept="PrWs8" id="2mD64u3niJD" role="PzmwI">
       <ref role="PrY4T" node="7Iv8Cw7qLdE" resolve="ITypecheckingRoot" />
@@ -2280,9 +2277,6 @@
     <node concept="PrWs8" id="4gvOB2uWeeV" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
     </node>
-    <node concept="PrWs8" id="2yYXHtlqdbd" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtlqd9D" resolve="ITypeConstrained" />
-    </node>
     <node concept="PrWs8" id="1502VugFFAK" role="PzmwI">
       <ref role="PrY4T" node="1502Vugzdy7" resolve="IReturnType" />
     </node>
@@ -2429,10 +2423,7 @@
       <ref role="PrY4T" node="2yYXHtl6JcK" resolve="IIdentifier" />
     </node>
     <node concept="PrWs8" id="2yYXHtlqdgk" role="PrDN$">
-      <ref role="PrY4T" node="2yYXHtlqd9D" resolve="ITypeConstrained" />
-    </node>
-    <node concept="PrWs8" id="2yYXHtlq_o0" role="PrDN$">
-      <ref role="PrY4T" node="2yYXHtlq$RP" resolve="ITypeParameters" />
+      <ref role="PrY4T" node="2yYXHtlqd9D" resolve="ITypeConstrainedParameters" />
     </node>
     <node concept="PrWs8" id="5dNsAxXOVNt" role="PrDN$">
       <ref role="PrY4T" node="5dNsAxXOVNq" resolve="IInheritable" />
@@ -2509,13 +2500,16 @@
   <node concept="PlHQZ" id="2yYXHtlqd9D">
     <property role="EcuMT" value="2936055411803476585" />
     <property role="3GE5qa" value="type.constraints" />
-    <property role="TrG5h" value="ITypeConstrained" />
+    <property role="TrG5h" value="ITypeConstrainedParameters" />
     <node concept="1TJgyj" id="2yYXHtlqd9E" role="1TKVEi">
       <property role="IQ2ns" value="2936055411803476586" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="constraints" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="2yYXHtl6Jks" resolve="TypeConstraint" />
+    </node>
+    <node concept="PrWs8" id="4Cl0D9hqhjO" role="PrDN$">
+      <ref role="PrY4T" node="2yYXHtlq$RP" resolve="ITypeParameters" />
     </node>
   </node>
   <node concept="PlHQZ" id="2yYXHtlq$RP">
@@ -3015,9 +3009,6 @@
       <property role="20kJfa" value="assignment" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6JdA" resolve="IPropertyAssignment" />
-    </node>
-    <node concept="PrWs8" id="2yYXHtlqddj" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtlqd9D" resolve="ITypeConstrained" />
     </node>
     <node concept="PrWs8" id="Cy8Bus9xWr" role="PzmwI">
       <ref role="PrY4T" node="Cy8Bus9qe6" resolve="IVariableConstraintHolder" />

@@ -4738,24 +4738,6 @@
       <node concept="PMmxH" id="1502VugFFOr" role="3EZMnx">
         <ref role="PMmxG" node="1502Vugzdyh" resolve="ReturnType_Component" />
       </node>
-      <node concept="PMmxH" id="2yYXHtlqdbU" role="3EZMnx">
-        <ref role="PMmxG" node="2yYXHtlqd9N" resolve="TypeConstraints_Component" />
-        <node concept="pkWqt" id="1ACpgrx4WXY" role="pqm2j">
-          <node concept="3clFbS" id="1ACpgrx4WXZ" role="2VODD2">
-            <node concept="3clFbF" id="4S7WpD0In4m" role="3cqZAp">
-              <node concept="2OqwBi" id="4S7WpD0Ipp9" role="3clFbG">
-                <node concept="2OqwBi" id="4S7WpD0IngR" role="2Oq$k0">
-                  <node concept="pncrf" id="4S7WpD0In4l" role="2Oq$k0" />
-                  <node concept="3Tsc0h" id="4S7WpD0Intn" role="2OqNvi">
-                    <ref role="3TtcxE" to="hcm8:2yYXHtlqd9E" resolve="constraints" />
-                  </node>
-                </node>
-                <node concept="3GX2aA" id="4S7WpD0IrHE" role="2OqNvi" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="PMmxH" id="1yTI8p9salV" role="3EZMnx">
         <ref role="PMmxG" node="1yTI8p9rUq8" resolve="FunctionBodyEditor" />
       </node>
@@ -5094,7 +5076,7 @@
   <node concept="PKFIW" id="2yYXHtlqd9N">
     <property role="3GE5qa" value="type.constraints" />
     <property role="TrG5h" value="TypeConstraints_Component" />
-    <ref role="1XX52x" to="hcm8:2yYXHtlqd9D" resolve="ITypeConstrained" />
+    <ref role="1XX52x" to="hcm8:2yYXHtlqd9D" resolve="ITypeConstrainedParameters" />
     <node concept="3EZMnI" id="2yYXHtlqd9P" role="2wV5jI">
       <node concept="3F0ifn" id="2yYXHtlqd9W" role="3EZMnx">
         <property role="3F0ifm" value="where" />
@@ -20635,7 +20617,7 @@
   </node>
   <node concept="3ICUPy" id="1ACpgrxdlFw">
     <property role="3GE5qa" value="type.constraints" />
-    <ref role="aqKnT" to="hcm8:2yYXHtlqd9D" resolve="ITypeConstrained" />
+    <ref role="aqKnT" to="hcm8:2yYXHtlqd9D" resolve="ITypeConstrainedParameters" />
     <node concept="1Qtc8_" id="1ACpgrxdlJt" role="IW6Ez">
       <node concept="IWgqT" id="1ACpgrxdlLJ" role="1Qtc8A">
         <node concept="1hCUdq" id="1ACpgrxdlLL" role="1hCUd6">
