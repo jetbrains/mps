@@ -209,6 +209,9 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
+        <property id="5858074156537516431" name="text" index="x79VB" />
+      </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
@@ -590,8 +593,23 @@
       <node concept="3Tm1VV" id="3BHOJ8Mbt3j" role="1B3o_S" />
       <node concept="17QB3L" id="3BHOJ8Mbt3k" role="3clF45" />
       <node concept="3clFbS" id="3BHOJ8Mbt3l" role="3clF47">
-        <node concept="3clFbF" id="7_XheqBcnxI" role="3cqZAp">
-          <node concept="3cpWs3" id="7_XheqBcnYS" role="3clFbG">
+        <node concept="3cpWs6" id="5wKFMyp9q_6" role="3cqZAp">
+          <node concept="37vLTw" id="5wKFMyp9qpO" role="3cqZAk">
+            <ref role="3cqZAo" node="1xjvXvOQsso" resolve="signature" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3BHOJ8Mbt3m" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="5wKFMyp9pEe" role="jymVt">
+      <property role="TrG5h" value="getPresentationText" />
+      <node concept="3Tm1VV" id="5wKFMyp9pEg" role="1B3o_S" />
+      <node concept="17QB3L" id="5wKFMyp9pEh" role="3clF45" />
+      <node concept="3clFbS" id="5wKFMyp9pEk" role="3clF47">
+        <node concept="3cpWs6" id="5wKFMyp9qCu" role="3cqZAp">
+          <node concept="3cpWs3" id="7_XheqBcnYS" role="3cqZAk">
             <node concept="Xl_RD" id="7_XheqBcnZd" role="3uHU7B">
               <property role="Xl_RC" value="fun " />
             </node>
@@ -611,8 +629,8 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="3BHOJ8Mbt3m" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      <node concept="2AHcQZ" id="5wKFMyp9pEl" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="4Cl0D9h_zK1" role="jymVt" />
@@ -1893,11 +1911,34 @@
   <node concept="3HP615" id="18X2O0FJocj">
     <property role="TrG5h" value="MemberSignature" />
     <property role="3GE5qa" value="" />
+    <node concept="3clFb_" id="5wKFMyp9p6F" role="jymVt">
+      <property role="TrG5h" value="getPresentationText" />
+      <node concept="3clFbS" id="5wKFMyp9p6I" role="3clF47">
+        <node concept="3clFbF" id="5wKFMyp9qZE" role="3cqZAp">
+          <node concept="1rXfSq" id="5wKFMyp9qZD" role="3clFbG">
+            <ref role="37wK5l" node="3BHOJ8Mbr6x" resolve="getDescriptionText" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5wKFMyp9p6J" role="1B3o_S" />
+      <node concept="17QB3L" id="5wKFMyp9p4m" role="3clF45" />
+      <node concept="P$JXv" id="5wKFMyp9p8T" role="lGtFl">
+        <node concept="x79VA" id="5wKFMyp9p8W" role="3nqlJM">
+          <property role="x79VB" value="text to use for presentation to the user" />
+        </node>
+      </node>
+      <node concept="2JFqV2" id="5wKFMyp9qXk" role="2frcjj" />
+    </node>
     <node concept="3clFb_" id="3BHOJ8Mbr6x" role="jymVt">
       <property role="TrG5h" value="getDescriptionText" />
       <node concept="3clFbS" id="3BHOJ8Mbr6$" role="3clF47" />
       <node concept="3Tm1VV" id="3BHOJ8Mbr6_" role="1B3o_S" />
       <node concept="17QB3L" id="3BHOJ8MbqYe" role="3clF45" />
+      <node concept="P$JXv" id="5wKFMyp9pbM" role="lGtFl">
+        <node concept="x79VA" id="5wKFMyp9pbP" role="3nqlJM">
+          <property role="x79VB" value="text matched in scope" />
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="4Cl0D9hBo$W" role="jymVt" />
     <node concept="3clFb_" id="4Cl0D9h$5yh" role="jymVt">
