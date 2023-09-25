@@ -23,8 +23,12 @@ import com.intellij.ide.DataManager;
 @GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/2183214647889839513", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public class RefactoringFacadeImpl implements RefactoringFacade {
   private static final Logger LOG = Logger.getLogger(RefactoringFacadeImpl.class);
-  public RefactoringFacadeImpl() {
+  private final RefactoringAccessEx myRefactoringAccess;
+
+  public RefactoringFacadeImpl(RefactoringAccessEx ra) {
+    myRefactoringAccess = ra;
   }
+
   public void executeSimple(final RefactoringContext context) {
     ThreadUtils.assertEDT();
     final IRefactoring refactoring = context.getRefactoring();
@@ -132,6 +136,6 @@ public class RefactoringFacadeImpl implements RefactoringFacade {
         });
       }
     };
-    RefactoringAccessEx.getInstance().showRefactoringView(refactoringContext, okAction, null, searchResults, null, refactoringContext.getRefactoring().getUserFriendlyName());
+    myRefactoringAccess.showRefactoringView(refactoringContext, okAction, null, searchResults, null, refactoringContext.getRefactoring().getUserFriendlyName());
   }
 }

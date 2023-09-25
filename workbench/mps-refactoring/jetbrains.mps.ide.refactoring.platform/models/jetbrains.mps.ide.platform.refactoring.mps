@@ -369,11 +369,38 @@
       <ref role="3uigEE" to="y38:3dEPKBAwjZe" resolve="RefactoringFacade" />
     </node>
     <node concept="3Tm1VV" id="1TclyuNTOmE" role="1B3o_S" />
+    <node concept="312cEg" id="2bvLhVQr3Ac" role="jymVt">
+      <property role="TrG5h" value="myRefactoringAccess" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="2bvLhVQr3Ad" role="1B3o_S" />
+      <node concept="3uibUv" id="2bvLhVQr3Af" role="1tU5fm">
+        <ref role="3uigEE" node="1dH5fOG2bOi" resolve="RefactoringAccessEx" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2bvLhVQr6Br" role="jymVt" />
     <node concept="3clFbW" id="1TclyuNTOmF" role="jymVt">
       <node concept="3cqZAl" id="1TclyuNTOmG" role="3clF45" />
       <node concept="3Tm1VV" id="1TclyuNTOmH" role="1B3o_S" />
-      <node concept="3clFbS" id="1TclyuNTOmI" role="3clF47" />
+      <node concept="3clFbS" id="1TclyuNTOmI" role="3clF47">
+        <node concept="3clFbF" id="2bvLhVQr3Ag" role="3cqZAp">
+          <node concept="37vLTI" id="2bvLhVQr3Ai" role="3clFbG">
+            <node concept="37vLTw" id="2bvLhVQr3Al" role="37vLTJ">
+              <ref role="3cqZAo" node="2bvLhVQr3Ac" resolve="myRa" />
+            </node>
+            <node concept="37vLTw" id="2bvLhVQr3Am" role="37vLTx">
+              <ref role="3cqZAo" node="2bvLhVQr3jY" resolve="ra" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="2bvLhVQr3jY" role="3clF46">
+        <property role="TrG5h" value="ra" />
+        <node concept="3uibUv" id="2bvLhVQr3jX" role="1tU5fm">
+          <ref role="3uigEE" node="1dH5fOG2bOi" resolve="RefactoringAccessEx" />
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="2bvLhVQr84m" role="jymVt" />
     <node concept="3clFb_" id="1TclyuNTOmV" role="jymVt">
       <property role="TrG5h" value="executeSimple" />
       <node concept="37vLTG" id="1TclyuNTOmW" role="3clF46">
@@ -1381,9 +1408,8 @@
         </node>
         <node concept="3clFbF" id="3g3N8kb3MoS" role="3cqZAp">
           <node concept="2OqwBi" id="3g3N8kb3Mpg" role="3clFbG">
-            <node concept="2YIFZM" id="3g3N8kb3MoV" role="2Oq$k0">
-              <ref role="37wK5l" node="1dH5fOG2bPt" resolve="getInstance" />
-              <ref role="1Pybhc" node="1dH5fOG2bOi" resolve="RefactoringAccessEx" />
+            <node concept="37vLTw" id="2bvLhVQrdcq" role="2Oq$k0">
+              <ref role="3cqZAo" node="2bvLhVQr3Ac" resolve="myRefactoringAccess" />
             </node>
             <node concept="liA8E" id="3g3N8kb3Mpm" role="2OqNvi">
               <ref role="37wK5l" node="7DGCeT2L_rt" resolve="showRefactoringView" />
@@ -3109,6 +3135,7 @@
                 <node concept="2ShNRf" id="52KjdOfMXjk" role="37vLTx">
                   <node concept="1pGfFk" id="2aA4Ae5on0E" role="2ShVmc">
                     <ref role="37wK5l" node="1TclyuNTOmF" resolve="RefactoringFacadeImpl" />
+                    <node concept="Xjq3P" id="2bvLhVQrhSI" role="37wK5m" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="2BHiRxeuNne" role="37vLTJ">
