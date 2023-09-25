@@ -1654,6 +1654,6 @@
     <orderEntry type="module" module-name="mps-devkit" />
     <orderEntry type="library" name="junit.jupiter.api" level="project" />
     <orderEntry type="library" name="junit.platform.launcher" level="project" />
+    <orderEntry type="module" module-name="mps-refactoring" />
   </component>
 </module>
-
