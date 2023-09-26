@@ -15,6 +15,7 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.actionSystem.impl.ActionButton;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.SideBorder;
@@ -30,8 +31,8 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.JComponent;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -47,8 +48,10 @@ public class MPSDocumentationPopupUI implements Disposable {
   private final JComponent myComponent;
   private boolean myToolbarSelected = true;
   private AbstractPopup myPopup;
+  private final Project myProject;
 
-  public MPSDocumentationPopupUI(MPSDocumentationUI ui) {
+  public MPSDocumentationPopupUI(@NotNull Project project,@NotNull MPSDocumentationUI ui) {
+    myProject = project;
     myUI = ui;
     myEditorPane = myUI.myEditorPane;
     myScrollPane = myUI.myScrollPane;
@@ -70,6 +73,7 @@ public class MPSDocumentationPopupUI implements Disposable {
     toolbar.setSecondaryActionsIcon(AllIcons.Actions.More, true);
     myToolbarComponent = toolbar.getComponent();
     myToolbarComponent.setBorder(IdeBorderFactory.createBorder(UIUtil.getTooltipSeparatorColor(), SideBorder.BOTTOM));
+    myToolbarComponent.setBackground(UIUtil.getToolTipActionBackground());
 
     Presentation presentation = new Presentation();
     presentation.setIcon(AllIcons.Actions.More);
@@ -79,6 +83,7 @@ public class MPSDocumentationPopupUI implements Disposable {
 
     myComponent = new JPanel(new BorderLayout());
     myComponent.add(myToolbarComponent, BorderLayout.NORTH);
+    myComponent.setBackground(UIUtil.getToolTipActionBackground());
     JLayeredPane layeredPane = new JBLayeredPane() {
       @Override
       public void doLayout() {
@@ -142,6 +147,10 @@ public class MPSDocumentationPopupUI implements Disposable {
     }
   }
 
+  public void jointHover(){
+    myComponent.setBorder(IdeBorderFactory.createBorder(UIUtil.getTooltipSeparatorColor(), SideBorder.TOP));
+  }
+
   private class OpenInToolwindowAction extends AnAction {
     OpenInToolwindowAction(String text) {
       super(text);
@@ -149,8 +158,10 @@ public class MPSDocumentationPopupUI implements Disposable {
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-      MPSDocumentationToolWindowManager.getInstance(myPopup.getProject()).showInToolWindow(myUI);
-      myPopup.cancel();
+      MPSDocumentationToolWindowManager.getInstance(myProject).showInToolWindow(myUI);
+      if (myPopup != null) {
+        myPopup.cancel();
+      }
     }
   }
 
