@@ -15,7 +15,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
   /*package*/ final MPSDocumentationScrollPane myScrollPane;
   /*package*/ final MPSDocumentationEditorPane myEditorPane;
 
-  public MPSDocumentationUI(String documentation) {
+  public MPSDocumentationUI(@NotNull String documentation) {
     myScrollPane = new MPSDocumentationScrollPane();
     myEditorPane = new MPSDocumentationEditorPane();
     myScrollPane.setViewportView(myEditorPane);
