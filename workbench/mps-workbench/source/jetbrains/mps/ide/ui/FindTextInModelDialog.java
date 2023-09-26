@@ -114,6 +114,7 @@ import java.awt.KeyboardFocusManager;
 import java.awt.Point;
 import java.awt.Window;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -289,7 +290,6 @@ public final class FindTextInModelDialog extends DialogWrapper {
         return new Dimension(getWidth(), 1 + getRowHeight() * 4);
       }
     };
-    myResultsPreviewTable.setFocusable(false);
     myResultsPreviewTable.getEmptyText().setShowAboveCenter(false);
     myResultsPreviewTable.setShowColumns(false);
     myResultsPreviewTable.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -305,6 +305,17 @@ public final class FindTextInModelDialog extends DialogWrapper {
         return true;
       }
     }.installOn(myResultsPreviewTable);
+
+    // Focus on the table is disabled as we wish to both navigate on the preview table and edit results (we transfer focus)
+    myResultsPreviewTable.setFocusable(false);
+    myResultsPreviewTable.addMouseListener(new MouseAdapter() {
+      @Override
+      public void mousePressed(MouseEvent e) {
+        // In FindPopupPanel transferFocus is called, but they have a fine control over focus which isn't setup here
+        // When adding buttons; this can be changed to "focus text area" instead
+        myResultsPreviewTable.transferFocusBackward();
+      }
+    });
 
     myResultsPreviewTable.getEmptyText().setText("Enter property value to look up");
     JBScrollPane scrollPane = new JBScrollPane(myResultsPreviewTable);
