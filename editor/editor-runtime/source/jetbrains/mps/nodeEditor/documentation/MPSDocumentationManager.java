@@ -27,7 +27,7 @@ public class MPSDocumentationManager {
    * Show a quick documentation
    */
   public void showQuickDocumentation(Frame owner, Project project, Point location, String doc) {
-    MPSDocumentationPopupUI popupUI = new MPSDocumentationPopupUI(new MPSDocumentationUI(doc));
+    MPSDocumentationPopupUI popupUI = new MPSDocumentationPopupUI(project, new MPSDocumentationUI(doc));
     ComponentPopupBuilder builder = JBPopupFactory.getInstance()
                                                   .createComponentPopupBuilder(popupUI.getComponent(), popupUI.getPreferableFocusComponent())
                                                   .setProject(project)
