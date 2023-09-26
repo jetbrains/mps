@@ -34,6 +34,7 @@
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt+dp" />
   <uses module="8e98f4e2-decf-4e97-bf80-9109e8b759ee(jetbrains.mps.lang.constraints.rules.runtime)" kind="dp" />
   <uses module="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="dp" />
+  <uses module="343f8205-dc88-465b-9c5b-ce46b5f1c193(jetbrains.mps.lang.core.doc)" kind="dp" />
   <uses module="18bc6592-03a6-4e29-a83a-7ff23bde13ba(jetbrains.mps.lang.editor)" kind="dp" />
   <uses module="9e98f4e2-decf-4e97-bf80-9109e8b759aa(jetbrains.mps.lang.feedback.context)" kind="dp" />
   <uses module="aaaaf3e2-decf-4e97-bf80-9109eab759ee(jetbrains.mps.lang.feedback.problem.legacy-constraints)" kind="dp" />
