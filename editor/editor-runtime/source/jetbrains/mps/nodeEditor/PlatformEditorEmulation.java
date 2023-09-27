@@ -6,6 +6,7 @@ package jetbrains.mps.nodeEditor;
 import com.intellij.codeInsight.hint.TooltipController;
 import com.intellij.codeInsight.hint.TooltipRenderer;
 import com.intellij.ide.DataManager;
+import com.intellij.ide.IdeEventQueue;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
@@ -67,6 +68,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import java.awt.Insets;
 import java.awt.Point;
+import java.awt.Window;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -86,6 +88,7 @@ final class PlatformEditorEmulation implements Editor {
   private WeakReference<JBPopup> myPopupReference;
   private final Alarm myAlarm;
   private ProgressIndicator myCurrentProgress;
+  private boolean myKeepHintOnMouseMove;
 
   PlatformEditorEmulation(@NotNull EditorComponent editorComponent) {
     myEditorComponent = editorComponent;
@@ -104,6 +107,9 @@ final class PlatformEditorEmulation implements Editor {
   private class MyMouseMotionAdapter extends MouseMotionAdapter {
     @Override
     public void mouseMoved(MouseEvent e) {
+      if (SoftReference.dereference(myPopupReference) != null && myKeepHintOnMouseMove) {
+        return;
+      }
       showInfoToolTip(e);
     }
   }
@@ -697,6 +703,8 @@ final class PlatformEditorEmulation implements Editor {
     }
     closeHint();
 
+    myKeepHintOnMouseMove = false;
+
     ProgressIndicatorBase progress = new ProgressIndicatorBase();
     myCurrentProgress = progress;
     myAlarm.addRequest(() -> ProgressManager.getInstance().executeProcessUnderProgress(() -> {
@@ -719,6 +727,16 @@ final class PlatformEditorEmulation implements Editor {
         Point pointToShow = new Point(event.getX(), yCoordinate);
         RelativePoint showPoint = new RelativePoint(isGutter ? myEditorComponent.getLeftEditorHighlighter() : myEditorComponent, pointToShow);
         hint.show(showPoint);
+
+        Window window = hint.getPopupWindow();
+        if (window != null) {
+          IdeEventQueue.getInstance().addDispatcher(e -> {
+            if (e.getID() == MouseEvent.MOUSE_PRESSED && e.getSource() == window) {
+              myKeepHintOnMouseMove = true;
+            }
+            return false;
+          }, hint);
+        }
 
         myPopupReference = new WeakReference<>(hint);
       }
