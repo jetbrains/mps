@@ -8,21 +8,12 @@ import com.intellij.ui.SimpleColoredComponent;
 import com.intellij.ui.SimpleTextAttributes;
 import com.intellij.util.FontUtil;
 import com.intellij.util.ui.UIUtil;
-import jetbrains.mps.ide.editor.MPSFileNodeEditor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.nodefs.NodeVirtualFileSystem;
-import jetbrains.mps.openapi.editor.Editor;
+import jetbrains.mps.ide.editor.NodeEditor;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
-import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 
-import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
@@ -30,17 +21,15 @@ import static com.intellij.ui.SimpleTextAttributes.STYLE_PLAIN;
 
 /*package*/ class FindTextResultPreview extends JPanel implements Disposable {
   private final MPSProject project;
-  private final SRepository repository;
   private final SimpleColoredComponent myUsagePreviewTitle;
 
   private SNodeReference myNode;
-  private MPSFileNodeEditor nodeEditor;
+  private NodeEditor nodeEditor;
 
   public FindTextResultPreview(MPSProject project) {
     // todo: merge with UIEditorComponent ?
     super(new BorderLayout());
     this.project = project;
-    this.repository = project.getRepository();
 
     myUsagePreviewTitle = new SimpleColoredComponent();
     add(myUsagePreviewTitle, BorderLayout.NORTH);
@@ -48,16 +37,21 @@ import static com.intellij.ui.SimpleTextAttributes.STYLE_PLAIN;
 
 
   public void editNode(@Nullable final SNode node) {
-    MPSFileNodeEditor oldEditor = nodeEditor;
+    NodeEditor oldEditor = nodeEditor;
 
     if (node != null && !node.getReference().equals(this.myNode)) {
       myNode = node.getReference();
       myUsagePreviewTitle.clear();
-      myUsagePreviewTitle.append(node.getName(), SimpleTextAttributes.REGULAR_ATTRIBUTES);
-      myUsagePreviewTitle.append(FontUtil.spaceAndThinSpace() + node.getModel().getName().getLongName(),
+      if (node.getName() != null) {
+        myUsagePreviewTitle.append(node.getName() + FontUtil.spaceAndThinSpace(), SimpleTextAttributes.REGULAR_ATTRIBUTES);
+      }
+      myUsagePreviewTitle.append(node.getModel().getName().getLongName(),
                                  new SimpleTextAttributes(STYLE_PLAIN, UIUtil.getContextHelpForeground()));
 
-      nodeEditor = new MPSFileNodeEditor(project, NodeVirtualFileSystem.getInstance().getFileFor(repository, node));
+
+      // Note: ideally we should pass null for node and use editNode() to change selected node, but the current implementation sticks to a single VF,
+      // even though it supports changing node...
+      nodeEditor = new NodeEditor(project, node);
 
       add(nodeEditor.getComponent(), BorderLayout.CENTER);
       revalidate();
@@ -74,7 +68,7 @@ import static com.intellij.ui.SimpleTextAttributes.STYLE_PLAIN;
 
   public void selectNode(SNode node) {
     if (node == null) return;
-    nodeEditor.getNodeEditor().showNode(node, true);
+    nodeEditor.showNode(node, true);
   }
 
   @Override
