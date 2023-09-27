@@ -123,7 +123,7 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withIDEPlugin() {
-    return addDistributedPlugin("mps-ide", "jetbrains.mps.ide");
+    return addDistributedPlugin("mps-rcp", "jetbrains.mps.rcp").addDistributedPlugin("mps-ide", "jetbrains.mps.ide");
   }
 
   public EnvironmentConfig withMakePlugin() {

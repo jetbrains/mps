@@ -677,6 +677,17 @@
       <zipfileset file="${mps_home}/languages/languageDesign/migration/solutions/actions/jetbrains.mps.lang.migration.actions.msd" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-migration-solutions-actions-models" prefix="module/models" />
     </jar>
+    <mkdir dir="${build.layout}/mps-rcp" />
+    <mkdir dir="${build.layout}/mps-rcp/META-INF" />
+    <copy todir="${build.layout}/mps-rcp/META-INF">
+      <fileset file="${plugin_home}/mps-rcp/META-INF/plugin.xml" />
+    </copy>
+    <mkdir dir="${build.layout}/mps-rcp/lib" />
+    <jar destfile="${build.layout}/mps-rcp/lib/mps-rcp.jar" duplicate="preserve">
+      <zipfileset file="${plugin_home}/mps-rcp/META-INF/plugin.xml" prefix="META-INF" />
+    </jar>
+    <mkdir dir="${build.layout}/mps-rcp/languages" />
+    <mkdir dir="${build.layout}/mps-rcp/languages/mps-rcp" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.refactoring.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.refactoring.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.ide.refactoring.jar/META-INF/module.xml">
@@ -700,7 +711,6 @@
           <module ref="86441d7a-e194-42da-81a5-2161ec62a379(MPS.Workbench)" kind="cl" />
           <module ref="019b622b-0aef-4dd3-86d0-4eef01f3f6bb(jetbrains.mps.ide)" kind="cl" />
           <module ref="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" kind="cl" />
-          <module ref="8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)" kind="cl" />
           <module ref="98b3b6eb-9d60-4e29-9afb-762ac8948292(jetbrains.mps.ide.refactoring.platform)" kind="cl" />
           <module ref="8e98f4e2-decf-4e97-bf80-9109e8b759ee(jetbrains.mps.lang.constraints.rules.runtime)" kind="cl" />
           <module ref="c0080a47-7e37-4558-bee9-9ae18e690549(jetbrains.mps.lang.extension)" kind="cl" />
@@ -733,23 +743,23 @@
         <sources jar="jetbrains.mps.ide.refactoring-src.jar" descriptor="jetbrains.mps.ide.refactoring.msd" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-ide/languages/mps-ide/jetbrains.mps.ide.refactoring.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-rcp/languages/mps-rcp/jetbrains.mps.ide.refactoring.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.ide.refactoring" />
-      <fileset dir="${plugin_home}/mps-ide/modules/ide.refactoring/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${plugin_home}/mps-rcp/modules/ide.refactoring/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.refactoring.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/mps-ide-modules-ide.refactoring-models">
-      <fileset dir="${plugin_home}/mps-ide/modules/ide.refactoring/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/mps-rcp-modules-ide.refactoring-models">
+      <fileset dir="${plugin_home}/mps-rcp/modules/ide.refactoring/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/mps-ide/languages/mps-ide/jetbrains.mps.ide.refactoring-src.jar" duplicate="preserve">
-      <fileset dir="${plugin_home}/mps-ide/modules/ide.refactoring/source_gen">
+    <jar destfile="${build.layout}/mps-rcp/languages/mps-rcp/jetbrains.mps.ide.refactoring-src.jar" duplicate="preserve">
+      <fileset dir="${plugin_home}/mps-rcp/modules/ide.refactoring/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${plugin_home}/mps-ide/modules/ide.refactoring/jetbrains.mps.ide.refactoring.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/mps-ide-modules-ide.refactoring-models" prefix="module/models" />
+      <zipfileset file="${plugin_home}/mps-rcp/modules/ide.refactoring/jetbrains.mps.ide.refactoring.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/mps-rcp-modules-ide.refactoring-models" prefix="module/models" />
     </jar>
     <echo file="${build.layout}/build.properties">mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
@@ -915,7 +925,7 @@
         <module file="${plugin_home}/mps-ide/modules/bl.lightweightdsl/jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.msd" />
         <module file="${plugin_home}/mps-modelchecker/solution/jetbrains.mps.ide.modelchecker.msd" />
         <module file="${plugin_home}/mps-modelchecker/platform/jetbrains.mps.ide.modelchecker.platform.msd" />
-        <module file="${plugin_home}/mps-ide/modules/ide.refactoring/jetbrains.mps.ide.refactoring.msd" />
+        <module file="${plugin_home}/mps-rcp/modules/ide.refactoring/jetbrains.mps.ide.refactoring.msd" />
         <module file="${plugin_home}/mps-ide/modules/tools.todo/jetbrains.mps.ide.tools.todo.msd" />
         <module file="${plugin_home}/mps-ide/modules/lang.core/jetbrains.mps.lang.core.pluginSolution.msd" />
         <module file="${mps_home}/languages/languageDesign/migration/solutions/actions/jetbrains.mps.lang.migration.actions.msd" />
@@ -1451,12 +1461,12 @@
   </target>
   
   <target name="java.compile.jetbrains.mps.ide.refactoring" depends="fetchDependencies">
-    <mkdir dir="${plugin_home}/mps-ide/modules/ide.refactoring/source_gen" />
+    <mkdir dir="${plugin_home}/mps-rcp/modules/ide.refactoring/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.refactoring" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.refactoring" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${plugin_home}/mps-ide/modules/ide.refactoring/source_gen" />
+        <path location="${plugin_home}/mps-rcp/modules/ide.refactoring/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-annotations.jar" />
@@ -1474,9 +1484,9 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-runtime.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-environment.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-persistence.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-generator.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-environment.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-icons.jar" />
         <fileset file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
@@ -1507,7 +1517,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.ide.refactoring">
-      <fileset dir="${plugin_home}/mps-ide/modules/ide.refactoring/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${plugin_home}/mps-rcp/modules/ide.refactoring/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1616,7 +1626,7 @@
     <delete dir="${plugin_home}/mps-ide/modules/bl.lightweightdsl/source_gen" />
     <delete dir="${plugin_home}/mps-modelchecker/source_gen" />
     <delete dir="${plugin_home}/mps-modelchecker/platform/source_gen" />
-    <delete dir="${plugin_home}/mps-ide/modules/ide.refactoring/source_gen" />
+    <delete dir="${plugin_home}/mps-rcp/modules/ide.refactoring/source_gen" />
     <delete dir="${plugin_home}/mps-ide/modules/tools.todo/source_gen" />
     <delete dir="${plugin_home}/mps-ide/modules/lang.core/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/migration/solutions/actions/source_gen" />

@@ -320,7 +320,6 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-httpsupport/solutions/nodeaccess/jetbrains.mps.ide.httpsupport.nodeaccess.msd" folder="platform.httpsupport" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-httpsupport/solutions/runtime/jetbrains.mps.ide.httpsupport.runtime.msd" folder="platform.httpsupport" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/bl.lightweightdsl/jetbrains.mps.baseLanguage.lightweightdsl.pluginSolution.msd" folder="core.baseLanguage.lightweightdsl" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/ide.refactoring/jetbrains.mps.ide.refactoring.msd" folder="workbench.mps-ide" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/lang.core/jetbrains.mps.lang.core.pluginSolution.msd" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/lang.script/jetbrains.mps.lang.script.pluginSolution.msd" folder="core.aspects.script" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/lang.text/jetbrains.mps.lang.text.pluginSolution.msd" folder="core.languages.text" />
@@ -353,6 +352,7 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-modelchecker/platform/jetbrains.mps.ide.modelchecker.platform.msd" folder="platform.modelchecker" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-modelchecker/solution/jetbrains.mps.ide.modelchecker.msd" folder="platform.modelchecker" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-project-migrations/solution/jetbrains.mps.ide.mpsmigration.msd" folder="platform.migration" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-rcp/modules/ide.refactoring/jetbrains.mps.ide.refactoring.msd" folder="workbench.mps-rcp" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-spellcheck/modules/spellcheck/jetbrains.mps.editor.spellcheck.msd" folder="platform.spellcheck" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-testing/languages/baseLanguage/unitTest/jetbrains.mps.baseLanguage.unitTest.mpl" folder="core.baseLanguage.unitTest" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-testing/languages/baseLanguage/unitTest/runtime/jetbrains.mps.baseLanguage.unitTest.runtime.msd" folder="core.baseLanguage.unitTest" />

@@ -4,15 +4,14 @@
         "http://plugins.intellij.net/plugin.dtd"
         >
 <idea-plugin>
-  <id>jetbrains.mps.ide</id>
-  <name>MPS IDE Facilities</name>
-  <description>Provides various actions and tools handy for MPS-based IDE, on top of basic stuff available for RCP/Platform</description>
+  <id>jetbrains.mps.rcp</id>
+  <name>MPS RCP Facilities</name>
+  <description>Provides general actions and tools for MPS-based RCP application</description>
   <category>Custom Languages</category>
   <version>2023.2</version>
   <vendor url="http://www.jetbrains.com/mps/" email="support@jetbrains.com">JetBrains</vendor>
   <idea-version since-build="232.1" until-build="233.1"/>
   <depends>jetbrains.mps.core</depends>
-  <depends>jetbrains.mps.rcp</depends>
 
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="/" hide="true"/>

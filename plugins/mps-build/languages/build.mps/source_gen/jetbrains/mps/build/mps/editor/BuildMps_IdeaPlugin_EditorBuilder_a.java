@@ -240,6 +240,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
+    editorCell.setFoldable(true);
     editorCell.addEditorCell(createConstant_3());
     editorCell.addEditorCell(createRefNode_1());
     editorCell.addEditorCell(createConstant_4());
