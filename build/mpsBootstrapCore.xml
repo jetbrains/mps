@@ -8701,6 +8701,7 @@
           <module ref="7124e466-fc92-4803-a656-d7a6b7eb3910(MPS.TextGen)" kind="rt" />
           <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
           <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
+          <module ref="af19274f-5f89-42dd-8f3c-c9932448f7f2(jetbrains.mps.analyzers.runtime)" kind="rt" />
           <module ref="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
           <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
           <module ref="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt" />
@@ -8748,6 +8749,7 @@
           <language id="l:ea3159bf-f48e-4720-bde2-86dba75f0d34:jetbrains.mps.lang.context.defs" />
           <language id="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" />
           <language id="l:7fa12e9c-b949-4976-b4fa-19accbc320b4:jetbrains.mps.lang.dataFlow" />
+          <language id="l:97a52717-898f-4598-8150-573d9fd03868:jetbrains.mps.lang.dataFlow.analyzers" />
           <language id="l:f4ad079d-bc71-4ffb-9600-9328705cf998:jetbrains.mps.lang.descriptor" />
           <language id="l:18bc6592-03a6-4e29-a83a-7ff23bde13ba:jetbrains.mps.lang.editor" />
           <language id="l:cd17a113-ca4e-472f-a8de-c49008f9eea8:jetbrains.mps.lang.feedback" />
@@ -26641,7 +26643,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.lang.generator.plan" depends="java.compile.dataflow-rt, java.compile.feedback-api, java.compile.findUsages-runtime, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.migrations-runtime, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.platform, java.compile.mps-environment, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-generator, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.psi, java.compile.refactoring-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.collections, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.modelapi, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.lang.generator.plan" depends="java.compile.dataflow-rt, java.compile.findUsages-runtime, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.scripts-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.migrations-runtime, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.platform, java.compile.mps-environment, java.compile.mps-generator, java.compile.mps-platform, java.compile.mps-textgen, java.compile.mps-ui, java.compile.psi, java.compile.refactoring-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.closures, java.compile.jetbrains.mps.baseLanguage.collections, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.modelapi, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.smodel, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, fetchDependencies">
     <mkdir dir="${mps_home}/languages/languageDesign/generator/languages/plan/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.generator.plan" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.generator.plan" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
@@ -26650,24 +26652,16 @@
         <path location="${mps_home}/languages/languageDesign/generator/languages/plan/source_gen" />
       </src>
       <classpath>
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
-        <pathelement path="${build.tmp}/java/out/feedback-api" />
         <pathelement path="${build.tmp}/java/out/findUsages-runtime" />
-        <pathelement path="${build.tmp}/java/out/idea-platform" />
-        <pathelement path="${build.tmp}/java/out/messages-api" />
-        <pathelement path="${build.tmp}/java/out/messages-for-rules" />
-        <pathelement path="${build.tmp}/java/out/migrations-runtime" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-behavior-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-closures.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-collections.jar" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-api" />
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
@@ -26675,26 +26669,35 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-references.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/core-components.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-context.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" />
-        <pathelement path="${build.tmp}/java/out/mps-editing" />
-        <pathelement path="${build.tmp}/java/out/mps-editor-api" />
-        <pathelement path="${build.tmp}/java/out/mps-editorlang-runtime" />
-        <pathelement path="${build.tmp}/java/out/mps-typesystem" />
-        <pathelement path="${build.tmp}/java/out/mps-editor" />
-        <pathelement path="${build.tmp}/java/out/platform" />
-        <pathelement path="${build.tmp}/java/out/mps-environment" />
         <pathelement path="${build.tmp}/java/out/kernel-resources" />
         <pathelement path="${build.tmp}/java/out/mps-make-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" />
+        <pathelement path="${build.tmp}/java/out/mps-project-check" />
+        <pathelement path="${build.tmp}/java/out/mps-typesystem" />
+        <pathelement path="${build.tmp}/java/out/pattern-runtime" />
+        <pathelement path="${build.tmp}/java/out/scripts-runtime" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.analyzers.runtime" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
+        <pathelement path="${build.tmp}/java/out/feedback-api" />
+        <pathelement path="${build.tmp}/java/out/idea-platform" />
+        <pathelement path="${build.tmp}/java/out/messages-api" />
+        <pathelement path="${build.tmp}/java/out/messages-for-rules" />
+        <pathelement path="${build.tmp}/java/out/migrations-runtime" />
+        <pathelement path="${build.tmp}/java/out/mps-editing" />
+        <pathelement path="${build.tmp}/java/out/mps-editor-api" />
+        <pathelement path="${build.tmp}/java/out/mps-editorlang-runtime" />
+        <pathelement path="${build.tmp}/java/out/mps-editor" />
+        <pathelement path="${build.tmp}/java/out/platform" />
+        <pathelement path="${build.tmp}/java/out/mps-environment" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
         <pathelement path="${build.tmp}/java/out/mps-platform" />
-        <pathelement path="${build.tmp}/java/out/mps-project-check" />
         <pathelement path="${build.tmp}/java/out/mps-textgen" />
         <pathelement path="${build.tmp}/java/out/mps-ui" />
-        <pathelement path="${build.tmp}/java/out/pattern-runtime" />
         <pathelement path="${build.tmp}/java/out/psi" />
         <pathelement path="${build.tmp}/java/out/refactoring-runtime" />
-        <pathelement path="${build.tmp}/java/out/scripts-runtime" />
         <pathelement path="${build.tmp}/java/out/vfs-tracking" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.baseLanguage.closures" />
@@ -26710,9 +26713,9 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.structure" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
-        <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <path refid="path.java.library.idea-libraries" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
