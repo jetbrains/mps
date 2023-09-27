@@ -16,7 +16,7 @@ public class UsagesCopyProvider implements CopyProvider {
 
   @Override
   public boolean isCopyEnabled(@NotNull DataContext dataContext) {
-    return dataContext.getData(UsagesView.USAGE_VIEW).getTreeComponent().getTree().getSelectionPaths().length > 0;
+    return !dataContext.getData(UsagesView.USAGE_VIEW).getTreeComponent().getTree().isSelectionEmpty();
   }
 
   @Override
