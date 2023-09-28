@@ -68,6 +68,8 @@ public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
       return actualTM;
     }
     synchronized (this) {
+      // unlike compiled generators, we don't use AtomicReference but synchronized block here
+      // as we've got more complicated initialization sequence, including model listener registration of model watchdog code
       if ((actualTM = modelsUpToDate()) != null) {
         return actualTM;
       }
