@@ -19,6 +19,7 @@ import jetbrains.mps.java.stub.StubReferenceFactory;
 import jetbrains.mps.smodel.SModelStereotype;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
 @Immutable
 @GeneratedClass(node = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/7241381882860001930", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
@@ -77,6 +78,6 @@ public final class ASMModelLoader {
   }
 
   public Iterable<IFile> getTopClassFiles() {
-    return CollectionSequence.fromCollection(myPaths).where((it) -> it != null).translate((it) -> it.getChildren()).where((it) -> !(it.isDirectory()) && it.getName().endsWith(".class") && !(ClassifierLoader.getClassName(it).contains("$")));
+    return CollectionSequence.fromCollection(myPaths).where(new NotNullWhereFilter()).translate((it) -> it.getChildren()).where((it) -> !(it.isDirectory()) && it.getName().endsWith(".class") && !(ClassifierLoader.getClassName(it).contains("$")) && !("package-info.class".equals(it.getName())));
   }
 }
