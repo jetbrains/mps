@@ -22,16 +22,16 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-public final class ReplaceConceptIsWithConceptEquals_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
+public final class ReplaceSingleConceptWithList_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
 
-  public ReplaceConceptIsWithConceptEquals_Intention() {
+  public ReplaceSingleConceptWithList_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902ff(jetbrains.mps.lang.smodel.intentions)", "1203704393457"));
   }
 
   @Override
   public String getPresentation() {
-    return "ReplaceConceptIsWithConceptEquals";
+    return "ReplaceSingleConceptWithList";
   }
 
   @Override
@@ -51,7 +51,7 @@ public final class ReplaceConceptIsWithConceptEquals_Intention extends AbstractI
 
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Replace 'concept=' with Concept List";
+      return "Replace Concept with a List of Concepts";
     }
 
     @Override
@@ -76,7 +76,7 @@ public final class ReplaceConceptIsWithConceptEquals_Intention extends AbstractI
 
     @Override
     public IntentionDescriptor getDescriptor() {
-      return ReplaceConceptIsWithConceptEquals_Intention.this;
+      return ReplaceSingleConceptWithList_Intention.this;
     }
 
   }
