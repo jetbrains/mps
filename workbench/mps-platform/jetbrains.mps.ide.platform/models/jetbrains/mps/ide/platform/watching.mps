@@ -8,6 +8,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
   <imports>
     <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
@@ -52,7 +53,7 @@
     <import index="ap4t" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator(MPS.Generator/)" />
     <import index="w8cm" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.impl.dependencies(MPS.Generator/)" />
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
-    <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" implicit="true" />
+    <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1448,10 +1449,9 @@
                         <node concept="3clFbF" id="2CbzOko6nbs" role="3cqZAp">
                           <node concept="1Wc70l" id="22sDcpIXaee" role="3clFbG">
                             <node concept="3fqX7Q" id="2CbzOko6nbq" role="3uHU7B">
-                              <node concept="2YIFZM" id="2CbzOko6nj8" role="3fr31v">
-                                <ref role="37wK5l" to="4hrd:~VirtualFileUtils.isFileEventFromMPS(com.intellij.openapi.vfs.newvfs.events.VFileEvent)" resolve="isFileEventFromMPS" />
-                                <ref role="1Pybhc" to="4hrd:~VirtualFileUtils" resolve="VirtualFileUtils" />
-                                <node concept="37vLTw" id="2CbzOko6nj9" role="37wK5m">
+                              <node concept="1rXfSq" id="2dwZdOFZQl1" role="3fr31v">
+                                <ref role="37wK5l" node="2dwZdOFZCK1" resolve="isFileEventFromMPS" />
+                                <node concept="37vLTw" id="2dwZdOFZU37" role="37wK5m">
                                   <ref role="3cqZAo" node="5W7E4fV0Y58" resolve="it" />
                                 </node>
                               </node>
@@ -1639,6 +1639,35 @@
       <node concept="2AHcQZ" id="3tYsUK_ScJk" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
+    </node>
+    <node concept="2tJIrI" id="2dwZdOFZBms" role="jymVt" />
+    <node concept="2YIFZL" id="2dwZdOFZCK1" role="jymVt">
+      <property role="TrG5h" value="isFileEventFromMPS" />
+      <node concept="37vLTG" id="2dwZdOFZCK7" role="3clF46">
+        <property role="TrG5h" value="event" />
+        <node concept="3uibUv" id="2dwZdOFZCK8" role="1tU5fm">
+          <ref role="3uigEE" to="p3o1:~VFileEvent" resolve="VFileEvent" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="2dwZdOFZCK9" role="3clF47">
+        <node concept="3cpWs6" id="2dwZdOFZCKa" role="3cqZAp">
+          <node concept="2ZW3vV" id="2dwZdOFZCKd" role="3cqZAk">
+            <node concept="2OqwBi" id="2dwZdOFZP2I" role="2ZW6bz">
+              <node concept="37vLTw" id="2dwZdOFZONk" role="2Oq$k0">
+                <ref role="3cqZAo" node="2dwZdOFZCK7" resolve="event" />
+              </node>
+              <node concept="liA8E" id="2dwZdOFZP2J" role="2OqNvi">
+                <ref role="37wK5l" to="p3o1:~VFileEvent.getRequestor()" resolve="getRequestor" />
+              </node>
+            </node>
+            <node concept="3uibUv" id="2dwZdOFZCKc" role="2ZW6by">
+              <ref role="3uigEE" to="4hrd:~IdeaFileSystem" resolve="IdeaFileSystem" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="2dwZdOFZPuG" role="1B3o_S" />
+      <node concept="10P_77" id="2dwZdOFZCKf" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="7t2WeWl8FLZ" role="jymVt" />
     <node concept="3clFb_" id="7mrRUyVUv8I" role="jymVt">
