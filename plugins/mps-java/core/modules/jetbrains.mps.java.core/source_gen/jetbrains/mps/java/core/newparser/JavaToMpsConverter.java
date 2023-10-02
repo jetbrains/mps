@@ -759,6 +759,13 @@ public class JavaToMpsConverter {
       // same class, such local method call is ok in baseLanguage
       return null;
     }
+    if (SNodeOperations.isInstanceOf(varRef, CONCEPTS.StaticFieldReference$cU) && SLinkOperations.getTarget(SNodeOperations.cast(varRef, CONCEPTS.StaticFieldReference$cU), LINKS.classifier$BPY8) == thatClass) {
+      // proper StaticFieldReference, no reason to replace with another one.
+      // XXX in fact, I don't see a reason to replace StaticFieldReference at all; to me this code looks like
+      //    an attempt to deal with *local* VariableReference, not StaticFieldReference (which just happen to be instanceOf(VariableReference), too)
+      //    However, intention of this code (commit 1004b48c) is not clear enough.
+      return null;
+    }
 
     // different class, let's make this reference non-local, but qualified
     SNode sfr = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
