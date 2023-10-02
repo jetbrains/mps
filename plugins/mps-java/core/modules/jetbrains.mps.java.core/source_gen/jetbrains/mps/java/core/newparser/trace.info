@@ -6479,62 +6479,64 @@
   </root>
   <root nodeRef="r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)/789530343628636149">
     <file name="IncrementalModelAccessBase.java">
-      <node id="789530343628641935" at="22,0,23,0" concept="7" trace="myModelAccess" />
-      <node id="789530343629118381" at="23,0,24,0" concept="7" trace="myModels" />
-      <node id="789530343629341221" at="24,0,25,0" concept="7" trace="myMessageHandler" />
-      <node id="789530343628644120" at="26,119,27,32" concept="6" />
-      <node id="789530343629160725" at="27,32,28,22" concept="6" />
-      <node id="2063851301518672038" at="28,22,29,38" concept="6" />
-      <node id="789530343628647151" at="33,46,34,42" concept="6" />
-      <node id="789530343628651256" at="38,52,39,34" concept="6" />
-      <node id="789530343629122931" at="43,40,44,115" concept="12" />
-      <node id="789530343630212264" at="45,11,46,104" concept="14" />
-      <node id="789530343629268702" at="47,61,48,69" concept="12" />
-      <node id="789530343629268735" at="49,55,50,62" concept="6" />
-      <node id="789530343629268742" at="50,62,51,96" concept="6" />
-      <node id="789530343629268713" at="52,18,53,33" concept="14" />
-      <node id="789530343629268715" at="53,33,54,189" concept="6" />
-      <node id="8641182660066173404" at="56,11,57,0" concept="15" />
-      <node id="8641182660066177705" at="57,0,58,23" concept="6" />
-      <node id="789530343629135161" at="59,17,60,89" concept="6" />
-      <node id="789530343629369445" at="52,16,55,11" concept="1" />
-      <node id="789530343628636205" at="32,0,36,0" concept="11" trace="accessModel#(Ljava/lang/Runnable;)V" />
-      <node id="789530343628636213" at="37,0,41,0" concept="11" trace="replaceReferences#(Ljava/lang/Runnable;)V" />
-      <node id="789530343628640435" at="26,0,31,0" concept="3" trace="IncrementalModelAccessBase#(Lorg/jetbrains/mps/openapi/module/ModelAccess;Ljava/lang/Iterable;Ljetbrains/mps/messages/IMessageHandler;)V" />
-      <node id="789530343629268711" at="48,69,55,11" concept="10" />
-      <node id="789530343629146086" at="46,104,56,11" concept="6" />
-      <node id="789530343629133762" at="44,115,61,7" concept="22" />
-      <node id="2063851301518646480" at="42,63,62,7" concept="6" />
-      <node id="2063851301518641774" at="42,0,64,0" concept="11" trace="executeInUpdateMode#(Ljava/lang/Runnable;)V" />
-      <scope id="789530343628636211" at="33,46,34,42" />
-      <scope id="789530343628636219" at="38,52,39,34" />
-      <scope id="789530343629133765" at="59,17,60,89" />
-      <scope id="789530343629268712" at="49,55,51,96" />
-      <scope id="789530343629369446" at="52,18,54,189" />
-      <scope id="789530343628640439" at="26,119,29,38" />
-      <scope id="789530343628636205" at="32,0,36,0">
+      <node id="789530343628641935" at="23,0,24,0" concept="7" trace="myModelAccess" />
+      <node id="789530343629118381" at="24,0,25,0" concept="7" trace="myModels" />
+      <node id="789530343629341221" at="25,0,26,0" concept="7" trace="myMessageHandler" />
+      <node id="789530343628644120" at="27,119,28,32" concept="6" />
+      <node id="789530343629160725" at="28,32,29,22" concept="6" />
+      <node id="2063851301518672038" at="29,22,30,38" concept="6" />
+      <node id="789530343628647151" at="34,46,35,42" concept="6" />
+      <node id="789530343628651256" at="39,52,40,34" concept="6" />
+      <node id="789530343629122931" at="44,40,45,115" concept="12" />
+      <node id="789530343630212264" at="46,11,47,104" concept="14" />
+      <node id="789530343629268702" at="48,61,49,69" concept="12" />
+      <node id="789530343629268735" at="50,55,51,62" concept="6" />
+      <node id="789530343629268742" at="51,62,52,96" concept="6" />
+      <node id="789530343629268713" at="53,18,54,33" concept="14" />
+      <node id="789530343629268715" at="54,33,55,189" concept="6" />
+      <node id="8641182660066173404" at="57,11,58,0" concept="15" />
+      <node id="8641182660066177705" at="58,0,59,23" concept="6" />
+      <node id="789530343629135161" at="60,17,61,89" concept="6" />
+      <node id="2568469341010757570" at="61,89,62,158" concept="14" />
+      <node id="2568469341010805441" at="62,158,63,92" concept="6" />
+      <node id="789530343629369445" at="53,16,56,11" concept="1" />
+      <node id="789530343628636205" at="33,0,37,0" concept="11" trace="accessModel#(Ljava/lang/Runnable;)V" />
+      <node id="789530343628636213" at="38,0,42,0" concept="11" trace="replaceReferences#(Ljava/lang/Runnable;)V" />
+      <node id="789530343628640435" at="27,0,32,0" concept="3" trace="IncrementalModelAccessBase#(Lorg/jetbrains/mps/openapi/module/ModelAccess;Ljava/lang/Iterable;Ljetbrains/mps/messages/IMessageHandler;)V" />
+      <node id="789530343629268711" at="49,69,56,11" concept="10" />
+      <node id="789530343629146086" at="47,104,57,11" concept="6" />
+      <node id="789530343629133762" at="45,115,64,7" concept="22" />
+      <node id="2063851301518646480" at="43,63,65,7" concept="6" />
+      <node id="2063851301518641774" at="43,0,67,0" concept="11" trace="executeInUpdateMode#(Ljava/lang/Runnable;)V" />
+      <scope id="789530343628636211" at="34,46,35,42" />
+      <scope id="789530343628636219" at="39,52,40,34" />
+      <scope id="789530343629268712" at="50,55,52,96" />
+      <scope id="789530343629369446" at="53,18,55,189" />
+      <scope id="789530343628640439" at="27,119,30,38" />
+      <scope id="789530343629133765" at="60,17,63,92" />
+      <scope id="789530343628636205" at="33,0,37,0">
         <var name="runnable" id="789530343628636209" />
       </scope>
-      <scope id="789530343628636213" at="37,0,41,0">
+      <scope id="789530343628636213" at="38,0,42,0">
         <var name="runnable" id="789530343628636217" />
       </scope>
-      <scope id="789530343628640435" at="26,0,31,0">
+      <scope id="789530343628640435" at="27,0,32,0">
         <var name="messageHandler" id="2063851301518669771" />
         <var name="modelAccess" id="789530343628641013" />
         <var name="models" id="789530343629116722" />
       </scope>
-      <scope id="789530343629148883" at="47,61,55,11">
+      <scope id="789530343629148883" at="48,61,56,11">
         <var name="modelData" id="789530343629268703" />
       </scope>
-      <scope id="789530343629133764" at="45,11,58,23" />
-      <scope id="789530343628655922" at="43,40,61,7">
+      <scope id="789530343629133764" at="46,11,59,23" />
+      <scope id="789530343628655922" at="44,40,64,7">
         <var name="modelsInUpdateMode" id="789530343629122934" />
       </scope>
-      <scope id="2063851301518641777" at="42,63,62,7" />
-      <scope id="2063851301518641774" at="42,0,64,0">
+      <scope id="2063851301518641777" at="43,63,65,7" />
+      <scope id="2063851301518641774" at="43,0,67,0">
         <var name="runnable" id="2063851301518643914" />
       </scope>
-      <unit id="789530343628636149" at="20,0,65,0" name="jetbrains.mps.java.core.newparser.IncrementalModelAccessBase" />
+      <unit id="789530343628636149" at="21,0,68,0" name="jetbrains.mps.java.core.newparser.IncrementalModelAccessBase" />
     </file>
   </root>
   <root nodeRef="r:b1598fca-3527-4718-b3ee-193781dbf052(jetbrains.mps.java.core.newparser)/8048826103541484532">
