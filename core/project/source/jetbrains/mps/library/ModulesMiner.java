@@ -468,7 +468,7 @@ public final class ModulesMiner {
             moduleHomePath.append(moduleHome.getPath());
           }
           if (cpEntry.charAt(0) != '/') {
-            // it doesn't hurt to have extra fs delimiter, e.g. if moduleHome doesn't ends with one.
+            // it doesn't hurt to have extra fs delimiter, e.g. if moduleHome doesn't end with one.
             moduleHomePath.append('/');
           }
           moduleHomePath.append(cpEntry);

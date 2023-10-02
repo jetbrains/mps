@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,7 +62,7 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
     try {
       createGroups();
     } catch (Throwable th) {
-      LOG.error(String.format("Failed to crate groups of plugin %s", getId()), th);
+      LOG.error(String.format("Failed to create groups of plugin %s", getId()), th);
     }
   }
 

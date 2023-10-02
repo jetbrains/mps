@@ -1509,9 +1509,6 @@
       <node concept="nCB5N" id="CxQQw_A0us" role="nCB5Z">
         <ref role="nCB5Y" node="6UWbfHq6Ys7" resolve="mps-project-check" />
       </node>
-      <node concept="nCB5N" id="PI$1s21Xmh" role="nCB5Z">
-        <ref role="nCB5Y" node="PI$1s21VRQ" resolve="dataflow-rt" />
-      </node>
       <node concept="nCB5N" id="2MtyMjHmmMW" role="nCB5Z">
         <ref role="nCB5Y" node="2MtyMjH3qzU" resolve="mps-typesystem" />
       </node>
@@ -1712,9 +1709,6 @@
       <node concept="nCB5N" id="1nB28s96Ko" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="1nB28rXacP" resolve="mps-environment" />
-      </node>
-      <node concept="nCB5N" id="PI$1s21XeY" role="nCB5Z">
-        <ref role="nCB5Y" node="PI$1s21VRQ" resolve="dataflow-rt" />
       </node>
       <node concept="nCB5N" id="2MtyMjHmmRK" role="nCB5Z">
         <ref role="nCB5Y" node="2MtyMjH3qzU" resolve="mps-typesystem" />
@@ -3985,10 +3979,6 @@
               <property role="2Ry0Am" value="mps-project-check.jar" />
             </node>
           </node>
-        </node>
-        <node concept="1E1SXE" id="JyLrNhcQPK" role="3bR37C">
-          <property role="1E1SXH" value="true" />
-          <ref role="1E1SXG" node="PI$1s21VRQ" resolve="dataflow-rt" />
         </node>
         <node concept="1E1SXE" id="314r4cjtapl" role="3bR37C">
           <property role="1E1SXH" value="true" />
@@ -25117,9 +25107,6 @@
       </node>
       <node concept="nCB5N" id="PI$1s1REDM" role="nCB5Z">
         <ref role="nCB5Y" node="PI$1s1RDim" resolve="scripts-runtime" />
-      </node>
-      <node concept="nCB5N" id="PI$1s21XgQ" role="nCB5Z">
-        <ref role="nCB5Y" node="PI$1s21VRQ" resolve="dataflow-rt" />
       </node>
       <node concept="nCB5N" id="4_qKb05xjCy" role="nCB5Z">
         <ref role="nCB5Y" node="4_qKb05xiaz" resolve="findUsages-runtime" />
