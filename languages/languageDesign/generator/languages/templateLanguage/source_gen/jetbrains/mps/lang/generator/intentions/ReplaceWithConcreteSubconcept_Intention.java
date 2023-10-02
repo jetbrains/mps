@@ -19,7 +19,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ReplaceWithConcreteSubconcept_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
 
@@ -58,14 +61,15 @@ public final class ReplaceWithConcreteSubconcept_Intention extends AbstractInten
 
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Replace with instance of  " + myParameter.getName() + " concept";
+      return String.format("Replace with instance of  %s concept", myParameter.getName());
     }
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode concreteConceptInstance = SNodeFactoryOperations.createNewNode(myParameter, null);
+      final SNode concreteConceptInstance = SNodeFactoryOperations.createNewNode(myParameter, null);
       SNodeOperations.replaceWithAnother(node, concreteConceptInstance);
       SNodeOperations.deleteNode(node);
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(concreteConceptInstance, LINKS.smodelAttribute$KJ43)).addElement(it));
     }
 
     @Override
@@ -93,5 +97,9 @@ public final class ReplaceWithConcreteSubconcept_Intention extends AbstractInten
     public Object getParameter() {
       return myParameter;
     }
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

@@ -56,7 +56,7 @@ public class SolutionStep extends TwoOptionsStep<SModule> {
   }
   @Override
   protected SModule[] getVariants() {
-    return Sequence.fromIterable(((Iterable<SModule>) this.myMpsProject.getProjectModules())).where((it) -> it instanceof Solution).select((it) -> it).toGenericArray(SModule.class);
+    return Sequence.fromIterable(((Iterable<SModule>) this.myMpsProject.getProjectModules())).ofType(Solution.class).toGenericArray(Solution.class);
   }
   @Override
   protected boolean isCheckBoxEnabled() {

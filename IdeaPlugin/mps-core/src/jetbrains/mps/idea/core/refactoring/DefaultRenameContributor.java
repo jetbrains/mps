@@ -1,16 +1,15 @@
 package jetbrains.mps.idea.core.refactoring;
 
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.platform.refactoring.RefactoringAccessEx;
 import jetbrains.mps.ide.platform.refactoring.RenameDialog;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.refactoring.framework.RefactoringContext;
-import jetbrains.mps.util.SNodeOperations;
+import jetbrains.mps.refactoring.runtime.access.RefactoringAccess;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * danilla 6/17/13
@@ -36,11 +35,12 @@ public class DefaultRenameContributor implements RenameRefactoringContributor {
       return;
     }
 
-    RefactoringAccessEx.getInstance().getRefactoringFacade().execute(
+    final RefactoringAccess refactoringAccess = RefactoringAccess.getInstance(mpsProject);
+    refactoringAccess.getRefactoringFacade().execute(
       RefactoringContext.createRefactoringContext(
-        new PsiRenameRefactoringWrapper(RefactoringAccessEx.getInstance()),
-        Arrays.asList("newName"),
-        Arrays.asList(newName),
+        new PsiRenameRefactoringWrapper(refactoringAccess),
+        List.of("newName"),
+        List.of(newName),
         node,
         mpsProject));
   }

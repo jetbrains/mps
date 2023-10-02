@@ -119,6 +119,7 @@ public class ModulePlugins {
   }
 
   public List<SNode> getPlugins(final TemplateQueryContext context, final boolean allowFromSameProject) {
+    // FIXME refactor last use of allowFromSameProject==true (runMps) to use reference macro to same-project artifacts (as in reduce_TestModules)
     final DependenciesHelper helper = DependenciesHelper.get(context, myInitialProject, "build.mps");
     final VisibleArtifacts local;
     if (allowFromSameProject) {
@@ -139,7 +140,7 @@ public class ModulePlugins {
         layoutNode = local.findArtifact(it);
       }
       if ((layoutNode == null)) {
-        context.showWarningMessage(myInitialProject, "The plugin '" + SPropertyOperations.getString(it, PROPS.name$MnvL) + "' was not found in the layout of `" + SPropertyOperations.getString(myInitialProject, PROPS.name$MnvL) + "'");
+        context.showWarningMessage(myInitialProject, String.format("The plugin '%s' was not found in the layout of `%s'", SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(myInitialProject, PROPS.name$MnvL)));
         return null;
       }
       String val = BuildLayout_PathElement__BehaviorDescriptor.location_id6b4RkXS8sT2.invoke(layoutNode, helper, it);
@@ -155,13 +156,13 @@ public class ModulePlugins {
         }
       }
       if (val == null) {
-        context.showWarningMessage(myInitialProject, "Found no location for plugin '" + SPropertyOperations.getString(it, PROPS.name$MnvL) + "'");
+        context.showWarningMessage(myInitialProject, String.format("Found no location for plugin '%s'", SPropertyOperations.getString(it, PROPS.name$MnvL)));
         return null;
       }
       return MultiTuple.<String,String>from(val, SPropertyOperations.getString(it, PROPS.id$W4AX));
-    }).where(new NotNullWhereFilter()).sort((it) -> it._0(), true).select((it) -> createGeneratorInternal_PluginExpanded_ookyii_a0a0a0a3a61(it._0(), it._1())).toList();
+    }).where(new NotNullWhereFilter()).sort((it) -> it._0(), true).select((it) -> createGeneratorInternal_PluginExpanded_ookyii_a0a0a0a4a61(it._0(), it._1())).toList();
   }
-  private static SNode createGeneratorInternal_PluginExpanded_ookyii_a0a0a0a3a61(String p0, String p1) {
+  private static SNode createGeneratorInternal_PluginExpanded_ookyii_a0a0a0a4a61(String p0, String p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_PluginExpanded$$Z);
     n0.setProperty(PROPS.path$4PFd, p0);
     n0.setProperty(PROPS.id$4PUe, p1);

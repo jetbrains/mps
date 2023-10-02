@@ -615,6 +615,7 @@
       <plugin id="jetbrains.mps.core" path="${artifacts.mps}/plugins/mps-core" />
       <plugin id="jetbrains.mps.ide.devkit" path="${artifacts.mps}/plugins/mps-devkit" />
       <plugin id="jetbrains.mps.ide" path="${artifacts.mps}/plugins/mps-ide" />
+      <plugin id="jetbrains.mps.rcp" path="${artifacts.mps}/plugins/mps-rcp" />
       <plugin id="jetbrains.mps.testing" path="${artifacts.mps}/plugins/mps-testing" />
       
       <testmodules>        

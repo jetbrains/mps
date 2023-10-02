@@ -31,7 +31,7 @@ public abstract class RefactoringAccessEx extends RefactoringAccess {
   @Override
   public RefactoringFacadeImpl getRefactoringFacade() {
     if (myRefactoringFacade == null) {
-      myRefactoringFacade = new RefactoringFacadeImpl();
+      myRefactoringFacade = new RefactoringFacadeImpl(this);
     }
     return myRefactoringFacade;
   }

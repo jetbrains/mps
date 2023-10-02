@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.ui.finders.ModelImportsUsagesFinder;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.model.ModelDeleteHelper;
@@ -41,7 +42,6 @@ import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -87,6 +87,10 @@ public class DeleteModelHelper {
     }
   }
 
+  public static boolean safeDeleteSupported(final Project mpsProject) {
+    return RefactoringAccess.getInstance(mpsProject) != null;
+  }
+
   public static void safeDelete(final Project project, final SModel modelDescriptor, boolean deleteFiles) {
     IRefactoring ref = new SafeDeleteModelRefactoring(deleteFiles);
     final RefactoringContext context = new RefactoringContext(project, ref);
@@ -95,7 +99,7 @@ public class DeleteModelHelper {
 
     project.getRepository().getModelAccess().runWriteInEDT(() -> {
       if (modelDescriptor.getReference().resolve(project.getRepository()) == modelDescriptor) {
-        RefactoringAccess.getInstance().getRefactoringFacade().execute(context);
+        RefactoringAccess.getInstance(project).getRefactoringFacade().execute(context);
       }
     });
   }

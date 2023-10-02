@@ -9336,6 +9336,7 @@
         <node concept="3cpWs8" id="7l8SZlcT8PP" role="3cqZAp">
           <node concept="3cpWsn" id="7l8SZlcT8PQ" role="3cpWs9">
             <property role="TrG5h" value="safeDelete" />
+            <property role="3TUv4t" value="true" />
             <node concept="10P_77" id="7l8SZlcT8JL" role="1tU5fm" />
           </node>
         </node>
@@ -9358,8 +9359,18 @@
               <ref role="2WH_rO" node="7l8SZlcT5WT" resolve="forceSafe" />
             </node>
           </node>
-          <node concept="9aQIb" id="7l8SZlcTaRq" role="9aQIa">
-            <node concept="3clFbS" id="7l8SZlcTaRr" role="9aQI4">
+          <node concept="3eNFk2" id="3lNIAuX2nr_" role="3eNLev">
+            <node concept="2YIFZM" id="3lNIAuX2oNQ" role="3eO9$A">
+              <ref role="37wK5l" to="d94j:~DeleteModelHelper.safeDeleteSupported(jetbrains.mps.project.Project)" resolve="safeDeleteSupported" />
+              <ref role="1Pybhc" to="d94j:~DeleteModelHelper" resolve="DeleteModelHelper" />
+              <node concept="2OqwBi" id="3lNIAuX2oUo" role="37wK5m">
+                <node concept="2WthIp" id="3lNIAuX2oUr" role="2Oq$k0" />
+                <node concept="1DTwFV" id="3lNIAuX2oUt" role="2OqNvi">
+                  <ref role="2WH_rO" node="36tV70Zqv$R" resolve="project" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="3lNIAuX2nrB" role="3eOfB_">
               <node concept="3cpWs8" id="WTC1SLZKL1" role="3cqZAp">
                 <node concept="3cpWsn" id="WTC1SLZKL2" role="3cpWs9">
                   <property role="TrG5h" value="result" />
@@ -9390,9 +9401,9 @@
                             <property role="Xl_RC" value="actions.module.delete.ok.button.text" />
                           </node>
                         </node>
-                        <node concept="10M0yZ" id="WTC1SLZQft" role="3g7hyw">
-                          <ref role="1PxDUh" to="jkm4:~Messages" resolve="Messages" />
-                          <ref role="3cqZAo" to="jkm4:~Messages.CANCEL_BUTTON" resolve="CANCEL_BUTTON" />
+                        <node concept="2YIFZM" id="3lNIAuX2zUM" role="3g7hyw">
+                          <ref role="37wK5l" to="jkm4:~Messages.getCancelButton()" resolve="getCancelButton" />
+                          <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
                         </node>
                         <node concept="17QB3L" id="WTC1SLZQfu" role="3g7fb8" />
                       </node>
@@ -9481,7 +9492,6 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbH" id="WTC1SLZZu_" role="3cqZAp" />
               <node concept="3clFbJ" id="36tV70Zqv_r" role="3cqZAp">
                 <node concept="3clFbC" id="WTC1SLZSZf" role="3clFbw">
                   <node concept="10M0yZ" id="WTC1SLZUhn" role="3uHU7w">
@@ -9509,6 +9519,18 @@
                     </node>
                   </node>
                   <node concept="37vLTw" id="7l8SZlcT9j8" role="37vLTJ">
+                    <ref role="3cqZAo" node="7l8SZlcT8PQ" resolve="safeDelete" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="9aQIb" id="7l8SZlcTaRq" role="9aQIa">
+            <node concept="3clFbS" id="7l8SZlcTaRr" role="9aQI4">
+              <node concept="3clFbF" id="3lNIAuX2vrk" role="3cqZAp">
+                <node concept="37vLTI" id="3lNIAuX2x1t" role="3clFbG">
+                  <node concept="3clFbT" id="3lNIAuX2x2G" role="37vLTx" />
+                  <node concept="37vLTw" id="3lNIAuX2vri" role="37vLTJ">
                     <ref role="3cqZAo" node="7l8SZlcT8PQ" resolve="safeDelete" />
                   </node>
                 </node>
@@ -9750,6 +9772,70 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="3lNIAuX2mFj" role="3cqZAp">
+          <node concept="1PaTwC" id="3lNIAuX2mFk" role="1aUNEU">
+            <node concept="3oM_SD" id="3lNIAuX2AML" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2AQo" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2ARA" role="1PaTwD">
+              <property role="3oM_SC" value="rely" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2ARK" role="1PaTwD">
+              <property role="3oM_SC" value="on" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2ART" role="1PaTwD">
+              <property role="3oM_SC" value="always" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2AO2" role="1PaTwD">
+              <property role="3oM_SC" value="visible" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2AT9" role="1PaTwD">
+              <property role="3oM_SC" value="==" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2AUp" role="1PaTwD">
+              <property role="3oM_SC" value="false" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2AVH" role="1PaTwD">
+              <property role="3oM_SC" value="^^^" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2AZa" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2AZo" role="1PaTwD">
+              <property role="3oM_SC" value="hide" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2B0I" role="1PaTwD">
+              <property role="3oM_SC" value="disabled" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2B29" role="1PaTwD">
+              <property role="3oM_SC" value="action" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2B3z" role="1PaTwD">
+              <property role="3oM_SC" value="(e.g." />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2B3S" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2B4b" role="1PaTwD">
+              <property role="3oM_SC" value="safe" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2B5A" role="1PaTwD">
+              <property role="3oM_SC" value="delete" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2B5Z" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2B7q" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="3lNIAuX2B7M" role="1PaTwD">
+              <property role="3oM_SC" value="supported)" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="7l8SZlcPhv$" role="3cqZAp">
           <node concept="1rXfSq" id="7l8SZlcPhv_" role="3clFbG">
             <ref role="37wK5l" to="7bx7:~BaseAction.setEnabledState(com.intellij.openapi.actionSystem.Presentation,boolean)" resolve="setEnabledState" />
@@ -9774,6 +9860,33 @@
       <node concept="3Tm1VV" id="7l8SZlcVj2y" role="1B3o_S" />
       <node concept="10P_77" id="7l8SZlcVj2z" role="3clF45" />
       <node concept="3clFbS" id="7l8SZlcVj2_" role="3clF47">
+        <node concept="3clFbJ" id="3lNIAuX2eMW" role="3cqZAp">
+          <node concept="3clFbS" id="3lNIAuX2eMY" role="3clFbx">
+            <node concept="3cpWs6" id="3lNIAuX2ivl" role="3cqZAp">
+              <node concept="3clFbT" id="3lNIAuX2iS8" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="1Wc70l" id="3lNIAuX2gNG" role="3clFbw">
+            <node concept="3fqX7Q" id="3lNIAuX2h1d" role="3uHU7w">
+              <node concept="2YIFZM" id="3lNIAuX2htc" role="3fr31v">
+                <ref role="37wK5l" to="d94j:~DeleteModelHelper.safeDeleteSupported(jetbrains.mps.project.Project)" resolve="safeDeleteSupported" />
+                <ref role="1Pybhc" to="d94j:~DeleteModelHelper" resolve="DeleteModelHelper" />
+                <node concept="2OqwBi" id="3lNIAuX2hIH" role="37wK5m">
+                  <node concept="2WthIp" id="3lNIAuX2hIK" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="3lNIAuX2hIM" role="2OqNvi">
+                    <ref role="2WH_rO" node="36tV70Zqv$R" resolve="project" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="3lNIAuX2f2z" role="3uHU7B">
+              <node concept="2WthIp" id="3lNIAuX2f2A" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="3lNIAuX2f2C" role="2OqNvi">
+                <ref role="2WH_rO" node="7l8SZlcT5WT" resolve="forceSafe" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="2Gpval" id="7l8SZlcVj2h" role="3cqZAp">
           <node concept="2GrKxI" id="7l8SZlcVj2i" role="2Gsz3X">
             <property role="TrG5h" value="m" />
