@@ -124,9 +124,9 @@ class ReadHelper {
       String m = "Attempt to instantiate a node with an interface concept. Id:%s";
       assert !myConcepts.contains(index) : "Same index registered as SConcept and SInterfaceConcept";
       final SInterfaceConcept iface = myInterfaceConcepts.get(index);
-      // XXX has to be an error, indeed, but there are quite a lot of uses in MPS itself (e.g. templates)
-      //     and I need to get tests watching for ERROR in the log pass.
-      Logger.getLogger(getClass()).warning(String.format(m, iface));
+      // generally, has to be an error, however, here we are reading a model in binary persistence, which
+      // is usually a distributed model, and there's nothing user could do about this message.
+      Logger.getLogger(getClass()).debug(String.format(m, iface));
       // fallback, just in case. I don't like it but not brave enough to go on with just
       //   assert !myInterfaceConcepts.contains(index)
       // few weeks before 2023.2 release
