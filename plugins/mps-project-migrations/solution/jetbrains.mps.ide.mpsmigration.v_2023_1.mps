@@ -1705,7 +1705,7 @@
                                           <property role="3oM_SC" value="is" />
                                         </node>
                                         <node concept="3oM_SD" id="3K$ADBNA6Cf" role="1PaTwD">
-                                          <property role="3oM_SC" value="Classifeir," />
+                                          <property role="3oM_SC" value="Classifier," />
                                         </node>
                                         <node concept="3oM_SD" id="3K$ADBNA6DD" role="1PaTwD">
                                           <property role="3oM_SC" value="which" />

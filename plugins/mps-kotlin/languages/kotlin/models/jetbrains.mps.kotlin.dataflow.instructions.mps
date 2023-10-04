@@ -8,7 +8,6 @@
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
-    <import index="dau9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
@@ -16,6 +15,7 @@
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
     <import index="ka84" ref="r:08ab5e45-1c79-495b-9ba5-962c1dd58af6(jetbrains.mps.kotlin.dataFlow)" />
     <import index="mu20" ref="r:fc94574f-a075-45e6-9927-48e7e87153e6(jetbrains.mps.analyzers.runtime.framework)" />
+    <import index="9fia" ref="r:48cf50db-7ea3-4b1e-ab16-c3d84cbcf0df(jetbrains.mps.lang.dataFlow.framework.instructions)" />
   </imports>
   <registry>
     <language id="97a52717-898f-4598-8150-573d9fd03868" name="jetbrains.mps.lang.dataFlow.analyzers">
@@ -1256,7 +1256,7 @@
       <node concept="37vLTG" id="73sOtHLQSSp" role="3clF46">
         <property role="TrG5h" value="instruction" />
         <node concept="3uibUv" id="73sOtHLQSSq" role="1tU5fm">
-          <ref role="3uigEE" to="dau9:~AbstractJumpInstruction" resolve="AbstractJumpInstruction" />
+          <ref role="3uigEE" to="9fia:3G6nPQbN2N6" resolve="AbstractJumpInstruction" />
         </node>
       </node>
       <node concept="37vLTG" id="73sOtHLQSSr" role="3clF46">
@@ -1374,7 +1374,7 @@
                             <ref role="3cqZAo" node="4X7P4q$bEqf" resolve="instruction" />
                           </node>
                           <node concept="liA8E" id="4YVeo2mjVbh" role="2OqNvi">
-                            <ref role="37wK5l" to="dau9:~Instruction.getIndex()" resolve="getIndex" />
+                            <ref role="37wK5l" to="9fia:3yaa4ph8tVF" resolve="getIndex" />
                           </node>
                         </node>
                         <node concept="2OqwBi" id="4YVeo2mjVbi" role="3uHU7B">
@@ -1407,7 +1407,7 @@
                 <ref role="3cqZAo" node="4X7P4q$bEqf" resolve="instruction" />
               </node>
               <node concept="liA8E" id="7h$eT$Ygim6" role="2OqNvi">
-                <ref role="37wK5l" to="dau9:~Instruction.getIndex()" resolve="getIndex" />
+                <ref role="37wK5l" to="9fia:3yaa4ph8tVF" resolve="getIndex" />
               </node>
             </node>
           </node>
@@ -1702,12 +1702,12 @@
                 <node concept="3cpWsn" id="7h$eT$XYiLT" role="3cpWs9">
                   <property role="TrG5h" value="jump" />
                   <node concept="3uibUv" id="7h$eT$XYc_w" role="1tU5fm">
-                    <ref role="3uigEE" to="dau9:~IfJumpInstruction" resolve="IfJumpInstruction" />
+                    <ref role="3uigEE" to="9fia:3yaa4ph8uJT" resolve="IfJumpInstruction" />
                   </node>
                   <node concept="1eOMI4" id="7h$eT$XYiLU" role="33vP2m">
                     <node concept="10QFUN" id="7h$eT$XYiLV" role="1eOMHV">
                       <node concept="3uibUv" id="7h$eT$XYiLW" role="10QFUM">
-                        <ref role="3uigEE" to="dau9:~IfJumpInstruction" resolve="IfJumpInstruction" />
+                        <ref role="3uigEE" to="9fia:3yaa4ph8uJT" resolve="IfJumpInstruction" />
                       </node>
                       <node concept="37vLTw" id="7h$eT$XYiLX" role="10QFUP">
                         <ref role="3cqZAo" node="4X7P4q$bEqf" resolve="instruction" />
@@ -1798,7 +1798,7 @@
                                           <ref role="3cqZAo" node="7h$eT$XYiLT" resolve="jump" />
                                         </node>
                                         <node concept="liA8E" id="7h$eT$XYODd" role="2OqNvi">
-                                          <ref role="37wK5l" to="dau9:~AbstractJumpInstruction.getJumpTo()" resolve="getJumpTo" />
+                                          <ref role="37wK5l" to="9fia:3yaa4ph8uQa" resolve="getJumpTo" />
                                         </node>
                                       </node>
                                       <node concept="Rm8GO" id="7h$eT$XZ8uj" role="37wK5m">
@@ -1822,7 +1822,7 @@
                                             <ref role="3cqZAo" node="7h$eT$XYiLT" resolve="jump" />
                                           </node>
                                           <node concept="liA8E" id="7h$eT$XZIJV" role="2OqNvi">
-                                            <ref role="37wK5l" to="dau9:~Instruction.getIndex()" resolve="getIndex" />
+                                            <ref role="37wK5l" to="9fia:3yaa4ph8tVF" resolve="getIndex" />
                                           </node>
                                         </node>
                                       </node>
@@ -1891,7 +1891,7 @@
                                             <ref role="3cqZAo" node="7h$eT$XYiLT" resolve="jump" />
                                           </node>
                                           <node concept="liA8E" id="7h$eT$Y022F" role="2OqNvi">
-                                            <ref role="37wK5l" to="dau9:~AbstractJumpInstruction.getJumpTo()" resolve="getJumpTo" />
+                                            <ref role="37wK5l" to="9fia:3yaa4ph8uQa" resolve="getJumpTo" />
                                           </node>
                                         </node>
                                         <node concept="Rm8GO" id="7h$eT$Y022G" role="37wK5m">
@@ -1955,7 +1955,7 @@
                                               <ref role="3cqZAo" node="7h$eT$XYiLT" resolve="jump" />
                                             </node>
                                             <node concept="liA8E" id="7h$eT$Y0dxU" role="2OqNvi">
-                                              <ref role="37wK5l" to="dau9:~Instruction.getIndex()" resolve="getIndex" />
+                                              <ref role="37wK5l" to="9fia:3yaa4ph8tVF" resolve="getIndex" />
                                             </node>
                                           </node>
                                         </node>
@@ -1979,7 +1979,7 @@
             </node>
             <node concept="2ZW3vV" id="7h$eT$XX3ru" role="3eO9$A">
               <node concept="3uibUv" id="7h$eT$XX3rv" role="2ZW6by">
-                <ref role="3uigEE" to="dau9:~IfJumpInstruction" resolve="IfJumpInstruction" />
+                <ref role="3uigEE" to="9fia:3yaa4ph8uJT" resolve="IfJumpInstruction" />
               </node>
               <node concept="37vLTw" id="7h$eT$XX3rw" role="2ZW6bz">
                 <ref role="3cqZAo" node="4X7P4q$bEqf" resolve="instruction" />
@@ -1993,7 +1993,7 @@
                   <node concept="1eOMI4" id="7h$eT$YbHkN" role="2Oq$k0">
                     <node concept="10QFUN" id="7h$eT$YbHkK" role="1eOMHV">
                       <node concept="3uibUv" id="7h$eT$YbPTY" role="10QFUM">
-                        <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                        <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                       </node>
                       <node concept="37vLTw" id="7h$eT$YbVv2" role="10QFUP">
                         <ref role="3cqZAo" node="4X7P4q$bEqf" resolve="instruction" />
@@ -2001,7 +2001,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="7h$eT$YcfIc" role="2OqNvi">
-                    <ref role="37wK5l" to="dau9:~WriteInstruction.getValue()" resolve="getValue" />
+                    <ref role="37wK5l" to="9fia:3yaa4ph8uNk" resolve="getValue" />
                   </node>
                 </node>
                 <node concept="2YIFZM" id="2Q54suPbbi$" role="3uHU7w">
@@ -2011,7 +2011,7 @@
               </node>
               <node concept="2ZW3vV" id="7h$eT$YboAo" role="3uHU7B">
                 <node concept="3uibUv" id="7h$eT$YbxrD" role="2ZW6by">
-                  <ref role="3uigEE" to="dau9:~WriteInstruction" resolve="WriteInstruction" />
+                  <ref role="3uigEE" to="9fia:3yaa4ph8uM7" resolve="WriteInstruction" />
                 </node>
                 <node concept="37vLTw" id="7h$eT$YbiOU" role="2ZW6bz">
                   <ref role="3cqZAo" node="4X7P4q$bEqf" resolve="instruction" />
@@ -2111,7 +2111,7 @@
                   <node concept="1eOMI4" id="7h$eT$XW$v0" role="2Oq$k0">
                     <node concept="10QFUN" id="7h$eT$XW$uX" role="1eOMHV">
                       <node concept="3uibUv" id="7h$eT$XWAaT" role="10QFUM">
-                        <ref role="3uigEE" to="dau9:~JumpInstruction" resolve="JumpInstruction" />
+                        <ref role="3uigEE" to="9fia:3yaa4ph8uPR" resolve="JumpInstruction" />
                       </node>
                       <node concept="37vLTw" id="7h$eT$XWC0b" role="10QFUP">
                         <ref role="3cqZAo" node="4X7P4q$bEqf" resolve="instruction" />
@@ -2119,7 +2119,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="7h$eT$XWIrX" role="2OqNvi">
-                    <ref role="37wK5l" to="dau9:~AbstractJumpInstruction.getJumpTo()" resolve="getJumpTo" />
+                    <ref role="37wK5l" to="9fia:3yaa4ph8uQa" resolve="getJumpTo" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="7h$eT$Ygim9" role="3uHU7w">
@@ -2128,7 +2128,7 @@
               </node>
               <node concept="2ZW3vV" id="73sOtHMiuuo" role="3uHU7B">
                 <node concept="3uibUv" id="73sOtHMiwha" role="2ZW6by">
-                  <ref role="3uigEE" to="dau9:~JumpInstruction" resolve="JumpInstruction" />
+                  <ref role="3uigEE" to="9fia:3yaa4ph8uPR" resolve="JumpInstruction" />
                 </node>
                 <node concept="37vLTw" id="73sOtHMisy2" role="2ZW6bz">
                   <ref role="3cqZAo" node="4X7P4q$bEqf" resolve="instruction" />
@@ -2160,7 +2160,7 @@
                                 <node concept="1eOMI4" id="73sOtHMizvb" role="37wK5m">
                                   <node concept="10QFUN" id="73sOtHMizvc" role="1eOMHV">
                                     <node concept="3uibUv" id="73sOtHMizvd" role="10QFUM">
-                                      <ref role="3uigEE" to="dau9:~JumpInstruction" resolve="JumpInstruction" />
+                                      <ref role="3uigEE" to="9fia:3yaa4ph8uPR" resolve="JumpInstruction" />
                                     </node>
                                     <node concept="37vLTw" id="73sOtHMizve" role="10QFUP">
                                       <ref role="3cqZAo" node="4X7P4q$bEqf" resolve="instruction" />
@@ -2239,7 +2239,7 @@
                                     <ref role="3cqZAo" node="4X7P4q$bEqf" resolve="instruction" />
                                   </node>
                                   <node concept="liA8E" id="7h$eT$YiDdn" role="2OqNvi">
-                                    <ref role="37wK5l" to="dau9:~Instruction.succ()" resolve="succ" />
+                                    <ref role="37wK5l" to="9fia:3yaa4ph8tT4" resolve="succ" />
                                   </node>
                                 </node>
                                 <node concept="liA8E" id="7h$eT$YiDdo" role="2OqNvi">
@@ -2262,7 +2262,7 @@
                                               <ref role="3cqZAo" node="7h$eT$YiDdz" resolve="succ" />
                                             </node>
                                             <node concept="liA8E" id="7h$eT$YiDdy" role="2OqNvi">
-                                              <ref role="37wK5l" to="dau9:~Instruction.getIndex()" resolve="getIndex" />
+                                              <ref role="37wK5l" to="9fia:3yaa4ph8tVF" resolve="getIndex" />
                                             </node>
                                           </node>
                                         </node>
@@ -2323,7 +2323,7 @@
       <node concept="37vLTG" id="4X7P4q$bEqf" role="3clF46">
         <property role="TrG5h" value="instruction" />
         <node concept="3uibUv" id="4X7P4q$bEqg" role="1tU5fm">
-          <ref role="3uigEE" to="dau9:~Instruction" resolve="Instruction" />
+          <ref role="3uigEE" to="9fia:3yaa4ph8tQC" resolve="Instruction" />
         </node>
       </node>
       <node concept="37vLTG" id="4X7P4q$bEqh" role="3clF46">

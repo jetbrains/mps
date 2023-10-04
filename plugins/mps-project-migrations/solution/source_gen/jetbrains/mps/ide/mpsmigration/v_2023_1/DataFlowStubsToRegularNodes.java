@@ -82,7 +82,7 @@ public class DataFlowStubsToRegularNodes extends BaseProjectMigration {
               if (modelRefTarget.equals(p1) || modelRefTarget.equals(p2) || modelRefTarget.equals(p3) || modelRefTarget.equals(p4)) {
                 SNode targetNode = ref.getTargetNode();
                 if (SNodeOperations.isInstanceOf(targetNode, CONCEPTS.ClassifierMember$At)) {
-                  // ClassConcept is Classifeir, which is ClassifierMember, too
+                  // ClassConcept is Classifier, which is ClassifierMember, too
                   SNode replacement = scd.findMemberDeclarationNode(SNodeOperations.cast(targetNode, CONCEPTS.ClassifierMember$At));
                   if (replacement == null) {
                     modelConversionFailed = true;
