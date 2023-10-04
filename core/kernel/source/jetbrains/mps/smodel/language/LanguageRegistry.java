@@ -198,6 +198,13 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
         return rtClass.asSubclass(LanguageRuntime.class).getDeclaredConstructor().newInstance();
       }
       LOG.error(String.format("Incompatible language runtime class for module %s; returning null", l.getModuleName()));
+      final Class<?> rtSuper = rtClass.getSuperclass();
+      if (rtSuper != null) {
+        // generally it is mylang.Language extends smodel.language.LanguageRuntime; this extra information here helps to detect
+        // cases when [mps-core].LanguageRuntime class got erroneously loaded through some other CL.
+        final String m = "Loaded class %s comes from CL %s, its superclass %s from CL %s";
+        LOG.info(String.format(m, rtClass.getSimpleName(), rtClass.getClassLoader(), rtSuper.getSimpleName(), rtSuper.getClassLoader()));
+      }
       return null;
     } catch (NoSuchMethodException | ClassNotFoundException ex) {
       // would like to have error + exception here, but there are tests (e.g. ModulesReloadTest) that legitimately expect non-compiled modules
