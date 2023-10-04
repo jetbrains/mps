@@ -7,9 +7,8 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" compile="ext" classes="mps" ext="no">
-      <classes generated="true" />
-      <library location="${module}/classes" />
+    <facet type="java" compile="mps" classes="mps" ext="no">
+      <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
   <dependencies>

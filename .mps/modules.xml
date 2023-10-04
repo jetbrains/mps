@@ -12,7 +12,6 @@
       <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.rules.msd" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.feedback.problem.structure.msd" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/core/aspects/feedback/jetbrains.mps.lang.messages.api.msd" folder="core.aspects.feedback" />
-      <modulePath path="$PROJECT_DIR$/core/dataFlowRuntime/jetbrains.mps.dataFlow.runtime.msd" folder="core.aspects.dataflow" />
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.aspect.behavior/jetbrains.mps.devkit.aspect.behavior.devkit" folder="core.aspects.descriptor" />
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.aspect.constraints.devkit" folder="core.aspects.descriptor" />
       <modulePath path="$PROJECT_DIR$/core/devkits/jetbrains.mps.devkit.aspect.constraints.rules.devkit" folder="core.aspects.descriptor" />
@@ -132,6 +131,7 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/context/jetbrains.mps.lang.context.mpl" folder="core.aspects.constraints" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/customAspect/jetbrains.mps.lang.aspect.mpl" folder="core.aspects.aspect" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/dataFlow/jetbrains.mps.lang.dataFlow.mpl" folder="core.aspects.dataflow" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/dataFlowRuntime/jetbrains.mps.dataFlow.runtime.msd" folder="core.aspects.dataflow" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/editor.menus.extras/jetbrains.mps.lang.editor.menus.extras.mpl" folder="core.aspects.editor.menus.extras" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/editor.menus.extras/runtime/jetbrains.mps.lang.editor.menus.extras.runtime.msd" folder="core.aspects.editor.menus.extras" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/editor/jetbrains.mps.lang.editor.mpl" folder="core.aspects.editor" />

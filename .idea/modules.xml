@@ -16,7 +16,6 @@
       <module fileurl="file://$PROJECT_DIR$/core/components/components.iml" filepath="$PROJECT_DIR$/core/components/components.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/constraints/constraints-runtime/constraints-runtime.iml" filepath="$PROJECT_DIR$/core/aspects/constraints/constraints-runtime/constraints-runtime.iml" group="core/aspects/constraints" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/context/context.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/context/context.iml" group="core/aspects/feedback" />
-      <module fileurl="file://$PROJECT_DIR$/core/dataFlowRuntime/dataflow-rt.iml" filepath="$PROJECT_DIR$/core/dataFlowRuntime/dataflow-rt.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/plugins/debugger-api/api/debugger-api-api.iml" filepath="$PROJECT_DIR$/plugins/debugger-api/api/debugger-api-api.iml" group="plugins/debugger/debugger-api" />
       <module fileurl="file://$PROJECT_DIR$/plugins/debugger-api/runtime/debugger-api-runtime.iml" filepath="$PROJECT_DIR$/plugins/debugger-api/runtime/debugger-api-runtime.iml" group="plugins/debugger/debugger-api" />
       <module fileurl="file://$PROJECT_DIR$/plugins/debugger-java/api/debugger-java-api.iml" filepath="$PROJECT_DIR$/plugins/debugger-java/api/debugger-java-api.iml" group="plugins/debugger/debugger-java" />

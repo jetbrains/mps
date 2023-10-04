@@ -983,9 +983,9 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-for-rules.jar" />
@@ -1020,6 +1020,7 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.dataFlow.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/languageDesign/jetbrains.mps.lang.descriptor.aspects.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
@@ -1042,9 +1043,9 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-for-rules.jar" />
@@ -1098,9 +1099,9 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-for-rules.jar" />
@@ -1135,6 +1136,7 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.dataFlow.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/languageDesign/jetbrains.mps.lang.descriptor.aspects.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
@@ -1157,9 +1159,9 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-for-rules.jar" />
@@ -1296,6 +1298,7 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.dataFlow.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/languageDesign/jetbrains.mps.lang.descriptor.aspects.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
@@ -1318,9 +1321,9 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-for-rules.jar" />
@@ -1376,9 +1379,9 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-for-rules.jar" />
@@ -1413,6 +1416,7 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/languages/runtimes/jetbrains.mps.dataFlow.runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/languageDesign/jetbrains.mps.lang.descriptor.aspects.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
@@ -1435,9 +1439,9 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-context.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-core.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-platform.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-messages-for-rules.jar" />
