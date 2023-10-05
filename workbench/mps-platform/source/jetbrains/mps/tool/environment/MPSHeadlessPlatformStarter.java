@@ -38,7 +38,6 @@ public final class MPSHeadlessPlatformStarter implements ApplicationStarter {
     @NotNull
     /*package*/ Application createApp() {
       try {
-//        Class.forName("jetbrains.mps.ide.util.PlatformStarter").getMethod("startApplicationAsync").invoke(null);
         PlatformStarter.startApplicationAsync();
       } catch (Exception e) {
         throw new RuntimeException("FAILED TO START CMDLINE IJ", e);

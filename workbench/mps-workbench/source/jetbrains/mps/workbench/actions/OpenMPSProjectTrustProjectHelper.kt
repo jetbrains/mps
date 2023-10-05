@@ -5,7 +5,7 @@ import com.intellij.DynamicBundle
 import com.intellij.codeWithMe.ClientId
 import com.intellij.ide.IdeBundle
 import com.intellij.ide.impl.*
-import com.intellij.ide.impl.TrustedProjectsStatistics.Companion.NEW_PROJECT_OPEN_OR_IMPORT_CHOICE
+import com.intellij.ide.impl.TrustedProjectsStatistics.NEW_PROJECT_OPEN_OR_IMPORT_CHOICE
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.application.ApplicationNamesInfo
 import com.intellij.openapi.application.EDT
