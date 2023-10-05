@@ -123,7 +123,6 @@
       <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
-      <concept id="1179832490862" name="jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement" flags="nn" index="2NvLDW" />
       <concept id="1227096620180" name="jetbrains.mps.lang.typesystem.structure.ReferenceMessageTarget" flags="ng" index="2OE7Q9">
         <reference id="1227096645744" name="linkDeclaration" index="2OEe5H" />
       </concept>
@@ -170,6 +169,7 @@
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
+      <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
@@ -474,19 +474,17 @@
     <property role="TrG5h" value="typeof_ModelExpression" />
     <property role="3GE5qa" value="expression" />
     <node concept="3clFbS" id="hRNnbDx" role="18ibNy">
-      <node concept="2NvLDW" id="hRNn_Mx" role="3cqZAp">
-        <node concept="mw_s8" id="hRNnARb" role="1ZfhKB">
-          <node concept="2c44tf" id="hRNnARc" role="mwGJk">
-            <node concept="3uibUv" id="hRNnNSJ" role="2c44tc">
-              <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+      <node concept="1Z5TYs" id="5hxrPJSoI3H" role="3cqZAp">
+        <node concept="mw_s8" id="5hxrPJSoI45" role="1ZfhK$">
+          <node concept="1Z2H0r" id="5hxrPJSoI41" role="mwGJk">
+            <node concept="1YBJjd" id="5hxrPJSoI4S" role="1Z2MuG">
+              <ref role="1YBMHb" node="hRNnbDy" resolve="expression" />
             </node>
           </node>
         </node>
-        <node concept="mw_s8" id="hRNn_M$" role="1ZfhK$">
-          <node concept="1Z2H0r" id="hRNn$ku" role="mwGJk">
-            <node concept="1YBJjd" id="hRNn$W3" role="1Z2MuG">
-              <ref role="1YBMHb" node="hRNnbDy" resolve="expression" />
-            </node>
+        <node concept="mw_s8" id="5hxrPJSoI5A" role="1ZfhKB">
+          <node concept="2c44tf" id="5hxrPJSoI5y" role="mwGJk">
+            <node concept="H_c77" id="5hxrPJSoI64" role="2c44tc" />
           </node>
         </node>
       </node>

@@ -298,6 +298,9 @@
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
+      <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
+        <child id="1145404616321" name="leftExpression" index="2JrQYb" />
+      </concept>
       <concept id="3648723375513868532" name="jetbrains.mps.lang.smodel.structure.NodePointer_ResolveOperation" flags="ng" index="Vyspw" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI">
@@ -1452,7 +1455,9 @@
               </node>
               <node concept="Vyspw" id="61M21yhdRYb" role="2OqNvi">
                 <node concept="2OqwBi" id="2dcS_OZv31S" role="Vysub">
-                  <node concept="1jGwE1" id="2dcS_OZv31T" role="2Oq$k0" />
+                  <node concept="2JrnkZ" id="3An98w8Tzeq" role="2Oq$k0">
+                    <node concept="1jGwE1" id="2dcS_OZv31T" role="2JrQYb" />
+                  </node>
                   <node concept="liA8E" id="2dcS_OZv31U" role="2OqNvi">
                     <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
                   </node>

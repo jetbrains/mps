@@ -153,6 +153,119 @@
       <unit id="1835794636205154554" at="14,0,42,0" name="jetbrains.mps.lang.smodel.test.InsertPrevSiblingOperation_Focus_Test" />
     </file>
   </root>
+  <root nodeRef="r:3deabf90-227b-4dd7-a1b3-e4735e4a0270(jetbrains.mps.lang.smodel.test)/6080263412727109213">
+    <file name="SModelExpressionType_Test.java">
+      <node id="6080263412727109213" at="25,38,26,60" concept="11" />
+      <node id="6080263412727118172" at="30,77,31,68" concept="2" />
+      <node id="6080263412727118260" at="34,77,35,68" concept="2" />
+      <node id="6080263412727118414" at="38,77,39,68" concept="2" />
+      <node id="6080263412727118566" at="42,77,43,68" concept="2" />
+      <node id="6080263412727118634" at="46,77,47,68" concept="2" />
+      <node id="6080263412727118704" at="50,77,51,68" concept="2" />
+      <node id="6080263412727109213" at="56,52,57,19" concept="11" />
+      <node id="6080263412727118172" at="60,79,61,0" concept="9" />
+      <node id="6080263412727118172" at="62,30,63,67" concept="6" />
+      <node id="6080263412727118172" at="63,67,64,65" concept="6" />
+      <node id="6080263412727118172" at="64,65,65,209" concept="2" />
+      <node id="6080263412727118260" at="68,79,69,0" concept="9" />
+      <node id="6080263412727118260" at="70,30,71,67" concept="6" />
+      <node id="6080263412727118260" at="71,67,72,65" concept="6" />
+      <node id="6080263412727118260" at="72,65,73,209" concept="2" />
+      <node id="6080263412727118414" at="76,79,77,0" concept="9" />
+      <node id="6080263412727118414" at="78,30,79,67" concept="6" />
+      <node id="6080263412727118414" at="79,67,80,65" concept="6" />
+      <node id="6080263412727118414" at="80,65,81,209" concept="2" />
+      <node id="6080263412727118566" at="84,79,85,0" concept="9" />
+      <node id="6080263412727118566" at="86,30,87,67" concept="6" />
+      <node id="6080263412727118566" at="87,67,88,65" concept="6" />
+      <node id="6080263412727118566" at="88,65,89,209" concept="2" />
+      <node id="6080263412727118634" at="92,79,93,0" concept="9" />
+      <node id="6080263412727118634" at="94,30,95,67" concept="6" />
+      <node id="6080263412727118634" at="95,67,96,65" concept="6" />
+      <node id="6080263412727118634" at="96,65,97,209" concept="2" />
+      <node id="6080263412727118704" at="100,79,101,0" concept="9" />
+      <node id="6080263412727118704" at="102,30,103,67" concept="6" />
+      <node id="6080263412727118704" at="103,67,104,65" concept="6" />
+      <node id="6080263412727118704" at="104,65,105,209" concept="2" />
+      <node id="6080263412727109213" at="22,0,24,0" concept="10" trace="ourParametersCacheExtension" />
+      <node id="6080263412727109213" at="25,0,28,0" concept="0" trace="SModelExpressionType_Test#()V" />
+      <node id="6080263412727109213" at="56,0,59,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6080263412727118172" at="29,0,33,0" concept="5" trace="test_ErrorMessagesCheck6080263412727118172#()V" />
+      <node id="6080263412727118260" at="33,0,37,0" concept="5" trace="test_ErrorMessagesCheck6080263412727118260#()V" />
+      <node id="6080263412727118414" at="37,0,41,0" concept="5" trace="test_ErrorMessagesCheck6080263412727118414#()V" />
+      <node id="6080263412727118566" at="41,0,45,0" concept="5" trace="test_ErrorMessagesCheck6080263412727118566#()V" />
+      <node id="6080263412727118634" at="45,0,49,0" concept="5" trace="test_ErrorMessagesCheck6080263412727118634#()V" />
+      <node id="6080263412727118704" at="49,0,53,0" concept="5" trace="test_ErrorMessagesCheck6080263412727118704#()V" />
+      <node id="6080263412727118172" at="61,0,66,9" concept="2" />
+      <node id="6080263412727118260" at="69,0,74,9" concept="2" />
+      <node id="6080263412727118414" at="77,0,82,9" concept="2" />
+      <node id="6080263412727118566" at="85,0,90,9" concept="2" />
+      <node id="6080263412727118634" at="93,0,98,9" concept="2" />
+      <node id="6080263412727118704" at="101,0,106,9" concept="2" />
+      <node id="6080263412727118172" at="60,0,68,0" concept="5" trace="test_ErrorMessagesCheck6080263412727118172#()V" />
+      <node id="6080263412727118260" at="68,0,76,0" concept="5" trace="test_ErrorMessagesCheck6080263412727118260#()V" />
+      <node id="6080263412727118414" at="76,0,84,0" concept="5" trace="test_ErrorMessagesCheck6080263412727118414#()V" />
+      <node id="6080263412727118566" at="84,0,92,0" concept="5" trace="test_ErrorMessagesCheck6080263412727118566#()V" />
+      <node id="6080263412727118634" at="92,0,100,0" concept="5" trace="test_ErrorMessagesCheck6080263412727118634#()V" />
+      <node id="6080263412727118704" at="100,0,108,0" concept="5" trace="test_ErrorMessagesCheck6080263412727118704#()V" />
+      <scope id="6080263412727109213" at="25,38,26,60" />
+      <scope id="6080263412727118172" at="30,77,31,68" />
+      <scope id="6080263412727118260" at="34,77,35,68" />
+      <scope id="6080263412727118414" at="38,77,39,68" />
+      <scope id="6080263412727118566" at="42,77,43,68" />
+      <scope id="6080263412727118634" at="46,77,47,68" />
+      <scope id="6080263412727118704" at="50,77,51,68" />
+      <scope id="6080263412727109213" at="56,52,57,19" />
+      <scope id="6080263412727109213" at="25,0,28,0" />
+      <scope id="6080263412727109213" at="56,0,59,0">
+        <var name="owner" id="6080263412727109213" />
+      </scope>
+      <scope id="6080263412727118172" at="62,30,65,209">
+        <var name="nodeToCheck" id="6080263412727118172" />
+        <var name="operation" id="6080263412727118172" />
+      </scope>
+      <scope id="6080263412727118260" at="70,30,73,209">
+        <var name="nodeToCheck" id="6080263412727118260" />
+        <var name="operation" id="6080263412727118260" />
+      </scope>
+      <scope id="6080263412727118414" at="78,30,81,209">
+        <var name="nodeToCheck" id="6080263412727118414" />
+        <var name="operation" id="6080263412727118414" />
+      </scope>
+      <scope id="6080263412727118566" at="86,30,89,209">
+        <var name="nodeToCheck" id="6080263412727118566" />
+        <var name="operation" id="6080263412727118566" />
+      </scope>
+      <scope id="6080263412727118634" at="94,30,97,209">
+        <var name="nodeToCheck" id="6080263412727118634" />
+        <var name="operation" id="6080263412727118634" />
+      </scope>
+      <scope id="6080263412727118704" at="102,30,105,209">
+        <var name="nodeToCheck" id="6080263412727118704" />
+        <var name="operation" id="6080263412727118704" />
+      </scope>
+      <scope id="6080263412727118172" at="29,0,33,0" />
+      <scope id="6080263412727118260" at="33,0,37,0" />
+      <scope id="6080263412727118414" at="37,0,41,0" />
+      <scope id="6080263412727118566" at="41,0,45,0" />
+      <scope id="6080263412727118634" at="45,0,49,0" />
+      <scope id="6080263412727118704" at="49,0,53,0" />
+      <scope id="6080263412727118172" at="60,79,66,9" />
+      <scope id="6080263412727118260" at="68,79,74,9" />
+      <scope id="6080263412727118414" at="76,79,82,9" />
+      <scope id="6080263412727118566" at="84,79,90,9" />
+      <scope id="6080263412727118634" at="92,79,98,9" />
+      <scope id="6080263412727118704" at="100,79,106,9" />
+      <scope id="6080263412727118172" at="60,0,68,0" />
+      <scope id="6080263412727118260" at="68,0,76,0" />
+      <scope id="6080263412727118414" at="76,0,84,0" />
+      <scope id="6080263412727118566" at="84,0,92,0" />
+      <scope id="6080263412727118634" at="92,0,100,0" />
+      <scope id="6080263412727118704" at="100,0,108,0" />
+      <unit id="6080263412727109213" at="54,0,110,0" name="jetbrains.mps.lang.smodel.test.SModelExpressionType_Test$TestBody" />
+      <unit id="6080263412727109213" at="20,0,111,0" name="jetbrains.mps.lang.smodel.test.SModelExpressionType_Test" />
+    </file>
+  </root>
   <root nodeRef="r:3deabf90-227b-4dd7-a1b3-e4735e4a0270(jetbrains.mps.lang.smodel.test)/931754141965165653">
     <file name="SModelExpressionsDataFlow_Test.java">
       <node id="931754141965165653" at="25,43,26,60" concept="11" />
