@@ -19,9 +19,9 @@
   <name>MPS BaseLanguage Support</name>
   <description>Integrate MPS BaseLanguage (Java) into IDEA PSI Model</description>
   <category>Custom Languages</category>
-  <version>2023.2</version>
+  <version>2023.3</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="232.1" until-build="233.1"/>
+  <idea-version since-build="233.1" until-build="241.1"/>
   <depends>jetbrains.mps.core</depends>
 
   <xi:include href="JavaPlatform.xml"/>

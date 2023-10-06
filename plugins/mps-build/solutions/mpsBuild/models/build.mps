@@ -119,7 +119,7 @@
         <property id="8618885170173601779" name="head" index="2Ry0Am" />
         <child id="8618885170173601778" name="tail" index="2Ry0An" />
       </concept>
-      <concept id="2591537044435828007" name="jetbrains.mps.build.structure.BuildSource_CompilablePart" flags="ngI" index="Saw0h">
+      <concept id="2591537044435828007" name="jetbrains.mps.build.structure.BuildSource_CompilablePart" flags="ng" index="Saw0h">
         <property id="7687809870062809395" name="withKotlin" index="ZpmtF" />
       </concept>
       <concept id="2591537044435828004" name="jetbrains.mps.build.structure.BuildLayout_CompileOutputOf" flags="ng" index="Saw0i">
@@ -188,7 +188,7 @@
       <concept id="4701820937132281259" name="jetbrains.mps.build.structure.BuildCustomWorkflow" flags="ng" index="1y0Vig">
         <child id="4701820937132281260" name="parts" index="1y0Vin" />
       </concept>
-      <concept id="4701820937132344003" name="jetbrains.mps.build.structure.BuildLayout_Container" flags="ngI" index="1y1bJS">
+      <concept id="4701820937132344003" name="jetbrains.mps.build.structure.BuildLayout_Container" flags="ng" index="1y1bJS">
         <child id="7389400916848037006" name="children" index="39821P" />
       </concept>
       <concept id="5610619299013057363" name="jetbrains.mps.build.structure.BuildLayout_ImportContent" flags="ng" index="3ygNvl">
@@ -252,7 +252,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -2109,8 +2109,8 @@
       <property role="TrG5h" value="version.minor" />
       <node concept="aVJcg" id="3AMbuf1a7Og" role="aVJcv">
         <node concept="NbPM2" id="3AMbuf1a7Oh" role="aVJcq">
-          <node concept="3Mxwew" id="2Xo7CZuChTe" role="3MwsjC">
-            <property role="3MwjfP" value="2" />
+          <node concept="3Mxwew" id="R7riyKzrv3" role="3MwsjC">
+            <property role="3MwjfP" value="3" />
           </node>
         </node>
       </node>
@@ -25374,9 +25374,9 @@
       <property role="2_Ic$$" value="true" />
       <property role="2_Ic$B" value="true" />
       <property role="2_GNG2" value="1024" />
+      <property role="3fwGa$" value="IntelliJ" />
       <property role="2_Ic$y" value="mps-workbench-specific" />
       <property role="TZNOO" value="11" />
-      <property role="3fwGa$" value="IntelliJ" />
       <node concept="3qWCbU" id="79wGYVsEpzE" role="2_Ic$A">
         <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       </node>
@@ -51260,6 +51260,19 @@
           </node>
         </node>
       </node>
+      <node concept="2GAZfH" id="77NErR6MeF7" role="398b2p">
+        <node concept="TIC1d" id="77NErR6MeF8" role="2GAZfG">
+          <node concept="398BVA" id="77NErR6MeF9" role="TIC6M">
+            <ref role="398BVh" node="5lGJ4TaEM2_" resolve="plugin_home" />
+            <node concept="2Ry0Ak" id="77NErR6MeFa" role="iGT6I">
+              <property role="2Ry0Am" value="migration-platform" />
+              <node concept="2Ry0Ak" id="77NErR6MeIO" role="2Ry0An">
+                <property role="2Ry0Am" value="sources" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
       <node concept="nCB5N" id="4MIWQsbUgDE" role="nCB5Z">
         <ref role="nCB5Y" node="1WZWsoqIz7X" resolve="migrations-runtime" />
       </node>
@@ -51274,19 +51287,6 @@
       </node>
       <node concept="nCB5N" id="5k1kyoRZ6l1" role="nCB5Z">
         <ref role="nCB5Y" node="6UWbfHq6Ys7" resolve="mps-project-check" />
-      </node>
-      <node concept="2GAZfH" id="77NErR6MeF7" role="398b2p">
-        <node concept="TIC1d" id="77NErR6MeF8" role="2GAZfG">
-          <node concept="398BVA" id="77NErR6MeF9" role="TIC6M">
-            <ref role="398BVh" node="5lGJ4TaEM2_" resolve="plugin_home" />
-            <node concept="2Ry0Ak" id="77NErR6MeFa" role="iGT6I">
-              <property role="2Ry0Am" value="migration-platform" />
-              <node concept="2Ry0Ak" id="77NErR6MeIO" role="2Ry0An">
-                <property role="2Ry0Am" value="sources" />
-              </node>
-            </node>
-          </node>
-        </node>
       </node>
     </node>
     <node concept="13uUGR" id="77ZqjhZbLRO" role="1l3spa">

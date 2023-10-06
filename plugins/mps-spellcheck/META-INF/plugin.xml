@@ -4,9 +4,9 @@
   <id>jetbrains.mps.editor.spellcheck</id>
   <name>Spell Check in MPS Editors</name>
   <description>Integrate IDEA spell-checking mechanism with MPS Editors</description>
-  <version>2023.2</version>
+  <version>2023.3</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="232.1" until-build="233.1"/>
+  <idea-version since-build="233.1" until-build="241.1"/>
 
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="/" hide="true"/>
