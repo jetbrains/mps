@@ -169,6 +169,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
   public void findNotMigrated(final ProgressMonitor m, final Iterable<ScriptApplied> migrationsToCheck, final Processor<Problem> processor) {
     // FIXME MigrationTrigger calls this with model read. What about MigrationTask and PostCheckError cases?
     myProject.getRepository().getModelAccess().runReadAction(() -> {
+      // FIXME MigrationTrigger got AppliedScript with all necessary groupings already!
       Iterable<SModule> modules = Sequence.fromIterable(migrationsToCheck).select(new _FunctionTypes._return_P1_E0<SModule, ScriptApplied>() {
         public SModule invoke(ScriptApplied it) {
           return it.getModule(myProject.getRepository());
