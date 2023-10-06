@@ -9721,24 +9721,6 @@
           </node>
         </node>
       </node>
-      <node concept="PMmxH" id="18X2O0FAHnl" role="3EZMnx">
-        <ref role="PMmxG" node="2yYXHtlqd9N" resolve="TypeConstraints_Component" />
-        <node concept="pkWqt" id="1ACpgrx4Yv7" role="pqm2j">
-          <node concept="3clFbS" id="1ACpgrx4Yv8" role="2VODD2">
-            <node concept="3clFbF" id="1ACpgrx4YvE" role="3cqZAp">
-              <node concept="2OqwBi" id="1ACpgrx4YvF" role="3clFbG">
-                <node concept="2OqwBi" id="1ACpgrx4YvG" role="2Oq$k0">
-                  <node concept="pncrf" id="1ACpgrx4YvH" role="2Oq$k0" />
-                  <node concept="3Tsc0h" id="1ACpgrx4YvI" role="2OqNvi">
-                    <ref role="3TtcxE" to="hcm8:2yYXHtlqd9E" resolve="constraints" />
-                  </node>
-                </node>
-                <node concept="3GX2aA" id="1ACpgrx4YvJ" role="2OqNvi" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="3F1sOY" id="18X2O0FAHnm" role="3EZMnx">
         <ref role="1NtTu8" to="hcm8:2yYXHtl6JuU" resolve="assignment" />
         <node concept="pkWqt" id="18X2O0FAHnn" role="pqm2j">

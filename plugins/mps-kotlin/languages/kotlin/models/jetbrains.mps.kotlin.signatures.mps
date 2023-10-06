@@ -630,7 +630,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5wKFMyp9pEl" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="4Cl0D9h_zK1" role="jymVt" />
@@ -668,7 +668,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4Cl0D9h_ve3" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="1CCu0CNzlFj" role="jymVt" />
@@ -910,7 +910,7 @@
             <node concept="2OqwBi" id="4Cl0D9h$BRH" role="37vLTJ">
               <node concept="Xjq3P" id="4Cl0D9h$B5h" role="2Oq$k0" />
               <node concept="2OwXpG" id="4Cl0D9h$CNG" role="2OqNvi">
-                <ref role="2Oxat5" node="4Cl0D9h$$$v" resolve="extensionReceiverString" />
+                <ref role="2Oxat5" node="4Cl0D9h$$$v" resolve="signature" />
               </node>
             </node>
           </node>

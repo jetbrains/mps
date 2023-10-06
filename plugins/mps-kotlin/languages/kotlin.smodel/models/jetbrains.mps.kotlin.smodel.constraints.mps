@@ -11,7 +11,6 @@
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7" name="jetbrains.mps.lang.context" version="0" />
     <use id="ad93155d-79b2-4759-b10c-55123e763903" name="jetbrains.mps.lang.messages" version="0" />
-    <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -210,7 +209,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="3UQQw2lDstl" role="2OqNvi">
-                <ref role="37wK5l" to="sjya:3UQQw2lyAN6" resolve="build" />
+                <ref role="37wK5l" to="sjya:3UQQw2lyAN6" resolve="buildScope" />
                 <node concept="35c_gC" id="7XIUL68CKKF" role="37wK5m">
                   <ref role="35c_gD" to="tpce:f_TJgxE" resolve="LinkDeclaration" />
                 </node>

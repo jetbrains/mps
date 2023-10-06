@@ -11,7 +11,6 @@
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <use id="515552c7-fcc0-4ab4-9789-2f3c49344e85" name="jetbrains.mps.baseLanguage.varVariable" version="0" />
-    <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
@@ -33,8 +32,6 @@
     <import index="mx11" ref="r:fa9de6a8-90b7-4d2a-a9a9-a40c05cf603b(jetbrains.mps.kotlin.api.types.identifiers)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
-    <import index="v18h" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:kotlin(MPS.IDEA/)" />
-    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -1353,7 +1350,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="3UQQw2lCp_q" role="2OqNvi">
-                    <ref role="37wK5l" to="sjya:3UQQw2lxSjd" resolve="buildSeq" />
+                    <ref role="37wK5l" to="sjya:3UQQw2lxSjd" resolve="buildScopes" />
                   </node>
                 </node>
               </node>
@@ -6545,7 +6542,7 @@
       <node concept="3clFbF" id="2lcJzkAEvhN" role="3cqZAp">
         <node concept="2OqwBi" id="2lcJzkAEvr7" role="3clFbG">
           <node concept="1YBJjd" id="2lcJzkAEvhM" role="2Oq$k0">
-            <ref role="1YBMHb" node="2lcJzkAEvcu" resolve="iSignatureScopeProvider" />
+            <ref role="1YBMHb" node="2lcJzkAEvcu" resolve="scopeProvider" />
           </node>
           <node concept="2qgKlT" id="2lcJzkAExdv" role="2OqNvi">
             <ref role="37wK5l" to="hez:7DyvjiA20yV" resolve="collectScope" />
@@ -6553,7 +6550,7 @@
               <ref role="3cqZAo" node="2lcJzkAEAcI" resolve="collector" />
             </node>
             <node concept="1YBJjd" id="2lcJzkAPGQA" role="37wK5m">
-              <ref role="1YBMHb" node="2lcJzkAEvcu" resolve="iSignatureScopeProvider" />
+              <ref role="1YBMHb" node="2lcJzkAEvcu" resolve="scopeProvider" />
             </node>
           </node>
         </node>
@@ -6708,7 +6705,7 @@
                         <node concept="2OqwBi" id="2lcJzkAEUdD" role="2Oq$k0">
                           <property role="hSjvv" value="true" />
                           <node concept="37vLTw" id="2lcJzkAEUdE" role="2Oq$k0">
-                            <ref role="3cqZAo" node="2lcJzkAEDjF" resolve="it" />
+                            <ref role="3cqZAo" node="2lcJzkAEDjF" resolve="scope" />
                           </node>
                           <node concept="liA8E" id="2lcJzkAEUdF" role="2OqNvi">
                             <ref role="37wK5l" to="sjya:6Ijh6DJDHKP" resolve="getElements" />

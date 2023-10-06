@@ -5145,7 +5145,7 @@
                 <node concept="1rXfSq" id="1u8LXP7U_ux" role="3clFbG">
                   <ref role="37wK5l" node="1u8LXP7R1ei" resolve="putConcepts" />
                   <node concept="35c_gC" id="1u8LXP7VaFp" role="37wK5m">
-                    <ref role="35c_gD" to="hcm8:1502VugCR$H" resolve="MemberNavigationOperation" />
+                    <ref role="35c_gD" to="hcm8:1502VugCR$H" resolve="MemberNavigationExpression" />
                   </node>
                   <node concept="35c_gC" id="1u8LXP7VloU" role="37wK5m">
                     <ref role="35c_gD" to="hcm8:2yYXHtl6JkR" resolve="ClassMemberTarget" />

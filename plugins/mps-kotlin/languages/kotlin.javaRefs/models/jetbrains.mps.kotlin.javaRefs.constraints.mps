@@ -11,10 +11,8 @@
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="0" />
     <use id="3ad5badc-1d9c-461c-b7b1-fa2fcd0a0ae7" name="jetbrains.mps.lang.context" version="0" />
     <use id="ad93155d-79b2-4759-b10c-55123e763903" name="jetbrains.mps.lang.messages" version="0" />
-    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
-    <use id="515552c7-fcc0-4ab4-9789-2f3c49344e85" name="jetbrains.mps.baseLanguage.varVariable" version="0" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -26,7 +24,6 @@
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
     <import index="akzu" ref="r:13fdb710-e0ae-40a1-880c-e26a8ee8d411(jetbrains.mps.kotlin.baseLanguage.toKotlin)" />
     <import index="sjya" ref="r:8a99441d-539c-493f-b884-7b6b084d024b(jetbrains.mps.kotlin.scopes.signed)" />
-    <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="5m2i" ref="r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)" implicit="true" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
@@ -381,7 +378,7 @@
                       <ref role="1Y3XeK" to="o8zo:3rV3sBXetA0" resolve="FilteringScope" />
                       <node concept="3Tm1VV" id="SMakwjFj2F" role="1B3o_S" />
                       <node concept="37vLTw" id="SMakwjFj2G" role="37wK5m">
-                        <ref role="3cqZAo" node="SMakwjFj2y" resolve="scope" />
+                        <ref role="3cqZAo" node="SMakwjFj2y" resolve="constructors" />
                       </node>
                       <node concept="3clFb_" id="SMakwjFj2H" role="jymVt">
                         <property role="TrG5h" value="isExcluded" />
@@ -798,7 +795,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="3UQQw2lzm04" role="2OqNvi">
-                <ref role="37wK5l" to="sjya:3UQQw2lyAN6" resolve="build" />
+                <ref role="37wK5l" to="sjya:3UQQw2lyAN6" resolve="buildScope" />
                 <node concept="35c_gC" id="ccTy7zCpRQ" role="37wK5m">
                   <ref role="35c_gD" to="tpee:fz3uBXI" resolve="VariableDeclaration" />
                 </node>

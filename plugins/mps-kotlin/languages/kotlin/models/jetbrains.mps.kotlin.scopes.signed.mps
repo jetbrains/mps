@@ -2805,8 +2805,8 @@
               <ref role="3uigEE" to="tbhz:6jE_6duQcYm" resolve="VisibilityAccess" />
             </node>
             <node concept="2YIFZM" id="4gXGtaE6G0I" role="33vP2m">
-              <ref role="37wK5l" node="6yo46g2Ckt4" resolve="getBaseAccesToType" />
-              <ref role="1Pybhc" node="2t96AMoHiRy" resolve="SignatureScopeHelper" />
+              <ref role="37wK5l" node="6yo46g2Ckt4" resolve="getBaseAccessToType" />
+              <ref role="1Pybhc" node="2t96AMoHiRy" resolve="KotlinScopesHelper" />
               <node concept="37vLTw" id="4gXGtaE6G0J" role="37wK5m">
                 <ref role="3cqZAo" node="6JJpax4Z6e5" resolve="myContextNode" />
               </node>
@@ -2947,8 +2947,8 @@
               <ref role="3uigEE" to="tbhz:6jE_6duQcYm" resolve="VisibilityAccess" />
             </node>
             <node concept="2YIFZM" id="6yo46g2N4Bd" role="33vP2m">
-              <ref role="37wK5l" node="6yo46g2Ckt4" resolve="getBaseAccesToType" />
-              <ref role="1Pybhc" node="2t96AMoHiRy" resolve="SignatureScopeHelper" />
+              <ref role="37wK5l" node="6yo46g2Ckt4" resolve="getBaseAccessToType" />
+              <ref role="1Pybhc" node="2t96AMoHiRy" resolve="KotlinScopesHelper" />
               <node concept="37vLTw" id="6yo46g2N4Be" role="37wK5m">
                 <ref role="3cqZAo" node="6JJpax4Z6e5" resolve="myContextNode" />
               </node>
@@ -3140,7 +3140,7 @@
       <node concept="3Tm1VV" id="1VgEGDngiA1" role="1B3o_S" />
       <node concept="3clFbS" id="1VgEGDngiA2" role="3clF47">
         <node concept="1VxSAg" id="1VgEGDngiA3" role="3cqZAp">
-          <ref role="37wK5l" node="1VgEGDngiAf" resolve="ReceiverTypeScope" />
+          <ref role="37wK5l" node="1VgEGDngiAf" resolve="TypeExtensionsScope" />
           <node concept="37vLTw" id="1VgEGDngiA4" role="37wK5m">
             <ref role="3cqZAo" node="1VgEGDngiA8" resolve="contextNode" />
           </node>
@@ -3385,7 +3385,7 @@
                         <node concept="2ShNRf" id="7p20EZ0vD_A" role="37wK5m">
                           <node concept="1pGfFk" id="7p20EZ0vFLL" role="2ShVmc">
                             <property role="373rjd" value="true" />
-                            <ref role="37wK5l" node="3HHsmlLs8I9" resolve="ReceiverTypeScope.ReceiverTypeFilter" />
+                            <ref role="37wK5l" node="3HHsmlLs8I9" resolve="TypeExtensionsScope.ReceiverTypeFilter" />
                           </node>
                         </node>
                       </node>
@@ -6941,7 +6941,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3UQQw2lCRI6" role="2OqNvi">
-              <ref role="37wK5l" node="3UQQw2lxSjd" resolve="buildSeq" />
+              <ref role="37wK5l" node="3UQQw2lxSjd" resolve="buildScopes" />
             </node>
           </node>
         </node>
@@ -6978,7 +6978,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3UQQw2lCSOI" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2tJIrI" id="qzPrsXWYXM" role="jymVt" />
@@ -7008,7 +7008,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3UQQw2lCK4v" role="2OqNvi">
-              <ref role="37wK5l" node="3UQQw2lxSjd" resolve="buildSeq" />
+              <ref role="37wK5l" node="3UQQw2lxSjd" resolve="buildScopes" />
             </node>
           </node>
         </node>
@@ -7039,7 +7039,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3UQQw2lCKKe" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2tJIrI" id="3HHsmlLENAg" role="jymVt" />
@@ -7128,7 +7128,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3pL_ro05dWf" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2tJIrI" id="5VmLFJfCAPe" role="jymVt" />
@@ -7159,7 +7159,7 @@
       <node concept="37vLTG" id="5VmLFJfC_U5" role="3clF46">
         <property role="TrG5h" value="stubProducer" />
         <node concept="3uibUv" id="5VmLFJfC_U6" role="1tU5fm">
-          <ref role="3uigEE" node="LTtTkxK5e0" resolve="StubSignatureProducer" />
+          <ref role="3uigEE" node="LTtTkxK5e0" resolve="KindPriorityPropertyScope.StubSignatureProducer" />
         </node>
       </node>
       <node concept="3clFbS" id="5VmLFJfC_U7" role="3clF47">
@@ -7208,7 +7208,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3pL_ro05r2q" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2tJIrI" id="7XIUL68CkJT" role="jymVt" />
@@ -7250,7 +7250,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3UQQw2l696T" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2YIFZL" id="3HHsmlLWFc$" role="jymVt">
@@ -7320,7 +7320,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3pL_ro062IC" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2tJIrI" id="6yo46g2Cjb5" role="jymVt" />
@@ -7509,7 +7509,7 @@
             <ref role="37wK5l" node="3DLhCcp$n9e" resolve="withReceiver" />
             <node concept="Rm8GO" id="3DLhCcp$XCI" role="37wK5m">
               <ref role="Rm8GQ" node="3DLhCcp$fTE" resolve="CALL" />
-              <ref role="1Px2BO" node="3DLhCcp$ftV" resolve="Kind" />
+              <ref role="1Px2BO" node="3DLhCcp$ftV" resolve="NavigationHelper.Kind" />
             </node>
             <node concept="37vLTw" id="3DLhCcp$X0y" role="37wK5m">
               <ref role="3cqZAo" node="3UQQw2l3W8H" resolve="referenceNode" />
@@ -7620,7 +7620,7 @@
             <ref role="37wK5l" node="3DLhCcp$n9e" resolve="withReceiver" />
             <node concept="Rm8GO" id="3DLhCcp$RF5" role="37wK5m">
               <ref role="Rm8GQ" node="3DLhCcp$gem" resolve="REFERENCE" />
-              <ref role="1Px2BO" node="3DLhCcp$ftV" resolve="Kind" />
+              <ref role="1Px2BO" node="3DLhCcp$ftV" resolve="NavigationHelper.Kind" />
             </node>
             <node concept="37vLTw" id="3DLhCcp$SUG" role="37wK5m">
               <ref role="3cqZAo" node="3UQQw2l3ZP$" resolve="referenceNode" />
@@ -7944,7 +7944,7 @@
                       <ref role="3cqZAo" node="3DLhCcp$nao" resolve="ifMemberReceiver" />
                     </node>
                     <node concept="37vLTw" id="3DLhCcp$OM1" role="2SgHGx">
-                      <ref role="3cqZAo" node="3DLhCcp$OLO" resolve="node" />
+                      <ref role="3cqZAo" node="3DLhCcp$OLO" resolve="operand" />
                     </node>
                   </node>
                 </node>
@@ -7978,7 +7978,7 @@
       <node concept="37vLTG" id="3DLhCcp$p_P" role="3clF46">
         <property role="TrG5h" value="kind" />
         <node concept="3uibUv" id="3DLhCcp$pTM" role="1tU5fm">
-          <ref role="3uigEE" node="3DLhCcp$ftV" resolve="Kind" />
+          <ref role="3uigEE" node="3DLhCcp$ftV" resolve="NavigationHelper.Kind" />
         </node>
       </node>
       <node concept="37vLTG" id="3DLhCcp$nai" role="3clF46">
@@ -8063,7 +8063,7 @@
               <node concept="2OqwBi" id="3DLhCcp$mcQ" role="37vLTJ">
                 <node concept="Xjq3P" id="3DLhCcp$mu$" role="2Oq$k0" />
                 <node concept="2OwXpG" id="3DLhCcp$mcT" role="2OqNvi">
-                  <ref role="2Oxat5" node="3DLhCcp$k9A" resolve="myNavigationConcept" />
+                  <ref role="2Oxat5" node="3DLhCcp$k9A" resolve="navigationConcept" />
                 </node>
               </node>
               <node concept="37vLTw" id="3DLhCcp$k9K" role="37vLTx">
@@ -8076,7 +8076,7 @@
               <node concept="2OqwBi" id="3DLhCcp$lQy" role="37vLTJ">
                 <node concept="Xjq3P" id="3DLhCcp$m5X" role="2Oq$k0" />
                 <node concept="2OwXpG" id="3DLhCcp$lQ_" role="2OqNvi">
-                  <ref role="2Oxat5" node="3DLhCcp$kuq" resolve="myOperandLink" />
+                  <ref role="2Oxat5" node="3DLhCcp$kuq" resolve="operandLink" />
                 </node>
               </node>
               <node concept="37vLTw" id="3DLhCcp$ku$" role="37vLTx">
@@ -8089,7 +8089,7 @@
               <node concept="2OqwBi" id="3DLhCcp$l95" role="37vLTJ">
                 <node concept="Xjq3P" id="3DLhCcp$luq" role="2Oq$k0" />
                 <node concept="2OwXpG" id="3DLhCcp$l98" role="2OqNvi">
-                  <ref role="2Oxat5" node="3DLhCcp$kK_" resolve="myTargetLink" />
+                  <ref role="2Oxat5" node="3DLhCcp$kK_" resolve="targetLink" />
                 </node>
               </node>
               <node concept="37vLTw" id="3DLhCcp$kKJ" role="37vLTx">
@@ -8101,7 +8101,7 @@
       </node>
       <node concept="QsSxf" id="3DLhCcp$fTE" role="Qtgdg">
         <property role="TrG5h" value="CALL" />
-        <ref role="37wK5l" node="3DLhCcp$hIP" resolve="Kind" />
+        <ref role="37wK5l" node="3DLhCcp$hIP" resolve="NavigationHelper.Kind" />
         <node concept="35c_gC" id="3DLhCcp$j3Z" role="37wK5m">
           <ref role="35c_gD" to="hcm8:2yYXHtl6Jhg" resolve="NavigationOperation" />
         </node>
@@ -8116,7 +8116,7 @@
       </node>
       <node concept="QsSxf" id="3DLhCcp$gem" role="Qtgdg">
         <property role="TrG5h" value="REFERENCE" />
-        <ref role="37wK5l" node="3DLhCcp$hIP" resolve="Kind" />
+        <ref role="37wK5l" node="3DLhCcp$hIP" resolve="NavigationHelper.Kind" />
         <node concept="35c_gC" id="3DLhCcp$jKP" role="37wK5m">
           <ref role="35c_gD" to="hcm8:1502VugCR$H" resolve="MemberNavigationExpression" />
         </node>
@@ -8225,7 +8225,7 @@
             <node concept="2OqwBi" id="3UQQw2lzC1h" role="37vLTJ">
               <node concept="Xjq3P" id="3UQQw2lzCrE" role="2Oq$k0" />
               <node concept="2OwXpG" id="3UQQw2lzC1k" role="2OqNvi">
-                <ref role="2Oxat5" node="3UQQw2lzAuX" resolve="myContainingLink" />
+                <ref role="2Oxat5" node="3UQQw2lzAuX" resolve="containingLink" />
               </node>
             </node>
             <node concept="37vLTw" id="3UQQw2lzAv7" role="37vLTx">
@@ -8238,7 +8238,7 @@
             <node concept="2OqwBi" id="3UQQw2lzCO2" role="37vLTJ">
               <node concept="Xjq3P" id="3UQQw2lzDew" role="2Oq$k0" />
               <node concept="2OwXpG" id="3UQQw2lzCO5" role="2OqNvi">
-                <ref role="2Oxat5" node="3UQQw2lzBkp" resolve="myReferenceNode" />
+                <ref role="2Oxat5" node="3UQQw2lzBkp" resolve="referenceNode" />
               </node>
             </node>
             <node concept="37vLTw" id="3UQQw2lzBkz" role="37vLTx">
@@ -8267,7 +8267,7 @@
       <node concept="3clFbS" id="3UQQw2l_pw4" role="3clF47">
         <node concept="3clFbF" id="3DLhCcpzZzx" role="3cqZAp">
           <node concept="2YIFZM" id="3DLhCcp$36P" role="3clFbG">
-            <ref role="37wK5l" node="3UQQw2l3W8F" resolve="getReceiver" />
+            <ref role="37wK5l" node="3UQQw2l3W8F" resolve="withCallReceiver" />
             <ref role="1Pybhc" node="3UQQw2l6fUj" resolve="NavigationHelper" />
             <node concept="37vLTw" id="3UQQw2lA0kA" role="37wK5m">
               <ref role="3cqZAo" node="3UQQw2lzBkp" resolve="referenceNode" />
@@ -8304,7 +8304,7 @@
               <node concept="3clFbS" id="3DLhCcp_$So" role="1bW5cS">
                 <node concept="3clFbF" id="3DLhCcp_$Sp" role="3cqZAp">
                   <node concept="1rXfSq" id="3DLhCcp_$Sq" role="3clFbG">
-                    <ref role="37wK5l" node="3DLhCcp_eJA" resolve="useContext" />
+                    <ref role="37wK5l" node="3DLhCcp_eJA" resolve="useHierarchy" />
                   </node>
                 </node>
               </node>
@@ -8364,7 +8364,7 @@
         <node concept="3clFbH" id="3DLhCcp_7x6" role="3cqZAp" />
         <node concept="3cpWs6" id="3UQQw2lA_XU" role="3cqZAp">
           <node concept="2YIFZM" id="3UQQw2lAxni" role="3cqZAk">
-            <ref role="37wK5l" node="3UQQw2l3ZPy" resolve="getMemberReceiver" />
+            <ref role="37wK5l" node="3UQQw2l3ZPy" resolve="withMemberReceiver" />
             <ref role="1Pybhc" node="3UQQw2l6fUj" resolve="NavigationHelper" />
             <node concept="37vLTw" id="3UQQw2lAyeT" role="37wK5m">
               <ref role="3cqZAo" node="3UQQw2lzBkp" resolve="referenceNode" />
@@ -8401,7 +8401,7 @@
               <node concept="3clFbS" id="3pL_ro0palO" role="1bW5cS">
                 <node concept="3clFbF" id="3DLhCcp_wBT" role="3cqZAp">
                   <node concept="1rXfSq" id="3DLhCcp_wBR" role="3clFbG">
-                    <ref role="37wK5l" node="3DLhCcp_eJA" resolve="useContext" />
+                    <ref role="37wK5l" node="3DLhCcp_eJA" resolve="useHierarchy" />
                   </node>
                 </node>
               </node>
@@ -8545,7 +8545,7 @@
             <node concept="2OqwBi" id="3DLhCcp_jM5" role="37vLTJ">
               <node concept="Xjq3P" id="3DLhCcp_hCx" role="2Oq$k0" />
               <node concept="2OwXpG" id="3DLhCcp_m4e" role="2OqNvi">
-                <ref role="2Oxat5" node="3pL_ro0pjmf" resolve="useContext" />
+                <ref role="2Oxat5" node="3pL_ro0pjmf" resolve="useHierarchy" />
               </node>
             </node>
           </node>
@@ -8710,7 +8710,7 @@
             <node concept="2OqwBi" id="3UQQw2lYgim" role="37vLTJ">
               <node concept="Xjq3P" id="3UQQw2lYfij" role="2Oq$k0" />
               <node concept="2OwXpG" id="3UQQw2lYhjH" role="2OqNvi">
-                <ref role="2Oxat5" node="3UQQw2lY9NA" resolve="receiverMembers" />
+                <ref role="2Oxat5" node="3UQQw2lY9NA" resolve="useExtensionMembers" />
               </node>
             </node>
           </node>
@@ -8730,7 +8730,7 @@
       <node concept="37vLTG" id="3UQQw2lznUX" role="3clF46">
         <property role="TrG5h" value="stubProducer" />
         <node concept="3uibUv" id="3UQQw2lzq9S" role="1tU5fm">
-          <ref role="3uigEE" node="LTtTkxK5e0" resolve="StubSignatureProducer" />
+          <ref role="3uigEE" node="LTtTkxK5e0" resolve="KindPriorityPropertyScope.StubSignatureProducer" />
         </node>
       </node>
       <node concept="3clFbS" id="3UQQw2lxGEI" role="3clF47">
@@ -8738,7 +8738,7 @@
           <node concept="3KEzu6" id="3UQQw2lzxRT" role="3cpWs9">
             <property role="TrG5h" value="prioritizedKind" />
             <node concept="2YIFZM" id="3UQQw2lzxS4" role="33vP2m">
-              <ref role="1Pybhc" node="2t96AMoHiRy" resolve="SignatureScopeHelper" />
+              <ref role="1Pybhc" node="2t96AMoHiRy" resolve="KotlinScopesHelper" />
               <ref role="37wK5l" node="7XIUL68CjH4" resolve="getAccessorKindFor" />
               <node concept="1PxgMI" id="3UQQw2lzPXC" role="37wK5m">
                 <property role="1BlNFB" value="true" />
@@ -9142,7 +9142,7 @@
                           </node>
                         </node>
                         <node concept="37vLTw" id="3UQQw2lDSTa" role="3clFbw">
-                          <ref role="3cqZAo" node="3UQQw2lDST6" resolve="static" />
+                          <ref role="3cqZAo" node="3UQQw2lDST6" resolve="isStatic" />
                         </node>
                       </node>
                       <node concept="3clFbH" id="3UQQw2lDZGb" role="3cqZAp" />
@@ -9167,7 +9167,7 @@
                                       <ref role="3cqZAo" node="3UQQw2lwANg" resolve="contextNode" />
                                     </node>
                                     <node concept="37vLTw" id="3UQQw2lYp84" role="37wK5m">
-                                      <ref role="3cqZAo" node="3UQQw2lY9NA" resolve="receiverMembers" />
+                                      <ref role="3cqZAo" node="3UQQw2lY9NA" resolve="useExtensionMembers" />
                                     </node>
                                   </node>
                                 </node>
@@ -9256,7 +9256,7 @@
             </node>
           </node>
           <node concept="37vLTw" id="3DLhCcpAgMR" role="3clFbw">
-            <ref role="3cqZAo" node="3pL_ro0pjmf" resolve="useContext" />
+            <ref role="3cqZAo" node="3pL_ro0pjmf" resolve="useHierarchy" />
           </node>
         </node>
         <node concept="3clFbH" id="3UQQw2l$hcw" role="3cqZAp" />
@@ -9378,7 +9378,7 @@
             <node concept="2OqwBi" id="3UQQw2lywfs" role="37wK5m">
               <node concept="Xjq3P" id="3UQQw2lyvFp" role="2Oq$k0" />
               <node concept="liA8E" id="3UQQw2lywSR" role="2OqNvi">
-                <ref role="37wK5l" node="3UQQw2lxSjd" resolve="buildSeq" />
+                <ref role="37wK5l" node="3UQQw2lxSjd" resolve="buildScopes" />
               </node>
             </node>
           </node>
@@ -9412,7 +9412,7 @@
               <property role="373rjd" value="true" />
               <ref role="37wK5l" node="1VgEGDn$V6G" resolve="SignatureScopeAsScope" />
               <node concept="1rXfSq" id="3UQQw2lyG9k" role="37wK5m">
-                <ref role="37wK5l" node="3UQQw2lyq9T" resolve="build" />
+                <ref role="37wK5l" node="3UQQw2lyq9T" resolve="buildSigScope" />
               </node>
               <node concept="37vLTw" id="3UQQw2lyH5B" role="37wK5m">
                 <ref role="3cqZAo" node="3UQQw2lyBvF" resolve="filterConcept" />

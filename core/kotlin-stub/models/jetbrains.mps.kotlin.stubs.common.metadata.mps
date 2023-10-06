@@ -3580,9 +3580,9 @@
               <node concept="3cpWs6" id="4s8_snvhf7B" role="3cqZAp">
                 <node concept="2pJPEk" id="4s8_snvhf7z" role="3cqZAk">
                   <node concept="2pJPED" id="4s8_snvhf7v" role="2pJPEn">
-                    <ref role="2pJxaS" to="hcm8:1502VugCR$H" resolve="MemberNavigationOperation" />
+                    <ref role="2pJxaS" to="hcm8:1502VugCR$H" resolve="MemberNavigationExpression" />
                     <node concept="2pIpSj" id="4s8_snvhf7t" role="2pJxcM">
-                      <ref role="2pIpSl" to="hcm8:1502Vug_mWz" resolve="operand" />
+                      <ref role="2pIpSl" to="hcm8:1QSyUt0NM5s" resolve="operand" />
                       <node concept="2pJPED" id="4s8_snvhf7r" role="28nt2d">
                         <ref role="2pJxaS" to="hcm8:2yYXHtl6Jl1" resolve="ReceiverType" />
                         <node concept="2pIpSj" id="4s8_snvhf6l" role="2pJxcM">
@@ -4665,7 +4665,7 @@
                         <node concept="1PxgMI" id="7hs8Xth2seL" role="2Oq$k0">
                           <property role="1BlNFB" value="true" />
                           <node concept="chp4Y" id="7hs8Xth2u4h" role="3oSUPX">
-                            <ref role="cht4Q" to="hcm8:2yYXHtlqd9D" resolve="ITypeConstrained" />
+                            <ref role="cht4Q" to="hcm8:2yYXHtlqd9D" resolve="ITypeConstrainedParameters" />
                           </node>
                           <node concept="37vLTw" id="7hs8Xth2nq1" role="1m5AlR">
                             <ref role="3cqZAo" node="30flKNosj_C" resolve="node" />

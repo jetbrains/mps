@@ -1645,7 +1645,7 @@
             <property role="2bfB8j" value="true" />
             <property role="373rjd" value="true" />
             <ref role="1Y3XeK" node="6Ijh6DJEylY" resolve="TypeExpander" />
-            <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+            <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
             <node concept="3Tm1VV" id="4Cl0D9h8FM5" role="1B3o_S" />
           </node>
         </node>

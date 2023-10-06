@@ -1026,7 +1026,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="3UQQw2lzm04" role="2OqNvi">
-                <ref role="37wK5l" to="sjya:3UQQw2lyAN6" resolve="build" />
+                <ref role="37wK5l" to="sjya:3UQQw2lyAN6" resolve="buildScope" />
                 <node concept="35c_gC" id="ccTy7zCpRQ" role="37wK5m">
                   <ref role="35c_gD" to="hcm8:213J8chjiEQ" resolve="IVariableIdentifier" />
                 </node>

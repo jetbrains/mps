@@ -44,7 +44,6 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="i8bi" ref="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)" />
-    <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
     <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" implicit="true" />
     <import index="vdrq" ref="r:85354f47-14fd-40e6-a7cc-2d1aa842c4cd(jetbrains.mps.lang.text.behavior)" implicit="true" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" implicit="true" />
@@ -2396,7 +2395,7 @@
         </node>
         <node concept="3clFbF" id="1pHfrwYZ4_L" role="3cqZAp">
           <node concept="BsUDl" id="1pHfrwYZ4_J" role="3clFbG">
-            <ref role="37wK5l" node="58ySuOXQyMi" resolve="getLocalSignatureScope" />
+            <ref role="37wK5l" node="58ySuOXQyMi" resolve="collectPublicScope" />
             <node concept="37vLTw" id="1pHfrwYZATe" role="37wK5m">
               <ref role="3cqZAo" node="3HHsmlM7h1P" resolve="collector" />
             </node>
@@ -4257,7 +4256,7 @@
                     <node concept="BsUDl" id="3HHsmlLUSla" role="3clFbG">
                       <ref role="37wK5l" node="18X2O0Fy9mO" resolve="collectDeclarationsBefore" />
                       <node concept="37vLTw" id="3HHsmlLUSz6" role="37wK5m">
-                        <ref role="3cqZAo" node="3HHsmlLURGD" resolve="collector" />
+                        <ref role="3cqZAo" node="3HHsmlLURGD" resolve="sigCollector" />
                       </node>
                       <node concept="37vLTw" id="3HHsmlLUSR1" role="37wK5m">
                         <ref role="3cqZAo" node="1pHfrwYTuI7" resolve="childNode" />
@@ -4268,7 +4267,7 @@
                     <node concept="BsUDl" id="3HHsmlLUTzs" role="3clFbG">
                       <ref role="37wK5l" node="1yTI8p9qmpS" resolve="collectSpecificScope" />
                       <node concept="37vLTw" id="3HHsmlLUTHu" role="37wK5m">
-                        <ref role="3cqZAo" node="3HHsmlLURGD" resolve="collector" />
+                        <ref role="3cqZAo" node="3HHsmlLURGD" resolve="sigCollector" />
                       </node>
                       <node concept="37vLTw" id="3HHsmlLUU5K" role="37wK5m">
                         <ref role="3cqZAo" node="1pHfrwYTuI7" resolve="childNode" />
@@ -6867,7 +6866,7 @@
                   <node concept="2ShNRf" id="2t96AMoHn3C" role="25WWJ7">
                     <node concept="1pGfFk" id="2t96AMoHn3D" role="2ShVmc">
                       <property role="373rjd" value="true" />
-                      <ref role="37wK5l" to="sjya:1VgEGDngi_Z" resolve="ReceiverTypeScope" />
+                      <ref role="37wK5l" to="sjya:1VgEGDngi_Z" resolve="TypeExtensionsScope" />
                       <node concept="37vLTw" id="2t96AMoHn3E" role="37wK5m">
                         <ref role="3cqZAo" node="5TR7730mKGP" resolve="contextNode" />
                       </node>
@@ -19659,7 +19658,7 @@
               </node>
             </node>
             <node concept="liA8E" id="3UQQw2lBS7M" role="2OqNvi">
-              <ref role="37wK5l" to="sjya:3UQQw2lxSjd" resolve="buildSeq" />
+              <ref role="37wK5l" to="sjya:3UQQw2lxSjd" resolve="buildScopes" />
             </node>
           </node>
         </node>
@@ -22572,13 +22571,16 @@
       <property role="13i0it" value="true" />
       <property role="TrG5h" value="getOperand" />
       <node concept="3Tm1VV" id="3xTUo83z_Pa" role="1B3o_S" />
+      <node concept="3Tqbb2" id="3xTUo83z_VZ" role="3clF45">
+        <ref role="ehGHo" to="hcm8:2yYXHtl6Jjg" resolve="IExpression" />
+      </node>
       <node concept="3clFbS" id="3xTUo83z_Pc" role="3clF47">
         <node concept="3cpWs6" id="3xTUo83zAm$" role="3cqZAp">
           <node concept="10Nm6u" id="1QSyUt0O4XJ" role="3cqZAk" />
         </node>
       </node>
       <node concept="2AHcQZ" id="1QSyUt0NYmt" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
       <node concept="P$JXv" id="1QSyUt0NYmq" role="lGtFl">
         <node concept="TZ5HI" id="1QSyUt0NYmr" role="3nqlJM">
@@ -22588,9 +22590,6 @@
             </node>
           </node>
         </node>
-      </node>
-      <node concept="3Tqbb2" id="3xTUo83z_VZ" role="3clF45">
-        <ref role="ehGHo" to="hcm8:2yYXHtl6Jjg" resolve="IExpression" />
       </node>
     </node>
     <node concept="13hLZK" id="4vugIDegogR" role="13h7CW">
@@ -27444,7 +27443,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4Cl0D9hzH6f" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="4q11fqJVtP5" role="jymVt">
@@ -38225,7 +38224,7 @@
       <node concept="3clFbS" id="58ySuOXQyLh" role="3clF47">
         <node concept="3clFbF" id="58ySuOXQyLi" role="3cqZAp">
           <node concept="BsUDl" id="58ySuOXQyLj" role="3clFbG">
-            <ref role="37wK5l" node="58ySuOXQyMi" resolve="getLocalSignatureScope" />
+            <ref role="37wK5l" node="58ySuOXQyMi" resolve="collectPublicScope" />
             <node concept="37vLTw" id="58ySuOXQyLk" role="37wK5m">
               <ref role="3cqZAo" node="58ySuOXQyMe" resolve="collector" />
             </node>
