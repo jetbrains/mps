@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,14 @@
 package jetbrains.mps.workbench.action;
 
 import com.intellij.openapi.actionSystem.ActionGroup;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.util.NlsActions.ActionText;
+import com.intellij.openapi.util.registry.Registry;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.workbench.ActionPlace;
 import jetbrains.mps.logging.Logger;
@@ -40,6 +42,8 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
   private final String myId;
   private boolean myIsInternal = false;
   private boolean myIsAlwaysVisible = true;
+
+  private ActionUpdateThread myUpdateThread;
 
   public BaseGroup(String name) {
     this(name, name);
@@ -143,6 +147,23 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
       }
     }
   }
+
+  /**
+   * @param updateInBackground when {@code false}, update of the action runs in EDT thread
+   */
+  public final void updateInBackground(boolean updateInBackground) {
+    myUpdateThread = updateInBackground ? ActionUpdateThread.BGT : ActionUpdateThread.EDT;
+  }
+
+  @Override
+  public @NotNull ActionUpdateThread getActionUpdateThread() {
+    // copied from BaseAction
+    if (myUpdateThread == null) {
+      myUpdateThread = Registry.is("mps.actions.old_edt", false) ? ActionUpdateThread.OLD_EDT : ActionUpdateThread.EDT;
+    }
+    return myUpdateThread;
+  }
+
 
   // copied from BaseAction.getModelAccess()
   @Deprecated(forRemoval = true, since = "2021.3")

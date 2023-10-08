@@ -51,11 +51,9 @@ import com.intellij.openapi.application.ModalityState;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
-import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.language.LanguageRuntime;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.util.Processor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.ide.migration.wizard.MigrationWizard;
@@ -64,6 +62,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.openapi.application.Application;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.smodel.language.LanguageRuntime;
 
 /**
  * At the first startup, migration is not required
@@ -331,7 +330,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
         } finally {
           myMigrationBlock.unblockMigrationsCheck(scheduledBlockCause);
         }
-      }, ModalityState.NON_MODAL, myProject.getDisposed());
+      }, ModalityState.nonModal(), myProject.getDisposed());
     });
   }
 
@@ -346,43 +345,17 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       progress.start("Pre-Update Check", 10);
       final List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
       ListSequence.fromList(modules).addSequence(Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject)));
-      // XXX this code originates from RunPreUpdateCheck UI action, which exposes too much of migration internal
-      //    stuff for no reason, and now is part of this class.
-      // FIXME there's pretty similar code in MigrationRegistryImpl.getAllSteps, perhaps, worth a refactoring!
-      // FIXME and in ExecuteRerunnableMigrations!
-      // XXX quite suspicious use - why do we collect MigrationScripts here for all version languages just to collect MS necessary
-      //    for migration with MigrationSetup next to this activity?
-      Iterable<ScriptApplied> checks = ListSequence.fromList(modules).translate(new _FunctionTypes._return_P1_E0<Iterable<ScriptApplied>, SModule>() {
-        public Iterable<ScriptApplied> invoke(final SModule module) {
-          List<MigrationScript> scripts = ListSequence.fromList(new ArrayList<MigrationScript>());
-          new SLanguageHierarchy(myLanguageRegistry, module.getUsedLanguages()).forEachExtended(new SLanguageHierarchy.HierarchyVisitor() {
-            @Override
-            public void accept(LanguageRuntime lang) {
-              for (int ver = 0; ver < lang.getVersion(); ver++) {
-                MigrationScript script = MigrationScriptReference.resolve(lang, ver);
-                if (script != null) {
-                  ListSequence.fromList(scripts).addElement(script);
-                }
-              }
-            }
-
-            @Override
-            public void acceptMissing(@NotNull SLanguage missingRuntime) {
-              // FIXME shall I report missing language and fail pre-check?!
-            }
-          });
-
-          return ListSequence.fromList(scripts).select(new _FunctionTypes._return_P1_E0<ScriptApplied, MigrationScript>() {
-            public ScriptApplied invoke(MigrationScript script) {
-              return new ScriptApplied(module, script);
-            }
-          });
+      // we're in model read here, safe to instantiate MigrationSetup
+      MigrationSetup migrationSetup = new MigrationSetup(myMpsProject);
+      // limit to migrations; guess, assumption here is 'refactoring' scripts are not mandatory
+      Iterable<ScriptApplied> checks = CollectionSequence.fromCollection(migrationSetup.getModuleMigrations()).where((it) -> it.scriptReference() instanceof MigrationScriptReference).translate(new _FunctionTypes._return_P1_E0<Iterable<ScriptApplied>, AppliedScript>() {
+        public Iterable<ScriptApplied> invoke(AppliedScript it) {
+          return it.asLegacy();
         }
       });
       progress.advance(3);
 
-      // we're in model read here, safe to instantiate MigrationSetup
-      MigrationSetup migrationSetup = new MigrationSetup(myMpsProject);
+      // FIXME 'checks' argument is odd; and we'd rather check scriptPresent() first, to make sure there're migrations for language versions in use
       new MigrationCheckerImpl(myMpsProject, migrationSetup).findNotMigrated(progress.subTask(7), checks, new Processor<Problem>() {
         public boolean process(Problem p) {
           ListSequence.fromList(problems).addElement(p);
@@ -393,14 +366,14 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     if (ListSequence.fromList(problems).isEmpty()) {
       // I hate this code, but it's too much pain to bother with showProblems() refactoring
       // NON_MODAL here is just because showProblem() uses it
-      ApplicationManager.getApplication().invokeLater(() -> myNotifications.showPreUpdateCheckOk(), ModalityState.NON_MODAL);
+      ApplicationManager.getApplication().invokeLater(() -> myNotifications.showPreUpdateCheckOk(), ModalityState.nonModal());
     } else {
       showProblems(problems);
     }
   }
 
   private void showProblems(final List<IssueKindReportItem> problems) {
-    ApplicationManager.getApplication().invokeLater(() -> myMpsProject.getRepository().getModelAccess().runReadAction(() -> myIssueReporter.showProblems(problems)), ModalityState.NON_MODAL);
+    ApplicationManager.getApplication().invokeLater(() -> myMpsProject.getRepository().getModelAccess().runReadAction(() -> myIssueReporter.showProblems(problems)), ModalityState.nonModal());
   }
 
   private enum MigrationResult {

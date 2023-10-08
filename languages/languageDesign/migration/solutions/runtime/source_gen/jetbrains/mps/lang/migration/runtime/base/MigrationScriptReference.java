@@ -10,8 +10,15 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.project.Project;
+import java.util.Map;
+import java.util.List;
 import org.jetbrains.annotations.Nullable;
+import java.util.function.Consumer;
+import java.util.HashMap;
 import jetbrains.mps.smodel.language.LanguageRuntime;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 @GeneratedClass(node = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)/3309033097910132680", model = "528ff3b9-5fc4-40dd-931f-c6ce3650640e/r:f69c3fa1-0e30-4980-84e2-190ae44e4c3d(jetbrains.mps.lang.migration.runtime/jetbrains.mps.lang.migration.runtime.base)")
 public class MigrationScriptReference implements BaseScriptReference<MigrationScript> {
@@ -71,6 +78,38 @@ public class MigrationScriptReference implements BaseScriptReference<MigrationSc
   @Deprecated(forRemoval = true, since = "2023.1")
   public MigrationScript resolve(Project p, boolean silent) {
     return resolve(p.getComponent(LanguageRegistry.class), this);
+  }
+
+  /**
+   * 
+   * 
+   * @return all scripts available in the deployed languages, grouped per declaring language and sorted by language version, ascending.
+   */
+  public static Map<SLanguage, List<MigrationScript>> availableScripts(LanguageRegistry languageRegistry, @Nullable final Consumer<MigrationScriptReference> missingVersion) {
+    final Map<SLanguage, List<MigrationScript>> rv = new HashMap<>();
+    languageRegistry.withAvailableLanguages((LanguageRuntime lr) -> {
+      MigrationAspectDescriptor mad = lr.getAspect(MigrationAspectDescriptor.class);
+      if (mad == null) {
+        return;
+      }
+      final int actualLangVersion = Math.max(lr.getVersion(), 0);
+      List<MigrationScript> collected = ListSequence.fromList(new ArrayList<>());
+      for (int v = 0; v < actualLangVersion; v++) {
+        MigrationScript script = mad.getScript(v);
+        if (script == null) {
+          if (missingVersion != null) {
+            missingVersion.accept(new MigrationScriptReference(lr.getIdentity(), v));
+          }
+        } else {
+          ListSequence.fromList(collected).addElement(script);
+        }
+      }
+      if (ListSequence.fromList(collected).isNotEmpty()) {
+        ListSequence.fromList(collected).sort(Comparator.comparingInt((MigrationScript ms) -> ms.getReference().getFromVersion()), true);
+        rv.put(lr.getIdentity(), collected);
+      }
+    });
+    return rv;
   }
 
   @Nullable

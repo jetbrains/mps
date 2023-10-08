@@ -782,28 +782,31 @@
       <node id="8083021555458500334" at="45,5,46,66" concept="9" />
       <node id="8083021555458500335" at="47,22,48,21" concept="10" />
       <node id="654429666461751998" at="51,5,52,65" concept="9" />
-      <node id="4753172061859438882" at="53,5,54,16" concept="10" />
-      <node id="4753172061859438885" at="57,96,58,194" concept="9" />
-      <node id="4753172061859438893" at="58,194,59,134" concept="4" />
+      <node id="1434233794499072208" at="53,22,54,21" concept="10" />
+      <node id="1434233794499072208" at="56,24,57,21" concept="10" />
+      <node id="4753172061859438882" at="59,5,60,16" concept="10" />
+      <node id="4753172061859438885" at="63,96,64,194" concept="9" />
+      <node id="4753172061859438893" at="64,194,65,134" concept="4" />
       <node id="4753172061859438882" at="41,95,44,5" concept="7" />
       <node id="8083021555458500335" at="46,66,49,7" concept="7" />
-      <node id="654429666461751998" at="50,5,53,5" concept="1" />
+      <node id="1434233794499072208" at="52,65,55,7" concept="7" />
+      <node id="1434233794499072208" at="55,7,58,7" concept="7" />
       <node id="4753172061859438882" at="28,0,32,0" concept="8" trace="isDumbAware#()Z" />
       <node id="4753172061859438882" at="32,0,36,0" concept="8" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <node id="4753172061859438882" at="36,0,40,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="4753172061859438882" at="56,0,61,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="4753172061859438882" at="62,0,67,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="4753172061859438882" at="22,0,28,0" concept="2" trace="MakeModule_Action#()V" />
       <node id="8083021555458500334" at="44,5,50,5" concept="1" />
-      <node id="4753172061859438882" at="40,0,56,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="654429666461751998" at="50,5,59,5" concept="1" />
+      <node id="4753172061859438882" at="40,0,62,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <scope id="4753172061859438882" at="29,32,30,16" />
       <scope id="4753172061859438906" at="33,87,34,143" />
       <scope id="4753172061859438882" at="37,89,38,85" />
       <scope id="4753172061859438882" at="42,53,43,19" />
       <scope id="8083021555458500335" at="47,22,48,21" />
-      <scope id="654429666461751998" at="51,5,52,65">
-        <var name="p" id="654429666461751998" />
-      </scope>
-      <scope id="4753172061859438882" at="57,96,59,134">
+      <scope id="1434233794499072208" at="53,22,54,21" />
+      <scope id="1434233794499072208" at="56,24,57,21" />
+      <scope id="4753172061859438882" at="63,96,65,134">
         <var name="modules" id="4753172061859438886" />
       </scope>
       <scope id="4753172061859438882" at="22,30,26,29" />
@@ -819,17 +822,20 @@
       <scope id="8083021555458500334" at="45,5,49,7">
         <var name="p" id="8083021555458500334" />
       </scope>
-      <scope id="4753172061859438882" at="56,0,61,0">
+      <scope id="4753172061859438882" at="62,0,67,0">
         <var name="_params" id="4753172061859438882" />
         <var name="event" id="4753172061859438882" />
       </scope>
       <scope id="4753172061859438882" at="22,0,28,0" />
-      <scope id="4753172061859438882" at="41,95,54,16" />
-      <scope id="4753172061859438882" at="40,0,56,0">
+      <scope id="654429666461751998" at="51,5,58,7">
+        <var name="p" id="654429666461751998" />
+      </scope>
+      <scope id="4753172061859438882" at="41,95,60,16" />
+      <scope id="4753172061859438882" at="40,0,62,0">
         <var name="_params" id="4753172061859438882" />
         <var name="event" id="4753172061859438882" />
       </scope>
-      <unit id="4753172061859438882" at="19,0,62,0" name="jetbrains.mps.ide.make.actions.MakeModule_Action" />
+      <unit id="4753172061859438882" at="19,0,68,0" name="jetbrains.mps.ide.make.actions.MakeModule_Action" />
     </file>
     <file name="Make_ApplicationPlugin.java">
       <node id="4753172061859438882" at="39,43,40,39" concept="4" />

@@ -551,6 +551,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("isPopup", 0x11a7d5719b0L).type(PrimitiveTypeId.BOOLEAN).origin("1213283637680").done();
     b.property("isInvisibleWhenDisabled", 0x11b5b35bb9dL).type(PrimitiveTypeId.BOOLEAN).origin("1217005992861").done();
     b.property("isPluginXmlGroup", 0x5861c0ccac3f6fc8L).type(PrimitiveTypeId.BOOLEAN).origin("6368583333374291912").done();
+    b.property("updateInBackground", 0x59ac3b09dbc09a0cL).type(PrimitiveTypeId.BOOLEAN).origin("6461604478897396236").done();
     b.aggregate("modifier", 0x1188f17ec8aL).target(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181de4920dL).optional(true).ordered(true).multiple(true).origin("1204991552650").done();
     b.aggregate("contents", 0x1190f76acfcL).target(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f747b3dL).optional(false).ordered(true).multiple(false).origin("1207145245948").done();
     b.alias("Group");

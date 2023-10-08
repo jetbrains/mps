@@ -13,21 +13,19 @@ import java.util.HashSet;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.workbench.action.ApplicationPlugin;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.project.Project;
+import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import java.util.ArrayList;
+import java.util.Map;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import java.util.TreeMap;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import java.util.List;
 import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
-import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.util.NameUtil;
+import java.util.List;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import java.util.Comparator;
+import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.Nullable;
 
 public class LanguageMigrations_ActionGroup extends GeneratedActionGroup {
@@ -39,42 +37,31 @@ public class LanguageMigrations_ActionGroup extends GeneratedActionGroup {
     setIsInternal(false);
     setMnemonic("l".charAt(0));
     setPopup(true);
+    updateInBackground(true);
   }
   public void doUpdate(AnActionEvent event) {
     removeAll();
-    Project project = event.getData(MPSCommonDataKeys.PROJECT);
-    if (project == null) {
-      return;
-    }
-    jetbrains.mps.project.Project mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    Project mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
     if (mpsProject == null) {
       return;
     }
 
-    final ArrayList<DefaultActionGroup> allGroupsUnsorted = new ArrayList<>();
+    final Map<String, DefaultActionGroup> groupByLanguage = new TreeMap<>();
     final LanguageRegistry languageRegistry = mpsProject.getComponent(LanguageRegistry.class);
-    // calculate extended once, not per-module 
-    List<SLanguage> allUsedLanguages = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(mpsProject)).translate((this0) -> this0.getUsedLanguages()).distinct().toList();
-    new SLanguageHierarchy(languageRegistry, allUsedLanguages).forEachExtended(new SLanguageHierarchy.HierarchyVisitor() {
-      @Override
-      public void accept(LanguageRuntime lr) {
-        String name = lr.getNamespace();
-        DefaultActionGroup langRootsGroup = new DefaultActionGroup(NameUtil.compactNamespace(name), true);
-
-        for (int ver = 0; ver < lr.getVersion(); ver++) {
-          MigrationScript script = MigrationScriptReference.resolve(lr, ver);
-          if (script != null) {
-            langRootsGroup.add(new RunMigration(script));
-          }
+    Map<SLanguage, List<MigrationScript>> availableScripts = MigrationScriptReference.availableScripts(languageRegistry, null);
+    for (SLanguage lang : SetSequence.fromSet(availableScripts.keySet())) {
+      List<MigrationScript> scripts = availableScripts.get(lang);
+      String langName = lang.getQualifiedName();
+      final DefaultActionGroup g = new DefaultActionGroup(NameUtil.compactNamespace(langName), true);
+      // groups get sorted by language name due to TreeMap
+      groupByLanguage.put(langName, g);
+      ListSequence.fromList(scripts).select((script) -> new RunMigration(script)).visitAll(new _FunctionTypes._void_P1_E0<RunMigration>() {
+        public void invoke(@NotNull RunMigration action) {
+          g.add(action);
         }
-        if (langRootsGroup.getChildrenCount() > 0) {
-          allGroupsUnsorted.add(langRootsGroup);
-        }
-      }
-    });
-
-    allGroupsUnsorted.sort(Comparator.comparing(DefaultActionGroup::getTemplateText));
-    allGroupsUnsorted.forEach(LanguageMigrations_ActionGroup.this::add);
+      });
+    }
+    groupByLanguage.values().forEach(LanguageMigrations_ActionGroup.this::add);
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);
     }

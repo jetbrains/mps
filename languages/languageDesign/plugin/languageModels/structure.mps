@@ -221,6 +221,11 @@
       <property role="IQ2nx" value="6368583333374291912" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
+    <node concept="1TJgyi" id="5AGeKBrK9Cc" role="1TKVEl">
+      <property role="IQ2nx" value="6461604478897396236" />
+      <property role="TrG5h" value="updateInBackground" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
     <node concept="1QGGSu" id="4Q8sAA5iJPP" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/actionGroupNew.png" />
     </node>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -166,11 +166,13 @@ class IdInfoReadHelper {
       // happens e.g. in templates, where macros produce legitimate nodes but are attached to a throw-away instance
       // still, it's better not to do this
       final String msg = String.format(m2, index, myInterfaceConcepts.get(index));
-//      if (RuntimeFlags.isInternalMode()) {
-//        Logger.getLogger(getClass()).error(msg, new Throwable());
-//      } else {
+      if (RuntimeFlags.isInternalMode()) {
         Logger.getLogger(getClass()).warning(msg);
-//      }
+      } else {
+        // As it's quite common MPS pattern is to use instances of abstract nodes in templates, no reason to nag LDs while
+        // reading model files. Instead, shall annoy them in the editor
+        Logger.getLogger(getClass()).info(msg);
+      }
       return MetaAdapterByDeclaration.asInstanceConcept(myInterfaceConcepts.get(index));
     }
     assert myConcepts.containsKey(index) : String.format("Bad concept index key: %s", index);

@@ -47,6 +47,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
         for (int i = 0; i < currentDepVersion; i++) {
           scripts[i] = new RefactoringScriptReference((Language) dep, i);
         }
+        myModule2Scripts.put(dep.getModuleReference(), scripts);
       }
       int ver = Math.max(((AbstractModule) module).getDependencyVersion(dep, false), 0);
 

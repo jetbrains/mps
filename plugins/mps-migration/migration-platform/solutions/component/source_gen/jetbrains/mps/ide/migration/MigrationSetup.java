@@ -51,6 +51,8 @@ public class MigrationSetup {
     ListSequence.fromList(myModuleMigrations).addSequence(ListSequence.fromList(msc.result(mpsProject)));
     ListSequence.fromList(myModuleMigrations).addSequence(ListSequence.fromList(rsc.result(mpsProject)));
 
+    // FIXME MigrationScriptCollector walks hierarchy of LR, and can report missing LR. 
+    //      Guess, we'd better track broken LR hierarchy in addition to broken deps/imports, and have it as an extra value to check here
     myBrokenDepsOfProjectModules = false;
     myNeedImportVersionUpdate = false;
     // not to check once for every module later

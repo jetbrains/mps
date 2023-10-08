@@ -40,6 +40,8 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
   }
 
   /*package*/ void fillFor(final SModule module) {
+    // XXX perhaps, shall start with MSR.availableScripts(), collected once, mapped per language, to use deployed MS instances as a sole source of data?
+    //    However, need to deal with subsequent script reloading anyway.
     final SLanguageHierarchy lh = new SLanguageHierarchy(myLanguageRegistry, module.getUsedLanguages());
     lh.forEachExtended(new SLanguageHierarchy.HierarchyVisitor() {
       @Override
@@ -57,6 +59,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
             langScripts[i] = new MigrationScriptReference(lang, i);
           }
           // alternatively, may keep a Pair<MSR,List>([]?) right in myLanguage2Scripts, to avoid extra myGroupedByScript map
+          myLanguage2Scripts.put(lang, langScripts);
         }
         final int engagedVer = MigrationModuleUtil.getUsedLanguageVersion(module, lang);
 
