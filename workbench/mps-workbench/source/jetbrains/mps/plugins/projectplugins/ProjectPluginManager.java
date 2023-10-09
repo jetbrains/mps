@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,6 +62,8 @@ public class ProjectPluginManager extends BasePluginManager<BaseProjectPlugin> i
   private final Project myProject;
   private final jetbrains.mps.project.Project myMpsProject;
 
+  // FIXME in 2023.3, we changed tool<> template to use this method instead of project.getComponent(). In few releases from 23.3
+  //       can replace ProjectComponent with project service
   public static ProjectPluginManager getInstance(Project ideaProject) {
     return ideaProject.getComponent(ProjectPluginManager.class);
   }
