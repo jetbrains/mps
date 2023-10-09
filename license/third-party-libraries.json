@@ -151,7 +151,7 @@
 }, {
   "name" : "Grazie AI",
   "url" : "https://packages.jetbrains.team/maven/p/grazi/grazie-platform-public/",
-  "version" : "0.2.164",
+  "version" : "0.2.181",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
 }, {
@@ -589,7 +589,7 @@
 }, {
   "name" : "Xerial SQLite JDBC",
   "url" : "https://github.com/xerial/sqlite-jdbc",
-  "version" : "3.40.0.0",
+  "version" : "3.41.2.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/xerial/sqlite-jdbc/blob/master/LICENSE"
 }, {
@@ -619,7 +619,7 @@
 }, {
   "name" : "blockmap",
   "url" : "https://github.com/JetBrains/plugin-blockmap-patches",
-  "version" : "1.0.6",
+  "version" : "1.0.7",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/plugin-blockmap-patches/blob/master/LICENSE"
 }, {
@@ -745,13 +745,13 @@
 }, {
   "name" : "jediterm-core",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.18",
+  "version" : "3.23",
   "license" : "LGPL 3",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
   "name" : "jediterm-ui",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.18",
+  "version" : "3.23",
   "license" : "LGPL 3",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
@@ -767,6 +767,12 @@
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/jps-javac-extension/blob/master/LICENSE.txt"
 }, {
+  "name" : "jsch",
+  "url" : "https://www.jcraft.com/jsch/",
+  "version" : "6.5.0.202303070854-r",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://www.jcraft.com/jsch/LICENSE.txt"
+}, {
   "name" : "jsoup",
   "url" : "https://jsoup.org",
   "version" : "1.16.1",
@@ -775,9 +781,15 @@
 }, {
   "name" : "jsvg",
   "url" : "https://github.com/weisJ/jsvg",
-  "version" : "0.1.0-jb.17",
+  "version" : "0.1.0-jb.18",
   "license" : "MIT",
   "licenseUrl" : "https://github.com/weisJ/jsvg/blob/master/LICENSE"
+}, {
+  "name" : "jzlib",
+  "url" : "https://www.jcraft.com/jzlib/",
+  "version" : "1.1.3",
+  "license" : "BSD 3-Clause",
+  "licenseUrl" : "https://www.jcraft.com/jzlib/LICENSE.txt"
 }, {
   "name" : "kotlinx-datetime-jvm",
   "url" : "https://github.com/Kotlin/kotlinx-datetime",
@@ -895,25 +907,25 @@
 }, {
   "name" : "rd Swing integration",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-swing",
-  "version" : "2023.2.2",
+  "version" : "2023.2.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd core",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-core",
-  "version" : "2023.2.2",
+  "version" : "2023.2.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd framework",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-framework",
-  "version" : "2023.2.2",
+  "version" : "2023.2.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd text buffers",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-text",
-  "version" : "2023.2.2",
+  "version" : "2023.2.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
