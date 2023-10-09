@@ -47,7 +47,7 @@ public class AnalyzeClasspath_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ClasspathExplorer_Tool cpExplorer = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject().getComponent(ProjectPluginManager.class).getTool(ClasspathExplorer_Tool.class);
+    ClasspathExplorer_Tool cpExplorer = ProjectPluginManager.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getTool(ClasspathExplorer_Tool.class);
     cpExplorer.openToolLater(true);
     cpExplorer.analyzeModule(event.getData(MPSCommonDataKeys.MODULE));
   }

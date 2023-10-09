@@ -19,7 +19,7 @@ public final class DependenciesUtil {
   }
 
   public static void openDependenciesTool(Project ideaProject, DependencyViewerScope scope, boolean setActive) {
-    AnalyzeDependencies_Tool tool = ideaProject.getComponent(ProjectPluginManager.class).getTool(AnalyzeDependencies_Tool.class);
+    AnalyzeDependencies_Tool tool = ProjectPluginManager.getInstance(ideaProject).getTool(AnalyzeDependencies_Tool.class);
     if (scope != null) {
       tool.setContent(scope, null, false);
     }
@@ -30,7 +30,7 @@ public final class DependenciesUtil {
    * requires EDT
    */
   public static void openDependenciesTool(@NotNull MPSProject mpsProject, @NotNull SModule from, @Nullable SModule to, boolean meta) {
-    AnalyzeDependencies_Tool tool = mpsProject.getProject().getComponent(ProjectPluginManager.class).getTool(AnalyzeDependencies_Tool.class);
+    AnalyzeDependencies_Tool tool = ProjectPluginManager.getInstance(mpsProject.getProject()).getTool(AnalyzeDependencies_Tool.class);
     DependencyViewerScope fromScope = new DependencyViewerScope(mpsProject.getRepository());
     fromScope.add(from);
     DependencyViewerScope toScope = null;

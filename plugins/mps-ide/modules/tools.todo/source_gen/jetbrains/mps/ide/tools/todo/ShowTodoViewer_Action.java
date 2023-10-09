@@ -40,6 +40,6 @@ public class ShowTodoViewer_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(CommonDataKeys.PROJECT).getComponent(ProjectPluginManager.class).getTool(TodoViewer_Tool.class).openToolLater(true);
+    ProjectPluginManager.getInstance(event.getData(CommonDataKeys.PROJECT)).getTool(TodoViewer_Tool.class).openToolLater(true);
   }
 }

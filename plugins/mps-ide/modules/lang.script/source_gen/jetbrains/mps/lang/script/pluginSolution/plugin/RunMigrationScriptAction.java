@@ -42,7 +42,7 @@ public class RunMigrationScriptAction extends BaseAction implements DumbAware {
     if (!(scope.getModels().iterator().hasNext())) {
       return;
     }
-    myProject.getProject().getComponent(ProjectPluginManager.class).getTool(MigrationScriptsTool_Tool.class).startMigration(Collections.singleton(myScript), scope);
+    ProjectPluginManager.getInstance(myProject.getProject()).getTool(MigrationScriptsTool_Tool.class).startMigration(Collections.singleton(myScript), scope);
   }
   @Override
   protected boolean collectActionData(AnActionEvent e, Map<String, Object> _params) {

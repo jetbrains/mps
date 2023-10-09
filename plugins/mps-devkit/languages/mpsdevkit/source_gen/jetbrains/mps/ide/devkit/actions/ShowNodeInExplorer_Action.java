@@ -46,7 +46,7 @@ public class ShowNodeInExplorer_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final NodeExplorer_Tool tool = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject().getComponent(ProjectPluginManager.class).getTool(NodeExplorer_Tool.class);
+    final NodeExplorer_Tool tool = ProjectPluginManager.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getTool(NodeExplorer_Tool.class);
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> tool.showNode(event.getData(MPSCommonDataKeys.NODE)));
     tool.openToolLater(true);
   }

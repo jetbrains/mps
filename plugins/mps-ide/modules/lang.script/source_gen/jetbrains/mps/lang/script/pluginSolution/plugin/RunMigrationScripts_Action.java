@@ -75,7 +75,7 @@ public class RunMigrationScripts_Action extends BaseAction {
     dialog.setVisible(true);
     if (dialog.isRunChecked()) {
       List<RefactoringScript> checked = dialog.getCheckedScripts();
-      mpsProject.getProject().getComponent(ProjectPluginManager.class).getTool(MigrationScriptsTool_Tool.class).startMigration(checked, scope);
+      ProjectPluginManager.getInstance(mpsProject.getProject()).getTool(MigrationScriptsTool_Tool.class).startMigration(checked, scope);
     } else if (dialog.isOpenSelected()) {
       RefactoringScript selectedScript = ListSequence.fromList(dialog.getSelectedScripts()).findFirst((it) -> it.getScriptNode() != null);
       if (selectedScript != null) {
