@@ -4,7 +4,7 @@ package jetbrains.mps.lang.script.pluginSolution.plugin;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.project.DumbAware;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.script.runtime.RefactoringScript;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -12,20 +12,24 @@ import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SearchScope;
-import java.util.ArrayList;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
+import java.util.Collections;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 public class RunMigrationScriptAction extends BaseAction implements DumbAware {
-  private SNode myScript;
+  private final RefactoringScript myScript;
   private boolean myApplyToSelection;
   private List<SModel> myModels;
   private List<SModule> myModules;
   private MPSProject myProject;
-  public RunMigrationScriptAction(SNode script, String name, boolean applyToSelection) {
-    super(name);
+
+  public RunMigrationScriptAction(RefactoringScript script, boolean applyToSelection) {
+    super(script.getName());
     myScript = script;
     myApplyToSelection = applyToSelection;
+
   }
   @Override
   protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
@@ -38,9 +42,7 @@ public class RunMigrationScriptAction extends BaseAction implements DumbAware {
     if (!(scope.getModels().iterator().hasNext())) {
       return;
     }
-    List<SNode> scripts = new ArrayList<SNode>();
-    scripts.add(myScript);
-    AbstractMigrationScriptHelper.doRunScripts(scripts, scope, myProject);
+    myProject.getProject().getComponent(ProjectPluginManager.class).getTool(MigrationScriptsTool_Tool.class).startMigration(Collections.singleton(myScript), scope);
   }
   @Override
   protected boolean collectActionData(AnActionEvent e, Map<String, Object> _params) {

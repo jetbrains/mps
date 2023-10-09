@@ -407,6 +407,21 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
       }
     });
   }
+
+  /**
+   * Access specific present (non-null) aspect instance of all available languages.
+   * @since 2023.3
+   */
+  public <T extends ILanguageAspect> void withAvailableAspects(@NotNull Class<T> aspectClass, @NotNull Consumer<T> aspectOperation) {
+    withAvailableLanguages(lr -> {
+      final T aspectInstance = lr.getAspect(aspectClass);
+      if (aspectInstance != null) {
+        aspectOperation.accept(aspectInstance);
+      }
+    });
+  }
+
+
   /**
    * @return snapshot of languages known to the registry at the given moment.
    *         May not reflect actual state (a language might get unloaded), but as long as it's about identity objects, it's not that important to

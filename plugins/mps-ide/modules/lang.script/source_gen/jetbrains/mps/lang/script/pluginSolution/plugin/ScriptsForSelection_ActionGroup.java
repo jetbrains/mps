@@ -48,8 +48,8 @@ public class ScriptsForSelection_ActionGroup extends GeneratedActionGroup {
     }
     event.getPresentation().setEnabled(true);
 
-    ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(project, true);
-    BaseGroup catGroup = menuBuilder.create_ByCategoryPopup();
+    ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(project);
+    BaseGroup catGroup = menuBuilder.createPopup(true);
     for (AnAction a : catGroup.getChildren(null)) {
       ScriptsForSelection_ActionGroup.this.add(a);
     }
