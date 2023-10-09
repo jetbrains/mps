@@ -135,9 +135,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     }
   };
   private final Collection<String> myJavaLibs = new LinkedHashSet<>();
-  private final Collection<String> myJavaLibs2 = new LinkedHashSet<>();
   private final Collection<String> mySourcePaths = new LinkedHashSet<>();
-  private final Collection<String> mySourcePaths2 = new LinkedHashSet<>();
   private DeploymentDescriptor myDeploymentDescriptor; // FIXME must be removed
 
   private Throwable myLoadException;
@@ -311,23 +309,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     return myJavaLibs;
   }
 
-  /**
-   * this one holds unprocessed values from module descriptor persistence (i.e macro values not expanded) and is
-   * intended solely for use from migration script, to ensure migrated paths use same macro (to prevent expand/shrink cycle
-   * to pick another matching one, like infamous mps_home/lib -> platform_lib conversion)
-   *
-   * This value makes sense only until {@code myJavaLibs} value has not been modified, there's a check in migration not to
-   * complete unless these two collections reflect original (read from file) state
-   *
-   * Once 23.1 is out, remove this field. Migration (which has to stay for a while) can use expanded getJavaLibPersistedValues()
-   * then. The only drawback would be potential for a wrong macro in migrated values in case there are few matching paths. Not a big
-   * deal provided there's version that handles it right.
-   */
-  @Deprecated(forRemoval = true, since = "0")
-  public final Collection<String> getJavaLibOriginalValues() {
-    return myJavaLibs2;
-  }
-
     /**
      * Additional source files to compile along with module's own generated output.
      * Though, uses are bit odd:
@@ -345,12 +326,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
   @Deprecated(forRemoval = true, since = "0")
   public final Collection<String> getSourcePathPersistedValue() {
     return mySourcePaths;
-  }
-
-  // solely for migration; to keep original macro w/o extra shrink/expand
-  @Deprecated(forRemoval = true, since = "0")
-  public final Collection<String> getSourcePathOriginalValue() {
-    return mySourcePaths2;
   }
 
   @Nullable

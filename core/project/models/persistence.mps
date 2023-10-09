@@ -4611,22 +4611,6 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbF" id="3xFN89FFOxn" role="3cqZAp">
-                        <node concept="2OqwBi" id="3xFN89FFWGS" role="3clFbG">
-                          <node concept="2OqwBi" id="3xFN89FFQro" role="2Oq$k0">
-                            <node concept="1bf8Ab" id="3xFN89FFOxl" role="2Oq$k0" />
-                            <node concept="liA8E" id="3xFN89FFU08" role="2OqNvi">
-                              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibOriginalValues()" resolve="getJavaLibOriginalValues" />
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="3xFN89FFZwD" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />
-                            <node concept="37vLTw" id="3xFN89FG1A6" role="37wK5m">
-                              <ref role="3cqZAo" node="2wNMEwGdiXa" resolve="javaLibs" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
                       <node concept="3clFbF" id="B0RVt9PqlW" role="3cqZAp">
                         <node concept="2OqwBi" id="B0RVt9Pqm3" role="3clFbG">
                           <node concept="2OqwBi" id="B0RVt9PqlY" role="2Oq$k0">
@@ -4724,22 +4708,6 @@
                               </node>
                             </node>
                             <node concept="ANE8D" id="7xB_kuJvkzs" role="2OqNvi" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="3clFbF" id="7xB_kuJvxV6" role="3cqZAp">
-                        <node concept="2OqwBi" id="7xB_kuJvDlu" role="3clFbG">
-                          <node concept="2OqwBi" id="7xB_kuJvzTp" role="2Oq$k0">
-                            <node concept="1bf8Ab" id="7xB_kuJvxV4" role="2Oq$k0" />
-                            <node concept="liA8E" id="7xB_kuJvASM" role="2OqNvi">
-                              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getSourcePathOriginalValue()" resolve="getSourcePathOriginalValue" />
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="7xB_kuJvGI8" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />
-                            <node concept="37vLTw" id="7xB_kuJvJpw" role="37wK5m">
-                              <ref role="3cqZAo" node="7xB_kuJvkza" resolve="sources" />
-                            </node>
                           </node>
                         </node>
                       </node>
@@ -10864,22 +10832,6 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbF" id="B0RVt9Px2f" role="3cqZAp">
-                        <node concept="2OqwBi" id="B0RVt9Px2g" role="3clFbG">
-                          <node concept="2OqwBi" id="B0RVt9Px2h" role="2Oq$k0">
-                            <node concept="1bf8Ab" id="B0RVt9Px2i" role="2Oq$k0" />
-                            <node concept="liA8E" id="1XOecUCBaxX" role="2OqNvi">
-                              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getJavaLibOriginalValues()" resolve="getJavaLibOriginalValues" />
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="B0RVt9Px2k" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />
-                            <node concept="37vLTw" id="3GM_nagTAjT" role="37wK5m">
-                              <ref role="3cqZAo" node="2wNMEwGdiWL" resolve="javaLibs" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
                       <node concept="3clFbF" id="3xFN89FHfS6" role="3cqZAp">
                         <node concept="2OqwBi" id="3xFN89FHfS7" role="3clFbG">
                           <node concept="2OqwBi" id="3xFN89FHfS8" role="2Oq$k0">
@@ -10988,22 +10940,6 @@
                               </node>
                             </node>
                             <node concept="ANE8D" id="7xB_kuJxJh8" role="2OqNvi" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="3clFbF" id="7xB_kuJxRLx" role="3cqZAp">
-                        <node concept="2OqwBi" id="7xB_kuJxXwR" role="3clFbG">
-                          <node concept="2OqwBi" id="7xB_kuJxTqz" role="2Oq$k0">
-                            <node concept="1bf8Ab" id="7xB_kuJxRLv" role="2Oq$k0" />
-                            <node concept="liA8E" id="7xB_kuJxVRt" role="2OqNvi">
-                              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getSourcePathOriginalValue()" resolve="getSourcePathOriginalValue" />
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="7xB_kuJxZvB" role="2OqNvi">
-                            <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />
-                            <node concept="37vLTw" id="7xB_kuJy0Ur" role="37wK5m">
-                              <ref role="3cqZAo" node="7xB_kuJxJgQ" resolve="sources" />
-                            </node>
                           </node>
                         </node>
                       </node>

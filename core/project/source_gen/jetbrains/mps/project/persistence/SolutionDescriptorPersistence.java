@@ -80,13 +80,11 @@ public class SolutionDescriptorPersistence {
 
 
         List<String> javaLibs = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(rootElement, "stubModelEntries"), "stubModelEntry")).select((it) -> it.getAttributeValue("path")).toList();
-        result_8ckma3_a0a0a0b0k.getJavaLibOriginalValues().addAll(javaLibs);
         result_8ckma3_a0a0a0b0k.getJavaLibPersistedValues().addAll(ListSequence.fromList(javaLibs).select((it) -> myMacroHelper.expandPath(it)).toList());
 
         ModuleDescriptorPersistence.loadDependencies(result_8ckma3_a0a0a0b0k, rootElement);
 
         List<String> sources = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(rootElement, SOURCE_PATH), SOURCE_PATH_SOURCE)).select((it) -> it.getAttributeValue("path")).toList();
-        result_8ckma3_a0a0a0b0k.getSourcePathOriginalValue().addAll(sources);
         result_8ckma3_a0a0a0b0k.getSourcePathPersistedValue().addAll(ListSequence.fromList(sources).select((it) -> myMacroHelper.expandPath(it)).toList());
         return result_8ckma3_a0a0a0b0k;
       }).invoke();
