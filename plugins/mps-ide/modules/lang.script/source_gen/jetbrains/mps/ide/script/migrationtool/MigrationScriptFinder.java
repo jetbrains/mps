@@ -19,7 +19,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.module.SearchScope;
-import java.util.Set;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 
@@ -44,23 +43,21 @@ public class MigrationScriptFinder implements IFinder {
 
     monitor.start("Searching applicable nodes", myScripts.size());
     try {
-      ArrayList<SearchResult<SNode>> sr = new ArrayList<SearchResult<SNode>>();
-      for (RefactoringScript scriptInstance : myScripts) {
+      final ArrayList<SearchResult<SNode>> sr = new ArrayList<SearchResult<SNode>>();
+      for (final RefactoringScript scriptInstance : myScripts) {
         if (monitor.isCanceled()) {
           break;
         }
         Collection<AbstractMigrationRefactoring> refactorings = scriptInstance.getRefactorings();
-        for (AbstractMigrationRefactoring ref : refactorings) {
+        for (final AbstractMigrationRefactoring ref : refactorings) {
           if (monitor.isCanceled()) {
             break;
           }
           monitor.step(scriptInstance.getName() + " [" + ref.getAdditionalInfo() + "]");
-          Set<SNode> instances = FindUsagesFacade.getInstance().findInstances(queryScope, Collections.singleton(ref.getApplicableConcept()), false, new EmptyProgressMonitor());
-          for (SNode instance : instances) {
+          FindUsagesFacade.getInstance().findInstances(queryScope, Collections.singleton(ref.getApplicableConcept()), false, (instance) -> {
             try {
               if (ref.isApplicableInstanceNode(instance)) {
-                String category = String.format("%s [%s]", scriptInstance.getName(), ref.getAdditionalInfo());
-                SearchResult<SNode> result = new SearchResult<SNode>(instance, category);
+                SearchResult<SNode> result = new SearchResult<SNode>(instance, String.format("%s [%s]", scriptInstance.getName(), ref.getAdditionalInfo()));
                 myMigrationBySearchResult.put(result, ref);
                 sr.add(result);
               }
@@ -69,7 +66,7 @@ public class MigrationScriptFinder implements IFinder {
                 LOG.error("Failed to evaluate script applicability", th);
               }
             }
-          }
+          }, new EmptyProgressMonitor());
         }
         monitor.advance(1);
       }
