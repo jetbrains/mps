@@ -254,6 +254,7 @@ public class MpsLoadTask extends Task {
           commandLine.add("--add-opens=" + p + "=ALL-UNNAMED");
         }
       }
+      commandLine.add("-Dintellij.platform.load.app.info.from.resources=true");
       if ((myJnaLibraryPath != null && myJnaLibraryPath.length() > 0)) {
         String fullPath = new File(getMpsHome_Checked(), myJnaLibraryPath).getAbsolutePath();
         commandLine.add("-Djna.boot.library.path=" + fullPath);

@@ -1283,6 +1283,16 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="55UI9NMn9c_" role="3cqZAp">
+          <node concept="d57v9" id="55UI9NMnbax" role="3clFbG">
+            <node concept="37vLTw" id="55UI9NMn9cz" role="37vLTJ">
+              <ref role="3cqZAo" node="4GjpmeeeqXy" resolve="vmOptions" />
+            </node>
+            <node concept="Xl_RD" id="55UI9NMmWdq" role="37vLTx">
+              <property role="Xl_RC" value=" -Dintellij.platform.load.app.info.from.resources=true" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="4rbJdZOYJub" role="3cqZAp">
           <node concept="3cpWsn" id="4rbJdZOYJuc" role="3cpWs9">
             <property role="TrG5h" value="javaRunParametersTuple" />

@@ -4103,6 +4103,19 @@
                 <ref role="3cqZAo" node="1$mDfZ_uyJm" resolve="myOpenPackages" />
               </node>
             </node>
+            <node concept="3clFbF" id="2bvlWAl6OY_" role="3cqZAp">
+              <node concept="2OqwBi" id="2bvlWAl6OYA" role="3clFbG">
+                <node concept="37vLTw" id="2bvlWAl6OYB" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3ufQioQQtqL" resolve="commandLine" />
+                </node>
+                <node concept="liA8E" id="2bvlWAl6OYC" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
+                  <node concept="Xl_RD" id="2bvlWAl6OYE" role="37wK5m">
+                    <property role="Xl_RC" value="-Dintellij.platform.load.app.info.from.resources=true" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3clFbJ" id="4QSveR2W6iz" role="3cqZAp">
               <node concept="3clFbS" id="4QSveR2W6i_" role="3clFbx">
                 <node concept="3cpWs8" id="4QSveR2YUJ3" role="3cqZAp">
