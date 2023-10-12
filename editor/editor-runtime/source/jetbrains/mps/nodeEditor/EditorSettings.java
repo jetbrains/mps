@@ -212,6 +212,14 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
     myState.typeOverExistingText = typeOverExistingText;
   }
 
+  public void setSyncWithModelOnSelectionChange(boolean syncWithModelOnSelectionChange) {
+    myState.syncWithModelOnSelectionChange = syncWithModelOnSelectionChange;
+  }
+
+  public boolean isSyncWithModelOnSelectionChange() {
+    return myState.syncWithModelOnSelectionChange;
+  }
+
   public boolean isTypeOverExistingText() {
     return myState.typeOverExistingText;
   }
@@ -491,6 +499,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
 
     public boolean useTwoStepDeletion = true;
     public boolean typeOverExistingText = true;
+    public boolean syncWithModelOnSelectionChange = false;
     public boolean myHighlightNodeUnderCursor = true;
     public boolean disableImmediateQuickFix = false;
 
@@ -517,6 +526,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       useBraces = myState.useBraces;
       useTwoStepDeletion = myState.useTwoStepDeletion;
       typeOverExistingText = myState.typeOverExistingText;
+      syncWithModelOnSelectionChange = myState.syncWithModelOnSelectionChange;
       myHighlightNodeUnderCursor = myState.myHighlightNodeUnderCursor;
       disableImmediateQuickFix = myState.disableImmediateQuickFix;
       indentSize = myState.indentSize;
@@ -561,6 +571,9 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
         return false;
       }
       if (typeOverExistingText != myState.typeOverExistingText) {
+        return false;
+      }
+      if (syncWithModelOnSelectionChange != myState.syncWithModelOnSelectionChange) {
         return false;
       }
       if (myHighlightNodeUnderCursor != myState.myHighlightNodeUnderCursor) {
@@ -615,6 +628,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       result = 31 * result + (useBraces ? 1 : 0);
       result = 31 * result + (useTwoStepDeletion ? 1 : 0);
       result = 31 * result + (typeOverExistingText ? 1 : 0);
+      result = 31 * result + (syncWithModelOnSelectionChange ? 1 : 0);
       result = 31 * result + (myHighlightNodeUnderCursor ? 1 : 0);
       result = 31 * result + (disableImmediateQuickFix ? 1 : 0);
       result = 31 * result + indentSize;

@@ -100,6 +100,10 @@ class AutoValidator {
         }
         if (wasInErrorState) {
           validateErrorCell(cellInfo, editorComponent);
+          if (EditorSettings.getInstance().isSyncWithModelOnSelectionChange() && editorCell instanceof jetbrains.mps.nodeEditor.cells.EditorCell) {
+            jetbrains.mps.nodeEditor.cells.EditorCell cell = (jetbrains.mps.nodeEditor.cells.EditorCell) editorCell;
+            cell.synchronizeViewWithModel();
+          }
         } else {
           SideTransformInfoUtil.removeTransformInfo(node);
         }
