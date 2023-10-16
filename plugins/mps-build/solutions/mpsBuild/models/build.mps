@@ -25040,6 +25040,7 @@
       <property role="2_Ic$$" value="true" />
       <property role="2_Ic$B" value="true" />
       <property role="2_GNG2" value="1024" />
+      <property role="3fwGa$" value="IntelliJ" />
       <property role="2_Ic$y" value="mps-workbench-specific" />
       <property role="TZNOO" value="11" />
       <node concept="3qWCbU" id="79wGYVsEpzE" role="2_Ic$A">
