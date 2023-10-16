@@ -12,7 +12,7 @@ import java.time.Instant;
  */
 public interface CacheState {
 
-    CacheState DIRTY = new InstantCacheState(Instant.MIN); // never
+    CacheState DIRTY = new InstantCacheState(Instant.MAX); // always
 
     /**
      *  Indicates whether the cache is currently up-to-date.
@@ -34,7 +34,7 @@ public interface CacheState {
 
         @Override
         public boolean isUpToDate() {
-            return myLastUpdated.isAfter(Instant.MIN);
+            return myLastUpdated.isAfter(Instant.MIN) && myLastUpdated.isBefore(Instant.MAX);
         }
 
         @Override
