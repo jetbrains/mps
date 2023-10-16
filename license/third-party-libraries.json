@@ -97,7 +97,7 @@
 }, {
   "name" : "Apache Lucene",
   "url" : "https://lucene.apache.org/java",
-  "version" : "9.7.0",
+  "version" : "9.8.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
 }, {
@@ -131,6 +131,12 @@
   "license" : "CDDL 1.1 / GPL 2.0 + Classpath",
   "licenseUrl" : "https://oss.oracle.com/licenses/CDDL+GPL-1.1"
 }, {
+  "name" : "Compose Multiplatform",
+  "url" : "https://github.com/JetBrains/compose-multiplatform",
+  "version" : "1.5.10-beta01",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/compose-multiplatform/blob/master/LICENSE.txt"
+}, {
   "name" : "Eclipse JDT Core",
   "url" : "https://www.eclipse.org/jdt/core/index.php",
   "version" : "4.2.1",
@@ -145,7 +151,7 @@
 }, {
   "name" : "Grazie AI",
   "url" : "https://packages.jetbrains.team/maven/p/grazi/grazie-platform-public/",
-  "version" : "0.2.193",
+  "version" : "0.2.194",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
 }, {
@@ -229,13 +235,13 @@
 }, {
   "name" : "IntelliJ IDEA Code Coverage Agent",
   "url" : "https://github.com/jetbrains/intellij-coverage",
-  "version" : "1.0.736",
+  "version" : "1.0.738",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/intellij-coverage/blob/master/LICENSE"
 }, {
   "name" : "IntelliJ IDEA Test Discovery Agent",
   "url" : "https://github.com/JetBrains/intellij-coverage/tree/master/test-discovery",
-  "version" : "1.0.736",
+  "version" : "1.0.738",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/intellij-coverage/blob/master/LICENSE"
 }, {
@@ -413,6 +419,12 @@
   "license" : "Apache 2.0",
   "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
 }, {
+  "name" : "Jewel",
+  "url" : "https://github.com/JetBrains/jewel",
+  "version" : "0.7.2",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/jewel/blob/main/LICENSE"
+}, {
   "name" : "Jing",
   "url" : "https://relaxng.org/jclark/jing.html",
   "version" : "20030619",
@@ -544,6 +556,12 @@
   "version" : "1.100141",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/google/roboto/blob/master/LICENSE"
+}, {
+  "name" : "Skiko Runtime",
+  "url" : "https://github.com/JetBrains/skiko/",
+  "version" : "0.7.81",
+  "license" : "Apache 2.0",
+  "licenseUrl" : "https://github.com/JetBrains/skiko/blob/master/LICENSE"
 }, {
   "name" : "Slf4j",
   "url" : "https://slf4j.org/",
@@ -763,13 +781,13 @@
 }, {
   "name" : "jediterm-core",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.23",
+  "version" : "3.26",
   "license" : "LGPL 3",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
   "name" : "jediterm-ui",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.23",
+  "version" : "3.26",
   "license" : "LGPL 3",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
@@ -799,7 +817,7 @@
 }, {
   "name" : "jsvg",
   "url" : "https://github.com/weisJ/jsvg",
-  "version" : "0.1.0-jb.18",
+  "version" : "1.2.0-jb.1",
   "license" : "MIT",
   "licenseUrl" : "https://github.com/weisJ/jsvg/blob/master/LICENSE"
 }, {
@@ -823,25 +841,25 @@
 }, {
   "name" : "ktor-client-auth",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "2.3.3",
+  "version" : "2.3.5",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-cio",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "2.3.3",
+  "version" : "2.3.5",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-encoding",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "2.3.3",
+  "version" : "2.3.5",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor.io TLS",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "2.3.3",
+  "version" : "2.3.5",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
@@ -913,19 +931,19 @@
 }, {
   "name" : "opentelemetry",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.30.1",
+  "version" : "1.31.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {
   "name" : "opentelemetry-exporter-otlp-common",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.30.1",
+  "version" : "1.31.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {
   "name" : "opentelemetry-extension-kotlin",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.30.1",
+  "version" : "1.31.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {

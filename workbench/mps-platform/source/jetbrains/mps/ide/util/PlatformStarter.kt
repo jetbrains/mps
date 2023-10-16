@@ -53,6 +53,8 @@ class PlatformStarter {
                     // declared using the same name)
                     startApplication(
                         listOf(CMD_NAME),
+                        configImportNeededDeferred = CompletableDeferred(false),
+                        targetDirectoryToImportConfig = null,
                         null,
                         appStarter,
                         this,
