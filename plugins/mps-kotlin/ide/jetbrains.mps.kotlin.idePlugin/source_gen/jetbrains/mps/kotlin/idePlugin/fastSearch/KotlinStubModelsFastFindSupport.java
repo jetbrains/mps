@@ -36,10 +36,12 @@ import java.util.Collections;
 import jetbrains.mps.util.containers.ManyToManyMap;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
-import gnu.trove.THashSet;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.vfs.IFile;
 import java.util.ArrayList;
+import jetbrains.mps.vfs.QualifiedPath;
+import com.intellij.openapi.vfs.VirtualFileSystem;
+import com.intellij.openapi.vfs.VirtualFileManager;
 import java.util.Arrays;
 import jetbrains.mps.workbench.findusages.ConcreteFilesGlobalSearchScope;
 import com.intellij.util.indexing.FileBasedIndex;
@@ -170,8 +172,10 @@ public class KotlinStubModelsFastFindSupport implements FindUsagesParticipant, D
     // get all files in scope
     final ManyToManyMap<SModel, VirtualFile> scopeFiles = new ManyToManyMap<SModel, VirtualFile>();
 
-    Set<FolderSetDataSource> sources = new THashSet<FolderSetDataSource>();
+    Set<FolderSetDataSource> sources = new HashSet<>();
     final FileSystemBridge fsBridge = myModelFilter.project().getFileSystem();
+
+    final HashSet<IFile> complainedAbout = new HashSet<>();
 
     for (final SModel sm : models) {
       if (!(sm instanceof KotlinCommonStubModelDescriptor)) {
@@ -187,10 +191,17 @@ public class KotlinStubModelsFastFindSupport implements FindUsagesParticipant, D
       ArrayList<VirtualFile> vFiles = new ArrayList<VirtualFile>();
       for (IFile path : files) {
         // FIXME see MPSModelsFastFindSupport.findCandidates, there's need for additional VF check
-        final VirtualFile vf = fsBridge.asVirtualFile(path);
+        VirtualFile vf = fsBridge.asVirtualFile(path);
         if (vf == null) {
-          if (LOG.isWarningLevel()) {
-            LOG.warning("File " + path + ", which belows to model source of model " + sm.getReference().toString() + ", was not found in VFS. Assuming no usages in this file.");
+          final QualifiedPath qp = path.getQualifiedPath();
+          final VirtualFileSystem ideaFS = VirtualFileManager.getInstance().getFileSystem(qp.getFsId());
+          vf = (ideaFS == null ? null : ideaFS.findFileByPath(qp.getPath()));
+        }
+        if (vf == null) {
+          if (complainedAbout.add(path)) {
+            if (LOG.isWarningLevel()) {
+              LOG.warning(String.format("File %s, which belongs to source of model %s, hasn't been found in VFS. Assuming no usages in this file.", path, sm.getReference()));
+            }
           }
           continue;
         }

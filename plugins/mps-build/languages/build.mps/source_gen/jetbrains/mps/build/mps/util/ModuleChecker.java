@@ -54,6 +54,9 @@ import jetbrains.mps.build.mps.behavior.BuildMps_Generator__BehaviorDescriptor;
 import java.util.LinkedHashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.project.facets.JavaModuleFacetImpl;
+import jetbrains.mps.util.PathSpec;
+import java.util.stream.Collectors;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.build.mps.behavior.BuildMps_Module__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -633,7 +636,6 @@ public final class ModuleChecker {
       // see comment next to makeRelative use, below, regarding hardcoded parent location knowledge
       // XXX instead of myModuleDescriptoFile, could use module.path.getLocalPath()
       RelativePathHelper moduleRelativePathHelper = new RelativePathHelper(myModuleDescriptorFile.getParent().getPath());
-      // getLoadedModule(), below, needs myRepository which is available in doFullImport || doPartialImport
       SModule loadedModule = getLoadedModule();
       if (loadedModule != null) {
         final JavaModuleFacet jmf = loadedModule.getFacet(JavaModuleFacet.class);
@@ -852,29 +854,29 @@ public final class ModuleChecker {
       return;
     }
     JavaModuleFacet jmf = loadedModule.getFacet(JavaModuleFacet.class);
-    if (jmf == null) {
+    if (false == jmf instanceof JavaModuleFacetImpl) {
       return;
     }
-    for (String path : jmf.getLibraryClassPath()) {
-      //  FIXME first, shall decide if it's libraryClassPath I want to check here or rather JMFI.getJavaLibrarySpec
-      //    and if I do want to check anything at all. Comment below about expanded paths may not be valid then.
+    for (PathSpec path : ((JavaModuleFacetImpl) jmf).getJavaLibrarySpec()) {
+      if (path.hasMacro()) {
+        final List<String> declaredMacro = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getContainingRoot(myModule), CONCEPTS.BuildProject$ae), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).select((it) -> String.format("${%s}", SPropertyOperations.getString(it, PROPS.name$MnvL))).toList();
+        String missing = path.allMacro().filter((m) -> !(ListSequence.fromList(declaredMacro).contains(m))).collect(Collectors.joining(","));
+        if ((missing != null && missing.length() > 0)) {
+          String message = String.format("Java Library specification %s needs folder macro declaration for %s", path.value(), missing);
+          myReporter.handle(Message.createMessage(MessageKind.WARNING, getClass().getName(), message, SNodeOperations.getPointer(myModule)));
+        }
+      }
+      // I don't see much value in these checks and extracted data, but it's not the thing to change now
       //    for lib spec I can check macro name (if present in the value) is matching anything in the build project
-      // path is complete file location (expanded by descriptor persistence)
-      // here we translate it to {BuildProject macro}/path (==BuildSourcePath.getRelativePath())
-      // there could be few macro that match the path (e.g. mps_home=.;platform_lib=./lib; both match
-      // java library initially specified as ${mps_home}/lib/mps-whatever.jar. Moreover, platform_lib wins 
-      // as .first because it's longer. To avoid confusion why descriptor file states mps_home and build script 
-      // uses platform_lib, we have to consider all path alternatives here.
-      // Likely, it's scenario specific to MPS own build, I don't expect user builds to be that complicated.
       try {
-        List<SNode> p = myPathConverter.convertPath(path);
+        List<SNode> p = myPathConverter.convertPath(path.value());
         if (ListSequence.fromList(p).isEmpty()) {
 
           continue;
         }
 
         final List<String> allRelativePathVariants = ListSequence.fromList(p).select((it) -> (String) BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(it)).toList();
-        if (path.endsWith(".jar")) {
+        if (path.value().endsWith(".jar")) {
           // XXX hack to avoid exposing huge varying lists of jars from stub modules like MPS.Core or MPS.IDEA
           // we check if there's hand-written (not extracted) re-exported dependency on a java module that re-exports at least 1 java library
           // ('java module' is here just as it's the only way for an MPS module to depend on 'java library'; alternatively would need BuildMps_ModuleDependencyOnJavaLibrary, which 
@@ -886,7 +888,7 @@ public final class ModuleChecker {
             boolean extractedJar = Sequence.fromIterable(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyJar$Rm)).any((it) -> ListSequence.fromList(allRelativePathVariants).contains(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$yTVo))));
             if (!(extractedJar)) {
               if (!(extractedAsJavaModule) && !(nonAutoDepToExportedJavaLib)) {
-                report(String.format("Java library jar \n%s\n should be extracted into build script,\n e.g. like %s", path, allRelativePathVariants));
+                report(String.format("Java library jar \n%s\n should be extracted into build script,\n e.g. like %s", path.value(), allRelativePathVariants));
               }
             }
           }
@@ -916,10 +918,10 @@ public final class ModuleChecker {
               }
             }
           }
-        } else if (path.endsWith("/classes")) {
+        } else if (path.value().endsWith("/classes")) {
           if (type.doCheck) {
             if (!(Sequence.fromIterable(SNodeOperations.ofConcept(BuildMps_Module__BehaviorDescriptor.getDependenciesUnwrapped_id3QtfwKhgryb.invoke(module), CONCEPTS.BuildMps_ModuleDependencyOnJavaModule$MK)).any((it) -> (SLinkOperations.getTarget(it, LINKS.javaLibLocation$cmtb) != null) && ListSequence.fromList(allRelativePathVariants).contains(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.javaLibLocation$cmtb)))))) {
-              String message = String.format("Java library location \n%s\n should be extracted into build script as Java Module dependency,\ne.g. like %s", path, allRelativePathVariants);
+              String message = String.format("Java library location \n%s\n should be extracted into build script as Java Module dependency,\ne.g. like %s", path.value(), allRelativePathVariants);
               myReporter.handle(Message.createMessage(MessageKind.WARNING, getClass().getName(), message, SNodeOperations.getPointer(myModule)));
             }
           }
@@ -927,11 +929,11 @@ public final class ModuleChecker {
           // just ignore for now. To remove a hack in JavaModuleFacetImpl.getLibraryClassPath, i'd like to specify classes location explicitly with java libs.
           // the plan is to support general FS locations here, likely with another BM_ModuleDependency that is capable to reference 'java module'
         } else {
-          report("only jar stub libraries are supported, found: " + path);
+          report("only jar stub libraries are supported, found: " + path.value());
         }
 
       } catch (PathConverter.PathConvertException ex) {
-        report("Failed to convert path " + path, ex);
+        report("Failed to convert path " + path.value(), ex);
         // ignore, try next
       }
     }
@@ -1072,7 +1074,7 @@ public final class ModuleChecker {
       // we are going to generate models only that are deemed to, therefore, we don't need to respect dependencies of other models,
       // like accessory models that otherwise result in bootstrap dependency.
       // This check doesn't help to eliminate bootstrap issue completely (i.e. a language is often in use by its typesystem aspect to specify
-      // quoted type instances), but relieves few common scenarions at least.
+      // quoted type instances), but relieves few common scenarios at least.
       if (!(GenerationFacade.canGenerate(m))) {
         continue;
       }
@@ -1279,6 +1281,7 @@ public final class ModuleChecker {
     /*package*/ static final SConcept BuildMps_ModuleModelRoot$Ie = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleModelRoot");
     /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
     /*package*/ static final SConcept BuildMPSPlugin$YW = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin");
+    /*package*/ static final SConcept BuildFolderMacro$mR = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafadd002L, "jetbrains.mps.build.structure.BuildFolderMacro");
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnJavaModule$MK = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnJavaModule");
     /*package*/ static final SConcept BuildSource_JavaDependencyLibrary$TO = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyLibrary");
     /*package*/ static final SConcept BuildMps_ModuleDependencyJar$Rm = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyJar");
@@ -1308,6 +1311,7 @@ public final class ModuleChecker {
     /*package*/ static final SReferenceLink sourceLanguage$A51U = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
     /*package*/ static final SContainmentLink sources$mT1j = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
     /*package*/ static final SContainmentLink plugins$AsCR = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
+    /*package*/ static final SContainmentLink macros$r8_A = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a22L, "macros");
     /*package*/ static final SReferenceLink module$RnRp = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x2c4467914643e8fdL, "module");
     /*package*/ static final SContainmentLink dependencies$eBQR = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, 0x263ae7d4319896abL, "dependencies");
     /*package*/ static final SContainmentLink javaLibLocation$cmtb = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x65b9b06022080842L, "javaLibLocation");

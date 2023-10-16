@@ -5,11 +5,15 @@ package jetbrains.mps.workbench.findusages;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Map;
 import com.intellij.psi.impl.cache.impl.id.IdIndexEntry;
-import gnu.trove.THashMap;
+import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SModelId;
+import jetbrains.mps.java.stub.JavaPackageNameStub;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
+import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMTypeVariable;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMFormalTypeParameter;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMType;
@@ -35,26 +39,47 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)/3822554386093951004", model = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)")
-public class ClassifierCacher {
-  private Map<IdIndexEntry, Integer> myResult = new THashMap<IdIndexEntry, Integer>();
+/*package*/ class ClassifierCacher {
+  private final Map<IdIndexEntry, Integer> myResult = new HashMap<IdIndexEntry, Integer>();
+
   public ClassifierCacher() {
   }
   public Map<IdIndexEntry, Integer> getResult() {
     return myResult;
   }
+
+  /*package*/ static IdIndexEntry forConcept(SAbstractConcept concept) {
+    return new IdIndexEntry(concept.getQualifiedName(), true);
+  }
+  /*package*/ static IdIndexEntry forNode(SNode n) {
+    return forNode(n.getNodeId());
+  }
+  /*package*/ static IdIndexEntry forNode(SNodeId id) {
+    return new IdIndexEntry(id.toString(), true);
+  }
+  /*package*/ static IdIndexEntry forModel(SModelReference mref) {
+    return forModel(mref.getModelId());
+  }
+  /*package*/ static IdIndexEntry forModel(SModelId id) {
+    return new IdIndexEntry(id.toString(), true);
+  }
+
   private void instance(SAbstractConcept concept) {
-    myResult.put(new IdIndexEntry(concept.getQualifiedName(), true), 0);
+    myResult.put(forConcept(concept), 0);
   }
   private void ref(SNodeId id) {
     if (!(id instanceof jetbrains.mps.smodel.SNodeId.StringBasedId)) {
       return;
     }
-    myResult.put(new IdIndexEntry(id.toString(), true), 0);
+    // not StringBasedId.getId() as we need ~ (foreign) identifier, if present, see forNode(), above
+    myResult.put(forNode(id), 0);
   }
   private void modelRef(String packageName) {
-    myResult.put(new IdIndexEntry(packageName + "@java_stub", true), 0);
+    myResult.put(forModel(new JavaPackageNameStub(packageName).asModelId()), 0);
   }
-  public void updateClassifier(ClassifierKind kind, ASMClass ac) {
+
+  public void updateClassifier(ASMClass ac) {
+    ClassifierKind kind = ac.getClassifierKind();
     if (kind == ClassifierKind.CLASS) {
       instance(CONCEPTS.ClassConcept$bK);
       updateAnnotations(ac);

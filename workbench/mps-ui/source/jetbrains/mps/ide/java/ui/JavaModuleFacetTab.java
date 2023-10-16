@@ -85,11 +85,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.function.Function;
-
-import static com.intellij.openapi.util.registry.Registry.intValue;
 
 // FIXME #apply() shall not deal with ModuleDescriptor directly, instead, JavaModuleFacet.save() shall put that there (better yet,
 // to memento, not to be different from other facets, provided we don't use isCompileInMPS and getKind directly from descriptor)
@@ -636,8 +635,23 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     }
 
     /*package*/ void addNew(VirtualFile[] files) {
-      myPaths.addAll(Arrays.asList(files));
-      fireTableDataChanged();
+      addNew(0, files);
+    }
+
+    private void addNew(int fromIndex, VirtualFile[] files) {
+      HashSet<String> alreadyRecorded = new HashSet<>();
+      toPathBundle(alreadyRecorded);
+      boolean tdChange = false;
+      for (VirtualFile vf : files) {
+        if (alreadyRecorded.contains(vf.getPath())) {
+          continue;
+        }
+        tdChange = true;
+        myPaths.add(fromIndex++, vf);
+      }
+      if (tdChange) {
+        fireTableDataChanged();
+      }
     }
 
     /*package*/ PathSpecBundle toPathBundle(Collection<String> provisionalHackCollectPaths) {
@@ -666,8 +680,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       for (int i = selectedIndices.length - 1; i >= 0; i--) {
         myPaths.remove(selectedIndices[i]);
       }
-      myPaths.addAll(selectedIndices[0], Arrays.asList(files));
-      fireTableDataChanged();
+      addNew(selectedIndices[0], files);
     }
   }
 

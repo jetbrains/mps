@@ -3913,9 +3913,12 @@
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="1FaKCGJSzEy" resolve="mps-kernel" />
           <node concept="398BVA" id="6avsKl2iTNR" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="6avsKl2iVd1" role="iGT6I">
-              <property role="2Ry0Am" value="mps-core.jar" />
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="36mbj$RwP7U" role="iGT6I">
+              <property role="2Ry0Am" value="lib" />
+              <node concept="2Ry0Ak" id="36mbj$RwPov" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-core.jar" />
+              </node>
             </node>
           </node>
         </node>
@@ -3923,9 +3926,12 @@
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="3dkXFAFkSFA" resolve="mps-persistence" />
           <node concept="398BVA" id="79RLYYOj1Z2" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
             <node concept="2Ry0Ak" id="79RLYYOj2wW" role="iGT6I">
-              <property role="2Ry0Am" value="mps-persistence.jar" />
+              <property role="2Ry0Am" value="lib" />
+              <node concept="2Ry0Ak" id="36mbj$RwPMM" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-persistence.jar" />
+              </node>
             </node>
           </node>
         </node>
@@ -3941,9 +3947,12 @@
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="6UWbfHq6Ys7" resolve="mps-project-check" />
           <node concept="398BVA" id="79RLYYOj5P$" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
             <node concept="2Ry0Ak" id="79RLYYOj6eZ" role="iGT6I">
-              <property role="2Ry0Am" value="mps-project-check.jar" />
+              <property role="2Ry0Am" value="lib" />
+              <node concept="2Ry0Ak" id="36mbj$RwQTv" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-project-check.jar" />
+              </node>
             </node>
           </node>
         </node>

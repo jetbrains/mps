@@ -39,19 +39,22 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.findUsages.ModelImportLookup;
 import java.util.function.Function;
+import com.intellij.psi.impl.cache.impl.id.IdIndexEntry;
 import jetbrains.mps.persistence.java.library.JavaClassStubModelDescriptor;
 import java.util.Collections;
 import jetbrains.mps.util.containers.ManyToManyMap;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
-import gnu.trove.THashSet;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.vfs.IFile;
 import java.util.ArrayList;
+import jetbrains.mps.vfs.QualifiedPath;
+import com.intellij.openapi.vfs.VirtualFileSystem;
+import com.intellij.openapi.vfs.VirtualFileManager;
 import java.util.Arrays;
+import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.psi.impl.cache.impl.id.IdIndex;
-import com.intellij.psi.impl.cache.impl.id.IdIndexEntry;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -98,7 +101,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
     }
     // likely, an optimization that takes into account the way MPS identifies nodes in stub models
     Set<SNode> oddFilteredNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(nodes).where((it) -> it.getNodeId() instanceof SNodeId.StringBasedId));
-    Set<SModel> candidates = findCandidates(models, oddFilteredNodes, processedConsumer, (SNode key) -> key.getNodeId().toString());
+    Set<SModel> candidates = findCandidates(models, oddFilteredNodes, processedConsumer, ClassifierCacher::forNode);
     for (SNode nn : Sequence.fromIterable(SNodeOperations.ofConcept(oddFilteredNodes, CONCEPTS.TypeVariableDeclaration$4Y))) {
       // I don't know the reason why we extend supplied scope for Type variables. The code is here for a decade, I wonder if it there's any reason to keep it.
       SModel mm = SNodeOperations.getModel(nn);
@@ -130,11 +133,11 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
     }
 
     final SLanguage bl = MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
-    // XXX odd filtering by concept language. What about subconcepts of BL concepts in languages that extend BL? 
+    // XXX odd filtering by concept language. What about sub-concepts of BL concepts in languages that extend BL? 
     concepts = SetSequence.fromSetWithValues(new HashSet<SAbstractConcept>(), SetSequence.fromSet(concepts).where((it) -> bl.equals(it.getLanguage())));
 
     // FIXME make sure there's index for concept qualified name!
-    Set<SModel> candidates = findCandidates(models, concepts, processedConsumer, (SAbstractConcept k) -> k.getQualifiedName());
+    Set<SModel> candidates = findCandidates(models, concepts, processedConsumer, ClassifierCacher::forConcept);
     monitor.start("", candidates.size());
     InstanceLookup nif = new InstanceLookup(concepts, consumer);
     for (SModel e : candidates) {
@@ -154,12 +157,12 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
     }
 
     modelReferences = SetSequence.fromSetWithValues(new HashSet<SModelReference>(), SetSequence.fromSet(modelReferences).where((it) -> SModelStereotype.JAVA_STUB.equals(it.getName().getStereotype())));
-    Set<SModel> candidates = findCandidates(scope, modelReferences, processedConsumer, (SModelReference key) -> key.getModelName());
+    Set<SModel> candidates = findCandidates(scope, modelReferences, processedConsumer, ClassifierCacher::forModel);
     ModelImportLookup mil = new ModelImportLookup(modelReferences, consumer);
     mil.withUses(candidates, new EmptyProgressMonitor());
   }
 
-  private <T> Set<SModel> findCandidates(Collection<SModel> models, Set<T> elems, Consumer<SModel> processedConsumer, Function<T, String> id) {
+  private <T> Set<SModel> findCandidates(Collection<SModel> models, Set<T> elems, Consumer<SModel> processedConsumer, Function<T, IdIndexEntry> id) {
     if (elems.isEmpty()) {
       for (SModel sm : models) {
         if (sm instanceof JavaClassStubModelDescriptor) {
@@ -172,27 +175,38 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
     // get all files in scope
     final ManyToManyMap<SModel, VirtualFile> scopeFiles = new ManyToManyMap<SModel, VirtualFile>();
 
-    Set<FolderSetDataSource> sources = new THashSet<FolderSetDataSource>();
+    Set<FolderSetDataSource> sources = new HashSet<FolderSetDataSource>();
     final FileSystemBridge fsBridge = myModelFilter.project().getFileSystem();
+
+    final HashSet<IFile> complainedAbout = new HashSet<>();
 
     for (final SModel sm : models) {
       if (!(sm instanceof JavaClassStubModelDescriptor)) {
         continue;
       }
 
+      // FWIW, JavaStubIdIndexer indexed .class files (both standalone and from .jar files)
       FolderSetDataSource source = ((JavaClassStubModelDescriptor) sm).getSource();
       if (!(sources.add(source))) {
         continue;
       }
 
+
       Collection<IFile> files = source.getAffectedFiles();
       ArrayList<VirtualFile> vFiles = new ArrayList<VirtualFile>();
       for (IFile path : files) {
         // FIXME see MPSModelsFastFindSupport.findCandidates, there's need for additional VF check
-        final VirtualFile vf = fsBridge.asVirtualFile(path);
+        VirtualFile vf = fsBridge.asVirtualFile(path);
         if (vf == null) {
-          if (LOG.isWarningLevel()) {
-            LOG.warning("File " + path + ", which belows to model source of model " + sm.getReference().toString() + ", was not found in VFS. Assuming no usages in this file.");
+          final QualifiedPath qp = path.getQualifiedPath();
+          final VirtualFileSystem ideaFS = VirtualFileManager.getInstance().getFileSystem(qp.getFsId());
+          vf = (ideaFS == null ? null : ideaFS.findFileByPath(qp.getPath()));
+        }
+        if (vf == null) {
+          if (complainedAbout.add(path)) {
+            if (LOG.isWarningLevel()) {
+              LOG.warning(String.format("File %s, which belongs to source of model %s, hasn't been found in VFS. Assuming no usages in this file.", path, sm.getReference()));
+            }
           }
           continue;
         }
@@ -218,13 +232,12 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
     }
 
     // filter files with usages
-    ConcreteFilesGlobalSearchScope allFiles = new ConcreteFilesGlobalSearchScope(myModelFilter.project().getProject(), scopeFiles.getSecond());
+    final Project ideaProject = myModelFilter.project().getProject();
+    GlobalSearchScope allFiles = new ConcreteFilesGlobalSearchScope(ideaProject, scopeFiles.getSecond());
     final Set<SModel> result = new HashSet<SModel>();
     for (T elem : elems) {
-      String nodeId = id.apply(elem);
-
       try {
-        Collection<VirtualFile> matchingFiles = FileBasedIndex.getInstance().getContainingFiles(IdIndex.NAME, new IdIndexEntry(nodeId, true), allFiles);
+        Collection<VirtualFile> matchingFiles = FileBasedIndex.getInstance().getContainingFiles(IdIndex.NAME, id.apply(elem), allFiles);
         for (VirtualFile vf : matchingFiles) {
           // back-transform
           result.addAll(scopeFiles.getBySecond(vf));
