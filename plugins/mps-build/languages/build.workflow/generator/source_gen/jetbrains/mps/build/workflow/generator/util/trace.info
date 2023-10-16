@@ -579,5 +579,27 @@
       <unit id="4755209551904406840" at="33,0,238,0" name="jetbrains.mps.build.workflow.generator.util.CycleHelper" />
     </file>
   </root>
+  <root nodeRef="r:2b3dd9e8-e205-47a3-b3cc-ff31af700b6b(jetbrains.mps.build.workflow.generator.util)/8589086948012679599">
+    <file name="CompilerHelper.java">
+      <node id="8589086948012680473" at="15,60,16,202" concept="11" />
+      <node id="8589086948012697489" at="18,70,19,227" concept="11" />
+      <node id="8589086948012679599" at="23,0,24,0" concept="14" trace="BwfJavaModule$gv" />
+      <node id="8589086948012679599" at="27,0,28,0" concept="14" trace="withKotlin$2$Am" />
+      <node id="8589086948012679599" at="28,0,29,0" concept="14" trace="compiler$_$9C" />
+      <node id="8589086948012680223" at="15,0,18,0" concept="15" trace="needsKotlinTasks#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="8589086948012697485" at="18,0,21,0" concept="15" trace="needsIntellijCompilerTasks#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <scope id="8589086948012680226" at="15,60,16,202" />
+      <scope id="8589086948012697488" at="18,70,19,227" />
+      <scope id="8589086948012680223" at="15,0,18,0">
+        <var name="descriptor" id="8589086948012680331" />
+      </scope>
+      <scope id="8589086948012697485" at="18,0,21,0">
+        <var name="descriptor" id="8589086948012697486" />
+      </scope>
+      <unit id="8589086948012679599" at="22,0,25,0" name="jetbrains.mps.build.workflow.generator.util.CompilerHelper$CONCEPTS" />
+      <unit id="8589086948012679599" at="26,0,30,0" name="jetbrains.mps.build.workflow.generator.util.CompilerHelper$PROPS" />
+      <unit id="8589086948012679599" at="14,0,31,0" name="jetbrains.mps.build.workflow.generator.util.CompilerHelper" />
+    </file>
+  </root>
 </debug-info>
 
