@@ -34,7 +34,14 @@ public class KotlinCompileCacheUtil {
 
     for (var entry : cache.entrySet()) {
       Element map = new Element(ELEMENT_OUTPUT);
-      map.setAttribute(ATTR_PATH, entry.getKey().getAbsolutePath().substring(outputStartIndex));
+      map.setAttribute(
+          ATTR_PATH,
+          entry.getKey()
+               .getAbsolutePath()
+               .substring(outputStartIndex)
+               // MPS-36130: MM explicitly use / character, we need to use the same notation for the comparison to work properly
+               .replace(File.separatorChar, '/')
+      );
       final Collection<File> value = entry.getValue();
 
       // Either attribute or children
