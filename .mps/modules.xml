@@ -191,6 +191,7 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/resources/jetbrains.mps.lang.resources.mpl" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/scopes/jetbrains.mps.lang.scopes.mpl" folder="core.aspects.constraints" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/scopes/runtime/jetbrains.mps.lang.scopes.runtime.msd" folder="core.aspects.constraints" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/script.rt/jetbrains.mps.lang.script.rt.msd" folder="core.aspects.script" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/script/jetbrains.mps.lang.script.mpl" folder="core.aspects.script" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/sharedConcepts/jetbrains.mps.lang.sharedConcepts.mpl" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/slanguage/jetbrains.mps.lang.slanguage.mpl" folder="core.languages" />

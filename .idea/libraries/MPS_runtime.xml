@@ -31,8 +31,11 @@
       <root url="jar://$PROJECT_DIR$/lib/mps-problem.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mps-feedback-api.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/mps-annotations.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mps-scripts-rt.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/core/kernel/source" />
+    </SOURCES>
   </library>
 </component>
