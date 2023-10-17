@@ -56,6 +56,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.util.PathSpec;
+import jetbrains.mps.util.MacrosFactory;
 import java.util.stream.Collectors;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.build.mps.behavior.BuildMps_Module__BehaviorDescriptor;
@@ -858,8 +859,8 @@ public final class ModuleChecker {
       return;
     }
     for (PathSpec path : ((JavaModuleFacetImpl) jmf).getJavaLibrarySpec()) {
-      if (path.hasMacro()) {
-        final List<String> declaredMacro = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getContainingRoot(myModule), CONCEPTS.BuildProject$ae), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).select((it) -> String.format("${%s}", SPropertyOperations.getString(it, PROPS.name$MnvL))).toList();
+      if (type.doCheck && path.hasMacro()) {
+        final List<String> declaredMacro = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getContainingRoot(myModule), CONCEPTS.BuildProject$ae), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).select((it) -> String.format("${%s}", SPropertyOperations.getString(it, PROPS.name$MnvL))).union(Sequence.fromIterable(Sequence.singleton(MacrosFactory.MODULE))).toList();
         String missing = path.allMacro().filter((m) -> !(ListSequence.fromList(declaredMacro).contains(m))).collect(Collectors.joining(","));
         if ((missing != null && missing.length() > 0)) {
           String message = String.format("Java Library specification %s needs folder macro declaration for %s", path.value(), missing);
