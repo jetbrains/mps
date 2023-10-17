@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
 package jetbrains.mps.workbench.structureview;
 
 import com.intellij.ide.structureView.StructureViewBuilder;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.extensions.Extensions;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.editor.NodeStructureViewProvider;
 import jetbrains.mps.logging.Logger;
@@ -32,7 +30,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NodeStructureViewProviderImpl implements ApplicationComponent, NodeStructureViewProvider {
+public class NodeStructureViewProviderImpl implements NodeStructureViewProvider {
   private static final Logger LOG = Logger.getLogger(NodeStructureViewProviderImpl.class);
   public NodeStructureViewProviderImpl() {
   }
@@ -85,22 +83,5 @@ public class NodeStructureViewProviderImpl implements ApplicationComponent, Node
   public StructureViewBuilder getStructureViewBuilder(@NotNull MPSNodeVirtualFile file, @NotNull Project project) {
     SNodeReference nodePointer = file.getSNodePointer();
     return create(project.getComponent(MPSProject.class), nodePointer);
-  }
-
-  @Override
-  public void initComponent() {
-    // TODO move to plugin.xml
-    Extensions.getArea(null).getExtensionPoint(NodeStructureViewProvider.EP_NODE_STRUCTURE_VIEW_PROVIDER).registerExtension(this);
-  }
-
-  @Override
-  public void disposeComponent() {
-    Extensions.getArea(null).getExtensionPoint(NodeStructureViewProvider.EP_NODE_STRUCTURE_VIEW_PROVIDER).unregisterExtension(this);
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return NodeStructureViewProviderImpl.class.getName();
   }
 }

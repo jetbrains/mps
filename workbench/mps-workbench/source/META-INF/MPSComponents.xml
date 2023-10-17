@@ -31,9 +31,6 @@
     <component>
       <implementation-class>jetbrains.mps.ide.project.listener.AbstractModuleWorkbenchAdjuster</implementation-class>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.workbench.structureview.NodeStructureViewProviderImpl</implementation-class>
-    </component>
   </application-components>
 
   <project-components>
@@ -112,6 +109,7 @@
 
   <extensions defaultExtensionNs="jetbrains.mps">
     <NodeEditorFactory implementation="jetbrains.mps.workbench.editors.TabsMPSEditorFactory"/>
+    <nodeStructureViewProvider implementation="jetbrains.mps.workbench.structureview.NodeStructureViewProviderImpl"/>
   </extensions>
 
   <applicationListeners>
