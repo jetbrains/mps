@@ -42050,6 +42050,16 @@
             <ref role="3bR37D" node="4X1d9kMCbcv" resolve="jetbrains.mps.ide.refactoring.platform" />
           </node>
         </node>
+        <node concept="1SiIV0" id="5FWUWMZ1b3d" role="3bR37C">
+          <node concept="3bR9La" id="5FWUWMZ1b3e" role="1SiIV1">
+            <ref role="3bR37D" node="1d41uYMTRXo" resolve="jetbrains.mps.baseLanguage.scopes" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="5FWUWMZ1b3f" role="3bR37C">
+          <node concept="3bR9La" id="5FWUWMZ1b3g" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbJ$" resolve="jetbrains.mps.ide.editor" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="1E1JtA" id="5sovPIfS$nd" role="3989C9">

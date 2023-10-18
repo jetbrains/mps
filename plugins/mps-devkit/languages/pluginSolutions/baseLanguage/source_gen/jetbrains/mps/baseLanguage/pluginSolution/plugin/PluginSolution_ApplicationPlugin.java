@@ -25,6 +25,7 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
 
   public void createGroups() {
     // actions w/o parameters
+    addAction(new CreateMatchingConstructor_Action());
     addAction(new ExtractMethod_Action());
     addAction(new InlineField_Action());
     addAction(new InlineLocalVariable_Action());
@@ -41,11 +42,13 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
     // groups
     addGroup(new AnalyzersActions_ActionGroup(this));
     addGroup(new RefactoringAdditions_ActionGroup(this));
+    addGroup(new ShowAsIntentions_ActionGroup(this));
     addGroup(new TouchBarDefault_shift_ActionGroup(this));
   }
   public void adjustRegularGroups() {
     insertGroupIntoAnother(RefactoringAdditions_ActionGroup.ID, "jetbrains.mps.ide.platform.actions.NodeRefactoring_ActionGroup", null);
     insertGroupIntoAnother(TouchBarDefault_shift_ActionGroup.ID, jetbrains.mps.ide.actions.TouchBarDefault_shift_ActionGroup.ID, jetbrains.mps.ide.actions.TouchBarDefault_shift_ActionGroup.LABEL_ID_rename);
+    insertGroupIntoAnother(ShowAsIntentions_ActionGroup.ID, "jetbrains.mps.ide.editor.actions.ActionsAsIntentions_ActionGroup", null);
     insertGroupIntoAnother(AnalyzersActions_ActionGroup.ID, DFAActions_ActionGroup.ID, null);
   }
   public List<BaseKeymapChanges> initKeymaps() {
