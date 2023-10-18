@@ -14,8 +14,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
-import jetbrains.mps.openapi.editor.Editor;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.editor.EditorPanelManager;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -85,8 +84,10 @@ public class CreateClassFromUsageHelper {
       SModelOperations.addRootNode(SNodeOperations.getModel(myNode), cls.value);
       SNode constructor = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(cls.value)).first();
       SNodeOperations.replaceWithAnother(myNode, createClassCreator_lt4o84_a0a3a0a0s0l(constructor));
-      Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), cls.value, true, false);
-      editor.getEditorContext().selectWRTFocusPolicy(constructor);
+      EditorPanelManager epm = myEditorContext.getEditorPanelManager();
+      if (epm != null) {
+        epm.openAndSelect(constructor);
+      }
     });
 
     return true;

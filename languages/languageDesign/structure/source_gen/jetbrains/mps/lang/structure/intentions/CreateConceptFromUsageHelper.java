@@ -13,8 +13,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.openapi.editor.Editor;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.editor.EditorPanelManager;
 import jetbrains.mps.lang.structure.util.ConceptIdSetter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -122,8 +121,10 @@ public class CreateConceptFromUsageHelper {
     }
 
     ex.exec(() -> {
-      Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), createdConcept.value, true, false);
-      editor.getEditorContext().selectWRTFocusPolicy(createdConcept.value);
+      EditorPanelManager epm = myEditorContext.getEditorPanelManager();
+      if (epm != null) {
+        epm.openAndSelect(createdConcept.value);
+      }
     });
 
     return true;
