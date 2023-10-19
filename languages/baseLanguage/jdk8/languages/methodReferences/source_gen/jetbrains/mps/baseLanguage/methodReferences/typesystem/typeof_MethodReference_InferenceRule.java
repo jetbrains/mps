@@ -66,19 +66,21 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
               final Wrappers._T<SNode> targetRetType = new Wrappers._T<SNode>(null);
               final Wrappers._T<String> errorMsg = new Wrappers._T<String>(null);
 
-              // Type variables from the method reference
-              final Map<SNode, SNode> subs = MapSequence.fromMap(new HashMap<SNode, SNode>());
+              // Type variables from the method reference in our expression (source method)
+              final Map<SNode, SNode> sourceSubs = MapSequence.fromMap(new HashMap<SNode, SNode>());
               Iterator<SNode> typeval = ListSequence.fromList(SLinkOperations.getChildren(methodRef, LINKS.typeParameters$5Tel)).iterator();
               for (SNode typevar : ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$Lipp))) {
                 if (typeval.hasNext()) {
-                  MapSequence.fromMap(subs).put(typevar, typeval.next());
+                  MapSequence.fromMap(sourceSubs).put(typevar, typeval.next());
                 } else {
                   final SNode var_typevar_4809526991094728326 = typeCheckingContext.createNewRuntimeTypesVariable();
-                  MapSequence.fromMap(subs).put(typevar, typeCheckingContext.getRepresentative(var_typevar_4809526991094728326));
+                  MapSequence.fromMap(sourceSubs).put(typevar, typeCheckingContext.getRepresentative(var_typevar_4809526991094728326));
                 }
               }
+              GenericHelper.collectGenerics(typeCheckingContext, typeCheckingContext.getExpandedNode(operandType), sourceSubs);
 
-              // Handle function type or classifier
+              // Handle method expected from the context (target method)
+              final Map<SNode, SNode> targetSubs = MapSequence.fromMap(new HashMap<SNode, SNode>());
               if (SNodeOperations.isInstanceOf(typeCheckingContext.getExpandedNode(targetType), CONCEPTS.FunctionType$9U)) {
                 SNode fncType = SNodeOperations.cast(typeCheckingContext.getExpandedNode(targetType), CONCEPTS.FunctionType$9U);
                 targetMethodParamTypes.value = SLinkOperations.getChildren(fncType, LINKS.parameterType$qJs$);
@@ -89,7 +91,7 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
                 final SNode classifierType = TypecheckingFacade.getFromContext().coerceType(typeCheckingContext.getExpandedNode(targetType), CONCEPTS.ClassifierType$bL);
                 SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr);
 
-                GenericHelper.collectGenerics(typeCheckingContext, classifierType, subs);
+                GenericHelper.collectGenerics(typeCheckingContext, classifierType, targetSubs);
 
                 FunctionalInterfaceHelper.getClassifierFunctionalMethod(classifier).ifValid((foundMethod) -> {
                   targetMethod.value = foundMethod;
@@ -100,20 +102,17 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
 
               }
 
-              // This method is necessary here because of the other collect generic above, is same classifier is used we need the correct type parameters to be used
-              GenericHelper.collectGenerics(typeCheckingContext, typeCheckingContext.getExpandedNode(operandType), subs);
-
               if ((targetMethod.value != null) && errorMsg.value == null) {
                 List<SNode> refMethodParamTypes = new ArrayList<SNode>();
 
                 // Static call (on type) but likely to be an instance method -> instance provided as first arg
                 if ((boolean) MethodReference__BehaviorDescriptor.isOperandTypeFirstParameter_id4aYRP41Um04.invoke(methodRef)) {
                   // Might need the substitutions from expected type
-                  GenericHelper.collectGenerics(typeCheckingContext, ClassifierTypeUtil.unbounded(ListSequence.fromList(targetMethodParamTypes.value).first()), subs);
+                  GenericHelper.collectGenerics(typeCheckingContext, ClassifierTypeUtil.unbounded(ListSequence.fromList(targetMethodParamTypes.value).first()), targetSubs);
                   ListSequence.fromList(refMethodParamTypes).insertElement(0, typeCheckingContext.getExpandedNode(operandType));
                 }
 
-                ListSequence.fromList(refMethodParamTypes).addSequence(ListSequence.fromList(ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(methodRef, ((int) ListSequence.fromList(targetMethodParamTypes.value).count()))).select((it) -> GenericHelper.expandedOf(it, subs)));
+                ListSequence.fromList(refMethodParamTypes).addSequence(ListSequence.fromList(ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(methodRef, ((int) ListSequence.fromList(targetMethodParamTypes.value).count()))).select((it) -> GenericHelper.expandedOf(it, sourceSubs)));
 
                 if (ListSequence.fromList(refMethodParamTypes).count() != ListSequence.fromList(targetMethodParamTypes.value).count()) {
                   errorMsg.value = "wrong parameter number";
@@ -137,14 +136,14 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
                           intentionProvider.putArgument("targetSignature", targetMethod.value);
                           _info_12389875345.addIntentionProvider(intentionProvider);
                         }
-                        typeCheckingContext.createLessThanInequality((SNode) GenericHelper.expandedOf(targetParamType_var, subs), (SNode) refParamType_var, false, true, _info_12389875345);
+                        typeCheckingContext.createLessThanInequality((SNode) GenericHelper.expandedOf(targetParamType_var, targetSubs), (SNode) refParamType_var, false, true, _info_12389875345);
                       }
                     }
                   }
 
                   // Check/infer return type
                   if (!(SNodeOperations.isInstanceOf(targetRetType.value, CONCEPTS.VoidType$BF))) {
-                    SNode returnType = GenericHelper.expandedOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), subs);
+                    SNode returnType = GenericHelper.expandedOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), sourceSubs);
                     if ((boolean) MethodReference__BehaviorDescriptor.isConstructor_id5DBbMQ1v9ur.invoke(methodRef)) {
                       returnType = typeCheckingContext.getExpandedNode(operandType);
                     }
@@ -163,19 +162,19 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
                         intentionProvider.putArgument("targetSignature", targetMethod.value);
                         _info_12389875345.addIntentionProvider(intentionProvider);
                       }
-                      typeCheckingContext.createLessThanInequality((SNode) returnType, (SNode) GenericHelper.expandedOf(targetRetType.value, subs), false, true, _info_12389875345);
+                      typeCheckingContext.createLessThanInequality((SNode) returnType, (SNode) GenericHelper.expandedOf(targetRetType.value, targetSubs), false, true, _info_12389875345);
                     }
                   }
 
                   // Runtime exceptions unchecked
-                  SNode targetType = _quotation_createNode_7gf7o9_a0h0a7a91a1a0b0a0b0a1a7a1(ListSequence.fromList(targetThrows.value).select((it) -> GenericHelper.expandedOf(it, subs)).toList());
+                  SNode targetType = _quotation_createNode_7gf7o9_a0h0a7a81a1a0b0a0b0a1a7a1(ListSequence.fromList(targetThrows.value).select((it) -> GenericHelper.expandedOf(it, targetSubs)).toList());
 
                   // Check/infer throws
                   for (SNode refType : ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$))) {
                     {
                       SNode _nodeToCheck_1029348928467 = methodRef;
                       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, "unhandled thrown type " + BaseConcept__BehaviorDescriptor.getDetailedPresentation_id22G2W3WJ92t.invoke(refType), "r:9a698d99-93bf-42e4-8ae2-c535d539938c(jetbrains.mps.baseLanguage.methodReferences.typesystem)", "931816624637804521", 0, null);
-                      typeCheckingContext.createLessThanInequality((SNode) GenericHelper.expandedOf(refType, subs), (SNode) targetType, false, true, _info_12389875345);
+                      typeCheckingContext.createLessThanInequality((SNode) GenericHelper.expandedOf(refType, sourceSubs), (SNode) targetType, false, true, _info_12389875345);
                     }
                   }
                 }
@@ -223,7 +222,7 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
     n0.forChild(LINKS.targetType$3iY9).initNode(p0, CONCEPTS.Type$bu, true);
     return n0.getResult();
   }
-  private static SNode _quotation_createNode_7gf7o9_a0h0a7a91a1a0b0a0b0a1a7a1(Object parameter_1) {
+  private static SNode _quotation_createNode_7gf7o9_a0h0a7a81a1a0b0a0b0a1a7a1(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
