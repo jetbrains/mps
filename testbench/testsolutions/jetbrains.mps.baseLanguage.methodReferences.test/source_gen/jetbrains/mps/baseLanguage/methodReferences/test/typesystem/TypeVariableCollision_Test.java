@@ -11,12 +11,12 @@ import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.test.runtime.CheckTypesAction;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
 import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
+import jetbrains.mps.lang.test.runtime.CheckTypesAction;
 
 @MPSLaunch
 public class TypeVariableCollision_Test extends BaseTransformationTest {
@@ -28,8 +28,16 @@ public class TypeVariableCollision_Test extends BaseTransformationTest {
   }
 
   @Test
+  public void test_ErrorMessagesCheck3918701224237585928() throws Throwable {
+    new TestBody(this).test_ErrorMessagesCheck3918701224237585928();
+  }
+  @Test
   public void test_NodeTypeCheck6309127995963938554() throws Throwable {
     new TestBody(this).test_NodeTypeCheck6309127995963938554();
+  }
+  @Test
+  public void test_NodeTypeCheck3918701224237556747() throws Throwable {
+    new TestBody(this).test_NodeTypeCheck3918701224237556747();
   }
   @Test
   public void test_NodeTypeCheck9087584824990329556() throws Throwable {
@@ -50,6 +58,14 @@ public class TypeVariableCollision_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    public void test_ErrorMessagesCheck3918701224237585928() throws Exception {
+
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getRealNodeById("6309127995963800595");
+        SNode operation = getRealNodeById("3918701224237585928");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+      });
+    }
     public void test_NodeTypeCheck6309127995963938554() throws Exception {
       runWithinCommand(() -> addNodeById("6309127995963933072"));
 
@@ -57,6 +73,15 @@ public class TypeVariableCollision_Test extends BaseTransformationTest {
         SNode nodeToCheck = getRealNodeById("6309127995963930347");
         SNode operation = getRealNodeById("6309127995963938554");
         new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("6309127995963933072"));
+      });
+    }
+    public void test_NodeTypeCheck3918701224237556747() throws Exception {
+      runWithinCommand(() -> addNodeById("3918701224237556748"));
+
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getRealNodeById("3918701224237556743");
+        SNode operation = getRealNodeById("3918701224237556747");
+        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("3918701224237556748"));
       });
     }
     public void test_NodeTypeCheck9087584824990329556() throws Exception {

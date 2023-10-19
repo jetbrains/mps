@@ -77,7 +77,6 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
                   MapSequence.fromMap(sourceSubs).put(typevar, typeCheckingContext.getRepresentative(var_typevar_4809526991094728326));
                 }
               }
-              GenericHelper.collectGenerics(typeCheckingContext, typeCheckingContext.getExpandedNode(operandType), sourceSubs);
 
               // Handle method expected from the context (target method)
               final Map<SNode, SNode> targetSubs = MapSequence.fromMap(new HashMap<SNode, SNode>());
@@ -107,9 +106,17 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
 
                 // Static call (on type) but likely to be an instance method -> instance provided as first arg
                 if ((boolean) MethodReference__BehaviorDescriptor.isOperandTypeFirstParameter_id4aYRP41Um04.invoke(methodRef)) {
-                  // Might need the substitutions from expected type
-                  GenericHelper.collectGenerics(typeCheckingContext, ClassifierTypeUtil.unbounded(ListSequence.fromList(targetMethodParamTypes.value).first()), targetSubs);
+                  // We will need substitutions from the operand in the target type
+                  SNode targetOperandType = ClassifierTypeUtil.unbounded(ListSequence.fromList(targetMethodParamTypes.value).first());
+
+                  // Operand type will never come from source in this case (static raw type), we must collect it from expanded target type
+                  GenericHelper.collectGenerics(typeCheckingContext, GenericHelper.expandedOf(targetOperandType, targetSubs), sourceSubs);
+
+                  // This will be some kind of "raw check", alternative is to remove the operand type from target parameters
                   ListSequence.fromList(refMethodParamTypes).insertElement(0, typeCheckingContext.getExpandedNode(operandType));
+                } else {
+                  // Operand type should contain useful information otherwise
+                  GenericHelper.collectGenerics(typeCheckingContext, typeCheckingContext.getExpandedNode(operandType), sourceSubs);
                 }
 
                 ListSequence.fromList(refMethodParamTypes).addSequence(ListSequence.fromList(ITypeApplicable__BehaviorDescriptor.getTypeApplicationParameters_id7bu6bIyR2DR.invoke(methodRef, ((int) ListSequence.fromList(targetMethodParamTypes.value).count()))).select((it) -> GenericHelper.expandedOf(it, sourceSubs)));
@@ -167,7 +174,7 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
                   }
 
                   // Runtime exceptions unchecked
-                  SNode targetType = _quotation_createNode_7gf7o9_a0h0a7a81a1a0b0a0b0a1a7a1(ListSequence.fromList(targetThrows.value).select((it) -> GenericHelper.expandedOf(it, targetSubs)).toList());
+                  SNode targetType = _quotation_createNode_7gf7o9_a0h0a7a71a1a0b0a0b0a1a7a1(ListSequence.fromList(targetThrows.value).select((it) -> GenericHelper.expandedOf(it, targetSubs)).toList());
 
                   // Check/infer throws
                   for (SNode refType : ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$))) {
@@ -222,7 +229,7 @@ public class typeof_MethodReference_InferenceRule extends AbstractInferenceRule_
     n0.forChild(LINKS.targetType$3iY9).initNode(p0, CONCEPTS.Type$bu, true);
     return n0.getResult();
   }
-  private static SNode _quotation_createNode_7gf7o9_a0h0a7a81a1a0b0a0b0a1a7a1(Object parameter_1) {
+  private static SNode _quotation_createNode_7gf7o9_a0h0a7a71a1a0b0a0b0a1a7a1(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;

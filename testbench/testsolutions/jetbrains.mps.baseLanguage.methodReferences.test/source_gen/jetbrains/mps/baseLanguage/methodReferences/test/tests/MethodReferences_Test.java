@@ -118,7 +118,7 @@ public class MethodReferences_Test {
     List<StringBuilder> builders = ListSequence.fromListAndArray(new ArrayList<StringBuilder>(), new StringBuilder("Hello"), new StringBuilder("World"));
 
     // Chained calls with inferred type from "builders", using stream API
-    Stream<String> map = builders.stream().map(ItemContainer::init).map((this0) -> this0.self()).map((this0) -> this0.get()).map((this0) -> this0.toString());
+    Stream<String> map = builders.stream().map(ItemContainer::init).map(ItemContainer::self).map(ItemContainer::get).map(StringBuilder::toString);
     Assert.assertEquals(map.findFirst().get(), "Hello");
   }
   @Test
