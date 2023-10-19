@@ -28,6 +28,10 @@ public class TypeVariableCollision_Test extends BaseTransformationTest {
   }
 
   @Test
+  public void test_NodeTypeCheck6309127995963938554() throws Throwable {
+    new TestBody(this).test_NodeTypeCheck6309127995963938554();
+  }
+  @Test
   public void test_NodeTypeCheck9087584824990329556() throws Throwable {
     new TestBody(this).test_NodeTypeCheck9087584824990329556();
   }
@@ -46,6 +50,15 @@ public class TypeVariableCollision_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    public void test_NodeTypeCheck6309127995963938554() throws Exception {
+      runWithinCommand(() -> addNodeById("6309127995963933072"));
+
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getRealNodeById("6309127995963930347");
+        SNode operation = getRealNodeById("6309127995963938554");
+        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("6309127995963933072"));
+      });
+    }
     public void test_NodeTypeCheck9087584824990329556() throws Exception {
       runWithinCommand(() -> addNodeById("9087584824990327956"));
 

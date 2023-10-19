@@ -318,68 +318,85 @@
   <root nodeRef="r:7020d7a5-058d-4e72-b598-cff9d9582d11(jetbrains.mps.baseLanguage.methodReferences.test.typesystem@tests)/9087584824989487885">
     <file name="TypeVariableCollision_Test.java">
       <node id="9087584824989487885" at="26,39,27,60" concept="6" />
-      <node id="9087584824990329556" at="31,72,32,63" concept="1" />
-      <node id="9087584824990335665" at="35,72,36,63" concept="1" />
-      <node id="9087584824990321892" at="39,77,40,68" concept="1" />
-      <node id="9087584824989487885" at="45,52,46,19" concept="6" />
-      <node id="9087584824990329556" at="49,74,50,65" concept="1" />
-      <node id="9087584824990329556" at="50,65,51,0" concept="4" />
-      <node id="9087584824990329556" at="52,30,53,67" concept="3" />
-      <node id="9087584824990329556" at="53,67,54,65" concept="3" />
-      <node id="9087584824990329556" at="54,65,55,108" concept="1" />
-      <node id="9087584824990335665" at="58,74,59,65" concept="1" />
-      <node id="9087584824990335665" at="59,65,60,0" concept="4" />
-      <node id="9087584824990335665" at="61,30,62,67" concept="3" />
-      <node id="9087584824990335665" at="62,67,63,65" concept="3" />
-      <node id="9087584824990335665" at="63,65,64,108" concept="1" />
-      <node id="9087584824990321892" at="67,79,68,0" concept="4" />
-      <node id="9087584824990321892" at="69,30,70,67" concept="3" />
-      <node id="9087584824990321892" at="70,67,71,65" concept="3" />
-      <node id="9087584824990321892" at="71,65,72,209" concept="1" />
+      <node id="6309127995963938554" at="31,72,32,63" concept="1" />
+      <node id="9087584824990329556" at="35,72,36,63" concept="1" />
+      <node id="9087584824990335665" at="39,72,40,63" concept="1" />
+      <node id="9087584824990321892" at="43,77,44,68" concept="1" />
+      <node id="9087584824989487885" at="49,52,50,19" concept="6" />
+      <node id="6309127995963938554" at="53,74,54,65" concept="1" />
+      <node id="6309127995963938554" at="54,65,55,0" concept="4" />
+      <node id="6309127995963938554" at="56,30,57,67" concept="3" />
+      <node id="6309127995963938554" at="57,67,58,65" concept="3" />
+      <node id="6309127995963938554" at="58,65,59,108" concept="1" />
+      <node id="9087584824990329556" at="62,74,63,65" concept="1" />
+      <node id="9087584824990329556" at="63,65,64,0" concept="4" />
+      <node id="9087584824990329556" at="65,30,66,67" concept="3" />
+      <node id="9087584824990329556" at="66,67,67,65" concept="3" />
+      <node id="9087584824990329556" at="67,65,68,108" concept="1" />
+      <node id="9087584824990335665" at="71,74,72,65" concept="1" />
+      <node id="9087584824990335665" at="72,65,73,0" concept="4" />
+      <node id="9087584824990335665" at="74,30,75,67" concept="3" />
+      <node id="9087584824990335665" at="75,67,76,65" concept="3" />
+      <node id="9087584824990335665" at="76,65,77,108" concept="1" />
+      <node id="9087584824990321892" at="80,79,81,0" concept="4" />
+      <node id="9087584824990321892" at="82,30,83,67" concept="3" />
+      <node id="9087584824990321892" at="83,67,84,65" concept="3" />
+      <node id="9087584824990321892" at="84,65,85,209" concept="1" />
       <node id="9087584824989487885" at="23,0,25,0" concept="5" trace="ourParametersCacheExtension" />
       <node id="9087584824989487885" at="26,0,29,0" concept="0" trace="TypeVariableCollision_Test#()V" />
-      <node id="9087584824989487885" at="45,0,48,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="9087584824990329556" at="30,0,34,0" concept="2" trace="test_NodeTypeCheck9087584824990329556#()V" />
-      <node id="9087584824990335665" at="34,0,38,0" concept="2" trace="test_NodeTypeCheck9087584824990335665#()V" />
-      <node id="9087584824990321892" at="38,0,42,0" concept="2" trace="test_ErrorMessagesCheck9087584824990321892#()V" />
-      <node id="9087584824990329556" at="51,0,56,9" concept="1" />
-      <node id="9087584824990335665" at="60,0,65,9" concept="1" />
-      <node id="9087584824990321892" at="68,0,73,9" concept="1" />
-      <node id="9087584824990321892" at="67,0,75,0" concept="2" trace="test_ErrorMessagesCheck9087584824990321892#()V" />
-      <node id="9087584824990329556" at="49,0,58,0" concept="2" trace="test_NodeTypeCheck9087584824990329556#()V" />
-      <node id="9087584824990335665" at="58,0,67,0" concept="2" trace="test_NodeTypeCheck9087584824990335665#()V" />
+      <node id="9087584824989487885" at="49,0,52,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6309127995963938554" at="30,0,34,0" concept="2" trace="test_NodeTypeCheck6309127995963938554#()V" />
+      <node id="9087584824990329556" at="34,0,38,0" concept="2" trace="test_NodeTypeCheck9087584824990329556#()V" />
+      <node id="9087584824990335665" at="38,0,42,0" concept="2" trace="test_NodeTypeCheck9087584824990335665#()V" />
+      <node id="9087584824990321892" at="42,0,46,0" concept="2" trace="test_ErrorMessagesCheck9087584824990321892#()V" />
+      <node id="6309127995963938554" at="55,0,60,9" concept="1" />
+      <node id="9087584824990329556" at="64,0,69,9" concept="1" />
+      <node id="9087584824990335665" at="73,0,78,9" concept="1" />
+      <node id="9087584824990321892" at="81,0,86,9" concept="1" />
+      <node id="9087584824990321892" at="80,0,88,0" concept="2" trace="test_ErrorMessagesCheck9087584824990321892#()V" />
+      <node id="6309127995963938554" at="53,0,62,0" concept="2" trace="test_NodeTypeCheck6309127995963938554#()V" />
+      <node id="9087584824990329556" at="62,0,71,0" concept="2" trace="test_NodeTypeCheck9087584824990329556#()V" />
+      <node id="9087584824990335665" at="71,0,80,0" concept="2" trace="test_NodeTypeCheck9087584824990335665#()V" />
       <scope id="9087584824989487885" at="26,39,27,60" />
-      <scope id="9087584824990329556" at="31,72,32,63" />
-      <scope id="9087584824990335665" at="35,72,36,63" />
-      <scope id="9087584824990321892" at="39,77,40,68" />
-      <scope id="9087584824989487885" at="45,52,46,19" />
+      <scope id="6309127995963938554" at="31,72,32,63" />
+      <scope id="9087584824990329556" at="35,72,36,63" />
+      <scope id="9087584824990335665" at="39,72,40,63" />
+      <scope id="9087584824990321892" at="43,77,44,68" />
+      <scope id="9087584824989487885" at="49,52,50,19" />
       <scope id="9087584824989487885" at="26,0,29,0" />
-      <scope id="9087584824989487885" at="45,0,48,0">
+      <scope id="9087584824989487885" at="49,0,52,0">
         <var name="owner" id="9087584824989487885" />
       </scope>
-      <scope id="9087584824990329556" at="52,30,55,108">
+      <scope id="6309127995963938554" at="56,30,59,108">
+        <var name="nodeToCheck" id="6309127995963938554" />
+        <var name="operation" id="6309127995963938554" />
+      </scope>
+      <scope id="9087584824990329556" at="65,30,68,108">
         <var name="nodeToCheck" id="9087584824990329556" />
         <var name="operation" id="9087584824990329556" />
       </scope>
-      <scope id="9087584824990335665" at="61,30,64,108">
+      <scope id="9087584824990335665" at="74,30,77,108">
         <var name="nodeToCheck" id="9087584824990335665" />
         <var name="operation" id="9087584824990335665" />
       </scope>
-      <scope id="9087584824990321892" at="69,30,72,209">
+      <scope id="9087584824990321892" at="82,30,85,209">
         <var name="nodeToCheck" id="9087584824990321892" />
         <var name="operation" id="9087584824990321892" />
       </scope>
-      <scope id="9087584824990329556" at="30,0,34,0" />
-      <scope id="9087584824990335665" at="34,0,38,0" />
-      <scope id="9087584824990321892" at="38,0,42,0" />
-      <scope id="9087584824990321892" at="67,79,73,9" />
-      <scope id="9087584824990329556" at="49,74,56,9" />
-      <scope id="9087584824990335665" at="58,74,65,9" />
-      <scope id="9087584824990321892" at="67,0,75,0" />
-      <scope id="9087584824990329556" at="49,0,58,0" />
-      <scope id="9087584824990335665" at="58,0,67,0" />
-      <unit id="9087584824989487885" at="43,0,77,0" name="jetbrains.mps.baseLanguage.methodReferences.test.typesystem.TypeVariableCollision_Test$TestBody" />
-      <unit id="9087584824989487885" at="21,0,78,0" name="jetbrains.mps.baseLanguage.methodReferences.test.typesystem.TypeVariableCollision_Test" />
+      <scope id="6309127995963938554" at="30,0,34,0" />
+      <scope id="9087584824990329556" at="34,0,38,0" />
+      <scope id="9087584824990335665" at="38,0,42,0" />
+      <scope id="9087584824990321892" at="42,0,46,0" />
+      <scope id="9087584824990321892" at="80,79,86,9" />
+      <scope id="6309127995963938554" at="53,74,60,9" />
+      <scope id="9087584824990329556" at="62,74,69,9" />
+      <scope id="9087584824990335665" at="71,74,78,9" />
+      <scope id="9087584824990321892" at="80,0,88,0" />
+      <scope id="6309127995963938554" at="53,0,62,0" />
+      <scope id="9087584824990329556" at="62,0,71,0" />
+      <scope id="9087584824990335665" at="71,0,80,0" />
+      <unit id="9087584824989487885" at="47,0,90,0" name="jetbrains.mps.baseLanguage.methodReferences.test.typesystem.TypeVariableCollision_Test$TestBody" />
+      <unit id="9087584824989487885" at="21,0,91,0" name="jetbrains.mps.baseLanguage.methodReferences.test.typesystem.TypeVariableCollision_Test" />
     </file>
   </root>
 </debug-info>
