@@ -39,7 +39,7 @@ public class LanguageScopeExecutor {
   public static <T> T execWithModelScope(@Nullable SModel model,
                                          @Nullable Computable<T> computable,
                                          @NotNull LanguageScopeFactory languageScopeFactory) {
-    LanguageScope languageScope;
+    final LanguageScope languageScope;
     if (model == null) {
       languageScope = languageScopeFactory.getGlobal();
     } else {
@@ -51,35 +51,15 @@ public class LanguageScopeExecutor {
       usedLangDeps.addAll(languageHierarchy.getAggregated());
       languageScope = languageScopeFactory.getLanguageScope(usedLangDeps);
     }
-    try{
-      LanguageScope.pushCurrent(languageScope, computable);
-      return computable.compute();
-    }
-    finally {
-      LanguageScope.popCurrent(languageScope, computable);
-    }
+    return languageScope.compute(computable);
   }
 
   public static <T> T execWithGlobalScope(Computable<T> computable, LanguageScopeFactory scopeFactory) {
-    LanguageScope languageScope = scopeFactory.getGlobal();
-    try{
-       LanguageScope.pushCurrent(languageScope, computable);
-       return computable.compute();
-    }
-    finally {
-      LanguageScope.popCurrent(languageScope, computable);
-    }
+    return scopeFactory.getGlobal().compute(computable);
   }
 
   public static <T> T execWithMultiLanguageScope(@Nullable Collection<SLanguage> langs, @Nullable Computable<T> computable,
                                                   @NotNull LanguageScopeFactory languageScopeFactory) {
-    LanguageScope languageScope = languageScopeFactory.getLanguageScope(langs);
-    try{
-      LanguageScope.pushCurrent(languageScope, computable);
-      return computable.compute();
-    }
-    finally {
-      LanguageScope.popCurrent(languageScope, computable);
-    }
+    return languageScopeFactory.getLanguageScope(langs).compute(computable);
   }
 }

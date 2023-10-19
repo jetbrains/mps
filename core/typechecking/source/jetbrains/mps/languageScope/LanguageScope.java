@@ -15,8 +15,9 @@
  */
 package jetbrains.mps.languageScope;
 
+import jetbrains.mps.util.Computable;
+
 import java.util.BitSet;
-import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -25,33 +26,50 @@ import java.util.LinkedList;
  */
 public class LanguageScope {
 
-  private static final CurrentLanguageScope GLOBAL = new CurrentLanguageScope(new GlobalLanguageScope(), null);
+  private static final GlobalLanguageScope GLOBAL = new GlobalLanguageScope();
 
-  private static ThreadLocal<LinkedList<CurrentLanguageScope>> CURRENT_STACK = ThreadLocal.withInitial(
-      () -> new LinkedList<>(Collections.singleton(GLOBAL)));
+  private static final ThreadLocal<LinkedList<CurrentLanguageScope>> CURRENT_STACK = ThreadLocal.withInitial(LinkedList::new);
 
   private final LanguageScopeFactory myFactory;
   private final BitSet myNsBitSet;
 
-  public static LanguageScope getGlobal () {
-    return GLOBAL.myLangScope;
+  /*package*/ static LanguageScope getGlobal() {
+    return GLOBAL;
   }
 
   public static LanguageScope getCurrent() {
-    CurrentLanguageScope cls = CURRENT_STACK.get().peek();
-    return cls.myLangScope;
+    if (CURRENT_STACK.get().isEmpty()) {
+      return getGlobal();
+    }
+    return CURRENT_STACK.get().peek().myLangScope;
   }
 
-  public static void pushCurrent(LanguageScope langScope, Object owner) {
-    CURRENT_STACK.get().push(new CurrentLanguageScope(langScope, owner));
+  public void pushCurrent(Object owner) {
+    CURRENT_STACK.get().push(new CurrentLanguageScope(this, owner));
   }
 
-  public static void popCurrent(LanguageScope languageScope, Object owner) {
-    if (CURRENT_STACK.get().size() == 1) throw new IllegalStateException("attempt to remove global LanguageScope");
-    CurrentLanguageScope cls = CURRENT_STACK.get().peek();
-    if (cls.myOwner != owner) throw new IllegalStateException("attempt to remove foreign LanguageScope");
-    if (cls.myLangScope!= languageScope) throw new IllegalStateException("attempt to remove another LanguageScope");
-    CURRENT_STACK.get().pop();
+  public void popCurrent(Object owner) {
+    final LinkedList<CurrentLanguageScope> stack = CURRENT_STACK.get();
+    if (stack.isEmpty()) {
+      throw new IllegalStateException("attempt to remove global LanguageScope");
+    }
+    CurrentLanguageScope cls = stack.peek();
+    if (cls.myOwner != owner) {
+      throw new IllegalStateException("attempt to remove foreign LanguageScope");
+    }
+    if (cls.myLangScope!= this) {
+      throw new IllegalStateException("attempt to remove another LanguageScope");
+    }
+    stack.pop();
+  }
+
+  public <T> T compute(Computable<T> code) {
+    try {
+      pushCurrent(code);
+      return code.compute();
+    } finally {
+      popCurrent(code);
+    }
   }
 
   /*package*/ LanguageScope(LanguageScopeFactory factory, BitSet nsBitSet) {
@@ -64,7 +82,9 @@ public class LanguageScope {
   }
 
   public LanguageScope disjunction(LanguageScope that) {
-    if (this.myFactory != that.myFactory) throw new IllegalArgumentException("incompatible language scope");
+    if (this.myFactory != that.myFactory) {
+      throw new IllegalArgumentException("incompatible language scope");
+    }
     BitSet nsBitSet = this.myNsBitSet;
     nsBitSet.or(that.myNsBitSet);
     return new LanguageScope(this.myFactory, nsBitSet);
