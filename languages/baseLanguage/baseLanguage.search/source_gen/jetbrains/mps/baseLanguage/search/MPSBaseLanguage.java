@@ -5,6 +5,7 @@ package jetbrains.mps.baseLanguage.search;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.baseLanguage.util.CodeStyleSettingsRegistry;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.components.CoreComponent;
 import org.jetbrains.annotations.NotNull;
@@ -12,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 @GeneratedClass(node = "r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)/1289622777586550823", model = "r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)")
 public final class MPSBaseLanguage extends ComponentPlugin implements ComponentHost {
   private ClassifierSuccessors mySuccessorIndex;
+  private CodeStyleSettingsRegistry myCodeStyleRegistry;
 
   public MPSBaseLanguage() {
   }
@@ -19,12 +21,14 @@ public final class MPSBaseLanguage extends ComponentPlugin implements ComponentH
   public void init() {
     super.init();
     mySuccessorIndex = init(new ClassifierSuccessors());
+    myCodeStyleRegistry = init(new CodeStyleSettingsRegistry());
   }
 
 
   @Override
   public void dispose() {
     super.dispose();
+    myCodeStyleRegistry = null;
     mySuccessorIndex = null;
   }
 
@@ -33,6 +37,9 @@ public final class MPSBaseLanguage extends ComponentPlugin implements ComponentH
   public <T extends CoreComponent> T findComponent(@NotNull Class<T> componentClass) {
     if (ClassifierSuccessors.class.isAssignableFrom(componentClass)) {
       return componentClass.cast(mySuccessorIndex);
+    }
+    if (CodeStyleSettingsRegistry.class.isAssignableFrom(componentClass)) {
+      return componentClass.cast(myCodeStyleRegistry);
     }
     return null;
   }

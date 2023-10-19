@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,10 @@ import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.code.CodeStyleSettings;
-import jetbrains.mps.ide.code.CodeStyleSettingsRegistry;
+import jetbrains.mps.baseLanguage.util.CodeStyleSettings;
+import jetbrains.mps.baseLanguage.util.CodeStyleSettingsRegistry;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 
 @State(
@@ -31,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
 )
 public class CodeStyleSettingsComponent implements PersistentStateComponent<CodeStyleSettings>, ProjectComponent {
   private CodeStyleSettings myState = new CodeStyleSettings();
-  private Project myProject;
+  private final Project myProject;
 
   public CodeStyleSettingsComponent(Project project) {
     myProject = project;
@@ -49,26 +50,14 @@ public class CodeStyleSettingsComponent implements PersistentStateComponent<Code
 
   @Override
   public void projectOpened() {
-    CodeStyleSettingsRegistry.registerSettings(ProjectHelper.toMPSProject(myProject), myState);
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(myProject);
+    mpsProject.getComponent(CodeStyleSettingsRegistry.class).registerSettings(mpsProject, myState);
   }
 
   @Override
   public void projectClosed() {
-    CodeStyleSettingsRegistry.unregisterSettings(ProjectHelper.toMPSProject(myProject));
-  }
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "Code Style Settings Configurable";
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(myProject);
+    mpsProject.getComponent(CodeStyleSettingsRegistry.class).unregisterSettings(mpsProject);
   }
 
   public static CodeStyleSettingsComponent getInstance(Project project) {

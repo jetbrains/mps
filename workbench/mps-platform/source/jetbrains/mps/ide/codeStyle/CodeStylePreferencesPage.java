@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBUI.Borders;
-import jetbrains.mps.ide.code.CodeStyleSettings;
+import jetbrains.mps.baseLanguage.util.CodeStyleSettings;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.BorderFactory;
