@@ -21,8 +21,8 @@ import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.ide.code.CodeStyleSettings;
-import jetbrains.mps.ide.code.CodeStyleSettingsRegistry;
+import jetbrains.mps.baseLanguage.util.CodeStyleSettings;
+import jetbrains.mps.baseLanguage.util.CodeStyleSettingsRegistry;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.scopes.FieldSignature;
@@ -95,14 +95,14 @@ public final class StaticFieldDeclaration__BehaviorDescriptor extends BaseBHDesc
     return true;
   }
   /*package*/ static String getSuffix_id2Bet8mWh3pg(@NotNull SNode __thisNode__, Project project) {
-    CodeStyleSettings settings = CodeStyleSettingsRegistry.getSettings(project);
+    CodeStyleSettings settings = CodeStyleSettingsRegistry.get(project);
     if (settings == null) {
       return "";
     }
     return (settings.getStaticFieldSuffix() == null ? "" : settings.getStaticFieldSuffix());
   }
   /*package*/ static String getPrefix_id2Bet8mWh2lw(@NotNull SNode __thisNode__, Project project) {
-    CodeStyleSettings settings = CodeStyleSettingsRegistry.getSettings(project);
+    CodeStyleSettings settings = CodeStyleSettingsRegistry.get(project);
     if (settings == null) {
       return "";
     }

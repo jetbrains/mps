@@ -172,6 +172,9 @@
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
+      </concept>
       <concept id="1178893518978" name="jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" flags="nn" index="1VxSAg" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
@@ -2162,6 +2165,49 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="30RNHFs3LDa" role="1B3o_S" />
+    </node>
+    <node concept="2tJIrI" id="1Yqxk7BlXJW" role="jymVt" />
+    <node concept="2YIFZL" id="1Yqxk7BlXYl" role="jymVt">
+      <property role="TrG5h" value="get" />
+      <node concept="37vLTG" id="1Yqxk7BlY5F" role="3clF46">
+        <property role="TrG5h" value="project" />
+        <node concept="3uibUv" id="1Yqxk7BlY5G" role="1tU5fm">
+          <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
+        </node>
+        <node concept="2AHcQZ" id="1Yqxk7Bm26t" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="1Yqxk7BlXYo" role="3clF47">
+        <node concept="3clFbF" id="1Yqxk7BlYai" role="3cqZAp">
+          <node concept="2OqwBi" id="1Yqxk7Bm1qB" role="3clFbG">
+            <node concept="2OqwBi" id="1Yqxk7BlYMw" role="2Oq$k0">
+              <node concept="37vLTw" id="1Yqxk7BlYah" role="2Oq$k0">
+                <ref role="3cqZAo" node="1Yqxk7BlY5F" resolve="project" />
+              </node>
+              <node concept="liA8E" id="1Yqxk7Bm12T" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="1Yqxk7Bm19o" role="37wK5m">
+                  <ref role="3VsUkX" node="30RNHFs3xmo" resolve="CodeStyleSettingsRegistry" />
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="1Yqxk7Bm1Rr" role="2OqNvi">
+              <ref role="37wK5l" node="30RNHFs3LrJ" resolve="getSettings" />
+              <node concept="37vLTw" id="1Yqxk7Bm1X_" role="37wK5m">
+                <ref role="3cqZAo" node="1Yqxk7BlY5F" resolve="project" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="1Yqxk7BlXPY" role="1B3o_S" />
+      <node concept="3uibUv" id="1Yqxk7BlXXc" role="3clF45">
+        <ref role="3uigEE" node="1rCfCLmmtyy" resolve="CodeStyleSettings" />
+      </node>
+      <node concept="2AHcQZ" id="1Yqxk7BmilO" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
     </node>
     <node concept="3Tm1VV" id="30RNHFs3xmp" role="1B3o_S" />
     <node concept="3uibUv" id="30RNHFs3xvO" role="EKbjA">

@@ -326,27 +326,33 @@
   </root>
   <root nodeRef="r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)/3474473076929729944">
     <file name="CodeStyleSettingsRegistry.java">
-      <node id="3474473076929794154" at="14,0,15,0" concept="4" trace="myProjectToSettingsMap" />
-      <node id="3474473076929795826" at="16,57,17,68" concept="9" />
-      <node id="3474473076929796195" at="20,77,21,71" concept="3" />
-      <node id="3474473076929800304" at="24,51,25,67" concept="3" />
-      <node id="3474473076929795823" at="16,0,19,0" concept="7" trace="getSettings#(Ljetbrains/mps/project/Project;)Ljetbrains/mps/baseLanguage/util/CodeStyleSettings;" />
-      <node id="3474473076929796190" at="20,0,23,0" concept="7" trace="registerSettings#(Ljetbrains/mps/project/Project;Ljetbrains/mps/baseLanguage/util/CodeStyleSettings;)V" />
-      <node id="3474473076929796671" at="24,0,27,0" concept="7" trace="unregisterSettings#(Ljetbrains/mps/project/Project;)V" />
-      <scope id="3474473076929795825" at="16,57,17,68" />
-      <scope id="3474473076929796194" at="20,77,21,71" />
-      <scope id="3474473076929796676" at="24,51,25,67" />
-      <scope id="3474473076929795823" at="16,0,19,0">
+      <node id="3474473076929794154" at="16,0,17,0" concept="4" trace="myProjectToSettingsMap" />
+      <node id="3474473076929795826" at="18,57,19,68" concept="9" />
+      <node id="3474473076929796195" at="22,77,23,71" concept="3" />
+      <node id="3474473076929800304" at="26,51,27,67" concept="3" />
+      <node id="2277279079689872018" at="31,65,32,86" concept="9" />
+      <node id="3474473076929795823" at="18,0,21,0" concept="7" trace="getSettings#(Ljetbrains/mps/project/Project;)Ljetbrains/mps/baseLanguage/util/CodeStyleSettings;" />
+      <node id="3474473076929796190" at="22,0,25,0" concept="7" trace="registerSettings#(Ljetbrains/mps/project/Project;Ljetbrains/mps/baseLanguage/util/CodeStyleSettings;)V" />
+      <node id="3474473076929796671" at="26,0,29,0" concept="7" trace="unregisterSettings#(Ljetbrains/mps/project/Project;)V" />
+      <node id="2277279079689871253" at="30,0,34,0" concept="13" trace="get#(Ljetbrains/mps/project/Project;)Ljetbrains/mps/baseLanguage/util/CodeStyleSettings;" />
+      <scope id="3474473076929795825" at="18,57,19,68" />
+      <scope id="3474473076929796194" at="22,77,23,71" />
+      <scope id="3474473076929796676" at="26,51,27,67" />
+      <scope id="2277279079689871256" at="31,65,32,86" />
+      <scope id="3474473076929795823" at="18,0,21,0">
         <var name="project" id="3474473076929795832" />
       </scope>
-      <scope id="3474473076929796190" at="20,0,23,0">
+      <scope id="3474473076929796190" at="22,0,25,0">
         <var name="project" id="3474473076929796201" />
         <var name="settings" id="3474473076929796203" />
       </scope>
-      <scope id="3474473076929796671" at="24,0,27,0">
+      <scope id="3474473076929796671" at="26,0,29,0">
         <var name="project" id="3474473076929796674" />
       </scope>
-      <unit id="3474473076929729944" at="12,0,28,0" name="jetbrains.mps.baseLanguage.util.CodeStyleSettingsRegistry" />
+      <scope id="2277279079689871253" at="30,0,34,0">
+        <var name="project" id="2277279079689871723" />
+      </scope>
+      <unit id="3474473076929729944" at="14,0,35,0" name="jetbrains.mps.baseLanguage.util.CodeStyleSettingsRegistry" />
     </file>
   </root>
   <root nodeRef="r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)/8432634623182691821">

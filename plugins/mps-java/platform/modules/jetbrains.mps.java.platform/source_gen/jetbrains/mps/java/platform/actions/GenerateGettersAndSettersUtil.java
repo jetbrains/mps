@@ -8,8 +8,8 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.ide.code.CodeStyleSettings;
-import jetbrains.mps.ide.code.CodeStyleSettingsRegistry;
+import jetbrains.mps.baseLanguage.util.CodeStyleSettings;
+import jetbrains.mps.baseLanguage.util.CodeStyleSettingsRegistry;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -46,7 +46,7 @@ public class GenerateGettersAndSettersUtil {
   }
   public static String getParameterNameForField(SNode field, Project project) {
     String preparedFieldName = getPreparedFieldName(field, project);
-    CodeStyleSettings codeStyleSettings = CodeStyleSettingsRegistry.getSettings(project);
+    CodeStyleSettings codeStyleSettings = CodeStyleSettingsRegistry.get(project);
     if (codeStyleSettings == null) {
       return NameUtil.decapitalize(preparedFieldName);
     }
@@ -65,7 +65,7 @@ public class GenerateGettersAndSettersUtil {
     if (rawName == null || rawName.length() == 0) {
       return "unnamedField";
     }
-    CodeStyleSettings codeStyleSettings = CodeStyleSettingsRegistry.getSettings(project);
+    CodeStyleSettings codeStyleSettings = CodeStyleSettingsRegistry.get(project);
     if (codeStyleSettings == null) {
       return rawName;
     }

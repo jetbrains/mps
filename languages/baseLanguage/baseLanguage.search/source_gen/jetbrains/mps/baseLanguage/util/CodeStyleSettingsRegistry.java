@@ -8,6 +8,8 @@ import java.util.Map;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 @GeneratedClass(node = "r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)/3474473076929729944", model = "r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)")
 public class CodeStyleSettingsRegistry implements CoreComponent {
@@ -23,5 +25,10 @@ public class CodeStyleSettingsRegistry implements CoreComponent {
 
   public void unregisterSettings(Project project) {
     MapSequence.fromMap(myProjectToSettingsMap).removeKey(project);
+  }
+
+  @Nullable
+  public static CodeStyleSettings get(@NotNull Project project) {
+    return project.getComponent(CodeStyleSettingsRegistry.class).getSettings(project);
   }
 }
