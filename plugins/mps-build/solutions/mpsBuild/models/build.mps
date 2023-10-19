@@ -8740,11 +8740,6 @@
             </node>
           </node>
         </node>
-        <node concept="1SiIV0" id="4K2KtwWHu$3" role="3bR37C">
-          <node concept="3bR9La" id="4K2KtwWHu$4" role="1SiIV1">
-            <ref role="3bR37D" node="1TaHNgiIbJt" resolve="jetbrains.mps.ide.platform" />
-          </node>
-        </node>
       </node>
       <node concept="1E1JtD" id="7Kfy9QB6KZG" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -24772,7 +24767,7 @@
         </node>
         <node concept="1SiIV0" id="2dGZeUusadC" role="3bR37C">
           <node concept="3bR9La" id="2dGZeUusadD" role="1SiIV1">
-            <ref role="3bR37D" node="67xNhT4NRcz" resolve="gnu.trove" />
+            <ref role="3bR37D" node="7Kfy9QB6KYw" resolve="jetbrains.mps.baseLanguage.search" />
           </node>
         </node>
       </node>

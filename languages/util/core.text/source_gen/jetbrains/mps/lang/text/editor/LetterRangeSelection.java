@@ -24,7 +24,6 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -196,12 +195,12 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     if (type == CellActionType.BACKSPACE || type == CellActionType.DELETE) {
       performDeleteAction(type);
     } else if (type == CellActionType.COPY) {
-      CopyPasteUtil.copyNodesAndTextToClipboard(wrapSelectedNodesInNewParagraphs(), null, buildTextualRepresentationOfSelectedCells());
+      editorContext.getClipboard().put(wrapSelectedNodesInNewParagraphs(), buildTextualRepresentationOfSelectedCells());
     } else if (type == CellActionType.CUT) {
       SNode prevSelectableNode = getNextSelectableNode(myFirstNode, false);
       SNode nextSelectableNode = getNextSelectableNode(myLastNode, true);
 
-      CopyPasteUtil.copyNodesAndTextToClipboard(wrapSelectedNodesInNewParagraphs(), null, buildTextualRepresentationOfSelectedCells());
+      editorContext.getClipboard().put(wrapSelectedNodesInNewParagraphs(), buildTextualRepresentationOfSelectedCells());
       for (SNode n : getSelectedNodes()) {
         SNodeOperations.deleteNode(n);
       }

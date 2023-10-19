@@ -10852,16 +10852,24 @@
         <node concept="3clFbJ" id="4tfWvd2gYxI" role="3cqZAp">
           <node concept="3eNFk2" id="2GYaR9XmfOE" role="3eNLev">
             <node concept="3clFbS" id="2GYaR9XmfOG" role="3eOfB_">
-              <node concept="3clFbF" id="2GYaR9Xmlzq" role="3cqZAp">
-                <node concept="2YIFZM" id="2GYaR9Xmlzr" role="3clFbG">
-                  <ref role="37wK5l" to="dp1x:5tGs5KqKiIy" resolve="copyNodesAndTextToClipboard" />
-                  <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
-                  <node concept="1rXfSq" id="2UrJiwd7rgm" role="37wK5m">
-                    <ref role="37wK5l" node="2UrJiwd7lL0" resolve="wrapSelectedNodesInNewLines" />
+              <node concept="3clFbF" id="4sDLQ_hrg$g" role="3cqZAp">
+                <node concept="2OqwBi" id="4sDLQ_hrg$h" role="3clFbG">
+                  <node concept="2OqwBi" id="4sDLQ_hrg$i" role="2Oq$k0">
+                    <node concept="37vLTw" id="4sDLQ_hrg$j" role="2Oq$k0">
+                      <ref role="3cqZAo" node="4tfWvd2gYxx" resolve="editorContext" />
+                    </node>
+                    <node concept="liA8E" id="4sDLQ_hrg$k" role="2OqNvi">
+                      <ref role="37wK5l" to="cj4x:~EditorContext.getClipboard()" resolve="getClipboard" />
+                    </node>
                   </node>
-                  <node concept="10Nm6u" id="2GYaR9Xmlzt" role="37wK5m" />
-                  <node concept="1rXfSq" id="2GYaR9Xmlzu" role="37wK5m">
-                    <ref role="37wK5l" node="2GYaR9XldVr" resolve="buildTextualRepresentationOfSelectedCells" />
+                  <node concept="liA8E" id="4sDLQ_hrg$l" role="2OqNvi">
+                    <ref role="37wK5l" to="cj4x:~Clipboard.put(java.lang.Iterable,java.lang.String)" resolve="put" />
+                    <node concept="1rXfSq" id="2UrJiwd7rgm" role="37wK5m">
+                      <ref role="37wK5l" node="2UrJiwd7lL0" resolve="wrapSelectedNodesInNewLines" />
+                    </node>
+                    <node concept="1rXfSq" id="4sDLQ_hrg$n" role="37wK5m">
+                      <ref role="37wK5l" node="2GYaR9XldVr" resolve="buildTextualRepresentationOfSelectedCells" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -11235,16 +11243,24 @@
                 </node>
               </node>
               <node concept="3clFbH" id="2GYaR9Xl0I5" role="3cqZAp" />
-              <node concept="3clFbF" id="2GYaR9Xl0VX" role="3cqZAp">
-                <node concept="2YIFZM" id="3cBvV9pzDjD" role="3clFbG">
-                  <ref role="37wK5l" to="dp1x:5tGs5KqKiIy" resolve="copyNodesAndTextToClipboard" />
-                  <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
-                  <node concept="1rXfSq" id="2UrJiwd7lL4" role="37wK5m">
-                    <ref role="37wK5l" node="2UrJiwd7lL0" resolve="wrapSelectedNodesInNewLines" />
+              <node concept="3clFbF" id="4sDLQ_hps6U" role="3cqZAp">
+                <node concept="2OqwBi" id="4sDLQ_hpVJf" role="3clFbG">
+                  <node concept="2OqwBi" id="4sDLQ_hp$nT" role="2Oq$k0">
+                    <node concept="37vLTw" id="4sDLQ_hps6S" role="2Oq$k0">
+                      <ref role="3cqZAo" node="4tfWvd2gYxx" resolve="editorContext" />
+                    </node>
+                    <node concept="liA8E" id="4sDLQ_hpPR9" role="2OqNvi">
+                      <ref role="37wK5l" to="cj4x:~EditorContext.getClipboard()" resolve="getClipboard" />
+                    </node>
                   </node>
-                  <node concept="10Nm6u" id="3cBvV9pzDjF" role="37wK5m" />
-                  <node concept="1rXfSq" id="3cBvV9pzDjG" role="37wK5m">
-                    <ref role="37wK5l" node="2GYaR9XldVr" resolve="buildTextualRepresentationOfSelectedCells" />
+                  <node concept="liA8E" id="4sDLQ_hqdbr" role="2OqNvi">
+                    <ref role="37wK5l" to="cj4x:~Clipboard.put(java.lang.Iterable,java.lang.String)" resolve="put" />
+                    <node concept="1rXfSq" id="2UrJiwd7lL4" role="37wK5m">
+                      <ref role="37wK5l" node="2UrJiwd7lL0" resolve="wrapSelectedNodesInNewLines" />
+                    </node>
+                    <node concept="1rXfSq" id="3cBvV9pzDjG" role="37wK5m">
+                      <ref role="37wK5l" node="2GYaR9XldVr" resolve="buildTextualRepresentationOfSelectedCells" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -23097,16 +23113,24 @@
         <node concept="3clFbJ" id="4HqBHuNxSnl" role="3cqZAp">
           <node concept="3eNFk2" id="4HqBHuNxSnm" role="3eNLev">
             <node concept="3clFbS" id="4HqBHuNxSnn" role="3eOfB_">
-              <node concept="3clFbF" id="4HqBHuNxSno" role="3cqZAp">
-                <node concept="2YIFZM" id="4HqBHuNxSnp" role="3clFbG">
-                  <ref role="37wK5l" to="dp1x:5tGs5KqKiIy" resolve="copyNodesAndTextToClipboard" />
-                  <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
-                  <node concept="1rXfSq" id="4HqBHuNxSnq" role="37wK5m">
-                    <ref role="37wK5l" node="4HqBHuNxSp7" resolve="wrapSelectedNodesInNewParagraphs" />
+              <node concept="3clFbF" id="4sDLQ_hkrDF" role="3cqZAp">
+                <node concept="2OqwBi" id="4sDLQ_hkNVe" role="3clFbG">
+                  <node concept="2OqwBi" id="4sDLQ_hkxjQ" role="2Oq$k0">
+                    <node concept="37vLTw" id="4sDLQ_hkrDD" role="2Oq$k0">
+                      <ref role="3cqZAo" node="4HqBHuNxSn2" resolve="editorContext" />
+                    </node>
+                    <node concept="liA8E" id="4sDLQ_hkGsr" role="2OqNvi">
+                      <ref role="37wK5l" to="cj4x:~EditorContext.getClipboard()" resolve="getClipboard" />
+                    </node>
                   </node>
-                  <node concept="10Nm6u" id="4HqBHuNxSnr" role="37wK5m" />
-                  <node concept="1rXfSq" id="4HqBHuNxSns" role="37wK5m">
-                    <ref role="37wK5l" node="4HqBHuNxSqT" resolve="buildTextualRepresentationOfSelectedCells" />
+                  <node concept="liA8E" id="4sDLQ_hl2$V" role="2OqNvi">
+                    <ref role="37wK5l" to="cj4x:~Clipboard.put(java.lang.Iterable,java.lang.String)" resolve="put" />
+                    <node concept="1rXfSq" id="4HqBHuNxSnq" role="37wK5m">
+                      <ref role="37wK5l" node="4HqBHuNxSp7" resolve="wrapSelectedNodesInNewParagraphs" />
+                    </node>
+                    <node concept="1rXfSq" id="4HqBHuNxSns" role="37wK5m">
+                      <ref role="37wK5l" node="4HqBHuNxSqT" resolve="buildTextualRepresentationOfSelectedCells" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -23481,16 +23505,24 @@
                 </node>
               </node>
               <node concept="3clFbH" id="4HqBHuNxSop" role="3cqZAp" />
-              <node concept="3clFbF" id="4HqBHuNxSoq" role="3cqZAp">
-                <node concept="2YIFZM" id="4HqBHuNxSor" role="3clFbG">
-                  <ref role="37wK5l" to="dp1x:5tGs5KqKiIy" resolve="copyNodesAndTextToClipboard" />
-                  <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
-                  <node concept="1rXfSq" id="4HqBHuNxSos" role="37wK5m">
-                    <ref role="37wK5l" node="4HqBHuNxSp7" resolve="wrapSelectedNodesInNewParagraphs" />
+              <node concept="3clFbF" id="4sDLQ_hmk3o" role="3cqZAp">
+                <node concept="2OqwBi" id="4sDLQ_hmL8G" role="3clFbG">
+                  <node concept="2OqwBi" id="4sDLQ_hmpMv" role="2Oq$k0">
+                    <node concept="37vLTw" id="4sDLQ_hmk3m" role="2Oq$k0">
+                      <ref role="3cqZAo" node="4HqBHuNxSn2" resolve="editorContext" />
+                    </node>
+                    <node concept="liA8E" id="4sDLQ_hmE07" role="2OqNvi">
+                      <ref role="37wK5l" to="cj4x:~EditorContext.getClipboard()" resolve="getClipboard" />
+                    </node>
                   </node>
-                  <node concept="10Nm6u" id="4HqBHuNxSot" role="37wK5m" />
-                  <node concept="1rXfSq" id="4HqBHuNxSou" role="37wK5m">
-                    <ref role="37wK5l" node="4HqBHuNxSqT" resolve="buildTextualRepresentationOfSelectedCells" />
+                  <node concept="liA8E" id="4sDLQ_hn198" role="2OqNvi">
+                    <ref role="37wK5l" to="cj4x:~Clipboard.put(java.lang.Iterable,java.lang.String)" resolve="put" />
+                    <node concept="1rXfSq" id="4HqBHuNxSos" role="37wK5m">
+                      <ref role="37wK5l" node="4HqBHuNxSp7" resolve="wrapSelectedNodesInNewParagraphs" />
+                    </node>
+                    <node concept="1rXfSq" id="4HqBHuNxSou" role="37wK5m">
+                      <ref role="37wK5l" node="4HqBHuNxSqT" resolve="buildTextualRepresentationOfSelectedCells" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -35339,30 +35371,24 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="3Ithfi0xt06" role="3cqZAp">
-            <node concept="2YIFZM" id="3Ithfi0xt07" role="3clFbG">
-              <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
-              <ref role="37wK5l" to="dp1x:5tGs5KqKiIy" resolve="copyNodesAndTextToClipboard" />
-              <node concept="10QFUN" id="3Ithfi0xt08" role="37wK5m">
-                <node concept="3uibUv" id="3Ithfi0xt09" role="10QFUM">
-                  <ref role="3uigEE" to="33ny:~List" resolve="List" />
-                  <node concept="3uibUv" id="3Ithfi0xt0a" role="11_B2D">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                </node>
-                <node concept="2YIFZM" id="3Ithfi0xt0b" role="10QFUP">
-                  <ref role="37wK5l" to="33ny:~List.of(java.lang.Object)" resolve="of" />
-                  <ref role="1Pybhc" to="33ny:~List" resolve="List" />
-                  <node concept="0IXxy" id="3Ithfi0xyYD" role="37wK5m" />
+          <node concept="3clFbF" id="4sDLQ_gOr_L" role="3cqZAp">
+            <node concept="2OqwBi" id="4sDLQ_gOu18" role="3clFbG">
+              <node concept="2OqwBi" id="4sDLQ_gOrWJ" role="2Oq$k0">
+                <node concept="1Q80Hx" id="4sDLQ_gOr_K" role="2Oq$k0" />
+                <node concept="liA8E" id="4sDLQ_gOtT4" role="2OqNvi">
+                  <ref role="37wK5l" to="cj4x:~EditorContext.getClipboard()" resolve="getClipboard" />
                 </node>
               </node>
-              <node concept="10Nm6u" id="3Ithfi0xt0d" role="37wK5m" />
-              <node concept="2OqwBi" id="3Ithfi0xt0g" role="37wK5m">
-                <node concept="37vLTw" id="3Ithfi0xt0h" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3Ithfi0xsZK" resolve="selection" />
-                </node>
-                <node concept="liA8E" id="3Ithfi0xt0i" role="2OqNvi">
-                  <ref role="37wK5l" node="2GYaR9XldVr" resolve="buildTextualRepresentationOfSelectedCells" />
+              <node concept="liA8E" id="4sDLQ_gOusD" role="2OqNvi">
+                <ref role="37wK5l" to="cj4x:~Clipboard.put(org.jetbrains.mps.openapi.model.SNode,java.lang.String)" resolve="put" />
+                <node concept="0IXxy" id="4sDLQ_gOuuF" role="37wK5m" />
+                <node concept="2OqwBi" id="3Ithfi0xt0g" role="37wK5m">
+                  <node concept="37vLTw" id="3Ithfi0xt0h" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3Ithfi0xsZK" resolve="selection" />
+                  </node>
+                  <node concept="liA8E" id="3Ithfi0xt0i" role="2OqNvi">
+                    <ref role="37wK5l" node="2GYaR9XldVr" resolve="buildTextualRepresentationOfSelectedCells" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -35430,30 +35456,24 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="3Ithfi0xzgu" role="3cqZAp">
-            <node concept="2YIFZM" id="3Ithfi0xzgv" role="3clFbG">
-              <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
-              <ref role="37wK5l" to="dp1x:5tGs5KqKiIy" resolve="copyNodesAndTextToClipboard" />
-              <node concept="10QFUN" id="3Ithfi0xzgw" role="37wK5m">
-                <node concept="3uibUv" id="3Ithfi0xzgx" role="10QFUM">
-                  <ref role="3uigEE" to="33ny:~List" resolve="List" />
-                  <node concept="3uibUv" id="3Ithfi0xzgy" role="11_B2D">
-                    <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                  </node>
-                </node>
-                <node concept="2YIFZM" id="3Ithfi0xzgz" role="10QFUP">
-                  <ref role="37wK5l" to="33ny:~List.of(java.lang.Object)" resolve="of" />
-                  <ref role="1Pybhc" to="33ny:~List" resolve="List" />
-                  <node concept="0IXxy" id="3Ithfi0x_h8" role="37wK5m" />
+          <node concept="3clFbF" id="4sDLQ_gOvu_" role="3cqZAp">
+            <node concept="2OqwBi" id="4sDLQ_gOwj8" role="3clFbG">
+              <node concept="2OqwBi" id="4sDLQ_gOvJF" role="2Oq$k0">
+                <node concept="1Q80Hx" id="4sDLQ_gOvu$" role="2Oq$k0" />
+                <node concept="liA8E" id="4sDLQ_gOwaN" role="2OqNvi">
+                  <ref role="37wK5l" to="cj4x:~EditorContext.getClipboard()" resolve="getClipboard" />
                 </node>
               </node>
-              <node concept="10Nm6u" id="3Ithfi0xzg$" role="37wK5m" />
-              <node concept="2OqwBi" id="3Ithfi0xzg_" role="37wK5m">
-                <node concept="37vLTw" id="3Ithfi0xzgA" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3Ithfi0xzgf" resolve="selection" />
-                </node>
-                <node concept="liA8E" id="3Ithfi0xzgB" role="2OqNvi">
-                  <ref role="37wK5l" node="2GYaR9XldVr" resolve="buildTextualRepresentationOfSelectedCells" />
+              <node concept="liA8E" id="4sDLQ_gOwHI" role="2OqNvi">
+                <ref role="37wK5l" to="cj4x:~Clipboard.put(org.jetbrains.mps.openapi.model.SNode,java.lang.String)" resolve="put" />
+                <node concept="0IXxy" id="4sDLQ_gOwNL" role="37wK5m" />
+                <node concept="2OqwBi" id="3Ithfi0xzg_" role="37wK5m">
+                  <node concept="37vLTw" id="3Ithfi0xzgA" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3Ithfi0xzgf" resolve="selection" />
+                  </node>
+                  <node concept="liA8E" id="3Ithfi0xzgB" role="2OqNvi">
+                    <ref role="37wK5l" node="2GYaR9XldVr" resolve="buildTextualRepresentationOfSelectedCells" />
+                  </node>
                 </node>
               </node>
             </node>

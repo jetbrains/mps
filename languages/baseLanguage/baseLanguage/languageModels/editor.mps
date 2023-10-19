@@ -49,7 +49,6 @@
     <import index="zqge" ref="r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)" />
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
     <import index="pz2c" ref="r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)" />
-    <import index="dp1x" ref="r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)" />
     <import index="2u9v" ref="r:ad87c166-8161-4e40-b79b-3d7ba4070d9e(jetbrains.mps.lang.text.editor)" />
     <import index="hox0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.style(MPS.Editor/)" implicit="true" />
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" implicit="true" />
@@ -30628,36 +30627,32 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="4ey7O$A8tT9" role="3cqZAp">
-          <node concept="2YIFZM" id="4ey7O$A8tTa" role="3clFbG">
-            <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
-            <ref role="37wK5l" to="dp1x:5tGs5KqKiIy" resolve="copyNodesAndTextToClipboard" />
-            <node concept="10QFUN" id="4ey7O$A8tTb" role="37wK5m">
-              <node concept="3uibUv" id="4ey7O$A8tTc" role="10QFUM">
-                <ref role="3uigEE" to="33ny:~List" resolve="List" />
-                <node concept="3uibUv" id="4ey7O$A8tTd" role="11_B2D">
-                  <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                </node>
+        <node concept="3clFbF" id="4sDLQ_gOHXQ" role="3cqZAp">
+          <node concept="2OqwBi" id="4sDLQ_gOK1I" role="3clFbG">
+            <node concept="2OqwBi" id="4sDLQ_gOIFb" role="2Oq$k0">
+              <node concept="37vLTw" id="4sDLQ_gOHXO" role="2Oq$k0">
+                <ref role="3cqZAo" node="4ey7O$A8trS" resolve="editorContext" />
               </node>
-              <node concept="2YIFZM" id="4ey7O$A8tTe" role="10QFUP">
-                <ref role="1Pybhc" to="33ny:~List" resolve="List" />
-                <ref role="37wK5l" to="33ny:~List.of(java.lang.Object)" resolve="of" />
-                <node concept="37vLTw" id="4ey7O$A8vmO" role="37wK5m">
-                  <ref role="3cqZAo" node="4ey7O$A8tu_" resolve="comment" />
-                </node>
+              <node concept="liA8E" id="4sDLQ_gOJp8" role="2OqNvi">
+                <ref role="37wK5l" to="cj4x:~EditorContext.getClipboard()" resolve="getClipboard" />
               </node>
             </node>
-            <node concept="10Nm6u" id="4ey7O$A8tTg" role="37wK5m" />
-            <node concept="3cpWs3" id="4ey7O$A8tTh" role="37wK5m">
-              <node concept="Xl_RD" id="4ey7O$A8tTi" role="3uHU7B">
-                <property role="Xl_RC" value="// " />
+            <node concept="liA8E" id="4sDLQ_gOKNJ" role="2OqNvi">
+              <ref role="37wK5l" to="cj4x:~Clipboard.put(org.jetbrains.mps.openapi.model.SNode,java.lang.String)" resolve="put" />
+              <node concept="37vLTw" id="4sDLQ_gOMnj" role="37wK5m">
+                <ref role="3cqZAo" node="4ey7O$A8tu_" resolve="comment" />
               </node>
-              <node concept="2OqwBi" id="4ey7O$A8tTj" role="3uHU7w">
-                <node concept="37vLTw" id="4ey7O$A8tTk" role="2Oq$k0">
-                  <ref role="3cqZAo" node="4ey7O$A8tSN" resolve="selection" />
+              <node concept="3cpWs3" id="4ey7O$A8tTh" role="37wK5m">
+                <node concept="Xl_RD" id="4ey7O$A8tTi" role="3uHU7B">
+                  <property role="Xl_RC" value="// " />
                 </node>
-                <node concept="liA8E" id="4ey7O$A8tTl" role="2OqNvi">
-                  <ref role="37wK5l" to="2u9v:2GYaR9XldVr" resolve="buildTextualRepresentationOfSelectedCells" />
+                <node concept="2OqwBi" id="4ey7O$A8tTj" role="3uHU7w">
+                  <node concept="37vLTw" id="4ey7O$A8tTk" role="2Oq$k0">
+                    <ref role="3cqZAo" node="4ey7O$A8tSN" resolve="selection" />
+                  </node>
+                  <node concept="liA8E" id="4ey7O$A8tTl" role="2OqNvi">
+                    <ref role="37wK5l" to="2u9v:2GYaR9XldVr" resolve="buildTextualRepresentationOfSelectedCells" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -30745,42 +30740,38 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="3Ithfi0eaFP" role="3cqZAp">
-          <node concept="2YIFZM" id="3Ithfi0eaFQ" role="3clFbG">
-            <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
-            <ref role="37wK5l" to="dp1x:5tGs5KqKiIy" resolve="copyNodesAndTextToClipboard" />
-            <node concept="10QFUN" id="3Ithfi0eaFR" role="37wK5m">
-              <node concept="3uibUv" id="3Ithfi0eaFS" role="10QFUM">
-                <ref role="3uigEE" to="33ny:~List" resolve="List" />
-                <node concept="3uibUv" id="3Ithfi0eaFT" role="11_B2D">
-                  <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-                </node>
+        <node concept="3clFbF" id="4sDLQ_gOBpC" role="3cqZAp">
+          <node concept="2OqwBi" id="4sDLQ_gOCMr" role="3clFbG">
+            <node concept="2OqwBi" id="4sDLQ_gOBJz" role="2Oq$k0">
+              <node concept="37vLTw" id="4sDLQ_gOBpA" role="2Oq$k0">
+                <ref role="3cqZAo" node="3Ithfi0eaG4" resolve="editorContext" />
               </node>
-              <node concept="2YIFZM" id="3Ithfi0eaFU" role="10QFUP">
-                <ref role="1Pybhc" to="33ny:~List" resolve="List" />
-                <ref role="37wK5l" to="33ny:~List.of(java.lang.Object)" resolve="of" />
-                <node concept="37vLTw" id="3Ithfi0eaFV" role="37wK5m">
-                  <ref role="3cqZAo" node="3Ithfi0eaG6" resolve="comment" />
-                </node>
+              <node concept="liA8E" id="4sDLQ_gOCx8" role="2OqNvi">
+                <ref role="37wK5l" to="cj4x:~EditorContext.getClipboard()" resolve="getClipboard" />
               </node>
             </node>
-            <node concept="10Nm6u" id="3Ithfi0eaFW" role="37wK5m" />
-            <node concept="3cpWs3" id="3Ithfi0e$4T" role="37wK5m">
-              <node concept="3cpWs3" id="3Ithfi0eaFX" role="3uHU7B">
-                <node concept="Xl_RD" id="3Ithfi0eaFY" role="3uHU7B">
-                  <property role="Xl_RC" value="/*\n" />
-                </node>
-                <node concept="2OqwBi" id="3Ithfi0eaFZ" role="3uHU7w">
-                  <node concept="37vLTw" id="3Ithfi0eaG0" role="2Oq$k0">
-                    <ref role="3cqZAo" node="3Ithfi0eaFv" resolve="selection" />
-                  </node>
-                  <node concept="liA8E" id="3Ithfi0eaG1" role="2OqNvi">
-                    <ref role="37wK5l" to="2u9v:2GYaR9XldVr" resolve="buildTextualRepresentationOfSelectedCells" />
-                  </node>
-                </node>
+            <node concept="liA8E" id="4sDLQ_gODAV" role="2OqNvi">
+              <ref role="37wK5l" to="cj4x:~Clipboard.put(org.jetbrains.mps.openapi.model.SNode,java.lang.String)" resolve="put" />
+              <node concept="37vLTw" id="4sDLQ_gOE8b" role="37wK5m">
+                <ref role="3cqZAo" node="3Ithfi0eaG6" resolve="comment" />
               </node>
-              <node concept="Xl_RD" id="3Ithfi0exec" role="3uHU7w">
-                <property role="Xl_RC" value="*/ " />
+              <node concept="3cpWs3" id="3Ithfi0e$4T" role="37wK5m">
+                <node concept="3cpWs3" id="3Ithfi0eaFX" role="3uHU7B">
+                  <node concept="Xl_RD" id="3Ithfi0eaFY" role="3uHU7B">
+                    <property role="Xl_RC" value="/*\n" />
+                  </node>
+                  <node concept="2OqwBi" id="3Ithfi0eaFZ" role="3uHU7w">
+                    <node concept="37vLTw" id="3Ithfi0eaG0" role="2Oq$k0">
+                      <ref role="3cqZAo" node="3Ithfi0eaFv" resolve="selection" />
+                    </node>
+                    <node concept="liA8E" id="3Ithfi0eaG1" role="2OqNvi">
+                      <ref role="37wK5l" to="2u9v:2GYaR9XldVr" resolve="buildTextualRepresentationOfSelectedCells" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="3Ithfi0exec" role="3uHU7w">
+                  <property role="Xl_RC" value="*/ " />
+                </node>
               </node>
             </node>
           </node>
@@ -30801,7 +30792,6 @@
         </node>
       </node>
     </node>
-    <node concept="3Tm1VV" id="6XNQz5_SjFK" role="1B3o_S" />
   </node>
   <node concept="312cEu" id="5d7cDYKUJE_">
     <property role="TrG5h" value="MemberDeclarationRefactoringUtil" />

@@ -7,20 +7,18 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.text.editor.WordRangeSelection;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
-import java.util.List;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class SingleAndMultiLineCommentUtil {
+/*package*/ class SingleAndMultiLineCommentUtil {
 
   public static void copySLCIntoClipboard(EditorContext editorContext, SNode comment) {
     WordRangeSelection selection = new WordRangeSelection(editorContext.getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(comment, LINKS.line$9eiT), LINKS.elements$_j45)).first(), ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(comment, LINKS.line$9eiT), LINKS.elements$_j45)).last(), true);
-    CopyPasteUtil.copyNodesAndTextToClipboard((List<SNode>) List.of(comment), null, "// " + selection.buildTextualRepresentationOfSelectedCells());
+    editorContext.getClipboard().put(comment, "// " + selection.buildTextualRepresentationOfSelectedCells());
   }
   public static void copyMLCIntoClipboard(EditorContext editorContext, SNode comment) {
     WordRangeSelection selection = new WordRangeSelection(editorContext.getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.lines$lpTr)).first(), LINKS.elements$_j45)).first(), ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(comment, LINKS.lines$lpTr)).last(), LINKS.elements$_j45)).last(), true);
-    CopyPasteUtil.copyNodesAndTextToClipboard((List<SNode>) List.of(comment), null, "/*\n" + selection.buildTextualRepresentationOfSelectedCells() + "*/ ");
+    editorContext.getClipboard().put(comment, "/*\n" + selection.buildTextualRepresentationOfSelectedCells() + "*/ ");
   }
 
   private static final class LINKS {
