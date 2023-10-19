@@ -19,6 +19,7 @@ import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.languageScope.LanguageScopeFactory;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.typechecking.backend.TypecheckingBackend.ProviderLevel;
 import jetbrains.mps.typechecking.backend.TypecheckingBackend.ProviderToken;
@@ -56,7 +57,9 @@ public final class MPSTypesystem extends ComponentPlugin implements ComponentHos
     super.init();
     myTypeChecker = init(new TypeChecker());
     myTypeContextManager = init(new TypeContextManager());
-    myProviderToken = myMPSTypechecking.getBackend().installProvider(new LegacyTypecheckingProvider(myClassLoaderManager, myLanguageRegistry), new DefaultProviderLevel());
+    final LanguageScopeFactory scopeFactory = myMPSTypechecking.findComponent(LanguageScopeFactory.class);
+    final LegacyTypecheckingProvider lpt = new LegacyTypecheckingProvider(myClassLoaderManager, myLanguageRegistry, scopeFactory);
+    myProviderToken = myMPSTypechecking.getBackend().installProvider(lpt, new DefaultProviderLevel());
   }
 
   @Override

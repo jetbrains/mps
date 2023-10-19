@@ -22,6 +22,7 @@ import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
 import jetbrains.mps.lang.pattern.ConceptMatchingPattern;
 import jetbrains.mps.lang.pattern.INodeMatchingPattern;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.languageScope.LanguageScopeFactory;
 import jetbrains.mps.newTypesystem.context.IncrementalTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.TargetTypecheckingContext;
 import jetbrains.mps.newTypesystem.context.component.IncrementalTypecheckingComponent;
@@ -68,16 +69,19 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
   private final ClassLoaderManager myClassLoaderManager;
   private final LanguageRegistry myLanguageRegistry;
 
+  private final LanguageScopeFactory myScopeFactory;
+
   // managed stuff
-  private RulesManager myRulesManager;
+  private final RulesManager myRulesManager;
 
-  private Set<DataContainer> myDataContainers = new HashSet<>();
+  private final Set<DataContainer> myDataContainers = new HashSet<>();
 
-  public LegacyTypecheckingProvider(ClassLoaderManager classLoaderManager, LanguageRegistry languageRegistry) {
+  public LegacyTypecheckingProvider(@NotNull ClassLoaderManager classLoaderManager, @NotNull LanguageRegistry languageRegistry, @NotNull LanguageScopeFactory scopeFactory) {
     myClassLoaderManager = classLoaderManager;
     myLanguageRegistry = languageRegistry;
     myLanguageRegistry.addRegistryListener(this);
     myRulesManager = new RulesManager();
+    myScopeFactory = scopeFactory;
   }
 
   @Override
@@ -134,7 +138,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
   public AuxDataContainer createDataContainer(Flags flags) {
     // TODO: is the trace only supported for "main" generator thread? apparently it has always been this way
     IPerformanceTracer performanceTracer = flags.isGeneratorMain() ? flags.getTracer() : null;
-    return new DataContainer(new TypeCheckerHelper(myRulesManager, performanceTracer));
+    return new DataContainer(new TypeCheckerHelper(myRulesManager, myScopeFactory, performanceTracer));
   }
 
   @Override

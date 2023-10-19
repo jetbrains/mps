@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ public class CachingTypecheckingContext extends TargetTypecheckingContext {
     if (pair.o2) {
       return pair.o1;
     }
-    SNode resultType = LanguageScopeExecutor.execWithModelScope(node.getModel(), () -> getTypechecking().computeTypesForNodeDuringResolving(node));
+    SNode resultType = LanguageScopeExecutor.execWithModelScope(node.getModel(), () -> getTypechecking().computeTypesForNodeDuringResolving(node), getTypeCheckerHelper().getScopeFactory());
     putTypeComputed(node, resultType);
     return resultType;
   }

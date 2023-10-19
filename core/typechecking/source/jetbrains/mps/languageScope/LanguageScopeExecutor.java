@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,20 +35,13 @@ public class LanguageScopeExecutor {
    * If {@code sModel} is {@code null}, global scope (with all languages?) is assumed.
    * Beware, {@code sModel}, if provided, expected to be attached to a repository to get its usages (namely, devkits)
    * properly resolved.
-   * @deprecated use the overloaded method with additional {@link LanguageScopeFactory} parameter
    */
-  @Deprecated
-  public static <T> T execWithModelScope(@Nullable SModel sModel, Computable<T> computable) {
-    LanguageScopeFactory languageScopeFactory = LanguageScopeFactory.getInstance();
-    return execWithModelScope(sModel, computable, languageScopeFactory);
-  }
-
   public static <T> T execWithModelScope(@Nullable SModel model,
                                          @Nullable Computable<T> computable,
                                          @NotNull LanguageScopeFactory languageScopeFactory) {
     LanguageScope languageScope;
     if (model == null) {
-      languageScope = LanguageScope.getGlobal();
+      languageScope = languageScopeFactory.getGlobal();
     } else {
       SRepository repository = languageScopeFactory.getRepository();
       LanguageRegistry lr = LanguageRegistry.getInstance(repository);
@@ -67,8 +60,8 @@ public class LanguageScopeExecutor {
     }
   }
 
-  public static <T> T execWithGlobalScope(Computable<T> computable) {
-    LanguageScope languageScope = LanguageScope.getGlobal();
+  public static <T> T execWithGlobalScope(Computable<T> computable, LanguageScopeFactory scopeFactory) {
+    LanguageScope languageScope = scopeFactory.getGlobal();
     try{
        LanguageScope.pushCurrent(languageScope, computable);
        return computable.compute();
@@ -78,17 +71,8 @@ public class LanguageScopeExecutor {
     }
   }
 
-  /**
-   * @deprecated use the overloaded method with additional {@link LanguageScopeFactory} parameter.
-   */
-  @Deprecated
-  public static <T> T execWithMultiLanguageScope(Collection<SLanguage> langs, Computable<T> computable) {
-    LanguageScopeFactory languageScopeFactory = LanguageScopeFactory.getInstance();
-    return execWithMultiLanguageScope(langs, computable, languageScopeFactory);
-  }
-
   public static <T> T execWithMultiLanguageScope(@Nullable Collection<SLanguage> langs, @Nullable Computable<T> computable,
-                                                  LanguageScopeFactory languageScopeFactory) {
+                                                  @NotNull LanguageScopeFactory languageScopeFactory) {
     LanguageScope languageScope = languageScopeFactory.getLanguageScope(langs);
     try{
       LanguageScope.pushCurrent(languageScope, computable);

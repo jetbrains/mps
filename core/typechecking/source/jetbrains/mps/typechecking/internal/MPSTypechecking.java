@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ public class MPSTypechecking extends ComponentPlugin implements ComponentHost {
 
   // dependencies
   @NotNull private final LanguageRegistry myLanguageRegistry;
-  @NotNull private final ClassLoaderManager myClassLoaderManager;
   @NotNull private final SRepository myRepository;
 
   // internal components
@@ -48,10 +47,8 @@ public class MPSTypechecking extends ComponentPlugin implements ComponentHost {
    * What, never heard of dependency injection?
    */
   public MPSTypechecking(@NotNull LanguageRegistry languageRegistry,
-                         @NotNull ClassLoaderManager classLoaderManager,
                          @NotNull SRepository repository) {
     myLanguageRegistry = languageRegistry;
-    myClassLoaderManager = classLoaderManager;
     myRepository = repository;
   }
 

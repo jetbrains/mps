@@ -70,7 +70,6 @@ class PlatformBase implements Platform {
           initAndRegister(new MPSProjectValidation(PlatformBase.this));
           initAndRegister(new MPSMake(myCore.getLanguageRegistry()));
           MPSTypechecking mpsTypechecking = new MPSTypechecking(myCore.getLanguageRegistry(),
-                                                                myCore.getClassLoaderManager(),
                                                                 myCore.findComponent(MPSModuleRepository.class));
           initAndRegister(mpsTypechecking);
           initAndRegister(new MPSTypesystem(myCore.getLanguageRegistry(), myCore.getClassLoaderManager(), mpsTypechecking));

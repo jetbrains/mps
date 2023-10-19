@@ -19,24 +19,22 @@ import gnu.trove.THashSet;
 import jetbrains.mps.lang.typesystem.runtime.AbstractInequationReplacementRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.InequationReplacementRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
+import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
 import jetbrains.mps.newTypesystem.SubtypingResolver;
 import jetbrains.mps.newTypesystem.TypesUtil;
 import jetbrains.mps.newTypesystem.operation.AddRemarkOperation;
 import jetbrains.mps.newTypesystem.operation.CheckSubTypeOperation;
 import jetbrains.mps.newTypesystem.operation.ProcessReplacementRuleOperation;
-import jetbrains.mps.languageScope.LanguageScopeExecutor;
 import jetbrains.mps.newTypesystem.state.Equations;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.typesystemEngine.util.LatticeUtil;
 import jetbrains.mps.util.CollectionUtil;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
+import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -89,7 +87,8 @@ public class InequalityBlock extends RelationBlock {
     List<Pair<InequationReplacementRule_Runtime, IsApplicable2Status>> replacementRules =
       LanguageScopeExecutor.execWithMultiLanguageScope(
           SubTypingManagerNew.collectLanguagesRecursively(subType, superType),
-          () -> typeCheckerHelper.getRulesManager().getReplacementRules(subType, superType));
+          () -> typeCheckerHelper.getRulesManager().getReplacementRules(subType, superType),
+          typeCheckerHelper.getScopeFactory());
 
     for (jetbrains.mps.util.Pair<InequationReplacementRule_Runtime, IsApplicable2Status> inequalityReplacementRule : replacementRules) {
       final InequationReplacementRule_Runtime rule = inequalityReplacementRule.o1;
