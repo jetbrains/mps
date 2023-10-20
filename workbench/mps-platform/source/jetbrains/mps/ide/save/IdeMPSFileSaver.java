@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.ide.save;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.FileDocumentManagerListener;
 import com.intellij.openapi.project.ProjectManager;
+import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.make.MakeServiceComponent;
@@ -42,11 +43,19 @@ public class IdeMPSFileSaver implements FileDocumentManagerListener {
     // be interested as well.
 
     if (ProjectManager.getInstance().getOpenProjects().length > 0) {
-      Runnable saveRepo = () -> jetbrains.mps.project.ProjectManager.getInstance().getOpenedProjects().stream().map(Project::getRepository).map(SaveRepositoryCommand::new).forEach(SaveRepositoryCommand::execute);
+      Runnable saveRepo = () -> {
+        for (Project p : jetbrains.mps.project.ProjectManager.getInstance().getOpenedProjects()) {
+          boolean changed = p.getModelAccess().computeReadAction(() -> p.getProjectModulesWithGenerators().stream().filter(EditableSModule.class::isInstance).anyMatch(m -> ((EditableSModule) m).isChanged()));
+          if (changed) {
+            // runWriteInEDT, not invokeLater+runWriteAction() as former supports attempts/re-scheduling of the action to prevent EDT blocking
+            p.getModelAccess().runWriteInEDT(new SaveRepositoryCommand(p.getRepository()));
+          }
+        }
+      };
       final MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
       final MakeServiceComponent makeService = coreComponents.getPlatform().findComponent(MakeServiceComponent.class);
       if (makeService != null && makeService.isSessionActive()) {
-        ApplicationManager.getApplication().invokeLater(saveRepo);
+        ApplicationManager.getApplication().executeOnPooledThread(saveRepo);
       } else {
         saveRepo.run();
       }
