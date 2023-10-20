@@ -1072,98 +1072,113 @@
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903c2(jetbrains.mps.baseLanguage.collections.unittest.simple_operations)/1181072883581">
-    <file name="Concat_Test_Test.java">
-      <node id="1224596674996" at="18,0,19,0" concept="5" trace="__CP__" />
-      <node id="1224596674996" at="24,24,25,50" concept="0" />
-      <node id="1224596674996" at="25,50,26,31" concept="10" />
-      <node id="1224596680111" at="27,23,28,34" concept="4" />
-      <node id="1224596680111" at="28,34,29,32" concept="4" />
-      <node id="1224596680111" at="29,32,30,30" concept="10" />
-      <node id="1224596680191" at="31,23,32,34" concept="4" />
-      <node id="1224596680191" at="32,34,33,32" concept="4" />
-      <node id="1224596680191" at="33,32,34,30" concept="10" />
-      <node id="1224596680342" at="35,23,36,34" concept="4" />
-      <node id="1224596680342" at="36,34,37,32" concept="4" />
-      <node id="1224596680342" at="37,32,38,30" concept="10" />
-      <node id="1224596674997" at="39,23,40,34" concept="4" />
-      <node id="1224596674997" at="40,34,41,24" concept="1" />
-      <node id="1224596674996" at="42,24,43,33" concept="1" />
-      <node id="1224596674996" at="45,27,46,25" concept="10" />
-      <node id="1224596674277" at="54,0,55,0" concept="5" trace="__CP__" />
-      <node id="1224596674277" at="60,24,61,50" concept="0" />
-      <node id="1224596674277" at="61,50,62,31" concept="10" />
-      <node id="1224596679508" at="63,23,64,34" concept="4" />
-      <node id="1224596679508" at="64,34,65,32" concept="4" />
-      <node id="1224596679508" at="65,32,66,30" concept="10" />
-      <node id="1224596680137" at="67,23,68,34" concept="4" />
-      <node id="1224596680137" at="68,34,69,32" concept="4" />
-      <node id="1224596680137" at="69,32,70,30" concept="10" />
-      <node id="1224596680418" at="71,23,72,34" concept="4" />
-      <node id="1224596680418" at="72,34,73,32" concept="4" />
-      <node id="1224596680418" at="73,32,74,30" concept="10" />
-      <node id="1224596674278" at="75,23,76,34" concept="4" />
-      <node id="1224596674278" at="76,34,77,24" concept="1" />
-      <node id="1224596674277" at="78,24,79,33" concept="1" />
-      <node id="1224596674277" at="81,27,82,25" concept="10" />
-      <node id="1181072957066" at="86,7,87,92" concept="9" />
-      <node id="1181074092749" at="87,92,88,72" concept="4" />
-      <node id="1181074108020" at="88,72,89,78" concept="4" />
-      <node id="1181074108261" at="89,78,90,78" concept="4" />
-      <node id="1181074108487" at="90,78,91,78" concept="4" />
-      <node id="1181074109161" at="91,78,92,78" concept="4" />
-      <node id="1181074109993" at="92,78,93,78" concept="4" />
-      <node id="7376433222636454469" at="93,78,94,16" concept="11" />
-      <node id="1205787723039" at="94,16,95,14" concept="4" />
-      <node id="1205787759883" at="95,14,96,88" concept="9" />
-      <node id="1205787774080" at="96,88,97,63" concept="4" />
-      <node id="1205787891988" at="97,63,98,68" concept="9" />
-      <node id="1205787896043" at="98,68,99,64" concept="4" />
-      <node id="1224596674996" at="21,16,44,15" concept="14" />
-      <node id="1224596674277" at="57,16,80,15" concept="14" />
-      <node id="1224596674996" at="19,42,45,27" concept="3" />
-      <node id="1224596674277" at="55,42,81,27" concept="3" />
-      <node id="1224596674996" at="19,0,48,0" concept="8" trace="moveToNext#()Z" />
-      <node id="1224596674277" at="55,0,84,0" concept="8" trace="moveToNext#()Z" />
-      <node id="1224596674996" at="16,40,48,10" concept="10" />
-      <node id="1224596674277" at="52,40,84,10" concept="10" />
-      <node id="1224596674996" at="15,55,49,8" concept="10" />
-      <node id="1224596674277" at="51,55,85,8" concept="10" />
-      <node id="1181072909472" at="14,45,50,7" concept="9" />
-      <node id="1181072938780" at="50,7,86,7" concept="9" />
-      <node id="1181072889623" at="13,0,101,0" concept="8" trace="test_test1#()V" />
-      <scope id="1224596674996" at="42,24,43,33" />
-      <scope id="1224596674277" at="78,24,79,33" />
-      <scope id="1224596674996" at="24,24,26,31" />
-      <scope id="1224596674997" at="39,23,41,24" />
-      <scope id="1224596674277" at="60,24,62,31" />
-      <scope id="1224596674278" at="75,23,77,24" />
-      <scope id="1224596680111" at="27,23,30,30" />
-      <scope id="1224596680191" at="31,23,34,30" />
-      <scope id="1224596680342" at="35,23,38,30" />
-      <scope id="1224596679508" at="63,23,66,30" />
-      <scope id="1224596680137" at="67,23,70,30" />
-      <scope id="1224596680418" at="71,23,74,30" />
-      <scope id="1224596674996" at="21,16,44,15" />
-      <scope id="1224596674277" at="57,16,80,15" />
-      <scope id="1224596674996" at="19,42,46,25" />
-      <scope id="1224596674277" at="55,42,82,25" />
-      <scope id="1224596674996" at="19,0,48,0" />
-      <scope id="1224596674277" at="55,0,84,0" />
-      <scope id="1224596674996" at="16,40,48,10" />
-      <scope id="1224596674277" at="52,40,84,10" />
-      <scope id="1224596674996" at="15,55,49,8" />
-      <scope id="1224596674277" at="51,55,85,8" />
-      <scope id="1181072889625" at="14,45,99,64">
+    <file name="Concat_Test.java">
+      <node id="1224596674996" at="19,0,20,0" concept="5" trace="__CP__" />
+      <node id="1224596674996" at="25,24,26,50" concept="0" />
+      <node id="1224596674996" at="26,50,27,31" concept="10" />
+      <node id="1224596680111" at="28,23,29,34" concept="4" />
+      <node id="1224596680111" at="29,34,30,32" concept="4" />
+      <node id="1224596680111" at="30,32,31,30" concept="10" />
+      <node id="1224596680191" at="32,23,33,34" concept="4" />
+      <node id="1224596680191" at="33,34,34,32" concept="4" />
+      <node id="1224596680191" at="34,32,35,30" concept="10" />
+      <node id="1224596680342" at="36,23,37,34" concept="4" />
+      <node id="1224596680342" at="37,34,38,32" concept="4" />
+      <node id="1224596680342" at="38,32,39,30" concept="10" />
+      <node id="1224596674997" at="40,23,41,34" concept="4" />
+      <node id="1224596674997" at="41,34,42,24" concept="1" />
+      <node id="1224596674996" at="43,24,44,33" concept="1" />
+      <node id="1224596674996" at="46,27,47,25" concept="10" />
+      <node id="1224596674277" at="55,0,56,0" concept="5" trace="__CP__" />
+      <node id="1224596674277" at="61,24,62,50" concept="0" />
+      <node id="1224596674277" at="62,50,63,31" concept="10" />
+      <node id="1224596679508" at="64,23,65,34" concept="4" />
+      <node id="1224596679508" at="65,34,66,32" concept="4" />
+      <node id="1224596679508" at="66,32,67,30" concept="10" />
+      <node id="1224596680137" at="68,23,69,34" concept="4" />
+      <node id="1224596680137" at="69,34,70,32" concept="4" />
+      <node id="1224596680137" at="70,32,71,30" concept="10" />
+      <node id="1224596680418" at="72,23,73,34" concept="4" />
+      <node id="1224596680418" at="73,34,74,32" concept="4" />
+      <node id="1224596680418" at="74,32,75,30" concept="10" />
+      <node id="1224596674278" at="76,23,77,34" concept="4" />
+      <node id="1224596674278" at="77,34,78,24" concept="1" />
+      <node id="1224596674277" at="79,24,80,33" concept="1" />
+      <node id="1224596674277" at="82,27,83,25" concept="10" />
+      <node id="1181072957066" at="87,7,88,92" concept="9" />
+      <node id="1181074092749" at="88,92,89,72" concept="4" />
+      <node id="1181074108020" at="89,72,90,78" concept="4" />
+      <node id="1181074108261" at="90,78,91,78" concept="4" />
+      <node id="1181074108487" at="91,78,92,78" concept="4" />
+      <node id="1181074109161" at="92,78,93,78" concept="4" />
+      <node id="1181074109993" at="93,78,94,78" concept="4" />
+      <node id="7376433222636454469" at="94,78,95,16" concept="11" />
+      <node id="1205787723039" at="95,16,96,14" concept="4" />
+      <node id="1205787759883" at="96,14,97,88" concept="9" />
+      <node id="1205787774080" at="97,88,98,63" concept="4" />
+      <node id="1205787891988" at="98,63,99,68" concept="9" />
+      <node id="1205787896043" at="99,68,100,64" concept="4" />
+      <node id="1855382626309886360" at="103,48,104,39" concept="9" />
+      <node id="1855382626309898342" at="104,39,105,35" concept="9" />
+      <node id="1855382626309898701" at="105,35,106,32" concept="9" />
+      <node id="1855382626309899300" at="106,32,107,0" concept="12" />
+      <node id="1855382626310187146" at="107,0,108,34" concept="11" />
+      <node id="1855382626310058302" at="108,34,109,136" concept="9" />
+      <node id="1855382626310185299" at="109,136,110,60" concept="4" />
+      <node id="1855382626309885742" at="102,0,112,0" concept="8" trace="test_mps36315#()V" />
+      <node id="1224596674996" at="22,16,45,15" concept="14" />
+      <node id="1224596674277" at="58,16,81,15" concept="14" />
+      <node id="1224596674996" at="20,42,46,27" concept="3" />
+      <node id="1224596674277" at="56,42,82,27" concept="3" />
+      <node id="1224596674996" at="20,0,49,0" concept="8" trace="moveToNext#()Z" />
+      <node id="1224596674277" at="56,0,85,0" concept="8" trace="moveToNext#()Z" />
+      <node id="1224596674996" at="17,40,49,10" concept="10" />
+      <node id="1224596674277" at="53,40,85,10" concept="10" />
+      <node id="1224596674996" at="16,55,50,8" concept="10" />
+      <node id="1224596674277" at="52,55,86,8" concept="10" />
+      <node id="1181072909472" at="15,45,51,7" concept="9" />
+      <node id="1181072938780" at="51,7,87,7" concept="9" />
+      <node id="1181072889623" at="14,0,102,0" concept="8" trace="test_test1#()V" />
+      <scope id="1224596674996" at="43,24,44,33" />
+      <scope id="1224596674277" at="79,24,80,33" />
+      <scope id="1224596674996" at="25,24,27,31" />
+      <scope id="1224596674997" at="40,23,42,24" />
+      <scope id="1224596674277" at="61,24,63,31" />
+      <scope id="1224596674278" at="76,23,78,24" />
+      <scope id="1224596680111" at="28,23,31,30" />
+      <scope id="1224596680191" at="32,23,35,30" />
+      <scope id="1224596680342" at="36,23,39,30" />
+      <scope id="1224596679508" at="64,23,67,30" />
+      <scope id="1224596680137" at="68,23,71,30" />
+      <scope id="1224596680418" at="72,23,75,30" />
+      <scope id="1855382626309885745" at="103,48,110,60">
+        <var name="classifiers" id="1855382626309886363" />
+        <var name="methods" id="1855382626309898343" />
+        <var name="seq" id="1855382626310058303" />
+        <var name="vars" id="1855382626309898702" />
+      </scope>
+      <scope id="1855382626309885742" at="102,0,112,0" />
+      <scope id="1224596674996" at="22,16,45,15" />
+      <scope id="1224596674277" at="58,16,81,15" />
+      <scope id="1224596674996" at="20,42,47,25" />
+      <scope id="1224596674277" at="56,42,83,25" />
+      <scope id="1224596674996" at="20,0,49,0" />
+      <scope id="1224596674277" at="56,0,85,0" />
+      <scope id="1224596674996" at="17,40,49,10" />
+      <scope id="1224596674277" at="53,40,85,10" />
+      <scope id="1224596674996" at="16,55,50,8" />
+      <scope id="1224596674277" at="52,55,86,8" />
+      <scope id="1181072889625" at="15,45,100,64">
         <var name="s1" id="1181072909473" />
         <var name="s2" id="1181072938781" />
         <var name="s2_" id="1205787759884" />
         <var name="s2__" id="1205787891989" />
         <var name="s3" id="1181072957067" />
       </scope>
-      <scope id="1181072889623" at="13,0,101,0" />
-      <unit id="1224596674996" at="17,19,48,9" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test_Test$1" />
-      <unit id="1224596674277" at="53,19,84,9" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test_Test$2" />
-      <unit id="1181072883581" at="12,0,102,0" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test_Test" />
+      <scope id="1181072889623" at="14,0,102,0" />
+      <unit id="1224596674996" at="18,19,49,9" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test$1" />
+      <unit id="1224596674277" at="54,19,85,9" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test$2" />
+      <unit id="1181072883581" at="13,0,113,0" name="jetbrains.mps.baseLanguage.collections.unittest.simple_operations.Concat_Test" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903c2(jetbrains.mps.baseLanguage.collections.unittest.simple_operations)/1197927649975">
