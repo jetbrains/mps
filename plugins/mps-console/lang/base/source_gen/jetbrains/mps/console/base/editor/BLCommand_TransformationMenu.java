@@ -16,7 +16,11 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.editor.menus.transformation.ActionItemBase;
-import jetbrains.mps.console.tool.ConsoleTool;
+import jetbrains.mps.openapi.editor.EditorComponent;
+import com.intellij.openapi.actionSystem.ex.ActionUtil;
+import jetbrains.mps.workbench.action.BaseAction;
+import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.ActionPlaces;
 
 public class BLCommand_TransformationMenu extends TransformationMenuBase {
   public BLCommand_TransformationMenu() {
@@ -55,8 +59,11 @@ public class BLCommand_TransformationMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        ConsoleTool tool = _context.getEditorContext().getOperationContext().getProject().getComponent(ConsoleTool.class);
-        tool.getCurrentEditableTab().executeCurrentCommand();
+        EditorComponent editorComponent = _context.getEditorContext().getEditorComponent();
+        // no special knowledge behind TOOLWINDOW_CONTENT, just liked the name
+        // and yes, I despise cast to EC impl, but it's still better than deprecated OperationContext. Perhaps, have to use getExternalComponent(), just 
+        // not sure which one is better right now to compose DataContext
+        ActionUtil.invokeAction(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleExecute_Action")), (jetbrains.mps.nodeEditor.EditorComponent) editorComponent, ActionPlaces.TOOLWINDOW_CONTENT, null, null);
       }
 
 
