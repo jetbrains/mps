@@ -9,7 +9,6 @@ import jetbrains.mps.tool.environment.EnvironmentConfig;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 import java.util.concurrent.atomic.AtomicReference;
 import java.lang.reflect.Method;
-import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.tool.run.ModuleClassCode;
 import java.util.Optional;
 import java.lang.reflect.Constructor;
@@ -37,37 +36,33 @@ public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
 
   @Override
   public void work() {
-    final AtomicReference<Object> object = new AtomicReference<Object>();
-    final AtomicReference<Method> method = new AtomicReference<Method>();
+    AtomicReference<Object> object = new AtomicReference<Object>();
+    AtomicReference<Method> method = new AtomicReference<Method>();
 
-    // this code must be run inside a "read action"
-    // see https://youtrack.jetbrains.com/issue/MPS-35399/Model-read-required-during-loading-of-a-class
-    ModelAccess.instance().runWriteAction(() -> {
-      ModuleClassCode code = new ModuleClassCode(LAUNCHER_SOLUTION);
-      try {
-        code.load(myEnvironment.getPlatform(), LAUNCHER_CLASS);
-        Optional<Constructor<?>> ctor = code.cons(Script.class, Environment.class, WorkerCallback.class);
-        Optional<Method> meth = code.instanceMethod(LAUNCHER_METHOD);
-        method.set(meth.get());
+    ModuleClassCode code = new ModuleClassCode(LAUNCHER_SOLUTION);
+    try {
+      code.load(myEnvironment.getPlatform(), LAUNCHER_CLASS);
+      Optional<Constructor<?>> ctor = code.cons(Script.class, Environment.class, WorkerCallback.class);
+      Optional<Method> meth = code.instanceMethod(LAUNCHER_METHOD);
+      method.set(meth.get());
 
-        if (ctor.isPresent() && meth.isPresent()) {
-          object.set(ctor.get().newInstance(myWhatToDo, myEnvironment, LaunchTestWorker.this));
+      if (ctor.isPresent() && meth.isPresent()) {
+        object.set(ctor.get().newInstance(myWhatToDo, myEnvironment, this));
 
+      } else {
+        if (!(ctor.isPresent())) {
+          error("not found constructor in " + LAUNCHER_CLASS);
         } else {
-          if (!(ctor.isPresent())) {
-            error("not found constructor in " + LAUNCHER_CLASS);
-          } else {
-            error("not found method " + LAUNCHER_METHOD + " in " + LAUNCHER_CLASS);
-          }
+          error("not found method " + LAUNCHER_METHOD + " in " + LAUNCHER_CLASS);
         }
-
-      } catch (ClassNotFoundException e) {
-        error("not found class " + LAUNCHER_CLASS + " among classes of " + LAUNCHER_SOLUTION, e);
-
-      } catch (InstantiationException | InvocationTargetException | IllegalAccessException e) {
-        error("unexpected error ", e);
       }
-    });
+
+    } catch (ClassNotFoundException e) {
+      error("not found class " + LAUNCHER_CLASS + " among classes of " + LAUNCHER_SOLUTION, e);
+
+    } catch (InstantiationException | InvocationTargetException | IllegalAccessException e) {
+      error("unexpected error ", e);
+    }
 
     if (method.get() != null && object.get() != null) {
       try {
