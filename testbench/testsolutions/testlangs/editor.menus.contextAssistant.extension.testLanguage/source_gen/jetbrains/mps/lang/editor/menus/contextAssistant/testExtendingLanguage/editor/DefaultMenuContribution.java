@@ -4,17 +4,14 @@ package jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.e
 
 import jetbrains.mps.nodeEditor.menus.transformation.TransformationMenuBase;
 import jetbrains.mps.logging.Logger;
-import java.util.Set;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.HashSet;
-import jetbrains.mps.lang.editor.menus.transformation.MenuLocations;
-import org.jetbrains.annotations.NotNull;
-import java.util.List;
-import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
-import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuContext;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
+import java.util.List;
+import jetbrains.mps.lang.editor.menus.transformation.MenuLocations;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.editor.menus.MenuPart;
+import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
+import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
@@ -30,24 +27,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class DefaultMenuContribution extends TransformationMenuBase {
   private static final Logger LOG = Logger.getLogger(DefaultMenuContribution.class);
   public DefaultMenuContribution() {
-    super(true);
-  }
-  private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.CONTEXT_ASSISTANT, jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.MenuLocations.CONTEXT_ACTIONS_TOOL);
-  @Override
-  public boolean isApplicableToLocation(@NotNull String location) {
-    return SetSequence.fromSet(myLocations).contains(location);
-  }
-
-  @NotNull
-  @Override
-  public List<TransformationMenuItem> createMenuItems(@NotNull TransformationMenuContext context) {
-    context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("contribution to the " + "default transformation menu for " + "Child", new SNodePointer("r:1ed8add9-1a05-4a2d-a8ee-1a24e378c5f6(jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.editor)", "7253742591936257513")));
-    try {
-      return super.createMenuItems(context);
-    } finally {
-      context.getEditorMenuTrace().popTraceInfo();
-    }
+    super(true, new EditorMenuDescriptorBase("contribution to the " + "default transformation menu for " + "Child", new SNodePointer("r:1ed8add9-1a05-4a2d-a8ee-1a24e378c5f6(jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.editor)", "7253742591936257513")), List.<String>of(MenuLocations.CONTEXT_ASSISTANT, jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.MenuLocations.CONTEXT_ACTIONS_TOOL));
   }
 
   @Override
@@ -160,7 +140,7 @@ public class DefaultMenuContribution extends TransformationMenuBase {
 
       @Override
       public IconResource getIcon() {
-        return IconContainer.RESOURCE_a0a9c9;
+        return IconContainer.RESOURCE_a0a9c5;
       }
       @Override
       public String getTooltipText() {
