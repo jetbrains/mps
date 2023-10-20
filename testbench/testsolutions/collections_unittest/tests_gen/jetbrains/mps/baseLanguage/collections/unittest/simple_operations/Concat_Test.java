@@ -8,8 +8,9 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import java.util.List;
 import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.model.SNode;
 
-public class Concat_Test_Test {
+public class Concat_Test {
   @Test
   public void test_test1() throws Exception {
     Iterable<Integer> s1 = Sequence.fromClosure(() -> {
@@ -97,5 +98,15 @@ __switch__:
     Assert.assertEquals(3, Sequence.fromIterable(s2_).count());
     Iterable<Integer> s2__ = Sequence.fromIterable(s2).concat(null);
     Assert.assertEquals(3, Sequence.fromIterable(s2__).count());
+  }
+  @Test
+  public void test_mps36315() throws Exception {
+    Iterable<SNode> classifiers = null;
+    Iterable<SNode> methods = null;
+    Iterable<SNode> vars = null;
+
+    // Rather some typesystem test
+    Iterable<SNode> seq = Sequence.fromIterable(classifiers).concat(Sequence.fromIterable(methods)).concat(Sequence.fromIterable(vars));
+    Assert.assertTrue(Sequence.fromIterable(seq).isEmpty());
   }
 }
