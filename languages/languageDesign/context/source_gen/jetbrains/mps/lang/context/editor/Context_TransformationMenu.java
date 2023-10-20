@@ -6,22 +6,11 @@ import jetbrains.mps.nodeEditor.menus.transformation.TransformationMenuBase;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.editor.menus.MenuPart;
-import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
-import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuContext;
-import java.util.ArrayList;
 
 public class Context_TransformationMenu extends TransformationMenuBase {
   public Context_TransformationMenu() {
     super(false, new EditorMenuDescriptorBase("default transformation menu for " + "Context", new SNodePointer("r:41b5f5fb-5d70-4d86-9ec3-cbae417e6441(jetbrains.mps.lang.context.editor)", "8018723092206202230")), List.<String>of());
   }
 
-  @Override
-  @NotNull
-  protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
-    List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
-    return result;
-  }
 
 }

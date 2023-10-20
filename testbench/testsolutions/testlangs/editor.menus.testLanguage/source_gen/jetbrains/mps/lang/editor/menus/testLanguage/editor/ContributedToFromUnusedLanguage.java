@@ -6,22 +6,11 @@ import jetbrains.mps.nodeEditor.menus.transformation.TransformationMenuBase;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.editor.menus.MenuPart;
-import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
-import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuContext;
-import java.util.ArrayList;
 
 public class ContributedToFromUnusedLanguage extends TransformationMenuBase {
   public ContributedToFromUnusedLanguage() {
     super(false, new EditorMenuDescriptorBase("named transformation menu " + "ContributedToFromUnusedLanguage", new SNodePointer("r:3b1c2f8c-f04f-4186-97fc-85ed47ba8aeb(jetbrains.mps.lang.editor.menus.testLanguage.editor)", "3526874291840093374")), List.<String>of());
   }
 
-  @Override
-  @NotNull
-  protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
-    List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
-    return result;
-  }
 
 }

@@ -20,20 +20,11 @@
       <scope id="1068638940632627681" at="28,120,29,108" />
     </file>
     <file name="NamedMenuForBaseInUsedExtendingLanguage.java">
-      <node id="1068638940632627681" at="16,52,17,285" concept="7" />
-      <node id="1068638940632627681" at="22,124,23,156" concept="5" />
-      <node id="1068638940632627681" at="23,156,24,18" concept="6" />
-      <node id="1068638940632627681" at="16,0,19,0" concept="0" trace="NamedMenuForBaseInUsedExtendingLanguage#()V" />
-      <node id="1068638940632627681" at="20,0,26,0" concept="4" trace="getParts#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
-      <scope id="1068638940632627681" at="16,52,17,285" />
-      <scope id="1068638940632627681" at="22,124,24,18">
-        <var name="result" id="1068638940632627681" />
-      </scope>
-      <scope id="1068638940632627681" at="16,0,19,0" />
-      <scope id="1068638940632627681" at="20,0,26,0">
-        <var name="_context" id="1068638940632627681" />
-      </scope>
-      <unit id="1068638940632627681" at="15,0,28,0" name="jetbrains.mps.lang.editor.menus.testExtendingLanguage.editor.NamedMenuForBaseInUsedExtendingLanguage" />
+      <node id="1068638940632627681" at="11,52,12,285" concept="7" />
+      <node id="1068638940632627681" at="11,0,14,0" concept="0" trace="NamedMenuForBaseInUsedExtendingLanguage#()V" />
+      <scope id="1068638940632627681" at="11,52,12,285" />
+      <scope id="1068638940632627681" at="11,0,14,0" />
+      <unit id="1068638940632627681" at="10,0,17,0" name="jetbrains.mps.lang.editor.menus.testExtendingLanguage.editor.NamedMenuForBaseInUsedExtendingLanguage" />
     </file>
   </root>
   <root nodeRef="r:963517d7-70d8-4c26-b98a-77234c4cb04a(jetbrains.mps.lang.editor.menus.testExtendingLanguage.editor)/3526874291840845051">

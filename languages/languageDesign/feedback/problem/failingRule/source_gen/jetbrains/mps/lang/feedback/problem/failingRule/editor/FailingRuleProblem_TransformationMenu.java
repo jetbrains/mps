@@ -6,22 +6,11 @@ import jetbrains.mps.nodeEditor.menus.transformation.TransformationMenuBase;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.editor.menus.MenuPart;
-import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
-import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuContext;
-import java.util.ArrayList;
 
 public class FailingRuleProblem_TransformationMenu extends TransformationMenuBase {
   public FailingRuleProblem_TransformationMenu() {
     super(false, new EditorMenuDescriptorBase("default transformation menu for " + "FailingRuleProblem", new SNodePointer("r:15aa514c-a662-491f-a410-60c8f072e1ce(jetbrains.mps.lang.feedback.problem.failingRule.editor)", "7716791493893610133")), List.<String>of());
   }
 
-  @Override
-  @NotNull
-  protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
-    List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
-    return result;
-  }
 
 }
