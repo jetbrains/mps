@@ -15,10 +15,8 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
+import jetbrains.mps.lang.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
@@ -53,32 +51,16 @@ public class AddGenerics extends TransformationMenuBase {
   private class TMP_Action_kped1q_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      Item item = new Item(context);
-      String description;
-      try {
-        description = "single item: " + item.getLabelText("");
-      } catch (Throwable t) {
-        Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-        return null;
-      }
-      context.getEditorMenuTrace().pushTraceInfo();
-      try {
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:4cdf4bee-5b50-4ccb-8bec-50fada7c094a(jetbrains.mps.baseLanguage.methodReferences.editor)", "7839575471185145993")));
-        item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-      return item;
+      return new Item(context).resetTraceInfo();
     }
 
     private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
-      private final TransformationMenuContext _context;
-      private EditorMenuTraceInfo myEditorMenuTraceInfo;
-      private Item(TransformationMenuContext context) {
-        _context = context;
+      /*package*/ Item(TransformationMenuContext context) {
+        super(context);
       }
-      private void setTraceInfo(EditorMenuTraceInfo info) {
-        myEditorMenuTraceInfo = info;
+      /*package*/ Item resetTraceInfo() {
+        updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:4cdf4bee-5b50-4ccb-8bec-50fada7c094a(jetbrains.mps.baseLanguage.methodReferences.editor)", "7839575471185145993"));
+        return this;
       }
       @Nullable
       @Override
@@ -100,12 +82,6 @@ public class AddGenerics extends TransformationMenuBase {
       }
 
 
-
-      @Override
-      public EditorMenuTraceInfo getTraceInfo() {
-        return myEditorMenuTraceInfo;
-      }
-
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
         SAbstractConcept outputConcept = null;
@@ -115,7 +91,6 @@ public class AddGenerics extends TransformationMenuBase {
         }
       }
     }
-
   }
   private static SNode createType_kped1q_a0a0a0a0() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.Type$bu);

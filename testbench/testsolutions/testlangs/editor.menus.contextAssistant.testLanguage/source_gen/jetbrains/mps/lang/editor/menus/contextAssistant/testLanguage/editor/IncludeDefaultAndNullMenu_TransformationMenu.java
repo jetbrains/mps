@@ -15,9 +15,7 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import jetbrains.mps.lang.editor.menus.transformation.ActionItemBase;
 
 public class IncludeDefaultAndNullMenu_TransformationMenu extends TransformationMenuBase {
   public IncludeDefaultAndNullMenu_TransformationMenu() {
@@ -37,32 +35,16 @@ public class IncludeDefaultAndNullMenu_TransformationMenu extends Transformation
   private class TMP_Action_e98cup_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      Item item = new Item(context);
-      String description;
-      try {
-        description = "single item: " + item.getLabelText("");
-      } catch (Throwable t) {
-        Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-        return null;
-      }
-      context.getEditorMenuTrace().pushTraceInfo();
-      try {
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:0f1cfce5-1514-42b6-8353-156be9a116e3(jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor)", "4695456347261860116")));
-        item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-      return item;
+      return new Item(context).resetTraceInfo();
     }
 
     private class Item extends ActionItemBase {
-      private final TransformationMenuContext _context;
-      private EditorMenuTraceInfo myEditorMenuTraceInfo;
-      private Item(TransformationMenuContext context) {
-        _context = context;
+      /*package*/ Item(TransformationMenuContext context) {
+        super(context);
       }
-      private void setTraceInfo(EditorMenuTraceInfo info) {
-        myEditorMenuTraceInfo = info;
+      /*package*/ Item resetTraceInfo() {
+        updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:0f1cfce5-1514-42b6-8353-156be9a116e3(jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor)", "4695456347261860116"));
+        return this;
       }
       @Nullable
       @Override
@@ -76,13 +58,6 @@ public class IncludeDefaultAndNullMenu_TransformationMenu extends Transformation
 
 
 
-
-      @Override
-      public EditorMenuTraceInfo getTraceInfo() {
-        return myEditorMenuTraceInfo;
-      }
-
     }
-
   }
 }

@@ -17,10 +17,8 @@ import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransfo
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
+import jetbrains.mps.lang.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -87,32 +85,16 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
   private class TMP_Action_mhpf25_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      Item item = new Item(context);
-      String description;
-      try {
-        description = "single item: " + item.getLabelText("");
-      } catch (Throwable t) {
-        Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-        return null;
-      }
-      context.getEditorMenuTrace().pushTraceInfo();
-      try {
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074065")));
-        item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-      return item;
+      return new Item(context).resetTraceInfo();
     }
 
     private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
-      private final TransformationMenuContext _context;
-      private EditorMenuTraceInfo myEditorMenuTraceInfo;
-      private Item(TransformationMenuContext context) {
-        _context = context;
+      /*package*/ Item(TransformationMenuContext context) {
+        super(context);
       }
-      private void setTraceInfo(EditorMenuTraceInfo info) {
-        myEditorMenuTraceInfo = info;
+      /*package*/ Item resetTraceInfo() {
+        updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074065"));
+        return this;
       }
       @Nullable
       @Override
@@ -126,12 +108,6 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
 
 
 
-
-      @Override
-      public EditorMenuTraceInfo getTraceInfo() {
-        return myEditorMenuTraceInfo;
-      }
-
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
         SAbstractConcept outputConcept = null;
@@ -141,7 +117,6 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
         }
       }
     }
-
   }
   public class TMP_Group_mhpf25_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     public TMP_Group_mhpf25_b0() {
@@ -158,32 +133,16 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
     private class TMP_Action_mhpf25_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Item item = new Item(context);
-        String description;
-        try {
-          description = "single item: " + item.getLabelText("");
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-          return null;
-        }
-        context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806548267")));
-          item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-        return item;
+        return new Item(context).resetTraceInfo();
       }
 
       private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
-        private final TransformationMenuContext _context;
-        private EditorMenuTraceInfo myEditorMenuTraceInfo;
-        private Item(TransformationMenuContext context) {
-          _context = context;
+        /*package*/ Item(TransformationMenuContext context) {
+          super(context);
         }
-        private void setTraceInfo(EditorMenuTraceInfo info) {
-          myEditorMenuTraceInfo = info;
+        /*package*/ Item resetTraceInfo() {
+          updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806548267"));
+          return this;
         }
         @Nullable
         @Override
@@ -197,12 +156,6 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
 
 
 
-
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myEditorMenuTraceInfo;
-        }
-
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
           SAbstractConcept outputConcept = null;
@@ -212,7 +165,6 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
           }
         }
       }
-
     }
   }
   public class TMP_Include_mhpf25_c0 extends IncludeTransformationMenuTransformationMenuPart {
@@ -277,32 +229,16 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Item item = new Item(context);
-        String description;
-        try {
-          description = "single item: " + item.getLabelText("");
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-          return null;
-        }
-        context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806566158")));
-          item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-        return item;
+        return new Item(context).resetTraceInfo();
       }
 
       private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
-        private final TransformationMenuContext _context;
-        private EditorMenuTraceInfo myEditorMenuTraceInfo;
-        private Item(TransformationMenuContext context) {
-          _context = context;
+        /*package*/ Item(TransformationMenuContext context) {
+          super(context);
         }
-        private void setTraceInfo(EditorMenuTraceInfo info) {
-          myEditorMenuTraceInfo = info;
+        /*package*/ Item resetTraceInfo() {
+          updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806566158"));
+          return this;
         }
         @Nullable
         @Override
@@ -316,12 +252,6 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
 
 
 
-
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myEditorMenuTraceInfo;
-        }
-
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
           SAbstractConcept outputConcept = null;
@@ -331,7 +261,6 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
           }
         }
       }
-
     }
   }
   public class TMP_SubMenu_mhpf25_f0 extends SubMenuMenuTransformationMenuPart {
@@ -366,32 +295,16 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
     private class TMP_Action_mhpf25_a5a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Item item = new Item(context);
-        String description;
-        try {
-          description = "single item: " + item.getLabelText("");
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-          return null;
-        }
-        context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806581006")));
-          item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-        return item;
+        return new Item(context).resetTraceInfo();
       }
 
       private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
-        private final TransformationMenuContext _context;
-        private EditorMenuTraceInfo myEditorMenuTraceInfo;
-        private Item(TransformationMenuContext context) {
-          _context = context;
+        /*package*/ Item(TransformationMenuContext context) {
+          super(context);
         }
-        private void setTraceInfo(EditorMenuTraceInfo info) {
-          myEditorMenuTraceInfo = info;
+        /*package*/ Item resetTraceInfo() {
+          updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806581006"));
+          return this;
         }
         @Nullable
         @Override
@@ -405,12 +318,6 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
 
 
 
-
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myEditorMenuTraceInfo;
-        }
-
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
           SAbstractConcept outputConcept = null;
@@ -420,7 +327,6 @@ public class MenuTraceTransformationChild_TransformationMenu extends Transformat
           }
         }
       }
-
     }
   }
   public class TMP_WrapSM_mhpf25_h0 extends WrapSubstituteMenuTransformationMenuPart {

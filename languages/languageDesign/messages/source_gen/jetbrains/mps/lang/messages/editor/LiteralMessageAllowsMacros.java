@@ -19,10 +19,8 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
+import jetbrains.mps.lang.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteCompletionActionItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
@@ -74,32 +72,16 @@ public class LiteralMessageAllowsMacros extends TransformationMenuBase {
       }
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Item item = new Item(context);
-        String description;
-        try {
-          description = "single item: " + item.getLabelText("");
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-          return null;
-        }
-        context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:46037634-9be0-4da8-8dd8-3cb367171177(jetbrains.mps.lang.messages.editor)", "4356326056162120467")));
-          item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-        return item;
+        return new Item(context).resetTraceInfo();
       }
 
       private class Item extends ActionItemBase implements SubstituteCompletionActionItem {
-        private final TransformationMenuContext _context;
-        private EditorMenuTraceInfo myEditorMenuTraceInfo;
-        private Item(TransformationMenuContext context) {
-          _context = context;
+        /*package*/ Item(TransformationMenuContext context) {
+          super(context);
         }
-        private void setTraceInfo(EditorMenuTraceInfo info) {
-          myEditorMenuTraceInfo = info;
+        /*package*/ Item resetTraceInfo() {
+          updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:46037634-9be0-4da8-8dd8-3cb367171177(jetbrains.mps.lang.messages.editor)", "4356326056162120467"));
+          return this;
         }
         @Nullable
         @Override
@@ -118,12 +100,6 @@ public class LiteralMessageAllowsMacros extends TransformationMenuBase {
           return "reference a context parameter";
         }
 
-
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myEditorMenuTraceInfo;
-        }
-
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
           SAbstractConcept outputConcept = null;
@@ -133,7 +109,6 @@ public class LiteralMessageAllowsMacros extends TransformationMenuBase {
           }
         }
       }
-
     }
   }
 

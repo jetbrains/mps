@@ -20,10 +20,8 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
+import jetbrains.mps.lang.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
-import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -81,32 +79,16 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
     private class TMP_Action_7vmljf_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
-        Item item = new Item(context);
-        String description;
-        try {
-          description = "single item: " + item.getLabelText("");
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-          return null;
-        }
-        context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:93eafd6e-0a56-402c-930d-564027be226b(jetbrains.mps.baseLanguage.math.editor)", "5123146117298459772")));
-          item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-        return item;
+        return new Item(context).resetTraceInfo();
       }
 
       private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
-        private final TransformationMenuContext _context;
-        private EditorMenuTraceInfo myEditorMenuTraceInfo;
-        private Item(TransformationMenuContext context) {
-          _context = context;
+        /*package*/ Item(TransformationMenuContext context) {
+          super(context);
         }
-        private void setTraceInfo(EditorMenuTraceInfo info) {
-          myEditorMenuTraceInfo = info;
+        /*package*/ Item resetTraceInfo() {
+          updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:93eafd6e-0a56-402c-930d-564027be226b(jetbrains.mps.baseLanguage.math.editor)", "5123146117298459772"));
+          return this;
         }
         @Nullable
         @Override
@@ -128,12 +110,6 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
           return "Matrix element access";
         }
 
-
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myEditorMenuTraceInfo;
-        }
-
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
           SAbstractConcept outputConcept = null;
@@ -143,38 +119,21 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
           }
         }
       }
-
     }
   }
   private class TMP_Action_7vmljf_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
-      Item item = new Item(context);
-      String description;
-      try {
-        description = "single item: " + item.getLabelText("");
-      } catch (Throwable t) {
-        Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-        return null;
-      }
-      context.getEditorMenuTrace().pushTraceInfo();
-      try {
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:93eafd6e-0a56-402c-930d-564027be226b(jetbrains.mps.baseLanguage.math.editor)", "5123146117298459815")));
-        item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-      return item;
+      return new Item(context).resetTraceInfo();
     }
 
     private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
-      private final TransformationMenuContext _context;
-      private EditorMenuTraceInfo myEditorMenuTraceInfo;
-      private Item(TransformationMenuContext context) {
-        _context = context;
+      /*package*/ Item(TransformationMenuContext context) {
+        super(context);
       }
-      private void setTraceInfo(EditorMenuTraceInfo info) {
-        myEditorMenuTraceInfo = info;
+      /*package*/ Item resetTraceInfo() {
+        updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:93eafd6e-0a56-402c-930d-564027be226b(jetbrains.mps.baseLanguage.math.editor)", "5123146117298459815"));
+        return this;
       }
       @Nullable
       @Override
@@ -194,12 +153,6 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
         return "Raise to power";
       }
 
-
-      @Override
-      public EditorMenuTraceInfo getTraceInfo() {
-        return myEditorMenuTraceInfo;
-      }
-
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
         SAbstractConcept outputConcept = null;
@@ -209,7 +162,6 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
         }
       }
     }
-
   }
   public class TMP_Group_7vmljf_c0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     public TMP_Group_7vmljf_c0() {
@@ -252,32 +204,16 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
         }
         @Nullable
         protected TransformationMenuItem createItem(TransformationMenuContext context) {
-          Item item = new Item(context);
-          String description;
-          try {
-            description = "single item: " + item.getLabelText("");
-          } catch (Throwable t) {
-            Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
-            return null;
-          }
-          context.getEditorMenuTrace().pushTraceInfo();
-          try {
-            context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:93eafd6e-0a56-402c-930d-564027be226b(jetbrains.mps.baseLanguage.math.editor)", "5123146117298459904")));
-            item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
-          } finally {
-            context.getEditorMenuTrace().popTraceInfo();
-          }
-          return item;
+          return new Item(context).resetTraceInfo();
         }
 
         private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
-          private final TransformationMenuContext _context;
-          private EditorMenuTraceInfo myEditorMenuTraceInfo;
-          private Item(TransformationMenuContext context) {
-            _context = context;
+          /*package*/ Item(TransformationMenuContext context) {
+            super(context);
           }
-          private void setTraceInfo(EditorMenuTraceInfo info) {
-            myEditorMenuTraceInfo = info;
+          /*package*/ Item resetTraceInfo() {
+            updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:93eafd6e-0a56-402c-930d-564027be226b(jetbrains.mps.baseLanguage.math.editor)", "5123146117298459904"));
+            return this;
           }
           @Nullable
           @Override
@@ -296,12 +232,6 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
             return SConceptOperations.shortDescription(myParameterObject);
           }
 
-
-          @Override
-          public EditorMenuTraceInfo getTraceInfo() {
-            return myEditorMenuTraceInfo;
-          }
-
           public void customize(String pattern, EditorMenuItemStyle style) {
             EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
             SAbstractConcept outputConcept = null;
@@ -311,7 +241,6 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
             }
           }
         }
-
       }
     }
   }
