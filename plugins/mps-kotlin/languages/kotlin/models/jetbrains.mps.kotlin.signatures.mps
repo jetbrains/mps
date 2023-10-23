@@ -1875,7 +1875,7 @@
     <node concept="3UR2Jj" id="5Q5$eZnMlCd" role="lGtFl">
       <node concept="TZ5HA" id="5Q5$eZnMlCe" role="TZ5H$">
         <node concept="1dT_AC" id="5Q5$eZnMlCf" role="1dT_Ay">
-          <property role="1dT_AB" value="Represent an accessor of a property (either the getter or the setter depending of defined kind)." />
+          <property role="1dT_AB" value="FunctionSignatureRepresent an accessor of a property (either the getter or the setter depending of defined kind)." />
         </node>
       </node>
       <node concept="TZ5HA" id="5Q5$eZnMnZd" role="TZ5H$">
