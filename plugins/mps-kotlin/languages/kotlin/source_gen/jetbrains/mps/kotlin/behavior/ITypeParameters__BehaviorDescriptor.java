@@ -10,13 +10,15 @@ import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import java.util.Collections;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -26,14 +28,18 @@ public final class ITypeParameters__BehaviorDescriptor extends BaseBHDescriptor 
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, "jetbrains.mps.kotlin.structure.ITypeParameters");
 
   public static final SMethod<Iterable<TypeParameterDeclaration>> getTypeParameterDescriptors_id28CvMylfXMr = new SMethodBuilder<Iterable<TypeParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class))).name("getTypeParameterDescriptors").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2461357008637385883L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Iterable<SNode>> getExtraUpperBounds_id4Cl0D9hqdNo = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getExtraUpperBounds").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5338175760771898584L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeParameterDescriptors_id28CvMylfXMr);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeParameterDescriptors_id28CvMylfXMr, getExtraUpperBounds_id4Cl0D9hqdNo);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static Iterable<TypeParameterDeclaration> getTypeParameterDescriptors_id28CvMylfXMr(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeParameters$eq6K)).select((it) -> (TypeParameterDeclaration) ITypeParameter__BehaviorDescriptor.getDescriptor_id28CvMylflrH.invoke(it)).where(new NotNullWhereFilter());
+  }
+  /*package*/ static Iterable<SNode> getExtraUpperBounds_id4Cl0D9hqdNo(@NotNull SNode __thisNode__, SNode typeParameter) {
+    return Sequence.fromIterable(Collections.<SNode>emptyList());
   }
 
   /*package*/ ITypeParameters__BehaviorDescriptor() {
@@ -53,6 +59,8 @@ public final class ITypeParameters__BehaviorDescriptor extends BaseBHDescriptor 
     switch (methodIndex) {
       case 0:
         return (T) ((Iterable<TypeParameterDeclaration>) getTypeParameterDescriptors_id28CvMylfXMr(node));
+      case 1:
+        return (T) ((Iterable<SNode>) getExtraUpperBounds_id4Cl0D9hqdNo(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

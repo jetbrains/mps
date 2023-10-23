@@ -263,7 +263,7 @@ public class KtModuleIndexer {
         putConcepts(CONCEPTS.TypeProjection$5e);
         putRef("kotlin/Array");
       }
-      putConcepts(CONCEPTS.MemberNavigationOperation$7I, CONCEPTS.ClassMemberTarget$le, CONCEPTS.ReceiverType$$f);
+      putConcepts(CONCEPTS.MemberNavigationExpression$7I, CONCEPTS.ClassMemberTarget$le, CONCEPTS.ReceiverType$$f);
     } else if (arg instanceof KmAnnotationArgument.EnumValue) {
       KmAnnotationArgument.EnumValue value = ((KmAnnotationArgument.EnumValue) arg);
       putClassRef(value.getEnumClassName());
@@ -324,7 +324,7 @@ public class KtModuleIndexer {
     /*package*/ static final SConcept CharLiteral$iM = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d3L, "jetbrains.mps.kotlin.structure.CharLiteral");
     /*package*/ static final SConcept RealLiteral$jh = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, "jetbrains.mps.kotlin.structure.RealLiteral");
     /*package*/ static final SConcept IntegerLiteral$7a = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d0L, "jetbrains.mps.kotlin.structure.IntegerLiteral");
-    /*package*/ static final SConcept MemberNavigationOperation$7I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationOperation");
+    /*package*/ static final SConcept MemberNavigationExpression$7I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationExpression");
     /*package*/ static final SConcept ClassMemberTarget$le = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af537L, "jetbrains.mps.kotlin.structure.ClassMemberTarget");
     /*package*/ static final SConcept ReceiverType$$f = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, "jetbrains.mps.kotlin.structure.ReceiverType");
     /*package*/ static final SConcept VariableRefExpression$J$ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4cca44497635e571L, "jetbrains.mps.kotlin.structure.VariableRefExpression");

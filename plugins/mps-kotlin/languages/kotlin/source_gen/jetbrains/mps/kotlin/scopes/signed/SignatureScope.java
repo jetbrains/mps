@@ -6,7 +6,10 @@ import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.kotlin.behavior.IKotlinRoot__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.ISignatureScopeProvider__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -41,8 +44,17 @@ public interface SignatureScope {
     return CompositeSignatureScope.of(collector.getScopes());
   }
 
-  static void collectHierarchyScopes(SNode node, SNode child, ScopeCollector collector) {
+  static void collectHierarchyScopes(SNode node, final SNode child, ScopeCollector collector) {
+    // If reached the top of the hierarchy without trouble or explicit stop
     if ((node == null)) {
+      // Get global scope, declare all as a single scope: same priority during resolution
+      final ScopeCollector subCollector = new ScopeCollector(collector.getFilter());
+      ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(child), CONCEPTS.IKotlinRoot$xV)).visitAll((it) -> {
+        if (it != child) {
+          IKotlinRoot__BehaviorDescriptor.collectPublicScope_id58ySuOXQyMi.invoke(it, subCollector, child);
+        }
+      });
+      collector.declareScope(CompositeSignatureScope.of(subCollector.getScopes()));
       return;
     }
 
@@ -60,6 +72,7 @@ public interface SignatureScope {
   }
 
   final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IKotlinRoot$xV = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x713f27d92240e539L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
     /*package*/ static final SInterfaceConcept ISignatureScopeProvider$mx = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7a627d34a607ff89L, "jetbrains.mps.kotlin.structure.ISignatureScopeProvider");
   }
 }

@@ -54,4 +54,20 @@ public interface SignatureFilter {
     return true;
   }
 
+  SignatureFilter ALL = new SignatureFilter() {
+    @Override
+    public boolean acceptKind(Class<? extends MemberSignature> signatureKind) {
+      return true;
+    }
+
+    @Override
+    public boolean acceptSignature(MemberSignature signature, SNode source) {
+      return true;
+    }
+
+    @Override
+    public boolean acceptReceiver(SNode type) {
+      return true;
+    }
+  };
 }

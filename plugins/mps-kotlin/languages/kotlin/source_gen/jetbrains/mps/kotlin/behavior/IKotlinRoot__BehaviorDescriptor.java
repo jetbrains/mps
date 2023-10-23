@@ -11,13 +11,12 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.kotlin.scopes.signed.ScopeCollector;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.Optional;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -30,9 +29,11 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getFqName_id74Z9X$ygjSa = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8160284863354715658L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
   public static final SMethod<String> getFqName_idhEwIO9y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877404258L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Void> getLocalSignatureScope_id58ySuOXQyMi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("getLocalSignatureScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5918541269379460242L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isRoot_id7_XheqBfExI = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRoot").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8754229008117180526L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Optional<SNode>> enclosingRoot_id7_XheqBfOCk = new SMethodBuilder<Optional<SNode>>(new SJavaCompoundTypeImpl(Optional.class)).name("enclosingRoot").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8754229008117221908L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Void> collectPublicScope_id58ySuOXQyMi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectPublicScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5918541269379460242L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPackageName_id74Z9X$ygjTm, getFqName_id74Z9X$ygjSa, getFqName_idhEwIO9y, collectScope_id7DyvjiA20yV, getLocalSignatureScope_id58ySuOXQyMi);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPackageName_id74Z9X$ygjTm, getFqName_id74Z9X$ygjSa, getFqName_idhEwIO9y, collectScope_id7DyvjiA20yV, isRoot_id7_XheqBfExI, enclosingRoot_id7_XheqBfOCk, collectPublicScope_id58ySuOXQyMi);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -48,22 +49,18 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
     return IKotlinRoot__BehaviorDescriptor.getFqName_id74Z9X$ygjSa.invoke(__thisNode__, KtEnvironmentConfig.Kotlin);
   }
-  /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull final SNode __thisNode__, ScopeCollector collector, SNode childNode) {
-    IKotlinRoot__BehaviorDescriptor.getLocalSignatureScope_id58ySuOXQyMi.invoke(__thisNode__, collector, __thisNode__);
-
-    // Declare all as a single scope: same priority during resolution
-    final ScopeCollector subCollector = new ScopeCollector(collector.getFilter());
-    ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(__thisNode__), CONCEPTS.IKotlinRoot$xV)).visitAll((it) -> {
-      if (it != __thisNode__) {
-        IKotlinRoot__BehaviorDescriptor.getLocalSignatureScope_id58ySuOXQyMi.invoke(it, subCollector, __thisNode__);
-      }
-    });
-
-    collector.declareScope(CompositeSignatureScope.of(subCollector.getScopes()));
-
+  /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull SNode __thisNode__, ScopeCollector collector, SNode childNode) {
+    IKotlinRoot__BehaviorDescriptor.collectPublicScope_id58ySuOXQyMi.invoke(__thisNode__, collector, __thisNode__);
     return true;
   }
-  /*package*/ static void getLocalSignatureScope_id58ySuOXQyMi(@NotNull SNode __thisNode__, ScopeCollector collector, SNode origin) {
+  /*package*/ static boolean isRoot_id7_XheqBfExI(@NotNull SNode __thisNode__) {
+    // Assuming parent.isNull is probably not enough, generators for instance do not care about that
+    return IKotlinRoot__BehaviorDescriptor.enclosingRoot_id7_XheqBfOCk.invoke(__thisNode__).isEmpty();
+  }
+  /*package*/ static Optional<SNode> enclosingRoot_id7_XheqBfOCk(@NotNull SNode __thisNode__) {
+    return Optional.ofNullable(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IKotlinRoot$xV, false, false));
+  }
+  /*package*/ static void collectPublicScope_id58ySuOXQyMi(@NotNull SNode __thisNode__, ScopeCollector collector, SNode origin) {
     // Default: no-op
   }
 
@@ -91,7 +88,11 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
       case 3:
         return (T) ((Boolean) collectScope_id7DyvjiA20yV(node, (ScopeCollector) parameters[0], (SNode) parameters[1]));
       case 4:
-        getLocalSignatureScope_id58ySuOXQyMi(node, (ScopeCollector) parameters[0], (SNode) parameters[1]);
+        return (T) ((Boolean) isRoot_id7_XheqBfExI(node));
+      case 5:
+        return (T) ((Optional<SNode>) enclosingRoot_id7_XheqBfOCk(node));
+      case 6:
+        collectPublicScope_id58ySuOXQyMi(node, (ScopeCollector) parameters[0], (SNode) parameters[1]);
         return null;
       default:
         throw new BHMethodNotFoundException(this, method);

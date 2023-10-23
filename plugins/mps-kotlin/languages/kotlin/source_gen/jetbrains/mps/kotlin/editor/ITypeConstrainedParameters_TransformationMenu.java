@@ -30,9 +30,9 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class ITypeConstrained_TransformationMenu extends TransformationMenuBase {
-  public ITypeConstrained_TransformationMenu() {
-    super(false, new EditorMenuDescriptorBase("default transformation menu for " + "ITypeConstrained", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1848838727258168032")), List.<String>of(MenuLocations.RIGHT_SIDE_TRANSFORM));
+public class ITypeConstrainedParameters_TransformationMenu extends TransformationMenuBase {
+  public ITypeConstrainedParameters_TransformationMenu() {
+    super(false, new EditorMenuDescriptorBase("default transformation menu for " + "ITypeConstrainedParameters", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1848838727258168032")), List.<String>of(MenuLocations.RIGHT_SIDE_TRANSFORM));
   }
 
   @Override
@@ -40,12 +40,12 @@ public class ITypeConstrained_TransformationMenu extends TransformationMenuBase 
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TMP_Action_k1bgwq_a0());
+      result.add(new TMP_Action_4totud_a0());
     }
     return result;
   }
 
-  private class TMP_Action_k1bgwq_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+  private class TMP_Action_4totud_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
       return new Item(context).resetTraceInfo();

@@ -24,17 +24,20 @@ import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class ReceiverTypeScope implements SignatureScope {
+/**
+ * Scope retrieving extension members associated to a given type (eg. fun List.function(): Int)
+ */
+public class TypeExtensionsScope implements SignatureScope {
   private final Set<TypeKey> myTargetTypes;
   private final SignatureFilter mySignatureFilter;
   private final SNode myContextNode;
   private final SNode myReceiverType;
 
-  public ReceiverTypeScope(SNode contextNode, SNode receiverType, SignatureFilter signatureFilter) {
+  public TypeExtensionsScope(SNode contextNode, SNode receiverType, SignatureFilter signatureFilter) {
     this(contextNode, receiverType, SuperTypesVisitorImpl.getSupertypes(receiverType), signatureFilter);
   }
 
-  public ReceiverTypeScope(SNode contextNode, SNode receiverType, Iterable<TypeKey> targetTypes, SignatureFilter signatureFilter) {
+  public TypeExtensionsScope(SNode contextNode, SNode receiverType, Iterable<TypeKey> targetTypes, SignatureFilter signatureFilter) {
     mySignatureFilter = signatureFilter;
     myTargetTypes = SetSequence.fromSetWithValues(new HashSet<TypeKey>(), targetTypes);
     myContextNode = contextNode;

@@ -59,20 +59,16 @@ public class BinaryPriorityUtil {
 
     {
       final SNode parent = SNodeOperations.getParent(node);
-      if (SNodeOperations.isInstanceOf(parent, CONCEPTS.PrefixUnaryExpression$JZ)) {
-        SLinkOperations.setTarget(parent, LINKS.operand$YS5t, SLinkOperations.getTarget(node, LINKS.left$yQgK));
+      if (SNodeOperations.isInstanceOf(parent, CONCEPTS.IUnaryExpression$Rp)) {
+        // This notation explicitly avoid asking for operand, since operand link depends on unary implementation
+        boolean isRight = (boolean) IUnaryExpression__BehaviorDescriptor.isRightUnary_id7EfieuW$AAu.invoke(parent);
+        SNodeOperations.replaceWithAnother(node, (isRight ? SLinkOperations.getTarget(node, LINKS.right$yQIM) : SLinkOperations.getTarget(node, LINKS.left$yQgK)));
         SNodeOperations.replaceWithAnother(parent, node);
-        SLinkOperations.setTarget(node, LINKS.left$yQgK, parent);
-        return false;
-      }
-    }
-
-    {
-      final SNode parent = SNodeOperations.getParent(node);
-      if (SNodeOperations.isInstanceOf(parent, CONCEPTS.PostfixUnaryExpression$2v)) {
-        SLinkOperations.setTarget(parent, LINKS.operand$YS5t, SLinkOperations.getTarget(node, LINKS.right$yQIM));
-        SNodeOperations.replaceWithAnother(parent, node);
-        SLinkOperations.setTarget(node, LINKS.right$yQIM, parent);
+        if (isRight) {
+          SLinkOperations.setTarget(node, LINKS.right$yQIM, parent);
+        } else {
+          SLinkOperations.setTarget(node, LINKS.left$yQgK, parent);
+        }
         return false;
       }
     }
@@ -127,13 +123,11 @@ public class BinaryPriorityUtil {
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IExpression$2i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression");
     /*package*/ static final SConcept BinaryExpression$$S = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, "jetbrains.mps.kotlin.structure.BinaryExpression");
-    /*package*/ static final SConcept PrefixUnaryExpression$JZ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f1dL, "jetbrains.mps.kotlin.structure.PrefixUnaryExpression");
-    /*package*/ static final SConcept PostfixUnaryExpression$2v = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956fd8L, "jetbrains.mps.kotlin.structure.PostfixUnaryExpression");
+    /*package*/ static final SInterfaceConcept IUnaryExpression$Rp = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7a8f48e7bc91d518L, "jetbrains.mps.kotlin.structure.IUnaryExpression");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink left$yQgK = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, 0x11400bb790954ee0L, "left");
-    /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
     /*package*/ static final SContainmentLink right$yQIM = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, 0x11400bb790954ee2L, "right");
   }
 }

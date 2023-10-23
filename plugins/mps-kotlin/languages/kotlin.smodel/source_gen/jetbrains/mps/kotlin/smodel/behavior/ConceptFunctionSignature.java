@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class ConceptFunctionSignature extends FunctionSignature {
   public ConceptFunctionSignature(SNode method) {
-    super(new ConceptMethodDeclaration(method), ((String) null));
+    super(new ConceptMethodDeclaration(method), (String) null);
   }
 
   @Override

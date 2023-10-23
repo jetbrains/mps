@@ -16,8 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
-import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.kotlin.signatures.AccessorKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -40,38 +38,7 @@ public final class PropertySetter__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static void collectSpecificScope_id1yTI8p9qmpS(@NotNull SNode __thisNode__, SignatureCollector collector, SNode childNode) {
     // Field variable
-    SignatureBuilder.create(__thisNode__, PropertySignature.class).withSignatures((node) -> {
-      return (Iterable<PropertySignature>) () -> {
-        return new YieldingIterator<PropertySignature>() {
-          private int __CP__ = 0;
-          protected boolean moveToNext() {
-__loop__:
-            do {
-__switch__:
-              switch (this.__CP__) {
-                case -1:
-                  assert false : "Internal error";
-                  return false;
-                case 2:
-                  this.__CP__ = 3;
-                  this.yield(new PropertySignature("field", AccessorKind.SETTER));
-                  return true;
-                case 3:
-                  this.__CP__ = 1;
-                  this.yield(new PropertySignature("field", AccessorKind.GETTER));
-                  return true;
-                case 0:
-                  this.__CP__ = 2;
-                  break;
-                default:
-                  break __loop__;
-              }
-            } while (true);
-            return false;
-          }
-        };
-      };
-    }).declareTo(collector);
+    SignatureBuilder.create(__thisNode__, PropertySignature.class).withSignatures((node) -> PropertySignature.signaturesOf("field", true, null)).declareTo(collector);
 
     // Parameter
     PropertySignature.declareTo(SLinkOperations.getTarget(__thisNode__, LINKS.parameter$J_aM), null, collector);

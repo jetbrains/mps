@@ -28,7 +28,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.kotlin.scopes.signed.InstanceSignatureScope;
-import jetbrains.mps.kotlin.scopes.signed.ReceiverTypeScope;
+import jetbrains.mps.kotlin.scopes.signed.TypeExtensionsScope;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope;
 import org.jetbrains.annotations.ApiStatus;
@@ -105,7 +105,7 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
     // Use API defined above
     List<SignatureScope> scopes = ListSequence.fromListAndArray(new ArrayList<SignatureScope>(), new InstanceSignatureScope(__thisNode__, filter, contextNode));
     if (withReceiver) {
-      ListSequence.fromList(scopes).addElement(new ReceiverTypeScope(contextNode, __thisNode__, filter));
+      ListSequence.fromList(scopes).addElement(new TypeExtensionsScope(contextNode, __thisNode__, filter));
     }
     return scopes;
   }

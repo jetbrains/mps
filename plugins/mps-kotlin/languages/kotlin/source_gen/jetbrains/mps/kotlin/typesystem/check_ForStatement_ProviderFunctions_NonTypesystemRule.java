@@ -7,10 +7,9 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.kotlin.behavior.InferredTypeReference;
+import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
+import jetbrains.mps.kotlin.behavior.MemberReceiver;
 import jetbrains.mps.kotlin.behavior.ForStatementKeys;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
-import jetbrains.mps.kotlin.behavior.InstanceReceiver;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -20,10 +19,7 @@ public class check_ForStatement_ProviderFunctions_NonTypesystemRule extends Abst
   public check_ForStatement_ProviderFunctions_NonTypesystemRule() {
   }
   public void applyRule(final SNode forStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    AutomaticResolutionHelper.improveCall(typeCheckingContext, new NextFunctionCall(forStatement), forStatement, LINKS.nextFunction$fFHf, () -> {
-      InferredTypeReference typeRef = new InferredTypeReference(forStatement, ForStatementKeys.ITERATOR_FUNCTION_RET);
-      return SignatureScopeHelper.getFunctionScopeParts(new InstanceReceiver(typeRef), forStatement);
-    });
+    AutomaticResolutionHelper.improveCall(typeCheckingContext, new NextFunctionCall(forStatement), forStatement, LINKS.nextFunction$fFHf, () -> KotlinScopes.create(null, forStatement, null).functions().receiver(MemberReceiver.of(forStatement, ForStatementKeys.ITERATOR_FUNCTION_RET)).buildScopes());
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.ForStatement$7d;

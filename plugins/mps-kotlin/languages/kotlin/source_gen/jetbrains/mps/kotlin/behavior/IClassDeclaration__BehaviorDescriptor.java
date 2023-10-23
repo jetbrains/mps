@@ -77,7 +77,7 @@ public final class IClassDeclaration__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static String getNestedName_id1d2BQ0ZyA$g(@NotNull SNode __thisNode__, KtEnvironmentConfig configuration) {
     // If root node
-    if ((SNodeOperations.getParent(__thisNode__) == null)) {
+    if (((boolean) IKotlinRoot__BehaviorDescriptor.isRoot_id7_XheqBfExI.invoke(__thisNode__))) {
       return configuration.getName(__thisNode__);
     }
 
@@ -87,27 +87,23 @@ public final class IClassDeclaration__BehaviorDescriptor extends BaseBHDescripto
     // Scope from class
     boolean res = ((boolean) ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IClassLike$go, collector, childNode));
 
-    // Root scope if no parent
-    if ((SNodeOperations.getParent(__thisNode__) == null)) {
-      ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV, collector, childNode);
+    if (((boolean) IKotlinRoot__BehaviorDescriptor.isRoot_id7_XheqBfExI.invoke(__thisNode__))) {
+      // Note: will yield something is collectPublicScope is implemented (not the case here)
+      return ((boolean) ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV, collector, childNode));
+    } else {
+      return res;
     }
-
-    return res;
   }
   /*package*/ static SNode getImportRoot_id1d2BQ0ZAmKw(@NotNull SNode __thisNode__, KtEnvironmentConfig configuration) {
-    if ((SNodeOperations.getParent(__thisNode__) == null)) {
+    if (((boolean) IKotlinRoot__BehaviorDescriptor.isRoot_id7_XheqBfExI.invoke(__thisNode__))) {
       return __thisNode__;
     }
 
     return IIdentifier__BehaviorDescriptor.getImportRoot_id1d2BQ0ZAmKw.invoke0(__thisNode__, CONCEPTS.IIdentifier$wg, configuration);
   }
-  /*package*/ static String getPackageName_id74Z9X$ygjTm(@NotNull SNode __thisNode__) {
-    SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IKotlinRoot$xV, false, false);
-    if ((ancestor == null)) {
-      return IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV);
-    }
+  /*package*/ static String getPackageName_id74Z9X$ygjTm(@NotNull final SNode __thisNode__) {
     // Inherit ancestor package name
-    return IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(ancestor);
+    return IKotlinRoot__BehaviorDescriptor.enclosingRoot_id7_XheqBfOCk.invoke(__thisNode__).map((ancestor) -> (String) IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(ancestor)).orElseGet(() -> ((String) IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV)));
   }
   /*package*/ static SConcept getConstructorDefaultVisibility_idu1nygduECM(@NotNull SNode __thisNode__) {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(IInheritable__BehaviorDescriptor.getInheritance_id6jE_6duswG9.invoke(__thisNode__)), CONCEPTS.SealedInheritanceModifier$vk)) {

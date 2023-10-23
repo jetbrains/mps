@@ -14,28 +14,13 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.kotlin.behavior.InferredTypeReference;
-import jetbrains.mps.kotlin.scopes.SignatureFilter;
-import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
-import jetbrains.mps.kotlin.signatures.PropertySignature;
-import java.util.List;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
-import jetbrains.mps.kotlin.behavior.ReceiverTypeHelper;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
 import jetbrains.mps.kotlin.scopes.signed.KindPriorityPropertyScope;
-import jetbrains.mps.kotlin.scopes.signed.HidingBySignatureScope;
 import jetbrains.mps.kotlin.signatures.AccessorKind;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeAsScope;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class PropertyMemberTarget_Constraints extends BaseConstraintsDescriptor {
   public PropertyMemberTarget_Constraints() {
@@ -55,22 +40,10 @@ public class PropertyMemberTarget_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            // Compute type in isolation, otherwise type may be null
-            SNode operand = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.MemberNavigationOperation$7I, true, false), LINKS.operand$YS5t);
-            SNode type = new InferredTypeReference(operand).compute();
-
-            SignatureFilter filter = new SignatureFilterImpl<PropertySignature>(PropertySignature.class);
-
-            // Regardless of using a static type or not, we need instance functions
-            List<SignatureScope> list = Sequence.fromIterable(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, filter, _context.getContextNode(), ((boolean) true))).toList();
-            if (ReceiverTypeHelper.isStaticReceiver(operand)) {
-              ListSequence.fromList(list).addElement(IType__BehaviorDescriptor.getFullStaticScope_id7ZA3QJnL$CF.invoke(type, filter, _context.getContextNode()));
-            }
-
-            // Return a custom scope that prioritize setter over getters (if setter: type is MutableProperty rather than just Property)
-            SignatureScope sigScope = KindPriorityPropertyScope.of(HidingBySignatureScope.of(list), AccessorKind.SETTER, null);
-
-            return new SignatureScopeAsScope(sigScope, CONCEPTS.IVariableIdentifier$v2);
+            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).membersReceiver().properties().wrap((scope) -> {
+              // Return a custom scope that prioritize setter over getters (if setter: type is MutableProperty rather than just Property)
+              return KindPriorityPropertyScope.of(scope, AccessorKind.SETTER, null);
+            }).buildScope(CONCEPTS.IVariableIdentifier$v2);
           }
         };
       }
@@ -82,12 +55,10 @@ public class PropertyMemberTarget_Constraints extends BaseConstraintsDescriptor 
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyMemberTarget$nM = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x714c456cbe2a89f8L, "jetbrains.mps.kotlin.structure.PropertyMemberTarget");
-    /*package*/ static final SConcept MemberNavigationOperation$7I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationOperation");
     /*package*/ static final SInterfaceConcept IVariableIdentifier$v2 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc83114d2ab6L, "jetbrains.mps.kotlin.structure.IVariableIdentifier");
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink variable$TzJT = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x714c456cbe2a89f8L, 0x30ce621e39d9072L, "variable");
-    /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
   }
 }

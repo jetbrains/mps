@@ -46,7 +46,7 @@ public final class EnumClassDeclaration__BehaviorDescriptor extends BaseBHDescri
 
   /*package*/ static SignatureScope getStaticScope_id3HHsmlLCHdO(@NotNull SNode __thisNode__, SignatureFilter filter, SNode contextNode) {
     SignatureScope parent = IClassLike__BehaviorDescriptor.getStaticScope_id3HHsmlLCHdO.invoke0(__thisNode__, CONCEPTS.ClassDeclaration$Jm, filter, contextNode);
-    SignatureScope entries = SignatureBuilder.create(SLinkOperations.getChildren(__thisNode__, LINKS.entries$EB0i), PropertySignature.class).withSignatures((SNode entry) -> PropertySignature.signaturesOf(entry, false)).toScope(filter);
+    SignatureScope entries = SignatureBuilder.create(SLinkOperations.getChildren(__thisNode__, LINKS.entries$EB0i), PropertySignature.class).withSignatures((SNode entry) -> PropertySignature.signaturesOf(entry, false, null)).toScope(filter);
 
     return CompositeSignatureScope.of(entries, parent);
   }

@@ -61,7 +61,7 @@ public class InstanceSignatureScope implements SignatureScope {
       }
     });
     // Visit type
-    VisibilityAccess baseAccesToType = SignatureScopeHelper.getBaseAccesToType(myContextNode, type);
+    VisibilityAccess baseAccesToType = KotlinScopesHelper.getBaseAccessToType(myContextNode, type);
     TypeMembersVisitor visitor = new TypeMembersVisitor(filter, myContextNode, baseAccesToType);
     IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(type, visitor);
 
@@ -76,7 +76,7 @@ public class InstanceSignatureScope implements SignatureScope {
     }
 
     // Visit type and search for a match
-    VisibilityAccess baseAccesToType = SignatureScopeHelper.getBaseAccesToType(myContextNode, type);
+    VisibilityAccess baseAccesToType = KotlinScopesHelper.getBaseAccessToType(myContextNode, type);
     SignatureSeekerVisitor visitor = new SignatureSeekerVisitor(declaration.getSignature(), myContextNode, baseAccesToType);
     IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(type, visitor);
     return visitor.getSearchResult(declaration.getSource());

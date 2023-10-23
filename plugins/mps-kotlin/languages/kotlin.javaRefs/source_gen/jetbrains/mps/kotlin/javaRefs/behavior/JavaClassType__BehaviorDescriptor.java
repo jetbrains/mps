@@ -39,7 +39,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration;
-import jetbrains.mps.kotlin.api.members.TypeExpander;
 import org.jetbrains.annotations.ApiStatus;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
@@ -94,7 +93,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Iterable<SNode> getTypeParameters_id6r77ob2URYe(@NotNull SNode __thisNode__) {
     // At time of writing this should not really matter, those are handled by kotlin implementation anyway
-    return Sequence.fromIterable(Collections.emptyList());
+    return Sequence.fromIterable(Collections.<SNode>emptyList());
   }
   /*package*/ static Iterable<TypeParameterDeclaration> getTypeParameters_id7an2tsIdpkM(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.javaClass$CQOW), LINKS.typeVariableDeclaration$Lipp)).select(new _FunctionTypes._return_P1_E0<JavaTypeParameterDeclaration, SNode>() {
@@ -130,7 +129,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
             JavaSignatures.declareConstructor(collector, klass);
           }
 
-          SignatureBuilder.create(Sequence.fromIterable(constructors).where((it) -> JavaSignatures.isAllowedVisibility(it, contextNode)), FunctionSignature.class).withSignature((SNode node) -> new FunctionSignature(new JavaMethodDeclaration(node), (TypeExpander) null));
+          SignatureBuilder.create(Sequence.fromIterable(constructors).where((it) -> JavaSignatures.isAllowedVisibility(it, contextNode)), FunctionSignature.class).withSignature((SNode node) -> new FunctionSignature(new JavaMethodDeclaration(node)));
         });
       }
 

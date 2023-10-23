@@ -68,7 +68,7 @@ public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
     // Note: same as Property declaration
     if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$Os0k)) {
       // Visibility here is the one of the getter by default
-      MemberSignature signature = new PropertySignature(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL), AccessorKind.GETTER);
+      MemberSignature signature = new PropertySignature(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL), AccessorKind.GETTER, null);
       SConcept inherited = InheritorHelper.findInheritedVisibility(__thisNode__, signature);
       if (inherited != null) {
         return inherited;

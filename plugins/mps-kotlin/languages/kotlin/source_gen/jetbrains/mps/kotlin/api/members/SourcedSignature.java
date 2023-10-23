@@ -122,6 +122,10 @@ public class SourcedSignature {
     return key.get(attributes);
   }
 
+  public boolean getBooleanAttribute(@NotNull SignatureAttributeKey<Boolean> key) {
+    return getAttribute(key) == Boolean.TRUE;
+  }
+
   public Map<SignatureAttributeKey<?>, Object> getAttributes() {
     return this.attributes;
   }

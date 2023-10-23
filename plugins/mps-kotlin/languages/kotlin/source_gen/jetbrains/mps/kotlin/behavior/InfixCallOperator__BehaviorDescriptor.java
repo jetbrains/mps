@@ -22,7 +22,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.overloading.NodeArgument;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
+import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -72,7 +72,7 @@ public final class InfixCallOperator__BehaviorDescriptor extends BaseBHDescripto
     // If node being created, we have to consider target for transformation
     SNode context = (((referenceNode == null) ? PrecedenceUtil.getTargetForTransform(SNodeOperations.as(contextNode, CONCEPTS.IExpression$2i), Precedence.INFIX, false) : SLinkOperations.getTarget(SNodeOperations.as(referenceNode, CONCEPTS.InfixCallOperator$j$), LINKS.left$yQgK)));
 
-    return SignatureScopeHelper.getFunctionScopeParts(MemberReceiver.of(context), contextNode, new InfixSignatureFilter());
+    return KotlinScopes.create(referenceNode, contextNode, containment).receiver(MemberReceiver.of(context)).filter(new InfixSignatureFilter()).buildScopes();
   }
 
   /*package*/ InfixCallOperator__BehaviorDescriptor() {

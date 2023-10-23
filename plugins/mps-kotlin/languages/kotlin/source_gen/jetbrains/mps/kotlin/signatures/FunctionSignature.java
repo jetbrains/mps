@@ -6,12 +6,8 @@ import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
 import jetbrains.mps.references.Reference;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.api.members.TypeExpander;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Objects;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.internal.collections.runtime.IterableUtils;
-import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
+import java.util.Objects;
 
 /**
  * Signature of a function. Keeps a reference to function descriptor so it may be used later on.
@@ -40,18 +36,32 @@ public class FunctionSignature implements MemberSignature {
   }
   private final String signature;
 
-  public FunctionSignature(@NotNull FunctionDeclaration declaration, TypeExpander expander) {
-    this(declaration, erasureOf(declaration, expander));
+  public FunctionSignature(@NotNull FunctionDeclaration declaration) {
+    this(declaration, TypeExpander.DEFAULT);
   }
-
-  public FunctionSignature(@NotNull FunctionDeclaration declaration, String parameterErasure) {
-    signature = declaration.getName() + "#" + Sequence.fromIterable(declaration.getParameters()).count() + "#" + parameterErasure;
+  public FunctionSignature(@NotNull FunctionDeclaration declaration, @NotNull TypeExpander expander) {
+    this(declaration, declaration.getFunctionPresentation(false, expander));
+  }
+  protected FunctionSignature(@NotNull FunctionDeclaration declaration, String signatureString) {
+    signature = signatureString;
     setFunctionDeclaration(declaration);
   }
 
   @Override
   public String getDescriptionText() {
-    return getFunctionDeclaration().getFunctionPresentation(false);
+    return signature;
+  }
+  @Override
+  public String getPresentationText() {
+    return "fun " + getFunctionDeclaration().getFunctionPresentation(false, TypeExpander.DEFAULT);
+  }
+
+  @Override
+  public SNode getExtensionReceiver() {
+    if (getFunctionDeclaration().isExtension()) {
+      return getFunctionDeclaration().getReceiverType();
+    }
+    return null;
   }
 
   @Override
@@ -70,13 +80,5 @@ public class FunctionSignature implements MemberSignature {
 
   public String toString() {
     return "fun{" + this.signature + "}";
-  }
-
-  public static String erasureOf(FunctionDeclaration declaration, final TypeExpander expander) {
-    Iterable<SNode> types = Sequence.fromIterable(declaration.getParameters()).select((this0) -> this0.getType()).where(new NotNullWhereFilter());
-    if (expander != null) {
-      types = Sequence.fromIterable(types).select((it) -> expander.expandType(it));
-    }
-    return IterableUtils.join(Sequence.fromIterable(types).select((it) -> (String) IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(it, ((boolean) true))), ",");
   }
 }

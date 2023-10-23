@@ -21,13 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
-import jetbrains.mps.kotlin.scopes.SignatureFilter;
-import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
-import jetbrains.mps.kotlin.signatures.FunctionSignature;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
+import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -63,25 +57,7 @@ public final class JavaMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     return new JavaMethodDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.method$yYmq));
   }
   /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, SNode referenceNode, SNode contextNode, SContainmentLink containment) {
-    Tuples._2<SNode, Boolean> context = SignatureScopeHelper.navigatableContext(referenceNode, contextNode, containment);
-
-    // Call on receiver
-    if (context != null) {
-      SNode type = context._0();
-
-      // Here we seek function signatures from java concepts
-      SignatureFilter filter = new SignatureFilterImpl(FunctionSignature.class);
-
-      if ((boolean) context._1()) {
-        return Sequence.<SignatureScope>singleton(IType__BehaviorDescriptor.getFullStaticScope_id7ZA3QJnL$CF.invoke(type, filter, contextNode));
-      } else {
-        // No receiver methods in java
-        return IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, filter, contextNode, ((boolean) false));
-      }
-    }
-
-    // TODO no automatic resolution ATM (use regular scopes)
-    return null;
+    return KotlinScopes.create(referenceNode, contextNode, containment).functions().navigationReceiver().buildScopes();
   }
 
   /*package*/ JavaMethodCall__BehaviorDescriptor() {

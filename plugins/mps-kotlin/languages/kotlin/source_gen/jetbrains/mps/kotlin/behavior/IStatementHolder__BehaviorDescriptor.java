@@ -61,6 +61,7 @@ public final class IStatementHolder__BehaviorDescriptor extends BaseBHDescriptor
       {
         final SNode scopePart = child;
         if (SNodeOperations.isInstanceOf(scopePart, CONCEPTS.IStatementScopePart$Qc)) {
+          // TODO the result should be supplied in reverse order, or make this return items in regular order
           IStatementScopePart__BehaviorDescriptor.populateStatementDeclarations_id2ZbCiJacEjm.invoke(scopePart, collector);
         }
       }

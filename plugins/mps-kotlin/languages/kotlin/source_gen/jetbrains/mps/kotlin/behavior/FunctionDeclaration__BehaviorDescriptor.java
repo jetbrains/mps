@@ -30,7 +30,6 @@ import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.kotlin.api.members.TypeExpander;
 import jetbrains.mps.kotlin.scopes.InheritorHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
@@ -55,6 +54,7 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<SNode> getReturnType_id6QVUYzas5Of = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReturnType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7907172955840339215L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> getReturnExpression_id6yQJbFyGtec = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReturnExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7545425736559088524L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> getReceiverType_id2gj5XQXMFhP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiverType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2599447651062297717L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isExtension_id4Cl0D9hBslM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExtension").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5338175760775366002L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<TypeParameterDeclaration>> getTypeParameters_id1VI7K1kLcNv = new SMethodBuilder<Iterable<TypeParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class))).name("getTypeParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2228752951877618911L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> collectSpecificScope_id1yTI8p9qmpS = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectSpecificScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1781658014498514552L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -66,7 +66,7 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<String> getClassName_id7klTmOSHg_9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8436901734214076745L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
   public static final SMethod<SConcept> getDefaultVisibility_id2WVyZr43qIN = new SMethodBuilder<SConcept>(new SJavaCompoundTypeImpl((Class<SConcept>) ((Class) Object.class))).name("getDefaultVisibility").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3403467835375987635L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, isAbstract_id4KPNZIZDjbY, getParameters_id6f3juM$_Kx4, getReturnType_id6QVUYzas5Of, getReturnExpression_id6yQJbFyGtec, getReceiverType_id2gj5XQXMFhP, getTypeParameters_id1VI7K1kLcNv, getScope_id52_Geb4QDV$, collectSpecificScope_id1yTI8p9qmpS, getModifiers_id4q11fqJUzWN, getDefaultInheritance_id6jE_6dusz0P, getThisTypeReferences_idxpyqH1FuA0, collectScope_id7DyvjiA20yV, isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9, getDefaultVisibility_id2WVyZr43qIN);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, isAbstract_id4KPNZIZDjbY, getParameters_id6f3juM$_Kx4, getReturnType_id6QVUYzas5Of, getReturnExpression_id6yQJbFyGtec, getReceiverType_id2gj5XQXMFhP, isExtension_id4Cl0D9hBslM, getTypeParameters_id1VI7K1kLcNv, getScope_id52_Geb4QDV$, collectSpecificScope_id1yTI8p9qmpS, getModifiers_id4q11fqJUzWN, getDefaultInheritance_id6jE_6dusz0P, getThisTypeReferences_idxpyqH1FuA0, collectScope_id7DyvjiA20yV, isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9, getDefaultVisibility_id2WVyZr43qIN);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -75,13 +75,13 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
     // Receivers are included through receiver scope, instance method through instance scope (popSignatures)
     if (((SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT) != null) || (SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IClassLike$go, false, false) == null)) && TopLevelVisibility.visibleTo(__thisNode__, contextNode)) {
       // Top-level: attributes are not relevant
-      SignatureBuilder.create(__thisNode__, FunctionSignature.class).withExtensionReceiverType(SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT)).withSignature((_node) -> new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__), collector)).declareTo(collector);
+      SignatureBuilder.create(__thisNode__, FunctionSignature.class).withSignature((_node) -> new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__), collector)).declareTo(collector);
 
     }
   }
   /*package*/ static void populateSignatures_id18X2O0FJBER(@NotNull final SNode __thisNode__, final SignatureCollector collector) {
     // Provide the receiver type to test against
-    SignatureBuilder<FunctionSignature, SNode> builder = SignatureBuilder.create(__thisNode__, FunctionSignature.class).withExtensionReceiverType(SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT)).withSignature((_node) -> new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__), collector));
+    SignatureBuilder<FunctionSignature, SNode> builder = SignatureBuilder.create(__thisNode__, FunctionSignature.class).withSignature((_node) -> new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__), collector));
 
     ClassMemberSignatures.addClassMemberAttributes(builder, (it) -> it, (it) -> it, (it) -> SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$Gfqk)).declareTo(collector);
   }
@@ -99,7 +99,10 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
     return IStatementHolder__BehaviorDescriptor.asSingleExpression_id18X2O0FvKfA.invoke(__thisNode__);
   }
   /*package*/ static SNode getReceiverType_id2gj5XQXMFhP(@NotNull SNode __thisNode__) {
-    return ((SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT) != null) ? SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT) : IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.IClassLike$go)));
+    return (((boolean) IFunctionDeclaration__BehaviorDescriptor.isExtension_id4Cl0D9hBslM.invoke(__thisNode__)) ? SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT) : IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.IClassLike$go)));
+  }
+  /*package*/ static boolean isExtension_id4Cl0D9hBslM(@NotNull SNode __thisNode__) {
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$7yLT) != null);
   }
   /*package*/ static Iterable<TypeParameterDeclaration> getTypeParameters_id1VI7K1kLcNv(@NotNull SNode __thisNode__) {
     return ITypeParameters__BehaviorDescriptor.getTypeParameterDescriptors_id28CvMylfXMr.invoke(__thisNode__);
@@ -122,7 +125,7 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
   @NotNull
   /*package*/ static SAbstractConcept getDefaultInheritance_id6jE_6dusz0P(@NotNull SNode __thisNode__) {
     if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$Gfqk)) {
-      FunctionSignature signature = new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__), (TypeExpander) null);
+      FunctionSignature signature = new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__));
       SAbstractConcept parent = InheritorHelper.findInheritedInheritanceModifier(__thisNode__, signature);
       if (parent != null) {
         return parent;
@@ -173,7 +176,7 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
   @NotNull
   /*package*/ static SConcept getDefaultVisibility_id2WVyZr43qIN(@NotNull SNode __thisNode__) {
     if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$Gfqk)) {
-      FunctionSignature signature = new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__), (TypeExpander) null);
+      FunctionSignature signature = new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__));
       SConcept inherited = InheritorHelper.findInheritedVisibility(__thisNode__, signature);
       if (inherited != null) {
         return inherited;
@@ -214,25 +217,27 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
       case 6:
         return (T) ((SNode) getReceiverType_id2gj5XQXMFhP(node));
       case 7:
-        return (T) ((Iterable<TypeParameterDeclaration>) getTypeParameters_id1VI7K1kLcNv(node));
+        return (T) ((Boolean) isExtension_id4Cl0D9hBslM(node));
       case 8:
-        return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
+        return (T) ((Iterable<TypeParameterDeclaration>) getTypeParameters_id1VI7K1kLcNv(node));
       case 9:
+        return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
+      case 10:
         collectSpecificScope_id1yTI8p9qmpS(node, (SignatureCollector) parameters[0], (SNode) parameters[1]);
         return null;
-      case 10:
-        return (T) ((Iterable<SAbstractConcept>) getModifiers_id4q11fqJUzWN(node));
       case 11:
-        return (T) ((SAbstractConcept) getDefaultInheritance_id6jE_6dusz0P(node));
+        return (T) ((Iterable<SAbstractConcept>) getModifiers_id4q11fqJUzWN(node));
       case 12:
-        return (T) ((Iterable<TypeReference>) getThisTypeReferences_idxpyqH1FuA0(node));
+        return (T) ((SAbstractConcept) getDefaultInheritance_id6jE_6dusz0P(node));
       case 13:
-        return (T) ((Boolean) collectScope_id7DyvjiA20yV(node, (ScopeCollector) parameters[0], (SNode) parameters[1]));
+        return (T) ((Iterable<TypeReference>) getThisTypeReferences_idxpyqH1FuA0(node));
       case 14:
-        return (T) ((Boolean) isRunnable_idoITd3IthrB(node));
+        return (T) ((Boolean) collectScope_id7DyvjiA20yV(node, (ScopeCollector) parameters[0], (SNode) parameters[1]));
       case 15:
-        return (T) ((String) getClassName_id7klTmOSHg_9(node, (KtEnvironmentConfig) parameters[0]));
+        return (T) ((Boolean) isRunnable_idoITd3IthrB(node));
       case 16:
+        return (T) ((String) getClassName_id7klTmOSHg_9(node, (KtEnvironmentConfig) parameters[0]));
+      case 17:
         return (T) ((SConcept) getDefaultVisibility_id2WVyZr43qIN(node));
       default:
         throw new BHMethodNotFoundException(this, method);

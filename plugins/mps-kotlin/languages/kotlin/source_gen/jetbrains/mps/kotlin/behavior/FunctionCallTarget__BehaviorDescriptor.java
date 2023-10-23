@@ -15,13 +15,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class FunctionCallTarget__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x40b4c3a5339a64d3L, "jetbrains.mps.kotlin.structure.FunctionCallTarget");
@@ -38,9 +35,7 @@ public final class FunctionCallTarget__BehaviorDescriptor extends BaseBHDescript
     return MemberReceiver.ofNavTarget(__thisNode__);
   }
   /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, SNode referenceNode, SNode contextNode, SContainmentLink containment) {
-    SNode parent = SNodeOperations.as((((referenceNode == null) ? contextNode : SNodeOperations.getParent(referenceNode))), CONCEPTS.NavigationOperation$4I);
-
-    return SignatureScopeHelper.getFunctionScopeParts(MemberReceiver.of(SLinkOperations.getTarget(parent, LINKS.operand$YS5t)), contextNode);
+    return KotlinScopes.create(referenceNode, contextNode, containment).functions().navigationReceiver().buildScopes();
   }
 
   /*package*/ FunctionCallTarget__BehaviorDescriptor() {
@@ -89,13 +84,5 @@ public final class FunctionCallTarget__BehaviorDescriptor extends BaseBHDescript
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept NavigationOperation$4I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af450L, "jetbrains.mps.kotlin.structure.NavigationOperation");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
   }
 }

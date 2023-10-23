@@ -17,7 +17,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.scopes.signed.TopLevelVisibility;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -54,36 +53,32 @@ public final class ObjectDeclaration__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static String getNestedName_id1d2BQ0ZyA$g(@NotNull SNode __thisNode__, KtEnvironmentConfig configuration) {
     // If root node
-    if ((SNodeOperations.getParent(__thisNode__) == null)) {
+    if (((boolean) IKotlinRoot__BehaviorDescriptor.isRoot_id7_XheqBfExI.invoke(__thisNode__))) {
       return configuration.getName(__thisNode__);
     }
 
     return IIdentifier__BehaviorDescriptor.getNestedName_id1d2BQ0ZyA$g.invoke0(__thisNode__, CONCEPTS.IVariableIdentifier$v2, configuration);
   }
   /*package*/ static SNode getImportRoot_id1d2BQ0ZAmKw(@NotNull SNode __thisNode__, KtEnvironmentConfig configuration) {
-    if ((SNodeOperations.getParent(__thisNode__) == null)) {
+    if (((boolean) IKotlinRoot__BehaviorDescriptor.isRoot_id7_XheqBfExI.invoke(__thisNode__))) {
       return __thisNode__;
     }
 
     return IIdentifier__BehaviorDescriptor.getImportRoot_id1d2BQ0ZAmKw.invoke0(__thisNode__, CONCEPTS.IVariableIdentifier$v2, configuration);
   }
-  /*package*/ static String getPackageName_id74Z9X$ygjTm(@NotNull SNode __thisNode__) {
-    SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IKotlinRoot$xV, false, false);
-    if ((ancestor == null)) {
-      IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV);
-    }
+  /*package*/ static String getPackageName_id74Z9X$ygjTm(@NotNull final SNode __thisNode__) {
     // Inherit ancestor package name
-    return IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(ancestor);
+    return IKotlinRoot__BehaviorDescriptor.enclosingRoot_id7_XheqBfOCk.invoke(__thisNode__).map((root) -> (String) IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke(root)).orElseGet(() -> ((String) IKotlinRoot__BehaviorDescriptor.getPackageName_id74Z9X$ygjTm.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV)));
   }
   /*package*/ static boolean collectScope_id7DyvjiA20yV(@NotNull SNode __thisNode__, ScopeCollector collector, SNode childNode) {
     boolean res = ((boolean) ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IObject$38, collector, childNode));
 
-    // Only if root
-    if ((SNodeOperations.getParent(__thisNode__) == null)) {
-      ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV, collector, childNode);
+    if (((boolean) IKotlinRoot__BehaviorDescriptor.isRoot_id7_XheqBfExI.invoke(__thisNode__))) {
+      // Note: will yield something is collectPublicScope is implemented (not the case here)
+      return ((boolean) ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke0(__thisNode__, CONCEPTS.IKotlinRoot$xV, collector, childNode));
+    } else {
+      return res;
     }
-
-    return res;
   }
 
   /*package*/ ObjectDeclaration__BehaviorDescriptor() {

@@ -79,7 +79,7 @@ public class KtAnnotationParser {
     } else if (arg instanceof KmAnnotationArgument.KClassValue) {
       KmAnnotationArgument.KClassValue value = (KmAnnotationArgument.KClassValue) arg;
       SNode receiverType = arrayOf(classTypeOf(value.getClassName()), value.getArrayDimensionCount());
-      return createMemberNavigationOperation_82z5d7_a2a0a0j(receiverType);
+      return createMemberNavigationExpression_82z5d7_a2a0a0j(receiverType);
     } else if (arg instanceof KmAnnotationArgument.EnumValue) {
       KmAnnotationArgument.EnumValue value = ((KmAnnotationArgument.EnumValue) arg);
       SNode enumClassType = classTypeOf(value.getEnumClassName());
@@ -162,10 +162,10 @@ public class KtAnnotationParser {
     n0.setProperty(PROPS.unsigned$iUpc, "" + (p2));
     return n0.getResult();
   }
-  private static SNode createMemberNavigationOperation_82z5d7_a2a0a0j(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MemberNavigationOperation$7I);
+  private static SNode createMemberNavigationExpression_82z5d7_a2a0a0j(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MemberNavigationExpression$7I);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.operand$YS5t).init(CONCEPTS.ReceiverType$$f);
+      SNodeBuilder n1 = n0.forChild(LINKS.operand$8jSC).init(CONCEPTS.ReceiverType$$f);
       n1.forChild(LINKS.type$NVFj).initNode(p0, CONCEPTS.IType$Ni, true);
     }
     n0.forChild(LINKS.target$aBAp).init(CONCEPTS.ClassMemberTarget$le);
@@ -197,9 +197,10 @@ public class KtAnnotationParser {
     /*package*/ static final SContainmentLink typeProjections$vhti = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162c97579L, 0x5b1dd60162c9757cL, "typeProjections");
     /*package*/ static final SContainmentLink lines$FNV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4fbL, 0x58aa661f71960d41L, "lines");
     /*package*/ static final SContainmentLink parts$AoNt = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x58aa661f71960f30L, 0x58aa661f71961d35L, "parts");
-    /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
+    /*package*/ static final SContainmentLink operand$8jSC = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, 0x1db88ba740cf215cL, "operand");
     /*package*/ static final SContainmentLink type$NVFj = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, 0x28bef6d7551af8c0L, "type");
     /*package*/ static final SContainmentLink target$aBAp = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, 0x28bef6d7551af73bL, "target");
+    /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
     /*package*/ static final SContainmentLink target$C6zp = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af450L, 0x28bef6d7551af73bL, "target");
     /*package*/ static final SContainmentLink type$x3no = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3ccL, 0x28bef6d7551af67fL, "type");
   }
@@ -214,7 +215,7 @@ public class KtAnnotationParser {
     /*package*/ static final SConcept CharLiteral$iM = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d3L, "jetbrains.mps.kotlin.structure.CharLiteral");
     /*package*/ static final SConcept RealLiteral$jh = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, "jetbrains.mps.kotlin.structure.RealLiteral");
     /*package*/ static final SConcept IntegerLiteral$7a = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d0L, "jetbrains.mps.kotlin.structure.IntegerLiteral");
-    /*package*/ static final SConcept MemberNavigationOperation$7I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationOperation");
+    /*package*/ static final SConcept MemberNavigationExpression$7I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationExpression");
     /*package*/ static final SConcept ReceiverType$$f = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, "jetbrains.mps.kotlin.structure.ReceiverType");
     /*package*/ static final SInterfaceConcept IType$Ni = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af441L, "jetbrains.mps.kotlin.structure.IType");
     /*package*/ static final SConcept ClassMemberTarget$le = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af537L, "jetbrains.mps.kotlin.structure.ClassMemberTarget");

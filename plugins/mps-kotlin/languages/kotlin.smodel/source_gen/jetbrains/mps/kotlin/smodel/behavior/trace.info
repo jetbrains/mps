@@ -68,7 +68,7 @@
   </root>
   <root nodeRef="r:33cf0272-b8b8-41da-be98-c3a20883dfcf(jetbrains.mps.kotlin.smodel.behavior)/183384254794846799">
     <file name="ConceptFunctionSignature.java">
-      <node id="7752034097590138244" at="14,49,15,65" concept="16" />
+      <node id="7752034097590138244" at="14,49,15,63" concept="16" />
       <node id="1884888429264550021" at="19,25,20,62" concept="11" />
       <node id="1884888429264460518" at="25,50,26,70" concept="10" />
       <node id="1884888429264460524" at="26,70,27,111" concept="11" />
@@ -77,7 +77,7 @@
       <node id="1884888429264460500" at="18,0,22,0" concept="9" trace="hashCode#()I" />
       <node id="1884888429264460516" at="24,37,28,5" concept="8" />
       <node id="1884888429264460510" at="23,0,31,0" concept="9" trace="equals#(Ljava/lang/Object;)Z" />
-      <scope id="183384254794846973" at="14,49,15,65" />
+      <scope id="183384254794846973" at="14,49,15,63" />
       <scope id="1884888429264460503" at="19,25,20,62" />
       <scope id="1884888429264460517" at="25,50,27,111">
         <var name="other" id="1884888429264460519" />
@@ -1771,8 +1771,8 @@
   <root nodeRef="r:33cf0272-b8b8-41da-be98-c3a20883dfcf(jetbrains.mps.kotlin.smodel.behavior)/9182535150793863477">
     <file name="LinkSignature.java">
       <node id="898881083036122091" at="14,0,15,0" concept="6" trace="link" />
-      <node id="9182535150793870493" at="15,55,16,70" concept="16" />
-      <node id="898881083036123471" at="16,70,17,21" concept="5" />
+      <node id="9182535150793870493" at="15,55,16,76" concept="16" />
+      <node id="898881083036123471" at="16,76,17,21" concept="5" />
       <node id="6234117012687336954" at="21,25,22,46" concept="11" />
       <node id="6234117012687347256" at="26,39,27,48" concept="10" />
       <node id="6234117012687345129" at="27,48,28,102" concept="11" />

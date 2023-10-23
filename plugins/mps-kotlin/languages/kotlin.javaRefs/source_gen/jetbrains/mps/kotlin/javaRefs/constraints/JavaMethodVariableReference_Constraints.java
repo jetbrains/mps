@@ -22,14 +22,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
-import jetbrains.mps.scope.EmptyScope;
-import jetbrains.mps.kotlin.scopes.SignatureFilter;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
-import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
-import jetbrains.mps.kotlin.scopes.signed.HidingBySignatureScope;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeAsScope;
+import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -66,28 +59,8 @@ public class JavaMethodVariableReference_Constraints extends BaseConstraintsDesc
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Tuples._2<SNode, Boolean> context = SignatureScopeHelper.navigatableContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
-
-            if (context != null) {
-              SNode type = context._0();
-              if (type == null) {
-                return new EmptyScope();
-              }
-
-              // Here we seek property signatures from java methods
-              SignatureFilter filter = new GetterFilter();
-              SignatureScope typeScope;
-              if ((boolean) context._1()) {
-                typeScope = IType__BehaviorDescriptor.getFullStaticScope_id7ZA3QJnL$CF.invoke(type, filter, _context.getContextNode());
-              } else {
-                typeScope = HidingBySignatureScope.of(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(type, filter, _context.getContextNode(), ((boolean) false)));
-              }
-
-              return new SignatureScopeAsScope(typeScope, CONCEPTS.BaseMethodDeclaration$kD);
-            }
-
-            // TODO context receiver scope in above context
-            return new EmptyScope();
+            // Note: unlike var ref expression, we only refer to getters here (required for the setter to be used)
+            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).filter(new GetterFilter()).navigationReceiver().noReceiverMembers().buildScope(CONCEPTS.BaseMethodDeclaration$kD);
           }
         };
       }

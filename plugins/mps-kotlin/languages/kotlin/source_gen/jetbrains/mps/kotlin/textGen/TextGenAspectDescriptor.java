@@ -170,8 +170,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new LambdaLiteral_TextGen();
       case LanguageConceptSwitch.LocalPropertyDeclaration:
         return new LocalPropertyDeclaration_TextGen();
-      case LanguageConceptSwitch.MemberNavigationOperation:
-        return new MemberNavigationOperation_TextGen();
+      case LanguageConceptSwitch.MemberNavigationExpression:
+        return new MemberNavigationExpression_TextGen();
       case LanguageConceptSwitch.MultiLambdaParameter:
         return new MultiLambdaParameter_TextGen();
       case LanguageConceptSwitch.NavigationOperation:

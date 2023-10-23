@@ -5,18 +5,18 @@ package jetbrains.mps.kotlin.structure;
 import jetbrains.mps.smodel.runtime.IconResource;
 
 public class IconContainer {
-  protected static IconResource RESOURCE_a0a3a0a32b0ik = new IconResource("classKotlin.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a52b0ik = new IconResource("value.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a92b0ik = new IconResource("objectKotlin.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a94b0ik = new IconResource("enumKotlin.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a66b0ik = new IconResource("value.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a461b0ik = new IconResource("interfaceKotlin.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a861b0ik = new IconResource("kotlin.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a961b0ik = new IconResource("kotlin_script.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a6a0a171b0ik = new IconResource("lambda.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a981b0ik = new IconResource("objectKotlin.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a802b0ik = new IconResource("classInitializerKotlin.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a4a0a622b0ik = new IconResource("classInitializerKotlin.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a542b0ik = new IconResource("typeAlias.svg", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a162b0ik = new IconResource("value.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a32b0jk = new IconResource("classKotlin.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a52b0jk = new IconResource("value.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a92b0jk = new IconResource("objectKotlin.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a94b0jk = new IconResource("enumKotlin.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a66b0jk = new IconResource("value.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a561b0jk = new IconResource("interfaceKotlin.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a961b0jk = new IconResource("kotlin.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a071b0jk = new IconResource("kotlin_script.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a6a0a271b0jk = new IconResource("lambda.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a091b0jk = new IconResource("objectKotlin.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a902b0jk = new IconResource("classInitializerKotlin.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a4a0a722b0jk = new IconResource("classInitializerKotlin.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a642b0jk = new IconResource("typeAlias.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a262b0jk = new IconResource("value.svg", IconContainer.class);
 }

@@ -12,9 +12,11 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 /**
  * Scope that will set priority on a kind of property accessor (getter or setter) over the other kind.
@@ -57,7 +59,7 @@ public class KindPriorityPropertyScope implements SignatureScope {
     if (declaration.getSignature() instanceof PropertySignature && ((PropertySignature) declaration.getSignature()).getKind() != priority) {
       // Look for a priority kind first
       // TODO keeping the same or null source means we need to ensure the SIGNATURE status is properly handled and returned
-      if (contains(new SourcedSignature(declaration.getSource(), stubProducer.stub(SNodeOperations.cast(declaration.getSource(), CONCEPTS.INamedConcept$Kd), priority))) != SignatureScope.ContainmentStatus.NO) {
+      if (contains(new SourcedSignature(declaration.getSource(), stubProducer.stub(SNodeOperations.cast(declaration.getSource(), CONCEPTS.INamedConcept$Kd), priority, declaration.getSignature().getExtensionReceiver()))) != SignatureScope.ContainmentStatus.NO) {
         // Setter has priority
         return SignatureScope.ContainmentStatus.NO;
       }
@@ -73,7 +75,7 @@ public class KindPriorityPropertyScope implements SignatureScope {
     }
 
     // First search for exact match in setters
-    SignatureScope.ContainmentStatus hasWithPriority = nestedScope.contains(new SourcedSignature(source, stubProducer.stub(SNodeOperations.cast(source, CONCEPTS.INamedConcept$Kd), priority)));
+    SignatureScope.ContainmentStatus hasWithPriority = nestedScope.contains(new SourcedSignature(source, stubProducer.stub(SNodeOperations.cast(source, CONCEPTS.INamedConcept$Kd), priority, SLinkOperations.getTarget(SNodeOperations.as(source, CONCEPTS.IWithReceiver$Eg), LINKS.receiverType$7yLT))));
     if (hasWithPriority == SignatureScope.ContainmentStatus.YES) {
       return true;
     } else if (hasWithPriority == SignatureScope.ContainmentStatus.SIGNATURE) {
@@ -83,12 +85,12 @@ public class KindPriorityPropertyScope implements SignatureScope {
 
     // Then try with the getters
     AccessorKind lowPriorityKind = (priority == AccessorKind.GETTER ? AccessorKind.SETTER : AccessorKind.GETTER);
-    return nestedScope.contains(new SourcedSignature(source, stubProducer.stub(SNodeOperations.cast(source, CONCEPTS.INamedConcept$Kd), lowPriorityKind))) == SignatureScope.ContainmentStatus.YES;
+    return nestedScope.contains(new SourcedSignature(source, stubProducer.stub(SNodeOperations.cast(source, CONCEPTS.INamedConcept$Kd), lowPriorityKind, SLinkOperations.getTarget(SNodeOperations.as(source, CONCEPTS.IWithReceiver$Eg), LINKS.receiverType$7yLT)))) == SignatureScope.ContainmentStatus.YES;
   }
 
   public interface StubSignatureProducer {
     StubSignatureProducer DEFAULT = PropertySignature::new;
-    PropertySignature stub(SNode node, AccessorKind kind);
+    PropertySignature stub(SNode node, AccessorKind kind, SNode receiverType);
   }
 
   public static SignatureScope of(SignatureScope scope, AccessorKind kind, @Nullable StubSignatureProducer stubProducer) {
@@ -108,5 +110,10 @@ public class KindPriorityPropertyScope implements SignatureScope {
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept IWithReceiver$Eg = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, "jetbrains.mps.kotlin.structure.IWithReceiver");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink receiverType$7yLT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, 0x764202afbfc6bde5L, "receiverType");
   }
 }

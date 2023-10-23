@@ -9,17 +9,17 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class MemberNavigationOperation_TextGen extends TextGenDescriptorBase {
+public class MemberNavigationExpression_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.operand$YS5t));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.operand$8jSC));
     tgs.append("::");
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.target$aBAp));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
+    /*package*/ static final SContainmentLink operand$8jSC = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, 0x1db88ba740cf215cL, "operand");
     /*package*/ static final SContainmentLink target$aBAp = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, 0x28bef6d7551af73bL, "target");
   }
 }

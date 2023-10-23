@@ -33,8 +33,6 @@ public class LocalPropertyDeclaration_TextGen extends TextGenDescriptorBase {
       tgs.append(")");
     }
 
-    KotlinTextGen.constraints(ctx.getPrimaryInput(), ctx);
-
     if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.assignment$nl1j) != null)) {
       tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.assignment$nl1j));
     }

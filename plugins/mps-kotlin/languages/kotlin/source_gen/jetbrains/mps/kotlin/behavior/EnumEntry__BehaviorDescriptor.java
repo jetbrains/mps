@@ -25,7 +25,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.scopes.signed.ListSignatureScope;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
-import jetbrains.mps.kotlin.api.members.TypeExpander;
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import java.util.Collections;
 import jetbrains.mps.kotlin.overloading.NodeArgument;
@@ -82,7 +81,7 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
 
     return Sequence.<SignatureScope>singleton(new ListSignatureScope(() -> Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.EnumClassDeclaration$xK, true, false))).select((it) -> {
       FunctionDeclaration decl = KotlinFunctionDeclaration.of(it);
-      FunctionSignature sig = new FunctionSignature(decl, ((TypeExpander) null));
+      FunctionSignature sig = new FunctionSignature(decl);
       return new SourcedSignature(it, sig);
     })));
   }

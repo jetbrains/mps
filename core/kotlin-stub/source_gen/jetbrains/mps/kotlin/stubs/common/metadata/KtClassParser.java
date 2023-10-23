@@ -68,7 +68,7 @@ public class KtClassParser {
     // Bring type parameters into context for the rest
     context.withTypeParameters(kmClass.getTypeParameters(), SNodeOperations.as(node.value, CONCEPTS.ITypeParameters$G$), fqName, (constraints, typeParameters) -> {
       // Add constraints
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(node.value, CONCEPTS.ITypeConstrained$KK), LINKS.constraints$BRhr)).addSequence(ListSequence.fromList(constraints));
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(node.value, CONCEPTS.ITypeConstrainedParameters$KK), LINKS.constraints$BRhr)).addSequence(ListSequence.fromList(constraints));
 
       {
         final SNode inheriting = node.value;
@@ -165,7 +165,7 @@ public class KtClassParser {
     /*package*/ static final SConcept DataClassModifier$wi = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af40aL, "jetbrains.mps.kotlin.structure.DataClassModifier");
     /*package*/ static final SConcept InterfaceDeclaration$fL = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7554886bfL, "jetbrains.mps.kotlin.structure.InterfaceDeclaration");
     /*package*/ static final SInterfaceConcept ITypeParameters$G$ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, "jetbrains.mps.kotlin.structure.ITypeParameters");
-    /*package*/ static final SInterfaceConcept ITypeConstrained$KK = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, "jetbrains.mps.kotlin.structure.ITypeConstrained");
+    /*package*/ static final SInterfaceConcept ITypeConstrainedParameters$KK = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, "jetbrains.mps.kotlin.structure.ITypeConstrainedParameters");
     /*package*/ static final SInterfaceConcept IInheritExplicitly$UG = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, "jetbrains.mps.kotlin.structure.IInheritExplicitly");
     /*package*/ static final SInterfaceConcept ISuperTypeSpecifier$PQ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL, "jetbrains.mps.kotlin.structure.ISuperTypeSpecifier");
     /*package*/ static final SConcept ClassType$jI = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4dfL, "jetbrains.mps.kotlin.structure.ClassType");

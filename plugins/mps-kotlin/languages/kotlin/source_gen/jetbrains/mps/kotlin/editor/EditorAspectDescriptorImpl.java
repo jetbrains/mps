@@ -171,7 +171,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 72:
         return Collections.<ConceptEditor>singletonList(new LocalPropertyDeclaration_Editor());
       case 73:
-        return Collections.<ConceptEditor>singletonList(new MemberNavigationOperation_Editor());
+        return Collections.<ConceptEditor>singletonList(new MemberNavigationExpression_Editor());
       case 74:
         return Collections.<ConceptEditor>singletonList(new MultiLambdaParameter_Editor());
       case 75:
@@ -527,7 +527,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       case 18:
         return Collections.<TransformationMenu>singletonList(new ITypeArguments_TransformationMenu());
       case 19:
-        return Collections.<TransformationMenu>singletonList(new ITypeConstrained_TransformationMenu());
+        return Collections.<TransformationMenu>singletonList(new ITypeConstrainedParameters_TransformationMenu());
       case 20:
         return Collections.<TransformationMenu>singletonList(new ITypeParameters_TransformationMenu());
       case 21:

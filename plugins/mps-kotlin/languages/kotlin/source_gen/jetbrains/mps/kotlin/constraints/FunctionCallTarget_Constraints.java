@@ -14,7 +14,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
+import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -38,7 +38,7 @@ public class FunctionCallTarget_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return SignatureScopeHelper.getScopeForConstraints(CONCEPTS.FunctionCallTarget$SS, _context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink(), CONCEPTS.IFunctionDeclaration$ZB);
+            return KotlinScopes.forKotlinFunction(CONCEPTS.FunctionCallTarget$SS, _context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink(), CONCEPTS.IFunctionDeclaration$ZB);
           }
         };
       }

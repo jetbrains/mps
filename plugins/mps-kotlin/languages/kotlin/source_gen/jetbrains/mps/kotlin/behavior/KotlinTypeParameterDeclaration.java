@@ -12,10 +12,12 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class KotlinTypeParameterDeclaration extends DefaultTypeParameterDeclaration {
   private final SNode myParameter;
@@ -41,6 +43,7 @@ public class KotlinTypeParameterDeclaration extends DefaultTypeParameterDeclarat
     if ((SLinkOperations.getTarget(myParameter, LINKS.bound$KhhI) != null)) {
       ListSequence.fromList(bounds).addElement(SLinkOperations.getTarget(myParameter, LINKS.bound$KhhI));
     }
+    ListSequence.fromList(bounds).addSequence(Sequence.fromIterable(ITypeParameters__BehaviorDescriptor.getExtraUpperBounds_id4Cl0D9hqdNo.invoke(SNodeOperations.as(SNodeOperations.getParent(myParameter), CONCEPTS.ITypeConstrainedParameters$KK), myParameter)));
     return bounds;
   }
   @Override
@@ -55,5 +58,9 @@ public class KotlinTypeParameterDeclaration extends DefaultTypeParameterDeclarat
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink bound$KhhI = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, 0x28bef6d7551af850L, "bound");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept ITypeConstrainedParameters$KK = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75568d269L, "jetbrains.mps.kotlin.structure.ITypeConstrainedParameters");
   }
 }

@@ -14,12 +14,9 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
 import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.smodel.behavior.LinkSignature;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeAsScope;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,14 +39,7 @@ public class LinkAccessExpression_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            // Filter on links rather than regular signature
-            SignatureFilter filter = new SignatureFilterImpl<LinkSignature>(LinkSignature.class);
-
-            // Get scope
-            SignatureScope variableScope = SignatureScopeHelper.getVariablesScope(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink(), filter, LinkSignature::new);
-
-            // Downcast it
-            return new SignatureScopeAsScope(variableScope, CONCEPTS.LinkDeclaration$1p);
+            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).filter(new SignatureFilterImpl<>(LinkSignature.class)).navigationReceiver().noReceiverMembers().prioritizeProperties((link, kind, receiver) -> new LinkSignature(link, kind)).buildScope(CONCEPTS.LinkDeclaration$1p);
           }
         };
       }

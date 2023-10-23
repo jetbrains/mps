@@ -23,6 +23,8 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.behavior.IStatement__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.kotlin.behavior.INavigationTarget__BehaviorDescriptor;
+import jetbrains.mps.kotlin.behavior.ImplicitCallReceiver;
 import jetbrains.mps.kotlin.overloading.NodeArgument;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.behavior.IFunctionCall__BehaviorDescriptor;
@@ -72,6 +74,10 @@ public final class JavaMethodVariableReference__BehaviorDescriptor extends BaseB
     }
   }
   /*package*/ static MemberReceiver getReceiver_id5D4bOjrrgiZ(@NotNull SNode __thisNode__) {
+    // Can be used in both setting
+    if ((INavigationTarget__BehaviorDescriptor.getNavigationOperand_id2gj5XQXMv4y.invoke(__thisNode__) == null)) {
+      return new ImplicitCallReceiver(__thisNode__);
+    }
     return MemberReceiver.ofNavTarget(__thisNode__);
   }
   /*package*/ static Iterable<Argument> getArguments_id1VI7K1jROBX(@NotNull SNode __thisNode__) {
@@ -89,6 +95,7 @@ public final class JavaMethodVariableReference__BehaviorDescriptor extends BaseB
     return new JavaMethodDeclaration(SNodeOperations.as(node, CONCEPTS.BaseMethodDeclaration$kD));
   }
   /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, SNode referenceNode, SNode contextNode, SContainmentLink containment) {
+    // In constraints, we get method with property signature, here we resolve them as functions 
     return ((Iterable<SignatureScope>) IFunctionCall__BehaviorDescriptor.getFunctionScopeParts_id6dAo8EmAhT7.invoke0(__thisConcept__, CONCEPTS.IFunctionCall$Sf, referenceNode, contextNode, containment));
   }
 

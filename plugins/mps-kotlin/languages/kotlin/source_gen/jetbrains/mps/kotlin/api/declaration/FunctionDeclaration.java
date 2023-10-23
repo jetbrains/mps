@@ -10,7 +10,10 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
-import java.util.Iterator;
+import jetbrains.mps.kotlin.api.members.TypeExpander;
+import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -75,6 +78,14 @@ public interface FunctionDeclaration {
   SNode getReceiverType();
 
   /**
+   * Returns true if the function is an extension function (in which case receiver type is set
+   * explicitly rather than inferred from context)
+   */
+  default boolean isExtension() {
+    return false;
+  }
+
+  /**
    * Returns the list of modifiers applied to this method.
    */
   @NotNull
@@ -83,35 +94,29 @@ public interface FunctionDeclaration {
   }
 
   default String getFunctionPresentation(boolean erased) {
+    return getFunctionPresentation(erased, TypeExpander.DEFAULT);
+  }
+  default String getFunctionPresentation(final boolean erased, @NotNull final TypeExpander expander) {
     StringBuilder builder = new StringBuilder();
+
+    SNode receiverType = getReceiverType();
+    if (!(erased) && isExtension() && (receiverType != null)) {
+      builder.append(IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(expander.expandType(receiverType), ((boolean) false))).append(".");
+    }
 
     builder.append(getName());
 
     if (!(erased) && Sequence.fromIterable(getTypeParameters()).isNotEmpty()) {
-      builder.append("<");
-      Iterator<TypeParameterDeclaration> itr = Sequence.fromIterable(getTypeParameters()).iterator();
-      if (itr.hasNext()) {
-        builder.append(itr.next().getName());
-      }
-      while (itr.hasNext()) {
-        builder.append(", ");
-        builder.append(itr.next().getName());
-      }
-      builder.append(">");
+      builder.append("<").append(IterableUtils.join(Sequence.fromIterable(getTypeParameters()).select((it) -> {
+        if (ListSequence.fromList(it.getUpperBounds()).isNotEmpty()) {
+          return it.getName() + ": " + IterableUtils.join(ListSequence.fromList(it.getUpperBounds()).select((type) -> (String) IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(expander.expandType(type), ((boolean) false))), " & ");
+        } else {
+          return it.getName();
+        }
+      }), ", ")).append(">");
     }
 
-    builder.append("(");
-
-    Iterator<ParameterDeclaration> itr = Sequence.fromIterable(getParameters()).iterator();
-    if (itr.hasNext()) {
-      builder.append(itr.next().getPresentationInFunction(erased));
-    }
-    while (itr.hasNext()) {
-      builder.append(", ");
-      builder.append(itr.next().getPresentationInFunction(erased));
-    }
-
-    builder.append(")");
+    builder.append("(").append(IterableUtils.join(Sequence.fromIterable(getParameters()).select((it) -> it.getPresentationInFunction(erased, expander)), ", ")).append(")");
     return builder.toString();
   }
 

@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
+import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -66,8 +66,7 @@ public final class IFunctionCall__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, SNode referenceNode, SNode contextNode, SContainmentLink containment) {
     // default: assumes the node is already created
-    MemberReceiver receiver = IFunctionCall__BehaviorDescriptor.getReceiver_id5D4bOjrrgiZ.invoke(SNodeOperations.as(referenceNode, CONCEPTS.IFunctionCall$Sf));
-    return SignatureScopeHelper.getFunctionScopeParts(receiver, contextNode);
+    return KotlinScopes.create(referenceNode, contextNode, containment).functions().receiver(IFunctionCall__BehaviorDescriptor.getReceiver_id5D4bOjrrgiZ.invoke(SNodeOperations.as(referenceNode, CONCEPTS.IFunctionCall$Sf))).buildScopes();
   }
 
   /*package*/ IFunctionCall__BehaviorDescriptor() {

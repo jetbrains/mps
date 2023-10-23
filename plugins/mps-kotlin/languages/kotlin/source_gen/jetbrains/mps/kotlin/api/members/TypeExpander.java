@@ -5,6 +5,8 @@ package jetbrains.mps.kotlin.api.members;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public interface TypeExpander {
+  TypeExpander DEFAULT = new TypeExpander() {};
+
   /**
    * Expand the type according to implementation generics / substitution handling. Should be called on any type that
    * is considered in signatures computation.

@@ -7,8 +7,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class MemberNavigationOperation_Editor extends DefaultNodeEditor {
+public class MemberNavigationExpression_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return new MemberNavigationOperation_EditorBuilder_a(editorContext, node).createCell();
+    return new MemberNavigationExpression_EditorBuilder_a(editorContext, node).createCell();
   }
 }

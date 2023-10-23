@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.kotlin.behavior.KotlinFunctionDeclaration;
-import jetbrains.mps.kotlin.api.members.TypeExpander;
 import jetbrains.mps.kotlin.behavior.ClassDeclaration__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -63,7 +62,7 @@ public class ConstructorsScope implements SignatureScope {
       }
     }
 
-    return SignatureBuilder.create(result, FunctionSignature.class).withSignature((node) -> new FunctionSignature(KotlinFunctionDeclaration.of(node), (TypeExpander) null)).build(null);
+    return SignatureBuilder.create(result, FunctionSignature.class).withSignature((node) -> new FunctionSignature(KotlinFunctionDeclaration.of(node))).build(null);
   }
 
   @Override

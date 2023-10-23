@@ -14,11 +14,11 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper;
+import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
 import jetbrains.mps.baseLanguage.scopes.VisibleClassConstructorsScope;
+import jetbrains.mps.scope.CompositeScope;
 import jetbrains.mps.scope.FilteringScope;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
@@ -44,25 +44,19 @@ public class JavaMethodCall_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Tuples._2<SNode, Boolean> context = SignatureScopeHelper.navigatableContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
-
             // Call on receiver
-            if (context != null) {
-              // Defined there
-              return SignatureScopeHelper.getScopeForConstraints(CONCEPTS.JavaMethodCall$gD, _context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink(), CONCEPTS.BaseMethodDeclaration$kD);
-            }
+            Scope regularScope = KotlinScopes.forKotlinFunction(CONCEPTS.JavaMethodCall$gD, _context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink(), CONCEPTS.BaseMethodDeclaration$kD);
 
             // Not called on a receiver -> usual constructors scope
-            // TODO add scope for inherited methods without receiver (this.parentJavaMethod without this)
-            VisibleClassConstructorsScope scope = new VisibleClassConstructorsScope(_context.getContextNode());
-            return new FilteringScope(scope) {
+            VisibleClassConstructorsScope constructors = new VisibleClassConstructorsScope(_context.getContextNode());
+            return new CompositeScope(regularScope, new FilteringScope(constructors) {
               @Override
               public boolean isExcluded(SNode node) {
                 SNode clazz = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);
                 SNode wrapperClazz = SNodeOperations.getNodeAncestor(clazz, CONCEPTS.ClassConcept$bK, false, false);
                 return !(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.ClassConcept$bK, false)).contains(wrapperClazz)) && !((boolean) ClassConcept__BehaviorDescriptor.canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk.invoke(clazz, _context.getContextNode()));
               }
-            };
+            });
 
           }
         };
