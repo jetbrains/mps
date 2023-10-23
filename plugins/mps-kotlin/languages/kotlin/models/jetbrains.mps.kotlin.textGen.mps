@@ -4932,7 +4932,7 @@
   </node>
   <node concept="WtQ9Q" id="5lA_K0zi76n">
     <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
-    <ref role="WuzLi" to="hcm8:1502VugCR$H" resolve="MemberNavigationOperation" />
+    <ref role="WuzLi" to="hcm8:1502VugCR$H" resolve="MemberNavigationExpression" />
     <node concept="11bSqf" id="5lA_K0zi76o" role="11c4hB">
       <node concept="3clFbS" id="5lA_K0zi76p" role="2VODD2">
         <node concept="lc7rE" id="5lA_K0zi76y" role="3cqZAp">
@@ -4940,7 +4940,7 @@
             <node concept="2OqwBi" id="5lA_K0zi76x" role="lb14g">
               <node concept="117lpO" id="5lA_K0zi76v" role="2Oq$k0" />
               <node concept="3TrEf2" id="5lA_K0zi76s" role="2OqNvi">
-                <ref role="3Tt5mk" to="hcm8:1502Vug_mWz" resolve="operand" />
+                <ref role="3Tt5mk" to="hcm8:1QSyUt0NM5s" resolve="operand" />
               </node>
             </node>
           </node>

@@ -2717,8 +2717,8 @@
     <property role="TrG5h" value="UnaryExpression" />
     <property role="R5$K7" value="true" />
     <property role="R4oN_" value="unary expression" />
-    <node concept="PrWs8" id="1502Vug_mWx" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
+    <node concept="PrWs8" id="7EfieuW$tyt" role="PzmwI">
+      <ref role="PrY4T" node="7EfieuW$tko" resolve="IUnaryExpression" />
     </node>
     <node concept="1TJgyj" id="1502Vug_mWz" role="1TKVEi">
       <property role="IQ2ns" value="1243006380186890019" />
@@ -2738,17 +2738,25 @@
   </node>
   <node concept="1TIwiD" id="1502VugCR$H">
     <property role="EcuMT" value="1243006380187810093" />
-    <property role="TrG5h" value="MemberNavigationOperation" />
-    <property role="R4oN_" value="member navigation suffix" />
+    <property role="TrG5h" value="MemberNavigationExpression" />
+    <property role="R4oN_" value="member navigation" />
     <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
     <property role="34LRSv" value="::" />
-    <ref role="1TJDcQ" node="1502Vug_mZo" resolve="PostfixUnaryExpression" />
+    <node concept="1TJgyj" id="1QSyUt0NM5s" role="1TKVEi">
+      <property role="IQ2ns" value="2141615173277786460" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="operand" />
+      <ref role="20lvS9" node="2yYXHtl6Jjg" resolve="IExpression" />
+    </node>
     <node concept="1TJgyj" id="1502VugCR$J" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798374203" />
       <property role="20kJfa" value="target" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6JkP" resolve="IMemberTarget" />
+    </node>
+    <node concept="PrWs8" id="1QSyUt0NMqg" role="PzmwI">
+      <ref role="PrY4T" node="7EfieuW$tko" resolve="IUnaryExpression" />
     </node>
   </node>
   <node concept="1TIwiD" id="1502VugCScR">
@@ -4419,6 +4427,17 @@
     <property role="3GE5qa" value="declaration.class.modifier" />
     <node concept="PrWs8" id="7bKZA$p5BJr" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jg6" resolve="IClassModifier" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="7EfieuW$tko">
+    <property role="EcuMT" value="8831357554435151128" />
+    <property role="3GE5qa" value="expression.operator.unary" />
+    <property role="TrG5h" value="IUnaryExpression" />
+    <node concept="t5JxF" id="7EfieuW$toH" role="lGtFl">
+      <property role="t5JxN" value="abstraction of unary expressions for precedence computations" />
+    </node>
+    <node concept="PrWs8" id="7EfieuW$tD0" role="PrDN$">
+      <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
     </node>
   </node>
 </model>

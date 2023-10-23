@@ -452,6 +452,10 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
+        <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
+        <reference id="1144432896254" name="enumClass" index="1Px2BO" />
+      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
@@ -6828,6 +6832,51 @@
           </node>
         </node>
       </node>
+      <node concept="3c8P5G" id="3DLhCcqFM1J" role="1Qtc8A">
+        <node concept="2kknPJ" id="3DLhCcqFM76" role="3c8P5H">
+          <ref role="2ZyFGn" to="hcm8:1502VugCR$H" resolve="MemberNavigationExpression" />
+        </node>
+        <node concept="3c8PGw" id="3DLhCcqFM1M" role="3c8PHt">
+          <node concept="3clFbS" id="3DLhCcqFM1O" role="2VODD2">
+            <node concept="3clFbF" id="3DLhCcqFM8I" role="3cqZAp">
+              <node concept="2YIFZM" id="3DLhCcqFM8J" role="3clFbG">
+                <ref role="37wK5l" to="hez:3DLhCcqFPbK" resolve="processUnaryTransform" />
+                <ref role="1Pybhc" to="hez:666oMY5bHbJ" resolve="PrecedenceUtil" />
+                <node concept="7Obwk" id="3DLhCcqFM8K" role="37wK5m" />
+                <node concept="3c8USq" id="3DLhCcqFM8L" role="37wK5m" />
+                <node concept="359W_D" id="3DLhCcqFXEC" role="37wK5m">
+                  <ref role="359W_E" to="hcm8:1502VugCR$H" resolve="MemberNavigationExpression" />
+                  <ref role="359W_F" to="hcm8:1QSyUt0NM5s" resolve="operand" />
+                </node>
+                <node concept="Rm8GO" id="3DLhCcqFYmT" role="37wK5m">
+                  <ref role="Rm8GQ" to="hez:666oMY59J19" resolve="POSTFIX" />
+                  <ref role="1Px2BO" to="hez:666oMY59IpE" resolve="Precedence" />
+                </node>
+                <node concept="3clFbT" id="3DLhCcqFM8M" role="37wK5m" />
+              </node>
+            </node>
+            <node concept="3clFbF" id="3DLhCcqFM8N" role="3cqZAp">
+              <node concept="2OqwBi" id="3DLhCcqFM8O" role="3clFbG">
+                <node concept="1OKiuA" id="3DLhCcqFM8P" role="2OqNvi">
+                  <node concept="1Q80Hx" id="3DLhCcqFM8Q" role="lBI5i" />
+                  <node concept="3cmrfG" id="3DLhCcqFM8R" role="3dN3m$">
+                    <property role="3cmrfH" value="-1" />
+                  </node>
+                  <node concept="1ogLYD" id="3DLhCcqFM8S" role="lGT1i">
+                    <node concept="2B6iha" id="3DLhCcqFM8T" role="1ogLZm">
+                      <property role="1lyBwo" value="1MdDphCk0iX/firstError" />
+                    </node>
+                    <node concept="2B6iha" id="3DLhCcqFM8U" role="1ogLZk">
+                      <property role="1lyBwo" value="1S2pyLby17K/last" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3c8USq" id="3DLhCcqFM8V" role="2Oq$k0" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
       <node concept="3c8P5G" id="4Nah4_Qj31Q" role="1Qtc8A">
         <node concept="3c8PGw" id="4Nah4_Qj31S" role="3c8PHt">
           <node concept="3clFbS" id="4Nah4_Qj31T" role="2VODD2">
@@ -10841,10 +10890,11 @@
   </node>
   <node concept="24kQdi" id="1oGqGn0EhWK">
     <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
-    <ref role="1XX52x" to="hcm8:1502VugCR$H" resolve="MemberNavigationOperation" />
+    <ref role="1XX52x" to="hcm8:1502VugCR$H" resolve="MemberNavigationExpression" />
     <node concept="3EZMnI" id="1oGqGn0EhWM" role="2wV5jI">
       <node concept="3F1sOY" id="1oGqGn0EhWT" role="3EZMnx">
-        <ref role="1NtTu8" to="hcm8:1502Vug_mWz" resolve="operand" />
+        <property role="39s7Ar" value="true" />
+        <ref role="1NtTu8" to="hcm8:1QSyUt0NM5s" resolve="operand" />
       </node>
       <node concept="3F0ifn" id="1oGqGn0EhWZ" role="3EZMnx">
         <property role="3F0ifm" value="::" />
