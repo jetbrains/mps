@@ -180,9 +180,6 @@
         <child id="1206060619838" name="condition" index="3eO9$A" />
         <child id="1206060644605" name="statementList" index="3eOfB_" />
       </concept>
-      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
-        <child id="1079359253376" name="expression" index="1eOMHV" />
-      </concept>
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
@@ -2308,11 +2305,9 @@
               </node>
             </node>
           </node>
-          <node concept="1eOMI4" id="abwK8ksM22" role="37wK5m">
-            <node concept="10QFUN" id="abwK8ksM1Z" role="1eOMHV">
-              <node concept="17QB3L" id="abwK8ksM24" role="10QFUM" />
-              <node concept="10Nm6u" id="abwK8ksMg1" role="10QFUP" />
-            </node>
+          <node concept="10QFUN" id="abwK8ksM1Z" role="37wK5m">
+            <node concept="17QB3L" id="abwK8ksM24" role="10QFUM" />
+            <node concept="10Nm6u" id="abwK8ksMg1" role="10QFUP" />
           </node>
         </node>
       </node>
@@ -2464,6 +2459,7 @@
           <node concept="37vLTw" id="7XIUL68APWP" role="37wK5m">
             <ref role="3cqZAo" node="7XIUL68APBl" resolve="kind" />
           </node>
+          <node concept="10Nm6u" id="7KwZg7Eain" role="37wK5m" />
         </node>
         <node concept="3clFbF" id="LTtTkxFW5f" role="3cqZAp">
           <node concept="37vLTI" id="LTtTkxFXsE" role="3clFbG">
