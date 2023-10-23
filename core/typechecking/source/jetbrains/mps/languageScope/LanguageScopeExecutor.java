@@ -17,7 +17,10 @@ package jetbrains.mps.languageScope;
 
 import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.smodel.SLanguageHierarchy;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
+import jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -26,6 +29,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 public class LanguageScopeExecutor {
@@ -46,9 +50,25 @@ public class LanguageScopeExecutor {
       SRepository repository = languageScopeFactory.getRepository();
       LanguageRegistry lr = LanguageRegistry.getInstance(repository);
       final Collection<SLanguage> languageImports = new ModelDependencyResolver(lr, repository).usedLanguages(model);
-      final SLanguageHierarchy languageHierarchy = new SLanguageHierarchy(lr, languageImports);
-      final Set<SLanguage> usedLangDeps = languageHierarchy.getExtended();
-      usedLangDeps.addAll(languageHierarchy.getAggregated());
+      final Set<SLanguage> usedLangDeps = new HashSet<>();
+      new SLanguageHierarchy(lr, languageImports).forEachExtended(lrt -> {
+        usedLangDeps.add(lrt.getIdentity());
+        final StructureAspectDescriptor sad = lrt.getAspect(StructureAspectDescriptor.class);
+        if (sad == null) {
+          return;
+        }
+        sad.reportDependencies(new Dependencies() {
+          @Override
+          public void aggregatedLanguage(long hiBits, long lowBits, String name) {
+            usedLangDeps.add(MetaAdapterFactory.getLanguage(hiBits, lowBits, name));
+          }
+
+          @Override
+          public void employedLanguage(long hiBits, long lowBits, String name) {
+            usedLangDeps.add(MetaAdapterFactory.getLanguage(hiBits, lowBits, name));
+          }
+        });
+      });
       languageScope = languageScopeFactory.getLanguageScope(usedLangDeps);
     }
     return languageScope.compute(computable);

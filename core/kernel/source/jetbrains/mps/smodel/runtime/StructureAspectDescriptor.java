@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,12 +59,26 @@ public interface StructureAspectDescriptor extends ILanguageAspect {
      * Report languages of foreign concepts extended by concepts of this language. Here, 'concepts' means both SConcept and SInterfaceConcept.
      * 'lang.core' is not necessarily included unless {@code BaseConcept} or any other lang.core concept is mentioned explicitly.
      */
-    void extendedLanguage(long hiBits, long lowBits, String name);
+    default void extendedLanguage(long hiBits, long lowBits, String name) {}
 
     /**
      * Report languages of foreign concepts aggregated by concepts of this language.
      * IOW, a child role with a concept from another language get the language into this set.
      */
-    void aggregatedLanguage(long hiBits, long lowBits, String name);
+    default void aggregatedLanguage(long hiBits, long lowBits, String name) {}
+
+    /**
+     * Languages of foreign (other structure models) concepts that this language
+     * engage/involve without forcing transitive semantics of 'extends' relation.
+     * Right now we limit these to implemented "@marker" interfaces, which are deemed to provide
+     * fine-grained "extends" relation semantics.
+     * <p>
+     * From relation semantics perspective, these languages are quite similar to 'aggregated', and,
+     * perhaps, worth being merged into single entity.
+     * "Aggregated" doesn't see to be of any special meaning, just benefits from clear
+     * semantics attached to aggregation links.
+     * @since 2023.3
+     */
+    default void employedLanguage(long hiBits, long lowBits, String name) {}
   }
 }
