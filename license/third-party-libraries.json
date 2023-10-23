@@ -67,7 +67,7 @@
 }, {
   "name" : "Apache Commons IO",
   "url" : "https://commons.apache.org/proper/commons-io/",
-  "version" : "2.13.0",
+  "version" : "2.14.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://gitbox.apache.org/repos/asf?p=commons-io.git;a=blob_plain;f=LICENSE.txt;hb=HEAD"
 }, {
@@ -79,7 +79,7 @@
 }, {
   "name" : "Apache Commons Lang",
   "url" : "https://commons.apache.org/proper/commons-lang/",
-  "version" : "3.12.0",
+  "version" : "3.13.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://gitbox.apache.org/repos/asf?p=commons-lang.git;a=blob_plain;f=LICENSE.txt;hb=HEAD"
 }, {
@@ -421,7 +421,7 @@
 }, {
   "name" : "Jewel",
   "url" : "https://github.com/JetBrains/jewel",
-  "version" : "0.7.2",
+  "version" : "0.7.3-ij-233",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/jewel/blob/main/LICENSE"
 }, {
@@ -571,7 +571,7 @@
 }, {
   "name" : "SnakeYAML",
   "url" : "https://bitbucket.org/snakeyaml/snakeyaml/",
-  "version" : "2.1",
+  "version" : "2.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://bitbucket.org/snakeyaml/snakeyaml/src/master/LICENSE.txt"
 }, {
@@ -739,7 +739,7 @@
 }, {
   "name" : "hash4j",
   "url" : "https://github.com/dynatrace-oss/hash4j",
-  "version" : "0.12.0",
+  "version" : "0.13.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/dynatrace-oss/hash4j/blob/main/LICENSE"
 }, {
@@ -781,13 +781,13 @@
 }, {
   "name" : "jediterm-core",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.26",
+  "version" : "3.28",
   "license" : "LGPL 3",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
   "name" : "jediterm-ui",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.26",
+  "version" : "3.28",
   "license" : "LGPL 3",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
@@ -907,19 +907,19 @@
 }, {
   "name" : "netty-buffer",
   "url" : "https://netty.io",
-  "version" : "4.1.97.Final",
+  "version" : "4.1.99.Final",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
 }, {
   "name" : "netty-codec-http",
   "url" : "https://netty.io",
-  "version" : "4.1.97.Final",
+  "version" : "4.1.99.Final",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
 }, {
   "name" : "netty-handler-proxy",
   "url" : "https://netty.io",
-  "version" : "4.1.97.Final",
+  "version" : "4.1.99.Final",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
 }, {

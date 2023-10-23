@@ -1,9 +1,9 @@
 package jetbrains.mps.ide.util
 
 import com.intellij.concurrency.IdeaForkJoinWorkerThreadFactory
-import com.intellij.ide.plugins.StartupAbortedException
 import com.intellij.idea.AppMode
 import com.intellij.platform.ide.bootstrap.AppStarter
+import com.intellij.platform.ide.bootstrap.StartupErrorReporter
 import com.intellij.platform.ide.bootstrap.startApplication
 import kotlinx.coroutines.*
 import java.lang.invoke.MethodHandles
@@ -73,7 +73,8 @@ class PlatformStarter {
 // Copied from com.intellij.idea.Main.Kt (comment there: separate class for nicer presentation in dumps)
 private class StartupAbortedExceptionHandler : AbstractCoroutineContextElement(CoroutineExceptionHandler), CoroutineExceptionHandler {
     override fun handleException(context: CoroutineContext, exception: Throwable) {
-        StartupAbortedException.processException(exception)
+        @Suppress("UnstableApiUsage")
+        StartupErrorReporter.processException(exception)
     }
 
     override fun toString() = "StartupAbortedExceptionHandler"
