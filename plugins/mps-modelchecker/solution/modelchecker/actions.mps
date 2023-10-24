@@ -390,6 +390,7 @@
       <concept id="8866923313515890008" name="jetbrains.mps.lang.smodel.structure.AsNodeOperation" flags="nn" index="FGMqu" />
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -4034,14 +4035,10 @@
                     <ref role="1Pybhc" to="d6hs:~NodeReportItemBase" resolve="NodeReportItemBase" />
                     <node concept="3cpWs3" id="6d$5VVB5LJX" role="37wK5m">
                       <node concept="2OqwBi" id="6d$5VVB5LJY" role="3uHU7w">
-                        <node concept="2JrnkZ" id="6d$5VVB5LJZ" role="2Oq$k0">
-                          <node concept="37vLTw" id="6d$5VVB5LK0" role="2JrQYb">
-                            <ref role="3cqZAo" node="7iyppy3KgGV" resolve="node" />
-                          </node>
+                        <node concept="37vLTw" id="6d$5VVB5LK0" role="2Oq$k0">
+                          <ref role="3cqZAo" node="7iyppy3KgGV" resolve="node" />
                         </node>
-                        <node concept="liA8E" id="6d$5VVB5LK1" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
-                        </node>
+                        <node concept="2Iv5rx" id="3f8fofNL2tg" role="2OqNvi" />
                       </node>
                       <node concept="Xl_RD" id="6d$5VVB5LK2" role="3uHU7B">
                         <property role="Xl_RC" value="Interface instance found! " />
@@ -4093,14 +4090,10 @@
                     <ref role="1Pybhc" to="d6hs:~NodeReportItemBase" resolve="NodeReportItemBase" />
                     <node concept="3cpWs3" id="1dlISwUpSw7" role="37wK5m">
                       <node concept="2OqwBi" id="1dlISwUpSw8" role="3uHU7w">
-                        <node concept="2JrnkZ" id="1dlISwUpSw9" role="2Oq$k0">
-                          <node concept="37vLTw" id="1dlISwUpSwa" role="2JrQYb">
-                            <ref role="3cqZAo" node="7iyppy3KgGV" resolve="node" />
-                          </node>
+                        <node concept="37vLTw" id="1dlISwUpSwa" role="2Oq$k0">
+                          <ref role="3cqZAo" node="7iyppy3KgGV" resolve="node" />
                         </node>
-                        <node concept="liA8E" id="1dlISwUpSwb" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
-                        </node>
+                        <node concept="2Iv5rx" id="3f8fofNL5H7" role="2OqNvi" />
                       </node>
                       <node concept="Xl_RD" id="4yQF8hVWmGB" role="3uHU7B">
                         <property role="Xl_RC" value="Abstract concept instance found! " />

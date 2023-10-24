@@ -116,11 +116,11 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
       return;
     }
     if (cncpt instanceof SInterfaceConcept) {
-      ListSequence.fromList(results).addElement(NodeReportItemBase.error("Interface instance found! " + node.toString(), SNodeOperations.getPointer(node), IssueKindReportItem.STRUCTURE.deriveItemKind("interface instance")));
+      ListSequence.fromList(results).addElement(NodeReportItemBase.error("Interface instance found! " + SNodeOperations.present(node), SNodeOperations.getPointer(node), IssueKindReportItem.STRUCTURE.deriveItemKind("interface instance")));
       return;
     }
     if (cncpt.isAbstract()) {
-      ListSequence.fromList(results).addElement(NodeReportItemBase.error("Abstract concept instance found! " + node.toString(), SNodeOperations.getPointer(node), IssueKindReportItem.STRUCTURE.deriveItemKind("abstract concept instance")));
+      ListSequence.fromList(results).addElement(NodeReportItemBase.error("Abstract concept instance found! " + SNodeOperations.present(node), SNodeOperations.getPointer(node), IssueKindReportItem.STRUCTURE.deriveItemKind("abstract concept instance")));
       return;
     }
     final IssueKindReportItem.ItemKind itemKind = getCategory().deriveItemKind("reference to a non-referenceable node");

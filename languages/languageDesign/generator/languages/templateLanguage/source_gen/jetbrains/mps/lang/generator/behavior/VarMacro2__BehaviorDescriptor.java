@@ -39,9 +39,11 @@ public final class VarMacro2__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
+    // FWIW, there's a hole in TemplateQueryBase scope boundary to facilitate var references from within queries
     if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VarDeclaration$$D))) {
       return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child);
     }
+    // FIXME can't use compose with as GenPlan for behaviors doesn't respect lang.scope language!!
     return new CompositeScope(ScopeUtils.parentScope(__thisNode__, kind), new NamedElementsScope(SLinkOperations.getChildren(__thisNode__, LINKS.variables$Eqmf)));
   }
 
