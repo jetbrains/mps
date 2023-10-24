@@ -2247,65 +2247,73 @@
       <node id="3186759361294856255" at="34,137,35,0" concept="12" />
       <node id="3186759361293942508" at="35,0,36,135" concept="11" />
       <node id="2059215017835137998" at="36,135,37,90" concept="11" />
-      <node id="3186759361293951452" at="39,60,40,107" concept="9" />
-      <node id="2059215017835058532" at="42,11,43,70" concept="9" />
-      <node id="2059215017835058532" at="43,70,44,263" concept="9" />
-      <node id="8531787244795987947" at="45,13,46,201" concept="9" />
-      <node id="8531787244795990863" at="46,201,47,212" concept="4" />
-      <node id="8531787244795987947" at="47,212,48,75" concept="4" />
-      <node id="2059215017835129021" at="55,50,56,38" concept="10" />
-      <node id="2059215017835129021" at="58,68,59,102" concept="10" />
-      <node id="2059215017835129021" at="61,30,62,17" concept="10" />
-      <node id="2059215017835129021" at="66,0,67,0" concept="13" trace="VariableDeclaration$Y0" />
-      <node id="2059215017835129021" at="67,0,68,0" concept="13" trace="IClassifier$MF" />
-      <node id="2059215017835129021" at="68,0,69,0" concept="13" trace="ClosureLiteral$rp" />
-      <node id="2059215017835129021" at="69,0,70,0" concept="13" trace="ParameterDeclaration$RG" />
-      <node id="2059215017835129021" at="70,0,71,0" concept="13" trace="LocalVariableDeclaration$41" />
-      <node id="2059215017835129021" at="74,0,75,0" concept="13" trace="name$MnvL" />
+      <node id="3186759361293951452" at="40,83,41,109" concept="9" />
+      <node id="2059215017835058532" at="43,13,44,72" concept="9" />
+      <node id="2059215017835058532" at="44,72,45,265" concept="9" />
+      <node id="8531787244795987947" at="46,15,47,203" concept="9" />
+      <node id="8531787244795990863" at="47,203,48,214" concept="4" />
+      <node id="8531787244795987947" at="48,214,49,77" concept="4" />
+      <node id="2059215017835129021" at="57,50,58,38" concept="10" />
+      <node id="2059215017835129021" at="60,68,61,102" concept="10" />
+      <node id="2059215017835129021" at="63,30,64,17" concept="10" />
+      <node id="5527181570958364897" at="66,55,67,43" concept="10" />
+      <node id="2059215017835129021" at="71,0,72,0" concept="13" trace="VariableDeclaration$Y0" />
+      <node id="2059215017835129021" at="72,0,73,0" concept="13" trace="IClassifier$MF" />
+      <node id="2059215017835129021" at="73,0,74,0" concept="13" trace="ClosureLiteral$rp" />
+      <node id="2059215017835129021" at="74,0,75,0" concept="13" trace="ParameterDeclaration$RG" />
+      <node id="2059215017835129021" at="75,0,76,0" concept="13" trace="LocalVariableDeclaration$41" />
+      <node id="2059215017835129021" at="79,0,80,0" concept="13" trace="name$MnvL" />
       <node id="2059215017835129021" at="30,0,32,0" concept="2" trace="check_ClosureLiteral_clashingName_NonTypesystemRule#()V" />
-      <node id="2059215017835129021" at="55,0,58,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="2059215017835129021" at="58,0,61,0" concept="8" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="2059215017835129021" at="61,0,64,0" concept="8" trace="overrides#()Z" />
-      <node id="8531787244795987947" at="44,263,49,13" concept="0" />
-      <node id="2059215017835058532" at="41,189,50,11" concept="0" />
-      <node id="2059215017835052466" at="40,107,51,9" concept="7" />
-      <node id="2059215017835037016" at="38,24,52,9" concept="4" />
-      <node id="7322610796512553080" at="37,90,53,5" concept="7" />
-      <node id="2059215017835129021" at="32,0,55,0" concept="8" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <node id="2059215017835129021" at="57,0,60,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="2059215017835129021" at="60,0,63,0" concept="8" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="2059215017835129021" at="63,0,66,0" concept="8" trace="overrides#()Z" />
+      <node id="5527181570958364897" at="66,0,69,0" concept="14" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
+      <node id="8531787244795987947" at="45,265,50,15" concept="0" />
+      <node id="2059215017835058532" at="42,191,51,13" concept="0" />
+      <node id="2059215017835052466" at="41,109,52,11" concept="7" />
+      <node id="5527181570958323804" at="39,60,53,9" concept="7" />
+      <node id="2059215017835037016" at="38,24,54,9" concept="4" />
+      <node id="7322610796512553080" at="37,90,55,5" concept="7" />
+      <node id="2059215017835129021" at="32,0,57,0" concept="8" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="2059215017835129021" at="30,64,30,64" />
-      <scope id="2059215017835129021" at="55,50,56,38" />
-      <scope id="2059215017835129021" at="58,68,59,102" />
-      <scope id="2059215017835129021" at="61,30,62,17" />
+      <scope id="2059215017835129021" at="57,50,58,38" />
+      <scope id="2059215017835129021" at="60,68,61,102" />
+      <scope id="2059215017835129021" at="63,30,64,17" />
+      <scope id="5527181570958364897" at="66,55,67,43" />
       <scope id="2059215017835129021" at="30,0,32,0" />
-      <scope id="8531787244795987947" at="45,13,48,75">
+      <scope id="8531787244795987947" at="46,15,49,77">
         <var name="intentionProvider" id="8531787244795987947" />
       </scope>
-      <scope id="2059215017835129021" at="55,0,58,0" />
-      <scope id="2059215017835129021" at="58,0,61,0">
+      <scope id="2059215017835129021" at="57,0,60,0" />
+      <scope id="2059215017835129021" at="60,0,63,0">
         <var name="argument" id="2059215017835129021" />
       </scope>
-      <scope id="2059215017835129021" at="61,0,64,0" />
-      <scope id="2059215017835058532" at="42,11,49,13">
+      <scope id="2059215017835129021" at="63,0,66,0" />
+      <scope id="5527181570958364897" at="66,0,69,0">
+        <var name="str" id="5527181570958364897" />
+      </scope>
+      <scope id="2059215017835058532" at="43,13,50,15">
         <var name="_reporter_2309309498" id="2059215017835058532" />
         <var name="errorTarget" id="2059215017835058532" />
       </scope>
-      <scope id="2059215017835052468" at="41,189,50,11" />
-      <scope id="2059215017835043312" at="39,60,51,9">
+      <scope id="2059215017835052468" at="42,191,51,13" />
+      <scope id="5527181570958323806" at="40,83,52,11">
         <var name="resolved" id="3186759361293951453" />
       </scope>
-      <scope id="7322610796512553082" at="38,24,52,9" />
-      <scope id="2059215017835129022" at="32,127,53,5">
+      <scope id="2059215017835043312" at="39,60,53,9" />
+      <scope id="7322610796512553082" at="38,24,54,9" />
+      <scope id="2059215017835129022" at="32,127,55,5">
         <var name="declarations" id="2059215017835092266" />
         <var name="scope" id="3186759361294819981" />
       </scope>
-      <scope id="2059215017835129021" at="32,0,55,0">
+      <scope id="2059215017835129021" at="32,0,57,0">
         <var name="closureLiteral" id="2059215017835129021" />
         <var name="status" id="2059215017835129021" />
         <var name="typeCheckingContext" id="2059215017835129021" />
       </scope>
-      <unit id="2059215017835129021" at="73,0,76,0" name="jetbrains.mps.baseLanguage.closures.typesystem.check_ClosureLiteral_clashingName_NonTypesystemRule$PROPS" />
-      <unit id="2059215017835129021" at="65,0,72,0" name="jetbrains.mps.baseLanguage.closures.typesystem.check_ClosureLiteral_clashingName_NonTypesystemRule$CONCEPTS" />
-      <unit id="2059215017835129021" at="29,0,77,0" name="jetbrains.mps.baseLanguage.closures.typesystem.check_ClosureLiteral_clashingName_NonTypesystemRule" />
+      <unit id="2059215017835129021" at="78,0,81,0" name="jetbrains.mps.baseLanguage.closures.typesystem.check_ClosureLiteral_clashingName_NonTypesystemRule$PROPS" />
+      <unit id="2059215017835129021" at="70,0,77,0" name="jetbrains.mps.baseLanguage.closures.typesystem.check_ClosureLiteral_clashingName_NonTypesystemRule$CONCEPTS" />
+      <unit id="2059215017835129021" at="29,0,82,0" name="jetbrains.mps.baseLanguage.closures.typesystem.check_ClosureLiteral_clashingName_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)/4174378934472187051">

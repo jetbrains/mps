@@ -37,15 +37,17 @@ public class check_ClosureLiteral_clashingName_NonTypesystemRule extends Abstrac
     // On top of that, readability may be impacted (two variables with same name in scope)
     if (scope != null) {
       ListSequence.fromList(declarations).visitAll((it) -> {
-        SNode resolved = scope.resolve(closureLiteral, SPropertyOperations.getString(it, PROPS.name$MnvL));
-        if (resolved != null && (SNodeOperations.isInstanceOf(resolved, CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(resolved, CONCEPTS.ParameterDeclaration$RG))) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(it, "name is already defined outside closure", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "2059215017835058532", null, errorTarget);
+        if (isNotEmptyString(SPropertyOperations.getString(it, PROPS.name$MnvL))) {
+          SNode resolved = scope.resolve(closureLiteral, SPropertyOperations.getString(it, PROPS.name$MnvL));
+          if (resolved != null && (SNodeOperations.isInstanceOf(resolved, CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(resolved, CONCEPTS.ParameterDeclaration$RG))) {
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.closures.typesystem.closure_variable_renameToUnused_QuickFix", "8531787244795987947", false);
-              intentionProvider.putArgument("suggestedName", ClosureLiteralUtil.suggestName(SPropertyOperations.getString(it, PROPS.name$MnvL), closureLiteral, scope, SetSequence.fromSet(new HashSet<String>())));
-              _reporter_2309309498.addIntentionProvider(intentionProvider);
+              final MessageTarget errorTarget = new NodeMessageTarget();
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(it, "name is already defined outside closure", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "2059215017835058532", null, errorTarget);
+              {
+                BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.closures.typesystem.closure_variable_renameToUnused_QuickFix", "8531787244795987947", false);
+                intentionProvider.putArgument("suggestedName", ClosureLiteralUtil.suggestName(SPropertyOperations.getString(it, PROPS.name$MnvL), closureLiteral, scope, SetSequence.fromSet(new HashSet<String>())));
+                _reporter_2309309498.addIntentionProvider(intentionProvider);
+              }
             }
           }
         }
@@ -60,6 +62,9 @@ public class check_ClosureLiteral_clashingName_NonTypesystemRule extends Abstrac
   }
   public boolean overrides() {
     return false;
+  }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
   }
 
   private static final class CONCEPTS {
