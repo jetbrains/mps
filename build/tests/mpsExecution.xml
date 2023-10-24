@@ -465,15 +465,15 @@
     <echo message="generating" />
     <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
-      <plugin path="${artifacts.mps}/lib/mps-workbench.jar" />
-      <plugin path="${artifacts.mps}/plugins/mps-build" />
-      <plugin path="${artifacts.mps}/plugins/mps-core" />
-      <plugin path="${artifacts.mps}/plugins/mps-debugger-api" />
-      <plugin path="${artifacts.mps}/plugins/mps-debugger-java" />
-      <plugin path="${artifacts.mps}/plugins/mps-execution-api" />
-      <plugin path="${artifacts.mps}/plugins/mps-execution-configurations" />
-      <plugin path="${artifacts.mps}/plugins/mps-execution-languages" />
-      <plugin path="${artifacts.mps}/plugins/mps-testing" />
+      <plugin path="${artifacts.mps}/lib/mps-workbench.jar" id="com.intellij.modules.mps" />
+      <plugin path="${artifacts.mps}/plugins/mps-build" id="jetbrains.mps.build" />
+      <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
+      <plugin path="${artifacts.mps}/plugins/mps-debugger-api" id="jetbrains.mps.debugger.api" />
+      <plugin path="${artifacts.mps}/plugins/mps-debugger-java" id="jetbrains.mps.debugger.java" />
+      <plugin path="${artifacts.mps}/plugins/mps-execution-api" id="jetbrains.mps.execution.api" />
+      <plugin path="${artifacts.mps}/plugins/mps-execution-configurations" id="jetbrains.mps.execution.configurations" />
+      <plugin path="${artifacts.mps}/plugins/mps-execution-languages" id="jetbrains.mps.execution.languages" />
+      <plugin path="${artifacts.mps}/plugins/mps-testing" id="jetbrains.mps.testing" />
       <library file="${artifacts.mpsEditor}/languages/testDefaultEditor.jar" />
       <library file="${artifacts.mpsEditor}/tests/jetbrains.mps.baseLanguage.test.jar" />
       <library file="${artifacts.mps}/languages/baseLanguage/closures.runtime.jar" />

@@ -1682,8 +1682,8 @@
     <echo message="generating" />
     <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
-      <plugin path="${artifacts.mpsCore}/mps-core" />
-      <plugin path="${artifacts.mpsTesting}/mps-testing" />
+      <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
+      <plugin path="${artifacts.mpsTesting}/mps-testing" id="jetbrains.mps.testing" />
       <library file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/closures.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/collections.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.blTypes.jar" />
