@@ -52,11 +52,13 @@
     </fileset>
   </path>
   
-  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
+  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
   
-  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar"></typedef>
+  <typedef name="skip" classname="com.intellij.ant.ClassFilterAnnotationRegexp" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
+  
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar" />
   
   <generator-settings id="m2m-defaults" strictMode="true" parallelThreads="8" inplaceTransform="false" warnWrongChild="true" createStaticRefs="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}" />
   
@@ -1854,8 +1856,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.actions.testLanguage" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.actions.testLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.actions.testLanguage">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/testlangs/lang.actions.testLang/source_gen" />
@@ -1919,8 +1922,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tableTests" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tableTests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.tableTests">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/testlangs/editor.tableTests.testLang/source_gen" />
@@ -1987,8 +1991,9 @@
     <mkdir dir="${build.tmp}/java/out/testDefaultEditor" />
     <javac2 destdir="${build.tmp}/java/out/testDefaultEditor" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="testDefaultEditor">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testDefaultEditor/languages/testDefaultEditor/source_gen" />
@@ -2061,8 +2066,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.testDefaultEditor.languageForDeletedConcepts">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testDefaultEditor/languages/editor.languageForDeletedConcepts/source_gen" />
@@ -2127,8 +2133,9 @@
     <mkdir dir="${build.tmp}/java/out/testMoveElements" />
     <javac2 destdir="${build.tmp}/java/out/testMoveElements" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="testMoveElements">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testMoveElements/languages/testMoveElements/source_gen" />
@@ -2194,8 +2201,9 @@
     <mkdir dir="${build.tmp}/java/out/testSpaceCompletion" />
     <javac2 destdir="${build.tmp}/java/out/testSpaceCompletion" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="testSpaceCompletion">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testSpaceCompletion/languages/testSpaceCompletion/source_gen" />
@@ -2261,8 +2269,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.styleTests" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.styleTests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.styleTests">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/testlangs/editor.style.testLang/source_gen" />
@@ -2322,8 +2331,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.testLanguage" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.testLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.multiple.testLanguage">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/testlangs/editor.mult.testLang/source_gen" />
@@ -2386,8 +2396,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.extension.testLanguage" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.extension.testLanguage" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.multiple.extension.testLanguage">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/testlangs/editor.mult.ext.testLang/source_gen" />
@@ -2451,8 +2462,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.editorTest">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/languages.test/languageDesign/lang.editor.editorTest/source_gen" />
@@ -2528,8 +2540,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest.extension" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest.extension" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.editorTest.extension">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/languages.test/languageDesign/lang.editor.editorTest.extension/source_gen" />
@@ -2596,8 +2609,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest.extension#01" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.editorTest.extension#01" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.editorTest.extension#01">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/languages.test/languageDesign/lang.editor.editorTest.extension/generator/source_gen" />
@@ -2660,8 +2674,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.formsTests" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.formsTests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.formsTests">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/testlangs/editor.formsTests.testLang/source_gen" />
@@ -2735,8 +2750,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.table.tests" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.table.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.table.tests">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src path="${basedir}/testbench/testsolutions/editor.table.test/test_gen/" />
       <classpath>
@@ -2810,8 +2826,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.actions.test" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.actions.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.actions.test">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src path="${basedir}/testbench/testsolutions/actions.test/test_gen/" />
       <classpath>
@@ -2886,8 +2903,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.test" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.test">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/bl.test/source_gen" />
@@ -2979,8 +2997,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.test" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.smodel.query.test">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/lang.smodel.query.test/source_gen" />
@@ -3060,8 +3079,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.tests" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.multiple.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.multiple.tests">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/editor.multiple.test/source_gen" />
@@ -3143,8 +3163,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tests" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.tests">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/editor.test/source_gen" />
@@ -3234,8 +3255,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.ide.tests" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.ide.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.ide.tests">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/languages.test/languageDesign/lang.editor.ide.tests/source_gen" />
@@ -3317,8 +3339,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.editor.forms.tests" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.editor.forms.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.editor.forms.tests">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src path="${basedir}/testbench/testsolutions/editor.forms.test/test_gen/" />
       <classpath>

@@ -55,11 +55,13 @@
     </fileset>
   </path>
   
-  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
+  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
   
-  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar"></typedef>
+  <typedef name="skip" classname="com.intellij.ant.ClassFilterAnnotationRegexp" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
+  
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar" />
   
   <generator-settings id="m2m-defaults" strictMode="true" parallelThreads="8" inplaceTransform="false" warnWrongChild="true" createStaticRefs="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}" />
   
@@ -728,8 +730,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.persistence.transients" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.persistence.transients" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.persistence.transients">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/smodel.transient/transients.lang/source_gen" />
@@ -784,8 +787,9 @@
     <mkdir dir="${build.tmp}/java/out/tests.testPersistence" />
     <javac2 destdir="${build.tmp}/java/out/tests.testPersistence" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="tests.testPersistence">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testPersistence/source_gen" />
@@ -863,8 +867,9 @@
     <mkdir dir="${build.tmp}/java/out/CloneModule.test" />
     <javac2 destdir="${build.tmp}/java/out/CloneModule.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="CloneModule.test">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/clone.module.test/source_gen" />
@@ -935,8 +940,9 @@
     <mkdir dir="${build.tmp}/java/out/JavaCompilationXmlConflict.test" />
     <javac2 destdir="${build.tmp}/java/out/JavaCompilationXmlConflict.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="JavaCompilationXmlConflict.test">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/JavaCompilationXmlConflict.test/source_gen" />
@@ -1005,8 +1011,9 @@
     <mkdir dir="${build.tmp}/java/out/refactoring.test" />
     <javac2 destdir="${build.tmp}/java/out/refactoring.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="refactoring.test">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/refactoring.test/source_gen" />
@@ -1098,8 +1105,9 @@
     <mkdir dir="${build.tmp}/java/out/mps.test.findusages" />
     <javac2 destdir="${build.tmp}/java/out/mps.test.findusages" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="mps.test.findusages">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testFindUsages/source_gen" />
@@ -1179,8 +1187,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.persistence.transients.tests" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.persistence.transients.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.persistence.transients.tests">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/smodel.transient/transients.test/source_gen" />
@@ -1259,8 +1268,9 @@
     <mkdir dir="${build.tmp}/java/out/testModelRenaming" />
     <javac2 destdir="${build.tmp}/java/out/testModelRenaming" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="testModelRenaming">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testModelRenaming/source_gen" />

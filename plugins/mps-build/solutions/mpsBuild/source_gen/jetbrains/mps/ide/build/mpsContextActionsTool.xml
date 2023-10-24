@@ -49,11 +49,13 @@
     </fileset>
   </path>
   
-  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
+  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
   
-  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar"></typedef>
+  <typedef name="skip" classname="com.intellij.ant.ClassFilterAnnotationRegexp" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
+  
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar" />
   
   <generator-settings id="m2m-defaults" strictMode="true" parallelThreads="8" inplaceTransform="false" warnWrongChild="true" createStaticRefs="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}" />
   
@@ -530,8 +532,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.pluginSolution" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.pluginSolution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.editor.contextActionsTool.pluginSolution">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/mps-context-actions/modules/pluginSolution/source_gen" />
@@ -588,8 +591,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.editor.contextActionsTool.lang.menus">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/mps-context-actions/modules/lang.menus/source_gen" />
@@ -665,8 +669,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.editor.contextActionsTool.lang.menus#6917971026853604122">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/mps-context-actions/modules/lang.menus/generator/source_gen" />
@@ -737,8 +742,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.lang.menus.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.editor.contextActionsTool.lang.menus.runtime">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/mps-context-actions/modules/runtime/source_gen" />

@@ -555,6 +555,11 @@
       <property role="IQ2nx" value="2059109515400477502" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
+    <node concept="1TJgyi" id="26q4_CMp5IF" role="1TKVEl">
+      <property role="IQ2nx" value="2421267928266857387" />
+      <property role="TrG5h" value="loader" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
     <node concept="PrWs8" id="1Mjrj7j4BGW" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>

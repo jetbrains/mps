@@ -30,7 +30,7 @@
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
   
-  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar"></typedef>
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar" />
   
   <generator-settings id="m2m-defaults" strictMode="true" parallelThreads="8" inplaceTransform="false" warnWrongChild="true" createStaticRefs="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}" />
   
@@ -1368,7 +1368,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.unitTest">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -1449,7 +1449,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest#1171932017138" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest#1171932017138" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.unitTest#1171932017138">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -1525,7 +1525,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest.runtime" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.unitTest.runtime">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -1596,7 +1596,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest.platform" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest.platform" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.unitTest.platform">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -1632,7 +1632,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.test.generator" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.lang.test.generator" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.test.generator">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -1719,7 +1719,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.test.generator#01" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.lang.test.generator#01" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.test.generator#01">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -1802,7 +1802,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.test.generator.rt" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.lang.test.generator.rt" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.test.generator.rt">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -1879,7 +1879,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.test.matcher" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.lang.test.matcher" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.test.matcher">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -2005,7 +2005,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.test" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.lang.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.test">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -2113,7 +2113,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.test#1210261198005" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.lang.test#1210261198005" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.test#1210261198005">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -2208,7 +2208,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.test.runtime" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.lang.test.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.test.runtime">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -2291,7 +2291,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.smodelTests" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.lang.smodelTests" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.smodelTests">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -2352,7 +2352,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.test.junit5" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.lang.test.junit5" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.test.junit5">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
@@ -2433,7 +2433,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.test.launcher" />
     <javac destdir="${build.tmp}/java/out/jetbrains.mps.lang.test.launcher" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.test.launcher">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>

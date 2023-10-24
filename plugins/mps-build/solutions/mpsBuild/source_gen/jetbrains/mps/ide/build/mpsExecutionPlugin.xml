@@ -53,11 +53,13 @@
     </fileset>
   </path>
   
-  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
+  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
   
-  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar"></typedef>
+  <typedef name="skip" classname="com.intellij.ant.ClassFilterAnnotationRegexp" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
+  
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar" />
   
   <generator-settings id="m2m-defaults" strictMode="true" parallelThreads="8" inplaceTransform="false" warnWrongChild="true" createStaticRefs="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}" />
   
@@ -1346,8 +1348,9 @@
     <mkdir dir="${build.tmp}/java/out/execution-impl-idea" />
     <javac2 destdir="${build.tmp}/java/out/execution-impl-idea" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="execution-impl-idea">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-languages/languages/jetbrains.mps.execution.impl/source_gen" />
@@ -1400,8 +1403,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.commands" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.commands" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.execution.commands">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-languages/languages/commands/source_gen" />
@@ -1481,8 +1485,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.commands#856705193941426438" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.commands#856705193941426438" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.execution.commands#856705193941426438">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-languages/languages/commands/generator/source_gen" />
@@ -1551,8 +1556,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.configurations" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.configurations" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.execution.configurations">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-languages/languages/configurations/source_gen" />
@@ -1640,8 +1646,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.configurations#3754890006475631525" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.configurations#3754890006475631525" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.execution.configurations#3754890006475631525">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-languages/languages/configurations/generator/source_gen" />
@@ -1724,8 +1731,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.library" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.library" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.execution.library">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-languages/languages/library/source_gen" />
@@ -1783,8 +1791,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.configurations.pluginSolution" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.configurations.pluginSolution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.execution.configurations.pluginSolution">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-languages/languages/configurations/solutions/pluginSolution/source_gen" />
@@ -1859,8 +1868,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.languages" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.languages" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.execution.languages">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-languages/languages/plugin/source_gen" />
@@ -1898,8 +1908,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ant.execution" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ant.execution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.ant.execution">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-configurations/ant.cmd/source_gen" />
@@ -1962,8 +1973,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.execution.util" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.execution.util" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.execution.util">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-configurations/java.cmd/source_gen" />
@@ -2028,8 +2040,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.execution.configurations.implementation.plugin" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.execution.configurations.implementation.plugin" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.execution.configurations.implementation.plugin">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-configurations/plugin/source_gen" />
@@ -2123,8 +2136,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest.execution" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unitTest.execution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.unitTest.execution">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-configurations/junit/source_gen" />
@@ -2221,8 +2235,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baselanguage.unitTest.launcher" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baselanguage.unitTest.launcher" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.baselanguage.unitTest.launcher">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/execution-configurations/junit/launcher/source_gen" />

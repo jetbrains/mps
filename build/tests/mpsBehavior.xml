@@ -55,11 +55,13 @@
     </fileset>
   </path>
   
-  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
+  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
   
-  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar"></typedef>
+  <typedef name="skip" classname="com.intellij.ant.ClassFilterAnnotationRegexp" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
+  
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar" />
   
   <generator-settings id="m2m-defaults" strictMode="true" parallelThreads="8" inplaceTransform="false" warnWrongChild="true" createStaticRefs="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}" />
   
@@ -848,8 +850,9 @@
     <mkdir dir="${build.tmp}/java/out/BHL1" />
     <javac2 destdir="${build.tmp}/java/out/BHL1" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="BHL1">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testBehavior/languages/L1/source_gen" />
@@ -888,8 +891,9 @@
     <mkdir dir="${build.tmp}/java/out/BHL2" />
     <javac2 destdir="${build.tmp}/java/out/BHL2" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="BHL2">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testBehavior/languages/L2/source_gen" />
@@ -928,8 +932,9 @@
     <mkdir dir="${build.tmp}/java/out/BHL3" />
     <javac2 destdir="${build.tmp}/java/out/BHL3" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="BHL3">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testBehavior/languages/L3/source_gen" />
@@ -968,8 +973,9 @@
     <mkdir dir="${build.tmp}/java/out/BHL4" />
     <javac2 destdir="${build.tmp}/java/out/BHL4" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="BHL4">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testBehavior/languages/L4/source_gen" />
@@ -1008,8 +1014,9 @@
     <mkdir dir="${build.tmp}/java/out/BHL5" />
     <javac2 destdir="${build.tmp}/java/out/BHL5" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="BHL5">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testBehavior/languages/L5/source_gen" />
@@ -1048,8 +1055,9 @@
     <mkdir dir="${build.tmp}/java/out/BHL6" />
     <javac2 destdir="${build.tmp}/java/out/BHL6" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="BHL6">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testBehavior/languages/L6/source_gen" />
@@ -1088,8 +1096,9 @@
     <mkdir dir="${build.tmp}/java/out/BHL7" />
     <javac2 destdir="${build.tmp}/java/out/BHL7" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="BHL7">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testBehavior/languages/L7/source_gen" />
@@ -1128,8 +1137,9 @@
     <mkdir dir="${build.tmp}/java/out/UtilSolution" />
     <javac2 destdir="${build.tmp}/java/out/UtilSolution" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="UtilSolution">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testBehavior/solutions/UtilSolution/source_gen" />
@@ -1149,8 +1159,9 @@
     <mkdir dir="${build.tmp}/java/out/TestBehavior" />
     <javac2 destdir="${build.tmp}/java/out/TestBehavior" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="TestBehavior">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testBehavior/solutions/TestBehavior/source_gen" />
@@ -1230,8 +1241,9 @@
     <mkdir dir="${build.tmp}/java/out/TestBehaviorReflective" />
     <javac2 destdir="${build.tmp}/java/out/TestBehaviorReflective" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="TestBehaviorReflective">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testBehavior/solutions/TestBehaviorReflective/source_gen" />

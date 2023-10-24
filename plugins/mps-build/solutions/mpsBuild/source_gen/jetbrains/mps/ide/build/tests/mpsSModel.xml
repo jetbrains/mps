@@ -55,11 +55,13 @@
     </fileset>
   </path>
   
-  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
+  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
   
-  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar"></typedef>
+  <typedef name="skip" classname="com.intellij.ant.ClassFilterAnnotationRegexp" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
+  
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar" />
   
   <generator-settings id="m2m-defaults" strictMode="true" parallelThreads="8" inplaceTransform="false" warnWrongChild="true" createStaticRefs="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}" />
   
@@ -510,8 +512,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.smodel.test" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.smodel.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.smodel.test">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src path="${basedir}/plugins/mps-testing/languages/smodelTests/solutions/jetbrains.mps.smodel.test/test_gen/" />
       <classpath>
@@ -593,8 +596,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.testRead" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.testRead" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.testRead">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/testRead/resources" />
@@ -675,8 +679,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.test.smodel" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.test.smodel" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.test.smodel">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/modules/generator-tests/smodel/source_gen" />
@@ -753,8 +758,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.smodel.unittest" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.smodel.unittest" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.smodel.unittest">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/smodel.unittest/tests_gen" />
@@ -837,8 +843,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.quotation.test" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.quotation.test" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.lang.quotation.test">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${basedir}/testbench/testsolutions/quotation.test/source_gen" />

@@ -54,11 +54,13 @@
     </fileset>
   </path>
   
-  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
+  <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
   
-  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar"></typedef>
+  <typedef name="skip" classname="com.intellij.ant.ClassFilterAnnotationRegexp" classpathref="path.javac2.classpath" loaderref="javac2.loader" />
+  
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${kotlinc_home}/lib/kotlin-ant.jar" />
   
   <generator-settings id="m2m-defaults" strictMode="true" parallelThreads="8" inplaceTransform="false" warnWrongChild="true" createStaticRefs="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}" />
   
@@ -660,8 +662,9 @@
     <mkdir dir="${build.tmp}/java/out/http-support" />
     <javac2 destdir="${build.tmp}/java/out/http-support" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="http-support">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${plugin_home}/source_gen" />
@@ -708,8 +711,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.ide.httpsupport">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${plugin_home}/language/source_gen" />
@@ -783,8 +787,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport#4517832885627178591" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport#4517832885627178591" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.ide.httpsupport#4517832885627178591">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${plugin_home}/language/generator/source_gen" />
@@ -854,8 +859,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.nodeaccess" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.nodeaccess" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.ide.httpsupport.nodeaccess">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${plugin_home}/solutions/nodeaccess/source_gen" />
@@ -912,8 +918,9 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.runtime" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.ide.httpsupport.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.ide.httpsupport.runtime">        
-        <compilerarg value="-jvm-target=11"></compilerarg>
+        <compilerarg value="-jvm-target=11" />
       </withKotlin>
+      <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${plugin_home}/solutions/runtime/source_gen" />

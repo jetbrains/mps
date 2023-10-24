@@ -188,6 +188,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)/2059109515400477499");
     b.version(3);
     b.property("classname", 0x1c936d31d3127b3eL).type(PrimitiveTypeId.STRING).origin("2059109515400477502").done();
+    b.property("loader", 0x219a125a32645babL).type(PrimitiveTypeId.STRING).origin("2421267928266857387").done();
     b.associate("classpath", 0x1c936d31d3127b3fL).target(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c10L).optional(true).origin("2059109515400477503").done();
     b.alias("ant taskdef");
     return b.create();
