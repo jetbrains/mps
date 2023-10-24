@@ -94,11 +94,6 @@ public class ModulePlugins {
     return myPluginDependencies;
   }
 
-  public String[] getPluginPaths(TemplateQueryContext context) {
-    // XXX why implicit select (getPlugins().path) doesn't work?
-    return ListSequence.fromList(getPlugins(context)).select((it) -> SPropertyOperations.getString(it, PROPS.path$4PFd)).toGenericArray(String.class);
-  }
-
   /**
    * For tasks capable to extract modules of plugin, there's no reason to specify these modules explicitly.
    * This collection gives subset of closure from collect() with modules that are not part of any dependency plugin.
@@ -126,10 +121,10 @@ public class ModulePlugins {
         context.showWarningMessage(myInitialProject, String.format("Found no location for plugin '%s'", SPropertyOperations.getString(it, PROPS.name$MnvL)));
         return null;
       }
-      return createGeneratorInternal_PluginExpanded_ookyii_a4a0a0a0a7a41(val, SPropertyOperations.getString(it, PROPS.id$W4AX));
+      return createGeneratorInternal_PluginExpanded_ookyii_a4a0a0a0a7a21(val, SPropertyOperations.getString(it, PROPS.id$W4AX));
     }).where(new NotNullWhereFilter()).sort((it) -> SPropertyOperations.getString(it, PROPS.path$4PFd), true).toList();
   }
-  private static SNode createGeneratorInternal_PluginExpanded_ookyii_a4a0a0a0a7a41(String p0, String p1) {
+  private static SNode createGeneratorInternal_PluginExpanded_ookyii_a4a0a0a0a7a21(String p0, String p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_PluginExpanded$$Z);
     n0.setProperty(PROPS.path$4PFd, p0);
     n0.setProperty(PROPS.id$4PUe, p1);
@@ -145,8 +140,8 @@ public class ModulePlugins {
 
   private static final class PROPS {
     /*package*/ static final SProperty id$W4AX = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id");
-    /*package*/ static final SProperty path$4PFd = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4aL, "path");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty path$4PFd = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4aL, "path");
     /*package*/ static final SProperty id$4PUe = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4bL, "id");
   }
 
