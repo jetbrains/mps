@@ -9,16 +9,7 @@ import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.base.BaseReferenceConstraintsDescriptor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
-import jetbrains.mps.smodel.runtime.base.BaseScopeProvider;
-import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
-import jetbrains.mps.baseLanguage.scopes.Members;
-import jetbrains.mps.scope.EmptyScope;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -34,20 +25,7 @@ public class EnumConstantReference_Constraints extends BaseConstraintsDescriptor
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
-        return new BaseScopeProvider() {
-          @Override
-          public SNodeReference getSearchScopeValidatorNode() {
-            return new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582643428");
-          }
-          @Override
-          public Scope createScope(final ReferenceConstraintsContext _context) {
-            if (SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.EnumConstantReference$kA) && (SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.EnumConstantReference$kA), LINKS.enumClass$bGAj) != null)) {
-              return new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.EnumConstantReference$kA), LINKS.enumClass$bGAj)));
-            } else {
-              return new EmptyScope();
-            }
-          }
-        };
+        return ReferenceScopeProvider.fromHierarchy(CONCEPTS.EnumConstantDeclaration$MW, new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "3731299928231243619"));
       }
     };
     Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
@@ -57,10 +35,10 @@ public class EnumConstantReference_Constraints extends BaseConstraintsDescriptor
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept EnumConstantReference$kA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference");
+    /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink enumConstantDeclaration$f1_N = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
-    /*package*/ static final SReferenceLink enumClass$bGAj = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
   }
 }

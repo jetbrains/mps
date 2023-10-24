@@ -1222,47 +1222,31 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)/1213104856628">
     <file name="EnumConstantReference_Constraints.java">
-      <node id="1213104856628" at="27,46,28,45" concept="13" />
-      <node id="1213104856629" at="39,63,40,141" concept="8" />
-      <node id="6836281137582643432" at="44,254,45,207" concept="8" />
-      <node id="6836281137582643455" at="46,20,47,38" concept="8" />
-      <node id="1213104856628" at="52,6,53,131" concept="7" />
-      <node id="1213104856629" at="53,131,54,42" concept="3" />
-      <node id="1213104856628" at="54,42,55,22" concept="8" />
-      <node id="1213104856628" at="59,0,60,0" concept="11" trace="EnumConstantReference$kA" />
-      <node id="1213104856628" at="63,0,64,0" concept="11" trace="enumConstantDeclaration$f1_N" />
-      <node id="1213104856628" at="64,0,65,0" concept="11" trace="enumClass$bGAj" />
-      <node id="6836281137582643453" at="46,18,48,13" concept="0" />
-      <node id="1213104856628" at="27,0,30,0" concept="2" trace="EnumConstantReference_Constraints#()V" />
-      <node id="1213104856629" at="38,0,42,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="6836281137582643430" at="43,80,48,13" concept="5" />
-      <node id="1213104856629" at="42,0,50,0" concept="6" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="1213104856629" at="36,56,50,10" concept="8" />
-      <node id="1213104856629" at="34,0,52,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="1213104856629" at="32,90,52,6" concept="7" />
-      <node id="1213104856628" at="31,0,57,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1213104856628" at="27,46,28,45" />
-      <scope id="1213104856629" at="39,63,40,141" />
-      <scope id="6836281137582643431" at="44,254,45,207" />
-      <scope id="6836281137582643454" at="46,20,47,38" />
-      <scope id="1213104856628" at="27,0,30,0" />
-      <scope id="1213104856629" at="38,0,42,0" />
-      <scope id="1213104856629" at="43,80,48,13" />
-      <scope id="1213104856629" at="42,0,50,0">
-        <var name="_context" id="1213104856629" />
-      </scope>
-      <scope id="1213104856629" at="36,56,50,10" />
-      <scope id="1213104856629" at="34,0,52,0" />
-      <scope id="1213104856628" at="32,90,55,22">
+      <node id="1213104856628" at="18,46,19,45" concept="13" />
+      <node id="1213104856629" at="27,56,28,212" concept="8" />
+      <node id="1213104856628" at="30,6,31,131" concept="7" />
+      <node id="1213104856629" at="31,131,32,42" concept="3" />
+      <node id="1213104856628" at="32,42,33,22" concept="8" />
+      <node id="1213104856628" at="37,0,38,0" concept="11" trace="EnumConstantReference$kA" />
+      <node id="1213104856628" at="38,0,39,0" concept="11" trace="EnumConstantDeclaration$MW" />
+      <node id="1213104856628" at="42,0,43,0" concept="11" trace="enumConstantDeclaration$f1_N" />
+      <node id="1213104856628" at="18,0,21,0" concept="2" trace="EnumConstantReference_Constraints#()V" />
+      <node id="1213104856629" at="25,0,30,0" concept="6" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="1213104856629" at="23,90,30,6" concept="7" />
+      <node id="1213104856628" at="22,0,35,0" concept="6" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="1213104856628" at="18,46,19,45" />
+      <scope id="1213104856629" at="27,56,28,212" />
+      <scope id="1213104856628" at="18,0,21,0" />
+      <scope id="1213104856629" at="25,0,30,0" />
+      <scope id="1213104856628" at="23,90,33,22">
         <var name="d0" id="1213104856629" />
         <var name="references" id="1213104856628" />
       </scope>
-      <scope id="1213104856628" at="31,0,57,0" />
-      <unit id="1213104856628" at="58,0,61,0" name="jetbrains.mps.baseLanguage.constraints.EnumConstantReference_Constraints$CONCEPTS" />
-      <unit id="1213104856628" at="62,0,66,0" name="jetbrains.mps.baseLanguage.constraints.EnumConstantReference_Constraints$LINKS" />
-      <unit id="1213104856629" at="37,19,50,9" name="jetbrains.mps.baseLanguage.constraints.EnumConstantReference_Constraints$1$1" />
-      <unit id="1213104856629" at="33,48,52,5" name="jetbrains.mps.baseLanguage.constraints.EnumConstantReference_Constraints$1" />
-      <unit id="1213104856628" at="26,0,67,0" name="jetbrains.mps.baseLanguage.constraints.EnumConstantReference_Constraints" />
+      <scope id="1213104856628" at="22,0,35,0" />
+      <unit id="1213104856628" at="41,0,44,0" name="jetbrains.mps.baseLanguage.constraints.EnumConstantReference_Constraints$LINKS" />
+      <unit id="1213104856628" at="36,0,40,0" name="jetbrains.mps.baseLanguage.constraints.EnumConstantReference_Constraints$CONCEPTS" />
+      <unit id="1213104856629" at="24,48,30,5" name="jetbrains.mps.baseLanguage.constraints.EnumConstantReference_Constraints$1" />
+      <unit id="1213104856628" at="17,0,45,0" name="jetbrains.mps.baseLanguage.constraints.EnumConstantReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)/1213104856735">
