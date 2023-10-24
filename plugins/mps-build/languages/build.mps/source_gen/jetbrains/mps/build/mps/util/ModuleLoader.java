@@ -7,7 +7,6 @@ import jetbrains.mps.build.util.Context;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.project.io.DescriptorIOFacade;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.template.TemplateQueryContext;
@@ -16,11 +15,8 @@ import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.List;
+import jetbrains.mps.smodel.MPSModuleOwner;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.util.IterableUtil;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.io.File;
@@ -29,6 +25,7 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
+import java.util.List;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import java.util.Objects;
 import jetbrains.mps.extapi.module.SRepositoryBase;
@@ -37,7 +34,6 @@ import org.jetbrains.mps.openapi.module.ModelAccess;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModuleId;
 import java.util.HashMap;
-import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.project.AbstractModule;
 import java.util.Set;
 import java.util.Collections;
@@ -60,9 +56,8 @@ public final class ModuleLoader {
    * To access certain module properties (like used languages and devkits), we need to load modules temporarily.
    * As long as generator modules could not be loaded without their source language module already present in the repository, we need to share repository
    * between language's ModuleChecker and that of its generators.
-   * The field is not initialized unless import (either full or partial) is requested (CheckType.doFullImport == true || CheckType.doPartialImport == true)
    */
-  private ModuleRepositoryFacade myRepository = null;
+  private Repo myRepository = null;
 
 
   public ModuleLoader(@NotNull SNode buildProject, @NotNull IMessageHandler msgHandler) {
@@ -99,26 +94,22 @@ public final class ModuleLoader {
 
   public void checkAllModules(final ModuleChecker.CheckType type) {
     Iterable<SNode> parts = SLinkOperations.getChildren(myBuildProject, LINKS.parts$mGDj);
-    Repo r = new Repo(new ModelAccessNoLimit());
-    myRepository = new ModuleRepositoryFacade(r);
+    myRepository = new Repo(new ModelAccessNoLimit());
 
     Sequence.fromIterable(SLinkOperations.collectMany(SNodeOperations.ofConcept(parts, CONCEPTS.BuildMps_Group$Jc), LINKS.modules$JlQo)).union(Sequence.fromIterable(SNodeOperations.ofConcept(parts, CONCEPTS.BuildMps_AbstractModule$FZ))).where((it) -> (SLinkOperations.getTarget(it, LINKS.path$iYKB) != null)).visitAll((it) -> createModuleChecker(it).check(type));
 
-    // XXX would be great to unregister all modules here, to dispose them explicitly, but as long as its our private repo, does it matter?
     // We have to dispose modules as their models/datasources attach e.g. file listeners that get notified long time after generation of a build project is over.
-    // BEWARE, don't ever try to do myRepository.dispose(). MRF is CoreComponent AND singleton, dispose just makes subsequent MRF.getInstance() (yes, there are still few out there) to fail with NPE
-    if (myRepository != null) {
-      // MRF has distinction between 'true' repo and a global one it looks into at certain moments, beware to use proper one
-      List<SModule> modules = IterableUtil.copyToList(myRepository.getRepository().getModules());
-      for (SModule m : ListSequence.fromList(modules)) {
-        // would be great to myRepository.unregisterModule(m) here, but there are 2 obstacles:
-        // first, MRF doesn't use true repo; second, we need to know module owner which is internal class in ModuleChecker now
-        // As I'm about to throw myRepository away, I don't care that much it is to hold information about disposed modules
-        if (m instanceof SModuleBase) {
-          ((SModuleBase) m).dispose();
-        }
+    MPSModuleOwner unused = new MPSModuleOwner() {
+      @Override
+      public boolean isHidden() {
+        return true;
       }
+    };
+    for (SModule m : Sequence.fromIterable(myRepository.getModules())) {
+      myRepository.unregisterModule(m, unused);
     }
+    myRepository.dispose();
+    myRepository = null;
   }
 
   public ModuleChecker createModuleChecker(SNode module) {
