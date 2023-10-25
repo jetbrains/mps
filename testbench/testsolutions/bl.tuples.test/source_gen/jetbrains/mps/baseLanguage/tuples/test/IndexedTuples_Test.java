@@ -74,6 +74,30 @@ public class IndexedTuples_Test {
     Assert.assertEquals("bar", bar);
   }
   @Test
+  public void test_lateAssigment() throws Exception {
+    String foo;
+    String bar;
+    {
+      Tuples._2<String, String> _tmp_3wrel6_c0e0 = MultiTuple.<String,String>from("foo", "bar");
+      foo = _tmp_3wrel6_c0e0._0();
+      bar = _tmp_3wrel6_c0e0._1();
+    }
+    Assert.assertEquals("foo", foo);
+    Assert.assertEquals("bar", bar);
+  }
+  @Test
+  public void test_varDeclarations() throws Exception {
+    String foo;
+    String bar;
+    {
+      Tuples._2<String, String> _tmp_3wrel6_a0f0 = MultiTuple.<String,String>from("foo", "bar");
+      foo = _tmp_3wrel6_a0f0._0();
+      bar = _tmp_3wrel6_a0f0._1();
+    }
+    Assert.assertEquals("foo", foo);
+    Assert.assertEquals("bar", bar);
+  }
+  @Test
   public void test_multiValueReturn() throws Exception {
     Tuples._2<String, Character> pair = this.toTuple("abc", 'd');
     Assert.assertEquals("abc", pair._0());
