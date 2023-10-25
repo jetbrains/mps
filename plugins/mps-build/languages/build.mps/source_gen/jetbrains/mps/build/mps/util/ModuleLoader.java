@@ -7,6 +7,7 @@ import jetbrains.mps.build.util.Context;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.project.io.DescriptorIOFacade;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.template.TemplateQueryContext;
@@ -17,12 +18,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.io.File;
 import java.io.IOException;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import java.util.List;
@@ -58,7 +58,7 @@ public final class ModuleLoader {
    * between language's ModuleChecker and that of its generators.
    */
   private Repo myRepository = null;
-
+  private IFile myModuleDescriptorFile;
 
   public ModuleLoader(@NotNull SNode buildProject, @NotNull IMessageHandler msgHandler) {
     this(buildProject, null, msgHandler);
@@ -112,12 +112,17 @@ public final class ModuleLoader {
     myRepository = null;
   }
 
-  public ModuleChecker createModuleChecker(SNode module) {
+  /**
+   * MPS INTERNAL USE ONLY, NOT AN API
+   */
+  @Nullable
+  public ModuleDescriptor loadModuleDescriptor(SNode module) {
     assert SNodeOperations.getNodeAncestor(module, CONCEPTS.BuildProject$ae, false, false) == myBuildProject;
+
     String moduleFilePath = BuildSourcePath__BehaviorDescriptor.getLocalPath_id4Kip2_918Y$.invoke(SLinkOperations.getTarget(module, LINKS.path$iYKB), myBuildContext);
     if (moduleFilePath == null) {
       reportError(String.format("cannot import module file for %s: file doesn't exist (%s)", SPropertyOperations.getString(module, PROPS.name$MnvL), BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(module, LINKS.path$iYKB), myBuildContext)), module);
-      return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
+      return null;
     }
 
     try {
@@ -129,12 +134,14 @@ public final class ModuleLoader {
     IFile file = myFS.getFile(moduleFilePath);
     if (!(file.exists())) {
       reportError(String.format("cannot import module file for %s: file doesn't exist (%s)", SPropertyOperations.getString(module, PROPS.name$MnvL), moduleFilePath), module);
-      return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
+      return null;
     }
     if (file.isDirectory()) {
       reportError(String.format("cannot import module file for %s: file is a directory (%s)", SPropertyOperations.getString(module, PROPS.name$MnvL), moduleFilePath), module);
-      return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
+      return null;
     }
+    // provisional hack until I get rid of IFile use in ModuleChecker (load SModule here and use other means to get module relative path)
+    myModuleDescriptorFile = file;
 
     ModuleDescriptor md = null;
     try {
@@ -146,6 +153,16 @@ public final class ModuleLoader {
     } catch (Exception ex) {
       reportError(String.format("cannot import module file for %s: exception: %s", SPropertyOperations.getString(module, PROPS.name$MnvL), ex.getMessage()), module);
     }
+    return md;
+  }
+
+  public ModuleChecker createModuleChecker(SNode module) {
+    assert SNodeOperations.getNodeAncestor(module, CONCEPTS.BuildProject$ae, false, false) == myBuildProject;
+
+    ModuleDescriptor md = loadModuleDescriptor(module);
+    if (md == null) {
+      return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
+    }
 
     if (md instanceof LanguageDescriptor && SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_Generator$RQ)) {
       // A hack to support multiple generator modules per language (BuildMps_Language limits generator to [0..1].
@@ -154,7 +171,7 @@ public final class ModuleLoader {
       List<GeneratorDescriptor> generators = ((LanguageDescriptor) md).getGenerators();
       if (isEmptyString(SPropertyOperations.getString(module, PROPS.uuid$pC01))) {
         if (generators.isEmpty()) {
-          reportError(String.format("No generator descriptors found in language %s from %s", md.getNamespace(), moduleFilePath), module);
+          reportError(String.format("No generator descriptors found in language %s from %s", md.getNamespace(), SLinkOperations.getTarget(module, LINKS.path$iYKB)), module);
           return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
         } else {
           // just pick the first one, use intention later to select another (if any)
@@ -168,12 +185,12 @@ public final class ModuleLoader {
           }
         }
         if (md instanceof LanguageDescriptor) {
-          reportError(String.format("No generator with uuid %s found in language %s from %s", SPropertyOperations.getString(module, PROPS.uuid$pC01), md.getNamespace(), moduleFilePath), module);
+          reportError(String.format("No generator with uuid %s found in language %s from %s", SPropertyOperations.getString(module, PROPS.uuid$pC01), md.getNamespace(), SLinkOperations.getTarget(module, LINKS.path$iYKB)), module);
           return new ModuleChecker(module, myVisibleModules, myPathConverter, null, null, myMsgHandler, myRepository);
         }
       }
     }
-    return new ModuleChecker(module, myVisibleModules, myPathConverter, file, md, myMsgHandler, myRepository);
+    return new ModuleChecker(module, myVisibleModules, myPathConverter, myModuleDescriptorFile, md, myMsgHandler, myRepository);
   }
 
 

@@ -64,8 +64,8 @@ public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDe
     }
 
     ModuleLoader ml = new ModuleLoader(project, null, new LogHandler(Logger.getLogger(ModuleLoader.class)));
-    LanguageDescriptor ld = as_rkdydg_a0a4a8(ml.createModuleChecker(SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U)).getModuleDescriptor(), LanguageDescriptor.class);
-    return (ld == null ? Collections.emptyList() : ld.getGenerators());
+    LanguageDescriptor ld = as_rkdydg_a0a4a8(ml.loadModuleDescriptor(SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U)), LanguageDescriptor.class);
+    return (ld == null || ld.getGenerators().size() < 2 ? Collections.<GeneratorDescriptor>emptyList() : ld.getGenerators());
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private GeneratorDescriptor myParameter;
@@ -86,27 +86,9 @@ public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDe
 
     @Override
     public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-      if (!(isApplicableToNode(node, editorContext))) {
-        return false;
-      }
       return true;
     }
 
-    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BuildMps_Language$RA)) {
-        return false;
-      }
-      if ((SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U) == null)) {
-        return false;
-      }
-      SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U)), CONCEPTS.BuildProject$ae);
-      if ((project == null)) {
-        return false;
-      }
-      ModuleLoader ml = new ModuleLoader(project, null, new LogHandler(Logger.getLogger(ModuleLoader.class)));
-      LanguageDescriptor ld = as_rkdydg_a0a5a9j(ml.createModuleChecker(SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U)).getModuleDescriptor(), LanguageDescriptor.class);
-      return ld != null && ld.getGenerators().size() > 1;
-    }
 
 
     @Override
@@ -121,9 +103,6 @@ public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDe
   private static <T> T as_rkdydg_a0a4a8(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_rkdydg_a0a5a9j(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
-  }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink sourceLanguage$A51U = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
@@ -131,7 +110,6 @@ public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDe
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
-    /*package*/ static final SConcept BuildMps_Language$RA = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
   }
 
   private static final class PROPS {
