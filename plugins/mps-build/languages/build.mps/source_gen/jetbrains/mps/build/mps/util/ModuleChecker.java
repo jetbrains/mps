@@ -321,34 +321,38 @@ public final class ModuleChecker {
     }
 
     if (descriptor.getAssociatedGenPlan() != null) {
-      // there's a check_ModulesImport that makes sure modules (languages and generators) referenced from an associated plan are among visible modules
-      // here, we just record these into DevKit's exports so that other build projects, dependant from the one with devkit, add explicit dependencies to plan's required modules
       // FIXME I feel BuildMps_DevKit shall be no different from other BuildMps_Module (_AbstractModule and _Module merged into one concept) and I shall use _Module.dependencies
       //        to keep information about GP's dependencies, instead of 'exports'
-      if (type.doPartialImport || type.doFullImport) {
-        // use both doPartial and doFullImport just in case users didn't refresh their build scripts. It costs me extra check of devKit.exports during generation, I humbly accept that.
-        // FIXME need a mechanism to obtain the plan model! It's not part of the repo we use to provisionally load modules of BuildProject
-        //     Could utilize assumption GP model is available through a solution exported by the devkit, yet the code to get exported solutions loaded would be too complicated for the bugfix
-        //     therefore, try repository of build project model (this is unlikely to work for a command-line build, unless we use other means to make sure solution with genplan is part of the same project
-        //     as the build project node. Therefore, I add these dependencies in doPartialImport as well (not only in doFullImport), so that they are readily available in cmdline build, even though I don't like the fact
-        //  I make them visible for an end-user.
-        SModel gp = descriptor.getAssociatedGenPlan().resolve(SNodeOperations.getModel(myModule).getRepository());
-        // the code below is the same as in check_ModulesImport
-        // use stub classes of j.m.generator.impl, available through MPS.Generator, to avoid dependency to j.m.generator solution
-        final GenPlanTranslator gpt;
-        if (gp != null && (gpt = GenPlanTranslator.fromGenPlanModel(gp)) != null) {
-          DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
-          gpt.feed(dcpb);
-          for (SLanguage reql : dcpb.getRequiredLanguages()) {
-            if (exportedLanguages.contains(reql.getSourceModuleReference())) {
-              // already handled the language among exported explicitly
-              continue;
-            }
-            final SNode resolved = myVisibleModules.resolve(reql);
-            if (resolved == null) {
-              report(String.format("cannot find language `%s` required by a devkit's associated plan", reql.getQualifiedName()));
-              continue;
-            }
+
+      // use both doPartial and doFullImport just in case users didn't refresh their build scripts. It costs me extra check of devKit.exports during generation, I humbly accept that.
+      // FIXME need a mechanism to obtain the plan model! It's not necessarily part of the repo we use to provisionally load modules of BuildProject
+      //     Could utilize assumption GP model is available through a solution exported by the devkit, yet the code to get exported solutions loaded would be too complicated for the bugfix
+      //     therefore, try repository of build project model (this is unlikely to work for a command-line build, unless we use other means to make sure solution with genplan is part of the same project
+      //     as the build project node. Therefore, I add these dependencies in doPartialImport as well (not only in doFullImport), so that they are readily available in cmdline build, even though I don't like the fact
+      //  I make them visible for an end-user.
+      SModel gp = descriptor.getAssociatedGenPlan().resolve(SNodeOperations.getModel(myModule).getRepository());
+      if (gp == null && type.doPartialImport || (type.doCheck && !(type.doFullImport))) {
+        //  in full import, just rely on extracted information; don't stop generation if can't load GP model
+        report(String.format("Missing associated generation plan %s", descriptor.getAssociatedGenPlan().getModelName()));
+        return;
+      }
+      // use stub classes of j.m.generator.impl, available through MPS.Generator, to avoid dependency to j.m.generator solution
+      final GenPlanTranslator gpt;
+      if (gp != null && (gpt = GenPlanTranslator.fromGenPlanModel(gp)) != null) {
+        // FWIW similar code is in ValidationUtil
+        DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
+        gpt.feed(dcpb);
+        for (SLanguage reql : dcpb.getRequiredLanguages()) {
+          if (exportedLanguages.contains(reql.getSourceModuleReference())) {
+            // already handled the language among exported explicitly
+            continue;
+          }
+          final SNode resolved = myVisibleModules.resolve(reql);
+          if (resolved == null) {
+            report(String.format("cannot find language `%s` required by a devkit's associated plan", reql.getQualifiedName()));
+            continue;
+          }
+          if (type.doPartialImport || type.doFullImport) {
             SNode ul = Sequence.fromIterable(SNodeOperations.ofConcept(prevExp, CONCEPTS.BuildMps_DevKitExportLanguage$EV)).findFirst((it) -> SLinkOperations.getTarget(it, LINKS.language$qqxl) == resolved);
             if (ul == null) {
               ul = SLinkOperations.addNewChild(devKit, LINKS.exports$Qvxv, CONCEPTS.BuildMps_DevKitExportLanguage$EV);
@@ -357,7 +361,14 @@ public final class ModuleChecker {
               ListSequence.fromList(prevExp).removeElement(ul);
             }
           }
-          // FIXME dcpb.requiredGenerators are not taken into account, shall address that once merge _AM and _Module and use module.dependencies instead of devkit.exports
+        }
+        for (SModuleReference g : dcpb.getRequiredGenerators()) {
+          if (myVisibleModules.resolveGenerator(g) == null) {
+            report(String.format("cannot find generator `%s` required by a devkit's associated plan", g.getModuleName()));
+            continue;
+          }
+          // FIXME dcpb.requiredGenerators are not recorded into module deps (there's no respective BuildMps_DevKitExport sub-concept), shall address that 
+          //     once merge _AM and _Module and use module.dependencies instead of devkit.exports
         }
       }
     }
