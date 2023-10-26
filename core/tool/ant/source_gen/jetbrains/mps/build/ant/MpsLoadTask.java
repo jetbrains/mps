@@ -456,14 +456,7 @@ public class MpsLoadTask extends Task {
   private void checkMpsHome(File mpsHome) {
     // the following code checks mps home is specified correctly
     assert mpsHome != null : "MPS home folder must be specified. Use either mpshome task attribute or mps_home or mps.home Ant property to specify home folder.";
-    boolean containsBuildTxt = false;
-    for (File child : mpsHome.listFiles()) {
-      if (child.getPath().equals("build.txt")) {
-        containsBuildTxt = true;
-        break;
-      }
-    }
-    assert containsBuildTxt : "MPS home folder is the folder where build.txt file is located. Please correct mpshome attribute, mps_home/mps.home property, depending on which was set";
+    assert new File(mpsHome, "build.txt").exists() : "MPS home folder is the folder where build.txt file is located. Please correct mpshome attribute, mps_home/mps.home property, depending on which was set";
 
     outputBuildNumber(mpsHome);
   }
