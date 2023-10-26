@@ -18,20 +18,17 @@ package jetbrains.mps.testbench;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
-import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceUtil.InMemoryStreamDataSource;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.BaseMPSModuleOwner;
 import jetbrains.mps.smodel.Generator;
@@ -136,10 +133,9 @@ public class TestModuleFactoryBase implements TestModuleFactory {
     descriptor.setNamespace(TEST_PREFIX_SOLUTION + "_" + getNewId() + "_" + uuid);
     descriptor.setId(ModuleId.fromString(uuid));
     withJavaFacet(descriptor);
-    if (descriptorFile != null) {
-      // just to prevent NPE, there's no special meaning to get (or not) classes_gen in case of descriptorFile
-      JavaModuleFacetImpl.setDefaultClassesGenLocation(descriptor, descriptorFile.getParent());
-    } else {
+    if (descriptorFile == null) {
+      // withJavaFacet creates JMF with defaults that include ${module}/classes_gen for output.
+      // but if the module we create is in-memory kind, no reason to have location specified
       JavaModuleFacetImpl.clearClassesGenLocation(descriptor);
     }
     final Solution solution = (Solution) myModuleFactory.instantiate(descriptor, descriptorFile);

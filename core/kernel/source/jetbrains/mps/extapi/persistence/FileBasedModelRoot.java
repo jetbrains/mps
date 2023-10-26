@@ -314,7 +314,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
               String absPath;
               final String origPath;
               if ((origPath = root.getPathSpec(PATH)) != null) {
-                absPath = MacrosFactory.forModule(getModule()).expandPath(root.getPathSpec(PATH));
+                absPath = MacrosFactory.forModule(getModule()).expandPath(origPath);
               } else {
                 absPath = root.get(PATH);
               }

@@ -288,8 +288,6 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     solutionDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createSingleFolderDescriptor(runtimeSolutionDescriptorFile.getParent()));
     solutionDescriptor.getDependencies().add(new Dependency(BootstrapLanguages.jdkRef(), true));
     TestModuleFactoryBase.withJavaFacet(solutionDescriptor);
-    // FIXME not a nice fix, but with defaults gone in JMFI (5e979634), need to provide some values
-    JavaModuleFacetImpl.setDefaultClassesGenLocation(solutionDescriptor, runtimeSolutionDescriptorFile.getParent());
 
     runtimeSolutionDescriptorFile.createNewFile();
     Solution solution = (Solution) new GeneralModuleFactory().instantiate(solutionDescriptor, runtimeSolutionDescriptorFile);
@@ -307,7 +305,6 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     d.getRuntimeModules().add(myCreatedRuntimeSolution.getModuleReference());
     d.setGenPath(descriptorFile.getParent().findChild("src_gen").getPath());
     TestModuleFactoryBase.withJavaFacet(d);
-    JavaModuleFacetImpl.setDefaultClassesGenLocation(d, descriptorFile.getParent());
 
     IFile languageModels = descriptorFile.getParent().findChild(Language.LANGUAGE_MODELS);
     d.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(languageModels.getParent(), languageModels));
@@ -329,7 +326,6 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     String name = fileName.substring(0, fileName.length() - 4);
     solutionDescriptor.setNamespace(name);
     TestModuleFactoryBase.withJavaFacet(solutionDescriptor);
-    JavaModuleFacetImpl.setDefaultClassesGenLocation(solutionDescriptor, descriptorFile.getParent());
     solutionDescriptor.setOutputPath(descriptorFile.getParent().findChild("src_gen").getPath());
 
     solutionDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createSingleFolderDescriptor(descriptorFile.getParent()));

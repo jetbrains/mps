@@ -116,7 +116,6 @@ public class LanguageProducer {
     }
     languageDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(moduleLocation, languageModels));
     ModuleFacetDescriptor jmfDescriptor = JavaModuleFacetImpl.forJavaCodeModule(JavaModuleFacet.Compile.MPS, JavaModuleFacet.LoadClasses.ManagedByMPS, JavaModuleFacet.LoadExtensions.Plugin);
-    JavaModuleFacetImpl.setDefaultClassesGenLocation(jmfDescriptor, moduleLocation);
     languageDescriptor.getModuleFacetDescriptors().add(jmfDescriptor);
     ProjectPathUtil.setGeneratorOutputPath(languageDescriptor, moduleLocation.findChild("source_gen").getPath());
     return languageDescriptor;

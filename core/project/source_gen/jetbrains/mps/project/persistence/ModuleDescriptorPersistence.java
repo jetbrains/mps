@@ -179,7 +179,7 @@ public class ModuleDescriptorPersistence {
     List<ModuleFacetDescriptor> result = ListSequence.fromList(new ArrayList<ModuleFacetDescriptor>());
     for (Element element : facetElements) {
       Memento m = new MementoImpl();
-      readMemento(m, element, macroHelper);
+      readMemento(m, element, null);
       String type = element.getAttributeValue("type");
       if (type != null) {
         ListSequence.fromList(result).addElement(new ModuleFacetDescriptor(type, m));
@@ -191,7 +191,7 @@ public class ModuleDescriptorPersistence {
   public static void readMemento(Memento memento, Element element, final MacroHelper macroHelper) {
     for (Attribute attr : (List<Attribute>) element.getAttributes()) {
       String name = attr.getName();
-      if (isPathAttribute(name)) {
+      if (macroHelper != null && isPathAttribute(name)) {
         memento.put(name, macroHelper.expandPath(attr.getValue()));
         memento.putPathSpec(name, attr.getValue());
       } else {
@@ -206,7 +206,7 @@ public class ModuleDescriptorPersistence {
 
   public static void writeMemento(Memento memento, Element element, final MacroHelper macroHelper) {
     for (String key : memento.getKeys()) {
-      if (isPathAttribute(key)) {
+      if (macroHelper != null && isPathAttribute(key)) {
         element.setAttribute(key, macroHelper.shrinkPath(memento.get(key), memento.getPathSpec(key)));
       } else {
         if (key.startsWith(Memento.PATH_SPEC_PREFIX)) {
@@ -233,7 +233,7 @@ public class ModuleDescriptorPersistence {
     for (ModuleFacetDescriptor facet : CollectionSequence.fromCollection(facets)) {
       Memento memento = facet.getMemento();
       Element facetElement = new Element("facet");
-      writeMemento(memento, facetElement, macroHelper);
+      writeMemento(memento, facetElement, null);
       String type = facet.getType();
       facetElement.setAttribute("type", type);
       result.addContent(facetElement);

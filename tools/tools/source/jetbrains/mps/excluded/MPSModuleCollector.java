@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,8 @@ import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.MacroHelper;
+import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
@@ -37,6 +39,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * Utility to gather path information from MPS module files (.mpl, .msd, etc) relevant for generation of IDEA configuration files.
@@ -104,12 +107,12 @@ class MPSModuleCollector {
       }
       if (!JavaModuleFacetImpl.isCompileInMPS(md)) {
         // may face UOE here if some unexpected MPS module descriptor is in the project, though
-        // I doubt myDescriptorIO would let aus get that far
+        // I doubt myDescriptorIO would let us get that far
         continue;
       }
 
       IFile moduleDir = moduleIFile.getParent();
-      IFile classesGenDir = classGenOrLegacy(md, moduleIFile);
+      IFile classesGenDir = classGenOrLegacy(md, expander);
       DescriptorEntry de = new DescriptorEntry(moduleDir);
       String srcPath = ProjectPathUtil.getGeneratorOutputPath(md);
       de.addSourcePath(getCanonicalPath(srcPath));
@@ -124,22 +127,23 @@ class MPSModuleCollector {
         for (GeneratorDescriptor generator : ld.getGenerators()) {
           String generatorSrcPath = getCanonicalPath(ProjectPathUtil.getGeneratorOutputPath(generator));
           de.addSourcePath(generatorSrcPath);
-          de.addClassGenPath(classGenOrLegacy(generator, moduleIFile));
+          de.addClassGenPath(classGenOrLegacy(generator, expander));
         }
       }
       myResult.add(de);
     }
   }
 
-  private static IFile classGenOrLegacy(ModuleDescriptor md, IFile moduleFile) {
-    IFile classesGenDir = JavaModuleFacetImpl.classGenPath(md, moduleFile);
+  private IFile classGenOrLegacy(final ModuleDescriptor md, final MacroHelper macroHelper) {
+    final Function<String, IFile> path2file = s -> myFileSystem.getFile(macroHelper.expandPath(s));
+    PathSpec classesGenDir = JavaModuleFacetImpl.classGenPath(md);
     if (classesGenDir != null) {
-      return classesGenDir;
+      return classesGenDir.resolve(path2file).orElse(null);
     }
     // Generally, contemporary modules shall have path specified in their Java facet,
     // however, there are still quite few modules around without serialized values (e.g. modules for migration tests),
     // resort to legacy default (don't want to keep that in JavaModuleFacetImpl.classGenPath as I need this only here
-    return moduleFile.getParent().findChild(AbstractModule.CLASSES_GEN);
+    return new PathSpec(MacrosFactory.MODULE + '/' + AbstractModule.CLASSES_GEN).resolve(path2file).orElse(null);
   }
 
   private static String getCanonicalPath(String path) {
