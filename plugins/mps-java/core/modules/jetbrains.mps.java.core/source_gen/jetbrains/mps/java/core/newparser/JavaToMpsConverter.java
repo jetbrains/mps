@@ -1028,7 +1028,7 @@ public class JavaToMpsConverter {
         continue;
       }
       for (SourceRoot sourceRoot : ListSequence.fromList(((DefaultModelRoot) modelRoot).getSourceRoots(SourceRootKinds.SOURCES))) {
-        if (FileUtil.isSubPath(sourceRoot.getAbsolutePath().getPath(), dir.getPath())) {
+        if (FileUtil.isSubPath(sourceRoot.getPath(), dir.getPath())) {
           return MultiTuple.<DefaultModelRoot,SourceRoot>from(((DefaultModelRoot) modelRoot), sourceRoot);
         }
       }

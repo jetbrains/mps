@@ -36079,16 +36079,11 @@
                     <ref role="37wK5l" to="18ew:~FileUtil.isSubPath(java.lang.String,java.lang.String)" resolve="isSubPath" />
                     <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
                     <node concept="2OqwBi" id="6sKuV49V7v3" role="37wK5m">
-                      <node concept="2OqwBi" id="16Fpg60I4li" role="2Oq$k0">
-                        <node concept="2GrUjf" id="6hPnq0Q5Spd" role="2Oq$k0">
-                          <ref role="2Gs0qQ" node="6hPnq0Q3hxC" resolve="sourceRoot" />
-                        </node>
-                        <node concept="liA8E" id="16Fpg60IczN" role="2OqNvi">
-                          <ref role="37wK5l" to="ends:~SourceRoot.getAbsolutePath()" resolve="getAbsolutePath" />
-                        </node>
+                      <node concept="2GrUjf" id="6hPnq0Q5Spd" role="2Oq$k0">
+                        <ref role="2Gs0qQ" node="6hPnq0Q3hxC" resolve="sourceRoot" />
                       </node>
                       <node concept="liA8E" id="6sKuV49V7Ne" role="2OqNvi">
-                        <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
+                        <ref role="37wK5l" to="ends:~SourceRoot.getPath()" resolve="getPath" />
                       </node>
                     </node>
                     <node concept="2OqwBi" id="6hPnq0PNfgX" role="37wK5m">

@@ -14,9 +14,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.vfs.IFile;
-import org.jetbrains.mps.openapi.persistence.Memento;
-import jetbrains.mps.util.FileUtil;
-import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.extapi.persistence.SourceRoot;
@@ -33,8 +30,6 @@ import jetbrains.mps.persistence.CopyFileBasedModelRootHelper;
 public class JavaSourceStubModelRoot extends FileBasedModelRoot implements CopyableModelRoot<JavaSourceStubModelRoot> {
 
   private static final String TYPE = "java_source_stubs";
-
-  private static final String PATH_KEY = "path";
 
   public JavaSourceStubModelRoot() {
   }
@@ -64,18 +59,6 @@ public class JavaSourceStubModelRoot extends FileBasedModelRoot implements Copya
   }
   protected MPSJavaSrcDataSource newDataSource(IFile dir) {
     return new MPSJavaSrcDataSource(dir);
-  }
-
-  @Override
-  public void load(Memento memento) {
-    super.load(memento);
-    if (memento.get(PATH_KEY) == null) {
-      return;
-    }
-    String path = FileUtil.stripLastSlashes(memento.get(PATH_KEY));
-    assert path != null;
-    IFile file = getFileSystem().getFile(path);
-    addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(file));
   }
 
   @Override
