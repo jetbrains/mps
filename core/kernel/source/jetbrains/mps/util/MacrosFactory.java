@@ -19,6 +19,7 @@ import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.PathMacros;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.util.PathFormatChecker;
@@ -81,8 +82,13 @@ public final class MacrosFactory implements MacroHelper.Source {
   public static MacroHelper forModule(SModule module) {
     // XXX would be great to adapt/cast SModule to MacroHelper (or anything that could be source of macro values, so that we don't need to expose 'descriptorFile')
     if (module instanceof AbstractModule && ((AbstractModule) module).getDescriptorFile() != null) {
+      IFile anchorFile = ((AbstractModule) module).getDescriptorFile();
+      final ModuleDescriptor md = ((AbstractModule) module).getModuleDescriptor();
+      if (md != null && md.getDeploymentDescriptor() != null) {
+        anchorFile = ModulesMiner.getSourceDescriptorFile(anchorFile, md.getDeploymentDescriptor());
+      }
       // no need to go through checks of  #forModuleFile(IFile) when we know for sure it is, indeed.
-      return new MacroHelperImpl(((AbstractModule) module).getDescriptorFile(), new ModuleMacros(PathMacros.getInstance()));
+      return new MacroHelperImpl(anchorFile, new ModuleMacros(PathMacros.getInstance()));
     }
     return getGlobal();
   }
