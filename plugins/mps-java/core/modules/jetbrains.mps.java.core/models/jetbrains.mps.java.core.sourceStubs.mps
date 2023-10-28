@@ -1705,7 +1705,7 @@
                 <node concept="17QB3L" id="10F3j9VuS5n" role="1tU5fm" />
                 <node concept="2OqwBi" id="10F3j9Vv27x" role="33vP2m">
                   <node concept="2GrUjf" id="10F3j9Vv0ax" role="2Oq$k0">
-                    <ref role="2Gs0qQ" node="3PyP5yK8YIL" resolve="fileName" />
+                    <ref role="2Gs0qQ" node="3PyP5yK8YIL" resolve="ds" />
                   </node>
                   <node concept="liA8E" id="10F3j9Vv5zX" role="2OqNvi">
                     <ref role="37wK5l" to="dush:~StreamDataSource.getStreamName()" resolve="getStreamName" />
@@ -1959,7 +1959,7 @@
                   <node concept="3cpWsn" id="5HlCeYoHM0l" role="3cpWs9">
                     <property role="TrG5h" value="parseResult" />
                     <node concept="3uibUv" id="5HlCeYoHM0m" role="1tU5fm">
-                      <ref role="3uigEE" to="rkxj:4RN1pZVelRn" resolve="JavaParseResult" />
+                      <ref role="3uigEE" to="rkxj:4RN1pZVelRn" resolve="JavaParser.JavaParseResult" />
                     </node>
                     <node concept="2OqwBi" id="5HlCeYoI7Yl" role="33vP2m">
                       <node concept="37vLTw" id="5HlCeYoI7CI" role="2Oq$k0">

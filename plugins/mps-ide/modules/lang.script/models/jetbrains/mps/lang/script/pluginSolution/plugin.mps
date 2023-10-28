@@ -681,7 +681,7 @@
                   <ref role="3cqZAo" node="4KDfkUwM93B" resolve="menuBuilder" />
                 </node>
                 <node concept="liA8E" id="4KDfkUwM93L" role="2OqNvi">
-                  <ref role="37wK5l" node="4KDfkUwM954" resolve="create_ByCategoryPopup" />
+                  <ref role="37wK5l" node="4KDfkUwM954" resolve="createPopup" />
                   <node concept="3clFbT" id="70GTXuARt7T" role="37wK5m">
                     <property role="3clFbU" value="true" />
                   </node>
@@ -863,7 +863,7 @@
         <node concept="3clFbF" id="4KDfkUwM95e" role="3cqZAp">
           <node concept="2OqwBi" id="4KDfkUwM95f" role="3clFbG">
             <node concept="37vLTw" id="3GM_nagTzhz" role="2Oq$k0">
-              <ref role="3cqZAo" node="4KDfkUwM959" resolve="byCategoryGroup" />
+              <ref role="3cqZAo" node="4KDfkUwM959" resolve="group" />
             </node>
             <node concept="liA8E" id="4KDfkUwM95h" role="2OqNvi">
               <ref role="37wK5l" to="qkt:~ActionGroup.setPopup(boolean)" resolve="setPopup" />
@@ -884,7 +884,7 @@
             <node concept="3clFbF" id="70GTXuAROci" role="3cqZAp">
               <node concept="2OqwBi" id="70GTXuARPNS" role="3clFbG">
                 <node concept="37vLTw" id="70GTXuAROch" role="2Oq$k0">
-                  <ref role="3cqZAo" node="4KDfkUwM959" resolve="byCategoryGroup" />
+                  <ref role="3cqZAo" node="4KDfkUwM959" resolve="group" />
                 </node>
                 <node concept="liA8E" id="70GTXuARRJs" role="2OqNvi">
                   <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
@@ -907,7 +907,7 @@
         </node>
         <node concept="3cpWs6" id="4KDfkUwM95s" role="3cqZAp">
           <node concept="37vLTw" id="3GM_nagTrt3" role="3cqZAk">
-            <ref role="3cqZAo" node="4KDfkUwM959" resolve="byCategoryGroup" />
+            <ref role="3cqZAo" node="4KDfkUwM959" resolve="group" />
           </node>
         </node>
       </node>
@@ -1054,7 +1054,7 @@
                   <ref role="3cqZAo" node="4KDfkUwM97b" resolve="menuBuilder" />
                 </node>
                 <node concept="liA8E" id="4KDfkUwM97l" role="2OqNvi">
-                  <ref role="37wK5l" node="4KDfkUwM954" resolve="create_ByCategoryPopup" />
+                  <ref role="37wK5l" node="4KDfkUwM954" resolve="createPopup" />
                   <node concept="3clFbT" id="70GTXuARbdV" role="37wK5m" />
                 </node>
               </node>
@@ -3284,7 +3284,7 @@
                   </node>
                   <node concept="2OqwBi" id="6m98d5YYca7" role="37vLTx">
                     <node concept="37vLTw" id="2BHiRxeuqPb" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6m98d5YYc1c" resolve="mySelectedScriptIds" />
+                      <ref role="3cqZAo" node="6m98d5YYc1c" resolve="mySelectedScripts" />
                     </node>
                     <node concept="liA8E" id="6m98d5YYca9" role="2OqNvi">
                       <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
@@ -3462,7 +3462,7 @@
                 <node concept="3clFbF" id="6m98d5YYcbk" role="3cqZAp">
                   <node concept="2OqwBi" id="6m98d5YYcbl" role="3clFbG">
                     <node concept="37vLTw" id="2BHiRxeuw1x" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6m98d5YYc1c" resolve="mySelectedScriptIds" />
+                      <ref role="3cqZAo" node="6m98d5YYc1c" resolve="mySelectedScripts" />
                     </node>
                     <node concept="liA8E" id="6m98d5YYcbn" role="2OqNvi">
                       <ref role="37wK5l" to="33ny:~Set.remove(java.lang.Object)" resolve="remove" />
@@ -3478,7 +3478,7 @@
               <node concept="3clFbF" id="6m98d5YYcbq" role="3cqZAp">
                 <node concept="2OqwBi" id="6m98d5YYcbr" role="3clFbG">
                   <node concept="37vLTw" id="2BHiRxeusun" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6m98d5YYc1c" resolve="mySelectedScriptIds" />
+                    <ref role="3cqZAo" node="6m98d5YYc1c" resolve="mySelectedScripts" />
                   </node>
                   <node concept="liA8E" id="6m98d5YYcbt" role="2OqNvi">
                     <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />

@@ -655,8 +655,8 @@
             <node concept="3clFbF" id="5iYeXp3aryO" role="3cqZAp">
               <node concept="2OqwBi" id="5iYeXp3aryL" role="3clFbG">
                 <node concept="10M0yZ" id="5iYeXp3aryM" role="2Oq$k0">
-                  <ref role="1PxDUh" to="wyt6:~System" />
-                  <ref role="3cqZAo" to="wyt6:~System.out" />
+                  <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                  <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                 </node>
                 <node concept="liA8E" id="5iYeXp3aryN" role="2OqNvi">
                   <ref role="37wK5l" to="guwi:~PrintStream.println(int)" resolve="println" />

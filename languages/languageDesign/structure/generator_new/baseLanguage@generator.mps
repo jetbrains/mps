@@ -1445,7 +1445,7 @@
                         </node>
                         <node concept="4Tj9Z" id="3ongXcy3xTE" role="2OqNvi">
                           <node concept="37vLTw" id="1_PU4JqB22w" role="576Qk">
-                            <ref role="3cqZAo" node="1_PU4JqB22e" resolve="seq" />
+                            <ref role="3cqZAo" node="1_PU4JqB22e" resolve="nonMarkerIface" />
                           </node>
                         </node>
                       </node>
@@ -2034,7 +2034,7 @@
                         <node concept="2OqwBi" id="1_PU4Jqz2z$" role="2Oq$k0">
                           <node concept="2OqwBi" id="1_PU4Jqz2z_" role="2Oq$k0">
                             <node concept="37vLTw" id="1_PU4Jqz2zA" role="2Oq$k0">
-                              <ref role="3cqZAo" node="1_PU4Jqz2y0" resolve="foreign" />
+                              <ref role="3cqZAo" node="1_PU4Jqz2y0" resolve="foreignMarker" />
                             </node>
                             <node concept="3$u5V9" id="1_PU4Jqz2zB" role="2OqNvi">
                               <node concept="1bVj0M" id="1_PU4Jqz2zC" role="23t8la">

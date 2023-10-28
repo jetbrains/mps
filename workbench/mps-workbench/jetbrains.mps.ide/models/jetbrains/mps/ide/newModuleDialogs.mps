@@ -550,7 +550,7 @@
         </node>
         <node concept="3clFbF" id="48wykyVMF_j" role="3cqZAp">
           <node concept="1rXfSq" id="48wykyVMF_k" role="3clFbG">
-            <ref role="37wK5l" node="48wykyVMv75" resolve="resetModelRootsAndFacets" />
+            <ref role="37wK5l" node="48wykyVMv75" resolve="resetModelRoots" />
             <node concept="37vLTw" id="48wykyVMFAA" role="37wK5m">
               <ref role="3cqZAo" node="6CFNGGphKji" resolve="copyDescriptor" />
             </node>
@@ -712,7 +712,7 @@
                       </node>
                       <node concept="3clFbF" id="7PpZzHuyii5" role="3cqZAp">
                         <node concept="1rXfSq" id="7PpZzHuyii6" role="3clFbG">
-                          <ref role="37wK5l" node="48wykyVMv75" resolve="resetModelRootsAndFacets" />
+                          <ref role="37wK5l" node="48wykyVMv75" resolve="resetModelRoots" />
                           <node concept="37vLTw" id="7PpZzHuyii7" role="37wK5m">
                             <ref role="3cqZAo" node="4BlK4j80BFe" resolve="gd" />
                           </node>
@@ -1887,7 +1887,7 @@
             </node>
             <node concept="3clFbF" id="5_O5XWaAqEo" role="3cqZAp">
               <node concept="1rXfSq" id="5_O5XWaAqEn" role="3clFbG">
-                <ref role="37wK5l" node="5_O5XWaAqEg" resolve="copyModelsAndFacets" />
+                <ref role="37wK5l" node="5_O5XWaAqEg" resolve="copyModelRoots" />
                 <node concept="37vLTw" id="5_O5XWaAqEm" role="37wK5m">
                   <ref role="3cqZAo" node="7l6b$Kxtfmw" resolve="copy" />
                 </node>

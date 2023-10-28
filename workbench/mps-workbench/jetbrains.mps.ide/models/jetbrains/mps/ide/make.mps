@@ -2167,7 +2167,7 @@
                 <ref role="37wK5l" to="qqrq:~JBLabel.&lt;init&gt;(javax.swing.Icon)" resolve="JBLabel" />
                 <node concept="10M0yZ" id="311V6Zi0Qej" role="37wK5m">
                   <ref role="3cqZAo" to="z2i8:~AllIcons$General.Warning" resolve="Warning" />
-                  <ref role="1PxDUh" to="z2i8:~AllIcons$General" resolve="General" />
+                  <ref role="1PxDUh" to="z2i8:~AllIcons$General" resolve="AllIcons.General" />
                 </node>
               </node>
             </node>

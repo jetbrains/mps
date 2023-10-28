@@ -27839,7 +27839,7 @@
           <node concept="2OqwBi" id="6to_vySiJHg" role="3clFbG">
             <node concept="2Sf5sV" id="6to_vySiJHh" role="2Oq$k0" />
             <node concept="2qgKlT" id="6to_vySiJHi" role="2OqNvi">
-              <ref role="37wK5l" to="tpek:6to_vySiwwX" resolve="showsDot" />
+              <ref role="37wK5l" to="tpek:6to_vySiwwX" resolve="isMultiline" />
             </node>
           </node>
         </node>
@@ -27906,7 +27906,7 @@
             <node concept="2OqwBi" id="6to_vySiH4z" role="3uHU7B">
               <node concept="2Sf5sV" id="6to_vySiGAy" role="2Oq$k0" />
               <node concept="2qgKlT" id="6to_vySiHrA" role="2OqNvi">
-                <ref role="37wK5l" to="tpek:6to_vySiwwX" resolve="showsDot" />
+                <ref role="37wK5l" to="tpek:6to_vySiwwX" resolve="isMultiline" />
               </node>
             </node>
             <node concept="2OqwBi" id="2c6AtCN5ZSb" role="3uHU7w">

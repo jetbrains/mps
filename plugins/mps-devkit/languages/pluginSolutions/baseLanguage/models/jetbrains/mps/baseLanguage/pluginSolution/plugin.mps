@@ -26362,7 +26362,7 @@
                         <ref role="37wK5l" to="z1c3:~MPSProject.getProject()" resolve="getProject" />
                       </node>
                       <node concept="37vLTw" id="3vLAl757gvU" role="2Oq$k0">
-                        <ref role="3cqZAo" node="3vLAl757gvQ" resolve="project" />
+                        <ref role="3cqZAo" node="3vLAl757gvQ" resolve="mpsProject" />
                       </node>
                     </node>
                   </node>
@@ -26475,7 +26475,7 @@
                     <property role="2bfB8j" value="true" />
                     <property role="373rjd" value="true" />
                     <ref role="1Y3XeK" to="w1kc:~UndoRunnable" resolve="UndoRunnable" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                     <node concept="3Tm1VV" id="3vLAl75hUYO" role="1B3o_S" />
                     <node concept="3clFb_" id="3vLAl75hUZ2" role="jymVt">
                       <property role="TrG5h" value="run" />
@@ -26713,7 +26713,7 @@
                         </node>
                       </node>
                       <node concept="2AHcQZ" id="3vLAl75hUZ8" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" />
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                       </node>
                     </node>
                     <node concept="2tJIrI" id="3vLAl75hUZ9" role="jymVt" />
@@ -26732,7 +26732,7 @@
                         </node>
                       </node>
                       <node concept="2AHcQZ" id="3vLAl75hUZh" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" />
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                       </node>
                     </node>
                   </node>
@@ -26770,7 +26770,7 @@
               <ref role="37wK5l" to="qkt:~Presentation.setIcon(javax.swing.Icon)" resolve="setIcon" />
               <node concept="10M0yZ" id="7HmCn4Zx5II" role="37wK5m">
                 <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.QuickfixBulb" resolve="QuickfixBulb" />
-                <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="Actions" />
+                <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
               </node>
             </node>
           </node>

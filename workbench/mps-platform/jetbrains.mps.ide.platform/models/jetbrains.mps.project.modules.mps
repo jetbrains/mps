@@ -432,7 +432,7 @@
         </node>
         <node concept="3clFbF" id="7IuYZlCiRxx" role="3cqZAp">
           <node concept="1rXfSq" id="7IuYZlCiRxv" role="3clFbG">
-            <ref role="37wK5l" node="7IuYZlCizFc" resolve="addJavaFacet" />
+            <ref role="37wK5l" node="7IuYZlCizFc" resolve="configureJavaFacet" />
             <node concept="37vLTw" id="7IuYZlCiSei" role="37wK5m">
               <ref role="3cqZAo" node="1Yd98ZZnqFM" resolve="descriptor" />
             </node>
@@ -905,7 +905,7 @@
           <node concept="3KbdKl" id="7IuYZlCiUwz" role="3KbHQx">
             <node concept="Rm8GO" id="7IuYZlCiVl7" role="3Kbmr1">
               <ref role="Rm8GQ" node="1kRpwI5NQ4T" resolve="Off" />
-              <ref role="1Px2BO" node="1kRpwI5NPBI" resolve="JavaFacetLevel" />
+              <ref role="1Px2BO" node="1kRpwI5NPBI" resolve="SolutionProducer.JavaFacetLevel" />
             </node>
             <node concept="3clFbS" id="7IuYZlCiXv5" role="3Kbo56">
               <node concept="3zACq4" id="7IuYZlCjPZS" role="3cqZAp" />
@@ -916,7 +916,7 @@
           </node>
           <node concept="3KbdKl" id="1kRpwI5OjOb" role="3KbHQx">
             <node concept="Rm8GO" id="1kRpwI5Oktl" role="3Kbmr1">
-              <ref role="1Px2BO" node="1kRpwI5NPBI" resolve="JavaFacetLevel" />
+              <ref role="1Px2BO" node="1kRpwI5NPBI" resolve="SolutionProducer.JavaFacetLevel" />
               <ref role="Rm8GQ" node="1kRpwI5NQcQ" resolve="Sandbox" />
             </node>
             <node concept="3clFbS" id="1kRpwI5OjOc" role="3Kbo56">
@@ -932,14 +932,14 @@
                         <ref role="1Pybhc" to="b0pz:~JavaModuleFacetImpl" resolve="JavaModuleFacetImpl" />
                         <node concept="Rm8GO" id="7IuYZlCjznr" role="37wK5m">
                           <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$Compile.None" resolve="None" />
-                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$Compile" resolve="Compile" />
+                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$Compile" resolve="JavaModuleFacet.Compile" />
                         </node>
                         <node concept="Rm8GO" id="7IuYZlCjzns" role="37wK5m">
-                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadClasses" resolve="LoadClasses" />
+                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadClasses" resolve="JavaModuleFacet.LoadClasses" />
                           <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$LoadClasses.NotAvailable" resolve="NotAvailable" />
                         </node>
                         <node concept="Rm8GO" id="7IuYZlCjznt" role="37wK5m">
-                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadExtensions" resolve="LoadExtensions" />
+                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadExtensions" resolve="JavaModuleFacet.LoadExtensions" />
                           <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$LoadExtensions.NotAvailable" resolve="NotAvailable" />
                         </node>
                       </node>
@@ -952,7 +952,7 @@
           </node>
           <node concept="3KbdKl" id="1kRpwI5OjOq" role="3KbHQx">
             <node concept="Rm8GO" id="1kRpwI5Oktm" role="3Kbmr1">
-              <ref role="1Px2BO" node="1kRpwI5NPBI" resolve="JavaFacetLevel" />
+              <ref role="1Px2BO" node="1kRpwI5NPBI" resolve="SolutionProducer.JavaFacetLevel" />
               <ref role="Rm8GQ" node="1kRpwI5NQpg" resolve="Regular" />
             </node>
             <node concept="3clFbS" id="1kRpwI5OjOr" role="3Kbo56">
@@ -968,14 +968,14 @@
                         <ref role="1Pybhc" to="b0pz:~JavaModuleFacetImpl" resolve="JavaModuleFacetImpl" />
                         <node concept="Rm8GO" id="7IuYZlCjfnB" role="37wK5m">
                           <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$Compile.MPS" resolve="MPS" />
-                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$Compile" resolve="Compile" />
+                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$Compile" resolve="JavaModuleFacet.Compile" />
                         </node>
                         <node concept="Rm8GO" id="7IuYZlCjfNX" role="37wK5m">
                           <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$LoadClasses.ManagedByMPS" resolve="ManagedByMPS" />
-                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadClasses" resolve="LoadClasses" />
+                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadClasses" resolve="JavaModuleFacet.LoadClasses" />
                         </node>
                         <node concept="Rm8GO" id="7IuYZlCjeUF" role="37wK5m">
-                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadExtensions" resolve="LoadExtensions" />
+                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadExtensions" resolve="JavaModuleFacet.LoadExtensions" />
                           <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$LoadExtensions.NotAvailable" resolve="NotAvailable" />
                         </node>
                       </node>
@@ -989,7 +989,7 @@
           <node concept="3KbdKl" id="1kRpwI5OjOD" role="3KbHQx">
             <node concept="Rm8GO" id="1kRpwI5OC5Y" role="3Kbmr1">
               <ref role="Rm8GQ" node="1kRpwI5NQCF" resolve="Contributor" />
-              <ref role="1Px2BO" node="1kRpwI5NPBI" resolve="JavaFacetLevel" />
+              <ref role="1Px2BO" node="1kRpwI5NPBI" resolve="SolutionProducer.JavaFacetLevel" />
             </node>
             <node concept="3clFbS" id="1kRpwI5OjOE" role="3Kbo56">
               <node concept="9aQIb" id="1kRpwI5OjOF" role="3cqZAp">
@@ -1001,15 +1001,15 @@
                         <ref role="1Pybhc" to="b0pz:~JavaModuleFacetImpl" resolve="JavaModuleFacetImpl" />
                         <node concept="Rm8GO" id="7IuYZlCj_9t" role="37wK5m">
                           <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$Compile.MPS" resolve="MPS" />
-                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$Compile" resolve="Compile" />
+                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$Compile" resolve="JavaModuleFacet.Compile" />
                         </node>
                         <node concept="Rm8GO" id="7IuYZlCj_9u" role="37wK5m">
                           <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$LoadClasses.ManagedByMPS" resolve="ManagedByMPS" />
-                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadClasses" resolve="LoadClasses" />
+                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadClasses" resolve="JavaModuleFacet.LoadClasses" />
                         </node>
                         <node concept="Rm8GO" id="7IuYZlCj_9v" role="37wK5m">
                           <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$LoadExtensions.Plugin" resolve="Plugin" />
-                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadExtensions" resolve="LoadExtensions" />
+                          <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$LoadExtensions" resolve="JavaModuleFacet.LoadExtensions" />
                         </node>
                       </node>
                       <node concept="37vLTw" id="7IuYZlCjAos" role="37vLTJ">
