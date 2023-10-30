@@ -1402,16 +1402,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/modules/xmodel.build/test_gen" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../testbench/modules/xmodel.build/classes_gen" />
     </content>
-    <content url="file://$MODULE_DIR$/../../testbench/testbench.suite">
-      <sourceFolder url="file://$MODULE_DIR$/../../testbench/testbench.suite/generator/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../testbench/testbench.suite/source_gen" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../testbench/testbench.suite/classes_gen" />
-      <excludeFolder url="file://$MODULE_DIR$/../../testbench/testbench.suite/generator/classes_gen" />
-    </content>
-    <content url="file://$MODULE_DIR$/../../testbench/testbench.suite.pluginSolution">
-      <sourceFolder url="file://$MODULE_DIR$/../../testbench/testbench.suite.pluginSolution/source_gen" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/../../testbench/testbench.suite.pluginSolution/classes_gen" />
-    </content>
     <content url="file://$MODULE_DIR$/../../testbench/testsolutions">
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/testsolutions/JavaCompilationXmlConflict.test/test_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../testbench/testsolutions/actions.test/test_gen" isTestSource="false" />
