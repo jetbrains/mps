@@ -13,7 +13,6 @@ import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.util.xml.XmlUtil;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collection;
 
 /**
@@ -80,12 +79,12 @@ public class SolutionDescriptorPersistence {
 
 
         List<String> javaLibs = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(rootElement, "stubModelEntries"), "stubModelEntry")).select((it) -> it.getAttributeValue("path")).toList();
-        result_8ckma3_a0a0a0b0k.getJavaLibPersistedValues().addAll(ListSequence.fromList(javaLibs).select((it) -> myMacroHelper.expandPath(it)).toList());
+        result_8ckma3_a0a0a0b0k.getJavaLibPersistedValues().addAll(javaLibs);
 
         ModuleDescriptorPersistence.loadDependencies(result_8ckma3_a0a0a0b0k, rootElement);
 
         List<String> sources = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(rootElement, SOURCE_PATH), SOURCE_PATH_SOURCE)).select((it) -> it.getAttributeValue("path")).toList();
-        result_8ckma3_a0a0a0b0k.getSourcePathPersistedValue().addAll(ListSequence.fromList(sources).select((it) -> myMacroHelper.expandPath(it)).toList());
+        result_8ckma3_a0a0a0b0k.getSourcePathPersistedValue().addAll(sources);
         return result_8ckma3_a0a0a0b0k;
       }).invoke();
     } catch (Exception ex) {
@@ -131,7 +130,9 @@ public class SolutionDescriptorPersistence {
     Collection<String> additionalJavaStubPaths = descriptor.getJavaLibPersistedValues();
     if (!(additionalJavaStubPaths.isEmpty())) {
       Element stubModelEntries = new Element("stubModelEntries");
-      ModuleDescriptorPersistence.saveStubModelEntries(stubModelEntries, additionalJavaStubPaths, myMacroHelper);
+      for (String l : additionalJavaStubPaths) {
+        XmlUtil.tagWithAttribute(stubModelEntries, "stubModelEntry", "path", l);
+      }
       result.addContent(stubModelEntries);
     }
 
@@ -139,7 +140,7 @@ public class SolutionDescriptorPersistence {
     if (!(sources.isEmpty())) {
       Element sourcePath = new Element(SOURCE_PATH);
       for (String p : sources) {
-        XmlUtil.tagWithAttribute(sourcePath, SOURCE_PATH_SOURCE, "path", myMacroHelper.shrinkPath(p));
+        XmlUtil.tagWithAttribute(sourcePath, SOURCE_PATH_SOURCE, "path", p);
       }
       result.addContent(sourcePath);
     }

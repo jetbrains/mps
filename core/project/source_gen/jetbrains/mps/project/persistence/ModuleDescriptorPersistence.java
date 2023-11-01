@@ -161,7 +161,7 @@ public class ModuleDescriptorPersistence {
     List<ModelRootDescriptor> result = ListSequence.fromList(new ArrayList<ModelRootDescriptor>());
     for (Element element : modelRootElements) {
       Memento m = new MementoImpl();
-      readMemento(m, element, null);
+      readMemento(m, element);
       String type = element.getAttributeValue("type");
       if (type == null) {
         // This is debug code to find out cause of https://youtrack.jetbrains.com/issue/MPS-22589.
@@ -180,7 +180,7 @@ public class ModuleDescriptorPersistence {
     List<ModuleFacetDescriptor> result = ListSequence.fromList(new ArrayList<ModuleFacetDescriptor>());
     for (Element element : facetElements) {
       Memento m = new MementoImpl();
-      readMemento(m, element, null);
+      readMemento(m, element);
       String type = element.getAttributeValue("type");
       if (type != null) {
         ListSequence.fromList(result).addElement(new ModuleFacetDescriptor(type, m));
@@ -189,7 +189,8 @@ public class ModuleDescriptorPersistence {
     return result;
   }
 
-  public static void readMemento(Memento memento, Element element, final MacroHelper macroHelper) {
+  public static void readMemento(Memento memento, Element element) {
+    MacroHelper macroHelper = null;
     for (Attribute attr : (List<Attribute>) element.getAttributes()) {
       String name = attr.getName();
       if (macroHelper != null && isPathAttribute(name)) {
@@ -201,11 +202,12 @@ public class ModuleDescriptorPersistence {
     }
     for (Element elem : (List<Element>) element.getChildren()) {
       Memento child = memento.createChild(elem.getName());
-      readMemento(child, elem, macroHelper);
+      readMemento(child, elem);
     }
   }
 
-  public static void writeMemento(Memento memento, Element element, final MacroHelper macroHelper) {
+  public static void writeMemento(Memento memento, Element element) {
+    MacroHelper macroHelper = null;
     for (String key : memento.getKeys()) {
       if (macroHelper != null && isPathAttribute(key)) {
         element.setAttribute(key, macroHelper.shrinkPath(memento.get(key), memento.getPathSpec(key)));
@@ -221,7 +223,7 @@ public class ModuleDescriptorPersistence {
     }
     for (Memento childMemento : memento.getChildren()) {
       Element child = new Element(childMemento.getType());
-      writeMemento(childMemento, child, macroHelper);
+      writeMemento(childMemento, child);
       element.addContent(child);
     }
   }
@@ -234,7 +236,7 @@ public class ModuleDescriptorPersistence {
     for (ModuleFacetDescriptor facet : CollectionSequence.fromCollection(facets)) {
       Memento memento = facet.getMemento();
       Element facetElement = new Element("facet");
-      writeMemento(memento, facetElement, null);
+      writeMemento(memento, facetElement);
       String type = facet.getType();
       facetElement.setAttribute("type", type);
       result.addContent(facetElement);
@@ -245,7 +247,7 @@ public class ModuleDescriptorPersistence {
     for (ModelRootDescriptor root : CollectionSequence.fromCollection(modelRoots)) {
       Memento memento = root.getMemento();
       Element modelRoot = new Element("modelRoot");
-      writeMemento(memento, modelRoot, null);
+      writeMemento(memento, modelRoot);
       String type = root.getType();
       if ((type != null && type.length() > 0) && !("obsolete".equals(type))) {
         modelRoot.setAttribute("type", type);
@@ -253,14 +255,6 @@ public class ModuleDescriptorPersistence {
         modelRoot.removeAttribute("type");
       }
       result.addContent(modelRoot);
-    }
-  }
-
-  public static void saveStubModelEntries(Element result, Collection<String> entries, MacroHelper macroHelper) {
-    for (String root : entries) {
-      Element stubModelEntry = new Element("stubModelEntry");
-      stubModelEntry.setAttribute("path", macroHelper.shrinkPath((root == null ? "" : root)));
-      result.addContent(stubModelEntry);
     }
   }
 

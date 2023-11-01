@@ -4504,6 +4504,56 @@
                         </node>
                       </node>
                       <node concept="3clFbH" id="IMUMWuHQHa" role="3cqZAp" />
+                      <node concept="3SKdUt" id="4kGY7_SYM_V" role="3cqZAp">
+                        <node concept="1PaTwC" id="4kGY7_SYM_W" role="1aUNEU">
+                          <node concept="3oM_SD" id="4kGY7_SYPua" role="1PaTwD">
+                            <property role="3oM_SC" value="next" />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYPFq" role="1PaTwD">
+                            <property role="3oM_SC" value="2" />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYPGj" role="1PaTwD">
+                            <property role="3oM_SC" value="entries," />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYPHd" role="1PaTwD">
+                            <property role="3oM_SC" value="java" />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYPR9" role="1PaTwD">
+                            <property role="3oM_SC" value="libs" />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYPRf" role="1PaTwD">
+                            <property role="3oM_SC" value="and" />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYPSc" role="1PaTwD">
+                            <property role="3oM_SC" value="source" />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYPSk" role="1PaTwD">
+                            <property role="3oM_SC" value="paths," />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYPU9" role="1PaTwD">
+                            <property role="3oM_SC" value="to" />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYQ4a" role="1PaTwD">
+                            <property role="3oM_SC" value="be" />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYQ4l" role="1PaTwD">
+                            <property role="3oM_SC" value="removed" />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYQfe" role="1PaTwD">
+                            <property role="3oM_SC" value="once" />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYQgh" role="1PaTwD">
+                            <property role="3oM_SC" value="2023.3" />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYQqm" role="1PaTwD">
+                            <property role="3oM_SC" value="is" />
+                          </node>
+                          <node concept="3oM_SD" id="4kGY7_SYQq_" role="1PaTwD">
+                            <property role="3oM_SC" value="out" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbH" id="4kGY7_SYQrG" role="3cqZAp" />
                       <node concept="3SKdUt" id="6aEwj2FSjp6" role="3cqZAp">
                         <node concept="1PaTwC" id="ATZLwXo7HY" role="1aUNEU">
                           <node concept="3oM_SD" id="ATZLwXo7HZ" role="1PaTwD">
@@ -4603,36 +4653,8 @@
                           </node>
                           <node concept="liA8E" id="B0RVt9Pqm7" role="2OqNvi">
                             <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />
-                            <node concept="2OqwBi" id="3xFN89FGjs$" role="37wK5m">
-                              <node concept="2OqwBi" id="3xFN89FG4cn" role="2Oq$k0">
-                                <node concept="37vLTw" id="3GM_nagTzB7" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="2wNMEwGdiXa" resolve="javaLibs" />
-                                </node>
-                                <node concept="3$u5V9" id="3xFN89FG6yN" role="2OqNvi">
-                                  <node concept="1bVj0M" id="3xFN89FG6yP" role="23t8la">
-                                    <node concept="3clFbS" id="3xFN89FG6yQ" role="1bW5cS">
-                                      <node concept="3clFbF" id="3xFN89FG8L5" role="3cqZAp">
-                                        <node concept="2OqwBi" id="3xFN89FGb4_" role="3clFbG">
-                                          <node concept="37vLTw" id="3xFN89FG8L4" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="33oJVYhiVhr" resolve="myMacroHelper" />
-                                          </node>
-                                          <node concept="liA8E" id="3xFN89FGesc" role="2OqNvi">
-                                            <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
-                                            <node concept="37vLTw" id="3xFN89FGgDA" role="37wK5m">
-                                              <ref role="3cqZAo" node="5W7E4fV0X9C" resolve="it" />
-                                            </node>
-                                          </node>
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="gl6BB" id="5W7E4fV0X9C" role="1bW2Oz">
-                                      <property role="TrG5h" value="it" />
-                                      <node concept="2jxLKc" id="5W7E4fV0X9D" role="1tU5fm" />
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="ANE8D" id="3xFN89FGqQu" role="2OqNvi" />
+                            <node concept="37vLTw" id="3GM_nagTzB7" role="37wK5m">
+                              <ref role="3cqZAo" node="2wNMEwGdiXa" resolve="javaLibs" />
                             </node>
                           </node>
                         </node>
@@ -4703,36 +4725,8 @@
                           </node>
                           <node concept="liA8E" id="7xB_kuJvZ3v" role="2OqNvi">
                             <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />
-                            <node concept="2OqwBi" id="7xB_kuJwjKi" role="37wK5m">
-                              <node concept="2OqwBi" id="7xB_kuJw4jt" role="2Oq$k0">
-                                <node concept="37vLTw" id="7xB_kuJw259" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="7xB_kuJvkza" resolve="sources" />
-                                </node>
-                                <node concept="3$u5V9" id="7xB_kuJw7rC" role="2OqNvi">
-                                  <node concept="1bVj0M" id="7xB_kuJw7rE" role="23t8la">
-                                    <node concept="3clFbS" id="7xB_kuJw7rF" role="1bW5cS">
-                                      <node concept="3clFbF" id="7xB_kuJw9Zq" role="3cqZAp">
-                                        <node concept="2OqwBi" id="7xB_kuJwcrB" role="3clFbG">
-                                          <node concept="37vLTw" id="7xB_kuJw9Zp" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="33oJVYhiVhr" resolve="myMacroHelper" />
-                                          </node>
-                                          <node concept="liA8E" id="7xB_kuJweUc" role="2OqNvi">
-                                            <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
-                                            <node concept="37vLTw" id="7xB_kuJwhiw" role="37wK5m">
-                                              <ref role="3cqZAo" node="5W7E4fV0X9G" resolve="it" />
-                                            </node>
-                                          </node>
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="gl6BB" id="5W7E4fV0X9G" role="1bW2Oz">
-                                      <property role="TrG5h" value="it" />
-                                      <node concept="2jxLKc" id="5W7E4fV0X9H" role="1tU5fm" />
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="ANE8D" id="7xB_kuJwncV" role="2OqNvi" />
+                            <node concept="37vLTw" id="7xB_kuJw259" role="37wK5m">
+                              <ref role="3cqZAo" node="7xB_kuJvkza" resolve="sources" />
                             </node>
                           </node>
                         </node>
@@ -5342,18 +5336,31 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="33oJVYhj4Xu" role="3cqZAp">
-              <node concept="2YIFZM" id="33oJVYhj4Xv" role="3clFbG">
-                <ref role="1Pybhc" node="IMUMWuHQMY" resolve="ModuleDescriptorPersistence" />
-                <ref role="37wK5l" node="B0RVt9PwOe" resolve="saveStubModelEntries" />
-                <node concept="37vLTw" id="33oJVYhj4Xw" role="37wK5m">
-                  <ref role="3cqZAo" node="33oJVYhj4Xp" resolve="stubModelEntries" />
-                </node>
-                <node concept="37vLTw" id="1oxeqEd7KNP" role="37wK5m">
-                  <ref role="3cqZAo" node="1oxeqEd7KNK" resolve="javaLibs" />
-                </node>
-                <node concept="37vLTw" id="33oJVYhj9pU" role="37wK5m">
-                  <ref role="3cqZAo" node="33oJVYhiVhr" resolve="myMacroHelper" />
+            <node concept="2Gpval" id="4kGY7_SZdwp" role="3cqZAp">
+              <node concept="2GrKxI" id="4kGY7_SZdwr" role="2Gsz3X">
+                <property role="TrG5h" value="l" />
+              </node>
+              <node concept="37vLTw" id="4kGY7_SZj_e" role="2GsD0m">
+                <ref role="3cqZAo" node="1oxeqEd7KNK" resolve="javaLibs" />
+              </node>
+              <node concept="3clFbS" id="4kGY7_SZdwv" role="2LFqv$">
+                <node concept="3clFbF" id="4kGY7_SZm59" role="3cqZAp">
+                  <node concept="2YIFZM" id="4kGY7_SZoBy" role="3clFbG">
+                    <ref role="37wK5l" to="7a2w:4eI2K_IuetZ" resolve="tagWithAttribute" />
+                    <ref role="1Pybhc" to="7a2w:4eI2K_Iuet$" resolve="XmlUtil" />
+                    <node concept="37vLTw" id="4kGY7_SZr6e" role="37wK5m">
+                      <ref role="3cqZAo" node="33oJVYhj4Xp" resolve="stubModelEntries" />
+                    </node>
+                    <node concept="Xl_RD" id="1Tieq1ilTHd" role="37wK5m">
+                      <property role="Xl_RC" value="stubModelEntry" />
+                    </node>
+                    <node concept="Xl_RD" id="4kGY7_SZFO_" role="37wK5m">
+                      <property role="Xl_RC" value="path" />
+                    </node>
+                    <node concept="2GrUjf" id="4kGY7_SZO$S" role="37wK5m">
+                      <ref role="2Gs0qQ" node="4kGY7_SZdwr" resolve="l" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -5441,16 +5448,8 @@
                     <node concept="Xl_RD" id="33oJVYhj4Y4" role="37wK5m">
                       <property role="Xl_RC" value="path" />
                     </node>
-                    <node concept="2OqwBi" id="33oJVYhj4Y5" role="37wK5m">
-                      <node concept="37vLTw" id="33oJVYhj9tt" role="2Oq$k0">
-                        <ref role="3cqZAo" node="33oJVYhiVhr" resolve="myMacroHelper" />
-                      </node>
-                      <node concept="liA8E" id="33oJVYhj4Y7" role="2OqNvi">
-                        <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String)" resolve="shrinkPath" />
-                        <node concept="2GrUjf" id="33oJVYhj4Y8" role="37wK5m">
-                          <ref role="2Gs0qQ" node="33oJVYhj4XV" resolve="p" />
-                        </node>
-                      </node>
+                    <node concept="2GrUjf" id="4kGY7_T0M03" role="37wK5m">
+                      <ref role="2Gs0qQ" node="33oJVYhj4XV" resolve="p" />
                     </node>
                   </node>
                 </node>
@@ -7166,7 +7165,6 @@
                 <node concept="37vLTw" id="6pF7MkA94eo" role="37wK5m">
                   <ref role="3cqZAo" node="6pF7MkA5Wxl" resolve="element" />
                 </node>
-                <node concept="10Nm6u" id="4fjCjNWG6ep" role="37wK5m" />
               </node>
             </node>
             <node concept="3cpWs8" id="4tq5h$9Kuzb" role="3cqZAp">
@@ -7369,7 +7367,6 @@
                 <node concept="37vLTw" id="2xoEMW8TgmE" role="37wK5m">
                   <ref role="3cqZAo" node="2xoEMW8Tgn5" resolve="element" />
                 </node>
-                <node concept="10Nm6u" id="4$OUpkNLsGW" role="37wK5m" />
               </node>
             </node>
             <node concept="3cpWs8" id="2xoEMW8TgmG" role="3cqZAp">
@@ -7446,14 +7443,17 @@
     <node concept="2YIFZL" id="56cLWC10PWx" role="jymVt">
       <property role="TrG5h" value="readMemento" />
       <node concept="3cqZAl" id="56cLWC10ZHT" role="3clF45" />
-      <node concept="37vLTG" id="56cLWC10ZGB" role="3clF46">
-        <property role="TrG5h" value="memento" />
-        <node concept="3uibUv" id="56cLWC10ZHL" role="1tU5fm">
-          <ref role="3uigEE" to="dush:~Memento" resolve="Memento" />
-        </node>
-      </node>
       <node concept="3Tm1VV" id="56cLWC10RSy" role="1B3o_S" />
       <node concept="3clFbS" id="56cLWC10RSz" role="3clF47">
+        <node concept="3cpWs8" id="4kGY7_SXCGE" role="3cqZAp">
+          <node concept="3cpWsn" id="4kGY7_SXCGC" role="3cpWs9">
+            <property role="TrG5h" value="macroHelper" />
+            <node concept="3uibUv" id="4kGY7_SXCGB" role="1tU5fm">
+              <ref role="3uigEE" to="18ew:~MacroHelper" resolve="MacroHelper" />
+            </node>
+            <node concept="10Nm6u" id="4kGY7_SXCGD" role="33vP2m" />
+          </node>
+        </node>
         <node concept="1DcWWT" id="56cLWC11dKt" role="3cqZAp">
           <node concept="10QFUN" id="56cLWC11for" role="1DdaDG">
             <node concept="3uibUv" id="56cLWC11fvu" role="10QFUM">
@@ -7508,7 +7508,7 @@
                           </node>
                         </node>
                         <node concept="37vLTw" id="56cLWC11scv" role="2Oq$k0">
-                          <ref role="3cqZAo" node="56cLWC11h1m" resolve="macroHelper" />
+                          <ref role="3cqZAo" node="4kGY7_SXCGC" resolve="macroHelper" />
                         </node>
                       </node>
                     </node>
@@ -7543,7 +7543,7 @@
                 <node concept="3y3z36" id="4$OUpkNLiEz" role="3uHU7B">
                   <node concept="10Nm6u" id="4$OUpkNLkSv" role="3uHU7w" />
                   <node concept="37vLTw" id="4$OUpkNLgmR" role="3uHU7B">
-                    <ref role="3cqZAo" node="56cLWC11h1m" resolve="macroHelper" />
+                    <ref role="3cqZAo" node="4kGY7_SXCGC" resolve="macroHelper" />
                   </node>
                 </node>
                 <node concept="1rXfSq" id="7WVl1CUZ84j" role="3uHU7w">
@@ -7638,9 +7638,6 @@
                 <node concept="37vLTw" id="56cLWC11DdA" role="37wK5m">
                   <ref role="3cqZAo" node="56cLWC11wEC" resolve="elem" />
                 </node>
-                <node concept="37vLTw" id="56cLWC11DsZ" role="37wK5m">
-                  <ref role="3cqZAo" node="56cLWC11h1m" resolve="macroHelper" />
-                </node>
               </node>
             </node>
           </node>
@@ -7652,17 +7649,16 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="56cLWC10ZCZ" role="3clF46">
-        <property role="TrG5h" value="element" />
-        <node concept="3uibUv" id="56cLWC10ZCY" role="1tU5fm">
-          <ref role="3uigEE" to="mmaq:~Element" resolve="Element" />
+      <node concept="37vLTG" id="56cLWC10ZGB" role="3clF46">
+        <property role="TrG5h" value="memento" />
+        <node concept="3uibUv" id="4kGY7_SXCGF" role="1tU5fm">
+          <ref role="3uigEE" to="dush:~Memento" resolve="Memento" />
         </node>
       </node>
-      <node concept="37vLTG" id="56cLWC11h1m" role="3clF46">
-        <property role="TrG5h" value="macroHelper" />
-        <property role="3TUv4t" value="true" />
-        <node concept="3uibUv" id="56cLWC11h1n" role="1tU5fm">
-          <ref role="3uigEE" to="18ew:~MacroHelper" resolve="MacroHelper" />
+      <node concept="37vLTG" id="56cLWC10ZCZ" role="3clF46">
+        <property role="TrG5h" value="element" />
+        <node concept="3uibUv" id="4kGY7_SXCGG" role="1tU5fm">
+          <ref role="3uigEE" to="mmaq:~Element" resolve="Element" />
         </node>
       </node>
     </node>
@@ -7672,6 +7668,15 @@
       <node concept="3cqZAl" id="56cLWC11FNG" role="3clF45" />
       <node concept="3Tm1VV" id="56cLWC11FNH" role="1B3o_S" />
       <node concept="3clFbS" id="56cLWC11FNI" role="3clF47">
+        <node concept="3cpWs8" id="4kGY7_SXAJY" role="3cqZAp">
+          <node concept="3cpWsn" id="4kGY7_SXAJW" role="3cpWs9">
+            <property role="TrG5h" value="macroHelper" />
+            <node concept="3uibUv" id="4kGY7_SXAJV" role="1tU5fm">
+              <ref role="3uigEE" to="18ew:~MacroHelper" resolve="MacroHelper" />
+            </node>
+            <node concept="10Nm6u" id="4kGY7_SXAJX" role="33vP2m" />
+          </node>
+        </node>
         <node concept="1DcWWT" id="56cLWC11LhX" role="3cqZAp">
           <node concept="2OqwBi" id="56cLWC11LVt" role="1DdaDG">
             <node concept="liA8E" id="56cLWC11Mtv" role="2OqNvi">
@@ -7727,7 +7732,7 @@
                           </node>
                         </node>
                         <node concept="37vLTw" id="56cLWC121PG" role="2Oq$k0">
-                          <ref role="3cqZAo" node="56cLWC11GuM" resolve="macroHelper" />
+                          <ref role="3cqZAo" node="4kGY7_SXAJW" resolve="macroHelper" />
                         </node>
                       </node>
                     </node>
@@ -7738,7 +7743,7 @@
                 <node concept="3y3z36" id="4$OUpkNLqcu" role="3uHU7B">
                   <node concept="10Nm6u" id="4$OUpkNLrnI" role="3uHU7w" />
                   <node concept="37vLTw" id="4$OUpkNLoSk" role="3uHU7B">
-                    <ref role="3cqZAo" node="56cLWC11GuM" resolve="macroHelper" />
+                    <ref role="3cqZAo" node="4kGY7_SXAJW" resolve="macroHelper" />
                   </node>
                 </node>
                 <node concept="1rXfSq" id="4XURg3q2b_7" role="3uHU7w">
@@ -7953,9 +7958,6 @@
                 <node concept="37vLTw" id="56cLWC11XXD" role="37wK5m">
                   <ref role="3cqZAo" node="56cLWC11S7l" resolve="child" />
                 </node>
-                <node concept="37vLTw" id="56cLWC11Yka" role="37wK5m">
-                  <ref role="3cqZAo" node="56cLWC11GuM" resolve="macroHelper" />
-                </node>
               </node>
             </node>
             <node concept="3clFbF" id="56cLWC11W0o" role="3cqZAp">
@@ -7982,21 +7984,14 @@
       </node>
       <node concept="37vLTG" id="56cLWC11Gov" role="3clF46">
         <property role="TrG5h" value="memento" />
-        <node concept="3uibUv" id="56cLWC11Gou" role="1tU5fm">
+        <node concept="3uibUv" id="4kGY7_SXAJZ" role="1tU5fm">
           <ref role="3uigEE" to="dush:~Memento" resolve="Memento" />
         </node>
       </node>
       <node concept="37vLTG" id="56cLWC11GpJ" role="3clF46">
         <property role="TrG5h" value="element" />
-        <node concept="3uibUv" id="56cLWC11GqX" role="1tU5fm">
+        <node concept="3uibUv" id="4kGY7_SXAK0" role="1tU5fm">
           <ref role="3uigEE" to="mmaq:~Element" resolve="Element" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="56cLWC11GuM" role="3clF46">
-        <property role="TrG5h" value="macroHelper" />
-        <property role="3TUv4t" value="true" />
-        <node concept="3uibUv" id="56cLWC11GuN" role="1tU5fm">
-          <ref role="3uigEE" to="18ew:~MacroHelper" resolve="MacroHelper" />
         </node>
       </node>
     </node>
@@ -8095,7 +8090,6 @@
                 <node concept="37vLTw" id="2xoEMW8SV3O" role="37wK5m">
                   <ref role="3cqZAo" node="2xoEMW8SV3G" resolve="facetElement" />
                 </node>
-                <node concept="10Nm6u" id="4$OUpkNLtPW" role="37wK5m" />
               </node>
             </node>
             <node concept="3cpWs8" id="2xoEMW8SV3Q" role="3cqZAp">
@@ -8214,7 +8208,6 @@
                 <node concept="37vLTw" id="56cLWC11JZD" role="37wK5m">
                   <ref role="3cqZAo" node="3nJ3OljWLdM" resolve="modelRoot" />
                 </node>
-                <node concept="10Nm6u" id="4fjCjNWG7Sj" role="37wK5m" />
               </node>
             </node>
             <node concept="3cpWs8" id="2YHGuWVa4Mr" role="3cqZAp">
@@ -8317,106 +8310,6 @@
           <node concept="3uibUv" id="4fjCjNWGkXN" role="3O5elw">
             <ref role="3uigEE" to="6qgz:~ModelRootDescriptor" resolve="ModelRootDescriptor" />
           </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4zP2wWxbHFT" role="jymVt" />
-    <node concept="2YIFZL" id="B0RVt9PwOe" role="jymVt">
-      <property role="TrG5h" value="saveStubModelEntries" />
-      <node concept="3cqZAl" id="B0RVt9PwOf" role="3clF45" />
-      <node concept="3Tm1VV" id="B0RVt9PwOg" role="1B3o_S" />
-      <node concept="3clFbS" id="B0RVt9PwOh" role="3clF47">
-        <node concept="2Gpval" id="B0RVt9PwPJ" role="3cqZAp">
-          <node concept="2GrKxI" id="B0RVt9PwPK" role="2Gsz3X">
-            <property role="TrG5h" value="root" />
-          </node>
-          <node concept="37vLTw" id="2BHiRxgm9IR" role="2GsD0m">
-            <ref role="3cqZAo" node="B0RVt9PwP$" resolve="entries" />
-          </node>
-          <node concept="3clFbS" id="B0RVt9PwPM" role="2LFqv$">
-            <node concept="3cpWs8" id="1Tieq1ilTH8" role="3cqZAp">
-              <node concept="3cpWsn" id="1Tieq1ilTH9" role="3cpWs9">
-                <property role="TrG5h" value="stubModelEntry" />
-                <node concept="3uibUv" id="1Tieq1ilTHa" role="1tU5fm">
-                  <ref role="3uigEE" to="mmaq:~Element" resolve="Element" />
-                </node>
-                <node concept="2ShNRf" id="1Tieq1ilTHb" role="33vP2m">
-                  <node concept="1pGfFk" id="1Tieq1ilTHc" role="2ShVmc">
-                    <ref role="37wK5l" to="mmaq:~Element.&lt;init&gt;(java.lang.String)" resolve="Element" />
-                    <node concept="Xl_RD" id="1Tieq1ilTHd" role="37wK5m">
-                      <property role="Xl_RC" value="stubModelEntry" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="1Tieq1ilTHf" role="3cqZAp">
-              <node concept="2OqwBi" id="1Tieq1ilTHv" role="3clFbG">
-                <node concept="37vLTw" id="1Tieq1ilTHg" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1Tieq1ilTH9" resolve="stubModelEntry" />
-                </node>
-                <node concept="liA8E" id="1Tieq1ilTH_" role="2OqNvi">
-                  <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
-                  <node concept="Xl_RD" id="1Tieq1ilTHA" role="37wK5m">
-                    <property role="Xl_RC" value="path" />
-                  </node>
-                  <node concept="2OqwBi" id="1Tieq1ilTHK" role="37wK5m">
-                    <node concept="37vLTw" id="2BHiRxgle94" role="2Oq$k0">
-                      <ref role="3cqZAo" node="B0RVt9PwPD" resolve="macroHelper" />
-                    </node>
-                    <node concept="liA8E" id="1Tieq1ilTHM" role="2OqNvi">
-                      <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String)" resolve="shrinkPath" />
-                      <node concept="3K4zz7" id="1Tieq1ilTHN" role="37wK5m">
-                        <node concept="2GrUjf" id="1Tieq1ilTHQ" role="3K4GZi">
-                          <ref role="2Gs0qQ" node="B0RVt9PwPK" resolve="root" />
-                        </node>
-                        <node concept="Xl_RD" id="1Tieq1ilTHO" role="3K4E3e">
-                          <property role="Xl_RC" value="" />
-                        </node>
-                        <node concept="3clFbC" id="1Tieq1ilTHS" role="3K4Cdx">
-                          <node concept="2GrUjf" id="1Tieq1ilTHV" role="3uHU7B">
-                            <ref role="2Gs0qQ" node="B0RVt9PwPK" resolve="root" />
-                          </node>
-                          <node concept="10Nm6u" id="1Tieq1ilTHT" role="3uHU7w" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="1Tieq1ilTI2" role="3cqZAp">
-              <node concept="2OqwBi" id="1Tieq1ilTIi" role="3clFbG">
-                <node concept="37vLTw" id="1Tieq1ilTI3" role="2Oq$k0">
-                  <ref role="3cqZAo" node="B0RVt9PwPy" resolve="result" />
-                </node>
-                <node concept="liA8E" id="1Tieq1ilTIo" role="2OqNvi">
-                  <ref role="37wK5l" to="mmaq:~Element.addContent(org.jdom.Element)" resolve="addContent" />
-                  <node concept="37vLTw" id="1Tieq1ilTIp" role="37wK5m">
-                    <ref role="3cqZAo" node="1Tieq1ilTH9" resolve="stubModelEntry" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="B0RVt9PwPy" role="3clF46">
-        <property role="TrG5h" value="result" />
-        <node concept="3uibUv" id="1Tieq1ilTI1" role="1tU5fm">
-          <ref role="3uigEE" to="mmaq:~Element" resolve="Element" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="B0RVt9PwP$" role="3clF46">
-        <property role="TrG5h" value="entries" />
-        <node concept="3vKaQO" id="2A89EZC15F4" role="1tU5fm">
-          <node concept="17QB3L" id="3AeSCRVOTKl" role="3O5elw" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="B0RVt9PwPD" role="3clF46">
-        <property role="TrG5h" value="macroHelper" />
-        <node concept="3uibUv" id="3OnrE1AjaKq" role="1tU5fm">
-          <ref role="3uigEE" to="18ew:~MacroHelper" resolve="MacroHelper" />
         </node>
       </node>
     </node>
@@ -10805,36 +10698,8 @@
                           </node>
                           <node concept="liA8E" id="3xFN89FHfSb" role="2OqNvi">
                             <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />
-                            <node concept="2OqwBi" id="3xFN89FHtu5" role="37wK5m">
-                              <node concept="2OqwBi" id="3xFN89FHfSc" role="2Oq$k0">
-                                <node concept="37vLTw" id="3xFN89FHfSd" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="2wNMEwGdiWL" resolve="javaLibs" />
-                                </node>
-                                <node concept="3$u5V9" id="3xFN89FHm0y" role="2OqNvi">
-                                  <node concept="1bVj0M" id="3xFN89FHm0$" role="23t8la">
-                                    <node concept="3clFbS" id="3xFN89FHm0_" role="1bW5cS">
-                                      <node concept="3clFbF" id="3xFN89FHno_" role="3cqZAp">
-                                        <node concept="2OqwBi" id="3xFN89FHoMv" role="3clFbG">
-                                          <node concept="37vLTw" id="3xFN89FHno$" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="33oJVYhfKyp" resolve="myMacroHelper" />
-                                          </node>
-                                          <node concept="liA8E" id="3xFN89FHq9t" role="2OqNvi">
-                                            <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
-                                            <node concept="37vLTw" id="3xFN89FHrvu" role="37wK5m">
-                                              <ref role="3cqZAo" node="5W7E4fV0X9W" resolve="it" />
-                                            </node>
-                                          </node>
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="gl6BB" id="5W7E4fV0X9W" role="1bW2Oz">
-                                      <property role="TrG5h" value="it" />
-                                      <node concept="2jxLKc" id="5W7E4fV0X9X" role="1tU5fm" />
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="ANE8D" id="3xFN89FHvZ5" role="2OqNvi" />
+                            <node concept="37vLTw" id="3xFN89FHfSd" role="37wK5m">
+                              <ref role="3cqZAo" node="2wNMEwGdiWL" resolve="javaLibs" />
                             </node>
                           </node>
                         </node>
@@ -10916,36 +10781,8 @@
                           </node>
                           <node concept="liA8E" id="7xB_kuJy2Kb" role="2OqNvi">
                             <ref role="37wK5l" to="33ny:~Collection.addAll(java.util.Collection)" resolve="addAll" />
-                            <node concept="2OqwBi" id="7xB_kuJygPI" role="37wK5m">
-                              <node concept="2OqwBi" id="7xB_kuJy70S" role="2Oq$k0">
-                                <node concept="37vLTw" id="7xB_kuJy2Kc" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="7xB_kuJxJgQ" resolve="sources" />
-                                </node>
-                                <node concept="3$u5V9" id="7xB_kuJy9wX" role="2OqNvi">
-                                  <node concept="1bVj0M" id="7xB_kuJy9wZ" role="23t8la">
-                                    <node concept="3clFbS" id="7xB_kuJy9x0" role="1bW5cS">
-                                      <node concept="3clFbF" id="7xB_kuJyc27" role="3cqZAp">
-                                        <node concept="2OqwBi" id="7xB_kuJyc29" role="3clFbG">
-                                          <node concept="37vLTw" id="7xB_kuJyc2a" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="33oJVYhfKyp" resolve="myMacroHelper" />
-                                          </node>
-                                          <node concept="liA8E" id="7xB_kuJyc2b" role="2OqNvi">
-                                            <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
-                                            <node concept="37vLTw" id="7xB_kuJyf8r" role="37wK5m">
-                                              <ref role="3cqZAo" node="5W7E4fV0Xa0" resolve="it" />
-                                            </node>
-                                          </node>
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="gl6BB" id="5W7E4fV0Xa0" role="1bW2Oz">
-                                      <property role="TrG5h" value="it" />
-                                      <node concept="2jxLKc" id="5W7E4fV0Xa1" role="1tU5fm" />
-                                    </node>
-                                  </node>
-                                </node>
-                              </node>
-                              <node concept="ANE8D" id="7xB_kuJyjM7" role="2OqNvi" />
+                            <node concept="37vLTw" id="7xB_kuJy2Kc" role="37wK5m">
+                              <ref role="3cqZAo" node="7xB_kuJxJgQ" resolve="sources" />
                             </node>
                           </node>
                         </node>
@@ -11420,18 +11257,31 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="B0RVt9PwSU" role="3cqZAp">
-              <node concept="2YIFZM" id="B0RVt9PwSV" role="3clFbG">
-                <ref role="37wK5l" node="B0RVt9PwOe" resolve="saveStubModelEntries" />
-                <ref role="1Pybhc" node="IMUMWuHQMY" resolve="ModuleDescriptorPersistence" />
-                <node concept="37vLTw" id="1Tieq1im8cM" role="37wK5m">
-                  <ref role="3cqZAo" node="1Tieq1im8cE" resolve="stubModelEntries" />
-                </node>
-                <node concept="37vLTw" id="6QvBpqz$jKM" role="37wK5m">
-                  <ref role="3cqZAo" node="6QvBpqz$jKI" resolve="additionalJavaStubPaths" />
-                </node>
-                <node concept="37vLTw" id="33oJVYhgNbg" role="37wK5m">
-                  <ref role="3cqZAo" node="33oJVYhfKyp" resolve="myMacroHelper" />
+            <node concept="2Gpval" id="4kGY7_T0rmI" role="3cqZAp">
+              <node concept="2GrKxI" id="4kGY7_T0rmJ" role="2Gsz3X">
+                <property role="TrG5h" value="l" />
+              </node>
+              <node concept="37vLTw" id="4kGY7_T0rmK" role="2GsD0m">
+                <ref role="3cqZAo" node="6QvBpqz$jKI" resolve="additionalJavaStubPaths" />
+              </node>
+              <node concept="3clFbS" id="4kGY7_T0rmL" role="2LFqv$">
+                <node concept="3clFbF" id="4kGY7_T0rmM" role="3cqZAp">
+                  <node concept="2YIFZM" id="4kGY7_T0rmN" role="3clFbG">
+                    <ref role="37wK5l" to="7a2w:4eI2K_IuetZ" resolve="tagWithAttribute" />
+                    <ref role="1Pybhc" to="7a2w:4eI2K_Iuet$" resolve="XmlUtil" />
+                    <node concept="37vLTw" id="4kGY7_T0rmO" role="37wK5m">
+                      <ref role="3cqZAo" node="1Tieq1im8cE" resolve="stubModelEntries" />
+                    </node>
+                    <node concept="Xl_RD" id="4kGY7_T0rmP" role="37wK5m">
+                      <property role="Xl_RC" value="stubModelEntry" />
+                    </node>
+                    <node concept="Xl_RD" id="4kGY7_T0rmQ" role="37wK5m">
+                      <property role="Xl_RC" value="path" />
+                    </node>
+                    <node concept="2GrUjf" id="4kGY7_T0rmR" role="37wK5m">
+                      <ref role="2Gs0qQ" node="4kGY7_T0rmJ" resolve="l" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -11517,16 +11367,8 @@
                     <node concept="Xl_RD" id="1Tieq1im8eq" role="37wK5m">
                       <property role="Xl_RC" value="path" />
                     </node>
-                    <node concept="2OqwBi" id="IMUMWuHR9D" role="37wK5m">
-                      <node concept="37vLTw" id="33oJVYhgNsG" role="2Oq$k0">
-                        <ref role="3cqZAo" node="33oJVYhfKyp" resolve="myMacroHelper" />
-                      </node>
-                      <node concept="liA8E" id="IMUMWuHR9F" role="2OqNvi">
-                        <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String)" resolve="shrinkPath" />
-                        <node concept="2GrUjf" id="IMUMWuHR9G" role="37wK5m">
-                          <ref role="2Gs0qQ" node="IMUMWuHR9v" resolve="p" />
-                        </node>
-                      </node>
+                    <node concept="2GrUjf" id="4kGY7_T0Ryv" role="37wK5m">
+                      <ref role="2Gs0qQ" node="IMUMWuHR9v" resolve="p" />
                     </node>
                   </node>
                 </node>

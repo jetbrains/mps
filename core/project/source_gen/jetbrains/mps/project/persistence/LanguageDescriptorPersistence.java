@@ -14,9 +14,9 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
@@ -100,12 +100,14 @@ public class LanguageDescriptorPersistence {
           result_v3r4p8_a0a0a0c0g.getGenerators().add(gd);
         }
 
+        // next 2 entries, java libs and source paths, to be removed once 2023.3 is out
+
         // odd 'stubModelEntry' name for auxiliary classpath is due to legacy
         List<String> javaLibs = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(languageElement, "stubModelEntries"), "stubModelEntry")).select((mee) -> mee.getAttributeValue("path")).toList();
-        result_v3r4p8_a0a0a0c0g.getJavaLibPersistedValues().addAll(ListSequence.fromList(javaLibs).select((it) -> myMacroHelper.expandPath(it)).toList());
+        result_v3r4p8_a0a0a0c0g.getJavaLibPersistedValues().addAll(javaLibs);
 
         List<String> sources = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(languageElement, "sourcePath"), "source")).select((it) -> it.getAttributeValue("path")).toList();
-        result_v3r4p8_a0a0a0c0g.getSourcePathPersistedValue().addAll(ListSequence.fromList(sources).select((it) -> myMacroHelper.expandPath(it)).toList());
+        result_v3r4p8_a0a0a0c0g.getSourcePathPersistedValue().addAll(sources);
         return result_v3r4p8_a0a0a0c0g;
       }).invoke();
     } catch (ModuleReadException ex) {
@@ -161,7 +163,9 @@ public class LanguageDescriptorPersistence {
     Collection<String> javaLibs = descriptor.getJavaLibPersistedValues();
     if (!(javaLibs.isEmpty())) {
       Element stubModelEntries = new Element("stubModelEntries");
-      ModuleDescriptorPersistence.saveStubModelEntries(stubModelEntries, javaLibs, myMacroHelper);
+      for (String l : javaLibs) {
+        XmlUtil.tagWithAttribute(stubModelEntries, "stubModelEntry", "path", l);
+      }
       languageElement.addContent(stubModelEntries);
     }
 
@@ -169,7 +173,7 @@ public class LanguageDescriptorPersistence {
     if (!(sources.isEmpty())) {
       Element sourcePath = new Element("sourcePath");
       for (String p : sources) {
-        XmlUtil.tagWithAttribute(sourcePath, "source", "path", myMacroHelper.shrinkPath(p));
+        XmlUtil.tagWithAttribute(sourcePath, "source", "path", p);
       }
       languageElement.addContent(sourcePath);
     }
