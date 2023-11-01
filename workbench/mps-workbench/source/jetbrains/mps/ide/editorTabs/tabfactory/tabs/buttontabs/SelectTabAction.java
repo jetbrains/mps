@@ -91,7 +91,7 @@ class SelectTabAction extends ToggleAction {
       Component component = myTab.getComponentForPopup();
 
       DefaultActionGroup group = getGotoGroup(nodes);
-      ActionPopupMenu popup = ActionManager.getInstance().createActionPopupMenu(ActionPlaces.UNKNOWN, group);
+      ActionPopupMenu popup = ActionManager.getInstance().createActionPopupMenu(ActionPlaces.EDITOR_TAB_POPUP, group);
       JPopupMenu popupMenu = popup.getComponent();
       popupMenu.show(component, 0, 0);
 
