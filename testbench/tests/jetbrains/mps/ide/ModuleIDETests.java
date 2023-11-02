@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.module.ModuleDeleteHelper;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.ProjectBase;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.modules.DevkitProducer;
 import jetbrains.mps.project.modules.LanguageAndSolutionsProducer;
@@ -47,7 +46,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -273,9 +271,9 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
         Assert.assertTrue(contentDirectory.isDescendant(moduleDir));
       }
 
-      final String generatorOutputPath = ProjectPathUtil.getGeneratorOutputPath(module.getModuleDescriptor());
+      final IFile generatorOutputPath = module.getOutputPath();
       if (generatorOutputPath != null) {
-        Assert.assertEquals(mustBeMoved, generatorOutputPath.contains(newModuleName));
+        Assert.assertEquals(mustBeMoved, generatorOutputPath.getPath().contains(newModuleName));
       }
 
       // Check models namespace is changed
@@ -312,9 +310,9 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
           Assert.assertTrue(contentDirectory.isDescendant(module.getModuleSourceDir()));
         }
 
-        final String generatorOutputPathSub = ProjectPathUtil.getGeneratorOutputPath(subModule.getModuleDescriptor());
+        final IFile generatorOutputPathSub = subModule.getOutputPath();
         if (generatorOutputPathSub != null) {
-          Assert.assertTrue(generatorOutputPathSub.contains(newModuleName));
+          Assert.assertTrue(generatorOutputPathSub.getPath().contains(newModuleName));
         }
       }
 

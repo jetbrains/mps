@@ -20,7 +20,7 @@ import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.ProjectPathUtil;
+import jetbrains.mps.util.MacrosFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -117,7 +117,7 @@ public class LanguageProducer {
     languageDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(moduleLocation, languageModels));
     ModuleFacetDescriptor jmfDescriptor = JavaModuleFacetImpl.forJavaCodeModule(JavaModuleFacet.Compile.MPS, JavaModuleFacet.LoadClasses.ManagedByMPS, JavaModuleFacet.LoadExtensions.Plugin);
     languageDescriptor.getModuleFacetDescriptors().add(jmfDescriptor);
-    ProjectPathUtil.setGeneratorOutputPath(languageDescriptor, moduleLocation.findChild("source_gen").getPath());
+    languageDescriptor.setOutputRoot(MacrosFactory.MODULE + "/source_gen");
     return languageDescriptor;
   }
 
@@ -153,9 +153,9 @@ public class LanguageProducer {
     // FIXME Above, to configure a root, we create typed MR, fill with data and convert to MRD
     //      with JMF, we configure MFD (persistence level) directly. Need to stick to single approach
     ModuleFacetDescriptor jmfDescriptor = JavaModuleFacetImpl.forNewJavaCodeModule();
-    JavaModuleFacetImpl.setDefaultClassesGenLocation(jmfDescriptor, generatorModuleLocation);
     generatorDescriptor.getModuleFacetDescriptors().add(jmfDescriptor);
-    ProjectPathUtil.setGeneratorOutputPath(generatorDescriptor, generatorModuleLocation.findChild("source_gen").getPath());
+    // XXX indeed, not as nice as "${module}/source_gen" but PathSpec tolerates full path, and I didn't get information here if generator is inside a language or is standalone
+    generatorDescriptor.setOutputRoot(generatorModuleLocation.findChild("source_gen").getPath());
     return generatorDescriptor;
   }
 

@@ -20,7 +20,6 @@ import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
@@ -130,19 +129,6 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   @Nullable
   public IFile getClassesGen() {
     return myGeneratedClassesLocation == null || !myGeneratedClassesLocation.resolved() ? null : myGeneratedClassesLocation.resolvedFile();
-  }
-
-  @Nullable
-  @Override
-  public IFile getOutputRoot() {
-    // FIXME not a field like myGeneratedClassesLocation but re-calculated each time as value editing happens
-    //  through MD and I'm not sure JMF instances get updated once MD.outputPath get changed (check usages of
-    //  ProjectPathUtil.setGeneratorOutputPath());
-    // This is copy of super.getOutputRoot(), just with macro resolution added for scenarios when module descriptor
-    //      has been read w/o macro resolution (e.g. in lang.build)
-    String outputPath = ProjectPathUtil.getGeneratorOutputPath(getAbstractModule().getModuleDescriptor());
-    outputPath = outputPath == null ? null : MacrosFactory.forModule(getModule()).expandPath(outputPath);
-    return outputPath == null ? null : getAbstractModule().getFileSystem().getFile(outputPath);
   }
 
   @Override

@@ -20,6 +20,7 @@ import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
@@ -44,24 +45,28 @@ import java.util.function.Supplier;
  * This class captures persistence and editing aspects of SModule. Client code shall not use this class
  * unless its purpose is to edit or persist module properties. Use SModule API (or Language/Generator/Solution/DevKit subclasses)
  * to read module dependencies and identity information.
- *
+ * <p>
  * -----------------------------------------------------------------------------------------------------------------------------------
+ * <p>
  * FIXME This class mixes up the persistence and editing aspects of the {@link AbstractModule} class.
  * FIXME in order to edit facets/model roots in the module a client needs to access such entities as {@link ModuleFacetDescriptor}, {@link ModelRootDescriptor} directly,
  * FIXME when he has just an {@link AbstractModule} (which leads to a low-level module#getModuleDescriptor.getFacetDescriptors().add...)
  * FIXME obviously it is wrong: a client should rather work with {@link SModuleFacet} entities in the case of editing an {@link AbstractModule}, not descriptors.
  * FIXME OTOH it cannot be a plain persistence descriptor since in order to update (more or less) any properties of an {@link AbstractModule}
  * FIXME we use such pattern in the {@code AbstractModule} as:
+ * <pre>
  * <code>
  *   AbstractModule module;
  *   var descriptor = module.getDescriptor();
- *   <change descriptor freely as we wish>
+ *   // change descriptor freely as we wish
  *   module.setDescriptor(descriptor); // commit descriptor
  * </code>
+ * </pre>
  * which is needed in order to guarantee a consistency of the {@link AbstractModule} operations.
- *
+ * <p>
  * TODO Also I would rather use in the ModuleDescriptor hierarchy composition instead of inheritance. The {@link #myDeploymentDescriptor} reference is especially repelling here.
- *
+ *  ^^^ not sure I follow. DD is examplary use of composition instead of inheritance.
+ * <p>
  * Road map:
  * We separate the persistence descriptor from the special editing 'handle'.
  * We ensure that the persistence descriptor reflects all the properties we find in our module persistence.
@@ -138,6 +143,24 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
   private final Collection<String> mySourcePaths = new LinkedHashSet<>();
   private DeploymentDescriptor myDeploymentDescriptor; // FIXME must be removed
 
+  /**
+   * Serves as a default location for artifacts produced by a module, if any.
+   * Keep null if module got no general output location. Note, facets (especially {@link jetbrains.mps.project.facets.GenerationTargetFacet})
+   * can use this value, if present, as a default for facet's output location, but may specify their own path. It's advised, however, to stay
+   * under this location, if specified.
+   * <p>
+   * Impl note: I'm not certain if use String or PathSpec. After all, PathSpec doesn't show up in ModelRootDescriptor or ModuleFacetDescriptor
+   *  (they stick to Memento and strings), PathSpec shows up only e.g. for SModuleFacet level. With that, seems that we can stick to string persistence
+   *  value (of course, w/o any macro expansion or full path assumption), and ressurect AM.getOutputPath(), which would do the magic with
+   *  string(MD) --> PathSpec(AM). OTOH, MD serves as an editing handle for modules, and use of PathSpec seems more handy and straightforward/honest way
+   *  to tell paths. Unlike ModelRootDescriptor and ModuleFacetDescriptor, there's less clear load()/save() contract for MD, which makes it trickier to
+   *  go from IFile/PathSpec to String and back
+   */
+  @Nullable
+  private String myOutputRoot;
+
+  private boolean myUseOutputRootFromLegacy;
+
   private Throwable myLoadException;
 
   public ModuleDescriptor() {
@@ -202,6 +225,31 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
 
   public void setNeedsExternalIdeaCompile(boolean value) {
     // no-op, subclasses that do support this setting shall override
+  }
+
+  @Nullable
+  public String getOutputRoot() {
+    return myOutputRoot;
+  }
+
+  public void setOutputRoot(@Nullable String location) {
+    myOutputRoot = location;
+  }
+
+  /**
+   * Transition code, don't use except for MPS internal purposes
+   */
+  @Deprecated(forRemoval = true)
+  public void markOutputRootLegacyValue(boolean value) {
+    myUseOutputRootFromLegacy = value;
+  }
+
+  /**
+   * Transition code, don't use except for MPS internal purposes
+   */
+  @Deprecated(forRemoval = true)
+  public boolean isOutputRootFromLegacy() {
+    return myUseOutputRootFromLegacy;
   }
 
   public final Collection<ModelRootDescriptor> getModelRootDescriptors() {
@@ -478,6 +526,9 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     descriptorCopy.getSourcePathPersistedValue().addAll(getSourcePathPersistedValue());
     copyDeploymentDescriptor(descriptorCopy);
     descriptorCopy.setLoadException(getLoadException());
+    descriptorCopy.setOutputRoot(getOutputRoot());
+    // delete next line once 2023.3 is out; need just for the sake of DescriptorCopyOrganizer
+    descriptorCopy.markOutputRootLegacyValue(isOutputRootFromLegacy());
     return descriptorCopy;
   }
 

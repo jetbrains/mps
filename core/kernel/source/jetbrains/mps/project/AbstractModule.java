@@ -32,6 +32,8 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.scope.VisibleDepsSearchScope;
 import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import org.jetbrains.annotations.Contract;
@@ -68,6 +70,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
 
 import static org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
 
@@ -116,6 +119,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   @Nullable
   @Immutable
   private final IFile myDescriptorFile;
+  private PathSpec myOutputRoot;
 
   @NotNull
   private final FileSystem myFileSystem;
@@ -343,6 +347,10 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     // ensure ModelRoot has a chance to serialize their changes, if any
     // For now, we don't account for added/removed model roots as there's no API other than ModuleDescriptor, hence we only try to change matching MR-MRD pairs
     if (moduleDescriptor != null) {
+      // after #reloadAfterDescriptorChange(), myOutputRoot is our only source of information
+      // FIXME it's not nice to modify MD, provided we use MD as an editing handle for module. Just need to come up with a better approach
+      //       Note, for ModuleFacetDescriptor and ModelRootDescriptor, it's easier as they got Memento to keep the transformed values!
+      moduleDescriptor.setOutputRoot(myOutputRoot == null ? null : myOutputRoot.shrink(MacrosFactory.forModule(this)));
       var descriptors = new LinkedList<>(moduleDescriptor.getModelRootDescriptors());
       // I can't change MRD.memento, therefore need to replace MRD instance with new memento, next collection is to ensure root ordering persists.
       var newDescriptors = new ArrayList<ModelRootDescriptor>(moduleDescriptor.getModelRootDescriptors().size());
@@ -454,8 +462,40 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   protected void reloadAfterDescriptorChange() {
+    updateModuleDescriptorValues();
     updateFacets();
     updateModelsSet();
+  }
+
+  private void updateModuleDescriptorValues() {
+    ModuleDescriptor descriptor = getModuleDescriptor();
+    if (descriptor != null) {
+      final String legacyValue = ProjectPathUtil._getGeneratorOutputPathPrim(descriptor);
+
+      if (descriptor.getOutputRoot() == null && legacyValue != null) {
+        // manually constructed MD or legacy code (MPS now does setOutputRoot())
+        myOutputRoot = new PathSpec(legacyValue);
+      } else if (descriptor.getOutputRoot() != null && legacyValue == null) {
+        // MD read/constructed by new code, value of legacy attribute moved to a new field, unprocessed
+        myOutputRoot = new PathSpec(descriptor.getOutputRoot());
+      } else {
+        // both new and legacy values are null or non-null, generally shall trust the new one, if any, except for
+        // scenario when some legacy code still uses ProjectPathUtil
+        if (descriptor.isOutputRootFromLegacy()) {
+          // MD got changed though legacy ProjectPathUtil API
+          myOutputRoot = legacyValue == null ? null : new PathSpec(legacyValue);
+        } else {
+          myOutputRoot = descriptor.getOutputRoot() == null ? null : new PathSpec(descriptor.getOutputRoot());
+        }
+      }
+      descriptor.markOutputRootLegacyValue(false);
+      if (myOutputRoot != null) {
+        final Function<String, IFile> path2file = s -> myFileSystem.getFile(MacrosFactory.forModule(this).expandPath(s));
+        myOutputRoot.resolve(path2file);
+        // let legacy code, using PPU.getGOP(), access actual value
+        ProjectPathUtil._setGeneratorOutputPathPrim(descriptor, myOutputRoot.resolved() ? myOutputRoot.resolvedPath() : myOutputRoot.value());
+      }
+    }
   }
 
   /**
@@ -615,6 +655,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   @Override
   public void attach(@NotNull SRepository repository) {
     super.attach(repository);
+    updateModuleDescriptorValues();
     updateFacets();
     if (RuntimeFlags.modelsLoadedOnModuleAttach()) {
       updateModelsSet(); // refresh model roots and load models
@@ -881,16 +922,24 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   /**
-   * @deprecated this is internal method, ask ModuleDescriptor for persisted setting directly, if it's what you're
-   * looking for (check {@link ProjectPathUtil#getGeneratorOutputPath(ModuleDescriptor)}. There ain't no such thing as output path for a module in general.
+   * Internal API to access generic output location for the module, if any. Although there ain't no such thing as output path for a module in general,
+   * and each {@link jetbrains.mps.project.facets.GenerationTargetFacet} may opt to specify whatever location it likes, it's advised to place generated
+   * artifacts under this location (unless unspecified) for ease of manipulation. MPS module facets that control module output use this value
    * <p>
-   * This method is no longer used in MPS, do not resurrect its uses. Although it's not part of openapi, AbstractModule is often deemed as 'almost api',
-   * left for one release.
+   * Note, this method generally makes sense for source modules only.
+   * {@implNote} FIXME there's 1 use in MPS tests where we use this value to access content of module-src.jar, just need to address this sceanario by
+   *             another packaging
    */
-@Deprecated(since = "3.5", forRemoval = true)
+  @Nullable
   public IFile getOutputPath() {
-    String outputPath = ProjectPathUtil.getGeneratorOutputPath(getModuleDescriptor());
-    return outputPath == null ? null : getFileSystem().getFile(outputPath);
+    if (myOutputRoot == null || !myOutputRoot.resolved()) {
+      return null;
+    }
+    return myOutputRoot.resolvedFile();
+  }
+
+  public void setOutputPath(@Nullable IFile outputRoot) {
+    myOutputRoot = outputRoot == null ? null : new PathSpec(outputRoot);
   }
 
   @Override

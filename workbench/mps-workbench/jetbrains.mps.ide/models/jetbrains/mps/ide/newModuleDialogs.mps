@@ -43,9 +43,14 @@
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -192,6 +197,7 @@
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
+      <concept id="2580416627845338977" name="jetbrains.mps.baseLanguage.structure.ImplicitAnnotationInstanceValue" flags="ng" index="1SXeKx" />
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
     </language>
@@ -945,16 +951,31 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="7BGXXkyAYnI" role="3cqZAp">
+          <node concept="3clFbS" id="7BGXXkyAYnK" role="3clFbx">
+            <node concept="3cpWs6" id="7BGXXkyB58S" role="3cqZAp" />
+          </node>
+          <node concept="3fqX7Q" id="7BGXXkyAYQY" role="3clFbw">
+            <node concept="2OqwBi" id="7BGXXkyB0v8" role="3fr31v">
+              <node concept="37vLTw" id="7BGXXkyAZn8" role="2Oq$k0">
+                <ref role="3cqZAo" node="48wykyVMF_m" resolve="copyDescriptor" />
+              </node>
+              <node concept="liA8E" id="7BGXXkyB2XX" role="2OqNvi">
+                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.isOutputRootFromLegacy()" resolve="isOutputRootFromLegacy" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="430AFL9fQNj" role="3cqZAp">
           <node concept="3cpWsn" id="430AFL9fQNk" role="3cpWs9">
             <property role="TrG5h" value="generatorOutputPath" />
             <node concept="3uibUv" id="430AFL9fQkD" role="1tU5fm">
               <ref role="3uigEE" to="wyt6:~String" resolve="String" />
             </node>
-            <node concept="2YIFZM" id="430AFL9fQNl" role="33vP2m">
-              <ref role="37wK5l" to="z1c3:~ProjectPathUtil.getGeneratorOutputPath(jetbrains.mps.project.structure.modules.ModuleDescriptor)" resolve="getGeneratorOutputPath" />
+            <node concept="2YIFZM" id="7BGXXkyAOWI" role="33vP2m">
+              <ref role="37wK5l" to="z1c3:~ProjectPathUtil._getGeneratorOutputPathPrim(jetbrains.mps.project.structure.modules.ModuleDescriptor)" resolve="_getGeneratorOutputPathPrim" />
               <ref role="1Pybhc" to="z1c3:~ProjectPathUtil" resolve="ProjectPathUtil" />
-              <node concept="37vLTw" id="430AFL9fQNm" role="37wK5m">
+              <node concept="37vLTw" id="7BGXXkyAOWJ" role="37wK5m">
                 <ref role="3cqZAo" node="48wykyVMF_m" resolve="copyDescriptor" />
               </node>
             </node>
@@ -963,19 +984,19 @@
         <node concept="3clFbJ" id="430AFL9fSb1" role="3cqZAp">
           <node concept="3clFbS" id="430AFL9fSb3" role="3clFbx">
             <node concept="3clFbF" id="430AFL9fW85" role="3cqZAp">
-              <node concept="2YIFZM" id="430AFL9fWGh" role="3clFbG">
-                <ref role="37wK5l" to="z1c3:~ProjectPathUtil.setGeneratorOutputPath(jetbrains.mps.project.structure.modules.ModuleDescriptor,java.lang.String)" resolve="setGeneratorOutputPath" />
+              <node concept="2YIFZM" id="7BGXXkyAPqt" role="3clFbG">
+                <ref role="37wK5l" to="z1c3:~ProjectPathUtil._setGeneratorOutputPathPrim(jetbrains.mps.project.structure.modules.ModuleDescriptor,java.lang.String)" resolve="_setGeneratorOutputPathPrim" />
                 <ref role="1Pybhc" to="z1c3:~ProjectPathUtil" resolve="ProjectPathUtil" />
-                <node concept="37vLTw" id="430AFL9fZsR" role="37wK5m">
+                <node concept="37vLTw" id="7BGXXkyAPqu" role="37wK5m">
                   <ref role="3cqZAo" node="48wykyVMF_m" resolve="copyDescriptor" />
                 </node>
-                <node concept="2OqwBi" id="430AFL9fXCJ" role="37wK5m">
-                  <node concept="37vLTw" id="430AFL9fXCK" role="2Oq$k0">
+                <node concept="2OqwBi" id="7BGXXkyAPqv" role="37wK5m">
+                  <node concept="37vLTw" id="7BGXXkyAPqw" role="2Oq$k0">
                     <ref role="3cqZAo" node="6CFNGGphKi8" resolve="myModulePathConverter" />
                   </node>
-                  <node concept="liA8E" id="430AFL9fXCL" role="2OqNvi">
+                  <node concept="liA8E" id="7BGXXkyAPqx" role="2OqNvi">
                     <ref role="37wK5l" to="18ew:~ModulePathConverter.source2Target(java.lang.String)" resolve="source2Target" />
-                    <node concept="37vLTw" id="430AFL9fXCM" role="37wK5m">
+                    <node concept="37vLTw" id="7BGXXkyAPqy" role="37wK5m">
                       <ref role="3cqZAo" node="430AFL9fQNk" resolve="generatorOutputPath" />
                     </node>
                   </node>
@@ -996,6 +1017,15 @@
             <node concept="37vLTw" id="48wykyVMFA_" role="37wK5m">
               <ref role="3cqZAo" node="48wykyVMF_m" resolve="copyDescriptor" />
             </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7BGXXkyB63z" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~SuppressWarnings" resolve="SuppressWarnings" />
+        <node concept="1SXeKx" id="7BGXXkyB7jh" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~SuppressWarnings.value()" resolve="value" />
+          <node concept="Xl_RD" id="7BGXXkyB7jg" role="2B70Vg">
+            <property role="Xl_RC" value="removal" />
           </node>
         </node>
       </node>

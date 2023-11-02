@@ -144,7 +144,6 @@
     <import index="tpcc" ref="r:00000000-0000-4000-0000-011c89590290(jetbrains.mps.lang.structure.plugin)" />
     <import index="q9cj" ref="cac2fef0-41a6-4fcd-923f-f893d536b2ab/java:jetbrains.mps.ide.devkit.typesystem.trace(jetbrains.mps.ide.mpsdevkit/)" />
     <import index="gspm" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.popup(MPS.IDEA/)" />
-    <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -11006,6 +11005,40 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="DmFJ5GCNve" role="3cqZAp">
+          <node concept="3cpWsn" id="DmFJ5GCNvf" role="3cpWs9">
+            <property role="TrG5h" value="generatorModuleLocation" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="DmFJ5GCNvg" role="1tU5fm">
+              <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+            </node>
+            <node concept="2OqwBi" id="4e2kfWTMii9" role="33vP2m">
+              <node concept="1eOMI4" id="430AFL9kJpM" role="2Oq$k0">
+                <node concept="2OqwBi" id="430AFL9kJpE" role="1eOMHV">
+                  <node concept="1eOMI4" id="430AFL9kJpF" role="2Oq$k0">
+                    <node concept="10QFUN" id="430AFL9kJpG" role="1eOMHV">
+                      <node concept="3uibUv" id="430AFL9kJpH" role="10QFUM">
+                        <ref role="3uigEE" to="w1kc:~Generator" resolve="Generator" />
+                      </node>
+                      <node concept="2OqwBi" id="430AFL9kJpI" role="10QFUP">
+                        <node concept="2WthIp" id="430AFL9kJpJ" role="2Oq$k0" />
+                        <node concept="1DTwFV" id="430AFL9kJpK" role="2OqNvi">
+                          <ref role="2WH_rO" node="DmFJ5GBI7e" resolve="module" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="430AFL9kJpL" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~AbstractModule.getOutputPath()" resolve="getOutputPath" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="4e2kfWTMixj" role="2OqNvi">
+                <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3SKdUt" id="DmFJ5GCMU$" role="3cqZAp">
           <node concept="1PaTwC" id="DmFJ5GCMU_" role="1aUNEU">
             <node concept="3oM_SD" id="DmFJ5GCMUB" role="1PaTwD">
@@ -11093,39 +11126,6 @@
               <ref role="37wK5l" to="w0gx:~GeneratorDescriptor.standaloneModule(boolean)" resolve="standaloneModule" />
               <node concept="3clFbT" id="DmFJ5GCM09" role="37wK5m">
                 <property role="3clFbU" value="true" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="DmFJ5GCNve" role="3cqZAp">
-          <node concept="3cpWsn" id="DmFJ5GCNvf" role="3cpWs9">
-            <property role="TrG5h" value="generatorModuleLocation" />
-            <node concept="3uibUv" id="DmFJ5GCNvg" role="1tU5fm">
-              <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
-            </node>
-            <node concept="2OqwBi" id="4e2kfWTMii9" role="33vP2m">
-              <node concept="2OqwBi" id="4e2kfWTMgdt" role="2Oq$k0">
-                <node concept="2OqwBi" id="4e2kfWTMf$d" role="2Oq$k0">
-                  <node concept="37vLTw" id="4e2kfWTMepq" role="2Oq$k0">
-                    <ref role="3cqZAo" node="DmFJ5GCU$X" resolve="myProject" />
-                  </node>
-                  <node concept="liA8E" id="4e2kfWTMg8A" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c4:~MPSProject.getFileSystem()" resolve="getFileSystem" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="4e2kfWTMguW" role="2OqNvi">
-                  <ref role="37wK5l" to="4hrd:~IdeaFileSystem.getFile(java.lang.String)" resolve="getFile" />
-                  <node concept="2YIFZM" id="4e2kfWTMa4H" role="37wK5m">
-                    <ref role="1Pybhc" to="z1c3:~ProjectPathUtil" resolve="ProjectPathUtil" />
-                    <ref role="37wK5l" to="z1c3:~ProjectPathUtil.getGeneratorOutputPath(jetbrains.mps.project.structure.modules.ModuleDescriptor)" resolve="getGeneratorOutputPath" />
-                    <node concept="37vLTw" id="4e2kfWTMa8M" role="37wK5m">
-                      <ref role="3cqZAo" node="DmFJ5GCKPp" resolve="md" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="liA8E" id="4e2kfWTMixj" role="2OqNvi">
-                <ref role="37wK5l" to="4hrd:~IdeaFile.getParent()" resolve="getParent" />
               </node>
             </node>
           </node>

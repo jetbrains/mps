@@ -83,11 +83,15 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
     return copyDescriptor;
   }
 
+  @SuppressWarnings("removal")
   private void hackModuleDescriptor(final ModuleDescriptor copyDescriptor) {
     // will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
-    String generatorOutputPath = ProjectPathUtil.getGeneratorOutputPath(copyDescriptor);
+    if (!(copyDescriptor.isOutputRootFromLegacy())) {
+      return;
+    }
+    String generatorOutputPath = ProjectPathUtil._getGeneratorOutputPathPrim(copyDescriptor);
     if (generatorOutputPath != null) {
-      ProjectPathUtil.setGeneratorOutputPath(copyDescriptor, myModulePathConverter.source2Target(generatorOutputPath));
+      ProjectPathUtil._setGeneratorOutputPathPrim(copyDescriptor, myModulePathConverter.source2Target(generatorOutputPath));
     }
     hackDeploymentDescriptor(copyDescriptor);
   }

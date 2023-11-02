@@ -29,10 +29,18 @@ public class SolutionDescriptor extends ModuleDescriptor {
   private boolean myRequestCompileIDEA = false;
   private boolean myReadOnlyStubModule = false;
 
+  /**
+   * @deprecated use {@link ModuleDescriptor#getOutputRoot()}, instead
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public final String getOutputPath() {
     return myOutputPath;
   }
 
+  /**
+   * @deprecated use {@link ModuleDescriptor#setOutputRoot(String)}, instead
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public final void setOutputPath(String outputPath) {
     myOutputPath = outputPath;
   }

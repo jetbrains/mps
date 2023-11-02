@@ -97,10 +97,9 @@ public interface JavaModuleFacet extends SModuleFacet, GenerationTargetFacet {
   @Nullable
   default IFile getOutputRoot() {
     if (getModule() instanceof AbstractModule ) {
-      // there's no output location for packaged/deployed modules
-      String outputPath = ProjectPathUtil.getGeneratorOutputPath(((AbstractModule) getModule()).getModuleDescriptor());
-      final String expanded = outputPath == null ? null : MacrosFactory.forModule(getModule()).expandPath(outputPath);
-      return outputPath == null ? null : ((AbstractModule) getModule()).getFileSystem().getFile(expanded);
+      // FIXME generally, there's no output location for packaged/deployed modules, but in fa6fcfeb MM removed !isPackaged check here
+      //       (w/o any justification, as usual). Get back here once AM.getOutputPath() use in JavaToMps_Test get resolved
+      return  ((AbstractModule) getModule()).getOutputPath();
     }
     return null;
   }

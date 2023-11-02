@@ -15,7 +15,7 @@ import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.persistence.DefaultModelRoot;
-import jetbrains.mps.project.ProjectPathUtil;
+import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.facets.JavaModuleFacetImpl;
@@ -74,7 +74,7 @@ public class SolutionProducer {
     }
 
     descriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(modelsDir.getParent(), modelsDir));
-    ProjectPathUtil.setGeneratorOutputPath(descriptor, moduleLocation.findChild("source_gen").getPath());
+    descriptor.setOutputRoot(MacrosFactory.MODULE + "/source_gen");
     return descriptor;
   }
 

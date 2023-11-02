@@ -121,6 +121,7 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.ToStringComparator;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
@@ -455,8 +456,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     }
 
     private String getGenOutPath() {
-      String outputDir = ProjectPathUtil.getGeneratorOutputPath(myModuleDescriptor);
-      return outputDir != null ? FileUtil.getCanonicalPath(outputDir) : "";
+      IFile outputDir = myModule.getOutputPath();
+      return outputDir != null ? FileUtil.getCanonicalPath(outputDir.getPath()) : "";
     }
 
     @Override
@@ -520,8 +521,9 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         if (myGenOut != null) {
           String genOut = PathUtil.toSystemIndependent(myGenOut.getText());
           if (!genOut.equals(getGenOutPath())) {
-            // here we imply getGenOutPath uses ProjectPathUtil.getGeneratorOutputPath
-            ProjectPathUtil.setGeneratorOutputPath(myModuleDescriptor, genOut);
+            // here we imply getGenOutPath uses AM.getOutputPath()
+            // TODO utilize the fact AM keeps IFile (or, perhaps, resort to PathSpec?)
+            myModule.setOutputPath(myModule.getFileSystem().getFile(genOut));
           }
         }
         if (myLanguageVersion != null) {

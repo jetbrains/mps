@@ -47,7 +47,8 @@ public class LanguageDescriptorPersistence {
           final ModuleId result_v3r4p8_a0a2a0a0a0c0g = ModuleId.fromString(uuid);
           result_v3r4p8_a0a0a0c0g.setId(result_v3r4p8_a0a2a0a0a0c0g);
         }
-
+        final String result_v3r4p8_a3a0a0a0c0g = languageElement.getAttributeValue("generatorOutputPath");
+        result_v3r4p8_a0a0a0c0g.setOutputRoot(result_v3r4p8_a3a0a0a0c0g);
         final String result_v3r4p8_a4a0a0a0c0g = myMacroHelper.expandPath(XmlUtil.stringWithDefault(languageElement, "generatorOutputPath", SOURCE_GEN_DEFAULT));
         result_v3r4p8_a0a0a0c0g.setGenPath(result_v3r4p8_a4a0a0a0c0g);
 
@@ -125,7 +126,9 @@ public class LanguageDescriptorPersistence {
     if (descriptor.getId() != null) {
       languageElement.setAttribute("uuid", descriptor.getId().toString());
     }
-    if (descriptor.getGenPath() != null) {
+    if (descriptor.getOutputRoot() != null) {
+      languageElement.setAttribute("generatorOutputPath", descriptor.getOutputRoot());
+    } else if (descriptor.getGenPath() != null) {
       String p = myMacroHelper.shrinkPath(descriptor.getGenPath());
       if (!(SOURCE_GEN_DEFAULT.equals(p))) {
         languageElement.setAttribute("generatorOutputPath", p);

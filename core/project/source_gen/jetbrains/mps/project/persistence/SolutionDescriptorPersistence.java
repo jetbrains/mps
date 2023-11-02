@@ -62,7 +62,8 @@ public class SolutionDescriptorPersistence {
           } catch (NumberFormatException ignored) {
           }
         }
-
+        final String result_8ckma3_a11a0a0a0b0k = rootElement.getAttributeValue("generatorOutputPath");
+        result_8ckma3_a0a0a0b0k.setOutputRoot(result_8ckma3_a11a0a0a0b0k);
         final String result_8ckma3_a21a0a0a0b0k = myMacroHelper.expandPath(XmlUtil.stringWithDefault(rootElement, "generatorOutputPath", SOURCE_GEN_DEFAULT));
         result_8ckma3_a0a0a0b0k.setOutputPath(result_8ckma3_a21a0a0a0b0k);
 
@@ -103,7 +104,9 @@ public class SolutionDescriptorPersistence {
       result.setAttribute("uuid", descriptor.getId().toString());
     }
     result.setAttribute("moduleVersion", Integer.toString(descriptor.getModuleVersion()));
-    if (descriptor.getOutputPath() != null) {
+    if (descriptor.getOutputRoot() != null) {
+      result.setAttribute("generatorOutputPath", descriptor.getOutputRoot());
+    } else if (descriptor.getOutputPath() != null) {
       String p = myMacroHelper.shrinkPath(descriptor.getOutputPath());
       if (!(SOURCE_GEN_DEFAULT.equals(p))) {
         result.setAttribute("generatorOutputPath", p);

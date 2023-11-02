@@ -283,7 +283,8 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     String name = fileName.substring(0, fileName.length() - 4);
     solutionDescriptor.setId(ModuleId.regular());
     solutionDescriptor.setNamespace(name);
-    solutionDescriptor.setOutputPath(runtimeSolutionDescriptorFile.getParent().findChild("src_gen").getPath());
+    // XXX can use {$module}/src_gen here, if necessary
+    solutionDescriptor.setOutputRoot(runtimeSolutionDescriptorFile.getParent().findChild("src_gen").getPath());
 
     solutionDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createSingleFolderDescriptor(runtimeSolutionDescriptorFile.getParent()));
     solutionDescriptor.getDependencies().add(new Dependency(BootstrapLanguages.jdkRef(), true));
@@ -303,7 +304,8 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     d.setId(ModuleId.regular());
     d.setNamespace(languageNamespace);
     d.getRuntimeModules().add(myCreatedRuntimeSolution.getModuleReference());
-    d.setGenPath(descriptorFile.getParent().findChild("src_gen").getPath());
+    // XXX can use {$module}/src_gen here, if necessary
+    d.setOutputRoot(descriptorFile.getParent().findChild("src_gen").getPath());
     TestModuleFactoryBase.withJavaFacet(d);
 
     IFile languageModels = descriptorFile.getParent().findChild(Language.LANGUAGE_MODELS);
@@ -326,7 +328,8 @@ public class TestMakeOnRealProject implements EnvironmentAware {
     String name = fileName.substring(0, fileName.length() - 4);
     solutionDescriptor.setNamespace(name);
     TestModuleFactoryBase.withJavaFacet(solutionDescriptor);
-    solutionDescriptor.setOutputPath(descriptorFile.getParent().findChild("src_gen").getPath());
+    // XXX can use {$module}/src_gen here, if necessary
+    solutionDescriptor.setOutputRoot(descriptorFile.getParent().findChild("src_gen").getPath());
 
     solutionDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createSingleFolderDescriptor(descriptorFile.getParent()));
     

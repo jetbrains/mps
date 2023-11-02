@@ -114,7 +114,7 @@ class MPSModuleCollector {
       IFile moduleDir = moduleIFile.getParent();
       IFile classesGenDir = classGenOrLegacy(md, expander);
       DescriptorEntry de = new DescriptorEntry(moduleDir);
-      String srcPath = ProjectPathUtil.getGeneratorOutputPath(md);
+      String srcPath = getGeneratorOutputPath(md, expander);
       de.addSourcePath(getCanonicalPath(srcPath));
       final IFile testsOutputPath = TestsFacetImpl.getTestsOutputPath(md, moduleIFile);
       if (testsOutputPath != null) {
@@ -125,13 +125,22 @@ class MPSModuleCollector {
       if (md instanceof LanguageDescriptor) {
         LanguageDescriptor ld = ((LanguageDescriptor) md);
         for (GeneratorDescriptor generator : ld.getGenerators()) {
-          String generatorSrcPath = getCanonicalPath(ProjectPathUtil.getGeneratorOutputPath(generator));
+          String generatorSrcPath = getCanonicalPath(getGeneratorOutputPath(generator, expander));
           de.addSourcePath(generatorSrcPath);
           de.addClassGenPath(classGenOrLegacy(generator, expander));
         }
       }
       myResult.add(de);
     }
+  }
+
+  @SuppressWarnings("removal")
+  private static String getGeneratorOutputPath(final ModuleDescriptor md, final MacroHelper macroHelper) {
+    if (md.getOutputRoot() != null) {
+      return macroHelper.expandPath(md.getOutputRoot());
+    }
+    final String p = ProjectPathUtil._getGeneratorOutputPathPrim(md);
+    return p == null ? null : macroHelper.expandPath(p);
   }
 
   private IFile classGenOrLegacy(final ModuleDescriptor md, final MacroHelper macroHelper) {

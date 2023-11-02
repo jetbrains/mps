@@ -32,6 +32,7 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="2k9e" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
+    <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -854,27 +855,21 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="eb0uW_pWjc" role="3cqZAp">
-          <node concept="2YIFZM" id="eb0uW_pWz7" role="3clFbG">
-            <ref role="37wK5l" to="z1c4:~ProjectPathUtil.setGeneratorOutputPath(jetbrains.mps.project.structure.modules.ModuleDescriptor,java.lang.String)" resolve="setGeneratorOutputPath" />
-            <ref role="1Pybhc" to="z1c4:~ProjectPathUtil" resolve="ProjectPathUtil" />
-            <node concept="37vLTw" id="eb0uW_pWMY" role="37wK5m">
+        <node concept="3clFbF" id="430AFL9iyr2" role="3cqZAp">
+          <node concept="2OqwBi" id="430AFL9izPs" role="3clFbG">
+            <node concept="37vLTw" id="430AFL9iyr0" role="2Oq$k0">
               <ref role="3cqZAo" node="1Yd98ZZnqGf" resolve="descriptor" />
             </node>
-            <node concept="2OqwBi" id="eb0uW_pZg8" role="37wK5m">
-              <node concept="2OqwBi" id="eb0uW_pYSL" role="2Oq$k0">
-                <node concept="37vLTw" id="eb0uW_pYLW" role="2Oq$k0">
-                  <ref role="3cqZAo" node="eb0uW_pWVL" resolve="moduleLocation" />
+            <node concept="liA8E" id="430AFL9i_9Y" role="2OqNvi">
+              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.setOutputRoot(java.lang.String)" resolve="setOutputRoot" />
+              <node concept="3cpWs3" id="430AFL9iJgL" role="37wK5m">
+                <node concept="10M0yZ" id="430AFL9iI1B" role="3uHU7B">
+                  <ref role="3cqZAo" to="18ew:~MacrosFactory.MODULE" resolve="MODULE" />
+                  <ref role="1PxDUh" to="18ew:~MacrosFactory" resolve="MacrosFactory" />
                 </node>
-                <node concept="liA8E" id="eb0uW_pZ0G" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
-                  <node concept="Xl_RD" id="eb0uW_pZ4u" role="37wK5m">
-                    <property role="Xl_RC" value="source_gen" />
-                  </node>
+                <node concept="Xl_RD" id="eb0uW_pZ4u" role="3uHU7w">
+                  <property role="Xl_RC" value="/source_gen" />
                 </node>
-              </node>
-              <node concept="liA8E" id="eb0uW_pZrT" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
               </node>
             </node>
           </node>
@@ -1987,27 +1982,21 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="eb0uW_pZTb" role="3cqZAp">
-          <node concept="2YIFZM" id="eb0uW_q0a9" role="3clFbG">
-            <ref role="37wK5l" to="z1c4:~ProjectPathUtil.setGeneratorOutputPath(jetbrains.mps.project.structure.modules.ModuleDescriptor,java.lang.String)" resolve="setGeneratorOutputPath" />
-            <ref role="1Pybhc" to="z1c4:~ProjectPathUtil" resolve="ProjectPathUtil" />
-            <node concept="37vLTw" id="eb0uW_q0ol" role="37wK5m">
+        <node concept="3clFbF" id="430AFL9gJWb" role="3cqZAp">
+          <node concept="2OqwBi" id="430AFL9gLL1" role="3clFbG">
+            <node concept="37vLTw" id="430AFL9gJW9" role="2Oq$k0">
               <ref role="3cqZAo" node="1Yd98ZZnqI1" resolve="languageDescriptor" />
             </node>
-            <node concept="2OqwBi" id="eb0uW_q2C3" role="37wK5m">
-              <node concept="2OqwBi" id="eb0uW_q2bM" role="2Oq$k0">
-                <node concept="37vLTw" id="eb0uW_q24X" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1Yd98ZZnqHX" resolve="moduleLocation" />
+            <node concept="liA8E" id="430AFL9gQ3m" role="2OqNvi">
+              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.setOutputRoot(java.lang.String)" resolve="setOutputRoot" />
+              <node concept="3cpWs3" id="430AFL9iRsX" role="37wK5m">
+                <node concept="10M0yZ" id="430AFL9iRsY" role="3uHU7B">
+                  <ref role="3cqZAo" to="18ew:~MacrosFactory.MODULE" resolve="MODULE" />
+                  <ref role="1PxDUh" to="18ew:~MacrosFactory" resolve="MacrosFactory" />
                 </node>
-                <node concept="liA8E" id="eb0uW_q2oD" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
-                  <node concept="Xl_RD" id="eb0uW_q2sr" role="37wK5m">
-                    <property role="Xl_RC" value="source_gen" />
-                  </node>
+                <node concept="Xl_RD" id="430AFL9iRsZ" role="3uHU7w">
+                  <property role="Xl_RC" value="/source_gen" />
                 </node>
-              </node>
-              <node concept="liA8E" id="eb0uW_q2MJ" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
               </node>
             </node>
           </node>
@@ -2723,18 +2712,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="5p8mYrmbuPi" role="3cqZAp">
-          <node concept="2YIFZM" id="5p8mYrmbuPj" role="3clFbG">
-            <ref role="37wK5l" to="b0pz:~JavaModuleFacetImpl.setDefaultClassesGenLocation(jetbrains.mps.project.structure.modules.ModuleFacetDescriptor,jetbrains.mps.vfs.IFile)" resolve="setDefaultClassesGenLocation" />
-            <ref role="1Pybhc" to="b0pz:~JavaModuleFacetImpl" resolve="JavaModuleFacetImpl" />
-            <node concept="37vLTw" id="5p8mYrmbuPk" role="37wK5m">
-              <ref role="3cqZAo" node="2Pn$dJuuvDt" resolve="jmfDescriptor" />
-            </node>
-            <node concept="37vLTw" id="5p8mYrmbuPl" role="37wK5m">
-              <ref role="3cqZAo" node="eb0uW_hR5U" resolve="generatorModuleLocation" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="39hYxrtzHa1" role="3cqZAp">
           <node concept="2OqwBi" id="39hYxrtzHa2" role="3clFbG">
             <node concept="2OqwBi" id="39hYxrtzHa3" role="2Oq$k0">
@@ -2753,27 +2730,113 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="eb0uW_pTdK" role="3cqZAp">
-          <node concept="2YIFZM" id="eb0uW_pTsT" role="3clFbG">
-            <ref role="1Pybhc" to="z1c4:~ProjectPathUtil" resolve="ProjectPathUtil" />
-            <ref role="37wK5l" to="z1c4:~ProjectPathUtil.setGeneratorOutputPath(jetbrains.mps.project.structure.modules.ModuleDescriptor,java.lang.String)" resolve="setGeneratorOutputPath" />
-            <node concept="37vLTw" id="eb0uW_pUkJ" role="37wK5m">
+        <node concept="3SKdUt" id="430AFL9irhV" role="3cqZAp">
+          <node concept="1PaTwC" id="430AFL9irhW" role="1aUNEU">
+            <node concept="3oM_SD" id="430AFL9irm9" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9iswm" role="1PaTwD">
+              <property role="3oM_SC" value="indeed," />
+            </node>
+            <node concept="3oM_SD" id="430AFL9isAF" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9isBP" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9isCa" role="1PaTwD">
+              <property role="3oM_SC" value="nice" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9isD6" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9isDd" role="1PaTwD">
+              <property role="3oM_SC" value="&quot;${module}/source_gen&quot;" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9isLP" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9isNk" role="1PaTwD">
+              <property role="3oM_SC" value="PathSpec" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9isP4" role="1PaTwD">
+              <property role="3oM_SC" value="tolerates" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9isQP" role="1PaTwD">
+              <property role="3oM_SC" value="full" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9isVD" role="1PaTwD">
+              <property role="3oM_SC" value="path," />
+            </node>
+            <node concept="3oM_SD" id="430AFL9isXc" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9isXq" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9it1G" role="1PaTwD">
+              <property role="3oM_SC" value="didn't" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9it48" role="1PaTwD">
+              <property role="3oM_SC" value="get" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9it4p" role="1PaTwD">
+              <property role="3oM_SC" value="information" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9it6B" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9it6U" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9it7u" role="1PaTwD">
+              <property role="3oM_SC" value="generator" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9it8T" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9ita_" role="1PaTwD">
+              <property role="3oM_SC" value="inside" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9itdY" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9item" role="1PaTwD">
+              <property role="3oM_SC" value="language" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9iti1" role="1PaTwD">
+              <property role="3oM_SC" value="or" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9itir" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="430AFL9itks" role="1PaTwD">
+              <property role="3oM_SC" value="standalone" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="430AFL9iefy" role="3cqZAp">
+          <node concept="2OqwBi" id="430AFL9iftu" role="3clFbG">
+            <node concept="37vLTw" id="430AFL9iefw" role="2Oq$k0">
               <ref role="3cqZAo" node="eb0uW_hMJ1" resolve="generatorDescriptor" />
             </node>
-            <node concept="2OqwBi" id="eb0uW_pVfr" role="37wK5m">
-              <node concept="2OqwBi" id="eb0uW_pUMu" role="2Oq$k0">
-                <node concept="37vLTw" id="eb0uW_pUFs" role="2Oq$k0">
-                  <ref role="3cqZAo" node="eb0uW_hR5U" resolve="generatorModuleLocation" />
-                </node>
-                <node concept="liA8E" id="eb0uW_pUZy" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
-                  <node concept="Xl_RD" id="eb0uW_pV2Q" role="37wK5m">
-                    <property role="Xl_RC" value="source_gen" />
+            <node concept="liA8E" id="430AFL9iklA" role="2OqNvi">
+              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.setOutputRoot(java.lang.String)" resolve="setOutputRoot" />
+              <node concept="2OqwBi" id="eb0uW_pVfr" role="37wK5m">
+                <node concept="2OqwBi" id="eb0uW_pUMu" role="2Oq$k0">
+                  <node concept="37vLTw" id="eb0uW_pUFs" role="2Oq$k0">
+                    <ref role="3cqZAo" node="eb0uW_hR5U" resolve="generatorModuleLocation" />
+                  </node>
+                  <node concept="liA8E" id="eb0uW_pUZy" role="2OqNvi">
+                    <ref role="37wK5l" to="3ju5:~IFile.findChild(java.lang.String)" resolve="findChild" />
+                    <node concept="Xl_RD" id="eb0uW_pV2Q" role="37wK5m">
+                      <property role="Xl_RC" value="source_gen" />
+                    </node>
                   </node>
                 </node>
-              </node>
-              <node concept="liA8E" id="eb0uW_pVuh" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
+                <node concept="liA8E" id="eb0uW_pVuh" role="2OqNvi">
+                  <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
+                </node>
               </node>
             </node>
           </node>

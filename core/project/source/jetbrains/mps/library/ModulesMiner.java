@@ -626,10 +626,12 @@ public final class ModulesMiner {
   }
 
   // part of processExcludes() with common code for any module type
-  private void processModuleExcludes(jetbrains.mps.vfs.openapi.FileSystem fileSystem, ModuleDescriptor descriptor) {
-    String generatorOutputPath = ProjectPathUtil.getGeneratorOutputPath(descriptor);
+  @SuppressWarnings("removal")
+  private void processModuleExcludes(jetbrains.mps.vfs.openapi.FileSystem fileSystem, MacroHelper macroHelper, ModuleDescriptor descriptor) {
+    // FIXME keep use of legacy value as it comes with default; need to refactor this later
+    String generatorOutputPath = ProjectPathUtil._getGeneratorOutputPathPrim(descriptor);
     if (generatorOutputPath != null) {
-      IFile genOutputFile = fileSystem.getFile(generatorOutputPath);
+      IFile genOutputFile = fileSystem.getFile(macroHelper.expandPath(generatorOutputPath));
       excludeGeneratedSourcesDir(genOutputFile);
       // we don't care if there's indeed tests facet or if the folder exists
       // and I don't see why TestsFacetImpl.fromModuleDescriptor(arbitraryFile, MD) gives better result than hard-coded, source_gen-relative path,
@@ -657,11 +659,11 @@ public final class ModulesMiner {
 
     // I can tolerate use of MD.getSourcePaths here as MM knows about MD anyway
     for (String p : descriptor.getSourcePathPersistedValue()) {
-      myExcludes.add(fileSystem.getFile(p));
+      myExcludes.add(fileSystem.getFile(macroHelper.expandPath(p)));
     }
 
     for (String entry : descriptor.getJavaLibPersistedValues()) {
-      myExcludes.add(fileSystem.getFile(entry));
+      myExcludes.add(fileSystem.getFile(macroHelper.expandPath(entry)));
     }
   }
 
@@ -674,11 +676,12 @@ public final class ModulesMiner {
     }
     try {
       jetbrains.mps.vfs.openapi.FileSystem fileSystem = descriptorFile.getFileSystem();
-      processModuleExcludes(fileSystem, descriptor);
+      final MacroHelper mh = MacrosFactory.forModuleFile(descriptorFile);
+      processModuleExcludes(fileSystem, mh, descriptor);
 
       if (descriptor instanceof LanguageDescriptor) {
         for (GeneratorDescriptor generator : ((LanguageDescriptor) descriptor).getGenerators()) {
-          processModuleExcludes(fileSystem, generator);
+          processModuleExcludes(fileSystem, mh, generator);
         }
       }
     } catch (PathFormatException ex) {
