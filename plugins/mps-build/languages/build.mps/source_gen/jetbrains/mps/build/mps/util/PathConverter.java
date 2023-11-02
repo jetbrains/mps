@@ -18,7 +18,6 @@ import jetbrains.mps.build.behavior.BuildFolderMacro__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.vfs.path.FilePath;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.io.File;
 import java.io.IOException;
@@ -87,9 +86,7 @@ public class PathConverter {
     if (path.equals(myModuleLocation.getPath())) {
       return "";
     }
-    if (FilePath.fromStringInDefaultFormat(path).startsWith(myModuleLocation.toPath())) {
-      // fall-through, relativize() not implemented
-    }
+    // Causes NPE on Windows where the first part of Path.getAllParts() may be null
     String moduleLocWithTrailingSlash = normalizePath(myModuleLocation.getPath(), true);
     if (path.startsWith(moduleLocWithTrailingSlash)) {
       return path.substring(moduleLocWithTrailingSlash.length());
