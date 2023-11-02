@@ -139,7 +139,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
   private DeploymentDescriptor myDeploymentDescriptor; // FIXME must be removed
 
   private Throwable myLoadException;
-  private boolean myUseTransientOutput;
 
   public ModuleDescriptor() {
   }
@@ -358,14 +357,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     myLoadException = loadException;
   }
 
-  public boolean isUseTransientOutput() {
-    return myUseTransientOutput;
-  }
-
-  public void setUseTransientOutput(boolean useTransientOutput) {
-    myUseTransientOutput = useTransientOutput;
-  }
-
   protected int getHeaderMarker() {
     return 0x73048111;
   }
@@ -404,7 +395,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
       myDeploymentDescriptor.save(stream);
     }
 
-    stream.writeBoolean(myUseTransientOutput);
     stream.writeInt(myModuleVersion);
 
     stream.writeByte(0x3a);
@@ -454,7 +444,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
       throw new IOException("broken stream");
     }
 
-    myUseTransientOutput = stream.readBoolean();
     myModuleVersion = stream.readInt();
 
     if (stream.readByte() != 0x3a) throw new IOException("bad stream: no module descriptor end marker");
@@ -489,7 +478,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     descriptorCopy.getSourcePathPersistedValue().addAll(getSourcePathPersistedValue());
     copyDeploymentDescriptor(descriptorCopy);
     descriptorCopy.setLoadException(getLoadException());
-    descriptorCopy.setUseTransientOutput(isUseTransientOutput());
     return descriptorCopy;
   }
 
