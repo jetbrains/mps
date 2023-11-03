@@ -56,7 +56,7 @@ public class check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemR
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "cannot reference super before supertype constructor has been called", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "320231408717469940", null, errorTarget);
         }
       });
-      ListSequence.fromList(SLinkOperations.getChildren(constructorInvocation, LINKS.actualArgument$pzdx)).translate((arg) -> SNodeOperations.getNodeDescendants(arg, CONCEPTS.ThisExpression$$o, true, new SAbstractConcept[]{})).visitAll((it) -> {
+      ListSequence.fromList(SLinkOperations.getChildren(constructorInvocation, LINKS.actualArgument$pzdx)).translate((arg) -> SNodeOperations.getNodeDescendants(arg, CONCEPTS.ThisExpression$$o, true, new SAbstractConcept[]{})).where((it) -> (SLinkOperations.getTarget(it, LINKS.classConcept$zzjZ) == null)).visitAll((it) -> {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(it, "cannot reference this before supertype constructor has been called", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "320231408717482840", null, errorTarget);
@@ -90,6 +90,7 @@ public class check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemR
     /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
     /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
     /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink classConcept$zzjZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 
   private static final class PROPS {
