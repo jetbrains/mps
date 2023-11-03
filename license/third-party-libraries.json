@@ -107,6 +107,12 @@
   "license" : "BSD 2-Clause",
   "licenseUrl" : "https://github.com/cs-au-dk/dk.brics.automaton/blob/master/COPYING"
 }, {
+  "name" : "Bash-Preexec",
+  "url" : "https://github.com/rcaloras/bash-preexec",
+  "version" : "0.5.0",
+  "license" : "MIT",
+  "licenseUrl" : "https://github.com/rcaloras/bash-preexec/blob/master/LICENSE.md"
+}, {
   "name" : "Byte Buddy agent",
   "url" : "https://github.com/raphw/byte-buddy",
   "version" : "1.14.0",
@@ -131,12 +137,6 @@
   "license" : "CDDL 1.1 / GPL 2.0 + Classpath",
   "licenseUrl" : "https://oss.oracle.com/licenses/CDDL+GPL-1.1"
 }, {
-  "name" : "Compose Multiplatform",
-  "url" : "https://github.com/JetBrains/compose-multiplatform",
-  "version" : "1.5.10-beta01",
-  "license" : "Apache 2.0",
-  "licenseUrl" : "https://github.com/JetBrains/compose-multiplatform/blob/master/LICENSE.txt"
-}, {
   "name" : "Eclipse JDT Core",
   "url" : "https://www.eclipse.org/jdt/core/index.php",
   "version" : "4.2.1",
@@ -151,7 +151,7 @@
 }, {
   "name" : "Grazie AI",
   "url" : "https://packages.jetbrains.team/maven/p/grazi/grazie-platform-public/",
-  "version" : "0.2.194",
+  "version" : "0.2.199",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
 }, {
@@ -419,12 +419,6 @@
   "license" : "Apache 2.0",
   "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
 }, {
-  "name" : "Jewel",
-  "url" : "https://github.com/JetBrains/jewel",
-  "version" : "0.7.3-ij-233",
-  "license" : "Apache 2.0",
-  "licenseUrl" : "https://github.com/JetBrains/jewel/blob/main/LICENSE"
-}, {
   "name" : "Jing",
   "url" : "https://relaxng.org/jclark/jing.html",
   "version" : "20030619",
@@ -556,18 +550,6 @@
   "version" : "1.100141",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/google/roboto/blob/master/LICENSE"
-}, {
-  "name" : "Skiko Runtime",
-  "url" : "https://github.com/JetBrains/skiko/",
-  "version" : "0.7.81",
-  "license" : "Apache 2.0",
-  "licenseUrl" : "https://github.com/JetBrains/skiko/blob/master/LICENSE"
-}, {
-  "name" : "Slf4j",
-  "url" : "https://slf4j.org/",
-  "version" : "1.7.36",
-  "license" : "MIT",
-  "licenseUrl" : "https://www.slf4j.org/license.html"
 }, {
   "name" : "SnakeYAML",
   "url" : "https://bitbucket.org/snakeyaml/snakeyaml/",
@@ -961,31 +943,31 @@
 }, {
   "name" : "rd Swing integration",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-swing",
-  "version" : "2023.3.2",
+  "version" : "2023.3.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd core",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-core",
-  "version" : "2023.3.2",
+  "version" : "2023.3.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd framework",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-framework",
-  "version" : "2023.3.2",
+  "version" : "2023.3.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd generator",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-gen",
-  "version" : "2023.3.2",
+  "version" : "2023.3.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
   "name" : "rd text buffers",
   "url" : "https://github.com/JetBrains/rd/tree/master/rd-kt/rd-text",
-  "version" : "2023.3.2",
+  "version" : "2023.3.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/rd/blob/master/LICENSE"
 }, {
@@ -995,9 +977,15 @@
   "license" : "GPL 2.0 + Classpath",
   "licenseUrl" : "https://github.com/JetBrains/jdk-sa-jdwp/raw/master/LICENSE.txt"
 }, {
+  "name" : "slf4j-api",
+  "url" : "https://slf4j.org/",
+  "version" : "2.0.9",
+  "license" : "MIT",
+  "licenseUrl" : "https://www.slf4j.org/license.html"
+}, {
   "name" : "slf4j-jdk14",
   "url" : "https://slf4j.org/",
-  "version" : "1.7.36",
+  "version" : "2.0.9",
   "license" : "MIT",
   "licenseUrl" : "https://www.slf4j.org/license.html"
 }, {
