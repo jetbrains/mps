@@ -347,9 +347,12 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     // ensure ModelRoot has a chance to serialize their changes, if any
     // For now, we don't account for added/removed model roots as there's no API other than ModuleDescriptor, hence we only try to change matching MR-MRD pairs
     if (moduleDescriptor != null) {
-      // after #reloadAfterDescriptorChange(), myOutputRoot is our only source of information
+      // after #updateModuleDescriptorValues or #reloadAfterDescriptorChange(), myOutputRoot is our only source of information
       // FIXME it's not nice to modify MD, provided we use MD as an editing handle for module. Just need to come up with a better approach
       //       Note, for ModuleFacetDescriptor and ModelRootDescriptor, it's easier as they got Memento to keep the transformed values!
+      //       Perhaps, shall introduce Memento to keep MD settings instead of fields? Or to keep fields and introduce MD.load/save()
+      //       with Memento to populate the fields?
+      // Note, in persistence, we use empty string to indicate null (aka "no value")
       moduleDescriptor.setOutputRoot(myOutputRoot == null ? null : myOutputRoot.shrink(MacrosFactory.forModule(this)));
       var descriptors = new LinkedList<>(moduleDescriptor.getModelRootDescriptors());
       // I can't change MRD.memento, therefore need to replace MRD instance with new memento, next collection is to ensure root ordering persists.

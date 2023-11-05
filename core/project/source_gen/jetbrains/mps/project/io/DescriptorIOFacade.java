@@ -4,7 +4,6 @@ package jetbrains.mps.project.io;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.MPSExtentions;
@@ -16,7 +15,7 @@ public class DescriptorIOFacade implements CoreComponent {
   private final StandardDescriptorIOProvider STANDARD_FACTORY;
 
   public DescriptorIOFacade() {
-    this(new MacrosFactory());
+    STANDARD_FACTORY = new StandardDescriptorIOProvider();
   }
   public DescriptorIO<? extends ModuleDescriptor> fromFileType(IFile file) {
     return fromExtension(standardProvider(), file.getPath());
@@ -46,8 +45,13 @@ public class DescriptorIOFacade implements CoreComponent {
     return INSTANCE;
   }
 
+  /**
+   * 
+   * @deprecated use no-arg cons
+   */
+  @Deprecated(forRemoval = true, since = "2023.3")
   public DescriptorIOFacade(MacroHelper.Source macroHelperSource) {
-    STANDARD_FACTORY = new StandardDescriptorIOProvider(macroHelperSource);
+    STANDARD_FACTORY = new StandardDescriptorIOProvider();
   }
 
   /**
@@ -58,7 +62,7 @@ public class DescriptorIOFacade implements CoreComponent {
    * @throws DescriptorIOException now, only in case {@code moduleFile} argument is not a recognized module file (use {@link #isModuleDescriptorFile(IFile) to tell good from bad}
    */
   public ModuleDescriptor readFromModuleFile(MacroHelper macroHelper, IFile moduleFile) throws DescriptorIOException {
-    DescriptorIOProvider sp = new StandardDescriptorIOProvider(macroHelper);
+    DescriptorIOProvider sp = new StandardDescriptorIOProvider();
     DescriptorIO<? extends ModuleDescriptor> io = fromExtension(sp, moduleFile.getPath());
     if (io == null) {
       throw new DescriptorIOException(String.format("File %s is not a recognized module descriptor", moduleFile));
@@ -72,7 +76,7 @@ public class DescriptorIOFacade implements CoreComponent {
 
   @Override
   public void init() {
-    INSTANCE = new DescriptorIOFacade();
+    INSTANCE = this;
   }
   @Override
   public void dispose() {
