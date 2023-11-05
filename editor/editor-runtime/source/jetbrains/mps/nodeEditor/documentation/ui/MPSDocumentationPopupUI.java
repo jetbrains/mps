@@ -12,9 +12,11 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.actionSystem.impl.ActionButton;
+import com.intellij.openapi.keymap.KeymapUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.ui.IdeBorderFactory;
@@ -58,7 +60,7 @@ public class MPSDocumentationPopupUI implements Disposable {
 
     List<AnAction> secondaryActions = new ArrayList<>();
     secondaryActions.add(new ShowToolbarAction("Show Toolbar"));
-    secondaryActions.add(new OpenInToolwindowAction("Open In Tool Window"));
+    secondaryActions.add(new OpenInToolwindowAction());
     DefaultActionGroup toolbarActionGroup = new DefaultActionGroup();
     for (AnAction secondaryAction : secondaryActions) {
       toolbarActionGroup.addAction(secondaryAction).setAsSecondary(true);
@@ -151,17 +153,19 @@ public class MPSDocumentationPopupUI implements Disposable {
     myComponent.setBorder(IdeBorderFactory.createBorder(UIUtil.getTooltipSeparatorColor(), SideBorder.TOP));
   }
 
-  private class OpenInToolwindowAction extends AnAction {
-    OpenInToolwindowAction(String text) {
-      super(text);
+  private final class OpenInToolwindowAction extends AnAction {
+    OpenInToolwindowAction() {
+      super("Open in Documentation Tool Window", null, null);
+      registerCustomShortcutSet(KeymapUtil.getActiveKeymapShortcuts(IdeActions.ACTION_QUICK_JAVADOC), myComponent, MPSDocumentationPopupUI.this);
     }
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
-      MPSDocumentationToolWindowManager.getInstance(myProject).showInToolWindow(myUI);
-      if (myPopup != null) {
-        myPopup.cancel();
-      }
+      assert myPopup != null;
+      myPopup.cancel();
+      MPSDocumentationUI ui = myUI;
+      myUI = null;
+      MPSDocumentationToolWindowManager.getInstance(myProject).showInToolWindow(ui);
     }
   }
 
