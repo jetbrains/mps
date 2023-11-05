@@ -46,7 +46,7 @@ public class MPSDocumentationPopupUI implements Disposable {
   private final JComponent myToolbarComponent;
   private final ActionButton myCorner;
   private final JComponent myComponent;
-  private boolean myToolbarSelected = true;
+  private boolean myToolbarSelected = false;
   private AbstractPopup myPopup;
   private final Project myProject;
 
