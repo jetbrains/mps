@@ -37299,16 +37299,6 @@
                 <node concept="2OqwBi" id="hLGck2F3hj" role="37wK5m">
                   <node concept="Xjq3P" id="hLGck2F3hk" role="2Oq$k0">
                     <ref role="1HBi2w" node="hLGck2ECn8" resolve="Outer" />
-                    <node concept="7CXmI" id="hLGck2F3Hg" role="lGtFl">
-                      <node concept="1TM$A" id="hLGck2F3Yk" role="7EUXB">
-                        <node concept="2PYRI3" id="hLGck2F3Yl" role="3lydEf">
-                          <ref role="39XzEq" to="tpeh:hLGck2xOHo" />
-                        </node>
-                        <node concept="1DMPye" id="hLGck2F3Ym" role="1DMPz9">
-                          <property role="1DMPyf" value="Error: cannot reference this before supertype constructor has been called" />
-                        </node>
-                      </node>
-                    </node>
                   </node>
                   <node concept="2OwXpG" id="hLGck2F3hl" role="2OqNvi">
                     <ref role="2Oxat5" node="hLGck1Gtop" resolve="superClassField" />

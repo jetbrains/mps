@@ -31730,104 +31730,112 @@
       </scope>
     </file>
     <file name="check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule.java">
-      <node id="5420652334935417985" at="29,134,30,129" concept="12" />
-      <node id="5420652334935418010" at="31,30,32,84" concept="12" />
-      <node id="5420652334935418024" at="32,84,33,117" concept="12" />
-      <node id="3133930811460325358" at="35,9,36,68" concept="12" />
-      <node id="3133930811460325358" at="36,68,37,383" concept="12" />
-      <node id="320231408715013519" at="39,7,40,0" concept="15" />
-      <node id="320231408715320037" at="42,9,43,68" concept="12" />
-      <node id="320231408715320037" at="43,68,44,395" concept="12" />
-      <node id="320231408717436561" at="48,9,49,68" concept="12" />
-      <node id="320231408717436561" at="49,68,50,393" concept="12" />
-      <node id="320231408717469940" at="54,9,55,68" concept="12" />
-      <node id="320231408717469940" at="55,68,56,281" concept="12" />
-      <node id="320231408717482840" at="60,9,61,68" concept="12" />
-      <node id="320231408717482840" at="61,68,62,280" concept="12" />
-      <node id="8218132442157478804" at="67,50,68,54" concept="13" />
-      <node id="8218132442157478804" at="70,68,71,102" concept="13" />
-      <node id="8218132442157478804" at="73,30,74,17" concept="13" />
-      <node id="8218132442157478804" at="78,0,79,0" concept="16" trace="ConstructorDeclaration$yG" />
-      <node id="8218132442157478804" at="79,0,80,0" concept="16" trace="LocalMethodCall$zT" />
-      <node id="8218132442157478804" at="80,0,81,0" concept="16" trace="InstanceMethodDeclaration$39" />
-      <node id="8218132442157478804" at="81,0,82,0" concept="16" trace="VariableReference$TC" />
-      <node id="8218132442157478804" at="82,0,83,0" concept="16" trace="FieldDeclaration$ie" />
-      <node id="8218132442157478804" at="83,0,84,0" concept="16" trace="SuperMethodCall$pW" />
-      <node id="8218132442157478804" at="84,0,85,0" concept="16" trace="ThisExpression$$o" />
-      <node id="8218132442157478804" at="85,0,86,0" concept="16" trace="ConstructorInvocationStatement$yY" />
-      <node id="8218132442157478804" at="89,0,90,0" concept="16" trace="body$5xQk" />
-      <node id="8218132442157478804" at="90,0,91,0" concept="16" trace="actualArgument$pzdx" />
-      <node id="8218132442157478804" at="91,0,92,0" concept="16" trace="baseMethodDeclaration$pyYw" />
-      <node id="8218132442157478804" at="92,0,93,0" concept="16" trace="variableDeclaration$N1XG" />
-      <node id="8218132442157478804" at="93,0,94,0" concept="16" trace="classConcept$zzjZ" />
-      <node id="8218132442157478804" at="97,0,98,0" concept="16" trace="name$MnvL" />
-      <node id="8218132442157478804" at="27,0,29,0" concept="3" trace="check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule#()V" />
-      <node id="8218132442157478804" at="67,0,70,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="8218132442157478804" at="70,0,73,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="8218132442157478804" at="73,0,76,0" concept="11" trace="overrides#()Z" />
-      <node id="3133930811460325358" at="34,52,38,9" concept="1" />
-      <node id="320231408715320037" at="41,398,45,9" concept="1" />
-      <node id="320231408717436561" at="47,387,51,9" concept="1" />
-      <node id="320231408717469940" at="53,246,57,9" concept="1" />
-      <node id="320231408717482840" at="59,325,63,9" concept="1" />
-      <node id="3133930811460325297" at="33,117,39,7" concept="10" />
-      <node id="320231408715033756" at="40,0,46,9" concept="6" />
-      <node id="320231408717436527" at="46,9,52,9" concept="6" />
-      <node id="320231408717469906" at="52,9,58,9" concept="6" />
-      <node id="320231408717482819" at="58,9,64,9" concept="6" />
-      <node id="5420652334935417994" at="30,129,65,5" concept="10" />
-      <node id="8218132442157478804" at="29,0,67,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="8218132442157478804" at="27,83,27,83" />
-      <scope id="8218132442157478804" at="67,50,68,54" />
-      <scope id="8218132442157478804" at="70,68,71,102" />
-      <scope id="8218132442157478804" at="73,30,74,17" />
-      <scope id="8218132442157478804" at="27,0,29,0" />
-      <scope id="3133930811460325358" at="35,9,37,383">
+      <node id="5420652334935417985" at="33,134,34,129" concept="12" />
+      <node id="5420652334935418010" at="35,30,36,84" concept="12" />
+      <node id="5420652334935418024" at="36,84,37,117" concept="12" />
+      <node id="3133930811460325358" at="39,9,40,68" concept="12" />
+      <node id="3133930811460325358" at="40,68,41,383" concept="12" />
+      <node id="320231408727363405" at="43,7,44,0" concept="15" />
+      <node id="320231408727277371" at="44,0,45,249" concept="12" />
+      <node id="320231408727223015" at="45,249,46,129" concept="12" />
+      <node id="320231408727312669" at="46,129,47,130" concept="12" />
+      <node id="320231408730276062" at="47,130,48,0" concept="15" />
+      <node id="320231408715320037" at="50,9,51,68" concept="12" />
+      <node id="320231408715320037" at="51,68,52,395" concept="12" />
+      <node id="320231408717436561" at="56,9,57,68" concept="12" />
+      <node id="320231408717436561" at="57,68,58,393" concept="12" />
+      <node id="320231408717469940" at="62,9,63,68" concept="12" />
+      <node id="320231408717469940" at="63,68,64,281" concept="12" />
+      <node id="320231408717482840" at="68,9,69,68" concept="12" />
+      <node id="320231408717482840" at="69,68,70,280" concept="12" />
+      <node id="8218132442157478804" at="75,50,76,54" concept="13" />
+      <node id="8218132442157478804" at="78,68,79,102" concept="13" />
+      <node id="8218132442157478804" at="81,30,82,17" concept="13" />
+      <node id="8218132442157478804" at="86,0,87,0" concept="16" trace="ConstructorDeclaration$yG" />
+      <node id="8218132442157478804" at="87,0,88,0" concept="16" trace="Classifier$Ix" />
+      <node id="8218132442157478804" at="88,0,89,0" concept="16" trace="InstanceMethodDeclaration$39" />
+      <node id="8218132442157478804" at="89,0,90,0" concept="16" trace="FieldDeclaration$ie" />
+      <node id="8218132442157478804" at="90,0,91,0" concept="16" trace="LocalMethodCall$zT" />
+      <node id="8218132442157478804" at="91,0,92,0" concept="16" trace="VariableReference$TC" />
+      <node id="8218132442157478804" at="92,0,93,0" concept="16" trace="SuperMethodCall$pW" />
+      <node id="8218132442157478804" at="93,0,94,0" concept="16" trace="ThisExpression$$o" />
+      <node id="8218132442157478804" at="94,0,95,0" concept="16" trace="ConstructorInvocationStatement$yY" />
+      <node id="8218132442157478804" at="98,0,99,0" concept="16" trace="body$5xQk" />
+      <node id="8218132442157478804" at="99,0,100,0" concept="16" trace="actualArgument$pzdx" />
+      <node id="8218132442157478804" at="100,0,101,0" concept="16" trace="baseMethodDeclaration$pyYw" />
+      <node id="8218132442157478804" at="101,0,102,0" concept="16" trace="variableDeclaration$N1XG" />
+      <node id="8218132442157478804" at="102,0,103,0" concept="16" trace="classConcept$zzjZ" />
+      <node id="8218132442157478804" at="106,0,107,0" concept="16" trace="name$MnvL" />
+      <node id="8218132442157478804" at="31,0,33,0" concept="3" trace="check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule#()V" />
+      <node id="8218132442157478804" at="75,0,78,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="8218132442157478804" at="78,0,81,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="8218132442157478804" at="81,0,84,0" concept="11" trace="overrides#()Z" />
+      <node id="3133930811460325358" at="38,52,42,9" concept="1" />
+      <node id="320231408715320037" at="49,619,53,9" concept="1" />
+      <node id="320231408717436561" at="55,606,59,9" concept="1" />
+      <node id="320231408717469940" at="61,246,65,9" concept="1" />
+      <node id="320231408717482840" at="67,325,71,9" concept="1" />
+      <node id="3133930811460325297" at="37,117,43,7" concept="10" />
+      <node id="320231408715033756" at="48,0,54,9" concept="6" />
+      <node id="320231408717436527" at="54,9,60,9" concept="6" />
+      <node id="320231408717469906" at="60,9,66,9" concept="6" />
+      <node id="320231408717482819" at="66,9,72,9" concept="6" />
+      <node id="5420652334935417994" at="34,129,73,5" concept="10" />
+      <node id="8218132442157478804" at="33,0,75,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="8218132442157478804" at="31,83,31,83" />
+      <scope id="8218132442157478804" at="75,50,76,54" />
+      <scope id="8218132442157478804" at="78,68,79,102" />
+      <scope id="8218132442157478804" at="81,30,82,17" />
+      <scope id="8218132442157478804" at="31,0,33,0" />
+      <scope id="3133930811460325358" at="39,9,41,383">
         <var name="_reporter_2309309498" id="3133930811460325358" />
         <var name="errorTarget" id="3133930811460325358" />
       </scope>
-      <scope id="320231408715320037" at="42,9,44,395">
+      <scope id="320231408715320037" at="50,9,52,395">
         <var name="_reporter_2309309498" id="320231408715320037" />
         <var name="errorTarget" id="320231408715320037" />
       </scope>
-      <scope id="320231408717436561" at="48,9,50,393">
+      <scope id="320231408717436561" at="56,9,58,393">
         <var name="_reporter_2309309498" id="320231408717436561" />
         <var name="errorTarget" id="320231408717436561" />
       </scope>
-      <scope id="320231408717469940" at="54,9,56,281">
+      <scope id="320231408717469940" at="62,9,64,281">
         <var name="_reporter_2309309498" id="320231408717469940" />
         <var name="errorTarget" id="320231408717469940" />
       </scope>
-      <scope id="320231408717482840" at="60,9,62,280">
+      <scope id="320231408717482840" at="68,9,70,280">
         <var name="_reporter_2309309498" id="320231408717482840" />
         <var name="errorTarget" id="320231408717482840" />
       </scope>
-      <scope id="8218132442157478804" at="67,0,70,0" />
-      <scope id="8218132442157478804" at="70,0,73,0">
+      <scope id="8218132442157478804" at="75,0,78,0" />
+      <scope id="8218132442157478804" at="78,0,81,0">
         <var name="argument" id="8218132442157478804" />
       </scope>
-      <scope id="8218132442157478804" at="73,0,76,0" />
-      <scope id="3133930811460325298" at="34,52,38,9" />
-      <scope id="320231408715316738" at="41,398,45,9" />
-      <scope id="320231408717436560" at="47,387,51,9" />
-      <scope id="320231408717469939" at="53,246,57,9" />
-      <scope id="320231408717482839" at="59,325,63,9" />
-      <scope id="5420652334935417995" at="31,30,64,9">
+      <scope id="8218132442157478804" at="81,0,84,0" />
+      <scope id="3133930811460325298" at="38,52,42,9" />
+      <scope id="320231408715316738" at="49,619,53,9" />
+      <scope id="320231408717436560" at="55,606,59,9" />
+      <scope id="320231408717469939" at="61,246,65,9" />
+      <scope id="320231408717482839" at="67,325,71,9" />
+      <scope id="5420652334935417995" at="35,30,72,9">
+        <var name="allMyAndInheritedFieldDeclarations" id="320231408727312670" />
+        <var name="allMyAndInheritedMethods" id="320231408727223016" />
         <var name="firstStatement" id="5420652334935418025" />
+        <var name="members" id="320231408727277372" />
         <var name="statementList" id="5420652334935418011" />
       </scope>
-      <scope id="8218132442157478805" at="29,134,65,5">
+      <scope id="8218132442157478805" at="33,134,73,5">
         <var name="constructor" id="5420652334935417986" />
       </scope>
-      <scope id="8218132442157478804" at="29,0,67,0">
+      <scope id="8218132442157478804" at="33,0,75,0">
         <var name="constructorInvocation" id="8218132442157478804" />
         <var name="status" id="8218132442157478804" />
         <var name="typeCheckingContext" id="8218132442157478804" />
       </scope>
-      <unit id="8218132442157478804" at="96,0,99,0" name="jetbrains.mps.baseLanguage.typesystem.check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule$PROPS" />
-      <unit id="8218132442157478804" at="88,0,95,0" name="jetbrains.mps.baseLanguage.typesystem.check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule$LINKS" />
-      <unit id="8218132442157478804" at="77,0,87,0" name="jetbrains.mps.baseLanguage.typesystem.check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule$CONCEPTS" />
-      <unit id="8218132442157478804" at="26,0,100,0" name="jetbrains.mps.baseLanguage.typesystem.check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule" />
+      <unit id="8218132442157478804" at="105,0,108,0" name="jetbrains.mps.baseLanguage.typesystem.check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule$PROPS" />
+      <unit id="8218132442157478804" at="97,0,104,0" name="jetbrains.mps.baseLanguage.typesystem.check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule$LINKS" />
+      <unit id="8218132442157478804" at="85,0,96,0" name="jetbrains.mps.baseLanguage.typesystem.check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule$CONCEPTS" />
+      <unit id="8218132442157478804" at="30,0,109,0" name="jetbrains.mps.baseLanguage.typesystem.check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/8263928360994498928">
