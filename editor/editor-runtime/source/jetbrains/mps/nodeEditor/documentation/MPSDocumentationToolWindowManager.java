@@ -68,6 +68,10 @@ public class MPSDocumentationToolWindowManager {
     myToolWindow.openTool(true);
   }
 
+  public boolean isVisible() {
+    return myToolWindow.toolIsOpened();
+  }
+
   @Nullable
   private Content getReusableContent() {
     Content[] contents = myToolWindow.getContent();
