@@ -134,7 +134,12 @@ public class LanguageDescriptorPersistence {
         languageElement.setAttribute("generatorOutputPath", descriptor.getOutputRoot());
       }
     } else {
-      languageElement.setAttribute("generatorOutputPath", "");
+      if (descriptor.getGenPath() != null) {
+        // FIXME remove this if() once 2023.3 is out (keep else body with "" only)
+        languageElement.setAttribute("generatorOutputPath", descriptor.getGenPath());
+      } else {
+        languageElement.setAttribute("generatorOutputPath", "");
+      }
     }
     languageElement.setAttribute("languageVersion", Integer.toString(descriptor.getLanguageVersion()));
     languageElement.setAttribute("moduleVersion", Integer.toString(descriptor.getModuleVersion()));

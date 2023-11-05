@@ -146,8 +146,12 @@ public class GeneratorDescriptorPersistence {
         generator.setAttribute("generatorOutputPath", descriptor.getOutputRoot());
       }
     } else {
-      // indicate "no value"
-      generator.setAttribute("generatorOutputPath", "");
+      if (descriptor.getOutputPath() != null) {
+        generator.setAttribute("generatorOutputPath", descriptor.getOutputPath());
+      } else {
+        // indicate "no value"
+        generator.setAttribute("generatorOutputPath", "");
+      }
     }
 
     if (!(myIsInsideLanguage)) {

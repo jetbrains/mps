@@ -113,8 +113,13 @@ public class SolutionDescriptorPersistence {
         result.setAttribute("generatorOutputPath", descriptor.getOutputRoot());
       }
     } else {
-      // indicate no output path
-      result.setAttribute("generatorOutputPath", "");
+      if (descriptor.getOutputPath() != null) {
+        // Just in case there's MD construction code with immediate save() (w/o AM.save()/update magic)
+        result.setAttribute("generatorOutputPath", descriptor.getOutputPath());
+      } else {
+        // indicate no output path
+        result.setAttribute("generatorOutputPath", "");
+      }
     }
     if (descriptor.needsExternalIdeaCompile()) {
       result.addContent(new Element("compileInIDEA"));

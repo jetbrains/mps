@@ -354,6 +354,8 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       //       with Memento to populate the fields?
       // Note, in persistence, we use empty string to indicate null (aka "no value")
       moduleDescriptor.setOutputRoot(myOutputRoot == null ? null : myOutputRoot.shrink(MacrosFactory.forModule(this)));
+      // clear old value just in case, not to get serialized
+      ProjectPathUtil._setGeneratorOutputPathPrim(moduleDescriptor, null);
       var descriptors = new LinkedList<>(moduleDescriptor.getModelRootDescriptors());
       // I can't change MRD.memento, therefore need to replace MRD instance with new memento, next collection is to ensure root ordering persists.
       var newDescriptors = new ArrayList<ModelRootDescriptor>(moduleDescriptor.getModelRootDescriptors().size());
