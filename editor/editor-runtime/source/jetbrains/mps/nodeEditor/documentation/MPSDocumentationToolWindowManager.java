@@ -6,6 +6,7 @@ package jetbrains.mps.nodeEditor.documentation;
 import com.intellij.icons.AllIcons.Toolwindows;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowAnchor;
@@ -37,6 +38,8 @@ public class MPSDocumentationToolWindowManager {
     if (reusableContent == null) {
       showInNewTab(ui);
     } else {
+      MPSDocumentationToolWindowUI toolWindowUI = reusableContent.getUserData(TW_UI_KEY);
+      Disposer.dispose(toolWindowUI);
       reusableContent.putUserData(TW_UI_KEY, null);
       initUI(ui, reusableContent);
       makeVisible();

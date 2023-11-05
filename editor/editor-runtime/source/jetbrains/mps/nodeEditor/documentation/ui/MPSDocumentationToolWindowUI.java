@@ -4,6 +4,8 @@
 package jetbrains.mps.nodeEditor.documentation.ui;
 
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.util.Disposer;
+import com.intellij.openapi.util.Key;
 import com.intellij.ui.content.Content;
 
 import javax.swing.JComponent;
@@ -15,16 +17,20 @@ public class MPSDocumentationToolWindowUI implements Disposable {
   private final MPSDocumentationUI myUI;
   private final JComponent myContentComponent;
 
+  private final Key<MPSDocumentationToolWindowUI> TW_UI_KEY = Key.create("mps.documentation.tw.ui");
+
   public MPSDocumentationToolWindowUI(MPSDocumentationUI ui, Content content) {
     myUI = ui;
     myContent = content;
     myContentComponent = new JPanel(new BorderLayout());
     myContentComponent.add(ui.myScrollPane, BorderLayout.CENTER);
+    Disposer.register(this, myUI);
+    Disposer.register(myContent, this);
   }
 
   @Override
   public void dispose() {
-
+    myContent.putUserData(TW_UI_KEY, null);
   }
 
   public void setContentComponent(Content content) {

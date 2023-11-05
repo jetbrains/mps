@@ -52,11 +52,13 @@ public class MPSDocumentationPopupUI implements Disposable {
   private AbstractPopup myPopup;
   private final Project myProject;
 
-  public MPSDocumentationPopupUI(@NotNull Project project,@NotNull MPSDocumentationUI ui) {
+  public MPSDocumentationPopupUI(@NotNull Project project, @NotNull MPSDocumentationUI ui) {
     myProject = project;
     myUI = ui;
     myEditorPane = myUI.myEditorPane;
     myScrollPane = myUI.myScrollPane;
+
+    Disposer.register(this, myUI);
 
     List<AnAction> secondaryActions = new ArrayList<>();
     secondaryActions.add(new ShowToolbarAction("Show Toolbar"));
@@ -116,10 +118,6 @@ public class MPSDocumentationPopupUI implements Disposable {
 
   @Override
   public void dispose() {
-    if (myUI != null) {
-      Disposer.dispose(myUI);
-      myUI = null;
-    }
   }
 
   public JComponent getComponent() {
@@ -131,8 +129,10 @@ public class MPSDocumentationPopupUI implements Disposable {
   }
 
   public void setPopup(AbstractPopup popup) {
+    Disposer.register(popup, this);
     myPopup = popup;
     PopupMouseListener.dragPopupByComponent(popup, myToolbarComponent);
+    myEditorPane.setHint(popup);
   }
 
   private void showToolbar(boolean value) {
@@ -147,8 +147,11 @@ public class MPSDocumentationPopupUI implements Disposable {
     }
   }
 
-  public void jointHover(){
+  public void jointHover() {
     myComponent.setBorder(IdeBorderFactory.createBorder(UIUtil.getTooltipSeparatorColor(), SideBorder.TOP));
+    Disposer.register(this, myUI.setBackground(UIUtil.getToolTipActionBackground()));
+    myComponent.setBackground(UIUtil.getToolTipActionBackground());
+    myToolbarComponent.setBackground(UIUtil.getToolTipActionBackground());
   }
 
   private final class OpenInToolwindowAction extends AnAction {
