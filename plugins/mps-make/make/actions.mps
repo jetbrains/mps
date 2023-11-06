@@ -145,6 +145,7 @@
       <concept id="1203082903663" name="jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_AnActionEvent" flags="nn" index="tl45R" />
       <concept id="1203083511112" name="jetbrains.mps.lang.plugin.structure.ExecuteBlock" flags="in" index="tnohg" />
       <concept id="1203087890642" name="jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration" flags="ng" index="tC5Ba">
+        <property id="6461604478897396236" name="updateInBackground" index="22ra45" />
         <property id="1204991940915" name="caption" index="2f7twF" />
         <property id="1217005992861" name="isInvisibleWhenDisabled" index="1rdrE6" />
         <property id="1213283637680" name="isPopup" index="1XlLyE" />
@@ -8403,6 +8404,7 @@
   <node concept="tC5Ba" id="7tZeFupJFiq">
     <property role="TrG5h" value="ToolbarMake" />
     <property role="3GE5qa" value="Make.groups" />
+    <property role="22ra45" value="true" />
     <node concept="tT9cl" id="7tZeFupJFir" role="2f5YQi">
       <ref role="tU$_T" to="tprs:WmrxDqdZv8" resolve="MPSToolBarRun" />
     </node>
@@ -13323,6 +13325,7 @@
   <node concept="tC5Ba" id="6A_mxR_MEY3">
     <property role="3GE5qa" value="Make.groups" />
     <property role="TrG5h" value="TouchBarDefault" />
+    <property role="22ra45" value="true" />
     <node concept="tT9cl" id="6A_mxR_Nm8G" role="2f5YQi">
       <ref role="tU$_T" to="tprs:6A_mxR_NmaE" resolve="IDEATouchBarDefault" />
     </node>
