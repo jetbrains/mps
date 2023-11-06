@@ -10653,7 +10653,7 @@
               </node>
             </node>
             <node concept="liA8E" id="6E3ZNOq4BxV" role="2OqNvi">
-              <ref role="37wK5l" to="bim2:xb$P2Bh9Hu" resolve="setRebuildHandler" />
+              <ref role="37wK5l" to="bim2:6E3ZNOq3j1z" resolve="setProblemHandler" />
               <node concept="10Nm6u" id="6E3ZNOq4BxW" role="37wK5m" />
             </node>
           </node>
