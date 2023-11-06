@@ -244,8 +244,7 @@ public class EditorCell_Image extends EditorCell_Basic {
               loaded.set(new ImageIcon(is.readAllBytes(), asAbsoluteResourcePath));
             }
           } catch (IOException e) {
-            // FIXME error = WIP, to info() level once done
-            LOG.error(String.format("Can't load icon [%s]%s", mr.getSourceModule().getModuleName(), asAbsoluteResourcePath), e);
+            LOG.info(String.format("Can't load icon [%s]%s", mr.getSourceModule().getModuleName(), asAbsoluteResourcePath), e);
             // ignore
           }
         });
