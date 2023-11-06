@@ -13,6 +13,7 @@ public class ToolbarMake_ActionGroup extends GeneratedActionGroup {
     super("ToolbarMake", ID, plugin);
     setIsInternal(false);
     setPopup(false);
+    updateInBackground(true);
     ToolbarMake_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.MakeProject_Action");
   }
 }
