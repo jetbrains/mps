@@ -20,8 +20,8 @@ import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.smodel.DynamicReference;
-import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -219,9 +219,10 @@ public abstract class BaseLanguageTextGen {
       // FIXME what's this? Dates back to MPS-13867, is it an optimization or [name].name notation
       //    is some sort of 'internal classifier reference' not expected to get resolved?
       shortName = SLinkOperations.getResolveInfo(classifierRef);
-      // hack, todo: remove!
       if (shortName.startsWith("[")) {
-        return MultiTuple.<String,String>from(shortName.substring(1, shortName.lastIndexOf("]")).trim(), shortName.substring(shortName.lastIndexOf("]") + 1).trim());
+        // hack, transition code. remove once 2023.3 is out
+        tgs.reportError("deprecated, unsupported classifier reference " + shortName);
+        return null;
       } else {
         // todo: remove!
         int lastDot = shortName.lastIndexOf('.');
