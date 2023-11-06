@@ -6,6 +6,8 @@ import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.ToolsInternal_ActionGroup;
+import java.util.List;
+import jetbrains.mps.plugins.part.ApplicationPluginPart;
 
 public class Workbench_ApplicationPlugin extends BaseApplicationPlugin {
   private final PluginId myId = PluginId.getId("jetbrains.mps.migration.workbench");
@@ -43,5 +45,9 @@ public class Workbench_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(MigrationsMenu_ActionGroup.ID, "Migration", null);
     insertGroupIntoAnother(Migrations_ActionGroup.ID, MigrationsMenu_ActionGroup.ID, MigrationsMenu_ActionGroup.LABEL_ID_migrations);
     insertGroupIntoAnother(ToolsInternalAddition_ActionGroup.ID, ToolsInternal_ActionGroup.ID, null);
+  }
+  @Override
+  public void fillCustomParts(List<ApplicationPluginPart> parts) {
+    parts.add(new PrepareNewProject_AppPluginPart());
   }
 }

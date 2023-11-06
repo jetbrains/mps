@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,6 +70,17 @@ public final class ProjectManager implements CoreComponent {
         listener.projectClosed(p);
       }
       myOpenedProjects.remove(p);
+    }
+  }
+
+  public void fireProjectCreated(Project p) {
+    synchronized (myOpenedProjects) {
+//      if (!myOpenedProjects.contains(p)) {
+//        throw new IllegalArgumentException(String.format("Attempt to notify creation of a not yet open project %s", p.getName()));
+//      }
+      for (ProjectManagerListener listener : myListeners) {
+        listener.projectCreated(p);
+      }
     }
   }
 

@@ -27,12 +27,13 @@ import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.openapi.startup.StartupManager;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.ProjectPane;
-import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.ProjectManager;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.project.modules.DevkitProducer;
@@ -144,7 +145,8 @@ public class ProjectFactory {
     if (myCreatedProject == null) {
       return;
     }
-    ProjectMigrationsRegistry.getInstance().applyMigrationsToNewProject(ProjectHelper.fromIdeaProject(myCreatedProject));
+
+    MPSCoreComponents.getInstance().getPlatform().findComponent(ProjectManager.class).fireProjectCreated(ProjectHelper.fromIdeaProject(myCreatedProject));
 
     ProjectManagerEx projectManager = ProjectManagerEx.getInstanceEx();
 

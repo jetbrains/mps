@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,19 @@ package jetbrains.mps.project;
 import org.jetbrains.annotations.NotNull;
 
 public interface ProjectManagerListener {
-  void projectOpened(@NotNull Project p);
+  default void projectOpened(@NotNull Project p) {}
 
-  void projectClosed(@NotNull Project p);
+  default void projectClosed(@NotNull Project p) {}
+
+  /**
+   * Reports a new project created by user (action and user-exposed API), generally not reported for
+   * internal project creation facilities like {@code Environment#createEmptyProject}.
+   * <p>
+   * <s>Notification comes *after* {@link #projectOpened(Project)} as there might be some additional setup
+   * for a newly opened project performed e.g. by {@code CreateProjectWizard}.</s>
+   *
+   * @param p newly created and initialized MPS project
+   * @since 2023.3
+   */
+  default void projectCreated(@NotNull Project p) {}
 }
