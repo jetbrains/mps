@@ -48,7 +48,7 @@ public class Reporter {
   private static final String MPS_PROJECT = "MPS";
   private static final String MPS_PROJECT_ID = "22-10";
   private static final String MPS_TEAM_GROUP = "MPS Team";
-  private static final String MPS_TEAM_GROUP_ID = "714e0129-abec-434a-bfcb-2d32ae052a6f";
+  private static final String MPS_TEAM_GROUP_ID = "74b7b60a-d99f-4796-9ae1-c9044dc58d2c";
 
   private static final String AFFECTED_VERSIONS_FIELD = "Affected versions";
   private static final String AFFECTED_VERSIONS_FIELD_ID = "112-27";
