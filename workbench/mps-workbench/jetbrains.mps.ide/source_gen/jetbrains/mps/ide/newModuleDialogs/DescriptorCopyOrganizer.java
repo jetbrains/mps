@@ -14,7 +14,6 @@ import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.ModuleId;
-import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 
 /**
  *  Incorporates the descriptor copying ('cloning') logic,
@@ -93,7 +92,6 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
     if (generatorOutputPath != null) {
       ProjectPathUtil._setGeneratorOutputPathPrim(copyDescriptor, myModulePathConverter.source2Target(generatorOutputPath));
     }
-    hackDeploymentDescriptor(copyDescriptor);
   }
 
   private void resetModelRoots(final ModuleDescriptor copyDescriptor) {
@@ -108,17 +106,5 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
   private static void setNewIdAndTimestamp(final ModuleDescriptor descriptor) {
     descriptor.setId(ModuleId.regular());
     descriptor.setTimestamp(Long.toString(System.currentTimeMillis()));
-  }
-
-  /**
-   * will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
-   * or if these locations are not needed right in the module, just are vital for its initialization
-   */
-  private void hackDeploymentDescriptor(@NotNull ModuleDescriptor copyDescriptor) {
-    DeploymentDescriptor deploymentDescriptor = copyDescriptor.getDeploymentDescriptor();
-    if (deploymentDescriptor != null) {
-      deploymentDescriptor.setSourcesJar(myModulePathConverter.source2Target(deploymentDescriptor.getSourcesJar()));
-      deploymentDescriptor.setDescriptorFile(myModulePathConverter.source2Target(deploymentDescriptor.getDescriptorFile()));
-    }
   }
 }

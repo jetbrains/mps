@@ -1011,14 +1011,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="48wykyVMF_g" role="3cqZAp">
-          <node concept="1rXfSq" id="48wykyVMF_h" role="3clFbG">
-            <ref role="37wK5l" node="6CFNGGphKme" resolve="hackDeploymentDescriptor" />
-            <node concept="37vLTw" id="48wykyVMFA_" role="37wK5m">
-              <ref role="3cqZAo" node="48wykyVMF_m" resolve="copyDescriptor" />
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="2AHcQZ" id="7BGXXkyB63z" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~SuppressWarnings" resolve="SuppressWarnings" />
@@ -1272,117 +1264,6 @@
       </node>
       <node concept="3cqZAl" id="6lh55E2DFLL" role="3clF45" />
       <node concept="3Tm6S6" id="6lh55E2DFLK" role="1B3o_S" />
-    </node>
-    <node concept="2tJIrI" id="6CFNGGphKmd" role="jymVt" />
-    <node concept="3clFb_" id="6CFNGGphKme" role="jymVt">
-      <property role="TrG5h" value="hackDeploymentDescriptor" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="37vLTG" id="6CFNGGphKmf" role="3clF46">
-        <property role="TrG5h" value="copyDescriptor" />
-        <property role="3TUv4t" value="false" />
-        <node concept="2AHcQZ" id="6CFNGGphKmg" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-        <node concept="3uibUv" id="6CFNGGphKmh" role="1tU5fm">
-          <ref role="3uigEE" to="w0gx:~ModuleDescriptor" resolve="ModuleDescriptor" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="6CFNGGphKmi" role="3clF47">
-        <node concept="3cpWs8" id="6CFNGGphKmj" role="3cqZAp">
-          <node concept="3cpWsn" id="6CFNGGphKmk" role="3cpWs9">
-            <property role="3TUv4t" value="false" />
-            <property role="TrG5h" value="deploymentDescriptor" />
-            <node concept="3uibUv" id="6CFNGGphKml" role="1tU5fm">
-              <ref role="3uigEE" to="w0gx:~DeploymentDescriptor" resolve="DeploymentDescriptor" />
-            </node>
-            <node concept="2OqwBi" id="6CFNGGphKmm" role="33vP2m">
-              <node concept="37vLTw" id="6CFNGGphKmn" role="2Oq$k0">
-                <ref role="3cqZAo" node="6CFNGGphKmf" resolve="copyDescriptor" />
-              </node>
-              <node concept="liA8E" id="6CFNGGphKmo" role="2OqNvi">
-                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getDeploymentDescriptor()" resolve="getDeploymentDescriptor" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="6CFNGGphKmp" role="3cqZAp">
-          <node concept="3y3z36" id="6CFNGGphKmq" role="3clFbw">
-            <node concept="37vLTw" id="6CFNGGphKmr" role="3uHU7B">
-              <ref role="3cqZAo" node="6CFNGGphKmk" resolve="deploymentDescriptor" />
-            </node>
-            <node concept="10Nm6u" id="6CFNGGphKms" role="3uHU7w" />
-          </node>
-          <node concept="3clFbS" id="6CFNGGphKmt" role="3clFbx">
-            <node concept="3clFbF" id="6CFNGGphKmu" role="3cqZAp">
-              <node concept="2OqwBi" id="6CFNGGphKmv" role="3clFbG">
-                <node concept="37vLTw" id="6CFNGGphKmw" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6CFNGGphKmk" resolve="deploymentDescriptor" />
-                </node>
-                <node concept="liA8E" id="6CFNGGphKmx" role="2OqNvi">
-                  <ref role="37wK5l" to="w0gx:~DeploymentDescriptor.setSourcesJar(java.lang.String)" resolve="setSourcesJar" />
-                  <node concept="2OqwBi" id="6CFNGGphKmy" role="37wK5m">
-                    <node concept="37vLTw" id="6CFNGGphKmz" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6CFNGGphKi8" resolve="myModulePathConverter" />
-                    </node>
-                    <node concept="liA8E" id="6CFNGGphKm$" role="2OqNvi">
-                      <ref role="37wK5l" to="18ew:~ModulePathConverter.source2Target(java.lang.String)" resolve="source2Target" />
-                      <node concept="2OqwBi" id="6CFNGGphKm_" role="37wK5m">
-                        <node concept="37vLTw" id="6CFNGGphKmA" role="2Oq$k0">
-                          <ref role="3cqZAo" node="6CFNGGphKmk" resolve="deploymentDescriptor" />
-                        </node>
-                        <node concept="liA8E" id="6CFNGGphKmB" role="2OqNvi">
-                          <ref role="37wK5l" to="w0gx:~DeploymentDescriptor.getSourcesJar()" resolve="getSourcesJar" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="6CFNGGphKmC" role="3cqZAp">
-              <node concept="2OqwBi" id="6CFNGGphKmD" role="3clFbG">
-                <node concept="37vLTw" id="6CFNGGphKmE" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6CFNGGphKmk" resolve="deploymentDescriptor" />
-                </node>
-                <node concept="liA8E" id="6CFNGGphKmF" role="2OqNvi">
-                  <ref role="37wK5l" to="w0gx:~DeploymentDescriptor.setDescriptorFile(java.lang.String)" resolve="setDescriptorFile" />
-                  <node concept="2OqwBi" id="6CFNGGphKmG" role="37wK5m">
-                    <node concept="37vLTw" id="6CFNGGphKmH" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6CFNGGphKi8" resolve="myModulePathConverter" />
-                    </node>
-                    <node concept="liA8E" id="6CFNGGphKmI" role="2OqNvi">
-                      <ref role="37wK5l" to="18ew:~ModulePathConverter.source2Target(java.lang.String)" resolve="source2Target" />
-                      <node concept="2OqwBi" id="6CFNGGphKmJ" role="37wK5m">
-                        <node concept="37vLTw" id="6CFNGGphKmK" role="2Oq$k0">
-                          <ref role="3cqZAo" node="6CFNGGphKmk" resolve="deploymentDescriptor" />
-                        </node>
-                        <node concept="liA8E" id="6CFNGGphKmL" role="2OqNvi">
-                          <ref role="37wK5l" to="w0gx:~DeploymentDescriptor.getDescriptorFile()" resolve="getDescriptorFile" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="6CFNGGphKmM" role="1B3o_S" />
-      <node concept="3cqZAl" id="6CFNGGphKmN" role="3clF45" />
-      <node concept="P$JXv" id="6CFNGGphKmO" role="lGtFl">
-        <node concept="TZ5HA" id="6CFNGGphKmP" role="TZ5H$">
-          <node concept="1dT_AC" id="6CFNGGphKmQ" role="1dT_Ay">
-            <property role="1dT_AB" value="will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="6CFNGGphKmR" role="TZ5H$">
-          <node concept="1dT_AC" id="6CFNGGphKmS" role="1dT_Ay">
-            <property role="1dT_AB" value="or if these locations are not needed right in the module, just are vital for its initialization" />
-          </node>
-        </node>
-      </node>
     </node>
     <node concept="3UR2Jj" id="6CFNGGphMK0" role="lGtFl">
       <node concept="TZ5HA" id="6CFNGGphMK9" role="TZ5H$">
