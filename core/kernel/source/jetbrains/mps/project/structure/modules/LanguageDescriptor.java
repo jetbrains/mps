@@ -111,7 +111,6 @@ public class LanguageDescriptor extends ModuleDescriptor {
   public void save(ModelOutputStream stream) throws IOException {
     super.save(stream);
     stream.writeInt(myLanguageVersion);
-    stream.writeString(myGenPath);
 
     stream.writeInt(myAccessoryModels.size());
     for (SModelReference ref : myAccessoryModels) {
@@ -140,7 +139,6 @@ public class LanguageDescriptor extends ModuleDescriptor {
   public void load(ModelInputStream stream) throws IOException {
     super.load(stream);
     myLanguageVersion = stream.readInt();
-    myGenPath = stream.readString();
 
     myAccessoryModels.clear();
     for (int size = stream.readInt(); size > 0; size--) {
