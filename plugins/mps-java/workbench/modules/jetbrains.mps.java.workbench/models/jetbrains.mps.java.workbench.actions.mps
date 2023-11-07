@@ -66,13 +66,11 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="vn06" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.refactoring(MPS.IDEA/)" />
     <import index="zdap" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.text(MPS.IDEA/)" />
-    <import index="2hho" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.java(MPS.IDEA/)" />
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
     <import index="k2t0" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.checkers(MPS.Core/)" />
     <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" />
     <import index="d6hs" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.item(MPS.Core/)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" />
-    <import index="t2f2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.java.refactoring(MPS.IDEA/)" />
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
     <import index="xnls" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.icons(MPS.Platform/)" />
     <import index="7e8u" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.ui.tree(MPS.Platform/)" />
@@ -814,7 +812,8 @@
                       <node concept="3cpWs8" id="52Mq1bfbmS9" role="3cqZAp">
                         <node concept="3cpWsn" id="52Mq1bfbmS8" role="3cpWs9">
                           <property role="TrG5h" value="classType" />
-                          <node concept="10Oyi0" id="52Mq1bfbmSa" role="1tU5fm" />
+                          <property role="3TUv4t" value="true" />
+                          <node concept="17QB3L" id="608RoKgfjTU" role="1tU5fm" />
                           <node concept="3K4zz7" id="52Mq1bfbmSe" role="33vP2m">
                             <node concept="2OqwBi" id="52Mq1bfbDWK" role="3K4Cdx">
                               <node concept="37vLTw" id="52Mq1bfd9Z2" role="2Oq$k0">
@@ -826,12 +825,40 @@
                                 </node>
                               </node>
                             </node>
-                            <node concept="3cmrfG" id="52Mq1bfbmSc" role="3K4E3e">
-                              <property role="3cmrfH" value="0" />
+                            <node concept="Xl_RD" id="608RoKgfkKT" role="3K4E3e">
+                              <property role="Xl_RC" value="interface" />
                             </node>
-                            <node concept="3cmrfG" id="52Mq1bfbmSd" role="3K4GZi">
-                              <property role="3cmrfH" value="1" />
+                            <node concept="Xl_RD" id="608RoKgfzMb" role="3K4GZi">
+                              <property role="Xl_RC" value="class" />
                             </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3SKdUt" id="608RoKgeZ5m" role="3cqZAp">
+                        <node concept="1PaTwC" id="608RoKgeZ5n" role="1aUNEU">
+                          <node concept="3oM_SD" id="608RoKgeZir" role="1PaTwD">
+                            <property role="3oM_SC" value="FWIW," />
+                          </node>
+                          <node concept="3oM_SD" id="608RoKgeZza" role="1PaTwD">
+                            <property role="3oM_SC" value="i18n" />
+                          </node>
+                          <node concept="3oM_SD" id="608RoKgeZLV" role="1PaTwD">
+                            <property role="3oM_SC" value="messages" />
+                          </node>
+                          <node concept="3oM_SD" id="608RoKgeZVi" role="1PaTwD">
+                            <property role="3oM_SC" value="are" />
+                          </node>
+                          <node concept="3oM_SD" id="608RoKgf18o" role="1PaTwD">
+                            <property role="3oM_SC" value="available" />
+                          </node>
+                          <node concept="3oM_SD" id="608RoKgf19t" role="1PaTwD">
+                            <property role="3oM_SC" value="in" />
+                          </node>
+                          <node concept="3oM_SD" id="608RoKgf19B" role="1PaTwD">
+                            <property role="3oM_SC" value="[java-impl.jar]" />
+                          </node>
+                          <node concept="3oM_SD" id="608RoKgf1Fd" role="1PaTwD">
+                            <property role="3oM_SC" value="JavaBundle" />
                           </node>
                         </node>
                       </node>
@@ -843,28 +870,21 @@
                             </node>
                             <node concept="liA8E" id="52Mq1bfbtcH" role="2OqNvi">
                               <ref role="37wK5l" to="zdap:~HtmlBuilder.append(java.lang.String)" resolve="append" />
-                              <node concept="2YIFZM" id="52Mq1bfbtcI" role="37wK5m">
-                                <ref role="1Pybhc" to="2hho:~JavaBundle" resolve="JavaBundle" />
-                                <ref role="37wK5l" to="2hho:~JavaBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                                <node concept="Xl_RD" id="52Mq1bfbtcJ" role="37wK5m">
-                                  <property role="Xl_RC" value="label.method" />
+                              <node concept="2OqwBi" id="608RoKgf3KK" role="37wK5m">
+                                <node concept="Xl_RD" id="52Mq1bfbtcJ" role="2Oq$k0">
+                                  <property role="Xl_RC" value="Method '%s' of class %s" />
                                 </node>
-                                <node concept="3cpWs3" id="52Mq1bfevkm" role="37wK5m">
-                                  <node concept="3cpWs3" id="52Mq1bfesPj" role="3uHU7B">
-                                    <node concept="2OqwBi" id="52Mq1bfbIOV" role="3uHU7B">
-                                      <node concept="2OqwBi" id="52Mq1bfbGSj" role="2Oq$k0">
-                                        <node concept="2WthIp" id="52Mq1bfbGao" role="2Oq$k0" />
-                                        <node concept="3gHZIF" id="52Mq1bfbIgA" role="2OqNvi">
-                                          <ref role="2WH_rO" node="5U9rQri5GeB" resolve="method" />
-                                        </node>
+                                <node concept="2cAKMz" id="608RoKgf6ch" role="2OqNvi">
+                                  <node concept="2OqwBi" id="52Mq1bfbIOV" role="2cAKU6">
+                                    <node concept="2OqwBi" id="52Mq1bfbGSj" role="2Oq$k0">
+                                      <node concept="2WthIp" id="52Mq1bfbGao" role="2Oq$k0" />
+                                      <node concept="3gHZIF" id="52Mq1bfbIgA" role="2OqNvi">
+                                        <ref role="2WH_rO" node="5U9rQri5GeB" resolve="method" />
                                       </node>
-                                      <node concept="2Iv5rx" id="52Mq1bfe_EU" role="2OqNvi" />
                                     </node>
-                                    <node concept="Xl_RD" id="52Mq1bfetFo" role="3uHU7w">
-                                      <property role="Xl_RC" value=" of class " />
-                                    </node>
+                                    <node concept="2Iv5rx" id="52Mq1bfe_EU" role="2OqNvi" />
                                   </node>
-                                  <node concept="2OqwBi" id="52Mq1bfezyv" role="3uHU7w">
+                                  <node concept="2OqwBi" id="52Mq1bfezyv" role="2cAKU6">
                                     <node concept="37vLTw" id="52Mq1bfeyw0" role="2Oq$k0">
                                       <ref role="3cqZAo" node="52Mq1bfdcpj" resolve="methodClass" />
                                     </node>
@@ -936,30 +956,30 @@
                                   </node>
                                 </node>
                               </node>
-                              <node concept="2YIFZM" id="52Mq1bfbtAL" role="3K4E3e">
-                                <ref role="1Pybhc" to="2hho:~JavaBundle" resolve="JavaBundle" />
-                                <ref role="37wK5l" to="2hho:~JavaBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                                <node concept="Xl_RD" id="52Mq1bfbtAM" role="37wK5m">
-                                  <property role="Xl_RC" value="label.overrides.method.of_class_or_interface.name" />
+                              <node concept="2OqwBi" id="608RoKgf$OV" role="3K4E3e">
+                                <node concept="Xl_RD" id="52Mq1bfbtAM" role="2Oq$k0">
+                                  <property role="Xl_RC" value="overrides method of %s '%s'." />
                                 </node>
-                                <node concept="37vLTw" id="52Mq1bfbtAN" role="37wK5m">
-                                  <ref role="3cqZAo" node="52Mq1bfbmS8" resolve="classType" />
-                                </node>
-                                <node concept="37vLTw" id="52Mq1bfbtAO" role="37wK5m">
-                                  <ref role="3cqZAo" node="52Mq1bfbmSr" resolve="className" />
+                                <node concept="2cAKMz" id="608RoKgfBlW" role="2OqNvi">
+                                  <node concept="37vLTw" id="52Mq1bfbtAN" role="2cAKU6">
+                                    <ref role="3cqZAo" node="52Mq1bfbmS8" resolve="classType" />
+                                  </node>
+                                  <node concept="37vLTw" id="52Mq1bfbtAO" role="2cAKU6">
+                                    <ref role="3cqZAo" node="52Mq1bfbmSr" resolve="className" />
+                                  </node>
                                 </node>
                               </node>
-                              <node concept="2YIFZM" id="52Mq1bfbtAP" role="3K4GZi">
-                                <ref role="1Pybhc" to="2hho:~JavaBundle" resolve="JavaBundle" />
-                                <ref role="37wK5l" to="2hho:~JavaBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                                <node concept="Xl_RD" id="52Mq1bfbtAQ" role="37wK5m">
-                                  <property role="Xl_RC" value="label.implements.method.of_class_or_interface.name" />
+                              <node concept="2OqwBi" id="608RoKgfBMs" role="3K4GZi">
+                                <node concept="Xl_RD" id="52Mq1bfbtAQ" role="2Oq$k0">
+                                  <property role="Xl_RC" value="implements method of %s '%s'." />
                                 </node>
-                                <node concept="37vLTw" id="52Mq1bfbtAR" role="37wK5m">
-                                  <ref role="3cqZAo" node="52Mq1bfbmS8" resolve="classType" />
-                                </node>
-                                <node concept="37vLTw" id="52Mq1bfbtAS" role="37wK5m">
-                                  <ref role="3cqZAo" node="52Mq1bfbmSr" resolve="className" />
+                                <node concept="2cAKMz" id="608RoKgfC11" role="2OqNvi">
+                                  <node concept="37vLTw" id="52Mq1bfbtAR" role="2cAKU6">
+                                    <ref role="3cqZAo" node="52Mq1bfbmS8" resolve="classType" />
+                                  </node>
+                                  <node concept="37vLTw" id="52Mq1bfbtAS" role="2cAKU6">
+                                    <ref role="3cqZAo" node="52Mq1bfbmSr" resolve="className" />
+                                  </node>
                                 </node>
                               </node>
                             </node>
@@ -991,22 +1011,8 @@
                             <node concept="2YIFZM" id="52Mq1bfbvcx" role="37wK5m">
                               <ref role="1Pybhc" to="zdap:~HtmlChunk" resolve="HtmlChunk" />
                               <ref role="37wK5l" to="zdap:~HtmlChunk.text(java.lang.String)" resolve="text" />
-                              <node concept="2YIFZM" id="52Mq1bfbvcy" role="37wK5m">
-                                <ref role="1Pybhc" to="2hho:~JavaBundle" resolve="JavaBundle" />
-                                <ref role="37wK5l" to="2hho:~JavaBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                                <node concept="Xl_RD" id="52Mq1bfbvcz" role="37wK5m">
-                                  <property role="Xl_RC" value="prompt.do.you.want.to.action_verb.the.method.from_class" />
-                                </node>
-                                <node concept="3cmrfG" id="52Mq1bfcqn0" role="37wK5m">
-                                  <property role="3cmrfH" value="1" />
-                                </node>
-                                <node concept="2YIFZM" id="52Mq1bfcX9b" role="37wK5m">
-                                  <ref role="1Pybhc" to="vn06:~RefactoringBundle" resolve="RefactoringBundle" />
-                                  <ref role="37wK5l" to="vn06:~RefactoringBundle.message(java.lang.String)" resolve="message" />
-                                  <node concept="Xl_RD" id="52Mq1bfcX9c" role="37wK5m">
-                                    <property role="Xl_RC" value="to.refactor" />
-                                  </node>
-                                </node>
+                              <node concept="Xl_RD" id="52Mq1bfbvcz" role="37wK5m">
+                                <property role="Xl_RC" value="Do you want to refactor the base method instead?" />
                               </node>
                             </node>
                           </node>
@@ -1082,26 +1088,14 @@
                   <node concept="37vLTw" id="52Mq1bfapk7" role="37wK5m">
                     <ref role="3cqZAo" node="5U9rQri5GcM" resolve="message" />
                   </node>
-                  <node concept="2YIFZM" id="52Mq1bfapk8" role="37wK5m">
-                    <ref role="37wK5l" to="2hho:~JavaBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                    <ref role="1Pybhc" to="2hho:~JavaBundle" resolve="JavaBundle" />
-                    <node concept="Xl_RD" id="52Mq1bfapk9" role="37wK5m">
-                      <property role="Xl_RC" value="dialog.title.super.method.found" />
-                    </node>
+                  <node concept="Xl_RD" id="52Mq1bfapk9" role="37wK5m">
+                    <property role="Xl_RC" value="Super Method Found" />
                   </node>
-                  <node concept="2YIFZM" id="52Mq1bfapka" role="37wK5m">
-                    <ref role="37wK5l" to="2hho:~JavaBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                    <ref role="1Pybhc" to="2hho:~JavaBundle" resolve="JavaBundle" />
-                    <node concept="Xl_RD" id="52Mq1bfapkb" role="37wK5m">
-                      <property role="Xl_RC" value="button.base.method" />
-                    </node>
+                  <node concept="Xl_RD" id="52Mq1bfapkb" role="37wK5m">
+                    <property role="Xl_RC" value="&amp;Base Method" />
                   </node>
-                  <node concept="2YIFZM" id="52Mq1bfapkc" role="37wK5m">
-                    <ref role="37wK5l" to="2hho:~JavaBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                    <ref role="1Pybhc" to="2hho:~JavaBundle" resolve="JavaBundle" />
-                    <node concept="Xl_RD" id="52Mq1bfapkd" role="37wK5m">
-                      <property role="Xl_RC" value="button.current.method" />
-                    </node>
+                  <node concept="Xl_RD" id="52Mq1bfapkd" role="37wK5m">
+                    <property role="Xl_RC" value="&amp;Current Method" />
                   </node>
                   <node concept="2YIFZM" id="52Mq1bfapke" role="37wK5m">
                     <ref role="37wK5l" to="jkm4:~Messages.getCancelButton()" resolve="getCancelButton" />
@@ -3065,21 +3059,34 @@
         </node>
         <node concept="3clFbJ" id="2L8VmqqbkVS" role="3cqZAp">
           <node concept="3clFbS" id="2L8VmqqbkVU" role="3clFbx">
+            <node concept="3SKdUt" id="608RoKgeVt2" role="3cqZAp">
+              <node concept="1PaTwC" id="608RoKgeVt3" role="1aUNEU">
+                <node concept="3oM_SD" id="608RoKgeXBQ" role="1PaTwD">
+                  <property role="3oM_SC" value="[java-impl.jar]" />
+                </node>
+                <node concept="3oM_SD" id="608RoKgeXGT" role="1PaTwD">
+                  <property role="3oM_SC" value="JavaRefactoringBundle" />
+                </node>
+                <node concept="3oM_SD" id="608RoKgeXCY" role="1PaTwD">
+                  <property role="3oM_SC" value="&quot;dialog.message.overriding.methods.with.weaken.visibility&quot;" />
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs8" id="2L8VmqqcSUx" role="3cqZAp">
               <node concept="3cpWsn" id="2L8VmqqcSUy" role="3cpWs9">
                 <property role="TrG5h" value="message" />
                 <node concept="17QB3L" id="2L8VmqqcR1R" role="1tU5fm" />
-                <node concept="2YIFZM" id="3GMkPCUv17a" role="33vP2m">
-                  <ref role="1Pybhc" to="t2f2:~JavaRefactoringBundle" resolve="JavaRefactoringBundle" />
-                  <ref role="37wK5l" to="t2f2:~JavaRefactoringBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                  <node concept="Xl_RD" id="3GMkPCUv9z0" role="37wK5m">
-                    <property role="Xl_RC" value="dialog.message.overriding.methods.with.weaken.visibility" />
+                <node concept="2OqwBi" id="608RoKge648" role="33vP2m">
+                  <node concept="Xl_RD" id="3GMkPCUv9z0" role="2Oq$k0">
+                    <property role="Xl_RC" value="Do you want to reduce the visibility of overriding methods to '%s' as well?" />
                   </node>
-                  <node concept="2OqwBi" id="3GMkPCUvTKC" role="37wK5m">
-                    <node concept="37vLTw" id="3GMkPCUvJBs" role="2Oq$k0">
-                      <ref role="3cqZAo" node="nsS9FvJw3t" resolve="changeVisibilityFor" />
+                  <node concept="2cAKMz" id="608RoKgee5S" role="2OqNvi">
+                    <node concept="2OqwBi" id="3GMkPCUvTKC" role="2cAKU6">
+                      <node concept="37vLTw" id="3GMkPCUvJBs" role="2Oq$k0">
+                        <ref role="3cqZAo" node="nsS9FvJw3t" resolve="changeVisibilityFor" />
+                      </node>
+                      <node concept="3n3YKJ" id="3GMkPCUw5zq" role="2OqNvi" />
                     </node>
-                    <node concept="3n3YKJ" id="3GMkPCUw5zq" role="2OqNvi" />
                   </node>
                 </node>
               </node>
@@ -3166,15 +3173,12 @@
                           <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
                         </node>
                       </node>
-                      <node concept="3cpWs3" id="3GMkPCUMV2R" role="37wK5m">
-                        <node concept="Xl_RD" id="3GMkPCUMV2S" role="3uHU7w">
-                          <property role="Xl_RC" value="'. Proceed?" />
+                      <node concept="2OqwBi" id="608RoKgeAcv" role="37wK5m">
+                        <node concept="Xl_RD" id="3GMkPCUMV2U" role="2Oq$k0">
+                          <property role="Xl_RC" value="Overriding methods visibility will be reduced to '%s'. Proceed?" />
                         </node>
-                        <node concept="3cpWs3" id="3GMkPCUMV2T" role="3uHU7B">
-                          <node concept="Xl_RD" id="3GMkPCUMV2U" role="3uHU7B">
-                            <property role="Xl_RC" value="Overriding methods visibility will be reduced to '" />
-                          </node>
-                          <node concept="2OqwBi" id="3GMkPCUMV2V" role="3uHU7w">
+                        <node concept="2cAKMz" id="608RoKgeDg5" role="2OqNvi">
+                          <node concept="2OqwBi" id="3GMkPCUMV2V" role="2cAKU6">
                             <node concept="37vLTw" id="3GMkPCUMV2W" role="2Oq$k0">
                               <ref role="3cqZAo" node="nsS9FvJw3t" resolve="changeVisibilityFor" />
                             </node>

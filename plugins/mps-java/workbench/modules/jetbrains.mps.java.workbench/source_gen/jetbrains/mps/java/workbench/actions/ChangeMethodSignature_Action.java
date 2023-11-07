@@ -18,10 +18,8 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import com.intellij.openapi.util.text.HtmlBuilder;
-import com.intellij.java.JavaBundle;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import com.intellij.openapi.util.text.HtmlChunk;
-import com.intellij.refactoring.RefactoringBundle;
 import com.intellij.openapi.ui.Messages;
 import java.util.List;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureRefactoring;
@@ -98,12 +96,13 @@ public class ChangeMethodSignature_Action extends BaseAction {
 
         // Based on com.intellij.ide.util.SuperMethodWarningUtil
         HtmlBuilder labelText = new HtmlBuilder();
-        int classType = (SNodeOperations.isInstanceOf(baseClass, CONCEPTS.Interface$db) ? 0 : 1);
-        labelText.append(JavaBundle.message("label.method", SNodeOperations.present(event.getData(MPSCommonDataKeys.NODE)) + " of class " + SNodeOperations.present(methodClass))).br();
+        final String classType = (SNodeOperations.isInstanceOf(baseClass, CONCEPTS.Interface$db) ? "interface" : "class");
+        // FWIW, i18n messages are available in [java-impl.jar] JavaBundle
+        labelText.append(String.format("Method '%s' of class %s", SNodeOperations.present(event.getData(MPSCommonDataKeys.NODE)), SNodeOperations.present(methodClass))).br();
         final String className = SPropertyOperations.getString(SNodeOperations.as(baseClass, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
-        labelText.append((SNodeOperations.isInstanceOf(methodClass, CONCEPTS.Interface$db) || !(SPropertyOperations.getBoolean(SNodeOperations.as(methodClass, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X)) ? JavaBundle.message("label.overrides.method.of_class_or_interface.name", classType, className) : JavaBundle.message("label.implements.method.of_class_or_interface.name", classType, className)));
+        labelText.append((SNodeOperations.isInstanceOf(methodClass, CONCEPTS.Interface$db) || !(SPropertyOperations.getBoolean(SNodeOperations.as(methodClass, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X)) ? String.format("overrides method of %s '%s'.", classType, className) : String.format("implements method of %s '%s'.", classType, className)));
         labelText.br().br();
-        labelText.append(HtmlChunk.text(JavaBundle.message("prompt.do.you.want.to.action_verb.the.method.from_class", 1, RefactoringBundle.message("to.refactor"))));
+        labelText.append(HtmlChunk.text("Do you want to refactor the base method instead?"));
         message.value = labelText.wrapWithHtmlBody().toString();
       }
     });
@@ -111,7 +110,7 @@ public class ChangeMethodSignature_Action extends BaseAction {
     final Wrappers._T<SNode> methodToRefactor = new Wrappers._T<SNode>(event.getData(MPSCommonDataKeys.NODE));
 
     if (baseMethod.value != null) {
-      int dialog = Messages.showYesNoCancelDialog(event.getData(MPSCommonDataKeys.FRAME), message.value, JavaBundle.message("dialog.title.super.method.found"), JavaBundle.message("button.base.method"), JavaBundle.message("button.current.method"), Messages.getCancelButton(), Messages.getQuestionIcon());
+      int dialog = Messages.showYesNoCancelDialog(event.getData(MPSCommonDataKeys.FRAME), message.value, "Super Method Found", "&Base Method", "&Current Method", Messages.getCancelButton(), Messages.getQuestionIcon());
 
       if (dialog == Messages.CANCEL) {
         return;
