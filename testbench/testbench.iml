@@ -88,7 +88,49 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../plugins/mps-migration" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../plugins/mps-migration/migration-platform/solutions/component/source_gen" />
+          <root url="file://$MODULE_DIR$/../plugins/mps-migration/migration-platform/sources" />
+          <root url="file://$MODULE_DIR$/../plugins/mps-migration/solutions/migration.workbench/source_gen" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../plugins/mps-modelchecker" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../plugins/mps-testing" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="RUNTIME">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../plugins/mps-core" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="module" module-name="mps-kotlin" scope="TEST" />
     <orderEntry type="module" module-name="mps-refactoring" scope="TEST" />
+    <!-- Need JNA library to run tests locally, but TC doesn't understand maven library for some reason -->
+    <!--orderEntry type="library" scope="RUNTIME" name="jna" level="project" /-->
   </component>
 </module>
