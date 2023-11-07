@@ -79,20 +79,6 @@
     <copy file="${artifacts.mpsMigrationCore}/migration-platform/META-INF/pluginBase.xml" todir="${build.layout}/mps-migration/META-INF" />
     <mkdir dir="${build.layout}/mps-migration/lib" />
     <copy file="${artifacts.mpsMigrationCore}/migration-platform/lib/migration-platform.jar" todir="${build.layout}/mps-migration/lib" />
-    <mkdir dir="${build.tmp}/default/mps-migration.jar" />
-    <mkdir dir="${build.tmp}/default/mps-migration.jar/META-INF" />
-    <copy todir="${build.tmp}/default/mps-migration.jar/META-INF">
-      <fileset file="${mps_home}/plugins/mps-migration/META-INF/plugin.xml" />
-      <filterchain>
-        <tokenfilter>
-          <replaceregex pattern="../migration-platform/pluginBase.xml" replace="pluginBase.xml" flags="" />
-        </tokenfilter>
-      </filterchain>
-    </copy>
-    <jar destfile="${build.layout}/mps-migration/lib/mps-migration.jar" duplicate="preserve">
-      <zipfileset file="${artifacts.mpsMigrationCore}/migration-platform/META-INF/pluginBase.xml" prefix="META-INF" />
-      <fileset dir="${build.tmp}/default/mps-migration.jar" />
-    </jar>
     <mkdir dir="${build.layout}/mps-migration/solutions" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.migration.component.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.migration.component.jar/META-INF" />
@@ -246,7 +232,7 @@
     <jar destfile="${build.layout}/mps-project-migrations/lib/mps-project-migrations.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/plugins/mps-project-migrations/META-INF/plugin.xml" prefix="META-INF" />
     </jar>
-    <mkdir dir="${build.layout}/mps-project-migrations/solution" />
+    <mkdir dir="${build.layout}/mps-project-migrations/languages" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.mpsmigration.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.mpsmigration.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.ide.mpsmigration.jar/META-INF/module.xml">
@@ -305,7 +291,7 @@
         <sources jar="jetbrains.mps.ide.mpsmigration-src.jar" descriptor="jetbrains.mps.ide.mpsmigration.msd" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-project-migrations/solution/jetbrains.mps.ide.mpsmigration.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-project-migrations/languages/jetbrains.mps.ide.mpsmigration.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.ide.mpsmigration" />
       <fileset dir="${mps_home}/plugins/mps-project-migrations/solution" includes="startup.properties" />
       <fileset dir="${mps_home}/plugins/mps-project-migrations/solution/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
@@ -314,7 +300,7 @@
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-project-migrations-solution">
       <fileset dir="${mps_home}/plugins/mps-project-migrations/solution" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/mps-project-migrations/solution/jetbrains.mps.ide.mpsmigration-src.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-project-migrations/languages/jetbrains.mps.ide.mpsmigration-src.jar" duplicate="preserve">
       <fileset dir="${mps_home}/plugins/mps-project-migrations/solution/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />

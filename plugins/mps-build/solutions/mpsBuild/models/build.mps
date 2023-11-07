@@ -50167,6 +50167,15 @@
           </node>
         </node>
       </node>
+      <node concept="m$_yB" id="16EHGOQRMF7" role="m$_yh">
+        <ref role="m$_yA" node="6OJi9XVRqAm" resolve="jetbrains.mps.ide.mpsmigration" />
+      </node>
+      <node concept="m$_yC" id="16EHGOQRMO2" role="m$_yJ">
+        <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />
+      </node>
+      <node concept="m$_yC" id="16EHGOQRMZg" role="m$_yJ">
+        <ref role="m$_y1" node="5lGJ4TajoV9" resolve="jetbrains.mps.ide.migration.workbench" />
+      </node>
     </node>
     <node concept="1E1JtA" id="5lGJ4Tajp1p" role="3989C9">
       <property role="BnDLt" value="true" />
@@ -50619,48 +50628,6 @@
           <node concept="3_I8Xc" id="1d6huufKSXA" role="39821P">
             <ref role="3_I8Xa" node="1VTNP4xgbrz" resolve="migration-platform.jar" />
           </node>
-          <node concept="3981dx" id="43_f$S$IhqW" role="39821P">
-            <node concept="398223" id="43_f$S$Ihrl" role="39821P">
-              <node concept="28jJK3" id="43_f$S$Ihrm" role="39821P">
-                <node concept="1688n2" id="43_f$S$Ihrn" role="28jJR8">
-                  <property role="1688n3" value="../migration-platform/pluginBase.xml" />
-                  <node concept="NbPM2" id="43_f$S$Ihro" role="1688n0">
-                    <node concept="3Mxwew" id="43_f$S$Ihrp" role="3MwsjC">
-                      <property role="3MwjfP" value="pluginBase.xml" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="398BVA" id="43_f$S$Ihrq" role="28jJRO">
-                  <ref role="398BVh" node="77ZqjhZbMDY" resolve="mps_home" />
-                  <node concept="2Ry0Ak" id="43_f$S$Ihrr" role="iGT6I">
-                    <property role="2Ry0Am" value="plugins" />
-                    <node concept="2Ry0Ak" id="43_f$S$Ihrs" role="2Ry0An">
-                      <property role="2Ry0Am" value="mps-migration" />
-                      <node concept="2Ry0Ak" id="43_f$S$Ihrt" role="2Ry0An">
-                        <property role="2Ry0Am" value="META-INF" />
-                        <node concept="2Ry0Ak" id="43_f$S$Ihru" role="2Ry0An">
-                          <property role="2Ry0Am" value="plugin.xml" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3_I8Xc" id="43_f$S$Ihrv" role="39821P">
-                <ref role="3_I8Xa" node="1VTNP4xgbr8" />
-              </node>
-              <node concept="3_J27D" id="43_f$S$Ihrw" role="Nbhlr">
-                <node concept="3Mxwew" id="43_f$S$Ihrx" role="3MwsjC">
-                  <property role="3MwjfP" value="META-INF" />
-                </node>
-              </node>
-            </node>
-            <node concept="3_J27D" id="43_f$S$IhqY" role="Nbhlr">
-              <node concept="3Mxwew" id="43_f$S$Ihrj" role="3MwsjC">
-                <property role="3MwjfP" value="mps-migration.jar" />
-              </node>
-            </node>
-          </node>
         </node>
         <node concept="398223" id="5lGJ4TaEMf_" role="39821P">
           <node concept="3_J27D" id="5lGJ4TaEMfA" role="Nbhlr">
@@ -50693,16 +50660,6 @@
       </node>
       <node concept="m$_wl" id="6OJi9XVRqKB" role="39821P">
         <ref role="m_rDy" node="6OJi9XVRc7A" resolve="jetbrains.mps.ide.mpsmigration" />
-        <node concept="398223" id="6OJi9XVRsUe" role="39821P">
-          <node concept="3_J27D" id="6OJi9XVRsUg" role="Nbhlr">
-            <node concept="3Mxwew" id="6OJi9XVRsU$" role="3MwsjC">
-              <property role="3MwjfP" value="solution" />
-            </node>
-          </node>
-          <node concept="L2wRC" id="6OJi9XVRsUA" role="39821P">
-            <ref role="L2wRA" node="6OJi9XVRqAm" resolve="jetbrains.mps.ide.mpsmigration" />
-          </node>
-        </node>
         <node concept="pUk6x" id="6OJi9XVRqM6" role="pUk7w" />
       </node>
     </node>
