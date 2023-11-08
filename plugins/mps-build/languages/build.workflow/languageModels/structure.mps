@@ -700,7 +700,7 @@
     <property role="TrG5h" value="BwfTaskMacroCondition" />
     <property role="34LRSv" value="condition" />
     <property role="R4oN_" value="if/unless macro value condition for a task" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="77zDu6tsi$z" role="1TKVEi">
       <property role="IQ2ns" value="8206585334426839331" />
       <property role="20lbJX" value="fLJekj4/_1" />

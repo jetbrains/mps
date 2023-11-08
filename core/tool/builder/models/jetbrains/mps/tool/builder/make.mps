@@ -3270,7 +3270,7 @@
                 </node>
                 <node concept="2ShNRf" id="KL8Aqll4mM" role="37wK5m">
                   <node concept="1pGfFk" id="KL8Aqll4mN" role="2ShVmc">
-                    <ref role="37wK5l" to="jo3e:KL8Aqll4xE" resolve="BaseGeneratorWorker.MyMessageHandler" />
+                    <ref role="37wK5l" to="jo3e:KL8Aqll4xE" resolve="WorkerMessageHandler" />
                     <node concept="Xjq3P" id="3w1$bnwF3ng" role="37wK5m" />
                   </node>
                 </node>

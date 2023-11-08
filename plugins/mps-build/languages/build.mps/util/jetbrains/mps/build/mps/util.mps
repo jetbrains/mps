@@ -32702,7 +32702,7 @@
               <property role="TrG5h" value="ex" />
               <node concept="nSUau" id="xvs04dG5I2" role="1tU5fm">
                 <node concept="3uibUv" id="6m8wrPAU4f8" role="nSUat">
-                  <ref role="3uigEE" node="2hkCNA7Z0QY" resolve="PathConvertException" />
+                  <ref role="3uigEE" node="2hkCNA7Z0QY" resolve="PathConverter.PathConvertException" />
                 </node>
               </node>
             </node>
@@ -32741,7 +32741,7 @@
           <node concept="3clFbC" id="3XLirLoGvtq" role="3clFbw">
             <node concept="10Nm6u" id="3XLirLoGYz7" role="3uHU7w" />
             <node concept="37vLTw" id="3XLirLoF$tr" role="3uHU7B">
-              <ref role="3cqZAo" node="3XLirLoDiSP" resolve="path" />
+              <ref role="3cqZAo" node="3XLirLoDiSP" resolve="file" />
             </node>
           </node>
           <node concept="3clFbS" id="3XLirLoEypz" role="3clFbx">
@@ -32755,7 +32755,7 @@
             <ref role="37wK5l" node="6m8wrPAU4eF" resolve="convertPath" />
             <node concept="2OqwBi" id="3XLirLoMw9V" role="37wK5m">
               <node concept="37vLTw" id="3XLirLoLY3k" role="2Oq$k0">
-                <ref role="3cqZAo" node="3XLirLoDiSP" resolve="path" />
+                <ref role="3cqZAo" node="3XLirLoDiSP" resolve="file" />
               </node>
               <node concept="liA8E" id="3XLirLoN82G" role="2OqNvi">
                 <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
@@ -34274,7 +34274,7 @@
         </node>
         <node concept="3Tm1VV" id="3XLirLmLaIK" role="1B3o_S" />
         <node concept="3uibUv" id="3XLirLmLFo_" role="3clF45">
-          <ref role="3uigEE" node="16ApZ_poryA" resolve="BuildModuleFacade" />
+          <ref role="3uigEE" node="16ApZ_poryA" resolve="ModuleChecker.BuildModuleFacade" />
         </node>
       </node>
     </node>

@@ -36012,14 +36012,14 @@
             </node>
             <node concept="3Tm1VV" id="4OWJMTiBPuD" role="1B3o_S" />
             <node concept="3uibUv" id="4OWJMTiBPuE" role="3clF45">
-              <ref role="3uigEE" node="4OWJMTiBPuv" resolve="Container" />
+              <ref role="3uigEE" node="4OWJMTiBPuv" resolve="StaticMethodCallInference.Container" />
               <node concept="16syzq" id="4OWJMTiBPuF" role="11_B2D">
                 <ref role="16sUi3" node="4OWJMTiBPuz" resolve="S" />
               </node>
             </node>
           </node>
           <node concept="3uibUv" id="6KEnv7lAt_S" role="EKbjA">
-            <ref role="3uigEE" node="6KEnv7lAtn5" resolve="Containable" />
+            <ref role="3uigEE" node="6KEnv7lAtn5" resolve="StaticMethodCallInference.Containable" />
             <node concept="16syzq" id="6KEnv7lAtU2" role="11_B2D">
               <ref role="16sUi3" node="4OWJMTiBPux" resolve="T" />
             </node>
@@ -36034,7 +36034,7 @@
           <property role="TrG5h" value="B" />
           <node concept="3Tm1VV" id="4OWJMTiBPuJ" role="1B3o_S" />
           <node concept="3uibUv" id="4OWJMTiBPuK" role="EKbjA">
-            <ref role="3uigEE" node="4OWJMTiBPuG" resolve="A" />
+            <ref role="3uigEE" node="4OWJMTiBPuG" resolve="StaticMethodCallInference.A" />
           </node>
         </node>
         <node concept="312cEu" id="4OWJMTiBPuL" role="jymVt">
@@ -36045,9 +36045,9 @@
             <node concept="37vLTG" id="4OWJMTiBPuP" role="3clF46">
               <property role="TrG5h" value="c" />
               <node concept="3uibUv" id="4OWJMTiBPuQ" role="1tU5fm">
-                <ref role="3uigEE" node="6KEnv7lAtn5" resolve="Containable" />
+                <ref role="3uigEE" node="6KEnv7lAtn5" resolve="StaticMethodCallInference.Containable" />
                 <node concept="3uibUv" id="4OWJMTiBPuR" role="11_B2D">
-                  <ref role="3uigEE" node="4OWJMTiBPuG" resolve="A" />
+                  <ref role="3uigEE" node="4OWJMTiBPuG" resolve="StaticMethodCallInference.A" />
                 </node>
               </node>
             </node>
@@ -36069,13 +36069,13 @@
             <node concept="3clFbF" id="4OWJMTiBPuW" role="3cqZAp">
               <node concept="2ShNRf" id="4OWJMTiBPzo" role="3clFbG">
                 <node concept="1pGfFk" id="4OWJMTiBPzE" role="2ShVmc">
-                  <ref role="37wK5l" node="4OWJMTiBPuN" resolve="Receiver" />
+                  <ref role="37wK5l" node="4OWJMTiBPuN" resolve="StaticMethodCallInference.Receiver" />
                   <node concept="2YIFZM" id="4OWJMTiBPBm" role="37wK5m">
-                    <ref role="1Pybhc" node="4OWJMTiBPuv" resolve="Container" />
+                    <ref role="1Pybhc" node="4OWJMTiBPuv" resolve="StaticMethodCallInference.Container" />
                     <ref role="37wK5l" node="4OWJMTiBPuy" resolve="of" />
                     <node concept="2ShNRf" id="4OWJMTiBPBn" role="37wK5m">
                       <node concept="HV5vD" id="4OWJMTiBPBo" role="2ShVmc">
-                        <ref role="HV5vE" node="4OWJMTiBPuI" resolve="B" />
+                        <ref role="HV5vE" node="4OWJMTiBPuI" resolve="StaticMethodCallInference.B" />
                       </node>
                     </node>
                   </node>

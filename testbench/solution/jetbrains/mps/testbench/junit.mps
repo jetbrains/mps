@@ -1147,10 +1147,10 @@
       <property role="3TUv4t" value="true" />
       <node concept="Rm8GO" id="6pLVEngWxGl" role="33vP2m">
         <ref role="Rm8GQ" to="ot0m:4lRieqsIgox" resolve="ERROR" />
-        <ref role="1Px2BO" to="ot0m:4lRieqsI9Jy" resolve="Level" />
+        <ref role="1Px2BO" to="ot0m:4lRieqsI9Jy" resolve="CachingAppender.Level" />
       </node>
       <node concept="3uibUv" id="4_TMdeLkPpM" role="1tU5fm">
-        <ref role="3uigEE" to="ot0m:4lRieqsI9Jy" resolve="Level" />
+        <ref role="3uigEE" to="ot0m:4lRieqsI9Jy" resolve="CachingAppender.Level" />
       </node>
       <node concept="3Tm6S6" id="4_TMdeLkPpQ" role="1B3o_S" />
     </node>
@@ -1452,7 +1452,7 @@
       <node concept="37vLTG" id="6pLVEngWbCd" role="3clF46">
         <property role="TrG5h" value="watchLevel" />
         <node concept="3uibUv" id="6pLVEngWbCe" role="1tU5fm">
-          <ref role="3uigEE" to="ot0m:4lRieqsI9Jy" resolve="Level" />
+          <ref role="3uigEE" to="ot0m:4lRieqsI9Jy" resolve="CachingAppender.Level" />
         </node>
       </node>
       <node concept="37vLTG" id="6pLVEngWbCf" role="3clF46">

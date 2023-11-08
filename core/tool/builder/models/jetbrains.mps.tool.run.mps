@@ -775,7 +775,7 @@
                   <property role="2bfB8j" value="true" />
                   <property role="373rjd" value="true" />
                   <ref role="1Y3XeK" to="82uw:~IntPredicate" resolve="IntPredicate" />
-                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <node concept="3Tm1VV" id="3w1$bnwCMRw" role="1B3o_S" />
                   <node concept="3clFb_" id="3w1$bnwCMRI" role="jymVt">
                     <property role="TrG5h" value="test" />
@@ -817,7 +817,7 @@
                       </node>
                     </node>
                     <node concept="2AHcQZ" id="3w1$bnwCMRQ" role="2AJF6D">
-                      <ref role="2AI5Lk" to="wyt6:~Override" />
+                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                     </node>
                   </node>
                 </node>

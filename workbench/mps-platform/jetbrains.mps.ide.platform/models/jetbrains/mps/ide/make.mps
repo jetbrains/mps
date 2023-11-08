@@ -4272,11 +4272,11 @@
                 <ref role="3cqZAo" node="2UA$I15WvlH" resolve="configuration" />
               </node>
               <node concept="2OwXpG" id="19IglfvX1_z" role="2OqNvi">
-                <ref role="2Oxat5" node="19IglfvW4MV" resolve="myDisableStartupModuleMaker" />
+                <ref role="2Oxat5" node="19IglfvW4MV" resolve="myDisableMakeOnStartup" />
               </node>
             </node>
             <node concept="37vLTw" id="19IglfvX1_$" role="37vLTJ">
-              <ref role="3cqZAo" node="19IglfvW4MV" resolve="myDisableStartupModuleMaker" />
+              <ref role="3cqZAo" node="19IglfvW4MV" resolve="myDisableMakeOnStartup" />
             </node>
           </node>
         </node>
@@ -4325,7 +4325,7 @@
       <node concept="3clFbS" id="19IglfvX2EE" role="3clF47">
         <node concept="3cpWs6" id="19IglfvX2EF" role="3cqZAp">
           <node concept="37vLTw" id="19IglfvX2EG" role="3cqZAk">
-            <ref role="3cqZAo" node="19IglfvW4MV" resolve="myDisableStartupModuleMaker" />
+            <ref role="3cqZAo" node="19IglfvW4MV" resolve="myDisableMakeOnStartup" />
           </node>
         </node>
       </node>
@@ -4343,7 +4343,7 @@
               <ref role="3cqZAo" node="19IglfvX2ER" resolve="value" />
             </node>
             <node concept="37vLTw" id="19IglfvX2EQ" role="37vLTJ">
-              <ref role="3cqZAo" node="19IglfvW4MV" resolve="myDisableStartupModuleMaker" />
+              <ref role="3cqZAo" node="19IglfvW4MV" resolve="myDisableMakeOnStartup" />
             </node>
           </node>
         </node>

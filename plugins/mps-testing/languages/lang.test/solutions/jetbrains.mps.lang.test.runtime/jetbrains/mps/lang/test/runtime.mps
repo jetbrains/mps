@@ -5272,7 +5272,7 @@
                 <ref role="37wK5l" to="zu0:~CachingAppender.&lt;init&gt;(jetbrains.mps.testbench.util.CachingAppender$Level)" resolve="CachingAppender" />
                 <node concept="Rm8GO" id="5gJ0Wj_T8PR" role="37wK5m">
                   <ref role="Rm8GQ" to="zu0:~CachingAppender$Level.ERROR" resolve="ERROR" />
-                  <ref role="1Px2BO" to="zu0:~CachingAppender$Level" resolve="Level" />
+                  <ref role="1Px2BO" to="zu0:~CachingAppender$Level" resolve="CachingAppender.Level" />
                 </node>
               </node>
             </node>

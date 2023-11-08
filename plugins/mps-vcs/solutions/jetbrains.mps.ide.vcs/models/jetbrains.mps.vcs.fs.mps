@@ -210,7 +210,7 @@
               <ref role="3cqZAo" node="24kmG9Gco34" resolve="myIJProject" />
             </node>
             <node concept="37vLTw" id="24kmG9Gco7p" role="37vLTx">
-              <ref role="3cqZAo" node="24kmG9Gco7i" resolve="myIJProject" />
+              <ref role="3cqZAo" node="24kmG9Gco7i" resolve="project" />
             </node>
           </node>
         </node>
@@ -430,7 +430,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="24kmG9GcmH7" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="24kmG9Gd643" role="jymVt" />
@@ -476,7 +476,7 @@
                 </node>
                 <node concept="2OqwBi" id="24kmG9GdgDJ" role="37wK5m">
                   <node concept="37vLTw" id="24kmG9GdgdZ" role="2Oq$k0">
-                    <ref role="3cqZAo" node="24kmG9GcSQ9" resolve="repository" />
+                    <ref role="3cqZAo" node="24kmG9GcSQ9" resolve="repoRootFile" />
                   </node>
                   <node concept="liA8E" id="24kmG9Gdi$s" role="2OqNvi">
                     <ref role="37wK5l" to="jlff:~VirtualFile.getPath()" resolve="getPath" />

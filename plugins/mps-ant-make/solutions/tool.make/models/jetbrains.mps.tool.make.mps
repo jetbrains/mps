@@ -272,10 +272,10 @@
         <node concept="3clFbF" id="qlXQxl5E3O" role="3cqZAp">
           <node concept="37vLTI" id="qlXQxl5E3Q" role="3clFbG">
             <node concept="37vLTw" id="qlXQxl5E3T" role="37vLTJ">
-              <ref role="3cqZAo" node="qlXQxl5E3K" resolve="myMpsPlatform" />
+              <ref role="3cqZAo" node="qlXQxl5E3K" resolve="myEnvironment" />
             </node>
             <node concept="37vLTw" id="qlXQxl5E3U" role="37vLTx">
-              <ref role="3cqZAo" node="qlXQxl5Dqx" resolve="mpsPlatform" />
+              <ref role="3cqZAo" node="qlXQxl5Dqx" resolve="mpsEnv" />
             </node>
           </node>
         </node>
@@ -1025,12 +1025,12 @@
             <node concept="2ShNRf" id="3w1$bnwwozk" role="33vP2m">
               <node concept="1pGfFk" id="3w1$bnwwpns" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="i9so:3rCIVT6G0sF" resolve="Stub2" />
+                <ref role="37wK5l" to="i9so:3rCIVT6G0sF" resolve="IScriptController.Stub2" />
                 <node concept="37vLTw" id="3w1$bnwwpwE" role="37wK5m">
                   <ref role="3cqZAo" node="3w1$bnwvUED" resolve="session" />
                 </node>
                 <node concept="37vLTw" id="3w1$bnwA$66" role="37wK5m">
-                  <ref role="3cqZAo" node="3w1$bnwA$63" resolve="initializer" />
+                  <ref role="3cqZAo" node="3w1$bnwA$63" resolve="jcfi" />
                 </node>
               </node>
             </node>
@@ -1389,7 +1389,7 @@
       <node concept="3Tm1VV" id="1nTn8MoNRBb" role="1B3o_S" />
       <node concept="3cqZAl" id="1nTn8MoNRDJ" role="3clF45" />
       <node concept="2AHcQZ" id="qlXQxl5CfY" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="3w1$bnw$pK9" role="jymVt" />
@@ -1802,14 +1802,14 @@
           <node concept="3cpWsn" id="5nerzVuuRZo" role="3cpWs9">
             <property role="TrG5h" value="parsedJavaVersion" />
             <node concept="3uibUv" id="5nerzVuuRZp" role="1tU5fm">
-              <ref role="3uigEE" to="l46t:~JavaCompilerOptionsComponent$JavaVersion" resolve="JavaVersion" />
+              <ref role="3uigEE" to="l46t:~JavaCompilerOptionsComponent$JavaVersion" resolve="JavaCompilerOptionsComponent.JavaVersion" />
             </node>
             <node concept="2YIFZM" id="5nerzVuuRZq" role="33vP2m">
               <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent$JavaVersion.parse(java.lang.String)" resolve="parse" />
-              <ref role="1Pybhc" to="l46t:~JavaCompilerOptionsComponent$JavaVersion" resolve="JavaVersion" />
+              <ref role="1Pybhc" to="l46t:~JavaCompilerOptionsComponent$JavaVersion" resolve="JavaCompilerOptionsComponent.JavaVersion" />
               <node concept="2OqwBi" id="5nerzVuuVjS" role="37wK5m">
                 <node concept="37vLTw" id="5nerzVuuVjT" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3w1$bnw$_FH" resolve="jc" />
+                  <ref role="3cqZAo" node="3w1$bnw$_FH" resolve="jp" />
                 </node>
                 <node concept="liA8E" id="5nerzVuuVjU" role="2OqNvi">
                   <ref role="37wK5l" to="asz6:3pzB6wMWswH" resolve="getTargetJavaVersion" />
@@ -2759,7 +2759,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3w1$bnwyOt0" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="3w1$bnwyOyo" role="jymVt" />
@@ -2777,7 +2777,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3w1$bnwyOt8" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>

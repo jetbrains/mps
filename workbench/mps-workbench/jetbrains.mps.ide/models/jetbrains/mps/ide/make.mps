@@ -2052,14 +2052,14 @@
               </node>
             </node>
             <node concept="37vLTw" id="19IglfvZ0w2" role="37vLTJ">
-              <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableStartupModuleMaker" />
+              <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="19IglfvZ0w3" role="3cqZAp">
           <node concept="2OqwBi" id="19IglfvZ0w4" role="3clFbG">
             <node concept="37vLTw" id="19IglfvZ0w5" role="2Oq$k0">
-              <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableStartupModuleMaker" />
+              <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
             </node>
             <node concept="liA8E" id="19IglfvZ0w6" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~AbstractButton.setSelected(boolean)" resolve="setSelected" />
@@ -2068,7 +2068,7 @@
                   <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
                 </node>
                 <node concept="liA8E" id="19IglfvZ0w9" role="2OqNvi">
-                  <ref role="37wK5l" to="4tc7:19IglfvX2ED" resolve="isDisableStartupModuleMaker" />
+                  <ref role="37wK5l" to="4tc7:19IglfvX2ED" resolve="isDisableMakeOnStartup" />
                 </node>
               </node>
             </node>
@@ -2082,7 +2082,7 @@
             <node concept="liA8E" id="19IglfvZ0wd" role="2OqNvi">
               <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="19IglfvZ0we" role="37wK5m">
-                <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableStartupModuleMaker" />
+                <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
               </node>
               <node concept="10M0yZ" id="5Cdkp1SZYlM" role="37wK5m">
                 <ref role="3cqZAo" to="z60i:~BorderLayout.SOUTH" resolve="SOUTH" />
@@ -2130,7 +2130,7 @@
             <node concept="3y3z36" id="19IglfvZ9Ti" role="3uHU7w">
               <node concept="2OqwBi" id="19IglfvZ9Tj" role="3uHU7w">
                 <node concept="37vLTw" id="19IglfvZ9Tk" role="2Oq$k0">
-                  <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableStartupModuleMaker" />
+                  <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
                 </node>
                 <node concept="liA8E" id="19IglfvZ9Tl" role="2OqNvi">
                   <ref role="37wK5l" to="dxuu:~AbstractButton.isSelected()" resolve="isSelected" />
@@ -2141,7 +2141,7 @@
                   <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
                 </node>
                 <node concept="liA8E" id="19IglfvZ9To" role="2OqNvi">
-                  <ref role="37wK5l" to="4tc7:19IglfvX2ED" resolve="isDisableStartupModuleMaker" />
+                  <ref role="37wK5l" to="4tc7:19IglfvX2ED" resolve="isDisableMakeOnStartup" />
                 </node>
               </node>
             </node>
@@ -2182,10 +2182,10 @@
               <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
             </node>
             <node concept="liA8E" id="19IglfvZeIy" role="2OqNvi">
-              <ref role="37wK5l" to="4tc7:19IglfvX2EJ" resolve="setDisableStartupModuleMaker" />
+              <ref role="37wK5l" to="4tc7:19IglfvX2EJ" resolve="setDisableMakeOnStartup" />
               <node concept="2OqwBi" id="19IglfvZeIz" role="37wK5m">
                 <node concept="37vLTw" id="19IglfvZeI$" role="2Oq$k0">
-                  <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableStartupModuleMaker" />
+                  <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
                 </node>
                 <node concept="liA8E" id="19IglfvZeI_" role="2OqNvi">
                   <ref role="37wK5l" to="dxuu:~AbstractButton.isSelected()" resolve="isSelected" />
@@ -2226,7 +2226,7 @@
         <node concept="3clFbF" id="19IglfvZi9q" role="3cqZAp">
           <node concept="2OqwBi" id="19IglfvZi9r" role="3clFbG">
             <node concept="37vLTw" id="19IglfvZi9s" role="2Oq$k0">
-              <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableStartupModuleMaker" />
+              <ref role="3cqZAo" node="19IglfvYYOG" resolve="myDisableMakeOnStartup" />
             </node>
             <node concept="liA8E" id="19IglfvZi9t" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~AbstractButton.setSelected(boolean)" resolve="setSelected" />
@@ -2235,7 +2235,7 @@
                   <ref role="3cqZAo" node="2qvp1d_nwIm" resolve="myMakeConfig" />
                 </node>
                 <node concept="liA8E" id="19IglfvZi9w" role="2OqNvi">
-                  <ref role="37wK5l" to="4tc7:19IglfvX2ED" resolve="isDisableStartupModuleMaker" />
+                  <ref role="37wK5l" to="4tc7:19IglfvX2ED" resolve="isDisableMakeOnStartup" />
                 </node>
               </node>
             </node>

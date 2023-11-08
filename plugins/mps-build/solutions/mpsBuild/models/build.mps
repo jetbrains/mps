@@ -52086,7 +52086,7 @@
     </node>
     <node concept="1l3spV" id="4GrD5cc9OR8" role="1l3spN">
       <node concept="m$_wl" id="4GrD5cc9OR9" role="39821P">
-        <ref role="m_rDy" node="4GrD5cc9OQK" resolve="jetbrains.mps.editor.tooltips" />
+        <ref role="m_rDy" node="4GrD5cc9OQK" resolve="jetbrains.mps.navbar" />
         <node concept="398223" id="4GrD5ccamYW" role="39821P">
           <node concept="3_J27D" id="4GrD5ccamYX" role="Nbhlr">
             <node concept="3Mxwew" id="4GrD5ccamYY" role="3MwsjC">
@@ -52303,7 +52303,7 @@
     </node>
     <node concept="1l3spV" id="1nTn8MoO6pe" role="1l3spN">
       <node concept="m$_wl" id="1nTn8MoO6pf" role="39821P">
-        <ref role="m_rDy" node="1nTn8MoO6oQ" resolve="jetbrains.mps.editor.spellcheck" />
+        <ref role="m_rDy" node="1nTn8MoO6oQ" resolve="jetbrains.mps.tool.make" />
         <node concept="pUk6x" id="1nTn8MoO6pg" role="pUk7w" />
       </node>
     </node>

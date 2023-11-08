@@ -2430,7 +2430,7 @@
             </node>
             <node concept="2ShNRf" id="BYb1OG1y_G" role="2Oq$k0">
               <node concept="1pGfFk" id="BYb1OG1Bvc" role="2ShVmc">
-                <ref role="37wK5l" node="BYb1OG11qm" resolve="TestBody" />
+                <ref role="37wK5l" node="BYb1OG11qm" resolve="NodesTestCase.TestBody" />
                 <node concept="Xjq3P" id="BYb1OG1BzQ" role="37wK5m" />
               </node>
             </node>
@@ -3763,7 +3763,7 @@
                 <ref role="37wK5l" to="zu0:~CachingAppender.expectEvent(int,java.lang.String)" resolve="expectEvent" />
                 <node concept="Rm8GO" id="1pQpPQ2kc6C" role="37wK5m">
                   <ref role="Rm8GQ" to="zu0:~CachingAppender$Level.ERROR" resolve="ERROR" />
-                  <ref role="1Px2BO" to="zu0:~CachingAppender$Level" resolve="Level" />
+                  <ref role="1Px2BO" to="zu0:~CachingAppender$Level" resolve="CachingAppender.Level" />
                   <node concept="1ZhdrF" id="1pQpPQ2kcWP" role="lGtFl">
                     <property role="2qtEX8" value="enumConstantDeclaration" />
                     <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1083260308424/1083260308426" />

@@ -13914,7 +13914,7 @@
               </node>
               <node concept="mw_s8" id="20SdAGCpP2l" role="1ZfhKB">
                 <node concept="2YIFZM" id="20SdAGCpQyf" role="mwGJk">
-                  <ref role="37wK5l" to="tp2g:hwak6Ex" resolve="unbounded" />
+                  <ref role="37wK5l" to="tp2g:hwak6Ex" resolve="copyTypeRecursively" />
                   <ref role="1Pybhc" to="tp2g:hv18zCR" resolve="ClassifierTypeUtil" />
                   <node concept="1PxgMI" id="20SdAGCpRaO" role="37wK5m">
                     <property role="1BlNFB" value="true" />

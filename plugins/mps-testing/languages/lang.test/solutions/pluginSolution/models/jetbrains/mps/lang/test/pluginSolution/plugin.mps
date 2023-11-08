@@ -394,7 +394,7 @@
     <property role="TrG5h" value="ContributeToModelRefactorings" />
     <node concept="ftmFs" id="1NpV1yX0GtO" role="ftER_">
       <node concept="tCFHf" id="1NpV1yX0GtR" role="ftvYc">
-        <ref role="tCJdB" node="1NpV1yX0Em2" resolve="ReorderModelRootsAction" />
+        <ref role="tCJdB" node="1NpV1yX0Em2" resolve="ReorderModelRoots" />
       </node>
     </node>
     <node concept="tT9cl" id="1NpV1yX0GtT" role="2f5YQi">
@@ -429,7 +429,7 @@
             <node concept="2OqwBi" id="1NpV1yXv07M" role="33vP2m">
               <node concept="2WthIp" id="1NpV1yXv07N" role="2Oq$k0" />
               <node concept="1DTwFV" id="1NpV1yXv07O" role="2OqNvi">
-                <ref role="2WH_rO" node="1NpV1yX0FE2" resolve="model" />
+                <ref role="2WH_rO" node="1NpV1yX0FE2" resolve="selectedModel" />
               </node>
             </node>
           </node>
@@ -1124,7 +1124,7 @@
             <node concept="3clFbF" id="5bz8UfuCrym" role="3cqZAp">
               <node concept="2OqwBi" id="5bz8UfuCX9V" role="3clFbG">
                 <node concept="37vLTw" id="5bz8UfuD0gl" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5bz8UfuD0ga" resolve="notification" />
+                  <ref role="3cqZAo" node="5bz8UfuD0ga" resolve="n" />
                 </node>
                 <node concept="liA8E" id="5bz8UfuCXkH" role="2OqNvi">
                   <ref role="37wK5l" to="fnpx:~Notification.notify(com.intellij.openapi.project.Project)" resolve="notify" />
@@ -1263,14 +1263,14 @@
               </node>
             </node>
             <node concept="37vLTw" id="6yChgC1z4T5" role="37vLTJ">
-              <ref role="3cqZAo" node="6yChgC1z05c" resolve="myModelName" />
+              <ref role="3cqZAo" node="6yChgC1z05c" resolve="myNorthLabel" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="6yChgC1$nCi" role="3cqZAp">
           <node concept="2OqwBi" id="6yChgC1$ogT" role="3clFbG">
             <node concept="37vLTw" id="6yChgC1$nCg" role="2Oq$k0">
-              <ref role="3cqZAo" node="6yChgC1z05c" resolve="myModelName" />
+              <ref role="3cqZAo" node="6yChgC1z05c" resolve="myNorthLabel" />
             </node>
             <node concept="liA8E" id="6yChgC1$Cz7" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setBorder(javax.swing.border.Border)" resolve="setBorder" />
@@ -1346,7 +1346,7 @@
         <node concept="3clFbF" id="6yChgC1zMCR" role="3cqZAp">
           <node concept="2OqwBi" id="6yChgC1zOHP" role="3clFbG">
             <node concept="37vLTw" id="6yChgC1zMCQ" role="2Oq$k0">
-              <ref role="3cqZAo" node="6yChgC1z05c" resolve="myModelName" />
+              <ref role="3cqZAo" node="6yChgC1z05c" resolve="myNorthLabel" />
             </node>
             <node concept="liA8E" id="6yChgC1zR_R" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JLabel.setIcon(javax.swing.Icon)" resolve="setIcon" />
@@ -1397,12 +1397,12 @@
       <node concept="3clFbS" id="6yChgC1yKWB" role="3clF47">
         <node concept="3clFbF" id="6yChgC1zxcm" role="3cqZAp">
           <node concept="37vLTw" id="6yChgC1zxcj" role="3clFbG">
-            <ref role="3cqZAo" node="6yChgC1z05c" resolve="myModelName" />
+            <ref role="3cqZAo" node="6yChgC1z05c" resolve="myNorthLabel" />
           </node>
         </node>
       </node>
       <node concept="2AHcQZ" id="6yChgC1yKWC" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="1NpV1yX0MYH" role="jymVt" />
@@ -1581,7 +1581,7 @@
                     <property role="2bfB8j" value="true" />
                     <property role="373rjd" value="true" />
                     <ref role="1Y3XeK" to="lzb2:~AnActionButtonRunnable" resolve="AnActionButtonRunnable" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                     <node concept="3Tm1VV" id="1NpV1yX4p9m" role="1B3o_S" />
                     <node concept="3clFb_" id="1NpV1yX4p9A" role="jymVt">
                       <property role="TrG5h" value="run" />
@@ -1923,7 +1923,7 @@
                         </node>
                       </node>
                       <node concept="2AHcQZ" id="1NpV1yX4p9I" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" />
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                       </node>
                     </node>
                   </node>
@@ -2070,7 +2070,7 @@
                                 <property role="TrG5h" value="index2" />
                                 <node concept="10Oyi0" id="1NpV1yX9d0y" role="1tU5fm" />
                                 <node concept="37vLTw" id="1NpV1yX9d0z" role="33vP2m">
-                                  <ref role="3cqZAo" node="1NpV1yX9d0q" resolve="index2" />
+                                  <ref role="3cqZAo" node="1NpV1yX9d0q" resolve="index1" />
                                 </node>
                               </node>
                             </node>
@@ -2089,7 +2089,7 @@
                                       </node>
                                     </node>
                                     <node concept="37vLTw" id="1NpV1yX9d0G" role="37vLTJ">
-                                      <ref role="3cqZAo" node="1NpV1yX9d0x" resolve="index1" />
+                                      <ref role="3cqZAo" node="1NpV1yX9d0x" resolve="index2" />
                                     </node>
                                   </node>
                                 </node>
@@ -2201,7 +2201,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1NpV1yX0MZx" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="1NpV1yXs00u" role="jymVt" />
@@ -2360,7 +2360,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1NpV1yX3jzn" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="1NpV1yX3kyy" role="jymVt" />
@@ -2395,7 +2395,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="1NpV1yX3jzB" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="1NpV1yX3t3F" role="jymVt" />
