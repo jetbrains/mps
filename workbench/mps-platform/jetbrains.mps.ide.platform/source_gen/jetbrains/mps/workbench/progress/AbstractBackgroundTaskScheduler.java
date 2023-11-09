@@ -6,8 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.progress.DefaultTaskScheduler;
 import jetbrains.mps.project.Project;
 import java.util.concurrent.Executor;
-import org.jetbrains.mps.openapi.module.ModelAccess;
-import jetbrains.mps.smodel.ModelAccessBase;
 import java.util.concurrent.RunnableFuture;
 import java.util.Collection;
 import jetbrains.mps.progress.ProgressTask;
@@ -29,12 +27,12 @@ public abstract class AbstractBackgroundTaskScheduler<TASK> extends DefaultTaskS
 
   public AbstractBackgroundTaskScheduler(Project mpsProject) {
     this.myMpsProject = mpsProject;
-    ModelAccess modelAccess = mpsProject.getRepository().getModelAccess();
-    if (modelAccess instanceof ModelAccessBase) {
-      this.readExecutor = ((ModelAccessBase) modelAccess).shareRead();
-    } else {
-      this.readExecutor = new DefaultTaskScheduler.DirectExecutor();
-    }
+    this.readExecutor = new DefaultTaskScheduler.DirectExecutor();
+  }
+
+  public AbstractBackgroundTaskScheduler(Project mpsProject, Executor executor) {
+    this.myMpsProject = mpsProject;
+    this.readExecutor = executor;
   }
 
   @Override

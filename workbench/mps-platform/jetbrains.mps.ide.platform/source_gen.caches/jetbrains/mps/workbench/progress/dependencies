@@ -40,8 +40,6 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.progress.ProgressTask" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
-    <classNode dependClassName="jetbrains.mps.smodel.ModelAccessBase" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
     <classNode extendsClassName="jetbrains.mps.progress.DefaultTaskScheduler" />
   </dependency>
@@ -59,6 +57,7 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.Throwable" />
+    <classNode dependClassName="java.util.concurrent.Executor" />
     <classNode dependClassName="java.util.function.BooleanSupplier" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.progress.ProgressMonitorAdapter" />
@@ -80,6 +79,7 @@
     <classNode dependClassName="java.util.concurrent.CompletableFuture" />
     <classNode dependClassName="java.util.concurrent.CompletionException" />
     <classNode dependClassName="java.util.concurrent.ExecutionException" />
+    <classNode dependClassName="java.util.concurrent.Executor" />
     <classNode dependClassName="java.util.concurrent.ForkJoinPool" />
     <classNode dependClassName="java.util.function.BooleanSupplier" />
     <classNode dependClassName="java.util.function.Consumer" />

@@ -95,6 +95,7 @@
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.concurrent.Executor" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.checkers.IAbstractChecker" />
     <classNode dependClassName="jetbrains.mps.checkers.IChecker" />
@@ -112,6 +113,7 @@
     <classNode dependClassName="jetbrains.mps.progress.DefaultTaskScheduler" />
     <classNode dependClassName="jetbrains.mps.progress.TaskScheduler" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.smodel.ModelAccessBase" />
     <classNode dependClassName="jetbrains.mps.smodel.ModelAccessHelper" />
     <classNode dependClassName="jetbrains.mps.util.CollectConsumer" />
     <classNode dependClassName="jetbrains.mps.util.Pair" />

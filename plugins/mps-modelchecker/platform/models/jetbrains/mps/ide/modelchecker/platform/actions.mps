@@ -2186,6 +2186,39 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="3cpWs8" id="1Yn_vPPBZ2h" role="3cqZAp">
+                    <node concept="3cpWsn" id="1Yn_vPPBZ2i" role="3cpWs9">
+                      <property role="TrG5h" value="shareReadExecutor" />
+                      <node concept="3uibUv" id="1Yn_vPPBXBv" role="1tU5fm">
+                        <ref role="3uigEE" to="5zyv:~Executor" resolve="Executor" />
+                      </node>
+                      <node concept="2OqwBi" id="1Yn_vPPBZ2j" role="33vP2m">
+                        <node concept="1eOMI4" id="1Yn_vPPBZ2k" role="2Oq$k0">
+                          <node concept="10QFUN" id="1Yn_vPPBZ2l" role="1eOMHV">
+                            <node concept="2OqwBi" id="1Yn_vPPBZ2m" role="10QFUP">
+                              <node concept="2OqwBi" id="1Yn_vPPBZ2n" role="2Oq$k0">
+                                <node concept="37vLTw" id="1Yn_vPPBZ2o" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="2$qlEUMAil9" resolve="myMpsProject" />
+                                </node>
+                                <node concept="liA8E" id="1Yn_vPPBZ2p" role="2OqNvi">
+                                  <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                                </node>
+                              </node>
+                              <node concept="liA8E" id="1Yn_vPPBZ2q" role="2OqNvi">
+                                <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
+                              </node>
+                            </node>
+                            <node concept="3uibUv" id="1Yn_vPPBZ2r" role="10QFUM">
+                              <ref role="3uigEE" to="w1kc:~ModelAccessBase" resolve="ModelAccessBase" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="1Yn_vPPBZ2s" role="2OqNvi">
+                          <ref role="37wK5l" to="w1kc:~ModelAccessBase.shareRead()" resolve="shareRead" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                   <node concept="3cpWs8" id="2$qlEUMArwg" role="3cqZAp">
                     <node concept="3cpWsn" id="2$qlEUMArwh" role="3cpWs9">
                       <property role="TrG5h" value="scheduler" />
@@ -2205,9 +2238,12 @@
                         <node concept="2ShNRf" id="2$qlEUMArwi" role="3K4E3e">
                           <node concept="1pGfFk" id="2$qlEUMArwj" role="2ShVmc">
                             <property role="373rjd" value="true" />
-                            <ref role="37wK5l" to="u3gh:2$qlEUMhPB0" resolve="IdeaPlatformTaskScheduler" />
+                            <ref role="37wK5l" to="u3gh:1Yn_vPPAA5W" resolve="IdeaPlatformTaskScheduler" />
                             <node concept="37vLTw" id="2$qlEUMArwk" role="37wK5m">
                               <ref role="3cqZAo" node="2$qlEUMAil9" resolve="myMpsProject" />
+                            </node>
+                            <node concept="37vLTw" id="1Yn_vPPBZ2t" role="37wK5m">
+                              <ref role="3cqZAo" node="1Yn_vPPBZ2i" resolve="shareRead" />
                             </node>
                           </node>
                         </node>

@@ -20,6 +20,8 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.CollectConsumer;
 import java.util.Collections;
+import java.util.concurrent.Executor;
+import jetbrains.mps.smodel.ModelAccessBase;
 import jetbrains.mps.progress.TaskScheduler;
 import jetbrains.mps.workbench.progress.IdeaPlatformTaskScheduler;
 import jetbrains.mps.progress.DefaultTaskScheduler;
@@ -81,7 +83,8 @@ public class ModelCheckerIssueFinder implements SearchTask {
       //       as I don't like to expose ModelCheckerBuilder.ItemsToCheck, and need to refactor this.
 
       boolean runInParallel = (myMpsProject != null) && ModelCheckerSettings.getInstance().isRunInParallel();
-      TaskScheduler scheduler = (runInParallel ? new IdeaPlatformTaskScheduler(myMpsProject) : new DefaultTaskScheduler());
+      Executor shareReadExecutor = ((ModelAccessBase) myMpsProject.getRepository().getModelAccess()).shareRead();
+      TaskScheduler scheduler = (runInParallel ? new IdeaPlatformTaskScheduler(myMpsProject, shareReadExecutor) : new DefaultTaskScheduler());
       ModelCheckerBuilder modelCheckerBuilder = new ModelCheckerBuilder(ModelCheckerSettings.getInstance().isCheckStubs()).withTaskScheduler(scheduler);
 
       IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem> abstractChecker = modelCheckerBuilder.createChecker(specificCheckers);

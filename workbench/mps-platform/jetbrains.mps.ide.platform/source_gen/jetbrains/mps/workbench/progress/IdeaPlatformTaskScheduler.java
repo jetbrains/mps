@@ -5,6 +5,7 @@ package jetbrains.mps.workbench.progress;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.progress.Task;
 import jetbrains.mps.project.Project;
+import java.util.concurrent.Executor;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.progress.ProgressTask;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
@@ -25,6 +26,10 @@ public class IdeaPlatformTaskScheduler extends AbstractBackgroundTaskScheduler<T
 
   public IdeaPlatformTaskScheduler(Project mpsProject) {
     super(mpsProject);
+  }
+
+  public IdeaPlatformTaskScheduler(Project mpsProject, Executor executor) {
+    super(mpsProject, executor);
   }
 
   @Override
