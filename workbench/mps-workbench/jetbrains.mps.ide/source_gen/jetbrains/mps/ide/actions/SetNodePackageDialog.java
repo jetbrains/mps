@@ -33,12 +33,12 @@ public class SetNodePackageDialog extends DialogWrapper {
 
   public SetNodePackageDialog(Project project, List<String> existingPackages) {
     super(((MPSProject) project).getProject());
-    setTitle("Set Virtual Package");
+    setTitle("Set Virtual Folder");
     setModal(true);
     myMainPanel = new JPanel();
     myMainPanel.setLayout(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.NORTHWEST, GridBagConstraints.HORIZONTAL, JBUI.insets(0, 5, 5, 5), 0, 0);
-    myMainPanel.add(new JLabel("Enter virtual package name:"), c);
+    myMainPanel.add(new JLabel("Enter virtual folder name"), c);
     myCbPackage = new ComboBox<String>();
     myCbPackage.setEditable(true);
     myCbPackage.setModel(new DefaultComboBoxModel<String>(ListSequence.fromList(existingPackages).toGenericArray(String.class)));

@@ -12898,7 +12898,7 @@
           <node concept="1rXfSq" id="4hiugqyz3sa" role="3clFbG">
             <ref role="37wK5l" to="jkm4:~DialogWrapper.setTitle(java.lang.String)" resolve="setTitle" />
             <node concept="Xl_RD" id="5pZzWlZBk$S" role="37wK5m">
-              <property role="Xl_RC" value="Set Virtual Package" />
+              <property role="Xl_RC" value="Set Virtual Folder" />
             </node>
           </node>
         </node>
@@ -13009,7 +13009,7 @@
                 <node concept="1pGfFk" id="3UBTx_UBITU" role="2ShVmc">
                   <ref role="37wK5l" to="dxuu:~JLabel.&lt;init&gt;(java.lang.String)" resolve="JLabel" />
                   <node concept="Xl_RD" id="3UBTx_UBITV" role="37wK5m">
-                    <property role="Xl_RC" value="Enter virtual package name:" />
+                    <property role="Xl_RC" value="Enter virtual folder name" />
                   </node>
                 </node>
               </node>
@@ -15235,20 +15235,34 @@
             <property role="TrG5h" value="newName" />
             <property role="3TUv4t" value="true" />
             <node concept="17QB3L" id="5VIEYrBjNHd" role="1tU5fm" />
-            <node concept="2YIFZM" id="5VIEYrBjNSl" role="33vP2m">
-              <ref role="1Pybhc" to="dxuu:~JOptionPane" resolve="JOptionPane" />
-              <ref role="37wK5l" to="dxuu:~JOptionPane.showInputDialog(java.awt.Component,java.lang.Object,java.lang.Object)" resolve="showInputDialog" />
-              <node concept="2OqwBi" id="5VIEYrBjNSm" role="37wK5m">
-                <node concept="2WthIp" id="5VIEYrBjNSn" role="2Oq$k0" />
-                <node concept="1DTwFV" id="5VIEYrBjNSo" role="2OqNvi">
-                  <ref role="2WH_rO" node="5VIEYrBjNFx" resolve="frame" />
+            <node concept="10QFUN" id="2IpDGgs2ts" role="33vP2m">
+              <node concept="3uibUv" id="2IpDGgs3jL" role="10QFUM">
+                <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+              </node>
+              <node concept="2YIFZM" id="5VIEYrBjNSl" role="10QFUP">
+                <ref role="1Pybhc" to="dxuu:~JOptionPane" resolve="JOptionPane" />
+                <ref role="37wK5l" to="dxuu:~JOptionPane.showInputDialog(java.awt.Component,java.lang.Object,java.lang.String,int,javax.swing.Icon,java.lang.Object[],java.lang.Object)" resolve="showInputDialog" />
+                <node concept="2OqwBi" id="5VIEYrBjNSm" role="37wK5m">
+                  <node concept="2WthIp" id="5VIEYrBjNSn" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="5VIEYrBjNSo" role="2OqNvi">
+                    <ref role="2WH_rO" node="5VIEYrBjNFx" resolve="frame" />
+                  </node>
                 </node>
-              </node>
-              <node concept="Xl_RD" id="5VIEYrBjNSp" role="37wK5m">
-                <property role="Xl_RC" value="Enter New Package Name" />
-              </node>
-              <node concept="37vLTw" id="3GM_nagTsOZ" role="37wK5m">
-                <ref role="3cqZAo" node="5VIEYrBjNH1" resolve="packageName" />
+                <node concept="Xl_RD" id="5VIEYrBjNSp" role="37wK5m">
+                  <property role="Xl_RC" value="Enter virtual folder name" />
+                </node>
+                <node concept="Xl_RD" id="2IpDGgrKMp" role="37wK5m">
+                  <property role="Xl_RC" value="Rename Virtual Folder" />
+                </node>
+                <node concept="10M0yZ" id="2IpDGgrW_T" role="37wK5m">
+                  <ref role="3cqZAo" to="dxuu:~JOptionPane.INFORMATION_MESSAGE" resolve="INFORMATION_MESSAGE" />
+                  <ref role="1PxDUh" to="dxuu:~JOptionPane" resolve="JOptionPane" />
+                </node>
+                <node concept="10Nm6u" id="2IpDGgrXmD" role="37wK5m" />
+                <node concept="10Nm6u" id="2IpDGgs23C" role="37wK5m" />
+                <node concept="37vLTw" id="3GM_nagTsOZ" role="37wK5m">
+                  <ref role="3cqZAo" node="5VIEYrBjNH1" resolve="packageName" />
+                </node>
               </node>
             </node>
           </node>

@@ -83,7 +83,7 @@ public class RenamePackage_Action extends BaseAction {
     }
     final String packageName = treeNode.getPackage();
     ModelAccess modelAccess = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess();
-    final String newName = JOptionPane.showInputDialog(event.getData(MPSCommonDataKeys.FRAME), "Enter New Package Name", packageName);
+    final String newName = (String) JOptionPane.showInputDialog(event.getData(MPSCommonDataKeys.FRAME), "Enter virtual folder name", "Rename Virtual Folder", JOptionPane.INFORMATION_MESSAGE, null, null, packageName);
     if (newName == null) {
       return;
     }
