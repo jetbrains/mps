@@ -263,7 +263,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getBoolean(_context.getNode(), PROPS.isInternal$Ng56);
   }
   public static Object propertyMacro_GetValue_1_5(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.mnemonic$daGM);
+    return SPropertyOperations.getString(_context.getNode(), PROPS.mnemonic$daGM).substring(0, 1);
   }
   public static Object propertyMacro_GetValue_1_6(final PropertyMacroContext _context) {
     return SPropertyOperations.getBoolean(_context.getNode(), PROPS.isPopup$3IEK);
@@ -814,7 +814,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if (SPropertyOperations.getString(_context.getNode(), PROPS.mnemonic$daGM) == null) {
       return false;
     } else
-    if (SPropertyOperations.getString(_context.getNode(), PROPS.mnemonic$daGM).equals("")) {
+    if (SPropertyOperations.getString(_context.getNode(), PROPS.mnemonic$daGM).isBlank()) {
       return false;
     } else {
       return true;
@@ -2229,7 +2229,7 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("1205588512400", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "LABEL_ID_"));
     pvqMethods.put("1215793639655", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
     pvqMethods.put("1215782589220", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), "false"));
-    pvqMethods.put("1215782653432", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
+    pvqMethods.put("8964989968561960027", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1177d44b21bL, 0x1177d44ddefL, "charConstant"), "a"));
     pvqMethods.put("1213291020591", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), "false"));
     pvqMethods.put("1203094364129", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "MainGeneratedGroup"));
     pvqMethods.put("5162650640893865635", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "component"));

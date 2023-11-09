@@ -35,7 +35,7 @@ public class LanguageMigrations_ActionGroup extends GeneratedActionGroup {
   public LanguageMigrations_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Language Migrations", ID, plugin);
     setIsInternal(false);
-    setMnemonic("l".charAt(0));
+    setMnemonic('l');
     setPopup(true);
     updateInBackground(true);
   }

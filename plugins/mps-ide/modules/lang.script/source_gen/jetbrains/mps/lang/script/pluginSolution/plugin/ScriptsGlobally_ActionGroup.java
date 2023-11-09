@@ -26,7 +26,7 @@ public class ScriptsGlobally_ActionGroup extends GeneratedActionGroup {
   public ScriptsGlobally_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("Scripts", ID, plugin);
     setIsInternal(false);
-    setMnemonic("S".charAt(0));
+    setMnemonic('S');
     setPopup(true);
   }
   public void doUpdate(AnActionEvent event) {
