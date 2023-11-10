@@ -645,7 +645,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     @Override
     protected Tuples._2<SProperty, String> createObject(Attributes attrs) throws SAXException {
-      return MultiTuple.<SProperty,String>from(my_readHelperParam.readProperty(attrs.getValue("role")), attrs.getValue("value"));
+      return MultiTuple.<SProperty,String>from(my_readHelperParam.readProperty(attrs.getValue("role")), my_readHelperParam.internPropertyValue(attrs.getValue("value")));
     }
   }
   public class ReferenceElementHandler extends ElementHandler {
@@ -655,6 +655,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     @Override
     protected Tuples._2<SReferenceLink, ResolveInfo> createObject(Attributes attrs) throws SAXException {
       SReferenceLink association = my_readHelperParam.readAssociation(attrs.getValue("role"));
+      final String riString = my_readHelperParam.internResolveInfo(attrs.getValue("resolve"));
       if (attrs.getValue("node") != null) {
         // local reference
         // FIXME introduce dedicated RI for local references or any other mechanism to avoid need for local SModelReference 
@@ -662,9 +663,9 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
         final ResolveInfo ri;
         if (targetNode == null) {
           // account for serialized dynamic references
-          ri = ResolveInfo.of(attrs.getValue("resolve"));
+          ri = ResolveInfo.of(riString);
         } else {
-          ri = ResolveInfo.of(new SNodePointer(my_modelField.getReference(), targetNode), attrs.getValue("resolve"));
+          ri = ResolveInfo.of(new SNodePointer(my_modelField.getReference(), targetNode), riString);
         }
         return MultiTuple.<SReferenceLink,ResolveInfo>from(association, ri);
       } else {
@@ -672,9 +673,9 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
         final ResolveInfo ri;
         if (r.o1 == null && r.o2 == null) {
           // account for serialized dynamic references
-          ri = ResolveInfo.of(attrs.getValue("resolve"));
+          ri = ResolveInfo.of(riString);
         } else {
-          ri = ResolveInfo.of(new SNodePointer(r.o1, r.o2), attrs.getValue("resolve"));
+          ri = ResolveInfo.of(new SNodePointer(r.o1, r.o2), riString);
         }
         return MultiTuple.<SReferenceLink,ResolveInfo>from(association, ri);
       }
