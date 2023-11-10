@@ -230,8 +230,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     MakeSequence makeSeq = new MakeSequence(inputRes, defaultScript, session);
 
     Project ideaPrj = ProjectHelper.toIdeaProject(session.getProject());
-    PerformInBackgroundOption bg = MakeServiceConfiguration.getInstance(ideaPrj).getMakeInBackgroundOption();
-    final MakeTask task = new MakeTask(ideaPrj, scrName, makeSeq, new Controller(controller, mh), mh, bg) {
+    final WorkbenchMakeTask ff = new WorkbenchMakeTask(scrName, makeSeq, new Controller(controller, mh), mh) {
       @Override
       protected void aboutToStart() {
         notifyListeners(new MakeNotification(WorkbenchMakeService.this, MakeNotification.Kind.SCRIPT_ABOUT_TO_START));
@@ -247,12 +246,13 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
         WorkbenchMakeService.this.displayInfo(info);
       }
     };
+    PerformInBackgroundOption bg = MakeServiceConfiguration.getInstance(ideaPrj).getMakeInBackgroundOption();
+    final MakeTask task = new MakeTask(ideaPrj, scrName, ff, bg);
 
     try {
-
       getSession().doExecute(() -> ApplicationManager.getApplication().invokeLater(() -> {
         IdeEventQueue.getInstance().flushQueue();
-        if (currentProcess.compareAndSet(null, task)) {
+        if (currentProcess.compareAndSet(null, ff)) {
           ProgressManager.getInstance().run(task);
         } else {
           throw new IllegalStateException("unexpected: make process is already running");
@@ -268,7 +268,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
       throw rex;
     }
 
-    return task;
+    return ff;
   }
 
   private void checkValidUsage() {
@@ -301,7 +301,6 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
   }
 
   private class Controller implements IScriptController {
-    private ProgressMonitor progressMonitor;
     private final IScriptController delegateScrCtr;
     private IConfigMonitor delegateConfMon;
     private IConfigMonitor confMon;
