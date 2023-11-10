@@ -41,6 +41,9 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.make.runtime.util.FutureValue;
 import jetbrains.mps.make.dependencies.MakeSequence;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
+import com.intellij.openapi.progress.Task;
+import com.intellij.openapi.progress.ProgressIndicator;
+import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.ide.IdeEventQueue;
 import com.intellij.openapi.progress.ProgressManager;
@@ -247,7 +250,31 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
       }
     };
     PerformInBackgroundOption bg = MakeServiceConfiguration.getInstance(ideaPrj).getMakeInBackgroundOption();
-    final MakeTask task = new MakeTask(ideaPrj, scrName, ff, bg);
+    final Task task;
+    if (bg.shouldStartInBackground()) {
+      task = new Task.Backgroundable(ideaPrj, scrName, true) {
+        @Override
+        public void run(@NotNull ProgressIndicator indicator) {
+          new TaskWrap(ff).run(new ProgressMonitorAdapter(indicator));
+        }
+
+        @Override
+        public void onCancel() {
+          ff.cancel(true);
+        }
+      };
+    } else {
+      task = new Task.Modal(ideaPrj, scrName, true) {
+        @Override
+        public void run(@NotNull ProgressIndicator indicator) {
+          new TaskWrap(ff).run(new ProgressMonitorAdapter(indicator));
+        }
+        @Override
+        public void onCancel() {
+          ff.cancel(true);
+        }
+      };
+    }
 
     try {
       getSession().doExecute(() -> ApplicationManager.getApplication().invokeLater(() -> {
