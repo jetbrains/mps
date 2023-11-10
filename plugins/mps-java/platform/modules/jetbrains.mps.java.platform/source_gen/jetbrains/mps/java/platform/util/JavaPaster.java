@@ -21,7 +21,7 @@ import jetbrains.mps.java.core.newparser.JavaParser;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import com.intellij.ide.IdeBundle;
+import jetbrains.mps.ide.IdeBundle;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;

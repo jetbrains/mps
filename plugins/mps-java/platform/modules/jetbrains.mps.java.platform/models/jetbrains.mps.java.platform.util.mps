@@ -35,6 +35,7 @@
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="mk90" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.progress(MPS.Platform/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
+    <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1166,8 +1167,8 @@
                 <node concept="liA8E" id="7l_0bgAz6Lc" role="2OqNvi">
                   <ref role="37wK5l" to="yyf4:~ProgressMonitor.start(java.lang.String,int)" resolve="start" />
                   <node concept="2YIFZM" id="5G1$zV08hH8" role="37wK5m">
-                    <ref role="37wK5l" to="ddhc:~IdeBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                    <ref role="1Pybhc" to="ddhc:~IdeBundle" resolve="IdeBundle" />
+                    <ref role="37wK5l" to="3a50:~IdeBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                    <ref role="1Pybhc" to="3a50:~IdeBundle" resolve="IdeBundle" />
                     <node concept="Xl_RD" id="5G1$zV08hH9" role="37wK5m">
                       <property role="Xl_RC" value="actions.pasteAsJava.progressLabel.parsing" />
                     </node>
@@ -1370,8 +1371,8 @@
                 <node concept="liA8E" id="2nyN1rjsFD5" role="2OqNvi">
                   <ref role="37wK5l" to="yyf4:~ProgressMonitor.start(java.lang.String,int)" resolve="start" />
                   <node concept="2YIFZM" id="5G1$zV08Bi1" role="37wK5m">
-                    <ref role="37wK5l" to="ddhc:~IdeBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                    <ref role="1Pybhc" to="ddhc:~IdeBundle" resolve="IdeBundle" />
+                    <ref role="37wK5l" to="3a50:~IdeBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                    <ref role="1Pybhc" to="3a50:~IdeBundle" resolve="IdeBundle" />
                     <node concept="Xl_RD" id="5G1$zV08Bi2" role="37wK5m">
                       <property role="Xl_RC" value="actions.pasteAsJava.progressLabel.pastingNodes" />
                     </node>
