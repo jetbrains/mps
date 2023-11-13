@@ -10,8 +10,8 @@ import jetbrains.mps.baseLanguage.javastub.asm.ASMField;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMMethod;
 import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMType;
-import jetbrains.mps.baseLanguage.javastub.asm.ASMParameterizedType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClassType;
+import jetbrains.mps.baseLanguage.javastub.asm.ASMParameterizedType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMArrayType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMVarArgType;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMPrimitiveType;
@@ -49,7 +49,7 @@ public class ASMNodeId {
     sb.append(')');
     if (!(method.isConstructor())) {
       sb.append(':');
-      sb.append(ASMNodeId.asString(method.getReturnType()));
+      appendType(sb, method.getReturnType());
       return new StringBasedIdForJavaStubMethods(StringBasedIdForJavaStubMethods.ID_PREFIX + sb.toString());
     }
     return jetbrains.mps.smodel.SNodeId.Foreign.fromIdNoPrefix(sb.toString());
@@ -62,6 +62,7 @@ public class ASMNodeId {
     sb.append("()");
     return jetbrains.mps.smodel.SNodeId.Foreign.fromIdNoPrefix(sb.toString());
   }
+
   private static String shortNameFromSlashedLongName(String slashedLongName) {
     int offset = slashedLongName.lastIndexOf('/');
     if (offset < 0) {
@@ -69,45 +70,57 @@ public class ASMNodeId {
     }
     return slashedLongName.substring(offset + 1);
   }
-  private static String asString(ASMType type) {
+
+  private static void appendType(StringBuilder sb, ASMType type) {
+    if (type instanceof ASMClassType) {
+      sb.append(((ASMClassType) type).getName());
+      return;
+    }
     if (type instanceof ASMParameterizedType) {
-      StringBuilder sb = new StringBuilder();
-      sb.append(ASMNodeId.asString(((ASMParameterizedType) type).getRawType()));
+      appendType(sb, ((ASMParameterizedType) type).getRawType());
       sb.append('<');
       ASMNodeId.appendList(sb, ((ASMParameterizedType) type).getActualTypeArguments());
       sb.append('>');
-      return sb.toString();
-    }
-    if (type instanceof ASMClassType) {
-      return ((ASMClassType) type).getName();
+      return;
     }
     if (type instanceof ASMArrayType) {
-      return ASMNodeId.asString(((ASMArrayType) type).getElementType()) + "[]";
+      appendType(sb, ((ASMArrayType) type).getElementType());
+      sb.append("[]");
+      return;
     }
     if (type instanceof ASMVarArgType) {
-      return ASMNodeId.asString(((ASMVarArgType) type).getElementType()) + "...";
+      appendType(sb, ((ASMVarArgType) type).getElementType());
+      sb.append("...");
+      return;
     }
     if (type instanceof ASMPrimitiveType) {
-      return ((ASMPrimitiveType) type).getName();
+      sb.append(((ASMPrimitiveType) type).getName());
+      return;
     }
     if (type instanceof ASMTypeVariable) {
-      return ((ASMTypeVariable) type).getName();
+      sb.append(((ASMTypeVariable) type).getName());
+      return;
     }
     if (type instanceof ASMExtendsType) {
-      return "? extends " + ASMNodeId.asString(((ASMExtendsType) type).getBound());
+      sb.append("? extends ");
+      appendType(sb, ((ASMExtendsType) type).getBound());
+      return;
     }
     if (type instanceof ASMSuperType) {
-      return "? super " + ASMNodeId.asString(((ASMSuperType) type).getBound());
+      sb.append("? super ");
+      appendType(sb, ((ASMSuperType) type).getBound());
+      return;
     }
     if (type instanceof ASMUnboundedType) {
-      return "?";
+      sb.append('?');
+      return;
     }
     throw new RuntimeException("unexpected type: " + type);
   }
   private static void appendList(StringBuilder sb, List<ASMType> types) {
     Iterator<ASMType> iterator = types.iterator();
     while (iterator.hasNext()) {
-      sb.append(ASMNodeId.asString(iterator.next()));
+      appendType(sb, iterator.next());
       if (iterator.hasNext()) {
         sb.append(',');
       }
