@@ -150,9 +150,11 @@ public class LanguageProducer {
       modelRootDescriptor = DefaultModelRoot.createSingleFolderDescriptor(templateModelsLocation);
     }
     generatorDescriptor.getModelRootDescriptors().add(modelRootDescriptor);
-    // FIXME Above, to configure a root, we create typed MR, fill with data and convert to MRD
-    //      with JMF, we configure MFD (persistence level) directly. Need to stick to single approach
+    // FIXME Above, to configure a root, we create typed MR (inside DMR.createDescriptor), fill with data and convert to MRD
+    //      with JMF, we configure MFD (persistence level) directly. Need to stick to single approach. 
+    //      However, as long as it's inside factory method, do I care that much?
     ModuleFacetDescriptor jmfDescriptor = JavaModuleFacetImpl.forNewJavaCodeModule();
+    JavaModuleFacetImpl.setDefaultClassesGenLocation(jmfDescriptor, generatorModuleLocation);
     generatorDescriptor.getModuleFacetDescriptors().add(jmfDescriptor);
     // XXX indeed, not as nice as "${module}/source_gen" but PathSpec tolerates full path, and I didn't get information here if generator is inside a language or is standalone
     generatorDescriptor.setOutputRoot(generatorModuleLocation.findChild("source_gen").getPath());
