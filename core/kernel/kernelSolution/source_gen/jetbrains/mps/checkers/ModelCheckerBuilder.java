@@ -146,7 +146,7 @@ public class ModelCheckerBuilder {
     return new IAbstractChecker<ItemsToCheck, IssueKindReportItem>() {
       public void check(ItemsToCheck itemsToCheck, SRepository repository, Consumer<? super IssueKindReportItem> errorCollector, ProgressMonitor monitor) {
         ProgressTask checkTask = checkTask(itemsToCheck, repository, errorCollector);
-        myTaskScheduler.schedule(checkTask, monitor).finish();
+        myTaskScheduler.scheduleTask(checkTask, monitor).run();
       }
 
       @Override

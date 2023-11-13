@@ -5,6 +5,7 @@ package jetbrains.mps.workbench.progress;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.progress.Task;
 import jetbrains.mps.project.Project;
+import java.util.concurrent.Executor;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.progress.ProgressTask;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
@@ -27,6 +28,10 @@ public class IdeaPlatformTaskScheduler extends AbstractBackgroundTaskScheduler<T
     super(mpsProject);
   }
 
+  public IdeaPlatformTaskScheduler(Project mpsProject, Executor executor) {
+    super(mpsProject, executor);
+  }
+
   @Override
   protected AbstractBackgroundTaskScheduler.AbstractTaskQueue<Task.Backgroundable> createQueue(int size) {
     return new BackgroundTaskQueue(size, () -> (getMpsProject() != null ? getMpsProject().isDisposed() : ApplicationManager.getApplication().isDisposed()));
@@ -40,7 +45,7 @@ public class IdeaPlatformTaskScheduler extends AbstractBackgroundTaskScheduler<T
       public void run(@NotNull ProgressIndicator pind) {
         task.initMonitor(monitor);
         if (task.isReady()) {
-          task.schedule(IdeaPlatformTaskScheduler.this).finish();
+          task.schedule(IdeaPlatformTaskScheduler.this).run();
         }
       }
       @Override

@@ -5,6 +5,7 @@ package jetbrains.mps.workbench.progress;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.progress.ProgressTask;
 import jetbrains.mps.project.Project;
+import java.util.concurrent.Executor;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.progress.ProgressMonitorDecorator;
 import jetbrains.mps.progress.TaskScheduler;
@@ -23,6 +24,10 @@ public class SystemBackgroundTaskScheduler extends AbstractBackgroundTaskSchedul
 
   public SystemBackgroundTaskScheduler(Project mpsProject) {
     super(mpsProject);
+  }
+
+  public SystemBackgroundTaskScheduler(Project mpsProject, Executor executor) {
+    super(mpsProject, executor);
   }
 
   @Override
@@ -116,7 +121,7 @@ public class SystemBackgroundTaskScheduler extends AbstractBackgroundTaskSchedul
       try {
         TaskScheduler scheduler = ((TaskSchedulerProgressMonitor) progressMonitor).getScheduler();
         task.initMonitor(progressMonitor);
-        task.schedule(scheduler).finish();
+        task.schedule(scheduler).run();
       } finally {
         if (continuation != null) {
           continuation.run();
