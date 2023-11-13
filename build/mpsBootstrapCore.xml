@@ -30891,7 +30891,7 @@
     </copy>
   </target>
   
-  <target name="java.compile.jetbrains.mps.lang.core.doc" depends="java.compile.feedback-api, java.compile.findUsages-runtime, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.migrations-runtime, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.platform, java.compile.mps-environment, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-generator, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.psi, java.compile.refactoring-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.make.facets, fetchDependencies">
+  <target name="java.compile.jetbrains.mps.lang.core.doc" depends="java.compile.feedback-api, java.compile.findUsages-runtime, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.migrations-runtime, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-generator, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.psi, java.compile.refactoring-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.scopes.runtime, java.compile.jetbrains.mps.lang.structure, java.compile.jetbrains.mps.lang.traceable, java.compile.jetbrains.mps.make.facets, fetchDependencies">
     <mkdir dir="${mps_home}/languages/jetbrains.mps.lang.core.doc/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.core.doc" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.core.doc" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
@@ -30930,12 +30930,12 @@
         <pathelement path="${build.tmp}/java/out/mps-editorlang-runtime" />
         <pathelement path="${build.tmp}/java/out/mps-typesystem" />
         <pathelement path="${build.tmp}/java/out/mps-editor" />
-        <pathelement path="${build.tmp}/java/out/platform" />
-        <pathelement path="${build.tmp}/java/out/mps-environment" />
         <pathelement path="${build.tmp}/java/out/kernel-resources" />
         <pathelement path="${build.tmp}/java/out/mps-make-rt" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
+        <pathelement path="${build.tmp}/java/out/platform" />
+        <pathelement path="${build.tmp}/java/out/mps-environment" />
         <pathelement path="${build.tmp}/java/out/mps-platform" />
         <pathelement path="${build.tmp}/java/out/mps-project-check" />
         <pathelement path="${build.tmp}/java/out/mps-textgen" />

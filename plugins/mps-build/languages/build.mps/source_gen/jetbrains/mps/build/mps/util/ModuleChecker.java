@@ -372,7 +372,7 @@ public final class ModuleChecker {
             report(String.format("cannot find generator `%s` required by a devkit's associated plan", g.getModuleName()));
             continue;
           }
-          // FIXME dcpb.requiredGenerators are not recorded into module deps (there's no respective BuildMps_DevKitExport sub-concept), shall address that
+          // FIXME dcpb.requiredGenerators are not recorded into module deps (there's no respective BuildMps_DevKitExport sub-concept), shall address that 
           //     once merge _AM and _Module and use module.dependencies instead of devkit.exports
         }
       }

@@ -4154,28 +4154,40 @@
                           </node>
                         </node>
                       </node>
+                      <node concept="3cpWs8" id="JT7inXYP73" role="3cqZAp">
+                        <node concept="3cpWsn" id="JT7inXYP74" role="3cpWs9">
+                          <property role="TrG5h" value="dp" />
+                          <node concept="17QB3L" id="JT7inXYOgp" role="1tU5fm" />
+                          <node concept="2YIFZM" id="JT7inXYP75" role="33vP2m">
+                            <ref role="37wK5l" to="7a2w:4eI2K_IuewV" resolve="stringWithDefault" />
+                            <ref role="1Pybhc" to="7a2w:4eI2K_Iuet$" resolve="XmlUtil" />
+                            <node concept="37vLTw" id="JT7inXYP76" role="37wK5m">
+                              <ref role="3cqZAo" node="33oJVYhkaUU" resolve="languageElement" />
+                            </node>
+                            <node concept="Xl_RD" id="JT7inXYP77" role="37wK5m">
+                              <property role="Xl_RC" value="generatorOutputPathDoc" />
+                            </node>
+                            <node concept="37vLTw" id="JT7inXYP78" role="37wK5m">
+                              <ref role="3cqZAo" node="44xKh5JOxhh" resolve="DOC_GEN_DEFAULT" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                       <node concept="g8Q5y" id="44xKh5JNVoy" role="3cqZAp">
                         <node concept="3clFbS" id="44xKh5JNVo$" role="GGjiV" />
                         <node concept="3tyRfN" id="44xKh5JNVou" role="GIGjv">
                           <ref role="3tyRfW" to="w0gx:~LanguageDescriptor.setDocPath(java.lang.String)" resolve="setDocPath" />
-                          <node concept="2OqwBi" id="44xKh5JO3UQ" role="3tyRfI">
-                            <node concept="37vLTw" id="44xKh5JO00U" role="2Oq$k0">
-                              <ref role="3cqZAo" node="33oJVYhiVhr" resolve="myMacroHelper" />
+                          <node concept="3K4zz7" id="JT7inXZ2b4" role="3tyRfI">
+                            <node concept="10Nm6u" id="JT7inXZ5Bq" role="3K4E3e" />
+                            <node concept="37vLTw" id="JT7inXZ7US" role="3K4GZi">
+                              <ref role="3cqZAo" node="JT7inXYP74" resolve="dp" />
                             </node>
-                            <node concept="liA8E" id="44xKh5JO8w6" role="2OqNvi">
-                              <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
-                              <node concept="2YIFZM" id="44xKh5JOevx" role="37wK5m">
-                                <ref role="37wK5l" to="7a2w:4eI2K_IuewV" resolve="stringWithDefault" />
-                                <ref role="1Pybhc" to="7a2w:4eI2K_Iuet$" resolve="XmlUtil" />
-                                <node concept="37vLTw" id="44xKh5JOh8z" role="37wK5m">
-                                  <ref role="3cqZAo" node="33oJVYhkaUU" resolve="languageElement" />
-                                </node>
-                                <node concept="Xl_RD" id="44xKh5JOn2Y" role="37wK5m">
-                                  <property role="Xl_RC" value="generatorOutputPathDoc" />
-                                </node>
-                                <node concept="37vLTw" id="44xKh5JOAsm" role="37wK5m">
-                                  <ref role="3cqZAo" node="44xKh5JOxhh" resolve="DOC_GEN_DEFAULT" />
-                                </node>
+                            <node concept="2OqwBi" id="JT7inXYVrO" role="3K4Cdx">
+                              <node concept="37vLTw" id="JT7inXYP79" role="2Oq$k0">
+                                <ref role="3cqZAo" node="JT7inXYP74" resolve="dp" />
+                              </node>
+                              <node concept="liA8E" id="JT7inXYYxE" role="2OqNvi">
+                                <ref role="37wK5l" to="wyt6:~String.isBlank()" resolve="isBlank" />
                               </node>
                             </node>
                           </node>
@@ -5351,20 +5363,12 @@
                 <node concept="3uibUv" id="44xKh5JPFe8" role="1tU5fm">
                   <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                 </node>
-                <node concept="2OqwBi" id="44xKh5JPFe9" role="33vP2m">
-                  <node concept="37vLTw" id="44xKh5JPFea" role="2Oq$k0">
-                    <ref role="3cqZAo" node="33oJVYhiVhr" resolve="myMacroHelper" />
+                <node concept="2OqwBi" id="44xKh5JPFec" role="33vP2m">
+                  <node concept="37vLTw" id="44xKh5JPFed" role="2Oq$k0">
+                    <ref role="3cqZAo" node="33oJVYhj4UH" resolve="descriptor" />
                   </node>
-                  <node concept="liA8E" id="44xKh5JPFeb" role="2OqNvi">
-                    <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String)" resolve="shrinkPath" />
-                    <node concept="2OqwBi" id="44xKh5JPFec" role="37wK5m">
-                      <node concept="37vLTw" id="44xKh5JPFed" role="2Oq$k0">
-                        <ref role="3cqZAo" node="33oJVYhj4UH" resolve="descriptor" />
-                      </node>
-                      <node concept="liA8E" id="44xKh5JPFee" role="2OqNvi">
-                        <ref role="37wK5l" to="w0gx:~LanguageDescriptor.getDocPath()" resolve="getDocPath" />
-                      </node>
-                    </node>
+                  <node concept="liA8E" id="44xKh5JPFee" role="2OqNvi">
+                    <ref role="37wK5l" to="w0gx:~LanguageDescriptor.getDocPath()" resolve="getDocPath" />
                   </node>
                 </node>
               </node>

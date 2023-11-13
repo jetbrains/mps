@@ -120,7 +120,7 @@
       <unit at="29,0,103,0" name="jetbrains.mps.build.mps.editor.BuildMps_ModuleSolutionRuntime_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="21,0,339,0" name="jetbrains.mps.build.mps.editor.EditorAspectDescriptorImpl" />
+      <unit at="21,0,341,0" name="jetbrains.mps.build.mps.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="GeneratorInternal_BuildMps_Module_SubstituteMenu.java">
       <unit at="61,0,64,0" name="jetbrains.mps.build.mps.editor.GeneratorInternal_BuildMps_Module_SubstituteMenu$CONCEPTS" />
@@ -1313,8 +1313,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1741258697587175647">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587175647" at="195,68,196,86" concept="8" />
-      <scope id="1741258697587175647" at="195,68,196,86" />
+      <node id="1741258697587175647" at="197,68,198,86" concept="8" />
+      <scope id="1741258697587175647" at="197,68,198,86" />
     </file>
     <file name="add_fromPluginXml.java">
       <node id="1741258697587175647" at="40,30,41,293" concept="13" />
@@ -1504,8 +1504,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1741258697587175685">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587175685" at="215,101,216,119" concept="8" />
-      <scope id="1741258697587175685" at="215,101,216,119" />
+      <node id="1741258697587175685" at="217,101,218,119" concept="8" />
+      <scope id="1741258697587175685" at="217,101,218,119" />
     </file>
     <file name="add_reexport_BuildMps_ModuleDependencyOnJavaModule.java">
       <node id="1741258697587175685" at="37,63,38,300" concept="13" />
@@ -1597,8 +1597,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1741258697587175725">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587175725" at="224,63,225,81" concept="8" />
-      <scope id="1741258697587175725" at="224,63,225,81" />
+      <node id="1741258697587175725" at="226,63,227,81" concept="8" />
+      <scope id="1741258697587175725" at="226,63,227,81" />
     </file>
     <file name="add_reexport.java">
       <node id="1741258697587175725" at="37,25,38,262" concept="13" />
@@ -1690,8 +1690,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1741258697587175765">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587175765" at="204,99,205,117" concept="8" />
-      <scope id="1741258697587175765" at="204,99,205,117" />
+      <node id="1741258697587175765" at="206,99,207,117" concept="8" />
+      <scope id="1741258697587175765" at="206,99,207,117" />
     </file>
     <file name="add_moduleLocationAndFlags_BuildMps_Module_ext_4.java">
       <node id="1741258697587175765" at="44,61,45,298" concept="13" />
@@ -1811,8 +1811,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1741258697587175805">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587175805" at="186,107,187,125" concept="8" />
-      <scope id="1741258697587175805" at="186,107,187,125" />
+      <node id="1741258697587175805" at="188,107,189,125" concept="8" />
+      <scope id="1741258697587175805" at="188,107,189,125" />
     </file>
     <file name="add_moduleLocationAndFlags_BuildMps_AbstractModule_ext_3.java">
       <node id="1741258697587175805" at="38,69,39,306" concept="13" />
@@ -1904,8 +1904,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1741258697587175846">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587175846" at="235,77,236,95" concept="8" />
-      <scope id="1741258697587175846" at="235,77,236,95" />
+      <node id="1741258697587175846" at="237,77,238,95" concept="8" />
+      <scope id="1741258697587175846" at="237,77,238,95" />
     </file>
     <file name="add_moduleLocationAndFlags.java">
       <node id="1741258697587175846" at="41,39,42,276" concept="13" />
@@ -2238,8 +2238,134 @@
       <unit id="1741258697587217178" at="26,0,94,0" name="jetbrains.mps.build.mps.editor.BuildMps_Solution_ApplySideTransforms" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587217178" at="233,88,234,106" concept="8" />
-      <scope id="1741258697587217178" at="233,88,234,106" />
+      <node id="1741258697587217178" at="235,88,236,106" concept="8" />
+      <scope id="1741258697587217178" at="235,88,236,106" />
+    </file>
+  </root>
+  <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/1790035444494658702">
+    <file name="BuildMps_ModuleDoc_Editor.java">
+      <node id="1790035444494658702" at="11,79,12,84" concept="8" />
+      <node id="1790035444494658702" at="11,0,14,0" concept="6" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="1790035444494658702" at="11,79,12,84" />
+      <scope id="1790035444494658702" at="11,0,14,0">
+        <var name="editorContext" id="1790035444494658702" />
+        <var name="node" id="1790035444494658702" />
+      </scope>
+      <unit id="1790035444494658702" at="10,0,15,0" name="jetbrains.mps.build.mps.editor.BuildMps_ModuleDoc_Editor" />
+    </file>
+    <file name="BuildMps_ModuleDoc_EditorBuilder_a.java">
+      <node id="1790035444494658702" at="30,98,31,19" concept="13" />
+      <node id="1790035444494658702" at="31,19,32,18" concept="2" />
+      <node id="1790035444494658702" at="37,26,38,18" concept="8" />
+      <node id="1790035444494658702" at="41,39,42,32" concept="8" />
+      <node id="1790035444494658702" at="45,43,46,118" concept="7" />
+      <node id="1790035444494658702" at="46,118,47,48" concept="2" />
+      <node id="1790035444494658702" at="47,48,48,28" concept="2" />
+      <node id="1790035444494658702" at="48,28,49,31" concept="2" />
+      <node id="1790035444494658725" at="49,31,50,49" concept="2" />
+      <node id="1790035444494658726" at="50,49,51,48" concept="2" />
+      <node id="1790035444494658702" at="51,48,52,22" concept="8" />
+      <node id="1790035444494658725" at="54,41,55,106" concept="7" />
+      <node id="1790035444494658725" at="55,106,56,47" concept="2" />
+      <node id="1790035444494658725" at="56,47,57,34" concept="7" />
+      <node id="1790035444494658725" at="57,34,58,57" concept="2" />
+      <node id="1790035444494658725" at="58,57,59,40" concept="2" />
+      <node id="1790035444494658725" at="59,40,60,34" concept="2" />
+      <node id="1790035444494658725" at="60,34,61,22" concept="8" />
+      <node id="1790035444494658702" at="63,40,64,121" concept="7" />
+      <node id="1790035444494658702" at="64,121,65,33" concept="8" />
+      <node id="1790035444494658702" at="71,119,72,38" concept="13" />
+      <node id="1790035444494658702" at="72,38,73,25" concept="2" />
+      <node id="1790035444494658702" at="78,28,79,20" concept="8" />
+      <node id="1790035444494658702" at="82,55,83,76" concept="7" />
+      <node id="1790035444494658702" at="83,76,84,114" concept="2" />
+      <node id="1790035444494658702" at="84,114,85,117" concept="2" />
+      <node id="1790035444494658702" at="85,117,86,48" concept="2" />
+      <node id="1790035444494658702" at="86,48,87,24" concept="8" />
+      <node id="1790035444494658702" at="93,118,94,137" concept="2" />
+      <node id="1790035444494658702" at="96,42,97,46" concept="2" />
+      <node id="1790035444494658702" at="101,44,102,41" concept="2" />
+      <node id="1790035444494658702" at="102,41,103,105" concept="2" />
+      <node id="1790035444494658702" at="104,11,105,56" concept="7" />
+      <node id="1790035444494658702" at="105,56,106,44" concept="2" />
+      <node id="1790035444494658702" at="106,44,107,48" concept="2" />
+      <node id="1790035444494658702" at="107,48,108,35" concept="2" />
+      <node id="1790035444494658702" at="108,35,109,26" concept="8" />
+      <node id="1790035444494658702" at="110,17,111,42" concept="2" />
+      <node id="1790035444494658702" at="114,40,115,26" concept="8" />
+      <node id="1790035444494658702" at="120,0,121,0" concept="11" trace="files$yhMU" />
+      <node id="1790035444494658702" at="27,0,29,0" concept="3" trace="myNode" />
+      <node id="1790035444494658702" at="68,0,70,0" concept="3" trace="myNode" />
+      <node id="1790035444494658702" at="41,0,44,0" concept="6" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1790035444494658702" at="92,87,95,7" concept="5" />
+      <node id="1790035444494658702" at="95,7,98,7" concept="5" />
+      <node id="1790035444494658702" at="114,0,117,0" concept="6" trace="getNoTargetText#()Ljava/lang/String;" />
+      <node id="1790035444494658702" at="30,0,34,0" concept="1" trace="BuildMps_ModuleDoc_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1790035444494658702" at="63,0,67,0" concept="6" trace="createRefNode_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1790035444494658702" at="71,0,75,0" concept="1" trace="filesSingleRoleHandler_q9gl0e_b0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="1790035444494658702" at="35,0,40,0" concept="6" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1790035444494658702" at="76,0,81,0" concept="6" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1790035444494658702" at="82,0,89,0" concept="6" trace="createChildCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1790035444494658702" at="92,0,100,0" concept="6" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
+      <node id="1790035444494658702" at="45,0,54,0" concept="6" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1790035444494658725" at="54,0,63,0" concept="6" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="1790035444494658702" at="103,105,112,7" concept="14" />
+      <node id="1790035444494658702" at="100,0,114,0" concept="6" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="1790035444494658702" at="37,26,38,18" />
+      <scope id="1790035444494658702" at="41,39,42,32" />
+      <scope id="1790035444494658702" at="78,28,79,20" />
+      <scope id="1790035444494658702" at="93,118,94,137" />
+      <scope id="1790035444494658702" at="96,42,97,46" />
+      <scope id="1790035444494658702" at="110,17,111,42" />
+      <scope id="1790035444494658702" at="114,40,115,26" />
+      <scope id="1790035444494658702" at="30,98,32,18" />
+      <scope id="1790035444494658702" at="63,40,65,33">
+        <var name="provider" id="1790035444494658702" />
+      </scope>
+      <scope id="1790035444494658702" at="71,119,73,25" />
+      <scope id="1790035444494658702" at="41,0,44,0" />
+      <scope id="1790035444494658702" at="114,0,117,0" />
+      <scope id="1790035444494658702" at="30,0,34,0">
+        <var name="context" id="1790035444494658702" />
+        <var name="node" id="1790035444494658702" />
+      </scope>
+      <scope id="1790035444494658702" at="63,0,67,0" />
+      <scope id="1790035444494658702" at="71,0,75,0">
+        <var name="containmentLink" id="1790035444494658702" />
+        <var name="context" id="1790035444494658702" />
+        <var name="ownerNode" id="1790035444494658702" />
+      </scope>
+      <scope id="1790035444494658702" at="35,0,40,0" />
+      <scope id="1790035444494658702" at="76,0,81,0" />
+      <scope id="1790035444494658702" at="82,55,87,24">
+        <var name="editorCell" id="1790035444494658702" />
+      </scope>
+      <scope id="1790035444494658702" at="104,11,109,26">
+        <var name="editorCell" id="1790035444494658702" />
+      </scope>
+      <scope id="1790035444494658702" at="92,87,98,7" />
+      <scope id="1790035444494658702" at="45,43,52,22">
+        <var name="editorCell" id="1790035444494658702" />
+      </scope>
+      <scope id="1790035444494658725" at="54,41,61,22">
+        <var name="editorCell" id="1790035444494658725" />
+        <var name="style" id="1790035444494658725" />
+      </scope>
+      <scope id="1790035444494658702" at="82,0,89,0">
+        <var name="child" id="1790035444494658702" />
+      </scope>
+      <scope id="1790035444494658702" at="92,0,100,0">
+        <var name="child" id="1790035444494658702" />
+        <var name="editorCell" id="1790035444494658702" />
+        <var name="isEmpty" id="1790035444494658702" />
+      </scope>
+      <scope id="1790035444494658702" at="45,0,54,0" />
+      <scope id="1790035444494658725" at="54,0,63,0" />
+      <scope id="1790035444494658702" at="101,44,112,7" />
+      <scope id="1790035444494658702" at="100,0,114,0" />
+      <unit id="1790035444494658702" at="119,0,122,0" name="jetbrains.mps.build.mps.editor.BuildMps_ModuleDoc_EditorBuilder_a$LINKS" />
+      <unit id="1790035444494658702" at="67,0,118,0" name="jetbrains.mps.build.mps.editor.BuildMps_ModuleDoc_EditorBuilder_a$filesSingleRoleHandler_q9gl0e_b0" />
+      <unit id="1790035444494658702" at="26,0,123,0" name="jetbrains.mps.build.mps.editor.BuildMps_ModuleDoc_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/2172791612907956749">
@@ -9161,8 +9287,8 @@
       <unit id="4747359941571311762" at="27,0,96,0" name="jetbrains.mps.build.mps.editor.BuildMps_IdeaPluginModule_SmartReference" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4747359941571311762" at="316,91,317,105" concept="8" />
-      <scope id="4747359941571311762" at="316,91,317,105" />
+      <node id="4747359941571311762" at="318,91,319,105" concept="8" />
+      <scope id="4747359941571311762" at="318,91,319,105" />
     </file>
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/4747359941571311764">
@@ -9305,8 +9431,8 @@
       <unit id="4747359941571311813" at="27,0,96,0" name="jetbrains.mps.build.mps.editor.BuildMps_IdeaPluginGroup_SmartReference" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4747359941571311813" at="307,90,308,104" concept="8" />
-      <scope id="4747359941571311813" at="307,90,308,104" />
+      <node id="4747359941571311813" at="309,90,310,104" concept="8" />
+      <scope id="4747359941571311813" at="309,90,310,104" />
     </file>
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/4747359941571311815">
@@ -17131,8 +17257,8 @@
   </root>
   <root nodeRef="r:589e3942-2f2d-42a2-9312-986a1d3e2f7f(jetbrains.mps.build.mps.editor)/7687809870065555743">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="7687809870065555743" at="206,88,207,106" concept="8" />
-      <scope id="7687809870065555743" at="206,88,207,106" />
+      <node id="7687809870065555743" at="208,88,209,106" concept="8" />
+      <scope id="7687809870065555743" at="208,88,209,106" />
     </file>
     <file name="add_moduleLocationAndFlags_withkotlin.java">
       <node id="7687809870065555743" at="37,50,38,287" concept="13" />
