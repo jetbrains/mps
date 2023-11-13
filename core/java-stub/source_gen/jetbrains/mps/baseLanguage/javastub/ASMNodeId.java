@@ -27,13 +27,13 @@ public class ASMNodeId {
   public ASMNodeId() {
   }
   public static SNodeId createId(String fqClassName) {
-    return new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + NameUtil.shortNameFromLongName(fqClassName));
+    return jetbrains.mps.smodel.SNodeId.Foreign.fromIdNoPrefix(NameUtil.shortNameFromLongName(fqClassName));
   }
   public static SNodeId createId(ASMClass cls, ASMField field) {
-    return new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + ASMNodeId.shortNameFromSlashedLongName(cls.getName()) + "." + field.getName());
+    return jetbrains.mps.smodel.SNodeId.Foreign.fromIdNoPrefix(ASMNodeId.shortNameFromSlashedLongName(cls.getName()) + '.' + field.getName());
   }
   public static SNodeId createFieldId(String fqClassName, String fieldName) {
-    return new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + NameUtil.shortNameFromLongName(fqClassName) + "." + fieldName);
+    return jetbrains.mps.smodel.SNodeId.Foreign.fromIdNoPrefix(NameUtil.shortNameFromLongName(fqClassName) + '.' + fieldName);
   }
   public static SNodeId createId(ASMClass cls, ASMMethod method) {
     StringBuilder sb = new StringBuilder();
@@ -52,7 +52,7 @@ public class ASMNodeId {
       sb.append(ASMNodeId.asString(method.getReturnType()));
       return new StringBasedIdForJavaStubMethods(StringBasedIdForJavaStubMethods.ID_PREFIX + sb.toString());
     }
-    return new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + sb.toString());
+    return jetbrains.mps.smodel.SNodeId.Foreign.fromIdNoPrefix(sb.toString());
   }
   public static SNodeId createAnnotationMethodId(String fqClassName, String methodName) {
     StringBuilder sb = new StringBuilder();
@@ -60,7 +60,7 @@ public class ASMNodeId {
     sb.append('.');
     sb.append(methodName);
     sb.append("()");
-    return new jetbrains.mps.smodel.SNodeId.Foreign(jetbrains.mps.smodel.SNodeId.Foreign.ID_PREFIX + sb.toString());
+    return jetbrains.mps.smodel.SNodeId.Foreign.fromIdNoPrefix(sb.toString());
   }
   private static String shortNameFromSlashedLongName(String slashedLongName) {
     int offset = slashedLongName.lastIndexOf('/');
