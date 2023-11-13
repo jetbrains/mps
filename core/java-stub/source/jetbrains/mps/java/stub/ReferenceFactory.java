@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,9 +34,9 @@ public interface ReferenceFactory {
    * @param pack name of Java package
    * @param targetNodeId identifies classifier(?) we look up
    * @param role role of the link to populate
-   * @param resolveInfo additional information that descripes the link
+   * @param resolveInfo additional information that describes the link
    * @param targetTopClassifier id of root classifier that holds target node (may be the same as targetNodeId).
-   *                            Hint value to pick best possible package and not to force complete model load.
+   *                            Hint value to pick the best possible package and not to force complete model load.
    *                            Since we load stub models in two steps, with roots available first, check for top classifier
    *                            through SModel.getNode(SNodeId) doesn't trigger complete load.
    */

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.java.stub;
 
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.Deptype;
-import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.SNodeOperations;
@@ -74,9 +73,10 @@ public final class StubReferenceFactory implements ReferenceFactory {
     myStereotype = stereotype;
   }
 
-  @NotNull
   @Override
   public void create(SNode source, String pack, SNodeId targetNodeId, SReferenceLink role, String resolveInfo, SNodeId targetTopClassifier) {
+    resolveInfo = resolveInfo.intern();
+
     if (pack.equals(myModelLongName)) {
       if (myModel.isKnownRoot(targetTopClassifier)) {
         source.setReference(role, ResolveInfo.of(new SNodePointer(myModelReference, targetNodeId), resolveInfo));
