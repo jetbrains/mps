@@ -5463,14 +5463,14 @@
       </node>
       <node concept="1iCGBv" id="7dATtiK8o$S" role="3EZMnx">
         <ref role="1NtTu8" to="kdzh:1tWbYFNhzsh" resolve="module" />
-        <node concept="ljvvj" id="3NagsOfU4ZQ" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
         <node concept="1sVBvm" id="7dATtiK8o$T" role="1sWHZn">
           <node concept="3F0A7n" id="7dATtiK8o$U" role="2wV5jI">
             <property role="1Intyy" value="true" />
             <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
           </node>
+        </node>
+        <node concept="ljvvj" id="3NagsOfU4ZQ" role="3F10Kt">
+          <property role="VOm3f" value="true" />
         </node>
       </node>
       <node concept="PMmxH" id="7dATtiK8ofF" role="3EZMnx">
@@ -6849,6 +6849,20 @@
     </node>
     <node concept="yp4Wq" id="6EK__xlZX_0" role="lGtFl">
       <property role="yp4Ub" value="ext_4_RTransform" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="1znuW2OtAMe">
+    <property role="3GE5qa" value="Project.Sources" />
+    <ref role="1XX52x" to="kdzh:1znuW2OtAIH" resolve="BuildMps_ModuleDoc" />
+    <node concept="3EZMnI" id="1znuW2OtAM$" role="2wV5jI">
+      <node concept="3F0ifn" id="1znuW2OtAM_" role="3EZMnx">
+        <property role="3F0ifm" value="documentation" />
+        <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
+      </node>
+      <node concept="3F1sOY" id="1znuW2OtAMA" role="3EZMnx">
+        <ref role="1NtTu8" to="kdzh:1znuW2OtALF" resolve="files" />
+      </node>
+      <node concept="l2Vlx" id="1znuW2OtAMB" role="2iSdaV" />
     </node>
   </node>
 </model>

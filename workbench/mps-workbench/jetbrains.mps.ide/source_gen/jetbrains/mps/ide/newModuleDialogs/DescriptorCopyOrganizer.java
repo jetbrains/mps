@@ -77,7 +77,7 @@ import jetbrains.mps.project.ModuleId;
       if (copyDescriptor instanceof LanguageDescriptor) {
         ((LanguageDescriptor) copyDescriptor).getGenerators().forEach(this::hackModuleDescriptor);
       }
-      // JFTR, we may face copyDescriptor instanceof GeneratorDescriptor for standalone Generators 
+      // JFTR, we may face copyDescriptor instanceof GeneratorDescriptor for standalone Generators
     }
     return copyDescriptor;
   }
@@ -106,5 +106,44 @@ import jetbrains.mps.project.ModuleId;
   private static void setNewIdAndTimestamp(final ModuleDescriptor descriptor) {
     descriptor.setId(ModuleId.regular());
     descriptor.setTimestamp(Long.toString(System.currentTimeMillis()));
+  }
+
+  /**
+   * will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
+   * or if these locations are not needed right in the module, just are vital for its initialization
+   */
+  private void hackDeploymentDescriptor(@NotNull ModuleDescriptor copyDescriptor) {
+    DeploymentDescriptor deploymentDescriptor = copyDescriptor.getDeploymentDescriptor();
+    if (deploymentDescriptor != null) {
+      deploymentDescriptor.setSourcesJar(myModulePathConverter.source2Target(deploymentDescriptor.getSourcesJar()));
+      deploymentDescriptor.setDescriptorFile(myModulePathConverter.source2Target(deploymentDescriptor.getDescriptorFile()));
+    }
+  }
+
+  /**
+   * will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
+   */
+  private void hackSolutionDescriptor(@NotNull SolutionDescriptor copyDescriptor) {
+    final String outputPath = copyDescriptor.getOutputPath();
+    if (outputPath != null) {
+      copyDescriptor.setOutputPath(myModulePathConverter.source2Target(outputPath));
+    }
+  }
+
+  /**
+   * will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
+   */
+  private void hackLanguageDescriptor(@NotNull LanguageDescriptor copyDescriptor) {
+    final String genPath = copyDescriptor.getGenPath();
+    if (genPath != null) {
+      copyDescriptor.setGenPath(myModulePathConverter.source2Target(genPath));
+    }
+  }
+
+  private void hackGeneratorDescriptor(@NotNull GeneratorDescriptor genDescriptor) {
+    String outputPath = genDescriptor.getOutputPath();
+    if (outputPath != null) {
+      genDescriptor.setOutputPath(myModulePathConverter.source2Target(outputPath));
+    }
   }
 }

@@ -2,7 +2,6 @@
 <model ref="r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)">
   <persistence version="9" />
   <languages>
-    <use id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure" version="9" />
     <devkit ref="78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)" />
   </languages>
   <imports>
@@ -10,6 +9,14 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="3348158742936976480" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ng" index="25R33">
+        <property id="1421157252384165432" name="memberId" index="3tVfz5" />
+        <property id="672037151186491528" name="presentation" index="1L1pqM" />
+      </concept>
+      <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
+        <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
+        <child id="3348158742936976577" name="members" index="25R1y" />
+      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -96,7 +103,7 @@
     <node concept="1TJgyi" id="5vhYBWEWti5" role="1TKVEl">
       <property role="IQ2nx" value="6328114375520539781" />
       <property role="TrG5h" value="url" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <ref role="AX2Wp" node="647WjQbr3zI" resolve="Url" />
     </node>
   </node>
   <node concept="1TIwiD" id="2cLqkTm6vgh">
@@ -341,21 +348,12 @@
       <property role="t5JxN" value="Experimental. Use concepts such as TextConcept, Word, Line, etc. located outside of the &quot;textual&quot; virtual folder" />
     </node>
   </node>
-  <node concept="1TIwiD" id="WJz9iAWEzU">
-    <property role="EcuMT" value="1094247804558289146" />
-    <property role="TrG5h" value="BulletLine" />
-    <property role="34LRSv" value="bullet line" />
-    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
-    <node concept="PrWs8" id="WJz9iAWEzV" role="PzmwI">
-      <ref role="PrY4T" node="4ruP0NLeIr4" resolve="IndentedPoint" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="60UJ0Isn_12">
     <property role="EcuMT" value="6934061334344388674" />
     <property role="TrG5h" value="NumberedLine" />
     <property role="34LRSv" value="numbered line" />
     <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
-    <node concept="PrWs8" id="60UJ0Isn_13" role="PzmwI">
+    <node concept="PrWs8" id="6pDt4TAF$oY" role="PzmwI">
       <ref role="PrY4T" node="4ruP0NLeIr4" resolve="IndentedPoint" />
     </node>
   </node>
@@ -366,6 +364,67 @@
       <property role="t5JxN" value="Flag to trick the comment style for Words" />
     </node>
     <node concept="3MrDgS" id="1XU4lLpQq0V" role="lGtFl" />
+  </node>
+  <node concept="1TIwiD" id="WJz9iAWEzU">
+    <property role="EcuMT" value="1094247804558289146" />
+    <property role="TrG5h" value="BulletLine" />
+    <property role="34LRSv" value="bullet line" />
+    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
+    <node concept="PrWs8" id="6pDt4TAF$rt" role="PzmwI">
+      <ref role="PrY4T" node="4ruP0NLeIr4" resolve="IndentedPoint" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6MMfM8JH7Fc">
+    <property role="EcuMT" value="7832392118012508876" />
+    <property role="3GE5qa" value="doc" />
+    <property role="TrG5h" value="Header" />
+    <ref role="1TJDcQ" node="2cLqkTm6J5A" resolve="Line" />
+    <node concept="1TJgyi" id="6MMfM8JH7It" role="1TKVEl">
+      <property role="IQ2nx" value="7832392118012509085" />
+      <property role="TrG5h" value="level" />
+      <ref role="AX2Wp" node="6MMfM8JH0Uy" resolve="HeaderEnum" />
+    </node>
+  </node>
+  <node concept="25R3W" id="6MMfM8JH0Uy">
+    <property role="3F6X1D" value="7832392118012481186" />
+    <property role="3GE5qa" value="doc" />
+    <property role="TrG5h" value="HeaderEnum" />
+    <ref role="1H5jkz" node="6MMfM8JH0Uz" resolve="Header1" />
+    <node concept="25R33" id="6MMfM8JH0Uz" role="25R1y">
+      <property role="3tVfz5" value="7832392118012481187" />
+      <property role="TrG5h" value="Header1" />
+      <property role="1L1pqM" value="1" />
+    </node>
+    <node concept="25R33" id="6MMfM8JH0X0" role="25R1y">
+      <property role="3tVfz5" value="7832392118012481344" />
+      <property role="TrG5h" value="Header2" />
+      <property role="1L1pqM" value="2" />
+    </node>
+    <node concept="25R33" id="6MMfM8JH0Zv" role="25R1y">
+      <property role="3tVfz5" value="7832392118012481503" />
+      <property role="TrG5h" value="Header3" />
+      <property role="1L1pqM" value="3" />
+    </node>
+    <node concept="25R33" id="2VO2c6M7JWf" role="25R1y">
+      <property role="3tVfz5" value="3383338848072171279" />
+      <property role="TrG5h" value="Header4" />
+      <property role="1L1pqM" value="4" />
+    </node>
+    <node concept="25R33" id="2VO2c6M7JWk" role="25R1y">
+      <property role="3tVfz5" value="3383338848072171284" />
+      <property role="TrG5h" value="Header5" />
+      <property role="1L1pqM" value="5" />
+    </node>
+    <node concept="25R33" id="2VO2c6M7JWq" role="25R1y">
+      <property role="3tVfz5" value="3383338848072171290" />
+      <property role="TrG5h" value="Header6" />
+      <property role="1L1pqM" value="6" />
+    </node>
+  </node>
+  <node concept="Az7Fb" id="647WjQbr3zI">
+    <property role="3F6X1D" value="6991822193150408942" />
+    <property role="TrG5h" value="Url" />
+    <property role="FLfZY" value="https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&amp;//=]*)" />
   </node>
 </model>
 

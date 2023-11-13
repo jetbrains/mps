@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <root>
+    <file name="Concepts.xml">
+      <unit at="1,0,8,7" name="jetbrains.mps.lang.doctext.sandbox.Concepts" />
+    </file>
+  </root>
+</debug-info>
+

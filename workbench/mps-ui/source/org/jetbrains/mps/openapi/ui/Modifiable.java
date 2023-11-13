@@ -22,4 +22,5 @@ public interface Modifiable {
   void init();
   boolean isModified();
   void apply();
+  default void unapply(){};
 }

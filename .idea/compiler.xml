@@ -60,6 +60,11 @@
       <directory url="file://$PROJECT_DIR$/languages/baseLanguage/varVariable/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/core/core/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/core/core/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.core.doc/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.css/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.doctext/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.doctext/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.html/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/access/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/access/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/actions/generator/source_gen" includeSubdirectories="true" />
@@ -116,6 +121,7 @@
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/feedback/skeleton/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/findUsages/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/findUsages/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/languageDesign/generator/doc.aspects/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/generator/languages/descriptor/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/generator/languages/descriptor/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/generator/languages/errorReporting/generator/source_gen" includeSubdirectories="true" />

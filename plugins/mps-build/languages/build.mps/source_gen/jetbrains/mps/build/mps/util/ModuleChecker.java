@@ -48,6 +48,7 @@ import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.build.mps.behavior.BuildMps_Solution__BehaviorDescriptor;
 import jetbrains.mps.project.facets.TestsFacet;
+import jetbrains.mps.project.facets.DocumentationFacet;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -371,7 +372,7 @@ public final class ModuleChecker {
             report(String.format("cannot find generator `%s` required by a devkit's associated plan", g.getModuleName()));
             continue;
           }
-          // FIXME dcpb.requiredGenerators are not recorded into module deps (there's no respective BuildMps_DevKitExport sub-concept), shall address that 
+          // FIXME dcpb.requiredGenerators are not recorded into module deps (there's no respective BuildMps_DevKitExport sub-concept), shall address that
           //     once merge _AM and _Module and use module.dependencies instead of devkit.exports
         }
       }
@@ -734,6 +735,11 @@ public final class ModuleChecker {
 
       // FIXME handle GenerationTargetFacet other than JMF/TF. Need to introduce BuildMps_ModuleSource subconcept for non-java
       //      sources and fix weave_Tasks/cleanSources to remove these as well
+
+      DocumentationFacet docFacet = loadedModule.getFacet(DocumentationFacet.class);
+      if (docFacet != null) {
+        buildModuleFacade.addDoc(convertPath(docFacet.getLocation()));
+      }
     }
   }
 
@@ -1233,6 +1239,19 @@ public final class ModuleChecker {
       return this;
     }
 
+    public BuildModuleFacade addDoc(@Nullable SNode p) {
+      if (p == null) {
+        return this;
+      }
+      SNode doc = SModelOperations.createNewNode(SNodeOperations.getModel(myModule), null, CONCEPTS.BuildMps_ModuleDoc$Ke);
+      SLinkOperations.setTarget(doc, LINKS.files$yhMU, SModelOperations.createNewNode(SNodeOperations.getModel(myModule), null, CONCEPTS.BuildInputFiles$lR));
+      SLinkOperations.setTarget(SLinkOperations.getTarget(doc, LINKS.files$yhMU), LINKS.dir$e6r$, p);
+      SNode selector = SLinkOperations.addNewChild(SLinkOperations.getTarget(doc, LINKS.files$yhMU), LINKS.selectors$hp_C, CONCEPTS.BuildFileIncludesSelector$kb);
+      SPropertyOperations.assign(selector, PROPS.pattern$u5_$, "**/*.html, **/*.css");
+      ListSequence.fromList(SLinkOperations.getChildren(myModule, LINKS.sources$mT1j)).addElement(doc);
+      return this;
+    }
+
     public BuildModuleFacade addOutputPath(@Nullable SNode p) {
       // not quite useful method, just to keep all path-related operations close to each other
       if (p != null) {
@@ -1300,6 +1319,7 @@ public final class ModuleChecker {
     /*package*/ static final SContainmentLink folder$URyp = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, 0x48e82d508334bdecL, "folder");
     /*package*/ static final SContainmentLink path$zL7z = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, 0x1ff930b22643b100L, "path");
     /*package*/ static final SContainmentLink folder$ICh7 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x21286cd3b0f27758L, 0x21286cd3b0f28a50L, "folder");
+    /*package*/ static final SContainmentLink files$yhMU = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x18d77bc0b4766badL, 0x18d77bc0b4766c6bL, "files");
     /*package*/ static final SContainmentLink output$Hskt = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x3f7149bc56b26b5dL, "output");
   }
 
@@ -1331,5 +1351,7 @@ public final class ModuleChecker {
     /*package*/ static final SConcept BuildMps_ModuleJavaSource$M6 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleJavaSource");
     /*package*/ static final SConcept BuildInputSingleFolder$FH = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, "jetbrains.mps.build.structure.BuildInputSingleFolder");
     /*package*/ static final SConcept BuildMps_ModuleTestSource$tl = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x21286cd3b0f27758L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleTestSource");
+    /*package*/ static final SConcept BuildMps_ModuleDoc$Ke = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x18d77bc0b4766badL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDoc");
+    /*package*/ static final SConcept BuildInputFiles$lR = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, "jetbrains.mps.build.structure.BuildInputFiles");
   }
 }

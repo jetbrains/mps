@@ -50,10 +50,16 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 2:
         if (true) {
           // concept
-          intentions = new IntentionFactory[3];
+          intentions = new IntentionFactory[9];
           intentions[0] = new MakeBulletLine_Intention();
           intentions[1] = new MakeNumberedLine_Intention();
           intentions[2] = new MakeLine_Intention();
+          intentions[3] = new ConvertToHeader1_Intention();
+          intentions[4] = new ConvertToHeader3_Intention();
+          intentions[5] = new ConvertToHeader2_Intention();
+          intentions[6] = new ConvertToHeader4_Intention();
+          intentions[7] = new ConvertToHeader5_Intention();
+          intentions[8] = new ConvertToHeader6_Intention();
         }
         break;
       case 3:
@@ -84,7 +90,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[14];
+    IntentionFactory[] rv = new IntentionFactory[20];
     rv[0] = new InsertNodeWrapper_Intention();
     rv[1] = new ConvertToParagraphs_Intention();
     rv[2] = new InsertUrlIntoParagraph_Intention();
@@ -99,6 +105,12 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[11] = new MakeNumberedLine_Intention();
     rv[12] = new MakeLine_Intention();
     rv[13] = new ConvertToLines_Intention();
+    rv[14] = new ConvertToHeader1_Intention();
+    rv[15] = new ConvertToHeader3_Intention();
+    rv[16] = new ConvertToHeader2_Intention();
+    rv[17] = new ConvertToHeader4_Intention();
+    rv[18] = new ConvertToHeader5_Intention();
+    rv[19] = new ConvertToHeader6_Intention();
     return Arrays.asList(rv);
   }
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L)).seal();

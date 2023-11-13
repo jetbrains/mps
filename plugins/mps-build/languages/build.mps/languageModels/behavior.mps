@@ -2668,6 +2668,31 @@
         </node>
       </node>
     </node>
+    <node concept="13i0hz" id="1znuW2OtpMX" role="13h7CS">
+      <property role="TrG5h" value="getDocModuleJarName" />
+      <node concept="3Tm1VV" id="1znuW2OtpMY" role="1B3o_S" />
+      <node concept="17QB3L" id="1znuW2OtpMZ" role="3clF45" />
+      <node concept="3clFbS" id="1znuW2OtpN0" role="3clF47">
+        <node concept="3cpWs6" id="1znuW2OtpN1" role="3cqZAp">
+          <node concept="3cpWs3" id="1znuW2OtpN2" role="3cqZAk">
+            <node concept="Xl_RD" id="1znuW2OtpN3" role="3uHU7w">
+              <property role="Xl_RC" value="-doc.jar" />
+            </node>
+            <node concept="2OqwBi" id="1znuW2OtpN4" role="3uHU7B">
+              <node concept="2OqwBi" id="1znuW2OtpN5" role="2Oq$k0">
+                <node concept="13iPFW" id="1znuW2OtpN6" role="2Oq$k0" />
+                <node concept="3TrEf2" id="1znuW2OtpN7" role="2OqNvi">
+                  <ref role="3Tt5mk" to="kdzh:16hzwWwASfD" resolve="module" />
+                </node>
+              </node>
+              <node concept="3TrcHB" id="1znuW2OtpN8" role="2OqNvi">
+                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="13hLZK" id="16hzwWwBkZG" role="13h7CW">
       <node concept="3clFbS" id="16hzwWwBkZH" role="2VODD2" />
     </node>

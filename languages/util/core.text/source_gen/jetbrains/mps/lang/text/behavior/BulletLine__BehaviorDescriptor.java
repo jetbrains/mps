@@ -32,8 +32,10 @@ public final class BulletLine__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2642648362195081146L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<SNode> createParagraphInstance_id7q4Ywce6rMl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createParagraphInstance").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540225684429716629L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
   public static final SMethod<Void> initializeFromParagraphs_id2iG$EWuZbnH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromParagraps").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2642648362196448749L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isFirstLine_id647WjQal7cZ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isFirstLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6991822193132073791L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<Boolean> isLastLine_id647WjQalOgm = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLastLine").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6991822193132258326L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeTurnedToBullet_idWJz9iAWPfE, startsWithBulletSpace_idWJz9iAWPgX, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeTurnedToBullet_idWJz9iAWPfE, startsWithBulletSpace_idWJz9iAWPgX, wrapTextForClipboard_id2iG$EWuTXuU, createParagraphInstance_id7q4Ywce6rMl, initializeFromParagraphs_id2iG$EWuZbnH, isFirstLine_id647WjQal7cZ, isLastLine_id647WjQalOgm);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -63,6 +65,27 @@ public final class BulletLine__BehaviorDescriptor extends BaseBHDescriptor {
       SPropertyOperations.assign(__thisNode__, PROPS.indentation$8ZOp, SPropertyOperations.getInteger(SNodeOperations.as(l, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp));
     }
   }
+  /*package*/ static boolean isFirstLine_id647WjQal7cZ(@NotNull SNode __thisNode__) {
+    return ((int) IndentedPoint__BehaviorDescriptor.calculatePosition_id6pDt4TBBQHh.invoke(__thisNode__)) == 1;
+  }
+  /*package*/ static boolean isLastLine_id647WjQalOgm(@NotNull SNode __thisNode__) {
+    SNode nextSibling = SNodeOperations.getNextSibling(__thisNode__);
+    if (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.IndentedPoint$BF)) {
+      if (SPropertyOperations.getInteger(SNodeOperations.as(nextSibling, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp) == SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
+        if (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.BulletLine$ef)) {
+          return false;
+        } else {
+          return true;
+        }
+      }
+      if (SPropertyOperations.getInteger(SNodeOperations.as(nextSibling, CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp) < SPropertyOperations.getInteger(__thisNode__, PROPS.indentation$8ZOp)) {
+        return true;
+      }
+    } else {
+      return true;
+    }
+    return false;
+  }
 
   /*package*/ BulletLine__BehaviorDescriptor() {
   }
@@ -86,6 +109,10 @@ public final class BulletLine__BehaviorDescriptor extends BaseBHDescriptor {
       case 4:
         initializeFromParagraphs_id2iG$EWuZbnH(node, (SNode) parameters[0]);
         return null;
+      case 5:
+        return (T) ((Boolean) isFirstLine_id647WjQal7cZ(node));
+      case 6:
+        return (T) ((Boolean) isLastLine_id647WjQalOgm(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

@@ -1871,5 +1871,19 @@
       <property role="TrG5h" value="error" />
     </node>
   </node>
+  <node concept="1TIwiD" id="1znuW2OtAIH">
+    <property role="EcuMT" value="1790035444494658477" />
+    <property role="3GE5qa" value="Project.Sources" />
+    <property role="TrG5h" value="BuildMps_ModuleDoc" />
+    <property role="R4oN_" value="documentation files" />
+    <ref role="1TJDcQ" node="4zCbl23d1OJ" resolve="BuildMps_ModuleSource" />
+    <node concept="1TJgyj" id="1znuW2OtALF" role="1TKVEi">
+      <property role="IQ2ns" value="1790035444494658667" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="files" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="3ior:4zlO3QT8$m$" resolve="BuildInputFiles" />
+    </node>
+  </node>
 </model>
 

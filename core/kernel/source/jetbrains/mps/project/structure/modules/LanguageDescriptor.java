@@ -31,6 +31,7 @@ import java.util.stream.Collectors;
 
 public class LanguageDescriptor extends ModuleDescriptor {
   private String myGenPath;
+  private String myDocPath;
 
   private int myLanguageVersion;
 
@@ -55,12 +56,20 @@ public class LanguageDescriptor extends ModuleDescriptor {
     return myGenPath;
   }
 
+  public String getDocPath(){
+    return myDocPath;
+  }
+
   /**
    * @deprecated use {@link ModuleDescriptor#setOutputRoot(String)}, instead
    */
   @Deprecated(since = "2023.3", forRemoval = true)
   public void setGenPath(String genPath) {
     myGenPath = genPath;
+  }
+
+  public void setDocPath(String docPath){
+    myDocPath = docPath;
   }
 
   public Set<SModelReference> getAccessoryModels() {
@@ -111,6 +120,8 @@ public class LanguageDescriptor extends ModuleDescriptor {
   public void save(ModelOutputStream stream) throws IOException {
     super.save(stream);
     stream.writeInt(myLanguageVersion);
+    stream.writeString(myGenPath);
+    stream.writeString(myDocPath);
 
     stream.writeInt(myAccessoryModels.size());
     for (SModelReference ref : myAccessoryModels) {
@@ -139,6 +150,8 @@ public class LanguageDescriptor extends ModuleDescriptor {
   public void load(ModelInputStream stream) throws IOException {
     super.load(stream);
     myLanguageVersion = stream.readInt();
+    myGenPath = stream.readString();
+    myDocPath = stream.readString();
 
     myAccessoryModels.clear();
     for (int size = stream.readInt(); size > 0; size--) {
@@ -171,6 +184,7 @@ public class LanguageDescriptor extends ModuleDescriptor {
     LanguageDescriptor target = super.copy0(LanguageDescriptor::new);
 
     target.setGenPath(getGenPath());
+    target.setDocPath(getDocPath());
     target.setLanguageVersion(getLanguageVersion());
     target.getAccessoryModels().addAll(getAccessoryModels());
     target.getGenerators().addAll(getGenerators().stream().map(GeneratorDescriptor::copy).collect(Collectors.toList()));

@@ -16,6 +16,9 @@
 package jetbrains.mps.nodeEditor.cells;
 
 import com.intellij.openapi.command.CommandProcessor;
+import com.intellij.openapi.util.text.HtmlChunk;
+import com.intellij.util.ui.StartupUiUtil;
+import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.editor.runtime.cells.CaretState;
@@ -37,6 +40,7 @@ import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 import jetbrains.mps.openapi.editor.ActionHandler;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import jetbrains.mps.openapi.editor.TextBuilder;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
@@ -125,6 +129,41 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
   public String getRenderedText() {
     return getRenderedTextLine().getText();
+  }
+
+  private String getRenderedHtml() {
+    HtmlChunk htmlChunk = HtmlChunk.text(getRenderedText());
+
+    // format
+    boolean isBold = this.getRenderedTextLine().getFont().isBold();
+    if (isBold) {
+      htmlChunk = htmlChunk.bold();
+    }
+    boolean isItalic = this.getRenderedTextLine().getFont().isItalic();
+    if (isItalic) {
+      htmlChunk = htmlChunk.italic();
+    }
+    boolean isUnderlined = this.getRenderedTextLine().isUnderlined();
+    if (isUnderlined) {
+      htmlChunk = htmlChunk.wrapWith("u");
+    }
+
+    // color
+    Color color = this.getRenderedTextLine().getTextColor();
+    String rgbString = "rgb(" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ")";
+    String rgbBlack1 = "rgb(8, 8, 8)";
+    String rgbBlack2 = "rgb(0, 0, 0)";
+    if (!(rgbBlack1.equals(rgbString) || rgbBlack2.equals(rgbString))) {
+      htmlChunk = HtmlChunk.font("rgb(" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ")").child(htmlChunk);
+    }
+
+    // font-size
+    int fontSize = StartupUiUtil.getLabelFont().getSize();
+    float cellFontSize = this.getRenderedTextLine().getFont().getSize2D();
+    if (fontSize != cellFontSize) {
+      htmlChunk = HtmlChunk.span("font-size: " + cellFontSize + "px").child(htmlChunk);
+    }
+    return htmlChunk.toString();
   }
 
   public Font getFont() {
@@ -475,7 +514,8 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     if (isEditable()) {
       ModelAccess modelAccess = getContext().getRepository().getModelAccess();
       buildActions(modelAccess);
-      IntelligentCellProcessor cellProcessor = getEditorComponent().isAutomaticSubstitutionEnabled() ? IntelligentInputUtil.getIntelligentCellProcessor(this, getContext(), side) : null;
+      IntelligentCellProcessor cellProcessor =
+          getEditorComponent().isAutomaticSubstitutionEnabled() ? IntelligentInputUtil.getIntelligentCellProcessor(this, getContext(), side) : null;
       ModifyTextCommand command = new ModifyTextCommand(keyEvent, text, allowErrors, side, getContext(), cellProcessor);
       modelAccess.executeCommand(command);
       getEditor().relayout();
@@ -519,7 +559,9 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     if (cellText.isEmpty() || isErrorState()) {
       return false;
     }
-    if (!getEditorComponent().isAutomaticSubstitutionEnabled()) return false;
+    if (!getEditorComponent().isAutomaticSubstitutionEnabled()) {
+      return false;
+    }
 
     EditorCell nextCell = CellTraversalUtil.getNextLeaf(this);
     ActionHandler actionHandler = getContext().getEditorComponent().getActionHandler();
@@ -827,6 +869,14 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   @Override
   public TextBuilder renderText() {
     return new TextBuilderImpl(getRenderedText());
+  }
+
+  @Override
+  public HtmlTextBuilder renderHtml() {
+    if (getRenderedText().isEmpty() || " ".equals(getRenderedText())) {
+      return new HtmlTextBuilderImpl(getRenderedText());
+    }
+    return new HtmlTextBuilderImpl(getRenderedHtml());
   }
 
   public int getCharWidth() {
@@ -1221,7 +1271,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
             CommandProcessor.getInstance().setCurrentCommandGroupId(null);
           } else {
             if (isTypeOverExistingText() && myKeyEvent != null && typeOverExistingText(myKeyEvent)) {
-                return true;
+              return true;
             }
             commit(newText);
           }

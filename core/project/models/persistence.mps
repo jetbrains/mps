@@ -1348,15 +1348,6 @@
           </node>
         </node>
       </node>
-      <node concept="P$JXv" id="5XgYl3EU2TA" role="lGtFl">
-        <node concept="TZ5HI" id="5XgYl3EU2TB" role="3nqlJM">
-          <node concept="TZ5HA" id="5XgYl3EU2TC" role="3HnX3l">
-            <node concept="1dT_AC" id="5XgYl3EU46i" role="1dT_Ay">
-              <property role="1dT_AB" value="use another cons" />
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="2AHcQZ" id="5XgYl3EU2TD" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Deprecated" />
         <node concept="2B6LJw" id="5XgYl3EU2Xj" role="2B76xF">
@@ -1369,6 +1360,15 @@
           <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
           <node concept="Xl_RD" id="5XgYl3EU43$" role="2B70Vg">
             <property role="Xl_RC" value="2023.3" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="5XgYl3EU2TA" role="lGtFl">
+        <node concept="TZ5HI" id="5XgYl3EU2TB" role="3nqlJM">
+          <node concept="TZ5HA" id="5XgYl3EU2TC" role="3HnX3l">
+            <node concept="1dT_AC" id="5XgYl3EU46i" role="1dT_Ay">
+              <property role="1dT_AB" value="use another cons" />
+            </node>
           </node>
         </node>
       </node>
@@ -3980,6 +3980,15 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="IMUMWuHQMX" role="1B3o_S" />
+    <node concept="312cEg" id="44xKh5JOxhh" role="jymVt">
+      <property role="TrG5h" value="DOC_GEN_DEFAULT" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="44xKh5JOxhi" role="1B3o_S" />
+      <node concept="17QB3L" id="44xKh5JOxhj" role="1tU5fm" />
+      <node concept="Xl_RD" id="44xKh5JOxhk" role="33vP2m">
+        <property role="Xl_RC" value="${module}/doc_gen" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="33oJVYhiNUg" role="jymVt" />
     <node concept="3clFbW" id="4F07P_yBO9O" role="jymVt">
       <node concept="37vLTG" id="33oJVYhj0vU" role="3clF46">
@@ -4140,6 +4149,33 @@
                               </node>
                               <node concept="liA8E" id="4OqKOkhUZmg" role="2OqNvi">
                                 <ref role="37wK5l" to="wyt6:~String.isBlank()" resolve="isBlank" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="g8Q5y" id="44xKh5JNVoy" role="3cqZAp">
+                        <node concept="3clFbS" id="44xKh5JNVo$" role="GGjiV" />
+                        <node concept="3tyRfN" id="44xKh5JNVou" role="GIGjv">
+                          <ref role="3tyRfW" to="w0gx:~LanguageDescriptor.setDocPath(java.lang.String)" resolve="setDocPath" />
+                          <node concept="2OqwBi" id="44xKh5JO3UQ" role="3tyRfI">
+                            <node concept="37vLTw" id="44xKh5JO00U" role="2Oq$k0">
+                              <ref role="3cqZAo" node="33oJVYhiVhr" resolve="myMacroHelper" />
+                            </node>
+                            <node concept="liA8E" id="44xKh5JO8w6" role="2OqNvi">
+                              <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
+                              <node concept="2YIFZM" id="44xKh5JOevx" role="37wK5m">
+                                <ref role="37wK5l" to="7a2w:4eI2K_IuewV" resolve="stringWithDefault" />
+                                <ref role="1Pybhc" to="7a2w:4eI2K_Iuet$" resolve="XmlUtil" />
+                                <node concept="37vLTw" id="44xKh5JOh8z" role="37wK5m">
+                                  <ref role="3cqZAo" node="33oJVYhkaUU" resolve="languageElement" />
+                                </node>
+                                <node concept="Xl_RD" id="44xKh5JOn2Y" role="37wK5m">
+                                  <property role="Xl_RC" value="generatorOutputPathDoc" />
+                                </node>
+                                <node concept="37vLTw" id="44xKh5JOAsm" role="37wK5m">
+                                  <ref role="3cqZAo" node="44xKh5JOxhh" resolve="DOC_GEN_DEFAULT" />
+                                </node>
                               </node>
                             </node>
                           </node>
@@ -5303,6 +5339,78 @@
                     </node>
                   </node>
                 </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="44xKh5JPFe4" role="3cqZAp">
+          <node concept="3clFbS" id="44xKh5JPFe5" role="3clFbx">
+            <node concept="3cpWs8" id="44xKh5JPFe6" role="3cqZAp">
+              <node concept="3cpWsn" id="44xKh5JPFe7" role="3cpWs9">
+                <property role="TrG5h" value="p" />
+                <node concept="3uibUv" id="44xKh5JPFe8" role="1tU5fm">
+                  <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                </node>
+                <node concept="2OqwBi" id="44xKh5JPFe9" role="33vP2m">
+                  <node concept="37vLTw" id="44xKh5JPFea" role="2Oq$k0">
+                    <ref role="3cqZAo" node="33oJVYhiVhr" resolve="myMacroHelper" />
+                  </node>
+                  <node concept="liA8E" id="44xKh5JPFeb" role="2OqNvi">
+                    <ref role="37wK5l" to="18ew:~MacroHelper.shrinkPath(java.lang.String)" resolve="shrinkPath" />
+                    <node concept="2OqwBi" id="44xKh5JPFec" role="37wK5m">
+                      <node concept="37vLTw" id="44xKh5JPFed" role="2Oq$k0">
+                        <ref role="3cqZAo" node="33oJVYhj4UH" resolve="descriptor" />
+                      </node>
+                      <node concept="liA8E" id="44xKh5JPFee" role="2OqNvi">
+                        <ref role="37wK5l" to="w0gx:~LanguageDescriptor.getDocPath()" resolve="getDocPath" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="44xKh5JPFef" role="3cqZAp">
+              <node concept="3clFbS" id="44xKh5JPFeg" role="3clFbx">
+                <node concept="3clFbF" id="44xKh5JPFeh" role="3cqZAp">
+                  <node concept="2OqwBi" id="44xKh5JPFei" role="3clFbG">
+                    <node concept="37vLTw" id="44xKh5JPFej" role="2Oq$k0">
+                      <ref role="3cqZAo" node="33oJVYhj4UN" resolve="languageElement" />
+                    </node>
+                    <node concept="liA8E" id="44xKh5JPFek" role="2OqNvi">
+                      <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
+                      <node concept="Xl_RD" id="44xKh5JPFel" role="37wK5m">
+                        <property role="Xl_RC" value="generatorOutputPathDoc" />
+                      </node>
+                      <node concept="37vLTw" id="44xKh5JPFem" role="37wK5m">
+                        <ref role="3cqZAo" node="44xKh5JPFe7" resolve="p" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3fqX7Q" id="44xKh5JPFen" role="3clFbw">
+                <node concept="2OqwBi" id="44xKh5JPFeo" role="3fr31v">
+                  <node concept="liA8E" id="44xKh5JPFeq" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                    <node concept="37vLTw" id="44xKh5JPFer" role="37wK5m">
+                      <ref role="3cqZAo" node="44xKh5JPFe7" resolve="p" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="44xKh5JPSTt" role="2Oq$k0">
+                    <ref role="3cqZAo" node="44xKh5JOxhh" resolve="DOC_GEN_DEFAULT" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="44xKh5JPFes" role="3clFbw">
+            <node concept="10Nm6u" id="44xKh5JPFet" role="3uHU7w" />
+            <node concept="2OqwBi" id="44xKh5JPFeu" role="3uHU7B">
+              <node concept="37vLTw" id="44xKh5JPFev" role="2Oq$k0">
+                <ref role="3cqZAo" node="33oJVYhj4UH" resolve="descriptor" />
+              </node>
+              <node concept="liA8E" id="44xKh5JPFew" role="2OqNvi">
+                <ref role="37wK5l" to="w0gx:~LanguageDescriptor.getDocPath()" resolve="getDocPath" />
               </node>
             </node>
           </node>
@@ -7783,6 +7891,12 @@
     <node concept="2YIFZL" id="56cLWC10PWx" role="jymVt">
       <property role="TrG5h" value="readMemento" />
       <node concept="3cqZAl" id="56cLWC10ZHT" role="3clF45" />
+      <node concept="37vLTG" id="56cLWC10ZGB" role="3clF46">
+        <property role="TrG5h" value="memento" />
+        <node concept="3uibUv" id="4kGY7_SXCGF" role="1tU5fm">
+          <ref role="3uigEE" to="dush:~Memento" resolve="Memento" />
+        </node>
+      </node>
       <node concept="3Tm1VV" id="56cLWC10RSy" role="1B3o_S" />
       <node concept="3clFbS" id="56cLWC10RSz" role="3clF47">
         <node concept="3cpWs8" id="4kGY7_SXCGE" role="3cqZAp">
@@ -7879,20 +7993,6 @@
                   </node>
                 </node>
               </node>
-              <node concept="1Wc70l" id="4$OUpkNLd9O" role="3clFbw">
-                <node concept="3y3z36" id="4$OUpkNLiEz" role="3uHU7B">
-                  <node concept="10Nm6u" id="4$OUpkNLkSv" role="3uHU7w" />
-                  <node concept="37vLTw" id="4$OUpkNLgmR" role="3uHU7B">
-                    <ref role="3cqZAo" node="4kGY7_SXCGC" resolve="macroHelper" />
-                  </node>
-                </node>
-                <node concept="1rXfSq" id="7WVl1CUZ84j" role="3uHU7w">
-                  <ref role="37wK5l" node="56cLWC11mgd" resolve="isPathAttribute" />
-                  <node concept="37vLTw" id="7WVl1CUZ84k" role="37wK5m">
-                    <ref role="3cqZAo" node="56cLWC11i8j" resolve="name" />
-                  </node>
-                </node>
-              </node>
               <node concept="9aQIb" id="7WVl1CUZdCA" role="9aQIa">
                 <node concept="3clFbS" id="7WVl1CUZdCB" role="9aQI4">
                   <node concept="3clFbF" id="7WVl1CUZj91" role="3cqZAp">
@@ -7915,6 +8015,20 @@
                         <ref role="3cqZAo" node="56cLWC10ZGB" resolve="memento" />
                       </node>
                     </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1Wc70l" id="4$OUpkNLd9O" role="3clFbw">
+                <node concept="3y3z36" id="4$OUpkNLiEz" role="3uHU7B">
+                  <node concept="10Nm6u" id="4$OUpkNLkSv" role="3uHU7w" />
+                  <node concept="37vLTw" id="4$OUpkNLgmR" role="3uHU7B">
+                    <ref role="3cqZAo" node="4kGY7_SXCGC" resolve="macroHelper" />
+                  </node>
+                </node>
+                <node concept="1rXfSq" id="7WVl1CUZ84j" role="3uHU7w">
+                  <ref role="37wK5l" node="56cLWC11mgd" resolve="isPathAttribute" />
+                  <node concept="37vLTw" id="7WVl1CUZ84k" role="37wK5m">
+                    <ref role="3cqZAo" node="56cLWC11i8j" resolve="name" />
                   </node>
                 </node>
               </node>
@@ -7987,12 +8101,6 @@
               <ref role="3uigEE" to="mmaq:~Element" resolve="Element" />
             </node>
           </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="56cLWC10ZGB" role="3clF46">
-        <property role="TrG5h" value="memento" />
-        <node concept="3uibUv" id="4kGY7_SXCGF" role="1tU5fm">
-          <ref role="3uigEE" to="dush:~Memento" resolve="Memento" />
         </node>
       </node>
       <node concept="37vLTG" id="56cLWC10ZCZ" role="3clF46">
@@ -8076,20 +8184,6 @@
                         </node>
                       </node>
                     </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="1Wc70l" id="4$OUpkNLnk3" role="3clFbw">
-                <node concept="3y3z36" id="4$OUpkNLqcu" role="3uHU7B">
-                  <node concept="10Nm6u" id="4$OUpkNLrnI" role="3uHU7w" />
-                  <node concept="37vLTw" id="4$OUpkNLoSk" role="3uHU7B">
-                    <ref role="3cqZAo" node="4kGY7_SXAJW" resolve="macroHelper" />
-                  </node>
-                </node>
-                <node concept="1rXfSq" id="4XURg3q2b_7" role="3uHU7w">
-                  <ref role="37wK5l" node="56cLWC11mgd" resolve="isPathAttribute" />
-                  <node concept="37vLTw" id="4XURg3q2b_8" role="37wK5m">
-                    <ref role="3cqZAo" node="56cLWC11LhY" resolve="key" />
                   </node>
                 </node>
               </node>
@@ -8252,6 +8346,20 @@
                         <ref role="3cqZAo" node="56cLWC11GpJ" resolve="element" />
                       </node>
                     </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="1Wc70l" id="4$OUpkNLnk3" role="3clFbw">
+                <node concept="3y3z36" id="4$OUpkNLqcu" role="3uHU7B">
+                  <node concept="10Nm6u" id="4$OUpkNLrnI" role="3uHU7w" />
+                  <node concept="37vLTw" id="4$OUpkNLoSk" role="3uHU7B">
+                    <ref role="3cqZAo" node="4kGY7_SXAJW" resolve="macroHelper" />
+                  </node>
+                </node>
+                <node concept="1rXfSq" id="4XURg3q2b_7" role="3uHU7w">
+                  <ref role="37wK5l" node="56cLWC11mgd" resolve="isPathAttribute" />
+                  <node concept="37vLTw" id="4XURg3q2b_8" role="37wK5m">
+                    <ref role="3cqZAo" node="56cLWC11LhY" resolve="key" />
                   </node>
                 </node>
               </node>

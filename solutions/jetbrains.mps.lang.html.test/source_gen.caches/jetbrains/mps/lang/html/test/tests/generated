@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product version="3" modelHash="-ck14pg8ygx61fk8gplk5da6ifok7aip">
+  <files names="AttributeInOpeningTag_Test.java:AttributeInTag_Test.java:BackspaceBetweenEmptyWordAndTag_Test.java:BackspaceSpaceBetweenTagAndWord_Test.java:BackspaceSpaceBetweenWordAndTag_Test.java:BackspaceSpaceBetweenWords_Test.java:ClosingTagFromLine_Test.java:ClosingTagFromOpeningTag_Test.java:DeleteSpaceBetweenTagAndWord_Test.java:DeleteSpaceBetweenWordAndTag_Test.java:DeleteSpaceBetweenWords_Test.java:EntityRefFromLine_Test.java:EntityRefInAttribute_Test.java:NewLineAfterClosingTag_Test.java:NewLineAfterEmptyLineInTag_Test.java:NewLineAfterOpeiningTag_Test.java:NewLineAfterTag_Test.java:NewLineAfterWord_Test.java:NewLineBeforeOpeningTag_Test.java:NewLineBeforeWord_Test.java:NewLineOnTheMiddleOfTheWord_Test.java:OpeningTagFromClosingTag_Test.java:OpeningTagFromLine_Test.java:SplitWord_Test.java:TagFromLine_Test.java:WordFromLine_Test.java" />
+</product>
+

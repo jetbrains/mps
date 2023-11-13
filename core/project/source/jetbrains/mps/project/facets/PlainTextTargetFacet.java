@@ -26,10 +26,8 @@ public class PlainTextTargetFacet extends ModuleFacetBase implements GenerationT
 
   private IFile myOutputCacheRoot;
   private boolean myUseModelNameForFolder = true;
-
   private boolean myOutputRootFromDescriptor = true;
   private PathSpec myOutputRoot;
-
 
 
   public PlainTextTargetFacet(SModule module) {

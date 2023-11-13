@@ -35,8 +35,9 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
   public static final SMethod<String> location_id6b4RkXS8sT2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("location").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7117056644539862594L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(DependenciesHelper.class, ""), SMethodBuilder.createJavaParameter(Object.class, ""));
   public static final SMethod<Boolean> exports_id5FtnUVJQES1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("exports").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6547494638219603457L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2(SMethodBuilder.createJavaParameter(Object.class, ""));
   public static final SMethod<String> getSourceModuleJarName_id6v5CVv8csP9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSourceModuleJarName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7477562766051626313L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  public static final SMethod<String> getDocModuleJarName_id1znuW2OtpMX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDocModuleJarName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1790035444494605501L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(unpack_id6IqTD4bJTWZ, location_id6b4RkXS8sT2, exports_id5FtnUVJQES1, getSourceModuleJarName_id6v5CVv8csP9);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(unpack_id6IqTD4bJTWZ, location_id6b4RkXS8sT2, exports_id5FtnUVJQES1, getSourceModuleJarName_id6v5CVv8csP9, getDocModuleJarName_id1znuW2OtpMX);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -122,6 +123,9 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
   /*package*/ static String getSourceModuleJarName_id6v5CVv8csP9(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT), PROPS.name$MnvL) + "-src.jar";
   }
+  /*package*/ static String getDocModuleJarName_id1znuW2OtpMX(@NotNull SNode __thisNode__) {
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT), PROPS.name$MnvL) + "-doc.jar";
+  }
 
   /*package*/ BuildMpsLayout_ModuleJars__BehaviorDescriptor() {
   }
@@ -147,6 +151,8 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
         return (T) ((Boolean) exports_id5FtnUVJQES1(node, (Object) parameters[0]));
       case 3:
         return (T) ((String) getSourceModuleJarName_id6v5CVv8csP9(node));
+      case 4:
+        return (T) ((String) getDocModuleJarName_id1znuW2OtpMX(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

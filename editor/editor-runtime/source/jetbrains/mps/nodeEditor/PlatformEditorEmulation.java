@@ -6,6 +6,7 @@ package jetbrains.mps.nodeEditor;
 import com.intellij.codeInsight.hint.TooltipController;
 import com.intellij.codeInsight.hint.TooltipRenderer;
 import com.intellij.ide.DataManager;
+import com.intellij.ide.IdeEventQueue;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
@@ -37,13 +38,27 @@ import com.intellij.openapi.editor.event.EditorMouseMotionListener;
 import com.intellij.openapi.editor.event.SelectionListener;
 import com.intellij.openapi.editor.markup.MarkupModel;
 import com.intellij.openapi.editor.markup.TextAttributes;
+import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.progress.ProgressManager;
+import com.intellij.openapi.progress.util.ProgressIndicatorBase;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.popup.JBPopup;
+import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.util.NlsSafe;
+import com.intellij.reference.SoftReference;
 import com.intellij.ui.HintHint;
 import com.intellij.ui.awt.RelativePoint;
+import com.intellij.ui.popup.AbstractPopup;
+import com.intellij.util.Alarm;
+import com.intellij.util.Alarm.ThreadToUse;
 import com.intellij.util.containers.ContainerUtil;
 import com.intellij.util.ui.accessibility.ScreenReader;
+import jetbrains.mps.editor.runtime.DocumentationProvider;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.smodel.CancellableReadAction;
+import jetbrains.mps.util.Reference;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -53,13 +68,16 @@ import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import java.awt.Insets;
 import java.awt.Point;
+import java.awt.Window;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Point2D;
+import java.lang.ref.WeakReference;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 final class PlatformEditorEmulation implements Editor {
   private final EditorComponent myEditorComponent;
@@ -67,10 +85,15 @@ final class PlatformEditorEmulation implements Editor {
   private final PlatformScrollingModelEmulation myScrollingModel;
   private final MouseMotionListener myMouseMotionAdapter = new MyMouseMotionAdapter();
   private final MouseListener myMouseListener = new MyMouseAdapter();
+  private WeakReference<JBPopup> myPopupReference;
+  private final Alarm myAlarm;
+  private ProgressIndicator myCurrentProgress;
+  private boolean myKeepHintOnMouseMove;
 
   PlatformEditorEmulation(@NotNull EditorComponent editorComponent) {
     myEditorComponent = editorComponent;
     myScrollingModel = new PlatformScrollingModelEmulation(this);
+    myAlarm = new Alarm(ThreadToUse.SWING_THREAD);
   }
 
   MouseMotionListener getMouseMotionListener() {
@@ -84,7 +107,10 @@ final class PlatformEditorEmulation implements Editor {
   private class MyMouseMotionAdapter extends MouseMotionAdapter {
     @Override
     public void mouseMoved(MouseEvent e) {
-      showToolTip(e);
+      if (SoftReference.dereference(myPopupReference) != null && myKeepHintOnMouseMove) {
+        return;
+      }
+      showInfoToolTip(e);
     }
   }
 
@@ -503,6 +529,7 @@ final class PlatformEditorEmulation implements Editor {
 
     @Override
     public void mousePressed(MouseEvent e) {
+      closeHint();
       EditorMouseEvent editorMouseEvent = createEditorMouseEvent(e);
       myMouseListeners.forEach(it -> it.mousePressed(editorMouseEvent));
     }
@@ -650,6 +677,135 @@ final class PlatformEditorEmulation implements Editor {
         .setRequestFocus(ScreenReader.isActive());
     controller.showTooltipByMouseMove(this, showPoint, tr, false, tooltipProvider.getTooltipGroup(), hint);
   }
+
+  private void showInfoToolTip(@NotNull MouseEvent event) {
+    myAlarm.cancelAllRequests();
+    if (myCurrentProgress != null) {
+      myCurrentProgress.cancel();
+      myCurrentProgress = null;
+    }
+
+    boolean isGutter = event.getSource() == myEditorComponent.getLeftEditorHighlighter();
+    EditorTooltipProvider tooltipProvider =
+        isGutter ? myEditorComponent.getLeftEditorHighlighter().getTooltipProvider() : myEditorComponent.getTooltipProvider();
+
+    if (tooltipProvider == null) {
+      return;
+    }
+
+    TooltipRenderer tr = tooltipProvider.getTooltipRenderer(event);
+    if ((tr == null && getDocMessage(event) == null) || this.isDisposed()) {
+      closeHint();
+      return;
+    }
+    if (getComponent().getRootPane() == null || isHintShown()) {
+      return;
+    }
+    closeHint();
+
+    myKeepHintOnMouseMove = false;
+
+    ProgressIndicatorBase progress = new ProgressIndicatorBase();
+    myCurrentProgress = progress;
+    myAlarm.addRequest(() -> ProgressManager.getInstance().executeProcessUnderProgress(() -> {
+      String docMessage = getDocMessage(event);
+      HoverInfo info = new HoverInfo(docMessage);
+      if (info != null) {
+        Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(myEditorComponent.getRepository()));
+        PopupBridge bridge = new PopupBridge();
+        JComponent component = info.createComponent(this, myEditorComponent, event, project, bridge);
+
+        if (component == null) {
+          return;
+        }
+
+        AbstractPopup hint = createHint(component);
+        bridge.setPopup(hint);
+
+        EditorCell hoverCell = getEditorCellAtXY(event.getX(), event.getY());
+        int yCoordinate = hoverCell == null ? event.getY() : hoverCell.getBottom() - 1;
+        Point pointToShow = new Point(event.getX(), yCoordinate);
+        RelativePoint showPoint = new RelativePoint(isGutter ? myEditorComponent.getLeftEditorHighlighter() : myEditorComponent, pointToShow);
+        hint.show(showPoint);
+
+        Window window = hint.getPopupWindow();
+        if (window != null) {
+          IdeEventQueue.getInstance().addDispatcher(e -> {
+            if (e.getID() == MouseEvent.MOUSE_PRESSED && e.getSource() == window) {
+              myKeepHintOnMouseMove = true;
+            }
+            return false;
+          }, hint);
+        }
+
+        myPopupReference = new WeakReference<>(hint);
+      }
+    }, progress), 600);
+  }
+
+  private EditorCell getEditorCellAtXY(int x, int y) {
+    final Reference<EditorCell> rv = new Reference<>(null);
+    myEditorComponent.getRepository().getModelAccess().runReadAction(new CancellableReadAction() {
+      @Override
+      protected void execute() {
+        if (isDisposed()) {
+          return;
+        }
+        jetbrains.mps.openapi.editor.cells.EditorCell cell = myEditorComponent.getRootCell().findLeaf(x, y);
+        rv.set(cell);
+      }
+    });
+    return rv.get();
+  }
+
+  private AbstractPopup createHint(JComponent component) {
+    return (AbstractPopup) JBPopupFactory.getInstance()
+                                         .createComponentPopupBuilder(component, component)
+                                         .setRequestFocus(true)
+                                         .setMovable(true)
+                                         .setResizable(true)
+                                         .setCancelOnClickOutside(false)
+                                         .createPopup();
+  }
+
+
+  private @Nullable String getDocMessage(MouseEvent event) {
+    final Reference<EditorCell> rv = new Reference<>(null);
+    AtomicReference<String> decoratedDocumentationRef = new AtomicReference<>(null);
+    myEditorComponent.getRepository().getModelAccess().runReadAction(new CancellableReadAction() {
+      @Override
+      protected void execute() {
+        if (isDisposed()) {
+          return;
+        }
+        jetbrains.mps.openapi.editor.cells.EditorCell cell = myEditorComponent.getRootCell().findLeaf(event.getX(), event.getY());
+        rv.set(cell);
+        if (rv.isNull()) {
+          return;
+        }
+
+        String decoratedDocumentation = new DocumentationProvider(myEditorComponent.getRepository(), rv.get()).getDecoratedDocumentation();
+        if (decoratedDocumentation != null) {
+          decoratedDocumentationRef.set(decoratedDocumentation);
+        }
+      }
+    });
+    return decoratedDocumentationRef.get();
+  }
+
+  private boolean isHintShown() {
+    JBPopup popup = SoftReference.dereference(myPopupReference);
+    return popup != null && popup.isVisible();
+  }
+
+  private void closeHint() {
+    JBPopup popup = SoftReference.dereference(myPopupReference);
+    if (popup != null) {
+      popup.cancel();
+    }
+    myPopupReference = null;
+  }
+
 
   public void release() {
     myScrollingModel.dispose();

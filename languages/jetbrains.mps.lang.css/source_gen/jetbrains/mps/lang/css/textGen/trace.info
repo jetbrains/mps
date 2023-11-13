@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082113931046:jetbrains.mps.baseLanguage.structure.ContinueStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539:jetbrains.mps.baseLanguage.structure.ForeachStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root>
+    <file name="TextGenAspectDescriptor.java">
+      <unit at="58,0,61,0" name="jetbrains.mps.lang.css.textGen.TextGenAspectDescriptor$CONCEPTS" />
+      <unit at="16,0,62,0" name="jetbrains.mps.lang.css.textGen.TextGenAspectDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:a6ae5af2-7265-4afc-ae42-8a69d0101250(jetbrains.mps.lang.css.textGen)/8766879755154984612">
+    <file name="CssFile_TextGen.java">
+      <node id="8766879755154984612" at="15,54,16,55" concept="5" />
+      <node id="8766879755154986046" at="17,96,18,27" concept="1" />
+      <node id="8766879755154984612" at="23,0,24,0" concept="7" trace="rulesets$36Oh" />
+      <node id="8766879755154986046" at="16,55,19,5" concept="2" />
+      <node id="8766879755154984612" at="14,0,21,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="8766879755154986046" at="17,96,18,27" />
+      <scope id="8766879755154986046" at="16,55,19,5">
+        <var name="item" id="8766879755154986046" />
+      </scope>
+      <scope id="8766879755154984612" at="15,54,19,5">
+        <var name="tgs" id="8766879755154984612" />
+      </scope>
+      <scope id="8766879755154984612" at="14,0,21,0">
+        <var name="ctx" id="8766879755154984612" />
+      </scope>
+      <unit id="8766879755154984612" at="22,0,25,0" name="jetbrains.mps.lang.css.textGen.CssFile_TextGen$LINKS" />
+      <unit id="8766879755154984612" at="13,0,26,0" name="jetbrains.mps.lang.css.textGen.CssFile_TextGen" />
+    </file>
+    <file name="TextGenAspectDescriptor.java">
+      <node id="8766879755154984612" at="30,41,31,37" concept="6" />
+      <node id="8766879755154984612" at="43,58,44,49" concept="5" />
+      <node id="8766879755154984612" at="44,49,45,52" concept="5" />
+      <node id="8766879755154984612" at="45,52,46,84" concept="1" />
+      <node id="8766879755154984612" at="46,84,47,17" concept="0" />
+      <node id="8766879755154984612" at="51,57,52,26" concept="6" />
+      <node id="8766879755154985749" at="54,62,55,17" concept="6" />
+      <node id="8766879755154984612" at="51,0,54,0" concept="8" trace="getFileName_CssFile#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="8766879755154984612" at="54,0,57,0" concept="8" trace="getFileExtension_CssFile#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="8766879755154984612" at="42,58,48,7" concept="3" />
+      <scope id="8766879755154984612" at="30,41,31,37" />
+      <scope id="8766879755154984612" at="51,57,52,26" />
+      <scope id="8766879755154984612" at="54,62,55,17" />
+      <scope id="8766879755154984612" at="51,0,54,0">
+        <var name="node" id="8766879755154984612" />
+      </scope>
+      <scope id="8766879755154984612" at="54,0,57,0">
+        <var name="node" id="8766879755154984612" />
+      </scope>
+      <scope id="8766879755154984612" at="43,58,47,17">
+        <var name="ext" id="8766879755154984612" />
+        <var name="fname" id="8766879755154984612" />
+      </scope>
+    </file>
+  </root>
+  <root nodeRef="r:a6ae5af2-7265-4afc-ae42-8a69d0101250(jetbrains.mps.lang.css.textGen)/8766879755154988071">
+    <file name="CssRuleset_TextGen.java">
+      <node id="8766879755154988071" at="15,54,16,55" concept="5" />
+      <node id="8766879755154988224" at="17,97,18,27" concept="1" />
+      <node id="4054693873271460995" at="19,5,20,20" concept="1" />
+      <node id="4054693873271370050" at="20,20,21,87" concept="1" />
+      <node id="8766879755154988071" at="25,0,26,0" concept="7" trace="selectors$aOu7" />
+      <node id="8766879755154988071" at="26,0,27,0" concept="7" trace="block$hCp9" />
+      <node id="8766879755154988224" at="16,55,19,5" concept="2" />
+      <node id="8766879755154988071" at="14,0,23,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="8766879755154988224" at="17,97,18,27" />
+      <scope id="8766879755154988224" at="16,55,19,5">
+        <var name="item" id="8766879755154988224" />
+      </scope>
+      <scope id="8766879755154988071" at="15,54,21,87">
+        <var name="tgs" id="8766879755154988071" />
+      </scope>
+      <scope id="8766879755154988071" at="14,0,23,0">
+        <var name="ctx" id="8766879755154988071" />
+      </scope>
+      <unit id="8766879755154988071" at="24,0,28,0" name="jetbrains.mps.lang.css.textGen.CssRuleset_TextGen$LINKS" />
+      <unit id="8766879755154988071" at="13,0,29,0" name="jetbrains.mps.lang.css.textGen.CssRuleset_TextGen" />
+    </file>
+    <file name="TextGenAspectDescriptor.java">
+      <node id="8766879755154988071" at="32,44,33,40" concept="6" />
+      <scope id="8766879755154988071" at="32,44,33,40" />
+    </file>
+  </root>
+  <root nodeRef="r:a6ae5af2-7265-4afc-ae42-8a69d0101250(jetbrains.mps.lang.css.textGen)/8766879755154999482">
+    <file name="CssSelector_TextGen.java">
+      <node id="8766879755154999482" at="15,54,16,55" concept="5" />
+      <node id="4054693873271393285" at="16,55,17,87" concept="1" />
+      <node id="8766879755155008306" at="18,74,19,23" concept="1" />
+      <node id="8766879755154999482" at="24,0,25,0" concept="7" trace="value$oPpS" />
+      <node id="8766879755154999639" at="17,87,20,5" concept="3" />
+      <node id="8766879755154999482" at="14,0,22,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="8766879755154999641" at="18,74,19,23" />
+      <scope id="8766879755154999482" at="15,54,20,5">
+        <var name="tgs" id="8766879755154999482" />
+      </scope>
+      <scope id="8766879755154999482" at="14,0,22,0">
+        <var name="ctx" id="8766879755154999482" />
+      </scope>
+      <unit id="8766879755154999482" at="23,0,26,0" name="jetbrains.mps.lang.css.textGen.CssSelector_TextGen$PROPS" />
+      <unit id="8766879755154999482" at="13,0,27,0" name="jetbrains.mps.lang.css.textGen.CssSelector_TextGen" />
+    </file>
+    <file name="TextGenAspectDescriptor.java">
+      <node id="8766879755154999482" at="34,45,35,41" concept="6" />
+      <scope id="8766879755154999482" at="34,45,35,41" />
+    </file>
+  </root>
+  <root nodeRef="r:a6ae5af2-7265-4afc-ae42-8a69d0101250(jetbrains.mps.lang.css.textGen)/8766879755155011411">
+    <file name="CssDeclarationBlock_TextGen.java">
+      <node id="8766879755155011411" at="15,54,16,55" concept="5" />
+      <node id="8766879755155011661" at="16,55,17,20" concept="1" />
+      <node id="8766879755155011786" at="17,20,18,18" concept="1" />
+      <node id="8766879755155011411" at="18,18,19,44" concept="1" />
+      <node id="8766879755155012609" at="20,100,21,27" concept="1" />
+      <node id="8766879755155011411" at="22,5,23,44" concept="1" />
+      <node id="8766879755155015896" at="23,44,24,20" concept="1" />
+      <node id="8766879755155016116" at="24,20,25,18" concept="1" />
+      <node id="8766879755155011411" at="29,0,30,0" concept="7" trace="declarations$WCeG" />
+      <node id="8766879755155012609" at="19,44,22,5" concept="2" />
+      <node id="8766879755155011411" at="14,0,27,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="8766879755155012609" at="20,100,21,27" />
+      <scope id="8766879755155012609" at="19,44,22,5">
+        <var name="item" id="8766879755155012609" />
+      </scope>
+      <scope id="8766879755155011411" at="15,54,25,18">
+        <var name="tgs" id="8766879755155011411" />
+      </scope>
+      <scope id="8766879755155011411" at="14,0,27,0">
+        <var name="ctx" id="8766879755155011411" />
+      </scope>
+      <unit id="8766879755155011411" at="28,0,31,0" name="jetbrains.mps.lang.css.textGen.CssDeclarationBlock_TextGen$LINKS" />
+      <unit id="8766879755155011411" at="13,0,32,0" name="jetbrains.mps.lang.css.textGen.CssDeclarationBlock_TextGen" />
+    </file>
+    <file name="TextGenAspectDescriptor.java">
+      <node id="8766879755155011411" at="28,53,29,49" concept="6" />
+      <scope id="8766879755155011411" at="28,53,29,49" />
+    </file>
+  </root>
+  <root nodeRef="r:a6ae5af2-7265-4afc-ae42-8a69d0101250(jetbrains.mps.lang.css.textGen)/8766879755155016193">
+    <file name="CssDeclaration_TextGen.java">
+      <node id="8766879755155016193" at="14,54,15,55" concept="5" />
+      <node id="8766879755155016422" at="15,55,16,17" concept="1" />
+      <node id="8766879755155016508" at="16,17,17,90" concept="1" />
+      <node id="8766879755155018837" at="17,90,18,22" concept="1" />
+      <node id="8766879755155019023" at="18,22,19,87" concept="1" />
+      <node id="8766879755155019492" at="19,87,20,20" concept="1" />
+      <node id="8766879755155019756" at="20,20,21,18" concept="1" />
+      <node id="8766879755155016193" at="25,0,26,0" concept="7" trace="property$wFY8" />
+      <node id="8766879755155016193" at="26,0,27,0" concept="7" trace="value$xglz" />
+      <node id="8766879755155016193" at="13,0,23,0" concept="4" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="8766879755155016193" at="14,54,21,18">
+        <var name="tgs" id="8766879755155016193" />
+      </scope>
+      <scope id="8766879755155016193" at="13,0,23,0">
+        <var name="ctx" id="8766879755155016193" />
+      </scope>
+      <unit id="8766879755155016193" at="24,0,28,0" name="jetbrains.mps.lang.css.textGen.CssDeclaration_TextGen$PROPS" />
+      <unit id="8766879755155016193" at="12,0,29,0" name="jetbrains.mps.lang.css.textGen.CssDeclaration_TextGen" />
+    </file>
+    <file name="TextGenAspectDescriptor.java">
+      <node id="8766879755155016193" at="26,48,27,44" concept="6" />
+      <scope id="8766879755155016193" at="26,48,27,44" />
+    </file>
+  </root>
+</debug-info>
+

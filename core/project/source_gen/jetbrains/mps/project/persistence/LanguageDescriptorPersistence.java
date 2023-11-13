@@ -25,9 +25,10 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 @GeneratedClass(node = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)/842994667883031167", model = "r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)")
 public class LanguageDescriptorPersistence {
   private final String SOURCE_GEN_DEFAULT = "${module}/source_gen";
+  private final String DOC_GEN_DEFAULT = "${module}/doc_gen";
 
   /**
-   * 
+   *
    * @deprecated use another cons
    */
   @Deprecated(forRemoval = true, since = "2023.3")
@@ -72,12 +73,12 @@ public class LanguageDescriptorPersistence {
 
         Element modelsTag = XmlUtil.first(languageElement, "models");
         if (modelsTag != null) {
-          result_v3r4p8_a0a0a0c0g.getModelRootDescriptors().addAll(ModuleDescriptorPersistence.loadModelRoots(XmlUtil.children(modelsTag, "modelRoot")));
+          result_v3r4p8_a0a0a0c0g.getModelRootDescriptors().addAll(ModuleDescriptorPersistence.loadModelRoots(XmlUtil.children(modelsTag, "modelRoot"), myMacroHelper));
         }
 
         Element facets = XmlUtil.first(languageElement, "facets");
         if (facets != null) {
-          result_v3r4p8_a0a0a0c0g.getModuleFacetDescriptors().addAll(ModuleDescriptorPersistence.loadFacets(XmlUtil.children(facets, "facet")));
+          result_v3r4p8_a0a0a0c0g.getModuleFacetDescriptors().addAll(ModuleDescriptorPersistence.loadFacets(XmlUtil.children(facets, "facet"), myMacroHelper));
         }
 
 
@@ -108,10 +109,10 @@ public class LanguageDescriptorPersistence {
 
         // odd 'stubModelEntry' name for auxiliary classpath is due to legacy
         List<String> javaLibs = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(languageElement, "stubModelEntries"), "stubModelEntry")).select((mee) -> mee.getAttributeValue("path")).toList();
-        result_v3r4p8_a0a0a0c0g.getJavaLibPersistedValues().addAll(javaLibs);
+        result_v3r4p8_a0a0a0c0g.getJavaLibPersistedValues().addAll(ListSequence.fromList(javaLibs).select((it) -> myMacroHelper.expandPath(it)).toList());
 
         List<String> sources = Sequence.fromIterable(XmlUtil.children(XmlUtil.first(languageElement, "sourcePath"), "source")).select((it) -> it.getAttributeValue("path")).toList();
-        result_v3r4p8_a0a0a0c0g.getSourcePathPersistedValue().addAll(sources);
+        result_v3r4p8_a0a0a0c0g.getSourcePathPersistedValue().addAll(ListSequence.fromList(sources).select((it) -> myMacroHelper.expandPath(it)).toList());
         return result_v3r4p8_a0a0a0c0g;
       }).invoke();
     } catch (ModuleReadException ex) {

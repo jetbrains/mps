@@ -15,6 +15,7 @@ public class TextPreviewGroup_ActionGroup extends GeneratedActionGroup {
     setIsInternal(false);
     setPopup(false);
     TextPreviewGroup_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.TextPreviewModel_Action");
+    TextPreviewGroup_ActionGroup.this.addAction("jetbrains.mps.ide.make.actions.DocPreviewModel_Action");
     addNamedAnchor(LABEL_ID_other);
   }
 }

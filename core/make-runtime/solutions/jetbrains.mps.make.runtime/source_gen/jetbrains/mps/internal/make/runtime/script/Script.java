@@ -113,6 +113,9 @@ public class Script implements IScript {
     }
     return trg;
   }
+  private boolean isRequestedTarget(ITarget trg) {
+    return targetRange.isRequested(trg.getName());
+  }
   @Override
   public String toString() {
     return "Script<" + finalTarget + ">";
@@ -265,6 +268,10 @@ with_targets:
                   return;
                 }
               }
+            } else if (trg instanceof ITargetEx && ((ITargetEx) trg).isOptional() && !(isRequestedTarget(trg))) {
+              LOG.info(String.format("Skipping optional target '%s'.", trg.getName()));
+              results.addResult(trg.getName(), new IResult.SUCCESS(null));
+              continue with_targets;
             }
 
             ProgressMonitor subMonitor = monitor.subTask(workEstimate(trg));

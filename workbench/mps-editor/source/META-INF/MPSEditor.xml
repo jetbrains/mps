@@ -78,8 +78,11 @@
   <extensions defaultExtensionNs="com.intellij">
     <applicationService serviceImplementation="jetbrains.mps.nodeEditor.EditorSettings"/>
     <applicationService serviceImplementation="jetbrains.mps.intentions.IntentionsManager"/>
+    <applicationService serviceImplementation="jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager"/>
+
     <projectService serviceImplementation="jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintSettingsComponent" />
     <projectService serviceImplementation="jetbrains.mps.ide.editor.EditorTrackService" />
+    <projectService serviceImplementation="jetbrains.mps.nodeEditor.documentation.MPSDocumentationToolWindowManager"/>
 
     <fileEditorProvider implementation="jetbrains.mps.ide.editor.MPSFileNodeEditorProvider"/>
 

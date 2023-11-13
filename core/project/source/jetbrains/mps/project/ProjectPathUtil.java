@@ -61,6 +61,11 @@ public class ProjectPathUtil {
     return generatorOutputPath;
   }
 
+  @Nullable
+  public static String getGeneratorOutputDocPath(LanguageDescriptor descriptor) {
+    return descriptor.getDocPath();
+  }
+
   /**
    * Counterpart to {@link #getGeneratorOutputPath(ModuleDescriptor)} to modify path value
    */
