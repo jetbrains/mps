@@ -54,8 +54,11 @@ public abstract class ProgressTask {
 
   /**
    * Schedule the task with the specified instance of {@link jetbrains.mps.progress.TaskScheduler }.
+   * <p>
+   * A task may choose to either schedule execution of its computation directly, or use some of 
+   * the schedule* methods in {@link jetbrains.mps.progress.TaskScheduler } to schedule children tasks.
    */
-  public abstract IdleWork schedule(TaskScheduler scheduler);
+  public abstract Runnable schedule(TaskScheduler scheduler);
 
   public abstract String getTitle();
 
@@ -142,8 +145,8 @@ public abstract class ProgressTask {
       return myTitle;
     }
     @Override
-    public IdleWork schedule(TaskScheduler scheduler) {
-      return IdleWork.Support.run(this::run);
+    public Runnable schedule(TaskScheduler scheduler) {
+      return scheduler.execute(this::run);
     }
     protected void run() {
       myRunnable.run();
@@ -171,12 +174,12 @@ public abstract class ProgressTask {
       return String.format("multi(size=%d, parallel=%b)", myTasks.size(), myParallel);
     }
     @Override
-    public IdleWork schedule(TaskScheduler scheduler) {
+    public Runnable schedule(TaskScheduler scheduler) {
       if (myParallel) {
-        return scheduler.scheduleParallel(myTasks, myMonitor);
+        return scheduler.scheduleAllParallel(myTasks, myMonitor);
 
       } else {
-        return scheduler.scheduleSequential(myTasks, myMonitor);
+        return scheduler.scheduleAllSequential(myTasks, myMonitor);
       }
     }
   }
@@ -192,8 +195,8 @@ public abstract class ProgressTask {
       return String.format("delegating(%s)", myDelegate.getTitle());
     }
     @Override
-    public IdleWork schedule(TaskScheduler scheduler) {
-      return scheduler.schedule(myDelegate, myMonitor);
+    public Runnable schedule(TaskScheduler scheduler) {
+      return scheduler.scheduleTask(myDelegate, myMonitor);
     }
     @Override
     public boolean isReady() {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model ref="r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)">
   <persistence version="9" />
-  <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="-1" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
@@ -40,6 +39,7 @@
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="xzav" ref="r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)" />
+    <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -64,7 +64,7 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1215695201514" name="jetbrains.mps.baseLanguage.structure.MinusAssignmentExpression" flags="nn" index="d5anL" />
-      <concept id="2323553266850475941" name="jetbrains.mps.baseLanguage.structure.IHasModifiers" flags="ngI" index="2frcj7">
+      <concept id="2323553266850475941" name="jetbrains.mps.baseLanguage.structure.IHasModifiers" flags="ng" index="2frcj7">
         <child id="2323553266850475953" name="modifiers" index="2frcjj" />
       </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
@@ -83,7 +83,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
@@ -157,7 +157,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
         <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ">
@@ -234,7 +234,7 @@
       <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
         <child id="1160998896846" name="condition" index="1gVkn0" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
         <child id="4972241301747169160" name="typeArgument" index="3PaCim" />
@@ -281,7 +281,7 @@
       <concept id="1184952934362" name="jetbrains.mps.baseLanguage.structure.DimensionExpression" flags="nn" index="3$GHV9">
         <child id="1184953288404" name="expression" index="3$I4v7" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -458,7 +458,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
@@ -9312,6 +9312,42 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="3UR2Jj" id="3LCCkAqnVgd" role="lGtFl">
+      <node concept="TZ5HA" id="3LCCkAqnVge" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqnVgf" role="1dT_Ay">
+          <property role="1dT_AB" value="Conditionally applies the checker passed as " />
+        </node>
+        <node concept="1dT_AA" id="3LCCkAqnVG_" role="1dT_Ay">
+          <node concept="VVOAv" id="3LCCkAqnVHD" role="qph3F">
+            <node concept="TZ5HA" id="3LCCkAqnVHF" role="2Xj1qM">
+              <node concept="1dT_AC" id="3LCCkAqnVHJ" role="1dT_Ay">
+                <property role="1dT_AB" value="origin" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="3LCCkAqnVG$" role="1dT_Ay">
+          <property role="1dT_AB" value=" parameter to the constructor, based on " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3LCCkAqnVOz" role="TZ5H$">
+        <node concept="1dT_AC" id="3LCCkAqnVO$" role="1dT_Ay">
+          <property role="1dT_AB" value="boolean value returned from the function " />
+        </node>
+        <node concept="1dT_AA" id="3LCCkAqnWhG" role="1dT_Ay">
+          <node concept="VVOAv" id="3LCCkAqnWiK" role="qph3F">
+            <node concept="TZ5HA" id="3LCCkAqnWiM" role="2Xj1qM">
+              <node concept="1dT_AC" id="3LCCkAqnWjO" role="1dT_Ay">
+                <property role="1dT_AB" value="accept" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="3LCCkAqnWhF" role="1dT_Ay">
+          <property role="1dT_AB" value=" passed as the second parameter." />
+        </node>
+      </node>
+    </node>
     <node concept="3clFb_" id="3LCCkArkc2q" role="jymVt">
       <property role="TrG5h" value="checkTask" />
       <node concept="3Tm1VV" id="3LCCkArkc2A" role="1B3o_S" />
@@ -9391,42 +9427,6 @@
               <ref role="16sUi3" node="76Xff8JNNvz" resolve="I" />
             </node>
           </node>
-        </node>
-      </node>
-    </node>
-    <node concept="3UR2Jj" id="3LCCkAqnVgd" role="lGtFl">
-      <node concept="TZ5HA" id="3LCCkAqnVge" role="TZ5H$">
-        <node concept="1dT_AC" id="3LCCkAqnVgf" role="1dT_Ay">
-          <property role="1dT_AB" value="Conditionally applies the checker passed as " />
-        </node>
-        <node concept="1dT_AA" id="3LCCkAqnVG_" role="1dT_Ay">
-          <node concept="VVOAv" id="3LCCkAqnVHD" role="qph3F">
-            <node concept="TZ5HA" id="3LCCkAqnVHF" role="2Xj1qM">
-              <node concept="1dT_AC" id="3LCCkAqnVHJ" role="1dT_Ay">
-                <property role="1dT_AB" value="origin" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1dT_AC" id="3LCCkAqnVG$" role="1dT_Ay">
-          <property role="1dT_AB" value=" parameter to the constructor, based on " />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="3LCCkAqnVOz" role="TZ5H$">
-        <node concept="1dT_AC" id="3LCCkAqnVO$" role="1dT_Ay">
-          <property role="1dT_AB" value="boolean value returned from the function " />
-        </node>
-        <node concept="1dT_AA" id="3LCCkAqnWhG" role="1dT_Ay">
-          <node concept="VVOAv" id="3LCCkAqnWiK" role="qph3F">
-            <node concept="TZ5HA" id="3LCCkAqnWiM" role="2Xj1qM">
-              <node concept="1dT_AC" id="3LCCkAqnWjO" role="1dT_Ay">
-                <property role="1dT_AB" value="accept" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="1dT_AC" id="3LCCkAqnWhF" role="1dT_Ay">
-          <property role="1dT_AB" value=" passed as the second parameter." />
         </node>
       </node>
     </node>
@@ -10371,16 +10371,6 @@
       </node>
       <node concept="3cqZAl" id="4SGXHKgZ2JE" role="3clF45" />
     </node>
-    <node concept="3Tm1VV" id="3xfDcbRbJaj" role="1B3o_S" />
-    <node concept="16euLQ" id="3xfDcbRbJj2" role="16eVyc">
-      <property role="TrG5h" value="O" />
-    </node>
-    <node concept="16euLQ" id="3xfDcbRbJjH" role="16eVyc">
-      <property role="TrG5h" value="I" />
-      <node concept="3uibUv" id="3xfDcbRbJkW" role="3ztrMU">
-        <ref role="3uigEE" to="d6hs:~ReportItem" resolve="ReportItem" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="3LCCkAqUlaA" role="jymVt" />
     <node concept="3clFb_" id="3LCCkAqUtC7" role="jymVt">
       <property role="TrG5h" value="checkTask" />
@@ -10521,6 +10511,16 @@
       </node>
     </node>
     <node concept="2tJIrI" id="3LCCkAqUCPi" role="jymVt" />
+    <node concept="3Tm1VV" id="3xfDcbRbJaj" role="1B3o_S" />
+    <node concept="16euLQ" id="3xfDcbRbJj2" role="16eVyc">
+      <property role="TrG5h" value="O" />
+    </node>
+    <node concept="16euLQ" id="3xfDcbRbJjH" role="16eVyc">
+      <property role="TrG5h" value="I" />
+      <node concept="3uibUv" id="3xfDcbRbJkW" role="3ztrMU">
+        <ref role="3uigEE" to="d6hs:~ReportItem" resolve="ReportItem" />
+      </node>
+    </node>
     <node concept="3UR2Jj" id="3LCCkAq1k_c" role="lGtFl">
       <node concept="TZ5HA" id="3LCCkAq1k_d" role="TZ5H$">
         <node concept="1dT_AC" id="3LCCkAq1k_e" role="1dT_Ay">
@@ -11473,6 +11473,35 @@
                 <node concept="3clFb_" id="kXqcYjW6Tg" role="jymVt">
                   <property role="TrG5h" value="check" />
                   <property role="1EzhhJ" value="false" />
+                  <node concept="37vLTG" id="3LCCkArmDr8" role="3clF46">
+                    <property role="TrG5h" value="itemsToCheck" />
+                    <node concept="3uibUv" id="3LCCkArmDr9" role="1tU5fm">
+                      <ref role="3uigEE" node="4QJbmJH1Aa8" resolve="ModelCheckerBuilder.ItemsToCheck" />
+                    </node>
+                  </node>
+                  <node concept="37vLTG" id="3LCCkArmDra" role="3clF46">
+                    <property role="TrG5h" value="repository" />
+                    <node concept="3uibUv" id="3LCCkArmDrb" role="1tU5fm">
+                      <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+                    </node>
+                  </node>
+                  <node concept="37vLTG" id="3LCCkArmDrc" role="3clF46">
+                    <property role="TrG5h" value="errorCollector" />
+                    <node concept="3uibUv" id="3LCCkArmDrd" role="1tU5fm">
+                      <ref role="3uigEE" to="yyf4:~Consumer" resolve="Consumer" />
+                      <node concept="3qUtgH" id="3LCCkArmDre" role="11_B2D">
+                        <node concept="3uibUv" id="3LCCkArmDrf" role="3qUvdb">
+                          <ref role="3uigEE" to="d6hs:~IssueKindReportItem" resolve="IssueKindReportItem" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTG" id="3LCCkArmDrg" role="3clF46">
+                    <property role="TrG5h" value="monitor" />
+                    <node concept="3uibUv" id="3LCCkArmDrh" role="1tU5fm">
+                      <ref role="3uigEE" to="yyf4:~ProgressMonitor" resolve="ProgressMonitor" />
+                    </node>
+                  </node>
                   <node concept="3Tm1VV" id="kXqcYjW6Th" role="1B3o_S" />
                   <node concept="3cqZAl" id="kXqcYjW6Ts" role="3clF45" />
                   <node concept="3clFbS" id="kXqcYjW6Tt" role="3clF47">
@@ -11503,7 +11532,7 @@
                             <ref role="3cqZAo" node="2$qlEUMgnPe" resolve="myTaskScheduler" />
                           </node>
                           <node concept="liA8E" id="3LCCkAr_h5d" role="2OqNvi">
-                            <ref role="37wK5l" to="xzav:5eSWTn2XKU4" resolve="schedule" />
+                            <ref role="37wK5l" to="xzav:419jsOqvoDA" resolve="scheduleTask" />
                             <node concept="37vLTw" id="3LCCkAr_lz7" role="37wK5m">
                               <ref role="3cqZAo" node="3LCCkAr$SEW" resolve="checkTask" />
                             </node>
@@ -11513,48 +11542,19 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="2PX_jfwpXil" role="2OqNvi">
-                          <ref role="37wK5l" to="xzav:2PX_jfwplaZ" resolve="finish" />
+                          <ref role="37wK5l" to="5zyv:~RunnableFuture.run()" resolve="run" />
                         </node>
                       </node>
-                    </node>
-                  </node>
-                  <node concept="37vLTG" id="3LCCkArmDr8" role="3clF46">
-                    <property role="TrG5h" value="itemsToCheck" />
-                    <node concept="3uibUv" id="3LCCkArmDr9" role="1tU5fm">
-                      <ref role="3uigEE" node="4QJbmJH1Aa8" resolve="ModelCheckerBuilder.ItemsToCheck" />
-                    </node>
-                  </node>
-                  <node concept="37vLTG" id="3LCCkArmDra" role="3clF46">
-                    <property role="TrG5h" value="repository" />
-                    <node concept="3uibUv" id="3LCCkArmDrb" role="1tU5fm">
-                      <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
-                    </node>
-                  </node>
-                  <node concept="37vLTG" id="3LCCkArmDrc" role="3clF46">
-                    <property role="TrG5h" value="errorCollector" />
-                    <node concept="3uibUv" id="3LCCkArmDrd" role="1tU5fm">
-                      <ref role="3uigEE" to="yyf4:~Consumer" resolve="Consumer" />
-                      <node concept="3qUtgH" id="3LCCkArmDre" role="11_B2D">
-                        <node concept="3uibUv" id="3LCCkArmDrf" role="3qUvdb">
-                          <ref role="3uigEE" to="d6hs:~IssueKindReportItem" resolve="IssueKindReportItem" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="37vLTG" id="3LCCkArmDrg" role="3clF46">
-                    <property role="TrG5h" value="monitor" />
-                    <node concept="3uibUv" id="3LCCkArmDrh" role="1tU5fm">
-                      <ref role="3uigEE" to="yyf4:~ProgressMonitor" resolve="ProgressMonitor" />
                     </node>
                   </node>
                 </node>
+                <node concept="2tJIrI" id="3LCCkArlxAN" role="jymVt" />
                 <node concept="3uibUv" id="kXqcYjW6Tu" role="2Ghqu4">
                   <ref role="3uigEE" node="4QJbmJH1Aa8" resolve="ModelCheckerBuilder.ItemsToCheck" />
                 </node>
                 <node concept="3uibUv" id="kXqcYjW6Tv" role="2Ghqu4">
                   <ref role="3uigEE" to="d6hs:~IssueKindReportItem" resolve="IssueKindReportItem" />
                 </node>
-                <node concept="2tJIrI" id="3LCCkArlxAN" role="jymVt" />
                 <node concept="3clFb_" id="3LCCkArl_zh" role="jymVt">
                   <property role="TrG5h" value="checkTask" />
                   <node concept="3uibUv" id="3LCCkArl_zs" role="3clF45">

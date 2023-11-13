@@ -65,6 +65,7 @@
     <import index="zf81" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.net(JDK/)" />
     <import index="7x5y" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.charset(JDK/)" />
     <import index="u3gh" ref="r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)" />
+    <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
@@ -99,7 +100,7 @@
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
         <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
@@ -173,7 +174,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
         <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
@@ -243,7 +244,7 @@
         <child id="1154542793668" name="componentType" index="3g7fb8" />
         <child id="1154542803372" name="initValue" index="3g7hyw" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
         <child id="4972241301747169160" name="typeArgument" index="3PaCim" />
@@ -281,7 +282,7 @@
         <child id="8276990574909234106" name="finallyBody" index="1wplMD" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -402,7 +403,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -4114,11 +4115,6 @@
     <node concept="3uibUv" id="61uE6zXlFLm" role="1zkMxy">
       <ref role="3uigEE" to="bbnd:~Suite" resolve="Suite" />
     </node>
-    <node concept="3UR2Jj" id="6dN0RJT2Bkp" role="lGtFl">
-      <node concept="TZ5HI" id="6dN0RJT2Bkq" role="3nqlJM">
-        <node concept="TZ5HA" id="6dN0RJT2Bkr" role="3HnX3l" />
-      </node>
-    </node>
     <node concept="2AHcQZ" id="6dN0RJT2Bks" role="2AJF6D">
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       <node concept="2B6LJw" id="6dN0RJT2BwY" role="2B76xF">
@@ -4126,6 +4122,11 @@
         <node concept="3clFbT" id="6dN0RJT2BWA" role="2B70Vg">
           <property role="3clFbU" value="true" />
         </node>
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="6dN0RJT2Bkp" role="lGtFl">
+      <node concept="TZ5HI" id="6dN0RJT2Bkq" role="3nqlJM">
+        <node concept="TZ5HA" id="6dN0RJT2Bkr" role="3HnX3l" />
       </node>
     </node>
   </node>
@@ -5242,6 +5243,51 @@
           </node>
         </node>
         <node concept="3clFbH" id="34euvBSFl$S" role="3cqZAp" />
+        <node concept="3cpWs8" id="1Yn_vPPASrc" role="3cqZAp">
+          <node concept="3cpWsn" id="1Yn_vPPASrd" role="3cpWs9">
+            <property role="TrG5h" value="mpsProject" />
+            <node concept="3uibUv" id="1Yn_vPPAO$P" role="1tU5fm">
+              <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
+            </node>
+            <node concept="2YIFZM" id="1Yn_vPPASre" role="33vP2m">
+              <ref role="37wK5l" node="7X3$Ctw3Yvw" resolve="getContextProject" />
+              <ref role="1Pybhc" node="7X3$Ctw3YsX" resolve="BaseCheckModulesTest" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="1Yn_vPPBOyo" role="3cqZAp">
+          <node concept="3cpWsn" id="1Yn_vPPBOyp" role="3cpWs9">
+            <property role="TrG5h" value="shareReadExecutor" />
+            <node concept="3uibUv" id="1Yn_vPPBlGM" role="1tU5fm">
+              <ref role="3uigEE" to="5zyv:~Executor" resolve="Executor" />
+            </node>
+            <node concept="2OqwBi" id="1Yn_vPPBOyq" role="33vP2m">
+              <node concept="1eOMI4" id="1Yn_vPPBOyr" role="2Oq$k0">
+                <node concept="10QFUN" id="1Yn_vPPBOys" role="1eOMHV">
+                  <node concept="2OqwBi" id="1Yn_vPPBOyt" role="10QFUP">
+                    <node concept="2OqwBi" id="1Yn_vPPBOyu" role="2Oq$k0">
+                      <node concept="37vLTw" id="1Yn_vPPBOyv" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1Yn_vPPASrd" resolve="mpsProject" />
+                      </node>
+                      <node concept="liA8E" id="1Yn_vPPBOyw" role="2OqNvi">
+                        <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1Yn_vPPBOyx" role="2OqNvi">
+                      <ref role="37wK5l" to="lui2:~SRepository.getModelAccess()" resolve="getModelAccess" />
+                    </node>
+                  </node>
+                  <node concept="3uibUv" id="1Yn_vPPBOyy" role="10QFUM">
+                    <ref role="3uigEE" to="w1kc:~ModelAccessBase" resolve="ModelAccessBase" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="1Yn_vPPBOyz" role="2OqNvi">
+                <ref role="37wK5l" to="w1kc:~ModelAccessBase.shareRead()" resolve="shareRead" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="55lWainYYrS" role="3cqZAp">
           <node concept="3cpWsn" id="55lWainYYrT" role="3cpWs9">
             <property role="TrG5h" value="scheduler" />
@@ -5251,10 +5297,12 @@
             <node concept="2ShNRf" id="55lWainYYrV" role="33vP2m">
               <node concept="1pGfFk" id="55lWainZr2N" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="u3gh:1DD4wlLrb3F" resolve="SystemBackgroundTaskScheduler" />
-                <node concept="2YIFZM" id="1DD4wlLsHdD" role="37wK5m">
-                  <ref role="37wK5l" node="7X3$Ctw3Yvw" resolve="getContextProject" />
-                  <ref role="1Pybhc" node="7X3$Ctw3YsX" resolve="BaseCheckModulesTest" />
+                <ref role="37wK5l" to="u3gh:1Yn_vPPAhyN" resolve="SystemBackgroundTaskScheduler" />
+                <node concept="37vLTw" id="1Yn_vPPASrf" role="37wK5m">
+                  <ref role="3cqZAo" node="1Yn_vPPASrd" resolve="contextProject" />
+                </node>
+                <node concept="37vLTw" id="1Yn_vPPBOy$" role="37wK5m">
+                  <ref role="3cqZAo" node="1Yn_vPPBOyp" resolve="shareRead" />
                 </node>
               </node>
             </node>
