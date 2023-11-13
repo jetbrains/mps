@@ -36,7 +36,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -46,7 +46,7 @@
     <property role="TrG5h" value="CssFile" />
     <property role="34LRSv" value="css file" />
     <property role="19KtqR" value="true" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="7AEdF0U$RpT" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
@@ -62,7 +62,7 @@
     <property role="EcuMT" value="8766879755154978539" />
     <property role="TrG5h" value="CssRuleset" />
     <property role="34LRSv" value="ruleset" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7AEdF0U$RUZ" role="1TKVEi">
       <property role="IQ2ns" value="8766879755154980543" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -82,7 +82,7 @@
     <property role="EcuMT" value="8766879755154978797" />
     <property role="TrG5h" value="CssSelector" />
     <property role="34LRSv" value="selector" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyi" id="7AEdF0U$S0P" role="1TKVEl">
       <property role="IQ2nx" value="8766879755154980917" />
       <property role="TrG5h" value="value" />
@@ -93,7 +93,7 @@
     <property role="EcuMT" value="8766879755154979136" />
     <property role="TrG5h" value="CssDeclaration" />
     <property role="34LRSv" value="declaration" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyi" id="7AEdF0U$RAL" role="1TKVEl">
       <property role="IQ2nx" value="8766879755154979249" />
       <property role="TrG5h" value="property" />
@@ -109,7 +109,7 @@
     <property role="EcuMT" value="8766879755154979815" />
     <property role="TrG5h" value="CssDeclarationBlock" />
     <property role="34LRSv" value="declaration block" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7AEdF0U$RMD" role="1TKVEi">
       <property role="IQ2ns" value="8766879755154980009" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />

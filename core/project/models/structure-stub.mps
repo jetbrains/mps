@@ -1784,7 +1784,7 @@
               <node concept="3clFbC" id="5IhUL4OOotD" role="3uHU7w">
                 <node concept="Rm8GO" id="5IhUL4OOAla" role="3uHU7w">
                   <ref role="Rm8GQ" to="b0pz:~JavaModuleFacet$Compile.MPS" resolve="MPS" />
-                  <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$Compile" resolve="Compile" />
+                  <ref role="1Px2BO" to="b0pz:~JavaModuleFacet$Compile" resolve="JavaModuleFacet.Compile" />
                 </node>
                 <node concept="2OqwBi" id="5IhUL4OOcv7" role="3uHU7B">
                   <node concept="37vLTw" id="5IhUL4OO68_" role="2Oq$k0">

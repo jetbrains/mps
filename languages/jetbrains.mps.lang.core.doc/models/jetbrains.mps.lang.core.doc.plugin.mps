@@ -368,7 +368,7 @@
                   <node concept="3cpWsn" id="7_nN6E$Tfwo" role="3cpWs9">
                     <property role="TrG5h" value="mgpProvider" />
                     <node concept="3uibUv" id="7_nN6E$Tfwp" role="1tU5fm">
-                      <ref role="3uigEE" to="ap4t:~ModelGenerationPlan$Provider" resolve="Provider" />
+                      <ref role="3uigEE" to="ap4t:~ModelGenerationPlan$Provider" resolve="ModelGenerationPlan.Provider" />
                     </node>
                     <node concept="2ShNRf" id="7_nN6E$TfW1" role="33vP2m">
                       <node concept="1pGfFk" id="7_nN6E$Tgze" role="2ShVmc">
@@ -489,7 +489,7 @@
                   <node concept="3cpWsn" id="2hySQrUlct9" role="3cpWs9">
                     <property role="TrG5h" value="optionsBuilder" />
                     <node concept="3uibUv" id="2hySQrUlcta" role="1tU5fm">
-                      <ref role="3uigEE" to="ap4t:~GenerationOptions$OptionsBuilder" resolve="OptionsBuilder" />
+                      <ref role="3uigEE" to="ap4t:~GenerationOptions$OptionsBuilder" resolve="GenerationOptions.OptionsBuilder" />
                     </node>
                     <node concept="2YIFZM" id="2hySQrUlcVL" role="33vP2m">
                       <ref role="37wK5l" to="ap4t:~GenerationOptions.fromSettings(jetbrains.mps.generator.IGenerationSettings)" resolve="fromSettings" />

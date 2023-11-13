@@ -10438,7 +10438,7 @@
                           <node concept="3cpWsn" id="2$rgQOfwuJx" role="3cpWs9">
                             <property role="TrG5h" value="stepBuilder" />
                             <node concept="3uibUv" id="2$rgQOfwuJy" role="1tU5fm">
-                              <ref role="3uigEE" to="ap4t:~GenerationPlanBuilder$TransformStepBuilder" resolve="TransformStepBuilder" />
+                              <ref role="3uigEE" to="ap4t:~GenerationPlanBuilder$TransformStepBuilder" resolve="GenerationPlanBuilder.TransformStepBuilder" />
                             </node>
                             <node concept="2OqwBi" id="2$rgQOfwuJz" role="33vP2m">
                               <node concept="37vLTw" id="2$rgQOfwuMY" role="2Oq$k0">
@@ -10477,7 +10477,7 @@
                                   </node>
                                   <node concept="Rm8GO" id="2$rgQOfwuJM" role="37wK5m">
                                     <ref role="Rm8GQ" to="ap4t:~GenerationPlanBuilder$BuilderOption.None" resolve="None" />
-                                    <ref role="1Px2BO" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="BuilderOption" />
+                                    <ref role="1Px2BO" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="GenerationPlanBuilder.BuilderOption" />
                                   </node>
                                 </node>
                               </node>
@@ -10710,19 +10710,19 @@
                             </node>
                             <node concept="Rm8GO" id="2$rgQOfwuLd" role="37wK5m">
                               <ref role="Rm8GQ" to="ap4t:~GenerationPlanBuilder$BuilderOption.WithExtendedGenerators" resolve="WithExtendedGenerators" />
-                              <ref role="1Px2BO" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="BuilderOption" />
+                              <ref role="1Px2BO" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="GenerationPlanBuilder.BuilderOption" />
                             </node>
                             <node concept="3K4zz7" id="2$rgQOfwuLe" role="37wK5m">
                               <node concept="Rm8GO" id="2$rgQOfwuLf" role="3K4E3e">
                                 <ref role="Rm8GQ" to="ap4t:~GenerationPlanBuilder$BuilderOption.WithPriorityRules" resolve="WithPriorityRules" />
-                                <ref role="1Px2BO" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="BuilderOption" />
+                                <ref role="1Px2BO" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="GenerationPlanBuilder.BuilderOption" />
                               </node>
                               <node concept="37vLTw" id="2$rgQOfwuLg" role="3K4Cdx">
                                 <ref role="3cqZAo" node="2$rgQOfwuL3" resolve="withPriorityRules" />
                               </node>
                               <node concept="Rm8GO" id="2$rgQOfwuLh" role="3K4GZi">
                                 <ref role="Rm8GQ" to="ap4t:~GenerationPlanBuilder$BuilderOption.None" resolve="None" />
-                                <ref role="1Px2BO" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="BuilderOption" />
+                                <ref role="1Px2BO" to="ap4t:~GenerationPlanBuilder$BuilderOption" resolve="GenerationPlanBuilder.BuilderOption" />
                               </node>
                             </node>
                           </node>

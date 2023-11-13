@@ -157,7 +157,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
         <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1092119917967" name="jetbrains.mps.baseLanguage.structure.MulExpression" flags="nn" index="17qRlL" />
@@ -220,7 +220,7 @@
       <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
         <child id="1160998896846" name="condition" index="1gVkn0" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -255,7 +255,7 @@
         <child id="8276990574909234106" name="finallyBody" index="1wplMD" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -414,7 +414,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
@@ -892,7 +892,7 @@
                       <node concept="3cpWsn" id="70x5HTuysHT" role="3cpWs9">
                         <property role="TrG5h" value="msfm" />
                         <node concept="3uibUv" id="70x5HTuyowl" role="1tU5fm">
-                          <ref role="3uigEE" node="70x5HTuotKl" resolve="ModelStaleFileManager" />
+                          <ref role="3uigEE" node="70x5HTuotKl" resolve="ModuleStaleFileManager.ModelStaleFileManager" />
                         </node>
                         <node concept="2OqwBi" id="70x5HTuysHU" role="33vP2m">
                           <node concept="37vLTw" id="70x5HTuysHV" role="2Oq$k0">
@@ -901,7 +901,7 @@
                           <node concept="2pIyA9" id="70x5HTuysHW" role="2OqNvi">
                             <node concept="1pGfFk" id="70x5HTuysHX" role="2ShVmc">
                               <property role="373rjd" value="true" />
-                              <ref role="37wK5l" node="70x5HTuoxyW" resolve="Foobar" />
+                              <ref role="37wK5l" node="70x5HTuoxyW" resolve="ModuleStaleFileManager.ModelStaleFileManager" />
                               <node concept="2OqwBi" id="3oypqxvgZgr" role="37wK5m">
                                 <node concept="2GrUjf" id="3oypqxvgWoi" role="2Oq$k0">
                                   <ref role="2Gs0qQ" node="22g6WSZINo" resolve="inputData" />
@@ -2968,7 +2968,7 @@
                                       <node concept="3cpWsn" id="70x5HTuCbSA" role="3cpWs9">
                                         <property role="TrG5h" value="msfm" />
                                         <node concept="3uibUv" id="70x5HTuCaE8" role="1tU5fm">
-                                          <ref role="3uigEE" node="70x5HTuotKl" resolve="ModelStaleFileManager" />
+                                          <ref role="3uigEE" node="70x5HTuotKl" resolve="ModuleStaleFileManager.ModelStaleFileManager" />
                                         </node>
                                         <node concept="2OqwBi" id="70x5HTuCbSB" role="33vP2m">
                                           <node concept="37vLTw" id="70x5HTuCbSC" role="2Oq$k0">
@@ -2977,7 +2977,7 @@
                                           <node concept="2pIyA9" id="70x5HTuCbSD" role="2OqNvi">
                                             <node concept="1pGfFk" id="70x5HTuCbSE" role="2ShVmc">
                                               <property role="373rjd" value="true" />
-                                              <ref role="37wK5l" node="70x5HTuoxyW" resolve="Foobar" />
+                                              <ref role="37wK5l" node="70x5HTuoxyW" resolve="ModuleStaleFileManager.ModelStaleFileManager" />
                                               <node concept="2OqwBi" id="70x5HTuCbSF" role="37wK5m">
                                                 <node concept="37vLTw" id="70x5HTuCbSG" role="2Oq$k0">
                                                   <ref role="3cqZAo" node="3QuLV9OzV7z" resolve="inputResource" />

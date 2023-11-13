@@ -39,7 +39,7 @@
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
@@ -339,7 +339,7 @@
           <node concept="2OqwBi" id="VhXOWqY4Zd" role="3clFbw">
             <node concept="117lpO" id="VhXOWqY4Pn" role="2Oq$k0" />
             <node concept="2qgKlT" id="VhXOWqY59H" role="2OqNvi">
-              <ref role="37wK5l" to="fg1a:VhXOWqV8wJ" resolve="isMultiLine" />
+              <ref role="37wK5l" to="fg1a:VhXOWqV8wJ" resolve="isMultiline" />
             </node>
           </node>
           <node concept="9aQIb" id="VhXOWqY5qg" role="9aQIa">

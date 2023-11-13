@@ -38,7 +38,7 @@
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
         <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
@@ -176,7 +176,7 @@
       <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
         <child id="1160998896846" name="condition" index="1gVkn0" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
         <child id="4972241301747169160" name="typeArgument" index="3PaCim" />
@@ -208,7 +208,7 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
@@ -264,7 +264,7 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -2913,7 +2913,7 @@
                                           </node>
                                           <node concept="2ShNRf" id="4dAXdAzwtu9" role="37wK5m">
                                             <node concept="1pGfFk" id="4dAXdAzwtua" role="2ShVmc">
-                                              <ref role="37wK5l" to="i9so:40Y6fh$WLps" resolve="SUCCESS" />
+                                              <ref role="37wK5l" to="i9so:40Y6fh$WLps" resolve="IResult.SUCCESS" />
                                               <node concept="10Nm6u" id="4dAXdAzwtub" role="37wK5m" />
                                             </node>
                                           </node>
@@ -5567,13 +5567,13 @@
       <node concept="3Tm6S6" id="2m$bTNox0Pm" role="1B3o_S" />
       <node concept="2hMVRd" id="2m$bTNox3Yc" role="1tU5fm">
         <node concept="3uibUv" id="2m$bTNox44g" role="2hN53Y">
-          <ref role="3uigEE" to="ud0o:5mqBoD3U3UJ" resolve="Name" />
+          <ref role="3uigEE" to="ud0o:5mqBoD3U3UJ" resolve="ITarget.Name" />
         </node>
       </node>
       <node concept="2ShNRf" id="2m$bTNox4N6" role="33vP2m">
         <node concept="2i4dXS" id="2m$bTNox4Mh" role="2ShVmc">
           <node concept="3uibUv" id="2m$bTNox4Mi" role="HW$YZ">
-            <ref role="3uigEE" to="ud0o:5mqBoD3U3UJ" resolve="Name" />
+            <ref role="3uigEE" to="ud0o:5mqBoD3U3UJ" resolve="ITarget.Name" />
           </node>
         </node>
       </node>
@@ -6570,7 +6570,7 @@
       <node concept="37vLTG" id="1YDG_8A$3TZ" role="3clF46">
         <property role="TrG5h" value="name" />
         <node concept="3uibUv" id="1YDG_8A$7qO" role="1tU5fm">
-          <ref role="3uigEE" to="ud0o:5mqBoD3U3UJ" resolve="Name" />
+          <ref role="3uigEE" to="ud0o:5mqBoD3U3UJ" resolve="ITarget.Name" />
         </node>
       </node>
       <node concept="10P_77" id="1YDG_8AzWXW" role="3clF45" />

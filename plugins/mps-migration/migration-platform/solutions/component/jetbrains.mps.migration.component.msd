@@ -5,8 +5,7 @@
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
-    <modelRoot contentPath="${module}/../../" type="java_classes">
-      <!-- see Java facet, below, for notes on path -->
+    <modelRoot contentPath="${module}/../.." type="java_classes">
       <sourceRoot location="lib/migration-platform.jar" />
     </modelRoot>
   </models>
@@ -14,16 +13,6 @@
     <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
       <library location="${module}/../../lib/migration-platform.jar" />
-      <!--
-        Deployment layout:
-            plugins/mps-migration/solutions/j.m.migration.component.jar
-            plugins/mps-migration/lib/migration-platform.jar     (i.e. ${module}/../lib/, note single ../ level change)
-        Note, ModuleMiner is capable of rewriting model root paths starting with ${module} only,
-        therefore I don't use ${mps_home}/plugins here. It also needs contentPath, sourceRoot[@path] won't work.
-        To deal with ../../lib/ vs ../lib difference, we rely on the fact MM.fixJavaStubModelRoots() matching jar name only.
-        Besides, we use migration-platform.jar in IdeaPlugin/mps-migration. We don't use modules yet,
-        but if we decide to, we'd can not use ${mps_home} for library location.
-       -->
     </facet>
   </facets>
   <dependencies>

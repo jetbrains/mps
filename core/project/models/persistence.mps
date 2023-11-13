@@ -1349,7 +1349,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5XgYl3EU2TD" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="5XgYl3EU2Xj" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="5XgYl3EU40p" role="2B70Vg">
@@ -4013,7 +4013,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5XgYl3EVML1" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="5XgYl3EVMPV" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="5XgYl3EVMRM" role="2B70Vg">
@@ -10689,7 +10689,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5XgYl3EVrIb" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="5XgYl3EVrLn" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="5XgYl3EVrNm" role="2B70Vg">

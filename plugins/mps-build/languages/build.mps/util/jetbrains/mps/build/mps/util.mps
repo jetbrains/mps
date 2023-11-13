@@ -34827,7 +34827,7 @@
                   <ref role="3Tt5mk" to="kdzh:1znuW2OtALF" resolve="files" />
                 </node>
                 <node concept="37vLTw" id="1znuW2OK1wW" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1znuW2OK1wL" resolve="testSource" />
+                  <ref role="3cqZAo" node="1znuW2OK1wL" resolve="doc" />
                 </node>
               </node>
               <node concept="2OqwBi" id="1znuW2OK1wX" role="37vLTx">
@@ -34859,7 +34859,7 @@
                     <ref role="3Tt5mk" to="kdzh:1znuW2OtALF" resolve="files" />
                   </node>
                   <node concept="37vLTw" id="1znuW2OK1xa" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1znuW2OK1wL" resolve="testSource" />
+                    <ref role="3cqZAo" node="1znuW2OK1wL" resolve="doc" />
                   </node>
                 </node>
               </node>
@@ -34918,7 +34918,7 @@
               </node>
               <node concept="TSZUe" id="1znuW2OK1xm" role="2OqNvi">
                 <node concept="37vLTw" id="1znuW2OK1xn" role="25WWJ7">
-                  <ref role="3cqZAo" node="1znuW2OK1wL" resolve="testSource" />
+                  <ref role="3cqZAo" node="1znuW2OK1wL" resolve="doc" />
                 </node>
               </node>
             </node>
@@ -34929,7 +34929,7 @@
         </node>
         <node concept="3Tm1VV" id="1znuW2OK1xq" role="1B3o_S" />
         <node concept="3uibUv" id="1znuW2OK1xr" role="3clF45">
-          <ref role="3uigEE" node="16ApZ_poryA" resolve="BuildModuleFacade" />
+          <ref role="3uigEE" node="16ApZ_poryA" resolve="ModuleChecker.BuildModuleFacade" />
         </node>
       </node>
       <node concept="2tJIrI" id="3XLirLmK2lI" role="jymVt" />

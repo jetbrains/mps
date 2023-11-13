@@ -37219,7 +37219,7 @@
             <node concept="3cqZAl" id="hLGck1Gtow" role="3clF45" />
             <node concept="3clFbS" id="hLGck1Gtox" role="3clF47">
               <node concept="1VxSAg" id="hLGck2nImA" role="3cqZAp">
-                <ref role="37wK5l" node="hLGck2nIDJ" resolve="Nested" />
+                <ref role="37wK5l" node="hLGck2nIDJ" resolve="Outer.Nested" />
                 <node concept="37vLTw" id="hLGck2DJmb" role="37wK5m">
                   <ref role="3cqZAo" node="hLGck1Gtop" resolve="superClassField" />
                   <node concept="7CXmI" id="hLGck2ELWW" role="lGtFl">
@@ -37244,9 +37244,9 @@
             <node concept="3cqZAl" id="hLGck2F58q" role="3clF45" />
             <node concept="3clFbS" id="hLGck2F58r" role="3clF47">
               <node concept="1VxSAg" id="hLGck2F8MX" role="3cqZAp">
-                <ref role="37wK5l" node="hLGck2nIDJ" resolve="Nested" />
+                <ref role="37wK5l" node="hLGck2nIDJ" resolve="Outer.Nested" />
                 <node concept="37vLTw" id="hLGck2F9x9" role="37wK5m">
-                  <ref role="3cqZAo" node="hLGck2mCV1" resolve="nestedClassFieldd" />
+                  <ref role="3cqZAo" node="hLGck2mCV1" resolve="nestedClassField" />
                   <node concept="7CXmI" id="hLGck2FbiX" role="lGtFl">
                     <node concept="1TM$A" id="hLGck2Fc4p" role="7EUXB">
                       <node concept="2PYRI3" id="hLGck2Fc4q" role="3lydEf">
@@ -37320,7 +37320,7 @@
             <node concept="3cqZAl" id="hLGck2Fca2" role="3clF45" />
             <node concept="3clFbS" id="hLGck2Fca3" role="3clF47">
               <node concept="1VxSAg" id="hLGck2FfNd" role="3cqZAp">
-                <ref role="37wK5l" node="hLGck2nIDJ" resolve="Nested" />
+                <ref role="37wK5l" node="hLGck2nIDJ" resolve="Outer.Nested" />
                 <node concept="3nyPlj" id="hLGck2Fh1d" role="37wK5m">
                   <ref role="37wK5l" node="hLGck2nkBV" resolve="superClassMethod" />
                   <node concept="7CXmI" id="hLGck2Fivs" role="lGtFl">
@@ -37354,7 +37354,7 @@
             <node concept="3cqZAl" id="hLGck2S9$q" role="3clF45" />
             <node concept="3clFbS" id="hLGck2S9$r" role="3clF47">
               <node concept="1VxSAg" id="hLGck2Sh$r" role="3cqZAp">
-                <ref role="37wK5l" node="hLGck2nIDJ" resolve="Nested" />
+                <ref role="37wK5l" node="hLGck2nIDJ" resolve="Outer.Nested" />
                 <node concept="2OqwBi" id="hLGck2SivH" role="37wK5m">
                   <node concept="Xjq3P" id="hLGck2SiiT" role="2Oq$k0">
                     <ref role="1HBi2w" node="hLGck2ECn8" resolve="Outer" />
@@ -37413,7 +37413,7 @@
               <node concept="2ShNRf" id="hLGck2FmMa" role="3clFbG">
                 <node concept="1pGfFk" id="hLGck2FBCA" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="hLGck1Gtov" resolve="Nested" />
+                  <ref role="37wK5l" node="hLGck1Gtov" resolve="Outer.Nested" />
                 </node>
               </node>
             </node>
@@ -37421,7 +37421,7 @@
               <node concept="2ShNRf" id="hLGck2FBJC" role="3clFbG">
                 <node concept="1pGfFk" id="hLGck2FBJD" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="hLGck2F58o" resolve="Nested" />
+                  <ref role="37wK5l" node="hLGck2F58o" resolve="Outer.Nested" />
                   <node concept="3clFbT" id="hLGck2FCKR" role="37wK5m">
                     <property role="3clFbU" value="true" />
                   </node>
@@ -37432,7 +37432,7 @@
               <node concept="2ShNRf" id="hLGck2FBOG" role="3clFbG">
                 <node concept="1pGfFk" id="hLGck2FBOH" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="hLGck2nIDJ" resolve="Nested" />
+                  <ref role="37wK5l" node="hLGck2nIDJ" resolve="Outer.Nested" />
                   <node concept="3cmrfG" id="hLGck2FDlz" role="37wK5m">
                     <property role="3cmrfH" value="10" />
                   </node>
@@ -37443,7 +37443,7 @@
               <node concept="2ShNRf" id="hLGck2FBOS" role="3clFbG">
                 <node concept="1pGfFk" id="hLGck2FBOT" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="hLGck2EPTu" resolve="Nested" />
+                  <ref role="37wK5l" node="hLGck2EPTu" resolve="Outer.Nested" />
                   <node concept="Xl_RD" id="hLGck2FE7a" role="37wK5m">
                     <property role="Xl_RC" value="" />
                   </node>
@@ -37454,7 +37454,7 @@
               <node concept="2ShNRf" id="hLGck2FBP7" role="3clFbG">
                 <node concept="1pGfFk" id="hLGck2FBP8" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="hLGck2EW_7" resolve="Nested" />
+                  <ref role="37wK5l" node="hLGck2EW_7" resolve="Outer.Nested" />
                   <node concept="Xl_RD" id="hLGck2FEij" role="37wK5m">
                     <property role="Xl_RC" value="" />
                   </node>
@@ -37468,7 +37468,7 @@
               <node concept="2ShNRf" id="hLGck2FBPp" role="3clFbG">
                 <node concept="1pGfFk" id="hLGck2FBPq" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="hLGck2Fca1" resolve="Nested" />
+                  <ref role="37wK5l" node="hLGck2Fca1" resolve="Outer.Nested" />
                   <node concept="Xl_RD" id="hLGck2FFx5" role="37wK5m">
                     <property role="Xl_RC" value="" />
                   </node>
@@ -37485,7 +37485,7 @@
               <node concept="2ShNRf" id="hLGck2Skh0" role="3clFbG">
                 <node concept="1pGfFk" id="hLGck2Skh1" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="hLGck2S9$o" resolve="Nested" />
+                  <ref role="37wK5l" node="hLGck2S9$o" resolve="Outer.Nested" />
                   <node concept="Xl_RD" id="hLGck2Skh2" role="37wK5m">
                     <property role="Xl_RC" value="" />
                   </node>

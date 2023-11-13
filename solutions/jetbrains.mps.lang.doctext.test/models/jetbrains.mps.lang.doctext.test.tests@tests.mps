@@ -55,7 +55,7 @@
       <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
         <property id="1068580123138" name="value" index="3clFbU" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -78,7 +78,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="3717301156197626279" name="jetbrains.mps.lang.core.structure.BasePlaceholder" flags="ng" index="3DQ70j">
@@ -121,7 +121,7 @@
             <property role="3oM_SC" value="c" />
           </node>
           <node concept="1lxOXm" id="dX4qbJVBcx" role="1PaTwD">
-            <ref role="2SUGrr" node="dX4qbJV_Eu" resolve="AddWordBeforeEditTestNodeReference" />
+            <ref role="2SUGrr" node="dX4qbJV_Eu" resolve="AddSpaceBeforeTextNodeReference" />
             <node concept="LIFWc" id="dX4qbJVBdA" role="lGtFl">
               <property role="LIFWa" value="0" />
               <property role="OXtK3" value="true" />
@@ -158,7 +158,7 @@
             <property role="3oM_SC" value="" />
           </node>
           <node concept="1lxOXm" id="dX4qbJVA3C" role="1PaTwD">
-            <ref role="2SUGrr" node="dX4qbJV_Eu" resolve="EditTestNodeReference1" />
+            <ref role="2SUGrr" node="dX4qbJV_Eu" resolve="AddSpaceBeforeTextNodeReference" />
             <node concept="LIFWc" id="dX4qbJVBex" role="lGtFl">
               <property role="LIFWa" value="0" />
               <property role="OXtK3" value="true" />
@@ -201,7 +201,7 @@
             <property role="3oM_SC" value="c" />
           </node>
           <node concept="1lxOXm" id="dX4qbJVBtT" role="1PaTwD">
-            <ref role="2SUGrr" node="dX4qbJVBg6" resolve="AddWordAfterTextNodeReference" />
+            <ref role="2SUGrr" node="dX4qbJVBg6" resolve="AddSpaceAfterTextNodeReference" />
             <node concept="LIFWc" id="dX4qbJVByC" role="lGtFl">
               <property role="ZRATv" value="true" />
               <property role="OXtK3" value="true" />
@@ -446,7 +446,7 @@
                 <property role="3oM_SC" value="word" />
               </node>
               <node concept="1lxOXm" id="dX4qbJVE$O" role="1PaTwD">
-                <ref role="2SUGrr" node="dX4qbJVE$D" resolve="BackspaceSpaceBetweenWordAndTextNodeReference1" />
+                <ref role="2SUGrr" node="dX4qbJVE$D" resolve="BackspaceSpaceBetweenWordAndTextNodeReference2" />
                 <node concept="LIFWc" id="dX4qbJVE$P" role="lGtFl">
                   <property role="LIFWa" value="0" />
                   <property role="OXtK3" value="true" />
@@ -478,7 +478,7 @@
                 </node>
               </node>
               <node concept="1lxOXm" id="dX4qbJVE$W" role="1PaTwD">
-                <ref role="2SUGrr" node="dX4qbJVE$D" resolve="BackspaceSpaceBetweenWordAndTextNodeReference1" />
+                <ref role="2SUGrr" node="dX4qbJVE$D" resolve="BackspaceSpaceBetweenWordAndTextNodeReference2" />
               </node>
             </node>
           </node>
@@ -517,7 +517,7 @@
           <node concept="3W_X3N" id="dX4qbJVEPZ" role="3DQ709">
             <node concept="1PaTwC" id="dX4qbJVEQ0" role="2WYp1Y">
               <node concept="1lxOXm" id="dX4qbJVEQ3" role="1PaTwD">
-                <ref role="2SUGrr" node="dX4qbJVEPS" resolve="BackspaceSpaceBetweenWordAndTextNodeReference1" />
+                <ref role="2SUGrr" node="dX4qbJVEPS" resolve="BackspaceSpaceBetweenTextNodeReferences" />
               </node>
               <node concept="1lxOXm" id="dX4qbJVET9" role="1PaTwD">
                 <ref role="2SUGrr" node="dX4qbJVEPS" resolve="BackspaceSpaceBetweenTextNodeReferences" />
@@ -589,7 +589,7 @@
             <node concept="1PaTwC" id="dX4qbJVFs1" role="2WYp1Y">
               <node concept="tu5oc" id="dX4qbJVFv2" role="1PaTwD" />
               <node concept="1lxOXm" id="dX4qbJVFs3" role="1PaTwD">
-                <ref role="2SUGrr" node="dX4qbJVFrT" resolve="BackspaceSpaceBetweenWordAndTextNodeReference2" />
+                <ref role="2SUGrr" node="dX4qbJVFrT" resolve="BackspaceSpaceBetweenWrapperAndTextNodeReference" />
                 <node concept="LIFWc" id="dX4qbJVFs4" role="lGtFl">
                   <property role="LIFWa" value="0" />
                   <property role="OXtK3" value="true" />
@@ -728,7 +728,7 @@
                 </node>
               </node>
               <node concept="1lxOXm" id="dX4qbJVHMS" role="1PaTwD">
-                <ref role="2SUGrr" node="dX4qbJVHME" resolve="DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference" />
+                <ref role="2SUGrr" node="dX4qbJVHME" resolve="DeleteSpaceBetweenTextNodeReferenceAndTextNodeReference2" />
               </node>
             </node>
           </node>

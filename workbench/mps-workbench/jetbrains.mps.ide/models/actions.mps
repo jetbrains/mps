@@ -44403,7 +44403,7 @@
                         <ref role="37wK5l" to="gspm:~BalloonBuilder.createBalloon()" resolve="createBalloon" />
                       </node>
                       <node concept="37vLTw" id="3GM_nagT_RU" role="2Oq$k0">
-                        <ref role="3cqZAo" node="3UKYyL8N77_" resolve="builder" />
+                        <ref role="3cqZAo" node="3UKYyL8N77_" resolve="bb" />
                       </node>
                     </node>
                     <node concept="3uibUv" id="C3dcc38Tef" role="1tU5fm">
@@ -46902,7 +46902,7 @@
             <node concept="2OqwBi" id="2y1ghYv1FAA" role="37wK5m">
               <node concept="2WthIp" id="2y1ghYv1EKq" role="2Oq$k0" />
               <node concept="1DTwFV" id="2y1ghYv1Hii" role="2OqNvi">
-                <ref role="2WH_rO" node="2hI9OxsGUDT" resolve="editor_comp" />
+                <ref role="2WH_rO" node="2hI9OxsGUDT" resolve="component" />
               </node>
             </node>
           </node>

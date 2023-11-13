@@ -40619,7 +40619,7 @@
         <ref role="3LEDTV" node="1kni7gHztOB" resolve="jetbrains.mps.lang.core.doc" />
       </node>
       <node concept="3LEDTM" id="6_DCGR5tuKp" role="3LEDUa">
-        <ref role="3LEDTN" node="6_DCGR5trr0" resolve="jetbrains.mps.lang.descriptor.doc.aspects.msd" />
+        <ref role="3LEDTN" node="6_DCGR5trr0" resolve="jetbrains.mps.lang.descriptor.doc.aspects" />
       </node>
       <node concept="3LEDTy" id="6_DCGR5tWrh" role="3LEDUa">
         <ref role="3LEDTV" node="1kni7gHzp0E" resolve="jetbrains.mps.lang.doctext" />

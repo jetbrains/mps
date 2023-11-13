@@ -2651,7 +2651,7 @@
               <node concept="2ShNRf" id="3Ov4nq1XJ3u" role="3cqZAk">
                 <node concept="1pGfFk" id="3Ov4nq1XKEv" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="3Ov4nq1X99v" resolve="IntroduceElementStrategy" />
+                  <ref role="37wK5l" node="3Ov4nq1X99v" resolve="NewElementStrategyFactory.IntroduceElementStrategy" />
                   <node concept="1PxgMI" id="3Ov4nq1XL44" role="37wK5m">
                     <node concept="chp4Y" id="3Ov4nq1XL8X" role="3oSUPX">
                       <ref role="cht4Q" to="zqge:8D0iRqSPW4" resolve="Word" />
@@ -3865,7 +3865,7 @@
         <node concept="3cqZAl" id="3Ov4nq1X99w" role="3clF45" />
         <node concept="3clFbS" id="3Ov4nq1X99y" role="3clF47">
           <node concept="XkiVB" id="3Ov4nq1X9Do" role="3cqZAp">
-            <ref role="37wK5l" node="5MT8pi2Fl6s" resolve="SplitWordStrategy" />
+            <ref role="37wK5l" node="5MT8pi2Fl6s" resolve="NewElementStrategyFactory.SplitWordStrategy" />
             <node concept="37vLTw" id="3Ov4nq1X9L7" role="37wK5m">
               <ref role="3cqZAo" node="3Ov4nq1X9eB" resolve="word" />
             </node>
@@ -4524,7 +4524,7 @@
         <node concept="3cqZAl" id="6ooKqSTUdHl" role="3clF45" />
       </node>
       <node concept="3uibUv" id="3Ov4nq1X8BW" role="1zkMxy">
-        <ref role="3uigEE" node="5MT8pi2Fl6k" resolve="SplitWordStrategy" />
+        <ref role="3uigEE" node="5MT8pi2Fl6k" resolve="NewElementStrategyFactory.SplitWordStrategy" />
       </node>
     </node>
     <node concept="2tJIrI" id="5MT8pi2EU83" role="jymVt" />

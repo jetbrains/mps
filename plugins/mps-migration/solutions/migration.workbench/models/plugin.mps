@@ -8539,7 +8539,7 @@
         <node concept="3uibUv" id="6lgfg0ggzFr" role="3clF45">
           <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
           <node concept="3uibUv" id="6lgfg0ggzFs" role="11_B2D">
-            <ref role="3uigEE" to="bdll:~ProjectMigrationWithOptions$Option" resolve="Option" />
+            <ref role="3uigEE" to="bdll:~ProjectMigrationWithOptions$Option" resolve="ProjectMigrationWithOptions.Option" />
           </node>
         </node>
         <node concept="3clFbS" id="6lgfg0ggzFt" role="3clF47">
@@ -8549,11 +8549,11 @@
                 <node concept="2ShNRf" id="6lgfg0gid5I" role="3cqZAk">
                   <node concept="Tc6Ow" id="6lgfg0gieIZ" role="2ShVmc">
                     <node concept="3uibUv" id="6lgfg0gihlQ" role="HW$YZ">
-                      <ref role="3uigEE" to="bdll:~ProjectMigrationWithOptions$Option" resolve="Option" />
+                      <ref role="3uigEE" to="bdll:~ProjectMigrationWithOptions$Option" resolve="ProjectMigrationWithOptions.Option" />
                     </node>
                     <node concept="2ShNRf" id="6lgfg0giouk" role="HW$Y0">
                       <node concept="1pGfFk" id="6lgfg0girip" role="2ShVmc">
-                        <ref role="37wK5l" to="bdll:~ProjectMigrationWithOptions$BooleanOption.&lt;init&gt;(java.lang.String,java.lang.String,boolean)" resolve="BooleanOption" />
+                        <ref role="37wK5l" to="bdll:~ProjectMigrationWithOptions$BooleanOption.&lt;init&gt;(java.lang.String,java.lang.String,boolean)" resolve="ProjectMigrationWithOptions.BooleanOption" />
                         <node concept="37vLTw" id="6lgfg0gisLd" role="37wK5m">
                           <ref role="3cqZAo" node="1aQVcc3Q3sR" resolve="myId" />
                         </node>
@@ -10723,7 +10723,7 @@
                       <property role="2bfB8j" value="true" />
                       <property role="373rjd" value="true" />
                       <ref role="1Y3XeK" to="z1c4:~ProjectManagerListener" resolve="ProjectManagerListener" />
-                      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                       <node concept="3Tm1VV" id="2LuYTKdSQaY" role="1B3o_S" />
                       <node concept="3clFb_" id="2LuYTKdSQaZ" role="jymVt">
                         <property role="TrG5h" value="projectCreated" />
@@ -10755,7 +10755,7 @@
                           </node>
                         </node>
                         <node concept="2AHcQZ" id="2LuYTKdSQbb" role="2AJF6D">
-                          <ref role="2AI5Lk" to="wyt6:~Override" />
+                          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                         </node>
                       </node>
                     </node>
