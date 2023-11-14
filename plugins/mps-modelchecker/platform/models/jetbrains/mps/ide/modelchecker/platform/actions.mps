@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model ref="r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)">
   <persistence version="9" />
-  <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
@@ -69,14 +68,14 @@
     <import index="tft2" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.impl.plan(MPS.Generator/)" />
     <import index="ap4t" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator(MPS.Generator/)" />
     <import index="r99j" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)" />
-    <import index="ospv" ref="r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)" />
     <import index="xygl" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.progress(MPS.IDEA/)" />
-    <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
-    <import index="mk90" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.progress(MPS.Platform/)" />
+    <import index="mk8z" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.progress(MPS.Platform/)" />
+    <import index="mk90" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="xzav" ref="r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)" />
     <import index="u3gh" ref="r:38f1070b-d1ae-4036-84ce-ffb866741b84(jetbrains.mps.workbench.progress)" />
+    <import index="ospv" ref="r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)" />
     <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
-    <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" implicit="true" />
+    <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="r791" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing.text(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -2315,6 +2314,9 @@
                   <node concept="3clFbH" id="3M1NIYvQr3d" role="3cqZAp" />
                   <node concept="3clFbF" id="6bXa3O$c9T5" role="3cqZAp">
                     <node concept="2OqwBi" id="6bXa3O$c3L_" role="3clFbG">
+                      <node concept="37vLTw" id="3LCCkArzSg9" role="2Oq$k0">
+                        <ref role="3cqZAo" node="3LCCkArzSg0" resolve="abstractChecker" />
+                      </node>
                       <node concept="liA8E" id="6bXa3O$c4$3" role="2OqNvi">
                         <ref role="37wK5l" to="wsw7:4SGXHKgYYAZ" resolve="check" />
                         <node concept="37vLTw" id="6MDTP4X4kNb" role="37wK5m">
@@ -2329,9 +2331,6 @@
                         <node concept="37vLTw" id="kXqcYjWupb" role="37wK5m">
                           <ref role="3cqZAo" node="3etVqSRKzzx" resolve="monitor" />
                         </node>
-                      </node>
-                      <node concept="37vLTw" id="3LCCkArzSg9" role="2Oq$k0">
-                        <ref role="3cqZAo" node="3LCCkArzSg0" resolve="abstractChecker" />
                       </node>
                     </node>
                   </node>
@@ -3265,13 +3264,13 @@
                               <node concept="2ShNRf" id="B5MI4_t2mg" role="3K4E3e">
                                 <node concept="1pGfFk" id="B5MI4_tf5r" role="2ShVmc">
                                   <property role="373rjd" value="true" />
-                                  <ref role="37wK5l" to="mk8z:~EmptyProgressMonitor.&lt;init&gt;()" resolve="EmptyProgressMonitor" />
+                                  <ref role="37wK5l" to="mk90:~EmptyProgressMonitor.&lt;init&gt;()" resolve="EmptyProgressMonitor" />
                                 </node>
                               </node>
                               <node concept="2ShNRf" id="B5MI4_tgTb" role="3K4GZi">
                                 <node concept="1pGfFk" id="B5MI4_tpfR" role="2ShVmc">
                                   <property role="373rjd" value="true" />
-                                  <ref role="37wK5l" to="mk90:~ProgressMonitorAdapter.&lt;init&gt;(com.intellij.openapi.progress.ProgressIndicator)" resolve="ProgressMonitorAdapter" />
+                                  <ref role="37wK5l" to="mk8z:~ProgressMonitorAdapter.&lt;init&gt;(com.intellij.openapi.progress.ProgressIndicator)" resolve="ProgressMonitorAdapter" />
                                   <node concept="37vLTw" id="B5MI4_tr93" role="37wK5m">
                                     <ref role="3cqZAo" node="B5MI4_sSW_" resolve="pi" />
                                   </node>
@@ -6980,15 +6979,15 @@
         </node>
         <node concept="3clFbF" id="2AAgPT$dvbn" role="3cqZAp">
           <node concept="37vLTI" id="2AAgPT$dvbo" role="3clFbG">
-            <node concept="37vLTw" id="2AAgPT$dvbr" role="37vLTJ">
-              <ref role="3cqZAo" node="2K4NeDxB5Kx" resolve="myProject" />
-            </node>
             <node concept="2YIFZM" id="aCNsjIU7tY" role="37vLTx">
               <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
               <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
               <node concept="37vLTw" id="aCNsjIU7tZ" role="37wK5m">
                 <ref role="3cqZAo" node="2AAgPT$dvdu" resolve="project" />
               </node>
+            </node>
+            <node concept="37vLTw" id="2AAgPT$dvbr" role="37vLTJ">
+              <ref role="3cqZAo" node="2K4NeDxB5Kx" resolve="myProject" />
             </node>
           </node>
         </node>
