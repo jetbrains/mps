@@ -75,7 +75,7 @@ public final class BuildAspect_MpsTestModules__BehaviorDescriptor extends BaseBH
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_AbstractModule$FZ) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildMps_Group$Jc)) {
-      SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.BuildProject$ae);
+      SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.BuildProject$ae);
       if (project != null) {
         return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, kind, LINKS.parts$mGDj, ((int) 0));
       }
