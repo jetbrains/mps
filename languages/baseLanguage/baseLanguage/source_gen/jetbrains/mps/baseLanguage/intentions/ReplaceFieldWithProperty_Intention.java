@@ -23,7 +23,15 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.project.GlobalScope;
+import jetbrains.mps.ide.findusages.model.SearchResults;
+import jetbrains.mps.ide.findusages.view.FindUtils;
+import jetbrains.mps.progress.EmptyProgressMonitor;
+import java.util.List;
+import jetbrains.mps.ide.findusages.model.SearchResult;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -110,6 +118,75 @@ public final class ReplaceFieldWithProperty_Intention extends AbstractIntentionD
         }
       }
 
+      GlobalScope projectRepository = new GlobalScope(SNodeOperations.getModel(node).getRepository());
+      // Direct field usages search
+      SearchResults propResults = FindUtils.getSearchResults(new EmptyProgressMonitor(), node, projectRepository, "jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder");
+      List<SearchResult<Object>> usages = propResults.getNotNullResults();
+      for (SearchResult<Object> fieldUsage : ListSequence.fromList(usages)) {
+        Object o = fieldUsage.getObject();
+        if (o instanceof SNode) {
+          SNode ref = (SNode) o;
+          if (SNodeOperations.getModel(ref) instanceof EditableSModel) {
+            if (SNodeOperations.isInstanceOf(ref, CONCEPTS.VariableReference$TC)) {
+              SNode propRef = SNodeFactoryOperations.replaceWithNewChild(ref, CONCEPTS.LocalPropertyReference$x2);
+              SLinkOperations.setTarget(propRef, LINKS.property$n7$M, property);
+            }
+            if (SNodeOperations.isInstanceOf(ref, CONCEPTS.FieldReferenceOperation$fU)) {
+              SNode propRef = SNodeFactoryOperations.replaceWithNewChild(ref, CONCEPTS.PropertyReference$hL);
+              SLinkOperations.setTarget(propRef, LINKS.property$Bjg2, property);
+            }
+          }
+        }
+      }
+
+      // Getter usages search
+      SearchResults getterResults = FindUtils.getSearchResults(new EmptyProgressMonitor(), getterMethod, projectRepository, "jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder");
+      List<SearchResult<Object>> getterUsages = getterResults.getNotNullResults();
+      for (SearchResult<Object> getterUsage : ListSequence.fromList(getterUsages)) {
+        Object o = getterUsage.getObject();
+        if (o instanceof SNode) {
+          SNode ref = (SNode) o;
+          if (SNodeOperations.getModel(ref) instanceof EditableSModel) {
+            if (SNodeOperations.isInstanceOf(ref, CONCEPTS.LocalMethodCall$zT)) {
+              SNode propRef = SNodeFactoryOperations.replaceWithNewChild(ref, CONCEPTS.LocalPropertyReference$x2);
+              SLinkOperations.setTarget(propRef, LINKS.property$n7$M, property);
+            }
+            if (SNodeOperations.isInstanceOf(ref, CONCEPTS.InstanceMethodCallOperation$uu)) {
+              SNode propRef = SNodeFactoryOperations.replaceWithNewChild(ref, CONCEPTS.PropertyReference$hL);
+              SLinkOperations.setTarget(propRef, LINKS.property$Bjg2, property);
+            }
+          }
+        }
+      }
+
+      // Setter usages search
+      SearchResults setterResults = FindUtils.getSearchResults(new EmptyProgressMonitor(), setterMethod, projectRepository, "jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder");
+      List<SearchResult<Object>> setterUsages = setterResults.getNotNullResults();
+      for (SearchResult<Object> setterUsage : ListSequence.fromList(setterUsages)) {
+        Object o = setterUsage.getObject();
+        if (o instanceof SNode) {
+          SNode ref = (SNode) o;
+          if (SNodeOperations.getModel(ref) instanceof EditableSModel) {
+            if (SNodeOperations.isInstanceOf(ref, CONCEPTS.LocalMethodCall$zT)) {
+              SNode arg = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(ref, CONCEPTS.LocalMethodCall$zT), LINKS.actualArgument$pzdx)).getElement(0);
+              SNode propRef = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalPropertyReference$x2, null);
+              SLinkOperations.setTarget(propRef, LINKS.property$n7$M, property);
+              SNodeOperations.replaceWithAnother(ref, createAssignmentExpression_vokgnk_a0a3a0a1a1a72a0(propRef, arg));
+            }
+            if (SNodeOperations.isInstanceOf(ref, CONCEPTS.InstanceMethodCallOperation$uu)) {
+              SNode arg = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(ref, CONCEPTS.InstanceMethodCallOperation$uu), LINKS.actualArgument$pzdx)).first();
+              SNode dot = SNodeOperations.as(SNodeOperations.getParent(ref), CONCEPTS.DotExpression$yW);
+              if (dot == null) {
+                break;
+              }
+              SNode propRef = SNodeFactoryOperations.replaceWithNewChild(ref, CONCEPTS.PropertyReference$hL);
+              SLinkOperations.setTarget(propRef, LINKS.property$Bjg2, property);
+              SNodeOperations.replaceWithAnother(dot, createAssignmentExpression_vokgnk_a0a5a1a1a1a72a0(dot, arg));
+            }
+          }
+        }
+      }
+
       SNodeOperations.deleteNode(node);
       SNodeOperations.deleteNode(getterMethod);
       SNodeOperations.deleteNode(setterMethod);
@@ -134,6 +211,18 @@ public final class ReplaceFieldWithProperty_Intention extends AbstractIntentionD
     }
 
   }
+  private static SNode createAssignmentExpression_vokgnk_a0a3a0a1a1a72a0(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.AssignmentExpression$SE);
+    n0.forChild(LINKS.lValue$splI).initNode(p0, CONCEPTS.Expression$mB, true);
+    n0.forChild(LINKS.rValue$spNK).initNode(p1, CONCEPTS.Expression$mB, true);
+    return n0.getResult();
+  }
+  private static SNode createAssignmentExpression_vokgnk_a0a5a1a1a1a72a0(SNode p0, SNode p1) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.AssignmentExpression$SE);
+    n0.forChild(LINKS.lValue$splI).initNode(p0, CONCEPTS.Expression$mB, true);
+    n0.forChild(LINKS.rValue$spNK).initNode(p1, CONCEPTS.Expression$mB, true);
+    return n0.getResult();
+  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
@@ -148,6 +237,14 @@ public final class ReplaceFieldWithProperty_Intention extends AbstractIntentionD
     /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
     /*package*/ static final SConcept ValueParameter$_c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117dd047c70L, "jetbrains.mps.baseLanguage.structure.ValueParameter");
     /*package*/ static final SConcept PropertyValueReference$iy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2463999e524f3bf5L, "jetbrains.mps.baseLanguage.structure.PropertyValueReference");
+    /*package*/ static final SConcept LocalPropertyReference$x2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, "jetbrains.mps.baseLanguage.structure.LocalPropertyReference");
+    /*package*/ static final SConcept PropertyReference$hL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b821eaaeL, "jetbrains.mps.baseLanguage.structure.PropertyReference");
+    /*package*/ static final SConcept FieldReferenceOperation$fU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
+    /*package*/ static final SConcept LocalMethodCall$zT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
+    /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept AssignmentExpression$SE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 
   private static final class LINKS {
@@ -167,6 +264,11 @@ public final class ReplaceFieldWithProperty_Intention extends AbstractIntentionD
     /*package*/ static final SContainmentLink statementList$HQ20 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b9245fc5L, 0x11800267618L, "statementList");
     /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
     /*package*/ static final SReferenceLink owningProperty$4Lzk = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2463999e524f3bf5L, 0x2463999e5366cff1L, "owningProperty");
+    /*package*/ static final SReferenceLink property$n7$M = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, 0x515d7a8d927e9fb4L, "property");
+    /*package*/ static final SReferenceLink property$Bjg2 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b821eaaeL, 0x117b823ed57L, "property");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rValue$spNK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 
   private static final class PROPS {

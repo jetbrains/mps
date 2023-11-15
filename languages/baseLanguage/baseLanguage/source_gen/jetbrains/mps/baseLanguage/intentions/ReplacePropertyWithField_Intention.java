@@ -22,6 +22,14 @@ import jetbrains.mps.baseLanguage.behavior.Property__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.behavior.IMethodLike__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.project.GlobalScope;
+import jetbrains.mps.ide.findusages.model.SearchResults;
+import jetbrains.mps.ide.findusages.view.FindUtils;
+import jetbrains.mps.progress.EmptyProgressMonitor;
+import java.util.List;
+import jetbrains.mps.ide.findusages.model.SearchResult;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import java.util.Objects;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -85,8 +93,9 @@ public final class ReplacePropertyWithField_Intention extends AbstractIntentionD
 
       }
 
+      SNode setter = null;
       if ((boolean) Property__BehaviorDescriptor.hasSetter_idhEwIJ0S.invoke(node)) {
-        SNode setter = SNodeOperations.insertNextSiblingChild(getter, SNodeFactoryOperations.createNewNode(CONCEPTS.InstanceMethodDeclaration$39, null));
+        setter = SNodeOperations.insertNextSiblingChild(getter, SNodeFactoryOperations.createNewNode(CONCEPTS.InstanceMethodDeclaration$39, null));
         SLinkOperations.setTarget(setter, LINKS.visibility$Yyua, Property__BehaviorDescriptor.getSetterVisibility_idhEwIJ0k.invoke(node));
         SPropertyOperations.assign(setter, PROPS.name$MnvL, Property__BehaviorDescriptor.getSetterMethodName_idhEwIJ0b.invoke(node));
         SLinkOperations.setTarget(setter, LINKS.returnType$5xoi, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")));
@@ -110,6 +119,37 @@ public final class ReplacePropertyWithField_Intention extends AbstractIntentionD
             SNode ref = SNodeFactoryOperations.replaceWithNewChild(it, CONCEPTS.VariableReference$TC);
             SLinkOperations.setTarget(ref, LINKS.variableDeclaration$N1XG, p);
           });
+        }
+      }
+
+      // Replace property usages with getters and setters
+      GlobalScope projectRepository = new GlobalScope(SNodeOperations.getModel(node).getRepository());
+      SearchResults results = FindUtils.getSearchResults(new EmptyProgressMonitor(), node, projectRepository, "jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder");
+      List<SearchResult<Object>> usages = results.getNotNullResults();
+      for (SearchResult<Object> propertyUsage : ListSequence.fromList(usages)) {
+        Object o = propertyUsage.getObject();
+        if (o instanceof SNode) {
+          SNode ref = (SNode) o;
+          if (SNodeOperations.getModel(ref) instanceof EditableSModel) {
+            if (SNodeOperations.isInstanceOf(ref, CONCEPTS.LocalPropertyReference$x2)) {
+              SNode varRef = SNodeFactoryOperations.replaceWithNewChild(ref, CONCEPTS.VariableReference$TC);
+              SLinkOperations.setTarget(varRef, LINKS.variableDeclaration$N1XG, field);
+            }
+            if (SNodeOperations.isInstanceOf(ref, CONCEPTS.PropertyReference$hL)) {
+              if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ref), CONCEPTS.DotExpression$yW) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(ref)), CONCEPTS.AssignmentExpression$SE) && Objects.equals(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(ref)), CONCEPTS.AssignmentExpression$SE), LINKS.lValue$splI), SNodeOperations.getParent(ref)) && (setter != null)) {
+                SNode dot = SNodeOperations.as(SNodeOperations.getParent(ref), CONCEPTS.DotExpression$yW);
+                SNode assign = SNodeOperations.as(SNodeOperations.getParent(dot), CONCEPTS.AssignmentExpression$SE);
+                SNode rValue = SLinkOperations.getTarget(assign, LINKS.rValue$spNK);
+                SNodeOperations.replaceWithAnother(assign, dot);
+                SNode call = SNodeFactoryOperations.replaceWithNewChild(ref, CONCEPTS.InstanceMethodCallOperation$uu);
+                SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$pyYw, setter);
+                ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$pzdx)).addElement(rValue);
+              } else {
+                SNode call = SNodeFactoryOperations.replaceWithNewChild(ref, CONCEPTS.InstanceMethodCallOperation$uu);
+                SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$pyYw, getter);
+              }
+            }
+          }
         }
       }
 
@@ -150,6 +190,10 @@ public final class ReplacePropertyWithField_Intention extends AbstractIntentionD
     /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
     /*package*/ static final SConcept AssignmentExpression$SE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
     /*package*/ static final SConcept ValueParameter$_c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117dd047c70L, "jetbrains.mps.baseLanguage.structure.ValueParameter");
+    /*package*/ static final SConcept LocalPropertyReference$x2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, "jetbrains.mps.baseLanguage.structure.LocalPropertyReference");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept PropertyReference$hL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b821eaaeL, "jetbrains.mps.baseLanguage.structure.PropertyReference");
   }
 
   private static final class LINKS {
@@ -167,6 +211,8 @@ public final class ReplacePropertyWithField_Intention extends AbstractIntentionD
     /*package*/ static final SContainmentLink expression$5L7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
     /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
     /*package*/ static final SContainmentLink rValue$spNK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class PROPS {
