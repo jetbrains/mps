@@ -687,7 +687,7 @@
       <node id="2566197375814061746" at="137,0,154,0" concept="8" trace="updateTypeVariables#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMMethod;)V" />
       <node id="2566197375814062408" at="199,12,216,7" concept="0" />
       <node id="2566197375814062809" at="271,0,288,0" concept="8" trace="updateInstanceMethods#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMClass;)V" />
-      <node id="5122318299906072508" at="288,0,305,0" concept="8" trace="updateStaticMethods#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMClass;Ljetbrains/mps/stubs/javastub/classpath/ClassifierKind;)V" />
+      <node id="5122318299906072508" at="288,0,305,0" concept="8" trace="updateStaticMethods#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMClass;Ljetbrains/mps/baseLanguage/javastub/ClassifierKind;)V" />
       <node id="2566197375814062404" at="196,7,216,7" concept="7" />
       <node id="816097550962091245" at="242,0,262,7" concept="0" />
       <node id="5122318299906072330" at="305,0,332,0" concept="8" trace="updateBaseMethod#(Ljetbrains/mps/baseLanguage/javastub/asm/ASMMethod;)V" />

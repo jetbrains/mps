@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
-import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
+import jetbrains.mps.baseLanguage.javastub.ClassifierKind;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMTypeVariable;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMFormalTypeParameter;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMType;

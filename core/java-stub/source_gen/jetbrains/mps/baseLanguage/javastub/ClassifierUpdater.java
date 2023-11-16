@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.java.stub.ReferenceFactory;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMClass;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;

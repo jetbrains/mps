@@ -10,13 +10,13 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
   <imports>
     <import index="45y3" ref="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
-    <import index="3j2" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.stubs.javastub.classpath(MPS.Core/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
@@ -43,7 +43,7 @@
     <import index="mm0s" ref="eb57df31-1cf1-45a8-9e5c-fb583b442849/java:org.eclipse.jdt.internal.compiler.problem(Eclipse.ECJ/)" />
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
-    <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
+    <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -111,6 +111,9 @@
       </concept>
       <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
         <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
+      </concept>
+      <concept id="1083245097125" name="jetbrains.mps.baseLanguage.structure.EnumClass" flags="ig" index="Qs71p">
+        <child id="1083245396908" name="enumConstant" index="Qtgdg" />
       </concept>
       <concept id="1083245299891" name="jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration" flags="ig" index="QsSxf" />
       <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
@@ -2750,12 +2753,12 @@
             <property role="TrG5h" value="kind" />
             <property role="3TUv4t" value="true" />
             <node concept="3uibUv" id="3Eq_PkM82db" role="1tU5fm">
-              <ref role="3uigEE" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+              <ref role="3uigEE" node="6i5nc29sCa5" resolve="ClassifierKind" />
             </node>
-            <node concept="2YIFZM" id="3Eq_PkM82dc" role="33vP2m">
-              <ref role="1Pybhc" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
-              <ref role="37wK5l" to="3j2:~ClassifierKind.getClassifierKind(org.jetbrains.org.objectweb.asm.ClassReader)" resolve="getClassifierKind" />
-              <node concept="37vLTw" id="3Eq_PkM83z6" role="37wK5m">
+            <node concept="2YIFZM" id="6i5nc29tl$2" role="33vP2m">
+              <ref role="37wK5l" node="6i5nc29sCak" resolve="getClassifierKind" />
+              <ref role="1Pybhc" node="6i5nc29sCa5" resolve="ClassifierKind" />
+              <node concept="37vLTw" id="6i5nc29tl$3" role="37wK5m">
                 <ref role="3cqZAo" node="3Eq_PkM71kX" resolve="myClassReader" />
               </node>
             </node>
@@ -3025,8 +3028,8 @@
           </node>
           <node concept="3KbdKl" id="3Eq_PkM82d_" role="3KbHQx">
             <node concept="Rm8GO" id="3Eq_PkM82dA" role="3Kbmr1">
-              <ref role="Rm8GQ" to="3j2:~ClassifierKind.CLASS" resolve="CLASS" />
-              <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+              <ref role="Rm8GQ" node="6i5nc29sCa8" resolve="CLASS" />
+              <ref role="1Px2BO" node="6i5nc29sCa5" resolve="ClassifierKind" />
             </node>
             <node concept="3clFbS" id="3Eq_PkM82dB" role="3Kbo56">
               <node concept="3clFbF" id="3Eq_PkM82dC" role="3cqZAp">
@@ -3129,8 +3132,8 @@
           </node>
           <node concept="3KbdKl" id="3Eq_PkM82dK" role="3KbHQx">
             <node concept="Rm8GO" id="3Eq_PkM82dL" role="3Kbmr1">
-              <ref role="Rm8GQ" to="3j2:~ClassifierKind.INTERFACE" resolve="INTERFACE" />
-              <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+              <ref role="Rm8GQ" node="6i5nc29sCaa" resolve="INTERFACE" />
+              <ref role="1Px2BO" node="6i5nc29sCa5" resolve="ClassifierKind" />
             </node>
             <node concept="3clFbS" id="3Eq_PkM82dM" role="3Kbo56">
               <node concept="3clFbF" id="3Eq_PkM82dN" role="3cqZAp">
@@ -3156,8 +3159,8 @@
           </node>
           <node concept="3KbdKl" id="3Eq_PkM82dV" role="3KbHQx">
             <node concept="Rm8GO" id="3Eq_PkM82dW" role="3Kbmr1">
-              <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
-              <ref role="Rm8GQ" to="3j2:~ClassifierKind.ENUM" resolve="ENUM" />
+              <ref role="1Px2BO" node="6i5nc29sCa5" resolve="ClassifierKind" />
+              <ref role="Rm8GQ" node="6i5nc29sCae" resolve="ENUM" />
             </node>
             <node concept="3clFbS" id="3Eq_PkM82dX" role="3Kbo56">
               <node concept="3clFbF" id="3Eq_PkM82dY" role="3cqZAp">
@@ -3183,8 +3186,8 @@
           </node>
           <node concept="3KbdKl" id="3Eq_PkM82e6" role="3KbHQx">
             <node concept="Rm8GO" id="3Eq_PkM82e7" role="3Kbmr1">
-              <ref role="Rm8GQ" to="3j2:~ClassifierKind.ANNOTATIONS" resolve="ANNOTATIONS" />
-              <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+              <ref role="Rm8GQ" node="6i5nc29sCac" resolve="ANNOTATIONS" />
+              <ref role="1Px2BO" node="6i5nc29sCa5" resolve="ClassifierKind" />
             </node>
             <node concept="3clFbS" id="3Eq_PkM82e8" role="3Kbo56">
               <node concept="3clFbF" id="3Eq_PkM82e9" role="3cqZAp">
@@ -4578,7 +4581,7 @@
           <node concept="3cpWsn" id="2qqFBg4QxVc" role="3cpWs9">
             <property role="TrG5h" value="kind" />
             <node concept="3uibUv" id="2qqFBg4QxVd" role="1tU5fm">
-              <ref role="3uigEE" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+              <ref role="3uigEE" node="6i5nc29sCa5" resolve="ClassifierKind" />
             </node>
             <node concept="2OqwBi" id="2qqFBg4QxVe" role="33vP2m">
               <node concept="37vLTw" id="2qqFBg4QxVf" role="2Oq$k0">
@@ -4610,8 +4613,8 @@
           <node concept="3clFbS" id="2qqFBg4QxVG" role="3Kb1Dw" />
           <node concept="3KbdKl" id="2qqFBg4QxVJ" role="3KbHQx">
             <node concept="Rm8GO" id="2qqFBg4QxVK" role="3Kbmr1">
-              <ref role="Rm8GQ" to="3j2:~ClassifierKind.CLASS" resolve="CLASS" />
-              <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+              <ref role="Rm8GQ" node="6i5nc29sCa8" resolve="CLASS" />
+              <ref role="1Px2BO" node="6i5nc29sCa5" resolve="ClassifierKind" />
             </node>
             <node concept="3clFbS" id="2qqFBg4QxVL" role="3Kbo56">
               <node concept="3clFbF" id="2qqFBg4QxVX" role="3cqZAp">
@@ -4632,8 +4635,8 @@
           </node>
           <node concept="3KbdKl" id="2qqFBg4QxW2" role="3KbHQx">
             <node concept="Rm8GO" id="2qqFBg4QxW3" role="3Kbmr1">
-              <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
-              <ref role="Rm8GQ" to="3j2:~ClassifierKind.INTERFACE" resolve="INTERFACE" />
+              <ref role="1Px2BO" node="6i5nc29sCa5" resolve="ClassifierKind" />
+              <ref role="Rm8GQ" node="6i5nc29sCaa" resolve="INTERFACE" />
             </node>
             <node concept="3clFbS" id="2qqFBg4QxW4" role="3Kbo56">
               <node concept="3clFbF" id="2qqFBg4QxWg" role="3cqZAp">
@@ -4654,8 +4657,8 @@
           </node>
           <node concept="3KbdKl" id="2qqFBg4QxWl" role="3KbHQx">
             <node concept="Rm8GO" id="2qqFBg4QxWm" role="3Kbmr1">
-              <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
-              <ref role="Rm8GQ" to="3j2:~ClassifierKind.ENUM" resolve="ENUM" />
+              <ref role="1Px2BO" node="6i5nc29sCa5" resolve="ClassifierKind" />
+              <ref role="Rm8GQ" node="6i5nc29sCae" resolve="ENUM" />
             </node>
             <node concept="3clFbS" id="2qqFBg4QxWn" role="3Kbo56">
               <node concept="3clFbF" id="2qqFBg4QxWz" role="3cqZAp">
@@ -4676,8 +4679,8 @@
           </node>
           <node concept="3KbdKl" id="2qqFBg4QxWC" role="3KbHQx">
             <node concept="Rm8GO" id="2qqFBg4QxWD" role="3Kbmr1">
-              <ref role="Rm8GQ" to="3j2:~ClassifierKind.ANNOTATIONS" resolve="ANNOTATIONS" />
-              <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+              <ref role="Rm8GQ" node="6i5nc29sCac" resolve="ANNOTATIONS" />
+              <ref role="1Px2BO" node="6i5nc29sCa5" resolve="ClassifierKind" />
             </node>
             <node concept="3clFbS" id="2qqFBg4QxWE" role="3Kbo56">
               <node concept="3clFbF" id="2qqFBg4QxWQ" role="3cqZAp">
@@ -16409,6 +16412,159 @@
       <node concept="37vLTG" id="3rVH_CAoVTo" role="3clF46">
         <property role="TrG5h" value="shortName" />
         <node concept="17QB3L" id="3rVH_CAoVTn" role="1tU5fm" />
+      </node>
+    </node>
+  </node>
+  <node concept="Qs71p" id="6i5nc29sCa5">
+    <property role="TrG5h" value="ClassifierKind" />
+    <property role="2bfB8j" value="true" />
+    <node concept="3Tm1VV" id="6i5nc29sCa6" role="1B3o_S" />
+    <node concept="QsSxf" id="6i5nc29sCa8" role="Qtgdg">
+      <property role="TrG5h" value="CLASS" />
+      <ref role="37wK5l" node="6i5nc29sCah" resolve="ClassifierKind" />
+    </node>
+    <node concept="QsSxf" id="6i5nc29sCaa" role="Qtgdg">
+      <property role="TrG5h" value="INTERFACE" />
+      <ref role="37wK5l" node="6i5nc29sCah" resolve="ClassifierKind" />
+    </node>
+    <node concept="QsSxf" id="6i5nc29sCac" role="Qtgdg">
+      <property role="TrG5h" value="ANNOTATIONS" />
+      <ref role="37wK5l" node="6i5nc29sCah" resolve="ClassifierKind" />
+    </node>
+    <node concept="QsSxf" id="6i5nc29sCae" role="Qtgdg">
+      <property role="TrG5h" value="ENUM" />
+      <ref role="37wK5l" node="6i5nc29sCah" resolve="ClassifierKind" />
+    </node>
+    <node concept="QsSxf" id="6i5nc29sCag" role="Qtgdg">
+      <property role="TrG5h" value="UNKNOWN" />
+      <ref role="37wK5l" node="6i5nc29sCah" resolve="ClassifierKind" />
+    </node>
+    <node concept="3clFbW" id="6i5nc29sCah" role="jymVt">
+      <node concept="3cqZAl" id="6i5nc29sCai" role="3clF45" />
+      <node concept="3clFbS" id="6i5nc29sCaj" role="3clF47" />
+    </node>
+    <node concept="2YIFZL" id="6i5nc29sCak" role="jymVt">
+      <property role="TrG5h" value="getClassifierKind" />
+      <node concept="37vLTG" id="6i5nc29sCal" role="3clF46">
+        <property role="TrG5h" value="reader" />
+        <node concept="3uibUv" id="6i5nc29sCam" role="1tU5fm">
+          <ref role="3uigEE" to="k8ye:~ClassReader" resolve="ClassReader" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="6i5nc29sCan" role="3clF47">
+        <node concept="3cpWs6" id="6i5nc29sCao" role="3cqZAp">
+          <node concept="1rXfSq" id="6i5nc29sCap" role="3cqZAk">
+            <ref role="37wK5l" node="6i5nc29sCat" resolve="getClassifierKind" />
+            <node concept="2OqwBi" id="6i5nc29t8Xu" role="37wK5m">
+              <node concept="37vLTw" id="6i5nc29t61a" role="2Oq$k0">
+                <ref role="3cqZAo" node="6i5nc29sCal" resolve="reader" />
+              </node>
+              <node concept="liA8E" id="6i5nc29t8Xv" role="2OqNvi">
+                <ref role="37wK5l" to="k8ye:~ClassReader.getAccess()" resolve="getAccess" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="6i5nc29sCas" role="3clF45">
+        <ref role="3uigEE" node="6i5nc29sCa5" resolve="ClassifierKind" />
+      </node>
+    </node>
+    <node concept="2YIFZL" id="6i5nc29sCat" role="jymVt">
+      <property role="TrG5h" value="getClassifierKind" />
+      <node concept="37vLTG" id="6i5nc29sCau" role="3clF46">
+        <property role="TrG5h" value="flag" />
+        <node concept="10Oyi0" id="6i5nc29sCav" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="6i5nc29sCaw" role="3clF47">
+        <node concept="3clFbJ" id="6i5nc29sCax" role="3cqZAp">
+          <node concept="3y3z36" id="6i5nc29sCay" role="3clFbw">
+            <node concept="1eOMI4" id="6i5nc29sCaA" role="3uHU7B">
+              <node concept="pVHWs" id="6i5nc29sCaz" role="1eOMHV">
+                <node concept="37vLTw" id="6i5nc29sCa$" role="3uHU7B">
+                  <ref role="3cqZAo" node="6i5nc29sCau" resolve="flag" />
+                </node>
+                <node concept="10M0yZ" id="6i5nc29t636" role="3uHU7w">
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                  <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_ANNOTATION" resolve="ACC_ANNOTATION" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="6i5nc29sCaB" role="3uHU7w">
+              <property role="3cmrfH" value="0" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="6i5nc29sCaD" role="3clFbx">
+            <node concept="3cpWs6" id="6i5nc29sCaE" role="3cqZAp">
+              <node concept="Rm8GO" id="6i5nc29sCcd" role="3cqZAk">
+                <ref role="1Px2BO" node="6i5nc29sCa5" resolve="ClassifierKind" />
+                <ref role="Rm8GQ" node="6i5nc29sCac" resolve="ANNOTATIONS" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6i5nc29sCaG" role="3cqZAp">
+          <node concept="3y3z36" id="6i5nc29sCaH" role="3clFbw">
+            <node concept="1eOMI4" id="6i5nc29sCaL" role="3uHU7B">
+              <node concept="pVHWs" id="6i5nc29sCaI" role="1eOMHV">
+                <node concept="37vLTw" id="6i5nc29sCaJ" role="3uHU7B">
+                  <ref role="3cqZAo" node="6i5nc29sCau" resolve="flag" />
+                </node>
+                <node concept="10M0yZ" id="6i5nc29t60Y" role="3uHU7w">
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                  <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_ENUM" resolve="ACC_ENUM" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="6i5nc29sCaM" role="3uHU7w">
+              <property role="3cmrfH" value="0" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="6i5nc29sCaO" role="3clFbx">
+            <node concept="3cpWs6" id="6i5nc29sCaP" role="3cqZAp">
+              <node concept="Rm8GO" id="6i5nc29sCcl" role="3cqZAk">
+                <ref role="1Px2BO" node="6i5nc29sCa5" resolve="ClassifierKind" />
+                <ref role="Rm8GQ" node="6i5nc29sCae" resolve="ENUM" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6i5nc29sCaR" role="3cqZAp">
+          <node concept="3y3z36" id="6i5nc29sCaS" role="3clFbw">
+            <node concept="1eOMI4" id="6i5nc29sCaW" role="3uHU7B">
+              <node concept="pVHWs" id="6i5nc29sCaT" role="1eOMHV">
+                <node concept="37vLTw" id="6i5nc29sCaU" role="3uHU7B">
+                  <ref role="3cqZAo" node="6i5nc29sCau" resolve="flag" />
+                </node>
+                <node concept="10M0yZ" id="6i5nc29t62U" role="3uHU7w">
+                  <ref role="1PxDUh" to="k8ye:~Opcodes" resolve="Opcodes" />
+                  <ref role="3cqZAo" to="k8ye:~Opcodes.ACC_INTERFACE" resolve="ACC_INTERFACE" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="6i5nc29sCaX" role="3uHU7w">
+              <property role="3cmrfH" value="0" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="6i5nc29sCaZ" role="3clFbx">
+            <node concept="3cpWs6" id="6i5nc29sCb0" role="3cqZAp">
+              <node concept="Rm8GO" id="6i5nc29sCct" role="3cqZAk">
+                <ref role="1Px2BO" node="6i5nc29sCa5" resolve="ClassifierKind" />
+                <ref role="Rm8GQ" node="6i5nc29sCaa" resolve="INTERFACE" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="6i5nc29sCb2" role="3cqZAp">
+          <node concept="Rm8GO" id="6i5nc29sCc_" role="3cqZAk">
+            <ref role="1Px2BO" node="6i5nc29sCa5" resolve="ClassifierKind" />
+            <ref role="Rm8GQ" node="6i5nc29sCa8" resolve="CLASS" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="6i5nc29sCb4" role="1B3o_S" />
+      <node concept="3uibUv" id="6i5nc29sCb5" role="3clF45">
+        <ref role="3uigEE" node="6i5nc29sCa5" resolve="ClassifierKind" />
       </node>
     </node>
   </node>

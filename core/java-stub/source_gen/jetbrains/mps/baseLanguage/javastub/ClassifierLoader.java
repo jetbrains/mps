@@ -8,7 +8,6 @@ import jetbrains.mps.vfs.IFile;
 import org.jetbrains.org.objectweb.asm.ClassReader;
 import org.jetbrains.org.objectweb.asm.tree.InnerClassNode;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.LazySNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;

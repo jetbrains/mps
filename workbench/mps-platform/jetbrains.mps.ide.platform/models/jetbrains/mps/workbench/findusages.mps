@@ -17,7 +17,6 @@
     <import index="cuwx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.psi.impl.cache.impl.id(MPS.IDEA/)" />
     <import index="ends" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence(MPS.Core/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
-    <import index="3j2" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.stubs.javastub.classpath(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="45y3" ref="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
@@ -53,10 +52,8 @@
     <import index="3s15" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench(MPS.Platform/)" />
     <import index="i290" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.java.stub(MPS.Core/)" />
     <import index="fpru" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.psi.search(MPS.IDEA/)" />
-    <import index="qpn1" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.index(MPS.Platform/)" />
     <import index="mx55" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.roots(MPS.IDEA/)" />
     <import index="3t2s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.module(MPS.IDEA/)" />
-    <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
@@ -790,7 +787,7 @@
           <node concept="3cpWsn" id="5wnorXtgGNp" role="3cpWs9">
             <property role="TrG5h" value="kind" />
             <node concept="3uibUv" id="gPyMK9FQGo" role="1tU5fm">
-              <ref role="3uigEE" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+              <ref role="3uigEE" to="1ltj:6i5nc29sCa5" resolve="ClassifierKind" />
             </node>
             <node concept="2OqwBi" id="5wnorXth$Yn" role="33vP2m">
               <node concept="37vLTw" id="5wnorXthnl8" role="2Oq$k0">
@@ -885,8 +882,8 @@
               <ref role="3cqZAo" node="5wnorXtgGNp" resolve="kind" />
             </node>
             <node concept="Rm8GO" id="3LuY8HzxGZm" role="3uHU7w">
-              <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
-              <ref role="Rm8GQ" to="3j2:~ClassifierKind.CLASS" resolve="CLASS" />
+              <ref role="1Px2BO" to="1ltj:6i5nc29sCa5" resolve="ClassifierKind" />
+              <ref role="Rm8GQ" to="1ltj:6i5nc29sCa8" resolve="CLASS" />
             </node>
           </node>
           <node concept="3eNFk2" id="3LuY8HzxGZn" role="3eNLev">
@@ -956,8 +953,8 @@
                 <ref role="3cqZAo" node="5wnorXtgGNp" resolve="kind" />
               </node>
               <node concept="Rm8GO" id="3LuY8HzxGZw" role="3uHU7w">
-                <ref role="Rm8GQ" to="3j2:~ClassifierKind.INTERFACE" resolve="INTERFACE" />
-                <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+                <ref role="Rm8GQ" to="1ltj:6i5nc29sCaa" resolve="INTERFACE" />
+                <ref role="1Px2BO" to="1ltj:6i5nc29sCa5" resolve="ClassifierKind" />
               </node>
             </node>
           </node>
@@ -993,8 +990,8 @@
                 <ref role="3cqZAo" node="5wnorXtgGNp" resolve="kind" />
               </node>
               <node concept="Rm8GO" id="3LuY8HzxGZE" role="3uHU7w">
-                <ref role="Rm8GQ" to="3j2:~ClassifierKind.ANNOTATIONS" resolve="ANNOTATIONS" />
-                <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+                <ref role="Rm8GQ" to="1ltj:6i5nc29sCac" resolve="ANNOTATIONS" />
+                <ref role="1Px2BO" to="1ltj:6i5nc29sCa5" resolve="ClassifierKind" />
               </node>
             </node>
           </node>
@@ -1081,8 +1078,8 @@
                 <ref role="3cqZAo" node="5wnorXtgGNp" resolve="kind" />
               </node>
               <node concept="Rm8GO" id="3LuY8HzxGZO" role="3uHU7w">
-                <ref role="Rm8GQ" to="3j2:~ClassifierKind.ENUM" resolve="ENUM" />
-                <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+                <ref role="Rm8GQ" to="1ltj:6i5nc29sCae" resolve="ENUM" />
+                <ref role="1Px2BO" to="1ltj:6i5nc29sCa5" resolve="ClassifierKind" />
               </node>
             </node>
           </node>
@@ -1095,8 +1092,8 @@
                 <ref role="3cqZAo" node="5wnorXtgGNp" resolve="kind" />
               </node>
               <node concept="Rm8GO" id="3LuY8HzxGZV" role="3uHU7w">
-                <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
-                <ref role="Rm8GQ" to="3j2:~ClassifierKind.UNKNOWN" resolve="UNKNOWN" />
+                <ref role="1Px2BO" to="1ltj:6i5nc29sCa5" resolve="ClassifierKind" />
+                <ref role="Rm8GQ" to="1ltj:6i5nc29sCag" resolve="UNKNOWN" />
               </node>
             </node>
           </node>
@@ -2321,7 +2318,7 @@
       <node concept="37vLTG" id="gPyMK9FRuC" role="3clF46">
         <property role="TrG5h" value="kind" />
         <node concept="3uibUv" id="gPyMK9FRuF" role="1tU5fm">
-          <ref role="3uigEE" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
+          <ref role="3uigEE" to="1ltj:6i5nc29sCa5" resolve="ClassifierKind" />
         </node>
       </node>
       <node concept="3clFbS" id="4sm8lF4o_Z3" role="3clF47">
@@ -2379,8 +2376,8 @@
                 </node>
                 <node concept="3clFbC" id="gPyMK9FRv0" role="3uHU7B">
                   <node concept="Rm8GO" id="gPyMK9FRv4" role="3uHU7w">
-                    <ref role="1Px2BO" to="3j2:~ClassifierKind" resolve="ClassifierKind" />
-                    <ref role="Rm8GQ" to="3j2:~ClassifierKind.ENUM" resolve="ENUM" />
+                    <ref role="1Px2BO" to="1ltj:6i5nc29sCa5" resolve="ClassifierKind" />
+                    <ref role="Rm8GQ" to="1ltj:6i5nc29sCae" resolve="ENUM" />
                   </node>
                   <node concept="37vLTw" id="2BHiRxgmy$y" role="3uHU7B">
                     <ref role="3cqZAo" node="gPyMK9FRuC" resolve="kind" />
