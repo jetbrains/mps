@@ -19,12 +19,15 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
-import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.smodel.resources.ModelsToResources;
+import java.util.Set;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
+import jetbrains.mps.smodel.resources.MResource;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.ModelImports;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.smodel.Language;
 
@@ -131,30 +134,32 @@ public class MakeActionParameters {
     return null;
   }
   public Iterable<IResource> collectInput() {
-    Iterable<SModel> smds;
+    Iterable<SModel> selectedModels;
     if (myModels != null && ListSequence.fromList(myModels).isNotEmpty()) {
-      smds = myModels;
+      selectedModels = myModels;
     } else if (myModules != null && ListSequence.fromList(myModules).isNotEmpty()) {
-      smds = ListSequence.fromList(myModules).translate(new ITranslator2<SModule, SModel>() {
+      selectedModels = ListSequence.fromList(myModules).translate(new ITranslator2<SModule, SModel>() {
         public Iterable<SModel> translate(SModule it) {
           return allModelsOf(it);
         }
       });
     } else {
-      smds = Sequence.fromIterable(Collections.<SModel>emptyList());
+      selectedModels = Sequence.fromIterable(Collections.<SModel>emptyList());
     }
-    if (!(myCleanBuild)) {
-      // assume user specified exact set of models if !isClean
-      smds = Sequence.fromIterable(smds).translate(new ITranslator2<SModel, SModel>() {
-        public Iterable<SModel> translate(SModel it) {
-          return withImports(it);
-        }
-      }).distinct();
-      // filter dirty only
-      ModelGenerationStatusManager statusManager = myProject.getComponent(ModelGenerationStatusManager.class);
-      smds = statusManager.getModifiedModels(Sequence.fromIterable(smds).toListSequence());
-    }
-    return new ModelsToResources(smds).resources();
+    // all the models/modules selected by user
+    // only the selected elements are to be rebuilt if myCleanBuild
+    Iterable<IResource> selectedResources = new ModelsToResources(selectedModels, myCleanBuild).resources();
+    Set<SModule> selectedModules = SetSequence.fromSet(SetSequence.fromSetWithValues(new HashSet<SModule>(), Sequence.fromIterable(selectedResources).ofType(MResource.class).select(new ISelector<MResource, SModule>() {
+      public SModule select(MResource mr) {
+        return mr.module();
+      }
+    }))).asUnmodifiable();
+
+    // add all "dirty" models from modules required for this build
+    BuildDependencies buildDeps = new BuildDependencies(myProject, selectedModules);
+    Iterable<IResource> requiredResources = new ModelsToResources(buildDeps.dirtyModelsFromRequiredModules(), false).resources();
+
+    return Sequence.fromIterable(selectedResources).concat(Sequence.fromIterable(requiredResources));
   }
 
   /**
