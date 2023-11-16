@@ -39,6 +39,7 @@
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="xzav" ref="r:37761ffb-9538-49ac-a331-c8121d2c14b2(jetbrains.mps.progress)" />
+    <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -11531,7 +11532,7 @@
                             <ref role="3cqZAo" node="2$qlEUMgnPe" resolve="myTaskScheduler" />
                           </node>
                           <node concept="liA8E" id="3LCCkAr_h5d" role="2OqNvi">
-                            <ref role="37wK5l" to="xzav:5eSWTn2XKU4" resolve="schedule" />
+                            <ref role="37wK5l" to="xzav:419jsOqvoDA" resolve="scheduleTask" />
                             <node concept="37vLTw" id="3LCCkAr_lz7" role="37wK5m">
                               <ref role="3cqZAo" node="3LCCkAr$SEW" resolve="checkTask" />
                             </node>
@@ -11541,7 +11542,7 @@
                           </node>
                         </node>
                         <node concept="liA8E" id="2PX_jfwpXil" role="2OqNvi">
-                          <ref role="37wK5l" to="xzav:2PX_jfwplaZ" resolve="finish" />
+                          <ref role="37wK5l" to="5zyv:~RunnableFuture.run()" resolve="run" />
                         </node>
                       </node>
                     </node>

@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import jetbrains.mps.project.Project;
+import java.util.concurrent.Executor;
+import jetbrains.mps.smodel.ModelAccessBase;
 import jetbrains.mps.progress.TaskScheduler;
 import jetbrains.mps.workbench.progress.SystemBackgroundTaskScheduler;
 import jetbrains.mps.progress.EmptyProgressMonitor;
@@ -49,7 +52,9 @@ public abstract class BaseCheckerTest extends BaseCheckModulesTest {
     final List<String> errors = new ArrayList<String>();
     final Set<IssueKindReportItem> reportItems = SetSequence.fromSet(new HashSet<IssueKindReportItem>());
 
-    TaskScheduler scheduler = new SystemBackgroundTaskScheduler(BaseCheckModulesTest.getContextProject());
+    Project mpsProject = BaseCheckModulesTest.getContextProject();
+    Executor shareReadExecutor = ((ModelAccessBase) mpsProject.getRepository().getModelAccess()).shareRead();
+    TaskScheduler scheduler = new SystemBackgroundTaskScheduler(mpsProject, shareReadExecutor);
     new ModelCheckerBuilder(modelExtractor).withTaskScheduler(scheduler).createChecker(checkers).check(ModelCheckerBuilder.ItemsToCheck.forSingleModule(module), module.getRepository(), (IssueKindReportItem reportItem) -> SetSequence.fromSet(reportItems).addElement(reportItem), new EmptyProgressMonitor());
 
     for (IssueKindReportItem reportItem : reportItems) {
