@@ -41,6 +41,9 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.make.runtime.util.FutureValue;
 import jetbrains.mps.make.dependencies.MakeSequence;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
+import com.intellij.openapi.progress.Task;
+import com.intellij.openapi.progress.ProgressIndicator;
+import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.ide.IdeEventQueue;
 import com.intellij.openapi.progress.ProgressManager;
@@ -230,8 +233,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     MakeSequence makeSeq = new MakeSequence(inputRes, defaultScript, session);
 
     Project ideaPrj = ProjectHelper.toIdeaProject(session.getProject());
-    PerformInBackgroundOption bg = MakeServiceConfiguration.getInstance(ideaPrj).getMakeInBackgroundOption();
-    final MakeTask task = new MakeTask(ideaPrj, scrName, makeSeq, new Controller(controller, mh), mh, bg) {
+    final WorkbenchMakeTask makeTask = new WorkbenchMakeTask(scrName, makeSeq, new Controller(controller, mh), mh) {
       @Override
       protected void aboutToStart() {
         notifyListeners(new MakeNotification(WorkbenchMakeService.this, MakeNotification.Kind.SCRIPT_ABOUT_TO_START));
@@ -247,13 +249,38 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
         WorkbenchMakeService.this.displayInfo(info);
       }
     };
+    PerformInBackgroundOption bg = MakeServiceConfiguration.getInstance(ideaPrj).getMakeInBackgroundOption();
+    final Task platformTask;
+    if (bg.shouldStartInBackground()) {
+      platformTask = new Task.Backgroundable(ideaPrj, scrName, true) {
+        @Override
+        public void run(@NotNull ProgressIndicator indicator) {
+          makeTask.run(new ProgressMonitorAdapter(indicator));
+        }
+
+        @Override
+        public void onCancel() {
+          makeTask.cancel(true);
+        }
+      };
+    } else {
+      platformTask = new Task.Modal(ideaPrj, scrName, true) {
+        @Override
+        public void run(@NotNull ProgressIndicator indicator) {
+          makeTask.run(new ProgressMonitorAdapter(indicator));
+        }
+        @Override
+        public void onCancel() {
+          makeTask.cancel(true);
+        }
+      };
+    }
 
     try {
-
       getSession().doExecute(() -> ApplicationManager.getApplication().invokeLater(() -> {
         IdeEventQueue.getInstance().flushQueue();
-        if (currentProcess.compareAndSet(null, task)) {
-          ProgressManager.getInstance().run(task);
+        if (currentProcess.compareAndSet(null, makeTask)) {
+          ProgressManager.getInstance().run(platformTask);
         } else {
           throw new IllegalStateException("unexpected: make process is already running");
         }
@@ -268,7 +295,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
       throw rex;
     }
 
-    return task;
+    return makeTask;
   }
 
   private void checkValidUsage() {
@@ -301,7 +328,6 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
   }
 
   private class Controller implements IScriptController {
-    private ProgressMonitor progressMonitor;
     private final IScriptController delegateScrCtr;
     private IConfigMonitor delegateConfMon;
     private IConfigMonitor confMon;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,9 +52,10 @@ public final class Files {
       LOG.warning(" the file length is less than 4 bytes");
       return;
     }
-    var dis = new DataInputStream(new FileInputStream(file));
-    int fileSignature = dis.readInt();
-    LOG.warning(" the file signature is " + fileSignature);
+    try (var dis = new DataInputStream(new FileInputStream(file))) {
+      int fileSignature = dis.readInt();
+      LOG.warning(" the file signature is " + fileSignature);
+    }
   }
 
   private static boolean isJarOrZipFile0(@NotNull File file) throws IOException {
@@ -67,8 +68,9 @@ public final class Files {
     if (file.length() < 4) { // less than 4 bytes
       return false;
     }
-    var dis = new DataInputStream(new FileInputStream(file));
-    int fileSignature = dis.readInt();
-    return fileSignature == 0x504B0304 || fileSignature == 0x504B0506 || fileSignature == 0x504B0708;
+    try (var dis = new DataInputStream(new FileInputStream(file))) {
+      int fileSignature = dis.readInt();
+      return fileSignature == 0x504B0304 || fileSignature == 0x504B0506 || fileSignature == 0x504B0708;
+    }
   }
 }
