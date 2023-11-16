@@ -4487,6 +4487,12 @@
       <node concept="tCFHf" id="2o0RM2fB7gJ" role="ftvYc">
         <ref role="tCJdB" node="2o0RM2fztWF" resolve="SafeDeleteConceptMethod" />
       </node>
+      <node concept="tCFHf" id="5zQW9FQknJY" role="ftvYc">
+        <ref role="tCJdB" node="5zQW9FQjNuK" resolve="ReplacePropertyWithField" />
+      </node>
+      <node concept="tCFHf" id="oaQhpl0Hla" role="ftvYc">
+        <ref role="tCJdB" node="oaQhpl0FsM" resolve="ReplaceFieldWithProperty" />
+      </node>
     </node>
     <node concept="tT9cl" id="cvGLnZnRr8" role="2f5YQi">
       <ref role="tU$_T" to="9oh:5OJQJ_HXTB6" resolve="NodeRefactoring" />
@@ -26866,6 +26872,124 @@
           </node>
           <node concept="37vLTw" id="1Kf0JjOIi5n" role="37wK5m">
             <ref role="3cqZAo" node="1Kf0JjNE2mX" resolve="project" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="sE7Ow" id="5zQW9FQjNuK">
+    <property role="1rBW0U" value="true" />
+    <property role="3GE5qa" value="Actions" />
+    <property role="TrG5h" value="ReplacePropertyWithField" />
+    <property role="2uzpH1" value="Replace Property with Field" />
+    <node concept="2S4$dB" id="5zQW9FQkiGg" role="1NuT2Z">
+      <property role="TrG5h" value="targetProperty" />
+      <node concept="3Tm6S6" id="5zQW9FQkiGh" role="1B3o_S" />
+      <node concept="1oajcY" id="5zQW9FQkiGi" role="1oa70y" />
+      <node concept="3Tqbb2" id="5zQW9FQkirq" role="1tU5fm">
+        <ref role="ehGHo" to="tpee:huRhdFY" resolve="Property" />
+      </node>
+    </node>
+    <node concept="1DS2jV" id="5zQW9FQkj$P" role="1NuT2Z">
+      <property role="TrG5h" value="project" />
+      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
+      <node concept="1oajcY" id="5zQW9FQkj$Q" role="1oa70y" />
+    </node>
+    <node concept="tnohg" id="5zQW9FQjNuL" role="tncku">
+      <node concept="3clFbS" id="5zQW9FQjNuM" role="2VODD2">
+        <node concept="1Xdei3" id="5zQW9FQHBk9" role="3cqZAp">
+          <ref role="1Xdeis" to="qx6f:5zQW9FQmrTO" resolve="ReplacePropertyWithField" />
+          <node concept="2OqwBi" id="5zQW9FQHBka" role="1Xdeiv">
+            <node concept="2WthIp" id="5zQW9FQHBkb" role="2Oq$k0" />
+            <node concept="3gHZIF" id="5zQW9FQHBkc" role="2OqNvi">
+              <ref role="2WH_rO" node="5zQW9FQkiGg" resolve="targetProperty" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="5zQW9FQHBkd" role="1Xdeit">
+            <node concept="2WthIp" id="5zQW9FQHBke" role="2Oq$k0" />
+            <node concept="1DTwFV" id="5zQW9FQHBkf" role="2OqNvi">
+              <ref role="2WH_rO" node="5zQW9FQkj$P" resolve="project" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2ScWuX" id="5zQW9FQkjYh" role="tmbBb">
+      <node concept="3clFbS" id="5zQW9FQkjYi" role="2VODD2">
+        <node concept="3clFbF" id="5zQW9FQH$7H" role="3cqZAp">
+          <node concept="3trCAK" id="5zQW9FQH$7I" role="3clFbG">
+            <ref role="3trCAN" to="qx6f:5zQW9FQmrTO" resolve="ReplacePropertyWithField" />
+            <node concept="2OqwBi" id="5zQW9FQH$7J" role="3trCLF">
+              <node concept="2WthIp" id="5zQW9FQH$7K" role="2Oq$k0" />
+              <node concept="3gHZIF" id="5zQW9FQH$7L" role="2OqNvi">
+                <ref role="2WH_rO" node="5zQW9FQkiGg" resolve="targetProperty" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="5zQW9FQH$7M" role="3a2dA9">
+              <node concept="2WthIp" id="5zQW9FQH$7N" role="2Oq$k0" />
+              <node concept="1DTwFV" id="5zQW9FQH$7O" role="2OqNvi">
+                <ref role="2WH_rO" node="5zQW9FQkj$P" resolve="project" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="sE7Ow" id="oaQhpl0FsM">
+    <property role="1rBW0U" value="true" />
+    <property role="3GE5qa" value="Actions" />
+    <property role="TrG5h" value="ReplaceFieldWithProperty" />
+    <property role="2uzpH1" value="Replace Field with Property" />
+    <node concept="2S4$dB" id="oaQhpl0FsN" role="1NuT2Z">
+      <property role="TrG5h" value="targetProperty" />
+      <node concept="3Tm6S6" id="oaQhpl0FsO" role="1B3o_S" />
+      <node concept="1oajcY" id="oaQhpl0FsP" role="1oa70y" />
+      <node concept="3Tqbb2" id="oaQhpl0FsQ" role="1tU5fm">
+        <ref role="ehGHo" to="tpee:fz12cDC" resolve="FieldDeclaration" />
+      </node>
+    </node>
+    <node concept="1DS2jV" id="oaQhpl0FsR" role="1NuT2Z">
+      <property role="TrG5h" value="project" />
+      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
+      <node concept="1oajcY" id="oaQhpl0FsS" role="1oa70y" />
+    </node>
+    <node concept="tnohg" id="oaQhpl0FsT" role="tncku">
+      <node concept="3clFbS" id="oaQhpl0FsU" role="2VODD2">
+        <node concept="1Xdei3" id="oaQhpl0FsV" role="3cqZAp">
+          <ref role="1Xdeis" to="qx6f:5zQW9FQxxDb" resolve="ReplaceFieldWithProperty" />
+          <node concept="2OqwBi" id="oaQhpl0FsW" role="1Xdeiv">
+            <node concept="2WthIp" id="oaQhpl0FsX" role="2Oq$k0" />
+            <node concept="3gHZIF" id="oaQhpl0FsY" role="2OqNvi">
+              <ref role="2WH_rO" node="oaQhpl0FsN" resolve="targetProperty" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="oaQhpl0FsZ" role="1Xdeit">
+            <node concept="2WthIp" id="oaQhpl0Ft0" role="2Oq$k0" />
+            <node concept="1DTwFV" id="oaQhpl0Ft1" role="2OqNvi">
+              <ref role="2WH_rO" node="oaQhpl0FsR" resolve="project" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2ScWuX" id="oaQhpl0Ft2" role="tmbBb">
+      <node concept="3clFbS" id="oaQhpl0Ft3" role="2VODD2">
+        <node concept="3clFbF" id="oaQhpl0Ft4" role="3cqZAp">
+          <node concept="3trCAK" id="oaQhpl0Ft5" role="3clFbG">
+            <ref role="3trCAN" to="qx6f:5zQW9FQxxDb" resolve="ReplaceFieldWithProperty" />
+            <node concept="2OqwBi" id="oaQhpl0Ft6" role="3trCLF">
+              <node concept="2WthIp" id="oaQhpl0Ft7" role="2Oq$k0" />
+              <node concept="3gHZIF" id="oaQhpl0Ft8" role="2OqNvi">
+                <ref role="2WH_rO" node="oaQhpl0FsN" resolve="targetProperty" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="oaQhpl0Ft9" role="3a2dA9">
+              <node concept="2WthIp" id="oaQhpl0Fta" role="2Oq$k0" />
+              <node concept="1DTwFV" id="oaQhpl0Ftb" role="2OqNvi">
+                <ref role="2WH_rO" node="oaQhpl0FsR" resolve="project" />
+              </node>
+            </node>
           </node>
         </node>
       </node>

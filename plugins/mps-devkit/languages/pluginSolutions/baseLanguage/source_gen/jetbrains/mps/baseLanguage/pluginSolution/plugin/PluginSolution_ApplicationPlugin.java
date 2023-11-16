@@ -37,6 +37,8 @@ public class PluginSolution_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new MakeFieldStatic_Action());
     addAction(new RenameMethod_Action());
     addAction(new RenameVariable_Action());
+    addAction(new ReplaceFieldWithProperty_Action());
+    addAction(new ReplacePropertyWithField_Action());
     addAction(new SafeDeleteConceptMethod_Action());
     addAction(new ShowNullDFA_Action());
     // groups
