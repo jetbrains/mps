@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-5nzwi2jplctpv6p45v6408ysn3432eo">
-  <files names="MakeServiceConfiguration.java:MakeTask.java:UIQueryRelayStrategy.java:WorkbenchMakeService.java" />
+<product version="3" modelHash="-a06pfd1ej78cfpment4gfx58hydtzj8">
+  <files names="MakeServiceConfiguration.java:UIQueryRelayStrategy.java:WorkbenchMakeService.java:WorkbenchMakeTask.java" />
 </product>
 
