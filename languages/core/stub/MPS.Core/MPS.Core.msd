@@ -7,6 +7,15 @@
       <sourceRoot location="mps-project-check.jar" />
 
       <sourceRoot location="mps-persistence.jar" />
+      <PackageScope>
+        <!--
+          [java-stub] classes available through jetbrains.mps.java.stub solution.
+          Note, this effectively hides couple of hand-written classes, j.m.p.j.l.PredefinedRootClassTypeConfig and JavaClassesPersistence, but
+          due to their nature, I don't expect any uses of these in the outside world.
+        -->
+        <exclude prefix="jetbrains.mps.baseLanguage.javastub." />
+        <exclude prefix="jetbrains.mps.persistence.java.library." />
+      </PackageScope>
       <Sources zipPath="${mps_home}/lib/MPS-src.zip"/>
     </modelRoot>
   </models>
