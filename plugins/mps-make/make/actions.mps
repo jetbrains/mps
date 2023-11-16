@@ -13328,6 +13328,7 @@
   <node concept="tC5Ba" id="6A_mxR_MEY3">
     <property role="3GE5qa" value="Make.groups" />
     <property role="TrG5h" value="TouchBarDefault" />
+    <property role="22ra45" value="true" />
     <node concept="tT9cl" id="6A_mxR_Nm8G" role="2f5YQi">
       <ref role="tU$_T" to="tprs:6A_mxR_NmaE" resolve="IDEATouchBarDefault" />
     </node>

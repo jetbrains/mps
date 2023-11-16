@@ -1680,13 +1680,14 @@
       <node id="7612589829595508611" at="12,73,13,41" concept="15" />
       <node id="7612589829595508611" at="13,41,14,25" concept="4" />
       <node id="7612589829595508611" at="14,25,15,20" concept="4" />
-      <node id="7612589829595685425" at="15,20,16,100" concept="4" />
-      <node id="7612589829595508611" at="12,0,18,0" concept="2" trace="TouchBarDefault_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="7612589829595508611" at="12,73,16,100" />
-      <scope id="7612589829595508611" at="12,0,18,0">
+      <node id="7612589829595508611" at="15,20,16,29" concept="4" />
+      <node id="7612589829595685425" at="16,29,17,100" concept="4" />
+      <node id="7612589829595508611" at="12,0,19,0" concept="2" trace="TouchBarDefault_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
+      <scope id="7612589829595508611" at="12,73,17,100" />
+      <scope id="7612589829595508611" at="12,0,19,0">
         <var name="plugin" id="7612589829595508611" />
       </scope>
-      <unit id="7612589829595508611" at="9,0,19,0" name="jetbrains.mps.ide.make.actions.TouchBarDefault_ActionGroup" />
+      <unit id="7612589829595508611" at="9,0,20,0" name="jetbrains.mps.ide.make.actions.TouchBarDefault_ActionGroup" />
     </file>
   </root>
   <root nodeRef="r:cfccec82-df72-4483-9807-88776b4673ab(jetbrains.mps.ide.make.actions)/821918482060440369">

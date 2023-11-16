@@ -39,10 +39,12 @@ import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.make.runtime.util.FutureValue;
 import jetbrains.mps.make.dependencies.MakeSequence;
-import com.intellij.openapi.progress.PerformInBackgroundOption;
-import jetbrains.mps.make.service.CoreMakeTask;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
+import com.intellij.openapi.progress.PerformInBackgroundOption;
+import com.intellij.openapi.progress.Task;
+import com.intellij.openapi.progress.ProgressIndicator;
+import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.ide.IdeEventQueue;
 import com.intellij.openapi.progress.ProgressManager;
@@ -209,8 +211,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
       if (proc != null && !(proc.isDone())) {
         proc.get();
       }
-    } catch (InterruptedException ignore) {
-    } catch (ExecutionException ignore) {
+    } catch (InterruptedException | ExecutionException ignore) {
     } finally {
       this.currentProcess.set(null);
     }
@@ -231,32 +232,30 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     MakeSequence makeSeq = new MakeSequence(inputRes, defaultScript, session);
 
     Project ideaPrj = ProjectHelper.toIdeaProject(session.getProject());
-    PerformInBackgroundOption bg = MakeServiceConfiguration.getInstance(ideaPrj).getMakeInBackgroundOption();
-    final CoreMakeTask cmt = new CoreMakeTask(makeSeq, new Controller(controller, mh), mh);
-    // XXX CoreMakeTask is simple runnable, can wrap run() to replace aboutToStart()/done() overrides here
-    final MakeTask task = new MakeTask(ideaPrj, scrName, cmt, bg) {
+    final WorkbenchMakeTask makeTask = new WorkbenchMakeTask(scrName, makeSeq, new Controller(controller, mh), mh) {
       @Override
       protected void aboutToStart() {
         notifyListeners(new MakeNotification(WorkbenchMakeService.this, MakeNotification.Kind.SCRIPT_ABOUT_TO_START));
       }
       @Override
       protected void done() {
-        if (cmt.getResult() == null) {
+        if (getResult() == null) {
           // I work towards not null result, however, still seems to be possible in case MakeTask didn't start
-          displayInfo(scrName + " aborted");
-        } else if (cmt.getResult().isSucessful()) {
+          String info = scrName + " aborted";
+          WorkbenchMakeService.this.displayInfo(info);
+        } else if (getResult().isSucessful()) {
           String msg = scrName + " successful";
-          if (isNotEmptyString(cmt.getResult().message())) {
-            msg = msg + ". " + cmt.getResult().message();
+          if (isNotEmptyString(getResult().message())) {
+            msg = msg + ". " + getResult().message();
           }
-          displayInfo(msg);
+          WorkbenchMakeService.this.displayInfo(msg);
         } else {
           String msg = scrName + " failed";
-          if (isNotEmptyString(cmt.getResult().message())) {
-            msg = msg + ". " + cmt.getResult().message();
+          if (isNotEmptyString(getResult().message())) {
+            msg = msg + ". " + getResult().message();
           }
           // displayBalloon would draw more attention to the failure, just need to make sure it works
-          displayInfo(msg);
+          WorkbenchMakeService.this.displayInfo(msg);
           // FIXME I hate this string formatting, but for the moment just need to move this out of CoreMakeTask
           mh.handle(new Message(MessageKind.ERROR, msg + ". See previous messages for details."));
         }
@@ -265,13 +264,39 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
         notifyListeners(new MakeNotification(WorkbenchMakeService.this, MakeNotification.Kind.SCRIPT_FINISHED));
       }
     };
+    PerformInBackgroundOption bg = MakeServiceConfiguration.getInstance(ideaPrj).getMakeInBackgroundOption();
+    final Task platformTask;
+    if (bg.shouldStartInBackground()) {
+      platformTask = new Task.Backgroundable(ideaPrj, scrName, true) {
+        @Override
+        public void run(@NotNull ProgressIndicator indicator) {
+          makeTask.run(new ProgressMonitorAdapter(indicator));
+        }
+
+        @Override
+        public void onCancel() {
+          makeTask.cancel(true);
+        }
+      };
+    } else {
+      platformTask = new Task.Modal(ideaPrj, scrName, true) {
+        @Override
+        public void run(@NotNull ProgressIndicator indicator) {
+          makeTask.run(new ProgressMonitorAdapter(indicator));
+        }
+        @Override
+        public void onCancel() {
+          makeTask.cancel(true);
+        }
+      };
+    }
 
     try {
       // FIXME suspicious try/catch around doExecute -> invokeLater(). It's highly unlikely anything goes wrong with doExecute
       getSession().doExecute(() -> ApplicationManager.getApplication().invokeLater(() -> {
         IdeEventQueue.getInstance().flushQueue();
-        if (currentProcess.compareAndSet(null, task)) {
-          ProgressManager.getInstance().run(task);
+        if (currentProcess.compareAndSet(null, makeTask)) {
+          ProgressManager.getInstance().run(platformTask);
         } else {
           throw new IllegalStateException("unexpected: make process is already running");
         }
@@ -286,7 +311,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
       throw rex;
     }
 
-    return task;
+    return makeTask;
   }
 
   private void checkValidUsage() {

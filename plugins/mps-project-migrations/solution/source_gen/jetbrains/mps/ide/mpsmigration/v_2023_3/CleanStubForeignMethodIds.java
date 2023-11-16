@@ -53,7 +53,7 @@ public class CleanStubForeignMethodIds extends BaseProjectMigration {
         for (SNode n : Sequence.fromIterable(SNodeUtil.getDescendants(m))) {
           for (SReference ref : Sequence.fromIterable(n.getReferences())) {
             SNodeReference targetRef;
-            if (ref instanceof StaticReference) {
+            if (StaticReference.class.isInstance(ref)) {
               targetRef = ref.getTargetNodeReference();
               if (targetRef.getModelReference() != null && targetRef.getModelReference().getName() != null && targetRef.getModelReference().getName().hasStereotype(SModelStereotype.JAVA_STUB)) {
                 String idValue;

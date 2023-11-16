@@ -469,14 +469,6 @@
                           </node>
                         </node>
                         <node concept="3clFbJ" id="5K75G_4HZ40" role="3cqZAp">
-                          <node concept="2ZW3vV" id="5K75G_4I2qV" role="3clFbw">
-                            <node concept="3uibUv" id="5K75G_4I3sy" role="2ZW6by">
-                              <ref role="3uigEE" to="w1kc:~StaticReference" resolve="StaticReference" />
-                            </node>
-                            <node concept="2GrUjf" id="5K75G_4HZRH" role="2ZW6bz">
-                              <ref role="2Gs0qQ" node="5K75G_4HTCu" resolve="ref" />
-                            </node>
-                          </node>
                           <node concept="3clFbS" id="5K75G_4HZ42" role="3clFbx">
                             <node concept="3clFbF" id="2_FwR2ZIccT" role="3cqZAp">
                               <node concept="37vLTI" id="5K75G_4IlKo" role="3clFbG">
@@ -676,6 +668,17 @@
                                     </node>
                                   </node>
                                 </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="4XHfm61Xst4" role="3clFbw">
+                            <node concept="3VsKOn" id="4XHfm61Xqxk" role="2Oq$k0">
+                              <ref role="3VsUkX" to="w1kc:~StaticReference" resolve="StaticReference" />
+                            </node>
+                            <node concept="liA8E" id="4XHfm61XtOq" role="2OqNvi">
+                              <ref role="37wK5l" to="wyt6:~Class.isInstance(java.lang.Object)" resolve="isInstance" />
+                              <node concept="2GrUjf" id="4XHfm61XuMn" role="37wK5m">
+                                <ref role="2Gs0qQ" node="5K75G_4HTCu" resolve="ref" />
                               </node>
                             </node>
                           </node>

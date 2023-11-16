@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,12 @@ package jetbrains.mps.ide.save;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.FileDocumentManagerListener;
-import com.intellij.openapi.project.ProjectManager;
+import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.project.ProjectManager;
 
 /**
  * Idea platform has the same mechanism in {@link com.intellij.ide.SaveAndSyncHandler}
@@ -40,14 +41,23 @@ public class IdeMPSFileSaver implements FileDocumentManagerListener {
 
     // FIXME consider IMakeService check to move into SaveRepositoryCommand - whether other clients of repo save might
     // be interested as well.
+    final MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
 
-    if (ProjectManager.getInstance().getOpenProjects().length > 0) {
-      final MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
-      jetbrains.mps.project.ProjectManager mpsPM = coreComponents.getPlatform().findComponent(jetbrains.mps.project.ProjectManager.class);
-      Runnable saveRepo = () -> mpsPM.getOpenedProjects().stream().map(Project::getRepository).map(SaveRepositoryCommand::new).forEach(SaveRepositoryCommand::execute);
+    final ProjectManager mpsPM = coreComponents.getPlatform().findComponent(ProjectManager.class);
+    if (!mpsPM.getOpenedProjects().isEmpty()) {
+      Runnable saveRepo = () -> {
+
+        for (Project p : mpsPM.getOpenedProjects()) {
+          boolean changed = p.getModelAccess().computeReadAction(() -> p.getProjectModulesWithGenerators().stream().filter(EditableSModule.class::isInstance).anyMatch(m -> ((EditableSModule) m).isChanged()));
+          if (changed) {
+            // runWriteInEDT, not invokeLater+runWriteAction() as former supports attempts/re-scheduling of the action to prevent EDT blocking
+            p.getModelAccess().runWriteInEDT(new SaveRepositoryCommand(p.getRepository()));
+          }
+        }
+      };
       final MakeServiceComponent makeService = coreComponents.getPlatform().findComponent(MakeServiceComponent.class);
       if (makeService != null && makeService.isSessionActive()) {
-        ApplicationManager.getApplication().invokeLater(saveRepo);
+        ApplicationManager.getApplication().executeOnPooledThread(saveRepo);
       } else {
         saveRepo.run();
       }
