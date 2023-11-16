@@ -84,6 +84,9 @@ public class ThreadWatcher implements Output {
 
       // com.intellij.openapi.actionSystem.impl.ActionUpdater
       builder.append("|(Action Updater .*)");
+
+      // com.intellij.util.io.FilePageCacheLockFree#DEFAULT_HOUSEKEEPER_THREAD_NAME
+      builder.append("|(FilePageCache housekeeper)");
       // --------------------------------
 
 

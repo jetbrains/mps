@@ -898,6 +898,27 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbH" id="47IVLSjpqWQ" role="3cqZAp" />
+          <node concept="3SKdUt" id="47IVLSjpz0n" role="3cqZAp">
+            <node concept="1PaTwC" id="47IVLSjpz0o" role="1aUNEU">
+              <node concept="3oM_SD" id="47IVLSjpEWV" role="1PaTwD">
+                <property role="3oM_SC" value="com.intellij.util.io.FilePageCacheLockFree#DEFAULT_HOUSEKEEPER_THREAD_NAME" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="47IVLSjpujn" role="3cqZAp">
+            <node concept="2OqwBi" id="47IVLSjpwv2" role="3clFbG">
+              <node concept="37vLTw" id="47IVLSjpujl" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="47IVLSjpzXv" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="47IVLSjpAH$" role="37wK5m">
+                  <property role="Xl_RC" value="|(FilePageCache housekeeper)" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3SKdUt" id="3m4z3Ef6VAX" role="3cqZAp">
             <node concept="1PaTwC" id="3m4z3Ef6VAY" role="1aUNEU">
               <node concept="3oM_SD" id="3m4z3Ef6WpE" role="1PaTwD">
