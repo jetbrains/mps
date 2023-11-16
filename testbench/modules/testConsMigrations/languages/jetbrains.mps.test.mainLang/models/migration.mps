@@ -175,7 +175,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="6kwW534rU4F" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~File.createNewFile():boolean" resolve="createNewFile" />
+                  <ref role="37wK5l" to="guwi:~File.createNewFile()" resolve="createNewFile" />
                 </node>
               </node>
             </node>
@@ -256,23 +256,23 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="6kwW534rWJk" role="2OqNvi">
-                      <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleSourceDir():jetbrains.mps.vfs.IFile" resolve="getModuleSourceDir" />
+                      <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleSourceDir()" resolve="getModuleSourceDir" />
                     </node>
                   </node>
                   <node concept="liA8E" id="59sLnAoPGSf" role="2OqNvi">
-                    <ref role="37wK5l" to="3ju5:~IFile.getParent():jetbrains.mps.vfs.IFile" resolve="getParent" />
+                    <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
                   </node>
                 </node>
                 <node concept="liA8E" id="6kwW534rWJl" role="2OqNvi">
-                  <ref role="37wK5l" to="3ju5:~IFile.getParent():jetbrains.mps.vfs.IFile" resolve="getParent" />
+                  <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
                 </node>
               </node>
               <node concept="liA8E" id="6kwW534rWJm" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getParent():jetbrains.mps.vfs.IFile" resolve="getParent" />
+                <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
               </node>
             </node>
             <node concept="liA8E" id="6kwW534rWJn" role="2OqNvi">
-              <ref role="37wK5l" to="3ju5:~IFile.getPath():java.lang.String" resolve="getPath" />
+              <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
             </node>
           </node>
         </node>
@@ -347,7 +347,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="6kwW534rXdM" role="2OqNvi">
-                      <ref role="37wK5l" to="guwi:~File.createNewFile():boolean" resolve="createNewFile" />
+                      <ref role="37wK5l" to="guwi:~File.createNewFile()" resolve="createNewFile" />
                     </node>
                   </node>
                 </node>
@@ -361,7 +361,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="6kwW534rW_5" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~File.exists():boolean" resolve="exists" />
+                  <ref role="37wK5l" to="guwi:~File.exists()" resolve="exists" />
                 </node>
               </node>
             </node>

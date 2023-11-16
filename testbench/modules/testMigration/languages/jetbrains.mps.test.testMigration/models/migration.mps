@@ -158,23 +158,23 @@
                                 </node>
                               </node>
                               <node concept="liA8E" id="1JaIS$2i0Q1" role="2OqNvi">
-                                <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleSourceDir():jetbrains.mps.vfs.IFile" resolve="getModuleSourceDir" />
+                                <ref role="37wK5l" to="z1c3:~AbstractModule.getModuleSourceDir()" resolve="getModuleSourceDir" />
                               </node>
                             </node>
                             <node concept="liA8E" id="59sLnAoPLuf" role="2OqNvi">
-                              <ref role="37wK5l" to="3ju5:~IFile.getParent():jetbrains.mps.vfs.IFile" resolve="getParent" />
+                              <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
                             </node>
                           </node>
                           <node concept="liA8E" id="oyzlXu2T6d" role="2OqNvi">
-                            <ref role="37wK5l" to="3ju5:~IFile.getParent():jetbrains.mps.vfs.IFile" resolve="getParent" />
+                            <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
                           </node>
                         </node>
                         <node concept="liA8E" id="oyzlXu2TcB" role="2OqNvi">
-                          <ref role="37wK5l" to="3ju5:~IFile.getParent():jetbrains.mps.vfs.IFile" resolve="getParent" />
+                          <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
                         </node>
                       </node>
                       <node concept="liA8E" id="1JaIS$2i30A" role="2OqNvi">
-                        <ref role="37wK5l" to="3ju5:~IFile.getPath():java.lang.String" resolve="getPath" />
+                        <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
                       </node>
                     </node>
                     <node concept="Xl_RD" id="1JaIS$2i2AM" role="37wK5m">
@@ -183,7 +183,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="1JaIS$2i3gn" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~File.createNewFile():boolean" resolve="createNewFile" />
+                  <ref role="37wK5l" to="guwi:~File.createNewFile()" resolve="createNewFile" />
                 </node>
               </node>
             </node>
