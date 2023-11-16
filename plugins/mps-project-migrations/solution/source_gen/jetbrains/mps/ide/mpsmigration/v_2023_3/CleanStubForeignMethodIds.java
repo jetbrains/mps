@@ -59,7 +59,7 @@ public class CleanStubForeignMethodIds extends BaseProjectMigration {
                 String idValue;
                 int retTypeStart;
                 if (targetRef.getNodeId() instanceof SNodeId.Foreign && (retTypeStart = (idValue = ((SNodeId.Foreign) targetRef.getNodeId()).getId()).indexOf("):")) > 0) {
-                  ((StaticReference) ref).setTargetNodeId(SNodeId.Foreign.fromIdNoPrefix(idValue.substring(0, retTypeStart + 1)));
+                  StaticReference.class.cast(ref).setTargetNodeId(SNodeId.Foreign.fromIdNoPrefix(idValue.substring(0, retTypeStart + 1)));
                   changed = true;
                 }
               }

@@ -15,7 +15,7 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMEnumValue;
 
 @GeneratedClass(node = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/2275269892056742751", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
-/*package*/ class ASMNodeIdFactory {
+/*package*/ final class ASMNodeIdFactory {
   private final Map<String, SNodeId.Foreign> myCache;
   private ASMClass myCurrentClass;
   private String myCurrentClassShortName;
@@ -71,7 +71,7 @@ import jetbrains.mps.baseLanguage.javastub.asm.ASMEnumValue;
     return classId((i <= 0 ? className : className.substring(0, i)));
   }
 
-  private org.jetbrains.mps.openapi.model.SNodeId classId(String shortName) {
+  /*package*/ org.jetbrains.mps.openapi.model.SNodeId classId(String shortName) {
     SNodeId.Foreign rv = myCache.get(shortName);
     if (rv == null) {
       rv = ASMNodeId.create(shortName);

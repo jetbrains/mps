@@ -10,7 +10,6 @@ import org.jetbrains.org.objectweb.asm.tree.InnerClassNode;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.smodel.LazySNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -78,9 +77,17 @@ public class ClassifierLoader {
       return null;
     }
     final ClassifierKind kind = ClassifierKind.getClassifierKind(myClassReader);
-    final String className = getClassName(myFile);
-    final SNodeId nodeId = ASMNodeId.createId(className);
-    final String shortName = NameUtil.shortNameFromLongName(className.replace('$', '.'));
+    final String className = ASMNodeId.shortNameFromSlashedLongName(myClassReader.getClassName());
+    final SNodeId nodeId = myNodeIdFactory.classId(className);
+    final String shortName;
+    if (myInnerClassDescriptor != null) {
+      shortName = myInnerClassDescriptor.innerName;
+    } else {
+      // well, here's a bit of non-necessary assumption that we use ClassifierLoader in a particular way (i.e. start with top-level classes and 
+      // read inner classes through #createChildClassifierLoader(). If necessary, can support reading inner class right away by always using 
+      // ClassReader.getClassName() and extracting relevant part regardless of myInnerClassDescriptor presence).
+      shortName = className;
+    }
     SNode lazyRoot;
     switch (kind) {
       case CLASS:
@@ -114,9 +121,9 @@ public class ClassifierLoader {
       // public, final, abstract are taken from the class, JLS 4.1, table 4.1
       SPropertyOperations.assign(rv, PROPS.nonStatic$aWW8, !(isStatic));
       if (isProtected) {
-        SLinkOperations.setTarget(rv, LINKS.visibility$Yyua, createProtectedVisibility_eoyrbu_a0a0h0l0o());
+        SLinkOperations.setTarget(rv, LINKS.visibility$Yyua, createProtectedVisibility_eoyrbu_a0a0h0m0o());
       } else if (isPrivate) {
-        SLinkOperations.setTarget(rv, LINKS.visibility$Yyua, createPrivateVisibility_eoyrbu_a0a0a7a11a41());
+        SLinkOperations.setTarget(rv, LINKS.visibility$Yyua, createPrivateVisibility_eoyrbu_a0a0a7a21a41());
       }
     }
     return rv;
@@ -194,19 +201,14 @@ public class ClassifierLoader {
     }
   }
 
-  public static String getClassName(IFile file) {
-    String name = file.getName();
-    return name.substring(0, name.indexOf('.'));
-  }
-
   public ClassReader getClassReader() {
     return this.myClassReader;
   }
-  private static SNode createProtectedVisibility_eoyrbu_a0a0h0l0o() {
+  private static SNode createProtectedVisibility_eoyrbu_a0a0h0m0o() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ProtectedVisibility$hr);
     return n0.getResult();
   }
-  private static SNode createPrivateVisibility_eoyrbu_a0a0a7a11a41() {
+  private static SNode createPrivateVisibility_eoyrbu_a0a0a7a21a41() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PrivateVisibility$l0);
     return n0.getResult();
   }

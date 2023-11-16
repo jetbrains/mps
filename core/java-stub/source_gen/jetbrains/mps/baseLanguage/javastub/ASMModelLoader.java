@@ -82,6 +82,22 @@ public final class ASMModelLoader {
   }
 
   public Iterable<IFile> getTopClassFiles() {
-    return CollectionSequence.fromCollection(myPaths).where(new NotNullWhereFilter()).translate((it) -> it.getChildren()).where((it) -> !(it.isDirectory()) && it.getName().endsWith(".class") && !(ClassifierLoader.getClassName(it).contains("$")) && !("package-info.class".equals(it.getName())));
+    return CollectionSequence.fromCollection(myPaths).where(new NotNullWhereFilter()).translate((it) -> it.getChildren()).where((file) -> ASMModelLoader.isTopClass(file));
+  }
+
+  private static boolean isTopClass(IFile file) {
+    if (file.isDirectory()) {
+      return false;
+    }
+    String name = file.getName();
+    if (!(name.endsWith(".class"))) {
+      return false;
+    }
+    if (name.indexOf('$') > 0) {
+      // anonymous/inner class
+      // see ASMNodeIdFactory.createTopClassifierId() for scenario when top-level classes start with '$', hence >0
+      return false;
+    }
+    return !("package-info.class".equals(name));
   }
 }

@@ -503,16 +503,6 @@
                                   <node concept="3clFbS" id="5K75G_4IOvJ" role="3clFbx">
                                     <node concept="3clFbF" id="5K75G_4JfTL" role="3cqZAp">
                                       <node concept="2OqwBi" id="5K75G_4JkFB" role="3clFbG">
-                                        <node concept="1eOMI4" id="5K75G_4JiB5" role="2Oq$k0">
-                                          <node concept="10QFUN" id="5K75G_4JiB2" role="1eOMHV">
-                                            <node concept="3uibUv" id="5K75G_4JjvY" role="10QFUM">
-                                              <ref role="3uigEE" to="w1kc:~StaticReference" resolve="StaticReference" />
-                                            </node>
-                                            <node concept="2GrUjf" id="5K75G_4JfTI" role="10QFUP">
-                                              <ref role="2Gs0qQ" node="5K75G_4HTCu" resolve="ref" />
-                                            </node>
-                                          </node>
-                                        </node>
                                         <node concept="liA8E" id="5K75G_4JlFq" role="2OqNvi">
                                           <ref role="37wK5l" to="w1kc:~StaticReference.setTargetNodeId(org.jetbrains.mps.openapi.model.SNodeId)" resolve="setTargetNodeId" />
                                           <node concept="2YIFZM" id="5K75G_4KPtg" role="37wK5m">
@@ -536,6 +526,17 @@
                                                   </node>
                                                 </node>
                                               </node>
+                                            </node>
+                                          </node>
+                                        </node>
+                                        <node concept="2OqwBi" id="4LZ4waKz5E5" role="2Oq$k0">
+                                          <node concept="3VsKOn" id="4LZ4waKz3p6" role="2Oq$k0">
+                                            <ref role="3VsUkX" to="w1kc:~StaticReference" resolve="StaticReference" />
+                                          </node>
+                                          <node concept="liA8E" id="4LZ4waKz7k3" role="2OqNvi">
+                                            <ref role="37wK5l" to="wyt6:~Class.cast(java.lang.Object)" resolve="cast" />
+                                            <node concept="2GrUjf" id="4LZ4waKz8jH" role="37wK5m">
+                                              <ref role="2Gs0qQ" node="5K75G_4HTCu" resolve="ref" />
                                             </node>
                                           </node>
                                         </node>
