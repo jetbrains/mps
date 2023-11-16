@@ -4,6 +4,7 @@ package jetbrains.mps.ide.devkit.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
@@ -22,7 +23,7 @@ public class ShowOriginNode_Action extends BaseAction {
   public ShowOriginNode_Action() {
     super("Reveal Origin Node", "Navigate to node in original model selected transient node originates from", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(true);
+    this.setActionAccess(ActionAccess.READ_PROJECT);
     updateInBackground(true);
   }
   @Override

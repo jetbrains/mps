@@ -25,7 +25,8 @@ public class ShowGenerationTraceback_Action extends BaseAction {
   public ShowGenerationTraceback_Action() {
     super("Show Generation Traceback", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    this.setActionAccess(ActionAccess.READ_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

@@ -4,6 +4,7 @@ package jetbrains.mps.ide.devkit.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -20,7 +21,7 @@ public class NavigateToGeneratedCode_Action extends BaseAction {
   public NavigateToGeneratedCode_Action() {
     super("Open Generated Code", "Navigate to generated query method", ICON);
     this.setIsAlwaysVisible(false);
-    this.setExecuteOutsideCommand(true);
+    this.setActionAccess(ActionAccess.READ_PROJECT);
     updateInBackground(true);
   }
   @Override
@@ -56,7 +57,7 @@ public class NavigateToGeneratedCode_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> new GeneratedCodeOpener(event.getData(MPSCommonDataKeys.MPS_PROJECT)).open(NavigateToGeneratedCode_Action.this.getNodeToNavigate(event.getData(MPSCommonDataKeys.NODE), event)));
+    new GeneratedCodeOpener(event.getData(MPSCommonDataKeys.MPS_PROJECT)).open(NavigateToGeneratedCode_Action.this.getNodeToNavigate(event.getData(MPSCommonDataKeys.NODE), event));
   }
   private SNode getNodeToNavigate(SNode current, final AnActionEvent event) {
     return ListSequence.fromList(SNodeOperations.getNodeAncestors(current, null, true)).findFirst((it) -> new GeneratedCodeOpener(event.getData(MPSCommonDataKeys.MPS_PROJECT)).canOpen(it));

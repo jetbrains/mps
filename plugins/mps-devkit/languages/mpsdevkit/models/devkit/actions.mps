@@ -185,6 +185,7 @@
       <concept id="1203082903663" name="jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_AnActionEvent" flags="nn" index="tl45R" />
       <concept id="1203083511112" name="jetbrains.mps.lang.plugin.structure.ExecuteBlock" flags="in" index="tnohg" />
       <concept id="1203087890642" name="jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration" flags="ng" index="tC5Ba">
+        <property id="6461604478897396236" name="updateInBackground" index="22ra45" />
         <property id="1204991940915" name="caption" index="2f7twF" />
         <child id="1204991552650" name="modifier" index="2f5YQi" />
         <child id="1207145245948" name="contents" index="ftER_" />
@@ -502,14 +503,6 @@
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
         <child id="1201186121363" name="typeParameter" index="2Ghqu4" />
       </concept>
-    </language>
-    <language id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access">
-      <concept id="8974276187400348173" name="jetbrains.mps.lang.access.structure.CommandClosureLiteral" flags="nn" index="1QHqEC" />
-      <concept id="8974276187400348170" name="jetbrains.mps.lang.access.structure.BaseExecuteCommandStatement" flags="nn" index="1QHqEJ">
-        <child id="1423104411234567454" name="repo" index="ukAjM" />
-        <child id="8974276187400348171" name="commandClosureLiteral" index="1QHqEI" />
-      </concept>
-      <concept id="8974276187400348181" name="jetbrains.mps.lang.access.structure.ExecuteLightweightCommandStatement" flags="nn" index="1QHqEK" />
     </language>
     <language id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots">
       <concept id="4079382982702596667" name="jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression" flags="nn" index="2EnYce" />
@@ -5572,6 +5565,8 @@
     <property role="TrG5h" value="ShowGenerationTrace" />
     <property role="3GE5qa" value="GenerationTrace" />
     <property role="2uzpH1" value="Show Generation Trace" />
+    <property role="2YLI8m" value="6u2MFnph2yg/read" />
+    <property role="1rBW0U" value="true" />
     <node concept="1DS2jV" id="14z8V6nEs7M" role="1NuT2Z">
       <property role="TrG5h" value="project" />
       <ref role="1DUlNI" to="qkt:~CommonDataKeys.PROJECT" resolve="PROJECT" />
@@ -5764,6 +5759,8 @@
     <property role="TrG5h" value="ShowGenerationTraceback" />
     <property role="3GE5qa" value="GenerationTrace" />
     <property role="2uzpH1" value="Show Generation Traceback" />
+    <property role="2YLI8m" value="6u2MFnph2yg/read" />
+    <property role="1rBW0U" value="true" />
     <node concept="tnohg" id="14z8V6nEs9k" role="tncku">
       <node concept="3clFbS" id="14z8V6nEs9l" role="2VODD2">
         <node concept="3cpWs8" id="5oSeKmCes51" role="3cqZAp">
@@ -5975,6 +5972,7 @@
   <node concept="tC5Ba" id="14z8V6nEsaF">
     <property role="TrG5h" value="GenerationTraceActions" />
     <property role="3GE5qa" value="GenerationTrace.Group" />
+    <property role="22ra45" value="true" />
     <node concept="ftmFs" id="14z8V6nEsaG" role="ftER_">
       <node concept="tCFHf" id="5VaWw4e$QM1" role="ftvYc">
         <ref role="tCJdB" node="5VaWw4ezGOW" resolve="ShowOriginNode" />
@@ -6994,8 +6992,8 @@
     <property role="TrG5h" value="NavigateToGeneratedCode" />
     <property role="2uzpH1" value="Open Generated Code" />
     <property role="3GE5qa" value="Goto" />
-    <property role="72QZ$" value="true" />
     <property role="1rBW0U" value="true" />
+    <property role="2YLI8m" value="6u2MFnph2yg/read" />
     <node concept="2S4$dB" id="gXLcbBbpLg" role="1NuT2Z">
       <property role="TrG5h" value="node" />
       <node concept="3Tm6S6" id="gXLcbBbpLh" role="1B3o_S" />
@@ -7009,50 +7007,33 @@
     </node>
     <node concept="tnohg" id="gXLcbBbpK_" role="tncku">
       <node concept="3clFbS" id="gXLcbBbpKA" role="2VODD2">
-        <node concept="1QHqEK" id="4BRIpd2NMVP" role="3cqZAp">
-          <node concept="1QHqEC" id="4BRIpd2NMVR" role="1QHqEI">
-            <node concept="3clFbS" id="4BRIpd2NMVT" role="1bW5cS">
-              <node concept="3clFbF" id="2fCH17eCwfP" role="3cqZAp">
-                <node concept="2OqwBi" id="2fCH17eCJix" role="3clFbG">
-                  <node concept="2ShNRf" id="2fCH17eCwfJ" role="2Oq$k0">
-                    <node concept="1pGfFk" id="2fCH17eCIpo" role="2ShVmc">
-                      <ref role="37wK5l" to="o6ex:~GeneratedCodeOpener.&lt;init&gt;(jetbrains.mps.project.MPSProject)" resolve="GeneratedCodeOpener" />
-                      <node concept="2OqwBi" id="2fCH17eCIq7" role="37wK5m">
-                        <node concept="2WthIp" id="2fCH17eCIqa" role="2Oq$k0" />
-                        <node concept="1DTwFV" id="2fCH17eCIqc" role="2OqNvi">
-                          <ref role="2WH_rO" node="13$TqNLK0Dz" resolve="mpsProject" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="2fCH17eCJra" role="2OqNvi">
-                    <ref role="37wK5l" to="o6ex:~GeneratedCodeOpener.open(org.jetbrains.mps.openapi.model.SNode)" resolve="open" />
-                    <node concept="2OqwBi" id="4BRIpd2O8q_" role="37wK5m">
-                      <node concept="2WthIp" id="4BRIpd2O8qC" role="2Oq$k0" />
-                      <node concept="2XshWL" id="4BRIpd2O8qE" role="2OqNvi">
-                        <ref role="2WH_rO" node="4BRIpd2NY3C" resolve="getNodeToNavigate" />
-                        <node concept="2OqwBi" id="fKgs077mKJ" role="2XxRq1">
-                          <node concept="2WthIp" id="fKgs077mKM" role="2Oq$k0" />
-                          <node concept="3gHZIF" id="fKgs077mKO" role="2OqNvi">
-                            <ref role="2WH_rO" node="gXLcbBbpLg" resolve="node" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
+        <node concept="3clFbF" id="2fCH17eCwfP" role="3cqZAp">
+          <node concept="2OqwBi" id="2fCH17eCJix" role="3clFbG">
+            <node concept="2ShNRf" id="2fCH17eCwfJ" role="2Oq$k0">
+              <node concept="1pGfFk" id="2fCH17eCIpo" role="2ShVmc">
+                <ref role="37wK5l" to="o6ex:~GeneratedCodeOpener.&lt;init&gt;(jetbrains.mps.project.MPSProject)" resolve="GeneratedCodeOpener" />
+                <node concept="2OqwBi" id="2fCH17eCIq7" role="37wK5m">
+                  <node concept="2WthIp" id="2fCH17eCIqa" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="2fCH17eCIqc" role="2OqNvi">
+                    <ref role="2WH_rO" node="13$TqNLK0Dz" resolve="mpsProject" />
                   </node>
                 </node>
               </node>
             </node>
-          </node>
-          <node concept="2OqwBi" id="4BRIpd2NNFR" role="ukAjM">
-            <node concept="2OqwBi" id="2fCH17eCKuE" role="2Oq$k0">
-              <node concept="2WthIp" id="2fCH17eCKuH" role="2Oq$k0" />
-              <node concept="1DTwFV" id="2fCH17eCKuJ" role="2OqNvi">
-                <ref role="2WH_rO" node="13$TqNLK0Dz" resolve="mpsProject" />
+            <node concept="liA8E" id="2fCH17eCJra" role="2OqNvi">
+              <ref role="37wK5l" to="o6ex:~GeneratedCodeOpener.open(org.jetbrains.mps.openapi.model.SNode)" resolve="open" />
+              <node concept="2OqwBi" id="4BRIpd2O8q_" role="37wK5m">
+                <node concept="2WthIp" id="4BRIpd2O8qC" role="2Oq$k0" />
+                <node concept="2XshWL" id="4BRIpd2O8qE" role="2OqNvi">
+                  <ref role="2WH_rO" node="4BRIpd2NY3C" resolve="getNodeToNavigate" />
+                  <node concept="2OqwBi" id="fKgs077mKJ" role="2XxRq1">
+                    <node concept="2WthIp" id="fKgs077mKM" role="2Oq$k0" />
+                    <node concept="3gHZIF" id="fKgs077mKO" role="2OqNvi">
+                      <ref role="2WH_rO" node="gXLcbBbpLg" resolve="node" />
+                    </node>
+                  </node>
+                </node>
               </node>
-            </node>
-            <node concept="liA8E" id="4BRIpd2NOS6" role="2OqNvi">
-              <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
             </node>
           </node>
         </node>
@@ -8855,9 +8836,9 @@
     <property role="3GE5qa" value="GenerationTrace" />
     <property role="TrG5h" value="ShowOriginNode" />
     <property role="1WHSii" value="Navigate to node in original model selected transient node originates from" />
-    <property role="72QZ$" value="true" />
     <property role="2uzpH1" value="Reveal Origin Node" />
     <property role="1rBW0U" value="true" />
+    <property role="2YLI8m" value="6u2MFnph2yg/read" />
     <node concept="1DS2jV" id="5VaWw4ezIWY" role="1NuT2Z">
       <property role="TrG5h" value="mpsProject" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
