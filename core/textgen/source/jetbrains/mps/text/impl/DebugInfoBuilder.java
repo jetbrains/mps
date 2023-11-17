@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 package jetbrains.mps.text.impl;
 
 import jetbrains.mps.extapi.module.TransientSModule;
-import jetbrains.mps.text.CompatibilityTextUnit;
 import jetbrains.mps.text.TextGenResult;
 import jetbrains.mps.text.TextUnit;
 import jetbrains.mps.textgen.trace.DebugInfo;
@@ -37,7 +36,6 @@ import java.util.Map;
 /**
  * Much like {@link BLDependenciesBuilder}, produce auxiliary artifacts along with text generation process.
  *
- * See {@link CompatibilityTextUnit} for ideas how to get rid of [textgen] dependency to [debuginfo-api]
  */
 public class DebugInfoBuilder {
   private final DebugInfo myDebugInfo = new DebugInfo();
@@ -55,11 +53,11 @@ public class DebugInfoBuilder {
       if (tu.getState() == TextUnit.Status.Empty) {
         continue;
       }
-      if (!(tu instanceof CompatibilityTextUnit)) {
+      final TraceInfoCollector result = tu.findContextObject(TraceInfoCollector.class).findAny().orElse(null);
+      if (result == null) {
         continue;
       }
-      final CompatibilityTextUnit result = (CompatibilityTextUnit) tu;
-      fillTrace(tu.getFileName(), result.getPositions());
+      fillTrace(tu.getFileName(), result.getTracePositions());
       fillScope(tu.getFileName(), result.getScopePositions());
       fillUnits(tu.getFileName(), result.getUnitPositions());
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.nio.charset.Charset;
+import java.util.stream.Stream;
 
 /**
  * Unit of text generation, corresponds to output file.
@@ -59,6 +60,10 @@ public interface TextUnit {
   Charset getEncoding();
 
   Status getState();
+
+  default <T> Stream<T> findContextObject(Class<T> contextObjectKind) {
+    return Stream.empty();
+  }
 
   // State? Initial, Blank, Failure, Valid?
   enum Status {

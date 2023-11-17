@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.text.impl;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.text.BufferSnapshot;
 import jetbrains.mps.text.CompatibilityTextUnit;
@@ -34,6 +35,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
 /**
  * General {@link TextUnit} implementation for use both Java and non-Java source code, as well as binary (Base64-encoded) units.
@@ -94,22 +97,24 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
    * similar to IAdaptable in the future (i.e. each context object that is IAdaptable would get consulted IAdaptable.adapt()
    * in addition to isInstance()).
    */
+  @Override
   @Nullable
-  public <T> T findContextObject(Class<T> kind) {
+  public <T> Stream<T> findContextObject(Class<T> kind) {
     if (myContextObjects == null) {
-      return null;
+      return Stream.empty();
     }
+    final Builder<T> builder = Stream.builder();
     for (Pair<String, Object> p : myContextObjects) {
       if (kind.isInstance(p.o2)) {
-        return kind.cast(p.o2);
+        builder.add(kind.cast(p.o2));
       }
     }
-    return null;
+    return builder.build();
   }
 
   /**
    * @param identity key an object has been registered with in {@link #addContextObject(String, Object)}
-   * @param kind object instance has to be instance of supplied class for the call to succeed
+   * @param kind object instance has to be an instance of supplied class for the call to succeed
    * @param <T> context object type
    * @return registered context object or {@code null} if no record matching both identity key and Java class found.
    */
@@ -222,16 +227,19 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
 
   @Nullable
   public Map<SNode, TraceablePositionInfo> getPositions() {
+    Logger.getLogger(getClass()).warnDeprecatedUse("Stop using CompatibilityTextUnit");
     return myTraceCollector == null ? null : myTraceCollector.getTracePositions();
   }
 
   @Nullable
   public Map<SNode, ScopePositionInfo> getScopePositions() {
+    Logger.getLogger(getClass()).warnDeprecatedUse("Stop using CompatibilityTextUnit");
     return myTraceCollector == null ? null : myTraceCollector.getScopePositions();
   }
 
   @Nullable
   public Map<SNode, UnitPositionInfo> getUnitPositions() {
+    Logger.getLogger(getClass()).warnDeprecatedUse("Stop using CompatibilityTextUnit");
     return myTraceCollector == null ? null : myTraceCollector.getUnitPositions();
   }
 
