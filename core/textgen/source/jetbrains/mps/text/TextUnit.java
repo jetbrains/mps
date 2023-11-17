@@ -34,6 +34,15 @@ public interface TextUnit {
   String getFileName();
   @NotNull
   SNode getStartNode();
+
+  // XXX likely, need some context or at least TextGenRegistry instance. Would be great to pass TextGenSettings or its isGenerateDebugInfo value
+  // to avoid collecting traces unless we're going to serialize them.
+  // Alternatively, may pass required context when constructing TU - from transition perspective, might be easier to regenerate breakdownToUnits()
+  // and use some factory (e.g. in TextGenModelOutline) to give access to TGR/Context (mOutline.newContext) or to build TU instance
+  // (e.g. outline.newTUBuilder().withStartNode().withContextObject().withBuffer().build()).
+  // OTOH, start node as a configuration parameter for TU may need a revision - if there's a context in generate(), can pass it there.
+  // Yet, having it at cons time is reasonable as we derive file name from it anyway, would be odd to use node to construct a name
+  //    and to assume the same node comes to generate()'s context
   void generate();
 
   /**

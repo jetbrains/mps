@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ import org.jetbrains.annotations.Nullable;
 public class MPSTextGenerator extends ComponentPlugin implements ComponentHost {
   private final LanguageRegistry myLanguageRegistry;
   private TextGenSettings mySettings;
+  private TextGenRegistry myRegistry;
 
   public MPSTextGenerator(@NotNull LanguageRegistry languageRegistry) {
     myLanguageRegistry = languageRegistry;
@@ -39,7 +40,7 @@ public class MPSTextGenerator extends ComponentPlugin implements ComponentHost {
   @Override
   public void init() {
     super.init();
-    init(new TextGenRegistry(myLanguageRegistry));
+    myRegistry = init(new TextGenRegistry(myLanguageRegistry));
     mySettings = init(new TextGenSettings());
   }
 
@@ -52,6 +53,9 @@ public class MPSTextGenerator extends ComponentPlugin implements ComponentHost {
   @Nullable
   @Override
   public <T extends CoreComponent> T findComponent(@NotNull Class<T> componentClass) {
+    if (TextGenRegistry.class.isAssignableFrom(componentClass)) {
+      return componentClass.cast(myRegistry);
+    }
     if (componentClass == TextGenSettings.class) {
       return componentClass.cast(mySettings);
     }
