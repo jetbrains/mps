@@ -19,6 +19,8 @@ import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import com.intellij.openapi.application.AccessToken;
+import com.intellij.util.SlowOperations;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.vcs.FileStatusManager;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
@@ -60,8 +62,10 @@ public final class ConflictsUtil {
   }
 
   private static boolean isConflictedFile(@NotNull VirtualFile vf, @NotNull Project project) {
-    FileStatus status = FileStatusManager.getInstance(project).getStatus(vf);
-    return FileStatus.MERGED_WITH_CONFLICTS == status || FileStatus.MERGED_WITH_BOTH_CONFLICTS == status;
+    try (AccessToken ignored = SlowOperations.allowSlowOperations("known-issues")) {
+      FileStatus status = FileStatusManager.getInstance(project).getStatus(vf);
+      return FileStatus.MERGED_WITH_CONFLICTS == status || FileStatus.MERGED_WITH_BOTH_CONFLICTS == status;
+    }
   }
 
   private static List<VirtualFile> getConflictingFiles(Iterable<IFile> files, final Project project) {
