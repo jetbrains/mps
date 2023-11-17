@@ -156,9 +156,10 @@ public final class TextGenSupport implements TextArea {
 
   // FIXME copy of SNodeTextGen.foundError()
   public void reportError(String info) {
+    final String debugText = SNodeOperations.getDebugText(myContext.getPrimaryInput());
     String message = info != null ?
-        "textgen error: '" + info + "' in " + SNodeOperations.getDebugText(myContext.getPrimaryInput()) :
-        "textgen error in " + SNodeOperations.getDebugText(myContext.getPrimaryInput());
+                     String.format("textgen error: '%s' in %s", info, debugText) :
+                     String.format("textgen error in %s", debugText);
     getContextImpl().foundError(message, myContext.getPrimaryInput(), null);
   }
 

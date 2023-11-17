@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -147,7 +147,8 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
 
   @Override
   public void generate() {
-    if (!TextGenRegistry.getInstance().hasTextGen(myStartNode)) {
+    final TextGenRegistry textGenRegistry = TextGenRegistry.getInstance();
+    if (!textGenRegistry.hasTextGen(myStartNode)) {
       myState = Status.Empty;
       return;
     }
@@ -159,11 +160,11 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
 
 
     // if we got that far (tried to generate(), at least), do not consider state == undefined.
-    // It's easy way to deal with uncaught exceptions from text generation and not to fail with assert state != Undefined in TextGen_Facet.
+    // It's an easy way to deal with uncaught exceptions from text generation and not to fail with assert state != Undefined in TextGen_Facet.
     // Proper way is likely to try/catch/re-throw here.
     myState = Status.Failed;
     myErrorCollector = new ErrorCollector();
-    TextGenContextImpl tgContext = new TextGenContextImpl(myStartNode, this, myErrorCollector, trueBuffer);
+    TextGenContextImpl tgContext = new TextGenContextImpl(myStartNode, new TextGenContextImpl.Values(textGenRegistry, this, myErrorCollector, trueBuffer));
 
     TextGenSupport tgs = new TextGenSupport(tgContext);
     tgs.appendNode(myStartNode);

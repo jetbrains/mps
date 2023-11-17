@@ -28,32 +28,22 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 public final class TextGenContextImpl implements TextGenContext {
   private final SNode myInput;
-  private final RegularTextUnit myTextUnit;
-  private final ErrorCollector myErrorCollector;
-  private final TextBuffer myBuffer;
+  private final Values myValues;
 
-  private final TextGenRegistry myRegistry;
-
-  public TextGenContextImpl(@NotNull SNode input, @NotNull RegularTextUnit textUnit, @NotNull ErrorCollector errorCollector, @NotNull TextBuffer buffer) {
+  /*package*/ TextGenContextImpl(@NotNull SNode input, @NotNull Values outerWorld) {
     myInput = input;
-    myTextUnit = textUnit;
-    myErrorCollector = errorCollector;
-    myBuffer = buffer;
-    myRegistry = TextGenRegistry.getInstance();
+    myValues = outerWorld;
   }
 
-  private TextGenContextImpl(@NotNull SNode input, TextGenContextImpl copyFrom) {
+  private TextGenContextImpl(SNode input, TextGenContextImpl copyFrom) {
     myInput = input;
-    myTextUnit = copyFrom.myTextUnit;
-    myErrorCollector = copyFrom.myErrorCollector;
-    myBuffer = copyFrom.myBuffer;
-    myRegistry = copyFrom.myRegistry;
+    myValues = copyFrom.myValues;
   }
 
   @NotNull
   @Override
   public TextBuffer getBuffer() {
-    return myBuffer;
+    return myValues.myBuffer;
   }
 
   @Override
@@ -70,15 +60,29 @@ public final class TextGenContextImpl implements TextGenContext {
   }
 
   /*package*/ TextGenRegistry getTextGenRegistry() {
-    return myRegistry;
+    return myValues.myRegistry;
   }
 
   // not to confuse this TextGenContext with objects associated with TextUnit, meaningful in its context only
   /*package*/ <T> T getTextUnitContextObject(String identity, Class<T> kind) {
-    return myTextUnit.getContextObject(identity, kind);
+    return myValues.myTextUnit.getContextObject(identity, kind);
   }
 
-  /*package*/ void foundError(String error, @Nullable SNode node, @Nullable Throwable t) {
-    myErrorCollector.foundError(error, node, t);
+  /*package*/ void foundError(String error, @Nullable SNode node, @SuppressWarnings("SameParameterValue") @Nullable Throwable t) {
+    myValues.myErrorCollector.foundError(error, node, t);
+  }
+
+  /*package*/ static final class Values {
+    public final RegularTextUnit myTextUnit;
+    public final ErrorCollector myErrorCollector;
+    public final TextBuffer myBuffer;
+    public final TextGenRegistry myRegistry;
+
+    Values(@NotNull TextGenRegistry registry, @NotNull RegularTextUnit textUnit, @NotNull ErrorCollector errorCollector, @NotNull TextBuffer buffer) {
+      myTextUnit = textUnit;
+      myErrorCollector = errorCollector;
+      myBuffer = buffer;
+      myRegistry = registry;
+    }
   }
 }
