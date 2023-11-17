@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel;
 
@@ -10,7 +10,6 @@ import jetbrains.mps.smodel.AssociationData.DirectNode;
 import jetbrains.mps.smodel.AssociationData.IndirectNodePtr;
 import jetbrains.mps.smodel.AssociationData.SNodeAssociationUpdate;
 import jetbrains.mps.smodel.AssociationData.Transition;
-import jetbrains.mps.util.InternUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -21,6 +20,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
+
+import java.util.Objects;
 
 public final class StaticReference extends SReferenceBase {
 
@@ -369,7 +370,10 @@ public final class StaticReference extends SReferenceBase {
   }
 
   public void setResolveInfo(String info) {
-    setData(getData().withRI(InternUtil.intern(info)));
+    if (Objects.equals(getData().getRI(), info)) {
+      return;
+    }
+    setData(getData().withRI(info == null ? null : info.intern()));
   }
 
   @Override

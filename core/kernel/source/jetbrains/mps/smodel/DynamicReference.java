@@ -23,7 +23,6 @@ import jetbrains.mps.smodel.AssociationData.DynamicPtr;
 import jetbrains.mps.smodel.AssociationData.DynamicPtrWithOrigin;
 import jetbrains.mps.smodel.AssociationData.SNodeAssociationUpdate;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
-import jetbrains.mps.util.InternUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -38,6 +37,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -216,7 +216,10 @@ public final class DynamicReference extends SReferenceBase {
   }
 
   public void setResolveInfo(String info) {
-    setData(myData.withRI(InternUtil.intern(info)));
+    if (Objects.equals(myData.getRI(), info)) {
+      return;
+    }
+    setData(myData.withRI(info == null ? null : info.intern()));
   }
 
   @NotNull
