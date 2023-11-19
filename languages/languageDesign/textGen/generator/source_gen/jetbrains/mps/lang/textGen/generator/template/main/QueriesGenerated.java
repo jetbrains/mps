@@ -811,9 +811,9 @@ public class QueriesGenerated extends QueryProviderBase {
     imcMethods.put("5234914442344905175", new IfMC(i++));
     imcMethods.put("2170558324036772382", new IfMC(i++));
     imcMethods.put("998325320688469459", new IfMC(i++));
-    imcMethods.put("315321650468901271", new IfMC(i++));
+    imcMethods.put("322610057536842961", new IfMC(i++));
     imcMethods.put("8098116031886688664", new IfMC(i++));
-    imcMethods.put("8098116031886667017", new IfMC(i++));
+    imcMethods.put("322610057536905121", new IfMC(i++));
     imcMethods.put("2170558324036796286", new IfMC(i++));
   }
   @NotNull
