@@ -58,7 +58,24 @@ public final class ModelOutline implements TextGenModelOutline {
 
   @Override
   public void registerTextUnit(@NotNull String unitName, @Nullable String unitPath, @Nullable Charset encoding, SNode... input) {
-    registerTextUnit(new RegularTextUnit(input[0], unitName, unitPath, encoding));
+    registerTextUnit(new RegularTextUnit(input[0], unitName, unitPath, encoding, getPlatform()));
+  }
+
+  @Override
+  public UnitBuilder unitBuilder(@NotNull final String unitName, @Nullable final SNode input) {
+    return new UnitBuilder() {
+      @Override
+      public TextUnit build() {
+        final RegularTextUnit tu = new RegularTextUnit(input, unitName, unitPath, encoding, getPlatform());
+        if (layout != null) {
+          tu.setBufferLayout(layout);
+        }
+        if (contextObjects != null) {
+          contextObjects.forEach(p -> tu.addContextObject(p.o1, p.o2));
+        }
+        return tu;
+      }
+    };
   }
 
   @NotNull

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.text.impl;
 
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.text.BufferSnapshot;
@@ -48,6 +49,9 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
   private final String myFilename;
   private final String myPath;
   private final Charset myEncoding;
+
+  private final ComponentHost myPlatform;
+
   private Status myState = Status.Undefined;
   private String myOutcome;
   private BufferLayoutConfiguration myLayoutBuilder;
@@ -69,6 +73,17 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
     myFilename = filename;
     myPath = unitPath;
     myEncoding = encoding;
+    // FIXME transition period, remove once there we generate uses of cons with CH and there are no uses of these constructors
+    myPlatform = null;
+    myLayoutBuilder = new BufferLayoutConfiguration();
+  }
+
+  public RegularTextUnit(@NotNull SNode root, @NotNull String filename, @Nullable String unitPath, @Nullable Charset encoding, @NotNull ComponentHost mpsPlatform) {
+    myStartNode = root;
+    myFilename = filename;
+    myPath = unitPath;
+    myEncoding = encoding;
+    myPlatform = mpsPlatform;
     myLayoutBuilder = new BufferLayoutConfiguration();
   }
 
@@ -152,7 +167,7 @@ public class RegularTextUnit implements TextUnit, CompatibilityTextUnit {
 
   @Override
   public void generate() {
-    final TextGenRegistry textGenRegistry = TextGenRegistry.getInstance();
+    final TextGenRegistry textGenRegistry = myPlatform == null ? TextGenRegistry.getInstance() : myPlatform.findComponent(TextGenRegistry.class);
     if (!textGenRegistry.hasTextGen(myStartNode)) {
       myState = Status.Empty;
       return;

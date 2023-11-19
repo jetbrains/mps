@@ -17,18 +17,25 @@ package jetbrains.mps.text.rt;
 
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.text.TextUnit;
+import jetbrains.mps.text.impl.BufferLayoutConfiguration;
+import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * WORK IN PROGRESS
- * FIXME document
  * Tells the engine what the model output would look like (from TextGen perspective).
- * Lives in j.m.text.rt as it is deemed to be exposed as part of TextGenDescriptor RT API.
+ * Exposed as part of TextGenDescriptor RT API, for a generated {@link TextGenAspectDescriptor} to tell
+ * which {@code TextUnits} to produce from a model. For trivial cases, {@link #registerTextUnit(String, SNode...)}
+ * is usually enough. For more sophisticated scenarios, generated code shall resort to
+ * {@link #unitBuilder(String, SNode) unit builder} together with {@link #registerTextUnit(TextUnit)} to
+ * suggest units for processing.
+ *
  * @author Artem Tikhomirov
  * @since 3.3
  */
@@ -89,4 +96,49 @@ public interface TextGenModelOutline {
 
 //  XXX perhaps, generation of a binary file shall start this way
 //  void registerBinaryUnit(@NotNull String unitName, SNode... input);
+//  alternatively, unitBuilder().asBinary()...
+
+  // can have as many unitBuilder() with parameters as I like. This one is for present scenario when
+  // we start with name and input node right away. If other builders necessary, shall add relevant fields
+  // and method into UnitBuilder and add another unitBuilder() here.
+  abstract UnitBuilder unitBuilder(@NotNull String unitName, @NotNull SNode input);
+
+  /**
+   * Facility to produce a configured TextUnit instance, not intended to be implemented by user code (MPS provides implementation)
+   * not i
+   */
+  abstract class UnitBuilder {
+    protected String unitPath;
+    protected Charset encoding;
+    protected BufferLayoutConfiguration layout;
+    protected List<Pair<String, Object>> contextObjects;
+
+    protected UnitBuilder() {
+    }
+
+    public UnitBuilder encoding(Charset encoding) {
+      this.encoding = encoding;
+      return this;
+    }
+
+    public UnitBuilder path(String path) {
+      unitPath = path;
+      return this;
+    }
+
+    public UnitBuilder layout(BufferLayoutConfiguration layout) {
+      this.layout = layout;
+      return this;
+    }
+
+    public UnitBuilder with(String name, Object contextObject) {
+      if (contextObjects == null) {
+        contextObjects = new ArrayList<>(4);
+      }
+      contextObjects.add(new Pair<>(name, contextObject));
+      return this;
+    }
+
+    public abstract TextUnit build();
+  }
 }
