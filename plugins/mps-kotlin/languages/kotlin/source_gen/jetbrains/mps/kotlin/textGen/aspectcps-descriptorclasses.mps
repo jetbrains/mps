@@ -12015,7 +12015,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="Ov" role="39e2AY">
-          <ref role="39e2AS" node="2oE" resolve="ThisConstructorDelegationCall_TextGen" />
+          <ref role="39e2AS" node="2p8" resolve="ThisConstructorDelegationCall_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="IT" role="39e3Y0">
@@ -12027,7 +12027,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="Oy" role="39e2AY">
-          <ref role="39e2AS" node="2pd" resolve="ThisExpression_TextGen" />
+          <ref role="39e2AS" node="2pF" resolve="ThisExpression_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="IU" role="39e3Y0">
@@ -12039,7 +12039,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="O_" role="39e2AY">
-          <ref role="39e2AS" node="2pV" resolve="ThrowExpression_TextGen" />
+          <ref role="39e2AS" node="2qp" resolve="ThrowExpression_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="IV" role="39e3Y0">
@@ -12051,7 +12051,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="OC" role="39e2AY">
-          <ref role="39e2AS" node="2qp" resolve="TryExpression_TextGen" />
+          <ref role="39e2AS" node="2qR" resolve="TryExpression_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="IW" role="39e3Y0">
@@ -12063,7 +12063,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="OF" role="39e2AY">
-          <ref role="39e2AS" node="2rm" resolve="TypeAliasType_TextGen" />
+          <ref role="39e2AS" node="2rO" resolve="TypeAliasType_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="IX" role="39e3Y0">
@@ -12075,7 +12075,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="OI" role="39e2AY">
-          <ref role="39e2AS" node="2s0" resolve="TypeAlias_TextGen" />
+          <ref role="39e2AS" node="2su" resolve="TypeAlias_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="IY" role="39e3Y0">
@@ -12087,7 +12087,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="OL" role="39e2AY">
-          <ref role="39e2AS" node="2sT" resolve="TypeConstraint_TextGen" />
+          <ref role="39e2AS" node="2tn" resolve="TypeConstraint_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="IZ" role="39e3Y0">
@@ -12099,7 +12099,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="OO" role="39e2AY">
-          <ref role="39e2AS" node="2tC" resolve="TypeParameterReference_TextGen" />
+          <ref role="39e2AS" node="2u6" resolve="TypeParameterReference_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="J0" role="39e3Y0">
@@ -12111,7 +12111,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="OR" role="39e2AY">
-          <ref role="39e2AS" node="2u8" resolve="TypeParameter_TextGen" />
+          <ref role="39e2AS" node="2uA" resolve="TypeParameter_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="J1" role="39e3Y0">
@@ -12123,7 +12123,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="OU" role="39e2AY">
-          <ref role="39e2AS" node="2vu" resolve="TypeProjection_TextGen" />
+          <ref role="39e2AS" node="2vW" resolve="TypeProjection_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="J2" role="39e3Y0">
@@ -12135,7 +12135,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="OX" role="39e2AY">
-          <ref role="39e2AS" node="2wj" resolve="TypeTest_TextGen" />
+          <ref role="39e2AS" node="2wL" resolve="TypeTest_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="J3" role="39e3Y0">
@@ -12147,7 +12147,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="P0" role="39e2AY">
-          <ref role="39e2AS" node="2wY" resolve="ValueArgument_TextGen" />
+          <ref role="39e2AS" node="2xs" resolve="ValueArgument_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="J4" role="39e3Y0">
@@ -12159,7 +12159,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="P3" role="39e2AY">
-          <ref role="39e2AS" node="2y0" resolve="ValueClassModifier_TextGen" />
+          <ref role="39e2AS" node="2yu" resolve="ValueClassModifier_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="J5" role="39e3Y0">
@@ -12171,7 +12171,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="P6" role="39e2AY">
-          <ref role="39e2AS" node="2yl" resolve="VariableDeclaration_TextGen" />
+          <ref role="39e2AS" node="2yN" resolve="VariableDeclaration_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="J6" role="39e3Y0">
@@ -12183,7 +12183,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="P9" role="39e2AY">
-          <ref role="39e2AS" node="2zb" resolve="VariableRefExpression_TextGen" />
+          <ref role="39e2AS" node="2zD" resolve="VariableRefExpression_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="J7" role="39e3Y0">
@@ -12195,7 +12195,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="Pc" role="39e2AY">
-          <ref role="39e2AS" node="2z_" resolve="VisibilityModifier_TextGen" />
+          <ref role="39e2AS" node="2$3" resolve="VisibilityModifier_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="J8" role="39e3Y0">
@@ -12207,7 +12207,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="Pf" role="39e2AY">
-          <ref role="39e2AS" node="2$0" resolve="WhenEntry_TextGen" />
+          <ref role="39e2AS" node="2$u" resolve="WhenEntry_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="J9" role="39e3Y0">
@@ -12219,7 +12219,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="Pi" role="39e2AY">
-          <ref role="39e2AS" node="2_1" resolve="WhenExpression_TextGen" />
+          <ref role="39e2AS" node="2_v" resolve="WhenExpression_TextGen" />
         </node>
       </node>
       <node concept="39e2AG" id="Ja" role="39e3Y0">
@@ -12231,7 +12231,7 @@
           </node>
         </node>
         <node concept="39e2AT" id="Pl" role="39e2AY">
-          <ref role="39e2AS" node="2Bl" resolve="WhileStatement_TextGen" />
+          <ref role="39e2AS" node="2BN" resolve="WhileStatement_TextGen" />
         </node>
       </node>
     </node>
@@ -31400,7 +31400,7 @@
               <node concept="3cpWs6" id="2cO" role="3cqZAp">
                 <node concept="2ShNRf" id="2cP" role="3cqZAk">
                   <node concept="HV5vD" id="2cQ" role="2ShVmc">
-                    <ref role="HV5vE" node="2oE" resolve="ThisConstructorDelegationCall_TextGen" />
+                    <ref role="HV5vE" node="2p8" resolve="ThisConstructorDelegationCall_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31415,7 +31415,7 @@
               <node concept="3cpWs6" id="2cT" role="3cqZAp">
                 <node concept="2ShNRf" id="2cU" role="3cqZAk">
                   <node concept="HV5vD" id="2cV" role="2ShVmc">
-                    <ref role="HV5vE" node="2pd" resolve="ThisExpression_TextGen" />
+                    <ref role="HV5vE" node="2pF" resolve="ThisExpression_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31430,7 +31430,7 @@
               <node concept="3cpWs6" id="2cY" role="3cqZAp">
                 <node concept="2ShNRf" id="2cZ" role="3cqZAk">
                   <node concept="HV5vD" id="2d0" role="2ShVmc">
-                    <ref role="HV5vE" node="2pV" resolve="ThrowExpression_TextGen" />
+                    <ref role="HV5vE" node="2qp" resolve="ThrowExpression_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31445,7 +31445,7 @@
               <node concept="3cpWs6" id="2d3" role="3cqZAp">
                 <node concept="2ShNRf" id="2d4" role="3cqZAk">
                   <node concept="HV5vD" id="2d5" role="2ShVmc">
-                    <ref role="HV5vE" node="2qp" resolve="TryExpression_TextGen" />
+                    <ref role="HV5vE" node="2qR" resolve="TryExpression_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31460,7 +31460,7 @@
               <node concept="3cpWs6" id="2d8" role="3cqZAp">
                 <node concept="2ShNRf" id="2d9" role="3cqZAk">
                   <node concept="HV5vD" id="2da" role="2ShVmc">
-                    <ref role="HV5vE" node="2s0" resolve="TypeAlias_TextGen" />
+                    <ref role="HV5vE" node="2su" resolve="TypeAlias_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31475,7 +31475,7 @@
               <node concept="3cpWs6" id="2dd" role="3cqZAp">
                 <node concept="2ShNRf" id="2de" role="3cqZAk">
                   <node concept="HV5vD" id="2df" role="2ShVmc">
-                    <ref role="HV5vE" node="2rm" resolve="TypeAliasType_TextGen" />
+                    <ref role="HV5vE" node="2rO" resolve="TypeAliasType_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31490,7 +31490,7 @@
               <node concept="3cpWs6" id="2di" role="3cqZAp">
                 <node concept="2ShNRf" id="2dj" role="3cqZAk">
                   <node concept="HV5vD" id="2dk" role="2ShVmc">
-                    <ref role="HV5vE" node="2sT" resolve="TypeConstraint_TextGen" />
+                    <ref role="HV5vE" node="2tn" resolve="TypeConstraint_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31505,7 +31505,7 @@
               <node concept="3cpWs6" id="2dn" role="3cqZAp">
                 <node concept="2ShNRf" id="2do" role="3cqZAk">
                   <node concept="HV5vD" id="2dp" role="2ShVmc">
-                    <ref role="HV5vE" node="2u8" resolve="TypeParameter_TextGen" />
+                    <ref role="HV5vE" node="2uA" resolve="TypeParameter_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31520,7 +31520,7 @@
               <node concept="3cpWs6" id="2ds" role="3cqZAp">
                 <node concept="2ShNRf" id="2dt" role="3cqZAk">
                   <node concept="HV5vD" id="2du" role="2ShVmc">
-                    <ref role="HV5vE" node="2tC" resolve="TypeParameterReference_TextGen" />
+                    <ref role="HV5vE" node="2u6" resolve="TypeParameterReference_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31535,7 +31535,7 @@
               <node concept="3cpWs6" id="2dx" role="3cqZAp">
                 <node concept="2ShNRf" id="2dy" role="3cqZAk">
                   <node concept="HV5vD" id="2dz" role="2ShVmc">
-                    <ref role="HV5vE" node="2vu" resolve="TypeProjection_TextGen" />
+                    <ref role="HV5vE" node="2vW" resolve="TypeProjection_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31550,7 +31550,7 @@
               <node concept="3cpWs6" id="2dA" role="3cqZAp">
                 <node concept="2ShNRf" id="2dB" role="3cqZAk">
                   <node concept="HV5vD" id="2dC" role="2ShVmc">
-                    <ref role="HV5vE" node="2wj" resolve="TypeTest_TextGen" />
+                    <ref role="HV5vE" node="2wL" resolve="TypeTest_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31565,7 +31565,7 @@
               <node concept="3cpWs6" id="2dF" role="3cqZAp">
                 <node concept="2ShNRf" id="2dG" role="3cqZAk">
                   <node concept="HV5vD" id="2dH" role="2ShVmc">
-                    <ref role="HV5vE" node="2wY" resolve="ValueArgument_TextGen" />
+                    <ref role="HV5vE" node="2xs" resolve="ValueArgument_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31580,7 +31580,7 @@
               <node concept="3cpWs6" id="2dK" role="3cqZAp">
                 <node concept="2ShNRf" id="2dL" role="3cqZAk">
                   <node concept="HV5vD" id="2dM" role="2ShVmc">
-                    <ref role="HV5vE" node="2y0" resolve="ValueClassModifier_TextGen" />
+                    <ref role="HV5vE" node="2yu" resolve="ValueClassModifier_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31595,7 +31595,7 @@
               <node concept="3cpWs6" id="2dP" role="3cqZAp">
                 <node concept="2ShNRf" id="2dQ" role="3cqZAk">
                   <node concept="HV5vD" id="2dR" role="2ShVmc">
-                    <ref role="HV5vE" node="2yl" resolve="VariableDeclaration_TextGen" />
+                    <ref role="HV5vE" node="2yN" resolve="VariableDeclaration_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31610,7 +31610,7 @@
               <node concept="3cpWs6" id="2dU" role="3cqZAp">
                 <node concept="2ShNRf" id="2dV" role="3cqZAk">
                   <node concept="HV5vD" id="2dW" role="2ShVmc">
-                    <ref role="HV5vE" node="2zb" resolve="VariableRefExpression_TextGen" />
+                    <ref role="HV5vE" node="2zD" resolve="VariableRefExpression_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31625,7 +31625,7 @@
               <node concept="3cpWs6" id="2dZ" role="3cqZAp">
                 <node concept="2ShNRf" id="2e0" role="3cqZAk">
                   <node concept="HV5vD" id="2e1" role="2ShVmc">
-                    <ref role="HV5vE" node="2z_" resolve="VisibilityModifier_TextGen" />
+                    <ref role="HV5vE" node="2$3" resolve="VisibilityModifier_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31640,7 +31640,7 @@
               <node concept="3cpWs6" id="2e4" role="3cqZAp">
                 <node concept="2ShNRf" id="2e5" role="3cqZAk">
                   <node concept="HV5vD" id="2e6" role="2ShVmc">
-                    <ref role="HV5vE" node="2$0" resolve="WhenEntry_TextGen" />
+                    <ref role="HV5vE" node="2$u" resolve="WhenEntry_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31655,7 +31655,7 @@
               <node concept="3cpWs6" id="2e9" role="3cqZAp">
                 <node concept="2ShNRf" id="2ea" role="3cqZAk">
                   <node concept="HV5vD" id="2eb" role="2ShVmc">
-                    <ref role="HV5vE" node="2_1" resolve="WhenExpression_TextGen" />
+                    <ref role="HV5vE" node="2_v" resolve="WhenExpression_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31670,7 +31670,7 @@
               <node concept="3cpWs6" id="2ee" role="3cqZAp">
                 <node concept="2ShNRf" id="2ef" role="3cqZAk">
                   <node concept="HV5vD" id="2eg" role="2ShVmc">
-                    <ref role="HV5vE" node="2Bl" resolve="WhileStatement_TextGen" />
+                    <ref role="HV5vE" node="2BN" resolve="WhileStatement_TextGen" />
                   </node>
                 </node>
               </node>
@@ -31743,33 +31743,36 @@
                       <ref role="37wK5l" to="yfwt:~TextGenModelOutline.registerTextUnit(jetbrains.mps.text.TextUnit)" resolve="registerTextUnit" />
                       <node concept="1rXfSq" id="2eO" role="37wK5m">
                         <ref role="37wK5l" node="21t" resolve="createTextUnit0" />
-                        <node concept="3K4zz7" id="2eP" role="37wK5m">
-                          <node concept="1eOMI4" id="2eR" role="3K4GZi">
-                            <node concept="3cpWs3" id="2eU" role="1eOMHV">
-                              <node concept="37vLTw" id="2eV" role="3uHU7w">
+                        <node concept="37vLTw" id="2eP" role="37wK5m">
+                          <ref role="3cqZAo" node="2ek" resolve="outline" />
+                        </node>
+                        <node concept="3K4zz7" id="2eQ" role="37wK5m">
+                          <node concept="1eOMI4" id="2eS" role="3K4GZi">
+                            <node concept="3cpWs3" id="2eV" role="1eOMHV">
+                              <node concept="37vLTw" id="2eW" role="3uHU7w">
                                 <ref role="3cqZAo" node="2eH" resolve="ext" />
                               </node>
-                              <node concept="3cpWs3" id="2eW" role="3uHU7B">
-                                <node concept="37vLTw" id="2eX" role="3uHU7B">
+                              <node concept="3cpWs3" id="2eX" role="3uHU7B">
+                                <node concept="37vLTw" id="2eY" role="3uHU7B">
                                   <ref role="3cqZAo" node="2eD" resolve="fname" />
                                 </node>
-                                <node concept="1Xhbcc" id="2eY" role="3uHU7w">
+                                <node concept="1Xhbcc" id="2eZ" role="3uHU7w">
                                   <property role="1XhdNS" value="." />
                                 </node>
                               </node>
                             </node>
                           </node>
-                          <node concept="37vLTw" id="2eS" role="3K4E3e">
+                          <node concept="37vLTw" id="2eT" role="3K4E3e">
                             <ref role="3cqZAo" node="2eD" resolve="fname" />
                           </node>
-                          <node concept="3clFbC" id="2eT" role="3K4Cdx">
-                            <node concept="10Nm6u" id="2eZ" role="3uHU7w" />
-                            <node concept="37vLTw" id="2f0" role="3uHU7B">
+                          <node concept="3clFbC" id="2eU" role="3K4Cdx">
+                            <node concept="10Nm6u" id="2f0" role="3uHU7w" />
+                            <node concept="37vLTw" id="2f1" role="3uHU7B">
                               <ref role="3cqZAo" node="2eH" resolve="ext" />
                             </node>
                           </node>
                         </node>
-                        <node concept="37vLTw" id="2eQ" role="37wK5m">
+                        <node concept="37vLTw" id="2eR" role="37wK5m">
                           <ref role="3cqZAo" node="2er" resolve="root" />
                         </node>
                       </node>
@@ -31779,472 +31782,487 @@
                 <node concept="3N13vt" id="2eC" role="3cqZAp" />
               </node>
               <node concept="2OqwBi" id="2e$" role="3clFbw">
-                <node concept="2OqwBi" id="2f1" role="2Oq$k0">
-                  <node concept="37vLTw" id="2f3" role="2Oq$k0">
+                <node concept="2OqwBi" id="2f2" role="2Oq$k0">
+                  <node concept="37vLTw" id="2f4" role="2Oq$k0">
                     <ref role="3cqZAo" node="2er" resolve="root" />
                   </node>
-                  <node concept="liA8E" id="2f4" role="2OqNvi">
+                  <node concept="liA8E" id="2f5" role="2OqNvi">
                     <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                   </node>
                 </node>
-                <node concept="liA8E" id="2f2" role="2OqNvi">
+                <node concept="liA8E" id="2f3" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="35c_gC" id="2f5" role="37wK5m">
+                  <node concept="35c_gC" id="2f6" role="37wK5m">
                     <ref role="35c_gD" to="hcm8:2yYXHtl6JfJ" resolve="KtScript" />
                   </node>
                 </node>
               </node>
             </node>
             <node concept="3clFbJ" id="2eu" role="3cqZAp">
-              <node concept="3clFbS" id="2f6" role="3clFbx">
-                <node concept="3cpWs8" id="2f8" role="3cqZAp">
-                  <node concept="3cpWsn" id="2fc" role="3cpWs9">
-                    <property role="TrG5h" value="fname" />
-                    <node concept="3uibUv" id="2fd" role="1tU5fm">
-                      <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                    </node>
-                    <node concept="1rXfSq" id="2fe" role="33vP2m">
-                      <ref role="37wK5l" node="21i" resolve="getFileName_InterfaceDeclaration" />
-                      <node concept="37vLTw" id="2ff" role="37wK5m">
-                        <ref role="3cqZAo" node="2er" resolve="root" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
+              <node concept="3clFbS" id="2f7" role="3clFbx">
                 <node concept="3cpWs8" id="2f9" role="3cqZAp">
-                  <node concept="3cpWsn" id="2fg" role="3cpWs9">
-                    <property role="TrG5h" value="ext" />
-                    <node concept="3uibUv" id="2fh" role="1tU5fm">
+                  <node concept="3cpWsn" id="2fd" role="3cpWs9">
+                    <property role="TrG5h" value="fname" />
+                    <node concept="3uibUv" id="2fe" role="1tU5fm">
                       <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                     </node>
-                    <node concept="1rXfSq" id="2fi" role="33vP2m">
-                      <ref role="37wK5l" node="21o" resolve="getFileExtension_InterfaceDeclaration" />
-                      <node concept="37vLTw" id="2fj" role="37wK5m">
+                    <node concept="1rXfSq" id="2ff" role="33vP2m">
+                      <ref role="37wK5l" node="21i" resolve="getFileName_InterfaceDeclaration" />
+                      <node concept="37vLTw" id="2fg" role="37wK5m">
                         <ref role="3cqZAo" node="2er" resolve="root" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3clFbF" id="2fa" role="3cqZAp">
-                  <node concept="2OqwBi" id="2fk" role="3clFbG">
-                    <node concept="37vLTw" id="2fl" role="2Oq$k0">
+                <node concept="3cpWs8" id="2fa" role="3cqZAp">
+                  <node concept="3cpWsn" id="2fh" role="3cpWs9">
+                    <property role="TrG5h" value="ext" />
+                    <node concept="3uibUv" id="2fi" role="1tU5fm">
+                      <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                    </node>
+                    <node concept="1rXfSq" id="2fj" role="33vP2m">
+                      <ref role="37wK5l" node="21o" resolve="getFileExtension_InterfaceDeclaration" />
+                      <node concept="37vLTw" id="2fk" role="37wK5m">
+                        <ref role="3cqZAo" node="2er" resolve="root" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="2fb" role="3cqZAp">
+                  <node concept="2OqwBi" id="2fl" role="3clFbG">
+                    <node concept="37vLTw" id="2fm" role="2Oq$k0">
                       <ref role="3cqZAo" node="2ek" resolve="outline" />
                     </node>
-                    <node concept="liA8E" id="2fm" role="2OqNvi">
+                    <node concept="liA8E" id="2fn" role="2OqNvi">
                       <ref role="37wK5l" to="yfwt:~TextGenModelOutline.registerTextUnit(jetbrains.mps.text.TextUnit)" resolve="registerTextUnit" />
-                      <node concept="1rXfSq" id="2fn" role="37wK5m">
+                      <node concept="1rXfSq" id="2fo" role="37wK5m">
                         <ref role="37wK5l" node="21u" resolve="createTextUnit1" />
-                        <node concept="3K4zz7" id="2fo" role="37wK5m">
-                          <node concept="1eOMI4" id="2fq" role="3K4GZi">
-                            <node concept="3cpWs3" id="2ft" role="1eOMHV">
-                              <node concept="37vLTw" id="2fu" role="3uHU7w">
-                                <ref role="3cqZAo" node="2fg" resolve="ext" />
+                        <node concept="37vLTw" id="2fp" role="37wK5m">
+                          <ref role="3cqZAo" node="2ek" resolve="outline" />
+                        </node>
+                        <node concept="3K4zz7" id="2fq" role="37wK5m">
+                          <node concept="1eOMI4" id="2fs" role="3K4GZi">
+                            <node concept="3cpWs3" id="2fv" role="1eOMHV">
+                              <node concept="37vLTw" id="2fw" role="3uHU7w">
+                                <ref role="3cqZAo" node="2fh" resolve="ext" />
                               </node>
-                              <node concept="3cpWs3" id="2fv" role="3uHU7B">
-                                <node concept="37vLTw" id="2fw" role="3uHU7B">
-                                  <ref role="3cqZAo" node="2fc" resolve="fname" />
+                              <node concept="3cpWs3" id="2fx" role="3uHU7B">
+                                <node concept="37vLTw" id="2fy" role="3uHU7B">
+                                  <ref role="3cqZAo" node="2fd" resolve="fname" />
                                 </node>
-                                <node concept="1Xhbcc" id="2fx" role="3uHU7w">
+                                <node concept="1Xhbcc" id="2fz" role="3uHU7w">
                                   <property role="1XhdNS" value="." />
                                 </node>
                               </node>
                             </node>
                           </node>
-                          <node concept="37vLTw" id="2fr" role="3K4E3e">
-                            <ref role="3cqZAo" node="2fc" resolve="fname" />
+                          <node concept="37vLTw" id="2ft" role="3K4E3e">
+                            <ref role="3cqZAo" node="2fd" resolve="fname" />
                           </node>
-                          <node concept="3clFbC" id="2fs" role="3K4Cdx">
-                            <node concept="10Nm6u" id="2fy" role="3uHU7w" />
-                            <node concept="37vLTw" id="2fz" role="3uHU7B">
-                              <ref role="3cqZAo" node="2fg" resolve="ext" />
+                          <node concept="3clFbC" id="2fu" role="3K4Cdx">
+                            <node concept="10Nm6u" id="2f$" role="3uHU7w" />
+                            <node concept="37vLTw" id="2f_" role="3uHU7B">
+                              <ref role="3cqZAo" node="2fh" resolve="ext" />
                             </node>
                           </node>
                         </node>
-                        <node concept="37vLTw" id="2fp" role="37wK5m">
+                        <node concept="37vLTw" id="2fr" role="37wK5m">
                           <ref role="3cqZAo" node="2er" resolve="root" />
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3N13vt" id="2fb" role="3cqZAp" />
+                <node concept="3N13vt" id="2fc" role="3cqZAp" />
               </node>
-              <node concept="2OqwBi" id="2f7" role="3clFbw">
-                <node concept="2OqwBi" id="2f$" role="2Oq$k0">
-                  <node concept="37vLTw" id="2fA" role="2Oq$k0">
+              <node concept="2OqwBi" id="2f8" role="3clFbw">
+                <node concept="2OqwBi" id="2fA" role="2Oq$k0">
+                  <node concept="37vLTw" id="2fC" role="2Oq$k0">
                     <ref role="3cqZAo" node="2er" resolve="root" />
                   </node>
-                  <node concept="liA8E" id="2fB" role="2OqNvi">
+                  <node concept="liA8E" id="2fD" role="2OqNvi">
                     <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                   </node>
                 </node>
-                <node concept="liA8E" id="2f_" role="2OqNvi">
+                <node concept="liA8E" id="2fB" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="35c_gC" id="2fC" role="37wK5m">
+                  <node concept="35c_gC" id="2fE" role="37wK5m">
                     <ref role="35c_gD" to="hcm8:2yYXHtli8qZ" resolve="InterfaceDeclaration" />
                   </node>
                 </node>
               </node>
             </node>
             <node concept="3clFbJ" id="2ev" role="3cqZAp">
-              <node concept="3clFbS" id="2fD" role="3clFbx">
-                <node concept="3cpWs8" id="2fF" role="3cqZAp">
-                  <node concept="3cpWsn" id="2fJ" role="3cpWs9">
+              <node concept="3clFbS" id="2fF" role="3clFbx">
+                <node concept="3cpWs8" id="2fH" role="3cqZAp">
+                  <node concept="3cpWsn" id="2fL" role="3cpWs9">
                     <property role="TrG5h" value="fname" />
-                    <node concept="3uibUv" id="2fK" role="1tU5fm">
+                    <node concept="3uibUv" id="2fM" role="1tU5fm">
                       <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                     </node>
-                    <node concept="1rXfSq" id="2fL" role="33vP2m">
+                    <node concept="1rXfSq" id="2fN" role="33vP2m">
                       <ref role="37wK5l" node="21j" resolve="getFileName_KotlinFile" />
-                      <node concept="37vLTw" id="2fM" role="37wK5m">
+                      <node concept="37vLTw" id="2fO" role="37wK5m">
                         <ref role="3cqZAo" node="2er" resolve="root" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3cpWs8" id="2fG" role="3cqZAp">
-                  <node concept="3cpWsn" id="2fN" role="3cpWs9">
+                <node concept="3cpWs8" id="2fI" role="3cqZAp">
+                  <node concept="3cpWsn" id="2fP" role="3cpWs9">
                     <property role="TrG5h" value="ext" />
-                    <node concept="3uibUv" id="2fO" role="1tU5fm">
+                    <node concept="3uibUv" id="2fQ" role="1tU5fm">
                       <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                     </node>
-                    <node concept="1rXfSq" id="2fP" role="33vP2m">
+                    <node concept="1rXfSq" id="2fR" role="33vP2m">
                       <ref role="37wK5l" node="21p" resolve="getFileExtension_KotlinFile" />
-                      <node concept="37vLTw" id="2fQ" role="37wK5m">
+                      <node concept="37vLTw" id="2fS" role="37wK5m">
                         <ref role="3cqZAo" node="2er" resolve="root" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3clFbF" id="2fH" role="3cqZAp">
-                  <node concept="2OqwBi" id="2fR" role="3clFbG">
-                    <node concept="37vLTw" id="2fS" role="2Oq$k0">
+                <node concept="3clFbF" id="2fJ" role="3cqZAp">
+                  <node concept="2OqwBi" id="2fT" role="3clFbG">
+                    <node concept="37vLTw" id="2fU" role="2Oq$k0">
                       <ref role="3cqZAo" node="2ek" resolve="outline" />
                     </node>
-                    <node concept="liA8E" id="2fT" role="2OqNvi">
+                    <node concept="liA8E" id="2fV" role="2OqNvi">
                       <ref role="37wK5l" to="yfwt:~TextGenModelOutline.registerTextUnit(jetbrains.mps.text.TextUnit)" resolve="registerTextUnit" />
-                      <node concept="1rXfSq" id="2fU" role="37wK5m">
+                      <node concept="1rXfSq" id="2fW" role="37wK5m">
                         <ref role="37wK5l" node="21v" resolve="createTextUnit2" />
-                        <node concept="3K4zz7" id="2fV" role="37wK5m">
-                          <node concept="1eOMI4" id="2fX" role="3K4GZi">
-                            <node concept="3cpWs3" id="2g0" role="1eOMHV">
-                              <node concept="37vLTw" id="2g1" role="3uHU7w">
-                                <ref role="3cqZAo" node="2fN" resolve="ext" />
+                        <node concept="37vLTw" id="2fX" role="37wK5m">
+                          <ref role="3cqZAo" node="2ek" resolve="outline" />
+                        </node>
+                        <node concept="3K4zz7" id="2fY" role="37wK5m">
+                          <node concept="1eOMI4" id="2g0" role="3K4GZi">
+                            <node concept="3cpWs3" id="2g3" role="1eOMHV">
+                              <node concept="37vLTw" id="2g4" role="3uHU7w">
+                                <ref role="3cqZAo" node="2fP" resolve="ext" />
                               </node>
-                              <node concept="3cpWs3" id="2g2" role="3uHU7B">
-                                <node concept="37vLTw" id="2g3" role="3uHU7B">
-                                  <ref role="3cqZAo" node="2fJ" resolve="fname" />
+                              <node concept="3cpWs3" id="2g5" role="3uHU7B">
+                                <node concept="37vLTw" id="2g6" role="3uHU7B">
+                                  <ref role="3cqZAo" node="2fL" resolve="fname" />
                                 </node>
-                                <node concept="1Xhbcc" id="2g4" role="3uHU7w">
+                                <node concept="1Xhbcc" id="2g7" role="3uHU7w">
                                   <property role="1XhdNS" value="." />
                                 </node>
                               </node>
                             </node>
                           </node>
-                          <node concept="37vLTw" id="2fY" role="3K4E3e">
-                            <ref role="3cqZAo" node="2fJ" resolve="fname" />
+                          <node concept="37vLTw" id="2g1" role="3K4E3e">
+                            <ref role="3cqZAo" node="2fL" resolve="fname" />
                           </node>
-                          <node concept="3clFbC" id="2fZ" role="3K4Cdx">
-                            <node concept="10Nm6u" id="2g5" role="3uHU7w" />
-                            <node concept="37vLTw" id="2g6" role="3uHU7B">
-                              <ref role="3cqZAo" node="2fN" resolve="ext" />
+                          <node concept="3clFbC" id="2g2" role="3K4Cdx">
+                            <node concept="10Nm6u" id="2g8" role="3uHU7w" />
+                            <node concept="37vLTw" id="2g9" role="3uHU7B">
+                              <ref role="3cqZAo" node="2fP" resolve="ext" />
                             </node>
                           </node>
                         </node>
-                        <node concept="37vLTw" id="2fW" role="37wK5m">
+                        <node concept="37vLTw" id="2fZ" role="37wK5m">
                           <ref role="3cqZAo" node="2er" resolve="root" />
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3N13vt" id="2fI" role="3cqZAp" />
+                <node concept="3N13vt" id="2fK" role="3cqZAp" />
               </node>
-              <node concept="2OqwBi" id="2fE" role="3clFbw">
-                <node concept="2OqwBi" id="2g7" role="2Oq$k0">
-                  <node concept="37vLTw" id="2g9" role="2Oq$k0">
+              <node concept="2OqwBi" id="2fG" role="3clFbw">
+                <node concept="2OqwBi" id="2ga" role="2Oq$k0">
+                  <node concept="37vLTw" id="2gc" role="2Oq$k0">
                     <ref role="3cqZAo" node="2er" resolve="root" />
                   </node>
-                  <node concept="liA8E" id="2ga" role="2OqNvi">
+                  <node concept="liA8E" id="2gd" role="2OqNvi">
                     <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                   </node>
                 </node>
-                <node concept="liA8E" id="2g8" role="2OqNvi">
+                <node concept="liA8E" id="2gb" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="35c_gC" id="2gb" role="37wK5m">
+                  <node concept="35c_gC" id="2ge" role="37wK5m">
                     <ref role="35c_gD" to="hcm8:2yYXHtl6JkD" resolve="KotlinFile" />
                   </node>
                 </node>
               </node>
             </node>
             <node concept="3clFbJ" id="2ew" role="3cqZAp">
-              <node concept="3clFbS" id="2gc" role="3clFbx">
-                <node concept="3cpWs8" id="2ge" role="3cqZAp">
-                  <node concept="3cpWsn" id="2gi" role="3cpWs9">
+              <node concept="3clFbS" id="2gf" role="3clFbx">
+                <node concept="3cpWs8" id="2gh" role="3cqZAp">
+                  <node concept="3cpWsn" id="2gl" role="3cpWs9">
                     <property role="TrG5h" value="fname" />
-                    <node concept="3uibUv" id="2gj" role="1tU5fm">
+                    <node concept="3uibUv" id="2gm" role="1tU5fm">
                       <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                     </node>
-                    <node concept="1rXfSq" id="2gk" role="33vP2m">
+                    <node concept="1rXfSq" id="2gn" role="33vP2m">
                       <ref role="37wK5l" node="21k" resolve="getFileName_ClassDeclaration" />
-                      <node concept="37vLTw" id="2gl" role="37wK5m">
+                      <node concept="37vLTw" id="2go" role="37wK5m">
                         <ref role="3cqZAo" node="2er" resolve="root" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3cpWs8" id="2gf" role="3cqZAp">
-                  <node concept="3cpWsn" id="2gm" role="3cpWs9">
+                <node concept="3cpWs8" id="2gi" role="3cqZAp">
+                  <node concept="3cpWsn" id="2gp" role="3cpWs9">
                     <property role="TrG5h" value="ext" />
-                    <node concept="3uibUv" id="2gn" role="1tU5fm">
+                    <node concept="3uibUv" id="2gq" role="1tU5fm">
                       <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                     </node>
-                    <node concept="1rXfSq" id="2go" role="33vP2m">
+                    <node concept="1rXfSq" id="2gr" role="33vP2m">
                       <ref role="37wK5l" node="21q" resolve="getFileExtension_ClassDeclaration" />
-                      <node concept="37vLTw" id="2gp" role="37wK5m">
+                      <node concept="37vLTw" id="2gs" role="37wK5m">
                         <ref role="3cqZAo" node="2er" resolve="root" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3clFbF" id="2gg" role="3cqZAp">
-                  <node concept="2OqwBi" id="2gq" role="3clFbG">
-                    <node concept="37vLTw" id="2gr" role="2Oq$k0">
+                <node concept="3clFbF" id="2gj" role="3cqZAp">
+                  <node concept="2OqwBi" id="2gt" role="3clFbG">
+                    <node concept="37vLTw" id="2gu" role="2Oq$k0">
                       <ref role="3cqZAo" node="2ek" resolve="outline" />
                     </node>
-                    <node concept="liA8E" id="2gs" role="2OqNvi">
+                    <node concept="liA8E" id="2gv" role="2OqNvi">
                       <ref role="37wK5l" to="yfwt:~TextGenModelOutline.registerTextUnit(jetbrains.mps.text.TextUnit)" resolve="registerTextUnit" />
-                      <node concept="1rXfSq" id="2gt" role="37wK5m">
+                      <node concept="1rXfSq" id="2gw" role="37wK5m">
                         <ref role="37wK5l" node="21w" resolve="createTextUnit3" />
-                        <node concept="3K4zz7" id="2gu" role="37wK5m">
-                          <node concept="1eOMI4" id="2gw" role="3K4GZi">
-                            <node concept="3cpWs3" id="2gz" role="1eOMHV">
-                              <node concept="37vLTw" id="2g$" role="3uHU7w">
-                                <ref role="3cqZAo" node="2gm" resolve="ext" />
+                        <node concept="37vLTw" id="2gx" role="37wK5m">
+                          <ref role="3cqZAo" node="2ek" resolve="outline" />
+                        </node>
+                        <node concept="3K4zz7" id="2gy" role="37wK5m">
+                          <node concept="1eOMI4" id="2g$" role="3K4GZi">
+                            <node concept="3cpWs3" id="2gB" role="1eOMHV">
+                              <node concept="37vLTw" id="2gC" role="3uHU7w">
+                                <ref role="3cqZAo" node="2gp" resolve="ext" />
                               </node>
-                              <node concept="3cpWs3" id="2g_" role="3uHU7B">
-                                <node concept="37vLTw" id="2gA" role="3uHU7B">
-                                  <ref role="3cqZAo" node="2gi" resolve="fname" />
+                              <node concept="3cpWs3" id="2gD" role="3uHU7B">
+                                <node concept="37vLTw" id="2gE" role="3uHU7B">
+                                  <ref role="3cqZAo" node="2gl" resolve="fname" />
                                 </node>
-                                <node concept="1Xhbcc" id="2gB" role="3uHU7w">
+                                <node concept="1Xhbcc" id="2gF" role="3uHU7w">
                                   <property role="1XhdNS" value="." />
                                 </node>
                               </node>
                             </node>
                           </node>
-                          <node concept="37vLTw" id="2gx" role="3K4E3e">
-                            <ref role="3cqZAo" node="2gi" resolve="fname" />
+                          <node concept="37vLTw" id="2g_" role="3K4E3e">
+                            <ref role="3cqZAo" node="2gl" resolve="fname" />
                           </node>
-                          <node concept="3clFbC" id="2gy" role="3K4Cdx">
-                            <node concept="10Nm6u" id="2gC" role="3uHU7w" />
-                            <node concept="37vLTw" id="2gD" role="3uHU7B">
-                              <ref role="3cqZAo" node="2gm" resolve="ext" />
+                          <node concept="3clFbC" id="2gA" role="3K4Cdx">
+                            <node concept="10Nm6u" id="2gG" role="3uHU7w" />
+                            <node concept="37vLTw" id="2gH" role="3uHU7B">
+                              <ref role="3cqZAo" node="2gp" resolve="ext" />
                             </node>
                           </node>
                         </node>
-                        <node concept="37vLTw" id="2gv" role="37wK5m">
+                        <node concept="37vLTw" id="2gz" role="37wK5m">
                           <ref role="3cqZAo" node="2er" resolve="root" />
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3N13vt" id="2gh" role="3cqZAp" />
+                <node concept="3N13vt" id="2gk" role="3cqZAp" />
               </node>
-              <node concept="2OqwBi" id="2gd" role="3clFbw">
-                <node concept="2OqwBi" id="2gE" role="2Oq$k0">
-                  <node concept="37vLTw" id="2gG" role="2Oq$k0">
+              <node concept="2OqwBi" id="2gg" role="3clFbw">
+                <node concept="2OqwBi" id="2gI" role="2Oq$k0">
+                  <node concept="37vLTw" id="2gK" role="2Oq$k0">
                     <ref role="3cqZAo" node="2er" resolve="root" />
                   </node>
-                  <node concept="liA8E" id="2gH" role="2OqNvi">
+                  <node concept="liA8E" id="2gL" role="2OqNvi">
                     <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                   </node>
                 </node>
-                <node concept="liA8E" id="2gF" role="2OqNvi">
+                <node concept="liA8E" id="2gJ" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="35c_gC" id="2gI" role="37wK5m">
+                  <node concept="35c_gC" id="2gM" role="37wK5m">
                     <ref role="35c_gD" to="hcm8:2yYXHtl6JhD" resolve="ClassDeclaration" />
                   </node>
                 </node>
               </node>
             </node>
             <node concept="3clFbJ" id="2ex" role="3cqZAp">
-              <node concept="3clFbS" id="2gJ" role="3clFbx">
-                <node concept="3cpWs8" id="2gL" role="3cqZAp">
-                  <node concept="3cpWsn" id="2gP" role="3cpWs9">
-                    <property role="TrG5h" value="fname" />
-                    <node concept="3uibUv" id="2gQ" role="1tU5fm">
-                      <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                    </node>
-                    <node concept="1rXfSq" id="2gR" role="33vP2m">
-                      <ref role="37wK5l" node="21l" resolve="getFileName_EnumClassDeclaration" />
-                      <node concept="37vLTw" id="2gS" role="37wK5m">
-                        <ref role="3cqZAo" node="2er" resolve="root" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="3cpWs8" id="2gM" role="3cqZAp">
+              <node concept="3clFbS" id="2gN" role="3clFbx">
+                <node concept="3cpWs8" id="2gP" role="3cqZAp">
                   <node concept="3cpWsn" id="2gT" role="3cpWs9">
-                    <property role="TrG5h" value="ext" />
+                    <property role="TrG5h" value="fname" />
                     <node concept="3uibUv" id="2gU" role="1tU5fm">
                       <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                     </node>
                     <node concept="1rXfSq" id="2gV" role="33vP2m">
-                      <ref role="37wK5l" node="21r" resolve="getFileExtension_EnumClassDeclaration" />
+                      <ref role="37wK5l" node="21l" resolve="getFileName_EnumClassDeclaration" />
                       <node concept="37vLTw" id="2gW" role="37wK5m">
                         <ref role="3cqZAo" node="2er" resolve="root" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3clFbF" id="2gN" role="3cqZAp">
-                  <node concept="2OqwBi" id="2gX" role="3clFbG">
-                    <node concept="37vLTw" id="2gY" role="2Oq$k0">
+                <node concept="3cpWs8" id="2gQ" role="3cqZAp">
+                  <node concept="3cpWsn" id="2gX" role="3cpWs9">
+                    <property role="TrG5h" value="ext" />
+                    <node concept="3uibUv" id="2gY" role="1tU5fm">
+                      <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                    </node>
+                    <node concept="1rXfSq" id="2gZ" role="33vP2m">
+                      <ref role="37wK5l" node="21r" resolve="getFileExtension_EnumClassDeclaration" />
+                      <node concept="37vLTw" id="2h0" role="37wK5m">
+                        <ref role="3cqZAo" node="2er" resolve="root" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="2gR" role="3cqZAp">
+                  <node concept="2OqwBi" id="2h1" role="3clFbG">
+                    <node concept="37vLTw" id="2h2" role="2Oq$k0">
                       <ref role="3cqZAo" node="2ek" resolve="outline" />
                     </node>
-                    <node concept="liA8E" id="2gZ" role="2OqNvi">
+                    <node concept="liA8E" id="2h3" role="2OqNvi">
                       <ref role="37wK5l" to="yfwt:~TextGenModelOutline.registerTextUnit(jetbrains.mps.text.TextUnit)" resolve="registerTextUnit" />
-                      <node concept="1rXfSq" id="2h0" role="37wK5m">
+                      <node concept="1rXfSq" id="2h4" role="37wK5m">
                         <ref role="37wK5l" node="21x" resolve="createTextUnit4" />
-                        <node concept="3K4zz7" id="2h1" role="37wK5m">
-                          <node concept="1eOMI4" id="2h3" role="3K4GZi">
-                            <node concept="3cpWs3" id="2h6" role="1eOMHV">
-                              <node concept="37vLTw" id="2h7" role="3uHU7w">
-                                <ref role="3cqZAo" node="2gT" resolve="ext" />
+                        <node concept="37vLTw" id="2h5" role="37wK5m">
+                          <ref role="3cqZAo" node="2ek" resolve="outline" />
+                        </node>
+                        <node concept="3K4zz7" id="2h6" role="37wK5m">
+                          <node concept="1eOMI4" id="2h8" role="3K4GZi">
+                            <node concept="3cpWs3" id="2hb" role="1eOMHV">
+                              <node concept="37vLTw" id="2hc" role="3uHU7w">
+                                <ref role="3cqZAo" node="2gX" resolve="ext" />
                               </node>
-                              <node concept="3cpWs3" id="2h8" role="3uHU7B">
-                                <node concept="37vLTw" id="2h9" role="3uHU7B">
-                                  <ref role="3cqZAo" node="2gP" resolve="fname" />
+                              <node concept="3cpWs3" id="2hd" role="3uHU7B">
+                                <node concept="37vLTw" id="2he" role="3uHU7B">
+                                  <ref role="3cqZAo" node="2gT" resolve="fname" />
                                 </node>
-                                <node concept="1Xhbcc" id="2ha" role="3uHU7w">
+                                <node concept="1Xhbcc" id="2hf" role="3uHU7w">
                                   <property role="1XhdNS" value="." />
                                 </node>
                               </node>
                             </node>
                           </node>
-                          <node concept="37vLTw" id="2h4" role="3K4E3e">
-                            <ref role="3cqZAo" node="2gP" resolve="fname" />
+                          <node concept="37vLTw" id="2h9" role="3K4E3e">
+                            <ref role="3cqZAo" node="2gT" resolve="fname" />
                           </node>
-                          <node concept="3clFbC" id="2h5" role="3K4Cdx">
-                            <node concept="10Nm6u" id="2hb" role="3uHU7w" />
-                            <node concept="37vLTw" id="2hc" role="3uHU7B">
-                              <ref role="3cqZAo" node="2gT" resolve="ext" />
+                          <node concept="3clFbC" id="2ha" role="3K4Cdx">
+                            <node concept="10Nm6u" id="2hg" role="3uHU7w" />
+                            <node concept="37vLTw" id="2hh" role="3uHU7B">
+                              <ref role="3cqZAo" node="2gX" resolve="ext" />
                             </node>
                           </node>
                         </node>
-                        <node concept="37vLTw" id="2h2" role="37wK5m">
+                        <node concept="37vLTw" id="2h7" role="37wK5m">
                           <ref role="3cqZAo" node="2er" resolve="root" />
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3N13vt" id="2gO" role="3cqZAp" />
+                <node concept="3N13vt" id="2gS" role="3cqZAp" />
               </node>
-              <node concept="2OqwBi" id="2gK" role="3clFbw">
-                <node concept="2OqwBi" id="2hd" role="2Oq$k0">
-                  <node concept="37vLTw" id="2hf" role="2Oq$k0">
+              <node concept="2OqwBi" id="2gO" role="3clFbw">
+                <node concept="2OqwBi" id="2hi" role="2Oq$k0">
+                  <node concept="37vLTw" id="2hk" role="2Oq$k0">
                     <ref role="3cqZAo" node="2er" resolve="root" />
                   </node>
-                  <node concept="liA8E" id="2hg" role="2OqNvi">
+                  <node concept="liA8E" id="2hl" role="2OqNvi">
                     <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                   </node>
                 </node>
-                <node concept="liA8E" id="2he" role="2OqNvi">
+                <node concept="liA8E" id="2hj" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="35c_gC" id="2hh" role="37wK5m">
+                  <node concept="35c_gC" id="2hm" role="37wK5m">
                     <ref role="35c_gD" to="hcm8:2yYXHtlhVmE" resolve="EnumClassDeclaration" />
                   </node>
                 </node>
               </node>
             </node>
             <node concept="3clFbJ" id="2ey" role="3cqZAp">
-              <node concept="3clFbS" id="2hi" role="3clFbx">
-                <node concept="3cpWs8" id="2hk" role="3cqZAp">
-                  <node concept="3cpWsn" id="2ho" role="3cpWs9">
+              <node concept="3clFbS" id="2hn" role="3clFbx">
+                <node concept="3cpWs8" id="2hp" role="3cqZAp">
+                  <node concept="3cpWsn" id="2ht" role="3cpWs9">
                     <property role="TrG5h" value="fname" />
-                    <node concept="3uibUv" id="2hp" role="1tU5fm">
+                    <node concept="3uibUv" id="2hu" role="1tU5fm">
                       <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                     </node>
-                    <node concept="1rXfSq" id="2hq" role="33vP2m">
+                    <node concept="1rXfSq" id="2hv" role="33vP2m">
                       <ref role="37wK5l" node="21m" resolve="getFileName_ObjectDeclaration" />
-                      <node concept="37vLTw" id="2hr" role="37wK5m">
+                      <node concept="37vLTw" id="2hw" role="37wK5m">
                         <ref role="3cqZAo" node="2er" resolve="root" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3cpWs8" id="2hl" role="3cqZAp">
-                  <node concept="3cpWsn" id="2hs" role="3cpWs9">
+                <node concept="3cpWs8" id="2hq" role="3cqZAp">
+                  <node concept="3cpWsn" id="2hx" role="3cpWs9">
                     <property role="TrG5h" value="ext" />
-                    <node concept="3uibUv" id="2ht" role="1tU5fm">
+                    <node concept="3uibUv" id="2hy" role="1tU5fm">
                       <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                     </node>
-                    <node concept="1rXfSq" id="2hu" role="33vP2m">
+                    <node concept="1rXfSq" id="2hz" role="33vP2m">
                       <ref role="37wK5l" node="21s" resolve="getFileExtension_ObjectDeclaration" />
-                      <node concept="37vLTw" id="2hv" role="37wK5m">
+                      <node concept="37vLTw" id="2h$" role="37wK5m">
                         <ref role="3cqZAo" node="2er" resolve="root" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3clFbF" id="2hm" role="3cqZAp">
-                  <node concept="2OqwBi" id="2hw" role="3clFbG">
-                    <node concept="37vLTw" id="2hx" role="2Oq$k0">
+                <node concept="3clFbF" id="2hr" role="3cqZAp">
+                  <node concept="2OqwBi" id="2h_" role="3clFbG">
+                    <node concept="37vLTw" id="2hA" role="2Oq$k0">
                       <ref role="3cqZAo" node="2ek" resolve="outline" />
                     </node>
-                    <node concept="liA8E" id="2hy" role="2OqNvi">
+                    <node concept="liA8E" id="2hB" role="2OqNvi">
                       <ref role="37wK5l" to="yfwt:~TextGenModelOutline.registerTextUnit(jetbrains.mps.text.TextUnit)" resolve="registerTextUnit" />
-                      <node concept="1rXfSq" id="2hz" role="37wK5m">
+                      <node concept="1rXfSq" id="2hC" role="37wK5m">
                         <ref role="37wK5l" node="21y" resolve="createTextUnit5" />
-                        <node concept="3K4zz7" id="2h$" role="37wK5m">
-                          <node concept="1eOMI4" id="2hA" role="3K4GZi">
-                            <node concept="3cpWs3" id="2hD" role="1eOMHV">
-                              <node concept="37vLTw" id="2hE" role="3uHU7w">
-                                <ref role="3cqZAo" node="2hs" resolve="ext" />
+                        <node concept="37vLTw" id="2hD" role="37wK5m">
+                          <ref role="3cqZAo" node="2ek" resolve="outline" />
+                        </node>
+                        <node concept="3K4zz7" id="2hE" role="37wK5m">
+                          <node concept="1eOMI4" id="2hG" role="3K4GZi">
+                            <node concept="3cpWs3" id="2hJ" role="1eOMHV">
+                              <node concept="37vLTw" id="2hK" role="3uHU7w">
+                                <ref role="3cqZAo" node="2hx" resolve="ext" />
                               </node>
-                              <node concept="3cpWs3" id="2hF" role="3uHU7B">
-                                <node concept="37vLTw" id="2hG" role="3uHU7B">
-                                  <ref role="3cqZAo" node="2ho" resolve="fname" />
+                              <node concept="3cpWs3" id="2hL" role="3uHU7B">
+                                <node concept="37vLTw" id="2hM" role="3uHU7B">
+                                  <ref role="3cqZAo" node="2ht" resolve="fname" />
                                 </node>
-                                <node concept="1Xhbcc" id="2hH" role="3uHU7w">
+                                <node concept="1Xhbcc" id="2hN" role="3uHU7w">
                                   <property role="1XhdNS" value="." />
                                 </node>
                               </node>
                             </node>
                           </node>
-                          <node concept="37vLTw" id="2hB" role="3K4E3e">
-                            <ref role="3cqZAo" node="2ho" resolve="fname" />
+                          <node concept="37vLTw" id="2hH" role="3K4E3e">
+                            <ref role="3cqZAo" node="2ht" resolve="fname" />
                           </node>
-                          <node concept="3clFbC" id="2hC" role="3K4Cdx">
-                            <node concept="10Nm6u" id="2hI" role="3uHU7w" />
-                            <node concept="37vLTw" id="2hJ" role="3uHU7B">
-                              <ref role="3cqZAo" node="2hs" resolve="ext" />
+                          <node concept="3clFbC" id="2hI" role="3K4Cdx">
+                            <node concept="10Nm6u" id="2hO" role="3uHU7w" />
+                            <node concept="37vLTw" id="2hP" role="3uHU7B">
+                              <ref role="3cqZAo" node="2hx" resolve="ext" />
                             </node>
                           </node>
                         </node>
-                        <node concept="37vLTw" id="2h_" role="37wK5m">
+                        <node concept="37vLTw" id="2hF" role="37wK5m">
                           <ref role="3cqZAo" node="2er" resolve="root" />
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3N13vt" id="2hn" role="3cqZAp" />
+                <node concept="3N13vt" id="2hs" role="3cqZAp" />
               </node>
-              <node concept="2OqwBi" id="2hj" role="3clFbw">
-                <node concept="2OqwBi" id="2hK" role="2Oq$k0">
-                  <node concept="37vLTw" id="2hM" role="2Oq$k0">
+              <node concept="2OqwBi" id="2ho" role="3clFbw">
+                <node concept="2OqwBi" id="2hQ" role="2Oq$k0">
+                  <node concept="37vLTw" id="2hS" role="2Oq$k0">
                     <ref role="3cqZAo" node="2er" resolve="root" />
                   </node>
-                  <node concept="liA8E" id="2hN" role="2OqNvi">
+                  <node concept="liA8E" id="2hT" role="2OqNvi">
                     <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                   </node>
                 </node>
-                <node concept="liA8E" id="2hL" role="2OqNvi">
+                <node concept="liA8E" id="2hR" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="35c_gC" id="2hO" role="37wK5m">
+                  <node concept="35c_gC" id="2hU" role="37wK5m">
                     <ref role="35c_gD" to="hcm8:2yYXHtl6Jd$" resolve="ObjectDeclaration" />
                   </node>
                 </node>
@@ -32253,20 +32271,20 @@
           </node>
           <node concept="3cpWsn" id="2er" role="1Duv9x">
             <property role="TrG5h" value="root" />
-            <node concept="3uibUv" id="2hP" role="1tU5fm">
+            <node concept="3uibUv" id="2hV" role="1tU5fm">
               <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
             </node>
           </node>
           <node concept="2OqwBi" id="2es" role="1DdaDG">
-            <node concept="2OqwBi" id="2hQ" role="2Oq$k0">
-              <node concept="37vLTw" id="2hS" role="2Oq$k0">
+            <node concept="2OqwBi" id="2hW" role="2Oq$k0">
+              <node concept="37vLTw" id="2hY" role="2Oq$k0">
                 <ref role="3cqZAo" node="2ek" resolve="outline" />
               </node>
-              <node concept="liA8E" id="2hT" role="2OqNvi">
+              <node concept="liA8E" id="2hZ" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenModelOutline.getModel()" resolve="getModel" />
               </node>
             </node>
-            <node concept="liA8E" id="2hR" role="2OqNvi">
+            <node concept="liA8E" id="2hX" role="2OqNvi">
               <ref role="37wK5l" to="mhbf:~SModel.getRootNodes()" resolve="getRootNodes" />
             </node>
           </node>
@@ -32281,25 +32299,25 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileName_KtScript" />
-      <node concept="3clFbS" id="2hU" role="3clF47">
-        <node concept="3cpWs6" id="2hY" role="3cqZAp">
-          <node concept="2OqwBi" id="2hZ" role="3cqZAk">
-            <node concept="37vLTw" id="2i0" role="2Oq$k0">
-              <ref role="3cqZAo" node="2hX" resolve="node" />
+      <node concept="3clFbS" id="2i0" role="3clF47">
+        <node concept="3cpWs6" id="2i4" role="3cqZAp">
+          <node concept="2OqwBi" id="2i5" role="3cqZAk">
+            <node concept="37vLTw" id="2i6" role="2Oq$k0">
+              <ref role="3cqZAo" node="2i3" resolve="node" />
             </node>
-            <node concept="liA8E" id="2i1" role="2OqNvi">
+            <node concept="liA8E" id="2i7" role="2OqNvi">
               <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2hV" role="1B3o_S" />
-      <node concept="3uibUv" id="2hW" role="3clF45">
+      <node concept="3Tm6S6" id="2i1" role="1B3o_S" />
+      <node concept="3uibUv" id="2i2" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="2hX" role="3clF46">
+      <node concept="37vLTG" id="2i3" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2i2" role="1tU5fm">
+        <node concept="3uibUv" id="2i8" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32309,25 +32327,25 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileName_InterfaceDeclaration" />
-      <node concept="3clFbS" id="2i3" role="3clF47">
-        <node concept="3cpWs6" id="2i7" role="3cqZAp">
-          <node concept="2OqwBi" id="2i8" role="3cqZAk">
-            <node concept="37vLTw" id="2i9" role="2Oq$k0">
-              <ref role="3cqZAo" node="2i6" resolve="node" />
+      <node concept="3clFbS" id="2i9" role="3clF47">
+        <node concept="3cpWs6" id="2id" role="3cqZAp">
+          <node concept="2OqwBi" id="2ie" role="3cqZAk">
+            <node concept="37vLTw" id="2if" role="2Oq$k0">
+              <ref role="3cqZAo" node="2ic" resolve="node" />
             </node>
-            <node concept="liA8E" id="2ia" role="2OqNvi">
+            <node concept="liA8E" id="2ig" role="2OqNvi">
               <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2i4" role="1B3o_S" />
-      <node concept="3uibUv" id="2i5" role="3clF45">
+      <node concept="3Tm6S6" id="2ia" role="1B3o_S" />
+      <node concept="3uibUv" id="2ib" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="2i6" role="3clF46">
+      <node concept="37vLTG" id="2ic" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2ib" role="1tU5fm">
+        <node concept="3uibUv" id="2ih" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32337,25 +32355,25 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileName_KotlinFile" />
-      <node concept="3clFbS" id="2ic" role="3clF47">
-        <node concept="3cpWs6" id="2ig" role="3cqZAp">
-          <node concept="2OqwBi" id="2ih" role="3cqZAk">
-            <node concept="37vLTw" id="2ii" role="2Oq$k0">
-              <ref role="3cqZAo" node="2if" resolve="node" />
+      <node concept="3clFbS" id="2ii" role="3clF47">
+        <node concept="3cpWs6" id="2im" role="3cqZAp">
+          <node concept="2OqwBi" id="2in" role="3cqZAk">
+            <node concept="37vLTw" id="2io" role="2Oq$k0">
+              <ref role="3cqZAo" node="2il" resolve="node" />
             </node>
-            <node concept="liA8E" id="2ij" role="2OqNvi">
+            <node concept="liA8E" id="2ip" role="2OqNvi">
               <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2id" role="1B3o_S" />
-      <node concept="3uibUv" id="2ie" role="3clF45">
+      <node concept="3Tm6S6" id="2ij" role="1B3o_S" />
+      <node concept="3uibUv" id="2ik" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="2if" role="3clF46">
+      <node concept="37vLTG" id="2il" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2ik" role="1tU5fm">
+        <node concept="3uibUv" id="2iq" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32365,25 +32383,25 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileName_ClassDeclaration" />
-      <node concept="3clFbS" id="2il" role="3clF47">
-        <node concept="3cpWs6" id="2ip" role="3cqZAp">
-          <node concept="2OqwBi" id="2iq" role="3cqZAk">
-            <node concept="37vLTw" id="2ir" role="2Oq$k0">
-              <ref role="3cqZAo" node="2io" resolve="node" />
+      <node concept="3clFbS" id="2ir" role="3clF47">
+        <node concept="3cpWs6" id="2iv" role="3cqZAp">
+          <node concept="2OqwBi" id="2iw" role="3cqZAk">
+            <node concept="37vLTw" id="2ix" role="2Oq$k0">
+              <ref role="3cqZAo" node="2iu" resolve="node" />
             </node>
-            <node concept="liA8E" id="2is" role="2OqNvi">
+            <node concept="liA8E" id="2iy" role="2OqNvi">
               <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2im" role="1B3o_S" />
-      <node concept="3uibUv" id="2in" role="3clF45">
+      <node concept="3Tm6S6" id="2is" role="1B3o_S" />
+      <node concept="3uibUv" id="2it" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="2io" role="3clF46">
+      <node concept="37vLTG" id="2iu" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2it" role="1tU5fm">
+        <node concept="3uibUv" id="2iz" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32393,25 +32411,25 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileName_EnumClassDeclaration" />
-      <node concept="3clFbS" id="2iu" role="3clF47">
-        <node concept="3cpWs6" id="2iy" role="3cqZAp">
-          <node concept="2OqwBi" id="2iz" role="3cqZAk">
-            <node concept="37vLTw" id="2i$" role="2Oq$k0">
-              <ref role="3cqZAo" node="2ix" resolve="node" />
+      <node concept="3clFbS" id="2i$" role="3clF47">
+        <node concept="3cpWs6" id="2iC" role="3cqZAp">
+          <node concept="2OqwBi" id="2iD" role="3cqZAk">
+            <node concept="37vLTw" id="2iE" role="2Oq$k0">
+              <ref role="3cqZAo" node="2iB" resolve="node" />
             </node>
-            <node concept="liA8E" id="2i_" role="2OqNvi">
+            <node concept="liA8E" id="2iF" role="2OqNvi">
               <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2iv" role="1B3o_S" />
-      <node concept="3uibUv" id="2iw" role="3clF45">
+      <node concept="3Tm6S6" id="2i_" role="1B3o_S" />
+      <node concept="3uibUv" id="2iA" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="2ix" role="3clF46">
+      <node concept="37vLTG" id="2iB" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2iA" role="1tU5fm">
+        <node concept="3uibUv" id="2iG" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32421,25 +32439,25 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileName_ObjectDeclaration" />
-      <node concept="3clFbS" id="2iB" role="3clF47">
-        <node concept="3cpWs6" id="2iF" role="3cqZAp">
-          <node concept="2OqwBi" id="2iG" role="3cqZAk">
-            <node concept="37vLTw" id="2iH" role="2Oq$k0">
-              <ref role="3cqZAo" node="2iE" resolve="node" />
+      <node concept="3clFbS" id="2iH" role="3clF47">
+        <node concept="3cpWs6" id="2iL" role="3cqZAp">
+          <node concept="2OqwBi" id="2iM" role="3cqZAk">
+            <node concept="37vLTw" id="2iN" role="2Oq$k0">
+              <ref role="3cqZAo" node="2iK" resolve="node" />
             </node>
-            <node concept="liA8E" id="2iI" role="2OqNvi">
+            <node concept="liA8E" id="2iO" role="2OqNvi">
               <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2iC" role="1B3o_S" />
-      <node concept="3uibUv" id="2iD" role="3clF45">
+      <node concept="3Tm6S6" id="2iI" role="1B3o_S" />
+      <node concept="3uibUv" id="2iJ" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="2iE" role="3clF46">
+      <node concept="37vLTG" id="2iK" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2iJ" role="1tU5fm">
+        <node concept="3uibUv" id="2iP" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32449,22 +32467,22 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileExtension_KtScript" />
-      <node concept="3clFbS" id="2iK" role="3clF47">
-        <node concept="3clFbF" id="2iO" role="3cqZAp">
+      <node concept="3clFbS" id="2iQ" role="3clF47">
+        <node concept="3clFbF" id="2iU" role="3cqZAp">
           <uo k="s:originTrace" v="n:6683421192262801077" />
-          <node concept="Xl_RD" id="2iP" role="3clFbG">
+          <node concept="Xl_RD" id="2iV" role="3clFbG">
             <property role="Xl_RC" value="kts" />
             <uo k="s:originTrace" v="n:6683421192262801076" />
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2iL" role="1B3o_S" />
-      <node concept="3uibUv" id="2iM" role="3clF45">
+      <node concept="3Tm6S6" id="2iR" role="1B3o_S" />
+      <node concept="3uibUv" id="2iS" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="2iN" role="3clF46">
+      <node concept="37vLTG" id="2iT" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2iQ" role="1tU5fm">
+        <node concept="3uibUv" id="2iW" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32474,22 +32492,22 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileExtension_InterfaceDeclaration" />
-      <node concept="3clFbS" id="2iR" role="3clF47">
-        <node concept="3clFbF" id="2iV" role="3cqZAp">
+      <node concept="3clFbS" id="2iX" role="3clF47">
+        <node concept="3clFbF" id="2j1" role="3cqZAp">
           <uo k="s:originTrace" v="n:1848838727231301335" />
-          <node concept="Xl_RD" id="2iW" role="3clFbG">
+          <node concept="Xl_RD" id="2j2" role="3clFbG">
             <property role="Xl_RC" value="kt" />
             <uo k="s:originTrace" v="n:1848838727231301334" />
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2iS" role="1B3o_S" />
-      <node concept="3uibUv" id="2iT" role="3clF45">
+      <node concept="3Tm6S6" id="2iY" role="1B3o_S" />
+      <node concept="3uibUv" id="2iZ" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="2iU" role="3clF46">
+      <node concept="37vLTG" id="2j0" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2iX" role="1tU5fm">
+        <node concept="3uibUv" id="2j3" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32499,22 +32517,22 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileExtension_KotlinFile" />
-      <node concept="3clFbS" id="2iY" role="3clF47">
-        <node concept="3cpWs6" id="2j2" role="3cqZAp">
+      <node concept="3clFbS" id="2j4" role="3clF47">
+        <node concept="3cpWs6" id="2j8" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696095178" />
-          <node concept="Xl_RD" id="2j3" role="3cqZAk">
+          <node concept="Xl_RD" id="2j9" role="3cqZAk">
             <property role="Xl_RC" value="kt" />
             <uo k="s:originTrace" v="n:6153771967696095175" />
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2iZ" role="1B3o_S" />
-      <node concept="3uibUv" id="2j0" role="3clF45">
+      <node concept="3Tm6S6" id="2j5" role="1B3o_S" />
+      <node concept="3uibUv" id="2j6" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="2j1" role="3clF46">
+      <node concept="37vLTG" id="2j7" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2j4" role="1tU5fm">
+        <node concept="3uibUv" id="2ja" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32524,22 +32542,22 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileExtension_ClassDeclaration" />
-      <node concept="3clFbS" id="2j5" role="3clF47">
-        <node concept="3clFbF" id="2j9" role="3cqZAp">
+      <node concept="3clFbS" id="2jb" role="3clF47">
+        <node concept="3clFbF" id="2jf" role="3cqZAp">
           <uo k="s:originTrace" v="n:1848838727239938188" />
-          <node concept="Xl_RD" id="2ja" role="3clFbG">
+          <node concept="Xl_RD" id="2jg" role="3clFbG">
             <property role="Xl_RC" value="kt" />
             <uo k="s:originTrace" v="n:1848838727239938187" />
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2j6" role="1B3o_S" />
-      <node concept="3uibUv" id="2j7" role="3clF45">
+      <node concept="3Tm6S6" id="2jc" role="1B3o_S" />
+      <node concept="3uibUv" id="2jd" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="2j8" role="3clF46">
+      <node concept="37vLTG" id="2je" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2jb" role="1tU5fm">
+        <node concept="3uibUv" id="2jh" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32549,22 +32567,22 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileExtension_EnumClassDeclaration" />
-      <node concept="3clFbS" id="2jc" role="3clF47">
-        <node concept="3cpWs6" id="2jg" role="3cqZAp">
+      <node concept="3clFbS" id="2ji" role="3clF47">
+        <node concept="3cpWs6" id="2jm" role="3cqZAp">
           <uo k="s:originTrace" v="n:1848838727231290907" />
-          <node concept="Xl_RD" id="2jh" role="3cqZAk">
+          <node concept="Xl_RD" id="2jn" role="3cqZAk">
             <property role="Xl_RC" value="kt" />
             <uo k="s:originTrace" v="n:1848838727231290908" />
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2jd" role="1B3o_S" />
-      <node concept="3uibUv" id="2je" role="3clF45">
+      <node concept="3Tm6S6" id="2jj" role="1B3o_S" />
+      <node concept="3uibUv" id="2jk" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="2jf" role="3clF46">
+      <node concept="37vLTG" id="2jl" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2ji" role="1tU5fm">
+        <node concept="3uibUv" id="2jo" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32574,22 +32592,22 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="getFileExtension_ObjectDeclaration" />
-      <node concept="3clFbS" id="2jj" role="3clF47">
-        <node concept="3clFbF" id="2jn" role="3cqZAp">
+      <node concept="3clFbS" id="2jp" role="3clF47">
+        <node concept="3clFbF" id="2jt" role="3cqZAp">
           <uo k="s:originTrace" v="n:1848838727239946011" />
-          <node concept="Xl_RD" id="2jo" role="3clFbG">
+          <node concept="Xl_RD" id="2ju" role="3clFbG">
             <property role="Xl_RC" value="kt" />
             <uo k="s:originTrace" v="n:1848838727239946010" />
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2jk" role="1B3o_S" />
-      <node concept="3uibUv" id="2jl" role="3clF45">
+      <node concept="3Tm6S6" id="2jq" role="1B3o_S" />
+      <node concept="3uibUv" id="2jr" role="3clF45">
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
-      <node concept="37vLTG" id="2jm" role="3clF46">
+      <node concept="37vLTG" id="2js" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2jp" role="1tU5fm">
+        <node concept="3uibUv" id="2jv" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32599,149 +32617,162 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="createTextUnit0" />
-      <node concept="3clFbS" id="2jq" role="3clF47">
-        <node concept="3cpWs8" id="2jv" role="3cqZAp">
-          <node concept="3cpWsn" id="2jC" role="3cpWs9">
+      <node concept="3clFbS" id="2jw" role="3clF47">
+        <node concept="3cpWs8" id="2jA" role="3cqZAp">
+          <node concept="3cpWsn" id="2jJ" role="3cpWs9">
             <property role="TrG5h" value="lb" />
-            <node concept="3uibUv" id="2jD" role="1tU5fm">
+            <node concept="3uibUv" id="2jK" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~BufferLayoutBuilder" resolve="BufferLayoutBuilder" />
             </node>
-            <node concept="2ShNRf" id="2jE" role="33vP2m">
-              <node concept="1pGfFk" id="2jF" role="2ShVmc">
+            <node concept="2ShNRf" id="2jL" role="33vP2m">
+              <node concept="1pGfFk" id="2jM" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.&lt;init&gt;()" resolve="BufferLayoutBuilder" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2jw" role="3cqZAp">
-          <node concept="2OqwBi" id="2jG" role="3clFbG">
-            <node concept="37vLTw" id="2jH" role="2Oq$k0">
-              <ref role="3cqZAo" node="2jC" resolve="lb" />
+        <node concept="3clFbF" id="2jB" role="3cqZAp">
+          <node concept="2OqwBi" id="2jN" role="3clFbG">
+            <node concept="37vLTw" id="2jO" role="2Oq$k0">
+              <ref role="3cqZAo" node="2jJ" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2jI" role="2OqNvi">
+            <node concept="liA8E" id="2jP" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2jJ" role="37wK5m">
+              <node concept="Xl_RD" id="2jQ" role="37wK5m">
                 <property role="Xl_RC" value="header" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2jx" role="3cqZAp">
-          <node concept="2OqwBi" id="2jK" role="3clFbG">
-            <node concept="37vLTw" id="2jL" role="2Oq$k0">
-              <ref role="3cqZAo" node="2jC" resolve="lb" />
+        <node concept="3clFbF" id="2jC" role="3cqZAp">
+          <node concept="2OqwBi" id="2jR" role="3clFbG">
+            <node concept="37vLTw" id="2jS" role="2Oq$k0">
+              <ref role="3cqZAo" node="2jJ" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2jM" role="2OqNvi">
+            <node concept="liA8E" id="2jT" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2jN" role="37wK5m">
+              <node concept="Xl_RD" id="2jU" role="37wK5m">
                 <property role="Xl_RC" value="imports" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2jy" role="3cqZAp">
-          <node concept="2OqwBi" id="2jO" role="3clFbG">
-            <node concept="37vLTw" id="2jP" role="2Oq$k0">
-              <ref role="3cqZAo" node="2jC" resolve="lb" />
+        <node concept="3clFbF" id="2jD" role="3cqZAp">
+          <node concept="2OqwBi" id="2jV" role="3clFbG">
+            <node concept="37vLTw" id="2jW" role="2Oq$k0">
+              <ref role="3cqZAo" node="2jJ" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2jQ" role="2OqNvi">
+            <node concept="liA8E" id="2jX" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2jR" role="37wK5m">
+              <node concept="Xl_RD" id="2jY" role="37wK5m">
                 <property role="Xl_RC" value="body" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2jz" role="3cqZAp">
-          <node concept="2OqwBi" id="2jS" role="3clFbG">
-            <node concept="37vLTw" id="2jT" role="2Oq$k0">
-              <ref role="3cqZAo" node="2jC" resolve="lb" />
+        <node concept="3clFbF" id="2jE" role="3cqZAp">
+          <node concept="2OqwBi" id="2jZ" role="3clFbG">
+            <node concept="37vLTw" id="2k0" role="2Oq$k0">
+              <ref role="3cqZAo" node="2jJ" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2jU" role="2OqNvi">
+            <node concept="liA8E" id="2k1" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.activate(java.lang.Object)" resolve="activate" />
-              <node concept="Xl_RD" id="2jV" role="37wK5m">
+              <node concept="Xl_RD" id="2k2" role="37wK5m">
                 <property role="Xl_RC" value="body" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="2j$" role="3cqZAp">
-          <node concept="3cpWsn" id="2jW" role="3cpWs9">
+        <node concept="3cpWs8" id="2jF" role="3cqZAp">
+          <node concept="3cpWsn" id="2k3" role="3cpWs9">
             <property role="TrG5h" value="rv" />
-            <node concept="3uibUv" id="2jX" role="1tU5fm">
-              <ref role="3uigEE" to="kpbf:~RegularTextUnit" resolve="RegularTextUnit" />
+            <node concept="3uibUv" id="2k4" role="1tU5fm">
+              <ref role="3uigEE" to="yfwt:~TextGenModelOutline$UnitBuilder" resolve="TextGenModelOutline.UnitBuilder" />
             </node>
-            <node concept="2ShNRf" id="2jY" role="33vP2m">
-              <node concept="1pGfFk" id="2jZ" role="2ShVmc">
-                <ref role="37wK5l" to="kpbf:~RegularTextUnit.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.nio.charset.Charset)" resolve="RegularTextUnit" />
-                <node concept="37vLTw" id="2k0" role="37wK5m">
-                  <ref role="3cqZAo" node="2ju" resolve="node" />
+            <node concept="2OqwBi" id="2k5" role="33vP2m">
+              <node concept="37vLTw" id="2k6" role="2Oq$k0">
+                <ref role="3cqZAo" node="2jz" resolve="outline" />
+              </node>
+              <node concept="liA8E" id="2k7" role="2OqNvi">
+                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.unitBuilder(java.lang.String,org.jetbrains.mps.openapi.model.SNode)" resolve="unitBuilder" />
+                <node concept="37vLTw" id="2k8" role="37wK5m">
+                  <ref role="3cqZAo" node="2j$" resolve="filename" />
                 </node>
-                <node concept="37vLTw" id="2k1" role="37wK5m">
-                  <ref role="3cqZAo" node="2jt" resolve="filename" />
+                <node concept="37vLTw" id="2k9" role="37wK5m">
+                  <ref role="3cqZAo" node="2j_" resolve="node" />
                 </node>
-                <node concept="10Nm6u" id="2k2" role="37wK5m" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2j_" role="3cqZAp">
-          <node concept="2OqwBi" id="2k3" role="3clFbG">
-            <node concept="37vLTw" id="2k4" role="2Oq$k0">
-              <ref role="3cqZAo" node="2jW" resolve="rv" />
+        <node concept="3clFbF" id="2jG" role="3cqZAp">
+          <node concept="2OqwBi" id="2ka" role="3clFbG">
+            <node concept="37vLTw" id="2kb" role="2Oq$k0">
+              <ref role="3cqZAo" node="2k3" resolve="rv" />
             </node>
-            <node concept="liA8E" id="2k5" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.setBufferLayout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="setBufferLayout" />
-              <node concept="2OqwBi" id="2k6" role="37wK5m">
-                <node concept="37vLTw" id="2k7" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2jC" resolve="lb" />
+            <node concept="liA8E" id="2kc" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="layout" />
+              <node concept="2OqwBi" id="2kd" role="37wK5m">
+                <node concept="37vLTw" id="2ke" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2jJ" resolve="lb" />
                 </node>
-                <node concept="liA8E" id="2k8" role="2OqNvi">
+                <node concept="liA8E" id="2kf" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.create()" resolve="create" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2jA" role="3cqZAp">
-          <node concept="2OqwBi" id="2k9" role="3clFbG">
-            <node concept="37vLTw" id="2ka" role="2Oq$k0">
-              <ref role="3cqZAo" node="2jW" resolve="rv" />
+        <node concept="3clFbF" id="2jH" role="3cqZAp">
+          <node concept="2OqwBi" id="2kg" role="3clFbG">
+            <node concept="37vLTw" id="2kh" role="2Oq$k0">
+              <ref role="3cqZAo" node="2k3" resolve="rv" />
             </node>
-            <node concept="liA8E" id="2kb" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.addContextObject(java.lang.String,java.lang.Object)" resolve="addContextObject" />
-              <node concept="Xl_RD" id="2kc" role="37wK5m">
+            <node concept="liA8E" id="2ki" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.with(java.lang.String,java.lang.Object)" resolve="with" />
+              <node concept="Xl_RD" id="2kj" role="37wK5m">
                 <property role="Xl_RC" value="imports" />
               </node>
-              <node concept="2YIFZM" id="2kd" role="37wK5m">
+              <node concept="2YIFZM" id="2kk" role="37wK5m">
                 <ref role="1Pybhc" node="128" resolve="KotlinTextGen" />
                 <ref role="37wK5l" node="12O" resolve="contextObjectInstance_imports" />
-                <node concept="37vLTw" id="2ke" role="37wK5m">
-                  <ref role="3cqZAo" node="2ju" resolve="node" />
+                <node concept="37vLTw" id="2kl" role="37wK5m">
+                  <ref role="3cqZAo" node="2j_" resolve="node" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="2jB" role="3cqZAp">
-          <node concept="37vLTw" id="2kf" role="3cqZAk">
-            <ref role="3cqZAo" node="2jW" resolve="rv" />
+        <node concept="3cpWs6" id="2jI" role="3cqZAp">
+          <node concept="2OqwBi" id="2km" role="3cqZAk">
+            <node concept="37vLTw" id="2kn" role="2Oq$k0">
+              <ref role="3cqZAo" node="2k3" resolve="rv" />
+            </node>
+            <node concept="liA8E" id="2ko" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.build()" resolve="build" />
+            </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2jr" role="1B3o_S" />
-      <node concept="3uibUv" id="2js" role="3clF45">
+      <node concept="3Tm6S6" id="2jx" role="1B3o_S" />
+      <node concept="3uibUv" id="2jy" role="3clF45">
         <ref role="3uigEE" to="ao3:~TextUnit" resolve="TextUnit" />
       </node>
-      <node concept="37vLTG" id="2jt" role="3clF46">
+      <node concept="37vLTG" id="2jz" role="3clF46">
+        <property role="TrG5h" value="outline" />
+        <node concept="3uibUv" id="2kp" role="1tU5fm">
+          <ref role="3uigEE" to="yfwt:~TextGenModelOutline" resolve="TextGenModelOutline" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="2j$" role="3clF46">
         <property role="TrG5h" value="filename" />
-        <node concept="3uibUv" id="2kg" role="1tU5fm">
+        <node concept="3uibUv" id="2kq" role="1tU5fm">
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
       </node>
-      <node concept="37vLTG" id="2ju" role="3clF46">
+      <node concept="37vLTG" id="2j_" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2kh" role="1tU5fm">
+        <node concept="3uibUv" id="2kr" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32751,149 +32782,162 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="createTextUnit1" />
-      <node concept="3clFbS" id="2ki" role="3clF47">
-        <node concept="3cpWs8" id="2kn" role="3cqZAp">
-          <node concept="3cpWsn" id="2kw" role="3cpWs9">
+      <node concept="3clFbS" id="2ks" role="3clF47">
+        <node concept="3cpWs8" id="2ky" role="3cqZAp">
+          <node concept="3cpWsn" id="2kF" role="3cpWs9">
             <property role="TrG5h" value="lb" />
-            <node concept="3uibUv" id="2kx" role="1tU5fm">
+            <node concept="3uibUv" id="2kG" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~BufferLayoutBuilder" resolve="BufferLayoutBuilder" />
             </node>
-            <node concept="2ShNRf" id="2ky" role="33vP2m">
-              <node concept="1pGfFk" id="2kz" role="2ShVmc">
+            <node concept="2ShNRf" id="2kH" role="33vP2m">
+              <node concept="1pGfFk" id="2kI" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.&lt;init&gt;()" resolve="BufferLayoutBuilder" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2ko" role="3cqZAp">
-          <node concept="2OqwBi" id="2k$" role="3clFbG">
-            <node concept="37vLTw" id="2k_" role="2Oq$k0">
-              <ref role="3cqZAo" node="2kw" resolve="lb" />
+        <node concept="3clFbF" id="2kz" role="3cqZAp">
+          <node concept="2OqwBi" id="2kJ" role="3clFbG">
+            <node concept="37vLTw" id="2kK" role="2Oq$k0">
+              <ref role="3cqZAo" node="2kF" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2kA" role="2OqNvi">
+            <node concept="liA8E" id="2kL" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2kB" role="37wK5m">
+              <node concept="Xl_RD" id="2kM" role="37wK5m">
                 <property role="Xl_RC" value="header" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2kp" role="3cqZAp">
-          <node concept="2OqwBi" id="2kC" role="3clFbG">
-            <node concept="37vLTw" id="2kD" role="2Oq$k0">
-              <ref role="3cqZAo" node="2kw" resolve="lb" />
+        <node concept="3clFbF" id="2k$" role="3cqZAp">
+          <node concept="2OqwBi" id="2kN" role="3clFbG">
+            <node concept="37vLTw" id="2kO" role="2Oq$k0">
+              <ref role="3cqZAo" node="2kF" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2kE" role="2OqNvi">
+            <node concept="liA8E" id="2kP" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2kF" role="37wK5m">
+              <node concept="Xl_RD" id="2kQ" role="37wK5m">
                 <property role="Xl_RC" value="imports" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2kq" role="3cqZAp">
-          <node concept="2OqwBi" id="2kG" role="3clFbG">
-            <node concept="37vLTw" id="2kH" role="2Oq$k0">
-              <ref role="3cqZAo" node="2kw" resolve="lb" />
+        <node concept="3clFbF" id="2k_" role="3cqZAp">
+          <node concept="2OqwBi" id="2kR" role="3clFbG">
+            <node concept="37vLTw" id="2kS" role="2Oq$k0">
+              <ref role="3cqZAo" node="2kF" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2kI" role="2OqNvi">
+            <node concept="liA8E" id="2kT" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2kJ" role="37wK5m">
+              <node concept="Xl_RD" id="2kU" role="37wK5m">
                 <property role="Xl_RC" value="body" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2kr" role="3cqZAp">
-          <node concept="2OqwBi" id="2kK" role="3clFbG">
-            <node concept="37vLTw" id="2kL" role="2Oq$k0">
-              <ref role="3cqZAo" node="2kw" resolve="lb" />
-            </node>
-            <node concept="liA8E" id="2kM" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.activate(java.lang.Object)" resolve="activate" />
-              <node concept="Xl_RD" id="2kN" role="37wK5m">
-                <property role="Xl_RC" value="body" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="2ks" role="3cqZAp">
-          <node concept="3cpWsn" id="2kO" role="3cpWs9">
-            <property role="TrG5h" value="rv" />
-            <node concept="3uibUv" id="2kP" role="1tU5fm">
-              <ref role="3uigEE" to="kpbf:~RegularTextUnit" resolve="RegularTextUnit" />
-            </node>
-            <node concept="2ShNRf" id="2kQ" role="33vP2m">
-              <node concept="1pGfFk" id="2kR" role="2ShVmc">
-                <ref role="37wK5l" to="kpbf:~RegularTextUnit.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.nio.charset.Charset)" resolve="RegularTextUnit" />
-                <node concept="37vLTw" id="2kS" role="37wK5m">
-                  <ref role="3cqZAo" node="2km" resolve="node" />
-                </node>
-                <node concept="37vLTw" id="2kT" role="37wK5m">
-                  <ref role="3cqZAo" node="2kl" resolve="filename" />
-                </node>
-                <node concept="10Nm6u" id="2kU" role="37wK5m" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="2kt" role="3cqZAp">
+        <node concept="3clFbF" id="2kA" role="3cqZAp">
           <node concept="2OqwBi" id="2kV" role="3clFbG">
             <node concept="37vLTw" id="2kW" role="2Oq$k0">
-              <ref role="3cqZAo" node="2kO" resolve="rv" />
+              <ref role="3cqZAo" node="2kF" resolve="lb" />
             </node>
             <node concept="liA8E" id="2kX" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.setBufferLayout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="setBufferLayout" />
-              <node concept="2OqwBi" id="2kY" role="37wK5m">
-                <node concept="37vLTw" id="2kZ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2kw" resolve="lb" />
+              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.activate(java.lang.Object)" resolve="activate" />
+              <node concept="Xl_RD" id="2kY" role="37wK5m">
+                <property role="Xl_RC" value="body" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="2kB" role="3cqZAp">
+          <node concept="3cpWsn" id="2kZ" role="3cpWs9">
+            <property role="TrG5h" value="rv" />
+            <node concept="3uibUv" id="2l0" role="1tU5fm">
+              <ref role="3uigEE" to="yfwt:~TextGenModelOutline$UnitBuilder" resolve="TextGenModelOutline.UnitBuilder" />
+            </node>
+            <node concept="2OqwBi" id="2l1" role="33vP2m">
+              <node concept="37vLTw" id="2l2" role="2Oq$k0">
+                <ref role="3cqZAo" node="2kv" resolve="outline" />
+              </node>
+              <node concept="liA8E" id="2l3" role="2OqNvi">
+                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.unitBuilder(java.lang.String,org.jetbrains.mps.openapi.model.SNode)" resolve="unitBuilder" />
+                <node concept="37vLTw" id="2l4" role="37wK5m">
+                  <ref role="3cqZAo" node="2kw" resolve="filename" />
                 </node>
-                <node concept="liA8E" id="2l0" role="2OqNvi">
+                <node concept="37vLTw" id="2l5" role="37wK5m">
+                  <ref role="3cqZAo" node="2kx" resolve="node" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2kC" role="3cqZAp">
+          <node concept="2OqwBi" id="2l6" role="3clFbG">
+            <node concept="37vLTw" id="2l7" role="2Oq$k0">
+              <ref role="3cqZAo" node="2kZ" resolve="rv" />
+            </node>
+            <node concept="liA8E" id="2l8" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="layout" />
+              <node concept="2OqwBi" id="2l9" role="37wK5m">
+                <node concept="37vLTw" id="2la" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2kF" resolve="lb" />
+                </node>
+                <node concept="liA8E" id="2lb" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.create()" resolve="create" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2ku" role="3cqZAp">
-          <node concept="2OqwBi" id="2l1" role="3clFbG">
-            <node concept="37vLTw" id="2l2" role="2Oq$k0">
-              <ref role="3cqZAo" node="2kO" resolve="rv" />
+        <node concept="3clFbF" id="2kD" role="3cqZAp">
+          <node concept="2OqwBi" id="2lc" role="3clFbG">
+            <node concept="37vLTw" id="2ld" role="2Oq$k0">
+              <ref role="3cqZAo" node="2kZ" resolve="rv" />
             </node>
-            <node concept="liA8E" id="2l3" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.addContextObject(java.lang.String,java.lang.Object)" resolve="addContextObject" />
-              <node concept="Xl_RD" id="2l4" role="37wK5m">
+            <node concept="liA8E" id="2le" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.with(java.lang.String,java.lang.Object)" resolve="with" />
+              <node concept="Xl_RD" id="2lf" role="37wK5m">
                 <property role="Xl_RC" value="imports" />
               </node>
-              <node concept="2YIFZM" id="2l5" role="37wK5m">
+              <node concept="2YIFZM" id="2lg" role="37wK5m">
                 <ref role="1Pybhc" node="128" resolve="KotlinTextGen" />
                 <ref role="37wK5l" node="12O" resolve="contextObjectInstance_imports" />
-                <node concept="37vLTw" id="2l6" role="37wK5m">
-                  <ref role="3cqZAo" node="2km" resolve="node" />
+                <node concept="37vLTw" id="2lh" role="37wK5m">
+                  <ref role="3cqZAo" node="2kx" resolve="node" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="2kv" role="3cqZAp">
-          <node concept="37vLTw" id="2l7" role="3cqZAk">
-            <ref role="3cqZAo" node="2kO" resolve="rv" />
+        <node concept="3cpWs6" id="2kE" role="3cqZAp">
+          <node concept="2OqwBi" id="2li" role="3cqZAk">
+            <node concept="37vLTw" id="2lj" role="2Oq$k0">
+              <ref role="3cqZAo" node="2kZ" resolve="rv" />
+            </node>
+            <node concept="liA8E" id="2lk" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.build()" resolve="build" />
+            </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2kj" role="1B3o_S" />
-      <node concept="3uibUv" id="2kk" role="3clF45">
+      <node concept="3Tm6S6" id="2kt" role="1B3o_S" />
+      <node concept="3uibUv" id="2ku" role="3clF45">
         <ref role="3uigEE" to="ao3:~TextUnit" resolve="TextUnit" />
       </node>
-      <node concept="37vLTG" id="2kl" role="3clF46">
+      <node concept="37vLTG" id="2kv" role="3clF46">
+        <property role="TrG5h" value="outline" />
+        <node concept="3uibUv" id="2ll" role="1tU5fm">
+          <ref role="3uigEE" to="yfwt:~TextGenModelOutline" resolve="TextGenModelOutline" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="2kw" role="3clF46">
         <property role="TrG5h" value="filename" />
-        <node concept="3uibUv" id="2l8" role="1tU5fm">
+        <node concept="3uibUv" id="2lm" role="1tU5fm">
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
       </node>
-      <node concept="37vLTG" id="2km" role="3clF46">
+      <node concept="37vLTG" id="2kx" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2l9" role="1tU5fm">
+        <node concept="3uibUv" id="2ln" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -32903,149 +32947,162 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="createTextUnit2" />
-      <node concept="3clFbS" id="2la" role="3clF47">
-        <node concept="3cpWs8" id="2lf" role="3cqZAp">
-          <node concept="3cpWsn" id="2lo" role="3cpWs9">
+      <node concept="3clFbS" id="2lo" role="3clF47">
+        <node concept="3cpWs8" id="2lu" role="3cqZAp">
+          <node concept="3cpWsn" id="2lB" role="3cpWs9">
             <property role="TrG5h" value="lb" />
-            <node concept="3uibUv" id="2lp" role="1tU5fm">
+            <node concept="3uibUv" id="2lC" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~BufferLayoutBuilder" resolve="BufferLayoutBuilder" />
             </node>
-            <node concept="2ShNRf" id="2lq" role="33vP2m">
-              <node concept="1pGfFk" id="2lr" role="2ShVmc">
+            <node concept="2ShNRf" id="2lD" role="33vP2m">
+              <node concept="1pGfFk" id="2lE" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.&lt;init&gt;()" resolve="BufferLayoutBuilder" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2lg" role="3cqZAp">
-          <node concept="2OqwBi" id="2ls" role="3clFbG">
-            <node concept="37vLTw" id="2lt" role="2Oq$k0">
-              <ref role="3cqZAo" node="2lo" resolve="lb" />
+        <node concept="3clFbF" id="2lv" role="3cqZAp">
+          <node concept="2OqwBi" id="2lF" role="3clFbG">
+            <node concept="37vLTw" id="2lG" role="2Oq$k0">
+              <ref role="3cqZAo" node="2lB" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2lu" role="2OqNvi">
+            <node concept="liA8E" id="2lH" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2lv" role="37wK5m">
+              <node concept="Xl_RD" id="2lI" role="37wK5m">
                 <property role="Xl_RC" value="header" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2lh" role="3cqZAp">
-          <node concept="2OqwBi" id="2lw" role="3clFbG">
-            <node concept="37vLTw" id="2lx" role="2Oq$k0">
-              <ref role="3cqZAo" node="2lo" resolve="lb" />
+        <node concept="3clFbF" id="2lw" role="3cqZAp">
+          <node concept="2OqwBi" id="2lJ" role="3clFbG">
+            <node concept="37vLTw" id="2lK" role="2Oq$k0">
+              <ref role="3cqZAo" node="2lB" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2ly" role="2OqNvi">
+            <node concept="liA8E" id="2lL" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2lz" role="37wK5m">
+              <node concept="Xl_RD" id="2lM" role="37wK5m">
                 <property role="Xl_RC" value="imports" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2li" role="3cqZAp">
-          <node concept="2OqwBi" id="2l$" role="3clFbG">
-            <node concept="37vLTw" id="2l_" role="2Oq$k0">
-              <ref role="3cqZAo" node="2lo" resolve="lb" />
-            </node>
-            <node concept="liA8E" id="2lA" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2lB" role="37wK5m">
-                <property role="Xl_RC" value="body" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="2lj" role="3cqZAp">
-          <node concept="2OqwBi" id="2lC" role="3clFbG">
-            <node concept="37vLTw" id="2lD" role="2Oq$k0">
-              <ref role="3cqZAo" node="2lo" resolve="lb" />
-            </node>
-            <node concept="liA8E" id="2lE" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.activate(java.lang.Object)" resolve="activate" />
-              <node concept="Xl_RD" id="2lF" role="37wK5m">
-                <property role="Xl_RC" value="body" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="2lk" role="3cqZAp">
-          <node concept="3cpWsn" id="2lG" role="3cpWs9">
-            <property role="TrG5h" value="rv" />
-            <node concept="3uibUv" id="2lH" role="1tU5fm">
-              <ref role="3uigEE" to="kpbf:~RegularTextUnit" resolve="RegularTextUnit" />
-            </node>
-            <node concept="2ShNRf" id="2lI" role="33vP2m">
-              <node concept="1pGfFk" id="2lJ" role="2ShVmc">
-                <ref role="37wK5l" to="kpbf:~RegularTextUnit.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.nio.charset.Charset)" resolve="RegularTextUnit" />
-                <node concept="37vLTw" id="2lK" role="37wK5m">
-                  <ref role="3cqZAo" node="2le" resolve="node" />
-                </node>
-                <node concept="37vLTw" id="2lL" role="37wK5m">
-                  <ref role="3cqZAo" node="2ld" resolve="filename" />
-                </node>
-                <node concept="10Nm6u" id="2lM" role="37wK5m" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="2ll" role="3cqZAp">
+        <node concept="3clFbF" id="2lx" role="3cqZAp">
           <node concept="2OqwBi" id="2lN" role="3clFbG">
             <node concept="37vLTw" id="2lO" role="2Oq$k0">
-              <ref role="3cqZAo" node="2lG" resolve="rv" />
+              <ref role="3cqZAo" node="2lB" resolve="lb" />
             </node>
             <node concept="liA8E" id="2lP" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.setBufferLayout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="setBufferLayout" />
-              <node concept="2OqwBi" id="2lQ" role="37wK5m">
-                <node concept="37vLTw" id="2lR" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2lo" resolve="lb" />
+              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
+              <node concept="Xl_RD" id="2lQ" role="37wK5m">
+                <property role="Xl_RC" value="body" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2ly" role="3cqZAp">
+          <node concept="2OqwBi" id="2lR" role="3clFbG">
+            <node concept="37vLTw" id="2lS" role="2Oq$k0">
+              <ref role="3cqZAo" node="2lB" resolve="lb" />
+            </node>
+            <node concept="liA8E" id="2lT" role="2OqNvi">
+              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.activate(java.lang.Object)" resolve="activate" />
+              <node concept="Xl_RD" id="2lU" role="37wK5m">
+                <property role="Xl_RC" value="body" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="2lz" role="3cqZAp">
+          <node concept="3cpWsn" id="2lV" role="3cpWs9">
+            <property role="TrG5h" value="rv" />
+            <node concept="3uibUv" id="2lW" role="1tU5fm">
+              <ref role="3uigEE" to="yfwt:~TextGenModelOutline$UnitBuilder" resolve="TextGenModelOutline.UnitBuilder" />
+            </node>
+            <node concept="2OqwBi" id="2lX" role="33vP2m">
+              <node concept="37vLTw" id="2lY" role="2Oq$k0">
+                <ref role="3cqZAo" node="2lr" resolve="outline" />
+              </node>
+              <node concept="liA8E" id="2lZ" role="2OqNvi">
+                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.unitBuilder(java.lang.String,org.jetbrains.mps.openapi.model.SNode)" resolve="unitBuilder" />
+                <node concept="37vLTw" id="2m0" role="37wK5m">
+                  <ref role="3cqZAo" node="2ls" resolve="filename" />
                 </node>
-                <node concept="liA8E" id="2lS" role="2OqNvi">
+                <node concept="37vLTw" id="2m1" role="37wK5m">
+                  <ref role="3cqZAo" node="2lt" resolve="node" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2l$" role="3cqZAp">
+          <node concept="2OqwBi" id="2m2" role="3clFbG">
+            <node concept="37vLTw" id="2m3" role="2Oq$k0">
+              <ref role="3cqZAo" node="2lV" resolve="rv" />
+            </node>
+            <node concept="liA8E" id="2m4" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="layout" />
+              <node concept="2OqwBi" id="2m5" role="37wK5m">
+                <node concept="37vLTw" id="2m6" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2lB" resolve="lb" />
+                </node>
+                <node concept="liA8E" id="2m7" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.create()" resolve="create" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2lm" role="3cqZAp">
-          <node concept="2OqwBi" id="2lT" role="3clFbG">
-            <node concept="37vLTw" id="2lU" role="2Oq$k0">
-              <ref role="3cqZAo" node="2lG" resolve="rv" />
+        <node concept="3clFbF" id="2l_" role="3cqZAp">
+          <node concept="2OqwBi" id="2m8" role="3clFbG">
+            <node concept="37vLTw" id="2m9" role="2Oq$k0">
+              <ref role="3cqZAo" node="2lV" resolve="rv" />
             </node>
-            <node concept="liA8E" id="2lV" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.addContextObject(java.lang.String,java.lang.Object)" resolve="addContextObject" />
-              <node concept="Xl_RD" id="2lW" role="37wK5m">
+            <node concept="liA8E" id="2ma" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.with(java.lang.String,java.lang.Object)" resolve="with" />
+              <node concept="Xl_RD" id="2mb" role="37wK5m">
                 <property role="Xl_RC" value="imports" />
               </node>
-              <node concept="2YIFZM" id="2lX" role="37wK5m">
+              <node concept="2YIFZM" id="2mc" role="37wK5m">
                 <ref role="1Pybhc" node="128" resolve="KotlinTextGen" />
                 <ref role="37wK5l" node="12O" resolve="contextObjectInstance_imports" />
-                <node concept="37vLTw" id="2lY" role="37wK5m">
-                  <ref role="3cqZAo" node="2le" resolve="node" />
+                <node concept="37vLTw" id="2md" role="37wK5m">
+                  <ref role="3cqZAo" node="2lt" resolve="node" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="2ln" role="3cqZAp">
-          <node concept="37vLTw" id="2lZ" role="3cqZAk">
-            <ref role="3cqZAo" node="2lG" resolve="rv" />
+        <node concept="3cpWs6" id="2lA" role="3cqZAp">
+          <node concept="2OqwBi" id="2me" role="3cqZAk">
+            <node concept="37vLTw" id="2mf" role="2Oq$k0">
+              <ref role="3cqZAo" node="2lV" resolve="rv" />
+            </node>
+            <node concept="liA8E" id="2mg" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.build()" resolve="build" />
+            </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2lb" role="1B3o_S" />
-      <node concept="3uibUv" id="2lc" role="3clF45">
+      <node concept="3Tm6S6" id="2lp" role="1B3o_S" />
+      <node concept="3uibUv" id="2lq" role="3clF45">
         <ref role="3uigEE" to="ao3:~TextUnit" resolve="TextUnit" />
       </node>
-      <node concept="37vLTG" id="2ld" role="3clF46">
+      <node concept="37vLTG" id="2lr" role="3clF46">
+        <property role="TrG5h" value="outline" />
+        <node concept="3uibUv" id="2mh" role="1tU5fm">
+          <ref role="3uigEE" to="yfwt:~TextGenModelOutline" resolve="TextGenModelOutline" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="2ls" role="3clF46">
         <property role="TrG5h" value="filename" />
-        <node concept="3uibUv" id="2m0" role="1tU5fm">
+        <node concept="3uibUv" id="2mi" role="1tU5fm">
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
       </node>
-      <node concept="37vLTG" id="2le" role="3clF46">
+      <node concept="37vLTG" id="2lt" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2m1" role="1tU5fm">
+        <node concept="3uibUv" id="2mj" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -33055,149 +33112,162 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="createTextUnit3" />
-      <node concept="3clFbS" id="2m2" role="3clF47">
-        <node concept="3cpWs8" id="2m7" role="3cqZAp">
-          <node concept="3cpWsn" id="2mg" role="3cpWs9">
+      <node concept="3clFbS" id="2mk" role="3clF47">
+        <node concept="3cpWs8" id="2mq" role="3cqZAp">
+          <node concept="3cpWsn" id="2mz" role="3cpWs9">
             <property role="TrG5h" value="lb" />
-            <node concept="3uibUv" id="2mh" role="1tU5fm">
+            <node concept="3uibUv" id="2m$" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~BufferLayoutBuilder" resolve="BufferLayoutBuilder" />
             </node>
-            <node concept="2ShNRf" id="2mi" role="33vP2m">
-              <node concept="1pGfFk" id="2mj" role="2ShVmc">
+            <node concept="2ShNRf" id="2m_" role="33vP2m">
+              <node concept="1pGfFk" id="2mA" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.&lt;init&gt;()" resolve="BufferLayoutBuilder" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2m8" role="3cqZAp">
-          <node concept="2OqwBi" id="2mk" role="3clFbG">
-            <node concept="37vLTw" id="2ml" role="2Oq$k0">
-              <ref role="3cqZAo" node="2mg" resolve="lb" />
+        <node concept="3clFbF" id="2mr" role="3cqZAp">
+          <node concept="2OqwBi" id="2mB" role="3clFbG">
+            <node concept="37vLTw" id="2mC" role="2Oq$k0">
+              <ref role="3cqZAo" node="2mz" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2mm" role="2OqNvi">
+            <node concept="liA8E" id="2mD" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2mn" role="37wK5m">
+              <node concept="Xl_RD" id="2mE" role="37wK5m">
                 <property role="Xl_RC" value="header" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2m9" role="3cqZAp">
-          <node concept="2OqwBi" id="2mo" role="3clFbG">
-            <node concept="37vLTw" id="2mp" role="2Oq$k0">
-              <ref role="3cqZAo" node="2mg" resolve="lb" />
+        <node concept="3clFbF" id="2ms" role="3cqZAp">
+          <node concept="2OqwBi" id="2mF" role="3clFbG">
+            <node concept="37vLTw" id="2mG" role="2Oq$k0">
+              <ref role="3cqZAo" node="2mz" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2mq" role="2OqNvi">
+            <node concept="liA8E" id="2mH" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2mr" role="37wK5m">
+              <node concept="Xl_RD" id="2mI" role="37wK5m">
                 <property role="Xl_RC" value="imports" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2ma" role="3cqZAp">
-          <node concept="2OqwBi" id="2ms" role="3clFbG">
-            <node concept="37vLTw" id="2mt" role="2Oq$k0">
-              <ref role="3cqZAo" node="2mg" resolve="lb" />
+        <node concept="3clFbF" id="2mt" role="3cqZAp">
+          <node concept="2OqwBi" id="2mJ" role="3clFbG">
+            <node concept="37vLTw" id="2mK" role="2Oq$k0">
+              <ref role="3cqZAo" node="2mz" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2mu" role="2OqNvi">
+            <node concept="liA8E" id="2mL" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2mv" role="37wK5m">
+              <node concept="Xl_RD" id="2mM" role="37wK5m">
                 <property role="Xl_RC" value="body" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2mb" role="3cqZAp">
-          <node concept="2OqwBi" id="2mw" role="3clFbG">
-            <node concept="37vLTw" id="2mx" role="2Oq$k0">
-              <ref role="3cqZAo" node="2mg" resolve="lb" />
+        <node concept="3clFbF" id="2mu" role="3cqZAp">
+          <node concept="2OqwBi" id="2mN" role="3clFbG">
+            <node concept="37vLTw" id="2mO" role="2Oq$k0">
+              <ref role="3cqZAo" node="2mz" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2my" role="2OqNvi">
+            <node concept="liA8E" id="2mP" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.activate(java.lang.Object)" resolve="activate" />
-              <node concept="Xl_RD" id="2mz" role="37wK5m">
+              <node concept="Xl_RD" id="2mQ" role="37wK5m">
                 <property role="Xl_RC" value="body" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="2mc" role="3cqZAp">
-          <node concept="3cpWsn" id="2m$" role="3cpWs9">
+        <node concept="3cpWs8" id="2mv" role="3cqZAp">
+          <node concept="3cpWsn" id="2mR" role="3cpWs9">
             <property role="TrG5h" value="rv" />
-            <node concept="3uibUv" id="2m_" role="1tU5fm">
-              <ref role="3uigEE" to="kpbf:~RegularTextUnit" resolve="RegularTextUnit" />
+            <node concept="3uibUv" id="2mS" role="1tU5fm">
+              <ref role="3uigEE" to="yfwt:~TextGenModelOutline$UnitBuilder" resolve="TextGenModelOutline.UnitBuilder" />
             </node>
-            <node concept="2ShNRf" id="2mA" role="33vP2m">
-              <node concept="1pGfFk" id="2mB" role="2ShVmc">
-                <ref role="37wK5l" to="kpbf:~RegularTextUnit.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.nio.charset.Charset)" resolve="RegularTextUnit" />
-                <node concept="37vLTw" id="2mC" role="37wK5m">
-                  <ref role="3cqZAo" node="2m6" resolve="node" />
+            <node concept="2OqwBi" id="2mT" role="33vP2m">
+              <node concept="37vLTw" id="2mU" role="2Oq$k0">
+                <ref role="3cqZAo" node="2mn" resolve="outline" />
+              </node>
+              <node concept="liA8E" id="2mV" role="2OqNvi">
+                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.unitBuilder(java.lang.String,org.jetbrains.mps.openapi.model.SNode)" resolve="unitBuilder" />
+                <node concept="37vLTw" id="2mW" role="37wK5m">
+                  <ref role="3cqZAo" node="2mo" resolve="filename" />
                 </node>
-                <node concept="37vLTw" id="2mD" role="37wK5m">
-                  <ref role="3cqZAo" node="2m5" resolve="filename" />
+                <node concept="37vLTw" id="2mX" role="37wK5m">
+                  <ref role="3cqZAo" node="2mp" resolve="node" />
                 </node>
-                <node concept="10Nm6u" id="2mE" role="37wK5m" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2md" role="3cqZAp">
-          <node concept="2OqwBi" id="2mF" role="3clFbG">
-            <node concept="37vLTw" id="2mG" role="2Oq$k0">
-              <ref role="3cqZAo" node="2m$" resolve="rv" />
+        <node concept="3clFbF" id="2mw" role="3cqZAp">
+          <node concept="2OqwBi" id="2mY" role="3clFbG">
+            <node concept="37vLTw" id="2mZ" role="2Oq$k0">
+              <ref role="3cqZAo" node="2mR" resolve="rv" />
             </node>
-            <node concept="liA8E" id="2mH" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.setBufferLayout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="setBufferLayout" />
-              <node concept="2OqwBi" id="2mI" role="37wK5m">
-                <node concept="37vLTw" id="2mJ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2mg" resolve="lb" />
+            <node concept="liA8E" id="2n0" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="layout" />
+              <node concept="2OqwBi" id="2n1" role="37wK5m">
+                <node concept="37vLTw" id="2n2" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2mz" resolve="lb" />
                 </node>
-                <node concept="liA8E" id="2mK" role="2OqNvi">
+                <node concept="liA8E" id="2n3" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.create()" resolve="create" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2me" role="3cqZAp">
-          <node concept="2OqwBi" id="2mL" role="3clFbG">
-            <node concept="37vLTw" id="2mM" role="2Oq$k0">
-              <ref role="3cqZAo" node="2m$" resolve="rv" />
+        <node concept="3clFbF" id="2mx" role="3cqZAp">
+          <node concept="2OqwBi" id="2n4" role="3clFbG">
+            <node concept="37vLTw" id="2n5" role="2Oq$k0">
+              <ref role="3cqZAo" node="2mR" resolve="rv" />
             </node>
-            <node concept="liA8E" id="2mN" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.addContextObject(java.lang.String,java.lang.Object)" resolve="addContextObject" />
-              <node concept="Xl_RD" id="2mO" role="37wK5m">
+            <node concept="liA8E" id="2n6" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.with(java.lang.String,java.lang.Object)" resolve="with" />
+              <node concept="Xl_RD" id="2n7" role="37wK5m">
                 <property role="Xl_RC" value="imports" />
               </node>
-              <node concept="2YIFZM" id="2mP" role="37wK5m">
+              <node concept="2YIFZM" id="2n8" role="37wK5m">
                 <ref role="1Pybhc" node="128" resolve="KotlinTextGen" />
                 <ref role="37wK5l" node="12O" resolve="contextObjectInstance_imports" />
-                <node concept="37vLTw" id="2mQ" role="37wK5m">
-                  <ref role="3cqZAo" node="2m6" resolve="node" />
+                <node concept="37vLTw" id="2n9" role="37wK5m">
+                  <ref role="3cqZAo" node="2mp" resolve="node" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="2mf" role="3cqZAp">
-          <node concept="37vLTw" id="2mR" role="3cqZAk">
-            <ref role="3cqZAo" node="2m$" resolve="rv" />
+        <node concept="3cpWs6" id="2my" role="3cqZAp">
+          <node concept="2OqwBi" id="2na" role="3cqZAk">
+            <node concept="37vLTw" id="2nb" role="2Oq$k0">
+              <ref role="3cqZAo" node="2mR" resolve="rv" />
+            </node>
+            <node concept="liA8E" id="2nc" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.build()" resolve="build" />
+            </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2m3" role="1B3o_S" />
-      <node concept="3uibUv" id="2m4" role="3clF45">
+      <node concept="3Tm6S6" id="2ml" role="1B3o_S" />
+      <node concept="3uibUv" id="2mm" role="3clF45">
         <ref role="3uigEE" to="ao3:~TextUnit" resolve="TextUnit" />
       </node>
-      <node concept="37vLTG" id="2m5" role="3clF46">
+      <node concept="37vLTG" id="2mn" role="3clF46">
+        <property role="TrG5h" value="outline" />
+        <node concept="3uibUv" id="2nd" role="1tU5fm">
+          <ref role="3uigEE" to="yfwt:~TextGenModelOutline" resolve="TextGenModelOutline" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="2mo" role="3clF46">
         <property role="TrG5h" value="filename" />
-        <node concept="3uibUv" id="2mS" role="1tU5fm">
+        <node concept="3uibUv" id="2ne" role="1tU5fm">
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
       </node>
-      <node concept="37vLTG" id="2m6" role="3clF46">
+      <node concept="37vLTG" id="2mp" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2mT" role="1tU5fm">
+        <node concept="3uibUv" id="2nf" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -33207,149 +33277,162 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="createTextUnit4" />
-      <node concept="3clFbS" id="2mU" role="3clF47">
-        <node concept="3cpWs8" id="2mZ" role="3cqZAp">
-          <node concept="3cpWsn" id="2n8" role="3cpWs9">
+      <node concept="3clFbS" id="2ng" role="3clF47">
+        <node concept="3cpWs8" id="2nm" role="3cqZAp">
+          <node concept="3cpWsn" id="2nv" role="3cpWs9">
             <property role="TrG5h" value="lb" />
-            <node concept="3uibUv" id="2n9" role="1tU5fm">
+            <node concept="3uibUv" id="2nw" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~BufferLayoutBuilder" resolve="BufferLayoutBuilder" />
             </node>
-            <node concept="2ShNRf" id="2na" role="33vP2m">
-              <node concept="1pGfFk" id="2nb" role="2ShVmc">
+            <node concept="2ShNRf" id="2nx" role="33vP2m">
+              <node concept="1pGfFk" id="2ny" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.&lt;init&gt;()" resolve="BufferLayoutBuilder" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2n0" role="3cqZAp">
-          <node concept="2OqwBi" id="2nc" role="3clFbG">
-            <node concept="37vLTw" id="2nd" role="2Oq$k0">
-              <ref role="3cqZAo" node="2n8" resolve="lb" />
+        <node concept="3clFbF" id="2nn" role="3cqZAp">
+          <node concept="2OqwBi" id="2nz" role="3clFbG">
+            <node concept="37vLTw" id="2n$" role="2Oq$k0">
+              <ref role="3cqZAo" node="2nv" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2ne" role="2OqNvi">
+            <node concept="liA8E" id="2n_" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2nf" role="37wK5m">
+              <node concept="Xl_RD" id="2nA" role="37wK5m">
                 <property role="Xl_RC" value="header" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2n1" role="3cqZAp">
-          <node concept="2OqwBi" id="2ng" role="3clFbG">
-            <node concept="37vLTw" id="2nh" role="2Oq$k0">
-              <ref role="3cqZAo" node="2n8" resolve="lb" />
+        <node concept="3clFbF" id="2no" role="3cqZAp">
+          <node concept="2OqwBi" id="2nB" role="3clFbG">
+            <node concept="37vLTw" id="2nC" role="2Oq$k0">
+              <ref role="3cqZAo" node="2nv" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2ni" role="2OqNvi">
+            <node concept="liA8E" id="2nD" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2nj" role="37wK5m">
+              <node concept="Xl_RD" id="2nE" role="37wK5m">
                 <property role="Xl_RC" value="imports" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2n2" role="3cqZAp">
-          <node concept="2OqwBi" id="2nk" role="3clFbG">
-            <node concept="37vLTw" id="2nl" role="2Oq$k0">
-              <ref role="3cqZAo" node="2n8" resolve="lb" />
+        <node concept="3clFbF" id="2np" role="3cqZAp">
+          <node concept="2OqwBi" id="2nF" role="3clFbG">
+            <node concept="37vLTw" id="2nG" role="2Oq$k0">
+              <ref role="3cqZAo" node="2nv" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2nm" role="2OqNvi">
+            <node concept="liA8E" id="2nH" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2nn" role="37wK5m">
+              <node concept="Xl_RD" id="2nI" role="37wK5m">
                 <property role="Xl_RC" value="body" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2n3" role="3cqZAp">
-          <node concept="2OqwBi" id="2no" role="3clFbG">
-            <node concept="37vLTw" id="2np" role="2Oq$k0">
-              <ref role="3cqZAo" node="2n8" resolve="lb" />
+        <node concept="3clFbF" id="2nq" role="3cqZAp">
+          <node concept="2OqwBi" id="2nJ" role="3clFbG">
+            <node concept="37vLTw" id="2nK" role="2Oq$k0">
+              <ref role="3cqZAo" node="2nv" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2nq" role="2OqNvi">
+            <node concept="liA8E" id="2nL" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.activate(java.lang.Object)" resolve="activate" />
-              <node concept="Xl_RD" id="2nr" role="37wK5m">
+              <node concept="Xl_RD" id="2nM" role="37wK5m">
                 <property role="Xl_RC" value="body" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="2n4" role="3cqZAp">
-          <node concept="3cpWsn" id="2ns" role="3cpWs9">
+        <node concept="3cpWs8" id="2nr" role="3cqZAp">
+          <node concept="3cpWsn" id="2nN" role="3cpWs9">
             <property role="TrG5h" value="rv" />
-            <node concept="3uibUv" id="2nt" role="1tU5fm">
-              <ref role="3uigEE" to="kpbf:~RegularTextUnit" resolve="RegularTextUnit" />
+            <node concept="3uibUv" id="2nO" role="1tU5fm">
+              <ref role="3uigEE" to="yfwt:~TextGenModelOutline$UnitBuilder" resolve="TextGenModelOutline.UnitBuilder" />
             </node>
-            <node concept="2ShNRf" id="2nu" role="33vP2m">
-              <node concept="1pGfFk" id="2nv" role="2ShVmc">
-                <ref role="37wK5l" to="kpbf:~RegularTextUnit.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.nio.charset.Charset)" resolve="RegularTextUnit" />
-                <node concept="37vLTw" id="2nw" role="37wK5m">
-                  <ref role="3cqZAo" node="2mY" resolve="node" />
+            <node concept="2OqwBi" id="2nP" role="33vP2m">
+              <node concept="37vLTw" id="2nQ" role="2Oq$k0">
+                <ref role="3cqZAo" node="2nj" resolve="outline" />
+              </node>
+              <node concept="liA8E" id="2nR" role="2OqNvi">
+                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.unitBuilder(java.lang.String,org.jetbrains.mps.openapi.model.SNode)" resolve="unitBuilder" />
+                <node concept="37vLTw" id="2nS" role="37wK5m">
+                  <ref role="3cqZAo" node="2nk" resolve="filename" />
                 </node>
-                <node concept="37vLTw" id="2nx" role="37wK5m">
-                  <ref role="3cqZAo" node="2mX" resolve="filename" />
+                <node concept="37vLTw" id="2nT" role="37wK5m">
+                  <ref role="3cqZAo" node="2nl" resolve="node" />
                 </node>
-                <node concept="10Nm6u" id="2ny" role="37wK5m" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2n5" role="3cqZAp">
-          <node concept="2OqwBi" id="2nz" role="3clFbG">
-            <node concept="37vLTw" id="2n$" role="2Oq$k0">
-              <ref role="3cqZAo" node="2ns" resolve="rv" />
+        <node concept="3clFbF" id="2ns" role="3cqZAp">
+          <node concept="2OqwBi" id="2nU" role="3clFbG">
+            <node concept="37vLTw" id="2nV" role="2Oq$k0">
+              <ref role="3cqZAo" node="2nN" resolve="rv" />
             </node>
-            <node concept="liA8E" id="2n_" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.setBufferLayout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="setBufferLayout" />
-              <node concept="2OqwBi" id="2nA" role="37wK5m">
-                <node concept="37vLTw" id="2nB" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2n8" resolve="lb" />
+            <node concept="liA8E" id="2nW" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="layout" />
+              <node concept="2OqwBi" id="2nX" role="37wK5m">
+                <node concept="37vLTw" id="2nY" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2nv" resolve="lb" />
                 </node>
-                <node concept="liA8E" id="2nC" role="2OqNvi">
+                <node concept="liA8E" id="2nZ" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.create()" resolve="create" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2n6" role="3cqZAp">
-          <node concept="2OqwBi" id="2nD" role="3clFbG">
-            <node concept="37vLTw" id="2nE" role="2Oq$k0">
-              <ref role="3cqZAo" node="2ns" resolve="rv" />
+        <node concept="3clFbF" id="2nt" role="3cqZAp">
+          <node concept="2OqwBi" id="2o0" role="3clFbG">
+            <node concept="37vLTw" id="2o1" role="2Oq$k0">
+              <ref role="3cqZAo" node="2nN" resolve="rv" />
             </node>
-            <node concept="liA8E" id="2nF" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.addContextObject(java.lang.String,java.lang.Object)" resolve="addContextObject" />
-              <node concept="Xl_RD" id="2nG" role="37wK5m">
+            <node concept="liA8E" id="2o2" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.with(java.lang.String,java.lang.Object)" resolve="with" />
+              <node concept="Xl_RD" id="2o3" role="37wK5m">
                 <property role="Xl_RC" value="imports" />
               </node>
-              <node concept="2YIFZM" id="2nH" role="37wK5m">
+              <node concept="2YIFZM" id="2o4" role="37wK5m">
                 <ref role="1Pybhc" node="128" resolve="KotlinTextGen" />
                 <ref role="37wK5l" node="12O" resolve="contextObjectInstance_imports" />
-                <node concept="37vLTw" id="2nI" role="37wK5m">
-                  <ref role="3cqZAo" node="2mY" resolve="node" />
+                <node concept="37vLTw" id="2o5" role="37wK5m">
+                  <ref role="3cqZAo" node="2nl" resolve="node" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="2n7" role="3cqZAp">
-          <node concept="37vLTw" id="2nJ" role="3cqZAk">
-            <ref role="3cqZAo" node="2ns" resolve="rv" />
+        <node concept="3cpWs6" id="2nu" role="3cqZAp">
+          <node concept="2OqwBi" id="2o6" role="3cqZAk">
+            <node concept="37vLTw" id="2o7" role="2Oq$k0">
+              <ref role="3cqZAo" node="2nN" resolve="rv" />
+            </node>
+            <node concept="liA8E" id="2o8" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.build()" resolve="build" />
+            </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2mV" role="1B3o_S" />
-      <node concept="3uibUv" id="2mW" role="3clF45">
+      <node concept="3Tm6S6" id="2nh" role="1B3o_S" />
+      <node concept="3uibUv" id="2ni" role="3clF45">
         <ref role="3uigEE" to="ao3:~TextUnit" resolve="TextUnit" />
       </node>
-      <node concept="37vLTG" id="2mX" role="3clF46">
+      <node concept="37vLTG" id="2nj" role="3clF46">
+        <property role="TrG5h" value="outline" />
+        <node concept="3uibUv" id="2o9" role="1tU5fm">
+          <ref role="3uigEE" to="yfwt:~TextGenModelOutline" resolve="TextGenModelOutline" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="2nk" role="3clF46">
         <property role="TrG5h" value="filename" />
-        <node concept="3uibUv" id="2nK" role="1tU5fm">
+        <node concept="3uibUv" id="2oa" role="1tU5fm">
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
       </node>
-      <node concept="37vLTG" id="2mY" role="3clF46">
+      <node concept="37vLTG" id="2nl" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2nL" role="1tU5fm">
+        <node concept="3uibUv" id="2ob" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
@@ -33359,262 +33442,275 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <property role="TrG5h" value="createTextUnit5" />
-      <node concept="3clFbS" id="2nM" role="3clF47">
-        <node concept="3cpWs8" id="2nR" role="3cqZAp">
-          <node concept="3cpWsn" id="2o0" role="3cpWs9">
+      <node concept="3clFbS" id="2oc" role="3clF47">
+        <node concept="3cpWs8" id="2oi" role="3cqZAp">
+          <node concept="3cpWsn" id="2or" role="3cpWs9">
             <property role="TrG5h" value="lb" />
-            <node concept="3uibUv" id="2o1" role="1tU5fm">
+            <node concept="3uibUv" id="2os" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~BufferLayoutBuilder" resolve="BufferLayoutBuilder" />
             </node>
-            <node concept="2ShNRf" id="2o2" role="33vP2m">
-              <node concept="1pGfFk" id="2o3" role="2ShVmc">
+            <node concept="2ShNRf" id="2ot" role="33vP2m">
+              <node concept="1pGfFk" id="2ou" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.&lt;init&gt;()" resolve="BufferLayoutBuilder" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2nS" role="3cqZAp">
-          <node concept="2OqwBi" id="2o4" role="3clFbG">
-            <node concept="37vLTw" id="2o5" role="2Oq$k0">
-              <ref role="3cqZAo" node="2o0" resolve="lb" />
+        <node concept="3clFbF" id="2oj" role="3cqZAp">
+          <node concept="2OqwBi" id="2ov" role="3clFbG">
+            <node concept="37vLTw" id="2ow" role="2Oq$k0">
+              <ref role="3cqZAo" node="2or" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2o6" role="2OqNvi">
+            <node concept="liA8E" id="2ox" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2o7" role="37wK5m">
+              <node concept="Xl_RD" id="2oy" role="37wK5m">
                 <property role="Xl_RC" value="header" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2nT" role="3cqZAp">
-          <node concept="2OqwBi" id="2o8" role="3clFbG">
-            <node concept="37vLTw" id="2o9" role="2Oq$k0">
-              <ref role="3cqZAo" node="2o0" resolve="lb" />
+        <node concept="3clFbF" id="2ok" role="3cqZAp">
+          <node concept="2OqwBi" id="2oz" role="3clFbG">
+            <node concept="37vLTw" id="2o$" role="2Oq$k0">
+              <ref role="3cqZAo" node="2or" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2oa" role="2OqNvi">
+            <node concept="liA8E" id="2o_" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2ob" role="37wK5m">
+              <node concept="Xl_RD" id="2oA" role="37wK5m">
                 <property role="Xl_RC" value="imports" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2nU" role="3cqZAp">
-          <node concept="2OqwBi" id="2oc" role="3clFbG">
-            <node concept="37vLTw" id="2od" role="2Oq$k0">
-              <ref role="3cqZAo" node="2o0" resolve="lb" />
+        <node concept="3clFbF" id="2ol" role="3cqZAp">
+          <node concept="2OqwBi" id="2oB" role="3clFbG">
+            <node concept="37vLTw" id="2oC" role="2Oq$k0">
+              <ref role="3cqZAo" node="2or" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2oe" role="2OqNvi">
+            <node concept="liA8E" id="2oD" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="2of" role="37wK5m">
+              <node concept="Xl_RD" id="2oE" role="37wK5m">
                 <property role="Xl_RC" value="body" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2nV" role="3cqZAp">
-          <node concept="2OqwBi" id="2og" role="3clFbG">
-            <node concept="37vLTw" id="2oh" role="2Oq$k0">
-              <ref role="3cqZAo" node="2o0" resolve="lb" />
+        <node concept="3clFbF" id="2om" role="3cqZAp">
+          <node concept="2OqwBi" id="2oF" role="3clFbG">
+            <node concept="37vLTw" id="2oG" role="2Oq$k0">
+              <ref role="3cqZAo" node="2or" resolve="lb" />
             </node>
-            <node concept="liA8E" id="2oi" role="2OqNvi">
+            <node concept="liA8E" id="2oH" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.activate(java.lang.Object)" resolve="activate" />
-              <node concept="Xl_RD" id="2oj" role="37wK5m">
+              <node concept="Xl_RD" id="2oI" role="37wK5m">
                 <property role="Xl_RC" value="body" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="2nW" role="3cqZAp">
-          <node concept="3cpWsn" id="2ok" role="3cpWs9">
+        <node concept="3cpWs8" id="2on" role="3cqZAp">
+          <node concept="3cpWsn" id="2oJ" role="3cpWs9">
             <property role="TrG5h" value="rv" />
-            <node concept="3uibUv" id="2ol" role="1tU5fm">
-              <ref role="3uigEE" to="kpbf:~RegularTextUnit" resolve="RegularTextUnit" />
+            <node concept="3uibUv" id="2oK" role="1tU5fm">
+              <ref role="3uigEE" to="yfwt:~TextGenModelOutline$UnitBuilder" resolve="TextGenModelOutline.UnitBuilder" />
             </node>
-            <node concept="2ShNRf" id="2om" role="33vP2m">
-              <node concept="1pGfFk" id="2on" role="2ShVmc">
-                <ref role="37wK5l" to="kpbf:~RegularTextUnit.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode,java.lang.String,java.lang.String,java.nio.charset.Charset)" resolve="RegularTextUnit" />
-                <node concept="37vLTw" id="2oo" role="37wK5m">
-                  <ref role="3cqZAo" node="2nQ" resolve="node" />
+            <node concept="2OqwBi" id="2oL" role="33vP2m">
+              <node concept="37vLTw" id="2oM" role="2Oq$k0">
+                <ref role="3cqZAo" node="2of" resolve="outline" />
+              </node>
+              <node concept="liA8E" id="2oN" role="2OqNvi">
+                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.unitBuilder(java.lang.String,org.jetbrains.mps.openapi.model.SNode)" resolve="unitBuilder" />
+                <node concept="37vLTw" id="2oO" role="37wK5m">
+                  <ref role="3cqZAo" node="2og" resolve="filename" />
                 </node>
-                <node concept="37vLTw" id="2op" role="37wK5m">
-                  <ref role="3cqZAo" node="2nP" resolve="filename" />
+                <node concept="37vLTw" id="2oP" role="37wK5m">
+                  <ref role="3cqZAo" node="2oh" resolve="node" />
                 </node>
-                <node concept="10Nm6u" id="2oq" role="37wK5m" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2nX" role="3cqZAp">
-          <node concept="2OqwBi" id="2or" role="3clFbG">
-            <node concept="37vLTw" id="2os" role="2Oq$k0">
-              <ref role="3cqZAo" node="2ok" resolve="rv" />
+        <node concept="3clFbF" id="2oo" role="3cqZAp">
+          <node concept="2OqwBi" id="2oQ" role="3clFbG">
+            <node concept="37vLTw" id="2oR" role="2Oq$k0">
+              <ref role="3cqZAo" node="2oJ" resolve="rv" />
             </node>
-            <node concept="liA8E" id="2ot" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.setBufferLayout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="setBufferLayout" />
-              <node concept="2OqwBi" id="2ou" role="37wK5m">
-                <node concept="37vLTw" id="2ov" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2o0" resolve="lb" />
+            <node concept="liA8E" id="2oS" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="layout" />
+              <node concept="2OqwBi" id="2oT" role="37wK5m">
+                <node concept="37vLTw" id="2oU" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2or" resolve="lb" />
                 </node>
-                <node concept="liA8E" id="2ow" role="2OqNvi">
+                <node concept="liA8E" id="2oV" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.create()" resolve="create" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2nY" role="3cqZAp">
-          <node concept="2OqwBi" id="2ox" role="3clFbG">
-            <node concept="37vLTw" id="2oy" role="2Oq$k0">
-              <ref role="3cqZAo" node="2ok" resolve="rv" />
+        <node concept="3clFbF" id="2op" role="3cqZAp">
+          <node concept="2OqwBi" id="2oW" role="3clFbG">
+            <node concept="37vLTw" id="2oX" role="2Oq$k0">
+              <ref role="3cqZAo" node="2oJ" resolve="rv" />
             </node>
-            <node concept="liA8E" id="2oz" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~RegularTextUnit.addContextObject(java.lang.String,java.lang.Object)" resolve="addContextObject" />
-              <node concept="Xl_RD" id="2o$" role="37wK5m">
+            <node concept="liA8E" id="2oY" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.with(java.lang.String,java.lang.Object)" resolve="with" />
+              <node concept="Xl_RD" id="2oZ" role="37wK5m">
                 <property role="Xl_RC" value="imports" />
               </node>
-              <node concept="2YIFZM" id="2o_" role="37wK5m">
+              <node concept="2YIFZM" id="2p0" role="37wK5m">
                 <ref role="1Pybhc" node="128" resolve="KotlinTextGen" />
                 <ref role="37wK5l" node="12O" resolve="contextObjectInstance_imports" />
-                <node concept="37vLTw" id="2oA" role="37wK5m">
-                  <ref role="3cqZAo" node="2nQ" resolve="node" />
+                <node concept="37vLTw" id="2p1" role="37wK5m">
+                  <ref role="3cqZAo" node="2oh" resolve="node" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="2nZ" role="3cqZAp">
-          <node concept="37vLTw" id="2oB" role="3cqZAk">
-            <ref role="3cqZAo" node="2ok" resolve="rv" />
+        <node concept="3cpWs6" id="2oq" role="3cqZAp">
+          <node concept="2OqwBi" id="2p2" role="3cqZAk">
+            <node concept="37vLTw" id="2p3" role="2Oq$k0">
+              <ref role="3cqZAo" node="2oJ" resolve="rv" />
+            </node>
+            <node concept="liA8E" id="2p4" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.build()" resolve="build" />
+            </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2nN" role="1B3o_S" />
-      <node concept="3uibUv" id="2nO" role="3clF45">
+      <node concept="3Tm6S6" id="2od" role="1B3o_S" />
+      <node concept="3uibUv" id="2oe" role="3clF45">
         <ref role="3uigEE" to="ao3:~TextUnit" resolve="TextUnit" />
       </node>
-      <node concept="37vLTG" id="2nP" role="3clF46">
+      <node concept="37vLTG" id="2of" role="3clF46">
+        <property role="TrG5h" value="outline" />
+        <node concept="3uibUv" id="2p5" role="1tU5fm">
+          <ref role="3uigEE" to="yfwt:~TextGenModelOutline" resolve="TextGenModelOutline" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="2og" role="3clF46">
         <property role="TrG5h" value="filename" />
-        <node concept="3uibUv" id="2oC" role="1tU5fm">
+        <node concept="3uibUv" id="2p6" role="1tU5fm">
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
       </node>
-      <node concept="37vLTG" id="2nQ" role="3clF46">
+      <node concept="37vLTG" id="2oh" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="2oD" role="1tU5fm">
+        <node concept="3uibUv" id="2p7" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2oE">
+  <node concept="312cEu" id="2p8">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="ThisConstructorDelegationCall_TextGen" />
     <property role="3GE5qa" value="expression.function.constructor" />
     <uo k="s:originTrace" v="n:6153771967696098849" />
-    <node concept="3Tm1VV" id="2oF" role="1B3o_S">
+    <node concept="3Tm1VV" id="2p9" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696098849" />
     </node>
-    <node concept="3uibUv" id="2oG" role="1zkMxy">
+    <node concept="3uibUv" id="2pa" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696098849" />
     </node>
-    <node concept="3clFb_" id="2oH" role="jymVt">
+    <node concept="3clFb_" id="2pb" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696098849" />
-      <node concept="3cqZAl" id="2oI" role="3clF45">
+      <node concept="3cqZAl" id="2pc" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696098849" />
       </node>
-      <node concept="3Tm1VV" id="2oJ" role="1B3o_S">
+      <node concept="3Tm1VV" id="2pd" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696098849" />
       </node>
-      <node concept="3clFbS" id="2oK" role="3clF47">
+      <node concept="3clFbS" id="2pe" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696098849" />
-        <node concept="3cpWs8" id="2oN" role="3cqZAp">
+        <node concept="3cpWs8" id="2ph" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696098849" />
-          <node concept="3cpWsn" id="2oR" role="3cpWs9">
+          <node concept="3cpWsn" id="2pl" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696098849" />
-            <node concept="3uibUv" id="2oS" role="1tU5fm">
+            <node concept="3uibUv" id="2pm" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696098849" />
             </node>
-            <node concept="2ShNRf" id="2oT" role="33vP2m">
+            <node concept="2ShNRf" id="2pn" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696098849" />
-              <node concept="1pGfFk" id="2oU" role="2ShVmc">
+              <node concept="1pGfFk" id="2po" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696098849" />
-                <node concept="37vLTw" id="2oV" role="37wK5m">
-                  <ref role="3cqZAo" node="2oL" resolve="ctx" />
+                <node concept="37vLTw" id="2pp" role="37wK5m">
+                  <ref role="3cqZAo" node="2pf" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696098849" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2oO" role="3cqZAp">
+        <node concept="3clFbF" id="2pi" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697654035" />
-          <node concept="2OqwBi" id="2oW" role="3clFbG">
+          <node concept="2OqwBi" id="2pq" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967697654035" />
-            <node concept="37vLTw" id="2oX" role="2Oq$k0">
-              <ref role="3cqZAo" node="2oR" resolve="tgs" />
+            <node concept="37vLTw" id="2pr" role="2Oq$k0">
+              <ref role="3cqZAo" node="2pl" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967697654035" />
             </node>
-            <node concept="liA8E" id="2oY" role="2OqNvi">
+            <node concept="liA8E" id="2ps" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967697654035" />
-              <node concept="Xl_RD" id="2oZ" role="37wK5m">
+              <node concept="Xl_RD" id="2pt" role="37wK5m">
                 <property role="Xl_RC" value="this(" />
                 <uo k="s:originTrace" v="n:6153771967697654035" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2oP" role="3cqZAp">
+        <node concept="3clFbF" id="2pj" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697654036" />
-          <node concept="1niqFM" id="2p0" role="3clFbG">
+          <node concept="1niqFM" id="2pu" role="3clFbG">
             <property role="1npL6y" value="arguments" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:6153771967697654036" />
-            <node concept="3uibUv" id="2p1" role="32Mpfj">
+            <node concept="3uibUv" id="2pv" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:6153771967697654036" />
             </node>
-            <node concept="2OqwBi" id="2p2" role="2U24H$">
+            <node concept="2OqwBi" id="2pw" role="2U24H$">
               <uo k="s:originTrace" v="n:6153771967697654037" />
-              <node concept="2OqwBi" id="2p4" role="2Oq$k0">
+              <node concept="2OqwBi" id="2py" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967697654038" />
-                <node concept="37vLTw" id="2p6" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2oL" resolve="ctx" />
+                <node concept="37vLTw" id="2p$" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2pf" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2p7" role="2OqNvi">
+                <node concept="liA8E" id="2p_" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3Tsc0h" id="2p5" role="2OqNvi">
+              <node concept="3Tsc0h" id="2pz" role="2OqNvi">
                 <ref role="3TtcxE" to="hcm8:5GtPw5yVf0c" resolve="arguments" />
                 <uo k="s:originTrace" v="n:6153771967697654039" />
               </node>
             </node>
-            <node concept="37vLTw" id="2p3" role="2U24H$">
-              <ref role="3cqZAo" node="2oL" resolve="ctx" />
+            <node concept="37vLTw" id="2px" role="2U24H$">
+              <ref role="3cqZAo" node="2pf" resolve="ctx" />
               <uo k="s:originTrace" v="n:6153771967697654036" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2oQ" role="3cqZAp">
+        <node concept="3clFbF" id="2pk" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697654040" />
-          <node concept="2OqwBi" id="2p8" role="3clFbG">
+          <node concept="2OqwBi" id="2pA" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967697654040" />
-            <node concept="37vLTw" id="2p9" role="2Oq$k0">
-              <ref role="3cqZAo" node="2oR" resolve="tgs" />
+            <node concept="37vLTw" id="2pB" role="2Oq$k0">
+              <ref role="3cqZAo" node="2pl" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967697654040" />
             </node>
-            <node concept="liA8E" id="2pa" role="2OqNvi">
+            <node concept="liA8E" id="2pC" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967697654040" />
-              <node concept="Xl_RD" id="2pb" role="37wK5m">
+              <node concept="Xl_RD" id="2pD" role="37wK5m">
                 <property role="Xl_RC" value=")" />
                 <uo k="s:originTrace" v="n:6153771967697654040" />
               </node>
@@ -33622,273 +33718,273 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2oL" role="3clF46">
+      <node concept="37vLTG" id="2pf" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696098849" />
-        <node concept="3uibUv" id="2pc" role="1tU5fm">
+        <node concept="3uibUv" id="2pE" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696098849" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2oM" role="2AJF6D">
+      <node concept="2AHcQZ" id="2pg" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696098849" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2pd">
+  <node concept="312cEu" id="2pF">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="ThisExpression_TextGen" />
     <property role="3GE5qa" value="expression.this" />
     <uo k="s:originTrace" v="n:6153771967696099357" />
-    <node concept="3Tm1VV" id="2pe" role="1B3o_S">
+    <node concept="3Tm1VV" id="2pG" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696099357" />
     </node>
-    <node concept="3uibUv" id="2pf" role="1zkMxy">
+    <node concept="3uibUv" id="2pH" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696099357" />
     </node>
-    <node concept="3clFb_" id="2pg" role="jymVt">
+    <node concept="3clFb_" id="2pI" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696099357" />
-      <node concept="3cqZAl" id="2ph" role="3clF45">
+      <node concept="3cqZAl" id="2pJ" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696099357" />
       </node>
-      <node concept="3Tm1VV" id="2pi" role="1B3o_S">
+      <node concept="3Tm1VV" id="2pK" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696099357" />
       </node>
-      <node concept="3clFbS" id="2pj" role="3clF47">
+      <node concept="3clFbS" id="2pL" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696099357" />
-        <node concept="3cpWs8" id="2pm" role="3cqZAp">
+        <node concept="3cpWs8" id="2pO" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696099357" />
-          <node concept="3cpWsn" id="2pp" role="3cpWs9">
+          <node concept="3cpWsn" id="2pR" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696099357" />
-            <node concept="3uibUv" id="2pq" role="1tU5fm">
+            <node concept="3uibUv" id="2pS" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696099357" />
             </node>
-            <node concept="2ShNRf" id="2pr" role="33vP2m">
+            <node concept="2ShNRf" id="2pT" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696099357" />
-              <node concept="1pGfFk" id="2ps" role="2ShVmc">
+              <node concept="1pGfFk" id="2pU" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696099357" />
-                <node concept="37vLTw" id="2pt" role="37wK5m">
-                  <ref role="3cqZAo" node="2pk" resolve="ctx" />
+                <node concept="37vLTw" id="2pV" role="37wK5m">
+                  <ref role="3cqZAo" node="2pM" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696099357" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2pn" role="3cqZAp">
+        <node concept="3clFbF" id="2pP" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696099362" />
-          <node concept="2OqwBi" id="2pu" role="3clFbG">
+          <node concept="2OqwBi" id="2pW" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696099362" />
-            <node concept="37vLTw" id="2pv" role="2Oq$k0">
-              <ref role="3cqZAo" node="2pp" resolve="tgs" />
+            <node concept="37vLTw" id="2pX" role="2Oq$k0">
+              <ref role="3cqZAo" node="2pR" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696099362" />
             </node>
-            <node concept="liA8E" id="2pw" role="2OqNvi">
+            <node concept="liA8E" id="2pY" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696099362" />
-              <node concept="Xl_RD" id="2px" role="37wK5m">
+              <node concept="Xl_RD" id="2pZ" role="37wK5m">
                 <property role="Xl_RC" value="this" />
                 <uo k="s:originTrace" v="n:6153771967696099362" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="2po" role="3cqZAp">
+        <node concept="3clFbJ" id="2pQ" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696099446" />
-          <node concept="3clFbS" id="2py" role="3clFbx">
+          <node concept="3clFbS" id="2q0" role="3clFbx">
             <uo k="s:originTrace" v="n:6153771967696099445" />
-            <node concept="3clFbF" id="2p$" role="3cqZAp">
+            <node concept="3clFbF" id="2q2" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696099379" />
-              <node concept="2OqwBi" id="2pA" role="3clFbG">
+              <node concept="2OqwBi" id="2q4" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696099379" />
-                <node concept="37vLTw" id="2pB" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2pp" resolve="tgs" />
+                <node concept="37vLTw" id="2q5" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2pR" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696099379" />
                 </node>
-                <node concept="liA8E" id="2pC" role="2OqNvi">
+                <node concept="liA8E" id="2q6" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6153771967696099379" />
-                  <node concept="Xl_RD" id="2pD" role="37wK5m">
+                  <node concept="Xl_RD" id="2q7" role="37wK5m">
                     <property role="Xl_RC" value="@" />
                     <uo k="s:originTrace" v="n:6153771967696099379" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2p_" role="3cqZAp">
+            <node concept="3clFbF" id="2q3" role="3cqZAp">
               <uo k="s:originTrace" v="n:419267039270938319" />
-              <node concept="1niqFM" id="2pE" role="3clFbG">
+              <node concept="1niqFM" id="2q8" role="3clFbG">
                 <property role="1npL6y" value="stringIdentifier" />
                 <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
                 <uo k="s:originTrace" v="n:419267039270938319" />
-                <node concept="3uibUv" id="2pF" role="32Mpfj">
+                <node concept="3uibUv" id="2q9" role="32Mpfj">
                   <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
                   <uo k="s:originTrace" v="n:419267039270938319" />
                 </node>
-                <node concept="2OqwBi" id="2pG" role="2U24H$">
+                <node concept="2OqwBi" id="2qa" role="2U24H$">
                   <uo k="s:originTrace" v="n:1460067352163420361" />
-                  <node concept="2OqwBi" id="2pI" role="2Oq$k0">
+                  <node concept="2OqwBi" id="2qc" role="2Oq$k0">
                     <uo k="s:originTrace" v="n:419267039270939132" />
-                    <node concept="2OqwBi" id="2pK" role="2Oq$k0">
+                    <node concept="2OqwBi" id="2qe" role="2Oq$k0">
                       <uo k="s:originTrace" v="n:419267039270938406" />
-                      <node concept="37vLTw" id="2pM" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2pk" resolve="ctx" />
+                      <node concept="37vLTw" id="2qg" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2pM" resolve="ctx" />
                       </node>
-                      <node concept="liA8E" id="2pN" role="2OqNvi">
+                      <node concept="liA8E" id="2qh" role="2OqNvi">
                         <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                       </node>
                     </node>
-                    <node concept="3TrEf2" id="2pL" role="2OqNvi">
+                    <node concept="3TrEf2" id="2qf" role="2OqNvi">
                       <ref role="3Tt5mk" to="hcm8:6cg9X74hPTX" resolve="targetLabel" />
                       <uo k="s:originTrace" v="n:419267039270940379" />
                     </node>
                   </node>
-                  <node concept="2qgKlT" id="2pJ" role="2OqNvi">
+                  <node concept="2qgKlT" id="2qd" role="2OqNvi">
                     <ref role="37wK5l" to="hez:1h3cSlxPLI4" resolve="getThisReceiverName" />
                     <uo k="s:originTrace" v="n:1460067352163421141" />
                   </node>
                 </node>
-                <node concept="37vLTw" id="2pH" role="2U24H$">
-                  <ref role="3cqZAo" node="2pk" resolve="ctx" />
+                <node concept="37vLTw" id="2qb" role="2U24H$">
+                  <ref role="3cqZAo" node="2pM" resolve="ctx" />
                   <uo k="s:originTrace" v="n:419267039270938319" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="2pz" role="3clFbw">
+          <node concept="2OqwBi" id="2q1" role="3clFbw">
             <uo k="s:originTrace" v="n:6153771967696099415" />
-            <node concept="2OqwBi" id="2pO" role="2Oq$k0">
+            <node concept="2OqwBi" id="2qi" role="2Oq$k0">
               <uo k="s:originTrace" v="n:6153771967696099416" />
-              <node concept="2OqwBi" id="2pQ" role="2Oq$k0">
+              <node concept="2OqwBi" id="2qk" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967696099420" />
-                <node concept="37vLTw" id="2pS" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2pk" resolve="ctx" />
+                <node concept="37vLTw" id="2qm" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2pM" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2pT" role="2OqNvi">
+                <node concept="liA8E" id="2qn" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrEf2" id="2pR" role="2OqNvi">
+              <node concept="3TrEf2" id="2ql" role="2OqNvi">
                 <ref role="3Tt5mk" to="hcm8:6cg9X74hPTX" resolve="targetLabel" />
                 <uo k="s:originTrace" v="n:6153771967696099418" />
               </node>
             </node>
-            <node concept="3x8VRR" id="2pP" role="2OqNvi">
+            <node concept="3x8VRR" id="2qj" role="2OqNvi">
               <uo k="s:originTrace" v="n:6153771967696099419" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2pk" role="3clF46">
+      <node concept="37vLTG" id="2pM" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696099357" />
-        <node concept="3uibUv" id="2pU" role="1tU5fm">
+        <node concept="3uibUv" id="2qo" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696099357" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2pl" role="2AJF6D">
+      <node concept="2AHcQZ" id="2pN" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696099357" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2pV">
+  <node concept="312cEu" id="2qp">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="ThrowExpression_TextGen" />
     <property role="3GE5qa" value="expression.control" />
     <uo k="s:originTrace" v="n:6153771967696097223" />
-    <node concept="3Tm1VV" id="2pW" role="1B3o_S">
+    <node concept="3Tm1VV" id="2qq" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696097223" />
     </node>
-    <node concept="3uibUv" id="2pX" role="1zkMxy">
+    <node concept="3uibUv" id="2qr" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696097223" />
     </node>
-    <node concept="3clFb_" id="2pY" role="jymVt">
+    <node concept="3clFb_" id="2qs" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696097223" />
-      <node concept="3cqZAl" id="2pZ" role="3clF45">
+      <node concept="3cqZAl" id="2qt" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696097223" />
       </node>
-      <node concept="3Tm1VV" id="2q0" role="1B3o_S">
+      <node concept="3Tm1VV" id="2qu" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696097223" />
       </node>
-      <node concept="3clFbS" id="2q1" role="3clF47">
+      <node concept="3clFbS" id="2qv" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696097223" />
-        <node concept="3cpWs8" id="2q4" role="3cqZAp">
+        <node concept="3cpWs8" id="2qy" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696097223" />
-          <node concept="3cpWsn" id="2q7" role="3cpWs9">
+          <node concept="3cpWsn" id="2q_" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696097223" />
-            <node concept="3uibUv" id="2q8" role="1tU5fm">
+            <node concept="3uibUv" id="2qA" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696097223" />
             </node>
-            <node concept="2ShNRf" id="2q9" role="33vP2m">
+            <node concept="2ShNRf" id="2qB" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696097223" />
-              <node concept="1pGfFk" id="2qa" role="2ShVmc">
+              <node concept="1pGfFk" id="2qC" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696097223" />
-                <node concept="37vLTw" id="2qb" role="37wK5m">
-                  <ref role="3cqZAo" node="2q2" resolve="ctx" />
+                <node concept="37vLTw" id="2qD" role="37wK5m">
+                  <ref role="3cqZAo" node="2qw" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696097223" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2q5" role="3cqZAp">
+        <node concept="3clFbF" id="2qz" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696097228" />
-          <node concept="2OqwBi" id="2qc" role="3clFbG">
+          <node concept="2OqwBi" id="2qE" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696097228" />
-            <node concept="37vLTw" id="2qd" role="2Oq$k0">
-              <ref role="3cqZAo" node="2q7" resolve="tgs" />
+            <node concept="37vLTw" id="2qF" role="2Oq$k0">
+              <ref role="3cqZAo" node="2q_" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696097228" />
             </node>
-            <node concept="liA8E" id="2qe" role="2OqNvi">
+            <node concept="liA8E" id="2qG" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696097228" />
-              <node concept="Xl_RD" id="2qf" role="37wK5m">
+              <node concept="Xl_RD" id="2qH" role="37wK5m">
                 <property role="Xl_RC" value="throw " />
                 <uo k="s:originTrace" v="n:6153771967696097228" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2q6" role="3cqZAp">
+        <node concept="3clFbF" id="2q$" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696097248" />
-          <node concept="2OqwBi" id="2qg" role="3clFbG">
+          <node concept="2OqwBi" id="2qI" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696097248" />
-            <node concept="37vLTw" id="2qh" role="2Oq$k0">
-              <ref role="3cqZAo" node="2q7" resolve="tgs" />
+            <node concept="37vLTw" id="2qJ" role="2Oq$k0">
+              <ref role="3cqZAo" node="2q_" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696097248" />
             </node>
-            <node concept="liA8E" id="2qi" role="2OqNvi">
+            <node concept="liA8E" id="2qK" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
               <uo k="s:originTrace" v="n:6153771967696097248" />
-              <node concept="2OqwBi" id="2qj" role="37wK5m">
+              <node concept="2OqwBi" id="2qL" role="37wK5m">
                 <uo k="s:originTrace" v="n:6153771967696097249" />
-                <node concept="2OqwBi" id="2qk" role="2Oq$k0">
+                <node concept="2OqwBi" id="2qM" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:6153771967696097247" />
-                  <node concept="37vLTw" id="2qm" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2q2" resolve="ctx" />
+                  <node concept="37vLTw" id="2qO" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2qw" resolve="ctx" />
                   </node>
-                  <node concept="liA8E" id="2qn" role="2OqNvi">
+                  <node concept="liA8E" id="2qP" role="2OqNvi">
                     <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                 </node>
-                <node concept="3TrEf2" id="2ql" role="2OqNvi">
+                <node concept="3TrEf2" id="2qN" role="2OqNvi">
                   <ref role="3Tt5mk" to="hcm8:2yYXHtl6JzI" resolve="throwable" />
                   <uo k="s:originTrace" v="n:6153771967696097244" />
                 </node>
@@ -33897,187 +33993,187 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2q2" role="3clF46">
+      <node concept="37vLTG" id="2qw" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696097223" />
-        <node concept="3uibUv" id="2qo" role="1tU5fm">
+        <node concept="3uibUv" id="2qQ" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696097223" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2q3" role="2AJF6D">
+      <node concept="2AHcQZ" id="2qx" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696097223" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2qp">
+  <node concept="312cEu" id="2qR">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="TryExpression_TextGen" />
     <property role="3GE5qa" value="expression.control.try" />
     <uo k="s:originTrace" v="n:6153771967696094451" />
-    <node concept="3Tm1VV" id="2qq" role="1B3o_S">
+    <node concept="3Tm1VV" id="2qS" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696094451" />
     </node>
-    <node concept="3uibUv" id="2qr" role="1zkMxy">
+    <node concept="3uibUv" id="2qT" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696094451" />
     </node>
-    <node concept="3clFb_" id="2qs" role="jymVt">
+    <node concept="3clFb_" id="2qU" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696094451" />
-      <node concept="3cqZAl" id="2qt" role="3clF45">
+      <node concept="3cqZAl" id="2qV" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696094451" />
       </node>
-      <node concept="3Tm1VV" id="2qu" role="1B3o_S">
+      <node concept="3Tm1VV" id="2qW" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696094451" />
       </node>
-      <node concept="3clFbS" id="2qv" role="3clF47">
+      <node concept="3clFbS" id="2qX" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696094451" />
-        <node concept="3cpWs8" id="2qy" role="3cqZAp">
+        <node concept="3cpWs8" id="2r0" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696094451" />
-          <node concept="3cpWsn" id="2qC" role="3cpWs9">
+          <node concept="3cpWsn" id="2r6" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696094451" />
-            <node concept="3uibUv" id="2qD" role="1tU5fm">
+            <node concept="3uibUv" id="2r7" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696094451" />
             </node>
-            <node concept="2ShNRf" id="2qE" role="33vP2m">
+            <node concept="2ShNRf" id="2r8" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696094451" />
-              <node concept="1pGfFk" id="2qF" role="2ShVmc">
+              <node concept="1pGfFk" id="2r9" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696094451" />
-                <node concept="37vLTw" id="2qG" role="37wK5m">
-                  <ref role="3cqZAo" node="2qw" resolve="ctx" />
+                <node concept="37vLTw" id="2ra" role="37wK5m">
+                  <ref role="3cqZAo" node="2qY" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696094451" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2qz" role="3cqZAp">
+        <node concept="3clFbF" id="2r1" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696094456" />
-          <node concept="2OqwBi" id="2qH" role="3clFbG">
+          <node concept="2OqwBi" id="2rb" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696094456" />
-            <node concept="37vLTw" id="2qI" role="2Oq$k0">
-              <ref role="3cqZAo" node="2qC" resolve="tgs" />
+            <node concept="37vLTw" id="2rc" role="2Oq$k0">
+              <ref role="3cqZAo" node="2r6" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696094456" />
             </node>
-            <node concept="liA8E" id="2qJ" role="2OqNvi">
+            <node concept="liA8E" id="2rd" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696094456" />
-              <node concept="Xl_RD" id="2qK" role="37wK5m">
+              <node concept="Xl_RD" id="2re" role="37wK5m">
                 <property role="Xl_RC" value="try " />
                 <uo k="s:originTrace" v="n:6153771967696094456" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2q$" role="3cqZAp">
+        <node concept="3clFbF" id="2r2" role="3cqZAp">
           <uo k="s:originTrace" v="n:7208671122140503254" />
-          <node concept="1niqFM" id="2qL" role="3clFbG">
+          <node concept="1niqFM" id="2rf" role="3clFbG">
             <property role="1npL6y" value="wrappedStatements" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:7208671122140503254" />
-            <node concept="3uibUv" id="2qM" role="32Mpfj">
+            <node concept="3uibUv" id="2rg" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:7208671122140503254" />
             </node>
-            <node concept="2OqwBi" id="2qN" role="2U24H$">
+            <node concept="2OqwBi" id="2rh" role="2U24H$">
               <uo k="s:originTrace" v="n:7208671122140504001" />
-              <node concept="37vLTw" id="2qP" role="2Oq$k0">
-                <ref role="3cqZAo" node="2qw" resolve="ctx" />
+              <node concept="37vLTw" id="2rj" role="2Oq$k0">
+                <ref role="3cqZAo" node="2qY" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2qQ" role="2OqNvi">
+              <node concept="liA8E" id="2rk" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="37vLTw" id="2qO" role="2U24H$">
-              <ref role="3cqZAo" node="2qw" resolve="ctx" />
+            <node concept="37vLTw" id="2ri" role="2U24H$">
+              <ref role="3cqZAo" node="2qY" resolve="ctx" />
               <uo k="s:originTrace" v="n:7208671122140503254" />
             </node>
           </node>
         </node>
-        <node concept="1DcWWT" id="2q_" role="3cqZAp">
+        <node concept="1DcWWT" id="2r3" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697660667" />
-          <node concept="3clFbS" id="2qR" role="2LFqv$">
+          <node concept="3clFbS" id="2rl" role="2LFqv$">
             <uo k="s:originTrace" v="n:6153771967697660667" />
-            <node concept="3clFbF" id="2qU" role="3cqZAp">
+            <node concept="3clFbF" id="2ro" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967697660667" />
-              <node concept="2OqwBi" id="2qV" role="3clFbG">
+              <node concept="2OqwBi" id="2rp" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967697660667" />
-                <node concept="37vLTw" id="2qW" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2qC" resolve="tgs" />
+                <node concept="37vLTw" id="2rq" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2r6" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967697660667" />
                 </node>
-                <node concept="liA8E" id="2qX" role="2OqNvi">
+                <node concept="liA8E" id="2rr" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
                   <uo k="s:originTrace" v="n:6153771967697660667" />
-                  <node concept="37vLTw" id="2qY" role="37wK5m">
-                    <ref role="3cqZAo" node="2qS" resolve="item" />
+                  <node concept="37vLTw" id="2rs" role="37wK5m">
+                    <ref role="3cqZAo" node="2rm" resolve="item" />
                     <uo k="s:originTrace" v="n:6153771967697660667" />
                   </node>
                 </node>
               </node>
             </node>
           </node>
-          <node concept="3cpWsn" id="2qS" role="1Duv9x">
+          <node concept="3cpWsn" id="2rm" role="1Duv9x">
             <property role="TrG5h" value="item" />
             <uo k="s:originTrace" v="n:6153771967697660667" />
-            <node concept="3Tqbb2" id="2qZ" role="1tU5fm">
+            <node concept="3Tqbb2" id="2rt" role="1tU5fm">
               <uo k="s:originTrace" v="n:6153771967697660667" />
             </node>
           </node>
-          <node concept="2OqwBi" id="2qT" role="1DdaDG">
+          <node concept="2OqwBi" id="2rn" role="1DdaDG">
             <uo k="s:originTrace" v="n:6153771967697661292" />
-            <node concept="2OqwBi" id="2r0" role="2Oq$k0">
+            <node concept="2OqwBi" id="2ru" role="2Oq$k0">
               <uo k="s:originTrace" v="n:6153771967697660717" />
-              <node concept="37vLTw" id="2r2" role="2Oq$k0">
-                <ref role="3cqZAo" node="2qw" resolve="ctx" />
+              <node concept="37vLTw" id="2rw" role="2Oq$k0">
+                <ref role="3cqZAo" node="2qY" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2r3" role="2OqNvi">
+              <node concept="liA8E" id="2rx" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="3Tsc0h" id="2r1" role="2OqNvi">
+            <node concept="3Tsc0h" id="2rv" role="2OqNvi">
               <ref role="3TtcxE" to="hcm8:4Nah4_QkvOU" resolve="catches" />
               <uo k="s:originTrace" v="n:6153771967697662293" />
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2qA" role="3cqZAp">
+        <node concept="3clFbH" id="2r4" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697664419" />
         </node>
-        <node concept="3clFbJ" id="2qB" role="3cqZAp">
+        <node concept="3clFbJ" id="2r5" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696094648" />
-          <node concept="3clFbS" id="2r4" role="3clFbx">
+          <node concept="3clFbS" id="2ry" role="3clFbx">
             <uo k="s:originTrace" v="n:6153771967696094647" />
-            <node concept="3clFbF" id="2r6" role="3cqZAp">
+            <node concept="3clFbF" id="2r$" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696094602" />
-              <node concept="2OqwBi" id="2r7" role="3clFbG">
+              <node concept="2OqwBi" id="2r_" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696094602" />
-                <node concept="37vLTw" id="2r8" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2qC" resolve="tgs" />
+                <node concept="37vLTw" id="2rA" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2r6" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696094602" />
                 </node>
-                <node concept="liA8E" id="2r9" role="2OqNvi">
+                <node concept="liA8E" id="2rB" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
                   <uo k="s:originTrace" v="n:6153771967696094602" />
-                  <node concept="2OqwBi" id="2ra" role="37wK5m">
+                  <node concept="2OqwBi" id="2rC" role="37wK5m">
                     <uo k="s:originTrace" v="n:6153771967696094603" />
-                    <node concept="2OqwBi" id="2rb" role="2Oq$k0">
+                    <node concept="2OqwBi" id="2rD" role="2Oq$k0">
                       <uo k="s:originTrace" v="n:6153771967696094601" />
-                      <node concept="37vLTw" id="2rd" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2qw" resolve="ctx" />
+                      <node concept="37vLTw" id="2rF" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2qY" resolve="ctx" />
                       </node>
-                      <node concept="liA8E" id="2re" role="2OqNvi">
+                      <node concept="liA8E" id="2rG" role="2OqNvi">
                         <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                       </node>
                     </node>
-                    <node concept="3TrEf2" id="2rc" role="2OqNvi">
+                    <node concept="3TrEf2" id="2rE" role="2OqNvi">
                       <ref role="3Tt5mk" to="hcm8:4Nah4_QkvOV" resolve="finally" />
                       <uo k="s:originTrace" v="n:6153771967696094598" />
                     </node>
@@ -34086,384 +34182,384 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="2r5" role="3clFbw">
+          <node concept="2OqwBi" id="2rz" role="3clFbw">
             <uo k="s:originTrace" v="n:6153771967696094617" />
-            <node concept="2OqwBi" id="2rf" role="2Oq$k0">
+            <node concept="2OqwBi" id="2rH" role="2Oq$k0">
               <uo k="s:originTrace" v="n:6153771967696094618" />
-              <node concept="2OqwBi" id="2rh" role="2Oq$k0">
+              <node concept="2OqwBi" id="2rJ" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967696094622" />
-                <node concept="37vLTw" id="2rj" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2qw" resolve="ctx" />
+                <node concept="37vLTw" id="2rL" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2qY" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2rk" role="2OqNvi">
+                <node concept="liA8E" id="2rM" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrEf2" id="2ri" role="2OqNvi">
+              <node concept="3TrEf2" id="2rK" role="2OqNvi">
                 <ref role="3Tt5mk" to="hcm8:4Nah4_QkvOV" resolve="finally" />
                 <uo k="s:originTrace" v="n:6153771967696094620" />
               </node>
             </node>
-            <node concept="3x8VRR" id="2rg" role="2OqNvi">
+            <node concept="3x8VRR" id="2rI" role="2OqNvi">
               <uo k="s:originTrace" v="n:6153771967696094621" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2qw" role="3clF46">
+      <node concept="37vLTG" id="2qY" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696094451" />
-        <node concept="3uibUv" id="2rl" role="1tU5fm">
+        <node concept="3uibUv" id="2rN" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696094451" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2qx" role="2AJF6D">
+      <node concept="2AHcQZ" id="2qZ" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696094451" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2rm">
+  <node concept="312cEu" id="2rO">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="TypeAliasType_TextGen" />
     <property role="3GE5qa" value="type.builtin" />
     <uo k="s:originTrace" v="n:4883292379416954840" />
-    <node concept="3Tm1VV" id="2rn" role="1B3o_S">
+    <node concept="3Tm1VV" id="2rP" role="1B3o_S">
       <uo k="s:originTrace" v="n:4883292379416954840" />
     </node>
-    <node concept="3uibUv" id="2ro" role="1zkMxy">
+    <node concept="3uibUv" id="2rQ" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:4883292379416954840" />
     </node>
-    <node concept="3clFb_" id="2rp" role="jymVt">
+    <node concept="3clFb_" id="2rR" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:4883292379416954840" />
-      <node concept="3cqZAl" id="2rq" role="3clF45">
+      <node concept="3cqZAl" id="2rS" role="3clF45">
         <uo k="s:originTrace" v="n:4883292379416954840" />
       </node>
-      <node concept="3Tm1VV" id="2rr" role="1B3o_S">
+      <node concept="3Tm1VV" id="2rT" role="1B3o_S">
         <uo k="s:originTrace" v="n:4883292379416954840" />
       </node>
-      <node concept="3clFbS" id="2rs" role="3clF47">
+      <node concept="3clFbS" id="2rU" role="3clF47">
         <uo k="s:originTrace" v="n:4883292379416954840" />
-        <node concept="3cpWs8" id="2rv" role="3cqZAp">
+        <node concept="3cpWs8" id="2rX" role="3cqZAp">
           <uo k="s:originTrace" v="n:4883292379416954840" />
-          <node concept="3cpWsn" id="2rz" role="3cpWs9">
+          <node concept="3cpWsn" id="2s1" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:4883292379416954840" />
-            <node concept="3uibUv" id="2r$" role="1tU5fm">
+            <node concept="3uibUv" id="2s2" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:4883292379416954840" />
             </node>
-            <node concept="2ShNRf" id="2r_" role="33vP2m">
+            <node concept="2ShNRf" id="2s3" role="33vP2m">
               <uo k="s:originTrace" v="n:4883292379416954840" />
-              <node concept="1pGfFk" id="2rA" role="2ShVmc">
+              <node concept="1pGfFk" id="2s4" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:4883292379416954840" />
-                <node concept="37vLTw" id="2rB" role="37wK5m">
-                  <ref role="3cqZAo" node="2rt" resolve="ctx" />
+                <node concept="37vLTw" id="2s5" role="37wK5m">
+                  <ref role="3cqZAo" node="2rV" resolve="ctx" />
                   <uo k="s:originTrace" v="n:4883292379416954840" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2rw" role="3cqZAp">
+        <node concept="3clFbF" id="2rY" role="3cqZAp">
           <uo k="s:originTrace" v="n:4883292379416955315" />
-          <node concept="1niqFM" id="2rC" role="3clFbG">
+          <node concept="1niqFM" id="2s6" role="3clFbG">
             <property role="1npL6y" value="reference" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:4883292379416955315" />
-            <node concept="3uibUv" id="2rD" role="32Mpfj">
+            <node concept="3uibUv" id="2s7" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:4883292379416955315" />
             </node>
-            <node concept="2OqwBi" id="2rE" role="2U24H$">
+            <node concept="2OqwBi" id="2s8" role="2U24H$">
               <uo k="s:originTrace" v="n:4883292379416955316" />
-              <node concept="3TrEf2" id="2rH" role="2OqNvi">
+              <node concept="3TrEf2" id="2sb" role="2OqNvi">
                 <ref role="3Tt5mk" to="hcm8:6ZbwqG7RoSx" resolve="typeAlias" />
                 <uo k="s:originTrace" v="n:4883292379416955317" />
               </node>
-              <node concept="2OqwBi" id="2rI" role="2Oq$k0">
+              <node concept="2OqwBi" id="2sc" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:4883292379416955318" />
-                <node concept="37vLTw" id="2rJ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2rt" resolve="ctx" />
+                <node concept="37vLTw" id="2sd" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2rV" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2rK" role="2OqNvi">
+                <node concept="liA8E" id="2se" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbT" id="2rF" role="2U24H$">
+            <node concept="3clFbT" id="2s9" role="2U24H$">
               <property role="3clFbU" value="true" />
               <uo k="s:originTrace" v="n:6585624606758930531" />
             </node>
-            <node concept="37vLTw" id="2rG" role="2U24H$">
-              <ref role="3cqZAo" node="2rt" resolve="ctx" />
+            <node concept="37vLTw" id="2sa" role="2U24H$">
+              <ref role="3cqZAo" node="2rV" resolve="ctx" />
               <uo k="s:originTrace" v="n:4883292379416955315" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2rx" role="3cqZAp">
+        <node concept="3clFbF" id="2rZ" role="3cqZAp">
           <uo k="s:originTrace" v="n:4883292379416955319" />
-          <node concept="1niqFM" id="2rL" role="3clFbG">
+          <node concept="1niqFM" id="2sf" role="3clFbG">
             <property role="1npL6y" value="projections" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:4883292379416955319" />
-            <node concept="3uibUv" id="2rM" role="32Mpfj">
+            <node concept="3uibUv" id="2sg" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:4883292379416955319" />
             </node>
-            <node concept="2OqwBi" id="2rN" role="2U24H$">
+            <node concept="2OqwBi" id="2sh" role="2U24H$">
               <uo k="s:originTrace" v="n:4883292379416955320" />
-              <node concept="2OqwBi" id="2rP" role="2Oq$k0">
+              <node concept="2OqwBi" id="2sj" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:4883292379416955321" />
-                <node concept="37vLTw" id="2rR" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2rt" resolve="ctx" />
+                <node concept="37vLTw" id="2sl" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2rV" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2rS" role="2OqNvi">
+                <node concept="liA8E" id="2sm" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3Tsc0h" id="2rQ" role="2OqNvi">
+              <node concept="3Tsc0h" id="2sk" role="2OqNvi">
                 <ref role="3TtcxE" to="hcm8:5GtPw5yMnlW" resolve="typeProjections" />
                 <uo k="s:originTrace" v="n:4883292379416955322" />
               </node>
             </node>
-            <node concept="37vLTw" id="2rO" role="2U24H$">
-              <ref role="3cqZAo" node="2rt" resolve="ctx" />
+            <node concept="37vLTw" id="2si" role="2U24H$">
+              <ref role="3cqZAo" node="2rV" resolve="ctx" />
               <uo k="s:originTrace" v="n:4883292379416955319" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2ry" role="3cqZAp">
+        <node concept="3clFbF" id="2s0" role="3cqZAp">
           <uo k="s:originTrace" v="n:4883292379416955323" />
-          <node concept="1niqFM" id="2rT" role="3clFbG">
+          <node concept="1niqFM" id="2sn" role="3clFbG">
             <property role="1npL6y" value="nullable" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:4883292379416955323" />
-            <node concept="3uibUv" id="2rU" role="32Mpfj">
+            <node concept="3uibUv" id="2so" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:4883292379416955323" />
             </node>
-            <node concept="2OqwBi" id="2rV" role="2U24H$">
+            <node concept="2OqwBi" id="2sp" role="2U24H$">
               <uo k="s:originTrace" v="n:4883292379416955324" />
-              <node concept="37vLTw" id="2rX" role="2Oq$k0">
-                <ref role="3cqZAo" node="2rt" resolve="ctx" />
+              <node concept="37vLTw" id="2sr" role="2Oq$k0">
+                <ref role="3cqZAo" node="2rV" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2rY" role="2OqNvi">
+              <node concept="liA8E" id="2ss" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="37vLTw" id="2rW" role="2U24H$">
-              <ref role="3cqZAo" node="2rt" resolve="ctx" />
+            <node concept="37vLTw" id="2sq" role="2U24H$">
+              <ref role="3cqZAo" node="2rV" resolve="ctx" />
               <uo k="s:originTrace" v="n:4883292379416955323" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2rt" role="3clF46">
+      <node concept="37vLTG" id="2rV" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:4883292379416954840" />
-        <node concept="3uibUv" id="2rZ" role="1tU5fm">
+        <node concept="3uibUv" id="2st" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:4883292379416954840" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2ru" role="2AJF6D">
+      <node concept="2AHcQZ" id="2rW" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:4883292379416954840" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2s0">
+  <node concept="312cEu" id="2su">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="TypeAlias_TextGen" />
     <property role="3GE5qa" value="statement.typealias" />
     <uo k="s:originTrace" v="n:6153771967696092413" />
-    <node concept="3Tm1VV" id="2s1" role="1B3o_S">
+    <node concept="3Tm1VV" id="2sv" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696092413" />
     </node>
-    <node concept="3uibUv" id="2s2" role="1zkMxy">
+    <node concept="3uibUv" id="2sw" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696092413" />
     </node>
-    <node concept="3clFb_" id="2s3" role="jymVt">
+    <node concept="3clFb_" id="2sx" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696092413" />
-      <node concept="3cqZAl" id="2s4" role="3clF45">
+      <node concept="3cqZAl" id="2sy" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696092413" />
       </node>
-      <node concept="3Tm1VV" id="2s5" role="1B3o_S">
+      <node concept="3Tm1VV" id="2sz" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696092413" />
       </node>
-      <node concept="3clFbS" id="2s6" role="3clF47">
+      <node concept="3clFbS" id="2s$" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696092413" />
-        <node concept="3cpWs8" id="2s9" role="3cqZAp">
+        <node concept="3cpWs8" id="2sB" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696092413" />
-          <node concept="3cpWsn" id="2sg" role="3cpWs9">
+          <node concept="3cpWsn" id="2sI" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696092413" />
-            <node concept="3uibUv" id="2sh" role="1tU5fm">
+            <node concept="3uibUv" id="2sJ" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696092413" />
             </node>
-            <node concept="2ShNRf" id="2si" role="33vP2m">
+            <node concept="2ShNRf" id="2sK" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696092413" />
-              <node concept="1pGfFk" id="2sj" role="2ShVmc">
+              <node concept="1pGfFk" id="2sL" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696092413" />
-                <node concept="37vLTw" id="2sk" role="37wK5m">
-                  <ref role="3cqZAo" node="2s7" resolve="ctx" />
+                <node concept="37vLTw" id="2sM" role="37wK5m">
+                  <ref role="3cqZAo" node="2s_" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696092413" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2sa" role="3cqZAp">
+        <node concept="3clFbF" id="2sC" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697667727" />
-          <node concept="1niqFM" id="2sl" role="3clFbG">
+          <node concept="1niqFM" id="2sN" role="3clFbG">
             <property role="1npL6y" value="annotations" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:6153771967697667727" />
-            <node concept="3uibUv" id="2sm" role="32Mpfj">
+            <node concept="3uibUv" id="2sO" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:6153771967697667727" />
             </node>
-            <node concept="2OqwBi" id="2sn" role="2U24H$">
+            <node concept="2OqwBi" id="2sP" role="2U24H$">
               <uo k="s:originTrace" v="n:6153771967697667746" />
-              <node concept="37vLTw" id="2sq" role="2Oq$k0">
-                <ref role="3cqZAo" node="2s7" resolve="ctx" />
+              <node concept="37vLTw" id="2sS" role="2Oq$k0">
+                <ref role="3cqZAo" node="2s_" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2sr" role="2OqNvi">
+              <node concept="liA8E" id="2sT" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="3clFbT" id="2so" role="2U24H$">
+            <node concept="3clFbT" id="2sQ" role="2U24H$">
               <property role="3clFbU" value="true" />
               <uo k="s:originTrace" v="n:6153771967697668705" />
             </node>
-            <node concept="37vLTw" id="2sp" role="2U24H$">
-              <ref role="3cqZAo" node="2s7" resolve="ctx" />
+            <node concept="37vLTw" id="2sR" role="2U24H$">
+              <ref role="3cqZAo" node="2s_" resolve="ctx" />
               <uo k="s:originTrace" v="n:6153771967697667727" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2sb" role="3cqZAp">
+        <node concept="3clFbF" id="2sD" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696092501" />
-          <node concept="2OqwBi" id="2ss" role="3clFbG">
+          <node concept="2OqwBi" id="2sU" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696092501" />
-            <node concept="37vLTw" id="2st" role="2Oq$k0">
-              <ref role="3cqZAo" node="2sg" resolve="tgs" />
+            <node concept="37vLTw" id="2sV" role="2Oq$k0">
+              <ref role="3cqZAo" node="2sI" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696092501" />
             </node>
-            <node concept="liA8E" id="2su" role="2OqNvi">
+            <node concept="liA8E" id="2sW" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696092501" />
-              <node concept="Xl_RD" id="2sv" role="37wK5m">
+              <node concept="Xl_RD" id="2sX" role="37wK5m">
                 <property role="Xl_RC" value="typealias " />
                 <uo k="s:originTrace" v="n:6153771967696092501" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2sc" role="3cqZAp">
+        <node concept="3clFbF" id="2sE" role="3cqZAp">
           <uo k="s:originTrace" v="n:419267039270941473" />
-          <node concept="1niqFM" id="2sw" role="3clFbG">
+          <node concept="1niqFM" id="2sY" role="3clFbG">
             <property role="1npL6y" value="identifier" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:419267039270941473" />
-            <node concept="3uibUv" id="2sx" role="32Mpfj">
+            <node concept="3uibUv" id="2sZ" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:419267039270941473" />
             </node>
-            <node concept="2OqwBi" id="2sy" role="2U24H$">
+            <node concept="2OqwBi" id="2t0" role="2U24H$">
               <uo k="s:originTrace" v="n:419267039270942128" />
-              <node concept="37vLTw" id="2s$" role="2Oq$k0">
-                <ref role="3cqZAo" node="2s7" resolve="ctx" />
+              <node concept="37vLTw" id="2t2" role="2Oq$k0">
+                <ref role="3cqZAo" node="2s_" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2s_" role="2OqNvi">
+              <node concept="liA8E" id="2t3" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="37vLTw" id="2sz" role="2U24H$">
-              <ref role="3cqZAo" node="2s7" resolve="ctx" />
+            <node concept="37vLTw" id="2t1" role="2U24H$">
+              <ref role="3cqZAo" node="2s_" resolve="ctx" />
               <uo k="s:originTrace" v="n:419267039270941473" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2sd" role="3cqZAp">
+        <node concept="3clFbF" id="2sF" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697670155" />
-          <node concept="1niqFM" id="2sA" role="3clFbG">
+          <node concept="1niqFM" id="2t4" role="3clFbG">
             <property role="1npL6y" value="typeParameters" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:6153771967697670155" />
-            <node concept="3uibUv" id="2sB" role="32Mpfj">
+            <node concept="3uibUv" id="2t5" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:6153771967697670155" />
             </node>
-            <node concept="2OqwBi" id="2sC" role="2U24H$">
+            <node concept="2OqwBi" id="2t6" role="2U24H$">
               <uo k="s:originTrace" v="n:6153771967697670218" />
-              <node concept="37vLTw" id="2sE" role="2Oq$k0">
-                <ref role="3cqZAo" node="2s7" resolve="ctx" />
+              <node concept="37vLTw" id="2t8" role="2Oq$k0">
+                <ref role="3cqZAo" node="2s_" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2sF" role="2OqNvi">
+              <node concept="liA8E" id="2t9" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="37vLTw" id="2sD" role="2U24H$">
-              <ref role="3cqZAo" node="2s7" resolve="ctx" />
+            <node concept="37vLTw" id="2t7" role="2U24H$">
+              <ref role="3cqZAo" node="2s_" resolve="ctx" />
               <uo k="s:originTrace" v="n:6153771967697670155" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2se" role="3cqZAp">
+        <node concept="3clFbF" id="2sG" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696092791" />
-          <node concept="2OqwBi" id="2sG" role="3clFbG">
+          <node concept="2OqwBi" id="2ta" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696092791" />
-            <node concept="37vLTw" id="2sH" role="2Oq$k0">
-              <ref role="3cqZAo" node="2sg" resolve="tgs" />
+            <node concept="37vLTw" id="2tb" role="2Oq$k0">
+              <ref role="3cqZAo" node="2sI" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696092791" />
             </node>
-            <node concept="liA8E" id="2sI" role="2OqNvi">
+            <node concept="liA8E" id="2tc" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696092791" />
-              <node concept="Xl_RD" id="2sJ" role="37wK5m">
+              <node concept="Xl_RD" id="2td" role="37wK5m">
                 <property role="Xl_RC" value=" = " />
                 <uo k="s:originTrace" v="n:6153771967696092791" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2sf" role="3cqZAp">
+        <node concept="3clFbF" id="2sH" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696092811" />
-          <node concept="2OqwBi" id="2sK" role="3clFbG">
+          <node concept="2OqwBi" id="2te" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696092811" />
-            <node concept="37vLTw" id="2sL" role="2Oq$k0">
-              <ref role="3cqZAo" node="2sg" resolve="tgs" />
+            <node concept="37vLTw" id="2tf" role="2Oq$k0">
+              <ref role="3cqZAo" node="2sI" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696092811" />
             </node>
-            <node concept="liA8E" id="2sM" role="2OqNvi">
+            <node concept="liA8E" id="2tg" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
               <uo k="s:originTrace" v="n:6153771967696092811" />
-              <node concept="2OqwBi" id="2sN" role="37wK5m">
+              <node concept="2OqwBi" id="2th" role="37wK5m">
                 <uo k="s:originTrace" v="n:6153771967696092812" />
-                <node concept="2OqwBi" id="2sO" role="2Oq$k0">
+                <node concept="2OqwBi" id="2ti" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:6153771967696092810" />
-                  <node concept="37vLTw" id="2sQ" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2s7" resolve="ctx" />
+                  <node concept="37vLTw" id="2tk" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2s_" resolve="ctx" />
                   </node>
-                  <node concept="liA8E" id="2sR" role="2OqNvi">
+                  <node concept="liA8E" id="2tl" role="2OqNvi">
                     <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                 </node>
-                <node concept="3TrEf2" id="2sP" role="2OqNvi">
+                <node concept="3TrEf2" id="2tj" role="2OqNvi">
                   <ref role="3Tt5mk" to="hcm8:2yYXHtl6Jwg" resolve="type" />
                   <uo k="s:originTrace" v="n:6153771967696092807" />
                 </node>
@@ -34472,168 +34568,168 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2s7" role="3clF46">
+      <node concept="37vLTG" id="2s_" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696092413" />
-        <node concept="3uibUv" id="2sS" role="1tU5fm">
+        <node concept="3uibUv" id="2tm" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696092413" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2s8" role="2AJF6D">
+      <node concept="2AHcQZ" id="2sA" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696092413" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2sT">
+  <node concept="312cEu" id="2tn">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="TypeConstraint_TextGen" />
     <property role="3GE5qa" value="type.constraints" />
     <uo k="s:originTrace" v="n:6153771967696094285" />
-    <node concept="3Tm1VV" id="2sU" role="1B3o_S">
+    <node concept="3Tm1VV" id="2to" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696094285" />
     </node>
-    <node concept="3uibUv" id="2sV" role="1zkMxy">
+    <node concept="3uibUv" id="2tp" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696094285" />
     </node>
-    <node concept="3clFb_" id="2sW" role="jymVt">
+    <node concept="3clFb_" id="2tq" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696094285" />
-      <node concept="3cqZAl" id="2sX" role="3clF45">
+      <node concept="3cqZAl" id="2tr" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696094285" />
       </node>
-      <node concept="3Tm1VV" id="2sY" role="1B3o_S">
+      <node concept="3Tm1VV" id="2ts" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696094285" />
       </node>
-      <node concept="3clFbS" id="2sZ" role="3clF47">
+      <node concept="3clFbS" id="2tt" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696094285" />
-        <node concept="3cpWs8" id="2t2" role="3cqZAp">
+        <node concept="3cpWs8" id="2tw" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696094285" />
-          <node concept="3cpWsn" id="2t7" role="3cpWs9">
+          <node concept="3cpWsn" id="2t_" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696094285" />
-            <node concept="3uibUv" id="2t8" role="1tU5fm">
+            <node concept="3uibUv" id="2tA" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696094285" />
             </node>
-            <node concept="2ShNRf" id="2t9" role="33vP2m">
+            <node concept="2ShNRf" id="2tB" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696094285" />
-              <node concept="1pGfFk" id="2ta" role="2ShVmc">
+              <node concept="1pGfFk" id="2tC" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696094285" />
-                <node concept="37vLTw" id="2tb" role="37wK5m">
-                  <ref role="3cqZAo" node="2t0" resolve="ctx" />
+                <node concept="37vLTw" id="2tD" role="37wK5m">
+                  <ref role="3cqZAo" node="2tu" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696094285" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2t3" role="3cqZAp">
+        <node concept="3clFbF" id="2tx" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697672623" />
-          <node concept="1niqFM" id="2tc" role="3clFbG">
+          <node concept="1niqFM" id="2tE" role="3clFbG">
             <property role="1npL6y" value="annotations" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:6153771967697672623" />
-            <node concept="3uibUv" id="2td" role="32Mpfj">
+            <node concept="3uibUv" id="2tF" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:6153771967697672623" />
             </node>
-            <node concept="2OqwBi" id="2te" role="2U24H$">
+            <node concept="2OqwBi" id="2tG" role="2U24H$">
               <uo k="s:originTrace" v="n:6153771967697672703" />
-              <node concept="37vLTw" id="2th" role="2Oq$k0">
-                <ref role="3cqZAo" node="2t0" resolve="ctx" />
+              <node concept="37vLTw" id="2tJ" role="2Oq$k0">
+                <ref role="3cqZAo" node="2tu" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2ti" role="2OqNvi">
+              <node concept="liA8E" id="2tK" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="3clFbT" id="2tf" role="2U24H$">
+            <node concept="3clFbT" id="2tH" role="2U24H$">
               <uo k="s:originTrace" v="n:6153771967697672820" />
             </node>
-            <node concept="37vLTw" id="2tg" role="2U24H$">
-              <ref role="3cqZAo" node="2t0" resolve="ctx" />
+            <node concept="37vLTw" id="2tI" role="2U24H$">
+              <ref role="3cqZAo" node="2tu" resolve="ctx" />
               <uo k="s:originTrace" v="n:6153771967697672623" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2t4" role="3cqZAp">
+        <node concept="3clFbF" id="2ty" role="3cqZAp">
           <uo k="s:originTrace" v="n:419267039270943068" />
-          <node concept="1niqFM" id="2tj" role="3clFbG">
+          <node concept="1niqFM" id="2tL" role="3clFbG">
             <property role="1npL6y" value="identifier" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:419267039270943068" />
-            <node concept="3uibUv" id="2tk" role="32Mpfj">
+            <node concept="3uibUv" id="2tM" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:419267039270943068" />
             </node>
-            <node concept="2OqwBi" id="2tl" role="2U24H$">
+            <node concept="2OqwBi" id="2tN" role="2U24H$">
               <uo k="s:originTrace" v="n:419267039270943722" />
-              <node concept="2OqwBi" id="2tn" role="2Oq$k0">
+              <node concept="2OqwBi" id="2tP" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:419267039270943206" />
-                <node concept="37vLTw" id="2tp" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2t0" resolve="ctx" />
+                <node concept="37vLTw" id="2tR" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2tu" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2tq" role="2OqNvi">
+                <node concept="liA8E" id="2tS" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrEf2" id="2to" role="2OqNvi">
+              <node concept="3TrEf2" id="2tQ" role="2OqNvi">
                 <ref role="3Tt5mk" to="hcm8:6TRHYuCzQEY" resolve="parameter" />
                 <uo k="s:originTrace" v="n:419267039270944610" />
               </node>
             </node>
-            <node concept="37vLTw" id="2tm" role="2U24H$">
-              <ref role="3cqZAo" node="2t0" resolve="ctx" />
+            <node concept="37vLTw" id="2tO" role="2U24H$">
+              <ref role="3cqZAo" node="2tu" resolve="ctx" />
               <uo k="s:originTrace" v="n:419267039270943068" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2t5" role="3cqZAp">
+        <node concept="3clFbF" id="2tz" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696094394" />
-          <node concept="2OqwBi" id="2tr" role="3clFbG">
+          <node concept="2OqwBi" id="2tT" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696094394" />
-            <node concept="37vLTw" id="2ts" role="2Oq$k0">
-              <ref role="3cqZAo" node="2t7" resolve="tgs" />
+            <node concept="37vLTw" id="2tU" role="2Oq$k0">
+              <ref role="3cqZAo" node="2t_" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696094394" />
             </node>
-            <node concept="liA8E" id="2tt" role="2OqNvi">
+            <node concept="liA8E" id="2tV" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696094394" />
-              <node concept="Xl_RD" id="2tu" role="37wK5m">
+              <node concept="Xl_RD" id="2tW" role="37wK5m">
                 <property role="Xl_RC" value=":" />
                 <uo k="s:originTrace" v="n:6153771967696094394" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2t6" role="3cqZAp">
+        <node concept="3clFbF" id="2t$" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696094414" />
-          <node concept="2OqwBi" id="2tv" role="3clFbG">
+          <node concept="2OqwBi" id="2tX" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696094414" />
-            <node concept="37vLTw" id="2tw" role="2Oq$k0">
-              <ref role="3cqZAo" node="2t7" resolve="tgs" />
+            <node concept="37vLTw" id="2tY" role="2Oq$k0">
+              <ref role="3cqZAo" node="2t_" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696094414" />
             </node>
-            <node concept="liA8E" id="2tx" role="2OqNvi">
+            <node concept="liA8E" id="2tZ" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
               <uo k="s:originTrace" v="n:6153771967696094414" />
-              <node concept="2OqwBi" id="2ty" role="37wK5m">
+              <node concept="2OqwBi" id="2u0" role="37wK5m">
                 <uo k="s:originTrace" v="n:6153771967696094415" />
-                <node concept="2OqwBi" id="2tz" role="2Oq$k0">
+                <node concept="2OqwBi" id="2u1" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:6153771967696094413" />
-                  <node concept="37vLTw" id="2t_" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2t0" resolve="ctx" />
+                  <node concept="37vLTw" id="2u3" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2tu" resolve="ctx" />
                   </node>
-                  <node concept="liA8E" id="2tA" role="2OqNvi">
+                  <node concept="liA8E" id="2u4" role="2OqNvi">
                     <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                 </node>
-                <node concept="3TrEf2" id="2t$" role="2OqNvi">
+                <node concept="3TrEf2" id="2u2" role="2OqNvi">
                   <ref role="3Tt5mk" to="hcm8:6TRHYuCzJq9" resolve="type" />
                   <uo k="s:originTrace" v="n:6153771967696094410" />
                 </node>
@@ -34642,257 +34738,257 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2t0" role="3clF46">
+      <node concept="37vLTG" id="2tu" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696094285" />
-        <node concept="3uibUv" id="2tB" role="1tU5fm">
+        <node concept="3uibUv" id="2u5" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696094285" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2t1" role="2AJF6D">
+      <node concept="2AHcQZ" id="2tv" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696094285" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2tC">
+  <node concept="312cEu" id="2u6">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="TypeParameterReference_TextGen" />
     <property role="3GE5qa" value="type.builtin" />
     <uo k="s:originTrace" v="n:6153771967696105993" />
-    <node concept="3Tm1VV" id="2tD" role="1B3o_S">
+    <node concept="3Tm1VV" id="2u7" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696105993" />
     </node>
-    <node concept="3uibUv" id="2tE" role="1zkMxy">
+    <node concept="3uibUv" id="2u8" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696105993" />
     </node>
-    <node concept="3clFb_" id="2tF" role="jymVt">
+    <node concept="3clFb_" id="2u9" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696105993" />
-      <node concept="3cqZAl" id="2tG" role="3clF45">
+      <node concept="3cqZAl" id="2ua" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696105993" />
       </node>
-      <node concept="3Tm1VV" id="2tH" role="1B3o_S">
+      <node concept="3Tm1VV" id="2ub" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696105993" />
       </node>
-      <node concept="3clFbS" id="2tI" role="3clF47">
+      <node concept="3clFbS" id="2uc" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696105993" />
-        <node concept="3cpWs8" id="2tL" role="3cqZAp">
+        <node concept="3cpWs8" id="2uf" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696105993" />
-          <node concept="3cpWsn" id="2tO" role="3cpWs9">
+          <node concept="3cpWsn" id="2ui" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696105993" />
-            <node concept="3uibUv" id="2tP" role="1tU5fm">
+            <node concept="3uibUv" id="2uj" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696105993" />
             </node>
-            <node concept="2ShNRf" id="2tQ" role="33vP2m">
+            <node concept="2ShNRf" id="2uk" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696105993" />
-              <node concept="1pGfFk" id="2tR" role="2ShVmc">
+              <node concept="1pGfFk" id="2ul" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696105993" />
-                <node concept="37vLTw" id="2tS" role="37wK5m">
-                  <ref role="3cqZAo" node="2tJ" resolve="ctx" />
+                <node concept="37vLTw" id="2um" role="37wK5m">
+                  <ref role="3cqZAo" node="2ud" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696105993" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2tM" role="3cqZAp">
+        <node concept="3clFbF" id="2ug" role="3cqZAp">
           <uo k="s:originTrace" v="n:419267039270945549" />
-          <node concept="1niqFM" id="2tT" role="3clFbG">
+          <node concept="1niqFM" id="2un" role="3clFbG">
             <property role="1npL6y" value="identifier" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:419267039270945549" />
-            <node concept="3uibUv" id="2tU" role="32Mpfj">
+            <node concept="3uibUv" id="2uo" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:419267039270945549" />
             </node>
-            <node concept="2OqwBi" id="2tV" role="2U24H$">
+            <node concept="2OqwBi" id="2up" role="2U24H$">
               <uo k="s:originTrace" v="n:419267039270946278" />
-              <node concept="2OqwBi" id="2tX" role="2Oq$k0">
+              <node concept="2OqwBi" id="2ur" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:419267039270945672" />
-                <node concept="37vLTw" id="2tZ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2tJ" resolve="ctx" />
+                <node concept="37vLTw" id="2ut" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2ud" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2u0" role="2OqNvi">
+                <node concept="liA8E" id="2uu" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrEf2" id="2tY" role="2OqNvi">
+              <node concept="3TrEf2" id="2us" role="2OqNvi">
                 <ref role="3Tt5mk" to="hcm8:27wMicCxzme" resolve="parameter" />
                 <uo k="s:originTrace" v="n:419267039270947345" />
               </node>
             </node>
-            <node concept="37vLTw" id="2tW" role="2U24H$">
-              <ref role="3cqZAo" node="2tJ" resolve="ctx" />
+            <node concept="37vLTw" id="2uq" role="2U24H$">
+              <ref role="3cqZAo" node="2ud" resolve="ctx" />
               <uo k="s:originTrace" v="n:419267039270945549" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2tN" role="3cqZAp">
+        <node concept="3clFbF" id="2uh" role="3cqZAp">
           <uo k="s:originTrace" v="n:7358760241246855279" />
-          <node concept="1niqFM" id="2u1" role="3clFbG">
+          <node concept="1niqFM" id="2uv" role="3clFbG">
             <property role="1npL6y" value="nullable" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:7358760241246855279" />
-            <node concept="3uibUv" id="2u2" role="32Mpfj">
+            <node concept="3uibUv" id="2uw" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:7358760241246855279" />
             </node>
-            <node concept="2OqwBi" id="2u3" role="2U24H$">
+            <node concept="2OqwBi" id="2ux" role="2U24H$">
               <uo k="s:originTrace" v="n:7358760241246855333" />
-              <node concept="37vLTw" id="2u5" role="2Oq$k0">
-                <ref role="3cqZAo" node="2tJ" resolve="ctx" />
+              <node concept="37vLTw" id="2uz" role="2Oq$k0">
+                <ref role="3cqZAo" node="2ud" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2u6" role="2OqNvi">
+              <node concept="liA8E" id="2u$" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="37vLTw" id="2u4" role="2U24H$">
-              <ref role="3cqZAo" node="2tJ" resolve="ctx" />
+            <node concept="37vLTw" id="2uy" role="2U24H$">
+              <ref role="3cqZAo" node="2ud" resolve="ctx" />
               <uo k="s:originTrace" v="n:7358760241246855279" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2tJ" role="3clF46">
+      <node concept="37vLTG" id="2ud" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696105993" />
-        <node concept="3uibUv" id="2u7" role="1tU5fm">
+        <node concept="3uibUv" id="2u_" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696105993" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2tK" role="2AJF6D">
+      <node concept="2AHcQZ" id="2ue" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696105993" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2u8">
+  <node concept="312cEu" id="2uA">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="TypeParameter_TextGen" />
     <property role="3GE5qa" value="type.parameter.definition" />
     <uo k="s:originTrace" v="n:6153771967696093701" />
-    <node concept="3Tm1VV" id="2u9" role="1B3o_S">
+    <node concept="3Tm1VV" id="2uB" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696093701" />
     </node>
-    <node concept="3uibUv" id="2ua" role="1zkMxy">
+    <node concept="3uibUv" id="2uC" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696093701" />
     </node>
-    <node concept="3clFb_" id="2ub" role="jymVt">
+    <node concept="3clFb_" id="2uD" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696093701" />
-      <node concept="3cqZAl" id="2uc" role="3clF45">
+      <node concept="3cqZAl" id="2uE" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696093701" />
       </node>
-      <node concept="3Tm1VV" id="2ud" role="1B3o_S">
+      <node concept="3Tm1VV" id="2uF" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696093701" />
       </node>
-      <node concept="3clFbS" id="2ue" role="3clF47">
+      <node concept="3clFbS" id="2uG" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696093701" />
-        <node concept="3cpWs8" id="2uh" role="3cqZAp">
+        <node concept="3cpWs8" id="2uJ" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696093701" />
-          <node concept="3cpWsn" id="2up" role="3cpWs9">
+          <node concept="3cpWsn" id="2uR" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696093701" />
-            <node concept="3uibUv" id="2uq" role="1tU5fm">
+            <node concept="3uibUv" id="2uS" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696093701" />
             </node>
-            <node concept="2ShNRf" id="2ur" role="33vP2m">
+            <node concept="2ShNRf" id="2uT" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696093701" />
-              <node concept="1pGfFk" id="2us" role="2ShVmc">
+              <node concept="1pGfFk" id="2uU" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696093701" />
-                <node concept="37vLTw" id="2ut" role="37wK5m">
-                  <ref role="3cqZAo" node="2uf" resolve="ctx" />
+                <node concept="37vLTw" id="2uV" role="37wK5m">
+                  <ref role="3cqZAo" node="2uH" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696093701" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2ui" role="3cqZAp">
+        <node concept="3clFbF" id="2uK" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697674495" />
-          <node concept="1niqFM" id="2uu" role="3clFbG">
+          <node concept="1niqFM" id="2uW" role="3clFbG">
             <property role="1npL6y" value="modifier" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:6153771967697674495" />
-            <node concept="3uibUv" id="2uv" role="32Mpfj">
+            <node concept="3uibUv" id="2uX" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:6153771967697674495" />
             </node>
-            <node concept="2OqwBi" id="2uw" role="2U24H$">
+            <node concept="2OqwBi" id="2uY" role="2U24H$">
               <uo k="s:originTrace" v="n:6153771967697675065" />
-              <node concept="2OqwBi" id="2uz" role="2Oq$k0">
+              <node concept="2OqwBi" id="2v1" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967697674514" />
-                <node concept="37vLTw" id="2u_" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2uf" resolve="ctx" />
+                <node concept="37vLTw" id="2v3" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2uH" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2uA" role="2OqNvi">
+                <node concept="liA8E" id="2v4" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrcHB" id="2u$" role="2OqNvi">
+              <node concept="3TrcHB" id="2v2" role="2OqNvi">
                 <ref role="3TsBF5" to="hcm8:5q426iHv_QB" resolve="isReified" />
                 <uo k="s:originTrace" v="n:6153771967697675725" />
               </node>
             </node>
-            <node concept="Xl_RD" id="2ux" role="2U24H$">
+            <node concept="Xl_RD" id="2uZ" role="2U24H$">
               <property role="Xl_RC" value="reified" />
               <uo k="s:originTrace" v="n:6153771967697676012" />
             </node>
-            <node concept="37vLTw" id="2uy" role="2U24H$">
-              <ref role="3cqZAo" node="2uf" resolve="ctx" />
+            <node concept="37vLTw" id="2v0" role="2U24H$">
+              <ref role="3cqZAo" node="2uH" resolve="ctx" />
               <uo k="s:originTrace" v="n:6153771967697674495" />
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2uj" role="3cqZAp">
+        <node concept="3clFbH" id="2uL" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697677052" />
         </node>
-        <node concept="3clFbJ" id="2uk" role="3cqZAp">
+        <node concept="3clFbJ" id="2uM" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697677486" />
-          <node concept="3clFbS" id="2uB" role="3clFbx">
+          <node concept="3clFbS" id="2v5" role="3clFbx">
             <uo k="s:originTrace" v="n:6153771967697677488" />
-            <node concept="3clFbF" id="2uD" role="3cqZAp">
+            <node concept="3clFbF" id="2v7" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696093792" />
-              <node concept="2OqwBi" id="2uF" role="3clFbG">
+              <node concept="2OqwBi" id="2v9" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696093792" />
-                <node concept="37vLTw" id="2uG" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2up" resolve="tgs" />
+                <node concept="37vLTw" id="2va" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2uR" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696093792" />
                 </node>
-                <node concept="liA8E" id="2uH" role="2OqNvi">
+                <node concept="liA8E" id="2vb" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6153771967696093792" />
-                  <node concept="2OqwBi" id="2uI" role="37wK5m">
+                  <node concept="2OqwBi" id="2vc" role="37wK5m">
                     <uo k="s:originTrace" v="n:6153771967696093791" />
-                    <node concept="1XCIdh" id="2uJ" role="2OqNvi">
+                    <node concept="1XCIdh" id="2vd" role="2OqNvi">
                       <uo k="s:originTrace" v="n:6153771967696093790" />
                     </node>
-                    <node concept="2OqwBi" id="2uK" role="2Oq$k0">
+                    <node concept="2OqwBi" id="2ve" role="2Oq$k0">
                       <uo k="s:originTrace" v="n:6153771967696093789" />
-                      <node concept="3TrcHB" id="2uL" role="2OqNvi">
+                      <node concept="3TrcHB" id="2vf" role="2OqNvi">
                         <ref role="3TsBF5" to="hcm8:28CvMylfSMr" resolve="variance" />
                         <uo k="s:originTrace" v="n:6153771967696093788" />
                       </node>
-                      <node concept="2OqwBi" id="2uM" role="2Oq$k0">
+                      <node concept="2OqwBi" id="2vg" role="2Oq$k0">
                         <uo k="s:originTrace" v="n:6153771967696093787" />
-                        <node concept="37vLTw" id="2uN" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2uf" resolve="ctx" />
+                        <node concept="37vLTw" id="2vh" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2uH" resolve="ctx" />
                         </node>
-                        <node concept="liA8E" id="2uO" role="2OqNvi">
+                        <node concept="liA8E" id="2vi" role="2OqNvi">
                           <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                         </node>
                       </node>
@@ -34901,18 +34997,18 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2uE" role="3cqZAp">
+            <node concept="3clFbF" id="2v8" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967697684763" />
-              <node concept="2OqwBi" id="2uP" role="3clFbG">
+              <node concept="2OqwBi" id="2vj" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967697684763" />
-                <node concept="37vLTw" id="2uQ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2up" resolve="tgs" />
+                <node concept="37vLTw" id="2vk" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2uR" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967697684763" />
                 </node>
-                <node concept="liA8E" id="2uR" role="2OqNvi">
+                <node concept="liA8E" id="2vl" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6153771967697684763" />
-                  <node concept="Xl_RD" id="2uS" role="37wK5m">
+                  <node concept="Xl_RD" id="2vm" role="37wK5m">
                     <property role="Xl_RC" value=" " />
                     <uo k="s:originTrace" v="n:6153771967697684763" />
                   </node>
@@ -34920,29 +35016,29 @@
               </node>
             </node>
           </node>
-          <node concept="3fqX7Q" id="2uC" role="3clFbw">
+          <node concept="3fqX7Q" id="2v6" role="3clFbw">
             <uo k="s:originTrace" v="n:6153771967697680167" />
-            <node concept="2OqwBi" id="2uT" role="3fr31v">
+            <node concept="2OqwBi" id="2vn" role="3fr31v">
               <uo k="s:originTrace" v="n:6153771967697680169" />
-              <node concept="2OqwBi" id="2uU" role="2Oq$k0">
+              <node concept="2OqwBi" id="2vo" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967697680170" />
-                <node concept="2OqwBi" id="2uW" role="2Oq$k0">
+                <node concept="2OqwBi" id="2vq" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:6153771967697680171" />
-                  <node concept="37vLTw" id="2uY" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2uf" resolve="ctx" />
+                  <node concept="37vLTw" id="2vs" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2uH" resolve="ctx" />
                   </node>
-                  <node concept="liA8E" id="2uZ" role="2OqNvi">
+                  <node concept="liA8E" id="2vt" role="2OqNvi">
                     <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                 </node>
-                <node concept="3TrcHB" id="2uX" role="2OqNvi">
+                <node concept="3TrcHB" id="2vr" role="2OqNvi">
                   <ref role="3TsBF5" to="hcm8:28CvMylfSMr" resolve="variance" />
                   <uo k="s:originTrace" v="n:6153771967697680172" />
                 </node>
               </node>
-              <node concept="21noJN" id="2uV" role="2OqNvi">
+              <node concept="21noJN" id="2vp" role="2OqNvi">
                 <uo k="s:originTrace" v="n:6153771967697680173" />
-                <node concept="21nZrQ" id="2v0" role="21noJM">
+                <node concept="21nZrQ" id="2vu" role="21noJM">
                   <ref role="21nZrZ" to="hcm8:27wMicCAy8y" resolve="inv" />
                   <uo k="s:originTrace" v="n:6153771967697680174" />
                 </node>
@@ -34950,82 +35046,82 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2ul" role="3cqZAp">
+        <node concept="3clFbH" id="2uN" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697681671" />
         </node>
-        <node concept="3clFbF" id="2um" role="3cqZAp">
+        <node concept="3clFbF" id="2uO" role="3cqZAp">
           <uo k="s:originTrace" v="n:419267039270949323" />
-          <node concept="1niqFM" id="2v1" role="3clFbG">
+          <node concept="1niqFM" id="2vv" role="3clFbG">
             <property role="1npL6y" value="identifier" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:419267039270949323" />
-            <node concept="3uibUv" id="2v2" role="32Mpfj">
+            <node concept="3uibUv" id="2vw" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:419267039270949323" />
             </node>
-            <node concept="2OqwBi" id="2v3" role="2U24H$">
+            <node concept="2OqwBi" id="2vx" role="2U24H$">
               <uo k="s:originTrace" v="n:419267039270949562" />
-              <node concept="37vLTw" id="2v5" role="2Oq$k0">
-                <ref role="3cqZAo" node="2uf" resolve="ctx" />
+              <node concept="37vLTw" id="2vz" role="2Oq$k0">
+                <ref role="3cqZAo" node="2uH" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2v6" role="2OqNvi">
+              <node concept="liA8E" id="2v$" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="37vLTw" id="2v4" role="2U24H$">
-              <ref role="3cqZAo" node="2uf" resolve="ctx" />
+            <node concept="37vLTw" id="2vy" role="2U24H$">
+              <ref role="3cqZAo" node="2uH" resolve="ctx" />
               <uo k="s:originTrace" v="n:419267039270949323" />
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2un" role="3cqZAp">
+        <node concept="3clFbH" id="2uP" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697682746" />
         </node>
-        <node concept="3clFbJ" id="2uo" role="3cqZAp">
+        <node concept="3clFbJ" id="2uQ" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696093968" />
-          <node concept="3clFbS" id="2v7" role="3clFbx">
+          <node concept="3clFbS" id="2v_" role="3clFbx">
             <uo k="s:originTrace" v="n:6153771967696093967" />
-            <node concept="3clFbF" id="2v9" role="3cqZAp">
+            <node concept="3clFbF" id="2vB" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696093901" />
-              <node concept="2OqwBi" id="2vb" role="3clFbG">
+              <node concept="2OqwBi" id="2vD" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696093901" />
-                <node concept="37vLTw" id="2vc" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2up" resolve="tgs" />
+                <node concept="37vLTw" id="2vE" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2uR" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696093901" />
                 </node>
-                <node concept="liA8E" id="2vd" role="2OqNvi">
+                <node concept="liA8E" id="2vF" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6153771967696093901" />
-                  <node concept="Xl_RD" id="2ve" role="37wK5m">
+                  <node concept="Xl_RD" id="2vG" role="37wK5m">
                     <property role="Xl_RC" value=" : " />
                     <uo k="s:originTrace" v="n:6153771967696093901" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2va" role="3cqZAp">
+            <node concept="3clFbF" id="2vC" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696093921" />
-              <node concept="2OqwBi" id="2vf" role="3clFbG">
+              <node concept="2OqwBi" id="2vH" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696093921" />
-                <node concept="37vLTw" id="2vg" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2up" resolve="tgs" />
+                <node concept="37vLTw" id="2vI" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2uR" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696093921" />
                 </node>
-                <node concept="liA8E" id="2vh" role="2OqNvi">
+                <node concept="liA8E" id="2vJ" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
                   <uo k="s:originTrace" v="n:6153771967696093921" />
-                  <node concept="2OqwBi" id="2vi" role="37wK5m">
+                  <node concept="2OqwBi" id="2vK" role="37wK5m">
                     <uo k="s:originTrace" v="n:6153771967696093922" />
-                    <node concept="2OqwBi" id="2vj" role="2Oq$k0">
+                    <node concept="2OqwBi" id="2vL" role="2Oq$k0">
                       <uo k="s:originTrace" v="n:6153771967696093920" />
-                      <node concept="37vLTw" id="2vl" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2uf" resolve="ctx" />
+                      <node concept="37vLTw" id="2vN" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2uH" resolve="ctx" />
                       </node>
-                      <node concept="liA8E" id="2vm" role="2OqNvi">
+                      <node concept="liA8E" id="2vO" role="2OqNvi">
                         <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                       </node>
                     </node>
-                    <node concept="3TrEf2" id="2vk" role="2OqNvi">
+                    <node concept="3TrEf2" id="2vM" role="2OqNvi">
                       <ref role="3Tt5mk" to="hcm8:2yYXHtl6Jxg" resolve="bound" />
                       <uo k="s:originTrace" v="n:6153771967696093917" />
                     </node>
@@ -35034,123 +35130,123 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="2v8" role="3clFbw">
+          <node concept="2OqwBi" id="2vA" role="3clFbw">
             <uo k="s:originTrace" v="n:6153771967696093937" />
-            <node concept="2OqwBi" id="2vn" role="2Oq$k0">
+            <node concept="2OqwBi" id="2vP" role="2Oq$k0">
               <uo k="s:originTrace" v="n:6153771967696093938" />
-              <node concept="2OqwBi" id="2vp" role="2Oq$k0">
+              <node concept="2OqwBi" id="2vR" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967696093942" />
-                <node concept="37vLTw" id="2vr" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2uf" resolve="ctx" />
+                <node concept="37vLTw" id="2vT" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2uH" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2vs" role="2OqNvi">
+                <node concept="liA8E" id="2vU" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrEf2" id="2vq" role="2OqNvi">
+              <node concept="3TrEf2" id="2vS" role="2OqNvi">
                 <ref role="3Tt5mk" to="hcm8:2yYXHtl6Jxg" resolve="bound" />
                 <uo k="s:originTrace" v="n:6153771967696093940" />
               </node>
             </node>
-            <node concept="3x8VRR" id="2vo" role="2OqNvi">
+            <node concept="3x8VRR" id="2vQ" role="2OqNvi">
               <uo k="s:originTrace" v="n:6153771967696093941" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2uf" role="3clF46">
+      <node concept="37vLTG" id="2uH" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696093701" />
-        <node concept="3uibUv" id="2vt" role="1tU5fm">
+        <node concept="3uibUv" id="2vV" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696093701" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2ug" role="2AJF6D">
+      <node concept="2AHcQZ" id="2uI" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696093701" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2vu">
+  <node concept="312cEu" id="2vW">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="TypeProjection_TextGen" />
     <property role="3GE5qa" value="type.parameter" />
     <uo k="s:originTrace" v="n:6153771967696085284" />
-    <node concept="3Tm1VV" id="2vv" role="1B3o_S">
+    <node concept="3Tm1VV" id="2vX" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696085284" />
     </node>
-    <node concept="3uibUv" id="2vw" role="1zkMxy">
+    <node concept="3uibUv" id="2vY" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696085284" />
     </node>
-    <node concept="3clFb_" id="2vx" role="jymVt">
+    <node concept="3clFb_" id="2vZ" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696085284" />
-      <node concept="3cqZAl" id="2vy" role="3clF45">
+      <node concept="3cqZAl" id="2w0" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696085284" />
       </node>
-      <node concept="3Tm1VV" id="2vz" role="1B3o_S">
+      <node concept="3Tm1VV" id="2w1" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696085284" />
       </node>
-      <node concept="3clFbS" id="2v$" role="3clF47">
+      <node concept="3clFbS" id="2w2" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696085284" />
-        <node concept="3cpWs8" id="2vB" role="3cqZAp">
+        <node concept="3cpWs8" id="2w5" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696085284" />
-          <node concept="3cpWsn" id="2vF" role="3cpWs9">
+          <node concept="3cpWsn" id="2w9" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696085284" />
-            <node concept="3uibUv" id="2vG" role="1tU5fm">
+            <node concept="3uibUv" id="2wa" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696085284" />
             </node>
-            <node concept="2ShNRf" id="2vH" role="33vP2m">
+            <node concept="2ShNRf" id="2wb" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696085284" />
-              <node concept="1pGfFk" id="2vI" role="2ShVmc">
+              <node concept="1pGfFk" id="2wc" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696085284" />
-                <node concept="37vLTw" id="2vJ" role="37wK5m">
-                  <ref role="3cqZAo" node="2v_" resolve="ctx" />
+                <node concept="37vLTw" id="2wd" role="37wK5m">
+                  <ref role="3cqZAo" node="2w3" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696085284" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="2vC" role="3cqZAp">
+        <node concept="3clFbJ" id="2w6" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696085341" />
-          <node concept="3clFbS" id="2vK" role="3clFbx">
+          <node concept="3clFbS" id="2we" role="3clFbx">
             <uo k="s:originTrace" v="n:6153771967696085340" />
-            <node concept="3clFbF" id="2vM" role="3cqZAp">
+            <node concept="3clFbF" id="2wg" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696085294" />
-              <node concept="2OqwBi" id="2vO" role="3clFbG">
+              <node concept="2OqwBi" id="2wi" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696085294" />
-                <node concept="37vLTw" id="2vP" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2vF" resolve="tgs" />
+                <node concept="37vLTw" id="2wj" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2w9" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696085294" />
                 </node>
-                <node concept="liA8E" id="2vQ" role="2OqNvi">
+                <node concept="liA8E" id="2wk" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6153771967696085294" />
-                  <node concept="2OqwBi" id="2vR" role="37wK5m">
+                  <node concept="2OqwBi" id="2wl" role="37wK5m">
                     <uo k="s:originTrace" v="n:6153771967696085293" />
-                    <node concept="1XCIdh" id="2vS" role="2OqNvi">
+                    <node concept="1XCIdh" id="2wm" role="2OqNvi">
                       <uo k="s:originTrace" v="n:6153771967696085292" />
                     </node>
-                    <node concept="2OqwBi" id="2vT" role="2Oq$k0">
+                    <node concept="2OqwBi" id="2wn" role="2Oq$k0">
                       <uo k="s:originTrace" v="n:6153771967696085291" />
-                      <node concept="3TrcHB" id="2vU" role="2OqNvi">
+                      <node concept="3TrcHB" id="2wo" role="2OqNvi">
                         <ref role="3TsBF5" to="hcm8:27wMicCAy8G" resolve="variance" />
                         <uo k="s:originTrace" v="n:6153771967696085290" />
                       </node>
-                      <node concept="2OqwBi" id="2vV" role="2Oq$k0">
+                      <node concept="2OqwBi" id="2wp" role="2Oq$k0">
                         <uo k="s:originTrace" v="n:6153771967696085289" />
-                        <node concept="37vLTw" id="2vW" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2v_" resolve="ctx" />
+                        <node concept="37vLTw" id="2wq" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2w3" resolve="ctx" />
                         </node>
-                        <node concept="liA8E" id="2vX" role="2OqNvi">
+                        <node concept="liA8E" id="2wr" role="2OqNvi">
                           <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                         </node>
                       </node>
@@ -35159,18 +35255,18 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2vN" role="3cqZAp">
+            <node concept="3clFbF" id="2wh" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967697684517" />
-              <node concept="2OqwBi" id="2vY" role="3clFbG">
+              <node concept="2OqwBi" id="2ws" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967697684517" />
-                <node concept="37vLTw" id="2vZ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2vF" resolve="tgs" />
+                <node concept="37vLTw" id="2wt" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2w9" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967697684517" />
                 </node>
-                <node concept="liA8E" id="2w0" role="2OqNvi">
+                <node concept="liA8E" id="2wu" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6153771967697684517" />
-                  <node concept="Xl_RD" id="2w1" role="37wK5m">
+                  <node concept="Xl_RD" id="2wv" role="37wK5m">
                     <property role="Xl_RC" value=" " />
                     <uo k="s:originTrace" v="n:6153771967697684517" />
                   </node>
@@ -35178,29 +35274,29 @@
               </node>
             </node>
           </node>
-          <node concept="3fqX7Q" id="2vL" role="3clFbw">
+          <node concept="3fqX7Q" id="2wf" role="3clFbw">
             <uo k="s:originTrace" v="n:6153771967696085308" />
-            <node concept="2OqwBi" id="2w2" role="3fr31v">
+            <node concept="2OqwBi" id="2ww" role="3fr31v">
               <uo k="s:originTrace" v="n:6153771967696085309" />
-              <node concept="2OqwBi" id="2w3" role="2Oq$k0">
+              <node concept="2OqwBi" id="2wx" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967696085310" />
-                <node concept="2OqwBi" id="2w5" role="2Oq$k0">
+                <node concept="2OqwBi" id="2wz" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:6153771967696085315" />
-                  <node concept="37vLTw" id="2w7" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2v_" resolve="ctx" />
+                  <node concept="37vLTw" id="2w_" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2w3" resolve="ctx" />
                   </node>
-                  <node concept="liA8E" id="2w8" role="2OqNvi">
+                  <node concept="liA8E" id="2wA" role="2OqNvi">
                     <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                 </node>
-                <node concept="3TrcHB" id="2w6" role="2OqNvi">
+                <node concept="3TrcHB" id="2w$" role="2OqNvi">
                   <ref role="3TsBF5" to="hcm8:27wMicCAy8G" resolve="variance" />
                   <uo k="s:originTrace" v="n:6153771967696085312" />
                 </node>
               </node>
-              <node concept="21noJN" id="2w4" role="2OqNvi">
+              <node concept="21noJN" id="2wy" role="2OqNvi">
                 <uo k="s:originTrace" v="n:6153771967696085313" />
-                <node concept="21nZrQ" id="2w9" role="21noJM">
+                <node concept="21nZrQ" id="2wB" role="21noJM">
                   <ref role="21nZrZ" to="hcm8:27wMicCAy8y" resolve="inv" />
                   <uo k="s:originTrace" v="n:6153771967696085314" />
                 </node>
@@ -35208,32 +35304,32 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2vD" role="3cqZAp">
+        <node concept="3clFbH" id="2w7" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697684123" />
         </node>
-        <node concept="3clFbF" id="2vE" role="3cqZAp">
+        <node concept="3clFbF" id="2w8" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696085387" />
-          <node concept="2OqwBi" id="2wa" role="3clFbG">
+          <node concept="2OqwBi" id="2wC" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696085387" />
-            <node concept="37vLTw" id="2wb" role="2Oq$k0">
-              <ref role="3cqZAo" node="2vF" resolve="tgs" />
+            <node concept="37vLTw" id="2wD" role="2Oq$k0">
+              <ref role="3cqZAo" node="2w9" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696085387" />
             </node>
-            <node concept="liA8E" id="2wc" role="2OqNvi">
+            <node concept="liA8E" id="2wE" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
               <uo k="s:originTrace" v="n:6153771967696085387" />
-              <node concept="2OqwBi" id="2wd" role="37wK5m">
+              <node concept="2OqwBi" id="2wF" role="37wK5m">
                 <uo k="s:originTrace" v="n:6153771967696085388" />
-                <node concept="2OqwBi" id="2we" role="2Oq$k0">
+                <node concept="2OqwBi" id="2wG" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:6153771967696085386" />
-                  <node concept="37vLTw" id="2wg" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2v_" resolve="ctx" />
+                  <node concept="37vLTw" id="2wI" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2w3" resolve="ctx" />
                   </node>
-                  <node concept="liA8E" id="2wh" role="2OqNvi">
+                  <node concept="liA8E" id="2wJ" role="2OqNvi">
                     <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                 </node>
-                <node concept="3TrEf2" id="2wf" role="2OqNvi">
+                <node concept="3TrEf2" id="2wH" role="2OqNvi">
                   <ref role="3Tt5mk" to="hcm8:2yYXHtl6JpZ" resolve="type" />
                   <uo k="s:originTrace" v="n:6153771967696085383" />
                 </node>
@@ -35242,83 +35338,83 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2v_" role="3clF46">
+      <node concept="37vLTG" id="2w3" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696085284" />
-        <node concept="3uibUv" id="2wi" role="1tU5fm">
+        <node concept="3uibUv" id="2wK" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696085284" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2vA" role="2AJF6D">
+      <node concept="2AHcQZ" id="2w4" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696085284" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2wj">
+  <node concept="312cEu" id="2wL">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="TypeTest_TextGen" />
     <property role="3GE5qa" value="expression.control.when" />
     <uo k="s:originTrace" v="n:6153771967696087544" />
-    <node concept="3Tm1VV" id="2wk" role="1B3o_S">
+    <node concept="3Tm1VV" id="2wM" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696087544" />
     </node>
-    <node concept="3uibUv" id="2wl" role="1zkMxy">
+    <node concept="3uibUv" id="2wN" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696087544" />
     </node>
-    <node concept="3clFb_" id="2wm" role="jymVt">
+    <node concept="3clFb_" id="2wO" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696087544" />
-      <node concept="3cqZAl" id="2wn" role="3clF45">
+      <node concept="3cqZAl" id="2wP" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696087544" />
       </node>
-      <node concept="3Tm1VV" id="2wo" role="1B3o_S">
+      <node concept="3Tm1VV" id="2wQ" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696087544" />
       </node>
-      <node concept="3clFbS" id="2wp" role="3clF47">
+      <node concept="3clFbS" id="2wR" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696087544" />
-        <node concept="3cpWs8" id="2ws" role="3cqZAp">
+        <node concept="3cpWs8" id="2wU" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696087544" />
-          <node concept="3cpWsn" id="2wx" role="3cpWs9">
+          <node concept="3cpWsn" id="2wZ" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696087544" />
-            <node concept="3uibUv" id="2wy" role="1tU5fm">
+            <node concept="3uibUv" id="2x0" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696087544" />
             </node>
-            <node concept="2ShNRf" id="2wz" role="33vP2m">
+            <node concept="2ShNRf" id="2x1" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696087544" />
-              <node concept="1pGfFk" id="2w$" role="2ShVmc">
+              <node concept="1pGfFk" id="2x2" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696087544" />
-                <node concept="37vLTw" id="2w_" role="37wK5m">
-                  <ref role="3cqZAo" node="2wq" resolve="ctx" />
+                <node concept="37vLTw" id="2x3" role="37wK5m">
+                  <ref role="3cqZAo" node="2wS" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696087544" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="2wt" role="3cqZAp">
+        <node concept="3clFbJ" id="2wV" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696087592" />
-          <node concept="3clFbS" id="2wA" role="3clFbx">
+          <node concept="3clFbS" id="2x4" role="3clFbx">
             <uo k="s:originTrace" v="n:6153771967696087591" />
-            <node concept="3clFbF" id="2wC" role="3cqZAp">
+            <node concept="3clFbF" id="2x6" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696087549" />
-              <node concept="2OqwBi" id="2wD" role="3clFbG">
+              <node concept="2OqwBi" id="2x7" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696087549" />
-                <node concept="37vLTw" id="2wE" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2wx" resolve="tgs" />
+                <node concept="37vLTw" id="2x8" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2wZ" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696087549" />
                 </node>
-                <node concept="liA8E" id="2wF" role="2OqNvi">
+                <node concept="liA8E" id="2x9" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6153771967696087549" />
-                  <node concept="Xl_RD" id="2wG" role="37wK5m">
+                  <node concept="Xl_RD" id="2xa" role="37wK5m">
                     <property role="Xl_RC" value="!" />
                     <uo k="s:originTrace" v="n:6153771967696087549" />
                   </node>
@@ -35326,67 +35422,67 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="2wB" role="3clFbw">
+          <node concept="2OqwBi" id="2x5" role="3clFbw">
             <uo k="s:originTrace" v="n:6153771967696087563" />
-            <node concept="2OqwBi" id="2wH" role="2Oq$k0">
+            <node concept="2OqwBi" id="2xb" role="2Oq$k0">
               <uo k="s:originTrace" v="n:6153771967696087566" />
-              <node concept="37vLTw" id="2wJ" role="2Oq$k0">
-                <ref role="3cqZAo" node="2wq" resolve="ctx" />
+              <node concept="37vLTw" id="2xd" role="2Oq$k0">
+                <ref role="3cqZAo" node="2wS" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2wK" role="2OqNvi">
+              <node concept="liA8E" id="2xe" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="3TrcHB" id="2wI" role="2OqNvi">
+            <node concept="3TrcHB" id="2xc" role="2OqNvi">
               <ref role="3TsBF5" to="hcm8:1502VugB9SK" resolve="negation" />
               <uo k="s:originTrace" v="n:6153771967696087565" />
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2wu" role="3cqZAp">
+        <node concept="3clFbH" id="2wW" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697685613" />
         </node>
-        <node concept="3clFbF" id="2wv" role="3cqZAp">
+        <node concept="3clFbF" id="2wX" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696087630" />
-          <node concept="2OqwBi" id="2wL" role="3clFbG">
+          <node concept="2OqwBi" id="2xf" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696087630" />
-            <node concept="37vLTw" id="2wM" role="2Oq$k0">
-              <ref role="3cqZAo" node="2wx" resolve="tgs" />
+            <node concept="37vLTw" id="2xg" role="2Oq$k0">
+              <ref role="3cqZAo" node="2wZ" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696087630" />
             </node>
-            <node concept="liA8E" id="2wN" role="2OqNvi">
+            <node concept="liA8E" id="2xh" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696087630" />
-              <node concept="Xl_RD" id="2wO" role="37wK5m">
+              <node concept="Xl_RD" id="2xi" role="37wK5m">
                 <property role="Xl_RC" value="is " />
                 <uo k="s:originTrace" v="n:6153771967696087630" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2ww" role="3cqZAp">
+        <node concept="3clFbF" id="2wY" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696087650" />
-          <node concept="2OqwBi" id="2wP" role="3clFbG">
+          <node concept="2OqwBi" id="2xj" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696087650" />
-            <node concept="37vLTw" id="2wQ" role="2Oq$k0">
-              <ref role="3cqZAo" node="2wx" resolve="tgs" />
+            <node concept="37vLTw" id="2xk" role="2Oq$k0">
+              <ref role="3cqZAo" node="2wZ" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696087650" />
             </node>
-            <node concept="liA8E" id="2wR" role="2OqNvi">
+            <node concept="liA8E" id="2xl" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
               <uo k="s:originTrace" v="n:6153771967696087650" />
-              <node concept="2OqwBi" id="2wS" role="37wK5m">
+              <node concept="2OqwBi" id="2xm" role="37wK5m">
                 <uo k="s:originTrace" v="n:6153771967696087651" />
-                <node concept="2OqwBi" id="2wT" role="2Oq$k0">
+                <node concept="2OqwBi" id="2xn" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:6153771967696087649" />
-                  <node concept="37vLTw" id="2wV" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2wq" resolve="ctx" />
+                  <node concept="37vLTw" id="2xp" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2wS" resolve="ctx" />
                   </node>
-                  <node concept="liA8E" id="2wW" role="2OqNvi">
+                  <node concept="liA8E" id="2xq" role="2OqNvi">
                     <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                 </node>
-                <node concept="3TrEf2" id="2wU" role="2OqNvi">
+                <node concept="3TrEf2" id="2xo" role="2OqNvi">
                   <ref role="3Tt5mk" to="hcm8:2yYXHtl6JrW" resolve="type" />
                   <uo k="s:originTrace" v="n:6153771967696087646" />
                 </node>
@@ -35395,143 +35491,143 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2wq" role="3clF46">
+      <node concept="37vLTG" id="2wS" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696087544" />
-        <node concept="3uibUv" id="2wX" role="1tU5fm">
+        <node concept="3uibUv" id="2xr" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696087544" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2wr" role="2AJF6D">
+      <node concept="2AHcQZ" id="2wT" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696087544" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2wY">
+  <node concept="312cEu" id="2xs">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="ValueArgument_TextGen" />
     <property role="3GE5qa" value="expression.operator.overloaded.postfix.call" />
     <uo k="s:originTrace" v="n:6153771967696097969" />
-    <node concept="3Tm1VV" id="2wZ" role="1B3o_S">
+    <node concept="3Tm1VV" id="2xt" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696097969" />
     </node>
-    <node concept="3uibUv" id="2x0" role="1zkMxy">
+    <node concept="3uibUv" id="2xu" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696097969" />
     </node>
-    <node concept="3clFb_" id="2x1" role="jymVt">
+    <node concept="3clFb_" id="2xv" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696097969" />
-      <node concept="3cqZAl" id="2x2" role="3clF45">
+      <node concept="3cqZAl" id="2xw" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696097969" />
       </node>
-      <node concept="3Tm1VV" id="2x3" role="1B3o_S">
+      <node concept="3Tm1VV" id="2xx" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696097969" />
       </node>
-      <node concept="3clFbS" id="2x4" role="3clF47">
+      <node concept="3clFbS" id="2xy" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696097969" />
-        <node concept="3cpWs8" id="2x7" role="3cqZAp">
+        <node concept="3cpWs8" id="2x_" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696097969" />
-          <node concept="3cpWsn" id="2xc" role="3cpWs9">
+          <node concept="3cpWsn" id="2xE" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696097969" />
-            <node concept="3uibUv" id="2xd" role="1tU5fm">
+            <node concept="3uibUv" id="2xF" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696097969" />
             </node>
-            <node concept="2ShNRf" id="2xe" role="33vP2m">
+            <node concept="2ShNRf" id="2xG" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696097969" />
-              <node concept="1pGfFk" id="2xf" role="2ShVmc">
+              <node concept="1pGfFk" id="2xH" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696097969" />
-                <node concept="37vLTw" id="2xg" role="37wK5m">
-                  <ref role="3cqZAo" node="2x5" resolve="ctx" />
+                <node concept="37vLTw" id="2xI" role="37wK5m">
+                  <ref role="3cqZAo" node="2xz" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696097969" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2x8" role="3cqZAp">
+        <node concept="3clFbF" id="2xA" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697687489" />
-          <node concept="1niqFM" id="2xh" role="3clFbG">
+          <node concept="1niqFM" id="2xJ" role="3clFbG">
             <property role="1npL6y" value="annotations" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:6153771967697687489" />
-            <node concept="3uibUv" id="2xi" role="32Mpfj">
+            <node concept="3uibUv" id="2xK" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:6153771967697687489" />
             </node>
-            <node concept="2OqwBi" id="2xj" role="2U24H$">
+            <node concept="2OqwBi" id="2xL" role="2U24H$">
               <uo k="s:originTrace" v="n:6153771967697687507" />
-              <node concept="37vLTw" id="2xm" role="2Oq$k0">
-                <ref role="3cqZAo" node="2x5" resolve="ctx" />
+              <node concept="37vLTw" id="2xO" role="2Oq$k0">
+                <ref role="3cqZAo" node="2xz" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2xn" role="2OqNvi">
+              <node concept="liA8E" id="2xP" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="3clFbT" id="2xk" role="2U24H$">
+            <node concept="3clFbT" id="2xM" role="2U24H$">
               <uo k="s:originTrace" v="n:6153771967697687740" />
             </node>
-            <node concept="37vLTw" id="2xl" role="2U24H$">
-              <ref role="3cqZAo" node="2x5" resolve="ctx" />
+            <node concept="37vLTw" id="2xN" role="2U24H$">
+              <ref role="3cqZAo" node="2xz" resolve="ctx" />
               <uo k="s:originTrace" v="n:6153771967697687489" />
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="2x9" role="3cqZAp">
+        <node concept="3clFbJ" id="2xB" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696098206" />
-          <node concept="3clFbS" id="2xo" role="3clFbx">
+          <node concept="3clFbS" id="2xQ" role="3clFbx">
             <uo k="s:originTrace" v="n:6153771967696098205" />
-            <node concept="3clFbF" id="2xq" role="3cqZAp">
+            <node concept="3clFbF" id="2xS" role="3cqZAp">
               <uo k="s:originTrace" v="n:419267039270950711" />
-              <node concept="1niqFM" id="2xs" role="3clFbG">
+              <node concept="1niqFM" id="2xU" role="3clFbG">
                 <property role="1npL6y" value="identifier" />
                 <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
                 <uo k="s:originTrace" v="n:419267039270950711" />
-                <node concept="3uibUv" id="2xt" role="32Mpfj">
+                <node concept="3uibUv" id="2xV" role="32Mpfj">
                   <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
                   <uo k="s:originTrace" v="n:419267039270950711" />
                 </node>
-                <node concept="2OqwBi" id="2xu" role="2U24H$">
+                <node concept="2OqwBi" id="2xW" role="2U24H$">
                   <uo k="s:originTrace" v="n:419267039270951408" />
-                  <node concept="2OqwBi" id="2xw" role="2Oq$k0">
+                  <node concept="2OqwBi" id="2xY" role="2Oq$k0">
                     <uo k="s:originTrace" v="n:419267039270950850" />
-                    <node concept="37vLTw" id="2xy" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2x5" resolve="ctx" />
+                    <node concept="37vLTw" id="2y0" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2xz" resolve="ctx" />
                     </node>
-                    <node concept="liA8E" id="2xz" role="2OqNvi">
+                    <node concept="liA8E" id="2y1" role="2OqNvi">
                       <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                     </node>
                   </node>
-                  <node concept="3TrEf2" id="2xx" role="2OqNvi">
+                  <node concept="3TrEf2" id="2xZ" role="2OqNvi">
                     <ref role="3Tt5mk" to="hcm8:1502VugHfxV" resolve="parameter" />
                     <uo k="s:originTrace" v="n:419267039270952547" />
                   </node>
                 </node>
-                <node concept="37vLTw" id="2xv" role="2U24H$">
-                  <ref role="3cqZAo" node="2x5" resolve="ctx" />
+                <node concept="37vLTw" id="2xX" role="2U24H$">
+                  <ref role="3cqZAo" node="2xz" resolve="ctx" />
                   <uo k="s:originTrace" v="n:419267039270950711" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2xr" role="3cqZAp">
+            <node concept="3clFbF" id="2xT" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696098160" />
-              <node concept="2OqwBi" id="2x$" role="3clFbG">
+              <node concept="2OqwBi" id="2y2" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696098160" />
-                <node concept="37vLTw" id="2x_" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2xc" resolve="tgs" />
+                <node concept="37vLTw" id="2y3" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2xE" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696098160" />
                 </node>
-                <node concept="liA8E" id="2xA" role="2OqNvi">
+                <node concept="liA8E" id="2y4" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6153771967696098160" />
-                  <node concept="Xl_RD" id="2xB" role="37wK5m">
+                  <node concept="Xl_RD" id="2y5" role="37wK5m">
                     <property role="Xl_RC" value=" = " />
                     <uo k="s:originTrace" v="n:6153771967696098160" />
                   </node>
@@ -35539,88 +35635,88 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="2xp" role="3clFbw">
+          <node concept="2OqwBi" id="2xR" role="3clFbw">
             <uo k="s:originTrace" v="n:6153771967696098175" />
-            <node concept="2OqwBi" id="2xC" role="2Oq$k0">
+            <node concept="2OqwBi" id="2y6" role="2Oq$k0">
               <uo k="s:originTrace" v="n:6153771967696098176" />
-              <node concept="2OqwBi" id="2xE" role="2Oq$k0">
+              <node concept="2OqwBi" id="2y8" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967696098180" />
-                <node concept="37vLTw" id="2xG" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2x5" resolve="ctx" />
+                <node concept="37vLTw" id="2ya" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2xz" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2xH" role="2OqNvi">
+                <node concept="liA8E" id="2yb" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrEf2" id="2xF" role="2OqNvi">
+              <node concept="3TrEf2" id="2y9" role="2OqNvi">
                 <ref role="3Tt5mk" to="hcm8:1502VugHfxV" resolve="parameter" />
                 <uo k="s:originTrace" v="n:6153771967696098178" />
               </node>
             </node>
-            <node concept="3x8VRR" id="2xD" role="2OqNvi">
+            <node concept="3x8VRR" id="2y7" role="2OqNvi">
               <uo k="s:originTrace" v="n:6153771967696098179" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2xa" role="3cqZAp">
+        <node concept="3clFbF" id="2xC" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697687803" />
-          <node concept="1niqFM" id="2xI" role="3clFbG">
+          <node concept="1niqFM" id="2yc" role="3clFbG">
             <property role="1npL6y" value="modifier" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:6153771967697687803" />
-            <node concept="3uibUv" id="2xJ" role="32Mpfj">
+            <node concept="3uibUv" id="2yd" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:6153771967697687803" />
             </node>
-            <node concept="2OqwBi" id="2xK" role="2U24H$">
+            <node concept="2OqwBi" id="2ye" role="2U24H$">
               <uo k="s:originTrace" v="n:6153771967697688346" />
-              <node concept="2OqwBi" id="2xN" role="2Oq$k0">
+              <node concept="2OqwBi" id="2yh" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967697687838" />
-                <node concept="37vLTw" id="2xP" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2x5" resolve="ctx" />
+                <node concept="37vLTw" id="2yj" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2xz" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2xQ" role="2OqNvi">
+                <node concept="liA8E" id="2yk" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrcHB" id="2xO" role="2OqNvi">
+              <node concept="3TrcHB" id="2yi" role="2OqNvi">
                 <ref role="3TsBF5" to="hcm8:bbFPPtRLzX" resolve="isVararg" />
                 <uo k="s:originTrace" v="n:6153771967697688920" />
               </node>
             </node>
-            <node concept="Xl_RD" id="2xL" role="2U24H$">
+            <node concept="Xl_RD" id="2yf" role="2U24H$">
               <property role="Xl_RC" value="*" />
               <uo k="s:originTrace" v="n:6153771967697689110" />
             </node>
-            <node concept="37vLTw" id="2xM" role="2U24H$">
-              <ref role="3cqZAo" node="2x5" resolve="ctx" />
+            <node concept="37vLTw" id="2yg" role="2U24H$">
+              <ref role="3cqZAo" node="2xz" resolve="ctx" />
               <uo k="s:originTrace" v="n:6153771967697687803" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2xb" role="3cqZAp">
+        <node concept="3clFbF" id="2xD" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696098331" />
-          <node concept="2OqwBi" id="2xR" role="3clFbG">
+          <node concept="2OqwBi" id="2yl" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696098331" />
-            <node concept="37vLTw" id="2xS" role="2Oq$k0">
-              <ref role="3cqZAo" node="2xc" resolve="tgs" />
+            <node concept="37vLTw" id="2ym" role="2Oq$k0">
+              <ref role="3cqZAo" node="2xE" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696098331" />
             </node>
-            <node concept="liA8E" id="2xT" role="2OqNvi">
+            <node concept="liA8E" id="2yn" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
               <uo k="s:originTrace" v="n:6153771967696098331" />
-              <node concept="2OqwBi" id="2xU" role="37wK5m">
+              <node concept="2OqwBi" id="2yo" role="37wK5m">
                 <uo k="s:originTrace" v="n:6153771967696098332" />
-                <node concept="2OqwBi" id="2xV" role="2Oq$k0">
+                <node concept="2OqwBi" id="2yp" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:6153771967696098330" />
-                  <node concept="37vLTw" id="2xX" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2x5" resolve="ctx" />
+                  <node concept="37vLTw" id="2yr" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2xz" resolve="ctx" />
                   </node>
-                  <node concept="liA8E" id="2xY" role="2OqNvi">
+                  <node concept="liA8E" id="2ys" role="2OqNvi">
                     <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                 </node>
-                <node concept="3TrEf2" id="2xW" role="2OqNvi">
+                <node concept="3TrEf2" id="2yq" role="2OqNvi">
                   <ref role="3Tt5mk" to="hcm8:2yYXHtl6J$$" resolve="expression" />
                   <uo k="s:originTrace" v="n:6153771967696098327" />
                 </node>
@@ -35629,79 +35725,79 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2x5" role="3clF46">
+      <node concept="37vLTG" id="2xz" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696097969" />
-        <node concept="3uibUv" id="2xZ" role="1tU5fm">
+        <node concept="3uibUv" id="2yt" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696097969" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2x6" role="2AJF6D">
+      <node concept="2AHcQZ" id="2x$" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696097969" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2y0">
+  <node concept="312cEu" id="2yu">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="ValueClassModifier_TextGen" />
     <property role="3GE5qa" value="declaration.class.modifier" />
     <uo k="s:originTrace" v="n:8282399442080267255" />
-    <node concept="3Tm1VV" id="2y1" role="1B3o_S">
+    <node concept="3Tm1VV" id="2yv" role="1B3o_S">
       <uo k="s:originTrace" v="n:8282399442080267255" />
     </node>
-    <node concept="3uibUv" id="2y2" role="1zkMxy">
+    <node concept="3uibUv" id="2yw" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:8282399442080267255" />
     </node>
-    <node concept="3clFb_" id="2y3" role="jymVt">
+    <node concept="3clFb_" id="2yx" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:8282399442080267255" />
-      <node concept="3cqZAl" id="2y4" role="3clF45">
+      <node concept="3cqZAl" id="2yy" role="3clF45">
         <uo k="s:originTrace" v="n:8282399442080267255" />
       </node>
-      <node concept="3Tm1VV" id="2y5" role="1B3o_S">
+      <node concept="3Tm1VV" id="2yz" role="1B3o_S">
         <uo k="s:originTrace" v="n:8282399442080267255" />
       </node>
-      <node concept="3clFbS" id="2y6" role="3clF47">
+      <node concept="3clFbS" id="2y$" role="3clF47">
         <uo k="s:originTrace" v="n:8282399442080267255" />
-        <node concept="3cpWs8" id="2y9" role="3cqZAp">
+        <node concept="3cpWs8" id="2yB" role="3cqZAp">
           <uo k="s:originTrace" v="n:8282399442080267255" />
-          <node concept="3cpWsn" id="2yb" role="3cpWs9">
+          <node concept="3cpWsn" id="2yD" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:8282399442080267255" />
-            <node concept="3uibUv" id="2yc" role="1tU5fm">
+            <node concept="3uibUv" id="2yE" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:8282399442080267255" />
             </node>
-            <node concept="2ShNRf" id="2yd" role="33vP2m">
+            <node concept="2ShNRf" id="2yF" role="33vP2m">
               <uo k="s:originTrace" v="n:8282399442080267255" />
-              <node concept="1pGfFk" id="2ye" role="2ShVmc">
+              <node concept="1pGfFk" id="2yG" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:8282399442080267255" />
-                <node concept="37vLTw" id="2yf" role="37wK5m">
-                  <ref role="3cqZAo" node="2y7" resolve="ctx" />
+                <node concept="37vLTw" id="2yH" role="37wK5m">
+                  <ref role="3cqZAo" node="2y_" resolve="ctx" />
                   <uo k="s:originTrace" v="n:8282399442080267255" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2ya" role="3cqZAp">
+        <node concept="3clFbF" id="2yC" role="3cqZAp">
           <uo k="s:originTrace" v="n:8282399442080267259" />
-          <node concept="2OqwBi" id="2yg" role="3clFbG">
+          <node concept="2OqwBi" id="2yI" role="3clFbG">
             <uo k="s:originTrace" v="n:8282399442080267259" />
-            <node concept="37vLTw" id="2yh" role="2Oq$k0">
-              <ref role="3cqZAo" node="2yb" resolve="tgs" />
+            <node concept="37vLTw" id="2yJ" role="2Oq$k0">
+              <ref role="3cqZAo" node="2yD" resolve="tgs" />
               <uo k="s:originTrace" v="n:8282399442080267259" />
             </node>
-            <node concept="liA8E" id="2yi" role="2OqNvi">
+            <node concept="liA8E" id="2yK" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:8282399442080267259" />
-              <node concept="Xl_RD" id="2yj" role="37wK5m">
+              <node concept="Xl_RD" id="2yL" role="37wK5m">
                 <property role="Xl_RC" value="value" />
                 <uo k="s:originTrace" v="n:8282399442080267259" />
               </node>
@@ -35709,165 +35805,165 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2y7" role="3clF46">
+      <node concept="37vLTG" id="2y_" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:8282399442080267255" />
-        <node concept="3uibUv" id="2yk" role="1tU5fm">
+        <node concept="3uibUv" id="2yM" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:8282399442080267255" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2y8" role="2AJF6D">
+      <node concept="2AHcQZ" id="2yA" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:8282399442080267255" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2yl">
+  <node concept="312cEu" id="2yN">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="VariableDeclaration_TextGen" />
     <property role="3GE5qa" value="declaration.variable" />
     <uo k="s:originTrace" v="n:6153771967696097516" />
-    <node concept="3Tm1VV" id="2ym" role="1B3o_S">
+    <node concept="3Tm1VV" id="2yO" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696097516" />
     </node>
-    <node concept="3uibUv" id="2yn" role="1zkMxy">
+    <node concept="3uibUv" id="2yP" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696097516" />
     </node>
-    <node concept="3clFb_" id="2yo" role="jymVt">
+    <node concept="3clFb_" id="2yQ" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696097516" />
-      <node concept="3cqZAl" id="2yp" role="3clF45">
+      <node concept="3cqZAl" id="2yR" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696097516" />
       </node>
-      <node concept="3Tm1VV" id="2yq" role="1B3o_S">
+      <node concept="3Tm1VV" id="2yS" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696097516" />
       </node>
-      <node concept="3clFbS" id="2yr" role="3clF47">
+      <node concept="3clFbS" id="2yT" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696097516" />
-        <node concept="3cpWs8" id="2yu" role="3cqZAp">
+        <node concept="3cpWs8" id="2yW" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696097516" />
-          <node concept="3cpWsn" id="2yy" role="3cpWs9">
+          <node concept="3cpWsn" id="2z0" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696097516" />
-            <node concept="3uibUv" id="2yz" role="1tU5fm">
+            <node concept="3uibUv" id="2z1" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696097516" />
             </node>
-            <node concept="2ShNRf" id="2y$" role="33vP2m">
+            <node concept="2ShNRf" id="2z2" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696097516" />
-              <node concept="1pGfFk" id="2y_" role="2ShVmc">
+              <node concept="1pGfFk" id="2z3" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696097516" />
-                <node concept="37vLTw" id="2yA" role="37wK5m">
-                  <ref role="3cqZAo" node="2ys" resolve="ctx" />
+                <node concept="37vLTw" id="2z4" role="37wK5m">
+                  <ref role="3cqZAo" node="2yU" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696097516" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2yv" role="3cqZAp">
+        <node concept="3clFbF" id="2yX" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697695092" />
-          <node concept="1niqFM" id="2yB" role="3clFbG">
+          <node concept="1niqFM" id="2z5" role="3clFbG">
             <property role="1npL6y" value="annotations" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:6153771967697695092" />
-            <node concept="3uibUv" id="2yC" role="32Mpfj">
+            <node concept="3uibUv" id="2z6" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:6153771967697695092" />
             </node>
-            <node concept="2OqwBi" id="2yD" role="2U24H$">
+            <node concept="2OqwBi" id="2z7" role="2U24H$">
               <uo k="s:originTrace" v="n:6153771967697695138" />
-              <node concept="37vLTw" id="2yG" role="2Oq$k0">
-                <ref role="3cqZAo" node="2ys" resolve="ctx" />
+              <node concept="37vLTw" id="2za" role="2Oq$k0">
+                <ref role="3cqZAo" node="2yU" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2yH" role="2OqNvi">
+              <node concept="liA8E" id="2zb" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="3clFbT" id="2yE" role="2U24H$">
+            <node concept="3clFbT" id="2z8" role="2U24H$">
               <uo k="s:originTrace" v="n:6153771967697695272" />
             </node>
-            <node concept="37vLTw" id="2yF" role="2U24H$">
-              <ref role="3cqZAo" node="2ys" resolve="ctx" />
+            <node concept="37vLTw" id="2z9" role="2U24H$">
+              <ref role="3cqZAo" node="2yU" resolve="ctx" />
               <uo k="s:originTrace" v="n:6153771967697695092" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2yw" role="3cqZAp">
+        <node concept="3clFbF" id="2yY" role="3cqZAp">
           <uo k="s:originTrace" v="n:419267039270715383" />
-          <node concept="1niqFM" id="2yI" role="3clFbG">
+          <node concept="1niqFM" id="2zc" role="3clFbG">
             <property role="1npL6y" value="identifier" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:419267039270715383" />
-            <node concept="3uibUv" id="2yJ" role="32Mpfj">
+            <node concept="3uibUv" id="2zd" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:419267039270715383" />
             </node>
-            <node concept="2OqwBi" id="2yK" role="2U24H$">
+            <node concept="2OqwBi" id="2ze" role="2U24H$">
               <uo k="s:originTrace" v="n:419267039270716113" />
-              <node concept="37vLTw" id="2yM" role="2Oq$k0">
-                <ref role="3cqZAo" node="2ys" resolve="ctx" />
+              <node concept="37vLTw" id="2zg" role="2Oq$k0">
+                <ref role="3cqZAo" node="2yU" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2yN" role="2OqNvi">
+              <node concept="liA8E" id="2zh" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="37vLTw" id="2yL" role="2U24H$">
-              <ref role="3cqZAo" node="2ys" resolve="ctx" />
+            <node concept="37vLTw" id="2zf" role="2U24H$">
+              <ref role="3cqZAo" node="2yU" resolve="ctx" />
               <uo k="s:originTrace" v="n:419267039270715383" />
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="2yx" role="3cqZAp">
+        <node concept="3clFbJ" id="2yZ" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696097691" />
-          <node concept="3clFbS" id="2yO" role="3clFbx">
+          <node concept="3clFbS" id="2zi" role="3clFbx">
             <uo k="s:originTrace" v="n:6153771967696097690" />
-            <node concept="3clFbF" id="2yQ" role="3cqZAp">
+            <node concept="3clFbF" id="2zk" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696097624" />
-              <node concept="2OqwBi" id="2yS" role="3clFbG">
+              <node concept="2OqwBi" id="2zm" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696097624" />
-                <node concept="37vLTw" id="2yT" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2yy" resolve="tgs" />
+                <node concept="37vLTw" id="2zn" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2z0" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696097624" />
                 </node>
-                <node concept="liA8E" id="2yU" role="2OqNvi">
+                <node concept="liA8E" id="2zo" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6153771967696097624" />
-                  <node concept="Xl_RD" id="2yV" role="37wK5m">
+                  <node concept="Xl_RD" id="2zp" role="37wK5m">
                     <property role="Xl_RC" value=": " />
                     <uo k="s:originTrace" v="n:6153771967696097624" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2yR" role="3cqZAp">
+            <node concept="3clFbF" id="2zl" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696097644" />
-              <node concept="2OqwBi" id="2yW" role="3clFbG">
+              <node concept="2OqwBi" id="2zq" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696097644" />
-                <node concept="37vLTw" id="2yX" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2yy" resolve="tgs" />
+                <node concept="37vLTw" id="2zr" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2z0" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696097644" />
                 </node>
-                <node concept="liA8E" id="2yY" role="2OqNvi">
+                <node concept="liA8E" id="2zs" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
                   <uo k="s:originTrace" v="n:6153771967696097644" />
-                  <node concept="2OqwBi" id="2yZ" role="37wK5m">
+                  <node concept="2OqwBi" id="2zt" role="37wK5m">
                     <uo k="s:originTrace" v="n:6153771967696097645" />
-                    <node concept="2OqwBi" id="2z0" role="2Oq$k0">
+                    <node concept="2OqwBi" id="2zu" role="2Oq$k0">
                       <uo k="s:originTrace" v="n:6153771967696097643" />
-                      <node concept="37vLTw" id="2z2" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2ys" resolve="ctx" />
+                      <node concept="37vLTw" id="2zw" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2yU" resolve="ctx" />
                       </node>
-                      <node concept="liA8E" id="2z3" role="2OqNvi">
+                      <node concept="liA8E" id="2zx" role="2OqNvi">
                         <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                       </node>
                     </node>
-                    <node concept="3TrEf2" id="2z1" role="2OqNvi">
+                    <node concept="3TrEf2" id="2zv" role="2OqNvi">
                       <ref role="3Tt5mk" to="hcm8:2yYXHtl6J$n" resolve="type" />
                       <uo k="s:originTrace" v="n:6153771967696097640" />
                     </node>
@@ -35876,217 +35972,217 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="2yP" role="3clFbw">
+          <node concept="2OqwBi" id="2zj" role="3clFbw">
             <uo k="s:originTrace" v="n:6153771967696097660" />
-            <node concept="2OqwBi" id="2z4" role="2Oq$k0">
+            <node concept="2OqwBi" id="2zy" role="2Oq$k0">
               <uo k="s:originTrace" v="n:6153771967696097661" />
-              <node concept="2OqwBi" id="2z6" role="2Oq$k0">
+              <node concept="2OqwBi" id="2z$" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967696097665" />
-                <node concept="37vLTw" id="2z8" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2ys" resolve="ctx" />
+                <node concept="37vLTw" id="2zA" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2yU" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2z9" role="2OqNvi">
+                <node concept="liA8E" id="2zB" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrEf2" id="2z7" role="2OqNvi">
+              <node concept="3TrEf2" id="2z_" role="2OqNvi">
                 <ref role="3Tt5mk" to="hcm8:2yYXHtl6J$n" resolve="type" />
                 <uo k="s:originTrace" v="n:6153771967696097663" />
               </node>
             </node>
-            <node concept="3x8VRR" id="2z5" role="2OqNvi">
+            <node concept="3x8VRR" id="2zz" role="2OqNvi">
               <uo k="s:originTrace" v="n:6153771967696097664" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2ys" role="3clF46">
+      <node concept="37vLTG" id="2yU" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696097516" />
-        <node concept="3uibUv" id="2za" role="1tU5fm">
+        <node concept="3uibUv" id="2zC" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696097516" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2yt" role="2AJF6D">
+      <node concept="2AHcQZ" id="2yV" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696097516" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2zb">
+  <node concept="312cEu" id="2zD">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="VariableRefExpression_TextGen" />
     <property role="3GE5qa" value="expression.reference" />
     <uo k="s:originTrace" v="n:6153771967696101413" />
-    <node concept="3Tm1VV" id="2zc" role="1B3o_S">
+    <node concept="3Tm1VV" id="2zE" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696101413" />
     </node>
-    <node concept="3uibUv" id="2zd" role="1zkMxy">
+    <node concept="3uibUv" id="2zF" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696101413" />
     </node>
-    <node concept="3clFb_" id="2ze" role="jymVt">
+    <node concept="3clFb_" id="2zG" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696101413" />
-      <node concept="3cqZAl" id="2zf" role="3clF45">
+      <node concept="3cqZAl" id="2zH" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696101413" />
       </node>
-      <node concept="3Tm1VV" id="2zg" role="1B3o_S">
+      <node concept="3Tm1VV" id="2zI" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696101413" />
       </node>
-      <node concept="3clFbS" id="2zh" role="3clF47">
+      <node concept="3clFbS" id="2zJ" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696101413" />
-        <node concept="3cpWs8" id="2zk" role="3cqZAp">
+        <node concept="3cpWs8" id="2zM" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696101413" />
-          <node concept="3cpWsn" id="2zm" role="3cpWs9">
+          <node concept="3cpWsn" id="2zO" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696101413" />
-            <node concept="3uibUv" id="2zn" role="1tU5fm">
+            <node concept="3uibUv" id="2zP" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696101413" />
             </node>
-            <node concept="2ShNRf" id="2zo" role="33vP2m">
+            <node concept="2ShNRf" id="2zQ" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696101413" />
-              <node concept="1pGfFk" id="2zp" role="2ShVmc">
+              <node concept="1pGfFk" id="2zR" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696101413" />
-                <node concept="37vLTw" id="2zq" role="37wK5m">
-                  <ref role="3cqZAo" node="2zi" resolve="ctx" />
+                <node concept="37vLTw" id="2zS" role="37wK5m">
+                  <ref role="3cqZAo" node="2zK" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696101413" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2zl" role="3cqZAp">
+        <node concept="3clFbF" id="2zN" role="3cqZAp">
           <uo k="s:originTrace" v="n:6585624606758191154" />
-          <node concept="1niqFM" id="2zr" role="3clFbG">
+          <node concept="1niqFM" id="2zT" role="3clFbG">
             <property role="1npL6y" value="reference" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:6585624606758191154" />
-            <node concept="3uibUv" id="2zs" role="32Mpfj">
+            <node concept="3uibUv" id="2zU" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:6585624606758191154" />
             </node>
-            <node concept="2OqwBi" id="2zt" role="2U24H$">
+            <node concept="2OqwBi" id="2zV" role="2U24H$">
               <uo k="s:originTrace" v="n:6585624606758192308" />
-              <node concept="2OqwBi" id="2zw" role="2Oq$k0">
+              <node concept="2OqwBi" id="2zY" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6585624606758191408" />
-                <node concept="37vLTw" id="2zy" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2zi" resolve="ctx" />
+                <node concept="37vLTw" id="2$0" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2zK" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2zz" role="2OqNvi">
+                <node concept="liA8E" id="2$1" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrEf2" id="2zx" role="2OqNvi">
+              <node concept="3TrEf2" id="2zZ" role="2OqNvi">
                 <ref role="3Tt5mk" to="hcm8:4Nah4_QdulM" resolve="target" />
                 <uo k="s:originTrace" v="n:6585624606758194082" />
               </node>
             </node>
-            <node concept="3clFbT" id="2zu" role="2U24H$">
+            <node concept="3clFbT" id="2zW" role="2U24H$">
               <uo k="s:originTrace" v="n:688207099671726771" />
             </node>
-            <node concept="37vLTw" id="2zv" role="2U24H$">
-              <ref role="3cqZAo" node="2zi" resolve="ctx" />
+            <node concept="37vLTw" id="2zX" role="2U24H$">
+              <ref role="3cqZAo" node="2zK" resolve="ctx" />
               <uo k="s:originTrace" v="n:6585624606758191154" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2zi" role="3clF46">
+      <node concept="37vLTG" id="2zK" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696101413" />
-        <node concept="3uibUv" id="2z$" role="1tU5fm">
+        <node concept="3uibUv" id="2$2" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696101413" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2zj" role="2AJF6D">
+      <node concept="2AHcQZ" id="2zL" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696101413" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2z_">
+  <node concept="312cEu" id="2$3">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="VisibilityModifier_TextGen" />
     <property role="3GE5qa" value="visibility" />
     <uo k="s:originTrace" v="n:4883292379420789413" />
-    <node concept="3Tm1VV" id="2zA" role="1B3o_S">
+    <node concept="3Tm1VV" id="2$4" role="1B3o_S">
       <uo k="s:originTrace" v="n:4883292379420789413" />
     </node>
-    <node concept="3uibUv" id="2zB" role="1zkMxy">
+    <node concept="3uibUv" id="2$5" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:4883292379420789413" />
     </node>
-    <node concept="3clFb_" id="2zC" role="jymVt">
+    <node concept="3clFb_" id="2$6" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:4883292379420789413" />
-      <node concept="3cqZAl" id="2zD" role="3clF45">
+      <node concept="3cqZAl" id="2$7" role="3clF45">
         <uo k="s:originTrace" v="n:4883292379420789413" />
       </node>
-      <node concept="3Tm1VV" id="2zE" role="1B3o_S">
+      <node concept="3Tm1VV" id="2$8" role="1B3o_S">
         <uo k="s:originTrace" v="n:4883292379420789413" />
       </node>
-      <node concept="3clFbS" id="2zF" role="3clF47">
+      <node concept="3clFbS" id="2$9" role="3clF47">
         <uo k="s:originTrace" v="n:4883292379420789413" />
-        <node concept="3cpWs8" id="2zI" role="3cqZAp">
+        <node concept="3cpWs8" id="2$c" role="3cqZAp">
           <uo k="s:originTrace" v="n:4883292379420789413" />
-          <node concept="3cpWsn" id="2zK" role="3cpWs9">
+          <node concept="3cpWsn" id="2$e" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:4883292379420789413" />
-            <node concept="3uibUv" id="2zL" role="1tU5fm">
+            <node concept="3uibUv" id="2$f" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:4883292379420789413" />
             </node>
-            <node concept="2ShNRf" id="2zM" role="33vP2m">
+            <node concept="2ShNRf" id="2$g" role="33vP2m">
               <uo k="s:originTrace" v="n:4883292379420789413" />
-              <node concept="1pGfFk" id="2zN" role="2ShVmc">
+              <node concept="1pGfFk" id="2$h" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:4883292379420789413" />
-                <node concept="37vLTw" id="2zO" role="37wK5m">
-                  <ref role="3cqZAo" node="2zG" resolve="ctx" />
+                <node concept="37vLTw" id="2$i" role="37wK5m">
+                  <ref role="3cqZAo" node="2$a" resolve="ctx" />
                   <uo k="s:originTrace" v="n:4883292379420789413" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2zJ" role="3cqZAp">
+        <node concept="3clFbF" id="2$d" role="3cqZAp">
           <uo k="s:originTrace" v="n:655844405552314773" />
-          <node concept="2OqwBi" id="2zP" role="3clFbG">
+          <node concept="2OqwBi" id="2$j" role="3clFbG">
             <uo k="s:originTrace" v="n:655844405552314773" />
-            <node concept="37vLTw" id="2zQ" role="2Oq$k0">
-              <ref role="3cqZAo" node="2zK" resolve="tgs" />
+            <node concept="37vLTw" id="2$k" role="2Oq$k0">
+              <ref role="3cqZAo" node="2$e" resolve="tgs" />
               <uo k="s:originTrace" v="n:655844405552314773" />
             </node>
-            <node concept="liA8E" id="2zR" role="2OqNvi">
+            <node concept="liA8E" id="2$l" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:655844405552314773" />
-              <node concept="2OqwBi" id="2zS" role="37wK5m">
+              <node concept="2OqwBi" id="2$m" role="37wK5m">
                 <uo k="s:originTrace" v="n:4883292379420791123" />
-                <node concept="2OqwBi" id="2zT" role="2Oq$k0">
+                <node concept="2OqwBi" id="2$n" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:4883292379420789896" />
-                  <node concept="2OqwBi" id="2zV" role="2Oq$k0">
+                  <node concept="2OqwBi" id="2$p" role="2Oq$k0">
                     <uo k="s:originTrace" v="n:4883292379420789471" />
-                    <node concept="37vLTw" id="2zX" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2zG" resolve="ctx" />
+                    <node concept="37vLTw" id="2$r" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2$a" resolve="ctx" />
                     </node>
-                    <node concept="liA8E" id="2zY" role="2OqNvi">
+                    <node concept="liA8E" id="2$s" role="2OqNvi">
                       <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                     </node>
                   </node>
-                  <node concept="2yIwOk" id="2zW" role="2OqNvi">
+                  <node concept="2yIwOk" id="2$q" role="2OqNvi">
                     <uo k="s:originTrace" v="n:4883292379420790333" />
                   </node>
                 </node>
-                <node concept="3n3YKJ" id="2zU" role="2OqNvi">
+                <node concept="3n3YKJ" id="2$o" role="2OqNvi">
                   <uo k="s:originTrace" v="n:4883292379420792061" />
                 </node>
               </node>
@@ -36094,170 +36190,170 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2zG" role="3clF46">
+      <node concept="37vLTG" id="2$a" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:4883292379420789413" />
-        <node concept="3uibUv" id="2zZ" role="1tU5fm">
+        <node concept="3uibUv" id="2$t" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:4883292379420789413" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2zH" role="2AJF6D">
+      <node concept="2AHcQZ" id="2$b" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:4883292379420789413" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2$0">
+  <node concept="312cEu" id="2$u">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="WhenEntry_TextGen" />
     <property role="3GE5qa" value="expression.control.when" />
     <uo k="s:originTrace" v="n:6153771967696084067" />
-    <node concept="3Tm1VV" id="2$1" role="1B3o_S">
+    <node concept="3Tm1VV" id="2$v" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696084067" />
     </node>
-    <node concept="3uibUv" id="2$2" role="1zkMxy">
+    <node concept="3uibUv" id="2$w" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696084067" />
     </node>
-    <node concept="3clFb_" id="2$3" role="jymVt">
+    <node concept="3clFb_" id="2$x" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696084067" />
-      <node concept="3cqZAl" id="2$4" role="3clF45">
+      <node concept="3cqZAl" id="2$y" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696084067" />
       </node>
-      <node concept="3Tm1VV" id="2$5" role="1B3o_S">
+      <node concept="3Tm1VV" id="2$z" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696084067" />
       </node>
-      <node concept="3clFbS" id="2$6" role="3clF47">
+      <node concept="3clFbS" id="2$$" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696084067" />
-        <node concept="3cpWs8" id="2$9" role="3cqZAp">
+        <node concept="3cpWs8" id="2$B" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696084067" />
-          <node concept="3cpWsn" id="2$d" role="3cpWs9">
+          <node concept="3cpWsn" id="2$F" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696084067" />
-            <node concept="3uibUv" id="2$e" role="1tU5fm">
+            <node concept="3uibUv" id="2$G" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696084067" />
             </node>
-            <node concept="2ShNRf" id="2$f" role="33vP2m">
+            <node concept="2ShNRf" id="2$H" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696084067" />
-              <node concept="1pGfFk" id="2$g" role="2ShVmc">
+              <node concept="1pGfFk" id="2$I" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696084067" />
-                <node concept="37vLTw" id="2$h" role="37wK5m">
-                  <ref role="3cqZAo" node="2$7" resolve="ctx" />
+                <node concept="37vLTw" id="2$J" role="37wK5m">
+                  <ref role="3cqZAo" node="2$_" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696084067" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="9aQIb" id="2$a" role="3cqZAp">
+        <node concept="9aQIb" id="2$C" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697697523" />
-          <node concept="3clFbS" id="2$i" role="9aQI4">
+          <node concept="3clFbS" id="2$K" role="9aQI4">
             <uo k="s:originTrace" v="n:6153771967697697523" />
-            <node concept="3cpWs8" id="2$j" role="3cqZAp">
+            <node concept="3cpWs8" id="2$L" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967697697523" />
-              <node concept="3cpWsn" id="2$m" role="3cpWs9">
+              <node concept="3cpWsn" id="2$O" role="3cpWs9">
                 <property role="TrG5h" value="collection" />
                 <uo k="s:originTrace" v="n:6153771967697697523" />
-                <node concept="A3Dl8" id="2$n" role="1tU5fm">
+                <node concept="A3Dl8" id="2$P" role="1tU5fm">
                   <uo k="s:originTrace" v="n:6153771967697697523" />
-                  <node concept="3Tqbb2" id="2$p" role="A3Ik2">
+                  <node concept="3Tqbb2" id="2$R" role="A3Ik2">
                     <uo k="s:originTrace" v="n:6153771967697697523" />
                   </node>
                 </node>
-                <node concept="2OqwBi" id="2$o" role="33vP2m">
+                <node concept="2OqwBi" id="2$Q" role="33vP2m">
                   <uo k="s:originTrace" v="n:6153771967696084076" />
-                  <node concept="2OqwBi" id="2$q" role="2Oq$k0">
+                  <node concept="2OqwBi" id="2$S" role="2Oq$k0">
                     <uo k="s:originTrace" v="n:6153771967696084075" />
-                    <node concept="37vLTw" id="2$s" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2$7" resolve="ctx" />
+                    <node concept="37vLTw" id="2$U" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2$_" resolve="ctx" />
                     </node>
-                    <node concept="liA8E" id="2$t" role="2OqNvi">
+                    <node concept="liA8E" id="2$V" role="2OqNvi">
                       <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                     </node>
                   </node>
-                  <node concept="3Tsc0h" id="2$r" role="2OqNvi">
+                  <node concept="3Tsc0h" id="2$T" role="2OqNvi">
                     <ref role="3TtcxE" to="hcm8:2yYXHtl6JoK" resolve="conditions" />
                     <uo k="s:originTrace" v="n:6153771967696084072" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="2$k" role="3cqZAp">
+            <node concept="3cpWs8" id="2$M" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967697697523" />
-              <node concept="3cpWsn" id="2$u" role="3cpWs9">
+              <node concept="3cpWsn" id="2$W" role="3cpWs9">
                 <property role="3TUv4t" value="true" />
                 <property role="TrG5h" value="lastItem" />
                 <uo k="s:originTrace" v="n:6153771967697697523" />
-                <node concept="3Tqbb2" id="2$v" role="1tU5fm">
+                <node concept="3Tqbb2" id="2$X" role="1tU5fm">
                   <uo k="s:originTrace" v="n:6153771967697697523" />
                 </node>
-                <node concept="2OqwBi" id="2$w" role="33vP2m">
+                <node concept="2OqwBi" id="2$Y" role="33vP2m">
                   <uo k="s:originTrace" v="n:6153771967697697523" />
-                  <node concept="37vLTw" id="2$x" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2$m" resolve="collection" />
+                  <node concept="37vLTw" id="2$Z" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2$O" resolve="collection" />
                     <uo k="s:originTrace" v="n:6153771967697697523" />
                   </node>
-                  <node concept="1yVyf7" id="2$y" role="2OqNvi">
+                  <node concept="1yVyf7" id="2_0" role="2OqNvi">
                     <uo k="s:originTrace" v="n:6153771967697697523" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="1DcWWT" id="2$l" role="3cqZAp">
+            <node concept="1DcWWT" id="2$N" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967697697523" />
-              <node concept="37vLTw" id="2$z" role="1DdaDG">
-                <ref role="3cqZAo" node="2$m" resolve="collection" />
+              <node concept="37vLTw" id="2_1" role="1DdaDG">
+                <ref role="3cqZAo" node="2$O" resolve="collection" />
                 <uo k="s:originTrace" v="n:6153771967697697523" />
               </node>
-              <node concept="3cpWsn" id="2$$" role="1Duv9x">
+              <node concept="3cpWsn" id="2_2" role="1Duv9x">
                 <property role="TrG5h" value="item" />
                 <uo k="s:originTrace" v="n:6153771967697697523" />
-                <node concept="3Tqbb2" id="2$A" role="1tU5fm">
+                <node concept="3Tqbb2" id="2_4" role="1tU5fm">
                   <uo k="s:originTrace" v="n:6153771967697697523" />
                 </node>
               </node>
-              <node concept="3clFbS" id="2$_" role="2LFqv$">
+              <node concept="3clFbS" id="2_3" role="2LFqv$">
                 <uo k="s:originTrace" v="n:6153771967697697523" />
-                <node concept="3clFbF" id="2$B" role="3cqZAp">
+                <node concept="3clFbF" id="2_5" role="3cqZAp">
                   <uo k="s:originTrace" v="n:6153771967697697523" />
-                  <node concept="2OqwBi" id="2$D" role="3clFbG">
+                  <node concept="2OqwBi" id="2_7" role="3clFbG">
                     <uo k="s:originTrace" v="n:6153771967697697523" />
-                    <node concept="37vLTw" id="2$E" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2$d" resolve="tgs" />
+                    <node concept="37vLTw" id="2_8" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2$F" resolve="tgs" />
                       <uo k="s:originTrace" v="n:6153771967697697523" />
                     </node>
-                    <node concept="liA8E" id="2$F" role="2OqNvi">
+                    <node concept="liA8E" id="2_9" role="2OqNvi">
                       <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
                       <uo k="s:originTrace" v="n:6153771967697697523" />
-                      <node concept="37vLTw" id="2$G" role="37wK5m">
-                        <ref role="3cqZAo" node="2$$" resolve="item" />
+                      <node concept="37vLTw" id="2_a" role="37wK5m">
+                        <ref role="3cqZAo" node="2_2" resolve="item" />
                         <uo k="s:originTrace" v="n:6153771967697697523" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3clFbJ" id="2$C" role="3cqZAp">
+                <node concept="3clFbJ" id="2_6" role="3cqZAp">
                   <uo k="s:originTrace" v="n:6153771967697697523" />
-                  <node concept="3clFbS" id="2$H" role="3clFbx">
+                  <node concept="3clFbS" id="2_b" role="3clFbx">
                     <uo k="s:originTrace" v="n:6153771967697697523" />
-                    <node concept="3clFbF" id="2$J" role="3cqZAp">
+                    <node concept="3clFbF" id="2_d" role="3cqZAp">
                       <uo k="s:originTrace" v="n:6153771967697697523" />
-                      <node concept="2OqwBi" id="2$K" role="3clFbG">
+                      <node concept="2OqwBi" id="2_e" role="3clFbG">
                         <uo k="s:originTrace" v="n:6153771967697697523" />
-                        <node concept="37vLTw" id="2$L" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2$d" resolve="tgs" />
+                        <node concept="37vLTw" id="2_f" role="2Oq$k0">
+                          <ref role="3cqZAo" node="2$F" resolve="tgs" />
                           <uo k="s:originTrace" v="n:6153771967697697523" />
                         </node>
-                        <node concept="liA8E" id="2$M" role="2OqNvi">
+                        <node concept="liA8E" id="2_g" role="2OqNvi">
                           <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                           <uo k="s:originTrace" v="n:6153771967697697523" />
-                          <node concept="Xl_RD" id="2$N" role="37wK5m">
+                          <node concept="Xl_RD" id="2_h" role="37wK5m">
                             <property role="Xl_RC" value=", " />
                             <uo k="s:originTrace" v="n:6153771967697697523" />
                           </node>
@@ -36265,14 +36361,14 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="3y3z36" id="2$I" role="3clFbw">
+                  <node concept="3y3z36" id="2_c" role="3clFbw">
                     <uo k="s:originTrace" v="n:6153771967697697523" />
-                    <node concept="37vLTw" id="2$O" role="3uHU7w">
-                      <ref role="3cqZAo" node="2$u" resolve="lastItem" />
+                    <node concept="37vLTw" id="2_i" role="3uHU7w">
+                      <ref role="3cqZAo" node="2$W" resolve="lastItem" />
                       <uo k="s:originTrace" v="n:6153771967697697523" />
                     </node>
-                    <node concept="37vLTw" id="2$P" role="3uHU7B">
-                      <ref role="3cqZAo" node="2$$" resolve="item" />
+                    <node concept="37vLTw" id="2_j" role="3uHU7B">
+                      <ref role="3cqZAo" node="2_2" resolve="item" />
                       <uo k="s:originTrace" v="n:6153771967697697523" />
                     </node>
                   </node>
@@ -36281,198 +36377,198 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2$b" role="3cqZAp">
+        <node concept="3clFbF" id="2$D" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696084119" />
-          <node concept="2OqwBi" id="2$Q" role="3clFbG">
+          <node concept="2OqwBi" id="2_k" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696084119" />
-            <node concept="37vLTw" id="2$R" role="2Oq$k0">
-              <ref role="3cqZAo" node="2$d" resolve="tgs" />
+            <node concept="37vLTw" id="2_l" role="2Oq$k0">
+              <ref role="3cqZAo" node="2$F" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696084119" />
             </node>
-            <node concept="liA8E" id="2$S" role="2OqNvi">
+            <node concept="liA8E" id="2_m" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696084119" />
-              <node concept="Xl_RD" id="2$T" role="37wK5m">
+              <node concept="Xl_RD" id="2_n" role="37wK5m">
                 <property role="Xl_RC" value=" -&gt; " />
                 <uo k="s:originTrace" v="n:6153771967696084119" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2$c" role="3cqZAp">
+        <node concept="3clFbF" id="2$E" role="3cqZAp">
           <uo k="s:originTrace" v="n:7208671122142656974" />
-          <node concept="1niqFM" id="2$U" role="3clFbG">
+          <node concept="1niqFM" id="2_o" role="3clFbG">
             <property role="1npL6y" value="controlStructureStatements" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:7208671122142656974" />
-            <node concept="3uibUv" id="2$V" role="32Mpfj">
+            <node concept="3uibUv" id="2_p" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:7208671122142656974" />
             </node>
-            <node concept="2OqwBi" id="2$W" role="2U24H$">
+            <node concept="2OqwBi" id="2_q" role="2U24H$">
               <uo k="s:originTrace" v="n:7208671122142658238" />
-              <node concept="37vLTw" id="2$Y" role="2Oq$k0">
-                <ref role="3cqZAo" node="2$7" resolve="ctx" />
+              <node concept="37vLTw" id="2_s" role="2Oq$k0">
+                <ref role="3cqZAo" node="2$_" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2$Z" role="2OqNvi">
+              <node concept="liA8E" id="2_t" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="37vLTw" id="2$X" role="2U24H$">
-              <ref role="3cqZAo" node="2$7" resolve="ctx" />
+            <node concept="37vLTw" id="2_r" role="2U24H$">
+              <ref role="3cqZAo" node="2$_" resolve="ctx" />
               <uo k="s:originTrace" v="n:7208671122142656974" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2$7" role="3clF46">
+      <node concept="37vLTG" id="2$_" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696084067" />
-        <node concept="3uibUv" id="2_0" role="1tU5fm">
+        <node concept="3uibUv" id="2_u" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696084067" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2$8" role="2AJF6D">
+      <node concept="2AHcQZ" id="2$A" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696084067" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2_1">
+  <node concept="312cEu" id="2_v">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="WhenExpression_TextGen" />
     <property role="3GE5qa" value="expression.control.when" />
     <uo k="s:originTrace" v="n:6153771967696095494" />
-    <node concept="3Tm1VV" id="2_2" role="1B3o_S">
+    <node concept="3Tm1VV" id="2_w" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696095494" />
     </node>
-    <node concept="3uibUv" id="2_3" role="1zkMxy">
+    <node concept="3uibUv" id="2_x" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696095494" />
     </node>
-    <node concept="3clFb_" id="2_4" role="jymVt">
+    <node concept="3clFb_" id="2_y" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696095494" />
-      <node concept="3cqZAl" id="2_5" role="3clF45">
+      <node concept="3cqZAl" id="2_z" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696095494" />
       </node>
-      <node concept="3Tm1VV" id="2_6" role="1B3o_S">
+      <node concept="3Tm1VV" id="2_$" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696095494" />
       </node>
-      <node concept="3clFbS" id="2_7" role="3clF47">
+      <node concept="3clFbS" id="2__" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696095494" />
-        <node concept="3cpWs8" id="2_a" role="3cqZAp">
+        <node concept="3cpWs8" id="2_C" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696095494" />
-          <node concept="3cpWsn" id="2_q" role="3cpWs9">
+          <node concept="3cpWsn" id="2_S" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696095494" />
-            <node concept="3uibUv" id="2_r" role="1tU5fm">
+            <node concept="3uibUv" id="2_T" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696095494" />
             </node>
-            <node concept="2ShNRf" id="2_s" role="33vP2m">
+            <node concept="2ShNRf" id="2_U" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696095494" />
-              <node concept="1pGfFk" id="2_t" role="2ShVmc">
+              <node concept="1pGfFk" id="2_V" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696095494" />
-                <node concept="37vLTw" id="2_u" role="37wK5m">
-                  <ref role="3cqZAo" node="2_8" resolve="ctx" />
+                <node concept="37vLTw" id="2_W" role="37wK5m">
+                  <ref role="3cqZAo" node="2_A" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696095494" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2_b" role="3cqZAp">
+        <node concept="3clFbF" id="2_D" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696095515" />
-          <node concept="2OqwBi" id="2_v" role="3clFbG">
+          <node concept="2OqwBi" id="2_X" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696095515" />
-            <node concept="37vLTw" id="2_w" role="2Oq$k0">
-              <ref role="3cqZAo" node="2_q" resolve="tgs" />
+            <node concept="37vLTw" id="2_Y" role="2Oq$k0">
+              <ref role="3cqZAo" node="2_S" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696095515" />
             </node>
-            <node concept="liA8E" id="2_x" role="2OqNvi">
+            <node concept="liA8E" id="2_Z" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696095515" />
-              <node concept="Xl_RD" id="2_y" role="37wK5m">
+              <node concept="Xl_RD" id="2A0" role="37wK5m">
                 <property role="Xl_RC" value="when(" />
                 <uo k="s:originTrace" v="n:6153771967696095515" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2_c" role="3cqZAp">
+        <node concept="3clFbH" id="2_E" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697708321" />
         </node>
-        <node concept="3clFbJ" id="2_d" role="3cqZAp">
+        <node concept="3clFbJ" id="2_F" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696095636" />
-          <node concept="3clFbS" id="2_z" role="3clFbx">
+          <node concept="3clFbS" id="2A1" role="3clFbx">
             <uo k="s:originTrace" v="n:6153771967696095635" />
-            <node concept="3clFbF" id="2__" role="3cqZAp">
+            <node concept="3clFbF" id="2A3" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696095553" />
-              <node concept="2OqwBi" id="2_C" role="3clFbG">
+              <node concept="2OqwBi" id="2A6" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696095553" />
-                <node concept="37vLTw" id="2_D" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_q" resolve="tgs" />
+                <node concept="37vLTw" id="2A7" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_S" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696095553" />
                 </node>
-                <node concept="liA8E" id="2_E" role="2OqNvi">
+                <node concept="liA8E" id="2A8" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6153771967696095553" />
-                  <node concept="Xl_RD" id="2_F" role="37wK5m">
+                  <node concept="Xl_RD" id="2A9" role="37wK5m">
                     <property role="Xl_RC" value="val " />
                     <uo k="s:originTrace" v="n:6153771967696095553" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2_A" role="3cqZAp">
+            <node concept="3clFbF" id="2A4" role="3cqZAp">
               <uo k="s:originTrace" v="n:419267039270999858" />
-              <node concept="1niqFM" id="2_G" role="3clFbG">
+              <node concept="1niqFM" id="2Aa" role="3clFbG">
                 <property role="1npL6y" value="identifier" />
                 <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
                 <uo k="s:originTrace" v="n:419267039270999858" />
-                <node concept="3uibUv" id="2_H" role="32Mpfj">
+                <node concept="3uibUv" id="2Ab" role="32Mpfj">
                   <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
                   <uo k="s:originTrace" v="n:419267039270999858" />
                 </node>
-                <node concept="2OqwBi" id="2_I" role="2U24H$">
+                <node concept="2OqwBi" id="2Ac" role="2U24H$">
                   <uo k="s:originTrace" v="n:6153771967696095574" />
-                  <node concept="3TrEf2" id="2_K" role="2OqNvi">
+                  <node concept="3TrEf2" id="2Ae" role="2OqNvi">
                     <ref role="3Tt5mk" to="hcm8:1502VugFONK" resolve="variableDeclaration" />
                     <uo k="s:originTrace" v="n:6153771967696095569" />
                   </node>
-                  <node concept="2OqwBi" id="2_L" role="2Oq$k0">
+                  <node concept="2OqwBi" id="2Af" role="2Oq$k0">
                     <uo k="s:originTrace" v="n:6153771967696095571" />
-                    <node concept="37vLTw" id="2_M" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2_8" resolve="ctx" />
+                    <node concept="37vLTw" id="2Ag" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2_A" resolve="ctx" />
                     </node>
-                    <node concept="liA8E" id="2_N" role="2OqNvi">
+                    <node concept="liA8E" id="2Ah" role="2OqNvi">
                       <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                     </node>
                   </node>
                 </node>
-                <node concept="37vLTw" id="2_J" role="2U24H$">
-                  <ref role="3cqZAo" node="2_8" resolve="ctx" />
+                <node concept="37vLTw" id="2Ad" role="2U24H$">
+                  <ref role="3cqZAo" node="2_A" resolve="ctx" />
                   <uo k="s:originTrace" v="n:419267039270999858" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2_B" role="3cqZAp">
+            <node concept="3clFbF" id="2A5" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696095590" />
-              <node concept="2OqwBi" id="2_O" role="3clFbG">
+              <node concept="2OqwBi" id="2Ai" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696095590" />
-                <node concept="37vLTw" id="2_P" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_q" resolve="tgs" />
+                <node concept="37vLTw" id="2Aj" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_S" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696095590" />
                 </node>
-                <node concept="liA8E" id="2_Q" role="2OqNvi">
+                <node concept="liA8E" id="2Ak" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6153771967696095590" />
-                  <node concept="Xl_RD" id="2_R" role="37wK5m">
+                  <node concept="Xl_RD" id="2Al" role="37wK5m">
                     <property role="Xl_RC" value=" = " />
                     <uo k="s:originTrace" v="n:6153771967696095590" />
                   </node>
@@ -36480,55 +36576,55 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="2_$" role="3clFbw">
+          <node concept="2OqwBi" id="2A2" role="3clFbw">
             <uo k="s:originTrace" v="n:6153771967696095605" />
-            <node concept="2OqwBi" id="2_S" role="2Oq$k0">
+            <node concept="2OqwBi" id="2Am" role="2Oq$k0">
               <uo k="s:originTrace" v="n:6153771967696095606" />
-              <node concept="2OqwBi" id="2_U" role="2Oq$k0">
+              <node concept="2OqwBi" id="2Ao" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967696095610" />
-                <node concept="37vLTw" id="2_W" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_8" resolve="ctx" />
+                <node concept="37vLTw" id="2Aq" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_A" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2_X" role="2OqNvi">
+                <node concept="liA8E" id="2Ar" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrEf2" id="2_V" role="2OqNvi">
+              <node concept="3TrEf2" id="2Ap" role="2OqNvi">
                 <ref role="3Tt5mk" to="hcm8:1502VugFONK" resolve="variableDeclaration" />
                 <uo k="s:originTrace" v="n:6153771967696095608" />
               </node>
             </node>
-            <node concept="3x8VRR" id="2_T" role="2OqNvi">
+            <node concept="3x8VRR" id="2An" role="2OqNvi">
               <uo k="s:originTrace" v="n:6153771967696095609" />
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2_e" role="3cqZAp">
+        <node concept="3clFbH" id="2_G" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697708587" />
         </node>
-        <node concept="3clFbF" id="2_f" role="3cqZAp">
+        <node concept="3clFbF" id="2_H" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696095680" />
-          <node concept="2OqwBi" id="2_Y" role="3clFbG">
+          <node concept="2OqwBi" id="2As" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696095680" />
-            <node concept="37vLTw" id="2_Z" role="2Oq$k0">
-              <ref role="3cqZAo" node="2_q" resolve="tgs" />
+            <node concept="37vLTw" id="2At" role="2Oq$k0">
+              <ref role="3cqZAo" node="2_S" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696095680" />
             </node>
-            <node concept="liA8E" id="2A0" role="2OqNvi">
+            <node concept="liA8E" id="2Au" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
               <uo k="s:originTrace" v="n:6153771967696095680" />
-              <node concept="2OqwBi" id="2A1" role="37wK5m">
+              <node concept="2OqwBi" id="2Av" role="37wK5m">
                 <uo k="s:originTrace" v="n:6153771967696095681" />
-                <node concept="2OqwBi" id="2A2" role="2Oq$k0">
+                <node concept="2OqwBi" id="2Aw" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:6153771967696095679" />
-                  <node concept="37vLTw" id="2A4" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2_8" resolve="ctx" />
+                  <node concept="37vLTw" id="2Ay" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2_A" resolve="ctx" />
                   </node>
-                  <node concept="liA8E" id="2A5" role="2OqNvi">
+                  <node concept="liA8E" id="2Az" role="2OqNvi">
                     <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                 </node>
-                <node concept="3TrEf2" id="2A3" role="2OqNvi">
+                <node concept="3TrEf2" id="2Ax" role="2OqNvi">
                   <ref role="3Tt5mk" to="hcm8:1502VugFOBE" resolve="target" />
                   <uo k="s:originTrace" v="n:6153771967696095676" />
                 </node>
@@ -36536,200 +36632,200 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2_g" role="3cqZAp">
+        <node concept="3clFbF" id="2_I" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696095713" />
-          <node concept="2OqwBi" id="2A6" role="3clFbG">
+          <node concept="2OqwBi" id="2A$" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696095713" />
-            <node concept="37vLTw" id="2A7" role="2Oq$k0">
-              <ref role="3cqZAo" node="2_q" resolve="tgs" />
+            <node concept="37vLTw" id="2A_" role="2Oq$k0">
+              <ref role="3cqZAo" node="2_S" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696095713" />
             </node>
-            <node concept="liA8E" id="2A8" role="2OqNvi">
+            <node concept="liA8E" id="2AA" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696095713" />
-              <node concept="Xl_RD" id="2A9" role="37wK5m">
+              <node concept="Xl_RD" id="2AB" role="37wK5m">
                 <property role="Xl_RC" value=") {" />
                 <uo k="s:originTrace" v="n:6153771967696095713" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2_h" role="3cqZAp">
+        <node concept="3clFbF" id="2_J" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696095721" />
-          <node concept="2OqwBi" id="2Aa" role="3clFbG">
+          <node concept="2OqwBi" id="2AC" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696095721" />
-            <node concept="37vLTw" id="2Ab" role="2Oq$k0">
-              <ref role="3cqZAo" node="2_q" resolve="tgs" />
+            <node concept="37vLTw" id="2AD" role="2Oq$k0">
+              <ref role="3cqZAo" node="2_S" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696095721" />
             </node>
-            <node concept="liA8E" id="2Ac" role="2OqNvi">
+            <node concept="liA8E" id="2AE" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine()" resolve="newLine" />
               <uo k="s:originTrace" v="n:6153771967696095721" />
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2_i" role="3cqZAp">
+        <node concept="3clFbH" id="2_K" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697715777" />
         </node>
-        <node concept="3clFbF" id="2_j" role="3cqZAp">
+        <node concept="3clFbF" id="2_L" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697709103" />
-          <node concept="2OqwBi" id="2Ad" role="3clFbG">
+          <node concept="2OqwBi" id="2AF" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967697709103" />
-            <node concept="2OqwBi" id="2Ae" role="2Oq$k0">
+            <node concept="2OqwBi" id="2AG" role="2Oq$k0">
               <uo k="s:originTrace" v="n:6153771967697709103" />
-              <node concept="2OqwBi" id="2Ag" role="2Oq$k0">
+              <node concept="2OqwBi" id="2AI" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967697709103" />
-                <node concept="37vLTw" id="2Ai" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_8" resolve="ctx" />
+                <node concept="37vLTw" id="2AK" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_A" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967697709103" />
                 </node>
-                <node concept="liA8E" id="2Aj" role="2OqNvi">
+                <node concept="liA8E" id="2AL" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getBuffer()" resolve="getBuffer" />
                   <uo k="s:originTrace" v="n:6153771967697709103" />
                 </node>
               </node>
-              <node concept="liA8E" id="2Ah" role="2OqNvi">
+              <node concept="liA8E" id="2AJ" role="2OqNvi">
                 <ref role="37wK5l" to="ao3:~TextBuffer.area()" resolve="area" />
                 <uo k="s:originTrace" v="n:6153771967697709103" />
               </node>
             </node>
-            <node concept="liA8E" id="2Af" role="2OqNvi">
+            <node concept="liA8E" id="2AH" role="2OqNvi">
               <ref role="37wK5l" to="ao3:~TextArea.increaseIndent()" resolve="increaseIndent" />
               <uo k="s:originTrace" v="n:6153771967697709103" />
             </node>
           </node>
         </node>
-        <node concept="2Gpval" id="2_k" role="3cqZAp">
+        <node concept="2Gpval" id="2_M" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696095758" />
-          <node concept="2GrKxI" id="2Ak" role="2Gsz3X">
+          <node concept="2GrKxI" id="2AM" role="2Gsz3X">
             <property role="TrG5h" value="entry" />
             <uo k="s:originTrace" v="n:6153771967696095731" />
           </node>
-          <node concept="3clFbS" id="2Al" role="2LFqv$">
+          <node concept="3clFbS" id="2AN" role="2LFqv$">
             <uo k="s:originTrace" v="n:6153771967696095757" />
-            <node concept="3clFbF" id="2An" role="3cqZAp">
+            <node concept="3clFbF" id="2AP" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967697711002" />
-              <node concept="2OqwBi" id="2Aq" role="3clFbG">
+              <node concept="2OqwBi" id="2AS" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967697711002" />
-                <node concept="37vLTw" id="2Ar" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_q" resolve="tgs" />
+                <node concept="37vLTw" id="2AT" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_S" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967697711002" />
                 </node>
-                <node concept="liA8E" id="2As" role="2OqNvi">
+                <node concept="liA8E" id="2AU" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.indent()" resolve="indent" />
                   <uo k="s:originTrace" v="n:6153771967697711002" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2Ao" role="3cqZAp">
+            <node concept="3clFbF" id="2AQ" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696095733" />
-              <node concept="2OqwBi" id="2At" role="3clFbG">
+              <node concept="2OqwBi" id="2AV" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696095733" />
-                <node concept="37vLTw" id="2Au" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_q" resolve="tgs" />
+                <node concept="37vLTw" id="2AW" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_S" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696095733" />
                 </node>
-                <node concept="liA8E" id="2Av" role="2OqNvi">
+                <node concept="liA8E" id="2AX" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
                   <uo k="s:originTrace" v="n:6153771967696095733" />
-                  <node concept="2GrUjf" id="2Aw" role="37wK5m">
-                    <ref role="2Gs0qQ" node="2Ak" resolve="entry" />
+                  <node concept="2GrUjf" id="2AY" role="37wK5m">
+                    <ref role="2Gs0qQ" node="2AM" resolve="entry" />
                     <uo k="s:originTrace" v="n:6153771967696095734" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2Ap" role="3cqZAp">
+            <node concept="3clFbF" id="2AR" role="3cqZAp">
               <uo k="s:originTrace" v="n:8939835910414677375" />
-              <node concept="2OqwBi" id="2Ax" role="3clFbG">
+              <node concept="2OqwBi" id="2AZ" role="3clFbG">
                 <uo k="s:originTrace" v="n:8939835910414677375" />
-                <node concept="37vLTw" id="2Ay" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_q" resolve="tgs" />
+                <node concept="37vLTw" id="2B0" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_S" resolve="tgs" />
                   <uo k="s:originTrace" v="n:8939835910414677375" />
                 </node>
-                <node concept="liA8E" id="2Az" role="2OqNvi">
+                <node concept="liA8E" id="2B1" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine()" resolve="newLine" />
                   <uo k="s:originTrace" v="n:8939835910414677375" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="2Am" role="2GsD0m">
+          <node concept="2OqwBi" id="2AO" role="2GsD0m">
             <uo k="s:originTrace" v="n:6153771967696095730" />
-            <node concept="2OqwBi" id="2A$" role="2Oq$k0">
+            <node concept="2OqwBi" id="2B2" role="2Oq$k0">
               <uo k="s:originTrace" v="n:6153771967696095729" />
-              <node concept="37vLTw" id="2AA" role="2Oq$k0">
-                <ref role="3cqZAo" node="2_8" resolve="ctx" />
+              <node concept="37vLTw" id="2B4" role="2Oq$k0">
+                <ref role="3cqZAo" node="2_A" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2AB" role="2OqNvi">
+              <node concept="liA8E" id="2B5" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="3Tsc0h" id="2A_" role="2OqNvi">
+            <node concept="3Tsc0h" id="2B3" role="2OqNvi">
               <ref role="3TtcxE" to="hcm8:2yYXHtl6Jyv" resolve="entries" />
               <uo k="s:originTrace" v="n:6153771967696095726" />
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="2_l" role="3cqZAp">
+        <node concept="3clFbJ" id="2_N" role="3cqZAp">
           <uo k="s:originTrace" v="n:8939835910413923349" />
-          <node concept="3clFbS" id="2AC" role="3clFbx">
+          <node concept="3clFbS" id="2B6" role="3clFbx">
             <uo k="s:originTrace" v="n:8939835910413923351" />
-            <node concept="3clFbF" id="2AE" role="3cqZAp">
+            <node concept="3clFbF" id="2B8" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967697712407" />
-              <node concept="2OqwBi" id="2AI" role="3clFbG">
+              <node concept="2OqwBi" id="2Bc" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967697712407" />
-                <node concept="37vLTw" id="2AJ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_q" resolve="tgs" />
+                <node concept="37vLTw" id="2Bd" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_S" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967697712407" />
                 </node>
-                <node concept="liA8E" id="2AK" role="2OqNvi">
+                <node concept="liA8E" id="2Be" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.indent()" resolve="indent" />
                   <uo k="s:originTrace" v="n:6153771967697712407" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2AF" role="3cqZAp">
+            <node concept="3clFbF" id="2B9" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696095762" />
-              <node concept="2OqwBi" id="2AL" role="3clFbG">
+              <node concept="2OqwBi" id="2Bf" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696095762" />
-                <node concept="37vLTw" id="2AM" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_q" resolve="tgs" />
+                <node concept="37vLTw" id="2Bg" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_S" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696095762" />
                 </node>
-                <node concept="liA8E" id="2AN" role="2OqNvi">
+                <node concept="liA8E" id="2Bh" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
                   <uo k="s:originTrace" v="n:6153771967696095762" />
-                  <node concept="Xl_RD" id="2AO" role="37wK5m">
+                  <node concept="Xl_RD" id="2Bi" role="37wK5m">
                     <property role="Xl_RC" value="else -&gt; " />
                     <uo k="s:originTrace" v="n:6153771967696095762" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2AG" role="3cqZAp">
+            <node concept="3clFbF" id="2Ba" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696095802" />
-              <node concept="2OqwBi" id="2AP" role="3clFbG">
+              <node concept="2OqwBi" id="2Bj" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696095802" />
-                <node concept="37vLTw" id="2AQ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_q" resolve="tgs" />
+                <node concept="37vLTw" id="2Bk" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_S" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696095802" />
                 </node>
-                <node concept="liA8E" id="2AR" role="2OqNvi">
+                <node concept="liA8E" id="2Bl" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
                   <uo k="s:originTrace" v="n:6153771967696095802" />
-                  <node concept="2OqwBi" id="2AS" role="37wK5m">
+                  <node concept="2OqwBi" id="2Bm" role="37wK5m">
                     <uo k="s:originTrace" v="n:6153771967696095803" />
-                    <node concept="2OqwBi" id="2AT" role="2Oq$k0">
+                    <node concept="2OqwBi" id="2Bn" role="2Oq$k0">
                       <uo k="s:originTrace" v="n:6153771967696095801" />
-                      <node concept="37vLTw" id="2AV" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2_8" resolve="ctx" />
+                      <node concept="37vLTw" id="2Bp" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2_A" resolve="ctx" />
                       </node>
-                      <node concept="liA8E" id="2AW" role="2OqNvi">
+                      <node concept="liA8E" id="2Bq" role="2OqNvi">
                         <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                       </node>
                     </node>
-                    <node concept="3TrEf2" id="2AU" role="2OqNvi">
+                    <node concept="3TrEf2" id="2Bo" role="2OqNvi">
                       <ref role="3Tt5mk" to="hcm8:1502VugFQHs" resolve="elseEntry" />
                       <uo k="s:originTrace" v="n:6153771967696095798" />
                     </node>
@@ -36737,101 +36833,101 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2AH" role="3cqZAp">
+            <node concept="3clFbF" id="2Bb" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696095813" />
-              <node concept="2OqwBi" id="2AX" role="3clFbG">
+              <node concept="2OqwBi" id="2Br" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696095813" />
-                <node concept="37vLTw" id="2AY" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_q" resolve="tgs" />
+                <node concept="37vLTw" id="2Bs" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_S" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696095813" />
                 </node>
-                <node concept="liA8E" id="2AZ" role="2OqNvi">
+                <node concept="liA8E" id="2Bt" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.newLine()" resolve="newLine" />
                   <uo k="s:originTrace" v="n:6153771967696095813" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="2AD" role="3clFbw">
+          <node concept="2OqwBi" id="2B7" role="3clFbw">
             <uo k="s:originTrace" v="n:8939835910413926647" />
-            <node concept="2OqwBi" id="2B0" role="2Oq$k0">
+            <node concept="2OqwBi" id="2Bu" role="2Oq$k0">
               <uo k="s:originTrace" v="n:8939835910413924385" />
-              <node concept="2OqwBi" id="2B2" role="2Oq$k0">
+              <node concept="2OqwBi" id="2Bw" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:8939835910413923619" />
-                <node concept="37vLTw" id="2B4" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_8" resolve="ctx" />
+                <node concept="37vLTw" id="2By" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_A" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2B5" role="2OqNvi">
+                <node concept="liA8E" id="2Bz" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrEf2" id="2B3" role="2OqNvi">
+              <node concept="3TrEf2" id="2Bx" role="2OqNvi">
                 <ref role="3Tt5mk" to="hcm8:1502VugFQHs" resolve="elseEntry" />
                 <uo k="s:originTrace" v="n:8939835910413925752" />
               </node>
             </node>
-            <node concept="3x8VRR" id="2B1" role="2OqNvi">
+            <node concept="3x8VRR" id="2Bv" role="2OqNvi">
               <uo k="s:originTrace" v="n:8939835910413929682" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2_m" role="3cqZAp">
+        <node concept="3clFbF" id="2_O" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697709103" />
-          <node concept="2OqwBi" id="2B6" role="3clFbG">
+          <node concept="2OqwBi" id="2B$" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967697709103" />
-            <node concept="2OqwBi" id="2B7" role="2Oq$k0">
+            <node concept="2OqwBi" id="2B_" role="2Oq$k0">
               <uo k="s:originTrace" v="n:6153771967697709103" />
-              <node concept="2OqwBi" id="2B9" role="2Oq$k0">
+              <node concept="2OqwBi" id="2BB" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967697709103" />
-                <node concept="37vLTw" id="2Bb" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2_8" resolve="ctx" />
+                <node concept="37vLTw" id="2BD" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2_A" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967697709103" />
                 </node>
-                <node concept="liA8E" id="2Bc" role="2OqNvi">
+                <node concept="liA8E" id="2BE" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getBuffer()" resolve="getBuffer" />
                   <uo k="s:originTrace" v="n:6153771967697709103" />
                 </node>
               </node>
-              <node concept="liA8E" id="2Ba" role="2OqNvi">
+              <node concept="liA8E" id="2BC" role="2OqNvi">
                 <ref role="37wK5l" to="ao3:~TextBuffer.area()" resolve="area" />
                 <uo k="s:originTrace" v="n:6153771967697709103" />
               </node>
             </node>
-            <node concept="liA8E" id="2B8" role="2OqNvi">
+            <node concept="liA8E" id="2BA" role="2OqNvi">
               <ref role="37wK5l" to="ao3:~TextArea.decreaseIndent()" resolve="decreaseIndent" />
               <uo k="s:originTrace" v="n:6153771967697709103" />
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2_n" role="3cqZAp">
+        <node concept="3clFbH" id="2_P" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697716846" />
         </node>
-        <node concept="3clFbF" id="2_o" role="3cqZAp">
+        <node concept="3clFbF" id="2_Q" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697715346" />
-          <node concept="2OqwBi" id="2Bd" role="3clFbG">
+          <node concept="2OqwBi" id="2BF" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967697715346" />
-            <node concept="37vLTw" id="2Be" role="2Oq$k0">
-              <ref role="3cqZAo" node="2_q" resolve="tgs" />
+            <node concept="37vLTw" id="2BG" role="2Oq$k0">
+              <ref role="3cqZAo" node="2_S" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967697715346" />
             </node>
-            <node concept="liA8E" id="2Bf" role="2OqNvi">
+            <node concept="liA8E" id="2BH" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.indent()" resolve="indent" />
               <uo k="s:originTrace" v="n:6153771967697715346" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2_p" role="3cqZAp">
+        <node concept="3clFbF" id="2_R" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696095819" />
-          <node concept="2OqwBi" id="2Bg" role="3clFbG">
+          <node concept="2OqwBi" id="2BI" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696095819" />
-            <node concept="37vLTw" id="2Bh" role="2Oq$k0">
-              <ref role="3cqZAo" node="2_q" resolve="tgs" />
+            <node concept="37vLTw" id="2BJ" role="2Oq$k0">
+              <ref role="3cqZAo" node="2_S" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696095819" />
             </node>
-            <node concept="liA8E" id="2Bi" role="2OqNvi">
+            <node concept="liA8E" id="2BK" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696095819" />
-              <node concept="Xl_RD" id="2Bj" role="37wK5m">
+              <node concept="Xl_RD" id="2BL" role="37wK5m">
                 <property role="Xl_RC" value="}" />
                 <uo k="s:originTrace" v="n:6153771967696095819" />
               </node>
@@ -36839,94 +36935,94 @@
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2_8" role="3clF46">
+      <node concept="37vLTG" id="2_A" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696095494" />
-        <node concept="3uibUv" id="2Bk" role="1tU5fm">
+        <node concept="3uibUv" id="2BM" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696095494" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2_9" role="2AJF6D">
+      <node concept="2AHcQZ" id="2_B" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696095494" />
       </node>
     </node>
   </node>
-  <node concept="312cEu" id="2Bl">
+  <node concept="312cEu" id="2BN">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="WhileStatement_TextGen" />
     <property role="3GE5qa" value="statement.loop" />
     <uo k="s:originTrace" v="n:6153771967696094658" />
-    <node concept="3Tm1VV" id="2Bm" role="1B3o_S">
+    <node concept="3Tm1VV" id="2BO" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696094658" />
     </node>
-    <node concept="3uibUv" id="2Bn" role="1zkMxy">
+    <node concept="3uibUv" id="2BP" role="1zkMxy">
       <ref role="3uigEE" to="yfwt:~TextGenDescriptorBase" resolve="TextGenDescriptorBase" />
       <uo k="s:originTrace" v="n:6153771967696094658" />
     </node>
-    <node concept="3clFb_" id="2Bo" role="jymVt">
+    <node concept="3clFb_" id="2BQ" role="jymVt">
       <property role="TrG5h" value="generateText" />
       <uo k="s:originTrace" v="n:6153771967696094658" />
-      <node concept="3cqZAl" id="2Bp" role="3clF45">
+      <node concept="3cqZAl" id="2BR" role="3clF45">
         <uo k="s:originTrace" v="n:6153771967696094658" />
       </node>
-      <node concept="3Tm1VV" id="2Bq" role="1B3o_S">
+      <node concept="3Tm1VV" id="2BS" role="1B3o_S">
         <uo k="s:originTrace" v="n:6153771967696094658" />
       </node>
-      <node concept="3clFbS" id="2Br" role="3clF47">
+      <node concept="3clFbS" id="2BT" role="3clF47">
         <uo k="s:originTrace" v="n:6153771967696094658" />
-        <node concept="3cpWs8" id="2Bu" role="3cqZAp">
+        <node concept="3cpWs8" id="2BW" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696094658" />
-          <node concept="3cpWsn" id="2B_" role="3cpWs9">
+          <node concept="3cpWsn" id="2C3" role="3cpWs9">
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="tgs" />
             <uo k="s:originTrace" v="n:6153771967696094658" />
-            <node concept="3uibUv" id="2BA" role="1tU5fm">
+            <node concept="3uibUv" id="2C4" role="1tU5fm">
               <ref role="3uigEE" to="kpbf:~TextGenSupport" resolve="TextGenSupport" />
               <uo k="s:originTrace" v="n:6153771967696094658" />
             </node>
-            <node concept="2ShNRf" id="2BB" role="33vP2m">
+            <node concept="2ShNRf" id="2C5" role="33vP2m">
               <uo k="s:originTrace" v="n:6153771967696094658" />
-              <node concept="1pGfFk" id="2BC" role="2ShVmc">
+              <node concept="1pGfFk" id="2C6" role="2ShVmc">
                 <ref role="37wK5l" to="kpbf:~TextGenSupport.&lt;init&gt;(jetbrains.mps.text.rt.TextGenContext)" resolve="TextGenSupport" />
                 <uo k="s:originTrace" v="n:6153771967696094658" />
-                <node concept="37vLTw" id="2BD" role="37wK5m">
-                  <ref role="3cqZAo" node="2Bs" resolve="ctx" />
+                <node concept="37vLTw" id="2C7" role="37wK5m">
+                  <ref role="3cqZAo" node="2BU" resolve="ctx" />
                   <uo k="s:originTrace" v="n:6153771967696094658" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="2Bv" role="3cqZAp">
+        <node concept="3clFbJ" id="2BX" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696094719" />
-          <node concept="3clFbS" id="2BE" role="3clFbx">
+          <node concept="3clFbS" id="2C8" role="3clFbx">
             <uo k="s:originTrace" v="n:6153771967696094718" />
-            <node concept="3clFbF" id="2BG" role="3cqZAp">
+            <node concept="3clFbF" id="2Ca" role="3cqZAp">
               <uo k="s:originTrace" v="n:6153771967696094673" />
-              <node concept="2OqwBi" id="2BH" role="3clFbG">
+              <node concept="2OqwBi" id="2Cb" role="3clFbG">
                 <uo k="s:originTrace" v="n:6153771967696094673" />
-                <node concept="37vLTw" id="2BI" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2B_" resolve="tgs" />
+                <node concept="37vLTw" id="2Cc" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2C3" resolve="tgs" />
                   <uo k="s:originTrace" v="n:6153771967696094673" />
                 </node>
-                <node concept="liA8E" id="2BJ" role="2OqNvi">
+                <node concept="liA8E" id="2Cd" role="2OqNvi">
                   <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
                   <uo k="s:originTrace" v="n:6153771967696094673" />
-                  <node concept="2OqwBi" id="2BK" role="37wK5m">
+                  <node concept="2OqwBi" id="2Ce" role="37wK5m">
                     <uo k="s:originTrace" v="n:6153771967696094674" />
-                    <node concept="2OqwBi" id="2BL" role="2Oq$k0">
+                    <node concept="2OqwBi" id="2Cf" role="2Oq$k0">
                       <uo k="s:originTrace" v="n:6153771967696094672" />
-                      <node concept="37vLTw" id="2BN" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2Bs" resolve="ctx" />
+                      <node concept="37vLTw" id="2Ch" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2BU" resolve="ctx" />
                       </node>
-                      <node concept="liA8E" id="2BO" role="2OqNvi">
+                      <node concept="liA8E" id="2Ci" role="2OqNvi">
                         <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                       </node>
                     </node>
-                    <node concept="3TrEf2" id="2BM" role="2OqNvi">
+                    <node concept="3TrEf2" id="2Cg" role="2OqNvi">
                       <ref role="3Tt5mk" to="hcm8:6cg9X74hA$J" resolve="label" />
                       <uo k="s:originTrace" v="n:6153771967696094669" />
                     </node>
@@ -36935,73 +37031,73 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="2BF" role="3clFbw">
+          <node concept="2OqwBi" id="2C9" role="3clFbw">
             <uo k="s:originTrace" v="n:6153771967696094688" />
-            <node concept="2OqwBi" id="2BP" role="2Oq$k0">
+            <node concept="2OqwBi" id="2Cj" role="2Oq$k0">
               <uo k="s:originTrace" v="n:6153771967696094689" />
-              <node concept="2OqwBi" id="2BR" role="2Oq$k0">
+              <node concept="2OqwBi" id="2Cl" role="2Oq$k0">
                 <uo k="s:originTrace" v="n:6153771967696094693" />
-                <node concept="37vLTw" id="2BT" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2Bs" resolve="ctx" />
+                <node concept="37vLTw" id="2Cn" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2BU" resolve="ctx" />
                 </node>
-                <node concept="liA8E" id="2BU" role="2OqNvi">
+                <node concept="liA8E" id="2Co" role="2OqNvi">
                   <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                 </node>
               </node>
-              <node concept="3TrEf2" id="2BS" role="2OqNvi">
+              <node concept="3TrEf2" id="2Cm" role="2OqNvi">
                 <ref role="3Tt5mk" to="hcm8:6cg9X74hA$J" resolve="label" />
                 <uo k="s:originTrace" v="n:6153771967696094691" />
               </node>
             </node>
-            <node concept="3x8VRR" id="2BQ" role="2OqNvi">
+            <node concept="3x8VRR" id="2Ck" role="2OqNvi">
               <uo k="s:originTrace" v="n:6153771967696094692" />
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2Bw" role="3cqZAp">
+        <node concept="3clFbH" id="2BY" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967697718109" />
         </node>
-        <node concept="3clFbF" id="2Bx" role="3cqZAp">
+        <node concept="3clFbF" id="2BZ" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696094747" />
-          <node concept="2OqwBi" id="2BV" role="3clFbG">
+          <node concept="2OqwBi" id="2Cp" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696094747" />
-            <node concept="37vLTw" id="2BW" role="2Oq$k0">
-              <ref role="3cqZAo" node="2B_" resolve="tgs" />
+            <node concept="37vLTw" id="2Cq" role="2Oq$k0">
+              <ref role="3cqZAo" node="2C3" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696094747" />
             </node>
-            <node concept="liA8E" id="2BX" role="2OqNvi">
+            <node concept="liA8E" id="2Cr" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696094747" />
-              <node concept="Xl_RD" id="2BY" role="37wK5m">
+              <node concept="Xl_RD" id="2Cs" role="37wK5m">
                 <property role="Xl_RC" value="while(" />
                 <uo k="s:originTrace" v="n:6153771967696094747" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2By" role="3cqZAp">
+        <node concept="3clFbF" id="2C0" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696094767" />
-          <node concept="2OqwBi" id="2BZ" role="3clFbG">
+          <node concept="2OqwBi" id="2Ct" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696094767" />
-            <node concept="37vLTw" id="2C0" role="2Oq$k0">
-              <ref role="3cqZAo" node="2B_" resolve="tgs" />
+            <node concept="37vLTw" id="2Cu" role="2Oq$k0">
+              <ref role="3cqZAo" node="2C3" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696094767" />
             </node>
-            <node concept="liA8E" id="2C1" role="2OqNvi">
+            <node concept="liA8E" id="2Cv" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.appendNode(org.jetbrains.mps.openapi.model.SNode)" resolve="appendNode" />
               <uo k="s:originTrace" v="n:6153771967696094767" />
-              <node concept="2OqwBi" id="2C2" role="37wK5m">
+              <node concept="2OqwBi" id="2Cw" role="37wK5m">
                 <uo k="s:originTrace" v="n:6153771967696094768" />
-                <node concept="2OqwBi" id="2C3" role="2Oq$k0">
+                <node concept="2OqwBi" id="2Cx" role="2Oq$k0">
                   <uo k="s:originTrace" v="n:6153771967696094766" />
-                  <node concept="37vLTw" id="2C5" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2Bs" resolve="ctx" />
+                  <node concept="37vLTw" id="2Cz" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2BU" resolve="ctx" />
                   </node>
-                  <node concept="liA8E" id="2C6" role="2OqNvi">
+                  <node concept="liA8E" id="2C$" role="2OqNvi">
                     <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
                   </node>
                 </node>
-                <node concept="3TrEf2" id="2C4" role="2OqNvi">
+                <node concept="3TrEf2" id="2Cy" role="2OqNvi">
                   <ref role="3Tt5mk" to="hcm8:2yYXHtl6Jt6" resolve="condition" />
                   <uo k="s:originTrace" v="n:6153771967696094763" />
                 </node>
@@ -37009,60 +37105,60 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2Bz" role="3cqZAp">
+        <node concept="3clFbF" id="2C1" role="3cqZAp">
           <uo k="s:originTrace" v="n:6153771967696094784" />
-          <node concept="2OqwBi" id="2C7" role="3clFbG">
+          <node concept="2OqwBi" id="2C_" role="3clFbG">
             <uo k="s:originTrace" v="n:6153771967696094784" />
-            <node concept="37vLTw" id="2C8" role="2Oq$k0">
-              <ref role="3cqZAo" node="2B_" resolve="tgs" />
+            <node concept="37vLTw" id="2CA" role="2Oq$k0">
+              <ref role="3cqZAo" node="2C3" resolve="tgs" />
               <uo k="s:originTrace" v="n:6153771967696094784" />
             </node>
-            <node concept="liA8E" id="2C9" role="2OqNvi">
+            <node concept="liA8E" id="2CB" role="2OqNvi">
               <ref role="37wK5l" to="kpbf:~TextGenSupport.append(java.lang.CharSequence)" resolve="append" />
               <uo k="s:originTrace" v="n:6153771967696094784" />
-              <node concept="Xl_RD" id="2Ca" role="37wK5m">
+              <node concept="Xl_RD" id="2CC" role="37wK5m">
                 <property role="Xl_RC" value=") " />
                 <uo k="s:originTrace" v="n:6153771967696094784" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2B$" role="3cqZAp">
+        <node concept="3clFbF" id="2C2" role="3cqZAp">
           <uo k="s:originTrace" v="n:7208671122130686085" />
-          <node concept="1niqFM" id="2Cb" role="3clFbG">
+          <node concept="1niqFM" id="2CD" role="3clFbG">
             <property role="1npL6y" value="controlStructureStatements" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:7208671122130686085" />
-            <node concept="3uibUv" id="2Cc" role="32Mpfj">
+            <node concept="3uibUv" id="2CE" role="32Mpfj">
               <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               <uo k="s:originTrace" v="n:7208671122130686085" />
             </node>
-            <node concept="2OqwBi" id="2Cd" role="2U24H$">
+            <node concept="2OqwBi" id="2CF" role="2U24H$">
               <uo k="s:originTrace" v="n:7208671122130686672" />
-              <node concept="37vLTw" id="2Cf" role="2Oq$k0">
-                <ref role="3cqZAo" node="2Bs" resolve="ctx" />
+              <node concept="37vLTw" id="2CH" role="2Oq$k0">
+                <ref role="3cqZAo" node="2BU" resolve="ctx" />
               </node>
-              <node concept="liA8E" id="2Cg" role="2OqNvi">
+              <node concept="liA8E" id="2CI" role="2OqNvi">
                 <ref role="37wK5l" to="yfwt:~TextGenContext.getPrimaryInput()" resolve="getPrimaryInput" />
               </node>
             </node>
-            <node concept="37vLTw" id="2Ce" role="2U24H$">
-              <ref role="3cqZAo" node="2Bs" resolve="ctx" />
+            <node concept="37vLTw" id="2CG" role="2U24H$">
+              <ref role="3cqZAo" node="2BU" resolve="ctx" />
               <uo k="s:originTrace" v="n:7208671122130686085" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="37vLTG" id="2Bs" role="3clF46">
+      <node concept="37vLTG" id="2BU" role="3clF46">
         <property role="TrG5h" value="ctx" />
         <property role="3TUv4t" value="true" />
         <uo k="s:originTrace" v="n:6153771967696094658" />
-        <node concept="3uibUv" id="2Ch" role="1tU5fm">
+        <node concept="3uibUv" id="2CJ" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenContext" resolve="TextGenContext" />
           <uo k="s:originTrace" v="n:6153771967696094658" />
         </node>
       </node>
-      <node concept="2AHcQZ" id="2Bt" role="2AJF6D">
+      <node concept="2AHcQZ" id="2BV" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         <uo k="s:originTrace" v="n:6153771967696094658" />
       </node>

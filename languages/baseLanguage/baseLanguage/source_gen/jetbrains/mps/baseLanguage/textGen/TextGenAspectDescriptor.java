@@ -13,7 +13,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.text.TextUnit;
 import jetbrains.mps.text.impl.BufferLayoutBuilder;
-import jetbrains.mps.text.impl.RegularTextUnit;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -342,25 +341,25 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
       if (root.getConcept().equals(CONCEPTS.Annotation$he)) {
         String fname = getFileName_Annotation(root);
         String ext = getFileExtension_Annotation(root);
-        outline.registerTextUnit(createTextUnit0((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit0(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
       if (root.getConcept().equals(CONCEPTS.ClassConcept$bK)) {
         String fname = getFileName_ClassConcept(root);
         String ext = getFileExtension_ClassConcept(root);
-        outline.registerTextUnit(createTextUnit1((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit1(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
       if (root.getConcept().equals(CONCEPTS.Interface$db)) {
         String fname = getFileName_Interface(root);
         String ext = getFileExtension_Interface(root);
-        outline.registerTextUnit(createTextUnit2((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit2(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
       if (root.getConcept().equals(CONCEPTS.EnumClass$Vk)) {
         String fname = getFileName_EnumClass(root);
         String ext = getFileExtension_EnumClass(root);
-        outline.registerTextUnit(createTextUnit3((ext == null ? fname : (fname + '.' + ext)), root));
+        outline.registerTextUnit(createTextUnit3(outline, (ext == null ? fname : (fname + '.' + ext)), root));
         continue;
       }
     }
@@ -413,53 +412,57 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     }
     return null;
   }
-  private static TextUnit createTextUnit0(String filename, SNode node) {
+  private static TextUnit createTextUnit0(TextGenModelOutline outline, String filename, SNode node) {
     BufferLayoutBuilder lb = new BufferLayoutBuilder();
     lb.add("HEADER");
     lb.add("IMPORTS");
     lb.add("SEPARATOR");
     lb.add("BODY");
     lb.activate("BODY");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, getPath_Annotation(node), null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
-    return rv;
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.path(getPath_Annotation(node));
+    rv.layout(lb.create());
+    rv.with("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
+    return rv.build();
   }
-  private static TextUnit createTextUnit1(String filename, SNode node) {
+  private static TextUnit createTextUnit1(TextGenModelOutline outline, String filename, SNode node) {
     BufferLayoutBuilder lb = new BufferLayoutBuilder();
     lb.add("HEADER");
     lb.add("IMPORTS");
     lb.add("SEPARATOR");
     lb.add("BODY");
     lb.activate("BODY");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, getPath_ClassConcept(node), null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
-    return rv;
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.path(getPath_ClassConcept(node));
+    rv.layout(lb.create());
+    rv.with("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
+    return rv.build();
   }
-  private static TextUnit createTextUnit2(String filename, SNode node) {
+  private static TextUnit createTextUnit2(TextGenModelOutline outline, String filename, SNode node) {
     BufferLayoutBuilder lb = new BufferLayoutBuilder();
     lb.add("HEADER");
     lb.add("IMPORTS");
     lb.add("SEPARATOR");
     lb.add("BODY");
     lb.activate("BODY");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, getPath_Interface(node), null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
-    return rv;
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.path(getPath_Interface(node));
+    rv.layout(lb.create());
+    rv.with("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
+    return rv.build();
   }
-  private static TextUnit createTextUnit3(String filename, SNode node) {
+  private static TextUnit createTextUnit3(TextGenModelOutline outline, String filename, SNode node) {
     BufferLayoutBuilder lb = new BufferLayoutBuilder();
     lb.add("HEADER");
     lb.add("IMPORTS");
     lb.add("SEPARATOR");
     lb.add("BODY");
     lb.activate("BODY");
-    RegularTextUnit rv = new RegularTextUnit(node, filename, getPath_EnumClass(node), null);
-    rv.setBufferLayout(lb.create());
-    rv.addContextObject("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
-    return rv;
+    TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.path(getPath_EnumClass(node));
+    rv.layout(lb.create());
+    rv.with("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
+    return rv.build();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
