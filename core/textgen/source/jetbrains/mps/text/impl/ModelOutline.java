@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.text.impl;
 
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.text.TextUnit;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.annotations.NotNull;
@@ -32,15 +33,22 @@ import java.util.List;
 public final class ModelOutline implements TextGenModelOutline {
 
   private final SModel myModel;
+  private final ComponentHost myPlatform;
   private final List<TextUnit> myTextUnits = new ArrayList<>();
 
-  public ModelOutline(@NotNull SModel model) {
+  public ModelOutline(@NotNull SModel model, @NotNull ComponentHost platform) {
     myModel = model;
+    myPlatform = platform;
   }
   @NotNull
   @Override
   public SModel getModel() {
     return myModel;
+  }
+
+  @Override
+  public ComponentHost getPlatform() {
+    return myPlatform;
   }
 
   @Override

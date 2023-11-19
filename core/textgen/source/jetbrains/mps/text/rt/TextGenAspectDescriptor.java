@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,4 +28,11 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 public interface TextGenAspectDescriptor extends ILanguageAspect {
   @Nullable
   TextGenDescriptor getDescriptor(@NotNull SAbstractConcept concept);
+
+  /**
+   * Gives control over TextUnits created for the model
+   */
+  default void breakdownToUnits(@NotNull TextGenModelOutline modelOutline) {
+    // no-op by default, descriptors generated with MPS 3.3 override, if any root textgen present
+  }
 }

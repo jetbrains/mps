@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.text.rt;
 
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.text.TextUnit;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -37,6 +38,12 @@ public interface TextGenModelOutline {
    */
   @NotNull
   SModel getModel();
+
+  /**
+   * Gives access to CoreComponents that may provide configuration options
+   * @since 2023.3
+   */
+  ComponentHost getPlatform();
 
   /**
    * mechanism to tell what unit to generate

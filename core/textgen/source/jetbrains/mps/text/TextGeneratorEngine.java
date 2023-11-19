@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.text;
 
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.Message;
@@ -29,10 +31,10 @@ import jetbrains.mps.text.TextUnit.Status;
 import jetbrains.mps.text.impl.ModelOutline;
 import jetbrains.mps.text.impl.RegularTextUnit;
 import jetbrains.mps.text.impl.TextGenRegistry;
-import jetbrains.mps.text.rt.TextGenAspectBase;
 import jetbrains.mps.text.rt.TextGenAspectDescriptor;
 import jetbrains.mps.util.NamedThreadFactory;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -59,9 +61,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class TextGeneratorEngine {
   private final ExecutorService myExecutor;
   private final IMessageHandler myMessages;
+  private final ComponentHost myPlatform;
 
   public TextGeneratorEngine(@NotNull IMessageHandler messageHandler) {
+    this(messageHandler, new ComponentHost() {
+      @Override
+      public <T extends CoreComponent> @Nullable T findComponent(@NotNull Class<T> componentClass) {
+        if (componentClass == TextGenRegistry.class) {
+          return componentClass.cast(TextGenRegistry.getInstance());
+        }
+        return null;
+      }
+    });
+  }
+
+  public TextGeneratorEngine(@NotNull IMessageHandler messageHandler, ComponentHost mpsPlatform) {
     myMessages = messageHandler;
+    myPlatform = mpsPlatform;
     // availableProcessors()*2 ?
     myExecutor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors(), new NamedThreadFactory("textgen-thread-"));
   }
@@ -93,8 +109,8 @@ public final class TextGeneratorEngine {
    * @param model model to produce text for
    */
   public void schedule(@NotNull final SModel model, @NotNull final BlockingQueue<TextGenResult> resultQueue, String generationTarget) {
-    final List<TextUnit> textUnits = breakdownToUnits(model);
-    if (textUnits.size() == 0) {
+    final List<TextUnit> textUnits = breakdownToUnits(model, myPlatform);
+    if (textUnits.isEmpty()) {
       resultQueue.offer(new TextGenResult(model, textUnits, generationTarget));
     }
     final ModelAccess modelAccess = model.getRepository() != null ? model.getRepository().getModelAccess() : null;
@@ -130,13 +146,11 @@ public final class TextGeneratorEngine {
     }
   }
 
-  private static List<TextUnit> breakdownToUnits(@NotNull SModel model) {
+  private static List<TextUnit> breakdownToUnits(@NotNull SModel model, @NotNull ComponentHost platform) {
     Collection<TextGenAspectDescriptor> tgad = TextGenRegistry.getInstance().getAspects(model);
-    ModelOutline rv = new ModelOutline(model);
+    ModelOutline rv = new ModelOutline(model, platform);
     for (TextGenAspectDescriptor d : tgad) {
-      if (d instanceof TextGenAspectBase) {
-        ((TextGenAspectBase) d).breakdownToUnits(rv);
-      }
+      d.breakdownToUnits(rv);
     }
     return rv.getUnits();
   }
@@ -145,7 +159,7 @@ public final class TextGeneratorEngine {
    * PROVISIONAL API INTENDED TO REPLACE TextGen.generateText(). DO NOT USE OUTSIDE OF MPS.
    * FIXME need better API to deal with outputs other than text
    * Assumes at least read access to node's repository
-   * @param node
+   * @param node starting input
    * @return either character data of the outcome, or an error message
    */
   public static String generateText(SNode node) {
@@ -156,7 +170,16 @@ public final class TextGeneratorEngine {
     final SnapshotModelData modelData = new SnapshotModelData(new SModelReference(null, SModelId.generate(), "textgen"));
     modelData.addRootNode(CopyUtil.copyAndPreserveId(node));
     TrivialModelDescriptor model = new TrivialModelDescriptor(modelData);
-    final List<TextUnit> textUnits = breakdownToUnits(model);
+    // FIXME needs access to ComponentHost
+    final List<TextUnit> textUnits = breakdownToUnits(model, new ComponentHost() {
+      @Override
+      public <T extends CoreComponent> @Nullable T findComponent(@NotNull Class<T> componentClass) {
+        if (componentClass == TextGenRegistry.class) {
+          return componentClass.cast(TextGenRegistry.getInstance());
+        }
+        return null;
+      }
+    });
     final TextUnit textUnit;
     if (textUnits.size() == 1) {
       textUnit = textUnits.get(0);
