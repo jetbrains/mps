@@ -85,6 +85,9 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
+      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
+        <property id="1068580123138" name="value" index="3clFbU" />
+      </concept>
       <concept id="1068580123140" name="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" flags="ig" index="3clFbW" />
       <concept id="1068581242875" name="jetbrains.mps.baseLanguage.structure.PlusExpression" flags="nn" index="3cpWs3" />
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
@@ -964,14 +967,23 @@
       <property role="TrG5h" value="createTextUnit0" />
       <node concept="3clFbS" id="3V" role="3clF47">
         <node concept="3cpWs8" id="41" role="3cqZAp">
-          <node concept="3cpWsn" id="4b" role="3cpWs9">
-            <property role="TrG5h" value="lb" />
-            <node concept="3uibUv" id="4c" role="1tU5fm">
-              <ref role="3uigEE" to="kpbf:~BufferLayoutBuilder" resolve="BufferLayoutBuilder" />
+          <node concept="3cpWsn" id="48" role="3cpWs9">
+            <property role="TrG5h" value="rv" />
+            <node concept="3uibUv" id="49" role="1tU5fm">
+              <ref role="3uigEE" to="yfwt:~TextGenModelOutline$UnitBuilder" resolve="TextGenModelOutline.UnitBuilder" />
             </node>
-            <node concept="2ShNRf" id="4d" role="33vP2m">
-              <node concept="1pGfFk" id="4e" role="2ShVmc">
-                <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.&lt;init&gt;()" resolve="BufferLayoutBuilder" />
+            <node concept="2OqwBi" id="4a" role="33vP2m">
+              <node concept="37vLTw" id="4b" role="2Oq$k0">
+                <ref role="3cqZAo" node="3Y" resolve="outline" />
+              </node>
+              <node concept="liA8E" id="4c" role="2OqNvi">
+                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.unitBuilder(java.lang.String,org.jetbrains.mps.openapi.model.SNode)" resolve="unitBuilder" />
+                <node concept="37vLTw" id="4d" role="37wK5m">
+                  <ref role="3cqZAo" node="3Z" resolve="filename" />
+                </node>
+                <node concept="37vLTw" id="4e" role="37wK5m">
+                  <ref role="3cqZAo" node="40" resolve="node" />
+                </node>
               </node>
             </node>
           </node>
@@ -979,134 +991,87 @@
         <node concept="3clFbF" id="42" role="3cqZAp">
           <node concept="2OqwBi" id="4f" role="3clFbG">
             <node concept="37vLTw" id="4g" role="2Oq$k0">
-              <ref role="3cqZAo" node="4b" resolve="lb" />
+              <ref role="3cqZAo" node="48" resolve="rv" />
             </node>
             <node concept="liA8E" id="4h" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(java.lang.Object,boolean)" resolve="layout" />
               <node concept="Xl_RD" id="4i" role="37wK5m">
                 <property role="Xl_RC" value="HEADER" />
               </node>
+              <node concept="3clFbT" id="4j" role="37wK5m" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="43" role="3cqZAp">
-          <node concept="2OqwBi" id="4j" role="3clFbG">
-            <node concept="37vLTw" id="4k" role="2Oq$k0">
-              <ref role="3cqZAo" node="4b" resolve="lb" />
+          <node concept="2OqwBi" id="4k" role="3clFbG">
+            <node concept="37vLTw" id="4l" role="2Oq$k0">
+              <ref role="3cqZAo" node="48" resolve="rv" />
             </node>
-            <node concept="liA8E" id="4l" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="4m" role="37wK5m">
+            <node concept="liA8E" id="4m" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(java.lang.Object,boolean)" resolve="layout" />
+              <node concept="Xl_RD" id="4n" role="37wK5m">
                 <property role="Xl_RC" value="IMPORTS" />
               </node>
+              <node concept="3clFbT" id="4o" role="37wK5m" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="44" role="3cqZAp">
-          <node concept="2OqwBi" id="4n" role="3clFbG">
-            <node concept="37vLTw" id="4o" role="2Oq$k0">
-              <ref role="3cqZAo" node="4b" resolve="lb" />
+          <node concept="2OqwBi" id="4p" role="3clFbG">
+            <node concept="37vLTw" id="4q" role="2Oq$k0">
+              <ref role="3cqZAo" node="48" resolve="rv" />
             </node>
-            <node concept="liA8E" id="4p" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="4q" role="37wK5m">
+            <node concept="liA8E" id="4r" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(java.lang.Object,boolean)" resolve="layout" />
+              <node concept="Xl_RD" id="4s" role="37wK5m">
                 <property role="Xl_RC" value="SEPARATOR" />
               </node>
+              <node concept="3clFbT" id="4t" role="37wK5m" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="45" role="3cqZAp">
-          <node concept="2OqwBi" id="4r" role="3clFbG">
-            <node concept="37vLTw" id="4s" role="2Oq$k0">
-              <ref role="3cqZAo" node="4b" resolve="lb" />
+          <node concept="2OqwBi" id="4u" role="3clFbG">
+            <node concept="37vLTw" id="4v" role="2Oq$k0">
+              <ref role="3cqZAo" node="48" resolve="rv" />
             </node>
-            <node concept="liA8E" id="4t" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.add(java.lang.Object)" resolve="add" />
-              <node concept="Xl_RD" id="4u" role="37wK5m">
+            <node concept="liA8E" id="4w" role="2OqNvi">
+              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(java.lang.Object,boolean)" resolve="layout" />
+              <node concept="Xl_RD" id="4x" role="37wK5m">
                 <property role="Xl_RC" value="BODY" />
+              </node>
+              <node concept="3clFbT" id="4y" role="37wK5m">
+                <property role="3clFbU" value="true" />
               </node>
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="46" role="3cqZAp">
-          <node concept="2OqwBi" id="4v" role="3clFbG">
-            <node concept="37vLTw" id="4w" role="2Oq$k0">
-              <ref role="3cqZAo" node="4b" resolve="lb" />
+          <node concept="2OqwBi" id="4z" role="3clFbG">
+            <node concept="37vLTw" id="4$" role="2Oq$k0">
+              <ref role="3cqZAo" node="48" resolve="rv" />
             </node>
-            <node concept="liA8E" id="4x" role="2OqNvi">
-              <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.activate(java.lang.Object)" resolve="activate" />
-              <node concept="Xl_RD" id="4y" role="37wK5m">
-                <property role="Xl_RC" value="BODY" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="47" role="3cqZAp">
-          <node concept="3cpWsn" id="4z" role="3cpWs9">
-            <property role="TrG5h" value="rv" />
-            <node concept="3uibUv" id="4$" role="1tU5fm">
-              <ref role="3uigEE" to="yfwt:~TextGenModelOutline$UnitBuilder" resolve="TextGenModelOutline.UnitBuilder" />
-            </node>
-            <node concept="2OqwBi" id="4_" role="33vP2m">
-              <node concept="37vLTw" id="4A" role="2Oq$k0">
-                <ref role="3cqZAo" node="3Y" resolve="outline" />
-              </node>
-              <node concept="liA8E" id="4B" role="2OqNvi">
-                <ref role="37wK5l" to="yfwt:~TextGenModelOutline.unitBuilder(java.lang.String,org.jetbrains.mps.openapi.model.SNode)" resolve="unitBuilder" />
-                <node concept="37vLTw" id="4C" role="37wK5m">
-                  <ref role="3cqZAo" node="3Z" resolve="filename" />
-                </node>
-                <node concept="37vLTw" id="4D" role="37wK5m">
-                  <ref role="3cqZAo" node="40" resolve="node" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="48" role="3cqZAp">
-          <node concept="2OqwBi" id="4E" role="3clFbG">
-            <node concept="37vLTw" id="4F" role="2Oq$k0">
-              <ref role="3cqZAo" node="4z" resolve="rv" />
-            </node>
-            <node concept="liA8E" id="4G" role="2OqNvi">
-              <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.layout(jetbrains.mps.text.impl.BufferLayoutConfiguration)" resolve="layout" />
-              <node concept="2OqwBi" id="4H" role="37wK5m">
-                <node concept="37vLTw" id="4I" role="2Oq$k0">
-                  <ref role="3cqZAo" node="4b" resolve="lb" />
-                </node>
-                <node concept="liA8E" id="4J" role="2OqNvi">
-                  <ref role="37wK5l" to="kpbf:~BufferLayoutBuilder.create()" resolve="create" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="49" role="3cqZAp">
-          <node concept="2OqwBi" id="4K" role="3clFbG">
-            <node concept="37vLTw" id="4L" role="2Oq$k0">
-              <ref role="3cqZAo" node="4z" resolve="rv" />
-            </node>
-            <node concept="liA8E" id="4M" role="2OqNvi">
+            <node concept="liA8E" id="4_" role="2OqNvi">
               <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.with(java.lang.String,java.lang.Object)" resolve="with" />
-              <node concept="Xl_RD" id="4N" role="37wK5m">
+              <node concept="Xl_RD" id="4A" role="37wK5m">
                 <property role="Xl_RC" value="ctx" />
               </node>
-              <node concept="2YIFZM" id="4O" role="37wK5m">
+              <node concept="2YIFZM" id="4B" role="37wK5m">
                 <ref role="1Pybhc" node="0" resolve="Auxiliary" />
                 <ref role="37wK5l" node="2" resolve="contextObjectInstance_ctx" />
-                <node concept="37vLTw" id="4P" role="37wK5m">
+                <node concept="37vLTw" id="4C" role="37wK5m">
                   <ref role="3cqZAo" node="40" resolve="node" />
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="4a" role="3cqZAp">
-          <node concept="2OqwBi" id="4Q" role="3cqZAk">
-            <node concept="37vLTw" id="4R" role="2Oq$k0">
-              <ref role="3cqZAo" node="4z" resolve="rv" />
+        <node concept="3cpWs6" id="47" role="3cqZAp">
+          <node concept="2OqwBi" id="4D" role="3cqZAk">
+            <node concept="37vLTw" id="4E" role="2Oq$k0">
+              <ref role="3cqZAo" node="48" resolve="rv" />
             </node>
-            <node concept="liA8E" id="4S" role="2OqNvi">
+            <node concept="liA8E" id="4F" role="2OqNvi">
               <ref role="37wK5l" to="yfwt:~TextGenModelOutline$UnitBuilder.build()" resolve="build" />
             </node>
           </node>
@@ -1118,19 +1083,19 @@
       </node>
       <node concept="37vLTG" id="3Y" role="3clF46">
         <property role="TrG5h" value="outline" />
-        <node concept="3uibUv" id="4T" role="1tU5fm">
+        <node concept="3uibUv" id="4G" role="1tU5fm">
           <ref role="3uigEE" to="yfwt:~TextGenModelOutline" resolve="TextGenModelOutline" />
         </node>
       </node>
       <node concept="37vLTG" id="3Z" role="3clF46">
         <property role="TrG5h" value="filename" />
-        <node concept="3uibUv" id="4U" role="1tU5fm">
+        <node concept="3uibUv" id="4H" role="1tU5fm">
           <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
       </node>
       <node concept="37vLTG" id="40" role="3clF46">
         <property role="TrG5h" value="node" />
-        <node concept="3uibUv" id="4V" role="1tU5fm">
+        <node concept="3uibUv" id="4I" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>

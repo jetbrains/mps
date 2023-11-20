@@ -17,6 +17,7 @@ package jetbrains.mps.text.rt;
 
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.text.TextUnit;
+import jetbrains.mps.text.impl.BufferLayoutBuilder;
 import jetbrains.mps.text.impl.BufferLayoutConfiguration;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
@@ -105,12 +106,12 @@ public interface TextGenModelOutline {
 
   /**
    * Facility to produce a configured TextUnit instance, not intended to be implemented by user code (MPS provides implementation)
-   * not i
    */
   abstract class UnitBuilder {
     protected String unitPath;
     protected Charset encoding;
     protected BufferLayoutConfiguration layout;
+    protected BufferLayoutBuilder layoutBuilder;
     protected List<Pair<String, Object>> contextObjects;
 
     protected UnitBuilder() {
@@ -126,8 +127,21 @@ public interface TextGenModelOutline {
       return this;
     }
 
+    public UnitBuilder layout(Object tokenIdentity, boolean active) {
+      if (this.layoutBuilder == null) {
+        this.layoutBuilder = new BufferLayoutBuilder();
+        this.layout = null;
+      }
+      this.layoutBuilder.add(tokenIdentity);
+      if (active) {
+        this.layoutBuilder.activate(tokenIdentity);
+      }
+      return this;
+    }
+
     public UnitBuilder layout(BufferLayoutConfiguration layout) {
       this.layout = layout;
+      this.layoutBuilder = null;
       return this;
     }
 

@@ -12,7 +12,6 @@ import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.text.TextUnit;
-import jetbrains.mps.text.impl.BufferLayoutBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -413,54 +412,42 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     return null;
   }
   private static TextUnit createTextUnit0(TextGenModelOutline outline, String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("HEADER");
-    lb.add("IMPORTS");
-    lb.add("SEPARATOR");
-    lb.add("BODY");
-    lb.activate("BODY");
     TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("HEADER", false);
+    rv.layout("IMPORTS", false);
+    rv.layout("SEPARATOR", false);
+    rv.layout("BODY", true);
     rv.path(getPath_Annotation(node));
-    rv.layout(lb.create());
     rv.with("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
     return rv.build();
   }
   private static TextUnit createTextUnit1(TextGenModelOutline outline, String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("HEADER");
-    lb.add("IMPORTS");
-    lb.add("SEPARATOR");
-    lb.add("BODY");
-    lb.activate("BODY");
     TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("HEADER", false);
+    rv.layout("IMPORTS", false);
+    rv.layout("SEPARATOR", false);
+    rv.layout("BODY", true);
     rv.path(getPath_ClassConcept(node));
-    rv.layout(lb.create());
     rv.with("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
     return rv.build();
   }
   private static TextUnit createTextUnit2(TextGenModelOutline outline, String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("HEADER");
-    lb.add("IMPORTS");
-    lb.add("SEPARATOR");
-    lb.add("BODY");
-    lb.activate("BODY");
     TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("HEADER", false);
+    rv.layout("IMPORTS", false);
+    rv.layout("SEPARATOR", false);
+    rv.layout("BODY", true);
     rv.path(getPath_Interface(node));
-    rv.layout(lb.create());
     rv.with("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
     return rv.build();
   }
   private static TextUnit createTextUnit3(TextGenModelOutline outline, String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("HEADER");
-    lb.add("IMPORTS");
-    lb.add("SEPARATOR");
-    lb.add("BODY");
-    lb.activate("BODY");
     TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
+    rv.layout("HEADER", false);
+    rv.layout("IMPORTS", false);
+    rv.layout("SEPARATOR", false);
+    rv.layout("BODY", true);
     rv.path(getPath_EnumClass(node));
-    rv.layout(lb.create());
     rv.with("ctx", BaseLanguageTextGen.contextObjectInstance_ctx(node));
     return rv.build();
   }

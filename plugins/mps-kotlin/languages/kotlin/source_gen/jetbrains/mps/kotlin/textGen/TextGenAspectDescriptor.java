@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.text.TextUnit;
-import jetbrains.mps.text.impl.BufferLayoutBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -371,68 +370,50 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     return "kt";
   }
   private static TextUnit createTextUnit0(TextGenModelOutline outline, String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("header");
-    lb.add("imports");
-    lb.add("body");
-    lb.activate("body");
     TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
-    rv.layout(lb.create());
+    rv.layout("header", false);
+    rv.layout("imports", false);
+    rv.layout("body", true);
     rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
     return rv.build();
   }
   private static TextUnit createTextUnit1(TextGenModelOutline outline, String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("header");
-    lb.add("imports");
-    lb.add("body");
-    lb.activate("body");
     TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
-    rv.layout(lb.create());
+    rv.layout("header", false);
+    rv.layout("imports", false);
+    rv.layout("body", true);
     rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
     return rv.build();
   }
   private static TextUnit createTextUnit2(TextGenModelOutline outline, String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("header");
-    lb.add("imports");
-    lb.add("body");
-    lb.activate("body");
     TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
-    rv.layout(lb.create());
+    rv.layout("header", false);
+    rv.layout("imports", false);
+    rv.layout("body", true);
     rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
     return rv.build();
   }
   private static TextUnit createTextUnit3(TextGenModelOutline outline, String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("header");
-    lb.add("imports");
-    lb.add("body");
-    lb.activate("body");
     TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
-    rv.layout(lb.create());
+    rv.layout("header", false);
+    rv.layout("imports", false);
+    rv.layout("body", true);
     rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
     return rv.build();
   }
   private static TextUnit createTextUnit4(TextGenModelOutline outline, String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("header");
-    lb.add("imports");
-    lb.add("body");
-    lb.activate("body");
     TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
-    rv.layout(lb.create());
+    rv.layout("header", false);
+    rv.layout("imports", false);
+    rv.layout("body", true);
     rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
     return rv.build();
   }
   private static TextUnit createTextUnit5(TextGenModelOutline outline, String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("header");
-    lb.add("imports");
-    lb.add("body");
-    lb.activate("body");
     TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
-    rv.layout(lb.create());
+    rv.layout("header", false);
+    rv.layout("imports", false);
+    rv.layout("body", true);
     rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
     return rv.build();
   }

@@ -66,12 +66,14 @@ public final class ModelOutline implements TextGenModelOutline {
     return new UnitBuilder() {
       @Override
       public TextUnit build() {
-        final RegularTextUnit tu = new RegularTextUnit(input, unitName, unitPath, encoding, getPlatform());
-        if (layout != null) {
-          tu.setBufferLayout(layout);
+        final RegularTextUnit tu = new RegularTextUnit(input, unitName, this.unitPath, this.encoding, getPlatform());
+        if (this.layout != null) {
+          tu.setBufferLayout(this.layout);
+        } else if (this.layoutBuilder != null) {
+          tu.setBufferLayout(this.layoutBuilder.create());
         }
-        if (contextObjects != null) {
-          contextObjects.forEach(p -> tu.addContextObject(p.o1, p.o2));
+        if (this.contextObjects != null) {
+          this.contextObjects.forEach(p -> tu.addContextObject(p.o1, p.o2));
         }
         return tu;
       }

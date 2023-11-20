@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.text.TextUnit;
-import jetbrains.mps.text.impl.BufferLayoutBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -51,14 +50,11 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     return null;
   }
   private static TextUnit createTextUnit0(TextGenModelOutline outline, String filename, SNode node) {
-    BufferLayoutBuilder lb = new BufferLayoutBuilder();
-    lb.add("HEADER");
-    lb.add("IMPORTS");
-    lb.add("SEPARATOR");
-    lb.add("BODY");
-    lb.activate("BODY");
     TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
-    rv.layout(lb.create());
+    rv.layout("HEADER", false);
+    rv.layout("IMPORTS", false);
+    rv.layout("SEPARATOR", false);
+    rv.layout("BODY", true);
     rv.with("ctx", Auxiliary.contextObjectInstance_ctx(node));
     return rv.build();
   }
