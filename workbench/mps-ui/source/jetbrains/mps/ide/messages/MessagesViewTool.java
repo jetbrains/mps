@@ -14,7 +14,7 @@ import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManagerListener;
-import com.intellij.openapi.startup.StartupActivity;
+import com.intellij.openapi.startup.ProjectActivity;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
@@ -34,6 +34,8 @@ import jetbrains.mps.messages.IMessageList;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.project.MPSProject;
+import kotlin.Unit;
+import kotlin.coroutines.Continuation;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -384,12 +386,18 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
     }
   }
 
-  public static final class MessageViewToolInitialization implements StartupActivity {
+  public static final class MessageViewToolInitialization implements ProjectActivity {
+
+    @Nullable
     @Override
-    public void runActivity(@NotNull Project project) {
-      // First assess to the com.intellij.ui.content.MessageView service should be done from dispatch thread.
+    public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
+      if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
+        return null;
+      }
+      // First access to the com.intellij.ui.content.MessageView service should be done from dispatch thread.
       // This post startup activity is used to achieve this.
-      project.getService(MessagesViewTool.class).getDefaultList().createContent(false, false);
+      ApplicationManager.getApplication().invokeLater(() -> project.getService(MessagesViewTool.class).getDefaultList().createContent(false, false));
+      return null;
     }
   }
 }
