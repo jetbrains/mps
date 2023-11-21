@@ -401,7 +401,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   public void runUndoableInEDTAndWait(final Runnable runnable) throws InvocationTargetException, InterruptedException {
     UndoManagerImpl undoManager = (UndoManagerImpl) UndoManager.getInstance(ProjectHelper.toIdeaProject(myProject));
     CurrentEditorProvider oldEditorProvider = undoManager.getEditorProvider();
-    undoManager.setEditorProvider(new CurrentEditorProvider() {
+    undoManager.setOverriddenEditorProvider(new CurrentEditorProvider() {
       public FileEditor getCurrentEditor() {
         return myFileNodeEditor;
       }
@@ -413,7 +413,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
     flushEDTEvents();
     // some actions (Copy/Paste) are running one more command later
     flushEDTEvents();
-    undoManager.setEditorProvider(oldEditorProvider);
+    undoManager.setOverriddenEditorProvider(oldEditorProvider);
   }
 
   private CachingAppender installAppender() {

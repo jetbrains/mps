@@ -5414,7 +5414,7 @@
               <ref role="3cqZAo" node="62Gc_ZTkYZW" resolve="undoManager" />
             </node>
             <node concept="liA8E" id="62Gc_ZTlpiD" role="2OqNvi">
-              <ref role="37wK5l" to="xgff:~UndoManagerImpl.setEditorProvider(com.intellij.openapi.fileEditor.impl.CurrentEditorProvider)" resolve="setEditorProvider" />
+              <ref role="37wK5l" to="xgff:~UndoManagerImpl.setOverriddenEditorProvider(com.intellij.openapi.fileEditor.impl.CurrentEditorProvider)" resolve="setOverriddenEditorProvider" />
               <node concept="2ShNRf" id="62Gc_ZTlpiE" role="37wK5m">
                 <node concept="YeOm9" id="62Gc_ZTlpiF" role="2ShVmc">
                   <node concept="1Y3b0j" id="62Gc_ZTlpiG" role="YeSDq">
@@ -5529,7 +5529,7 @@
               <ref role="3cqZAo" node="62Gc_ZTkYZW" resolve="undoManager" />
             </node>
             <node concept="liA8E" id="62Gc_ZTlx3p" role="2OqNvi">
-              <ref role="37wK5l" to="xgff:~UndoManagerImpl.setEditorProvider(com.intellij.openapi.fileEditor.impl.CurrentEditorProvider)" resolve="setEditorProvider" />
+              <ref role="37wK5l" to="xgff:~UndoManagerImpl.setOverriddenEditorProvider(com.intellij.openapi.fileEditor.impl.CurrentEditorProvider)" resolve="setOverriddenEditorProvider" />
               <node concept="37vLTw" id="62Gc_ZTlx3q" role="37wK5m">
                 <ref role="3cqZAo" node="62Gc_ZTlp$h" resolve="oldEditorProvider" />
               </node>

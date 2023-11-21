@@ -151,7 +151,7 @@
 }, {
   "name" : "Grazie AI",
   "url" : "https://packages.jetbrains.team/maven/p/grazi/grazie-platform-public/",
-  "version" : "0.2.199",
+  "version" : "0.3.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://www.apache.org/licenses/LICENSE-2.0"
 }, {

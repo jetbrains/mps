@@ -403,7 +403,7 @@
       <node id="1289877718944190149" at="412,5,413,21" concept="6" />
       <node id="1289877718943972931" at="413,21,414,67" concept="13" />
       <node id="1289877718944193024" at="414,67,415,21" concept="6" />
-      <node id="6965998111421763798" at="415,21,416,53" concept="6" />
+      <node id="6965998111421763798" at="415,21,416,63" concept="6" />
       <node id="5749452221266991714" at="419,45,420,80" concept="11" />
       <node id="5219531754070525201" at="420,80,421,37" concept="6" />
       <node id="5005549666157060529" at="421,37,422,22" concept="6" />
@@ -712,7 +712,7 @@
         <var name="rootCell" id="5484377313764693006" />
         <var name="toSelect" id="5484377313764693002" />
       </scope>
-      <scope id="6965998111421561338" at="401,119,416,53">
+      <scope id="6965998111421561338" at="401,119,416,63">
         <var name="exception" id="592868908270197295" />
         <var name="oldEditorProvider" id="6965998111421733137" />
         <var name="undoManager" id="6965998111421624316" />
@@ -760,7 +760,7 @@
         <var name="before" id="952291788937481918" />
       </scope>
       <unit id="1225981767950" at="434,0,437,0" name="jetbrains.mps.lang.test.runtime.BaseEditorTestBody$CONCEPTS" />
-      <unit id="6965998111421732012" at="404,38,408,5" name="jetbrains.mps.lang.test.runtime.BaseEditorTestBody$3" />
+      <unit id="6965998111421732012" at="404,48,408,5" name="jetbrains.mps.lang.test.runtime.BaseEditorTestBody$3" />
       <unit id="1289877718943972917" at="352,37,357,5" name="jetbrains.mps.lang.test.runtime.BaseEditorTestBody$2" />
       <unit id="1455266293622514782" at="92,41,101,5" name="jetbrains.mps.lang.test.runtime.BaseEditorTestBody$1" />
       <unit id="1225981767950" at="69,0,438,0" name="jetbrains.mps.lang.test.runtime.BaseEditorTestBody" />
