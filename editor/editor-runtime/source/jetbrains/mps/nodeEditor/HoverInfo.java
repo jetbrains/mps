@@ -3,6 +3,7 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.codeInsight.hint.HintUtil;
 import com.intellij.codeInsight.hint.LineTooltipRenderer;
 import com.intellij.codeInsight.hint.TooltipRenderer;
 import com.intellij.openapi.editor.Editor;
@@ -68,9 +69,15 @@ public class HoverInfo {
     if (tr == null) {
       return null;
     }
-    LightweightHint hint = ((LineTooltipRenderer) tr).createHint(editor, new Point(), false,
-                                                                 tp.getTooltipGroup(), new HintHint().setAwtTooltip(true),
-                                                                 true, true, null);
+    // FIXME: how is this hard cast justified?
+    LightweightHint hint = ((LineTooltipRenderer) tr).createHint(editor,
+                                                                 new Point(),
+                                                                 false,
+                                                                 tp.getTooltipGroup(),
+                                                                 HintUtil.getInformationHint(),
+                                                                 true,
+                                                                 true,
+                                                                 null);
     return hint.getComponent();
   }
 
