@@ -25,6 +25,7 @@ import org.jetbrains.mps.openapi.model.SModel;
  */
 public class GeneratorTaskBase implements GeneratorTask {
   protected SModel myModel;
+  private Object myUserObject;
 
   protected GeneratorTaskBase() {
     // no-op
@@ -37,5 +38,15 @@ public class GeneratorTaskBase implements GeneratorTask {
   @Override
   public SModel getModel() {
     return myModel;
+  }
+
+  @Override
+  public Object getUserObject() {
+    return myUserObject;
+  }
+
+  @Override
+  public void setUserObject(Object userObject) {
+    myUserObject = userObject;
   }
 }

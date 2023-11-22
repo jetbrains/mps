@@ -153,6 +153,7 @@ public class GenerationController implements ITaskPoolProvider {
       }
 
       myGenerationHandler.done(task, status);
+      status.setUserObject(task.getUserObject());
       monitor.advance(1);
 
       String report = ttrace.report();
