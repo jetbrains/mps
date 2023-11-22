@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="7kohwes7btys2rh3d199yvptkuq881l">
-  <files names="MultiTuple.java:Tuples.java" />
+<product version="3" modelHash="-totyi85gn7b9ee0oz5ibkw6vni2nlw">
+  <files names="Dictionary.java:HashMapDictionary.java:MultiTuple.java:Tuples.java" />
 </product>
 

@@ -168,6 +168,9 @@
       <concept id="8182547171709752110" name="jetbrains.mps.lang.quotation.structure.NodeBuilderExpression" flags="nn" index="36biLy">
         <child id="8182547171709752112" name="expression" index="36biLW" />
       </concept>
+      <concept id="8182547171709614739" name="jetbrains.mps.lang.quotation.structure.NodeBuilderRef" flags="nn" index="36bGnv">
+        <reference id="8182547171709614741" name="target" index="36bGnp" />
+      </concept>
     </language>
     <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
       <concept id="4733039728785194814" name="jetbrains.mps.lang.modelapi.structure.NamedNodeReference" flags="ng" index="ZC_QK">
@@ -2815,6 +2818,31 @@
     <node concept="1YaCAy" id="7Sw_42UhBNp" role="1YuTPh">
       <property role="TrG5h" value="classifierType" />
       <ref role="1YaFvo" to="tpee:g7uibYu" resolve="ClassifierType" />
+    </node>
+  </node>
+  <node concept="2sgARr" id="liL3F5Ljqa">
+    <property role="3GE5qa" value="subtype" />
+    <property role="TrG5h" value="Dictionary_supertypeOf_namedTupleType" />
+    <property role="2RFo0w" value="true" />
+    <node concept="3clFbS" id="liL3F5Ljqb" role="2sgrp5">
+      <node concept="3cpWs6" id="liL3F5LjQF" role="3cqZAp">
+        <node concept="2pJPEk" id="7aypYAWo4DY" role="3cqZAk">
+          <node concept="2pJPED" id="7aypYAWo4E0" role="2pJPEn">
+            <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
+            <node concept="2pIpSj" id="7aypYAWo4HG" role="2pJxcM">
+              <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
+              <node concept="36bGnv" id="7aypYAWo4M2" role="28nt2d">
+                <ref role="36bGnp" to="upz5:gLj2gn3oBb" resolve="Dictionary" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbH" id="7aypYAWo3ZC" role="3cqZAp" />
+    </node>
+    <node concept="1YaCAy" id="liL3F5LjKE" role="1YuTPh">
+      <property role="TrG5h" value="namedTupleType" />
+      <ref role="1YaFvo" to="cx9y:i2pR1d_" resolve="NamedTupleType" />
     </node>
   </node>
 </model>
