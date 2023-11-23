@@ -131,7 +131,7 @@ class EditorSettingsPreferencesPage implements Disposable {
     checkboxes.add(myTypeOverExistingText);
 
     mySyncWithModelOnSelectionChange = new JCheckBox(EditorSettingsBundle.message("checkbox.sync.with.model.on.selection.change"));
-    checkboxes.add(mySyncWithModelOnSelectionChange);
+    checkboxes.add(withTooltip(mySyncWithModelOnSelectionChange, EditorSettingsBundle.message("checkbox.sync.with.model.on.selection.change.tooltip")));
 
     myHighlightNodeUnderCursor = new JCheckBox(EditorSettingsBundle.message("checkbox.highlight.current.node"));
     checkboxes.add(myHighlightNodeUnderCursor);
