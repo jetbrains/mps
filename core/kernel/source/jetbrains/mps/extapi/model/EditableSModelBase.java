@@ -24,19 +24,18 @@ import jetbrains.mps.persistence.DataSourceFactoryNotFoundException;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.persistence.NoSourceRootsInModelRootException;
 import jetbrains.mps.persistence.SourceRootDoesNotExistException;
-import jetbrains.mps.smodel.StaticReference;
+import jetbrains.mps.smodel.ModelCommandContext;
+import jetbrains.mps.smodel.ModelCommandContext.Provider;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
-import jetbrains.mps.util.SNodeOperations;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SaveOptions;
 import org.jetbrains.mps.openapi.model.SaveResult;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -344,8 +343,20 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
     }
     save();
 
-    fireModelRenamed(new SModelRenamedEvent(this, oldName.getModelName(), newModelName));
+    SModelRenamedEvent event = new SModelRenamedEvent(this, oldName.getModelName(), newModelName);
+    fireModelRenamed(event);
     fireModelRenamed(oldName);
+
+    if (!changeFile) {
+      //per-root persistence
+      ModelAccess modelAccess = getRepository().getModelAccess();
+      if (modelAccess instanceof ModelCommandContext.Provider) {
+        final ModelCommandContext cc = ((Provider) modelAccess).getCommandContext(this);
+        if (cc != null) {
+          cc.registerActionWithUndo(new PerRootPersistenceModelRenameUndoableAction(event));
+        }
+      }
+    }
   }
 
   @Override

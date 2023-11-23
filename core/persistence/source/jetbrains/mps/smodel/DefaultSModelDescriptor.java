@@ -53,13 +53,6 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
     myHeader = header;
   }
 
-  @Override
-  public void rename(@NotNull String newModelName, boolean changeFile) {
-    String oldName = getReference().getModelName();
-    super.rename(newModelName, changeFile);
-    myPersistence.afterModelRename(new SModelRenamedEvent(this, oldName, newModelName));
-  }
-
   public void replace(SModelData modelData) {
     assertCanChange();
 

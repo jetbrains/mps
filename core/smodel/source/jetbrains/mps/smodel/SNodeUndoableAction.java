@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.smodel;
 
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public abstract class SNodeUndoableAction implements UndoItem {
@@ -24,6 +26,7 @@ public abstract class SNodeUndoableAction implements UndoItem {
     myAffectedNode = affectedNode;
   }
 
+  @Nullable
   public SNode getAffectedNode() {
     return myAffectedNode;
   }
@@ -45,9 +48,15 @@ public abstract class SNodeUndoableAction implements UndoItem {
     return VFSChange.NOT_CHANGED;
   }
 
+  public SModel getModel() {
+    final SNode affectedNode = getAffectedNode();
+    return affectedNode!=null ? affectedNode.getModel() : null;
+  }
+
   public enum VFSChange {
     NOT_CHANGED,
     FILE_CREATED,
-    FILE_DELETED
+    FILE_DELETED,
+    PER_ROOT_MODEL_RENAME
   }
 }

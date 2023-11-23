@@ -87,8 +87,4 @@ public abstract class LazyLoadFacility {
   public abstract boolean doesSaveUpgradePersistence(@NotNull SModelHeader header);
 
   public abstract void saveModel(@NotNull SModelHeader header, SModelData modelData) throws ModelSaveException, IOException;
-
-  public void afterModelRename(SModelRenamedEvent event) {
-    // Only needed for per-root persistence
-  }
 }

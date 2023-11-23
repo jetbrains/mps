@@ -10,9 +10,7 @@ import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
-import jetbrains.mps.vfs.IFile;
 
-import java.net.MalformedURLException;
 import java.util.stream.Stream;
 
 final class PerRootPersistenceModelRename extends GlobalUndoableAction {
