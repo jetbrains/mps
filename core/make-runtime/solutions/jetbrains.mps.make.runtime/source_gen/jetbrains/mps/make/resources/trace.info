@@ -49,9 +49,9 @@
   </root>
   <root nodeRef="r:4ea5a78b-cb8a-4831-b227-f7860a22491d(jetbrains.mps.make.resources)/6168415856807657256">
     <file name="IResource.java">
-      <node id="2958721966247250947" at="9,0,10,0" concept="0" trace="describe#()Ljava/lang/String;" />
-      <scope id="2958721966247250947" at="9,0,10,0" />
-      <unit id="6168415856807657256" at="7,0,11,0" name="jetbrains.mps.make.resources.IResource" />
+      <node id="2958721966247250947" at="10,0,11,0" concept="0" trace="describe#()Ljava/lang/String;" />
+      <scope id="2958721966247250947" at="10,0,11,0" />
+      <unit id="6168415856807657256" at="8,0,12,0" name="jetbrains.mps.make.resources.IResource" />
     </file>
   </root>
 </debug-info>
