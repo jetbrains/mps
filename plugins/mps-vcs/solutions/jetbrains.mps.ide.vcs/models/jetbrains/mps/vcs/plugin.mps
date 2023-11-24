@@ -1794,7 +1794,7 @@
     <property role="TrG5h" value="ShowDifferencesWithModelOnDisk" />
     <property role="3GE5qa" value="Actions" />
     <property role="2uzpH1" value="Show Differences with Model on Disk" />
-    <property role="2YLI8m" value="6u2MFnph2yg/read" />
+    <property role="2YLI8m" value="6u2MFnph2wS/none" />
     <node concept="tkhdA" id="5YG5KSKXSff" role="tmbBb">
       <node concept="3clFbS" id="5YG5KSKXSfg" role="2VODD2">
         <node concept="3cpWs8" id="46Iaplavz7y" role="3cqZAp">

@@ -35,7 +35,7 @@ public class ShowDifferencesWithModelOnDisk_Action extends BaseAction {
   public ShowDifferencesWithModelOnDisk_Action() {
     super("Show Differences with Model on Disk", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setActionAccess(ActionAccess.READ_PROJECT);
+    this.setActionAccess(ActionAccess.NONE);
   }
   @Override
   public boolean isDumbAware() {
