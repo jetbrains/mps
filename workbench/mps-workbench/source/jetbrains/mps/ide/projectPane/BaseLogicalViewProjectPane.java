@@ -29,6 +29,7 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vcs.VcsDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFileManagerListener;
@@ -83,6 +84,7 @@ import javax.swing.JTree;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -228,7 +230,11 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     if (PlatformDataKeys.VIRTUAL_FILE_ARRAY.is(dataId)) {
       // XXX perhaps, has to move to SLOW_DATA_PROVIDERS (i.e. collect selected elements in EDT and return
       //     another DataProvider instance that would transformed selected models/modules into VirtualFile?
-      return getSelectedFiles();
+      return getSelectedFiles(true, true);
+    }
+    if (VcsDataKeys.VIRTUAL_FILES.is(dataId)) {
+      VirtualFile[] selection = getSelectedFiles(false, true);
+      return selection != null ? Arrays.asList(selection) : null;
     }
 
     // if project pane doesn't answer its Project, chances are some LocationRule could start looking
@@ -520,7 +526,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
   }
 
   @Nullable
-  private VirtualFile[] getSelectedFiles() {
+  private VirtualFile[] getSelectedFiles(boolean addModuleFile, boolean addModuleDir) {
     List<IFile> selectedFilesList = new LinkedList<>();
 
     // add selected model files
@@ -540,11 +546,11 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
         }
         AbstractModule module = (AbstractModule) m;
         IFile home = module.getModuleSourceDir();
-        if (home != null) {
+        if (home != null && addModuleDir) {
           selectedFilesList.add(home);
         }
         IFile ifile = module.getDescriptorFile();
-        if (ifile != null) {
+        if (ifile != null && addModuleFile) {
           selectedFilesList.add(ifile);
         }
       }
