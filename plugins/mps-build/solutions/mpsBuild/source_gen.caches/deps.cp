@@ -2,6 +2,7 @@
 <dependenciesRoot>
   <uses language="l:798100da-4f0a-421a-b991-71f8c50ce5d2:jetbrains.mps.build" />
   <uses language="l:0cf935df-4699-4e9c-a132-fa109541cba3:jetbrains.mps.build.mps" />
+  <uses language="l:427a473d-5177-432c-9905-bcbceb71b996:jetbrains.mps.build.mps.runner" />
   <uses language="l:3600cb0a-44dd-4a5b-9968-22924406419e:jetbrains.mps.build.mps.tests" />
   <uses language="l:d5033cee-f632-44b6-b308-89d4fbde34ff:jetbrains.mps.build.startup" />
   <uses language="l:698a8d22-a104-47a0-ba8d-10e3ec237f13:jetbrains.mps.build.workflow" />
