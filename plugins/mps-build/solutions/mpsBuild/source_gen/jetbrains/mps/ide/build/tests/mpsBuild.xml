@@ -598,6 +598,7 @@
     <copy todir=".">      
       <fileset dir="${build.tmp}">
         <include name="TEST*.xml" />
+        <include name="junit-platform-events*.xml" />
       </fileset>
       
       <globmapper from="*.xml" to="*-mpsBuild.xml" />
