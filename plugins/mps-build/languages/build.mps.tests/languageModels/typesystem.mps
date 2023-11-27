@@ -761,5 +761,69 @@
       <ref role="1YaFvo" to="5tjl:5I1s5NvGLjw" resolve="BuildMps_TestModules_Options" />
     </node>
   </node>
+  <node concept="18kY7G" id="51DD0tdLLzq">
+    <property role="TrG5h" value="check_BuildMpsLayout_TestModules_openTestReport_option" />
+    <property role="3GE5qa" value="Project.Testing" />
+    <node concept="3clFbS" id="51DD0tdLLzr" role="18ibNy">
+      <node concept="3clFbJ" id="51DD0tdLLzs" role="3cqZAp">
+        <node concept="3clFbS" id="51DD0tdLLzt" role="3clFbx">
+          <node concept="2MkqsV" id="51DD0tdLLzu" role="3cqZAp">
+            <node concept="Xl_RD" id="51DD0tdLLzv" role="2MkJ7o">
+              <property role="Xl_RC" value="Inappropriate value for 'openTestReport' property" />
+            </node>
+            <node concept="2OqwBi" id="51DD0tdLLzw" role="1urrMF">
+              <node concept="1YBJjd" id="51DD0tdLLzx" role="2Oq$k0">
+                <ref role="1YBMHb" node="51DD0tdLLzN" resolve="options" />
+              </node>
+              <node concept="3TrEf2" id="51DD0tdLLzy" role="2OqNvi">
+                <ref role="3Tt5mk" to="5tjl:51DD0tdLLzh" resolve="openTestReport" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1Wc70l" id="51DD0tdLLzz" role="3clFbw">
+          <node concept="2OqwBi" id="51DD0tdLLz$" role="3uHU7B">
+            <node concept="2OqwBi" id="51DD0tdLLz_" role="2Oq$k0">
+              <node concept="1YBJjd" id="51DD0tdLLzA" role="2Oq$k0">
+                <ref role="1YBMHb" node="51DD0tdLLzN" resolve="options" />
+              </node>
+              <node concept="3TrEf2" id="51DD0tdLLzB" role="2OqNvi">
+                <ref role="3Tt5mk" to="5tjl:51DD0tdLLzh" resolve="openTestReport" />
+              </node>
+            </node>
+            <node concept="3x8VRR" id="51DD0tdLLzC" role="2OqNvi" />
+          </node>
+          <node concept="3fqX7Q" id="51DD0tdLLzD" role="3uHU7w">
+            <node concept="2OqwBi" id="51DD0tdLLzE" role="3fr31v">
+              <node concept="1YBJjd" id="51DD0tdLLzF" role="2Oq$k0">
+                <ref role="1YBMHb" node="51DD0tdLLzN" resolve="options" />
+              </node>
+              <node concept="2qgKlT" id="51DD0tdLLzG" role="2OqNvi">
+                <ref role="37wK5l" to="7f1d:51DD0tdKxuK" resolve="isBooleanOptionValueOk" />
+                <node concept="2OqwBi" id="51DD0tdLLzH" role="37wK5m">
+                  <node concept="2OqwBi" id="51DD0tdLLzI" role="2Oq$k0">
+                    <node concept="1YBJjd" id="51DD0tdLLzJ" role="2Oq$k0">
+                      <ref role="1YBMHb" node="51DD0tdLLzN" resolve="options" />
+                    </node>
+                    <node concept="3TrEf2" id="51DD0tdLLzK" role="2OqNvi">
+                      <ref role="3Tt5mk" to="5tjl:51DD0tdLLzh" resolve="openTestReport" />
+                    </node>
+                  </node>
+                  <node concept="2qgKlT" id="51DD0tdLLzL" role="2OqNvi">
+                    <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
+                    <node concept="10Nm6u" id="51DD0tdLLzM" role="37wK5m" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="51DD0tdLLzN" role="1YuTPh">
+      <property role="TrG5h" value="options" />
+      <ref role="1YaFvo" to="5tjl:5I1s5NvGLjw" resolve="BuildMps_TestModules_Options" />
+    </node>
+  </node>
 </model>
 
