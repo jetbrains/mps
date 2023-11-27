@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBuildSolutionRunnerAspect = createDescriptorForBuildSolutionRunnerAspect();
@@ -62,6 +63,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:0f2b4a26-93a1-4327-97ef-ca91b7a4cf5e(jetbrains.mps.build.mps.runner.structure)/4173297143638950526");
     b.version(3);
+    b.property("classSimpleName", 0x1f7059e5ed82569aL).type(PrimitiveTypeId.STRING).origin("2265409456634484378").done();
     b.associate("solution", 0x54b085b5945c6691L).target(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L).optional(false).origin("6102524510011680401").done();
     b.aggregate("requiredPlugin", 0x3283ab1237cb7bddL).target(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L).optional(true).ordered(true).multiple(true).origin("3639941018579336157").done();
     b.alias("run code");

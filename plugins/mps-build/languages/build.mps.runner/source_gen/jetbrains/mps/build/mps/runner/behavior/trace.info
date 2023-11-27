@@ -27,7 +27,7 @@
       <node id="2220861080744370264" at="43,0,44,0" concept="8" trace="getProject_id3SWSDDmdpG6" />
       <node id="2220861080744370264" at="44,0,45,0" concept="8" trace="getScope_id52_Geb4QDV$" />
       <node id="2220861080744370264" at="46,0,47,0" concept="8" trace="BH_METHODS" />
-      <node id="1350734474210954597" at="51,85,52,23" concept="6" />
+      <node id="2265409456634638407" at="51,85,52,188" concept="6" />
       <node id="1350734474210956191" at="54,86,55,21" concept="6" />
       <node id="1350734474211111339" at="57,87,58,222" concept="6" />
       <node id="4560297596904469398" at="60,153,61,43" concept="5" />
@@ -59,13 +59,15 @@
       <node id="2220861080744370264" at="132,14,133,58" concept="11" />
       <node id="2220861080744370264" at="139,48,140,22" concept="6" />
       <node id="2220861080744370264" at="145,40,146,19" concept="6" />
-      <node id="2220861080744370264" at="150,0,151,0" concept="8" trace="solution$MOiH" />
-      <node id="2220861080744370264" at="151,0,152,0" concept="8" trace="requiredPlugin$RiWU" />
-      <node id="2220861080744370264" at="152,0,153,0" concept="8" trace="plugin$9MhS" />
-      <node id="2220861080744370264" at="153,0,154,0" concept="8" trace="parts$mGDj" />
-      <node id="2220861080744370264" at="157,0,158,0" concept="8" trace="name$MnvL" />
-      <node id="2220861080744370264" at="161,0,162,0" concept="8" trace="BuildLayout_Node$Rb" />
-      <node id="2220861080744370264" at="162,0,163,0" concept="8" trace="BuildProject$ae" />
+      <node id="2265409456634644678" at="148,52,149,40" concept="6" />
+      <node id="2220861080744370264" at="153,0,154,0" concept="8" trace="classSimpleName$kRBO" />
+      <node id="2220861080744370264" at="154,0,155,0" concept="8" trace="name$MnvL" />
+      <node id="2220861080744370264" at="158,0,159,0" concept="8" trace="solution$MOiH" />
+      <node id="2220861080744370264" at="159,0,160,0" concept="8" trace="requiredPlugin$RiWU" />
+      <node id="2220861080744370264" at="160,0,161,0" concept="8" trace="plugin$9MhS" />
+      <node id="2220861080744370264" at="161,0,162,0" concept="8" trace="parts$mGDj" />
+      <node id="2220861080744370264" at="165,0,166,0" concept="8" trace="BuildLayout_Node$Rb" />
+      <node id="2220861080744370264" at="166,0,167,0" concept="8" trace="BuildProject$ae" />
       <node id="2220861080744370264" at="48,0,50,0" concept="9" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2220861080744370264" at="92,0,94,0" concept="0" trace="BuildSolutionRunnerAspect__BehaviorDescriptor#()V" />
       <node id="2220861080744370264" at="51,0,54,0" concept="9" trace="getClassName_id1aYLt$9dW4N#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -78,6 +80,7 @@
       <node id="2220861080744370264" at="88,0,91,0" concept="9" trace="getScope_id52_Geb4QDV$#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/scope/Scope;" />
       <node id="2220861080744370264" at="102,49,105,5" concept="3" />
       <node id="2220861080744370264" at="127,49,130,5" concept="3" />
+      <node id="2265409456634644678" at="148,0,151,0" concept="9" trace="isEmptyString#(Ljava/lang/String;)Z" />
       <node id="2220861080744370264" at="95,0,99,0" concept="4" trace="initNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SConstructor;[Ljava/lang/Object;)V" />
       <node id="2220861080744370264" at="130,5,134,5" concept="10" />
       <node id="6593674873636749813" at="65,187,70,24" concept="5" />
@@ -91,7 +94,7 @@
       <node id="2220861080744370264" at="60,0,85,0" concept="9" trace="fetchDependencies_id57YmpYyL8F1#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/build/util/VisibleArtifacts;Ljetbrains/mps/build/util/RequiredDependenciesBuilder;)V" />
       <scope id="2220861080744370264" at="48,63,48,63" />
       <scope id="2220861080744370264" at="92,63,92,63" />
-      <scope id="1350734474210951478" at="51,85,52,23" />
+      <scope id="1350734474210951478" at="51,85,52,188" />
       <scope id="1350734474210955277" at="54,86,55,21" />
       <scope id="1350734474211110547" at="57,87,58,222" />
       <scope id="6593674873636777696" at="67,37,68,64" />
@@ -111,6 +114,7 @@
       <scope id="2220861080744370264" at="132,14,133,58" />
       <scope id="2220861080744370264" at="139,48,140,22" />
       <scope id="2220861080744370264" at="145,40,146,19" />
+      <scope id="2265409456634644678" at="148,52,149,40" />
       <scope id="2220861080744370264" at="48,0,50,0">
         <var name="__thisNode__" id="2220861080744370264" />
       </scope>
@@ -135,6 +139,9 @@
         <var name="__thisNode__" id="2220861080744370264" />
         <var name="child" id="1350734474210767368" />
         <var name="kind" id="1350734474210767366" />
+      </scope>
+      <scope id="2265409456634644678" at="148,0,151,0">
+        <var name="str" id="2265409456634644678" />
       </scope>
       <scope id="4560297596904469429" at="72,73,76,7">
         <var name="pluginArtifact" id="4560297596904469431" />
@@ -183,11 +190,11 @@
         <var name="artifacts" id="4560297596904469392" />
         <var name="builder" id="4560297596904469394" />
       </scope>
-      <unit id="2220861080744370264" at="156,0,159,0" name="jetbrains.mps.build.mps.runner.behavior.BuildSolutionRunnerAspect__BehaviorDescriptor$PROPS" />
       <unit id="6593674873636777695" at="66,139,70,5" name="jetbrains.mps.build.mps.runner.behavior.BuildSolutionRunnerAspect__BehaviorDescriptor$1" />
-      <unit id="2220861080744370264" at="160,0,164,0" name="jetbrains.mps.build.mps.runner.behavior.BuildSolutionRunnerAspect__BehaviorDescriptor$CONCEPTS" />
-      <unit id="2220861080744370264" at="149,0,155,0" name="jetbrains.mps.build.mps.runner.behavior.BuildSolutionRunnerAspect__BehaviorDescriptor$LINKS" />
-      <unit id="2220861080744370264" at="36,0,165,0" name="jetbrains.mps.build.mps.runner.behavior.BuildSolutionRunnerAspect__BehaviorDescriptor" />
+      <unit id="2220861080744370264" at="152,0,156,0" name="jetbrains.mps.build.mps.runner.behavior.BuildSolutionRunnerAspect__BehaviorDescriptor$PROPS" />
+      <unit id="2220861080744370264" at="164,0,168,0" name="jetbrains.mps.build.mps.runner.behavior.BuildSolutionRunnerAspect__BehaviorDescriptor$CONCEPTS" />
+      <unit id="2220861080744370264" at="157,0,163,0" name="jetbrains.mps.build.mps.runner.behavior.BuildSolutionRunnerAspect__BehaviorDescriptor$LINKS" />
+      <unit id="2220861080744370264" at="36,0,169,0" name="jetbrains.mps.build.mps.runner.behavior.BuildSolutionRunnerAspect__BehaviorDescriptor" />
     </file>
   </root>
 </debug-info>
