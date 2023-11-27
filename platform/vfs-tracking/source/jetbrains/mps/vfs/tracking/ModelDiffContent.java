@@ -17,14 +17,13 @@ package jetbrains.mps.vfs.tracking;
 
 import com.intellij.diff.contents.DiffContentBase;
 import com.intellij.openapi.fileTypes.FileType;
-import jetbrains.mps.fileTypes.MPSFileType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 
-public final class ModelDiffContent extends DiffContentBase {
-  private final SModel myModel;
-  private final FileType myFileType;
+public class ModelDiffContent extends DiffContentBase {
+  protected SModel myModel;
+  protected FileType myFileType;
 
   public ModelDiffContent(@Nullable SModel model) {
     myModel = model;

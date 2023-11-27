@@ -686,39 +686,42 @@
       <node id="2090008153514919835" at="63,5,64,66" concept="9" />
       <node id="8898893144448210108" at="65,22,66,21" concept="10" />
       <node id="7545884443035896373" at="68,5,69,16" concept="10" />
-      <node id="4732765979589848859" at="72,96,73,66" concept="9" />
-      <node id="4732765979589860989" at="73,66,74,37" concept="9" />
-      <node id="4732765979589861142" at="75,59,76,81" concept="4" />
-      <node id="7548688593811698695" at="77,5,78,54" concept="9" />
-      <node id="7548688593811772476" at="78,54,79,21" concept="9" />
-      <node id="4732765979589875920" at="80,31,81,142" concept="4" />
-      <node id="4732765979589883178" at="82,12,83,70" concept="4" />
-      <node id="584143917409985861" at="84,5,85,163" concept="9" />
-      <node id="584143917409985866" at="85,163,86,99" concept="9" />
-      <node id="584143917409985873" at="86,99,87,96" concept="9" />
-      <node id="584143917409985875" at="87,96,88,107" concept="4" />
-      <node id="4732765979589881303" at="82,10,84,5" concept="1" />
+      <node id="4732765979589848859" at="72,96,73,72" concept="9" />
+      <node id="39288593670186128" at="73,72,74,79" concept="9" />
+      <node id="4732765979589860989" at="74,79,75,158" concept="9" />
+      <node id="7548688593811698695" at="75,158,76,60" concept="9" />
+      <node id="5005798255015673012" at="76,60,77,0" concept="12" />
+      <node id="5757431290786682958" at="79,50,80,37" concept="4" />
+      <node id="4732765979589875920" at="82,37,83,112" concept="4" />
+      <node id="4732765979589883178" at="84,18,85,74" concept="4" />
+      <node id="5005798255015675652" at="89,6,90,0" concept="12" />
+      <node id="584143917409985861" at="90,0,91,143" concept="9" />
+      <node id="584143917409985866" at="91,143,92,99" concept="9" />
+      <node id="584143917409985873" at="92,99,93,96" concept="9" />
+      <node id="584143917409985875" at="93,96,94,107" concept="4" />
+      <node id="4732765979589881303" at="84,16,86,11" concept="1" />
       <node id="7545884443035896373" at="50,95,53,5" concept="7" />
       <node id="8898893144448210240" at="55,56,58,7" concept="7" />
       <node id="7748242000682012099" at="58,7,61,7" concept="7" />
       <node id="8898893144448210108" at="64,66,67,7" concept="7" />
-      <node id="4732765979589848279" at="74,37,77,5" concept="7" />
       <node id="7545884443035896373" at="40,0,44,0" concept="8" trace="isDumbAware#()Z" />
       <node id="7545884443035896373" at="35,0,40,0" concept="2" trace="ShowDifferencesWithModelOnDisk_Action#()V" />
       <node id="7545884443035896373" at="44,0,49,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="4732765979589878079" at="79,21,84,5" concept="7" />
+      <node id="4732765979589878079" at="81,25,86,11" concept="7" />
       <node id="2090008153514919835" at="62,5,68,5" concept="1" />
+      <node id="5757431290786686853" at="80,37,87,9" concept="7" />
       <node id="7545884443035896435" at="53,5,62,5" concept="1" />
-      <node id="7545884443035896373" at="71,0,90,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="5757431290786676782" at="79,0,89,0" concept="8" trace="onAssigned#(Z)V" />
+      <node id="5757431290786659140" at="77,0,89,6" concept="9" />
       <node id="7545884443035896373" at="49,0,71,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="7545884443035896373" at="71,0,96,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <scope id="7545884443035896373" at="41,32,42,16" />
       <scope id="7545884443035896373" at="51,53,52,19" />
       <scope id="8898893144448210240" at="56,22,57,21" />
       <scope id="7748242000682012099" at="59,61,60,21" />
       <scope id="8898893144448210108" at="65,22,66,21" />
-      <scope id="4732765979589848281" at="75,59,76,81" />
-      <scope id="4732765979589878081" at="80,31,81,142" />
-      <scope id="4732765979589881304" at="82,12,83,70" />
+      <scope id="4732765979589878081" at="82,37,83,112" />
+      <scope id="4732765979589881304" at="84,18,85,74" />
       <scope id="6893910479315895248" at="45,89,47,205">
         <var name="ds" id="4732765979589620195" />
       </scope>
@@ -732,28 +735,35 @@
         <var name="_params" id="7545884443035896373" />
         <var name="event" id="7545884443035896373" />
       </scope>
+      <scope id="5757431290786686855" at="81,25,86,11" />
       <scope id="7545884443035896435" at="54,5,61,7">
         <var name="p" id="7545884443035896435" />
       </scope>
-      <scope id="7545884443035896373" at="72,96,88,107">
-        <var name="contents" id="584143917409985862" />
-        <var name="datasource" id="7548688593811698696" />
-        <var name="diskModel" id="7548688593811772477" />
-        <var name="inMemoryModel" id="4732765979589848860" />
-        <var name="modelFactory" id="4732765979589860990" />
-        <var name="request" id="584143917409985874" />
-        <var name="titles" id="584143917409985867" />
+      <scope id="5757431290786676785" at="79,50,87,9" />
+      <scope id="5757431290786676782" at="79,0,89,0">
+        <var name="isAssigned" id="5757431290786678368" />
       </scope>
       <scope id="7545884443035896373" at="50,95,69,16" />
-      <scope id="7545884443035896373" at="71,0,90,0">
-        <var name="_params" id="7545884443035896373" />
-        <var name="event" id="7545884443035896373" />
-      </scope>
       <scope id="7545884443035896373" at="49,0,71,0">
         <var name="_params" id="7545884443035896373" />
         <var name="event" id="7545884443035896373" />
       </scope>
-      <unit id="7545884443035896373" at="31,0,91,0" name="jetbrains.mps.vcs.plugin.ShowDifferencesWithModelOnDisk_Action" />
+      <scope id="7545884443035896373" at="72,96,94,107">
+        <var name="contents" id="584143917409985862" />
+        <var name="datasource" id="7548688593811698696" />
+        <var name="diskContent" id="5757431290786659141" />
+        <var name="inMemoryModel" id="4732765979589848860" />
+        <var name="modelFactory" id="4732765979589860990" />
+        <var name="mpsProject" id="39288593670186129" />
+        <var name="request" id="584143917409985874" />
+        <var name="titles" id="584143917409985867" />
+      </scope>
+      <scope id="7545884443035896373" at="71,0,96,0">
+        <var name="_params" id="7545884443035896373" />
+        <var name="event" id="7545884443035896373" />
+      </scope>
+      <unit id="5757431290786661692" at="78,39,89,5" name="jetbrains.mps.vcs.plugin.ShowDifferencesWithModelOnDisk_Action$1" />
+      <unit id="7545884443035896373" at="31,0,97,0" name="jetbrains.mps.vcs.plugin.ShowDifferencesWithModelOnDisk_Action" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
       <node id="7545884443035896373" at="34,49,35,59" concept="4" />
