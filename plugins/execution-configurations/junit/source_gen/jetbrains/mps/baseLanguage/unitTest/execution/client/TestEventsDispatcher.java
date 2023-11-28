@@ -49,10 +49,10 @@ public final class TestEventsDispatcher {
         myState.onTestFailure(event);
         break;
       case TestEventMessage.START_TESTRUN:
-        myState.onTestRunStarted();
+        myState.onTestRunStarted(event);
         break;
       case TestEventMessage.FINISH_TESTRUN:
-        myState.onTestRunFinished();
+        myState.onTestRunFinished(event);
         break;
       case TestEventMessage.ASSUMPTION_FAILURE_TEST_PREFIX:
         myState.onTestAssumptionFailure(event);

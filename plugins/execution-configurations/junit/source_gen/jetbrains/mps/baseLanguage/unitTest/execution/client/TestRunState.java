@@ -140,15 +140,17 @@ public final class TestRunState {
     }
   }
 
-  /*package*/ void onTestRunStarted() {
-    log("test run started : ");
-    ListSequence.fromList(myListeners).visitAll((it) -> it.onTestRunStarted());
+  /*package*/ void onTestRunStarted(TestRawEvent rawEvent) {
+    final TestNodeEvent nodeEvent = convertRawEventToNodeEvent(rawEvent);
+    log("test run started : " + nodeEvent);
+    ListSequence.fromList(myListeners).visitAll((it) -> it.onTestRunStarted(nodeEvent));
   }
 
-  /*package*/ void onTestRunFinished() {
-    log("test run finished : ");
+  /*package*/ void onTestRunFinished(TestRawEvent rawEvent) {
+    final TestNodeEvent nodeEvent = convertRawEventToNodeEvent(rawEvent);
+    log("test run finished : " + nodeEvent);
     myInnerData.myFinished = true;
-    ListSequence.fromList(myListeners).visitAll((it) -> it.onTestRunFinished());
+    ListSequence.fromList(myListeners).visitAll((it) -> it.onTestRunFinished(nodeEvent));
   }
 
   /*package*/ void onTestAssumptionFailure(TestRawEvent event) {
