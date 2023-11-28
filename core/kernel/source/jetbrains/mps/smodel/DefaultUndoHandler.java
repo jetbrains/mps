@@ -19,4 +19,8 @@ public class DefaultUndoHandler implements UndoHandler {
   @Override
   public void addUndoableAction(SNodeUndoableAction action) {
   }
+
+  @Override
+  public void addUndoableAction(ModelRenameUndoableAction action) {
+  }
 }

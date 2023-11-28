@@ -236,7 +236,7 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
     private ImmatureReferences myIR;
 
     public CommandContextImpl(@Nullable UndoHandler undoHandler, /*NotNull*/ SModel m) {
-      myUndoHandler = undoHandler == null ? a -> {} : undoHandler;
+      myUndoHandler = undoHandler == null ? new DefaultUndoHandler() : undoHandler;
       myModel = m;
       myUN = new UnregisteredNodes(myModel.getReference());
     }
@@ -269,6 +269,11 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
 
     @Override
     public void registerActionWithUndo(SNodeUndoableAction action) {
+      myUndoHandler.addUndoableAction(action);
+    }
+
+    @Override
+    public void registerActionWithUndo(ModelRenameUndoableAction action) {
       myUndoHandler.addUndoableAction(action);
     }
 

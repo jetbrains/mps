@@ -26,6 +26,7 @@ import jetbrains.mps.persistence.NoSourceRootsInModelRootException;
 import jetbrains.mps.persistence.SourceRootDoesNotExistException;
 import jetbrains.mps.smodel.ModelCommandContext;
 import jetbrains.mps.smodel.ModelCommandContext.Provider;
+import jetbrains.mps.smodel.ModelRenameUndoableAction;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;

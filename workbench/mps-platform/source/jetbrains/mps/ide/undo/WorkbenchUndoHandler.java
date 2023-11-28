@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.undo;
 
 import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.smodel.ModelRenameUndoableAction;
 import jetbrains.mps.smodel.SNodeUndoableAction;
 import jetbrains.mps.smodel.UndoHandler;
 import jetbrains.mps.smodel.undo.UndoContext;
@@ -28,6 +29,13 @@ public class WorkbenchUndoHandler implements UndoHandler {
 
   @Override
   public void addUndoableAction(SNodeUndoableAction action) {
+    if (needRegisterAction()) {
+      myActionsCollector.addAction(action);
+    }
+  }
+
+  @Override
+  public void addUndoableAction(ModelRenameUndoableAction action) {
     if (needRegisterAction()) {
       myActionsCollector.addAction(action);
     }

@@ -426,6 +426,11 @@ final class TestModelFactory {
         public void registerActionWithUndo(SNodeUndoableAction action) {
           myUndoHandler.addUndoableAction(action);
         }
+
+        @Override
+        public void registerActionWithUndo(ModelRenameUndoableAction action) {
+          myUndoHandler.addUndoableAction(action);
+        }
       };
     }
 

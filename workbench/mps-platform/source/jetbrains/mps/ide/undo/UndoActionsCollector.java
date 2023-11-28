@@ -25,6 +25,7 @@ import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.smodel.ModelRenameUndoableAction;
 import jetbrains.mps.smodel.SNodeUndoableAction;
 import jetbrains.mps.smodel.SNodeUndoableAction.VFSChange;
 import jetbrains.mps.smodel.UndoItem;
@@ -59,69 +60,73 @@ public class UndoActionsCollector {
     myUndoContext = undoContext;
   }
 
+  void addAction(ModelRenameUndoableAction action) {
+    assert !myDisposed;
+    myActions.add(action);
+    myIsGlobal = true;
+
+    SModel model = action.getAffectedModel();
+    if (model != null) {
+      MPSModelVirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(myUndoContext.getRepository(), model.getReference());
+      assert file.isValid() :
+          "Invalid file was returned by VFS node is not available: " + model + ".";
+
+      myChangedFiles.computeIfAbsent(model.getModelId(), k -> new ArrayList<>()).add(file);
+
+      for (SNode rootNode : model.getRootNodes()) {
+        MPSNodeVirtualFile nodeFile = NodeVirtualFileSystem.getInstance().getFileFor(myUndoContext.getRepository(), rootNode);
+        assert nodeFile.hasValidMPSNode() :
+            "Invalid file was returned by VFS node is not available: " + rootNode + ", deleted = " + (rootNode.getModel() == null);
+
+        myChangedFiles.computeIfAbsent(model.getModelId(), k -> new ArrayList<>()).add(nodeFile);
+        Document document = MPSUndoUtil.getDoc(nodeFile);
+        if (document != null) {
+          myDocumentReferences.add(MPSUndoUtil.getRefForDoc(document));
+        }
+      }
+    }
+  }
+
   void addAction(SNodeUndoableAction action) {
     assert !myDisposed;
     myActions.add(action);
     myIsGlobal |= action.getAssociatedVfsChange() != VFSChange.NOT_CHANGED;
 
-    if (action.getAssociatedVfsChange() == VFSChange.PER_ROOT_MODEL_RENAME) {
-      SModel model = action.getAffectedModel();
-      if (model != null) {
-        MPSModelVirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(myUndoContext.getRepository(), model.getReference());
-        assert file.isValid() :
-            "Invalid file was returned by VFS node is not available: " + model + ".";
-
-        myChangedFiles.computeIfAbsent(model.getModelId(), k -> new ArrayList<>()).add(file);
-
-        for (SNode rootNode : model.getRootNodes()) {
-          MPSNodeVirtualFile nodeFile = NodeVirtualFileSystem.getInstance().getFileFor(myUndoContext.getRepository(), rootNode);
-          assert nodeFile.hasValidMPSNode() :
-              "Invalid file was returned by VFS node is not available: " + rootNode + ", deleted = " + (rootNode.getModel() == null);
-
-          myChangedFiles.computeIfAbsent(model.getModelId(), k -> new ArrayList<>()).add(nodeFile);
-          Document document = MPSUndoUtil.getDoc(nodeFile);
-          if (document != null) {
-            myDocumentReferences.add(MPSUndoUtil.getRefForDoc(document));
-          }
-        }
+    MPSNodeVirtualFile fileToUpdate = null;
+    for (SNode virtualFileNode : myUndoContext.getVirtualFileNodes(action)) {
+      if (virtualFileNode.getModel() == null) {
+        continue;
       }
-    } else {
-      MPSNodeVirtualFile fileToUpdate = null;
-      for (SNode virtualFileNode : myUndoContext.getVirtualFileNodes(action)) {
-        if (virtualFileNode.getModel() == null) {
-          continue;
-        }
-        MPSNodeVirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(myUndoContext.getRepository(), virtualFileNode);
-        assert file.hasValidMPSNode() :
-            "Invalid file was returned by VFS node is not available: " + virtualFileNode + ", deleted = " + (virtualFileNode.getModel() == null);
+      MPSNodeVirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(myUndoContext.getRepository(), virtualFileNode);
+      assert file.hasValidMPSNode() :
+          "Invalid file was returned by VFS node is not available: " + virtualFileNode + ", deleted = " + (virtualFileNode.getModel() == null);
 
-        assert action.getAssociatedVfsChange() == VFSChange.NOT_CHANGED || fileToUpdate == null || fileToUpdate.equals(file);
-        if (action.getAssociatedVfsChange() != VFSChange.NOT_CHANGED) {
-          fileToUpdate = file;
-        }
-
-        Document document = MPSUndoUtil.getDoc(file);
-        if (document == null) {
-          continue;
-        }
-        myDocumentReferences.add(MPSUndoUtil.getRefForDoc(document));
-        myChangedFiles.computeIfAbsent(virtualFileNode.getModel().getModelId(), k -> new ArrayList<>()).add(file);
+      assert action.getAssociatedVfsChange() == VFSChange.NOT_CHANGED || fileToUpdate == null || fileToUpdate.equals(file);
+      if (action.getAssociatedVfsChange() != VFSChange.NOT_CHANGED) {
+        fileToUpdate = file;
       }
-      if (fileToUpdate != null && action.getAssociatedVfsChange() != VFSChange.NOT_CHANGED) {
-        // recording deleted &  created files, using this information later for restoring vFiles in VFS cache
-        // keeping track of files which was deleted & then re-created
 
-        if (action.getAssociatedVfsChange() == VFSChange.FILE_DELETED) {
-          if (!myCreatedFiles.remove(fileToUpdate)) {
-            myDeletedFiles.add(fileToUpdate);
-          }
-        } else if (action.getAssociatedVfsChange() == VFSChange.FILE_CREATED) {
-          if (!myDeletedFiles.remove(fileToUpdate)) {
-            myCreatedFiles.add(0, fileToUpdate);
-          }
-        } else {
-          throw new IllegalArgumentException("VFSChange: " + action.getAssociatedVfsChange() + "is not supported.");
+      Document document = MPSUndoUtil.getDoc(file);
+      if (document == null) {
+        continue;
+      }
+      myDocumentReferences.add(MPSUndoUtil.getRefForDoc(document));
+      myChangedFiles.computeIfAbsent(virtualFileNode.getModel().getModelId(), k -> new ArrayList<>()).add(file);
+    }
+    if (fileToUpdate != null && action.getAssociatedVfsChange() != VFSChange.NOT_CHANGED) {
+      // recording deleted &  created files, using this information later for restoring vFiles in VFS cache
+      // keeping track of files which was deleted & then re-created
+
+      if (action.getAssociatedVfsChange() == VFSChange.FILE_DELETED) {
+        if (!myCreatedFiles.remove(fileToUpdate)) {
+          myDeletedFiles.add(fileToUpdate);
         }
+      } else if (action.getAssociatedVfsChange() == VFSChange.FILE_CREATED) {
+        if (!myDeletedFiles.remove(fileToUpdate)) {
+          myCreatedFiles.add(0, fileToUpdate);
+        }
+      } else {
+        throw new IllegalArgumentException("VFSChange: " + action.getAssociatedVfsChange() + "is not supported.");
       }
     }
   }

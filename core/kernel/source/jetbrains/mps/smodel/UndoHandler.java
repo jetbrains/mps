@@ -28,4 +28,5 @@ public interface UndoHandler {
    * @param action never {@code null}
    */
   void addUndoableAction(SNodeUndoableAction action);
+  void addUndoableAction(ModelRenameUndoableAction action);
 }
