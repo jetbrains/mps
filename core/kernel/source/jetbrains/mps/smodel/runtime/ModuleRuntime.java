@@ -31,7 +31,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 /**
  * Generic representation of a deployed module.
@@ -118,7 +120,7 @@ public final class ModuleRuntime {
     return myProvidesExtensions;
   }
 
-  public void activate(ModuleRuntimeContext context) {
+  public void activate(final ModuleRuntimeContext context) {
       try {
         myModuleActivator = myActivatorFactory.newInstance(this, context);
       } catch (Exception ex) {
@@ -129,7 +131,13 @@ public final class ModuleRuntime {
         return;
       }
       try {
-        myModuleActivator.activate();
+        final ActivatorContext ac = new ActivatorContext() {
+          @Override
+          public <T> void extension(Class<T> key, Extension<T> ext) {
+            // FIXME no op
+          }
+        };
+        myModuleActivator.activate(ac);
       } catch (Throwable th) {
         final String cn = NameUtil.compactNamespace(myModuleActivator.getClass().getName());
         final String mn = NameUtil.compactNamespace(myModuleReference.getModuleName());
@@ -137,7 +145,7 @@ public final class ModuleRuntime {
       }
   }
 
-  public void deactivate(ModuleRuntimeContext context) {
+  public void deactivate(final ModuleRuntimeContext context) {
     if (myModuleActivator != null) {
       myModuleActivator.deactivate();
       myModuleActivator = null;
@@ -183,8 +191,75 @@ public final class ModuleRuntime {
   //    - abstract class with setContext invoked from this MR and client code accessing one through getContext/getPlatform()
   public interface Activator {
     default void activate() {}
+    /**
+     * @implNote shall always call {@link #activate()} as the first activity (unless we deprecate and remove the method)
+     * @since 2023.3
+     */
+    default void activate(@NotNull ActivatorContext ctx) {
+      activate();
+    }
     default void deactivate() {}
   }
+
+  /**
+   * Mediator to install extensions into runtime.
+   * Extensions get uninstalled automatically on deactivation, therefore we don't
+   * pass context to {@link Activator#deactivate()}
+   * @since 2023.3
+   */
+  public interface ActivatorContext {
+    <T> void extension(Class<T> key, Extension<T> ext);
+    //void extension(ExtensionPoint extpoint, Extension<?> ext);
+  }
+
+  /**
+   * <ul>
+   * <li>openapi/extapi?
+   * <li>stateless/statefull (same instance or a new one from get())? Take into account getAspect() idea, above, and ModuleRuntimeAspectKey
+   * <li>lifecycle (e.g. activate/deactivate for existing/legacy Extensions)
+   * </ul>
+   * @since 2023.3
+   */
+  public interface Extension<T> {
+    public interface MatchRequest {
+      // e.g. something simple as Tags(=Set<String>) and intersection/contains (extSet.allOf(((Tags)matchRequest).tagsAsSet()),
+    }
+    boolean matches(MatchRequest matchRequest);
+    Optional<T> get();
+
+    static <E> Extension<E> of(Supplier<E> factory, String ... tags) {
+      return new ExtImpl(factory);
+    }
+  }
+  private static class ExtImpl<E> implements Extension<E> {
+
+    private final Supplier<E> myFactory;
+
+    public ExtImpl(Supplier<E> factory) {
+      myFactory = factory;
+    }
+
+    @Override
+    public boolean matches(MatchRequest matchRequest) {
+      // provisional, always matches
+      return true;
+    }
+
+    @Override
+    public Optional<E> get() {
+      try {
+        E rv = myFactory.get();
+        if (rv != null) {
+          return Optional.of(rv);
+        }
+        // fall through, to get empty()
+      } catch (Throwable ex) {
+        Logger.getLogger(ModuleRuntime.class).warning("Failed to get extension instance, factory: " + myFactory, ex);
+      }
+      return Optional.empty();
+    }
+  }
+
 
   /**
    * Captures the way we instantiate classes specific to different module types.
