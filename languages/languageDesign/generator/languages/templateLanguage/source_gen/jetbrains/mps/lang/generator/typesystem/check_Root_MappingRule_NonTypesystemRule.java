@@ -43,7 +43,10 @@ public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesys
             }
           }
         }
-      } else {
+      } else if (!(SNodeOperations.isInstanceOf(template, CONCEPTS.TemplateDeclaration$5G))) {
+        // there's not too much difference using root template - regular node, annotated with 'root template'
+        // and a regular TemplateDeclaration. Former is limited to 1 output node, while TD could have may fragments
+        // each giving a node.
         {
           final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.template$n_Qy);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(rule, String.format("Root template %s misses annotation", (SNodeOperations.isInstanceOf(template, CONCEPTS.INamedConcept$Kd) ? SPropertyOperations.getString(SNodeOperations.cast(template, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(template))), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "7312097483936371789", null, errorTarget);
@@ -80,6 +83,7 @@ public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesys
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept RootTemplateAnnotation$9O = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
+    /*package*/ static final SConcept TemplateDeclaration$5G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
     /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
     /*package*/ static final SConcept Attribute$g1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
     /*package*/ static final SConcept Root_MappingRule$NH = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, "jetbrains.mps.lang.generator.structure.Root_MappingRule");
