@@ -23,6 +23,7 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
+      <concept id="418049251856799813" name="jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute" flags="ig" index="1AhYRh" />
       <concept id="5583843313507852240" name="jetbrains.mps.lang.structure.structure.MarkerInterfaceAttribute" flags="ng" index="3MrDgS" />
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
@@ -104,6 +105,19 @@
     <node concept="t5JxF" id="5Z6N5M4XbT4" role="lGtFl">
       <property role="t5JxN" value="Denotes a root contributed into descriptor model by a language aspect to facilitate its generation as part of module descriptor processing" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="IR$DxXuVkC">
+    <property role="EcuMT" value="844304638793200936" />
+    <property role="TrG5h" value="ModuleActivator" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="1TJgyj" id="IR$DxXuVkF" role="1TKVEi">
+      <property role="IQ2ns" value="844304638793200939" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="extensions" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fzclF80" resolve="StatementList" />
+    </node>
+    <node concept="1AhYRh" id="IR$DxXuVkD" role="lGtFl" />
   </node>
 </model>
 

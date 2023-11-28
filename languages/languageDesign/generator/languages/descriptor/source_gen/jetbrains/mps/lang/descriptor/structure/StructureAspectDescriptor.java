@@ -17,6 +17,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptGeneratorDescriptor = createDescriptorForGeneratorDescriptor();
   /*package*/ final ConceptDescriptor myConceptGeneratorInternal_Aspect = createDescriptorForGeneratorInternal_Aspect();
   /*package*/ final ConceptDescriptor myConceptLanguageDescriptor = createDescriptorForLanguageDescriptor();
+  /*package*/ final ConceptDescriptor myConceptModuleActivator = createDescriptorForModuleActivator();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -28,11 +29,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.aggregatedLanguage(0x86ef829012bb4ca7L, 0x947f093788f263a9L, "jetbrains.mps.lang.project");
+    deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAspectDescriptor, myConceptGeneratorDescriptor, myConceptGeneratorInternal_Aspect, myConceptLanguageDescriptor);
+    return Arrays.asList(myConceptAspectDescriptor, myConceptGeneratorDescriptor, myConceptGeneratorInternal_Aspect, myConceptLanguageDescriptor, myConceptModuleActivator);
   }
 
   @Override
@@ -47,6 +49,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptGeneratorInternal_Aspect;
       case LanguageConceptSwitch.LanguageDescriptor:
         return myConceptLanguageDescriptor;
+      case LanguageConceptSwitch.ModuleActivator:
+        return myConceptModuleActivator;
       default:
         return null;
     }
@@ -89,6 +93,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:cdf8afc0-fdc6-47ca-b829-7b2226168efa(jetbrains.mps.lang.descriptor.structure)/9020561928507175845");
     b.version(3);
     b.aggregate("language", 0x179194ecf7e0953bL).target(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL).optional(false).ordered(true).multiple(false).origin("1698302279987270971").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForModuleActivator() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.descriptor", "ModuleActivator", 0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0xbb792987d7bb528L);
+    b.class_(false, false, false);
+    b.origin("r:cdf8afc0-fdc6-47ca-b829-7b2226168efa(jetbrains.mps.lang.descriptor.structure)/844304638793200936");
+    b.version(3);
+    b.aggregate("extensions", 0xbb792987d7bb52bL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(false).ordered(true).multiple(false).origin("844304638793200939").done();
     return b.create();
   }
 }

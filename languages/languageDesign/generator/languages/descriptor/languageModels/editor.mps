@@ -69,5 +69,17 @@
       <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
     </node>
   </node>
+  <node concept="24kQdi" id="IR$DxXuVkR">
+    <ref role="1XX52x" to="yv2q:IR$DxXuVkC" resolve="ModuleActivator" />
+    <node concept="3EZMnI" id="IR$DxXuVla" role="2wV5jI">
+      <node concept="2iRkQZ" id="IR$DxXuVmm" role="2iSdaV" />
+      <node concept="3F0ifn" id="IR$DxXuVlc" role="3EZMnx">
+        <property role="3F0ifm" value="module activator" />
+      </node>
+      <node concept="3F1sOY" id="IR$DxXv2dN" role="3EZMnx">
+        <ref role="1NtTu8" to="yv2q:IR$DxXuVkF" resolve="extensions" />
+      </node>
+    </node>
+  </node>
 </model>
 

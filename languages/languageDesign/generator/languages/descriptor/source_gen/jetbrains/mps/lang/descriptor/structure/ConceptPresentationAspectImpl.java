@@ -13,6 +13,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_GeneratorDescriptor;
   private ConceptPresentation props_GeneratorInternal_Aspect;
   private ConceptPresentation props_LanguageDescriptor;
+  private ConceptPresentation props_ModuleActivator;
 
   @Override
   @Nullable
@@ -46,6 +47,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_LanguageDescriptor = cpb.create();
         }
         return props_LanguageDescriptor;
+      case LanguageConceptSwitch.ModuleActivator:
+        if (props_ModuleActivator == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
+          cpb.rawPresentation("ModuleActivator");
+          props_ModuleActivator = cpb.create();
+        }
+        return props_ModuleActivator;
     }
     return null;
   }

@@ -13,6 +13,7 @@ public final class LanguageConceptSwitch {
   public static final int GeneratorDescriptor = 1;
   public static final int GeneratorInternal_Aspect = 2;
   public static final int LanguageDescriptor = 3;
+  public static final int ModuleActivator = 4;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xf4ad079dbc714ffbL, 0x96009328705cf998L);
@@ -20,6 +21,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x3663ebbd1bf10683L, GeneratorDescriptor);
     builder.put(0x46c8be857954ff41L, GeneratorInternal_Aspect);
     builder.put(0x7d2f7947ef1533a5L, LanguageDescriptor);
+    builder.put(0xbb792987d7bb528L, ModuleActivator);
     myIndex = builder.seal();
   }
 
