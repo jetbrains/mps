@@ -4087,6 +4087,37 @@
     <node concept="3UR2Jj" id="31Rnc32cVJS" role="lGtFl">
       <node concept="TZ5HA" id="31Rnc32cVJT" role="TZ5H$">
         <node concept="1dT_AC" id="31Rnc32cVJU" role="1dT_Ay">
+          <property role="1dT_AB" value="A misnomer Test Session. " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdCKjF" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdCKjG" role="1dT_Ay">
+          <property role="1dT_AB" value="Maintains a map of test case -&gt; {test method} collection." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdCW5V" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdCW5W" role="1dT_Ay">
+          <property role="1dT_AB" value="Translates &quot;raw&quot; events received from a spawned process listener to instances of " />
+        </node>
+        <node concept="1dT_AA" id="2zvrUBdD3V7" role="1dT_Ay">
+          <node concept="92FcH" id="2zvrUBdD3Vd" role="qph3F">
+            <node concept="TZ5HA" id="2zvrUBdD3Vf" role="2XjZqd" />
+            <node concept="VXe08" id="2zvrUBdDdZ$" role="92FcQ">
+              <ref role="VXe09" to="tpnd:2Zbjobgu1Zi" resolve="TestNodeEvent" />
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="2zvrUBdD3V6" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdCBN_" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdCBNA" role="1dT_Ay">
+          <property role="1dT_AB" value="&lt;p&gt;" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdCvSw" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdCvSx" role="1dT_Ay">
           <property role="1dT_AB" value="State of test execution; updates associated " />
         </node>
         <node concept="1dT_AA" id="31Rnc32d1_B" role="1dT_Ay">
@@ -4435,6 +4466,13 @@
               </node>
               <node concept="10Nm6u" id="7uaFES0flaX" role="3uHU7w" />
             </node>
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="2zvrUBdprrC" role="lGtFl">
+        <node concept="TZ5HA" id="2zvrUBdprrD" role="TZ5H$">
+          <node concept="1dT_AC" id="2zvrUBdprrE" role="1dT_Ay">
+            <property role="1dT_AB" value="FIXME This hack may potentially cause misinterpretation of stream contents." />
           </node>
         </node>
       </node>
@@ -5022,6 +5060,16 @@
     <node concept="3UR2Jj" id="31Rnc32j1gr" role="lGtFl">
       <node concept="TZ5HA" id="31Rnc32j1gs" role="TZ5H$">
         <node concept="1dT_AC" id="31Rnc32j1gt" role="1dT_Ay">
+          <property role="1dT_AB" value="Redundant MITM anti-pattern. To be refactored away." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdowlM" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdowlN" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdouEt" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdouEu" role="1dT_Ay">
           <property role="1dT_AB" value="Updates " />
         </node>
         <node concept="1dT_AA" id="31Rnc32j1Kp" role="1dT_Ay">
@@ -5045,6 +5093,15 @@
         </node>
         <node concept="1dT_AC" id="31Rnc32ja3s" role="1dT_Ay">
           <property role="1dT_AB" value=" and other events from a futher unspecified source (usually a listener of a test execution process)" />
+        </node>
+      </node>
+    </node>
+    <node concept="2AHcQZ" id="2zvrUBdowyI" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      <node concept="2B6LJw" id="2zvrUBdowRj" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+        <node concept="3clFbT" id="2zvrUBdowV0" role="2B70Vg">
+          <property role="3clFbU" value="true" />
         </node>
       </node>
     </node>
@@ -7389,6 +7446,23 @@
       </node>
     </node>
     <node concept="2tJIrI" id="5vXSwNTivGx" role="jymVt" />
+    <node concept="3UR2Jj" id="2zvrUBdypmX" role="lGtFl">
+      <node concept="TZ5HA" id="2zvrUBdypmY" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdypmZ" role="1dT_Ay">
+          <property role="1dT_AB" value="After the recent refactoring this enum has been effectively reduced to a utility class with " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBd$KAX" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBd$KAY" role="1dT_Ay">
+          <property role="1dT_AB" value="static methods only. " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBd_Vlu" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBd_Vlv" role="1dT_Ay">
+          <property role="1dT_AB" value="FIXME: replace with class" />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="2LYoGX" id="5gyVhZ1bgKm">
     <property role="TrG5h" value="jUnit" />
@@ -12596,6 +12670,16 @@
       <node concept="TZ5HA" id="2Zbjobgux7k" role="TZ5H$">
         <node concept="1dT_AC" id="2Zbjobgux7l" role="1dT_Ay">
           <property role="1dT_AB" value="to the node representation" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdqTFq" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdqTFr" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdqTFy" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdqTFz" role="1dT_Ay">
+          <property role="1dT_AB" value="FIXME This is not a singleton despite being marked as such." />
         </node>
       </node>
     </node>

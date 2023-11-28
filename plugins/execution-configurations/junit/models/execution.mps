@@ -32,9 +32,14 @@
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -197,6 +202,10 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
+        <child id="2546654756694997556" name="reference" index="92FcQ" />
+        <child id="3106559687488913694" name="line" index="2XjZqd" />
+      </concept>
       <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
         <property id="5858074156537516431" name="text" index="x79VB" />
       </concept>
@@ -210,6 +219,15 @@
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
+      </concept>
+      <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
+        <reference id="2217234381367530213" name="classifier" index="VXe09" />
+      </concept>
+      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
+        <child id="6962838954693749192" name="tag" index="qph3F" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -1286,6 +1304,41 @@
           </node>
         </node>
       </node>
+      <node concept="P$JXv" id="2zvrUBdpy6A" role="lGtFl">
+        <node concept="TZ5HA" id="2zvrUBdpy6B" role="TZ5H$">
+          <node concept="1dT_AC" id="2zvrUBdpy6C" role="1dT_Ay">
+            <property role="1dT_AB" value="Used to be called from " />
+          </node>
+          <node concept="1dT_AA" id="2zvrUBdpymD" role="1dT_Ay">
+            <node concept="92FcH" id="2zvrUBdpymZ" role="qph3F">
+              <node concept="TZ5HA" id="2zvrUBdpyn1" role="2XjZqd" />
+              <node concept="VXe08" id="2zvrUBdpCE5" role="92FcQ">
+                <ref role="VXe09" node="1zHDQsywvgL" resolve="TestEventMessage" />
+              </node>
+            </node>
+          </node>
+          <node concept="1dT_AC" id="2zvrUBdpymC" role="1dT_Ay">
+            <property role="1dT_AB" value="'s ctor." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="2zvrUBdpDhb" role="TZ5H$">
+          <node concept="1dT_AC" id="2zvrUBdpDhc" role="1dT_Ay">
+            <property role="1dT_AB" value="Relies on obsolete JUnit API. " />
+          </node>
+        </node>
+        <node concept="TZ5HI" id="2zvrUBdpCY_" role="3nqlJM">
+          <node concept="TZ5HA" id="2zvrUBdpCYA" role="3HnX3l" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="2zvrUBdpCYB" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <node concept="2B6LJw" id="2zvrUBdpDex" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="2zvrUBdpDgO" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="2Zbjobgn97m" role="jymVt" />
     <node concept="3clFbW" id="2Zbjobgn97n" role="jymVt">
@@ -2089,6 +2142,46 @@
     <node concept="3UR2Jj" id="2ZbjobgpR3Y" role="lGtFl">
       <node concept="TZ5HA" id="2ZbjobgpR3Z" role="TZ5H$">
         <node concept="1dT_AC" id="2ZbjobgpR40" role="1dT_Ay">
+          <property role="1dT_AB" value="Represents a test or a test container in a hierarchy of nested tests. " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdpE1Z" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdpE20" role="1dT_Ay">
+          <property role="1dT_AB" value="Effectively  an equivalent of TestIdentifier from JUnit5." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdsqgL" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdsqgM" role="1dT_Ay">
+          <property role="1dT_AB" value="Used mainly either to facilitate client-server communication " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdtvFp" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdtvFq" role="1dT_Ay">
+          <property role="1dT_AB" value="when running tests in a spawned process, or for internal bookkeeping of tests that " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdtvGN" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdtvGO" role="1dT_Ay">
+          <property role="1dT_AB" value="correspond to locations in user model." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdpGml" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdpGmm" role="1dT_Ay">
+          <property role="1dT_AB" value="&lt;p&gt;" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdpE3t" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdpE3u" role="1dT_Ay">
+          <property role="1dT_AB" value="Legacy doc:" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdpE4J" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdpE4K" role="1dT_Ay">
+          <property role="1dT_AB" value="&lt;p&gt;" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdpE2d" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdpE2e" role="1dT_Ay">
           <property role="1dT_AB" value="an id for a test case/method" />
         </node>
       </node>
@@ -3911,6 +4004,44 @@
     <node concept="3Tm1VV" id="2ZbjobguwR8" role="1B3o_S" />
     <node concept="3uibUv" id="2ZbjobguwRd" role="3HQHJm">
       <ref role="3uigEE" node="2ZbjobgpR3W" resolve="TestKey" />
+    </node>
+    <node concept="3UR2Jj" id="2zvrUBdpGnP" role="lGtFl">
+      <node concept="TZ5HA" id="2zvrUBdpGnQ" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdpGnR" role="1dT_Ay">
+          <property role="1dT_AB" value="Obsolete." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdpGo5" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdpGo6" role="1dT_Ay">
+          <property role="1dT_AB" value="&lt;p&gt;" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdpG_4" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdpG_5" role="1dT_Ay">
+          <property role="1dT_AB" value="An abstraction of a test corresponding to legacy JUnit dichotomy: test case / test method. " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdtpNr" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdtpNs" role="1dT_Ay">
+          <property role="1dT_AB" value="&lt;p&gt;" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="2zvrUBdtpNG" role="TZ5H$">
+        <node concept="1dT_AC" id="2zvrUBdtpNH" role="1dT_Ay">
+          <property role="1dT_AB" value="Used in " />
+        </node>
+        <node concept="1dT_AA" id="2zvrUBdtpP8" role="1dT_Ay">
+          <node concept="92FcH" id="2zvrUBdtpPe" role="qph3F">
+            <node concept="TZ5HA" id="2zvrUBdtpPg" role="2XjZqd" />
+            <node concept="VXe08" id="2zvrUBdtq1U" role="92FcQ">
+              <ref role="VXe09" node="2Zbjobgn6TU" resolve="TestRawEvent" />
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="2zvrUBdtpP7" role="1dT_Ay">
+          <property role="1dT_AB" value="." />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="Qs71p" id="2ZbjobgI3HY">

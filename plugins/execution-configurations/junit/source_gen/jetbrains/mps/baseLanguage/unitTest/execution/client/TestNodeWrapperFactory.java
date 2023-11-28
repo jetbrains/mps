@@ -18,6 +18,11 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
+/**
+ * After the recent refactoring this enum has been effectively reduced to a utility class with 
+ * static methods only. 
+ * FIXME: replace with class
+ */
 public enum TestNodeWrapperFactory {;
 
   private final boolean myRoot;

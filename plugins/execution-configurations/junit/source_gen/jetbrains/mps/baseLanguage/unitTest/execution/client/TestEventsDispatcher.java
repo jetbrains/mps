@@ -10,11 +10,15 @@ import jetbrains.mps.baseLanguage.unitTest.execution.TestEventMessage;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestRawEvent;
 
 /**
+ * Redundant MITM anti-pattern. To be refactored away.
+ * 
  * Updates {@link jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState } with {@link jetbrains.mps.baseLanguage.unitTest.execution.TestEventMessage } and other events from a futher unspecified source (usually a listener of a test execution process)
  */
+@Deprecated(forRemoval = true)
 public final class TestEventsDispatcher {
   private final TestRunState myState;
 
+  @Deprecated
   public TestEventsDispatcher(@NotNull TestRunState testState) {
     myState = testState;
   }

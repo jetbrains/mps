@@ -17,6 +17,13 @@ public final class TestRawEvent {
   private final long myMemoryUsage;
   private final long myTime;
 
+  /**
+   * Used to be called from {@link jetbrains.mps.baseLanguage.unitTest.execution.TestEventMessage }'s ctor.
+   * Relies on obsolete JUnit API. 
+   * 
+   * @deprecated 
+   */
+  @Deprecated(forRemoval = true)
   public TestRawEvent(@NotNull Description description) {
     // note: description.getTestClass() may be null (e.g. when failure indicates an issue with loading of test class)
     myTestKey = constructKeyFromDescription(description);

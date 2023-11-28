@@ -22,6 +22,8 @@ import org.jetbrains.annotations.Nullable;
 /**
  * The conversion from the raw test case/method represenation (ie strings or TestRawKey)
  * to the node representation
+ * 
+ * FIXME This is not a singleton despite being marked as such.
  */
 @Singleton
 /*package*/ final class String2NodeTestKeyConverter {
