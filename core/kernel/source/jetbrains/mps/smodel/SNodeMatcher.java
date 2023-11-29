@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel;
 
@@ -213,6 +213,7 @@ public class SNodeMatcher implements BiPredicate<SNode, SNode> {
         return false;
       }
       // FIXME revisit, perhaps, shall use approach similar to that in NodesMatcher and its obscure myMap
+      //       YES, seems that checking meta-model info is not enough, see MPS-35779
       return true;
     }
   }
@@ -236,7 +237,8 @@ public class SNodeMatcher implements BiPredicate<SNode, SNode> {
       }
       final SModel m1 = r1.getSourceNode().getModel();
       final SModel m2 = r2.getSourceNode().getModel();
-      if (m1 != null && m2 != null) {
+      // different nodes within same model - no match!
+      if (m1 != null && m2 != null && m1 != m2) {
         // references within respective models of their sources
         if (m1.getReference().equals(t1.getModelReference()) && m2.getReference().equals(t2.getModelReference())) {
           return matchLinkTarget(m1.getNode(t1.getNodeId()), m2.getNode(t2.getNodeId()));
@@ -264,8 +266,12 @@ public class SNodeMatcher implements BiPredicate<SNode, SNode> {
       if (m1 == null || m2 == null) {
         return false;
       }
+      if (m1 == m2) {
+        // same model but different target nodes
+        return false;
+      }
       if (m1 == target1.getModel() && m2 == target2.getModel()) {
-        // local (same model) targets
+        // local (respective model of matched node) targets
         return matchLinkTarget(target1, target2);
       }
       return false;
