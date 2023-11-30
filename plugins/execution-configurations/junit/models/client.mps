@@ -4675,7 +4675,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2zvrUBdU2tI" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="3clFb_" id="2zvrUBdQGNa" role="jymVt">
@@ -4725,7 +4725,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2zvrUBdU2EW" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="3clFb_" id="2zvrUBdQGN5" role="jymVt">
@@ -5262,7 +5262,7 @@
       </node>
     </node>
     <node concept="2AHcQZ" id="2zvrUBdowyI" role="2AJF6D">
-      <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       <node concept="2B6LJw" id="2zvrUBdowRj" role="2B76xF">
         <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
         <node concept="3clFbT" id="2zvrUBdowV0" role="2B70Vg">

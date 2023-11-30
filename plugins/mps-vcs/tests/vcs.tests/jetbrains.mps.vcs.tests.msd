@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.vcs.tests" uuid="ed3e0fd1-3ac2-4543-b6b2-d6d0bea8bf18" moduleVersion="0" compileInMPS="true">
+<solution name="jetbrains.mps.vcs.tests" uuid="ed3e0fd1-3ac2-4543-b6b2-d6d0bea8bf18" moduleVersion="0">
   <models>
     <modelRoot type="default" contentPath="${module}">
       <sourceRoot location="models" />
@@ -10,7 +10,6 @@
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)</dependency>
     <dependency reexport="false">f57286e3-4e19-4d8d-8045-3900761f6530(jetbrains.mps.git4idea.stubs)</dependency>

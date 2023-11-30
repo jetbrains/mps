@@ -5024,7 +5024,7 @@
                                     </node>
                                     <node concept="mw_s8" id="lxSmoZTniN" role="1ZfhKB">
                                       <node concept="37vLTw" id="lxSmoZTniO" role="mwGJk">
-                                        <ref role="3cqZAo" node="lxSmoZTkIG" resolve="it" />
+                                        <ref role="3cqZAo" node="lxSmoZTkIG" resolve="type" />
                                       </node>
                                     </node>
                                   </node>

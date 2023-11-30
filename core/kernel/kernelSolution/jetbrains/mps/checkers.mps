@@ -64,7 +64,7 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1215695201514" name="jetbrains.mps.baseLanguage.structure.MinusAssignmentExpression" flags="nn" index="d5anL" />
-      <concept id="2323553266850475941" name="jetbrains.mps.baseLanguage.structure.IHasModifiers" flags="ng" index="2frcj7">
+      <concept id="2323553266850475941" name="jetbrains.mps.baseLanguage.structure.IHasModifiers" flags="ngI" index="2frcj7">
         <child id="2323553266850475953" name="modifiers" index="2frcjj" />
       </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
@@ -83,7 +83,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
@@ -157,7 +157,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
         <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ">
@@ -234,7 +234,7 @@
       <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
         <child id="1160998896846" name="condition" index="1gVkn0" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
         <child id="4972241301747169160" name="typeArgument" index="3PaCim" />
@@ -281,7 +281,7 @@
       <concept id="1184952934362" name="jetbrains.mps.baseLanguage.structure.DimensionExpression" flags="nn" index="3$GHV9">
         <child id="1184953288404" name="expression" index="3$I4v7" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -458,7 +458,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
@@ -8361,22 +8361,22 @@
               <node concept="3uibUv" id="1_3fcCJuAdn" role="3rvSg0">
                 <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
                 <node concept="3uibUv" id="x6gRTxBb9t" role="11_B2D">
-                  <ref role="3uigEE" node="x6gRTxBxNX" resolve="MySuppressableError" />
+                  <ref role="3uigEE" node="x6gRTxBxNX" resolve="AggregatingChecker.MySuppressableError" />
                 </node>
               </node>
               <node concept="3uibUv" id="x6gRTxBaSy" role="3rvQeY">
-                <ref role="3uigEE" to="d6hs:~IssueKindReportItem$PathObject" resolve="PathObject" />
+                <ref role="3uigEE" to="d6hs:~IssueKindReportItem$PathObject" resolve="IssueKindReportItem.PathObject" />
               </node>
             </node>
             <node concept="2ShNRf" id="x6gRTxBcqY" role="33vP2m">
               <node concept="3rGOSV" id="x6gRTxBcpF" role="2ShVmc">
                 <node concept="3uibUv" id="x6gRTxBcpG" role="3rHrn6">
-                  <ref role="3uigEE" to="d6hs:~IssueKindReportItem$PathObject" resolve="PathObject" />
+                  <ref role="3uigEE" to="d6hs:~IssueKindReportItem$PathObject" resolve="IssueKindReportItem.PathObject" />
                 </node>
                 <node concept="3uibUv" id="x6gRTxBcpH" role="3rHtpV">
                   <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
                   <node concept="3uibUv" id="x6gRTxBcpJ" role="11_B2D">
-                    <ref role="3uigEE" node="x6gRTxBxNX" resolve="MySuppressableError" />
+                    <ref role="3uigEE" node="x6gRTxBxNX" resolve="AggregatingChecker.MySuppressableError" />
                   </node>
                 </node>
               </node>
@@ -8622,14 +8622,14 @@
                                                         <node concept="3uibUv" id="x6gRTxBITp" role="3clF45">
                                                           <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
                                                           <node concept="3uibUv" id="x6gRTxBITq" role="11_B2D">
-                                                            <ref role="3uigEE" to="d6hs:~IssueKindReportItem$PathObject" resolve="PathObject" />
+                                                            <ref role="3uigEE" to="d6hs:~IssueKindReportItem$PathObject" resolve="IssueKindReportItem.PathObject" />
                                                           </node>
                                                           <node concept="3qUE_q" id="x6gRTxBITr" role="11_B2D">
                                                             <node concept="3uibUv" id="x6gRTxBITs" role="3qUE_r">
                                                               <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
                                                               <node concept="3qUE_q" id="x6gRTxBITt" role="11_B2D">
                                                                 <node concept="3uibUv" id="x6gRTxBITu" role="3qUE_r">
-                                                                  <ref role="3uigEE" node="x6gRTxw0GB" resolve="SuppressableError" />
+                                                                  <ref role="3uigEE" node="x6gRTxw0GB" resolve="CheckingSession.SuppressableError" />
                                                                   <node concept="3qUE_q" id="x6gRTxBITv" role="11_B2D">
                                                                     <node concept="3uibUv" id="x6gRTxBITw" role="3qUE_r">
                                                                       <ref role="3uigEE" to="d6hs:~IssueKindReportItem" resolve="IssueKindReportItem" />

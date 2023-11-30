@@ -4012,7 +4012,7 @@
                                                     <node concept="1Y3b0j" id="3xQJeztN15q" role="YeSDq">
                                                       <property role="2bfB8j" value="true" />
                                                       <property role="373rjd" value="true" />
-                                                      <ref role="1Y3XeK" to="w1kc:~SLanguageHierarchy$HierarchyVisitor" resolve="HierarchyVisitor" />
+                                                      <ref role="1Y3XeK" to="w1kc:~SLanguageHierarchy$HierarchyVisitor" resolve="SLanguageHierarchy.HierarchyVisitor" />
                                                       <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                                                       <node concept="3Tm1VV" id="3xQJeztN15r" role="1B3o_S" />
                                                       <node concept="3clFb_" id="3xQJeztN15L" role="jymVt">
@@ -4465,7 +4465,7 @@
                                                                     </node>
                                                                   </node>
                                                                   <node concept="37vLTw" id="5AGeKBs4ymL" role="37wK5m">
-                                                                    <ref role="3cqZAo" node="5AGeKBs4ymF" resolve="fromVersion" />
+                                                                    <ref role="3cqZAo" node="5AGeKBs4ymF" resolve="ver" />
                                                                   </node>
                                                                   <node concept="3cpWs3" id="4vDGnVXm5p9" role="37wK5m">
                                                                     <node concept="3cmrfG" id="4vDGnVXm5_Z" role="3uHU7w">
@@ -4716,7 +4716,7 @@
         <node concept="3clFbF" id="oze2ctd1dm" role="3cqZAp">
           <node concept="37vLTI" id="oze2ctd1Uj" role="3clFbG">
             <node concept="37vLTw" id="oze2ctd1dk" role="37vLTJ">
-              <ref role="3cqZAo" node="oze2ctcZod" resolve="myProject" />
+              <ref role="3cqZAo" node="oze2ctcZod" resolve="myMPSProject" />
             </node>
             <node concept="2OqwBi" id="oze2ctcRjv" role="37vLTx">
               <node concept="37vLTw" id="oze2ctcRju" role="2Oq$k0">
@@ -4736,7 +4736,7 @@
           <node concept="3y3z36" id="oze2ctd4A_" role="3cqZAk">
             <node concept="10Nm6u" id="oze2ctd4Ly" role="3uHU7w" />
             <node concept="37vLTw" id="oze2ctd4qG" role="3uHU7B">
-              <ref role="3cqZAo" node="oze2ctcZod" resolve="myProject" />
+              <ref role="3cqZAo" node="oze2ctcZod" resolve="myMPSProject" />
             </node>
           </node>
         </node>
@@ -5069,7 +5069,7 @@
                                                 <node concept="liA8E" id="3ZMYeQofgfZ" role="2OqNvi">
                                                   <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
                                                   <node concept="37vLTw" id="3ZMYeQofHUo" role="37wK5m">
-                                                    <ref role="3cqZAo" node="3ZMYeQofHUi" resolve="language" />
+                                                    <ref role="3cqZAo" node="3ZMYeQofHUi" resolve="scriptLanguage" />
                                                   </node>
                                                 </node>
                                               </node>
@@ -5124,7 +5124,7 @@
                     </node>
                     <node concept="2OqwBi" id="7osCUTviUGa" role="37wK5m">
                       <node concept="37vLTw" id="7osCUTviPws" role="2Oq$k0">
-                        <ref role="3cqZAo" node="oze2ctcZod" resolve="myProject" />
+                        <ref role="3cqZAo" node="oze2ctcZod" resolve="myMPSProject" />
                       </node>
                       <node concept="liA8E" id="7osCUTviVbp" role="2OqNvi">
                         <ref role="37wK5l" to="z1c3:~MPSProject.getProject()" resolve="getProject" />

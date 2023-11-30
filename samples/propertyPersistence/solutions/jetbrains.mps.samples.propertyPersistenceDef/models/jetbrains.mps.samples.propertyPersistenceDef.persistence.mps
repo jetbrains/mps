@@ -63,7 +63,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
@@ -188,7 +188,7 @@
       <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
         <child id="1160998896846" name="condition" index="1gVkn0" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -214,7 +214,7 @@
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -295,7 +295,7 @@
       <concept id="1228341669568" name="jetbrains.mps.lang.smodel.structure.Node_DetachOperation" flags="nn" index="3YRAZt" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -2040,7 +2040,7 @@
                 <node concept="17QB3L" id="10F3j9V$4rR" role="1tU5fm" />
                 <node concept="2OqwBi" id="10F3j9V$cUr" role="33vP2m">
                   <node concept="2GrUjf" id="10F3j9V$aQD" role="2Oq$k0">
-                    <ref role="2Gs0qQ" node="3PyP5yK8YIL" resolve="fileName" />
+                    <ref role="2Gs0qQ" node="3PyP5yK8YIL" resolve="ds" />
                   </node>
                   <node concept="liA8E" id="10F3j9V$nvM" role="2OqNvi">
                     <ref role="37wK5l" to="dush:~StreamDataSource.getStreamName()" resolve="getStreamName" />
@@ -2053,7 +2053,7 @@
                 <property role="TrG5h" value="oldNode" />
                 <node concept="3EllGN" id="iFm7W0HPJJ" role="33vP2m">
                   <node concept="37vLTw" id="iFm7W0HPJL" role="3ElQJh">
-                    <ref role="3cqZAo" node="4YpB5dn3TuL" resolve="myRootsPerFile" />
+                    <ref role="3cqZAo" node="4YpB5dn3TuL" resolve="myRootsByFile" />
                   </node>
                   <node concept="37vLTw" id="10F3j9V$qcC" role="3ElVtu">
                     <ref role="3cqZAo" node="10F3j9V$2y7" resolve="streamName" />
@@ -2077,7 +2077,7 @@
                   <node concept="37vLTI" id="10F3j9V_vmb" role="3clFbG">
                     <node concept="2OqwBi" id="10F3j9V_rNH" role="37vLTx">
                       <node concept="2GrUjf" id="10F3j9V_rNI" role="2Oq$k0">
-                        <ref role="2Gs0qQ" node="3PyP5yK8YIL" resolve="fileName" />
+                        <ref role="2Gs0qQ" node="3PyP5yK8YIL" resolve="ds" />
                       </node>
                       <node concept="liA8E" id="10F3j9V_rNJ" role="2OqNvi">
                         <ref role="37wK5l" to="dush:~StreamDataSource.openInputStream()" resolve="openInputStream" />
@@ -2160,7 +2160,7 @@
                     <node concept="2OqwBi" id="iFm7W0J3fU" role="3clFbG">
                       <node concept="3YRAZt" id="10F3j9VASuX" role="2OqNvi" />
                       <node concept="37vLTw" id="iFm7W0J14h" role="2Oq$k0">
-                        <ref role="3cqZAo" node="iFm7W0Hg63" resolve="oldNodes" />
+                        <ref role="3cqZAo" node="iFm7W0Hg63" resolve="oldNode" />
                       </node>
                     </node>
                   </node>
@@ -2172,7 +2172,7 @@
                         </node>
                       </node>
                       <node concept="37vLTw" id="iFm7W0TSR2" role="2Oq$k0">
-                        <ref role="3cqZAo" node="4YpB5dn3TuL" resolve="myRootsPerFile" />
+                        <ref role="3cqZAo" node="4YpB5dn3TuL" resolve="myRootsByFile" />
                       </node>
                     </node>
                   </node>
@@ -2211,7 +2211,7 @@
                           <node concept="1pGfFk" id="1nLyZqZ5luy" role="2ShVmc">
                             <ref role="37wK5l" to="33ny:~ArrayList.&lt;init&gt;()" resolve="ArrayList" />
                             <node concept="3uibUv" id="1nLyZqZ5luz" role="1pMfVU">
-                              <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="Problem" />
+                              <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="SModel.Problem" />
                             </node>
                           </node>
                         </node>
@@ -2586,7 +2586,7 @@
                   <node concept="37vLTI" id="3urGXjhB_7I" role="3clFbG">
                     <node concept="3EllGN" id="3urGXjhB_7J" role="37vLTJ">
                       <node concept="37vLTw" id="3urGXjhB_7K" role="3ElQJh">
-                        <ref role="3cqZAo" node="4YpB5dn3TuL" resolve="myRootsPerFile" />
+                        <ref role="3cqZAo" node="4YpB5dn3TuL" resolve="myRootsByFile" />
                       </node>
                       <node concept="37vLTw" id="10F3j9V_dC$" role="3ElVtu">
                         <ref role="3cqZAo" node="10F3j9V$2y7" resolve="streamName" />

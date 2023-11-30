@@ -4182,7 +4182,7 @@
                     <node concept="BsUDl" id="3HHsmlLUSla" role="3clFbG">
                       <ref role="37wK5l" node="18X2O0Fy9mO" resolve="collectDeclarationsBefore" />
                       <node concept="37vLTw" id="3HHsmlLUSz6" role="37wK5m">
-                        <ref role="3cqZAo" node="3HHsmlLURGD" resolve="collector" />
+                        <ref role="3cqZAo" node="3HHsmlLURGD" resolve="sigCollector" />
                       </node>
                       <node concept="37vLTw" id="3HHsmlLUSR1" role="37wK5m">
                         <ref role="3cqZAo" node="1pHfrwYTuI7" resolve="childNode" />
@@ -4193,7 +4193,7 @@
                     <node concept="BsUDl" id="3HHsmlLUTzs" role="3clFbG">
                       <ref role="37wK5l" node="1yTI8p9qmpS" resolve="collectSpecificScope" />
                       <node concept="37vLTw" id="3HHsmlLUTHu" role="37wK5m">
-                        <ref role="3cqZAo" node="3HHsmlLURGD" resolve="collector" />
+                        <ref role="3cqZAo" node="3HHsmlLURGD" resolve="sigCollector" />
                       </node>
                       <node concept="37vLTw" id="3HHsmlLUU5K" role="37wK5m">
                         <ref role="3cqZAo" node="1pHfrwYTuI7" resolve="childNode" />

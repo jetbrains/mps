@@ -1289,7 +1289,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="51DD0tdOcZU" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="7MSVDs2BlOo" role="jymVt" />
@@ -2626,7 +2626,7 @@
           <node concept="2OqwBi" id="HwplGM784t" role="3cqZAk">
             <property role="hSjvv" value="true" />
             <node concept="37vLTw" id="51DD0te2UxV" role="2Oq$k0">
-              <ref role="3cqZAo" node="51DD0te2UxI" resolve="configurationParameter" />
+              <ref role="3cqZAo" node="51DD0te2UxI" resolve="requestBuilder" />
             </node>
             <node concept="liA8E" id="HwplGM784y" role="2OqNvi">
               <ref role="37wK5l" to="z4cc:~LauncherDiscoveryRequestBuilder.build()" resolve="build" />

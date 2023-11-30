@@ -1535,7 +1535,7 @@
                               <node concept="2OqwBi" id="51DD0tdMhSl" role="33vP2m">
                                 <node concept="2ShNRf" id="51DD0tdMhSm" role="2Oq$k0">
                                   <node concept="1pGfFk" id="51DD0tdMhSn" role="2ShVmc">
-                                    <ref role="37wK5l" to="o3n2:5DY7s5F2Pa1" resolve="MacroContext" />
+                                    <ref role="37wK5l" to="o3n2:5DY7s5F2Pa1" resolve="MacroHelper.MacroContext" />
                                     <node concept="37vLTw" id="51DD0tdMhSo" role="37wK5m">
                                       <ref role="3cqZAo" node="51DD0tdMhSb" resolve="project" />
                                     </node>

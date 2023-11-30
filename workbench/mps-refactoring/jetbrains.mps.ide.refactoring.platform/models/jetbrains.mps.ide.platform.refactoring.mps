@@ -385,7 +385,7 @@
         <node concept="3clFbF" id="2bvLhVQr3Ag" role="3cqZAp">
           <node concept="37vLTI" id="2bvLhVQr3Ai" role="3clFbG">
             <node concept="37vLTw" id="2bvLhVQr3Al" role="37vLTJ">
-              <ref role="3cqZAo" node="2bvLhVQr3Ac" resolve="myRa" />
+              <ref role="3cqZAo" node="2bvLhVQr3Ac" resolve="myRefactoringAccess" />
             </node>
             <node concept="37vLTw" id="2bvLhVQr3Am" role="37vLTx">
               <ref role="3cqZAo" node="2bvLhVQr3jY" resolve="ra" />

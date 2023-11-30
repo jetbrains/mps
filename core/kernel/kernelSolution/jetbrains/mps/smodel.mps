@@ -1923,7 +1923,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2rC_Cqzb9cM" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2tJIrI" id="7nnMVFCi0_n" role="jymVt" />

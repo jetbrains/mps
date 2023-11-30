@@ -2087,7 +2087,7 @@
                     <ref role="3cqZAo" node="4Nakfq3Tgu_" resolve="seq" />
                   </node>
                   <node concept="3VsKOn" id="4Nakfq3Tgv4" role="37wK5m">
-                    <ref role="3VsUkX" node="4Nakfq3Tgvd" resolve="Child" />
+                    <ref role="3VsUkX" node="4Nakfq3Tgvd" resolve="TestGenericsWithNodes.Child" />
                   </node>
                 </node>
                 <node concept="PeGgZ" id="4Nakfq3Tgv5" role="1tU5fm" />
@@ -2182,7 +2182,7 @@
           <property role="2bfB8j" value="true" />
           <node concept="3Tm1VV" id="4Nakfq3Tgve" role="1B3o_S" />
           <node concept="3uibUv" id="4Nakfq3Tgvf" role="EKbjA">
-            <ref role="3uigEE" node="4Nakfq3Tgvb" resolve="Base" />
+            <ref role="3uigEE" node="4Nakfq3Tgvb" resolve="TestGenericsWithNodes.Base" />
           </node>
         </node>
         <node concept="2tJIrI" id="4Nakfq3Tgvg" role="jymVt" />
@@ -2191,7 +2191,7 @@
           <node concept="16euLQ" id="4Nakfq3Tgvi" role="16eVyc">
             <property role="TrG5h" value="T" />
             <node concept="3uibUv" id="4Nakfq3Tgvj" role="3ztrMU">
-              <ref role="3uigEE" node="4Nakfq3Tgvb" resolve="Base" />
+              <ref role="3uigEE" node="4Nakfq3Tgvb" resolve="TestGenericsWithNodes.Base" />
             </node>
           </node>
           <node concept="37vLTG" id="4Nakfq3Tgvk" role="3clF46">
@@ -2226,7 +2226,7 @@
           <node concept="16euLQ" id="4Nakfq3Tgvw" role="16eVyc">
             <property role="TrG5h" value="T" />
             <node concept="3uibUv" id="4Nakfq3Tgvx" role="3ztrMU">
-              <ref role="3uigEE" node="4Nakfq3Tgvb" resolve="Base" />
+              <ref role="3uigEE" node="4Nakfq3Tgvb" resolve="TestGenericsWithNodes.Base" />
             </node>
           </node>
           <node concept="16euLQ" id="4Nakfq3Tgvy" role="16eVyc">
@@ -2283,7 +2283,7 @@
             <property role="TrG5h" value="data" />
             <property role="3TUv4t" value="true" />
             <node concept="3uibUv" id="4Nakfq3imt3" role="1tU5fm">
-              <ref role="3uigEE" node="4X7P4q$3qKR" resolve="InstructionState" />
+              <ref role="3uigEE" node="4X7P4q$3qKR" resolve="FunctionCallMix.Data" />
               <node concept="3uibUv" id="4Nakfq3imt4" role="11_B2D">
                 <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
               </node>
@@ -2366,7 +2366,7 @@
                         <node concept="2ShNRf" id="4Nakfq3hOdV" role="3cqZAk">
                           <node concept="1pGfFk" id="4Nakfq3hOdW" role="2ShVmc">
                             <property role="373rjd" value="true" />
-                            <ref role="37wK5l" node="4X7P4q$56uJ" resolve="InstructionState" />
+                            <ref role="37wK5l" node="4X7P4q$56uJ" resolve="FunctionCallMix.Data" />
                             <node concept="3cmrfG" id="4Nakfq3hOdX" role="37wK5m">
                               <property role="3cmrfH" value="2" />
                             </node>
@@ -2382,7 +2382,7 @@
                         <node concept="3cpWs6" id="4Nakfq3hOe3" role="3cqZAp">
                           <node concept="2OqwBi" id="4Nakfq3hOe4" role="3cqZAk">
                             <node concept="37vLTw" id="4Nakfq3hOe5" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4Nakfq3gIRr" resolve="state" />
+                              <ref role="3cqZAo" node="4Nakfq3gIRr" resolve="data" />
                             </node>
                             <node concept="liA8E" id="4Nakfq3hOe6" role="2OqNvi">
                               <ref role="37wK5l" node="4X7P4q$3tb5" resolve="copy" />
@@ -2398,7 +2398,7 @@
           </node>
           <node concept="1ajhzC" id="4Nakfq3hOdI" role="3clF45">
             <node concept="3uibUv" id="4Nakfq3hOdM" role="1ajl9A">
-              <ref role="3uigEE" node="4X7P4q$3qKR" resolve="InstructionState" />
+              <ref role="3uigEE" node="4X7P4q$3qKR" resolve="FunctionCallMix.Data" />
               <node concept="3uibUv" id="4Nakfq3hOdN" role="11_B2D">
                 <ref role="3uigEE" to="wyt6:~Integer" resolve="Integer" />
               </node>
@@ -2426,7 +2426,7 @@
               </node>
             </node>
             <node concept="3uibUv" id="4X7P4q$8lZO" role="3clF45">
-              <ref role="3uigEE" node="4X7P4q$3qKR" resolve="InstructionState" />
+              <ref role="3uigEE" node="4X7P4q$3qKR" resolve="FunctionCallMix.Data" />
               <node concept="16syzq" id="4X7P4q$8pxE" role="11_B2D">
                 <ref role="16sUi3" node="4X7P4q$3t17" resolve="T" />
               </node>
