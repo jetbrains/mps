@@ -406,6 +406,7 @@
       <directory url="file://$PROJECT_DIR$/plugins/mps-vcs/languages/mergehints.plugin/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-vcs/languages/mergehints/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-vcs/languages/mergehints/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-vcs/tests/vcs.tests/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-vcs/vcs-platform/languages/modelmetadata/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/_theSimplestLanguage/languages/theSimplestLanguage/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/_theSimplestLanguage/languages/theSimplestLanguage/source_gen" includeSubdirectories="true" />

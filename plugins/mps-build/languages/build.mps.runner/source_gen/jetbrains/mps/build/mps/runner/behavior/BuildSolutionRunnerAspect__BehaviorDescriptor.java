@@ -27,9 +27,9 @@ import jetbrains.mps.build.util.DescendantsScope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class BuildSolutionRunnerAspect__BehaviorDescriptor extends BaseBHDescriptor {
@@ -48,7 +48,7 @@ public final class BuildSolutionRunnerAspect__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static String getClassName_id1aYLt$9dW4N(@NotNull SNode __thisNode__) {
-    return "MainClass";
+    return (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.classSimpleName$kRBO)) ? "MainClass" : SPropertyOperations.getString(__thisNode__, PROPS.classSimpleName$kRBO));
   }
   /*package*/ static String getMethodName_id1aYLt$9dX0a(@NotNull SNode __thisNode__) {
     return "mpsMain";
@@ -140,16 +140,20 @@ public final class BuildSolutionRunnerAspect__BehaviorDescriptor extends BaseBHD
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
+  private static boolean isEmptyString(String str) {
+    return str == null || str.isEmpty();
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty classSimpleName$kRBO = MetaAdapterFactory.getProperty(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x1f7059e5ed82569aL, "classSimpleName");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+  }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink solution$MOiH = MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x54b085b5945c6691L, "solution");
     /*package*/ static final SContainmentLink requiredPlugin$RiWU = MetaAdapterFactory.getContainmentLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x39ea87a41cc0827eL, 0x3283ab1237cb7bddL, "requiredPlugin");
     /*package*/ static final SReferenceLink plugin$9MhS = MetaAdapterFactory.getReferenceLink(0x427a473d5177432cL, 0x9905bcbceb71b996L, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin");
     /*package*/ static final SContainmentLink parts$mGDj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {

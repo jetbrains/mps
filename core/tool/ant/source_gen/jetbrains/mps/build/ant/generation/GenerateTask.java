@@ -30,6 +30,8 @@ public class GenerateTask extends MpsLoadTask {
     myWhatToDo.addChunk(chunk.getModules(), chunk.getBootstrap());
   }
   public void addConfiguredLibrary(ModuleJarDataType jar) {
+    // FIXME decide whether I care to evolve manifest story. With reliable <plugin>s, don't think there's much value in 
+    //      distinct <library> elements (grouped into manifest). Rather shall spend effort to make more plugins?
     if (jar.getManifest() != null) {
       // FIXME same in MpsRunnerTask; have to be xml parsing
       // perhaps, shall pass module manifest file right into Script, and parse there?

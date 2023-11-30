@@ -53,15 +53,6 @@ public final class MakeTask extends MpsLoadTask {
     }
   }
 
-  public void addConfiguredLibrary(ModuleJarDataType jar) {
-    // XXX why it's not part of MpsLoadTask?
-    // FIXME decide whether I care to evolve manifest story. With reliable <plugin>s, don't think there's much value in 
-    //      distinct <library> elements (grouped into manifest). Rather shall spend effort to make more plugins?
-    if (jar.getFile() != null) {
-      addLibraryJar(jar.getFile());
-    }
-  }
-
   @Override
   protected void finalizeScriptSettings(Script whatToDo) {
     setFork(true);
