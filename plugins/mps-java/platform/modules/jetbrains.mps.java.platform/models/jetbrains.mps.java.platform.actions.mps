@@ -735,6 +735,7 @@
     <property role="3GE5qa" value="Actions" />
     <property role="2uzpH1" value="Paste as Java Class" />
     <property role="2YLI8m" value="6u2MFnph2wS/none" />
+    <property role="1rBW0U" value="true" />
     <node concept="1DS2jV" id="2vs9_ygEfaX" role="1NuT2Z">
       <property role="TrG5h" value="model" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MODEL" resolve="MODEL" />

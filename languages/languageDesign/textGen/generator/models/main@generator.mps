@@ -5464,7 +5464,7 @@
           <node concept="3cpWsn" id="RqKTrXUk2n" role="3cpWs9">
             <property role="TrG5h" value="rv" />
             <node concept="3uibUv" id="4AZHjWe01IJ" role="1tU5fm">
-              <ref role="3uigEE" to="yfwt:~TextGenModelOutline$UnitBuilder" resolve="UnitBuilder" />
+              <ref role="3uigEE" to="yfwt:~TextGenModelOutline$UnitBuilder" resolve="TextGenModelOutline.UnitBuilder" />
             </node>
             <node concept="2OqwBi" id="hU92dosFvb" role="33vP2m">
               <node concept="37vLTw" id="hU92dosEKP" role="2Oq$k0">

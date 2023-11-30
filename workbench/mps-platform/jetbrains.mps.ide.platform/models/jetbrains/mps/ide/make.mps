@@ -1945,7 +1945,7 @@
                                 <ref role="1HBi2w" node="9D0Ba05uYl" resolve="WorkbenchMakeService" />
                               </node>
                               <node concept="Rm8GO" id="41innpAoSuP" role="37wK5m">
-                                <ref role="1Px2BO" to="hfuk:7lTD6YZtjgd" resolve="Kind" />
+                                <ref role="1Px2BO" to="hfuk:7lTD6YZtjgd" resolve="MakeNotification.Kind" />
                                 <ref role="Rm8GQ" to="hfuk:7lTD6YZtjgj" resolve="SCRIPT_ABOUT_TO_START" />
                               </node>
                             </node>
@@ -2366,7 +2366,7 @@
                                 <ref role="1HBi2w" node="9D0Ba05uYl" resolve="WorkbenchMakeService" />
                               </node>
                               <node concept="Rm8GO" id="41innpAoSv8" role="37wK5m">
-                                <ref role="1Px2BO" to="hfuk:7lTD6YZtjgd" resolve="Kind" />
+                                <ref role="1Px2BO" to="hfuk:7lTD6YZtjgd" resolve="MakeNotification.Kind" />
                                 <ref role="Rm8GQ" to="hfuk:7lTD6YZtjgl" resolve="SCRIPT_FINISHED" />
                               </node>
                             </node>
@@ -2387,7 +2387,7 @@
                   </node>
                   <node concept="2ShNRf" id="41innpAoSu$" role="37wK5m">
                     <node concept="1pGfFk" id="41innpAoSu_" role="2ShVmc">
-                      <ref role="37wK5l" node="9D0Ba05v2h" resolve="Controller" />
+                      <ref role="37wK5l" node="9D0Ba05v2h" resolve="WorkbenchMakeService.Controller" />
                       <node concept="37vLTw" id="41innpAoSuA" role="37wK5m">
                         <ref role="3cqZAo" node="9D0Ba05vjs" resolve="controller" />
                       </node>
@@ -2442,8 +2442,8 @@
                     <node concept="1Y3b0j" id="2Eb$RRpBMKr" role="YeSDq">
                       <property role="2bfB8j" value="true" />
                       <property role="373rjd" value="true" />
-                      <ref role="1Y3XeK" to="xygl:~Task$Backgroundable" resolve="Backgroundable" />
-                      <ref role="37wK5l" to="xygl:~Task$Backgroundable.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,boolean)" resolve="Backgroundable" />
+                      <ref role="1Y3XeK" to="xygl:~Task$Backgroundable" resolve="Task.Backgroundable" />
+                      <ref role="37wK5l" to="xygl:~Task$Backgroundable.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,boolean)" resolve="Task.Backgroundable" />
                       <node concept="3Tm1VV" id="2Eb$RRpBMKs" role="1B3o_S" />
                       <node concept="3clFb_" id="2Eb$RRpBVCl" role="jymVt">
                         <property role="TrG5h" value="run" />
@@ -2474,13 +2474,13 @@
                                 </node>
                               </node>
                               <node concept="37vLTw" id="2Eb$RRpDF6g" role="2Oq$k0">
-                                <ref role="3cqZAo" node="2Eb$RRpzzdi" resolve="ff" />
+                                <ref role="3cqZAo" node="2Eb$RRpzzdi" resolve="makeTask" />
                               </node>
                             </node>
                           </node>
                         </node>
                         <node concept="2AHcQZ" id="2Eb$RRpBVCz" role="2AJF6D">
-                          <ref role="2AI5Lk" to="wyt6:~Override" />
+                          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                         </node>
                       </node>
                       <node concept="2tJIrI" id="2Eb$RRpCqBC" role="jymVt" />
@@ -2494,7 +2494,7 @@
                           <node concept="3clFbF" id="2Eb$RRpCarz" role="3cqZAp">
                             <node concept="2OqwBi" id="2Eb$RRpCar$" role="3clFbG">
                               <node concept="37vLTw" id="2Eb$RRpCar_" role="2Oq$k0">
-                                <ref role="3cqZAo" node="2Eb$RRpzzdi" resolve="ff" />
+                                <ref role="3cqZAo" node="2Eb$RRpzzdi" resolve="makeTask" />
                               </node>
                               <node concept="liA8E" id="2Eb$RRpCarA" role="2OqNvi">
                                 <ref role="37wK5l" node="2Eb$RRpxXRP" resolve="cancel" />
@@ -2522,7 +2522,7 @@
                   </node>
                 </node>
                 <node concept="37vLTw" id="2Eb$RRpB5n$" role="37vLTJ">
-                  <ref role="3cqZAo" node="41innpAoSuj" resolve="task" />
+                  <ref role="3cqZAo" node="41innpAoSuj" resolve="platformTask" />
                 </node>
               </node>
             </node>
@@ -2540,15 +2540,15 @@
               <node concept="3clFbF" id="2Eb$RRpACM7" role="3cqZAp">
                 <node concept="37vLTI" id="2Eb$RRpACM9" role="3clFbG">
                   <node concept="37vLTw" id="2Eb$RRpACMd" role="37vLTJ">
-                    <ref role="3cqZAo" node="41innpAoSuj" resolve="task" />
+                    <ref role="3cqZAo" node="41innpAoSuj" resolve="platformTask" />
                   </node>
                   <node concept="2ShNRf" id="2Eb$RRpElCK" role="37vLTx">
                     <node concept="YeOm9" id="2Eb$RRpEzmr" role="2ShVmc">
                       <node concept="1Y3b0j" id="2Eb$RRpEzmu" role="YeSDq">
                         <property role="2bfB8j" value="true" />
                         <property role="373rjd" value="true" />
-                        <ref role="37wK5l" to="xygl:~Task$Modal.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,boolean)" resolve="Modal" />
-                        <ref role="1Y3XeK" to="xygl:~Task$Modal" resolve="Modal" />
+                        <ref role="37wK5l" to="xygl:~Task$Modal.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,boolean)" resolve="Task.Modal" />
+                        <ref role="1Y3XeK" to="xygl:~Task$Modal" resolve="Task.Modal" />
                         <node concept="37vLTw" id="2Eb$RRpF7rp" role="37wK5m">
                           <ref role="3cqZAo" node="41innpApNZl" resolve="ideaPrj" />
                         </node>
@@ -2576,7 +2576,7 @@
                             <node concept="3clFbF" id="2Eb$RRpEMFQ" role="3cqZAp">
                               <node concept="2OqwBi" id="2Eb$RRpEMFR" role="3clFbG">
                                 <node concept="37vLTw" id="4pkeYHhD_IS" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="2Eb$RRpzzdi" resolve="ff" />
+                                  <ref role="3cqZAo" node="2Eb$RRpzzdi" resolve="makeTask" />
                                 </node>
                                 <node concept="liA8E" id="2Eb$RRpEMFV" role="2OqNvi">
                                   <ref role="37wK5l" to="4rvk:6eQ0BhLYtnI" resolve="run" />
@@ -2594,7 +2594,7 @@
                             </node>
                           </node>
                           <node concept="2AHcQZ" id="2Eb$RRpEB3k" role="2AJF6D">
-                            <ref role="2AI5Lk" to="wyt6:~Override" />
+                            <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                           </node>
                         </node>
                         <node concept="3clFb_" id="2Eb$RRpEYh7" role="jymVt">
@@ -2607,7 +2607,7 @@
                             <node concept="3clFbF" id="2Eb$RRpEYhb" role="3cqZAp">
                               <node concept="2OqwBi" id="2Eb$RRpEYhc" role="3clFbG">
                                 <node concept="37vLTw" id="2Eb$RRpEYhd" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="2Eb$RRpzzdi" resolve="ff" />
+                                  <ref role="3cqZAo" node="2Eb$RRpzzdi" resolve="makeTask" />
                                 </node>
                                 <node concept="liA8E" id="2Eb$RRpEYhe" role="2OqNvi">
                                   <ref role="37wK5l" node="2Eb$RRpxXRP" resolve="cancel" />
@@ -2723,7 +2723,7 @@
                                         <node concept="liA8E" id="41innpAoSws" role="2OqNvi">
                                           <ref role="37wK5l" to="xygl:~ProgressManager.run(com.intellij.openapi.progress.Task)" resolve="run" />
                                           <node concept="37vLTw" id="41innpAoSwt" role="37wK5m">
-                                            <ref role="3cqZAo" node="41innpAoSuj" resolve="task" />
+                                            <ref role="3cqZAo" node="41innpAoSuj" resolve="platformTask" />
                                           </node>
                                         </node>
                                       </node>
@@ -4415,18 +4415,18 @@
         <node concept="1pGfFk" id="9D0Ba05uFl" role="2ShVmc">
           <ref role="37wK5l" to="i5cy:~AtomicReference.&lt;init&gt;(java.lang.Object)" resolve="AtomicReference" />
           <node concept="3uibUv" id="9D0Ba05uFm" role="1pMfVU">
-            <ref role="3uigEE" node="9D0Ba05uHf" resolve="TaskState" />
+            <ref role="3uigEE" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
           </node>
           <node concept="Rm8GO" id="9D0Ba05uFn" role="37wK5m">
             <ref role="Rm8GQ" node="9D0Ba05uJR" resolve="NOT_STARTED" />
-            <ref role="1Px2BO" node="9D0Ba05uHf" resolve="TaskState" />
+            <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
           </node>
         </node>
       </node>
       <node concept="3uibUv" id="9D0Ba05uFo" role="1tU5fm">
         <ref role="3uigEE" to="i5cy:~AtomicReference" resolve="AtomicReference" />
         <node concept="3uibUv" id="9D0Ba05uFp" role="11_B2D">
-          <ref role="3uigEE" node="9D0Ba05uHf" resolve="TaskState" />
+          <ref role="3uigEE" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
         </node>
       </node>
     </node>
@@ -4514,7 +4514,7 @@
         <node concept="3cpWs6" id="2Eb$RRpvebC" role="3cqZAp">
           <node concept="3clFbC" id="2Eb$RRpvfwZ" role="3cqZAk">
             <node concept="Rm8GO" id="2Eb$RRpvfx0" role="3uHU7w">
-              <ref role="1Px2BO" node="9D0Ba05uHf" resolve="TaskState" />
+              <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
               <ref role="Rm8GQ" node="9D0Ba05uJU" resolve="CANCELLED" />
             </node>
             <node concept="2OqwBi" id="2Eb$RRpvfx1" role="3uHU7B">
@@ -4547,7 +4547,7 @@
             <node concept="3y3z36" id="2Eb$RRpwXRK" role="3uHU7w">
               <node concept="Rm8GO" id="2Eb$RRpwXRL" role="3uHU7w">
                 <ref role="Rm8GQ" node="9D0Ba05uJS" resolve="RUNNING" />
-                <ref role="1Px2BO" node="9D0Ba05uHf" resolve="TaskState" />
+                <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
               </node>
               <node concept="2OqwBi" id="2Eb$RRpwXRM" role="3uHU7B">
                 <node concept="37vLTw" id="2Eb$RRpwXRN" role="2Oq$k0">
@@ -4569,7 +4569,7 @@
               </node>
               <node concept="Rm8GO" id="2Eb$RRpwXRT" role="3uHU7w">
                 <ref role="Rm8GQ" node="9D0Ba05uJR" resolve="NOT_STARTED" />
-                <ref role="1Px2BO" node="9D0Ba05uHf" resolve="TaskState" />
+                <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
               </node>
             </node>
           </node>
@@ -4757,7 +4757,7 @@
               <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
               <node concept="Rm8GO" id="9D0Ba05uGc" role="37wK5m">
                 <ref role="Rm8GQ" node="9D0Ba05uJT" resolve="DONE" />
-                <ref role="1Px2BO" node="9D0Ba05uHf" resolve="TaskState" />
+                <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
               </node>
             </node>
           </node>
@@ -4774,7 +4774,7 @@
                     <node concept="liA8E" id="9D0Ba05uGm" role="2OqNvi">
                       <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
                       <node concept="Rm8GO" id="9D0Ba05uGn" role="37wK5m">
-                        <ref role="1Px2BO" node="9D0Ba05uHf" resolve="TaskState" />
+                        <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
                         <ref role="Rm8GQ" node="9D0Ba05uJU" resolve="CANCELLED" />
                       </node>
                     </node>
@@ -4855,7 +4855,7 @@
                 <node concept="liA8E" id="9D0Ba05uGR" role="2OqNvi">
                   <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
                   <node concept="Rm8GO" id="9D0Ba05uGS" role="37wK5m">
-                    <ref role="1Px2BO" node="9D0Ba05uHf" resolve="TaskState" />
+                    <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
                     <ref role="Rm8GQ" node="9D0Ba05uJV" resolve="INDETERMINATE" />
                   </node>
                 </node>
@@ -4869,11 +4869,11 @@
             <node concept="liA8E" id="9D0Ba05uBC" role="2OqNvi">
               <ref role="37wK5l" to="i5cy:~AtomicReference.compareAndSet(java.lang.Object,java.lang.Object)" resolve="compareAndSet" />
               <node concept="Rm8GO" id="9D0Ba05uBD" role="37wK5m">
-                <ref role="1Px2BO" node="9D0Ba05uHf" resolve="TaskState" />
+                <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
                 <ref role="Rm8GQ" node="9D0Ba05uJR" resolve="NOT_STARTED" />
               </node>
               <node concept="Rm8GO" id="9D0Ba05uBE" role="37wK5m">
-                <ref role="1Px2BO" node="9D0Ba05uHf" resolve="TaskState" />
+                <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
                 <ref role="Rm8GQ" node="9D0Ba05uJS" resolve="RUNNING" />
               </node>
             </node>

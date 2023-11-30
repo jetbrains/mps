@@ -13344,6 +13344,7 @@
     <property role="3GE5qa" value="Make" />
     <property role="2uzpH1" value="Preview Generated Documentation" />
     <property role="1teQrl" value="false" />
+    <property role="1rBW0U" value="true" />
     <node concept="1DS2jV" id="40ot3U3ePVN" role="1NuT2Z">
       <property role="TrG5h" value="mpsProject" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />

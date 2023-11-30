@@ -1776,7 +1776,7 @@
         <node concept="3cpWs6" id="3rVH_CAr3OL" role="3cqZAp">
           <node concept="2YIFZM" id="3rVH_CAr3ON" role="3cqZAk">
             <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.fromIdNoPrefix(java.lang.String)" resolve="fromIdNoPrefix" />
-            <ref role="1Pybhc" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+            <ref role="1Pybhc" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
             <node concept="37vLTw" id="3rVH_CAr3OO" role="37wK5m">
               <ref role="3cqZAo" node="3rVH_CAp_Od" resolve="value" />
             </node>
@@ -1784,7 +1784,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="3rVH_CApFrU" role="3clF45">
-        <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+        <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
       </node>
       <node concept="37vLTG" id="3rVH_CAp_Od" role="3clF46">
         <property role="TrG5h" value="value" />
@@ -15674,7 +15674,7 @@
         <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
         <node concept="17QB3L" id="3rVH_CAoXgh" role="11_B2D" />
         <node concept="3uibUv" id="3rVH_CAoXiT" role="11_B2D">
-          <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+          <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
         </node>
       </node>
     </node>
@@ -16340,7 +16340,7 @@
           <node concept="3cpWsn" id="3rVH_CApdLj" role="3cpWs9">
             <property role="TrG5h" value="rv" />
             <node concept="3uibUv" id="3rVH_CApdk7" role="1tU5fm">
-              <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+              <ref role="3uigEE" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
             </node>
             <node concept="2OqwBi" id="3rVH_CApdLk" role="33vP2m">
               <node concept="37vLTw" id="3rVH_CApdLl" role="2Oq$k0">

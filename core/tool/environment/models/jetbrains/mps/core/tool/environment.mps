@@ -9005,7 +9005,7 @@
       <node concept="3uibUv" id="4E8FPsx_7j7" role="1tU5fm">
         <ref role="3uigEE" to="82uw:~BiFunction" resolve="BiFunction" />
         <node concept="3uibUv" id="4E8FPsx_7Gz" role="11_B2D">
-          <ref role="3uigEE" node="1ROuiHVPT6" resolve="Descriptor" />
+          <ref role="3uigEE" node="1ROuiHVPT6" resolve="PlatformPlugins.Descriptor" />
         </node>
         <node concept="17QB3L" id="4E8FPsxCMpU" role="11_B2D" />
         <node concept="3uibUv" id="4E8FPsx_7Qw" role="11_B2D">
@@ -9019,7 +9019,7 @@
             <property role="2bfB8j" value="true" />
             <property role="373rjd" value="true" />
             <ref role="1Y3XeK" to="82uw:~BiFunction" resolve="BiFunction" />
-            <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+            <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
             <node concept="3Tm1VV" id="4E8FPsx_ol8" role="1B3o_S" />
             <node concept="3clFb_" id="4E8FPsx_olq" role="jymVt">
               <property role="TrG5h" value="apply" />
@@ -9031,7 +9031,7 @@
               <node concept="37vLTG" id="4E8FPsx_olu" role="3clF46">
                 <property role="TrG5h" value="d" />
                 <node concept="3uibUv" id="4E8FPsx_olC" role="1tU5fm">
-                  <ref role="3uigEE" node="1ROuiHVPT6" resolve="Descriptor" />
+                  <ref role="3uigEE" node="1ROuiHVPT6" resolve="PlatformPlugins.Descriptor" />
                 </node>
               </node>
               <node concept="37vLTG" id="4E8FPsxCF_$" role="3clF46">
@@ -9237,7 +9237,7 @@
                 </node>
               </node>
               <node concept="2AHcQZ" id="4E8FPsx_oly" role="2AJF6D">
-                <ref role="2AI5Lk" to="wyt6:~Override" />
+                <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
               </node>
             </node>
           </node>
@@ -12016,7 +12016,7 @@
                     </node>
                   </node>
                   <node concept="2AHcQZ" id="4E8FPsxuJ16" role="2AJF6D">
-                    <ref role="2AI5Lk" to="wyt6:~Override" />
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                   </node>
                 </node>
               </node>
@@ -12047,7 +12047,7 @@
         <node concept="3uibUv" id="4E8FPsxyr_T" role="1tU5fm">
           <ref role="3uigEE" to="82uw:~BiFunction" resolve="BiFunction" />
           <node concept="3uibUv" id="4E8FPsxyzX7" role="11_B2D">
-            <ref role="3uigEE" node="1ROuiHVPT6" resolve="Descriptor" />
+            <ref role="3uigEE" node="1ROuiHVPT6" resolve="PlatformPlugins.Descriptor" />
           </node>
           <node concept="17QB3L" id="4E8FPsxF69y" role="11_B2D" />
           <node concept="3uibUv" id="4E8FPsxyEWE" role="11_B2D">

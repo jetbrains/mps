@@ -221,7 +221,6 @@
         <child id="1237731803878" name="copyFrom" index="I$8f6" />
       </concept>
       <concept id="1227022210526" name="jetbrains.mps.baseLanguage.collections.structure.ClearAllElementsOperation" flags="nn" index="2Kehj3" />
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1162935959151" name="jetbrains.mps.baseLanguage.collections.structure.GetSizeOperation" flags="nn" index="34oBXx" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
@@ -828,7 +827,7 @@
                         <node concept="2OqwBi" id="58m62FIFqOf" role="3clFbG">
                           <node concept="2OqwBi" id="58m62FIFovF" role="2Oq$k0">
                             <node concept="37vLTw" id="58m62FIFogP" role="2Oq$k0">
-                              <ref role="3cqZAo" node="58m62FIFo1Q" resolve="it" />
+                              <ref role="3cqZAo" node="bLCLenl1zZ" resolve="it" />
                             </node>
                             <node concept="3Tsc0h" id="58m62FIFoOj" role="2OqNvi">
                               <ref role="3TtcxE" to="bjdw:2ztrlDPivEd" resolve="languages" />
@@ -838,9 +837,9 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="Rh6nW" id="58m62FIFo1Q" role="1bW2Oz">
+                    <node concept="gl6BB" id="bLCLenl1zZ" role="1bW2Oz">
                       <property role="TrG5h" value="it" />
-                      <node concept="2jxLKc" id="58m62FIFo1R" role="1tU5fm" />
+                      <node concept="2jxLKc" id="bLCLenl1$0" role="1tU5fm" />
                     </node>
                   </node>
                 </node>

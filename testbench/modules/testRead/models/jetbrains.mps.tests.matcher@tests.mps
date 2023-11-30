@@ -107,8 +107,8 @@
     </node>
     <node concept="1qefOq" id="66FmIpYlqUQ" role="1SKRRt">
       <node concept="10M0yZ" id="66FmIpYlrsT" role="1qenE9">
-        <ref role="3cqZAo" node="66FmIpYlr5e" />
-        <ref role="1PxDUh" node="66FmIpYlqXs" />
+        <ref role="3cqZAo" node="66FmIpYlr5e" resolve="A" />
+        <ref role="1PxDUh" node="66FmIpYlqXs" resolve="Constants" />
         <node concept="3xLA65" id="66FmIpYlw96" role="lGtFl">
           <property role="TrG5h" value="a" />
         </node>
@@ -116,8 +116,8 @@
     </node>
     <node concept="1qefOq" id="66FmIpYlruY" role="1SKRRt">
       <node concept="10M0yZ" id="66FmIpYlrxc" role="1qenE9">
-        <ref role="3cqZAo" node="66FmIpYlr7v" />
-        <ref role="1PxDUh" node="66FmIpYlqXs" />
+        <ref role="3cqZAo" node="66FmIpYlr7v" resolve="B" />
+        <ref role="1PxDUh" node="66FmIpYlqXs" resolve="Constants" />
         <node concept="3xLA65" id="66FmIpYlwem" role="lGtFl">
           <property role="TrG5h" value="b" />
         </node>

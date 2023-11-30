@@ -30,6 +30,7 @@ public class PasteAsJavaClass_Action extends BaseAction {
     super("Paste as Java Class", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.NONE);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {
