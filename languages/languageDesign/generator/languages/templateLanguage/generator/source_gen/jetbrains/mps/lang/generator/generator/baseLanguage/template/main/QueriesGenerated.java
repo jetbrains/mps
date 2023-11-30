@@ -852,10 +852,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_74_2(final PropertyMacroContext _context) {
-    SNode templateTarget = SNodeOperations.getParent(_context.getNode()).getReferenceTarget(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()));
-    // This is what MacroResolver used to do in getDefaultResolveInfo().
-    // I wonder why IResolveInfo case wasn't considered
-    return (templateTarget == null ? "null" : templateTarget.getName());
+    // well, in fact, there's no use for default resolve info in RTQ now, we could provide anything we like here
+    SReference templateTargetRef = SNodeOperations.getParent(_context.getNode()).getReference(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()));
+    String resolveInfo = SLinkOperations.getResolveInfo(templateTargetRef);
+    if ((resolveInfo != null && resolveInfo.length() > 0)) {
+      return resolveInfo;
+    }
+    SNode templateTarget = templateTargetRef.getTargetNode();
+    return (SNodeOperations.isInstanceOf(templateTarget, CONCEPTS.INamedConcept$Kd) ? SPropertyOperations.getString(SNodeOperations.cast(templateTarget, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL) : null);
   }
   public static Object propertyMacro_GetValue_74_3(final PropertyMacroContext _context) {
     return QueryKey.valueOf(_context.getNode());
@@ -2248,7 +2252,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_74_0(final IfMacroContext _context) {
     SReference templateTargetRef = SNodeOperations.getParent(_context.getNode()).getReference(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(_context.getNode()));
-    return templateTargetRef != null && jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(templateTargetRef) != null;
+    return templateTargetRef != null;
   }
   public static boolean ifMacro_Condition_83_0(final IfMacroContext _context) {
     return ((SConcept[]) _context.getVariable("var:concepts")).length > 0;
