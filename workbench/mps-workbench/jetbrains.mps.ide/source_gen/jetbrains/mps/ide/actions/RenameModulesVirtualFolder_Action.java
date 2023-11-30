@@ -17,15 +17,15 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.ui.Messages;
 import java.util.Objects;
-import org.jetbrains.mps.openapi.module.ModelAccess;
+import jetbrains.mps.smodel.undo.NamedCommand;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
+import com.intellij.openapi.command.undo.DocumentReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.command.undo.UndoManager;
 import com.intellij.openapi.command.undo.UndoableAction;
 import com.intellij.openapi.command.undo.UnexpectedUndoException;
 import jetbrains.mps.ide.projectPane.ProjectPane;
-import com.intellij.openapi.command.undo.DocumentReference;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/142393105344666009", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class RenameModulesVirtualFolder_Action extends BaseAction {
@@ -93,43 +93,46 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
     }
 
     final MPSProject mpsProject = ((MPSProject) MapSequence.fromMap(_params).get("project"));
-    final ModelAccess modelAccess = mpsProject.getRepository().getModelAccess();
-    modelAccess.executeCommandInEDT(() -> {
-      List<SModule> modulesUnder = node.getModulesUnder();
-      for (SModule module : ListSequence.fromList(modulesUnder)) {
-        mpsProject.setVirtualFolder(module, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getVirtualFolder(module), originalVFolder, modifiedVFolder));
+    NamedCommand command = new NamedCommand("Rename virtual folder to " + modifiedVFolder, true) {
+      @Override
+      public void run() {
+        final List<SModule> modules = node.getModulesUnder();
+        final DocumentReference[] myDocumentReferences = NamespaceInternalActionsUtil.obtainDocumentReferences(modules, mpsProject);
+        for (SModule module : ListSequence.fromList(modules)) {
+          mpsProject.setVirtualFolder(module, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getVirtualFolder(module), originalVFolder, modifiedVFolder));
+        }
+
+        UndoManager um = UndoManager.getInstance(mpsProject.getProject());
+        um.undoableActionPerformed(new UndoableAction() {
+          @Override
+          public void undo() throws UnexpectedUndoException {
+            for (SModule m : modules) {
+              mpsProject.setVirtualFolder(m, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getVirtualFolder(m), modifiedVFolder, originalVFolder));
+            }
+            ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
+          }
+
+          @Override
+          public void redo() throws UnexpectedUndoException {
+            for (SModule m : modules) {
+              mpsProject.setVirtualFolder(m, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getVirtualFolder(m), originalVFolder, modifiedVFolder));
+            }
+            ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
+          }
+
+          @Override
+          public DocumentReference[] getAffectedDocuments() {
+            return myDocumentReferences;
+          }
+
+          @Override
+          public boolean isGlobal() {
+            return true;
+          }
+        });
       }
-
-      UndoManager um = UndoManager.getInstance(mpsProject.getProject());
-      um.undoableActionPerformed(new UndoableAction() {
-        @Override
-        public void undo() throws UnexpectedUndoException {
-          for (SModule m : modulesUnder) {
-            mpsProject.setVirtualFolder(m, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getVirtualFolder(m), modifiedVFolder, originalVFolder));
-          }
-          ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
-        }
-
-        @Override
-        public void redo() throws UnexpectedUndoException {
-          for (SModule m : modulesUnder) {
-            mpsProject.setVirtualFolder(m, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getVirtualFolder(m), originalVFolder, modifiedVFolder));
-          }
-          ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
-        }
-
-        @Override
-        public DocumentReference[] getAffectedDocuments() {
-          return new DocumentReference[0];
-        }
-
-        @Override
-        public boolean isGlobal() {
-          return true;
-        }
-      });
-
-    });
+    };
+    mpsProject.getRepository().getModelAccess().executeCommand(command);
     RenameModulesVirtualFolder_Action.this.getProjectPane(_params).rebuild();
   }
   private ProjectPane getProjectPane(final Map<String, Object> _params) {

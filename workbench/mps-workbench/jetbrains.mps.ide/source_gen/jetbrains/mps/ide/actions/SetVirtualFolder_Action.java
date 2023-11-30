@@ -19,12 +19,13 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import java.util.stream.Collectors;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.ide.IdeBundle;
+import jetbrains.mps.smodel.undo.NamedCommand;
 import java.util.HashMap;
+import com.intellij.openapi.command.undo.DocumentReference;
 import com.intellij.openapi.command.undo.UndoManager;
 import com.intellij.openapi.command.undo.UndoableAction;
 import com.intellij.openapi.command.undo.UnexpectedUndoException;
 import jetbrains.mps.ide.projectPane.ProjectPane;
-import com.intellij.openapi.command.undo.DocumentReference;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216128015035", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class SetVirtualFolder_Action extends BaseAction {
@@ -112,41 +113,47 @@ public class SetVirtualFolder_Action extends BaseAction {
     }
 
     final String newValue = (newFolder.isEmpty() ? null : newFolder);
-    mpsProject.getRepository().getModelAccess().executeCommand(() -> {
-      final Map<SModule, String> oldModuleNames = MapSequence.fromMap(new HashMap<SModule, String>());
-      for (SModule m : modules) {
-        MapSequence.fromMap(oldModuleNames).put(m, mpsProject.getVirtualFolder(m));
-        mpsProject.setVirtualFolder(m, newValue);
+    NamedCommand command = new NamedCommand("Set virtual folder to " + newValue, true) {
+      @Override
+      public void run() {
+        final Map<SModule, String> oldModuleNames = MapSequence.fromMap(new HashMap<SModule, String>());
+        final DocumentReference[] myDocumentReferences = NamespaceInternalActionsUtil.obtainDocumentReferences(modules, mpsProject);
+        for (SModule m : modules) {
+          MapSequence.fromMap(oldModuleNames).put(m, mpsProject.getVirtualFolder(m));
+          mpsProject.setVirtualFolder(m, newValue);
+        }
+
+        UndoManager um = UndoManager.getInstance(mpsProject.getProject());
+        um.undoableActionPerformed(new UndoableAction() {
+          @Override
+          public void undo() throws UnexpectedUndoException {
+            for (SModule m : modules) {
+              mpsProject.setVirtualFolder(m, MapSequence.fromMap(oldModuleNames).get(m));
+            }
+            ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
+          }
+
+          @Override
+          public void redo() throws UnexpectedUndoException {
+            for (SModule m : modules) {
+              mpsProject.setVirtualFolder(m, newValue);
+            }
+            ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
+          }
+
+          @Override
+          public DocumentReference[] getAffectedDocuments() {
+            return myDocumentReferences;
+          }
+
+          @Override
+          public boolean isGlobal() {
+            return true;
+          }
+        });
       }
-      UndoManager um = UndoManager.getInstance(mpsProject.getProject());
-      um.undoableActionPerformed(new UndoableAction() {
-        @Override
-        public void undo() throws UnexpectedUndoException {
-          for (SModule m : modules) {
-            mpsProject.setVirtualFolder(m, MapSequence.fromMap(oldModuleNames).get(m));
-          }
-          ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
-        }
-
-        @Override
-        public void redo() throws UnexpectedUndoException {
-          for (SModule m : modules) {
-            mpsProject.setVirtualFolder(m, newValue);
-          }
-          ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
-        }
-
-        @Override
-        public DocumentReference[] getAffectedDocuments() {
-          return new DocumentReference[0];
-        }
-
-        @Override
-        public boolean isGlobal() {
-          return true;
-        }
-      });
-    });
+    };
+    mpsProject.getRepository().getModelAccess().executeCommand(command);
     ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
   }
   public static String trim_5evjxr_a0a6a7(String str) {
