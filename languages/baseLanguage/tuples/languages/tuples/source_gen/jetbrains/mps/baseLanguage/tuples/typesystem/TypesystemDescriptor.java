@@ -40,6 +40,10 @@ public class TypesystemDescriptor extends BaseHelginsDescriptor {
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
+      SubtypingRule_Runtime subtypingRule = new Dictionary_supertypeOf_namedTupleType_SubtypingRule();
+      this.mySubtypingRules.add(subtypingRule);
+    }
+    {
       SubtypingRule_Runtime subtypingRule = new NamedTuple_subtypeOf_extended_SubtypingRule();
       this.mySubtypingRules.add(subtypingRule);
     }

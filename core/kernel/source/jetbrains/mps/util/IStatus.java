@@ -41,4 +41,8 @@ public interface IStatus {
   default Object getUserObject() {
     return null;
   }
+
+  default void setUserObject(Object userObject) {
+    // NOP
+  }
 }

@@ -31,6 +31,8 @@ import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.generator.GenerationFacade;
+import jetbrains.mps.baseLanguage.tuples.runtime.Dictionary;
+import jetbrains.mps.smodel.resources.MakeKeys;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.text.TextGeneratorEngine;
 import jetbrains.mps.text.TextGenSettings;
@@ -195,7 +197,9 @@ public class TextGen_Facet extends IFacet.Stub {
                   monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("no output location for " + resource.model().getName())));
                   continue;
                 }
-                if (monitor.getSession().isCleanMake()) {
+                Object statusUserObject = resource.status().getUserObject();
+                if (statusUserObject instanceof Dictionary && ((Dictionary) statusUserObject).getValue(MakeKeys.CLEAN_MAKE)) {
+                  // clean make flag passed through GeneratorTask/GeneratorStatus 
                   sfm.collectGeneratedFilesForceClean(resource.model());
                 } else {
                   sfm.collectGeneratedFiles(resource.model());

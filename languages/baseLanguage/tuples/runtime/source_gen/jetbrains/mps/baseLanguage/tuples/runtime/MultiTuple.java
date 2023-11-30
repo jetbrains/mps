@@ -4,7 +4,7 @@ package jetbrains.mps.baseLanguage.tuples.runtime;
 
 import java.util.Arrays;
 
-public class MultiTuple {
+public class MultiTuple extends HashMapDictionary {
   private static final Object[] EMPTY = new Object[0];
   private final Object[] values;
   protected MultiTuple(Object... objs) {

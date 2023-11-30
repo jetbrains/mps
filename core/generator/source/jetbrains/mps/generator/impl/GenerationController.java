@@ -158,6 +158,7 @@ public class GenerationController implements ITaskPoolProvider {
         status.setPerformanceTrace(ttrace);
       }
       myGenerationHandler.done(task, status);
+      status.setUserObject(task.getUserObject());
       monitor.advance(1);
 
       return currentGenerationOK;
