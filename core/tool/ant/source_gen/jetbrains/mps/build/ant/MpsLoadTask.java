@@ -152,6 +152,10 @@ public class MpsLoadTask extends Task {
     myWhatToDo.addPlugin(plugin.getDescriptor());
   }
 
+  public void addConfigured(ModuleJarDataType jar) {
+    addLibraryJar(jar.getFile());
+  }
+
   /**
    * handy alternative to myWhatToDo.addLibraryJar(), with hardcoded knowledge about generator modules distributed in distinct jars
    */

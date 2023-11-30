@@ -46,13 +46,9 @@ public class IdeMPSFileSaver implements FileDocumentManagerListener {
     final ProjectManager mpsPM = coreComponents.getPlatform().findComponent(ProjectManager.class);
     if (!mpsPM.getOpenedProjects().isEmpty()) {
       Runnable saveRepo = () -> {
-
         for (Project p : mpsPM.getOpenedProjects()) {
-          boolean changed = p.getModelAccess().computeReadAction(() -> p.getProjectModulesWithGenerators().stream().filter(EditableSModule.class::isInstance).anyMatch(m -> ((EditableSModule) m).isChanged()));
-          if (changed) {
-            // runWriteInEDT, not invokeLater+runWriteAction() as former supports attempts/re-scheduling of the action to prevent EDT blocking
-            p.getModelAccess().runWriteInEDT(new SaveRepositoryCommand(p.getRepository()));
-          }
+          // runWriteInEDT, not invokeLater+runWriteAction() as former supports attempts/re-scheduling of the action to prevent EDT blocking
+          p.getModelAccess().runWriteInEDT(new SaveRepositoryCommand(p.getRepository()));
         }
       };
       final MakeServiceComponent makeService = coreComponents.getPlatform().findComponent(MakeServiceComponent.class);

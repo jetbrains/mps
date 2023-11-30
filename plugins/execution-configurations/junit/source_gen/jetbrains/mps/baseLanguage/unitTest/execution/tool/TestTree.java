@@ -107,6 +107,12 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
     myAnimator.scheduleRepaint(treeNode);
   }
 
+  private void updateDisplayName(ITestNodeWrapper nodeWrapper, String displayName) {
+    TestTreeNode treeNode = getUINodeByModelNode(nodeWrapper);
+    treeNode.setText(displayName);
+    myAnimator.scheduleRepaint(treeNode);
+  }
+
   @Override
   protected ActionGroup createPopupActionGroup(MPSTreeNode node) {
     if (node instanceof TestCaseTreeNode) {
@@ -247,7 +253,12 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
   }
 
   @Override
-  public void onTestRunStarted() {
+  public void onTestRunStarted(TestNodeEvent event) {
+    ITestNodeWrapper currentNode = event.getTestKey().getNode();
+    String displayName = event.getRawEvent().getDisplayName();
+    if (displayName != null) {
+      updateDisplayName(currentNode, displayName);
+    }
   }
 
   private void selectFirstFailedTestIfNeeded() {
@@ -285,6 +296,10 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
   public void onTestStart(TestNodeEvent event) {
     final ITestNodeWrapper currentNode = event.getTestKey().getNode();
     updateState(currentNode, TestState.IN_PROGRESS);
+    String displayName = event.getRawEvent().getDisplayName();
+    if (displayName != null) {
+      updateDisplayName(currentNode, displayName);
+    }
     if (UnitTestOptions.isTrackRunning()) {
       TestTree.invokeLater(() -> setCurrentNode(getUINodeByModelNode(currentNode)));
     }

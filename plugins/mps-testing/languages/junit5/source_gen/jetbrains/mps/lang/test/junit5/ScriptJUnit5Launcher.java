@@ -20,6 +20,7 @@ import java.io.File;
 public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
 
   public static final String TEST_REPORTS_DIR = "launchtests.testReportsDir";
+  public static final String TEST_REPORTS_OPENTEST = "launchtests.testReportsOpenTest";
 
   private final WorkerCallback myWorkerCallback;
   private final Script myWhatToDo;
@@ -120,6 +121,12 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
       return null;
     }
     return dir;
+  }
+
+  @Override
+  protected boolean isOpenTestReport() {
+    String property = myWhatToDo.getProperty(TEST_REPORTS_OPENTEST);
+    return (property != null ? Boolean.valueOf(property) : false);
   }
 
   @Override

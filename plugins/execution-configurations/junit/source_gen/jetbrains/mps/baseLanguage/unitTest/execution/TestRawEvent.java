@@ -16,19 +16,35 @@ public final class TestRawEvent {
   private final TestRawKey myTestKey;
   private final long myMemoryUsage;
   private final long myTime;
+  private final String myDisplayName;
 
+  /**
+   * Used to be called from {@link jetbrains.mps.baseLanguage.unitTest.execution.TestEventMessage }'s ctor.
+   * Relies on obsolete JUnit API. 
+   * 
+   * @deprecated 
+   */
+  @Deprecated(forRemoval = true)
   public TestRawEvent(@NotNull Description description) {
     // note: description.getTestClass() may be null (e.g. when failure indicates an issue with loading of test class)
     myTestKey = constructKeyFromDescription(description);
     Runtime runtime = Runtime.getRuntime();
     myMemoryUsage = runtime.totalMemory() - runtime.freeMemory();
     myTime = System.currentTimeMillis();
+    myDisplayName = description.getDisplayName();
   }
 
   public TestRawEvent(@NotNull String testCaseFqName, @Nullable String testMethodFqName, long memoryUsage, long time) {
+    // the logic of selecting testMethodFqName as displayName if former is not null, testCaseFqName otherwise, 
+    // is in line with the logic of choosing TestMethodStringKey/TestCaseStringKey from same initial data.
+    this(testCaseFqName, testMethodFqName, memoryUsage, time, (testMethodFqName != null ? testMethodFqName : testCaseFqName));
+  }
+
+  public TestRawEvent(@NotNull String testCaseFqName, @Nullable String testMethodFqName, long memoryUsage, long time, String displayName) {
     myTestKey = constructKeyFromString(testCaseFqName, testMethodFqName);
     myMemoryUsage = memoryUsage;
     myTime = time;
+    myDisplayName = displayName;
   }
 
   private static TestRawKey constructKeyFromDescription(Description description) {
@@ -79,6 +95,10 @@ public final class TestRawEvent {
 
   public long getTime() {
     return myTime;
+  }
+
+  public String getDisplayName() {
+    return myDisplayName;
   }
 
   @Override

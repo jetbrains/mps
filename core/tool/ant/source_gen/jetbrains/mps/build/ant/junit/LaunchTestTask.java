@@ -36,6 +36,7 @@ public class LaunchTestTask extends MpsLoadTask {
   public static final String LAUNCHER_SUPPORT_JAR = "languages/launcher/jetbrains.mps.lang.test.launcher.jar";
 
   public static final String TEST_REPORTS_DIR_PROPERTY = "launchtests.testReportsDir";
+  public static final String TEST_REPORTS_OPENTEST = "launchtests.testReportsOpenTest";
 
   private List<File> myModuleFile = new ArrayList<>();
 
@@ -66,6 +67,10 @@ public class LaunchTestTask extends MpsLoadTask {
 
   public void setReports(File testReportsDir) {
     this.myWhatToDo.putProperty(TEST_REPORTS_DIR_PROPERTY, testReportsDir.toString());
+  }
+
+  public void setOpenTest(boolean openTest) {
+    this.myWhatToDo.putProperty(TEST_REPORTS_OPENTEST, Boolean.toString(openTest));
   }
 
   public void addConfiguredLibrary(ModuleJarDataType jar) {

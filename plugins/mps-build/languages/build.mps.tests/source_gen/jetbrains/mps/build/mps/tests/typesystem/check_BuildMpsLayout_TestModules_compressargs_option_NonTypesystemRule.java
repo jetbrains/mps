@@ -8,6 +8,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.build.mps.tests.behavior.BuildMps_TestModules_Options__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -21,19 +22,10 @@ public class check_BuildMpsLayout_TestModules_compressargs_option_NonTypesystemR
   public check_BuildMpsLayout_TestModules_compressargs_option_NonTypesystemRule() {
   }
   public void applyRule(final SNode options, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(options, LINKS.compressArgs$RBk7) != null)) {
-      String approxPresentation = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(options, LINKS.compressArgs$RBk7), null);
-      if (approxPresentation.contains("${")) {
-        return;
-      } else if (approxPresentation.equals("true")) {
-        return;
-      } else if (approxPresentation.equals("false")) {
-        return;
-      } else {
-        {
-          final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(options, LINKS.compressArgs$RBk7), "Inappropriate value for 'compressargs' property", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "1688667350638521131", null, errorTarget);
-        }
+    if ((SLinkOperations.getTarget(options, LINKS.compressArgs$RBk7) != null) && !((boolean) BuildMps_TestModules_Options__BehaviorDescriptor.isBooleanOptionValueOk_id51DD0tdKxuK.invoke(options, BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(options, LINKS.compressArgs$RBk7), null)))) {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(options, LINKS.compressArgs$RBk7), "Inappropriate value for 'compressargs' property", "r:f8814f89-9801-40d6-822f-e0e0a3a2c53d(jetbrains.mps.build.mps.tests.typesystem)", "1688667350638521131", null, errorTarget);
       }
     }
   }

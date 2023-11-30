@@ -11,6 +11,7 @@ import org.junit.platform.launcher.Launcher;
 import org.junit.platform.launcher.core.LauncherFactory;
 import jetbrains.mps.lang.test.junit5.tcutil.JUnit5TestExecutionListener;
 import java.io.File;
+import org.junit.platform.reporting.open.xml.OpenTestReportGeneratingListener;
 import org.junit.platform.reporting.legacy.xml.LegacyXmlReportGeneratingListener;
 import java.io.PrintWriter;
 import org.junit.platform.launcher.LauncherDiscoveryRequest;
@@ -45,7 +46,12 @@ public abstract class AbstractJUnit5Launcher {
     }
     File testReportsDir = getTestReportsDir();
     if (testReportsDir != null) {
-      launcher.registerTestExecutionListeners(new LegacyXmlReportGeneratingListener(testReportsDir.toPath(), new PrintWriter(System.out)));
+      if (isOpenTestReport()) {
+        launcher.registerTestExecutionListeners(new OpenTestReportGeneratingListener());
+
+      } else {
+        launcher.registerTestExecutionListeners(new LegacyXmlReportGeneratingListener(testReportsDir.toPath(), new PrintWriter(System.out)));
+      }
     }
     if (executionListener != null) {
       launcher.registerTestExecutionListeners(executionListener);
@@ -56,11 +62,20 @@ public abstract class AbstractJUnit5Launcher {
   private LauncherDiscoveryRequest buildRequest(final Collection<Class<?>> testClasses) {
     List<DiscoverySelector> testSelectors = testClasses.stream().map((Class<?> testClass) -> DiscoverySelectors.selectClass(testClass)).collect(Collectors.<DiscoverySelector>toList());
 
-    return LauncherDiscoveryRequestBuilder.request().selectors(testSelectors).configurationParameter("junit.platform.output.capture.stdout", "true").configurationParameter("junit.platform.output.capture.stderr", "true").build();
+    LauncherDiscoveryRequestBuilder requestBuilder = LauncherDiscoveryRequestBuilder.request().selectors(testSelectors).configurationParameter("junit.platform.output.capture.stdout", "true").configurationParameter("junit.platform.output.capture.stderr", "true");
+    File testReportsDir = getTestReportsDir();
+    if (testReportsDir != null && isOpenTestReport()) {
+      requestBuilder = requestBuilder.configurationParameter("junit.platform.reporting.open.xml.enabled", "true").configurationParameter("junit.platform.reporting.output.dir", testReportsDir.getAbsolutePath());
+    }
+    return requestBuilder.build();
   }
 
   protected File getTestReportsDir() {
     return null;
+  }
+
+  protected boolean isOpenTestReport() {
+    return false;
   }
 
   protected boolean isRunningOnTeamCity() {

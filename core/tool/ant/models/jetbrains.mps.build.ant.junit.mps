@@ -315,6 +315,15 @@
         <property role="Xl_RC" value="launchtests.testReportsDir" />
       </node>
     </node>
+    <node concept="Wx3nA" id="51DD0tdNp3b" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="TEST_REPORTS_OPENTEST" />
+      <node concept="3Tm1VV" id="51DD0tdNp3c" role="1B3o_S" />
+      <node concept="17QB3L" id="51DD0tdNp3d" role="1tU5fm" />
+      <node concept="Xl_RD" id="51DD0tdNp3e" role="33vP2m">
+        <property role="Xl_RC" value="launchtests.testReportsOpenTest" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="HwplGLMAWl" role="jymVt" />
     <node concept="312cEg" id="5gsHVK_0mum" role="jymVt">
       <property role="TrG5h" value="myModuleFile" />
@@ -500,6 +509,41 @@
                 </node>
                 <node concept="liA8E" id="5HBbAYqG$Xs" role="2OqNvi">
                   <ref role="37wK5l" to="guwi:~File.toString()" resolve="toString" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="51DD0tdN8qp" role="jymVt" />
+    <node concept="3clFb_" id="51DD0tdN6DH" role="jymVt">
+      <property role="TrG5h" value="setOpenTest" />
+      <node concept="37vLTG" id="51DD0tdN6DI" role="3clF46">
+        <property role="TrG5h" value="openTest" />
+        <node concept="10P_77" id="51DD0tdNicW" role="1tU5fm" />
+      </node>
+      <node concept="3cqZAl" id="51DD0tdN6DK" role="3clF45" />
+      <node concept="3Tm1VV" id="51DD0tdN6DL" role="1B3o_S" />
+      <node concept="3clFbS" id="51DD0tdN6DM" role="3clF47">
+        <node concept="3clFbF" id="51DD0tdN6DN" role="3cqZAp">
+          <node concept="2OqwBi" id="51DD0tdN6DO" role="3clFbG">
+            <node concept="2OqwBi" id="51DD0tdN6DP" role="2Oq$k0">
+              <node concept="Xjq3P" id="51DD0tdN6DQ" role="2Oq$k0" />
+              <node concept="2OwXpG" id="51DD0tdN6DR" role="2OqNvi">
+                <ref role="2Oxat5" to="644x:3ufQioQQtje" resolve="myWhatToDo" />
+              </node>
+            </node>
+            <node concept="liA8E" id="51DD0tdN6DS" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:KL8Aql8eBe" resolve="putProperty" />
+              <node concept="37vLTw" id="51DD0tdN6DT" role="37wK5m">
+                <ref role="3cqZAo" node="51DD0tdNp3b" resolve="TEST_REPORTS_OPENTEST" />
+              </node>
+              <node concept="2YIFZM" id="51DD0tdNJQi" role="37wK5m">
+                <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
+                <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+                <node concept="37vLTw" id="51DD0tdNLdJ" role="37wK5m">
+                  <ref role="3cqZAo" node="51DD0tdN6DI" resolve="openTest" />
                 </node>
               </node>
             </node>

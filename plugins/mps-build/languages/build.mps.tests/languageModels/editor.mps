@@ -248,6 +248,17 @@
             <property role="VOm3f" value="true" />
           </node>
         </node>
+        <node concept="3F0ifn" id="51DD0tdLogL" role="3EZMnx">
+          <property role="3F0ifm" value="create open test report" />
+          <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
+        </node>
+        <node concept="3F1sOY" id="51DD0tdLogJ" role="3EZMnx">
+          <property role="1$x2rV" value="false" />
+          <ref role="1NtTu8" to="5tjl:51DD0tdLLzh" resolve="openTestReport" />
+          <node concept="ljvvj" id="51DD0tdLogK" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
         <node concept="3F0ifn" id="5I1s5NvGLkv" role="3EZMnx">
           <property role="3F0ifm" value="load additional idea plugins:" />
           <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />

@@ -17,6 +17,7 @@ import java.util.regex.Matcher;
 import java.io.FileReader;
 import java.nio.CharBuffer;
 import java.io.InputStreamReader;
+import java.util.function.BiFunction;
 import java.util.Collection;
 import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
@@ -40,6 +41,7 @@ import java.net.URLClassLoader;
   private final Map<String, ClassLoader> myLoaders = new HashMap<String, ClassLoader>();
   private final Pattern myPluginIdPattern = Pattern.compile("<id>([a-zA-Z_0-9.]+)</id>");
   private final Pattern myLangLocationPattern = Pattern.compile("<mps\\.LanguageLibrary\\s+dir=\"([^\"]*)\"");
+  private final Pattern myDepensPattern = Pattern.compile("<depends(?:\\s+[^>]*)?>([a-zA-Z_0-9.]+)</depends>");
 
 
   /*package*/ PlatformPlugins(EnvironmentConfig config) {
@@ -105,9 +107,8 @@ import java.net.URLClassLoader;
         }
       }
 
-      // XXX detect dependencies from other plugins to create proper classloading dependencies,  match <depends></depends> much like plugin id, above
-      //     meanwhile, hope there's no plugin code that references classes from its dependencies.
-      Descriptor d = new Descriptor(pluginId, pluginLocation, cp, langLibs);
+      List<String> deps = detectDependencies(pluginXmlContent);
+      Descriptor d = new Descriptor(pluginId, pluginLocation, cp, langLibs, deps);
       myPlugins.put(pluginId, d);
       if (LOG.isDebugLevel()) {
         LOG.debug(String.format("Discovered %s; cp=%s, modules=%s", d, cp, langLibs));
@@ -144,9 +145,31 @@ import java.net.URLClassLoader;
     return myPlugins.isEmpty();
   }
 
+  private final BiFunction<Descriptor, String, Class<?>> myDependencyResolver = new BiFunction<>() {
+    @Override
+    public Class<?> apply(Descriptor d, String className) {
+      for (String dep : d.dependencies) {
+        ClassLoader pcl = pluginClassLoader(dep);
+        // don't treat missing/unknown plugin as error; PlatformPlugins is not a sophisticated plugin handling mechanism, just very simplistic code to get MPS going 
+        if (pcl == null) {
+          continue;
+        }
+        try {
+          Class<?> depClass = pcl.loadClass(className);
+          if (depClass != null) {
+            return depClass;
+          }
+        } catch (ClassNotFoundException e) {
+          // ignore, just move on to the next dependency
+        }
+      }
+      return null;
+    }
+  };
+
   /*package*/ void buildClassLoaders(ClassLoader rootClassLoader) {
     for (Descriptor pd : myPlugins.values()) {
-      ClassLoader cl = createPluginClassLoader(pd, rootClassLoader);
+      ClassLoader cl = createPluginClassLoader(pd, rootClassLoader, (pd.dependencies == null || pd.dependencies.isEmpty() ? null : myDependencyResolver));
       myLoaders.put(pd.id, cl);
     }
   }
@@ -214,7 +237,16 @@ import java.net.URLClassLoader;
     return (rv.isEmpty() ? Collections.<File>emptyList() : rv);
   }
 
-  private static ClassLoader createPluginClassLoader(Descriptor pd, ClassLoader rootCL) {
+  private List<String> detectDependencies(CharSequence pluginXmlContent) {
+    Matcher m = myDepensPattern.matcher(pluginXmlContent);
+    List<String> rv = new ArrayList<>();
+    while (m.find()) {
+      rv.add(m.group(1));
+    }
+    return rv;
+  }
+
+  private static ClassLoader createPluginClassLoader(final Descriptor pd, ClassLoader rootCL, final BiFunction<Descriptor, String, Class<?>> depResolver) {
     if (pd.cp.isEmpty()) {
       return rootCL;
     }
@@ -245,7 +277,26 @@ import java.net.URLClassLoader;
     // Here used to be outdated copy of IDEA's UrlClassLoader, with uncertain benefits over standard Java's one.
     // I don't think there's anything wrong with java.net counterpart. The only issue I'm aware of, http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=5041014
     // is not important in a scenario we use MpsEnvironment for. Besides, there's #close() method now we may use to address the issue in case we ever face it.
-    return new URLClassLoader(urls.toArray(new URL[urls.size()]), rootCL);
+    if (depResolver == null) {
+      return new URLClassLoader(urls.toArray(new URL[urls.size()]), rootCL);
+    }
+
+    return new URLClassLoader(urls.toArray(new URL[urls.size()]), rootCL) {
+
+      @Override
+      protected Class<?> findClass(String name) throws ClassNotFoundException {
+        try {
+          return super.findClass(name);
+        } catch (ClassNotFoundException ex) {
+          Class<?> fromDeps = depResolver.apply(pd, name);
+          if (fromDeps != null) {
+            return fromDeps;
+          }
+          // not found - throw original exception
+          throw ex;
+        }
+      }
+    };
   }
 
   /**
@@ -256,12 +307,14 @@ import java.net.URLClassLoader;
     public final File home;
     public final List<File> cp;
     public final List<File> modules;
+    public final List<String> dependencies;
 
-    /*package*/ Descriptor(String pid, File pluginLocation, List<File> classpath, List<File> languageLibs) {
+    /*package*/ Descriptor(String pid, File pluginLocation, List<File> classpath, List<File> languageLibs, List<String> dependencies) {
       id = pid;
       home = pluginLocation;
       cp = classpath;
       modules = languageLibs;
+      this.dependencies = dependencies;
     }
 
     /*package*/ ClassLoader classLoader() {

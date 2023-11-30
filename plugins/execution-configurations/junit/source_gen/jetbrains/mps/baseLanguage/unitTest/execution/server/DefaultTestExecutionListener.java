@@ -104,7 +104,7 @@ public class DefaultTestExecutionListener implements TestExecutionListener {
     Runtime runtime = Runtime.getRuntime();
     builder.append(":memory=").append(runtime.totalMemory() - runtime.freeMemory());
     builder.append(":time=").append(System.currentTimeMillis());
-
+    identifier.ifPresent((id) -> builder.append(":").append(id.getDisplayName()));
     synchronized (myOutput) {
       myOutput.writeCommand(builder.toString());
       myOutput.flushSafe();

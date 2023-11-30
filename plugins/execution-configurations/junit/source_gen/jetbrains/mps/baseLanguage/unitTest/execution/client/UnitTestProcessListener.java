@@ -53,6 +53,9 @@ public final class UnitTestProcessListener extends ProcessAdapter {
     }
   }
 
+  /**
+   * FIXME This hack may potentially cause misinterpretation of stream contents.
+   */
   private boolean isErrorOutputInProgress() {
     return myLastEvent != null && myLastEvent.isErrored();
   }
