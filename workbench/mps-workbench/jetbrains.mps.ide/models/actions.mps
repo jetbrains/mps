@@ -45613,7 +45613,7 @@
                         </node>
                         <node concept="2OqwBi" id="6e13Jncc5RK" role="2GsD0m">
                           <node concept="37vLTw" id="6e13Jncc5RL" role="2Oq$k0">
-                            <ref role="3cqZAo" node="5I8fr3HKVUO" resolve="node" />
+                            <ref role="3cqZAo" node="5I8fr3HKVUO" resolve="ntn" />
                           </node>
                           <node concept="liA8E" id="6e13Jncc5RM" role="2OqNvi">
                             <ref role="37wK5l" to="kxvg:~NamespaceTextNode.getModelsUnder()" resolve="getModelsUnder" />

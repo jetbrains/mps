@@ -2238,7 +2238,7 @@
                           </node>
                         </node>
                         <node concept="37vLTw" id="5748vgL5NAD" role="3K4Cdx">
-                          <ref role="3cqZAo" node="5748vgL5NAx" resolve="b" />
+                          <ref role="3cqZAo" node="5748vgL5NAx" resolve="runInParallel" />
                         </node>
                         <node concept="2ShNRf" id="2$qlEUMArwi" role="3K4E3e">
                           <node concept="1pGfFk" id="2$qlEUMArwj" role="2ShVmc">
@@ -2248,7 +2248,7 @@
                               <ref role="3cqZAo" node="2$qlEUMAil9" resolve="myMpsProject" />
                             </node>
                             <node concept="37vLTw" id="1Yn_vPPBZ2t" role="37wK5m">
-                              <ref role="3cqZAo" node="1Yn_vPPBZ2i" resolve="shareRead" />
+                              <ref role="3cqZAo" node="1Yn_vPPBZ2i" resolve="shareReadExecutor" />
                             </node>
                           </node>
                         </node>

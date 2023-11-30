@@ -1262,7 +1262,7 @@
             <node concept="2ShNRf" id="4PMKx6dYcGd" role="37vLTx">
               <node concept="HV5vD" id="4PMKx6dY$ep" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="HV5vE" to="xzav:4PMKx6dYr6a" resolve="DirectExecutor" />
+                <ref role="HV5vE" to="xzav:4PMKx6dYr6a" resolve="DefaultTaskScheduler.DirectExecutor" />
               </node>
             </node>
             <node concept="2OqwBi" id="4PMKx6dYaG0" role="37vLTJ">
@@ -1350,7 +1350,7 @@
             <property role="TrG5h" value="queue" />
             <property role="3TUv4t" value="true" />
             <node concept="3uibUv" id="7rL3NR5WpHA" role="1tU5fm">
-              <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractTaskQueue" />
+              <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractBackgroundTaskScheduler.AbstractTaskQueue" />
               <node concept="16syzq" id="7rL3NR5WpHB" role="11_B2D">
                 <ref role="16sUi3" node="55lWaio3CqU" resolve="TASK" />
               </node>
@@ -1405,7 +1405,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7rL3NR5WjOV" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="29$mY0zHPk4" role="jymVt" />
@@ -1453,7 +1453,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="29$mY0zHQZd" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="6Ghy7rDu9hE" role="jymVt" />
@@ -3027,7 +3027,7 @@
                         </node>
                         <node concept="2YIFZM" id="4hBTRHskYJh" role="33vP2m">
                           <ref role="37wK5l" node="55lWainVYDU" resolve="unwrap" />
-                          <ref role="1Pybhc" node="55lWaiofrkE" resolve="AsyncTaskRunnable" />
+                          <ref role="1Pybhc" node="55lWaiofrkE" resolve="SystemBackgroundTaskScheduler.AsyncTaskRunnable" />
                           <node concept="37vLTw" id="4hBTRHskYJi" role="37wK5m">
                             <ref role="3cqZAo" node="55lWainVQuk" resolve="err" />
                           </node>

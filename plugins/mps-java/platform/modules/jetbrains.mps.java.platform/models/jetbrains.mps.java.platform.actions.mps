@@ -825,7 +825,7 @@
               </node>
             </node>
             <node concept="2YIFZM" id="1Gyb7mMOV7x" role="3uHU7w">
-              <ref role="37wK5l" to="c1ko:4UmDqAIX2IV" resolve="areDataAvailableInClipboard" />
+              <ref role="37wK5l" to="c1ko:4UmDqAIX2IV" resolve="isStringOnlyDataAvailableInClipboard" />
               <ref role="1Pybhc" to="c1ko:4TtYrYGuX3e" resolve="JavaPaster" />
             </node>
           </node>
@@ -934,7 +934,7 @@
               <node concept="3x8VRR" id="15CjEiP$zo_" role="2OqNvi" />
             </node>
             <node concept="2YIFZM" id="1Gyb7mMOUB8" role="3uHU7w">
-              <ref role="37wK5l" to="c1ko:4UmDqAIX2IV" resolve="areDataAvailableInClipboard" />
+              <ref role="37wK5l" to="c1ko:4UmDqAIX2IV" resolve="isStringOnlyDataAvailableInClipboard" />
               <ref role="1Pybhc" to="c1ko:4TtYrYGuX3e" resolve="JavaPaster" />
             </node>
           </node>
@@ -1019,7 +1019,7 @@
         <node concept="3clFbF" id="mCUxqDafWd" role="3cqZAp">
           <node concept="1Wc70l" id="1Gyb7mMOuTI" role="3clFbG">
             <node concept="2YIFZM" id="1Gyb7mMOTA5" role="3uHU7w">
-              <ref role="37wK5l" to="c1ko:4UmDqAIX2IV" resolve="areDataAvailableInClipboard" />
+              <ref role="37wK5l" to="c1ko:4UmDqAIX2IV" resolve="isStringOnlyDataAvailableInClipboard" />
               <ref role="1Pybhc" to="c1ko:4TtYrYGuX3e" resolve="JavaPaster" />
             </node>
             <node concept="2OqwBi" id="mCUxqDagdG" role="3uHU7B">

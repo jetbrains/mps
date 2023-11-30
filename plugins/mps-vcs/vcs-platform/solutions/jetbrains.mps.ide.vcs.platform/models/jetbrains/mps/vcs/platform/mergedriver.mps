@@ -6578,7 +6578,7 @@
             <node concept="3cpWs6" id="4Row1kx$KSS" role="3cqZAp">
               <node concept="Rm8GO" id="4Row1kx$KST" role="3cqZAk">
                 <ref role="Rm8GQ" node="SERxxViwH9" resolve="NOT_ENABLED" />
-                <ref role="1Px2BO" node="1crbmp8Of6p" resolve="State" />
+                <ref role="1Px2BO" node="1crbmp8Of6p" resolve="AbstractInstaller.State" />
               </node>
             </node>
           </node>

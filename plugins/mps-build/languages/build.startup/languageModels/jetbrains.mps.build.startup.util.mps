@@ -1254,7 +1254,7 @@
       <node concept="3clFbS" id="3E3V7xVhWz8" role="3clF47">
         <node concept="3clFbF" id="3rleFKvpHN_" role="3cqZAp">
           <node concept="37vLTw" id="3rleFKvpHNz" role="3clFbG">
-            <ref role="3cqZAo" node="3rleFKvpG$4" resolve="XXX" />
+            <ref role="3cqZAo" node="3rleFKvpG$4" resolve="SCRIPT" />
           </node>
         </node>
       </node>

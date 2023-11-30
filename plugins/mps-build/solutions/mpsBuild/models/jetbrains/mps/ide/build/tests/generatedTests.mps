@@ -778,13 +778,13 @@
       </node>
     </node>
     <node concept="13uUGR" id="6c9CYgqS_7_" role="1l3spa">
-      <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" />
+      <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" resolve="IDEA" />
       <node concept="398BVA" id="6c9CYgqS_7A" role="13uUGP">
         <ref role="398BVh" node="6c9CYgqS_7E" resolve="idea_home" />
       </node>
     </node>
     <node concept="2sgV4H" id="6c9CYgqS_7B" role="1l3spa">
-      <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" />
+      <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" resolve="mps" />
       <node concept="398BVA" id="6c9CYgqS_7C" role="2JcizS">
         <ref role="398BVh" node="6c9CYgqS_7D" resolve="mps_home" />
       </node>

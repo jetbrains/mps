@@ -760,7 +760,7 @@
                     </node>
                   </node>
                   <node concept="37vLTw" id="YXt2O3VViX" role="3K4GZi">
-                    <ref role="3cqZAo" node="YXt2O3VViM" resolve="node" />
+                    <ref role="3cqZAo" node="YXt2O3VViM" resolve="baseConceptDeclaration" />
                   </node>
                   <node concept="2OqwBi" id="AZk9Ri0IKF" role="3K4Cdx">
                     <node concept="2OqwBi" id="AZk9Ri0IKG" role="2Oq$k0">

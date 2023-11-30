@@ -2004,7 +2004,7 @@
                                     </node>
                                     <node concept="2OqwBi" id="46Iaplaw$Ht" role="37wK5m">
                                       <node concept="37vLTw" id="2b_cidrUil" role="2Oq$k0">
-                                        <ref role="3cqZAo" node="2b_cidrUih" resolve="project" />
+                                        <ref role="3cqZAo" node="2b_cidrUih" resolve="mpsProject" />
                                       </node>
                                       <node concept="liA8E" id="46Iaplaw___" role="2OqNvi">
                                         <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />

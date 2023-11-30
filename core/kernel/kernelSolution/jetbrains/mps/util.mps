@@ -2547,7 +2547,7 @@
                 <ref role="37wK5l" to="lui2:~SModuleReference.getModuleName()" resolve="getModuleName" />
               </node>
               <node concept="37vLTw" id="2wslTM09nQx" role="2Oq$k0">
-                <ref role="3cqZAo" node="2wslTM09nR2" resolve="module" />
+                <ref role="3cqZAo" node="2wslTM09nR2" resolve="moduleRef" />
               </node>
             </node>
             <node concept="17QB3L" id="2wslTM09nQy" role="1tU5fm" />

@@ -10733,7 +10733,7 @@
               </node>
             </node>
             <node concept="37vLTw" id="5CJ_h4_qy4q" role="2Oq$k0">
-              <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="imports" />
+              <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="mi" />
             </node>
           </node>
         </node>
@@ -10749,7 +10749,7 @@
               </node>
             </node>
             <node concept="37vLTw" id="5CJ_h4_qy4r" role="2Oq$k0">
-              <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="imports" />
+              <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="mi" />
             </node>
           </node>
         </node>
@@ -10767,7 +10767,7 @@
                   </node>
                 </node>
                 <node concept="37vLTw" id="5CJ_h4_qy4s" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="imports" />
+                  <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="mi" />
                 </node>
               </node>
             </node>
@@ -10805,7 +10805,7 @@
         <node concept="3clFbF" id="reSgCPMULw" role="3cqZAp">
           <node concept="2OqwBi" id="reSgCPMW_e" role="3clFbG">
             <node concept="37vLTw" id="5CJ_h4_qy4t" role="2Oq$k0">
-              <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="imports" />
+              <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="mi" />
             </node>
             <node concept="liA8E" id="reSgCPMWKh" role="2OqNvi">
               <ref role="37wK5l" to="w1kc:~ModelImports.addModelImport(org.jetbrains.mps.openapi.model.SModelReference)" resolve="addModelImport" />
@@ -10829,7 +10829,7 @@
             <node concept="3clFbF" id="4PkT6nprpZj" role="3cqZAp">
               <node concept="2OqwBi" id="4PkT6nprpZk" role="3clFbG">
                 <node concept="37vLTw" id="5CJ_h4_qy4u" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="imports" />
+                  <ref role="3cqZAo" node="5CJ_h4_qy4m" resolve="mi" />
                 </node>
                 <node concept="liA8E" id="4PkT6nprpZo" role="2OqNvi">
                   <ref role="37wK5l" to="w1kc:~ModelImports.addModelImport(org.jetbrains.mps.openapi.model.SModelReference)" resolve="addModelImport" />
@@ -13268,10 +13268,10 @@
                         </node>
                         <node concept="398223" id="2OJWaFGOVpK" role="39821P">
                           <node concept="3_I8Xc" id="3nGzrDEksX6" role="39821P">
-                            <ref role="3_I8Xa" to="ffeo:3nGzrDEfcNJ" resolve="svn4idea" />
+                            <ref role="3_I8Xa" to="ffeo:3nGzrDEfcNJ" resolve="vcs-svn" />
                           </node>
                           <node concept="3_I8Xc" id="73fHb9hpuxm" role="39821P">
-                            <ref role="3_I8Xa" to="ffeo:I6XuqH2zYV" resolve="git4idea" />
+                            <ref role="3_I8Xa" to="ffeo:I6XuqH2zYV" resolve="vcs-git" />
                           </node>
                           <node concept="3_I8Xc" id="1SFIfQkx0Yw" role="39821P">
                             <ref role="3_I8Xa" to="ffeo:4EdAnGErOtx" resolve="mps-core" />

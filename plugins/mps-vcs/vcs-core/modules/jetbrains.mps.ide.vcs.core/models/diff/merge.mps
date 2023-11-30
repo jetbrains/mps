@@ -1841,7 +1841,7 @@
                               </node>
                             </node>
                             <node concept="37vLTw" id="1giPwdCEAIr" role="1Lso8e">
-                              <ref role="3cqZAo" node="1giPwdCEAIo" resolve="containingLinkInChildrenAndChildAttributesCollection" />
+                              <ref role="3cqZAo" node="1giPwdCEAIo" resolve="containingLink" />
                             </node>
                           </node>
                         </node>

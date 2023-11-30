@@ -61,7 +61,7 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
@@ -78,7 +78,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -107,8 +107,8 @@
     </node>
     <node concept="1qefOq" id="66FmIpYlqUQ" role="1SKRRt">
       <node concept="10M0yZ" id="66FmIpYlrsT" role="1qenE9">
-        <ref role="3cqZAo" node="66FmIpYlr5e" />
-        <ref role="1PxDUh" node="66FmIpYlqXs" />
+        <ref role="3cqZAo" node="66FmIpYlr5e" resolve="A" />
+        <ref role="1PxDUh" node="66FmIpYlqXs" resolve="Constants" />
         <node concept="3xLA65" id="66FmIpYlw96" role="lGtFl">
           <property role="TrG5h" value="a" />
         </node>
@@ -116,8 +116,8 @@
     </node>
     <node concept="1qefOq" id="66FmIpYlruY" role="1SKRRt">
       <node concept="10M0yZ" id="66FmIpYlrxc" role="1qenE9">
-        <ref role="3cqZAo" node="66FmIpYlr7v" />
-        <ref role="1PxDUh" node="66FmIpYlqXs" />
+        <ref role="3cqZAo" node="66FmIpYlr7v" resolve="B" />
+        <ref role="1PxDUh" node="66FmIpYlqXs" resolve="Constants" />
         <node concept="3xLA65" id="66FmIpYlwem" role="lGtFl">
           <property role="TrG5h" value="b" />
         </node>

@@ -8441,7 +8441,7 @@
                             <node concept="liA8E" id="pNEeylbWHD" role="2OqNvi">
                               <ref role="37wK5l" to="w1kc:~SModel.addDevKit(org.jetbrains.mps.openapi.module.SModuleReference)" resolve="addDevKit" />
                               <node concept="2GrUjf" id="pNEeylbWHE" role="37wK5m">
-                                <ref role="2Gs0qQ" node="pNEeylbWHv" resolve="lang" />
+                                <ref role="2Gs0qQ" node="pNEeylbWHv" resolve="devkit" />
                               </node>
                             </node>
                           </node>
