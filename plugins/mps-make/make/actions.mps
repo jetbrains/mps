@@ -3666,6 +3666,15 @@
         <node concept="3SKdUt" id="3kXJ3GPGFjS" role="3cqZAp">
           <node concept="1PaTwC" id="3kXJ3GPGFjT" role="1aUNEU">
             <node concept="3oM_SD" id="3kXJ3GPGHFK" role="1PaTwD">
+              <property role="3oM_SC" value="dirty" />
+            </node>
+            <node concept="3oM_SD" id="5xNRGk4$naQ" role="1PaTwD">
+              <property role="3oM_SC" value="models" />
+            </node>
+            <node concept="3oM_SD" id="5xNRGk4$nbW" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="5xNRGk4$ndI" role="1PaTwD">
               <property role="3oM_SC" value="all" />
             </node>
             <node concept="3oM_SD" id="3kXJ3GPGHGK" role="1PaTwD">
@@ -3682,6 +3691,55 @@
             </node>
             <node concept="3oM_SD" id="3kXJ3GPGHNa" role="1PaTwD">
               <property role="3oM_SC" value="user" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="5xNRGk4zz83" role="3cqZAp">
+          <node concept="3cpWsn" id="5xNRGk4zz84" role="3cpWs9">
+            <property role="TrG5h" value="statusManager" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="5xNRGk4zz85" role="1tU5fm">
+              <ref role="3uigEE" to="ap4t:~ModelGenerationStatusManager" resolve="ModelGenerationStatusManager" />
+            </node>
+            <node concept="2OqwBi" id="5xNRGk4zz86" role="33vP2m">
+              <node concept="37vLTw" id="5xNRGk4zz87" role="2Oq$k0">
+                <ref role="3cqZAo" node="7iCFfvQueLy" resolve="myProject" />
+              </node>
+              <node concept="liA8E" id="5xNRGk4zz88" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="5xNRGk4zz89" role="37wK5m">
+                  <ref role="3VsUkX" to="ap4t:~ModelGenerationStatusManager" resolve="ModelGenerationStatusManager" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="5xNRGk4zYEm" role="3cqZAp">
+          <node concept="3cpWsn" id="5xNRGk4zYEn" role="3cpWs9">
+            <property role="TrG5h" value="dirtySelectedModels" />
+            <node concept="_YKpA" id="5xNRGk4zYnp" role="1tU5fm">
+              <node concept="3uibUv" id="5xNRGk4zYns" role="_ZDj9">
+                <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="5xNRGk4zYEo" role="33vP2m">
+              <node concept="2OqwBi" id="5xNRGk4zYEp" role="2Oq$k0">
+                <node concept="2OqwBi" id="5xNRGk4zYEq" role="2Oq$k0">
+                  <node concept="37vLTw" id="5xNRGk4zYEr" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7iCFfvQMSPW" resolve="selectedModels" />
+                  </node>
+                  <node concept="3zZkjj" id="5xNRGk4zYEs" role="2OqNvi">
+                    <node concept="37Ijox" id="5xNRGk4zYEt" role="23t8la">
+                      <ref role="37Ijqf" to="ap4t:~ModelGenerationStatusManager.generationRequired(org.jetbrains.mps.openapi.model.SModel)" resolve="generationRequired" />
+                      <node concept="37vLTw" id="5xNRGk4zYEu" role="wWaWy">
+                        <ref role="3cqZAo" node="5xNRGk4zz84" resolve="statusManager" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="ANE8D" id="5xNRGk4zYEv" role="2OqNvi" />
+              </node>
+              <node concept="26Dbio" id="5xNRGk4zYEw" role="2OqNvi" />
             </node>
           </node>
         </node>
@@ -3731,8 +3789,16 @@
               <node concept="2ShNRf" id="3kXJ3GPF_w0" role="2Oq$k0">
                 <node concept="1pGfFk" id="3kXJ3GPF_w1" role="2ShVmc">
                   <ref role="37wK5l" to="fn29:2O5mK2f2Efu" resolve="ModelsToResources" />
-                  <node concept="37vLTw" id="3kXJ3GPF_w2" role="37wK5m">
-                    <ref role="3cqZAo" node="7iCFfvQMSPW" resolve="smds" />
+                  <node concept="3K4zz7" id="5xNRGk4$gNW" role="37wK5m">
+                    <node concept="37vLTw" id="5xNRGk4$iTu" role="3K4E3e">
+                      <ref role="3cqZAo" node="7iCFfvQMSPW" resolve="selectedModels" />
+                    </node>
+                    <node concept="37vLTw" id="5xNRGk4$l__" role="3K4GZi">
+                      <ref role="3cqZAo" node="5xNRGk4zYEn" resolve="dirtySelectedModels" />
+                    </node>
+                    <node concept="37vLTw" id="3kXJ3GPF_w2" role="3K4Cdx">
+                      <ref role="3cqZAo" node="7iCFfvQwao8" resolve="myCleanBuild" />
+                    </node>
                   </node>
                   <node concept="37vLTw" id="4yMTmII4dol" role="37wK5m">
                     <ref role="3cqZAo" node="7iCFfvQwao8" resolve="myCleanBuild" />

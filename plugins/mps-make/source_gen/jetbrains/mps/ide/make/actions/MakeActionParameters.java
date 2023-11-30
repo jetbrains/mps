@@ -19,6 +19,7 @@ import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
+import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.smodel.resources.ModelsToResources;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -146,9 +147,15 @@ public class MakeActionParameters {
     } else {
       selectedModels = Sequence.fromIterable(Collections.<SModel>emptyList());
     }
-    // all the models/modules selected by user
+    // dirty models from all the models/modules selected by user
+    final ModelGenerationStatusManager statusManager = myProject.getComponent(ModelGenerationStatusManager.class);
+    List<SModel> dirtySelectedModels = ListSequence.fromList(Sequence.fromIterable(selectedModels).where(new IWhereFilter<SModel>() {
+      public boolean accept(SModel md) {
+        return statusManager.generationRequired(md);
+      }
+    }).toListSequence()).asUnmodifiable();
     // only the selected elements are to be rebuilt if myCleanBuild
-    Iterable<IResource> selectedResources = new ModelsToResources(selectedModels, myCleanBuild).resources();
+    Iterable<IResource> selectedResources = new ModelsToResources((myCleanBuild ? selectedModels : dirtySelectedModels), myCleanBuild).resources();
     Set<SModule> selectedModules = SetSequence.fromSet(SetSequence.fromSetWithValues(new HashSet<SModule>(), Sequence.fromIterable(selectedResources).ofType(MResource.class).select(new ISelector<MResource, SModule>() {
       public SModule select(MResource mr) {
         return mr.module();
