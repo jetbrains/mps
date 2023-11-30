@@ -8,7 +8,6 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.List;
@@ -17,7 +16,6 @@ import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 
 @GeneratedClass(node = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)/7219626660275504879", model = "r:6ba2667b-185e-45cd-ac65-e4b9d66da28e(jetbrains.mps.smodel.resources)")
 public class ModelsToResources {
@@ -52,11 +50,7 @@ public class ModelsToResources {
 
   public Iterable<IResource> resources() {
     Iterable<SModel> smds = Sequence.fromIterable(models).where(myCanGenerateCondition).distinct();
-    smds = Sequence.fromIterable(smds).sort(new ISelector<SModel, String>() {
-      public String select(SModel desc) {
-        return desc.getModule().getModuleName();
-      }
-    }, true);
+    smds = Sequence.fromIterable(smds).sort((desc) -> desc.getModule().getModuleName(), true);
     return arrangeByModule(smds);
   }
 
@@ -69,12 +63,10 @@ public class ModelsToResources {
       }
       ListSequence.fromList(MapSequence.fromMap(groupByModule).get(module)).addElement(model);
     }
-    return SetSequence.fromSet(MapSequence.fromMap(groupByModule).mappingsSet()).select(new ISelector<IMapping<SModule, List<SModel>>, MResource>() {
-      public MResource select(IMapping<SModule, List<SModel>> map) {
-        MResource mres = new MResource(map.key(), map.value());
-        mres.setValue(MakeKeys.CLEAN_MAKE, myCleanMake);
-        return mres;
-      }
-    }).ofType(IResource.class).toListSequence();
+    return SetSequence.fromSet(MapSequence.fromMap(groupByModule).mappingsSet()).select((map) -> {
+      MResource mres = new MResource(map.key(), map.value());
+      mres.setValue(MakeKeys.CLEAN_MAKE, myCleanMake);
+      return mres;
+    }).ofType(IResource.class).toList();
   }
 }

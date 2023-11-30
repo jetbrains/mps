@@ -18,14 +18,11 @@ import java.util.LinkedList;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.generator.impl.plan.ModelContentUtil;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 
 public class BuildDependencies {
 
@@ -65,21 +62,9 @@ public class BuildDependencies {
       if (module instanceof Generator) {
         Generator gtor = ((Generator) module);
         QueueSequence.fromQueue(queue).addLastElement(toModule(gtor.sourceLanguage()));
-        QueueSequence.fromQueue(queue).addSequence(ListSequence.fromList(((List<SModel>) gtor.getModels())).translate(new ITranslator2<SModel, SLanguage>() {
-          public Iterable<SLanguage> translate(SModel gmodel) {
-            return ModelContentUtil.getUsedLanguages(gmodel);
-          }
-        }).select(new ISelector<SLanguage, SModule>() {
-          public SModule select(SLanguage slang) {
-            return toModule(slang);
-          }
-        }));
+        QueueSequence.fromQueue(queue).addSequence(ListSequence.fromList(((List<SModel>) gtor.getModels())).translate((gmodel) -> ModelContentUtil.getUsedLanguages(gmodel)).select((slang) -> toModule(slang)));
       } else {
-        QueueSequence.fromQueue(queue).addSequence(SetSequence.fromSet(((Set<SLanguage>) module.getUsedLanguages())).select(new ISelector<SLanguage, SModule>() {
-          public SModule select(SLanguage slang) {
-            return BuildDependencies.this.toModule(slang);
-          }
-        }).where(new NotNullWhereFilter<SModule>()));
+        QueueSequence.fromQueue(queue).addSequence(SetSequence.fromSet(((Set<SLanguage>) module.getUsedLanguages())).select((slang) -> BuildDependencies.this.toModule(slang)).where(new NotNullWhereFilter()));
         if (module instanceof Language) {
           QueueSequence.fromQueue(queue).addSequence(CollectionSequence.fromCollection(((Language) module).getGenerators()));
         }
@@ -90,28 +75,12 @@ public class BuildDependencies {
 
   public Iterable<SModule> requiredModulesWithDirtyModels() {
     final ModelGenerationStatusManager statusManager = myMpsProject.getComponent(ModelGenerationStatusManager.class);
-    return ListSequence.fromList(Sequence.fromIterable(requiredModules()).where(new IWhereFilter<SModule>() {
-      public boolean accept(SModule module) {
-        return Sequence.fromIterable(((Iterable<SModel>) module.getModels())).any(new IWhereFilter<SModel>() {
-          public boolean accept(SModel md) {
-            return statusManager.generationRequired(md);
-          }
-        });
-      }
-    }).toListSequence()).asUnmodifiable();
+    return ListSequence.fromList(Sequence.fromIterable(requiredModules()).where((module) -> Sequence.fromIterable(((Iterable<SModel>) module.getModels())).any((md) -> statusManager.generationRequired(md))).toList()).asUnmodifiable();
   }
 
   public Iterable<SModel> dirtyModelsFromRequiredModules() {
     final ModelGenerationStatusManager statusManager = myMpsProject.getComponent(ModelGenerationStatusManager.class);
-    return ListSequence.fromList(Sequence.fromIterable(requiredModules()).translate(new ITranslator2<SModule, SModel>() {
-      public Iterable<SModel> translate(SModule module) {
-        return Sequence.fromIterable(((Iterable<SModel>) module.getModels())).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel md) {
-            return statusManager.generationRequired(md);
-          }
-        });
-      }
-    }).toListSequence()).asUnmodifiable();
+    return ListSequence.fromList(Sequence.fromIterable(requiredModules()).translate((module) -> Sequence.fromIterable(((Iterable<SModel>) module.getModels())).where((md) -> statusManager.generationRequired(md))).toList()).asUnmodifiable();
   }
 
   private SModule toModule(SLanguage slang) {
