@@ -21,6 +21,7 @@ import jetbrains.mps.smodel.AssociationData.DirectNode;
 import jetbrains.mps.smodel.AssociationData.DynamicPtr;
 import jetbrains.mps.smodel.AssociationData.IndirectNodePtr;
 import jetbrains.mps.smodel.AssociationData.SNodeAssociationUpdate;
+import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import jetbrains.mps.util.containers.EmptyIterable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -595,7 +596,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode, SNodeAssoci
 
     String val = findProperty(property);
     myOwner.firePropertyRead(this, property, val, true);
-    return !SModelUtil_new.isEmptyPropertyValue(val);
+    return !SModelPropertyEvent.isEmptyPropertyValue(val);
   }
 
   @Override

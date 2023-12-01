@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.event;
 
+import jetbrains.mps.util.StringUtil;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -73,5 +74,11 @@ public class SModelPropertyEvent extends SModelEvent {
 
   public String getNewPropertyValue() {
     return myNewPropertyValue;
+  }
+
+  // method kept despite being identical to the one in StringUtil as it captures semantics
+  // of property value. In fact, I suppose we may want to use isBlank() to treat "<whitespace>" values as empty, too.
+  public static boolean isEmptyPropertyValue(String s) {
+    return StringUtil.isEmpty(s);
   }
 }
