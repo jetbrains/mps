@@ -1053,7 +1053,7 @@
                         <node concept="2OqwBi" id="5SonXm2q_UB" role="33vP2m">
                           <node concept="2OqwBi" id="5SonXm2q_UC" role="2Oq$k0">
                             <node concept="2GrUjf" id="5SonXm2q_UD" role="2Oq$k0">
-                              <ref role="2Gs0qQ" node="22g6WSZINo" resolve="resource" />
+                              <ref role="2Gs0qQ" node="22g6WSZINo" resolve="inputData" />
                             </node>
                             <node concept="2sxana" id="5SonXm2q_UE" role="2OqNvi">
                               <ref role="2sxfKC" to="fn29:1Xl3kQ1uadG" resolve="status" />
