@@ -2477,8 +2477,8 @@
       <node id="4912951749633403526" at="3011,58,3012,58" concept="1" />
       <node id="4912951749633403033" at="3037,15,3038,59" concept="6" />
       <node id="4912951749633403526" at="3039,15,3040,59" concept="6" />
-      <node id="4912951749633427588" at="3059,61,3060,61" concept="1" />
-      <node id="4912951749633454964" at="3060,61,3061,59" concept="1" />
+      <node id="4912951749633427588" at="3059,61,3060,59" concept="1" />
+      <node id="4912951749633454964" at="3060,59,3061,59" concept="1" />
       <node id="4912951749633427588" at="3103,16,3104,71" concept="6" />
       <node id="4912951749633454964" at="3105,16,3106,71" concept="6" />
       <node id="4912951749633439329" at="692,0,695,0" concept="9" trace="propertyMacro_GetValue_12_0#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />

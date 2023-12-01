@@ -661,8 +661,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("3845357643093404661", new RTQ(0, "NodeFacotryImpl"));
-    rtqMethods.put("3845357643093404699", new RTQ(1, "NodeFacotryImpl"));
+    rtqMethods.put("3845357643093404661", new RTQ(0, "container.NodeFacotryImpl"));
+    rtqMethods.put("3845357643093404699", new RTQ(1, "container.NodeFacotryImpl"));
     rtqMethods.put("6501464918897326700", new RTQ(2, "CopyPreProcessor"));
     rtqMethods.put("6884701713556955694", new RTQ(3, "PastePostProcessor"));
     rtqMethods.put("6501464918897418014", new RTQ(4, "PasteWrapper"));

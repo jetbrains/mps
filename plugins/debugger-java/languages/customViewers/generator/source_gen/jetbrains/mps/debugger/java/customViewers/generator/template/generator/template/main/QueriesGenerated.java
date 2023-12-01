@@ -453,7 +453,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("8275758777999533504", new RTQ(0, "MyWatchable"));
+    rtqMethods.put("8275758777999533504", new RTQ(0, "map_CustomWatchablesContainer.MyWatchable"));
   }
   @NotNull
   @Override

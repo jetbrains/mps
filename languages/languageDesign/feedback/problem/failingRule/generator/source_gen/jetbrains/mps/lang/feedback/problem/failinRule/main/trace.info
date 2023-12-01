@@ -18,8 +18,8 @@
     <file name="QueriesGenerated.java">
       <node id="24399255755804128" at="60,93,61,134" concept="3" />
       <node id="24399255755804138" at="63,93,64,137" concept="3" />
-      <node id="24399255755804125" at="101,67,102,58" concept="0" />
-      <node id="24399255755804135" at="102,58,103,65" concept="0" />
+      <node id="24399255755804125" at="101,83,102,58" concept="0" />
+      <node id="24399255755804135" at="102,58,103,81" concept="0" />
       <node id="24399255755804125" at="124,15,125,70" concept="3" />
       <node id="24399255755804135" at="126,15,127,70" concept="3" />
       <node id="24399255755804126" at="60,0,63,0" concept="4" trace="referenceMacro_GetReferent_1_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />
@@ -90,7 +90,7 @@
       <node id="2186761456951199380" at="54,93,55,134" concept="3" />
       <node id="2186761456951199392" at="57,93,58,137" concept="3" />
       <node id="2186761456951199377" at="99,3,100,60" concept="0" />
-      <node id="2186761456951199389" at="100,60,101,67" concept="0" />
+      <node id="2186761456951199389" at="100,60,101,83" concept="0" />
       <node id="2186761456951199377" at="120,15,121,70" concept="3" />
       <node id="2186761456951199389" at="122,15,123,70" concept="3" />
       <node id="2186761456951199378" at="54,0,57,0" concept="4" trace="referenceMacro_GetReferent_0_0#(Ljetbrains/mps/generator/template/ReferenceMacroContext;)Ljava/lang/Object;" />

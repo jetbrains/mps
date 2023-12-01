@@ -6767,9 +6767,9 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("6448709298558743961", new RTQ(6, "_condition_"));
     rtqMethods.put("825332792090062629", new RTQ(7, "EditorBuilderClass"));
     rtqMethods.put("825332792090925811", new RTQ(8, "BaseConcept"));
-    rtqMethods.put("1767562947360483791", new RTQ(9, "GeneratedHandler"));
+    rtqMethods.put("1767562947360483791", new RTQ(9, "_context_class_.GeneratedHandler"));
     rtqMethods.put("6448709298558860813", new RTQ(10, "_condition_"));
-    rtqMethods.put("1189585520114", new RTQ(11, "class_CellKeyMapAction"));
+    rtqMethods.put("1189585520114", new RTQ(11, "class_CellKeyMapDeclaration.class_CellKeyMapAction"));
     rtqMethods.put("1184071662732", new RTQ(12, "CARET_AT_ANY_POSITION"));
     rtqMethods.put("8928180329697221837", new RTQ(13, "BaseConcept"));
     rtqMethods.put("2530139371362847284", new RTQ(14, "stuff_CellMenuPart"));
@@ -6778,7 +6778,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("6517546124972465699", new RTQ(17, "createAction_TYPE"));
     rtqMethods.put("7788343466339793459", new RTQ(18, "DELETE"));
     rtqMethods.put("825332792091496973", new RTQ(19, "_cell_factory_method_"));
-    rtqMethods.put("3339734050170006779", new RTQ(20, "CellMenuPartClass"));
+    rtqMethods.put("3339734050170006779", new RTQ(20, "class_CellMenuComponent.CellMenuPartClass"));
     rtqMethods.put("3461111913274086906", new RTQ(21, "BaseConcept"));
     rtqMethods.put("3461111913274081146", new RTQ(22, "BaseConcept"));
     rtqMethods.put("8903163412607740503", new RTQ(23, "BaseConcept"));
@@ -6854,7 +6854,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("8714766435266938790", new RTQ(93, "InheritableStyleAttribute"));
     rtqMethods.put("5238877291853311512", new RTQ(94, "BaseConcept"));
     rtqMethods.put("5238877291853311522", new RTQ(95, "smodelAttribute"));
-    rtqMethods.put("5238877291853311959", new RTQ(96, "CustomSingleRoleCellProvider"));
+    rtqMethods.put("5238877291853311959", new RTQ(96, "_context_class_.CustomSingleRoleCellProvider"));
     rtqMethods.put("1179666275019586274", new RTQ(97, "BaseConcept"));
     rtqMethods.put("1179666275019519760", new RTQ(98, "BaseConcept"));
     rtqMethods.put("2088682065585945144", new RTQ(99, "BaseConcept"));
@@ -6877,7 +6877,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("3820364241359085382", new RTQ(116, "field"));
     rtqMethods.put("189578833592115307", new RTQ(117, "_parameter_"));
     rtqMethods.put("1199971770628", new RTQ(118, "_parameter_"));
-    rtqMethods.put("4233361609418860327", new RTQ(119, "ParameterizableMenuPart"));
+    rtqMethods.put("4233361609418860327", new RTQ(119, "ContextClass.ParameterizedPart.ParameterizableMenuPart"));
     rtqMethods.put("2684000410256413245", new RTQ(120, "x"));
     rtqMethods.put("843003353410481524", new RTQ(121, "BaseConcept"));
     rtqMethods.put("7825776669680736558", new RTQ(122, "BaseConcept"));
@@ -6894,10 +6894,10 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("933533064627460990", new RTQ(133, "x"));
     rtqMethods.put("1896914160037399755", new RTQ(134, "BaseConcept"));
     rtqMethods.put("7825776669680989081", new RTQ(135, "BaseConcept"));
-    rtqMethods.put("8371900013785990531", new RTQ(136, "ParameterizableMenuPart"));
+    rtqMethods.put("8371900013785990531", new RTQ(136, "ContextClass.Part.ParameterizableMenuPart"));
     rtqMethods.put("7317263714739225248", new RTQ(137, "BaseConcept"));
     rtqMethods.put("2790225568134579993", new RTQ(138, "BaseConcept"));
-    rtqMethods.put("6018261468852472704", new RTQ(139, "InlineBuilder"));
+    rtqMethods.put("6018261468852472704", new RTQ(139, "container.InlineBuilder"));
     rtqMethods.put("2554559902524969361", new RTQ(140, "_cell_factory_method_old"));
     rtqMethods.put("2603680661010960230", new RTQ(141, "BaseConcept"));
     rtqMethods.put("2603680661010962070", new RTQ(142, "BaseConcept"));
@@ -6914,7 +6914,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("7136626533202773665", new RTQ(153, "BaseConcept"));
     rtqMethods.put("1451780833463297865", new RTQ(154, "BaseConcept"));
     rtqMethods.put("422708224287957495", new RTQ(155, "stuff_CellMenuPart"));
-    rtqMethods.put("5391282900580898143", new RTQ(156, "InlineBuilder"));
+    rtqMethods.put("5391282900580898143", new RTQ(156, "container.InlineBuilder"));
     rtqMethods.put("7767000715371338593", new RTQ(157, "BaseConcept"));
     rtqMethods.put("7767000715371338604", new RTQ(158, "virtualPackage"));
     rtqMethods.put("7767000715369667141", new RTQ(159, "stuff_CellMenuPart"));
@@ -6931,8 +6931,8 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("4401553762414345529", new RTQ(170, "virtualPackage"));
     rtqMethods.put("4401553762414345563", new RTQ(171, "BaseConcept"));
     rtqMethods.put("5093287250103924559", new RTQ(172, "BaseConcept"));
-    rtqMethods.put("8885544757920592533", new RTQ(173, "MyContextSpecificMenuCustomizer"));
-    rtqMethods.put("8885544757920591591", new RTQ(174, "MyContextSpecificMenuCustomizer"));
+    rtqMethods.put("8885544757920592533", new RTQ(173, "class_CompletionMenuCustomizer.MyContextSpecificMenuCustomizer"));
+    rtqMethods.put("8885544757920591591", new RTQ(174, "class_CompletionMenuCustomizer.MyContextSpecificMenuCustomizer"));
     rtqMethods.put("4274443204224083685", new RTQ(175, "value"));
     rtqMethods.put("8673913621388823176", new RTQ(176, "castString"));
     rtqMethods.put("6620706402222853281", new RTQ(177, "method"));

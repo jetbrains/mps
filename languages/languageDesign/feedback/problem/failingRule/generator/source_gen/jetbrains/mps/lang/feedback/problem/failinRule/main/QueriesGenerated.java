@@ -98,9 +98,9 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
     rtqMethods.put("2186761456951199377", new RTQ(0, "ID"));
-    rtqMethods.put("2186761456951199389", new RTQ(1, "RuleClass"));
+    rtqMethods.put("2186761456951199389", new RTQ(1, "DescriptorClass.RuleClass"));
     rtqMethods.put("24399255755804125", new RTQ(2, "ID"));
-    rtqMethods.put("24399255755804135", new RTQ(3, "RuleClass"));
+    rtqMethods.put("24399255755804135", new RTQ(3, "DescriptorClass.RuleClass"));
   }
   @NotNull
   @Override

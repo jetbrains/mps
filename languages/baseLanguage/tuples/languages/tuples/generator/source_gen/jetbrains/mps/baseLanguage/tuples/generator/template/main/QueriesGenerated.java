@@ -1329,29 +1329,29 @@ public class QueriesGenerated extends QueryProviderBase {
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
     rtqMethods.put("6106383936196873876", new RTQ(0, "a"));
-    rtqMethods.put("1238933287425", new RTQ(1, "_0"));
+    rtqMethods.put("1238933287425", new RTQ(1, "Tuples._0"));
     rtqMethods.put("1275460185645730287", new RTQ(2, "from"));
     rtqMethods.put("1275460185645756292", new RTQ(3, "from"));
     rtqMethods.put("1275460185645760671", new RTQ(4, "from"));
     rtqMethods.put("8649208922452405376", new RTQ(5, "_tmp"));
     rtqMethods.put("2413168484686156112", new RTQ(6, "Object"));
     rtqMethods.put("1604260043160917472", new RTQ(7, "Object"));
-    rtqMethods.put("4931876019147923474", new RTQ(8, "_0"));
+    rtqMethods.put("4931876019147923474", new RTQ(8, "Tuples._0"));
     rtqMethods.put("1241018440883", new RTQ(9, "Object"));
     rtqMethods.put("2413168484686095911", new RTQ(10, "Object"));
     rtqMethods.put("8755343252890081395", new RTQ(11, "Object"));
-    rtqMethods.put("1239636757671", new RTQ(12, "_1"));
+    rtqMethods.put("1239636757671", new RTQ(12, "MultiTuple._1"));
     rtqMethods.put("1239640673717", new RTQ(13, "component"));
-    rtqMethods.put("247710080512637348", new RTQ(14, "_1"));
+    rtqMethods.put("247710080512637348", new RTQ(14, "Tuples._1"));
     rtqMethods.put("247710080512637565", new RTQ(15, "NamedTuple"));
     rtqMethods.put("247710080512637638", new RTQ(16, "T"));
-    rtqMethods.put("247710080512637693", new RTQ(17, "_1"));
+    rtqMethods.put("247710080512637693", new RTQ(17, "Tuples._1"));
     rtqMethods.put("574925412489664652", new RTQ(18, "empty1"));
     rtqMethods.put("247710080512637241", new RTQ(19, "component"));
     rtqMethods.put("4237952634722624282", new RTQ(20, "component"));
     rtqMethods.put("1275460185645819590", new RTQ(21, "from"));
-    rtqMethods.put("6392574240232855005", new RTQ(22, "_1"));
-    rtqMethods.put("6392574240232854396", new RTQ(23, "_1"));
+    rtqMethods.put("6392574240232855005", new RTQ(22, "Tuples._1"));
+    rtqMethods.put("6392574240232854396", new RTQ(23, "Tuples._1"));
   }
   @NotNull
   @Override

@@ -3565,7 +3565,7 @@ parametersLoop:
     rtqMethods.put("1188816571763", new RTQ(9, "AbstractSubtypingRule_Runtime"));
     rtqMethods.put("1201610301749", new RTQ(10, "AbstractSubtypingRule_Runtime"));
     rtqMethods.put("964487054419050017", new RTQ(11, "BaseConcept"));
-    rtqMethods.put("8984582504936286640", new RTQ(12, "MyOverloadedOperationsTypesProvider"));
+    rtqMethods.put("8984582504936286640", new RTQ(12, "TypesystemDescriptor.MyOverloadedOperationsTypesProvider"));
     rtqMethods.put("964487054419071301", new RTQ(13, "BaseConcept"));
     rtqMethods.put("1176817939039", new RTQ(14, "applicableNode"));
     rtqMethods.put("3891196282115421326", new RTQ(15, "pattern"));

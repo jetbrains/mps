@@ -3057,7 +3057,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("4031822141866301981", new RTQ(7, null));
     rtqMethods.put("3389822811994148415", new RTQ(8, "aaa"));
     rtqMethods.put("3570488090022006408", new RTQ(9, "aaa"));
-    rtqMethods.put("4912951749633427588", new RTQ(10, null));
+    rtqMethods.put("4912951749633427588", new RTQ(10, ""));
     rtqMethods.put("4912951749633454964", new RTQ(11, ""));
     rtqMethods.put("763829979705940623", new RTQ(12, "s"));
     rtqMethods.put("8065469100328125704", new RTQ(13, "aaa"));
