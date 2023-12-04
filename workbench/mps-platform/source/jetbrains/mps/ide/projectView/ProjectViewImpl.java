@@ -30,7 +30,8 @@ import org.jetbrains.annotations.NotNull;
 
 @State(
     name = "ProjectView",
-    storages = @Storage(file = StoragePathMacros.WORKSPACE_FILE)
+    storages = @Storage(file = StoragePathMacros.WORKSPACE_FILE),
+    getStateRequiresEdt = true
 )
 public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectViewImpl {
 
