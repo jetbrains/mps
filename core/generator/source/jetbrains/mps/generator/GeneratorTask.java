@@ -33,20 +33,6 @@ public interface GeneratorTask {
   SModel getModel();
 
   /**
-   * Return arbitrary object assigned at task creation time. Can be used to associate tracking info with a task.
-   */
-  default Object getUserObject() {
-    return null;
-  }
-
-  /**
-   * Set arbitrary user object to this task. 
-   */
-  default void setUserObject(Object userObject) {
-    // NOP
-  }
-
-  /**
    * Factory to instantiate particular implementation of the task.
    */
   interface Factory<T extends GeneratorTask> {

@@ -47,7 +47,7 @@ import jetbrains.mps.messages.IMessageHandler;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.generator.GeneratorTaskBase;
+import jetbrains.mps.smodel.resources.MakeKeys;
 import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.generator.DefaultTaskBuilder;
 import jetbrains.mps.generator.GenerationFacade;
@@ -429,19 +429,19 @@ public class Generate_Facet extends IFacet.Stub {
                   public List<GeneratorTask> compute() {
                     Target_configure.vars(pa.global()).transientModelsProvider().initCheckpointModule();
 
-                    GeneratorTask.Factory<GeneratorTask> factory = new GeneratorTask.Factory<GeneratorTask>() {
-                      public GeneratorTask create(SModel model) {
-                        return new GeneratorTaskBase(model);
-                      }
-                    };
                     ArrayList<GeneratorTask> rv = new ArrayList<GeneratorTask>();
                     for (MResource res : input) {
+                      final boolean cleanResourceMake = res.getValue(MakeKeys.CLEAN_MAKE);
+                      GeneratorTask.Factory<GeneratorTask> factory = new GeneratorTask.Factory<GeneratorTask>() {
+                        public GeneratorTask create(SModel model) {
+                          return new GenTaskImpl(model, cleanResourceMake);
+                        }
+                      };
                       final TransientModelsModule tm = Target_configure.vars(pa.global()).transientModelsProvider().createModule(res.module().getModuleName());
                       DefaultTaskBuilder<GeneratorTask> tb = new DefaultTaskBuilder<GeneratorTask>(factory);
                       tb.addAll(Sequence.fromIterable(res.models()).toListSequence());
                       List<GeneratorTask> tasks = tb.getResult();
                       for (GeneratorTask t : tasks) {
-                        t.setUserObject(res);
                         Target_configure.vars(pa.global()).transientModelsProvider().associate(t, tm);
                       }
                       rv.addAll(tasks);
@@ -456,17 +456,23 @@ public class Generate_Facet extends IFacet.Stub {
                   GenerationFacade genFacade = new GenerationFacade(projectRepo, Target_configure.vars(pa.global()).generationOptions().create());
                   genFacade.transients(Target_configure.vars(pa.global()).transientModelsProvider()).messages(mh).taskHandler(taskHandler);
                   genFacade.process(progressMonitor.subTask(100), tasks);
+
                 });
 
 
                 transientsModuleRepo.getModelAccess().runWriteAction(() -> Target_configure.vars(pa.global()).transientModelsProvider().publishAll());
 
-                for (GenerationStatus genStatus : taskHandler.getAllRecorded()) {
+                for (GeneratorTask gt : taskHandler.getAllCompletedTasks()) {
+                  GenerationStatus genStatus = taskHandler.getRecorded(gt);
                   if (!(genStatus.isOk())) {
                     return new IResult.FAILURE(_output_fi61u2_a0d);
                   }
                   SModel inputModel = genStatus.getInputModel();
                   GResource data = new GResource(inputModel.getModule(), inputModel, MapSequence.fromMap(retainedModels.value).get(inputModel.getModule()), genStatus);
+                  if (gt instanceof GenTaskImpl) {
+                    // FIXME in fact, we need a mechanism to pass all/filtered dictionary values to a new transformed resource
+                    data.setValue(MakeKeys.CLEAN_MAKE, ((GenTaskImpl) gt).myCleanMake);
+                  }
                   _output_fi61u2_a0d = Sequence.fromIterable(_output_fi61u2_a0d).concat(Sequence.fromIterable(Sequence.<IResource>singleton(data)));
                 }
               } finally {
