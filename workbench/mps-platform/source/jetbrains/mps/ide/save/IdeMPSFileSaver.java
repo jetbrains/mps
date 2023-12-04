@@ -19,10 +19,12 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.FileDocumentManagerListener;
 import com.intellij.openapi.project.ProjectManager;
 import jetbrains.mps.extapi.module.EditableSModule;
+import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.project.Project;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 /**
  * Idea platform has the same mechanism in {@link com.intellij.ide.SaveAndSyncHandlerImpl}
@@ -45,8 +47,10 @@ public class IdeMPSFileSaver implements FileDocumentManagerListener {
     if (ProjectManager.getInstance().getOpenProjects().length > 0) {
       Runnable saveRepo = () -> {
         for (Project p : jetbrains.mps.project.ProjectManager.getInstance().getOpenedProjects()) {
-          // runWriteInEDT, not invokeLater+runWriteAction() as former supports attempts/re-scheduling of the action to prevent EDT blocking
-          p.getModelAccess().runWriteInEDT(new SaveRepositoryCommand(p.getRepository()));
+          if (p.getRepository() instanceof SRepositoryExt ? ((SRepositoryExt) p.getRepository()).needsSave() : true) {
+            // runWriteInEDT, not invokeLater+runWriteAction() as former supports attempts/re-scheduling of the action to prevent EDT blocking
+            p.getModelAccess().runWriteInEDT(new SaveRepositoryCommand(p.getRepository()));
+          }
         }
       };
       final MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -352,6 +352,19 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
         LOG.debug(String.format(fmt, msElapsed / 1e3));
       }
     }
+  }
+
+  @Override
+  public boolean needsSave() {
+    if (getModelAccess().canRead()) {
+      return checkModulesModelsChanged();
+    }
+    return getModelAccess().computeReadAction(this::checkModulesModelsChanged);
+  }
+
+  private boolean checkModulesModelsChanged() {
+    boolean changedModule = myModules.stream().filter(EditableSModule.class::isInstance).map(EditableSModule.class::cast).anyMatch(EditableSModule::isChanged);
+    return changedModule || myModelRepository.hasModelsToSave();
   }
 
   //

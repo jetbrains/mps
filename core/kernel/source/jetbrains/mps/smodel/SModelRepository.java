@@ -117,9 +117,15 @@ public class SModelRepository {
     return IterableUtil.asList(module.getModels());
   }
 
+  /*package*/ boolean hasModelsToSave() {
+    synchronized (myModelsLock) {
+      return myAllModels.stream().filter(EditableSModel.class::isInstance).map(EditableSModel.class::cast).anyMatch(EditableSModel::isChanged);
+    }
+  }
+
   private List<EditableSModel> getModelsToSave() {
     var modelsToSave = new ArrayList<EditableSModel>();
-    for (SModel md : getModelDescriptors()) {
+    for (SModel md : myAllModels) {
       if (md instanceof EditableSModel) {
         EditableSModel emd = ((EditableSModel) md);
         if (emd.isChanged() && !emd.isReadOnly()) {

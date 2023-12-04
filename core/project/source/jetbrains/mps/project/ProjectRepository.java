@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -144,6 +144,11 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
   @Override
   public void removeRepositoryListener(@NotNull SRepositoryListener listener) {
     getRootRepository().removeRepositoryListener(listener);
+  }
+
+  @Override
+  public boolean needsSave() {
+    return getRootRepository().needsSave();
   }
 
   @Override
