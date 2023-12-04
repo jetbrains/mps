@@ -185,7 +185,7 @@ public class SModel implements SModelData, UpdateModeSupport {
   //--------------IMPLEMENTATION-------------------
 
   @Override
-  public void addRootNode(final org.jetbrains.mps.openapi.model.SNode node) {
+  public void addRootNode(@NotNull final org.jetbrains.mps.openapi.model.SNode node) {
     assert node instanceof SNode;
     enforceFullLoad();
     if (myRoots.contains(node)) {
