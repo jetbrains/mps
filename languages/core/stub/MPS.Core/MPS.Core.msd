@@ -15,6 +15,13 @@
         -->
         <exclude prefix="jetbrains.mps.baseLanguage.javastub." />
         <exclude prefix="jetbrains.mps.persistence.java.library." />
+
+        <!--
+          [kotlin-stub] classes should not be available through here, they depend on kotlinx-kotlin-metadata which I suppose we do not wish
+          to expose here (right?)
+          These are exposed instead in ...kotlin.stubs MPS module
+        -->
+        <exclude prefix="jetbrains.mps.kotlin.stubs." />
       </PackageScope>
       <Sources zipPath="${mps_home}/lib/MPS-src.zip"/>
     </modelRoot>

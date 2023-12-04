@@ -7,6 +7,12 @@
     </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="kotlinx-metadata-jvm-0.7.0.jar" />
+      <sourceRoot location="mps-persistence.jar" />
+      <PackageScope>
+        <!-- Only include classes from [kotlin-stub] and kotlinx metadata -->
+        <include prefix="jetbrains.mps.kotlin.stubs." />
+        <include prefix="kotlinx." />
+      </PackageScope>
     </modelRoot>
   </models>
   <facets>
