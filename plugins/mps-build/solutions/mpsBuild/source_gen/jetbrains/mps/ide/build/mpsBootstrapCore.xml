@@ -14330,8 +14330,8 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.extensionMethods.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.extensionMethods" />
-      <fileset dir="${mps_home}/languages/util/extensionMethod" includes="icons/**, resources/**" />
-      <fileset dir="${mps_home}/languages/util/extensionMethod/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/languages/baseLanguage/extensionMethod" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/languages/baseLanguage/extensionMethod/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.extensionMethods.jar" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguage.extensionMethods-generator.jar" />
@@ -14378,31 +14378,31 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.extensionMethods-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.extensionMethods#6225815798156427146" />
-      <fileset dir="${mps_home}/languages/util/extensionMethod/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/languages/baseLanguage/extensionMethod/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.baseLanguage.extensionMethods-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-util-extensionMethod-languageModels">
-      <fileset dir="${mps_home}/languages/util/extensionMethod/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-extensionMethod-languageModels">
+      <fileset dir="${mps_home}/languages/baseLanguage/extensionMethod/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-util-extensionMethod-generator-template">
-      <fileset dir="${mps_home}/languages/util/extensionMethod/generator/template" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-extensionMethod-generator-template">
+      <fileset dir="${mps_home}/languages/baseLanguage/extensionMethod/generator/template" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.extensionMethods-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/languages/util/extensionMethod/generator/source_gen">
+      <fileset dir="${mps_home}/languages/baseLanguage/extensionMethod/generator/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <fileset dir="${mps_home}/languages/util/extensionMethod/source_gen">
+      <fileset dir="${mps_home}/languages/baseLanguage/extensionMethod/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/languages/util/extensionMethod/jetbrains.mps.baseLanguage.extensionMethods.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-util-extensionMethod-languageModels" prefix="module/languageModels" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-util-extensionMethod-generator-template" prefix="module/generator/template" />
+      <zipfileset file="${mps_home}/languages/baseLanguage/extensionMethod/jetbrains.mps.baseLanguage.extensionMethods.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-extensionMethod-languageModels" prefix="module/languageModels" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-extensionMethod-generator-template" prefix="module/generator/template" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguage.javadoc.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguage.javadoc.jar/META-INF" />
@@ -16664,7 +16664,7 @@
         <module file="${mps_home}/languages/baseLanguage/classifiers/jetbrains.mps.baseLanguage.classifiers.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/baseLanguage/closures/jetbrains.mps.baseLanguage.closures.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/baseLanguage/collections/jetbrains.mps.baseLanguage.collections.mpl" bootstrap="true" />
-        <module file="${mps_home}/languages/util/extensionMethod/jetbrains.mps.baseLanguage.extensionMethods.mpl" bootstrap="true" />
+        <module file="${mps_home}/languages/baseLanguage/extensionMethod/jetbrains.mps.baseLanguage.extensionMethods.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/baseLanguage/javadoc/jetbrains.mps.baseLanguage.javadoc.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/baseLanguage/jdk7/languages/jdk7/jetbrains.mps.baseLanguage.jdk7.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/baseLanguage/lightweightdsl/jetbrains.mps.baseLanguage.lightweightdsl.mpl" bootstrap="true" />
@@ -18356,7 +18356,7 @@
         <path location="${mps_home}/languages/baseLanguage/javadoc/source_gen" />
         <path location="${mps_home}/languages/baseLanguage/jdk7/languages/jdk7/source_gen" />
         <path location="${mps_home}/languages/baseLanguage/tuples/languages/tuples/source_gen" />
-        <path location="${mps_home}/languages/util/extensionMethod/source_gen" />
+        <path location="${mps_home}/languages/baseLanguage/extensionMethod/source_gen" />
         <path location="${mps_home}/languages/util/regexp/source_gen" />
         <path location="${mps_home}/languages/baseLanguage/baseLanguage.scopes/source_gen" />
         <path location="${mps_home}/languages/languageDesign/analyzers/source_gen" />
@@ -20642,7 +20642,7 @@
   </target>
   
   <target name="java.compile.jetbrains.mps.baseLanguage.extensionMethods" depends="java.compile.findUsages-runtime, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-project-check, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.jetbrains.mps.analyzers.runtime, java.compile.feedback-api, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.migrations-runtime, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-editor, java.compile.mps-generator, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-textgen, java.compile.mps-ui, java.compile.psi, java.compile.refactoring-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.dataFlow.runtime, java.compile.jetbrains.mps.lang.descriptor.aspects, java.compile.jetbrains.mps.lang.smodel.query.runtime, java.compile.java.modules.cycle.2, fetchDependencies">
-    <mkdir dir="${mps_home}/languages/util/extensionMethod/source_gen" />
+    <mkdir dir="${mps_home}/languages/baseLanguage/extensionMethod/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.extensionMethods" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.extensionMethods" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.extensionMethods">        
@@ -20651,7 +20651,7 @@
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/languages/util/extensionMethod/source_gen" />
+        <path location="${mps_home}/languages/baseLanguage/extensionMethod/source_gen" />
       </src>
       <classpath>
         <pathelement path="${build.tmp}/java/out/findUsages-runtime" />
@@ -20713,12 +20713,12 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.extensionMethods">
-      <fileset dir="${mps_home}/languages/util/extensionMethod/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
+      <fileset dir="${mps_home}/languages/baseLanguage/extensionMethod/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
     </copy>
   </target>
   
   <target name="java.compile.jetbrains.mps.baseLanguage.extensionMethods#6225815798156427146" depends="java.compile.feedback-api, java.compile.findUsages-runtime, java.compile.idea-platform, java.compile.messages-api, java.compile.messages-for-rules, java.compile.migrations-runtime, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-generator, java.compile.platform, java.compile.mps-environment, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.psi, java.compile.refactoring-runtime, java.compile.scripts-runtime, java.compile.vfs-tracking, java.compile.jetbrains.mps.baseLanguage, java.compile.jetbrains.mps.baseLanguage.extensionMethods, java.compile.jetbrains.mps.baseLanguage.logging.runtime, java.compile.jetbrains.mps.baseLanguage.scopes, java.compile.jetbrains.mps.lang.core, java.compile.jetbrains.mps.lang.traceable, fetchDependencies">
-    <mkdir dir="${mps_home}/languages/util/extensionMethod/generator/source_gen" />
+    <mkdir dir="${mps_home}/languages/baseLanguage/extensionMethod/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.extensionMethods#6225815798156427146" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.extensionMethods#6225815798156427146" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="jetbrains.mps.baseLanguage.extensionMethods#6225815798156427146">        
@@ -20727,7 +20727,7 @@
       <skip pattern="kotlin/Metadata" />
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/languages/util/extensionMethod/generator/source_gen" />
+        <path location="${mps_home}/languages/baseLanguage/extensionMethod/generator/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
@@ -20789,7 +20789,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.extensionMethods#6225815798156427146">
-      <fileset dir="${mps_home}/languages/util/extensionMethod/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
+      <fileset dir="${mps_home}/languages/baseLanguage/extensionMethod/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
     </copy>
   </target>
   
