@@ -19,6 +19,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ExtensionPointDeclaration;
   private ConceptPresentation props_ExtensionPointExpression;
   private ConceptPresentation props_ExtensionPointType;
+  private ConceptPresentation props_ExtensionRegistrar;
   private ConceptPresentation props_GetExtensionObjectsOperation;
   private ConceptPresentation props_IRegisterable;
   private ConceptPresentation props_IRootWithUniqueName;
@@ -107,6 +108,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ExtensionPointType = cpb.create();
         }
         return props_ExtensionPointType;
+      case LanguageConceptSwitch.ExtensionRegistrar:
+        if (props_ExtensionRegistrar == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x338791c7436f0526L, 0x338791c7436f09a4L, "ext", "", "");
+          props_ExtensionRegistrar = cpb.create();
+        }
+        return props_ExtensionRegistrar;
       case LanguageConceptSwitch.GetExtensionObjectsOperation:
         if (props_GetExtensionObjectsOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

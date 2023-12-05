@@ -8,12 +8,16 @@
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="oubp" ref="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:7cc2086d-c7d0-49c7-811c-ebbaf40d9195(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
+    <import index="yv2q" ref="r:cdf8afc0-fdc6-47ca-b829-7b2226168efa(jetbrains.mps.lang.descriptor.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
+      </concept>
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
@@ -269,7 +273,7 @@
       <property role="IQ2ns" value="4907674970866646114" />
       <property role="20kJfa" value="key" />
       <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" to="tpee:fz12cDA" resolve="ClassConcept" />
+      <ref role="20lvS9" to="tpee:g7pOWCK" resolve="Classifier" />
     </node>
     <node concept="1TJgyj" id="4gr$69f_fKE" role="1TKVEi">
       <property role="IQ2ns" value="4907674970866646058" />
@@ -306,6 +310,24 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" />
     <node concept="PrWs8" id="4gr$69f_fKR" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3e7$st3rKkA">
+    <property role="EcuMT" value="3713096702806132006" />
+    <property role="TrG5h" value="ExtensionRegistrar" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="1TJgyj" id="3e7$st3rKA$" role="1TKVEi">
+      <property role="IQ2ns" value="3713096702806133156" />
+      <property role="20kJfa" value="ext" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="4gr$69f_fKA" resolve="BasicExtensionDeclaration" />
+      <node concept="t5JxF" id="3e7$st3rKAA" role="lGtFl">
+        <property role="t5JxN" value="eventually shall point to some generic interface representing any lang.extension object that is part of ModuleRuntime.Activator story " />
+      </node>
+    </node>
+    <node concept="PrWs8" id="3e7$st3rKAy" role="PzmwI">
+      <ref role="PrY4T" to="yv2q:3e7$st3rkg8" resolve="ActivatorUnit" />
     </node>
   </node>
 </model>

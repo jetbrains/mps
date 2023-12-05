@@ -23,7 +23,9 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
-      <concept id="418049251856799813" name="jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute" flags="ig" index="1AhYRh" />
+      <concept id="418049251856799813" name="jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute" flags="ig" index="1AhYRh">
+        <property id="418049251856799817" name="comment" index="1AhYRt" />
+      </concept>
       <concept id="5583843313507852240" name="jetbrains.mps.lang.structure.structure.MarkerInterfaceAttribute" flags="ng" index="3MrDgS" />
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
@@ -118,6 +120,17 @@
       <ref role="20lvS9" to="tpee:fzclF80" resolve="StatementList" />
     </node>
     <node concept="1AhYRh" id="IR$DxXuVkD" role="lGtFl" />
+  </node>
+  <node concept="PlHQZ" id="3e7$st3rkg8">
+    <property role="EcuMT" value="3713096702806017032" />
+    <property role="TrG5h" value="ActivatorUnit" />
+    <node concept="3MrDgS" id="3e7$st3rkgc" role="lGtFl" />
+    <node concept="1AhYRh" id="3e7$st3rkga" role="lGtFl">
+      <property role="1AhYRt" value="much like AspectDescriptor, to trigger generation of ModuleActivator code" />
+    </node>
+    <node concept="t5JxF" id="3e7$st3rnII" role="lGtFl">
+      <property role="t5JxN" value="Piece of work/feature of a ModuleActivator" />
+    </node>
   </node>
 </model>
 

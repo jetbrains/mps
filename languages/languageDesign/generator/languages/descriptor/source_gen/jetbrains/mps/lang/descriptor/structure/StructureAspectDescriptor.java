@@ -13,6 +13,7 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptActivatorUnit = createDescriptorForActivatorUnit();
   /*package*/ final ConceptDescriptor myConceptAspectDescriptor = createDescriptorForAspectDescriptor();
   /*package*/ final ConceptDescriptor myConceptGeneratorDescriptor = createDescriptorForGeneratorDescriptor();
   /*package*/ final ConceptDescriptor myConceptGeneratorInternal_Aspect = createDescriptorForGeneratorInternal_Aspect();
@@ -34,13 +35,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAspectDescriptor, myConceptGeneratorDescriptor, myConceptGeneratorInternal_Aspect, myConceptLanguageDescriptor, myConceptModuleActivator);
+    return Arrays.asList(myConceptActivatorUnit, myConceptAspectDescriptor, myConceptGeneratorDescriptor, myConceptGeneratorInternal_Aspect, myConceptLanguageDescriptor, myConceptModuleActivator);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
+      case LanguageConceptSwitch.ActivatorUnit:
+        return myConceptActivatorUnit;
       case LanguageConceptSwitch.AspectDescriptor:
         return myConceptAspectDescriptor;
       case LanguageConceptSwitch.GeneratorDescriptor:
@@ -61,6 +64,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForActivatorUnit() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.descriptor", "ActivatorUnit", 0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x338791c7436d4408L);
+    b.interface_();
+    b.origin("r:cdf8afc0-fdc6-47ca-b829-7b2226168efa(jetbrains.mps.lang.descriptor.structure)/3713096702806017032");
+    b.version(3);
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForAspectDescriptor() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.descriptor", "AspectDescriptor", 0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x5fc6cc5c84f4bddbL);
     b.interface_();

@@ -25,6 +25,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptExtensionPointDeclaration = createDescriptorForExtensionPointDeclaration();
   /*package*/ final ConceptDescriptor myConceptExtensionPointExpression = createDescriptorForExtensionPointExpression();
   /*package*/ final ConceptDescriptor myConceptExtensionPointType = createDescriptorForExtensionPointType();
+  /*package*/ final ConceptDescriptor myConceptExtensionRegistrar = createDescriptorForExtensionRegistrar();
   /*package*/ final ConceptDescriptor myConceptGetExtensionObjectsOperation = createDescriptorForGetExtensionObjectsOperation();
   /*package*/ final ConceptDescriptor myConceptIRegisterable = createDescriptorForIRegisterable();
   /*package*/ final ConceptDescriptor myConceptIRootWithUniqueName = createDescriptorForIRootWithUniqueName();
@@ -43,12 +44,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     deps.employedLanguage(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, "jetbrains.mps.baseLanguage.lightweightdsl");
+    deps.employedLanguage(0xf4ad079dbc714ffbL, 0x96009328705cf998L, "jetbrains.mps.lang.descriptor");
     deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBasicExtensionDeclaration, myConceptExtension, myConceptExtensionDeclaration, myConceptExtensionFieldDeclaration, myConceptExtensionFieldReference, myConceptExtensionFunction, myConceptExtensionObjectGetter, myConceptExtensionPointDeclaration, myConceptExtensionPointExpression, myConceptExtensionPointType, myConceptGetExtensionObjectsOperation, myConceptIRegisterable, myConceptIRootWithUniqueName, myConceptSelector, myConceptTag, myConceptTagsSelector);
+    return Arrays.asList(myConceptBasicExtensionDeclaration, myConceptExtension, myConceptExtensionDeclaration, myConceptExtensionFieldDeclaration, myConceptExtensionFieldReference, myConceptExtensionFunction, myConceptExtensionObjectGetter, myConceptExtensionPointDeclaration, myConceptExtensionPointExpression, myConceptExtensionPointType, myConceptExtensionRegistrar, myConceptGetExtensionObjectsOperation, myConceptIRegisterable, myConceptIRootWithUniqueName, myConceptSelector, myConceptTag, myConceptTagsSelector);
   }
 
   @Override
@@ -75,6 +77,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptExtensionPointExpression;
       case LanguageConceptSwitch.ExtensionPointType:
         return myConceptExtensionPointType;
+      case LanguageConceptSwitch.ExtensionRegistrar:
+        return myConceptExtensionRegistrar;
       case LanguageConceptSwitch.GetExtensionObjectsOperation:
         return myConceptGetExtensionObjectsOperation;
       case LanguageConceptSwitch.IRegisterable:
@@ -103,7 +107,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:2a0fe383-d602-4f5b-813c-e41afdbbb97e(jetbrains.mps.lang.extension.structure)/4907674970866646054");
     b.version(3);
-    b.associate("key", 0x441b90624f94fc62L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L).optional(false).origin("4907674970866646114").done();
+    b.associate("key", 0x441b90624f94fc62L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L).optional(false).origin("4907674970866646114").done();
     b.associate("implementation", 0x441b90624f94fc2aL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L).optional(false).origin("4907674970866646058").done();
     b.aggregate("select", 0x441b90624f94fc2fL).target(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x441b90624f94fc2cL).optional(true).ordered(true).multiple(false).origin("4907674970866646063").done();
     return b.create();
@@ -209,6 +213,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.associate("extensionPoint", 0x2c10fa62142eb539L).target(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L).optional(false).origin("3175313036448544057").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
     b.alias("extensionPoint");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForExtensionRegistrar() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.extension", "ExtensionRegistrar", 0xc0080a477e374558L, 0xbee99ae18e690549L, 0x338791c7436f0526L);
+    b.class_(false, false, true);
+    b.parent(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x338791c7436d4408L);
+    b.origin("r:2a0fe383-d602-4f5b-813c-e41afdbbb97e(jetbrains.mps.lang.extension.structure)/3713096702806132006");
+    b.version(3);
+    b.associate("ext", 0x338791c7436f09a4L).target(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x441b90624f94fc26L).optional(false).origin("3713096702806133156").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForGetExtensionObjectsOperation() {

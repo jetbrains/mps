@@ -19,11 +19,9 @@ import java.util.function.Consumer;
  * @author Artem Tikhomirov
  * @since 2023.3
  */
-public interface DescriptorModelContributor extends Consumer<SModel> {
+public interface DescriptorModelContributor {
 
   // XXX not sure if I ever need DescriptorModelProvider, but I've got it handy, why not.
   // no assumptions about model being part of the target module already or being registered/attached to a repo
-  default void contribute(@NotNull DescriptorModelProvider origin, @NotNull SModule target, @NotNull SModel descriptorModel) {
-    accept(descriptorModel);
-  }
+  void contribute(@NotNull DescriptorModelProvider origin, @NotNull SModule target, @NotNull SModel descriptorModel);
 }

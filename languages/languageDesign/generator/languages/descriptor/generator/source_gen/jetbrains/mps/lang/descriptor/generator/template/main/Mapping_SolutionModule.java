@@ -22,6 +22,7 @@ import jetbrains.mps.generator.template.MapRootRuleContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import jetbrains.mps.generator.runtime.CreateRootRuleBase;
+import jetbrains.mps.generator.template.CreateRootRuleContext;
 import jetbrains.mps.generator.runtime.DropRootRuleBase;
 import jetbrains.mps.generator.template.DropRootRuleContext;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
@@ -73,6 +74,10 @@ public class Mapping_SolutionModule extends MapConfigBase implements TemplateMap
   /*package*/ final class CreateRootRule0 extends CreateRootRuleBase implements TemplateCreateRootRule {
     public CreateRootRule0() {
       super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "844304638793432069"));
+    }
+    @Override
+    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
+      return QueriesGenerated.createRootRule_Condition_12_0(new CreateRootRuleContext(context, getRuleNode()));
     }
     public Collection<SNode> apply(TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();

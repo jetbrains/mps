@@ -289,7 +289,9 @@
       </concept>
       <concept id="1167087469898" name="jetbrains.mps.lang.generator.structure.CreateRootRule" flags="lg" index="2VPoh5">
         <reference id="1167087469901" name="templateNode" index="2VPoh2" />
+        <child id="1167087469900" name="conditionFunction" index="2VPoh3" />
       </concept>
+      <concept id="1167087518662" name="jetbrains.mps.lang.generator.structure.CreateRootRule_Condition" flags="in" index="2VP$b9" />
       <concept id="5133195082121471908" name="jetbrains.mps.lang.generator.structure.LabelMacro" flags="ln" index="2ZBi8u" />
       <concept id="1167168920554" name="jetbrains.mps.lang.generator.structure.BaseMappingRule_Condition" flags="in" index="30G5F_" />
       <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
@@ -4215,6 +4217,25 @@
     <property role="3GE5qa" value="solution" />
     <node concept="2VPoh5" id="IR$DxXvNK5" role="2VS0gm">
       <ref role="2VPoh2" node="IR$DxXwsQY" resolve="ModuleActivatorInstance" />
+      <node concept="2VP$b9" id="3e7$st3rlNs" role="2VPoh3">
+        <node concept="3clFbS" id="3e7$st3rlNt" role="2VODD2">
+          <node concept="3SKdUt" id="3e7$st3rnGR" role="3cqZAp">
+            <node concept="1PaTwC" id="3e7$st3rnGS" role="1aUNEU">
+              <node concept="3oM_SD" id="3e7$st3rnHB" role="1PaTwD">
+                <property role="3oM_SC" value="FIXME" />
+              </node>
+              <node concept="3oM_SD" id="3e7$st3rnID" role="1PaTwD">
+                <property role="3oM_SC" value="genContext.inputModel.roots(ActivatorUnit).isNotEmpty" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="3e7$st3rnFv" role="3cqZAp">
+            <node concept="3clFbT" id="3e7$st3rnFu" role="3clFbG">
+              <property role="3clFbU" value="true" />
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="aNPBN" id="IR$DxXvHCp" role="aQYdv">
       <ref role="aOQi4" to="yv2q:IR$DxXuVkC" resolve="ModuleActivator" />
@@ -4312,7 +4333,7 @@
                     <node concept="2OqwBi" id="IR$DxXNOXW" role="33vP2m">
                       <node concept="2OqwBi" id="IR$DxXNOXX" role="2Oq$k0">
                         <node concept="1iwH7S" id="IR$DxXNOXY" role="2Oq$k0" />
-                        <node concept="1r8y6K" id="IR$DxXNOXZ" role="2OqNvi" />
+                        <node concept="1st3f0" id="1nY$fZlumKR" role="2OqNvi" />
                       </node>
                       <node concept="13u695" id="IR$DxXNOY0" role="2OqNvi" />
                     </node>
@@ -4407,6 +4428,7 @@
       <property role="TrG5h" value="model" />
       <node concept="H_c77" id="IR$DxXNNoG" role="1N15GL" />
     </node>
+    <node concept="b5Tf3" id="1nY$fZluPvj" role="jxRDz" />
   </node>
 </model>
 
