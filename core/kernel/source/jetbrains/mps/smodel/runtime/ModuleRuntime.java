@@ -128,6 +128,7 @@ public final class ModuleRuntime {
   private Class<?>[] myBasicExtensionKeys;
   private Extension<?>[] myBasicExtensionValues;
 
+  // FIXME need to decide whether we try to load activator for modules withExtensions() == false
   public void activate(final ModuleRuntimeContext context) {
       try {
         myModuleActivator = myActivatorFactory.newInstance(this, context);
@@ -139,21 +140,23 @@ public final class ModuleRuntime {
         return;
       }
       try {
-        final List<Pair<Class<?>, Extension<?>>> registrations = new ArrayList<>();
-        final ActivatorContext ac = new ActivatorContext() {
-          @Override
-          public <T> void extension(Class<T> key, Extension<T> ext) {
-            registrations.add(new Pair<>(key, ext));
-          }
-        };
         myModuleActivator.activate();
-        myModuleActivator.contribute(ac);
-        if (!registrations.isEmpty()) {
-          myBasicExtensionKeys = new Class<?>[registrations.size()];
-          myBasicExtensionValues = new Extension<?>[registrations.size()];
-          for (int i = 0, x = registrations.size(); i < x; i++) {
-            myBasicExtensionKeys[i] = registrations.get(i).o1;
-            myBasicExtensionValues[i] = registrations.get(i).o2;
+        if (withExtensions()) {
+          final List<Pair<Class<?>, Extension<?>>> registrations = new ArrayList<>();
+          final ActivatorContext ac = new ActivatorContext() {
+            @Override
+            public <T> void extension(Class<T> key, Extension<T> ext) {
+              registrations.add(new Pair<>(key, ext));
+            }
+          };
+          myModuleActivator.contribute(ac);
+          if (!registrations.isEmpty()) {
+            myBasicExtensionKeys = new Class<?>[registrations.size()];
+            myBasicExtensionValues = new Extension<?>[registrations.size()];
+            for (int i = 0, x = registrations.size(); i < x; i++) {
+              myBasicExtensionKeys[i] = registrations.get(i).o1;
+              myBasicExtensionValues[i] = registrations.get(i).o2;
+            }
           }
         }
       } catch (Throwable th) {
@@ -236,7 +239,8 @@ public final class ModuleRuntime {
   public interface Activator {
     default void activate() {}
     /**
-     * {@link #activate()} comes first, followed by this method in case there's need to supply extensions
+     * Invoked if module manifests it provides extensions to MPS (see {@link jetbrains.mps.project.facets.JavaModuleFacet.LoadExtensions}
+     * {@link #activate()} comes first, followed by this method in case there's need to supply extensions.
      * @since 2023.3
      */
     default void contribute(@NotNull ActivatorContext ctx) {

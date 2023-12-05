@@ -778,7 +778,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   public <T> void withAvailableExtensions(final Class<T> kind, final MatchRequest matchRequest, Consumer<T> operation) {
     try {
       myRuntimeInstanceAccess.readLock().lock();
-      myModuleRuntime.values().stream().flatMap(mr -> mr.extensionsFor(kind)).filter(e -> e.matches(matchRequest))
+      myModuleRuntime.values().stream().filter(ModuleRuntime::withExtensions).flatMap(mr -> mr.extensionsFor(kind)).filter(e -> e.matches(matchRequest))
                      .map(Extension::get).filter(Optional::isPresent).map(Optional::get).forEach(operation);
     } finally {
       myRuntimeInstanceAccess.readLock().unlock();
