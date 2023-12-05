@@ -144,7 +144,6 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/editor.menus.extras/jetbrains.mps.lang.editor.menus.extras.mpl" folder="core.aspects.editor.menus.extras" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/editor.menus.extras/runtime/jetbrains.mps.lang.editor.menus.extras.runtime.msd" folder="core.aspects.editor.menus.extras" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/editor/jetbrains.mps.lang.editor.mpl" folder="core.aspects.editor" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/extension/jetbrains.mps.lang.extension.mpl" folder="core.aspects.plugin" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/feedback/jetbrains.mps.lang.feedback.mpl" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/messages/jetbrains.mps.lang.feedback.messages.mpl" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/feedback/problem/childAndProp/jetbrains.mps.lang.feedback.problem.childAndProp.mpl" folder="core.aspects.feedback" />
@@ -223,6 +222,7 @@
       <modulePath path="$PROJECT_DIR$/languages/util/builders/sandbox/jetbrains.mps.baseLanguage.builders.sandbox.msd" folder="core.baseLanguage.builders" />
       <modulePath path="$PROJECT_DIR$/languages/util/core.text/jetbrains.mps.lang.text.mpl" folder="core.languages.text" />
       <modulePath path="$PROJECT_DIR$/languages/util/execution/util/jetbrains.mps.execution.util.mpl" folder="workbench.execution" />
+      <modulePath path="$PROJECT_DIR$/languages/util/extension/jetbrains.mps.lang.extension.mpl" folder="core.extensions" />
       <modulePath path="$PROJECT_DIR$/languages/util/makeup/jetbrains.mps.lang.makeup.mpl" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/languages/util/regexp/jetbrains.mps.baseLanguage.regexp.mpl" folder="core.baseLanguage.regexp" />
       <modulePath path="$PROJECT_DIR$/languages/util/regexp/solutions/jetbrains.mps.baseLanguage.regexp.runtime/jetbrains.mps.baseLanguage.regexp.runtime.msd" folder="core.baseLanguage.regexp" />
@@ -622,7 +622,7 @@
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/editor.test/jetbrains.mps.lang.editor.tests.msd" folder="core.aspects.editor" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/execution-test/tests.data/jetbrains.mps.execution.impl.tests.sandbox.msd" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/execution-test/tests/jetbrains.mps.execution.impl.tests.msd" folder="workbench.execution" />
-      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/extension.test/jetbrains.mps.lang.extension.tests.msd" folder="core.aspects.plugin" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/extension.test/jetbrains.mps.lang.extension.tests.msd" folder="core.extensions" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/generator.inputModels.test/jetbrains.mps.transformation.test.inputModels.msd" folder="core.aspects.generator" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/generator.test/jetbrains.mps.generator.tests.msd" folder="core.aspects.generator" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/httpsupport.test/jetbrains.mps.ide.httpsupport.tests.msd" folder="tests.testHttpSupport" />
