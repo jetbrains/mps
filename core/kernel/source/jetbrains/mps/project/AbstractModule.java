@@ -749,8 +749,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
         }
 
         ModelRoot root = modelRootFactory.create();
-        Memento mementoWithFS = new MementoWithFS(modelRoot.getMemento(), myFileSystem);
-        root.load(mementoWithFS);
+        root.load(modelRoot.getMemento());
         result.add(root);
       } catch (Exception e) {
         LOG.error("Error loading models from root with type: `" + modelRoot.getType() + "'. Requested by: " + this, e);
