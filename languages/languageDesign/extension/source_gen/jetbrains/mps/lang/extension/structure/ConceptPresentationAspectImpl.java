@@ -9,6 +9,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_BasicExtensionDeclaration;
   private ConceptPresentation props_Extension;
   private ConceptPresentation props_ExtensionDeclaration;
   private ConceptPresentation props_ExtensionFieldDeclaration;
@@ -21,12 +22,22 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_GetExtensionObjectsOperation;
   private ConceptPresentation props_IRegisterable;
   private ConceptPresentation props_IRootWithUniqueName;
+  private ConceptPresentation props_Selector;
+  private ConceptPresentation props_Tag;
+  private ConceptPresentation props_TagsSelector;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.BasicExtensionDeclaration:
+        if (props_BasicExtensionDeclaration == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_BasicExtensionDeclaration = cpb.create();
+        }
+        return props_BasicExtensionDeclaration;
       case LanguageConceptSwitch.Extension:
         if (props_Extension == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -115,6 +126,26 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IRootWithUniqueName = cpb.create();
         }
         return props_IRootWithUniqueName;
+      case LanguageConceptSwitch.Selector:
+        if (props_Selector == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_Selector = cpb.create();
+        }
+        return props_Selector;
+      case LanguageConceptSwitch.Tag:
+        if (props_Tag == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_Tag = cpb.create();
+        }
+        return props_Tag;
+      case LanguageConceptSwitch.TagsSelector:
+        if (props_TagsSelector == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("TagsSelector");
+          props_TagsSelector = cpb.create();
+        }
+        return props_TagsSelector;
     }
     return null;
   }

@@ -254,5 +254,59 @@
     <property role="EcuMT" value="1252437031490516165" />
     <property role="TrG5h" value="IRegisterable" />
   </node>
+  <node concept="1TIwiD" id="4gr$69f_fKA">
+    <property role="EcuMT" value="4907674970866646054" />
+    <property role="TrG5h" value="BasicExtensionDeclaration" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="1TJgyj" id="4gr$69f_fKJ" role="1TKVEi">
+      <property role="IQ2ns" value="4907674970866646063" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="select" />
+      <ref role="20lvS9" node="4gr$69f_fKG" resolve="Selector" />
+    </node>
+    <node concept="1TJgyj" id="4gr$69f_fLy" role="1TKVEi">
+      <property role="IQ2ns" value="4907674970866646114" />
+      <property role="20kJfa" value="key" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fz12cDA" resolve="ClassConcept" />
+    </node>
+    <node concept="1TJgyj" id="4gr$69f_fKE" role="1TKVEi">
+      <property role="IQ2ns" value="4907674970866646058" />
+      <property role="20kJfa" value="implementation" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fz12cDA" resolve="ClassConcept" />
+    </node>
+    <node concept="PrWs8" id="4gr$69f_fKC" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="4gr$69f_fKG">
+    <property role="EcuMT" value="4907674970866646060" />
+    <property role="TrG5h" value="Selector" />
+  </node>
+  <node concept="1TIwiD" id="4gr$69f_fKN">
+    <property role="EcuMT" value="4907674970866646067" />
+    <property role="TrG5h" value="TagsSelector" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="PrWs8" id="4gr$69f_fKO" role="PzmwI">
+      <ref role="PrY4T" node="4gr$69f_fKG" resolve="Selector" />
+    </node>
+    <node concept="1TJgyj" id="4gr$69f_fKT" role="1TKVEi">
+      <property role="IQ2ns" value="4907674970866646073" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="tags" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <ref role="20lvS9" node="4gr$69f_fKQ" resolve="Tag" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4gr$69f_fKQ">
+    <property role="EcuMT" value="4907674970866646070" />
+    <property role="TrG5h" value="Tag" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="PrWs8" id="4gr$69f_fKR" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
 </model>
 

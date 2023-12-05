@@ -9,21 +9,26 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
-  public static final int Extension = 0;
-  public static final int ExtensionDeclaration = 1;
-  public static final int ExtensionFieldDeclaration = 2;
-  public static final int ExtensionFieldReference = 3;
-  public static final int ExtensionFunction = 4;
-  public static final int ExtensionObjectGetter = 5;
-  public static final int ExtensionPointDeclaration = 6;
-  public static final int ExtensionPointExpression = 7;
-  public static final int ExtensionPointType = 8;
-  public static final int GetExtensionObjectsOperation = 9;
-  public static final int IRegisterable = 10;
-  public static final int IRootWithUniqueName = 11;
+  public static final int BasicExtensionDeclaration = 0;
+  public static final int Extension = 1;
+  public static final int ExtensionDeclaration = 2;
+  public static final int ExtensionFieldDeclaration = 3;
+  public static final int ExtensionFieldReference = 4;
+  public static final int ExtensionFunction = 5;
+  public static final int ExtensionObjectGetter = 6;
+  public static final int ExtensionPointDeclaration = 7;
+  public static final int ExtensionPointExpression = 8;
+  public static final int ExtensionPointType = 9;
+  public static final int GetExtensionObjectsOperation = 10;
+  public static final int IRegisterable = 11;
+  public static final int IRootWithUniqueName = 12;
+  public static final int Selector = 13;
+  public static final int Tag = 14;
+  public static final int TagsSelector = 15;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xc0080a477e374558L, 0xbee99ae18e690549L);
+    builder.put(0x441b90624f94fc26L, BasicExtensionDeclaration);
     builder.put(0x1c30c5b543be3b2L, Extension);
     builder.put(0x33c018482cafa9d4L, ExtensionDeclaration);
     builder.put(0x61a62b43e1534e99L, ExtensionFieldDeclaration);
@@ -36,6 +41,9 @@ public final class LanguageConceptSwitch {
     builder.put(0x2c10fa62142ef747L, GetExtensionObjectsOperation);
     builder.put(0x11618cd82d8974c5L, IRegisterable);
     builder.put(0x2b7651d49ee9d72L, IRootWithUniqueName);
+    builder.put(0x441b90624f94fc2cL, Selector);
+    builder.put(0x441b90624f94fc36L, Tag);
+    builder.put(0x441b90624f94fc33L, TagsSelector);
     myIndex = builder.seal();
   }
 
