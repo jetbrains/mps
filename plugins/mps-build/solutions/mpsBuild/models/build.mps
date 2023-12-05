@@ -24522,11 +24522,6 @@
             <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
           </node>
         </node>
-        <node concept="1SiIV0" id="1ZViq9opxBK" role="3bR37C">
-          <node concept="3bR9La" id="1ZViq9opxBL" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6KXW" resolve="jetbrains.mps.lang.core" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="1ZViq9opxBM" role="3bR37C">
           <node concept="3bR9La" id="1ZViq9opxBN" role="1SiIV1">
             <ref role="3bR37D" node="14x5$qAUbkv" resolve="jetbrains.mps.lang.resources" />
