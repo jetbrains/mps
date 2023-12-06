@@ -236,9 +236,8 @@ public class ModuleDescriptorPersistence {
     for (ModuleFacetDescriptor facet : CollectionSequence.fromCollection(facets)) {
       Memento memento = facet.getMemento();
       Element facetElement = new Element("facet");
+      facetElement.setAttribute("type", facet.getType());
       writeMemento(memento, facetElement);
-      String type = facet.getType();
-      facetElement.setAttribute("type", type);
       result.addContent(facetElement);
     }
   }
@@ -248,12 +247,7 @@ public class ModuleDescriptorPersistence {
       Memento memento = root.getMemento();
       Element modelRoot = new Element("modelRoot");
       writeMemento(memento, modelRoot);
-      String type = root.getType();
-      if ((type != null && type.length() > 0) && !("obsolete".equals(type))) {
-        modelRoot.setAttribute("type", type);
-      } else {
-        modelRoot.removeAttribute("type");
-      }
+      modelRoot.setAttribute("type", root.getType());
       result.addContent(modelRoot);
     }
   }
