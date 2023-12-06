@@ -10,7 +10,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" compile="mps" classes="mps" ext="yes">
+    <facet type="java" compile="mps" classes="mps" ext="no">
       <classes generated="true" path="${module}/classes_gen" />
       <library location="${module}/lib/trove-2.1.0.jar" />
     </facet>

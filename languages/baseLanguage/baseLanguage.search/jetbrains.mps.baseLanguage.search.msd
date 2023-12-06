@@ -7,7 +7,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" languageLevel="JAVA_7" compile="ext" classes="provided" ext="yes">
+    <facet type="java" languageLevel="JAVA_7" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
       <library location="${module}/classes" />
     </facet>

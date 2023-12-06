@@ -7,7 +7,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet type="java" compile="ext" classes="provided" ext="yes">
+    <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
     </facet>
   </facets>
