@@ -304,7 +304,7 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
 
       try {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        Element xmlElement = new LanguageDescriptorPersistence(MacrosFactory.forModuleFile(descriptorFile)).save(myModule.getModuleDescriptor());
+        Element xmlElement = new LanguageDescriptorPersistence().save(myModule.getModuleDescriptor());
         JDOMUtil.writeDocument(new Document(xmlElement), output);
         hash = ModelDigestUtil.hashText(output.toString());
       } catch (Exception ex) {

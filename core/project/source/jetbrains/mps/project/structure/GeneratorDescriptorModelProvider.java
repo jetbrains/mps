@@ -156,7 +156,8 @@ public class GeneratorDescriptorModelProvider extends DescriptorModelProvider {
       if (hash != null) {
         return hash;
       }
-      Element element = new GeneratorDescriptorPersistence(MacrosFactory.forModule((SModule) myModule), true).save(myModule.getModuleDescriptor());
+      // indeed, can find out if it's standalone generator module, but for the purposes of hash additional <source-language> element doesn't mean much
+      Element element = new GeneratorDescriptorPersistence(true).save(myModule.getModuleDescriptor());
       StringWriter out = new StringWriter();
       try {
         JDOMUtil.writeDocument(new Document(element), out);
