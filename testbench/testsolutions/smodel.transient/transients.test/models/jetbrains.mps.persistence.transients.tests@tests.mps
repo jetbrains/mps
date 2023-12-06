@@ -339,7 +339,7 @@
                       <node concept="3clFbF" id="1GHjvh$gIHi" role="3cqZAp">
                         <node concept="2OqwBi" id="1GHjvh$gJ2g" role="3clFbG">
                           <node concept="1rXfSq" id="1GHjvh$gIHe" role="2Oq$k0">
-                            <ref role="37wK5l" to="g3l6:~SModelBase.getModelData()" resolve="getModelData" />
+                            <ref role="37wK5l" to="w1kc:~TrivialModelDescriptor.getModelData()" resolve="getModelData" />
                           </node>
                           <node concept="liA8E" id="1GHjvh$gJmT" role="2OqNvi">
                             <ref role="37wK5l" to="g3l6:~SModelData.addRootNode(org.jetbrains.mps.openapi.model.SNode)" resolve="addRootNode" />
