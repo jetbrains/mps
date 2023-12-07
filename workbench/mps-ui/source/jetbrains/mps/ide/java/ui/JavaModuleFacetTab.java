@@ -71,6 +71,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -105,6 +106,8 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
 
   private ComboBox<LanguageLevelPresentation> myLanguageLevel;
   private JBLabel myUpdateModelRoots;
+  private JComponent mySourcePathsTable;
+  private JComponent myLibrariesTable;
 
   private final class LanguageLevelPresentation {
     @Nullable
@@ -219,6 +222,21 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
 
       myCompileInMPS.addChangeListener(e -> myLanguageLevel.setModel(myLanguageLevel.getModel()));
 
+      final ChangeListener compileListener = changeEvent -> {
+        boolean isNone = changeEvent.getSource() == myCompileNone;
+        myClassLoadMPS.setEnabled(!isNone);
+        myClassLoadContributor.setEnabled(!isNone);
+        myClassLoadNone.setEnabled(!isNone);
+        myExtNone.setEnabled(!isNone && !myClassLoadNone.isSelected());
+        myExtPlugin.setEnabled(!isNone && !myClassLoadNone.isSelected());
+
+        mySourcePathsTable.setEnabled(myCompileInMPS.isSelected());
+        myLibrariesTable.setEnabled(myCompileInMPS.isSelected() || myCompileExternal.isSelected());
+      };
+      myCompileInMPS.addChangeListener(compileListener);
+      myCompileExternal.addChangeListener(compileListener);
+      myCompileNone.addChangeListener(compileListener);
+
       final JBBox pn2 = JBBox.createHorizontalBox();
       pn2.setAlignmentX(Component.LEFT_ALIGNMENT);
       pn2.setBorder(JBUI.Borders.empty(5,5,0,0));
@@ -241,6 +259,15 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       myClassLoadContributor.setSelected(myJavaModuleFacet.getLoadClasses() == LoadClasses.ManagedByContributor);
       myClassLoadNone.setSelected(myJavaModuleFacet.getLoadClasses() == LoadClasses.NotAvailable);
       jmfSettings.add(pn2);
+
+      final ChangeListener classLoadListener = changeEvent -> {
+        final boolean isNone = changeEvent.getSource() == myClassLoadNone;
+        myExtNone.setEnabled(!isNone);
+        myExtPlugin.setEnabled(!isNone);
+      };
+      myClassLoadMPS.addChangeListener(classLoadListener);
+      myClassLoadContributor.addChangeListener(classLoadListener);
+      myClassLoadNone.addChangeListener(classLoadListener);
 
       final JBBox pn3 = JBBox.createHorizontalBox();
       pn3.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -284,14 +311,16 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       myLanguageLevel.setSelectedItem(new LanguageLevelPresentation(myJavaModuleFacet.getLanguageLevel()));
     }
 
-    advancedTab.add(getSourcePathsTable(), new GridConstraints(row++, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+    mySourcePathsTable = getSourcePathsTable();
+    advancedTab.add(mySourcePathsTable, new GridConstraints(row++, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0,
-                                                               false));
-    advancedTab.add(getLibrariesTable(), new GridConstraints(row++, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+                                                            false));
+    myLibrariesTable = getLibrariesTable();
+    advancedTab.add(myLibrariesTable, new GridConstraints(row++, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0,
-                                                             false));
+                                                          false));
 
     myUpdateModelRoots = new JBLabel(PropertiesBundle.message("facet.java.update.roots"), AllIcons.General.Information, JBLabel.LEFT);
     advancedTab.add(myUpdateModelRoots, new GridConstraints(row, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
