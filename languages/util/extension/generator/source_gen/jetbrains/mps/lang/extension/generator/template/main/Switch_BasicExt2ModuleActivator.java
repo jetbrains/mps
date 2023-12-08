@@ -18,9 +18,6 @@ import jetbrains.mps.generator.template.ReductionRuleQueryContext;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
-import java.util.List;
-import java.util.ArrayList;
-import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import java.util.Collections;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
@@ -32,7 +29,7 @@ public class Switch_BasicExt2ModuleActivator extends TemplateSwitchBase implemen
   private final Iterable<TemplateReductionRule> rules;
   public Switch_BasicExt2ModuleActivator() {
     super(new MO());
-    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0(), new ReductionRule1());
+    rules = TemplateUtil.<TemplateReductionRule>asIterable(new ReductionRule0());
   }
   public SNodeReference getSwitchNode() {
     return new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "4907674970866725118");
@@ -45,36 +42,11 @@ public class Switch_BasicExt2ModuleActivator extends TemplateSwitchBase implemen
   }
   /*package*/ final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "4907674970866746118"), CONCEPTS.ModelReference$Gh, true);
-    }
-    @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_6_0(new ReductionRuleQueryContext(context, getRuleNode()));
-    }
-    @Override
-    public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
-      final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final List<SNode> tlist1 = new ArrayList<SNode>();
-      final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_6_0(new SourceSubstituteMacroNodesContext(context, loopMacroRef));
-      for (SNode itnode1 : loopList1) {
-        if (itnode1 == null) {
-          continue;
-        }
-        TemplateContext context1 = context.subContext(itnode1);
-        Collection<SNode> tlist2 = null;
-        tlist2 = environment.callSite(new Template_RegisterBasicExtension(), new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "4907674970867196856")).apply(context1);
-        tlist1.addAll(tlist2);
-      }
-      return tlist1;
-    }
-  }
-  /*package*/ final class ReductionRule1 extends ReductionRuleBase implements TemplateRuleWithCondition {
-    public ReductionRule1() {
       super(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "1616585556566794140"), CONCEPTS.ExtensionRegistrar$ex, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_6_1(new ReductionRuleQueryContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_6_0(new ReductionRuleQueryContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -97,11 +69,9 @@ public class Switch_BasicExt2ModuleActivator extends TemplateSwitchBase implemen
 
 
   }
-  private static final SNodePointer loopMacroRef = new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "4907674970867194098");
   private static final SNodePointer callMacro = new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "1616585556566824383");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModelReference$Gh = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, "jetbrains.mps.lang.project.structure.ModelReference");
     /*package*/ static final SConcept ExtensionRegistrar$ex = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x338791c7436f0526L, "jetbrains.mps.lang.extension.structure.ExtensionRegistrar");
   }
 }

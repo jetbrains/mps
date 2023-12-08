@@ -8,7 +8,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.extension.behavior.IRootWithUniqueName__BehaviorDescriptor;
@@ -42,9 +41,6 @@ public class QueriesGenerated {
     return (SNodeOperations.getParent(_context.getNode()) != null);
   }
   public static boolean rule_Condition_6_0(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SModelOperations.roots(((SModel) _context.getVariable("model")), CONCEPTS.BasicExtensionDeclaration$tJ)).isNotEmpty();
-  }
-  public static boolean rule_Condition_6_1(final BaseMappingRuleContext _context) {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.ext$o1Mc), CONCEPTS.BasicExtensionDeclaration$tJ);
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
@@ -154,9 +150,6 @@ public class QueriesGenerated {
   }
   public static Iterable<SNode> sourceNodesQuery_5_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.member$L_2d);
-  }
-  public static Iterable<SNode> sourceNodesQuery_6_0(final SourceSubstituteMacroNodesContext _context) {
-    return SModelOperations.roots(((SModel) _context.getVariable("model")), CONCEPTS.BasicExtensionDeclaration$tJ);
   }
   public static Iterable<SNode> sourceNodesQuery_7_0(final SourceSubstituteMacroNodesContext _context) {
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.select$8t3J), CONCEPTS.TagsSelector$Id)) {

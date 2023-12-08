@@ -16,8 +16,6 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.Collection;
-import jetbrains.mps.generator.template.TemplateVarContext;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
@@ -55,46 +53,18 @@ public class Template_ModuleActivatorInstance extends TemplateDeclarationBase {
               }
               TemplateContext context3 = context2.subContext(itnode3);
               Collection<SNode> tlist4 = null;
-              TemplateContext context4 = context3;
-              context4 = context4.withVariable("var:model", QueriesGenerated.varMacro_Value_13_0(new TemplateVarContext(context4, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "844304638798668582"))));
-              Collection<SNode> tlist5 = null;
               try {
-                TemplateContext switchContext5 = context4;
-                switchContext5 = switchContext5.withVariable("model", ((SModel) switchContext5.getVariable("var:model")));
-                tlist5 = environment.trySwitch(templateSwitchNodeNoInput, switchContext5);
-                if (tlist5 == null) {
-                  final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
-                  tlist5 = TemplateUtil.singletonList(tnode6);
+                TemplateContext switchContext4 = context3;
+                tlist4 = environment.trySwitch(templateSwitchNodeNoInput, switchContext4);
+                if (tlist4 == null) {
+                  final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
+                  tlist4 = TemplateUtil.singletonList(tnode5);
                 }
               } finally {
               }
-              tlist4 = tlist5;
               tlist3.addAll(tlist4);
             }
             environment.aggregate(tnode2, myAggregationLinks[0], tlist3);
-          }
-          {
-            final List<SNode> tlist7 = new ArrayList<SNode>();
-            final Iterable<SNode> loopList7 = QueriesGenerated.sourceNodesQuery_13_1(new SourceSubstituteMacroNodesContext(context2, loopMacroRef1));
-            for (SNode itnode7 : loopList7) {
-              if (itnode7 == null) {
-                continue;
-              }
-              TemplateContext context5 = context2.subContext(itnode7);
-              Collection<SNode> tlist8 = null;
-              try {
-                TemplateContext switchContext8 = context5;
-                switchContext8 = switchContext8.withVariable("model", null);
-                tlist8 = environment.trySwitch(templateSwitchNodeNoInput1, switchContext8);
-                if (tlist8 == null) {
-                  final SNode tnode9 = environment.createOutputNode(myConcepts[2]);
-                  tlist8 = TemplateUtil.singletonList(tnode9);
-                }
-              } finally {
-              }
-              tlist7.addAll(tlist8);
-            }
-            environment.aggregate(tnode2, myAggregationLinks[0], tlist7);
           }
         }
         environment.aggregate(tnode1, myAggregationLinks[1], tnode2);
@@ -129,8 +99,6 @@ public class Template_ModuleActivatorInstance extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer loopMacroRef = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "844304638798580380");
+  private static final SNodePointer loopMacroRef = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1616585556566836706");
   private static final SNodePointer templateSwitchNodeNoInput = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "844304638798580371");
-  private static final SNodePointer loopMacroRef1 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1616585556566836706");
-  private static final SNodePointer templateSwitchNodeNoInput1 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "844304638798580371");
 }

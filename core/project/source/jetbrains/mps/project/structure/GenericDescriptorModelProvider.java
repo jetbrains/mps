@@ -25,7 +25,6 @@ import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SnapshotModelData;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.runtime.ModuleRuntime.Extension.MatchRequest;
 import org.jetbrains.annotations.NotNull;
@@ -107,7 +106,6 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
       // Perhaps, shall add lang.descriptor conditionally once there
       // are extensions/extpoints/lang.plugin elements in the solution?
       dm.addEngagedOnGenerationLanguage(BootstrapLanguages.getLanguageDescriptorLang());
-      dm.addEngagedOnGenerationLanguage(MetaAdapterFactory.getLanguage(0xc0080a477e374558L, 0xbee99ae18e690549L, "jetbrains.mps.lang.extension"));
       dm.updateContents(myLanguageRegistry, this);
       myModels.put(modelReference, dm);
       ((SModuleBase) module).registerModel(dm);

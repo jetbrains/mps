@@ -4,8 +4,9 @@ package jetbrains.mps.lang.descriptor.generator.template.main;
 
 import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
-import jetbrains.mps.generator.template.DropRootRuleContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.generator.template.DropRootRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
@@ -24,7 +25,6 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -38,17 +38,16 @@ import jetbrains.mps.generator.impl.plan.TemplateModelScanner;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.behavior.LanguageIdentity__BehaviorDescriptor;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 @Generated
 public class QueriesGenerated {
   public static boolean createRootRule_Condition_12_0(final CreateRootRuleContext _context) {
-    // FIXME genContext.inputModel.roots(ActivatorUnit).isNotEmpty
-    return true;
+    return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ActivatorUnit$oI)).isNotEmpty();
   }
   public static boolean dropRootRule_Condition_12_0(final DropRootRuleContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.extensions$4TrO), LINKS.statement$53DE)).isEmpty();
@@ -275,10 +274,6 @@ public class QueriesGenerated {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.priorityRules$x1s5);
   }
   public static Iterable<SNode> sourceNodesQuery_13_0(final SourceSubstituteMacroNodesContext _context) {
-    SNode solution = SModelOperations.getModuleStub(_context.getOriginalInputModel());
-    return ListSequence.fromList(SLinkOperations.getChildren(solution, LINKS.model$2Sf4)).sort((it) -> SPropertyOperations.getString(it, PROPS.qualifiedName$331j), true);
-  }
-  public static Iterable<SNode> sourceNodesQuery_13_1(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.ActivatorUnit$oI);
   }
   public static boolean mc_Condition_1(final TemplateQueryContext _context) {
@@ -362,11 +357,17 @@ public class QueriesGenerated {
       return lid;
     }).toList();
   }
-  public static Object varMacro_Value_13_0(final TemplateVarContext _context) {
-    return ModelReference__BehaviorDescriptor.toModelReference_id2BHFktfnfdc.invoke(_context.getNode()).resolve(_context.getOriginalInputModel().getRepository());
-  }
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept ActivatorUnit$oI = MetaAdapterFactory.getInterfaceConcept(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x338791c7436d4408L, "jetbrains.mps.lang.descriptor.structure.ActivatorUnit");
+    /*package*/ static final SInterfaceConcept AspectDescriptor$q = MetaAdapterFactory.getInterfaceConcept(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x5fc6cc5c84f4bddbL, "jetbrains.mps.lang.descriptor.structure.AspectDescriptor");
+    /*package*/ static final SConcept Generator$zR = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator");
+    /*package*/ static final SConcept Language$yT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language");
+    /*package*/ static final SConcept Solution$zo = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, "jetbrains.mps.lang.project.structure.Solution");
+    /*package*/ static final SConcept LanguageId$UR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
   }
 
   private static final class LINKS {
@@ -400,14 +401,5 @@ public class QueriesGenerated {
     /*package*/ static final SProperty generatorAlias$ofII = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x2cf7cb696461a282L, "generatorAlias");
     /*package*/ static final SProperty qualifiedName$331j = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5869770da61dfe2eL, "qualifiedName");
     /*package*/ static final SProperty stereotype$h2Bb = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, 0x5c5cb5cdd09abfb1L, "stereotype");
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept AspectDescriptor$q = MetaAdapterFactory.getInterfaceConcept(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x5fc6cc5c84f4bddbL, "jetbrains.mps.lang.descriptor.structure.AspectDescriptor");
-    /*package*/ static final SInterfaceConcept ActivatorUnit$oI = MetaAdapterFactory.getInterfaceConcept(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x338791c7436d4408L, "jetbrains.mps.lang.descriptor.structure.ActivatorUnit");
-    /*package*/ static final SConcept Generator$zR = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator");
-    /*package*/ static final SConcept Language$yT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language");
-    /*package*/ static final SConcept Solution$zo = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, "jetbrains.mps.lang.project.structure.Solution");
-    /*package*/ static final SConcept LanguageId$UR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
   }
 }
