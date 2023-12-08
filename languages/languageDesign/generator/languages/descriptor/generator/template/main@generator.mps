@@ -35,6 +35,7 @@
     <import index="r99j" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.runtime(MPS.Core/)" />
     <import index="r99k" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)" />
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
+    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
   </imports>
   <registry>
     <language id="86ef8290-12bb-4ca7-947f-093788f263a9" name="jetbrains.mps.lang.project">
@@ -4149,7 +4150,38 @@
     <ref role="3gUMe" to="yv2q:IR$DxXuVkC" resolve="ModuleActivator" />
     <node concept="312cEu" id="IR$DxXvgot" role="13RCb5">
       <property role="TrG5h" value="ModuleActivator" />
-      <node concept="2tJIrI" id="IR$DxXvh7r" role="jymVt" />
+      <node concept="312cEg" id="3ITW85S31VW" role="jymVt">
+        <property role="TrG5h" value="myPlatform" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3Tm6S6" id="3ITW85S31Na" role="1B3o_S" />
+        <node concept="3uibUv" id="3ITW85S31UP" role="1tU5fm">
+          <ref role="3uigEE" to="wyuk:~ComponentHost" resolve="ComponentHost" />
+        </node>
+      </node>
+      <node concept="2tJIrI" id="3ITW85S31pf" role="jymVt" />
+      <node concept="3clFbW" id="3ITW85S30NT" role="jymVt">
+        <node concept="3cqZAl" id="3ITW85S30NV" role="3clF45" />
+        <node concept="3Tm1VV" id="3ITW85S30NW" role="1B3o_S" />
+        <node concept="3clFbS" id="3ITW85S30NX" role="3clF47">
+          <node concept="3clFbF" id="3ITW85S326_" role="3cqZAp">
+            <node concept="37vLTI" id="3ITW85S32Zd" role="3clFbG">
+              <node concept="37vLTw" id="3ITW85S334k" role="37vLTx">
+                <ref role="3cqZAo" node="3ITW85S30Y6" resolve="mpsPlatform" />
+              </node>
+              <node concept="37vLTw" id="3ITW85S326$" role="37vLTJ">
+                <ref role="3cqZAo" node="3ITW85S31VW" resolve="myPlatform" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="37vLTG" id="3ITW85S30Y6" role="3clF46">
+          <property role="TrG5h" value="mpsPlatform" />
+          <node concept="3uibUv" id="3ITW85S30Y5" role="1tU5fm">
+            <ref role="3uigEE" to="wyuk:~ComponentHost" resolve="ComponentHost" />
+          </node>
+        </node>
+      </node>
+      <node concept="2tJIrI" id="3ITW85S310d" role="jymVt" />
       <node concept="3Tm1VV" id="IR$DxXvgou" role="1B3o_S" />
       <node concept="3uibUv" id="IR$DxXvh7b" role="EKbjA">
         <ref role="3uigEE" to="ze1i:~ModuleRuntime$Activator" resolve="Activator" />
@@ -4415,6 +4447,31 @@
             <node concept="1mL9RQ" id="IR$DxXNW1C" role="v9R3O">
               <ref role="1mL9RD" node="IR$DxXNMcA" resolve="model" />
             </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="1pJgZYCcnJ1" role="3cqZAp">
+          <node concept="1WS0z7" id="1pJgZYCcony" role="lGtFl">
+            <node concept="3JmXsc" id="1pJgZYCconz" role="3Jn$fo">
+              <node concept="3clFbS" id="1pJgZYCcon$" role="2VODD2">
+                <node concept="3clFbF" id="1pJgZYCcvgh" role="3cqZAp">
+                  <node concept="2OqwBi" id="1pJgZYCcwi1" role="3clFbG">
+                    <node concept="2OqwBi" id="1pJgZYCcvMz" role="2Oq$k0">
+                      <node concept="1iwH7S" id="1pJgZYCcvgg" role="2Oq$k0" />
+                      <node concept="1r8y6K" id="1pJgZYCcw5a" role="2OqNvi" />
+                    </node>
+                    <node concept="2RRcyG" id="1pJgZYCcwvj" role="2OqNvi">
+                      <node concept="chp4Y" id="1pJgZYCcw_7" role="3MHsoP">
+                        <ref role="cht4Q" to="yv2q:3e7$st3rkg8" resolve="ActivatorUnit" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1sPUBX" id="1pJgZYCconp" role="lGtFl">
+            <ref role="v9R2y" node="IR$DxXNsEj" resolve="switch_ModuleActivator_Extensions" />
+            <node concept="10Nm6u" id="1pJgZYCcqF3" role="v9R3O" />
           </node>
         </node>
       </node>

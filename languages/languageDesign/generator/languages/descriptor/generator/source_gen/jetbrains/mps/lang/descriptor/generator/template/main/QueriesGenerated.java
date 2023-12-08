@@ -278,6 +278,9 @@ public class QueriesGenerated {
     SNode solution = SModelOperations.getModuleStub(_context.getOriginalInputModel());
     return ListSequence.fromList(SLinkOperations.getChildren(solution, LINKS.model$2Sf4)).sort((it) -> SPropertyOperations.getString(it, PROPS.qualifiedName$331j), true);
   }
+  public static Iterable<SNode> sourceNodesQuery_13_1(final SourceSubstituteMacroNodesContext _context) {
+    return SModelOperations.roots(_context.getInputModel(), CONCEPTS.ActivatorUnit$oI);
+  }
   public static boolean mc_Condition_1(final TemplateQueryContext _context) {
     //  can't use genContext.inputModel as it has lost stereotype (it's transient model)
     return SModelStereotype.isDescriptorModel(_context.getOriginalInputModel()) && SNodeOperations.isInstanceOf(SModelOperations.getModuleStub(_context.getOriginalInputModel()), CONCEPTS.Generator$zR);
@@ -401,6 +404,7 @@ public class QueriesGenerated {
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept AspectDescriptor$q = MetaAdapterFactory.getInterfaceConcept(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x5fc6cc5c84f4bddbL, "jetbrains.mps.lang.descriptor.structure.AspectDescriptor");
+    /*package*/ static final SInterfaceConcept ActivatorUnit$oI = MetaAdapterFactory.getInterfaceConcept(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x338791c7436d4408L, "jetbrains.mps.lang.descriptor.structure.ActivatorUnit");
     /*package*/ static final SConcept Generator$zR = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator");
     /*package*/ static final SConcept Language$yT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language");
     /*package*/ static final SConcept Solution$zo = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, "jetbrains.mps.lang.project.structure.Solution");
