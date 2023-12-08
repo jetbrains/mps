@@ -145,7 +145,7 @@ public final class ModuleRuntime {
           final List<Pair<Class<?>, Extension<?>>> registrations = new ArrayList<>();
           final ActivatorContext ac = new ActivatorContext() {
             @Override
-            public <T> void extension(Class<T> key, Extension<T> ext) {
+            public <T> void extension(Class<T> key, Extension<? extends T> ext) {
               registrations.add(new Pair<>(key, ext));
             }
           };
@@ -255,7 +255,7 @@ public final class ModuleRuntime {
    * @since 2023.3
    */
   public interface ActivatorContext {
-    <T> void extension(Class<T> key, Extension<T> ext);
+    <T> void extension(Class<T> key, Extension<? extends T> ext);
     //void extension(ExtensionPoint extpoint, Extension<?> ext);
   }
 
