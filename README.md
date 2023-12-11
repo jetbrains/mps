@@ -21,7 +21,7 @@ Download IntelliJ IDEA from the JetBrains website. Community edition will work j
 1. Fork the MPS [GitHub repository](https://github.com/JetBrains/MPS) into your own space using the GitHub UI (go to the MPS repo and press the fork button at the top. This will create a fork of the repository in your github space).
 2. Clone your fork to your local machine: git clone git@github.com:<yourGitHubName>/MPS.git. Depending on your internet connection, this may take a long time, MPS is big. Consider using the _--depth_ git parameter to clone only part of the history of the project to save time and space.
 3. It is preferable to work in your own branch, so create a new branch to work in git checkout -b my_branch_name
-4. Open the project in [IntelliJ IDEA](http://www.jetbrains.com/idea) (either Community or Ultimate Edition)
+4. Open the project in [IntelliJ IDEA](http://www.jetbrains.com/idea) (either Community or Ultimate Edition). Since IDEA 2023.3 you have to install the Ant plugin as well as the Plugin DevKit plugin, without which the MPS project cannot be compiled.
 5. Attach JB JDK 17 to the project
     1. Download latest JB JDK 17 for your OS and your version of MPS. Go to [the MPS TeamCity site](https://teamcity.jetbrains.com/project/MPS?mode=builds#all-projects), scroll to the build configuration that corresponds to the MPS version that you are trying to build and locate the JDK distribution (e.g. _2022.2 -> Distribution -> Get Resources_). Click on the _Artifacts_ symbol of the last successful build of _Get Resources_ and choose the distribution that you need. Make sure you grab *jbrsdk* not *jbsdk*.
     2. *Main menu -> File -> Project Structure* opens the Project Structure dialog
