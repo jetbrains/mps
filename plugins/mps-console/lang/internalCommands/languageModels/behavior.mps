@@ -14,6 +14,7 @@
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="fq2o" ref="r:11d950c0-cabb-4b20-860f-4f2898171c08(jetbrains.mps.lang.smodel.query.behavior)" />
     <import index="3xdn" ref="r:935ba0ee-7291-4caa-a807-d76e8fc69391(jetbrains.mps.lang.smodel.query.structure)" />
+    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -44,9 +45,6 @@
       </concept>
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
-      </concept>
-      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
-        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
@@ -85,6 +83,9 @@
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="6677504323281689838" name="jetbrains.mps.lang.smodel.structure.SConceptType" flags="in" index="3bZ5Sz">
@@ -114,13 +115,25 @@
       <ref role="13i0hy" to="zyb2:2SpVAIqougW" resolve="doExecute" />
       <node concept="3Tm1VV" id="5pylk$7XAb3" role="1B3o_S" />
       <node concept="3clFbS" id="5pylk$7XADU" role="3clF47">
-        <node concept="3clFbF" id="5pylk$7XAEe" role="3cqZAp">
-          <node concept="2OqwBi" id="1KUoCiqb5Xp" role="3clFbG">
-            <node concept="2YIFZM" id="1KUoCiqb5Xq" role="2Oq$k0">
-              <ref role="37wK5l" to="3qmy:~ClassLoaderManager.getInstance()" resolve="getInstance" />
-              <ref role="1Pybhc" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
+        <node concept="3clFbF" id="5tnq99K8I97" role="3cqZAp">
+          <node concept="2OqwBi" id="5tnq99K8LYc" role="3clFbG">
+            <node concept="2OqwBi" id="5tnq99K8KCL" role="2Oq$k0">
+              <node concept="2OqwBi" id="5tnq99K8IhX" role="2Oq$k0">
+                <node concept="37vLTw" id="5tnq99K8I95" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2SpVAIqtRRh" resolve="context" />
+                </node>
+                <node concept="liA8E" id="5tnq99K8K6m" role="2OqNvi">
+                  <ref role="37wK5l" to="qgo0:3MPHfSuPT3Y" resolve="getProject" />
+                </node>
+              </node>
+              <node concept="liA8E" id="5tnq99K8L2T" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="5tnq99K8LCg" role="37wK5m">
+                  <ref role="3VsUkX" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
+                </node>
+              </node>
             </node>
-            <node concept="liA8E" id="1KUoCiqb5Xr" role="2OqNvi">
+            <node concept="liA8E" id="5tnq99K8MBw" role="2OqNvi">
               <ref role="37wK5l" to="3qmy:~ClassLoaderManager.reloadAll(org.jetbrains.mps.openapi.util.ProgressMonitor)" resolve="reloadAll" />
               <node concept="2ShNRf" id="1KUoCiqb5Xs" role="37wK5m">
                 <node concept="1pGfFk" id="1KUoCiqb5Xt" role="2ShVmc">

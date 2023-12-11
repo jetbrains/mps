@@ -601,7 +601,11 @@ public class ClassLoaderManager implements CoreComponent {
    */
   @Internal
   public void reloadAll(@NotNull ProgressMonitor monitor) {
-    reloadModules(myRepository.getModules(), monitor);
+    if (myRepository.getModelAccess().canWrite()) {
+      reloadModules(myRepository.getModules(), monitor);
+    } else {
+      myRepository.getModelAccess().runWriteAction(() -> reloadModules(myRepository.getModules(), monitor));
+    }
   }
 
   private void checkWriteAccess() {

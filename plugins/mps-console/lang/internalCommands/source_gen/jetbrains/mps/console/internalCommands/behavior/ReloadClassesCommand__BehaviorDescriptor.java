@@ -33,7 +33,7 @@ public final class ReloadClassesCommand__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, ConsoleContext context, ConsoleStream console) {
-    ClassLoaderManager.getInstance().reloadAll(new EmptyProgressMonitor());
+    context.getProject().getComponent(ClassLoaderManager.class).reloadAll(new EmptyProgressMonitor());
     console.addText("Classes reloaded");
   }
   /*package*/ static String getShortHelp_idqgIopNa9Hb(@NotNull SAbstractConcept __thisConcept__) {
