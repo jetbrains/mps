@@ -17,15 +17,21 @@ package jetbrains.mps.ide.java.ui;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.BrowserUtil;
+import com.intellij.ide.util.BrowseFilesListener;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
+import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.ui.ComboBox;
+import com.intellij.openapi.util.EmptyRunnable;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.testFramework.LightVirtualFile;
 import com.intellij.ui.AnActionButtonUpdater;
+import com.intellij.ui.BooleanTableCellRenderer;
+import com.intellij.ui.FieldPanel;
 import com.intellij.ui.IdeBorderFactory;
+import com.intellij.ui.InsertPathAction;
 import com.intellij.ui.TableUtil;
 import com.intellij.ui.TitledSeparator;
 import com.intellij.ui.ToolbarDecorator;
@@ -62,6 +68,7 @@ import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.util.PathSpecBundle;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
@@ -71,14 +78,16 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.event.ChangeEvent;
+import javax.swing.JTextField;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.io.File;
@@ -106,8 +115,11 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
 
   private ComboBox<LanguageLevelPresentation> myLanguageLevel;
   private JBLabel myUpdateModelRoots;
-  private JComponent mySourcePathsTable;
-  private JComponent myLibrariesTable;
+  private JComponent mySourcePathsTablePanel;
+  private JComponent myLibrariesTablePanel;
+  private FieldPanel myCompileOutPath;
+  private JTablePlus mySourcePathTable;
+  private JTablePlus myLibrariesTable;
 
   private final class LanguageLevelPresentation {
     @Nullable
@@ -223,19 +235,41 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       myCompileInMPS.addChangeListener(e -> myLanguageLevel.setModel(myLanguageLevel.getModel()));
 
       final ChangeListener compileListener = changeEvent -> {
-        boolean isNone = changeEvent.getSource() == myCompileNone;
+        final boolean isNone = changeEvent.getSource() == myCompileNone;
+        myCompileOutPath.setEnabled(!isNone);
         myClassLoadMPS.setEnabled(!isNone);
         myClassLoadContributor.setEnabled(!isNone);
         myClassLoadNone.setEnabled(!isNone);
         myExtNone.setEnabled(!isNone && !myClassLoadNone.isSelected());
         myExtPlugin.setEnabled(!isNone && !myClassLoadNone.isSelected());
 
-        mySourcePathsTable.setEnabled(myCompileInMPS.isSelected());
-        myLibrariesTable.setEnabled(myCompileInMPS.isSelected() || myCompileExternal.isSelected());
+        mySourcePathsTablePanel.setEnabled(myCompileInMPS.isSelected());
+        myLibrariesTablePanel.setEnabled(myCompileInMPS.isSelected() || myCompileExternal.isSelected());
       };
       myCompileInMPS.addChangeListener(compileListener);
       myCompileExternal.addChangeListener(compileListener);
       myCompileNone.addChangeListener(compileListener);
+
+      final JBBox compileOutputBox = JBBox.createHorizontalBox();
+      compileOutputBox.setAlignmentX(Component.LEFT_ALIGNMENT);
+      compileOutputBox.setBorder(JBUI.Borders.empty(5,5,0,0));
+      jmfSettings.add(compileOutputBox);
+
+      JBLabel label = new JBLabel(PropertiesBundle.message("module.compileoutput.title"));
+      compileOutputBox.add(label, new GridConstraints(row, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED,
+                                           GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+
+      JTextField myCompileOut = new JTextField();
+      myCompileOut.setEditable(false); // Allow edit only with FileChooser
+      final FileChooserDescriptor outputPathsChooserDescriptor = FileChooserDescriptorFactory.createSingleFolderDescriptor();
+      InsertPathAction.addTo(myCompileOut, outputPathsChooserDescriptor);
+      outputPathsChooserDescriptor.setHideIgnored(false);
+      BrowseFilesListener listener = new BrowseFilesListener(myCompileOut, "", "", outputPathsChooserDescriptor);
+      myCompileOutPath = new FieldPanel(myCompileOut, null, null, listener, EmptyRunnable.getInstance());
+      FileChooserFactory.getInstance().installFileCompletion(myCompileOutPath.getTextField(), outputPathsChooserDescriptor, true, null);
+      //TODO initialize from the API
+      myCompileOutPath.setText(PathUtil.toSystemDependent(myJavaModuleFacet.getOutputRoot().getParent().toRealPath() + "/classes_gen"));
+      compileOutputBox.add(myCompileOutPath);
 
       final JBBox pn2 = JBBox.createHorizontalBox();
       pn2.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -260,14 +294,15 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       myClassLoadNone.setSelected(myJavaModuleFacet.getLoadClasses() == LoadClasses.NotAvailable);
       jmfSettings.add(pn2);
 
-      final ChangeListener classLoadListener = changeEvent -> {
-        final boolean isNone = changeEvent.getSource() == myClassLoadNone;
+      final ActionListener classLoadListener = event -> {
+        final boolean isNone = event.getSource() == myClassLoadNone;
         myExtNone.setEnabled(!isNone);
         myExtPlugin.setEnabled(!isNone);
+        myLibrariesTable.showLoadCheckbox(event.getSource() == myClassLoadMPS);
       };
-      myClassLoadMPS.addChangeListener(classLoadListener);
-      myClassLoadContributor.addChangeListener(classLoadListener);
-      myClassLoadNone.addChangeListener(classLoadListener);
+      myClassLoadMPS.addActionListener(classLoadListener);
+      myClassLoadContributor.addActionListener(classLoadListener);
+      myClassLoadNone.addActionListener(classLoadListener);
 
       final JBBox pn3 = JBBox.createHorizontalBox();
       pn3.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -311,16 +346,16 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       myLanguageLevel.setSelectedItem(new LanguageLevelPresentation(myJavaModuleFacet.getLanguageLevel()));
     }
 
-    mySourcePathsTable = getSourcePathsTable();
-    advancedTab.add(mySourcePathsTable, new GridConstraints(row++, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+    mySourcePathsTablePanel = getSourcePathsTable();
+    advancedTab.add(mySourcePathsTablePanel, new GridConstraints(row++, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                                                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0,
-                                                            false));
-    myLibrariesTable = getLibrariesTable();
-    advancedTab.add(myLibrariesTable, new GridConstraints(row++, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
+                                                                 false));
+    myLibrariesTablePanel = getLibrariesTable();
+    advancedTab.add(myLibrariesTablePanel, new GridConstraints(row++, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH,
                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                                                              GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0,
-                                                          false));
+                                                               false));
 
     myUpdateModelRoots = new JBLabel(PropertiesBundle.message("facet.java.update.roots"), AllIcons.General.Information, JBLabel.LEFT);
     advancedTab.add(myUpdateModelRoots, new GridConstraints(row, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL,
@@ -334,23 +369,23 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
   private JComponent getSourcePathsTable() {
     mySourcePathsTableModel = new PathSpecTableModel(myJavaModuleFacet.getSourcePathSpec());
     mySourcePathsTableModel.addTableModelListener(e -> mySourcePathsChanged = true);
-    final JBTable sourcePathTable = new JTablePlus(mySourcePathsTableModel);
-    sourcePathTable.setDefaultRenderer(VirtualFile.class, new VirtualFileTableRenderer());
-    sourcePathTable.setDefaultRenderer(PathSpec.class, new PathSpecTableRenderer());
-    sourcePathTable.setTableHeader(null);
-    sourcePathTable.setShowHorizontalLines(false);
-    sourcePathTable.setShowVerticalLines(false);
-    sourcePathTable.setAutoCreateRowSorter(false);
-    sourcePathTable.setAutoscrolls(true);
-    sourcePathTable.addFocusListener(new FocusAdapter() {
+    mySourcePathTable = new JTablePlus(mySourcePathsTableModel);
+    mySourcePathTable.setDefaultRenderer(VirtualFile.class, new VirtualFileTableRenderer());
+    mySourcePathTable.setDefaultRenderer(PathSpec.class, new PathSpecTableRenderer());
+    mySourcePathTable.setTableHeader(null);
+    mySourcePathTable.setShowHorizontalLines(false);
+    mySourcePathTable.setShowVerticalLines(false);
+    mySourcePathTable.setAutoCreateRowSorter(false);
+    mySourcePathTable.setAutoscrolls(true);
+    mySourcePathTable.addFocusListener(new FocusAdapter() {
       @Override
       public void focusLost(FocusEvent focusEvent) {
-        sourcePathTable.clearSelection();
+        mySourcePathTable.clearSelection();
         super.focusLost(focusEvent);
       }
     });
 
-    ToolbarDecorator decorator = ToolbarDecorator.createDecorator(sourcePathTable);
+    ToolbarDecorator decorator = ToolbarDecorator.createDecorator(mySourcePathTable);
     final Function<Object, VirtualFile[]> chooser = start -> {
       FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createMultipleFoldersDescriptor();
       descriptor.setTitle("Choose Folders with Java Sources");
@@ -379,18 +414,18 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     decorator.setAddAction(anActionButton -> {
       mySourcePathsTableModel.addNew(chooser.apply(myJavaModuleFacet.getAbstractModule().getModuleSourceDir()));
     }).setRemoveAction(anActionButton -> {
-      TableUtil.removeSelectedItems(sourcePathTable);
+      TableUtil.removeSelectedItems(mySourcePathTable);
     }).setEditAction(anActionButton -> {
       // same logic as with Libraries table
-      final int[] selectedIndices = sourcePathTable.getSelectionModel().getSelectedIndices();
+      final int[] selectedIndices = mySourcePathTable.getSelectionModel().getSelectedIndices();
       if (selectedIndices.length == 0) {
         return;
       }
-      final Object startingPoint = sourcePathTable.getValueAt(selectedIndices[0], 0);
+      final Object startingPoint = mySourcePathTable.getValueAt(selectedIndices[0], 0);
       final VirtualFile[] files = chooser.apply(startingPoint);
       if (files.length != 0) {
         for (int i = 0; i < selectedIndices.length; i++) {
-          selectedIndices[i] = sourcePathTable.convertRowIndexToModel(selectedIndices[i]);
+          selectedIndices[i] = mySourcePathTable.convertRowIndexToModel(selectedIndices[i]);
         }
         mySourcePathsTableModel.replace(selectedIndices, files);
       }
@@ -414,21 +449,30 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
 
   private JComponent getLibrariesTable() {
     final PathSpecBundle jls = myJavaModuleFacet.getJavaLibrarySpec();
-    myLibrariesTableModel = new PathSpecTableModel(jls);
+    myLibrariesTableModel = new PathSpecTableModel(jls, true);
     myLibrariesTableModel.addTableModelListener(e -> myLibrariesChanged = true);
-    final JBTable librariesTable = new JTablePlus(myLibrariesTableModel);
-    librariesTable.setDefaultRenderer(VirtualFile.class, new VirtualFileTableRenderer());
-    librariesTable.setDefaultRenderer(PathSpec.class, new PathSpecTableRenderer());
-    librariesTable.setTableHeader(null);
-    librariesTable.setShowHorizontalLines(false);
-    librariesTable.setShowVerticalLines(false);
-    librariesTable.setAutoCreateRowSorter(false);
-    librariesTable.setAutoscrolls(true);
-    librariesTable.addFocusListener(new FocusAdapter() {
+    myLibrariesTable = new JTablePlus(myLibrariesTableModel);
+    myLibrariesTable.setDefaultRenderer(VirtualFile.class, new VirtualFileTableRenderer());
+    myLibrariesTable.setDefaultRenderer(PathSpec.class, new PathSpecTableRenderer());
+    myLibrariesTable.setDefaultRenderer(Boolean.class, new BooleanTableCellRenderer());
+    myLibrariesTable.getTableHeader().setReorderingAllowed(false);
+
+    myLibrariesTable.showLoadCheckbox(myClassLoadMPS.isSelected());
+
+    //TODO do not show the first column for sources
+    //TODO do not show the first column when not MPS loading
+    //TODO scrolling
+//    librariesTable.setTableHeader(null);
+    myLibrariesTable.setShowHorizontalLines(false);
+    myLibrariesTable.setShowVerticalLines(false);
+    myLibrariesTable.setAutoCreateRowSorter(false);
+    myLibrariesTable.setAutoscrolls(true);
+    myLibrariesTable.setAutoscrolls(true);
+    myLibrariesTable.addFocusListener(new FocusAdapter() {
       @Override
       public void focusLost(FocusEvent focusEvent) {
         // XXX why do we clear selection when focus is lost?
-        librariesTable.clearSelection();
+        myLibrariesTable.clearSelection();
         super.focusLost(focusEvent);
       }
     });
@@ -459,26 +503,26 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       return files;
     };
 
-    ToolbarDecorator decorator = ToolbarDecorator.createDecorator(librariesTable);
+    ToolbarDecorator decorator = ToolbarDecorator.createDecorator(myLibrariesTable);
     decorator.setAddAction(anActionButton -> {
       final VirtualFile[] files = chooseLibraryFile.apply(myJavaModuleFacet.getAbstractModule().getModuleSourceDir());
       // XXX perhaps, shall take FileSystemBridge from a project and pass IFile into the table model?
       myLibrariesTableModel.addNew(files);
     }).setRemoveAction(anActionButton -> {
-      TableUtil.removeSelectedItems(librariesTable);
+      TableUtil.removeSelectedItems(myLibrariesTable);
     }).setEditAction(anActionButton -> {
       // no idea if IDEA's edit action allows editing of multiple selection, but as long as I can support it, why not
-      final int[] selectedIndices = librariesTable.getSelectionModel().getSelectedIndices();
+      final int[] selectedIndices = myLibrariesTable.getSelectionModel().getSelectedIndices();
       if (selectedIndices.length == 0) {
         return;
       }
       // take the first/any one as a location hint
-      final Object startingPoint = librariesTable.getValueAt(selectedIndices[0], 0);
+      final Object startingPoint = myLibrariesTable.getValueAt(selectedIndices[0], 0);
       final VirtualFile[] files = chooseLibraryFile.apply(startingPoint);
       if (files.length != 0) {
         for (int i = 0; i < selectedIndices.length; i++) {
           // in case there's a row sorter, take model index from view's. Not our case, but anyway, doesn't hurt to keep this in mind.
-          selectedIndices[i] = librariesTable.convertRowIndexToModel(selectedIndices[i]);
+          selectedIndices[i] = myLibrariesTable.convertRowIndexToModel(selectedIndices[i]);
         }
         // don't use 'Edit' to delete elements
         myLibrariesTableModel.replace(selectedIndices, files);
@@ -519,6 +563,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       if (myCompileIDEA != null) {
         solutionCheck |= descriptor.needsExternalIdeaCompile() != myCompileIDEA.isSelected();
       }
+      //TODO detect changes to the myCompileOutPath field
       solutionCheck |= !new LanguageLevelPresentation(myJavaModuleFacet.getLanguageLevel()).equals(myLanguageLevel.getSelectedItem());
       final LoadClasses l = myJavaModuleFacet.getLoadClasses();
       if (myClassLoadMPS.isSelected()) {
@@ -557,6 +602,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       } else {
         myJavaModuleFacet.setCompile(Compile.None);
       }
+      //TODO apply the myCompileOutPath field
       if (myClassLoadMPS.isSelected()) {
         myJavaModuleFacet.setLoadClasses(LoadClasses.ManagedByMPS);
       } else if (myClassLoadContributor.isSelected()) {
@@ -637,9 +683,26 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
 
   private static class PathSpecTableModel extends AbstractTableModel implements ItemRemovable {
     private final List<Object> myPaths = new ArrayList<>();
+    private final List<Boolean> myLoadFlags = new ArrayList<>();
+
+    private boolean showLoadClassesCheckbox = false;
 
     PathSpecTableModel(@NotNull PathSpecBundle paths) {
+      this(paths, false);
+    }
+
+    PathSpecTableModel(@NotNull PathSpecBundle paths, boolean showLoadClassesCheckbox) {
       paths.forEach(myPaths::add);
+      //TODO retrieve the values for load flags from the API
+      paths.forEach(x -> myLoadFlags.add(true));
+      this.showLoadClassesCheckbox = showLoadClassesCheckbox;
+    }
+    private int getCheckboxColumnIndex() {
+      return showLoadClassesCheckbox ? 0 : -1;
+    }
+
+    private int getPathColumnIndex() {
+      return showLoadClassesCheckbox ? 1 : 0;
     }
 
     @Override
@@ -650,17 +713,57 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     @Override
     public void removeRow(int idx) {
       myPaths.remove(idx);
+      myLoadFlags.remove(idx);
       fireTableRowsDeleted(idx, idx);
     }
 
     @Override
     public int getColumnCount() {
-      return 1;
+      return showLoadClassesCheckbox ? 2 : 1;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+      if(rowIndex>=myPaths.size()) return null;
+      if (columnIndex==getCheckboxColumnIndex()) return myLoadFlags.get(rowIndex);
       return myPaths.get(rowIndex);
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+      if (columnIndex == getCheckboxColumnIndex()) {
+        myLoadFlags.set(rowIndex, (Boolean)aValue);
+      } else {
+        super.setValueAt(aValue, rowIndex, columnIndex);
+      }
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+      if (columnIndex == getCheckboxColumnIndex()) {
+        return true;
+      } else {
+        return super.isCellEditable(rowIndex, columnIndex);
+      }
+    }
+
+    @Override
+    public String getColumnName(int column) {
+      if(column == getCheckboxColumnIndex())
+        return "Load classes";
+      if(column == getPathColumnIndex())
+        return "Library path";
+      return "";
+    }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+      if(columnIndex == getCheckboxColumnIndex())
+        return Boolean.class;
+      if(columnIndex == getPathColumnIndex()) {
+        return PathSpecBundle.class;
+      }
+      return super.getColumnClass(columnIndex);
     }
 
     /*package*/ void addNew(VirtualFile[] files) {
@@ -676,7 +779,8 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
           continue;
         }
         tdChange = true;
-        myPaths.add(fromIndex++, vf);
+        myPaths.add(fromIndex, vf);
+        myLoadFlags.add(fromIndex++, true);
       }
       if (tdChange) {
         fireTableDataChanged();
@@ -686,6 +790,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     /*package*/ PathSpecBundle toPathBundle(Collection<String> provisionalHackCollectPaths) {
       ArrayList<PathSpec> pathSpecs = new ArrayList<>();
       for (Object ee : myPaths) {
+        //TODO pass the load flags also
         if (ee instanceof VirtualFile) {
           // FIXME shall convert to IFile and use respective PathSpec constructor!
           final String path = ((VirtualFile) ee).getPath();
@@ -708,6 +813,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       Arrays.sort(selectedIndices);
       for (int i = selectedIndices.length - 1; i >= 0; i--) {
         myPaths.remove(selectedIndices[i]);
+        myLoadFlags.remove(selectedIndices[i]);
       }
       addNew(selectedIndices[0], files);
     }
@@ -742,7 +848,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
 
   // table that uses default cell renderers registered for a column class on per-cell value basis
   /*package*/ static class JTablePlus extends JBTable {
-    JTablePlus(TableModel model) {
+    JTablePlus(PathSpecTableModel model) {
       super(model);
     }
 
@@ -753,6 +859,22 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
         return super.getCellRenderer(row, column);
       }
       return getDefaultRenderer(val.getClass());
+    }
+
+    private void showLoadCheckbox(boolean flag) {
+      if (flag) {
+        final TableColumn checkboxColumn = getColumnModel().getColumn(0);
+        checkboxColumn.setMaxWidth(85);
+        checkboxColumn.setPreferredWidth(85);
+        checkboxColumn.setMinWidth(50);
+        checkboxColumn.setWidth(85);
+      } else {
+        final TableColumn fileColumn = getColumnModel().getColumn(0);
+        fileColumn.setMinWidth(0);
+        fileColumn.setPreferredWidth(0);
+        fileColumn.setMaxWidth(0);
+      }
+      this.revalidate();
     }
   }
 }
