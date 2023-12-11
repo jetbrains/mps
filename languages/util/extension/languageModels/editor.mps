@@ -510,5 +510,20 @@
       </node>
     </node>
   </node>
+  <node concept="24kQdi" id="8PnOmiAJnk">
+    <ref role="1XX52x" to="v54s:3e7$st3rKkA" resolve="ExtensionRegistrar" />
+    <node concept="3EZMnI" id="8PnOmiAJxE" role="2wV5jI">
+      <node concept="3F0ifn" id="8PnOmiAJFb" role="3EZMnx">
+        <property role="3F0ifm" value="registers:" />
+      </node>
+      <node concept="2iRfu4" id="8PnOmiAJxF" role="2iSdaV" />
+      <node concept="1iCGBv" id="8PnOmiAJp2" role="3EZMnx">
+        <ref role="1NtTu8" to="v54s:3e7$st3rKA$" />
+        <node concept="1sVBvm" id="8PnOmiAJp4" role="1sWHZn">
+          <node concept="3SHvHV" id="8PnOmiAJuf" role="2wV5jI" />
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

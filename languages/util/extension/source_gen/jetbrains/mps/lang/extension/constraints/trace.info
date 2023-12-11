@@ -14,7 +14,46 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="13,0,39,0" name="jetbrains.mps.lang.extension.constraints.ConstraintsAspectDescriptor" />
+      <unit at="13,0,41,0" name="jetbrains.mps.lang.extension.constraints.ConstraintsAspectDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:34afaabb-1c5b-40d4-ae6d-6f5312d7475d(jetbrains.mps.lang.extension.constraints)/159138114258678207">
+    <file name="ExtensionRegistrar_Constraints.java">
+      <node id="159138114258678207" at="24,43,25,42" concept="11" />
+      <node id="159138114258678262" at="36,63,37,142" concept="6" />
+      <node id="159138114258764418" at="40,80,41,195" concept="6" />
+      <node id="159138114258678207" at="45,6,46,131" concept="5" />
+      <node id="159138114258678262" at="46,131,47,42" concept="2" />
+      <node id="159138114258678207" at="47,42,48,22" concept="6" />
+      <node id="159138114258678207" at="52,0,53,0" concept="9" trace="ExtensionRegistrar$ex" />
+      <node id="159138114258678207" at="56,0,57,0" concept="9" trace="ext$o1Mc" />
+      <node id="159138114258678207" at="24,0,27,0" concept="1" trace="ExtensionRegistrar_Constraints#()V" />
+      <node id="159138114258678262" at="35,0,39,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="159138114258678262" at="39,0,43,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="159138114258678262" at="33,56,43,10" concept="6" />
+      <node id="159138114258678262" at="31,0,45,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="159138114258678262" at="29,90,45,6" concept="5" />
+      <node id="159138114258678207" at="28,0,50,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="159138114258678207" at="24,43,25,42" />
+      <scope id="159138114258678262" at="36,63,37,142" />
+      <scope id="159138114258678262" at="40,80,41,195" />
+      <scope id="159138114258678207" at="24,0,27,0" />
+      <scope id="159138114258678262" at="35,0,39,0" />
+      <scope id="159138114258678262" at="39,0,43,0">
+        <var name="_context" id="159138114258678262" />
+      </scope>
+      <scope id="159138114258678262" at="33,56,43,10" />
+      <scope id="159138114258678262" at="31,0,45,0" />
+      <scope id="159138114258678207" at="29,90,48,22">
+        <var name="d0" id="159138114258678262" />
+        <var name="references" id="159138114258678207" />
+      </scope>
+      <scope id="159138114258678207" at="28,0,50,0" />
+      <unit id="159138114258678207" at="51,0,54,0" name="jetbrains.mps.lang.extension.constraints.ExtensionRegistrar_Constraints$CONCEPTS" />
+      <unit id="159138114258678207" at="55,0,58,0" name="jetbrains.mps.lang.extension.constraints.ExtensionRegistrar_Constraints$LINKS" />
+      <unit id="159138114258678262" at="34,19,43,9" name="jetbrains.mps.lang.extension.constraints.ExtensionRegistrar_Constraints$1$1" />
+      <unit id="159138114258678262" at="30,48,45,5" name="jetbrains.mps.lang.extension.constraints.ExtensionRegistrar_Constraints$1" />
+      <unit id="159138114258678207" at="23,0,59,0" name="jetbrains.mps.lang.extension.constraints.ExtensionRegistrar_Constraints" />
     </file>
   </root>
   <root nodeRef="r:34afaabb-1c5b-40d4-ae6d-6f5312d7475d(jetbrains.mps.lang.extension.constraints)/195736285282739743">
