@@ -2,7 +2,6 @@
 <model ref="r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)">
   <persistence version="9" />
   <languages>
-    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
@@ -53,10 +52,6 @@
       </concept>
       <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
         <child id="1164991057263" name="throwable" index="YScLw" />
-      </concept>
-      <concept id="1081256982272" name="jetbrains.mps.baseLanguage.structure.InstanceOfExpression" flags="nn" index="2ZW3vV">
-        <child id="1081256993305" name="classType" index="2ZW6by" />
-        <child id="1081256993304" name="leftExpression" index="2ZW6bz" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
@@ -261,37 +256,6 @@
       </node>
       <node concept="3Tm6S6" id="1BOVr2ZeO85" role="1B3o_S" />
       <node concept="3clFbS" id="1BOVr2ZeO6Y" role="3clF47">
-        <node concept="3clFbJ" id="1BOVr2ZeOhM" role="3cqZAp">
-          <node concept="3fqX7Q" id="1BOVr2ZeOhN" role="3clFbw">
-            <node concept="1eOMI4" id="1BOVr2ZeOhR" role="3fr31v">
-              <node concept="2ZW3vV" id="1BOVr2ZeOhQ" role="1eOMHV">
-                <node concept="37vLTw" id="1BOVr2ZeOhO" role="2ZW6bz">
-                  <ref role="3cqZAo" node="1BOVr2ZeOgN" resolve="module" />
-                </node>
-                <node concept="3uibUv" id="1BOVr2ZeP_T" role="2ZW6by">
-                  <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbS" id="1BOVr2ZeOhT" role="3clFbx">
-            <node concept="YS8fn" id="1BOVr2ZeOhY" role="3cqZAp">
-              <node concept="2ShNRf" id="1BOVr2ZeQpd" role="YScLw">
-                <node concept="1pGfFk" id="1BOVr2ZeQtF" role="2ShVmc">
-                  <ref role="37wK5l" to="wyt6:~IllegalStateException.&lt;init&gt;(java.lang.String)" resolve="IllegalStateException" />
-                  <node concept="3cpWs3" id="1BOVr2ZeQtG" role="37wK5m">
-                    <node concept="Xl_RD" id="1BOVr2ZeQtH" role="3uHU7B">
-                      <property role="Xl_RC" value="It is not possible to load classes from " />
-                    </node>
-                    <node concept="37vLTw" id="1BOVr2ZeQtI" role="3uHU7w">
-                      <ref role="3cqZAo" node="1BOVr2ZeOgN" resolve="module" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="1BOVr2ZeOi0" role="3cqZAp">
           <node concept="3cpWsn" id="1BOVr2ZeOhZ" role="3cpWs9">
             <property role="TrG5h" value="status" />
@@ -304,14 +268,9 @@
                 <ref role="1Pybhc" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
               </node>
               <node concept="liA8E" id="2rTnW2A6Ey5" role="2OqNvi">
-                <ref role="37wK5l" to="3qmy:~ClassLoaderManager.getStatus(jetbrains.mps.module.ReloadableModule)" resolve="getStatus" />
-                <node concept="10QFUN" id="1BOVr2ZeOi3" role="37wK5m">
-                  <node concept="37vLTw" id="1BOVr2ZeOi4" role="10QFUP">
-                    <ref role="3cqZAo" node="1BOVr2ZeOgN" resolve="module" />
-                  </node>
-                  <node concept="3uibUv" id="1BOVr2ZeOi5" role="10QFUM">
-                    <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
-                  </node>
+                <ref role="37wK5l" to="3qmy:~ClassLoaderManager.getStatus(org.jetbrains.mps.openapi.module.SModule)" resolve="getStatus" />
+                <node concept="37vLTw" id="1BOVr2ZeOi4" role="37wK5m">
+                  <ref role="3cqZAo" node="1BOVr2ZeOgN" resolve="module" />
                 </node>
               </node>
             </node>

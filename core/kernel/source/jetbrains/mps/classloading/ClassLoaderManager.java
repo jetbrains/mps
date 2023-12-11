@@ -22,8 +22,8 @@ import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.ReloadableModule.DeploymentStatus;
 import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.NotCondition;
@@ -617,7 +617,7 @@ public class ClassLoaderManager implements CoreComponent {
   }
 
   @NotNull
-  public DeploymentStatus getStatus(@NotNull ReloadableModule module) {
+  public DeploymentStatus getStatus(@NotNull SModule module) {
     SModuleReference moduleReference = module.getModuleReference();
     if (myClassLoadersHolder.getClassLoadingProgress(moduleReference) != UNLOADED) {
       return DeploymentStatuses.DEPLOYED;
@@ -708,13 +708,11 @@ public class ClassLoaderManager implements CoreComponent {
    * the modules we want to watch (and trace the dependencies between them)
    * Answers if it is possible to associate a ClassLoader (whether IDEA-delegating or true MPS module CL) with the module
    */
-  private final Condition<SModule> myWatchableCondition = module -> {
-    final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
-    return jmf != null && jmf.getLoadClasses().classesAvailable();
-  };
+  private final Condition<SModule> myWatchableCondition = SModuleOperations::classesAvailableToMPS;
 
   /**
    * @deprecated dubious single use, bad name (rather answers if module *can* get MPS CL, not if module got any or has been loaded)
+   *             Alternatively, use {@link SModuleOperations#classloadingManagedByMPS(SModule)}
    */
   @Deprecated(forRemoval = true, since = "2023.1")
   public boolean isLoadedByMPS(@NotNull ReloadableModule module) {

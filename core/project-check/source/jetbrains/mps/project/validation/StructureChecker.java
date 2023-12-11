@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ import jetbrains.mps.errors.item.LanguageAbsentInRepoProblem;
 import jetbrains.mps.errors.item.LanguageNotLoadedProblem;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.annotations.NotNull;
@@ -179,7 +178,7 @@ public class StructureChecker extends AbstractNodeCheckerInEditor implements ICh
     for (SDependency dep : langModule.getDeclaredDependencies()) {
       @Nullable SModule targetModule = dep.getTargetModule().resolve(repo);
 
-      if (targetModule == null || (targetModule instanceof ReloadableModule && !clm.getStatus((ReloadableModule) targetModule).canBeDeployed())) {
+      if (targetModule == null || !clm.getStatus(targetModule).canBeDeployed()) {
         invalidDep.add(dep.getTargetModule().getModuleName());
       }
     }
