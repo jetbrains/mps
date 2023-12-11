@@ -104,57 +104,12 @@ public interface ReloadableModule extends SModule {
   }
 
   /**
-   * @deprecated to be removed without a direct substitute. If necessary, access CLM instance through
-   *             CoreComponent mechanism.
-   *             No uses in MPS
-   * @return the hosting CLM, which offers a control over modules deployment
-   */
-  @Deprecated(forRemoval = true, since = "2022.2")
-  @NotNull ClassLoaderManager getCLM();
-
-  /**
    * @deprecated {@link #getClassLoader()} has been updated, use it instead
    */
   @NotNull
   default MPSModuleClassLoader getClassLoader0() {
     Logger.getLogger(getClass()).warnDeprecatedUse("use getClassLoader() directly");
     return getClassLoader();
-  }
-
-  /**
-   * Call it to replace the old class loader of this module with a new one.
-   * To reload more than one module all together
-   * check out {@link ClassLoaderManager#reloadModules(Iterable, org.jetbrains.mps.openapi.util.ProgressMonitor)} method.
-   * @deprecated Scheduled for removal, use CLM directly, if necessary.
-   */
-  @Deprecated(forRemoval = true, since = "2022.2")
-  default void reload() {
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * For some subclasses it is possible to disable class loading for <code>ReloadableModule</code>.
-   * E.g. solution without idea/mps facet cannot load classes
-   * @see jetbrains.mps.project.Solution
-   * @return true if it will load classes.
-   * @deprecated "will load classes" is not a clear contract. Among other, meant MPS loads its own extensions from these modules
-   */
-  @Deprecated(since = "2022.3", forRemoval = true)
-  default boolean canLoadClasses() {
-    return true;
-  }
-
-  /**
-   * @deprecated Use {@link ClassLoaderManager#getStatus(ReloadableModule)}
-   *             I'd prefer to keep ReloadableModule hierarchy separate from SModule one, as it's confusing to see
-   *             any Solution as ReloadableModule. To me, it has to be CLM to keep RM counterparts for SModules available in a
-   *             repository, so that we don't have to bother with classloading when building an AbstractModule subclass (keep
-   *             module and its classloading separate)
-   */
-  @NotNull
-  @Deprecated(forRemoval = true, since = "2022.2")
-  default DeploymentStatus getStatus() {
-    throw new UnsupportedOperationException();
   }
 
   interface DeploymentStatus {

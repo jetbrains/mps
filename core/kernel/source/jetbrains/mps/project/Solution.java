@@ -97,11 +97,4 @@ public class Solution extends ReloadableModuleBase {
     // Logger.getLogger(getClass()).warnDeprecatedUse("Solution.getKind() and SolutionKind are deprecated, don't use");
     return getModuleDescriptor().getKind();
   }
-
-  @Override
-  public boolean canLoadClasses() {
-    Logger.getLogger(Solution.class).warnDeprecatedUse("ReloadableModule.canLoadClasses() is scheduled for removal");
-    // TODO mps facet from this [like IDEA plugin facet]
-    return SModuleOperations.canSupplyExtensionsForMPS(this);
-  }
 }

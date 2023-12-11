@@ -60,13 +60,6 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
   }
 
   @NotNull
-  @Override
-  public ClassLoaderManager getCLM() {
-    LOG.warnDeprecatedUse("ReloadableModule.getCLM() is deprecated, do not use");
-    return myManager;
-  }
-
-  @NotNull
   protected Class<?> getClass(String classFqName, boolean ownClassOnly) throws ClassNotFoundException {
     ClassLoader classLoader = getClassLoader();
     if (classLoader == null) {

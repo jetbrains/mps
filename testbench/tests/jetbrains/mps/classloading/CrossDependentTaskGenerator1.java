@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,6 +39,10 @@ final class CrossDependentTaskGenerator1 extends TaskGenerator {
   private static final Logger LOG = Logger.getLogger(CrossDependentTaskGenerator1.class);
   private final static int nThreads = 2;
   private final CyclicBarrier barrier = new CyclicBarrier(2);
+
+  // XXX test code here uses external fields to keep ModuleClassLoader instances
+  //     Perhaps, we can inject these into CLM somehow to avoid this explicit handling here?
+  //     OTOH, need to figure out the exact test mechanism first
   private final AtomicReference<ModuleClassLoader> myFirst = new AtomicReference<>();
   private final AtomicReference<ModuleClassLoader> mySecond = new AtomicReference<>();
   private static final int TIMEOUT = 2000;
