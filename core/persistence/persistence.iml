@@ -22,5 +22,6 @@
     <orderEntry type="module" module-name="kotlin-stub" />
     <orderEntry type="library" name="gnu.trove" level="project" />
     <orderEntry type="library" name="org.jdom" level="project" />
+    <orderEntry type="library" name="Idea-platform" level="project" />
   </component>
 </module>

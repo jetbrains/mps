@@ -21,6 +21,7 @@ import com.intellij.openapi.fileTypes.FileTypes;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.JarFileSystem;
 import com.intellij.openapi.vfs.LocalFileSystem;
+import com.intellij.openapi.vfs.SavingRequestor;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import com.intellij.openapi.vfs.newvfs.ArchiveFileSystem;
@@ -280,7 +281,7 @@ public class IdeaFile implements IFile, CachingFile {
         }
         String fileName = getName();
         directory.findChild(fileName); // This is a workaround for IDEA-67279
-        directory.createChildData(getFileSystem(), fileName);
+        directory.createChildData(new MPSSavingRequestor(), fileName);
         return true;
       } catch (IOException e) {
         LOG.error("Got a problem while creating a new file", e);
@@ -314,7 +315,7 @@ public class IdeaFile implements IFile, CachingFile {
       if (child != null && child.isDirectory()) {
         return child;
       }
-      return parent.createChildDirectory(getFileSystem(), dirName);
+      return parent.createChildDirectory(new MPSSavingRequestor(), dirName);
     }
     return file;
   }
@@ -345,7 +346,7 @@ public class IdeaFile implements IFile, CachingFile {
     if (virtualFile != null) {
       try {
         checkNoListenersWhenRemove();
-        virtualFile.delete(getFileSystem());
+        virtualFile.delete(new MPSSavingRequestor());
         return true;
       } catch (IOException e) {
         LOG.warning("Could not delete the file: ", e);
@@ -362,7 +363,7 @@ public class IdeaFile implements IFile, CachingFile {
     try {
       VirtualFile virtualFile = findVirtualFile();
       if (virtualFile != null) {
-        virtualFile.rename(getFileSystem(), newName);
+        virtualFile.rename(new MPSSavingRequestor(), newName);
         return true;
       } else {
         LOG.error("Could not find the file: " + myPath, new Throwable());
@@ -398,7 +399,7 @@ public class IdeaFile implements IFile, CachingFile {
           return this;
         }
         checkNoListenersWhenRemove();
-        virtualFile.rename(getFileSystem(), newName);
+        virtualFile.rename(new MPSSavingRequestor(), newName);
         return getParent().findChild(newName);
       } else {
         LOG.warning("Could not find the file: " + myPath);
@@ -420,7 +421,7 @@ public class IdeaFile implements IFile, CachingFile {
       try {
         VirtualFile virtualFile = findVirtualFile();
         if (virtualFile != null) {
-          VirtualFile copy = virtualFile.copy(getFileSystem(), newParentFile, newName);
+          VirtualFile copy = virtualFile.copy(new MPSSavingRequestor(), newParentFile, newName);
           return new IdeaFile(myFS, copy);
         } else {
           LOG.error("Could not find the file to copy: '" + myPath + "'", new Throwable());
@@ -444,7 +445,7 @@ public class IdeaFile implements IFile, CachingFile {
       try {
         VirtualFile virtualFile = findVirtualFile();
         if (virtualFile != null) {
-          virtualFile.move(getFileSystem(), newParentFile);
+          virtualFile.move(new MPSSavingRequestor(), newParentFile);
           return true;
         } else {
           LOG.error("Could not find the file to move: " + myPath + ". The file was not moved", new Throwable());
@@ -471,7 +472,7 @@ public class IdeaFile implements IFile, CachingFile {
         VirtualFile virtualFile = findVirtualFile();
         if (virtualFile != null) {
           checkNoListenersWhenRemove();
-          virtualFile.move(getFileSystem(), newParentFile);
+          virtualFile.move(new MPSSavingRequestor(), newParentFile);
           return newParent.findChild(virtualFile.getName());
         } else {
           LOG.error("Could not find the file to move: '" + myPath + "'", new Throwable());
@@ -510,7 +511,7 @@ public class IdeaFile implements IFile, CachingFile {
       throw new UnsupportedOperationException("Cannot write to JAR files");
     } else {
       virtualFile = renameIfCaseSensitive(virtualFile);
-      return virtualFile.getOutputStream(getFileSystem());
+      return virtualFile.getOutputStream(new MPSSavingRequestor(){});
     }
   }
 
@@ -522,7 +523,7 @@ public class IdeaFile implements IFile, CachingFile {
       // try to bring the name up to the desired one.
       final String desiredFileName = getName();
       if (!virtualFile.getName().equals(desiredFileName)) {
-        virtualFile.rename(getFileSystem(), desiredFileName);
+        virtualFile.rename(new MPSSavingRequestor(), desiredFileName);
       }
       virtualFile = findVirtualFile0(false);
     }

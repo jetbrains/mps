@@ -11,6 +11,8 @@ import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.ide.IdeBundle;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelName;
+import jetbrains.mps.ide.save.SaveRepositoryCommand;
+import jetbrains.mps.smodel.undo.NamedCommand;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.refactoring.Renamer;
@@ -44,12 +46,18 @@ public class RenameModelDialog extends RenameDialog {
   @Override
   protected void doRefactoringAction() {
     final SModelName newModelName = new SModelName(getCurrentValue());
-    myProject.getRepository().getModelAccess().executeCommand(() -> RenameModelDialog.renameModel(myProject, myModelDescriptor, newModelName.getValue()));
+    new SaveRepositoryCommand(myProject.getRepository()).execute();
+    NamedCommand cmd = new NamedCommand(String.format("Rename model %s", myModelDescriptor.getName().getLongName()), true) {
+      @Override
+      public void run() {
+        RenameModelDialog.renameModel(myProject, myModelDescriptor, newModelName.getValue());
+      }
+    };
+    myProject.getRepository().getModelAccess().executeCommand(cmd);
     super.doRefactoringAction();
   }
 
   private static void renameModel(@NotNull MPSProject project, @NotNull EditableSModel model, @NotNull String newName) {
-    project.getRepository().saveAll();
     model.rename(newName, model.getSource() instanceof FileDataSource);
     Renamer.updateModelAndModuleReferences(project);
     project.getRepository().saveAll();

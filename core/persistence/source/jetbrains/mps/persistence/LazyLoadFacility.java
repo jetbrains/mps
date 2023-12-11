@@ -18,6 +18,7 @@ package jetbrains.mps.persistence;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.generator.ModelDigestUtil;
 import jetbrains.mps.smodel.SModelHeader;
+import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;

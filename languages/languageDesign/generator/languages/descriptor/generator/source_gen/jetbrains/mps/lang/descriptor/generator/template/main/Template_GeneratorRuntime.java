@@ -102,37 +102,37 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase {
             environment.aggregate(tnode9, myAggregationLinks[1], tnode10);
           }
           {
-            final SNode tnode11 = environment.createOutputNode(myConcepts[1]);
+            final SNode tnode11 = environment.createOutputNode(myConcepts[5]);
             {
-              environment.associate(tnode11, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)", "~AtomicReference");
               TemplateContext context5 = context4.subContext();
               {
-                final SNode tnode12 = environment.createOutputNode(myConcepts[5]);
-                {
-                  TemplateContext context6 = context5.subContext();
-                  {
-                    final SNode tnode13 = environment.createOutputNode(myConcepts[1]);
-                    environment.associate(tnode13, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateModel");
-                    environment.aggregate(tnode12, myAggregationLinks[5], tnode13);
-                  }
-                }
-                environment.aggregate(tnode11, myAggregationLinks[2], tnode12);
+                final SNode tnode12 = environment.createOutputNode(myConcepts[6]);
+                tnode12.setProperty(myProperties[2], "true");
+                environment.associate(tnode12, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)", "~AtomicReference.<init>()");
+                environment.aggregate(tnode11, myAggregationLinks[5], tnode12);
               }
             }
-            environment.aggregate(tnode9, myAggregationLinks[3], tnode11);
+            environment.aggregate(tnode9, myAggregationLinks[6], tnode11);
           }
           {
-            final SNode tnode14 = environment.createOutputNode(myConcepts[6]);
+            final SNode tnode13 = environment.createOutputNode(myConcepts[1]);
             {
-              TemplateContext context7 = context4.subContext();
+              environment.associate(tnode13, myAssociationLinks[0], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)", "~AtomicReference");
+              TemplateContext context6 = context4.subContext();
               {
-                final SNode tnode15 = environment.createOutputNode(myConcepts[7]);
-                tnode15.setProperty(myProperties[2], "true");
-                environment.associate(tnode15, myAssociationLinks[1], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)", "~AtomicReference.<init>()");
-                environment.aggregate(tnode14, myAggregationLinks[6], tnode15);
+                final SNode tnode14 = environment.createOutputNode(myConcepts[7]);
+                {
+                  TemplateContext context7 = context6.subContext();
+                  {
+                    final SNode tnode15 = environment.createOutputNode(myConcepts[1]);
+                    environment.associate(tnode15, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateModel");
+                    environment.aggregate(tnode14, myAggregationLinks[7], tnode15);
+                  }
+                }
+                environment.aggregate(tnode13, myAggregationLinks[2], tnode14);
               }
             }
-            environment.aggregate(tnode9, myAggregationLinks[7], tnode14);
+            environment.aggregate(tnode9, myAggregationLinks[3], tnode13);
           }
         }
         environment.aggregate(tnode1, myAggregationLinks[4], tnode9);
@@ -332,13 +332,13 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase {
                       tnode48.setProperty(myProperties[0], "rv");
                       TemplateContext context23 = context22.subContext();
                       {
-                        final SNode tnode49 = environment.createOutputNode(myConcepts[5]);
+                        final SNode tnode49 = environment.createOutputNode(myConcepts[7]);
                         {
                           TemplateContext context24 = context23.subContext();
                           {
                             final SNode tnode50 = environment.createOutputNode(myConcepts[1]);
                             environment.associate(tnode50, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateModel");
-                            environment.aggregate(tnode49, myAggregationLinks[5], tnode50);
+                            environment.aggregate(tnode49, myAggregationLinks[7], tnode50);
                           }
                         }
                         environment.aggregate(tnode48, myAggregationLinks[3], tnode49);
@@ -358,7 +358,7 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase {
                             environment.aggregate(tnode51, myAggregationLinks[18], tnode53);
                           }
                         }
-                        environment.aggregate(tnode48, myAggregationLinks[7], tnode51);
+                        environment.aggregate(tnode48, myAggregationLinks[6], tnode51);
                       }
                     }
                     environment.aggregate(tnode47, myAggregationLinks[19], tnode48);
@@ -386,7 +386,7 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase {
                             {
                               TemplateContext context30 = context29.subContext();
                               {
-                                final SNode tnode59 = environment.createOutputNode(myConcepts[6]);
+                                final SNode tnode59 = environment.createOutputNode(myConcepts[5]);
                                 {
                                   TemplateContext context31 = context30.subContext();
                                   {
@@ -411,7 +411,7 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase {
                                         environment.aggregate(tnode60, myAggregationLinks[22], tnode63);
                                       }
                                     }
-                                    environment.aggregate(tnode59, myAggregationLinks[6], tnode60);
+                                    environment.aggregate(tnode59, myAggregationLinks[5], tnode60);
                                   }
                                 }
                                 environment.aggregate(tnode58, myAggregationLinks[12], tnode59);
@@ -808,19 +808,19 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase {
                       tnode125.setProperty(myProperties[0], "rv");
                       TemplateContext context64 = context63.subContext();
                       {
-                        final SNode tnode126 = environment.createOutputNode(myConcepts[5]);
+                        final SNode tnode126 = environment.createOutputNode(myConcepts[7]);
                         {
                           TemplateContext context65 = context64.subContext();
                           {
                             final SNode tnode127 = environment.createOutputNode(myConcepts[1]);
                             environment.associate(tnode127, myAssociationLinks[0], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SLanguage");
-                            environment.aggregate(tnode126, myAggregationLinks[5], tnode127);
+                            environment.aggregate(tnode126, myAggregationLinks[7], tnode127);
                           }
                         }
                         environment.aggregate(tnode125, myAggregationLinks[3], tnode126);
                       }
                       {
-                        final SNode tnode128 = environment.createOutputNode(myConcepts[6]);
+                        final SNode tnode128 = environment.createOutputNode(myConcepts[5]);
                         {
                           TemplateContext context66 = context64.subContext();
                           {
@@ -845,10 +845,10 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase {
                                 environment.aggregate(tnode129, myAggregationLinks[22], tnode132);
                               }
                             }
-                            environment.aggregate(tnode128, myAggregationLinks[6], tnode129);
+                            environment.aggregate(tnode128, myAggregationLinks[5], tnode129);
                           }
                         }
-                        environment.aggregate(tnode125, myAggregationLinks[7], tnode128);
+                        environment.aggregate(tnode125, myAggregationLinks[6], tnode128);
                       }
                     }
                     environment.aggregate(tnode124, myAggregationLinks[19], tnode125);
@@ -1101,9 +1101,9 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase {
       rv[2] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9581ff1L, "PublicVisibility");
       rv[3] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca68L, "FieldDeclaration");
       rv[4] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10af9586f0cL, "PrivateVisibility");
-      rv[5] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d819f7L, "ArrayType");
-      rv[6] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10ab8473cc5L, "GenericNewExpression");
-      rv[7] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11a59b0fbceL, "ClassCreator");
+      rv[5] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10ab8473cc5L, "GenericNewExpression");
+      rv[6] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11a59b0fbceL, "ClassCreator");
+      rv[7] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d819f7L, "ArrayType");
       rv[8] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x1458378889e6d166L, "PlaceholderMember");
       rv[9] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b204L, "ConstructorDeclaration");
       rv[10] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc6bf96dL, "VoidType");
@@ -1173,9 +1173,9 @@ public class Template_GeneratorRuntime extends TemplateDeclarationBase {
       rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
       rv[3] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
       rv[4] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-      rv[5] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-      rv[6] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
-      rv[7] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+      rv[5] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+      rv[6] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+      rv[7] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
       rv[8] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
       rv[9] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
       rv[10] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");

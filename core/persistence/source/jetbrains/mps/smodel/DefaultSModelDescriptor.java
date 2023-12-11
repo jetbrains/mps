@@ -24,6 +24,7 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.LazyLoadFacility;
 import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.smodel.DefaultSModel.InvalidDefaultSModel;
+import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import org.jetbrains.annotations.NotNull;

@@ -303,4 +303,5 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
       FilePerRootFormatUtil.saveModel((jetbrains.mps.smodel.SModel) modelData, getSource0(), header.getPersistenceVersion());
     }
   }
+
 }

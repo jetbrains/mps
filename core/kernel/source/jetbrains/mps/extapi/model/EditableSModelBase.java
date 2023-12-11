@@ -24,6 +24,9 @@ import jetbrains.mps.persistence.DataSourceFactoryNotFoundException;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.persistence.NoSourceRootsInModelRootException;
 import jetbrains.mps.persistence.SourceRootDoesNotExistException;
+import jetbrains.mps.smodel.ModelCommandContext;
+import jetbrains.mps.smodel.ModelCommandContext.Provider;
+import jetbrains.mps.smodel.ModelRenameUndoableAction;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,6 +35,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.model.SaveOptions;
 import org.jetbrains.mps.openapi.model.SaveResult;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -340,6 +344,18 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
 
     fireModelRenamed(new SModelRenamedEvent(this, oldName.getModelName(), newModelName));
     fireModelRenamed(oldName);
+
+    //TODO apply to normal persistence as well to fix MPS-32728
+    if (!changeFile) {
+      //per-root persistence
+      ModelAccess modelAccess = getRepository().getModelAccess();
+      if (modelAccess instanceof ModelCommandContext.Provider) {
+        final ModelCommandContext cc = ((Provider) modelAccess).getCommandContext(this);
+        if (cc != null) {
+          cc.registerActionWithUndo(new ModelRenameUndoableAction(this, oldName.getModelName(), newModelName));
+        }
+      }
+    }
   }
 
   @Override
