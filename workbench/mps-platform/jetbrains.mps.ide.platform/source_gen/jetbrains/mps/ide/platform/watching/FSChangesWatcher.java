@@ -11,7 +11,8 @@ import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.ide.vfs.MPSSavingRequestor;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import java.util.function.Supplier;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
@@ -35,7 +36,11 @@ public final class FSChangesWatcher implements BulkFileListener {
     if (application.isDisposed()) {
       return;
     }
-    final List<VFileEvent> eventsOfInterest = ListSequence.fromList(events).where((it) -> !(VirtualFileUtils.isFileEventFromMPS(it)) && !(NodeVirtualFileSystem.isFromNodeFileSystem(it))).ofType(VFileEvent.class).toList();
+    final List<VFileEvent> eventsOfInterest = ListSequence.fromList(events).where(new IWhereFilter<VFileEvent>() {
+      public boolean accept(VFileEvent it) {
+        return !(it.getRequestor() instanceof MPSSavingRequestor) && !(NodeVirtualFileSystem.isFromNodeFileSystem(it));
+      }
+    }).ofType(VFileEvent.class).toListSequence();
     if (ListSequence.fromList(eventsOfInterest).isEmpty()) {
       return;
     }

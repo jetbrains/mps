@@ -20,14 +20,17 @@ import com.intellij.openapi.command.undo.UndoManager;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.nodefs.MPSModelVirtualFile;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.smodel.ModelRenameUndoableAction;
 import jetbrains.mps.smodel.SNodeUndoableAction;
 import jetbrains.mps.smodel.SNodeUndoableAction.VFSChange;
 import jetbrains.mps.smodel.UndoItem;
 import jetbrains.mps.smodel.undo.UndoContext;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -55,6 +58,33 @@ public class UndoActionsCollector {
 
   UndoActionsCollector(UndoContext undoContext) {
     myUndoContext = undoContext;
+  }
+
+  void addAction(ModelRenameUndoableAction action) {
+    assert !myDisposed;
+    myActions.add(action);
+    myIsGlobal = true;
+
+    SModel model = action.getAffectedModel();
+    if (model != null) {
+      MPSModelVirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(myUndoContext.getRepository(), model.getReference());
+      assert file.isValid() :
+          "Invalid file was returned by VFS node is not available: " + model + ".";
+
+      myChangedFiles.computeIfAbsent(model.getModelId(), k -> new ArrayList<>()).add(file);
+
+      for (SNode rootNode : model.getRootNodes()) {
+        MPSNodeVirtualFile nodeFile = NodeVirtualFileSystem.getInstance().getFileFor(myUndoContext.getRepository(), rootNode);
+        assert nodeFile.hasValidMPSNode() :
+            "Invalid file was returned by VFS node is not available: " + rootNode + ", deleted = " + (rootNode.getModel() == null);
+
+        myChangedFiles.computeIfAbsent(model.getModelId(), k -> new ArrayList<>()).add(nodeFile);
+        Document document = MPSUndoUtil.getDoc(nodeFile);
+        if (document != null) {
+          myDocumentReferences.add(MPSUndoUtil.getRefForDoc(document));
+        }
+      }
+    }
   }
 
   void addAction(SNodeUndoableAction action) {
@@ -85,7 +115,6 @@ public class UndoActionsCollector {
       myDocumentReferences.add(MPSUndoUtil.getRefForDoc(document));
       myChangedFiles.computeIfAbsent(virtualFileNode.getModel().getModelId(), k -> new ArrayList<>()).add(file);
     }
-
     if (fileToUpdate != null && action.getAssociatedVfsChange() != VFSChange.NOT_CHANGED) {
       // recording deleted &  created files, using this information later for restoring vFiles in VFS cache
       // keeping track of files which was deleted & then re-created

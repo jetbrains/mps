@@ -20,7 +20,6 @@ import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
-import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
@@ -115,17 +114,6 @@ public final class VirtualFileUtils {
 
   private static void refreshSynchronouslyAndRecursively(VirtualFile file) {
     file.refresh(false, true);
-  }
-
-  /**
-   * Allows to distinguish file events from MPS code and from IDEA platform code
-   * We don't process events on file updates from MPS, eg writing files after make
-   *
-   * @return true - event is from IdeaFile processing, false - event from refresh or any other VirtualFile changes
-   */
-  @Deprecated(since = "3.4", forRemoval = true)
-  public static boolean isFileEventFromMPS(VFileEvent event) {
-    return event.getRequestor() instanceof IdeaFileSystem;
   }
 
   @Nullable
