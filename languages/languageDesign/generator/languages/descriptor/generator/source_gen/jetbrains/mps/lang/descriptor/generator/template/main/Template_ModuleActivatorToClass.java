@@ -141,7 +141,7 @@ public class Template_ModuleActivatorToClass extends TemplateDeclarationBase {
       }
       {
         Collection<SNode> tlist19 = Collections.emptyList();
-        if (QueriesGenerated.ifMacro_Condition_11_0(new IfMacroContext(context1, ifMacroRef))) {
+        if (QueriesGenerated.ifMacro_Condition_12_0(new IfMacroContext(context1, ifMacroRef))) {
           final SNode tnode20 = environment.createOutputNode(myConcepts[13]);
           {
             tnode20.setProperty(myProperties[0], "contribute");
@@ -174,7 +174,7 @@ public class Template_ModuleActivatorToClass extends TemplateDeclarationBase {
             }
             {
               Collection<SNode> tlist26 = null;
-              final SNode copySrcInput26 = QueriesGenerated.sourceNodeQuery_11_0(new SourceSubstituteMacroNodeContext(context8, copySrcMacro));
+              final SNode copySrcInput26 = QueriesGenerated.sourceNodeQuery_12_0(new SourceSubstituteMacroNodeContext(context8, copySrcMacro));
               tlist26 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput26), copySrcMacro, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/844304638793290262", context8);
               environment.aggregate(tnode20, myAggregationLinks[8], tlist26);
             }

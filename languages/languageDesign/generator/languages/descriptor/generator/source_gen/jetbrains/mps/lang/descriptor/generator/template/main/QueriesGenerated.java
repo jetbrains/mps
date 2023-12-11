@@ -46,10 +46,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 @Generated
 public class QueriesGenerated {
-  public static boolean createRootRule_Condition_12_0(final CreateRootRuleContext _context) {
+  public static boolean createRootRule_Condition_11_0(final CreateRootRuleContext _context) {
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ActivatorUnit$oI)).isNotEmpty();
   }
-  public static boolean dropRootRule_Condition_12_0(final DropRootRuleContext _context) {
+  public static boolean dropRootRule_Condition_11_0(final DropRootRuleContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.extensions$4TrO), LINKS.statement$53DE)).isEmpty();
   }
   public static boolean rule_Condition_1_0(final BaseMappingRuleContext _context) {
@@ -70,7 +70,7 @@ public class QueriesGenerated {
   public static boolean rule_Condition_1_5(final BaseMappingRuleContext _context) {
     return !(SPropertyOperations.getBoolean(SLinkOperations.getTarget(_context.getNode(), LINKS.generator$Z1xz), PROPS.generateTemplates$FATW));
   }
-  public static boolean rule_Condition_12_0(final BaseMappingRuleContext _context) {
+  public static boolean rule_Condition_11_0(final BaseMappingRuleContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.extensions$4TrO), LINKS.statement$53DE)).isNotEmpty();
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
@@ -174,7 +174,7 @@ public class QueriesGenerated {
   public static boolean ifMacro_Condition_7_1(final IfMacroContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.priorityRules$x1s5)).isNotEmpty();
   }
-  public static boolean ifMacro_Condition_11_0(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_12_0(final IfMacroContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.extensions$4TrO), LINKS.statement$53DE)).isNotEmpty();
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
@@ -216,7 +216,7 @@ public class QueriesGenerated {
   public static SNode sourceNodeQuery_7_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.generator$Z1xz);
   }
-  public static SNode sourceNodeQuery_11_0(final SourceSubstituteMacroNodeContext _context) {
+  public static SNode sourceNodeQuery_12_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.extensions$4TrO);
   }
   public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
@@ -284,7 +284,7 @@ public class QueriesGenerated {
     //  can't use genContext.inputModel as it has lost stereotype (it's transient model)
     return SModelStereotype.isDescriptorModel(_context.getOriginalInputModel()) && SNodeOperations.isInstanceOf(SModelOperations.getModuleStub(_context.getOriginalInputModel()), CONCEPTS.Language$yT);
   }
-  public static boolean mc_Condition_12(final TemplateQueryContext _context) {
+  public static boolean mc_Condition_11(final TemplateQueryContext _context) {
     return SModelStereotype.isDescriptorModel(_context.getOriginalInputModel()) && SNodeOperations.isInstanceOf(SModelOperations.getModuleStub(_context.getOriginalInputModel()), CONCEPTS.Solution$zo);
   }
   public static SNode insertMacro_Query_2_0(final InsertMacroContext _context) {

@@ -42,7 +42,7 @@ public class Mapping_SolutionModule extends MapConfigBase implements TemplateMap
   }
   @Override
   public boolean isApplicable(@NotNull ITemplateGenerator generator) {
-    return QueriesGenerated.mc_Condition_12(new TemplateQueryContext(getMappingNode(), generator));
+    return QueriesGenerated.mc_Condition_11(new TemplateQueryContext(getMappingNode(), generator));
   }
   @Override
   public Collection<TemplateCreateRootRule> getCreateRules() {
@@ -62,7 +62,7 @@ public class Mapping_SolutionModule extends MapConfigBase implements TemplateMap
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_12_0(new MapRootRuleContext(context, getRuleNode()));
+      return QueriesGenerated.rule_Condition_11_0(new MapRootRuleContext(context, getRuleNode()));
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -77,7 +77,7 @@ public class Mapping_SolutionModule extends MapConfigBase implements TemplateMap
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.createRootRule_Condition_12_0(new CreateRootRuleContext(context, getRuleNode()));
+      return QueriesGenerated.createRootRule_Condition_11_0(new CreateRootRuleContext(context, getRuleNode()));
     }
     public Collection<SNode> apply(TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
@@ -91,7 +91,7 @@ public class Mapping_SolutionModule extends MapConfigBase implements TemplateMap
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.dropRootRule_Condition_12_0(new DropRootRuleContext(context, getRuleNode()));
+      return QueriesGenerated.dropRootRule_Condition_11_0(new DropRootRuleContext(context, getRuleNode()));
     }
   }
 
