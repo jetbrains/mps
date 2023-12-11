@@ -18,9 +18,8 @@ import jetbrains.mps.make.resources.IPropertiesAccessor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.smodel.resources.TResource;
-import java.util.stream.IntStream;
 import java.util.Collection;
-import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.make.script.IConfig;
 import java.util.Map;
@@ -60,17 +59,11 @@ public class ReloadClasses_Facet extends IFacet.Stub {
         public IResult execute(final Iterable<IResource> rawInput, final IJobMonitor monitor, final IPropertiesAccessor pa, @NotNull final ProgressMonitor progressMonitor) {
           Iterable<IResource> _output_i849au_a0a = null;
           final Iterable<TResource> input = (Iterable<TResource>) (Iterable) rawInput;
-          progressMonitor.start("", IntStream.of(1000).sum());
           switch (0) {
             case 0:
-              final Collection<? extends SModule> toReload = Sequence.fromIterable(input).select((it) -> it.module()).distinct().toList();
-
-              final ProgressMonitor subProgress_c0a0a = progressMonitor.subTask(1000);
-              subProgress_c0a0a.start("Reloading classes", 1);
-              // FIXME pass progressMonitor down to reloadModules
-              monitor.getSession().getProject().getModelAccess().runWriteAction(() -> ClassLoaderManager.getInstance().reloadModules(toReload));
-              subProgress_c0a0a.advance(1);
-              subProgress_c0a0a.done();
+              Collection<SModuleReference> toReload = Sequence.fromIterable(input).select((it) -> it.module().getModuleReference()).distinct().toList();
+              ClassLoaderManager clm = monitor.getSession().getProject().getComponent(ClassLoaderManager.class);
+              clm.reload(toReload, progressMonitor);
             default:
               progressMonitor.done();
               return new IResult.SUCCESS(_output_i849au_a0a);
