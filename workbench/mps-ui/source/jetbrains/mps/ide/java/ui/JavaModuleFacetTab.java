@@ -459,9 +459,6 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
 
     myLibrariesTable.showLoadCheckbox(myClassLoadMPS.isSelected());
 
-    //TODO do not show the first column for sources
-    //TODO do not show the first column when not MPS loading
-    //TODO scrolling
 //    librariesTable.setTableHeader(null);
     myLibrariesTable.setShowHorizontalLines(false);
     myLibrariesTable.setShowVerticalLines(false);
@@ -564,6 +561,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
         solutionCheck |= descriptor.needsExternalIdeaCompile() != myCompileIDEA.isSelected();
       }
       //TODO detect changes to the myCompileOutPath field
+      //TODO detect changes to the load library checkboxes
       solutionCheck |= !new LanguageLevelPresentation(myJavaModuleFacet.getLanguageLevel()).equals(myLanguageLevel.getSelectedItem());
       final LoadClasses l = myJavaModuleFacet.getLoadClasses();
       if (myClassLoadMPS.isSelected()) {
