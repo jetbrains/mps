@@ -22,21 +22,23 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 
 /**
+ * BEWARE this interface will cease to extend {@code SModule}, don't cast your {@code SModule} instances to this one!
+ * <p>
  * Represents a module which can be associated with some class loader, it is a unit in the MPS class loading subsystem.
  * The naming is poor: the better choice would be "DeployedModule".
  * Only some of ReloadableModule can be really reloaded at runtime.
  * (to be precise the modules which have CustomClassLoadingFacet could not be reloaded)
- *
+ * <p>
  * For example suppose there is a language module L in MPS.
  * Also let there be a solution S which uses the language L. Imagine that at some point you decide to
  * change the language L, e.g. change the editor representation for some concept C in the language L.
  * Obviously you expect MPS to change the UI appearance for the instances of the concept C in the solution S.
  * Moreover you want MPS to change the UI representation right after the used language L is generated and compiled.
- *
+ * <p>
  * To enable such workflow MPS introduces its own class loading subsystem.
  * Also it brings in a notion of reloadable modules such modules which can be redeployed during design-time in MPS (the idea plugin modules are the exception)
  * So the language L in the given example is clearly a reloadable module.
- *
+ * <p>
  * As for 191 the common workflow must look like this:
  *
  * <code>
@@ -62,7 +64,11 @@ import org.jetbrains.mps.openapi.module.SModule;
  *
  * @see ClassLoaderManager -- the central place for class managing in the MPS, however that class should not be accessed by anyone anymore.
  * @author apyshkin
+ * @deprecated this interface is not bad per se, just the fact it extends {@code SModule} is unfortunate.
+ *             Eventually, {@code ClassLoaderManager} shall use this one (perhaps, aggregating SModule)
+ *             for its CL purposes, keeping SModule hierarchy (Solution, Language, Generator, etc) independent.
  */
+@Deprecated(forRemoval = false, since = "2023.3")
 public interface ReloadableModule extends SModule {
   /**
    * @return a class which can be obtained by calling #getclass from

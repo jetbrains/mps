@@ -19,7 +19,6 @@ import jetbrains.mps.classloading.DeployListener.ResourceTrackerCallback;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
 import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -206,14 +205,14 @@ class MPSClassLoadersRegistry {
     if (jmf != null && jmf.getLoadClasses() == LoadClasses.ManagedByContributor) {
       // FIXME refactor this code to avoid unnecessary nesting of classloaders (if possible)
       final ClassLoader classLoader = new RootClassloaderLookup(module).get();
-      return new IDEADelegatingModuleClassLoader(classLoader);
+      return new IDEADelegatingModuleClassLoader(module, classLoader);
     }
     // FIXME this piece of code is to address uses of IPMF still out there, e.g. in MPS-as-IDEA-plugin scenario
     CustomClassLoadingFacet customClassLoadingFacet = module.getFacet(CustomClassLoadingFacet.class);
     if (customClassLoadingFacet != null) {
       ClassLoader dd;
       if (customClassLoadingFacet.isValid() && (dd = customClassLoadingFacet.getClassLoader()) != null) {
-        return new IDEADelegatingModuleClassLoader(dd);
+        return new IDEADelegatingModuleClassLoader(module, dd);
       }
     }
     return null;

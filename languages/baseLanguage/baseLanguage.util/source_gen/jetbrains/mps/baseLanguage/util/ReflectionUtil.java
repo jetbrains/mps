@@ -4,8 +4,8 @@ package jetbrains.mps.baseLanguage.util;
 
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.traceable.behavior.UnitConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
@@ -21,7 +21,8 @@ public final class ReflectionUtil {
   }
 
   private static Class<?> findClass(SModule module, SNode classNode) throws RuntimeException {
-    ReloadableModule.DeploymentStatus status = ClassLoaderManager.getInstance().getStatus(module);
+    final ClassLoaderManager clm = ClassLoaderManager.getInstance();
+    ReloadableModule.DeploymentStatus status = clm.getStatus(module);
     if (!(status.canBeDeployed())) {
       throw new IllegalStateException("It is impossible to load class from " + module + "; class node: " + classNode + "; " + status.getMessage());
     }
@@ -34,7 +35,7 @@ public final class ReflectionUtil {
       className = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classNode);
     }
     try {
-      return ((ReloadableModule) module).getClass(className);
+      return clm.getClassLoader(module).loadClass(className);
     } catch (ClassNotFoundException e) {
       throw new RuntimeException(e);
     }

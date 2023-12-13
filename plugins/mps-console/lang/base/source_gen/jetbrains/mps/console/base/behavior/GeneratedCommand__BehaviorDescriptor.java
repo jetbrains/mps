@@ -19,10 +19,9 @@ import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.console.tool.ConsoleUtil;
+import jetbrains.mps.classloading.ClassLoaderManager;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.module.ReloadableModule;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 import com.intellij.openapi.application.ModalityState;
@@ -49,23 +48,24 @@ public final class GeneratedCommand__BehaviorDescriptor extends BaseBHDescriptor
         if (!(result)) {
           return;
         }
+        final ClassLoaderManager clm = context.getProject().getComponent(ClassLoaderManager.class);
         ApplicationManager.getApplication().invokeLater(() -> {
           final SModule module = model.getModule();
           final String name = SModelOperations.getModelName(model) + ".Main";
-          final Wrappers._T<Class<?>> aClass = new Wrappers._T<Class<?>>(null);
-          context.getProject().getRepository().getModelAccess().runReadAction(() -> {
+          Class<?> aClass = context.getProject().getModelAccess().computeReadAction(() -> {
             try {
-              aClass.value = ((ReloadableModule) module).getOwnClass(name);
+              return clm.getClassLoader(module).loadOwnClass(name);
             } catch (ClassNotFoundException e) {
               if (LOG.isErrorLevel()) {
                 LOG.error("Exception on query loading", e);
               }
             }
+            return null;
           });
-          if (aClass.value == null) {
+          if (aClass == null) {
             return;
           }
-          Method[] methods = aClass.value.getMethods();
+          Method[] methods = aClass.getMethods();
           for (final Method method : methods) {
             if (method.getName().equals("execute")) {
               beforeCallback.run();
@@ -85,7 +85,7 @@ public final class GeneratedCommand__BehaviorDescriptor extends BaseBHDescriptor
               afterCallback.run();
             }
           }
-        }, ModalityState.NON_MODAL);
+        }, ModalityState.nonModal());
       }
     });
   }

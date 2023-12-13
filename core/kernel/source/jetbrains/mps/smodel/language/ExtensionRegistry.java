@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -124,9 +124,9 @@ public class ExtensionRegistry extends BaseExtensionRegistry implements CoreComp
   }
 
   @Nullable
-  private static Object getObjectByClassName(String className, ReloadableModule module) {
+  private Object getObjectByClassName(String className, ReloadableModule module) {
     try {
-      Class<?> clazz = module.getOwnClass(className);
+      Class<?> clazz = myClm.getClassLoader(module).loadOwnClass(className);
       return clazz.getDeclaredConstructor().newInstance();
     } catch (Throwable e) {
       LOG.trace("error loading class\"" + className + "\"", e);

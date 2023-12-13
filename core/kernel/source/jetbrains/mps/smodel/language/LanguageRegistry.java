@@ -184,7 +184,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   }
 
   @Nullable
-  private static LanguageRuntime createRuntime(Language l) {
+  private LanguageRuntime createRuntime(Language l) {
     final String rtClassName = l.getModuleName() + ".Language";
     // Here, we consider few cases:
     // (a) there's no LR class
@@ -196,7 +196,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
     // We aim to support binary compatibility between any two subsequent releases, thus failures for (b)
     // shall serve as an indicator we failed to maintain binary compatibility between releases
     try {
-      final Class<?> rtClass = l.getOwnClass(rtClassName);
+      final Class<?> rtClass = myClassLoaderManager.getClassLoader(l).loadOwnClass(rtClassName);
       if (LanguageRuntime.class.isAssignableFrom(rtClass)) {
         return rtClass.asSubclass(LanguageRuntime.class).getDeclaredConstructor().newInstance();
       }
@@ -265,7 +265,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
     final String rtClassName = NameUtil.longNameFromNamespaceAndShortName(mn, "Generator");
 
     try {
-      Class<?> rtClass = g.getOwnClass(rtClassName);
+      Class<?> rtClass = myClassLoaderManager.getClassLoader(g).loadOwnClass(rtClassName);
       if (GeneratorRuntime.class.isAssignableFrom(rtClass)) {
         final Class<? extends GeneratorRuntime> aClass = rtClass.asSubclass(GeneratorRuntime.class);
         final LanguageRuntime sourceLanguageRuntime = getLanguage(sourceLanguage);

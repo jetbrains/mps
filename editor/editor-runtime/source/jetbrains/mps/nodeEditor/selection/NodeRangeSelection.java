@@ -289,6 +289,7 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
       throw new IllegalStateException("Cannot load classes from the module " + module);
     }
     try {
+      // FIXME see SelectionInfoImpl#createSelection for refactoring considerations
       return (Class<? extends RangeSelectionFilter>) ((ReloadableModule) module).getOwnClass(className);
     } catch (ClassNotFoundException e) {
       Logger.getLogger(NodeRangeSelection.class).debug("Class not found:" + className + " from " + module, e);

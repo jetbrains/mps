@@ -173,6 +173,13 @@ public class ClassLoaderManager implements CoreComponent {
   static final MPSModuleClassLoader DEFAULT_DELEGATING_TO_SYSTEM_CL = new MPSModuleClassLoader("Delegate to System CL", getSystemClassLoader()) {
     // I want to keep MPSModuleClassLoader abstract for now just to avoid confusion one can create and use
     // MPSModuleClassLoader instances directly
+
+    @Override
+    public @NotNull Class<?> loadOwnClass(String name) throws ClassNotFoundException {
+      // don't see a reason to try and distinguish own vs full CP (with deps) as it's just a delegate to system CL
+      // and there's nothing we could have guessed here.
+      return loadClass(name);
+    }
   };
 
   /**
@@ -274,7 +281,6 @@ public class ClassLoaderManager implements CoreComponent {
    *
    * @see jetbrains.mps.module.ReloadableModule
    */
-  @Internal
   @NotNull
   public MPSModuleClassLoader getClassLoader(final SModule module) {
     if (!myWatchableCondition.met(module)) {

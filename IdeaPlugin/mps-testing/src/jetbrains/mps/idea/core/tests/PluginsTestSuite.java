@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@ package jetbrains.mps.idea.core.tests;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.TestMode;
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.classloading.MPSModuleClassLoader;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.module.ReloadableModule;
@@ -58,10 +60,10 @@ public class PluginsTestSuite {
   public static int run() throws Throwable {
     MPSTestFixture mpsTestFixture = MPSTestFixtureFactory.getFixtureFactory().createMPSFixture(PluginsTestSuite.class.getName());
     final IdeaPluginTestCollector testCollector = new IdeaPluginTestCollector(mpsTestFixture);
-    
-    ReloadableModule module = getReloadableModuleReference(mpsTestFixture);
+
+    MPSModuleClassLoader moduleCL = getReloadableModuleReference(mpsTestFixture);
     try {
-      Class<?> launcherClass = module.getOwnClass(JUNIT5_LAUNCHER_CLASS);
+      Class<?> launcherClass = moduleCL.loadOwnClass(JUNIT5_LAUNCHER_CLASS);
       Constructor<?> ctor = launcherClass.getConstructor(Environment.class, Collection.class);
       MPSIDEAPluginTestEnvironment environment = new MPSIDEAPluginTestEnvironment(((MPSProject) mpsTestFixture.getMPSProject()));
       Collection<Class<?>> testClasses = testCollector.getTestClasses();
@@ -82,9 +84,11 @@ public class PluginsTestSuite {
   }
 
   @NotNull
-  private static ReloadableModule getReloadableModuleReference(MPSTestFixture mpsTestFixture) throws Throwable {
-    Reference<ReloadableModule> module = new Reference<>();
+  private static MPSModuleClassLoader getReloadableModuleReference(MPSTestFixture mpsTestFixture) throws Throwable {
+    Reference<MPSModuleClassLoader> module = new Reference<>();
     Reference<Throwable> error = new Reference<>();
+    // FIXME why command, not runWriteInEDT() ?!  Or even runReadInEDT?
+    //       Any modification (let alone UNDO) planned?
     mpsTestFixture.getModelAccess().executeCommandInEDT(() -> {
       try {
         module.set(findModule(mpsTestFixture, JUNIT5_LAUNCHER_MODULE_NAME));
@@ -100,10 +104,11 @@ public class PluginsTestSuite {
     return module.get();
   }
 
-  private static ReloadableModule findModule(MPSTestFixture mpsTestFixture, String moduleName) {
+  private static MPSModuleClassLoader findModule(MPSTestFixture mpsTestFixture, String moduleName) {
+    final ClassLoaderManager clm = mpsTestFixture.getMPSProject().getComponent(ClassLoaderManager.class);
     for (SModule sModule : mpsTestFixture.getMPSProject().getRepository().getModules()) {
-      if (moduleName.equals(sModule.getModuleName()) && sModule instanceof ReloadableModule) {
-        return (ReloadableModule) sModule;
+      if (moduleName.equals(sModule.getModuleName())) {
+        return clm.getClassLoader(sModule);
       }
     }
     throw new IllegalStateException("not found module `"+moduleName+"`");

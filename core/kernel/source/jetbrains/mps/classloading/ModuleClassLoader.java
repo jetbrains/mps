@@ -97,6 +97,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     mySupport = support;
   }
 
+  @Override
   @NotNull
   public Class<?> loadOwnClass(String name) throws ClassNotFoundException {
     Class<?> aClass = loadClass(name, false, true);
