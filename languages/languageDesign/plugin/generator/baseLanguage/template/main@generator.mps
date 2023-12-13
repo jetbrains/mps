@@ -6462,6 +6462,11 @@
       <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
       <ref role="2rTdP9" to="tp4k:hByqquv" resolve="PreferencePage" />
     </node>
+    <node concept="2rT7sh" id="1zL_HsGx73r" role="2rTMjI">
+      <property role="TrG5h" value="map_PageClassCons" />
+      <ref role="2rZz_L" to="tpee:fzclF84" resolve="ConstructorDeclaration" />
+      <ref role="2rTdP9" to="tp4k:hByqquv" resolve="PreferencePage" />
+    </node>
     <node concept="2rT7sh" id="hI3jyUP" role="2rTMjI">
       <property role="TrG5h" value="map_CreatePages" />
       <ref role="2rZz_L" to="tpee:fzclF80" resolve="StatementList" />
@@ -7052,13 +7057,7 @@
               <node concept="TSZUe" id="i1ABExF" role="2OqNvi">
                 <node concept="2ShNRf" id="i1ABExG" role="25WWJ7">
                   <node concept="1pGfFk" id="i1ABExH" role="2ShVmc">
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                    <node concept="2OqwBi" id="i1ABExQ" role="37wK5m">
-                      <node concept="Xjq3P" id="i1ABExS" role="2Oq$k0" />
-                      <node concept="liA8E" id="i1ABExR" role="2OqNvi">
-                        <ref role="37wK5l" to="sclo:~BaseProjectPrefsComponent.getProject()" resolve="getProject" />
-                      </node>
-                    </node>
+                    <ref role="37wK5l" node="hI3nsvH" resolve="MyPreferencesPage" />
                     <node concept="Xjq3P" id="i1ABExT" role="37wK5m" />
                     <node concept="1ZhdrF" id="i1ABExI" role="lGtFl">
                       <property role="2qtEX8" value="baseMethodDeclaration" />
@@ -7068,7 +7067,7 @@
                           <node concept="3clFbF" id="i1ABExL" role="3cqZAp">
                             <node concept="2OqwBi" id="i1ABExM" role="3clFbG">
                               <node concept="1iwH70" id="i1ABExO" role="2OqNvi">
-                                <ref role="1iwH77" node="hI3mjoY" resolve="map_PageClass" />
+                                <ref role="1iwH77" node="1zL_HsGx73r" resolve="map_PageClassCons" />
                                 <node concept="30H73N" id="i1ABExP" role="1iwH7V" />
                               </node>
                               <node concept="1iwH7S" id="i1ABExN" role="2Oq$k0" />
@@ -7176,35 +7175,13 @@
     <node concept="3clFbW" id="hI3nsvH" role="jymVt">
       <node concept="3cqZAl" id="hI3nsvI" role="3clF45" />
       <node concept="3Tm1VV" id="hI3nsvJ" role="1B3o_S" />
-      <node concept="37vLTG" id="hI3nsvN" role="3clF46">
-        <property role="TrG5h" value="project" />
-        <node concept="3uibUv" id="hI3nsvO" role="1tU5fm">
-          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
-        </node>
-      </node>
       <node concept="3clFbS" id="hI3nsvK" role="3clF47">
         <node concept="XkiVB" id="hI3nsvL" role="3cqZAp">
-          <ref role="37wK5l" to="sclo:~BasePrefsPage.&lt;init&gt;(com.intellij.openapi.project.Project,jetbrains.mps.plugins.prefs.BaseProjectPrefsComponent)" resolve="BasePrefsPage" />
-          <node concept="37vLTw" id="2BHiRxgmKIo" role="37wK5m">
-            <ref role="3cqZAo" node="hI3nsvN" resolve="project" />
-          </node>
+          <ref role="37wK5l" to="sclo:~BasePrefsPage.&lt;init&gt;(jetbrains.mps.plugins.prefs.BaseProjectPrefsComponent,java.lang.String)" resolve="BasePrefsPage" />
           <node concept="37vLTw" id="2BHiRxgmqkY" role="37wK5m">
             <ref role="3cqZAo" node="hI3W$p9" resolve="prefsComponent" />
           </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="hI3W$p9" role="3clF46">
-        <property role="TrG5h" value="prefsComponent" />
-        <node concept="3uibUv" id="hI3W_3E" role="1tU5fm">
-          <ref role="3uigEE" to="sclo:~BaseProjectPrefsComponent" resolve="BaseProjectPrefsComponent" />
-        </node>
-      </node>
-    </node>
-    <node concept="3clFb_" id="hI3np15" role="jymVt">
-      <property role="TrG5h" value="getDisplayName" />
-      <node concept="3clFbS" id="hI3np18" role="3clF47">
-        <node concept="3cpWs6" id="hI3np19" role="3cqZAp">
-          <node concept="Xl_RD" id="hI3np1a" role="3cqZAk">
+          <node concept="Xl_RD" id="hI3np1a" role="37wK5m">
             <property role="Xl_RC" value="name" />
             <node concept="17Uvod" id="hI3np1b" role="lGtFl">
               <property role="2qtEX9" value="value" />
@@ -7225,8 +7202,15 @@
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="hI3np16" role="1B3o_S" />
-      <node concept="17QB3L" id="hP3azRK" role="3clF45" />
+      <node concept="37vLTG" id="hI3W$p9" role="3clF46">
+        <property role="TrG5h" value="prefsComponent" />
+        <node concept="3uibUv" id="hI3W_3E" role="1tU5fm">
+          <ref role="3uigEE" to="sclo:~BaseProjectPrefsComponent" resolve="BaseProjectPrefsComponent" />
+        </node>
+      </node>
+      <node concept="2ZBi8u" id="1zL_HsGxceM" role="lGtFl">
+        <ref role="2rW$FS" node="1zL_HsGx73r" resolve="map_PageClassCons" />
+      </node>
     </node>
     <node concept="3clFb_" id="hI3np1i" role="jymVt">
       <property role="TrG5h" value="getIcon" />

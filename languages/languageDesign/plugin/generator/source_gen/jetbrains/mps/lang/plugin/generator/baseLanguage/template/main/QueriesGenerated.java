@@ -635,7 +635,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.member$oLt6), "map_ClassifierField");
   }
   public static Object referenceMacro_GetReferent_22_0(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "map_PageClass");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "map_PageClassCons");
   }
   public static Object referenceMacro_GetReferent_24_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.PreferencesComponentDeclaration$3m, false, false), "map_PreferenceComponentClass");
@@ -2853,7 +2853,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("1214489951990", new RTQ(13, "GeneratedTool"));
     rtqMethods.put("1211566960484", new RTQ(14, "Object"));
     rtqMethods.put("6620706402222880342", new RTQ(15, "field"));
-    rtqMethods.put("1238672255086", new RTQ(16, "Object"));
+    rtqMethods.put("1238672255086", new RTQ(16, "MyPreferencesPage"));
     rtqMethods.put("1217691172311", new RTQ(17, "Object"));
     rtqMethods.put("7167571922052023596", new RTQ(18, "PageClass"));
     rtqMethods.put("6423922349611080463", new RTQ(19, "GeneratedAction_Template"));
