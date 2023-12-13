@@ -673,6 +673,17 @@
                   </node>
                 </node>
               </node>
+              <node concept="2pJPED" id="4tqd1zvYa5x" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="4tqd1zvYa5y" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="4tqd1zvYa5z" role="28ntcv">
+                    <node concept="Xl_RD" id="4tqd1zvYa5$" role="WxPPp">
+                      <property role="Xl_RC" value="lib/mps-scripts-rt.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="2pJPED" id="3rleFKvpH06" role="36be1Z">
                 <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
                 <node concept="2pJxcG" id="3rleFKvpH07" role="2pJxcM">
