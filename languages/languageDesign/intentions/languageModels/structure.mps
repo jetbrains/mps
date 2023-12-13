@@ -78,7 +78,7 @@
     <property role="EcuMT" value="1192794744107" />
     <ref role="1TJDcQ" node="2c3oNEsfcpP" resolve="BaseIntentionDeclaration" />
     <node concept="1QGGSu" id="4Q8sAA5iJSm" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/intentionBulb.png" />
+      <property role="1iqoE4" value="${module}/icons/intentionBulb.svg" />
     </node>
     <node concept="1sEMCm" id="12TOPj1JLgZ" role="bvy1s">
       <property role="1sEMCp" value="mps-intentions.html#intentiontypes" />
@@ -259,7 +259,7 @@
     <property role="EcuMT" value="2522969319638198293" />
     <ref role="1TJDcQ" node="2c3oNEsfcpP" resolve="BaseIntentionDeclaration" />
     <node concept="1QGGSu" id="4Q8sAA5iJSl" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/surroundWithIntention.png" />
+      <property role="1iqoE4" value="${module}/icons/surroundWithIntention.svg" />
     </node>
     <node concept="1sEMCm" id="12TOPj1JLkg" role="bvy1s">
       <property role="1sEMCp" value="mps-intentions.html#intentiontypes" />
@@ -316,7 +316,7 @@
       <ref role="20lvS9" node="5_2vHPPt4ol" resolve="ErrorIntentionPriority" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJSn" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/intentionBulb.png" />
+      <property role="1iqoE4" value="${module}/icons/intentionBulb.svg" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYRiH" role="bvy1s">
       <property role="1sEMCp" value="mps-intentions.html#intentiontypes" />

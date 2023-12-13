@@ -1727,7 +1727,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="96" role="37wK5m">
                           <node concept="1QGGSu" id="97" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/migrationScript.png" />
+                            <property role="1iqoE4" value="${module}/icons/migrationScript.svg" />
                             <uo k="s:originTrace" v="n:7152644011366128017" />
                           </node>
                         </node>

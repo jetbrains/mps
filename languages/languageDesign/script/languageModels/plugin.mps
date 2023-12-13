@@ -83,7 +83,7 @@
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />
     </node>
     <node concept="1QGGSu" id="6b2iNnrWt16" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/scriptsModel.png" />
+      <property role="1iqoE4" value="${module}/icons/scriptsModel.svg" />
     </node>
     <node concept="1sEMCm" id="46nPloex5B_" role="1fTXyH">
       <property role="1sEMCp" value="/scripts.html" />

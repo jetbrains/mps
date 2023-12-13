@@ -86,7 +86,7 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iKgH" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/parameters.png" />
+      <property role="1iqoE4" value="${module}/icons/parameters.svg" />
     </node>
   </node>
   <node concept="1TIwiD" id="2E6akI4$s1W">

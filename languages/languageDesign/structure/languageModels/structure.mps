@@ -163,7 +163,7 @@
       <ref role="PrY4T" node="6OtXG9K2KUI" resolve="DocumentationObjective" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRH" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/link.png" />
+      <property role="1iqoE4" value="${module}/icons/link.svg" />
     </node>
     <node concept="1sEMCm" id="12TOPj1JE4X" role="bvy1s">
       <property role="1sEMCp" value="structure.html#conceptmembers" />
@@ -205,7 +205,7 @@
       <ref role="20lvS9" node="fKAxPRU" resolve="DataTypeDeclaration" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRJ" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/property.png" />
+      <property role="1iqoE4" value="${module}/icons/property.svg" />
     </node>
     <node concept="1sEMCm" id="12TOPj1JEfM" role="bvy1s">
       <property role="1sEMCp" value="structure.html#conceptmembers" />
@@ -247,7 +247,7 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRF" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/constrainedTD.png" />
+      <property role="1iqoE4" value="${module}/icons/constrainedTD.svg" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJ4_8g" role="bvy1s">
       <property role="1sEMCp" value="structure.html#constraineddatatypes" />
@@ -290,7 +290,7 @@
     <property role="34LRSv" value="Primitive Datatype" />
     <ref role="1TJDcQ" node="fKAxPRU" resolve="DataTypeDeclaration" />
     <node concept="1QGGSu" id="4Q8sAA5iJRL" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/primitiveTD.png" />
+      <property role="1iqoE4" value="${module}/icons/primitiveTD.svg" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJ4_9g" role="bvy1s">
       <property role="1sEMCp" value="structure.html#conceptmembers" />
@@ -402,7 +402,7 @@
       <ref role="20lvS9" node="h0PrWoo" resolve="InterfaceConceptReference" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRK" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/interfaceStructure.png" />
+      <property role="1iqoE4" value="${module}/icons/interfaceStructure.svg" />
     </node>
     <node concept="1sEMCm" id="12TOPj1JGOy" role="bvy1s">
       <property role="1sEMCp" value="structure.html#conceptsandconceptinterfaces" />
@@ -675,7 +675,7 @@
       <ref role="PrY4T" node="VFd4X$DyB_" resolve="IEnumeration" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRG" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/enum.png" />
+      <property role="1iqoE4" value="${module}/icons/enum.svg" />
     </node>
     <node concept="asaX9" id="VFd4X$dxBi" role="lGtFl">
       <property role="YLPcu" value="19.1" />
@@ -735,7 +735,7 @@
       <ref role="20lvS9" to="1oap:2p1v3tOa9VI" resolve="Icon" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRI" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/structure.png" />
+      <property role="1iqoE4" value="${module}/icons/structure.svg" />
     </node>
     <node concept="1sEMCm" id="11Atn_WK8fg" role="bvy1s">
       <property role="1sEMCp" value="structure.html#conceptsandconceptinterfaces" />
@@ -766,7 +766,7 @@
       <ref role="PrY4T" node="VFd4X$DyB_" resolve="IEnumeration" />
     </node>
     <node concept="1QGGSu" id="VFd4X$JQVc" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/enum.png" />
+      <property role="1iqoE4" value="${module}/icons/enum.svg" />
     </node>
     <node concept="1sEMCm" id="5Jed3OJ4_8k" role="bvy1s">
       <property role="1sEMCp" value="structure.html#enumerationds" />

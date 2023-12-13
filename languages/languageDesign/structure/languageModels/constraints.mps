@@ -468,12 +468,12 @@
             </node>
             <node concept="2SwGe0" id="14excHa39PN" role="3K4E3e">
               <node concept="1QGGSu" id="1fdcuoJ10dx" role="2SwzYu">
-                <property role="1iqoE4" value="${module}/icons/rootableConcept.png" />
+                <property role="1iqoE4" value="${module}/icons/rootableConcept.svg" />
               </node>
             </node>
             <node concept="2SwGe0" id="14excHa39Yb" role="3K4GZi">
               <node concept="1QGGSu" id="1fdcuoJ11xP" role="2SwzYu">
-                <property role="1iqoE4" value="${module}/icons/structure.png" />
+                <property role="1iqoE4" value="${module}/icons/structure.svg" />
               </node>
             </node>
           </node>

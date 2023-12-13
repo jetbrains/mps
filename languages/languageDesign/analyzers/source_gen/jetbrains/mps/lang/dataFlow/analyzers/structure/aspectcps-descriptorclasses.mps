@@ -710,7 +710,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="3j" role="37wK5m">
                           <node concept="1QGGSu" id="3k" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/DataFlowAnalyser.png" />
+                            <property role="1iqoE4" value="${module}/icons/dataFlowAnalyser.svg" />
                             <uo k="s:originTrace" v="n:5586841135286517158" />
                           </node>
                         </node>
@@ -2953,7 +2953,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="gt" role="37wK5m">
                           <node concept="1QGGSu" id="gu" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/DataFlowRule.png" />
+                            <property role="1iqoE4" value="${module}/icons/dataFlowRule.svg" />
                             <uo k="s:originTrace" v="n:5586841135286517157" />
                           </node>
                         </node>

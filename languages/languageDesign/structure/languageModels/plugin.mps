@@ -140,7 +140,7 @@
     <property role="TrG5h" value="structure" />
     <ref role="h493j" to="tpce:49lEozayI3W" resolve="StructureAspectDeputy" />
     <node concept="1QGGSu" id="P5ZkC6wmh7" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/structureModel.png" />
+      <property role="1iqoE4" value="${module}/icons/structureModel.svg" />
     </node>
     <node concept="2vPci8" id="264$spPfZhv" role="3F_NFc">
       <ref role="2vPcib" node="264$spPfYX1" resolve="MPSAspects" />

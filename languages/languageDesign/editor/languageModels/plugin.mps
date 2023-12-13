@@ -89,7 +89,7 @@
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="editor" />
     <node concept="1QGGSu" id="P5ZkC6w54A" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/editorModel.png" />
+      <property role="1iqoE4" value="${module}/icons/editorModel.svg" />
     </node>
     <node concept="2V$Bhx" id="qmfyRQI5g4" role="QG$2i">
       <property role="2V$B1T" value="18bc6592-03a6-4e29-a83a-7ff23bde13ba" />

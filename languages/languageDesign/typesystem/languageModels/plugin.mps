@@ -81,7 +81,7 @@
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="typesystem" />
     <node concept="1QGGSu" id="P5ZkC6x0kH" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/typesystemModel.png" />
+      <property role="1iqoE4" value="${module}/icons/typesystemModel.svg" />
     </node>
     <node concept="2V$Bhx" id="qmfyRQG_oP" role="QG$2i">
       <property role="2V$B1T" value="7a5dda62-9140-4668-ab76-d5ed1746f2b2" />

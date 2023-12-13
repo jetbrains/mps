@@ -5,6 +5,6 @@ package jetbrains.mps.lang.plugin.standalone.structure;
 import jetbrains.mps.smodel.runtime.IconResource;
 
 public class IconContainer {
-  protected static IconResource RESOURCE_a0a2a0a0b0n = new IconResource("applicationPlugin.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a2a0a7b0n = new IconResource("projectPlugin.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a2a0a0b0n = new IconResource("applicationPlugin.svg", IconContainer.class);
+  protected static IconResource RESOURCE_a0a2a0a7b0n = new IconResource("projectPlugin.svg", IconContainer.class);
 }

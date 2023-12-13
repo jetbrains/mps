@@ -227,7 +227,7 @@
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJPP" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/actionGroupNew.png" />
+      <property role="1iqoE4" value="${module}/icons/actionGroupNew.svg" />
     </node>
     <node concept="1sEMCm" id="6wTagIKXlR9" role="bvy1s">
       <property role="1sEMCp" value="plugin.html#actionsandactiongroups" />
@@ -1109,7 +1109,7 @@
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJPO" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/keymapChangesDeclaration.png" />
+      <property role="1iqoE4" value="${module}/icons/keymapChangesDeclaration.svg" />
     </node>
     <node concept="1sEMCm" id="7stNrpfGUmU" role="bvy1s">
       <property role="1sEMCp" value="plugin.html#keymapchanges" />
@@ -1561,7 +1561,7 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJPR" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/ideaPluginDeclaration.png" />
+      <property role="1iqoE4" value="${module}/icons/ideaPluginDeclaration.svg" />
     </node>
     <node concept="1sEMCm" id="7stNrpfGRlp" role="bvy1s">
       <property role="1sEMCp" value="plugin.html" />
@@ -1693,7 +1693,7 @@
       <ref role="PrY4T" to="4j10:4cWf37B8oWS" resolve="ICheckedNamePolicy" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJPL" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/tabbedEditor.png" />
+      <property role="1iqoE4" value="${module}/icons/tabbedEditor.svg" />
     </node>
     <node concept="1sEMCm" id="6wTagIKXlRc" role="bvy1s">
       <property role="1sEMCp" value="plugin.html#tabbedtools" />
@@ -1911,7 +1911,7 @@
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJPQ" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/actionNew.png" />
+      <property role="1iqoE4" value="${module}/icons/actionNew.svg" />
     </node>
     <node concept="1sEMCm" id="1yOtqsjRMt1" role="bvy1s">
       <property role="1sEMCp" value="plugin.html#actionsandactiongroups" />

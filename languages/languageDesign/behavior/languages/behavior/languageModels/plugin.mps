@@ -76,7 +76,7 @@
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="behavior" />
     <node concept="1QGGSu" id="P5ZkC6vYWc" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/behaviorModel.png" />
+      <property role="1iqoE4" value="${module}/icons/behaviorModel.svg" />
     </node>
     <node concept="2V$Bhx" id="qmfyRQNbk0" role="QG$2i">
       <property role="2V$B1T" value="af65afd8-f0dd-4942-87d9-63a55f2a9db1" />

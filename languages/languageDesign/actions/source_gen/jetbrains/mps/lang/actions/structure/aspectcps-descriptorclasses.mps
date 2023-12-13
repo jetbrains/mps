@@ -1942,7 +1942,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="am" role="37wK5m">
                           <node concept="1QGGSu" id="an" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/nodeFactories.png" />
+                            <property role="1iqoE4" value="${module}/icons/nodeFactories.svg" />
                             <uo k="s:originTrace" v="n:5586841135286517217" />
                           </node>
                         </node>
@@ -2694,7 +2694,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="eN" role="37wK5m">
                           <node concept="1QGGSu" id="eO" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/pasteWrapper.png" />
+                            <property role="1iqoE4" value="${module}/icons/pasteWrapper.svg" />
                             <uo k="s:originTrace" v="n:5586841135286517219" />
                           </node>
                         </node>

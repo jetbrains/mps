@@ -38,7 +38,7 @@
     <property role="TrG5h" value="documentation" />
     <ref role="h493j" to="j6e7:5YRAmyfn9B4" resolve="ModuleDescriptorDeputy" />
     <node concept="1QGGSu" id="2wQ3F8GeSk$" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/documentation.png" />
+      <property role="1iqoE4" value="${module}/icons/documentation.svg" />
     </node>
     <node concept="2V$Bhx" id="2wQ3F8GeLNU" role="QG$2i">
       <property role="2V$B1T" value="22916f45-e98f-4433-9c1b-1b382cf5bd8d" />

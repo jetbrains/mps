@@ -81,7 +81,7 @@
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="textGen" />
     <node concept="1QGGSu" id="P5ZkC6x0ks" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/textGenModel.png" />
+      <property role="1iqoE4" value="${module}/icons/textGenModel.svg" />
     </node>
     <node concept="2V$Bhx" id="4r4fzRRv9Bj" role="QG$2i">
       <property role="2V$B1T" value="b83431fe-5c8f-40bc-8a36-65e25f4dd253" />

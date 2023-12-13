@@ -95,7 +95,7 @@
       <property role="2V$B1Q" value="jetbrains.mps.lang.migration" />
     </node>
     <node concept="1QGGSu" id="3hP8sYBd2EZ" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/migrationModel.png" />
+      <property role="1iqoE4" value="${module}/icons/migrationModel.svg" />
     </node>
     <node concept="2vPci8" id="264$spPfZhg" role="3F_NFc">
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />

@@ -76,7 +76,7 @@
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="findUsages" />
     <node concept="1QGGSu" id="P5ZkC6w5dQ" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/findUsagesModel.png" />
+      <property role="1iqoE4" value="${module}/icons/findUsagesModel.svg" />
     </node>
     <node concept="2V$Bhx" id="57HLayrBoxQ" role="QG$2i">
       <property role="2V$B1T" value="64d34fcd-ad02-4e73-aff8-a581124c2e30" />

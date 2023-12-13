@@ -419,7 +419,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="1v" role="37wK5m">
                           <node concept="1QGGSu" id="1w" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/applicationPlugin.png" />
+                            <property role="1iqoE4" value="${module}/icons/applicationPlugin.svg" />
                             <uo k="s:originTrace" v="n:5586841135286517119" />
                           </node>
                         </node>
@@ -954,7 +954,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="4$" role="37wK5m">
                           <node concept="1QGGSu" id="4_" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/projectPlugin.png" />
+                            <property role="1iqoE4" value="${module}/icons/projectPlugin.svg" />
                             <uo k="s:originTrace" v="n:5586841135286517120" />
                           </node>
                         </node>

@@ -132,7 +132,7 @@
       <ref role="PrY4T" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRj" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/textGen.png" />
+      <property role="1iqoE4" value="${module}/icons/textGen.svg" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYQAk" role="bvy1s">
       <property role="1sEMCp" value="textgen.html#operations" />
@@ -230,7 +230,7 @@
       <ref role="20lvS9" node="3tQ$H_xEITT" resolve="UnitContextDeclaration" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRk" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/textGenComponent.png" />
+      <property role="1iqoE4" value="${module}/icons/textGenComponent.svg" />
     </node>
     <node concept="1sEMCm" id="74zDxsVSxnM" role="bvy1s">
       <property role="1sEMCp" value="textgen.html#operations" />

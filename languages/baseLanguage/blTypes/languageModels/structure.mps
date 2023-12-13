@@ -60,7 +60,7 @@
       <ref role="PrY4T" to="tpck:hYa1RjM" resolve="IType" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJPJ" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/primitive.png" />
+      <property role="1iqoE4" value="${module}/icons/primitive.svg" />
     </node>
   </node>
   <node concept="1TIwiD" id="gRDMZzC">
