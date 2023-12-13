@@ -3745,6 +3745,30 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="3cpWs8" id="5Vs_5ivEe9h" role="3cqZAp">
+                    <node concept="3cpWsn" id="5Vs_5ivEe9i" role="3cpWs9">
+                      <property role="TrG5h" value="clm" />
+                      <node concept="3uibUv" id="5Vs_5ivEe9j" role="1tU5fm">
+                        <ref role="3uigEE" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
+                      </node>
+                      <node concept="2OqwBi" id="5Vs_5ivEe9k" role="33vP2m">
+                        <node concept="2OqwBi" id="5Vs_5ivEe9l" role="2Oq$k0">
+                          <node concept="37vLTw" id="5Vs_5ivEe9m" role="2Oq$k0">
+                            <ref role="3cqZAo" node="4g6NqHEbk8t" resolve="myEnv" />
+                          </node>
+                          <node concept="liA8E" id="5Vs_5ivEe9n" role="2OqNvi">
+                            <ref role="37wK5l" to="79ha:8Pnvxgloc_" resolve="getPlatform" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="5Vs_5ivEe9o" role="2OqNvi">
+                          <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                          <node concept="3VsKOn" id="5Vs_5ivEe9p" role="37wK5m">
+                            <ref role="3VsUkX" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                   <node concept="3cpWs8" id="4g6NqHEgjoD" role="3cqZAp">
                     <node concept="3cpWsn" id="4g6NqHEgjoJ" role="3cpWs9">
                       <property role="TrG5h" value="rv" />
@@ -3772,7 +3796,7 @@
                     <node concept="3clFbS" id="4g6NqHEevNe" role="2LFqv$">
                       <node concept="3cpWs8" id="4g6NqHEeFfa" role="3cqZAp">
                         <node concept="3cpWsn" id="4g6NqHEeFfb" role="3cpWs9">
-                          <property role="TrG5h" value="testModule0" />
+                          <property role="TrG5h" value="testModule" />
                           <node concept="3uibUv" id="4g6NqHEeFeE" role="1tU5fm">
                             <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
                           </node>
@@ -3811,29 +3835,32 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="3cpWs8" id="4g6NqHEfyfZ" role="3cqZAp">
-                        <node concept="3cpWsn" id="4g6NqHEfyg0" role="3cpWs9">
-                          <property role="TrG5h" value="testModule" />
-                          <node concept="3uibUv" id="4g6NqHEfyg1" role="1tU5fm">
-                            <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
+                      <node concept="3cpWs8" id="5Vs_5ivEtjl" role="3cqZAp">
+                        <node concept="3cpWsn" id="5Vs_5ivEtjm" role="3cpWs9">
+                          <property role="3TUv4t" value="true" />
+                          <property role="TrG5h" value="moduleCL" />
+                          <node concept="3uibUv" id="5Vs_5ivEtjn" role="1tU5fm">
+                            <ref role="3uigEE" to="3qmy:~MPSModuleClassLoader" resolve="MPSModuleClassLoader" />
                           </node>
-                          <node concept="10Nm6u" id="4g6NqHEfAPW" role="33vP2m" />
                         </node>
                       </node>
                       <node concept="3clFbJ" id="4g6NqHEfBNr" role="3cqZAp">
                         <node concept="3clFbS" id="4g6NqHEfBNt" role="3clFbx">
                           <node concept="3clFbF" id="4g6NqHEfQge" role="3cqZAp">
                             <node concept="37vLTI" id="4g6NqHEfQWP" role="3clFbG">
-                              <node concept="10QFUN" id="4g6NqHEfUK1" role="37vLTx">
-                                <node concept="3uibUv" id="4g6NqHEfWdv" role="10QFUM">
-                                  <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
+                              <node concept="2OqwBi" id="5Vs_5ivF3Lr" role="37vLTx">
+                                <node concept="37vLTw" id="5Vs_5ivF2H9" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="5Vs_5ivEe9i" resolve="clm" />
                                 </node>
-                                <node concept="37vLTw" id="4g6NqHEfTeX" role="10QFUP">
-                                  <ref role="3cqZAo" node="4g6NqHEeFfb" resolve="testModule0" />
+                                <node concept="liA8E" id="5Vs_5ivF8Zw" role="2OqNvi">
+                                  <ref role="37wK5l" to="3qmy:~ClassLoaderManager.getClassLoader(org.jetbrains.mps.openapi.module.SModule)" resolve="getClassLoader" />
+                                  <node concept="37vLTw" id="5Vs_5ivFbuQ" role="37wK5m">
+                                    <ref role="3cqZAo" node="4g6NqHEeFfb" resolve="testModule0" />
+                                  </node>
                                 </node>
                               </node>
                               <node concept="37vLTw" id="4g6NqHEfQgc" role="37vLTJ">
-                                <ref role="3cqZAo" node="4g6NqHEfyg0" resolve="testModule" />
+                                <ref role="3cqZAo" node="5Vs_5ivEtjm" resolve="moduleCL" />
                               </node>
                             </node>
                           </node>
@@ -3846,16 +3873,23 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="2ZW3vV" id="4g6NqHEfOOj" role="3clFbw">
-                          <node concept="3uibUv" id="4g6NqHEfPkw" role="2ZW6by">
-                            <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
-                          </node>
-                          <node concept="37vLTw" id="4g6NqHEfCij" role="2ZW6bz">
+                        <node concept="2YIFZM" id="5Vs_5ivEFrG" role="3clFbw">
+                          <ref role="37wK5l" to="z1c3:~SModuleOperations.classesAvailableToMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="classesAvailableToMPS" />
+                          <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                          <node concept="37vLTw" id="5Vs_5ivEIpQ" role="37wK5m">
                             <ref role="3cqZAo" node="4g6NqHEeFfb" resolve="testModule0" />
                           </node>
                         </node>
                         <node concept="9aQIb" id="4g6NqHEh7UH" role="9aQIa">
                           <node concept="3clFbS" id="4g6NqHEh7UI" role="9aQI4">
+                            <node concept="3clFbF" id="5Vs_5ivFn_s" role="3cqZAp">
+                              <node concept="37vLTI" id="5Vs_5ivFqEV" role="3clFbG">
+                                <node concept="10Nm6u" id="5Vs_5ivFrBO" role="37vLTx" />
+                                <node concept="37vLTw" id="5Vs_5ivFn_q" role="37vLTJ">
+                                  <ref role="3cqZAo" node="5Vs_5ivEtjm" resolve="moduleCL" />
+                                </node>
+                              </node>
+                            </node>
                             <node concept="3clFbJ" id="4g6NqHEeGkr" role="3cqZAp">
                               <node concept="3clFbS" id="4g6NqHEeGkt" role="3clFbx">
                                 <node concept="3clFbF" id="4g6NqHEhjic" role="3cqZAp">
@@ -4006,7 +4040,7 @@
                                 <node concept="1rXfSq" id="3IHTOEQSVzl" role="3K4E3e">
                                   <ref role="37wK5l" node="3IHTOEQNKGF" resolve="processTestCase" />
                                   <node concept="37vLTw" id="3IHTOEQSVzm" role="37wK5m">
-                                    <ref role="3cqZAo" node="4g6NqHEfyg0" resolve="testModule" />
+                                    <ref role="3cqZAo" node="5Vs_5ivEtjm" resolve="moduleCL" />
                                   </node>
                                   <node concept="37vLTw" id="3IHTOEQSVzn" role="37wK5m">
                                     <ref role="3cqZAo" node="4g6NqHEgZEU" resolve="failure" />
@@ -4018,7 +4052,7 @@
                                 <node concept="1rXfSq" id="3IHTOEQSYMP" role="3K4GZi">
                                   <ref role="37wK5l" node="3IHTOEQNSaJ" resolve="processTestMethod" />
                                   <node concept="37vLTw" id="3IHTOEQSYMQ" role="37wK5m">
-                                    <ref role="3cqZAo" node="4g6NqHEfyg0" resolve="testModule" />
+                                    <ref role="3cqZAo" node="5Vs_5ivEtjm" resolve="moduleCL" />
                                   </node>
                                   <node concept="37vLTw" id="3IHTOEQSYMR" role="37wK5m">
                                     <ref role="3cqZAo" node="4g6NqHEgZEU" resolve="failure" />
@@ -4105,9 +4139,9 @@
     <node concept="3clFb_" id="3IHTOEQNKGF" role="jymVt">
       <property role="TrG5h" value="processTestCase" />
       <node concept="37vLTG" id="3IHTOEQNKGK" role="3clF46">
-        <property role="TrG5h" value="testModule" />
+        <property role="TrG5h" value="testModuleCL" />
         <node concept="3uibUv" id="3IHTOEQPvJP" role="1tU5fm">
-          <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
+          <ref role="3uigEE" to="3qmy:~MPSModuleClassLoader" resolve="MPSModuleClassLoader" />
         </node>
         <node concept="2AHcQZ" id="3IHTOEQPZ8h" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -4172,7 +4206,7 @@
                     <ref role="3cqZAo" node="3IHTOEQNKGK" resolve="testModule" />
                   </node>
                   <node concept="liA8E" id="3IHTOEQNYWT" role="2OqNvi">
-                    <ref role="37wK5l" to="j8aq:~ReloadableModule.getOwnClass(java.lang.String)" resolve="getOwnClass" />
+                    <ref role="37wK5l" to="3qmy:~MPSModuleClassLoader.loadOwnClass(java.lang.String)" resolve="loadOwnClass" />
                     <node concept="37vLTw" id="3IHTOEQOYlq" role="37wK5m">
                       <ref role="3cqZAo" node="3IHTOEQNKGO" resolve="fqName" />
                     </node>
@@ -4232,9 +4266,9 @@
     <node concept="3clFb_" id="3IHTOEQNSaJ" role="jymVt">
       <property role="TrG5h" value="processTestMethod" />
       <node concept="37vLTG" id="3IHTOEQNSaM" role="3clF46">
-        <property role="TrG5h" value="testModule" />
+        <property role="TrG5h" value="testModuleCL" />
         <node concept="3uibUv" id="3IHTOEQPZ7M" role="1tU5fm">
-          <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
+          <ref role="3uigEE" to="3qmy:~MPSModuleClassLoader" resolve="MPSModuleClassLoader" />
         </node>
         <node concept="2AHcQZ" id="3IHTOEQPZbP" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -4402,7 +4436,7 @@
                     <ref role="3cqZAo" node="3IHTOEQNSaM" resolve="testModule" />
                   </node>
                   <node concept="liA8E" id="3IHTOEQPSRv" role="2OqNvi">
-                    <ref role="37wK5l" to="j8aq:~ReloadableModule.getOwnClass(java.lang.String)" resolve="getOwnClass" />
+                    <ref role="37wK5l" to="3qmy:~MPSModuleClassLoader.loadOwnClass(java.lang.String)" resolve="loadOwnClass" />
                     <node concept="37vLTw" id="3IHTOEQPSRw" role="37wK5m">
                       <ref role="3cqZAo" node="3IHTOEQPSQd" resolve="testFqName" />
                     </node>
@@ -6072,6 +6106,30 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="3cpWs8" id="5Vs_5ivBWYW" role="3cqZAp">
+                    <node concept="3cpWsn" id="5Vs_5ivBWYX" role="3cpWs9">
+                      <property role="TrG5h" value="clm" />
+                      <node concept="3uibUv" id="5Vs_5ivBVKa" role="1tU5fm">
+                        <ref role="3uigEE" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
+                      </node>
+                      <node concept="2OqwBi" id="5Vs_5ivBWYY" role="33vP2m">
+                        <node concept="2OqwBi" id="5Vs_5ivBWYZ" role="2Oq$k0">
+                          <node concept="37vLTw" id="5Vs_5ivBWZ0" role="2Oq$k0">
+                            <ref role="3cqZAo" node="1amXqSqOtu" resolve="myEnv" />
+                          </node>
+                          <node concept="liA8E" id="5Vs_5ivBWZ1" role="2OqNvi">
+                            <ref role="37wK5l" to="79ha:8Pnvxgloc_" resolve="getPlatform" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="5Vs_5ivBWZ2" role="2OqNvi">
+                          <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                          <node concept="3VsKOn" id="5Vs_5ivBWZ3" role="37wK5m">
+                            <ref role="3VsUkX" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                   <node concept="3cpWs8" id="1amXqSqRe6" role="3cqZAp">
                     <node concept="3cpWsn" id="1amXqSqRe7" role="3cpWs9">
                       <property role="TrG5h" value="selectors" />
@@ -6097,7 +6155,7 @@
                     <node concept="3clFbS" id="1amXqSqRef" role="2LFqv$">
                       <node concept="3cpWs8" id="1amXqSqReg" role="3cqZAp">
                         <node concept="3cpWsn" id="1amXqSqReh" role="3cpWs9">
-                          <property role="TrG5h" value="testModule0" />
+                          <property role="TrG5h" value="testModule" />
                           <node concept="3uibUv" id="1amXqSqRei" role="1tU5fm">
                             <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
                           </node>
@@ -6136,29 +6194,32 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="3cpWs8" id="1amXqSqRev" role="3cqZAp">
-                        <node concept="3cpWsn" id="1amXqSqRew" role="3cpWs9">
-                          <property role="TrG5h" value="testModule" />
-                          <node concept="3uibUv" id="1amXqSqRex" role="1tU5fm">
-                            <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
+                      <node concept="3cpWs8" id="5Vs_5ivCM6P" role="3cqZAp">
+                        <node concept="3cpWsn" id="5Vs_5ivCM6N" role="3cpWs9">
+                          <property role="3TUv4t" value="true" />
+                          <property role="TrG5h" value="moduleCL" />
+                          <node concept="3uibUv" id="5Vs_5ivCPm0" role="1tU5fm">
+                            <ref role="3uigEE" to="3qmy:~MPSModuleClassLoader" resolve="MPSModuleClassLoader" />
                           </node>
-                          <node concept="10Nm6u" id="1amXqSqRey" role="33vP2m" />
                         </node>
                       </node>
                       <node concept="3clFbJ" id="1amXqSqRez" role="3cqZAp">
                         <node concept="3clFbS" id="1amXqSqRe$" role="3clFbx">
-                          <node concept="3clFbF" id="1amXqSqRe_" role="3cqZAp">
-                            <node concept="37vLTI" id="766HyAh6i_G" role="3clFbG">
-                              <node concept="37vLTw" id="766HyAh6i_L" role="37vLTJ">
-                                <ref role="3cqZAo" node="1amXqSqRew" resolve="testModule" />
+                          <node concept="3clFbF" id="5Vs_5ivD1Cp" role="3cqZAp">
+                            <node concept="37vLTI" id="5Vs_5ivD3YK" role="3clFbG">
+                              <node concept="2OqwBi" id="5Vs_5ivD8p5" role="37vLTx">
+                                <node concept="37vLTw" id="5Vs_5ivD5Y6" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="5Vs_5ivBWYX" resolve="clm" />
+                                </node>
+                                <node concept="liA8E" id="5Vs_5ivDapF" role="2OqNvi">
+                                  <ref role="37wK5l" to="3qmy:~ClassLoaderManager.getClassLoader(org.jetbrains.mps.openapi.module.SModule)" resolve="getClassLoader" />
+                                  <node concept="37vLTw" id="5Vs_5ivDdOX" role="37wK5m">
+                                    <ref role="3cqZAo" node="1amXqSqReh" resolve="testModule" />
+                                  </node>
+                                </node>
                               </node>
-                              <node concept="10QFUN" id="766HyAh6i_I" role="37vLTx">
-                                <node concept="3uibUv" id="766HyAh6i_J" role="10QFUM">
-                                  <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
-                                </node>
-                                <node concept="37vLTw" id="766HyAh6i_K" role="10QFUP">
-                                  <ref role="3cqZAo" node="1amXqSqReh" resolve="testModule0" />
-                                </node>
+                              <node concept="37vLTw" id="5Vs_5ivD1Cn" role="37vLTJ">
+                                <ref role="3cqZAo" node="5Vs_5ivCM6N" resolve="moduleCL" />
                               </node>
                             </node>
                           </node>
@@ -6171,16 +6232,23 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="2ZW3vV" id="1amXqSqReJ" role="3clFbw">
-                          <node concept="3uibUv" id="1amXqSqReK" role="2ZW6by">
-                            <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
-                          </node>
-                          <node concept="37vLTw" id="1amXqSqReL" role="2ZW6bz">
+                        <node concept="2YIFZM" id="5Vs_5ivCjzq" role="3clFbw">
+                          <ref role="37wK5l" to="z1c3:~SModuleOperations.classesAvailableToMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="classesAvailableToMPS" />
+                          <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+                          <node concept="37vLTw" id="5Vs_5ivCmyC" role="37wK5m">
                             <ref role="3cqZAo" node="1amXqSqReh" resolve="testModule0" />
                           </node>
                         </node>
                         <node concept="9aQIb" id="1amXqSqReM" role="9aQIa">
                           <node concept="3clFbS" id="1amXqSqReN" role="9aQI4">
+                            <node concept="3clFbF" id="5Vs_5ivDkV8" role="3cqZAp">
+                              <node concept="37vLTI" id="5Vs_5ivDmfF" role="3clFbG">
+                                <node concept="10Nm6u" id="5Vs_5ivDn0P" role="37vLTx" />
+                                <node concept="37vLTw" id="5Vs_5ivDkV6" role="37vLTJ">
+                                  <ref role="3cqZAo" node="5Vs_5ivCM6N" resolve="moduleCL" />
+                                </node>
+                              </node>
+                            </node>
                             <node concept="3clFbJ" id="1amXqSqReO" role="3cqZAp">
                               <node concept="3clFbS" id="1amXqSqReP" role="3clFbx">
                                 <node concept="3clFbF" id="1amXqSqReQ" role="3cqZAp">
@@ -6332,7 +6400,7 @@
                                 <node concept="1rXfSq" id="1amXqSqRfK" role="3K4E3e">
                                   <ref role="37wK5l" node="1amXqSr5Vi" resolve="processTestCase" />
                                   <node concept="37vLTw" id="1amXqSqRfL" role="37wK5m">
-                                    <ref role="3cqZAo" node="1amXqSqRew" resolve="testModule" />
+                                    <ref role="3cqZAo" node="5Vs_5ivCM6N" resolve="moduleCL" />
                                   </node>
                                   <node concept="37vLTw" id="1amXqSqRfM" role="37wK5m">
                                     <ref role="3cqZAo" node="1amXqSqRet" resolve="failure" />
@@ -6344,7 +6412,7 @@
                                 <node concept="1rXfSq" id="1amXqSqRfO" role="3K4GZi">
                                   <ref role="37wK5l" node="1amXqSrpxe" resolve="processTestMethod" />
                                   <node concept="37vLTw" id="1amXqSqRfP" role="37wK5m">
-                                    <ref role="3cqZAo" node="1amXqSqRew" resolve="testModule" />
+                                    <ref role="3cqZAo" node="5Vs_5ivCM6N" resolve="moduleCL" />
                                   </node>
                                   <node concept="37vLTw" id="1amXqSqRfQ" role="37wK5m">
                                     <ref role="3cqZAo" node="1amXqSqRet" resolve="failure" />
@@ -6430,9 +6498,9 @@
     <node concept="3clFb_" id="1amXqSr5Vi" role="jymVt">
       <property role="TrG5h" value="processTestCase" />
       <node concept="37vLTG" id="1amXqSr5Vj" role="3clF46">
-        <property role="TrG5h" value="testModule" />
+        <property role="TrG5h" value="testModuleCL" />
         <node concept="3uibUv" id="1amXqSr5Vk" role="1tU5fm">
-          <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
+          <ref role="3uigEE" to="3qmy:~MPSModuleClassLoader" resolve="MPSModuleClassLoader" />
         </node>
         <node concept="2AHcQZ" id="1amXqSr5Vl" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -6497,7 +6565,7 @@
                     <ref role="3cqZAo" node="1amXqSr5Vj" resolve="testModule" />
                   </node>
                   <node concept="liA8E" id="1amXqSr5VM" role="2OqNvi">
-                    <ref role="37wK5l" to="j8aq:~ReloadableModule.getOwnClass(java.lang.String)" resolve="getOwnClass" />
+                    <ref role="37wK5l" to="3qmy:~MPSModuleClassLoader.loadOwnClass(java.lang.String)" resolve="loadOwnClass" />
                     <node concept="37vLTw" id="1amXqSr5VN" role="37wK5m">
                       <ref role="3cqZAo" node="1amXqSr5Vo" resolve="fqName" />
                     </node>
@@ -6549,9 +6617,9 @@
     <node concept="3clFb_" id="1amXqSrpxe" role="jymVt">
       <property role="TrG5h" value="processTestMethod" />
       <node concept="37vLTG" id="1amXqSrpxf" role="3clF46">
-        <property role="TrG5h" value="testModule" />
+        <property role="TrG5h" value="testModuleCL" />
         <node concept="3uibUv" id="1amXqSrpxg" role="1tU5fm">
-          <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
+          <ref role="3uigEE" to="3qmy:~MPSModuleClassLoader" resolve="MPSModuleClassLoader" />
         </node>
         <node concept="2AHcQZ" id="1amXqSrpxh" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -6719,7 +6787,7 @@
                     <ref role="3cqZAo" node="1amXqSrpxf" resolve="testModule" />
                   </node>
                   <node concept="liA8E" id="1amXqSrpyn" role="2OqNvi">
-                    <ref role="37wK5l" to="j8aq:~ReloadableModule.getOwnClass(java.lang.String)" resolve="getOwnClass" />
+                    <ref role="37wK5l" to="3qmy:~MPSModuleClassLoader.loadOwnClass(java.lang.String)" resolve="loadOwnClass" />
                     <node concept="37vLTw" id="1amXqSrpyo" role="37wK5m">
                       <ref role="3cqZAo" node="1amXqSrpxL" resolve="testFqName" />
                     </node>
