@@ -23,12 +23,20 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.lang.ref.SoftReference;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * Handles a single default (basic) session.
+ * Default implementation of {@link TypecheckingController}, mainly used on pooled threads.
+ * <p>
+ * Maintains two sessions:
+ * <ul>
+ *   <li>"active" session is the one explicitly requested through {@link #requestSession(Flags)};</li>
+ *   <li>"on demand" session that is created behind the scenes for the default usage scenario.</li>
+ * </ul>
  *
  * @author Fedor Isakov
  */
@@ -36,9 +44,13 @@ public class DefaultTypecheckingController extends TypecheckingController implem
 
   private final Flags myDefaultFlags;
 
+  // explicitly requested session
   private TypecheckingSessionImpl myActiveSession;
 
   private TypecheckingSessionImpl myOverriddenSession;
+
+  // on demand session
+  private SoftReference<TypecheckingSessionImpl> myOnDemandSession;
 
   private ConcurrentMap<TypecheckingProvider, AuxDataContainer> myAuxData = new ConcurrentHashMap<>();
 
@@ -89,19 +101,28 @@ public class DefaultTypecheckingController extends TypecheckingController implem
   @NotNull
   @Override
   protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept, Flags flags) {
-    // request new session on demand
-    if (myActiveSession == null || (myActiveSession.flags().getParamsMap() != flags.getParamsMap())) {
-      if (myActiveSession != null) {
-        myActiveSession.dispose();
-      }
-      this.myActiveSession = createSession(myDefaultFlags.withParameters(flags.getParamsMap()));
+    if (myActiveSession != null) {
+      return myActiveSession.getQueries(src, trg, trgConcept);
     }
-    return myActiveSession.getQueries(src, trg, trgConcept);
+    // request new session on demand
+    TypecheckingSessionImpl runningSession = myOnDemandSession != null ? myOnDemandSession.get() : null;
+    if (runningSession == null || (runningSession.flags().getParamsMap() != flags.getParamsMap())) {
+      if (runningSession != null) {
+        runningSession.dispose();
+      }
+      runningSession = createSession(myDefaultFlags.withParameters(flags.getParamsMap()));
+      this.myOnDemandSession = new SoftReference<>(runningSession);
+    }
+    return runningSession.getQueries(src, trg, trgConcept);
   }
 
   @Override
   protected AuxDataContainer getDataContainer(TypecheckingProvider<?> provider) {
-    Flags flags = myActiveSession != null ? myActiveSession.flags() : myDefaultFlags;
+    TypecheckingSessionImpl runningSession = myActiveSession != null ? myActiveSession : null;
+    if (runningSession == null) {
+      runningSession = myOnDemandSession != null ? myOnDemandSession.get() : null;
+    }
+    Flags flags = runningSession != null ? runningSession.flags() : myDefaultFlags;
     return myAuxData.computeIfAbsent(provider, (key) -> provider.createDataContainer(flags));
   }
 
