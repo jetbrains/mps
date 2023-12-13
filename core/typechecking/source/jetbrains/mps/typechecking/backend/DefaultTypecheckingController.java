@@ -37,7 +37,16 @@ import java.util.concurrent.ConcurrentMap;
  *   <li>"active" session is the one explicitly requested through {@link #requestSession(Flags)};</li>
  *   <li>"on demand" session that is created behind the scenes for the default usage scenario.</li>
  * </ul>
- *
+ * <p>
+ * Additionally another "override" active action is supported for Generator only. The usecase is described below.
+ * <blockquote>
+ * A generator session may request a new typechecking session on a thread
+ * that is running other typechecking-related computations that also require
+ * a typechecking session, which is irrelevant to the generator.
+ * In this case the generator takes priority and the session requested by it
+ * takes precedence, with the existing one being "overridden" and restored later.
+ * </blockquote>
+ * 
  * @author Fedor Isakov
  */
 public class DefaultTypecheckingController extends TypecheckingController implements ParametersDiscoverable {
