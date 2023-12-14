@@ -508,12 +508,8 @@ public final class Renamer {
         module.updateExternalReferences();
 
         for (SModel sm : m.getModels()) {
-          if (!sm.isReadOnly()) {
-            final SModelInternal model = (SModelInternal) sm;
-            if ((sm instanceof EditableSModel) && model.updateExternalReferences(mpsProject.getRepository())) {
-              // FIXME why SModelInternal.updateExternalReferences can't setChanged(true) itself?
-              ((EditableSModel) sm).setChanged(true);
-            }
+          if (!sm.isReadOnly() && sm instanceof SModelInternal) {
+            ((SModelInternal) sm).updateExternalReferences(mpsProject.getRepository());
           }
         }
       }

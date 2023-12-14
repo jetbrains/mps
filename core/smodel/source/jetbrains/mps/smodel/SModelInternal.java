@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -89,9 +89,8 @@ public interface SModelInternal extends ModelWithDisposeInfo  {
 
   /**
    * Model has a chance to bring its external dependencies to a state manifested by supplied repository
-   * @return <code>true</code> if anything has been changed
    */
-  boolean updateExternalReferences(@NotNull SRepository repository);
+  void updateExternalReferences(@NotNull SRepository repository);
 
   void changeModelReference(SModelReference newModelReference);
 }

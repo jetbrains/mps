@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -284,9 +285,14 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
   }
 
   @Override
-  public final boolean updateExternalReferences(@NotNull SRepository repo) {
+  public final void updateExternalReferences(@NotNull SRepository repo) {
     assertCanChange();
-    return getSModel().updateExternalReferences(getRepository());
+    final boolean changed = getSModel().updateExternalReferences(repo);
+    // XXX perhaps, shall move this check or complete update logic to editable model descriptor subclass?
+    //     OTOH, updating model state might be a reasonable activity for almost any loaded model
+    if (changed && this instanceof EditableSModel) {
+      ((EditableSModel) this).setChanged(true);
+    }
   }
 
   @Override
