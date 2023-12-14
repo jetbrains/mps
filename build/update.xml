@@ -424,8 +424,8 @@
              url="https://www.jetbrains.com/mps/download/previous.html"
              feedback="https://youtrack.jetbrains.com/issues/MPS"
              majorVersion="2022" minorVersoin="2">
-      <build number="222.4554.1426" version="2022.2.1">
-        <message>JetBrains MPS 2022.2.1 is now available.</message>
+      <build number="222.4554.1547" version="2022.2.2">
+        <message>JetBrains MPS 2022.2.2 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download/previous.html" download="true"/>
       </build>
     </channel>
