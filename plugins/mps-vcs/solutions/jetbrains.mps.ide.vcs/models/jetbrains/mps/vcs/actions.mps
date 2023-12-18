@@ -18,6 +18,8 @@
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="rvbb" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.projectPane(MPS.Workbench/)" />
     <import index="ddhc" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide(MPS.IDEA/)" />
+    <import index="cyi7" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.changes.ui(MPS.IDEA/)" />
+    <import index="s4aq" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.changes.actions(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -43,6 +45,9 @@
       </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
+      </concept>
+      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
+        <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -116,6 +121,7 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
+      <concept id="1073063089578" name="jetbrains.mps.baseLanguage.structure.SuperMethodCall" flags="nn" index="3nyPlj" />
       <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
@@ -1166,6 +1172,97 @@
       </node>
       <node concept="2AHcQZ" id="3tYsUK_UwvX" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+  </node>
+  <node concept="312cEu" id="7pVeK7_8ojQ">
+    <property role="TrG5h" value="SetExtensionChangesGroupingAction" />
+    <node concept="3Tm1VV" id="7pVeK7_8ojR" role="1B3o_S" />
+    <node concept="3uibUv" id="7pVeK7_8pfF" role="1zkMxy">
+      <ref role="3uigEE" to="s4aq:~SetChangesGroupingAction" resolve="SetChangesGroupingAction" />
+    </node>
+    <node concept="3clFb_" id="7pVeK7_8pgj" role="jymVt">
+      <property role="TrG5h" value="getGroupingKey" />
+      <node concept="3Tm1VV" id="7pVeK7_8pgk" role="1B3o_S" />
+      <node concept="2AHcQZ" id="7pVeK7_8pgm" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="3uibUv" id="7pVeK7_8pgn" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+      <node concept="3clFbS" id="7pVeK7_8pgo" role="3clF47">
+        <node concept="3clFbF" id="7pVeK7_8pZe" role="3cqZAp">
+          <node concept="10M0yZ" id="PFiw1EGNkD" role="3clFbG">
+            <ref role="3cqZAo" to="cyi7:~ChangesGroupingSupport.EXTENSION_GROUPING" resolve="EXTENSION_GROUPING" />
+            <ref role="1PxDUh" to="cyi7:~ChangesGroupingSupport" resolve="ChangesGroupingSupport" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7pVeK7_8pgp" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="7pVeK7_8qyv" role="jymVt">
+      <property role="TrG5h" value="update" />
+      <node concept="3Tm1VV" id="7pVeK7_8qyw" role="1B3o_S" />
+      <node concept="3cqZAl" id="7pVeK7_8qyy" role="3clF45" />
+      <node concept="37vLTG" id="7pVeK7_8qyz" role="3clF46">
+        <property role="TrG5h" value="e" />
+        <node concept="3uibUv" id="7pVeK7_8qy$" role="1tU5fm">
+          <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+        </node>
+        <node concept="2AHcQZ" id="7pVeK7_8qy_" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7pVeK7_8qyA" role="3clF47">
+        <node concept="3clFbF" id="7pVeK7_8qyE" role="3cqZAp">
+          <node concept="3nyPlj" id="7pVeK7_8qyD" role="3clFbG">
+            <ref role="37wK5l" to="s4aq:~SetChangesGroupingAction.update(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="update" />
+            <node concept="37vLTw" id="7pVeK7_8qyC" role="37wK5m">
+              <ref role="3cqZAo" node="7pVeK7_8qyz" resolve="e" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7pVeK7_8r87" role="3cqZAp">
+          <node concept="2OqwBi" id="7pVeK7_8s0g" role="3clFbG">
+            <node concept="2OqwBi" id="7pVeK7_8rh1" role="2Oq$k0">
+              <node concept="37vLTw" id="7pVeK7_8r85" role="2Oq$k0">
+                <ref role="3cqZAo" node="7pVeK7_8qyz" resolve="e" />
+              </node>
+              <node concept="liA8E" id="7pVeK7_8rJN" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
+              </node>
+            </node>
+            <node concept="liA8E" id="7pVeK7_8se9" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~Presentation.setText(java.lang.String)" resolve="setText" />
+              <node concept="Xl_RD" id="7pVeK7_8st0" role="37wK5m">
+                <property role="Xl_RC" value="Extension" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7pVeK7_8trY" role="3cqZAp">
+          <node concept="2OqwBi" id="7pVeK7_8ujd" role="3clFbG">
+            <node concept="2OqwBi" id="7pVeK7_8t_r" role="2Oq$k0">
+              <node concept="37vLTw" id="7pVeK7_8trW" role="2Oq$k0">
+                <ref role="3cqZAo" node="7pVeK7_8qyz" resolve="e" />
+              </node>
+              <node concept="liA8E" id="7pVeK7_8u1P" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
+              </node>
+            </node>
+            <node concept="liA8E" id="7pVeK7_8uAB" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~Presentation.setEnabledAndVisible(boolean)" resolve="setEnabledAndVisible" />
+              <node concept="3clFbT" id="7pVeK7_8uYD" role="37wK5m">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7pVeK7_8qyB" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
   </node>
