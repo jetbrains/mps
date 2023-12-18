@@ -62,6 +62,9 @@
       <add-to-group group-id="ChangesViewPopupMenu" anchor="last"/>
       <add-to-group anchor="before" relative-to-action="SearchMenu" group-id="EditMenu"/>
     </group>
+    <action id="ChangesView.GroupBy.Extension" class="jetbrains.mps.vcs.actions.SetExtensionChangesGroupingAction">
+      <add-to-group group-id="ChangesView.GroupBy"/>
+    </action>
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
@@ -87,6 +90,8 @@
     <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
     <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>
     <editorNotificationProvider implementation="jetbrains.mps.vcs.annotate.AnnotationEditorNotificationProvider"/>
+
+    <changesGroupingPolicy key="extension" id="extension" implementationClass="jetbrains.mps.vcs.integration.ExtensionChangesGroupingPolicy$Factory"/>
 
     <!--
       FIXME has to point to /languages as it's in build layout in mpsVcs but that would lead to module discovery errors when running from sources
