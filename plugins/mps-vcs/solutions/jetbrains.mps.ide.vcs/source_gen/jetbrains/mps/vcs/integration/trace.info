@@ -11,7 +11,9 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root nodeRef="r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/3282928695511907695">
     <file name="NonMPSProjectCheckoutListener.java">
       <node id="3282928695511907771" at="17,96,18,139" concept="9" />
@@ -198,12 +200,12 @@
       <node id="5895927245360443902" at="72,68,77,7" concept="4" />
       <node id="5895927245360114413" at="80,67,85,7" concept="4" />
       <node id="5895927245360214640" at="100,33,106,8" concept="7" />
-      <node id="6203974263416606152" at="110,0,116,0" concept="11" trace="check_tqtyvq_a0h0e#(Lcom/intellij/openapi/vcs/AbstractVcs;)Lcom/intellij/openapi/vcs/merge/MergeProvider;" />
+      <node id="6203974263416606152" at="110,0,116,0" concept="12" trace="check_tqtyvq_a0h0e#(Lcom/intellij/openapi/vcs/AbstractVcs;)Lcom/intellij/openapi/vcs/merge/MergeProvider;" />
       <node id="6203974263416593522" at="51,132,58,5" concept="5" />
       <node id="5895927245360064783" at="71,0,79,0" concept="6" trace="before#(Ljava/util/List;)V" />
       <node id="5895927245360064801" at="79,0,87,0" concept="6" trace="after#(Ljava/util/List;)V" />
       <node id="7812420883498470464" at="88,0,97,0" concept="6" trace="getResolver#()Ljetbrains/mps/vcs/integration/GeneratedFileConflictResolving;" />
-      <node id="5895927245360130416" at="98,0,109,0" concept="11" trace="fromOurFileSystem#(Ljava/util/List;)Ljava/util/List;" />
+      <node id="5895927245360130416" at="98,0,109,0" concept="12" trace="fromOurFileSystem#(Ljava/util/List;)Ljava/util/List;" />
       <node id="6203974263416588917" at="37,0,60,0" concept="6" trace="resolveIfNeeded#(Lcom/intellij/openapi/vfs/newvfs/events/VFileEvent;)V" />
       <scope id="5895927245360397620" at="39,23,40,13" />
       <scope id="7888896292848543753" at="43,33,44,13" />
@@ -267,6 +269,120 @@
       <unit id="5895927245360329167" at="101,36,106,7" name="jetbrains.mps.vcs.integration.GeneratedFileConflictResolving$FileListener$1" />
       <unit id="6203974263416588879" at="61,0,110,0" name="jetbrains.mps.vcs.integration.GeneratedFileConflictResolving$FileListener" />
       <unit id="6203974263416579308" at="28,0,117,0" name="jetbrains.mps.vcs.integration.GeneratedFileConflictResolving" />
+    </file>
+  </root>
+  <root nodeRef="r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/8537482397934728411">
+    <file name="ExtensionChangesBrowserNode.java">
+      <node id="8537482397934835935" at="14,56,15,21" concept="13" />
+      <node id="8537482397934857372" at="18,122,19,84" concept="2" />
+      <node id="8537482397934896212" at="19,84,20,26" concept="2" />
+      <node id="8537482397934902904" at="23,44,24,68" concept="8" />
+      <node id="8537482397934930633" at="28,39,29,33" concept="8" />
+      <node id="8537482397934833743" at="14,0,17,0" concept="1" trace="ExtensionChangesBrowserNode#(Ljava/lang/String;)V" />
+      <node id="8537482397934902893" at="22,0,26,0" concept="6" trace="compareUserObjects#(Ljava/lang/String;)I" />
+      <node id="8537482397934843928" at="17,0,22,0" concept="6" trace="render#(Lcom/intellij/openapi/vcs/changes/ui/ChangesBrowserNodeRenderer;ZZZ)V" />
+      <node id="8537482397934924064" at="26,0,31,0" concept="6" trace="getTextPresentation#()Ljava/lang/String;" />
+      <scope id="8537482397934833746" at="14,56,15,21" />
+      <scope id="8537482397934902900" at="23,44,24,68" />
+      <scope id="8537482397934924069" at="28,39,29,33" />
+      <scope id="8537482397934843941" at="18,122,20,26" />
+      <scope id="8537482397934833743" at="14,0,17,0">
+        <var name="extension" id="8537482397934834320" />
+      </scope>
+      <scope id="8537482397934902893" at="22,0,26,0">
+        <var name="o2" id="8537482397934902897" />
+      </scope>
+      <scope id="8537482397934843928" at="17,0,22,0">
+        <var name="expanded" id="8537482397934843937" />
+        <var name="hasFocus" id="8537482397934843939" />
+        <var name="renderer" id="8537482397934843932" />
+        <var name="selected" id="8537482397934843935" />
+      </scope>
+      <scope id="8537482397934924064" at="26,0,31,0" />
+      <unit id="8537482397934728411" at="12,0,32,0" name="jetbrains.mps.vcs.integration.ExtensionChangesBrowserNode" />
+    </file>
+  </root>
+  <root nodeRef="r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/8537482397934932198">
+    <file name="ExtensionChangesGroupingPolicy.java">
+      <node id="8537482397934971209" at="24,0,25,0" concept="3" trace="myModel" />
+      <node id="8537482397934971878" at="25,82,26,20" concept="2" />
+      <node id="8537482397934982013" at="30,121,31,107" concept="7" />
+      <node id="8537482397935001878" at="31,107,32,0" concept="10" />
+      <node id="8537482397934987010" at="32,0,33,47" concept="7" />
+      <node id="8537482397934997953" at="33,47,34,49" concept="7" />
+      <node id="8537482397935001179" at="34,49,35,0" concept="10" />
+      <node id="8537482397935004121" at="35,0,36,97" concept="7" />
+      <node id="8537482397935690100" at="36,97,37,104" concept="7" />
+      <node id="8537482397935013863" at="37,104,38,0" concept="10" />
+      <node id="8537482397935747245" at="38,0,39,86" concept="7" />
+      <node id="8537482397935771117" at="40,26,41,21" concept="8" />
+      <node id="8537482397935773576" at="42,5,43,0" concept="10" />
+      <node id="8537482397935793048" at="43,0,44,57" concept="2" />
+      <node id="8537482397935835509" at="44,57,45,31" concept="2" />
+      <node id="8537482397935847783" at="45,31,46,0" concept="10" />
+      <node id="8537482397935867438" at="46,0,47,78" concept="2" />
+      <node id="8537482397935916705" at="47,78,48,0" concept="10" />
+      <node id="8537482397935929683" at="48,0,49,66" concept="2" />
+      <node id="8537482397936014912" at="49,66,50,56" concept="2" />
+      <node id="8537482397936063978" at="50,56,51,0" concept="10" />
+      <node id="8537482397936075635" at="51,0,52,19" concept="8" />
+      <node id="8537482397934992175" at="54,53,55,55" concept="8" />
+      <node id="8537482397935641722" at="61,114,62,64" concept="8" />
+      <node id="8537482397935494085" at="69,81,70,58" concept="8" />
+      <node id="8537482397935019820" at="73,0,74,0" concept="11" trace="EXTENSION_CACHE" />
+      <node id="8537482397934982015" at="75,36,76,71" concept="8" />
+      <node id="8537482397934982015" at="77,5,78,16" concept="8" />
+      <node id="8537482397934953069" at="25,0,28,0" concept="1" trace="ExtensionChangesGroupingPolicy#(Lcom/intellij/openapi/project/Project;Ljavax/swing/tree/DefaultTreeModel;)V" />
+      <node id="8537482397935756412" at="39,86,42,5" concept="5" />
+      <node id="8537482397934989971" at="54,0,57,0" concept="6" trace="getExtensionFor#(Lcom/intellij/openapi/vcs/FilePath;)Ljava/lang/String;" />
+      <node id="8537482397934982015" at="74,214,77,5" concept="5" />
+      <node id="8537482397935637672" at="59,0,64,0" concept="6" trace="createGroupingPolicy#(Lcom/intellij/openapi/project/Project;Ljavax/swing/tree/DefaultTreeModel;)Lcom/intellij/openapi/vcs/changes/ui/ChangesGroupingPolicy;" />
+      <node id="8537482397935464325" at="67,0,72,0" concept="6" trace="fun#(Lcom/intellij/openapi/vcs/changes/ui/ChangesBrowserNode;)Ljava/util/HashMap;" />
+      <node id="8537482397934982015" at="74,0,80,0" concept="12" trace="check_se7bsc_a0a0c#(Lcom/intellij/openapi/vcs/changes/ui/ChangesGroupingPolicy;Lcom/intellij/openapi/vcs/changes/ui/StaticFilePath;Lcom/intellij/openapi/vcs/changes/ui/ChangesBrowserNode;Ljetbrains/mps/vcs/integration/ExtensionChangesGroupingPolicy;)Lcom/intellij/openapi/vcs/changes/ui/ChangesBrowserNode;" />
+      <node id="8537482397935459374" at="66,0,73,0" concept="11" trace="mapOf" />
+      <node id="8537482397934973947" at="28,0,54,0" concept="6" trace="getParentNodeFor#(Lcom/intellij/openapi/vcs/changes/ui/StaticFilePath;Lcom/intellij/openapi/vcs/changes/ui/ChangesBrowserNode;)Lcom/intellij/openapi/vcs/changes/ui/ChangesBrowserNode;" />
+      <scope id="8537482397934953073" at="25,82,26,20" />
+      <scope id="8537482397935756414" at="40,26,41,21" />
+      <scope id="8537482397934989974" at="54,53,55,55" />
+      <scope id="8537482397935637683" at="61,114,62,64" />
+      <scope id="8537482397935464331" at="69,81,70,58" />
+      <scope id="8537482397934982015" at="75,36,76,71" />
+      <scope id="8537482397934953069" at="25,0,28,0">
+        <var name="model" id="8537482397934956016" />
+        <var name="project" id="8537482397934955988" />
+      </scope>
+      <scope id="8537482397934989971" at="54,0,57,0">
+        <var name="filePath" id="8537482397934990885" />
+      </scope>
+      <scope id="8537482397934982015" at="74,214,78,16" />
+      <scope id="8537482397935637672" at="59,0,64,0">
+        <var name="model" id="8537482397935637680" />
+        <var name="project" id="8537482397935637677" />
+      </scope>
+      <scope id="8537482397935464325" at="67,0,72,0">
+        <var name="p1" id="8537482397935464329" />
+      </scope>
+      <scope id="8537482397934982015" at="74,0,80,0">
+        <var name="checkedDotOperand" id="8537482397934982015" />
+        <var name="checkedDotThisExpression" id="8537482397934982015" />
+        <var name="nodePath" id="8537482397934982018" />
+        <var name="subtreeRoot" id="8537482397934982019" />
+      </scope>
+      <scope id="8537482397934973960" at="30,121,52,19">
+        <var name="cachingRoot" id="8537482397935690101" />
+        <var name="extNode" id="8537482397935747246" />
+        <var name="extension" id="8537482397934997954" />
+        <var name="filePath" id="8537482397934987011" />
+        <var name="grandParent" id="8537482397935004122" />
+        <var name="nextPolicyParent" id="8537482397934982014" />
+      </scope>
+      <scope id="8537482397934973947" at="28,0,54,0">
+        <var name="nodePath" id="8537482397934973952" />
+        <var name="subtreeRoot" id="8537482397934973955" />
+      </scope>
+      <unit id="8537482397935464303" at="66,45,72,3" name="jetbrains.mps.vcs.integration.ExtensionChangesGroupingPolicy$1" />
+      <unit id="8537482397935633898" at="58,0,65,0" name="jetbrains.mps.vcs.integration.ExtensionChangesGroupingPolicy$Factory" />
+      <unit id="8537482397934932198" at="22,0,81,0" name="jetbrains.mps.vcs.integration.ExtensionChangesGroupingPolicy" />
     </file>
   </root>
 </debug-info>
