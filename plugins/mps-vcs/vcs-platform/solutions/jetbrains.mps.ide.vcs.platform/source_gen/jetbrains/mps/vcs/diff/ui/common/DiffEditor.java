@@ -79,13 +79,13 @@ public class DiffEditor implements EditorMessageOwner {
   private final JLabel myFailedToLoadModelPanel = new JLabel("Failed to load model", SwingConstants.CENTER);
 
 
-  public DiffEditor(final MPSProject project, @Nullable SModel model, @Nullable SNodeId nodeId, String contentTitle, boolean rightToLeft, boolean isInspectorShown) {
+  public DiffEditor(final MPSProject project, @Nullable SModel model, @Nullable SNodeId nodeId, String contentTitle, boolean rightToLeft, boolean readOnly, boolean isInspectorShown) {
     myMpsProject = project;
     myRightToLeft = rightToLeft;
     myIsInspectorShown = isInspectorShown;
     myTitle = contentTitle;
-    myMainEditorComponent = new MainEditorComponent(project.getRepository(), rightToLeft);
-    myInspectorComponent = new MyInspectorEditorComponent(project.getRepository(), rightToLeft);
+    myMainEditorComponent = new MainEditorComponent(project.getRepository(), rightToLeft, readOnly);
+    myInspectorComponent = new MyInspectorEditorComponent(project.getRepository(), rightToLeft, readOnly);
     Sequence.fromIterable(getEditorComponents()).visitAll(new IVisitor<EditorComponent>() {
       public void visit(EditorComponent ec) {
         EditorExtensionUtil.extendUsingProject(ec, project);
@@ -388,8 +388,8 @@ public class DiffEditor implements EditorMessageOwner {
     @Nullable
     private List<DiffEditorChangeLayer> myLayers;
 
-    public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft) {
-      super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).showSelectionLine(false).showLightBulb(false).build());
+    public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft, boolean readOnly) {
+      super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).showSelectionLine(false).readOnly(readOnly).showLightBulb(false).build());
       setTooltipProvider(new MyTooltipProvider(true));
       getHighlighter().setPaused(true);
     }
@@ -428,8 +428,8 @@ public class DiffEditor implements EditorMessageOwner {
     @Nullable
     private List<DiffEditorChangeLayer> myLayers;
 
-    public MainEditorComponent(SRepository repository, boolean rightToLeft) {
-      super(repository, new EditorConfigurationBuilder().showErrorsGutter(true).showSelectionLine(false).rightToLeft(rightToLeft).showLightBulb(false).build());
+    public MainEditorComponent(SRepository repository, boolean rightToLeft, boolean readOnly) {
+      super(repository, new EditorConfigurationBuilder().showErrorsGutter(true).showSelectionLine(false).rightToLeft(rightToLeft).readOnly(readOnly).showLightBulb(false).build());
       myDiffFileEditor = new DiffFileEditor(this);
       setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$VO, SMethodIdV2.create("getGeneratedClassFQName", 1213877494288L, 0x8643ee8702577820L))));
       getMessagesGutter().setMessageThicknessProvider((SimpleEditorMessage m) -> false);

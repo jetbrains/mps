@@ -478,21 +478,14 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
 
   private DiffEditorsGroup createEditorsGroup(List<SModel> models, List<String> titles) {
     DiffEditorsGroup group = new DiffEditorsGroup(myIsEditorsSyncEnabled);
-    boolean rightToLeft = true;
-    {
-      Iterator<SModel> model_it = ListSequence.fromList(models).iterator();
-      Iterator<String> title_it = ListSequence.fromList(titles).iterator();
-      SModel model_var;
-      String title_var;
-      while (model_it.hasNext() && title_it.hasNext()) {
-        model_var = model_it.next();
-        title_var = title_it.next();
-        DiffEditor editor = new DiffEditor(getMpsProject(), model_var, myRootId, title_var, rightToLeft, isInspectorShown());
-        editor.getSplitter().setSplitterProportionKey(PARAM_INSPECTOR_SPLITTER_POSITION);
-        editor.getSplitter().addPropertyChangeListener(Splitter.PROP_PROPORTION, this);
-        group.add(editor);
-        rightToLeft = false;
-      }
+    assert ListSequence.fromList(models).count() == ListSequence.fromList(titles).count();
+    for (int index = 0; index < ListSequence.fromList(models).count(); index++) {
+      // the first editor (index==0) should have left scrollbar and gutter
+      // it is only possible to edit second model (index==1) if it is not read only itself
+      DiffEditor editor = new DiffEditor(getMpsProject(), ListSequence.fromList(models).getElement(index), myRootId, ListSequence.fromList(titles).getElement(index), index == 0, index != 1, isInspectorShown());
+      editor.getSplitter().setSplitterProportionKey(PARAM_INSPECTOR_SPLITTER_POSITION);
+      editor.getSplitter().addPropertyChangeListener(Splitter.PROP_PROPORTION, this);
+      group.add(editor);
     }
     return group;
   }

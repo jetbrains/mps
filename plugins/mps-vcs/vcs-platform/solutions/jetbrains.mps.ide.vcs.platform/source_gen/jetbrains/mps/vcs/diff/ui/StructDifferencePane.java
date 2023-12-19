@@ -99,8 +99,8 @@ public class StructDifferencePane implements PropertyChangeListener {
       }
     };
 
-    myOldEditor = addEditor(myChangeSet.getOldModel(), myChangeSet.getOldNodeId(), titles[0], true);
-    myNewEditor = addEditor(myChangeSet.getNewModel(), myChangeSet.getNewNodeId(), titles[1], false);
+    myOldEditor = addEditor(myChangeSet.getOldModel(), myChangeSet.getOldNodeId(), titles[0], true, false);
+    myNewEditor = addEditor(myChangeSet.getNewModel(), myChangeSet.getNewNodeId(), titles[1], false, false);
     myPanel = createTwosideContentPanel();
     myTraverser = new NextPreviousTraverser(myChangeGroupLayouts, myNewEditor.getMainEditor());
     createActionGroup();
@@ -295,8 +295,8 @@ public class StructDifferencePane implements PropertyChangeListener {
     };
   }
 
-  private DiffEditor addEditor(SModel model, SNodeId nodeId, String title, boolean isLeftEditor) {
-    DiffEditor result = new DiffEditor(ProjectHelper.fromIdeaProject(myProject), model, nodeId, title, isLeftEditor, isInspectorShown);
+  private DiffEditor addEditor(SModel model, SNodeId nodeId, String title, boolean isLeftEditor, boolean isReadOnly) {
+    DiffEditor result = new DiffEditor(ProjectHelper.fromIdeaProject(myProject), model, nodeId, title, isLeftEditor, isReadOnly, isInspectorShown);
     myDiffEditorsGroup.add(result);
     return result;
   }

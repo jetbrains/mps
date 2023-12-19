@@ -3111,12 +3111,12 @@
       <node id="2317011900301897330" at="77,0,78,0" concept="7" trace="myMpsProject" />
       <node id="1344224899829778612" at="78,0,79,0" concept="7" trace="myRightToLeft" />
       <node id="6410246949269566052" at="79,0,80,0" concept="7" trace="myFailedToLoadModelPanel" />
-      <node id="2317011900301948688" at="82,165,83,27" concept="6" />
+      <node id="2317011900301948688" at="82,183,83,27" concept="6" />
       <node id="1344224899829841560" at="83,27,84,32" concept="6" />
       <node id="6428851428108294765" at="84,32,85,42" concept="6" />
       <node id="6132599322919262039" at="85,42,86,27" concept="6" />
-      <node id="4652592318748338389" at="86,27,87,90" concept="6" />
-      <node id="4652592318748338396" at="87,90,88,96" concept="6" />
+      <node id="4652592318748338389" at="86,27,87,100" concept="6" />
+      <node id="4652592318748338396" at="87,100,88,106" concept="6" />
       <node id="2529722078439987097" at="90,45,91,60" concept="6" />
       <node id="4652592318748338415" at="93,7,94,0" concept="15" />
       <node id="1842339384767886460" at="95,24,96,84" concept="12" />
@@ -3212,8 +3212,8 @@
       <node id="8527827051430621595" at="377,0,378,0" concept="11" trace="getLayers#()Ljava/util/List;" />
       <node id="8527827051430624283" at="378,0,379,0" concept="11" trace="setLayers#(Ljava/util/List;)V" />
       <node id="8480558849560280918" at="382,60,383,102" concept="13" />
-      <node id="2214273178345491610" at="391,93,392,137" concept="18" />
-      <node id="842807776370764997" at="392,137,393,54" concept="6" />
+      <node id="2214273178345491610" at="391,111,392,156" concept="18" />
+      <node id="842807776370764997" at="392,156,393,54" concept="6" />
       <node id="7443630596572392747" at="393,54,394,39" concept="6" />
       <node id="401415880416189401" at="399,34,400,20" concept="13" />
       <node id="401415880416189405" at="401,7,402,44" concept="13" />
@@ -3225,8 +3225,8 @@
       <node id="8527827051431329742" at="420,63,421,24" concept="6" />
       <node id="747161126334169036" at="426,0,427,0" concept="7" trace="myDiffFileEditor" />
       <node id="1547603040233276193" at="427,0,428,0" concept="7" trace="myCommandContext" />
-      <node id="7168952380157210480" at="431,77,432,160" concept="18" />
-      <node id="7168952380157195679" at="432,160,433,50" concept="6" />
+      <node id="7168952380157210480" at="431,95,432,179" concept="18" />
+      <node id="7168952380157195679" at="432,179,433,50" concept="6" />
       <node id="2095681145636662481" at="433,50,434,307" concept="6" />
       <node id="6865829888094651477" at="434,307,435,88" concept="6" />
       <node id="842807776370934290" at="435,88,436,55" concept="6" />
@@ -3299,7 +3299,7 @@
       <node id="4008989919132916544" at="456,0,460,0" concept="11" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1547603040232992280" at="469,0,473,0" concept="11" trace="createCommandContext#()Ljetbrains/mps/nodeEditor/commands/CommandContextImpl;" />
       <node id="8527827051431401908" at="484,0,488,0" concept="11" trace="setLayers#(Ljava/util/List;)V" />
-      <node id="4652592318748338402" at="88,96,93,7" concept="6" />
+      <node id="4652592318748338402" at="88,106,93,7" concept="6" />
       <node id="4652592318748338456" at="99,82,104,7" concept="6" />
       <node id="8527827051424596559" at="124,0,129,0" concept="11" trace="getLayers#(Z)Ljava/util/List;" />
       <node id="8527827051425586157" at="137,33,142,40" concept="13" />
@@ -3310,7 +3310,7 @@
       <node id="4652592318748338670" at="301,39,306,7" concept="6" />
       <node id="1301651965720067284" at="336,0,341,26" concept="12" />
       <node id="7328379120088332573" at="354,72,359,9" concept="10" />
-      <node id="2214273178345476806" at="391,0,396,0" concept="3" trace="MyInspectorEditorComponent#(Lorg/jetbrains/mps/openapi/module/SRepository;Z)V" />
+      <node id="2214273178345476806" at="391,0,396,0" concept="3" trace="MyInspectorEditorComponent#(Lorg/jetbrains/mps/openapi/module/SRepository;ZZ)V" />
       <node id="8527827051431170383" at="413,0,418,0" concept="11" trace="getLayers#()Ljava/util/List;" />
       <node id="8527827051431401898" at="478,0,483,0" concept="11" trace="getLayers#()Ljava/util/List;" />
       <node id="7461519972922701583" at="162,0,169,0" concept="11" trace="showInspector#(Z)V" />
@@ -3326,7 +3326,7 @@
       <node id="4578905056600669983" at="461,0,468,0" concept="11" trace="getData#(Ljava/lang/String;)Ljava/lang/Object;" />
       <node id="4878872762785661727" at="264,0,272,0" concept="11" trace="visit#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)V" />
       <node id="4652592318748338666" at="301,0,309,0" concept="11" trace="unhighlightAllChanges#()V" />
-      <node id="7168952380157195670" at="431,0,439,0" concept="3" trace="MainEditorComponent#(Lorg/jetbrains/mps/openapi/module/SRepository;Z)V" />
+      <node id="7168952380157195670" at="431,0,439,0" concept="3" trace="MainEditorComponent#(Lorg/jetbrains/mps/openapi/module/SRepository;ZZ)V" />
       <node id="8527827051425586149" at="135,0,144,0" concept="11" trace="getLayersUnderMouse#(Ljava/awt/event/MouseEvent;Z)Ljava/util/List;" />
       <node id="3779518304918705820" at="145,74,154,16" concept="12" />
       <node id="5277200897193743037" at="191,0,200,0" concept="11" trace="editRoot#(Lorg/jetbrains/mps/openapi/model/SNodeId;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
@@ -3339,7 +3339,7 @@
       <node id="4652592318748338583" at="243,0,259,0" concept="11" trace="highlightChange#(Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/vcs/diff/changes/ModelChange;ZLjetbrains/mps/vcs/diff/ui/common/ChangeEditorMessage/ConflictChecker;)V" />
       <node id="4878872762785415374" at="260,0,287,0" concept="11" trace="highlightChanges#(Lorg/jetbrains/mps/openapi/model/SModel;Ljava/lang/Iterable;ZLjetbrains/mps/vcs/diff/ui/common/ChangeEditorMessage/ConflictChecker;)V" />
       <node id="7328379120088114602" at="334,0,363,0" concept="11" trace="getTooltipRenderer#(Ljava/awt/event/MouseEvent;)Lcom/intellij/codeInsight/hint/TooltipRenderer;" />
-      <node id="4652592318748338377" at="82,0,115,0" concept="3" trace="DiffEditor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNodeId;Ljava/lang/String;ZZ)V" />
+      <node id="4652592318748338377" at="82,0,115,0" concept="3" trace="DiffEditor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNodeId;Ljava/lang/String;ZZZ)V" />
       <scope id="4652592318748338407" at="90,45,91,60" />
       <scope id="4652592318748338461" at="101,45,102,71" />
       <scope id="7461519972922538033" at="111,27,112,55" />
@@ -3464,7 +3464,7 @@
       <scope id="3906959831860545078" at="338,0,341,0">
         <var name="it" id="3906959831860545078" />
       </scope>
-      <scope id="2214273178345480537" at="391,93,394,39" />
+      <scope id="2214273178345480537" at="391,111,394,39" />
       <scope id="1547603040233301801" at="474,0,477,0" />
       <scope id="8527827051424678259" at="130,0,134,0">
         <var name="inspector" id="8527827051430907355" />
@@ -3514,6 +3514,7 @@
       <scope id="4878872762785415405" at="278,51,283,11" />
       <scope id="4652592318748338640" at="289,49,294,7" />
       <scope id="2214273178345476806" at="391,0,396,0">
+        <var name="readOnly" id="8731110499686392953" />
         <var name="repository" id="2214273178345476810" />
         <var name="rightToLeft" id="6428851428110326587" />
       </scope>
@@ -3526,7 +3527,7 @@
         <var name="messages" id="4878872762785415379" />
       </scope>
       <scope id="4652592318748338669" at="301,39,307,52" />
-      <scope id="7168952380157195678" at="431,77,437,39" />
+      <scope id="7168952380157195678" at="431,95,437,39" />
       <scope id="7461519972922701583" at="162,0,169,0">
         <var name="show" id="7461519972922718577" />
       </scope>
@@ -3565,6 +3566,7 @@
       </scope>
       <scope id="4652592318748338666" at="301,0,309,0" />
       <scope id="7168952380157195670" at="431,0,439,0">
+        <var name="readOnly" id="8731110499686207745" />
         <var name="repository" id="7168952380157195672" />
         <var name="rightToLeft" id="7168952380157195676" />
       </scope>
@@ -3611,13 +3613,14 @@
       <scope id="7328379120088114602" at="334,0,363,0">
         <var name="e" id="7328379120088114606" />
       </scope>
-      <scope id="4652592318748338388" at="82,165,113,5" />
+      <scope id="4652592318748338388" at="82,183,113,5" />
       <scope id="4652592318748338377" at="82,0,115,0">
         <var name="contentTitle" id="4652592318748338384" />
         <var name="isInspectorShown" id="7461519972922626401" />
         <var name="model" id="1842339384767842319" />
         <var name="nodeId" id="1842339384767862821" />
         <var name="project" id="2529722078439962623" />
+        <var name="readOnly" id="8731110499686147994" />
         <var name="rightToLeft" id="4652592318748338386" />
       </scope>
       <unit id="4652592318748338308" at="490,0,493,0" name="jetbrains.mps.vcs.diff.ui.common.DiffEditor$CONCEPTS" />
