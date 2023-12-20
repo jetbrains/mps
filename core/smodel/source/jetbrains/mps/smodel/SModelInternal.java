@@ -91,7 +91,12 @@ public interface SModelInternal extends ModelWithDisposeInfo  {
    * Model has a chance to bring its external dependencies to a state manifested by supplied repository
    * @return <code>true</code> if anything has been changed
    */
-  boolean updateExternalReferences(@NotNull SRepository repository);
+  default boolean updateExternalReferences(@NotNull SRepository repository) {
+    // default impl is necessary to keep same branch for mps-extensions 23.2 and 23.3.
+    // signature of the method changed in mps 23.3, and there's SM_Model implementation in mps-extensions we need
+    // to make compilable both with mps 23.2 and 23.3
+    return false;
+  }
 
   void changeModelReference(SModelReference newModelReference);
 }
