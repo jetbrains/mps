@@ -27211,23 +27211,24 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/6654001062452780370">
     <file name="CheckVariableDoubling_NonTypesystemRule.java">
-      <node id="893319872200366914" at="28,137,29,141" concept="12" />
-      <node id="3300216939609170041" at="29,141,30,37" concept="12" />
-      <node id="893319872200485656" at="31,33,32,469" concept="6" />
+      <node id="893319872200366914" at="28,133,29,133" concept="12" />
+      <node id="3300216939609170041" at="29,133,30,37" concept="12" />
+      <node id="893319872200485656" at="31,33,32,461" concept="6" />
       <node id="893319872200467865" at="33,12,34,49" concept="6" />
-      <node id="4579166930940319793" at="35,5,36,129" concept="12" />
-      <node id="3300216939609202463" at="36,129,37,196" concept="12" />
+      <node id="4579166930940319793" at="35,5,36,125" concept="12" />
+      <node id="3300216939609202463" at="36,125,37,196" concept="12" />
       <node id="3300216939609202608" at="37,196,38,0" concept="15" />
       <node id="4164094338984214928" at="40,7,41,85" concept="12" />
-      <node id="4164094338984214928" at="41,85,42,356" concept="12" />
-      <node id="6654001062452780370" at="46,50,47,48" concept="13" />
+      <node id="4164094338984214928" at="41,85,42,348" concept="12" />
+      <node id="6654001062452780370" at="46,50,47,44" concept="13" />
       <node id="6654001062452780370" at="49,68,50,102" concept="13" />
       <node id="6654001062452780370" at="52,30,53,17" concept="13" />
       <node id="6654001062452780370" at="57,0,58,0" concept="16" trace="VariableDeclaration$Y0" />
       <node id="6654001062452780370" at="58,0,59,0" concept="16" trace="IMethodLike$L7" />
       <node id="6654001062452780370" at="59,0,60,0" concept="16" trace="LocalVariableDeclaration$41" />
       <node id="6654001062452780370" at="60,0,61,0" concept="16" trace="ParameterDeclaration$RG" />
-      <node id="6654001062452780370" at="64,0,65,0" concept="16" trace="name$MnvL" />
+      <node id="6654001062452780370" at="61,0,62,0" concept="16" trace="IVariableDeclaration$Zo" />
+      <node id="6654001062452780370" at="65,0,66,0" concept="16" trace="name$MnvL" />
       <node id="6654001062452780370" at="26,0,28,0" concept="3" trace="CheckVariableDoubling_NonTypesystemRule#()V" />
       <node id="893319872200467860" at="33,10,35,5" concept="1" />
       <node id="6654001062452780370" at="46,0,49,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -27238,13 +27239,13 @@
       <node id="3300216939609202475" at="38,0,44,5" concept="10" />
       <node id="6654001062452780370" at="28,0,46,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="6654001062452780370" at="26,52,26,52" />
-      <scope id="893319872200464225" at="31,33,32,469" />
+      <scope id="893319872200464225" at="31,33,32,461" />
       <scope id="893319872200467861" at="33,12,34,49" />
-      <scope id="6654001062452780370" at="46,50,47,48" />
+      <scope id="6654001062452780370" at="46,50,47,44" />
       <scope id="6654001062452780370" at="49,68,50,102" />
       <scope id="6654001062452780370" at="52,30,53,17" />
       <scope id="6654001062452780370" at="26,0,28,0" />
-      <scope id="4164094338984214928" at="40,7,42,356">
+      <scope id="4164094338984214928" at="40,7,42,348">
         <var name="_reporter_2309309498" id="4164094338984214928" />
         <var name="errorTarget" id="4164094338984214928" />
       </scope>
@@ -27254,20 +27255,20 @@
       </scope>
       <scope id="6654001062452780370" at="52,0,55,0" />
       <scope id="3300216939609202476" at="39,214,43,7" />
-      <scope id="6654001062452780371" at="28,137,44,5">
+      <scope id="6654001062452780371" at="28,133,44,5">
         <var name="nearestMethod" id="4579166930940319794" />
         <var name="variablesFromCurrentMethod" id="3300216939609202464" />
         <var name="variablesInScope" id="3300216939609170042" />
         <var name="variablesScope" id="893319872200366915" />
       </scope>
       <scope id="6654001062452780370" at="28,0,46,0">
-        <var name="localVariableDeclaration" id="6654001062452780370" />
+        <var name="iVariableDeclaration" id="6654001062452780370" />
         <var name="status" id="6654001062452780370" />
         <var name="typeCheckingContext" id="6654001062452780370" />
       </scope>
-      <unit id="6654001062452780370" at="63,0,66,0" name="jetbrains.mps.baseLanguage.typesystem.CheckVariableDoubling_NonTypesystemRule$PROPS" />
-      <unit id="6654001062452780370" at="56,0,62,0" name="jetbrains.mps.baseLanguage.typesystem.CheckVariableDoubling_NonTypesystemRule$CONCEPTS" />
-      <unit id="6654001062452780370" at="25,0,67,0" name="jetbrains.mps.baseLanguage.typesystem.CheckVariableDoubling_NonTypesystemRule" />
+      <unit id="6654001062452780370" at="64,0,67,0" name="jetbrains.mps.baseLanguage.typesystem.CheckVariableDoubling_NonTypesystemRule$PROPS" />
+      <unit id="6654001062452780370" at="56,0,63,0" name="jetbrains.mps.baseLanguage.typesystem.CheckVariableDoubling_NonTypesystemRule$CONCEPTS" />
+      <unit id="6654001062452780370" at="25,0,68,0" name="jetbrains.mps.baseLanguage.typesystem.CheckVariableDoubling_NonTypesystemRule" />
     </file>
     <file name="TypesystemDescriptor.java">
       <node id="6654001062452780370" at="449,5,450,98" concept="12" />
