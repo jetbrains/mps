@@ -345,16 +345,6 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
           continue;
         }
 
-        boolean isApplicable = false;
-        try {
-          isApplicable = intentionFactory.isApplicable(node, editorContext);
-        } catch (Throwable t) {
-          LOG.error("Failed to evaluate isApplicable for " + intentionFactory.getClass().getName(), t);
-        }
-        if (!isApplicable) {
-          continue;
-        }
-
         if (!visitor.visit(intentionFactory, node)) {
           return false;
         }
@@ -375,7 +365,7 @@ public class IntentionsManager implements PersistentStateComponent<IntentionsMan
       Collection<EditorQuickFix> intentionProviders = TypesystemReportItemAdapter.FLAVOUR_EDITOR_QUICKFIX.getCollection(message);
       for (EditorQuickFix intentionProvider : intentionProviders) {
         QuickFixAdapter intention = new QuickFixAdapter(intentionProvider, message.getSeverity());
-        if (!filter.accept(intention) || (isAncestor && !intention.isAvailableInChildNodes()) || !intention.isApplicable(node, context)) {
+        if (!filter.accept(intention) || (isAncestor && !intention.isAvailableInChildNodes())) {
           continue;
         }
         if (!visitor.visit(intention, node)) {

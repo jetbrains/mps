@@ -18,8 +18,6 @@ package jetbrains.mps.project.validation;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.errors.item.ModelReportItem;
-import jetbrains.mps.errors.item.ModelReportItemBase;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.generator.impl.GenPlanTranslator;
 import jetbrains.mps.generator.impl.plan.DependencyCollectorPlanBuilder;
@@ -41,7 +39,6 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -71,21 +68,6 @@ public class ValidationUtil {
         }
       }, progressMonitor);
     }
-  }
-
- // is this method called from model checker ?
-  /**
-   * @deprecated Use {@link ModelValidator} instead
-   */
-@Deprecated(since = "2020.1", forRemoval = true)
-  public static void validateModel(@NotNull final SModel model, @NotNull Processor<? super ModelReportItem> processor) {
-    // there was 1 use in mbeddr, in com.mbeddr.mpsutil.projectview.runtime; refactored Oct 5, 2020 in mps/2020.2 branch.
-    processor.process(new ModelReportItemBase(MessageStatus.ERROR, model.getReference(), "ValidationUtil.validateModel() is NO-OP, please refactor your code to use ModelValidator!") {
-      @Override
-      public ItemKind getIssueKind() {
-        return IssueKindReportItem.MODEL_PROPERTIES.deriveItemKind();
-      }
-    });
   }
 
   public static void validateModule(final SModule m, Processor<? super ModuleValidationProblem> processor) {
