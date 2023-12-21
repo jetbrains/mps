@@ -465,5 +465,14 @@
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
+    <channel id="MPS233EAP" name="MPS 2023.3" status="eap"
+             url="https://www.jetbrains.com/mps/nextversion"
+             feedback="http://youtrack.jetbrains.net/issues/MPS"
+             majorVersion="2023" minorVersoin="3">
+      <build number="233.11799.543" version="2023.3 EAP1">
+        <message>JetBrains MPS 2023.3 EAP1 is now available.</message>
+        <button name="Download" url="https://www.jetbrains.com/mps/nextversion" download="true"/>
+      </build>
+    </channel>
   </product>
 </products>
