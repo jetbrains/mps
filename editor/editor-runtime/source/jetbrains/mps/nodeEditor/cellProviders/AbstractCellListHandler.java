@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,12 +48,6 @@ public abstract class AbstractCellListHandler extends AbstractEditorBuilder impl
 
   public AbstractCellListHandler(EditorContext editorContext) {
     super(editorContext);
-  }
-
-@Deprecated(since = "2018.3", forRemoval = true)
-  //use getLink/getReference instead
-  public String getElementRole(){
-    return null;
   }
 
   public SConceptFeature getElementSRole(){
