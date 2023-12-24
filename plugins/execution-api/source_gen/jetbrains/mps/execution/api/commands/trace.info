@@ -42,22 +42,6 @@
       <unit id="3908032508224771365" at="10,0,22,0" name="jetbrains.mps.execution.api.commands.DefaultProcessHandler" />
     </file>
   </root>
-  <root nodeRef="r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)/3908032508224771401">
-    <file name="OutputRedirector.java">
-      <node id="3908032508224771409" at="19,91,20,41" concept="3" />
-      <node id="3908032508224771414" at="20,41,21,19" concept="10" />
-      <node id="3908032508224771418" at="16,0,19,0" concept="1" trace="OutputRedirector#()V" />
-      <node id="3908032508224771402" at="19,0,23,0" concept="14" trace="redirect#(Lcom/intellij/execution/process/ProcessHandler;Lcom/intellij/execution/process/ProcessListener;)Lcom/intellij/execution/process/ProcessHandler;" />
-      <scope id="3908032508224771421" at="17,29,17,29" />
-      <scope id="3908032508224771408" at="19,91,21,19" />
-      <scope id="3908032508224771418" at="16,0,19,0" />
-      <scope id="3908032508224771402" at="19,0,23,0">
-        <var name="handler" id="3908032508224771403" />
-        <var name="listener" id="3908032508224771405" />
-      </scope>
-      <unit id="3908032508224771401" at="13,0,24,0" name="jetbrains.mps.execution.api.commands.OutputRedirector" />
-    </file>
-  </root>
   <root nodeRef="r:da044acc-81a4-4fd8-b89a-91df4cfe6214(jetbrains.mps.execution.api.commands)/3908032508224771422">
     <file name="ProcessHandlerBuilder.java">
       <node id="1621435007881082939" at="29,0,30,0" concept="13" trace="LOG" />
