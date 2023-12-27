@@ -764,6 +764,7 @@
   <node concept="312cEu" id="5G8f0m409ra">
     <property role="1sVAO0" value="true" />
     <property role="TrG5h" value="AbstractWatchable" />
+    <node concept="2tJIrI" id="6X9HoDBGSb$" role="jymVt" />
     <node concept="3Tm1VV" id="5G8f0m409rb" role="1B3o_S" />
     <node concept="3uibUv" id="5G8f0m40muz" role="EKbjA">
       <ref role="3uigEE" node="5G8f0m40fKi" resolve="Watchable2" />
@@ -784,6 +785,28 @@
         <node concept="1dT_AC" id="5G8f0m409tv" role="1dT_Ay">
           <property role="1dT_AB" value=", extend this class instead of implementing interface directly to facilitate API change" />
         </node>
+      </node>
+    </node>
+    <node concept="3clFb_" id="6X9HoDBGSd2" role="jymVt">
+      <property role="TrG5h" value="getNode" />
+      <property role="DiZV1" value="false" />
+      <node concept="3Tm1VV" id="6X9HoDBGSd3" role="1B3o_S" />
+      <node concept="3uibUv" id="6X9HoDBGSd4" role="3clF45">
+        <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+      </node>
+      <node concept="2AHcQZ" id="6X9HoDBGSd6" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="2AHcQZ" id="6X9HoDBGSdl" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
+      <node concept="3clFbS" id="6X9HoDBGSdn" role="3clF47">
+        <node concept="3clFbF" id="6X9HoDBGSdq" role="3cqZAp">
+          <node concept="10Nm6u" id="6X9HoDBGSdp" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="6X9HoDBGSdo" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
   </node>
