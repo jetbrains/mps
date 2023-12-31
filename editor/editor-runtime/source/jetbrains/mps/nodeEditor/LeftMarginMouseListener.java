@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,10 @@ package jetbrains.mps.nodeEditor;
 import java.awt.event.MouseEvent;
 
 public interface LeftMarginMouseListener {
-  void mousePressed(MouseEvent e, EditorComponent editorComponent);
-  void mouseReleased(MouseEvent e, EditorComponent editorComponent);
-  void mouseClicked(MouseEvent e, EditorComponent editorComponent);
+  default void mousePressed(MouseEvent e, EditorComponent editorComponent) {
+  }
+  default void mouseReleased(MouseEvent e, EditorComponent editorComponent) {
+  }
+  default void mouseClicked(MouseEvent e, EditorComponent editorComponent) {
+  }
 }

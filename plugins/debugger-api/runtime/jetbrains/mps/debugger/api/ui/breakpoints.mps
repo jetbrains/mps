@@ -33,7 +33,6 @@
     <import index="2sud" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.treeStructure(MPS.IDEA/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="qkt" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)" />
-    <import index="zobu" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.debugger.core.breakpoints(MPS.Platform/)" />
     <import index="nqqd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.platform.ui(MPS.Platform/)" />
     <import index="iwsx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.fileEditor(MPS.IDEA/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
@@ -49,6 +48,7 @@
     <import index="7e8u" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.ui.tree(MPS.Platform/)" />
     <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
+    <import index="4jgh" ref="r:e85e5755-b656-44cc-a19b-af0b99b30b13(jetbrains.mps.debugger.core.breakpoints)" />
   </imports>
   <registry>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -310,7 +310,7 @@
       <ref role="3uigEE" to="exr9:~EditorMessageIconRenderer" resolve="EditorMessageIconRenderer" />
     </node>
     <node concept="3uibUv" id="6X65_p_v24U" role="1zkMxy">
-      <ref role="3uigEE" to="zobu:~BreakpointIconRenderrerEx" resolve="BreakpointIconRenderrerEx" />
+      <ref role="3uigEE" to="4jgh:7sMvr7H2RbE" resolve="BreakpointIconRenderrerEx" />
       <node concept="3uibUv" id="6X65_p_vk6R" role="11_B2D">
         <ref role="3uigEE" to="rw00:3SnNvqCaJeL" resolve="ILocationBreakpoint" />
       </node>
@@ -334,7 +334,7 @@
       </node>
       <node concept="3clFbS" id="3SnNvqCbxcE" role="3clF47">
         <node concept="XkiVB" id="7sMvr7H2McW" role="3cqZAp">
-          <ref role="37wK5l" to="zobu:~BreakpointIconRenderrerEx.&lt;init&gt;(java.lang.Object,java.awt.Component)" resolve="BreakpointIconRenderrerEx" />
+          <ref role="37wK5l" to="4jgh:7sMvr7H2Rci" />
           <node concept="37vLTw" id="2BHiRxgkWmY" role="37wK5m">
             <ref role="3cqZAo" node="3SnNvqCbxcA" resolve="breakpoint" />
           </node>
@@ -358,7 +358,7 @@
             <ref role="1Pybhc" node="3SnNvqCbxaK" resolve="BreakpointIconRenderer" />
             <ref role="37wK5l" node="3SnNvqCbxb$" resolve="getIconFor" />
             <node concept="37vLTw" id="2BHiRxeuu3I" role="37wK5m">
-              <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+              <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
             </node>
             <node concept="2YIFZM" id="3SnNvqCbxcU" role="37wK5m">
               <ref role="1Pybhc" to="qiil:24OxoGwU3IV" resolve="DebugActionsUtil" />
@@ -371,7 +371,7 @@
                 <node concept="liA8E" id="3SnNvqCbxcX" role="2OqNvi">
                   <ref role="37wK5l" to="ddhc:~DataManager.getDataContext(java.awt.Component)" resolve="getDataContext" />
                   <node concept="37vLTw" id="2BHiRxeuNlJ" role="37wK5m">
-                    <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myComponent" resolve="myComponent" />
+                    <ref role="3cqZAo" to="4jgh:7sMvr7H2Rce" resolve="myComponent" />
                   </node>
                 </node>
               </node>
@@ -406,7 +406,7 @@
                   </node>
                   <node concept="2OqwBi" id="2O28TLovwHG" role="3K4Cdx">
                     <node concept="37vLTw" id="2BHiRxeug3B" role="2Oq$k0">
-                      <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                      <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
                     </node>
                     <node concept="liA8E" id="2O28TLovwHM" role="2OqNvi">
                       <ref role="37wK5l" to="rw00:3SnNvqCaK3g" resolve="isValid" />
@@ -420,7 +420,7 @@
                   <ref role="37wK5l" to="18ew:~StringUtil.escapeXml(java.lang.String)" resolve="escapeXml" />
                   <node concept="2OqwBi" id="4I_kKjvEdb9" role="37wK5m">
                     <node concept="37vLTw" id="2BHiRxeukxD" role="2Oq$k0">
-                      <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                      <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
                     </node>
                     <node concept="liA8E" id="4I_kKjvEdbb" role="2OqNvi">
                       <ref role="37wK5l" to="rw00:3SnNvqCaK3q" resolve="getPresentation" />
@@ -435,7 +435,7 @@
                       <node concept="2OqwBi" id="4I_kKjvEdbd" role="37wK5m">
                         <node concept="2OqwBi" id="4I_kKjvEdbe" role="2Oq$k0">
                           <node concept="37vLTw" id="2BHiRxeuW0J" role="2Oq$k0">
-                            <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                            <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
                           </node>
                           <node concept="liA8E" id="4I_kKjvEdbg" role="2OqNvi">
                             <ref role="37wK5l" to="rw00:3SnNvqCaK2V" resolve="getKind" />
@@ -481,7 +481,7 @@
           <node concept="2OqwBi" id="3SnNvqCbxdc" role="3cqZAk">
             <node concept="2OqwBi" id="3SnNvqCbxdd" role="2Oq$k0">
               <node concept="37vLTw" id="2BHiRxeuMBx" role="2Oq$k0">
-                <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
               </node>
               <node concept="liA8E" id="3SnNvqCbxdf" role="2OqNvi">
                 <ref role="37wK5l" to="rw00:3SnNvqCaJeO" resolve="getLocation" />
@@ -511,7 +511,7 @@
           <node concept="3fqX7Q" id="3SnNvqCbxdQ" role="3clFbw">
             <node concept="2OqwBi" id="3SnNvqCbxdR" role="3fr31v">
               <node concept="37vLTw" id="2BHiRxeuln1" role="2Oq$k0">
-                <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
               </node>
               <node concept="liA8E" id="3SnNvqCbxdT" role="2OqNvi">
                 <ref role="37wK5l" to="rw00:3SnNvqCaK3g" resolve="isValid" />
@@ -529,7 +529,7 @@
             <node concept="2OqwBi" id="3SnNvqCbxdZ" role="3fr31v">
               <node concept="2OqwBi" id="3SnNvqCbxe0" role="2Oq$k0">
                 <node concept="37vLTw" id="2BHiRxeuuSS" role="2Oq$k0">
-                  <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                  <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
                 </node>
                 <node concept="liA8E" id="3SnNvqCbxe2" role="2OqNvi">
                   <ref role="37wK5l" to="rw00:3SnNvqCaK2V" resolve="getKind" />
@@ -577,7 +577,7 @@
                     <node concept="3K4zz7" id="3SnNvqCbxeo" role="37wK5m">
                       <node concept="2OqwBi" id="3SnNvqCbxep" role="3K4Cdx">
                         <node concept="37vLTw" id="2BHiRxeulat" role="2Oq$k0">
-                          <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                          <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
                         </node>
                         <node concept="liA8E" id="3SnNvqCbxer" role="2OqNvi">
                           <ref role="37wK5l" to="rw00:3SnNvqCaK38" resolve="isEnabled" />
@@ -607,14 +607,14 @@
                         <node concept="3clFbF" id="3SnNvqCbxf2" role="3cqZAp">
                           <node concept="2OqwBi" id="3SnNvqCbxf3" role="3clFbG">
                             <node concept="37vLTw" id="2BHiRxeujW0" role="2Oq$k0">
-                              <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                              <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
                             </node>
                             <node concept="liA8E" id="3SnNvqCbxf5" role="2OqNvi">
                               <ref role="37wK5l" to="rw00:3SnNvqCaK3k" resolve="setEnabled" />
                               <node concept="3fqX7Q" id="3SnNvqCbxf6" role="37wK5m">
                                 <node concept="2OqwBi" id="3SnNvqCbxf7" role="3fr31v">
                                   <node concept="37vLTw" id="2BHiRxeusu5" role="2Oq$k0">
-                                    <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                                    <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
                                   </node>
                                   <node concept="liA8E" id="3SnNvqCbxf9" role="2OqNvi">
                                     <ref role="37wK5l" to="rw00:3SnNvqCaK38" resolve="isEnabled" />
@@ -673,7 +673,7 @@
                               <ref role="37wK5l" to="1l1h:3SnNvqCaJLp" resolve="getInstance" />
                               <node concept="2OqwBi" id="3SnNvqCbxff" role="37wK5m">
                                 <node concept="37vLTw" id="2BHiRxeurot" role="2Oq$k0">
-                                  <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                                  <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
                                 </node>
                                 <node concept="liA8E" id="3SnNvqCbxfh" role="2OqNvi">
                                   <ref role="37wK5l" to="rw00:3SnNvqCaK3M" resolve="getProject" />
@@ -683,7 +683,7 @@
                             <node concept="liA8E" id="3SnNvqCbxfi" role="2OqNvi">
                               <ref role="37wK5l" to="1l1h:3SnNvqCaJOu" resolve="removeBreakpoint" />
                               <node concept="37vLTw" id="2BHiRxeu_9d" role="37wK5m">
-                                <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                                <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
                               </node>
                             </node>
                           </node>
@@ -752,7 +752,7 @@
                               <ref role="37wK5l" node="3SnNvqCbyF3" resolve="getInstance" />
                               <node concept="2OqwBi" id="3SnNvqCbxfq" role="37wK5m">
                                 <node concept="37vLTw" id="2BHiRxeusaj" role="2Oq$k0">
-                                  <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                                  <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
                                 </node>
                                 <node concept="liA8E" id="3SnNvqCbxfs" role="2OqNvi">
                                   <ref role="37wK5l" to="rw00:3SnNvqCaK3M" resolve="getProject" />
@@ -762,7 +762,7 @@
                             <node concept="liA8E" id="3SnNvqCbxft" role="2OqNvi">
                               <ref role="37wK5l" node="3SnNvqCbyH6" resolve="editBreakpointProperties" />
                               <node concept="37vLTw" id="2BHiRxeumXd" role="37wK5m">
-                                <ref role="3cqZAo" to="zobu:~BreakpointIconRenderrerEx.myBreakpoint" resolve="myBreakpoint" />
+                                <ref role="3cqZAo" to="4jgh:7sMvr7H2Rcb" resolve="myBreakpoint" />
                               </node>
                             </node>
                           </node>
@@ -7775,10 +7775,7 @@
       <ref role="3uigEE" to="1m72:~ProjectComponent" resolve="ProjectComponent" />
     </node>
     <node concept="3uibUv" id="2meLaIF5lI2" role="1zkMxy">
-      <ref role="3uigEE" to="zobu:~BreakpointsUiComponentEx" resolve="BreakpointsUiComponentEx" />
-      <node concept="3uibUv" id="2meLaIF5lIl" role="11_B2D">
-        <ref role="3uigEE" to="rw00:3SnNvqCaK2T" resolve="IBreakpoint" />
-      </node>
+      <ref role="3uigEE" to="4jgh:2meLaIF5ltg" resolve="BreakpointsUiComponentEx" />
       <node concept="3uibUv" id="4d7ZCcwP0Li" role="11_B2D">
         <ref role="3uigEE" to="rw00:3SnNvqCaJeL" resolve="ILocationBreakpoint" />
       </node>
@@ -7904,7 +7901,7 @@
       </node>
       <node concept="3clFbS" id="3SnNvqCbyFr" role="3clF47">
         <node concept="XkiVB" id="2meLaIF5nkx" role="3cqZAp">
-          <ref role="37wK5l" to="zobu:~BreakpointsUiComponentEx.&lt;init&gt;(com.intellij.openapi.project.Project)" resolve="BreakpointsUiComponentEx" />
+          <ref role="37wK5l" to="4jgh:7Tz7JMVHdJY" />
           <node concept="37vLTw" id="2BHiRxgmKIj" role="37wK5m">
             <ref role="3cqZAo" node="3SnNvqCbyFh" resolve="ideaProject" />
           </node>
@@ -7962,7 +7959,7 @@
       <node concept="3clFbS" id="3SnNvqCbyG1" role="3clF47">
         <node concept="3clFbF" id="5eKIc0QF2As" role="3cqZAp">
           <node concept="3nyPlj" id="5eKIc0QF2At" role="3clFbG">
-            <ref role="37wK5l" to="zobu:~BreakpointsUiComponentEx.init()" resolve="init" />
+            <ref role="37wK5l" to="4jgh:2meLaIF5mKd" resolve="init" />
           </node>
         </node>
         <node concept="3cpWs8" id="3SnNvqCbyG2" role="3cqZAp">
@@ -7976,7 +7973,7 @@
               <ref role="1Pybhc" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
               <ref role="37wK5l" to="1l1h:3SnNvqCaJob" resolve="getInstance" />
               <node concept="37vLTw" id="2rqlzH6uaSv" role="37wK5m">
-                <ref role="3cqZAo" to="zobu:~BreakpointsUiComponentEx.myProject" resolve="myProject" />
+                <ref role="3cqZAo" to="4jgh:2meLaIF5nk2" resolve="myProject" />
               </node>
             </node>
           </node>
@@ -8089,7 +8086,7 @@
                 <node concept="1pGfFk" id="2yyccWT97BJ" role="2ShVmc">
                   <ref role="37wK5l" node="3SnNvqCbyD1" />
                   <node concept="37vLTw" id="3p4anUxIT_K" role="37wK5m">
-                    <ref role="3cqZAo" to="zobu:~BreakpointsUiComponentEx.myProject" resolve="myProject" />
+                    <ref role="3cqZAo" to="4jgh:2meLaIF5nk2" resolve="myProject" />
                   </node>
                 </node>
               </node>
@@ -8132,7 +8129,7 @@
               <ref role="1Pybhc" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
               <ref role="37wK5l" to="1l1h:3SnNvqCaJob" resolve="getInstance" />
               <node concept="37vLTw" id="2rqlzH6usBZ" role="37wK5m">
-                <ref role="3cqZAo" to="zobu:~BreakpointsUiComponentEx.myProject" resolve="myProject" />
+                <ref role="3cqZAo" to="4jgh:2meLaIF5nk2" resolve="myProject" />
               </node>
             </node>
           </node>
@@ -8152,7 +8149,7 @@
         </node>
         <node concept="3clFbF" id="5eKIc0QF2Av" role="3cqZAp">
           <node concept="3nyPlj" id="5eKIc0QF2Aw" role="3clFbG">
-            <ref role="37wK5l" to="zobu:~BreakpointsUiComponentEx.dispose()" resolve="dispose" />
+            <ref role="37wK5l" to="4jgh:2meLaIF5mKh" resolve="dispose" />
           </node>
         </node>
       </node>
@@ -8736,7 +8733,7 @@
                             <ref role="37wK5l" to="iwsx:~FileEditorManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
                             <ref role="1Pybhc" to="iwsx:~FileEditorManager" resolve="FileEditorManager" />
                             <node concept="37vLTw" id="7Tz7JMVIQQE" role="37wK5m">
-                              <ref role="3cqZAo" to="zobu:~BreakpointsUiComponentEx.myProject" resolve="myProject" />
+                              <ref role="3cqZAo" to="4jgh:2meLaIF5nk2" resolve="myProject" />
                             </node>
                           </node>
                         </node>
@@ -8805,7 +8802,7 @@
                   <ref role="3cqZAo" node="3SnNvqCbyMq" resolve="cell" />
                 </node>
                 <node concept="1rXfSq" id="4hiugqyzkaT" role="37vLTx">
-                  <ref role="37wK5l" to="zobu:~BreakpointsUiComponentEx.findTraceableCell(jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="findTraceableCell" />
+                  <ref role="37wK5l" to="4jgh:3SnNvqCbyNm" resolve="findTraceableCell" />
                   <node concept="37vLTw" id="2BHiRxgha7L" role="37wK5m">
                     <ref role="3cqZAo" node="3SnNvqCbyMm" resolve="foundCell" />
                   </node>
@@ -9097,7 +9094,7 @@
                         <ref role="3cqZAo" node="3SnNvqCbyOp" resolve="node" />
                       </node>
                       <node concept="37vLTw" id="2BHiRxeuUz_" role="37wK5m">
-                        <ref role="3cqZAo" to="zobu:~BreakpointsUiComponentEx.myProject" resolve="myProject" />
+                        <ref role="3cqZAo" to="4jgh:2meLaIF5nk2" resolve="myProject" />
                       </node>
                     </node>
                   </node>
@@ -9261,7 +9258,7 @@
                         <ref role="3cqZAo" node="3SnNvqCbyQc" resolve="kind" />
                       </node>
                       <node concept="37vLTw" id="2BHiRxeumLW" role="37wK5m">
-                        <ref role="3cqZAo" to="zobu:~BreakpointsUiComponentEx.myProject" resolve="myProject" />
+                        <ref role="3cqZAo" to="4jgh:2meLaIF5nk2" resolve="myProject" />
                       </node>
                     </node>
                   </node>
@@ -9298,7 +9295,7 @@
                 <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
                 <ref role="37wK5l" to="jkm4:~Messages.showErrorDialog(com.intellij.openapi.project.Project,java.lang.String,java.lang.String)" resolve="showErrorDialog" />
                 <node concept="37vLTw" id="2BHiRxeumOS" role="37wK5m">
-                  <ref role="3cqZAo" to="zobu:~BreakpointsUiComponentEx.myProject" resolve="myProject" />
+                  <ref role="3cqZAo" to="4jgh:2meLaIF5nk2" resolve="myProject" />
                 </node>
                 <node concept="3cpWs3" id="3SnNvqCbyQM" role="37wK5m">
                   <node concept="3cpWs3" id="3SnNvqCbyQN" role="3uHU7B">
@@ -9344,7 +9341,7 @@
       <property role="DiZV1" value="false" />
       <node concept="3Tmbuc" id="2meLaIF5mBj" role="1B3o_S" />
       <node concept="3uibUv" id="2meLaIF5lLz" role="3clF45">
-        <ref role="3uigEE" to="zobu:~BreakpointIconRenderrerEx" resolve="BreakpointIconRenderrerEx" />
+        <ref role="3uigEE" to="4jgh:7sMvr7H2RbE" resolve="BreakpointIconRenderrerEx" />
         <node concept="3uibUv" id="2meLaIF5lNO" role="11_B2D">
           <ref role="3uigEE" to="rw00:3SnNvqCaJeL" resolve="ILocationBreakpoint" />
         </node>
@@ -9386,7 +9383,7 @@
       <property role="DiZV1" value="false" />
       <node concept="3Tmbuc" id="2meLaIF5mB_" role="1B3o_S" />
       <node concept="3uibUv" id="2meLaIF5lLq" role="3clF45">
-        <ref role="3uigEE" to="zobu:~BreakpointPainterEx" resolve="BreakpointPainterEx" />
+        <ref role="3uigEE" to="4jgh:7sMvr7H2Rd5" resolve="BreakpointPainterEx" />
         <node concept="3uibUv" id="4d7ZCcwP0Lk" role="11_B2D">
           <ref role="3uigEE" to="rw00:3SnNvqCaJeL" resolve="ILocationBreakpoint" />
         </node>
@@ -9868,7 +9865,7 @@
             <node concept="3clFbS" id="3SnNvqCbyVO" role="3clFbx">
               <node concept="3clFbF" id="3SnNvqCbyVP" role="3cqZAp">
                 <node concept="1rXfSq" id="4hiugqyz8HK" role="3clFbG">
-                  <ref role="37wK5l" to="zobu:~BreakpointsUiComponentEx.addLocationBreakpoint(java.lang.Object)" resolve="addLocationBreakpoint" />
+                  <ref role="37wK5l" to="4jgh:3SnNvqCbyRq" resolve="addLocationBreakpoint" />
                   <node concept="10QFUN" id="3SnNvqCbyVR" role="37wK5m">
                     <node concept="37vLTw" id="2BHiRxgmaNY" role="10QFUP">
                       <ref role="3cqZAo" node="3SnNvqCbyDn" resolve="breakpoint" />
@@ -9928,7 +9925,7 @@
             <node concept="3clFbS" id="3SnNvqCbyW6" role="3clFbx">
               <node concept="3clFbF" id="3SnNvqCbyW7" role="3cqZAp">
                 <node concept="1rXfSq" id="4hiugqyzk65" role="3clFbG">
-                  <ref role="37wK5l" to="zobu:~BreakpointsUiComponentEx.removeLocationBreakpoint(java.lang.Object)" resolve="removeLocationBreakpoint" />
+                  <ref role="37wK5l" to="4jgh:3SnNvqCbyS0" resolve="removeLocationBreakpoint" />
                   <node concept="10QFUN" id="3SnNvqCbyW9" role="37wK5m">
                     <node concept="37vLTw" id="2BHiRxglyHc" role="10QFUP">
                       <ref role="3cqZAo" node="3SnNvqCbyDs" resolve="breakpoint" />
@@ -10181,7 +10178,7 @@
                                   <ref role="37wK5l" to="iwsx:~FileEditorManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
                                   <ref role="1Pybhc" to="iwsx:~FileEditorManager" resolve="FileEditorManager" />
                                   <node concept="37vLTw" id="7Tz7JMVIBU5" role="37wK5m">
-                                    <ref role="3cqZAo" to="zobu:~BreakpointsUiComponentEx.myProject" resolve="myProject" />
+                                    <ref role="3cqZAo" to="4jgh:2meLaIF5nk2" resolve="myProject" />
                                   </node>
                                 </node>
                                 <node concept="3clFbT" id="JAe0ZgF6I6" role="37wK5m">
@@ -12052,7 +12049,7 @@
     <property role="1sVAO0" value="false" />
     <property role="1EXbeo" value="false" />
     <node concept="3uibUv" id="3SnNvqCbxGE" role="1zkMxy">
-      <ref role="3uigEE" to="zobu:~BreakpointPainterEx" resolve="BreakpointPainterEx" />
+      <ref role="3uigEE" to="4jgh:7sMvr7H2Rd5" resolve="BreakpointPainterEx" />
       <node concept="3uibUv" id="4d7ZCcwP0Ll" role="11_B2D">
         <ref role="3uigEE" to="rw00:3SnNvqCaJeL" resolve="ILocationBreakpoint" />
       </node>
@@ -12069,7 +12066,7 @@
       </node>
       <node concept="3clFbS" id="3SnNvqCbxHd" role="3clF47">
         <node concept="XkiVB" id="7sMvr7H2QWB" role="3cqZAp">
-          <ref role="37wK5l" to="zobu:~BreakpointPainterEx.&lt;init&gt;(java.lang.Object)" resolve="BreakpointPainterEx" />
+          <ref role="37wK5l" to="4jgh:7sMvr7H2Rej" />
           <node concept="37vLTw" id="6mkTi9xEfnc" role="37wK5m">
             <ref role="3cqZAo" node="3SnNvqCbxHb" resolve="mpsBreakpoint" />
           </node>
@@ -12089,7 +12086,7 @@
           <node concept="2OqwBi" id="3SnNvqCbxHw" role="3cqZAk">
             <node concept="2OqwBi" id="3SnNvqCbxHx" role="2Oq$k0">
               <node concept="37vLTw" id="6mkTi9xEfGb" role="2Oq$k0">
-                <ref role="3cqZAo" to="zobu:~BreakpointPainterEx.myBreakpoint" resolve="myBreakpoint" />
+                <ref role="3cqZAo" to="4jgh:7sMvr7H2RdQ" resolve="myBreakpoint" />
               </node>
               <node concept="liA8E" id="3SnNvqCbxHA" role="2OqNvi">
                 <ref role="37wK5l" to="rw00:3SnNvqCaJeO" resolve="getLocation" />

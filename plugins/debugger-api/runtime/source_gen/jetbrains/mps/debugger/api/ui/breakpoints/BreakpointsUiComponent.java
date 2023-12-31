@@ -4,7 +4,6 @@ package jetbrains.mps.debugger.api.ui.breakpoints;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx;
-import jetbrains.mps.debug.api.breakpoints.IBreakpoint;
 import jetbrains.mps.debug.api.breakpoints.ILocationBreakpoint;
 import com.intellij.openapi.components.ProjectComponent;
 import jetbrains.mps.logging.Logger;
@@ -23,6 +22,7 @@ import java.util.HashSet;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
+import jetbrains.mps.debug.api.breakpoints.IBreakpoint;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.ide.editor.util.EditorComponentUtil;
 import java.util.List;
@@ -44,7 +44,7 @@ import jetbrains.mps.debug.api.AbstractDebugSession;
 import jetbrains.mps.debug.api.SessionChangeAdapter;
 
 @GeneratedClass(node = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)/4474271214083118038", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
-public class BreakpointsUiComponent extends BreakpointsUiComponentEx<IBreakpoint, ILocationBreakpoint> implements ProjectComponent {
+public class BreakpointsUiComponent extends BreakpointsUiComponentEx<ILocationBreakpoint> implements ProjectComponent {
   private static final Logger LOG = Logger.getLogger(BreakpointsUiComponent.class);
   private static final String BREAKPOINT_ELEMENT = "breakpoint";
   private static final String KIND_TAG = "kind";

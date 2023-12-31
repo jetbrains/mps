@@ -7,12 +7,12 @@ import com.intellij.openapi.project.Project;
 import jetbrains.mps.nodeEditor.LeftMarginMouseListener;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.util.containers.MultiMap;
-import com.intellij.openapi.fileEditor.FileEditorManager;
-import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
 import jetbrains.mps.RuntimeFlags;
 import com.intellij.openapi.application.ApplicationManager;
+import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.ide.editor.util.EditorComponentUtil;
+import com.intellij.openapi.fileEditor.FileEditorManager;
 import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 import java.util.List;
@@ -27,43 +27,35 @@ import java.awt.event.MouseEvent;
 
 /**
  * 
- * 
- * @param <B> breakpoint type
  * @param <L> location breakpoint type
  */
 @GeneratedClass(node = "r:e85e5755-b656-44cc-a19b-af0b99b30b13(jetbrains.mps.debugger.core.breakpoints)/2706316667685001040", model = "r:e85e5755-b656-44cc-a19b-af0b99b30b13(jetbrains.mps.debugger.core.breakpoints)")
-public abstract class BreakpointsUiComponentEx<B, L extends B> {
+public abstract class BreakpointsUiComponentEx<L> {
   protected final Project myProject;
   private final LeftMarginMouseListener myMouseListener = new MyLeftMarginMouseListener();
   private final MyEditorComponentCreateListener myEditorComponentCreationHandler = new MyEditorComponentCreateListener();
   private MessageBusConnection myMessageBusConnection;
   private final MultiMap<L, BreakpointIconRenderrerEx<L>> myBreakpointRender = new MultiMap<L, BreakpointIconRenderrerEx<L>>();
 
-  /**
-   * 
-   * @deprecated use single-argument constructor
-   */
-  @Deprecated(forRemoval = true, since = "2021.3")
-  public BreakpointsUiComponentEx(Project project, FileEditorManager unused) {
-    myProject = project;
-  }
-
   protected BreakpointsUiComponentEx(Project project) {
     myProject = project;
   }
 
   public void init() {
-    myMessageBusConnection = myProject.getMessageBus().connect();
-    myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, myEditorComponentCreationHandler);
     if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
+    myMessageBusConnection = myProject.getMessageBus().connect();
+    myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, myEditorComponentCreationHandler);
     for (EditorComponent editor : EditorComponentUtil.getAllEditorComponents(FileEditorManager.getInstance(myProject), true)) {
       editorComponentCreated(editor);
     }
   }
   public void dispose() {
-    myMessageBusConnection.disconnect();
+    if (myMessageBusConnection != null) {
+      myMessageBusConnection.disconnect();
+      myMessageBusConnection = null;
+    }
     myBreakpointRender.clear();
   }
 
@@ -191,12 +183,6 @@ public abstract class BreakpointsUiComponentEx<B, L extends B> {
   }
   private class MyLeftMarginMouseListener implements LeftMarginMouseListener {
     private MyLeftMarginMouseListener() {
-    }
-    @Override
-    public void mousePressed(MouseEvent e, EditorComponent editorComponent) {
-    }
-    @Override
-    public void mouseReleased(MouseEvent e, EditorComponent editorComponent) {
     }
     @Override
     public void mouseClicked(final MouseEvent e, final EditorComponent editorComponent) {

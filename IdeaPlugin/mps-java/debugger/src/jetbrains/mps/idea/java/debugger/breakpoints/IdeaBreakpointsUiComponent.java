@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2023 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,8 +53,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpoint, BreakpointWithHighlighter> implements ProjectComponent {
-  private DebuggerManagerEx myDebuggerManager;
+public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<BreakpointWithHighlighter> implements ProjectComponent {
   private MessageBusConnection myMessageBusConnection;
 
   public IdeaBreakpointsUiComponent(Project project) {
@@ -62,17 +61,8 @@ public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpo
   }
 
   @Override
-  public void projectOpened() {
-  }
-
-  @Override
-  public void projectClosed() {
-  }
-
-  @Override
   public void initComponent() {
     super.init();
-    myDebuggerManager = DebuggerManagerEx.getInstanceEx(myProject);
     myMessageBusConnection = myProject.getMessageBus().connect();
     myMessageBusConnection.subscribe(XBreakpointListener.TOPIC, new MyBreakpointListener());  }
 
@@ -80,19 +70,12 @@ public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpo
   public void disposeComponent() {
     super.dispose();
     myMessageBusConnection.disconnect();
-    myDebuggerManager = null;
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Idea Breakpoints In MPS Component";
   }
 
   @Override
   protected Set<BreakpointWithHighlighter> getBreakpointsForComponent(@NotNull final EditorComponent component) {
-    final Set<BreakpointWithHighlighter> result = new HashSet<BreakpointWithHighlighter>();
-    final List<Breakpoint> breakpoints = myDebuggerManager.getBreakpointManager().getBreakpoints(); //XDebuggerManager.getInstance(myProject).getBreakpointManager()
+    final Set<BreakpointWithHighlighter> result = new HashSet<>();
+    final List<Breakpoint> breakpoints = DebuggerManagerEx.getInstanceEx(myProject).getBreakpointManager().getBreakpoints();
     SRepository repository = ProjectHelper.getProjectRepository(myProject);
     repository.getModelAccess().runReadAction(new Runnable() {
       @Override
@@ -217,7 +200,7 @@ public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpo
       clearAllEditors();
 
       // XXX why do we remove/re-add all BPs here instead of managing them individually like BreakpointsUiComponent does?
-      final List<Breakpoint> breakpoints = myDebuggerManager.getBreakpointManager().getBreakpoints();
+      final List<Breakpoint> breakpoints = DebuggerManagerEx.getInstanceEx(myProject).getBreakpointManager().getBreakpoints();
       for (Breakpoint breakpoint : breakpoints) {
         if (breakpoint instanceof BreakpointWithHighlighter) {
           BreakpointWithHighlighter breakpointWithHighlighter = (BreakpointWithHighlighter) breakpoint;
