@@ -59,33 +59,33 @@
       <node id="8006573872405334836" at="134,70,135,84" concept="7" />
       <node id="8006573872405339355" at="135,84,136,49" concept="2" />
       <node id="4474271214083124226" at="136,49,137,68" concept="2" />
-      <node id="4474271214083124236" at="138,5,139,47" concept="2" />
-      <node id="4474271214083124252" at="143,34,144,13" concept="8" />
-      <node id="4474271214083124253" at="145,5,146,67" concept="2" />
-      <node id="4474271214083124258" at="146,67,147,76" concept="7" />
-      <node id="4474271214083124269" at="148,66,149,64" concept="2" />
-      <node id="4474271214083124274" at="149,64,150,108" concept="2" />
-      <node id="8006573872405373568" at="151,5,152,163" concept="9" />
-      <node id="8006573872405376091" at="152,163,153,100" concept="9" />
-      <node id="4474271214083124715" at="157,84,158,70" concept="2" />
-      <node id="8006573872405260025" at="158,70,159,84" concept="7" />
-      <node id="8006573872405253602" at="159,84,160,49" concept="2" />
-      <node id="4474271214083124722" at="160,49,161,68" concept="2" />
-      <node id="4474271214083124732" at="161,68,162,49" concept="2" />
-      <node id="4474271214083124753" at="166,84,167,64" concept="2" />
-      <node id="4474271214083124758" at="167,64,168,108" concept="2" />
-      <node id="4474271214083124770" at="168,108,169,49" concept="2" />
-      <node id="8006573872405326759" at="170,5,171,42" concept="2" />
-      <node id="2228821930962947696" at="176,25,177,143" concept="7" />
-      <node id="2228821930962947710" at="178,86,179,47" concept="2" />
-      <node id="4474271214083124826" at="192,29,193,81" concept="7" />
-      <node id="2706316667685001613" at="194,31,195,37" concept="2" />
-      <node id="3023423084377493309" at="206,82,207,76" concept="2" />
-      <node id="3023423084377493323" at="210,83,211,77" concept="2" />
+      <node id="4474271214083124236" at="139,63,140,49" concept="2" />
+      <node id="4474271214083124252" at="145,34,146,13" concept="8" />
+      <node id="4474271214083124253" at="147,5,148,67" concept="2" />
+      <node id="4474271214083124258" at="148,67,149,76" concept="7" />
+      <node id="4474271214083124269" at="150,66,151,64" concept="2" />
+      <node id="4474271214083124274" at="151,64,152,108" concept="2" />
+      <node id="8006573872405373568" at="153,5,154,163" concept="9" />
+      <node id="8006573872405376091" at="154,163,155,100" concept="9" />
+      <node id="4474271214083124715" at="159,84,160,70" concept="2" />
+      <node id="8006573872405260025" at="160,70,161,84" concept="7" />
+      <node id="8006573872405253602" at="161,84,162,49" concept="2" />
+      <node id="4474271214083124722" at="162,49,163,68" concept="2" />
+      <node id="4474271214083124732" at="163,68,164,49" concept="2" />
+      <node id="4474271214083124753" at="168,84,169,64" concept="2" />
+      <node id="4474271214083124758" at="169,64,170,108" concept="2" />
+      <node id="4474271214083124770" at="170,108,171,49" concept="2" />
+      <node id="8006573872405326759" at="172,5,173,42" concept="2" />
+      <node id="2228821930962947696" at="178,25,179,143" concept="7" />
+      <node id="2228821930962947710" at="180,86,181,47" concept="2" />
+      <node id="4474271214083124826" at="194,29,195,81" concept="7" />
+      <node id="2706316667685001613" at="196,31,197,37" concept="2" />
+      <node id="3023423084377493309" at="208,82,209,76" concept="2" />
+      <node id="3023423084377493323" at="212,83,213,77" concept="2" />
       <node id="2706316667685001066" at="62,0,64,0" concept="6" trace="getBreakpointsForComponent#(Ljetbrains/mps/nodeEditor/EditorComponent;)Ljava/util/Set;" />
       <node id="8006573872404827644" at="65,0,67,0" concept="6" trace="getComponentsForBreakpoint#(null)Ljava/util/List;" />
-      <node id="4474271214083123750" at="185,0,187,0" concept="1" trace="MyLeftMarginMouseListener#()V" />
-      <node id="4474271214083123734" at="203,0,205,0" concept="1" trace="MyEditorComponentCreateListener#()V" />
+      <node id="4474271214083123750" at="187,0,189,0" concept="1" trace="MyLeftMarginMouseListener#()V" />
+      <node id="4474271214083123734" at="205,0,207,0" concept="1" trace="MyEditorComponentCreateListener#()V" />
       <node id="9107156942303058942" at="40,0,43,0" concept="1" trace="BreakpointsUiComponentEx#(Lcom/intellij/openapi/project/Project;)V" />
       <node id="3871698434447890143" at="44,22,47,5" concept="5" />
       <node id="4474271214083124001" at="49,128,52,5" concept="4" />
@@ -97,37 +97,38 @@
       <node id="4474271214083124360" at="118,63,121,5" concept="5" />
       <node id="4474271214083124188" at="125,84,128,5" concept="5" />
       <node id="4474271214083124194" at="128,5,131,5" concept="5" />
-      <node id="4474271214083124247" at="142,85,145,5" concept="5" />
-      <node id="2228821930962947705" at="177,143,180,9" concept="4" />
-      <node id="4474271214083124837" at="193,81,196,13" concept="5" />
+      <node id="3180012469779235909" at="138,5,141,5" concept="5" />
+      <node id="4474271214083124247" at="144,85,147,5" concept="5" />
+      <node id="2228821930962947705" at="179,143,182,9" concept="4" />
+      <node id="4474271214083124837" at="195,81,198,13" concept="5" />
       <node id="3910296000321004474" at="54,25,58,5" concept="5" />
-      <node id="2706316667685001493" at="147,76,151,5" concept="4" />
-      <node id="4474271214083123737" at="205,0,209,0" concept="6" trace="editorComponentCreated#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
-      <node id="4474271214083123742" at="209,0,213,0" concept="6" trace="editorComponentDisposed#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
-      <node id="4474271214083124748" at="165,57,170,5" concept="4" />
+      <node id="2706316667685001493" at="149,76,153,5" concept="4" />
+      <node id="4474271214083123737" at="207,0,211,0" concept="6" trace="editorComponentCreated#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
+      <node id="4474271214083123742" at="211,0,215,0" concept="6" trace="editorComponentDisposed#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
+      <node id="4474271214083124748" at="167,57,172,5" concept="4" />
       <node id="4474271214083124281" at="76,0,82,0" concept="6" trace="toggleBreakpoint#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
       <node id="2706316667685001399" at="132,76,138,5" concept="4" />
       <node id="2706316667685006353" at="54,0,61,0" concept="6" trace="dispose#()V" />
       <node id="4474271214083124452" at="89,35,96,5" concept="12" />
-      <node id="4474271214083124710" at="156,54,163,5" concept="4" />
-      <node id="2228821930962906006" at="175,0,182,0" concept="6" trace="run#()V" />
-      <node id="4474271214083124821" at="191,0,198,0" concept="6" trace="run#()V" />
-      <node id="4474271214083124736" at="165,0,173,0" concept="6" trace="removeLocationBreakpoint#(null)V" />
-      <node id="4474271214083124698" at="156,0,165,0" concept="6" trace="addLocationBreakpoint#(null)V" />
-      <node id="2228821930962875349" at="173,36,182,32" concept="2" />
-      <node id="4474271214083124814" at="189,48,198,11" concept="2" />
+      <node id="4474271214083124710" at="158,54,165,5" concept="4" />
+      <node id="2228821930962906006" at="177,0,184,0" concept="6" trace="run#()V" />
+      <node id="4474271214083124821" at="193,0,200,0" concept="6" trace="run#()V" />
+      <node id="4474271214083124736" at="167,0,175,0" concept="6" trace="removeLocationBreakpoint#(null)V" />
+      <node id="4474271214083124698" at="158,0,167,0" concept="6" trace="addLocationBreakpoint#(null)V" />
+      <node id="2228821930962875349" at="175,36,184,32" concept="2" />
+      <node id="4474271214083124814" at="191,48,200,11" concept="2" />
       <node id="2706316667685006349" at="44,0,54,0" concept="6" trace="init#()V" />
-      <node id="2228821930962874067" at="173,0,184,0" concept="6" trace="repaintBreakpoints#()V" />
-      <node id="4474271214083124807" at="188,89,199,7" concept="5" />
+      <node id="2228821930962874067" at="175,0,186,0" concept="6" trace="repaintBreakpoints#()V" />
+      <node id="4474271214083124807" at="190,89,201,7" concept="5" />
       <node id="4474271214083124438" at="87,0,99,0" concept="6" trace="findTraceableCell#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="4474271214083124343" at="102,0,114,0" concept="6" trace="met#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Z" />
-      <node id="4474271214083124240" at="142,0,155,0" concept="6" trace="editorComponentDisposed#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
+      <node id="4474271214083124240" at="144,0,157,0" concept="6" trace="editorComponentDisposed#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
       <node id="4474271214083124329" at="100,95,114,7" concept="7" />
-      <node id="4474271214083123767" at="187,0,201,0" concept="6" trace="mouseClicked#(Ljava/awt/event/MouseEvent;Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
-      <node id="4474271214083124181" at="125,0,141,0" concept="6" trace="editorComponentCreated#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
+      <node id="4474271214083123767" at="189,0,203,0" concept="6" trace="mouseClicked#(Ljava/awt/event/MouseEvent;Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
+      <node id="4474271214083124181" at="125,0,143,0" concept="6" trace="editorComponentCreated#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
       <node id="4474271214083124319" at="100,0,124,0" concept="6" trace="findDebuggableNode#(Ljetbrains/mps/nodeEditor/EditorComponent;II)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="4474271214083124801" at="185,41,185,41" />
-      <scope id="4474271214083124784" at="203,47,203,47" />
+      <scope id="4474271214083124801" at="187,41,187,41" />
+      <scope id="4474271214083124784" at="205,47,205,47" />
       <scope id="9107156942303058946" at="40,55,41,24" />
       <scope id="3871698434447890145" at="45,99,46,13" />
       <scope id="4474271214083124007" at="50,127,51,37" />
@@ -152,11 +153,12 @@
       <scope id="4474271214083124364" at="119,23,120,18" />
       <scope id="4474271214083124192" at="126,34,127,13" />
       <scope id="4474271214083124202" at="129,85,130,66" />
-      <scope id="4474271214083124251" at="143,34,144,13" />
-      <scope id="2228821930962947708" at="178,86,179,47" />
-      <scope id="4474271214083124841" at="194,31,195,37" />
-      <scope id="4474271214083124785" at="206,82,207,76" />
-      <scope id="4474271214083124793" at="210,83,211,77" />
+      <scope id="3180012469779235911" at="139,63,140,49" />
+      <scope id="4474271214083124251" at="145,34,146,13" />
+      <scope id="2228821930962947708" at="180,86,181,47" />
+      <scope id="4474271214083124841" at="196,31,197,37" />
+      <scope id="4474271214083124785" at="208,82,209,76" />
+      <scope id="4474271214083124793" at="212,83,213,77" />
       <scope id="3910296000321004476" at="55,41,57,36" />
       <scope id="2706316667685001066" at="62,0,64,0">
         <var name="component" id="2706316667685001360" />
@@ -164,9 +166,9 @@
       <scope id="8006573872404827644" at="65,0,67,0">
         <var name="breakpoint" id="8006573872404837552" />
       </scope>
-      <scope id="2706316667685001496" at="148,66,150,108" />
-      <scope id="4474271214083123750" at="185,0,187,0" />
-      <scope id="4474271214083123734" at="203,0,205,0" />
+      <scope id="2706316667685001496" at="150,66,152,108" />
+      <scope id="4474271214083123750" at="187,0,189,0" />
+      <scope id="4474271214083123734" at="205,0,207,0" />
       <scope id="9107156942303058942" at="40,0,43,0">
         <var name="project" id="9107156942303082573" />
       </scope>
@@ -176,8 +178,8 @@
       <scope id="4474271214083124303" at="83,0,86,0">
         <var name="cell" id="4474271214083124306" />
       </scope>
-      <scope id="4474271214083124752" at="166,84,169,49" />
-      <scope id="2228821930962947705" at="177,143,180,9">
+      <scope id="4474271214083124752" at="168,84,171,49" />
+      <scope id="2228821930962947705" at="179,143,182,9">
         <var name="component" id="2228821930962947706" />
       </scope>
       <scope id="4474271214083124286" at="76,49,80,5">
@@ -186,29 +188,29 @@
       <scope id="2706316667685001402" at="133,66,137,68">
         <var name="r" id="8006573872405334837" />
       </scope>
-      <scope id="2706316667685001493" at="147,76,151,5">
+      <scope id="2706316667685001493" at="149,76,153,5">
         <var name="breakpoint" id="2706316667685001494" />
       </scope>
-      <scope id="2228821930962906009" at="176,25,180,9">
+      <scope id="2228821930962906009" at="178,25,182,9">
         <var name="allEditorComponents" id="2228821930962947697" />
       </scope>
-      <scope id="4474271214083124825" at="192,29,196,13">
+      <scope id="4474271214083124825" at="194,29,198,13">
         <var name="node" id="4474271214083124827" />
       </scope>
-      <scope id="4474271214083123737" at="205,0,209,0">
+      <scope id="4474271214083123737" at="207,0,211,0">
         <var name="editorComponent" id="4474271214083123740" />
       </scope>
-      <scope id="4474271214083123742" at="209,0,213,0">
+      <scope id="4474271214083123742" at="211,0,215,0">
         <var name="editorComponent" id="4474271214083123745" />
       </scope>
       <scope id="2706316667685006356" at="54,25,59,31" />
       <scope id="4474271214083124456" at="90,26,95,30">
         <var name="node" id="4474271214083124458" />
       </scope>
-      <scope id="4474271214083124714" at="157,84,162,49">
+      <scope id="4474271214083124714" at="159,84,164,49">
         <var name="r" id="8006573872405260026" />
       </scope>
-      <scope id="4474271214083124748" at="165,57,170,5">
+      <scope id="4474271214083124748" at="167,57,172,5">
         <var name="editorComponent" id="4474271214083124750" />
       </scope>
       <scope id="4474271214083124281" at="76,0,82,0">
@@ -217,54 +219,54 @@
       <scope id="2706316667685001399" at="132,76,138,5">
         <var name="breakpoint" id="2706316667685001400" />
       </scope>
-      <scope id="4474271214083124741" at="165,57,171,42" />
+      <scope id="4474271214083124741" at="167,57,173,42" />
       <scope id="2706316667685006353" at="54,0,61,0" />
-      <scope id="4474271214083124703" at="156,54,163,5" />
-      <scope id="4474271214083124710" at="156,54,163,5">
+      <scope id="4474271214083124703" at="158,54,165,5" />
+      <scope id="4474271214083124710" at="158,54,165,5">
         <var name="editorComponent" id="4474271214083124712" />
       </scope>
-      <scope id="2228821930962906006" at="175,0,182,0" />
-      <scope id="4474271214083124821" at="191,0,198,0" />
+      <scope id="2228821930962906006" at="177,0,184,0" />
+      <scope id="4474271214083124821" at="193,0,200,0" />
       <scope id="2706316667685006352" at="44,22,52,5" />
-      <scope id="4474271214083124736" at="165,0,173,0">
+      <scope id="4474271214083124736" at="167,0,175,0">
         <var name="breakpoint" id="4474271214083124739" />
       </scope>
       <scope id="4474271214083125145" at="103,45,112,107">
         <var name="debuggableOrTraceableCell" id="4474271214083125147" />
         <var name="iconAnchorCell" id="4474271214083125159" />
       </scope>
-      <scope id="4474271214083124698" at="156,0,165,0">
+      <scope id="4474271214083124698" at="158,0,167,0">
         <var name="breakpoint" id="4474271214083124701" />
       </scope>
-      <scope id="2228821930962874070" at="173,36,182,32" />
-      <scope id="4474271214083124813" at="189,48,198,11" />
+      <scope id="2228821930962874070" at="175,36,184,32" />
+      <scope id="4474271214083124813" at="191,48,200,11" />
       <scope id="2706316667685006349" at="44,0,54,0" />
       <scope id="4474271214083124443" at="87,64,97,16">
         <var name="cell" id="4474271214083124449" />
         <var name="ti" id="2066255907939142502" />
       </scope>
-      <scope id="4474271214083124246" at="142,85,153,100">
+      <scope id="4474271214083124246" at="144,85,155,100">
         <var name="breakpointsForRoot" id="4474271214083124259" />
       </scope>
-      <scope id="2228821930962874067" at="173,0,184,0" />
-      <scope id="4474271214083124806" at="188,89,199,7" />
+      <scope id="2228821930962874067" at="175,0,186,0" />
+      <scope id="4474271214083124806" at="190,89,201,7" />
       <scope id="4474271214083124438" at="87,0,99,0">
         <var name="foundCell" id="4474271214083124441" />
       </scope>
       <scope id="4474271214083124343" at="102,0,114,0">
         <var name="object" id="4474271214083124346" />
       </scope>
-      <scope id="4474271214083124240" at="142,0,155,0">
+      <scope id="4474271214083124240" at="144,0,157,0">
         <var name="editorComponent" id="4474271214083124243" />
       </scope>
-      <scope id="4474271214083124187" at="125,84,139,47">
-        <var name="breakpointsForRoot" id="4474271214083124209" />
-      </scope>
-      <scope id="4474271214083123767" at="187,0,201,0">
+      <scope id="4474271214083123767" at="189,0,203,0">
         <var name="e" id="4474271214083123770" />
         <var name="editorComponent" id="4474271214083123772" />
       </scope>
-      <scope id="4474271214083124181" at="125,0,141,0">
+      <scope id="4474271214083124187" at="125,84,141,5">
+        <var name="breakpointsForRoot" id="4474271214083124209" />
+      </scope>
+      <scope id="4474271214083124181" at="125,0,143,0">
         <var name="editorComponent" id="4474271214083124184" />
       </scope>
       <scope id="4474271214083124328" at="100,95,122,27">
@@ -276,12 +278,12 @@
         <var name="x" id="4474271214083124324" />
         <var name="y" id="4474271214083124326" />
       </scope>
-      <unit id="2228821930962906004" at="174,56,182,5" name="jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx$2" />
-      <unit id="4474271214083124820" at="190,94,198,9" name="jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx$MyLeftMarginMouseListener$1" />
-      <unit id="4474271214083123731" at="202,0,214,0" name="jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx$MyEditorComponentCreateListener" />
+      <unit id="2228821930962906004" at="176,56,184,5" name="jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx$2" />
+      <unit id="4474271214083124820" at="192,94,200,9" name="jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx$MyLeftMarginMouseListener$1" />
+      <unit id="4474271214083123731" at="204,0,216,0" name="jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx$MyEditorComponentCreateListener" />
       <unit id="4474271214083124341" at="101,89,114,5" name="jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx$1" />
-      <unit id="4474271214083123747" at="184,0,202,0" name="jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx$MyLeftMarginMouseListener" />
-      <unit id="2706316667685001040" at="32,0,215,0" name="jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx" />
+      <unit id="4474271214083123747" at="186,0,204,0" name="jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx$MyLeftMarginMouseListener" />
+      <unit id="2706316667685001040" at="32,0,217,0" name="jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx" />
     </file>
   </root>
   <root nodeRef="r:e85e5755-b656-44cc-a19b-af0b99b30b13(jetbrains.mps.debugger.core.breakpoints)/8589065642488591082">

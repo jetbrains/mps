@@ -136,7 +136,9 @@ public abstract class BreakpointsUiComponentEx<L> {
       myBreakpointRender.putValue(breakpoint, r);
       editorComponent.getLeftEditorHighlighter().addIconRenderer(r);
     }
-    editorComponent.repaintExternalComponent();
+    if (SetSequence.fromSet(breakpointsForRoot).isNotEmpty()) {
+      editorComponent.repaintExternalComponent();
+    }
   }
 
   protected void editorComponentDisposed(@Nullable EditorComponent editorComponent) {

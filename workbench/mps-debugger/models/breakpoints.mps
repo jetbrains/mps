@@ -266,6 +266,7 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
+      <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
     </language>
   </registry>
   <node concept="312cEu" id="7sMvr7H2RbE">
@@ -1876,14 +1877,24 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="3SnNvqCbyKc" role="3cqZAp">
-          <node concept="2OqwBi" id="3SnNvqCbyKd" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxghfqD" role="2Oq$k0">
-              <ref role="3cqZAo" node="3SnNvqCbyJo" resolve="editorComponent" />
+        <node concept="3clFbJ" id="2KxF7SEwgh5" role="3cqZAp">
+          <node concept="3clFbS" id="2KxF7SEwgh7" role="3clFbx">
+            <node concept="3clFbF" id="3SnNvqCbyKc" role="3cqZAp">
+              <node concept="2OqwBi" id="3SnNvqCbyKd" role="3clFbG">
+                <node concept="37vLTw" id="2BHiRxghfqD" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3SnNvqCbyJo" resolve="editorComponent" />
+                </node>
+                <node concept="liA8E" id="3SnNvqCbyKf" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.repaintExternalComponent()" resolve="repaintExternalComponent" />
+                </node>
+              </node>
             </node>
-            <node concept="liA8E" id="3SnNvqCbyKf" role="2OqNvi">
-              <ref role="37wK5l" to="exr9:~EditorComponent.repaintExternalComponent()" resolve="repaintExternalComponent" />
+          </node>
+          <node concept="2OqwBi" id="2KxF7SEwo6Q" role="3clFbw">
+            <node concept="37vLTw" id="2KxF7SEwk2F" role="2Oq$k0">
+              <ref role="3cqZAo" node="3SnNvqCbyJL" resolve="breakpointsForRoot" />
             </node>
+            <node concept="3GX2aA" id="2KxF7SEwuEi" role="2OqNvi" />
           </node>
         </node>
       </node>

@@ -37,8 +37,6 @@ import jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.debugger.core.breakpoints.BreakpointIconRenderrerEx;
 import jetbrains.mps.debugger.core.breakpoints.BreakpointPainterEx;
-import org.jdom.Element;
-import org.jdom.Attribute;
 import jetbrains.mps.debug.api.breakpoints.IBreakpointListener;
 import jetbrains.mps.debug.api.AbstractDebugSession;
 import jetbrains.mps.debug.api.SessionChangeAdapter;
@@ -46,8 +44,6 @@ import jetbrains.mps.debug.api.SessionChangeAdapter;
 @GeneratedClass(node = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)/4474271214083118038", model = "r:e8d15a56-f89d-47fc-ac9f-8a35d3539ac3(jetbrains.mps.debugger.api.ui.breakpoints)")
 public class BreakpointsUiComponent extends BreakpointsUiComponentEx<ILocationBreakpoint> implements ProjectComponent {
   private static final Logger LOG = Logger.getLogger(BreakpointsUiComponent.class);
-  private static final String BREAKPOINT_ELEMENT = "breakpoint";
-  private static final String KIND_TAG = "kind";
   private final MPSProject myMPSProject;
   private final BreakpointManagerComponent myBreakpointsManagerComponent;
 
@@ -69,9 +65,6 @@ public class BreakpointsUiComponent extends BreakpointsUiComponentEx<ILocationBr
     DebugSessionManagerComponent component = DebugSessionManagerComponent.getInstance(myProject);
     component.addDebugSessionListener(myDebugSessionListener);
     myBreakpointsManagerComponent.addChangeListener(myBreakpointManagerListener);
-    // setBreakpointsIO re-reads BP state and notifies about added/removed BP, which we need our myBreakpointManagerListener
-    // to process, hence first addChangeListener, then setBreakpointsIO
-    myBreakpointsManagerComponent.setBreakpointsIO(new MyBreakpointsIO(myProject));
   }
   @Override
   public void disposeComponent() {
@@ -217,43 +210,6 @@ public class BreakpointsUiComponent extends BreakpointsUiComponentEx<ILocationBr
   }
   public static BreakpointsUiComponent getInstance(Project project) {
     return project.getComponent(BreakpointsUiComponent.class);
-  }
-  private static class MyBreakpointsIO implements BreakpointManagerComponent.IBreakpointsIO {
-    private final Project myProject;
-
-    /*package*/ MyBreakpointsIO(Project ideaProject) {
-      myProject = ideaProject;
-    }
-
-    @Override
-    public IBreakpoint readBreakpoint(@NotNull Element element) {
-      String kindName = element.getAttributeValue(BreakpointsUiComponent.KIND_TAG);
-      IBreakpointKind kind = BreakpointProvidersManager.getInstance().getKind(kindName);
-      if (kind == null) {
-        return null;
-      }
-      IBreakpointsProvider provider = BreakpointProvidersManager.getInstance().getProvider(kind);
-      if (provider == null) {
-        return null;
-      }
-      return provider.loadFromState((Element) element.getChildren().get(0), kind, myProject);
-    }
-    @Override
-    public Element writeBreakpoint(@NotNull IBreakpoint breakpoint) {
-      IBreakpointKind kind = breakpoint.getKind();
-      IBreakpointsProvider provider = BreakpointProvidersManager.getInstance().getProvider(kind);
-      if (provider == null) {
-        return null;
-      }
-      Element element = provider.saveToState(breakpoint);
-      if (element != null) {
-        Element breakpointElement = new Element(BreakpointsUiComponent.BREAKPOINT_ELEMENT);
-        breakpointElement.setAttribute(new Attribute(BreakpointsUiComponent.KIND_TAG, kind.getName()));
-        breakpointElement.addContent(element);
-        return breakpointElement;
-      }
-      return null;
-    }
   }
 
   private class MyBreakpointManagerListener implements BreakpointManagerComponent.IBreakpointManagerListener {
