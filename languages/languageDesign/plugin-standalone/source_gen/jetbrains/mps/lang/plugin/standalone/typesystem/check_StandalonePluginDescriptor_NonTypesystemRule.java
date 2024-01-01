@@ -10,11 +10,11 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.project.SModuleOperations;
-import jetbrains.mps.project.Solution;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
+import jetbrains.mps.project.Solution;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -27,20 +27,21 @@ public class check_StandalonePluginDescriptor_NonTypesystemRule extends Abstract
     if (SModuleOperations.canSupplyExtensionsForMPS(module)) {
       return;
     }
-    if (module instanceof Solution) {
+    // account for scenario when a module is IDEA-compiled and contributes lang.plugin extensions through IDEA extpoint mechanism
+    if (SModuleOperations.classloadingManagedByMPS(module)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(spd, "This solution needs 'plugin' kind to facilitate class loading for plugin extensions", "r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)", "7318816821275121652", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(spd, "This module needs to specify it is capable to provide extensions to MPS to facilitate proper class loading", "r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)", "7318816821275121652", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.plugin.standalone.typesystem.ActivatePluginSolution_QuickFix", "7318816821275131240", false);
           intentionProvider.putArgument("module", (Solution) module);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
-    } else {
+    } else if (!(SModuleOperations.classesAvailableToMPS(module))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(spd, "This module is not capable to load classes, plugin extensions may not function properly", "r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)", "7318816821275124175", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(spd, "This module is not capable to load classes, plugin extensions can not function properly", "r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)", "3180012469778172852", null, errorTarget);
       }
     }
   }

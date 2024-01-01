@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-b0eid9908dq50gc96a3iknz6u405xqy">
+<product version="3" modelHash="-3zi5f2oaexlqoj0gpvai0wkgq0sari2">
   <files names="ActivatePluginSolution_QuickFix.java:Typeof_ApplicationPluginType_SubtypingRule.java:Typeof_ProjectPluginType_SubtypingRule.java:TypesystemDescriptor.java:check_StandalonePluginDescriptor_NonTypesystemRule.java:typeof_GetPreferencesComponentInProjectOperation_InferenceRule.java:typeof_GetToolInProjectOperation_InferenceRule.java:typeof_PlatformAccessExpression_InferenceRule.java" />
 </product>
 
