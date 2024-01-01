@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -100,14 +100,13 @@ public class SearchPanel extends AbstractSearchPanel {
     }
     if (rootCell instanceof EditorCell_Collection) {
       EditorCell_Collection collection = (EditorCell_Collection) rootCell;
-      List<EditorCell_Label> editorCell_labelList = CollectionUtil.filter(EditorCell_Label.class, collection.dfsCells());
-      for (EditorCell_Label label : editorCell_labelList) {
+      collection.dfsCells().stream().filter(EditorCell_Label.class::isInstance).map(EditorCell_Label.class::cast).forEach(label -> {
         if (PunctuationUtil.hasLeftGap(label)) {
           sb.append(' ');
         }
         sb.append(label.getRenderedText());
-      }
-      cells.addAll(editorCell_labelList);
+        cells.add(label);
+      });
     }
     return new Pair<>(cells, sb.toString());
   }

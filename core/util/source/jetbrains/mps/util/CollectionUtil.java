@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,10 @@ import java.util.Set;
  * @author Kostik
  */
 public class CollectionUtil {
+  /**
+   * @deprecated pretty much useless, better alternative is {@code Stream.filter(Class::isInstance).map(Class::cast)}
+   */
+  @Deprecated(since = "2023.3")
   public static <T, F extends T> List<F> filter(Class<F> cls, List<? extends T> l) {
     List<F> result = new ArrayList<>();
     for (T t : l) {
@@ -41,6 +45,10 @@ public class CollectionUtil {
     return result;
   }
 
+  /**
+   * @deprecated pretty much useless, better alternative is {@code Stream.filter(Class::isInstance).map(Class::cast)}
+   */
+  @Deprecated(since = "2023.3")
   public static <T, F extends T> Set<F> filter(Class<F> cls, Set<? extends T> s) {
     Set<F> result = new LinkedHashSet<>();
     for (T t : s) {
