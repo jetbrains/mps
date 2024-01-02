@@ -34,9 +34,6 @@
 
   <project-components>
     <component>
-      <implementation-class>jetbrains.mps.idea.java.debugger.IdeaDebuggerPositionHighlighter</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.idea.java.refactoring.MoveRenameBatch</implementation-class>
     </component>
     <component>
@@ -90,6 +87,7 @@
     <!-- BreakpointEditorIntegration service comes together with EditorIntegrationListener projectListener, below -->
     <projectService serviceInterface="jetbrains.mps.debugger.core.breakpoints.BreakpointEditorIntegration"
                     serviceImplementation="jetbrains.mps.idea.java.debugger.breakpoints.IdeaBreakpointsUiComponent"/>
+    <projectService serviceImplementation="jetbrains.mps.idea.java.debugger.IdeaDebuggerPositionHighlighter"/>
   </extensions>
 
   <projectListeners>

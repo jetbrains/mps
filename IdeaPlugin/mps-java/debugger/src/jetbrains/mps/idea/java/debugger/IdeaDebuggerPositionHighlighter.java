@@ -26,7 +26,7 @@ import com.intellij.execution.ExecutionManager;
 import com.intellij.execution.Executor;
 import com.intellij.execution.ui.RunContentDescriptor;
 import com.intellij.execution.ui.RunContentWithExecutorListener;
-import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.debugger.core.CurrentLinePositionComponentEx;
 import jetbrains.mps.idea.java.trace.MpsSourcePosition;
@@ -35,10 +35,16 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.Collection;
 
-public class IdeaDebuggerPositionHighlighter extends CurrentLinePositionComponentEx<DebuggerSession> implements ProjectComponent {
+public class IdeaDebuggerPositionHighlighter extends CurrentLinePositionComponentEx<DebuggerSession> implements Disposable {
 
   public IdeaDebuggerPositionHighlighter(Project project) {
     super(project);
+    init();
+  }
+
+  @Override
+  public void dispose() {
+    super.dispose();
   }
 
   @Override
@@ -66,7 +72,7 @@ public class IdeaDebuggerPositionHighlighter extends CurrentLinePositionComponen
   }
 
   /*package*/ static IdeaDebuggerPositionHighlighter getInstance(Project project) {
-    return project.getComponent(IdeaDebuggerPositionHighlighter.class);
+    return project.getService(IdeaDebuggerPositionHighlighter.class);
   }
 
   public static class DebuggerManagerListener implements com.intellij.debugger.impl.DebuggerManagerListener {
