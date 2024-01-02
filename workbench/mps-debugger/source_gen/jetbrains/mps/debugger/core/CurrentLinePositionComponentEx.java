@@ -42,7 +42,7 @@ public abstract class CurrentLinePositionComponentEx<S> {
     myProject = project;
   }
 
-  protected void init() {
+  protected final void init() {
     myMessageBusConnection = myProject.getMessageBus().connect();
     myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, myEditorComponentCreationHandler);
     ProjectHelper.getModelAccess(myProject).addCommandListener(myCommandListener);

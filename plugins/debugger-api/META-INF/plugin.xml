@@ -11,9 +11,6 @@
 
   <project-components>
     <component>
-      <implementation-class>jetbrains.mps.debugger.api.ui.executionPoint.CurrentLinePositionComponent</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.debugger.api.ui.executionPoint.InTextPositionComponent</implementation-class>
     </component>
   </project-components>
@@ -52,12 +49,18 @@
     <!-- BreakpointEditorIntegration service comes together with EditorIntegrationListener projectListener, below -->
     <projectService serviceInterface="jetbrains.mps.debugger.core.breakpoints.BreakpointEditorIntegration"
                     serviceImplementation="jetbrains.mps.debugger.api.ui.breakpoints.BreakpointsUiComponent"/>
+    <projectService serviceImplementation="jetbrains.mps.debugger.api.ui.executionPoint.CurrentLinePositionComponent"/>
   </extensions>
 
   <projectListeners>
     <!-- this listener works together with BreakpointEditorIntegration service, above-->
     <listener class="jetbrains.mps.debugger.core.breakpoints.EditorIntegrationListener"
               topic="jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+    <listener class="jetbrains.mps.debugger.api.ui.executionPoint.CurrentLinePositionComponent$DebugListener"
+              topic="jetbrains.mps.debug.api.DebugSessionManagerComponent$DebugSessionListener"
+              activeInTestMode="false"
               activeInHeadlessMode="false"/>
   </projectListeners>
 
