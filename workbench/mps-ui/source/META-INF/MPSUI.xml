@@ -61,6 +61,7 @@
     <mps.solutionProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.DefaultSolutionProjectTemplate"/>
     <mps.projectGroupTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.OtherProjectsGroup"/>
     <mps.otherProjectTemplateEP implementation="jetbrains.mps.workbench.dialogs.project.newproject.EmptyProjectTemplate"/>
+    <iconMapper mappingFile="MPSIconsIconMappings.json"/>
   </extensions>
 
   <extensions defaultExtensionNs="com.intellij">

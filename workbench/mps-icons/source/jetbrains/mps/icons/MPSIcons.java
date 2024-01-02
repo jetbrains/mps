@@ -24,7 +24,7 @@ import javax.swing.Icon;
 public class MPSIcons {
   private static Icon load(String path) {
     // XXX used to be IconLoader.getIcon(), but c.i.icons.AllIcons uses IconManager, why wouldn't MPS then?
-    return IconManager.getInstance().getIcon(path, MPSIcons.class);
+    return IconManager.getInstance().getIcon(path, MPSIcons.class.getClassLoader());
   }
   
   public static class Ant {
