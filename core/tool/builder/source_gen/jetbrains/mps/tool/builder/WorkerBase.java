@@ -136,10 +136,18 @@ public abstract class WorkerBase {
       //      to make sure log is ready before any code in EnvBase or Launcher uses it.
       Logger.getLogger("").setLevel(myWhatToDo.getLogLevel());
       myEnvironment = createEnvironment();
-      work();
-      myEnvironment.flushAllEvents();
-      dispose();
+      try {
+        work();
+      } finally {
+        myEnvironment.flushAllEvents();
+        dispose();
+      }
+      // if work() does failBuild(), e.g. like GeneratorWorker does, we either pass w/o error or already in catch(BuildFailureException)
+      failBuild(getClass().getSimpleName());
       System.exit(0);
+    } catch (BuildFailureException ex) {
+      System.err.println(ex.getMessage());
+      System.exit(ex.getSystemExitCode());
     } catch (Throwable e) {
       error("workFromMain", e);
       System.exit(1);
@@ -182,7 +190,7 @@ public abstract class WorkerBase {
   }
   protected void failBuild(String name) {
     if (!(myErrors.isEmpty()) && myWhatToDo.getFailOnError()) {
-      throw new RuntimeException(this.formatErrorsReport(name).toString());
+      throw new BuildFailureException(this.formatErrorsReport(name).toString(), -13);
     }
   }
 
@@ -260,5 +268,18 @@ public abstract class WorkerBase {
     StringWriter writer = new StringWriter();
     e.printStackTrace(new PrintWriter(writer));
     return writer.getBuffer();
+  }
+
+  /*package*/ static class BuildFailureException extends RuntimeException {
+    private final int myExitCode;
+
+    /*package*/ BuildFailureException(String message, int systemExitCode) {
+      super(message);
+      myExitCode = systemExitCode;
+    }
+
+    public int getSystemExitCode() {
+      return myExitCode;
+    }
   }
 }
