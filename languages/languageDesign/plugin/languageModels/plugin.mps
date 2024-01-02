@@ -741,7 +741,7 @@
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="plugin" />
     <node concept="1QGGSu" id="P5ZkC6wcb$" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/pluginModel.svg" />
+      <property role="1iqoE4" value="${module}/icons/pluginModel.png" />
     </node>
     <node concept="2V$Bhx" id="2LiUEk8oQ$m" role="QG$2i">
       <property role="2V$B1T" value="28f9e497-3b42-4291-aeba-0a1039153ab1" />

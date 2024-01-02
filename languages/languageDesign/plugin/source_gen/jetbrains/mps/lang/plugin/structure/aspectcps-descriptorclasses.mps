@@ -2073,7 +2073,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="bp" role="37wK5m">
                           <node concept="1QGGSu" id="bq" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/actionNew.svg" />
+                            <property role="1iqoE4" value="${module}/icons/actionNew.png" />
                             <uo k="s:originTrace" v="n:5586841135286517110" />
                           </node>
                         </node>
@@ -2166,7 +2166,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="bW" role="37wK5m">
                           <node concept="1QGGSu" id="bX" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/actionGroupNew.svg" />
+                            <property role="1iqoE4" value="${module}/icons/actionGroupNew.png" />
                             <uo k="s:originTrace" v="n:5586841135286517109" />
                           </node>
                         </node>
@@ -5190,7 +5190,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="tA" role="37wK5m">
                           <node concept="1QGGSu" id="tB" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/tabbedEditor.svg" />
+                            <property role="1iqoE4" value="${module}/icons/tabbedEditor.png" />
                             <uo k="s:originTrace" v="n:5586841135286517105" />
                           </node>
                         </node>
@@ -6465,7 +6465,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="$X" role="37wK5m">
                           <node concept="1QGGSu" id="$Y" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/ideaPluginDeclaration.svg" />
+                            <property role="1iqoE4" value="${module}/icons/ideaPluginDeclaration.png" />
                             <uo k="s:originTrace" v="n:5586841135286517111" />
                           </node>
                         </node>
@@ -7176,7 +7176,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="Da" role="37wK5m">
                           <node concept="1QGGSu" id="Db" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/keymapChangesDeclaration.svg" />
+                            <property role="1iqoE4" value="${module}/icons/keymapChangesDeclaration.png" />
                             <uo k="s:originTrace" v="n:5586841135286517108" />
                           </node>
                         </node>

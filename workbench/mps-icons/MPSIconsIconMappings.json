@@ -1,0 +1,38 @@
+{
+  "source": {
+    "expUi": {
+      "models": {
+        "accessoryModel.svg": "icons/accessoryModel.png",
+        "aspect.svg": "icons/aspect.png",
+        "templatesModel.svg": "icons/templatesModel.png",
+        "tests.svg": "icons/tests.png"
+      },
+      "action.svg": "icons/action.png",
+      "behavior.svg": "icons/behavior.png",
+      "constraint.svg": "icons/constraint.png",
+      "dataFlow.svg": "icons/dataFlow.png",
+      "default.svg": "icons/default.png",
+      "devKit.svg": "icons/devKit.png",
+      "editor.svg": "icons/editor.png",
+      "generator.svg": "icons/generator.png",
+      "language.svg": "icons/language.png",
+      "mappingConf.svg": "icons/mappingConf.png",
+      "model.svg": "icons/model.png",
+      "node.svg": "icons/node.png",
+      "projectModels.svg": "icons/projectModels.png",
+      "reduction.svg": "icons/reduction.png",
+      "refactoring.svg": "icons/refactoring.png",
+      "rootNode.svg": "icons/rootNode.png",
+      "rule.svg": "icons/rule.png",
+      "solution.svg": "icons/solution.png",
+      "structure.svg": "icons/structure.png",
+      "textGen.svg": "icons/textGen.png",
+      "transient.svg": "icons/transient.png",
+      "transientDisable.svg": "icons/transientDisable.png",
+      "type.svg": "icons/type.png",
+      "unknown.svg": "icons/unknown.png",
+      "usagesFinder.svg": "icons/usagesFinder.png",
+      "usagesResultOverlay.svg": "icons/usagesResultOverlay.png"
+    }
+  }
+}

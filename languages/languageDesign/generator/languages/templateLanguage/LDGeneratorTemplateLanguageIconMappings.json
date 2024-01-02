@@ -1,0 +1,10 @@
+{
+  "icons": {
+    "expUi": {
+      "generatorScript.svg": "icons/generatorScript.png",
+      "mappingConf.svg": "icons/mappingConf.png",
+      "switch.svg": "icons/switch.png",
+      "templateFragment.svg": "icons/templateFragment.png"
+    }
+  }
+}

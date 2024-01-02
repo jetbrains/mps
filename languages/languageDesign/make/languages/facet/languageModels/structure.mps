@@ -122,7 +122,7 @@
       <ref role="PrY4T" to="tpee:3ZSHU3pg$bx" resolve="IWillBeClassifier" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJS_" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/facetDeclaration.svg" />
+      <property role="1iqoE4" value="${module}/icons/facetDeclaration.png" />
     </node>
   </node>
   <node concept="1TIwiD" id="5$iCEGsO$KX">

@@ -168,7 +168,7 @@
       <ref role="PrY4T" to="tpee:hOIEacT" resolve="IBLDeprecatable" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJPF" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/namedTuple.svg" />
+      <property role="1iqoE4" value="${module}/icons/namedTuple.png" />
     </node>
   </node>
   <node concept="1TIwiD" id="i2lGYlf">

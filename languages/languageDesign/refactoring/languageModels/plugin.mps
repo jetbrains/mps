@@ -76,7 +76,7 @@
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="refactorings" />
     <node concept="1QGGSu" id="P5ZkC6wceM" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/refactoringsModel.svg" />
+      <property role="1iqoE4" value="${module}/icons/refactoringsModel.png" />
     </node>
     <node concept="2V$Bhx" id="7XWR6$5gjAW" role="QG$2i">
       <property role="2V$B1T" value="3ecd7c84-cde3-45de-886c-135ecc69b742" />

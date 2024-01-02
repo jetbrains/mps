@@ -81,7 +81,7 @@
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="dataFlow" />
     <node concept="1QGGSu" id="P5ZkC6w36T" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/dataFlowModel.svg" />
+      <property role="1iqoE4" value="${module}/icons/dataFlowModel.png" />
     </node>
     <node concept="2V$Bhx" id="1ZE6IpOfoDP" role="QG$2i">
       <property role="2V$B1T" value="7fa12e9c-b949-4976-b4fa-19accbc320b4" />

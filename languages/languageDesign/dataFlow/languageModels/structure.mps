@@ -97,7 +97,7 @@
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQ3" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/dataFlow.svg" />
+      <property role="1iqoE4" value="${module}/icons/dataFlow.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYQAk" role="bvy1s">
       <property role="1sEMCp" value="data-flow.html#commandsofintermediatelanguage" />

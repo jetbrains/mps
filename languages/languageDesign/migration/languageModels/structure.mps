@@ -796,7 +796,7 @@
       <ref role="PrY4T" to="oubp:UBgfI9exfH" resolve="AutoInitDSLClass" />
     </node>
     <node concept="1QGGSu" id="6d3iXjYjpAh" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/migrationScript.svg" />
+      <property role="1iqoE4" value="${module}/icons/migrationScript.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYQAk" role="bvy1s">
       <property role="1sEMCp" value="migrations.html#defininglanguagemigrations" />

@@ -134,7 +134,7 @@
       <ref role="20lvS9" to="tp4f:hEBZ0aj" resolve="DefaultClassifierFieldDeclaration" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQ0" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/projectPlugin.svg" />
+      <property role="1iqoE4" value="${module}/icons/projectPlugin.png" />
     </node>
   </node>
   <node concept="1TIwiD" id="qKmr2orM1o">
@@ -169,7 +169,7 @@
       <ref role="20lvS9" to="tp4f:hEBZ0aj" resolve="DefaultClassifierFieldDeclaration" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJPZ" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/applicationPlugin.svg" />
+      <property role="1iqoE4" value="${module}/icons/applicationPlugin.png" />
     </node>
   </node>
   <node concept="1TIwiD" id="qKmr2orM1u">

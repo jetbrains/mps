@@ -120,7 +120,7 @@
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQD" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/usagesFinder.svg" />
+      <property role="1iqoE4" value="${module}/icons/usagesFinder.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYQAk" role="bvy1s">
       <property role="1sEMCp" value="find-usages.html#finders" />

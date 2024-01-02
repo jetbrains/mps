@@ -212,7 +212,7 @@
       <ref role="20lvS9" to="tpck:gw2VY9q" resolve="BaseConcept" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRn" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/templateFragment.svg" />
+      <property role="1iqoE4" value="${module}/icons/templateFragment.png" />
     </node>
     <node concept="1sEMCm" id="12TOPj2wzKF" role="bvy1s">
       <property role="1sEMCp" value="mps-generator.html#externaltemplate" />
@@ -335,7 +335,7 @@
       <ref role="20lvS9" node="7u6$QPxIdFU" resolve="ReferenceReductionRule" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRq" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/mappingConf.svg" />
+      <property role="1iqoE4" value="${module}/icons/mappingConf.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYQAk" role="bvy1s">
       <property role="1sEMCp" value="mps-generator.html#mappingconfiguration" />
@@ -407,7 +407,7 @@
       <ref role="20lvS9" node="h1lLz4x" resolve="GeneratorMessage" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRo" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/switch.svg" />
+      <property role="1iqoE4" value="${module}/icons/switch.png" />
     </node>
     <node concept="1sEMCm" id="12TOPj2wz_P" role="bvy1s">
       <property role="1sEMCp" value="mps-generator.html#templateswitch" />
@@ -1111,7 +1111,7 @@
       <ref role="PrY4T" to="tpck:19gBtYEv0ln" resolve="ImplementationPart" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRp" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/generatorScript.svg" />
+      <property role="1iqoE4" value="${module}/icons/generatorScript.png" />
     </node>
     <node concept="1sEMCm" id="12TOPj2wzYJ" role="bvy1s">
       <property role="1sEMCp" value="mps-generator.html#mappingscript" />

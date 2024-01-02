@@ -95,39 +95,39 @@ public class MPSIcons {
   }
 
   public static class Nodes {
-    public static final Icon Action = load("/nodes/action.svg");
-    public static final Icon Behavior = load("/nodes/behavior.svg");
-    public static final Icon Constraint = load("/nodes/constraint.svg");
-    public static final Icon DataFlow = load("/nodes/dataFlow.svg");
-    public static final Icon Default = load("/nodes/default.svg");
-    public static final Icon DevKit = load("/nodes/devkit.svg");
-    public static final Icon Editor = load("/nodes/editor.svg");
-    public static final Icon Generator = load("/nodes/generator.svg");
-    public static final Icon Language = load("/nodes/language.svg");
+    public static final Icon Action = load("/nodes/action.png");
+    public static final Icon Behavior = load("/nodes/behavior.png");
+    public static final Icon Constraint = load("/nodes/constraint.png");
+    public static final Icon DataFlow = load("/nodes/dataFlow.png");
+    public static final Icon Default = load("/nodes/default.png");
+    public static final Icon DevKit = load("/nodes/devkit.png");
+    public static final Icon Editor = load("/nodes/editor.png");
+    public static final Icon Generator = load("/nodes/generator.png");
+    public static final Icon Language = load("/nodes/language.png");
     public static final Icon LanguageRuntime = LayeredIcon.create(Language, AllIcons.Nodes.Locked);
-    public static final Icon MappingConfig = load("/nodes/mappingConf.svg");
-    public static final Icon Model = load("/nodes/model.svg");
-    public static final Icon Node = load("/nodes/node.svg");
-    public static final Icon Reduction = load("/nodes/reduction.svg");
-    public static final Icon Refactoring = load("/nodes/refactoring.svg");
-    public static final Icon RootNode = load("/nodes/rootNode.svg");
-    public static final Icon Rule = load("/nodes/rule.svg");
-    public static final Icon Solution = load("/nodes/solution.svg");
-    public static final Icon Structure = load("/nodes/structure.svg");
+    public static final Icon MappingConfig = load("/nodes/mappingConf.png");
+    public static final Icon Model = load("/nodes/model.png");
+    public static final Icon Node = load("/nodes/node.png");
+    public static final Icon Reduction = load("/nodes/reduction.png");
+    public static final Icon Refactoring = load("/nodes/refactoring.png");
+    public static final Icon RootNode = load("/nodes/rootNode.png");
+    public static final Icon Rule = load("/nodes/rule.png");
+    public static final Icon Solution = load("/nodes/solution.png");
+    public static final Icon Structure = load("/nodes/structure.png");
     public static final Icon TestModel = new LayeredIcon(Nodes.Model, AllIcons.Nodes.JunitTestMark);
-    public static final Icon TextGen = load("/nodes/textGen.svg");
-    public static final Icon TransientModule = load("/nodes/transient.svg");
-    public static final Icon TransientModuleDisabled = load("/nodes/transientDisable.svg");
-    public static final Icon Type = load("/nodes/type.svg");
-    public static final Icon Unknown = load("/nodes/unknown.svg");
-    public static final Icon UsagesResultOverlay = load("/nodes/usagesResultOverlay.svg");
-    public static final Icon UsagesFinder = load("/nodes/usagesFinder.svg");
+    public static final Icon TextGen = load("/nodes/textGen.png");
+    public static final Icon TransientModule = load("/nodes/transient.png");
+    public static final Icon TransientModuleDisabled = load("/nodes/transientDisable.png");
+    public static final Icon Type = load("/nodes/type.png");
+    public static final Icon Unknown = load("/nodes/unknown.png");
+    public static final Icon UsagesResultOverlay = load("/nodes/usages-result-overlay.png");
+    public static final Icon UsagesFinder = load("/nodes/usagesFinder.png");
 
     public static class Models {
-      public static final Icon AspectModel = load("/nodes/models/aspect.svg");
-      public static final Icon TemplatesModel = load("/nodes/models/templatesModel.svg");
-      public static final Icon TestsModel = load("/nodes/models/tests.svg");
-      public static final Icon AccessoryModel = load("/nodes/models/accessoryModel.svg");
+      public static final Icon AspectModel = load("/nodes/models/aspect.png");
+      public static final Icon TemplatesModel = load("/nodes/models/templatesModel.png");
+      public static final Icon TestsModel = load("/nodes/models/tests.png");
+      public static final Icon AccessoryModel = load("/nodes/models/accessoryModel.png");
     }
   }
 

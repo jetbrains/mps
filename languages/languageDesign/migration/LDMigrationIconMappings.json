@@ -1,0 +1,8 @@
+{
+  "icons": {
+    "expUi": {
+      "migrationModel.svg": "icons/migrationModel.png",
+      "migrationScript.svg": "icons/migrationScript.png"
+    }
+  }
+}

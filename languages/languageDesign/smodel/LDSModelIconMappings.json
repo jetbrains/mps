@@ -1,0 +1,11 @@
+{
+  "icons": {
+    "expUi": {
+      "devKit.svg": "icons/devKit.png",
+      "generator.svg": "icons/generator.png",
+      "lang-rt.svg": "icons/lang-rt.png",
+      "language.svg": "icons/language.png",
+      "solution.svg": "icons/solution.png"
+    }
+  }
+}

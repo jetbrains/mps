@@ -81,7 +81,7 @@
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="constraints" />
     <node concept="1QGGSu" id="P5ZkC6w1ee" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/constraintsModel.svg" />
+      <property role="1iqoE4" value="${module}/icons/constraintsModel.png" />
     </node>
     <node concept="2V$Bhx" id="qmfyRQQJmF" role="QG$2i">
       <property role="2V$B1T" value="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" />

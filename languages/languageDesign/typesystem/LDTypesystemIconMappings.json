@@ -1,0 +1,16 @@
+{
+  "icons": {
+    "expUi": {
+      "comparison.svg": "icons/comparison.png",
+      "nontypeSystem.svg": "icons/nontypeSystem.png",
+      "overloadedRules.svg": "icons/overloadedRules.png",
+      "quickFix.svg": "icons/quickFix.png",
+      "replacement.svg": "icons/replacement.png",
+      "rule.svg": "icons/rule.png",
+      "substitute.svg": "icons/substitute.png",
+      "subtyping.svg": "icons/subtyping.png",
+      "typesystemModel.svg": "icons/typesystemModel.png",
+      "variableReplacement.svg": "icons/variableReplacement.png"
+    }
+  }
+}

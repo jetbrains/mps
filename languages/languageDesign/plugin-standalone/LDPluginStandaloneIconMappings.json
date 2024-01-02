@@ -1,0 +1,8 @@
+{
+  "icons": {
+    "expUi": {
+      "applicationPlugin.svg": "icons/applicationPlugin.png",
+      "projectPlugin.svg": "icons/projectPlugin.png"
+    }
+  }
+}

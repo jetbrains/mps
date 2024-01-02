@@ -1,0 +1,8 @@
+{
+  "icons": {
+    "expUi": {
+      "dataFlowAnalyser.svg": "icons/dataFlowAnalyser.png",
+      "dataFlowRule.svg": "icons/dataFlowRule.png"
+    }
+  }
+}

@@ -110,7 +110,7 @@
       <ref role="20lvS9" node="gR7Wvgx" resolve="NodeFactory" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRx" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/nodeFactories.svg" />
+      <property role="1iqoE4" value="${module}/icons/nodeFactories.png" />
     </node>
     <node concept="1sEMCm" id="6wTagIKXkgd" role="bvy1s">
       <property role="1sEMCp" value="editor-actions.html#node_factories" />
@@ -181,7 +181,7 @@
       <ref role="20lvS9" node="hLhlz9g" resolve="PasteWrapper" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJRz" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/pasteWrapper.svg" />
+      <property role="1iqoE4" value="${module}/icons/pasteWrapper.png" />
     </node>
     <node concept="1sEMCm" id="6wTagIKXkgh" role="bvy1s">
       <property role="1sEMCp" value="editor-actions.html#pastewrappers" />

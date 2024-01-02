@@ -183,7 +183,7 @@
       </node>
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJPH" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/annotationLink.svg" />
+      <property role="1iqoE4" value="${module}/icons/annotationLink.png" />
     </node>
   </node>
   <node concept="1TIwiD" id="2ULFgo8_XDh">

@@ -5027,7 +5027,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="sG" role="37wK5m">
                           <node concept="1QGGSu" id="sH" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/mappingConf.svg" />
+                            <property role="1iqoE4" value="${module}/icons/mappingConf.png" />
                             <uo k="s:originTrace" v="n:5586841135286517210" />
                           </node>
                         </node>
@@ -5261,7 +5261,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="u5" role="37wK5m">
                           <node concept="1QGGSu" id="u6" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/generatorScript.svg" />
+                            <property role="1iqoE4" value="${module}/icons/generatorScript.png" />
                             <uo k="s:originTrace" v="n:5586841135286517209" />
                           </node>
                         </node>
@@ -7437,7 +7437,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="E_" role="37wK5m">
                           <node concept="1QGGSu" id="EA" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/templateFragment.svg" />
+                            <property role="1iqoE4" value="${module}/icons/templateFragment.png" />
                             <uo k="s:originTrace" v="n:5586841135286517207" />
                           </node>
                         </node>
@@ -8220,7 +8220,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="Ja" role="37wK5m">
                           <node concept="1QGGSu" id="Jb" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/switch.svg" />
+                            <property role="1iqoE4" value="${module}/icons/switch.png" />
                             <uo k="s:originTrace" v="n:5586841135286517208" />
                           </node>
                         </node>

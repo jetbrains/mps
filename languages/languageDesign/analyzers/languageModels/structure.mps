@@ -60,7 +60,7 @@
     <property role="EcuMT" value="6618572076229093257" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1QGGSu" id="4Q8sAA5iJQA" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/dataFlowAnalyser.svg" />
+      <property role="1iqoE4" value="${module}/icons/DataFlowAnalyser.png" />
     </node>
     <node concept="1TJgyj" id="47tk9ge7tjt" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -251,7 +251,7 @@
     <property role="EcuMT" value="430844094082168520" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1QGGSu" id="4Q8sAA5iJQ_" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/dataFlowRule.svg" />
+      <property role="1iqoE4" value="${module}/icons/DataFlowRule.png" />
     </node>
     <node concept="1TJgyj" id="3_iNRJnrAh0" role="1TKVEi">
       <property role="20kJfa" value="analyzer" />

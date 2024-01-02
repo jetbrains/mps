@@ -167,7 +167,7 @@
       <ref role="PrY4T" node="3SW4jvYrbtS" resolve="IRuleWithOneNode" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQc" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/rule.svg" />
+      <property role="1iqoE4" value="${module}/icons/rule.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTvO" role="bvy1s">
       <property role="1sEMCp" value="typesystem.html#inferencerules" />
@@ -440,7 +440,7 @@
       <ref role="PrY4T" node="3SW4jvYrbtS" resolve="IRuleWithOneNode" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQd" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/subtyping.svg" />
+      <property role="1iqoE4" value="${module}/icons/subtyping.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTwc" role="bvy1s">
       <property role="1sEMCp" value="typesystem.html#subtypingrules" />
@@ -899,7 +899,7 @@
       <ref role="PrY4T" node="3SW4jvYrbtT" resolve="IRuleWithTwoNodes" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQa" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/comparison.svg" />
+      <property role="1iqoE4" value="${module}/icons/comparison.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTvf" role="bvy1s">
       <property role="1sEMCp" value="typesystem.html#comparisoninequationsandcomparisonrules" />
@@ -961,7 +961,7 @@
       <ref role="PrY4T" node="3SW4jvYrbtS" resolve="IRuleWithOneNode" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQ8" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/nontypeSystem.svg" />
+      <property role="1iqoE4" value="${module}/icons/nontypesystem.png" />
     </node>
     <node concept="PrWs8" id="21kJG8Hhx6G" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
@@ -1007,7 +1007,7 @@
       <ref role="PrY4T" node="3SW4jvYrbtT" resolve="IRuleWithTwoNodes" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQ9" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/replacement.svg" />
+      <property role="1iqoE4" value="${module}/icons/replacement.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTvt" role="bvy1s">
       <property role="1sEMCp" value="typesystem.html#replacementrules" />
@@ -1251,7 +1251,7 @@
       <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQ7" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/quickFix.svg" />
+      <property role="1iqoE4" value="${module}/icons/quickFix.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTuV" role="bvy1s">
       <property role="1sEMCp" value="typesystem.html#quick-fixes" />
@@ -1532,7 +1532,7 @@
       <ref role="20lvS9" node="hS7e__q" resolve="VariableConverterItem" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQ5" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/variableReplacement.svg" />
+      <property role="1iqoE4" value="${module}/icons/variableReplacement.png" />
     </node>
   </node>
   <node concept="1TIwiD" id="hS7z$4e">
@@ -1700,7 +1700,7 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQ6" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/overloadedRules.svg" />
+      <property role="1iqoE4" value="${module}/icons/overloadedRules.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTv_" role="bvy1s">
       <property role="1sEMCp" value="typesystem.html#overloadedoperators" />
@@ -2071,7 +2071,7 @@
       <ref role="PrY4T" to="tpck:19gBtYEAf4C" resolve="InterfacePart" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQb" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/substitute.svg" />
+      <property role="1iqoE4" value="${module}/icons/substitute.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYTvM" role="bvy1s">
       <property role="1sEMCp" value="typesystem.html#advancedfeaturesoftypesystemlanguage" />

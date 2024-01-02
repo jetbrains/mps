@@ -528,7 +528,7 @@
       <ref role="PrY4T" to="tpce:hOIDzy1" resolve="IStructureDeprecatable" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iKgx" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/refactoring.svg" />
+      <property role="1iqoE4" value="${module}/icons/refactoring.png" />
     </node>
     <node concept="1sEMCm" id="5wIG6OxYQAk" role="bvy1s">
       <property role="1sEMCp" value="mps-refactoring.html" />

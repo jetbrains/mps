@@ -76,7 +76,7 @@
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="intentions" />
     <node concept="1QGGSu" id="P5ZkC6w5e7" role="3vqPLo">
-      <property role="1iqoE4" value="${module}/icons/intentionsModel.svg" />
+      <property role="1iqoE4" value="${module}/icons/intentionsModel.png" />
     </node>
     <node concept="2V$Bhx" id="7XWR6$5i3OC" role="QG$2i">
       <property role="2V$B1T" value="d7a92d38-f7db-40d0-8431-763b0c3c9f20" />

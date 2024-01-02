@@ -727,7 +727,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.icon(jetbrains.mps.smodel.runtime.IconResource)" resolve="icon" />
                         <node concept="2SwGe0" id="3h" role="37wK5m">
                           <node concept="1QGGSu" id="3i" role="2SwzYu">
-                            <property role="1iqoE4" value="${module}/icons/aspect.svg" />
+                            <property role="1iqoE4" value="${module}/icons/aspect.png" />
                             <uo k="s:originTrace" v="n:4457541332879029771" />
                           </node>
                         </node>

@@ -160,6 +160,8 @@
     <projectService serviceImplementation="jetbrains.mps.idea.core.psi.impl.PsiModelReloadListener" />
     <getDataRule key="psi.Element" implementationClass="jetbrains.mps.idea.core.psi.impl.MPSPsiElementDataRule" type="context"/>
     <projectService serviceImplementation="jetbrains.mps.idea.core.psi.impl.MPSPsiProvider" />
+    <iconMapper mappingFile="BaseLanguageIconMappings.json"/>
+    <iconMapper mappingFile="TuplesIconMappings.json"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">

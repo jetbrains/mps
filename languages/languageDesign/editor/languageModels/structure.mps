@@ -146,7 +146,7 @@
     <property role="EcuMT" value="1071666914219" />
     <ref role="1TJDcQ" node="fIwURLg" resolve="BaseEditorComponent" />
     <node concept="1QGGSu" id="4Q8sAA5iJQt" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/editor.svg" />
+      <property role="1iqoE4" value="${module}/icons/editor.png" />
     </node>
     <node concept="PrWs8" id="hBfBzQU" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -568,7 +568,7 @@
     <property role="EcuMT" value="1078938745671" />
     <ref role="1TJDcQ" node="fIwURLg" resolve="BaseEditorComponent" />
     <node concept="1QGGSu" id="4Q8sAA5iJQp" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/editorComponent.svg" />
+      <property role="1iqoE4" value="${module}/icons/editorComponent.png" />
     </node>
     <node concept="1TJgyj" id="66t_lsklggO" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -669,7 +669,7 @@
     <property role="34LRSv" value="Cell Keymap" />
     <property role="EcuMT" value="1081293058843" />
     <node concept="1QGGSu" id="4Q8sAA5iJQr" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/keyMap.svg" />
+      <property role="1iqoE4" value="${module}/icons/keyMap.png" />
     </node>
     <node concept="PrWs8" id="AkEQ6o$KU_" role="PzmwI">
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
@@ -1672,7 +1672,7 @@
     <property role="EcuMT" value="1166040637528" />
     <ref role="1TJDcQ" node="gXXWOiD" resolve="AbstractComponent" />
     <node concept="1QGGSu" id="4Q8sAA5iJQn" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/menuComponent.svg" />
+      <property role="1iqoE4" value="${module}/icons/menuComponent.png" />
     </node>
     <node concept="1TJgyj" id="gXXsTFp" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -1994,7 +1994,7 @@
     <property role="EcuMT" value="1186402211651" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1QGGSu" id="4Q8sAA5iJQq" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/editorStylesheet.svg" />
+      <property role="1iqoE4" value="${module}/icons/editorStylesheet.png" />
     </node>
     <node concept="1TJgyj" id="hgV6056" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -2998,7 +2998,7 @@
     <property role="EcuMT" value="7667276221847612622" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1QGGSu" id="4Q8sAA5iJQo" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/parametersInformation.svg" />
+      <property role="1iqoE4" value="${module}/icons/parametersInformation.png" />
     </node>
     <node concept="1TJgyj" id="3DkLjCDOMpB" role="1TKVEi">
       <property role="20kJfa" value="applicableConcept" />
@@ -3421,7 +3421,7 @@
     <property role="34LRSv" value="Style Key Pack" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1QGGSu" id="7mBovHg6Ada" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/styleKeyPack.svg" />
+      <property role="1iqoE4" value="${module}/icons/styleKeyPack.png" />
     </node>
     <node concept="1TJgyj" id="3AsHGqaEOhK" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -3484,7 +3484,7 @@
     <property role="34LRSv" value="Context Hints" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1QGGSu" id="4DKJNVBqp0k" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/editorContextHints.svg" />
+      <property role="1iqoE4" value="${module}/icons/editorContextHints.png" />
     </node>
     <node concept="1TJgyj" id="59ZEGVOSRBV" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -4242,7 +4242,7 @@
     <property role="EcuMT" value="5624877018228264944" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1QGGSu" id="4DKJNVBqp0o" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/transformationMenuContribution.svg" />
+      <property role="1iqoE4" value="${module}/icons/transformationMenuContribution.png" />
     </node>
     <node concept="PrWs8" id="1quYWAD4KpO" role="PzmwI">
       <ref role="PrY4T" node="1quYWAD2_Py" resolve="IMenu_Contribution" />
@@ -4303,7 +4303,7 @@
     <property role="EcuMT" value="1638911550608571617" />
     <ref role="1TJDcQ" node="4Sf$XywF3UU" resolve="TransformationMenu" />
     <node concept="1QGGSu" id="4DKJNVBqDI0" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/transformationMenu.svg" />
+      <property role="1iqoE4" value="${module}/icons/transformationMenu.png" />
     </node>
     <node concept="PrWs8" id="1quYWAD3bV_" role="PzmwI">
       <ref role="PrY4T" node="1quYWAD18L7" resolve="IMenu_Default" />
@@ -4394,7 +4394,7 @@
     <property role="EcuMT" value="5624877018226904808" />
     <ref role="1TJDcQ" node="4Sf$XywF3UU" resolve="TransformationMenu" />
     <node concept="1QGGSu" id="4DKJNVBqDQu" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/transformationMenu.svg" />
+      <property role="1iqoE4" value="${module}/icons/transformationMenu.png" />
     </node>
     <node concept="PrWs8" id="1quYWAD3$WZ" role="PzmwI">
       <ref role="PrY4T" node="1quYWAD18L6" resolve="IMenu_Named" />
@@ -4438,7 +4438,7 @@
     <property role="34LRSv" value="Transformation menu" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1QGGSu" id="4DKJNVBqp0m" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/transformationMenu.svg" />
+      <property role="1iqoE4" value="${module}/icons/transformationMenu.png" />
     </node>
     <node concept="PrWs8" id="1quYWAD4B6X" role="PzmwI">
       <ref role="PrY4T" node="1quYWAD18Lj" resolve="IMenu_Concept" />
@@ -4914,7 +4914,7 @@
     <property role="19KtqR" value="true" />
     <property role="34LRSv" value="Substitute Menu" />
     <node concept="1QGGSu" id="4DKJNVBqp0q" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/substituteMenu.svg" />
+      <property role="1iqoE4" value="${module}/icons/substituteMenu.png" />
     </node>
     <node concept="PrWs8" id="1quYWADmNOE" role="PzmwI">
       <ref role="PrY4T" node="1quYWAD18Lj" resolve="IMenu_Concept" />
@@ -5299,7 +5299,7 @@
     <property role="34LRSv" value="Substitute Menu (Named)" />
     <ref role="1TJDcQ" node="1J2KHYpAw1S" resolve="SubstituteMenu" />
     <node concept="1QGGSu" id="4DKJNVBqDQ$" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/substituteMenu.svg" />
+      <property role="1iqoE4" value="${module}/icons/substituteMenu.png" />
     </node>
     <node concept="PrWs8" id="1quYWAD3Ec7" role="PzmwI">
       <ref role="PrY4T" node="1quYWAD18L6" resolve="IMenu_Named" />
@@ -5489,7 +5489,7 @@
     <property role="R5$K7" value="false" />
     <property role="34LRSv" value="Substitute Menu Contribution" />
     <node concept="1QGGSu" id="4DKJNVBqp0s" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/substituteMenuContribution.svg" />
+      <property role="1iqoE4" value="${module}/icons/substituteMenuContribution.png" />
     </node>
     <node concept="PrWs8" id="1quYWAD5m8A" role="PzmwI">
       <ref role="PrY4T" node="1quYWAD2_Py" resolve="IMenu_Contribution" />
@@ -5558,7 +5558,7 @@
     <property role="34LRSv" value="Substitute Menu (Default)" />
     <ref role="1TJDcQ" node="1J2KHYpAw1S" resolve="SubstituteMenu" />
     <node concept="1QGGSu" id="4DKJNVBqDQw" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/substituteMenu.svg" />
+      <property role="1iqoE4" value="${module}/icons/substituteMenu.png" />
     </node>
     <node concept="PrWs8" id="1quYWAD3_QS" role="PzmwI">
       <ref role="PrY4T" node="1quYWAD18L7" resolve="IMenu_Default" />

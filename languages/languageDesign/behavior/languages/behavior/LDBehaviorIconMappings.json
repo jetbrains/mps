@@ -1,0 +1,8 @@
+{
+  "icons": {
+    "expUi": {
+      "behavior.svg": "icons/behavior.png",
+      "behaviorModel.svg": "icons/behaviorModel.png"
+    }
+  }
+}

@@ -79,7 +79,7 @@
     <property role="EcuMT" value="1225194240794" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1QGGSu" id="4Q8sAA5iJQF" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/behavior.svg" />
+      <property role="1iqoE4" value="${module}/icons/behavior.png" />
     </node>
     <node concept="PrWs8" id="hP3h7Gr" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />

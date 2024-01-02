@@ -9927,7 +9927,7 @@
               <node concept="3cpWs6" id="50fTm6QWTLl" role="3cqZAp">
                 <node concept="2SwGe0" id="50fTm6QWTLm" role="3cqZAk">
                   <node concept="1QGGSu" id="50fTm6QWTLn" role="2SwzYu">
-                    <property role="1iqoE4" value="${module}/icons/language.svg" />
+                    <property role="1iqoE4" value="${module}/icons/language.png" />
                   </node>
                 </node>
               </node>
@@ -10180,7 +10180,7 @@
               <node concept="3clFbF" id="4Lw1UpBCsRH" role="3cqZAp">
                 <node concept="2SwGe0" id="4Lw1UpBCsRF" role="3clFbG">
                   <node concept="1QGGSu" id="4Lw1UpBCsWa" role="2SwzYu">
-                    <property role="1iqoE4" value="${module}/icons/lang-rt.svg" />
+                    <property role="1iqoE4" value="${module}/icons/lang-rt.png" />
                   </node>
                 </node>
               </node>
@@ -10463,7 +10463,7 @@
               <node concept="3clFbF" id="78qQRpbgvcU" role="3cqZAp">
                 <node concept="2SwGe0" id="78qQRpbfTEk" role="3clFbG">
                   <node concept="1QGGSu" id="78qQRpbfTEl" role="2SwzYu">
-                    <property role="1iqoE4" value="${module}/icons/devKit.svg" />
+                    <property role="1iqoE4" value="${module}/icons/devkit.png" />
                   </node>
                 </node>
               </node>

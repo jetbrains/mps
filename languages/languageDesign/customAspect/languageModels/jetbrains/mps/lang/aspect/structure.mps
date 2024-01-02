@@ -146,7 +146,7 @@
       <ref role="PrY4T" to="1po2:22594Rb8c7s" resolve="OrderParticipant" />
     </node>
     <node concept="1QGGSu" id="3RsnzA_S3ob" role="rwd14">
-      <property role="1iqoE4" value="${module}/icons/aspect.svg" />
+      <property role="1iqoE4" value="${module}/icons/aspect.png" />
     </node>
   </node>
   <node concept="PlHQZ" id="7Jfx5bwQG39">

@@ -1,0 +1,11 @@
+{
+  "icons": {
+    "expUi": {
+      "actions.svg": "icons/actions.png",
+      "nodeFactories.svg": "icons/nodeFactories.png",
+      "pasteWrapper.svg": "icons/pasteWrapper.png",
+      "rightTransform.svg": "icons/rightTransform.png",
+      "smartActions.svg": "icons/smartActions.png"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "icons": {
+    "expUi": {
+      "annotationLink.svg": "icons/annotationLink.png",
+      "constrainedTD.svg": "icons/constrainedTD.png",
+      "enum.svg": "icons/enum.png",
+      "interfaceStructure.svg": "icons/interfaceStructure.png",
+      "link.svg": "icons/link.png",
+      "primitiveTD.svg": "icons/primitiveTD.png",
+      "property.svg": "icons/property.png",
+      "rootableConcept.svg": "icons/rootableConcept.png",
+      "structure.svg": "icons/structure.png",
+      "structureModel.svg": "icons/structureModel.png"
+    }
+  }
+}

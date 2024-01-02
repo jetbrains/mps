@@ -8524,7 +8524,7 @@
         <node concept="1pGfFk" id="yZ" role="2ShVmc">
           <ref role="37wK5l" to="ze1i:~IconResource.&lt;init&gt;(java.lang.String,java.lang.Class)" resolve="IconResource" />
           <node concept="Xl_RD" id="z0" role="37wK5m">
-            <property role="Xl_RC" value="rootableConcept.svg" />
+            <property role="Xl_RC" value="rootableConcept.png" />
           </node>
           <node concept="3VsKOn" id="z1" role="37wK5m">
             <ref role="3VsUkX" node="yS" resolve="IconContainer" />
@@ -8542,7 +8542,7 @@
         <node concept="1pGfFk" id="z5" role="2ShVmc">
           <ref role="37wK5l" to="ze1i:~IconResource.&lt;init&gt;(java.lang.String,java.lang.Class)" resolve="IconResource" />
           <node concept="Xl_RD" id="z6" role="37wK5m">
-            <property role="Xl_RC" value="structure.svg" />
+            <property role="Xl_RC" value="structure.png" />
           </node>
           <node concept="3VsKOn" id="z7" role="37wK5m">
             <ref role="3VsUkX" node="yS" resolve="IconContainer" />

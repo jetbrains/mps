@@ -1,0 +1,12 @@
+{
+  "icons": {
+    "expUi": {
+      "actionGroupNew.svg": "icons/actionGroupNew.png",
+      "actionNew.svg": "icons/actionNew.png",
+      "ideaPluginDeclaration.svg": "icons/ideaPluginDeclaration.png",
+      "keymapChangesDeclaration.svg": "icons/keymapChangesDeclaration.png",
+      "pluginModel.svg": "icons/pluginModel.png",
+      "tabbedEditor.svg": "icons/tabbedEditor.png"
+    }
+  }
+}
