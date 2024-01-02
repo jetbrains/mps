@@ -35723,11 +35723,6 @@
             <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
           </node>
         </node>
-        <node concept="1SiIV0" id="2dGZeUusbhC" role="3bR37C">
-          <node concept="3bR9La" id="2dGZeUusbhD" role="1SiIV1">
-            <ref role="3bR37D" node="HHlBn9$wJ2" resolve="org.jdom" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="399mEuGh0ko" role="3bR37C">
           <node concept="3bR9La" id="399mEuGh0kp" role="1SiIV1">
             <ref role="3bR37D" node="399mEuGgZy4" resolve="jetbrains.mps.debugger.core" />

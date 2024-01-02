@@ -8,7 +8,7 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <classes generated="true" />
+      <classes generated="true" path="${module}/classes_gen" />
       <library location="${module}/classes" />
     </facet>
   </facets>
@@ -25,7 +25,6 @@
     <dependency reexport="false">5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)</dependency>
     <dependency reexport="false">8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)</dependency>
     <dependency reexport="false">8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)</dependency>
-    <dependency reexport="false">f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)</dependency>
     <dependency reexport="false">2a8426d7-9821-433c-b388-dc3b0cd9e395(jetbrains.mps.debugger.core)</dependency>
   </dependencies>
   <languageVersions>
@@ -61,7 +60,6 @@
     <module reference="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" version="0" />
     <module reference="8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)" version="0" />
     <module reference="25092e07-e655-497c-92fb-558a8e3080ed(jetbrains.mps.ide.ui)" version="0" />
-    <module reference="f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)" version="0" />
   </dependencyVersions>
 </solution>
 
