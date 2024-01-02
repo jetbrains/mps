@@ -96,9 +96,19 @@
     <!-- this listener works together with BreakpointEditorIntegration service, above-->
     <listener class="jetbrains.mps.debugger.core.breakpoints.EditorIntegrationListener"
               topic="jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener"
+              activeInTestMode="false"
               activeInHeadlessMode="false"/>
     <listener class="jetbrains.mps.idea.java.debugger.breakpoints.IdeaBreakpointsUiComponent$BreakpointListener"
               topic="com.intellij.xdebugger.breakpoints.XBreakpointListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+    <listener class="jetbrains.mps.idea.java.debugger.IdeaDebuggerPositionHighlighter$RunContentListener"
+              topic="com.intellij.execution.ui.RunContentWithExecutorListener"
+              activeInTestMode="false"
+              activeInHeadlessMode="false"/>
+    <listener class="jetbrains.mps.idea.java.debugger.IdeaDebuggerPositionHighlighter$DebuggerManagerListener"
+              topic="com.intellij.debugger.impl.DebuggerManagerListener"
+              activeInTestMode="false"
               activeInHeadlessMode="false"/>
   </projectListeners>
 
