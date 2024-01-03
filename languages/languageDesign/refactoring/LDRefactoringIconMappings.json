@@ -1,8 +1,0 @@
-{
-  "icons": {
-    "expUi": {
-      "refactoring.svg": "icons/refactoring.png",
-      "refactoringsModel.svg": "icons/refactoringsModel.png"
-    }
-  }
-}

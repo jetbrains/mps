@@ -1,8 +1,0 @@
-{
-  "icons": {
-    "expUi": {
-      "findUsagesModel.svg": "icons/findUsagesModel.png",
-      "usagesFinder.svg": "icons/usagesFinder.png"
-    }
-  }
-}

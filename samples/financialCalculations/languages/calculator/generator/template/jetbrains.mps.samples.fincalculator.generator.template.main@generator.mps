@@ -26,7 +26,7 @@
     <import index="npo5" ref="r:346759f7-f6a3-4d42-a3a1-c8d7b36649d7(jetbrains.mps.samples.fincalculator.support.runtime)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="hyam" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt.event(JDK/)" />
-    <import index="un8p" ref="r:62a356bf-448e-46e5-b151-0ebfabbcf1cc(jetbrains.mps.calculator.generator.util)" />
+    <import index="un8p" ref="r:62a356bf-448e-46e5-b151-0ebfabbcf1cc(jetbrains.mps.samples.fincalculator.generator.util)" />
     <import index="c8ee" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing.table(JDK/)" />
     <import index="k8al" ref="r:97129371-9ac5-4a71-bfd5-5b11db119dec(jetbrains.mps.samples.fincalculator.behavior)" implicit="true" />
   </imports>

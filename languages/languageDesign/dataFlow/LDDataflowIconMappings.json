@@ -1,8 +1,0 @@
-{
-  "icons": {
-    "expUi": {
-      "dataflow.svg": "icons/dataflow.png",
-      "dataflowModel.svg": "icons/dataflowModel.png"
-    }
-  }
-}

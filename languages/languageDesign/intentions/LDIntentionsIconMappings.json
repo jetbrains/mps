@@ -1,9 +1,0 @@
-{
-  "icons": {
-    "expUi": {
-      "intentionBulb.svg": "icons/intentionBulb.png",
-      "intentionsModel.svg": "icons/intentionsModel.png",
-      "surroundWithIntention.svg": "icons/surroundWithIntention.png"
-    }
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "icons": {
-    "expUi": {
-      "textGen.svg": "icons/textGen.png",
-      "textGenComponent.svg": "icons/textGenComponent.png",
-      "textGenModel.svg": "icons/textGenModel.png"
-    }
-  }
-}
