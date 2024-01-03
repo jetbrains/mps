@@ -31,7 +31,7 @@ import java.util.HashMap;
 public class IconCreationUtil {
   protected static Logger LOG = Logger.getLogger(IconCreationUtil.class);
 
-  private static final int DEFAULT_ICON_SIZE = 16;
+  private static final int DEFAULT_ICON_SIZE = 32;
 
   @Nullable
   public static byte[] drawIcon(Consumer<DrawContext> drawer) {
