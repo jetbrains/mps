@@ -159,6 +159,7 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
         if (editorCell == null) {
           throw new CellNotFoundException(child);
         }
+        editorCell = jetbrains.mps.nodeEditor.NodeEditorActions.findTopmostAttributeCell(editorCell, child);
         selectedCells.add(editorCell);
       }
       if (breakLoop) {
