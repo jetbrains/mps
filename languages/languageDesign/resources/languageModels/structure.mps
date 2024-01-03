@@ -92,6 +92,14 @@
         <property role="t5JxN" value="this string is a path, file- or jar-based (no other FSes are supported yet), the format is same with what Macros.shrink() returns" />
       </node>
     </node>
+    <node concept="1TJgyi" id="1$fQzw7xISD" role="1TKVEl">
+      <property role="IQ2nx" value="1805901909778165289" />
+      <property role="TrG5h" value="newuiFile" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="t5JxF" id="1$fQzw7xISH" role="lGtFl">
+        <property role="t5JxN" value="the icon file to use under new UI, if empty, a naming convention is used first &quot;originalName_newui.svg&quot;, if no such files exists, use the &quot;file&quot; property value in new UI" />
+      </node>
+    </node>
     <node concept="1TJgyj" id="63hNSM1YIC9" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="iconExpression" />

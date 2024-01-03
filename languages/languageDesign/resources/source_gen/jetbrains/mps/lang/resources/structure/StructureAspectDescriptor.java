@@ -197,6 +197,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)/8974276187400029883");
     b.version(3);
     b.property("file", 0x26417c377428f6b3L).type(PrimitiveTypeId.STRING).origin("2756621024541341363").done();
+    b.property("newuiFile", 0x190fda380786ee29L).type(PrimitiveTypeId.STRING).origin("1805901909778165289").done();
     b.aggregate("iconExpression", 0x60d1cf8c81faea09L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("6976585500156684809").done();
     b.alias("file");
     return b.create();
