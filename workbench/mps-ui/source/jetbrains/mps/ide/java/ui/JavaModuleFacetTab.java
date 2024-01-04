@@ -458,7 +458,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     myLibrariesTable.setDefaultRenderer(Boolean.class, new BooleanTableCellRenderer());
     myLibrariesTable.getTableHeader().setReorderingAllowed(false);
 
-    myLibrariesTable.showLoadCheckbox(myClassLoadMPS.isSelected());
+    myLibrariesTable.showLoadCheckbox(myClassLoadMPS != null && myClassLoadMPS.isSelected());
 
     //TODO remove to enable headers once the API is ready for library loading flags
     myLibrariesTable.setTableHeader(null);
