@@ -144,7 +144,8 @@ public abstract class BaseTool {
    */
   public boolean isAvailable() {
     ThreadUtils.assertEDT();
-    return getToolWindow().isAvailable();
+    ToolWindow toolWindow = getToolWindow();
+    return toolWindow != null && toolWindow.isAvailable();
   }
 
   public void setAvailable(boolean state) {
