@@ -38,8 +38,8 @@
     <import index="smlj" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.string(MPS.Boot/)" />
     <import index="bd8o" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:com.intellij.openapi.application(MPS.Boot/)" />
     <import index="18ex" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.util(MPS.Boot/)" />
-    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="embf" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.jar(JDK/)" />
+    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1245,7 +1245,7 @@
           <node concept="1rXfSq" id="7ZTspgD72Hd" role="3cqZAk">
             <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
             <node concept="Xl_RD" id="7ZTspgD72He" role="37wK5m">
-              <property role="Xl_RC" value="svn4idea" />
+              <property role="Xl_RC" value="vcs-svn" />
             </node>
             <node concept="Xl_RD" id="7ZTspgD72Hf" role="37wK5m">
               <property role="Xl_RC" value="Subversion" />
@@ -1323,9 +1323,6 @@
       <node concept="3clFbS" id="2btCvgzFoBr" role="3clF47">
         <node concept="3cpWs6" id="2btCvgzFG60" role="3cqZAp">
           <node concept="2OqwBi" id="2btCvgzFG61" role="3cqZAk">
-            <node concept="1rXfSq" id="2btCvgzFG62" role="2Oq$k0">
-              <ref role="37wK5l" node="6BLo1MgrFYe" resolve="withCorePlugin" />
-            </node>
             <node concept="liA8E" id="2btCvgzFG63" role="2OqNvi">
               <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
               <node concept="Xl_RD" id="2btCvgzFG64" role="37wK5m">
@@ -1334,6 +1331,9 @@
               <node concept="Xl_RD" id="2btCvgzFG65" role="37wK5m">
                 <property role="Xl_RC" value="jetbrains.mps.testing" />
               </node>
+            </node>
+            <node concept="1rXfSq" id="2btCvgzFG62" role="2Oq$k0">
+              <ref role="37wK5l" node="6BLo1MgrFYe" resolve="withCorePlugin" />
             </node>
           </node>
         </node>
@@ -1355,7 +1355,7 @@
           <node concept="1rXfSq" id="6BLo1MgrOXz" role="3cqZAk">
             <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
             <node concept="Xl_RD" id="6BLo1MgrPn1" role="37wK5m">
-              <property role="Xl_RC" value="git4idea" />
+              <property role="Xl_RC" value="vcs-git" />
             </node>
             <node concept="Xl_RD" id="6BLo1MgrSoh" role="37wK5m">
               <property role="Xl_RC" value="Git4Idea" />
@@ -2845,12 +2845,12 @@
         </node>
         <node concept="3clFbF" id="6ylsT8BFimo" role="3cqZAp">
           <node concept="2OqwBi" id="6ylsT8BFipK" role="3clFbG">
+            <node concept="37vLTw" id="2iqAsxGjA$V" role="2Oq$k0">
+              <ref role="3cqZAo" node="2iqAsxGjyn8" resolve="myProjectManager" />
+            </node>
             <node concept="liA8E" id="6ylsT8BFis4" role="2OqNvi">
               <ref role="37wK5l" to="z1c3:~ProjectManager.addProjectListener(jetbrains.mps.project.ProjectManagerListener)" resolve="addProjectListener" />
               <node concept="Xjq3P" id="6ylsT8BFisS" role="37wK5m" />
-            </node>
-            <node concept="37vLTw" id="2iqAsxGjA$V" role="2Oq$k0">
-              <ref role="3cqZAo" node="2iqAsxGjyn8" resolve="myProjectManager" />
             </node>
           </node>
         </node>
