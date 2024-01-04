@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide;
 
+import com.intellij.execution.process.ProcessIOExecutorService;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
@@ -24,12 +25,23 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.SwingUtilities;
 import java.lang.reflect.InvocationTargetException;
+import java.util.concurrent.Callable;
 
 /**
  * Interface to platform-specific access to Event Dispatch Thread.
  * For IDEA, use <code>ApplicationManager.getApplication()</code>
  */
 public class ThreadUtils {
+
+  @Nullable
+  public static <T> T computeInBGTOrNull(@NotNull Callable<T> code) {
+    try {
+      return ProcessIOExecutorService.INSTANCE.submit(code).get();
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
   @Nullable
   public static Exception runInUIThreadAndWait(Runnable r) {
     LogExceptionsRunnable wrap = new LogExceptionsRunnable(Logger.getLogger(ThreadUtils.class), r);

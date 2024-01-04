@@ -47,6 +47,7 @@ import com.intellij.uiDesigner.core.Spacer;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.IdeBundle;
+import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.blame.api.Reporter;
 import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
@@ -296,7 +297,7 @@ public class BlameDialog extends DialogWrapper {
       myException.setText(builder.toString());
     }
 
-    myToken = PasswordSafe.getInstance().getPassword(getCredentialAttributes());
+    myToken = ThreadUtils.computeInBGTOrNull(() -> PasswordSafe.getInstance().getPassword(getCredentialAttributes()));
     updateCredentialsPane();
 
     Dimension size = DimensionService.getInstance().getSize(getDimensionServiceKey());
