@@ -1245,7 +1245,7 @@
           <node concept="1rXfSq" id="7ZTspgD72Hd" role="3cqZAk">
             <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
             <node concept="Xl_RD" id="7ZTspgD72He" role="37wK5m">
-              <property role="Xl_RC" value="svn4idea" />
+              <property role="Xl_RC" value="vcs-svn" />
             </node>
             <node concept="Xl_RD" id="7ZTspgD72Hf" role="37wK5m">
               <property role="Xl_RC" value="Subversion" />
@@ -1396,7 +1396,7 @@
           <node concept="1rXfSq" id="6BLo1MgrOXz" role="3cqZAk">
             <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
             <node concept="Xl_RD" id="6BLo1MgrPn1" role="37wK5m">
-              <property role="Xl_RC" value="git4idea" />
+              <property role="Xl_RC" value="vcs-git" />
             </node>
             <node concept="Xl_RD" id="6BLo1MgrSoh" role="37wK5m">
               <property role="Xl_RC" value="Git4Idea" />
