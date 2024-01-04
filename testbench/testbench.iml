@@ -65,8 +65,8 @@
     <orderEntry type="module" module-name="behavior-runtime" />
     <orderEntry type="module" module-name="vfs" scope="TEST" />
     <orderEntry type="module" module-name="module" scope="TEST" />
-    <orderEntry type="module" module-name="mps-modelchecker" />
-    <orderEntry type="module" module-name="migration-platform" scope="TEST" />
+    <orderEntry type="module" module-name="mps-modelchecker" scope="PROVIDED" />
+    <orderEntry type="module" module-name="migration-platform" scope="PROVIDED" />
     <orderEntry type="module" module-name="vcs-platform" scope="TEST" />
     <orderEntry type="module" module-name="util-core" scope="TEST" />
     <orderEntry type="module" module-name="mps-tips" />

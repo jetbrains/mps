@@ -34,7 +34,13 @@ public class BaseProjectsTest {
   @Parameterized.Parameters
   public static List<Object[]> testParameters() throws InvocationTargetException, InterruptedException {
     // At the moment, there's only IDEA-started test, and seems that set of plugins is controlled by 'testbench' module classpath
-    EnvironmentConfig config = EnvironmentConfig.defaultConfig().setCreatePluginClassLoaders(true).withAutomaticPluginDiscovery().withTestModeOn();
+    // withAutomaticPluginDiscovery() requires plugins in CP, doesn't work unless there's a way to augment CP for [testbench] module
+    // explicit withMigrationPlugin() doesn't work as plugin classes loaded by test (through app loader) do not match same 
+    // classes loaded by plugin CL:
+    // class jmm.ProjectMigrationProperties cannot be cast to class jmm.MigrationProperties (jmm.ProjectMigrationProperties is in unnamed module of loader com.intellij.ide.plugins.cl.PluginClassLoader @7f80e76a; jmm.MigrationProperties is in unnamed module of loader 'app')
+    // UNLESS idea.use.core.classloader.for.plugin.path==true to make sure 'app' CL is shared for plugins.
+    EnvironmentConfig config = EnvironmentConfig.defaultConfig().withJavaPlugin().withMigrationPlugin().withTestModeOn();
+    // java plugin is necessary just for testCloneModule migration check as the project uses java_source_stubs
 
     ourEnv = new IdeaEnvironment(config);
     ourEnv.init();

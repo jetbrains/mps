@@ -1,12 +1,5 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="PlatformTestSuite" type="JUnit" factoryName="JUnit" folderName="Tests from IDEA Project">
-    <classpathModifications>
-      <entry path="$PROJECT_DIR$/plugins/mps-core" />
-      <entry path="$PROJECT_DIR$/plugins/mps-java" />
-      <entry path="$PROJECT_DIR$/plugins/mps-modelchecker" />
-      <entry path="$PROJECT_DIR$/plugins/mps-migration" />
-      <entry path="$PROJECT_DIR$/plugins/mps-testing" />
-    </classpathModifications>
     <module name="testbench" />
     <option name="PACKAGE_NAME" value="jetbrains.mps.testsuites" />
     <option name="MAIN_CLASS_NAME" value="jetbrains.mps.testsuites.PlatformTestSuite" />
@@ -37,6 +30,7 @@
         <artifact name="bootstrap:mps-testbench" />
         <artifact name="bootstrap:mps-workbench" />
         <artifact name="bootstrap:scripts-runtime" />
+        <artifact name="migration-platform" />
         <artifact name="mpsdevkit" />
       </option>
       <option name="AntTarget" enabled="true" antfile="file://$PROJECT_DIR$/testbench/cleanup.xml" target="cleanup" />
