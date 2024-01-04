@@ -57,6 +57,7 @@
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="1225271369338" name="jetbrains.mps.baseLanguage.structure.IsEmptyOperation" flags="nn" index="17RlXB" />
+      <concept id="1225271408483" name="jetbrains.mps.baseLanguage.structure.IsNotEmptyOperation" flags="nn" index="17RvpY" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -120,6 +121,7 @@
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
+      <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
       <concept id="1199542442495" name="jetbrains.mps.baseLanguage.closures.structure.FunctionType" flags="in" index="1ajhzC">
@@ -694,6 +696,55 @@
     <node concept="1YaCAy" id="36aT086WPIr" role="1YuTPh">
       <property role="TrG5h" value="url" />
       <ref role="1YaFvo" to="1oap:46nPloeqmpm" resolve="BaseURLFunction" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="1bJ7n0ppNCm">
+    <property role="TrG5h" value="check_FileIcon" />
+    <property role="3GE5qa" value="icons.descriptors" />
+    <node concept="3clFbS" id="1bJ7n0ppNCn" role="18ibNy">
+      <node concept="3clFbJ" id="1bJ7n0ppNCS" role="3cqZAp">
+        <node concept="1Wc70l" id="1bJ7n0ppRhG" role="3clFbw">
+          <node concept="2OqwBi" id="1bJ7n0ppRm3" role="3uHU7w">
+            <node concept="2OqwBi" id="1bJ7n0ppRjb" role="2Oq$k0">
+              <node concept="1YBJjd" id="1bJ7n0ppRiw" role="2Oq$k0">
+                <ref role="1YBMHb" node="1bJ7n0ppNCp" resolve="fileIcon" />
+              </node>
+              <node concept="3TrcHB" id="1bJ7n0ppRkB" role="2OqNvi">
+                <ref role="3TsBF5" to="1oap:1$fQzw7xISD" resolve="newuiFile" />
+              </node>
+            </node>
+            <node concept="17RvpY" id="1bJ7n0ppRu3" role="2OqNvi" />
+          </node>
+          <node concept="2OqwBi" id="1bJ7n0ppPjb" role="3uHU7B">
+            <node concept="2OqwBi" id="1bJ7n0ppNNZ" role="2Oq$k0">
+              <node concept="1YBJjd" id="1bJ7n0ppND4" role="2Oq$k0">
+                <ref role="1YBMHb" node="1bJ7n0ppNCp" resolve="fileIcon" />
+              </node>
+              <node concept="3TrcHB" id="1bJ7n0ppO0F" role="2OqNvi">
+                <ref role="3TsBF5" to="1oap:2p1v3tOafqN" resolve="file" />
+              </node>
+            </node>
+            <node concept="17RlXB" id="1bJ7n0ppQeP" role="2OqNvi" />
+          </node>
+        </node>
+        <node concept="3clFbS" id="1bJ7n0ppNCU" role="3clFbx">
+          <node concept="2MkqsV" id="1bJ7n0ppRvy" role="3cqZAp">
+            <node concept="Xl_RD" id="1bJ7n0ppRvI" role="2MkJ7o">
+              <property role="Xl_RC" value="The standard UI icon must be specified." />
+            </node>
+            <node concept="1YBJjd" id="1bJ7n0ppRxj" role="1urrMF">
+              <ref role="1YBMHb" node="1bJ7n0ppNCp" resolve="fileIcon" />
+            </node>
+            <node concept="2ODE4t" id="1bJ7n0ppRxT" role="1urrC5">
+              <ref role="2ODJFN" to="1oap:2p1v3tOafqN" resolve="file" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="1bJ7n0ppNCp" role="1YuTPh">
+      <property role="TrG5h" value="fileIcon" />
+      <ref role="1YaFvo" to="1oap:7Mb2akaesqV" resolve="FileIcon" />
     </node>
   </node>
 </model>
