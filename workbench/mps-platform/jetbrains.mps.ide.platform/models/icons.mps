@@ -2460,6 +2460,20 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="KcujoScuq5" role="jymVt" />
+    <node concept="2YIFZL" id="44LDkFPBIdh" role="jymVt">
+      <property role="TrG5h" value="isNewUIActive" />
+      <node concept="3clFbS" id="44LDkFPBIdk" role="3clF47">
+        <node concept="3clFbF" id="44LDkFPBIfr" role="3cqZAp">
+          <node concept="2YIFZM" id="44LDkFPBJzx" role="3clFbG">
+            <ref role="37wK5l" to="lzb2:~ExperimentalUI.isNewUI()" resolve="isNewUI" />
+            <ref role="1Pybhc" to="lzb2:~ExperimentalUI" resolve="ExperimentalUI" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="44LDkFPBIcJ" role="1B3o_S" />
+      <node concept="10P_77" id="44LDkFPBId6" role="3clF45" />
+    </node>
     <node concept="3Tm1VV" id="3RymrDRZj9l" role="1B3o_S" />
   </node>
 </model>

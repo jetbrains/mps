@@ -318,25 +318,29 @@
   </root>
   <root nodeRef="r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)/4459225238462083668">
     <file name="IconLoadingUtil.java">
-      <node id="6307657098121888133" at="14,62,15,54" concept="7" />
-      <node id="6307657098121884732" at="16,25,17,68" concept="8" />
-      <node id="6307657098121889017" at="18,5,19,0" concept="10" />
-      <node id="4459225238462087569" at="19,0,20,52" concept="7" />
-      <node id="4459225238462087579" at="20,52,21,116" concept="7" />
-      <node id="4459225238462114654" at="21,116,22,70" concept="8" />
-      <node id="6307657098121878635" at="15,54,18,5" concept="5" />
-      <node id="4459225238462141897" at="14,0,24,0" concept="12" trace="loadIcon#(Ljava/lang/String;Ljava/lang/Class;)Ljavax/swing/Icon;" />
-      <scope id="6307657098121878637" at="16,25,17,68" />
-      <scope id="4459225238462087143" at="14,62,22,70">
+      <node id="6307657098121888133" at="15,62,16,54" concept="7" />
+      <node id="6307657098121884732" at="17,25,18,68" concept="8" />
+      <node id="6307657098121889017" at="19,5,20,0" concept="10" />
+      <node id="4459225238462087569" at="20,0,21,52" concept="7" />
+      <node id="4459225238462087579" at="21,52,22,116" concept="7" />
+      <node id="4459225238462114654" at="22,116,23,70" concept="8" />
+      <node id="4697717627691131867" at="26,41,27,36" concept="8" />
+      <node id="6307657098121878635" at="16,54,19,5" concept="5" />
+      <node id="4697717627691131729" at="26,0,29,0" concept="12" trace="isNewUIActive#()Z" />
+      <node id="4459225238462141897" at="15,0,25,0" concept="12" trace="loadIcon#(Ljava/lang/String;Ljava/lang/Class;)Ljavax/swing/Icon;" />
+      <scope id="6307657098121878637" at="17,25,18,68" />
+      <scope id="4697717627691131732" at="26,41,27,36" />
+      <scope id="4697717627691131729" at="26,0,29,0" />
+      <scope id="4459225238462087143" at="15,62,23,70">
         <var name="isAbsolutePath" id="6307657098121888134" />
         <var name="packName" id="4459225238462087570" />
         <var name="resourcePath" id="4459225238462087580" />
       </scope>
-      <scope id="4459225238462141897" at="14,0,24,0">
+      <scope id="4459225238462141897" at="15,0,25,0">
         <var name="loader" id="4459225238462087388" />
         <var name="resource" id="4459225238462087357" />
       </scope>
-      <unit id="4459225238462083668" at="9,0,25,0" name="jetbrains.mps.ide.icons.IconLoadingUtil" />
+      <unit id="4459225238462083668" at="10,0,30,0" name="jetbrains.mps.ide.icons.IconLoadingUtil" />
     </file>
   </root>
 </debug-info>

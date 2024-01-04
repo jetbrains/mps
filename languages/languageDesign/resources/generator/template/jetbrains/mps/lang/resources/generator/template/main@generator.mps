@@ -21,7 +21,6 @@
     <import index="tp27" ref="r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="sn11" ref="r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)" />
-    <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" implicit="true" />
@@ -713,10 +712,6 @@
         </node>
       </node>
       <node concept="3K4zz7" id="56J9l7KUrLu" role="33vP2m">
-        <node concept="2YIFZM" id="1$fQzw7$ZHI" role="3K4Cdx">
-          <ref role="37wK5l" to="lzb2:~ExperimentalUI.isNewUI()" resolve="isNewUI" />
-          <ref role="1Pybhc" to="lzb2:~ExperimentalUI" resolve="ExperimentalUI" />
-        </node>
         <node concept="2YIFZM" id="3RymrDRZSHE" role="3K4GZi">
           <ref role="37wK5l" to="sn11:3RymrDRZxn9" resolve="loadIcon" />
           <ref role="1Pybhc" to="sn11:3RymrDRZj9k" resolve="IconLoadingUtil" />
@@ -789,6 +784,10 @@
           <node concept="3VsKOn" id="56J9l7KUsOL" role="37wK5m">
             <ref role="3VsUkX" node="5Rfx8MvenDK" resolve="IconContainer" />
           </node>
+        </node>
+        <node concept="2YIFZM" id="KcujoScCi2" role="3K4Cdx">
+          <ref role="37wK5l" to="sn11:44LDkFPBIdh" resolve="isNewUIActive" />
+          <ref role="1Pybhc" to="sn11:3RymrDRZj9k" resolve="IconLoadingUtil" />
         </node>
       </node>
     </node>
@@ -1232,9 +1231,9 @@
             </node>
           </node>
         </node>
-        <node concept="2YIFZM" id="1$fQzw7$ZQ_" role="3K4Cdx">
-          <ref role="37wK5l" to="lzb2:~ExperimentalUI.isNewUI()" resolve="isNewUI" />
-          <ref role="1Pybhc" to="lzb2:~ExperimentalUI" resolve="ExperimentalUI" />
+        <node concept="2YIFZM" id="KcujoScCtP" role="3K4Cdx">
+          <ref role="37wK5l" to="sn11:44LDkFPBIdh" resolve="isNewUIActive" />
+          <ref role="1Pybhc" to="sn11:3RymrDRZj9k" resolve="IconLoadingUtil" />
         </node>
       </node>
     </node>
