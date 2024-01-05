@@ -200,7 +200,11 @@ public abstract class BaseAction extends AnAction {
         // thrown inside a model action
         disable(e.getPresentation());
         return;
-      } catch (RuntimeException ex) {
+      }  catch (RuntimeException ex) {
+        // hack to work around async update mechanism in com.intellij.openapi.actionSystem.impl.ActionUpdater
+        if ("com.intellij.openapi.actionSystem.impl.AwaitSharedData".equals(ex.getClass().getName())) {
+          throw ex;
+        }
         final Logger log = Logger.getLogger(getClass());
         if (log.isErrorLevel()) {
           log.error(String.format("User's action doUpdate method failed. Action: %s. Class: %s", getTemplatePresentation().getText(),
