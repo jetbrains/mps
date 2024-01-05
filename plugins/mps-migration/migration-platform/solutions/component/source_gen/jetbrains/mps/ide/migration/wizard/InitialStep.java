@@ -12,6 +12,7 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
+import com.intellij.ui.border.IdeaTitledBorder;
 import com.intellij.ui.IdeBorderFactory;
 import javax.swing.Box;
 import java.util.List;
@@ -65,7 +66,9 @@ public class InitialStep extends BaseStep {
     mainPanel.add(migrationsPanel, BorderLayout.CENTER);
 
     migrationsPanel.setLayout(new BoxLayout(migrationsPanel, BoxLayout.Y_AXIS));
-    migrationsPanel.setBorder(IdeBorderFactory.createTitledBorder("Migrations to be applied", false));
+    IdeaTitledBorder border = IdeBorderFactory.createTitledBorder("Migrations to be applied", false);
+    border.setShowLine(false);
+    migrationsPanel.setBorder(border);
 
     JPanel infoPanel = new JPanel();
     infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.X_AXIS));
@@ -171,6 +174,7 @@ public class InitialStep extends BaseStep {
         } else {
           setIcon((expanded ? IdeIcons.OPENED_FOLDER : IdeIcons.CLOSED_FOLDER));
         }
+        setBackgroundNonSelectionColor(tree.getBackground());
         return this;
       }
     });

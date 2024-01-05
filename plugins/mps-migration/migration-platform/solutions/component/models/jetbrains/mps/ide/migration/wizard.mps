@@ -13,6 +13,8 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
+    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
   </languages>
   <imports>
     <import index="uxeh" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.wizard(MPS.IDEA/)" />
@@ -57,7 +59,8 @@
     <import index="t335" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui.update(MPS.IDEA/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="bdll" ref="a5b1c28d-abeb-49a6-a58c-559039616d64/java:jetbrains.mps.migration.global(jetbrains.mps.migration.component/)" />
-    <import index="53vh" ref="r:53885008-7612-46ff-8b11-27f1d42c3adb(jetbrains.mps.lang.migration.structure)" implicit="true" />
+    <import index="gbvg" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.border(MPS.IDEA/)" />
+    <import index="53vh" ref="r:53885008-7612-46ff-8b11-27f1d42c3adb(jetbrains.mps.lang.migration.structure)" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -2368,6 +2371,33 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="4C8_WzCBnew" role="3cqZAp">
+          <node concept="3cpWsn" id="4C8_WzCBnex" role="3cpWs9">
+            <property role="TrG5h" value="border" />
+            <node concept="3uibUv" id="4C8_WzCBjri" role="1tU5fm">
+              <ref role="3uigEE" to="gbvg:~IdeaTitledBorder" resolve="IdeaTitledBorder" />
+            </node>
+            <node concept="2YIFZM" id="4C8_WzCBney" role="33vP2m">
+              <ref role="37wK5l" to="lzb2:~IdeBorderFactory.createTitledBorder(java.lang.String,boolean)" resolve="createTitledBorder" />
+              <ref role="1Pybhc" to="lzb2:~IdeBorderFactory" resolve="IdeBorderFactory" />
+              <node concept="Xl_RD" id="4C8_WzCBnez" role="37wK5m">
+                <property role="Xl_RC" value="Migrations to be applied" />
+              </node>
+              <node concept="3clFbT" id="4C8_WzCBne$" role="37wK5m" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4C8_WzCBTR0" role="3cqZAp">
+          <node concept="2OqwBi" id="4C8_WzCBXkg" role="3clFbG">
+            <node concept="37vLTw" id="4C8_WzCBTQY" role="2Oq$k0">
+              <ref role="3cqZAo" node="4C8_WzCBnex" resolve="border" />
+            </node>
+            <node concept="liA8E" id="4C8_WzCC4Ud" role="2OqNvi">
+              <ref role="37wK5l" to="gbvg:~IdeaTitledBorder.setShowLine(boolean)" resolve="setShowLine" />
+              <node concept="3clFbT" id="4C8_WzCCaeI" role="37wK5m" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="48WE3Hcz_bq" role="3cqZAp">
           <node concept="2OqwBi" id="48WE3HczAl4" role="3clFbG">
             <node concept="37vLTw" id="48WE3Hcz_bo" role="2Oq$k0">
@@ -2375,13 +2405,8 @@
             </node>
             <node concept="liA8E" id="48WE3HczBUF" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setBorder(javax.swing.border.Border)" resolve="setBorder" />
-              <node concept="2YIFZM" id="2dJ1bDt9ue6" role="37wK5m">
-                <ref role="37wK5l" to="lzb2:~IdeBorderFactory.createTitledBorder(java.lang.String,boolean)" resolve="createTitledBorder" />
-                <ref role="1Pybhc" to="lzb2:~IdeBorderFactory" resolve="IdeBorderFactory" />
-                <node concept="Xl_RD" id="2dJ1bDt9ue7" role="37wK5m">
-                  <property role="Xl_RC" value="Migrations to be applied" />
-                </node>
-                <node concept="3clFbT" id="2dJ1bDt9ue8" role="37wK5m" />
+              <node concept="37vLTw" id="4C8_WzCBne_" role="37wK5m">
+                <ref role="3cqZAo" node="4C8_WzCBnex" resolve="createTitledBorder" />
               </node>
             </node>
           </node>
@@ -3483,6 +3508,19 @@
                                     </node>
                                   </node>
                                 </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbF" id="2AG955f_OHV" role="3cqZAp">
+                          <node concept="1rXfSq" id="2AG955f_OHW" role="3clFbG">
+                            <ref role="37wK5l" to="rgfa:~DefaultTreeCellRenderer.setBackgroundNonSelectionColor(java.awt.Color)" resolve="setBackgroundNonSelectionColor" />
+                            <node concept="2OqwBi" id="2AG955fArik" role="37wK5m">
+                              <node concept="37vLTw" id="2AG955fAj0B" role="2Oq$k0">
+                                <ref role="3cqZAo" node="4cEc5tJn65J" resolve="tree" />
+                              </node>
+                              <node concept="liA8E" id="2AG955fAB0M" role="2OqNvi">
+                                <ref role="37wK5l" to="z60i:~Component.getBackground()" resolve="getBackground" />
                               </node>
                             </node>
                           </node>
