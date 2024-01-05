@@ -27,6 +27,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
+import java.awt.Color;
 
 public abstract class BaseNodeDialog extends DialogWrapper {
 
@@ -71,6 +72,10 @@ public abstract class BaseNodeDialog extends DialogWrapper {
   @Override
   public JComponent getPreferredFocusedComponent() {
     return myEditorComponent;
+  }
+
+  protected final Color getPreferredEditableComponentBackgroundColor() {
+    return myEditorComponent.getBackground();
   }
 
   @Override
