@@ -159,12 +159,10 @@ public abstract class BaseAction extends AnAction {
 
     ActionPlace place = e.getData(MPSCommonDataKeys.PLACE);
 
-    if (e.getInputEvent() instanceof KeyEvent) {
-      if (!getPlaces().contains(null)) {
-        if (!getPlaces().contains(place)) {
-          disable(e.getPresentation());
-          return;
-        }
+    if (!getPlaces().contains(null)) {
+      if (!getPlaces().contains(place)) {
+        disable(e.getPresentation());
+        return;
       }
     }
 
