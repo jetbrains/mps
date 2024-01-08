@@ -18,7 +18,7 @@ public class ShowTodoViewer_Action extends BaseAction {
   public ShowTodoViewer_Action() {
     super("Todo...", "", ICON);
     this.setIsAlwaysVisible(true);
-    this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    this.setActionAccess(ActionAccess.NONE);
     updateInBackground(true);
   }
   @Override
