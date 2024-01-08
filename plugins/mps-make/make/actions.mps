@@ -92,8 +92,8 @@
     <import index="gp7a" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.dependency(MPS.Core/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
     <import index="89zq" ref="r:7ccf8172-295d-4cea-940d-c894cc22089a(jetbrains.mps.lang.core.doc.plugin)" />
-    <import index="7bx7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)" implicit="true" />
-    <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
+    <import index="7bx7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)" />
+    <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -647,211 +647,6 @@
       <property role="2Tc6Oq" value="com.intellij.modules.mps" />
     </node>
   </node>
-  <node concept="sE7Ow" id="4BZFyk0pEUc">
-    <property role="fJN8o" value="true" />
-    <property role="1WHSii" value="Check models for errors before generation" />
-    <property role="TrG5h" value="CheckModelsBeforeGeneration" />
-    <property role="3GE5qa" value="Build.Options" />
-    <property role="2uzpH1" value="Check Models Before Generation" />
-    <property role="1teQrl" value="false" />
-    <property role="72QZ$" value="true" />
-    <property role="1rBW0U" value="true" />
-    <node concept="1DS2jV" id="5z503QbFih9" role="1NuT2Z">
-      <property role="TrG5h" value="project" />
-      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
-      <node concept="1oajcY" id="5z503QbFiha" role="1oa70y" />
-    </node>
-    <node concept="tnohg" id="4BZFyk0pEUd" role="tncku">
-      <node concept="3clFbS" id="4BZFyk0pEUe" role="2VODD2">
-        <node concept="3cpWs8" id="5z503QbFo78" role="3cqZAp">
-          <node concept="3cpWsn" id="5z503QbFo79" role="3cpWs9">
-            <property role="TrG5h" value="sp" />
-            <node concept="3uibUv" id="5z503QbFo7a" role="1tU5fm">
-              <ref role="3uigEE" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
-            </node>
-            <node concept="2OqwBi" id="5z503QbFo7b" role="33vP2m">
-              <node concept="2OqwBi" id="5z503QbFo7c" role="2Oq$k0">
-                <node concept="2OqwBi" id="5z503QbFo7d" role="2Oq$k0">
-                  <node concept="2WthIp" id="5z503QbFo7e" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="5z503QbFo7f" role="2OqNvi">
-                    <ref role="2WH_rO" node="5z503QbFih9" resolve="project" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="5z503QbFo7g" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
-                </node>
-              </node>
-              <node concept="liA8E" id="5z503QbFo7h" role="2OqNvi">
-                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
-                <node concept="3VsKOn" id="5z503QbFo7i" role="37wK5m">
-                  <ref role="3VsUkX" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="4BZFyk0pEUf" role="3cqZAp">
-          <node concept="3cpWsn" id="4BZFyk0pEUg" role="3cpWs9">
-            <property role="TrG5h" value="settings" />
-            <node concept="3uibUv" id="5sSs$oSYvr0" role="1tU5fm">
-              <ref role="3uigEE" to="ap4t:~IModifiableGenerationSettings" resolve="IModifiableGenerationSettings" />
-            </node>
-            <node concept="2OqwBi" id="3mq37CcYjoC" role="33vP2m">
-              <node concept="37vLTw" id="5z503QbFoeI" role="2Oq$k0">
-                <ref role="3cqZAo" node="5z503QbFo79" resolve="sp" />
-              </node>
-              <node concept="liA8E" id="3mq37CcYjoE" role="2OqNvi">
-                <ref role="37wK5l" to="ap4t:~GenerationSettingsProvider.getGenerationSettings()" resolve="getGenerationSettings" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="4BZFyk0pEUj" role="3cqZAp">
-          <node concept="2OqwBi" id="4BZFyk0pEUk" role="3clFbG">
-            <node concept="liA8E" id="4BZFyk0pEUl" role="2OqNvi">
-              <ref role="37wK5l" to="ap4t:~IModifiableGenerationSettings.setCheckModelsBeforeGeneration(boolean)" resolve="setCheckModelsBeforeGeneration" />
-              <node concept="3fqX7Q" id="4BZFyk0pEUm" role="37wK5m">
-                <node concept="2OqwBi" id="4BZFyk0pEUn" role="3fr31v">
-                  <node concept="37vLTw" id="3GM_nagTv6v" role="2Oq$k0">
-                    <ref role="3cqZAo" node="4BZFyk0pEUg" resolve="settings" />
-                  </node>
-                  <node concept="liA8E" id="4BZFyk0pEUp" role="2OqNvi">
-                    <ref role="37wK5l" to="ap4t:~IModifiableGenerationSettings.isCheckModelsBeforeGeneration()" resolve="isCheckModelsBeforeGeneration" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="37vLTw" id="3GM_nagTv4i" role="2Oq$k0">
-              <ref role="3cqZAo" node="4BZFyk0pEUg" resolve="settings" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="tkhdA" id="4BZFyk0pEUr" role="tmbBb">
-      <node concept="3clFbS" id="4BZFyk0pEUs" role="2VODD2">
-        <node concept="3cpWs8" id="5z503QbFkpB" role="3cqZAp">
-          <node concept="3cpWsn" id="5z503QbFkpC" role="3cpWs9">
-            <property role="TrG5h" value="sp" />
-            <node concept="3uibUv" id="5z503QbFkmQ" role="1tU5fm">
-              <ref role="3uigEE" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
-            </node>
-            <node concept="2OqwBi" id="5z503QbFkpD" role="33vP2m">
-              <node concept="2OqwBi" id="5z503QbFkpE" role="2Oq$k0">
-                <node concept="2OqwBi" id="5z503QbFkpF" role="2Oq$k0">
-                  <node concept="2WthIp" id="5z503QbFkpG" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="5z503QbFkpH" role="2OqNvi">
-                    <ref role="2WH_rO" node="5z503QbFih9" resolve="project" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="5z503QbFkpI" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
-                </node>
-              </node>
-              <node concept="liA8E" id="5z503QbFkpJ" role="2OqNvi">
-                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
-                <node concept="3VsKOn" id="5z503QbFkpK" role="37wK5m">
-                  <ref role="3VsUkX" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="5z503QbFldp" role="3cqZAp">
-          <node concept="3clFbS" id="5z503QbFldr" role="3clFbx">
-            <node concept="3clFbF" id="5z503QbFmeY" role="3cqZAp">
-              <node concept="1rXfSq" id="5z503QbFmeT" role="3clFbG">
-                <ref role="37wK5l" to="7bx7:~BaseAction.disable(com.intellij.openapi.actionSystem.Presentation)" resolve="disable" />
-                <node concept="2OqwBi" id="5z503QbFmiD" role="37wK5m">
-                  <node concept="tl45R" id="5z503QbFmfu" role="2Oq$k0" />
-                  <node concept="liA8E" id="5z503QbFmya" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs6" id="5z503QbFmHl" role="3cqZAp" />
-          </node>
-          <node concept="3clFbC" id="5z503QbFlB0" role="3clFbw">
-            <node concept="10Nm6u" id="5z503QbFlMW" role="3uHU7w" />
-            <node concept="37vLTw" id="5z503QbFlnY" role="3uHU7B">
-              <ref role="3cqZAo" node="5z503QbFkpC" resolve="sp" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="4BZFyk0pEUt" role="3cqZAp">
-          <node concept="3cpWsn" id="4BZFyk0pEUu" role="3cpWs9">
-            <property role="TrG5h" value="optionEnabled" />
-            <node concept="10P_77" id="4BZFyk0pEUv" role="1tU5fm" />
-            <node concept="2OqwBi" id="4BZFyk0pEUw" role="33vP2m">
-              <node concept="2OqwBi" id="3mq37CcYjg$" role="2Oq$k0">
-                <node concept="37vLTw" id="5z503QbFkEd" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5z503QbFkpC" resolve="sp" />
-                </node>
-                <node concept="liA8E" id="3mq37CcYjkv" role="2OqNvi">
-                  <ref role="37wK5l" to="ap4t:~GenerationSettingsProvider.getGenerationSettings()" resolve="getGenerationSettings" />
-                </node>
-              </node>
-              <node concept="liA8E" id="4BZFyk0pEUy" role="2OqNvi">
-                <ref role="37wK5l" to="ap4t:~IModifiableGenerationSettings.isCheckModelsBeforeGeneration()" resolve="isCheckModelsBeforeGeneration" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="4BZFyk0pEUz" role="3cqZAp">
-          <node concept="3clFbS" id="4BZFyk0pEU$" role="3clFbx">
-            <node concept="3clFbF" id="4BZFyk0pEU_" role="3cqZAp">
-              <node concept="2OqwBi" id="4BZFyk0pEUA" role="3clFbG">
-                <node concept="2OqwBi" id="4BZFyk0pEUB" role="2Oq$k0">
-                  <node concept="tl45R" id="4BZFyk0pEUC" role="2Oq$k0" />
-                  <node concept="liA8E" id="4BZFyk0pEUD" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="4BZFyk0pEUE" role="2OqNvi">
-                  <ref role="37wK5l" to="qkt:~Presentation.setIcon(javax.swing.Icon)" resolve="setIcon" />
-                  <node concept="10M0yZ" id="5z503QbFmJn" role="37wK5m">
-                    <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Checked" resolve="Checked" />
-                    <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="37vLTw" id="3GM_nagTw7Q" role="3clFbw">
-            <ref role="3cqZAo" node="4BZFyk0pEUu" resolve="optionEnabled" />
-          </node>
-          <node concept="9aQIb" id="4BZFyk0pEUH" role="9aQIa">
-            <node concept="3clFbS" id="4BZFyk0pEUI" role="9aQI4">
-              <node concept="3clFbF" id="4BZFyk0pEUJ" role="3cqZAp">
-                <node concept="2OqwBi" id="4BZFyk0pEUK" role="3clFbG">
-                  <node concept="2OqwBi" id="4BZFyk0pEUL" role="2Oq$k0">
-                    <node concept="tl45R" id="4BZFyk0pEUM" role="2Oq$k0" />
-                    <node concept="liA8E" id="4BZFyk0pEUN" role="2OqNvi">
-                      <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="4BZFyk0pEUO" role="2OqNvi">
-                    <ref role="37wK5l" to="qkt:~Presentation.setIcon(javax.swing.Icon)" resolve="setIcon" />
-                    <node concept="2YIFZM" id="5z503QbFmR8" role="37wK5m">
-                      <ref role="37wK5l" to="g1qu:~EmptyIcon.create(int,int)" resolve="create" />
-                      <ref role="1Pybhc" to="g1qu:~EmptyIcon" resolve="EmptyIcon" />
-                      <node concept="3cmrfG" id="4BZFyk0pEUR" role="37wK5m">
-                        <property role="3cmrfH" value="18" />
-                      </node>
-                      <node concept="3cmrfG" id="4BZFyk0pEUS" role="37wK5m">
-                        <property role="3cmrfH" value="18" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="tC5Ba" id="4BZFyk0pEUT">
     <property role="TrG5h" value="GenerateOptions" />
     <property role="3GE5qa" value="Build.Options" />
@@ -862,9 +657,6 @@
       <node concept="10WQ6h" id="4BZFyk0pEUV" role="ftvYc">
         <property role="TrG5h" value="saveTransientModels" />
       </node>
-      <node concept="tCFHf" id="4BZFyk0pEUW" role="ftvYc">
-        <ref role="tCJdB" node="4BZFyk0pEUc" resolve="CheckModelsBeforeGeneration" />
-      </node>
     </node>
     <node concept="tT9cl" id="4BZFyk0pEUX" role="2f5YQi">
       <ref role="tU$_T" to="tprs:hF$rJGH" resolve="Build" />
@@ -872,7 +664,7 @@
     </node>
   </node>
   <node concept="tC5Ba" id="4BZFyk0pEUY">
-    <property role="TrG5h" value="SaveTransientModels" />
+    <property role="TrG5h" value="SaveTransientAndCheckModelsToggleActions" />
     <property role="3GE5qa" value="Build.Options" />
     <node concept="tT9cl" id="4BZFyk0pEUZ" role="2f5YQi">
       <ref role="2f8Tey" node="4BZFyk0pEUV" resolve="saveTransientModels" />
@@ -884,6 +676,13 @@
           <node concept="2ShNRf" id="4BZFyk0pEV3" role="fuByb">
             <node concept="1pGfFk" id="4BZFyk0pEV4" role="2ShVmc">
               <ref role="37wK5l" node="4_qBpm$bmFm" resolve="SaveTransientModelsAction" />
+            </node>
+          </node>
+        </node>
+        <node concept="fuyK3" id="6OO_ubqddQz" role="3cqZAp">
+          <node concept="2ShNRf" id="6OO_ubqddQ$" role="fuByb">
+            <node concept="1pGfFk" id="6OO_ubqddQ_" role="2ShVmc">
+              <ref role="37wK5l" node="6OO_ubq7G1w" />
             </node>
           </node>
         </node>
@@ -15815,6 +15614,250 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="312cEu" id="6OO_ubq7G1v">
+    <property role="TrG5h" value="CheckModelsBeforeGenerationAction" />
+    <property role="3GE5qa" value="SaveTransientModels.Actions" />
+    <property role="1sVAO0" value="false" />
+    <property role="1EXbeo" value="false" />
+    <node concept="3clFbW" id="6OO_ubq7G1w" role="jymVt">
+      <node concept="3Tm1VV" id="6OO_ubq7G1x" role="1B3o_S" />
+      <node concept="3clFbS" id="6OO_ubq7G1y" role="3clF47">
+        <node concept="XkiVB" id="6OO_ubq7G1z" role="3cqZAp">
+          <ref role="37wK5l" to="qkt:~ToggleAction.&lt;init&gt;(java.lang.String,java.lang.String,javax.swing.Icon)" resolve="ToggleAction" />
+          <node concept="Xl_RD" id="6OO_ubq7G1$" role="37wK5m">
+            <property role="Xl_RC" value="Check Models Before Generation" />
+          </node>
+          <node concept="Xl_RD" id="6OO_ubq84r_" role="37wK5m">
+            <property role="Xl_RC" value="Check models for errors before generation" />
+          </node>
+          <node concept="10Nm6u" id="6OO_ubq88VM" role="37wK5m" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="6OO_ubq7G1_" role="3clF45" />
+    </node>
+    <node concept="3clFb_" id="6OO_ubq7G1A" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="isSelected" />
+      <property role="DiZV1" value="false" />
+      <node concept="3clFbS" id="6OO_ubq7G1B" role="3clF47">
+        <node concept="3cpWs8" id="6OO_ubq7G1C" role="3cqZAp">
+          <node concept="3cpWsn" id="6OO_ubq7G1D" role="3cpWs9">
+            <property role="TrG5h" value="mpsProject" />
+            <node concept="3uibUv" id="6OO_ubq7G1E" role="1tU5fm">
+              <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
+            </node>
+            <node concept="2OqwBi" id="6OO_ubq7G1F" role="33vP2m">
+              <node concept="liA8E" id="6OO_ubq7G1G" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~AnActionEvent.getData(com.intellij.openapi.actionSystem.DataKey)" resolve="getData" />
+                <node concept="10M0yZ" id="6OO_ubq7G1H" role="37wK5m">
+                  <ref role="3cqZAo" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
+                  <ref role="1PxDUh" to="qq03:~MPSCommonDataKeys" resolve="MPSCommonDataKeys" />
+                </node>
+              </node>
+              <node concept="37vLTw" id="6OO_ubq7G1I" role="2Oq$k0">
+                <ref role="3cqZAo" node="6OO_ubq7G1X" resolve="e" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="6OO_ubq7G1J" role="3cqZAp">
+          <node concept="1Wc70l" id="6OO_ubq7G1K" role="3cqZAk">
+            <node concept="3y3z36" id="6OO_ubq7G1L" role="3uHU7B">
+              <node concept="37vLTw" id="6OO_ubq7G1M" role="3uHU7B">
+                <ref role="3cqZAo" node="6OO_ubq7G1D" resolve="mpsProject" />
+              </node>
+              <node concept="10Nm6u" id="6OO_ubq7G1N" role="3uHU7w" />
+            </node>
+            <node concept="2OqwBi" id="6OO_ubq7G1O" role="3uHU7w">
+              <node concept="2OqwBi" id="6OO_ubq7G1P" role="2Oq$k0">
+                <node concept="2OqwBi" id="6OO_ubq7G1Q" role="2Oq$k0">
+                  <node concept="37vLTw" id="6OO_ubq7G1R" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6OO_ubq7G1D" resolve="mpsProject" />
+                  </node>
+                  <node concept="liA8E" id="6OO_ubq7G1S" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                    <node concept="3VsKOn" id="6OO_ubq7G1T" role="37wK5m">
+                      <ref role="3VsUkX" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="6OO_ubq7G1U" role="2OqNvi">
+                  <ref role="37wK5l" to="ap4t:~GenerationSettingsProvider.getGenerationSettings()" resolve="getGenerationSettings" />
+                </node>
+              </node>
+              <node concept="liA8E" id="6OO_ubq94bG" role="2OqNvi">
+                <ref role="37wK5l" to="ap4t:~IModifiableGenerationSettings.isCheckModelsBeforeGeneration()" resolve="isCheckModelsBeforeGeneration" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="6OO_ubq7G1W" role="1B3o_S" />
+      <node concept="37vLTG" id="6OO_ubq7G1X" role="3clF46">
+        <property role="TrG5h" value="e" />
+        <property role="3TUv4t" value="false" />
+        <node concept="3uibUv" id="6OO_ubq7G1Y" role="1tU5fm">
+          <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+        </node>
+      </node>
+      <node concept="10P_77" id="6OO_ubq7G1Z" role="3clF45" />
+      <node concept="2AHcQZ" id="6OO_ubq7G20" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="6OO_ubq7G21" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="update" />
+      <property role="DiZV1" value="false" />
+      <node concept="3Tm1VV" id="6OO_ubq7G22" role="1B3o_S" />
+      <node concept="3clFbS" id="6OO_ubq7G23" role="3clF47">
+        <node concept="3clFbF" id="6OO_ubq7G24" role="3cqZAp">
+          <node concept="3nyPlj" id="6OO_ubq7G25" role="3clFbG">
+            <ref role="37wK5l" to="qkt:~ToggleAction.update(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="update" />
+            <node concept="37vLTw" id="6OO_ubq7G26" role="37wK5m">
+              <ref role="3cqZAo" node="6OO_ubq7G2K" resolve="e" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6OO_ubq7G2g" role="3cqZAp">
+          <node concept="2OqwBi" id="6OO_ubq7G2h" role="3clFbG">
+            <node concept="2OqwBi" id="6OO_ubq7G2i" role="2Oq$k0">
+              <node concept="liA8E" id="6OO_ubq7G2j" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
+              </node>
+              <node concept="37vLTw" id="6OO_ubq7G2k" role="2Oq$k0">
+                <ref role="3cqZAo" node="6OO_ubq7G2K" resolve="e" />
+              </node>
+            </node>
+            <node concept="liA8E" id="6OO_ubq7G2l" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~Presentation.setEnabledAndVisible(boolean)" resolve="setEnabledAndVisible" />
+              <node concept="3y3z36" id="6OO_ubq90JA" role="37wK5m">
+                <node concept="1eOMI4" id="2KO_4waxF9V" role="3uHU7B">
+                  <node concept="2OqwBi" id="2KO_4waxF9R" role="1eOMHV">
+                    <node concept="liA8E" id="2KO_4waxF9S" role="2OqNvi">
+                      <ref role="37wK5l" to="qkt:~AnActionEvent.getData(com.intellij.openapi.actionSystem.DataKey)" resolve="getData" />
+                      <node concept="10M0yZ" id="2KO_4waxF9T" role="37wK5m">
+                        <ref role="3cqZAo" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
+                        <ref role="1PxDUh" to="qq03:~MPSCommonDataKeys" resolve="MPSCommonDataKeys" />
+                      </node>
+                    </node>
+                    <node concept="37vLTw" id="2KO_4waxF9U" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6OO_ubq7G2K" resolve="e" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="10Nm6u" id="6OO_ubq90JC" role="3uHU7w" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3cqZAl" id="6OO_ubq7G2J" role="3clF45" />
+      <node concept="37vLTG" id="6OO_ubq7G2K" role="3clF46">
+        <property role="TrG5h" value="e" />
+        <property role="3TUv4t" value="false" />
+        <node concept="3uibUv" id="6OO_ubq7G2L" role="1tU5fm">
+          <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="6OO_ubq7G2M" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="6OO_ubq7G2N" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="setSelected" />
+      <property role="DiZV1" value="false" />
+      <node concept="3clFbS" id="6OO_ubq7G2O" role="3clF47">
+        <node concept="3cpWs8" id="6OO_ubq7G2P" role="3cqZAp">
+          <node concept="3cpWsn" id="6OO_ubq7G2Q" role="3cpWs9">
+            <property role="TrG5h" value="mpsProject" />
+            <node concept="3uibUv" id="6OO_ubq7G2R" role="1tU5fm">
+              <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
+            </node>
+            <node concept="2OqwBi" id="6OO_ubq7G2S" role="33vP2m">
+              <node concept="liA8E" id="6OO_ubq7G2T" role="2OqNvi">
+                <ref role="37wK5l" to="qkt:~AnActionEvent.getData(com.intellij.openapi.actionSystem.DataKey)" resolve="getData" />
+                <node concept="10M0yZ" id="6OO_ubq7G2U" role="37wK5m">
+                  <ref role="3cqZAo" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
+                  <ref role="1PxDUh" to="qq03:~MPSCommonDataKeys" resolve="MPSCommonDataKeys" />
+                </node>
+              </node>
+              <node concept="37vLTw" id="6OO_ubq7G2V" role="2Oq$k0">
+                <ref role="3cqZAo" node="6OO_ubq7G3e" resolve="e" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1gVbGN" id="6OO_ubq7G2W" role="3cqZAp">
+          <node concept="3y3z36" id="6OO_ubq7G2X" role="1gVkn0">
+            <node concept="10Nm6u" id="6OO_ubq7G2Y" role="3uHU7w" />
+            <node concept="37vLTw" id="6OO_ubq7G2Z" role="3uHU7B">
+              <ref role="3cqZAo" node="6OO_ubq7G2Q" resolve="mpsProject" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="6OO_ubq7G30" role="3cqZAp">
+          <node concept="3cpWsn" id="6OO_ubq7G31" role="3cpWs9">
+            <property role="TrG5h" value="sp" />
+            <node concept="3uibUv" id="6OO_ubq7G32" role="1tU5fm">
+              <ref role="3uigEE" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
+            </node>
+            <node concept="2OqwBi" id="6OO_ubq7G33" role="33vP2m">
+              <node concept="37vLTw" id="6OO_ubq7G34" role="2Oq$k0">
+                <ref role="3cqZAo" node="6OO_ubq7G2Q" resolve="mpsProject" />
+              </node>
+              <node concept="liA8E" id="6OO_ubq7G35" role="2OqNvi">
+                <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="6OO_ubq7G36" role="37wK5m">
+                  <ref role="3VsUkX" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6OO_ubq7G37" role="3cqZAp">
+          <node concept="2OqwBi" id="6OO_ubq7G38" role="3clFbG">
+            <node concept="2OqwBi" id="6OO_ubq7G39" role="2Oq$k0">
+              <node concept="37vLTw" id="6OO_ubq7G3a" role="2Oq$k0">
+                <ref role="3cqZAo" node="6OO_ubq7G31" resolve="sp" />
+              </node>
+              <node concept="liA8E" id="6OO_ubq7G3b" role="2OqNvi">
+                <ref role="37wK5l" to="ap4t:~GenerationSettingsProvider.getGenerationSettings()" resolve="getGenerationSettings" />
+              </node>
+            </node>
+            <node concept="liA8E" id="6OO_ubq7G3c" role="2OqNvi">
+              <ref role="37wK5l" to="ap4t:~IModifiableGenerationSettings.setCheckModelsBeforeGeneration(boolean)" resolve="setCheckModelsBeforeGeneration" />
+              <node concept="37vLTw" id="6OO_ubq7G3d" role="37wK5m">
+                <ref role="3cqZAo" node="6OO_ubq7G3g" resolve="state" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="6OO_ubq7G3e" role="3clF46">
+        <property role="TrG5h" value="e" />
+        <property role="3TUv4t" value="false" />
+        <node concept="3uibUv" id="6OO_ubq7G3f" role="1tU5fm">
+          <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="6OO_ubq7G3g" role="3clF46">
+        <property role="TrG5h" value="state" />
+        <property role="3TUv4t" value="false" />
+        <node concept="10P_77" id="6OO_ubq7G3h" role="1tU5fm" />
+      </node>
+      <node concept="3Tm1VV" id="6OO_ubq7G3i" role="1B3o_S" />
+      <node concept="3cqZAl" id="6OO_ubq7G3j" role="3clF45" />
+      <node concept="2AHcQZ" id="6OO_ubq7G3k" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3Tm1VV" id="6OO_ubq7G3l" role="1B3o_S" />
+    <node concept="3uibUv" id="6OO_ubq7G3m" role="1zkMxy">
+      <ref role="3uigEE" to="qkt:~ToggleAction" resolve="ToggleAction" />
     </node>
   </node>
 </model>
