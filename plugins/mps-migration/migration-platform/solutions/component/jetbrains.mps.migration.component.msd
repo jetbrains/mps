@@ -7,6 +7,9 @@
     </modelRoot>
     <modelRoot contentPath="${module}/../.." type="java_classes">
       <sourceRoot location="lib/migration-platform.jar" />
+      <PackageScope skip-private="false">
+        <include prefix="jetbrains.mps.migration.global" />
+      </PackageScope>
     </modelRoot>
   </models>
   <facets>
