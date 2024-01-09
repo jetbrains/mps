@@ -24,9 +24,11 @@ import jetbrains.mps.make.dependencies.graph.Graph;
 import jetbrains.mps.make.dependencies.graph.IVertex;
 import jetbrains.mps.make.java.BLDependenciesCache;
 import jetbrains.mps.make.java.ModelDependencies;
-import jetbrains.mps.make.kotlin.KotlinCompilationOutput;
+import jetbrains.mps.make.kotlin.JvmKotlinCompilerRunner;
+import jetbrains.mps.make.kotlin.JvmKotlinModule;
 import jetbrains.mps.make.kotlin.KotlinCompilerOptions;
 import jetbrains.mps.make.kotlin.KotlinCompilerRunner;
+import jetbrains.mps.make.kotlin.KotlinModule;
 import jetbrains.mps.make.kotlin.cache.KotlinCompileCacheHandler;
 import jetbrains.mps.make.kotlin.cache.KotlinModuleCache;
 import jetbrains.mps.messages.IMessageHandler;
@@ -456,7 +458,7 @@ public final class ModuleMaker {
       mySourcesCache = sourceOutCacheRoot == null ? null : new File(sourceOutCacheRoot);
 
       // Get kotlin cache and walk output
-      KotlinModuleCache cache = !js.myKotlinFiles.isEmpty() && kotlinCache != null ? kotlinCache.getCache(this) : null;
+      KotlinModuleCache cache = !js.myKotlinFiles.isEmpty() && kotlinCache != null ? kotlinCache.getCache(new JvmKotlinModule(this)) : null;
       js.walkOutput(myClassesOut = new File(classOut), cache);
     }
 
@@ -609,9 +611,7 @@ public final class ModuleMaker {
 
     void walkOutput(File classesRoot, KotlinModuleCache cache) {
       // Search for unregistered source files (all input files are mapped in cache, even empty though .kotlin_modules)
-      myHasKotlinFilesToCompile = !myKotlinFiles.isEmpty() && (cache == null ||
-                                                               myKotlinFiles.size() > cache.getSourceFiles().size() ||
-                                                               !cache.getSourceFiles().containsAll(myKotlinFiles));
+      myHasKotlinFilesToCompile = !myKotlinFiles.isEmpty() && (cache == null || cache.processSources(myKotlinFiles));
 
       myFilesToCompile.clear();
       myResourcesToCopy.clear();
@@ -641,14 +641,13 @@ public final class ModuleMaker {
 
         if (childName.endsWith(MPSExtentions.DOT_CLASSFILE) || childName.endsWith(MPSExtentions.DOT_KOTLINMODULE)) {
           // If the .class/.kotlin_module file is in the kotlin cache, assumes it to be compiled from kotlin
-          final Collection<String> sourceFiles;
-          if (kotlinCache != null && (sourceFiles = kotlinCache.getSourcesFor(packPrefix.pathWithTail(childName))) != null) {
+          final Collection<File> sourceFiles;
+          if (kotlinCache != null && (sourceFiles = kotlinCache.getSourcesFor(f, packPrefix)) != null) {
             final long classFileLastModified = f.lastModified();
 
             // Check for any outdated file to mark as to compile
             myHasKotlinFilesToCompile = myHasKotlinFilesToCompile ||
                                         sourceFiles.stream()
-                                                   .map(File::new)
                                                    .filter(myKotlinFiles::contains)
                                                    .anyMatch(file -> !isFileUpToDate(file.lastModified(), classFileLastModified));
 
@@ -942,7 +941,7 @@ public final class ModuleMaker {
             final JavaVersion javaVersion = myCompilerOptions == null || myCompilerOptions.getTargetJavaVersion() == null
                                    ? JavaCompilerOptionsComponent.DEFAULT_JAVA_VERSION
                                    : myCompilerOptions.getTargetJavaVersion();
-            kotlinCompilerRunner = new KotlinCompilerRunner(myTracer, myKotlinCompilerOptions, javaVersion);
+            kotlinCompilerRunner = new JvmKotlinCompilerRunner(javaVersion, myTracer, myKotlinCompilerOptions);
           }
 
           kotlinSubTracer.start(KOTLIN_COMPILE_MSG, 1);
@@ -958,31 +957,31 @@ public final class ModuleMaker {
     } finally {
       tracer.done();
       if (kotlinCompilerRunner != null) {
-        kotlinCompilerRunner.dispose();
+        kotlinCompilerRunner.close();
       }
     }
     return combineCycleCompilationResults(cycleCompilationResults);
   }
 
-  public MPSCompilationResult compileKotlin(KotlinCompilerRunner runner, BaseModuleContainer<JM> container) {
-    final List<JM> modules = container.getDirtyModules().filter(JM::hasKotlinToCompile).collect(Collectors.toList());
+  private MPSCompilationResult compileKotlin(KotlinCompilerRunner runner, BaseModuleContainer<JM> container) {
+    final var modules = container.getDirtyModules().filter(JM::hasKotlinToCompile).map(JvmKotlinModule::new).collect(Collectors.toList());
 
     // Link all kotlin source files to their module (to trace back output files to module)
-    HashMap<File, JM> moduleByInputFile = new HashMap<>();
+    var moduleByInputFile = new HashMap<File, KotlinModule>();
     modules.forEach(module ->
-      module.mySources.myKotlinFiles.forEach(file -> moduleByInputFile.put(file, module))
+      module.getJm().mySources.myKotlinFiles.forEach(file -> moduleByInputFile.put(file, module))
     );
 
     // Do the actual compilation
-    final KotlinCompilationOutput compilationOutput = runner.doCompile(modules, moduleByInputFile);
+    final var compilationOutput = runner.doCompile(modules, moduleByInputFile);
 
     // Get the inputs-per-output mapping per module
-    final Map<JM, Map<File, List<File>>> outputFiles = compilationOutput.getOutputFiles();
+    final var outputFiles = compilationOutput.getOutputFiles();
 
     modules.forEach(module -> {
       if (outputFiles.containsKey(module)) {
         // Existing .class file before compilation
-        final Set<File> previous = new HashSet<>(module.mySources.myKotlinCompiledFiles);
+        final Set<File> previous = new HashSet<>(module.getJm().mySources.myKotlinCompiledFiles);
         // Map of new .class files -> list of input files
         final Map<File, List<File>> current = outputFiles.get(module);
 
@@ -997,7 +996,7 @@ public final class ModuleMaker {
       } else if (compilationOutput.getCompilationResult().isOk()) {
         // No output files on successful compilation -> all existing kotlin output files must be removed
         // TODO can that actually happens? (those files are marked as to compile)
-        module.mySources.myKotlinCompiledFiles.forEach(File::delete);
+        module.getJm().mySources.myKotlinCompiledFiles.forEach(File::delete);
       }
     });
 

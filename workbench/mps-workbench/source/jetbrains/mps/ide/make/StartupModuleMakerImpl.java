@@ -35,7 +35,7 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.make.kotlin.KotlinCompilerOptions;
-import jetbrains.mps.make.kotlin.cache.KotlinCompileCacheHandlerImpl;
+import jetbrains.mps.make.kotlin.cache.JvmKotlinCompileCacheHandler;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.MPSProject;
@@ -113,7 +113,7 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker implements 
     // Create temporary client file
     final File clientFile = KotlinCompilerOptions.createClientFile();
     maker.options(JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(myMPSProject))
-         .kotlinCompileCache(new KotlinCompileCacheHandlerImpl(IMessageHandler.NULL_HANDLER))
+         .kotlinCompileCache(new JvmKotlinCompileCacheHandler(IMessageHandler.NULL_HANDLER))
          .kotlinOptions(new KotlinCompilerOptions(clientFile));
     final ReloadManager reloadManager = ReloadManager.getInstance();
     reloadManager.computeNoReload(() -> {

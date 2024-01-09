@@ -576,7 +576,7 @@
                   <node concept="2ShNRf" id="4IjTpK4Gq5f" role="37wK5m">
                     <node concept="1pGfFk" id="4IjTpK4GqJh" role="2ShVmc">
                       <property role="373rjd" value="true" />
-                      <ref role="37wK5l" to="9agv:~KotlinCompileCacheHandlerImpl.&lt;init&gt;(jetbrains.mps.messages.IMessageHandler)" resolve="KotlinCompileCacheHandlerImpl" />
+                      <ref role="37wK5l" to="9agv:~JvmKotlinCompileCacheHandler.&lt;init&gt;(jetbrains.mps.messages.IMessageHandler)" resolve="JvmKotlinCompileCacheHandler" />
                       <node concept="2OqwBi" id="1juFuk3EKET" role="37wK5m">
                         <node concept="2_BwXt" id="1juFuk3EKEU" role="2Oq$k0" />
                         <node concept="liA8E" id="1juFuk3EKEV" role="2OqNvi">

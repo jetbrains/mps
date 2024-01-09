@@ -3,8 +3,7 @@
  */
 package jetbrains.mps.make.kotlin.cache;
 
-import jetbrains.mps.internal.make.runtime.java.FileProcessor;
-import jetbrains.mps.make.ModuleMaker.JM;
+import jetbrains.mps.make.kotlin.KotlinModule;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
@@ -12,6 +11,7 @@ import jetbrains.mps.util.JDOMUtil;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -26,16 +26,16 @@ import java.util.Map;
  *
  * <p>This file does not get automatically removed, but is rather ignored when kotlin source are missing.</p>
  */
-public class KotlinCompileCacheHandlerImpl implements KotlinCompileCacheHandler {
+public class JvmKotlinCompileCacheHandler implements KotlinCompileCacheHandler {
   private final IMessageHandler myMessageHandler;
 
-  public KotlinCompileCacheHandlerImpl(IMessageHandler messageHandler) {
+  public JvmKotlinCompileCacheHandler(IMessageHandler messageHandler) {
     myMessageHandler = messageHandler;
   }
   @Nullable
   @Override
-  public KotlinModuleCache getCache(JM module) {
-    final File cacheFile = new File(module.getSourcesCache(), KotlinCompileCacheUtil.CACHE_FILE_NAME);
+  public KotlinModuleCache getCache(@NotNull KotlinModule module) {
+    final File cacheFile = new File(module.getSourcesCache(), JvmKotlinCompileCacheUtil.CACHE_FILE_NAME);
 
     // Avoid mandatory SEVERE logging from JDOMUtil in case the file doesn't exist (expected error)
     if (!cacheFile.exists()) {
@@ -44,9 +44,9 @@ public class KotlinCompileCacheHandlerImpl implements KotlinCompileCacheHandler 
 
     try {
       final Document document = JDOMUtil.loadDocument(cacheFile);
-      return KotlinCompileCacheUtil.deserialize(document.getRootElement());
+      return JvmKotlinCompileCacheUtil.deserialize(document.getRootElement());
     } catch (JDOMException | IOException e) {
-      Message msg = new Message(MessageKind.ERROR, KotlinCompileCacheHandlerImpl.class, (e.getMessage() == null ? e.getClass().getName() : e.getMessage()));
+      Message msg = new Message(MessageKind.ERROR, JvmKotlinCompileCacheHandler.class, (e.getMessage() == null ? e.getClass().getName() : e.getMessage()));
       msg.setException(e);
       msg.setHintObject(cacheFile);
       myMessageHandler.handle(msg);
@@ -56,15 +56,15 @@ public class KotlinCompileCacheHandlerImpl implements KotlinCompileCacheHandler 
   }
 
   @Override
-  public void addOutput(JM module, Map<File, List<File>> outputToSourcesMap) {
+  public void addOutput(KotlinModule module, Map<File, List<File>> outputToSourcesMap) {
     // +1 for the starting /
-    final Element root = KotlinCompileCacheUtil.serialize(outputToSourcesMap, module.getClassesOut().getAbsolutePath().length() + 1);
+    final Element root = JvmKotlinCompileCacheUtil.serialize(outputToSourcesMap, module.getClassesOut().getAbsolutePath().length() + 1);
     final Document document = new Document(root);
-    final File cacheFile = new File(module.getSourcesCache(), KotlinCompileCacheUtil.CACHE_FILE_NAME);
+    final File cacheFile = new File(module.getSourcesCache(), JvmKotlinCompileCacheUtil.CACHE_FILE_NAME);
     try {
       JDOMUtil.writeDocument(document, cacheFile);
     } catch (IOException ex) {
-      Message msg = new Message(MessageKind.ERROR, KotlinCompileCacheHandlerImpl.class, (ex.getMessage() == null ? ex.getClass().getName() : ex.getMessage()));
+      Message msg = new Message(MessageKind.ERROR, JvmKotlinCompileCacheHandler.class, (ex.getMessage() == null ? ex.getClass().getName() : ex.getMessage()));
       msg.setException(ex);
       msg.setHintObject(cacheFile);
       myMessageHandler.handle(msg);

@@ -3,7 +3,8 @@
  */
 package jetbrains.mps.make.kotlin.cache;
 
-import jetbrains.mps.make.ModuleMaker.JM;
+import jetbrains.mps.make.kotlin.KotlinModule;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -16,7 +17,7 @@ import java.util.Map;
  * after compilation.<br/>
  * <br/>
  * In a make process, cache is read during analysis, then compilation occur and output is provided, cache
- * handler should persist data between compilations (see {@link KotlinCompileCacheHandlerImpl} that uses files
+ * handler should persist data between compilations (see {@link JvmKotlinCompileCacheHandler} that uses files
  * for that purpose).
  */
 public interface KotlinCompileCacheHandler {
@@ -31,7 +32,7 @@ public interface KotlinCompileCacheHandler {
    * @return pair with an input files per output file paths mapping and a set of input files
    */
   @Nullable
-  KotlinModuleCache getCache(JM module);
+  KotlinModuleCache getCache(@NotNull KotlinModule module);
 
   /**
    * <p>Handles the output of the compiler. Unlike {@link KotlinModuleCache}, file instances are returned and
@@ -45,7 +46,7 @@ public interface KotlinCompileCacheHandler {
    * @param module  module compiled
    * @param outputToSourcesMap input files per output file mapping
    */
-  default void addOutput(JM module, Map<File, List<File>> outputToSourcesMap) {
+  default void addOutput(KotlinModule module, Map<File, List<File>> outputToSourcesMap) {
     // no-op
   }
 }

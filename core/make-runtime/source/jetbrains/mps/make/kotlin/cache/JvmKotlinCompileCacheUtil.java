@@ -18,9 +18,9 @@ import java.util.Map;
 /**
  * Class managing serialization to xml of the cache file for kotlin compilation.
  *
- * @see KotlinCompileCacheHandlerImpl
+ * @see JvmKotlinCompileCacheHandler
  */
-public class KotlinCompileCacheUtil {
+public class JvmKotlinCompileCacheUtil {
   public static final String CACHE_FILE_NAME = "kotlin_compiled_cache.xml";
   public static final String ELEMENT_COMPILE_CACHE = "compile-output";
   public static final String ELEMENT_OUTPUT = "output";
@@ -81,6 +81,6 @@ public class KotlinCompileCacheUtil {
       }
     }
 
-    return new KotlinModuleCache(map, inputFiles);
+    return new JvmKotlinModuleCache(map, inputFiles);
   }
 }
