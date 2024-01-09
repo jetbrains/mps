@@ -17,14 +17,6 @@
 <idea-plugin>
   <depends>jetbrains.mps.core</depends>
 
-  <project-components>
-    <component>
-      <interface-class>jetbrains.mps.ide.migration.IStartupMigrationExecutor</interface-class>
-      <implementation-class>jetbrains.mps.ide.migration.MigrationTrigger</implementation-class>
-      <headless-implementation-class>jetbrains.mps.ide.migration.HeadlessMigrationExecutor</headless-implementation-class>
-    </component>
-  </project-components>
-
   <extensions defaultExtensionNs="com.intellij">
     <projectService serviceInterface="jetbrains.mps.migration.global.MigrationProperties"
                     serviceImplementation="jetbrains.mps.migration.global.ProjectMigrationProperties"/>

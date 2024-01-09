@@ -1379,21 +1379,24 @@
   </root>
   <root nodeRef="a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/5351393548967582699">
     <file name="IStartupMigrationExecutor.java">
-      <node id="7675258827864617059" at="12,0,13,0" concept="10" trace="setProblemHandler#(Ljetbrains/mps/ide/migration/MigrationProblemHandler;)V" />
-      <node id="597733350169680734" at="13,0,14,0" concept="10" trace="setRebuildHandler#(Ljava/util/function/Consumer;)V" />
-      <node id="4372340199932397960" at="15,71,16,68" concept="12" />
-      <node id="4372340199932394421" at="15,0,18,0" concept="16" trace="getInstance#(Ljetbrains/mps/project/MPSProject;)Ljetbrains/mps/ide/migration/IStartupMigrationExecutor;" />
-      <scope id="7675258827864617059" at="12,0,13,0">
+      <node id="7675258827864617059" at="13,0,14,0" concept="10" trace="setProblemHandler#(Ljetbrains/mps/ide/migration/MigrationProblemHandler;)V" />
+      <node id="597733350169680734" at="14,0,15,0" concept="10" trace="setRebuildHandler#(Ljava/util/function/Consumer;)V" />
+      <node id="6032067180687156013" at="16,71,17,88" concept="11" />
+      <node id="4372340199932397960" at="17,88,18,54" concept="12" />
+      <node id="4372340199932394421" at="16,0,20,0" concept="16" trace="getInstance#(Ljetbrains/mps/project/MPSProject;)Ljetbrains/mps/ide/migration/IStartupMigrationExecutor;" />
+      <scope id="7675258827864617059" at="13,0,14,0">
         <var name="problemHandler" id="7675258827864617125" />
       </scope>
-      <scope id="597733350169680734" at="13,0,14,0">
+      <scope id="597733350169680734" at="14,0,15,0">
         <var name="rebuildHandler" id="597733350169680742" />
       </scope>
-      <scope id="4372340199932394425" at="15,71,16,68" />
-      <scope id="4372340199932394421" at="15,0,18,0">
+      <scope id="4372340199932394425" at="16,71,18,54">
+        <var name="mac" id="6032067180687156014" />
+      </scope>
+      <scope id="4372340199932394421" at="16,0,20,0">
         <var name="mpsProject" id="4372340199932394828" />
       </scope>
-      <unit id="5351393548967582699" at="10,0,19,0" name="jetbrains.mps.ide.migration.IStartupMigrationExecutor" />
+      <unit id="5351393548967582699" at="11,0,21,0" name="jetbrains.mps.ide.migration.IStartupMigrationExecutor" />
     </file>
   </root>
   <root nodeRef="a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/5351393548967765630">

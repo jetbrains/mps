@@ -66,7 +66,8 @@
     <import index="qkt" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
-    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
+    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
+    <import index="qujm" ref="r:5b264c00-4c6c-4ea3-adbc-463b994145ba(jetbrains.mps.migration.component)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -5019,15 +5020,48 @@
       </node>
       <node concept="3Tm1VV" id="3MHF3W68nIS" role="1B3o_S" />
       <node concept="3clFbS" id="3MHF3W68nIT" role="3clF47">
-        <node concept="3cpWs6" id="3MHF3W68oA8" role="3cqZAp">
-          <node concept="2OqwBi" id="3MHF3W68syw" role="3cqZAk">
-            <node concept="37vLTw" id="3MHF3W68oJ5" role="2Oq$k0">
-              <ref role="3cqZAo" node="3MHF3W68nPc" resolve="mpsProject" />
+        <node concept="3cpWs8" id="5eQdigY9AcH" role="3cqZAp">
+          <node concept="3cpWsn" id="5eQdigY9AcI" role="3cpWs9">
+            <property role="TrG5h" value="mac" />
+            <node concept="3uibUv" id="5eQdigY9A3j" role="1tU5fm">
+              <ref role="3uigEE" to="qujm:5eQdigY7jYd" resolve="MigrationAccess" />
             </node>
-            <node concept="liA8E" id="3MHF3W68sO3" role="2OqNvi">
-              <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-              <node concept="3VsKOn" id="3MHF3W68xdu" role="37wK5m">
-                <ref role="3VsUkX" node="4D3Y1hNxTJF" resolve="IStartupMigrationExecutor" />
+            <node concept="2OqwBi" id="5eQdigY9AcJ" role="33vP2m">
+              <node concept="2OqwBi" id="5eQdigY9AcK" role="2Oq$k0">
+                <node concept="37vLTw" id="5eQdigY9AcL" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3MHF3W68nPc" resolve="mpsProject" />
+                </node>
+                <node concept="liA8E" id="5eQdigY9AcM" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                </node>
+              </node>
+              <node concept="liA8E" id="5eQdigY9AcN" role="2OqNvi">
+                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                <node concept="3VsKOn" id="5eQdigY9AcO" role="37wK5m">
+                  <ref role="3VsUkX" to="qujm:5eQdigY7jYd" resolve="MigrationAccess" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="3MHF3W68oA8" role="3cqZAp">
+          <node concept="3K4zz7" id="5eQdigY9Blr" role="3cqZAk">
+            <node concept="10Nm6u" id="5eQdigY9BuC" role="3K4E3e" />
+            <node concept="3clFbC" id="5eQdigY9AGK" role="3K4Cdx">
+              <node concept="10Nm6u" id="5eQdigY9B5D" role="3uHU7w" />
+              <node concept="37vLTw" id="5eQdigY9AtB" role="3uHU7B">
+                <ref role="3cqZAo" node="5eQdigY9AcI" resolve="mac" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="5eQdigY9yWn" role="3K4GZi">
+              <node concept="37vLTw" id="5eQdigY9AcP" role="2Oq$k0">
+                <ref role="3cqZAo" node="5eQdigY9AcI" resolve="findComponent" />
+              </node>
+              <node concept="liA8E" id="5eQdigY9_Tm" role="2OqNvi">
+                <ref role="37wK5l" to="qujm:5eQdigY7k5l" resolve="get" />
+                <node concept="37vLTw" id="5eQdigY9A1K" role="37wK5m">
+                  <ref role="3cqZAo" node="3MHF3W68nPc" resolve="mpsProject" />
+                </node>
               </node>
             </node>
           </node>

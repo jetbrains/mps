@@ -36,6 +36,7 @@
     <JAVADOC />
     <SOURCES>
       <root url="file://$PROJECT_DIR$/core/kernel/source" />
+      <root url="file://$PROJECT_DIR$/workbench/mps-workbench/source" />
     </SOURCES>
   </library>
 </component>
