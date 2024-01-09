@@ -326,7 +326,7 @@ public final class StaticReference extends SReferenceBase {
       }
       // assert sourceModel != null;
       // convert 'young' reference to 'mature'
-      setData(new Transition(true ).makeIndirect(d, StaticReference::getResolveInfo));
+      setData(new Transition(true).makeIndirect(d, StaticReference::getResolveInfo));
       // FWIW, myImmatureTargetNode == null here
     } else {
       if (force && immatureTargetNode != null) {
