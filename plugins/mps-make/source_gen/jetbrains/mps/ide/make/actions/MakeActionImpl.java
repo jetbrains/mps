@@ -20,6 +20,10 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.ide.generator.GenerationCheckHelper;
+import com.intellij.openapi.wm.ToolWindowManager;
+import jetbrains.mps.project.MPSProject;
+import java.util.concurrent.Future;
+import jetbrains.mps.make.script.IResult;
 
 public class MakeActionImpl {
   private MakeActionParameters myParams;
@@ -72,16 +76,15 @@ public class MakeActionImpl {
           inputRes = null;
           // fall-through to close make session
         }
-
-
       } catch (RuntimeException e) {
         makeService.closeSession(session);
         throw e;
       }
 
       if (inputRes != null) {
-        makeService.make(session, inputRes);
-
+        final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(((MPSProject) project).getProject());
+        final Future<IResult> f = makeService.make(session, inputRes);
+        AfterMakeBalloonHelper.waitForMakeToFinishAndShowBalloon(f, toolWindowManager, "The Make operation has finished");
       } else {
         makeService.closeSession(session);
       }
