@@ -633,6 +633,7 @@
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/jetbrains.mps.tests.sraMigration/jetbrains.mps.tests.sraMigration.msd" folder="tests.testSmartRefAttrMigration" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/lang.smodel.query.test/jetbrains.mps.lang.smodel.query.test.msd" folder="core.languages.smodel.query" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/make.test/jetbrains.mps.make.tests.msd" folder="core.make" />
+      <modulePath path="$PROJECT_DIR$/testbench/testsolutions/migration.test/jetbrains.mps.tests.migration.msd" folder="tests.testMigration" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/pattern.test/jetbrains.mps.lang.pattern.test.msd" folder="core.languages.pattern" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/plugin.tests/jetbrains.mps.lang.plugin.tests.msd" folder="core.aspects.plugin" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/quotation.test/jetbrains.mps.lang.quotation.test.msd" folder="core.languages.quotation" />
