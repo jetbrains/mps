@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solution name="jetbrains.mps.lang.extension.plug" uuid="202c1711-60dd-409c-8d7d-0bb6b336b461" moduleVersion="0">
   <models>
-    <modelRoot contentPath="${mps_home}/languages/util/ext.plug" type="default">
-      <sourceRoot path="${mps_home}/languages/util/ext.plug/models" />
+    <modelRoot type="default">
+      <sourceRoot path="${module}/models" />
     </modelRoot>
   </models>
   <facets>

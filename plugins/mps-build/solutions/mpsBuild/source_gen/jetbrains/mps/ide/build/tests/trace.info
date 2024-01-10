@@ -70,6 +70,11 @@
       <unit id="5624877018229105292" at="1,0,3452,10" name="jetbrains.mps.ide.build.tests.mpsEditorTransformationMenu" />
     </file>
   </root>
+  <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/5764338631358318306">
+    <file name="mpsMigrations.xml">
+      <unit id="5764338631358318306" at="1,0,460,10" name="jetbrains.mps.ide.build.tests.mpsMigrations" />
+    </file>
+  </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/5833628797344916224">
     <file name="mpsEditor.xml">
       <unit id="5833628797344916224" at="1,0,3615,10" name="jetbrains.mps.ide.build.tests.mpsEditor" />
