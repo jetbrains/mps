@@ -90,12 +90,12 @@ public class TestNodeUtil {
   public static boolean isJUnit5TestMethod(SNode method) {
     if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(method)) && ((SLinkOperations.getTarget(method, LINKS.visibility$Yyua) == null) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.visibility$Yyua), CONCEPTS.ProtectedVisibility$hr)) && (SPropertyOperations.getString(method, PROPS.name$MnvL) != null)) {
       boolean hasTestAnnotation = false;
-      for (SNode annotation : ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.annotation$K49I))) {
-        if (SNodeOperations.is(check_gjwet7_a0a0b0a0l(annotation), new SNodePointer("63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(org.junit.junit5/)", "~Disabled"))) {
+      for (SNode annotation : Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(method, LINKS.annotation$K49I), LINKS.annotation$12Ek))) {
+        if (SNodeOperations.is(annotation, new SNodePointer("63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(org.junit.junit5/)", "~Disabled"))) {
           return false;
         }
         // the reference below is to org.junit.jupiter.api.Test
-        if (!(hasTestAnnotation) && SNodeOperations.is(check_gjwet7_a0a2a1a0a11(annotation), new SNodePointer("63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(org.junit.junit5/)", "~Test"))) {
+        if (SNodeOperations.is(annotation, new SNodePointer("63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(org.junit.junit5/)", "~Test")) || SNodeOperations.is(annotation, new SNodePointer("63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.params(org.junit.junit5/)", "~ParameterizedTest"))) {
           hasTestAnnotation = true;
         }
       }
@@ -122,18 +122,6 @@ public class TestNodeUtil {
     return null;
   }
   private static SNode check_gjwet7_a0a1a1a0a7(SNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.annotation$12Ek);
-    }
-    return null;
-  }
-  private static SNode check_gjwet7_a0a0b0a0l(SNode checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.annotation$12Ek);
-    }
-    return null;
-  }
-  private static SNode check_gjwet7_a0a2a1a0a11(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getTarget(checkedDotOperand, LINKS.annotation$12Ek);
     }

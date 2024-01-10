@@ -32,6 +32,7 @@
     <import index="fyhk" ref="920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps(Testbench/)" />
     <import index="rjhg" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)" />
     <import index="yqm7" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.api(org.junit.junit5/)" />
+    <import index="tphd" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.jupiter.params(org.junit.junit5/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -243,6 +244,9 @@
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
+      </concept>
+      <concept id="3562215692195599741" name="jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect" flags="nn" index="13MTOL">
+        <reference id="3562215692195600259" name="link" index="13MTZf" />
       </concept>
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
@@ -3348,13 +3352,8 @@
               <node concept="3clFbS" id="7o1qpmkr0G4" role="2LFqv$">
                 <node concept="3clFbJ" id="7o1qpmkr0G5" role="3cqZAp">
                   <node concept="2OqwBi" id="7o1qpmkr0G6" role="3clFbw">
-                    <node concept="2EnYce" id="7o1qpmkr0G7" role="2Oq$k0">
-                      <node concept="2GrUjf" id="7o1qpmkr0G8" role="2Oq$k0">
-                        <ref role="2Gs0qQ" node="7o1qpmkr0G3" resolve="annotation" />
-                      </node>
-                      <node concept="3TrEf2" id="7o1qpmkr0G9" role="2OqNvi">
-                        <ref role="3Tt5mk" to="tpee:hiAI5P0" resolve="annotation" />
-                      </node>
+                    <node concept="2GrUjf" id="7o1qpmkr0G8" role="2Oq$k0">
+                      <ref role="2Gs0qQ" node="7o1qpmkr0G3" resolve="annotation" />
                     </node>
                     <node concept="1QLmlb" id="7o1qpmkr0Ga" role="2OqNvi">
                       <node concept="ZC_QK" id="7o1qpmkr0Gb" role="1QLmnL">
@@ -3405,20 +3404,20 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="1Wc70l" id="7o1qpmkr0Gl" role="3clFbw">
-                    <node concept="3fqX7Q" id="7o1qpmkr0Gm" role="3uHU7B">
-                      <node concept="37vLTw" id="7o1qpmkr0Gn" role="3fr31v">
-                        <ref role="3cqZAo" node="7o1qpmkr0FZ" resolve="hasTestAnnotation" />
+                  <node concept="22lmx$" id="3LuvecXlyem" role="3clFbw">
+                    <node concept="2OqwBi" id="3LuvecXlzkV" role="3uHU7w">
+                      <node concept="2GrUjf" id="3LuvecXlyQb" role="2Oq$k0">
+                        <ref role="2Gs0qQ" node="7o1qpmkr0G3" resolve="annotation" />
+                      </node>
+                      <node concept="1QLmlb" id="3LuvecXl$at" role="2OqNvi">
+                        <node concept="ZC_QK" id="3LuvecXl$B0" role="1QLmnL">
+                          <ref role="2aWVGs" to="tphd:~ParameterizedTest" resolve="ParameterizedTest" />
+                        </node>
                       </node>
                     </node>
-                    <node concept="2OqwBi" id="7o1qpmkr0Go" role="3uHU7w">
-                      <node concept="2EnYce" id="7o1qpmkr0Gp" role="2Oq$k0">
-                        <node concept="2GrUjf" id="7o1qpmkr0Gq" role="2Oq$k0">
-                          <ref role="2Gs0qQ" node="7o1qpmkr0G3" resolve="annotation" />
-                        </node>
-                        <node concept="3TrEf2" id="7o1qpmkr0Gr" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tpee:hiAI5P0" resolve="annotation" />
-                        </node>
+                    <node concept="2OqwBi" id="7o1qpmkr0Go" role="3uHU7B">
+                      <node concept="2GrUjf" id="7o1qpmkr0Gq" role="2Oq$k0">
+                        <ref role="2Gs0qQ" node="7o1qpmkr0G3" resolve="annotation" />
                       </node>
                       <node concept="1QLmlb" id="7o1qpmkr0Gs" role="2OqNvi">
                         <node concept="ZC_QK" id="7o1qpmkr0Gt" role="1QLmnL">
@@ -3429,12 +3428,17 @@
                   </node>
                 </node>
               </node>
-              <node concept="2OqwBi" id="7o1qpmkr0Gu" role="2GsD0m">
-                <node concept="37vLTw" id="7o1qpmkr0Gv" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7o1qpmkr0FR" resolve="method" />
+              <node concept="2OqwBi" id="3LuvecXlo4E" role="2GsD0m">
+                <node concept="2OqwBi" id="7o1qpmkr0Gu" role="2Oq$k0">
+                  <node concept="37vLTw" id="7o1qpmkr0Gv" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7o1qpmkr0FR" resolve="method" />
+                  </node>
+                  <node concept="3Tsc0h" id="7o1qpmkr0Gw" role="2OqNvi">
+                    <ref role="3TtcxE" to="tpee:hiAJF2X" />
+                  </node>
                 </node>
-                <node concept="3Tsc0h" id="7o1qpmkr0Gw" role="2OqNvi">
-                  <ref role="3TtcxE" to="tpee:hiAJF2X" resolve="annotation" />
+                <node concept="13MTOL" id="3LuvecXlrW5" role="2OqNvi">
+                  <ref role="13MTZf" to="tpee:hiAI5P0" />
                 </node>
               </node>
             </node>
