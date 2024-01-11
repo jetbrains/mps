@@ -6,31 +6,53 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
+import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 
 @GeneratedClass(node = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)/4037229630278692002", model = "r:1e25de74-7cc0-4f15-8cec-3735c776efd2(jetbrains.mps.editor.runtime.style)")
 public abstract class AbstractStyleKey {
-  private String myKey;
-  private int myPriority;
+  private final String myKey;
+  private final int myPriority;
 
   public AbstractStyleKey(@NotNull String key) {
-    myKey = key;
+    this(key, 0);
   }
 
   public AbstractStyleKey(@NotNull String key, int priority) {
-    this(key);
+    myKey = key;
     myPriority = priority;
   }
 
+  /**
+   * 
+   * @deprecated use #apply(EditorBuilderEnvironment, Style) instead
+   */
+  @Deprecated(forRemoval = true, since = "2023.3")
   public void apply(Style toStyle) {
-    Style style = StyleRegistry.getInstance().getStyle(myKey);
+    // uses if the method would fade away as code is regenerated with new versions. 
+    // keep old api for 2-3 releases and then drop.
+    apply(StyleRegistry.getInstance(), toStyle);
+  }
+  private void apply(StyleRegistry registry, Style toStyle) {
+    Style style = registry.getStyle(myKey);
     if (style == null) {
       return;
     }
     toStyle.putAll(style, myPriority);
   }
+  public void apply(EditorBuilderEnvironment env, Style toStyle) {
+    apply(env.getStyleRegistry(), toStyle);
+  }
 
+  /**
+   * 
+   * @deprecated use #unapply(EditorBuilderEnvironment, Style) instead
+   */
+  @Deprecated(forRemoval = true, since = "2023.3")
   public void unapply(Style toStyle) {
-    Style style = StyleRegistry.getInstance().getStyle(myKey);
+    unapply(StyleRegistry.getInstance(), toStyle);
+  }
+  private void unapply(StyleRegistry registry, Style toStyle) {
+    Style style = registry.getStyle(myKey);
     if (style == null) {
       return;
     }
@@ -41,4 +63,8 @@ public abstract class AbstractStyleKey {
     }
     toStyle.removeAll(style);
   }
+  public void unapply(EditorBuilderEnvironment env, Style toStyle) {
+    unapply(env.getStyleRegistry(), toStyle);
+  }
+
 }
