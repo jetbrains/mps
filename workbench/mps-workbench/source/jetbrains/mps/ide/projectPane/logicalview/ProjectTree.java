@@ -48,6 +48,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * @deprecated obsolete component that uses MPSTree
+ */
+@Deprecated(forRemoval = true)
 public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
   private Project myProject;
   private ProjectTreeNode myProjectTreeNode;
