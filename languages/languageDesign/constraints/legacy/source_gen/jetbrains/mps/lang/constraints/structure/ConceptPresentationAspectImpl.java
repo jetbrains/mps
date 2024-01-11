@@ -392,7 +392,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.ModelScopeEval:
         if (props_ModelScopeEval == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("ModelScopeEval");
+          cpb.rawPresentation("for model");
           props_ModelScopeEval = cpb.create();
         }
         return props_ModelScopeEval;
