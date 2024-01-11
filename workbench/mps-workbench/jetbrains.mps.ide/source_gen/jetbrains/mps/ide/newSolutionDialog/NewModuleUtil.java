@@ -42,13 +42,12 @@ public class NewModuleUtil {
     }
 
     LocalFileSystem fs = LocalFileSystem.getInstance();
-    fs.refresh(false);
-    VirtualFile moduleF = fs.findFileByIoFile(new File(rootPath, namespace + extension));
+    VirtualFile moduleF = fs.refreshAndFindFileByIoFile(new File(rootPath, namespace + extension));
     if (moduleF != null && moduleF.exists()) {
       return "The module file " + namespace + extension + " already exists";
     }
 
-    VirtualFile moduleD = fs.findFileByIoFile(new File(rootPath));
+    VirtualFile moduleD = fs.refreshAndFindFileByIoFile(new File(rootPath));
     if (moduleD != null && moduleD.exists()) {
       VirtualFile[] files = moduleD.getChildren();
       int count = 0;

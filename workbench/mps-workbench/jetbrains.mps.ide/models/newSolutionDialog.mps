@@ -362,17 +362,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="1DSFK5mSxGS" role="3cqZAp">
-          <node concept="2OqwBi" id="1DSFK5mS$Eo" role="3clFbG">
-            <node concept="37vLTw" id="1DSFK5mSFZA" role="2Oq$k0">
-              <ref role="3cqZAo" node="1DSFK5mSFZ$" resolve="fs" />
-            </node>
-            <node concept="liA8E" id="1DSFK5mSBSh" role="2OqNvi">
-              <ref role="37wK5l" to="jlff:~VirtualFileSystem.refresh(boolean)" resolve="refresh" />
-              <node concept="3clFbT" id="1DSFK5mSDAu" role="37wK5m" />
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="1Xj2NS_z$Kv" role="3cqZAp">
           <node concept="3cpWsn" id="1Xj2NS_z$Kw" role="3cpWs9">
             <property role="TrG5h" value="moduleF" />
@@ -384,7 +373,7 @@
                 <ref role="3cqZAo" node="1DSFK5mSFZ$" resolve="fs" />
               </node>
               <node concept="liA8E" id="1Xj2NS_z$Kz" role="2OqNvi">
-                <ref role="37wK5l" to="jlff:~LocalFileSystem.findFileByIoFile(java.io.File)" resolve="findFileByIoFile" />
+                <ref role="37wK5l" to="jlff:~LocalFileSystem.refreshAndFindFileByIoFile(java.io.File)" resolve="refreshAndFindFileByIoFile" />
                 <node concept="2ShNRf" id="1Xj2NS_z$K$" role="37wK5m">
                   <node concept="1pGfFk" id="1Xj2NS_z$K_" role="2ShVmc">
                     <property role="373rjd" value="true" />
@@ -458,7 +447,7 @@
                 <ref role="3cqZAo" node="1DSFK5mSFZ$" resolve="fs" />
               </node>
               <node concept="liA8E" id="1Xj2NS_zNgM" role="2OqNvi">
-                <ref role="37wK5l" to="jlff:~LocalFileSystem.findFileByIoFile(java.io.File)" resolve="findFileByIoFile" />
+                <ref role="37wK5l" to="jlff:~LocalFileSystem.refreshAndFindFileByIoFile(java.io.File)" resolve="refreshAndFindFileByIoFile" />
                 <node concept="2ShNRf" id="1Xj2NS_zUBZ" role="37wK5m">
                   <node concept="1pGfFk" id="1Xj2NS_zUC0" role="2ShVmc">
                     <property role="373rjd" value="true" />
