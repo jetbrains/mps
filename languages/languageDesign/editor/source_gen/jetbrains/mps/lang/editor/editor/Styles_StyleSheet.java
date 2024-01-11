@@ -216,7 +216,7 @@ public class Styles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new STRING_StyleKey().apply(style);
+      new STRING_StyleKey().apply(this, style);
     }
 
   }
@@ -246,7 +246,7 @@ public class Styles_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       new AnyBracketStyleClass(this).apply(style, editorCell);
-      new PARENTH_StyleKey().apply(style);
+      new PARENTH_StyleKey().apply(this, style);
       style.set(StyleAttributes.MATCHING_LABEL, "parenthesis");
     }
 
@@ -323,7 +323,7 @@ public class Styles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new KEYWORD_StyleKey().apply(style);
+      new KEYWORD_StyleKey().apply(this, style);
       new EditorKeyWordForegroundStyleClass(this).apply(style, editorCell);
     }
 

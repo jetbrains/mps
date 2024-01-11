@@ -114,7 +114,7 @@ public class transformationTest_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       new AnyBracketStyleClass(this).apply(style, editorCell);
-      new PARENTH_StyleKey().apply(style);
+      new PARENTH_StyleKey().apply(this, style);
       style.set(StyleAttributes.MATCHING_LABEL, "parenthesis");
     }
 

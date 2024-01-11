@@ -67,7 +67,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setDefaultText("");
       editorCell.setCellId("textContent");
       Style style = new StyleImpl();
-      new STRING_StyleKey().apply(style);
+      new STRING_StyleKey().apply(this, style);
       style.set(StyleAttributes.SELECTABLE, true);
       style.set(StyleAttributes.EDITABLE, true);
       style.set(StyleAttributes.PADDING_LEFT, new Padding(0, Measure.SPACES));

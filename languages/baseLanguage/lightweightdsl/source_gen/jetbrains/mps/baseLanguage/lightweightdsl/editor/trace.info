@@ -3670,7 +3670,7 @@
       <node id="2926458895885509905" at="26,53,27,52" concept="2" />
       <node id="7007208114700046312" at="27,52,28,52" concept="2" />
       <node id="6764742996908156079" at="28,52,29,63" concept="2" />
-      <node id="1054866243096442711" at="29,63,30,54" concept="2" />
+      <node id="1054866243096442711" at="29,63,30,60" concept="2" />
       <node id="6764742996908113374" at="17,0,20,0" concept="1" trace="MethodInstanceStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6764742996908113374" at="20,0,23,0" concept="1" trace="MethodInstanceStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
       <node id="6764742996908113374" at="24,0,32,0" concept="5" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
@@ -3683,7 +3683,7 @@
       <scope id="6764742996908113374" at="20,0,23,0">
         <var name="builderEnv" id="6764742996908113374" />
       </scope>
-      <scope id="6764742996908113374" at="25,59,30,54" />
+      <scope id="6764742996908113374" at="25,59,30,60" />
       <scope id="6764742996908113374" at="24,0,32,0">
         <var name="editorCell" id="6764742996908113374" />
         <var name="style" id="6764742996908113374" />

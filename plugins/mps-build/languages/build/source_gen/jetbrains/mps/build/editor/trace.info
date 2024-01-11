@@ -18453,7 +18453,7 @@
       <node id="9126048691954817056" at="160,67,161,24" concept="14" />
       <node id="9126048691954817057" at="165,59,166,99" concept="3" />
       <node id="9126048691954817060" at="166,99,167,61" concept="3" />
-      <node id="8026762124141387598" at="168,55,169,41" concept="3" />
+      <node id="8026762124141387598" at="168,55,169,47" concept="3" />
       <node id="8026762124141389415" at="173,64,174,157" concept="9" />
       <node id="7389400916848057604" at="179,0,180,0" concept="12" trace="BuildLayout_Comment$JE" />
       <node id="1203598953979" at="23,0,26,0" concept="2" trace="outputLayoutStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -18510,7 +18510,7 @@
       <scope id="1793232355800861824" at="144,64,145,24" />
       <scope id="9126048691954817056" at="157,71,158,33" />
       <scope id="9126048691954817056" at="160,67,161,24" />
-      <scope id="8026762124141387598" at="168,55,169,41" />
+      <scope id="8026762124141387598" at="168,55,169,47" />
       <scope id="8026762124141387602" at="173,64,174,157" />
       <scope id="1203598953979" at="31,59,33,59" />
       <scope id="7389400916848136207" at="74,59,76,59" />

@@ -166,7 +166,7 @@ public class buildStyles_StyleSheet {
       style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(4161375)));
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
       if (_StyleParameter_QueryFunction_in06m0_a2j()) {
-        new TODO_StyleKey().apply(style);
+        new TODO_StyleKey().apply(this, style);
       }
     }
 

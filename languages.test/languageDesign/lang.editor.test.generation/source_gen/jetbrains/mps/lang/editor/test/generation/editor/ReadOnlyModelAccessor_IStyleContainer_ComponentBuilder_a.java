@@ -70,7 +70,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     editorCell.setCellId("ReadOnlyModelAccessor_bn78ok_a0");
     Style style = new StyleImpl();
     new testStyleStyleClass(this).apply(style, editorCell);
-    new testKey_StyleKey().apply(style);
+    new testKey_StyleKey().apply(this, style);
     if (_StyleParameter_QueryFunction_bn78ok_a2a0()) {
       new testStyleStyleClass(this).apply(style, editorCell);
     }
@@ -161,7 +161,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     style.set(StyleAttributes.SHOW_BOUNDARIES_IN, ShowBoundariesArea.GUTTER_AND_EDITOR);
     style.set(StyleAttributes.TABLE_COMPONENT, TableComponent.VERTICAL_COLLECTION);
     new testStyleStyleClass(this).unapply(style, editorCell);
-    new testKey_StyleKey().unapply(style);
+    new testKey_StyleKey().unapply(this, style);
     style.set(StyleAttributes.UNDERLINED, false);
     style.set(StyleAttributes.UNDERLINED, _StyleParameter_QueryFunction_bn78ok_a09a0());
     editorCell.getStyle().putAll(style);

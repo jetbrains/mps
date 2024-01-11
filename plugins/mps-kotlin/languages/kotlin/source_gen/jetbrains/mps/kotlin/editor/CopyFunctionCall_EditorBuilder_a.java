@@ -61,7 +61,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     editorCell.setCellId("Constant_skubc0_a0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.constructor$NFWJ);
-    new METHOD_CALL_StyleKey().apply(style);
+    new METHOD_CALL_StyleKey().apply(this, style);
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");

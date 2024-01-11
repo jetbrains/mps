@@ -21,7 +21,7 @@ public class BaseStyleSheet_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new LINE_COMMENT_StyleKey(1).apply(style);
+      new LINE_COMMENT_StyleKey(1).apply(this, style);
     }
 
   }

@@ -136,7 +136,7 @@ public class KotlinStyles_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       style.set(StyleAttributes.SELECTABLE, false);
-      new DOT_StyleKey().apply(style);
+      new DOT_StyleKey().apply(this, style);
       style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, true);
     }
 
@@ -223,7 +223,7 @@ public class KotlinStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new DEFAULT_INSTANCE_FIELD_StyleKey().apply(style);
+      new DEFAULT_INSTANCE_FIELD_StyleKey().apply(this, style);
     }
 
   }
@@ -237,7 +237,7 @@ public class KotlinStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new LINE_COMMENT_StyleKey(1).apply(style);
+      new LINE_COMMENT_StyleKey(1).apply(this, style);
     }
 
   }
@@ -252,7 +252,7 @@ public class KotlinStyles_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       if (_StyleParameter_QueryFunction_yizz5d_a0p()) {
-        new TODO_StyleKey(2).apply(style);
+        new TODO_StyleKey(2).apply(this, style);
       }
     }
 

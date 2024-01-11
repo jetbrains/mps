@@ -27,7 +27,7 @@ public class LightweightDsl_Styles_StyleSheet {
       style.set(StyleAttributes.READ_ONLY, 1, true);
       style.set(StyleAttributes.EDITABLE, 1, false);
       style.set(StyleAttributes.FONT_STYLE, 1, MPSFonts.PLAIN);
-      new METHOD_DECLARATION_StyleKey(1).apply(style);
+      new METHOD_DECLARATION_StyleKey(1).apply(this, style);
     }
 
   }

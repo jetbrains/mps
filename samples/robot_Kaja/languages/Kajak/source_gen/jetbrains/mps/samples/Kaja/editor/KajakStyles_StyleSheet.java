@@ -50,7 +50,7 @@ public class KajakStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new KEYWORD_StyleKey().apply(style);
+      new KEYWORD_StyleKey().apply(this, style);
     }
 
   }
@@ -64,7 +64,7 @@ public class KajakStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new ConceptName_StyleKey().apply(style);
+      new ConceptName_StyleKey().apply(this, style);
     }
 
   }
@@ -78,7 +78,7 @@ public class KajakStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new LINE_COMMENT_StyleKey(1).apply(style);
+      new LINE_COMMENT_StyleKey(1).apply(this, style);
       if (_StyleParameter_QueryFunction_m6vfe8_a1d()) {
         new TODOStyleClass(this).apply(style, editorCell);
       }
@@ -98,7 +98,7 @@ public class KajakStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new TODO_StyleKey(2).apply(style);
+      new TODO_StyleKey(2).apply(this, style);
     }
 
   }
@@ -112,7 +112,7 @@ public class KajakStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new DEFAULT_INSTANCE_FIELD_StyleKey().apply(style);
+      new DEFAULT_INSTANCE_FIELD_StyleKey().apply(this, style);
     }
 
   }
@@ -126,7 +126,7 @@ public class KajakStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new STRING_StyleKey().apply(style);
+      new STRING_StyleKey().apply(this, style);
     }
 
   }
@@ -140,7 +140,7 @@ public class KajakStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new NUMBER_StyleKey().apply(style);
+      new NUMBER_StyleKey().apply(this, style);
     }
 
   }

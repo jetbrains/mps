@@ -138,7 +138,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         editorCell.setDefaultText("<no name>");
         editorCell.setCellId("property_name");
         Style style = new StyleImpl();
-        new METHOD_CALL_StyleKey().apply(style);
+        new METHOD_CALL_StyleKey().apply(this, style);
         editorCell.getStyle().putAll(style);
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);

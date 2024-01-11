@@ -60,7 +60,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new KEYWORD_StyleKey().apply(style);
+      new KEYWORD_StyleKey().apply(this, style);
     }
 
   }
@@ -88,7 +88,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new FUNCTION_DECLARATION_StyleKey().apply(style);
+      new FUNCTION_DECLARATION_StyleKey().apply(this, style);
     }
 
   }
@@ -102,7 +102,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new LINE_COMMENT_StyleKey(1).apply(style);
+      new LINE_COMMENT_StyleKey(1).apply(this, style);
     }
 
   }
@@ -117,7 +117,7 @@ public class BaseLanguageStyle_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       if (_StyleParameter_QueryFunction_the604_a0e()) {
-        new TODO_StyleKey(2).apply(style);
+        new TODO_StyleKey(2).apply(this, style);
       }
     }
 
@@ -135,7 +135,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new BLOCK_COMMENT_StyleKey(1).apply(style);
+      new BLOCK_COMMENT_StyleKey(1).apply(this, style);
     }
 
   }
@@ -149,7 +149,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new DOC_COMMENT_StyleKey().apply(style);
+      new DOC_COMMENT_StyleKey().apply(this, style);
     }
 
   }
@@ -163,7 +163,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new DOC_TAG_StyleKey().apply(style);
+      new DOC_TAG_StyleKey().apply(this, style);
     }
 
   }
@@ -177,7 +177,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new DEFAULT_INSTANCE_FIELD_StyleKey().apply(style);
+      new DEFAULT_INSTANCE_FIELD_StyleKey().apply(this, style);
     }
 
   }
@@ -191,7 +191,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new DEFAULT_IDENTIFIER_StyleKey().apply(style);
+      new DEFAULT_IDENTIFIER_StyleKey().apply(this, style);
     }
 
   }
@@ -205,7 +205,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new PARAMETER_StyleKey().apply(style);
+      new PARAMETER_StyleKey().apply(this, style);
     }
 
   }
@@ -233,7 +233,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new STRING_StyleKey().apply(style);
+      new STRING_StyleKey().apply(this, style);
     }
 
   }
@@ -247,7 +247,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new NUMBER_StyleKey().apply(style);
+      new NUMBER_StyleKey().apply(this, style);
     }
 
   }
@@ -261,7 +261,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new NOT_USED_ELEMENT_StyleKey().apply(style);
+      new NOT_USED_ELEMENT_StyleKey().apply(this, style);
     }
 
   }
@@ -288,7 +288,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new STATIC_METHOD_StyleKey().apply(style);
+      new STATIC_METHOD_StyleKey().apply(this, style);
     }
 
   }
@@ -302,7 +302,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new ANNOTATION_StyleKey().apply(style);
+      new ANNOTATION_StyleKey().apply(this, style);
     }
 
   }
@@ -316,7 +316,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new OPERATION_SIGN_StyleKey().apply(style);
+      new OPERATION_SIGN_StyleKey().apply(this, style);
     }
 
   }
@@ -346,7 +346,7 @@ public class BaseLanguageStyle_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       new AnyBracketStyleClass(this).apply(style, editorCell);
-      new PARENTH_StyleKey().apply(style);
+      new PARENTH_StyleKey().apply(this, style);
       style.set(StyleAttributes.MATCHING_LABEL, "parenthesis");
     }
 
@@ -407,7 +407,7 @@ public class BaseLanguageStyle_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       new AnyBracketStyleClass(this).apply(style, editorCell);
-      new BRACES_StyleKey().apply(style);
+      new BRACES_StyleKey().apply(this, style);
       style.set(StyleAttributes.MATCHING_LABEL, "brace");
     }
 
@@ -451,7 +451,7 @@ public class BaseLanguageStyle_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       new AnyBracketStyleClass(this).apply(style, editorCell);
-      new BRACKETS_StyleKey().apply(style);
+      new BRACKETS_StyleKey().apply(this, style);
       style.set(StyleAttributes.MATCHING_LABEL, "bracket");
     }
 
@@ -542,7 +542,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new METHOD_DECLARATION_StyleKey().apply(style);
+      new METHOD_DECLARATION_StyleKey().apply(this, style);
     }
 
   }
@@ -556,9 +556,9 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new METHOD_CALL_StyleKey().apply(style);
+      new METHOD_CALL_StyleKey().apply(this, style);
       if (_StyleParameter_QueryFunction_the604_a1ib()) {
-        new STATIC_METHOD_StyleKey().apply(style);
+        new STATIC_METHOD_StyleKey().apply(this, style);
       }
     }
 
@@ -577,16 +577,16 @@ public class BaseLanguageStyle_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       if (_StyleParameter_QueryFunction_the604_a0jb()) {
-        new DEFAULT_CONSTANT_StyleKey().apply(style);
+        new DEFAULT_CONSTANT_StyleKey().apply(this, style);
       }
       if (_StyleParameter_QueryFunction_the604_a1jb()) {
-        new DEFAULT_STATIC_FIELD_StyleKey().apply(style);
+        new DEFAULT_STATIC_FIELD_StyleKey().apply(this, style);
       }
       if (_StyleParameter_QueryFunction_the604_a2jb()) {
-        new DEFAULT_INSTANCE_FIELD_StyleKey().apply(style);
+        new DEFAULT_INSTANCE_FIELD_StyleKey().apply(this, style);
       }
       if (_StyleParameter_QueryFunction_the604_a3jb()) {
-        new DEFAULT_IDENTIFIER_StyleKey().apply(style);
+        new DEFAULT_IDENTIFIER_StyleKey().apply(this, style);
       }
     }
 
@@ -649,7 +649,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new CLASS_NAME_StyleKey().apply(style);
+      new CLASS_NAME_StyleKey().apply(this, style);
     }
 
   }
@@ -663,7 +663,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new SEMICOLON_StyleKey().apply(style);
+      new SEMICOLON_StyleKey().apply(this, style);
       style.set(StyleAttributes.EDITABLE, false);
       style.set(StyleAttributes.PUNCTUATION_LEFT, true);
       style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, true);
@@ -680,7 +680,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new DOT_StyleKey().apply(style);
+      new DOT_StyleKey().apply(this, style);
       style.set(StyleAttributes.PUNCTUATION_LEFT, true);
       style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
       style.set(StyleAttributes.SELECTABLE, false);
@@ -725,7 +725,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new FOLDED_TEXT_StyleKey().apply(style);
+      new FOLDED_TEXT_StyleKey().apply(this, style);
     }
 
   }
@@ -739,7 +739,7 @@ public class BaseLanguageStyle_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new URL_StyleKey().apply(style);
+      new URL_StyleKey().apply(this, style);
     }
 
   }

@@ -37,7 +37,7 @@ import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DEFAULT_STA
     editorCell.setBig(true);
     setCellContext(editorCell);
     Style style = new StyleImpl();
-    new DEFAULT_STATIC_FIELD_StyleKey().apply(style);
+    new DEFAULT_STATIC_FIELD_StyleKey().apply(this, style);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

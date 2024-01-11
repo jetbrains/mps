@@ -21,7 +21,7 @@ public class ProjectStructure_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new KEYWORD_StyleKey().apply(style);
+      new KEYWORD_StyleKey().apply(this, style);
     }
 
   }
