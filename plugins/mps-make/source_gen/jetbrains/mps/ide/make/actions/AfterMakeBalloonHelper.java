@@ -23,7 +23,7 @@ public class AfterMakeBalloonHelper {
               try {
                 toolWindowManager.notifyByBalloon("Messages", MessageType.INFO, msg, null, null);
               } catch (IllegalStateException ignore) {
-                // This happens whet this particular class is generated and compiled, so it can no longer load the classes required to show the balloon
+                // This happens when this particular class or its module is generated and compiled, so it can no longer load the classes required to show the balloon
               }
             }
           });
@@ -31,8 +31,10 @@ public class AfterMakeBalloonHelper {
           // Intentionally ignored, the balloon will not be shown
         } catch (ExecutionException ignore) {
           // Intentionally ignored, the balloon will not be shown 
-        } catch (TimeoutException e) {
+        } catch (TimeoutException ignore) {
           // Intentionally ignored, the balloon will not be shown 
+        } catch (IllegalStateException ignore) {
+          // This happens when this particular class or its module is generated and compiled, so it can no longer load the classes required to show the balloon
         }
       }
     });
