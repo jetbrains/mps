@@ -26,6 +26,7 @@ import jetbrains.mps.ide.actions.LanguageActions_ActionGroup;
 import jetbrains.mps.ide.actions.ModelActions_ActionGroup;
 import jetbrains.mps.ide.actions.ModuleActions_ActionGroup;
 import jetbrains.mps.ide.actions.NamespaceActions_ActionGroup;
+import jetbrains.mps.ide.actions.NamespaceNewActions_ActionGroup;
 import jetbrains.mps.ide.actions.NodeActions_ActionGroup;
 import jetbrains.mps.ide.actions.PackageActions_ActionGroup;
 import jetbrains.mps.ide.actions.ProjectActions_ActionGroup;
@@ -75,6 +76,7 @@ public class ProjectPaneActionGroups {
   public static final String MODEL_ACTIONS = ModelActions_ActionGroup.ID;
   public static final String PACKAGE_ACTIONS = PackageActions_ActionGroup.ID;
   public static final String NAMESPACE_ACTIONS = NamespaceActions_ActionGroup.ID;
+  public static final String NAMESPACE_NEW_ACTIONS = NamespaceNewActions_ActionGroup.ID;
 
   // FIXME hardcoded action ID
   // [artem] guess, the reason to hardcode ids is that these actions reside in j.m.ide.devkit solution which is not visible

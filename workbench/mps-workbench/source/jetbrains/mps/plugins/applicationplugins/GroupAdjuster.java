@@ -45,6 +45,7 @@ public class GroupAdjuster {
     addPlace(ProjectPaneActionGroups.PROJECT_PANE_TRANSIENT_MODULES_ACTIONS, ActionPlace.PROJECT_PANE_TRANSIENT_MODULES);
     addPlace(ProjectPaneActionGroups.PACKAGE_ACTIONS, ActionPlace.PROJECT_PANE_PACKAGE);
     addPlace(ProjectPaneActionGroups.NAMESPACE_ACTIONS, ActionPlace.PROJECT_PANE_NAMESPACE);
+    addPlace(ProjectPaneActionGroups.NAMESPACE_NEW_ACTIONS, ActionPlace.PROJECT_PANE_NAMESPACE);
     addPlace(ProjectPaneActionGroups.PROJECT_PANE_RUNTIME_FOLDER_ACTIONS, ActionPlace.PROJECT_PANE_RUNTIME_FOLDER);
     addPlace(ProjectPaneActionGroups.PROJECT_PANE_ACCESSORIES_ACTIONS, ActionPlace.PROJECT_PANE_ACCESSORIES);
     addPlace(ProjectPaneActionGroups.PROJECT_NEW_ACTIONS, ActionPlace.PROJECT_PANE_PROJECT);
