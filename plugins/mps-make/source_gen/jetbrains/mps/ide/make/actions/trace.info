@@ -1435,42 +1435,41 @@
       <node id="6613699149169331490" at="20,61,21,22" concept="4" />
       <node id="6585386985659849355" at="21,22,22,110" concept="4" />
       <node id="3563085402991947303" at="22,110,23,33" concept="4" />
-      <node id="7249228420722645055" at="23,33,24,43" concept="9" />
-      <node id="7249228420722744110" at="24,43,25,111" concept="9" />
-      <node id="4112358478777667523" at="25,111,26,80" concept="4" />
-      <node id="7249228420722944344" at="26,80,27,63" concept="4" />
-      <node id="7249228420723067276" at="27,63,28,43" concept="4" />
-      <node id="6585386985659523569" at="28,43,29,25" concept="4" />
-      <node id="7474008924585123059" at="29,25,30,0" concept="12" />
-      <node id="6613699149169331501" at="30,0,31,67" concept="4" />
-      <node id="6613699149169331505" at="31,67,32,46" concept="4" />
-      <node id="6613699149169331521" at="35,52,36,47" concept="4" />
-      <node id="6613699149169331529" at="38,7,39,21" concept="4" />
-      <node id="6585386985659902569" at="41,24,42,43" concept="4" />
-      <node id="6585386985659970304" at="42,43,43,43" concept="4" />
-      <node id="6613699149169331627" at="46,34,47,37" concept="10" />
-      <node id="6613699149169331515" at="34,0,38,0" concept="8" trace="mousePressed#(Ljava/awt/event/MouseEvent;)V" />
-      <node id="6613699149169331535" at="41,0,45,0" concept="8" trace="update#()V" />
-      <node id="6613699149169331623" at="45,0,49,0" concept="8" trace="getToolTipText#()Ljava/lang/String;" />
-      <node id="6613699149169331510" at="32,46,38,7" concept="4" />
-      <node id="6613699149169331486" at="20,0,41,0" concept="2" trace="TransientModelsPanel#(Ljetbrains/mps/ide/make/actions/TransientModelsWidget;)V" />
-      <scope id="6613699149169331520" at="35,52,36,47" />
-      <scope id="6613699149169331626" at="46,34,47,37" />
-      <scope id="6613699149169331538" at="41,24,43,43" />
-      <scope id="6613699149169331515" at="34,0,38,0">
+      <node id="4112358478777667523" at="23,33,24,48" concept="4" />
+      <node id="7249228420722944344" at="24,48,25,63" concept="4" />
+      <node id="7249228420723067276" at="25,63,26,43" concept="4" />
+      <node id="6585386985659523569" at="26,43,27,25" concept="4" />
+      <node id="7474008924585123059" at="27,25,28,0" concept="12" />
+      <node id="6613699149169331501" at="28,0,29,67" concept="4" />
+      <node id="6613699149169331505" at="29,67,30,46" concept="4" />
+      <node id="6613699149169331521" at="33,52,34,47" concept="4" />
+      <node id="6613699149169331529" at="36,7,37,21" concept="4" />
+      <node id="6585386985659902569" at="39,24,40,43" concept="4" />
+      <node id="6585386985659970304" at="40,43,41,43" concept="4" />
+      <node id="7784434438456151968" at="45,29,46,30" concept="10" />
+      <node id="6613699149169331627" at="49,34,50,37" concept="10" />
+      <node id="6613699149169331515" at="32,0,36,0" concept="8" trace="mousePressed#(Ljava/awt/event/MouseEvent;)V" />
+      <node id="6613699149169331535" at="39,0,43,0" concept="8" trace="update#()V" />
+      <node id="6613699149169331623" at="48,0,52,0" concept="8" trace="getToolTipText#()Ljava/lang/String;" />
+      <node id="7784434438456117523" at="43,0,48,0" concept="8" trace="getInsets#()Ljava/awt/Insets;" />
+      <node id="6613699149169331510" at="30,46,36,7" concept="4" />
+      <node id="6613699149169331486" at="20,0,39,0" concept="2" trace="TransientModelsPanel#(Ljetbrains/mps/ide/make/actions/TransientModelsWidget;)V" />
+      <scope id="6613699149169331520" at="33,52,34,47" />
+      <scope id="7784434438456117532" at="45,29,46,30" />
+      <scope id="6613699149169331626" at="49,34,50,37" />
+      <scope id="6613699149169331538" at="39,24,41,43" />
+      <scope id="6613699149169331515" at="32,0,36,0">
         <var name="e" id="6613699149169331518" />
       </scope>
-      <scope id="6613699149169331535" at="41,0,45,0" />
-      <scope id="6613699149169331623" at="45,0,49,0" />
-      <scope id="6613699149169331489" at="20,61,39,21">
-        <var name="framedStyle" id="7249228420722744113" />
-        <var name="labelFont" id="7249228420722645056" />
-      </scope>
-      <scope id="6613699149169331486" at="20,0,41,0">
+      <scope id="6613699149169331535" at="39,0,43,0" />
+      <scope id="6613699149169331623" at="48,0,52,0" />
+      <scope id="7784434438456117523" at="43,0,48,0" />
+      <scope id="6613699149169331489" at="20,61,37,21" />
+      <scope id="6613699149169331486" at="20,0,39,0">
         <var name="widget" id="6585386985659474732" />
       </scope>
-      <unit id="6613699149169331514" at="33,25,38,5" name="jetbrains.mps.ide.make.actions.TransientModelsPanel$1" />
-      <unit id="6613699149169331484" at="16,0,50,0" name="jetbrains.mps.ide.make.actions.TransientModelsPanel" />
+      <unit id="6613699149169331514" at="31,25,36,5" name="jetbrains.mps.ide.make.actions.TransientModelsPanel$1" />
+      <unit id="6613699149169331484" at="16,0,53,0" name="jetbrains.mps.ide.make.actions.TransientModelsPanel" />
     </file>
   </root>
   <root nodeRef="r:cfccec82-df72-4483-9807-88776b4673ab(jetbrains.mps.ide.make.actions)/7061644303718694046">

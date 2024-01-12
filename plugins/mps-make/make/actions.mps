@@ -231,9 +231,6 @@
         <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
-      <concept id="5279705229678483897" name="jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant" flags="nn" index="2$xPTn">
-        <property id="5279705229678483899" name="value" index="2$xPTl" />
-      </concept>
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
         <child id="1076505808688" name="condition" index="2$JKZa" />
       </concept>
@@ -11133,42 +11130,6 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="6iqrHsKPHwZ" role="3cqZAp">
-          <node concept="3cpWsn" id="6iqrHsKPHx0" role="3cpWs9">
-            <property role="TrG5h" value="labelFont" />
-            <node concept="3uibUv" id="6iqrHsKPHwY" role="1tU5fm">
-              <ref role="3uigEE" to="z60i:~Font" resolve="Font" />
-            </node>
-            <node concept="2YIFZM" id="6iqrHsKPHx1" role="33vP2m">
-              <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
-              <ref role="37wK5l" to="g1qu:~UIUtil.getLabelFont()" resolve="getLabelFont" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="6iqrHsKQ5GI" role="3cqZAp">
-          <node concept="3cpWsn" id="6iqrHsKQ5GL" role="3cpWs9">
-            <property role="TrG5h" value="framedStyle" />
-            <node concept="10P_77" id="6iqrHsKQ5GG" role="1tU5fm" />
-            <node concept="22lmx$" id="6iqrHsKQveB" role="33vP2m">
-              <node concept="3fqX7Q" id="6iqrHsKQvCQ" role="3uHU7w">
-                <node concept="2YIFZM" id="6iqrHsKQx7K" role="3fr31v">
-                  <ref role="37wK5l" to="9w4s:~SystemProperties.getBooleanProperty(java.lang.String,boolean)" resolve="getBooleanProperty" />
-                  <ref role="1Pybhc" to="9w4s:~SystemProperties" resolve="SystemProperties" />
-                  <node concept="Xl_RD" id="6iqrHsKQxRj" role="37wK5m">
-                    <property role="Xl_RC" value="idea.ui.mem.use" />
-                  </node>
-                  <node concept="3clFbT" id="6iqrHsKQzMq" role="37wK5m">
-                    <property role="3clFbU" value="false" />
-                  </node>
-                </node>
-              </node>
-              <node concept="10M0yZ" id="6iqrHsKQu7T" role="3uHU7B">
-                <ref role="1PxDUh" to="zn9m:~SystemInfo" resolve="SystemInfo" />
-                <ref role="3cqZAo" to="zn9m:~SystemInfo.isMac" resolve="isMac" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="3$i23YcAWZ3" role="3cqZAp">
           <node concept="2OqwBi" id="3$i23YcB2WE" role="3clFbG">
             <node concept="2OqwBi" id="3$i23YcAXrW" role="2Oq$k0">
@@ -11179,24 +11140,9 @@
             </node>
             <node concept="liA8E" id="3$i23YcB8Xx" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setFont(java.awt.Font)" resolve="setFont" />
-              <node concept="3K4zz7" id="6iqrHsKQ8hb" role="37wK5m">
-                <node concept="2OqwBi" id="6iqrHsKQ9Wp" role="3K4E3e">
-                  <node concept="37vLTw" id="6iqrHsKQ9mK" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6iqrHsKPHx0" resolve="labelFont" />
-                  </node>
-                  <node concept="liA8E" id="6iqrHsKQfIm" role="2OqNvi">
-                    <ref role="37wK5l" to="z60i:~Font.deriveFont(float)" resolve="deriveFont" />
-                    <node concept="2$xPTn" id="6iqrHsKQr0S" role="37wK5m">
-                      <property role="2$xPTl" value="11.0f" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="37vLTw" id="6iqrHsKQsns" role="3K4GZi">
-                  <ref role="3cqZAo" node="6iqrHsKPHx0" resolve="labelFont" />
-                </node>
-                <node concept="37vLTw" id="6iqrHsKQ7iP" role="3K4Cdx">
-                  <ref role="3cqZAo" node="6iqrHsKQ5GL" resolve="framedStyle" />
-                </node>
+              <node concept="2YIFZM" id="6K7Ru39vBe1" role="37wK5m">
+                <ref role="37wK5l" to="g1qu:~UIUtil.getToolbarFont()" resolve="getToolbarFont" />
+                <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
               </node>
             </node>
           </node>
@@ -11397,6 +11343,33 @@
             </node>
           </node>
         </node>
+      </node>
+    </node>
+    <node concept="3clFb_" id="6K7Ru39vC$j" role="jymVt">
+      <property role="TrG5h" value="getInsets" />
+      <node concept="3Tm1VV" id="6K7Ru39vC$k" role="1B3o_S" />
+      <node concept="2AHcQZ" id="6K7Ru39vC$m" role="2AJF6D">
+        <ref role="2AI5Lk" to="mnlj:~BeanProperty" resolve="BeanProperty" />
+        <node concept="2B6LJw" id="6K7Ru39vC$n" role="2B76xF">
+          <ref role="2B6OnR" to="mnlj:~BeanProperty.expert()" resolve="expert" />
+          <node concept="3clFbT" id="6K7Ru39vC$o" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="6K7Ru39vC$p" role="3clF45">
+        <ref role="3uigEE" to="z60i:~Insets" resolve="Insets" />
+      </node>
+      <node concept="3clFbS" id="6K7Ru39vC$s" role="3clF47">
+        <node concept="3clFbF" id="6K7Ru39vKYw" role="3cqZAp">
+          <node concept="2YIFZM" id="6K7Ru39vM9K" role="3clFbG">
+            <ref role="37wK5l" to="g1qu:~JBUI.emptyInsets()" resolve="emptyInsets" />
+            <ref role="1Pybhc" to="g1qu:~JBUI" resolve="JBUI" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="6K7Ru39vC$t" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
     <node concept="3clFb_" id="5J8_5nlyCQB" role="jymVt">
