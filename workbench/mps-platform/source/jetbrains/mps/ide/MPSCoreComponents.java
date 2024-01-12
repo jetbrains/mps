@@ -17,20 +17,21 @@ package jetbrains.mps.ide;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.extensions.ExtensionPointName;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.newvfs.ManagingFS;
 import com.intellij.openapi.vfs.newvfs.persistent.PersistentFSImpl;
-import jetbrains.mps.baseLanguage.search.MPSBaseLanguage;
 import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.components.ComponentPlugin;
+import jetbrains.mps.components.ComponentPluginFactory;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
 import jetbrains.mps.library.LibraryInitializer;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
@@ -53,9 +54,17 @@ public class MPSCoreComponents implements Disposable {
     @NotNull ManagingFS fs = ManagingFS.getInstance();
     @NotNull ModelAccess access = ApplicationManager.getApplication().getComponent(ModelAccess.class);
     myPlatform = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
-    // XXX likely, shall introduce an extension point to contribute CP instances w/o explicit dependency here;
-    //     could use one for future [mps-editor]/MPSEditorComponentPlugin  ([mps-editor] depends from [mps-platform] and I can't have direct reference)
-    myPlatform.install(new MPSBaseLanguage());
+    final ExtensionPointName<ComponentPluginFactory> cpfExtPoint = ExtensionPointName.create("jetbrains.mps.componentPluginFactory");
+    for (ComponentPluginFactory cpf : cpfExtPoint.getExtensionList()) {
+      try {
+        final ComponentPlugin cp = cpf.create(myPlatform);
+        if (cp != null) {
+          myPlatform.install(cp);
+        }
+      } catch (Exception ex) {
+        Logger.getLogger(getClass()).error(String.format("ComponentPluginFactory %s failed", cpf), ex);
+      }
+    }
 
     // Required to maintain correct dispose order between PersistenceFacade and FileBasedIndexImpl.
     Disposer.register(this, (PersistentFSImpl) fs);

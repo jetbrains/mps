@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2020 JetBrains s.r.o.
+  ~ Copyright 2003-2024 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -106,6 +106,8 @@
     <extensionPoint qualifiedName="com.intellij.mps.gotoParticipant"
                     interface="org.jetbrains.mps.openapi.persistence.NavigationParticipant"
                     area="IDEA_PROJECT"/>
+    <extensionPoint qualifiedName="jetbrains.mps.componentPluginFactory"
+                    interface="jetbrains.mps.components.ComponentPluginFactory"/>
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">
@@ -140,5 +142,9 @@
     <registryKey key="mps.module.rename.show.details" defaultValue="false" description="MPS: Rename Module Dialog to show extra details" restartRequired="false"/>
     <registryKey key="mps.module.rename.related.ignore" defaultValue="false" description="MPS: Rename Module Dialog to ignore 'related' modules" restartRequired="false"/>
     <registryKey key="mps.actions.old_edt" defaultValue="false" description="MPS: Use legacy EDT action update" restartRequired="true"/>
+  </extensions>
+
+  <extensions defaultExtensionNs="jetbrains.mps">
+    <componentPluginFactory implementation="jetbrains.mps.baseLanguage.search.MPSBaseLanguage$Factory"/>
   </extensions>
 </idea-plugin>

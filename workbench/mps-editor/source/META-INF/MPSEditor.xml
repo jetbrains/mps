@@ -100,6 +100,10 @@
                          displayName="MPS Editor Hints" order="after preferences.sourceCode" nonDefaultProject="true"/>
   </extensions>
 
+  <extensions defaultExtensionNs="jetbrains.mps">
+    <componentPluginFactory implementation="jetbrains.mps.ide.editor.MPSEditorPlugin$Factory"/>
+  </extensions>
+
   <actions>
     <action id="MPS.Editor.ShowIntentionMenu" class="com.intellij.openapi.actionSystem.EmptyAction" text="Show Intention Popup">
       <keyboard-shortcut first-keystroke="alt ENTER" keymap="$default"/>
