@@ -23,10 +23,6 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.nodeEditor.cells.contextAssistant.ContextAssistantSettings</implementation-class>
-    </component>
-
-    <component>
       <implementation-class>jetbrains.mps.ide.editor.resolver.EditorResolverComponent</implementation-class>
     </component>
 
@@ -79,6 +75,7 @@
     <applicationService serviceImplementation="jetbrains.mps.nodeEditor.EditorSettings"/>
     <applicationService serviceImplementation="jetbrains.mps.intentions.IntentionsManager"/>
     <applicationService serviceImplementation="jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager"/>
+    <applicationService serviceImplementation="jetbrains.mps.nodeEditor.cells.contextAssistant.ContextAssistantSettings"/>
 
     <projectService serviceImplementation="jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintSettingsComponent" />
     <projectService serviceImplementation="jetbrains.mps.ide.editor.EditorTrackService" />

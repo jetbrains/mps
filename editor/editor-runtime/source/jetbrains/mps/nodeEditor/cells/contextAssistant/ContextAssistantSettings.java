@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.nodeEditor.cells.contextAssistant;
 
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
@@ -29,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
     storages = @Storage("mpsContextAssistant.xml"),
     reportStatistic = true
 )
-public class ContextAssistantSettings implements ApplicationComponent, PersistentStateComponent<ContextAssistantSettings> {
+public class ContextAssistantSettings implements PersistentStateComponent<ContextAssistantSettings> {
 
   public boolean HELP_SHOWN = false;
 
@@ -44,21 +43,7 @@ public class ContextAssistantSettings implements ApplicationComponent, Persisten
     XmlSerializerUtil.copyBean(state, this);
   }
 
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Context Assistant Settings";
-  }
-
   public static ContextAssistantSettings getInstance() {
-    return ApplicationManager.getApplication().getComponent(ContextAssistantSettings.class);
+    return ApplicationManager.getApplication().getService(ContextAssistantSettings.class);
   }
 }
