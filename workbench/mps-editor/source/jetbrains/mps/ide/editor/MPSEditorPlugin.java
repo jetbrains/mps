@@ -8,6 +8,8 @@ import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.ComponentPluginFactory;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.editor.EditorComponentTrackService;
+import jetbrains.mps.ide.editor.resolver.EditorResolverComponent;
+import jetbrains.mps.resolve.ResolverComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,6 +28,8 @@ public final class MPSEditorPlugin extends ComponentPlugin implements ComponentH
   @Override
   public void init() {
     myEditorComponentTracker = init(new EditorComponentTracker());
+    // FIXME obtain ResolverComponent instance through factory's platform
+    init(new EditorResolverComponent(ResolverComponent.getInstance()));
   }
 
   @Override
