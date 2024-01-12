@@ -18140,6 +18140,7 @@
     <copy todir="${build.tmp}/java/out/mps-icons">
       <fileset dir="${mps_home}/workbench/mps-icons/source">
         <include name="**/*.svg" />
+        <include name="**/*.json" />
       </fileset>
       <fileset dir="${mps_home}/workbench/mps-icons/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
     </copy>

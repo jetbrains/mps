@@ -1899,6 +1899,9 @@
           <node concept="3LWZYx" id="6VpnTvSD3UY" role="3LXTna">
             <property role="3LWZYw" value="**/*.svg" />
           </node>
+          <node concept="3LWZYx" id="7aoXY1J96Gi" role="3LXTna">
+            <property role="3LWZYw" value="**/*.json" />
+          </node>
         </node>
       </node>
       <node concept="2GhqfE" id="5DAo_J9ano9" role="nCB5Z">
