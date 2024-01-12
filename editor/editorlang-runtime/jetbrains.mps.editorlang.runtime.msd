@@ -8,7 +8,7 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <classes generated="true" path="${module}/classes_gen" />
+      <classes generated="true" />
       <library location="${module}/classes" />
     </facet>
   </facets>

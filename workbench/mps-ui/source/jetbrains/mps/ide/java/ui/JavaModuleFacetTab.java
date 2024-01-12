@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -595,14 +595,15 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       assert descriptor != null;
       if(!myCompileOutPath.getText().isBlank()) {
         myJavaModuleFacet.setGeneratedClassesLocation(new PathSpec(myCompileOutPath.getText()));
-      } else {
-        //Keep this as a fallback in case the gen class location is null
-        if (myJavaModuleFacet.getClassesGen() == null) {
-          myJavaModuleFacet.setGeneratedClassesLocation(myJavaModuleFacet.getAbstractModule().getModuleSourceDir().findChild(AbstractModule.CLASSES_GEN));
-        }
       }
       if (myCompileInMPS.isSelected()) {
         myJavaModuleFacet.setCompile(Compile.MPS);
+        //Keep this as a fallback in case the gen class location is null. Do this only for MPS-compiled modules,
+        //     external compiler handles classes location in some other way.
+        if (myJavaModuleFacet.getClassesGen() == null) {
+          myJavaModuleFacet.setGeneratedClassesLocation(myJavaModuleFacet.getAbstractModule().getModuleSourceDir().findChild(AbstractModule.CLASSES_GEN));
+        }
+
       } else if (myCompileExternal.isSelected()) {
         myJavaModuleFacet.setCompile(Compile.External);
       } else {
