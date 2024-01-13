@@ -171,6 +171,7 @@
     </jar>
     <jar destfile="${build.layout}/lib/mps-icons.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-icons" />
+      <fileset file="${mps_home}/workbench/mps-icons/source/MPSIconsIconMappings.json" />
     </jar>
     <jar destfile="${build.layout}/lib/mps-editor.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-editor" />
@@ -18112,6 +18113,9 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-ui">
+      <fileset dir="${mps_home}/workbench/mps-ui/source">
+        <include name="**/*.json" />
+      </fileset>
       <fileset dir="${mps_home}/workbench/mps-ui/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
       <fileset dir="${mps_home}/workbench/mps-ui/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
     </copy>
