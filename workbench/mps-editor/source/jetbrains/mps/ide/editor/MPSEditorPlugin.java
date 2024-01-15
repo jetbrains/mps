@@ -8,8 +8,10 @@ import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.ComponentPluginFactory;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.editor.EditorComponentTrackService;
+import jetbrains.mps.errors.CheckerRegistry;
 import jetbrains.mps.ide.editor.resolver.EditorResolverComponent;
 import jetbrains.mps.resolve.ResolverComponent;
+import jetbrains.mps.typesystem.checking.EditorCheckerComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,9 +22,11 @@ import org.jetbrains.annotations.Nullable;
  * @since 2023.3
  */
 public final class MPSEditorPlugin extends ComponentPlugin implements ComponentHost{
+  private final ComponentHost myPlatform;
   private EditorComponentTracker myEditorComponentTracker;
 
-  public MPSEditorPlugin() {
+  public MPSEditorPlugin(@NotNull ComponentHost platform) {
+    myPlatform = platform;
   }
 
   @Override
@@ -30,6 +34,7 @@ public final class MPSEditorPlugin extends ComponentPlugin implements ComponentH
     myEditorComponentTracker = init(new EditorComponentTracker());
     // FIXME obtain ResolverComponent instance through factory's platform
     init(new EditorResolverComponent(ResolverComponent.getInstance()));
+    init(new EditorCheckerComponent(myPlatform));
   }
 
   @Override
@@ -43,7 +48,7 @@ public final class MPSEditorPlugin extends ComponentPlugin implements ComponentH
   public static final class Factory implements ComponentPluginFactory {
     @Override
     public @Nullable ComponentPlugin create(@NotNull ComponentHost platform) {
-      return new MPSEditorPlugin();
+      return new MPSEditorPlugin(platform);
     }
   }
 }
