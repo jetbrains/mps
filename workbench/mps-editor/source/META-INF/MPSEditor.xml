@@ -17,12 +17,6 @@
                     interface="jetbrains.mps.nodeEditor.IntentionActionsProvider"/>
   </extensionPoints>
 
-  <application-components>
-    <component>
-      <implementation-class>jetbrains.mps.ide.editor.StyleRegistryIdeaImpl</implementation-class>
-    </component>
-  </application-components>
-
   <project-components>
     <component>
       <interface-class>jetbrains.mps.nodeEditor.Highlighter</interface-class>

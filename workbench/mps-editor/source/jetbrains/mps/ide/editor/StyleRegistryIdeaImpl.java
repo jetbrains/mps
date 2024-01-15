@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.editor.markup.EffectType;
 import com.intellij.openapi.editor.markup.TextAttributes;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -40,7 +41,7 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StyleRegistryIdeaImpl extends StyleRegistry implements Disposable {
+public class StyleRegistryIdeaImpl extends StyleRegistry {
 
   private final static int colorIterationSteps = 5;
   private final static int colorIterationDelta = 50;
@@ -48,12 +49,12 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements Disposable {
   private final Map<String, String> myIDEAStylesMapping = new HashMap<>();
   private final Map<Pair<Color, Color>, Color> my2DarkColorsMapping = new HashMap<>();
 
+  private final Disposable myDisposable = Disposer.newDisposable();
+
   public StyleRegistryIdeaImpl() {
-    ourInstance = this;
     fillIdeaMappings();
     fillColorMappings();
     fillCustomStyles();
-    ApplicationManager.getApplication().getMessageBus().connect(this).subscribe(EditorColorsManager.TOPIC, (EditorColorsListener) this::colorsChanged);
   }
 
   private void colorsChanged(EditorColorsScheme scheme) {
@@ -258,7 +259,15 @@ public class StyleRegistryIdeaImpl extends StyleRegistry implements Disposable {
   }
 
   @Override
+  public void init() {
+    ourInstance = this;
+    ApplicationManager.getApplication().getMessageBus().connect(myDisposable).subscribe(EditorColorsManager.TOPIC, (EditorColorsListener) this::colorsChanged);
+  }
+
+  @Override
   public void dispose() {
+    ourInstance = null;
+    Disposer.dispose(myDisposable);
     clearCache();
     my2DarkColorsMapping.clear();
     myIDEAStylesMapping.clear();

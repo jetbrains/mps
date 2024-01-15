@@ -10,6 +10,7 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.editor.EditorComponentTrackService;
 import jetbrains.mps.ide.editor.resolver.EditorResolverComponent;
 import jetbrains.mps.nodeEditor.caret.CaretManager;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.typesystem.checking.EditorCheckerComponent;
 import org.jetbrains.annotations.NotNull;
@@ -25,6 +26,7 @@ public final class MPSEditorPlugin extends ComponentPlugin implements ComponentH
   private final ComponentHost myPlatform;
   private EditorComponentTracker myEditorComponentTracker;
   private CaretManager myCaretManager;
+  private StyleRegistry myStyleRegistry;
 
   public MPSEditorPlugin(@NotNull ComponentHost platform) {
     myPlatform = platform;
@@ -36,12 +38,16 @@ public final class MPSEditorPlugin extends ComponentPlugin implements ComponentH
     init(new EditorResolverComponent(myPlatform.findComponent(ResolverComponent.class)));
     init(new EditorCheckerComponent(myPlatform));
     myCaretManager = init(new IdeaCaretManager());
+    myStyleRegistry = init(new StyleRegistryIdeaImpl());
   }
 
   @Override
   public <T extends CoreComponent> @Nullable T findComponent(@NotNull Class<T> componentClass) {
     if (EditorComponentTrackService.class.isAssignableFrom(componentClass)) {
       return componentClass.cast(myEditorComponentTracker);
+    }
+    if (StyleRegistry.class.isAssignableFrom(componentClass)) {
+      return componentClass.cast(myStyleRegistry);
     }
     if (CaretManager.class.isAssignableFrom(componentClass)) {
       return componentClass.cast(myCaretManager);
