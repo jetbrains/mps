@@ -8,8 +8,8 @@ import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.ComponentPluginFactory;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.editor.EditorComponentTrackService;
-import jetbrains.mps.errors.CheckerRegistry;
 import jetbrains.mps.ide.editor.resolver.EditorResolverComponent;
+import jetbrains.mps.nodeEditor.caret.CaretManager;
 import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.typesystem.checking.EditorCheckerComponent;
 import org.jetbrains.annotations.NotNull;
@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
 public final class MPSEditorPlugin extends ComponentPlugin implements ComponentHost{
   private final ComponentHost myPlatform;
   private EditorComponentTracker myEditorComponentTracker;
+  private CaretManager myCaretManager;
 
   public MPSEditorPlugin(@NotNull ComponentHost platform) {
     myPlatform = platform;
@@ -34,12 +35,16 @@ public final class MPSEditorPlugin extends ComponentPlugin implements ComponentH
     myEditorComponentTracker = init(new EditorComponentTracker());
     init(new EditorResolverComponent(myPlatform.findComponent(ResolverComponent.class)));
     init(new EditorCheckerComponent(myPlatform));
+    myCaretManager = init(new IdeaCaretManager());
   }
 
   @Override
   public <T extends CoreComponent> @Nullable T findComponent(@NotNull Class<T> componentClass) {
     if (EditorComponentTrackService.class.isAssignableFrom(componentClass)) {
       return componentClass.cast(myEditorComponentTracker);
+    }
+    if (CaretManager.class.isAssignableFrom(componentClass)) {
+      return componentClass.cast(myCaretManager);
     }
     return null;
   }

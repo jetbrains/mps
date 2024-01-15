@@ -19,10 +19,6 @@
 
   <application-components>
     <component>
-      <implementation-class>jetbrains.mps.ide.editor.IdeaCaretManager</implementation-class>
-    </component>
-
-    <component>
       <implementation-class>jetbrains.mps.ide.editor.StyleRegistryIdeaImpl</implementation-class>
     </component>
   </application-components>

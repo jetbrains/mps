@@ -28,8 +28,12 @@ import java.util.concurrent.TimeUnit;
  * User: shatalin
  * Date: 29/07/16
  */
-public class IdeaCaretManager extends CaretManager implements Disposable {
+public class IdeaCaretManager extends CaretManager {
   public IdeaCaretManager() {
+  }
+
+  @Override
+  public void init() {
     CaretManager.ourInstance = this;
   }
 

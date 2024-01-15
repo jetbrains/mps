@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.caret;
 
+import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.optional.WithCaret;
@@ -26,12 +27,16 @@ import java.util.concurrent.ScheduledFuture;
  * User: shatalin
  * Date: 29/07/16
  */
-public abstract class CaretManager {
+public abstract class CaretManager implements CoreComponent {
   protected static CaretManager ourInstance;
 
   private volatile EditorComponent myActiveEditor;
   private ScheduledFuture<?> mySchedulerHandle;
 
+  /**
+   * @deprecated it's a CoreComponent, access through ComponentHost
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public static CaretManager getInstance() {
     if (ourInstance == null) {
       // Default, not blinking caret manager
