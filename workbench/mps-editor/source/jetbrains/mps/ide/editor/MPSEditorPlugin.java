@@ -32,8 +32,7 @@ public final class MPSEditorPlugin extends ComponentPlugin implements ComponentH
   @Override
   public void init() {
     myEditorComponentTracker = init(new EditorComponentTracker());
-    // FIXME obtain ResolverComponent instance through factory's platform
-    init(new EditorResolverComponent(ResolverComponent.getInstance()));
+    init(new EditorResolverComponent(myPlatform.findComponent(ResolverComponent.class)));
     init(new EditorCheckerComponent(myPlatform));
   }
 

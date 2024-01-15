@@ -90,6 +90,11 @@ public class ResolverComponent implements CoreComponent {
     }
     return myScopeResolver.resolve(updatedInstance, sourceNode, repository);
   }
+  /**
+   * 
+   * @deprecated ResolverComponent is CoreComponent, access its instance via ComponentHost
+   */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public static ResolverComponent getInstance() {
     return INSTANCE;
   }
