@@ -3722,8 +3722,8 @@
       <node concept="3clFbS" id="5biTR9bEBgE" role="3clF47">
         <node concept="3clFbJ" id="5biTR9bEC_L" role="3cqZAp">
           <node concept="2YIFZM" id="5biTR9bHzQN" role="3clFbw">
-            <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode()" resolve="isInternalMode" />
-            <ref role="1Pybhc" to="fyhk:~InternalFlag" resolve="InternalFlag" />
+            <ref role="37wK5l" to="fyhk:~RuntimeFlags.isInternalMode()" resolve="isInternalMode" />
+            <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
           </node>
           <node concept="3clFbS" id="5biTR9bEC_O" role="3clFbx">
             <node concept="RRSsy" id="3jYQuSB36M7" role="3cqZAp">

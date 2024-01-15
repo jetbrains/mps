@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.repository;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
-import jetbrains.mps.InternalFlag;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.library.LibraryInitializer;
@@ -32,7 +31,7 @@ import java.util.List;
 
 /**
  * Inits all mps distribution modules
- * When on sources {@link InternalFlag#isInternalMode()} almost the same happens
+ * When on sources {@link jetbrains.mps.RuntimeFlags#isInternalMode()} almost the same happens
  */
 public class RepositoryInitializingComponentBase implements BaseComponent {
   private final LibraryInitializer myLibraryInitializer;
@@ -47,7 +46,6 @@ public class RepositoryInitializingComponentBase implements BaseComponent {
    *
    * @param coreComponents           -- we want to load bootstrap libraries after we have all core components instatiated
    */
-  @SuppressWarnings("UnusedParameters")
   public RepositoryInitializingComponentBase(MPSCoreComponents coreComponents) {
     ApplicationManager.getApplication().getService(FSNotificationsImprover.class); // Need this service to be initialized before other activity
     myLibraryInitializer = coreComponents.getLibraryInitializer();

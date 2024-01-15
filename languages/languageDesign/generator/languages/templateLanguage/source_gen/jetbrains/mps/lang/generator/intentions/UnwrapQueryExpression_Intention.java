@@ -16,7 +16,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.InternalFlag;
+import jetbrains.mps.RuntimeFlags;
 import java.util.List;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -87,7 +87,7 @@ public final class UnwrapQueryExpression_Intention extends AbstractIntentionDesc
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
       // we do dangerous things with model implementation here
-      if (!(InternalFlag.isInternalMode())) {
+      if (!(RuntimeFlags.isInternalMode())) {
         return false;
       }
       List<SNode> statements = SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.query$31w3), LINKS.body$e68K), LINKS.statement$53DE);

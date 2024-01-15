@@ -8197,8 +8197,8 @@
           </node>
           <node concept="3fqX7Q" id="3b1IffilcPB" role="3clFbw">
             <node concept="2YIFZM" id="3b1IffilcPD" role="3fr31v">
-              <ref role="37wK5l" to="fyhk:~InternalFlag.isInternalMode()" resolve="isInternalMode" />
-              <ref role="1Pybhc" to="fyhk:~InternalFlag" resolve="InternalFlag" />
+              <ref role="37wK5l" to="fyhk:~RuntimeFlags.isInternalMode()" resolve="isInternalMode" />
+              <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
             </node>
           </node>
         </node>
