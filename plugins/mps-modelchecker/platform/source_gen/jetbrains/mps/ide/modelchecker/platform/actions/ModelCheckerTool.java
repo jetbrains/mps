@@ -21,10 +21,9 @@ import jetbrains.mps.ide.icons.GlobalIconManager;
 import com.intellij.icons.AllIcons;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import javax.swing.JOptionPane;
+import com.intellij.openapi.ui.Messages;
 import java.util.ArrayList;
 import com.intellij.openapi.vcs.checkin.CheckinHandler;
-import com.intellij.openapi.ui.Messages;
 
 @GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199793468053", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class ModelCheckerTool extends BaseTabbedProjectTool {
@@ -73,7 +72,7 @@ public class ModelCheckerTool extends BaseTabbedProjectTool {
       return;
     }
     if (searchResults.getSearchResults().isEmpty()) {
-      JOptionPane.showMessageDialog(this.getComponent(), "There were no problems detected during Model Checker execution", "Model Checker results", JOptionPane.INFORMATION_MESSAGE);
+      Messages.showInfoMessage(myProject, "There were no problems detected during Model Checker execution", "Model Checker results");
     } else {
       this.showTabWithResults(newViewer, title, icon);
     }
