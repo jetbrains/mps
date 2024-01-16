@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.project.facets;
 
@@ -88,9 +88,13 @@ public class PlainTextTargetFacet extends ModuleFacetBase implements GenerationT
   }
 
   public void location(@Nullable IFile location) {
+    // FIXME need to decide what does null location means. Whether it's "from module" or "none"
     myOutputRoot = location == null ? null : new PathSpec(location);
     //noinspection removal
     myOutputCacheRoot = location == null ? null : FileGenerationUtil.getCachesDir(location);
+    if (location != null && getModule() instanceof AbstractModule) {
+      myOutputRootFromDescriptor = location.equals(((AbstractModule) getModule()).getOutputPath());
+    }
   }
 
   @Override
@@ -117,7 +121,7 @@ public class PlainTextTargetFacet extends ModuleFacetBase implements GenerationT
   @Override
   public void save(@NotNull Memento memento) {
     memento.put("folders", String.valueOf(myUseModelNameForFolder));
-    if (myOutputRootFromDescriptor) {
+    if (myOutputRootFromDescriptor || myOutputRoot == null) {
       memento.put("root", null);
     } else {
       memento.put("root", myOutputRoot.shrink(MacrosFactory.forModule(getModule())));
