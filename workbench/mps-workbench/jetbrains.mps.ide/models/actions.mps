@@ -7049,6 +7049,7 @@
     <property role="2uzpH1" value="Bookmarks..." />
     <property role="3GE5qa" value="Menu.MainMenu.ToolsActions" />
     <property role="1rBW0U" value="true" />
+    <property role="2YLI8m" value="6u2MFnph2wS/none" />
     <node concept="tnohg" id="hXrtPYZ" role="tncku">
       <node concept="3clFbS" id="hXrtPZ0" role="2VODD2">
         <node concept="3clFbF" id="hXru4Og" role="3cqZAp">
@@ -7068,7 +7069,7 @@
               </node>
             </node>
             <node concept="liA8E" id="hXrubbO" role="2OqNvi">
-              <ref role="37wK5l" to="71xd:~BaseTool.openTool(boolean)" resolve="openTool" />
+              <ref role="37wK5l" to="71xd:~BaseTool.openToolLater(boolean)" resolve="openToolLater" />
               <node concept="3clFbT" id="hXrubzY" role="37wK5m">
                 <property role="3clFbU" value="true" />
               </node>

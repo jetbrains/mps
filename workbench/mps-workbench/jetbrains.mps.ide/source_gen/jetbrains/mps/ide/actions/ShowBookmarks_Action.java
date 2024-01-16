@@ -20,7 +20,7 @@ public class ShowBookmarks_Action extends BaseAction {
   public ShowBookmarks_Action() {
     super("Bookmarks...", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    this.setActionAccess(ActionAccess.NONE);
     updateInBackground(true);
   }
   @Override
@@ -42,6 +42,6 @@ public class ShowBookmarks_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(CommonDataKeys.PROJECT).getComponent(BookmarksTool.class).openTool(true);
+    event.getData(CommonDataKeys.PROJECT).getComponent(BookmarksTool.class).openToolLater(true);
   }
 }
