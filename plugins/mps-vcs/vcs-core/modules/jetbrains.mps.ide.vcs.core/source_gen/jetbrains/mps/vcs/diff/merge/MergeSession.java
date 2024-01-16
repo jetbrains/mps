@@ -58,6 +58,7 @@ public final class MergeSession {
   private final Set<ModelChange> myResolvedChanges = SetSequence.fromSet(new HashSet<ModelChange>());
   private final NodeCopier myNodeCopier;
   private final MyResultModelListener myModelListener = new MyResultModelListener();
+  private final boolean myIsTrackMovedNodes;
   private ChangesInvalidateHandler myChangesInvalidateHandler;
 
   public static MergeSession createMergeSession(SModel base, SModel mine, SModel repository) {
@@ -76,6 +77,7 @@ public final class MergeSession {
   }
 
   private MergeSession(SModel base, SModel mine, SModel repository, MergeTemporaryModel result, boolean isTrackMovedNodes) {
+    myIsTrackMovedNodes = isTrackMovedNodes;
     ChangeConflictsBuilder conflictsBuilder = (isTrackMovedNodes ? new MovesAwareMergeConflictsBuilder(result, mine, repository, false) : new MergeConflictsBuilder(base, mine, repository));
     myMineChangeSet = conflictsBuilder.getMyChangeSet();
     myRepositoryChangeSet = conflictsBuilder.getRepositoryChangeSet();
@@ -201,6 +203,12 @@ public final class MergeSession {
   }
 
   private void applyHierarchicalChanges(Iterable<ModelChange> changes) {
+    if (myIsTrackMovedNodes) {
+      // Apply NodeId changes first to fix wrap and move problem when Id of where to move (in new model) is changed as well
+      //  do it only when "track moved nodes" option set to not disturb "normal" merge logic
+      Sequence.fromIterable(changes).ofType(NodeIdChange.class).visitAll((it) -> applyChange(it));
+      //  after this change applied myNodeCopier will have a mapping oldId -> newId so there should be no problems with other changes to apply
+    }
     new HierarchicalChangesApplier(this).applyHierarchicalChanges(Sequence.fromIterable(changes).ofType(HierarchicalNodeGroupChange.class).select((it) -> (HierarchicalNodeGroupChange) getChangeByMergeStrategy(it)).sort((a, b) -> compareChanges(a, b), true).toList());
   }
 
@@ -249,7 +257,7 @@ public final class MergeSession {
       for (NodeGroupChange ch : ListSequence.fromList(ngcConflictedChanges)) {
         // add new changes only for insertions, we need ChangeSetImpl to manually add one change there
         // original conflicted changes will be resolved
-        ChangeSetImpl changeSet = as_bow6nj_a0a2a5a3a95(ch.getChangeSet(), ChangeSetImpl.class);
+        ChangeSetImpl changeSet = as_bow6nj_a0a2a5a3a06(ch.getChangeSet(), ChangeSetImpl.class);
         assert changeSet != null;
         NodeGroupChange newChange = new NodeGroupChange(changeSet, ch.getOldParentNodeId(), ch.getNewParentNodeId(), ch.getRoleLink(), anchorIndex, anchorIndex, ch.getResultBegin(), ch.getResultEnd());
         if (isNotEmptyChange(newChange)) {
@@ -550,7 +558,7 @@ public final class MergeSession {
     private Set<ModelChange> myResolvedChanges;
     private Map<SNodeId, SNodeId> myIdReplacementCache;
   }
-  private static <T> T as_bow6nj_a0a2a5a3a95(Object o, Class<T> type) {
+  private static <T> T as_bow6nj_a0a2a5a3a06(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

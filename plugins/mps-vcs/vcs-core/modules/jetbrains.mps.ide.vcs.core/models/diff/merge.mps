@@ -4987,6 +4987,12 @@
         </node>
       </node>
     </node>
+    <node concept="312cEg" id="5y$Xmetc6bc" role="jymVt">
+      <property role="TrG5h" value="myIsTrackMovedNodes" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="5y$XmetbNrt" role="1B3o_S" />
+      <node concept="10P_77" id="5y$Xmetc3ZT" role="1tU5fm" />
+    </node>
     <node concept="312cEg" id="3UEHyzu03mh" role="jymVt">
       <property role="TrG5h" value="myChangesInvalidateHandler" />
       <node concept="3Tm6S6" id="3UEHyzu03mi" role="1B3o_S" />
@@ -5192,6 +5198,16 @@
       <node concept="3cqZAl" id="3$YpntjF4r_" role="3clF45" />
       <node concept="3Tm6S6" id="35oJ7ckBRux" role="1B3o_S" />
       <node concept="3clFbS" id="3$YpntjF4rB" role="3clF47">
+        <node concept="3clFbF" id="5y$XmetcnSW" role="3cqZAp">
+          <node concept="37vLTI" id="5y$Xmetcujv" role="3clFbG">
+            <node concept="37vLTw" id="5y$XmetcwWp" role="37vLTx">
+              <ref role="3cqZAo" node="5ilXZU3o6ks" resolve="isTrackMovedNodes" />
+            </node>
+            <node concept="37vLTw" id="5y$XmetcnSU" role="37vLTJ">
+              <ref role="3cqZAo" node="5y$Xmetc6bc" resolve="myIsTrackMovedNodes" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="1KUoCipvCqQ" role="3cqZAp">
           <node concept="3cpWsn" id="1KUoCipvCqR" role="3cpWs9">
             <property role="TrG5h" value="conflictsBuilder" />
@@ -6515,6 +6531,246 @@
         </node>
       </node>
       <node concept="3clFbS" id="7I2ZITxxPsZ" role="3clF47">
+        <node concept="3clFbJ" id="5y$XmetcYW0" role="3cqZAp">
+          <node concept="3clFbS" id="5y$XmetcYW2" role="3clFbx">
+            <node concept="3SKdUt" id="5y$XmeteQAT" role="3cqZAp">
+              <node concept="1PaTwC" id="5y$XmeteQAU" role="1aUNEU">
+                <node concept="3oM_SD" id="5y$Xmetf1Ij" role="1PaTwD">
+                  <property role="3oM_SC" value="Apply" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf1NQ" role="1PaTwD">
+                  <property role="3oM_SC" value="NodeId" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf1R8" role="1PaTwD">
+                  <property role="3oM_SC" value="changes" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf1Sh" role="1PaTwD">
+                  <property role="3oM_SC" value="first" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf1Tr" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf1UA" role="1PaTwD">
+                  <property role="3oM_SC" value="fix" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf1VM" role="1PaTwD">
+                  <property role="3oM_SC" value="wrap" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf1WZ" role="1PaTwD">
+                  <property role="3oM_SC" value="and" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf1X8" role="1PaTwD">
+                  <property role="3oM_SC" value="move" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf1Yn" role="1PaTwD">
+                  <property role="3oM_SC" value="problem" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf1ZB" role="1PaTwD">
+                  <property role="3oM_SC" value="when" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf247" role="1PaTwD">
+                  <property role="3oM_SC" value="Id" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf26u" role="1PaTwD">
+                  <property role="3oM_SC" value="of" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf27L" role="1PaTwD">
+                  <property role="3oM_SC" value="where" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf2bf" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf2bv" role="1PaTwD">
+                  <property role="3oM_SC" value="move" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf2cP" role="1PaTwD">
+                  <property role="3oM_SC" value="(in" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetgiAY" role="1PaTwD">
+                  <property role="3oM_SC" value="new" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetgiCD" role="1PaTwD">
+                  <property role="3oM_SC" value="model)" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetgiE5" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf2d7" role="1PaTwD">
+                  <property role="3oM_SC" value="changed" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf2ev" role="1PaTwD">
+                  <property role="3oM_SC" value="as" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetf2fS" role="1PaTwD">
+                  <property role="3oM_SC" value="well" />
+                </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="5y$Xmetfdtm" role="3cqZAp">
+              <node concept="1PaTwC" id="5y$Xmetfdtn" role="1aUNEU">
+                <node concept="3oM_SD" id="5y$XmetfnYP" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetfo15" role="1PaTwD">
+                  <property role="3oM_SC" value="do" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetfnZW" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetfo19" role="1PaTwD">
+                  <property role="3oM_SC" value="only" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetfo2w" role="1PaTwD">
+                  <property role="3oM_SC" value="when" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetfo5P" role="1PaTwD">
+                  <property role="3oM_SC" value="&quot;track" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetfo9b" role="1PaTwD">
+                  <property role="3oM_SC" value="moved" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetfoao" role="1PaTwD">
+                  <property role="3oM_SC" value="nodes&quot;" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetfocF" role="1PaTwD">
+                  <property role="3oM_SC" value="option" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetfodU" role="1PaTwD">
+                  <property role="3oM_SC" value="set" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetfofa" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetfofm" role="1PaTwD">
+                  <property role="3oM_SC" value="not" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetfogC" role="1PaTwD">
+                  <property role="3oM_SC" value="disturb" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetfola" role="1PaTwD">
+                  <property role="3oM_SC" value="&quot;normal&quot;" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetfonz" role="1PaTwD">
+                  <property role="3oM_SC" value="merge" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetfooS" role="1PaTwD">
+                  <property role="3oM_SC" value="logic" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5y$XmetdjYu" role="3cqZAp">
+              <node concept="2OqwBi" id="5y$Xmete16l" role="3clFbG">
+                <node concept="2OqwBi" id="5y$Xmetdu$L" role="2Oq$k0">
+                  <node concept="37vLTw" id="5y$XmetdjYs" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7I2ZITxyU19" resolve="changes" />
+                  </node>
+                  <node concept="UnYns" id="5y$XmetdECQ" role="2OqNvi">
+                    <node concept="3uibUv" id="5y$XmetdPR_" role="UnYnz">
+                      <ref role="3uigEE" to="btf5:2prfDaQ83wW" resolve="NodeIdChange" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="2es0OD" id="5y$Xmetecmp" role="2OqNvi">
+                  <node concept="1bVj0M" id="5y$Xmetecmr" role="23t8la">
+                    <node concept="3clFbS" id="5y$Xmetecms" role="1bW5cS">
+                      <node concept="3clFbF" id="5y$Xmeten3w" role="3cqZAp">
+                        <node concept="1rXfSq" id="5y$Xmeten3v" role="3clFbG">
+                          <ref role="37wK5l" node="3$YpntjF4pb" resolve="applyChange" />
+                          <node concept="37vLTw" id="5y$XmetexSD" role="37wK5m">
+                            <ref role="3cqZAo" node="5y$Xmetecmt" resolve="it" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="gl6BB" id="5y$Xmetecmt" role="1bW2Oz">
+                      <property role="TrG5h" value="it" />
+                      <node concept="2jxLKc" id="5y$Xmetecmu" role="1tU5fm" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="5y$XmetfzDH" role="3cqZAp">
+              <node concept="1PaTwC" id="5y$XmetfzDI" role="1aUNEU">
+                <node concept="3oM_SD" id="5y$XmetfzED" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetfId1" role="1PaTwD">
+                  <property role="3oM_SC" value="after" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetfzFK" role="1PaTwD">
+                  <property role="3oM_SC" value="this" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetfzFO" role="1PaTwD">
+                  <property role="3oM_SC" value="change" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetfIdm" role="1PaTwD">
+                  <property role="3oM_SC" value="applied" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetfIjP" role="1PaTwD">
+                  <property role="3oM_SC" value="myNodeCopier" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetgajY" role="1PaTwD">
+                  <property role="3oM_SC" value="will" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgak6" role="1PaTwD">
+                  <property role="3oM_SC" value="have" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgalk" role="1PaTwD">
+                  <property role="3oM_SC" value="a" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgalu" role="1PaTwD">
+                  <property role="3oM_SC" value="mapping" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgaps" role="1PaTwD">
+                  <property role="3oM_SC" value="oldId" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgas2" role="1PaTwD">
+                  <property role="3oM_SC" value="-&gt;" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetgatO" role="1PaTwD">
+                  <property role="3oM_SC" value="newId" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgidz" role="1PaTwD">
+                  <property role="3oM_SC" value="so" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgif7" role="1PaTwD">
+                  <property role="3oM_SC" value="there" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgigs" role="1PaTwD">
+                  <property role="3oM_SC" value="should" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetgigH" role="1PaTwD">
+                  <property role="3oM_SC" value="be" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgii4" role="1PaTwD">
+                  <property role="3oM_SC" value="no" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgijs" role="1PaTwD">
+                  <property role="3oM_SC" value="problems" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgil5" role="1PaTwD">
+                  <property role="3oM_SC" value="with" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetginO" role="1PaTwD">
+                  <property role="3oM_SC" value="other" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgipf" role="1PaTwD">
+                  <property role="3oM_SC" value="changes" />
+                </node>
+                <node concept="3oM_SD" id="5y$XmetgirK" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="5y$Xmetgitd" role="1PaTwD">
+                  <property role="3oM_SC" value="apply" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="5y$Xmetd9RU" role="3clFbw">
+            <ref role="3cqZAo" node="5y$Xmetc6bc" resolve="myIsTrackMovedNodes" />
+          </node>
+        </node>
         <node concept="3clFbF" id="6MfLK$wCVNV" role="3cqZAp">
           <node concept="2OqwBi" id="6MfLK$wDhZz" role="3clFbG">
             <node concept="2ShNRf" id="6MfLK$wCVNR" role="2Oq$k0">
