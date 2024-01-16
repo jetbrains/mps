@@ -536,6 +536,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       myPlatformEditorEmulation = new PlatformEditorEmulation(this);
       addMouseListener(myPlatformEditorEmulation.getMouseListener());
       addMouseMotionListener(myPlatformEditorEmulation.getMouseMotionListener());
+      addKeyListener(myPlatformEditorEmulation.getKeyListener());
       myLeftHighlighter.addMouseListener(myPlatformEditorEmulation.getMouseListener());
       myLeftHighlighter.addMouseMotionListener(myPlatformEditorEmulation.getMouseMotionListener());
     }
@@ -1620,6 +1621,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (myPlatformEditorEmulation != null) {
       removeMouseListener(myPlatformEditorEmulation.getMouseListener());
       removeMouseMotionListener(myPlatformEditorEmulation.getMouseMotionListener());
+      removeKeyListener(myPlatformEditorEmulation.getKeyListener());
       getLeftEditorHighlighter().removeMouseListener(myPlatformEditorEmulation.getMouseListener());
       getLeftEditorHighlighter().removeMouseMotionListener(myPlatformEditorEmulation.getMouseMotionListener());
       myPlatformEditorEmulation.release();

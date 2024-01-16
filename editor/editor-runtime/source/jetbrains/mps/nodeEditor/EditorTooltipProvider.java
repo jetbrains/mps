@@ -6,11 +6,16 @@ package jetbrains.mps.nodeEditor;
 import com.intellij.codeInsight.hint.TooltipGroup;
 import com.intellij.openapi.ui.popup.Balloon.Position;
 import com.intellij.codeInsight.hint.TooltipRenderer;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.event.MouseEvent;
 
 public interface EditorTooltipProvider {
-  TooltipRenderer getTooltipRenderer(MouseEvent e);
+  /**
+   * Return an instance of {@link TooltipRenderer} if there are items to be displayed, null otherwise.
+   */
+  @Nullable TooltipRenderer getTooltipRenderer(MouseEvent e);
+
 
   Position getPreferredPosition();
 
