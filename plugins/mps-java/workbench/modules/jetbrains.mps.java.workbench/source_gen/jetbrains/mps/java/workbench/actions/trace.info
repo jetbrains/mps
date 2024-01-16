@@ -1491,58 +1491,61 @@
   </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/7522889741917394843">
     <file name="ClasspathExplorer_Tool.java">
-      <node id="7522889741917394843" at="23,0,24,0" concept="11" trace="ICON" />
-      <node id="7522889741917537842" at="24,0,25,0" concept="3" trace="myTree" />
-      <node id="7522889741917442134" at="25,0,26,0" concept="3" trace="myComponent" />
-      <node id="7522889741917394843" at="26,50,27,85" concept="13" />
-      <node id="7522889741917534764" at="30,107,31,51" concept="2" />
-      <node id="7522889741917394843" at="32,5,33,20" concept="2" />
-      <node id="7522889741917487876" at="36,58,37,79" concept="2" />
-      <node id="7522889741917648866" at="37,79,38,63" concept="2" />
-      <node id="7522889741917669595" at="38,63,39,143" concept="2" />
-      <node id="7522889741917892154" at="41,9,42,89" concept="9" />
-      <node id="7522889741917667159" at="42,89,43,112" concept="7" />
-      <node id="7522889741917667164" at="43,112,44,130" concept="7" />
-      <node id="7522889741917706927" at="44,130,45,82" concept="2" />
-      <node id="7522889741917723982" at="47,9,48,56" concept="2" />
-      <node id="7522889741917489847" at="49,5,50,51" concept="8" />
-      <node id="7522889741917940197" at="53,53,54,46" concept="2" />
-      <node id="7522889741917913538" at="55,5,56,52" concept="2" />
-      <node id="7522889741917942134" at="56,52,57,54" concept="2" />
-      <node id="7522889741917491030" at="59,36,60,51" concept="8" />
-      <node id="7522889741917394843" at="26,0,29,0" concept="1" trace="ClasspathExplorer_Tool#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="7522889741917492265" at="29,25,32,5" concept="5" />
-      <node id="7522889741917931797" at="52,45,55,5" concept="5" />
-      <node id="7522889741917394843" at="59,0,62,0" concept="6" trace="getComponent#()Ljavax/swing/JComponent;" />
-      <node id="7522889741917394843" at="29,0,35,0" concept="6" trace="dispose#()V" />
-      <node id="7522889741917667157" at="40,61,46,9" concept="0" />
-      <node id="7522889741917907903" at="52,0,59,0" concept="6" trace="analyzeModule#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
-      <node id="7522889741917665754" at="39,143,47,9" concept="2" />
-      <node id="7522889741917483407" at="35,34,49,5" concept="5" />
-      <node id="7522889741917443421" at="35,0,52,0" concept="6" trace="lazyPanel#()Ljavax/swing/JPanel;" />
-      <scope id="7522889741917394843" at="26,50,27,85" />
-      <scope id="7522889741917492267" at="30,107,31,51" />
-      <scope id="7522889741917931799" at="53,53,54,46" />
-      <scope id="7522889741917394845" at="59,36,60,51" />
-      <scope id="7522889741917394843" at="26,0,29,0">
+      <node id="7522889741917394843" at="24,0,25,0" concept="11" trace="ICON" />
+      <node id="7522889741917537842" at="25,0,26,0" concept="3" trace="myTree" />
+      <node id="7522889741917442134" at="26,0,27,0" concept="3" trace="myComponent" />
+      <node id="7522889741917394843" at="27,50,28,85" concept="13" />
+      <node id="7522889741917534764" at="31,107,32,51" concept="2" />
+      <node id="7522889741917394843" at="33,5,34,20" concept="2" />
+      <node id="7522889741917487876" at="37,58,38,79" concept="2" />
+      <node id="7522889741917648866" at="38,79,39,63" concept="2" />
+      <node id="7522889741917669595" at="39,63,40,143" concept="2" />
+      <node id="7522889741917892154" at="42,9,43,89" concept="9" />
+      <node id="7522889741917667159" at="43,89,44,112" concept="7" />
+      <node id="8504260731256654061" at="44,112,45,124" concept="7" />
+      <node id="8504260731256694162" at="45,124,46,84" concept="2" />
+      <node id="7522889741917667164" at="46,84,47,60" concept="7" />
+      <node id="7522889741917706927" at="47,60,48,82" concept="2" />
+      <node id="7522889741917723982" at="50,9,51,56" concept="2" />
+      <node id="7522889741917489847" at="52,5,53,51" concept="8" />
+      <node id="7522889741917940197" at="56,53,57,46" concept="2" />
+      <node id="7522889741917913538" at="58,5,59,52" concept="2" />
+      <node id="7522889741917942134" at="59,52,60,54" concept="2" />
+      <node id="7522889741917491030" at="62,36,63,51" concept="8" />
+      <node id="7522889741917394843" at="27,0,30,0" concept="1" trace="ClasspathExplorer_Tool#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="7522889741917492265" at="30,25,33,5" concept="5" />
+      <node id="7522889741917931797" at="55,45,58,5" concept="5" />
+      <node id="7522889741917394843" at="62,0,65,0" concept="6" trace="getComponent#()Ljavax/swing/JComponent;" />
+      <node id="7522889741917394843" at="30,0,36,0" concept="6" trace="dispose#()V" />
+      <node id="7522889741917907903" at="55,0,62,0" concept="6" trace="analyzeModule#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="7522889741917667157" at="41,61,49,9" concept="0" />
+      <node id="7522889741917665754" at="40,143,50,9" concept="2" />
+      <node id="7522889741917483407" at="36,34,52,5" concept="5" />
+      <node id="7522889741917443421" at="36,0,55,0" concept="6" trace="lazyPanel#()Ljavax/swing/JPanel;" />
+      <scope id="7522889741917394843" at="27,50,28,85" />
+      <scope id="7522889741917492267" at="31,107,32,51" />
+      <scope id="7522889741917931799" at="56,53,57,46" />
+      <scope id="7522889741917394845" at="62,36,63,51" />
+      <scope id="7522889741917394843" at="27,0,30,0">
         <var name="project" id="7522889741917394843" />
       </scope>
-      <scope id="7522889741917394843" at="59,0,62,0" />
-      <scope id="7522889741917394843" at="29,25,33,20" />
-      <scope id="7522889741917667158" at="41,9,45,82">
+      <scope id="7522889741917394843" at="62,0,65,0" />
+      <scope id="7522889741917394843" at="30,25,34,20" />
+      <scope id="7522889741917907905" at="55,45,60,54" />
+      <scope id="7522889741917394843" at="30,0,36,0" />
+      <scope id="7522889741917667158" at="42,9,48,82">
+        <var name="actionToolbar" id="8504260731256654062" />
         <var name="group" id="7522889741917667160" />
         <var name="toolbar" id="7522889741917667165" />
       </scope>
-      <scope id="7522889741917907905" at="52,45,57,54" />
-      <scope id="7522889741917394843" at="29,0,35,0" />
-      <scope id="7522889741917667156" at="40,61,46,9" />
-      <scope id="7522889741917907903" at="52,0,59,0">
+      <scope id="7522889741917907903" at="55,0,62,0">
         <var name="m" id="7522889741917912529" />
       </scope>
-      <scope id="7522889741917483409" at="36,58,48,56" />
-      <scope id="7522889741917443423" at="35,34,50,51" />
-      <scope id="7522889741917443421" at="35,0,52,0" />
-      <unit id="7522889741917394843" at="22,0,63,0" name="jetbrains.mps.java.workbench.actions.ClasspathExplorer_Tool" />
+      <scope id="7522889741917667156" at="41,61,49,9" />
+      <scope id="7522889741917483409" at="37,58,51,56" />
+      <scope id="7522889741917443423" at="36,34,53,51" />
+      <scope id="7522889741917443421" at="36,0,55,0" />
+      <unit id="7522889741917394843" at="23,0,66,0" name="jetbrains.mps.java.workbench.actions.ClasspathExplorer_Tool" />
     </file>
     <file name="Workbench_ProjectPlugin.java">
       <node id="7522889741917394843" at="16,76,17,81" concept="2" />

@@ -18,6 +18,7 @@ package jetbrains.mps.ide.tools;
 import com.intellij.ide.actions.ActivateToolWindowAction;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.KeyboardShortcut;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.keymap.Keymap;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.DumbService;
@@ -106,7 +107,7 @@ public abstract class BaseTool {
    * @param setActive determine if tool window must be just opened or additionally became active and attract focus
    */
   public void openToolLater(final boolean setActive) {
-    ThreadUtils.runInUIThreadNoWait(() -> openTool(setActive));
+    ApplicationManager.getApplication().invokeLater(() -> openTool(setActive));
   }
 
   /**
