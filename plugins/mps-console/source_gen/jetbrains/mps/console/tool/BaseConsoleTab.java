@@ -34,6 +34,7 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.ide.ThreadUtils;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.wm.IdeFocusManager;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -245,12 +246,14 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   }
 
   public void selectNode(final SNode nodeToSelect) {
-    myTool.getToolWindow().activate(() -> myProject.getRepository().getModelAccess().runReadAction(() -> {
-      myEditor.selectNode(nodeToSelect);
-      getEditorComponent().ensureSelectionVisible();
-      IdeFocusManager.getInstance(myProject.getProject()).requestFocus(myEditor, false);
-    }));
-    myTool.selectTab(this);
+    ApplicationManager.getApplication().invokeLater(() -> {
+      myTool.getToolWindow().activate(() -> myProject.getRepository().getModelAccess().runReadAction(() -> {
+        myEditor.selectNode(nodeToSelect);
+        getEditorComponent().ensureSelectionVisible();
+        IdeFocusManager.getInstance(myProject.getProject()).requestFocus(myEditor, false);
+      }));
+      myTool.selectTab(BaseConsoleTab.this);
+    });
   }
 
   protected void addBuiltInImports() {
