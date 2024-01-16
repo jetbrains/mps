@@ -503,7 +503,7 @@
       <property role="3fwGa$" value="IntelliJ" />
       <property role="TZNOO" value="11" />
       <node concept="3qWCbU" id="6Za9XhmfePk" role="2_Ic$A">
-        <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*, **/*.json" />
+        <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*, **/*.json" />
       </node>
     </node>
     <node concept="PiPfp" id="1s0vtrx9Ne8" role="3989C9">
