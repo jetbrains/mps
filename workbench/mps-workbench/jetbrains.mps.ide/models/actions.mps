@@ -47764,7 +47764,7 @@
   <node concept="sE7Ow" id="2hI9OxsGUC7">
     <property role="TrG5h" value="ShowQuickDocumentation" />
     <property role="72QZ$" value="true" />
-    <property role="2uzpH1" value="Show Documentation Info" />
+    <property role="2uzpH1" value="Show Quick Documentation" />
     <property role="3GE5qa" value="documentation" />
     <property role="1rBW0U" value="true" />
     <node concept="1DS2jV" id="7QQz0$2Iwah" role="1NuT2Z">

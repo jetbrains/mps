@@ -29,7 +29,7 @@ public class ShowQuickDocumentation_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public ShowQuickDocumentation_Action() {
-    super("Show Documentation Info", "", ICON);
+    super("Show Quick Documentation", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setExecuteOutsideCommand(true);
     updateInBackground(true);
