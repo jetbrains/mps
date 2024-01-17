@@ -61,8 +61,10 @@ public class MPSDocumentationPopupUI implements Disposable {
     Disposer.register(this, myUI);
 
     List<AnAction> secondaryActions = new ArrayList<>();
-    secondaryActions.add(new ShowToolbarAction("Show Toolbar"));
-    secondaryActions.add(new OpenInToolwindowAction());
+    OpenInToolwindowAction openInToolwindowAction = new OpenInToolwindowAction();
+    ShowToolbarAction showToolbarAction = new ShowToolbarAction("Show Toolbar");
+    secondaryActions.add(showToolbarAction);
+    secondaryActions.add(openInToolwindowAction);
     DefaultActionGroup toolbarActionGroup = new DefaultActionGroup();
     for (AnAction secondaryAction : secondaryActions) {
       toolbarActionGroup.addAction(secondaryAction).setAsSecondary(true);
@@ -113,6 +115,9 @@ public class MPSDocumentationPopupUI implements Disposable {
     layeredPane.setLayer(myCorner, JLayeredPane.PALETTE_LAYER);
     layeredPane.add(myCorner);
     myComponent.add(layeredPane, BorderLayout.CENTER);
+
+    openInToolwindowAction.registerCustomShortcutSet(KeymapUtil.getActiveKeymapShortcuts(IdeActions.ACTION_QUICK_JAVADOC), myComponent, this);
+
     showToolbar(myToolbarSelected);
   }
 
@@ -157,7 +162,6 @@ public class MPSDocumentationPopupUI implements Disposable {
   private final class OpenInToolwindowAction extends AnAction {
     OpenInToolwindowAction() {
       super("Open in Documentation Tool Window", null, null);
-      registerCustomShortcutSet(KeymapUtil.getActiveKeymapShortcuts(IdeActions.ACTION_QUICK_JAVADOC), myComponent, MPSDocumentationPopupUI.this);
     }
 
     @Override

@@ -68,7 +68,7 @@ public class MPSDocumentationToolWindowManager {
   }
 
   private void makeVisible() {
-    myToolWindow.openTool(true);
+    myToolWindow.openTool(false);
   }
 
   public boolean isVisible() {

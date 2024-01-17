@@ -51,12 +51,23 @@ public class MPSDocumentationManager {
   
   /**
    * Show quick documentation: either as a popup or in the tool window.
-   * Calling this method results in the focus being transferred to the documentation UI component.
+   * Calling this method results in focus being transferred to the documentation UI component.
    */
-  public void showQuickDocumentation(Frame owner, Project project, Point location, String doc) {
+  public void showQuickDocumentation(Frame owner, Project project, Point location, String docMessage) {
+    if (docMessage == null) {
+      LOG.warning("null doc message specified");
+      return;
+    }
     cancelAll();
 
-    MPSDocumentationPopupUI popupUI = new MPSDocumentationPopupUI(project, new MPSDocumentationUI(doc));
+    MPSDocumentationUI documentationUI = new MPSDocumentationUI(docMessage);
+    if (docMessage != null && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
+      // redirect to the tool window
+      MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(documentationUI);
+      return;
+    }
+
+    MPSDocumentationPopupUI popupUI = new MPSDocumentationPopupUI(project, documentationUI);
     ComponentPopupBuilder builder = JBPopupFactory.getInstance()
                                                   .createComponentPopupBuilder(popupUI.getComponent(), popupUI.getPreferableFocusComponent())
                                                   .setProject(project)
@@ -71,6 +82,17 @@ public class MPSDocumentationManager {
     myQuickDocPopupReference = new WeakReference<>(popup);
   }
 
+  /**
+   * Show hint popup: a joint popup containing the quick doc and the hint components.
+   * <p>
+   * In case the documentation tool window is already open, don't show the quick doc part,
+   * instead update the tool's contents.
+   * <p>
+   * Does nothing if both {@code docMessage} and {@code tooltipRenderer} are null.
+   * <p>
+   * The code in {@code continuation} is called after the popup window has been created, so that
+   * the caller has a chance to install appropriate callbacks, etc. 
+   */
   public void showHintPopup(Project project, Editor editor, String docMessage, TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup, RelativePoint showPoint, Consumer<AbstractPopup> continuation) {
     cancelProgress();
     ProgressManager.getInstance().executeProcessUnderProgress(() -> {
