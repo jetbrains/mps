@@ -554,46 +554,9 @@
                 <node concept="3clFb_" id="4CjKsJms81D" role="jymVt">
                   <property role="TrG5h" value="getComponent" />
                   <node concept="3clFbS" id="4CjKsJms81G" role="3clF47">
-                    <node concept="3cpWs8" id="4CjKsJms81H" role="3cqZAp">
-                      <node concept="3cpWsn" id="4CjKsJms81I" role="3cpWs9">
-                        <property role="TrG5h" value="panel" />
-                        <node concept="2ShNRf" id="4CjKsJms81K" role="33vP2m">
-                          <node concept="1pGfFk" id="4CjKsJms81L" role="2ShVmc">
-                            <ref role="37wK5l" to="dxuu:~JPanel.&lt;init&gt;(java.awt.LayoutManager)" resolve="JPanel" />
-                            <node concept="2ShNRf" id="4CjKsJms81M" role="37wK5m">
-                              <node concept="1pGfFk" id="4CjKsJms81N" role="2ShVmc">
-                                <ref role="37wK5l" to="z60i:~GridLayout.&lt;init&gt;(int,int)" resolve="GridLayout" />
-                                <node concept="3cmrfG" id="4CjKsJms81O" role="37wK5m">
-                                  <property role="3cmrfH" value="1" />
-                                </node>
-                                <node concept="3cmrfG" id="4CjKsJms81P" role="37wK5m">
-                                  <property role="3cmrfH" value="0" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3uibUv" id="4CjKsJms81J" role="1tU5fm">
-                          <ref role="3uigEE" to="dxuu:~JPanel" resolve="JPanel" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3clFbF" id="4CjKsJms81Q" role="3cqZAp">
-                      <node concept="2OqwBi" id="4CjKsJms81R" role="3clFbG">
-                        <node concept="37vLTw" id="3GM_nagTrp5" role="2Oq$k0">
-                          <ref role="3cqZAo" node="4CjKsJms81I" resolve="panel" />
-                        </node>
-                        <node concept="liA8E" id="4CjKsJms81T" role="2OqNvi">
-                          <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
-                          <node concept="37vLTw" id="3GM_nagTuMr" role="37wK5m">
-                            <ref role="3cqZAo" node="4CjKsJms81w" resolve="optimizeImportsCheckBox" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
                     <node concept="3cpWs6" id="4CjKsJms81V" role="3cqZAp">
                       <node concept="37vLTw" id="3GM_nagTub0" role="3cqZAk">
-                        <ref role="3cqZAo" node="4CjKsJms81I" resolve="panel" />
+                        <ref role="3cqZAo" node="4CjKsJms81w" resolve="optimizeImportsCheckBox" />
                       </node>
                     </node>
                   </node>

@@ -11,8 +11,6 @@ import com.intellij.openapi.vcs.VcsConfiguration;
 import com.intellij.openapi.vcs.ui.RefreshableOnComponent;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -54,9 +52,7 @@ public class OptimizeImportsCheckinHandler extends CheckinHandler {
     return new RefreshableOnComponent() {
       @Override
       public JComponent getComponent() {
-        JPanel panel = new JPanel(new GridLayout(1, 0));
-        panel.add(optimizeImportsCheckBox);
-        return panel;
+        return optimizeImportsCheckBox;
       }
       @Override
       public void restoreState() {

@@ -2969,46 +2969,9 @@
                   <property role="TrG5h" value="getComponent" />
                   <node concept="3Tm1VV" id="3etVqSRKzBr" role="1B3o_S" />
                   <node concept="3clFbS" id="3etVqSRKzBs" role="3clF47">
-                    <node concept="3cpWs8" id="3etVqSRKzBt" role="3cqZAp">
-                      <node concept="3cpWsn" id="3etVqSRKzBu" role="3cpWs9">
-                        <property role="TrG5h" value="panel" />
-                        <node concept="2ShNRf" id="3etVqSRKzBv" role="33vP2m">
-                          <node concept="1pGfFk" id="3etVqSRKzBw" role="2ShVmc">
-                            <ref role="37wK5l" to="dxuu:~JPanel.&lt;init&gt;(java.awt.LayoutManager)" resolve="JPanel" />
-                            <node concept="2ShNRf" id="3etVqSRKzBx" role="37wK5m">
-                              <node concept="1pGfFk" id="3etVqSRKzBy" role="2ShVmc">
-                                <ref role="37wK5l" to="z60i:~GridLayout.&lt;init&gt;(int,int)" resolve="GridLayout" />
-                                <node concept="3cmrfG" id="3etVqSRKzBz" role="37wK5m">
-                                  <property role="3cmrfH" value="1" />
-                                </node>
-                                <node concept="3cmrfG" id="3etVqSRKzB$" role="37wK5m">
-                                  <property role="3cmrfH" value="0" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                        <node concept="3uibUv" id="3etVqSRKzB_" role="1tU5fm">
-                          <ref role="3uigEE" to="dxuu:~JPanel" resolve="JPanel" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3clFbF" id="3etVqSRKzBA" role="3cqZAp">
-                      <node concept="2OqwBi" id="3etVqSRKzBB" role="3clFbG">
-                        <node concept="37vLTw" id="3GM_nagTAiC" role="2Oq$k0">
-                          <ref role="3cqZAo" node="3etVqSRKzBu" resolve="panel" />
-                        </node>
-                        <node concept="liA8E" id="3etVqSRKzBD" role="2OqNvi">
-                          <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component)" resolve="add" />
-                          <node concept="37vLTw" id="3GM_nagTwkr" role="37wK5m">
-                            <ref role="3cqZAo" node="3etVqSRKzBg" resolve="checkModelCheckBox" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
                     <node concept="3cpWs6" id="3etVqSRKzBF" role="3cqZAp">
                       <node concept="37vLTw" id="3GM_nagTBSR" role="3cqZAk">
-                        <ref role="3cqZAo" node="3etVqSRKzBu" resolve="panel" />
+                        <ref role="3cqZAo" node="3etVqSRKzBg" resolve="checkModelCheckBox" />
                       </node>
                     </node>
                   </node>

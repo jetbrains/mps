@@ -325,115 +325,111 @@
   </root>
   <root nodeRef="r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199793465778">
     <file name="ModelCheckerCheckinHandler.java">
-      <node id="3719390199793465779" at="44,0,45,0" concept="6" trace="myProject" />
-      <node id="3719390199793465782" at="45,0,46,0" concept="6" trace="myPanel" />
-      <node id="3719390199793465789" at="46,81,47,24" concept="5" />
-      <node id="3719390199793465793" at="47,24,48,20" concept="5" />
-      <node id="3719390199793465807" at="52,70,53,92" concept="11" />
-      <node id="3719390199793465821" at="56,40,57,56" concept="11" />
-      <node id="3719390199793465830" at="57,56,58,38" concept="5" />
-      <node id="3719390199793465835" at="58,38,59,21" concept="12" />
-      <node id="3719390199793465843" at="62,34,63,97" concept="5" />
-      <node id="3719390199793465853" at="66,31,67,97" concept="5" />
-      <node id="3719390199793465876" at="73,70,74,48" concept="12" />
-      <node id="3719390199793465878" at="75,5,76,0" concept="14" />
-      <node id="704191985097397738" at="76,0,77,75" concept="11" />
-      <node id="704191985097024630" at="77,75,78,96" concept="11" />
-      <node id="704191985097100282" at="78,96,79,37" concept="11" />
-      <node id="704191985097152944" at="80,63,81,54" concept="5" />
-      <node id="704191985098303586" at="81,54,82,53" concept="11" />
-      <node id="704191985097484312" at="83,86,84,123" concept="11" />
-      <node id="704191985098133284" at="84,123,85,84" concept="11" />
-      <node id="704191985098100388" at="85,84,86,104" concept="11" />
-      <node id="704191985098088796" at="86,104,87,0" concept="14" />
-      <node id="704191985098283737" at="87,0,88,28" concept="5" />
-      <node id="704191985097999558" at="88,28,89,95" concept="13" />
-      <node id="704191985098046046" at="89,95,90,66" concept="13" />
-      <node id="704191985097668341" at="90,66,91,104" concept="11" />
-      <node id="704191985098363813" at="91,104,92,22" concept="5" />
-      <node id="704191985097328128" at="92,22,93,97" concept="5" />
-      <node id="704191985098447331" at="93,97,94,18" concept="5" />
-      <node id="704191985097868288" at="95,9,96,123" concept="5" />
-      <node id="704191985097370358" at="97,12,98,37" concept="5" />
-      <node id="3719390199793465879" at="99,5,100,90" concept="12" />
-      <node id="7462343251447075812" at="102,100,103,57" concept="11" />
-      <node id="7540523421682544193" at="103,57,104,91" concept="11" />
-      <node id="704191985097744709" at="106,63,107,42" concept="12" />
-      <node id="3719390199793465947" at="117,97,118,71" concept="12" />
-      <node id="704191985097367227" at="97,10,99,5" concept="1" />
-      <node id="3719390199793465939" at="113,0,115,0" concept="3" trace="ModelCheckerCheckinHandlerFactory#()V" />
-      <node id="3719390199793465870" at="72,54,75,5" concept="9" />
-      <node id="704191985097744709" at="106,0,109,0" concept="10" trace="invoke#(Lcom/intellij/openapi/vfs/VirtualFile;)Ljava/lang/Boolean;" />
-      <node id="3719390199793465785" at="46,0,50,0" concept="3" trace="ModelCheckerCheckinHandler#(Lcom/intellij/openapi/project/Project;Lcom/intellij/openapi/vcs/CheckinProjectPanel;)V" />
-      <node id="3719390199793465839" at="61,0,65,0" concept="10" trace="restoreState#()V" />
-      <node id="3719390199793465851" at="65,0,69,0" concept="10" trace="saveState#()V" />
-      <node id="7540523421682544197" at="104,91,109,105" concept="12" />
-      <node id="3719390199793465945" at="115,0,120,0" concept="10" trace="createHandler#(Lcom/intellij/openapi/vcs/CheckinProjectPanel;Lcom/intellij/openapi/vcs/changes/CommitContext;)Lcom/intellij/openapi/vcs/checkin/CheckinHandler;" />
-      <node id="3719390199793465818" at="55,0,61,0" concept="10" trace="getComponent#()Ljavax/swing/JComponent;" />
-      <node id="704191985097766640" at="102,0,111,0" concept="16" trace="getModelsByFiles#(Ljetbrains/mps/project/MPSProject;Ljava/lang/Iterable;)Ljava/util/List;" />
-      <node id="704191985097788812" at="82,53,95,9" concept="11" />
-      <node id="3719390199793465813" at="53,92,69,6" concept="12" />
-      <node id="704191985097079112" at="79,37,99,5" concept="9" />
-      <node id="3719390199793465801" at="50,0,71,0" concept="10" trace="getBeforeCheckinConfigurationPanel#()Lcom/intellij/openapi/vcs/ui/RefreshableOnComponent;" />
-      <node id="3719390199793465868" at="71,0,102,0" concept="10" trace="beforeCheckin#()Lcom/intellij/openapi/vcs/checkin/CheckinHandler/ReturnResult;" />
-      <scope id="3719390199793465940" at="113,48,113,48" />
-      <scope id="3719390199793465842" at="62,34,63,97" />
-      <scope id="3719390199793465852" at="66,31,67,97" />
-      <scope id="3719390199793465875" at="73,70,74,48" />
-      <scope id="704191985097367228" at="97,12,98,37" />
-      <scope id="704191985097744709" at="106,63,107,42" />
-      <scope id="3719390199793465946" at="117,97,118,71" />
-      <scope id="3719390199793465788" at="46,81,48,20" />
-      <scope id="3719390199793465939" at="113,0,115,0" />
-      <scope id="3719390199793465820" at="56,40,59,21">
-        <var name="panel" id="3719390199793465822" />
-      </scope>
-      <scope id="704191985097744709" at="106,0,109,0">
+      <node id="3719390199793465779" at="42,0,43,0" concept="6" trace="myProject" />
+      <node id="3719390199793465782" at="43,0,44,0" concept="6" trace="myPanel" />
+      <node id="3719390199793465789" at="44,81,45,24" concept="5" />
+      <node id="3719390199793465793" at="45,24,46,20" concept="5" />
+      <node id="3719390199793465807" at="50,70,51,92" concept="11" />
+      <node id="3719390199793465835" at="54,40,55,34" concept="12" />
+      <node id="3719390199793465843" at="58,34,59,97" concept="5" />
+      <node id="3719390199793465853" at="62,31,63,97" concept="5" />
+      <node id="3719390199793465876" at="69,70,70,48" concept="12" />
+      <node id="3719390199793465878" at="71,5,72,0" concept="14" />
+      <node id="704191985097397738" at="72,0,73,75" concept="11" />
+      <node id="704191985097024630" at="73,75,74,96" concept="11" />
+      <node id="704191985097100282" at="74,96,75,37" concept="11" />
+      <node id="704191985097152944" at="76,63,77,54" concept="5" />
+      <node id="704191985098303586" at="77,54,78,53" concept="11" />
+      <node id="704191985097484312" at="79,86,80,123" concept="11" />
+      <node id="704191985098133284" at="80,123,81,84" concept="11" />
+      <node id="704191985098100388" at="81,84,82,104" concept="11" />
+      <node id="704191985098088796" at="82,104,83,0" concept="14" />
+      <node id="704191985098283737" at="83,0,84,28" concept="5" />
+      <node id="704191985097999558" at="84,28,85,95" concept="13" />
+      <node id="704191985098046046" at="85,95,86,66" concept="13" />
+      <node id="704191985097668341" at="86,66,87,104" concept="11" />
+      <node id="704191985098363813" at="87,104,88,22" concept="5" />
+      <node id="704191985097328128" at="88,22,89,97" concept="5" />
+      <node id="704191985098447331" at="89,97,90,18" concept="5" />
+      <node id="704191985097868288" at="91,9,92,123" concept="5" />
+      <node id="704191985097370358" at="93,12,94,37" concept="5" />
+      <node id="3719390199793465879" at="95,5,96,90" concept="12" />
+      <node id="7462343251447075812" at="98,100,99,57" concept="11" />
+      <node id="7540523421682544193" at="99,57,100,91" concept="11" />
+      <node id="704191985097744709" at="102,63,103,42" concept="12" />
+      <node id="3719390199793465947" at="113,97,114,71" concept="12" />
+      <node id="704191985097367227" at="93,10,95,5" concept="1" />
+      <node id="3719390199793465939" at="109,0,111,0" concept="3" trace="ModelCheckerCheckinHandlerFactory#()V" />
+      <node id="3719390199793465870" at="68,54,71,5" concept="9" />
+      <node id="704191985097744709" at="102,0,105,0" concept="10" trace="invoke#(Lcom/intellij/openapi/vfs/VirtualFile;)Ljava/lang/Boolean;" />
+      <node id="3719390199793465785" at="44,0,48,0" concept="3" trace="ModelCheckerCheckinHandler#(Lcom/intellij/openapi/project/Project;Lcom/intellij/openapi/vcs/CheckinProjectPanel;)V" />
+      <node id="3719390199793465818" at="53,0,57,0" concept="10" trace="getComponent#()Ljavax/swing/JComponent;" />
+      <node id="3719390199793465839" at="57,0,61,0" concept="10" trace="restoreState#()V" />
+      <node id="3719390199793465851" at="61,0,65,0" concept="10" trace="saveState#()V" />
+      <node id="7540523421682544197" at="100,91,105,105" concept="12" />
+      <node id="3719390199793465945" at="111,0,116,0" concept="10" trace="createHandler#(Lcom/intellij/openapi/vcs/CheckinProjectPanel;Lcom/intellij/openapi/vcs/changes/CommitContext;)Lcom/intellij/openapi/vcs/checkin/CheckinHandler;" />
+      <node id="704191985097766640" at="98,0,107,0" concept="16" trace="getModelsByFiles#(Ljetbrains/mps/project/MPSProject;Ljava/lang/Iterable;)Ljava/util/List;" />
+      <node id="704191985097788812" at="78,53,91,9" concept="11" />
+      <node id="3719390199793465813" at="51,92,65,6" concept="12" />
+      <node id="3719390199793465801" at="48,0,67,0" concept="10" trace="getBeforeCheckinConfigurationPanel#()Lcom/intellij/openapi/vcs/ui/RefreshableOnComponent;" />
+      <node id="704191985097079112" at="75,37,95,5" concept="9" />
+      <node id="3719390199793465868" at="67,0,98,0" concept="10" trace="beforeCheckin#()Lcom/intellij/openapi/vcs/checkin/CheckinHandler/ReturnResult;" />
+      <scope id="3719390199793465940" at="109,48,109,48" />
+      <scope id="3719390199793465820" at="54,40,55,34" />
+      <scope id="3719390199793465842" at="58,34,59,97" />
+      <scope id="3719390199793465852" at="62,31,63,97" />
+      <scope id="3719390199793465875" at="69,70,70,48" />
+      <scope id="704191985097367228" at="93,12,94,37" />
+      <scope id="704191985097744709" at="102,63,103,42" />
+      <scope id="3719390199793465946" at="113,97,114,71" />
+      <scope id="3719390199793465788" at="44,81,46,20" />
+      <scope id="3719390199793465939" at="109,0,111,0" />
+      <scope id="704191985097744709" at="102,0,105,0">
         <var name="virtualFile" id="704191985097744709" />
       </scope>
-      <scope id="3719390199793465785" at="46,0,50,0">
+      <scope id="3719390199793465785" at="44,0,48,0">
         <var name="panel" id="3719390199793465799" />
         <var name="project" id="3719390199793465786" />
       </scope>
-      <scope id="3719390199793465839" at="61,0,65,0" />
-      <scope id="3719390199793465851" at="65,0,69,0" />
-      <scope id="3719390199793465945" at="115,0,120,0">
+      <scope id="3719390199793465818" at="53,0,57,0" />
+      <scope id="3719390199793465839" at="57,0,61,0" />
+      <scope id="3719390199793465851" at="61,0,65,0" />
+      <scope id="3719390199793465945" at="111,0,116,0">
         <var name="commitContext" id="3719390199793465959" />
         <var name="panel" id="3719390199793465955" />
       </scope>
-      <scope id="3719390199793465818" at="55,0,61,0" />
-      <scope id="7540523421682544192" at="102,100,109,105">
+      <scope id="7540523421682544192" at="98,100,105,105">
         <var name="fs" id="7462343251447075813" />
         <var name="ft" id="7540523421682544194" />
       </scope>
-      <scope id="704191985097766640" at="102,0,111,0">
+      <scope id="704191985097766640" at="98,0,107,0">
         <var name="files" id="7540523421682544228" />
         <var name="mpsProject" id="704191985097706113" />
       </scope>
-      <scope id="704191985097424097" at="83,86,94,18">
+      <scope id="704191985097424097" at="79,86,90,18">
         <var name="mrl" id="704191985097484313" />
         <var name="pi" id="704191985098133285" />
         <var name="pm" id="704191985098100389" />
         <var name="projectModels" id="704191985097668342" />
       </scope>
-      <scope id="704191985097079114" at="80,63,96,123">
+      <scope id="3719390199793465806" at="50,70,65,6">
+        <var name="checkModelCheckBox" id="3719390199793465808" />
+      </scope>
+      <scope id="704191985097079114" at="76,63,92,123">
         <var name="r" id="704191985097788813" />
         <var name="title" id="704191985098303587" />
       </scope>
-      <scope id="3719390199793465806" at="52,70,69,6">
-        <var name="checkModelCheckBox" id="3719390199793465808" />
-      </scope>
-      <scope id="3719390199793465801" at="50,0,71,0" />
-      <scope id="3719390199793465869" at="72,54,100,90">
+      <scope id="3719390199793465801" at="48,0,67,0" />
+      <scope id="3719390199793465869" at="68,54,96,90">
         <var name="modelsToCheck" id="704191985097100285" />
         <var name="modelsToCommit" id="704191985097024631" />
         <var name="mpsProject" id="704191985097397741" />
       </scope>
-      <scope id="3719390199793465868" at="71,0,102,0" />
-      <unit id="704191985097744709" at="105,50,109,5" name="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerCheckinHandler$2" />
-      <unit id="3719390199793465938" at="112,0,121,0" name="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerCheckinHandler$ModelCheckerCheckinHandlerFactory" />
-      <unit id="3719390199793465816" at="54,15,69,5" name="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerCheckinHandler$1" />
-      <unit id="3719390199793465778" at="42,0,122,0" name="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerCheckinHandler" />
+      <scope id="3719390199793465868" at="67,0,98,0" />
+      <unit id="704191985097744709" at="101,50,105,5" name="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerCheckinHandler$2" />
+      <unit id="3719390199793465938" at="108,0,117,0" name="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerCheckinHandler$ModelCheckerCheckinHandlerFactory" />
+      <unit id="3719390199793465816" at="52,15,65,5" name="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerCheckinHandler$1" />
+      <unit id="3719390199793465778" at="40,0,118,0" name="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerCheckinHandler" />
     </file>
   </root>
   <root nodeRef="r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199793466714">

@@ -10,8 +10,6 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vcs.ui.RefreshableOnComponent;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.List;
@@ -54,9 +52,7 @@ public class ModelCheckerCheckinHandler extends CheckinHandler {
     return new RefreshableOnComponent() {
       @Override
       public JComponent getComponent() {
-        JPanel panel = new JPanel(new GridLayout(1, 0));
-        panel.add(checkModelCheckBox);
-        return panel;
+        return checkModelCheckBox;
       }
       @Override
       public void restoreState() {
