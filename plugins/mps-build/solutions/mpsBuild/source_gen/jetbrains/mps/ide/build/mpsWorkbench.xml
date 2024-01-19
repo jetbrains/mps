@@ -344,9 +344,6 @@
       <fileset dir="${mps_home}/workbench/mps-ui/source_gen">
         <include name="jetbrains/mps/ide/platform/actions/PlatformActions.xml" />
       </fileset>
-      <fileset dir="${mps_home}/workbench/mps-ui/source/">
-        <include name="**/*.json" />
-      </fileset>
       <fileset dir="${mps_home}/workbench/mps-editor/source_gen">
         <include name="jetbrains/mps/ide/editor/actions/MPSEditorActions.xml" />
       </fileset>
