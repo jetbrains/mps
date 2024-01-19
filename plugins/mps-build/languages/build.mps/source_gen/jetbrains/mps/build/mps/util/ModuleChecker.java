@@ -123,7 +123,7 @@ public final class ModuleChecker {
       SPropertyOperations.assign(myModule, PROPS.compact$3xo1, false);
     }
 
-    if (getLoadedModule() == null) {
+    if (myModuleDescriptor == null || getLoadedModule() == null) {
       report(String.format("can't load module %s from %s", SPropertyOperations.getString(myModule, PROPS.name$MnvL), SLinkOperations.getTarget(myModule, LINKS.path$iYKB)));
       return;
     }
