@@ -426,7 +426,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin.tests.misc">
-      <fileset dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.misc/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.misc/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -509,7 +509,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin.tests.editor">
-      <fileset dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/plugins/mps-kotlin/solutions/kotlin.tests.editor/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

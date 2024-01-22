@@ -181,7 +181,7 @@
       <property role="3fwGa$" value="IntelliJ" />
       <property role="TZNOO" value="11" />
       <node concept="3qWCbU" id="5yMuYWFN8Pp" role="2_Ic$A">
-        <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+        <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, ¡**/*.txt, **/*.ico, **/*.zip, **/*.info" />
       </node>
     </node>
     <node concept="m$_wf" id="4FBizC0NEuI" role="3989C9">

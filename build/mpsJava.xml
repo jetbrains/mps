@@ -402,7 +402,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.java.workbench">
-      <fileset dir="${mps_home}/plugins/mps-java/workbench/modules/jetbrains.mps.java.workbench/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-java/workbench/modules/jetbrains.mps.java.workbench/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

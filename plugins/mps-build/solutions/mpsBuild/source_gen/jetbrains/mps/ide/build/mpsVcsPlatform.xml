@@ -648,8 +648,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/vcs-core">
-      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/mergehints.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/mergehints.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -701,7 +701,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/vcs-platform">
-      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -766,7 +766,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.ide.vcs.modelmetadata">
-      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-platform/languages/modelmetadata/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-platform/languages/modelmetadata/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

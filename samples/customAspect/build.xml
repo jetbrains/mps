@@ -683,7 +683,7 @@
       <classpath refid="path.jdk.classpath" />
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.sampleLanguage.sandbox">
-      <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage/sandbox/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage/sandbox/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, ¡**/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -737,7 +737,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation.pluginSolution">
-      <fileset dir="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.pluginSolution/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.pluginSolution/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, ¡**/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -799,7 +799,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.sampleLanguage">
-      <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.sampleLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, ¡**/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -868,7 +868,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation">
-      <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.docLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.docLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, ¡**/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -929,7 +929,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation#2897519568668508166">
-      <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.docLanguage/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/languages/jetbrains.mps.samples.customAspect.docLanguage/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, ¡**/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -962,7 +962,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.samples.customAspect.documentation.runtime">
-      <fileset dir="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/solutions/jetbrains.mps.samples.customAspect.documentation.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, ¡**/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

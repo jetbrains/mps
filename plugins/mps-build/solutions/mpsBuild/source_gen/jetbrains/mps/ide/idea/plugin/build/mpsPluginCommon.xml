@@ -129,8 +129,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-common">
-      <fileset dir="${mps_home}/IdeaPlugin/mps-core/common/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/IdeaPlugin/mps-core/common/resources" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/IdeaPlugin/mps-core/common/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/IdeaPlugin/mps-core/common/resources" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
 </project>

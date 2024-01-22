@@ -210,9 +210,9 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-plugin-tests">
-      <fileset dir="${mps_home}/IdeaPlugin/mps-core/testSrc" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/IdeaPlugin/mps-java/testSrc" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/testbench/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/IdeaPlugin/mps-core/testSrc" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/IdeaPlugin/mps-java/testSrc" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/testbench/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -272,7 +272,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-jps-plugin-tests">
-      <fileset dir="${mps_home}/IdeaPlugin/mps-core/jps-plugin/testSrc" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/IdeaPlugin/mps-core/jps-plugin/testSrc" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
 </project>

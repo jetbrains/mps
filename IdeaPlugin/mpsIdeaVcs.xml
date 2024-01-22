@@ -177,7 +177,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-vcs-idea">
-      <fileset dir="${mps_home}/IdeaPlugin/mps-vcs/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/IdeaPlugin/mps-vcs/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
 </project>

@@ -149,7 +149,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-core-jps-plugin-j8">
-      <fileset dir="${mps_home}/IdeaPlugin/mps-core/jps-plugin-j8/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/IdeaPlugin/mps-core/jps-plugin-j8/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -200,7 +200,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-java-jps-plugin-j8">
-      <fileset dir="${mps_home}/IdeaPlugin/mps-java/jps-plugin-j8/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/IdeaPlugin/mps-java/jps-plugin-j8/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
 </project>

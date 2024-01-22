@@ -622,8 +622,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/analyzers.test">
-      <fileset dir="${basedir}/testbench/modules/testDataFlow/solutions/analyzers.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/testbench/modules/testDataFlow/solutions/analyzers.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testDataFlow/solutions/analyzers.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testDataFlow/solutions/analyzers.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -662,7 +662,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.dataflow.test">
-      <fileset dir="${basedir}/testbench/modules/testDataFlow/solutions/lang.rt.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testDataFlow/solutions/lang.rt.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -724,7 +724,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testExtendingAnalyzer">
-      <fileset dir="${basedir}/testbench/modules/testDataFlow/languages/testExtendingAnalyzer/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testDataFlow/languages/testExtendingAnalyzer/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -785,7 +785,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.testCustomDataFlow">
-      <fileset dir="${basedir}/testbench/modules/testDataFlow/languages/testCustomDataFlow/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testDataFlow/languages/testCustomDataFlow/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -845,7 +845,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testCustomAnalyzer">
-      <fileset dir="${basedir}/testbench/modules/testDataFlow/languages/testCustomAnalyzer/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testDataFlow/languages/testCustomAnalyzer/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

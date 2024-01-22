@@ -346,7 +346,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-java-core">
-      <fileset dir="${mps_home}/plugins/mps-java/core/modules/jetbrains.mps.java.core/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-java/core/modules/jetbrains.mps.java.core/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

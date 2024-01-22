@@ -1138,7 +1138,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.unittest">
-      <fileset dir="${basedir}/testbench/testsolutions/bl.unittest/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/bl.unittest/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1213,7 +1213,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.closures.unittest">
-      <fileset dir="${basedir}/testbench/testsolutions/bl.closures.unittest/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/bl.closures.unittest/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1266,7 +1266,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/closures.test">
-      <fileset dir="${basedir}/testbench/testsolutions/closures.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/closures.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1346,8 +1346,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.closures.test">
-      <fileset dir="${basedir}/testbench/testsolutions/testClosures/solutions/jetbrains.mps.baseLanguage.closures.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/testbench/testsolutions/testClosures/solutions/jetbrains.mps.baseLanguage.closures.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testClosures/solutions/jetbrains.mps.baseLanguage.closures.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testClosures/solutions/jetbrains.mps.baseLanguage.closures.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1428,7 +1428,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.testRefs">
-      <fileset dir="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1496,7 +1496,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.testRefs.testLang">
-      <fileset dir="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1560,7 +1560,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.testRefs.testLang#01">
-      <fileset dir="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1636,7 +1636,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguageInternal.test">
-      <fileset dir="${basedir}/testbench/testsolutions/bl.internal.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/bl.internal.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1711,7 +1711,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.doubleDispatch.test">
-      <fileset dir="${basedir}/testbench/testsolutions/bl.doubleDispatch.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/bl.doubleDispatch.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1744,7 +1744,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.regexp.unittest">
-      <fileset dir="${basedir}/testbench/testsolutions/regexp.unittest/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/regexp.unittest/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1782,7 +1782,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.tuples.test">
-      <fileset dir="${basedir}/testbench/testsolutions/bl.tuples.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/bl.tuples.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1836,7 +1836,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/collections_unittest">
-      <fileset dir="${basedir}/testbench/testsolutions/collections_unittest/tests_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/collections_unittest/tests_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1918,8 +1918,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/internalCollections.test">
-      <fileset dir="${basedir}/testbench/testsolutions/bl.internalCollections.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/testbench/testsolutions/bl.internalCollections.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/bl.internalCollections.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/bl.internalCollections.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1990,7 +1990,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/collections_trove.test">
-      <fileset dir="${basedir}/testbench/testsolutions/collections_trove.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/collections_trove.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

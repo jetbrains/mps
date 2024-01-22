@@ -147,7 +147,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/vcs-ide">
-      <fileset dir="${mps_home}/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
 </project>

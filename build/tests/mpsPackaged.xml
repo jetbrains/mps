@@ -460,7 +460,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testPackagedLanguage">
-      <fileset dir="${basedir}/testbench/modules/testPackaged/testPackagedLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testPackaged/testPackagedLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -545,7 +545,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testPackagedLanguage.test">
-      <fileset dir="${basedir}/testbench/modules/testPackaged/testPackagedLanguage.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testPackaged/testPackagedLanguage.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

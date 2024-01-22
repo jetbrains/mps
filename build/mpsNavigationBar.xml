@@ -138,7 +138,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/navbar">
-      <fileset dir="${plugin_home}/sources" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${plugin_home}/sources" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
 </project>

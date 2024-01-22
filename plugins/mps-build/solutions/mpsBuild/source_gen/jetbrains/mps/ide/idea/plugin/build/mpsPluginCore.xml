@@ -204,7 +204,7 @@
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-plugin-core">
       <fileset dir="${mps_home}/IdeaPlugin/mps-core/resources" />
-      <fileset dir="${mps_home}/IdeaPlugin/mps-core/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/IdeaPlugin/mps-core/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
 </project>

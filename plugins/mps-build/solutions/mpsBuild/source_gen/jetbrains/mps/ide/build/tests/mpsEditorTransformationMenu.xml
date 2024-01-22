@@ -1896,7 +1896,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.testMetaLanguage">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.testMetaLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.testMetaLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -1969,7 +1969,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.testMetaLanguage#3415354185901915849">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.testMetaLanguage/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.testMetaLanguage/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2045,7 +2045,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.testLanguage">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2121,7 +2121,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.testExtendingLanguage">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.testExtendingLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.testExtendingLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2197,7 +2197,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.testUnusedExtendingLanguage">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.testUnusedExtendingLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.testUnusedExtendingLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2286,7 +2286,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.tests">
-      <fileset dir="${basedir}/testbench/testsolutions/editor.menus.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/editor.menus.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2363,7 +2363,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.extras.testLanguage">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.extras.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.extras.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2447,7 +2447,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.extras.tests">
-      <fileset dir="${basedir}/testbench/testsolutions/editor.menus.extras.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/editor.menus.extras.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2515,7 +2515,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.contextAssistant.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.contextAssistant.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2586,7 +2586,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.contextAssistant.extension.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.contextAssistant.extension.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2662,7 +2662,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.contextAssistant.tests">
-      <fileset dir="${basedir}/testbench/testsolutions/editor.menus.contextAssistant.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/editor.menus.contextAssistant.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2741,7 +2741,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.editor.contextActionsTool.tests">
-      <fileset dir="${basedir}/plugins/mps-context-actions/testModules/tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/plugins/mps-context-actions/testModules/tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2807,7 +2807,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.substitute.testLanguage">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.substitute.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.substitute.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2873,7 +2873,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.substitute.testExtendingLanguage">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.substitute.extension.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.substitute.extension.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -2949,7 +2949,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.substitute.tests">
-      <fileset dir="${basedir}/testbench/testsolutions/editor.menus.substitute.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/editor.menus.substitute.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -3016,7 +3016,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.sideTransform.testLanguage">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.sideTransform.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.sideTransform.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -3091,7 +3091,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.sideTransform.tests">
-      <fileset dir="${basedir}/testbench/testsolutions/editor.menus.sideTransform.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/editor.menus.sideTransform.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -3156,7 +3156,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.style.testLanguage">
-      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.style.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/testlangs/editor.menus.style.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   
@@ -3236,7 +3236,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.menus.style.tests">
-      <fileset dir="${basedir}/testbench/testsolutions/editor.menus.style.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
+      <fileset dir="${basedir}/testbench/testsolutions/editor.menus.style.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
     </copy>
   </target>
   

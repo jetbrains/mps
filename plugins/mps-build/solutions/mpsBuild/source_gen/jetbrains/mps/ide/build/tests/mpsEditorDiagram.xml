@@ -527,7 +527,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.figures.sandbox">
-      <fileset dir="${basedir}/plugins/mps-diagram-editor/test/jetbrains.mps.lang.editor.figures.sandbox/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/plugins/mps-diagram-editor/test/jetbrains.mps.lang.editor.figures.sandbox/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -626,7 +626,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.diagram.tests">
-      <fileset dir="${basedir}/plugins/mps-diagram-editor/test/jetbrains.mps.lang.editor.diagram.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/plugins/mps-diagram-editor/test/jetbrains.mps.lang.editor.diagram.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -711,7 +711,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.editor.diagram.testLanguage">
-      <fileset dir="${basedir}/plugins/mps-diagram-editor/test/jetbrains.mps.lang.editor.diagram.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/plugins/mps-diagram-editor/test/jetbrains.mps.lang.editor.diagram.testLanguage/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

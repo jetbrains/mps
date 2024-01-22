@@ -664,7 +664,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/constraints.test">
-      <fileset dir="${basedir}/testbench/modules/testConstraints/languages/constraints.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testConstraints/languages/constraints.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -750,8 +750,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/TestConstraints">
-      <fileset dir="${basedir}/testbench/modules/testConstraints/solutions/TestConstraints/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/testbench/modules/testConstraints/solutions/TestConstraints/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testConstraints/solutions/TestConstraints/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testConstraints/solutions/TestConstraints/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -825,7 +825,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/constraints.rules.test">
-      <fileset dir="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -886,7 +886,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/constraints.rules.test#1839194279618937625">
-      <fileset dir="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testConstraints/languages/constraints.rules.test/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -970,8 +970,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/TestRulesConstraints">
-      <fileset dir="${basedir}/testbench/modules/testConstraints/solutions/TestRulesConstraints/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/testbench/modules/testConstraints/solutions/TestRulesConstraints/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testConstraints/solutions/TestRulesConstraints/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testConstraints/solutions/TestRulesConstraints/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

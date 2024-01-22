@@ -139,8 +139,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/migration-platform">
-      <fileset dir="${plugin_home}/migration-platform/solutions/component/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${plugin_home}/migration-platform/sources" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${plugin_home}/migration-platform/solutions/component/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${plugin_home}/migration-platform/sources" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
 </project>

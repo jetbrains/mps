@@ -151,7 +151,7 @@
       <property role="2_GNG2" value="1024" />
       <property role="TZNOO" value="11" />
       <node concept="3qWCbU" id="11vUesBXT9z" role="2_Ic$A">
-        <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+        <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       </node>
     </node>
     <node concept="2G$12M" id="11vUesBXT9$" role="3989C9">

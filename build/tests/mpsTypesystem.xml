@@ -1178,7 +1178,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testAnnotatedType">
-      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testAnnotatedType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1247,7 +1247,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testOverridingType">
-      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1312,7 +1312,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testOverridingRule">
-      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testOverridingRule/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1380,7 +1380,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testWrappedType">
-      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/languages/testWrappedType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1448,7 +1448,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testPrimitiveType">
-      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testPrimitiveType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1516,7 +1516,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testSubtypingA">
-      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingA/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1585,7 +1585,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testSubtypingB">
-      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/languages/testSubtypingB/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1664,8 +1664,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.typesystem.test">
-      <fileset dir="${basedir}/testbench/testsolutions/typesystem.test/jetbrains.mps.lang.typesystem.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/testbench/testsolutions/typesystem.test/jetbrains.mps.lang.typesystem.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/typesystem.test/jetbrains.mps.lang.typesystem.test/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/typesystem.test/jetbrains.mps.lang.typesystem.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1749,8 +1749,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testSubstituteType">
-      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubstituteType/solutions/testSubstituteType/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1830,8 +1830,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/testSubtypingTest">
-      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/testsolutions/testSubtyping/solutions/testSubtypingTest/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

@@ -1327,7 +1327,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/kotlinIde">
-      <fileset dir="${plugin_home}/ide/jetbrains.mps.kotlin.idePlugin/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
+      <fileset dir="${plugin_home}/ide/jetbrains.mps.kotlin.idePlugin/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
     </copy>
   </target>
   
@@ -1400,7 +1400,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin">
-      <fileset dir="${plugin_home}/languages/kotlin/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
+      <fileset dir="${plugin_home}/languages/kotlin/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
     </copy>
   </target>
   
@@ -1538,7 +1538,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin.javaRefs">
-      <fileset dir="${plugin_home}/languages/kotlin.javaRefs/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
+      <fileset dir="${plugin_home}/languages/kotlin.javaRefs/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
     </copy>
   </target>
   
@@ -1611,7 +1611,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.baseLanguage.kotlinRefs">
-      <fileset dir="${plugin_home}/languages/baseLanguage.kotlinRefs/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
+      <fileset dir="${plugin_home}/languages/baseLanguage.kotlinRefs/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
     </copy>
   </target>
   
@@ -1681,7 +1681,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin.internal">
-      <fileset dir="${plugin_home}/languages/kotlin.internal/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
+      <fileset dir="${plugin_home}/languages/kotlin.internal/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
     </copy>
   </target>
   
@@ -1749,7 +1749,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin.internal.generator">
-      <fileset dir="${plugin_home}/languages/kotlin.internal/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
+      <fileset dir="${plugin_home}/languages/kotlin.internal/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
     </copy>
   </target>
   
@@ -1831,7 +1831,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin.smodel">
-      <fileset dir="${plugin_home}/languages/kotlin.smodel/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
+      <fileset dir="${plugin_home}/languages/kotlin.smodel/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
     </copy>
   </target>
   
@@ -1910,7 +1910,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin.smodel.generator">
-      <fileset dir="${plugin_home}/languages/kotlin.smodel/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
+      <fileset dir="${plugin_home}/languages/kotlin.smodel/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
     </copy>
   </target>
   
@@ -1951,7 +1951,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin.smodel.runtime">
-      <fileset dir="${plugin_home}/solutions/kotlin.smodel.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
+      <fileset dir="${plugin_home}/solutions/kotlin.smodel.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
     </copy>
   </target>
   
@@ -2019,7 +2019,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.kotlin.baseLanguage.runtime">
-      <fileset dir="${plugin_home}/solutions/kotlin.baseLanguage.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
+      <fileset dir="${plugin_home}/solutions/kotlin.baseLanguage.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info **/*.svg" />
     </copy>
   </target>
   

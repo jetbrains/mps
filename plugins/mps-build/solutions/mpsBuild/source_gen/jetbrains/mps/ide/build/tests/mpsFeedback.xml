@@ -454,7 +454,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/messages.customization">
-      <fileset dir="${basedir}/samples/messagesCustomization/languages/messages.customization/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/samples/messagesCustomization/languages/messages.customization/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -540,8 +540,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/messages.sandbox">
-      <fileset dir="${basedir}/samples/messagesCustomization/solutions/sandbox/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/samples/messagesCustomization/solutions/sandbox/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/samples/messagesCustomization/solutions/sandbox/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/samples/messagesCustomization/solutions/sandbox/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

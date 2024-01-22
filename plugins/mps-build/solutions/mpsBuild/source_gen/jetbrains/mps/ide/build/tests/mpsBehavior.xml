@@ -883,7 +883,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/BHL1">
-      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L1/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L1/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -924,7 +924,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/BHL2">
-      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L2/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L2/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -965,7 +965,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/BHL3">
-      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L3/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L3/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1006,7 +1006,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/BHL4">
-      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L4/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L4/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1047,7 +1047,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/BHL5">
-      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L5/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L5/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1088,7 +1088,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/BHL6">
-      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L6/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L6/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1129,7 +1129,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/BHL7">
-      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L7/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testBehavior/languages/L7/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1151,7 +1151,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/UtilSolution">
-      <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/UtilSolution/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/UtilSolution/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1232,8 +1232,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/TestBehavior">
-      <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehavior/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehavior/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehavior/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehavior/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1314,8 +1314,8 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/TestBehaviorReflective">
-      <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehaviorReflective/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehaviorReflective/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehaviorReflective/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehaviorReflective/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   

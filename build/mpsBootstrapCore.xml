@@ -17931,9 +17931,9 @@
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-platform">
       <fileset dir="${mps_home}/workbench/mps-platform/source" includes="**/*.dic" />
-      <fileset dir="${mps_home}/workbench/mps-platform/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/languages/baseLanguage/baseLanguage.search/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/workbench/mps-platform/source" includes="**/*.properties, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/languages/baseLanguage/baseLanguage.search/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -18266,14 +18266,14 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-editor">
-      <fileset dir="${mps_home}/editor/editor-runtime/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/editor/editor-runtime/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/editor/actions-runtime/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/editor/intentions-runtime/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/editor/typesystemIntegration/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/editor/typesystemIntegration/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/workbench/mps-editor/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/workbench/mps-editor/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/editor/editor-runtime/source" includes="**/*.properties, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/editor/editor-runtime/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/editor/actions-runtime/source" includes="**/*.properties, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/editor/intentions-runtime/source" includes="**/*.properties, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/editor/typesystemIntegration/source" includes="**/*.properties, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/editor/typesystemIntegration/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/workbench/mps-editor/source" includes="**/*.properties, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/workbench/mps-editor/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
