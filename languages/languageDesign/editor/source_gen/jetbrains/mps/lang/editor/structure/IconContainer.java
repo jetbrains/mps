@@ -6,7 +6,7 @@ import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.ide.icons.IconLoadingUtil;
 
 public class IconContainer {
-  protected static IconResource RESOURCE_a0a3a0a91b0hr = new IconResource("actionMap.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a91b0hr = (IconLoadingUtil.isNewUIActive() ? new IconResource("actionMap_newui.svg", IconContainer.class) : new IconResource("actionMap.png", IconContainer.class));
   protected static IconResource RESOURCE_a0a3a0a92b0hr = (IconLoadingUtil.isNewUIActive() ? new IconResource("keyMap_newui.svg", IconContainer.class) : new IconResource("keyMap.png", IconContainer.class));
   protected static IconResource RESOURCE_a0a3a0a54b0hr = (IconLoadingUtil.isNewUIActive() ? new IconResource("menuComponent_newui.svg", IconContainer.class) : new IconResource("menuComponent.png", IconContainer.class));
   protected static IconResource RESOURCE_a0a3a0a121b0hr = (IconLoadingUtil.isNewUIActive() ? new IconResource("editorContextHints_newui.svg", IconContainer.class) : new IconResource("editorContextHints.png", IconContainer.class));
