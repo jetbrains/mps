@@ -599,6 +599,13 @@
           </node>
         </node>
       </node>
+      <node concept="25yagZ" id="1_9JKOQHYWN" role="PiKyV">
+        <node concept="3yqu4x" id="1_9JKOQHYWJ" role="25yagT">
+          <node concept="3yrxFa" id="1_9JKOQHYWL" role="3yqu4I">
+            <ref role="3yrxFb" node="1_9JKOQzQRK" />
+          </node>
+        </node>
+      </node>
       <node concept="25yagZ" id="5hseHhVFthM" role="PiKyV">
         <node concept="3yqu4x" id="5hseHhVFthN" role="25yagT">
           <node concept="3yrxFa" id="5hseHhVFthO" role="3yqu4I">
@@ -26515,6 +26522,13 @@
           </node>
         </node>
       </node>
+      <node concept="13uQ2_" id="1_9JKOQzQRK" role="39821P">
+        <node concept="3_J27D" id="1_9JKOQzQRM" role="13uQ07">
+          <node concept="3Mxwew" id="1_9JKOQzQX5" role="3MwsjC">
+            <property role="3MwjfP" value="java-frontback.jar" />
+          </node>
+        </node>
+      </node>
       <node concept="13uQ2_" id="4LdE6kxkoZ2" role="39821P">
         <node concept="3_J27D" id="4LdE6kxkoZ4" role="13uQ07">
           <node concept="3Mxwew" id="4LdE6kxkoZS" role="3MwsjC">
@@ -41566,6 +41580,9 @@
     </node>
     <node concept="26EafG" id="4nX__hM7q_s" role="26Ea7d">
       <property role="26EafJ" value="lib/intellij-test-discovery.jar" />
+    </node>
+    <node concept="26EafG" id="47XxXqF8myE" role="26Ea7d">
+      <property role="26EafJ" value="lib/java-frontback.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7q_I" role="26Ea7d">
       <property role="26EafJ" value="lib/java-impl.jar" />

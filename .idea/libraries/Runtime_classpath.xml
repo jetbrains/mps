@@ -12,7 +12,6 @@
       <root url="jar://$PROJECT_DIR$/lib/idea_rt.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij-test-discovery.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javac2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jetbrains-annotations.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jps-model.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/junit4.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-impl.jar!/" />
@@ -28,7 +27,8 @@
       <root url="jar://$PROJECT_DIR$/lib/bouncy-castle.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/kotlin-compiler-client-embeddable-1.9.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/kotlinx-metadata-jvm-0.7.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/intellij-coverage-agent-1.0.723.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/intellij-coverage-agent-1.0.738.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/java-frontback.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
