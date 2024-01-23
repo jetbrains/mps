@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -152,6 +152,8 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
     private final SModule myModule;
     private String myHash;
 
+    private boolean myShallGenerate = false;
+
     DescriptorModel(SModelReference modelReference, SModule module) {
       super(new SnapshotModelData(modelReference));
       myModule = module;
@@ -166,6 +168,7 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
 
     /*package*/ void updateContents(LanguageRegistry languageRegistry, GenericDescriptorModelProvider provider) {
       myHash = null;
+      myShallGenerate = false;
       SModelData m = getModelData();
       ArrayList<SNode> roots = new ArrayList<>();
       m.getRootNodes().forEach(roots::add);
@@ -173,11 +176,12 @@ public class GenericDescriptorModelProvider extends DescriptorModelProvider {
       languageRegistry.withAvailableExtensions(DescriptorModelContributor.class,
                                                  new MatchRequest() { /*"solution", "@descriptor" */},
                                                  e -> e.contribute(provider, myModule, this));
+      myShallGenerate = getRootNodes().iterator().hasNext();
     }
 
     @Override
     public boolean isGeneratable() {
-      return getRootNodes().iterator().hasNext();
+      return myShallGenerate;
     }
 
     @Override
