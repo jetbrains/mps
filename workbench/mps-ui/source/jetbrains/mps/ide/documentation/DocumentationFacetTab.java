@@ -3,6 +3,7 @@
  */
 package jetbrains.mps.ide.documentation;
 
+import com.intellij.icons.AllIcons.Toolwindows;
 import com.intellij.ide.util.BrowseFilesListener;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
@@ -57,7 +58,7 @@ public class DocumentationFacetTab extends BaseTab implements FacetTab {
       UUID.fromString("c9983bff-58c7-4465-88f7-3d854bbf1736"));
 
   public DocumentationFacetTab(@NotNull DocumentationFacet documentationFacet) {
-    super("Documentation", /*todo: change icon */ General.ModelChecker, "Model transformation output as a documentation");
+    super("Documentation", Toolwindows.Documentation, "Model transformation output as a documentation");
     myDocumentationFacet = documentationFacet;
   }
 
