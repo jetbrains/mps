@@ -56,10 +56,10 @@
     },
     "nodes": {
       "models": {
-        "accessoryModel.svg": "nodes/model/accessoryModel.png",
-        "aspect.svg": "nodes/model/aspect.png",
-        "templatesModel.svg": "nodes/model/templatesModel.png",
-        "tests.svg": "nodes/model/tests.png"
+        "accessoryModel.svg": "nodes/models/accessoryModel.png",
+        "aspect.svg": "nodes/models/aspect.png",
+        "templatesModel.svg": "nodes/models/templatesModel.png",
+        "tests.svg": "nodes/models/tests.png"
       },
       "action.svg": "nodes/action.png",
       "behavior.svg": "nodes/behavior.png",
