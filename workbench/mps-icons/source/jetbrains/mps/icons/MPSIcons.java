@@ -116,8 +116,8 @@ public class MPSIcons {
     public static final Icon Structure = load("/nodes/structure.png");
     public static final Icon TestModel = new LayeredIcon(Nodes.Model, AllIcons.Nodes.JunitTestMark);
     public static final Icon TextGen = load("/nodes/textGen.png");
-    public static final Icon TransientModule = load("/nodes/transient.png");
-    public static final Icon TransientModuleDisabled = load("/nodes/transientDisable.png");
+    public static final Icon TransientModule = load("/nodes/transient.svg");
+    public static final Icon TransientModuleDisabled = load("/nodes/transientDisable.svg");
     public static final Icon Type = load("/nodes/type.png");
     public static final Icon Unknown = load("/nodes/unknown.png");
     public static final Icon UsagesResultOverlay = load("/nodes/usages-result-overlay.png");
