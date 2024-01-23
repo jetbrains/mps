@@ -15,11 +15,6 @@
   -->
 <idea-plugin>
   <actions>
-
-    <!-- New UI Promotion actions in Project settings (gear icon) toolbar action -->
-    <action id="EnableNewUi" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="DisableNewUi" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-
     <!-- Enable? -->
     <action id="QuickDocCopy" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="RunAnything" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>

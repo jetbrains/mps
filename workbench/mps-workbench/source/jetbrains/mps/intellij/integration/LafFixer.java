@@ -68,13 +68,6 @@ final class LafFixer {
    */
   @Internal
   private static final class MyAppLifecycleListener implements AppLifecycleListener {
-
-    @Override
-    public void appStarted() {
-      // Disables the Welcome screen banner and Project settings toolbar action's (gear icon) tooltip promoting new UI
-      com.intellij.ide.util.PropertiesComponent.getInstance().setValue(com.intellij.ui.ExperimentalUI.NEW_UI_USED_PROPERTY, true);
-    }
-
     @Override
     public void welcomeScreenDisplayed() {
       if (ConfigImportHelper.isFirstSession() && !ConfigImportHelper.isConfigImported()) {
