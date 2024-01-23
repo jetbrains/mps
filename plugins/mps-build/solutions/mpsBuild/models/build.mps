@@ -1836,25 +1836,6 @@
           </node>
         </node>
       </node>
-      <node concept="3_5H9E" id="5aaGQ2Kcwst" role="398b2p">
-        <node concept="3LXTmp" id="5aaGQ2Kcwsu" role="3_5H9R">
-          <node concept="398BVA" id="5aaGQ2Kcwsv" role="3LXTmr">
-            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="5aaGQ2Kcwsw" role="iGT6I">
-              <property role="2Ry0Am" value="workbench" />
-              <node concept="2Ry0Ak" id="5aaGQ2Kcwsx" role="2Ry0An">
-                <property role="2Ry0Am" value="mps-ui" />
-                <node concept="2Ry0Ak" id="5aaGQ2Kcwsy" role="2Ry0An">
-                  <property role="2Ry0Am" value="source" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3LWZYx" id="5aaGQ2Kcws$" role="3LXTna">
-            <property role="3LWZYw" value="**/*.json" />
-          </node>
-        </node>
-      </node>
       <node concept="nCB5N" id="7KapL9OAx4T" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="1FaKCGJSzEy" resolve="mps-kernel" />

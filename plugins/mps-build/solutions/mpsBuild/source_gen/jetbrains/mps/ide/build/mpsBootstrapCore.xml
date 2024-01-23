@@ -18113,9 +18113,6 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-ui">
-      <fileset dir="${mps_home}/workbench/mps-ui/source">
-        <include name="**/*.json" />
-      </fileset>
       <fileset dir="${mps_home}/workbench/mps-ui/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
       <fileset dir="${mps_home}/workbench/mps-ui/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
     </copy>
