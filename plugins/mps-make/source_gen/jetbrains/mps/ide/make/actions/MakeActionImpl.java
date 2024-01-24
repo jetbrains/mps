@@ -22,6 +22,7 @@ import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.ide.generator.GenerationCheckHelper;
 import com.intellij.openapi.wm.ToolWindowManager;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.messages.MessagesViewTool;
 import java.util.concurrent.Future;
 import jetbrains.mps.make.script.IResult;
 
@@ -83,8 +84,9 @@ public class MakeActionImpl {
 
       if (inputRes != null) {
         final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(((MPSProject) project).getProject());
+        MessagesViewTool messagesViewTool = MessagesViewTool.getInstance(project);
         final Future<IResult> f = makeService.make(session, inputRes);
-        AfterMakeBalloonHelper.waitForMakeToFinishAndShowBalloon(f, toolWindowManager, "The Make operation has finished");
+        AfterMakeBalloonHelper.waitForMakeToFinishAndShowBalloon(f, toolWindowManager, messagesViewTool, "The Make operation has finished");
       } else {
         makeService.closeSession(session);
       }
