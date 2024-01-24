@@ -54,6 +54,8 @@
     <import index="w8cm" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.impl.dependencies(MPS.Generator/)" />
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
+    <import index="iwsx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.fileEditor(MPS.IDEA/)" />
+    <import index="s9o5" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -9856,6 +9858,196 @@
         <node concept="1dT_AC" id="501K0YLMPXO" role="1dT_Ay">
           <property role="1dT_AB" value="adding fs listeners on some dirs/files), unlike idea's where there is a known structure: modules, source roots." />
         </node>
+      </node>
+    </node>
+  </node>
+  <node concept="312cEu" id="7LM00WLJJU$">
+    <property role="TrG5h" value="IdeaDocumentReloader" />
+    <property role="1EXbeo" value="true" />
+    <node concept="3Tm1VV" id="7LM00WLJJU_" role="1B3o_S" />
+    <node concept="3uibUv" id="7LM00WLJJUA" role="EKbjA">
+      <ref role="3uigEE" to="uvcm:~BulkFileListener" resolve="BulkFileListener" />
+    </node>
+    <node concept="2tJIrI" id="7LM00WLJJUB" role="jymVt" />
+    <node concept="3clFbW" id="7LM00WLJJUC" role="jymVt">
+      <node concept="3Tm1VV" id="7LM00WLJJUD" role="1B3o_S" />
+      <node concept="3cqZAl" id="7LM00WLJJUE" role="3clF45" />
+      <node concept="3clFbS" id="7LM00WLJJUF" role="3clF47" />
+    </node>
+    <node concept="2tJIrI" id="7LM00WLJJUG" role="jymVt" />
+    <node concept="3clFb_" id="7LM00WLJJUH" role="jymVt">
+      <property role="TrG5h" value="after" />
+      <node concept="3Tm1VV" id="7LM00WLJJUI" role="1B3o_S" />
+      <node concept="3cqZAl" id="7LM00WLJJUJ" role="3clF45" />
+      <node concept="37vLTG" id="7LM00WLJJUK" role="3clF46">
+        <property role="TrG5h" value="events" />
+        <property role="3TUv4t" value="true" />
+        <node concept="_YKpA" id="7LM00WLJJUL" role="1tU5fm">
+          <node concept="3qUE_q" id="7LM00WLJJUM" role="_ZDj9">
+            <node concept="3uibUv" id="7LM00WLJJUN" role="3qUE_r">
+              <ref role="3uigEE" to="p3o1:~VFileEvent" resolve="VFileEvent" />
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="7LM00WLJJUO" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7LM00WLJJUP" role="3clF47">
+        <node concept="3SKdUt" id="7LM00WLJJV0" role="3cqZAp">
+          <node concept="1PaTwC" id="7LM00WLJJV1" role="1aUNEU">
+            <node concept="3oM_SD" id="7LM00WLJJV2" role="1PaTwD">
+              <property role="3oM_SC" value="update" />
+            </node>
+            <node concept="3oM_SD" id="7LM00WLJJV3" role="1PaTwD">
+              <property role="3oM_SC" value="IDEA" />
+            </node>
+            <node concept="3oM_SD" id="7LM00WLJJV4" role="1PaTwD">
+              <property role="3oM_SC" value="documents" />
+            </node>
+            <node concept="3oM_SD" id="7LM00WLJJV5" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="7LM00WLJJV6" role="1PaTwD">
+              <property role="3oM_SC" value="files" />
+            </node>
+            <node concept="3oM_SD" id="7LM00WLJJV7" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="7LM00WLJJV8" role="1PaTwD">
+              <property role="3oM_SC" value="were" />
+            </node>
+            <node concept="3oM_SD" id="7LM00WLJJV9" role="1PaTwD">
+              <property role="3oM_SC" value="affected" />
+            </node>
+            <node concept="3oM_SD" id="7LM00WLJJVa" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="7LM00WLJJVb" role="1PaTwD">
+              <property role="3oM_SC" value="our" />
+            </node>
+            <node concept="3oM_SD" id="7LM00WLJJVc" role="1PaTwD">
+              <property role="3oM_SC" value="changes." />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7LM00WLJJVd" role="3cqZAp">
+          <node concept="2OqwBi" id="7LM00WLJJVe" role="3clFbG">
+            <node concept="2OqwBi" id="7LM00WLJJVf" role="2Oq$k0">
+              <node concept="37vLTw" id="7LM00WLJJVg" role="2Oq$k0">
+                <ref role="3cqZAo" node="7LM00WLJJUK" resolve="events" />
+              </node>
+              <node concept="3zZkjj" id="7LM00WLJJVh" role="2OqNvi">
+                <node concept="1bVj0M" id="7LM00WLJJVi" role="23t8la">
+                  <node concept="3clFbS" id="7LM00WLJJVj" role="1bW5cS">
+                    <node concept="3clFbF" id="7LM00WLJJVk" role="3cqZAp">
+                      <node concept="2ZW3vV" id="7LM00WLJJVl" role="3clFbG">
+                        <node concept="3uibUv" id="7LM00WLJJVm" role="2ZW6by">
+                          <ref role="3uigEE" to="4hrd:~MPSSavingRequestor" resolve="MPSSavingRequestor" />
+                        </node>
+                        <node concept="2OqwBi" id="7LM00WLJJVn" role="2ZW6bz">
+                          <node concept="37vLTw" id="7LM00WLJJVo" role="2Oq$k0">
+                            <ref role="3cqZAo" node="7LM00WLJJVq" resolve="event" />
+                          </node>
+                          <node concept="liA8E" id="7LM00WLJJVp" role="2OqNvi">
+                            <ref role="37wK5l" to="p3o1:~VFileEvent.getRequestor()" resolve="getRequestor" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="gl6BB" id="7LM00WLJJVq" role="1bW2Oz">
+                    <property role="TrG5h" value="event" />
+                    <node concept="2jxLKc" id="7LM00WLJJVr" role="1tU5fm" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2es0OD" id="7LM00WLJJVs" role="2OqNvi">
+              <node concept="1bVj0M" id="7LM00WLJJVt" role="23t8la">
+                <node concept="3clFbS" id="7LM00WLJJVu" role="1bW5cS">
+                  <node concept="3cpWs8" id="7LM00WLJJVv" role="3cqZAp">
+                    <node concept="3cpWsn" id="7LM00WLJJVw" role="3cpWs9">
+                      <property role="TrG5h" value="file" />
+                      <node concept="3uibUv" id="7LM00WLJJVx" role="1tU5fm">
+                        <ref role="3uigEE" to="jlff:~VirtualFile" resolve="VirtualFile" />
+                      </node>
+                      <node concept="2OqwBi" id="7LM00WLJJVy" role="33vP2m">
+                        <node concept="37vLTw" id="7LM00WLJJVz" role="2Oq$k0">
+                          <ref role="3cqZAo" node="7LM00WLJJVU" resolve="event" />
+                        </node>
+                        <node concept="liA8E" id="7LM00WLJJV$" role="2OqNvi">
+                          <ref role="37wK5l" to="p3o1:~VFileEvent.getFile()" resolve="getFile" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3cpWs8" id="7LM00WLJJV_" role="3cqZAp">
+                    <node concept="3cpWsn" id="7LM00WLJJVA" role="3cpWs9">
+                      <property role="TrG5h" value="fileDocumentManager" />
+                      <node concept="3uibUv" id="7LM00WLJJVB" role="1tU5fm">
+                        <ref role="3uigEE" to="iwsx:~FileDocumentManager" resolve="FileDocumentManager" />
+                      </node>
+                      <node concept="2YIFZM" id="7LM00WLJJVC" role="33vP2m">
+                        <ref role="1Pybhc" to="iwsx:~FileDocumentManager" resolve="FileDocumentManager" />
+                        <ref role="37wK5l" to="iwsx:~FileDocumentManager.getInstance()" resolve="getInstance" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3cpWs8" id="7LM00WLJJVD" role="3cqZAp">
+                    <node concept="3cpWsn" id="7LM00WLJJVE" role="3cpWs9">
+                      <property role="TrG5h" value="doc" />
+                      <node concept="3uibUv" id="7LM00WLJJVF" role="1tU5fm">
+                        <ref role="3uigEE" to="s9o5:~Document" resolve="Document" />
+                      </node>
+                      <node concept="2OqwBi" id="7LM00WLJJVG" role="33vP2m">
+                        <node concept="37vLTw" id="7LM00WLJJVH" role="2Oq$k0">
+                          <ref role="3cqZAo" node="7LM00WLJJVA" resolve="fileDocumentManager" />
+                        </node>
+                        <node concept="liA8E" id="7LM00WLJJVI" role="2OqNvi">
+                          <ref role="37wK5l" to="iwsx:~FileDocumentManager.getCachedDocument(com.intellij.openapi.vfs.VirtualFile)" resolve="getCachedDocument" />
+                          <node concept="37vLTw" id="7LM00WLJJVJ" role="37wK5m">
+                            <ref role="3cqZAo" node="7LM00WLJJVw" resolve="file" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbJ" id="7LM00WLJJVK" role="3cqZAp">
+                    <node concept="3y3z36" id="7LM00WLJJVL" role="3clFbw">
+                      <node concept="37vLTw" id="7LM00WLJJVM" role="3uHU7B">
+                        <ref role="3cqZAo" node="7LM00WLJJVE" resolve="doc" />
+                      </node>
+                      <node concept="10Nm6u" id="7LM00WLJJVN" role="3uHU7w" />
+                    </node>
+                    <node concept="3clFbS" id="7LM00WLJJVO" role="3clFbx">
+                      <node concept="3clFbF" id="7LM00WLJJVP" role="3cqZAp">
+                        <node concept="2OqwBi" id="7LM00WLJJVQ" role="3clFbG">
+                          <node concept="37vLTw" id="7LM00WLJJVR" role="2Oq$k0">
+                            <ref role="3cqZAo" node="7LM00WLJJVA" resolve="fileDocumentManager" />
+                          </node>
+                          <node concept="liA8E" id="7LM00WLJJVS" role="2OqNvi">
+                            <ref role="37wK5l" to="iwsx:~FileDocumentManager.reloadFromDisk(com.intellij.openapi.editor.Document)" resolve="reloadFromDisk" />
+                            <node concept="37vLTw" id="7LM00WLJJVT" role="37wK5m">
+                              <ref role="3cqZAo" node="7LM00WLJJVE" resolve="doc" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="gl6BB" id="7LM00WLJJVU" role="1bW2Oz">
+                  <property role="TrG5h" value="event" />
+                  <node concept="2jxLKc" id="7LM00WLJJVV" role="1tU5fm" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7LM00WLJJXk" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>

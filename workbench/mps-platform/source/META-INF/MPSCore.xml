@@ -85,6 +85,7 @@
     <listener class="jetbrains.mps.ide.save.IdeMPSFileSaver" topic="com.intellij.openapi.fileEditor.FileDocumentManagerListener" activeInHeadlessMode="false"/>
     <listener class="jetbrains.mps.ide.platform.watching.ModelCacheReloader" topic="com.intellij.openapi.vfs.newvfs.BulkFileListener"/>
     <listener class="jetbrains.mps.ide.platform.watching.FSChangesWatcher" topic="com.intellij.openapi.vfs.newvfs.BulkFileListener"/>
+    <listener class="jetbrains.mps.ide.platform.watching.IdeaDocumentReloader" topic="com.intellij.openapi.vfs.newvfs.BulkFileListener"/>
     <listener class="jetbrains.mps.repository.FSNotificationsCleaner" topic="com.intellij.ide.AppLifecycleListener"/>
   </applicationListeners>
 

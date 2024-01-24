@@ -1415,5 +1415,31 @@
       <unit id="8474613039627890958" at="25,0,89,0" name="jetbrains.mps.ide.platform.watching.FSChangesWatcher" />
     </file>
   </root>
+  <root nodeRef="r:383be79d-d39d-4dc4-9df3-57e57bcac2b5(jetbrains.mps.ide.platform.watching)/8967229873307188900">
+    <file name="IdeaDocumentReloader.java">
+      <node id="8967229873307188928" at="23,71,24,73" concept="13" />
+      <node id="8967229873307188959" at="25,124,26,41" concept="11" />
+      <node id="8967229873307188965" at="26,41,27,82" concept="11" />
+      <node id="8967229873307188969" at="27,82,28,65" concept="11" />
+      <node id="8967229873307188981" at="29,24,30,48" concept="6" />
+      <node id="8967229873307188904" at="19,0,21,0" concept="3" trace="IdeaDocumentReloader#()V" />
+      <node id="8967229873307188976" at="28,65,31,7" concept="9" />
+      <node id="8967229873307188941" at="24,73,32,7" concept="6" />
+      <node id="8967229873307188909" at="22,0,34,0" concept="10" trace="after#(Ljava/util/List;)V" />
+      <scope id="8967229873307188907" at="19,33,19,33" />
+      <scope id="8967229873307188980" at="29,24,30,48" />
+      <scope id="8967229873307188904" at="19,0,21,0" />
+      <scope id="8967229873307188958" at="25,124,31,7">
+        <var name="doc" id="8967229873307188970" />
+        <var name="file" id="8967229873307188960" />
+        <var name="fileDocumentManager" id="8967229873307188966" />
+      </scope>
+      <scope id="8967229873307188917" at="23,71,32,7" />
+      <scope id="8967229873307188909" at="22,0,34,0">
+        <var name="events" id="8967229873307188912" />
+      </scope>
+      <unit id="8967229873307188900" at="16,0,35,0" name="jetbrains.mps.ide.platform.watching.IdeaDocumentReloader" />
+    </file>
+  </root>
 </debug-info>
 
