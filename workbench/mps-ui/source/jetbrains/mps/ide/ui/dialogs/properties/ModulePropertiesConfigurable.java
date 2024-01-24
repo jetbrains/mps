@@ -523,6 +523,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
             // here we imply getGenOutPath uses AM.getOutputPath()
             // TODO utilize the fact AM keeps IFile (or, perhaps, resort to PathSpec?)
             myModule.setOutputPath(myModule.getFileSystem().getFile(genOut));
+            myModuleDescriptor.setOutputRoot(genOut);
           }
         }
         if (myLanguageVersion != null) {
