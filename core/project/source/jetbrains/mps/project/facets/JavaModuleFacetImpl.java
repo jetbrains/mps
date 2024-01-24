@@ -48,6 +48,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
@@ -119,6 +120,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   }
   public void setGeneratedClassesLocation(PathSpec classesGen) {
     myGeneratedClassesLocation = classesGen;
+    resolvePaths(Collections.emptyList(),Collections.emptyList());
   }
 
   @NotNull
@@ -370,42 +372,8 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     if (moduleDescriptor != null) {
       moduleDescriptor.getSourcePathPersistedValue().stream().map(PathSpec::new).forEach(sources::add);
     }
-    if (!libraries.isEmpty() || !sources.isEmpty() || myGeneratedClassesLocation != null) {
-      // resolve PathSpec instances
-      final MacroHelper macroHelper = MacrosFactory.forModule(getModule());
-      // FIXME LEHA - what's the proper way to access FS here?
-      final FileSystem fs = getAbstractModule().getFileSystem();
-      // XXX I wonder if one more FS#getFile(String path, Nullable MacroHelper) is better than separate expandPath()?
-      Function<String, IFile> tr = (s) -> {
-        final String expanded = macroHelper.expandPath(s);
-        if (MacrosFactory.containsMacro(expanded)) {
-          return null;
-        }
-        // XXX not clear if this code shall be part of the function or rather PathSpec.resolve().
-        //     On the one hand, better to keep it in one place. On the other, catching PFE there might be too
-        //     much of internal knowledge (assumption of what Function uses under the hood) for the PathSpec.
-        //     Moreover, not clear how to handle exception then, except for null (!resolved) - log, ignore?
-        //     Therefore, seems that the function that does conversion shall be responsible to error handling.
-        try {
-          return fs.getFile(expanded);
-        } catch (PathFormatException ex) {
-          return null;
-        }
-      };
-      // don't re-resolve PathSpec that were instantiated with IFile
-      final Predicate<PathSpec> resolved = PathSpec::resolved;
-      if (!libraries.isEmpty()) {
-        libraries.stream().filter(resolved.negate()).forEach(l -> l.resolve(tr));
-        myLibraryBundle = new PathSpecBundle(libraries);
-      }
-      if (!sources.isEmpty()) {
-        sources.stream().filter(resolved.negate()).forEach(s -> s.resolve(tr));
-        myAdditionalSources = new PathSpecBundle(sources);
-      }
-      if (myGeneratedClassesLocation != null) {
-        myGeneratedClassesLocation.resolve(tr);
-      }
-    }
+    resolvePaths(libraries, sources);
+
     // configure defaults for transition
     AbstractModule module = getAbstractModule();
     ModuleDescriptor descriptor = module.getModuleDescriptor();
@@ -460,6 +428,45 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     final String extValue = memento.get(KEY_EXTENSION);
     if (extValue != null) {
       myLoadExtensions = LoadExtensions.fromPersistenceValue(extValue, LoadExtensions.NotAvailable);
+    }
+  }
+
+  private void resolvePaths(java.util.List<PathSpec> libraries, List<PathSpec> sources) {
+    if (!libraries.isEmpty() || !sources.isEmpty() || myGeneratedClassesLocation != null) {
+      // resolve PathSpec instances
+      final MacroHelper macroHelper = MacrosFactory.forModule(getModule());
+      // FIXME LEHA - what's the proper way to access FS here?
+      final FileSystem fs = getAbstractModule().getFileSystem();
+      // XXX I wonder if one more FS#getFile(String path, Nullable MacroHelper) is better than separate expandPath()?
+      Function<String, IFile> tr = (s) -> {
+        final String expanded = macroHelper.expandPath(s);
+        if (MacrosFactory.containsMacro(expanded)) {
+          return null;
+        }
+        // XXX not clear if this code shall be part of the function or rather PathSpec.resolve().
+        //     On the one hand, better to keep it in one place. On the other, catching PFE there might be too
+        //     much of internal knowledge (assumption of what Function uses under the hood) for the PathSpec.
+        //     Moreover, not clear how to handle exception then, except for null (!resolved) - log, ignore?
+        //     Therefore, seems that the function that does conversion shall be responsible to error handling.
+        try {
+          return fs.getFile(expanded);
+        } catch (PathFormatException ex) {
+          return null;
+        }
+      };
+      // don't re-resolve PathSpec that were instantiated with IFile
+      final Predicate<PathSpec> resolved = PathSpec::resolved;
+      if (!libraries.isEmpty()) {
+        libraries.stream().filter(resolved.negate()).forEach(l -> l.resolve(tr));
+        myLibraryBundle = new PathSpecBundle(libraries);
+      }
+      if (!sources.isEmpty()) {
+        sources.stream().filter(resolved.negate()).forEach(s -> s.resolve(tr));
+        myAdditionalSources = new PathSpecBundle(sources);
+      }
+      if (myGeneratedClassesLocation != null) {
+        myGeneratedClassesLocation.resolve(tr);
+      }
     }
   }
 
