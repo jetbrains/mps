@@ -519,32 +519,7 @@ public final class ModuleMaker {
     }
   }
 
-  private static class PackagePrefix {
-    private final ArrayDeque<CharSequence> myElements = new ArrayDeque<>();
 
-    void push(CharSequence element) {
-      myElements.addLast(element);
-    }
-
-    void pop() {
-      myElements.removeLast();
-    }
-
-    String fqnWithTail(CharSequence tail) {
-      push(tail);
-      String rv = String.join(".", myElements);
-      pop();
-      return rv;
-    }
-
-    String pathWithTail(CharSequence tail) {
-      push(tail);
-      String rv = String.join("/", myElements);
-      pop();
-      return rv;
-    }
-
-  }
 
   private static class JS {
     private final Map<String, JavaFile> myJavaFiles = new HashMap<>();
