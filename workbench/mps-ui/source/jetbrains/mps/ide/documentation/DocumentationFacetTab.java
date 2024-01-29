@@ -95,18 +95,18 @@ public class DocumentationFacetTab extends BaseTab implements FacetTab {
 
   @Override
   public boolean isModified() {
-    return !Objects.equals(myDocumentationFacet.getLocation().getPath(), myOutputFiled.getText());
+    return outputRootChanged();
   }
 
-  /**
-   * use apply(@NotNull SModule module)
-   */
   @Override
   public void apply() {
+    if (outputRootChanged()) {
+      myDocumentationFacet.setLocation(fs.getFile(myOutputFiled.getText()));
+    }
   }
 
   public void apply(@NotNull SModule module) {
-    myDocumentationFacet.setLocation(fs.getFile(myOutputFiled.getText()));
+    apply();
 
     assert module instanceof Language;
     myModule = module;
@@ -152,5 +152,9 @@ public class DocumentationFacetTab extends BaseTab implements FacetTab {
     if (Collections.disjoint(inUse, devKitSLanguages)) {
       imports.removeUsedDevKit(docDevKitSModelRef);
     }
+  }
+
+  private boolean outputRootChanged() {
+    return !Objects.equals(myDocumentationFacet.getLocation().getPath(), myOutputFiled.getText());
   }
 }
