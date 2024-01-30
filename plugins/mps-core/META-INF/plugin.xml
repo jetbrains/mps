@@ -25,6 +25,7 @@
     <mps.LanguageLibrary dir="/languages" hide="true"/>
     <!--since we are having core.properties here already-->
     <mps.VisibleModuleMask mask="jetbrains\.mps\.core\.xml.*"/>
+    <mps.VisibleModuleMask mask="jetbrains\.mps\.devkit\.documentation"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
   </extensions>
 </idea-plugin>
