@@ -182,6 +182,7 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     insertInterfaceGroupIntoAnother("VcsGroup", AbstractFileActions_ActionGroup.ID, AbstractFileActions_ActionGroup.LABEL_ID_vcs);
     insertInterfaceGroupIntoAnother("VcsGroup", CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_ideavcs);
     insertInterfaceGroupIntoAnother("VcsGroup", ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_ideavcs);
+    insertInterfaceGroupIntoAnother("VcsGroup", NodeActions_ActionGroup.ID, NodeActions_ActionGroup.LABEL_ID_ideavcs);
     insertInterfaceGroupIntoAnother("VcsGroup", "EditorPopup_ActionGroupvcs", null);
     insertInterfaceGroupIntoAnother("LocalHistory", AbstractFileActions_ActionGroup.ID, AbstractFileActions_ActionGroup.LABEL_ID_idealocalhistory);
     insertInterfaceGroupIntoAnother("LocalHistory", CommonModuleActions_ActionGroup.ID, CommonModuleActions_ActionGroup.LABEL_ID_idealocalhistory);
