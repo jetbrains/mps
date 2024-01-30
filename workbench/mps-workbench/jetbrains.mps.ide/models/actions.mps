@@ -1501,6 +1501,10 @@
       <property role="Xl_RC" value="VcsGroup" />
     </node>
     <node concept="ftmFs" id="hF$ogYv" role="ftER_" />
+    <node concept="tT9cl" id="4ZbWI4pC7fs" role="2f5YQi">
+      <ref role="tU$_T" node="hyf4Gvz" resolve="NodeActions" />
+      <ref role="2f8Tey" node="4ZbWI4pC7cO" resolve="ideavcs" />
+    </node>
   </node>
   <node concept="1ESbSp" id="hF$ojOS">
     <property role="TrG5h" value="IDEAHelp" />
@@ -23654,6 +23658,19 @@
       <node concept="10WQ6h" id="14z8V6nEs7K" role="ftvYc">
         <property role="TrG5h" value="debug" />
       </node>
+      <node concept="2a7GMi" id="5$tIQ0N$ez0" role="ftvYc" />
+      <node concept="10WQ6h" id="6ySnuJfjmo9" role="ftvYc">
+        <property role="TrG5h" value="diff" />
+      </node>
+      <node concept="10WQ6h" id="5$tIQ0NzaD$" role="ftvYc">
+        <property role="TrG5h" value="mpsvcs" />
+      </node>
+      <node concept="10WQ6h" id="5$tIQ0NzaD_" role="ftvYc">
+        <property role="TrG5h" value="idealocalhistory" />
+      </node>
+      <node concept="10WQ6h" id="4ZbWI4pC7cO" role="ftvYc">
+        <property role="TrG5h" value="ideavcs" />
+      </node>
       <node concept="2a7GMi" id="h$Nc2rf" role="ftvYc" />
       <node concept="10WQ6h" id="1wPwVvaJhFD" role="ftvYc">
         <property role="TrG5h" value="gotoConceptAspects" />
@@ -23670,9 +23687,6 @@
       </node>
       <node concept="tCFHf" id="hGAp$GK" role="ftvYc">
         <ref role="tCJdB" node="hGAnlZs" resolve="ShowClassInHierarchy" />
-      </node>
-      <node concept="10WQ6h" id="6ySnuJfjmo9" role="ftvYc">
-        <property role="TrG5h" value="diff" />
       </node>
       <node concept="2a7GMi" id="hyaaJnI" role="ftvYc" />
       <node concept="tCFHf" id="hGpJCEM" role="ftvYc">
