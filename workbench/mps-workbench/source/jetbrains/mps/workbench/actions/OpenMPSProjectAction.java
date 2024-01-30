@@ -96,7 +96,13 @@ public class OpenMPSProjectAction extends AnAction {
         @NlsContexts.DialogMessage String msg = new DynamicBundle(this.getClass(), "messages.MPSIdeBundle").getMessage("unknown.mps.project.directory.text");
         Messages.showErrorDialog(currentProject, msg, title);
       } else {
-        OpenFileAction.openFile(virtualFile, currentProject);
+        if(currentProject==null) {
+          @NlsContexts.DialogTitle String title = new DynamicBundle(this.getClass(), "messages.MPSIdeBundle").getMessage("cannot.open.file.without.project.title");
+          @NlsContexts.DialogMessage String msg = new DynamicBundle(this.getClass(), "messages.MPSIdeBundle").getMessage("cannot.open.file.without.project.text");
+          Messages.showErrorDialog(msg, title);
+        } else {
+          OpenFileAction.openFile(virtualFile, currentProject);
+        }
       }
     }
   }
