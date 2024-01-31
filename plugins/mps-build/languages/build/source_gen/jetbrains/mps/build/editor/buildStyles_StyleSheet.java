@@ -12,6 +12,8 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.MPSFonts;
 import java.awt.Color;
+import com.intellij.ui.JBColor;
+import com.intellij.ui.Gray;
 import jetbrains.mps.build.editor.BuildLanguageStylePack_KeyPack.TODO_StyleKey;
 import jetbrains.mps.lang.core.behavior.IGenericComment__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -72,10 +74,13 @@ public class buildStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(6557304)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_in06m0_a0d()));
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
     }
 
+    private Color _StyleParameter_QueryFunction_in06m0_a0d() {
+      return new JBColor(0x640e78, 0x7c912f);
+    }
   }
   public static class keywordStyleClass extends AbstractStyleClass {
     public keywordStyleClass(EditorContext editorContext, SNode node) {
@@ -88,9 +93,12 @@ public class buildStyles_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(3158064)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_in06m0_a1e()));
     }
 
+    private Color _StyleParameter_QueryFunction_in06m0_a1e() {
+      return new JBColor(Gray._30, Gray._200);
+    }
   }
   public static class pluginStyleClass extends AbstractStyleClass {
     public pluginStyleClass(EditorContext editorContext, SNode node) {
@@ -103,9 +111,13 @@ public class buildStyles_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(26214)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_in06m0_a1f()));
     }
 
+    private Color _StyleParameter_QueryFunction_in06m0_a1f() {
+      JBColor color = new JBColor(0x006666, 0x006666);
+      return new JBColor(color, color.brighter());
+    }
   }
   public static class keyword_4StyleClass extends AbstractStyleClass {
     public keyword_4StyleClass(EditorContext editorContext, SNode node) {
@@ -133,9 +145,12 @@ public class buildStyles_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(128)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_in06m0_a1h()));
     }
 
+    private Color _StyleParameter_QueryFunction_in06m0_a1h() {
+      return new JBColor(0x000080, 0x9e5181);
+    }
   }
   public static class hintStyleClass extends AbstractStyleClass {
     public hintStyleClass(EditorContext editorContext, SNode node) {

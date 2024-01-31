@@ -266,7 +266,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
       setBackground(wpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR));
       setBorder(BorderFactory.createEmptyBorder(0, 4, 0, 4));
 
-      myLabel.setForeground(wpStyle.get(StyleAttributes.TEXT_COLOR));
+      myLabel.setForeground(MPSColors.BLACK);
 
       add(myLabel, BorderLayout.CENTER);
       add(myOpenConceptLabel, BorderLayout.EAST);
