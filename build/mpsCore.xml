@@ -141,7 +141,7 @@
     <jar destfile="${build.layout}/mps-core/languages/doctext/jetbrains.mps.lang.doctext.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.doctext" />
       <fileset dir="${mps_home}/plugins/mps-core/languages/core.xml" includes="icons/**, resources/**" />
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.doctext/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.doctext.jar" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.doctext-generator.jar" />
@@ -196,31 +196,31 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-core/languages/doctext/jetbrains.mps.lang.doctext-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.doctext.generator" />
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.doctext/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.doctext-generator.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-jetbrains.mps.lang.doctext-models">
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.doctext/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-util-core.doc-jetbrains.mps.lang.doctext-models">
+      <fileset dir="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-jetbrains.mps.lang.doctext-generator-templates">
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.doctext/generator/templates" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-util-core.doc-jetbrains.mps.lang.doctext-generator-templates">
+      <fileset dir="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/generator/templates" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-core/languages/doctext/jetbrains.mps.lang.doctext-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.doctext/generator/source_gen">
+      <fileset dir="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/generator/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.doctext/source_gen">
+      <fileset dir="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/languages/jetbrains.mps.lang.doctext/jetbrains.mps.lang.doctext.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-jetbrains.mps.lang.doctext-models" prefix="module/models" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-jetbrains.mps.lang.doctext-generator-templates" prefix="module/generator/templates" />
+      <zipfileset file="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/jetbrains.mps.lang.doctext.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-util-core.doc-jetbrains.mps.lang.doctext-models" prefix="module/models" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-util-core.doc-jetbrains.mps.lang.doctext-generator-templates" prefix="module/generator/templates" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.html.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.html.jar/META-INF" />
@@ -308,21 +308,21 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-core/languages/doctext/jetbrains.mps.lang.html.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.html" />
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.html/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/languages/util/html/jetbrains.mps.lang.html/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.html.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-jetbrains.mps.lang.html-models">
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.html/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-util-html-jetbrains.mps.lang.html-models">
+      <fileset dir="${mps_home}/languages/util/html/jetbrains.mps.lang.html/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-core/languages/doctext/jetbrains.mps.lang.html-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.html/source_gen">
+      <fileset dir="${mps_home}/languages/util/html/jetbrains.mps.lang.html/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/languages/jetbrains.mps.lang.html/jetbrains.mps.lang.html.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-jetbrains.mps.lang.html-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/languages/util/html/jetbrains.mps.lang.html/jetbrains.mps.lang.html.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-util-html-jetbrains.mps.lang.html-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.css.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.css.jar/META-INF" />
@@ -404,21 +404,21 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-core/languages/doctext/jetbrains.mps.lang.css.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.css" />
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.css/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/languages/util/html/jetbrains.mps.lang.css/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.css.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-jetbrains.mps.lang.css-models">
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.css/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-util-html-jetbrains.mps.lang.css-models">
+      <fileset dir="${mps_home}/languages/util/html/jetbrains.mps.lang.css/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-core/languages/doctext/jetbrains.mps.lang.css-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.css/source_gen">
+      <fileset dir="${mps_home}/languages/util/html/jetbrains.mps.lang.css/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/languages/jetbrains.mps.lang.css/jetbrains.mps.lang.css.mpl" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-jetbrains.mps.lang.css-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/languages/util/html/jetbrains.mps.lang.css/jetbrains.mps.lang.css.mpl" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-util-html-jetbrains.mps.lang.css-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.descriptor.doc.aspects.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.descriptor.doc.aspects.jar/META-INF" />
@@ -1295,14 +1295,14 @@
         <module file="${mps_home}/plugins/mps-core/languages/core.properties/jetbrains.mps.core.properties.mpl" />
         <module file="${basedir}/devkits/jetbrains.mps.devkit.documentation/jetbrains.mps.devkit.documentation.devkit" />
         <module file="${mps_home}/languages/util/execution/util/jetbrains.mps.execution.util.mpl" />
-        <module file="${mps_home}/languages/jetbrains.mps.lang.css/jetbrains.mps.lang.css.mpl" />
+        <module file="${mps_home}/languages/util/html/jetbrains.mps.lang.css/jetbrains.mps.lang.css.mpl" />
         <module file="${mps_home}/languages/languageDesign/generator/doc.aspects/jetbrains.mps.lang.descriptor.doc.aspects.msd" />
-        <module file="${mps_home}/languages/jetbrains.mps.lang.doctext/jetbrains.mps.lang.doctext.mpl" />
+        <module file="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/jetbrains.mps.lang.doctext.mpl" />
         <module file="${mps_home}/plugins/mps-core/languages/languageDesign/forms/jetbrains.mps.lang.editor.forms.mpl" />
         <module file="${mps_home}/plugins/mps-core/languages/languageDesign/forms/runtime/jetbrains.mps.lang.editor.forms.runtime.msd" />
         <module file="${mps_home}/plugins/mps-core/languages/languageDesign/table/jetbrains.mps.lang.editor.table.mpl" />
         <module file="${mps_home}/plugins/mps-core/languages/languageDesign/table/runtime/jetbrains.mps.lang.editor.table.runtime.msd" />
-        <module file="${mps_home}/languages/jetbrains.mps.lang.html/jetbrains.mps.lang.html.mpl" />
+        <module file="${mps_home}/languages/util/html/jetbrains.mps.lang.html/jetbrains.mps.lang.html.mpl" />
         <module file="${mps_home}/languages/languageDesign/migration/util/jetbrains.mps.lang.migration.util.mpl" />
       </chunk>
       <chunk />
@@ -1934,12 +1934,12 @@
   </target>
   
   <target name="java.compile.jetbrains.mps.lang.doctext" depends="java.compile.jetbrains.mps.lang.css, java.compile.jetbrains.mps.lang.html, fetchDependencies">
-    <mkdir dir="${mps_home}/languages/jetbrains.mps.lang.doctext/source_gen" />
+    <mkdir dir="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.doctext" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.doctext" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/languages/jetbrains.mps.lang.doctext/source_gen" />
+        <path location="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-annotations.jar" />
@@ -1995,17 +1995,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.doctext">
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.doctext/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.jetbrains.mps.lang.doctext.generator" depends="java.compile.jetbrains.mps.lang.css, java.compile.jetbrains.mps.lang.doctext, java.compile.jetbrains.mps.lang.html, fetchDependencies">
-    <mkdir dir="${mps_home}/languages/jetbrains.mps.lang.doctext/generator/source_gen" />
+    <mkdir dir="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/generator/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.doctext.generator" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.doctext.generator" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/languages/jetbrains.mps.lang.doctext/generator/source_gen" />
+        <path location="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/generator/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-annotations.jar" />
@@ -2061,17 +2061,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.doctext.generator">
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.doctext/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/generator/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.jetbrains.mps.lang.html" depends="fetchDependencies">
-    <mkdir dir="${mps_home}/languages/jetbrains.mps.lang.html/source_gen" />
+    <mkdir dir="${mps_home}/languages/util/html/jetbrains.mps.lang.html/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.html" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.html" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/languages/jetbrains.mps.lang.html/source_gen" />
+        <path location="${mps_home}/languages/util/html/jetbrains.mps.lang.html/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-annotations.jar" />
@@ -2123,17 +2123,17 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.html">
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.html/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/languages/util/html/jetbrains.mps.lang.html/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
   <target name="java.compile.jetbrains.mps.lang.css" depends="fetchDependencies">
-    <mkdir dir="${mps_home}/languages/jetbrains.mps.lang.css/source_gen" />
+    <mkdir dir="${mps_home}/languages/util/html/jetbrains.mps.lang.css/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.lang.css" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.lang.css" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/languages/jetbrains.mps.lang.css/source_gen" />
+        <path location="${mps_home}/languages/util/html/jetbrains.mps.lang.css/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-annotations.jar" />
@@ -2184,7 +2184,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.lang.css">
-      <fileset dir="${mps_home}/languages/jetbrains.mps.lang.css/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/languages/util/html/jetbrains.mps.lang.css/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -2209,17 +2209,17 @@
   <target name="cleanSources">
     <delete dir="${mps_home}/plugins/mps-core/languages/core.properties/source_gen" />
     <delete dir="${mps_home}/languages/util/execution/util/source_gen" />
-    <delete dir="${mps_home}/languages/jetbrains.mps.lang.css/source_gen" />
+    <delete dir="${mps_home}/languages/util/html/jetbrains.mps.lang.css/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/generator/doc.aspects/source_gen" />
-    <delete dir="${mps_home}/languages/jetbrains.mps.lang.doctext/source_gen" />
+    <delete dir="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/source_gen" />
     <delete dir="${mps_home}/plugins/mps-core/languages/languageDesign/forms/source_gen" />
     <delete dir="${mps_home}/plugins/mps-core/languages/languageDesign/forms/generator/source_gen" />
     <delete dir="${mps_home}/plugins/mps-core/languages/languageDesign/forms/runtime/source_gen" />
     <delete dir="${mps_home}/plugins/mps-core/languages/languageDesign/table/source_gen" />
     <delete dir="${mps_home}/plugins/mps-core/languages/languageDesign/table/runtime/source_gen" />
-    <delete dir="${mps_home}/languages/jetbrains.mps.lang.html/source_gen" />
+    <delete dir="${mps_home}/languages/util/html/jetbrains.mps.lang.html/source_gen" />
     <delete dir="${mps_home}/languages/languageDesign/migration/util/source_gen" />
-    <delete dir="${mps_home}/languages/jetbrains.mps.lang.doctext/generator/source_gen" />
+    <delete dir="${mps_home}/languages/util/core.doc/jetbrains.mps.lang.doctext/generator/source_gen" />
     <delete dir="${mps_home}/plugins/mps-core/languages/languageDesign/table/generator/source_gen" />
   </target>
 </project>
