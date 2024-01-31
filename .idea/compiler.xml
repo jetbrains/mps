@@ -63,11 +63,6 @@
       <directory url="file://$PROJECT_DIR$/languages/baseLanguage/varVariable/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/core/core/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/core/core/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.core.doc/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.css/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.doctext/generator/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.doctext/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/languages/jetbrains.mps.lang.html/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/access/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/access/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/actions/generator/source_gen" includeSubdirectories="true" />
@@ -229,11 +224,19 @@
       <directory url="file://$PROJECT_DIR$/languages/util/builders/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/util/builders/sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/util/builders/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/util/core.doc/jetbrains.mps.lang.core.doc/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/util/core.doc/jetbrains.mps.lang.doctext/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/util/core.doc/jetbrains.mps.lang.doctext/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/util/core.doc/jetbrains.mps.lang.doctext/test/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/util/core.text/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/util/execution/util/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/util/ext.plug/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/util/extension/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/util/extension/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/util/html/jetbrains.mps.lang.css/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/util/html/jetbrains.mps.lang.html/sandbox/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/util/html/jetbrains.mps.lang.html/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/util/html/jetbrains.mps.lang.html/test/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/util/makeup/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/util/regexp/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/util/regexp/solutions/jetbrains.mps.baseLanguage.regexp.runtime/source_gen" includeSubdirectories="true" />
