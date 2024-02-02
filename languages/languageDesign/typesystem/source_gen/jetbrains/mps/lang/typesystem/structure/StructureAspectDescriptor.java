@@ -883,6 +883,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.aggregate("supertypeNode", 0x117c567f086L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e29d976L).optional(false).ordered(true).multiple(false).origin("1201607798918").done();
     b.aggregate("isApplicableClause", 0x31d99a115038e5edL).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x31d99a115038e5e8L).optional(true).ordered(true).multiple(false).origin("3592071576955708909").done();
+    b.aggregate("overridesFun", 0x5cf67342aa518804L).target(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1885777d1370d97bL).optional(true).ordered(true).multiple(false).origin("6698668225922697220").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("Inequation Replacement Rule");
     return b.create();

@@ -26,6 +26,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import com.intellij.openapi.options.advanced.AdvancedSettings;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.ModelImports;
@@ -149,6 +150,7 @@ public class MakeActionParameters {
     }
     // dirty models from all the models/modules selected by user
     final ModelGenerationStatusManager statusManager = myProject.getComponent(ModelGenerationStatusManager.class);
+    // FIXME: this effectively aborts make if changes were made only to upstream dependencies
     List<SModel> dirtySelectedModels = ListSequence.fromList(Sequence.fromIterable(selectedModels).where(new IWhereFilter<SModel>() {
       public boolean accept(SModel md) {
         return statusManager.generationRequired(md);
@@ -162,9 +164,13 @@ public class MakeActionParameters {
       }
     }))).asUnmodifiable();
 
-    // add all "dirty" models from modules required for this build
-    BuildDependencies buildDeps = new BuildDependencies(myProject, selectedModules);
-    Iterable<IResource> requiredResources = new ModelsToResources(buildDeps.dirtyModelsFromRequiredModules(), false).resources();
+    Iterable<IResource> requiredResources = null;
+    boolean includeDependencies = AdvancedSettings.getInstance().getBoolean("mps.make.include.dependencies");
+    if (includeDependencies) {
+      // add all "dirty" models from modules required for this build
+      BuildDependencies buildDeps = new BuildDependencies(myProject, selectedModules);
+      requiredResources = new ModelsToResources(buildDeps.dirtyModelsFromRequiredModules(), false).resources();
+    }
 
     return Sequence.fromIterable(selectedResources).concat(Sequence.fromIterable(requiredResources));
   }
