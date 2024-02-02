@@ -86,7 +86,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -1013,6 +1013,12 @@
       <property role="1sEMCp" value="typesystem.html#replacementrules" />
       <ref role="1fZFei" to="f7uj:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
+    <node concept="1TJgyj" id="5NQsOaEkow4" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="overridesFun" />
+      <property role="IQ2ns" value="6698668225922697220" />
+      <ref role="20lvS9" node="1y5tROjsd_V" resolve="OverridesConceptFunction" />
+    </node>
   </node>
   <node concept="1TIwiD" id="hv622I5">
     <property role="R5$K7" value="false" />
@@ -1237,18 +1243,8 @@
       <property role="IQ2ns" value="8090891477833133023" />
       <ref role="20lvS9" node="718BIU4ue$Y" resolve="QuickFixField" />
     </node>
-    <node concept="1TJgyj" id="hz2lrYP" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="methodDeclaration" />
-      <property role="20lbJX" value="fLJekj5/0..n" />
-      <property role="IQ2ns" value="1205851242421" />
-      <ref role="20lvS9" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
-    </node>
     <node concept="PrWs8" id="1pKC0SgTzU5" role="PzmwI">
       <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
-    </node>
-    <node concept="PrWs8" id="3AueY_NAKU8" role="PzmwI">
-      <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQ7" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/quickFix.png" />
@@ -1256,6 +1252,16 @@
     <node concept="1sEMCm" id="5wIG6OxYTuV" role="bvy1s">
       <property role="1sEMCp" value="typesystem.html#quick-fixes" />
       <ref role="1fZFei" to="f7uj:46nPloez0vX" resolve="HelpCenterDocUrl" />
+    </node>
+    <node concept="PrWs8" id="3AueY_NAKU8" role="PzmwI">
+      <ref role="PrY4T" to="tp4f:hyWqMFP" resolve="IClassifier" />
+    </node>
+    <node concept="1TJgyj" id="hz2lrYP" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="methodDeclaration" />
+      <property role="20lbJX" value="fLJekj5/0..n" />
+      <property role="IQ2ns" value="1205851242421" />
+      <ref role="20lvS9" to="tp4f:hyXrIf3" resolve="DefaultClassifierMethodDeclaration" />
     </node>
   </node>
   <node concept="1TIwiD" id="hGQ5ZVt">

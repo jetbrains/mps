@@ -24,6 +24,7 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.smodel.resources.MResource;
+import com.intellij.openapi.options.advanced.AdvancedSettings;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.ModelImports;
@@ -144,14 +145,19 @@ public class MakeActionParameters {
     }
     // dirty models from all the models/modules selected by user
     final ModelGenerationStatusManager statusManager = myProject.getComponent(ModelGenerationStatusManager.class);
+    // FIXME: this effectively aborts make if changes were made only to upstream dependencies
     List<SModel> dirtySelectedModels = ListSequence.fromList(Sequence.fromIterable(selectedModels).where((md) -> statusManager.generationRequired(md)).toList()).asUnmodifiable();
     // only the selected elements are to be rebuilt if myCleanBuild
     Iterable<IResource> selectedResources = new ModelsToResources((myCleanBuild ? selectedModels : dirtySelectedModels), myCleanBuild).resources();
     Set<SModule> selectedModules = SetSequence.fromSet(SetSequence.fromSetWithValues(new HashSet<SModule>(), Sequence.fromIterable(selectedResources).ofType(MResource.class).select((mr) -> mr.module()))).asUnmodifiable();
 
-    // add all "dirty" models from modules required for this build
-    BuildDependencies buildDeps = new BuildDependencies(myProject, selectedModules);
-    Iterable<IResource> requiredResources = new ModelsToResources(buildDeps.dirtyModelsFromRequiredModules(), false).resources();
+    Iterable<IResource> requiredResources = null;
+    boolean includeDependencies = AdvancedSettings.getInstance().getBoolean("mps.make.include.dependencies");
+    if (includeDependencies) {
+      // add all "dirty" models from modules required for this build
+      BuildDependencies buildDeps = new BuildDependencies(myProject, selectedModules);
+      requiredResources = new ModelsToResources(buildDeps.dirtyModelsFromRequiredModules(), false).resources();
+    }
 
     return Sequence.fromIterable(selectedResources).concat(Sequence.fromIterable(requiredResources));
   }

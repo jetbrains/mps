@@ -112,8 +112,8 @@ public class RulesManager {
           mySubtypingRules.addRuleSetItem(typesystem.getSubtypingRules());
           mySubstituteTypeRules.addRuleSetItem(typesystem.getSubstituteTypeRules());
           Set<ComparisonRule_Runtime> comparisonRule_runtimes = typesystem.getComparisonRules();
-          myComparisonRules.addRuleSetItem(comparisonRule_runtimes);
-          myReplacementRules.addRuleSetItem(typesystem.getEliminationRules());
+          myComparisonRules.addRuleSetItem(comparisonRule_runtimes, languageRanks::get);
+          myReplacementRules.addRuleSetItem(typesystem.getEliminationRules(), languageRanks::get);
           myVariableConverters.addAll(typesystem.getVariableConverters());
           myNonTypeSystemRules.addRuleSetItem(typesystem.getNonTypesystemRules());
           myOverloadedOperationsManager.addOverloadedOperationsTypeProviders(typesystem.getOverloadedOperationsTypesProviders());

@@ -42,7 +42,7 @@ public class BuildDependencies {
     //  - for non-gtor - extends closure of all used langs
     // 2. gtor modules for every used lang (and its used langs)
     // 3. for every gtor its source lang
-    // 4. directly used modules
+    // 4. directly used modules (and closure thereof)
 
     UsedModulesCollector umc = new UsedModulesCollector(myMpsProject.getRepository());
     Set<SModule> visited = SetSequence.fromSet(new HashSet<SModule>());
