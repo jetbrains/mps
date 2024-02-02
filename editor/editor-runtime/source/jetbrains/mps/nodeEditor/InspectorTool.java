@@ -190,7 +190,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
 
   @Override
   public void activate() {
-    openTool(true);
+    openToolLater(true);
   }
 
   public EditorComponent getInspector() {
