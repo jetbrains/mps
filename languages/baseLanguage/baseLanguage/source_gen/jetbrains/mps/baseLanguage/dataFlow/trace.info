@@ -2366,15 +2366,16 @@
       <node id="6868777471677432191" at="80,80,81,134" concept="4" />
       <node id="6868777471677432204" at="83,27,84,42" concept="4" />
       <node id="6868777471677432220" at="87,52,88,64" concept="9" />
-      <node id="6868777471677432226" at="88,64,89,47" concept="9" />
-      <node id="6868777471677432236" at="90,81,91,136" concept="4" />
-      <node id="6868777471677432247" at="92,9,93,53" concept="9" />
-      <node id="6868777471677432256" at="94,33,95,45" concept="4" />
-      <node id="6868777471677432263" at="96,9,97,60" concept="4" />
+      <node id="6868777471677432226" at="88,64,89,72" concept="9" />
+      <node id="3440237743150455338" at="90,9,91,34" concept="9" />
+      <node id="3440237743150465525" at="92,81,93,83" concept="4" />
+      <node id="6868777471677432247" at="95,9,96,85" concept="9" />
+      <node id="6868777471677432263" at="96,85,97,60" concept="4" />
       <node id="6868777471677432276" at="98,7,99,20" concept="10" />
       <node id="6868777471677432036" at="101,45,102,39" concept="10" />
-      <node id="6868777471677432036" at="107,0,108,0" concept="13" trace="VariableReference$TC" />
-      <node id="6868777471677432036" at="111,0,112,0" concept="13" trace="variableDeclaration$N1XG" />
+      <node id="3440237743150443370" at="104,70,105,49" concept="10" />
+      <node id="6868777471677432036" at="110,0,111,0" concept="13" trace="VariableReference$TC" />
+      <node id="6868777471677432036" at="114,0,115,0" concept="13" trace="variableDeclaration$N1XG" />
       <node id="6868777471677432036" at="43,0,45,0" concept="2" trace="NullableAnalyzer#()V" />
       <node id="6868777471677432036" at="31,0,34,0" concept="2" trace="NullableAnalyzerRunner#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4212311917866530343" at="55,52,58,11" concept="7" />
@@ -2383,10 +2384,11 @@
       <node id="6868777471677432181" at="76,9,79,9" concept="7" />
       <node id="6868777471677432189" at="79,9,82,9" concept="7" />
       <node id="6868777471677432202" at="82,9,85,9" concept="7" />
-      <node id="6868777471677432234" at="89,47,92,9" concept="7" />
-      <node id="6868777471677432254" at="93,53,96,9" concept="7" />
+      <node id="3440237743150455338" at="91,34,94,11" concept="7" />
       <node id="6868777471677432036" at="101,0,104,0" concept="8" trace="getDirection#()Ljetbrains/mps/lang/dataFlow/framework/AnalysisDirection;" />
+      <node id="3440237743150443370" at="104,0,107,0" concept="14" trace="as_4e6y3_a0a1a4a3e#(Ljava/lang/Object;Ljava/lang/Class;)null" />
       <node id="6868777471677432036" at="45,0,49,0" concept="8" trace="initial#(Ljetbrains/mps/lang/dataFlow/framework/Program;)Ljava/util/Map;" />
+      <node id="3440237743150455338" at="89,72,95,9" concept="1" />
       <node id="6868777471677432036" at="34,0,41,0" concept="2" trace="NullableAnalyzerRunner#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/lang/dataFlow/framework/ProgramFactory;)V" />
       <node id="4212311917866530318" at="51,60,60,9" concept="6" />
       <node id="4212311917866530301" at="50,77,61,7" concept="6" />
@@ -2402,9 +2404,9 @@
       <scope id="6868777471677432182" at="77,53,78,45" />
       <scope id="6868777471677432190" at="80,80,81,134" />
       <scope id="6868777471677432203" at="83,27,84,42" />
-      <scope id="6868777471677432235" at="90,81,91,136" />
-      <scope id="6868777471677432255" at="94,33,95,45" />
+      <scope id="3440237743150455342" at="92,81,93,83" />
       <scope id="6868777471677432036" at="101,45,102,39" />
+      <scope id="3440237743150443370" at="104,70,105,49" />
       <scope id="6868777471677432036" at="43,0,45,0" />
       <scope id="6868777471677432057" at="45,63,47,20">
         <var name="result" id="6868777471677432059" />
@@ -2413,8 +2415,15 @@
         <var name="node" id="6868777471677432036" />
       </scope>
       <scope id="6868777471677432036" at="101,0,104,0" />
+      <scope id="3440237743150443370" at="104,0,107,0">
+        <var name="o" id="3440237743150443370" />
+        <var name="type" id="3440237743150443370" />
+      </scope>
       <scope id="6868777471677432036" at="45,0,49,0">
         <var name="program" id="6868777471677432036" />
+      </scope>
+      <scope id="3440237743150455338" at="90,9,94,11">
+        <var name="ref" id="3440237743150455338" />
       </scope>
       <scope id="6868777471677432036" at="34,86,39,115" />
       <scope id="6868777471677432036" at="34,0,41,0">
@@ -2459,10 +2468,10 @@
         <var name="state" id="6868777471677432036" />
         <var name="stateValues" id="6868777471677432036" />
       </scope>
-      <unit id="6868777471677432036" at="106,0,109,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableAnalyzerRunner$CONCEPTS" />
-      <unit id="6868777471677432036" at="110,0,113,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableAnalyzerRunner$LINKS" />
-      <unit id="6868777471677432036" at="42,0,105,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableAnalyzerRunner$NullableAnalyzer" />
-      <unit id="6868777471677432036" at="29,0,114,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableAnalyzerRunner" />
+      <unit id="6868777471677432036" at="109,0,112,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableAnalyzerRunner$CONCEPTS" />
+      <unit id="6868777471677432036" at="113,0,116,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableAnalyzerRunner$LINKS" />
+      <unit id="6868777471677432036" at="42,0,108,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableAnalyzerRunner$NullableAnalyzer" />
+      <unit id="6868777471677432036" at="29,0,117,0" name="jetbrains.mps.baseLanguage.dataFlow.NullableAnalyzerRunner" />
     </file>
     <file name="notNullInstruction.java">
       <node id="6868777471677432048" at="9,0,10,0" concept="5" trace="myexpression" />
