@@ -14,16 +14,16 @@
     <!--<mps.modelIdFactory type="kotlin" className="jetbrains.mps.kotlin.ide.common.KotlinPackageModelId$Factory"/>-->
 
     <!-- UI entry for kotlin roots -->
-    <mps.modelRootEntry rootType="kotlin_common" title="Kotlin Common"
-                        className="jetbrains.mps.kotlin.idePlugin.rootEntry.KotlinCommonStubModelRootEntryFactory"/>
-    <mps.modelRootEntry rootType="kotlin_jvm" title="Kotlin JVM"
-                        className="jetbrains.mps.kotlin.idePlugin.rootEntry.KotlinJvmStubModelRootEntryFactory"/>
+    <mps.modelRootEntry rootType="kotlin_common" title="Kotlin"
+                        className="jetbrains.mps.kotlin.idePlugin.rootEntry.KotlinStubModelRootEntryFactory"/>
+    <mps.modelRootEntry rootType="kotlin_jvm" title="Kotlin JVM (deprecated)"
+                        className="jetbrains.mps.kotlin.idePlugin.rootEntry.KotlinStubModelRootEntryFactory"/>
 
     <!-- Metadata file types + indexing facility -->
     <fileType extensions="kotlin_metadata;kotlin_builtins;knm" name="KOTLIN_METADATA" fieldName="INSTANCE"
               implementationClass="jetbrains.mps.kotlin.idePlugin.fileTypes.KotlinMetadataFileType"/>
     <idIndexer filetype="KOTLIN_METADATA" implementationClass="jetbrains.mps.kotlin.idePlugin.fastSearch.KotlinStubIdIndexer"/>
-    <postStartupActivity implementation="jetbrains.mps.kotlin.idePlugin.fastSearch.KotlinStubFastFindPlug" />
+    <postStartupActivity implementation="jetbrains.mps.kotlin.idePlugin.KotlinPluginProjectActivity"/>
 
     <!-- Kotlin file type + highlighting facility -->
     <fileType extensions="kt" name="KOTLIN" fieldName="INSTANCE" language="KOTLIN" hashBangs="kotlin"

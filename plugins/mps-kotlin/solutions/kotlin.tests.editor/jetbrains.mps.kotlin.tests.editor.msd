@@ -13,9 +13,9 @@
   <dependencies>
     <dependency reexport="false">6b3888c1-9802-44d8-8baf-f8e6c33ed689(jetbrains.mps.kotlin)</dependency>
     <dependency reexport="false">5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)</dependency>
-    <dependency reexport="false">6944825c-ddc2-4099-8cc7-5e6dbbf7f0be(jetbrains.mps.kotlin.stubs)</dependency>
     <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
     <dependency reexport="false">49808fad-9d41-4b96-83fa-9231640f6b2b(JUnit)</dependency>
+    <dependency reexport="false">6944825c-ddc2-4099-8cc7-5e6dbbf7f0be(jetbrains.mps.kotlin.stubs)</dependency>
   </dependencies>
   <languageVersions>
     <language slang="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" version="12" />

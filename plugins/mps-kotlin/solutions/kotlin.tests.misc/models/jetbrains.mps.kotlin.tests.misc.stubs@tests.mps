@@ -10,7 +10,7 @@
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
-    <import index="x6hl" ref="398d67d2-c2e9-11e2-ad49-6cf049e62ea4/kotlinJvm:com.intellij.ui.dsl.builder(jetbrains.mps.kotin.ui.dsl/)" />
+    <import index="x6hl" ref="398d67d2-c2e9-11e2-ad49-6cf049e62ea4/kotlin_jvm:com.intellij.ui.dsl.builder(jetbrains.mps.kotin.ui.dsl/)" />
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
     <import index="iu4r" ref="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.internal(jetbrains.mps.kotlin.stdlib/)" />
     <import index="0" ref="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin(jetbrains.mps.kotlin.stdlib/)" />
@@ -180,6 +180,7 @@
       <concept id="7027413324315184167" name="jetbrains.mps.kotlin.structure.ILambdaAsArgument" flags="ngI" index="3$8iW8">
         <child id="2936055411798374269" name="lambda" index="1XD06E" />
       </concept>
+      <concept id="8282399442080267226" name="jetbrains.mps.kotlin.structure.ValueClassModifier" flags="ng" index="1FTCmN" />
       <concept id="4929770680970628281" name="jetbrains.mps.kotlin.structure.Annotation" flags="ng" index="3N2tND">
         <reference id="4929770680970643073" name="constructor" index="3N3xrh" />
       </concept>
@@ -201,6 +202,7 @@
       </concept>
       <concept id="2936055411798373481" name="jetbrains.mps.kotlin.structure.ClassDeclaration" flags="ng" index="1XD0aY">
         <child id="2324909103763444261" name="primaryConstructor" index="KDYUA" />
+        <child id="2936055411798374242" name="modifier" index="1XD06P" />
       </concept>
       <concept id="2936055411798373400" name="jetbrains.mps.kotlin.structure.PrimaryConstructor" flags="ng" index="1XD0bf">
         <child id="2936055411798374111" name="parameters" index="1XD008" />
@@ -233,7 +235,6 @@
         <child id="2936055411798374015" name="type" index="1XD02C" />
       </concept>
       <concept id="2936055411798373271" name="jetbrains.mps.kotlin.structure.InternalVisibility" flags="ng" index="1XD0l0" />
-      <concept id="2936055411798373269" name="jetbrains.mps.kotlin.structure.PublicVisibility" flags="ng" index="1XD0l2" />
       <concept id="2936055411798373247" name="jetbrains.mps.kotlin.structure.AnnotationList" flags="ng" index="1XD0mC">
         <child id="1991556721076093532" name="annotations" index="AqMKl" />
       </concept>
@@ -1557,10 +1558,7 @@
               <ref role="2WH_rO" node="61M21yhdj20" resolve="assertLoadedAs" />
               <node concept="2tJFMh" id="61M21yhdWbb" role="2XxRq1">
                 <node concept="ZC_QK" id="61M21yhdWe0" role="2tJFKM">
-                  <ref role="2aWVGs" to="0:~~Result" resolve="Result" />
-                  <node concept="ZC_QK" id="61M21yhdWhK" role="2aWVGa">
-                    <ref role="2aWVGs" to="0:~kotlin/Result" resolve="Result" />
-                  </node>
+                  <ref role="2aWVGs" to="0:~kotlin/Result" resolve="Result" />
                 </node>
               </node>
               <node concept="3xONca" id="61M21yhdmdI" role="2XxRq1">
@@ -1851,7 +1849,6 @@
         <node concept="eKYAL" id="2dcS_OZQwGh" role="1XD0Tu" />
         <node concept="1XD0aY" id="~kotlin/Result" role="1XD0Tu">
           <property role="TrG5h" value="Result" />
-          <node concept="1XD0l2" id="2dcS_OZqSqR" role="2BPcuh" />
           <node concept="1XD08$" id="2dcS_OZqSqS" role="ICcUN" />
           <node concept="1XD0fq" id="~kotlin/Result.T" role="1XPbGx">
             <property role="TrG5h" value="T" />
@@ -1884,7 +1881,6 @@
                 <ref role="1SePDO" to="0:~kotlin/Boolean" resolve="Boolean" />
               </node>
             </node>
-            <node concept="1XD0l2" id="2dcS_OZqSr5" role="2BPcuh" />
             <node concept="1XD08$" id="2dcS_OZqSr6" role="ICcUN" />
             <node concept="1hPHs5" id="2dcS_OZqSr7" role="1XD05H" />
           </node>
@@ -1896,7 +1892,6 @@
                 <ref role="1SePDO" to="0:~kotlin/Boolean" resolve="Boolean" />
               </node>
             </node>
-            <node concept="1XD0l2" id="2dcS_OZqSrb" role="2BPcuh" />
             <node concept="1XD08$" id="2dcS_OZqSrc" role="ICcUN" />
             <node concept="1hPHs5" id="2dcS_OZqSrd" role="1XD05H" />
           </node>
@@ -1921,7 +1916,6 @@
           </node>
           <node concept="1XD0bz" id="~Result.equals(Any?)" role="KS$fE">
             <property role="TrG5h" value="equals" />
-            <node concept="1XD0l2" id="2dcS_OZqSrp" role="2BPcuh" />
             <node concept="1XD08z" id="2dcS_OZqSrq" role="ICcUN" />
             <node concept="1hPHs5" id="2dcS_OZqSrr" role="THmaL" />
             <node concept="1XD0kn" id="2dcS_OZqSrs" role="1XPytU" />
@@ -1939,7 +1933,6 @@
           </node>
           <node concept="1XD0bz" id="~Result.exceptionOrNull()" role="KS$fE">
             <property role="TrG5h" value="exceptionOrNull" />
-            <node concept="1XD0l2" id="2dcS_OZqSry" role="2BPcuh" />
             <node concept="1XD08$" id="2dcS_OZqSrz" role="ICcUN" />
             <node concept="1hPHs5" id="2dcS_OZqSr$" role="THmaL" />
             <node concept="hI6pR" id="2dcS_OZqSrA" role="21NdcZ">
@@ -1950,7 +1943,6 @@
           </node>
           <node concept="1XD0bz" id="~Result.getOrNull()" role="KS$fE">
             <property role="TrG5h" value="getOrNull" />
-            <node concept="1XD0l2" id="2dcS_OZqSrC" role="2BPcuh" />
             <node concept="1XD08$" id="2dcS_OZqSrD" role="ICcUN" />
             <node concept="1hPHs5" id="2dcS_OZqSrE" role="THmaL" />
             <node concept="1XD0kl" id="2dcS_OZqSrF" role="1XPytU" />
@@ -1967,7 +1959,6 @@
           </node>
           <node concept="1XD0bz" id="~Result.hashCode()" role="KS$fE">
             <property role="TrG5h" value="hashCode" />
-            <node concept="1XD0l2" id="2dcS_OZqSrL" role="2BPcuh" />
             <node concept="1XD08z" id="2dcS_OZqSrM" role="ICcUN" />
             <node concept="1hPHs5" id="2dcS_OZqSrN" role="THmaL" />
             <node concept="1XD088" id="2dcS_OZqSrO" role="21NdcZ">
@@ -1976,7 +1967,6 @@
           </node>
           <node concept="1XD0bz" id="~Result.toString()" role="KS$fE">
             <property role="TrG5h" value="toString" />
-            <node concept="1XD0l2" id="2dcS_OZqSrQ" role="2BPcuh" />
             <node concept="1XD08z" id="2dcS_OZqSrR" role="ICcUN" />
             <node concept="1hPHs5" id="2dcS_OZqSrS" role="THmaL" />
             <node concept="1XD088" id="2dcS_OZqSrT" role="21NdcZ">
@@ -1990,7 +1980,6 @@
             </node>
             <node concept="1XD0bz" id="~Result.Companion.failure&lt;1&gt;(Throwable)" role="KS$fE">
               <property role="TrG5h" value="failure" />
-              <node concept="1XD0l2" id="2dcS_OZqSpJ" role="2BPcuh" />
               <node concept="1XD08$" id="2dcS_OZqSpK" role="ICcUN" />
               <node concept="1hPHs5" id="2dcS_OZqSpL" role="THmaL" />
               <node concept="1XD0kl" id="2dcS_OZqSpM" role="1XPytU" />
@@ -2034,7 +2023,6 @@
             </node>
             <node concept="1XD0bz" id="~Result.Companion.success&lt;1&gt;(1)" role="KS$fE">
               <property role="TrG5h" value="success" />
-              <node concept="1XD0l2" id="2dcS_OZqSq2" role="2BPcuh" />
               <node concept="1XD08$" id="2dcS_OZqSq3" role="ICcUN" />
               <node concept="1hPHs5" id="2dcS_OZqSq4" role="THmaL" />
               <node concept="1XD0kl" id="2dcS_OZqSq5" role="1XPytU" />
@@ -2085,7 +2073,6 @@
               <ref role="KYwOm" to="aucy:~kotlin/io/Serializable" resolve="Serializable" />
             </node>
             <node concept="1XD0bf" id="~Result.Failure.new(Throwable)" role="KDYUA">
-              <node concept="1XD0l2" id="2dcS_OZqSqq" role="2BPcuh" />
               <node concept="1XD0fH" id="~Result.Failure.new(Throwable).exception" role="1XD008">
                 <property role="TrG5h" value="exception" />
                 <node concept="1XD088" id="2dcS_OZqSqs" role="37iW8f">
@@ -2101,13 +2088,11 @@
                   <ref role="1SePDO" to="0:~kotlin/Throwable" resolve="Throwable" />
                 </node>
               </node>
-              <node concept="1XD0l2" id="2dcS_OZqSqv" role="2BPcuh" />
               <node concept="1XD08$" id="2dcS_OZqSqw" role="ICcUN" />
               <node concept="1hPHs5" id="2dcS_OZqSqx" role="1XD05H" />
             </node>
             <node concept="1XD0bz" id="~Result.Failure.equals(Any?)" role="KS$fE">
               <property role="TrG5h" value="equals" />
-              <node concept="1XD0l2" id="2dcS_OZqSq$" role="2BPcuh" />
               <node concept="1XD08z" id="2dcS_OZqSq_" role="ICcUN" />
               <node concept="1hPHs5" id="2dcS_OZqSqA" role="THmaL" />
               <node concept="1XD0kn" id="2dcS_OZqSqB" role="1XPytU" />
@@ -2125,7 +2110,6 @@
             </node>
             <node concept="1XD0bz" id="~Result.Failure.hashCode()" role="KS$fE">
               <property role="TrG5h" value="hashCode" />
-              <node concept="1XD0l2" id="2dcS_OZqSqH" role="2BPcuh" />
               <node concept="1XD08z" id="2dcS_OZqSqI" role="ICcUN" />
               <node concept="1hPHs5" id="2dcS_OZqSqJ" role="THmaL" />
               <node concept="1XD088" id="2dcS_OZqSqK" role="21NdcZ">
@@ -2134,7 +2118,6 @@
             </node>
             <node concept="1XD0bz" id="~Result.Failure.toString()" role="KS$fE">
               <property role="TrG5h" value="toString" />
-              <node concept="1XD0l2" id="2dcS_OZqSqM" role="2BPcuh" />
               <node concept="1XD08z" id="2dcS_OZqSqN" role="ICcUN" />
               <node concept="1hPHs5" id="2dcS_OZqSqO" role="THmaL" />
               <node concept="1XD088" id="2dcS_OZqSqP" role="21NdcZ">
@@ -2165,6 +2148,7 @@
           <node concept="3xLA65" id="2dcS_OZuMGa" role="lGtFl">
             <property role="TrG5h" value="expected" />
           </node>
+          <node concept="1FTCmN" id="Tni1ZmapqJ" role="1XD06P" />
         </node>
         <node concept="eKYAL" id="2dcS_OZuiz2" role="1XD0Tu" />
         <node concept="15s5l7" id="2dcS_P08L7Z" role="lGtFl">
@@ -2187,7 +2171,6 @@
         <node concept="eKYAL" id="61M21yhdcoQ" role="1XD0Tu" />
         <node concept="1XD0bz" id="~#kotlin/Array&lt;0&gt;.component2&lt;1&gt;()" role="1XD0Tu">
           <property role="TrG5h" value="component2" />
-          <node concept="1XD0l2" id="61M21yhc2ZO" role="2BPcuh" />
           <node concept="1XD08$" id="61M21yhc2ZP" role="ICcUN" />
           <node concept="1hPHs5" id="61M21yhc2ZQ" role="THmaL" />
           <node concept="1XD0kn" id="61M21yhc2ZR" role="1XPytU" />

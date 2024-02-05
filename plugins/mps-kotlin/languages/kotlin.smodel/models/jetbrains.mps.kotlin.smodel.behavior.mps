@@ -2802,10 +2802,7 @@
                     <ref role="1Pybhc" to="wbbs:4XaBo_Yu8Ms" resolve="BuiltIn" />
                     <node concept="2tJFMh" id="7XIUL68RDcZ" role="37wK5m">
                       <node concept="ZC_QK" id="7XIUL68RDAo" role="2tJFKM">
-                        <ref role="2aWVGs" to="1xrd:~~collections" resolve="collections" />
-                        <node concept="ZC_QK" id="7XIUL68REhy" role="2aWVGa">
-                          <ref role="2aWVGs" to="1xrd:~kotlin/collections/MutableList" resolve="MutableList" />
-                        </node>
+                        <ref role="2aWVGs" to="1xrd:~kotlin/collections/MutableList" resolve="MutableList" />
                       </node>
                     </node>
                   </node>
