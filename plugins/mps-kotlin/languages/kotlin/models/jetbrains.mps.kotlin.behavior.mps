@@ -42203,7 +42203,7 @@
                     <node concept="2OqwBi" id="2QFEoQbCN1M" role="2Oq$k0">
                       <node concept="13iPFW" id="2QFEoQbCO2o" role="2Oq$k0" />
                       <node concept="3Tsc0h" id="2QFEoQbCN1N" role="2OqNvi">
-                        <ref role="3TtcxE" to="hcm8:3xoAZRy8V0q" />
+                        <ref role="3TtcxE" to="hcm8:3xoAZRy8V0q" resolve="platforms" />
                       </node>
                     </node>
                     <node concept="3goQfb" id="6Mh9$DhH9do" role="2OqNvi">

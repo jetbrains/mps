@@ -11,6 +11,7 @@ import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.kotlin.api.members.SignatureAttributeKey;
@@ -28,7 +29,7 @@ public class InheritorHelper {
       }
     };
 
-    SignatureScope scope = CompositeSignatureScope.of(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(SNodeOperations.getNodeAncestor(source, CONCEPTS.IClassLike$go, false, false)), filter, source, ((boolean) false)));
+    SignatureScope scope = CompositeSignatureScope.of(IType__BehaviorDescriptor.getInstanceScopes_id1ODRHGtuist.invoke(IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(SNodeOperations.getNodeAncestor(source, CONCEPTS.IClassLike$go, false, false)), filter, FullScopeContext.fromContext(source), ((boolean) false)));
 
     // first element may not be the one, in which case whichever method findInheritedMember was called upon should be called recursively (eg. node.getVisibility() -> overriding parent.getVisibility() -> root of the inheritance.getVisibility())
     return Sequence.fromIterable(scope.getElements(null)).first();

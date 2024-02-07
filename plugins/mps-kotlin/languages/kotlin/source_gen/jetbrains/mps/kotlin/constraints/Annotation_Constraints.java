@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
+import jetbrains.mps.kotlin.scopes.signed.ScopeContext;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScopeAsScope;
@@ -40,7 +41,7 @@ public class Annotation_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            AnnotationConstructorsScope scope = new AnnotationConstructorsScope(_context.getContextNode(), SModelStereotype.isStubModel(SNodeOperations.getModel(_context.getContextNode())));
+            AnnotationConstructorsScope scope = new AnnotationConstructorsScope(ScopeContext.of(_context.getContextNode()), SModelStereotype.isStubModel(SNodeOperations.getModel(_context.getContextNode())));
             return new SignatureScopeAsScope(scope, CONCEPTS.IConstructorDeclaration$rR);
           }
         };

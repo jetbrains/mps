@@ -56,7 +56,7 @@ public class FunctionDeclaration_TextGen extends TextGenDescriptorBase {
     tgs.append(")");
     KotlinTextGen.returnType(ctx.getPrimaryInput(), ctx);
     KotlinTextGen.constraints(ctx.getPrimaryInput(), ctx);
-    if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(IInheritable__BehaviorDescriptor.getInheritance_id6jE_6duswG9.invoke(ctx.getPrimaryInput())), CONCEPTS.AbstractInheritanceModifier$GA))) {
+    if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(IInheritable__BehaviorDescriptor.getInheritance_id6jE_6duswG9.invoke(ctx.getPrimaryInput())), CONCEPTS.AbstractInheritanceModifier$GA)) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.modifiers$XKtM), CONCEPTS.ExpectPlatformModifier$YQ)).isEmpty()) {
       tgs.append(" ");
       KotlinTextGen.functionStatements(ctx.getPrimaryInput(), ctx);
     }
@@ -75,6 +75,7 @@ public class FunctionDeclaration_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept ExpectPlatformModifier$YQ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af474L, "jetbrains.mps.kotlin.structure.ExpectPlatformModifier");
     /*package*/ static final SConcept AbstractInheritanceModifier$GA = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f2L, "jetbrains.mps.kotlin.structure.AbstractInheritanceModifier");
     /*package*/ static final SInterfaceConcept UnitConcept$1g = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept");
   }

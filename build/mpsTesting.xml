@@ -1906,6 +1906,7 @@
   <target name="java.compile.java.modules.cycle.1" depends="java.compile.jetbrains.mps.baseLanguage.unitTest, java.compile.jetbrains.mps.lang.test.matcher, java.compile.jetbrains.mps.baseLanguage.unitTest.platform, java.compile.jetbrains.mps.baseLanguage.unitTest.runtime, fetchDependencies">
     <mkdir dir="${build.tmp}/java.modules.cycle.1" />
     <javac destdir="${build.tmp}/java.modules.cycle.1" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
+      <withKotlin moduleName="java.modules.cycle.1"></withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/mps-testing/languages/lang.test/source_gen" />

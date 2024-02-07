@@ -25,13 +25,13 @@ import jetbrains.mps.kotlin.api.members.SignatureBuilder;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.scopes.runtime.HidingByNameScope;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.kotlin.scopes.InheritorHelper;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import java.util.Objects;
 import jetbrains.mps.kotlin.api.builtins.BuiltIn;
@@ -88,7 +88,7 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
   }
   /*package*/ static boolean isAbstract_id4KPNZIZDjbY(@NotNull SNode __thisNode__) {
     // GetInheritance call another visitor if override. Besides, why override an abstract method with an abstract one?
-    return SConceptOperations.isExactly(SNodeOperations.asSConcept(((SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$Gfqk) ? SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.inheritance$TFvr)) : IInheritable__BehaviorDescriptor.getInheritance_id6jE_6duswG9.invoke(__thisNode__)))), CONCEPTS.AbstractInheritanceModifier$GA);
+    return SConceptOperations.isExactly(SNodeOperations.asSConcept(((SPropertyOperations.getBoolean(__thisNode__, PROPS.isOverride$Gfqk) ? SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.inheritance$TFvr)) : IInheritable__BehaviorDescriptor.getInheritance_id6jE_6duswG9.invoke(__thisNode__)))), CONCEPTS.AbstractInheritanceModifier$GA) || Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.modifiers$XKtM), CONCEPTS.ExpectPlatformModifier$YQ)).isNotEmpty();
   }
   /*package*/ static List<SNode> getParameters_id6f3juM$_Kx4(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.parameters$dfEr);
@@ -281,17 +281,18 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink receiverType$7yLT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, 0x764202afbfc6bde5L, "receiverType");
+    /*package*/ static final SContainmentLink modifiers$XKtM = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, 0x28bef6d75568d1adL, "modifiers");
     /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
     /*package*/ static final SContainmentLink parameters$dfEr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d755909980L, 0x28bef6d755909981L, "parameters");
     /*package*/ static final SContainmentLink returnType$fGYV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908cd887L, 0x11400bb7908cd888L, "returnType");
     /*package*/ static final SContainmentLink typeParameters$eq6K = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, 0x28bef6d7556a4df6L, "typeParameters");
-    /*package*/ static final SContainmentLink modifiers$XKtM = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, 0x28bef6d75568d1adL, "modifiers");
     /*package*/ static final SContainmentLink typeProjections$vhti = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162c97579L, 0x5b1dd60162c9757cL, "typeProjections");
     /*package*/ static final SContainmentLink type$1aXr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, 0x63c34deca4888fe3L, "type");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IClassLike$go = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L, "jetbrains.mps.kotlin.structure.IClassLike");
+    /*package*/ static final SConcept ExpectPlatformModifier$YQ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af474L, "jetbrains.mps.kotlin.structure.ExpectPlatformModifier");
     /*package*/ static final SConcept AbstractInheritanceModifier$GA = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f2L, "jetbrains.mps.kotlin.structure.AbstractInheritanceModifier");
     /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
     /*package*/ static final SInterfaceConcept ITypeParameter$fG = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4da39967d13161a1L, "jetbrains.mps.kotlin.structure.ITypeParameter");

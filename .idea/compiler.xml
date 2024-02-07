@@ -380,6 +380,7 @@
       <directory url="file://$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin.javaRefs/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin.smodel/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin.smodel/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.baseLanguage.runtime/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.smodel.runtime/source_gen" includeSubdirectories="true" />

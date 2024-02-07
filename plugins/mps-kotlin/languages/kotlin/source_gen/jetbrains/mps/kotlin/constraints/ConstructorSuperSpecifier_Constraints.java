@@ -20,6 +20,7 @@ import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScopeAsScope;
 import jetbrains.mps.kotlin.scopes.signed.ConstructorsScope;
+import jetbrains.mps.kotlin.scopes.signed.ScopeContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -63,7 +64,7 @@ public class ConstructorSuperSpecifier_Constraints extends BaseConstraintsDescri
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new SignatureScopeAsScope(new ConstructorsScope(_context.getContextNode()) {
+            return new SignatureScopeAsScope(new ConstructorsScope(ScopeContext.of(_context.getContextNode())) {
               @Override
               protected boolean isVisible(SNode visible) {
                 // Special case: we can call protected constructors (we extend them!)

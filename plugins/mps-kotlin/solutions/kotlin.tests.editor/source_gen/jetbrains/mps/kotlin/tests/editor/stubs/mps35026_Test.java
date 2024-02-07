@@ -6,26 +6,26 @@ import org.junit.jupiter.api.Test;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.kotlin.stubs.common.FunctionIdBuilder;
+import jetbrains.mps.kotlin.stubs.loading.ids.FunctionIdBuilder;
 import jetbrains.mps.smodel.SNode;
 import jetbrains.mps.smodel.adapter.structure.concept.InvalidConcept;
-import jetbrains.mps.kotlin.stubs.common.KotlinId;
+import jetbrains.mps.kotlin.stubs.loading.ids.KotlinId;
 import jetbrains.mps.smodel.nodeidmap.StringBasedNodeIdMap;
 import org.junit.Assert;
-import jetbrains.mps.kotlin.stubs.common.KotlinStringBasedNodeIdMap;
-import jetbrains.mps.kotlin.stubs.common.metadata.VisitorContext;
+import jetbrains.mps.kotlin.stubs.loading.ids.migration.KotlinStringBasedNodeIdMap;
+import jetbrains.mps.kotlin.stubs.loading.NodeIdHandler;
 import java.util.StringJoiner;
 import java.util.List;
-import jetbrains.mps.kotlin.stubs.common.TypeParameterIdSection;
+import jetbrains.mps.kotlin.stubs.loading.ids.TypeParameterIdSection;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.kotlin.stubs.common.KtFunctionNodeId;
+import jetbrains.mps.kotlin.stubs.loading.ids.migration.KtFunctionNodeId;
 
 /**
  * Test for MPS-35026 fix/stub migration. It ensures the references to anterior IDs remain valid.
  * 
- * @see jetbrains.mps.kotlin.stubs.common.KotlinStringBasedNodeIdMap 
- * @see jetbrains.mps.kotlin.stubs.common.KtFunctionNodeId 
+ * @see jetbrains.mps.kotlin.stubs.loading.ids.migration.KotlinStringBasedNodeIdMap 
+ * @see jetbrains.mps.kotlin.stubs.loading.ids.migration.KtFunctionNodeId 
  */
 public class mps35026_Test {
   @Test
@@ -80,13 +80,13 @@ public class mps35026_Test {
    * Previous implementation of FunctionIdBuilder
    */
   public class LegacyFunctionIdBuilder {
-    protected final VisitorContext context;
+    protected final NodeIdHandler context;
     protected final String myName;
     protected final String myHolderFqName;
     protected String functionFqName;
     protected int typeParameterCount = 0;
     protected final StringJoiner parameters = new StringJoiner(",");
-    public LegacyFunctionIdBuilder(VisitorContext ctx, String prefixedName, String holder) {
+    public LegacyFunctionIdBuilder(NodeIdHandler ctx, String prefixedName, String holder) {
       context = ctx;
       myName = prefixedName;
       myHolderFqName = context.packageLocalName(holder);
@@ -116,11 +116,11 @@ public class mps35026_Test {
   public Tuples._2<FunctionIdBuilder, LegacyFunctionIdBuilder> buildIds(String receiverType, List<String> arguments, List<String> typeParametersBound) {
     String packageName = "jetbrains.mps.testing";
     String prefixedName = FunctionIdBuilder.FUNCTION_ID_PREFIX + "myFunction";
-    VisitorContext context = new VisitorContext(null, packageName, null);
+    NodeIdHandler idProducer = new NodeIdHandler(packageName);
 
     // Build id
-    FunctionIdBuilder idBuilder = new FunctionIdBuilder(context, prefixedName, packageName);
-    LegacyFunctionIdBuilder legacyIdBuilder = new LegacyFunctionIdBuilder(context, prefixedName, packageName);
+    FunctionIdBuilder idBuilder = new FunctionIdBuilder(idProducer, prefixedName, packageName);
+    LegacyFunctionIdBuilder legacyIdBuilder = new LegacyFunctionIdBuilder(idProducer, prefixedName, packageName);
     if (receiverType != null) {
       idBuilder.setReceiver(receiverType);
       legacyIdBuilder.setReceiver(receiverType);

@@ -37,7 +37,7 @@ public class JavaMemberTarget_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).functions().membersReceiver().noReceiverMembers().buildScope(CONCEPTS.GenericDeclaration$bC);
+            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).functions().membersReceiver().noExtensionMembers().buildScope(CONCEPTS.GenericDeclaration$bC);
           }
         };
       }

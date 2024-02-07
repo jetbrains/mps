@@ -113,9 +113,9 @@ public final class ClassDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static Iterable<SNode> getConstructors_id2NtWm0y9fFa(@NotNull SNode __thisNode__) {
     Iterable<SNode> secondary = SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.members$gqdV), CONCEPTS.SecondaryConstructor$Lg);
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc) != null)) {
-      return Sequence.fromIterable(secondary).concat(Sequence.fromIterable(Sequence.<SNode>singleton(SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc))));
+      return Sequence.fromIterable(secondary).concat(Sequence.fromIterable(Sequence.singleton(SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc))));
     } else if (Sequence.fromIterable(secondary).isEmpty()) {
-      return Sequence.<SNode>singleton(__thisNode__);
+      return Sequence.singleton(__thisNode__);
     }
     return secondary;
   }

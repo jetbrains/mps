@@ -3418,7 +3418,7 @@
                                           </node>
                                         </node>
                                         <node concept="liA8E" id="dA" role="2OqNvi">
-                                          <ref role="37wK5l" to="sjya:3UQQw2lYdV3" resolve="noReceiverMembers" />
+                                          <ref role="37wK5l" to="sjya:3UQQw2lYdV3" resolve="noExtensionMembers" />
                                           <uo k="s:originTrace" v="n:4519038972163918105" />
                                         </node>
                                       </node>
@@ -4805,7 +4805,7 @@
                                           </node>
                                         </node>
                                         <node concept="liA8E" id="jo" role="2OqNvi">
-                                          <ref role="37wK5l" to="sjya:3UQQw2lYdV3" resolve="noReceiverMembers" />
+                                          <ref role="37wK5l" to="sjya:3UQQw2lYdV3" resolve="noExtensionMembers" />
                                           <uo k="s:originTrace" v="n:4519038972163980135" />
                                         </node>
                                       </node>
@@ -5207,7 +5207,7 @@
                                             </node>
                                           </node>
                                           <node concept="liA8E" id="l6" role="2OqNvi">
-                                            <ref role="37wK5l" to="sjya:3UQQw2lYdV3" resolve="noReceiverMembers" />
+                                            <ref role="37wK5l" to="sjya:3UQQw2lYdV3" resolve="noExtensionMembers" />
                                             <uo k="s:originTrace" v="n:4519038972163974214" />
                                           </node>
                                         </node>

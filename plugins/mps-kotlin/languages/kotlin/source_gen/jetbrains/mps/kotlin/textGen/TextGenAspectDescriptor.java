@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.text.rt.TextGenModelOutline;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.kotlin.behavior.IKotlinRoot__BehaviorDescriptor;
 import jetbrains.mps.text.TextUnit;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -369,6 +370,21 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   private static String getFileExtension_ObjectDeclaration(SNode node) {
     return "kt";
   }
+  private static String getPath_InterfaceDeclaration(SNode node) {
+    return (String) IKotlinRoot__BehaviorDescriptor.getTargetTextGenFolder_id3xoAZRzelnN.invoke(node);
+  }
+  private static String getPath_KotlinFile(SNode node) {
+    return (String) IKotlinRoot__BehaviorDescriptor.getTargetTextGenFolder_id3xoAZRzelnN.invoke(node);
+  }
+  private static String getPath_ClassDeclaration(SNode node) {
+    return (String) IKotlinRoot__BehaviorDescriptor.getTargetTextGenFolder_id3xoAZRzelnN.invoke(node);
+  }
+  private static String getPath_EnumClassDeclaration(SNode node) {
+    return (String) IKotlinRoot__BehaviorDescriptor.getTargetTextGenFolder_id3xoAZRzelnN.invoke(node);
+  }
+  private static String getPath_ObjectDeclaration(SNode node) {
+    return (String) IKotlinRoot__BehaviorDescriptor.getTargetTextGenFolder_id3xoAZRzelnN.invoke(node);
+  }
   private static TextUnit createTextUnit0(TextGenModelOutline outline, String filename, SNode node) {
     TextGenModelOutline.UnitBuilder rv = outline.unitBuilder(filename, node);
     rv.layout("header", false);
@@ -382,6 +398,7 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     rv.layout("header", false);
     rv.layout("imports", false);
     rv.layout("body", true);
+    rv.path(getPath_InterfaceDeclaration(node));
     rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
     return rv.build();
   }
@@ -390,6 +407,7 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     rv.layout("header", false);
     rv.layout("imports", false);
     rv.layout("body", true);
+    rv.path(getPath_KotlinFile(node));
     rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
     return rv.build();
   }
@@ -398,6 +416,7 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     rv.layout("header", false);
     rv.layout("imports", false);
     rv.layout("body", true);
+    rv.path(getPath_ClassDeclaration(node));
     rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
     return rv.build();
   }
@@ -406,6 +425,7 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     rv.layout("header", false);
     rv.layout("imports", false);
     rv.layout("body", true);
+    rv.path(getPath_EnumClassDeclaration(node));
     rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
     return rv.build();
   }
@@ -414,6 +434,7 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     rv.layout("header", false);
     rv.layout("imports", false);
     rv.layout("body", true);
+    rv.path(getPath_ObjectDeclaration(node));
     rv.with("imports", KotlinTextGen.contextObjectInstance_imports(node));
     return rv.build();
   }

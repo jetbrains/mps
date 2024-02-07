@@ -61,7 +61,7 @@
       <node id="1460067352157680306" at="86,0,87,0" concept="3" trace="functionFqName" />
       <node id="1460067352157680309" at="87,0,88,0" concept="3" trace="typeParameterCount" />
       <node id="1460067352157680313" at="88,0,89,0" concept="3" trace="parameters" />
-      <node id="1460067352157680328" at="89,92,90,20" concept="2" />
+      <node id="1460067352157680328" at="89,91,90,20" concept="2" />
       <node id="1460067352157680332" at="90,20,91,28" concept="2" />
       <node id="1460067352157680336" at="91,28,92,56" concept="2" />
       <node id="1460067352157680343" at="92,56,93,47" concept="2" />
@@ -76,11 +76,11 @@
       <node id="1460067352157780517" at="111,15,112,32" concept="8" />
       <node id="1460067352159507025" at="116,152,117,49" concept="7" />
       <node id="1460067352159507029" at="117,49,118,78" concept="7" />
-      <node id="1460067352159507091" at="118,78,119,73" concept="7" />
-      <node id="1460067352159507097" at="119,73,120,0" concept="10" />
+      <node id="4143547005419531967" at="118,78,119,62" concept="7" />
+      <node id="1460067352159507097" at="119,62,120,0" concept="10" />
       <node id="1460067352159507098" at="120,0,121,15" concept="9" />
-      <node id="1460067352159507102" at="121,15,122,92" concept="7" />
-      <node id="1460067352159507110" at="122,92,123,110" concept="7" />
+      <node id="1460067352159507102" at="121,15,122,95" concept="7" />
+      <node id="1460067352159507110" at="122,95,123,113" concept="7" />
       <node id="1460067352159507120" at="124,31,125,42" concept="2" />
       <node id="1460067352159507125" at="125,42,126,48" concept="2" />
       <node id="1460067352159507137" at="128,34,129,33" concept="2" />
@@ -129,11 +129,11 @@
       <node id="1460067352157680369" at="98,0,101,0" concept="6" trace="addTypeParameter#()V" />
       <node id="1460067352157680376" at="101,0,104,0" concept="6" trace="addArgument#(Ljava/lang/String;)V" />
       <node id="1460067352157680405" at="106,64,109,7" concept="5" />
-      <node id="1460067352159507118" at="123,110,127,5" concept="5" />
+      <node id="1460067352159507118" at="123,113,127,5" concept="5" />
       <node id="1460067352159507133" at="127,5,131,5" concept="4" />
       <node id="1460067352159507148" at="133,73,137,5" concept="4" />
       <node id="1460067352160255258" at="161,10,165,5" concept="0" />
-      <node id="1460067352157680319" at="89,0,95,0" concept="1" trace="LegacyFunctionIdBuilder#(Ljetbrains/mps/kotlin/stubs/common/metadata/VisitorContext;Ljava/lang/String;Ljava/lang/String;)V" />
+      <node id="1460067352157680319" at="89,0,95,0" concept="1" trace="LegacyFunctionIdBuilder#(Ljetbrains/mps/kotlin/stubs/loading/NodeIdHandler;Ljava/lang/String;Ljava/lang/String;)V" />
       <node id="1460067352159271610" at="156,0,165,5" concept="5" />
       <node id="1460067352157680390" at="104,0,114,0" concept="6" trace="build#()Ljava/lang/String;" />
       <node id="1447780352936161847" at="31,0,44,0" concept="6" trace="test_testPreviousIdMatch#()V" />
@@ -156,7 +156,7 @@
       </scope>
       <scope id="1460067352159271612" at="157,44,160,53" />
       <scope id="1460067352160255259" at="161,12,164,50" />
-      <scope id="1460067352157680327" at="89,92,93,47" />
+      <scope id="1460067352157680327" at="89,91,93,47" />
       <scope id="1460067352159507133" at="127,5,131,5">
         <var name="arg" id="1460067352159507134" />
       </scope>
@@ -175,8 +175,8 @@
       <scope id="1460067352157680390" at="104,0,114,0" />
       <scope id="1447780352936161847" at="31,0,44,0" />
       <scope id="1460067352159447789" at="116,152,140,98">
-        <var name="context" id="1460067352159507092" />
         <var name="idBuilder" id="1460067352159507103" />
+        <var name="idProducer" id="4143547005419531968" />
         <var name="legacyIdBuilder" id="1460067352159507111" />
         <var name="packageName" id="1460067352159507026" />
         <var name="prefixedName" id="1460067352159507030" />

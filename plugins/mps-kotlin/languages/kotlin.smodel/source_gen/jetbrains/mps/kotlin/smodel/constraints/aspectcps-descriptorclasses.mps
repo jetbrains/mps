@@ -702,7 +702,7 @@
                                             </node>
                                           </node>
                                           <node concept="liA8E" id="2g" role="2OqNvi">
-                                            <ref role="37wK5l" to="sjya:3UQQw2lYdV3" resolve="noReceiverMembers" />
+                                            <ref role="37wK5l" to="sjya:3UQQw2lYdV3" resolve="noExtensionMembers" />
                                             <uo k="s:originTrace" v="n:4519038972163990872" />
                                           </node>
                                         </node>

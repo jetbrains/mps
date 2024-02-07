@@ -1965,7 +1965,7 @@
                 <node concept="2OqwBi" id="rI4V6uZux8" role="2Oq$k0">
                   <node concept="117lpO" id="rI4V6uZu6r" role="2Oq$k0" />
                   <node concept="3Tsc0h" id="rI4V6uZvz8" role="2OqNvi">
-                    <ref role="3TtcxE" to="hcm8:2yYXHtlqd6H" />
+                    <ref role="3TtcxE" to="hcm8:2yYXHtlqd6H" resolve="modifiers" />
                   </node>
                 </node>
                 <node concept="v3k3i" id="rI4V6uZBUV" role="2OqNvi">

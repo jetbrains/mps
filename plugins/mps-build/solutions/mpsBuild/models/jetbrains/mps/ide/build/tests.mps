@@ -16282,8 +16282,8 @@
             <ref role="3bR37D" to="ffeo:1xb0AuwN7WS" resolve="JUnit" />
           </node>
         </node>
-        <node concept="1SiIV0" id="3PMETvllXX0" role="3bR37C">
-          <node concept="3bR9La" id="3PMETvllXX1" role="1SiIV1">
+        <node concept="1SiIV0" id="33FNpNi_DSY" role="3bR37C">
+          <node concept="3bR9La" id="33FNpNi_DSZ" role="1SiIV1">
             <ref role="3bR37D" to="ffeo:3PMETvlnxVs" resolve="jetbrains.mps.kotlin.stubs" />
           </node>
         </node>

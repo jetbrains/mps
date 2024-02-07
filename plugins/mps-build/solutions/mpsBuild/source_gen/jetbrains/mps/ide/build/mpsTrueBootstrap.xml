@@ -477,6 +477,7 @@
   <target name="java.compile.java.modules.cycle.1" depends="java.compile.mps-annotations, java.compile.mps-openapi, java.compile.mps-logging, java.compile.util-core, java.compile.mps-smodel, java.compile.mps-closures, java.compile.mps-collections, java.compile.mps-tuples, java.compile.mps-references, java.compile.mps-core-components, java.compile.mps-behavior-api, java.compile.mps-messaging, java.compile.feeback-context, java.compile.vfs, java.compile.feedback-problem, java.compile.messages-for-legacy-constraints, java.compile.mps-boot-util">
     <mkdir dir="${build.tmp}/java.modules.cycle.1" />
     <javac destdir="${build.tmp}/java.modules.cycle.1" fork="false" encoding="utf8" nowarn="true" includeantruntime="false">
+      <withKotlin moduleName="java.modules.cycle.1"></withKotlin>
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/core/aspects/behavior/behavior-runtime/source" />

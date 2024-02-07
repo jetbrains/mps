@@ -11,10 +11,13 @@ import jetbrains.mps.kotlin.scopes.signed.ScopeCollector;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
 import jetbrains.mps.kotlin.behavior.ISignatureScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.kotlin.scopes.signed.InstanceSignatureScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.stream.Collectors;
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import jetbrains.mps.kotlin.signatures.MemberSignature;
+import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -29,18 +32,29 @@ public class check_ISignatureScopeProvider_uniqueness_NonTypesystemRule extends 
     // Take all signatures
     ScopeCollector collector = new ScopeCollector(SignatureFilter.ALL);
     ISignatureScopeProvider__BehaviorDescriptor.collectScope_id7DyvjiA20yV.invoke(scopeProvider, collector, scopeProvider);
-    ListSequence.fromList(collector.getScopes()).visitAll((scope) -> Sequence.fromIterable(scope.getElements(null)).toStream(false).collect(Collectors.<SourcedSignature,MemberSignature>groupingBy((el) -> el.getSignature())).forEach((key, value) -> {
-      if (value.size() > 1) {
-        final String message = "Conflicting declarations: " + value.stream().map((it) -> it.getSignature().getPresentationText()).collect(Collectors.joining(", "));
-
-        value.forEach((item) -> {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(item.getSource(), message, "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215", null, errorTarget);
-          }
-        });
+    ListSequence.fromList(collector.getScopes()).visitAll((scope) -> {
+      // Hierarchy already handled separately
+      if (scope instanceof InstanceSignatureScope) {
+        return;
       }
-    }));
+
+      Sequence.fromIterable(scope.getElements(null)).toStream(false).collect(Collectors.<SourcedSignature,MemberSignature>groupingBy((el) -> el.getSignature())).forEach((key, value) -> {
+        if (value.size() > 1) {
+          final String message = "Conflicting declarations: " + value.stream().map((it) -> it.getSignature().getPresentationText()).collect(Collectors.joining(", "));
+
+          value.forEach((item) -> {
+            // TODO prevent such items from getting there in the first place
+            // Might report external items?
+            if (Objects.equals(SNodeOperations.getContainingRoot(item.getSource()), SNodeOperations.getContainingRoot(scopeProvider))) {
+              {
+                final MessageTarget errorTarget = new NodeMessageTarget();
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(item.getSource(), message, "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215", null, errorTarget);
+              }
+            }
+          });
+        }
+      });
+    });
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.ISignatureScopeProvider$mx;

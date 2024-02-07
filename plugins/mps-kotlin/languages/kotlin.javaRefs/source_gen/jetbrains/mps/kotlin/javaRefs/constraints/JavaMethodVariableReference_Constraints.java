@@ -60,7 +60,7 @@ public class JavaMethodVariableReference_Constraints extends BaseConstraintsDesc
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             // Note: unlike var ref expression, we only refer to getters here (required for the setter to be used)
-            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).filter(new GetterFilter()).navigationReceiver().noReceiverMembers().buildScope(CONCEPTS.BaseMethodDeclaration$kD);
+            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).filter(new GetterFilter()).navigationReceiver().noExtensionMembers().buildScope(CONCEPTS.BaseMethodDeclaration$kD);
           }
         };
       }

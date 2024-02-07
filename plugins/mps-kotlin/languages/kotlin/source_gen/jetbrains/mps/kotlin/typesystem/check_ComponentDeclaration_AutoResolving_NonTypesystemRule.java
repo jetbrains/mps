@@ -12,6 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.overloading.NodeFunctionCall;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.kotlin.behavior.IFunctionCall__BehaviorDescriptor;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -30,7 +31,7 @@ public class check_ComponentDeclaration_AutoResolving_NonTypesystemRule extends 
   public void applyRule(final SNode component, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // Only resolve if deconstructed
     if ((boolean) IDeconstructingDeclarations__BehaviorDescriptor.isDeconstructed_id4FOkRjXxnrt.invoke(SNodeOperations.as(SNodeOperations.getParent(component), CONCEPTS.IDeconstructingDeclarations$Ed))) {
-      AutomaticResolutionHelper.improveCall(typeCheckingContext, new NodeFunctionCall(component), component, LINKS.deconstructingOperator$ZV8Z, () -> (Iterable<SignatureScope>) IFunctionCall__BehaviorDescriptor.getFunctionScopeParts_id6dAo8EmAhT7.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(component)), component, component, SNodeOperations.getContainingLink(component)));
+      AutomaticResolutionHelper.improveCall(typeCheckingContext, new NodeFunctionCall(component), component, LINKS.deconstructingOperator$ZV8Z, () -> (Iterable<SignatureScope>) IFunctionCall__BehaviorDescriptor.getFunctionScopeParts_id6dAo8EmAhT7.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(component)), FullScopeContext.fromCall(component)));
     }
   }
   public SAbstractConcept getApplicableConcept() {

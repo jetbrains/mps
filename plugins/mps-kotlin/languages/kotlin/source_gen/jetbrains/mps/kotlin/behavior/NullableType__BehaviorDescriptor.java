@@ -15,6 +15,7 @@ import jetbrains.mps.kotlin.api.members.SignatureCollector;
 import jetbrains.mps.kotlin.api.generics.TypeVarSubs;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.api.types.identifiers.TypeKey;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -45,7 +46,7 @@ public final class NullableType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> populateSubstitutions_id4f4W8JpwgWV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateSubstitutions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4883292379416694587L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(TypeVarSubs.class, ""));
   /*package*/ static final SMethod<String> toStringInternal_id41oFOFuJUdT = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toStringInternal").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(4636648552477467513L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(String.class, ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<String> toString_id4nn3FPlZH$r = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5032507314964191515L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<SignatureScope> getStaticScope_id1ODRHGtufGw = new SMethodBuilder<SignatureScope>(new SJavaCompoundTypeImpl(SignatureScope.class)).name("getStaticScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2101455733818719008L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureFilter.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SignatureScope> getStaticScope_id1ODRHGtufGw = new SMethodBuilder<SignatureScope>(new SJavaCompoundTypeImpl(SignatureScope.class)).name("getStaticScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2101455733818719008L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureFilter.class, ""), SMethodBuilder.createJavaParameter(FullScopeContext.class, ""));
   public static final SMethod<SNode> getCompanionType_id13qggQDnK5I = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getCompanionType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1214354576461726062L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<TypeKey> typeKey_idJmO2PmZtH5 = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("shallowId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(853098072584870725L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> showParenthesis_id3PNJzGvtdRU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("showParenthesis").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4428092019775430138L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
@@ -88,8 +89,8 @@ public final class NullableType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String toString_id4nn3FPlZH$r(@NotNull SNode __thisNode__, boolean erased) {
     return NullableType__BehaviorDescriptor.toStringInternal_id41oFOFuJUdT.invokeSpecial(__thisNode__, IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$Tm0J), ((boolean) erased)), ((boolean) erased));
   }
-  /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull SNode __thisNode__, SignatureFilter filter, SNode contextNode) {
-    return (SignatureScope) IType__BehaviorDescriptor.getStaticScope_id1ODRHGtufGw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$Tm0J), filter, contextNode);
+  /*package*/ static SignatureScope getStaticScope_id1ODRHGtufGw(@NotNull SNode __thisNode__, SignatureFilter filter, FullScopeContext context) {
+    return (SignatureScope) IType__BehaviorDescriptor.getStaticScope_id1ODRHGtufGw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$Tm0J), filter, context);
   }
   @ApiStatus.Experimental
   /*package*/ static SNode getCompanionType_id13qggQDnK5I(@NotNull SNode __thisNode__) {
@@ -146,7 +147,7 @@ public final class NullableType__BehaviorDescriptor extends BaseBHDescriptor {
       case 7:
         return (T) ((String) toString_id4nn3FPlZH$r(node, ((boolean) (Boolean) parameters[0])));
       case 8:
-        return (T) ((SignatureScope) getStaticScope_id1ODRHGtufGw(node, (SignatureFilter) parameters[0], (SNode) parameters[1]));
+        return (T) ((SignatureScope) getStaticScope_id1ODRHGtufGw(node, (SignatureFilter) parameters[0], (FullScopeContext) parameters[1]));
       case 9:
         return (T) ((SNode) getCompanionType_id13qggQDnK5I(node));
       case 10:

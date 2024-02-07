@@ -6,8 +6,10 @@ import jetbrains.mps.kotlin.api.members.SourcedSignature;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.kotlin.stubs.platform.TargetPlatform;
+import jetbrains.mps.kotlin.behavior.PlatformHelper;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.behavior.IKotlinRoot__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.ISignatureScopeProvider__BehaviorDescriptor;
@@ -38,22 +40,40 @@ public interface SignatureScope {
     SIGNATURE()
   }
 
+  /**
+   * 
+   * @deprecated 
+   */
   static SignatureScope getScope(SNode node, SignatureFilter filter) {
     ScopeCollector collector = new ScopeCollector(filter);
-    collectHierarchyScopes(node, node, collector);
+    collectHierarchyScopes(FullScopeContext.fromContext(node), collector);
     return CompositeSignatureScope.of(collector.getScopes());
   }
 
-  static void collectHierarchyScopes(SNode node, final SNode child, ScopeCollector collector) {
+  static void collectModelScope(SModel model, final TargetPlatform platform, final SNode contextNode, final ScopeCollector collector) {
+    // Filter a two levels: model and root, which each have specific requirements
+    if (PlatformHelper.canProvide(model, platform)) {
+      Iterable<SNode> rootNodes = model.getRootNodes();
+      Sequence.fromIterable(SNodeOperations.ofConcept(rootNodes, CONCEPTS.IKotlinRoot$xV)).visitAll((it) -> {
+        if (it != contextNode && IKotlinRoot__BehaviorDescriptor.getPlatform_id2Gpd$BYJrkg.invoke(SNodeOperations.asSConcept(CONCEPTS.IKotlinRoot$xV), it).containsAll(platform)) {
+          IKotlinRoot__BehaviorDescriptor.collectPublicScope_id58ySuOXQyMi.invoke(it, collector, contextNode);
+        }
+      });
+    }
+  }
+
+  static void collectHierarchyScopes(FullScopeContext context, ScopeCollector collector) {
+    collectHierarchyScopes(context.getNode(), context.getNode(), context.getPlatform(), collector);
+  }
+
+  static void collectHierarchyScopes(SNode node, final SNode child, final TargetPlatform platform, final ScopeCollector collector) {
     // If reached the top of the hierarchy without trouble or explicit stop
     if ((node == null)) {
       // Get global scope, declare all as a single scope: same priority during resolution
-      final ScopeCollector subCollector = new ScopeCollector(collector.getFilter());
-      ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(child), CONCEPTS.IKotlinRoot$xV)).visitAll((it) -> {
-        if (it != child) {
-          IKotlinRoot__BehaviorDescriptor.collectPublicScope_id58ySuOXQyMi.invoke(it, subCollector, child);
-        }
-      });
+      ScopeCollector subCollector = new ScopeCollector(collector.getFilter());
+
+      PlatformHelper.compatibleImportedModels(child, platform).forEach((model) -> collectModelScope(model, platform, child, collector));
+
       collector.declareScope(CompositeSignatureScope.of(subCollector.getScopes()));
       return;
     }
@@ -68,7 +88,7 @@ public interface SignatureScope {
       }
     }
 
-    collectHierarchyScopes(SNodeOperations.getParent(node), node, collector);
+    collectHierarchyScopes(SNodeOperations.getParent(node), node, platform, collector);
   }
 
   final class CONCEPTS {

@@ -16,6 +16,7 @@ import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScopeAsScope;
 import jetbrains.mps.kotlin.scopes.signed.ConstructorsScope;
+import jetbrains.mps.kotlin.scopes.signed.ScopeContext;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -39,7 +40,7 @@ public class KotlinClassCreator_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new SignatureScopeAsScope(new ConstructorsScope(_context.getContextNode()), CONCEPTS.IConstructorDeclaration$rR);
+            return new SignatureScopeAsScope(new ConstructorsScope(ScopeContext.of(_context.getContextNode())), CONCEPTS.IConstructorDeclaration$rR);
           }
         };
       }

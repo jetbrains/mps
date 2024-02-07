@@ -11,6 +11,7 @@ import jetbrains.mps.kotlin.overloading.NodeFunctionCall;
 import jetbrains.mps.kotlin.behavior.IFunctionCall__BehaviorDescriptor;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -20,7 +21,7 @@ public class check_IFunctionCallLike_Overloading_NonTypesystemRule extends Abstr
   }
   public void applyRule(final SNode call, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // Resolve automatically the reference
-    AutomaticResolutionHelper.improveCall(typeCheckingContext, new NodeFunctionCall(call), call, IFunctionCall__BehaviorDescriptor.getTargetLink_id5D4bOjrrcOr.invoke(call), () -> (Iterable<SignatureScope>) IFunctionCall__BehaviorDescriptor.getFunctionScopeParts_id6dAo8EmAhT7.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(call)), call, call, SNodeOperations.getContainingLink(call)));
+    AutomaticResolutionHelper.improveCall(typeCheckingContext, new NodeFunctionCall(call), call, IFunctionCall__BehaviorDescriptor.getTargetLink_id5D4bOjrrcOr.invoke(call), () -> (Iterable<SignatureScope>) IFunctionCall__BehaviorDescriptor.getFunctionScopeParts_id6dAo8EmAhT7.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(call)), FullScopeContext.fromCall(call)));
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.IFunctionCall$Sf;
