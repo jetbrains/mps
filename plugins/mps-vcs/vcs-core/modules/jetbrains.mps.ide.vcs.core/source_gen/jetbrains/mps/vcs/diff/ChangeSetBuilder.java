@@ -26,10 +26,10 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.HashMap;
 import java.util.function.Function;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Objects;
 import jetbrains.mps.util.LongestCommonSubsequenceFinder;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -179,42 +179,30 @@ public final class ChangeSetBuilder {
     return roleToChildCollection;
   }
 
-  public void buildForNodeRole(final List<SNode> oldChildren, List<SNode> newChildren, final SNodeId oldParentId, final SNodeId newParentId, final SContainmentLink role) {
-
-    final List<SNodeId> oldIds = ListSequence.fromList(oldChildren).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode n) {
-        return n.getNodeId();
-      }
-    }).toListSequence();
-    final List<SNodeId> newIds = ListSequence.fromList(newChildren).select(new ISelector<SNode, SNodeId>() {
-      public SNodeId select(SNode n) {
-        return n.getNodeId();
-      }
-    }).toListSequence();
-
-    if (Objects.equals(oldIds, newIds)) {
-      for (SNode child : ListSequence.fromList(oldChildren)) {
-        buildForNode(child, getNewNode(child.getNodeId()));
+  public void buildForNodeRole(final SContainmentLink role, final List<SNodeId> oldChildrenIds, final List<SNodeId> newChildrenIds, final SNodeId oldParentId, final SNodeId newParentId) {
+    if (Objects.equals(oldChildrenIds, newChildrenIds)) {
+      for (SNodeId child : ListSequence.fromList(oldChildrenIds)) {
+        buildForNode(getOldNode(child), getNewNode(child));
       }
       return;
     }
 
-    LongestCommonSubsequenceFinder<SNodeId> finder = new LongestCommonSubsequenceFinder<SNodeId>(oldIds, newIds);
+    LongestCommonSubsequenceFinder<SNodeId> finder = new LongestCommonSubsequenceFinder<SNodeId>(oldChildrenIds, newChildrenIds);
     List<Tuples._2<Integer, Integer>> commonIndices = finder.getCommonIndices();
-    ListSequence.fromList(commonIndices).select(new ISelector<Tuples._2<Integer, Integer>, SNode>() {
-      public SNode select(Tuples._2<Integer, Integer> in) {
-        return ListSequence.fromList(oldChildren).getElement((int) in._0());
+    ListSequence.fromList(commonIndices).select(new ISelector<Tuples._2<Integer, Integer>, SNodeId>() {
+      public SNodeId select(Tuples._2<Integer, Integer> in) {
+        return ListSequence.fromList(oldChildrenIds).getElement((int) in._0());
       }
-    }).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode child) {
-        buildForNode(child, getNewNode(child.getNodeId()));
+    }).visitAll(new IVisitor<SNodeId>() {
+      public void visit(SNodeId child) {
+        buildForNode(getOldNode(child), getNewNode(child));
       }
     });
 
     // Finding inserts, deletions and replacements
     for (Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices : ListSequence.fromList(finder.getDifferentIndices())) {
-      final List<SNodeId> oldIds1 = ListSequence.fromList(oldIds).page((int) indices._0()._0(), (int) indices._0()._1()).toListSequence();
-      List<SNodeId> newIds1 = ListSequence.fromList(newIds).page((int) indices._1()._0(), (int) indices._1()._1()).toListSequence();
+      final List<SNodeId> oldIds1 = ListSequence.fromList(oldChildrenIds).page((int) indices._0()._0(), (int) indices._0()._1()).toListSequence();
+      List<SNodeId> newIds1 = ListSequence.fromList(newChildrenIds).page((int) indices._1()._0(), (int) indices._1()._1()).toListSequence();
       final Map<SNodeId, SNodeId> newToOldMap = MapSequence.fromMap(new HashMap<SNodeId, SNodeId>());
       for (SNodeId oldNodeId : oldIds1) {
         for (SNodeId newNodeId : newIds1) {
@@ -243,19 +231,19 @@ public final class ChangeSetBuilder {
         int oldEnd1 = (int) indices1._0()._1();
         int newStart1 = (int) indices1._1()._0();
         int newEnd1 = (int) indices1._1()._1();
-        int oldStart = (oldStart1 < ListSequence.fromList(oldIds1).count() ? ListSequence.fromList(oldIds).indexOf(ListSequence.fromList(oldIds1).getElement(oldStart1)) : (int) indices._0()._1());
-        int oldEnd = (oldEnd1 < ListSequence.fromList(oldIds1).count() ? ListSequence.fromList(oldIds).indexOf(ListSequence.fromList(oldIds1).getElement(oldEnd1)) : (int) indices._0()._1());
+        int oldStart = (oldStart1 < ListSequence.fromList(oldIds1).count() ? ListSequence.fromList(oldChildrenIds).indexOf(ListSequence.fromList(oldIds1).getElement(oldStart1)) : (int) indices._0()._1());
+        int oldEnd = (oldEnd1 < ListSequence.fromList(oldIds1).count() ? ListSequence.fromList(oldChildrenIds).indexOf(ListSequence.fromList(oldIds1).getElement(oldEnd1)) : (int) indices._0()._1());
         int newStart;
         if (newStart1 < ListSequence.fromList(newIds2).count()) {
           final Wrappers._T<SNodeId> newNodeId = new Wrappers._T<SNodeId>(ListSequence.fromList(newIds2).getElement(newStart1));
           if (MapSequence.fromMap(newToOldMap).containsValue(newNodeId.value)) {
-            newNodeId.value = check_nbyrtw_a0a0b0h0i0l0db(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
+            newNodeId.value = check_nbyrtw_a0a0b0h0i0h0db(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
               public boolean accept(IMapping<SNodeId, SNodeId> it) {
                 return Objects.equals(it.value(), newNodeId.value);
               }
             }));
           }
-          newStart = ListSequence.fromList(newIds).indexOf(newNodeId.value);
+          newStart = ListSequence.fromList(newChildrenIds).indexOf(newNodeId.value);
         } else {
           newStart = (int) indices._1()._1();
         }
@@ -263,13 +251,13 @@ public final class ChangeSetBuilder {
         if (newEnd1 < ListSequence.fromList(newIds2).count()) {
           final Wrappers._T<SNodeId> newNodeId = new Wrappers._T<SNodeId>(ListSequence.fromList(newIds2).getElement(newEnd1));
           if (MapSequence.fromMap(newToOldMap).containsValue(newNodeId.value)) {
-            newNodeId.value = check_nbyrtw_a0a0b0j0i0l0db(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
+            newNodeId.value = check_nbyrtw_a0a0b0j0i0h0db(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
               public boolean accept(IMapping<SNodeId, SNodeId> it) {
                 return Objects.equals(it.value(), newNodeId.value);
               }
             }));
           }
-          newEnd = ListSequence.fromList(newIds).indexOf(newNodeId.value);
+          newEnd = ListSequence.fromList(newChildrenIds).indexOf(newNodeId.value);
         } else {
           newEnd = (int) indices._1()._1();
         }
@@ -282,13 +270,13 @@ public final class ChangeSetBuilder {
         }
       }).visitAll(new IVisitor<SNodeId>() {
         public void visit(final SNodeId oldNodeId) {
-          SNodeId newNodeId = check_nbyrtw_a0a0a0a01a11a92(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
+          SNodeId newNodeId = check_nbyrtw_a0a0a0a01a7a92(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
             public boolean accept(IMapping<SNodeId, SNodeId> it) {
               return Objects.equals(it.value(), oldNodeId);
             }
           }));
           assert newNodeId != null;
-          assert ListSequence.fromList(oldIds).contains(oldNodeId) && ListSequence.fromList(newIds).contains(newNodeId);
+          assert ListSequence.fromList(oldChildrenIds).contains(oldNodeId) && ListSequence.fromList(newChildrenIds).contains(newNodeId);
           ListSequence.fromList(myNewChanges).addElement(new NodeIdChange(myChangeSet, oldParentId, newParentId, role, oldNodeId, newNodeId));
           buildForNode(getOldNode(oldNodeId), getNewNode(newNodeId));
         }
@@ -296,13 +284,29 @@ public final class ChangeSetBuilder {
     }
   }
 
+  public void buildForNodeRole(List<SNode> oldChildren, List<SNode> newChildren, SNodeId oldParentId, SNodeId newParentId, SContainmentLink role) {
+
+    List<SNodeId> oldIds = ListSequence.fromList(oldChildren).select(new ISelector<SNode, SNodeId>() {
+      public SNodeId select(SNode n) {
+        return n.getNodeId();
+      }
+    }).toListSequence();
+    List<SNodeId> newIds = ListSequence.fromList(newChildren).select(new ISelector<SNode, SNodeId>() {
+      public SNodeId select(SNode n) {
+        return n.getNodeId();
+      }
+    }).toListSequence();
+
+    buildForNodeRole(role, oldIds, newIds, oldParentId, newParentId);
+  }
+
   private <D> void buildAddedAndDeletedDependencies(_FunctionTypes._return_P1_E0<? extends Iterable<D>, ? super SModelBase> referencesExtractor, final _FunctionTypes._return_P2_E0<? extends DependencyChange, ? super D, ? super Boolean> changeCreator) {
     Iterable<D> added;
     Iterable<D> deleted;
     {
-      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0fb = getAddedAndDeleted(referencesExtractor);
-      added = _tmp_nbyrtw_c0fb._0();
-      deleted = _tmp_nbyrtw_c0fb._1();
+      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0hb = getAddedAndDeleted(referencesExtractor);
+      added = _tmp_nbyrtw_c0hb._0();
+      deleted = _tmp_nbyrtw_c0hb._1();
     }
     ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(added).select(new ISelector<D, DependencyChange>() {
       public DependencyChange select(D r) {
@@ -421,7 +425,7 @@ public final class ChangeSetBuilder {
   }
 
   private <D> Tuples._2<Iterable<D>, Iterable<D>> getAddedAndDeleted(_FunctionTypes._return_P1_E0<? extends Iterable<D>, ? super SModelBase> itemsExtractor) {
-    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0zb(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0zb(myNewModel, SModelBase.class)));
+    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0bc(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0bc(myNewModel, SModelBase.class)));
   }
 
   @NotNull
@@ -476,28 +480,28 @@ public final class ChangeSetBuilder {
   public static ChangeSetBuilder createBuilder(ChangeSet changeSet) {
     return new ChangeSetBuilder((ChangeSetImpl) changeSet, false);
   }
-  private static SNodeId check_nbyrtw_a0a0b0h0i0l0db(IMapping<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a0b0h0i0h0db(IMapping<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.key();
     }
     return null;
   }
-  private static SNodeId check_nbyrtw_a0a0b0j0i0l0db(IMapping<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a0b0j0i0h0db(IMapping<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.key();
     }
     return null;
   }
-  private static SNodeId check_nbyrtw_a0a0a0a01a11a92(IMapping<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a0a0a01a7a92(IMapping<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.key();
     }
     return null;
   }
-  private static <T> T as_nbyrtw_a0a0a0zb(Object o, Class<T> type) {
+  private static <T> T as_nbyrtw_a0a0a0bc(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_nbyrtw_a0b0a0zb(Object o, Class<T> type) {
+  private static <T> T as_nbyrtw_a0b0a0bc(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

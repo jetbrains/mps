@@ -79,7 +79,6 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
-import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.smodel.event.SModelRootEvent;
 import jetbrains.mps.smodel.event.SModelLanguageEvent;
@@ -625,29 +624,32 @@ public final class ChangesTracking {
       }
       final SNodeId parentId = parent.getNodeId();
 
-      final Wrappers._T<Iterable<SNode>> childrenRightAfterEvent = new Wrappers._T<Iterable<SNode>>(AttributeOperations.getChildNodesAndAttributes(((SNode) parent), childRole));
-      childrenRightAfterEvent.value = Sequence.fromIterable(childrenRightAfterEvent.value).select(new ISelector<SNode, SNode>() {
-        public SNode select(SNode n) {
-          return CopyUtil.copyAndPreserveId(n, false);
+      // XXX there could be more than one child event in a command, and the state here doesn't reflect the one after this particular SModelChildEvent,
+      //    rather state after complete command. Perhaps, the way individual events get handled needs an update. Either record individual change here 
+      //    (i.e. do not clear changes for whole role) or process all command events to figure out affected roles and then runUpdateTask once.
+      final List<SNodeId> childrenRightAfterEvent = Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(((SNode) parent), childRole)).select(new ISelector<SNode, SNodeId>() {
+        public SNodeId select(SNode it) {
+          return it.getNodeId();
         }
       }).toListSequence();
       runUpdateTask(() -> {
         removeChanges(parentId, NodeGroupChange.class, (NodeGroupChange ch) -> ch.isAbout(childRole));
         removeChanges(parentId, NodeIdChange.class, (NodeIdChange ch) -> ch.isAbout(childRole));
         removeDescendantChanges(parentId, childRole);
-        myLastParentAndNewChildrenIds = MultiTuple.<SNodeId,List<SNodeId>>from(parentId, Sequence.fromIterable(childrenRightAfterEvent.value).select(new ISelector<SNode, SNodeId>() {
-          public SNodeId select(SNode n) {
-            return n.getNodeId();
-          }
-        }).toListSequence());
+        myLastParentAndNewChildrenIds = MultiTuple.<SNodeId,List<SNodeId>>from(parentId, childrenRightAfterEvent);
         buildAndAddChanges((ChangeSetBuilder b) -> {
           SNode oldParentNode = getOldNode(parentId);
-          if (oldParentNode != null && Sequence.fromIterable(childrenRightAfterEvent.value).all(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return check_5iuzi5_a0a0a0a0b0a0e0a0n0j36(check_5iuzi5_a0a0a0a0a0b0a0e0a0n0j36(myDifference.getChangeSet()), it) != null;
+          if (oldParentNode != null && ListSequence.fromList(childrenRightAfterEvent).all(new IWhereFilter<SNodeId>() {
+            public boolean accept(SNodeId it) {
+              return check_5iuzi5_a0a0a0a0b0a0e0a0p0j36(check_5iuzi5_a0a0a0a0a0b0a0e0a0p0j36(myDifference.getChangeSet()), it) != null;
             }
           })) {
-            b.buildForNodeRole(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(oldParentNode, childRole)).toListSequence(), Sequence.fromIterable(childrenRightAfterEvent.value).toListSequence(), parentId, parentId, childRole);
+            List<SNodeId> oldChildrenIds = Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(oldParentNode, childRole)).select(new ISelector<SNode, SNodeId>() {
+              public SNodeId select(SNode it) {
+                return it.getNodeId();
+              }
+            }).toListSequence();
+            b.buildForNodeRole(childRole, oldChildrenIds, childrenRightAfterEvent, parentId, parentId);
           }
         });
       }, parent, event);
@@ -733,13 +735,13 @@ public final class ChangesTracking {
     }
     return null;
   }
-  private static SNode check_5iuzi5_a0a0a0a0b0a0e0a0n0j36(SModel checkedDotOperand, SNode it) {
+  private static SNode check_5iuzi5_a0a0a0a0b0a0e0a0p0j36(SModel checkedDotOperand, SNodeId it) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.getNode(it.getNodeId());
+      return checkedDotOperand.getNode(it);
     }
     return null;
   }
-  private static SModel check_5iuzi5_a0a0a0a0a0b0a0e0a0n0j36(ChangeSet checkedDotOperand) {
+  private static SModel check_5iuzi5_a0a0a0a0a0b0a0e0a0p0j36(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNewModel();
     }
