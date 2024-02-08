@@ -219,15 +219,17 @@ public class DefaultStartupScript {
       SNodeBuilder n98 = n97.forSibling().init(CONCEPTS.SimpleVmOptions$48);
       n98.setProperty(PROPS.options$D2Jv, "-Didea.indices.psi.dependent.default=false");
       SNodeBuilder n99 = n98.forSibling().init(CONCEPTS.SimpleVmOptions$48);
-      n99.setProperty(PROPS.options$D2Jv, "-Dide.experimental.ui=false");
+      n99.setProperty(PROPS.options$D2Jv, "-Dexperimental.ui.used.once");
       SNodeBuilder n100 = n99.forSibling().init(CONCEPTS.SimpleVmOptions$48);
-      n100.setProperty(PROPS.commented$92Mp, "" + (true));
-      n100.setProperty(PROPS.options$D2Jv, "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071");
+      n100.setProperty(PROPS.options$D2Jv, "-Dide.experimental.ui=false");
+      SNodeBuilder n101 = n100.forSibling().init(CONCEPTS.SimpleVmOptions$48);
+      n101.setProperty(PROPS.commented$92Mp, "" + (true));
+      n101.setProperty(PROPS.options$D2Jv, "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071");
     }
     {
-      SNodeBuilder n101 = n0.forChild(LINKS.vmOptions$y$aq).init(CONCEPTS.SimpleVmOptions$48);
-      n101.setProperty(PROPS.commented$92Mp, "" + (true));
-      n101.setProperty(PROPS.options$D2Jv, "MPS no longer uses 32-bit version of mps.vmoptions");
+      SNodeBuilder n102 = n0.forChild(LINKS.vmOptions$y$aq).init(CONCEPTS.SimpleVmOptions$48);
+      n102.setProperty(PROPS.commented$92Mp, "" + (true));
+      n102.setProperty(PROPS.options$D2Jv, "MPS no longer uses 32-bit version of mps.vmoptions");
     }
     return n0.getResult();
   }

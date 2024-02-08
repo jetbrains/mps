@@ -1200,6 +1200,17 @@
                   </node>
                 </node>
               </node>
+              <node concept="2pJPED" id="7Se6yFUBlOC" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRtc" resolve="SimpleVmOptions" />
+                <node concept="2pJxcG" id="7Se6yFUBlSk" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRtd" resolve="options" />
+                  <node concept="WxPPo" id="7Se6yFUBlUc" role="28ntcv">
+                    <node concept="Xl_RD" id="7Se6yFUBlUb" role="WxPPp">
+                      <property role="Xl_RC" value="-Dexperimental.ui.used.once" />
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="2pJPED" id="3hPMK5XpCi8" role="36be1Z">
                 <ref role="2pJxaS" to="s7om:3nFPImNgRtc" resolve="SimpleVmOptions" />
                 <node concept="2pJxcG" id="3hPMK5XpCi9" role="2pJxcM">
