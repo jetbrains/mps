@@ -11,8 +11,6 @@ import java.nio.file.Files;
 import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.ide.impl.OpenProjectTask;
-import com.intellij.openapi.application.Application;
-import com.intellij.openapi.application.ApplicationManager;
 
 @GeneratedClass(node = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/5748651123750026353", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
 public class ProjectDirMPSCheckoutListener implements CheckoutListener {
@@ -22,19 +20,8 @@ public class ProjectDirMPSCheckoutListener implements CheckoutListener {
     if (!(Files.exists(dotIdea))) {
       return false;
     }
-    final Runnable runnable = new Runnable() {
-      @Override
-      public void run() {
-        if (OpenMPSProjectTrustProjectHelper.checkTrust(directory)) {
-          ProjectManagerEx.getInstanceEx().openProject(directory, OpenProjectTask.build().withProjectToClose(project));
-        }
-      }
-    };
-    final Application application = ApplicationManager.getApplication();
-    if (application.isDispatchThread()) {
-      runnable.run();
-    } else {
-      application.invokeAndWait(runnable);
+    if (OpenMPSProjectTrustProjectHelper.checkTrust(directory)) {
+      ProjectManagerEx.getInstanceEx().openProject(directory, OpenProjectTask.build().withProjectToClose(project));
     }
     return true;
 

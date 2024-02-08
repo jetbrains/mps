@@ -20,6 +20,8 @@ import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.project.Project;
@@ -59,7 +61,10 @@ public class OpenSampleProjectAction extends AnAction {
     VirtualFile result = FileChooser.chooseFile(descriptor, currentProject, samplesFolder);
     if (result != null) {
       if (OpenMPSProjectTrustProjectHelper.checkTrust(result)) {
-        ProjectUtil.openProject(result.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
+        final Application application = ApplicationManager.getApplication();
+        application.executeOnPooledThread(()-> {
+          ProjectUtil.openProject(result.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
+        });
       }
     }
   }
