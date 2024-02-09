@@ -62,6 +62,7 @@ import com.intellij.vcs.log.Hash;
 import com.intellij.util.Consumer;
 import com.intellij.vcs.log.ui.MainVcsLogUi;
 import com.intellij.vcs.log.ui.VcsLogUiEx;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.vcs.log.impl.VcsLogContentUtil;
 import java.util.concurrent.Future;
 import git4idea.i18n.GitBundle;
@@ -300,13 +301,13 @@ __switch__:
     if (hash == null) {
       return;
     }
-    Consumer<? super MainVcsLogUi> consumer = new Consumer<VcsLogUiEx>() {
+    final Consumer<? super MainVcsLogUi> consumer = new Consumer<VcsLogUiEx>() {
       @Override
       public void consume(VcsLogUiEx p1) {
         VcsActionsUtil.jumpToRevisionUnderProgress(myProject, p1, hash);
       }
     };
-    VcsLogContentUtil.runInMainLog(myProject, consumer);
+    ApplicationManager.getApplication().invokeLater(() -> VcsLogContentUtil.runInMainLog(myProject, consumer));
   }
 
   private static void jumpToRevisionUnderProgress(@NotNull Project project, @NotNull VcsLogUiEx logUi, @NotNull Hash hash) {

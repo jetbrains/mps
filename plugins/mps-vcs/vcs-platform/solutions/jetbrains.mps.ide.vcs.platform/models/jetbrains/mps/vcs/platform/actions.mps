@@ -2723,15 +2723,30 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="9ijxdaY3Bq" role="3cqZAp">
-          <node concept="2YIFZM" id="9ijxdaY3Br" role="3clFbG">
-            <ref role="37wK5l" to="e0ho:~VcsLogContentUtil.runInMainLog(com.intellij.openapi.project.Project,com.intellij.util.Consumer)" resolve="runInMainLog" />
-            <ref role="1Pybhc" to="e0ho:~VcsLogContentUtil" resolve="VcsLogContentUtil" />
-            <node concept="37vLTw" id="10YBiB18SMV" role="37wK5m">
-              <ref role="3cqZAo" node="10YBiB190nv" resolve="myProject" />
+        <node concept="3clFbF" id="4xcsi$R$dK_" role="3cqZAp">
+          <node concept="2OqwBi" id="4xcsi$R$fj3" role="3clFbG">
+            <node concept="2YIFZM" id="4xcsi$R$eia" role="2Oq$k0">
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
             </node>
-            <node concept="37vLTw" id="9ijxdaY3Bs" role="37wK5m">
-              <ref role="3cqZAo" node="9ijxdaY3Ba" resolve="consumer" />
+            <node concept="liA8E" id="4xcsi$R$h20" role="2OqNvi">
+              <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
+              <node concept="1bVj0M" id="4xcsi$RAop9" role="37wK5m">
+                <node concept="3clFbS" id="4xcsi$RAopc" role="1bW5cS">
+                  <node concept="3clFbF" id="4xcsi$RAp01" role="3cqZAp">
+                    <node concept="2YIFZM" id="4xcsi$RAp03" role="3clFbG">
+                      <ref role="37wK5l" to="e0ho:~VcsLogContentUtil.runInMainLog(com.intellij.openapi.project.Project,com.intellij.util.Consumer)" resolve="runInMainLog" />
+                      <ref role="1Pybhc" to="e0ho:~VcsLogContentUtil" resolve="VcsLogContentUtil" />
+                      <node concept="37vLTw" id="4xcsi$RAp04" role="37wK5m">
+                        <ref role="3cqZAo" node="10YBiB190nv" resolve="myProject" />
+                      </node>
+                      <node concept="37vLTw" id="4xcsi$RAp05" role="37wK5m">
+                        <ref role="3cqZAo" node="9ijxdaY3Ba" resolve="consumer" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>
