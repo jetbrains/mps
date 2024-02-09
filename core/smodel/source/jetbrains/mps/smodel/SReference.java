@@ -164,7 +164,7 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
 
   @Override
   public boolean equals(Object obj) {
-    if (obj.getClass() != getClass()) {
+    if (obj == null || obj.getClass() != getClass()) {
       return false;
     }
     final SReference other = (SReference) obj;
