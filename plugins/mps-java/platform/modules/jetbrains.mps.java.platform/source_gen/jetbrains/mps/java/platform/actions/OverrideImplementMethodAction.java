@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.smodel.undo.NamedCommand;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -89,7 +90,7 @@ public class OverrideImplementMethodAction {
             return;
           }
           List<SNode> toScan = insertedMethods;
-          depScan.walk(toScan);
+          depScan.walk(SNodeUtil.getDescendants(toScan));
         }
       });
 
