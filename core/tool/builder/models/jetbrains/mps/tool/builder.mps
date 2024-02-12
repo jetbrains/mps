@@ -62,7 +62,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
@@ -126,7 +126,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
         <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
@@ -189,7 +189,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
         <child id="4972241301747169160" name="typeArgument" index="3PaCim" />
@@ -223,7 +223,7 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -305,7 +305,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -2975,6 +2975,38 @@
         </node>
       </node>
     </node>
+    <node concept="3UR2Jj" id="4vDU0BP$kpM" role="lGtFl">
+      <node concept="TZ5HA" id="4vDU0BP$kpN" role="TZ5H$">
+        <node concept="1dT_AC" id="4vDU0BP$kpO" role="1dT_Ay">
+          <property role="1dT_AB" value="MPS-aware job triggered by an Ant task. Unlike the task, assumes MPS classes in the classpath. " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="4vDU0BP$pDZ" role="TZ5H$">
+        <node concept="1dT_AC" id="4vDU0BP$pE0" role="1dT_Ay">
+          <property role="1dT_AB" value="Extent of the classes is not well defined, though and may vary from worker to worker (e.g. some gonna use IdeaEnironment and hence " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="4vDU0BP$q90" role="TZ5H$">
+        <node concept="1dT_AC" id="4vDU0BP$q91" role="1dT_Ay">
+          <property role="1dT_AB" value="need IDEA platform, others may stick to MpsEnvironment with less classes in the classpath). The mechanism to describe this is not " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="4vDU0BP$qJe" role="TZ5H$">
+        <node concept="1dT_AC" id="4vDU0BP$qJf" role="1dT_Ay">
+          <property role="1dT_AB" value="well-defined at the moment. Now MPS workers start with a help of a code in MpsLoadTask class which generally loads everything " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3uHpWKwuTTb" role="TZ5H$">
+        <node concept="1dT_AC" id="3uHpWKwuTTc" role="1dT_Ay">
+          <property role="1dT_AB" value="under mps-home/lib based on Ant Project properties (various &quot;artifacts.*&quot; values). Task has control over classpath through " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3uHpWKwuUjr" role="TZ5H$">
+        <node concept="1dT_AC" id="3uHpWKwuUjs" role="1dT_Ay">
+          <property role="1dT_AB" value="MpsLoadTask#calculateClassPath() method and may supply extra elements in use by particular worker (e.g. MigrationTask adds jars of migration plugin)" />
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="72FoXGcqtKB" role="jymVt" />
     <node concept="312cEu" id="72FoXGcqDfr" role="jymVt">
       <property role="TrG5h" value="BuildFailureException" />
@@ -3029,38 +3061,6 @@
       </node>
       <node concept="3uibUv" id="72FoXGcqMNZ" role="1zkMxy">
         <ref role="3uigEE" to="wyt6:~RuntimeException" resolve="RuntimeException" />
-      </node>
-    </node>
-    <node concept="3UR2Jj" id="4vDU0BP$kpM" role="lGtFl">
-      <node concept="TZ5HA" id="4vDU0BP$kpN" role="TZ5H$">
-        <node concept="1dT_AC" id="4vDU0BP$kpO" role="1dT_Ay">
-          <property role="1dT_AB" value="MPS-aware job triggered by an Ant task. Unlike the task, assumes MPS classes in the classpath. " />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="4vDU0BP$pDZ" role="TZ5H$">
-        <node concept="1dT_AC" id="4vDU0BP$pE0" role="1dT_Ay">
-          <property role="1dT_AB" value="Extent of the classes is not well defined, though and may vary from worker to worker (e.g. some gonna use IdeaEnironment and hence " />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="4vDU0BP$q90" role="TZ5H$">
-        <node concept="1dT_AC" id="4vDU0BP$q91" role="1dT_Ay">
-          <property role="1dT_AB" value="need IDEA platform, others may stick to MpsEnvironment with less classes in the classpath). The mechanism to describe this is not " />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="4vDU0BP$qJe" role="TZ5H$">
-        <node concept="1dT_AC" id="4vDU0BP$qJf" role="1dT_Ay">
-          <property role="1dT_AB" value="well-defined at the moment. Now MPS workers start with a help of a code in MpsLoadTask class which generally loads everything " />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="3uHpWKwuTTb" role="TZ5H$">
-        <node concept="1dT_AC" id="3uHpWKwuTTc" role="1dT_Ay">
-          <property role="1dT_AB" value="under mps-home/lib based on Ant Project properties (various &quot;artifacts.*&quot; values). Task has control over classpath through " />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="3uHpWKwuUjr" role="TZ5H$">
-        <node concept="1dT_AC" id="3uHpWKwuUjs" role="1dT_Ay">
-          <property role="1dT_AB" value="MpsLoadTask#calculateClassPath() method and may supply extra elements in use by particular worker (e.g. MigrationTask adds jars of migration plugin)" />
-        </node>
       </node>
     </node>
   </node>
