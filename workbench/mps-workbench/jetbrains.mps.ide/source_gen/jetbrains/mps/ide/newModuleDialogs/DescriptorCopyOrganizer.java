@@ -92,12 +92,6 @@ import jetbrains.mps.project.ModuleId;
     if (generatorOutputPath != null) {
       ProjectPathUtil._setGeneratorOutputPathPrim(copyDescriptor, myModulePathConverter.source2Target(generatorOutputPath));
     }
-    if (copyDescriptor instanceof LanguageDescriptor) {
-      final String docPath = ((LanguageDescriptor) copyDescriptor).getDocPath();
-      if (docPath != null) {
-        ((LanguageDescriptor) copyDescriptor).setDocPath(myModulePathConverter.source2Target(docPath));
-      }
-    }
   }
 
   private void resetModelRoots(final ModuleDescriptor copyDescriptor) {

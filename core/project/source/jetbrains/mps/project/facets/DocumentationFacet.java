@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.project.facets;
 
@@ -75,8 +75,7 @@ public class DocumentationFacet extends ModuleFacetBase implements GenerationTar
     String locationValue = memento.get("doc_src");
     final AbstractModule am = (AbstractModule) getModule();
     if (locationValue == null) {
-      assert am.getModuleDescriptor() instanceof LanguageDescriptor;
-      locationValue = ProjectPathUtil.getGeneratorOutputDocPath((LanguageDescriptor) am.getModuleDescriptor());
+      locationValue = MacrosFactory.MODULE + "/doc_gen";
     }
     final String expanded = MacrosFactory.forModule(getModule()).expandPath(locationValue);
     myOutputRoot = am.getFileSystem().getFile(expanded);
