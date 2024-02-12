@@ -115,7 +115,7 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withSubversionPlugin() {
-    return addDistributedPlugin("svn4idea", "Subversion");
+    return addDistributedPlugin("vcs-svn", "Subversion");
   }
 
   public EnvironmentConfig withCorePlugin() {
@@ -135,7 +135,7 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withGit4IdeaPlugin() {
-    return addDistributedPlugin("git4idea", "Git4Idea");
+    return addDistributedPlugin("vcs-git", "Git4Idea");
   }
 
   public EnvironmentConfig withGit4IdeaStubsPlugin() {

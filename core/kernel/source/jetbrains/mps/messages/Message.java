@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,9 +24,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 
 import java.time.Instant;
 
-/**
- * @author Kostik
- */
 public class Message implements IMessage {
   private static final Logger LOG = Logger.getLogger(Message.class);
 
@@ -146,5 +143,9 @@ public class Message implements IMessage {
 
   public static IMessage info(@NotNull Class<?> sender, @NotNull String text, @Nullable Object hint, @Nullable Throwable ex) {
     return new Message(MessageKind.INFORMATION, sender, text).setHintObject(hint).setException(ex);
+  }
+
+  public static IMessage error(@NotNull Class<?> sender, @NotNull String text, @Nullable Object hint, @Nullable Throwable ex) {
+    return new Message(MessageKind.ERROR, sender, text).setHintObject(hint).setException(ex);
   }
 }
