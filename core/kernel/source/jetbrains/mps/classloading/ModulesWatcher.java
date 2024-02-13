@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -245,12 +245,11 @@ public class ModulesWatcher {
   private Map<SModuleReference, String> findInvalidModules(boolean printErrors) {
     myRepository.getModelAccess().checkReadAccess();
 
-    Map<ReloadableModule, List<SearchError>> modulesWithAbsentDeps = myModuleUpdater.getClassLoadingDeps().getModulesWithAbsentDeps();
     Map<SModuleReference, String> mRefToProblem = new HashMap<>();
     Collection<? extends SModuleReference> allModuleRefs = getAllModules();
     for (SModuleReference mRef : allModuleRefs) {
       if (!mRefToProblem.containsKey(mRef)) {
-        String msg = getModuleProblemMessage(mRef, modulesWithAbsentDeps);
+        String msg = getModuleProblemMessage(mRef);
         if (msg == null) {
           continue;
         }
@@ -268,19 +267,19 @@ public class ModulesWatcher {
    */
   @Nullable
   @Hack
-  private String getModuleProblemMessage(SModuleReference mRef, Map<ReloadableModule, List<SearchError>> modulesWithAbsentDeps) {
+  private String getModuleProblemMessage(SModuleReference mRef) {
     assert !isChanged();
     if (isModuleDisposed(mRef)) {
       return String.format("Module %s is disposed and therefore was marked invalid for class loading", mRef.getModuleName());
     }
 
+    Map<SModuleReference, List<SearchError>> modulesWithAbsentDeps = myModuleUpdater.getClassLoadingDeps().getModulesWithAbsentDeps();
+    if (modulesWithAbsentDeps.containsKey(mRef)) {
+      List<SearchError> errors = modulesWithAbsentDeps.get(mRef);
+      return String.format("%s was marked invalid for class loading: %s", mRef.getModuleName(), errors.get(0).getMsg());
+    }
     ReloadableModule module = (ReloadableModule) mRef.resolve(myRepository);
     assert module != null;
-
-    if (modulesWithAbsentDeps.containsKey(module)) {
-      List<SearchError> errors = modulesWithAbsentDeps.get(module);
-      return String.format("%s was marked invalid for class loading: %s", module, errors.get(0).getMsg());
-    }
     for (SDependency dep : module.getDeclaredDependencies()) {
       if (dep.getScope() == SDependencyScope.DESIGN || dep.getScope() == SDependencyScope.GENERATES_INTO) {
         continue;

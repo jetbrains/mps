@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -184,8 +184,8 @@ public class ModuleUpdater {
       }
       assert module != null;
       Collection<ReloadableModule> deps = getDepsWithErrors(module);
-      if (deps.isEmpty()) {
-        // indeed, useless if, kept for the record there's different logic prior to my change
+      if (usedModulesCollector.withErrors(module.getModuleReference())) {
+        // module with broken dependencies shall not record its edges; edges would get added once all errors gone
         continue;
       }
       for (ReloadableModule dep : deps) {
@@ -242,7 +242,7 @@ public class ModuleUpdater {
       // and take logic that used to be here as a way to make sure we don't face such scenario.
       assert myDepGraphHolder.contains(mRef);
       Collection<SModuleReference> currentDeps = new HashSet<>(myDepGraphHolder.getOutgoingEdges(mRef));
-      if (usedModulesCollector.getModulesWithAbsentDeps().containsKey(module)) {
+      if (usedModulesCollector.withErrors(mRef)) {
         // XXX why we ignore update of other modulesToReload?
         // why not updated=true; continue;?
         return true;
