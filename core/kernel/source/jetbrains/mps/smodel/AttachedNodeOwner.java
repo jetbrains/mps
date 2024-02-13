@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.smodel.AssociationData.Transition;
 import jetbrains.mps.smodel.ModelCommandContext.Provider;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
+import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -114,7 +115,7 @@ final class AttachedNodeOwner extends SNodeOwner {
       // There's ImmatureReferences that would force indirect references the moment command completes, regardless of
       // repository presence.
       final Transition transition = new Transition(false);
-      node.forEachAssociationDeep(data -> transition.makeIndirect(data, StaticReference::getResolveInfo));
+      node.forEachAssociationDeep(data -> transition.makeIndirect(data, SNodeOperations::getResolveInfo));
     }
   }
 

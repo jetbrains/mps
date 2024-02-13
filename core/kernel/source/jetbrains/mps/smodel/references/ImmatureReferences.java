@@ -1,14 +1,13 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel.references;
 
 import gnu.trove.THashSet;
-import jetbrains.mps.smodel.StaticReference;
+import jetbrains.mps.smodel.SNodeImplAccess;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.Set;
 
@@ -35,12 +34,8 @@ public final class ImmatureReferences {
     for (Pair<SNode, SReferenceLink> r : myReferences) {
       // XXX in case beforeModelRemoved() code that used to be here is vital,
       // could check r.getTargetSModelReference().anyMatch(modelsRemoved.all().getReference()) here to avoid maturing references that point nowhere
-      final SReference ref = r.o1.getReference(r.o2);
-      // FIXME there's no mechanism now to replace AssociationData except via SReference impl
-      //       likely, need to use smodel.SNode rather than openapi.SNode, but don't want to move this class to [kernel]
-      if (ref instanceof StaticReference) {
-        ((StaticReference) ref).makeIndirect(true);
-      }
+      new SNodeImplAccess(r.o1).forceIndirectAssociation(r.o2);
+      // XXX perhaps, makes sense to group references by node, although I don't expect a lot of association per single node
     }
   }
 

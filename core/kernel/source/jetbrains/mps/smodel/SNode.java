@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,6 +39,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import static jetbrains.mps.util.SNodeOperations.getDebugText;
@@ -490,6 +491,20 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode, SNodeAssoci
 
     for (SNode child = firstChild(); child != null; child = child.treeNext()) {
       child.forEachAssociationDeep(translate);
+    }
+  }
+
+  /**
+   * apply the function to each association link known to the node.
+   * unlike {@link #forEachAssociationDeep(Function)}, doesn't visit children
+   */
+  /*package*/ final void forEachAssociationShallow(BiFunction<SReferenceLink, AssociationData, AssociationData> translate) {
+    for (int i = 1, x = myReferences.length; i < x; i += 2) {
+      AssociationData d = (AssociationData) myReferences[i];
+      if (d == null) {
+        continue;
+      }
+      myReferences[i] = translate.apply((SReferenceLink) myReferences[i-1], d);
     }
   }
 

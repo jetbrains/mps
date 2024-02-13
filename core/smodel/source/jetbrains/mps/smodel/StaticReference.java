@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel;
 
@@ -87,6 +87,8 @@ public final class StaticReference extends SReferenceBase {
   // XXX why synchronized, not assertCanWrite?
   //     OTOH, if I move towards SReference class being just a mediator to actual ref storage, synchronized might not be the worst
   //     way to guard against using the mediator in different threads.
+  // FIXME ^^^ NO, still has to follow ModelAccess conventions
+  //     check uses, perhaps, have to be SNodeImplAccess operations rather than SReference-mediator? Then, we can cease using invalid getResolveInfo() here
   public synchronized void setTargetSModelReference(@NotNull SModelReference modelReference) {
     // preserve node id and resolve info value of 'young' target, if any
     // FIXME makeMature to create proper IndirectNodePtr right away
@@ -277,7 +279,7 @@ public final class StaticReference extends SReferenceBase {
   }
 
   @Nullable
-  /*package*/ static String getResolveInfo(SNode immatureNode) {
+  /*package*/ private static String getResolveInfo(SNode immatureNode) {
     // FIXME need a better approach to keep names of predefined attributes;
     // however, a dependency to generated kernel module is an overkill for the sake of few strings
     // XXX move both smodel.SNode and SNodeLegacy to [smodel], why it's in [kernel]?
@@ -304,7 +306,10 @@ public final class StaticReference extends SReferenceBase {
    * It's possible to make reference 'mature' iff both its source and target nodes belong to a model.
    * It's not clear what if these models are not attached to a repository, why would we care to make reference 'indirect' in this case.
    * @return {@code true} when/if reference became 'mature' (i.e. doesn't have target node object but its identity)
+   * @deprecated to become private (it's implementation detail, after all) and to lose synchronization (perhaps, even removed at all, if I can keep
+   *             direct/indirect transitions external to this code)
    */
+  @Deprecated(since = "2023.3", forRemoval = true)
   public synchronized boolean makeIndirect(boolean force) {
     final AssociationData d = getData();
     if (!d.isDirectNode()) {

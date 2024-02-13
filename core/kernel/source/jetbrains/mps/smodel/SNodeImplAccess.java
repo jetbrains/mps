@@ -1,12 +1,14 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.smodel.AssociationData.DynamicPtr;
 import jetbrains.mps.smodel.AssociationData.Transition;
+import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Internal;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
@@ -51,6 +53,17 @@ public final class SNodeImplAccess {
   // for a subtree starting with initial node
   public void makeReferencesIndirect() {
     final Transition transition = new Transition();
-    myNode.forEachAssociationDeep(data -> transition.makeIndirect(data, StaticReference::getResolveInfo));
+    myNode.forEachAssociationDeep(data -> transition.makeIndirect(data, SNodeOperations::getResolveInfo));
+  }
+
+  // tailored for use from specific scenario of ImmatureReferences
+  public void forceIndirectAssociation(@NotNull final SReferenceLink associationLink) {
+    myNode.forEachAssociationShallow((link, data) -> {
+      if (!link.equals(associationLink) || !data.isDirectNode()) {
+        return data;
+      }
+      // IR used to do makeIndirect(true), hence 'force'
+      return new Transition(true).makeIndirect(data, SNodeOperations::getResolveInfo);
+    });
   }
 }
