@@ -1199,110 +1199,107 @@
   </root>
   <root nodeRef="r:e303f5e6-4651-4e3c-b105-2f02e438900c(jetbrains.mps.migration.workbench.plugin)/6550156053360177531">
     <file name="RebuildHandler_ProjectPluginPart.java">
-      <node id="6550156053360181262" at="34,0,35,0" concept="5" trace="migrationTrigger" />
-      <node id="6550156053360209027" at="38,40,39,108" concept="4" />
-      <node id="6550156053360218085" at="40,73,41,13" concept="11" />
-      <node id="6550156053360265419" at="42,5,43,42" concept="10" />
-      <node id="1880847875687512381" at="44,124,45,58" concept="10" />
-      <node id="6550156053360326601" at="46,50,47,133" concept="12" />
-      <node id="1769810546630204545" at="48,91,49,44" concept="10" />
-      <node id="4682389101767751844" at="50,31,51,51" concept="11" />
-      <node id="4682389101767780646" at="52,11,53,0" concept="13" />
-      <node id="4682389101768308410" at="54,46,55,38" concept="11" />
-      <node id="4682389101768333920" at="56,11,57,0" concept="13" />
-      <node id="4682389101767968132" at="57,0,58,81" concept="12" />
-      <node id="4682389101768134719" at="58,81,59,79" concept="10" />
-      <node id="4682389101768194620" at="61,58,62,36" concept="11" />
-      <node id="4945848553299939889" at="65,11,66,59" concept="12" />
-      <node id="4945848553299875384" at="66,59,67,122" concept="10" />
-      <node id="4945848553300602223" at="68,56,69,17" concept="11" />
-      <node id="7133788473464689645" at="70,9,71,0" concept="13" />
-      <node id="1186936846703260826" at="72,63,73,43" concept="12" />
-      <node id="2361823221845537645" at="73,43,74,74" concept="4" />
-      <node id="4945848553300650601" at="74,74,75,116" concept="12" />
-      <node id="4945848553300788723" at="75,116,76,157" concept="12" />
-      <node id="4945848553301561400" at="78,31,79,101" concept="10" />
-      <node id="1841925426083408130" at="79,101,80,82" concept="10" />
-      <node id="856036527218165866" at="80,82,81,105" concept="10" />
-      <node id="8610665572788515242" at="82,56,83,93" concept="10" />
-      <node id="4945848553300614286" at="83,93,84,87" concept="10" />
-      <node id="4945848553301272687" at="86,23,87,37" concept="4" />
-      <node id="4945848553301607278" at="88,74,89,119" concept="4" />
-      <node id="5510448103905252382" at="91,17,92,50" concept="4" />
-      <node id="6550156053360219814" at="102,73,103,13" concept="11" />
-      <node id="6550156053360205706" at="104,5,105,83" concept="4" />
-      <node id="6550156053360207170" at="105,83,106,66" concept="4" />
-      <node id="6550156053360177531" at="35,0,37,0" concept="3" trace="RebuildHandler_ProjectPluginPart#()V" />
-      <node id="6550156053360215899" at="39,108,42,5" concept="8" />
-      <node id="4682389101767729392" at="49,44,52,11" concept="8" />
-      <node id="4682389101767826197" at="53,0,56,11" concept="8" />
-      <node id="4682389101768188097" at="61,0,64,0" concept="9" trace="invoke#(Ljetbrains/mps/smodel/Generator;)Ljava/lang/Iterable;" />
-      <node id="4945848553300547627" at="67,122,70,9" concept="8" />
-      <node id="6550156053360218504" at="101,43,104,5" concept="8" />
-      <node id="4682389101768254649" at="59,79,64,63" concept="11" />
-      <node id="4945848553301498366" at="85,41,90,19" concept="18" />
-      <node id="4945848553301116598" at="84,87,91,17" concept="8" />
-      <node id="6550156053360177531" at="100,0,108,0" concept="9" trace="dispose#(Ljetbrains/mps/project/MPSProject;)V" />
-      <node id="1841925426083462648" at="81,105,93,15" concept="8" />
-      <node id="4945848553301214457" at="78,0,95,0" concept="9" trace="run#()V" />
-      <node id="7983203488415089732" at="47,133,65,11" concept="10" />
-      <node id="4945848553301157851" at="76,157,95,13" concept="4" />
-      <node id="3707661270081882448" at="71,0,96,11" concept="4" />
-      <node id="1880847875687531602" at="45,58,97,9" concept="4" />
-      <node id="6550156053360220265" at="43,42,98,7" concept="4" />
-      <node id="6550156053360177531" at="37,0,100,0" concept="9" trace="init#(Ljetbrains/mps/project/MPSProject;)V" />
-      <scope id="6550156053360177531" at="35,45,35,45" />
-      <scope id="6550156053360215901" at="40,73,41,13" />
-      <scope id="4682389101767729394" at="50,31,51,51" />
-      <scope id="4682389101767826199" at="54,46,55,38" />
-      <scope id="4682389101768188098" at="61,58,62,36" />
-      <scope id="4945848553300547629" at="68,56,69,17" />
-      <scope id="4945848553301498368" at="86,23,87,37" />
-      <scope id="4945848553301510057" at="88,74,89,119" />
-      <scope id="6550156053360218506" at="102,73,103,13" />
-      <scope id="6550156053360177531" at="35,0,37,0" />
-      <scope id="4945848553301510054" at="88,19,90,19">
+      <node id="6550156053360181262" at="33,0,34,0" concept="5" trace="migrationTrigger" />
+      <node id="6550156053360209027" at="37,40,38,108" concept="4" />
+      <node id="6550156053360218085" at="39,73,40,13" concept="11" />
+      <node id="6550156053360265419" at="41,5,42,42" concept="10" />
+      <node id="1880847875687512381" at="43,124,44,58" concept="10" />
+      <node id="6550156053360326601" at="45,50,46,133" concept="12" />
+      <node id="1769810546630204545" at="47,91,48,44" concept="10" />
+      <node id="4682389101767751844" at="49,31,50,51" concept="11" />
+      <node id="4682389101767780646" at="51,11,52,0" concept="13" />
+      <node id="4682389101768308410" at="53,46,54,38" concept="11" />
+      <node id="4682389101768333920" at="55,11,56,0" concept="13" />
+      <node id="4682389101767968132" at="56,0,57,81" concept="12" />
+      <node id="4682389101768134719" at="57,81,58,79" concept="10" />
+      <node id="4682389101768194620" at="60,58,61,36" concept="11" />
+      <node id="4945848553299939889" at="64,11,65,59" concept="12" />
+      <node id="4945848553299875384" at="65,59,66,128" concept="10" />
+      <node id="4945848553300602223" at="67,56,68,17" concept="11" />
+      <node id="7133788473464689645" at="69,9,70,0" concept="13" />
+      <node id="1186936846703260826" at="71,63,72,43" concept="12" />
+      <node id="2361823221845537645" at="72,43,73,74" concept="4" />
+      <node id="4945848553300650601" at="73,74,74,116" concept="12" />
+      <node id="4945848553300788723" at="74,116,75,157" concept="12" />
+      <node id="4945848553301561400" at="76,75,77,99" concept="10" />
+      <node id="1841925426083408130" at="77,99,78,80" concept="10" />
+      <node id="856036527218165866" at="78,80,79,103" concept="10" />
+      <node id="8610665572788515242" at="80,54,81,54" concept="10" />
+      <node id="4945848553300614286" at="81,54,82,79" concept="10" />
+      <node id="4945848553301272687" at="84,21,85,35" concept="4" />
+      <node id="4945848553301607278" at="86,72,87,117" concept="4" />
+      <node id="839311315588248926" at="89,15,90,96" concept="12" />
+      <node id="6550156053360219814" at="99,73,100,13" concept="11" />
+      <node id="6550156053360205706" at="101,5,102,83" concept="4" />
+      <node id="6550156053360207170" at="102,83,103,66" concept="4" />
+      <node id="6550156053360177531" at="34,0,36,0" concept="3" trace="RebuildHandler_ProjectPluginPart#()V" />
+      <node id="6550156053360215899" at="38,108,41,5" concept="8" />
+      <node id="4682389101767729392" at="48,44,51,11" concept="8" />
+      <node id="4682389101767826197" at="52,0,55,11" concept="8" />
+      <node id="4682389101768188097" at="60,0,63,0" concept="9" trace="invoke#(Ljetbrains/mps/smodel/Generator;)Ljava/lang/Iterable;" />
+      <node id="4945848553300547627" at="66,128,69,9" concept="8" />
+      <node id="6550156053360218504" at="98,43,101,5" concept="8" />
+      <node id="4682389101768254649" at="58,79,63,63" concept="11" />
+      <node id="4945848553301498366" at="83,39,88,17" concept="18" />
+      <node id="4945848553301116598" at="82,79,89,15" concept="8" />
+      <node id="6550156053360177531" at="97,0,105,0" concept="9" trace="dispose#(Ljetbrains/mps/project/MPSProject;)V" />
+      <node id="1841925426083462648" at="79,103,91,13" concept="8" />
+      <node id="4945848553301157851" at="75,157,92,13" concept="4" />
+      <node id="7983203488415089732" at="46,133,64,11" concept="10" />
+      <node id="3707661270081882448" at="70,0,93,11" concept="4" />
+      <node id="1880847875687531602" at="44,58,94,9" concept="4" />
+      <node id="6550156053360220265" at="42,42,95,7" concept="4" />
+      <node id="6550156053360177531" at="36,0,97,0" concept="9" trace="init#(Ljetbrains/mps/project/MPSProject;)V" />
+      <scope id="6550156053360177531" at="34,45,34,45" />
+      <scope id="6550156053360215901" at="39,73,40,13" />
+      <scope id="4682389101767729394" at="49,31,50,51" />
+      <scope id="4682389101767826199" at="53,46,54,38" />
+      <scope id="4682389101768188098" at="60,58,61,36" />
+      <scope id="4945848553300547629" at="67,56,68,17" />
+      <scope id="4945848553301498368" at="84,21,85,35" />
+      <scope id="4945848553301510057" at="86,72,87,117" />
+      <scope id="6550156053360218506" at="99,73,100,13" />
+      <scope id="6550156053360177531" at="34,0,36,0" />
+      <scope id="4945848553301510054" at="86,17,88,17">
         <var name="ex" id="4945848553301510055" />
       </scope>
-      <scope id="4682389101768188097" at="61,0,64,0">
+      <scope id="4682389101768188097" at="60,0,63,0">
         <var name="it" id="4682389101768188097" />
       </scope>
-      <scope id="4945848553301116600" at="85,41,90,19" />
-      <scope id="6550156053360181228" at="101,43,106,66" />
-      <scope id="6550156053360177531" at="100,0,108,0">
+      <scope id="4945848553301116600" at="83,39,88,17" />
+      <scope id="6550156053360181228" at="98,43,103,66" />
+      <scope id="6550156053360177531" at="97,0,105,0">
         <var name="project" id="6550156053360177531" />
       </scope>
-      <scope id="1841925426083462653" at="82,56,92,50">
-        <var name="inputRes" id="8610665572788515243" />
+      <scope id="1841925426083462653" at="80,54,90,96">
+        <var name="ir" id="8610665572788515243" />
         <var name="makeResult" id="4945848553300614287" />
       </scope>
-      <scope id="4945848553301214460" at="78,31,93,15">
+      <scope id="4945848553301214460" at="76,75,91,13">
         <var name="makeService" id="856036527218165867" />
         <var name="msgHandler" id="4945848553301561401" />
         <var name="session" id="1841925426083408131" />
       </scope>
-      <scope id="7983203488415126812" at="48,91,64,63">
+      <scope id="7983203488415126812" at="47,91,63,63">
         <var name="generators" id="4682389101768134720" />
         <var name="module" id="1769810546630204546" />
       </scope>
-      <scope id="4945848553301214457" at="78,0,95,0" />
-      <scope id="2270132903213485427" at="72,63,95,13" />
-      <scope id="1880847875687531606" at="46,50,96,11">
+      <scope id="2270132903213485427" at="71,63,92,13" />
+      <scope id="1880847875687531606" at="45,50,93,11">
         <var name="inputRes" id="4945848553299875385" />
         <var name="modelsToBuild" id="7983203488415089733" />
       </scope>
-      <scope id="7983203488415968535" at="44,124,97,9">
+      <scope id="7983203488415968535" at="43,124,94,9">
         <var name="repo" id="1880847875687512382" />
       </scope>
-      <scope id="6550156053360179371" at="38,40,98,7">
+      <scope id="6550156053360179371" at="37,40,95,7">
         <var name="mpsProject" id="6550156053360265417" />
       </scope>
-      <scope id="6550156053360177531" at="37,0,100,0">
+      <scope id="6550156053360177531" at="36,0,97,0">
         <var name="project" id="6550156053360177531" />
       </scope>
-      <unit id="4682389101768188097" at="60,65,64,11" name="jetbrains.mps.migration.workbench.plugin.RebuildHandler_ProjectPluginPart$1" />
-      <unit id="4945848553301214457" at="77,72,95,11" name="jetbrains.mps.migration.workbench.plugin.RebuildHandler_ProjectPluginPart$2" />
-      <unit id="6550156053360177531" at="33,0,109,0" name="jetbrains.mps.migration.workbench.plugin.RebuildHandler_ProjectPluginPart" />
+      <unit id="4682389101768188097" at="59,65,63,11" name="jetbrains.mps.migration.workbench.plugin.RebuildHandler_ProjectPluginPart$1" />
+      <unit id="6550156053360177531" at="32,0,106,0" name="jetbrains.mps.migration.workbench.plugin.RebuildHandler_ProjectPluginPart" />
     </file>
     <file name="Workbench_ProjectPlugin.java">
       <node id="6550156053360177531" at="13,61,14,54" concept="4" />

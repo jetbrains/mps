@@ -24,7 +24,6 @@ import jetbrains.mps.ide.make.DefaultMakeMessageHandler;
 import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.make.MakeServiceComponent;
-import java.util.ArrayList;
 import java.util.concurrent.Future;
 import jetbrains.mps.make.script.IResult;
 import java.util.concurrent.ExecutionException;
@@ -64,7 +63,7 @@ public class RebuildHandler_ProjectPluginPart extends ProjectPluginPart {
           }).concat(Sequence.fromIterable(module.getModels()));
         });
         // FWIW, ModelsToResources does canGenerate() check
-        List<IResource> inputRes = Sequence.fromIterable(new ModelsToResources(modelsToBuild, true).resources()).toList();
+        final List<IResource> inputRes = Sequence.fromIterable(new ModelsToResources(modelsToBuild, true).resources()).toList();
         if (ListSequence.fromList(inputRes).isEmpty()) {
           return;
         }
@@ -74,23 +73,21 @@ public class RebuildHandler_ProjectPluginPart extends ProjectPluginPart {
           new SaveRepositoryCommand(mpsProject.getRepository()).execute();
           // we'd better have EDT for SaveRepoCommand to make sure it's over by the time we start Make, but the rest
           //    seems to be fine to move to another thread (WorkbenchMakeService would put its progress-related stuff into EDT, we don't need to bother here)
-          ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
-            public void run() {
-              final DefaultMakeMessageHandler msgHandler = new DefaultMakeMessageHandler(mpsProject);
-              MakeSession session = new MakeSession(mpsProject, msgHandler, true);
-              final IMakeService makeService = mpsProject.getComponent(MakeServiceComponent.class).get();
-              if (makeService.openNewSession(session)) {
-                List<IResource> inputRes = ListSequence.fromList(new ArrayList<IResource>());
-                final Future<IResult> makeResult = makeService.make(session, inputRes);
-                if (makeResult != null) {
-                  try {
-                    makeResult.get();
-                  } catch (InterruptedException | ExecutionException ex) {
-                    msgHandler.handle(Message.error(IStartupMigrationExecutor.class, "Rebuild interrupted", null, ex));
-                  }
+          ApplicationManager.getApplication().executeOnPooledThread(() -> {
+            final DefaultMakeMessageHandler msgHandler = new DefaultMakeMessageHandler(mpsProject);
+            MakeSession session = new MakeSession(mpsProject, msgHandler, true);
+            final IMakeService makeService = mpsProject.getComponent(MakeServiceComponent.class).get();
+            if (makeService.openNewSession(session)) {
+              List<? extends IResource> ir = inputRes;
+              final Future<IResult> makeResult = makeService.make(session, ir);
+              if (makeResult != null) {
+                try {
+                  makeResult.get();
+                } catch (InterruptedException | ExecutionException ex) {
+                  msgHandler.handle(Message.error(IStartupMigrationExecutor.class, "Rebuild interrupted", null, ex));
                 }
-                makeService.closeSession(session);
               }
+              // WorkbenchMakeService.make closes session, although it's not documented anywhere
             }
           });
         });
