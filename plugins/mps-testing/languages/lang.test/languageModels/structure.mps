@@ -23,6 +23,7 @@
         <reference id="4726480899534317252" name="baseURL" index="1fZFei" />
       </concept>
       <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
+        <property id="1805901909778165289" name="newuiFile" index="uyjgh" />
         <property id="2756621024541341363" name="file" index="1iqoE4" />
       </concept>
     </language>
@@ -659,6 +660,7 @@
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJSv" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/nodesTest.png" />
+      <property role="uyjgh" value="${module}/icons/editorTest_newui.svg" />
     </node>
   </node>
   <node concept="1TIwiD" id="hSLIFSi">

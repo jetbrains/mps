@@ -34,6 +34,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_GeneratorTest == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
+          cpb.icon(IconContainer.RESOURCE_a0a2a0a1b0j);
           props_GeneratorTest = cpb.create();
         }
         return props_GeneratorTest;
