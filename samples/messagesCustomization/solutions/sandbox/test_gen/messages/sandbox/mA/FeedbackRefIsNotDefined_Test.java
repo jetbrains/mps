@@ -35,8 +35,12 @@ public class FeedbackRefIsNotDefined_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck7019192671317896977() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7019192671317896965");
+    }
 
+    public void test_NodeErrorCheck7019192671317896977() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7019192671317896966");
         SNode operation = getRealNodeById("7019192671317896977");

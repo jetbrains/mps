@@ -38,11 +38,13 @@ public class IntroduceFinalLocalVariable_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4038232163186978774", "4038232163186978789");
+    }
+
     public void test_IntroduceFinalLocalVariable() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("4038232163186978774");
-        addNodeById("4038232163186978789");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         IntroduceLocalVariableRefactoring refactoring = new IntroduceLocalVariableRefactoring();
         refactoring.init(getNodeById("4038232163186978784"), null);

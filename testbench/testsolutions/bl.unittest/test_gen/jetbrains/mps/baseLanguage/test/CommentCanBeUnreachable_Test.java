@@ -43,8 +43,12 @@ public class CommentCanBeUnreachable_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeUnusedVariableWarningCheck4056233746953876769() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1226936061419");
+    }
 
+    public void test_NodeUnusedVariableWarningCheck4056233746953876769() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451227675");
         SNode operation = getRealNodeById("4056233746953876769");
@@ -52,7 +56,6 @@ public class CommentCanBeUnreachable_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck1226936244308() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1226936071520");
         SNode operation = getRealNodeById("1226936244308");

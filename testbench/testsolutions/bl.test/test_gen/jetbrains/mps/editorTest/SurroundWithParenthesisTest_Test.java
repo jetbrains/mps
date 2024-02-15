@@ -42,13 +42,13 @@ public class SurroundWithParenthesisTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3852894662483077200", "3852894662483077206", "3852894662483228699", "3852894662483230132");
+    }
+
     public void test_noBinaryOperation() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("3852894662483077200");
-        addNodeById("3852894662483077206");
-        addNodeById("3852894662483228699");
-        addNodeById("3852894662483230132");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ParenthesisUtil.createUnmatchedLeftParenthesis(getNodeById("2329139814027568804"));
         ParenthesisUtil.createUnmatchedRightParenthesis(getNodeById("2329139814027568804"));
@@ -61,12 +61,7 @@ public class SurroundWithParenthesisTest_Test extends BaseTransformationTest {
       });
     }
     public void test_thereIsAlreadyParenthesis() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("3852894662483077200");
-        addNodeById("3852894662483077206");
-        addNodeById("3852894662483228699");
-        addNodeById("3852894662483230132");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ParenthesisUtil.createUnmatchedLeftParenthesis(getNodeById("3852894662483230127"));
         ParenthesisUtil.createUnmatchedRightParenthesis(getNodeById("3852894662483230127"));

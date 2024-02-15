@@ -36,8 +36,12 @@ public class WarnOnImportingAbsentAction_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeImportHasNoEffectCheck858085313517684344() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1465006755395151275", "1465006755395151313");
+    }
 
+    public void test_NodeImportHasNoEffectCheck858085313517684344() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1465006755395151322");
         SNode operation = getRealNodeById("858085313517684344");

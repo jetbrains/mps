@@ -36,8 +36,12 @@ public class TryCatch_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeExpectingCatchOrFinallyCheck8160487567611772388() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8160487567611772122");
+    }
 
+    public void test_NodeExpectingCatchOrFinallyCheck8160487567611772388() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8160487567611772337");
         SNode operation = getRealNodeById("8160487567611772388");

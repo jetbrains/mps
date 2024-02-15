@@ -38,7 +38,13 @@ public class ImageExport_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_manuallyExportedImage() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         ImageLoader imageloader = new ImageLoader("ManuallyExportedImage.gif");
         try {
@@ -50,6 +56,7 @@ public class ImageExport_Test extends BaseTransformationTest {
       });
     }
     public void test_imageExportedByGenerator() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         ImageLoader imageloader = new ImageLoader(Cls.class.getSimpleName() + ".png");
         try {

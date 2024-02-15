@@ -33,8 +33,13 @@ public class InlineRecursiveMethod_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052989283");
+    }
+
     public void test_InlineRecursiveMethod() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052989283"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertTrue(new InlineMethodModel(getNodeById("1230052989285")).getErrors() != null));
     }
 

@@ -37,8 +37,12 @@ public class JvmStubsLoading_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck8869766091651422439() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8869766091651207183");
+    }
 
+    public void test_ErrorMessagesCheck8869766091651422439() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8869766091651207670");
         SNode operation = getRealNodeById("8869766091651422439");

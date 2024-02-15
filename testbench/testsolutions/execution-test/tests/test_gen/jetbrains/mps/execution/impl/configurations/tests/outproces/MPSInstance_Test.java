@@ -42,7 +42,13 @@ public class MPSInstance_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_simpleConfigurationIsRunnable() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         // this test makes assumptions about IDEA's default behaviour that are no longer true (as of 2022.3)
         // for one, specifying -Djava.awt.headless=true is not enough to make IDEA exit with expected message 

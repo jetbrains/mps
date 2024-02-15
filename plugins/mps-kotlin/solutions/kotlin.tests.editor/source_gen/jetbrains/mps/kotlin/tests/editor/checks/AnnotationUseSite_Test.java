@@ -167,8 +167,12 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeUseSiteIsNotApplicableCheck7342564606706288103() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7342564606693418842");
+    }
 
+    public void test_NodeUseSiteIsNotApplicableCheck7342564606706288103() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201000");
         SNode operation = getRealNodeById("7342564606706288103");
@@ -176,7 +180,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706288138() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201003");
         SNode operation = getRealNodeById("7342564606706288138");
@@ -184,7 +187,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706288161() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201006");
         SNode operation = getRealNodeById("7342564606706288161");
@@ -192,7 +194,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706288184() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201009");
         SNode operation = getRealNodeById("7342564606706288184");
@@ -200,7 +201,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706289623() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201012");
         SNode operation = getRealNodeById("7342564606706289623");
@@ -208,7 +208,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706289658() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201015");
         SNode operation = getRealNodeById("7342564606706289658");
@@ -216,7 +215,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706289681() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201018");
         SNode operation = getRealNodeById("7342564606706289681");
@@ -224,7 +222,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706289704() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201021");
         SNode operation = getRealNodeById("7342564606706289704");
@@ -232,7 +229,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286889() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201043");
         SNode operation = getRealNodeById("7342564606706286889");
@@ -240,7 +236,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286924() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201046");
         SNode operation = getRealNodeById("7342564606706286924");
@@ -248,7 +243,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286947() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201049");
         SNode operation = getRealNodeById("7342564606706286947");
@@ -256,7 +250,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286970() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201052");
         SNode operation = getRealNodeById("7342564606706286970");
@@ -264,7 +257,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286993() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201055");
         SNode operation = getRealNodeById("7342564606706286993");
@@ -272,7 +264,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286796() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201080");
         SNode operation = getRealNodeById("7342564606706286796");
@@ -280,7 +271,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286819() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201083");
         SNode operation = getRealNodeById("7342564606706286819");
@@ -288,7 +278,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286854() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201089");
         SNode operation = getRealNodeById("7342564606706286854");
@@ -296,7 +285,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286584() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201100");
         SNode operation = getRealNodeById("7342564606706286584");
@@ -304,7 +292,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286619() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201103");
         SNode operation = getRealNodeById("7342564606706286619");
@@ -312,7 +299,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286666() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201106");
         SNode operation = getRealNodeById("7342564606706286666");
@@ -320,7 +306,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286689() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201109");
         SNode operation = getRealNodeById("7342564606706286689");
@@ -328,7 +313,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286511() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201112");
         SNode operation = getRealNodeById("7342564606706286511");
@@ -336,7 +320,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286476() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201115");
         SNode operation = getRealNodeById("7342564606706286476");
@@ -344,7 +327,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286441() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201118");
         SNode operation = getRealNodeById("7342564606706286441");
@@ -352,7 +334,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706286406() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201121");
         SNode operation = getRealNodeById("7342564606706286406");
@@ -360,7 +341,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706287028() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201126");
         SNode operation = getRealNodeById("7342564606706287028");
@@ -368,7 +348,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706287051() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201129");
         SNode operation = getRealNodeById("7342564606706287051");
@@ -376,7 +355,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706287074() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201132");
         SNode operation = getRealNodeById("7342564606706287074");
@@ -384,7 +362,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706287097() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201135");
         SNode operation = getRealNodeById("7342564606706287097");
@@ -392,7 +369,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706287158() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201138");
         SNode operation = getRealNodeById("7342564606706287158");
@@ -400,7 +376,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706287193() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201141");
         SNode operation = getRealNodeById("7342564606706287193");
@@ -408,7 +383,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706287228() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201144");
         SNode operation = getRealNodeById("7342564606706287228");
@@ -416,7 +390,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUseSiteIsNotApplicableCheck7342564606706287251() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606706201147");
         SNode operation = getRealNodeById("7342564606706287251");
@@ -424,7 +397,6 @@ public class AnnotationUseSite_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7342564606706289800() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7342564606693418966");
         SNode operation = getRealNodeById("7342564606706289800");

@@ -46,8 +46,12 @@ public class FreshStaticFieldWithAbstractInitializerHasNoErrorOnType_Test extend
       super(owner);
     }
 
-    public void test_NodeErrorCheck4928571864874057148() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4928571864873974383");
+    }
 
+    public void test_NodeErrorCheck4928571864874057148() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4928571864874038116");
         SNode operation = getRealNodeById("4928571864874057148");
@@ -55,7 +59,6 @@ public class FreshStaticFieldWithAbstractInitializerHasNoErrorOnType_Test extend
       });
     }
     public void test_NodeErrorCheck4928571864874096707() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4928571864874095985");
         SNode operation = getRealNodeById("4928571864874096707");
@@ -63,7 +66,6 @@ public class FreshStaticFieldWithAbstractInitializerHasNoErrorOnType_Test extend
       });
     }
     public void test_ErrorMessagesCheck4928571864874057128() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4928571864873988132");
         SNode operation = getRealNodeById("4928571864874057128");

@@ -51,8 +51,12 @@ public class GenericMethodCall_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck7254243749546905063() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7254243749546841214", "7254243749546905176");
+    }
 
+    public void test_ErrorMessagesCheck7254243749546905063() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7254243749546841216");
         SNode operation = getRealNodeById("7254243749546905063");
@@ -60,7 +64,6 @@ public class GenericMethodCall_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck7254243749547462195() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7254243749547456075");
         SNode operation = getRealNodeById("7254243749547462195");
@@ -68,7 +71,6 @@ public class GenericMethodCall_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleMethodSignatureCheck250188377520235818() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7254243749546905202");
         SNode operation = getRealNodeById("250188377520235818");
@@ -76,7 +78,6 @@ public class GenericMethodCall_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7254243749546905207() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7254243749546905177");
         SNode operation = getRealNodeById("7254243749546905207");

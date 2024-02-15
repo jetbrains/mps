@@ -38,8 +38,13 @@ public class IfMacroTraverse_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2920122809304205881");
+    }
+
     public void test_properPreviousMacroForCall() throws Exception {
-      runWithinCommand(() -> addNodeById("2920122809304205881"));
+      initTestNodes();
       runWithinCommand(() -> {
         // MPS-34370, check_TemplateCallMacro
         SNode inputNodeTypeInsideOfMacro = NodeMacro__BehaviorDescriptor.getInputNodeTypeInsideOfMacro_idhEwIosJ.invoke(getNodeById("2920122809304199339"));

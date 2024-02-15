@@ -52,8 +52,12 @@ public class FeedbackPropConstraintsAreBroken_Test extends BaseTransformationTes
       super(owner);
     }
 
-    public void test_NodeUnknownRuleCheck2884486869351401623() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3071492597344664120", "2884486869351398328");
+    }
 
+    public void test_NodeUnknownRuleCheck2884486869351401623() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3071492597344664119");
         SNode operation = getRealNodeById("2884486869351401623");
@@ -61,7 +65,6 @@ public class FeedbackPropConstraintsAreBroken_Test extends BaseTransformationTes
       });
     }
     public void test_ScopeOf_TestConcept_link_3071492597344664119() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3071492597344664119");
         SNode operation = getRealNodeById("3071492597344740107");
@@ -69,7 +72,6 @@ public class FeedbackPropConstraintsAreBroken_Test extends BaseTransformationTes
       });
     }
     public void test_ErrorMessagesCheck2884486869351400430() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2884486869351398329");
         SNode operation = getRealNodeById("2884486869351400430");

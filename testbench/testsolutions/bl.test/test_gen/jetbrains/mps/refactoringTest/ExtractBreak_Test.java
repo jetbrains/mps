@@ -41,11 +41,13 @@ public class ExtractBreak_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052480333", "1230052480361");
+    }
+
     public void test_ExtractBreak() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052480333");
-        addNodeById("1230052480361");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052480342")));
         params.setName("foo");

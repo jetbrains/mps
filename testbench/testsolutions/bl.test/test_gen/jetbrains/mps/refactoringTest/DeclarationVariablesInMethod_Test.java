@@ -38,11 +38,13 @@ public class DeclarationVariablesInMethod_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052989008", "1230052989035");
+    }
+
     public void test_DeclarationVariablesInMethod() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052989008");
-        addNodeById("1230052989035");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230052989018"));
         ref.doRefactor();

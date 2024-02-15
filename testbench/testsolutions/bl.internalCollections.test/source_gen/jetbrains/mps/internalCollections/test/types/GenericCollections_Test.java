@@ -37,8 +37,12 @@ public class GenericCollections_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck6699137465481874845() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6699137465481734230");
+    }
 
+    public void test_ErrorMessagesCheck6699137465481874845() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6699137465481734232");
         SNode operation = getRealNodeById("6699137465481874845");

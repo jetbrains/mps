@@ -37,8 +37,12 @@ public class CustomPropertyAccess_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck6799807267508922004() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6799807267502339005");
+    }
 
+    public void test_ErrorMessagesCheck6799807267508922004() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6799807267502339007");
         SNode operation = getRealNodeById("6799807267508922004");

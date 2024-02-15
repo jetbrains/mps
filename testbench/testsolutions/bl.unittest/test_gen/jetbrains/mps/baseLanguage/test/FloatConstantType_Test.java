@@ -45,8 +45,13 @@ public class FloatConstantType_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5868639094257179247");
+    }
+
     public void test_testTypes() throws Exception {
-      runWithinCommand(() -> addNodeById("5868639094257179247"));
+      initTestNodes();
       runWithinCommand(() -> {
         assert SNodeOperations.isInstanceOf(getNodeById("5868639094257266015"), CONCEPTS.FloatingPointConstant$3o);
         assert SNodeOperations.isInstanceOf(getNodeById("5868639094257283261"), CONCEPTS.FloatingPointConstant$3o);
@@ -57,7 +62,6 @@ public class FloatConstantType_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck5868639094267614275() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5868639094257179249");
         SNode operation = getRealNodeById("5868639094267614275");

@@ -39,11 +39,13 @@ public class SimpleFindForIntroduceConstant_Test extends BaseTransformationTest 
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7568753874916187326", "7568753874916187364");
+    }
+
     public void test_SimpleFindForIntroduceConstantTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7568753874916187326");
-        addNodeById("7568753874916187364");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         IntroduceConstantRefactoring refactoring = new IntroduceConstantRefactoring();
         refactoring.init(getNodeById("7568753874916187344"), null);

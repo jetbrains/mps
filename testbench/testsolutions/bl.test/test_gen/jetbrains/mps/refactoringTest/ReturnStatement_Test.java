@@ -44,19 +44,24 @@ public class ReturnStatement_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052642345");
+    }
+
     public void test_alwaysReturn() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052642345"));
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052642367"))));
         Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052642367"), getNodeById("1230052642388"))));
       });
     }
     public void test_retunInAnonymousClass() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052642345"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052642353")))));
     }
     public void test_notAlwaysReturn() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052642345"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertTrue(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052642395"))) != null));
     }
 

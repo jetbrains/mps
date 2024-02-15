@@ -43,8 +43,12 @@ public class Cardinalities_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck1875480895988114782() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1875480895987418964", "1875480895987419829", "1875480895987598121");
+    }
 
+    public void test_NodeErrorCheck1875480895988114782() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1875480895988095647");
         SNode operation = getRealNodeById("1875480895988114782");
@@ -52,7 +56,6 @@ public class Cardinalities_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck1875480895987852095() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1875480895987852074");
         SNode operation = getRealNodeById("1875480895987852095");
@@ -60,7 +63,6 @@ public class Cardinalities_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck1875480895987615991() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1875480895987615784");
         SNode operation = getRealNodeById("1875480895987615991");

@@ -40,11 +40,13 @@ public class OneReturnTransformation_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052642256", "1230052642278");
+    }
+
     public void test_oneReturnTransformation() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052642256");
-        addNodeById("1230052642278");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052642262")));
         params.setName("foo");

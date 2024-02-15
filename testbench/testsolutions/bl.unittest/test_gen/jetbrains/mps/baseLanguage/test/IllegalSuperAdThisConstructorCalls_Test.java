@@ -55,8 +55,12 @@ public class IllegalSuperAdThisConstructorCalls_Test extends BaseTransformationT
       super(owner);
     }
 
-    public void test_NodeCannotReferenceBeforeCheck320231408719831787() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("320231408719791418");
+    }
 
+    public void test_NodeCannotReferenceBeforeCheck320231408719831787() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("320231408719558027");
         SNode operation = getRealNodeById("320231408719831787");
@@ -64,7 +68,6 @@ public class IllegalSuperAdThisConstructorCalls_Test extends BaseTransformationT
       });
     }
     public void test_NodeCannotReferenceBeforeCheck320231408719937817() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("320231408719927369");
         SNode operation = getRealNodeById("320231408719937817");
@@ -72,7 +75,6 @@ public class IllegalSuperAdThisConstructorCalls_Test extends BaseTransformationT
       });
     }
     public void test_NodeCannotReferenceBeforeCheck320231408719963812() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("320231408719849648");
         SNode operation = getRealNodeById("320231408719963812");
@@ -80,7 +82,6 @@ public class IllegalSuperAdThisConstructorCalls_Test extends BaseTransformationT
       });
     }
     public void test_NodeCannotReferenceSuperBeforeCheck320231408719967342() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("320231408719958093");
         SNode operation = getRealNodeById("320231408719967342");
@@ -88,7 +89,6 @@ public class IllegalSuperAdThisConstructorCalls_Test extends BaseTransformationT
       });
     }
     public void test_ErrorMessagesCheck320231408719830491() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("320231408703493661");
         SNode operation = getRealNodeById("320231408719830491");

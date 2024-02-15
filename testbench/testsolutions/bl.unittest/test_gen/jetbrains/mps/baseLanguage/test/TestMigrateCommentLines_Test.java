@@ -39,11 +39,13 @@ public class TestMigrateCommentLines_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("494962652073962809", "494962652073962837");
+    }
+
     public void test_MigrateBlock() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("494962652073962809");
-        addNodeById("494962652073962837");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         new ReplaceSingleLineCommentsWithGenericComments().execute(SNodeOperations.getModel(getNodeById("494962652073962810")).getModule());
         {

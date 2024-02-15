@@ -41,11 +41,13 @@ public class FindForMethodWithOutputVariable_Test extends BaseTransformationTest
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6195342755328044202", "6195342755328044393");
+    }
+
     public void test_FindForMethodWithOutputVariableTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("6195342755328044202");
-        addNodeById("6195342755328044393");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("6195342755328044255"), getNodeById("6195342755328044259")));
         params.setName("foo");

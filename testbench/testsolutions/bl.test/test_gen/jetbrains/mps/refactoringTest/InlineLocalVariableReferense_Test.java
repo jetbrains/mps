@@ -38,11 +38,13 @@ public class InlineLocalVariableReferense_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053266478", "1230053266497");
+    }
+
     public void test_InlineLocalVariableReferense() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053266478");
-        addNodeById("1230053266497");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineVariableRefactoring ref = InlineVariableRefactoring.createRefactoring(getNodeById("1230053266493"));
         ref.doRefactoring();

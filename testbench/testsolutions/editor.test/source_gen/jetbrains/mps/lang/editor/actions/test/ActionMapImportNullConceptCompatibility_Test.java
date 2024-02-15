@@ -51,8 +51,12 @@ public class ActionMapImportNullConceptCompatibility_Test extends BaseTransforma
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck1465006755400919484() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1465006755400366454", "1465006755400366814", "1465006755400968888", "1465006755400968869", "1465006755400969515");
+    }
 
+    public void test_ErrorMessagesCheck1465006755400919484() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1465006755400366818");
         SNode operation = getRealNodeById("1465006755400919484");
@@ -60,7 +64,6 @@ public class ActionMapImportNullConceptCompatibility_Test extends BaseTransforma
       });
     }
     public void test_NodeImportedActionMapIsNotCheck1465006755400969509() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1465006755400968904");
         SNode operation = getRealNodeById("1465006755400969509");
@@ -68,7 +71,6 @@ public class ActionMapImportNullConceptCompatibility_Test extends BaseTransforma
       });
     }
     public void test_ErrorMessagesCheck1465006755400968886() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1465006755400968880");
         SNode operation = getRealNodeById("1465006755400968886");
@@ -76,7 +78,6 @@ public class ActionMapImportNullConceptCompatibility_Test extends BaseTransforma
       });
     }
     public void test_ErrorMessagesCheck1465006755400969544() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1465006755400969535");
         SNode operation = getRealNodeById("1465006755400969544");

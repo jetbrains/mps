@@ -59,8 +59,12 @@ public class NestedNewExpression_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeInnerClassesCannotDeclareCheck876973622656563830() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2908733373806051390");
+    }
 
+    public void test_NodeInnerClassesCannotDeclareCheck876973622656563830() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2908733373806055116");
         SNode operation = getRealNodeById("876973622656563830");
@@ -68,7 +72,6 @@ public class NestedNewExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeNonstaticInnerClassesCheck876973622656562586() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2908733373806052139");
         SNode operation = getRealNodeById("876973622656562586");
@@ -76,7 +79,6 @@ public class NestedNewExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck2908733373809544465() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2908733373809543368");
         SNode operation = getRealNodeById("2908733373809544465");
@@ -84,7 +86,6 @@ public class NestedNewExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck1628645464085513077() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1628645464085512252");
         SNode operation = getRealNodeById("1628645464085513077");
@@ -92,7 +93,6 @@ public class NestedNewExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck1628645464087305021() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1628645464085515203");
         SNode operation = getRealNodeById("1628645464087305021");
@@ -100,7 +100,6 @@ public class NestedNewExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2908733373806471082() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2908733373806051392");
         SNode operation = getRealNodeById("2908733373806471082");

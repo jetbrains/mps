@@ -42,11 +42,13 @@ public class ChangeSignatureOfStaticMethod_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052903079", "1230052903110");
+    }
+
     public void test_ChangeSignatureOfStaticMethod() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052903079");
-        addNodeById("1230052903110");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("1230052903099"));
         SNode p1 = ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).first();

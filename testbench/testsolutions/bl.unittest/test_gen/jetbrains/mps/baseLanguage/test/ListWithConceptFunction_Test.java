@@ -37,8 +37,12 @@ public class ListWithConceptFunction_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck1222443330005() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1222443224345");
+    }
 
+    public void test_ErrorMessagesCheck1222443330005() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1222443280871");
         SNode operation = getRealNodeById("1222443330005");

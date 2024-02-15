@@ -51,8 +51,12 @@ public class ActionMapImportCycleDetection_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeCycleInImportsCheck4205244270189351140() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4205244270189342387", "4205244270189351129", "4205244270189549207", "6782712264208964666");
+    }
 
+    public void test_NodeCycleInImportsCheck4205244270189351140() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4205244270189351135");
         SNode operation = getRealNodeById("4205244270189351140");
@@ -60,7 +64,6 @@ public class ActionMapImportCycleDetection_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeCycleInImportsCheck4205244270189500694() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4205244270189351612");
         SNode operation = getRealNodeById("4205244270189500694");
@@ -68,7 +71,6 @@ public class ActionMapImportCycleDetection_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeCycleInImportsCheck4205244270189549224() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4205244270189549221");
         SNode operation = getRealNodeById("4205244270189549224");
@@ -76,7 +78,6 @@ public class ActionMapImportCycleDetection_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck6782712264220244949() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6782712264208964689");
         SNode operation = getRealNodeById("6782712264220244949");

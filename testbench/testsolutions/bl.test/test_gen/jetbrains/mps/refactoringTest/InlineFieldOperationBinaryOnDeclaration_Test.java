@@ -38,11 +38,13 @@ public class InlineFieldOperationBinaryOnDeclaration_Test extends BaseTransforma
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6923327169066983476", "2359164386490351829");
+    }
+
     public void test_simpleInlineVariable() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("6923327169066983476");
-        addNodeById("2359164386490351829");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineFieldReferenceOperationRefactoring.createRefactoring(getNodeById("6923327169066983478")).doRefactoring();
         {

@@ -38,11 +38,13 @@ public class OneReturnWithNotVariableParameters_Test extends BaseTransformationT
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053073337", "1230053073377");
+    }
+
     public void test_OneReturnWithNotVariableParameters() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053073337");
-        addNodeById("1230053073377");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230053073351"));
         ref.doRefactor();

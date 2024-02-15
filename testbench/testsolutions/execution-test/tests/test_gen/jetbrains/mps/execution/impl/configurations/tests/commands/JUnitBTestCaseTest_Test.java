@@ -61,16 +61,24 @@ public class JUnitBTestCaseTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_startSimpleBTestCase() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         List<ITestNodeWrapper> testsToSucceed = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:c2c670fc-188b-4168-9559-68c718816e1a(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox@tests)", "8128243960970299078"));
         TestBody.this.checkTests(null, null, testsToSucceed, TestBody.this.emptyList());
       });
     }
     public void test_startFailedBTestCase() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> TestBody.this.checkTests(null, null, TestBody.this.emptyList(), new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:c2c670fc-188b-4168-9559-68c718816e1a(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox@tests)", "7120092006645143730"))));
     }
     public void test_programParametersArePassedToTheTest() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         List<ITestNodeWrapper> testToSucceed = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:c2c670fc-188b-4168-9559-68c718816e1a(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox@tests)", "5101378672992591799"));
         String vmParams = "-D" + ReadingPropertyBTestCase_Test.SYS_PROPERTY + "=" + ReadingPropertyBTestCase_Test.SYS_PROPERTY_EXPECTED_VALUE;
@@ -78,6 +86,7 @@ public class JUnitBTestCaseTest_Test extends BaseTransformationTest {
       });
     }
     public void test_programParametersWithSpacesArePassedToTheTest() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         List<ITestNodeWrapper> testToSucceed = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:c2c670fc-188b-4168-9559-68c718816e1a(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox@tests)", "5101378672992886086"));
         String vmParams = "-D" + ReadingPropertyWithSpacesBTestCase_Test.SYS_PROPERTY + "=\"" + ReadingPropertyWithSpacesBTestCase_Test.SYS_PROPERTY_EXPECTED_VALUE_WITH_SPACES + "\"";

@@ -45,16 +45,18 @@ public class AddVarArgParameter_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3053244449233869680", "3053244449233869717");
+    }
+
     public void test_AddParameterWithDefault() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("3053244449233869680");
-        addNodeById("3053244449233869717");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("3053244449233869682"));
 
         // Add params
-        SNode intArityParam = _quotation_createNode_os1acc_a0d0a0b0d6();
+        SNode intArityParam = _quotation_createNode_os1acc_a0d0a0b0f6();
         List<SNode> parameters = SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj);
         parameters.add(intArityParam);
 
@@ -76,7 +78,7 @@ public class AddVarArgParameter_Test extends BaseTransformationTest {
       });
     }
 
-    private static SNode _quotation_createNode_os1acc_a0d0a0b0d6() {
+    private static SNode _quotation_createNode_os1acc_a0d0a0b0f6() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;

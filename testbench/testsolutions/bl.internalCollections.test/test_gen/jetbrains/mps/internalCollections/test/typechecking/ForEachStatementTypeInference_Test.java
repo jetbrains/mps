@@ -37,8 +37,12 @@ public class ForEachStatementTypeInference_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck4985370212424024062() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4985370212423156698");
+    }
 
+    public void test_ErrorMessagesCheck4985370212424024062() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4985370212423199438");
         SNode operation = getRealNodeById("4985370212424024062");

@@ -47,8 +47,12 @@ public class Collections_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeUnnamedWarningCheck6405893568802055213() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6405539316368482244");
+    }
 
+    public void test_NodeUnnamedWarningCheck6405893568802055213() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6405539316368529261");
         SNode operation = getRealNodeById("6405893568802055213");
@@ -56,7 +60,6 @@ public class Collections_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedWarningCheck9095983673872173449() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6405539316368545689");
         SNode operation = getRealNodeById("9095983673872173449");
@@ -64,7 +67,6 @@ public class Collections_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck6405539316368555030() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6405539316368482246");
         SNode operation = getRealNodeById("6405539316368555030");

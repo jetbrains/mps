@@ -33,8 +33,13 @@ public class CheckInlineWithThrow_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053187489");
+    }
+
     public void test_CheckInlineWithThrow() throws Exception {
-      runWithinCommand(() -> addNodeById("1230053187489"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertNull(new InlineMethodModel(getNodeById("1230053187517")).getErrors()));
     }
 

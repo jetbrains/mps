@@ -111,12 +111,13 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8150353254540236423", "8150353254540236549", "4195712261513743410");
+    }
+
     public void test_checkContract() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Set<String> savedMethods = TestBody.this.getPreviousISNodeMethodsNames();
         Set<String> currentMethods = TestBody.this.getISNodeMethodsNames(true);
@@ -144,11 +145,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_addChild() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("8150353254540236424");
         SNode child = getNodeById("8150353254540236551");
@@ -164,11 +161,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_getChildren() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("8150353254540236424");
 
@@ -182,11 +175,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_getProperty() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("4195712261513743413");
         sNode.setProperty(PROPS.forceOneLine$S6eN, "true");
@@ -200,11 +189,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_getReference() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("4265636116363098320");
 
@@ -217,11 +202,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_getReferenceTarget() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("4265636116363098320");
 
@@ -234,11 +215,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_getUserObject() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("8150353254540236424");
 
@@ -251,11 +228,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_hasProperty() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("4195712261513743413");
 
@@ -268,11 +241,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_insertChildBefore() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("8150353254540236424");
         SNode child = getNodeById("8150353254540236551");
@@ -287,11 +256,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_putUserObject() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("8150353254540236424");
 
@@ -304,11 +269,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_removeChild() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("8150353254540236424");
         SNode child = getNodeById("8150353254540236551");
@@ -324,11 +285,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_setProperty() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("4195712261513743413");
 
@@ -341,11 +298,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_setReference() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("4265636116363098320");
 
@@ -358,11 +311,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_setReferenceTarget() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("4265636116363098320");
 
@@ -375,11 +324,7 @@ public class SNodeReadAccess_Test extends BaseTransformationTest {
       });
     }
     public void test_parameterLessMethods() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8150353254540236423");
-        addNodeById("8150353254540236549");
-        addNodeById("4195712261513743410");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode sNode = getNodeById("8150353254540236424");
 

@@ -51,8 +51,12 @@ public class Throws_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeIsNotSubtypeOfCheck931816624638455092() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2448987392440657278");
+    }
 
+    public void test_NodeIsNotSubtypeOfCheck931816624638455092() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2448987392440657381");
         SNode operation = getRealNodeById("931816624638455092");
@@ -60,7 +64,6 @@ public class Throws_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck931816624638721956() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2448987392445168674");
         SNode operation = getRealNodeById("931816624638721956");
@@ -68,7 +71,6 @@ public class Throws_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIsNotSubtypeOfCheck931816624638762662() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7844919300996947856");
         SNode operation = getRealNodeById("931816624638762662");
@@ -76,7 +78,6 @@ public class Throws_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2448987392440705669() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2448987392440657282");
         SNode operation = getRealNodeById("2448987392440705669");

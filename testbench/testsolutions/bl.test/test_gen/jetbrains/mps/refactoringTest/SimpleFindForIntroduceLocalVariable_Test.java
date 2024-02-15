@@ -38,11 +38,13 @@ public class SimpleFindForIntroduceLocalVariable_Test extends BaseTransformation
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7568753874916226563", "7568753874916226633");
+    }
+
     public void test_SimpleFindAndMoveForIntroduceLocalVariableTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7568753874916226563");
-        addNodeById("7568753874916226633");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         IntroduceLocalVariableRefactoring refactoring = new IntroduceLocalVariableRefactoring();
         refactoring.init(getNodeById("7568753874916226573"), null);

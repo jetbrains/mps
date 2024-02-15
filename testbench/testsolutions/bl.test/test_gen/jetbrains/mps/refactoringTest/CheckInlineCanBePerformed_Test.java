@@ -33,8 +33,13 @@ public class CheckInlineCanBePerformed_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053187318");
+    }
+
     public void test_CheckInlineCanBePerformed() throws Exception {
-      runWithinCommand(() -> addNodeById("1230053187318"));
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertNull(new InlineMethodModel(getNodeById("1230053187326")).getErrors());
         Assert.assertTrue(new InlineMethodModel(getNodeById("1230053187332")).getErrors() != null);

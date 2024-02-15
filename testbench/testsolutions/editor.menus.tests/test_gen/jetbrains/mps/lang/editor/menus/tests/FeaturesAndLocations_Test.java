@@ -51,8 +51,12 @@ public class FeaturesAndLocations_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeThisFeatureIsNotAllowedCheck4740302442485194061() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4740302442485174484", "4740302442485174498", "4740302442485155890", "4740302442485158783");
+    }
 
+    public void test_NodeThisFeatureIsNotAllowedCheck4740302442485194061() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4740302442485192019");
         SNode operation = getRealNodeById("4740302442485194061");
@@ -60,7 +64,6 @@ public class FeaturesAndLocations_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeMissingFeaturesCheck4740302442485174508() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4740302442485174500");
         SNode operation = getRealNodeById("4740302442485174508");
@@ -68,7 +71,6 @@ public class FeaturesAndLocations_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4740302442485195517() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4740302442485155894");
         SNode operation = getRealNodeById("4740302442485195517");
@@ -76,7 +78,6 @@ public class FeaturesAndLocations_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4740302442485195092() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4740302442485158785");
         SNode operation = getRealNodeById("4740302442485195092");

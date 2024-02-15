@@ -37,8 +37,12 @@ public class PrimitiveCreatorInference_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck387838872178548915() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("387838872172693406");
+    }
 
+    public void test_ErrorMessagesCheck387838872178548915() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("387838872172693476");
         SNode operation = getRealNodeById("387838872178548915");

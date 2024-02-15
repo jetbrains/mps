@@ -65,49 +65,62 @@ public class TestWeaving_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_weave() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdg = TestBody.this.testDataInstanceGenerated();
         new TestUtil(myProject).testWeave(tdg, SLinkOperations.getChildren(tdg, LINKS.weave$ef6v), 11);
       });
     }
     public void test_weaveEach() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdg = TestBody.this.testDataInstanceGenerated();
         new TestUtil(myProject).testWeave(tdg, SLinkOperations.getChildren(tdg, LINKS.weaveEach$eflw), 17);
       });
     }
     public void test_weaveMany() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdg = TestBody.this.testDataInstanceGenerated();
         new TestUtil(myProject).testWeaveMany(tdg, SLinkOperations.getChildren(tdg, LINKS.weaveMany$KBdy), 23);
       });
     }
     public void test_weaveEachMany() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdg = TestBody.this.testDataInstanceGenerated();
         new TestUtil(myProject).testWeaveMany(tdg, SLinkOperations.getChildren(tdg, LINKS.weaveEachMany$KBsz), 50);
       });
     }
     public void test_weaveInterpreted() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdi = TestBody.this.testDataInstanceInterpreted();
         new TestUtil(myProject).testWeave(tdi, SLinkOperations.getChildren(tdi, LINKS.weave$XdZ3), 11);
       });
     }
     public void test_weaveEachInterpreted() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdi = TestBody.this.testDataInstanceInterpreted();
         new TestUtil(myProject).testWeave(tdi, SLinkOperations.getChildren(tdi, LINKS.weaveEach$Xee4), 17);
       });
     }
     public void test_weaveManyInterpreted() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdi = TestBody.this.testDataInstanceInterpreted();
         new TestUtil(myProject).testWeaveMany(tdi, SLinkOperations.getChildren(tdi, LINKS.weaveMany$vA66), 23);
       });
     }
     public void test_weaveEachManyInterpreted() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode tdi = TestBody.this.testDataInstanceInterpreted();
         new TestUtil(myProject).testWeaveMany(tdi, SLinkOperations.getChildren(tdi, LINKS.weaveEachMany$vAl7), 50);

@@ -42,11 +42,13 @@ public class ChangeParametersOrder_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052943947", "1230052943971");
+    }
+
     public void test_ChangeParametersOrder() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052943947");
-        addNodeById("1230052943971");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("1230052943949"));
         SNode p1 = ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).first();

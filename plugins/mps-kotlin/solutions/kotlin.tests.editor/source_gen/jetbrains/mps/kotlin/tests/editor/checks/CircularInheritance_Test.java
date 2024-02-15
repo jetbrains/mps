@@ -59,8 +59,12 @@ public class CircularInheritance_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeTheresCycleInTheInheritanceCheck685380225824103908() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("685380225824103895");
+    }
 
+    public void test_NodeTheresCycleInTheInheritanceCheck685380225824103908() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("685380225824103904");
         SNode operation = getRealNodeById("685380225824103908");
@@ -68,7 +72,6 @@ public class CircularInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheresCycleInTheInheritanceCheck685380225824103922() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("685380225824103918");
         SNode operation = getRealNodeById("685380225824103922");
@@ -76,7 +79,6 @@ public class CircularInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheresCycleInTheInheritanceCheck685380225824103928() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("685380225824103924");
         SNode operation = getRealNodeById("685380225824103928");
@@ -84,7 +86,6 @@ public class CircularInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheresCycleInTheInheritanceCheck685380225824103935() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("685380225824103932");
         SNode operation = getRealNodeById("685380225824103935");
@@ -92,7 +93,6 @@ public class CircularInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheresCycleInTheInheritanceCheck685380225824103940() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("685380225824103937");
         SNode operation = getRealNodeById("685380225824103940");
@@ -100,7 +100,6 @@ public class CircularInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck685380225824107629() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("685380225824103896");
         SNode operation = getRealNodeById("685380225824107629");

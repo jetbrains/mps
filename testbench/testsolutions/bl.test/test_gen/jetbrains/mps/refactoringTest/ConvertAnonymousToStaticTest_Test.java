@@ -38,12 +38,13 @@ public class ConvertAnonymousToStaticTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2230400082818031589", "2230400082818031597", "2230400082818059858");
+    }
+
     public void test_ToStaticTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2230400082818031589");
-        addNodeById("2230400082818031597");
-        addNodeById("2230400082818059858");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         new ConvertAnonymousRefactoring(getNodeById("2230400082818031604"), "MyIStatic").doRefactor();
         {

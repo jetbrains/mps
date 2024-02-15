@@ -38,11 +38,13 @@ public class InlineLocalVariableReferenceWithoutDeclarationDeleting_Test extends
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053266436", "1230053266457");
+    }
+
     public void test_InlineLocalVariableReferenceWithoutDeclarationDeleting() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053266436");
-        addNodeById("1230053266457");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineVariableRefactoring ref = InlineVariableRefactoring.createRefactoring(getNodeById("1230053266450"));
         ref.doRefactoring();

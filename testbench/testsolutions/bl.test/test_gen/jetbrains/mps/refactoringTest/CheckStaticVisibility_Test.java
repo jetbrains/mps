@@ -33,12 +33,13 @@ public class CheckStaticVisibility_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053114802", "1230053114815", "1230053114829");
+    }
+
     public void test_CheckStaticVisibility() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053114802");
-        addNodeById("1230053114815");
-        addNodeById("1230053114829");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230053114810"));
         Assert.assertTrue(ref.getProblems().length() > 0);

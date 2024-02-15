@@ -61,7 +61,13 @@ public class TransientFeaturesNotPersisted_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_transientProperty() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SModel model = TestBody.this.createBlankModel();
         SNode root = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0x8a1d24e1cf4e440aL, 0x985508a714a1c1f3L, 0x2efbf375dd4e3c6eL, "jetbrains.mps.persistence.transients.structure.C"));
@@ -74,6 +80,7 @@ public class TransientFeaturesNotPersisted_Test extends BaseTransformationTest {
       });
     }
     public void test_transientAssociation() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SModel model = TestBody.this.createBlankModel();
         SNode c1 = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0x8a1d24e1cf4e440aL, 0x985508a714a1c1f3L, 0x2efbf375dd4e3c6eL, "jetbrains.mps.persistence.transients.structure.C"));
@@ -88,6 +95,7 @@ public class TransientFeaturesNotPersisted_Test extends BaseTransformationTest {
       });
     }
     public void test_transientAggregation() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SModel model = TestBody.this.createBlankModel();
         SNode c1 = SModelOperations.createNewRootNode(model, MetaAdapterFactory.getConcept(0x8a1d24e1cf4e440aL, 0x985508a714a1c1f3L, 0x2efbf375dd4e3c6eL, "jetbrains.mps.persistence.transients.structure.C"));

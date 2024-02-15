@@ -75,8 +75,12 @@ public class DuplicatesInClassifierChecks_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeDuplicateEntryCheck3031388763767076123() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3031388763763461749", "3031388763763461761", "3031388763763461772", "3031388763763461794");
+    }
 
+    public void test_NodeDuplicateEntryCheck3031388763767076123() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3031388763763461755");
         SNode operation = getRealNodeById("3031388763767076123");
@@ -84,7 +88,6 @@ public class DuplicatesInClassifierChecks_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeDuplicateEntryCheck3031388763767076139() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3031388763763461756");
         SNode operation = getRealNodeById("3031388763767076139");
@@ -92,7 +95,6 @@ public class DuplicatesInClassifierChecks_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck3031388763763461760() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3031388763763461750");
         SNode operation = getRealNodeById("3031388763763461760");
@@ -100,7 +102,6 @@ public class DuplicatesInClassifierChecks_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeDuplicateEntryCheck3031388763767076604() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3031388763763461767");
         SNode operation = getRealNodeById("3031388763767076604");
@@ -108,7 +109,6 @@ public class DuplicatesInClassifierChecks_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeDuplicateEntryCheck3031388763767076306() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3031388763763461768");
         SNode operation = getRealNodeById("3031388763767076306");
@@ -116,7 +116,6 @@ public class DuplicatesInClassifierChecks_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck3031388763763461771() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3031388763763461762");
         SNode operation = getRealNodeById("3031388763763461771");
@@ -124,7 +123,6 @@ public class DuplicatesInClassifierChecks_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeDuplicateEntryCheck3031388763767077037() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3031388763763461778");
         SNode operation = getRealNodeById("3031388763767077037");
@@ -132,7 +130,6 @@ public class DuplicatesInClassifierChecks_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeDuplicateEntryCheck3031388763767076810() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3031388763763461779");
         SNode operation = getRealNodeById("3031388763767076810");
@@ -140,7 +137,6 @@ public class DuplicatesInClassifierChecks_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck3031388763763461782() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3031388763763461773");
         SNode operation = getRealNodeById("3031388763763461782");
@@ -148,7 +144,6 @@ public class DuplicatesInClassifierChecks_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck3031388763763461800() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3031388763763461795");
         SNode operation = getRealNodeById("3031388763763461800");

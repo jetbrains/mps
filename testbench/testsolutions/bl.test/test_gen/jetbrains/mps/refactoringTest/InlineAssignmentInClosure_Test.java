@@ -38,11 +38,13 @@ public class InlineAssignmentInClosure_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6351584993764365771", "6351584993764365805");
+    }
+
     public void test_InlineAssingmentInClosure() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("6351584993764365771");
-        addNodeById("6351584993764365805");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineVariableRefactoring ref = InlineVariableRefactoring.createRefactoring(getNodeById("6351584993764365782"));
         ref.doRefactoring();

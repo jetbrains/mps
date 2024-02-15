@@ -62,8 +62,12 @@ public class NullProperties_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck8681827087508331151() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("706089536802542526", "706089536802542546", "706089536802542566");
+    }
 
+    public void test_NodeErrorCheck8681827087508331151() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("706089536802542537");
         SNode operation = getRealNodeById("8681827087508331151");
@@ -71,7 +75,6 @@ public class NullProperties_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck8681827087508331336() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("706089536802542541");
         SNode operation = getRealNodeById("8681827087508331336");
@@ -79,7 +82,6 @@ public class NullProperties_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck706089536802542545() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("706089536802542527");
         SNode operation = getRealNodeById("706089536802542545");
@@ -87,7 +89,6 @@ public class NullProperties_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck3029960565848077192() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("706089536802542557");
         SNode operation = getRealNodeById("3029960565848077192");
@@ -95,7 +96,6 @@ public class NullProperties_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck3029960565848077546() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("706089536802542561");
         SNode operation = getRealNodeById("3029960565848077546");
@@ -103,7 +103,6 @@ public class NullProperties_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck706089536802542565() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("706089536802542547");
         SNode operation = getRealNodeById("706089536802542565");
@@ -111,7 +110,6 @@ public class NullProperties_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck706089536802542585() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("706089536802542567");
         SNode operation = getRealNodeById("706089536802542585");

@@ -10,28 +10,29 @@
       <node id="7037818788705053903" at="21,27,22,60" concept="4" />
       <node id="7037818788705076480" at="26,51,27,42" concept="1" />
       <node id="7037818788705053903" at="32,52,33,19" concept="4" />
-      <node id="7037818788705054390" at="37,30,38,43" concept="1" />
-      <node id="7037818788705056702" at="38,43,39,43" concept="1" />
-      <node id="7037818788705076480" at="40,9,41,147" concept="1" />
+      <node id="7037818788705053903" at="37,36,38,69" concept="1" />
+      <node id="7037818788705076480" at="41,53,42,22" concept="1" />
+      <node id="7037818788705076480" at="42,22,43,147" concept="1" />
       <node id="7037818788705053903" at="18,0,20,0" concept="3" trace="ourParametersCacheExtension" />
       <node id="7037818788705053903" at="21,0,24,0" concept="0" trace="MPS_36509_Test#()V" />
       <node id="7037818788705053903" at="32,0,35,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="7037818788705076480" at="25,0,29,0" concept="2" trace="test_NodeMatcher#()V" />
-      <node id="7037818788705076480" at="36,53,40,9" concept="1" />
-      <node id="7037818788705076480" at="36,0,43,0" concept="2" trace="test_NodeMatcher#()V" />
+      <node id="7037818788705053903" at="36,0,40,0" concept="2" trace="initTestNodes#()V" />
+      <node id="7037818788705076480" at="41,0,45,0" concept="2" trace="test_NodeMatcher#()V" />
       <scope id="7037818788705053903" at="21,27,22,60" />
       <scope id="7037818788705076480" at="26,51,27,42" />
       <scope id="7037818788705053903" at="32,52,33,19" />
-      <scope id="7037818788705076480" at="37,30,39,43" />
+      <scope id="7037818788705053903" at="37,36,38,69" />
+      <scope id="7037818788705076480" at="41,53,43,147" />
       <scope id="7037818788705053903" at="21,0,24,0" />
       <scope id="7037818788705053903" at="32,0,35,0">
         <var name="owner" id="7037818788705053903" />
       </scope>
       <scope id="7037818788705076480" at="25,0,29,0" />
-      <scope id="7037818788705076480" at="36,53,41,147" />
-      <scope id="7037818788705076480" at="36,0,43,0" />
-      <unit id="7037818788705053903" at="30,0,45,0" name="jetbrains.mps.tests.matcher.MPS_36509_Test$TestBody" />
-      <unit id="7037818788705053903" at="16,0,46,0" name="jetbrains.mps.tests.matcher.MPS_36509_Test" />
+      <scope id="7037818788705053903" at="36,0,40,0" />
+      <scope id="7037818788705076480" at="41,0,45,0" />
+      <unit id="7037818788705053903" at="30,0,47,0" name="jetbrains.mps.tests.matcher.MPS_36509_Test$TestBody" />
+      <unit id="7037818788705053903" at="16,0,48,0" name="jetbrains.mps.tests.matcher.MPS_36509_Test" />
     </file>
   </root>
   <root nodeRef="r:bcc649d1-6257-464b-9e2c-ae8bcd0a568c(jetbrains.mps.tests.matcher@tests)/7037818788705054556">

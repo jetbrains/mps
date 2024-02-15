@@ -77,8 +77,12 @@ public class SModelExpressionsDataFlow_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck931754141965267346() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("931754141965166875");
+    }
 
+    public void test_ErrorMessagesCheck931754141965267346() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("931754141965246002");
         SNode operation = getRealNodeById("931754141965267346");
@@ -86,7 +90,6 @@ public class SModelExpressionsDataFlow_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck3016266886293102695() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3016266886293102408");
         SNode operation = getRealNodeById("3016266886293102695");
@@ -94,7 +97,6 @@ public class SModelExpressionsDataFlow_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2201735946499155433() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2201735946499143064");
         SNode operation = getRealNodeById("2201735946499155433");
@@ -102,7 +104,6 @@ public class SModelExpressionsDataFlow_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2201735946499165976() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2201735946499159901");
         SNode operation = getRealNodeById("2201735946499165976");
@@ -110,7 +111,6 @@ public class SModelExpressionsDataFlow_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2201735946499167109() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2201735946499167104");
         SNode operation = getRealNodeById("2201735946499167109");
@@ -118,7 +118,6 @@ public class SModelExpressionsDataFlow_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2201735946499171707() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2201735946499171702");
         SNode operation = getRealNodeById("2201735946499171707");
@@ -126,7 +125,6 @@ public class SModelExpressionsDataFlow_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2201735946499174525() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2201735946499174520");
         SNode operation = getRealNodeById("2201735946499174525");
@@ -134,7 +132,6 @@ public class SModelExpressionsDataFlow_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2201735946499178993() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2201735946499178988");
         SNode operation = getRealNodeById("2201735946499178993");
@@ -142,7 +139,6 @@ public class SModelExpressionsDataFlow_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2201735946499190158() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2201735946499190153");
         SNode operation = getRealNodeById("2201735946499190158");
@@ -150,7 +146,6 @@ public class SModelExpressionsDataFlow_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck3564379068314712774() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3564379068314671262");
         SNode operation = getRealNodeById("3564379068314712774");
@@ -158,7 +153,6 @@ public class SModelExpressionsDataFlow_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck3564379068314715334() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3564379068314671526");
         SNode operation = getRealNodeById("3564379068314715334");

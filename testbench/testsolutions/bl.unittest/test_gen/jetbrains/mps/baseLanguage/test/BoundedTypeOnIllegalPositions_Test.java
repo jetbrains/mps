@@ -67,8 +67,12 @@ public class BoundedTypeOnIllegalPositions_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeThisTypeCantBeUsedInVariableCheck6923385624929132045() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2176128700705692342");
+    }
 
+    public void test_NodeThisTypeCantBeUsedInVariableCheck6923385624929132045() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451230386");
         SNode operation = getRealNodeById("6923385624929132045");
@@ -76,7 +80,6 @@ public class BoundedTypeOnIllegalPositions_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeThisTypeCantBeUsedInVariableCheck6923385624928848231() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451230975");
         SNode operation = getRealNodeById("6923385624928848231");
@@ -84,7 +87,6 @@ public class BoundedTypeOnIllegalPositions_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeThisTypeCantBeUsedInVariableCheck5450156852674012813() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5450156852674008109");
         SNode operation = getRealNodeById("5450156852674012813");
@@ -92,7 +94,6 @@ public class BoundedTypeOnIllegalPositions_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeThisTypeCantBeUsedInVariableCheck6923385624928692345() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451227709");
         SNode operation = getRealNodeById("6923385624928692345");
@@ -100,7 +101,6 @@ public class BoundedTypeOnIllegalPositions_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck6923385624928162737() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451230395");
         SNode operation = getRealNodeById("6923385624928162737");
@@ -108,7 +108,6 @@ public class BoundedTypeOnIllegalPositions_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck6923385624927429026() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451230429");
         SNode operation = getRealNodeById("6923385624927429026");
@@ -116,7 +115,6 @@ public class BoundedTypeOnIllegalPositions_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeThisTypeCantBeUsedInVariableCheck6923385624928299118() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451231385");
         SNode operation = getRealNodeById("6923385624928299118");
@@ -124,7 +122,6 @@ public class BoundedTypeOnIllegalPositions_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck6510041824235646887() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2176128700705692344");
         SNode operation = getRealNodeById("6510041824235646887");

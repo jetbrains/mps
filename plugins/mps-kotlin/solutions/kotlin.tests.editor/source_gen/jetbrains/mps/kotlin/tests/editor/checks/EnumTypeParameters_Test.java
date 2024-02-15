@@ -47,8 +47,12 @@ public class EnumTypeParameters_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeEnumClassCannotHaveTypeCheck685380225824106384() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("685380225824074354");
+    }
 
+    public void test_NodeEnumClassCannotHaveTypeCheck685380225824106384() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("685380225824104918");
         SNode operation = getRealNodeById("685380225824106384");
@@ -56,7 +60,6 @@ public class EnumTypeParameters_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeEnumClassCannotHaveTypeCheck685380225824106780() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("685380225824105767");
         SNode operation = getRealNodeById("685380225824106780");
@@ -64,7 +67,6 @@ public class EnumTypeParameters_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck685380225824107295() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("685380225824074353");
         SNode operation = getRealNodeById("685380225824107295");

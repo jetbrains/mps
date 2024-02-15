@@ -33,11 +33,13 @@ public class CheckVisibility_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053114874", "1230053114900");
+    }
+
     public void test_CheckVisibility() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053114874");
-        addNodeById("1230053114900");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230053114888"));
         Assert.assertTrue(ref.getProblems().length() > 0);

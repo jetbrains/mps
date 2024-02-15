@@ -38,11 +38,13 @@ public class InlineMethodThatChangesParameters_Test extends BaseTransformationTe
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053073154", "1230053073190");
+    }
+
     public void test_InlineMethodThatChangesParameters() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053073154");
-        addNodeById("1230053073190");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230053073166"));
         ref.doRefactor();

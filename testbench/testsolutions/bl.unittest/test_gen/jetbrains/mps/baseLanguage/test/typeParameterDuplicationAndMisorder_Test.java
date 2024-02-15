@@ -71,8 +71,12 @@ public class typeParameterDuplicationAndMisorder_Test extends BaseTransformation
       super(owner);
     }
 
-    public void test_NodeTypeVariableIsNotNeededCheck6923385624929116385() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2970924421778358756", "2970924421778358841");
+    }
 
+    public void test_NodeTypeVariableIsNotNeededCheck6923385624929116385() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451230303");
         SNode operation = getRealNodeById("6923385624929116385");
@@ -80,7 +84,6 @@ public class typeParameterDuplicationAndMisorder_Test extends BaseTransformation
       });
     }
     public void test_NodeUnnamedErrorCheck6923385624929116387() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451230303");
         SNode operation = getRealNodeById("6923385624929116387");
@@ -88,7 +91,6 @@ public class typeParameterDuplicationAndMisorder_Test extends BaseTransformation
       });
     }
     public void test_NodeUnnamedErrorCheck6923385624929017230() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451229456");
         SNode operation = getRealNodeById("6923385624929017230");
@@ -96,7 +98,6 @@ public class typeParameterDuplicationAndMisorder_Test extends BaseTransformation
       });
     }
     public void test_NodeUnnamedErrorCheck6923385624928447295() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451228701");
         SNode operation = getRealNodeById("6923385624928447295");
@@ -104,7 +105,6 @@ public class typeParameterDuplicationAndMisorder_Test extends BaseTransformation
       });
     }
     public void test_NodeUnnamedErrorCheck6923385624927677357() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451223205");
         SNode operation = getRealNodeById("6923385624927677357");
@@ -112,7 +112,6 @@ public class typeParameterDuplicationAndMisorder_Test extends BaseTransformation
       });
     }
     public void test_ErrorMessagesCheck2970924421778358827() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2970924421778358758");
         SNode operation = getRealNodeById("2970924421778358827");
@@ -120,7 +119,6 @@ public class typeParameterDuplicationAndMisorder_Test extends BaseTransformation
       });
     }
     public void test_NodeUnnamedErrorCheck6923385624928047856() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451228529");
         SNode operation = getRealNodeById("6923385624928047856");
@@ -128,7 +126,6 @@ public class typeParameterDuplicationAndMisorder_Test extends BaseTransformation
       });
     }
     public void test_NodeUnnamedErrorCheck6923385624927049758() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451228380");
         SNode operation = getRealNodeById("6923385624927049758");
@@ -136,7 +133,6 @@ public class typeParameterDuplicationAndMisorder_Test extends BaseTransformation
       });
     }
     public void test_ErrorMessagesCheck2970924421778359047() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2970924421778358867");
         SNode operation = getRealNodeById("2970924421778359047");

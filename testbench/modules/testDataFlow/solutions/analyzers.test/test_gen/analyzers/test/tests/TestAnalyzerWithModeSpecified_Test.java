@@ -42,8 +42,12 @@ public class TestAnalyzerWithModeSpecified_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck2955426575106132885() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2955426575106132804", "2955426575106132814");
+    }
 
+    public void test_ErrorMessagesCheck2955426575106132885() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2955426575106132805");
         SNode operation = getRealNodeById("2955426575106132885");
@@ -51,7 +55,6 @@ public class TestAnalyzerWithModeSpecified_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck2955426575106132965() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2955426575106132815");
         SNode operation = getRealNodeById("2955426575106132965");

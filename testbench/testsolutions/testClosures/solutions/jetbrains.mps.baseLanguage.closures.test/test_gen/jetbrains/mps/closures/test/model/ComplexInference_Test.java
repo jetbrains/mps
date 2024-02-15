@@ -41,8 +41,12 @@ public class ComplexInference_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck5533324111883090506() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5533324111883035675", "5533324111883092166");
+    }
 
+    public void test_ErrorMessagesCheck5533324111883090506() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5533324111883077538");
         SNode operation = getRealNodeById("5533324111883090506");
@@ -50,7 +54,6 @@ public class ComplexInference_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck5533324111883110405() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5533324111872453866");
         SNode operation = getRealNodeById("5533324111883110405");

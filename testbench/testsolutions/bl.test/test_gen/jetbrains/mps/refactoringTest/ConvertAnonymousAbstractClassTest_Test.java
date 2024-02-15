@@ -38,12 +38,13 @@ public class ConvertAnonymousAbstractClassTest_Test extends BaseTransformationTe
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6791439617122628437", "6791439617122628452", "6791439617122640070");
+    }
+
     public void test_AbstractClassTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("6791439617122628437");
-        addNodeById("6791439617122628452");
-        addNodeById("6791439617122640070");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         new ConvertAnonymousRefactoring(getNodeById("6791439617122628484"), "MyAbstract").doRefactor();
         {

@@ -46,9 +46,13 @@ public class CollectionGenericsTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeTypeCheck6802806833293299754() throws Exception {
-      runWithinCommand(() -> addNodeById("6802806833293299878"));
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6802806833293238268");
+    }
 
+    public void test_NodeTypeCheck6802806833293299754() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6802806833293297796");
         SNode operation = getRealNodeById("6802806833293299754");
@@ -56,8 +60,7 @@ public class CollectionGenericsTest_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeCheck6802806833293340692() throws Exception {
-      runWithinCommand(() -> addNodeById("6802806833293341030"));
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6802806833293339382");
         SNode operation = getRealNodeById("6802806833293340692");
@@ -65,7 +68,6 @@ public class CollectionGenericsTest_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck6802806833293252920() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6802806833293238277");
         SNode operation = getRealNodeById("6802806833293252920");

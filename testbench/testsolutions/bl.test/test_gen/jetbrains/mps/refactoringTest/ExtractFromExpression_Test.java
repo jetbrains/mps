@@ -40,11 +40,13 @@ public class ExtractFromExpression_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052551971", "1230052551996");
+    }
+
     public void test_extractFromExpression() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052551971");
-        addNodeById("1230052551996");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052551990")));
         params.setName("foo");

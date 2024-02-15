@@ -45,11 +45,13 @@ public class ChangeMethodParametersForStatement_Test extends BaseTransformationT
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052406554", "1230052406581");
+    }
+
     public void test_changeMethodParametersForStatement() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052406554");
-        addNodeById("1230052406581");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         {
           SNode c_ref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference"));

@@ -36,8 +36,12 @@ public class PropertyNameClash_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeThePropertySetterIsHidingCheck6115392061228789467() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6115392061228765139");
+    }
 
+    public void test_NodeThePropertySetterIsHidingCheck6115392061228789467() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061228765227");
         SNode operation = getRealNodeById("6115392061228789467");

@@ -56,11 +56,18 @@ public class JUnitInProcess_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_startSimpleTestCase() throws Exception {
+      initTestNodes();
       List<ITestNodeWrapper> wrappedTests = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", "6937584626643047380"));
       this.checkTests(wrappedTests, ListSequence.fromList(new ArrayList<ITestNodeWrapper>()));
     }
     public void test_startFailedTestCase() throws Exception {
+      initTestNodes();
       List<ITestNodeWrapper> wrappedTests = new TestNodeWrapHelper(myProject.getRepository()).discover(new SNodePointer("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)", "6339244025082034140"));
       this.checkTests(ListSequence.fromList(new ArrayList<ITestNodeWrapper>()), wrappedTests);
     }

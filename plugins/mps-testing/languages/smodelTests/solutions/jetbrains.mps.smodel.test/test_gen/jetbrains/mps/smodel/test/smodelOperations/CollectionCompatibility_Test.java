@@ -37,8 +37,12 @@ public class CollectionCompatibility_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck5913489050824136203() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6669623901448407842");
+    }
 
+    public void test_ErrorMessagesCheck5913489050824136203() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6669623901448407846");
         SNode operation = getRealNodeById("5913489050824136203");

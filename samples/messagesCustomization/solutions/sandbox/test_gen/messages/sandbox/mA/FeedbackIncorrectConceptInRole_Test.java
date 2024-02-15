@@ -54,8 +54,12 @@ public class FeedbackIncorrectConceptInRole_Test extends BaseTransformationTest 
       super(owner);
     }
 
-    public void test_NodeErrorCheck116705030629664053() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("116705030628907896", "116705030628940201", "116705030628902107", "116705030628903722");
+    }
 
+    public void test_NodeErrorCheck116705030629664053() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("116705030628902880");
         SNode operation = getRealNodeById("116705030629664053");
@@ -63,7 +67,6 @@ public class FeedbackIncorrectConceptInRole_Test extends BaseTransformationTest 
       });
     }
     public void test_ErrorMessagesCheck116705030628903652() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("116705030628902106");
         SNode operation = getRealNodeById("116705030628903652");
@@ -71,7 +74,6 @@ public class FeedbackIncorrectConceptInRole_Test extends BaseTransformationTest 
       });
     }
     public void test_NodeErrorCheck116705030629664185() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("116705030628902106");
         SNode operation = getRealNodeById("116705030629664185");
@@ -79,7 +81,6 @@ public class FeedbackIncorrectConceptInRole_Test extends BaseTransformationTest 
       });
     }
     public void test_NodeErrorCheck116705030629664187() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("116705030628902106");
         SNode operation = getRealNodeById("116705030629664187");
@@ -87,7 +88,6 @@ public class FeedbackIncorrectConceptInRole_Test extends BaseTransformationTest 
       });
     }
     public void test_ErrorMessagesCheck116705030628903726() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("116705030628903723");
         SNode operation = getRealNodeById("116705030628903726");

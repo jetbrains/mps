@@ -37,8 +37,12 @@ public class StubClassifiers_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck3696922934671319151() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3696922934671312703");
+    }
 
+    public void test_ErrorMessagesCheck3696922934671319151() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3696922934668788475");
         SNode operation = getRealNodeById("3696922934671319151");

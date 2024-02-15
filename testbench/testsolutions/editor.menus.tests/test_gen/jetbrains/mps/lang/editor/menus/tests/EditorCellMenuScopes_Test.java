@@ -58,8 +58,12 @@ public class EditorCellMenuScopes_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ScopeOf_TransformationMenuReference_Default_concept_1068638940632614994() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1068638940632614985");
+    }
 
+    public void test_ScopeOf_TransformationMenuReference_Default_concept_1068638940632614994() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1068638940632614994");
         SNode operation = getRealNodeById("1068638940632614996");
@@ -67,7 +71,6 @@ public class EditorCellMenuScopes_Test extends BaseTransformationTest {
       });
     }
     public void test_ScopeOf_TransformationMenuReference_Named_menu_1068638940632808481() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1068638940632808481");
         SNode operation = getRealNodeById("1068638940632808483");
@@ -75,7 +78,6 @@ public class EditorCellMenuScopes_Test extends BaseTransformationTest {
       });
     }
     public void test_ScopeOf_TransformationMenuReference_Default_concept_4091667478583379447() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4091667478583379447");
         SNode operation = getRealNodeById("4091667478583379449");
@@ -83,7 +85,6 @@ public class EditorCellMenuScopes_Test extends BaseTransformationTest {
       });
     }
     public void test_ScopeOf_TransformationMenuReference_Named_menu_4091667478583467351() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4091667478583467351");
         SNode operation = getRealNodeById("4091667478583467353");
@@ -91,7 +92,6 @@ public class EditorCellMenuScopes_Test extends BaseTransformationTest {
       });
     }
     public void test_ScopeOf_TransformationMenuReference_Default_concept_4091667478583467622() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4091667478583467622");
         SNode operation = getRealNodeById("4091667478583467624");
@@ -99,7 +99,6 @@ public class EditorCellMenuScopes_Test extends BaseTransformationTest {
       });
     }
     public void test_ScopeOf_TransformationMenuReference_Named_menu_4091667478583468879() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4091667478583468879");
         SNode operation = getRealNodeById("4091667478583486304");

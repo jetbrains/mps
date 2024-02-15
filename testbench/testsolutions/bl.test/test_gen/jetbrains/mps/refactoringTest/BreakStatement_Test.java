@@ -48,20 +48,25 @@ public class BreakStatement_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052480264");
+    }
+
     public void test_noBreaks() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052480264"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052480270")))));
     }
     public void test_oneBreak() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052480264"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052480275")))));
     }
     public void test_oneContionue() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052480264"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052480282")))));
     }
     public void test_breakAndContinue() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052480264"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertTrue(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052480275"), getNodeById("1230052480282"))) != null));
     }
 

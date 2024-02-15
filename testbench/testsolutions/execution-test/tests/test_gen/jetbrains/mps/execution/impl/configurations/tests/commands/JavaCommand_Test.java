@@ -50,7 +50,13 @@ public class JavaCommand_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_startJavaByNode() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         final Wrappers._T<SNodeReference> pointer = new Wrappers._T<SNodeReference>();
         myProject.getModelAccess().runReadAction(() -> {

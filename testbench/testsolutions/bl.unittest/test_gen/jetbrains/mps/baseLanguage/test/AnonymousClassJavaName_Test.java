@@ -35,8 +35,13 @@ public class AnonymousClassJavaName_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6649467621789725811");
+    }
+
     public void test_testJavaNames() throws Exception {
-      runWithinCommand(() -> addNodeById("6649467621789725811"));
+      initTestNodes();
       runWithinCommand(() -> {
         assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getNodeById("6649467621789782586"), LINKS.cls$Saf6)).endsWith("Foo$Bar$1");
         assert AnonymousClass__BehaviorDescriptor.getJavaName_id2_jKYQ0K_an.invoke(SLinkOperations.getTarget(getNodeById("6649467621789787135"), LINKS.cls$Saf6)).endsWith("Foo$Bar$2");

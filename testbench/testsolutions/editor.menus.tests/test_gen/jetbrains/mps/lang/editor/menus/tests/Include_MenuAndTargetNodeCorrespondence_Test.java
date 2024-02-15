@@ -56,21 +56,22 @@ public class Include_MenuAndTargetNodeCorrespondence_Test extends BaseTransforma
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2705676212747008271", "6903010549536712693");
+    }
+
     public void test_targetNodeForMenuShouldReturnMenuConcept() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2705676212747008271");
-        addNodeById("6903010549536712693");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), createSNodeType_sxmjox_a0a0a0a0a0b0d8());
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), createSNodeType_sxmjox_a0a0a0a0a0b0f8());
           List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(getNodeById("2705676212747008292")));
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
       });
     }
     public void test_MatchingMenuForCurrentNode6903010549536714073() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6903010549536713473");
         SNode operation = getRealNodeById("6903010549536714073");
@@ -78,7 +79,6 @@ public class Include_MenuAndTargetNodeCorrespondence_Test extends BaseTransforma
       });
     }
     public void test_NonMatchingMenuForCurrentNode6903010549536714075() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6903010549536712731");
         SNode operation = getRealNodeById("6903010549536714075");
@@ -86,7 +86,7 @@ public class Include_MenuAndTargetNodeCorrespondence_Test extends BaseTransforma
       });
     }
 
-    private static SNode createSNodeType_sxmjox_a0a0a0a0a0b0d8() {
+    private static SNode createSNodeType_sxmjox_a0a0a0a0a0b0f8() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SNodeType$hR);
       n0.setReference(LINKS.concept$OMgE, new SNodePointer(facade.createModelReference("r:c6b5a119-ed4d-420e-b7df-fa1b4101c68f(jetbrains.mps.lang.editor.menus.testLanguage.structure)"), facade.createNodeId("2705676212746996052")));

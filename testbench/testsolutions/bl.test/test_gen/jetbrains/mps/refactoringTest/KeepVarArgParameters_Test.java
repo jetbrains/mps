@@ -48,25 +48,27 @@ public class KeepVarArgParameters_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6365792264556597658", "6365792264556597683");
+    }
+
     public void test_AddParameterWithDefault() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("6365792264556597658");
-        addNodeById("6365792264556597683");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("6365792264556597660"));
 
         // Add params
-        SNode boolParam = _quotation_createNode_in913d_a0d0a0b0d6();
-        SNode intParam = _quotation_createNode_in913d_a0e0a0b0d6();
+        SNode boolParam = _quotation_createNode_in913d_a0d0a0b0f6();
+        SNode intParam = _quotation_createNode_in913d_a0e0a0b0f6();
         List<SNode> parameters = SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj);
         parameters.add(1, boolParam);
         parameters.add(2, intParam);
 
         // Add default values
         Map<SNode, SNode> defaultValues = MapSequence.fromMap(new HashMap<SNode, SNode>());
-        MapSequence.fromMap(defaultValues).put(boolParam, _quotation_createNode_in913d_a0l0a0b0d6());
-        MapSequence.fromMap(defaultValues).put(intParam, _quotation_createNode_in913d_a0m0a0b0d6());
+        MapSequence.fromMap(defaultValues).put(boolParam, _quotation_createNode_in913d_a0l0a0b0f6());
+        MapSequence.fromMap(defaultValues).put(intParam, _quotation_createNode_in913d_a0m0a0b0f6());
 
         // Usages
         List<SNode> usages = ListSequence.fromList(new ArrayList<SNode>(2));
@@ -86,7 +88,7 @@ public class KeepVarArgParameters_Test extends BaseTransformationTest {
       });
     }
 
-    private static SNode _quotation_createNode_in913d_a0d0a0b0d6() {
+    private static SNode _quotation_createNode_in913d_a0d0a0b0f6() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration"));
@@ -97,7 +99,7 @@ public class KeepVarArgParameters_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), quotedNode_2);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_in913d_a0e0a0b0d6() {
+    private static SNode _quotation_createNode_in913d_a0e0a0b0f6() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e94L, "ParameterDeclaration"));
@@ -108,13 +110,13 @@ public class KeepVarArgParameters_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type"), quotedNode_2);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_in913d_a0l0a0b0d6() {
+    private static SNode _quotation_createNode_in913d_a0l0a0b0f6() {
       SNode quotedNode_1 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b201L, "BooleanConstant"));
       quotedNode_1 = nb.getResult();
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_in913d_a0m0a0b0d6() {
+    private static SNode _quotation_createNode_in913d_a0m0a0b0f6() {
       SNode quotedNode_1 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc59b314L, "IntegerConstant"));
       quotedNode_1 = nb.getResult();

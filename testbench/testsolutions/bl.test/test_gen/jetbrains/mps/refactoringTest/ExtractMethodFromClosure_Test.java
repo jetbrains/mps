@@ -44,11 +44,13 @@ public class ExtractMethodFromClosure_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5161277940733600914", "5161277940733600960");
+    }
+
     public void test_ExtractMethodFromClosure() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("5161277940733600914");
-        addNodeById("5161277940733600960");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("5161277940733600941"), getNodeById("5161277940733600950")));
         params.setName("foo");

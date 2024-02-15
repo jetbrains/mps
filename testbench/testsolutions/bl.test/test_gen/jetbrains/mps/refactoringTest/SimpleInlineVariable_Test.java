@@ -38,11 +38,13 @@ public class SimpleInlineVariable_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053266654", "1230053266673");
+    }
+
     public void test_simpleInlineVariable() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053266654");
-        addNodeById("1230053266673");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineVariableRefactoring ref = InlineVariableRefactoring.createRefactoring(getNodeById("1230053266662"));
         ref.doRefactoring();

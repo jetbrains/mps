@@ -55,8 +55,12 @@ public class FinalMethodOverriding_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeTheMethodCannotOverrideCheck6091751241368225336() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7471623575883288426", "7471623575883509015", "7471623575883518949");
+    }
 
+    public void test_NodeTheMethodCannotOverrideCheck6091751241368225336() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7471623575883489441");
         SNode operation = getRealNodeById("6091751241368225336");
@@ -64,7 +68,6 @@ public class FinalMethodOverriding_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7471623575883346737() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7471623575883288428");
         SNode operation = getRealNodeById("7471623575883346737");
@@ -72,7 +75,6 @@ public class FinalMethodOverriding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodePackageProtectedMethodCheck6091751241368225027() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7471623575883519203");
         SNode operation = getRealNodeById("6091751241368225027");
@@ -80,7 +82,6 @@ public class FinalMethodOverriding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheMethodCannotOverrideCheck6091751241368225029() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7471623575883519203");
         SNode operation = getRealNodeById("6091751241368225029");
@@ -88,7 +89,6 @@ public class FinalMethodOverriding_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7471623575883519712() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7471623575883519005");
         SNode operation = getRealNodeById("7471623575883519712");

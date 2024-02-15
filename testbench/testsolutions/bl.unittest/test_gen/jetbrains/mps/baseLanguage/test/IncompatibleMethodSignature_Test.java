@@ -195,8 +195,12 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeWrongNumberOfParametersCheck1955277442708667269() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1955277442708664552", "1955277442709590234");
+    }
 
+    public void test_NodeWrongNumberOfParametersCheck1955277442708667269() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708667086");
         SNode operation = getRealNodeById("1955277442708667269");
@@ -204,7 +208,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleMethodSignatureCheck1955277442708670146() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708668414");
         SNode operation = getRealNodeById("1955277442708670146");
@@ -212,7 +215,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck1955277442708670149() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708668414");
         SNode operation = getRealNodeById("1955277442708670149");
@@ -220,7 +222,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck1955277442708672569() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708670575");
         SNode operation = getRealNodeById("1955277442708672569");
@@ -228,7 +229,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWrongNumberOfParametersCheck1955277442708672572() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708670575");
         SNode operation = getRealNodeById("1955277442708672572");
@@ -236,7 +236,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWrongNumberOfParametersCheck1955277442708690996() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708688181");
         SNode operation = getRealNodeById("1955277442708690996");
@@ -244,7 +243,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleMethodSignatureCheck1955277442709583359() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708695133");
         SNode operation = getRealNodeById("1955277442709583359");
@@ -252,7 +250,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck1955277442709583362() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708695133");
         SNode operation = getRealNodeById("1955277442709583362");
@@ -260,7 +257,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWrongNumberOfParametersCheck1955277442708702665() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708699248");
         SNode operation = getRealNodeById("1955277442708702665");
@@ -268,7 +264,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck1955277442708702668() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708699248");
         SNode operation = getRealNodeById("1955277442708702668");
@@ -276,7 +271,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck5956182814461183008() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5956182814461183003");
         SNode operation = getRealNodeById("5956182814461183008");
@@ -284,7 +278,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck6551446852579937825() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5956182814461182994");
         SNode operation = getRealNodeById("6551446852579937825");
@@ -292,7 +285,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck6551446852579937828() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5956182814461182994");
         SNode operation = getRealNodeById("6551446852579937828");
@@ -300,7 +292,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleMethodSignatureCheck5956182814466687051() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5956182814466679911");
         SNode operation = getRealNodeById("5956182814466687051");
@@ -308,7 +299,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck5956182814466687054() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5956182814466679911");
         SNode operation = getRealNodeById("5956182814466687054");
@@ -316,7 +306,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleMethodSignatureCheck5956182814466761739() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708715900");
         SNode operation = getRealNodeById("5956182814466761739");
@@ -324,7 +313,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIsNotSubtypeOfCheck5956182814466761742() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708715900");
         SNode operation = getRealNodeById("5956182814466761742");
@@ -332,7 +320,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleMethodSignatureCheck5956182814466766842() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708724308");
         SNode operation = getRealNodeById("5956182814466766842");
@@ -340,7 +327,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck5956182814466766845() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708724308");
         SNode operation = getRealNodeById("5956182814466766845");
@@ -348,7 +334,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck1955277442708666760() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442708666624");
         SNode operation = getRealNodeById("1955277442708666760");
@@ -356,7 +341,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWrongNumberOfParametersCheck1955277442709594885() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594883");
         SNode operation = getRealNodeById("1955277442709594885");
@@ -364,7 +348,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck1955277442709605005() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594893");
         SNode operation = getRealNodeById("1955277442709605005");
@@ -372,7 +355,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleMethodSignatureCheck1955277442709600557() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594892");
         SNode operation = getRealNodeById("1955277442709600557");
@@ -380,7 +362,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck1955277442709614253() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594903");
         SNode operation = getRealNodeById("1955277442709614253");
@@ -388,7 +369,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWrongNumberOfParametersCheck1955277442709609515() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594902");
         SNode operation = getRealNodeById("1955277442709609515");
@@ -396,7 +376,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWrongNumberOfParametersCheck1955277442709594930() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594927");
         SNode operation = getRealNodeById("1955277442709594930");
@@ -404,7 +383,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck1955277442709621044() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594940");
         SNode operation = getRealNodeById("1955277442709621044");
@@ -412,7 +390,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleMethodSignatureCheck1955277442709617773() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594938");
         SNode operation = getRealNodeById("1955277442709617773");
@@ -420,7 +397,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck1955277442709629103() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594951");
         SNode operation = getRealNodeById("1955277442709629103");
@@ -428,7 +404,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWrongNumberOfParametersCheck1955277442709625107() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594949");
         SNode operation = getRealNodeById("1955277442709625107");
@@ -436,7 +411,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck1955277442709637186() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594970");
         SNode operation = getRealNodeById("1955277442709637186");
@@ -444,7 +418,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck6551446852579976505() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594982");
         SNode operation = getRealNodeById("6551446852579976505");
@@ -452,7 +425,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck6551446852579976508() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594982");
         SNode operation = getRealNodeById("6551446852579976508");
@@ -460,7 +432,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck5956182814466699062() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5956182814466688502");
         SNode operation = getRealNodeById("5956182814466699062");
@@ -468,7 +439,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleMethodSignatureCheck5956182814466702741() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5956182814466687142");
         SNode operation = getRealNodeById("5956182814466702741");
@@ -476,7 +446,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIsNotSubtypeOfCheck5956182814466803938() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5956182814466773163");
         SNode operation = getRealNodeById("5956182814466803938");
@@ -484,7 +453,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleMethodSignatureCheck5956182814466809304() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5956182814466788554");
         SNode operation = getRealNodeById("5956182814466809304");
@@ -492,7 +460,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck5956182814466817537() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5956182814466773155");
         SNode operation = getRealNodeById("5956182814466817537");
@@ -500,7 +467,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleMethodSignatureCheck5956182814466826019() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5956182814466789927");
         SNode operation = getRealNodeById("5956182814466826019");
@@ -508,7 +474,6 @@ public class IncompatibleMethodSignature_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck1955277442709594998() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1955277442709594879");
         SNode operation = getRealNodeById("1955277442709594998");

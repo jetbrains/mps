@@ -65,8 +65,12 @@ public class TypesystemDataFlow_Test_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck7084752438137077608() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7084752438137077590", "7084752438136311769", "7084752438136507413", "7084752438136510775", "7084752438136628545");
+    }
 
+    public void test_ErrorMessagesCheck7084752438137077608() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7084752438137077600");
         SNode operation = getRealNodeById("7084752438137077608");
@@ -74,7 +78,6 @@ public class TypesystemDataFlow_Test_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7084752438136654360() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7084752438136326580");
         SNode operation = getRealNodeById("7084752438136654360");
@@ -82,7 +85,6 @@ public class TypesystemDataFlow_Test_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7084752438136654891() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7084752438136321941");
         SNode operation = getRealNodeById("7084752438136654891");
@@ -90,7 +92,6 @@ public class TypesystemDataFlow_Test_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7084752438136655422() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7084752438136324315");
         SNode operation = getRealNodeById("7084752438136655422");
@@ -98,7 +99,6 @@ public class TypesystemDataFlow_Test_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7084752438137101036() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7084752438136510111");
         SNode operation = getRealNodeById("7084752438137101036");
@@ -106,7 +106,6 @@ public class TypesystemDataFlow_Test_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7084752438137102056() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7084752438136510779");
         SNode operation = getRealNodeById("7084752438137102056");
@@ -114,7 +113,6 @@ public class TypesystemDataFlow_Test_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7084752438137101567() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7084752438136523185");
         SNode operation = getRealNodeById("7084752438137101567");
@@ -122,7 +120,6 @@ public class TypesystemDataFlow_Test_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7084752438137102524() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7084752438136629441");
         SNode operation = getRealNodeById("7084752438137102524");

@@ -40,11 +40,13 @@ public class ExtractFromExpressionWithoutReturn_Test extends BaseTransformationT
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052552061", "1230052552076");
+    }
+
     public void test_extractFromExpressionWithoutReturn() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052552061");
-        addNodeById("1230052552076");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052552068")));
         params.setName("foo");

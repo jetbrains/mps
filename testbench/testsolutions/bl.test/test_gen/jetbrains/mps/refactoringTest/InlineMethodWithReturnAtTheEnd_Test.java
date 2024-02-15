@@ -38,11 +38,13 @@ public class InlineMethodWithReturnAtTheEnd_Test extends BaseTransformationTest 
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053187648", "1230053187688");
+    }
+
     public void test_InlineMethodWithReturnAtTheEnd() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053187648");
-        addNodeById("1230053187688");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230053187664"));
         ref.doRefactor();

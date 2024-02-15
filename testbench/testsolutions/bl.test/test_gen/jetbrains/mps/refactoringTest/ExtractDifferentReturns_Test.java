@@ -41,11 +41,13 @@ public class ExtractDifferentReturns_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052641812", "1230052641841");
+    }
+
     public void test_extractDifferentReturns() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052641812");
-        addNodeById("1230052641841");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052641823")));
         params.setName("foo");

@@ -38,13 +38,13 @@ public class MoveStaticFieldSimpleTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8495840634674645159", "8495840634674645188", "8495840634674645198", "8495840634674645205");
+    }
+
     public void test_SimpleTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8495840634674645159");
-        addNodeById("8495840634674645188");
-        addNodeById("8495840634674645198");
-        addNodeById("8495840634674645205");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         MoveStaticFieldRefactoring refactoring = new MoveStaticFieldRefactoring(getNodeById("8495840634674645167"), getNodeById("8495840634674645189"));
         refactoring.doRefactoring();

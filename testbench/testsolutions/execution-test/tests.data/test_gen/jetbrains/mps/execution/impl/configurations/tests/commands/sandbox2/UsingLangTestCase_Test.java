@@ -33,7 +33,13 @@ public class UsingLangTestCase_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_asdf() throws Exception {
+      initTestNodes();
       new SystemOutInvocator().invoke();
       Assert.assertFalse(false);
     }

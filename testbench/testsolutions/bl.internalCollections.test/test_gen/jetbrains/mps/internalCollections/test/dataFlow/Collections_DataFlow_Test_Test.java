@@ -53,8 +53,12 @@ public class Collections_DataFlow_Test_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck1140733686815042652() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1140733686814958696", "1140733686815049999", "1140733686815044375", "1140733686815060464", "1140733686815070795");
+    }
 
+    public void test_ErrorMessagesCheck1140733686815042652() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1140733686814959179");
         SNode operation = getRealNodeById("1140733686815042652");
@@ -62,7 +66,6 @@ public class Collections_DataFlow_Test_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck1140733686815050004() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1140733686815050001");
         SNode operation = getRealNodeById("1140733686815050004");
@@ -70,7 +73,6 @@ public class Collections_DataFlow_Test_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck1140733686815044380() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1140733686815044377");
         SNode operation = getRealNodeById("1140733686815044380");
@@ -78,7 +80,6 @@ public class Collections_DataFlow_Test_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck1140733686815060469() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1140733686815060466");
         SNode operation = getRealNodeById("1140733686815060469");
@@ -86,7 +87,6 @@ public class Collections_DataFlow_Test_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck1140733686815070800() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1140733686815070797");
         SNode operation = getRealNodeById("1140733686815070800");

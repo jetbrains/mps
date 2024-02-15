@@ -60,11 +60,13 @@ public class SLinkImplicitSelect_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("278471160714368807", "7551657168186489228");
+    }
+
     public void test_empty() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("278471160714368807");
-        addNodeById("7551657168186489228");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(getNodeById("278471160714368808"), LINKS.child_0_n$IY7t), LINKS.grandChild_0_1$IWEt)).isEmpty());
         Assert.assertTrue(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.getChildren(getNodeById("278471160714368808"), LINKS.child_0_n$IY7t), LINKS.grandChild_0_n$IX8v)).isEmpty());
@@ -77,10 +79,7 @@ public class SLinkImplicitSelect_Test extends BaseTransformationTest {
       });
     }
     public void test_singleChild() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("278471160714368807");
-        addNodeById("7551657168186489228");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(getNodeById("7551657168186489229"), LINKS.child_0_n$IY7t), LINKS.grandChild_0_1$IWEt)).isEmpty());
         TestBody.this.assertEquals(Sequence.<SNode>singleton(getNodeById("7551657168186489235")), SLinkOperations.collect(SLinkOperations.getChildren(getNodeById("7551657168186489229"), LINKS.child_0_n$IY7t), LINKS.grandChild_1$IWTu));
@@ -89,10 +88,7 @@ public class SLinkImplicitSelect_Test extends BaseTransformationTest {
       });
     }
     public void test_multipleChildren() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("278471160714368807");
-        addNodeById("7551657168186489228");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(getNodeById("7551657168186489229"), LINKS.child_1_n$IYmu), LINKS.grandChild_0_1$IWEt)).isEmpty());
         TestBody.this.assertEquals(Sequence.fromArray(new SNode[]{getNodeById("7551657168186489231"), getNodeById("7551657168186611648")}), SLinkOperations.collect(SLinkOperations.getChildren(getNodeById("7551657168186489229"), LINKS.child_1_n$IYmu), LINKS.grandChild_1$IWTu));
@@ -101,10 +97,7 @@ public class SLinkImplicitSelect_Test extends BaseTransformationTest {
       });
     }
     public void test_operationsOnList() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("278471160714368807");
-        addNodeById("7551657168186489228");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
         ListSequence.fromList(list).addSequence(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("7551657168186489229"), LINKS.child_1_n$IYmu)));
@@ -112,17 +105,11 @@ public class SLinkImplicitSelect_Test extends BaseTransformationTest {
       });
     }
     public void test_specializedLinks() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("278471160714368807");
-        addNodeById("7551657168186489228");
-      });
+      initTestNodes();
       runWithinCommand(() -> TestBody.this.assertEquals(Sequence.fromArray(new SNode[]{getNodeById("34342663958911397"), getNodeById("34342663958911401")}), SLinkOperations.collect(SLinkOperations.getChildren(getNodeById("7551657168186489229"), LINKS.childSubConcept_0_n$apX), LINKS.grandChild_0_1$IWEt)));
     }
     public void test_inheritedLinks() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("278471160714368807");
-        addNodeById("7551657168186489228");
-      });
+      initTestNodes();
       runWithinCommand(() -> TestBody.this.assertEquals(Sequence.fromArray(new SNode[]{getNodeById("34342663959152983"), getNodeById("34342663959152984"), getNodeById("34342663959152985")}), SLinkOperations.collectMany(SLinkOperations.getChildren(getNodeById("7551657168186489229"), LINKS.childSubConcept_0_n$apX), LINKS.grandChild_0_n$IX8v)));
     }
 

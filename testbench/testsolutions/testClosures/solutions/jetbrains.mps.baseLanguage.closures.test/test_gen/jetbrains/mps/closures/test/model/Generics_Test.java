@@ -46,8 +46,12 @@ public class Generics_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck5462327771639049246() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7289865355732882894", "1674014916759205623");
+    }
 
+    public void test_NodeErrorCheck5462327771639049246() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5462327771639049241");
         SNode operation = getRealNodeById("5462327771639049246");
@@ -55,7 +59,6 @@ public class Generics_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck5419091611223712729() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7289865355732882896");
         SNode operation = getRealNodeById("5419091611223712729");
@@ -63,7 +66,6 @@ public class Generics_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck1674014916759209386() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1674014916759207935");
         SNode operation = getRealNodeById("1674014916759209386");

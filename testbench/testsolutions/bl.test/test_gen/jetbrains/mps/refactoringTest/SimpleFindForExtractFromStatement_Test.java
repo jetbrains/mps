@@ -41,11 +41,13 @@ public class SimpleFindForExtractFromStatement_Test extends BaseTransformationTe
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8556882668095222065", "8556882668095222149");
+    }
+
     public void test_SimpleFindForExtractFromStatementTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8556882668095222065");
-        addNodeById("8556882668095222149");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("8556882668095222071")));
         params.setName("print");

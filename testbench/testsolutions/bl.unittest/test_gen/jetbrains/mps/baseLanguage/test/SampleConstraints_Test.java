@@ -47,8 +47,12 @@ public class SampleConstraints_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeVariableHasNotBeenInitializedErrorCheck2675718132411786724() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7638302724810894535");
+    }
 
+    public void test_NodeVariableHasNotBeenInitializedErrorCheck2675718132411786724() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7638302724810915512");
         SNode operation = getRealNodeById("2675718132411786724");
@@ -56,7 +60,6 @@ public class SampleConstraints_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnknownRuleCheck2675718132411786726() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7638302724810915512");
         SNode operation = getRealNodeById("2675718132411786726");
@@ -64,7 +67,6 @@ public class SampleConstraints_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7638302724810894630() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7638302724810894536");
         SNode operation = getRealNodeById("7638302724810894630");

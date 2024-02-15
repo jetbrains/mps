@@ -40,11 +40,13 @@ public class ExtractMethodWithUnusedAssignments_Test extends BaseTransformationT
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2004738378939038442", "2004738378939038435");
+    }
+
     public void test_ExtractMethodWithUnusedAssignmentsTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2004738378939038442");
-        addNodeById("2004738378939038435");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("2004738378939038453"), getNodeById("2004738378939038460"), getNodeById("2004738378939038504"), getNodeById("2004738378939038511")));
         params.setName("foo");

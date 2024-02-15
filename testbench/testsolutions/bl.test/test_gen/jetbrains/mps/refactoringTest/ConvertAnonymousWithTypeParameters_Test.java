@@ -38,11 +38,13 @@ public class ConvertAnonymousWithTypeParameters_Test extends BaseTransformationT
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("9160497614872088317", "9160497614872003746");
+    }
+
     public void test_TypeParametersTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("9160497614872088317");
-        addNodeById("9160497614872003746");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         new ConvertAnonymousRefactoring(getNodeById("9160497614872088338"), "MyIterable").doRefactor();
         {

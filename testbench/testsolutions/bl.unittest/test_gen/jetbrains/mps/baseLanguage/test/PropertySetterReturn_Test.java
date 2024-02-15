@@ -47,8 +47,12 @@ public class PropertySetterReturn_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeNotLegalStatementTheExpressionCheck6401638465588611410() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5772383102104987800");
+    }
 
+    public void test_NodeNotLegalStatementTheExpressionCheck6401638465588611410() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5772383102105101132");
         SNode operation = getRealNodeById("6401638465588611410");
@@ -56,7 +60,6 @@ public class PropertySetterReturn_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeNoReturnValueExpectedCheck1500881288847656430() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5772383102105106045");
         SNode operation = getRealNodeById("1500881288847656430");
@@ -64,7 +67,6 @@ public class PropertySetterReturn_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck5772383102105107061() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5772383102104987802");
         SNode operation = getRealNodeById("5772383102105107061");

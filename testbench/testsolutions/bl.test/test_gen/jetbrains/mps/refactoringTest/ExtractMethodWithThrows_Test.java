@@ -40,11 +40,13 @@ public class ExtractMethodWithThrows_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8823815475437525603", "8823815475437525651");
+    }
+
     public void test_ExtractMethodWithThrowsTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8823815475437525603");
-        addNodeById("8823815475437525651");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("2640093672104284022")));
         params.setName("foo");

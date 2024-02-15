@@ -38,11 +38,13 @@ public class InlineVariableBinaryInCast_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6923327169066891910", "6923327169066891931");
+    }
+
     public void test_simpleInlineVariable() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("6923327169066891910");
-        addNodeById("6923327169066891931");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineVariableRefactoring ref = InlineVariableRefactoring.createRefactoring(getNodeById("5457066045924284946"));
         ref.doRefactoring();

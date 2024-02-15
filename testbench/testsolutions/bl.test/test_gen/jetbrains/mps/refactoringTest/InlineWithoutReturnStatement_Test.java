@@ -38,11 +38,13 @@ public class InlineWithoutReturnStatement_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053187917", "1230053187938");
+    }
+
     public void test_InlineWithoutReturnStatement() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053187917");
-        addNodeById("1230053187938");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230053187934"));
         ref.doRefactor();

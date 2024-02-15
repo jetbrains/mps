@@ -47,7 +47,13 @@ public class SConceptHierarchy_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_conceptHierarchy() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.INamedConcept$Kd), CONCEPTS.BaseConcept$gP));
         Assert.assertTrue(CONCEPTS.INamedConcept$Kd.isSubConceptOf(CONCEPTS.BaseConcept$gP));
@@ -59,6 +65,7 @@ public class SConceptHierarchy_Test extends BaseTransformationTest {
       });
     }
     public void test_conceptSuperConcept() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         // state the fact we do not report BaseConcept as its own super-concept
         // it's questionable, as it makes BC the only concept without superconcept.
@@ -70,6 +77,7 @@ public class SConceptHierarchy_Test extends BaseTransformationTest {
       });
     }
     public void test_defaultIfaceConcept() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SAbstractConcept defaultIfaceConcept = SNodeOperations.getConcept(SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(CONCEPTS.INamedConcept$Kd)));
         Assert.assertTrue(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(defaultIfaceConcept), CONCEPTS.INamedConcept$Kd));

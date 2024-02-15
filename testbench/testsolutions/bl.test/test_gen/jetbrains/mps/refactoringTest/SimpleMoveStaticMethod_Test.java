@@ -36,13 +36,13 @@ public class SimpleMoveStaticMethod_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3014415391767789120", "3014415391767789149", "3014415391767789154", "3014415391767789181");
+    }
+
     public void test_SimpleMoveStaticMethod() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("3014415391767789120");
-        addNodeById("3014415391767789149");
-        addNodeById("3014415391767789154");
-        addNodeById("3014415391767789181");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         MoveStaticMethodRefactoring refactoring = new MoveStaticMethodRefactoring(getNodeById("3014415391767789137"), getNodeById("3014415391767789150"));
         SearchResults<SNode> results = new SearchResults(Collections.emptyList(), Collections.singletonList(new SearchResult(getNodeById("3014415391767789131"), "usage")));

@@ -53,8 +53,13 @@ public class TestProgramWithModeSpecified_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2955426575105884967");
+    }
+
     public void test_testNonEmptyInstructionsWithModeSpecified() throws Exception {
-      runWithinCommand(() -> addNodeById("2955426575105884967"));
+      initTestNodes();
       runWithinCommand(() -> {
         MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Collections.singletonList(new ConceptDataFlowModeId("jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode"))));
         Program program = builder.buildProgram(getNodeById("2955426575105884969"));
@@ -62,7 +67,7 @@ public class TestProgramWithModeSpecified_Test extends BaseTransformationTest {
       });
     }
     public void test_testNonEmptyInstructionsWithMoreSpecificModeSpecified() throws Exception {
-      runWithinCommand(() -> addNodeById("2955426575105884967"));
+      initTestNodes();
       runWithinCommand(() -> {
         MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Arrays.asList(new ConceptDataFlowModeId("jetbrains.mps.testCustomDataFlow.structure.IntraProceduralSpecific_BuilderMode"), new ConceptDataFlowModeId("jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode"))));
         Program program = builder.buildProgram(getNodeById("2955426575105884969"));
@@ -70,7 +75,7 @@ public class TestProgramWithModeSpecified_Test extends BaseTransformationTest {
       });
     }
     public void test_testEmptyInstructionsWithModeSpecified() throws Exception {
-      runWithinCommand(() -> addNodeById("2955426575105884967"));
+      initTestNodes();
       runWithinCommand(() -> {
         MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Collections.<IDataFlowModeId>emptyList()));
         Program program = builder.buildProgram(getNodeById("2955426575105884969"));

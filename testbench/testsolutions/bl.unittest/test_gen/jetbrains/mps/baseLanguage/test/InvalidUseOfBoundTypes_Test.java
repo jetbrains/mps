@@ -95,8 +95,12 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeInvalidUseOfBoundTypeCheck6923385624927426896() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4632498131795747044", "4632498131795771218", "4632498131795771483", "4632498131795771942", "4632498131795772428", "4632498131795772932", "4632498131795773519");
+    }
 
+    public void test_NodeInvalidUseOfBoundTypeCheck6923385624927426896() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451229232");
         SNode operation = getRealNodeById("6923385624927426896");
@@ -104,7 +108,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4632498131795767328() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4632498131795753567");
         SNode operation = getRealNodeById("4632498131795767328");
@@ -112,7 +115,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeInvalidUseOfBoundTypeCheck6923385624929530242() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451230402");
         SNode operation = getRealNodeById("6923385624929530242");
@@ -120,7 +122,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4632498131795771260() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4632498131795771253");
         SNode operation = getRealNodeById("4632498131795771260");
@@ -128,7 +129,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeInvalidUseOfBoundTypeCheck6923385624928690780() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451228926");
         SNode operation = getRealNodeById("6923385624928690780");
@@ -136,7 +136,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4632498131795771535() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4632498131795771528");
         SNode operation = getRealNodeById("4632498131795771535");
@@ -144,7 +143,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeInvalidUseOfBoundTypeCheck6405539316368246786() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4632498131795772275");
         SNode operation = getRealNodeById("6405539316368246786");
@@ -152,7 +150,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4632498131795772004() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4632498131795771997");
         SNode operation = getRealNodeById("4632498131795772004");
@@ -160,7 +157,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeInvalidUseOfBoundTypeCheck6405539316368298938() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4632498131795772705");
         SNode operation = getRealNodeById("6405539316368298938");
@@ -168,7 +164,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4632498131795772509() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4632498131795772500");
         SNode operation = getRealNodeById("4632498131795772509");
@@ -176,7 +171,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeInvalidUseOfBoundTypeCheck6405539316368298991() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4632498131795773230");
         SNode operation = getRealNodeById("6405539316368298991");
@@ -184,7 +178,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4632498131795773025() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4632498131795773016");
         SNode operation = getRealNodeById("4632498131795773025");
@@ -192,7 +185,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4632498131795773624() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4632498131795773615");
         SNode operation = getRealNodeById("4632498131795773624");
@@ -200,7 +192,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeInvalidUseOfBoundTypeCheck6923385624927141945() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451231649");
         SNode operation = getRealNodeById("6923385624927141945");
@@ -208,7 +199,6 @@ public class InvalidUseOfBoundTypes_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeInvalidUseOfBoundTypeCheck6405539316368313510() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4632498131795796084");
         SNode operation = getRealNodeById("6405539316368313510");

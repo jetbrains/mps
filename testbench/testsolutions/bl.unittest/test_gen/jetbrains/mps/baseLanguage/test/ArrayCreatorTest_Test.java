@@ -54,8 +54,12 @@ public class ArrayCreatorTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck1100850602766327583() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1100850602766276655");
+    }
 
+    public void test_NodeErrorCheck1100850602766327583() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1100850602766324278");
         SNode operation = getRealNodeById("1100850602766327583");
@@ -63,7 +67,6 @@ public class ArrayCreatorTest_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck1100850602766335141() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1100850602766329249");
         SNode operation = getRealNodeById("1100850602766335141");
@@ -71,7 +74,6 @@ public class ArrayCreatorTest_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck1100850602766345812() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1100850602766336178");
         SNode operation = getRealNodeById("1100850602766345812");
@@ -79,7 +81,6 @@ public class ArrayCreatorTest_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck1100850602766347329() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1100850602766342464");
         SNode operation = getRealNodeById("1100850602766347329");
@@ -87,7 +88,6 @@ public class ArrayCreatorTest_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck1100850602766276669() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1100850602766276657");
         SNode operation = getRealNodeById("1100850602766276669");

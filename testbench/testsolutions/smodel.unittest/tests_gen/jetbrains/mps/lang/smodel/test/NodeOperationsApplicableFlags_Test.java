@@ -54,8 +54,13 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6410670351275222996");
+    }
+
     public void test_testApplicableSetsDoNotIntersect() throws Exception {
-      runWithinCommand(() -> addNodeById("6410670351275222996"));
+      initTestNodes();
       runWithinCommand(() -> {
         List<SConcept> allConcepts = Sequence.fromIterable(TestBody.this.getAllNodeOperations()).toList();
         final SNode dtString = SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983041843"), SNodeOperations.getModel(getNodeById("6410670351275225853")).getRepository());
@@ -83,7 +88,7 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
       });
     }
     public void test_allConceptsAreIncludedInTest() throws Exception {
-      runWithinCommand(() -> addNodeById("6410670351275222996"));
+      initTestNodes();
       runWithinCommand(() -> {
         Set<SLanguage> allLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), LanguageRegistry.getInstance(SNodeOperations.getModel(getNodeById("6410670351275225853")).getRepository()).getAllLanguages());
         Assert.assertTrue(SetSequence.fromSet(allLanguages).contains(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel")));

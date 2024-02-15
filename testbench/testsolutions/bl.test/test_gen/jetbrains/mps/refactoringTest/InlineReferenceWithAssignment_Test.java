@@ -38,11 +38,13 @@ public class InlineReferenceWithAssignment_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053266542", "1230053266566");
+    }
+
     public void test_InlineReferenceWithAssignment() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053266542");
-        addNodeById("1230053266566");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineVariableRefactoring ref = InlineVariableRefactoring.createRefactoring(getNodeById("1230053266560"));
         ref.doRefactoring();

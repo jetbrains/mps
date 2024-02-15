@@ -43,11 +43,13 @@ public class ChangeReturningType_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052903027", "1230052903036");
+    }
+
     public void test_ChangeReturningType() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052903027");
-        addNodeById("1230052903036");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("1230052903029"));
         SLinkOperations.setTarget(params.getDeclaration(), LINKS.returnType$5xoi, SNodeOperations.copyNode(getNodeById("1188338037704648623")));

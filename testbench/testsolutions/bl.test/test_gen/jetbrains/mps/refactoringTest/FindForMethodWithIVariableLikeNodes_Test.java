@@ -41,11 +41,13 @@ public class FindForMethodWithIVariableLikeNodes_Test extends BaseTransformation
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1300615610528534003", "1300615610528534193");
+    }
+
     public void test_FindForMethodWithIVariableLikeNodesTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1300615610528534003");
-        addNodeById("1300615610528534193");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1300615610528534019")));
         params.setName("foo");

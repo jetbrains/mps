@@ -38,11 +38,13 @@ public class InlineWithoutDeclarationDeletion_Test extends BaseTransformationTes
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053266583", "1230053266604");
+    }
+
     public void test_inlineWithoutDeclarationDeletion() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053266583");
-        addNodeById("1230053266604");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineVariableRefactoring ref = InlineVariableRefactoring.createRefactoring(getNodeById("1230053266591"));
         ref.doRefactoring();

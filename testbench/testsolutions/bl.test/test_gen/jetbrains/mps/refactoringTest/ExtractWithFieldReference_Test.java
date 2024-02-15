@@ -40,11 +40,13 @@ public class ExtractWithFieldReference_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7475692990584612120", "7475692990584612155");
+    }
+
     public void test_extractFromStatements() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7475692990584612120");
-        addNodeById("7475692990584612155");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("7475692990584612129")));
         params.setName("bar");

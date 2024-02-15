@@ -33,11 +33,13 @@ public class MPS_36509_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7037818788705054390", "7037818788705056702");
+    }
+
     public void test_NodeMatcher() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7037818788705054390");
-        addNodeById("7037818788705056702");
-      });
+      initTestNodes();
       runWithinCommand(() -> Assert.assertFalse(new SNodeMatcher().match(getNodeById("7037818788705056569"), getNodeById("7037818788705056844"))));
     }
 

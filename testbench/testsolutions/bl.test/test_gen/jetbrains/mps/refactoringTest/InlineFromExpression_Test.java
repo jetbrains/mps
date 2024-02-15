@@ -38,11 +38,13 @@ public class InlineFromExpression_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052989173", "1230052989215");
+    }
+
     public void test_InlineFromExpression() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052989173");
-        addNodeById("1230052989215");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230052989209"));
         ref.doRefactor();

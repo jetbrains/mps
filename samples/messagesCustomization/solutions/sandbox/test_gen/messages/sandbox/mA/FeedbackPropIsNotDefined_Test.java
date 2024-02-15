@@ -35,8 +35,12 @@ public class FeedbackPropIsNotDefined_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck4631579825415184834() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7019192671317644657");
+    }
 
+    public void test_NodeErrorCheck4631579825415184834() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7019192671317644658");
         SNode operation = getRealNodeById("4631579825415184834");

@@ -72,8 +72,12 @@ public class WhileCondition_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeUnreachableNodeErrorCheck8011059391272834211() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8011059391272834193", "8011059391272834214", "8011059391272834236", "8011059391272834276", "8011059391272834312");
+    }
 
+    public void test_NodeUnreachableNodeErrorCheck8011059391272834211() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272834206");
         SNode operation = getRealNodeById("8011059391272834211");
@@ -81,7 +85,6 @@ public class WhileCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnreachableNodeErrorCheck8011059391272834233() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272834228");
         SNode operation = getRealNodeById("8011059391272834233");
@@ -89,7 +92,6 @@ public class WhileCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8011059391272842694() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272842690");
         SNode operation = getRealNodeById("8011059391272842694");
@@ -97,7 +99,6 @@ public class WhileCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8011059391272842697() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272842690");
         SNode operation = getRealNodeById("8011059391272842697");
@@ -105,7 +106,6 @@ public class WhileCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnreachableNodeErrorCheck8011059391272834273() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272834268");
         SNode operation = getRealNodeById("8011059391272834273");
@@ -113,7 +113,6 @@ public class WhileCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnreachableNodeErrorCheck8011059391272846923() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272834294");
         SNode operation = getRealNodeById("8011059391272846923");
@@ -121,7 +120,6 @@ public class WhileCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8011059391272843819() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272843815");
         SNode operation = getRealNodeById("8011059391272843819");
@@ -129,7 +127,6 @@ public class WhileCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8011059391272843822() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272843815");
         SNode operation = getRealNodeById("8011059391272843822");
@@ -137,7 +134,6 @@ public class WhileCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8011059391272847984() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272847978");
         SNode operation = getRealNodeById("8011059391272847984");
@@ -145,7 +141,6 @@ public class WhileCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8011059391272847988() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272847975");
         SNode operation = getRealNodeById("8011059391272847988");

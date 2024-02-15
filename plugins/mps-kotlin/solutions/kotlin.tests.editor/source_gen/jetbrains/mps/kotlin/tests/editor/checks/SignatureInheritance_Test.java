@@ -71,8 +71,12 @@ public class SignatureInheritance_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeOverridesNothingCheck5338175760791531931() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4636648552480821100");
+    }
 
+    public void test_NodeOverridesNothingCheck5338175760791531931() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4636648552480821521");
         SNode operation = getRealNodeById("5338175760791531931");
@@ -80,7 +84,6 @@ public class SignatureInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeHidesMemberOfSupertypeCheck5338175760791532345() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4636648552480822194");
         SNode operation = getRealNodeById("5338175760791532345");
@@ -88,7 +91,6 @@ public class SignatureInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeOverridesNothingCheck5338175760791532664() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4636648552480824207");
         SNode operation = getRealNodeById("5338175760791532664");
@@ -96,7 +98,6 @@ public class SignatureInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeClassIsNotAbstractAndCheck5338175760791533016() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4636648552480824206");
         SNode operation = getRealNodeById("5338175760791533016");
@@ -104,7 +105,6 @@ public class SignatureInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeOverridesNothingCheck736445804110045958() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("736445804110016113");
         SNode operation = getRealNodeById("736445804110045958");
@@ -112,7 +112,6 @@ public class SignatureInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeClassIsNotAbstractAndCheck736445804114114499() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("736445804110016110");
         SNode operation = getRealNodeById("736445804114114499");
@@ -120,7 +119,6 @@ public class SignatureInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeHidesMemberOfSupertypeCheck736445804110053430() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("736445804110046366");
         SNode operation = getRealNodeById("736445804110053430");
@@ -128,7 +126,6 @@ public class SignatureInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeClassIsNotAbstractAndCheck736445804116069695() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("736445804110002867");
         SNode operation = getRealNodeById("736445804116069695");
@@ -136,7 +133,6 @@ public class SignatureInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4636648552480822672() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4636648552480821104");
         SNode operation = getRealNodeById("4636648552480822672");

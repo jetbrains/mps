@@ -33,8 +33,13 @@ public class hasSameSignatureTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5157939743593407746");
+    }
+
     public void test_list() throws Exception {
-      runWithinCommand(() -> addNodeById("5157939743593407746"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertTrue((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(getNodeById("5157939743593407754"), getNodeById("5157939743593407754"))));
     }
 

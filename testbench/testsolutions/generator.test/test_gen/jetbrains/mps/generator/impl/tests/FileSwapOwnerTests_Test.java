@@ -86,8 +86,13 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1732396662099564446");
+    }
+
     public void test_justWrite() throws Exception {
-      runWithinCommand(() -> addNodeById("1732396662099564446"));
+      initTestNodes();
       runWithinCommand(() -> {
         try {
           SNode node = FileSwapOwner.writeAndReadNode(getNodeById("1732396662099564449"));
@@ -103,7 +108,7 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
       });
     }
     public void test_stringUserObjects() throws Exception {
-      runWithinCommand(() -> addNodeById("1732396662099564446"));
+      initTestNodes();
       runWithinCommand(() -> {
         Map<Object, Object> userObjects = MapSequence.fromMap(new HashMap<Object, Object>());
         MapSequence.fromMap(userObjects).put("1", "1");
@@ -112,7 +117,7 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
       });
     }
     public void test_intUserObjects() throws Exception {
-      runWithinCommand(() -> addNodeById("1732396662099564446"));
+      initTestNodes();
       runWithinCommand(() -> {
         Map<Object, Object> userObjects = MapSequence.fromMap(new LinkedHashMap<Object, Object>(16, (float) 0.75, false));
         MapSequence.fromMap(userObjects).put(2, "2");
@@ -122,7 +127,7 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
       });
     }
     public void test_charUserObjects() throws Exception {
-      runWithinCommand(() -> addNodeById("1732396662099564446"));
+      initTestNodes();
       runWithinCommand(() -> {
         Map<Object, Object> userObjects = MapSequence.fromMap(new LinkedHashMap<Object, Object>(16, (float) 0.75, false));
         MapSequence.fromMap(userObjects).put('1', '1');
@@ -132,7 +137,7 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
       });
     }
     public void test_numberUserObjects() throws Exception {
-      runWithinCommand(() -> addNodeById("1732396662099564446"));
+      initTestNodes();
       runWithinCommand(() -> {
         Map<Object, Object> userObjects = MapSequence.fromMap(new LinkedHashMap<Object, Object>(16, (float) 0.75, false));
         MapSequence.fromMap(userObjects).put(0.5, 0.5);
@@ -144,7 +149,7 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
       });
     }
     public void test_booleanUserObjects() throws Exception {
-      runWithinCommand(() -> addNodeById("1732396662099564446"));
+      initTestNodes();
       runWithinCommand(() -> {
         Map<Object, Object> userObjects = MapSequence.fromMap(new LinkedHashMap<Object, Object>(16, (float) 0.75, false));
         MapSequence.fromMap(userObjects).put(false, false);
@@ -155,7 +160,7 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
       });
     }
     public void test_mpsUserObjects() throws Exception {
-      runWithinCommand(() -> addNodeById("1732396662099564446"));
+      initTestNodes();
       runWithinCommand(() -> {
         Map<Object, Object> userObjects = MapSequence.fromMap(new LinkedHashMap<Object, Object>(16, (float) 0.75, false));
         MapSequence.fromMap(userObjects).put(new SNodePointer(getNodeById("1732396662099564449")), new SNodePointer(getNodeById("1732396662099564449")));
@@ -166,7 +171,7 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
       });
     }
     public void test_baseLanguageStructure() throws Exception {
-      runWithinCommand(() -> addNodeById("1732396662099564446"));
+      initTestNodes();
       runWithinCommand(() -> {
         SModel sampleModel = PersistenceFacade.getInstance().createModelReference("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)").resolve(myProject.getRepository());
         SModel resultModel = FileSwapOwner.writeAndReadModel(sampleModel);
@@ -175,7 +180,7 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
       });
     }
     public void test_testOverloadedOperatorsSandbox() throws Exception {
-      runWithinCommand(() -> addNodeById("1732396662099564446"));
+      initTestNodes();
       runWithinCommand(() -> {
         SModel sampleModel = PersistenceFacade.getInstance().createModelReference("r:3ad93d2f-47fe-4070-8a77-383dab3a6def(jetbrains.mps.baseLanguage.overloadedOerators.sandbox.test)").resolve(myProject.getRepository());
         SModel resultModel = FileSwapOwner.writeAndReadModel(sampleModel);
@@ -184,7 +189,7 @@ public class FileSwapOwnerTests_Test extends BaseTransformationTest {
       });
     }
     public void test_testSkipNodesWhileSaving() throws Exception {
-      runWithinCommand(() -> addNodeById("1732396662099564446"));
+      initTestNodes();
       runWithinCommand(() -> {
         Map<Object, Object> userObjects = MapSequence.fromMap(new LinkedHashMap<Object, Object>(16, (float) 0.75, false));
         MapSequence.fromMap(userObjects).put("1", "1");

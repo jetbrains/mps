@@ -40,11 +40,13 @@ public class ExtractMethodWithOutputVaryableFromExpression_Test extends BaseTran
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8155843501978461843", "8155843501978461870");
+    }
+
     public void test_ExtractMethodWithOutputVaryableFromStatementTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8155843501978461843");
-        addNodeById("8155843501978461870");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("8155843501978461854")));
         params.setName("foo");

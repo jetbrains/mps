@@ -43,14 +43,16 @@ public class AddThrowDeclaration_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052902926", "1230052902935");
+    }
+
     public void test_AddThrowDeclaration() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052902926");
-        addNodeById("1230052902935");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("1230052902928"));
-        ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.throwsItem$CdW$)).addElement(_quotation_createNode_njbq9a_a0a1a0a1a3g());
+        ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.throwsItem$CdW$)).addElement(_quotation_createNode_njbq9a_a0a1a0a1a5g());
         ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, getNodeById("1230052902928"));
         ref.doRefactoring();
         {
@@ -61,7 +63,7 @@ public class AddThrowDeclaration_Test extends BaseTransformationTest {
       });
     }
 
-    private static SNode _quotation_createNode_njbq9a_a0a1a0a1a3g() {
+    private static SNode _quotation_createNode_njbq9a_a0a1a0a1a5g() {
       SNode quotedNode_1 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
       quotedNode_1 = nb.getResult();

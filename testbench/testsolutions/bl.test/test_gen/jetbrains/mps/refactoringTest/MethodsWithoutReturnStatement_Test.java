@@ -40,11 +40,13 @@ public class MethodsWithoutReturnStatement_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052642101", "1230052642118");
+    }
+
     public void test_checkReturnWithoutReturn() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052642101");
-        addNodeById("1230052642118");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052642110")));
         params.setName("foo");

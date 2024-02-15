@@ -43,11 +43,13 @@ public class RemoveUsedParameter_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6221851280922498863", "6221851280922498874");
+    }
+
     public void test_RemoveParameter() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("6221851280922498863");
-        addNodeById("6221851280922498874");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("6221851280922498867"));
         ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).clear();

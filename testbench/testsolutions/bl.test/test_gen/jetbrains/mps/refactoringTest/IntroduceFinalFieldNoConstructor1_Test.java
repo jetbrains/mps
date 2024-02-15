@@ -40,11 +40,13 @@ public class IntroduceFinalFieldNoConstructor1_Test extends BaseTransformationTe
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8274035912948518149", "8274035912948518164");
+    }
+
     public void test_IntroduceFinalField() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8274035912948518149");
-        addNodeById("8274035912948518164");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         IntroduceFieldRefactoring refactoring = new IntroduceFieldRefactoring();
         refactoring.init(getNodeById("8274035912948518160"), null);

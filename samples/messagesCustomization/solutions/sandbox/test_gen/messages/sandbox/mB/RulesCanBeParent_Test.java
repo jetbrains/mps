@@ -43,8 +43,12 @@ public class RulesCanBeParent_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck2802122285522113977() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2802122285522113963");
+    }
 
+    public void test_ErrorMessagesCheck2802122285522113977() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2802122285522113964");
         SNode operation = getRealNodeById("2802122285522113977");
@@ -52,7 +56,6 @@ public class RulesCanBeParent_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnknownRuleCheck2802122285522263628() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2802122285522113964");
         SNode operation = getRealNodeById("2802122285522263628");

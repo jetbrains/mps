@@ -51,8 +51,12 @@ public class RulesCanBeChild1_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeUnknownRuleCheck2884486869351397457() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3071492597344700469", "2884486869351415705", "2884486869351538471");
+    }
 
+    public void test_NodeUnknownRuleCheck2884486869351397457() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3071492597344700470");
         SNode operation = getRealNodeById("2884486869351397457");
@@ -60,7 +64,6 @@ public class RulesCanBeChild1_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2884486869351538465() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2884486869351415706");
         SNode operation = getRealNodeById("2884486869351538465");
@@ -68,7 +71,6 @@ public class RulesCanBeChild1_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2884486869351538492() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2884486869351538472");
         SNode operation = getRealNodeById("2884486869351538492");
@@ -76,7 +78,6 @@ public class RulesCanBeChild1_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeparentHasTheSameNameCheck2802122285521967426() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2884486869351538475");
         SNode operation = getRealNodeById("2802122285521967426");

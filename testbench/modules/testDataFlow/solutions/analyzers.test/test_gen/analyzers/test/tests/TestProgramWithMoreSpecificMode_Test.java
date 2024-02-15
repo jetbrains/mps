@@ -48,8 +48,13 @@ public class TestProgramWithMoreSpecificMode_Test extends BaseTransformationTest
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7078910619969225966");
+    }
+
     public void test_testLessSpecificMode() throws Exception {
-      runWithinCommand(() -> addNodeById("7078910619969225966"));
+      initTestNodes();
       runWithinCommand(() -> {
         MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Collections.singletonList(new ConceptDataFlowModeId("jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode"))));
         Program program = builder.buildProgram(getNodeById("7078910619969226058"));
@@ -57,7 +62,7 @@ public class TestProgramWithMoreSpecificMode_Test extends BaseTransformationTest
       });
     }
     public void test_testMoreSpecificMode() throws Exception {
-      runWithinCommand(() -> addNodeById("7078910619969225966"));
+      initTestNodes();
       runWithinCommand(() -> {
         MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Arrays.asList(new ConceptDataFlowModeId("jetbrains.mps.testCustomDataFlow.structure.IntraProceduralSpecific_BuilderMode"), new ConceptDataFlowModeId("jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode"))));
         Program program = builder.buildProgram(getNodeById("7078910619969226058"));

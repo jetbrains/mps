@@ -41,15 +41,19 @@ public class ForLoop_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1217271585525");
+    }
+
     public void test_ForLoop() throws Exception {
-      runWithinCommand(() -> addNodeById("1217271585525"));
+      initTestNodes();
       runWithinCommand(() -> {
         // Check statement was moved to node annotation
         // check getNodeById(string):node<> error messages
       });
     }
     public void test_ErrorMessagesCheck2501421320959199424() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1215444253196");
         SNode operation = getRealNodeById("2501421320959199424");

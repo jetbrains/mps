@@ -44,11 +44,13 @@ public class TwoParametersWithSameType_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052944133", "1230052944148");
+    }
+
     public void test_TwoParametersWithSameType() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052944133");
-        addNodeById("1230052944148");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("1230052944135"));
         SPropertyOperations.assign(ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).first(), PROPS.name$MnvL, "arg1");

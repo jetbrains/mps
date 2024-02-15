@@ -38,11 +38,13 @@ public class ConvertAnonymousWithParameterReference_Test extends BaseTransformat
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("995475547969867889", "995475547969867939");
+    }
+
     public void test_WithParameterReferenceTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("995475547969867889");
-        addNodeById("995475547969867939");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         new ConvertAnonymousRefactoring(getNodeById("995475547969867898"), "MyComparable").doRefactor();
         {

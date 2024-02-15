@@ -55,8 +55,12 @@ public class PackageProtectedField_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeFieldIsNeverUsedCheck7938578788783522703() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7938578788783522697");
+    }
 
+    public void test_NodeFieldIsNeverUsedCheck7938578788783522703() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7938578788783522699");
         SNode operation = getRealNodeById("7938578788783522703");
@@ -64,7 +68,6 @@ public class PackageProtectedField_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeFieldIsAssignedButNeverCheck7938578788783522709() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7938578788783522705");
         SNode operation = getRealNodeById("7938578788783522709");
@@ -72,7 +75,6 @@ public class PackageProtectedField_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeFieldIsNeverAssignedCheck7938578788783522715() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7938578788783522711");
         SNode operation = getRealNodeById("7938578788783522715");
@@ -80,7 +82,6 @@ public class PackageProtectedField_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7938578788783522719() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7938578788783522698");
         SNode operation = getRealNodeById("7938578788783522719");
@@ -88,7 +89,6 @@ public class PackageProtectedField_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck7938578788783522729() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7938578788783522727");
         SNode operation = getRealNodeById("7938578788783522729");

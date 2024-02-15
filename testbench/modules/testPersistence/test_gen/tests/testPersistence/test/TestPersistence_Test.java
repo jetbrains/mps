@@ -77,7 +77,13 @@ public class TestPersistence_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_testLastVersionIndexing() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         TestPersistenceHelper helper = new TestPersistenceHelper(myProject.getRepository());
         CollectCallback c = new CollectCallback();
@@ -97,6 +103,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
       });
     }
     public void test_testPersistenceReadWrite() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         // tests write and read in each supported persistence, check that model is not changed after write/read cycle
         TestPersistenceHelper helper = new TestPersistenceHelper(myProject.getRepository());
@@ -113,6 +120,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
       });
     }
     public void test_testPersistenceUpgrade() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         TestPersistenceHelper helper = new TestPersistenceHelper(myProject.getRepository());
 

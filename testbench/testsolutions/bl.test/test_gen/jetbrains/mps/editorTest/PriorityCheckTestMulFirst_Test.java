@@ -45,11 +45,13 @@ public class PriorityCheckTestMulFirst_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("818296778579227382", "818296778579227391");
+    }
+
     public void test_testRotation() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("818296778579227382");
-        addNodeById("818296778579227391");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode op = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfe476b758fL, "jetbrains.mps.baseLanguage.structure.MulExpression"));
         SNode constant = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant"));

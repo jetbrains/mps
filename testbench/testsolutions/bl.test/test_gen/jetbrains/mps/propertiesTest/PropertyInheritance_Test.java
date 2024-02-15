@@ -59,8 +59,12 @@ public class PropertyInheritance_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck2793586790994231859() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6115392061227158478", "6115392061227158474", "6115392061227159338", "6115392061233268437", "6115392061233268754");
+    }
 
+    public void test_ErrorMessagesCheck2793586790994231859() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227158484");
         SNode operation = getRealNodeById("2793586790994231859");
@@ -68,7 +72,6 @@ public class PropertyInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTryingToAssignWeakerPrivilegesCheck6115392061227170451() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227159638");
         SNode operation = getRealNodeById("6115392061227170451");
@@ -76,7 +79,6 @@ public class PropertyInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheMethodReturnTypeIsCheck6115392061227172643() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227170557");
         SNode operation = getRealNodeById("6115392061227172643");
@@ -84,7 +86,6 @@ public class PropertyInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTryingToAssignWeakerPrivilegesCheck6115392061228741124() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227172800");
         SNode operation = getRealNodeById("6115392061228741124");
@@ -92,7 +93,6 @@ public class PropertyInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck6115392061228741318() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227159373");
         SNode operation = getRealNodeById("6115392061228741318");
@@ -100,7 +100,6 @@ public class PropertyInheritance_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheMethodCannotOverrideCheck6115392061233415628() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061233268919");
         SNode operation = getRealNodeById("6115392061233415628");

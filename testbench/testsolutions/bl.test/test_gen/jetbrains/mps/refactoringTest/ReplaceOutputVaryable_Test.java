@@ -41,11 +41,13 @@ public class ReplaceOutputVaryable_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8155843501977551480", "8155843501977560834");
+    }
+
     public void test_ReplaceOutputVaryableTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8155843501977551480");
-        addNodeById("8155843501977560834");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("8155843501977560799")));
         params.setName("foo");

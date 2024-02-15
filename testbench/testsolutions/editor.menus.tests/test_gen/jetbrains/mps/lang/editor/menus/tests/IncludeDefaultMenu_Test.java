@@ -52,8 +52,12 @@ public class IncludeDefaultMenu_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeConceptShouldBeSpecifiedCheck8095208975669727090() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8095208975669432952", "8095208975669728862", "8095208975669729644", "8095208975669729699", "8095208975669729772");
+    }
 
+    public void test_NodeConceptShouldBeSpecifiedCheck8095208975669727090() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8095208975669432956");
         SNode operation = getRealNodeById("8095208975669727090");
@@ -61,7 +65,6 @@ public class IncludeDefaultMenu_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeConceptShouldBeSpecifiedCheck8095208975669728885() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8095208975669728882");
         SNode operation = getRealNodeById("8095208975669728885");
@@ -69,7 +72,6 @@ public class IncludeDefaultMenu_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeConceptShouldBeSpecifiedCheck8095208975669729693() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8095208975669729682");
         SNode operation = getRealNodeById("8095208975669729693");
@@ -77,7 +79,6 @@ public class IncludeDefaultMenu_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeConceptShouldBeSpecifiedCheck8095208975669729758() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8095208975669729747");
         SNode operation = getRealNodeById("8095208975669729758");
@@ -85,7 +86,6 @@ public class IncludeDefaultMenu_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeConceptShouldBeSpecifiedCheck8095208975669730924() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8095208975669730566");
         SNode operation = getRealNodeById("8095208975669730924");

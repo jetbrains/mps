@@ -38,8 +38,13 @@ public class FindInputVariables_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052444310");
+    }
+
     public void test_inputVariablesTest() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052444310"));
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringAnalyzer a = new ExtractMethodRefactoringAnalyzer(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052444319"), getNodeById("1230052444324"), getNodeById("1230052444331")));
         List<MethodParameter> vars = a.getInputVariables();

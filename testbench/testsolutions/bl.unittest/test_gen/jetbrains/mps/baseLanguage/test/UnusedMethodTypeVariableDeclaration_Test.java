@@ -51,8 +51,12 @@ public class UnusedMethodTypeVariableDeclaration_Test extends BaseTransformation
       super(owner);
     }
 
-    public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624929723209() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7430872850884076051");
+    }
 
+    public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624929723209() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451229489");
         SNode operation = getRealNodeById("6923385624929723209");
@@ -60,7 +64,6 @@ public class UnusedMethodTypeVariableDeclaration_Test extends BaseTransformation
       });
     }
     public void test_NodeUnusedVariableWarningCheck215889526513017511() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7430872850884076110");
         SNode operation = getRealNodeById("215889526513017511");
@@ -68,7 +71,6 @@ public class UnusedMethodTypeVariableDeclaration_Test extends BaseTransformation
       });
     }
     public void test_NodeTypeVariableIsNotNeededCheck6923385624928495830() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451222404");
         SNode operation = getRealNodeById("6923385624928495830");
@@ -76,7 +78,6 @@ public class UnusedMethodTypeVariableDeclaration_Test extends BaseTransformation
       });
     }
     public void test_ErrorMessagesCheck7430872850884076184() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7430872850884076107");
         SNode operation = getRealNodeById("7430872850884076184");

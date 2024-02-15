@@ -44,11 +44,13 @@ public class ChangeParameterName_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052943818", "1230052943833");
+    }
+
     public void test_ChangeParameterName() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052943818");
-        addNodeById("1230052943833");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("1230052943820"));
         SPropertyOperations.assign(ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).first(), PROPS.name$MnvL, "b");

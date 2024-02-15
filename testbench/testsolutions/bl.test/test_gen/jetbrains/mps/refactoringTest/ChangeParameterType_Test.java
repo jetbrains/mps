@@ -43,14 +43,16 @@ public class ChangeParameterType_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052943884", "1230052943897");
+    }
+
     public void test_ChangeParameterType() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052943884");
-        addNodeById("1230052943897");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("1230052943886"));
-        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).first(), LINKS.type$a1UY, _quotation_createNode_69x5rj_a0b0a0b0d6());
+        SLinkOperations.setTarget(ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).first(), LINKS.type$a1UY, _quotation_createNode_69x5rj_a0b0a0b0f6());
         ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, getNodeById("1230052943886"));
         ref.doRefactoring();
         {
@@ -61,7 +63,7 @@ public class ChangeParameterType_Test extends BaseTransformationTest {
       });
     }
 
-    private static SNode _quotation_createNode_69x5rj_a0b0a0b0d6() {
+    private static SNode _quotation_createNode_69x5rj_a0b0a0b0f6() {
       SNode quotedNode_1 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11d47da71ecL, "StringType"));
       quotedNode_1 = nb.getResult();

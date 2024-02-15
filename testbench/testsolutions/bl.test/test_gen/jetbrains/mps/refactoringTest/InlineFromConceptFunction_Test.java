@@ -44,11 +44,13 @@ public class InlineFromConceptFunction_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053266366", "1230053266380");
+    }
+
     public void test_deinition() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053266366");
-        addNodeById("1230053266380");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineVariableRefactoring ref = new InlineVariableAssignmentRefactoring(getNodeById("1230053266370"));
         ref.doRefactoring();
@@ -60,10 +62,7 @@ public class InlineFromConceptFunction_Test extends BaseTransformationTest {
       });
     }
     public void test_reference() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053266366");
-        addNodeById("1230053266380");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineVariableRefactoring ref = new InlineVariableReferenceRefactoring(getNodeById("1230053266377"));
         ref.doRefactoring();

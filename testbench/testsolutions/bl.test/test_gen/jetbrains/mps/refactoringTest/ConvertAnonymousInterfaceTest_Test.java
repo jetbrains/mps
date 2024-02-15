@@ -38,12 +38,13 @@ public class ConvertAnonymousInterfaceTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6791439617122308113", "6791439617122308116", "6791439617122315466");
+    }
+
     public void test_InterfaceTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("6791439617122308113");
-        addNodeById("6791439617122308116");
-        addNodeById("6791439617122315466");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         new ConvertAnonymousRefactoring(getNodeById("6791439617122308134"), "MyI").doRefactor();
         {

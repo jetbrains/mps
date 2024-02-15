@@ -59,15 +59,19 @@ public class AnonymousClass_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1217271587076");
+    }
+
     public void test_AnonymousClass() throws Exception {
-      runWithinCommand(() -> addNodeById("1217271587076"));
+      initTestNodes();
       runWithinCommand(() -> {
         // Check statement was moved to node annotation
         // check getNodeById(string):node<> error messages
       });
     }
     public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624927142051() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6090235207266878331");
         SNode operation = getRealNodeById("6923385624927142051");
@@ -75,7 +79,6 @@ public class AnonymousClass_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnusedVariableWarningCheck215889526511035151() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1215444376234");
         SNode operation = getRealNodeById("215889526511035151");
@@ -83,7 +86,6 @@ public class AnonymousClass_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624929101294() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6090235207266878711");
         SNode operation = getRealNodeById("6923385624929101294");
@@ -91,7 +93,6 @@ public class AnonymousClass_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnusedVariableWarningCheck215889526511035331() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6090235207266878440");
         SNode operation = getRealNodeById("215889526511035331");
@@ -99,7 +100,6 @@ public class AnonymousClass_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2501421320959199514() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1215444376214");
         SNode operation = getRealNodeById("2501421320959199514");

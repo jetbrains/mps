@@ -38,13 +38,13 @@ public class MoveMethodWithParameters_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5142438244427169027", "5142438244427184189", "5142438244427184178", "5142438244427184202");
+    }
+
     public void test_check() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("5142438244427169027");
-        addNodeById("5142438244427184189");
-        addNodeById("5142438244427184178");
-        addNodeById("5142438244427184202");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         MoveStaticMethodRefactoring ref = new MoveStaticMethodRefactoring(getNodeById("5142438244427169034"), getNodeById("5142438244427184181"));
         ref.doRefactoring();

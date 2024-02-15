@@ -37,8 +37,12 @@ public class StaticMethodCallTypeInference_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck7794145398370202377() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7794145398370142247");
+    }
 
+    public void test_ErrorMessagesCheck7794145398370202377() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5565533445198664262");
         SNode operation = getRealNodeById("7794145398370202377");

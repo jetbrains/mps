@@ -35,8 +35,12 @@ public class FeedbackNoRefInObligatoryRole_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck7019192671317970783() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7019192671317968619");
+    }
 
+    public void test_NodeErrorCheck7019192671317970783() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7019192671317969474");
         SNode operation = getRealNodeById("7019192671317970783");

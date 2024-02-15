@@ -38,11 +38,13 @@ public class IntroduceVariableFromWildcards_Test extends BaseTransformationTest 
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6974242407276767366", "6974242407276777253");
+    }
+
     public void test_IntroduceVariableFromWildcardsTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("6974242407276767366");
-        addNodeById("6974242407276777253");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         IntroduceLocalVariableRefactoring refactoring = new IntroduceLocalVariableRefactoring();
         refactoring.init(getNodeById("6974242407276767373"), null);

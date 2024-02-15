@@ -42,11 +42,13 @@ public class ChangeMethodName_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052902978", "1230052902987");
+    }
+
     public void test_ChangeMethodName() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052902978");
-        addNodeById("1230052902987");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("1230052902980"));
         SPropertyOperations.assign(params.getDeclaration(), PROPS.name$MnvL, "foo");

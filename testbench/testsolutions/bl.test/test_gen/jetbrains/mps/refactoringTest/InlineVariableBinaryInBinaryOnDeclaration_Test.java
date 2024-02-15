@@ -38,11 +38,13 @@ public class InlineVariableBinaryInBinaryOnDeclaration_Test extends BaseTransfor
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6923327169066955758", "6923327169066955779");
+    }
+
     public void test_simpleInlineVariable() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("6923327169066955758");
-        addNodeById("6923327169066955779");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineVariableRefactoring ref = InlineVariableRefactoring.createRefactoring(getNodeById("6923327169066955767"));
         ref.doRefactoring();

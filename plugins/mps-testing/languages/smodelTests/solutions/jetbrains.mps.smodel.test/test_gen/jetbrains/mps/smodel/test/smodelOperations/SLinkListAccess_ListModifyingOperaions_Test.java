@@ -118,13 +118,13 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2282909602806268543", "2282909602806423211", "5546794005441580489", "5158784817733657690");
+    }
+
     public void test_attributeAddFirst() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertEquals(0, ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(getNodeById("3346087189435878788"))).count());
         ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(getNodeById("3346087189435878788"))).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation")));
@@ -132,12 +132,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_attributeAddFirst2() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode attributeToAdd = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation"));
         Assert.assertEquals(1, ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(getNodeById("5158784817733657701"))).count());
@@ -146,12 +141,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_attributeAddLast() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode attributeToAdd = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation"));
         Assert.assertEquals(1, ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(getNodeById("5158784817733657701"))).count());
@@ -160,12 +150,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_add() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode newChild = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL, "jetbrains.mps.lang.smodelTests.structure.Child"));
         Assert.assertNull(SNodeOperations.getParent(newChild));
@@ -175,12 +160,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_addAll() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         List<SNode> addition = ListSequence.fromListAndArray(new ArrayList<SNode>(), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL, "jetbrains.mps.lang.smodelTests.structure.Child")), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL, "jetbrains.mps.lang.smodelTests.structure.Child")));
         ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_0_n$IY7t)).addSequence(ListSequence.fromList(addition));
@@ -188,12 +168,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_addAllWithIndex() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode startNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL, "jetbrains.mps.lang.smodelTests.structure.Child"));
         SNode endNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL, "jetbrains.mps.lang.smodelTests.structure.Child"));
@@ -210,12 +185,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_addAllAtIndex0() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         // see MPS-30325
         List<SNode> addition = ListSequence.fromListAndArray(new ArrayList<SNode>(), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL, "jetbrains.mps.lang.smodelTests.structure.Child")), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x7a02788de4ab4dL, "jetbrains.mps.lang.smodelTests.structure.ChildSubConcept")));
@@ -228,12 +198,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_addFirst() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode added = ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL, "jetbrains.mps.lang.smodelTests.structure.Child")));
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).contains(added));
@@ -242,12 +207,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_addLast() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode added = ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fbfL, "jetbrains.mps.lang.smodelTests.structure.Child")));
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).contains(added));
@@ -256,12 +216,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_removeFromOriginalContainerOnAdd() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806423212"), LINKS.child_1_n$IYmu)).isNotEmpty());
         SNode toBeMoved = ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806423212"), LINKS.child_1_n$IYmu)).first();
@@ -273,12 +228,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_remove() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).isNotEmpty());
         SNode toBeRemoved = ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).first();
@@ -290,12 +240,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_removeAll() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Iterable<SNode> existingChildren = Sequence.fromArray(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).toGenericArray(SNode.class));
         Assert.assertTrue(Sequence.fromIterable(existingChildren).count() > 1);
@@ -304,12 +249,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_removeFirst() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).count() > 1);
         SNode toBeRemoved = ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).first();
@@ -318,12 +258,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_removeLast() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).count() > 1);
         SNode toBeRemoved = ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).last();
@@ -332,12 +267,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_removeAt() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).count() > 1);
         int index = 1;
@@ -348,12 +278,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_removeWhere() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         int initialSize = ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).count();
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).contains(getNodeById("2282909602806391310")));
@@ -364,12 +289,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_insert() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).count() > 1);
         int initialSize = ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).count();
@@ -382,12 +302,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_set() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).count() > 1);
         int index = 1;
@@ -401,12 +316,7 @@ public class SLinkListAccess_ListModifyingOperaions_Test extends BaseTransformat
       });
     }
     public void test_clear() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2282909602806268543");
-        addNodeById("2282909602806423211");
-        addNodeById("5546794005441580489");
-        addNodeById("5158784817733657690");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).isNotEmpty());
         ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2282909602806268544"), LINKS.child_1_n$IYmu)).clear();

@@ -44,12 +44,13 @@ public class ExtractDefaultClassifierMethodDeclaration_Test extends BaseTransfor
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052509259", "1230052509277", "1230052509301");
+    }
+
     public void test_extractFromMethod() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052509259");
-        addNodeById("1230052509277");
-        addNodeById("1230052509301");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052509264"), getNodeById("6195342755327949995")));
         params.setName("bar");
@@ -63,11 +64,7 @@ public class ExtractDefaultClassifierMethodDeclaration_Test extends BaseTransfor
       });
     }
     public void test_extractFromExecute() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052509259");
-        addNodeById("1230052509277");
-        addNodeById("1230052509301");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052509271")));
         params.setName("boo");

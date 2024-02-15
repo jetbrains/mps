@@ -56,20 +56,17 @@ public class SNodeGetReferenceOperation_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2906110183022090592", "2906110183022122665", "2906110183022122679");
+    }
+
     public void test_empty() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022090592");
-        addNodeById("2906110183022122665");
-        addNodeById("2906110183022122679");
-      });
+      initTestNodes();
       runWithinCommand(() -> Assert.assertNull(SNodeOperations.getReference(getNodeById("2906110183022090593"), LINKS.root$cBIX)));
     }
     public void test_byLinkDeclaration() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022090592");
-        addNodeById("2906110183022122665");
-        addNodeById("2906110183022122679");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode rootLinkDeclaration = SLinkOperations.findLinkDeclaration(LINKS.root$cBIX);
         SReference rootContainerReference = SNodeOperations.getReference(getNodeById("2906110183022122680"), LINKS.root$cBIX);
@@ -80,32 +77,24 @@ public class SNodeGetReferenceOperation_Test extends BaseTransformationTest {
         SReference leftChildReference = SNodeOperations.getReference(getNodeById("2906110183022122680"), LINKS.leftChild$f5Cu);
         Assert.assertEquals(getNodeById("2906110183022122667"), SLinkOperations.getTargetNode(leftChildReference));
         Assert.assertEquals(SLinkOperations.findLinkDeclaration(LINKS.leftChild$f5Cu), SLinkOperations.findLinkDeclaration(leftChildReference));
-        Assert.assertEquals(SPropertyOperations.getString(SLinkOperations.findLinkDeclaration(LINKS.leftChild$f5Cu), PROPS.role$Nsjf), check_l3bw6i_a9a0a1a4k(SLinkOperations.getRefLink(leftChildReference)));
+        Assert.assertEquals(SPropertyOperations.getString(SLinkOperations.findLinkDeclaration(LINKS.leftChild$f5Cu), PROPS.role$Nsjf), check_l3bw6i_a9a0a1a6k(SLinkOperations.getRefLink(leftChildReference)));
         Assert.assertNotNull(SLinkOperations.getResolveInfo(leftChildReference));
       });
     }
     public void test_bySpecializedLinkDeclaration() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022090592");
-        addNodeById("2906110183022122665");
-        addNodeById("2906110183022122679");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SReference refByOriginalLink = SNodeOperations.getReference(getNodeById("2906110183022122680"), LINKS.rightChild$f5Rv);
         Assert.assertEquals(getNodeById("2906110183022122670"), SLinkOperations.getTargetNode(refByOriginalLink));
         Assert.assertEquals(SLinkOperations.findLinkDeclaration(LINKS.rightChild$f5Rv), SLinkOperations.findLinkDeclaration(refByOriginalLink));
-        Assert.assertEquals(SPropertyOperations.getString(SLinkOperations.findLinkDeclaration(LINKS.rightChild$f5Rv), PROPS.role$Nsjf), check_l3bw6i_a3a0a1a5k(SLinkOperations.getRefLink(refByOriginalLink)));
+        Assert.assertEquals(SPropertyOperations.getString(SLinkOperations.findLinkDeclaration(LINKS.rightChild$f5Rv), PROPS.role$Nsjf), check_l3bw6i_a3a0a1a7k(SLinkOperations.getRefLink(refByOriginalLink)));
         Assert.assertNotNull(SLinkOperations.getResolveInfo(refByOriginalLink));
         SReference refBySpecializedLink = SNodeOperations.getReference(getNodeById("2906110183022122680"), LINKS.rightChild$f5Rv);
         Assert.assertEquals(refByOriginalLink, refBySpecializedLink);
       });
     }
     public void test_forNull() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022090592");
-        addNodeById("2906110183022122665");
-        addNodeById("2906110183022122679");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nullReferenceContainer = null;
         Assert.assertNull(SNodeOperations.getReference(nullReferenceContainer, LINKS.rightChild$f5Rv));
@@ -114,24 +103,20 @@ public class SNodeGetReferenceOperation_Test extends BaseTransformationTest {
       });
     }
     public void test_invalidLinkDeclaration() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022090592");
-        addNodeById("2906110183022122665");
-        addNodeById("2906110183022122679");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SReferenceLink invalidLink = LINKS.specializedLink$7ZCN;
         Assert.assertNull(SNodeOperations.getReference(getNodeById("2906110183022122680"), invalidLink));
       });
     }
 
-    private static String check_l3bw6i_a9a0a1a4k(SReferenceLink checkedDotOperand) {
+    private static String check_l3bw6i_a9a0a1a6k(SReferenceLink checkedDotOperand) {
       if (null != checkedDotOperand) {
         return checkedDotOperand.getName();
       }
       return null;
     }
-    private static String check_l3bw6i_a3a0a1a5k(SReferenceLink checkedDotOperand) {
+    private static String check_l3bw6i_a3a0a1a7k(SReferenceLink checkedDotOperand) {
       if (null != checkedDotOperand) {
         return checkedDotOperand.getName();
       }

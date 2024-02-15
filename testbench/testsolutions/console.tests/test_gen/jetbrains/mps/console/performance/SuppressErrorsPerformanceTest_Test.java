@@ -52,8 +52,13 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5968606277575949800");
+    }
+
     public void test_testPerformance() throws Exception {
-      runWithinCommand(() -> addNodeById("5968606277575949800"));
+      initTestNodes();
       runWithinCommand(() -> {
         // the goal of that test is to ensure more efficient than quadratic complexity
         Duration durationA = TestBody.this.measureSuppressPerformance(4 * 1000);
@@ -68,7 +73,7 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
       SNode var5968606277576107105 = getNodeById("5968606277576107085");
       ListSequence.fromList(SLinkOperations.getChildren(getNodeById("5968606277576107085"), LINKS.item$upGD)).clear();
       for (int i = 0; i < modelSize; i++) {
-        ListSequence.fromList(SLinkOperations.getChildren(getNodeById("5968606277576107085"), LINKS.item$upGD)).addElement(createNodeResponseItem_wxn1w7_a0a0a2a5g());
+        ListSequence.fromList(SLinkOperations.getChildren(getNodeById("5968606277576107085"), LINKS.item$upGD)).addElement(createNodeResponseItem_wxn1w7_a0a0a2a7g());
       }
       SModel modelToCheck = SNodeOperations.getModel(getNodeById("5968606277576107085"));
       IChecker<SNode, NodeReportItem> structureChecker = new StructureChecker();
@@ -78,7 +83,7 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
       long stopTime = System.nanoTime();
       return Duration.ofNanos(stopTime - startTime);
     }
-    private static SNode createNodeResponseItem_wxn1w7_a0a0a2a5g() {
+    private static SNode createNodeResponseItem_wxn1w7_a0a0a2a7g() {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodeResponseItem$Xr);
       n0.forChild(LINKS.node$X2qT).initNull();
       return n0.getResult();

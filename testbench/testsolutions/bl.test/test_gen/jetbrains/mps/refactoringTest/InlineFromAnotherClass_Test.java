@@ -38,11 +38,13 @@ public class InlineFromAnotherClass_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052989082", "1230052989119");
+    }
+
     public void test_InlineFromAnotherClass() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052989082");
-        addNodeById("1230052989119");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230052989097"));
         ref.doRefactor();

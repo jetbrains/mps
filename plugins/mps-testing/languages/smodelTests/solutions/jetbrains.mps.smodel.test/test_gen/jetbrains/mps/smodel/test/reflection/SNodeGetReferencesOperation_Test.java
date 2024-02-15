@@ -69,57 +69,32 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2906110183022219846", "2906110183022219807", "2906110183022219843", "2906110183022354865", "2906110183022432276");
+    }
+
     public void test_size() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022219846");
-        addNodeById("2906110183022219807");
-        addNodeById("2906110183022219843");
-        addNodeById("2906110183022354865");
-        addNodeById("2906110183022432276");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertTrue(ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219808"))).isEmpty());
         Assert.assertEquals(3, ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).count());
       });
     }
     public void test_target() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022219846");
-        addNodeById("2906110183022219807");
-        addNodeById("2906110183022219843");
-        addNodeById("2906110183022354865");
-        addNodeById("2906110183022432276");
-      });
+      initTestNodes();
       runWithinCommand(() -> TestUtilities.assertEquals(Sequence.fromArray(new SNode[]{getNodeById("2906110183022219847"), getNodeById("2906110183022219848"), getNodeById("2906110183022311236")}), ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select((it) -> SLinkOperations.getTargetNode(it))));
     }
     public void test_linkDeclaration() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022219846");
-        addNodeById("2906110183022219807");
-        addNodeById("2906110183022219843");
-        addNodeById("2906110183022354865");
-        addNodeById("2906110183022432276");
-      });
+      initTestNodes();
       runWithinCommand(() -> TestUtilities.assertEquals(Sequence.fromArray(new SReferenceLink[]{LINKS.root$cBIX, LINKS.leftChild$f5Cu, LINKS.rightChild$f5Rv}), ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select((it) -> SLinkOperations.getRefLink(it))));
     }
     public void test_roles() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022219846");
-        addNodeById("2906110183022219807");
-        addNodeById("2906110183022219843");
-        addNodeById("2906110183022354865");
-        addNodeById("2906110183022432276");
-      });
+      initTestNodes();
       runWithinCommand(() -> TestUtilities.assertEquals(Sequence.fromArray(new SReferenceLink[]{LINKS.root$cBIX, LINKS.leftChild$f5Cu, LINKS.rightChild$f5Rv}), ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select((it) -> SLinkOperations.getRefLink(it))));
     }
     public void test_resolveInfo() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022219846");
-        addNodeById("2906110183022219807");
-        addNodeById("2906110183022219843");
-        addNodeById("2906110183022354865");
-        addNodeById("2906110183022432276");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         // Resolving references by accessing .target node:
         ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).visitAll((it) -> SLinkOperations.getTargetNode(it));
@@ -127,13 +102,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       });
     }
     public void test_unspecifiedReferences() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022219846");
-        addNodeById("2906110183022219807");
-        addNodeById("2906110183022219843");
-        addNodeById("2906110183022354865");
-        addNodeById("2906110183022432276");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         // Adding one unspecified reference and checking if it was added properly
         int initialSize = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).count();
@@ -143,18 +112,12 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
         Iterable<SReference> unspecifiedReferences = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).where((it) -> (SLinkOperations.findLinkDeclaration(it) == null));
         Assert.assertEquals(1, Sequence.fromIterable(unspecifiedReferences).count());
         SReference theReference = Sequence.fromIterable(unspecifiedReferences).first();
-        Assert.assertEquals(unspecifiedReferenceName, check_s3ecl5_a8a0a1a8n(SLinkOperations.getRefLink(theReference)));
+        Assert.assertEquals(unspecifiedReferenceName, check_s3ecl5_a8a0a1a01n(SLinkOperations.getRefLink(theReference)));
         Assert.assertEquals(getNodeById("2906110183022219849"), SLinkOperations.getTargetNode(theReference));
       });
     }
     public void test_unresolvedReference() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022219846");
-        addNodeById("2906110183022219807");
-        addNodeById("2906110183022219843");
-        addNodeById("2906110183022354865");
-        addNodeById("2906110183022432276");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SLinkOperations.getTarget(getNodeById("2906110183022219844"), LINKS.root$cBIX);
         SLinkOperations.getTarget(getNodeById("2906110183022219844"), LINKS.leftChild$f5Cu);
@@ -184,13 +147,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       });
     }
     public void test_forNull() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2906110183022219846");
-        addNodeById("2906110183022219807");
-        addNodeById("2906110183022219843");
-        addNodeById("2906110183022354865");
-        addNodeById("2906110183022432276");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nullNode = null;
         Assert.assertTrue(ListSequence.fromList(SNodeOperations.getReferences(nullNode)).isEmpty());
@@ -207,7 +164,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       input.setReferenceTarget(fakeAssociation, referenceTarget);
       return fakeAssociation.getName();
     }
-    private static String check_s3ecl5_a8a0a1a8n(SReferenceLink checkedDotOperand) {
+    private static String check_s3ecl5_a8a0a1a01n(SReferenceLink checkedDotOperand) {
       if (null != checkedDotOperand) {
         return checkedDotOperand.getName();
       }

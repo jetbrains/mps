@@ -79,8 +79,12 @@ public class OverridingRule_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck4065852147261983404() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8837437332634534333", "8837437332634534352", "8837437332635285047", "8837437332634535101", "8837437332635283270", "8837437332635285132", "8837437332635285227");
+    }
 
+    public void test_ErrorMessagesCheck4065852147261983404() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8837437332634534350");
         SNode operation = getRealNodeById("4065852147261983404");
@@ -88,7 +92,6 @@ public class OverridingRule_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorFromConceptaCheck8837437332635283262() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8837437332634534350");
         SNode operation = getRealNodeById("8837437332635283262");
@@ -96,7 +99,6 @@ public class OverridingRule_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4065852147261983395() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8837437332634534356");
         SNode operation = getRealNodeById("4065852147261983395");
@@ -104,7 +106,6 @@ public class OverridingRule_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorFromConceptbCheck8837437332635283252() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8837437332634534356");
         SNode operation = getRealNodeById("8837437332635283252");
@@ -112,7 +113,6 @@ public class OverridingRule_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4065852147261983386() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8837437332635285048");
         SNode operation = getRealNodeById("4065852147261983386");
@@ -120,7 +120,6 @@ public class OverridingRule_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4065852147261983377() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8837437332634535107");
         SNode operation = getRealNodeById("4065852147261983377");
@@ -128,7 +127,6 @@ public class OverridingRule_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorFromConceptcCheck8837437332635281731() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8837437332634535107");
         SNode operation = getRealNodeById("8837437332635281731");
@@ -136,7 +134,6 @@ public class OverridingRule_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4065852147261983368() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8837437332635283271");
         SNode operation = getRealNodeById("4065852147261983368");
@@ -144,7 +141,6 @@ public class OverridingRule_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4065852147261983359() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8837437332635285133");
         SNode operation = getRealNodeById("4065852147261983359");
@@ -152,7 +148,6 @@ public class OverridingRule_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorFromConceptcCheck8837437332635285135() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8837437332635285133");
         SNode operation = getRealNodeById("8837437332635285135");
@@ -160,7 +155,6 @@ public class OverridingRule_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4065852147261983349() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8837437332635285228");
         SNode operation = getRealNodeById("4065852147261983349");

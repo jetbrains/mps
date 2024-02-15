@@ -40,11 +40,13 @@ public class ExtractFromStatementsEndsWithReturn_Test extends BaseTransformation
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052642040", "1230052642053");
+    }
+
     public void test_extractFromStatementsEndsWithReturn() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052642040");
-        addNodeById("1230052642053");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052642046")));
         params.setName("foo");

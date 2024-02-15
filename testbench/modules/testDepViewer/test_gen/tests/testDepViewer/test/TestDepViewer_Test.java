@@ -54,7 +54,13 @@ public class TestDepViewer_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_testPrecondition() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SModel testModel1 = TestBody.this.model1();
         SModel testModel2 = TestBody.this.model2();
@@ -63,6 +69,7 @@ public class TestDepViewer_Test extends BaseTransformationTest {
       });
     }
     public void test_testModel1DependsOnSomething() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         DependencyViewerScope testScope = new DependencyViewerScope(myProject.getRepository());
         testScope.add(TestBody.this.model1());
@@ -73,6 +80,7 @@ public class TestDepViewer_Test extends BaseTransformationTest {
       });
     }
     public void test_testModel3DoesntDependOnAnything() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         DependencyViewerScope testScope = new DependencyViewerScope(myProject.getRepository());
         testScope.add(TestBody.this.model3());
@@ -83,6 +91,7 @@ public class TestDepViewer_Test extends BaseTransformationTest {
       });
     }
     public void test_testModel1DependsOnModel2() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         DependencyViewerScope testScope = new DependencyViewerScope(myProject.getRepository());
         testScope.add(TestBody.this.model1());
@@ -95,6 +104,7 @@ public class TestDepViewer_Test extends BaseTransformationTest {
       });
     }
     public void test_testModel1DoesntDependOnModel3() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         DependencyViewerScope testScope = new DependencyViewerScope(myProject.getRepository());
         testScope.add(TestBody.this.model1());

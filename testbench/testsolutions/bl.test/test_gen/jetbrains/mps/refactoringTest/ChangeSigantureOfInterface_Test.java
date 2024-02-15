@@ -42,12 +42,13 @@ public class ChangeSigantureOfInterface_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("418758558327012739", "418758558327019466", "418758558327028811");
+    }
+
     public void test_ChangeSigantureOfInterface() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("418758558327012739");
-        addNodeById("418758558327019466");
-        addNodeById("418758558327028811");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ChangeMethodSignatureParameters parameters = new ChangeMethodSignatureParameters(getNodeById("418758558327019496"));
         SPropertyOperations.assign(parameters.getDeclaration(), PROPS.name$MnvL, "myMethod");

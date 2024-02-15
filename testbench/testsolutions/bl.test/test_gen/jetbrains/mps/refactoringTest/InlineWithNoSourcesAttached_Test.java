@@ -33,8 +33,13 @@ public class InlineWithNoSourcesAttached_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052989307");
+    }
+
     public void test_InlineWithNoSourcesAttached() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052989307"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertTrue(new InlineMethodModel(getNodeById("1230052989317")).getErrors() != null));
     }
 

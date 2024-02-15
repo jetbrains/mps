@@ -38,11 +38,13 @@ public class SimpleInlineWithOneReturn_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052989335", "1230052989358");
+    }
+
     public void test_SimpleInlineWithOneReturn() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052989335");
-        addNodeById("1230052989358");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230052989347"));
         ref.doRefactor();

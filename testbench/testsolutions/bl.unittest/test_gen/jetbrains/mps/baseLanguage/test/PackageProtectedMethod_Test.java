@@ -47,8 +47,12 @@ public class PackageProtectedMethod_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck7938578788783497191() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7938578788783498115", "7938578788783497187");
+    }
 
+    public void test_ErrorMessagesCheck7938578788783497191() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7938578788783497188");
         SNode operation = getRealNodeById("7938578788783497191");
@@ -56,7 +60,6 @@ public class PackageProtectedMethod_Test extends BaseTransformationTest {
       });
     }
     public void test_NodePackageProtectedMethodCheck7938578788783497198() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7938578788783497193");
         SNode operation = getRealNodeById("7938578788783497198");
@@ -64,7 +67,6 @@ public class PackageProtectedMethod_Test extends BaseTransformationTest {
       });
     }
     public void test_NodePackageProtectedMethodCheck7938578788783497209() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7938578788783497200");
         SNode operation = getRealNodeById("7938578788783497209");

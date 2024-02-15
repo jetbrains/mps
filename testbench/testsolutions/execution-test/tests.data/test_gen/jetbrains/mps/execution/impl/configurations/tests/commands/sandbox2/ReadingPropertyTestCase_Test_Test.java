@@ -34,7 +34,13 @@ public class ReadingPropertyTestCase_Test_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_test1() throws Exception {
+      initTestNodes();
       Assert.assertTrue(Objects.equals(System.getProperty(ReadingPropertyBTestCase_Test.SYS_PROPERTY), ReadingPropertyBTestCase_Test.SYS_PROPERTY_EXPECTED_VALUE));
       Assert.assertFalse(false);
     }

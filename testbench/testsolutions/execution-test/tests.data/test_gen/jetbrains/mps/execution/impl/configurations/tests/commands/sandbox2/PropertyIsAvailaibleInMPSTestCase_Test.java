@@ -32,7 +32,13 @@ public class PropertyIsAvailaibleInMPSTestCase_Test extends BaseTransformationTe
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_test1() throws Exception {
+      initTestNodes();
       Assert.assertEquals("TRUE", System.getProperty("MyProp"));
     }
 

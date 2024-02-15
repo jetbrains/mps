@@ -39,11 +39,13 @@ public class IntroduceConstantFromAnonimousClass_Test extends BaseTransformation
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2163048091639854957", "2163048091639855005");
+    }
+
     public void test_IntroduceConstantFromAnonimousClassTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2163048091639854957");
-        addNodeById("2163048091639855005");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         IntroduceConstantRefactoring refactoring = new IntroduceConstantRefactoring();
         refactoring.init(getNodeById("2163048091639854989"), null);

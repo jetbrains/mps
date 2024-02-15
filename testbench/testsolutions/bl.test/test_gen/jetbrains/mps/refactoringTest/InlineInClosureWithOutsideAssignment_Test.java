@@ -39,11 +39,13 @@ public class InlineInClosureWithOutsideAssignment_Test extends BaseTransformatio
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7093131866560585772", "7093131866560585816");
+    }
+
     public void test_InlineInClosureWithOutsideAssingmentTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7093131866560585772");
-        addNodeById("7093131866560585816");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineVariableRefactoring ref = new InlineVariableReferenceRefactoring(getNodeById("7093131866560585802"));
         ref.doRefactoring();

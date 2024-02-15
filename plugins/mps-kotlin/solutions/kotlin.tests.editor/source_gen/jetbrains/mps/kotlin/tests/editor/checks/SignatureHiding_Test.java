@@ -104,8 +104,12 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeUnnamedErrorCheck5338175760790723914() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8754229008110764394", "8754229008116368920", "5338175760790995004");
+    }
 
+    public void test_NodeUnnamedErrorCheck5338175760790723914() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8754229008110764833");
         SNode operation = getRealNodeById("5338175760790723914");
@@ -113,7 +117,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790738126() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8754229008110765002");
         SNode operation = getRealNodeById("5338175760790738126");
@@ -121,7 +124,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790738732() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8754229008111622965");
         SNode operation = getRealNodeById("5338175760790738732");
@@ -129,7 +131,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790739338() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8754229008111625019");
         SNode operation = getRealNodeById("5338175760790739338");
@@ -137,7 +138,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790739944() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8754229008114418262");
         SNode operation = getRealNodeById("5338175760790739944");
@@ -145,7 +145,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790740550() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8754229008114418272");
         SNode operation = getRealNodeById("5338175760790740550");
@@ -153,7 +152,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760785278337() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5338175760785270848");
         SNode operation = getRealNodeById("5338175760785278337");
@@ -161,7 +159,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760785279879() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5338175760785275076");
         SNode operation = getRealNodeById("5338175760785279879");
@@ -169,7 +166,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790741778() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8754229008116370627");
         SNode operation = getRealNodeById("5338175760790741778");
@@ -177,7 +173,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790742458() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8754229008116370823");
         SNode operation = getRealNodeById("5338175760790742458");
@@ -185,7 +180,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck8754229008116788916() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8754229008116372836");
         SNode operation = getRealNodeById("8754229008116788916");
@@ -193,7 +187,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck8754229008116789139() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8754229008116372840");
         SNode operation = getRealNodeById("8754229008116789139");
@@ -201,7 +194,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck8754229008116796403() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8754229008116795828");
         SNode operation = getRealNodeById("8754229008116796403");
@@ -209,7 +201,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnnamedErrorCheck8754229008116796237() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8754229008116791819");
         SNode operation = getRealNodeById("8754229008116796237");
@@ -217,7 +208,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeConflictingDeclarationCheck5338175760790997923() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5338175760790996708");
         SNode operation = getRealNodeById("5338175760790997923");
@@ -225,7 +215,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeConflictingDeclarationCheck5338175760791000689() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5338175760790999163");
         SNode operation = getRealNodeById("5338175760791000689");
@@ -233,7 +222,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeConflictingDeclarationCheck5338175760791003904() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5338175760791003125");
         SNode operation = getRealNodeById("5338175760791003904");
@@ -241,7 +229,6 @@ public class SignatureHiding_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeConflictingDeclarationCheck5338175760791446993() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5338175760791006309");
         SNode operation = getRealNodeById("5338175760791446993");

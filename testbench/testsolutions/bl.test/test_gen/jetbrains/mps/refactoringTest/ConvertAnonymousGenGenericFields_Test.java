@@ -38,11 +38,13 @@ public class ConvertAnonymousGenGenericFields_Test extends BaseTransformationTes
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5907083257159818799", "5907083257159818958");
+    }
+
     public void test_TypeParametersTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("5907083257159818799");
-        addNodeById("5907083257159818958");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         new ConvertAnonymousRefactoring(getNodeById("5907083257159818820"), "MyIterable").doRefactor();
         {

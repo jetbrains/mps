@@ -38,12 +38,13 @@ public class InlineMethodWithConceptFunctionParameters_Test extends BaseTransfor
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4412735672780107330", "4412735672780109161", "4412735672780116642");
+    }
+
     public void test_InlineMethodWithConceptFunctionParameters() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("4412735672780107330");
-        addNodeById("4412735672780109161");
-        addNodeById("4412735672780116642");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("4412735672780109165"));
         ref.doRefactor();

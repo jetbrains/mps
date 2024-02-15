@@ -142,8 +142,12 @@ public class UnusedFields_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck8129007564264183307() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8129007564264170363", "8129007564264202193", "8129007564264206998", "8129007564264226942", "1855868101957042658");
+    }
 
+    public void test_NodeErrorCheck8129007564264183307() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264174690");
         SNode operation = getRealNodeById("8129007564264183307");
@@ -151,7 +155,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck8129007564264201539() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264189934");
         SNode operation = getRealNodeById("8129007564264201539");
@@ -159,7 +162,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck8129007564264258408() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264176707");
         SNode operation = getRealNodeById("8129007564264258408");
@@ -167,7 +169,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck8129007564264741195() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264734956");
         SNode operation = getRealNodeById("8129007564264741195");
@@ -175,7 +176,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck8129007564264258940() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264190480");
         SNode operation = getRealNodeById("8129007564264258940");
@@ -183,7 +183,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck8129007564264259403() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264179664");
         SNode operation = getRealNodeById("8129007564264259403");
@@ -191,7 +190,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck8129007564264259935() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264194670");
         SNode operation = getRealNodeById("8129007564264259935");
@@ -199,7 +197,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8129007564264174973() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264170365");
         SNode operation = getRealNodeById("8129007564264174973");
@@ -207,7 +204,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8129007564264202932() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264202247");
         SNode operation = getRealNodeById("8129007564264202932");
@@ -215,7 +211,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck8129007564264204542() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264203697");
         SNode operation = getRealNodeById("8129007564264204542");
@@ -223,7 +218,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck8129007564264206968() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264204519");
         SNode operation = getRealNodeById("8129007564264206968");
@@ -231,7 +225,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck5303038120596588890() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264204860");
         SNode operation = getRealNodeById("5303038120596588890");
@@ -239,7 +232,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8129007564264207116() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264207094");
         SNode operation = getRealNodeById("8129007564264207116");
@@ -247,7 +239,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck8129007564264207668() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264207637");
         SNode operation = getRealNodeById("8129007564264207668");
@@ -255,7 +246,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck8129007564264355259() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264207648");
         SNode operation = getRealNodeById("8129007564264355259");
@@ -263,7 +253,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck8129007564264752913() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264751179");
         SNode operation = getRealNodeById("8129007564264752913");
@@ -271,7 +260,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck8129007564264233837() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264229087");
         SNode operation = getRealNodeById("8129007564264233837");
@@ -279,7 +267,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck8129007564264928589() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264841531");
         SNode operation = getRealNodeById("8129007564264928589");
@@ -287,7 +274,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck8129007564264930520() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264851620");
         SNode operation = getRealNodeById("8129007564264930520");
@@ -295,7 +281,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck8129007564264242225() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264241711");
         SNode operation = getRealNodeById("8129007564264242225");
@@ -303,7 +288,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck8129007564264253108() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264252591");
         SNode operation = getRealNodeById("8129007564264253108");
@@ -311,7 +295,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8129007564264253493() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264227694");
         SNode operation = getRealNodeById("8129007564264253493");
@@ -319,7 +302,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck8129007564264268731() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8129007564264267803");
         SNode operation = getRealNodeById("8129007564264268731");
@@ -327,7 +309,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck1855868101957045111() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1855868101957043892");
         SNode operation = getRealNodeById("1855868101957045111");
@@ -335,7 +316,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck1855868101957102635() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1855868101957101493");
         SNode operation = getRealNodeById("1855868101957102635");
@@ -343,7 +323,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck1855868101957107421() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1855868101957106284");
         SNode operation = getRealNodeById("1855868101957107421");
@@ -351,7 +330,6 @@ public class UnusedFields_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck1855868101957111173() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1855868101957110034");
         SNode operation = getRealNodeById("1855868101957111173");

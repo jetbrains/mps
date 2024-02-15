@@ -40,11 +40,13 @@ public class IntroduceFieldFromVarNoInitializer_Test extends BaseTransformationT
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2505393827681559988", "2505393827681560008");
+    }
+
     public void test_IntroduceFinalField() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("2505393827681559988");
-        addNodeById("2505393827681560008");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         IntroduceFieldRefactoring refactoring = new IntroduceFieldRefactoring();
         refactoring.init(getNodeById("2505393827681559997"), null);

@@ -59,8 +59,12 @@ public class WildCardsInTheClassDefinition_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeSupertypeMayNotSpecifyCheck6923385624927497212() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8187342170692127760", "8187342170692147308", "8187342170694398420", "8187342170692840414");
+    }
 
+    public void test_NodeSupertypeMayNotSpecifyCheck6923385624927497212() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451229706");
         SNode operation = getRealNodeById("6923385624927497212");
@@ -68,7 +72,6 @@ public class WildCardsInTheClassDefinition_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8187342170692700619() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8187342170692127762");
         SNode operation = getRealNodeById("8187342170692700619");
@@ -76,7 +79,6 @@ public class WildCardsInTheClassDefinition_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8187342170692700629() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8187342170692147339");
         SNode operation = getRealNodeById("8187342170692700629");
@@ -84,7 +86,6 @@ public class WildCardsInTheClassDefinition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeSupertypeMayNotSpecifyCheck6923385624928818605() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451230464");
         SNode operation = getRealNodeById("6923385624928818605");
@@ -92,7 +93,6 @@ public class WildCardsInTheClassDefinition_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8187342170694398489() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8187342170694398481");
         SNode operation = getRealNodeById("8187342170694398489");
@@ -100,7 +100,6 @@ public class WildCardsInTheClassDefinition_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8187342170692842210() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8187342170692678948");
         SNode operation = getRealNodeById("8187342170692842210");

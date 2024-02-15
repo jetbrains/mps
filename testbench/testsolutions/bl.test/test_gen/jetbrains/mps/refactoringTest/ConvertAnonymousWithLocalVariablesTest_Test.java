@@ -38,12 +38,13 @@ public class ConvertAnonymousWithLocalVariablesTest_Test extends BaseTransformat
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3145818413496050426", "3145818413496050433", "3145818413496504287");
+    }
+
     public void test_WithLocalVariablesTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("3145818413496050426");
-        addNodeById("3145818413496050433");
-        addNodeById("3145818413496504287");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         new ConvertAnonymousRefactoring(getNodeById("3145818413496050467"), "MyIField").doRefactor();
         {

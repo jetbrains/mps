@@ -40,11 +40,13 @@ public class ExtractFromAnonymous_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052406963", "1230052406990");
+    }
+
     public void test_ExtractFromAnonymous() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052406963");
-        addNodeById("1230052406990");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringParameters params = ExtractMethodFactory.createParameters(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052406982"), getNodeById("6195342755327931780")));
         params.setName("foo");

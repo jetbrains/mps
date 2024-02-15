@@ -41,15 +41,19 @@ public class ClosureLiteralDataFlow_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1227886714784");
+    }
+
     public void test_ClosureLiteralDataFlow() throws Exception {
-      runWithinCommand(() -> addNodeById("1227886714784"));
+      initTestNodes();
       runWithinCommand(() -> {
         // Check statement was moved to node annotation
         // check getNodeById(string):node<> error messages
       });
     }
     public void test_ErrorMessagesCheck2501421320959199366() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1227886714787");
         SNode operation = getRealNodeById("2501421320959199366");

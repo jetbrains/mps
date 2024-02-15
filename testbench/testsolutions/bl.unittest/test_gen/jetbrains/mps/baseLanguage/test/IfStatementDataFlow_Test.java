@@ -47,15 +47,19 @@ public class IfStatementDataFlow_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1217271587920");
+    }
+
     public void test_IfStatementDataFlow() throws Exception {
-      runWithinCommand(() -> addNodeById("1217271587920"));
+      initTestNodes();
       runWithinCommand(() -> {
         // Check statement was moved to node annotation
         // check getNodeById(string):node<> error messages
       });
     }
     public void test_NodeVariableHasNotBeenInitializedErrorCheck6923385624928604755() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451228488");
         SNode operation = getRealNodeById("6923385624928604755");
@@ -63,7 +67,6 @@ public class IfStatementDataFlow_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2501421320959199532() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1215444237453");
         SNode operation = getRealNodeById("2501421320959199532");

@@ -63,8 +63,12 @@ public class InstanceMethodDeclarationThrownExceptions_Test extends BaseTransfor
       super(owner);
     }
 
-    public void test_NodeUnnamedErrorCheck143797558343291602() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3983029200623345183", "3983029200623367393", "3983029200623374097", "3983029200623467176");
+    }
 
+    public void test_NodeUnnamedErrorCheck143797558343291602() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3983029200623367486");
         SNode operation = getRealNodeById("143797558343291602");
@@ -72,7 +76,6 @@ public class InstanceMethodDeclarationThrownExceptions_Test extends BaseTransfor
       });
     }
     public void test_ErrorMessagesCheck3983029200623373599() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3983029200623367447");
         SNode operation = getRealNodeById("3983029200623373599");
@@ -80,7 +83,6 @@ public class InstanceMethodDeclarationThrownExceptions_Test extends BaseTransfor
       });
     }
     public void test_NodeUnnamedErrorCheck143797558343290023() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3983029200623374669");
         SNode operation = getRealNodeById("143797558343290023");
@@ -88,7 +90,6 @@ public class InstanceMethodDeclarationThrownExceptions_Test extends BaseTransfor
       });
     }
     public void test_ErrorMessagesCheck3983029200623379445() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3983029200623374398");
         SNode operation = getRealNodeById("3983029200623379445");
@@ -96,7 +97,6 @@ public class InstanceMethodDeclarationThrownExceptions_Test extends BaseTransfor
       });
     }
     public void test_ErrorMessagesCheck3983029200623468570() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3983029200623467830");
         SNode operation = getRealNodeById("3983029200623468570");
@@ -104,7 +104,6 @@ public class InstanceMethodDeclarationThrownExceptions_Test extends BaseTransfor
       });
     }
     public void test_NodeOverridenMethodDoesNotCheck143797558343280410() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3983029200623470506");
         SNode operation = getRealNodeById("143797558343280410");
@@ -112,7 +111,6 @@ public class InstanceMethodDeclarationThrownExceptions_Test extends BaseTransfor
       });
     }
     public void test_NodeOverridenMethodDoesNotCheck143797558343288436() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3983029200623475285");
         SNode operation = getRealNodeById("143797558343288436");

@@ -37,8 +37,12 @@ public class CommandDataflowWithReturn_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck1229350096076() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1229349830782");
+    }
 
+    public void test_ErrorMessagesCheck1229350096076() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1229349840377");
         SNode operation = getRealNodeById("1229350096076");

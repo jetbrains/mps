@@ -26,6 +26,11 @@ public class Streams_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1509702728162305833");
+    }
+
 
   }
 }

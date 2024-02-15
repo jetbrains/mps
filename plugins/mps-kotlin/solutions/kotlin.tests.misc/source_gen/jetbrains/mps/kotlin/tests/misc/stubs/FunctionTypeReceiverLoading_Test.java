@@ -42,8 +42,13 @@ public class FunctionTypeReceiverLoading_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3463082351151604522");
+    }
+
     public void test_receiversProperlyLoaded() throws Exception {
-      runWithinCommand(() -> addNodeById("3463082351151604522"));
+      initTestNodes();
       runWithinCommand(() -> {
         // Expected signature of the with signature is with(T, T.() -> R): R, this tests the function type only
         // Regularly, stubs seem to stop loading the receiver type on function types

@@ -36,8 +36,12 @@ public class _RulesCanBeChild2_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeUnknownRuleCheck2802122285522068052() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2802122285522027981");
+    }
 
+    public void test_NodeUnknownRuleCheck2802122285522068052() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2802122285522027982");
         SNode operation = getRealNodeById("2802122285522068052");

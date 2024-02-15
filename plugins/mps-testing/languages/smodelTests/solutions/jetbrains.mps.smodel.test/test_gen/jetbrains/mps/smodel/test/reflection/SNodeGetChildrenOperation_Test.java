@@ -68,36 +68,25 @@ public class SNodeGetChildrenOperation_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8758390115029078425", "5815925154349132136", "2166349271756548530");
+    }
+
     public void test_childContainingLinks() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8758390115029078425");
-        addNodeById("5815925154349132136");
-        addNodeById("2166349271756548530");
-      });
+      initTestNodes();
       runWithinCommand(() -> TestUtilities.assertEquals(Sequence.fromArray(new SContainmentLink[]{LINKS.child_1_n$IYmu, LINKS.childSubConcept_0_n$apX}), ListSequence.fromList(SNodeOperations.getChildren(getNodeById("8758390115029078426"))).select((it) -> it.getContainmentLink())));
     }
     public void test_childContaininLinksForSpecializedChildren() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8758390115029078425");
-        addNodeById("5815925154349132136");
-        addNodeById("2166349271756548530");
-      });
+      initTestNodes();
       runWithinCommand(() -> Assert.assertEquals(LINKS.grandChild_0_1$IWEt, getNodeById("2600026384779198859").getContainmentLink()));
     }
     public void test_childContainingRoles() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8758390115029078425");
-        addNodeById("5815925154349132136");
-        addNodeById("2166349271756548530");
-      });
+      initTestNodes();
       runWithinCommand(() -> TestUtilities.assertEquals(Sequence.fromArray(new SContainmentLink[]{LINKS.child_1_n$IYmu, LINKS.childSubConcept_0_n$apX}), ListSequence.fromList(SNodeOperations.getChildren(getNodeById("8758390115029078426"))).select((it) -> it.getContainmentLink())));
     }
     public void test_unspecifiedChildren() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8758390115029078425");
-        addNodeById("5815925154349132136");
-        addNodeById("2166349271756548530");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         int initialSize = ListSequence.fromList(SNodeOperations.getChildren(getNodeById("2166349271756548531"))).count();
         SNode unspecifiedChild = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x3dd540b968e9fc4L, "jetbrains.mps.lang.smodelTests.structure.GrandChild"));
@@ -111,23 +100,15 @@ public class SNodeGetChildrenOperation_Test extends BaseTransformationTest {
       });
     }
     public void test_childOperationsOnNull() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8758390115029078425");
-        addNodeById("5815925154349132136");
-        addNodeById("2166349271756548530");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nullNode = null;
         Assert.assertNull(SNodeOperations.getContainingLink(nullNode));
-        Assert.assertNull(check_vfao6t_a2a0a1a7n(SNodeOperations.getContainingLink(nullNode)));
+        Assert.assertNull(check_vfao6t_a2a0a1a9n(SNodeOperations.getContainingLink(nullNode)));
       });
     }
     public void test_childrenByLinkDeclaration() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8758390115029078425");
-        addNodeById("5815925154349132136");
-        addNodeById("2166349271756548530");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         List<SNode> singleChild = SNodeOperations.getChildren(getNodeById("8758390115029078426"), LINKS.child_1_n$IYmu);
         Assert.assertEquals(1, ListSequence.fromList(singleChild).count());
@@ -137,22 +118,14 @@ public class SNodeGetChildrenOperation_Test extends BaseTransformationTest {
       });
     }
     public void test_childrenByLinkDeclarationSpecialized() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8758390115029078425");
-        addNodeById("5815925154349132136");
-        addNodeById("2166349271756548530");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         TestUtilities.assertEquals(Sequence.fromArray(new SNode[]{getNodeById("2600026384779198859")}), SNodeOperations.getChildren(getNodeById("8758390115029078430"), LINKS.grandChild_0_1$IWEt));
         TestUtilities.assertEquals(Sequence.fromArray(new SNode[]{getNodeById("2600026384779198859")}), SNodeOperations.getChildren(getNodeById("8758390115029078430"), LINKS.grandChild_0_1$IWEt));
       });
     }
     public void test_childrenByLinkDeclarationOnNull() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("8758390115029078425");
-        addNodeById("5815925154349132136");
-        addNodeById("2166349271756548530");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nullNode = null;
         Assert.assertTrue(ListSequence.fromList(SNodeOperations.getChildren(nullNode, LINKS.child_0_n$IY7t)).isEmpty());
@@ -166,7 +139,7 @@ public class SNodeGetChildrenOperation_Test extends BaseTransformationTest {
       input.addChild(link, unspecifiedChild);
       return link;
     }
-    private static String check_vfao6t_a2a0a1a7n(SContainmentLink checkedDotOperand) {
+    private static String check_vfao6t_a2a0a1a9n(SContainmentLink checkedDotOperand) {
       if (null != checkedDotOperand) {
         return checkedDotOperand.getName();
       }

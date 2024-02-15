@@ -36,8 +36,13 @@ public class ConceptFunctioParameterTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052406742");
+    }
+
     public void test_ConceptFunctioParameterTest() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052406742"));
+      initTestNodes();
       runWithinCommand(() -> {
         ExtractMethodRefactoringAnalyzer analyzer = new ExtractMethodRefactoringAnalyzer(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052406746"), getNodeById("1230052406751")));
         Assert.assertEquals(1, ListSequence.fromList(analyzer.getInputVariables()).count());

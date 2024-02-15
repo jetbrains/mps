@@ -51,15 +51,19 @@ public class UnusedAssignment_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1217271585694");
+    }
+
     public void test_UnusedAssignment() throws Exception {
-      runWithinCommand(() -> addNodeById("1217271585694"));
+      initTestNodes();
       runWithinCommand(() -> {
         // Check statement was moved to node annotation
         // check getNodeById(string):node<> error messages
       });
     }
     public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624928924551() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451228055");
         SNode operation = getRealNodeById("6923385624928924551");
@@ -67,7 +71,6 @@ public class UnusedAssignment_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnusedVariableWarningCheck215889526513017421() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1215444198397");
         SNode operation = getRealNodeById("215889526513017421");
@@ -75,7 +78,6 @@ public class UnusedAssignment_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2501421320959199460() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1215444198388");
         SNode operation = getRealNodeById("2501421320959199460");

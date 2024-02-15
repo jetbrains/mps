@@ -45,13 +45,13 @@ public class staticContainerClassTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052684687", "1230052684697", "1230052684705", "1230052684709");
+    }
+
     public void test_staticContainerClassTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052684687");
-        addNodeById("1230052684697");
-        addNodeById("1230052684705");
-        addNodeById("1230052684709");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SNode call = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
         SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$pyYw, getNodeById("1230052684711"));

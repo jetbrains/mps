@@ -39,11 +39,13 @@ public class InlineInsideClosure_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7093131866560585662", "7093131866560585699");
+    }
+
     public void test_InlineInsideClosureTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7093131866560585662");
-        addNodeById("7093131866560585699");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineVariableRefactoring ref = new InlineVariableReferenceRefactoring(getNodeById("7093131866560585685"));
         ref.doRefactoring();

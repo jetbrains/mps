@@ -59,8 +59,12 @@ public class NonStaticInnerClassInstantiatedInStaticContext_Test extends BaseTra
       super(owner);
     }
 
-    public void test_NodeNoEnclosingInstanceOfCheck6923385624927702653() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("966837649722295060");
+    }
 
+    public void test_NodeNoEnclosingInstanceOfCheck6923385624927702653() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("966837649719086733");
         SNode operation = getRealNodeById("6923385624927702653");
@@ -68,7 +72,6 @@ public class NonStaticInnerClassInstantiatedInStaticContext_Test extends BaseTra
       });
     }
     public void test_NodeNoEnclosingInstanceOfCheck6923385624929324173() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("966837649720650716");
         SNode operation = getRealNodeById("6923385624929324173");
@@ -76,7 +79,6 @@ public class NonStaticInnerClassInstantiatedInStaticContext_Test extends BaseTra
       });
     }
     public void test_NodeNoEnclosingInstanceOfCheck6923385624929631137() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("966837649722354537");
         SNode operation = getRealNodeById("6923385624929631137");
@@ -84,7 +86,6 @@ public class NonStaticInnerClassInstantiatedInStaticContext_Test extends BaseTra
       });
     }
     public void test_NodeNoEnclosingInstanceOfCheck6923385624929879922() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("966837649722379841");
         SNode operation = getRealNodeById("6923385624929879922");
@@ -92,7 +93,6 @@ public class NonStaticInnerClassInstantiatedInStaticContext_Test extends BaseTra
       });
     }
     public void test_NodeNoEnclosingInstanceOfCheck6923385624929258956() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("966837649720836439");
         SNode operation = getRealNodeById("6923385624929258956");
@@ -100,7 +100,6 @@ public class NonStaticInnerClassInstantiatedInStaticContext_Test extends BaseTra
       });
     }
     public void test_ErrorMessagesCheck966837649722301965() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("966837649722297928");
         SNode operation = getRealNodeById("966837649722301965");

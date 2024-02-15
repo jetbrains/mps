@@ -37,8 +37,12 @@ public class GetElementOperationFollowedByPropertyAccess_Test extends BaseTransf
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck5679018521759346994() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5679018521759265419", "5679018521759340930");
+    }
 
+    public void test_ErrorMessagesCheck5679018521759346994() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1654036798276541486");
         SNode operation = getRealNodeById("5679018521759346994");

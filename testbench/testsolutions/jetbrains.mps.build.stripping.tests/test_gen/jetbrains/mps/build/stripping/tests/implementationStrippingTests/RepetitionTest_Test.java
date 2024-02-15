@@ -46,8 +46,12 @@ public class RepetitionTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck5264300948581808886() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("5264300948581808817");
+    }
 
+    public void test_NodeErrorCheck5264300948581808886() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5264300948581808855");
         SNode operation = getRealNodeById("5264300948581808886");
@@ -55,7 +59,6 @@ public class RepetitionTest_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck5264300948581808891() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5264300948581808871");
         SNode operation = getRealNodeById("5264300948581808891");
@@ -63,7 +66,6 @@ public class RepetitionTest_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck5264300948581808827() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5264300948581808819");
         SNode operation = getRealNodeById("5264300948581808827");

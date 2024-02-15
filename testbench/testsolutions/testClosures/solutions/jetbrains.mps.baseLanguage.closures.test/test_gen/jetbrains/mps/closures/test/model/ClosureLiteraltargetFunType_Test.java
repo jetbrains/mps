@@ -47,21 +47,22 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6374750171056867594", "6374750171056867606");
+    }
+
     public void test_throwsOrder() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("6374750171056867594");
-        addNodeById("6374750171056867606");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         TemplateQueryContext genContext = TestBody.this.getContext();
         SNode literal = getNodeById("6374750171056867612");
         SNode funtype = getNodeById("6374750171056867639");
-        new ClosureLiteralTarget(genContext).setTarget(literal, FunctionType__BehaviorDescriptor.getDeclarationRuntimeType_idhTOKQzf.invoke(funtype), _quotation_createNode_7325qm_c0a3a0a1a3h());
-        TestBody.this.assertLiteralTarget(genContext, literal, _quotation_createNode_7325qm_c0a4a0a1a3h());
+        new ClosureLiteralTarget(genContext).setTarget(literal, FunctionType__BehaviorDescriptor.getDeclarationRuntimeType_idhTOKQzf.invoke(funtype), _quotation_createNode_7325qm_c0a3a0a1a5h());
+        TestBody.this.assertLiteralTarget(genContext, literal, _quotation_createNode_7325qm_c0a4a0a1a5h());
       });
     }
     public void test_NodeErrorCheck3981396688773519576() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6374750171056867612");
         SNode operation = getRealNodeById("3981396688773519576");
@@ -77,7 +78,7 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
 
       Assert.assertTrue(new SNodeMatcher().match(expected, target));
     }
-    private static SNode _quotation_createNode_7325qm_c0a3a0a1a3h() {
+    private static SNode _quotation_createNode_7325qm_c0a3a0a1a5h() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0x1174a4d19ffL, "FunctionType"));
@@ -87,7 +88,7 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
       quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4d5371L, "resultType"), quotedNode_2);
       return quotedNode_1;
     }
-    private static SNode _quotation_createNode_7325qm_c0a4a0a1a3h() {
+    private static SNode _quotation_createNode_7325qm_c0a4a0a1a5h() {
       SNode quotedNode_1 = null;
       SNode quotedNode_2 = null;
       SNode quotedNode_3 = null;

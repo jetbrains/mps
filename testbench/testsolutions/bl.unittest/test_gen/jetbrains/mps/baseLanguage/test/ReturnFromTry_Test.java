@@ -41,15 +41,19 @@ public class ReturnFromTry_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7209837885461546653");
+    }
+
     public void test_ReturnFromTry() throws Exception {
-      runWithinCommand(() -> addNodeById("7209837885461546653"));
+      initTestNodes();
       runWithinCommand(() -> {
         // Check statement was moved to node annotation
         // check getNodeById(string):node<> error messages
       });
     }
     public void test_ErrorMessagesCheck2501421320959199550() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7209837885461546654");
         SNode operation = getRealNodeById("2501421320959199550");

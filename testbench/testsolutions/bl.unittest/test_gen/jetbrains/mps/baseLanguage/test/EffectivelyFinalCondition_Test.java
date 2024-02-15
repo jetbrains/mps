@@ -64,8 +64,12 @@ public class EffectivelyFinalCondition_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeTheConditionIsAlwaysCheck2743940965196461140() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2743940965196456948");
+    }
 
+    public void test_NodeTheConditionIsAlwaysCheck2743940965196461140() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2743940965196458968");
         SNode operation = getRealNodeById("2743940965196461140");
@@ -73,7 +77,6 @@ public class EffectivelyFinalCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2743940965196464717() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2743940965196462533");
         SNode operation = getRealNodeById("2743940965196464717");
@@ -81,7 +84,6 @@ public class EffectivelyFinalCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2743940965196470243() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2743940965196467108");
         SNode operation = getRealNodeById("2743940965196470243");
@@ -89,7 +91,6 @@ public class EffectivelyFinalCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeInfiniteLoopCheck2743940965196471526() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2743940965196466431");
         SNode operation = getRealNodeById("2743940965196471526");
@@ -97,7 +98,6 @@ public class EffectivelyFinalCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeVariableInitializerIsRedundantWarningCheck2743940965196480266() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2743940965196472095");
         SNode operation = getRealNodeById("2743940965196480266");
@@ -105,7 +105,6 @@ public class EffectivelyFinalCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2743940965196486589() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2743940965196481951");
         SNode operation = getRealNodeById("2743940965196486589");
@@ -113,7 +112,6 @@ public class EffectivelyFinalCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2743940965196489456() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2743940965196481964");
         SNode operation = getRealNodeById("2743940965196489456");
@@ -121,7 +119,6 @@ public class EffectivelyFinalCondition_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2743940965196492883() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2743940965196481977");
         SNode operation = getRealNodeById("2743940965196492883");

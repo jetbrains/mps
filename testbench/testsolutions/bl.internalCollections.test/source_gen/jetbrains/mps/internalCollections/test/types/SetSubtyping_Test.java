@@ -51,8 +51,12 @@ public class SetSubtyping_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeIncompatibleTypesCheck4720524343100610619() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4720524343099923543");
+    }
 
+    public void test_NodeIncompatibleTypesCheck4720524343100610619() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4720524343100607535");
         SNode operation = getRealNodeById("4720524343100610619");
@@ -60,7 +64,6 @@ public class SetSubtyping_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleTypesCheck4720524343100640222() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4720524343100629645");
         SNode operation = getRealNodeById("4720524343100640222");
@@ -68,7 +71,6 @@ public class SetSubtyping_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeIncompatibleTypesCheck4720524343100648716() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4720524343100648710");
         SNode operation = getRealNodeById("4720524343100648716");
@@ -76,7 +78,6 @@ public class SetSubtyping_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4720524343099926088() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4720524343099923541");
         SNode operation = getRealNodeById("4720524343099926088");

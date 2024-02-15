@@ -83,8 +83,12 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
       super(owner);
     }
 
-    public void test_NodeWarningCheck595838485961914360() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("595838485955086229");
+    }
 
+    public void test_NodeWarningCheck595838485961914360() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("595838485955112039");
         SNode operation = getRealNodeById("595838485961914360");
@@ -92,7 +96,6 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
       });
     }
     public void test_NodeUnusedVariableWarningCheck215889526513022166() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("595838485955111993");
         SNode operation = getRealNodeById("215889526513022166");
@@ -100,7 +103,6 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
       });
     }
     public void test_NodeErrorCheck595838485955120512() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("595838485955112480");
         SNode operation = getRealNodeById("595838485955120512");
@@ -108,7 +110,6 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
       });
     }
     public void test_NodeWarningCheck595838485961915035() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("595838485955112302");
         SNode operation = getRealNodeById("595838485961915035");
@@ -116,7 +117,6 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
       });
     }
     public void test_NodeUnusedVariableWarningCheck215889526513024148() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("595838485955112299");
         SNode operation = getRealNodeById("215889526513024148");
@@ -124,7 +124,6 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
       });
     }
     public void test_NodeWarningCheck595838485961916732() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("595838485955114506");
         SNode operation = getRealNodeById("595838485961916732");
@@ -132,7 +131,6 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
       });
     }
     public void test_NodeUnusedVariableWarningCheck215889526513023159() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("595838485955114503");
         SNode operation = getRealNodeById("215889526513023159");
@@ -140,7 +138,6 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
       });
     }
     public void test_NodeWarningCheck595838485961917399() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("595838485955117670");
         SNode operation = getRealNodeById("595838485961917399");
@@ -148,7 +145,6 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
       });
     }
     public void test_NodeUnusedVariableWarningCheck215889526513026116() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("595838485955117667");
         SNode operation = getRealNodeById("215889526513026116");
@@ -156,7 +152,6 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
       });
     }
     public void test_NodeWarningCheck595838485961918062() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("595838485955150406");
         SNode operation = getRealNodeById("595838485961918062");
@@ -164,7 +159,6 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
       });
     }
     public void test_NodeUnusedVariableWarningCheck215889526513027103() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("595838485955150403");
         SNode operation = getRealNodeById("215889526513027103");
@@ -172,7 +166,6 @@ public class WildCardTypeIsAValidSubstituteForBoundedParameter_Test extends Base
       });
     }
     public void test_ErrorMessagesCheck595838485955141760() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("595838485955086231");
         SNode operation = getRealNodeById("595838485955141760");

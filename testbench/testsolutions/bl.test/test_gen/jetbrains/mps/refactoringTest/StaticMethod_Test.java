@@ -38,11 +38,13 @@ public class StaticMethod_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230053223884", "1230053223910");
+    }
+
     public void test_StaticMethod() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230053223884");
-        addNodeById("1230053223910");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("1230053223905"));
         ref.doRefactor();

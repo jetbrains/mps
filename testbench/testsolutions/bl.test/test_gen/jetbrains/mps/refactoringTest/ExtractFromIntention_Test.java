@@ -44,13 +44,13 @@ public class ExtractFromIntention_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052684510", "1230052684520", "1230052684528", "1230052684538");
+    }
+
     public void test_extractExpression() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1230052684510");
-        addNodeById("1230052684520");
-        addNodeById("1230052684528");
-        addNodeById("1230052684538");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         SLinkOperations.setTarget(getNodeById("1230052684533"), LINKS.classConcept$M5BC, getNodeById("1230052684539"));
         SLinkOperations.setTarget(getNodeById("1230052684533"), LINKS.baseMethodDeclaration$pyYw, getNodeById("1230052684540"));

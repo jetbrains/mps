@@ -46,51 +46,32 @@ public class TypeCheckingErrors_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1301553664999174765", "3441689827373214227", "1089557578627272135", "360223900466871399", "5532302989585163343");
+    }
+
     public void test_mps18720() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1301553664999174765");
-        addNodeById("3441689827373214227");
-        addNodeById("1089557578627272135");
-        addNodeById("360223900466871399");
-        addNodeById("5532302989585163343");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getNodeById("1301553664997476018"), null)).isEmpty();
         assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getNodeById("3441689827373215907"), null)).isEmpty();
       });
     }
     public void test_varar_raw() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1301553664999174765");
-        addNodeById("3441689827373214227");
-        addNodeById("1089557578627272135");
-        addNodeById("360223900466871399");
-        addNodeById("5532302989585163343");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getNodeById("1089557578627275112"), null)).all((it) -> SuppressErrorsChecker.FLAVOUR_ACTIVE_SUPPRESSOR.canGet(it));
       });
     }
     public void test_lbt_subtypeof_param() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1301553664999174765");
-        addNodeById("3441689827373214227");
-        addNodeById("1089557578627272135");
-        addNodeById("360223900466871399");
-        addNodeById("5532302989585163343");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getNodeById("360223900466887047"), null)).isEmpty();
       });
     }
     public void test_meet_with_variable_excluded_from_lcs() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("1301553664999174765");
-        addNodeById("3441689827373214227");
-        addNodeById("1089557578627272135");
-        addNodeById("360223900466871399");
-        addNodeById("5532302989585163343");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getNodeById("6368058149914761648"), null)).isEmpty();
       });

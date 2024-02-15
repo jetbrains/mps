@@ -38,12 +38,13 @@ public class IntroduceVariableFromAnonimousClass_Test extends BaseTransformation
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("3109730807963543192", "3109730807963543200", "3109730807963545002");
+    }
+
     public void test_IntroduceVariableFromAnonimousClassTest() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("3109730807963543192");
-        addNodeById("3109730807963543200");
-        addNodeById("3109730807963545002");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         IntroduceLocalVariableRefactoring refactoring = new IntroduceLocalVariableRefactoring();
         refactoring.init(getNodeById("3109730807963543246"), null);

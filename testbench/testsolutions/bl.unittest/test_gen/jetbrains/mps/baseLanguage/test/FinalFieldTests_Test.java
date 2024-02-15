@@ -59,8 +59,12 @@ public class FinalFieldTests_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck843236768048178247() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("843236768048177680");
+    }
 
+    public void test_ErrorMessagesCheck843236768048178247() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("843236768048177681");
         SNode operation = getRealNodeById("843236768048178247");
@@ -68,7 +72,6 @@ public class FinalFieldTests_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeVariableHasNotBeenInitializedCheck6923385624928056097() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451229351");
         SNode operation = getRealNodeById("6923385624928056097");
@@ -76,7 +79,6 @@ public class FinalFieldTests_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeVariableHasNotBeenInitializedCheck6923385624928725296() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451227571");
         SNode operation = getRealNodeById("6923385624928725296");
@@ -84,7 +86,6 @@ public class FinalFieldTests_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2466039659637288472() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7255638311037833668");
         SNode operation = getRealNodeById("2466039659637288472");
@@ -92,7 +93,6 @@ public class FinalFieldTests_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeCannotAssignValueToFinalCheck2466039659637220345() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2466039659637219764");
         SNode operation = getRealNodeById("2466039659637220345");
@@ -100,7 +100,6 @@ public class FinalFieldTests_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2466039659637478694() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2466039659637477690");
         SNode operation = getRealNodeById("2466039659637478694");

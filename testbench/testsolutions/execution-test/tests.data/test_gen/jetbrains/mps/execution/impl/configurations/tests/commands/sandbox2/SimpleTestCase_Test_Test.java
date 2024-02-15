@@ -32,7 +32,13 @@ public class SimpleTestCase_Test_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_test1() throws Exception {
+      initTestNodes();
       Assert.assertFalse(false);
     }
 

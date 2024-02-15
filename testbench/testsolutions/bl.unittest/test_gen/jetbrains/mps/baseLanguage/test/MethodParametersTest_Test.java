@@ -55,15 +55,19 @@ public class MethodParametersTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1217271585643");
+    }
+
     public void test_MethodParametersTest() throws Exception {
-      runWithinCommand(() -> addNodeById("1217271585643"));
+      initTestNodes();
       runWithinCommand(() -> {
         // Check statement was moved to node annotation
         // check getNodeById(string):node<> error messages
       });
     }
     public void test_NodeVariableHasNotBeenInitializedErrorCheck6923385624927544278() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451230144");
         SNode operation = getRealNodeById("6923385624927544278");
@@ -71,7 +75,6 @@ public class MethodParametersTest_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeVariableInitializerIsRedundantWarningCheck6923385624929086232() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451230141");
         SNode operation = getRealNodeById("6923385624929086232");
@@ -79,7 +82,6 @@ public class MethodParametersTest_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnusedVariableWarningCheck215889526512877601() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1215444224355");
         SNode operation = getRealNodeById("215889526512877601");
@@ -87,7 +89,6 @@ public class MethodParametersTest_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2501421320959199442() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1215444224347");
         SNode operation = getRealNodeById("2501421320959199442");

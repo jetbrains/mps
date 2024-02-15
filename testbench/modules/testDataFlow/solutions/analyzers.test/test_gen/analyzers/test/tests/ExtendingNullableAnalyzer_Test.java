@@ -42,8 +42,12 @@ public class ExtendingNullableAnalyzer_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck7974543756120908670() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1417601170173084173");
+    }
 
+    public void test_ErrorMessagesCheck7974543756120908670() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1417601170173158309");
         SNode operation = getRealNodeById("7974543756120908670");
@@ -51,7 +55,6 @@ public class ExtendingNullableAnalyzer_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck7078910619968857445() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1417601170173158514");
         SNode operation = getRealNodeById("7078910619968857445");

@@ -37,8 +37,12 @@ public class InternalClassifier_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck6293984074587251910() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1293230950168439294");
+    }
 
+    public void test_ErrorMessagesCheck6293984074587251910() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1293230950168439296");
         SNode operation = getRealNodeById("6293984074587251910");

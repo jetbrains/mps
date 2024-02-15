@@ -40,9 +40,13 @@ public class DiamondOperator_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeTypeCheck2668602783496187514() throws Exception {
-      runWithinCommand(() -> addNodeById("2668602783496188412"));
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2668602783496030020");
+    }
 
+    public void test_NodeTypeCheck2668602783496187514() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2668602783496031829");
         SNode operation = getRealNodeById("2668602783496187514");
@@ -50,7 +54,6 @@ public class DiamondOperator_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeSystemCheck2668602783496250965() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2668602783496238456");
         SNode operation = getRealNodeById("2668602783496250965");

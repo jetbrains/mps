@@ -38,11 +38,13 @@ public class InlineMethodWithUnusedParameters_Test extends BaseTransformationTes
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4412735672778826495", "4412735672778826537");
+    }
+
     public void test_InlineMethodWithUnusedParameters() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("4412735672778826495");
-        addNodeById("4412735672778826537");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("4412735672778826530"));
         ref.doRefactor();

@@ -37,8 +37,12 @@ public class AdvancedFunctionParameter_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck3116855336983150016() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8871630846489169648");
+    }
 
+    public void test_ErrorMessagesCheck3116855336983150016() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8871630846489169646");
         SNode operation = getRealNodeById("3116855336983150016");

@@ -38,11 +38,13 @@ public class OperandOfDotExpression_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("30987049746113413", "30987049746113440");
+    }
+
     public void test_DeclarationVariablesInMethod() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("30987049746113413");
-        addNodeById("30987049746113440");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         InlineMethodRefactoring ref = new InlineMethodRefactoring(getNodeById("30987049746125945"));
         ref.doRefactor();

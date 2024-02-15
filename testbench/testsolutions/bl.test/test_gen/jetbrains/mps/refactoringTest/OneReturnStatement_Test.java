@@ -40,12 +40,17 @@ public class OneReturnStatement_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1230052642175");
+    }
+
     public void test_oneReturnStatement() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052642175"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertNull(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052642181")))));
     }
     public void test_returnAndOutVariable() throws Exception {
-      runWithinCommand(() -> addNodeById("1230052642175"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertTrue(ExtractMethodFactory.getErrors(ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052642191"), getNodeById("1230052642198"))) != null));
     }
 

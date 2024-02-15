@@ -55,24 +55,29 @@ public class TestTemporalPaths_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("4045247515868358884");
+    }
+
     public void test_topLevelJar() throws Exception {
-      runWithinCommand(() -> addNodeById("4045247515868358884"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertEquals(TestContext.DEPLOY + "/test.jar", BuildLayout_NamedContainer__BehaviorDescriptor.getOutputPath_WithMacro_idfzIHCHip1Q.invoke(getNodeById("280273048052535266"), new TestContext(TestBody.this.getBuildTestsModel()))));
     }
     public void test_topLevelFolder() throws Exception {
-      runWithinCommand(() -> addNodeById("4045247515868358884"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertEquals(TestContext.DEPLOY + "/folder", BuildLayout_NamedContainer__BehaviorDescriptor.getOutputPath_WithMacro_idfzIHCHip1Q.invoke(getNodeById("280273048052535287"), new TestContext(TestBody.this.getBuildTestsModel()))));
     }
     public void test_topInternalFolder() throws Exception {
-      runWithinCommand(() -> addNodeById("4045247515868358884"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertEquals(TestContext.DEPLOY + "/folder/internal", BuildLayout_NamedContainer__BehaviorDescriptor.getOutputPath_WithMacro_idfzIHCHip1Q.invoke(getNodeById("7422876504327290551"), new TestContext(TestBody.this.getBuildTestsModel()))));
     }
     public void test_jarInFolder() throws Exception {
-      runWithinCommand(() -> addNodeById("4045247515868358884"));
+      initTestNodes();
       runWithinCommand(() -> Assert.assertEquals(TestContext.DEPLOY + "/folder/test.jar", BuildLayout_NamedContainer__BehaviorDescriptor.getOutputPath_WithMacro_idfzIHCHip1Q.invoke(getNodeById("280273048052535289"), new TestContext(TestBody.this.getBuildTestsModel()))));
     }
     public void test_folderInJar() throws Exception {
-      runWithinCommand(() -> addNodeById("4045247515868358884"));
+      initTestNodes();
       runWithinCommand(() -> {
         TestContext testContext = new TestContext(TestBody.this.getBuildTestsModel());
         Assert.assertEquals(TestContext.TEMP + "/default/test.jar/internalFolder", BuildLayout_NamedContainer__BehaviorDescriptor.getOutputPath_WithMacro_idfzIHCHip1Q.invoke(getNodeById("8104754176559709900"), testContext));
@@ -80,7 +85,7 @@ public class TestTemporalPaths_Test extends BaseTransformationTest {
       });
     }
     public void test_duplicatedNames() throws Exception {
-      runWithinCommand(() -> addNodeById("4045247515868358884"));
+      initTestNodes();
       runWithinCommand(() -> {
         TestContext testContext = new TestContext(TestBody.this.getBuildTestsModel());
         Assert.assertEquals(TestContext.TEMP + "/default/some.jar/someFolder", BuildLayout_NamedContainer__BehaviorDescriptor.getOutputPath_WithMacro_idfzIHCHip1Q.invoke(getNodeById("4209004860870558811"), testContext));

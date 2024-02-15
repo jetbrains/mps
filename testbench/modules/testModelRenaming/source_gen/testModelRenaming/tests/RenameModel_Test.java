@@ -50,7 +50,13 @@ public class RenameModel_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes();
+    }
+
     public void test_renameModel() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SModel modelToRename = TestBody.this.initializeModel("1");
         if (modelToRename == null) {
@@ -71,6 +77,7 @@ public class RenameModel_Test extends BaseTransformationTest {
       });
     }
     public void test_caseSensitiveRenameModel() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SModel modelToRename = TestBody.this.initializeModel("2");
         if (modelToRename == null) {

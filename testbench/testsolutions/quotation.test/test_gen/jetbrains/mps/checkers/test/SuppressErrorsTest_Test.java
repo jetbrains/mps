@@ -55,8 +55,12 @@ public class SuppressErrorsTest_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeOperatorCannotBeAppliedCheck2472582545953979358() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("6807933448480843367", "6807933448480841930", "6807933448482335857");
+    }
 
+    public void test_NodeOperatorCannotBeAppliedCheck2472582545953979358() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6807933448482366660");
         SNode operation = getRealNodeById("2472582545953979358");
@@ -64,7 +68,6 @@ public class SuppressErrorsTest_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2472582545954064375() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6807933448482354120");
         SNode operation = getRealNodeById("2472582545954064375");
@@ -72,7 +75,6 @@ public class SuppressErrorsTest_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2472582545954064484() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6807933448480842040");
         SNode operation = getRealNodeById("2472582545954064484");
@@ -80,7 +82,6 @@ public class SuppressErrorsTest_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeOperatorCannotBeAppliedCheck2472582545953984250() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6807933448482399225");
         SNode operation = getRealNodeById("2472582545953984250");
@@ -88,7 +89,6 @@ public class SuppressErrorsTest_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2472582545954064584() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6807933448482338502");
         SNode operation = getRealNodeById("2472582545954064584");

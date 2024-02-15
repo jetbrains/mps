@@ -83,16 +83,13 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       super(owner);
     }
 
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("7978163097785993303", "7978163097786003045", "2877673685762481368", "2877673685762709492", "2877673685762713705", "2877673685762489194", "2877673685762690939");
+    }
+
     public void test_switchInStatement() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7978163097785993303");
-        addNodeById("7978163097786003045");
-        addNodeById("2877673685762481368");
-        addNodeById("2877673685762709492");
-        addNodeById("2877673685762713705");
-        addNodeById("2877673685762489194");
-        addNodeById("2877673685762690939");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertEquals(TestBody.this.testSwitchInStatement(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c113L, "option1")), 2);
         Assert.assertEquals(TestBody.this.testSwitchInStatement(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c114L, "option2")), 4);
@@ -106,15 +103,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       });
     }
     public void test_switchInReturn() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7978163097785993303");
-        addNodeById("7978163097786003045");
-        addNodeById("2877673685762481368");
-        addNodeById("2877673685762709492");
-        addNodeById("2877673685762713705");
-        addNodeById("2877673685762489194");
-        addNodeById("2877673685762690939");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertEquals(TestBody.this.testSwitchInReturn(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c113L, "option1")), 2);
         Assert.assertEquals(TestBody.this.testSwitchInReturn(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c114L, "option2")), 4);
@@ -128,15 +117,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       });
     }
     public void test_switchInAssignment() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7978163097785993303");
-        addNodeById("7978163097786003045");
-        addNodeById("2877673685762481368");
-        addNodeById("2877673685762709492");
-        addNodeById("2877673685762713705");
-        addNodeById("2877673685762489194");
-        addNodeById("2877673685762690939");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertEquals(TestBody.this.testSwitchInAssignment(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c113L, "option1")), 2);
         Assert.assertEquals(TestBody.this.testSwitchInAssignment(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c114L, "option2")), 4);
@@ -150,15 +131,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       });
     }
     public void test_switchInLVD() throws Exception {
-      runWithinCommand(() -> {
-        addNodeById("7978163097785993303");
-        addNodeById("7978163097786003045");
-        addNodeById("2877673685762481368");
-        addNodeById("2877673685762709492");
-        addNodeById("2877673685762713705");
-        addNodeById("2877673685762489194");
-        addNodeById("2877673685762690939");
-      });
+      initTestNodes();
       runWithinCommand(() -> {
         Assert.assertEquals(TestBody.this.testSwitchInLVD(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c113L, "option1")), 2);
         Assert.assertEquals(TestBody.this.testSwitchInLVD(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x6eb821113ba9c112L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Switch"), 0x6eb821113ba9c114L, "option2")), 4);
@@ -172,7 +145,6 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck7978163097786003032() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7978163097785996348");
         SNode operation = getRealNodeById("7978163097786003032");
@@ -180,7 +152,6 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2877673685762596503() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2877673685762564970");
         SNode operation = getRealNodeById("2877673685762596503");
@@ -188,7 +159,6 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2877673685762600678() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2877673685762600669");
         SNode operation = getRealNodeById("2877673685762600678");
@@ -196,8 +166,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeCheck2877673685762780216() throws Exception {
-      runWithinCommand(() -> addNodeById("2877673685762780254"));
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2877673685762709506");
         SNode operation = getRealNodeById("2877673685762780216");
@@ -205,8 +174,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeCheck2877673685762791490() throws Exception {
-      runWithinCommand(() -> addNodeById("2663056186797888905"));
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2877673685762713718");
         SNode operation = getRealNodeById("2877673685762791490");
@@ -214,8 +182,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeCheck2877673685762756263() throws Exception {
-      runWithinCommand(() -> addNodeById("2877673685762761440"));
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2877673685762489208");
         SNode operation = getRealNodeById("2877673685762756263");
@@ -223,8 +190,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTypeCheck2877673685762770603() throws Exception {
-      runWithinCommand(() -> addNodeById("2877673685762770626"));
-
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2877673685762690953");
         SNode operation = getRealNodeById("2877673685762770603");

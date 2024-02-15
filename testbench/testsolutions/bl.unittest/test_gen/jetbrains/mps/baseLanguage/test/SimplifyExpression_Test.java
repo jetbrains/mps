@@ -351,8 +351,12 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeTheConditionIsAlwaysCheck8245314650934534145() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("2857825852308723293", "4477106456910349721", "8933433824910885561", "8933433824911244124", "8933433824911001632", "8933433824911278993", "8933433824911330363", "8933433824911330396", "8933433824912629319");
+    }
 
+    public void test_NodeTheConditionIsAlwaysCheck8245314650934534145() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8245314650934017653");
         SNode operation = getRealNodeById("8245314650934534145");
@@ -360,7 +364,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8626468694781659666() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8626468694781654296");
         SNode operation = getRealNodeById("8626468694781659666");
@@ -368,7 +371,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck4477106456906133459() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8626468694781675640");
         SNode operation = getRealNodeById("4477106456906133459");
@@ -376,7 +378,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8245314650934533632() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8245314650934020568");
         SNode operation = getRealNodeById("8245314650934533632");
@@ -384,7 +385,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8245314650934533563() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8245314650934532929");
         SNode operation = getRealNodeById("8245314650934533563");
@@ -392,7 +392,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeInfiniteLoopCheck8933433824910167429() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8245314650934527071");
         SNode operation = getRealNodeById("8933433824910167429");
@@ -400,7 +399,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheTernaryOperatorConditionCheck8245314650934576457() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2857825852308803559");
         SNode operation = getRealNodeById("8245314650934576457");
@@ -408,7 +406,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheTernaryOperatorConditionCheck8245314650934580399() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8245314650934578462");
         SNode operation = getRealNodeById("8245314650934580399");
@@ -416,7 +413,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeWarningCheck4477106456906157513() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4477106456906150876");
         SNode operation = getRealNodeById("4477106456906157513");
@@ -424,7 +420,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8245314650934554098() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8245314650934553484");
         SNode operation = getRealNodeById("8245314650934554098");
@@ -432,7 +427,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck4477106456913936588() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2857825852308764488");
         SNode operation = getRealNodeById("4477106456913936588");
@@ -440,7 +434,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck2857825852308765476() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2857825852308764486");
         SNode operation = getRealNodeById("2857825852308765476");
@@ -448,7 +441,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8626468694779692282() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8626468694778132466");
         SNode operation = getRealNodeById("8626468694779692282");
@@ -456,7 +448,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8626468694779705042() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8626468694779702469");
         SNode operation = getRealNodeById("8626468694779705042");
@@ -464,7 +455,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck4477106456914053028() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2857825852308756321");
         SNode operation = getRealNodeById("4477106456914053028");
@@ -472,7 +462,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck4477106456906125988() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2857825852308747522");
         SNode operation = getRealNodeById("4477106456906125988");
@@ -480,7 +469,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheNotLogicalExpressionCheck8626468694778147706() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8626468694778147327");
         SNode operation = getRealNodeById("8626468694778147706");
@@ -488,7 +476,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheNotLogicalExpressionCheck8626468694778663594() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8626468694778154889");
         SNode operation = getRealNodeById("8626468694778663594");
@@ -496,7 +483,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck2857825852308723301() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2857825852308723295");
         SNode operation = getRealNodeById("2857825852308723301");
@@ -504,7 +490,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck4477106456910957951() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4477106456910425567");
         SNode operation = getRealNodeById("4477106456910957951");
@@ -512,7 +497,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheNotLogicalExpressionCheck4477106456913804782() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4477106456910420970");
         SNode operation = getRealNodeById("4477106456913804782");
@@ -520,7 +504,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck4477106456910420974() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4477106456910420969");
         SNode operation = getRealNodeById("4477106456910420974");
@@ -528,7 +511,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck4477106456911678890() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4477106456911667195");
         SNode operation = getRealNodeById("4477106456911678890");
@@ -536,7 +518,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck4477106456911590715() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4477106456910411887");
         SNode operation = getRealNodeById("4477106456911590715");
@@ -544,7 +525,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheNotLogicalExpressionCheck4477106456913803784() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4477106456910972764");
         SNode operation = getRealNodeById("4477106456913803784");
@@ -552,7 +532,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck4477106456911594718() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4477106456910972763");
         SNode operation = getRealNodeById("4477106456911594718");
@@ -560,7 +539,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck4477106456911698964() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4477106456911687811");
         SNode operation = getRealNodeById("4477106456911698964");
@@ -568,7 +546,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2403546691281476793() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691281476789");
         SNode operation = getRealNodeById("2403546691281476793");
@@ -576,7 +553,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnreachableCodeCheck8011059391326654024() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691281476797");
         SNode operation = getRealNodeById("8011059391326654024");
@@ -584,7 +560,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2403546691281479396() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691281476802");
         SNode operation = getRealNodeById("2403546691281479396");
@@ -592,7 +567,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2403546691281476816() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691281476812");
         SNode operation = getRealNodeById("2403546691281476816");
@@ -600,7 +574,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnreachableCodeCheck8011059391326630463() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691281476820");
         SNode operation = getRealNodeById("8011059391326630463");
@@ -608,7 +581,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2403546691281476829() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691281476825");
         SNode operation = getRealNodeById("2403546691281476829");
@@ -616,7 +588,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2403546691276100939() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691276097631");
         SNode operation = getRealNodeById("2403546691276100939");
@@ -624,7 +595,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnreachableCodeCheck8011059391325672679() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691276097650");
         SNode operation = getRealNodeById("8011059391325672679");
@@ -632,7 +602,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck875204272651629221() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("875204272651629110");
         SNode operation = getRealNodeById("875204272651629221");
@@ -640,7 +609,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2403546691281975567() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691281975565");
         SNode operation = getRealNodeById("2403546691281975567");
@@ -648,7 +616,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnreachableCodeCheck8011059391326124312() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691281975571");
         SNode operation = getRealNodeById("8011059391326124312");
@@ -656,7 +623,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2403546691282430650() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691281975576");
         SNode operation = getRealNodeById("2403546691282430650");
@@ -664,7 +630,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnreachableCodeCheck8011059391326147870() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691281975579");
         SNode operation = getRealNodeById("8011059391326147870");
@@ -672,7 +637,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck875204272651629086() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("875204272651628941");
         SNode operation = getRealNodeById("875204272651629086");
@@ -680,7 +644,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnreachableCodeCheck8011059391326159213() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691281975590");
         SNode operation = getRealNodeById("8011059391326159213");
@@ -688,7 +651,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2403546691281975597() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691281975595");
         SNode operation = getRealNodeById("2403546691281975597");
@@ -696,7 +658,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck2403546691278265076() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2403546691278265072");
         SNode operation = getRealNodeById("2403546691278265076");
@@ -704,7 +665,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck875204272651628917() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("875204272651625420");
         SNode operation = getRealNodeById("875204272651628917");
@@ -712,7 +672,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck4477106456910414383() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4477106456910351315");
         SNode operation = getRealNodeById("4477106456910414383");
@@ -720,7 +679,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824910951465() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824910935907");
         SNode operation = getRealNodeById("8933433824910951465");
@@ -728,7 +686,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824910995374() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824910979920");
         SNode operation = getRealNodeById("8933433824910995374");
@@ -736,7 +693,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8933433824910995377() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824910979920");
         SNode operation = getRealNodeById("8933433824910995377");
@@ -744,7 +700,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8933433824911524754() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824910893555");
         SNode operation = getRealNodeById("8933433824911524754");
@@ -752,7 +707,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnreachableNodeErrorCheck8933433824911278707() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911244159");
         SNode operation = getRealNodeById("8933433824911278707");
@@ -760,7 +714,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824911329695() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911244167");
         SNode operation = getRealNodeById("8933433824911329695");
@@ -768,7 +721,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824911244176() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911244172");
         SNode operation = getRealNodeById("8933433824911244176");
@@ -776,7 +728,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeInfiniteLoopCheck8933433824911244180() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911244170");
         SNode operation = getRealNodeById("8933433824911244180");
@@ -784,7 +735,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8933433824911524121() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911244125");
         SNode operation = getRealNodeById("8933433824911524121");
@@ -792,7 +742,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824911010229() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911010225");
         SNode operation = getRealNodeById("8933433824911010229");
@@ -800,7 +749,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824911010541() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911010537");
         SNode operation = getRealNodeById("8933433824911010541");
@@ -808,7 +756,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8933433824911010544() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911010537");
         SNode operation = getRealNodeById("8933433824911010544");
@@ -816,7 +763,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8933433824911524012() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911001633");
         SNode operation = getRealNodeById("8933433824911524012");
@@ -824,7 +770,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824911313249() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911279032");
         SNode operation = getRealNodeById("8933433824911313249");
@@ -832,7 +777,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824911279041() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911279037");
         SNode operation = getRealNodeById("8933433824911279041");
@@ -840,7 +784,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeInfiniteLoopCheck8933433824911279045() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911279035");
         SNode operation = getRealNodeById("8933433824911279045");
@@ -848,7 +791,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8933433824911422122() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911278994");
         SNode operation = getRealNodeById("8933433824911422122");
@@ -856,7 +798,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnusedVariableWarningCheck8933433824911381318() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911341548");
         SNode operation = getRealNodeById("8933433824911381318");
@@ -864,7 +805,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824911364458() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911348096");
         SNode operation = getRealNodeById("8933433824911364458");
@@ -872,7 +812,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnusedVariableWarningCheck8933433824911399096() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911381913");
         SNode operation = getRealNodeById("8933433824911399096");
@@ -880,7 +819,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8933433824911420168() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911400901");
         SNode operation = getRealNodeById("8933433824911420168");
@@ -888,7 +826,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824911420171() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911400901");
         SNode operation = getRealNodeById("8933433824911420171");
@@ -896,7 +833,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8933433824911421489() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911330364");
         SNode operation = getRealNodeById("8933433824911421489");
@@ -904,7 +840,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnusedVariableWarningCheck8933433824911468944() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911422351");
         SNode operation = getRealNodeById("8933433824911468944");
@@ -912,7 +847,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnreachableNodeErrorCheck8933433824911330408() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911330403");
         SNode operation = getRealNodeById("8933433824911330408");
@@ -920,7 +854,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824911452242() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911435538");
         SNode operation = getRealNodeById("8933433824911452242");
@@ -928,7 +861,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnusedVariableWarningCheck8933433824911485571() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911469004");
         SNode operation = getRealNodeById("8933433824911485571");
@@ -936,7 +868,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824911506647() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911490753");
         SNode operation = getRealNodeById("8933433824911506647");
@@ -944,7 +875,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeInfiniteLoopCheck8933433824911523353() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911469003");
         SNode operation = getRealNodeById("8933433824911523353");
@@ -952,7 +882,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8933433824911422220() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824911330397");
         SNode operation = getRealNodeById("8933433824911422220");
@@ -960,7 +889,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeUnreachableCodeCheck8933433824914728267() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824912667486");
         SNode operation = getRealNodeById("8933433824914728267");
@@ -968,7 +896,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8933433824914711244() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824912666839");
         SNode operation = getRealNodeById("8933433824914711244");
@@ -976,7 +903,6 @@ public class SimplifyExpression_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8933433824914728445() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8933433824912639329");
         SNode operation = getRealNodeById("8933433824914728445");

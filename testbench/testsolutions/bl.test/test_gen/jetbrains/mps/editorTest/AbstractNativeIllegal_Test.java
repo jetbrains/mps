@@ -42,8 +42,12 @@ public class AbstractNativeIllegal_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_NodeErrorCheck8347245235047186104() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("8347245235044888385");
+    }
 
+    public void test_NodeErrorCheck8347245235047186104() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8347245235044889176");
         SNode operation = getRealNodeById("8347245235047186104");
@@ -51,7 +55,6 @@ public class AbstractNativeIllegal_Test extends BaseTransformationTest {
       });
     }
     public void test_ErrorMessagesCheck8347245235044889233() throws Exception {
-
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8347245235044888387");
         SNode operation = getRealNodeById("8347245235044889233");

@@ -37,8 +37,12 @@ public class IfStatementWithReturns_Test extends BaseTransformationTest {
       super(owner);
     }
 
-    public void test_ErrorMessagesCheck1220013512724() throws Exception {
+    @Override
+    protected void initTestNodes() {
+      prepareTestNodes("1220013386885");
+    }
 
+    public void test_ErrorMessagesCheck1220013512724() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1220013400783");
         SNode operation = getRealNodeById("1220013512724");
