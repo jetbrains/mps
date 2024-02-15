@@ -32,15 +32,18 @@ public class BaseTestBody {
     myProject = owner.getProject();
   }
 
-  public final void addNodeById(final String id) {
-    myProject.getModelAccess().executeCommand(() -> {
-      SNode node = getRealNodeById(id);
-      SNode copy = CopyUtil.copy(node, myMap, true);
-      for (SNode a : ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{}))) {
-        SNodeOperations.deleteNode(a);
-      }
-      myModel.addRootNode(copy);
-    });
+  /**
+   * requires proper write/command model lock
+   */
+  public final void addNodeById(String id) {
+    // I believe idea here is to make a copy of original node w/o any test-related stuff, like 'check'annotations
+    // There's implicit assumption that *all* the nodes created under NodesTestCase get copied and that myMap gives access to a copy of any child of the original node.
+    SNode node = getRealNodeById(id);
+    SNode copy = CopyUtil.copy(node, myMap, true);
+    for (SNode a : ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{}))) {
+      SNodeOperations.deleteNode(a);
+    }
+    myModel.addRootNode(copy);
   }
 
   /**

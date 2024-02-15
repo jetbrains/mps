@@ -116,11 +116,11 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   private void doInitEditor(final String before, final String after) throws Exception {
-    addNodeById(before);
-    if (!(after.equals(""))) {
-      addNodeById(after);
-    }
     myProject.getModelAccess().runWriteAction(() -> {
+      addNodeById(before);
+      if (!(after.equals(""))) {
+        addNodeById(after);
+      }
       myBefore = getNodeById(before);
       myStart = findCellReference(getRealNodeById(before));
       if (myStart == null) {
