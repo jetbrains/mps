@@ -33,6 +33,27 @@ public class BaseTestBody {
   }
 
   /**
+   * subclasses override with an initialization sequence to prepare all nodes test could access/modify
+   * this method serves as an entry point for generated test methods to move initialization into single place and out of test code
+   */
+  protected void initTestNodes() {
+    // no-op, subclasses override with a sequence of addNodeById()
+  }
+
+  /**
+   * Handy alternative to a sequence of addNodeById(), with appropriate model lock
+   */
+  protected final void prepareTestNodes(final String... nodeId) {
+    // intentionally not clone/copy in the name, as I plan to have distinct model for stripped copies of test nodes with original id
+    // (aka clone), so that I can get rid of myMap altogether (would reference test copies by the same id as original one)
+    myProject.getModelAccess().runWriteAction(() -> {
+      for (String nid : nodeId) {
+        addNodeById(nid);
+      }
+    });
+  }
+
+  /**
    * requires proper write/command model lock
    */
   public final void addNodeById(String id) {
