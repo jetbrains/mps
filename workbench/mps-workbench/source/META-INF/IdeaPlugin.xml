@@ -228,9 +228,11 @@
       <action id="FileChooser.GotoMPSModule"
               class="jetbrains.mps.ide.ui.filechoosers.treefilechooser.GotoModuleDirectory"
               text="Go to Module Directory"
-              icon="/nodes/ideaModule.png"/>
+              icon="com.intellij.icons.AllIcons.Actions.ModuleDirectory"/>
       <add-to-group group-id="FileChooserToolbar" anchor="after" relative-to-action="FileChooser.GotoProject"/>
     </group>
+    <action id="FileChooser.ShowHidden" class="com.intellij.openapi.fileChooser.actions.ToggleVisibilityAction" overrides="true"
+    icon="AllIcons.Actions.ToggleVisibility"/>
     <action id="OpenFile" class="jetbrains.mps.workbench.actions.OpenMPSProjectAction" overrides="true" icon="AllIcons.Actions.MenuOpen"/>
     <action id="WelcomeScreen.OpenDirectoryProject" class="jetbrains.mps.workbench.actions.OpenMPSProjectAction$OnMPSWelcomeScreen" overrides="true"/>
   </actions>
