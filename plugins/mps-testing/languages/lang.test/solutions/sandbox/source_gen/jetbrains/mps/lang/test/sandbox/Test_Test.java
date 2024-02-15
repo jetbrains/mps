@@ -125,7 +125,7 @@ public class Test_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451231681");
         SNode operation = getRealNodeById("6594325605663849546");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("6594325605663849548"));
+        new CheckTypesAction.CheckComputedType(getNodeById("3951985765451231681")).checkTypeIs(getNodeById("6594325605663849548"));
       });
     }
     public void test_ErrorMessagesCheck2501421320959199214() throws Exception {
@@ -154,7 +154,7 @@ public class Test_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451228786");
         SNode operation = getRealNodeById("6594325605663852576");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIn(CollectionSequence.fromCollectionAndArray(new ArrayList<SNode>(), getNodeById("6594325605663852582"), getNodeById("6594325605663852578")));
+        new CheckTypesAction.CheckComputedType(getNodeById("3951985765451228786")).checkTypeIn(CollectionSequence.fromCollectionAndArray(new ArrayList<SNode>(), getNodeById("6594325605663852582"), getNodeById("6594325605663852578")));
       });
     }
     public void test_ErrorMessagesCheck2501421320959199250() throws Exception {

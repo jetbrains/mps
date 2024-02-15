@@ -56,7 +56,7 @@ public class CollectionGenericsTest_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6802806833293297796");
         SNode operation = getRealNodeById("6802806833293299754");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("6802806833293299878"));
+        new CheckTypesAction.CheckComputedType(getNodeById("6802806833293297796")).checkTypeIs(getNodeById("6802806833293299878"));
       });
     }
     public void test_NodeTypeCheck6802806833293340692() throws Exception {
@@ -64,7 +64,7 @@ public class CollectionGenericsTest_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6802806833293339382");
         SNode operation = getRealNodeById("6802806833293340692");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("6802806833293341030"));
+        new CheckTypesAction.CheckComputedType(getNodeById("6802806833293339382")).checkTypeIs(getNodeById("6802806833293341030"));
       });
     }
     public void test_ErrorMessagesCheck6802806833293252920() throws Exception {

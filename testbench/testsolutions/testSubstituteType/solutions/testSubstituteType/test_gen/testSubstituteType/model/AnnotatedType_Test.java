@@ -89,7 +89,7 @@ public class AnnotatedType_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1470921783545285584");
         SNode operation = getRealNodeById("1470921783545289079");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("1470921783545289083"));
+        new CheckTypesAction.CheckComputedType(getNodeById("1470921783545285584")).checkTypeIs(getNodeById("1470921783545289083"));
       });
     }
     public void test_NodeTypeCheck1470921783545475598() throws Exception {
@@ -97,7 +97,7 @@ public class AnnotatedType_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1470921783545472584");
         SNode operation = getRealNodeById("1470921783545475598");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("1470921783545475602"));
+        new CheckTypesAction.CheckComputedType(getNodeById("1470921783545472584")).checkTypeIs(getNodeById("1470921783545475602"));
       });
     }
     public void test_NodeTypeCheck1470921783545475612() throws Exception {
@@ -105,7 +105,7 @@ public class AnnotatedType_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1470921783545475605");
         SNode operation = getRealNodeById("1470921783545475612");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("1470921783545504242"));
+        new CheckTypesAction.CheckComputedType(getNodeById("1470921783545475605")).checkTypeIs(getNodeById("1470921783545504242"));
       });
     }
     public void test_NodeErrorCheck8675420879155382069() throws Exception {

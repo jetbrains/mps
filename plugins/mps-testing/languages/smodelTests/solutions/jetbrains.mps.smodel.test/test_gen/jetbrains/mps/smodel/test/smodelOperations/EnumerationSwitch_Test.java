@@ -170,7 +170,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2877673685762709506");
         SNode operation = getRealNodeById("2877673685762780216");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2877673685762780254"));
+        new CheckTypesAction.CheckComputedType(getNodeById("2877673685762709506")).checkTypeIs(getNodeById("2877673685762780254"));
       });
     }
     public void test_NodeTypeCheck2877673685762791490() throws Exception {
@@ -178,7 +178,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2877673685762713718");
         SNode operation = getRealNodeById("2877673685762791490");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2663056186797888905"));
+        new CheckTypesAction.CheckComputedType(getNodeById("2877673685762713718")).checkTypeIs(getNodeById("2663056186797888905"));
       });
     }
     public void test_NodeTypeCheck2877673685762756263() throws Exception {
@@ -186,7 +186,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2877673685762489208");
         SNode operation = getRealNodeById("2877673685762756263");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2877673685762761440"));
+        new CheckTypesAction.CheckComputedType(getNodeById("2877673685762489208")).checkTypeIs(getNodeById("2877673685762761440"));
       });
     }
     public void test_NodeTypeCheck2877673685762770603() throws Exception {
@@ -194,7 +194,7 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2877673685762690953");
         SNode operation = getRealNodeById("2877673685762770603");
-        new CheckTypesAction.CheckComputedType(nodeToCheck).checkTypeIs(getNodeById("2877673685762770626"));
+        new CheckTypesAction.CheckComputedType(getNodeById("2877673685762690953")).checkTypeIs(getNodeById("2877673685762770626"));
       });
     }
 
