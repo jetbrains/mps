@@ -508,9 +508,9 @@
           <property role="Vb096" value="fLwANPu/blue" />
         </node>
       </node>
-      <node concept="3F1sOY" id="h3vm$Fz" role="3EZMnx">
-        <property role="1$x2rV" value="expected" />
-        <ref role="1NtTu8" to="tpe3:7jPoEeD$ZP4" resolve="expected" />
+      <node concept="3F1sOY" id="h3vmArp" role="3EZMnx">
+        <property role="1$x2rV" value="actual" />
+        <ref role="1NtTu8" to="tpe3:7jPoEeD$ZP5" />
       </node>
       <node concept="3F0ifn" id="h3vlQYs" role="3EZMnx">
         <property role="3F0ifm" value="equals" />
@@ -518,9 +518,9 @@
           <property role="Vb096" value="fLwANPu/blue" />
         </node>
       </node>
-      <node concept="3F1sOY" id="h3vmArp" role="3EZMnx">
-        <property role="1$x2rV" value="actual" />
-        <ref role="1NtTu8" to="tpe3:7jPoEeD$ZP5" resolve="actual" />
+      <node concept="3F1sOY" id="h3vm$Fz" role="3EZMnx">
+        <property role="1$x2rV" value="expected" />
+        <ref role="1NtTu8" to="tpe3:7jPoEeD$ZP4" />
       </node>
       <node concept="PMmxH" id="4uU5oUYY2Mp" role="3EZMnx">
         <ref role="PMmxG" node="4uU5oUYY2Mi" resolve="MessageComponent" />
