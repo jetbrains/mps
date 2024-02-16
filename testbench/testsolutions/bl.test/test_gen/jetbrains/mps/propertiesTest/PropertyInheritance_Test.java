@@ -67,42 +67,36 @@ public class PropertyInheritance_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck2793586790994231859() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227158484");
-        SNode operation = getRealNodeById("2793586790994231859");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_NodeTryingToAssignWeakerPrivilegesCheck6115392061227170451() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227159638");
-        SNode operation = getRealNodeById("6115392061227170451");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302595116711"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeTheMethodReturnTypeIsCheck6115392061227172643() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227170557");
-        SNode operation = getRealNodeById("6115392061227172643");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6115392061221562427"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeTryingToAssignWeakerPrivilegesCheck6115392061228741124() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227172800");
-        SNode operation = getRealNodeById("6115392061228741124");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302595116711"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck6115392061228741318() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227159373");
-        SNode operation = getRealNodeById("6115392061228741318");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782410371482"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeTheMethodCannotOverrideCheck6115392061233415628() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061233268919");
-        SNode operation = getRealNodeById("6115392061233415628");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302592864485"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }

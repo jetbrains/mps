@@ -58,28 +58,24 @@ public class CaseInsensitiveDuplicatedClassifierName_Test extends BaseTransforma
     public void test_NodeErrorCheck1005490780657563849() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1005490780655188848");
-        SNode operation = getRealNodeById("1005490780657563849");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeErrorCheck1005490780657563829() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1005490780655189011");
-        SNode operation = getRealNodeById("1005490780657563829");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeWarningCheck1005490780657563809() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1005490780655189178");
-        SNode operation = getRealNodeById("1005490780657563809");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.WARNING, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck1005490780655151764() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1005490780655151743");
-        SNode operation = getRealNodeById("1005490780655151764");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("1005490780655188848"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("1005490780655189011"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("1005490780655189178"), MessageStatus.WARNING, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
       });
     }

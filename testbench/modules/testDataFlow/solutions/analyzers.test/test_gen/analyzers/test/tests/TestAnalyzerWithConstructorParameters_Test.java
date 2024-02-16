@@ -54,21 +54,18 @@ public class TestAnalyzerWithConstructorParameters_Test extends BaseTransformati
     public void test_NodeErrorCheck8332528989793491523() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8332528989793488546");
-        SNode operation = getRealNodeById("8332528989793491523");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeErrorCheck8332528989793494654() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8332528989793494589");
-        SNode operation = getRealNodeById("8332528989793494654");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck8332528989793494697() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8332528989793494679");
-        SNode operation = getRealNodeById("8332528989793494697");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

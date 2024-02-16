@@ -70,57 +70,32 @@ public class TestExpectedType_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck4395293866213260523() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4395293866213195828");
-        SNode operation = getRealNodeById("4395293866213260523");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_NodeExpectedTypeCheck8101092317677991775() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8101092317677985822");
-        SNode operation = getRealNodeById("8101092317677991775");
-        new CheckTypesAction.CheckExpectedType(getNodeById("8101092317677985822")).checkTypeIs(getNodeById("8101092317677991990"));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckExpectedType(getNodeById("8101092317677985822")).checkTypeIs(getNodeById("8101092317677991990")));
     }
     public void test_NodeExpectedTypeCheck8101092317677995689() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8101092317677995687");
-        SNode operation = getRealNodeById("8101092317677995689");
-        new CheckTypesAction.CheckExpectedType(getNodeById("8101092317677995687")).checkTypeIs(getNodeById("8101092317677995690"));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckExpectedType(getNodeById("8101092317677995687")).checkTypeIs(getNodeById("8101092317677995690")));
     }
     public void test_NodeExpectedTypeCheck8101092317677999915() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8101092317677999913");
-        SNode operation = getRealNodeById("8101092317677999915");
-        new CheckTypesAction.CheckExpectedType(getNodeById("8101092317677999913")).checkTypeIs(getNodeById("8101092317677999916"));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckExpectedType(getNodeById("8101092317677999913")).checkTypeIs(getNodeById("8101092317677999916")));
     }
     public void test_NodeExpectedTypeCheck8101092317678002448() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8101092317678002446");
-        SNode operation = getRealNodeById("8101092317678002448");
-        new CheckTypesAction.CheckExpectedType(getNodeById("8101092317678002446")).checkTypeIs(getNodeById("8101092317678002449"));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckExpectedType(getNodeById("8101092317678002446")).checkTypeIs(getNodeById("8101092317678002449")));
     }
     public void test_NodeExpectedTypeCheck8101092317678005784() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8101092317678005782");
-        SNode operation = getRealNodeById("8101092317678005784");
-        new CheckTypesAction.CheckExpectedType(getNodeById("8101092317678005782")).checkTypeIs(getNodeById("8101092317678005785"));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckExpectedType(getNodeById("8101092317678005782")).checkTypeIs(getNodeById("8101092317678005785")));
     }
     public void test_NodeExpectedTypeCheck8101092317678009113() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8101092317678009111");
-        SNode operation = getRealNodeById("8101092317678009113");
-        new CheckTypesAction.CheckExpectedType(getNodeById("8101092317678009111")).checkTypeIs(getNodeById("8101092317678009114"));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckExpectedType(getNodeById("8101092317678009111")).checkTypeIs(getNodeById("8101092317678009114")));
     }
 
   }

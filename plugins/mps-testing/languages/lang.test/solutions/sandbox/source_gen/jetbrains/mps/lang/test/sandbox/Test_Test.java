@@ -116,51 +116,38 @@ public class Test_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck2501421320959199196() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6594325605663831239");
-        SNode operation = getRealNodeById("2501421320959199196");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_NodeTypeCheck6594325605663849546() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("3951985765451231681");
-        SNode operation = getRealNodeById("6594325605663849546");
-        new CheckTypesAction.CheckComputedType(getNodeById("3951985765451231681")).checkTypeIs(getNodeById("6594325605663849548"));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("3951985765451231681")).checkTypeIs(getNodeById("6594325605663849548")));
     }
     public void test_ErrorMessagesCheck2501421320959199214() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6594325605663848570");
-        SNode operation = getRealNodeById("2501421320959199214");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_NodeErrorCheck6594325605663849637() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451224906");
-        SNode operation = getRealNodeById("6594325605663849637");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck2501421320959199232() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6594325605663849632");
-        SNode operation = getRealNodeById("2501421320959199232");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("3951985765451224906"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
       });
     }
     public void test_NodeTypeSetCheck6594325605663852576() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("3951985765451228786");
-        SNode operation = getRealNodeById("6594325605663852576");
-        new CheckTypesAction.CheckComputedType(getNodeById("3951985765451228786")).checkTypeIn(CollectionSequence.fromCollectionAndArray(new ArrayList<SNode>(), getNodeById("6594325605663852582"), getNodeById("6594325605663852578")));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("3951985765451228786")).checkTypeIn(CollectionSequence.fromCollectionAndArray(new ArrayList<SNode>(), getNodeById("6594325605663852582"), getNodeById("6594325605663852578"))));
     }
     public void test_ErrorMessagesCheck2501421320959199250() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6594325605663849719");
-        SNode operation = getRealNodeById("2501421320959199250");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

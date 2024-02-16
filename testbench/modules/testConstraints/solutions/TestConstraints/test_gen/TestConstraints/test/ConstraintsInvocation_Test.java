@@ -48,14 +48,12 @@ public class ConstraintsInvocation_Test extends BaseTransformationTest {
     public void test_NodeUnknownRuleCheck730305212589682236() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("730305212589577115");
-        SNode operation = getRealNodeById("730305212589682236");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589401486"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeUnknownRuleCheck730305212589682205() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("730305212589682202");
-        SNode operation = getRealNodeById("730305212589682205");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589427430"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }

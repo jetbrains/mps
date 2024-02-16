@@ -43,7 +43,6 @@ public class SimpleUnreachable_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck244475129983765579() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2702384151998850297");
-        SNode operation = getRealNodeById("244475129983765579");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }

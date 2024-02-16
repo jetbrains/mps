@@ -62,14 +62,12 @@ public class IfStatementDataFlow_Test extends BaseTransformationTest {
     public void test_NodeVariableHasNotBeenInitializedErrorCheck6923385624928604755() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3951985765451228488");
-        SNode operation = getRealNodeById("6923385624928604755");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1529050434900907669"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck2501421320959199532() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1215444237453");
-        SNode operation = getRealNodeById("2501421320959199532");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("3951985765451228488"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1529050434900907669"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
       });
     }

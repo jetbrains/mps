@@ -55,21 +55,18 @@ public class BoundTypesChecking_Test extends BaseTransformationTest {
     public void test_NodeTypeSystemCheck8992394414549760433() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8992394414549684169");
-        SNode operation = getRealNodeById("8992394414549760433");
         new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeIsNotSubtypeOfCheck8992394414549393023() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8992394414549282241");
-        SNode operation = getRealNodeById("8992394414549393023");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck2448987392437264509() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8992394414549205640");
-        SNode operation = getRealNodeById("2448987392437264509");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getRealNodeById("8992394414549684169"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8992394414549282241"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5875805516898273487"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
       });
     }

@@ -43,7 +43,6 @@ public class FeedbackRefIsNotDefined_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck7019192671317896977() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7019192671317896966");
-        SNode operation = getRealNodeById("7019192671317896977");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Reference 'ref' does not belong to the concept!!!", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }

@@ -45,7 +45,6 @@ public class PrimitiveCreatorInference_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck387838872178548915() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("387838872172693476");
-        SNode operation = getRealNodeById("387838872178548915");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

@@ -45,7 +45,6 @@ public class StaticMethodCallTypeInference_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck7794145398370202377() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5565533445198664262");
-        SNode operation = getRealNodeById("7794145398370202377");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

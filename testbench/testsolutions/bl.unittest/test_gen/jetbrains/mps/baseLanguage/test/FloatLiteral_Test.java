@@ -54,21 +54,18 @@ public class FloatLiteral_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck290469496750263895() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("290469496750221972");
-        SNode operation = getRealNodeById("290469496750263895");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_NodeErrorCheck290469496750368664() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("290469496750333050");
-        SNode operation = getRealNodeById("290469496750368664");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck290469496750333115() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("290469496750333041");
-        SNode operation = getRealNodeById("290469496750333115");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("290469496750333050"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
       });
     }

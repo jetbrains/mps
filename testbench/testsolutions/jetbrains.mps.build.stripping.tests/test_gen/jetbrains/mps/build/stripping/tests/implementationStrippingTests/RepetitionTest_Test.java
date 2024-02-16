@@ -54,21 +54,18 @@ public class RepetitionTest_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck5264300948581808886() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5264300948581808855");
-        SNode operation = getRealNodeById("5264300948581808886");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeErrorCheck5264300948581808891() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5264300948581808871");
-        SNode operation = getRealNodeById("5264300948581808891");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck5264300948581808827() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5264300948581808819");
-        SNode operation = getRealNodeById("5264300948581808827");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("5264300948581808855"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("5264300948581808871"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
       });
     }

@@ -55,21 +55,18 @@ public class UncaughtExceptionInTryCatch_Test extends BaseTransformationTest {
     public void test_NodeUnnamedErrorCheck3032181451575013389() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3032181451575010670");
-        SNode operation = getRealNodeById("3032181451575013389");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6468716278896138869"), "Error: uncaught exceptions: IOException", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck3032181451575026941() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3032181451575018846");
-        SNode operation = getRealNodeById("3032181451575026941");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6468716278896138869"), "Error: uncaught exceptions: IOException", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck3032181451575012024() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3032181451575002445");
-        SNode operation = getRealNodeById("3032181451575012024");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("3032181451575010670"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6468716278896138869"), "Error: uncaught exceptions: IOException", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("3032181451575018846"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6468716278896138869"), "Error: uncaught exceptions: IOException", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
       });
     }

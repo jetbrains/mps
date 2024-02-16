@@ -44,7 +44,6 @@ public class PropertyNameClash_Test extends BaseTransformationTest {
     public void test_NodeThePropertySetterIsHidingCheck6115392061228789467() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061228765227");
-        SNode operation = getRealNodeById("6115392061228789467");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1472285356915680442"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }

@@ -45,7 +45,6 @@ public class UnaryNumberOperationUsesVariable_Test extends BaseTransformationTes
     public void test_ErrorMessagesCheck5706606249115952859() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5706606249115952801");
-        SNode operation = getRealNodeById("5706606249115952859");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

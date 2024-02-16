@@ -54,21 +54,18 @@ public class CollectionTypesVariance_Test extends BaseTransformationTest {
     public void test_NodeTypeSystemCheck2321665441773936177() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2321665441773924098");
-        SNode operation = getRealNodeById("2321665441773936177");
         new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Error: type sequence<Number> is not a subtype of list<? extends Number>", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeTypeSystemCheck2321665441773946240() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2321665441773937135");
-        SNode operation = getRealNodeById("2321665441773946240");
         new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Error: type sequence<? extends Number> is not a subtype of list<? extends Number>", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck2321665441773916246() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2321665441773909763");
-        SNode operation = getRealNodeById("2321665441773916246");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getRealNodeById("2321665441773924098"), MessageStatus.ERROR, "Error: type sequence<Number> is not a subtype of list<? extends Number>", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getRealNodeById("2321665441773937135"), MessageStatus.ERROR, "Error: type sequence<? extends Number> is not a subtype of list<? extends Number>", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
       });
     }

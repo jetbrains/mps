@@ -50,14 +50,12 @@ public class AbstractNativeIllegal_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck8347245235047186104() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8347245235044889176");
-        SNode operation = getRealNodeById("8347245235047186104");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck8347245235044889233() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8347245235044888387");
-        SNode operation = getRealNodeById("8347245235044889233");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getRealNodeById("8347245235044889176"), MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
       });
     }

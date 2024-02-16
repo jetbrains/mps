@@ -45,7 +45,6 @@ public class CustomPropertyAccess_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck6799807267508922004() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6799807267502339007");
-        SNode operation = getRealNodeById("6799807267508922004");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

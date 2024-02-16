@@ -45,7 +45,6 @@ public class JvmStubsLoading_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck8869766091651422439() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8869766091651207670");
-        SNode operation = getRealNodeById("8869766091651422439");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

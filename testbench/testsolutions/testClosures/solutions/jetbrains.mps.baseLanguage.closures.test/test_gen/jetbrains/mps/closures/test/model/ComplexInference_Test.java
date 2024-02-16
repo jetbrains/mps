@@ -49,14 +49,12 @@ public class ComplexInference_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck5533324111883090506() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5533324111883077538");
-        SNode operation = getRealNodeById("5533324111883090506");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_ErrorMessagesCheck5533324111883110405() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5533324111872453866");
-        SNode operation = getRealNodeById("5533324111883110405");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

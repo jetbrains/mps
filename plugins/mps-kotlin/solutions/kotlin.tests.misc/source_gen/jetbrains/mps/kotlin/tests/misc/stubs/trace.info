@@ -136,33 +136,31 @@
       <node id="8869766091651206546" at="36,52,37,19" concept="9" />
       <node id="8869766091651206546" at="41,36,42,46" concept="2" />
       <node id="8869766091651422439" at="46,30,47,67" concept="5" />
-      <node id="8869766091651422439" at="47,67,48,65" concept="5" />
-      <node id="8869766091651422439" at="48,65,49,209" concept="2" />
+      <node id="8869766091651422439" at="47,67,48,209" concept="2" />
       <node id="8869766091651206546" at="22,0,24,0" concept="8" trace="ourParametersCacheExtension" />
       <node id="8869766091651206546" at="25,0,28,0" concept="1" trace="JvmStubsLoading_Test#()V" />
       <node id="8869766091651206546" at="36,0,39,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="8869766091651422439" at="29,0,33,0" concept="4" trace="test_ErrorMessagesCheck8869766091651422439#()V" />
       <node id="8869766091651206546" at="40,0,44,0" concept="4" trace="initTestNodes#()V" />
-      <node id="8869766091651422439" at="45,79,50,9" concept="2" />
-      <node id="8869766091651422439" at="45,0,52,0" concept="4" trace="test_ErrorMessagesCheck8869766091651422439#()V" />
+      <node id="8869766091651422439" at="45,79,49,9" concept="2" />
+      <node id="8869766091651422439" at="45,0,51,0" concept="4" trace="test_ErrorMessagesCheck8869766091651422439#()V" />
       <scope id="8869766091651206546" at="25,33,26,60" />
       <scope id="8869766091651422439" at="30,77,31,68" />
       <scope id="8869766091651206546" at="36,52,37,19" />
       <scope id="8869766091651206546" at="41,36,42,46" />
+      <scope id="8869766091651422439" at="46,30,48,209">
+        <var name="nodeToCheck" id="8869766091651422439" />
+      </scope>
       <scope id="8869766091651206546" at="25,0,28,0" />
       <scope id="8869766091651206546" at="36,0,39,0">
         <var name="owner" id="8869766091651206546" />
       </scope>
-      <scope id="8869766091651422439" at="46,30,49,209">
-        <var name="nodeToCheck" id="8869766091651422439" />
-        <var name="operation" id="8869766091651422439" />
-      </scope>
       <scope id="8869766091651422439" at="29,0,33,0" />
       <scope id="8869766091651206546" at="40,0,44,0" />
-      <scope id="8869766091651422439" at="45,79,50,9" />
-      <scope id="8869766091651422439" at="45,0,52,0" />
-      <unit id="8869766091651206546" at="34,0,54,0" name="jetbrains.mps.kotlin.tests.misc.stubs.JvmStubsLoading_Test$TestBody" />
-      <unit id="8869766091651206546" at="20,0,55,0" name="jetbrains.mps.kotlin.tests.misc.stubs.JvmStubsLoading_Test" />
+      <scope id="8869766091651422439" at="45,79,49,9" />
+      <scope id="8869766091651422439" at="45,0,51,0" />
+      <unit id="8869766091651206546" at="34,0,53,0" name="jetbrains.mps.kotlin.tests.misc.stubs.JvmStubsLoading_Test$TestBody" />
+      <unit id="8869766091651206546" at="20,0,54,0" name="jetbrains.mps.kotlin.tests.misc.stubs.JvmStubsLoading_Test" />
     </file>
   </root>
 </debug-info>

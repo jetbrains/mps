@@ -55,21 +55,18 @@ public class EnumTypeParameters_Test extends BaseTransformationTest {
     public void test_NodeEnumClassCannotHaveTypeCheck685380225824106384() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("685380225824104918");
-        SNode operation = getRealNodeById("685380225824106384");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "685380225817682735"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeEnumClassCannotHaveTypeCheck685380225824106780() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("685380225824105767");
-        SNode operation = getRealNodeById("685380225824106780");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "685380225817682735"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck685380225824107295() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("685380225824074353");
-        SNode operation = getRealNodeById("685380225824107295");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("685380225824104918"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "685380225817682735"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("685380225824105767"), MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "685380225817682735"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
       });
     }

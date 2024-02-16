@@ -45,7 +45,6 @@ public class ForEachStatementTypeInference_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck4985370212424024062() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("4985370212423199438");
-        SNode operation = getRealNodeById("4985370212424024062");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

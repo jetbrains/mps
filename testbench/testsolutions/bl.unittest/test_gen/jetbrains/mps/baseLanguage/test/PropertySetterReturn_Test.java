@@ -55,21 +55,18 @@ public class PropertySetterReturn_Test extends BaseTransformationTest {
     public void test_NodeNotLegalStatementTheExpressionCheck6401638465588611410() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5772383102105101132");
-        SNode operation = getRealNodeById("6401638465588611410");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2453008993620467766"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_NodeNoReturnValueExpectedCheck1500881288847656430() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5772383102105106045");
-        SNode operation = getRealNodeById("1500881288847656430");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933690649"), "Error: no return value expected", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck5772383102105107061() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5772383102104987802");
-        SNode operation = getRealNodeById("5772383102105107061");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("5772383102105101132"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2453008993620467766"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("5772383102105106045"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4285773203933690649"), "Error: no return value expected", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
       });
     }

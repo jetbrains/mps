@@ -44,7 +44,6 @@ public class AbstractFinalClass_Test extends BaseTransformationTest {
     public void test_NodeIllegalCombinationOfModifiersCheck8431410806097805013() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8431410806097804849");
-        SNode operation = getRealNodeById("8431410806097805013");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8431410806096003797"), "Error: Illegal combination of modifiers 'final' and 'abstract'", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }

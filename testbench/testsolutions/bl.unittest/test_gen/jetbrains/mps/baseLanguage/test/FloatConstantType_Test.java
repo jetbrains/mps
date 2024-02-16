@@ -64,7 +64,6 @@ public class FloatConstantType_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck5868639094267614275() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("5868639094257179249");
-        SNode operation = getRealNodeById("5868639094267614275");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

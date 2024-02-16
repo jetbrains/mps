@@ -45,7 +45,6 @@ public class GetElementOperationFollowedByPropertyAccess_Test extends BaseTransf
     public void test_ErrorMessagesCheck5679018521759346994() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1654036798276541486");
-        SNode operation = getRealNodeById("5679018521759346994");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

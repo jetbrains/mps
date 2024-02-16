@@ -147,55 +147,36 @@ public class EnumerationSwitch_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck7978163097786003032() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7978163097785996348");
-        SNode operation = getRealNodeById("7978163097786003032");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_ErrorMessagesCheck2877673685762596503() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2877673685762564970");
-        SNode operation = getRealNodeById("2877673685762596503");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_ErrorMessagesCheck2877673685762600678() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2877673685762600669");
-        SNode operation = getRealNodeById("2877673685762600678");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_NodeTypeCheck2877673685762780216() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2877673685762709506");
-        SNode operation = getRealNodeById("2877673685762780216");
-        new CheckTypesAction.CheckComputedType(getNodeById("2877673685762709506")).checkTypeIs(getNodeById("2877673685762780254"));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2877673685762709506")).checkTypeIs(getNodeById("2877673685762780254")));
     }
     public void test_NodeTypeCheck2877673685762791490() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2877673685762713718");
-        SNode operation = getRealNodeById("2877673685762791490");
-        new CheckTypesAction.CheckComputedType(getNodeById("2877673685762713718")).checkTypeIs(getNodeById("2663056186797888905"));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2877673685762713718")).checkTypeIs(getNodeById("2663056186797888905")));
     }
     public void test_NodeTypeCheck2877673685762756263() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2877673685762489208");
-        SNode operation = getRealNodeById("2877673685762756263");
-        new CheckTypesAction.CheckComputedType(getNodeById("2877673685762489208")).checkTypeIs(getNodeById("2877673685762761440"));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2877673685762489208")).checkTypeIs(getNodeById("2877673685762761440")));
     }
     public void test_NodeTypeCheck2877673685762770603() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2877673685762690953");
-        SNode operation = getRealNodeById("2877673685762770603");
-        new CheckTypesAction.CheckComputedType(getNodeById("2877673685762690953")).checkTypeIs(getNodeById("2877673685762770626"));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2877673685762690953")).checkTypeIs(getNodeById("2877673685762770626")));
     }
 
     public int testSwitchInStatement(SEnumerationLiteral testMember) {

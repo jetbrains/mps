@@ -45,7 +45,6 @@ public class CollectionCompatibility_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck5913489050824136203() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6669623901448407846");
-        SNode operation = getRealNodeById("5913489050824136203");
         new CheckErrorMessagesRunnable(nodeToCheck, true, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

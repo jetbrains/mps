@@ -50,14 +50,12 @@ public class ExtendingNullableAnalyzer_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck7974543756120908670() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1417601170173158309");
-        SNode operation = getRealNodeById("7974543756120908670");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_NodeWarningCheck7078910619968857445() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1417601170173158514");
-        SNode operation = getRealNodeById("7078910619968857445");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.WARNING, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }

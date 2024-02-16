@@ -16,17 +16,13 @@
       <node id="2614955748379861497" at="49,52,50,19" concept="5" />
       <node id="2614955748379861497" at="54,36,55,46" concept="1" />
       <node id="2614955748379945983" at="59,30,60,67" concept="3" />
-      <node id="2614955748379945983" at="60,67,61,65" concept="3" />
-      <node id="2614955748379945983" at="61,65,62,394" concept="1" />
-      <node id="2614955748379963968" at="66,30,67,67" concept="3" />
-      <node id="2614955748379963968" at="67,67,68,65" concept="3" />
-      <node id="2614955748379963968" at="68,65,69,326" concept="1" />
-      <node id="2614955748380109681" at="73,30,74,67" concept="3" />
-      <node id="2614955748380109681" at="74,67,75,65" concept="3" />
-      <node id="2614955748380109681" at="75,65,76,462" concept="1" />
-      <node id="2614955748380109692" at="80,30,81,67" concept="3" />
-      <node id="2614955748380109692" at="81,67,82,65" concept="3" />
-      <node id="2614955748380109692" at="82,65,83,394" concept="1" />
+      <node id="2614955748379945983" at="60,67,61,394" concept="1" />
+      <node id="2614955748379963968" at="65,30,66,67" concept="3" />
+      <node id="2614955748379963968" at="66,67,67,326" concept="1" />
+      <node id="2614955748380109681" at="71,30,72,67" concept="3" />
+      <node id="2614955748380109681" at="72,67,73,462" concept="1" />
+      <node id="2614955748380109692" at="77,30,78,67" concept="3" />
+      <node id="2614955748380109692" at="78,67,79,394" concept="1" />
       <node id="2614955748379861497" at="23,0,25,0" concept="4" trace="ourParametersCacheExtension" />
       <node id="2614955748379861497" at="26,0,29,0" concept="0" trace="ConstraintsReferenceInheritence_Scopes_Test#()V" />
       <node id="2614955748379861497" at="49,0,52,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -35,14 +31,14 @@
       <node id="2614955748380109681" at="38,0,42,0" concept="2" trace="test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperHandler_target_2614955748380109408#()V" />
       <node id="2614955748380109692" at="42,0,46,0" concept="2" trace="test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperHandler_target_2614955748380109677#()V" />
       <node id="2614955748379861497" at="53,0,57,0" concept="2" trace="initTestNodes#()V" />
-      <node id="2614955748379945983" at="58,128,63,9" concept="1" />
-      <node id="2614955748379963968" at="65,128,70,9" concept="1" />
-      <node id="2614955748380109681" at="72,128,77,9" concept="1" />
-      <node id="2614955748380109692" at="79,128,84,9" concept="1" />
-      <node id="2614955748379945983" at="58,0,65,0" concept="2" trace="test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperScoping_target_2614955748379945979#()V" />
-      <node id="2614955748379963968" at="65,0,72,0" concept="2" trace="test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperScoping_target_2614955748379963961#()V" />
-      <node id="2614955748380109681" at="72,0,79,0" concept="2" trace="test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperHandler_target_2614955748380109408#()V" />
-      <node id="2614955748380109692" at="79,0,86,0" concept="2" trace="test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperHandler_target_2614955748380109677#()V" />
+      <node id="2614955748379945983" at="58,128,62,9" concept="1" />
+      <node id="2614955748379963968" at="64,128,68,9" concept="1" />
+      <node id="2614955748380109681" at="70,128,74,9" concept="1" />
+      <node id="2614955748380109692" at="76,128,80,9" concept="1" />
+      <node id="2614955748379945983" at="58,0,64,0" concept="2" trace="test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperScoping_target_2614955748379945979#()V" />
+      <node id="2614955748379963968" at="64,0,70,0" concept="2" trace="test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperScoping_target_2614955748379963961#()V" />
+      <node id="2614955748380109681" at="70,0,76,0" concept="2" trace="test_ScopeOf_TestRefConstraints_SubReference_HandlerSuperHandler_target_2614955748380109408#()V" />
+      <node id="2614955748380109692" at="76,0,82,0" concept="2" trace="test_ScopeOf_TestRefConstraints_SubReference_ScopingSuperHandler_target_2614955748380109677#()V" />
       <scope id="2614955748379861497" at="26,56,27,60" />
       <scope id="2614955748379945983" at="31,126,32,117" />
       <scope id="2614955748379963968" at="35,126,36,117" />
@@ -50,41 +46,37 @@
       <scope id="2614955748380109692" at="43,126,44,117" />
       <scope id="2614955748379861497" at="49,52,50,19" />
       <scope id="2614955748379861497" at="54,36,55,46" />
+      <scope id="2614955748379945983" at="59,30,61,394">
+        <var name="nodeToCheck" id="2614955748379945983" />
+      </scope>
+      <scope id="2614955748379963968" at="65,30,67,326">
+        <var name="nodeToCheck" id="2614955748379963968" />
+      </scope>
+      <scope id="2614955748380109681" at="71,30,73,462">
+        <var name="nodeToCheck" id="2614955748380109681" />
+      </scope>
+      <scope id="2614955748380109692" at="77,30,79,394">
+        <var name="nodeToCheck" id="2614955748380109692" />
+      </scope>
       <scope id="2614955748379861497" at="26,0,29,0" />
       <scope id="2614955748379861497" at="49,0,52,0">
         <var name="owner" id="2614955748379861497" />
-      </scope>
-      <scope id="2614955748379945983" at="59,30,62,394">
-        <var name="nodeToCheck" id="2614955748379945983" />
-        <var name="operation" id="2614955748379945983" />
-      </scope>
-      <scope id="2614955748379963968" at="66,30,69,326">
-        <var name="nodeToCheck" id="2614955748379963968" />
-        <var name="operation" id="2614955748379963968" />
-      </scope>
-      <scope id="2614955748380109681" at="73,30,76,462">
-        <var name="nodeToCheck" id="2614955748380109681" />
-        <var name="operation" id="2614955748380109681" />
-      </scope>
-      <scope id="2614955748380109692" at="80,30,83,394">
-        <var name="nodeToCheck" id="2614955748380109692" />
-        <var name="operation" id="2614955748380109692" />
       </scope>
       <scope id="2614955748379945983" at="30,0,34,0" />
       <scope id="2614955748379963968" at="34,0,38,0" />
       <scope id="2614955748380109681" at="38,0,42,0" />
       <scope id="2614955748380109692" at="42,0,46,0" />
       <scope id="2614955748379861497" at="53,0,57,0" />
-      <scope id="2614955748379945983" at="58,128,63,9" />
-      <scope id="2614955748379963968" at="65,128,70,9" />
-      <scope id="2614955748380109681" at="72,128,77,9" />
-      <scope id="2614955748380109692" at="79,128,84,9" />
-      <scope id="2614955748379945983" at="58,0,65,0" />
-      <scope id="2614955748379963968" at="65,0,72,0" />
-      <scope id="2614955748380109681" at="72,0,79,0" />
-      <scope id="2614955748380109692" at="79,0,86,0" />
-      <unit id="2614955748379861497" at="47,0,88,0" name="TestConstraints.test.ConstraintsReferenceInheritence_Scopes_Test$TestBody" />
-      <unit id="2614955748379861497" at="21,0,89,0" name="TestConstraints.test.ConstraintsReferenceInheritence_Scopes_Test" />
+      <scope id="2614955748379945983" at="58,128,62,9" />
+      <scope id="2614955748379963968" at="64,128,68,9" />
+      <scope id="2614955748380109681" at="70,128,74,9" />
+      <scope id="2614955748380109692" at="76,128,80,9" />
+      <scope id="2614955748379945983" at="58,0,64,0" />
+      <scope id="2614955748379963968" at="64,0,70,0" />
+      <scope id="2614955748380109681" at="70,0,76,0" />
+      <scope id="2614955748380109692" at="76,0,82,0" />
+      <unit id="2614955748379861497" at="47,0,84,0" name="TestConstraints.test.ConstraintsReferenceInheritence_Scopes_Test$TestBody" />
+      <unit id="2614955748379861497" at="21,0,85,0" name="TestConstraints.test.ConstraintsReferenceInheritence_Scopes_Test" />
     </file>
   </root>
   <root nodeRef="r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)/2614955748380186704">
@@ -177,23 +169,17 @@
       <node id="5816870305080488164" at="58,52,59,19" concept="5" />
       <node id="5816870305080488164" at="63,36,64,161" concept="1" />
       <node id="5816870305080793796" at="68,30,69,67" concept="3" />
-      <node id="5816870305080793796" at="69,67,70,65" concept="3" />
-      <node id="5816870305080793796" at="70,65,71,299" concept="1" />
-      <node id="5816870305080793812" at="75,30,76,67" concept="3" />
-      <node id="5816870305080793812" at="76,67,77,65" concept="3" />
-      <node id="5816870305080793812" at="77,65,78,299" concept="1" />
-      <node id="5816870305080792275" at="82,30,83,67" concept="3" />
-      <node id="5816870305080792275" at="83,67,84,65" concept="3" />
-      <node id="5816870305080792275" at="84,65,85,210" concept="1" />
-      <node id="5816870305080793804" at="89,30,90,67" concept="3" />
-      <node id="5816870305080793804" at="90,67,91,65" concept="3" />
-      <node id="5816870305080793804" at="91,65,92,299" concept="1" />
-      <node id="5816870305080793825" at="96,30,97,67" concept="3" />
-      <node id="5816870305080793825" at="97,67,98,65" concept="3" />
-      <node id="5816870305080793825" at="98,65,99,299" concept="1" />
-      <node id="5816870305080793833" at="103,30,104,67" concept="3" />
-      <node id="5816870305080793833" at="104,67,105,65" concept="3" />
-      <node id="5816870305080793833" at="105,65,106,299" concept="1" />
+      <node id="5816870305080793796" at="69,67,70,299" concept="1" />
+      <node id="5816870305080793812" at="74,30,75,67" concept="3" />
+      <node id="5816870305080793812" at="75,67,76,299" concept="1" />
+      <node id="5816870305080792275" at="80,30,81,67" concept="3" />
+      <node id="5816870305080792275" at="81,67,82,210" concept="1" />
+      <node id="5816870305080793804" at="86,30,87,67" concept="3" />
+      <node id="5816870305080793804" at="87,67,88,299" concept="1" />
+      <node id="5816870305080793825" at="92,30,93,67" concept="3" />
+      <node id="5816870305080793825" at="93,67,94,299" concept="1" />
+      <node id="5816870305080793833" at="98,30,99,67" concept="3" />
+      <node id="5816870305080793833" at="99,67,100,299" concept="1" />
       <node id="5816870305080488164" at="24,0,26,0" concept="4" trace="ourParametersCacheExtension" />
       <node id="5816870305080488164" at="27,0,30,0" concept="0" trace="ConstraintsInheritance_Test#()V" />
       <node id="5816870305080488164" at="58,0,61,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -204,18 +190,18 @@
       <node id="5816870305080793825" at="47,0,51,0" concept="2" trace="test_NodeUnknownRuleCheck5816870305080793825#()V" />
       <node id="5816870305080793833" at="51,0,55,0" concept="2" trace="test_NodeUnknownRuleCheck5816870305080793833#()V" />
       <node id="5816870305080488164" at="62,0,66,0" concept="2" trace="initTestNodes#()V" />
-      <node id="5816870305080793796" at="67,81,72,9" concept="1" />
-      <node id="5816870305080793812" at="74,81,79,9" concept="1" />
-      <node id="5816870305080792275" at="81,79,86,9" concept="1" />
-      <node id="5816870305080793804" at="88,81,93,9" concept="1" />
-      <node id="5816870305080793825" at="95,81,100,9" concept="1" />
-      <node id="5816870305080793833" at="102,81,107,9" concept="1" />
-      <node id="5816870305080793796" at="67,0,74,0" concept="2" trace="test_NodeUnknownRuleCheck5816870305080793796#()V" />
-      <node id="5816870305080793812" at="74,0,81,0" concept="2" trace="test_NodeUnknownRuleCheck5816870305080793812#()V" />
-      <node id="5816870305080792275" at="81,0,88,0" concept="2" trace="test_ErrorMessagesCheck5816870305080792275#()V" />
-      <node id="5816870305080793804" at="88,0,95,0" concept="2" trace="test_NodeUnknownRuleCheck5816870305080793804#()V" />
-      <node id="5816870305080793825" at="95,0,102,0" concept="2" trace="test_NodeUnknownRuleCheck5816870305080793825#()V" />
-      <node id="5816870305080793833" at="102,0,109,0" concept="2" trace="test_NodeUnknownRuleCheck5816870305080793833#()V" />
+      <node id="5816870305080793796" at="67,81,71,9" concept="1" />
+      <node id="5816870305080793812" at="73,81,77,9" concept="1" />
+      <node id="5816870305080792275" at="79,79,83,9" concept="1" />
+      <node id="5816870305080793804" at="85,81,89,9" concept="1" />
+      <node id="5816870305080793825" at="91,81,95,9" concept="1" />
+      <node id="5816870305080793833" at="97,81,101,9" concept="1" />
+      <node id="5816870305080793796" at="67,0,73,0" concept="2" trace="test_NodeUnknownRuleCheck5816870305080793796#()V" />
+      <node id="5816870305080793812" at="73,0,79,0" concept="2" trace="test_NodeUnknownRuleCheck5816870305080793812#()V" />
+      <node id="5816870305080792275" at="79,0,85,0" concept="2" trace="test_ErrorMessagesCheck5816870305080792275#()V" />
+      <node id="5816870305080793804" at="85,0,91,0" concept="2" trace="test_NodeUnknownRuleCheck5816870305080793804#()V" />
+      <node id="5816870305080793825" at="91,0,97,0" concept="2" trace="test_NodeUnknownRuleCheck5816870305080793825#()V" />
+      <node id="5816870305080793833" at="97,0,103,0" concept="2" trace="test_NodeUnknownRuleCheck5816870305080793833#()V" />
       <scope id="5816870305080488164" at="27,40,28,60" />
       <scope id="5816870305080793796" at="32,79,33,70" />
       <scope id="5816870305080793812" at="36,79,37,70" />
@@ -225,33 +211,27 @@
       <scope id="5816870305080793833" at="52,79,53,70" />
       <scope id="5816870305080488164" at="58,52,59,19" />
       <scope id="5816870305080488164" at="63,36,64,161" />
+      <scope id="5816870305080793796" at="68,30,70,299">
+        <var name="nodeToCheck" id="5816870305080793796" />
+      </scope>
+      <scope id="5816870305080793812" at="74,30,76,299">
+        <var name="nodeToCheck" id="5816870305080793812" />
+      </scope>
+      <scope id="5816870305080792275" at="80,30,82,210">
+        <var name="nodeToCheck" id="5816870305080792275" />
+      </scope>
+      <scope id="5816870305080793804" at="86,30,88,299">
+        <var name="nodeToCheck" id="5816870305080793804" />
+      </scope>
+      <scope id="5816870305080793825" at="92,30,94,299">
+        <var name="nodeToCheck" id="5816870305080793825" />
+      </scope>
+      <scope id="5816870305080793833" at="98,30,100,299">
+        <var name="nodeToCheck" id="5816870305080793833" />
+      </scope>
       <scope id="5816870305080488164" at="27,0,30,0" />
       <scope id="5816870305080488164" at="58,0,61,0">
         <var name="owner" id="5816870305080488164" />
-      </scope>
-      <scope id="5816870305080793796" at="68,30,71,299">
-        <var name="nodeToCheck" id="5816870305080793796" />
-        <var name="operation" id="5816870305080793796" />
-      </scope>
-      <scope id="5816870305080793812" at="75,30,78,299">
-        <var name="nodeToCheck" id="5816870305080793812" />
-        <var name="operation" id="5816870305080793812" />
-      </scope>
-      <scope id="5816870305080792275" at="82,30,85,210">
-        <var name="nodeToCheck" id="5816870305080792275" />
-        <var name="operation" id="5816870305080792275" />
-      </scope>
-      <scope id="5816870305080793804" at="89,30,92,299">
-        <var name="nodeToCheck" id="5816870305080793804" />
-        <var name="operation" id="5816870305080793804" />
-      </scope>
-      <scope id="5816870305080793825" at="96,30,99,299">
-        <var name="nodeToCheck" id="5816870305080793825" />
-        <var name="operation" id="5816870305080793825" />
-      </scope>
-      <scope id="5816870305080793833" at="103,30,106,299">
-        <var name="nodeToCheck" id="5816870305080793833" />
-        <var name="operation" id="5816870305080793833" />
       </scope>
       <scope id="5816870305080793796" at="31,0,35,0" />
       <scope id="5816870305080793812" at="35,0,39,0" />
@@ -260,20 +240,20 @@
       <scope id="5816870305080793825" at="47,0,51,0" />
       <scope id="5816870305080793833" at="51,0,55,0" />
       <scope id="5816870305080488164" at="62,0,66,0" />
-      <scope id="5816870305080793796" at="67,81,72,9" />
-      <scope id="5816870305080793812" at="74,81,79,9" />
-      <scope id="5816870305080792275" at="81,79,86,9" />
-      <scope id="5816870305080793804" at="88,81,93,9" />
-      <scope id="5816870305080793825" at="95,81,100,9" />
-      <scope id="5816870305080793833" at="102,81,107,9" />
-      <scope id="5816870305080793796" at="67,0,74,0" />
-      <scope id="5816870305080793812" at="74,0,81,0" />
-      <scope id="5816870305080792275" at="81,0,88,0" />
-      <scope id="5816870305080793804" at="88,0,95,0" />
-      <scope id="5816870305080793825" at="95,0,102,0" />
-      <scope id="5816870305080793833" at="102,0,109,0" />
-      <unit id="5816870305080488164" at="56,0,111,0" name="TestConstraints.test.ConstraintsInheritance_Test$TestBody" />
-      <unit id="5816870305080488164" at="22,0,112,0" name="TestConstraints.test.ConstraintsInheritance_Test" />
+      <scope id="5816870305080793796" at="67,81,71,9" />
+      <scope id="5816870305080793812" at="73,81,77,9" />
+      <scope id="5816870305080792275" at="79,79,83,9" />
+      <scope id="5816870305080793804" at="85,81,89,9" />
+      <scope id="5816870305080793825" at="91,81,95,9" />
+      <scope id="5816870305080793833" at="97,81,101,9" />
+      <scope id="5816870305080793796" at="67,0,73,0" />
+      <scope id="5816870305080793812" at="73,0,79,0" />
+      <scope id="5816870305080792275" at="79,0,85,0" />
+      <scope id="5816870305080793804" at="85,0,91,0" />
+      <scope id="5816870305080793825" at="91,0,97,0" />
+      <scope id="5816870305080793833" at="97,0,103,0" />
+      <unit id="5816870305080488164" at="56,0,105,0" name="TestConstraints.test.ConstraintsInheritance_Test$TestBody" />
+      <unit id="5816870305080488164" at="22,0,106,0" name="TestConstraints.test.ConstraintsInheritance_Test" />
     </file>
   </root>
   <root nodeRef="r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)/8374682609824962305">
@@ -284,47 +264,43 @@
       <node id="8374682609824962305" at="39,52,40,19" concept="5" />
       <node id="8374682609824962305" at="44,36,45,68" concept="1" />
       <node id="730305212589682236" at="49,30,50,66" concept="3" />
-      <node id="730305212589682236" at="50,66,51,64" concept="3" />
-      <node id="730305212589682236" at="51,64,52,298" concept="1" />
-      <node id="730305212589682205" at="56,30,57,66" concept="3" />
-      <node id="730305212589682205" at="57,66,58,64" concept="3" />
-      <node id="730305212589682205" at="58,64,59,298" concept="1" />
+      <node id="730305212589682236" at="50,66,51,298" concept="1" />
+      <node id="730305212589682205" at="55,30,56,66" concept="3" />
+      <node id="730305212589682205" at="56,66,57,298" concept="1" />
       <node id="8374682609824962305" at="21,0,23,0" concept="4" trace="ourParametersCacheExtension" />
       <node id="8374682609824962305" at="24,0,27,0" concept="0" trace="ConstraintsInvocation_Test#()V" />
       <node id="8374682609824962305" at="39,0,42,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="730305212589682236" at="28,0,32,0" concept="2" trace="test_NodeUnknownRuleCheck730305212589682236#()V" />
       <node id="730305212589682205" at="32,0,36,0" concept="2" trace="test_NodeUnknownRuleCheck730305212589682205#()V" />
       <node id="8374682609824962305" at="43,0,47,0" concept="2" trace="initTestNodes#()V" />
-      <node id="730305212589682236" at="48,80,53,9" concept="1" />
-      <node id="730305212589682205" at="55,80,60,9" concept="1" />
-      <node id="730305212589682236" at="48,0,55,0" concept="2" trace="test_NodeUnknownRuleCheck730305212589682236#()V" />
-      <node id="730305212589682205" at="55,0,62,0" concept="2" trace="test_NodeUnknownRuleCheck730305212589682205#()V" />
+      <node id="730305212589682236" at="48,80,52,9" concept="1" />
+      <node id="730305212589682205" at="54,80,58,9" concept="1" />
+      <node id="730305212589682236" at="48,0,54,0" concept="2" trace="test_NodeUnknownRuleCheck730305212589682236#()V" />
+      <node id="730305212589682205" at="54,0,60,0" concept="2" trace="test_NodeUnknownRuleCheck730305212589682205#()V" />
       <scope id="8374682609824962305" at="24,39,25,60" />
       <scope id="730305212589682236" at="29,78,30,69" />
       <scope id="730305212589682205" at="33,78,34,69" />
       <scope id="8374682609824962305" at="39,52,40,19" />
       <scope id="8374682609824962305" at="44,36,45,68" />
+      <scope id="730305212589682236" at="49,30,51,298">
+        <var name="nodeToCheck" id="730305212589682236" />
+      </scope>
+      <scope id="730305212589682205" at="55,30,57,298">
+        <var name="nodeToCheck" id="730305212589682205" />
+      </scope>
       <scope id="8374682609824962305" at="24,0,27,0" />
       <scope id="8374682609824962305" at="39,0,42,0">
         <var name="owner" id="8374682609824962305" />
       </scope>
-      <scope id="730305212589682236" at="49,30,52,298">
-        <var name="nodeToCheck" id="730305212589682236" />
-        <var name="operation" id="730305212589682236" />
-      </scope>
-      <scope id="730305212589682205" at="56,30,59,298">
-        <var name="nodeToCheck" id="730305212589682205" />
-        <var name="operation" id="730305212589682205" />
-      </scope>
       <scope id="730305212589682236" at="28,0,32,0" />
       <scope id="730305212589682205" at="32,0,36,0" />
       <scope id="8374682609824962305" at="43,0,47,0" />
-      <scope id="730305212589682236" at="48,80,53,9" />
-      <scope id="730305212589682205" at="55,80,60,9" />
-      <scope id="730305212589682236" at="48,0,55,0" />
-      <scope id="730305212589682205" at="55,0,62,0" />
-      <unit id="8374682609824962305" at="37,0,64,0" name="TestConstraints.test.ConstraintsInvocation_Test$TestBody" />
-      <unit id="8374682609824962305" at="19,0,65,0" name="TestConstraints.test.ConstraintsInvocation_Test" />
+      <scope id="730305212589682236" at="48,80,52,9" />
+      <scope id="730305212589682205" at="54,80,58,9" />
+      <scope id="730305212589682236" at="48,0,54,0" />
+      <scope id="730305212589682205" at="54,0,60,0" />
+      <unit id="8374682609824962305" at="37,0,62,0" name="TestConstraints.test.ConstraintsInvocation_Test$TestBody" />
+      <unit id="8374682609824962305" at="19,0,63,0" name="TestConstraints.test.ConstraintsInvocation_Test" />
     </file>
   </root>
 </debug-info>

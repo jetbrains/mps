@@ -180,14 +180,11 @@
       <node id="5264300948581808816" at="45,52,46,19" concept="5" />
       <node id="5264300948581808816" at="50,36,51,46" concept="1" />
       <node id="5264300948581808886" at="55,30,56,67" concept="3" />
-      <node id="5264300948581808886" at="56,67,57,65" concept="3" />
-      <node id="5264300948581808886" at="57,65,58,177" concept="1" />
-      <node id="5264300948581808891" at="62,30,63,67" concept="3" />
-      <node id="5264300948581808891" at="63,67,64,65" concept="3" />
-      <node id="5264300948581808891" at="64,65,65,177" concept="1" />
-      <node id="5264300948581808827" at="69,30,70,67" concept="3" />
-      <node id="5264300948581808827" at="70,67,71,65" concept="3" />
-      <node id="5264300948581808827" at="71,65,72,600" concept="1" />
+      <node id="5264300948581808886" at="56,67,57,177" concept="1" />
+      <node id="5264300948581808891" at="61,30,62,67" concept="3" />
+      <node id="5264300948581808891" at="62,67,63,177" concept="1" />
+      <node id="5264300948581808827" at="67,30,68,67" concept="3" />
+      <node id="5264300948581808827" at="68,67,69,600" concept="1" />
       <node id="5264300948581808816" at="23,0,25,0" concept="4" trace="ourParametersCacheExtension" />
       <node id="5264300948581808816" at="26,0,29,0" concept="0" trace="RepetitionTest_Test#()V" />
       <node id="5264300948581808816" at="45,0,48,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -195,46 +192,43 @@
       <node id="5264300948581808891" at="34,0,38,0" concept="2" trace="test_NodeErrorCheck5264300948581808891#()V" />
       <node id="5264300948581808827" at="38,0,42,0" concept="2" trace="test_ErrorMessagesCheck5264300948581808827#()V" />
       <node id="5264300948581808816" at="49,0,53,0" concept="2" trace="initTestNodes#()V" />
-      <node id="5264300948581808886" at="54,75,59,9" concept="1" />
-      <node id="5264300948581808891" at="61,75,66,9" concept="1" />
-      <node id="5264300948581808827" at="68,79,73,9" concept="1" />
-      <node id="5264300948581808886" at="54,0,61,0" concept="2" trace="test_NodeErrorCheck5264300948581808886#()V" />
-      <node id="5264300948581808891" at="61,0,68,0" concept="2" trace="test_NodeErrorCheck5264300948581808891#()V" />
-      <node id="5264300948581808827" at="68,0,75,0" concept="2" trace="test_ErrorMessagesCheck5264300948581808827#()V" />
+      <node id="5264300948581808886" at="54,75,58,9" concept="1" />
+      <node id="5264300948581808891" at="60,75,64,9" concept="1" />
+      <node id="5264300948581808827" at="66,79,70,9" concept="1" />
+      <node id="5264300948581808886" at="54,0,60,0" concept="2" trace="test_NodeErrorCheck5264300948581808886#()V" />
+      <node id="5264300948581808891" at="60,0,66,0" concept="2" trace="test_NodeErrorCheck5264300948581808891#()V" />
+      <node id="5264300948581808827" at="66,0,72,0" concept="2" trace="test_ErrorMessagesCheck5264300948581808827#()V" />
       <scope id="5264300948581808816" at="26,32,27,60" />
       <scope id="5264300948581808886" at="31,73,32,64" />
       <scope id="5264300948581808891" at="35,73,36,64" />
       <scope id="5264300948581808827" at="39,77,40,68" />
       <scope id="5264300948581808816" at="45,52,46,19" />
       <scope id="5264300948581808816" at="50,36,51,46" />
+      <scope id="5264300948581808886" at="55,30,57,177">
+        <var name="nodeToCheck" id="5264300948581808886" />
+      </scope>
+      <scope id="5264300948581808891" at="61,30,63,177">
+        <var name="nodeToCheck" id="5264300948581808891" />
+      </scope>
+      <scope id="5264300948581808827" at="67,30,69,600">
+        <var name="nodeToCheck" id="5264300948581808827" />
+      </scope>
       <scope id="5264300948581808816" at="26,0,29,0" />
       <scope id="5264300948581808816" at="45,0,48,0">
         <var name="owner" id="5264300948581808816" />
-      </scope>
-      <scope id="5264300948581808886" at="55,30,58,177">
-        <var name="nodeToCheck" id="5264300948581808886" />
-        <var name="operation" id="5264300948581808886" />
-      </scope>
-      <scope id="5264300948581808891" at="62,30,65,177">
-        <var name="nodeToCheck" id="5264300948581808891" />
-        <var name="operation" id="5264300948581808891" />
-      </scope>
-      <scope id="5264300948581808827" at="69,30,72,600">
-        <var name="nodeToCheck" id="5264300948581808827" />
-        <var name="operation" id="5264300948581808827" />
       </scope>
       <scope id="5264300948581808886" at="30,0,34,0" />
       <scope id="5264300948581808891" at="34,0,38,0" />
       <scope id="5264300948581808827" at="38,0,42,0" />
       <scope id="5264300948581808816" at="49,0,53,0" />
-      <scope id="5264300948581808886" at="54,75,59,9" />
-      <scope id="5264300948581808891" at="61,75,66,9" />
-      <scope id="5264300948581808827" at="68,79,73,9" />
-      <scope id="5264300948581808886" at="54,0,61,0" />
-      <scope id="5264300948581808891" at="61,0,68,0" />
-      <scope id="5264300948581808827" at="68,0,75,0" />
-      <unit id="5264300948581808816" at="43,0,77,0" name="jetbrains.mps.build.stripping.tests.implementationStrippingTests.RepetitionTest_Test$TestBody" />
-      <unit id="5264300948581808816" at="21,0,78,0" name="jetbrains.mps.build.stripping.tests.implementationStrippingTests.RepetitionTest_Test" />
+      <scope id="5264300948581808886" at="54,75,58,9" />
+      <scope id="5264300948581808891" at="60,75,64,9" />
+      <scope id="5264300948581808827" at="66,79,70,9" />
+      <scope id="5264300948581808886" at="54,0,60,0" />
+      <scope id="5264300948581808891" at="60,0,66,0" />
+      <scope id="5264300948581808827" at="66,0,72,0" />
+      <unit id="5264300948581808816" at="43,0,74,0" name="jetbrains.mps.build.stripping.tests.implementationStrippingTests.RepetitionTest_Test$TestBody" />
+      <unit id="5264300948581808816" at="21,0,75,0" name="jetbrains.mps.build.stripping.tests.implementationStrippingTests.RepetitionTest_Test" />
     </file>
   </root>
   <root nodeRef="r:a7360bf3-0305-4b0f-a849-53283ec620bf(jetbrains.mps.build.stripping.tests.implementationStrippingTests@tests)/8240600211257293917">
@@ -246,14 +240,11 @@
       <node id="8240600211257293917" at="45,52,46,19" concept="5" />
       <node id="8240600211257293917" at="50,36,51,46" concept="1" />
       <node id="8240600211257314592" at="55,30,56,67" concept="3" />
-      <node id="8240600211257314592" at="56,67,57,65" concept="3" />
-      <node id="8240600211257314592" at="57,65,58,177" concept="1" />
-      <node id="8240600211257423129" at="62,30,63,67" concept="3" />
-      <node id="8240600211257423129" at="63,67,64,65" concept="3" />
-      <node id="8240600211257423129" at="64,65,65,177" concept="1" />
-      <node id="8240600211257296170" at="69,30,70,67" concept="3" />
-      <node id="8240600211257296170" at="70,67,71,65" concept="3" />
-      <node id="8240600211257296170" at="71,65,72,600" concept="1" />
+      <node id="8240600211257314592" at="56,67,57,177" concept="1" />
+      <node id="8240600211257423129" at="61,30,62,67" concept="3" />
+      <node id="8240600211257423129" at="62,67,63,177" concept="1" />
+      <node id="8240600211257296170" at="67,30,68,67" concept="3" />
+      <node id="8240600211257296170" at="68,67,69,600" concept="1" />
       <node id="8240600211257293917" at="23,0,25,0" concept="4" trace="ourParametersCacheExtension" />
       <node id="8240600211257293917" at="26,0,29,0" concept="0" trace="DuplicitRoutineNameTest_Test#()V" />
       <node id="8240600211257293917" at="45,0,48,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -261,46 +252,43 @@
       <node id="8240600211257423129" at="34,0,38,0" concept="2" trace="test_NodeErrorCheck8240600211257423129#()V" />
       <node id="8240600211257296170" at="38,0,42,0" concept="2" trace="test_ErrorMessagesCheck8240600211257296170#()V" />
       <node id="8240600211257293917" at="49,0,53,0" concept="2" trace="initTestNodes#()V" />
-      <node id="8240600211257314592" at="54,75,59,9" concept="1" />
-      <node id="8240600211257423129" at="61,75,66,9" concept="1" />
-      <node id="8240600211257296170" at="68,79,73,9" concept="1" />
-      <node id="8240600211257314592" at="54,0,61,0" concept="2" trace="test_NodeErrorCheck8240600211257314592#()V" />
-      <node id="8240600211257423129" at="61,0,68,0" concept="2" trace="test_NodeErrorCheck8240600211257423129#()V" />
-      <node id="8240600211257296170" at="68,0,75,0" concept="2" trace="test_ErrorMessagesCheck8240600211257296170#()V" />
+      <node id="8240600211257314592" at="54,75,58,9" concept="1" />
+      <node id="8240600211257423129" at="60,75,64,9" concept="1" />
+      <node id="8240600211257296170" at="66,79,70,9" concept="1" />
+      <node id="8240600211257314592" at="54,0,60,0" concept="2" trace="test_NodeErrorCheck8240600211257314592#()V" />
+      <node id="8240600211257423129" at="60,0,66,0" concept="2" trace="test_NodeErrorCheck8240600211257423129#()V" />
+      <node id="8240600211257296170" at="66,0,72,0" concept="2" trace="test_ErrorMessagesCheck8240600211257296170#()V" />
       <scope id="8240600211257293917" at="26,41,27,60" />
       <scope id="8240600211257314592" at="31,73,32,64" />
       <scope id="8240600211257423129" at="35,73,36,64" />
       <scope id="8240600211257296170" at="39,77,40,68" />
       <scope id="8240600211257293917" at="45,52,46,19" />
       <scope id="8240600211257293917" at="50,36,51,46" />
+      <scope id="8240600211257314592" at="55,30,57,177">
+        <var name="nodeToCheck" id="8240600211257314592" />
+      </scope>
+      <scope id="8240600211257423129" at="61,30,63,177">
+        <var name="nodeToCheck" id="8240600211257423129" />
+      </scope>
+      <scope id="8240600211257296170" at="67,30,69,600">
+        <var name="nodeToCheck" id="8240600211257296170" />
+      </scope>
       <scope id="8240600211257293917" at="26,0,29,0" />
       <scope id="8240600211257293917" at="45,0,48,0">
         <var name="owner" id="8240600211257293917" />
-      </scope>
-      <scope id="8240600211257314592" at="55,30,58,177">
-        <var name="nodeToCheck" id="8240600211257314592" />
-        <var name="operation" id="8240600211257314592" />
-      </scope>
-      <scope id="8240600211257423129" at="62,30,65,177">
-        <var name="nodeToCheck" id="8240600211257423129" />
-        <var name="operation" id="8240600211257423129" />
-      </scope>
-      <scope id="8240600211257296170" at="69,30,72,600">
-        <var name="nodeToCheck" id="8240600211257296170" />
-        <var name="operation" id="8240600211257296170" />
       </scope>
       <scope id="8240600211257314592" at="30,0,34,0" />
       <scope id="8240600211257423129" at="34,0,38,0" />
       <scope id="8240600211257296170" at="38,0,42,0" />
       <scope id="8240600211257293917" at="49,0,53,0" />
-      <scope id="8240600211257314592" at="54,75,59,9" />
-      <scope id="8240600211257423129" at="61,75,66,9" />
-      <scope id="8240600211257296170" at="68,79,73,9" />
-      <scope id="8240600211257314592" at="54,0,61,0" />
-      <scope id="8240600211257423129" at="61,0,68,0" />
-      <scope id="8240600211257296170" at="68,0,75,0" />
-      <unit id="8240600211257293917" at="43,0,77,0" name="jetbrains.mps.build.stripping.tests.implementationStrippingTests.DuplicitRoutineNameTest_Test$TestBody" />
-      <unit id="8240600211257293917" at="21,0,78,0" name="jetbrains.mps.build.stripping.tests.implementationStrippingTests.DuplicitRoutineNameTest_Test" />
+      <scope id="8240600211257314592" at="54,75,58,9" />
+      <scope id="8240600211257423129" at="60,75,64,9" />
+      <scope id="8240600211257296170" at="66,79,70,9" />
+      <scope id="8240600211257314592" at="54,0,60,0" />
+      <scope id="8240600211257423129" at="60,0,66,0" />
+      <scope id="8240600211257296170" at="66,0,72,0" />
+      <unit id="8240600211257293917" at="43,0,74,0" name="jetbrains.mps.build.stripping.tests.implementationStrippingTests.DuplicitRoutineNameTest_Test$TestBody" />
+      <unit id="8240600211257293917" at="21,0,75,0" name="jetbrains.mps.build.stripping.tests.implementationStrippingTests.DuplicitRoutineNameTest_Test" />
     </file>
   </root>
 </debug-info>

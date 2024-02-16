@@ -50,14 +50,12 @@ public class TestAnalyzerWithModeSpecified_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck2955426575106132885() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2955426575106132805");
-        SNode operation = getRealNodeById("2955426575106132885");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_NodeErrorCheck2955426575106132965() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2955426575106132815");
-        SNode operation = getRealNodeById("2955426575106132965");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }

@@ -45,7 +45,6 @@ public class AdvancedFunctionParameter_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck3116855336983150016() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8871630846489169646");
-        SNode operation = getRealNodeById("3116855336983150016");
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }

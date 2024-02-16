@@ -10,8 +10,8 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckTypesAction;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.project.ProjectBase;
@@ -47,16 +47,11 @@ public class DiamondOperator_Test extends BaseTransformationTest {
 
     public void test_NodeTypeCheck2668602783496187514() throws Exception {
       initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2668602783496031829");
-        SNode operation = getRealNodeById("2668602783496187514");
-        new CheckTypesAction.CheckComputedType(getNodeById("2668602783496031829")).checkTypeIs(getNodeById("2668602783496188412"));
-      });
+      runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2668602783496031829")).checkTypeIs(getNodeById("2668602783496188412")));
     }
     public void test_NodeTypeSystemCheck2668602783496250965() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2668602783496238456");
-        SNode operation = getRealNodeById("2668602783496250965");
         new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }

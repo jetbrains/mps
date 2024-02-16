@@ -80,33 +80,31 @@
       <node id="4985370212423155345" at="36,52,37,19" concept="6" />
       <node id="4985370212423155345" at="41,36,42,46" concept="2" />
       <node id="4985370212424024062" at="46,30,47,67" concept="4" />
-      <node id="4985370212424024062" at="47,67,48,65" concept="4" />
-      <node id="4985370212424024062" at="48,65,49,209" concept="2" />
+      <node id="4985370212424024062" at="47,67,48,209" concept="2" />
       <node id="4985370212423155345" at="22,0,24,0" concept="5" trace="ourParametersCacheExtension" />
       <node id="4985370212423155345" at="25,0,28,0" concept="1" trace="ForEachStatementTypeInference_Test#()V" />
       <node id="4985370212423155345" at="36,0,39,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="4985370212424024062" at="29,0,33,0" concept="3" trace="test_ErrorMessagesCheck4985370212424024062#()V" />
       <node id="4985370212423155345" at="40,0,44,0" concept="3" trace="initTestNodes#()V" />
-      <node id="4985370212424024062" at="45,79,50,9" concept="2" />
-      <node id="4985370212424024062" at="45,0,52,0" concept="3" trace="test_ErrorMessagesCheck4985370212424024062#()V" />
+      <node id="4985370212424024062" at="45,79,49,9" concept="2" />
+      <node id="4985370212424024062" at="45,0,51,0" concept="3" trace="test_ErrorMessagesCheck4985370212424024062#()V" />
       <scope id="4985370212423155345" at="25,47,26,60" />
       <scope id="4985370212424024062" at="30,77,31,68" />
       <scope id="4985370212423155345" at="36,52,37,19" />
       <scope id="4985370212423155345" at="41,36,42,46" />
+      <scope id="4985370212424024062" at="46,30,48,209">
+        <var name="nodeToCheck" id="4985370212424024062" />
+      </scope>
       <scope id="4985370212423155345" at="25,0,28,0" />
       <scope id="4985370212423155345" at="36,0,39,0">
         <var name="owner" id="4985370212423155345" />
       </scope>
-      <scope id="4985370212424024062" at="46,30,49,209">
-        <var name="nodeToCheck" id="4985370212424024062" />
-        <var name="operation" id="4985370212424024062" />
-      </scope>
       <scope id="4985370212424024062" at="29,0,33,0" />
       <scope id="4985370212423155345" at="40,0,44,0" />
-      <scope id="4985370212424024062" at="45,79,50,9" />
-      <scope id="4985370212424024062" at="45,0,52,0" />
-      <unit id="4985370212423155345" at="34,0,54,0" name="jetbrains.mps.internalCollections.test.typechecking.ForEachStatementTypeInference_Test$TestBody" />
-      <unit id="4985370212423155345" at="20,0,55,0" name="jetbrains.mps.internalCollections.test.typechecking.ForEachStatementTypeInference_Test" />
+      <scope id="4985370212424024062" at="45,79,49,9" />
+      <scope id="4985370212424024062" at="45,0,51,0" />
+      <unit id="4985370212423155345" at="34,0,53,0" name="jetbrains.mps.internalCollections.test.typechecking.ForEachStatementTypeInference_Test$TestBody" />
+      <unit id="4985370212423155345" at="20,0,54,0" name="jetbrains.mps.internalCollections.test.typechecking.ForEachStatementTypeInference_Test" />
     </file>
   </root>
   <root nodeRef="r:ea0833ca-e474-4ae3-b6d3-3f8d18af5a89(jetbrains.mps.internalCollections.test.typechecking@tests)/6802806833293204571">
@@ -118,16 +116,11 @@
       <node id="6802806833293204571" at="45,52,46,19" concept="6" />
       <node id="6802806833293204571" at="50,36,51,46" concept="2" />
       <node id="6802806833293299754" at="54,74,55,22" concept="2" />
-      <node id="6802806833293299754" at="56,30,57,67" concept="4" />
-      <node id="6802806833293299754" at="57,67,58,65" concept="4" />
-      <node id="6802806833293299754" at="58,65,59,131" concept="2" />
-      <node id="6802806833293340692" at="62,74,63,22" concept="2" />
-      <node id="6802806833293340692" at="64,30,65,67" concept="4" />
-      <node id="6802806833293340692" at="65,67,66,65" concept="4" />
-      <node id="6802806833293340692" at="66,65,67,131" concept="2" />
-      <node id="6802806833293252920" at="71,30,72,67" concept="4" />
-      <node id="6802806833293252920" at="72,67,73,65" concept="4" />
-      <node id="6802806833293252920" at="73,65,74,209" concept="2" />
+      <node id="6802806833293299754" at="55,22,56,153" concept="2" />
+      <node id="6802806833293340692" at="58,74,59,22" concept="2" />
+      <node id="6802806833293340692" at="59,22,60,153" concept="2" />
+      <node id="6802806833293252920" at="63,30,64,67" concept="4" />
+      <node id="6802806833293252920" at="64,67,65,209" concept="2" />
       <node id="6802806833293204571" at="23,0,25,0" concept="5" trace="ourParametersCacheExtension" />
       <node id="6802806833293204571" at="26,0,29,0" concept="1" trace="CollectionGenericsTest_Test#()V" />
       <node id="6802806833293204571" at="45,0,48,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -135,46 +128,35 @@
       <node id="6802806833293340692" at="34,0,38,0" concept="3" trace="test_NodeTypeCheck6802806833293340692#()V" />
       <node id="6802806833293252920" at="38,0,42,0" concept="3" trace="test_ErrorMessagesCheck6802806833293252920#()V" />
       <node id="6802806833293204571" at="49,0,53,0" concept="3" trace="initTestNodes#()V" />
-      <node id="6802806833293299754" at="55,22,60,9" concept="2" />
-      <node id="6802806833293340692" at="63,22,68,9" concept="2" />
-      <node id="6802806833293252920" at="70,79,75,9" concept="2" />
-      <node id="6802806833293252920" at="70,0,77,0" concept="3" trace="test_ErrorMessagesCheck6802806833293252920#()V" />
-      <node id="6802806833293299754" at="54,0,62,0" concept="3" trace="test_NodeTypeCheck6802806833293299754#()V" />
-      <node id="6802806833293340692" at="62,0,70,0" concept="3" trace="test_NodeTypeCheck6802806833293340692#()V" />
+      <node id="6802806833293299754" at="54,0,58,0" concept="3" trace="test_NodeTypeCheck6802806833293299754#()V" />
+      <node id="6802806833293340692" at="58,0,62,0" concept="3" trace="test_NodeTypeCheck6802806833293340692#()V" />
+      <node id="6802806833293252920" at="62,79,66,9" concept="2" />
+      <node id="6802806833293252920" at="62,0,68,0" concept="3" trace="test_ErrorMessagesCheck6802806833293252920#()V" />
       <scope id="6802806833293204571" at="26,40,27,60" />
       <scope id="6802806833293299754" at="31,72,32,63" />
       <scope id="6802806833293340692" at="35,72,36,63" />
       <scope id="6802806833293252920" at="39,77,40,68" />
       <scope id="6802806833293204571" at="45,52,46,19" />
       <scope id="6802806833293204571" at="50,36,51,46" />
+      <scope id="6802806833293299754" at="54,74,56,153" />
+      <scope id="6802806833293340692" at="58,74,60,153" />
+      <scope id="6802806833293252920" at="63,30,65,209">
+        <var name="nodeToCheck" id="6802806833293252920" />
+      </scope>
       <scope id="6802806833293204571" at="26,0,29,0" />
       <scope id="6802806833293204571" at="45,0,48,0">
         <var name="owner" id="6802806833293204571" />
-      </scope>
-      <scope id="6802806833293299754" at="56,30,59,131">
-        <var name="nodeToCheck" id="6802806833293299754" />
-        <var name="operation" id="6802806833293299754" />
-      </scope>
-      <scope id="6802806833293340692" at="64,30,67,131">
-        <var name="nodeToCheck" id="6802806833293340692" />
-        <var name="operation" id="6802806833293340692" />
-      </scope>
-      <scope id="6802806833293252920" at="71,30,74,209">
-        <var name="nodeToCheck" id="6802806833293252920" />
-        <var name="operation" id="6802806833293252920" />
       </scope>
       <scope id="6802806833293299754" at="30,0,34,0" />
       <scope id="6802806833293340692" at="34,0,38,0" />
       <scope id="6802806833293252920" at="38,0,42,0" />
       <scope id="6802806833293204571" at="49,0,53,0" />
-      <scope id="6802806833293252920" at="70,79,75,9" />
-      <scope id="6802806833293299754" at="54,74,60,9" />
-      <scope id="6802806833293340692" at="62,74,68,9" />
-      <scope id="6802806833293252920" at="70,0,77,0" />
-      <scope id="6802806833293299754" at="54,0,62,0" />
-      <scope id="6802806833293340692" at="62,0,70,0" />
-      <unit id="6802806833293204571" at="43,0,79,0" name="jetbrains.mps.internalCollections.test.typechecking.CollectionGenericsTest_Test$TestBody" />
-      <unit id="6802806833293204571" at="21,0,80,0" name="jetbrains.mps.internalCollections.test.typechecking.CollectionGenericsTest_Test" />
+      <scope id="6802806833293299754" at="54,0,58,0" />
+      <scope id="6802806833293340692" at="58,0,62,0" />
+      <scope id="6802806833293252920" at="62,79,66,9" />
+      <scope id="6802806833293252920" at="62,0,68,0" />
+      <unit id="6802806833293204571" at="43,0,70,0" name="jetbrains.mps.internalCollections.test.typechecking.CollectionGenericsTest_Test$TestBody" />
+      <unit id="6802806833293204571" at="21,0,71,0" name="jetbrains.mps.internalCollections.test.typechecking.CollectionGenericsTest_Test" />
     </file>
   </root>
 </debug-info>
