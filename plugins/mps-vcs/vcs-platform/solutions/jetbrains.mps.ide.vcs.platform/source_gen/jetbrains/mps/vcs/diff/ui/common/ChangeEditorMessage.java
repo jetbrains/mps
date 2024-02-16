@@ -320,6 +320,7 @@ __switch__:
             };
           }
         };
+
       }
     }.invoke(editor.getRootCell());
 
