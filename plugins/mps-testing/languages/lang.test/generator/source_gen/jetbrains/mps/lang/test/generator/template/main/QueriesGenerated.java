@@ -73,6 +73,7 @@ import jetbrains.mps.generator.impl.query.InsertMacroQuery;
 import jetbrains.mps.generator.impl.query.MapPostProcessor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
@@ -244,19 +245,19 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) BaseIntentionDeclaration__BehaviorDescriptor.getGeneratedId_id2ytFvC$HDcE.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.intention$MKHQ));
   }
   public static Object propertyMacro_GetValue_15_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.allowWarnings$lvb6);
-  }
-  public static Object propertyMacro_GetValue_15_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.allowErrors$luW5);
-  }
-  public static Object propertyMacro_GetValue_15_2(final PropertyMacroContext _context) {
-    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.includeSelf$xNXw);
-  }
-  public static Object propertyMacro_GetValue_15_3(final PropertyMacroContext _context) {
     return _context.getOriginalCopiedInputNode(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(_context.getNode())).getNodeId().toString();
   }
+  public static Object propertyMacro_GetValue_15_1(final PropertyMacroContext _context) {
+    return _context.getOriginalCopiedInputNode(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(_context.getNode())).getNodeId().toString();
+  }
+  public static Object propertyMacro_GetValue_15_2(final PropertyMacroContext _context) {
+    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.allowWarnings$lvb6);
+  }
+  public static Object propertyMacro_GetValue_15_3(final PropertyMacroContext _context) {
+    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.allowErrors$luW5);
+  }
   public static Object propertyMacro_GetValue_15_4(final PropertyMacroContext _context) {
-    return _context.getOriginalCopiedInputNode(SLinkOperations.getTarget(_context.getNode(), LINKS.type$ZQJx)).getNodeId().toString();
+    return SPropertyOperations.getBoolean(_context.getNode(), PROPS.includeSelf$xNXw);
   }
   public static Object propertyMacro_GetValue_15_5(final PropertyMacroContext _context) {
     return _context.getOriginalCopiedInputNode(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(_context.getNode())).getNodeId().toString();
@@ -268,10 +269,25 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOriginalCopiedInputNode(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(_context.getNode())).getNodeId().toString();
   }
   public static Object propertyMacro_GetValue_15_8(final PropertyMacroContext _context) {
-    return _context.getOriginalCopiedInputNode(_context.getNode()).getNodeId().toString();
+    return _context.getOriginalCopiedInputNode(SLinkOperations.getTarget(_context.getNode(), LINKS.type$ZQJx)).getNodeId().toString();
   }
   public static Object propertyMacro_GetValue_15_9(final PropertyMacroContext _context) {
+    return _context.getOriginalCopiedInputNode(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(_context.getNode())).getNodeId().toString();
+  }
+  public static Object propertyMacro_GetValue_15_10(final PropertyMacroContext _context) {
+    return _context.getOriginalCopiedInputNode(_context.getNode()).getNodeId().toString();
+  }
+  public static Object propertyMacro_GetValue_15_11(final PropertyMacroContext _context) {
+    return _context.getOriginalCopiedInputNode(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(_context.getNode())).getNodeId().toString();
+  }
+  public static Object propertyMacro_GetValue_15_12(final PropertyMacroContext _context) {
     return _context.getOriginalCopiedInputNode(SLinkOperations.getTarget(_context.getNode(), LINKS.ref$RHE6)).getNodeId().toString();
+  }
+  public static Object propertyMacro_GetValue_15_13(final PropertyMacroContext _context) {
+    return _context.getOriginalCopiedInputNode(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(SNodeOperations.as(_context.getNode(), CONCEPTS.INodesTestMethod$rN))).getNodeId().toString();
+  }
+  public static Object propertyMacro_GetValue_15_14(final PropertyMacroContext _context) {
+    return _context.getOriginalCopiedInputNode(_context.getNode()).getNodeId().toString();
   }
   public static Object propertyMacro_GetValue_16_0(final PropertyMacroContext _context) {
     SNodeReference targetRef = ((SNodeReference) _context.getVariable("var:targetRef"));
@@ -357,12 +373,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_19_1(final PropertyMacroContext _context) {
     return (String) ITestMethod__BehaviorDescriptor.getTestName_idhGBohAB.invoke(_context.getNode());
-  }
-  public static Object propertyMacro_GetValue_21_0(final PropertyMacroContext _context) {
-    return _context.getOriginalCopiedInputNode(INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(_context.getNode())).getNodeId().toString();
-  }
-  public static Object propertyMacro_GetValue_21_1(final PropertyMacroContext _context) {
-    return _context.getOriginalCopiedInputNode(_context.getNode()).getNodeId().toString();
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.member$oLt6), "DCM2Method");
@@ -594,7 +604,7 @@ public class QueriesGenerated extends QueryProviderBase {
     TestsUtil.mapSrcExtract(_context.getOutputNode());
   }
   public static SNode insertMacro_Query_15_0(final InsertMacroContext _context) {
-    return _quotation_createNode_x583g4_a0a451();
+    return _quotation_createNode_x583g4_a0a751();
   }
   public static Object varMacro_Value_3_0(final TemplateVarContext _context) {
     return _context.getNode();
@@ -900,6 +910,8 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("8951526261572327321", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "nodeId"));
     pvqMethods.put("8951526261572351788", new PVQ(i++, MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157a3736dL, 0x11157a64c91L, "fqClassName"), "MigrationScript"));
     pvqMethods.put("1227269295333973303", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), null));
+    pvqMethods.put("6594856700309246115", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "nodeId"));
+    pvqMethods.put("244475129984703662", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "nodeId"));
     pvqMethods.put("6970935187426326790", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), null));
     pvqMethods.put("6970935187426344860", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), null));
     pvqMethods.put("6970935187426391366", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value"), "true"));
@@ -909,7 +921,10 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("9018216227565753151", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
     pvqMethods.put("244475129982355133", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
     pvqMethods.put("9018216227565794109", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
+    pvqMethods.put("244475129984714204", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "nodeId"));
     pvqMethods.put("7244590811597212600", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "nodeId"));
+    pvqMethods.put("244475129984728068", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "nodeId"));
+    pvqMethods.put("6594856700309246135", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "nodeId"));
     pvqMethods.put("9018216227568987219", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "modelUID"));
     pvqMethods.put("9018216227568987257", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "nodeID"));
     pvqMethods.put("2797132561225421177", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "expected message"));
@@ -928,8 +943,6 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("687702229764382874", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
     pvqMethods.put("2966955420488577771", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "test_NodesTestMethod"));
     pvqMethods.put("1138552043288185612", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "test_NodesTestMethod"));
-    pvqMethods.put("6594856700309246115", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "nodeId"));
-    pvqMethods.put("6594856700309246135", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "nodeId"));
   }
   @NotNull
   @Override
@@ -1049,45 +1062,51 @@ public class QueriesGenerated extends QueryProviderBase {
         case 50:
           return QueriesGenerated.propertyMacro_GetValue_15_9(ctx);
         case 51:
-          return QueriesGenerated.propertyMacro_GetValue_16_0(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_15_10(ctx);
         case 52:
-          return QueriesGenerated.propertyMacro_GetValue_16_1(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_15_11(ctx);
         case 53:
-          return QueriesGenerated.propertyMacro_GetValue_16_2(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_15_12(ctx);
         case 54:
-          return QueriesGenerated.propertyMacro_GetValue_16_3(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_15_13(ctx);
         case 55:
-          return QueriesGenerated.propertyMacro_GetValue_16_4(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_15_14(ctx);
         case 56:
-          return QueriesGenerated.propertyMacro_GetValue_16_5(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_0(ctx);
         case 57:
-          return QueriesGenerated.propertyMacro_GetValue_16_6(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_1(ctx);
         case 58:
-          return QueriesGenerated.propertyMacro_GetValue_16_7(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_2(ctx);
         case 59:
-          return QueriesGenerated.propertyMacro_GetValue_16_8(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_3(ctx);
         case 60:
-          return QueriesGenerated.propertyMacro_GetValue_16_9(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_4(ctx);
         case 61:
-          return QueriesGenerated.propertyMacro_GetValue_16_10(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_5(ctx);
         case 62:
-          return QueriesGenerated.propertyMacro_GetValue_16_11(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_6(ctx);
         case 63:
-          return QueriesGenerated.propertyMacro_GetValue_16_12(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_7(ctx);
         case 64:
-          return QueriesGenerated.propertyMacro_GetValue_16_13(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_8(ctx);
         case 65:
-          return QueriesGenerated.propertyMacro_GetValue_17_0(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_9(ctx);
         case 66:
-          return QueriesGenerated.propertyMacro_GetValue_18_0(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_10(ctx);
         case 67:
-          return QueriesGenerated.propertyMacro_GetValue_19_0(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_11(ctx);
         case 68:
-          return QueriesGenerated.propertyMacro_GetValue_19_1(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_12(ctx);
         case 69:
-          return QueriesGenerated.propertyMacro_GetValue_21_0(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_16_13(ctx);
         case 70:
-          return QueriesGenerated.propertyMacro_GetValue_21_1(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_17_0(ctx);
+        case 71:
+          return QueriesGenerated.propertyMacro_GetValue_18_0(ctx);
+        case 72:
+          return QueriesGenerated.propertyMacro_GetValue_19_0(ctx);
+        case 73:
+          return QueriesGenerated.propertyMacro_GetValue_19_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -1333,7 +1352,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode _quotation_createNode_x583g4_a0a451() {
+  private static SNode _quotation_createNode_x583g4_a0a751() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, "jetbrains.mps.baseLanguageInternal"), 0x111fb5bb1f2L, "InternalVariableReference"));
@@ -1351,6 +1370,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept EditorOperation$OD = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11daf16c21cL, "jetbrains.mps.lang.test.structure.EditorOperation");
     /*package*/ static final SConcept TestInfo$9q = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo");
     /*package*/ static final SConcept AnonymousCellAnnotation$hB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
+    /*package*/ static final SInterfaceConcept INodesTestMethod$rN = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod");
     /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
     /*package*/ static final SConcept NodePointer$6k = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, "jetbrains.mps.lang.modelapi.structure.NodePointer");
     /*package*/ static final SConcept AbstractNodeRuleCheckOperation$eB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, "jetbrains.mps.lang.test.structure.AbstractNodeRuleCheckOperation");
