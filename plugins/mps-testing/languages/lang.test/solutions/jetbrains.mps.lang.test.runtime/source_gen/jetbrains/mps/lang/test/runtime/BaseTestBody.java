@@ -8,7 +8,9 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import java.util.ArrayList;
 import jetbrains.mps.smodel.CopyUtil;
+import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -23,6 +25,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BaseTestBody {
   protected final SModel myModel;
+  private final SModel myTransientModel;
   protected final Project myProject;
   protected final Map<SNode, SNode> myMap;
   private final Map<String, SNode> myAnnotatedNodes;
@@ -31,8 +34,8 @@ public class BaseTestBody {
     myMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
     myAnnotatedNodes = MapSequence.fromMap(new HashMap<>());
 
-    // this is what BaseTransformationTest.runTest() used to do
-    myModel = owner.getTransientModelDescriptor();
+    myModel = owner.getModelDescriptor();
+    myTransientModel = owner.getTransientModelDescriptor();
     myProject = owner.getProject();
   }
 
@@ -51,6 +54,15 @@ public class BaseTestBody {
     // intentionally not clone/copy in the name, as I plan to have distinct model for stripped copies of test nodes with original id
     // (aka clone), so that I can get rid of myMap altogether (would reference test copies by the same id as original one)
     myProject.getModelAccess().runWriteAction(() -> {
+      // clear temp model, just in case we reuse from previous test case
+      // FIXME put a not into BaseEditorTestBody that it doesn't need cleanup as long as it's single test case per test.
+      ArrayList<SNode> roots = new ArrayList<>();
+      for (SNode r : myTransientModel.getRootNodes()) {
+        roots.add(r);
+      }
+      for (SNode r : roots) {
+        myTransientModel.removeRootNode(r);
+      }
       for (String nid : nodeId) {
         addNodeById(nid);
       }
@@ -64,14 +76,15 @@ public class BaseTestBody {
     // I believe idea here is to make a copy of original node w/o any test-related stuff, like 'check'annotations
     // There's implicit assumption that *all* the nodes created under NodesTestCase get copied and that myMap gives access to a copy of any child of the original node.
     SNode node = getRealNodeById(id);
-    SNode copy = CopyUtil.copy(node, myMap, true);
+    SNode copy = CopyUtil.copyAndPreserveId(Collections.singletonList(node), myMap).get(0);
     for (SNode a : ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{}))) {
       if (SNodeOperations.isInstanceOf(a, CONCEPTS.TestNodeAnnotation$27)) {
+        // FIXME take first only, do not override
         MapSequence.fromMap(myAnnotatedNodes).put(SPropertyOperations.getString(SNodeOperations.cast(a, CONCEPTS.TestNodeAnnotation$27), PROPS.name$MnvL), SNodeOperations.getParent(a));
       }
       SNodeOperations.deleteNode(a);
     }
-    myModel.addRootNode(copy);
+    myTransientModel.addRootNode(copy);
   }
 
   /**

@@ -17,7 +17,7 @@ import jetbrains.mps.ide.ThreadUtils;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
-import jetbrains.mps.generator.impl.CloneUtil;
+import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
 
 /**
@@ -134,7 +134,7 @@ public final class TestParametersCache implements TestRule {
     final SRepository repository = p.getRepository();
     Exception exception = ThreadUtils.runInUIThreadAndWait(() -> {
       // FIXME drop command, needed for transient/temp model initialization only
-      repository.getModelAccess().executeCommand(new Runnable() {
+      repository.getModelAccess().runWriteAction(new Runnable() {
         @Override
         public void run() {
           SModelReference modelRef = PersistenceFacade.getInstance().createModelReference(myModelRef);
@@ -143,8 +143,14 @@ public final class TestParametersCache implements TestRule {
             throw new CouldNotFindModelException(String.format("Can't find model %s in supplied repository %s.", myModelRef, repository));
           }
           myTestModel = modelDescriptor;
-          SModel transientModel = TemporaryModels.getInstance().create(false, TempModuleOptions.nonReloadableModule());
-          new CloneUtil(modelDescriptor, transientModel).cloneModelWithImports();
+          SModel transientModel = TemporaryModels.getInstance().create(false, true, null, TempModuleOptions.nonReloadableModule());
+          final ModelImports mi = new ModelImports(transientModel);
+          mi.copyEmployedDevKitsFrom(modelDescriptor);
+          // test nodes we're gonna copy into transient model may reference auxiliary nodes in the original model, need to make sure
+          // they can get resolved w/o any hassle
+          mi.addModelImport(modelRef);
+          mi.copyUsedLanguagesFrom(modelDescriptor);
+          mi.copyImportedModelsFrom(modelDescriptor);
           new ModelDependencyUpdate(transientModel).updateModuleDependencies(repository);
           myTransientModel = transientModel;
         }

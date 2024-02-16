@@ -25215,7 +25215,7 @@
     <file name="TestStaticMethodCall.java">
       <node id="8475715909118841301" at="7,0,8,0" concept="9" trace="field" />
       <node id="8475715909118787579" at="8,0,10,0" concept="10" trace="method#()V" />
-      <scope id="8475715909118787585" at="8,36,8,36" />
+      <scope id="8475715909118787585" at="8,31,8,31" />
       <scope id="8475715909118787579" at="8,0,10,0" />
       <unit id="8475715909118777380" at="6,0,11,0" name="jetbrains.mps.editorTest.TestStaticMethodCall" />
     </file>
