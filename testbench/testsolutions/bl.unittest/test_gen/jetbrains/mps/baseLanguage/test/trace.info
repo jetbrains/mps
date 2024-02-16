@@ -3079,40 +3079,38 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/2702384151996661689">
     <file name="SimpleUnreachable_Test.java">
-      <node id="2702384151996661689" at="25,35,26,60" concept="8" />
-      <node id="3715262949174660907" at="30,79,31,70" concept="3" />
-      <node id="2702384151996661689" at="36,52,37,19" concept="8" />
-      <node id="2702384151996661689" at="41,36,42,46" concept="3" />
-      <node id="3715262949174660907" at="46,30,47,67" concept="5" />
-      <node id="3715262949174660907" at="47,67,48,65" concept="5" />
-      <node id="3715262949174660907" at="48,65,49,191" concept="3" />
-      <node id="2702384151996661689" at="56,0,57,0" concept="7" trace="INodesTestMethod$rN" />
-      <node id="2702384151996661689" at="22,0,24,0" concept="7" trace="ourParametersCacheExtension" />
-      <node id="2702384151996661689" at="25,0,28,0" concept="2" trace="SimpleUnreachable_Test#()V" />
-      <node id="2702384151996661689" at="36,0,39,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="3715262949174660907" at="29,0,33,0" concept="4" trace="test_NodeUnreachableCheck3715262949174660907#()V" />
-      <node id="2702384151996661689" at="40,0,44,0" concept="4" trace="initTestNodes#()V" />
-      <node id="3715262949174660907" at="45,81,50,9" concept="3" />
-      <node id="3715262949174660907" at="45,0,52,0" concept="4" trace="test_NodeUnreachableCheck3715262949174660907#()V" />
-      <scope id="2702384151996661689" at="25,35,26,60" />
-      <scope id="3715262949174660907" at="30,79,31,70" />
-      <scope id="2702384151996661689" at="36,52,37,19" />
-      <scope id="2702384151996661689" at="41,36,42,46" />
-      <scope id="2702384151996661689" at="25,0,28,0" />
-      <scope id="2702384151996661689" at="36,0,39,0">
+      <node id="2702384151996661689" at="23,35,24,60" concept="8" />
+      <node id="244475129983765579" at="28,72,29,63" concept="3" />
+      <node id="2702384151996661689" at="34,52,35,19" concept="8" />
+      <node id="2702384151996661689" at="39,36,40,46" concept="3" />
+      <node id="244475129983765579" at="44,30,45,67" concept="5" />
+      <node id="244475129983765579" at="45,67,46,64" concept="5" />
+      <node id="244475129983765579" at="46,64,47,177" concept="3" />
+      <node id="2702384151996661689" at="20,0,22,0" concept="7" trace="ourParametersCacheExtension" />
+      <node id="2702384151996661689" at="23,0,26,0" concept="2" trace="SimpleUnreachable_Test#()V" />
+      <node id="2702384151996661689" at="34,0,37,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="244475129983765579" at="27,0,31,0" concept="4" trace="test_NodeErrorCheck244475129983765579#()V" />
+      <node id="2702384151996661689" at="38,0,42,0" concept="4" trace="initTestNodes#()V" />
+      <node id="244475129983765579" at="43,74,48,9" concept="3" />
+      <node id="244475129983765579" at="43,0,50,0" concept="4" trace="test_NodeErrorCheck244475129983765579#()V" />
+      <scope id="2702384151996661689" at="23,35,24,60" />
+      <scope id="244475129983765579" at="28,72,29,63" />
+      <scope id="2702384151996661689" at="34,52,35,19" />
+      <scope id="2702384151996661689" at="39,36,40,46" />
+      <scope id="2702384151996661689" at="23,0,26,0" />
+      <scope id="2702384151996661689" at="34,0,37,0">
         <var name="owner" id="2702384151996661689" />
       </scope>
-      <scope id="3715262949174660907" at="46,30,49,191">
-        <var name="nodeToCheck" id="3715262949174660907" />
-        <var name="operation" id="3715262949174660907" />
+      <scope id="244475129983765579" at="44,30,47,177">
+        <var name="nodeToCheck" id="244475129983765579" />
+        <var name="operation" id="244475129983765579" />
       </scope>
-      <scope id="3715262949174660907" at="29,0,33,0" />
-      <scope id="2702384151996661689" at="40,0,44,0" />
-      <scope id="3715262949174660907" at="45,81,50,9" />
-      <scope id="3715262949174660907" at="45,0,52,0" />
-      <unit id="2702384151996661689" at="55,0,58,0" name="jetbrains.mps.baseLanguage.test.SimpleUnreachable_Test$CONCEPTS" />
-      <unit id="2702384151996661689" at="34,0,54,0" name="jetbrains.mps.baseLanguage.test.SimpleUnreachable_Test$TestBody" />
-      <unit id="2702384151996661689" at="20,0,59,0" name="jetbrains.mps.baseLanguage.test.SimpleUnreachable_Test" />
+      <scope id="244475129983765579" at="27,0,31,0" />
+      <scope id="2702384151996661689" at="38,0,42,0" />
+      <scope id="244475129983765579" at="43,74,48,9" />
+      <scope id="244475129983765579" at="43,0,50,0" />
+      <unit id="2702384151996661689" at="32,0,52,0" name="jetbrains.mps.baseLanguage.test.SimpleUnreachable_Test$TestBody" />
+      <unit id="2702384151996661689" at="18,0,53,0" name="jetbrains.mps.baseLanguage.test.SimpleUnreachable_Test" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/2743940965196456945">

@@ -11,11 +11,9 @@ import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.test.behavior.INodesTestMethod__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
+import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.project.ProjectBase;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class SimpleUnreachable_Test extends BaseTransformationTest {
@@ -27,8 +25,8 @@ public class SimpleUnreachable_Test extends BaseTransformationTest {
   }
 
   @Test
-  public void test_NodeUnreachableCheck3715262949174660907() throws Throwable {
-    new TestBody(this).test_NodeUnreachableCheck3715262949174660907();
+  public void test_NodeErrorCheck244475129983765579() throws Throwable {
+    new TestBody(this).test_NodeErrorCheck244475129983765579();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -42,17 +40,13 @@ public class SimpleUnreachable_Test extends BaseTransformationTest {
       prepareTestNodes("2702384151998545189");
     }
 
-    public void test_NodeUnreachableCheck3715262949174660907() throws Exception {
+    public void test_NodeErrorCheck244475129983765579() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2702384151998850297");
-        SNode operation = getRealNodeById("3715262949174660907");
-        INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(SNodeOperations.cast(operation, CONCEPTS.INodesTestMethod$rN), nodeToCheck, ((ProjectBase) myProject).getPlatform());
+        SNode operation = getRealNodeById("244475129983765579");
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
       });
     }
 
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INodesTestMethod$rN = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod");
   }
 }

@@ -50,7 +50,6 @@
         <property id="852155438140865197" name="allowErrors" index="G7GLQ" />
         <property id="3743352646565420194" name="includeSelf" index="GvXf4" />
       </concept>
-      <concept id="1215612918969" name="jetbrains.mps.lang.test.structure.NodeUnreachable" flags="ng" index="8bhQy" />
       <concept id="7835233914439520906" name="jetbrains.mps.lang.test.structure.AbstractNodeRuleCheckOperation" flags="ng" index="mZCkL">
         <child id="710597951278798299" name="expectedMessage" index="1DMPz9" />
       </concept>
@@ -22103,7 +22102,7 @@
                 </node>
               </node>
               <node concept="7CXmI" id="3efgZvcIsWr" role="lGtFl">
-                <node concept="8bhQy" id="3efgZvcIsWF" role="7EUXB" />
+                <node concept="1TM$A" id="d$zdnv6oLb" role="7EUXB" />
               </node>
             </node>
           </node>
