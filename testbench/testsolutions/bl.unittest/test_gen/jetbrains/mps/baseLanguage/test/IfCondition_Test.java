@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class IfCondition_Test extends BaseTransformationTest {
@@ -80,61 +79,61 @@ public class IfCondition_Test extends BaseTransformationTest {
     public void test_NodeUnreachableCodeCheck8011059391323069053() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391323066918");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnreachableCodeCheck8011059391323074758() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391323074756");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnreachableCodeCheck8011059391324795386() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391273774911");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8011059391272929116() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272929112");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757"), "Warning: The binary logical expression b1||b2 can be simplified", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757"), "Warning: The binary logical expression b1||b2 can be simplified", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8011059391272929119() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272929112");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always true", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnreachableCodeCheck8011059391324888917() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391274476163");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2557916264117518373"), "Warning: Unreachable code", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8011059391272929173() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272929169");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757"), "Warning: The binary logical expression b1&&b2 can be simplified", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8626468694779180757"), "Warning: The binary logical expression b1&&b2 can be simplified", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTheConditionIsAlwaysCheck8011059391272929176() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272929169");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always false", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "Warning: The condition is always false", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8011059391272929225() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272929219");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534028382760"), "Warning: The binary logical expression b2||System.currentTimeMillis():long>1 can be simplified", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534028382760"), "Warning: The binary logical expression b2||System.currentTimeMillis():long>1 can be simplified", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTheBinaryLogicalExpressionCheck8011059391272929229() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8011059391272929216");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534028382760"), "Warning: The binary logical expression b1&&(b2||System.currentTimeMillis():long>1) can be simplified", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3832376534028382760"), "Warning: The binary logical expression b1&&(b2||System.currentTimeMillis():long>1) can be simplified", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

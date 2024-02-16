@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class AbstractFinalClass_Test extends BaseTransformationTest {
@@ -44,7 +43,7 @@ public class AbstractFinalClass_Test extends BaseTransformationTest {
     public void test_NodeIllegalCombinationOfModifiersCheck8431410806097805013() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8431410806097804849");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8431410806096003797"), "Error: Illegal combination of modifiers 'final' and 'abstract'", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8431410806096003797"), "Error: Illegal combination of modifiers 'final' and 'abstract'", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

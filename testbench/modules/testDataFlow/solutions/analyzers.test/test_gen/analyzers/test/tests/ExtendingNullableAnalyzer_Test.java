@@ -12,7 +12,6 @@ import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
@@ -50,13 +49,13 @@ public class ExtendingNullableAnalyzer_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck7974543756120908670() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1417601170173158309");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(false).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_NodeWarningCheck7078910619968857445() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1417601170173158514");
-        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.WARNING, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.WARNING, "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

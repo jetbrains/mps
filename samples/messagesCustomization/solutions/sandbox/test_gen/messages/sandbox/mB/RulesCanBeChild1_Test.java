@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -59,25 +58,25 @@ public class RulesCanBeChild1_Test extends BaseTransformationTest {
     public void test_NodeUnknownRuleCheck2884486869351397457() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3071492597344700470");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "8918166317255507159"), "Reference is out of scope: can not found the link 'link' in the node B", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "8918166317255507159"), "Reference is out of scope: can not found the link 'link' in the node B", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck2884486869351538465() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2884486869351415706");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_ErrorMessagesCheck2884486869351538492() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2884486869351538472");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2884486869351538475"), MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "2884486869351404323"), "Parent B must be the prefix of As name", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("2884486869351538475"), MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "2884486869351404323"), "Parent B must be the prefix of As name", myProject.getRepository(), myProject.getPlatform()))).run();
       });
     }
     public void test_NodeparentHasTheSameNameCheck2802122285521967426() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2884486869351538475");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "2884486869351404323"), "Parent B must be the prefix of As name", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "2884486869351404323"), "Parent B must be the prefix of As name", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

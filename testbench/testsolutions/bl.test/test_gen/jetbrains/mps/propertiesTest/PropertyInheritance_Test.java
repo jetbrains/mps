@@ -12,7 +12,6 @@ import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
@@ -67,37 +66,37 @@ public class PropertyInheritance_Test extends BaseTransformationTest {
     public void test_ErrorMessagesCheck2793586790994231859() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227158484");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
     public void test_NodeTryingToAssignWeakerPrivilegesCheck6115392061227170451() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227159638");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302595116711"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302595116711"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTheMethodReturnTypeIsCheck6115392061227172643() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227170557");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6115392061221562427"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6115392061221562427"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTryingToAssignWeakerPrivilegesCheck6115392061228741124() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227172800");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302595116711"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302595116711"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck6115392061228741318() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061227159373");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782410371482"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782410371482"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTheMethodCannotOverrideCheck6115392061233415628() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061233268919");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302592864485"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3950519302592864485"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

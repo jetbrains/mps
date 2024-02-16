@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class IncludeDefaultMenu_Test extends BaseTransformationTest {
@@ -60,31 +59,31 @@ public class IncludeDefaultMenu_Test extends BaseTransformationTest {
     public void test_NodeConceptShouldBeSpecifiedCheck8095208975669727090() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8095208975669432956");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539916846"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539916846"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeConceptShouldBeSpecifiedCheck8095208975669728885() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8095208975669728882");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539951149"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539951149"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeConceptShouldBeSpecifiedCheck8095208975669729693() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8095208975669729682");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539951149"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539951149"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeConceptShouldBeSpecifiedCheck8095208975669729758() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8095208975669729747");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539951149"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539951149"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeConceptShouldBeSpecifiedCheck8095208975669730924() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8095208975669730566");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539951149"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1063333449539951149"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

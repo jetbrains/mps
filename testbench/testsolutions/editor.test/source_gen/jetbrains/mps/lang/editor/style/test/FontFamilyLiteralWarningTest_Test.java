@@ -13,7 +13,6 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class FontFamilyLiteralWarningTest_Test extends BaseTransformationTest {
@@ -43,7 +42,7 @@ public class FontFamilyLiteralWarningTest_Test extends BaseTransformationTest {
     public void test_NodeWarningCheck1715298588355941914() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1715298588355941887");
-        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.WARNING, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.WARNING, "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

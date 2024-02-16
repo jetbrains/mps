@@ -14,7 +14,6 @@ import jetbrains.mps.lang.test.runtime.CheckTypesAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class DiamondOperator_Test extends BaseTransformationTest {
@@ -52,7 +51,7 @@ public class DiamondOperator_Test extends BaseTransformationTest {
     public void test_NodeTypeSystemCheck2668602783496250965() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2668602783496238456");
-        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

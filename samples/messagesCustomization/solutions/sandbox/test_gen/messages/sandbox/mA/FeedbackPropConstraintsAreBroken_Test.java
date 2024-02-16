@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.lang.test.runtime.CheckScopesAction;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -60,7 +59,7 @@ public class FeedbackPropConstraintsAreBroken_Test extends BaseTransformationTes
     public void test_NodeUnknownRuleCheck2884486869351401623() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3071492597344664119");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "3071492597344701404"), "Property constraints are broken for the property prop  ", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "3071492597344701404"), "Property constraints are broken for the property prop  ", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_ScopeOf_TestConcept_link_3071492597344664119() throws Exception {
@@ -72,7 +71,7 @@ public class FeedbackPropConstraintsAreBroken_Test extends BaseTransformationTes
     public void test_ErrorMessagesCheck2884486869351400430() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2884486869351398329");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
       });
     }
 

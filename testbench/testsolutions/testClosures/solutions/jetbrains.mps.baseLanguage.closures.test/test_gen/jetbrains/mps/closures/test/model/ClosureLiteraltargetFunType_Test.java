@@ -16,7 +16,6 @@ import jetbrains.mps.baseLanguage.closures.helper.ClosureLiteralTarget;
 import jetbrains.mps.baseLanguage.closures.behavior.FunctionType__BehaviorDescriptor;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.baseLanguage.closures.helper.Values;
 import org.junit.Assert;
 import jetbrains.mps.smodel.SNodeMatcher;
@@ -65,7 +64,7 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck3981396688773519576() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6374750171056867612");
-        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

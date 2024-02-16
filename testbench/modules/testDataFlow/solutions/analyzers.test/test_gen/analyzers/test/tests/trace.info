@@ -8,49 +8,49 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root nodeRef="r:5c887230-cdf3-4722-bd6c-5a7e20ee92a1(analyzers.test.tests@tests)/1417601170173072184">
     <file name="ExtendingNullableAnalyzer_Test.java">
-      <node id="1417601170173072184" at="26,43,27,60" concept="5" />
-      <node id="7974543756120908670" at="31,77,32,68" concept="1" />
-      <node id="7078910619968857445" at="35,75,36,66" concept="1" />
-      <node id="1417601170173072184" at="41,52,42,19" concept="5" />
-      <node id="1417601170173072184" at="46,36,47,46" concept="1" />
-      <node id="7974543756120908670" at="51,30,52,67" concept="3" />
-      <node id="7974543756120908670" at="52,67,53,210" concept="1" />
-      <node id="7078910619968857445" at="57,30,58,67" concept="3" />
-      <node id="7078910619968857445" at="58,67,59,179" concept="1" />
-      <node id="1417601170173072184" at="23,0,25,0" concept="4" trace="ourParametersCacheExtension" />
-      <node id="1417601170173072184" at="26,0,29,0" concept="0" trace="ExtendingNullableAnalyzer_Test#()V" />
-      <node id="1417601170173072184" at="41,0,44,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="7974543756120908670" at="30,0,34,0" concept="2" trace="test_ErrorMessagesCheck7974543756120908670#()V" />
-      <node id="7078910619968857445" at="34,0,38,0" concept="2" trace="test_NodeWarningCheck7078910619968857445#()V" />
-      <node id="1417601170173072184" at="45,0,49,0" concept="2" trace="initTestNodes#()V" />
-      <node id="7974543756120908670" at="50,79,54,9" concept="1" />
-      <node id="7078910619968857445" at="56,77,60,9" concept="1" />
-      <node id="7974543756120908670" at="50,0,56,0" concept="2" trace="test_ErrorMessagesCheck7974543756120908670#()V" />
-      <node id="7078910619968857445" at="56,0,62,0" concept="2" trace="test_NodeWarningCheck7078910619968857445#()V" />
-      <scope id="1417601170173072184" at="26,43,27,60" />
-      <scope id="7974543756120908670" at="31,77,32,68" />
-      <scope id="7078910619968857445" at="35,75,36,66" />
-      <scope id="1417601170173072184" at="41,52,42,19" />
-      <scope id="1417601170173072184" at="46,36,47,46" />
-      <scope id="7974543756120908670" at="51,30,53,210">
+      <node id="1417601170173072184" at="25,43,26,60" concept="5" />
+      <node id="7974543756120908670" at="30,77,31,68" concept="1" />
+      <node id="7078910619968857445" at="34,75,35,66" concept="1" />
+      <node id="1417601170173072184" at="40,52,41,19" concept="5" />
+      <node id="1417601170173072184" at="45,36,46,46" concept="1" />
+      <node id="7974543756120908670" at="50,30,51,67" concept="3" />
+      <node id="7974543756120908670" at="51,67,52,194" concept="1" />
+      <node id="7078910619968857445" at="56,30,57,67" concept="3" />
+      <node id="7078910619968857445" at="57,67,58,163" concept="1" />
+      <node id="1417601170173072184" at="22,0,24,0" concept="4" trace="ourParametersCacheExtension" />
+      <node id="1417601170173072184" at="25,0,28,0" concept="0" trace="ExtendingNullableAnalyzer_Test#()V" />
+      <node id="1417601170173072184" at="40,0,43,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7974543756120908670" at="29,0,33,0" concept="2" trace="test_ErrorMessagesCheck7974543756120908670#()V" />
+      <node id="7078910619968857445" at="33,0,37,0" concept="2" trace="test_NodeWarningCheck7078910619968857445#()V" />
+      <node id="1417601170173072184" at="44,0,48,0" concept="2" trace="initTestNodes#()V" />
+      <node id="7974543756120908670" at="49,79,53,9" concept="1" />
+      <node id="7078910619968857445" at="55,77,59,9" concept="1" />
+      <node id="7974543756120908670" at="49,0,55,0" concept="2" trace="test_ErrorMessagesCheck7974543756120908670#()V" />
+      <node id="7078910619968857445" at="55,0,61,0" concept="2" trace="test_NodeWarningCheck7078910619968857445#()V" />
+      <scope id="1417601170173072184" at="25,43,26,60" />
+      <scope id="7974543756120908670" at="30,77,31,68" />
+      <scope id="7078910619968857445" at="34,75,35,66" />
+      <scope id="1417601170173072184" at="40,52,41,19" />
+      <scope id="1417601170173072184" at="45,36,46,46" />
+      <scope id="7974543756120908670" at="50,30,52,194">
         <var name="nodeToCheck" id="7974543756120908670" />
       </scope>
-      <scope id="7078910619968857445" at="57,30,59,179">
+      <scope id="7078910619968857445" at="56,30,58,163">
         <var name="nodeToCheck" id="7078910619968857445" />
       </scope>
-      <scope id="1417601170173072184" at="26,0,29,0" />
-      <scope id="1417601170173072184" at="41,0,44,0">
+      <scope id="1417601170173072184" at="25,0,28,0" />
+      <scope id="1417601170173072184" at="40,0,43,0">
         <var name="owner" id="1417601170173072184" />
       </scope>
-      <scope id="7974543756120908670" at="30,0,34,0" />
-      <scope id="7078910619968857445" at="34,0,38,0" />
-      <scope id="1417601170173072184" at="45,0,49,0" />
-      <scope id="7974543756120908670" at="50,79,54,9" />
-      <scope id="7078910619968857445" at="56,77,60,9" />
-      <scope id="7974543756120908670" at="50,0,56,0" />
-      <scope id="7078910619968857445" at="56,0,62,0" />
-      <unit id="1417601170173072184" at="39,0,64,0" name="analyzers.test.tests.ExtendingNullableAnalyzer_Test$TestBody" />
-      <unit id="1417601170173072184" at="21,0,65,0" name="analyzers.test.tests.ExtendingNullableAnalyzer_Test" />
+      <scope id="7974543756120908670" at="29,0,33,0" />
+      <scope id="7078910619968857445" at="33,0,37,0" />
+      <scope id="1417601170173072184" at="44,0,48,0" />
+      <scope id="7974543756120908670" at="49,79,53,9" />
+      <scope id="7078910619968857445" at="55,77,59,9" />
+      <scope id="7974543756120908670" at="49,0,55,0" />
+      <scope id="7078910619968857445" at="55,0,61,0" />
+      <unit id="1417601170173072184" at="38,0,63,0" name="analyzers.test.tests.ExtendingNullableAnalyzer_Test$TestBody" />
+      <unit id="1417601170173072184" at="20,0,64,0" name="analyzers.test.tests.ExtendingNullableAnalyzer_Test" />
     </file>
   </root>
   <root nodeRef="r:5c887230-cdf3-4722-bd6c-5a7e20ee92a1(analyzers.test.tests@tests)/2955426575105884966">
@@ -126,49 +126,49 @@
   </root>
   <root nodeRef="r:5c887230-cdf3-4722-bd6c-5a7e20ee92a1(analyzers.test.tests@tests)/2955426575106132803">
     <file name="TestAnalyzerWithModeSpecified_Test.java">
-      <node id="2955426575106132803" at="26,47,27,60" concept="5" />
-      <node id="2955426575106132885" at="31,77,32,68" concept="1" />
-      <node id="2955426575106132965" at="35,73,36,64" concept="1" />
-      <node id="2955426575106132803" at="41,52,42,19" concept="5" />
-      <node id="2955426575106132803" at="46,36,47,69" concept="1" />
-      <node id="2955426575106132885" at="51,30,52,67" concept="3" />
-      <node id="2955426575106132885" at="52,67,53,210" concept="1" />
-      <node id="2955426575106132965" at="57,30,58,67" concept="3" />
-      <node id="2955426575106132965" at="58,67,59,177" concept="1" />
-      <node id="2955426575106132803" at="23,0,25,0" concept="4" trace="ourParametersCacheExtension" />
-      <node id="2955426575106132803" at="26,0,29,0" concept="0" trace="TestAnalyzerWithModeSpecified_Test#()V" />
-      <node id="2955426575106132803" at="41,0,44,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="2955426575106132885" at="30,0,34,0" concept="2" trace="test_ErrorMessagesCheck2955426575106132885#()V" />
-      <node id="2955426575106132965" at="34,0,38,0" concept="2" trace="test_NodeErrorCheck2955426575106132965#()V" />
-      <node id="2955426575106132803" at="45,0,49,0" concept="2" trace="initTestNodes#()V" />
-      <node id="2955426575106132885" at="50,79,54,9" concept="1" />
-      <node id="2955426575106132965" at="56,75,60,9" concept="1" />
-      <node id="2955426575106132885" at="50,0,56,0" concept="2" trace="test_ErrorMessagesCheck2955426575106132885#()V" />
-      <node id="2955426575106132965" at="56,0,62,0" concept="2" trace="test_NodeErrorCheck2955426575106132965#()V" />
-      <scope id="2955426575106132803" at="26,47,27,60" />
-      <scope id="2955426575106132885" at="31,77,32,68" />
-      <scope id="2955426575106132965" at="35,73,36,64" />
-      <scope id="2955426575106132803" at="41,52,42,19" />
-      <scope id="2955426575106132803" at="46,36,47,69" />
-      <scope id="2955426575106132885" at="51,30,53,210">
+      <node id="2955426575106132803" at="25,47,26,60" concept="5" />
+      <node id="2955426575106132885" at="30,77,31,68" concept="1" />
+      <node id="2955426575106132965" at="34,73,35,64" concept="1" />
+      <node id="2955426575106132803" at="40,52,41,19" concept="5" />
+      <node id="2955426575106132803" at="45,36,46,69" concept="1" />
+      <node id="2955426575106132885" at="50,30,51,67" concept="3" />
+      <node id="2955426575106132885" at="51,67,52,194" concept="1" />
+      <node id="2955426575106132965" at="56,30,57,67" concept="3" />
+      <node id="2955426575106132965" at="57,67,58,161" concept="1" />
+      <node id="2955426575106132803" at="22,0,24,0" concept="4" trace="ourParametersCacheExtension" />
+      <node id="2955426575106132803" at="25,0,28,0" concept="0" trace="TestAnalyzerWithModeSpecified_Test#()V" />
+      <node id="2955426575106132803" at="40,0,43,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2955426575106132885" at="29,0,33,0" concept="2" trace="test_ErrorMessagesCheck2955426575106132885#()V" />
+      <node id="2955426575106132965" at="33,0,37,0" concept="2" trace="test_NodeErrorCheck2955426575106132965#()V" />
+      <node id="2955426575106132803" at="44,0,48,0" concept="2" trace="initTestNodes#()V" />
+      <node id="2955426575106132885" at="49,79,53,9" concept="1" />
+      <node id="2955426575106132965" at="55,75,59,9" concept="1" />
+      <node id="2955426575106132885" at="49,0,55,0" concept="2" trace="test_ErrorMessagesCheck2955426575106132885#()V" />
+      <node id="2955426575106132965" at="55,0,61,0" concept="2" trace="test_NodeErrorCheck2955426575106132965#()V" />
+      <scope id="2955426575106132803" at="25,47,26,60" />
+      <scope id="2955426575106132885" at="30,77,31,68" />
+      <scope id="2955426575106132965" at="34,73,35,64" />
+      <scope id="2955426575106132803" at="40,52,41,19" />
+      <scope id="2955426575106132803" at="45,36,46,69" />
+      <scope id="2955426575106132885" at="50,30,52,194">
         <var name="nodeToCheck" id="2955426575106132885" />
       </scope>
-      <scope id="2955426575106132965" at="57,30,59,177">
+      <scope id="2955426575106132965" at="56,30,58,161">
         <var name="nodeToCheck" id="2955426575106132965" />
       </scope>
-      <scope id="2955426575106132803" at="26,0,29,0" />
-      <scope id="2955426575106132803" at="41,0,44,0">
+      <scope id="2955426575106132803" at="25,0,28,0" />
+      <scope id="2955426575106132803" at="40,0,43,0">
         <var name="owner" id="2955426575106132803" />
       </scope>
-      <scope id="2955426575106132885" at="30,0,34,0" />
-      <scope id="2955426575106132965" at="34,0,38,0" />
-      <scope id="2955426575106132803" at="45,0,49,0" />
-      <scope id="2955426575106132885" at="50,79,54,9" />
-      <scope id="2955426575106132965" at="56,75,60,9" />
-      <scope id="2955426575106132885" at="50,0,56,0" />
-      <scope id="2955426575106132965" at="56,0,62,0" />
-      <unit id="2955426575106132803" at="39,0,64,0" name="analyzers.test.tests.TestAnalyzerWithModeSpecified_Test$TestBody" />
-      <unit id="2955426575106132803" at="21,0,65,0" name="analyzers.test.tests.TestAnalyzerWithModeSpecified_Test" />
+      <scope id="2955426575106132885" at="29,0,33,0" />
+      <scope id="2955426575106132965" at="33,0,37,0" />
+      <scope id="2955426575106132803" at="44,0,48,0" />
+      <scope id="2955426575106132885" at="49,79,53,9" />
+      <scope id="2955426575106132965" at="55,75,59,9" />
+      <scope id="2955426575106132885" at="49,0,55,0" />
+      <scope id="2955426575106132965" at="55,0,61,0" />
+      <unit id="2955426575106132803" at="38,0,63,0" name="analyzers.test.tests.TestAnalyzerWithModeSpecified_Test$TestBody" />
+      <unit id="2955426575106132803" at="20,0,64,0" name="analyzers.test.tests.TestAnalyzerWithModeSpecified_Test" />
     </file>
   </root>
   <root nodeRef="r:5c887230-cdf3-4722-bd6c-5a7e20ee92a1(analyzers.test.tests@tests)/7078910619969039925">
@@ -229,62 +229,62 @@
   </root>
   <root nodeRef="r:5c887230-cdf3-4722-bd6c-5a7e20ee92a1(analyzers.test.tests@tests)/8332528989793466699">
     <file name="TestAnalyzerWithConstructorParameters_Test.java">
-      <node id="8332528989793466699" at="26,55,27,60" concept="5" />
-      <node id="8332528989793491523" at="31,73,32,64" concept="1" />
-      <node id="8332528989793494654" at="35,73,36,64" concept="1" />
-      <node id="8332528989793494697" at="39,77,40,68" concept="1" />
-      <node id="8332528989793466699" at="45,52,46,19" concept="5" />
-      <node id="8332528989793466699" at="50,36,51,92" concept="1" />
-      <node id="8332528989793491523" at="55,30,56,67" concept="3" />
-      <node id="8332528989793491523" at="56,67,57,177" concept="1" />
-      <node id="8332528989793494654" at="61,30,62,67" concept="3" />
-      <node id="8332528989793494654" at="62,67,63,177" concept="1" />
-      <node id="8332528989793494697" at="67,30,68,67" concept="3" />
-      <node id="8332528989793494697" at="68,67,69,210" concept="1" />
-      <node id="8332528989793466699" at="23,0,25,0" concept="4" trace="ourParametersCacheExtension" />
-      <node id="8332528989793466699" at="26,0,29,0" concept="0" trace="TestAnalyzerWithConstructorParameters_Test#()V" />
-      <node id="8332528989793466699" at="45,0,48,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="8332528989793491523" at="30,0,34,0" concept="2" trace="test_NodeErrorCheck8332528989793491523#()V" />
-      <node id="8332528989793494654" at="34,0,38,0" concept="2" trace="test_NodeErrorCheck8332528989793494654#()V" />
-      <node id="8332528989793494697" at="38,0,42,0" concept="2" trace="test_ErrorMessagesCheck8332528989793494697#()V" />
-      <node id="8332528989793466699" at="49,0,53,0" concept="2" trace="initTestNodes#()V" />
-      <node id="8332528989793491523" at="54,75,58,9" concept="1" />
-      <node id="8332528989793494654" at="60,75,64,9" concept="1" />
-      <node id="8332528989793494697" at="66,79,70,9" concept="1" />
-      <node id="8332528989793491523" at="54,0,60,0" concept="2" trace="test_NodeErrorCheck8332528989793491523#()V" />
-      <node id="8332528989793494654" at="60,0,66,0" concept="2" trace="test_NodeErrorCheck8332528989793494654#()V" />
-      <node id="8332528989793494697" at="66,0,72,0" concept="2" trace="test_ErrorMessagesCheck8332528989793494697#()V" />
-      <scope id="8332528989793466699" at="26,55,27,60" />
-      <scope id="8332528989793491523" at="31,73,32,64" />
-      <scope id="8332528989793494654" at="35,73,36,64" />
-      <scope id="8332528989793494697" at="39,77,40,68" />
-      <scope id="8332528989793466699" at="45,52,46,19" />
-      <scope id="8332528989793466699" at="50,36,51,92" />
-      <scope id="8332528989793491523" at="55,30,57,177">
+      <node id="8332528989793466699" at="25,55,26,60" concept="5" />
+      <node id="8332528989793491523" at="30,73,31,64" concept="1" />
+      <node id="8332528989793494654" at="34,73,35,64" concept="1" />
+      <node id="8332528989793494697" at="38,77,39,68" concept="1" />
+      <node id="8332528989793466699" at="44,52,45,19" concept="5" />
+      <node id="8332528989793466699" at="49,36,50,92" concept="1" />
+      <node id="8332528989793491523" at="54,30,55,67" concept="3" />
+      <node id="8332528989793491523" at="55,67,56,161" concept="1" />
+      <node id="8332528989793494654" at="60,30,61,67" concept="3" />
+      <node id="8332528989793494654" at="61,67,62,161" concept="1" />
+      <node id="8332528989793494697" at="66,30,67,67" concept="3" />
+      <node id="8332528989793494697" at="67,67,68,194" concept="1" />
+      <node id="8332528989793466699" at="22,0,24,0" concept="4" trace="ourParametersCacheExtension" />
+      <node id="8332528989793466699" at="25,0,28,0" concept="0" trace="TestAnalyzerWithConstructorParameters_Test#()V" />
+      <node id="8332528989793466699" at="44,0,47,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8332528989793491523" at="29,0,33,0" concept="2" trace="test_NodeErrorCheck8332528989793491523#()V" />
+      <node id="8332528989793494654" at="33,0,37,0" concept="2" trace="test_NodeErrorCheck8332528989793494654#()V" />
+      <node id="8332528989793494697" at="37,0,41,0" concept="2" trace="test_ErrorMessagesCheck8332528989793494697#()V" />
+      <node id="8332528989793466699" at="48,0,52,0" concept="2" trace="initTestNodes#()V" />
+      <node id="8332528989793491523" at="53,75,57,9" concept="1" />
+      <node id="8332528989793494654" at="59,75,63,9" concept="1" />
+      <node id="8332528989793494697" at="65,79,69,9" concept="1" />
+      <node id="8332528989793491523" at="53,0,59,0" concept="2" trace="test_NodeErrorCheck8332528989793491523#()V" />
+      <node id="8332528989793494654" at="59,0,65,0" concept="2" trace="test_NodeErrorCheck8332528989793494654#()V" />
+      <node id="8332528989793494697" at="65,0,71,0" concept="2" trace="test_ErrorMessagesCheck8332528989793494697#()V" />
+      <scope id="8332528989793466699" at="25,55,26,60" />
+      <scope id="8332528989793491523" at="30,73,31,64" />
+      <scope id="8332528989793494654" at="34,73,35,64" />
+      <scope id="8332528989793494697" at="38,77,39,68" />
+      <scope id="8332528989793466699" at="44,52,45,19" />
+      <scope id="8332528989793466699" at="49,36,50,92" />
+      <scope id="8332528989793491523" at="54,30,56,161">
         <var name="nodeToCheck" id="8332528989793491523" />
       </scope>
-      <scope id="8332528989793494654" at="61,30,63,177">
+      <scope id="8332528989793494654" at="60,30,62,161">
         <var name="nodeToCheck" id="8332528989793494654" />
       </scope>
-      <scope id="8332528989793494697" at="67,30,69,210">
+      <scope id="8332528989793494697" at="66,30,68,194">
         <var name="nodeToCheck" id="8332528989793494697" />
       </scope>
-      <scope id="8332528989793466699" at="26,0,29,0" />
-      <scope id="8332528989793466699" at="45,0,48,0">
+      <scope id="8332528989793466699" at="25,0,28,0" />
+      <scope id="8332528989793466699" at="44,0,47,0">
         <var name="owner" id="8332528989793466699" />
       </scope>
-      <scope id="8332528989793491523" at="30,0,34,0" />
-      <scope id="8332528989793494654" at="34,0,38,0" />
-      <scope id="8332528989793494697" at="38,0,42,0" />
-      <scope id="8332528989793466699" at="49,0,53,0" />
-      <scope id="8332528989793491523" at="54,75,58,9" />
-      <scope id="8332528989793494654" at="60,75,64,9" />
-      <scope id="8332528989793494697" at="66,79,70,9" />
-      <scope id="8332528989793491523" at="54,0,60,0" />
-      <scope id="8332528989793494654" at="60,0,66,0" />
-      <scope id="8332528989793494697" at="66,0,72,0" />
-      <unit id="8332528989793466699" at="43,0,74,0" name="analyzers.test.tests.TestAnalyzerWithConstructorParameters_Test$TestBody" />
-      <unit id="8332528989793466699" at="21,0,75,0" name="analyzers.test.tests.TestAnalyzerWithConstructorParameters_Test" />
+      <scope id="8332528989793491523" at="29,0,33,0" />
+      <scope id="8332528989793494654" at="33,0,37,0" />
+      <scope id="8332528989793494697" at="37,0,41,0" />
+      <scope id="8332528989793466699" at="48,0,52,0" />
+      <scope id="8332528989793491523" at="53,75,57,9" />
+      <scope id="8332528989793494654" at="59,75,63,9" />
+      <scope id="8332528989793494697" at="65,79,69,9" />
+      <scope id="8332528989793491523" at="53,0,59,0" />
+      <scope id="8332528989793494654" at="59,0,65,0" />
+      <scope id="8332528989793494697" at="65,0,71,0" />
+      <unit id="8332528989793466699" at="42,0,73,0" name="analyzers.test.tests.TestAnalyzerWithConstructorParameters_Test$TestBody" />
+      <unit id="8332528989793466699" at="20,0,74,0" name="analyzers.test.tests.TestAnalyzerWithConstructorParameters_Test" />
     </file>
   </root>
 </debug-info>

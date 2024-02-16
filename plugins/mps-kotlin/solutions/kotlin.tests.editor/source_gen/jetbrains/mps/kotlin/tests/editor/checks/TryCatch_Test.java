@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class TryCatch_Test extends BaseTransformationTest {
@@ -44,7 +43,7 @@ public class TryCatch_Test extends BaseTransformationTest {
     public void test_NodeExpectingCatchOrFinallyCheck8160487567611772388() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("8160487567611772337");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8160487567610426386"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8160487567610426386"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

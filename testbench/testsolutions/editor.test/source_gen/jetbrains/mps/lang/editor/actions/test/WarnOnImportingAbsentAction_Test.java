@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class WarnOnImportingAbsentAction_Test extends BaseTransformationTest {
@@ -44,7 +43,7 @@ public class WarnOnImportingAbsentAction_Test extends BaseTransformationTest {
     public void test_NodeImportHasNoEffectCheck858085313517684344() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("1465006755395151322");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2760718446999230123"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2760718446999230123"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

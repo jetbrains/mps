@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class PropertyNameClash_Test extends BaseTransformationTest {
@@ -44,7 +43,7 @@ public class PropertyNameClash_Test extends BaseTransformationTest {
     public void test_NodeThePropertySetterIsHidingCheck6115392061228789467() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("6115392061228765227");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1472285356915680442"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1472285356915680442"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

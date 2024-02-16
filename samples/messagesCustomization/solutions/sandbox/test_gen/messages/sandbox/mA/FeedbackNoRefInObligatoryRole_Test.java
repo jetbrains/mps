@@ -13,7 +13,6 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class FeedbackNoRefInObligatoryRole_Test extends BaseTransformationTest {
@@ -43,7 +42,7 @@ public class FeedbackNoRefInObligatoryRole_Test extends BaseTransformationTest {
     public void test_NodeErrorCheck7019192671317970783() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7019192671317969474");
-        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "No ref in the very obligatory role 'obligatoryref'", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "No ref in the very obligatory role 'obligatoryref'", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

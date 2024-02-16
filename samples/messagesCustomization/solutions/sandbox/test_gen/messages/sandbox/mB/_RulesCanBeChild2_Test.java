@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class _RulesCanBeChild2_Test extends BaseTransformationTest {
@@ -44,7 +43,7 @@ public class _RulesCanBeChild2_Test extends BaseTransformationTest {
     public void test_NodeUnknownRuleCheck2802122285522068052() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("2802122285522027982");
-        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "2884486869351523037"), "The root name _RulesCanBeChild2 must start with 'Rules' or 'Feedback'", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "2884486869351523037"), "The root name _RulesCanBeChild2 must start with 'Rules' or 'Feedback'", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 

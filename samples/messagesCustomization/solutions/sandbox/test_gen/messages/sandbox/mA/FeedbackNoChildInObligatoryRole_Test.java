@@ -13,7 +13,6 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.project.ProjectBase;
 
 @MPSLaunch
 public class FeedbackNoChildInObligatoryRole_Test extends BaseTransformationTest {
@@ -43,7 +42,7 @@ public class FeedbackNoChildInObligatoryRole_Test extends BaseTransformationTest
     public void test_NodeErrorCheck7019192671317970800() throws Exception {
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("7019192671317970792");
-        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "No child in the very obligatory role 'obligatorychild'", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+        new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "No child in the very obligatory role 'obligatorychild'", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
 
