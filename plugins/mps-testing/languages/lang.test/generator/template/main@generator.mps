@@ -200,6 +200,9 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
+      <concept id="1206629501431" name="jetbrains.mps.baseLanguage.structure.InstanceInitializer" flags="lg" index="3KIgzJ">
+        <child id="1206629521979" name="statementList" index="3KIlGz" />
+      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
@@ -593,16 +596,51 @@
     </node>
     <node concept="3aamgX" id="hByHdxr" role="3acgRq">
       <ref role="30HIoZ" to="tp5g:hBxON8j" resolve="TestNodeReference" />
-      <node concept="j$656" id="hByInEb" role="1lVwrX">
-        <ref role="v9R2y" node="hByHiPj" resolve="reduce_getTestNode" />
-        <node concept="2OqwBi" id="2YdNGB0TeQO" role="v9R3O">
-          <node concept="2OqwBi" id="2YdNGB0TeQP" role="2Oq$k0">
-            <node concept="30H73N" id="2YdNGB0TeQQ" role="2Oq$k0" />
-            <node concept="3TrEf2" id="2YdNGB0TeQR" role="2OqNvi">
-              <ref role="3Tt5mk" to="tp5g:hBxOPr6" resolve="declaration" />
+      <node concept="1Koe21" id="d$zdnvEuH7" role="1lVwrX">
+        <node concept="312cEu" id="d$zdnvEuHd" role="1Koe22">
+          <property role="TrG5h" value="C" />
+          <node concept="15s5l7" id="d$zdnvExKa" role="lGtFl">
+            <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: There is no default constructor available in super class jetbrains.mps.lang.test.runtime.BaseTestBody&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/8974945326827961340]&quot;;" />
+            <property role="huDt6" value="Error: There is no default constructor available in super class jetbrains.mps.lang.test.runtime.BaseTestBody" />
+          </node>
+          <node concept="3KIgzJ" id="d$zdnvEv2d" role="jymVt">
+            <node concept="3clFbS" id="d$zdnvEv2f" role="3KIlGz">
+              <node concept="3clFbF" id="d$zdnvEvst" role="3cqZAp">
+                <node concept="1rXfSq" id="d$zdnvEvss" role="3clFbG">
+                  <ref role="37wK5l" to="tp6m:d$zdnvE6r3" resolve="getAnnotatedNode" />
+                  <node concept="Xl_RD" id="d$zdnvEvHd" role="37wK5m">
+                    <property role="Xl_RC" value="" />
+                    <node concept="17Uvod" id="d$zdnvEvLf" role="lGtFl">
+                      <property role="2qtEX9" value="value" />
+                      <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                      <node concept="3zFVjK" id="d$zdnvEvLg" role="3zH0cK">
+                        <node concept="3clFbS" id="d$zdnvEvLh" role="2VODD2">
+                          <node concept="3clFbF" id="d$zdnvEwbl" role="3cqZAp">
+                            <node concept="2OqwBi" id="d$zdnvEx0A" role="3clFbG">
+                              <node concept="2OqwBi" id="d$zdnvEwBn" role="2Oq$k0">
+                                <node concept="30H73N" id="d$zdnvEwbk" role="2Oq$k0" />
+                                <node concept="3TrEf2" id="d$zdnvEwKT" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="tp5g:hBxOPr6" />
+                                </node>
+                              </node>
+                              <node concept="3TrcHB" id="d$zdnvExiJ" role="2OqNvi">
+                                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="raruj" id="d$zdnvEvK$" role="lGtFl" />
+                </node>
+              </node>
             </node>
           </node>
-          <node concept="1mfA1w" id="2YdNGB0TeQS" role="2OqNvi" />
+          <node concept="3Tm1VV" id="d$zdnvEuHe" role="1B3o_S" />
+          <node concept="3uibUv" id="d$zdnvEuMt" role="1zkMxy">
+            <ref role="3uigEE" to="tp6m:hLFfHcX" resolve="BaseTestBody" />
+          </node>
         </node>
       </node>
     </node>
@@ -1593,56 +1631,55 @@
       <node concept="3Tqbb2" id="AbdozclwYA" role="1N15GL" />
     </node>
     <node concept="312cEu" id="hPMpOg6" role="13RCb5">
-      <property role="TrG5h" value="Class" />
-      <node concept="3uibUv" id="hPMpSAg" role="1zkMxy">
-        <ref role="3uigEE" to="tp6m:hLFfHcX" resolve="BaseTestBody" />
+      <property role="TrG5h" value="C" />
+      <property role="1sVAO0" value="true" />
+      <node concept="15s5l7" id="d$zdnvEuhn" role="lGtFl">
+        <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: There is no default constructor available in super class jetbrains.mps.lang.test.runtime.BaseTestBody&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/8974945326827961340]&quot;;" />
+        <property role="huDt6" value="Error: There is no default constructor available in super class jetbrains.mps.lang.test.runtime.BaseTestBody" />
       </node>
-      <node concept="3clFbW" id="hPMpOg8" role="jymVt">
-        <node concept="3cqZAl" id="hPMpOg9" role="3clF45" />
-        <node concept="3Tm1VV" id="hPMpOga" role="1B3o_S" />
-        <node concept="3clFbS" id="hPMpOgb" role="3clF47">
-          <node concept="3cpWs8" id="hPMpUbP" role="3cqZAp">
-            <node concept="3cpWsn" id="hPMpUbQ" role="3cpWs9">
-              <property role="TrG5h" value="n" />
-              <node concept="3Tqbb2" id="hPMpUbR" role="1tU5fm" />
-              <node concept="1rXfSq" id="2YdNGB0TeQt" role="33vP2m">
-                <ref role="37wK5l" to="tp6m:hLFgrfm" resolve="getNodeById" />
-                <node concept="Xl_RD" id="2YdNGB0TeQG" role="37wK5m">
-                  <property role="Xl_RC" value="" />
-                  <node concept="17Uvod" id="2YdNGB0TeQH" role="lGtFl">
-                    <property role="2qtEX9" value="value" />
-                    <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
-                    <node concept="3zFVjK" id="2YdNGB0TeQI" role="3zH0cK">
-                      <node concept="3clFbS" id="2YdNGB0TeQJ" role="2VODD2">
-                        <node concept="3clFbF" id="2YdNGB0TeQK" role="3cqZAp">
-                          <node concept="2OqwBi" id="2YdNGB0TeQL" role="3clFbG">
-                            <node concept="2OqwBi" id="2YdNGB0TeQM" role="2Oq$k0">
-                              <node concept="2JrnkZ" id="2YdNGB0TeQN" role="2Oq$k0">
-                                <node concept="2OqwBi" id="Abdozclx_u" role="2JrQYb">
-                                  <node concept="1iwH7S" id="Abdozclxb4" role="2Oq$k0" />
-                                  <node concept="3cR$yn" id="AbdozclxJf" role="2OqNvi">
-                                    <ref role="3cRzXn" node="AbdozclwPl" resolve="testNode" />
-                                  </node>
+      <node concept="3KIgzJ" id="d$zdnvEt0f" role="jymVt">
+        <node concept="3clFbS" id="d$zdnvEt0h" role="3KIlGz">
+          <node concept="3clFbF" id="d$zdnvEt3j" role="3cqZAp">
+            <node concept="1rXfSq" id="2YdNGB0TeQt" role="3clFbG">
+              <ref role="37wK5l" to="tp6m:hLFgrfm" resolve="getNodeById" />
+              <node concept="Xl_RD" id="2YdNGB0TeQG" role="37wK5m">
+                <property role="Xl_RC" value="" />
+                <node concept="17Uvod" id="2YdNGB0TeQH" role="lGtFl">
+                  <property role="2qtEX9" value="value" />
+                  <property role="P4ACc" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070475926800/1070475926801" />
+                  <node concept="3zFVjK" id="2YdNGB0TeQI" role="3zH0cK">
+                    <node concept="3clFbS" id="2YdNGB0TeQJ" role="2VODD2">
+                      <node concept="3clFbF" id="2YdNGB0TeQK" role="3cqZAp">
+                        <node concept="2OqwBi" id="2YdNGB0TeQL" role="3clFbG">
+                          <node concept="2OqwBi" id="2YdNGB0TeQM" role="2Oq$k0">
+                            <node concept="2JrnkZ" id="2YdNGB0TeQN" role="2Oq$k0">
+                              <node concept="2OqwBi" id="Abdozclx_u" role="2JrQYb">
+                                <node concept="1iwH7S" id="Abdozclxb4" role="2Oq$k0" />
+                                <node concept="3cR$yn" id="AbdozclxJf" role="2OqNvi">
+                                  <ref role="3cRzXn" node="AbdozclwPl" resolve="testNode" />
                                 </node>
                               </node>
-                              <node concept="liA8E" id="2YdNGB0TeQT" role="2OqNvi">
-                                <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
-                              </node>
                             </node>
-                            <node concept="liA8E" id="2YdNGB0TeQU" role="2OqNvi">
-                              <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
+                            <node concept="liA8E" id="2YdNGB0TeQT" role="2OqNvi">
+                              <ref role="37wK5l" to="mhbf:~SNode.getNodeId()" resolve="getNodeId" />
                             </node>
+                          </node>
+                          <node concept="liA8E" id="2YdNGB0TeQU" role="2OqNvi">
+                            <ref role="37wK5l" to="wyt6:~Object.toString()" resolve="toString" />
                           </node>
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="raruj" id="L6i6iqBePo" role="lGtFl" />
               </node>
+              <node concept="raruj" id="L6i6iqBePo" role="lGtFl" />
             </node>
           </node>
         </node>
+      </node>
+      <node concept="3uibUv" id="hPMpSAg" role="1zkMxy">
+        <ref role="3uigEE" to="tp6m:hLFfHcX" resolve="BaseTestBody" />
       </node>
     </node>
   </node>

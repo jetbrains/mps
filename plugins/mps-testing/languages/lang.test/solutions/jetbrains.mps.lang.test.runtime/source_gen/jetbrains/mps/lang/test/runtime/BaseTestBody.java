@@ -12,20 +12,24 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.SNodeId;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.ide.ThreadUtils;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BaseTestBody {
   protected final SModel myModel;
   protected final Project myProject;
   protected final Map<SNode, SNode> myMap;
+  private final Map<String, SNode> myAnnotatedNodes;
 
   protected BaseTestBody(TransformationTest owner) {
     myMap = MapSequence.fromMap(new HashMap<SNode, SNode>());
+    myAnnotatedNodes = MapSequence.fromMap(new HashMap<>());
 
     // this is what BaseTransformationTest.runTest() used to do
     myModel = owner.getTransientModelDescriptor();
@@ -62,6 +66,9 @@ public class BaseTestBody {
     SNode node = getRealNodeById(id);
     SNode copy = CopyUtil.copy(node, myMap, true);
     for (SNode a : ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{}))) {
+      if (SNodeOperations.isInstanceOf(a, CONCEPTS.TestNodeAnnotation$27)) {
+        MapSequence.fromMap(myAnnotatedNodes).put(SPropertyOperations.getString(SNodeOperations.cast(a, CONCEPTS.TestNodeAnnotation$27), PROPS.name$MnvL), SNodeOperations.getParent(a));
+      }
       SNodeOperations.deleteNode(a);
     }
     myModel.addRootNode(copy);
@@ -69,14 +76,26 @@ public class BaseTestBody {
 
   /**
    * access copy of a node given identity from original model; copy is clean 
+   * ATM requires model read for original test model as we need to translate from original test node to its copy in a transient model
    */
-  public final SNode getNodeById(final String id) {
-    // FIXME this is provisional fix for MPSI-38. In most scenarios, getNodeById is invoked from
-    // model read. It's just an editor tests that we didn't use TestNodeReference with.
-    // Alternative would be to grab model read from outside; doing it locally for InvokeIntentionStatement only
-    // makes templates too complicated, doing it in general (for any TestNodeReference) changes too many templates
-    // to afford the change in a year-old bugfix (20.3 fix at the moment of 21.3 release)
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> MapSequence.fromMap(myMap).get(getRealNodeById(id)));
+  public final SNode getNodeById(String id) {
+    // FWIW, generally getNodeById is invoked from model command/read. 
+    // For TestNodeReference and named test nodes that could be used e.g. in editor tests outside of a proper model lock (e.g.InvokeIntentionStatement)
+    // there's #getAnnotatedNode() which doesn't require model lock at the moment.
+    return MapSequence.fromMap(myMap).get(getRealNodeById(id));
+  }
+
+  /**
+   * Gives named access to a test node copy. For use with TestNodeReference.
+   * 
+   * @since 2024.1
+   * @return copy of a test node annotated with a name in the original model
+   */
+  @Nullable
+  protected final SNode getAnnotatedNode(String name) {
+    // intentionally done in a way to avoid model read requirement, yet I'm reluctant to put this into javadoc right away.
+    // perhaps, we'll need to demand model read later, as I feel it's not quite ok to have tests accessing node<> w/o proper access
+    return MapSequence.fromMap(myAnnotatedNodes).get(name);
   }
 
   /**
@@ -127,6 +146,11 @@ public class BaseTestBody {
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept TestNodeAnnotation$27 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x119e1c6609cL, "jetbrains.mps.lang.test.structure.TestNodeAnnotation");
     /*package*/ static final SConcept AbstractTestNodeAnnotation$lh = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }
