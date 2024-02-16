@@ -106,10 +106,6 @@
       <concept id="1070534760951" name="jetbrains.mps.baseLanguage.structure.ArrayType" flags="in" index="10Q1$e">
         <child id="1070534760952" name="componentType" index="10Q1$1" />
       </concept>
-      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
-        <child id="1070534934091" name="type" index="10QFUM" />
-        <child id="1070534934092" name="expression" index="10QFUP" />
-      </concept>
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <property id="1075300953594" name="abstractClass" index="1sVAO0" />
@@ -170,9 +166,6 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
-      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
-        <child id="1079359253376" name="expression" index="1eOMHV" />
-      </concept>
       <concept id="1154542696413" name="jetbrains.mps.baseLanguage.structure.ArrayCreatorWithInitializer" flags="nn" index="3g6Rrh">
         <child id="1154542793668" name="componentType" index="3g7fb8" />
         <child id="1154542803372" name="initValue" index="3g7hyw" />
@@ -4885,18 +4878,11 @@
                             </node>
                           </node>
                           <node concept="2OqwBi" id="3q9wAW4p6SX" role="37wK5m">
-                            <node concept="1eOMI4" id="3q9wAW4p6tt" role="2Oq$k0">
-                              <node concept="10QFUN" id="3q9wAW4p4J5" role="1eOMHV">
-                                <node concept="3uibUv" id="3q9wAW4p5sB" role="10QFUM">
-                                  <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
-                                </node>
-                                <node concept="37vLTw" id="3q9wAW4p2vE" role="10QFUP">
-                                  <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
-                                </node>
-                              </node>
+                            <node concept="37vLTw" id="3q9wAW4p2vE" role="2Oq$k0">
+                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                             </node>
                             <node concept="liA8E" id="3q9wAW4p8Ql" role="2OqNvi">
-                              <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                              <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
                             </node>
                           </node>
                         </node>
@@ -5797,18 +5783,11 @@
                   <ref role="3cqZAo" node="62XJ9UeJ0KT" resolve="nodeToCheck" />
                 </node>
                 <node concept="2OqwBi" id="3q9wAW4tpY9" role="37wK5m">
-                  <node concept="1eOMI4" id="3q9wAW4tpYa" role="2Oq$k0">
-                    <node concept="10QFUN" id="3q9wAW4tpYb" role="1eOMHV">
-                      <node concept="3uibUv" id="3q9wAW4tpYc" role="10QFUM">
-                        <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
-                      </node>
-                      <node concept="37vLTw" id="3q9wAW4tpYd" role="10QFUP">
-                        <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
-                      </node>
-                    </node>
+                  <node concept="37vLTw" id="3q9wAW4tpYd" role="2Oq$k0">
+                    <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                   </node>
                   <node concept="liA8E" id="3q9wAW4tpYe" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                    <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
                   </node>
                 </node>
               </node>
@@ -6108,18 +6087,11 @@
                         </node>
                       </node>
                       <node concept="2OqwBi" id="3q9wAW4qJCL" role="37wK5m">
-                        <node concept="1eOMI4" id="3q9wAW4qKYV" role="2Oq$k0">
-                          <node concept="10QFUN" id="3q9wAW4qLmB" role="1eOMHV">
-                            <node concept="3uibUv" id="3q9wAW4qM0M" role="10QFUM">
-                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
-                            </node>
-                            <node concept="37vLTw" id="3q9wAW4qJ1_" role="10QFUP">
-                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
-                            </node>
-                          </node>
+                        <node concept="37vLTw" id="3q9wAW4qJ1_" role="2Oq$k0">
+                          <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="3q9wAW4qMwk" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                          <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -6236,18 +6208,11 @@
                         </node>
                       </node>
                       <node concept="2OqwBi" id="3q9wAW4tci2" role="37wK5m">
-                        <node concept="1eOMI4" id="3q9wAW4tci3" role="2Oq$k0">
-                          <node concept="10QFUN" id="3q9wAW4tci4" role="1eOMHV">
-                            <node concept="3uibUv" id="3q9wAW4tci5" role="10QFUM">
-                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
-                            </node>
-                            <node concept="37vLTw" id="3q9wAW4tci6" role="10QFUP">
-                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
-                            </node>
-                          </node>
+                        <node concept="37vLTw" id="3q9wAW4tci6" role="2Oq$k0">
+                          <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="3q9wAW4tci7" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                          <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -6565,18 +6530,11 @@
                         </node>
                       </node>
                       <node concept="2OqwBi" id="3q9wAW4qSuL" role="37wK5m">
-                        <node concept="1eOMI4" id="3q9wAW4qSuM" role="2Oq$k0">
-                          <node concept="10QFUN" id="3q9wAW4qSuN" role="1eOMHV">
-                            <node concept="3uibUv" id="3q9wAW4qSuO" role="10QFUM">
-                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
-                            </node>
-                            <node concept="37vLTw" id="3q9wAW4qSuP" role="10QFUP">
-                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
-                            </node>
-                          </node>
+                        <node concept="37vLTw" id="3q9wAW4qSuP" role="2Oq$k0">
+                          <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="3q9wAW4qSuQ" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                          <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -6693,18 +6651,11 @@
                         </node>
                       </node>
                       <node concept="2OqwBi" id="3q9wAW4r0HG" role="37wK5m">
-                        <node concept="1eOMI4" id="3q9wAW4r0HH" role="2Oq$k0">
-                          <node concept="10QFUN" id="3q9wAW4r0HI" role="1eOMHV">
-                            <node concept="3uibUv" id="3q9wAW4r0HJ" role="10QFUM">
-                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
-                            </node>
-                            <node concept="37vLTw" id="3q9wAW4r0HK" role="10QFUP">
-                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
-                            </node>
-                          </node>
+                        <node concept="37vLTw" id="3q9wAW4r0HK" role="2Oq$k0">
+                          <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="3q9wAW4r0HL" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                          <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -7022,18 +6973,11 @@
                         </node>
                       </node>
                       <node concept="2OqwBi" id="3q9wAW4qVo8" role="37wK5m">
-                        <node concept="1eOMI4" id="3q9wAW4qVo9" role="2Oq$k0">
-                          <node concept="10QFUN" id="3q9wAW4qVoa" role="1eOMHV">
-                            <node concept="3uibUv" id="3q9wAW4qVob" role="10QFUM">
-                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
-                            </node>
-                            <node concept="37vLTw" id="3q9wAW4qVoc" role="10QFUP">
-                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
-                            </node>
-                          </node>
+                        <node concept="37vLTw" id="3q9wAW4qVoc" role="2Oq$k0">
+                          <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="3q9wAW4qVod" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                          <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -7150,18 +7094,11 @@
                         </node>
                       </node>
                       <node concept="2OqwBi" id="3q9wAW4tcxU" role="37wK5m">
-                        <node concept="1eOMI4" id="3q9wAW4tcxV" role="2Oq$k0">
-                          <node concept="10QFUN" id="3q9wAW4tcxW" role="1eOMHV">
-                            <node concept="3uibUv" id="3q9wAW4tcxX" role="10QFUM">
-                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
-                            </node>
-                            <node concept="37vLTw" id="3q9wAW4tcxY" role="10QFUP">
-                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
-                            </node>
-                          </node>
+                        <node concept="37vLTw" id="3q9wAW4tcxY" role="2Oq$k0">
+                          <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="3q9wAW4tcxZ" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                          <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -7278,18 +7215,11 @@
                         </node>
                       </node>
                       <node concept="2OqwBi" id="3q9wAW4td9b" role="37wK5m">
-                        <node concept="1eOMI4" id="3q9wAW4td9c" role="2Oq$k0">
-                          <node concept="10QFUN" id="3q9wAW4td9d" role="1eOMHV">
-                            <node concept="3uibUv" id="3q9wAW4td9e" role="10QFUM">
-                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
-                            </node>
-                            <node concept="37vLTw" id="3q9wAW4td9f" role="10QFUP">
-                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
-                            </node>
-                          </node>
+                        <node concept="37vLTw" id="3q9wAW4td9f" role="2Oq$k0">
+                          <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="3q9wAW4td9g" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                          <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
@@ -7391,18 +7321,11 @@
                         </node>
                       </node>
                       <node concept="2OqwBi" id="3q9wAW4tqVU" role="37wK5m">
-                        <node concept="1eOMI4" id="3q9wAW4tqVV" role="2Oq$k0">
-                          <node concept="10QFUN" id="3q9wAW4tqVW" role="1eOMHV">
-                            <node concept="3uibUv" id="3q9wAW4tqVX" role="10QFUM">
-                              <ref role="3uigEE" to="z1c3:~ProjectBase" resolve="ProjectBase" />
-                            </node>
-                            <node concept="37vLTw" id="3q9wAW4tqVY" role="10QFUP">
-                              <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
-                            </node>
-                          </node>
+                        <node concept="37vLTw" id="3q9wAW4tqVY" role="2Oq$k0">
+                          <ref role="3cqZAo" to="tp6m:hPjx680" resolve="myProject" />
                         </node>
                         <node concept="liA8E" id="3q9wAW4tqVZ" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~ProjectBase.getPlatform()" resolve="getPlatform" />
+                          <ref role="37wK5l" to="z1c3:~Project.getPlatform()" resolve="getPlatform" />
                         </node>
                       </node>
                     </node>
