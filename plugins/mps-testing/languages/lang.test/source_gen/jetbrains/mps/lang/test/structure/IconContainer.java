@@ -6,7 +6,7 @@ import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.ide.icons.IconLoadingUtil;
 
 public class IconContainer {
-  protected static IconResource RESOURCE_a0a5a0a91b0ed = (IconLoadingUtil.isNewUIActive() ? new IconResource("editorTest_newui.svg", IconContainer.class) : new IconResource("nodesTest.png", IconContainer.class));
-  protected static IconResource RESOURCE_a0a4a0a73b0ed = (IconLoadingUtil.isNewUIActive() ? new IconResource("nodesTest_newui.svg", IconContainer.class) : new IconResource("nodesTest.png", IconContainer.class));
-  protected static IconResource RESOURCE_a0a4a0a95b0ed = (IconLoadingUtil.isNewUIActive() ? new IconResource("nodesTest_newui.svg", IconContainer.class) : new IconResource("nodesTest.png", IconContainer.class));
+  protected static IconResource RESOURCE_a0a5a0a81b0dd = (IconLoadingUtil.isNewUIActive() ? new IconResource("editorTest_newui.svg", IconContainer.class) : new IconResource("nodesTest.png", IconContainer.class));
+  protected static IconResource RESOURCE_a0a4a0a63b0dd = (IconLoadingUtil.isNewUIActive() ? new IconResource("nodesTest_newui.svg", IconContainer.class) : new IconResource("nodesTest.png", IconContainer.class));
+  protected static IconResource RESOURCE_a0a4a0a85b0dd = (IconLoadingUtil.isNewUIActive() ? new IconResource("nodesTest_newui.svg", IconContainer.class) : new IconResource("nodesTest.png", IconContainer.class));
 }

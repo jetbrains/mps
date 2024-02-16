@@ -46064,11 +46064,6 @@
             <ref role="3bR37D" node="7Kfy9QB6Lh7" resolve="jetbrains.mps.typesystemEngine" />
           </node>
         </node>
-        <node concept="1SiIV0" id="5Ti9jVZ6eej" role="3bR37C">
-          <node concept="3bR9La" id="5Ti9jVZ6eek" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6LfK" resolve="jetbrains.mps.dataFlow.runtime" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="1nB28sc9cT" role="3bR37C">
           <node concept="3bR9La" id="1nB28sc9cU" role="1SiIV1">
             <property role="3bR36h" value="true" />

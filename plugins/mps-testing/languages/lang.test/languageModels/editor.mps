@@ -2150,30 +2150,6 @@
       <node concept="2iRfu4" id="i2ICqHu" role="2iSdaV" />
     </node>
   </node>
-  <node concept="24kQdi" id="hHOffxN">
-    <property role="3GE5qa" value="asserts" />
-    <ref role="1XX52x" to="tp5g:hHOf0Uc" resolve="CheckNodeDataflow" />
-    <node concept="3EZMnI" id="hHOfkUN" role="2wV5jI">
-      <node concept="3F0ifn" id="hHOfmje" role="3EZMnx">
-        <property role="3F0ifm" value="check" />
-        <ref role="1k5W1q" node="hFqhsME" resolve="AssertStyle" />
-      </node>
-      <node concept="3F1sOY" id="hHOfpCc" role="3EZMnx">
-        <ref role="1NtTu8" to="tp5g:hFqv8by" resolve="nodeToCheck" />
-      </node>
-      <node concept="3F0ifn" id="hHOft6E" role="3EZMnx">
-        <property role="3F0ifm" value="dataflow" />
-        <ref role="1k5W1q" node="hFqhsME" resolve="AssertStyle" />
-      </node>
-      <node concept="3F0ifn" id="hIj0Uf9" role="3EZMnx">
-        <property role="3F0ifm" value=";" />
-        <node concept="11L4FC" id="hXbOPmi" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="l2Vlx" id="i0Nmp1F" role="2iSdaV" />
-    </node>
-  </node>
   <node concept="24kQdi" id="hPjy30z">
     <property role="3GE5qa" value="expression" />
     <ref role="1XX52x" to="tp5g:hPjxXux" resolve="ProjectExpression" />

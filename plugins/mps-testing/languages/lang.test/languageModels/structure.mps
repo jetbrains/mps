@@ -407,17 +407,6 @@
       <ref role="20lvS9" to="tpck:gw2VY9q" resolve="BaseConcept" />
     </node>
   </node>
-  <node concept="1TIwiD" id="hHOf0Uc">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="CheckNodeDataflow" />
-    <property role="3GE5qa" value="asserts" />
-    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
-    <property role="34LRSv" value="check node dataflow" />
-    <property role="EcuMT" value="1217425837708" />
-    <ref role="1TJDcQ" node="hFquTD4" resolve="AbstractNodeAssert" />
-    <node concept="asaX9" id="2xO1A76r_XA" role="lGtFl" />
-  </node>
   <node concept="1TIwiD" id="hPjxXux">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />

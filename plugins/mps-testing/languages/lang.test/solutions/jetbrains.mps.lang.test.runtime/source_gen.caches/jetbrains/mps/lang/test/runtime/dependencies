@@ -34,7 +34,6 @@
   <uses module="2c7e7a6d-a1f9-4f07-84e0-d0f5b91d380c(jetbrains.mps.baseLanguage.unitTest.platform)" kind="dp" />
   <uses module="6ef0db41-d3b2-47fe-82ac-d55a42cb6b13(jetbrains.mps.baseLanguage.unitTest.runtime)" kind="dp" />
   <uses module="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" kind="dp" />
-  <uses module="2af156ab-65c1-4a62-bd0d-ea734f71eab6(jetbrains.mps.dataFlow.runtime)" kind="dp" />
   <uses module="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />

@@ -615,7 +615,6 @@
           <module ref="2c7e7a6d-a1f9-4f07-84e0-d0f5b91d380c(jetbrains.mps.baseLanguage.unitTest.platform)" kind="cl" />
           <module ref="6ef0db41-d3b2-47fe-82ac-d55a42cb6b13(jetbrains.mps.baseLanguage.unitTest.runtime)" kind="cl" />
           <module ref="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" kind="cl" />
-          <module ref="2af156ab-65c1-4a62-bd0d-ea734f71eab6(jetbrains.mps.dataFlow.runtime)" kind="cl" />
           <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
           <module ref="528ff3b9-5fc4-40dd-931f-c6ce3650640e(jetbrains.mps.lang.migration.runtime)" kind="cl" />
           <module ref="8585453e-6bfb-4d80-98de-b16074f1d86c(jetbrains.mps.lang.test)" kind="cl" />
@@ -2286,7 +2285,6 @@
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.classifiers.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.dataFlow.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
         <pathelement path="${build.tmp}/java.modules.cycle.1" />
