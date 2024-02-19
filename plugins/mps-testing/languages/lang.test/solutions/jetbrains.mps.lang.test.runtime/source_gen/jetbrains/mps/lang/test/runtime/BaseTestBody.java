@@ -9,9 +9,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.List;
 import jetbrains.mps.smodel.CopyUtil;
-import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -63,8 +64,14 @@ public class BaseTestBody {
       for (SNode r : roots) {
         myTransientModel.removeRootNode(r);
       }
+      roots.clear();
       for (String nid : nodeId) {
-        addNodeById(nid);
+        roots.add(getRealNodeById(nid));
+      }
+      List<SNode> copied = CopyUtil.copyAndPreserveId(roots, myMap);
+      for (SNode c : ListSequence.fromList(copied)) {
+        cleanTestAnnotations(c);
+        myTransientModel.addRootNode(c);
       }
     });
   }
@@ -77,14 +84,18 @@ public class BaseTestBody {
     // There's implicit assumption that *all* the nodes created under NodesTestCase get copied and that myMap gives access to a copy of any child of the original node.
     SNode node = getRealNodeById(id);
     SNode copy = CopyUtil.copyAndPreserveId(Collections.singletonList(node), myMap).get(0);
-    for (SNode a : ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{}))) {
+    cleanTestAnnotations(copy);
+    myTransientModel.addRootNode(copy);
+  }
+
+  private void cleanTestAnnotations(SNode testNode) {
+    for (SNode a : ListSequence.fromList(SNodeOperations.getNodeDescendants(testNode, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{}))) {
       if (SNodeOperations.isInstanceOf(a, CONCEPTS.TestNodeAnnotation$27)) {
         // FIXME take first only, do not override
         MapSequence.fromMap(myAnnotatedNodes).put(SPropertyOperations.getString(SNodeOperations.cast(a, CONCEPTS.TestNodeAnnotation$27), PROPS.name$MnvL), SNodeOperations.getParent(a));
       }
       SNodeOperations.deleteNode(a);
     }
-    myTransientModel.addRootNode(copy);
   }
 
   /**
