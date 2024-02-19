@@ -773,7 +773,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snsqMethods.put("6109541130560632250", new SNsQ(i++));
     snsqMethods.put("6109541130560697986", new SNsQ(i++));
     snsqMethods.put("6410786926922929635", new SNsQ(i++));
-    snsqMethods.put("9018216227569797789", new SNsQ(i++));
+    snsqMethods.put("2935525268784538723", new SNsQ(i++));
     snsqMethods.put("9018216227565843663", new SNsQ(i++));
     snsqMethods.put("9018216227567988375", new SNsQ(i++));
   }
@@ -1260,7 +1260,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, CallArgumentQuery> caqMethods = new HashMap<String, CallArgumentQuery>();
   {
-    caqMethods.put("687702229764234605", new CAQ(0));
+    caqMethods.put("2935525268784555373", new CAQ(0));
     caqMethods.put("687702229764180539", new CAQ(1));
     caqMethods.put("6109541130561031805", new CAQ(2));
     caqMethods.put("5200912498968586944", new CAQ(3));
