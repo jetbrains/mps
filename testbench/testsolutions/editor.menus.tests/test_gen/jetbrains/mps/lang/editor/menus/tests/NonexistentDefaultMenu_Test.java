@@ -41,8 +41,9 @@ public class NonexistentDefaultMenu_Test extends BaseTransformationTest {
     }
 
     public void test_NodeDefaultTransformationCheck2153278993334499810() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2153278993334090534");
+        SNode nodeToCheck = getNodeById("2153278993334090534");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.OK, new SNodePointer("r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2823239769520680200"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }

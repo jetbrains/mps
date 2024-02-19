@@ -12,20 +12,21 @@
       <node id="2802122285522068052" at="28,79,29,70" concept="1" />
       <node id="2802122285522027980" at="34,52,35,19" concept="5" />
       <node id="2802122285522027980" at="39,36,40,46" concept="1" />
-      <node id="2802122285522068052" at="44,30,45,67" concept="3" />
-      <node id="2802122285522068052" at="45,67,46,358" concept="1" />
+      <node id="2802122285522068052" at="43,81,44,22" concept="1" />
+      <node id="2802122285522068052" at="45,30,46,63" concept="3" />
+      <node id="2802122285522068052" at="46,63,47,358" concept="1" />
       <node id="2802122285522027980" at="20,0,22,0" concept="4" trace="ourParametersCacheExtension" />
       <node id="2802122285522027980" at="23,0,26,0" concept="0" trace="_RulesCanBeChild2_Test#()V" />
       <node id="2802122285522027980" at="34,0,37,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="2802122285522068052" at="27,0,31,0" concept="2" trace="test_NodeUnknownRuleCheck2802122285522068052#()V" />
       <node id="2802122285522027980" at="38,0,42,0" concept="2" trace="initTestNodes#()V" />
-      <node id="2802122285522068052" at="43,81,47,9" concept="1" />
-      <node id="2802122285522068052" at="43,0,49,0" concept="2" trace="test_NodeUnknownRuleCheck2802122285522068052#()V" />
+      <node id="2802122285522068052" at="44,22,48,9" concept="1" />
+      <node id="2802122285522068052" at="43,0,50,0" concept="2" trace="test_NodeUnknownRuleCheck2802122285522068052#()V" />
       <scope id="2802122285522027980" at="23,35,24,60" />
       <scope id="2802122285522068052" at="28,79,29,70" />
       <scope id="2802122285522027980" at="34,52,35,19" />
       <scope id="2802122285522027980" at="39,36,40,46" />
-      <scope id="2802122285522068052" at="44,30,46,358">
+      <scope id="2802122285522068052" at="45,30,47,358">
         <var name="nodeToCheck" id="2802122285522068052" />
       </scope>
       <scope id="2802122285522027980" at="23,0,26,0" />
@@ -34,177 +35,185 @@
       </scope>
       <scope id="2802122285522068052" at="27,0,31,0" />
       <scope id="2802122285522027980" at="38,0,42,0" />
-      <scope id="2802122285522068052" at="43,81,47,9" />
-      <scope id="2802122285522068052" at="43,0,49,0" />
-      <unit id="2802122285522027980" at="32,0,51,0" name="messages.sandbox.mB._RulesCanBeChild2_Test$TestBody" />
-      <unit id="2802122285522027980" at="18,0,52,0" name="messages.sandbox.mB._RulesCanBeChild2_Test" />
+      <scope id="2802122285522068052" at="43,81,48,9" />
+      <scope id="2802122285522068052" at="43,0,50,0" />
+      <unit id="2802122285522027980" at="32,0,52,0" name="messages.sandbox.mB._RulesCanBeChild2_Test$TestBody" />
+      <unit id="2802122285522027980" at="18,0,53,0" name="messages.sandbox.mB._RulesCanBeChild2_Test" />
     </file>
   </root>
   <root nodeRef="r:85fb8fd8-b1c6-4933-b652-a58a1ce85393(messages.sandbox.mB@tests)/2884486869351403275">
     <file name="RulesCanBeParent_Test.java">
-      <node id="2884486869351403275" at="26,34,27,60" concept="5" />
-      <node id="2802122285522113977" at="31,77,32,68" concept="1" />
-      <node id="2802122285522263628" at="35,79,36,70" concept="1" />
-      <node id="2884486869351403275" at="41,52,42,19" concept="5" />
-      <node id="2884486869351403275" at="46,36,47,46" concept="1" />
-      <node id="2802122285522113977" at="51,30,52,67" concept="3" />
-      <node id="2802122285522113977" at="52,67,53,583" concept="1" />
-      <node id="2802122285522263628" at="57,30,58,67" concept="3" />
-      <node id="2802122285522263628" at="58,67,59,368" concept="1" />
-      <node id="2884486869351403275" at="23,0,25,0" concept="4" trace="ourParametersCacheExtension" />
-      <node id="2884486869351403275" at="26,0,29,0" concept="0" trace="RulesCanBeParent_Test#()V" />
-      <node id="2884486869351403275" at="41,0,44,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="2802122285522113977" at="30,0,34,0" concept="2" trace="test_ErrorMessagesCheck2802122285522113977#()V" />
-      <node id="2802122285522263628" at="34,0,38,0" concept="2" trace="test_NodeUnknownRuleCheck2802122285522263628#()V" />
-      <node id="2884486869351403275" at="45,0,49,0" concept="2" trace="initTestNodes#()V" />
-      <node id="2802122285522113977" at="50,79,54,9" concept="1" />
-      <node id="2802122285522263628" at="56,81,60,9" concept="1" />
-      <node id="2802122285522113977" at="50,0,56,0" concept="2" trace="test_ErrorMessagesCheck2802122285522113977#()V" />
-      <node id="2802122285522263628" at="56,0,62,0" concept="2" trace="test_NodeUnknownRuleCheck2802122285522263628#()V" />
-      <scope id="2884486869351403275" at="26,34,27,60" />
-      <scope id="2802122285522113977" at="31,77,32,68" />
-      <scope id="2802122285522263628" at="35,79,36,70" />
-      <scope id="2884486869351403275" at="41,52,42,19" />
-      <scope id="2884486869351403275" at="46,36,47,46" />
-      <scope id="2802122285522113977" at="51,30,53,583">
+      <node id="2884486869351403275" at="25,34,26,60" concept="5" />
+      <node id="2802122285522113977" at="30,77,31,68" concept="1" />
+      <node id="2802122285522263628" at="34,79,35,70" concept="1" />
+      <node id="2884486869351403275" at="40,52,41,19" concept="5" />
+      <node id="2884486869351403275" at="45,36,46,46" concept="1" />
+      <node id="2802122285522113977" at="49,79,50,22" concept="1" />
+      <node id="2802122285522113977" at="51,30,52,63" concept="3" />
+      <node id="2802122285522113977" at="52,63,53,546" concept="1" />
+      <node id="2802122285522263628" at="56,81,57,22" concept="1" />
+      <node id="2802122285522263628" at="58,30,59,63" concept="3" />
+      <node id="2802122285522263628" at="59,63,60,368" concept="1" />
+      <node id="2884486869351403275" at="22,0,24,0" concept="4" trace="ourParametersCacheExtension" />
+      <node id="2884486869351403275" at="25,0,28,0" concept="0" trace="RulesCanBeParent_Test#()V" />
+      <node id="2884486869351403275" at="40,0,43,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2802122285522113977" at="29,0,33,0" concept="2" trace="test_ErrorMessagesCheck2802122285522113977#()V" />
+      <node id="2802122285522263628" at="33,0,37,0" concept="2" trace="test_NodeUnknownRuleCheck2802122285522263628#()V" />
+      <node id="2884486869351403275" at="44,0,48,0" concept="2" trace="initTestNodes#()V" />
+      <node id="2802122285522113977" at="50,22,54,9" concept="1" />
+      <node id="2802122285522263628" at="57,22,61,9" concept="1" />
+      <node id="2802122285522113977" at="49,0,56,0" concept="2" trace="test_ErrorMessagesCheck2802122285522113977#()V" />
+      <node id="2802122285522263628" at="56,0,63,0" concept="2" trace="test_NodeUnknownRuleCheck2802122285522263628#()V" />
+      <scope id="2884486869351403275" at="25,34,26,60" />
+      <scope id="2802122285522113977" at="30,77,31,68" />
+      <scope id="2802122285522263628" at="34,79,35,70" />
+      <scope id="2884486869351403275" at="40,52,41,19" />
+      <scope id="2884486869351403275" at="45,36,46,46" />
+      <scope id="2802122285522113977" at="51,30,53,546">
         <var name="nodeToCheck" id="2802122285522113977" />
       </scope>
-      <scope id="2802122285522263628" at="57,30,59,368">
+      <scope id="2802122285522263628" at="58,30,60,368">
         <var name="nodeToCheck" id="2802122285522263628" />
       </scope>
-      <scope id="2884486869351403275" at="26,0,29,0" />
-      <scope id="2884486869351403275" at="41,0,44,0">
+      <scope id="2884486869351403275" at="25,0,28,0" />
+      <scope id="2884486869351403275" at="40,0,43,0">
         <var name="owner" id="2884486869351403275" />
       </scope>
-      <scope id="2802122285522113977" at="30,0,34,0" />
-      <scope id="2802122285522263628" at="34,0,38,0" />
-      <scope id="2884486869351403275" at="45,0,49,0" />
-      <scope id="2802122285522113977" at="50,79,54,9" />
-      <scope id="2802122285522263628" at="56,81,60,9" />
-      <scope id="2802122285522113977" at="50,0,56,0" />
-      <scope id="2802122285522263628" at="56,0,62,0" />
-      <unit id="2884486869351403275" at="39,0,64,0" name="messages.sandbox.mB.RulesCanBeParent_Test$TestBody" />
-      <unit id="2884486869351403275" at="21,0,65,0" name="messages.sandbox.mB.RulesCanBeParent_Test" />
+      <scope id="2802122285522113977" at="29,0,33,0" />
+      <scope id="2802122285522263628" at="33,0,37,0" />
+      <scope id="2884486869351403275" at="44,0,48,0" />
+      <scope id="2802122285522113977" at="49,79,54,9" />
+      <scope id="2802122285522263628" at="56,81,61,9" />
+      <scope id="2802122285522113977" at="49,0,56,0" />
+      <scope id="2802122285522263628" at="56,0,63,0" />
+      <unit id="2884486869351403275" at="38,0,65,0" name="messages.sandbox.mB.RulesCanBeParent_Test$TestBody" />
+      <unit id="2884486869351403275" at="20,0,66,0" name="messages.sandbox.mB.RulesCanBeParent_Test" />
     </file>
   </root>
   <root nodeRef="r:85fb8fd8-b1c6-4933-b652-a58a1ce85393(messages.sandbox.mB@tests)/2884486869351403295">
     <file name="RulesCanBeAncestor_Test.java">
-      <node id="2884486869351403295" at="26,36,27,60" concept="5" />
-      <node id="2802122285522113890" at="31,77,32,68" concept="1" />
-      <node id="2802122285522273245" at="35,79,36,70" concept="1" />
-      <node id="2884486869351403295" at="41,52,42,19" concept="5" />
-      <node id="2884486869351403295" at="46,36,47,46" concept="1" />
-      <node id="2802122285522113890" at="51,30,52,67" concept="3" />
-      <node id="2802122285522113890" at="52,67,53,594" concept="1" />
-      <node id="2802122285522273245" at="57,30,58,67" concept="3" />
-      <node id="2802122285522273245" at="58,67,59,379" concept="1" />
-      <node id="2884486869351403295" at="23,0,25,0" concept="4" trace="ourParametersCacheExtension" />
-      <node id="2884486869351403295" at="26,0,29,0" concept="0" trace="RulesCanBeAncestor_Test#()V" />
-      <node id="2884486869351403295" at="41,0,44,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="2802122285522113890" at="30,0,34,0" concept="2" trace="test_ErrorMessagesCheck2802122285522113890#()V" />
-      <node id="2802122285522273245" at="34,0,38,0" concept="2" trace="test_NodeUnknownRuleCheck2802122285522273245#()V" />
-      <node id="2884486869351403295" at="45,0,49,0" concept="2" trace="initTestNodes#()V" />
-      <node id="2802122285522113890" at="50,79,54,9" concept="1" />
-      <node id="2802122285522273245" at="56,81,60,9" concept="1" />
-      <node id="2802122285522113890" at="50,0,56,0" concept="2" trace="test_ErrorMessagesCheck2802122285522113890#()V" />
-      <node id="2802122285522273245" at="56,0,62,0" concept="2" trace="test_NodeUnknownRuleCheck2802122285522273245#()V" />
-      <scope id="2884486869351403295" at="26,36,27,60" />
-      <scope id="2802122285522113890" at="31,77,32,68" />
-      <scope id="2802122285522273245" at="35,79,36,70" />
-      <scope id="2884486869351403295" at="41,52,42,19" />
-      <scope id="2884486869351403295" at="46,36,47,46" />
-      <scope id="2802122285522113890" at="51,30,53,594">
+      <node id="2884486869351403295" at="25,36,26,60" concept="5" />
+      <node id="2802122285522113890" at="30,77,31,68" concept="1" />
+      <node id="2802122285522273245" at="34,79,35,70" concept="1" />
+      <node id="2884486869351403295" at="40,52,41,19" concept="5" />
+      <node id="2884486869351403295" at="45,36,46,46" concept="1" />
+      <node id="2802122285522113890" at="49,79,50,22" concept="1" />
+      <node id="2802122285522113890" at="51,30,52,63" concept="3" />
+      <node id="2802122285522113890" at="52,63,53,557" concept="1" />
+      <node id="2802122285522273245" at="56,81,57,22" concept="1" />
+      <node id="2802122285522273245" at="58,30,59,63" concept="3" />
+      <node id="2802122285522273245" at="59,63,60,379" concept="1" />
+      <node id="2884486869351403295" at="22,0,24,0" concept="4" trace="ourParametersCacheExtension" />
+      <node id="2884486869351403295" at="25,0,28,0" concept="0" trace="RulesCanBeAncestor_Test#()V" />
+      <node id="2884486869351403295" at="40,0,43,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2802122285522113890" at="29,0,33,0" concept="2" trace="test_ErrorMessagesCheck2802122285522113890#()V" />
+      <node id="2802122285522273245" at="33,0,37,0" concept="2" trace="test_NodeUnknownRuleCheck2802122285522273245#()V" />
+      <node id="2884486869351403295" at="44,0,48,0" concept="2" trace="initTestNodes#()V" />
+      <node id="2802122285522113890" at="50,22,54,9" concept="1" />
+      <node id="2802122285522273245" at="57,22,61,9" concept="1" />
+      <node id="2802122285522113890" at="49,0,56,0" concept="2" trace="test_ErrorMessagesCheck2802122285522113890#()V" />
+      <node id="2802122285522273245" at="56,0,63,0" concept="2" trace="test_NodeUnknownRuleCheck2802122285522273245#()V" />
+      <scope id="2884486869351403295" at="25,36,26,60" />
+      <scope id="2802122285522113890" at="30,77,31,68" />
+      <scope id="2802122285522273245" at="34,79,35,70" />
+      <scope id="2884486869351403295" at="40,52,41,19" />
+      <scope id="2884486869351403295" at="45,36,46,46" />
+      <scope id="2802122285522113890" at="51,30,53,557">
         <var name="nodeToCheck" id="2802122285522113890" />
       </scope>
-      <scope id="2802122285522273245" at="57,30,59,379">
+      <scope id="2802122285522273245" at="58,30,60,379">
         <var name="nodeToCheck" id="2802122285522273245" />
       </scope>
-      <scope id="2884486869351403295" at="26,0,29,0" />
-      <scope id="2884486869351403295" at="41,0,44,0">
+      <scope id="2884486869351403295" at="25,0,28,0" />
+      <scope id="2884486869351403295" at="40,0,43,0">
         <var name="owner" id="2884486869351403295" />
       </scope>
-      <scope id="2802122285522113890" at="30,0,34,0" />
-      <scope id="2802122285522273245" at="34,0,38,0" />
-      <scope id="2884486869351403295" at="45,0,49,0" />
-      <scope id="2802122285522113890" at="50,79,54,9" />
-      <scope id="2802122285522273245" at="56,81,60,9" />
-      <scope id="2802122285522113890" at="50,0,56,0" />
-      <scope id="2802122285522273245" at="56,0,62,0" />
-      <unit id="2884486869351403295" at="39,0,64,0" name="messages.sandbox.mB.RulesCanBeAncestor_Test$TestBody" />
-      <unit id="2884486869351403295" at="21,0,65,0" name="messages.sandbox.mB.RulesCanBeAncestor_Test" />
+      <scope id="2802122285522113890" at="29,0,33,0" />
+      <scope id="2802122285522273245" at="33,0,37,0" />
+      <scope id="2884486869351403295" at="44,0,48,0" />
+      <scope id="2802122285522113890" at="49,79,54,9" />
+      <scope id="2802122285522273245" at="56,81,61,9" />
+      <scope id="2802122285522113890" at="49,0,56,0" />
+      <scope id="2802122285522273245" at="56,0,63,0" />
+      <unit id="2884486869351403295" at="38,0,65,0" name="messages.sandbox.mB.RulesCanBeAncestor_Test$TestBody" />
+      <unit id="2884486869351403295" at="20,0,66,0" name="messages.sandbox.mB.RulesCanBeAncestor_Test" />
     </file>
   </root>
   <root nodeRef="r:85fb8fd8-b1c6-4933-b652-a58a1ce85393(messages.sandbox.mB@tests)/3071492597344700468">
     <file name="RulesCanBeChild1_Test.java">
-      <node id="3071492597344700468" at="26,34,27,60" concept="5" />
-      <node id="2884486869351397457" at="31,79,32,70" concept="1" />
-      <node id="2884486869351538465" at="35,77,36,68" concept="1" />
-      <node id="2884486869351538492" at="39,77,40,68" concept="1" />
-      <node id="2802122285521967426" at="43,88,44,79" concept="1" />
-      <node id="3071492597344700468" at="49,52,50,19" concept="5" />
-      <node id="3071492597344700468" at="54,36,55,92" concept="1" />
-      <node id="2884486869351397457" at="59,30,60,67" concept="3" />
-      <node id="2884486869351397457" at="60,67,61,359" concept="1" />
-      <node id="2884486869351538465" at="65,30,66,67" concept="3" />
-      <node id="2884486869351538465" at="66,67,67,193" concept="1" />
-      <node id="2884486869351538492" at="71,30,72,67" concept="3" />
-      <node id="2884486869351538492" at="72,67,73,542" concept="1" />
-      <node id="2802122285521967426" at="77,30,78,67" concept="3" />
-      <node id="2802122285521967426" at="78,67,79,327" concept="1" />
-      <node id="3071492597344700468" at="23,0,25,0" concept="4" trace="ourParametersCacheExtension" />
-      <node id="3071492597344700468" at="26,0,29,0" concept="0" trace="RulesCanBeChild1_Test#()V" />
-      <node id="3071492597344700468" at="49,0,52,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="2884486869351397457" at="30,0,34,0" concept="2" trace="test_NodeUnknownRuleCheck2884486869351397457#()V" />
-      <node id="2884486869351538465" at="34,0,38,0" concept="2" trace="test_ErrorMessagesCheck2884486869351538465#()V" />
-      <node id="2884486869351538492" at="38,0,42,0" concept="2" trace="test_ErrorMessagesCheck2884486869351538492#()V" />
-      <node id="2802122285521967426" at="42,0,46,0" concept="2" trace="test_NodeparentHasTheSameNameCheck2802122285521967426#()V" />
-      <node id="3071492597344700468" at="53,0,57,0" concept="2" trace="initTestNodes#()V" />
-      <node id="2884486869351397457" at="58,81,62,9" concept="1" />
-      <node id="2884486869351538465" at="64,79,68,9" concept="1" />
-      <node id="2884486869351538492" at="70,79,74,9" concept="1" />
-      <node id="2802122285521967426" at="76,90,80,9" concept="1" />
-      <node id="2884486869351397457" at="58,0,64,0" concept="2" trace="test_NodeUnknownRuleCheck2884486869351397457#()V" />
-      <node id="2884486869351538465" at="64,0,70,0" concept="2" trace="test_ErrorMessagesCheck2884486869351538465#()V" />
-      <node id="2884486869351538492" at="70,0,76,0" concept="2" trace="test_ErrorMessagesCheck2884486869351538492#()V" />
-      <node id="2802122285521967426" at="76,0,82,0" concept="2" trace="test_NodeparentHasTheSameNameCheck2802122285521967426#()V" />
-      <scope id="3071492597344700468" at="26,34,27,60" />
-      <scope id="2884486869351397457" at="31,79,32,70" />
-      <scope id="2884486869351538465" at="35,77,36,68" />
-      <scope id="2884486869351538492" at="39,77,40,68" />
-      <scope id="2802122285521967426" at="43,88,44,79" />
-      <scope id="3071492597344700468" at="49,52,50,19" />
-      <scope id="3071492597344700468" at="54,36,55,92" />
+      <node id="3071492597344700468" at="25,34,26,60" concept="5" />
+      <node id="2884486869351397457" at="30,79,31,70" concept="1" />
+      <node id="2884486869351538465" at="34,77,35,68" concept="1" />
+      <node id="2884486869351538492" at="38,77,39,68" concept="1" />
+      <node id="2802122285521967426" at="42,88,43,79" concept="1" />
+      <node id="3071492597344700468" at="48,52,49,19" concept="5" />
+      <node id="3071492597344700468" at="53,36,54,92" concept="1" />
+      <node id="2884486869351397457" at="57,81,58,22" concept="1" />
+      <node id="2884486869351397457" at="59,30,60,63" concept="3" />
+      <node id="2884486869351397457" at="60,63,61,359" concept="1" />
+      <node id="2884486869351538465" at="64,79,65,22" concept="1" />
+      <node id="2884486869351538465" at="66,30,67,63" concept="3" />
+      <node id="2884486869351538465" at="67,63,68,170" concept="1" />
+      <node id="2884486869351538492" at="71,79,72,22" concept="1" />
+      <node id="2884486869351538492" at="73,30,74,63" concept="3" />
+      <node id="2884486869351538492" at="74,63,75,505" concept="1" />
+      <node id="2802122285521967426" at="78,90,79,22" concept="1" />
+      <node id="2802122285521967426" at="80,30,81,63" concept="3" />
+      <node id="2802122285521967426" at="81,63,82,327" concept="1" />
+      <node id="3071492597344700468" at="22,0,24,0" concept="4" trace="ourParametersCacheExtension" />
+      <node id="3071492597344700468" at="25,0,28,0" concept="0" trace="RulesCanBeChild1_Test#()V" />
+      <node id="3071492597344700468" at="48,0,51,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2884486869351397457" at="29,0,33,0" concept="2" trace="test_NodeUnknownRuleCheck2884486869351397457#()V" />
+      <node id="2884486869351538465" at="33,0,37,0" concept="2" trace="test_ErrorMessagesCheck2884486869351538465#()V" />
+      <node id="2884486869351538492" at="37,0,41,0" concept="2" trace="test_ErrorMessagesCheck2884486869351538492#()V" />
+      <node id="2802122285521967426" at="41,0,45,0" concept="2" trace="test_NodeparentHasTheSameNameCheck2802122285521967426#()V" />
+      <node id="3071492597344700468" at="52,0,56,0" concept="2" trace="initTestNodes#()V" />
+      <node id="2884486869351397457" at="58,22,62,9" concept="1" />
+      <node id="2884486869351538465" at="65,22,69,9" concept="1" />
+      <node id="2884486869351538492" at="72,22,76,9" concept="1" />
+      <node id="2802122285521967426" at="79,22,83,9" concept="1" />
+      <node id="2884486869351397457" at="57,0,64,0" concept="2" trace="test_NodeUnknownRuleCheck2884486869351397457#()V" />
+      <node id="2884486869351538465" at="64,0,71,0" concept="2" trace="test_ErrorMessagesCheck2884486869351538465#()V" />
+      <node id="2884486869351538492" at="71,0,78,0" concept="2" trace="test_ErrorMessagesCheck2884486869351538492#()V" />
+      <node id="2802122285521967426" at="78,0,85,0" concept="2" trace="test_NodeparentHasTheSameNameCheck2802122285521967426#()V" />
+      <scope id="3071492597344700468" at="25,34,26,60" />
+      <scope id="2884486869351397457" at="30,79,31,70" />
+      <scope id="2884486869351538465" at="34,77,35,68" />
+      <scope id="2884486869351538492" at="38,77,39,68" />
+      <scope id="2802122285521967426" at="42,88,43,79" />
+      <scope id="3071492597344700468" at="48,52,49,19" />
+      <scope id="3071492597344700468" at="53,36,54,92" />
       <scope id="2884486869351397457" at="59,30,61,359">
         <var name="nodeToCheck" id="2884486869351397457" />
       </scope>
-      <scope id="2884486869351538465" at="65,30,67,193">
+      <scope id="2884486869351538465" at="66,30,68,170">
         <var name="nodeToCheck" id="2884486869351538465" />
       </scope>
-      <scope id="2884486869351538492" at="71,30,73,542">
+      <scope id="2884486869351538492" at="73,30,75,505">
         <var name="nodeToCheck" id="2884486869351538492" />
       </scope>
-      <scope id="2802122285521967426" at="77,30,79,327">
+      <scope id="2802122285521967426" at="80,30,82,327">
         <var name="nodeToCheck" id="2802122285521967426" />
       </scope>
-      <scope id="3071492597344700468" at="26,0,29,0" />
-      <scope id="3071492597344700468" at="49,0,52,0">
+      <scope id="3071492597344700468" at="25,0,28,0" />
+      <scope id="3071492597344700468" at="48,0,51,0">
         <var name="owner" id="3071492597344700468" />
       </scope>
-      <scope id="2884486869351397457" at="30,0,34,0" />
-      <scope id="2884486869351538465" at="34,0,38,0" />
-      <scope id="2884486869351538492" at="38,0,42,0" />
-      <scope id="2802122285521967426" at="42,0,46,0" />
-      <scope id="3071492597344700468" at="53,0,57,0" />
-      <scope id="2884486869351397457" at="58,81,62,9" />
-      <scope id="2884486869351538465" at="64,79,68,9" />
-      <scope id="2884486869351538492" at="70,79,74,9" />
-      <scope id="2802122285521967426" at="76,90,80,9" />
-      <scope id="2884486869351397457" at="58,0,64,0" />
-      <scope id="2884486869351538465" at="64,0,70,0" />
-      <scope id="2884486869351538492" at="70,0,76,0" />
-      <scope id="2802122285521967426" at="76,0,82,0" />
-      <unit id="3071492597344700468" at="47,0,84,0" name="messages.sandbox.mB.RulesCanBeChild1_Test$TestBody" />
-      <unit id="3071492597344700468" at="21,0,85,0" name="messages.sandbox.mB.RulesCanBeChild1_Test" />
+      <scope id="2884486869351397457" at="29,0,33,0" />
+      <scope id="2884486869351538465" at="33,0,37,0" />
+      <scope id="2884486869351538492" at="37,0,41,0" />
+      <scope id="2802122285521967426" at="41,0,45,0" />
+      <scope id="3071492597344700468" at="52,0,56,0" />
+      <scope id="2884486869351397457" at="57,81,62,9" />
+      <scope id="2884486869351538465" at="64,79,69,9" />
+      <scope id="2884486869351538492" at="71,79,76,9" />
+      <scope id="2802122285521967426" at="78,90,83,9" />
+      <scope id="2884486869351397457" at="57,0,64,0" />
+      <scope id="2884486869351538465" at="64,0,71,0" />
+      <scope id="2884486869351538492" at="71,0,78,0" />
+      <scope id="2802122285521967426" at="78,0,85,0" />
+      <unit id="3071492597344700468" at="46,0,87,0" name="messages.sandbox.mB.RulesCanBeChild1_Test$TestBody" />
+      <unit id="3071492597344700468" at="20,0,88,0" name="messages.sandbox.mB.RulesCanBeChild1_Test" />
     </file>
   </root>
 </debug-info>

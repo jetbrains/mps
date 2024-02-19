@@ -40,8 +40,9 @@ public class FeedbackChildIsNotDefined_Test extends BaseTransformationTest {
     }
 
     public void test_NodeErrorCheck7019192671317896959() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("7019192671317644651");
+        SNode nodeToCheck = getNodeById("7019192671317644651");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Child 'no_child' does not belong to the concept!!!", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }

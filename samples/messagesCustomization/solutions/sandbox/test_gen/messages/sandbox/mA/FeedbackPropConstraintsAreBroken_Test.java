@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Arrays;
 
 @MPSLaunch
 public class FeedbackPropConstraintsAreBroken_Test extends BaseTransformationTest {
@@ -57,21 +57,24 @@ public class FeedbackPropConstraintsAreBroken_Test extends BaseTransformationTes
     }
 
     public void test_NodeUnknownRuleCheck2884486869351401623() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("3071492597344664119");
+        SNode nodeToCheck = getNodeById("3071492597344664119");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "3071492597344701404"), "Property constraints are broken for the property prop  ", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_ScopeOf_TestConcept_link_3071492597344664119() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getRealNodeById("3071492597344664119");
         new CheckScopesAction(nodeToCheck, MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, 0x161a25d497067a9eL, "link"), CollectionSequence.fromCollectionAndArray(new ArrayList<SNodeReference>(), SNodeOperations.getPointer(getRealNodeById("2884486869351398329")), SNodeOperations.getPointer(getRealNodeById("2802122285522027685")), SNodeOperations.getPointer(getRealNodeById("7019192671317902494")), SNodeOperations.getPointer(getRealNodeById("3071492597344664119")), SNodeOperations.getPointer(getRealNodeById("116705030628902880")), SNodeOperations.getPointer(getRealNodeById("116705030628940281")))).check();
       });
     }
     public void test_ErrorMessagesCheck2884486869351400430() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2884486869351398329");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(ListSequence.fromList(new ArrayList<CheckExpectedMessageRunnable>())).run();
+        SNode nodeToCheck = getNodeById("2884486869351398329");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
       });
     }
 

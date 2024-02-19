@@ -45,14 +45,16 @@ public class FeedbackRefOutOfScope_Test extends BaseTransformationTest {
     }
 
     public void test_NodeErrorCheck7019192671317902489() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2802122285522027685");
+        SNode nodeToCheck = getNodeById("2802122285522027685");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Unresolved reference: B", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnknownRuleCheck7019192671317924833() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("7019192671317902494");
+        SNode nodeToCheck = getNodeById("7019192671317902494");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:5dbac061-aef9-4696-88ee-0f21fe5598f3(messages.customization.constraints)", "8918166317255507159"), "Reference is out of scope: can not found the link 'link' in the node A", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }

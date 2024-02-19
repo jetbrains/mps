@@ -14,8 +14,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 @MPSLaunch
 public class CollectionTypesVariance_Test extends BaseTransformationTest {
@@ -51,21 +50,24 @@ public class CollectionTypesVariance_Test extends BaseTransformationTest {
     }
 
     public void test_NodeTypeSystemCheck2321665441773936177() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2321665441773924098");
+        SNode nodeToCheck = getNodeById("2321665441773924098");
         new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Error: type sequence<Number> is not a subtype of list<? extends Number>", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeTypeSystemCheck2321665441773946240() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2321665441773937135");
+        SNode nodeToCheck = getNodeById("2321665441773937135");
         new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Error: type sequence<? extends Number> is not a subtype of list<? extends Number>", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_ErrorMessagesCheck2321665441773916246() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2321665441773909763");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getRealNodeById("2321665441773924098"), MessageStatus.ERROR, "Error: type sequence<Number> is not a subtype of list<? extends Number>", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getRealNodeById("2321665441773937135"), MessageStatus.ERROR, "Error: type sequence<? extends Number> is not a subtype of list<? extends Number>", myProject.getRepository(), myProject.getPlatform()))).run();
+        SNode nodeToCheck = getNodeById("2321665441773909763");
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("2321665441773924098"), MessageStatus.ERROR, "Error: type sequence<Number> is not a subtype of list<? extends Number>", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("2321665441773937135"), MessageStatus.ERROR, "Error: type sequence<? extends Number> is not a subtype of list<? extends Number>", myProject.getRepository(), myProject.getPlatform()))).run();
       });
     }
 

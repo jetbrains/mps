@@ -8,127 +8,135 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root nodeRef="r:aca600c4-c2ff-4395-8294-417b84791061(TestRulesConstraints.basic@tests)/4999334160817529594">
     <file name="CanBeChildParentWorksInRules_Test.java">
-      <node id="4999334160817529594" at="26,46,27,60" concept="5" />
-      <node id="4999334160817530090" at="31,78,32,69" concept="1" />
-      <node id="4999334160817530092" at="35,80,36,71" concept="1" />
-      <node id="4999334160817530094" at="39,78,40,69" concept="1" />
-      <node id="4999334160817530111" at="43,77,44,68" concept="1" />
-      <node id="4999334160817532120" at="47,87,48,78" concept="1" />
-      <node id="4999334160817532128" at="51,86,52,77" concept="1" />
-      <node id="4999334160817532069" at="55,79,56,70" concept="1" />
-      <node id="4999334160817531756" at="59,80,60,71" concept="1" />
-      <node id="4999334160817529594" at="65,52,66,19" concept="5" />
-      <node id="4999334160817529594" at="70,36,71,69" concept="1" />
-      <node id="4999334160817530090" at="75,30,76,67" concept="3" />
-      <node id="4999334160817530090" at="76,67,77,289" concept="1" />
-      <node id="4999334160817530092" at="81,30,82,67" concept="3" />
-      <node id="4999334160817530092" at="82,67,83,289" concept="1" />
-      <node id="4999334160817530094" at="87,30,88,67" concept="3" />
-      <node id="4999334160817530094" at="88,67,89,289" concept="1" />
-      <node id="4999334160817530111" at="93,30,94,67" concept="3" />
-      <node id="4999334160817530111" at="94,67,95,1110" concept="1" />
-      <node id="4999334160817532120" at="99,30,100,67" concept="3" />
-      <node id="4999334160817532120" at="100,67,101,289" concept="1" />
-      <node id="4999334160817532128" at="105,30,106,67" concept="3" />
-      <node id="4999334160817532128" at="106,67,107,289" concept="1" />
-      <node id="4999334160817532069" at="111,30,112,67" concept="3" />
-      <node id="4999334160817532069" at="112,67,113,289" concept="1" />
-      <node id="4999334160817531756" at="117,30,118,67" concept="3" />
-      <node id="4999334160817531756" at="118,67,119,289" concept="1" />
-      <node id="4999334160817529594" at="23,0,25,0" concept="4" trace="ourParametersCacheExtension" />
-      <node id="4999334160817529594" at="26,0,29,0" concept="0" trace="CanBeChildParentWorksInRules_Test#()V" />
-      <node id="4999334160817529594" at="65,0,68,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="4999334160817530090" at="30,0,34,0" concept="2" trace="test_NodepropIsTrueCheck4999334160817530090#()V" />
-      <node id="4999334160817530092" at="34,0,38,0" concept="2" trace="test_NodechildConceptCheck4999334160817530092#()V" />
-      <node id="4999334160817530094" at="38,0,42,0" concept="2" trace="test_NodepropIsTrueCheck4999334160817530094#()V" />
-      <node id="4999334160817530111" at="42,0,46,0" concept="2" trace="test_ErrorMessagesCheck4999334160817530111#()V" />
-      <node id="4999334160817532120" at="46,0,50,0" concept="2" trace="test_NodetoleranceNotTooHighCheck4999334160817532120#()V" />
-      <node id="4999334160817532128" at="50,0,54,0" concept="2" trace="test_NodetoleranceNotTooLowCheck4999334160817532128#()V" />
-      <node id="4999334160817532069" at="54,0,58,0" concept="2" trace="test_NodeUnknownRuleCheck4999334160817532069#()V" />
-      <node id="4999334160817531756" at="58,0,62,0" concept="2" trace="test_NodechildConceptCheck4999334160817531756#()V" />
-      <node id="4999334160817529594" at="69,0,73,0" concept="2" trace="initTestNodes#()V" />
-      <node id="4999334160817530090" at="74,80,78,9" concept="1" />
-      <node id="4999334160817530092" at="80,82,84,9" concept="1" />
-      <node id="4999334160817530094" at="86,80,90,9" concept="1" />
-      <node id="4999334160817530111" at="92,79,96,9" concept="1" />
-      <node id="4999334160817532120" at="98,89,102,9" concept="1" />
-      <node id="4999334160817532128" at="104,88,108,9" concept="1" />
-      <node id="4999334160817532069" at="110,81,114,9" concept="1" />
-      <node id="4999334160817531756" at="116,82,120,9" concept="1" />
-      <node id="4999334160817530090" at="74,0,80,0" concept="2" trace="test_NodepropIsTrueCheck4999334160817530090#()V" />
-      <node id="4999334160817530092" at="80,0,86,0" concept="2" trace="test_NodechildConceptCheck4999334160817530092#()V" />
-      <node id="4999334160817530094" at="86,0,92,0" concept="2" trace="test_NodepropIsTrueCheck4999334160817530094#()V" />
-      <node id="4999334160817530111" at="92,0,98,0" concept="2" trace="test_ErrorMessagesCheck4999334160817530111#()V" />
-      <node id="4999334160817532120" at="98,0,104,0" concept="2" trace="test_NodetoleranceNotTooHighCheck4999334160817532120#()V" />
-      <node id="4999334160817532128" at="104,0,110,0" concept="2" trace="test_NodetoleranceNotTooLowCheck4999334160817532128#()V" />
-      <node id="4999334160817532069" at="110,0,116,0" concept="2" trace="test_NodeUnknownRuleCheck4999334160817532069#()V" />
-      <node id="4999334160817531756" at="116,0,122,0" concept="2" trace="test_NodechildConceptCheck4999334160817531756#()V" />
-      <scope id="4999334160817529594" at="26,46,27,60" />
-      <scope id="4999334160817530090" at="31,78,32,69" />
-      <scope id="4999334160817530092" at="35,80,36,71" />
-      <scope id="4999334160817530094" at="39,78,40,69" />
-      <scope id="4999334160817530111" at="43,77,44,68" />
-      <scope id="4999334160817532120" at="47,87,48,78" />
-      <scope id="4999334160817532128" at="51,86,52,77" />
-      <scope id="4999334160817532069" at="55,79,56,70" />
-      <scope id="4999334160817531756" at="59,80,60,71" />
-      <scope id="4999334160817529594" at="65,52,66,19" />
-      <scope id="4999334160817529594" at="70,36,71,69" />
+      <node id="4999334160817529594" at="25,46,26,60" concept="5" />
+      <node id="4999334160817530090" at="30,78,31,69" concept="1" />
+      <node id="4999334160817530092" at="34,80,35,71" concept="1" />
+      <node id="4999334160817530094" at="38,78,39,69" concept="1" />
+      <node id="4999334160817530111" at="42,77,43,68" concept="1" />
+      <node id="4999334160817532120" at="46,87,47,78" concept="1" />
+      <node id="4999334160817532128" at="50,86,51,77" concept="1" />
+      <node id="4999334160817532069" at="54,79,55,70" concept="1" />
+      <node id="4999334160817531756" at="58,80,59,71" concept="1" />
+      <node id="4999334160817529594" at="64,52,65,19" concept="5" />
+      <node id="4999334160817529594" at="69,36,70,69" concept="1" />
+      <node id="4999334160817530090" at="73,80,74,22" concept="1" />
+      <node id="4999334160817530090" at="75,30,76,63" concept="3" />
+      <node id="4999334160817530090" at="76,63,77,289" concept="1" />
+      <node id="4999334160817530092" at="80,82,81,22" concept="1" />
+      <node id="4999334160817530092" at="82,30,83,63" concept="3" />
+      <node id="4999334160817530092" at="83,63,84,289" concept="1" />
+      <node id="4999334160817530094" at="87,80,88,22" concept="1" />
+      <node id="4999334160817530094" at="89,30,90,63" concept="3" />
+      <node id="4999334160817530094" at="90,63,91,289" concept="1" />
+      <node id="4999334160817530111" at="94,79,95,22" concept="1" />
+      <node id="4999334160817530111" at="96,30,97,63" concept="3" />
+      <node id="4999334160817530111" at="97,63,98,1065" concept="1" />
+      <node id="4999334160817532120" at="101,89,102,22" concept="1" />
+      <node id="4999334160817532120" at="103,30,104,63" concept="3" />
+      <node id="4999334160817532120" at="104,63,105,289" concept="1" />
+      <node id="4999334160817532128" at="108,88,109,22" concept="1" />
+      <node id="4999334160817532128" at="110,30,111,63" concept="3" />
+      <node id="4999334160817532128" at="111,63,112,289" concept="1" />
+      <node id="4999334160817532069" at="115,81,116,22" concept="1" />
+      <node id="4999334160817532069" at="117,30,118,63" concept="3" />
+      <node id="4999334160817532069" at="118,63,119,289" concept="1" />
+      <node id="4999334160817531756" at="122,82,123,22" concept="1" />
+      <node id="4999334160817531756" at="124,30,125,63" concept="3" />
+      <node id="4999334160817531756" at="125,63,126,289" concept="1" />
+      <node id="4999334160817529594" at="22,0,24,0" concept="4" trace="ourParametersCacheExtension" />
+      <node id="4999334160817529594" at="25,0,28,0" concept="0" trace="CanBeChildParentWorksInRules_Test#()V" />
+      <node id="4999334160817529594" at="64,0,67,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="4999334160817530090" at="29,0,33,0" concept="2" trace="test_NodepropIsTrueCheck4999334160817530090#()V" />
+      <node id="4999334160817530092" at="33,0,37,0" concept="2" trace="test_NodechildConceptCheck4999334160817530092#()V" />
+      <node id="4999334160817530094" at="37,0,41,0" concept="2" trace="test_NodepropIsTrueCheck4999334160817530094#()V" />
+      <node id="4999334160817530111" at="41,0,45,0" concept="2" trace="test_ErrorMessagesCheck4999334160817530111#()V" />
+      <node id="4999334160817532120" at="45,0,49,0" concept="2" trace="test_NodetoleranceNotTooHighCheck4999334160817532120#()V" />
+      <node id="4999334160817532128" at="49,0,53,0" concept="2" trace="test_NodetoleranceNotTooLowCheck4999334160817532128#()V" />
+      <node id="4999334160817532069" at="53,0,57,0" concept="2" trace="test_NodeUnknownRuleCheck4999334160817532069#()V" />
+      <node id="4999334160817531756" at="57,0,61,0" concept="2" trace="test_NodechildConceptCheck4999334160817531756#()V" />
+      <node id="4999334160817529594" at="68,0,72,0" concept="2" trace="initTestNodes#()V" />
+      <node id="4999334160817530090" at="74,22,78,9" concept="1" />
+      <node id="4999334160817530092" at="81,22,85,9" concept="1" />
+      <node id="4999334160817530094" at="88,22,92,9" concept="1" />
+      <node id="4999334160817530111" at="95,22,99,9" concept="1" />
+      <node id="4999334160817532120" at="102,22,106,9" concept="1" />
+      <node id="4999334160817532128" at="109,22,113,9" concept="1" />
+      <node id="4999334160817532069" at="116,22,120,9" concept="1" />
+      <node id="4999334160817531756" at="123,22,127,9" concept="1" />
+      <node id="4999334160817530090" at="73,0,80,0" concept="2" trace="test_NodepropIsTrueCheck4999334160817530090#()V" />
+      <node id="4999334160817530092" at="80,0,87,0" concept="2" trace="test_NodechildConceptCheck4999334160817530092#()V" />
+      <node id="4999334160817530094" at="87,0,94,0" concept="2" trace="test_NodepropIsTrueCheck4999334160817530094#()V" />
+      <node id="4999334160817530111" at="94,0,101,0" concept="2" trace="test_ErrorMessagesCheck4999334160817530111#()V" />
+      <node id="4999334160817532120" at="101,0,108,0" concept="2" trace="test_NodetoleranceNotTooHighCheck4999334160817532120#()V" />
+      <node id="4999334160817532128" at="108,0,115,0" concept="2" trace="test_NodetoleranceNotTooLowCheck4999334160817532128#()V" />
+      <node id="4999334160817532069" at="115,0,122,0" concept="2" trace="test_NodeUnknownRuleCheck4999334160817532069#()V" />
+      <node id="4999334160817531756" at="122,0,129,0" concept="2" trace="test_NodechildConceptCheck4999334160817531756#()V" />
+      <scope id="4999334160817529594" at="25,46,26,60" />
+      <scope id="4999334160817530090" at="30,78,31,69" />
+      <scope id="4999334160817530092" at="34,80,35,71" />
+      <scope id="4999334160817530094" at="38,78,39,69" />
+      <scope id="4999334160817530111" at="42,77,43,68" />
+      <scope id="4999334160817532120" at="46,87,47,78" />
+      <scope id="4999334160817532128" at="50,86,51,77" />
+      <scope id="4999334160817532069" at="54,79,55,70" />
+      <scope id="4999334160817531756" at="58,80,59,71" />
+      <scope id="4999334160817529594" at="64,52,65,19" />
+      <scope id="4999334160817529594" at="69,36,70,69" />
       <scope id="4999334160817530090" at="75,30,77,289">
         <var name="nodeToCheck" id="4999334160817530090" />
       </scope>
-      <scope id="4999334160817530092" at="81,30,83,289">
+      <scope id="4999334160817530092" at="82,30,84,289">
         <var name="nodeToCheck" id="4999334160817530092" />
       </scope>
-      <scope id="4999334160817530094" at="87,30,89,289">
+      <scope id="4999334160817530094" at="89,30,91,289">
         <var name="nodeToCheck" id="4999334160817530094" />
       </scope>
-      <scope id="4999334160817530111" at="93,30,95,1110">
+      <scope id="4999334160817530111" at="96,30,98,1065">
         <var name="nodeToCheck" id="4999334160817530111" />
       </scope>
-      <scope id="4999334160817532120" at="99,30,101,289">
+      <scope id="4999334160817532120" at="103,30,105,289">
         <var name="nodeToCheck" id="4999334160817532120" />
       </scope>
-      <scope id="4999334160817532128" at="105,30,107,289">
+      <scope id="4999334160817532128" at="110,30,112,289">
         <var name="nodeToCheck" id="4999334160817532128" />
       </scope>
-      <scope id="4999334160817532069" at="111,30,113,289">
+      <scope id="4999334160817532069" at="117,30,119,289">
         <var name="nodeToCheck" id="4999334160817532069" />
       </scope>
-      <scope id="4999334160817531756" at="117,30,119,289">
+      <scope id="4999334160817531756" at="124,30,126,289">
         <var name="nodeToCheck" id="4999334160817531756" />
       </scope>
-      <scope id="4999334160817529594" at="26,0,29,0" />
-      <scope id="4999334160817529594" at="65,0,68,0">
+      <scope id="4999334160817529594" at="25,0,28,0" />
+      <scope id="4999334160817529594" at="64,0,67,0">
         <var name="owner" id="4999334160817529594" />
       </scope>
-      <scope id="4999334160817530090" at="30,0,34,0" />
-      <scope id="4999334160817530092" at="34,0,38,0" />
-      <scope id="4999334160817530094" at="38,0,42,0" />
-      <scope id="4999334160817530111" at="42,0,46,0" />
-      <scope id="4999334160817532120" at="46,0,50,0" />
-      <scope id="4999334160817532128" at="50,0,54,0" />
-      <scope id="4999334160817532069" at="54,0,58,0" />
-      <scope id="4999334160817531756" at="58,0,62,0" />
-      <scope id="4999334160817529594" at="69,0,73,0" />
-      <scope id="4999334160817530090" at="74,80,78,9" />
-      <scope id="4999334160817530092" at="80,82,84,9" />
-      <scope id="4999334160817530094" at="86,80,90,9" />
-      <scope id="4999334160817530111" at="92,79,96,9" />
-      <scope id="4999334160817532120" at="98,89,102,9" />
-      <scope id="4999334160817532128" at="104,88,108,9" />
-      <scope id="4999334160817532069" at="110,81,114,9" />
-      <scope id="4999334160817531756" at="116,82,120,9" />
-      <scope id="4999334160817530090" at="74,0,80,0" />
-      <scope id="4999334160817530092" at="80,0,86,0" />
-      <scope id="4999334160817530094" at="86,0,92,0" />
-      <scope id="4999334160817530111" at="92,0,98,0" />
-      <scope id="4999334160817532120" at="98,0,104,0" />
-      <scope id="4999334160817532128" at="104,0,110,0" />
-      <scope id="4999334160817532069" at="110,0,116,0" />
-      <scope id="4999334160817531756" at="116,0,122,0" />
-      <unit id="4999334160817529594" at="63,0,124,0" name="TestRulesConstraints.basic.CanBeChildParentWorksInRules_Test$TestBody" />
-      <unit id="4999334160817529594" at="21,0,125,0" name="TestRulesConstraints.basic.CanBeChildParentWorksInRules_Test" />
+      <scope id="4999334160817530090" at="29,0,33,0" />
+      <scope id="4999334160817530092" at="33,0,37,0" />
+      <scope id="4999334160817530094" at="37,0,41,0" />
+      <scope id="4999334160817530111" at="41,0,45,0" />
+      <scope id="4999334160817532120" at="45,0,49,0" />
+      <scope id="4999334160817532128" at="49,0,53,0" />
+      <scope id="4999334160817532069" at="53,0,57,0" />
+      <scope id="4999334160817531756" at="57,0,61,0" />
+      <scope id="4999334160817529594" at="68,0,72,0" />
+      <scope id="4999334160817530090" at="73,80,78,9" />
+      <scope id="4999334160817530092" at="80,82,85,9" />
+      <scope id="4999334160817530094" at="87,80,92,9" />
+      <scope id="4999334160817530111" at="94,79,99,9" />
+      <scope id="4999334160817532120" at="101,89,106,9" />
+      <scope id="4999334160817532128" at="108,88,113,9" />
+      <scope id="4999334160817532069" at="115,81,120,9" />
+      <scope id="4999334160817531756" at="122,82,127,9" />
+      <scope id="4999334160817530090" at="73,0,80,0" />
+      <scope id="4999334160817530092" at="80,0,87,0" />
+      <scope id="4999334160817530094" at="87,0,94,0" />
+      <scope id="4999334160817530111" at="94,0,101,0" />
+      <scope id="4999334160817532120" at="101,0,108,0" />
+      <scope id="4999334160817532128" at="108,0,115,0" />
+      <scope id="4999334160817532069" at="115,0,122,0" />
+      <scope id="4999334160817531756" at="122,0,129,0" />
+      <unit id="4999334160817529594" at="62,0,131,0" name="TestRulesConstraints.basic.CanBeChildParentWorksInRules_Test$TestBody" />
+      <unit id="4999334160817529594" at="20,0,132,0" name="TestRulesConstraints.basic.CanBeChildParentWorksInRules_Test" />
     </file>
   </root>
 </debug-info>

@@ -49,8 +49,9 @@ public class DiamondOperator_Test extends BaseTransformationTest {
       runWithinCommand(() -> new CheckTypesAction.CheckComputedType(getNodeById("2668602783496031829")).checkTypeIs(getNodeById("2668602783496188412")));
     }
     public void test_NodeTypeSystemCheck2668602783496250965() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("2668602783496238456");
+        SNode nodeToCheck = getNodeById("2668602783496238456");
         new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }

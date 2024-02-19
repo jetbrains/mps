@@ -40,8 +40,9 @@ public class FeedbackNoRefInObligatoryRole_Test extends BaseTransformationTest {
     }
 
     public void test_NodeErrorCheck7019192671317970783() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("7019192671317969474");
+        SNode nodeToCheck = getNodeById("7019192671317969474");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "No ref in the very obligatory role 'obligatoryref'", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }

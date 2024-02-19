@@ -62,8 +62,9 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
       });
     }
     public void test_NodeErrorCheck3981396688773519576() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("6374750171056867612");
+        SNode nodeToCheck = getNodeById("6374750171056867612");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }

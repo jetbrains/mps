@@ -109,110 +109,128 @@ public class SignatureHiding_Test extends BaseTransformationTest {
     }
 
     public void test_NodeUnnamedErrorCheck5338175760790723914() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8754229008110764833");
+        SNode nodeToCheck = getNodeById("8754229008110764833");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: myValue, myValue", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790738126() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8754229008110765002");
+        SNode nodeToCheck = getNodeById("8754229008110765002");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: myValue, myValue", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790738732() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8754229008111622965");
+        SNode nodeToCheck = getNodeById("8754229008111622965");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: fun myFn<T>(Int, T), fun myFn<T>(Int, T)", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790739338() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8754229008111625019");
+        SNode nodeToCheck = getNodeById("8754229008111625019");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: fun myFn<T>(Int, T), fun myFn<T>(Int, T)", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790739944() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8754229008114418262");
+        SNode nodeToCheck = getNodeById("8754229008114418262");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: fun myFn<T: Int>(Int, T), fun myFn<T: Int>(Int, T)", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790740550() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8754229008114418272");
+        SNode nodeToCheck = getNodeById("8754229008114418272");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: fun myFn<T: Int>(Int, T), fun myFn<T: Int>(Int, T)", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760785278337() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("5338175760785270848");
+        SNode nodeToCheck = getNodeById("5338175760785270848");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: ext, ext", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760785279879() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("5338175760785275076");
+        SNode nodeToCheck = getNodeById("5338175760785275076");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: ext, ext", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790741778() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8754229008116370627");
+        SNode nodeToCheck = getNodeById("8754229008116370627");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: a, a", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck5338175760790742458() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8754229008116370823");
+        SNode nodeToCheck = getNodeById("8754229008116370823");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: a, a", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck8754229008116788916() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8754229008116372836");
+        SNode nodeToCheck = getNodeById("8754229008116372836");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: a, a", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck8754229008116789139() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8754229008116372840");
+        SNode nodeToCheck = getNodeById("8754229008116372840");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: a, a", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck8754229008116796403() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8754229008116795828");
+        SNode nodeToCheck = getNodeById("8754229008116795828");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: b, b", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeUnnamedErrorCheck8754229008116796237() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8754229008116791819");
+        SNode nodeToCheck = getNodeById("8754229008116791819");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "2687732213124774215"), "Error: Conflicting declarations: b, b", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeConflictingDeclarationCheck5338175760790997923() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("5338175760790996708");
+        SNode nodeToCheck = getNodeById("5338175760790996708");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8754229008106648620"), "Error: Conflicting declaration with a", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeConflictingDeclarationCheck5338175760791000689() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("5338175760790999163");
+        SNode nodeToCheck = getNodeById("5338175760790999163");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8754229008106648620"), "Error: Conflicting declaration with param", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeConflictingDeclarationCheck5338175760791003904() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("5338175760791003125");
+        SNode nodeToCheck = getNodeById("5338175760791003125");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8754229008106648620"), "Error: Conflicting declaration with fun fn()", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
     public void test_NodeConflictingDeclarationCheck5338175760791446993() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("5338175760791006309");
+        SNode nodeToCheck = getNodeById("5338175760791006309");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8754229008106648620"), "Error: Conflicting declaration with fun Int.received()", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }

@@ -40,8 +40,9 @@ public class FeedbackPropIsNotDefined_Test extends BaseTransformationTest {
     }
 
     public void test_NodeErrorCheck4631579825415184834() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("7019192671317644658");
+        SNode nodeToCheck = getNodeById("7019192671317644658");
         new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(nodeToCheck, MessageStatus.ERROR, "Property 'prop' does not belong to the concept!!!", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }

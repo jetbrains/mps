@@ -41,8 +41,9 @@ public class TryCatch_Test extends BaseTransformationTest {
     }
 
     public void test_NodeExpectingCatchOrFinallyCheck8160487567611772388() throws Exception {
+      initTestNodes();
       runWithinCommand(() -> {
-        SNode nodeToCheck = getRealNodeById("8160487567611772337");
+        SNode nodeToCheck = getNodeById("8160487567611772337");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8160487567610426386"), "", myProject.getRepository(), myProject.getPlatform()).run();
       });
     }
