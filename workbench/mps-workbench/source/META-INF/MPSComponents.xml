@@ -91,11 +91,13 @@
     <postStartupActivity implementation="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" />
     <postStartupActivity implementation="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" />
     <postStartupActivity implementation="jetbrains.mps.ide.make.StartupModuleMakerImpl" />
+    <postStartupActivity implementation="jetbrains.mps.project.MissionControl$Initializer" />
     <projectService serviceImplementation="jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent"/>
     <projectService serviceImplementation="jetbrains.mps.ide.editor.tabs.TabRootNodesTracker"/>
     <projectService serviceImplementation="jetbrains.mps.ide.editor.tabs.FileStatusChangeListener"/>
     <projectService serviceImplementation="jetbrains.mps.ide.bookmark.BookmarksUIComponent"/>
     <projectService serviceImplementation="jetbrains.mps.project.ProjectLibraryManager" />
+    <projectService serviceImplementation="jetbrains.mps.project.MissionControl" />
     <applicationService serviceInterface="jetbrains.mps.ide.platform.watching.FileSystemListenersContainer"
                         serviceImplementation="jetbrains.mps.ide.vfs.WatchingFileSystemListenersContainer" />
     <applicationService serviceImplementation="jetbrains.mps.ide.generator.TransientSwapOwnerComponent" />
