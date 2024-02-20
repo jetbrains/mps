@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.classloading;
 
@@ -43,11 +43,11 @@ import java.util.Map;
  * @author Artem Tikhomirov
  * @since 2022.2
  */
-public class CLDependencies {
+/*package*/ final class CLDependencies {
   private static final boolean USE_DD = Boolean.getBoolean("mps.clm.dd");
 
   private final SRepository myRepository;
-  private final Map<ReloadableModule, List<SearchError>> myModulesWithAbsentDeps = new HashMap<>();
+  private final Map<SModuleReference, List<SearchError>> myModulesWithAbsentDeps = new HashMap<>();
 
   private UsedModulesCollector myModulesCollector;
 
@@ -156,7 +156,7 @@ public class CLDependencies {
       }
     }
     if (errorContainer.hasErrors()) {
-      myModulesWithAbsentDeps.put(module, errorContainer.getErrors());
+      myModulesWithAbsentDeps.put(module.getModuleReference(), errorContainer.getErrors());
     }
     return rv;
   }
@@ -170,12 +170,22 @@ public class CLDependencies {
     return null;
   }
 
-  public Map<ReloadableModule, List<SearchError>> getModulesWithAbsentDeps() {
+  /*package*/ Map<SModuleReference, List<SearchError>> getModulesWithAbsentDeps() {
     return Collections.unmodifiableMap(myModulesWithAbsentDeps);
   }
 
-  public void addError(ReloadableModule module, List<SearchError> errors) {
-    myModulesWithAbsentDeps.put(module, errors);
+  /*package*/ boolean withErrors(SModuleReference module) {
+    return myModulesWithAbsentDeps.containsKey(module);
+  }
+
+  /*package*/ void addError(ReloadableModule module, List<SearchError> errors) {
+    if (errors == null || errors.isEmpty()) {
+      // no-op, generally doesn't happen, there's single use;
+      // never meant to remove errors.
+      return;
+    }
+    // we deliberately overwrite any already known error. Not that it's good, it's the way it was. The whole code cries for further refactoring.
+    myModulesWithAbsentDeps.put(module.getModuleReference(), errors);
   }
 
   public void reset() {
