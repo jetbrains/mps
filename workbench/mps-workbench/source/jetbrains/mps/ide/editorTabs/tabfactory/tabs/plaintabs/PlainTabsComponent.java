@@ -161,6 +161,7 @@ public class PlainTabsComponent extends BaseTabsComponent<PlainEditorTab> {
   //this is synchronized because we change myJbTabs here (while disposing)
   @Override
   public synchronized void dispose() {
+    removeContent(myTabs);
     Disposer.dispose(myJbTabsDisposable);
     super.dispose();
   }
