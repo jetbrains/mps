@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -596,8 +596,8 @@ public class PluginLoaderRegistry implements Disposable {
 
     private void clearIDEAIconsGlobalCache(@NotNull Collection<ClassLoader> classLoadersToBeDisposed) {
       for (ClassLoader cl : classLoadersToBeDisposed) {
-        // TODO: find alternative
-        //IconLoader.detachClassLoader(cl);
+        // until IDEA-345462 is fixed, patch the platform when preparing for use in MPS and expose the method
+        IconLoader.detachClassLoader(cl);
       }
       final ProjectManager pm = ProjectManager.getInstanceIfCreated();
       if (pm == null) {
