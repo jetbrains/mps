@@ -305,7 +305,7 @@
       <node concept="3clFbS" id="3E3V7xV8bze" role="2VODD2">
         <node concept="3clFbF" id="3E3V7xV8bJX" role="3cqZAp">
           <node concept="Xl_RD" id="3E3V7xV8bJW" role="3clFbG">
-            <property role="Xl_RC" value="Reset Classpath and VM Options to match the current MPS version" />
+            <property role="Xl_RC" value="Reset Classpath and VM Options to match the default settings for the current MPS version" />
           </node>
         </node>
       </node>
