@@ -8,6 +8,7 @@ import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.ui.tree.VirtualFolder;
+import jetbrains.mps.smodel.SObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -34,18 +35,28 @@ public class ModelHierarchyProjectViewNode extends SimpleModelProjectViewNode {
   public boolean contains(@NotNull VirtualFile file) {
     SModel sModel = extractSModel(getSObject(file));
     if (sModel != null) {
-      boolean contains = false;
-      if (myHierarchy != null) {
-        String modelAsVirtualFolder = getValue().getName().getLongName();
-        contains |= myHierarchy.allValues(modelAsVirtualFolder).anyMatch(m -> Objects.equals(sModel, m));
-      }
-      contains |= Objects.equals(sModel, getValue());
+      boolean contains = containsSModel(sModel);
       if (LOG.isDebugEnabled() && contains) {
         LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
       }
       return contains;
     }
     return false;
+  }
+
+  @Override
+  protected boolean contains(SObject sObject) {
+    return sObject.testIfHasSModel(this::containsSModel);
+  }
+
+  private boolean containsSModel(SModel sModel) {
+    boolean contains = false;
+    if (myHierarchy != null) {
+      String modelAsVirtualFolder = getValue().getName().getLongName();
+      contains |= myHierarchy.allValues(modelAsVirtualFolder).anyMatch(m -> Objects.equals(sModel, m));
+    }
+    contains |= Objects.equals(sModel, getValue());
+    return contains;
   }
 
   @Override

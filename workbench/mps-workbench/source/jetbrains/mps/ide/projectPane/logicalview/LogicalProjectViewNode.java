@@ -8,6 +8,7 @@ import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.LayeredIcon;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -19,6 +20,8 @@ import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.MissionControl;
+import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
@@ -161,6 +164,17 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
   protected void updateInReadAction(PresentationData presentation) {
     //
   }
+
+  @Override
+  protected boolean hasProblemFileBeneath() {
+    if (!Registry.is("projectView.showHierarchyErrors")) return false;
+
+    Project project = getProject();
+    MissionControl missionControl = MissionControl.getInstance(project);
+    return missionControl != null && missionControl.hasErrorsInHierarchy(this::contains);
+  }
+
+  protected abstract boolean contains(SObject sObject);
 
   protected Icon layeredIcon(Icon... icons) {
     return LayeredIcon.layeredIcon(icons);

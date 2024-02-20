@@ -17,6 +17,7 @@ import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
+import jetbrains.mps.smodel.SObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -43,15 +44,24 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     SNode sNode = extractSNode(getSObject(file));
     boolean contains = false;
     if (sNode != null) {
-      return ProjectHelper.fromIdeaProject(getProject())
-                   .getModelAccess()
-                   .computeReadAction(() ->
-                                       SNodeOperations.getNodeAncestors(sNode, null, true).contains(getValue()));
+      return isDescendant(sNode);
     }
     if (LOG.isDebugEnabled() && contains) {
       LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
     }
     return contains;
+  }
+
+  @Override
+  protected boolean contains(SObject sObject) {
+    return sObject.testIfHasSNode(this::isDescendant);
+  }
+
+  private Boolean isDescendant(SNode sNode) {
+    return ProjectHelper.fromIdeaProject(getProject())
+                        .getModelAccess()
+                        .computeReadAction(() ->
+                                               SNodeOperations.getNodeAncestors(sNode, null, true).contains(getValue()));
   }
 
   @Override
@@ -166,6 +176,11 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
+    protected boolean contains(SObject sObject) {
+      return false;
+    }
+
+    @Override
     public boolean canNavigate() {
       return true;
     }
@@ -192,6 +207,11 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
 
     @Override
     public boolean contains(@NotNull VirtualFile file) {
+      return false;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
       return false;
     }
 
@@ -228,6 +248,11 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
+    protected boolean contains(SObject sObject) {
+      return false;
+    }
+
+    @Override
     protected void update(@NotNull PresentationData presentation) {
       presentation.setPresentableText("references");
       // original todo
@@ -260,6 +285,11 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
+    protected boolean contains(SObject sObject) {
+      return false;
+    }
+
+    @Override
     protected void updateInReadAction(PresentationData presentation) {
       Object parentValue = getParentValue();
       String text = "?error?";
@@ -281,6 +311,11 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
 
     @Override
     public boolean contains(@NotNull VirtualFile file) {
+      return false;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
       return false;
     }
 

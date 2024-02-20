@@ -11,6 +11,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.project.DevKit;
+import jetbrains.mps.smodel.SObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -34,6 +35,11 @@ public class DevkitProjectViewNode extends BranchProjectViewNode<DevKit> {
       LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
     }
     return contains;
+  }
+
+  @Override
+  protected boolean contains(SObject sObject) {
+    return sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
   }
 
   @Override
@@ -73,6 +79,11 @@ public class DevkitProjectViewNode extends BranchProjectViewNode<DevKit> {
 
     @Override
     public boolean contains(@NotNull VirtualFile file) {
+      return false;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
       return false;
     }
 

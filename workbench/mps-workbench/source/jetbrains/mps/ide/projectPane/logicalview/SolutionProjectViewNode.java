@@ -12,6 +12,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.icons.MPSIcons.Nodes.Models;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
+import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.LanguageID;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -40,6 +41,11 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
       LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
     }
     return contains;
+  }
+
+  @Override
+  protected boolean contains(SObject sObject) {
+    return sObject.testIfHasSModule(module -> Objects.equals(module, getValue()));
   }
 
   @Override
@@ -113,6 +119,11 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
     }
 
     @Override
+    protected boolean contains(SObject sObject) {
+      return sObject.testIfHasSModel(sModel -> !filterModels(List.of(sModel)).isEmpty());
+    }
+
+    @Override
     public int getTypeSortWeight(boolean sortByType) {
       return ProjectViewWeights.STUBS_WEIGHT;
     }
@@ -164,6 +175,11 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
         return !filterModels(List.of(sModel)).isEmpty();
       }
       return false;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
+      return sObject.testIfHasSModule(module -> Objects.equals(module, getValue()));
     }
 
     @Override

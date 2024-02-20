@@ -60,7 +60,7 @@ public class RootLogicalProjectViewNode extends ProjectViewNode<Project> {
   public boolean contains(@NotNull VirtualFile file) {
     return true;
   }
-
+  
   @Override
   protected void update(@NotNull PresentationData presentation) {
   }

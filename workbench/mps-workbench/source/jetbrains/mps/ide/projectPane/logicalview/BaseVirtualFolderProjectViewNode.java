@@ -16,6 +16,7 @@ import jetbrains.mps.ide.ui.tree.VirtualFolder.Models;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Modules;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.SObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -24,6 +25,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 
 import java.util.Collection;
 import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 /**
@@ -53,13 +55,9 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
                       .map(valueTypeClass::cast);
   }
 
-  protected boolean containsValue(@NotNull VirtualFile file, Object value) {
+  protected boolean containsValue(Object value) {
     String virtualFolder = getValue().getName();
-    boolean contains = myHierarchy.allValues(virtualFolder).anyMatch(m -> Objects.equals(value, m));
-    if (LOG.isDebugEnabled() && contains) {
-      LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue().getName(), file));
-    }
-    return contains;
+    return myHierarchy.allValues(virtualFolder).anyMatch(m -> Objects.equals(value, m));
   }
 
   @Override
@@ -103,9 +101,18 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
     public boolean contains(@NotNull VirtualFile file) {
       SModule sModule = extractSModule(getSObject(file));
       if (sModule != null) {
-        return containsValue(file, sModule);
+        boolean contains = containsValue(sModule);
+        if (LOG.isDebugEnabled() && contains) {
+          LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue().getName(), file));
+        }
+        return contains;
       }
       return false;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
+      return sObject.testIfHasSModule(this::containsValue);
     }
 
     @Override
@@ -144,9 +151,18 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
     public boolean contains(@NotNull VirtualFile file) {
       SModel sModel = extractSModel(getSObject(file));
       if (sModel != null) {
-        return containsValue(file, sModel);
+        boolean contains = containsValue(sModel);
+        if (LOG.isDebugEnabled() && contains) {
+          LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue().getName(), file));
+        }
+        return contains;
       }
       return false;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
+      return sObject.testIfHasSModel(this::containsValue);
     }
 
     @Override
@@ -171,13 +187,26 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
     public boolean contains(@NotNull VirtualFile file) {
       SNode sNode = extractSNode(getSObject(file));
       if (sNode != null) {
-        SNode root =  ProjectHelper.fromIdeaProject(getProject())
-                            .getModelAccess()
-                            .computeReadAction(() ->
-                                                   SNodeOperations.getContainingRoot(sNode));
-        return containsValue(file, root);
+        SNode root = getRoot(sNode);
+        boolean contains = containsValue(root);
+        if (LOG.isDebugEnabled() && contains) {
+          LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue().getName(), file));
+        }
+        return contains;
       }
       return false;
+    }
+
+    private SNode getRoot(SNode sNode) {
+      return ProjectHelper.fromIdeaProject(getProject())
+                          .getModelAccess()
+                          .computeReadAction(() ->
+                                                 SNodeOperations.getContainingRoot(sNode));
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
+      return sObject.testIfHasSNode(node -> containsValue(getRoot(node)));
     }
 
     @Override

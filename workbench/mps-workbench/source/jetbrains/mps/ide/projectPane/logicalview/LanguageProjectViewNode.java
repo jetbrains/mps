@@ -14,6 +14,7 @@ import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
+import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -22,6 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import javax.swing.Icon;
@@ -40,11 +42,22 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
   @Override
   public boolean contains(@NotNull VirtualFile file) {
-    boolean contains = Objects.equals(extractSModule(getSObject(file)), getValue());
+    SModule sModule = extractSModule(getSObject(file));
+    boolean contains = containsModule(sModule);
     if (LOG.isDebugEnabled() && contains) {
       LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
     }
     return contains;
+  }
+
+  @Override
+  protected boolean contains(SObject sObject) {
+    return sObject.testIfHasSModule(sModule -> containsModule(sModule));
+  }
+
+  private boolean containsModule(SModule sModule) {
+    return ProjectHelper.fromIdeaProject(getProject()).getModelAccess().computeReadAction(() ->
+              Objects.equals(sModule, getValue()) || getValue().getOwnedGenerators().contains(sModule));
   }
 
   @Override
@@ -142,6 +155,11 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
+    protected boolean contains(SObject sObject) {
+      return false;
+    }
+
+    @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
       List<SModel> accessoryModels = getValue().getAccessoryModels();
       for (SModel model : accessoryModels) {
@@ -174,6 +192,11 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
     @Override
     public boolean contains(@NotNull VirtualFile file) {
+      return false;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
       return false;
     }
 
@@ -219,6 +242,11 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
+    protected boolean contains(SObject sObject) {
+      return false;
+    }
+
+    @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
       AbstractVirtualFolderHierarchy<?> hierarchy = new ModelsVirtualFolderHierarchy(getValue().getUtilModels(), this::getVirtualFolder);
       hierarchy.fillChildren("", children);
@@ -248,6 +276,11 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
     @Override
     public boolean contains(@NotNull VirtualFile file) {
+      return false;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
       return false;
     }
 
@@ -283,6 +316,11 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
+    protected boolean contains(SObject sObject) {
+      return false;
+    }
+
+    @Override
     protected void update(@NotNull PresentationData presentation) {
       presentation.setPresentableText(getValue().getName().getValue());
       Icon icon = IdeIcons.MODEL_ICON;
@@ -298,6 +336,11 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
     @Override
     public boolean contains(@NotNull VirtualFile file) {
+      return false;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
       return false;
     }
 

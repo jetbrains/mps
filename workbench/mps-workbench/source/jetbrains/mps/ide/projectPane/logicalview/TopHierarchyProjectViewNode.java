@@ -25,6 +25,7 @@ import jetbrains.mps.ide.ui.tree.VirtualFolder.SolutionsModulesPool;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.scope.ConditionalScope;
 import jetbrains.mps.smodel.Generator;
@@ -61,9 +62,14 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     public boolean contains(@NotNull VirtualFile file) {
       SModule sModule = extractSModule(getSObject(file));
       if (sModule != null) {
-        return getValue().getProjectModules().contains(sModule);
+        return getValue().getProjectModulesWithGenerators().contains(sModule);
       }
       return false;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
+      return sObject.testIfHasSModule(sModule -> getValue().getProjectModulesWithGenerators().contains(sModule));
     }
 
     @Override
@@ -98,19 +104,28 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     public boolean contains(@NotNull VirtualFile file) {
       SModule sModule = extractSModule(getSObject(file));
       if (sModule != null) {
-        MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
-        return mpsProject.getModelAccess().computeReadAction(() -> {
-          if (mpsProject.getProjectModules().contains(sModule)) {
-            return false; // only support "select in" for non-project modules
-          }
-
-          VisibleModuleRegistry visibleModules = VisibleModuleRegistry.getInstance();
-          GlobalScope globalScope = new GlobalScope(mpsProject.getRepository());
-          ConditionalScope conditionalScope = new ConditionalScope(globalScope, visibleModules::isVisible, null);
-          return IterableUtil.indexOf(conditionalScope.getModules(), sModule) >= 0;
-        });
+        return containsSModule(sModule);
       }
       return false;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
+      return sObject.testIfHasSModule(this::containsSModule);
+    }
+
+    private Boolean containsSModule(SModule sModule) {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      return mpsProject.getModelAccess().computeReadAction(() -> {
+        if (mpsProject.getProjectModulesWithGenerators().contains(sModule)) {
+          return false; // only support "select in" for non-project modules
+        }
+
+        VisibleModuleRegistry visibleModules = VisibleModuleRegistry.getInstance();
+        GlobalScope globalScope = new GlobalScope(mpsProject.getRepository());
+        ConditionalScope conditionalScope = new ConditionalScope(globalScope, visibleModules::isVisible, null);
+        return IterableUtil.indexOf(conditionalScope.getModules(), sModule) >= 0;
+      });
     }
 
     @Override
@@ -162,11 +177,20 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     public boolean contains(@NotNull VirtualFile file) {
       SModule sModule = extractSModule(getSObject(file));
       if (sModule != null) {
-        MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
-        return mpsProject.getModelAccess().computeReadAction(() ->
-                                            myModulesSupplier.get().contains(sModule) && !mpsProject.getProjectModules().contains(sModule));
+        return containsSModule(sModule);
       }
       return false;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
+      return sObject.testIfHasSModule(this::containsSModule);
+    }
+
+    private Boolean containsSModule(SModule sModule) {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      return mpsProject.getModelAccess().computeReadAction(() ->
+                myModulesSupplier.get().contains(sModule) && !mpsProject.getProjectModulesWithGenerators().contains(sModule));
     }
 
     @Override
@@ -210,6 +234,11 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
         LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
       }
       return contains;
+    }
+
+    @Override
+    protected boolean contains(SObject sObject) {
+      return sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
     }
 
     @Override

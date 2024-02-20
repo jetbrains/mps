@@ -11,6 +11,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.annotations.NotNull;
@@ -31,6 +32,11 @@ public class SimpleModelProjectViewNode extends BranchProjectViewNode<SModel> {
 
   @Override
   public boolean contains(@NotNull VirtualFile file) {
+    return false;
+  }
+
+  @Override
+  protected boolean contains(SObject sObject) {
     return false;
   }
 
