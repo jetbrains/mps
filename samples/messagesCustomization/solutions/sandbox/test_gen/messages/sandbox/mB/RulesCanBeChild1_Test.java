@@ -51,7 +51,7 @@ public class RulesCanBeChild1_Test extends BaseTransformationTest {
 
     @Override
     protected void initTestNodes() {
-      prepareTestNodes("3071492597344700469", "2884486869351415705", "2884486869351538471");
+      prepareTestNodes("2284828463470402088");
     }
 
     public void test_NodeUnknownRuleCheck2884486869351397457() throws Exception {

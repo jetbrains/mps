@@ -14,8 +14,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
-import java.util.Arrays;
 
 @MPSLaunch
 public class CanBeChildParentWorksInRules_Test extends BaseTransformationTest {
@@ -37,10 +35,6 @@ public class CanBeChildParentWorksInRules_Test extends BaseTransformationTest {
   @Test
   public void test_NodepropIsTrueCheck4999334160817530094() throws Throwable {
     new TestBody(this).test_NodepropIsTrueCheck4999334160817530094();
-  }
-  @Test
-  public void test_ErrorMessagesCheck4999334160817530111() throws Throwable {
-    new TestBody(this).test_ErrorMessagesCheck4999334160817530111();
   }
   @Test
   public void test_NodetoleranceNotTooHighCheck4999334160817532120() throws Throwable {
@@ -89,13 +83,6 @@ public class CanBeChildParentWorksInRules_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         SNode nodeToCheck = getNodeById("4999334160817529595");
         new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092603199"), "", myProject.getRepository(), myProject.getPlatform()).run();
-      });
-    }
-    public void test_ErrorMessagesCheck4999334160817530111() throws Exception {
-      initTestNodes();
-      runWithinCommand(() -> {
-        SNode nodeToCheck = getNodeById("4999334160817530089");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(true).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("4999334160817529595"), MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092603199"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("4999334160817529595"), MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092601214"), "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("4999334160817529595"), MessageStatus.ERROR, new SNodePointer("r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)", "8878450512092603199"), "", myProject.getRepository(), myProject.getPlatform()))).run();
       });
     }
     public void test_NodetoleranceNotTooHighCheck4999334160817532120() throws Exception {

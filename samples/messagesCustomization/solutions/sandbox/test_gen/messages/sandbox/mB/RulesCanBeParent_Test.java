@@ -43,7 +43,7 @@ public class RulesCanBeParent_Test extends BaseTransformationTest {
 
     @Override
     protected void initTestNodes() {
-      prepareTestNodes("2802122285522113963");
+      prepareTestNodes("2284828463470401834");
     }
 
     public void test_ErrorMessagesCheck2802122285522113977() throws Exception {

@@ -14,8 +14,9 @@ public final class LanguageConceptSwitch {
   public static final int CardinalityTestConcept = 2;
   public static final int CardinalityTestConcept0 = 3;
   public static final int IncorrectTargetTestConcept = 4;
-  public static final int TestConcept = 5;
-  public static final int TestConcept0 = 6;
+  public static final int NamedContainer = 5;
+  public static final int TestConcept = 6;
+  public static final int TestConcept0 = 7;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L);
@@ -24,6 +25,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x61692e8b97e96c6cL, CardinalityTestConcept);
     builder.put(0x61692e8b97ee826fL, CardinalityTestConcept0);
     builder.put(0x19e9e9b662255d2L, IncorrectTargetTestConcept);
+    builder.put(0x41c453b76d6ea35eL, NamedContainer);
     builder.put(0x530a123e5fc34d34L, TestConcept);
     builder.put(0x2807c18666f81300L, TestConcept0);
     myIndex = builder.seal();

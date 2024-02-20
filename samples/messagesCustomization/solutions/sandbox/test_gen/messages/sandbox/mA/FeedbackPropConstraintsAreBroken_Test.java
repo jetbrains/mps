@@ -53,7 +53,7 @@ public class FeedbackPropConstraintsAreBroken_Test extends BaseTransformationTes
 
     @Override
     protected void initTestNodes() {
-      prepareTestNodes("3071492597344664120", "2884486869351398328");
+      prepareTestNodes("4739004755180691832");
     }
 
     public void test_NodeUnknownRuleCheck2884486869351401623() throws Exception {
