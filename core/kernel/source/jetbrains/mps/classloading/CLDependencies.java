@@ -43,7 +43,7 @@ import java.util.Map;
  * @author Artem Tikhomirov
  * @since 2022.2
  */
-public final class CLDependencies {
+/*package*/ final class CLDependencies {
   private static final boolean USE_DD = Boolean.getBoolean("mps.clm.dd");
 
   private final SRepository myRepository;
@@ -184,6 +184,7 @@ public final class CLDependencies {
       // never meant to remove errors.
       return;
     }
+    // we deliberately overwrite any already known error. Not that it's good, it's the way it was. The whole code cries for further refactoring.
     myModulesWithAbsentDeps.put(module.getModuleReference(), errors);
   }
 

@@ -45,13 +45,13 @@ public class ModuleUpdater {
   private final GraphHolder<SModuleReference> myDepGraphHolder = new GraphHolder<>();
   private final ReferenceStorage<ReloadableModule> myRefStorage;
   private final SRepository myRepository;
-  private final CLDependencies usedModulesCollector;
+  private final CLDependencies myDependencyCollector;
 
   public ModuleUpdater(SRepository repository, Condition<ReloadableModule> watchableCondition, ReferenceStorage<ReloadableModule> refStorage) {
     myRepository = repository;
     myWatchableCondition = watchableCondition;
     myRefStorage = refStorage;
-    usedModulesCollector= new CLDependencies(repository);
+    myDependencyCollector = new CLDependencies(repository);
   }
 
   public void updateModules(@NotNull Collection<? extends ReloadableModule> modules) {
@@ -119,7 +119,7 @@ public class ModuleUpdater {
           myModulesToRemove.size(), myModulesToReload.size()));
       try {
         myChangedFlag = false;
-        usedModulesCollector.reset();
+        myDependencyCollector.reset();
         myDepGraphHolder.checkGraphsCorrectness();
         int wasEdges = myDepGraphHolder.getEdgesCount();
         int wasVertices = myDepGraphHolder.getVerticesCount();
@@ -148,7 +148,7 @@ public class ModuleUpdater {
   }
 
   /*package*/ CLDependencies getClassLoadingDeps() {
-    return usedModulesCollector;
+    return myDependencyCollector;
   }
 
   private void updateRemoved(Set<? extends SModuleReference> modulesToRemove) {
@@ -184,7 +184,7 @@ public class ModuleUpdater {
       }
       assert module != null;
       Collection<ReloadableModule> deps = getDepsWithErrors(module);
-      if (usedModulesCollector.withErrors(module.getModuleReference())) {
+      if (myDependencyCollector.withErrors(module.getModuleReference())) {
         // module with broken dependencies shall not record its edges; edges would get added once all errors gone
         continue;
       }
@@ -204,7 +204,7 @@ public class ModuleUpdater {
     var facet = module.getFacet(IdeaPluginModuleFacet.class);
     if (facet != null && !facet.isValid()) {
       SearchError error = ErrorContainer.SearchError.of("The module '" + module.getModuleReference() + "' comes with invalid idea plugin facet '" + facet.getPluginId() + "'");
-      usedModulesCollector.addError(module, Collections.singletonList(error));
+      myDependencyCollector.addError(module, Collections.singletonList(error));
       return true;
     }
     return false;
@@ -242,7 +242,7 @@ public class ModuleUpdater {
       // and take logic that used to be here as a way to make sure we don't face such scenario.
       assert myDepGraphHolder.contains(mRef);
       Collection<SModuleReference> currentDeps = new HashSet<>(myDepGraphHolder.getOutgoingEdges(mRef));
-      if (usedModulesCollector.withErrors(mRef)) {
+      if (myDependencyCollector.withErrors(mRef)) {
         // XXX why we ignore update of other modulesToReload?
         // why not updated=true; continue;?
         return true;
@@ -277,7 +277,7 @@ public class ModuleUpdater {
       return Collections.emptyList();
     }
 
-    Collection<SModule> directlyUsedModules = usedModulesCollector.directlyUsedModules(module);
+    Collection<SModule> directlyUsedModules = myDependencyCollector.directlyUsedModules(module);
     Set<ReloadableModule> deps = new LinkedHashSet<>();
     for (SModule dep : directlyUsedModules) {
       if (dep instanceof ReloadableModule) {

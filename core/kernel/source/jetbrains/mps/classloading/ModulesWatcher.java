@@ -275,8 +275,8 @@ public class ModulesWatcher {
 
     Map<SModuleReference, List<SearchError>> modulesWithAbsentDeps = myModuleUpdater.getClassLoadingDeps().getModulesWithAbsentDeps();
     if (modulesWithAbsentDeps.containsKey(mRef)) {
-      List<SearchError> errors = modulesWithAbsentDeps.get(mRef);
-      return String.format("%s was marked invalid for class loading: %s", mRef.getModuleName(), errors.get(0).getMsg());
+      final List<SearchError> errors = modulesWithAbsentDeps.get(mRef);
+      return String.format("%s was marked invalid for class loading: %s", mRef.getModuleName(), errors == null || errors.isEmpty() ? "NO INFORMATION" : errors.get(0).getMsg());
     }
     ReloadableModule module = (ReloadableModule) mRef.resolve(myRepository);
     assert module != null;
