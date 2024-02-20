@@ -11,15 +11,10 @@ import jetbrains.mps.ide.editor.MPSFileNodeEditor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.ThreadUtils;
 import java.lang.reflect.InvocationTargetException;
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
 import jetbrains.mps.nodeEditor.NodeEditorComponent;
-import java.util.Set;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
-import org.jetbrains.mps.openapi.model.SReference;
 import java.util.List;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.concurrent.atomic.AtomicReference;
@@ -42,6 +37,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.QuickFixBase;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.errors.item.QuickFixReportItem;
 import java.util.Collection;
 import jetbrains.mps.errors.item.EditorQuickFix;
@@ -64,9 +60,8 @@ import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import com.intellij.openapi.fileEditor.impl.CurrentEditorProvider;
 import com.intellij.openapi.fileEditor.FileEditor;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /**
  * Common ancestor for all generated EditorTestCase instances
@@ -123,12 +118,10 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
 
   private void doInitEditor(final String before, final String after) throws Exception {
     myProject.getModelAccess().runWriteAction(() -> {
-      LinkedHashSet<String> toCopy = new LinkedHashSet<>();
+      ArrayList<String> toCopy = new ArrayList<>();
       toCopy.add(before);
-      findNonTestRootsInSameModel(getRealNodeById(before), toCopy);
       if (!(after.equals(""))) {
         toCopy.add(after);
-        findNonTestRootsInSameModel(getRealNodeById(after), toCopy);
       }
       prepareTestNodes(toCopy.toArray(new String[toCopy.size()]));
 
@@ -154,27 +147,6 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
       component.validate();
       myCurrentEditorComponent = myStart.setupSelection(component);
     });
-  }
-
-  private void findNonTestRootsInSameModel(SNode original, Set<String> toFill) {
-    SModel fromModel = SNodeOperations.getModel(original);
-    for (SNode n : Sequence.fromIterable(SNodeUtil.getDescendants(original))) {
-      for (SReference r : n.getReferences()) {
-        SNode targetNode = r.getTargetNode();
-        // in addition to test nodes, copy !null, same model, not a test roots with targets from test node references, just in case
-        // tests build scope or otherwise depend on the reference targets being in the same model (e.g. enum constants or package-local classes)
-        if (SNodeOperations.getModel(targetNode) != fromModel) {
-          continue;
-        }
-        // isInstanceOf(ITestCase) technically prevents us from using a test case as test data, but I believe this to be an exceptional scenario,
-        // especially provided there's similar logic to detect tests (roots<ITestCase>)
-        SNode cr = SNodeOperations.getContainingRoot(targetNode);
-        if (SNodeOperations.isInstanceOf(cr, CONCEPTS.ITestCase$Fp)) {
-          continue;
-        }
-        toFill.add(cr.getNodeId().toString());
-      }
-    }
   }
 
   private CellReference findCellReference(SNode node) {
@@ -464,7 +436,6 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITestCase$Fp = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
     /*package*/ static final SConcept AnonymousCellAnnotation$hB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
   }
 }

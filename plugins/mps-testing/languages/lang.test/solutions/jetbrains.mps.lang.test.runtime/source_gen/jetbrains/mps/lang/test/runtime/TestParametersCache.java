@@ -148,7 +148,6 @@ public final class TestParametersCache implements TestRule {
           mi.copyEmployedDevKitsFrom(modelDescriptor);
           // test nodes we're gonna copy into transient model may reference auxiliary nodes in the original model, need to make sure
           // they can get resolved w/o any hassle
-          mi.addModelImport(modelRef);
           mi.copyUsedLanguagesFrom(modelDescriptor);
           mi.copyImportedModelsFrom(modelDescriptor);
           new ModelDependencyUpdate(transientModel).updateModuleDependencies(repository);

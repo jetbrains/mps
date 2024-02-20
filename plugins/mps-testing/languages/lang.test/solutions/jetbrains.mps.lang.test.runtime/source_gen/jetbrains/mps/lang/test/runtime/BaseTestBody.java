@@ -9,19 +9,20 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.ArrayList;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.SNodeId;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.ide.ThreadUtils;
-import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BaseTestBody {
@@ -68,8 +69,17 @@ public class BaseTestBody {
       for (String nid : nodeId) {
         roots.add(getRealNodeById(nid));
       }
+      for (SNode originalRoot : myModel.getRootNodes()) {
+        // isInstanceOf(ITestCase) technically prevents us from using a test case as test data, but I believe this to be an exceptional scenario,
+        // especially provided there's similar logic to detect tests (roots<ITestCase>)
+        if (SNodeOperations.isInstanceOf(originalRoot, CONCEPTS.ITestCase$Fp)) {
+          continue;
+        }
+        roots.add(originalRoot);
+      }
       List<SNode> copied = CopyUtil.copyAndPreserveId(roots, myMap);
       for (SNode c : ListSequence.fromList(copied)) {
+        // cleanTestAnnotation is not necessary for roots we use as aux data, but don't want to bother at the moment
         cleanTestAnnotations(c);
         myTransientModel.addRootNode(c);
       }
@@ -91,8 +101,11 @@ public class BaseTestBody {
   private void cleanTestAnnotations(SNode testNode) {
     for (SNode a : ListSequence.fromList(SNodeOperations.getNodeDescendants(testNode, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{}))) {
       if (SNodeOperations.isInstanceOf(a, CONCEPTS.TestNodeAnnotation$27)) {
-        // FIXME take first only, do not override
-        MapSequence.fromMap(myAnnotatedNodes).put(SPropertyOperations.getString(SNodeOperations.cast(a, CONCEPTS.TestNodeAnnotation$27), PROPS.name$MnvL), SNodeOperations.getParent(a));
+        String an = SPropertyOperations.getString(SNodeOperations.cast(a, CONCEPTS.TestNodeAnnotation$27), PROPS.name$MnvL);
+        if (MapSequence.fromMap(myAnnotatedNodes).get(an) == null) {
+          // don't overwrite in case "after" node has been copied from "before" with the same named annotations
+          MapSequence.fromMap(myAnnotatedNodes).put(an, SNodeOperations.getParent(a));
+        }
       }
       SNodeOperations.deleteNode(a);
     }
@@ -170,6 +183,7 @@ public class BaseTestBody {
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept ITestCase$Fp = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
     /*package*/ static final SConcept TestNodeAnnotation$27 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x119e1c6609cL, "jetbrains.mps.lang.test.structure.TestNodeAnnotation");
     /*package*/ static final SConcept AbstractTestNodeAnnotation$lh = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
   }
