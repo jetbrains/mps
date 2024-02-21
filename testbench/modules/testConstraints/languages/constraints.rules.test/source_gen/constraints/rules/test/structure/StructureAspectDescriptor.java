@@ -82,7 +82,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:3fd4e667-8fcb-4728-850d-184116dcdf79(constraints.rules.test.structure)/8859736031789718037");
     b.version(3);
     b.property("canHaveChildren", 0x6493b7a43ae22fbaL).type(PrimitiveTypeId.BOOLEAN).origin("7247338141359681466").done();
-    b.aggregate("children", 0x7af41afae28e1a16L).target(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L).optional(true).ordered(true).multiple(true).origin("8859736031789718038").done();
+    b.aggregate("children", 0x7af41afae28e1a16L).target(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x74b496bab051d961L).optional(true).ordered(true).multiple(true).origin("8859736031789718038").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSometimesRootableConcept() {
