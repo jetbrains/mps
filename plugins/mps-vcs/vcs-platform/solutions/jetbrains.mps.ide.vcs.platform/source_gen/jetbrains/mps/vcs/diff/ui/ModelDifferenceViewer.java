@@ -202,6 +202,9 @@ public class ModelDifferenceViewer implements DataProvider {
 
     // TODO This is a workaround for the bugfix. We should try to avoid write actions here at all. Same should be done with write actions in the constructor. Maybe we should think about using a separate repository for temporary models.
     executeSafeInWriteAction(() -> {
+      if (myProject.isDisposed()) {
+        return;
+      }
       syncMetadataChanges();
       unregisterModels();
     });

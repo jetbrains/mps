@@ -9754,6 +9754,19 @@
             <ref role="37wK5l" node="15Awzs12M61" resolve="executeSafeInWriteAction" />
             <node concept="1bVj0M" id="15Awzs16n1N" role="37wK5m">
               <node concept="3clFbS" id="15Awzs16n1O" role="1bW5cS">
+                <node concept="3clFbJ" id="5gKQ_IzJbAn" role="3cqZAp">
+                  <node concept="3clFbS" id="5gKQ_IzJbAp" role="3clFbx">
+                    <node concept="3cpWs6" id="5gKQ_IzJOzX" role="3cqZAp" />
+                  </node>
+                  <node concept="2OqwBi" id="5gKQ_IzJsrS" role="3clFbw">
+                    <node concept="37vLTw" id="5gKQ_IzJmhX" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5zPLqcHJB92" resolve="myProject" />
+                    </node>
+                    <node concept="liA8E" id="5gKQ_IzJBRq" role="2OqNvi">
+                      <ref role="37wK5l" to="z1c3:~Project.isDisposed()" resolve="isDisposed" />
+                    </node>
+                  </node>
+                </node>
                 <node concept="3clFbF" id="3nINzKYHFB7" role="3cqZAp">
                   <node concept="1rXfSq" id="3nINzKYHFB8" role="3clFbG">
                     <ref role="37wK5l" node="5zPLqcHJBgP" resolve="syncMetadataChanges" />
