@@ -16,8 +16,8 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.SNodeId;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.ide.ThreadUtils;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -77,6 +77,7 @@ public class BaseTestBody {
         }
         roots.add(originalRoot);
       }
+      // getNodeById(), below, relies on the preserved node identity
       List<SNode> copied = CopyUtil.copyAndPreserveId(roots, myMap);
       for (SNode c : ListSequence.fromList(copied)) {
         // cleanTestAnnotation is not necessary for roots we use as aux data, but don't want to bother at the moment
@@ -93,6 +94,7 @@ public class BaseTestBody {
     // I believe idea here is to make a copy of original node w/o any test-related stuff, like 'check'annotations
     // There's implicit assumption that *all* the nodes created under NodesTestCase get copied and that myMap gives access to a copy of any child of the original node.
     SNode node = getRealNodeById(id);
+    // getNodeById(), below, relies on the preserved node identity
     SNode copy = CopyUtil.copyAndPreserveId(Collections.singletonList(node), myMap).get(0);
     cleanTestAnnotations(copy);
     myTransientModel.addRootNode(copy);
@@ -113,13 +115,20 @@ public class BaseTestBody {
 
   /**
    * access copy of a node given identity from original model; copy is clean 
-   * ATM requires model read for original test model as we need to translate from original test node to its copy in a transient model
+   * ATM requires model read for transient test model (once/if we introduce repository and separate MA for test transients, we may lift this requirement as well)
    */
   public final SNode getNodeById(String id) {
     // FWIW, generally getNodeById is invoked from model command/read. 
     // For TestNodeReference and named test nodes that could be used e.g. in editor tests outside of a proper model lock (e.g.InvokeIntentionStatement)
     // there's #getAnnotatedNode() which doesn't require model lock at the moment.
-    return MapSequence.fromMap(myMap).get(getRealNodeById(id));
+    SNodeId nid = SNodeId.fromString(id);
+    SNode copy = myTransientModel.getNode(nid);
+    if (copy != null) {
+      return copy;
+    }
+    // well, there are few nodes we deleted when copying that could be referenced this way, like types from <check has type> operation
+    // therefore, find the copy in myMap (still there, not affected by a.detach from #cleanTestAnnotations())
+    return MapSequence.fromMap(myMap).get(myModel.getNode(nid));
   }
 
   /**
