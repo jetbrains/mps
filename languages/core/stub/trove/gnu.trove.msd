@@ -3,7 +3,7 @@
   <readOnlyStubs/>
   <models>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <sourceRoot location="util_rt.jar" />
+      <sourceRoot location="trove.jar" />
       <PackageScope skip-private="true">
         <include prefix="gnu.trove" />
       </PackageScope>
@@ -11,7 +11,7 @@
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="no">
-      <library location="${platform_lib}/util_rt.jar" />
+      <library location="${platform_lib}/trove.jar" />
     </facet>
   </facets>
   <sourcePath />

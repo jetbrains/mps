@@ -68,7 +68,7 @@
   </path>
   
   <path id="path.java.library.gnu.trove">
-    <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+    <fileset file="${artifacts.IDEA}/lib/trove.jar" />
   </path>
   
   <path id="path.java.library.kotlin-metadata">

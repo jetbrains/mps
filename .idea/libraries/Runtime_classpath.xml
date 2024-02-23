@@ -28,6 +28,7 @@
       <root url="jar://$PROJECT_DIR$/lib/kotlinx-metadata-jvm-0.7.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij-coverage-agent-1.0.744.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-frontback.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/trove.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

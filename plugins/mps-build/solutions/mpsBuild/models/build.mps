@@ -4432,12 +4432,12 @@
           <node concept="1BurEX" id="67xNhT4NRcB" role="1SiIV1">
             <node concept="398BVA" id="67xNhT4NRcC" role="1BurEY">
               <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-              <node concept="2Ry0Ak" id="67xNhT4NRcD" role="iGT6I">
-                <property role="2Ry0Am" value="util_rt.jar" />
+              <node concept="2Ry0Ak" id="4ah7s06wbIE" role="iGT6I">
+                <property role="2Ry0Am" value="trove.jar" />
               </node>
             </node>
             <node concept="3yrxFa" id="67xNhT4NRcE" role="2gdwQb">
-              <ref role="3yrxFb" node="1w78goyRV4e" />
+              <ref role="3yrxFb" node="3i$ZTHDUdPB" />
             </node>
           </node>
         </node>
@@ -26504,6 +26504,13 @@
           </node>
         </node>
       </node>
+      <node concept="13uQ2_" id="3i$ZTHDUdPB" role="39821P">
+        <node concept="3_J27D" id="3i$ZTHDUdPD" role="13uQ07">
+          <node concept="3Mxwew" id="3i$ZTHDUdQF" role="3MwsjC">
+            <property role="3MwjfP" value="trove.jar" />
+          </node>
+        </node>
+      </node>
       <node concept="13uQ2_" id="4LdE6kxkp0J" role="39821P">
         <node concept="3_J27D" id="4LdE6kxkp0L" role="13uQ07">
           <node concept="3Mxwew" id="4LdE6kxkp1C" role="3MwsjC">
@@ -29439,7 +29446,11 @@
             <ref role="3Mxwex" node="3AMbuf1N5Oy" resolve="version.bugfixNr" />
           </node>
         </node>
-        <node concept="NbPM2" id="3AMbuf6qfk7" role="3ZAF11" />
+        <node concept="NbPM2" id="3AMbuf6qfk7" role="3ZAF11">
+          <node concept="3Mxwey" id="4ah7s06YU1N" role="3MwsjC">
+            <ref role="3Mxwex" node="3AMbuf1a7On" resolve="version.eap" />
+          </node>
+        </node>
       </node>
       <node concept="2pNNFK" id="4Nc8eEDY$eW" role="27hc03">
         <property role="2pNNFO" value="youtrack" />
@@ -53916,7 +53927,7 @@
       <node concept="25yagZ" id="6FsijxbeQd4" role="PiKyV">
         <node concept="3yqu4x" id="6FsijxbeQd5" role="25yagT">
           <node concept="3yrxFa" id="6FsijxbeQd6" role="3yqu4I">
-            <ref role="3yrxFb" node="1w78goyRV4e" />
+            <ref role="3yrxFb" node="3i$ZTHDUdPB" />
           </node>
         </node>
       </node>

@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="gnu.trove">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/util_rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/trove.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
