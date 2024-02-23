@@ -23,15 +23,21 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Objects;
 
+/**
+ * API mediator for association link. {@code SNode} describes its associations using these objects, but doesn't necessarily keep these,
+ * users shall not assume <code>node1.getReference(r1) == node1.getReference(r1)</code>.
+ * Generally, associations are not modified though this class, although there are few legacy scenarios where MPS still uses methods of this class.
+ * <p/>
+ * Instances of this class are not supposed to be shared between threads in a multi-thread environment
+ * (no synchronisation; model access is guarded by {@code SNode})
+ */
 public final class StaticReference extends SReferenceBase {
 
   /**
    * Either DirectNode (including subclasses) or IndirectNodePtr, never null.
-   * Note, this is provisional approach, eventually SNode impl would store RefData instead of SReference instances;
-   *  just for now I test this code as implementation detail of the reference itself.
-   * FTR, 'volatile' here is tribute to legacy code, I don't think it's necessary here (much like synchronized methods)
+   * This is the actual presentation of the association link, {@code StaticReference} is rather an access mediator
    */
-  private volatile AssociationData myData;
+  private AssociationData myData;
 
   /**
    * Clients shall not instantiate SReference or its subclass directly, use {@link SNode#setReference(SReferenceLink, ResolveInfo)} instead.
@@ -83,20 +89,15 @@ public final class StaticReference extends SReferenceBase {
            "nodeid:" + getTargetNodeId() +
            "]";
   }
-
-  // XXX why synchronized, not assertCanWrite?
-  //     OTOH, if I move towards SReference class being just a mediator to actual ref storage, synchronized might not be the worst
-  //     way to guard against using the mediator in different threads.
-  // FIXME ^^^ NO, still has to follow ModelAccess conventions
-  //     check uses, perhaps, have to be SNodeImplAccess operations rather than SReference-mediator? Then, we can cease using invalid getResolveInfo() here
-  public synchronized void setTargetSModelReference(@NotNull SModelReference modelReference) {
+  // FIXME check uses, perhaps, have to be SNodeImplAccess operations rather than SReference-mediator? Then, we can cease using invalid getResolveInfo() here
+  public void setTargetSModelReference(@NotNull SModelReference modelReference) {
     // preserve node id and resolve info value of 'young' target, if any
     // FIXME makeMature to create proper IndirectNodePtr right away
     final AssociationData d = new Transition().makeIndirect(getData(), StaticReference::getResolveInfo);
     setData(new IndirectNodePtr(modelReference, d.getTargetNode(), d.getRI()));
   }
 
-  public synchronized void setTargetNodeId(SNodeId nodeId) {
+  public void setTargetNodeId(SNodeId nodeId) {
     // preserve model reference and resolve info value of 'young' target, if any
     final AssociationData d = new Transition().makeIndirect(getData(), StaticReference::getResolveInfo);
     setData(new IndirectNodePtr(d.getTargetModel(), nodeId, d.getRI()));
@@ -310,7 +311,7 @@ public final class StaticReference extends SReferenceBase {
    *             direct/indirect transitions external to this code)
    */
   @Deprecated(since = "2023.3", forRemoval = true)
-  public synchronized boolean makeIndirect(boolean force) {
+  public boolean makeIndirect(boolean force) {
     final AssociationData d = getData();
     if (!d.isDirectNode()) {
       return true;
