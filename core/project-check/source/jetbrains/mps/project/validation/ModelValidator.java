@@ -169,7 +169,7 @@ public final class ModelValidator {
     }
 
     if (mySkipUnlessLoaded && !myModel.isLoaded()) {
-      result.accept(new ModelValidationProblem(model, MessageStatus.OK, "Model is not loaded; no validity check"));
+//      result.accept(new ModelValidationProblem(model, MessageStatus.OK, "Model is not loaded; no validity check"));
       return;
     }
 
