@@ -6,11 +6,14 @@ package jetbrains.mps.ide.projectPane.logicalview;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
+import com.intellij.ide.util.treeView.InplaceCommentAppender;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.project.MissionControl;
+import jetbrains.mps.project.ModelInplaceComment;
 import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.IterableUtil;
@@ -60,6 +63,18 @@ public class SimpleModelProjectViewNode extends BranchProjectViewNode<SModel> {
           presentation.setIcon(GlobalIconManager.getInstance().getIconFor(getValue()));
         }
     );
+  }
+
+  @Override
+  protected void appendInplaceComments(@NotNull InplaceCommentAppender appender) {
+    MissionControl missionControl = MissionControl.getInstance(myProject);
+    if (missionControl != null) {
+      missionControl.getInfoMessages(getValue()).forEach(msg -> {
+        if (msg instanceof ModelInplaceComment) {
+          appender.append(String.format("(%s)", msg.getMessage()), SimpleTextAttributes.GRAY_ITALIC_ATTRIBUTES);
+        }
+      });
+    }
   }
 
   @NotNull
