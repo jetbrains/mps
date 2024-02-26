@@ -74,9 +74,11 @@ public class ModulesWatcher {
   private final SRepository myRepository;
   private final Map<SModuleReference, ClassLoadingStatus> myStatusMap = new HashMap<>();
   private final ModuleUpdater myModuleUpdater;
+  private final Condition<SModule> myWatchableCondition;
 
   public ModulesWatcher(SRepository repository, final Condition<SModule> watchableCondition) {
     myRepository = repository;
+    myWatchableCondition = watchableCondition;
     myModuleUpdater = new ModuleUpdater(repository, watchableCondition);
   }
 
@@ -274,6 +276,11 @@ public class ModulesWatcher {
     }
     SModule module = mRef.resolve(myRepository);
     assert module != null;
+    if (!myWatchableCondition.met(module)) {
+      // although generally dep graph vertices (from #getAllModules()) are 'watchable', there are scenarios when vertices stay in the graph but
+      // are no longer capable to load classes (see MPS-36688)
+      return String.format("%s doesn't provide classes", mRef.getModuleName());
+    }
     for (SDependency dep : module.getDeclaredDependencies()) {
       if (dep.getScope() == SDependencyScope.DESIGN || dep.getScope() == SDependencyScope.GENERATES_INTO) {
         continue;
@@ -281,6 +288,7 @@ public class ModulesWatcher {
       if (isModuleDisposed(dep.getTargetModule())) {
         return String.format("%s depends on a disposed module %s and therefore was marked invalid for class loading", module, dep.getTargetModule());
       }
+      // XXX could check target for 'watchable' if need an extra message why certain module is not loaded due to a change in its dependencies
     }
     return null;
   }

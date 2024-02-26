@@ -44,6 +44,8 @@ public class ModuleUpdater {
   private final Set<ReloadableModule> myModulesToReload = new LinkedHashSet<>();
   private final Set<SModuleReference> myModulesToRemove = new LinkedHashSet<>();
   private final Condition<SModule> myWatchableCondition;
+  // FIXME what's invariant here? Do we keep modules that are capable of classloading here (satisfy myWatchableCondition), while myRefStorage just
+  //       keeps all known modules?
   private final GraphHolder<SModuleReference> myDepGraphHolder = new GraphHolder<>();
   private final ReferenceStorage<ReloadableModule> myRefStorage;
   private final SRepository myRepository;
@@ -62,6 +64,12 @@ public class ModuleUpdater {
       for (ReloadableModule module : modules) {
         if (myWatchableCondition.met(module)) {
           myModulesToReload.add(module);
+          // Can't schedule for removal as susequent CLM.unloadModules() need the vertex to calculate back dependencies
+          // the defect is that complex state of myDepGraphHolder is changed here, while state prior to change is necessary for
+          // CLM later activities.
+//        } else if (contains(module.getModuleReference())) {
+//          // we've seen this module and treated it as CL-capable, but it is no more.
+//          myModulesToRemove.add(module.getModuleReference());
         }
         // need this call because we might get #addModules notification later than this one
         myRefStorage.moduleAdded(module);
@@ -106,6 +114,7 @@ public class ModuleUpdater {
 
   /**
    * @return if graph did change (some edges or vertices added/removed)
+   *         FIXME return value seems to be unnecessary (not in use)
    */
   public boolean refreshGraph() {
     myRepository.getModelAccess().checkReadAccess();
@@ -283,6 +292,12 @@ public class ModuleUpdater {
     Collection<SModule> directlyUsedModules = myDependencyCollector.directlyUsedModules(module);
     Set<SModule> deps = new LinkedHashSet<>();
     for (SModule dep : directlyUsedModules) {
+      // FIXME dubious code, we base our idea of whether dependency is necessary on its target's actual state, i.e.
+      //       ModuleB needs (depends from) ModuleA. ModuleA met 'watchable' condition first, ModuleB dependencies have been satisfied.
+      //       Then, ModuleA becomes 'non-watchable', but still present. Here we treat ModuleB --> ModuleA dependency as irrelevant
+      //       and successfully try to load classes from ModuleB. E.g. ModuleB == Generator, ModuleA == its source language.
+      // XXX CLDependencies is capable of "authoritative" answer whether a dependency is CL/RT or just a "design" one. However, as long as deps.cp is
+      //     not mandatory, walking regular module deps doesn't render complete information, and it's unclear how to rely on CLDependencies output here.
       if (myWatchableCondition.met(dep)) {
         deps.add(dep);
       }
