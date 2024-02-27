@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,7 +61,7 @@ public class GraphHolder<V> {
   }
 
   public void add(V v) {
-    if (getVertices().contains(v)) {
+    if (myGraph.containsVertex(v)) {
       LOG.debug("Already watching vertex " + v);
       return;
     }
@@ -110,6 +110,17 @@ public class GraphHolder<V> {
   public void fillOutgoingEdgesDeep(Iterable<? extends V> vv, Collection<? super V> result) {
     checkGraphsCorrectness();
     myGraph.dfs(vv, result::add);
+  }
+
+  public void fillIncomingEdgesShallow(Iterable<? extends V> vv, Collection<? super V> result) {
+    checkGraphsCorrectness();
+    for(V v : vv) {
+      result.addAll(myConjugateGraph.getOuts(v));
+    }
+  }
+
+  public boolean hasIncomingEdges(V v) {
+    return !myConjugateGraph.getOuts(v).isEmpty();
   }
 
   public void fillIncomingEdgesDeep(Iterable<? extends V> vv, Collection<? super V> result) {
@@ -207,7 +218,7 @@ public class GraphHolder<V> {
       private void dfs0(V v) {
         assert myGraph.containsVertex(v) : "Graph does not contain vertex " + v;
         myVisited.add(v);
-        myVisitor.visit(v);
+        myVisitor.visit(v); // FIXME this doesn't look like DFS!
         for (V vOut : myGraph.getOuts(v)) {
           if (myVisited.contains(vOut)) continue;
           dfs0(vOut);

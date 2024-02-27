@@ -18,6 +18,7 @@ package jetbrains.mps.classloading;
 import jetbrains.mps.classloading.ErrorContainer.SearchError;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.util.CollectionUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -29,14 +30,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
  * Holds dependency graph for modules as well as deltas to update it on {@link #refreshGraph() request}.
  */
-public class ModuleUpdater {
+/*package*/ final class ModuleUpdater {
   private static final Logger LOG = Logger.getLogger(ModuleUpdater.class);
   private final Object LOCK = new Object();
 
@@ -95,7 +99,7 @@ public class ModuleUpdater {
   public void removeModules(@NotNull Collection<? extends SModuleReference> mRefs) {
     synchronized (LOCK) {
       for (SModuleReference mRef : mRefs) {
-        final ReloadableModule instance = myRefStorage.moduleRemoved(mRef);
+        final ReloadableModule instance = myRefStorage.moduleRemoved(mRef); // XXX resolveRef, perhaps? Leave changes to refreshGraph()?
         if (instance != null) {
           // need to clean up myModulesToLoad and myModulesToReload
           myModulesToAdd.remove(instance);
@@ -113,11 +117,9 @@ public class ModuleUpdater {
     }
   }
 
-  /**
-   * @return if graph did change (some edges or vertices added/removed)
-   *         FIXME return value seems to be unnecessary (not in use)
-   */
-  public boolean refreshGraph() {
+  // return modules that needs their status re-assessed. Perhaps, shall replace with ReloadableModule, once it's our true
+  // graph vertex (not bound to SModule; could keep status right in there and also keep track of origin - which code injected a vertex)
+  /*package*/ Set<SModuleReference> refreshGraph() {
     myRepository.getModelAccess().checkReadAccess();
     synchronized (LOCK) {
       final long beginTime = System.nanoTime();
@@ -130,31 +132,107 @@ public class ModuleUpdater {
         int wasEdges = myDepGraphHolder.getEdgesCount();
         int wasVertices = myDepGraphHolder.getVerticesCount();
 
-        boolean updated = !myModulesToAdd.isEmpty() || !myModulesToRemove.isEmpty();
-        updateRemoved(myModulesToRemove);
-        updateAddedVertices(myModulesToAdd);
-        updateAllEdges();
-        if (!myModulesToReload.isEmpty()) {
-          updated |= updateReloadedVertices(myModulesToReload);
-          // XXX seems that updateReloadedEdges has to be invoked regardless of updateReloadedVertices() result
-          //     if not, could combine with && to avoid second call if first gives false
-          updated |= updateReloadedEdges(myModulesToReload);
+        assert !CollectionUtil.intersects(myModulesToAdd.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()), myModulesToRemove);
+        HashSet<SModuleReference> removedToVisitAgain = new HashSet<>();
+        for (SModuleReference mRef : myModulesToRemove) {
+          if (!myDepGraphHolder.contains(mRef)) {
+            continue;
+          }
+          myRefStorage.moduleRemoved(mRef); // FIXME here or later, when we get to myDepGrap cleanup? Well, it's already done in removeModules(), above!
+          removedToVisitAgain.add(mRef);
         }
+        HashSet<SModuleReference> withChangeInDependencies = new HashSet<>();
+        myDepGraphHolder.fillIncomingEdgesShallow(removedToVisitAgain, withChangeInDependencies);
+
+        for (ReloadableModule module : myModulesToAdd) {
+          SModuleReference mRef = module.getModuleReference();
+          if (myDepGraphHolder.contains(mRef)) {
+            assert myRefStorage.resolveRef(mRef) != null;
+            LOG.debug("Module being added has been expected " + module);
+            // we've been expecting this module to show up
+            myDepGraphHolder.fillIncomingEdgesShallow(Collections.singleton(mRef), withChangeInDependencies);
+          } else {
+            LOG.debug("Adding previously unknown module " + module);
+            myDepGraphHolder.add(mRef);
+            myRefStorage.moduleAdded(module);
+          }
+          withChangeInDependencies.add(mRef);
+        }
+        for (ReloadableModule module : myModulesToReload) {
+          SModuleReference mRef = module.getModuleReference();
+          if (myDepGraphHolder.contains(mRef)) {
+            assert myRefStorage.resolveRef(mRef) != null;
+            myDepGraphHolder.fillIncomingEdgesShallow(Collections.singleton(mRef), withChangeInDependencies);
+          } else {
+            LOG.debug("Adding changed module " + module);
+            myDepGraphHolder.add(mRef);
+            myRefStorage.moduleAdded(module);
+          }
+          withChangeInDependencies.add(mRef);
+        }
+        withChangeInDependencies.retainAll(removedToVisitAgain);
+        HashSet<SModuleReference> newTargets = new HashSet<>(); // if changed modules yield any new vertex, update it status
+        updateEdges(withChangeInDependencies, newTargets);
+        // now we've got graph reflecting actual dependencies, see if we can forget any removed vertex
+        // in fact, after edge update, there could be other verticis w/o incoming edges (i.e. module not removed but got no dependants)
+        // and I wonder if we could update removedToVisitAgain here for potential subsequent removal (module w/o dependants may still need CL for
+        // its own classloading purposes, only when it's both no dependants AND no JMF we can drop it. For now, however, just keep it until explicitly removed
+
+        boolean anyChange;
+        do {
+          anyChange = false;
+          for (Iterator<SModuleReference> it = removedToVisitAgain.iterator(); it.hasNext(); ) {
+            SModuleReference mRef = it.next();
+            if (!myDepGraphHolder.hasIncomingEdges(mRef)) {
+              LOG.debug("Removing module " + mRef);
+              myDepGraphHolder.remove(mRef);
+              // myRefStorage.moduleRemoved(mRef); already cleaned when we built removedToVisitAgain, above
+              it.remove();
+              anyChange = true;
+            }
+          }
+        } while (!removedToVisitAgain.isEmpty() && anyChange);
+
+        // holds all vertices which could have changed their classloading status
+        HashSet<SModuleReference> forStatusUpdate = new HashSet<>();
+        forStatusUpdate.addAll(removedToVisitAgain);
+        forStatusUpdate.addAll(withChangeInDependencies);
+        forStatusUpdate.addAll(newTargets); // newTargets, if any, is part of new "outgoing" edges
+        myDepGraphHolder.fillIncomingEdgesDeep(withChangeInDependencies, forStatusUpdate);
+
+        // FIXME update status for modules in forStatusUpdate
+
         myModulesToRemove.clear();
         myModulesToAdd.clear();
         myModulesToReload.clear();
 
         LOG.debug("Difference in the vertex count after validation " + (myDepGraphHolder.getVerticesCount() - wasVertices));
         LOG.debug("Difference in the edge count after validation " + (myDepGraphHolder.getEdgesCount() - wasEdges));
-        return updated;
+
+        return forStatusUpdate;
       } finally {
-        LOG.info(String.format("Classloading refresh took %.3f s", (System.nanoTime() - beginTime) / 1e9));
+        LOG.info(String.format("Classloading graph refresh took %.3f s", (System.nanoTime() - beginTime) / 1e9));
       }
     }
   }
 
-  /*package*/ CLDependencies getClassLoadingDeps() {
-    return myDependencyCollector;
+  // FIXME assuming invoked for each known module and therefore we don't traverse deps here, although it's the proper plact to do that,
+  //       rather than to expose traverse/backDeps logic to neighbours
+  /*package*/ List<SearchError> getErrors(@NotNull SModuleReference v) {
+    // provisional; as long as CLDependencies resolves targets
+    List<SearchError> searchErrors = myDependencyCollector.getModulesWithAbsentDeps().get(v);
+    if (searchErrors != null && !searchErrors.isEmpty()) {
+      return searchErrors;
+    }
+    if (myRefStorage.resolveRef(v) == null) {
+      return Collections.singletonList(SearchError.of("Module is not in the repository"));
+    }
+    return Collections.emptyList();
+//    ArrayList<SModuleReference> dependencies = new ArrayList<>();
+//    myDepGraphHolder.fillOutgoingEdgesShallow(Collections.singleton(v), dependencies);
+//    if (dependencies.stream().anyMatch(d -> myRefStorage.resolveRef(d) == null)) {
+//      return Collections.singletonList(SearchError.of("Dependency is not in the repository"));
+//    }
   }
 
   @Nullable
@@ -162,120 +240,39 @@ public class ModuleUpdater {
     return myRefStorage.resolveRef(ref);
   }
 
-
-  private void updateRemoved(Set<? extends SModuleReference> modulesToRemove) {
-    for (SModuleReference mRef : modulesToRemove) {
-      if (!myDepGraphHolder.contains(mRef)) continue;
-      LOG.debug("Removing module " + mRef);
-      myDepGraphHolder.remove(mRef);
-    }
-  }
-
-  private void updateAddedVertices(Set<? extends ReloadableModule> modulesToAdd) {
-    for (ReloadableModule module : modulesToAdd) {
-      LOG.debug("Adding module " + module);
-      assert myWatchableCondition.met(module);
-      assert module.getRepository() != null;
-      myDepGraphHolder.add(module.getModuleReference());
-    }
-  }
-
-  /**
-   * Here we are updating references from all the existing modules
-   * Also we are going through all the modules in the repository and checking that their dependencies do exist.
-   * It checks every module in the current graph and tracks whether it has some unresolved dependencies.
-   * If so it puts it to the errors map of {@link CLDependencies}.
-   */
-  private void updateAllEdges() {
-    myRepository.getModelAccess().checkReadAccess();
-    Collection<SModuleReference> allRefs = myDepGraphHolder.getVertices();
-    for (SModuleReference ref : allRefs) {
-      ReloadableModule module = myRefStorage.resolveRef(ref);
-      assert module != null;
-      Stream<SModuleReference> deps = getDepsWithErrors(module);
-      if (myDependencyCollector.withErrors(module.getModuleReference())) {
-        // module with broken dependencies shall not record its edges; edges would get added once all errors gone
-        continue;
-      }
-      deps.forEach(dep -> {
-        if (allRefs.contains(dep)) {
-          myDepGraphHolder.addEdge(ref, dep);
-        } else {
-//        valid if somebody calls reloadModule in moduleAdded() listener before us
-          LOG.warning(String.format("The dependent module %s of the %s is not registered", dep, module));
-        }
-      });
-    }
-  }
-
-  private boolean updateReloadedVertices(Set<? extends ReloadableModule> modulesToReload) {
-    boolean updated = false;
-    for (ReloadableModule module : modulesToReload) {
-      LOG.debug("Reloading module " + module);
-      assert myWatchableCondition.met(module);
-      assert module.getRepository() != null;
-      SModuleReference mRef = module.getModuleReference();
-      if (!myDepGraphHolder.contains(mRef)) {
-        myDepGraphHolder.add(mRef);
-        updated = true;
-      }
-    }
-    return updated;
-  }
-
   /**
    * calculates difference in the outgoing edges for each given module
+   * [pre: modulesToUpdate are actual vericies present in myDepGraphHolder and myRefStorage]
+   * [post: newTargets lists verticies added to myDepGraphHolder]
+   * XXX in fact, updateEdges() may answer if there's any change in edges, I wonder if caller can make use of this knowledge (optimization)?
    */
-  private boolean updateReloadedEdges(Set<? extends ReloadableModule> modulesToReload) {
-    final boolean[] updated = {false};
+  private void updateEdges(Set<SModuleReference> modulesToUpdate, Set<SModuleReference> newTargets) {
     myRepository.getModelAccess().checkReadAccess();
-    Collection<? extends SModuleReference> allRefs = myDepGraphHolder.getVertices();
-    for (ReloadableModule module : modulesToReload) {
-      SModuleReference mRef = module.getModuleReference();
-      // XXX not sure next assert makes any sense, just try to mimic
-      // assumptions imposed by refactored logic -  to be sure module with dependency
-      // errors has been reported into myModulesWithAbsentDeps, one have to be sure the module
-      // went through updateAllEdges() (iteration over all vertices).
-      // I didn't find any code that ensured modulesToReload are indeed part of the graph
-      // and take logic that used to be here as a way to make sure we don't face such scenario.
+    for (SModuleReference mRef : modulesToUpdate) {
       assert myDepGraphHolder.contains(mRef);
-      Collection<SModuleReference> currentDeps = new HashSet<>();
+      assert myRefStorage.resolveRef(mRef) != null;
+      final Collection<SModuleReference> currentDeps = new HashSet<>();
       myDepGraphHolder.fillOutgoingEdgesShallow(Collections.singleton(mRef), currentDeps);
-      if (myDependencyCollector.withErrors(mRef)) {
-        // XXX why we ignore update of other modulesToReload?
-        // why not updated=true; continue;?
-        return true;
-      }
-      Stream<SModuleReference> newModuleDeps = getDepsWithErrors(module);
+      Stream<SModuleReference> newModuleDeps = myDependencyCollector.directlyUsedModules(myRefStorage.resolveRef(mRef)).stream();
       // XXX do I need to skip if there are no newModuleDeps (assuming this means error) - not to remove existing edges.
       // if (newModuleDeps.isEmpty()) { continue; }
       newModuleDeps.forEach(depRef -> {
-        if (!currentDeps.contains(depRef)) {
-          if (allRefs.contains(depRef)) {
-            myDepGraphHolder.addEdge(mRef, depRef);
-            updated[0] = true;
+        if (!currentDeps.remove(depRef)) {
+          // new (not seen before) dependency edge
+          if (!myDepGraphHolder.contains(depRef)) {
+            myDepGraphHolder.add(depRef);
+            // see no point to update myRefStorage here, wait for depRef module to show up through repository's moduleAdded()
+            // guess, could happen if there's explicit  reloadModule request before moduleAdded() reach CLM
+            newTargets.add(depRef);
           }
-        } else {
-          currentDeps.remove(depRef);
+          myDepGraphHolder.addEdge(mRef, depRef);
         }
+        // else assert myDepGraphHolder.contains(depRef) : edge shall point to known vertex, that's what we expect from fillOutgoingEdgesShallow()
       });
       for (SModuleReference curDep : currentDeps) {
         myDepGraphHolder.removeEdge(mRef, curDep);
-        updated[0] = true;
       }
     }
-    return updated[0];
-  }
-
-  @NotNull
-  private Stream<SModuleReference> getDepsWithErrors(@NotNull ReloadableModule module) {
-    myRepository.getModelAccess().checkReadAccess();
-    if (module.getRepository() == null) {
-      return Stream.empty();
-    }
-
-    Collection<SModuleReference> directlyUsedModules = myDependencyCollector.directlyUsedModules(module);
-    return directlyUsedModules.stream();
   }
 
   public Collection<SModuleReference> getDirectDeps(Iterable<SModuleReference> mRefs) {

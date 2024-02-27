@@ -69,6 +69,7 @@ import java.util.stream.Collectors;
       rv = new LinkedHashSet<>(20);
       // process all dependencies, irrespective of "rt"/"cl" (RUNTIME/DEFAULT) scope
       for (Dependency dependency : dd.getDependencies()) {
+        rv.add(dependency.getModuleRef());
         final SModule target = dependency.getModuleRef().resolve(myRepository);
         if (target == null) {
           if (dependency.getScope() == SDependencyScope.RUNTIME) {
@@ -76,8 +77,6 @@ import java.util.stream.Collectors;
             errorContainer.runtimeDependencyCannotBeFound(dependency.getModuleRef());
           }
           errorContainer.depCannotBeResolved(module, new SDependencyImpl(dependency.getModuleRef(), null, dependency.getScope(), false));
-        } else {
-          rv.add(target.getModuleReference());
         }
       }
     } else {
@@ -95,22 +94,23 @@ import java.util.stream.Collectors;
           final ModelDependencies md = ModelDependencies.fromXml(JDOMUtil.loadDocument(cr.findChild("deps.cp")).getRootElement());
           if (md.hasRuntimeDeps()) {
             for (SModuleReference mr : md.getModuleDependencies()) {
+              rv.add(mr);
               final SModule target = mr.resolve(myRepository);
               if (target == null) {
                 errorContainer.depCannotBeResolved(module, new SDependencyImpl(mr, null, SDependencyScope.DEFAULT, false));
-              } else {
-                rv.add(target.getModuleReference());
               }
             }
             for (SModuleReference mr : md.getLanguageRuntimeModules()) {
+              rv.add(mr);
               final SModule target = mr.resolve(myRepository);
               if (target == null) {
                 // again, no reason to follow ErrorHandler contract if nobody cares, see same method use, above
                 errorContainer.runtimeDependencyCannotBeFound(mr);
                 errorContainer.depCannotBeResolved(module, new SDependencyImpl(mr, null, SDependencyScope.RUNTIME, false));
-              } else {
-                rv.add(target.getModuleReference());
               }
+            }
+            if (errorContainer.hasErrors()) {
+              myModulesWithAbsentDeps.put(module.getModuleReference(), errorContainer.getErrors());
             }
             return rv;
           }
@@ -131,11 +131,10 @@ import java.util.stream.Collectors;
         //     Otherwise, would need additional hacks with hardcoded/recorded 'used languages', etc.
         rv = new LinkedHashSet<>();
         for (SDependency dep : module.getDeclaredDependencies()) {
+          rv.add(dep.getTargetModule());
           final SModule target = dep.getTargetModule().resolve(myRepository);
           if (target == null) {
             errorContainer.depCannotBeResolved(module, dep);
-          } else {
-            rv.add(target.getModuleReference());
           }
         }
       } else {
@@ -163,16 +162,6 @@ import java.util.stream.Collectors;
 
   /*package*/ boolean withErrors(SModuleReference module) {
     return myModulesWithAbsentDeps.containsKey(module);
-  }
-
-  /*package*/ void addError(ReloadableModule module, List<SearchError> errors) {
-    if (errors == null || errors.isEmpty()) {
-      // no-op, generally doesn't happen, there's single use;
-      // never meant to remove errors.
-      return;
-    }
-    // we deliberately overwrite any already known error. Not that it's good, it's the way it was. The whole code cries for further refactoring.
-    myModulesWithAbsentDeps.put(module.getModuleReference(), errors);
   }
 
   public void reset() {

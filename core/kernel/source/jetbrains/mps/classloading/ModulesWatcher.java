@@ -234,6 +234,7 @@ public class ModulesWatcher {
 
   @TestOnly
   Map<SModuleReference, String> findAndPrintInvalidModulesProblems() {
+    // FIXME printErrors - take map and LOG.error here instead of arg
     return findInvalidModules(true);
   }
 
@@ -269,10 +270,9 @@ public class ModulesWatcher {
       return String.format("Module %s is disposed and therefore was marked invalid for class loading", mRef.getModuleName());
     }
 
-    Map<SModuleReference, List<SearchError>> modulesWithAbsentDeps = myModuleUpdater.getClassLoadingDeps().getModulesWithAbsentDeps();
-    if (modulesWithAbsentDeps.containsKey(mRef)) {
-      final List<SearchError> errors = modulesWithAbsentDeps.get(mRef);
-      return String.format("%s was marked invalid for class loading: %s", mRef.getModuleName(), errors == null || errors.isEmpty() ? "NO INFORMATION" : errors.get(0).getMsg());
+    final List<SearchError> errors = myModuleUpdater.getErrors(mRef);
+    if (!errors.isEmpty()) {
+      return String.format("%s was marked invalid for class loading: %s", mRef.getModuleName(), errors.get(0).getMsg());
     }
     SModule module = mRef.resolve(myRepository);
     assert module != null;
@@ -370,7 +370,7 @@ public class ModulesWatcher {
     if (isChanged()) {
       LOG.warning("The class loading status info might be outdated");
     }
-    return getAllModules().contains(module.getModuleReference());
+    return myModuleUpdater.contains(module.getModuleReference());
   }
 
   private boolean isChanged() {
