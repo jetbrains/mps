@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Responsible to figure out module dependencies to satisfy Class Loading Dependencies.
@@ -60,9 +61,9 @@ import java.util.Map;
    *
    * FIXME consider switching to SModuleReference
    */
-  public Collection<SModule> directlyUsedModules(ReloadableModule module) {
+  public Collection<SModuleReference> directlyUsedModules(ReloadableModule module) {
     ErrorContainer errorContainer = new ErrorContainer();
-    Collection<SModule> rv;
+    Collection<SModuleReference> rv;
     DeploymentDescriptor dd = ddIfPresent(module);
     if (USE_DD && dd != null) {
       rv = new LinkedHashSet<>(20);
@@ -76,7 +77,7 @@ import java.util.Map;
           }
           errorContainer.depCannotBeResolved(module, new SDependencyImpl(dependency.getModuleRef(), null, dependency.getScope(), false));
         } else {
-          rv.add(target);
+          rv.add(target.getModuleReference());
         }
       }
       // hack to deal with defect in RuntimeDependencies in mps.build.mps.util, where I forgot to iterate over
@@ -86,7 +87,7 @@ import java.util.Map;
         for (SModuleReference extLanRef : ((Language) module).getExtendedLanguageRefs()) {
           final SModule extLang = extLanRef.resolve(myRepository);
           if (extLang != null) {
-            rv.add(extLang);
+            rv.add(extLang.getModuleReference());
           } else {
             // errorContainer.langSourceModuleCannotBeResolved();
             errorContainer.depCannotBeResolved(module, new SDependencyImpl(extLanRef, null, SDependencyScope.EXTENDS, true));
@@ -112,7 +113,7 @@ import java.util.Map;
               if (target == null) {
                 errorContainer.depCannotBeResolved(module, new SDependencyImpl(mr, null, SDependencyScope.DEFAULT, false));
               } else {
-                rv.add(target);
+                rv.add(target.getModuleReference());
               }
             }
             for (SModuleReference mr : md.getLanguageRuntimeModules()) {
@@ -122,7 +123,7 @@ import java.util.Map;
                 errorContainer.runtimeDependencyCannotBeFound(mr);
                 errorContainer.depCannotBeResolved(module, new SDependencyImpl(mr, null, SDependencyScope.RUNTIME, false));
               } else {
-                rv.add(target);
+                rv.add(target.getModuleReference());
               }
             }
             return rv;
@@ -148,11 +149,11 @@ import java.util.Map;
           if (target == null) {
             errorContainer.depCannotBeResolved(module, dep);
           } else {
-            rv.add(target);
+            rv.add(target.getModuleReference());
           }
         }
       } else {
-        rv = myModulesCollector.directlyUsedModules(module, errorContainer, true, true);
+        rv = myModulesCollector.directlyUsedModules(module, errorContainer, true, true).stream().map(SModule::getModuleReference).collect(Collectors.toList());
       }
     }
     if (errorContainer.hasErrors()) {

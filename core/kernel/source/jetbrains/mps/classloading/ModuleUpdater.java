@@ -31,6 +31,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.stream.Stream;
 
 /**
  * Holds dependency graph for modules as well as deltas to update it on {@link #refreshGraph() request}.
@@ -194,19 +195,19 @@ public class ModuleUpdater {
         continue;
       }
       assert module != null;
-      Collection<SModule> deps = getDepsWithErrors(module);
+      Stream<SModuleReference> deps = getDepsWithErrors(module);
       if (myDependencyCollector.withErrors(module.getModuleReference())) {
         // module with broken dependencies shall not record its edges; edges would get added once all errors gone
         continue;
       }
-      for (SModule dep : deps) {
-        if (allRefs.contains(dep.getModuleReference())) {
-          myDepGraphHolder.addEdge(ref, dep.getModuleReference());
+      deps.forEach(dep -> {
+        if (allRefs.contains(dep)) {
+          myDepGraphHolder.addEdge(ref, dep);
         } else {
 //        valid if somebody calls reloadModule in moduleAdded() listener before us
-          LOG.warning("The dependent module " + dep + " of the " + module + " is not registered");
+          LOG.warning(String.format("The dependent module %s of the %s is not registered", dep, module));
         }
-      }
+      });
     }
   }
 
@@ -240,7 +241,7 @@ public class ModuleUpdater {
    * calculates difference in the outgoing edges for each given module
    */
   private boolean updateReloadedEdges(Set<? extends ReloadableModule> modulesToReload) {
-    boolean updated = false;
+    final boolean[] updated = {false};
     myRepository.getModelAccess().checkReadAccess();
     Collection<? extends SModuleReference> allRefs = myDepGraphHolder.getVertices();
     for (ReloadableModule module : modulesToReload) {
@@ -259,50 +260,36 @@ public class ModuleUpdater {
         // why not updated=true; continue;?
         return true;
       }
-      Collection<SModule> newModuleDeps = getDepsWithErrors(module);
+      Stream<SModuleReference> newModuleDeps = getDepsWithErrors(module);
       // XXX do I need to skip if there are no newModuleDeps (assuming this means error) - not to remove existing edges.
       // if (newModuleDeps.isEmpty()) { continue; }
-      for (SModule moduleDep : newModuleDeps) {
-        SModuleReference depRef = moduleDep.getModuleReference();
+      newModuleDeps.forEach(depRef -> {
         if (!currentDeps.contains(depRef)) {
           if (allRefs.contains(depRef)) {
             myDepGraphHolder.addEdge(mRef, depRef);
-            updated = true;
+            updated[0] = true;
           }
         } else {
           currentDeps.remove(depRef);
         }
-      }
+      });
       for (SModuleReference curDep : currentDeps) {
         myDepGraphHolder.removeEdge(mRef, curDep);
-        updated = true;
+        updated[0] = true;
       }
     }
-    return updated;
+    return updated[0];
   }
 
-  // XXX might want to convert to Stream<>
   @NotNull
-  private Collection<SModule> getDepsWithErrors(@NotNull ReloadableModule module) {
+  private Stream<SModuleReference> getDepsWithErrors(@NotNull ReloadableModule module) {
     myRepository.getModelAccess().checkReadAccess();
     if (module.getRepository() == null) {
-      return Collections.emptyList();
+      return Stream.empty();
     }
 
-    Collection<SModule> directlyUsedModules = myDependencyCollector.directlyUsedModules(module);
-    Set<SModule> deps = new LinkedHashSet<>();
-    for (SModule dep : directlyUsedModules) {
-      // FIXME dubious code, we base our idea of whether dependency is necessary on its target's actual state, i.e.
-      //       ModuleB needs (depends from) ModuleA. ModuleA met 'watchable' condition first, ModuleB dependencies have been satisfied.
-      //       Then, ModuleA becomes 'non-watchable', but still present. Here we treat ModuleB --> ModuleA dependency as irrelevant
-      //       and successfully try to load classes from ModuleB. E.g. ModuleB == Generator, ModuleA == its source language.
-      // XXX CLDependencies is capable of "authoritative" answer whether a dependency is CL/RT or just a "design" one. However, as long as deps.cp is
-      //     not mandatory, walking regular module deps doesn't render complete information, and it's unclear how to rely on CLDependencies output here.
-      if (myWatchableCondition.met(dep)) {
-        deps.add(dep);
-      }
-    }
-    return deps;
+    Collection<SModuleReference> directlyUsedModules = myDependencyCollector.directlyUsedModules(module);
+    return directlyUsedModules.stream();
   }
 
   public Collection<SModuleReference> getDirectDeps(Iterable<SModuleReference> mRefs) {
