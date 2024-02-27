@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="mps-constraints-runtime">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/mps-core/lib/mps-constraints-runtime.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../core/aspects/constraints/constraints-runtime/source" />
+    </SOURCES>
+  </library>
+</component>
