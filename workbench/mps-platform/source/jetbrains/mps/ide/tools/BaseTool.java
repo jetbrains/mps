@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,7 +57,6 @@ public abstract class BaseTool {
   private final boolean mySideTool;
   private boolean myCanCloseContent;
   private boolean myIsRegistered;
-  private ToolWindowManager myWindowManager;
 
   private JComponent myComponent = null;
 
@@ -199,7 +198,8 @@ public abstract class BaseTool {
       register();
     }
     // register() may fail if myProject hasn't been initialized - ToolWindowManager is a ProjectComponent
-    return myWindowManager == null ? null : myWindowManager.getToolWindow(myId);
+    final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(myProject);
+    return toolWindowManager == null ? null : toolWindowManager.getToolWindow(myId);
   }
 
   public void registerLater() {
@@ -222,7 +222,7 @@ public abstract class BaseTool {
     ThreadUtils.assertEDT();
     myIsRegistered = true;
 
-    myWindowManager = ToolWindowManager.getInstance(myProject);
+    final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(myProject);
 
     if (myShortcutsByKeymap != null) {
       String actionId = ActivateToolWindowAction.getActionIdForToolWindow(myId);
@@ -258,9 +258,9 @@ public abstract class BaseTool {
 
 
     //if we create a new project, tool windows are created for it automatically
-    ToolWindow toolWindow = myWindowManager.getToolWindow(myId);
+    ToolWindow toolWindow = toolWindowManager.getToolWindow(myId);
     if (toolWindow == null) {
-      toolWindow = myWindowManager.registerToolWindow(myId, builder -> {
+      toolWindow = toolWindowManager.registerToolWindow(myId, builder -> {
         builder.icon = myIcon;
         builder.canCloseContent = myCanCloseContent;
         builder.anchor = myAnchor;
@@ -348,9 +348,11 @@ public abstract class BaseTool {
     if (myProject.isDisposed()) {
       return;
     }
-    ToolWindow toolWindow = getToolWindow();
+    final ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(myProject);
+    ToolWindow toolWindow = toolWindowManager == null ? null : toolWindowManager.getToolWindow(myId);
     if (toolWindow != null) {
-      myWindowManager.unregisterToolWindow(myId);
+      //noinspection deprecation
+      toolWindowManager.unregisterToolWindow(myId);
       ContentManager contentManager = toolWindow.getContentManager();
       Disposer.dispose(contentManager);
     }
@@ -394,10 +396,12 @@ public abstract class BaseTool {
     if (!isRegistered()) {
       register();
     }
-    if (getToolWindow() == null) {
+    if (myProject.isDisposed()) {
       return null;
     }
-    return getToolWindow().getContentManager();
+    ToolWindowManager wm = ToolWindowManager.getInstance(myProject);
+    ToolWindow tw = wm == null ? null : wm.getToolWindow(myId);
+    return tw == null ? null : tw.getContentManager();
   }
 
   @Override
