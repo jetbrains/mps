@@ -193,8 +193,10 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
 
   @Override
   public final String getPresentation() {
-    IFile contentDirectory = getContentDirectory();
-    return contentDirectory == null ? "no content dir" : contentDirectory.getPath();
+    if (myContentDir != null) {
+      return myContentDir.resolved() ? myContentDir.resolvedPath() : myContentDir.value();
+    }
+    return "no content dir";
   }
 
   private static void copyMemento(Memento from, Memento to) {
