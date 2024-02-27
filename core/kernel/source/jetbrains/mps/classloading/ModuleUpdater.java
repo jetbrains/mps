@@ -63,45 +63,36 @@ import java.util.stream.Stream;
     myDependencyCollector = new CLDependencies(repository);
   }
 
-  public void updateModules(@NotNull Collection<? extends ReloadableModule> modules) {
+  /*package*/ void updateModules(@NotNull Collection<? extends ReloadableModule> modules) {
     synchronized (LOCK) {
-      myChangedFlag = true;
       for (ReloadableModule module : modules) {
-        if (myWatchableCondition.met(module)) {
+        if (myWatchableCondition.met(module) || myDepGraphHolder.contains(module.getModuleReference())) {
+          // either became CL-capable, or we've seen this module as a dependency target
           myModulesToReload.add(module);
-          // Can't schedule for removal as susequent CLM.unloadModules() need the vertex to calculate back dependencies
-          // the defect is that complex state of myDepGraphHolder is changed here, while state prior to change is necessary for
-          // CLM later activities.
-//        } else if (contains(module.getModuleReference())) {
-//          // we've seen this module and treated it as CL-capable, but it is no more.
-//          myModulesToRemove.add(module.getModuleReference());
+          myChangedFlag = true;
         }
-        // need this call because we might get #addModules notification later than this one
-        myRefStorage.moduleAdded(module);
       }
     }
   }
 
-  public void addModules(@NotNull Collection<? extends ReloadableModule> modules) {
+  /*package*/ void addModules(@NotNull Collection<? extends ReloadableModule> modules) {
     synchronized (LOCK) {
-      myChangedFlag = true;
       for (ReloadableModule module : modules) {
         if (myWatchableCondition.met(module)) {
+          myChangedFlag = true;
           myModulesToAdd.add(module);
-          myModulesToRemove.add(module.getModuleReference());
+          myModulesToRemove.remove(module.getModuleReference());
           // XXX do we need to care about myModulesToReload here?
         }
-        myRefStorage.moduleAdded(module);
       }
     }
   }
 
-  public void removeModules(@NotNull Collection<? extends SModuleReference> mRefs) {
+  /*package*/ void removeModules(@NotNull Collection<? extends SModuleReference> mRefs) {
     synchronized (LOCK) {
       for (SModuleReference mRef : mRefs) {
-        final ReloadableModule instance = myRefStorage.moduleRemoved(mRef); // XXX resolveRef, perhaps? Leave changes to refreshGraph()?
+        final ReloadableModule instance = myRefStorage.resolveRef(mRef); // resolveRef, not moduleRemoved - leave actual changes to refreshGraph()
         if (instance != null) {
-          // need to clean up myModulesToLoad and myModulesToReload
           myModulesToAdd.remove(instance);
           myModulesToReload.remove(instance);
           myModulesToRemove.add(mRef);
@@ -138,7 +129,8 @@ import java.util.stream.Stream;
           if (!myDepGraphHolder.contains(mRef)) {
             continue;
           }
-          myRefStorage.moduleRemoved(mRef); // FIXME here or later, when we get to myDepGrap cleanup? Well, it's already done in removeModules(), above!
+          myRefStorage.moduleRemoved(mRef); // FIXME here or later, when we get to myDepGrap cleanup?
+          // perhaps, shall collect/keep ReloadableModule instances to facilitate DeployListener event dispatch?
           removedToVisitAgain.add(mRef);
         }
         HashSet<SModuleReference> withChangeInDependencies = new HashSet<>();
@@ -147,15 +139,14 @@ import java.util.stream.Stream;
         for (ReloadableModule module : myModulesToAdd) {
           SModuleReference mRef = module.getModuleReference();
           if (myDepGraphHolder.contains(mRef)) {
-            assert myRefStorage.resolveRef(mRef) != null;
             LOG.debug("Module being added has been expected " + module);
             // we've been expecting this module to show up
             myDepGraphHolder.fillIncomingEdgesShallow(Collections.singleton(mRef), withChangeInDependencies);
           } else {
             LOG.debug("Adding previously unknown module " + module);
             myDepGraphHolder.add(mRef);
-            myRefStorage.moduleAdded(module);
           }
+          myRefStorage.moduleAdded(module);
           withChangeInDependencies.add(mRef);
         }
         for (ReloadableModule module : myModulesToReload) {
@@ -170,7 +161,7 @@ import java.util.stream.Stream;
           }
           withChangeInDependencies.add(mRef);
         }
-        withChangeInDependencies.retainAll(removedToVisitAgain);
+        withChangeInDependencies.removeAll(removedToVisitAgain);
         HashSet<SModuleReference> newTargets = new HashSet<>(); // if changed modules yield any new vertex, update it status
         updateEdges(withChangeInDependencies, newTargets);
         // now we've got graph reflecting actual dependencies, see if we can forget any removed vertex
@@ -287,6 +278,7 @@ import java.util.stream.Stream;
     synchronized (LOCK) {
       final Collection<SModuleReference> result = new ArrayList<>();
       myDepGraphHolder.fillOutgoingEdgesDeep(mRefs, result);
+      mRefs.forEach(result::remove);
       return result;
     }
   }
