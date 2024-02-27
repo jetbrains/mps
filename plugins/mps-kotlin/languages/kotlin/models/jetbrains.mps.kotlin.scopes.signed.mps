@@ -8476,6 +8476,12 @@
       <node concept="10P_77" id="3pL_ro0pjgQ" role="1tU5fm" />
       <node concept="3clFbT" id="3DLhCcpJ$8q" role="33vP2m" />
     </node>
+    <node concept="312cEg" id="3I2iTuPyUZf" role="jymVt">
+      <property role="TrG5h" value="useReceiver" />
+      <node concept="3Tmbuc" id="3I2iTuPyS74" role="1B3o_S" />
+      <node concept="10P_77" id="3I2iTuPyUpV" role="1tU5fm" />
+      <node concept="3clFbT" id="3I2iTuPyXJ6" role="33vP2m" />
+    </node>
     <node concept="312cEg" id="3UQQw2lwXSe" role="jymVt">
       <property role="TrG5h" value="filter" />
       <node concept="3Tmbuc" id="3DLhCcpA1BW" role="1B3o_S" />
@@ -8707,6 +8713,9 @@
         <node concept="3uibUv" id="3UQQw2lAKEB" role="1tU5fm">
           <ref role="3uigEE" to="hez:1KzjWTsTA9Z" resolve="MemberReceiver" />
         </node>
+        <node concept="2AHcQZ" id="3I2iTuPzmTt" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
       </node>
       <node concept="3clFbS" id="3UQQw2lAIAv" role="3clF47">
         <node concept="3clFbJ" id="3DLhCcpUDBP" role="3cqZAp">
@@ -8727,14 +8736,8 @@
             <node concept="37vLTw" id="3DLhCcpUDBW" role="3uHU7w">
               <ref role="3cqZAo" node="3pL_ro0pjmf" resolve="useHierarchy" />
             </node>
-            <node concept="3y3z36" id="3DLhCcpUDBX" role="3uHU7B">
-              <node concept="2OqwBi" id="3DLhCcpUDBY" role="3uHU7B">
-                <node concept="Xjq3P" id="3DLhCcpUDBZ" role="2Oq$k0" />
-                <node concept="2OwXpG" id="3DLhCcpUDC0" role="2OqNvi">
-                  <ref role="2Oxat5" node="3UQQw2l_iAi" resolve="receiver" />
-                </node>
-              </node>
-              <node concept="10Nm6u" id="3DLhCcpUDC1" role="3uHU7w" />
+            <node concept="37vLTw" id="3I2iTuPz0Mn" role="3uHU7B">
+              <ref role="3cqZAo" node="3I2iTuPyUZf" resolve="useReceiver" />
             </node>
           </node>
         </node>
@@ -8752,6 +8755,19 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="3I2iTuPz75r" role="3cqZAp">
+          <node concept="37vLTI" id="3I2iTuPzcZ4" role="3clFbG">
+            <node concept="3clFbT" id="3I2iTuPzdPV" role="37vLTx">
+              <property role="3clFbU" value="true" />
+            </node>
+            <node concept="2OqwBi" id="3I2iTuPz8bI" role="37vLTJ">
+              <node concept="Xjq3P" id="3I2iTuPz75p" role="2Oq$k0" />
+              <node concept="2OwXpG" id="3I2iTuPzaK6" role="2OqNvi">
+                <ref role="2Oxat5" node="3I2iTuPyUZf" resolve="useReceiver" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs6" id="3UQQw2lAPgG" role="3cqZAp">
           <node concept="Xjq3P" id="3UQQw2lAPj6" role="3cqZAk" />
         </node>
@@ -8759,6 +8775,29 @@
       <node concept="3Tm1VV" id="3UQQw2lADQe" role="1B3o_S" />
       <node concept="3uibUv" id="3UQQw2lAETE" role="3clF45">
         <ref role="3uigEE" node="3UQQw2lwzMq" resolve="KotlinScopes" />
+      </node>
+      <node concept="P$JXv" id="3I2iTuPzqPt" role="lGtFl">
+        <node concept="TZ5HA" id="3I2iTuPzqPu" role="TZ5H$">
+          <node concept="1dT_AC" id="3I2iTuPzqPv" role="1dT_Ay">
+            <property role="1dT_AB" value="Specify the receiver to be used to resolve the method. Receiver may be null if ill-defined." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3I2iTuPzsrx" role="TZ5H$">
+          <node concept="1dT_AC" id="3I2iTuPzsry" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3I2iTuPztt0" role="TZ5H$">
+          <node concept="1dT_AC" id="3I2iTuPztt1" role="1dT_Ay">
+            <property role="1dT_AB" value="In such case, receiver() should still be called to differentiate from useHierarchy()" />
+          </node>
+        </node>
+        <node concept="TUZQ0" id="3I2iTuPzqPw" role="3nqlJM">
+          <property role="TUZQ4" value="member receiver to use" />
+          <node concept="zr_55" id="3I2iTuPzqPy" role="zr_5Q">
+            <ref role="zr_51" node="3UQQw2lAJRC" resolve="receiver" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="3DLhCcp_8GV" role="jymVt" />
@@ -8783,14 +8822,8 @@
             <node concept="37vLTw" id="3DLhCcpUDfy" role="3uHU7w">
               <ref role="3cqZAo" node="3pL_ro0pjmf" resolve="useHierarchy" />
             </node>
-            <node concept="3y3z36" id="3DLhCcp_N0n" role="3uHU7B">
-              <node concept="2OqwBi" id="3DLhCcp_N0p" role="3uHU7B">
-                <node concept="Xjq3P" id="3DLhCcp_N0q" role="2Oq$k0" />
-                <node concept="2OwXpG" id="3DLhCcp_N0r" role="2OqNvi">
-                  <ref role="2Oxat5" node="3UQQw2l_iAi" resolve="receiver" />
-                </node>
-              </node>
-              <node concept="10Nm6u" id="3DLhCcp_N0o" role="3uHU7w" />
+            <node concept="37vLTw" id="3I2iTuPz3Sx" role="3uHU7B">
+              <ref role="3cqZAo" node="3I2iTuPyUZf" resolve="useReceiver" />
             </node>
           </node>
         </node>
@@ -9125,10 +9158,9 @@
                 <ref role="3cqZAo" node="3pL_ro0pjmf" resolve="useHierarchy" />
               </node>
             </node>
-            <node concept="3clFbC" id="3DLhCcpU$CF" role="3uHU7w">
-              <node concept="10Nm6u" id="3DLhCcpU$T5" role="3uHU7w" />
-              <node concept="37vLTw" id="3DLhCcpU$jF" role="3uHU7B">
-                <ref role="3cqZAo" node="3UQQw2l_iAi" resolve="receiver" />
+            <node concept="3fqX7Q" id="3I2iTuPzh_k" role="3uHU7w">
+              <node concept="37vLTw" id="3I2iTuPzlnF" role="3fr31v">
+                <ref role="3cqZAo" node="3I2iTuPyUZf" resolve="useReceiver" />
               </node>
             </node>
           </node>
