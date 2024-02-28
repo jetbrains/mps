@@ -698,5 +698,101 @@
       </node>
     </node>
   </node>
+  <node concept="2S6QgY" id="6cin1kbYm3Q">
+    <property role="3GE5qa" value="declaration.function" />
+    <property role="TrG5h" value="ToggleMultilineParameters" />
+    <property role="2ZfUl0" value="true" />
+    <ref role="2ZfgGC" to="hcm8:2yYXHtl$9A0" resolve="IFunctionParameters" />
+    <node concept="2S6ZIM" id="6cin1kbYm3R" role="2ZfVej">
+      <node concept="3clFbS" id="6cin1kbYm3S" role="2VODD2">
+        <node concept="3clFbF" id="6cin1kbYmln" role="3cqZAp">
+          <node concept="3K4zz7" id="6cin1kbYorK" role="3clFbG">
+            <node concept="Xl_RD" id="6cin1kbYosQ" role="3K4E3e">
+              <property role="Xl_RC" value="Put parameters on one line" />
+            </node>
+            <node concept="2OqwBi" id="6cin1kbYmKn" role="3K4Cdx">
+              <node concept="2Sf5sV" id="6cin1kbYmlm" role="2Oq$k0" />
+              <node concept="3TrcHB" id="6cin1kbYmTY" role="2OqNvi">
+                <ref role="3TsBF5" to="hcm8:6cin1kbYkvI" resolve="multiLineParameters" />
+              </node>
+            </node>
+            <node concept="Xl_RD" id="6cin1kbYoy4" role="3K4GZi">
+              <property role="Xl_RC" value="Put parameters on separate lines" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2Sbjvc" id="6cin1kbYm3T" role="2ZfgGD">
+      <node concept="3clFbS" id="6cin1kbYm3U" role="2VODD2">
+        <node concept="3clFbF" id="6cin1kbYoRm" role="3cqZAp">
+          <node concept="37vLTI" id="6cin1kbYqrr" role="3clFbG">
+            <node concept="3fqX7Q" id="6cin1kbYqrI" role="37vLTx">
+              <node concept="2OqwBi" id="6cin1kbYqGl" role="3fr31v">
+                <node concept="2Sf5sV" id="6cin1kbYqDZ" role="2Oq$k0" />
+                <node concept="3TrcHB" id="6cin1kbYqJb" role="2OqNvi">
+                  <ref role="3TsBF5" to="hcm8:6cin1kbYkvI" resolve="multiLineParameters" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="6cin1kbYp0F" role="37vLTJ">
+              <node concept="2Sf5sV" id="6cin1kbYoRl" role="2Oq$k0" />
+              <node concept="3TrcHB" id="6cin1kbYpbV" role="2OqNvi">
+                <ref role="3TsBF5" to="hcm8:6cin1kbYkvI" resolve="multiLineParameters" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="2S6QgY" id="6cin1kbYqKb">
+    <property role="3GE5qa" value="declaration.class.constructor" />
+    <property role="TrG5h" value="ToggleMultilineClassParameters" />
+    <property role="2ZfUl0" value="true" />
+    <ref role="2ZfgGC" to="hcm8:2yYXHtl6Jgo" resolve="PrimaryConstructor" />
+    <node concept="2S6ZIM" id="6cin1kbYqKc" role="2ZfVej">
+      <node concept="3clFbS" id="6cin1kbYqKd" role="2VODD2">
+        <node concept="3clFbF" id="6cin1kbYrx5" role="3cqZAp">
+          <node concept="3K4zz7" id="6cin1kbYrx7" role="3clFbG">
+            <node concept="Xl_RD" id="6cin1kbYrx8" role="3K4E3e">
+              <property role="Xl_RC" value="Put parameters on one line" />
+            </node>
+            <node concept="2OqwBi" id="6cin1kbYrx9" role="3K4Cdx">
+              <node concept="2Sf5sV" id="6cin1kbYrxa" role="2Oq$k0" />
+              <node concept="3TrcHB" id="6cin1kbYrxb" role="2OqNvi">
+                <ref role="3TsBF5" to="hcm8:6cin1kbYhfn" resolve="multiLineParameters" />
+              </node>
+            </node>
+            <node concept="Xl_RD" id="6cin1kbYrxc" role="3K4GZi">
+              <property role="Xl_RC" value="Put parameters on separate lines" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2Sbjvc" id="6cin1kbYqKe" role="2ZfgGD">
+      <node concept="3clFbS" id="6cin1kbYqKf" role="2VODD2">
+        <node concept="3clFbF" id="6cin1kbYs5P" role="3cqZAp">
+          <node concept="37vLTI" id="6cin1kbYs5R" role="3clFbG">
+            <node concept="3fqX7Q" id="6cin1kbYs5S" role="37vLTx">
+              <node concept="2OqwBi" id="6cin1kbYs5T" role="3fr31v">
+                <node concept="2Sf5sV" id="6cin1kbYs5U" role="2Oq$k0" />
+                <node concept="3TrcHB" id="6cin1kbYs5V" role="2OqNvi">
+                  <ref role="3TsBF5" to="hcm8:6cin1kbYhfn" resolve="multiLineParameters" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="6cin1kbYs5W" role="37vLTJ">
+              <node concept="2Sf5sV" id="6cin1kbYs5X" role="2Oq$k0" />
+              <node concept="3TrcHB" id="6cin1kbYs5Y" role="2OqNvi">
+                <ref role="3TsBF5" to="hcm8:6cin1kbYhfn" resolve="multiLineParameters" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
