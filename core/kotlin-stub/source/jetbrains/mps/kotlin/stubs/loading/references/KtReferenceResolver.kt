@@ -3,7 +3,6 @@
  */
 package jetbrains.mps.kotlin.stubs.loading.references
 
-import com.intellij.util.alsoIfNull
 import jetbrains.mps.kotlin.stubs.loading.PackageName
 import jetbrains.mps.kotlin.stubs.loading.kind.KotlinModelKind
 import jetbrains.mps.kotlin.stubs.smodel.references.ClassStereotype
@@ -98,13 +97,15 @@ class KtReferenceResolver(val module: SModule, model: SModel) {
                 val possibleModels =
                     descriptor.possibleModelNames(pack.dotName).flatMap { name2Models[it].orEmpty() }
 
-                resolveInModels(possibleModels, descriptor).alsoIfNull {
+                resolveInModels(possibleModels, descriptor) ?: run {
                     // We will select the first stereotype if nothing can be found, which is why we recover the corresponding list of models
                     // We take all models related to this stereotype regardless of the platform
                     if (fallBackStereotype == null) {
                         fallBackStereotype = descriptor
                         fallBackModels = possibleModels
                     }
+
+                    null
                 }
             }
             ?: (fallBackStereotype ?: descriptors.first()).let { stereotype ->
