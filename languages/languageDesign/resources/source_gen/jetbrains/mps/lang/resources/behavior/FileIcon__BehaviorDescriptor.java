@@ -96,7 +96,7 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
 
     if (Objects.equals(ext, "svg") || Objects.equals(ext, "png")) {
       // All possibly needed files
-      List<ImageDescriptor> imageDescriptors = ImageDescriptorKt.getImageDescriptors(sourcePath, true, ScaleContext.createIdentity());
+      List<ImageDescriptor> imageDescriptors = ImageDescriptorKt.getImageDescriptors(sourcePath, true, true, ScaleContext.createIdentity());
 
       final String prefix = FileUtil.getNameWithoutExtension(sourcePath);
       return imageDescriptors.stream().map((desc) -> desc.pathTransform.invoke(prefix, ext)).filter((path) -> !(Objects.equals(path, sourcePath))).distinct().toList();
