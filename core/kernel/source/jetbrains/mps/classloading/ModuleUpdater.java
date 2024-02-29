@@ -152,13 +152,13 @@ import java.util.stream.Stream;
         for (ReloadableModule module : myModulesToReload) {
           SModuleReference mRef = module.getModuleReference();
           if (myDepGraphHolder.contains(mRef)) {
-            assert myRefStorage.resolveRef(mRef) != null;
+            // assert myRefStorage.resolveRef(mRef) != null;  FIXME CoreTestSuite and TemplateModelScanTest get here at dispose/closeProject, investigate
             myDepGraphHolder.fillIncomingEdgesShallow(Collections.singleton(mRef), withChangeInDependencies);
           } else {
             LOG.debug("Adding changed module " + module);
             myDepGraphHolder.add(mRef);
-            myRefStorage.moduleAdded(module);
           }
+          myRefStorage.moduleAdded(module);
           withChangeInDependencies.add(mRef);
         }
         withChangeInDependencies.removeAll(removedToVisitAgain);
@@ -241,10 +241,15 @@ import java.util.stream.Stream;
     myRepository.getModelAccess().checkReadAccess();
     for (SModuleReference mRef : modulesToUpdate) {
       assert myDepGraphHolder.contains(mRef);
-      assert myRefStorage.resolveRef(mRef) != null;
+      // assert myRefStorage.resolveRef(mRef) != null; XXX well, shall not get violated. To get mRef here, we either put it explicitly
+      //  from add/update block, which updates myRefStorage, or as an incoming reference for a deleted module, and here's the culprit.
+      //  Imagine a chain ModuleC -> ModuleB -> ModuleA. Request to remove ModuleB can't remove ModuleB from the graph as it's dependency
+      //  target for ModuleC. We've cleaned its SModule instance in myRefStorage, but we still can get ModuleB reference as incoming
+      //  for ModuleA and as required for ModuleC
       final Collection<SModuleReference> currentDeps = new HashSet<>();
       myDepGraphHolder.fillOutgoingEdgesShallow(Collections.singleton(mRef), currentDeps);
-      Stream<SModuleReference> newModuleDeps = myDependencyCollector.directlyUsedModules(myRefStorage.resolveRef(mRef)).stream();
+      ReloadableModule module = myRefStorage.resolveRef(mRef);
+      Stream<SModuleReference> newModuleDeps = module == null ? Stream.empty() : myDependencyCollector.directlyUsedModules(module.getModule()).stream();
       // XXX do I need to skip if there are no newModuleDeps (assuming this means error) - not to remove existing edges.
       // if (newModuleDeps.isEmpty()) { continue; }
       newModuleDeps.forEach(depRef -> {

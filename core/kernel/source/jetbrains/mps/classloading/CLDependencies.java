@@ -61,7 +61,7 @@ import java.util.stream.Collectors;
    *
    * FIXME consider switching to SModuleReference
    */
-  public Collection<SModuleReference> directlyUsedModules(ReloadableModule module) {
+  public Collection<SModuleReference> directlyUsedModules(SModule module) {
     ErrorContainer errorContainer = new ErrorContainer();
     Collection<SModuleReference> rv;
     DeploymentDescriptor dd = ddIfPresent(module);
