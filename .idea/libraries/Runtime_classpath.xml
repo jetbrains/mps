@@ -29,6 +29,7 @@
       <root url="jar://$PROJECT_DIR$/lib/intellij-coverage-agent-1.0.744.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-frontback.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/trove.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/opentelemetry.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
