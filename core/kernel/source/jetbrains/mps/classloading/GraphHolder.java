@@ -112,6 +112,17 @@ public class GraphHolder<V> {
     myGraph.dfs(vv, result::add);
   }
 
+  public void cleanOutgoingEdges(Iterable<? extends V> vv) {
+    checkGraphsCorrectness();
+    for (V v : vv) {
+      for (V out : myGraph.getOuts(v)) {
+        boolean removed = myConjugateGraph.removeEdge(out, v);
+        assert removed;
+      }
+      myGraph.removeEdgesOf(v);
+    }
+  }
+
   public void fillIncomingEdgesShallow(Iterable<? extends V> vv, Collection<? super V> result) {
     checkGraphsCorrectness();
     for(V v : vv) {
@@ -181,6 +192,12 @@ public class GraphHolder<V> {
         return true;
       }
       return false;
+    }
+
+    public void removeEdgesOf(V v) {
+      Set<V> edges = myOuts.get(v);
+      myEdgesCount -= edges.size();
+      edges.clear();
     }
 
     @NotNull

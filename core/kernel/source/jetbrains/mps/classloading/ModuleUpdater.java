@@ -133,6 +133,8 @@ import java.util.stream.Stream;
           // perhaps, shall collect/keep ReloadableModule instances to facilitate DeployListener event dispatch?
           removedToVisitAgain.add(mRef);
         }
+        myDepGraphHolder.cleanOutgoingEdges(removedToVisitAgain);
+        //
         HashSet<SModuleReference> withChangeInDependencies = new HashSet<>();
         myDepGraphHolder.fillIncomingEdgesShallow(removedToVisitAgain, withChangeInDependencies);
 
