@@ -36,7 +36,7 @@ public class CompletionSpace_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("3586175963764966584", "3586175963764966594");
-      typeString("abcD");
+      typeString("tabcD");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
 

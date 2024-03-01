@@ -12,13 +12,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
-  /*package*/ final ConceptDescriptor myConceptABC = createDescriptorForABC();
-  /*package*/ final ConceptDescriptor myConceptABCDE = createDescriptorForABCDE();
-  /*package*/ final ConceptDescriptor myConceptABCDEF = createDescriptorForABCDEF();
-  /*package*/ final ConceptDescriptor myConceptABCDEG = createDescriptorForABCDEG();
-  /*package*/ final ConceptDescriptor myConceptABCEEG = createDescriptorForABCEEG();
-  /*package*/ final ConceptDescriptor myConceptBAC = createDescriptorForBAC();
-  /*package*/ final ConceptDescriptor myConceptBCA = createDescriptorForBCA();
+  /*package*/ final ConceptDescriptor myConceptTABC = createDescriptorForTABC();
+  /*package*/ final ConceptDescriptor myConceptTABCDE = createDescriptorForTABCDE();
+  /*package*/ final ConceptDescriptor myConceptTABCDEF = createDescriptorForTABCDEF();
+  /*package*/ final ConceptDescriptor myConceptTABCDEG = createDescriptorForTABCDEG();
+  /*package*/ final ConceptDescriptor myConceptTABCEEG = createDescriptorForTABCEEG();
+  /*package*/ final ConceptDescriptor myConceptTBAC = createDescriptorForTBAC();
+  /*package*/ final ConceptDescriptor myConceptTBCA = createDescriptorForTBCA();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -33,27 +33,27 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptABC, myConceptABCDE, myConceptABCDEF, myConceptABCDEG, myConceptABCEEG, myConceptBAC, myConceptBCA);
+    return Arrays.asList(myConceptTABC, myConceptTABCDE, myConceptTABCDEF, myConceptTABCDEG, myConceptTABCEEG, myConceptTBAC, myConceptTBCA);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
-      case LanguageConceptSwitch.ABC:
-        return myConceptABC;
-      case LanguageConceptSwitch.ABCDE:
-        return myConceptABCDE;
-      case LanguageConceptSwitch.ABCDEF:
-        return myConceptABCDEF;
-      case LanguageConceptSwitch.ABCDEG:
-        return myConceptABCDEG;
-      case LanguageConceptSwitch.ABCEEG:
-        return myConceptABCEEG;
-      case LanguageConceptSwitch.BAC:
-        return myConceptBAC;
-      case LanguageConceptSwitch.BCA:
-        return myConceptBCA;
+      case LanguageConceptSwitch.TABC:
+        return myConceptTABC;
+      case LanguageConceptSwitch.TABCDE:
+        return myConceptTABCDE;
+      case LanguageConceptSwitch.TABCDEF:
+        return myConceptTABCDEF;
+      case LanguageConceptSwitch.TABCDEG:
+        return myConceptTABCDEG;
+      case LanguageConceptSwitch.TABCEEG:
+        return myConceptTABCEEG;
+      case LanguageConceptSwitch.TBAC:
+        return myConceptTBAC;
+      case LanguageConceptSwitch.TBCA:
+        return myConceptTBCA;
       default:
         return null;
     }
@@ -64,74 +64,74 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
-  private static ConceptDescriptor createDescriptorForABC() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "ABC", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x31c4a809e6410e71L);
+  private static ConceptDescriptor createDescriptorForTABC() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "TABC", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x31c4a809e6410e71L);
     b.class_(false, false, false);
     // extends: jetbrains.mps.baseLanguage.structure.Statement
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
     b.origin("r:7d1e02c6-b403-4705-bcbd-976df276fcbf(testSpaceCompletion.structure)/3586175963764952689");
     b.version(3);
-    b.alias("abc");
+    b.alias("tabc");
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForABCDE() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "ABCDE", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x31c4a809e641174cL);
+  private static ConceptDescriptor createDescriptorForTABCDE() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "TABCDE", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x31c4a809e641174cL);
     b.class_(false, false, false);
     // extends: jetbrains.mps.baseLanguage.structure.Statement
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
     b.origin("r:7d1e02c6-b403-4705-bcbd-976df276fcbf(testSpaceCompletion.structure)/3586175963764954956");
     b.version(3);
-    b.alias("abc de");
+    b.alias("tabc de");
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForABCDEF() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "ABCDEF", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x31c4a809e6411758L);
+  private static ConceptDescriptor createDescriptorForTABCDEF() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "TABCDEF", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x31c4a809e6411758L);
     b.class_(false, false, false);
     // extends: jetbrains.mps.baseLanguage.structure.Statement
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
     b.origin("r:7d1e02c6-b403-4705-bcbd-976df276fcbf(testSpaceCompletion.structure)/3586175963764954968");
     b.version(3);
-    b.alias("abc de f");
+    b.alias("tabc de f");
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForABCDEG() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "ABCDEG", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x31c4a809e6411754L);
+  private static ConceptDescriptor createDescriptorForTABCDEG() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "TABCDEG", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x31c4a809e6411754L);
     b.class_(false, false, false);
     // extends: jetbrains.mps.baseLanguage.structure.Statement
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
     b.origin("r:7d1e02c6-b403-4705-bcbd-976df276fcbf(testSpaceCompletion.structure)/3586175963764954964");
     b.version(3);
-    b.alias("abc de g");
+    b.alias("tabc de g");
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForABCEEG() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "ABCEEG", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x6a37442ca9969678L);
+  private static ConceptDescriptor createDescriptorForTABCEEG() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "TABCEEG", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x6a37442ca9969678L);
     b.class_(false, false, false);
     // extends: jetbrains.mps.baseLanguage.structure.Statement
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
     b.origin("r:7d1e02c6-b403-4705-bcbd-976df276fcbf(testSpaceCompletion.structure)/7653661050353915512");
     b.version(3);
-    b.alias("abc Ee G");
+    b.alias("tabc Ee G");
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForBAC() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "BAC", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x7bf89c7591b82d85L);
+  private static ConceptDescriptor createDescriptorForTBAC() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "TBAC", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x7bf89c7591b82d85L);
     b.class_(false, false, false);
     // extends: jetbrains.mps.baseLanguage.structure.Statement
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
     b.origin("r:7d1e02c6-b403-4705-bcbd-976df276fcbf(testSpaceCompletion.structure)/8933061889659252101");
     b.version(3);
-    b.alias("bac");
+    b.alias("tbac");
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForBCA() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "BCA", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x7bf89c7591b848d3L);
+  private static ConceptDescriptor createDescriptorForTBCA() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testSpaceCompletion", "TBCA", 0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L, 0x7bf89c7591b848d3L);
     b.class_(false, false, false);
     // extends: jetbrains.mps.baseLanguage.structure.Statement
     b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
     b.origin("r:7d1e02c6-b403-4705-bcbd-976df276fcbf(testSpaceCompletion.structure)/8933061889659259091");
     b.version(3);
-    b.alias("bca");
+    b.alias("tbca");
     return b.create();
   }
 }

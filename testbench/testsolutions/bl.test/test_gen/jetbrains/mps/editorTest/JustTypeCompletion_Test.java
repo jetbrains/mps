@@ -37,7 +37,7 @@ public class JustTypeCompletion_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("8933061889659376817", "8933061889659376890");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-      typeString("bc");
+      typeString("tbc");
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
     }
   }

@@ -18,19 +18,19 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return Collections.<ConceptEditor>singletonList(new ABC_Editor());
+        return Collections.<ConceptEditor>singletonList(new TABC_Editor());
       case 1:
-        return Collections.<ConceptEditor>singletonList(new ABCDE_Editor());
+        return Collections.<ConceptEditor>singletonList(new TABCDE_Editor());
       case 2:
-        return Collections.<ConceptEditor>singletonList(new ABCDEF_Editor());
+        return Collections.<ConceptEditor>singletonList(new TABCDEF_Editor());
       case 3:
-        return Collections.<ConceptEditor>singletonList(new ABCDEG_Editor());
+        return Collections.<ConceptEditor>singletonList(new TABCDEG_Editor());
       case 4:
-        return Collections.<ConceptEditor>singletonList(new ABCEEG_Editor());
+        return Collections.<ConceptEditor>singletonList(new TABCEEG_Editor());
       case 5:
-        return Collections.<ConceptEditor>singletonList(new BAC_Editor());
+        return Collections.<ConceptEditor>singletonList(new TBAC_Editor());
       case 6:
-        return Collections.<ConceptEditor>singletonList(new BCA_Editor());
+        return Collections.<ConceptEditor>singletonList(new TBCA_Editor());
       default:
     }
     return Collections.<ConceptEditor>emptyList();

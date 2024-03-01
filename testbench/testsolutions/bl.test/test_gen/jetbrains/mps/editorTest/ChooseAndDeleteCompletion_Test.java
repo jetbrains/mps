@@ -37,7 +37,7 @@ public class ChooseAndDeleteCompletion_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("8933061889659446777", "8933061889659446787");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-      typeString("aDe");
+      typeString("taDe");
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " DOWN"));
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " BACK_SPACE"));
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " BACK_SPACE"));

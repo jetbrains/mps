@@ -9,23 +9,23 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
-  public static final int ABC = 0;
-  public static final int ABCDE = 1;
-  public static final int ABCDEF = 2;
-  public static final int ABCDEG = 3;
-  public static final int ABCEEG = 4;
-  public static final int BAC = 5;
-  public static final int BCA = 6;
+  public static final int TABC = 0;
+  public static final int TABCDE = 1;
+  public static final int TABCDEF = 2;
+  public static final int TABCDEG = 3;
+  public static final int TABCEEG = 4;
+  public static final int TBAC = 5;
+  public static final int TBCA = 6;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x4dd3c558f0fc4807L, 0xbade5d6bcad6b3f1L);
-    builder.put(0x31c4a809e6410e71L, ABC);
-    builder.put(0x31c4a809e641174cL, ABCDE);
-    builder.put(0x31c4a809e6411758L, ABCDEF);
-    builder.put(0x31c4a809e6411754L, ABCDEG);
-    builder.put(0x6a37442ca9969678L, ABCEEG);
-    builder.put(0x7bf89c7591b82d85L, BAC);
-    builder.put(0x7bf89c7591b848d3L, BCA);
+    builder.put(0x31c4a809e6410e71L, TABC);
+    builder.put(0x31c4a809e641174cL, TABCDE);
+    builder.put(0x31c4a809e6411758L, TABCDEF);
+    builder.put(0x31c4a809e6411754L, TABCDEG);
+    builder.put(0x6a37442ca9969678L, TABCEEG);
+    builder.put(0x7bf89c7591b82d85L, TBAC);
+    builder.put(0x7bf89c7591b848d3L, TBCA);
     myIndex = builder.seal();
   }
 

@@ -7,8 +7,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class BCA_Editor extends DefaultNodeEditor {
+public class TABCEEG_Editor extends DefaultNodeEditor {
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return new BCA_EditorBuilder_a(editorContext, node).createCell();
+    return new TABCEEG_EditorBuilder_a(editorContext, node).createCell();
   }
 }

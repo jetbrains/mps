@@ -34,7 +34,7 @@ public class CompletionSpaceFirst_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("3586175963765094834", "3586175963765094844");
-      typeString("abcDeF");
+      typeString("tabcDeF");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
     }
   }

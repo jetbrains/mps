@@ -10,6 +10,8 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.jupiter.api.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 
 @MPSLaunch
 public class CompletionSpaceSecond_Test extends BaseTransformationTest {
@@ -34,8 +36,10 @@ public class CompletionSpaceSecond_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("3586175963765097036", "3586175963765097046");
-      typeString("abcDG");
+      typeString("tabcDG");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+      pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
+
     }
   }
 }

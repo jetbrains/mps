@@ -8997,8 +8997,8 @@
       <node id="3586175963764966583" at="26,55,27,36" concept="2" />
       <node id="3586175963764966583" at="32,52,33,19" concept="11" />
       <node id="3586175963764966583" at="37,51,38,72" concept="2" />
-      <node id="3586175963764966607" at="38,72,39,25" concept="2" />
-      <node id="3694071247855998069" at="39,25,40,71" concept="2" />
+      <node id="3586175963764966607" at="38,72,39,26" concept="2" />
+      <node id="3694071247855998069" at="39,26,40,71" concept="2" />
       <node id="3586175963764966610" at="40,71,41,82" concept="2" />
       <node id="3586175963764966612" at="41,82,42,0" concept="8" />
       <node id="3586175963764966583" at="18,0,20,0" concept="9" trace="ourParametersCacheExtension" />
@@ -9026,8 +9026,8 @@
       <node id="3586175963765094833" at="24,60,25,36" concept="2" />
       <node id="3586175963765094833" at="30,52,31,19" concept="11" />
       <node id="3586175963765094833" at="35,51,36,72" concept="2" />
-      <node id="3586175963765094856" at="36,72,37,27" concept="2" />
-      <node id="3694071247855997991" at="37,27,38,71" concept="2" />
+      <node id="3586175963765094856" at="36,72,37,28" concept="2" />
+      <node id="3694071247855997991" at="37,28,38,71" concept="2" />
       <node id="3586175963765094833" at="16,0,18,0" concept="9" trace="ourParametersCacheExtension" />
       <node id="3586175963765094833" at="19,0,22,0" concept="1" trace="CompletionSpaceFirst_Test#()V" />
       <node id="3586175963765094833" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -9049,29 +9049,31 @@
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/3586175963765097035">
     <file name="CompletionSpaceSecond_Test.java">
-      <node id="3586175963765097035" at="19,39,20,60" concept="11" />
-      <node id="3586175963765097035" at="24,61,25,36" concept="2" />
-      <node id="3586175963765097035" at="30,52,31,19" concept="11" />
-      <node id="3586175963765097035" at="35,51,36,72" concept="2" />
-      <node id="3586175963765097057" at="36,72,37,26" concept="2" />
-      <node id="3694071247855998039" at="37,26,38,71" concept="2" />
-      <node id="3586175963765097035" at="16,0,18,0" concept="9" trace="ourParametersCacheExtension" />
-      <node id="3586175963765097035" at="19,0,22,0" concept="1" trace="CompletionSpaceSecond_Test#()V" />
-      <node id="3586175963765097035" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="3586175963765097035" at="23,0,27,0" concept="5" trace="test_CompletionSpaceSecond#()V" />
-      <node id="3586175963765097035" at="34,0,40,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="3586175963765097035" at="19,39,20,60" />
-      <scope id="3586175963765097035" at="24,61,25,36" />
-      <scope id="3586175963765097035" at="30,52,31,19" />
-      <scope id="3586175963765097035" at="19,0,22,0" />
-      <scope id="3586175963765097035" at="30,0,33,0">
+      <node id="3586175963765097035" at="21,39,22,60" concept="11" />
+      <node id="3586175963765097035" at="26,61,27,36" concept="2" />
+      <node id="3586175963765097035" at="32,52,33,19" concept="11" />
+      <node id="3586175963765097035" at="37,51,38,72" concept="2" />
+      <node id="3586175963765097057" at="38,72,39,27" concept="2" />
+      <node id="3694071247855998039" at="39,27,40,71" concept="2" />
+      <node id="747115632856352508" at="40,71,41,82" concept="2" />
+      <node id="747115632856352503" at="41,82,42,0" concept="8" />
+      <node id="3586175963765097035" at="18,0,20,0" concept="9" trace="ourParametersCacheExtension" />
+      <node id="3586175963765097035" at="21,0,24,0" concept="1" trace="CompletionSpaceSecond_Test#()V" />
+      <node id="3586175963765097035" at="32,0,35,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3586175963765097035" at="25,0,29,0" concept="5" trace="test_CompletionSpaceSecond#()V" />
+      <node id="3586175963765097035" at="36,0,44,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="3586175963765097035" at="21,39,22,60" />
+      <scope id="3586175963765097035" at="26,61,27,36" />
+      <scope id="3586175963765097035" at="32,52,33,19" />
+      <scope id="3586175963765097035" at="21,0,24,0" />
+      <scope id="3586175963765097035" at="32,0,35,0">
         <var name="owner" id="3586175963765097035" />
       </scope>
-      <scope id="3586175963765097035" at="35,51,38,71" />
-      <scope id="3586175963765097035" at="23,0,27,0" />
-      <scope id="3586175963765097035" at="34,0,40,0" />
-      <unit id="3586175963765097035" at="28,0,41,0" name="jetbrains.mps.editorTest.CompletionSpaceSecond_Test$TestBody" />
-      <unit id="3586175963765097035" at="14,0,42,0" name="jetbrains.mps.editorTest.CompletionSpaceSecond_Test" />
+      <scope id="3586175963765097035" at="25,0,29,0" />
+      <scope id="3586175963765097035" at="37,51,42,0" />
+      <scope id="3586175963765097035" at="36,0,44,0" />
+      <unit id="3586175963765097035" at="30,0,45,0" name="jetbrains.mps.editorTest.CompletionSpaceSecond_Test$TestBody" />
+      <unit id="3586175963765097035" at="16,0,46,0" name="jetbrains.mps.editorTest.CompletionSpaceSecond_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/3593987271369314934">
@@ -22385,29 +22387,31 @@
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/7653661050354104995">
     <file name="CompletionUpperCaseAfterSpace_Test.java">
-      <node id="7653661050354104995" at="19,47,20,60" concept="11" />
-      <node id="7653661050354104995" at="24,69,25,36" concept="2" />
-      <node id="7653661050354104995" at="30,52,31,19" concept="11" />
-      <node id="7653661050354104995" at="35,51,36,72" concept="2" />
-      <node id="7653661050354105018" at="36,72,37,26" concept="2" />
-      <node id="3694071247855998029" at="37,26,38,71" concept="2" />
-      <node id="7653661050354104995" at="16,0,18,0" concept="9" trace="ourParametersCacheExtension" />
-      <node id="7653661050354104995" at="19,0,22,0" concept="1" trace="CompletionUpperCaseAfterSpace_Test#()V" />
-      <node id="7653661050354104995" at="30,0,33,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="7653661050354104995" at="23,0,27,0" concept="5" trace="test_CompletionUpperCaseAfterSpace#()V" />
-      <node id="7653661050354104995" at="34,0,40,0" concept="5" trace="testMethodImpl#()V" />
-      <scope id="7653661050354104995" at="19,47,20,60" />
-      <scope id="7653661050354104995" at="24,69,25,36" />
-      <scope id="7653661050354104995" at="30,52,31,19" />
-      <scope id="7653661050354104995" at="19,0,22,0" />
-      <scope id="7653661050354104995" at="30,0,33,0">
+      <node id="7653661050354104995" at="21,47,22,60" concept="11" />
+      <node id="7653661050354104995" at="26,69,27,36" concept="2" />
+      <node id="7653661050354104995" at="32,52,33,19" concept="11" />
+      <node id="7653661050354104995" at="37,51,38,72" concept="2" />
+      <node id="7653661050354105018" at="38,72,39,27" concept="2" />
+      <node id="3694071247855998029" at="39,27,40,71" concept="2" />
+      <node id="747115632856670486" at="40,71,41,82" concept="2" />
+      <node id="747115632856670465" at="41,82,42,0" concept="8" />
+      <node id="7653661050354104995" at="18,0,20,0" concept="9" trace="ourParametersCacheExtension" />
+      <node id="7653661050354104995" at="21,0,24,0" concept="1" trace="CompletionUpperCaseAfterSpace_Test#()V" />
+      <node id="7653661050354104995" at="32,0,35,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7653661050354104995" at="25,0,29,0" concept="5" trace="test_CompletionUpperCaseAfterSpace#()V" />
+      <node id="7653661050354104995" at="36,0,44,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="7653661050354104995" at="21,47,22,60" />
+      <scope id="7653661050354104995" at="26,69,27,36" />
+      <scope id="7653661050354104995" at="32,52,33,19" />
+      <scope id="7653661050354104995" at="21,0,24,0" />
+      <scope id="7653661050354104995" at="32,0,35,0">
         <var name="owner" id="7653661050354104995" />
       </scope>
-      <scope id="7653661050354104995" at="35,51,38,71" />
-      <scope id="7653661050354104995" at="23,0,27,0" />
-      <scope id="7653661050354104995" at="34,0,40,0" />
-      <unit id="7653661050354104995" at="28,0,41,0" name="jetbrains.mps.editorTest.CompletionUpperCaseAfterSpace_Test$TestBody" />
-      <unit id="7653661050354104995" at="14,0,42,0" name="jetbrains.mps.editorTest.CompletionUpperCaseAfterSpace_Test" />
+      <scope id="7653661050354104995" at="25,0,29,0" />
+      <scope id="7653661050354104995" at="37,51,42,0" />
+      <scope id="7653661050354104995" at="36,0,44,0" />
+      <unit id="7653661050354104995" at="30,0,45,0" name="jetbrains.mps.editorTest.CompletionUpperCaseAfterSpace_Test$TestBody" />
+      <unit id="7653661050354104995" at="16,0,46,0" name="jetbrains.mps.editorTest.CompletionUpperCaseAfterSpace_Test" />
     </file>
   </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/7704251192656077259">
@@ -27285,8 +27289,8 @@
       <node id="8933061889659160147" at="32,52,33,19" concept="11" />
       <node id="8933061889659160147" at="37,51,38,72" concept="2" />
       <node id="3694071247855998085" at="38,72,39,71" concept="2" />
-      <node id="8933061889659393174" at="39,71,40,23" concept="2" />
-      <node id="8933061889659393680" at="40,23,41,82" concept="2" />
+      <node id="8933061889659393174" at="39,71,40,24" concept="2" />
+      <node id="8933061889659393680" at="40,24,41,82" concept="2" />
       <node id="8933061889659160147" at="18,0,20,0" concept="9" trace="ourParametersCacheExtension" />
       <node id="8933061889659160147" at="21,0,24,0" concept="1" trace="JustTypeCompletion_Test#()V" />
       <node id="8933061889659160147" at="32,0,35,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
@@ -27313,8 +27317,8 @@
       <node id="8933061889659393807" at="32,52,33,19" concept="11" />
       <node id="8933061889659393807" at="37,51,38,72" concept="2" />
       <node id="3694071247855998035" at="38,72,39,71" concept="2" />
-      <node id="8933061889659393832" at="39,71,40,24" concept="2" />
-      <node id="8933061889659412052" at="40,24,41,81" concept="2" />
+      <node id="8933061889659393832" at="39,71,40,25" concept="2" />
+      <node id="8933061889659412052" at="40,25,41,81" concept="2" />
       <node id="8933061889659412085" at="41,81,42,81" concept="2" />
       <node id="73782015720483862" at="42,81,43,81" concept="2" />
       <node id="8933061889659813859" at="43,81,44,22" concept="2" />
@@ -27345,8 +27349,8 @@
       <node id="8933061889659412223" at="32,52,33,19" concept="11" />
       <node id="8933061889659412223" at="37,51,38,72" concept="2" />
       <node id="3694071247855998015" at="38,72,39,71" concept="2" />
-      <node id="8933061889659412247" at="39,71,40,24" concept="2" />
-      <node id="8933061889659412248" at="40,24,41,87" concept="2" />
+      <node id="8933061889659412247" at="39,71,40,25" concept="2" />
+      <node id="8933061889659412248" at="40,25,41,87" concept="2" />
       <node id="8933061889659412250" at="41,87,42,87" concept="2" />
       <node id="8933061889659445409" at="42,87,43,87" concept="2" />
       <node id="8933061889659446096" at="43,87,44,24" concept="2" />
@@ -27377,8 +27381,8 @@
       <node id="8933061889659446776" at="32,52,33,19" concept="11" />
       <node id="8933061889659446776" at="37,51,38,72" concept="2" />
       <node id="3694071247855997987" at="38,72,39,71" concept="2" />
-      <node id="8933061889659446801" at="39,71,40,24" concept="2" />
-      <node id="8933061889659463264" at="40,24,41,81" concept="2" />
+      <node id="8933061889659446801" at="39,71,40,25" concept="2" />
+      <node id="8933061889659463264" at="40,25,41,81" concept="2" />
       <node id="8933061889659664478" at="41,81,42,87" concept="2" />
       <node id="8933061889659664501" at="42,87,43,87" concept="2" />
       <node id="8933061889659446808" at="43,87,44,23" concept="2" />

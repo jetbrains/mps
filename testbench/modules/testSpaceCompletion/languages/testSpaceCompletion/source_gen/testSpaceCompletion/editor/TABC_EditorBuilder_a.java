@@ -14,11 +14,11 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 
-/*package*/ class ABCEEG_EditorBuilder_a extends AbstractEditorBuilder {
+/*package*/ class TABC_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
   private SNode myNode;
 
-  public ABCEEG_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
+  public TABC_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
     super(context);
     myNode = node;
   }
@@ -35,7 +35,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 
   private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_8j431v_a");
+    editorCell.setCellId("Collection_eg4ptr_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.addEditorCell(createConstant_0());
@@ -44,14 +44,14 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
     return editorCell;
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "ABCEEG");
-    editorCell.setCellId("Constant_8j431v_a0");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "ABC");
+    editorCell.setCellId("Constant_eg4ptr_a0");
     editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
-    editorCell.setCellId("Constant_8j431v_b0");
+    editorCell.setCellId("Constant_eg4ptr_b0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     style.set(StyleAttributes.MATCHING_LABEL, "body-paren");
@@ -62,7 +62,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
   }
   private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ")");
-    editorCell.setCellId("Constant_8j431v_c0");
+    editorCell.setCellId("Constant_eg4ptr_c0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     style.set(StyleAttributes.MATCHING_LABEL, "body-paren");
