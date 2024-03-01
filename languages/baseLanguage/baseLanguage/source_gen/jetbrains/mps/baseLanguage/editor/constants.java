@@ -165,7 +165,7 @@ public class constants extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.HexIntegerLiteral$yn)) {
+        if (!(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IntegerConstant$Na))) {
           return false;
         }
         Object hexResult = constants.this._additional_parseHexIntegerValue(pattern);

@@ -34,7 +34,7 @@ public class AddSingleLineComment10_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("4130647685506773686", "4130647685506773693");
-      typeString("abc");
+      typeString("dabc");
       invokeAction("jetbrains.mps.ide.editor.actions.Comment_Action");
     }
   }

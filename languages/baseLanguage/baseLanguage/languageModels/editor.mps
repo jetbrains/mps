@@ -51386,11 +51386,13 @@
                   <node concept="3clFbT" id="7fGiXONwaWk" role="3cqZAk" />
                 </node>
               </node>
-              <node concept="2OqwBi" id="7fGiXONwdZa" role="3clFbw">
-                <node concept="1yR$tW" id="7fGiXONwdZb" role="2Oq$k0" />
-                <node concept="1mIQ4w" id="7fGiXONwdZc" role="2OqNvi">
-                  <node concept="chp4Y" id="7fGiXONwdZd" role="cj9EA">
-                    <ref role="cht4Q" to="tpee:hanou1N" resolve="HexIntegerLiteral" />
+              <node concept="3fqX7Q" id="DuirmICiaf" role="3clFbw">
+                <node concept="2OqwBi" id="DuirmICiah" role="3fr31v">
+                  <node concept="1yR$tW" id="DuirmICiai" role="2Oq$k0" />
+                  <node concept="1mIQ4w" id="DuirmICiaj" role="2OqNvi">
+                    <node concept="chp4Y" id="DuirmICiak" role="cj9EA">
+                      <ref role="cht4Q" to="tpee:fzcmrck" resolve="IntegerConstant" />
+                    </node>
                   </node>
                 </node>
               </node>
