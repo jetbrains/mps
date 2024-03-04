@@ -43,6 +43,9 @@
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
+      <concept id="8353134822275456723" name="jetbrains.mps.baseLanguage.structure.HexLongLiteral" flags="ng" index="11gdke">
+        <property id="8353134822275456796" name="hexValue" index="11gdj1" />
+      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
@@ -281,16 +284,16 @@
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
               <uo k="s:originTrace" v="n:3181756179489941249" />
-              <node concept="1adDum" id="M" role="37wK5m">
-                <property role="1adDun" value="0xb17a9ec844a540a1L" />
+              <node concept="11gdke" id="M" role="37wK5m">
+                <property role="11gdj1" value="b17a9ec844a540a1L" />
                 <uo k="s:originTrace" v="n:3181756179489941249" />
               </node>
-              <node concept="1adDum" id="N" role="37wK5m">
-                <property role="1adDun" value="0x9216058d277424ebL" />
+              <node concept="11gdke" id="N" role="37wK5m">
+                <property role="11gdj1" value="9216058d277424ebL" />
                 <uo k="s:originTrace" v="n:3181756179489941249" />
               </node>
-              <node concept="1adDum" id="O" role="37wK5m">
-                <property role="1adDun" value="0x2c27de6338059161L" />
+              <node concept="11gdke" id="O" role="37wK5m">
+                <property role="11gdj1" value="2c27de6338059161L" />
                 <uo k="s:originTrace" v="n:3181756179489941249" />
               </node>
               <node concept="Xl_RD" id="P" role="37wK5m">

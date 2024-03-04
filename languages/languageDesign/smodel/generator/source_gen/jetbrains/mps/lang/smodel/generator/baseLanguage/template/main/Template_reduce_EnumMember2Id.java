@@ -56,7 +56,7 @@ public class Template_reduce_EnumMember2Id extends TemplateDeclarationBase {
     @Override
     public SProperty[] properties() {
       SProperty[] rv = new SProperty[1];
-      rv[0] = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "numValue");
+      rv[0] = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, 0x3b418722717710b5L, "value");
       return rv;
     }
 
