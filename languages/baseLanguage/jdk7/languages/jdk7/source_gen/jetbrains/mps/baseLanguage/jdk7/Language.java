@@ -11,7 +11,6 @@ import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor;
 import jetbrains.mps.baseLanguage.jdk7.migration.MigrationDescriptor;
 import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
-import jetbrains.mps.baseLanguage.jdk7.typesystem.TypesystemDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptPresentationAspect;
 import jetbrains.mps.baseLanguage.jdk7.structure.ConceptPresentationAspectImpl;
@@ -50,7 +49,7 @@ public class Language extends LanguageRuntime {
       return aspectClass.cast(new MigrationDescriptor());
     }
     if (aspectClass == IHelginsDescriptor.class) {
-      return aspectClass.cast(new TypesystemDescriptor());
+      return aspectClass.cast(new ());
     }
     if (aspectClass == StructureAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.baseLanguage.jdk7.structure.StructureAspectDescriptor());

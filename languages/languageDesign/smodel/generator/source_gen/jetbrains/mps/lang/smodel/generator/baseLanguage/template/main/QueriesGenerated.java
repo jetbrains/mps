@@ -922,16 +922,16 @@ public class QueriesGenerated {
     return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_137_1(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(((SDataTypeId) _context.getVariable("var:datatypeId")).getLanguageId().getHighBits()) + 'L';
+    return Long.toHexString(((SDataTypeId) _context.getVariable("var:datatypeId")).getLanguageId().getHighBits()) + 'L';
   }
   public static Object propertyMacro_GetValue_137_2(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(((SDataTypeId) _context.getVariable("var:datatypeId")).getLanguageId().getLowBits()) + 'L';
+    return Long.toHexString(((SDataTypeId) _context.getVariable("var:datatypeId")).getLanguageId().getLowBits()) + 'L';
   }
   public static Object propertyMacro_GetValue_137_3(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(((SDataTypeId) _context.getVariable("var:datatypeId")).getIdValue()) + 'L';
+    return Long.toHexString(((SDataTypeId) _context.getVariable("var:datatypeId")).getIdValue()) + 'L';
   }
   public static Object propertyMacro_GetValue_137_4(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(MetaIdByDeclaration.getEnumLiteralId(SLinkOperations.getTarget(_context.getNode(), LINKS.decl$$49r)).getIdValue()) + 'L';
+    return Long.toHexString(MetaIdByDeclaration.getEnumLiteralId(SLinkOperations.getTarget(_context.getNode(), LINKS.decl$$49r)).getIdValue()) + 'L';
   }
   public static Object propertyMacro_GetValue_138_0(final PropertyMacroContext _context) {
     return "0x" + Long.toHexString(MetaIdByDeclaration.getEnumLiteralId(_context.getNode()).getIdValue()) + 'L';
@@ -962,7 +962,7 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_146_2(final PropertyMacroContext _context) {
     long compressedLanguageId = ((ConceptMethodGenerationHelper) _context.getVariable("var:helper")).getCompressedLanguageId(_context);
-    return "0x" + Long.toHexString(compressedLanguageId) + "L";
+    return Long.toHexString(compressedLanguageId) + "L";
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
     {

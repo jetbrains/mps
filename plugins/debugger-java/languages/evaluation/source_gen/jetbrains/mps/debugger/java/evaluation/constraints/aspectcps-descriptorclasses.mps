@@ -62,6 +62,9 @@
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
+      <concept id="8353134822275456723" name="jetbrains.mps.baseLanguage.structure.HexLongLiteral" flags="ng" index="11gdke">
+        <property id="8353134822275456796" name="hexValue" index="11gdj1" />
+      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
@@ -72,9 +75,6 @@
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
-      </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
       </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
@@ -386,16 +386,16 @@
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
               <uo k="s:originTrace" v="n:6036237525966325224" />
-              <node concept="1adDum" id="Q" role="37wK5m">
-                <property role="1adDun" value="0x7da4580f9d754603L" />
+              <node concept="11gdke" id="Q" role="37wK5m">
+                <property role="11gdj1" value="7da4580f9d754603L" />
                 <uo k="s:originTrace" v="n:6036237525966325224" />
               </node>
-              <node concept="1adDum" id="R" role="37wK5m">
-                <property role="1adDun" value="0x816251a896d78375L" />
+              <node concept="11gdke" id="R" role="37wK5m">
+                <property role="11gdj1" value="816251a896d78375L" />
                 <uo k="s:originTrace" v="n:6036237525966325224" />
               </node>
-              <node concept="1adDum" id="S" role="37wK5m">
-                <property role="1adDun" value="0x53c5060c6b1ae1feL" />
+              <node concept="11gdke" id="S" role="37wK5m">
+                <property role="11gdj1" value="53c5060c6b1ae1feL" />
                 <uo k="s:originTrace" v="n:6036237525966325224" />
               </node>
               <node concept="Xl_RD" id="T" role="37wK5m">
@@ -691,20 +691,20 @@
                       <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String)" resolve="getReferenceLink" />
                       <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
                       <uo k="s:originTrace" v="n:6036237525966325224" />
-                      <node concept="1adDum" id="2d" role="37wK5m">
-                        <property role="1adDun" value="0xf3061a5392264cc5L" />
+                      <node concept="11gdke" id="2d" role="37wK5m">
+                        <property role="11gdj1" value="f3061a5392264cc5L" />
                         <uo k="s:originTrace" v="n:6036237525966325224" />
                       </node>
-                      <node concept="1adDum" id="2e" role="37wK5m">
-                        <property role="1adDun" value="0xa443f952ceaf5816L" />
+                      <node concept="11gdke" id="2e" role="37wK5m">
+                        <property role="11gdj1" value="a443f952ceaf5816L" />
                         <uo k="s:originTrace" v="n:6036237525966325224" />
                       </node>
-                      <node concept="1adDum" id="2f" role="37wK5m">
-                        <property role="1adDun" value="0x11857355952L" />
+                      <node concept="11gdke" id="2f" role="37wK5m">
+                        <property role="11gdj1" value="11857355952L" />
                         <uo k="s:originTrace" v="n:6036237525966325224" />
                       </node>
-                      <node concept="1adDum" id="2g" role="37wK5m">
-                        <property role="1adDun" value="0xf8c78301adL" />
+                      <node concept="11gdke" id="2g" role="37wK5m">
+                        <property role="11gdj1" value="f8c78301adL" />
                         <uo k="s:originTrace" v="n:6036237525966325224" />
                       </node>
                       <node concept="Xl_RD" id="2h" role="37wK5m">
@@ -1296,16 +1296,16 @@
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
               <uo k="s:originTrace" v="n:6036237525966315979" />
-              <node concept="1adDum" id="4J" role="37wK5m">
-                <property role="1adDun" value="0x7da4580f9d754603L" />
+              <node concept="11gdke" id="4J" role="37wK5m">
+                <property role="11gdj1" value="7da4580f9d754603L" />
                 <uo k="s:originTrace" v="n:6036237525966315979" />
               </node>
-              <node concept="1adDum" id="4K" role="37wK5m">
-                <property role="1adDun" value="0x816251a896d78375L" />
+              <node concept="11gdke" id="4K" role="37wK5m">
+                <property role="11gdj1" value="816251a896d78375L" />
                 <uo k="s:originTrace" v="n:6036237525966315979" />
               </node>
-              <node concept="1adDum" id="4L" role="37wK5m">
-                <property role="1adDun" value="0x53c5060c6b1ae1c6L" />
+              <node concept="11gdke" id="4L" role="37wK5m">
+                <property role="11gdj1" value="53c5060c6b1ae1c6L" />
                 <uo k="s:originTrace" v="n:6036237525966315979" />
               </node>
               <node concept="Xl_RD" id="4M" role="37wK5m">
@@ -1714,16 +1714,16 @@
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getConcept(long,long,long,java.lang.String)" resolve="getConcept" />
               <uo k="s:originTrace" v="n:6146091894852365519" />
-              <node concept="1adDum" id="6z" role="37wK5m">
-                <property role="1adDun" value="0x7da4580f9d754603L" />
+              <node concept="11gdke" id="6z" role="37wK5m">
+                <property role="11gdj1" value="7da4580f9d754603L" />
                 <uo k="s:originTrace" v="n:6146091894852365519" />
               </node>
-              <node concept="1adDum" id="6$" role="37wK5m">
-                <property role="1adDun" value="0x816251a896d78375L" />
+              <node concept="11gdke" id="6$" role="37wK5m">
+                <property role="11gdj1" value="816251a896d78375L" />
                 <uo k="s:originTrace" v="n:6146091894852365519" />
               </node>
-              <node concept="1adDum" id="6_" role="37wK5m">
-                <property role="1adDun" value="0x7d9a547f857a394bL" />
+              <node concept="11gdke" id="6_" role="37wK5m">
+                <property role="11gdj1" value="7d9a547f857a394bL" />
                 <uo k="s:originTrace" v="n:6146091894852365519" />
               </node>
               <node concept="Xl_RD" id="6A" role="37wK5m">
@@ -1789,20 +1789,20 @@
                       <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getReferenceLink(long,long,long,long,java.lang.String)" resolve="getReferenceLink" />
                       <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
                       <uo k="s:originTrace" v="n:6146091894852365519" />
-                      <node concept="1adDum" id="6X" role="37wK5m">
-                        <property role="1adDun" value="0xf3061a5392264cc5L" />
+                      <node concept="11gdke" id="6X" role="37wK5m">
+                        <property role="11gdj1" value="f3061a5392264cc5L" />
                         <uo k="s:originTrace" v="n:6146091894852365519" />
                       </node>
-                      <node concept="1adDum" id="6Y" role="37wK5m">
-                        <property role="1adDun" value="0xa443f952ceaf5816L" />
+                      <node concept="11gdke" id="6Y" role="37wK5m">
+                        <property role="11gdj1" value="a443f952ceaf5816L" />
                         <uo k="s:originTrace" v="n:6146091894852365519" />
                       </node>
-                      <node concept="1adDum" id="6Z" role="37wK5m">
-                        <property role="1adDun" value="0x4c4b92003e49a704L" />
+                      <node concept="11gdke" id="6Z" role="37wK5m">
+                        <property role="11gdj1" value="4c4b92003e49a704L" />
                         <uo k="s:originTrace" v="n:6146091894852365519" />
                       </node>
-                      <node concept="1adDum" id="70" role="37wK5m">
-                        <property role="1adDun" value="0x4c4b92003e49a705L" />
+                      <node concept="11gdke" id="70" role="37wK5m">
+                        <property role="11gdj1" value="4c4b92003e49a705L" />
                         <uo k="s:originTrace" v="n:6146091894852365519" />
                       </node>
                       <node concept="Xl_RD" id="71" role="37wK5m">
