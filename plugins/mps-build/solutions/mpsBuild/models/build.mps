@@ -54,6 +54,9 @@
       <concept id="2755237150521975431" name="jetbrains.mps.build.structure.BuildVariableMacroInitWithString" flags="ng" index="aVJcg">
         <child id="2755237150521975437" name="value" index="aVJcq" />
       </concept>
+      <concept id="244868996532550359" name="jetbrains.mps.build.structure.BuildVariableMacroInitWithValueFromFile" flags="ng" index="hGsBp">
+        <child id="244868996532550360" name="fileName" index="hGsBm" />
+      </concept>
       <concept id="244868996532454372" name="jetbrains.mps.build.structure.BuildVariableMacroInitWithDate" flags="ng" index="hHN3E">
         <property id="244868996532454384" name="pattern" index="hHN3Y" />
       </concept>
@@ -29553,6 +29556,22 @@
         <node concept="NbPM2" id="7i$e6qbZNMf" role="aVJcq">
           <node concept="3Mxwew" id="7i$e6qbZNMe" role="3MwsjC">
             <property role="3MwjfP" value="SNAPSHOT" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2kB4xC" id="1DecuqS9hIW" role="1l3spd">
+      <property role="TrG5h" value="runtimeBuild" />
+      <node concept="hGsBp" id="1DecuqS9jym" role="aVJcv">
+        <node concept="55IIr" id="1DecuqS9jyn" role="hGsBm">
+          <node concept="2Ry0Ak" id="1DecuqS9jAL" role="iGT6I">
+            <property role="2Ry0Am" value="build" />
+            <node concept="2Ry0Ak" id="1DecuqS9jD0" role="2Ry0An">
+              <property role="2Ry0Am" value="dependencies" />
+              <node concept="2Ry0Ak" id="1DecuqS9jEa" role="2Ry0An">
+                <property role="2Ry0Am" value="dependencies.properties" />
+              </node>
+            </node>
           </node>
         </node>
       </node>

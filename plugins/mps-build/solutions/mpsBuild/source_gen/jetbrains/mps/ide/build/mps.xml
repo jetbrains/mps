@@ -11,6 +11,8 @@
   <property name="teamcity.buildConfName" value="local" />
   <loadfile property="idea.platform.build.number" srcFile="${basedir}/lib/build.txt" />
   <property name="mps.build.counter" value="SNAPSHOT" />
+  <property file="${basedir}/build/dependencies/dependencies.properties" prefix="loaded.for.runtimeBuild" />
+  <property name="runtimeBuild" value="${loaded.for.runtimeBuild.runtimeBuild}" />
   <property name="mps_home" location="${basedir}" />
   <property name="artifacts.mpsBuild" location="${build.dir}/artifacts/mpsBuild" />
   <property name="artifacts.mpsConsolePlugin" location="${build.dir}/artifacts/mpsConsolePlugin" />
@@ -267,7 +269,7 @@
         </tokenfilter>
       </filterchain>
     </copy>
-    <echo file="${build.layout}/build.properties">mps.build.number=${build.number}${line.separator}mps.date=${date}${line.separator}mps.build.vcs.number=${build.vcs.number}${line.separator}mps.teamcity.buildConfName=${teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.build.counter}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
+    <echo file="${build.layout}/build.properties">mps.build.number=${build.number}${line.separator}mps.date=${date}${line.separator}mps.build.vcs.number=${build.vcs.number}${line.separator}mps.teamcity.buildConfName=${teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.build.counter}${line.separator}mps.runtimeBuild=${runtimeBuild}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
   
   <target name="buildDependents">
