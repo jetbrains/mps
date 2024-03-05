@@ -66,6 +66,9 @@
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
+      <concept id="8353134822275456723" name="jetbrains.mps.baseLanguage.structure.HexLongLiteral" flags="ng" index="11gdke">
+        <property id="8353134822275456796" name="hexValue" index="11gdj1" />
+      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
@@ -656,14 +659,14 @@
                 <node concept="Xl_RD" id="3a" role="37wK5m">
                   <property role="Xl_RC" value="IMainClass" />
                 </node>
-                <node concept="1adDum" id="3b" role="37wK5m">
-                  <property role="1adDun" value="0x4caf0310491e41f5L" />
+                <node concept="11gdke" id="3b" role="37wK5m">
+                  <property role="11gdj1" value="4caf0310491e41f5L" />
                 </node>
-                <node concept="1adDum" id="3c" role="37wK5m">
-                  <property role="1adDun" value="0x8a9b2006b3a94898L" />
+                <node concept="11gdke" id="3c" role="37wK5m">
+                  <property role="11gdj1" value="8a9b2006b3a94898L" />
                 </node>
-                <node concept="1adDum" id="3d" role="37wK5m">
-                  <property role="1adDun" value="0x40c1a7cb987d20d5L" />
+                <node concept="11gdke" id="3d" role="37wK5m">
+                  <property role="11gdj1" value="40c1a7cb987d20d5L" />
                 </node>
               </node>
             </node>

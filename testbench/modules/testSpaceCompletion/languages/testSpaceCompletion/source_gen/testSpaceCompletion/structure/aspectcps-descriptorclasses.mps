@@ -66,6 +66,9 @@
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
+      <concept id="8353134822275456723" name="jetbrains.mps.baseLanguage.structure.HexLongLiteral" flags="ng" index="11gdke">
+        <property id="8353134822275456796" name="hexValue" index="11gdj1" />
+      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
@@ -1251,11 +1254,11 @@
             </node>
             <node concept="liA8E" id="6y" role="2OqNvi">
               <ref role="37wK5l" to="ze1i:~StructureAspectDescriptor$Dependencies.extendedLanguage(long,long,java.lang.String)" resolve="extendedLanguage" />
-              <node concept="1adDum" id="6z" role="37wK5m">
-                <property role="1adDun" value="0xf3061a5392264cc5L" />
+              <node concept="11gdke" id="6z" role="37wK5m">
+                <property role="11gdj1" value="f3061a5392264cc5L" />
               </node>
-              <node concept="1adDum" id="6$" role="37wK5m">
-                <property role="1adDun" value="0xa443f952ceaf5816L" />
+              <node concept="11gdke" id="6$" role="37wK5m">
+                <property role="11gdj1" value="a443f952ceaf5816L" />
               </node>
               <node concept="Xl_RD" id="6_" role="37wK5m">
                 <property role="Xl_RC" value="jetbrains.mps.baseLanguage" />
@@ -1496,14 +1499,14 @@
                 <node concept="Xl_RD" id="7Z" role="37wK5m">
                   <property role="Xl_RC" value="TABC" />
                 </node>
-                <node concept="1adDum" id="80" role="37wK5m">
-                  <property role="1adDun" value="0x4dd3c558f0fc4807L" />
+                <node concept="11gdke" id="80" role="37wK5m">
+                  <property role="11gdj1" value="4dd3c558f0fc4807L" />
                 </node>
-                <node concept="1adDum" id="81" role="37wK5m">
-                  <property role="1adDun" value="0xbade5d6bcad6b3f1L" />
+                <node concept="11gdke" id="81" role="37wK5m">
+                  <property role="11gdj1" value="bade5d6bcad6b3f1L" />
                 </node>
-                <node concept="1adDum" id="82" role="37wK5m">
-                  <property role="1adDun" value="0x31c4a809e6410e71L" />
+                <node concept="11gdke" id="82" role="37wK5m">
+                  <property role="11gdj1" value="31c4a809e6410e71L" />
                 </node>
               </node>
             </node>
@@ -1543,14 +1546,14 @@
             </node>
             <node concept="liA8E" id="8f" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.super_(long,long,long)" resolve="super_" />
-              <node concept="1adDum" id="8g" role="37wK5m">
-                <property role="1adDun" value="0xf3061a5392264cc5L" />
+              <node concept="11gdke" id="8g" role="37wK5m">
+                <property role="11gdj1" value="f3061a5392264cc5L" />
               </node>
-              <node concept="1adDum" id="8h" role="37wK5m">
-                <property role="1adDun" value="0xa443f952ceaf5816L" />
+              <node concept="11gdke" id="8h" role="37wK5m">
+                <property role="11gdj1" value="a443f952ceaf5816L" />
               </node>
-              <node concept="1adDum" id="8i" role="37wK5m">
-                <property role="1adDun" value="0xf8cc56b215L" />
+              <node concept="11gdke" id="8i" role="37wK5m">
+                <property role="11gdj1" value="f8cc56b215L" />
               </node>
             </node>
           </node>
@@ -1631,14 +1634,14 @@
                 <node concept="Xl_RD" id="8M" role="37wK5m">
                   <property role="Xl_RC" value="TABCDE" />
                 </node>
-                <node concept="1adDum" id="8N" role="37wK5m">
-                  <property role="1adDun" value="0x4dd3c558f0fc4807L" />
+                <node concept="11gdke" id="8N" role="37wK5m">
+                  <property role="11gdj1" value="4dd3c558f0fc4807L" />
                 </node>
-                <node concept="1adDum" id="8O" role="37wK5m">
-                  <property role="1adDun" value="0xbade5d6bcad6b3f1L" />
+                <node concept="11gdke" id="8O" role="37wK5m">
+                  <property role="11gdj1" value="bade5d6bcad6b3f1L" />
                 </node>
-                <node concept="1adDum" id="8P" role="37wK5m">
-                  <property role="1adDun" value="0x31c4a809e641174cL" />
+                <node concept="11gdke" id="8P" role="37wK5m">
+                  <property role="11gdj1" value="31c4a809e641174cL" />
                 </node>
               </node>
             </node>
@@ -1678,14 +1681,14 @@
             </node>
             <node concept="liA8E" id="92" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.super_(long,long,long)" resolve="super_" />
-              <node concept="1adDum" id="93" role="37wK5m">
-                <property role="1adDun" value="0xf3061a5392264cc5L" />
+              <node concept="11gdke" id="93" role="37wK5m">
+                <property role="11gdj1" value="f3061a5392264cc5L" />
               </node>
-              <node concept="1adDum" id="94" role="37wK5m">
-                <property role="1adDun" value="0xa443f952ceaf5816L" />
+              <node concept="11gdke" id="94" role="37wK5m">
+                <property role="11gdj1" value="a443f952ceaf5816L" />
               </node>
-              <node concept="1adDum" id="95" role="37wK5m">
-                <property role="1adDun" value="0xf8cc56b215L" />
+              <node concept="11gdke" id="95" role="37wK5m">
+                <property role="11gdj1" value="f8cc56b215L" />
               </node>
             </node>
           </node>
@@ -1766,14 +1769,14 @@
                 <node concept="Xl_RD" id="9_" role="37wK5m">
                   <property role="Xl_RC" value="TABCDEF" />
                 </node>
-                <node concept="1adDum" id="9A" role="37wK5m">
-                  <property role="1adDun" value="0x4dd3c558f0fc4807L" />
+                <node concept="11gdke" id="9A" role="37wK5m">
+                  <property role="11gdj1" value="4dd3c558f0fc4807L" />
                 </node>
-                <node concept="1adDum" id="9B" role="37wK5m">
-                  <property role="1adDun" value="0xbade5d6bcad6b3f1L" />
+                <node concept="11gdke" id="9B" role="37wK5m">
+                  <property role="11gdj1" value="bade5d6bcad6b3f1L" />
                 </node>
-                <node concept="1adDum" id="9C" role="37wK5m">
-                  <property role="1adDun" value="0x31c4a809e6411758L" />
+                <node concept="11gdke" id="9C" role="37wK5m">
+                  <property role="11gdj1" value="31c4a809e6411758L" />
                 </node>
               </node>
             </node>
@@ -1813,14 +1816,14 @@
             </node>
             <node concept="liA8E" id="9P" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.super_(long,long,long)" resolve="super_" />
-              <node concept="1adDum" id="9Q" role="37wK5m">
-                <property role="1adDun" value="0xf3061a5392264cc5L" />
+              <node concept="11gdke" id="9Q" role="37wK5m">
+                <property role="11gdj1" value="f3061a5392264cc5L" />
               </node>
-              <node concept="1adDum" id="9R" role="37wK5m">
-                <property role="1adDun" value="0xa443f952ceaf5816L" />
+              <node concept="11gdke" id="9R" role="37wK5m">
+                <property role="11gdj1" value="a443f952ceaf5816L" />
               </node>
-              <node concept="1adDum" id="9S" role="37wK5m">
-                <property role="1adDun" value="0xf8cc56b215L" />
+              <node concept="11gdke" id="9S" role="37wK5m">
+                <property role="11gdj1" value="f8cc56b215L" />
               </node>
             </node>
           </node>
@@ -1901,14 +1904,14 @@
                 <node concept="Xl_RD" id="ao" role="37wK5m">
                   <property role="Xl_RC" value="TABCDEG" />
                 </node>
-                <node concept="1adDum" id="ap" role="37wK5m">
-                  <property role="1adDun" value="0x4dd3c558f0fc4807L" />
+                <node concept="11gdke" id="ap" role="37wK5m">
+                  <property role="11gdj1" value="4dd3c558f0fc4807L" />
                 </node>
-                <node concept="1adDum" id="aq" role="37wK5m">
-                  <property role="1adDun" value="0xbade5d6bcad6b3f1L" />
+                <node concept="11gdke" id="aq" role="37wK5m">
+                  <property role="11gdj1" value="bade5d6bcad6b3f1L" />
                 </node>
-                <node concept="1adDum" id="ar" role="37wK5m">
-                  <property role="1adDun" value="0x31c4a809e6411754L" />
+                <node concept="11gdke" id="ar" role="37wK5m">
+                  <property role="11gdj1" value="31c4a809e6411754L" />
                 </node>
               </node>
             </node>
@@ -1948,14 +1951,14 @@
             </node>
             <node concept="liA8E" id="aC" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.super_(long,long,long)" resolve="super_" />
-              <node concept="1adDum" id="aD" role="37wK5m">
-                <property role="1adDun" value="0xf3061a5392264cc5L" />
+              <node concept="11gdke" id="aD" role="37wK5m">
+                <property role="11gdj1" value="f3061a5392264cc5L" />
               </node>
-              <node concept="1adDum" id="aE" role="37wK5m">
-                <property role="1adDun" value="0xa443f952ceaf5816L" />
+              <node concept="11gdke" id="aE" role="37wK5m">
+                <property role="11gdj1" value="a443f952ceaf5816L" />
               </node>
-              <node concept="1adDum" id="aF" role="37wK5m">
-                <property role="1adDun" value="0xf8cc56b215L" />
+              <node concept="11gdke" id="aF" role="37wK5m">
+                <property role="11gdj1" value="f8cc56b215L" />
               </node>
             </node>
           </node>
@@ -2036,14 +2039,14 @@
                 <node concept="Xl_RD" id="bb" role="37wK5m">
                   <property role="Xl_RC" value="TABCEEG" />
                 </node>
-                <node concept="1adDum" id="bc" role="37wK5m">
-                  <property role="1adDun" value="0x4dd3c558f0fc4807L" />
+                <node concept="11gdke" id="bc" role="37wK5m">
+                  <property role="11gdj1" value="4dd3c558f0fc4807L" />
                 </node>
-                <node concept="1adDum" id="bd" role="37wK5m">
-                  <property role="1adDun" value="0xbade5d6bcad6b3f1L" />
+                <node concept="11gdke" id="bd" role="37wK5m">
+                  <property role="11gdj1" value="bade5d6bcad6b3f1L" />
                 </node>
-                <node concept="1adDum" id="be" role="37wK5m">
-                  <property role="1adDun" value="0x6a37442ca9969678L" />
+                <node concept="11gdke" id="be" role="37wK5m">
+                  <property role="11gdj1" value="6a37442ca9969678L" />
                 </node>
               </node>
             </node>
@@ -2083,14 +2086,14 @@
             </node>
             <node concept="liA8E" id="br" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.super_(long,long,long)" resolve="super_" />
-              <node concept="1adDum" id="bs" role="37wK5m">
-                <property role="1adDun" value="0xf3061a5392264cc5L" />
+              <node concept="11gdke" id="bs" role="37wK5m">
+                <property role="11gdj1" value="f3061a5392264cc5L" />
               </node>
-              <node concept="1adDum" id="bt" role="37wK5m">
-                <property role="1adDun" value="0xa443f952ceaf5816L" />
+              <node concept="11gdke" id="bt" role="37wK5m">
+                <property role="11gdj1" value="a443f952ceaf5816L" />
               </node>
-              <node concept="1adDum" id="bu" role="37wK5m">
-                <property role="1adDun" value="0xf8cc56b215L" />
+              <node concept="11gdke" id="bu" role="37wK5m">
+                <property role="11gdj1" value="f8cc56b215L" />
               </node>
             </node>
           </node>
@@ -2171,14 +2174,14 @@
                 <node concept="Xl_RD" id="bY" role="37wK5m">
                   <property role="Xl_RC" value="TBAC" />
                 </node>
-                <node concept="1adDum" id="bZ" role="37wK5m">
-                  <property role="1adDun" value="0x4dd3c558f0fc4807L" />
+                <node concept="11gdke" id="bZ" role="37wK5m">
+                  <property role="11gdj1" value="4dd3c558f0fc4807L" />
                 </node>
-                <node concept="1adDum" id="c0" role="37wK5m">
-                  <property role="1adDun" value="0xbade5d6bcad6b3f1L" />
+                <node concept="11gdke" id="c0" role="37wK5m">
+                  <property role="11gdj1" value="bade5d6bcad6b3f1L" />
                 </node>
-                <node concept="1adDum" id="c1" role="37wK5m">
-                  <property role="1adDun" value="0x7bf89c7591b82d85L" />
+                <node concept="11gdke" id="c1" role="37wK5m">
+                  <property role="11gdj1" value="7bf89c7591b82d85L" />
                 </node>
               </node>
             </node>
@@ -2218,14 +2221,14 @@
             </node>
             <node concept="liA8E" id="ce" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.super_(long,long,long)" resolve="super_" />
-              <node concept="1adDum" id="cf" role="37wK5m">
-                <property role="1adDun" value="0xf3061a5392264cc5L" />
+              <node concept="11gdke" id="cf" role="37wK5m">
+                <property role="11gdj1" value="f3061a5392264cc5L" />
               </node>
-              <node concept="1adDum" id="cg" role="37wK5m">
-                <property role="1adDun" value="0xa443f952ceaf5816L" />
+              <node concept="11gdke" id="cg" role="37wK5m">
+                <property role="11gdj1" value="a443f952ceaf5816L" />
               </node>
-              <node concept="1adDum" id="ch" role="37wK5m">
-                <property role="1adDun" value="0xf8cc56b215L" />
+              <node concept="11gdke" id="ch" role="37wK5m">
+                <property role="11gdj1" value="f8cc56b215L" />
               </node>
             </node>
           </node>
@@ -2306,14 +2309,14 @@
                 <node concept="Xl_RD" id="cL" role="37wK5m">
                   <property role="Xl_RC" value="TBCA" />
                 </node>
-                <node concept="1adDum" id="cM" role="37wK5m">
-                  <property role="1adDun" value="0x4dd3c558f0fc4807L" />
+                <node concept="11gdke" id="cM" role="37wK5m">
+                  <property role="11gdj1" value="4dd3c558f0fc4807L" />
                 </node>
-                <node concept="1adDum" id="cN" role="37wK5m">
-                  <property role="1adDun" value="0xbade5d6bcad6b3f1L" />
+                <node concept="11gdke" id="cN" role="37wK5m">
+                  <property role="11gdj1" value="bade5d6bcad6b3f1L" />
                 </node>
-                <node concept="1adDum" id="cO" role="37wK5m">
-                  <property role="1adDun" value="0x7bf89c7591b848d3L" />
+                <node concept="11gdke" id="cO" role="37wK5m">
+                  <property role="11gdj1" value="7bf89c7591b848d3L" />
                 </node>
               </node>
             </node>
@@ -2353,14 +2356,14 @@
             </node>
             <node concept="liA8E" id="d1" role="2OqNvi">
               <ref role="37wK5l" to="bzg8:~ConceptDescriptorBuilder2.super_(long,long,long)" resolve="super_" />
-              <node concept="1adDum" id="d2" role="37wK5m">
-                <property role="1adDun" value="0xf3061a5392264cc5L" />
+              <node concept="11gdke" id="d2" role="37wK5m">
+                <property role="11gdj1" value="f3061a5392264cc5L" />
               </node>
-              <node concept="1adDum" id="d3" role="37wK5m">
-                <property role="1adDun" value="0xa443f952ceaf5816L" />
+              <node concept="11gdke" id="d3" role="37wK5m">
+                <property role="11gdj1" value="a443f952ceaf5816L" />
               </node>
-              <node concept="1adDum" id="d4" role="37wK5m">
-                <property role="1adDun" value="0xf8cc56b215L" />
+              <node concept="11gdke" id="d4" role="37wK5m">
+                <property role="11gdj1" value="f8cc56b215L" />
               </node>
             </node>
           </node>

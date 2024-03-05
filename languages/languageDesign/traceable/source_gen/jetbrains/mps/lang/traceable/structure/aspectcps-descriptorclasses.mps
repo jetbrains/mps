@@ -66,6 +66,9 @@
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
+      <concept id="8353134822275456723" name="jetbrains.mps.baseLanguage.structure.HexLongLiteral" flags="ng" index="11gdke">
+        <property id="8353134822275456796" name="hexValue" index="11gdj1" />
+      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
@@ -888,14 +891,14 @@
                 <node concept="Xl_RD" id="4y" role="37wK5m">
                   <property role="Xl_RC" value="ScopeConcept" />
                 </node>
-                <node concept="1adDum" id="4z" role="37wK5m">
-                  <property role="1adDun" value="0x9ded098bad6a4657L" />
+                <node concept="11gdke" id="4z" role="37wK5m">
+                  <property role="11gdj1" value="9ded098bad6a4657L" />
                 </node>
-                <node concept="1adDum" id="4$" role="37wK5m">
-                  <property role="1adDun" value="0xbfd948636cfe8bc3L" />
+                <node concept="11gdke" id="4$" role="37wK5m">
+                  <property role="11gdj1" value="bfd948636cfe8bc3L" />
                 </node>
-                <node concept="1adDum" id="4_" role="37wK5m">
-                  <property role="1adDun" value="0x465516cf87c705a2L" />
+                <node concept="11gdke" id="4_" role="37wK5m">
+                  <property role="11gdj1" value="465516cf87c705a2L" />
                 </node>
               </node>
             </node>
@@ -974,14 +977,14 @@
                 <node concept="Xl_RD" id="51" role="37wK5m">
                   <property role="Xl_RC" value="TraceableConcept" />
                 </node>
-                <node concept="1adDum" id="52" role="37wK5m">
-                  <property role="1adDun" value="0x9ded098bad6a4657L" />
+                <node concept="11gdke" id="52" role="37wK5m">
+                  <property role="11gdj1" value="9ded098bad6a4657L" />
                 </node>
-                <node concept="1adDum" id="53" role="37wK5m">
-                  <property role="1adDun" value="0xbfd948636cfe8bc3L" />
+                <node concept="11gdke" id="53" role="37wK5m">
+                  <property role="11gdj1" value="bfd948636cfe8bc3L" />
                 </node>
-                <node concept="1adDum" id="54" role="37wK5m">
-                  <property role="1adDun" value="0x465516cf87c705a3L" />
+                <node concept="11gdke" id="54" role="37wK5m">
+                  <property role="11gdj1" value="465516cf87c705a3L" />
                 </node>
               </node>
             </node>
@@ -1060,14 +1063,14 @@
                 <node concept="Xl_RD" id="5w" role="37wK5m">
                   <property role="Xl_RC" value="UnitConcept" />
                 </node>
-                <node concept="1adDum" id="5x" role="37wK5m">
-                  <property role="1adDun" value="0x9ded098bad6a4657L" />
+                <node concept="11gdke" id="5x" role="37wK5m">
+                  <property role="11gdj1" value="9ded098bad6a4657L" />
                 </node>
-                <node concept="1adDum" id="5y" role="37wK5m">
-                  <property role="1adDun" value="0xbfd948636cfe8bc3L" />
+                <node concept="11gdke" id="5y" role="37wK5m">
+                  <property role="11gdj1" value="bfd948636cfe8bc3L" />
                 </node>
-                <node concept="1adDum" id="5z" role="37wK5m">
-                  <property role="1adDun" value="0x465516cf87c705a4L" />
+                <node concept="11gdke" id="5z" role="37wK5m">
+                  <property role="11gdj1" value="465516cf87c705a4L" />
                 </node>
               </node>
             </node>

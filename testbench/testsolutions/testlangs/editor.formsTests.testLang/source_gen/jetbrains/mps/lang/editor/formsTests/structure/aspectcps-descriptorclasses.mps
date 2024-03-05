@@ -70,6 +70,9 @@
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
+      <concept id="8353134822275456723" name="jetbrains.mps.baseLanguage.structure.HexLongLiteral" flags="ng" index="11gdke">
+        <property id="8353134822275456796" name="hexValue" index="11gdj1" />
+      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
@@ -779,11 +782,11 @@
             </node>
             <node concept="liA8E" id="3Q" role="2OqNvi">
               <ref role="37wK5l" to="ze1i:~StructureAspectDescriptor$Dependencies.extendedLanguage(long,long,java.lang.String)" resolve="extendedLanguage" />
-              <node concept="1adDum" id="3R" role="37wK5m">
-                <property role="1adDun" value="0xceab519525ea4f22L" />
+              <node concept="11gdke" id="3R" role="37wK5m">
+                <property role="11gdj1" value="ceab519525ea4f22L" />
               </node>
-              <node concept="1adDum" id="3S" role="37wK5m">
-                <property role="1adDun" value="0x9b92103b95ca8c0cL" />
+              <node concept="11gdke" id="3S" role="37wK5m">
+                <property role="11gdj1" value="9b92103b95ca8c0cL" />
               </node>
               <node concept="Xl_RD" id="3T" role="37wK5m">
                 <property role="Xl_RC" value="jetbrains.mps.lang.core" />
@@ -960,14 +963,14 @@
                 <node concept="Xl_RD" id="4T" role="37wK5m">
                   <property role="Xl_RC" value="UsesPlatformCheckbox" />
                 </node>
-                <node concept="1adDum" id="4U" role="37wK5m">
-                  <property role="1adDun" value="0xafb9a5fdbc5d4169L" />
+                <node concept="11gdke" id="4U" role="37wK5m">
+                  <property role="11gdj1" value="afb9a5fdbc5d4169L" />
                 </node>
-                <node concept="1adDum" id="4V" role="37wK5m">
-                  <property role="1adDun" value="0xa22542d8823d623aL" />
+                <node concept="11gdke" id="4V" role="37wK5m">
+                  <property role="11gdj1" value="a22542d8823d623aL" />
                 </node>
-                <node concept="1adDum" id="4W" role="37wK5m">
-                  <property role="1adDun" value="0x61552ecc953bf2a9L" />
+                <node concept="11gdke" id="4W" role="37wK5m">
+                  <property role="11gdj1" value="61552ecc953bf2a9L" />
                 </node>
               </node>
             </node>
@@ -1089,14 +1092,14 @@
                 <node concept="Xl_RD" id="5D" role="37wK5m">
                   <property role="Xl_RC" value="UsesTextCheckbox" />
                 </node>
-                <node concept="1adDum" id="5E" role="37wK5m">
-                  <property role="1adDun" value="0xafb9a5fdbc5d4169L" />
+                <node concept="11gdke" id="5E" role="37wK5m">
+                  <property role="11gdj1" value="afb9a5fdbc5d4169L" />
                 </node>
-                <node concept="1adDum" id="5F" role="37wK5m">
-                  <property role="1adDun" value="0xa22542d8823d623aL" />
+                <node concept="11gdke" id="5F" role="37wK5m">
+                  <property role="11gdj1" value="a22542d8823d623aL" />
                 </node>
-                <node concept="1adDum" id="5G" role="37wK5m">
-                  <property role="1adDun" value="0x4a35f271d9f26e94L" />
+                <node concept="11gdke" id="5G" role="37wK5m">
+                  <property role="11gdj1" value="4a35f271d9f26e94L" />
                 </node>
               </node>
             </node>
@@ -1218,14 +1221,14 @@
                 <node concept="Xl_RD" id="6q" role="37wK5m">
                   <property role="Xl_RC" value="VariousCheckboxes" />
                 </node>
-                <node concept="1adDum" id="6r" role="37wK5m">
-                  <property role="1adDun" value="0xafb9a5fdbc5d4169L" />
+                <node concept="11gdke" id="6r" role="37wK5m">
+                  <property role="11gdj1" value="afb9a5fdbc5d4169L" />
                 </node>
-                <node concept="1adDum" id="6s" role="37wK5m">
-                  <property role="1adDun" value="0xa22542d8823d623aL" />
+                <node concept="11gdke" id="6s" role="37wK5m">
+                  <property role="11gdj1" value="a22542d8823d623aL" />
                 </node>
-                <node concept="1adDum" id="6t" role="37wK5m">
-                  <property role="1adDun" value="0x455f8dda63d636dL" />
+                <node concept="11gdke" id="6t" role="37wK5m">
+                  <property role="11gdj1" value="455f8dda63d636dL" />
                 </node>
               </node>
             </node>
