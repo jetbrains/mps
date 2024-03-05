@@ -81,9 +81,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
@@ -923,11 +920,11 @@
             <node concept="2ShNRf" id="4z" role="33vP2m">
               <node concept="1pGfFk" id="4$" role="2ShVmc">
                 <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.&lt;init&gt;(long,long)" resolve="LanguageConceptIndexBuilder" />
-                <node concept="1adDum" id="4_" role="37wK5m">
-                  <property role="1adDun" value="0x4dd3c558f0fc4807L" />
+                <node concept="11gdke" id="4_" role="37wK5m">
+                  <property role="11gdj1" value="4dd3c558f0fc4807L" />
                 </node>
-                <node concept="1adDum" id="4A" role="37wK5m">
-                  <property role="1adDun" value="0xbade5d6bcad6b3f1L" />
+                <node concept="11gdke" id="4A" role="37wK5m">
+                  <property role="11gdj1" value="bade5d6bcad6b3f1L" />
                 </node>
               </node>
             </node>
@@ -940,8 +937,8 @@
             </node>
             <node concept="liA8E" id="4D" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="4E" role="37wK5m">
-                <property role="1adDun" value="0x31c4a809e6410e71L" />
+              <node concept="11gdke" id="4E" role="37wK5m">
+                <property role="11gdj1" value="31c4a809e6410e71L" />
               </node>
               <node concept="37vLTw" id="4F" role="37wK5m">
                 <ref role="3cqZAo" node="3K" resolve="TABC" />
@@ -956,8 +953,8 @@
             </node>
             <node concept="liA8E" id="4I" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="4J" role="37wK5m">
-                <property role="1adDun" value="0x31c4a809e641174cL" />
+              <node concept="11gdke" id="4J" role="37wK5m">
+                <property role="11gdj1" value="31c4a809e641174cL" />
               </node>
               <node concept="37vLTw" id="4K" role="37wK5m">
                 <ref role="3cqZAo" node="3L" resolve="TABCDE" />
@@ -972,8 +969,8 @@
             </node>
             <node concept="liA8E" id="4N" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="4O" role="37wK5m">
-                <property role="1adDun" value="0x31c4a809e6411758L" />
+              <node concept="11gdke" id="4O" role="37wK5m">
+                <property role="11gdj1" value="31c4a809e6411758L" />
               </node>
               <node concept="37vLTw" id="4P" role="37wK5m">
                 <ref role="3cqZAo" node="3M" resolve="TABCDEF" />
@@ -988,8 +985,8 @@
             </node>
             <node concept="liA8E" id="4S" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="4T" role="37wK5m">
-                <property role="1adDun" value="0x31c4a809e6411754L" />
+              <node concept="11gdke" id="4T" role="37wK5m">
+                <property role="11gdj1" value="31c4a809e6411754L" />
               </node>
               <node concept="37vLTw" id="4U" role="37wK5m">
                 <ref role="3cqZAo" node="3N" resolve="TABCDEG" />
@@ -1004,8 +1001,8 @@
             </node>
             <node concept="liA8E" id="4X" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="4Y" role="37wK5m">
-                <property role="1adDun" value="0x6a37442ca9969678L" />
+              <node concept="11gdke" id="4Y" role="37wK5m">
+                <property role="11gdj1" value="6a37442ca9969678L" />
               </node>
               <node concept="37vLTw" id="4Z" role="37wK5m">
                 <ref role="3cqZAo" node="3O" resolve="TABCEEG" />
@@ -1020,8 +1017,8 @@
             </node>
             <node concept="liA8E" id="52" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="53" role="37wK5m">
-                <property role="1adDun" value="0x7bf89c7591b82d85L" />
+              <node concept="11gdke" id="53" role="37wK5m">
+                <property role="11gdj1" value="7bf89c7591b82d85L" />
               </node>
               <node concept="37vLTw" id="54" role="37wK5m">
                 <ref role="3cqZAo" node="3P" resolve="TBAC" />
@@ -1036,8 +1033,8 @@
             </node>
             <node concept="liA8E" id="57" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="58" role="37wK5m">
-                <property role="1adDun" value="0x7bf89c7591b848d3L" />
+              <node concept="11gdke" id="58" role="37wK5m">
+                <property role="11gdj1" value="7bf89c7591b848d3L" />
               </node>
               <node concept="37vLTw" id="59" role="37wK5m">
                 <ref role="3cqZAo" node="3Q" resolve="TBCA" />

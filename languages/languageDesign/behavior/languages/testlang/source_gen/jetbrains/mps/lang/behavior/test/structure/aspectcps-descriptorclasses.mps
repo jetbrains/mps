@@ -81,9 +81,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
@@ -634,11 +631,11 @@
             <node concept="2ShNRf" id="2N" role="33vP2m">
               <node concept="1pGfFk" id="2O" role="2ShVmc">
                 <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.&lt;init&gt;(long,long)" resolve="LanguageConceptIndexBuilder" />
-                <node concept="1adDum" id="2P" role="37wK5m">
-                  <property role="1adDun" value="0xa18fb831fb54541L" />
+                <node concept="11gdke" id="2P" role="37wK5m">
+                  <property role="11gdj1" value="a18fb831fb54541L" />
                 </node>
-                <node concept="1adDum" id="2Q" role="37wK5m">
-                  <property role="1adDun" value="0x97c9a13312451954L" />
+                <node concept="11gdke" id="2Q" role="37wK5m">
+                  <property role="11gdj1" value="97c9a13312451954L" />
                 </node>
               </node>
             </node>
@@ -651,8 +648,8 @@
             </node>
             <node concept="liA8E" id="2T" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="2U" role="37wK5m">
-                <property role="1adDun" value="0x41ab5625f92e5b2aL" />
+              <node concept="11gdke" id="2U" role="37wK5m">
+                <property role="11gdj1" value="41ab5625f92e5b2aL" />
               </node>
               <node concept="37vLTw" id="2V" role="37wK5m">
                 <ref role="3cqZAo" node="2f" resolve="A" />
@@ -667,8 +664,8 @@
             </node>
             <node concept="liA8E" id="2Y" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="2Z" role="37wK5m">
-                <property role="1adDun" value="0x41ab5625f92e5b5eL" />
+              <node concept="11gdke" id="2Z" role="37wK5m">
+                <property role="11gdj1" value="41ab5625f92e5b5eL" />
               </node>
               <node concept="37vLTw" id="30" role="37wK5m">
                 <ref role="3cqZAo" node="2g" resolve="B" />
@@ -683,8 +680,8 @@
             </node>
             <node concept="liA8E" id="33" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="34" role="37wK5m">
-                <property role="1adDun" value="0x41ab5625f92e6873L" />
+              <node concept="11gdke" id="34" role="37wK5m">
+                <property role="11gdj1" value="41ab5625f92e6873L" />
               </node>
               <node concept="37vLTw" id="35" role="37wK5m">
                 <ref role="3cqZAo" node="2h" resolve="C" />
@@ -699,8 +696,8 @@
             </node>
             <node concept="liA8E" id="38" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="39" role="37wK5m">
-                <property role="1adDun" value="0x41ab5625f92e6814L" />
+              <node concept="11gdke" id="39" role="37wK5m">
+                <property role="11gdj1" value="41ab5625f92e6814L" />
               </node>
               <node concept="37vLTw" id="3a" role="37wK5m">
                 <ref role="3cqZAo" node="2i" resolve="I" />

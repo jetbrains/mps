@@ -1186,11 +1186,11 @@
             <node concept="2ShNRf" id="68" role="33vP2m">
               <node concept="1pGfFk" id="69" role="2ShVmc">
                 <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.&lt;init&gt;(long,long)" resolve="LanguageConceptIndexBuilder" />
-                <node concept="1adDum" id="6a" role="37wK5m">
-                  <property role="1adDun" value="0x662a9f2b58024d16L" />
+                <node concept="11gdke" id="6a" role="37wK5m">
+                  <property role="11gdj1" value="662a9f2b58024d16L" />
                 </node>
-                <node concept="1adDum" id="6b" role="37wK5m">
-                  <property role="1adDun" value="0x955872c65c7a681eL" />
+                <node concept="11gdke" id="6b" role="37wK5m">
+                  <property role="11gdj1" value="955872c65c7a681eL" />
                 </node>
               </node>
             </node>
@@ -1203,8 +1203,8 @@
             </node>
             <node concept="liA8E" id="6e" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="6f" role="37wK5m">
-                <property role="1adDun" value="0x18d8e0833b34209aL" />
+              <node concept="11gdke" id="6f" role="37wK5m">
+                <property role="11gdj1" value="18d8e0833b34209aL" />
               </node>
               <node concept="37vLTw" id="6g" role="37wK5m">
                 <ref role="3cqZAo" node="56" resolve="ConvertTo" />
@@ -1219,8 +1219,8 @@
             </node>
             <node concept="liA8E" id="6j" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="6k" role="37wK5m">
-                <property role="1adDun" value="0x3210b276d1443596L" />
+              <node concept="11gdke" id="6k" role="37wK5m">
+                <property role="11gdj1" value="3210b276d1443596L" />
               </node>
               <node concept="37vLTw" id="6l" role="37wK5m">
                 <ref role="3cqZAo" node="57" resolve="CurrencyDefTable" />
@@ -1235,8 +1235,8 @@
             </node>
             <node concept="liA8E" id="6o" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="6p" role="37wK5m">
-                <property role="1adDun" value="0x3210b276d1443597L" />
+              <node concept="11gdke" id="6p" role="37wK5m">
+                <property role="11gdj1" value="3210b276d1443597L" />
               </node>
               <node concept="37vLTw" id="6q" role="37wK5m">
                 <ref role="3cqZAo" node="58" resolve="CurrencyUnit" />
@@ -1251,8 +1251,8 @@
             </node>
             <node concept="liA8E" id="6t" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="6u" role="37wK5m">
-                <property role="1adDun" value="0x3786e3f4808999c3L" />
+              <node concept="11gdke" id="6u" role="37wK5m">
+                <property role="11gdj1" value="3786e3f4808999c3L" />
               </node>
               <node concept="37vLTw" id="6v" role="37wK5m">
                 <ref role="3cqZAo" node="59" resolve="CurrentStockPrice" />
@@ -1267,8 +1267,8 @@
             </node>
             <node concept="liA8E" id="6y" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="6z" role="37wK5m">
-                <property role="1adDun" value="0x4b9a2fe55913c339L" />
+              <node concept="11gdke" id="6z" role="37wK5m">
+                <property role="11gdj1" value="4b9a2fe55913c339L" />
               </node>
               <node concept="37vLTw" id="6$" role="37wK5m">
                 <ref role="3cqZAo" node="5a" resolve="GetAmount" />
@@ -1283,8 +1283,8 @@
             </node>
             <node concept="liA8E" id="6B" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="6C" role="37wK5m">
-                <property role="1adDun" value="0x18d8e0833b32f1b1L" />
+              <node concept="11gdke" id="6C" role="37wK5m">
+                <property role="11gdj1" value="18d8e0833b32f1b1L" />
               </node>
               <node concept="37vLTw" id="6D" role="37wK5m">
                 <ref role="3cqZAo" node="5b" resolve="GetCurrency" />
@@ -1299,8 +1299,8 @@
             </node>
             <node concept="liA8E" id="6G" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="6H" role="37wK5m">
-                <property role="1adDun" value="0x4b9a2fe559135132L" />
+              <node concept="11gdke" id="6H" role="37wK5m">
+                <property role="11gdj1" value="4b9a2fe559135132L" />
               </node>
               <node concept="37vLTw" id="6I" role="37wK5m">
                 <ref role="3cqZAo" node="5c" resolve="MoneyLiteral" />
@@ -1315,8 +1315,8 @@
             </node>
             <node concept="liA8E" id="6L" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="6M" role="37wK5m">
-                <property role="1adDun" value="0x4b9a2fe55913516aL" />
+              <node concept="11gdke" id="6M" role="37wK5m">
+                <property role="11gdj1" value="4b9a2fe55913516aL" />
               </node>
               <node concept="37vLTw" id="6N" role="37wK5m">
                 <ref role="3cqZAo" node="5d" resolve="MoneyType" />
@@ -1331,8 +1331,8 @@
             </node>
             <node concept="liA8E" id="6Q" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="6R" role="37wK5m">
-                <property role="1adDun" value="0x3786e3f480b1c19aL" />
+              <node concept="11gdke" id="6R" role="37wK5m">
+                <property role="11gdj1" value="3786e3f480b1c19aL" />
               </node>
               <node concept="37vLTw" id="6S" role="37wK5m">
                 <ref role="3cqZAo" node="5e" resolve="MovingAverage" />
@@ -1347,8 +1347,8 @@
             </node>
             <node concept="liA8E" id="6V" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="6W" role="37wK5m">
-                <property role="1adDun" value="0x3786e3f480a9b18aL" />
+              <node concept="11gdke" id="6W" role="37wK5m">
+                <property role="11gdj1" value="3786e3f480a9b18aL" />
               </node>
               <node concept="37vLTw" id="6X" role="37wK5m">
                 <ref role="3cqZAo" node="5f" resolve="StockSymbol" />

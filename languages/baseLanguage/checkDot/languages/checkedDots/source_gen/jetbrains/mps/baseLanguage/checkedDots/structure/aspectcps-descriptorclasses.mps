@@ -85,9 +85,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
@@ -405,11 +402,11 @@
             <node concept="2ShNRf" id="1n" role="33vP2m">
               <node concept="1pGfFk" id="1o" role="2ShVmc">
                 <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.&lt;init&gt;(long,long)" resolve="LanguageConceptIndexBuilder" />
-                <node concept="1adDum" id="1p" role="37wK5m">
-                  <property role="1adDun" value="0x774bf8a062e541e1L" />
+                <node concept="11gdke" id="1p" role="37wK5m">
+                  <property role="11gdj1" value="774bf8a062e541e1L" />
                 </node>
-                <node concept="1adDum" id="1q" role="37wK5m">
-                  <property role="1adDun" value="0xaf63f4812e60e48bL" />
+                <node concept="11gdke" id="1q" role="37wK5m">
+                  <property role="11gdj1" value="af63f4812e60e48bL" />
                 </node>
               </node>
             </node>
@@ -422,8 +419,8 @@
             </node>
             <node concept="liA8E" id="1t" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="1u" role="37wK5m">
-                <property role="1adDun" value="0x389ce13592c3023bL" />
+              <node concept="11gdke" id="1u" role="37wK5m">
+                <property role="11gdj1" value="389ce13592c3023bL" />
               </node>
               <node concept="37vLTw" id="1v" role="37wK5m">
                 <ref role="3cqZAo" node="12" resolve="CheckedDotExpression" />

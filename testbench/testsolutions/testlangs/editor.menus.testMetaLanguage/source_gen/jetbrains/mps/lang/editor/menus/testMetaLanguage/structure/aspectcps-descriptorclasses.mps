@@ -81,9 +81,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
@@ -971,11 +968,11 @@
             <node concept="2ShNRf" id="4Q" role="33vP2m">
               <node concept="1pGfFk" id="4R" role="2ShVmc">
                 <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.&lt;init&gt;(long,long)" resolve="LanguageConceptIndexBuilder" />
-                <node concept="1adDum" id="4S" role="37wK5m">
-                  <property role="1adDun" value="0x69068b7cba1f47fbL" />
+                <node concept="11gdke" id="4S" role="37wK5m">
+                  <property role="11gdj1" value="69068b7cba1f47fbL" />
                 </node>
-                <node concept="1adDum" id="4T" role="37wK5m">
-                  <property role="1adDun" value="0xa4864981f42606e9L" />
+                <node concept="11gdke" id="4T" role="37wK5m">
+                  <property role="11gdj1" value="a4864981f42606e9L" />
                 </node>
               </node>
             </node>
@@ -988,8 +985,8 @@
             </node>
             <node concept="liA8E" id="4W" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="4X" role="37wK5m">
-                <property role="1adDun" value="0x41c8eff4cc3dfc1dL" />
+              <node concept="11gdke" id="4X" role="37wK5m">
+                <property role="11gdj1" value="41c8eff4cc3dfc1dL" />
               </node>
               <node concept="37vLTw" id="4Y" role="37wK5m">
                 <ref role="3cqZAo" node="43" resolve="TransformationFeature_Optional" />
@@ -1004,8 +1001,8 @@
             </node>
             <node concept="liA8E" id="51" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="52" role="37wK5m">
-                <property role="1adDun" value="0x41c8eff4cc3e09d8L" />
+              <node concept="11gdke" id="52" role="37wK5m">
+                <property role="11gdj1" value="41c8eff4cc3e09d8L" />
               </node>
               <node concept="37vLTw" id="53" role="37wK5m">
                 <ref role="3cqZAo" node="44" resolve="TransformationFeature_Required" />
@@ -1020,8 +1017,8 @@
             </node>
             <node concept="liA8E" id="56" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="57" role="37wK5m">
-                <property role="1adDun" value="0x33f30f661f866f15L" />
+              <node concept="11gdke" id="57" role="37wK5m">
+                <property role="11gdj1" value="33f30f661f866f15L" />
               </node>
               <node concept="37vLTw" id="58" role="37wK5m">
                 <ref role="3cqZAo" node="45" resolve="TransformationFeature_Unavailable" />
@@ -1036,8 +1033,8 @@
             </node>
             <node concept="liA8E" id="5b" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="5c" role="37wK5m">
-                <property role="1adDun" value="0x595469d6668817a2L" />
+              <node concept="11gdke" id="5c" role="37wK5m">
+                <property role="11gdj1" value="595469d6668817a2L" />
               </node>
               <node concept="37vLTw" id="5d" role="37wK5m">
                 <ref role="3cqZAo" node="46" resolve="TransformationLocation_Test" />
@@ -1052,8 +1049,8 @@
             </node>
             <node concept="liA8E" id="5g" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="5h" role="37wK5m">
-                <property role="1adDun" value="0x33f30f661f7e88deL" />
+              <node concept="11gdke" id="5h" role="37wK5m">
+                <property role="11gdj1" value="33f30f661f7e88deL" />
               </node>
               <node concept="37vLTw" id="5i" role="37wK5m">
                 <ref role="3cqZAo" node="47" resolve="TransformationLocation_WithFeatures" />
@@ -1068,8 +1065,8 @@
             </node>
             <node concept="liA8E" id="5l" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="5m" role="37wK5m">
-                <property role="1adDun" value="0x41c8eff4cc3eb92bL" />
+              <node concept="11gdke" id="5m" role="37wK5m">
+                <property role="11gdj1" value="41c8eff4cc3eb92bL" />
               </node>
               <node concept="37vLTw" id="5n" role="37wK5m">
                 <ref role="3cqZAo" node="48" resolve="TransformationLocation_WithoutFeatures" />
@@ -1084,8 +1081,8 @@
             </node>
             <node concept="liA8E" id="5q" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="5r" role="37wK5m">
-                <property role="1adDun" value="0x259f3121f598017fL" />
+              <node concept="11gdke" id="5r" role="37wK5m">
+                <property role="11gdj1" value="259f3121f598017fL" />
               </node>
               <node concept="37vLTw" id="5s" role="37wK5m">
                 <ref role="3cqZAo" node="49" resolve="TransformationMenu_Test" />

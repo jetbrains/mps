@@ -81,9 +81,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
@@ -649,11 +646,11 @@
             <node concept="2ShNRf" id="2S" role="33vP2m">
               <node concept="1pGfFk" id="2T" role="2ShVmc">
                 <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.&lt;init&gt;(long,long)" resolve="LanguageConceptIndexBuilder" />
-                <node concept="1adDum" id="2U" role="37wK5m">
-                  <property role="1adDun" value="0x995a73947f764b8bL" />
+                <node concept="11gdke" id="2U" role="37wK5m">
+                  <property role="11gdj1" value="995a73947f764b8bL" />
                 </node>
-                <node concept="1adDum" id="2V" role="37wK5m">
-                  <property role="1adDun" value="0xa929c53448708106L" />
+                <node concept="11gdke" id="2V" role="37wK5m">
+                  <property role="11gdj1" value="a929c53448708106L" />
                 </node>
               </node>
             </node>
@@ -666,8 +663,8 @@
             </node>
             <node concept="liA8E" id="2Y" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="2Z" role="37wK5m">
-                <property role="1adDun" value="0x4d7759afcea851bdL" />
+              <node concept="11gdke" id="2Z" role="37wK5m">
+                <property role="11gdj1" value="4d7759afcea851bdL" />
               </node>
               <node concept="37vLTw" id="30" role="37wK5m">
                 <ref role="3cqZAo" node="2k" resolve="ConsoleModelExpression" />
@@ -682,8 +679,8 @@
             </node>
             <node concept="liA8E" id="33" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="34" role="37wK5m">
-                <property role="1adDun" value="0x7a89354654722219L" />
+              <node concept="11gdke" id="34" role="37wK5m">
+                <property role="11gdj1" value="7a89354654722219L" />
               </node>
               <node concept="37vLTw" id="35" role="37wK5m">
                 <ref role="3cqZAo" node="2l" resolve="InternalMode" />
@@ -698,8 +695,8 @@
             </node>
             <node concept="liA8E" id="38" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="39" role="37wK5m">
-                <property role="1adDun" value="0x75bb0160f191dd31L" />
+              <node concept="11gdke" id="39" role="37wK5m">
+                <property role="11gdj1" value="75bb0160f191dd31L" />
               </node>
               <node concept="37vLTw" id="3a" role="37wK5m">
                 <ref role="3cqZAo" node="2m" resolve="ReloadClassesCommand" />
@@ -714,8 +711,8 @@
             </node>
             <node concept="liA8E" id="3d" role="2OqNvi">
               <ref role="37wK5l" to="ksn4:~LanguageConceptIndexBuilder.put(long,int)" resolve="put" />
-              <node concept="1adDum" id="3e" role="37wK5m">
-                <property role="1adDun" value="0x75bb0160f191df0cL" />
+              <node concept="11gdke" id="3e" role="37wK5m">
+                <property role="11gdj1" value="75bb0160f191df0cL" />
               </node>
               <node concept="37vLTw" id="3f" role="37wK5m">
                 <ref role="3cqZAo" node="2n" resolve="ShowRepositoryCommand" />

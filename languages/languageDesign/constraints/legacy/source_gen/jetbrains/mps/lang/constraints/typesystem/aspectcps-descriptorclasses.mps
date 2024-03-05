@@ -69,6 +69,9 @@
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
+      <concept id="8353134822275456723" name="jetbrains.mps.baseLanguage.structure.HexLongLiteral" flags="ng" index="11gdke">
+        <property id="8353134822275456796" name="hexValue" index="11gdj1" />
+      </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
@@ -2487,8 +2490,8 @@
                 <uo k="s:originTrace" v="n:6504854981849591164" />
               </node>
             </node>
-            <node concept="1adDum" id="bB" role="37wK5m">
-              <property role="1adDun" value="0x101de48bf9eL" />
+            <node concept="11gdke" id="bB" role="37wK5m">
+              <property role="11gdj1" value="101de48bf9eL" />
               <uo k="s:originTrace" v="n:6504854981849591164" />
             </node>
             <node concept="Xl_RD" id="bC" role="37wK5m">
