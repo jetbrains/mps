@@ -749,16 +749,19 @@
                     <ref role="3uigEE" to="3iga:~ImageDescriptor" resolve="ImageDescriptor" />
                   </node>
                 </node>
-                <node concept="2YIFZM" id="61fF4gohVyJ" role="33vP2m">
-                  <ref role="37wK5l" to="3iga:~ImageDescriptorKt.getImageDescriptors(java.lang.String,boolean,com.intellij.ui.scale.ScaleContext)" resolve="getImageDescriptors" />
+                <node concept="2YIFZM" id="6tpIqkMTliD" role="33vP2m">
+                  <ref role="37wK5l" to="3iga:~ImageDescriptorKt.getImageDescriptors(java.lang.String,boolean,boolean,com.intellij.ui.scale.ScaleContext)" resolve="getImageDescriptors" />
                   <ref role="1Pybhc" to="3iga:~ImageDescriptorKt" resolve="ImageDescriptorKt" />
-                  <node concept="37vLTw" id="61fF4gohW5F" role="37wK5m">
+                  <node concept="37vLTw" id="6tpIqkMTliE" role="37wK5m">
                     <ref role="3cqZAo" node="5S2eoIGsuvV" resolve="sourcePath" />
                   </node>
-                  <node concept="3clFbT" id="61fF4gohX0M" role="37wK5m">
+                  <node concept="3clFbT" id="6tpIqkMTliF" role="37wK5m">
                     <property role="3clFbU" value="true" />
                   </node>
-                  <node concept="2YIFZM" id="61fF4gohY9o" role="37wK5m">
+                  <node concept="3clFbT" id="6tpIqkMTOs_" role="37wK5m">
+                    <property role="3clFbU" value="true" />
+                  </node>
+                  <node concept="2YIFZM" id="6tpIqkMTliG" role="37wK5m">
                     <ref role="37wK5l" to="l5y2:~ScaleContext.createIdentity()" resolve="createIdentity" />
                     <ref role="1Pybhc" to="l5y2:~ScaleContext" resolve="ScaleContext" />
                   </node>
