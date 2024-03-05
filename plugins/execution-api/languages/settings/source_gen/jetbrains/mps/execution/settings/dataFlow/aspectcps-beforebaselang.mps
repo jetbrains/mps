@@ -68,9 +68,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
@@ -282,16 +279,16 @@
                       <ref role="1Pybhc" to="e8bb:~MetaIdFactory" resolve="MetaIdFactory" />
                       <ref role="37wK5l" to="e8bb:~MetaIdFactory.conceptId(long,long,long)" resolve="conceptId" />
                       <uo k="s:originTrace" v="n:13" />
-                      <node concept="1adDum" id="E" role="37wK5m">
-                        <property role="1adDun" value="0x756e911c3f1f4a48L" />
+                      <node concept="11gdke" id="E" role="37wK5m">
+                        <property role="11gdj1" value="756e911c3f1f4a48L" />
                         <uo k="s:originTrace" v="n:13" />
                       </node>
-                      <node concept="1adDum" id="F" role="37wK5m">
-                        <property role="1adDun" value="0xbdf5a2ceb91b723cL" />
+                      <node concept="11gdke" id="F" role="37wK5m">
+                        <property role="11gdj1" value="bdf5a2ceb91b723cL" />
                         <uo k="s:originTrace" v="n:13" />
                       </node>
-                      <node concept="1adDum" id="G" role="37wK5m">
-                        <property role="1adDun" value="0xd244b712f910103L" />
+                      <node concept="11gdke" id="G" role="37wK5m">
+                        <property role="11gdj1" value="d244b712f910103L" />
                         <uo k="s:originTrace" v="n:13" />
                       </node>
                     </node>

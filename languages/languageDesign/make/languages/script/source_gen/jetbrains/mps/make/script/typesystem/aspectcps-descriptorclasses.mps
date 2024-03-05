@@ -77,9 +77,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <child id="1068580123133" name="returnType" index="3clF45" />
         <child id="1068580123134" name="parameter" index="3clF46" />
@@ -1756,12 +1753,12 @@
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getLanguage(long,long,java.lang.String)" resolve="getLanguage" />
               <uo k="s:originTrace" v="n:2360002718792535571" />
-              <node concept="1adDum" id="7m" role="37wK5m">
-                <property role="1adDun" value="0xf3061a5392264cc5L" />
+              <node concept="11gdke" id="7m" role="37wK5m">
+                <property role="11gdj1" value="f3061a5392264cc5L" />
                 <uo k="s:originTrace" v="n:2360002718792535571" />
               </node>
-              <node concept="1adDum" id="7n" role="37wK5m">
-                <property role="1adDun" value="0xa443f952ceaf5816L" />
+              <node concept="11gdke" id="7n" role="37wK5m">
+                <property role="11gdj1" value="a443f952ceaf5816L" />
                 <uo k="s:originTrace" v="n:2360002718792535571" />
               </node>
               <node concept="Xl_RD" id="7o" role="37wK5m">
@@ -3205,12 +3202,12 @@
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
               <ref role="37wK5l" to="2k9e:~MetaAdapterFactory.getLanguage(long,long,java.lang.String)" resolve="getLanguage" />
               <uo k="s:originTrace" v="n:6445309097630674038" />
-              <node concept="1adDum" id="eR" role="37wK5m">
-                <property role="1adDun" value="0xf3061a5392264cc5L" />
+              <node concept="11gdke" id="eR" role="37wK5m">
+                <property role="11gdj1" value="f3061a5392264cc5L" />
                 <uo k="s:originTrace" v="n:6445309097630674038" />
               </node>
-              <node concept="1adDum" id="eS" role="37wK5m">
-                <property role="1adDun" value="0xa443f952ceaf5816L" />
+              <node concept="11gdke" id="eS" role="37wK5m">
+                <property role="11gdj1" value="a443f952ceaf5816L" />
                 <uo k="s:originTrace" v="n:6445309097630674038" />
               </node>
               <node concept="Xl_RD" id="eT" role="37wK5m">
