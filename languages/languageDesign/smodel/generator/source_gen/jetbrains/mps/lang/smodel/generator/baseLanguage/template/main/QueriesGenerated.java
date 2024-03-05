@@ -437,19 +437,19 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_62_0(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getPropId(_context.getNode()).getConceptId().getLanguageId().getIdValue().getMostSignificantBits();
-    return "0x" + Long.toHexString(msb) + "L";
+    return Long.toHexString(msb) + "L";
   }
   public static Object propertyMacro_GetValue_62_1(final PropertyMacroContext _context) {
     long lsb = MetaIdByDeclaration.getPropId(_context.getNode()).getConceptId().getLanguageId().getIdValue().getLeastSignificantBits();
-    return "0x" + Long.toHexString(lsb) + "L";
+    return Long.toHexString(lsb) + "L";
   }
   public static Object propertyMacro_GetValue_62_2(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getPropId(_context.getNode()).getConceptId().getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_62_3(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getPropId(_context.getNode()).getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_62_4(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -541,19 +541,19 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_65_0(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getPropId(_context.getNode()).getConceptId().getLanguageId().getIdValue().getMostSignificantBits();
-    return "0x" + Long.toHexString(msb) + "L";
+    return Long.toHexString(msb) + "L";
   }
   public static Object propertyMacro_GetValue_65_1(final PropertyMacroContext _context) {
     long lsb = MetaIdByDeclaration.getPropId(_context.getNode()).getConceptId().getLanguageId().getIdValue().getLeastSignificantBits();
-    return "0x" + Long.toHexString(lsb) + "L";
+    return Long.toHexString(lsb) + "L";
   }
   public static Object propertyMacro_GetValue_65_2(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getPropId(_context.getNode()).getConceptId().getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_65_3(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getPropId(_context.getNode()).getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_66_0(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getLinkId(_context.getNode()).getConceptId().getLanguageId().getIdValue().getMostSignificantBits();
@@ -589,96 +589,96 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_72_0(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getPropId(_context.getNode()).getConceptId().getLanguageId().getIdValue().getMostSignificantBits();
-    return "0x" + Long.toHexString(msb) + "L";
+    return Long.toHexString(msb) + "L";
   }
   public static Object propertyMacro_GetValue_72_1(final PropertyMacroContext _context) {
     long lsb = MetaIdByDeclaration.getPropId(_context.getNode()).getConceptId().getLanguageId().getIdValue().getLeastSignificantBits();
-    return "0x" + Long.toHexString(lsb) + "L";
+    return Long.toHexString(lsb) + "L";
   }
   public static Object propertyMacro_GetValue_72_2(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getPropId(_context.getNode()).getConceptId().getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_72_3(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getPropId(_context.getNode()).getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_72_4(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_73_0(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getLinkId(_context.getNode()).getConceptId().getLanguageId().getIdValue().getMostSignificantBits();
-    return "0x" + Long.toHexString(msb) + "L";
+    return Long.toHexString(msb) + "L";
   }
   public static Object propertyMacro_GetValue_73_1(final PropertyMacroContext _context) {
     long lsb = MetaIdByDeclaration.getLinkId(_context.getNode()).getConceptId().getLanguageId().getIdValue().getLeastSignificantBits();
-    return "0x" + Long.toHexString(lsb) + "L";
+    return Long.toHexString(lsb) + "L";
   }
   public static Object propertyMacro_GetValue_73_2(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getLinkId(_context.getNode()).getConceptId().getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_73_3(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getLinkId(_context.getNode()).getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_73_4(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.role$Nsjf);
   }
   public static Object propertyMacro_GetValue_73_5(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getRefRoleId(_context.getNode()).getConceptId().getLanguageId().getIdValue().getMostSignificantBits();
-    return "0x" + Long.toHexString(msb) + "L";
+    return Long.toHexString(msb) + "L";
   }
   public static Object propertyMacro_GetValue_73_6(final PropertyMacroContext _context) {
     long lsb = MetaIdByDeclaration.getRefRoleId(_context.getNode()).getConceptId().getLanguageId().getIdValue().getLeastSignificantBits();
-    return "0x" + Long.toHexString(lsb) + "L";
+    return Long.toHexString(lsb) + "L";
   }
   public static Object propertyMacro_GetValue_73_7(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getRefRoleId(_context.getNode()).getConceptId().getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_73_8(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getRefRoleId(_context.getNode()).getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_73_9(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.role$Nsjf);
   }
   public static Object propertyMacro_GetValue_74_0(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getConceptId(_context.getNode()).getLanguageId().getIdValue().getMostSignificantBits();
-    return "0x" + Long.toHexString(msb) + "L";
+    return Long.toHexString(msb) + "L";
   }
   public static Object propertyMacro_GetValue_74_1(final PropertyMacroContext _context) {
     long lsb = MetaIdByDeclaration.getConceptId(_context.getNode()).getLanguageId().getIdValue().getLeastSignificantBits();
-    return "0x" + Long.toHexString(lsb) + "L";
+    return Long.toHexString(lsb) + "L";
   }
   public static Object propertyMacro_GetValue_74_2(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getConceptId(_context.getNode()).getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_74_3(final PropertyMacroContext _context) {
     return NameUtil.nodeFQName(_context.getNode());
   }
   public static Object propertyMacro_GetValue_74_4(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getConceptId(_context.getNode()).getLanguageId().getIdValue().getMostSignificantBits();
-    return "0x" + Long.toHexString(msb) + "L";
+    return Long.toHexString(msb) + "L";
   }
   public static Object propertyMacro_GetValue_74_5(final PropertyMacroContext _context) {
     long lsb = MetaIdByDeclaration.getConceptId(_context.getNode()).getLanguageId().getIdValue().getLeastSignificantBits();
-    return "0x" + Long.toHexString(lsb) + "L";
+    return Long.toHexString(lsb) + "L";
   }
   public static Object propertyMacro_GetValue_74_6(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getConceptId(_context.getNode()).getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_74_7(final PropertyMacroContext _context) {
     return NameUtil.nodeFQName(_context.getNode());
   }
   public static Object propertyMacro_GetValue_86_0(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(((SLanguageId) _context.getVariable("var:idValue")).getHighBits()) + 'L';
+    return Long.toHexString(((SLanguageId) _context.getVariable("var:idValue")).getHighBits()) + 'L';
   }
   public static Object propertyMacro_GetValue_86_1(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(((SLanguageId) _context.getVariable("var:idValue")).getLowBits()) + 'L';
+    return Long.toHexString(((SLanguageId) _context.getVariable("var:idValue")).getLowBits()) + 'L';
   }
   public static Object propertyMacro_GetValue_86_2(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.namespace$dZq1);
@@ -699,23 +699,23 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_95_0(final PropertyMacroContext _context) {
     UUID langId = ((SConceptId) _context.getVariable("var:conceptId")).getLanguageId().getIdValue();
-    return "0x" + Long.toHexString(langId.getMostSignificantBits()) + 'L';
+    return Long.toHexString(langId.getMostSignificantBits()) + 'L';
   }
   public static Object propertyMacro_GetValue_95_1(final PropertyMacroContext _context) {
     UUID langId = ((SConceptId) _context.getVariable("var:conceptId")).getLanguageId().getIdValue();
-    return "0x" + Long.toHexString(langId.getLeastSignificantBits()) + 'L';
+    return Long.toHexString(langId.getLeastSignificantBits()) + 'L';
   }
   public static Object propertyMacro_GetValue_95_2(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(((SConceptId) _context.getVariable("var:conceptId")).getIdValue()) + 'L';
+    return Long.toHexString(((SConceptId) _context.getVariable("var:conceptId")).getIdValue()) + 'L';
   }
   public static Object propertyMacro_GetValue_95_3(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString((long) PropertyId__BehaviorDescriptor.getIdValue_id5ZE7FBZ0xVG.invoke(_context.getNode())) + 'L';
+    return Long.toHexString((long) PropertyId__BehaviorDescriptor.getIdValue_id5ZE7FBZ0xVG.invoke(_context.getNode())) + 'L';
   }
   public static Object propertyMacro_GetValue_95_4(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.propertyName$YKBy);
   }
   public static Object propertyMacro_GetValue_96_0(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString((long) ConceptId__BehaviorDescriptor.getIdValue_id5ZE7FBZ0whU.invoke(_context.getNode())) + 'L';
+    return Long.toHexString((long) ConceptId__BehaviorDescriptor.getIdValue_id5ZE7FBZ0whU.invoke(_context.getNode())) + 'L';
   }
   public static Object propertyMacro_GetValue_96_1(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.conceptName$JEM6);
@@ -727,13 +727,13 @@ public class QueriesGenerated {
     return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_97_2(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(((SConceptId) _context.getVariable("var:cid")).getLanguageId().getHighBits()) + 'L';
+    return Long.toHexString(((SConceptId) _context.getVariable("var:cid")).getLanguageId().getHighBits()) + 'L';
   }
   public static Object propertyMacro_GetValue_97_3(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(((SConceptId) _context.getVariable("var:cid")).getLanguageId().getLowBits()) + 'L';
+    return Long.toHexString(((SConceptId) _context.getVariable("var:cid")).getLanguageId().getLowBits()) + 'L';
   }
   public static Object propertyMacro_GetValue_97_4(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(((SConceptId) _context.getVariable("var:cid")).getIdValue()) + 'L';
+    return Long.toHexString(((SConceptId) _context.getVariable("var:cid")).getIdValue()) + 'L';
   }
   public static Object propertyMacro_GetValue_98_0(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getConceptId(_context.getNode()).getLanguageId().getIdValue().getMostSignificantBits();
@@ -767,17 +767,17 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_100_0(final PropertyMacroContext _context) {
     UUID langId = ((SConceptId) _context.getVariable("var:conceptId")).getLanguageId().getIdValue();
-    return "0x" + Long.toHexString(langId.getMostSignificantBits()) + 'L';
+    return Long.toHexString(langId.getMostSignificantBits()) + 'L';
   }
   public static Object propertyMacro_GetValue_100_1(final PropertyMacroContext _context) {
     UUID langId = ((SConceptId) _context.getVariable("var:conceptId")).getLanguageId().getIdValue();
-    return "0x" + Long.toHexString(langId.getLeastSignificantBits()) + 'L';
+    return Long.toHexString(langId.getLeastSignificantBits()) + 'L';
   }
   public static Object propertyMacro_GetValue_100_2(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(((SConceptId) _context.getVariable("var:conceptId")).getIdValue()) + 'L';
+    return Long.toHexString(((SConceptId) _context.getVariable("var:conceptId")).getIdValue()) + 'L';
   }
   public static Object propertyMacro_GetValue_100_3(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString((long) ReferenceLinkId__BehaviorDescriptor.getIdValue_id7jb4LXp9a7d.invoke(_context.getNode())) + 'L';
+    return Long.toHexString((long) ReferenceLinkId__BehaviorDescriptor.getIdValue_id7jb4LXp9a7d.invoke(_context.getNode())) + 'L';
   }
   public static Object propertyMacro_GetValue_100_4(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.referenceName$Kg_y);
@@ -845,11 +845,11 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_117_0(final PropertyMacroContext _context) {
     long v = MetaIdByDeclaration.getLanguageId(as_x583g4_a0a0a0a902(SNodeOperations.getModel(_context.getNode()).getModule(), Language.class)).getHighBits();
-    return "0x" + Long.toHexString(v) + 'L';
+    return Long.toHexString(v) + 'L';
   }
   public static Object propertyMacro_GetValue_117_1(final PropertyMacroContext _context) {
     long v = MetaIdByDeclaration.getLanguageId(as_x583g4_a0a0a0a012(SNodeOperations.getModel(_context.getNode()).getModule(), Language.class)).getLowBits();
-    return "0x" + Long.toHexString(v) + 'L';
+    return Long.toHexString(v) + 'L';
   }
   public static Object propertyMacro_GetValue_117_2(final PropertyMacroContext _context) {
     // XXX not sure this gonna work for nodes that are tranient (i.e. if we generate enums from
@@ -859,16 +859,16 @@ public class QueriesGenerated {
   public static Object propertyMacro_GetValue_117_3(final PropertyMacroContext _context) {
     // FIXME likely, need a dedicated property in EnumerationDataTypeDeclaration to hold id value, but for now, live with SNodeId
     long v = ((SNodeId.Regular) _context.getNode().getNodeId()).getId();
-    return "0x" + Long.toHexString(v) + 'L';
+    return Long.toHexString(v) + 'L';
   }
   public static Object propertyMacro_GetValue_117_4(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_118_0(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(((Tuples._2<SLanguageId, String>) _context.getVariable("var:idValue"))._0().getHighBits()) + 'L';
+    return Long.toHexString(((Tuples._2<SLanguageId, String>) _context.getVariable("var:idValue"))._0().getHighBits()) + 'L';
   }
   public static Object propertyMacro_GetValue_118_1(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(((Tuples._2<SLanguageId, String>) _context.getVariable("var:idValue"))._0().getLowBits()) + 'L';
+    return Long.toHexString(((Tuples._2<SLanguageId, String>) _context.getVariable("var:idValue"))._0().getLowBits()) + 'L';
   }
   public static Object propertyMacro_GetValue_118_2(final PropertyMacroContext _context) {
     return ((Tuples._2<SLanguageId, String>) _context.getVariable("var:idValue"))._1();
@@ -902,15 +902,15 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_135_0(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getDatatypeId(_context.getNode()).getLanguageId().getIdValue().getMostSignificantBits();
-    return "0x" + Long.toHexString(msb) + "L";
+    return Long.toHexString(msb) + "L";
   }
   public static Object propertyMacro_GetValue_135_1(final PropertyMacroContext _context) {
     long lsb = MetaIdByDeclaration.getDatatypeId(_context.getNode()).getLanguageId().getIdValue().getLeastSignificantBits();
-    return "0x" + Long.toHexString(lsb) + "L";
+    return Long.toHexString(lsb) + "L";
   }
   public static Object propertyMacro_GetValue_135_2(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getDatatypeId(_context.getNode()).getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_135_3(final PropertyMacroContext _context) {
     return NameUtil.nodeFQName(_context.getNode());
@@ -934,22 +934,22 @@ public class QueriesGenerated {
     return Long.toHexString(MetaIdByDeclaration.getEnumLiteralId(SLinkOperations.getTarget(_context.getNode(), LINKS.decl$$49r)).getIdValue()) + 'L';
   }
   public static Object propertyMacro_GetValue_138_0(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString(MetaIdByDeclaration.getEnumLiteralId(_context.getNode()).getIdValue()) + 'L';
+    return Long.toHexString(MetaIdByDeclaration.getEnumLiteralId(_context.getNode()).getIdValue()) + 'L';
   }
   public static Object propertyMacro_GetValue_140_0(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.value$VXqu), CONCEPTS.EnumMemberReference$b5), LINKS.decl$$49r), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_142_0(final PropertyMacroContext _context) {
     long msb = MetaIdByDeclaration.getDatatypeId(_context.getNode()).getLanguageId().getIdValue().getMostSignificantBits();
-    return "0x" + Long.toHexString(msb) + "L";
+    return Long.toHexString(msb) + "L";
   }
   public static Object propertyMacro_GetValue_142_1(final PropertyMacroContext _context) {
     long lsb = MetaIdByDeclaration.getDatatypeId(_context.getNode()).getLanguageId().getIdValue().getLeastSignificantBits();
-    return "0x" + Long.toHexString(lsb) + "L";
+    return Long.toHexString(lsb) + "L";
   }
   public static Object propertyMacro_GetValue_142_2(final PropertyMacroContext _context) {
     long id = MetaIdByDeclaration.getDatatypeId(_context.getNode()).getIdValue();
-    return "0x" + Long.toHexString(id) + "L";
+    return Long.toHexString(id) + "L";
   }
   public static Object propertyMacro_GetValue_142_3(final PropertyMacroContext _context) {
     return NameUtil.nodeFQName(_context.getNode());
