@@ -85,9 +85,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
@@ -1098,8 +1095,8 @@
                     <node concept="Xl_RD" id="5F" role="37wK5m">
                       <property role="Xl_RC" value="myProp" />
                     </node>
-                    <node concept="1adDum" id="5G" role="37wK5m">
-                      <property role="1adDun" value="0x1f44bcab4ea5d7f6L" />
+                    <node concept="11gdke" id="5G" role="37wK5m">
+                      <property role="11gdj1" value="1f44bcab4ea5d7f6L" />
                     </node>
                   </node>
                 </node>
@@ -1137,8 +1134,8 @@
                       <node concept="Xl_RD" id="5U" role="37wK5m">
                         <property role="Xl_RC" value="headerRowLinkDeclaration" />
                       </node>
-                      <node concept="1adDum" id="5V" role="37wK5m">
-                        <property role="1adDun" value="0x5643e6bf317e9d11L" />
+                      <node concept="11gdke" id="5V" role="37wK5m">
+                        <property role="11gdj1" value="5643e6bf317e9d11L" />
                       </node>
                     </node>
                   </node>
@@ -1188,8 +1185,8 @@
                       <node concept="Xl_RD" id="6c" role="37wK5m">
                         <property role="Xl_RC" value="rowsLinkDeclaration" />
                       </node>
-                      <node concept="1adDum" id="6d" role="37wK5m">
-                        <property role="1adDun" value="0x5643e6bf317e9d12L" />
+                      <node concept="11gdke" id="6d" role="37wK5m">
+                        <property role="11gdj1" value="5643e6bf317e9d12L" />
                       </node>
                     </node>
                   </node>
@@ -1237,8 +1234,8 @@
                       <node concept="Xl_RD" id="6u" role="37wK5m">
                         <property role="Xl_RC" value="cellsInRowLinkDeclaration" />
                       </node>
-                      <node concept="1adDum" id="6v" role="37wK5m">
-                        <property role="1adDun" value="0x5643e6bf317e9d13L" />
+                      <node concept="11gdke" id="6v" role="37wK5m">
+                        <property role="11gdj1" value="5643e6bf317e9d13L" />
                       </node>
                     </node>
                   </node>
@@ -1423,8 +1420,8 @@
                           <node concept="Xl_RD" id="7C" role="37wK5m">
                             <property role="Xl_RC" value="tableModel" />
                           </node>
-                          <node concept="1adDum" id="7D" role="37wK5m">
-                            <property role="1adDun" value="0x3e51593e83e95ca3L" />
+                          <node concept="11gdke" id="7D" role="37wK5m">
+                            <property role="11gdj1" value="3e51593e83e95ca3L" />
                           </node>
                         </node>
                       </node>

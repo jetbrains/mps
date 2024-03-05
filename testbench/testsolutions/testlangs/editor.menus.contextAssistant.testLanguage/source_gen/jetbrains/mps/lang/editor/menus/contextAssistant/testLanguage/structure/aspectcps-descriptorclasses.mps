@@ -85,9 +85,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
@@ -3340,8 +3337,8 @@
                           <node concept="Xl_RD" id="j2" role="37wK5m">
                             <property role="Xl_RC" value="childSubconcept" />
                           </node>
-                          <node concept="1adDum" id="j3" role="37wK5m">
-                            <property role="1adDun" value="0x3f759544c6a0705eL" />
+                          <node concept="11gdke" id="j3" role="37wK5m">
+                            <property role="11gdj1" value="3f759544c6a0705eL" />
                           </node>
                         </node>
                       </node>
@@ -3405,8 +3402,8 @@
                           <node concept="Xl_RD" id="jq" role="37wK5m">
                             <property role="Xl_RC" value="childIncludeSameMenuTwiceForSameNode" />
                           </node>
-                          <node concept="1adDum" id="jr" role="37wK5m">
-                            <property role="1adDun" value="0x3f759544c6a0729dL" />
+                          <node concept="11gdke" id="jr" role="37wK5m">
+                            <property role="11gdj1" value="3f759544c6a0729dL" />
                           </node>
                         </node>
                       </node>
@@ -3470,8 +3467,8 @@
                           <node concept="Xl_RD" id="jM" role="37wK5m">
                             <property role="Xl_RC" value="childIncludeDefaultAndNullMenuForSameNode" />
                           </node>
-                          <node concept="1adDum" id="jN" role="37wK5m">
-                            <property role="1adDun" value="0x41299cab94e5c877L" />
+                          <node concept="11gdke" id="jN" role="37wK5m">
+                            <property role="11gdj1" value="41299cab94e5c877L" />
                           </node>
                         </node>
                       </node>
@@ -3535,8 +3532,8 @@
                           <node concept="Xl_RD" id="ka" role="37wK5m">
                             <property role="Xl_RC" value="childIncludeSameMenuForDifferentLocations" />
                           </node>
-                          <node concept="1adDum" id="kb" role="37wK5m">
-                            <property role="1adDun" value="0x41299cab94ea9316L" />
+                          <node concept="11gdke" id="kb" role="37wK5m">
+                            <property role="11gdj1" value="41299cab94ea9316L" />
                           </node>
                         </node>
                       </node>
@@ -3600,8 +3597,8 @@
                           <node concept="Xl_RD" id="ky" role="37wK5m">
                             <property role="Xl_RC" value="childIncludeDifferentMenusForSameNode" />
                           </node>
-                          <node concept="1adDum" id="kz" role="37wK5m">
-                            <property role="1adDun" value="0x41299cab94d89a24L" />
+                          <node concept="11gdke" id="kz" role="37wK5m">
+                            <property role="11gdj1" value="41299cab94d89a24L" />
                           </node>
                         </node>
                       </node>
@@ -3665,8 +3662,8 @@
                           <node concept="Xl_RD" id="kU" role="37wK5m">
                             <property role="Xl_RC" value="childIncludeSameMenuForDifferentNodes" />
                           </node>
-                          <node concept="1adDum" id="kV" role="37wK5m">
-                            <property role="1adDun" value="0x3f759544c6a7e86fL" />
+                          <node concept="11gdke" id="kV" role="37wK5m">
+                            <property role="11gdj1" value="3f759544c6a7e86fL" />
                           </node>
                         </node>
                       </node>
@@ -3730,8 +3727,8 @@
                           <node concept="Xl_RD" id="li" role="37wK5m">
                             <property role="Xl_RC" value="childIncludeDifferentMenusForDifferentNodes" />
                           </node>
-                          <node concept="1adDum" id="lj" role="37wK5m">
-                            <property role="1adDun" value="0x1a41c6fb2809203aL" />
+                          <node concept="11gdke" id="lj" role="37wK5m">
+                            <property role="11gdj1" value="1a41c6fb2809203aL" />
                           </node>
                         </node>
                       </node>
@@ -3795,8 +3792,8 @@
                           <node concept="Xl_RD" id="lE" role="37wK5m">
                             <property role="Xl_RC" value="childWrapSameSubstituteMenuTwice" />
                           </node>
-                          <node concept="1adDum" id="lF" role="37wK5m">
-                            <property role="1adDun" value="0x3f759544c6a0729aL" />
+                          <node concept="11gdke" id="lF" role="37wK5m">
+                            <property role="11gdj1" value="3f759544c6a0729aL" />
                           </node>
                         </node>
                       </node>
@@ -3860,8 +3857,8 @@
                           <node concept="Xl_RD" id="m2" role="37wK5m">
                             <property role="Xl_RC" value="childWrapDifferentSubstituteMenus" />
                           </node>
-                          <node concept="1adDum" id="m3" role="37wK5m">
-                            <property role="1adDun" value="0x1a41c6fb280d1941L" />
+                          <node concept="11gdke" id="m3" role="37wK5m">
+                            <property role="11gdj1" value="1a41c6fb280d1941L" />
                           </node>
                         </node>
                       </node>
@@ -3925,8 +3922,8 @@
                           <node concept="Xl_RD" id="mq" role="37wK5m">
                             <property role="Xl_RC" value="childIncludeSameSubstituteMenuTwice" />
                           </node>
-                          <node concept="1adDum" id="mr" role="37wK5m">
-                            <property role="1adDun" value="0x3f759544c6a82caeL" />
+                          <node concept="11gdke" id="mr" role="37wK5m">
+                            <property role="11gdj1" value="3f759544c6a82caeL" />
                           </node>
                         </node>
                       </node>
@@ -3990,8 +3987,8 @@
                           <node concept="Xl_RD" id="mM" role="37wK5m">
                             <property role="Xl_RC" value="childIncludeDifferentSubstituteMenus" />
                           </node>
-                          <node concept="1adDum" id="mN" role="37wK5m">
-                            <property role="1adDun" value="0x1a41c6fb280bf85eL" />
+                          <node concept="11gdke" id="mN" role="37wK5m">
+                            <property role="11gdj1" value="1a41c6fb280bf85eL" />
                           </node>
                         </node>
                       </node>
@@ -5002,8 +4999,8 @@
                           <node concept="Xl_RD" id="sL" role="37wK5m">
                             <property role="Xl_RC" value="children" />
                           </node>
-                          <node concept="1adDum" id="sM" role="37wK5m">
-                            <property role="1adDun" value="0x4d6a8b533e60aa58L" />
+                          <node concept="11gdke" id="sM" role="37wK5m">
+                            <property role="11gdj1" value="4d6a8b533e60aa58L" />
                           </node>
                         </node>
                       </node>
@@ -5168,8 +5165,8 @@
                     <node concept="Xl_RD" id="tG" role="37wK5m">
                       <property role="Xl_RC" value="initiallyCollapsed" />
                     </node>
-                    <node concept="1adDum" id="tH" role="37wK5m">
-                      <property role="1adDun" value="0x5428f7c9b49f683L" />
+                    <node concept="11gdke" id="tH" role="37wK5m">
+                      <property role="11gdj1" value="5428f7c9b49f683L" />
                     </node>
                   </node>
                 </node>
@@ -5206,8 +5203,8 @@
                     <node concept="Xl_RD" id="tT" role="37wK5m">
                       <property role="Xl_RC" value="secondAssistant" />
                     </node>
-                    <node concept="1adDum" id="tU" role="37wK5m">
-                      <property role="1adDun" value="0x5428f7c9b4b9f22L" />
+                    <node concept="11gdke" id="tU" role="37wK5m">
+                      <property role="11gdj1" value="5428f7c9b4b9f22L" />
                     </node>
                   </node>
                 </node>

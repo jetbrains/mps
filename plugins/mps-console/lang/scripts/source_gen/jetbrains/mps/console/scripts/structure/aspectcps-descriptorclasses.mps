@@ -81,9 +81,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
@@ -1423,8 +1420,8 @@
                           <node concept="Xl_RD" id="7A" role="37wK5m">
                             <property role="Xl_RC" value="command" />
                           </node>
-                          <node concept="1adDum" id="7B" role="37wK5m">
-                            <property role="1adDun" value="0x1811ccc46ac3f6dfL" />
+                          <node concept="11gdke" id="7B" role="37wK5m">
+                            <property role="11gdj1" value="1811ccc46ac3f6dfL" />
                           </node>
                         </node>
                       </node>
@@ -1610,8 +1607,8 @@
                       <node concept="Xl_RD" id="8E" role="37wK5m">
                         <property role="Xl_RC" value="script" />
                       </node>
-                      <node concept="1adDum" id="8F" role="37wK5m">
-                        <property role="1adDun" value="0x1811ccc46ac3dc6bL" />
+                      <node concept="11gdke" id="8F" role="37wK5m">
+                        <property role="11gdj1" value="1811ccc46ac3dc6bL" />
                       </node>
                     </node>
                   </node>
@@ -1816,8 +1813,8 @@
                             <node concept="Xl_RD" id="9X" role="37wK5m">
                               <property role="Xl_RC" value="refactoring" />
                             </node>
-                            <node concept="1adDum" id="9Y" role="37wK5m">
-                              <property role="1adDun" value="0x20fd2063d7de997eL" />
+                            <node concept="11gdke" id="9Y" role="37wK5m">
+                              <property role="11gdj1" value="20fd2063d7de997eL" />
                             </node>
                           </node>
                         </node>

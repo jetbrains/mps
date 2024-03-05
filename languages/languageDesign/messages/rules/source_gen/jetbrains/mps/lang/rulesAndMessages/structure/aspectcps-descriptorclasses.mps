@@ -81,9 +81,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
@@ -985,8 +982,8 @@
                           <node concept="Xl_RD" id="5b" role="37wK5m">
                             <property role="Xl_RC" value="messagesExpr" />
                           </node>
-                          <node concept="1adDum" id="5c" role="37wK5m">
-                            <property role="1adDun" value="0x48f860fc0e362dc8L" />
+                          <node concept="11gdke" id="5c" role="37wK5m">
+                            <property role="11gdj1" value="48f860fc0e362dc8L" />
                           </node>
                         </node>
                       </node>
@@ -1171,8 +1168,8 @@
                           <node concept="Xl_RD" id="6j" role="37wK5m">
                             <property role="Xl_RC" value="rule" />
                           </node>
-                          <node concept="1adDum" id="6k" role="37wK5m">
-                            <property role="1adDun" value="0x137076528060b0fcL" />
+                          <node concept="11gdke" id="6k" role="37wK5m">
+                            <property role="11gdj1" value="137076528060b0fcL" />
                           </node>
                         </node>
                       </node>
@@ -1234,8 +1231,8 @@
                           <node concept="Xl_RD" id="6F" role="37wK5m">
                             <property role="Xl_RC" value="messageProvider" />
                           </node>
-                          <node concept="1adDum" id="6G" role="37wK5m">
-                            <property role="1adDun" value="0x46263286dc0ce86L" />
+                          <node concept="11gdke" id="6G" role="37wK5m">
+                            <property role="11gdj1" value="46263286dc0ce86L" />
                           </node>
                         </node>
                       </node>

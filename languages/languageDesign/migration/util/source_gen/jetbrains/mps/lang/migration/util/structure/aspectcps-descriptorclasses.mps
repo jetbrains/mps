@@ -85,9 +85,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
@@ -918,8 +915,8 @@
                     <node concept="Xl_RD" id="4F" role="37wK5m">
                       <property role="Xl_RC" value="script" />
                     </node>
-                    <node concept="1adDum" id="4G" role="37wK5m">
-                      <property role="1adDun" value="0x1b62b551c10bc5f4L" />
+                    <node concept="11gdke" id="4G" role="37wK5m">
+                      <property role="11gdj1" value="1b62b551c10bc5f4L" />
                     </node>
                   </node>
                 </node>
@@ -959,8 +956,8 @@
                           <node concept="Xl_RD" id="4Y" role="37wK5m">
                             <property role="Xl_RC" value="data" />
                           </node>
-                          <node concept="1adDum" id="4Z" role="37wK5m">
-                            <property role="1adDun" value="0x66eed171c5f90226L" />
+                          <node concept="11gdke" id="4Z" role="37wK5m">
+                            <property role="11gdj1" value="66eed171c5f90226L" />
                           </node>
                         </node>
                       </node>
@@ -1108,8 +1105,8 @@
                     <node concept="Xl_RD" id="5N" role="37wK5m">
                       <property role="Xl_RC" value="data" />
                     </node>
-                    <node concept="1adDum" id="5O" role="37wK5m">
-                      <property role="1adDun" value="0x2c90e78b233c3f0aL" />
+                    <node concept="11gdke" id="5O" role="37wK5m">
+                      <property role="11gdj1" value="2c90e78b233c3f0aL" />
                     </node>
                   </node>
                 </node>

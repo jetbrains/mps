@@ -86,9 +86,6 @@
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
-      <concept id="4269842503726207156" name="jetbrains.mps.baseLanguage.structure.LongLiteral" flags="nn" index="1adDum">
-        <property id="4269842503726207157" name="value" index="1adDun" />
-      </concept>
       <concept id="1068580123132" name="jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration" flags="ng" index="3clF44">
         <property id="4276006055363816570" name="isSynchronized" index="od$2w" />
         <property id="1181808852946" name="isFinal" index="DiZV1" />
@@ -2468,8 +2465,8 @@
                     <node concept="Xl_RD" id="cK" role="37wK5m">
                       <property role="Xl_RC" value="defaultProperty" />
                     </node>
-                    <node concept="1adDum" id="cL" role="37wK5m">
-                      <property role="1adDun" value="0x5c5c8f07ee282fa5L" />
+                    <node concept="11gdke" id="cL" role="37wK5m">
+                      <property role="11gdj1" value="5c5c8f07ee282fa5L" />
                     </node>
                   </node>
                 </node>
@@ -2506,8 +2503,8 @@
                     <node concept="Xl_RD" id="cX" role="37wK5m">
                       <property role="Xl_RC" value="richProperty" />
                     </node>
-                    <node concept="1adDum" id="cY" role="37wK5m">
-                      <property role="1adDun" value="0x5c5c8f07ee282fa7L" />
+                    <node concept="11gdke" id="cY" role="37wK5m">
+                      <property role="11gdj1" value="5c5c8f07ee282fa7L" />
                     </node>
                   </node>
                 </node>
@@ -2544,8 +2541,8 @@
                     <node concept="Xl_RD" id="da" role="37wK5m">
                       <property role="Xl_RC" value="compactProperty" />
                     </node>
-                    <node concept="1adDum" id="db" role="37wK5m">
-                      <property role="1adDun" value="0x5293debe4ce168efL" />
+                    <node concept="11gdke" id="db" role="37wK5m">
+                      <property role="11gdj1" value="5293debe4ce168efL" />
                     </node>
                   </node>
                 </node>
@@ -2690,8 +2687,8 @@
                     <node concept="Xl_RD" id="e4" role="37wK5m">
                       <property role="Xl_RC" value="defaultProperty" />
                     </node>
-                    <node concept="1adDum" id="e5" role="37wK5m">
-                      <property role="1adDun" value="0x10e3b2b9658523d3L" />
+                    <node concept="11gdke" id="e5" role="37wK5m">
+                      <property role="11gdj1" value="10e3b2b9658523d3L" />
                     </node>
                   </node>
                 </node>
@@ -2728,8 +2725,8 @@
                     <node concept="Xl_RD" id="eh" role="37wK5m">
                       <property role="Xl_RC" value="compactProperty" />
                     </node>
-                    <node concept="1adDum" id="ei" role="37wK5m">
-                      <property role="1adDun" value="0x10e3b2b9658523d4L" />
+                    <node concept="11gdke" id="ei" role="37wK5m">
+                      <property role="11gdj1" value="10e3b2b9658523d4L" />
                     </node>
                   </node>
                 </node>
@@ -2766,8 +2763,8 @@
                     <node concept="Xl_RD" id="eu" role="37wK5m">
                       <property role="Xl_RC" value="richProperty" />
                     </node>
-                    <node concept="1adDum" id="ev" role="37wK5m">
-                      <property role="1adDun" value="0x10e3b2b9658523d5L" />
+                    <node concept="11gdke" id="ev" role="37wK5m">
+                      <property role="11gdj1" value="10e3b2b9658523d5L" />
                     </node>
                   </node>
                 </node>
@@ -2804,8 +2801,8 @@
                     <node concept="Xl_RD" id="eF" role="37wK5m">
                       <property role="Xl_RC" value="richCompactProperty" />
                     </node>
-                    <node concept="1adDum" id="eG" role="37wK5m">
-                      <property role="1adDun" value="0x10e3b2b9658523d6L" />
+                    <node concept="11gdke" id="eG" role="37wK5m">
+                      <property role="11gdj1" value="10e3b2b9658523d6L" />
                     </node>
                   </node>
                 </node>
@@ -2964,8 +2961,8 @@
                     <node concept="Xl_RD" id="fB" role="37wK5m">
                       <property role="Xl_RC" value="subconceptProperty" />
                     </node>
-                    <node concept="1adDum" id="fC" role="37wK5m">
-                      <property role="1adDun" value="0x591b11eaedfe237eL" />
+                    <node concept="11gdke" id="fC" role="37wK5m">
+                      <property role="11gdj1" value="591b11eaedfe237eL" />
                     </node>
                   </node>
                 </node>
@@ -3096,8 +3093,8 @@
                           <node concept="Xl_RD" id="gw" role="37wK5m">
                             <property role="Xl_RC" value="defaultChildren" />
                           </node>
-                          <node concept="1adDum" id="gx" role="37wK5m">
-                            <property role="1adDun" value="0x10e3b2b96584e0beL" />
+                          <node concept="11gdke" id="gx" role="37wK5m">
+                            <property role="11gdj1" value="10e3b2b96584e0beL" />
                           </node>
                         </node>
                       </node>
@@ -3163,8 +3160,8 @@
                           <node concept="Xl_RD" id="gS" role="37wK5m">
                             <property role="Xl_RC" value="richChildren" />
                           </node>
-                          <node concept="1adDum" id="gT" role="37wK5m">
-                            <property role="1adDun" value="0x10e3b2b965850dc6L" />
+                          <node concept="11gdke" id="gT" role="37wK5m">
+                            <property role="11gdj1" value="10e3b2b965850dc6L" />
                           </node>
                         </node>
                       </node>
@@ -3230,8 +3227,8 @@
                           <node concept="Xl_RD" id="hg" role="37wK5m">
                             <property role="Xl_RC" value="richCompactChildren" />
                           </node>
-                          <node concept="1adDum" id="hh" role="37wK5m">
-                            <property role="1adDun" value="0x10e3b2b965850dccL" />
+                          <node concept="11gdke" id="hh" role="37wK5m">
+                            <property role="11gdj1" value="10e3b2b965850dccL" />
                           </node>
                         </node>
                       </node>
@@ -3297,8 +3294,8 @@
                           <node concept="Xl_RD" id="hC" role="37wK5m">
                             <property role="Xl_RC" value="childSubconcepts" />
                           </node>
-                          <node concept="1adDum" id="hD" role="37wK5m">
-                            <property role="1adDun" value="0x591b11eaedfa2504L" />
+                          <node concept="11gdke" id="hD" role="37wK5m">
+                            <property role="11gdj1" value="591b11eaedfa2504L" />
                           </node>
                         </node>
                       </node>
@@ -3469,8 +3466,8 @@
                     <node concept="Xl_RD" id="iB" role="37wK5m">
                       <property role="Xl_RC" value="defaultProperty" />
                     </node>
-                    <node concept="1adDum" id="iC" role="37wK5m">
-                      <property role="1adDun" value="0x76f70aa86b49694bL" />
+                    <node concept="11gdke" id="iC" role="37wK5m">
+                      <property role="11gdj1" value="76f70aa86b49694bL" />
                     </node>
                   </node>
                 </node>
@@ -3507,8 +3504,8 @@
                     <node concept="Xl_RD" id="iO" role="37wK5m">
                       <property role="Xl_RC" value="compactProperty" />
                     </node>
-                    <node concept="1adDum" id="iP" role="37wK5m">
-                      <property role="1adDun" value="0x76f70aa86b496951L" />
+                    <node concept="11gdke" id="iP" role="37wK5m">
+                      <property role="11gdj1" value="76f70aa86b496951L" />
                     </node>
                   </node>
                 </node>
@@ -3545,8 +3542,8 @@
                     <node concept="Xl_RD" id="j1" role="37wK5m">
                       <property role="Xl_RC" value="richProperty" />
                     </node>
-                    <node concept="1adDum" id="j2" role="37wK5m">
-                      <property role="1adDun" value="0x76f70aa86b496957L" />
+                    <node concept="11gdke" id="j2" role="37wK5m">
+                      <property role="11gdj1" value="76f70aa86b496957L" />
                     </node>
                   </node>
                 </node>
@@ -3583,8 +3580,8 @@
                     <node concept="Xl_RD" id="je" role="37wK5m">
                       <property role="Xl_RC" value="richCompactProperty" />
                     </node>
-                    <node concept="1adDum" id="jf" role="37wK5m">
-                      <property role="1adDun" value="0x76f70aa86b49695eL" />
+                    <node concept="11gdke" id="jf" role="37wK5m">
+                      <property role="11gdj1" value="76f70aa86b49695eL" />
                     </node>
                   </node>
                 </node>
@@ -3715,8 +3712,8 @@
                           <node concept="Xl_RD" id="k4" role="37wK5m">
                             <property role="Xl_RC" value="mostSpecificChildren" />
                           </node>
-                          <node concept="1adDum" id="k5" role="37wK5m">
-                            <property role="1adDun" value="0x76f70aa86b496199L" />
+                          <node concept="11gdke" id="k5" role="37wK5m">
+                            <property role="11gdj1" value="76f70aa86b496199L" />
                           </node>
                         </node>
                       </node>
@@ -3870,8 +3867,8 @@
                     <node concept="Xl_RD" id="kY" role="37wK5m">
                       <property role="Xl_RC" value="projectionType" />
                     </node>
-                    <node concept="1adDum" id="kZ" role="37wK5m">
-                      <property role="1adDun" value="0x4de57101fd1b39a6L" />
+                    <node concept="11gdke" id="kZ" role="37wK5m">
+                      <property role="11gdj1" value="4de57101fd1b39a6L" />
                     </node>
                   </node>
                 </node>
@@ -3921,8 +3918,8 @@
                     <node concept="Xl_RD" id="le" role="37wK5m">
                       <property role="Xl_RC" value="projectAsCompact" />
                     </node>
-                    <node concept="1adDum" id="lf" role="37wK5m">
-                      <property role="1adDun" value="0x7b24bcecbf6315eL" />
+                    <node concept="11gdke" id="lf" role="37wK5m">
+                      <property role="11gdj1" value="7b24bcecbf6315eL" />
                     </node>
                   </node>
                 </node>
@@ -3962,8 +3959,8 @@
                           <node concept="Xl_RD" id="lx" role="37wK5m">
                             <property role="Xl_RC" value="richChildren" />
                           </node>
-                          <node concept="1adDum" id="ly" role="37wK5m">
-                            <property role="1adDun" value="0x650641cc6246fa1aL" />
+                          <node concept="11gdke" id="ly" role="37wK5m">
+                            <property role="11gdj1" value="650641cc6246fa1aL" />
                           </node>
                         </node>
                       </node>
@@ -4029,8 +4026,8 @@
                           <node concept="Xl_RD" id="lT" role="37wK5m">
                             <property role="Xl_RC" value="compactChildren" />
                           </node>
-                          <node concept="1adDum" id="lU" role="37wK5m">
-                            <property role="1adDun" value="0x650641cc6246fa1bL" />
+                          <node concept="11gdke" id="lU" role="37wK5m">
+                            <property role="11gdj1" value="650641cc6246fa1bL" />
                           </node>
                         </node>
                       </node>
@@ -4096,8 +4093,8 @@
                           <node concept="Xl_RD" id="mh" role="37wK5m">
                             <property role="Xl_RC" value="conditionallyProjectedChildren" />
                           </node>
-                          <node concept="1adDum" id="mi" role="37wK5m">
-                            <property role="1adDun" value="0x4de57101fd1b7a08L" />
+                          <node concept="11gdke" id="mi" role="37wK5m">
+                            <property role="11gdj1" value="4de57101fd1b7a08L" />
                           </node>
                         </node>
                       </node>
@@ -4163,8 +4160,8 @@
                           <node concept="Xl_RD" id="mD" role="37wK5m">
                             <property role="Xl_RC" value="conditionallyRichOrCompactChildren" />
                           </node>
-                          <node concept="1adDum" id="mE" role="37wK5m">
-                            <property role="1adDun" value="0x7b24bcecbf5b228L" />
+                          <node concept="11gdke" id="mE" role="37wK5m">
+                            <property role="11gdj1" value="7b24bcecbf5b228L" />
                           </node>
                         </node>
                       </node>
@@ -4318,8 +4315,8 @@
                     <node concept="Xl_RD" id="nz" role="37wK5m">
                       <property role="Xl_RC" value="projectionType" />
                     </node>
-                    <node concept="1adDum" id="n$" role="37wK5m">
-                      <property role="1adDun" value="0x1b06bb955221551cL" />
+                    <node concept="11gdke" id="n$" role="37wK5m">
+                      <property role="11gdj1" value="1b06bb955221551cL" />
                     </node>
                   </node>
                 </node>
@@ -4369,8 +4366,8 @@
                     <node concept="Xl_RD" id="nN" role="37wK5m">
                       <property role="Xl_RC" value="projectAsCompact" />
                     </node>
-                    <node concept="1adDum" id="nO" role="37wK5m">
-                      <property role="1adDun" value="0x1b06bb955221551dL" />
+                    <node concept="11gdke" id="nO" role="37wK5m">
+                      <property role="11gdj1" value="1b06bb955221551dL" />
                     </node>
                   </node>
                 </node>
@@ -4410,8 +4407,8 @@
                           <node concept="Xl_RD" id="o6" role="37wK5m">
                             <property role="Xl_RC" value="richChild" />
                           </node>
-                          <node concept="1adDum" id="o7" role="37wK5m">
-                            <property role="1adDun" value="0x51568a5db0cc69beL" />
+                          <node concept="11gdke" id="o7" role="37wK5m">
+                            <property role="11gdj1" value="51568a5db0cc69beL" />
                           </node>
                         </node>
                       </node>
@@ -4475,8 +4472,8 @@
                           <node concept="Xl_RD" id="ou" role="37wK5m">
                             <property role="Xl_RC" value="compactChild" />
                           </node>
-                          <node concept="1adDum" id="ov" role="37wK5m">
-                            <property role="1adDun" value="0x51568a5db0ccd482L" />
+                          <node concept="11gdke" id="ov" role="37wK5m">
+                            <property role="11gdj1" value="51568a5db0ccd482L" />
                           </node>
                         </node>
                       </node>
@@ -4540,8 +4537,8 @@
                           <node concept="Xl_RD" id="oQ" role="37wK5m">
                             <property role="Xl_RC" value="conditionallyProjectedChild" />
                           </node>
-                          <node concept="1adDum" id="oR" role="37wK5m">
-                            <property role="1adDun" value="0x1b06bb95522154c8L" />
+                          <node concept="11gdke" id="oR" role="37wK5m">
+                            <property role="11gdj1" value="1b06bb95522154c8L" />
                           </node>
                         </node>
                       </node>
@@ -4605,8 +4602,8 @@
                           <node concept="Xl_RD" id="pe" role="37wK5m">
                             <property role="Xl_RC" value="conditionallyRichOrCompactChild" />
                           </node>
-                          <node concept="1adDum" id="pf" role="37wK5m">
-                            <property role="1adDun" value="0x1b06bb95522154c9L" />
+                          <node concept="11gdke" id="pf" role="37wK5m">
+                            <property role="11gdj1" value="1b06bb95522154c9L" />
                           </node>
                         </node>
                       </node>
@@ -4758,8 +4755,8 @@
                     <node concept="Xl_RD" id="qa" role="37wK5m">
                       <property role="Xl_RC" value="projectionType" />
                     </node>
-                    <node concept="1adDum" id="qb" role="37wK5m">
-                      <property role="1adDun" value="0x6aae07ffdad12101L" />
+                    <node concept="11gdke" id="qb" role="37wK5m">
+                      <property role="11gdj1" value="6aae07ffdad12101L" />
                     </node>
                   </node>
                 </node>
@@ -4809,8 +4806,8 @@
                     <node concept="Xl_RD" id="qq" role="37wK5m">
                       <property role="Xl_RC" value="projectAsCompact" />
                     </node>
-                    <node concept="1adDum" id="qr" role="37wK5m">
-                      <property role="1adDun" value="0x69f8aea9c55aac7aL" />
+                    <node concept="11gdke" id="qr" role="37wK5m">
+                      <property role="11gdj1" value="69f8aea9c55aac7aL" />
                     </node>
                   </node>
                 </node>
@@ -4850,8 +4847,8 @@
                           <node concept="Xl_RD" id="qH" role="37wK5m">
                             <property role="Xl_RC" value="richChild" />
                           </node>
-                          <node concept="1adDum" id="qI" role="37wK5m">
-                            <property role="1adDun" value="0x5c5c8f07ee28802cL" />
+                          <node concept="11gdke" id="qI" role="37wK5m">
+                            <property role="11gdj1" value="5c5c8f07ee28802cL" />
                           </node>
                         </node>
                       </node>
@@ -4917,8 +4914,8 @@
                           <node concept="Xl_RD" id="r5" role="37wK5m">
                             <property role="Xl_RC" value="compactChild" />
                           </node>
-                          <node concept="1adDum" id="r6" role="37wK5m">
-                            <property role="1adDun" value="0x5eadaecad3ebbb92L" />
+                          <node concept="11gdke" id="r6" role="37wK5m">
+                            <property role="11gdj1" value="5eadaecad3ebbb92L" />
                           </node>
                         </node>
                       </node>
@@ -4984,8 +4981,8 @@
                           <node concept="Xl_RD" id="rt" role="37wK5m">
                             <property role="Xl_RC" value="defaultChild" />
                           </node>
-                          <node concept="1adDum" id="ru" role="37wK5m">
-                            <property role="1adDun" value="0x5293debe4ce081eeL" />
+                          <node concept="11gdke" id="ru" role="37wK5m">
+                            <property role="11gdj1" value="5293debe4ce081eeL" />
                           </node>
                         </node>
                       </node>
@@ -5051,8 +5048,8 @@
                           <node concept="Xl_RD" id="rP" role="37wK5m">
                             <property role="Xl_RC" value="conditionallyProjectedChild" />
                           </node>
-                          <node concept="1adDum" id="rQ" role="37wK5m">
-                            <property role="1adDun" value="0x6aae07ffdad1208fL" />
+                          <node concept="11gdke" id="rQ" role="37wK5m">
+                            <property role="11gdj1" value="6aae07ffdad1208fL" />
                           </node>
                         </node>
                       </node>
@@ -5118,8 +5115,8 @@
                           <node concept="Xl_RD" id="sd" role="37wK5m">
                             <property role="Xl_RC" value="conditionallyRichOrCompactChild" />
                           </node>
-                          <node concept="1adDum" id="se" role="37wK5m">
-                            <property role="1adDun" value="0x69f8aea9c55aac7dL" />
+                          <node concept="11gdke" id="se" role="37wK5m">
+                            <property role="11gdj1" value="69f8aea9c55aac7dL" />
                           </node>
                         </node>
                       </node>
@@ -5185,8 +5182,8 @@
                           <node concept="Xl_RD" id="s_" role="37wK5m">
                             <property role="Xl_RC" value="notSupportedPresentation" />
                           </node>
-                          <node concept="1adDum" id="sA" role="37wK5m">
-                            <property role="1adDun" value="0x241930fe874ab96aL" />
+                          <node concept="11gdke" id="sA" role="37wK5m">
+                            <property role="11gdj1" value="241930fe874ab96aL" />
                           </node>
                         </node>
                       </node>
