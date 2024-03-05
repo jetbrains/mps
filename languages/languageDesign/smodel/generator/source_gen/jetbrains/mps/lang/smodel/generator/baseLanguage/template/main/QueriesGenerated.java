@@ -692,7 +692,7 @@ public class QueriesGenerated {
     return (mr == null ? null : PersistenceFacade.getInstance().asString(mr));
   }
   public static Object propertyMacro_GetValue_93_0(final PropertyMacroContext _context) {
-    return "0x" + Long.toHexString((long) ConceptId__BehaviorDescriptor.getIdValue_id5ZE7FBZ0whU.invoke(_context.getNode())) + 'L';
+    return Long.toHexString((long) ConceptId__BehaviorDescriptor.getIdValue_id5ZE7FBZ0whU.invoke(_context.getNode())) + 'L';
   }
   public static Object propertyMacro_GetValue_93_1(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.conceptName$JEM6);
@@ -838,7 +838,7 @@ public class QueriesGenerated {
   }
   public static Object propertyMacro_GetValue_115_0(final PropertyMacroContext _context) {
     long v = ((SNodeId.Regular) SLinkOperations.getTarget(_context.getNode(), LINKS.member$m3yw).getNodeId()).getId();
-    return "0x" + Long.toHexString(v) + 'L';
+    return Long.toHexString(v) + 'L';
   }
   public static Object propertyMacro_GetValue_115_1(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.member$m3yw), PROPS.internalValue$1ost);
