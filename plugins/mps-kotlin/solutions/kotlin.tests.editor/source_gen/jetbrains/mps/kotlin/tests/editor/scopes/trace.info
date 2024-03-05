@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:19fd18b4-427a-460b-866a-b6c54dd2f9f5(jetbrains.mps.kotlin.tests.editor.scopes@tests)/644431067868515392">
+    <file name="CompanionObjectScope_Test.java">
+      <node id="644431067868515392" at="28,38,29,60" concept="7" />
+      <node id="644431067870094511" at="33,63,34,54" concept="1" />
+      <node id="644431067868518722" at="37,64,38,55" concept="1" />
+      <node id="644431067868515392" at="43,52,44,19" concept="7" />
+      <node id="644431067868515392" at="48,36,49,45" concept="1" />
+      <node id="644431067870094511" at="52,65,53,22" concept="1" />
+      <node id="644431067870094530" at="54,30,55,71" concept="3" />
+      <node id="644431067870094539" at="55,71,56,0" concept="5" />
+      <node id="644431067870094540" at="56,0,57,114" concept="1" />
+      <node id="644431067870094554" at="57,114,58,114" concept="1" />
+      <node id="644431067868518722" at="61,66,62,22" concept="1" />
+      <node id="644431067870155259" at="63,30,64,71" concept="3" />
+      <node id="644431067870155265" at="64,71,65,0" concept="5" />
+      <node id="644431067870155266" at="65,0,66,114" concept="1" />
+      <node id="644431067870155280" at="66,114,67,114" concept="1" />
+      <node id="644431067868518474" at="71,48,72,70" concept="3" />
+      <node id="644431067870119229" at="72,70,73,270" concept="4" />
+      <node id="644431067870118258" at="73,270,74,0" concept="5" />
+      <node id="644431067868515392" at="25,0,27,0" concept="6" trace="ourParametersCacheExtension" />
+      <node id="644431067868515392" at="28,0,31,0" concept="0" trace="CompanionObjectScope_Test#()V" />
+      <node id="644431067868515392" at="43,0,46,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="644431067870094511" at="32,0,36,0" concept="2" trace="test_publicMembersAreInScope#()V" />
+      <node id="644431067868518722" at="36,0,40,0" concept="2" trace="test_privateMembersAreInScope#()V" />
+      <node id="644431067868515392" at="47,0,51,0" concept="2" trace="initTestNodes#()V" />
+      <node id="644431067868519668" at="71,0,76,0" concept="2" trace="signatures#()Ljava/util/List;" />
+      <node id="644431067870094511" at="53,22,59,9" concept="1" />
+      <node id="644431067868518722" at="62,22,68,9" concept="1" />
+      <node id="644431067870094511" at="52,0,61,0" concept="2" trace="test_publicMembersAreInScope#()V" />
+      <node id="644431067868518722" at="61,0,70,0" concept="2" trace="test_privateMembersAreInScope#()V" />
+      <scope id="644431067868515392" at="28,38,29,60" />
+      <scope id="644431067870094511" at="33,63,34,54" />
+      <scope id="644431067868518722" at="37,64,38,55" />
+      <scope id="644431067868515392" at="43,52,44,19" />
+      <scope id="644431067868515392" at="48,36,49,45" />
+      <scope id="644431067868515392" at="28,0,31,0" />
+      <scope id="644431067868515392" at="43,0,46,0">
+        <var name="owner" id="644431067868515392" />
+      </scope>
+      <scope id="644431067868519668" at="71,48,74,0">
+        <var name="var644431067868518474" id="644431067868518474" />
+      </scope>
+      <scope id="644431067870094511" at="32,0,36,0" />
+      <scope id="644431067868518722" at="36,0,40,0" />
+      <scope id="644431067868515392" at="47,0,51,0" />
+      <scope id="644431067870094511" at="54,30,58,114">
+        <var name="signatures" id="644431067870094531" />
+      </scope>
+      <scope id="644431067868518722" at="63,30,67,114">
+        <var name="signatures" id="644431067870155260" />
+      </scope>
+      <scope id="644431067868519668" at="71,0,76,0" />
+      <scope id="644431067870094511" at="52,65,59,9" />
+      <scope id="644431067868518722" at="61,66,68,9" />
+      <scope id="644431067870094511" at="52,0,61,0" />
+      <scope id="644431067868518722" at="61,0,70,0" />
+      <unit id="644431067868515392" at="41,0,77,0" name="jetbrains.mps.kotlin.tests.editor.scopes.CompanionObjectScope_Test$TestBody" />
+      <unit id="644431067868515392" at="23,0,78,0" name="jetbrains.mps.kotlin.tests.editor.scopes.CompanionObjectScope_Test" />
+    </file>
+  </root>
+</debug-info>
+

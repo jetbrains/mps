@@ -33,6 +33,7 @@ public class PropertyDeclaration_SubstituteMenu extends SubstituteMenuBase {
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_mohvzt_a(), CONCEPTS.PropertyDeclaration$SE));
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_mohvzt_b(), CONCEPTS.PropertyDeclaration$SE));
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_mohvzt_c(), CONCEPTS.PropertyDeclaration$SE));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_mohvzt_d(), CONCEPTS.PropertyDeclaration$SE));
     return result;
   }
 
@@ -143,6 +144,42 @@ public class PropertyDeclaration_SubstituteMenu extends SubstituteMenuBase {
       }
     }
   }
+  private class SMP_Action_mohvzt_d extends SingleItemSubstituteMenuPart {
+
+    @Nullable
+    @Override
+    protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+      Item item = new Item(_context);
+      item.resetTraceInfo();
+      return item;
+    }
+    private class Item extends DefaultSubstituteMenuItem {
+      private final SubstituteMenuContext _context;
+      public Item(SubstituteMenuContext context) {
+        super(CONCEPTS.PropertyDeclaration$SE, context);
+        _context = context;
+      }
+
+      /*package*/ void resetTraceInfo() {
+        String description = "Substitute item: " + getMatchingText("");
+        updateTraceInfo(description, new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "644431067875105604"));
+      }
+
+      @Nullable
+      @Override
+      public SNode createNode(@NotNull String pattern) {
+        SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.PropertyDeclaration$SE, _context.getCurrentTargetNode());
+        SPropertyOperations.assign(node, PROPS.isLateInit$qFSS, true);
+        return node;
+      }
+
+      @Nullable
+      @Override
+      public String getMatchingText(@NotNull String pattern) {
+        return "lateinit";
+      }
+    }
+  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyDeclaration$SE = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, "jetbrains.mps.kotlin.structure.PropertyDeclaration");
@@ -151,5 +188,6 @@ public class PropertyDeclaration_SubstituteMenu extends SubstituteMenuBase {
   private static final class PROPS {
     /*package*/ static final SProperty isReadonly$jzqd = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, 0x28bef6d75590b319L, "isReadonly");
     /*package*/ static final SProperty isConstant$zvIz = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, 0x11400bb790cefb7dL, "isConstant");
+    /*package*/ static final SProperty isLateInit$qFSS = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x298a6a355c5a8ee4L, "isLateInit");
   }
 }

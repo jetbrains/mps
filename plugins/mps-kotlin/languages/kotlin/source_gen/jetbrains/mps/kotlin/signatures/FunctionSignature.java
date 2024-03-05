@@ -4,10 +4,14 @@ package jetbrains.mps.kotlin.signatures;
 
 import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
 import jetbrains.mps.references.Reference;
+import java.util.function.Supplier;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.api.members.TypeExpander;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Objects;
+import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 
 /**
  * Signature of a function. Keeps a reference to function descriptor so it may be used later on.
@@ -34,22 +38,30 @@ public class FunctionSignature implements MemberSignature {
       }
     };
   }
-  private final String signature;
+  private Supplier<String> signature;
 
   public FunctionSignature(@NotNull FunctionDeclaration declaration) {
     this(declaration, TypeExpander.DEFAULT);
   }
-  public FunctionSignature(@NotNull FunctionDeclaration declaration, @NotNull TypeExpander expander) {
-    this(declaration, declaration.getFunctionPresentation(false, expander));
+  public FunctionSignature(@NotNull final FunctionDeclaration declaration, @NotNull final TypeExpander expander) {
+    // Lazy initializer: function presentation might be expensive to compute especially if not required later
+    final Wrappers._T<String> initializedSignature = new Wrappers._T<String>(null);
+    signature = () -> {
+      if (initializedSignature.value == null) {
+        initializedSignature.value = declaration.getFunctionPresentation(false, expander);
+      }
+      return initializedSignature.value;
+    };
+    setFunctionDeclaration(declaration);
   }
-  protected FunctionSignature(@NotNull FunctionDeclaration declaration, String signatureString) {
-    signature = signatureString;
+  protected FunctionSignature(@NotNull FunctionDeclaration declaration, @Nullable final String signatureString) {
+    signature = () -> signatureString;
     setFunctionDeclaration(declaration);
   }
 
   @Override
   public String getDescriptionText() {
-    return signature;
+    return signature.get();
   }
   @Override
   public String getPresentationText() {
@@ -66,19 +78,21 @@ public class FunctionSignature implements MemberSignature {
 
   @Override
   public int hashCode() {
-    return signature.hashCode();
+    return signature.get().hashCode();
   }
 
   @Override
   public boolean equals(Object obj) {
     if (obj instanceof FunctionSignature) {
       FunctionSignature other = (FunctionSignature) obj;
-      return Objects.equals(this.signature, other.signature);
+      return Objects.equals(this.signature.get(), other.signature.get());
     }
     return false;
   }
 
   public String toString() {
-    return "fun{" + this.signature + "}";
+    // TODO if this is important in some use case, keep this.signature and document why
+    LogContext.with(FunctionSignature.class, new Throwable(), null, null).error("FunctionSignature called");
+    return "fun{" + this.signature.get() + "}";
   }
 }

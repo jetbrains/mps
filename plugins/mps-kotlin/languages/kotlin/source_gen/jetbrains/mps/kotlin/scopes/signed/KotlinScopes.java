@@ -6,6 +6,7 @@ import jetbrains.mps.kotlin.scopes.SignatureFilter;
 import java.util.List;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.kotlin.behavior.MemberReceiver;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
@@ -42,6 +43,7 @@ public class KotlinScopes {
   protected boolean forceIncludeInstance = false;
   protected boolean useExtensionMembers = true;
   protected boolean useHierarchy = false;
+  protected boolean useReceiver = false;
   protected SignatureFilter filter = null;
   protected List<_FunctionTypes._return_P1_E0<? extends SignatureScope, ? super SignatureScope>> wrappers;
   protected MemberReceiver receiver;
@@ -74,12 +76,20 @@ public class KotlinScopes {
     return NavigationHelper.withMemberReceiver(context, (operand) -> receiver(MemberReceiver.of(operand)), () -> useHierarchy());
   }
 
-  public KotlinScopes receiver(MemberReceiver receiver) {
-    if (this.receiver != null || useHierarchy) {
+  /**
+   * Specify the receiver to be used to resolve the method. Receiver may be null if ill-defined.
+   * 
+   * In such case, receiver() should still be called to differentiate from useHierarchy()
+   * 
+   * @param receiver member receiver to use
+   */
+  public KotlinScopes receiver(@Nullable MemberReceiver receiver) {
+    if (useReceiver || useHierarchy) {
       throw new IllegalStateException("receiver or use of hierarchy already specified");
     }
 
     this.receiver = receiver;
+    this.useReceiver = true;
     return this;
   }
 
@@ -89,7 +99,7 @@ public class KotlinScopes {
    * This will include items from contextual types (implicit this) and standalone members (defined in scope).
    */
   public KotlinScopes useHierarchy() {
-    if (this.receiver != null || useHierarchy) {
+    if (useReceiver || useHierarchy) {
       throw new IllegalStateException("receiver or use of hierarchy already specified");
     }
 
@@ -146,7 +156,7 @@ public class KotlinScopes {
    * In case of wrapping, a single scope will be returned.
    */
   public Iterable<SignatureScope> buildScopes() {
-    if (!(useHierarchy) && receiver == null) {
+    if (!(useHierarchy) && !(useReceiver)) {
       throw new IllegalStateException("no receiver or use of hierarchy specified");
     }
     if (filter == null) {

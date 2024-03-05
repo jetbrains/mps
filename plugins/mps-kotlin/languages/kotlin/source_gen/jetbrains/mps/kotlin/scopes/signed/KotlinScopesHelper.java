@@ -46,10 +46,18 @@ public class KotlinScopesHelper {
     // In kotlin: lambdas and extension methods do not have access to private class members, only member defined IN the class are applied
     for (SNode contextType : ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.IClassLike$go, false))) {
       SNode thisType = IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(contextType);
+
+      // Enclosing class -> private access
       if (Objects.equals(IType__BehaviorDescriptor.typeKey_idJmO2PmZtH5.invoke(thisType), targetKey)) {
         return VisibilityAccess.TYPE_PRIVATE;
       }
 
+      // Companion object of enclosing class -> private access
+      if (Objects.equals(IType__BehaviorDescriptor.typeKey_idJmO2PmZtH5.invoke(IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(IClassLike__BehaviorDescriptor.getCompanion_id1dpU28wP77w.invoke(contextType))), targetKey)) {
+        return VisibilityAccess.TYPE_PRIVATE;
+      }
+
+      // Super types of enclosing class -> protected access
       if (Sequence.fromIterable(SuperTypesVisitorImpl.getSupertypes(thisType)).contains(targetKey)) {
         return VisibilityAccess.TYPE_PROTECTED;
       }

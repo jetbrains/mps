@@ -25,6 +25,9 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.RParenthesisStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.editor.runtime.style.Padding;
+import jetbrains.mps.editor.runtime.style.Measure;
+import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.DotStyleClass;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -154,10 +157,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "?");
-    editorCell.setCellId("Constant_77uacc_d0");
+    editorCell.setCellId("nullSafeCell");
     Style style = new StyleImpl();
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
+    style.set(StyleAttributes.PADDING_RIGHT, new Padding(0, Measure.SPACES));
+    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
     editorCell.getStyle().putAll(style);
     NavigationOperation_ClearNullSafe.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
@@ -168,9 +172,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_77uacc_e0");
     Style style = new StyleImpl();
     new DotStyleClass(this).apply(style, editorCell);
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-    style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
     UnaryExpression_RemoveFromSuffix.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.NavigationOperation$4I, "jetbrains.mps.kotlin.editor.NavigationOperation_SetNullSafe"));
@@ -214,6 +215,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.target$C6zp);
       }
+      Style style = new StyleImpl();
+      style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, true);
+      editorCell.getStyle().putAll(style);
       UnaryExpression_RemoveFromSuffix.setCellActions(editorCell, getNode(), getEditorContext());
     }
     @Override

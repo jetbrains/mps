@@ -22,10 +22,9 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.nodeEditor.cellMenu.SubstituteCompletionActionItem;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -34,8 +33,9 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class StatementHolder_InsertStatement extends TransformationMenuBase {
   public StatementHolder_InsertStatement() {
@@ -95,7 +95,7 @@ public class StatementHolder_InsertStatement extends TransformationMenuBase {
           super(context);
         }
         /*package*/ Item resetTraceInfo() {
-          updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "7393946609788794313"));
+          updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1546434101152843317"));
           return this;
         }
         @Nullable
@@ -106,9 +106,11 @@ public class StatementHolder_InsertStatement extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          // TODO This action is a helper for flexible blocks (allows to switch to {statements} from a single expression). In theory inserting manually statements should feel more natural (user actually do not need to care about switching between {statements} and single expression) but this might be confusing for beginners
-          SNode statement = SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.statements$R3pt, null);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), statement, SelectionManager.FIRST_EDITABLE_CELL, 0);
+          // Explicitly set by user
+          SPropertyOperations.assign(_context.getNode(), PROPS.forceMultiLine$d9kx, true);
+
+          // Add an empty statement for selection
+          _context.getEditorContext().selectWRTFocusPolicy((ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.statements$R3pt)).isNotEmpty() ? ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.statements$R3pt)).first() : SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.statements$R3pt, null)));
         }
 
 
@@ -123,6 +125,10 @@ public class StatementHolder_InsertStatement extends TransformationMenuBase {
         }
       }
     }
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty forceMultiLine$d9kx = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, 0x1576099f23c283c7L, "forceMultiLine");
   }
 
   private static final class LINKS {

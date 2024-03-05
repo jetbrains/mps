@@ -137,7 +137,12 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
     {
       final SNode inheritable = containingClass;
       if (SNodeOperations.isInstanceOf(inheritable, CONCEPTS.IInheritable$pc)) {
-        return IInheritable__BehaviorDescriptor.getDefaultInheritance_id6jE_6dusz0P.invoke(inheritable);
+        SAbstractConcept enclosing = IInheritable__BehaviorDescriptor.getDefaultInheritance_id6jE_6dusz0P.invoke(inheritable);
+
+        // Cannot be abstract if we have statements -> final by default (= default functions in java)
+        if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(enclosing), CONCEPTS.AbstractInheritanceModifier$GA)) || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statements$R3pt)).isEmpty()) {
+          return enclosing;
+        }
       }
     }
     return CONCEPTS.FinalInheritanceModifier$H5;
@@ -162,9 +167,9 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
     }
 
     // Check parameter type
-    final SNode stringArrayType = BuiltIn.ARRAY.toClassType();
+    SNode stringArrayType = BuiltIn.ARRAY.toClassType();
     ListSequence.fromList(SLinkOperations.getChildren(stringArrayType, LINKS.typeProjections$vhti)).addElement(IType__BehaviorDescriptor.asInvariantProjection_id2gj5XQXIqKf.invoke(BuiltIn.STRING.toClassType()));
-    final SNode firstType = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameters$dfEr)).first(), LINKS.type$1aXr);
+    SNode firstType = SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameters$dfEr)).first(), LINKS.type$1aXr);
 
     return Objects.equals(firstType, stringArrayType) || TypecheckingFacade.getFromContext().computeIsolated((TypecheckingSession session) -> TypecheckingFacade.getFromContext().isSubtype(firstType, stringArrayType));
   }
@@ -286,6 +291,7 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
     /*package*/ static final SContainmentLink parameters$dfEr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d755909980L, 0x28bef6d755909981L, "parameters");
     /*package*/ static final SContainmentLink returnType$fGYV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908cd887L, 0x11400bb7908cd888L, "returnType");
     /*package*/ static final SContainmentLink typeParameters$eq6K = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, 0x28bef6d7556a4df6L, "typeParameters");
+    /*package*/ static final SContainmentLink statements$R3pt = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, 0x123d0b402b8869f1L, "statements");
     /*package*/ static final SContainmentLink typeProjections$vhti = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162c97579L, 0x5b1dd60162c9757cL, "typeProjections");
     /*package*/ static final SContainmentLink type$1aXr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, 0x63c34deca4888fe3L, "type");
   }

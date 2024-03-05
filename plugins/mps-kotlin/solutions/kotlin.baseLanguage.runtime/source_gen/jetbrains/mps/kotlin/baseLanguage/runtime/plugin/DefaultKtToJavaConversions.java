@@ -11,11 +11,13 @@ import jetbrains.mps.kotlin.baseLanguage.toJava.JavaGenericClassTypeBuilder;
 import jetbrains.mps.kotlin.baseLanguage.toJava.JavaClassTypeBuilder;
 import jetbrains.mps.kotlin.baseLanguage.typeConversion.ClassToConceptEnum;
 import jetbrains.mps.kotlin.baseLanguage.typeConversion.ConceptBuilder;
+import jetbrains.mps.kotlin.api.builtins.BuiltIn;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaConversion;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -43,6 +45,13 @@ public class DefaultKtToJavaConversions extends Extension.Default<TypeConverterE
       engine.declareMapping(entry.kotlinPtr, new ConceptBuilder<>(entry.javaConcept));
     }
 
+    // Class -> Array
+    engine.declareMapping(BuiltIn.ARRAY.pointer(), (source) -> {
+      SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"));
+      SLinkOperations.setTarget(node, LINKS.componentType$F$Gi, KtToJavaConversion.convertProjection(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(source, CONCEPTS.ClassType$jI), LINKS.typeProjections$vhti)).first()));
+      return node;
+    });
+
     // ClassType -> KtClassifierType
     engine.declareMapping(CONCEPTS.ClassType$jI, (it) -> {
       SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x68fcefc6c20b5c6cL, "jetbrains.mps.baseLanguage.kotlinRefs.structure.KotlinClassifierType"));
@@ -67,11 +76,11 @@ public class DefaultKtToJavaConversions extends Extension.Default<TypeConverterE
       if (parameter == null) {
         return null;
       }
-      return createKotlinTypeParameterReference_28kwmj_a2a1a0p0b(parameter);
+      return createKotlinTypeParameterReference_28kwmj_a2a1a0s0b(parameter);
     });
 
     // JavaTypeVariableReference -> TypeVariableReference
-    engine.declareMapping(CONCEPTS.JavaTypeVariableReferenceType$TS, (it) -> createTypeVariableReference_28kwmj_a0a1a0s0b(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.JavaTypeVariableReferenceType$TS), LINKS.typeVariable$LHQO)));
+    engine.declareMapping(CONCEPTS.JavaTypeVariableReferenceType$TS, (it) -> createTypeVariableReference_28kwmj_a0a1a0v0b(SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.JavaTypeVariableReferenceType$TS), LINKS.typeVariable$LHQO)));
 
     // KtFileClass -> KtFileClass (type specific to BL)
     engine.declareMapping(CONCEPTS.KotlinFileClassifierType$M1, (it) -> SNodeOperations.as(it, CONCEPTS.KotlinFileClassifierType$M1));
@@ -83,12 +92,12 @@ public class DefaultKtToJavaConversions extends Extension.Default<TypeConverterE
   public TypeConverterEngine<SNode, SNode> get() {
     return engine;
   }
-  private static SNode createKotlinTypeParameterReference_28kwmj_a2a1a0p0b(SNode p0) {
+  private static SNode createKotlinTypeParameterReference_28kwmj_a2a1a0s0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.KotlinTypeParameterReference$T7);
     n0.setReferenceTarget(LINKS.typeParameter$U125, p0);
     return n0.getResult();
   }
-  private static SNode createTypeVariableReference_28kwmj_a0a1a0s0b(SNode p0) {
+  private static SNode createTypeVariableReference_28kwmj_a0a1a0v0b(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypeVariableReference$WL);
     n0.setReferenceTarget(LINKS.typeVariableDeclaration$Lz1I, p0);
     return n0.getResult();
@@ -107,8 +116,9 @@ public class DefaultKtToJavaConversions extends Extension.Default<TypeConverterE
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink class$ExdX = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5c7be90f2440b378L, 0x5c7be90f2440b37bL, "class");
-    /*package*/ static final SReferenceLink classifier$5Cta = MetaAdapterFactory.getReferenceLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x68fcefc6c20b5c6cL, 0x68fcefc6c20e3720L, "classifier");
+    /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
     /*package*/ static final SContainmentLink typeProjections$vhti = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162c97579L, 0x5b1dd60162c9757cL, "typeProjections");
+    /*package*/ static final SReferenceLink classifier$5Cta = MetaAdapterFactory.getReferenceLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x68fcefc6c20b5c6cL, 0x68fcefc6c20e3720L, "classifier");
     /*package*/ static final SContainmentLink parameter$EcOI = MetaAdapterFactory.getContainmentLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x68fcefc6c20b5c6cL, 0x102419671abL, "parameter");
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
     /*package*/ static final SReferenceLink javaClass$CQOW = MetaAdapterFactory.getReferenceLink(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x68fcefc6c20600f5L, 0x68fcefc6c2060179L, "javaClass");

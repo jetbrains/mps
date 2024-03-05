@@ -53,11 +53,16 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     if (nodeCondition_hwk5w2_a1a()) {
       editorCell.addEditorCell(createComponent_0());
     }
-    editorCell.addEditorCell(createRefNode_0());
+    if (nodeCondition_hwk5w2_a2a()) {
+      editorCell.addEditorCell(createRefNode_0());
+    }
     return editorCell;
   }
   private boolean nodeCondition_hwk5w2_a1a() {
     return (SLinkOperations.getTarget(myNode, LINKS.targetLabel$iS7r) != null);
+  }
+  private boolean nodeCondition_hwk5w2_a2a() {
+    return (SLinkOperations.getTarget(myNode, LINKS.returned$QXVK) != null);
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "return");

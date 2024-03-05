@@ -6,6 +6,9 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -13,6 +16,7 @@ import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class NavigationOperation_ClearNullSafe {
 
@@ -23,6 +27,11 @@ public class NavigationOperation_ClearNullSafe {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SPropertyOperations.assign(node, PROPS.nullSafe$Kx0o, false);
+        if ((SLinkOperations.getTarget(node, LINKS.operand$YS5t) != null)) {
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.operand$YS5t), SelectionManager.LAST_CELL, -1);
+        } else {
+          editorContext.selectWRTFocusPolicy(node);
+        }
       }
 
     };
@@ -34,6 +43,11 @@ public class NavigationOperation_ClearNullSafe {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SPropertyOperations.assign(node, PROPS.nullSafe$Kx0o, false);
+        if ((SLinkOperations.getTarget(node, LINKS.operand$YS5t) != null)) {
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.operand$YS5t), SelectionManager.LAST_CELL, -1);
+        } else {
+          editorContext.selectWRTFocusPolicy(node);
+        }
       }
 
     };
@@ -86,5 +100,9 @@ public class NavigationOperation_ClearNullSafe {
 
   private static final class PROPS {
     /*package*/ static final SProperty nullSafe$Kx0o = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af450L, 0x11400bb790a3792bL, "nullSafe");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
   }
 }

@@ -79,6 +79,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     new LBraceStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
     editorCell.getStyle().putAll(style);
+    FlexibleBlock_UnforceMultiLine.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
     return editorCell;
   }
@@ -162,7 +163,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
     private EditorCell createConstant_1() {
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
-      editorCell.setCellId("Constant_czwruj_a1a");
+      editorCell.setCellId("emptyCell");
       Style style = new StyleImpl();
       new EmptyCellStyleClass(this).apply(style, editorCell);
       style.set(StyleAttributes.EDITABLE, true);

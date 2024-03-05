@@ -15,9 +15,11 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
-import jetbrains.mps.baseLanguage.scopes.VisibleClassConstructorsScope;
+import jetbrains.mps.kotlin.scopes.signed.NavigationHelper;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
 import jetbrains.mps.scope.CompositeScope;
 import jetbrains.mps.scope.FilteringScope;
+import jetbrains.mps.baseLanguage.scopes.VisibleClassConstructorsScope;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -45,19 +47,19 @@ public class JavaMethodCall_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             // Call on receiver
-            Scope regularScope = KotlinScopes.forKotlinFunction(CONCEPTS.JavaMethodCall$gD, _context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink(), CONCEPTS.BaseMethodDeclaration$kD);
+            final Scope regularScope = KotlinScopes.forKotlinFunction(CONCEPTS.JavaMethodCall$gD, _context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink(), CONCEPTS.BaseMethodDeclaration$kD);
 
-            // Not called on a receiver -> usual constructors scope
-            VisibleClassConstructorsScope constructors = new VisibleClassConstructorsScope(_context.getContextNode());
-            return new CompositeScope(regularScope, new FilteringScope(constructors) {
-              @Override
-              public boolean isExcluded(SNode node) {
-                SNode clazz = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);
-                SNode wrapperClazz = SNodeOperations.getNodeAncestor(clazz, CONCEPTS.ClassConcept$bK, false, false);
-                return !(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.ClassConcept$bK, false)).contains(wrapperClazz)) && !((boolean) ClassConcept__BehaviorDescriptor.canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk.invoke(clazz, _context.getContextNode()));
-              }
+            return NavigationHelper.withCallReceiver(new FullScopeContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()), (_receiver) -> regularScope, () -> {
+              // Not called on a receiver -> usual constructors scope
+              return new CompositeScope(regularScope, new FilteringScope(new VisibleClassConstructorsScope(_context.getContextNode())) {
+                @Override
+                public boolean isExcluded(SNode node) {
+                  SNode clazz = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);
+                  SNode wrapperClazz = SNodeOperations.getNodeAncestor(clazz, CONCEPTS.ClassConcept$bK, false, false);
+                  return !(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.ClassConcept$bK, false)).contains(wrapperClazz)) && !((boolean) ClassConcept__BehaviorDescriptor.canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk.invoke(clazz, _context.getContextNode()));
+                }
+              });
             });
-
           }
         };
       }

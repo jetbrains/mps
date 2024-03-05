@@ -49,12 +49,36 @@ public class IClassSuperSpecifier_TransformationMenu extends TransformationMenuB
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
       result.add(new TMP_Include_j7c20q_a0());
-      result.add(new TMP_Action_j7c20q_b0());
+      result.add(new TMP_Include_j7c20q_b0());
+      result.add(new TMP_Action_j7c20q_c0());
     }
     return result;
   }
 
   public class TMP_Include_j7c20q_a0 extends IncludeTransformationMenuTransformationMenuPart {
+    @NotNull
+    @Override
+    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "default transformation menu for " + "ISuperTypeSpecifier", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "7138869604796885299")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
+    @Nullable
+    @Override
+    protected TransformationMenuLookup getMenuLookup(TransformationMenuContext _context) {
+      final SNode node = _context.getNode();
+      final EditorContext editorContext = _context.getEditorContext();
+
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.ISuperTypeSpecifier$PQ);
+    }
+
+  }
+  public class TMP_Include_j7c20q_b0 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -77,7 +101,7 @@ public class IClassSuperSpecifier_TransformationMenu extends TransformationMenuB
     }
 
   }
-  private class TMP_Action_j7c20q_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+  private class TMP_Action_j7c20q_c0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
       return new Item(context).resetTraceInfo();
@@ -116,6 +140,7 @@ public class IClassSuperSpecifier_TransformationMenu extends TransformationMenuB
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept ISuperTypeSpecifier$PQ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL, "jetbrains.mps.kotlin.structure.ISuperTypeSpecifier");
     /*package*/ static final SInterfaceConcept ITypeArguments$p9 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L, "jetbrains.mps.kotlin.structure.ITypeArguments");
   }
 

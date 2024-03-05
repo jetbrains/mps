@@ -19,6 +19,7 @@ public class PropertyDeclaration_TextGen extends TextGenDescriptorBase {
     KotlinTextGen.visibility(ctx.getPrimaryInput(), ctx);
     KotlinTextGen.inheritance(ctx.getPrimaryInput(), ctx);
     KotlinTextGen.modifier(SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isOverride$4zN7), "override", ctx);
+    KotlinTextGen.modifier(SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isLateInit$qFSS), "lateinit", ctx);
     KotlinTextGen.modifier(SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isConstant$zvIz), "const", ctx);
     if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isReadonly$jzqd)) {
       tgs.append("val ");
@@ -46,6 +47,7 @@ public class PropertyDeclaration_TextGen extends TextGenDescriptorBase {
 
   private static final class PROPS {
     /*package*/ static final SProperty isOverride$4zN7 = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x441fd2709ed45e6aL, "isOverride");
+    /*package*/ static final SProperty isLateInit$qFSS = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x298a6a355c5a8ee4L, "isLateInit");
     /*package*/ static final SProperty isConstant$zvIz = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, 0x11400bb790cefb7dL, "isConstant");
     /*package*/ static final SProperty isReadonly$jzqd = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, 0x28bef6d75590b319L, "isReadonly");
   }
