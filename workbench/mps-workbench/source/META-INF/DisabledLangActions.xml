@@ -39,8 +39,6 @@
 
     <action id="CodeInspection.OnEditor" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
-    <action id="ActivateNavBar" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-
     <action id="EditorIndentLineOrSelection" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
     <action id="BraceOrQuoteOut" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
