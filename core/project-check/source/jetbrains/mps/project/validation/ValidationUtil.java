@@ -372,7 +372,7 @@ public class ValidationUtil {
         }
         // IDEA-compiled (well, by any external facility) modules are likely loaded by IDEA and may lack access to classes managed by MPS classloaders.
         final JavaModuleFacet depJavaFacet = depModule.getFacet(JavaModuleFacet.class);
-        if (depJavaFacet.getCompile() == Compile.MPS) {
+        if (depJavaFacet != null && depJavaFacet.getCompile() == Compile.MPS) {
           String msg = "Dependency target %s has MPS-managed classloader, the module may fail to load dependent classes";
           if (!processor.process(new ModuleValidationProblem(module, MessageStatus.WARNING, String.format(msg, depModule.getModuleName())))) {
             return false;
