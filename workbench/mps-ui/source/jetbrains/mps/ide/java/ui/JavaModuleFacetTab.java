@@ -78,7 +78,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -233,16 +232,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       myCompileInMPS.addActionListener(e -> myLanguageLevel.setModel(myLanguageLevel.getModel()));
 
       final ActionListener compileListener = changeEvent -> {
-        final boolean isNone = changeEvent.getSource() == myCompileNone;
-        myCompileOutPath.setEnabled(!isNone);
-        myClassLoadMPS.setEnabled(!isNone);
-        myClassLoadContributor.setEnabled(!isNone);
-        myClassLoadNone.setEnabled(!isNone);
-        myExtNone.setEnabled(!isNone && !myClassLoadNone.isSelected());
-        myExtPlugin.setEnabled(!isNone && !myClassLoadNone.isSelected());
-
-        mySourcePathsTablePanel.setEnabled(myCompileInMPS.isSelected());
-        myLibrariesTablePanel.setEnabled(myCompileInMPS.isSelected() || myCompileExternal.isSelected());
+        updateVisibilityBasedOnCompile();
       };
       myCompileInMPS.addActionListener(compileListener);
       myCompileExternal.addActionListener(compileListener);
@@ -296,10 +286,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       jmfSettings.add(pn2);
 
       final ActionListener classLoadListener = event -> {
-        final boolean isNone = event.getSource() == myClassLoadNone;
-        myExtNone.setEnabled(!isNone);
-        myExtPlugin.setEnabled(!isNone);
-        myLibrariesTable.showLoadCheckbox(event.getSource() == myClassLoadMPS);
+        updateVisibilityBasedOnLoading();
       };
       myClassLoadMPS.addActionListener(classLoadListener);
       myClassLoadContributor.addActionListener(classLoadListener);
@@ -365,6 +352,29 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
                                                           false));
 
     setTabComponent(advancedTab);
+    updateVisibilityBasedOnCompile();
+    updateVisibilityBasedOnLoading();
+  }
+
+  private void updateVisibilityBasedOnLoading() {
+    final boolean isCompileNoneSelected = myCompileNone.isSelected();
+    final boolean isLoadNoneSelected = myClassLoadNone.isSelected();
+    myExtNone.setEnabled(!isCompileNoneSelected && !isLoadNoneSelected);
+    myExtPlugin.setEnabled(!isCompileNoneSelected && !isLoadNoneSelected);
+    myLibrariesTable.showLoadCheckbox(myClassLoadMPS.isSelected());
+  }
+
+  private void updateVisibilityBasedOnCompile() {
+    final boolean isCompileNoneSelected = myCompileNone.isSelected();
+    myCompileOutPath.setEnabled(!isCompileNoneSelected);
+    myClassLoadMPS.setEnabled(!isCompileNoneSelected);
+    myClassLoadContributor.setEnabled(!isCompileNoneSelected);
+    myClassLoadNone.setEnabled(!isCompileNoneSelected);
+    myExtNone.setEnabled(!isCompileNoneSelected && !myClassLoadNone.isSelected());
+    myExtPlugin.setEnabled(!isCompileNoneSelected && !myClassLoadNone.isSelected());
+
+    mySourcePathsTablePanel.setEnabled(myCompileInMPS.isSelected());
+    myLibrariesTablePanel.setEnabled(myCompileInMPS.isSelected() || myCompileExternal.isSelected());
   }
 
   private JComponent getSourcePathsTable() {
