@@ -21,7 +21,7 @@
   <description>Languages unit-testing java code and MPS aspects such as editor and typesystem</description>
   <version>2024.1</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="233.1" until-build="241.1"/>
+  <idea-version since-build="241.1" until-build="242.1"/>
 
   <depends>jetbrains.mps.core</depends>
   <depends optional="true">jetbrains.mps.ide</depends> <!-- FIXME 'optional' is a provisional workaround -->

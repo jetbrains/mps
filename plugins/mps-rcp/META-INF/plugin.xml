@@ -10,7 +10,7 @@
   <category>Custom Languages</category>
   <version>2023.2</version>
   <vendor url="http://www.jetbrains.com/mps/" email="support@jetbrains.com">JetBrains</vendor>
-  <idea-version since-build="233.1" until-build="241.1"/>
+  <idea-version since-build="241.1" until-build="242.1"/>
   <depends>jetbrains.mps.core</depends>
 
   <extensions defaultExtensionNs="com.intellij">
