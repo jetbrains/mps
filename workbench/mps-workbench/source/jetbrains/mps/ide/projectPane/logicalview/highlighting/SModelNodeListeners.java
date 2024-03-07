@@ -41,6 +41,7 @@ import java.util.stream.Collectors;
  * enable/disable listening, and {@link #attach(jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode)}/{@link #detach(jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode)}
  * to include/exclude selected model tree node from update.
  */
+@Deprecated(forRemoval = true)
 public class SModelNodeListeners {
   private final ModelChangeListener myModelChangeListener;
   private final SRepositoryContentAdapter myRepositoryListener;

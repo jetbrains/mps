@@ -31,6 +31,7 @@ import java.util.List;
  * @author Artem Tikhomirov
  * @since 2019.1
  */
+@Deprecated(forRemoval = true)
 public class LogicalViewChildOrder implements MPSTreeChildOrder {
   private final BaseLogicalViewProjectPane myViewPane;
   private final MPSTreeChildOrder myDelegate;

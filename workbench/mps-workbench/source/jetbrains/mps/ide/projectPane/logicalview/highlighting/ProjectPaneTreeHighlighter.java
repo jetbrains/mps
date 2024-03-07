@@ -49,6 +49,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+@Deprecated(forRemoval = true)
 public class ProjectPaneTreeHighlighter {
   private final GenStatusUpdater myGenStatusVisitor;
   private final ErrorChecker myErrorVisitor;

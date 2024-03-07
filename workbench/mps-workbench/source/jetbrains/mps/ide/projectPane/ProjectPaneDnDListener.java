@@ -56,6 +56,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+@Deprecated
 public class ProjectPaneDnDListener implements DropTargetListener {
   private static final Logger LOG = Logger.getLogger(ProjectPaneDnDListener.class);
 

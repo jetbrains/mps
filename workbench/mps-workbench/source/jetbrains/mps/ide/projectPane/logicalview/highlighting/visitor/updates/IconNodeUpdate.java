@@ -19,6 +19,7 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 
 import javax.swing.Icon;
 
+@Deprecated(forRemoval = true)
 public class IconNodeUpdate extends NodeUpdate {
   private Icon myIcon;
 

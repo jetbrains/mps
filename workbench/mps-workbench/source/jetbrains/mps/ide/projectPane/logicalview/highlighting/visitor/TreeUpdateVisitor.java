@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * Visitor that updates tree elements
  */
+@Deprecated(forRemoval = true)
 public abstract class TreeUpdateVisitor implements TreeNodeVisitor {
   private TreeNodeUpdater myUpdater;
 

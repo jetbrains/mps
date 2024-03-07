@@ -39,6 +39,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+@Deprecated(forRemoval = true)
 public abstract class SNodeTreeUpdater<T extends MPSTreeNode> {
   protected final Project myProject;
   protected T myTreeNode;

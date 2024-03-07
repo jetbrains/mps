@@ -40,6 +40,7 @@ import java.util.function.Predicate;
  * @author Artem Tikhomirov
  * @since 2019.1
  */
+@Deprecated(forRemoval = true)
 public class ProjectTreeChildOrder implements MPSTreeChildOrder {
 
   private final Predicate<MPSTreeNode> myGroupByConcept;

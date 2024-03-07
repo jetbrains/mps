@@ -30,6 +30,7 @@ import java.util.Set;
  * Update for SModelTreeNodes based on SModelEvents.
  * Extracted from inner class of SModelNodeListeners which now deals with highlighter aspects only.
  */
+@Deprecated(forRemoval = true)
 class ModelStructureUpdate extends SNodeTreeUpdater<SModelTreeNode> {
   public ModelStructureUpdate(Project project, SModelTreeNode treeNode) {
     super(project, treeNode);

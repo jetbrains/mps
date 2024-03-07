@@ -56,6 +56,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ *  FIXME: Create* actions have nothing to do with project pane implementation, move elsewhere
+ * 
+ */
 // FIXME is there true need to extend BaseGroup? Can benefit from BG update and, perhaps, shorter model read?
 public class CreateRootNodeGroup extends BaseGroup {
   public CreateRootNodeGroup() {

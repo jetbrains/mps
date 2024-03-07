@@ -48,6 +48,7 @@ import java.util.Set;
 /**
  * visitXXX methods require model read
  */
+@Deprecated(forRemoval = true)
 public class ErrorChecker extends TreeUpdateVisitor implements TreeMessageOwner {
   private final MPSProject myProject;
 

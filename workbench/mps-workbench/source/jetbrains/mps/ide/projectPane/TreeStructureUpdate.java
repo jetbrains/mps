@@ -35,6 +35,7 @@ import java.util.Map;
  * Tracks SModelTreeNodes and updates (with ModelStructureUpdate help) tree structure according to model changes.
  * @author Artem Tikhomirov
  */
+@Deprecated(forRemoval = true)
 class TreeStructureUpdate implements MPSTreeNodeListener {
 
   private final ProjectTree myProjectTree;

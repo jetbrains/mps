@@ -27,6 +27,7 @@ import javax.swing.Icon;
 /**
  * visitXXX methods require model read
  */
+@Deprecated(forRemoval = true)
 public class ModifiedMarker extends TreeUpdateVisitor {
   public ModifiedMarker() {
   }

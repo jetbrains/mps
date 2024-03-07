@@ -31,6 +31,7 @@ import java.util.Objects;
  * @since 2019.1
  * @author Artem Tikhomirov
  */
+@Deprecated(forRemoval = true)
 public class TreeNodeSortService {
   private final Collection<ChildComparatorProvider> myProviders = new ArrayList<>(2);
 

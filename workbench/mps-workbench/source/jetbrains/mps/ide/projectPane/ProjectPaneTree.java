@@ -97,6 +97,11 @@ import java.util.stream.Collectors;
  * need move to ProjectPane, as it's project stuff and needs Idea's project Message bus), integration with
  * editor (activation, auto-select/expand), etc.
  */
+
+/**
+ * @deprecated obsolete component
+ */
+@Deprecated(forRemoval = true)
 public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider, ProjectModuleTreeNode.ModuleNodeChildrenProvider {
   private final ProjectPane myProjectPane;
   private final ProjectTreeCellRenderer myCellRenderer;
@@ -137,8 +142,8 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
     addKeyListener(myKeyListener);
 
     //drag support is alive while the tree is alive
-    DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, new MyDragGestureListener());
-    new DropTarget(this, new ProjectPaneDnDListener(this, new MyTransferable(null).getTransferDataFlavors()[0]));
+//    DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, new MyDragGestureListener());
+//    new DropTarget(this, new ProjectPaneDnDListener(this, new MyTransferable(null).getTransferDataFlavors()[0]));
 
     MessageBusConnection connection = project.getMessageBus().connect(this);
     connection.subscribe(DumbService.DUMB_MODE, new DumbModeListener() {
@@ -394,70 +399,70 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
     }
   }
 
-  private class MyDragGestureListener implements DragGestureListener {
-    @Override
-    public void dragGestureRecognized(final DragGestureEvent dge) {
-      if ((dge.getDragAction() & DnDConstants.ACTION_COPY_OR_MOVE) == 0) {
-        return;
-      }
-      ProjectView projectView = ProjectView.getInstance(myProjectPane.getProject());
-      if (projectView == null) {
-        return;
-      }
-      final AbstractProjectViewPane currentPane = projectView.getCurrentProjectViewPane();
-      if (!(currentPane instanceof BaseLogicalViewProjectPane)) {
-        return;
-      }
-
-      final List<Pair<SNodeReference, String>> result = new ArrayList<>();
-
-      getProject().getModelAccess().runReadAction(() -> {
-        for (MPSTreeNodeEx node : myProjectPane.getSelectedTreeNodes(MPSTreeNodeEx.class)) {
-          if (node.getNodePointer() != null) {
-            result.add(new Pair<>(node.getNodePointer(), ""));
-          }
-        }
-        SModel contextDescriptor = myProjectPane.getContextModel();
-        if (contextDescriptor != null) {
-          for (PackageNode treeNode : myProjectPane.getSelectedTreeNodes(PackageNode.class)) {
-            String searchedPack = treeNode.getFullPackage();
-            if (treeNode.getChildCount() == 0 || searchedPack == null) {
-              continue;
-            }
-            for (final SNode node : contextDescriptor.getRootNodes()) {
-              String nodePack = SNodeAccessUtil.getProperty(node, SNodeUtil.property_BaseConcept_virtualPackage);
-              if (nodePack == null) {
-                continue;
-              }
-              if (!nodePack.startsWith(searchedPack)) {
-                continue;
-              }
-
-              StringBuilder basePack = new StringBuilder();
-              String firstPart = treeNode.getPackage();
-              String secondPart = "";
-              String prefix = searchedPack + ".";
-              if (nodePack.startsWith(prefix)) {
-                secondPart = nodePack.substring(prefix.length());
-              }
-              basePack.append(firstPart);
-              if (!firstPart.isEmpty() && !secondPart.isEmpty()) {
-                basePack.append('.');
-              }
-              basePack.append(secondPart);
-              result.add(new Pair<>(node.getReference(), basePack.toString()));
-            }
-          }
-        }
-      });
-      if (result.isEmpty()) {
-        return;
-      }
-
-      try {
-        dge.startDrag(DragSource.DefaultMoveNoDrop, new MyTransferable(result), new MyDragSourceListener());
-      } catch (InvalidDnDOperationException ignored) {
-      }
-    }
-  }
+//  private class MyDragGestureListener implements DragGestureListener {
+//    @Override
+//    public void dragGestureRecognized(final DragGestureEvent dge) {
+//      if ((dge.getDragAction() & DnDConstants.ACTION_COPY_OR_MOVE) == 0) {
+//        return;
+//      }
+//      ProjectView projectView = ProjectView.getInstance(myProjectPane.getProject());
+//      if (projectView == null) {
+//        return;
+//      }
+//      final AbstractProjectViewPane currentPane = projectView.getCurrentProjectViewPane();
+//      if (!(currentPane instanceof BaseLogicalViewProjectPane)) {
+//        return;
+//      }
+//
+//      final List<Pair<SNodeReference, String>> result = new ArrayList<>();
+//
+//      getProject().getModelAccess().runReadAction(() -> {
+//        for (MPSTreeNodeEx node : myProjectPane.getSelectedTreeNodes(MPSTreeNodeEx.class)) {
+//          if (node.getNodePointer() != null) {
+//            result.add(new Pair<>(node.getNodePointer(), ""));
+//          }
+//        }
+//        SModel contextDescriptor = myProjectPane.getContextModel();
+//        if (contextDescriptor != null) {
+//          for (PackageNode treeNode : myProjectPane.getSelectedTreeNodes(PackageNode.class)) {
+//            String searchedPack = treeNode.getFullPackage();
+//            if (treeNode.getChildCount() == 0 || searchedPack == null) {
+//              continue;
+//            }
+//            for (final SNode node : contextDescriptor.getRootNodes()) {
+//              String nodePack = SNodeAccessUtil.getProperty(node, SNodeUtil.property_BaseConcept_virtualPackage);
+//              if (nodePack == null) {
+//                continue;
+//              }
+//              if (!nodePack.startsWith(searchedPack)) {
+//                continue;
+//              }
+//
+//              StringBuilder basePack = new StringBuilder();
+//              String firstPart = treeNode.getPackage();
+//              String secondPart = "";
+//              String prefix = searchedPack + ".";
+//              if (nodePack.startsWith(prefix)) {
+//                secondPart = nodePack.substring(prefix.length());
+//              }
+//              basePack.append(firstPart);
+//              if (!firstPart.isEmpty() && !secondPart.isEmpty()) {
+//                basePack.append('.');
+//              }
+//              basePack.append(secondPart);
+//              result.add(new Pair<>(node.getReference(), basePack.toString()));
+//            }
+//          }
+//        }
+//      });
+//      if (result.isEmpty()) {
+//        return;
+//      }
+//
+//      try {
+//        dge.startDrag(DragSource.DefaultMoveNoDrop, new MyTransferable(result), new MyDragSourceListener());
+//      } catch (InvalidDnDOperationException ignored) {
+//      }
+//    }
+//  }
 }
