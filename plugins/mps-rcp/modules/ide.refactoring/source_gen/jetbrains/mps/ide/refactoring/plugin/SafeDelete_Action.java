@@ -50,6 +50,6 @@ public class SafeDelete_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    new DeleteNodesHelper(event.getData(MPSCommonDataKeys.NODES), event.getData(MPSCommonDataKeys.MPS_PROJECT)).deleteNodes(true, true, false);
+    new DeleteNodesHelper(event.getData(MPSCommonDataKeys.NODES), event.getData(MPSCommonDataKeys.MPS_PROJECT)).deleteNodes(true, true);
   }
 }

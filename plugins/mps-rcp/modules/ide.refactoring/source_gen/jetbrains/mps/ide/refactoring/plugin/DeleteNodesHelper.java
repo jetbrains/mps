@@ -14,7 +14,6 @@ import jetbrains.mps.plugins.relations.RelationDescriptor;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.smodel.UndoRunnable;
-import jetbrains.mps.ide.projectPane.ProjectPane;
 import java.util.Iterator;
 import jetbrains.mps.ide.findusages.model.SearchTask;
 import jetbrains.mps.ide.findusages.model.SearchResults;
@@ -55,7 +54,15 @@ public class DeleteNodesHelper {
       return ListSequence.fromList(tabs).where((it) -> it.isApplicable(node) && !(it.getNodes(node).isEmpty()));
     }).isNotEmpty();
   }
+  /**
+   * 
+   * @deprecated no need to specify fromProjectPane, use the overloaded version without this parameter
+   */
+  @Deprecated
   public void deleteNodes(final boolean safe, final boolean aspects, final boolean fromProjectPane) {
+    deleteNodes(safe, aspects);
+  }
+  public void deleteNodes(final boolean safe, final boolean aspects) {
     assert !(myRepository.getModelAccess().canRead()) : "can lead to deadlock";
 
     final com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject(myProject);
@@ -63,14 +70,8 @@ public class DeleteNodesHelper {
 
       @Override
       public void run() {
-        ProjectPane projectPane = ProjectPane.getInstance(ideaProject);
-
         for (Iterator<SNode> iterator = myNodesToDelete.iterator(); iterator.hasNext();) {
           SNode sNode = iterator.next();
-          if (!(iterator.hasNext()) && fromProjectPane) {
-            projectPane.rebuildTree();
-            projectPane.selectNextNode(sNode);
-          }
           if (sNode.getModel() == null) {
             continue;
           }
