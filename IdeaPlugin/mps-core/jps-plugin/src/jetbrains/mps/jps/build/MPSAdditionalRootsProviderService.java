@@ -18,6 +18,7 @@ package jetbrains.mps.jps.build;
 
 import com.intellij.openapi.util.io.FileUtil;
 import gnu.trove.THashSet;
+import gnu.trove.TObjectHashingStrategy;
 import jetbrains.mps.jps.model.JpsMPSExtensionService;
 import jetbrains.mps.jps.model.JpsMPSModuleExtension;
 import org.jetbrains.annotations.NotNull;
@@ -59,7 +60,7 @@ public class MPSAdditionalRootsProviderService extends AdditionalRootsProviderSe
   }
 
   private boolean isGenOutputUnderSourceRoot(ModuleBuildTarget target, File outputPath) {
-    THashSet<File> sourceRootFiles = new THashSet<File>(FileUtil.FILE_HASHING_STRATEGY);
+    THashSet<File> sourceRootFiles = new THashSet<File>(FILE_HASHING_STRATEGY);
     for (JpsModuleSourceRoot sourceRoot : target.getModule().getSourceRoots()) {
       sourceRootFiles.add(sourceRoot.getFile());
     }
@@ -73,4 +74,17 @@ public class MPSAdditionalRootsProviderService extends AdditionalRootsProviderSe
   private static void addGeneratedSourcesRoot(List<JavaSourceRootDescriptor> result, ModuleBuildTarget buildTarget, final File file) {
     result.add(new JavaSourceRootDescriptor(file, buildTarget, true, false, "", Collections.<File>emptySet()));
   }
+
+  private static final TObjectHashingStrategy<File> FILE_HASHING_STRATEGY =
+      new TObjectHashingStrategy<File>() {
+        @Override
+        public int computeHashCode(File object) {
+          return FileUtil.fileHashCode(object);
+        }
+
+        @Override
+        public boolean equals(File o1, File o2) {
+          return FileUtil.filesEqual(o1, o2);
+        }
+      };
 }
