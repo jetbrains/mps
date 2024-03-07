@@ -123,20 +123,6 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
             }
           } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.WildCardType$uV)) {
             // nothing to do
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
-            {
-              SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7192154694570987550", 0, null);
-              _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-              typeCheckingContext.createEquation((SNode) leftParam, (SNode) rightParam, _info_12389875345);
-            }
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
-            {
-              SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5450156852673290347", 0, null);
-              _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-              typeCheckingContext.createEquation((SNode) leftParam, (SNode) rightParam, _info_12389875345);
-            }
           } else {
             // Either left or right is raw -> resort to :==: as :<=: + :>=: incorrectly works 
             boolean leftRaw = SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(leftParam, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(leftParam, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
@@ -212,10 +198,6 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
             result_14532009 = result_14532009 && new SNodeMatcher().match((SNode) rightParam, (SNode) leftParam);
           } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.WildCardType$uV)) {
             // nothing to do
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
-            result_14532009 = result_14532009 && new SNodeMatcher().match((SNode) leftParam, (SNode) rightParam);
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
-            result_14532009 = result_14532009 && new SNodeMatcher().match((SNode) leftParam, (SNode) rightParam);
           } else {
             // Either left or right is raw -> resort to :==: as :<=: + :>=: incorrectly works 
             boolean leftRaw = SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(leftParam, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(leftParam, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
