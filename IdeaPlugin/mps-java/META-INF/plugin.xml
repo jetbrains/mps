@@ -17,7 +17,7 @@
 <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
   <id>jetbrains.mps.idea.java</id>
   <name>MPS BaseLanguage Support</name>
-  <description>Support of the MPS BaseLanguage (JAVA)</description>
+  <description>Integrate MPS BaseLanguage (Java) into IDEA PSI Model</description>
   <category>Custom Languages</category>
   <version>2021.3.6</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
