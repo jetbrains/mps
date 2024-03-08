@@ -17,7 +17,6 @@ package jetbrains.mps.idea.core.project;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkModificator;
 import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.roots.RootProvider;
 import com.intellij.openapi.roots.RootProvider.RootSetChangedListener;
@@ -113,13 +112,13 @@ public abstract class StubSolutionIdea extends Solution {
   }
 
   public static Solution newInstance(Sdk sdk, Sdk baseJdk, MPSModuleOwner moduleOwner, SRepositoryExt repository, @NotNull VFSManager vfsManager) {
-    SolutionDescriptor descriptor = createDescriptor(sdk.getName(), ((SdkModificator) sdk).getRoots(OrderRootType.CLASSES), false, vfsManager);
+    SolutionDescriptor descriptor = createDescriptor(sdk.getName(), sdk.getRootProvider().getFiles(OrderRootType.CLASSES), false, vfsManager);
     return register(repository, moduleOwner, new SdkStubSolution(descriptor, vfsManager, sdk, baseJdk));
   }
 
   public static Solution newInstanceForJdk(Sdk sdk, MPSModuleOwner moduleOwner, SRepositoryExt repository, @NotNull VFSManager vfsManager) {
     // FIXME in fact, with ClassStubRootConfiguration in place, don't need to replace JDK solution any more, just need to provide proper roots
-    SolutionDescriptor descriptor = createDescriptor("JDK", ((SdkModificator) sdk).getRoots(OrderRootType.CLASSES), true, vfsManager);
+    SolutionDescriptor descriptor = createDescriptor("JDK", sdk.getRootProvider().getFiles(OrderRootType.CLASSES), true, vfsManager);
 
     // giving the SDK the hard-coded module id
     ModuleId jdkId = ModuleId.regular(UUID.fromString("6354ebe7-c22a-4a0f-ac54-50b52ab9b065"));
