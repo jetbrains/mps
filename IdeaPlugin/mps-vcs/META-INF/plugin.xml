@@ -18,7 +18,7 @@
   <id>jetbrains.mps.idea.vcs</id>
   <name>MPS Version Control Support</name>
   <category>Custom Languages</category>
-  <description>MPS Version Control support</description>
+  <description>Provides support for Version Control in MPS models</description>
   <version>2023.2.1</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
   <idea-version since-build="232.1" until-build="233.1"/>
