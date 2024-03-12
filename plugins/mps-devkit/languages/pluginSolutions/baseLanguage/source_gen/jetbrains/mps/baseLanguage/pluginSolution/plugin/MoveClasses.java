@@ -12,6 +12,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.refactoring.participant.plugin.MoveNodesUtil;
 import java.util.Map;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
@@ -44,14 +45,20 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
   public boolean isApplicable(MPSProject project, List<SNode> nodes) {
     return super.isApplicable(project, nodes) && ListSequence.fromList(nodes).all((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix) && (SNodeOperations.getParent(it) == null || SNodeOperations.hasRole(it, LINKS.member$L_2d)));
   }
-
   @Override
   public void execute(final MPSProject project, final List<SNode> nodesToMove) {
+    execute(project, nodesToMove, null);
+  }
+
+  @Override
+  public void execute(MPSProject project, final List<SNode> nodesToMove, Object destinationHint) {
     final Wrappers._T<NodeLocation> newLocation = new Wrappers._T<NodeLocation>();
     final Wrappers._boolean isMember = new Wrappers._boolean();
     project.getRepository().getModelAccess().runReadAction(() -> isMember.value = SNodeOperations.hasRole(ListSequence.fromList(nodesToMove).first(), LINKS.member$L_2d));
     if (isMember.value) {
       project.getRepository().getModelAccess().runReadAction(() -> newLocation.value = new NodeLocation.NodeLocationRoot(SNodeOperations.getModel(ListSequence.fromList(nodesToMove).first())));
+    } else if (destinationHint instanceof SModel) {
+      newLocation.value = new NodeLocation.NodeLocationRoot(((SModel) destinationHint));
     } else {
       newLocation.value = askLocation(project, nodesToMove);
     }

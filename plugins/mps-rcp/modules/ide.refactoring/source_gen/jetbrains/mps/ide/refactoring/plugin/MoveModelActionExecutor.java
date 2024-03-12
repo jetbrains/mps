@@ -5,8 +5,8 @@ package jetbrains.mps.ide.refactoring.plugin;
 import jetbrains.mps.ide.actions.ModelCreationActionsBaseExecutor;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogSettings;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -36,19 +36,33 @@ public class MoveModelActionExecutor extends ModelCreationActionsBaseExecutor {
 
   protected final NewModelDialogSettings.Factory myDialogSettingsFactory;
   protected final SModel myOriginalModel;
+  private final SModule myTargetModule;
 
   public MoveModelActionExecutor(MPSProject project, SModel originalModel) {
     this(project, originalModel, getDefaultSettingsFactoryForMoved(originalModel));
   }
 
+  public MoveModelActionExecutor(MPSProject project, SModel originalModel, SModule targetModule) {
+    this(project, originalModel, targetModule, getDefaultSettingsFactoryForMoved(originalModel));
+  }
+
   public MoveModelActionExecutor(MPSProject project, SModel originalModel, NewModelDialogSettings.Factory dialogSettingsFactory) {
+    this(project, originalModel, null, dialogSettingsFactory);
+  }
+
+  public MoveModelActionExecutor(MPSProject project, SModel originalModel, SModule targetModule, NewModelDialogSettings.Factory dialogSettingsFactory) {
     super(project);
     myOriginalModel = originalModel;
+    myTargetModule = targetModule;
     myDialogSettingsFactory = dialogSettingsFactory;
   }
 
   @Override
   protected final SModule selectModule() {
+    if (myTargetModule != null) {
+      return myTargetModule;
+    }
+
     final List<SModuleReference> modules = ListSequence.fromList(new ArrayList<SModuleReference>());
     myProject.getRepository().getModelAccess().runReadAction(() -> {
       for (SModule module : ListSequence.fromList(myProject.getProjectModulesWithGenerators())) {
@@ -114,7 +128,7 @@ public class MoveModelActionExecutor extends ModelCreationActionsBaseExecutor {
     public void prepareRefactoring() {
       NewModelDialog dialog = new NewModelDialog(myProject, (AbstractModule) myModule, getTitle(), myDialogSettingsFactory);
       dialog.show();
-      myNewModel = check_lf1t34_a0c0m22(check_lf1t34_a0a2a21w(dialog.getResultHelper(), myOriginalModel));
+      myNewModel = check_lf1t34_a0c0m72(check_lf1t34_a0a2a21bb(dialog.getResultHelper(), myOriginalModel));
     }
 
     public void doRefactor(Iterable<RefactoringParticipant.ParticipantApplied<?, ?, SModel, SModel, SModel, SModel>> participantStates, RefactoringSession refactoringSession) {
@@ -148,13 +162,13 @@ public class MoveModelActionExecutor extends ModelCreationActionsBaseExecutor {
       return myNewModel;
     }
   }
-  private static EditableSModel check_lf1t34_a0c0m22(ModelCreateHelper checkedDotOperand) {
+  private static EditableSModel check_lf1t34_a0c0m72(ModelCreateHelper checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.createModelHandleExceptions();
     }
     return null;
   }
-  private static ModelCreateHelper check_lf1t34_a0a2a21w(ModelCreateHelper checkedDotOperand, SModel myOriginalModel) {
+  private static ModelCreateHelper check_lf1t34_a0a2a21bb(ModelCreateHelper checkedDotOperand, SModel myOriginalModel) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.setClone(myOriginalModel, true);
     }
