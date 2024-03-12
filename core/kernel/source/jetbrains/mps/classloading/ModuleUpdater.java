@@ -51,7 +51,6 @@ import java.util.stream.Stream;
   private final Set<SModuleReference> myModulesToRemove = new LinkedHashSet<>();
   // FIXME what's invariant here? Do we keep modules that are capable of classloading here, while myRefStorage just keeps all known modules?
   private final GraphHolder<SModuleReference> myDepGraphHolder = new GraphHolder<>();
-  private final ReferenceStorage<ReloadableModule> myRefStorage;
   // inv: for each vertex in myDepGraphHolder, there's CModule in myRefStorage2, and vice versa
   private final Map<SModuleReference, CModule> myRefStorage2 = new HashMap<>();
   private final SRepository myRepository;
@@ -59,7 +58,6 @@ import java.util.stream.Stream;
 
   public ModuleUpdater(SRepository repository) {
     myRepository = repository;
-    myRefStorage = new ReferenceStorage<>();;
     myDependencyCollector = new CLDependencies(repository);
   }
 
@@ -88,10 +86,12 @@ import java.util.stream.Stream;
   /*package*/ void removeModules(@NotNull Collection<? extends SModuleReference> mRefs) {
     synchronized (LOCK) {
       for (SModuleReference mRef : mRefs) {
-        final ReloadableModule instance = myRefStorage.resolveRef(mRef); // resolveRef, not moduleRemoved - leave actual changes to refreshGraph()
+        final CModule instance = myRefStorage2.get(mRef); // resolveRef, not moduleRemoved - leave actual changes to refreshGraph()
         if (instance != null) {
-          myModulesToAdd.remove(instance);
-          myModulesToReload.remove(instance);
+          if (instance.getModule() != null) {
+            myModulesToAdd.remove(instance.getModule());
+            myModulesToReload.remove(instance.getModule());
+          }
           myModulesToRemove.add(mRef);
           myChangedFlag = true;
         }
@@ -121,15 +121,14 @@ import java.util.stream.Stream;
         int wasVertices = myDepGraphHolder.getVerticesCount();
 
         assert !CollectionUtil.intersects(myModulesToAdd.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()), myModulesToRemove);
+        // FIXME perhaps, shall collect/keep ReloadableModule (CModule) instances to facilitate DeployListener event dispatch?
         HashSet<SModuleReference> removedToVisitAgain = new HashSet<>();
         for (SModuleReference mRef : myModulesToRemove) {
           if (!myDepGraphHolder.contains(mRef)) {
             continue;
           }
-          myRefStorage.moduleRemoved(mRef); // FIXME here or later, when we get to myDepGrap cleanup?
+          // FIXME do we remove CModule from storage here or later, when we get to myDepGrap cleanup, and here just collect deleted CModule?
           storageForget(mRef, removedToVisitAgain);
-          // perhaps, shall collect/keep ReloadableModule instances to facilitate DeployListener event dispatch?
-          removedToVisitAgain.add(mRef);
         }
         myDepGraphHolder.cleanOutgoingEdges(removedToVisitAgain);
         //
@@ -148,7 +147,6 @@ import java.util.stream.Stream;
             myDepGraphHolder.add(mRef);
             storageAdd(module);
           }
-          myRefStorage.moduleAdded(module);
           withChangeInDependencies.add(mRef);
         }
         for (ReloadableModule module : myModulesToReload) {
@@ -162,7 +160,6 @@ import java.util.stream.Stream;
             myDepGraphHolder.add(mRef);
             storageAdd(module);
           }
-          myRefStorage.moduleAdded(module);
           withChangeInDependencies.add(mRef);
         }
         withChangeInDependencies.removeAll(removedToVisitAgain);
@@ -216,12 +213,17 @@ import java.util.stream.Stream;
   // FIXME assuming invoked for each known module and therefore we don't traverse deps here, although it's the proper plact to do that,
   //       rather than to expose traverse/backDeps logic to neighbours
   /*package*/ List<SearchError> getErrors(@NotNull SModuleReference v) {
-    // provisional; as long as CLDependencies resolves targets
-    List<SearchError> searchErrors = myDependencyCollector.getModulesWithAbsentDeps().get(v);
+    // FIXME provisional; as long as CLDependencies resolves targets. Now it does that in 'legacy' mode (no DD in use, no deps.cp found)
+    List<SearchError> searchErrors = myDependencyCollector.getLegacyDependencyErrors(v);
     if (searchErrors != null && !searchErrors.isEmpty()) {
       return searchErrors;
     }
-    if (myRefStorage.resolveRef(v) == null) {
+    CModule reloadableModule = myRefStorage2.get(v);
+    if (reloadableModule == null) {
+      // shall not happen, provided ModulesWatcher invokes this method for graph vertex and only them.
+      return Collections.singletonList(SearchError.of("*** UNKNOWN MODULE ***"));
+    }
+    if (reloadableModule.getModule() == null) {
       return Collections.singletonList(SearchError.of("Module is not in the repository"));
     }
     return Collections.emptyList();
@@ -234,7 +236,8 @@ import java.util.stream.Stream;
 
   @Nullable
   /*package*/ ReloadableModule resolveRef(SModuleReference ref) {
-    return myRefStorage.resolveRef(ref);
+    // invoked for graph verticies only, assume get() != null
+    return (ReloadableModule) myRefStorage2.get(ref).getModule();
   }
 
   /**
@@ -254,8 +257,11 @@ import java.util.stream.Stream;
       //  for ModuleA and as required for ModuleC
       final Collection<SModuleReference> currentDeps = new HashSet<>();
       myDepGraphHolder.fillOutgoingEdgesShallow(Collections.singleton(mRef), currentDeps);
-      ReloadableModule module = myRefStorage.resolveRef(mRef);
-      Stream<SModuleReference> newModuleDeps = module == null ? Stream.empty() : myDependencyCollector.directlyUsedModules(module.getModule()).stream();
+      CModule reloadableModule = myRefStorage2.get(mRef);
+      // FIXME revisit comment above. With myRefStorage2, likely, can expect reloadableModule != null; seems that CModule(ModuleB).getModule() == null
+      //       in this case. We update edges here, ModuleB -> ModuleA edge needs to be cleared here, seems like empty newModuleDeps (for CModule(ModuleB).getModule() == null)
+      //       would do the trick as expected.
+      Stream<SModuleReference> newModuleDeps = reloadableModule == null || reloadableModule.getModule() == null ? Stream.empty() : myDependencyCollector.directlyUsedModules(reloadableModule.getModule()).stream();
       // XXX do I need to skip if there are no newModuleDeps (assuming this means error) - not to remove existing edges.
       // if (newModuleDeps.isEmpty()) { continue; }
       newModuleDeps.forEach(depRef -> {
@@ -319,6 +325,7 @@ import java.util.stream.Stream;
   private void storageForget(SModuleReference mRef, Set<SModuleReference> removedToVisitAgain) {
     CModule removed = myRefStorage2.remove(mRef);
     assert removed != null;
+    removedToVisitAgain.add(mRef);
   }
 
   private void storageUpdate(final SModule m) {

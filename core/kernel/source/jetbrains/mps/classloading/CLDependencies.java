@@ -59,10 +59,10 @@ import java.util.stream.Collectors;
   /**
    * assumes model read over repository
    *
-   * FIXME consider switching to SModuleReference
+   * FIXME consider switching to a wrapper with SModuleReference and dependency kind (for traceability, where dependency comes from - e.g. direct use or
+   *       as a runtime of used language)
    */
   public Collection<SModuleReference> directlyUsedModules(SModule module) {
-    ErrorContainer errorContainer = new ErrorContainer();
     Collection<SModuleReference> rv;
     DeploymentDescriptor dd = ddIfPresent(module);
     if (USE_DD && dd != null) {
@@ -70,14 +70,6 @@ import java.util.stream.Collectors;
       // process all dependencies, irrespective of "rt"/"cl" (RUNTIME/DEFAULT) scope
       for (Dependency dependency : dd.getDependencies()) {
         rv.add(dependency.getModuleRef());
-        final SModule target = dependency.getModuleRef().resolve(myRepository);
-        if (target == null) {
-          if (dependency.getScope() == SDependencyScope.RUNTIME) {
-            // no reason for this code, really. Just to show we can go on with ErrorHandler paradigm here
-            errorContainer.runtimeDependencyCannotBeFound(dependency.getModuleRef());
-          }
-          errorContainer.depCannotBeResolved(module, new SDependencyImpl(dependency.getModuleRef(), null, dependency.getScope(), false));
-        }
       }
     } else {
       rv = new LinkedHashSet<>(20);
@@ -94,23 +86,10 @@ import java.util.stream.Collectors;
           final ModelDependencies md = ModelDependencies.fromXml(JDOMUtil.loadDocument(cr.findChild("deps.cp")).getRootElement());
           if (md.hasRuntimeDeps()) {
             for (SModuleReference mr : md.getModuleDependencies()) {
-              rv.add(mr);
-              final SModule target = mr.resolve(myRepository);
-              if (target == null) {
-                errorContainer.depCannotBeResolved(module, new SDependencyImpl(mr, null, SDependencyScope.DEFAULT, false));
-              }
+              rv.add(mr); // XXX SDependencyScope.DEFAULT
             }
             for (SModuleReference mr : md.getLanguageRuntimeModules()) {
-              rv.add(mr);
-              final SModule target = mr.resolve(myRepository);
-              if (target == null) {
-                // again, no reason to follow ErrorHandler contract if nobody cares, see same method use, above
-                errorContainer.runtimeDependencyCannotBeFound(mr);
-                errorContainer.depCannotBeResolved(module, new SDependencyImpl(mr, null, SDependencyScope.RUNTIME, false));
-              }
-            }
-            if (errorContainer.hasErrors()) {
-              myModulesWithAbsentDeps.put(module.getModuleReference(), errorContainer.getErrors());
+              rv.add(mr); // XXX SDependencyScope.RUNTIME
             }
             return rv;
           }
@@ -131,18 +110,16 @@ import java.util.stream.Collectors;
         //     Otherwise, would need additional hacks with hardcoded/recorded 'used languages', etc.
         rv = new LinkedHashSet<>();
         for (SDependency dep : module.getDeclaredDependencies()) {
-          rv.add(dep.getTargetModule());
-          final SModule target = dep.getTargetModule().resolve(myRepository);
-          if (target == null) {
-            errorContainer.depCannotBeResolved(module, dep);
-          }
+          rv.add(dep.getTargetModule()); // XXX just return SDependency. I wonder why DD uses Dependency, not SDependency?
         }
       } else {
+        ErrorContainer errorContainer = new ErrorContainer();
+        // here, we re-use language rt cache (for each subsequent module after #reset())
         rv = myModulesCollector.directlyUsedModules(module, errorContainer, true, true).stream().map(SModule::getModuleReference).collect(Collectors.toList());
+        if (errorContainer.hasErrors()) {
+          myModulesWithAbsentDeps.put(module.getModuleReference(), errorContainer.getErrors());
+        }
       }
-    }
-    if (errorContainer.hasErrors()) {
-      myModulesWithAbsentDeps.put(module.getModuleReference(), errorContainer.getErrors());
     }
     return rv;
   }
@@ -156,12 +133,9 @@ import java.util.stream.Collectors;
     return null;
   }
 
-  /*package*/ Map<SModuleReference, List<SearchError>> getModulesWithAbsentDeps() {
-    return Collections.unmodifiableMap(myModulesWithAbsentDeps);
-  }
-
-  /*package*/ boolean withErrors(SModuleReference module) {
-    return myModulesWithAbsentDeps.containsKey(module);
+  /*package*/ List<SearchError> getLegacyDependencyErrors(SModuleReference mref) {
+    List<SearchError> rv = myModulesWithAbsentDeps.get(mref);
+    return rv != null ? Collections.unmodifiableList(rv) : Collections.emptyList();
   }
 
   public void reset() {
