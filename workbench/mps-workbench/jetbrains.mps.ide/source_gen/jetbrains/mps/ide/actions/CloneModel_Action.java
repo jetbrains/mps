@@ -76,6 +76,10 @@ public class CloneModel_Action extends BaseAction {
         return false;
       }
     }
+    {
+      SModule p = event.getData(MPSCommonDataKeys.TARGET_MODULE);
+      MapSequence.fromMap(_params).put("targetModule", p);
+    }
     return true;
   }
   @Override
@@ -83,6 +87,6 @@ public class CloneModel_Action extends BaseAction {
     CloneModel_Action.this.getExecutor(_params).execute();
   }
   protected CloneModelActionExecutor getExecutor(final Map<String, Object> _params) {
-    return new CloneModelActionExecutor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModel) MapSequence.fromMap(_params).get("model")));
+    return new CloneModelActionExecutor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModel) MapSequence.fromMap(_params).get("model")), ((SModule) MapSequence.fromMap(_params).get("targetModule")));
   }
 }

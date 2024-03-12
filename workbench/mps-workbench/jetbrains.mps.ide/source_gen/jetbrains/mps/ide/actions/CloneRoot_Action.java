@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.datatransfer.DataTransferManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
@@ -62,6 +63,9 @@ public class CloneRoot_Action extends BaseAction {
       }
 
     }
+    {
+      SModel p = event.getData(MPSCommonDataKeys.TARGET_MODEL);
+    }
     return true;
   }
   @Override
@@ -70,7 +74,8 @@ public class CloneRoot_Action extends BaseAction {
       SNode root = SNodeOperations.getContainingRoot(node);
       SNode copy = SNodeOperations.copyNode(root);
       DataTransferManager.getInstance().postProcessNode(copy);
-      SModelOperations.addRootNode(SNodeOperations.getModel(root), copy);
+      SModel destination = (event.getData(MPSCommonDataKeys.TARGET_MODEL) != null ? event.getData(MPSCommonDataKeys.TARGET_MODEL) : SNodeOperations.getModel(root));
+      SModelOperations.addRootNode(destination, copy);
       NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), copy, true, true);
       NavigationSupport.getInstance().selectInTree(event.getData(MPSCommonDataKeys.MPS_PROJECT), copy, false);
     }

@@ -619,39 +619,45 @@
       <node id="4448098401448976729" at="72,5,73,71" concept="12" />
       <node id="4448098401448976729" at="73,71,74,53" concept="6" />
       <node id="8898893144448209990" at="75,22,76,21" concept="13" />
-      <node id="1215874656794" at="78,5,79,16" concept="13" />
-      <node id="4448668666024496720" at="82,96,83,58" concept="6" />
-      <node id="4448668666024691963" at="85,85,86,154" concept="13" />
+      <node id="5644424077413723556" at="79,5,80,65" concept="12" />
+      <node id="5644424077413723556" at="80,65,81,58" concept="6" />
+      <node id="1215874656794" at="82,5,83,16" concept="13" />
+      <node id="4448668666024496720" at="86,96,87,58" concept="6" />
+      <node id="4448668666024691963" at="89,85,90,216" concept="13" />
       <node id="1215874656794" at="54,95,57,5" concept="10" />
       <node id="8898893144448210514" at="60,51,63,7" concept="10" />
       <node id="5996241366547739015" at="67,53,70,7" concept="10" />
       <node id="8898893144448209990" at="74,53,77,7" concept="10" />
-      <node id="4448668666024691976" at="85,0,88,0" concept="11" trace="getExecutor#(Ljava/util/Map;)Ljetbrains/mps/ide/actions/CloneModelActionExecutor;" />
+      <node id="4448668666024691976" at="89,0,92,0" concept="11" trace="getExecutor#(Ljava/util/Map;)Ljetbrains/mps/ide/actions/CloneModelActionExecutor;" />
       <node id="1215874656794" at="30,0,34,0" concept="11" trace="isDumbAware#()Z" />
       <node id="4845500074719327887" at="44,5,48,5" concept="10" />
-      <node id="1215874656794" at="81,0,85,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="5644424077413723556" at="78,5,82,5" concept="1" />
+      <node id="1215874656794" at="85,0,89,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="1215874656794" at="25,0,30,0" concept="3" trace="CloneModel_Action#()V" />
       <node id="1222268716248" at="39,0,44,5" concept="10" />
       <node id="1217420646258" at="57,5,64,5" concept="1" />
       <node id="5996241366547739014" at="64,5,71,5" concept="1" />
       <node id="4448098401448976729" at="71,5,78,5" concept="1" />
       <node id="1215874656794" at="34,0,53,0" concept="11" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="1215874656794" at="53,0,81,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="1215874656794" at="53,0,85,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <scope id="1215874656794" at="31,32,32,16" />
       <scope id="1215874656794" at="55,53,56,19" />
       <scope id="8898893144448210514" at="61,22,62,21" />
       <scope id="5996241366547739015" at="68,22,69,21" />
       <scope id="8898893144448209990" at="75,22,76,21" />
-      <scope id="1215874656794" at="82,96,83,58" />
-      <scope id="4448668666024691962" at="85,85,86,154" />
+      <scope id="1215874656794" at="86,96,87,58" />
+      <scope id="4448668666024691962" at="89,85,90,216" />
       <scope id="4845500074719327889" at="45,99,47,13" />
+      <scope id="5644424077413723556" at="79,5,81,58">
+        <var name="p" id="5644424077413723556" />
+      </scope>
       <scope id="1215874656794" at="25,30,28,40" />
       <scope id="1222268716249" at="40,71,43,13" />
-      <scope id="4448668666024691976" at="85,0,88,0">
+      <scope id="4448668666024691976" at="89,0,92,0">
         <var name="_params" id="4448668666024691976" />
       </scope>
       <scope id="1215874656794" at="30,0,34,0" />
-      <scope id="1215874656794" at="81,0,85,0">
+      <scope id="1215874656794" at="85,0,89,0">
         <var name="_params" id="1215874656794" />
         <var name="event" id="1215874656794" />
       </scope>
@@ -674,12 +680,12 @@
         <var name="_params" id="1215874656794" />
         <var name="event" id="1215874656794" />
       </scope>
-      <scope id="1215874656794" at="54,95,79,16" />
-      <scope id="1215874656794" at="53,0,81,0">
+      <scope id="1215874656794" at="54,95,83,16" />
+      <scope id="1215874656794" at="53,0,85,0">
         <var name="_params" id="1215874656794" />
         <var name="event" id="1215874656794" />
       </scope>
-      <unit id="1215874656794" at="21,0,89,0" name="jetbrains.mps.ide.actions.CloneModel_Action" />
+      <unit id="1215874656794" at="21,0,93,0" name="jetbrains.mps.ide.actions.CloneModel_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
       <node id="1215874656794" at="27,29,28,39" concept="6" />
@@ -687,84 +693,91 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215874930420">
     <file name="CloneRoot_Action.java">
-      <node id="1215874930420" at="23,0,24,0" concept="16" trace="ICON" />
-      <node id="1215874930420" at="25,29,26,34" concept="18" />
-      <node id="1215874930420" at="26,34,27,34" concept="6" />
-      <node id="1215874930420" at="27,34,28,52" concept="6" />
-      <node id="1215874930420" at="28,52,29,29" concept="6" />
-      <node id="8570642354166537119" at="29,29,30,24" concept="6" />
-      <node id="1215874930420" at="33,32,34,16" concept="13" />
-      <node id="2519836192288837384" at="37,87,38,131" concept="13" />
-      <node id="1215874930420" at="41,89,42,85" concept="6" />
-      <node id="1215874930420" at="46,53,47,19" concept="13" />
-      <node id="1217420645423" at="49,5,50,66" concept="12" />
-      <node id="8898893144448210519" at="51,22,52,21" concept="13" />
-      <node id="1218628276987" at="55,5,56,65" concept="12" />
-      <node id="8898893144448209939" at="57,26,58,21" concept="13" />
-      <node id="8898893144448209939" at="60,28,61,21" concept="13" />
-      <node id="1218628276987" at="62,7,63,0" concept="15" />
-      <node id="1215874930420" at="64,5,65,16" concept="13" />
-      <node id="1218628312771" at="69,86,70,59" concept="12" />
-      <node id="1218628312779" at="70,59,71,50" concept="12" />
-      <node id="2406397679334328552" at="71,50,72,62" concept="6" />
-      <node id="1218628312785" at="72,62,73,73" concept="6" />
-      <node id="1071422968910406931" at="73,73,74,111" concept="6" />
-      <node id="1071422968910406954" at="74,111,75,110" concept="6" />
-      <node id="1215874930420" at="45,95,48,5" concept="10" />
-      <node id="8898893144448210519" at="50,66,53,7" concept="10" />
-      <node id="8898893144448209939" at="56,65,59,7" concept="10" />
-      <node id="8898893144448209939" at="59,7,62,7" concept="10" />
-      <node id="1215874930420" at="32,0,36,0" concept="11" trace="isDumbAware#()Z" />
-      <node id="1215874930420" at="36,0,40,0" concept="11" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="1215874930420" at="40,0,44,0" concept="11" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="1217420645423" at="48,5,54,5" concept="1" />
-      <node id="1215874930420" at="25,0,32,0" concept="3" trace="CloneRoot_Action#()V" />
-      <node id="1218628302807" at="68,96,76,5" concept="9" />
-      <node id="1218628276987" at="54,5,64,5" concept="1" />
-      <node id="1215874930420" at="67,0,78,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="1215874930420" at="44,0,67,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <scope id="1215874930420" at="33,32,34,16" />
-      <scope id="2519836192288678756" at="37,87,38,131" />
-      <scope id="1215874930420" at="41,89,42,85" />
-      <scope id="1215874930420" at="46,53,47,19" />
-      <scope id="8898893144448210519" at="51,22,52,21" />
-      <scope id="8898893144448209939" at="57,26,58,21" />
-      <scope id="8898893144448209939" at="60,28,61,21" />
-      <scope id="1215874930420" at="32,0,36,0" />
-      <scope id="1215874930420" at="36,0,40,0">
+      <node id="1215874930420" at="24,0,25,0" concept="16" trace="ICON" />
+      <node id="1215874930420" at="26,29,27,34" concept="18" />
+      <node id="1215874930420" at="27,34,28,34" concept="6" />
+      <node id="1215874930420" at="28,34,29,52" concept="6" />
+      <node id="1215874930420" at="29,52,30,29" concept="6" />
+      <node id="8570642354166537119" at="30,29,31,24" concept="6" />
+      <node id="1215874930420" at="34,32,35,16" concept="13" />
+      <node id="2519836192288837384" at="38,87,39,131" concept="13" />
+      <node id="1215874930420" at="42,89,43,85" concept="6" />
+      <node id="1215874930420" at="47,53,48,19" concept="13" />
+      <node id="1217420645423" at="50,5,51,66" concept="12" />
+      <node id="8898893144448210519" at="52,22,53,21" concept="13" />
+      <node id="1218628276987" at="56,5,57,65" concept="12" />
+      <node id="8898893144448209939" at="58,26,59,21" concept="13" />
+      <node id="8898893144448209939" at="61,28,62,21" concept="13" />
+      <node id="1218628276987" at="63,7,64,0" concept="15" />
+      <node id="4566679944912595985" at="66,5,67,63" concept="12" />
+      <node id="1215874930420" at="68,5,69,16" concept="13" />
+      <node id="1218628312771" at="73,86,74,59" concept="12" />
+      <node id="1218628312779" at="74,59,75,50" concept="12" />
+      <node id="2406397679334328552" at="75,50,76,62" concept="6" />
+      <node id="4566679944912599127" at="76,62,77,164" concept="12" />
+      <node id="1218628312785" at="77,164,78,54" concept="6" />
+      <node id="1071422968910406931" at="78,54,79,111" concept="6" />
+      <node id="1071422968910406954" at="79,111,80,110" concept="6" />
+      <node id="1215874930420" at="46,95,49,5" concept="10" />
+      <node id="8898893144448210519" at="51,66,54,7" concept="10" />
+      <node id="8898893144448209939" at="57,65,60,7" concept="10" />
+      <node id="8898893144448209939" at="60,7,63,7" concept="10" />
+      <node id="4566679944912595985" at="65,5,68,5" concept="1" />
+      <node id="1215874930420" at="33,0,37,0" concept="11" trace="isDumbAware#()Z" />
+      <node id="1215874930420" at="37,0,41,0" concept="11" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="1215874930420" at="41,0,45,0" concept="11" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="1217420645423" at="49,5,55,5" concept="1" />
+      <node id="1215874930420" at="26,0,33,0" concept="3" trace="CloneRoot_Action#()V" />
+      <node id="1218628302807" at="72,96,81,5" concept="9" />
+      <node id="1218628276987" at="55,5,65,5" concept="1" />
+      <node id="1215874930420" at="71,0,83,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="1215874930420" at="45,0,71,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="1215874930420" at="34,32,35,16" />
+      <scope id="2519836192288678756" at="38,87,39,131" />
+      <scope id="1215874930420" at="42,89,43,85" />
+      <scope id="1215874930420" at="47,53,48,19" />
+      <scope id="8898893144448210519" at="52,22,53,21" />
+      <scope id="8898893144448209939" at="58,26,59,21" />
+      <scope id="8898893144448209939" at="61,28,62,21" />
+      <scope id="4566679944912595985" at="66,5,67,63">
+        <var name="p" id="4566679944912595985" />
+      </scope>
+      <scope id="1215874930420" at="33,0,37,0" />
+      <scope id="1215874930420" at="37,0,41,0">
         <var name="_params" id="1215874930420" />
         <var name="event" id="1215874930420" />
       </scope>
-      <scope id="1215874930420" at="40,0,44,0">
+      <scope id="1215874930420" at="41,0,45,0">
         <var name="_params" id="1215874930420" />
         <var name="event" id="1215874930420" />
       </scope>
-      <scope id="1217420645423" at="49,5,53,7">
+      <scope id="1217420645423" at="50,5,54,7">
         <var name="p" id="1217420645423" />
       </scope>
-      <scope id="1215874930420" at="25,29,30,24" />
-      <scope id="1218628302810" at="69,86,75,110">
+      <scope id="1215874930420" at="26,29,31,24" />
+      <scope id="1215874930420" at="26,0,33,0" />
+      <scope id="1218628302810" at="73,86,80,110">
         <var name="copy" id="1218628312780" />
+        <var name="destination" id="4566679944912599128" />
         <var name="root" id="1218628312772" />
       </scope>
-      <scope id="1215874930420" at="25,0,32,0" />
-      <scope id="1218628276987" at="55,5,63,0">
+      <scope id="1218628276987" at="56,5,64,0">
         <var name="nodes" id="1218628276987" />
       </scope>
-      <scope id="1215874930420" at="68,96,76,5" />
-      <scope id="1218628302807" at="68,96,76,5">
+      <scope id="1215874930420" at="72,96,81,5" />
+      <scope id="1218628302807" at="72,96,81,5">
         <var name="node" id="1218628302808" />
       </scope>
-      <scope id="1215874930420" at="67,0,78,0">
+      <scope id="1215874930420" at="71,0,83,0">
         <var name="_params" id="1215874930420" />
         <var name="event" id="1215874930420" />
       </scope>
-      <scope id="1215874930420" at="45,95,65,16" />
-      <scope id="1215874930420" at="44,0,67,0">
+      <scope id="1215874930420" at="46,95,69,16" />
+      <scope id="1215874930420" at="45,0,71,0">
         <var name="_params" id="1215874930420" />
         <var name="event" id="1215874930420" />
       </scope>
-      <unit id="1215874930420" at="21,0,79,0" name="jetbrains.mps.ide.actions.CloneRoot_Action" />
+      <unit id="1215874930420" at="22,0,84,0" name="jetbrains.mps.ide.actions.CloneRoot_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
       <node id="1215874930420" at="29,40,30,38" concept="6" />
@@ -7809,79 +7822,122 @@
     <file name="CloneModelActionExecutor.java">
       <node id="4703869683035035280" at="22,0,23,0" concept="7" trace="myDialogSettingsFactory" />
       <node id="4703869683035035283" at="23,0,24,0" concept="7" trace="myOriginalModel" />
-      <node id="4703869683035035883" at="25,77,26,83" concept="20" />
-      <node id="4703869683035944667" at="29,131,30,19" concept="18" />
-      <node id="4703869683035946945" at="30,19,31,36" concept="6" />
-      <node id="4703869683035949987" at="31,36,32,52" concept="6" />
-      <node id="4703869683036432514" at="36,42,37,110" concept="13" />
-      <node id="4703869683035957109" at="41,53,42,120" concept="12" />
-      <node id="4703869683035957120" at="42,120,43,18" concept="6" />
-      <node id="4703869683035957124" at="43,18,44,93" concept="13" />
-      <node id="4703869683035040290" at="47,104,48,122" concept="13" />
-      <node id="4703869683035500647" at="51,62,52,60" concept="13" />
-      <node id="4703869683035509180" at="55,78,56,77" concept="13" />
-      <node id="7110462768343116667" at="59,29,60,58" concept="13" />
-      <node id="4703869683035957125" at="63,36,64,61" concept="13" />
-      <node id="4703869683035957125" at="65,5,66,16" concept="13" />
-      <node id="4703869683036099624" at="69,36,70,64" concept="13" />
-      <node id="4703869683036099624" at="71,5,72,16" concept="13" />
-      <node id="4703869683035035871" at="25,0,28,0" concept="3" trace="CloneModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <node id="4703869683035040288" at="47,0,50,0" concept="17" trace="getDefaultSettingsFactoryForClone#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;" />
-      <node id="4703869683035499159" at="51,0,54,0" concept="17" trace="getNameForClone#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/String;" />
-      <node id="4703869683035507541" at="55,0,58,0" concept="17" trace="getStereotypeForClone#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/ui/tree/module/StereotypeProvider;" />
-      <node id="7110462768343116662" at="59,0,62,0" concept="11" trace="getTitle#()Ljava/lang/String;" />
-      <node id="4703869683035957125" at="62,89,65,5" concept="10" />
-      <node id="4703869683036099624" at="68,116,71,5" concept="10" />
-      <node id="4703869683035957095" at="35,0,39,0" concept="11" trace="selectModule#()Lorg/jetbrains/mps/openapi/module/SModule;" />
-      <node id="4703869683035940293" at="29,0,34,0" concept="3" trace="CloneModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;)V" />
-      <node id="4703869683035957103" at="40,0,46,0" concept="11" trace="showDialog#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SModel;" />
-      <node id="4703869683035957125" at="62,0,68,0" concept="17" trace="check_59vj8a_a2a01#(Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;)Lorg/jetbrains/mps/openapi/model/EditableSModel;" />
-      <node id="4703869683036099624" at="68,0,74,0" concept="17" trace="check_59vj8a_a0c0k#(Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;" />
-      <scope id="4703869683035035882" at="25,77,26,83" />
-      <scope id="4703869683035957098" at="36,42,37,110" />
-      <scope id="4703869683035040289" at="47,104,48,122" />
-      <scope id="4703869683035499162" at="51,62,52,60" />
-      <scope id="4703869683035507544" at="55,78,56,77" />
-      <scope id="7110462768343116666" at="59,29,60,58" />
-      <scope id="4703869683035957125" at="63,36,64,61" />
-      <scope id="4703869683036099624" at="69,36,70,64" />
-      <scope id="4703869683035035871" at="25,0,28,0">
+      <node id="5644424077412265418" at="24,0,25,0" concept="7" trace="myDestinationModule" />
+      <node id="4703869683035035883" at="26,77,27,83" concept="20" />
+      <node id="5644424077412227015" at="30,104,31,185" concept="20" />
+      <node id="5644424077412248920" at="34,131,35,62" concept="20" />
+      <node id="5644424077412233981" at="38,158,39,19" concept="18" />
+      <node id="5644424077412233983" at="39,19,40,36" concept="6" />
+      <node id="5644424077412265422" at="40,36,41,44" concept="6" />
+      <node id="5644424077412233987" at="41,44,42,52" concept="6" />
+      <node id="5644424077412292682" at="47,38,48,33" concept="13" />
+      <node id="5644424077412512939" at="49,5,50,39" concept="13" />
+      <node id="4703869683035957109" at="54,53,55,215" concept="12" />
+      <node id="4703869683035957120" at="55,215,56,18" concept="6" />
+      <node id="4703869683035957124" at="56,18,57,93" concept="13" />
+      <node id="5644424077412430942" at="60,111,61,120" concept="13" />
+      <node id="4703869683035040290" at="64,104,65,122" concept="13" />
+      <node id="5644424077412333068" at="68,103,69,121" concept="13" />
+      <node id="4703869683035500647" at="72,62,73,60" concept="13" />
+      <node id="5644424077412305122" at="76,61,77,59" concept="13" />
+      <node id="4703869683035509180" at="80,78,81,77" concept="13" />
+      <node id="7110462768343116667" at="84,42,85,116" concept="13" />
+      <node id="4703869683035957125" at="88,36,89,61" concept="13" />
+      <node id="4703869683035957125" at="90,5,91,16" concept="13" />
+      <node id="4703869683036099624" at="94,36,95,64" concept="13" />
+      <node id="4703869683036099624" at="96,5,97,16" concept="13" />
+      <node id="4703869683035035871" at="26,0,29,0" concept="3" trace="CloneModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="5644424077412227007" at="30,0,33,0" concept="3" trace="CloneModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="4703869683035940293" at="34,0,37,0" concept="3" trace="CloneModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;)V" />
+      <node id="5644424077412278059" at="46,42,49,5" concept="10" />
+      <node id="5644424077412438843" at="60,0,63,0" concept="17" trace="getDefaultSettingsFactory#(Lorg/jetbrains/mps/openapi/model/SModel;Z)Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;" />
+      <node id="4703869683035040288" at="64,0,67,0" concept="17" trace="getDefaultSettingsFactoryForClone#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;" />
+      <node id="5644424077412333066" at="68,0,71,0" concept="17" trace="getDefaultSettingsFactoryForCopy#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;" />
+      <node id="4703869683035499159" at="72,0,75,0" concept="17" trace="getNameForClone#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/String;" />
+      <node id="5644424077412305120" at="76,0,79,0" concept="17" trace="getNameForCopy#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/String;" />
+      <node id="4703869683035507541" at="80,0,83,0" concept="17" trace="getStereotypeForClone#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/ui/tree/module/StereotypeProvider;" />
+      <node id="7110462768343116662" at="84,0,87,0" concept="11" trace="getTitle#(Z)Ljava/lang/String;" />
+      <node id="4703869683035957125" at="87,89,90,5" concept="10" />
+      <node id="4703869683036099624" at="93,116,96,5" concept="10" />
+      <node id="5644424077412233971" at="38,0,44,0" concept="3" trace="CloneModelActionExecutor#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/module/SModule;Ljetbrains/mps/ide/dialogs/project/creation/NewModelDialogSettings/Factory;)V" />
+      <node id="4703869683035957103" at="53,0,59,0" concept="11" trace="showDialog#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="4703869683035957125" at="87,0,93,0" concept="17" trace="check_59vj8a_a2a51#(Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;)Lorg/jetbrains/mps/openapi/model/EditableSModel;" />
+      <node id="4703869683036099624" at="93,0,99,0" concept="17" trace="check_59vj8a_a0c0p#(Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/ide/dialogs/project/creation/ModelCreateHelper;" />
+      <node id="4703869683035957095" at="45,0,52,0" concept="11" trace="selectModule#()Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <scope id="4703869683035035882" at="26,77,27,83" />
+      <scope id="5644424077412227014" at="30,104,31,185" />
+      <scope id="4703869683035940302" at="34,131,35,62" />
+      <scope id="5644424077412278061" at="47,38,48,33" />
+      <scope id="5644424077412430941" at="60,111,61,120" />
+      <scope id="4703869683035040289" at="64,104,65,122" />
+      <scope id="5644424077412333067" at="68,103,69,121" />
+      <scope id="4703869683035499162" at="72,62,73,60" />
+      <scope id="5644424077412305121" at="76,61,77,59" />
+      <scope id="4703869683035507544" at="80,78,81,77" />
+      <scope id="7110462768343116666" at="84,42,85,116" />
+      <scope id="4703869683035957125" at="88,36,89,61" />
+      <scope id="4703869683036099624" at="94,36,95,64" />
+      <scope id="4703869683035035871" at="26,0,29,0">
         <var name="originalModel" id="4703869683035035876" />
         <var name="project" id="4703869683035035874" />
       </scope>
-      <scope id="4703869683035940302" at="29,131,32,52" />
-      <scope id="4703869683035957108" at="41,53,44,93">
-        <var name="dialog" id="4703869683035957110" />
+      <scope id="5644424077412227007" at="30,0,33,0">
+        <var name="destinationModule" id="5644424077412229550" />
+        <var name="originalModel" id="5644424077412227010" />
+        <var name="project" id="5644424077412227008" />
       </scope>
-      <scope id="4703869683035040288" at="47,0,50,0">
-        <var name="originalModel" id="4703869683035041299" />
-      </scope>
-      <scope id="4703869683035499159" at="51,0,54,0">
-        <var name="originalModel" id="4703869683035500604" />
-      </scope>
-      <scope id="4703869683035507541" at="55,0,58,0">
-        <var name="model" id="4703869683035508525" />
-      </scope>
-      <scope id="7110462768343116662" at="59,0,62,0" />
-      <scope id="4703869683035957095" at="35,0,39,0" />
-      <scope id="4703869683035957125" at="62,89,66,16" />
-      <scope id="4703869683036099624" at="68,116,72,16" />
-      <scope id="4703869683035940293" at="29,0,34,0">
+      <scope id="4703869683035940293" at="34,0,37,0">
         <var name="dialogSettingsFactory" id="4703869683035942219" />
         <var name="originalModel" id="4703869683035940298" />
         <var name="project" id="4703869683035940296" />
       </scope>
-      <scope id="4703869683035957103" at="40,0,46,0">
+      <scope id="4703869683035957108" at="54,53,57,93">
+        <var name="dialog" id="4703869683035957110" />
+      </scope>
+      <scope id="5644424077412438843" at="60,0,63,0">
+        <var name="clone" id="5644424077412444649" />
+        <var name="originalModel" id="5644424077412430945" />
+      </scope>
+      <scope id="4703869683035040288" at="64,0,67,0">
+        <var name="originalModel" id="4703869683035041299" />
+      </scope>
+      <scope id="5644424077412333066" at="68,0,71,0">
+        <var name="originalModel" id="5644424077412333076" />
+      </scope>
+      <scope id="4703869683035499159" at="72,0,75,0">
+        <var name="originalModel" id="4703869683035500604" />
+      </scope>
+      <scope id="5644424077412305120" at="76,0,79,0">
+        <var name="originalModel" id="5644424077412305132" />
+      </scope>
+      <scope id="4703869683035507541" at="80,0,83,0">
+        <var name="model" id="4703869683035508525" />
+      </scope>
+      <scope id="7110462768343116662" at="84,0,87,0">
+        <var name="clone" id="5644424077413054239" />
+      </scope>
+      <scope id="5644424077412233980" at="38,158,42,52" />
+      <scope id="4703869683035957098" at="46,42,50,39" />
+      <scope id="4703869683035957125" at="87,89,91,16" />
+      <scope id="4703869683036099624" at="93,116,97,16" />
+      <scope id="5644424077412233971" at="38,0,44,0">
+        <var name="destinationModule" id="5644424077412236566" />
+        <var name="dialogSettingsFactory" id="5644424077412233976" />
+        <var name="originalModel" id="5644424077412233974" />
+        <var name="project" id="5644424077412233972" />
+      </scope>
+      <scope id="4703869683035957103" at="53,0,59,0">
         <var name="module" id="4703869683035957104" />
       </scope>
-      <scope id="4703869683035957125" at="62,0,68,0">
+      <scope id="4703869683035957125" at="87,0,93,0">
         <var name="checkedDotOperand" id="4703869683035957125" />
       </scope>
-      <scope id="4703869683036099624" at="68,0,74,0">
+      <scope id="4703869683036099624" at="93,0,99,0">
         <var name="checkedDotOperand" id="4703869683036099624" />
         <var name="myOriginalModel" id="4703869683036102537" />
       </scope>
-      <unit id="4703869683034636866" at="19,0,75,0" name="jetbrains.mps.ide.actions.CloneModelActionExecutor" />
+      <scope id="4703869683035957095" at="45,0,52,0" />
+      <unit id="4703869683034636866" at="19,0,100,0" name="jetbrains.mps.ide.actions.CloneModelActionExecutor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/484385057887943926">
