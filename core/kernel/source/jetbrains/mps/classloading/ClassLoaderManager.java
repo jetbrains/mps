@@ -45,6 +45,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
 
 import static java.lang.ClassLoader.getSystemClassLoader;
 import static jetbrains.mps.classloading.ClassLoadingProgress.LOADED;
@@ -361,6 +362,7 @@ public class ClassLoaderManager implements CoreComponent {
    * These clients need to be rewritten in a lazy way, i.e. using only #getClass [#getClassLoader] method. (do they?)
    */
   Collection<ReloadableModule> preLoadModules(Iterable<? extends ReloadableModule> modules, ProgressMonitor monitor) {
+    // pre: modules - transitive closure
     checkWriteAccess();
     monitor.start("Loading", 6);
 
@@ -369,29 +371,19 @@ public class ClassLoaderManager implements CoreComponent {
         // TODO would be great to send out events only for modules with non-empty CL, i.e. to avoid
         //       warnings like "Missing language runtime class" on loaded + "No language with id" on unloaded
         //       for modules not yet compiled
-        Set<ReloadableModule> modulesPreLoad = filterModules(modules, myValidCondition);
-        if (modulesPreLoad.isEmpty()) return Collections.emptySet();
-
-        // transitive closure
-        modulesPreLoad.addAll(myModulesWatcher.getResolvedDependencies(modulesPreLoad));
         // XXX is it ok to assume dependencies could not be in 'lazy_loaded' state at the moment? Why myUnloadedCondition?
-        modulesPreLoad = filterModules(modulesPreLoad, myUnloadedCondition, myValidCondition);
+        // XXX myUnloadedCondition sort of implies classloading process for re-loaded module (unloaded and the loaded again) has to be complete at this point
+        //     but what if/when I combine unload/preLoad into single transaction, would this assumption cause any throuble then?
+        Set<ReloadableModule> modulesPreLoad = filterModules(modules, myUnloadedCondition, myValidCondition);
         if (modulesPreLoad.isEmpty()) return Collections.emptySet();
         monitor.advance(1);
 
-        // add valid back dependencies too; [if now (with new modules) they are fine to load]
-        modulesPreLoad.addAll(myModulesWatcher.getResolvedBackDependencies(modulesPreLoad));
-        // XXX again, why myUnloadedCondition, can't there be backdeps with LAZY?
-        modulesPreLoad = filterModules(modulesPreLoad, myUnloadedCondition, myValidCondition);
-        if (modulesPreLoad.isEmpty()) {
-          return Collections.emptySet();
-        }
-
         Set<ReloadableModule> modulesToNotify = myClassLoadersHolder.onLazyLoaded(modulesPreLoad);
+        monitor.advance(1);
         // AFAIU, here, with modulesToNotify(), we exclude modules with ManagedByContributor class loading
         // and I wonder if this is truly what we need here. Is it true that no DeployListener ever needs anything from
         // a module with IDEA CL (directly; indirect access works through CL delegation)?
-        myBroadCaster.onLoad(modulesToNotify, monitor.subTask(5, SubProgressKind.AS_COMMENT));
+        myBroadCaster.onLoad(modulesToNotify, monitor.subTask(4, SubProgressKind.AS_COMMENT));
 
         return modulesToNotify;
       });
@@ -445,6 +437,7 @@ public class ClassLoaderManager implements CoreComponent {
    */
   @NotNull
   Collection<ReloadableModule> unloadModules(Iterable<? extends SModuleReference> modules, @NotNull ProgressMonitor monitor) {
+    // pre: modules - transitive closure
     checkWriteAccess();
     monitor.start("Unloading", 6);
     try {
@@ -452,17 +445,14 @@ public class ClassLoaderManager implements CoreComponent {
         Condition<SModuleReference> loadedCondition = new NotCondition<>(myUnloadedRefCondition);
         Set<SModuleReference> modulesToUnload = filterModules(modules, loadedCondition);
         if (modulesToUnload.isEmpty()) return Collections.emptySet();
-
-        // transitive closure
-        Collection<? extends SModuleReference> modulesAndBackDeps = myModulesWatcher.getBackDependencies(modulesToUnload);
-        modulesToUnload = filterModules(modulesAndBackDeps, loadedCondition);
-        if (modulesToUnload.isEmpty()) return Collections.emptySet();
+        monitor.advance(1);
 
         LOG.debug("Unloading " + modulesToUnload.size() + " modules");
-        Collection<ReloadableModule> unloadedModules = myBroadCaster.onUnload(modulesToUnload, monitor.subTask(5, SubProgressKind.AS_COMMENT));
+        Collection<ReloadableModule> unloadedModules = myBroadCaster.onUnload(modulesToUnload, monitor.subTask(4, SubProgressKind.AS_COMMENT));
         // FIXME likely, due to the nature of myBroadCaster.onUnload, modulesToUnload would contain modules with MPS-managed CL only
         //       (broadcaster keeps map of modules it sent event for, and it doesn't send any for non-MPS compile modules at the moment)
         myClassLoadersHolder.doUnloadModules(modulesToUnload);
+        monitor.advance(1);
 
         return unloadedModules;
       });
@@ -493,17 +483,23 @@ public class ClassLoaderManager implements CoreComponent {
    * There are also useful {@link #reloadModules(Iterable)} and {@link #reloadModule(SModule)}.
    */
   public void reloadModules(Iterable<? extends SModule> modules, @NotNull ProgressMonitor monitor) {
+    long beginTime = System.nanoTime();
     checkWriteAccess();
     refresh();
     // this is a hack. just a missstep towards better code (once reload process with a new watcher loguc is streamlined, we won't need casts)
     // perhaps, we can just ask watcher to give us tracked modules among these
     Collection<ReloadableModuleBase> modulesToReload = new LinkedHashSet();
     for (SModule module : modules) {
+      if (!(module instanceof TempModule) && module.getRepository() == null) {
+        // FIXME I don't quite undertand how come TempModule from console could get repository == null (e4ebe803, MPS-20789 10yo! hotfix!!)
+        throw new IllegalStateException(String.format("Cannot reload the module %s which does not belong to a repository", module));
+      }
       if (module instanceof ReloadableModuleBase) {
         modulesToReload.add((ReloadableModuleBase) module);
       }
     }
     processModuleChanges(Collections.emptyList(), Collections.emptyList(), new ArrayList<>(modulesToReload), monitor);
+    LOG.info(String.format("Reloaded %d module(s) in %.3f s", modulesToReload.size(), (System.nanoTime() - beginTime) / 1e9));
   }
 
   /**
@@ -531,35 +527,6 @@ public class ClassLoaderManager implements CoreComponent {
       return;
     }
     reloadModules(toReload, monitor);
-  }
-
-
-  private void doReloadModules(Collection<? extends ReloadableModule> modules, @NotNull ProgressMonitor monitor) {
-    checkWriteAccess();
-    if (modules.isEmpty()) {
-      LOG.info("Reloaded 0 modules");
-      return;
-    }
-    try {
-      long beginTime = System.nanoTime();
-      monitor.start("Reloading Modules", 2);
-      for (SModule module : modules) {
-        if (!(module instanceof TempModule) && module.getRepository() == null) {
-          // FIXME I don't quite undertand how come TempModule from console could get repository == null (e4ebe803, MPS-20789 10yo! hotfix!!)
-          throw new IllegalStateException(String.format("Cannot reload the module %s which does not belong to a repository", module));
-        }
-      }
-      Collection<ReloadableModule> modulesToReload = new LinkedHashSet<>(modules);
-
-      myModulesWatcher.updateModules(modulesToReload);
-      Collection<? extends ReloadableModule> unloadedModules = unloadModules(myModulesWatcher.getModuleRefs(modulesToReload), monitor.subTask(1));
-      modulesToReload.addAll(unloadedModules);
-      Collection<ReloadableModule> loadedModules = preLoadModules(modulesToReload, monitor.subTask(1));
-
-      LOG.info(String.format("Reloaded %d module(s) in %.3f s", loadedModules.size(), (System.nanoTime() - beginTime) / 1e9));
-    } finally {
-      monitor.done();
-    }
   }
 
   /**
@@ -635,27 +602,16 @@ public class ClassLoaderManager implements CoreComponent {
   /*package*/ void processModuleChanges(List<ReloadableModuleBase> toLoad, List<SModuleReference> toUnload, List<ReloadableModuleBase> toUpdate,
                                         @NotNull ProgressMonitor monitor) {
 
-    monitor.start("", 3);
-    if (!toUnload.isEmpty()) {
-      // fixme this is wrong but otherwise we will never unload them
-      unloadModules(toUnload, monitor.subTask(1, SubProgressKind.REPLACING));
-      myModulesWatcher.removeModules(toUnload);
-    }
-    if (!toLoad.isEmpty()) {
-      myModulesWatcher.addModules(toLoad);
-      // fixme decouple! the handler must only change the state (valid/invalid to load) it must not do any reloading
-      //  it will be possible when we generate classpath and do not have to grab the read lock when calculating the dependencies
-      //  then we will be able to return the up-to-date classloader without
-      // TODO ^^^ as the logic moved to CLM, update the comment
-      preLoadModules(toLoad, monitor.subTask(1, SubProgressKind.REPLACING));
-    }
-    if (!toUpdate.isEmpty()) {
-      // fixme ?
-      //   likely, the use of CLM, as the comment above, for preLoadModules() suggests
-      doReloadModules(toUpdate, monitor.subTask(1, SubProgressKind.REPLACING));
-      // XXX myModulesWatcher.updateModules() happens from CLM.doReloadModules(). Shall either move all myModulesWatcher notifications into CLM
-      //     or to move updateModules here!
-    }
+    monitor.start("", 4);
+    ArrayList<ReloadableModule> unloaded = new ArrayList<>();
+    ArrayList<ReloadableModule> loaded = new ArrayList<>();
+    myModulesWatcher.UPDATE(toLoad, toUnload, toUpdate, unloaded, loaded, monitor.subTask(2, SubProgressKind.REPLACING));
+    // FIXME combine next 2 into single transaction
+    // FIXME unload shall take the list as complete closure and not look into myModylesWatcher
+    unloadModules(unloaded.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()), monitor.subTask(1, SubProgressKind.REPLACING));
+    // FIXME preLoadModules shall take the list as complete set and not look into myModulesWatcher and its deps
+    preLoadModules(loaded, monitor.subTask(1, SubProgressKind.REPLACING));
+
     monitor.done();
   }
 

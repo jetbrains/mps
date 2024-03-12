@@ -25,6 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public class GraphHolder<V> {
   private static final Logger LOG = Logger.getLogger(GraphHolder.class);
@@ -136,9 +137,9 @@ public class GraphHolder<V> {
   }
 
   // inclusive
-  public void fillIncomingEdgesDeep(Iterable<? extends V> vv, Collection<? super V> result) {
+  public void fillIncomingEdgesDeep(Iterable<? extends V> vv, Consumer<? super V> result) {
     checkGraphsCorrectness();
-    myConjugateGraph.dfs(vv, result::add);
+    myConjugateGraph.dfs(vv, result::accept);
   }
 
   // TODO : merge with jetbrains.mps.util.Graph (mps.util.Graph needs to be modified for a bit)

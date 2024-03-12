@@ -22,11 +22,10 @@ import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
-import org.jetbrains.mps.openapi.module.SDependency;
-import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.util.Condition;
 
 import java.text.MessageFormat;
@@ -41,6 +40,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.INVALID_NOT_LOADABLE;
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.INVALID_NO_RECORD;
@@ -62,9 +62,6 @@ import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.VALID;
  * We may be asked about their dependencies etc. Therefore <code>ModulesWatcher</code> tracks references to modules not modules themselves.
  * The add/remove/update module methods are triggered from above. This class updates its state accordingly.
  * <p>
- * A lazy mechanism is used here: when the state is 'dirty', refresh happens at any request.
- * @see #recountStatus()
- * <p>
  * Notice, that read action is required on every update.
  * @see {@code ClassLoaderManager#myLoadableCondition}
  * @see {@code ClassLoaderManager#myWatchableCondition}
@@ -83,13 +80,6 @@ public class ModulesWatcher {
     myRepository = repository;
     myWatchableCondition = watchableCondition.asPredicate();
     myModuleUpdater = new ModuleUpdater(repository);
-  }
-
-  private void update() {
-    myRepository.getModelAccess().checkReadAccess();
-    if (isChanged()) {
-      recountStatus();
-    }
   }
 
   /**
@@ -116,14 +106,15 @@ public class ModulesWatcher {
     }
   }
 
-  public void updateModules(@NotNull Collection<? extends ReloadableModule> modules) {
-    if (modules.isEmpty()) {
-      return;
-    }
+  // XXX in fact, looks like ModulesWatcher could become a ModuleUpdater, instantiated once per update, and present ModuleUpdater to be ModuleWatcher,
+  //     owned by CLM and supplied to new ModuleUpdater instance to get new status map and loaded+unloaded collections
+  void UPDATE(Collection<? extends ReloadableModule> added, Collection<SModuleReference> removed, Collection<? extends ReloadableModule> changed, Collection<? super ReloadableModule> unloaded, Collection<? super ReloadableModule> loaded,
+                     ProgressMonitor progressMonitor) {
+    myRepository.getModelAccess().checkReadAccess(); // FIXME why read? it's either write end or explicit reload from within write, no?
     // XXX here we assume modules are unique
-    ArrayList<ReloadableModule> known = new ArrayList<>(modules.size());
+    ArrayList<ReloadableModule> known = new ArrayList<>(changed.size());
     ArrayList<ReloadableModule> unknown = new ArrayList<>();
-    for (ReloadableModule m : modules) {
+    for (ReloadableModule m : changed) {
       // FIXME ineffective, just for the sake of refactoring, this code needs further improvement
       if (myModuleUpdater.contains(m.getModuleReference())) {
         known.add(m);
@@ -131,37 +122,15 @@ public class ModulesWatcher {
         unknown.add(m);
       }
     }
+    myModuleUpdater.removeModules(removed);
+    myModuleUpdater.addModules(Stream.concat(added.stream(), unknown.stream()).filter(myWatchableCondition).collect(Collectors.toList()));
     myModuleUpdater.updateModules(known);
-    myModuleUpdater.addModules(unknown.stream().filter(myWatchableCondition).collect(Collectors.toList()));
-    update();
-  }
-
-  public void addModules(@NotNull Collection<? extends ReloadableModule> modules) {
-    if (modules.isEmpty()) {
-      return;
+    if (isChanged()) {
+      LOG.debug("Recount status map for modules");
+      myModuleUpdater.refreshGraph(unloaded, loaded);
+      refillStatusMap();
+      LOG.debug("Finished recounting");
     }
-    myModuleUpdater.addModules(modules.stream().filter(myWatchableCondition).collect(Collectors.toList()));
-    update();
-  }
-
-  public void removeModules(@NotNull Collection<? extends SModuleReference> mRefs) {
-    if (mRefs.isEmpty()) {
-      return;
-    }
-    myModuleUpdater.removeModules(mRefs);
-    update();
-  }
-
-  /**
-   * recounting the status map
-   *
-   * @see #isChanged()
-   */
-  private void recountStatus() {
-    LOG.debug("Recount status map for modules");
-    myModuleUpdater.refreshGraph();
-    refillStatusMap();
-    LOG.debug("Finished recounting");
   }
 
   /**
@@ -358,14 +327,6 @@ public class ModulesWatcher {
    */
   public Collection<SModuleReference> getBackDependencies(Iterable<? extends SModuleReference> mRefs) {
     return myModuleUpdater.getBackDeps(mRefs);
-  }
-
-  public Collection<? extends ReloadableModule> getResolvedBackDependencies(Iterable<? extends ReloadableModule> modules) {
-    Collection<SModuleReference> refs = new LinkedHashSet<>();
-    for (ReloadableModule module : modules) {
-      refs.add(module.getModuleReference());
-    }
-    return resolveRefs(getBackDependencies(refs));
   }
 
   boolean isModuleWatched(ReloadableModule module) {
