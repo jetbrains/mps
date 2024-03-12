@@ -12,4 +12,7 @@ public interface MoveNodesAction {
   String getName();
   boolean isApplicable(MPSProject project, List<SNode> target);
   void execute(MPSProject project, List<SNode> target);
+  default void execute(MPSProject project, List<SNode> target, Object destinationHint) {
+    execute(project, target);
+  }
 }
