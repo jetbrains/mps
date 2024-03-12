@@ -61,6 +61,11 @@ public class MPSCommonDataKeys extends PlatformDataKeys {
   @Description(description = "selected modules", edtOnAccess = false)
   public static final DataKey<List<SModule>> MODULES = DataKey.create("MPS_SModule_List");
 
+  @Description(description = "target model for DnD", edtOnAccess = false)
+  public static final DataKey<SModel> TARGET_MODEL = DataKey.create("MPS_Target_SModel");
+  @Description(description = "target module for DnD", edtOnAccess = false)
+  public static final DataKey<SModule> TARGET_MODULE = DataKey.create("MPS_Target_SModule");
+
   @Description(description = "selected model", edtOnAccess = false)
   public static final DataKey<SModel> MODEL = DataKey.create("MPS_SModel");
   @Description(description = "selected models", edtOnAccess = false)
