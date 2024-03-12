@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -102,28 +103,37 @@ public class SetNodePackage_Action extends BaseAction {
         return false;
       }
     }
+    {
+      String p = event.getData(PlatformDataKeys.PREDEFINED_TEXT);
+      MapSequence.fromMap(_params).put("targetName", p);
+    }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<String>> packages = new Wrappers._T<List<String>>();
-    final Wrappers._T<String> oldPackage = new Wrappers._T<String>();
+    final Wrappers._T<String> nameHint = new Wrappers._T<String>(((String) MapSequence.fromMap(_params).get("targetName")));
     ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
     modelAccess.runReadAction(() -> {
       packages.value = SetNodePackage_Action.this.fetchExistingPackages(((List<SNode>) MapSequence.fromMap(_params).get("nodes")), _params);
-      oldPackage.value = SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first(), PROPS.virtualPackage$EkXl);
+      nameHint.value = (nameHint.value == null ? SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first(), PROPS.virtualPackage$EkXl) : nameHint.value);
     });
     final SetNodePackageDialog dialog = new SetNodePackageDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), packages.value);
-    dialog.setPackage(oldPackage.value);
+    dialog.setPackage(nameHint.value);
     if (!(dialog.showAndGet())) {
       return;
     }
+    final String newValue = dialog.getPackage();
+    if (nameHint.value.equals(newValue) && ListSequence.fromList(packages.value).count() == 1 && nameHint.value.equals(ListSequence.fromList(packages.value).getElement(0))) {
+      return;
+    }
+
     modelAccess.executeCommandInEDT(() -> {
       for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))) {
-        SPropertyOperations.assign(node, PROPS.virtualPackage$EkXl, dialog.getPackage());
+        SPropertyOperations.assign(node, PROPS.virtualPackage$EkXl, newValue);
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA)) {
           for (SNode aspect : ListSequence.fromList(SetNodePackage_Action.this.findAllAspects(((Project) MapSequence.fromMap(_params).get("ideaProject")), SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), _params))) {
-            SPropertyOperations.assign(aspect, PROPS.virtualPackage$EkXl, dialog.getPackage());
+            SPropertyOperations.assign(aspect, PROPS.virtualPackage$EkXl, newValue);
           }
         }
       }

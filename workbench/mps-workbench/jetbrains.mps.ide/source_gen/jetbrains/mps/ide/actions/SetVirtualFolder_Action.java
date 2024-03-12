@@ -15,6 +15,7 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import java.util.stream.Collectors;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.ide.IdeBundle;
@@ -107,6 +108,10 @@ public class SetVirtualFolder_Action extends BaseAction {
         return false;
       }
     }
+    {
+      String p = event.getData(PlatformDataKeys.PREDEFINED_TEXT);
+      MapSequence.fromMap(_params).put("targetName", p);
+    }
     return true;
   }
   @Override
@@ -116,14 +121,18 @@ public class SetVirtualFolder_Action extends BaseAction {
     List<String> allVFs = modules.stream().map((SModule m) -> mpsProject.getVirtualFolder(m)).distinct().collect(Collectors.<String>toList());
     // used to take VF common for all modules, but I don't see any reason not to take just any, we ask user for input anyway
     // if necessary, however, we can tell if there's common VF by allVFs.size() == 1
-    String oldFolder = allVFs.stream().findAny().orElse("");
-    final String newFolder = trim_5evjxr_a0a6a7(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.module.set.virtual.folder.title"), Messages.getQuestionIcon(), oldFolder, null));
-    // Only do something on OK or input is different from original string 
-    if (newFolder == null || oldFolder.equals(newFolder)) {
+    String nameHint = (((String) MapSequence.fromMap(_params).get("targetName")) != null ? ((String) MapSequence.fromMap(_params).get("targetName")) : allVFs.stream().findAny().orElse(""));
+    final String inputValue = trim_5evjxr_a0a6a7(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.module.set.virtual.folder.title"), Messages.getQuestionIcon(), nameHint, null));
+    // Only do something on OK ...
+    if (inputValue == null) {
+      return;
+    }
+    // ... and the user input is different from what we have already 
+    if (nameHint.equals(inputValue) && allVFs.size() == 1 && nameHint.equals(allVFs.get(0))) {
       return;
     }
 
-    final String newValue = (newFolder.isEmpty() ? null : newFolder);
+    final String newValue = (inputValue.isEmpty() ? null : inputValue);
     NamedCommand command = new NamedCommand("Set virtual folder to " + newValue, true) {
       @Override
       public void run() {
