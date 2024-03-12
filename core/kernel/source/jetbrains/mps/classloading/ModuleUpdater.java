@@ -24,15 +24,16 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.util.Condition;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -51,6 +52,8 @@ import java.util.stream.Stream;
   // FIXME what's invariant here? Do we keep modules that are capable of classloading here, while myRefStorage just keeps all known modules?
   private final GraphHolder<SModuleReference> myDepGraphHolder = new GraphHolder<>();
   private final ReferenceStorage<ReloadableModule> myRefStorage;
+  // inv: for each vertex in myDepGraphHolder, there's CModule in myRefStorage2, and vice versa
+  private final Map<SModuleReference, CModule> myRefStorage2 = new HashMap<>();
   private final SRepository myRepository;
   private final CLDependencies myDependencyCollector;
 
@@ -124,6 +127,7 @@ import java.util.stream.Stream;
             continue;
           }
           myRefStorage.moduleRemoved(mRef); // FIXME here or later, when we get to myDepGrap cleanup?
+          storageForget(mRef, removedToVisitAgain);
           // perhaps, shall collect/keep ReloadableModule instances to facilitate DeployListener event dispatch?
           removedToVisitAgain.add(mRef);
         }
@@ -138,9 +142,11 @@ import java.util.stream.Stream;
             LOG.debug("Module being added has been expected " + module);
             // we've been expecting this module to show up
             myDepGraphHolder.fillIncomingEdgesShallow(Collections.singleton(mRef), withChangeInDependencies);
+            storageUpdate(module);
           } else {
             LOG.debug("Adding previously unknown module " + module);
             myDepGraphHolder.add(mRef);
+            storageAdd(module);
           }
           myRefStorage.moduleAdded(module);
           withChangeInDependencies.add(mRef);
@@ -150,9 +156,11 @@ import java.util.stream.Stream;
           if (myDepGraphHolder.contains(mRef)) {
             // assert myRefStorage.resolveRef(mRef) != null;  FIXME CoreTestSuite and TemplateModelScanTest get here at dispose/closeProject, investigate
             myDepGraphHolder.fillIncomingEdgesShallow(Collections.singleton(mRef), withChangeInDependencies);
+            storageUpdate(module);
           } else {
             LOG.debug("Adding changed module " + module);
             myDepGraphHolder.add(mRef);
+            storageAdd(module);
           }
           myRefStorage.moduleAdded(module);
           withChangeInDependencies.add(mRef);
@@ -195,6 +203,8 @@ import java.util.stream.Stream;
 
         LOG.debug("Difference in the vertex count after validation " + (myDepGraphHolder.getVerticesCount() - wasVertices));
         LOG.debug("Difference in the edge count after validation " + (myDepGraphHolder.getEdgesCount() - wasEdges));
+
+        assert myRefStorage2.size() == myDepGraphHolder.getVerticesCount();
 
         return forStatusUpdate;
       } finally {
@@ -255,7 +265,9 @@ import java.util.stream.Stream;
           // XXX how come myDependencyCollector reports non-CL dependency here?
           if (!myDepGraphHolder.contains(depRef)) {
             myDepGraphHolder.add(depRef);
-            // see no point to update myRefStorage here, wait for depRef module to show up through repository's moduleAdded()
+            // see no point to update myRefStorage here, wait for depRef module to show up through repository's moduleAdded(); but myRefStorage2, to replace
+            // myRefStorage, needs to be updated!
+            storageAddUnknown(depRef);
             // guess, could happen if there's explicit  reloadModule request before moduleAdded() reach CLM
             newTargets.add(depRef);
           }
@@ -303,4 +315,54 @@ import java.util.stream.Stream;
       return myDepGraphHolder.contains(mRef);
     }
   }
+
+  private void storageForget(SModuleReference mRef, Set<SModuleReference> removedToVisitAgain) {
+    CModule removed = myRefStorage2.remove(mRef);
+    assert removed != null;
+  }
+
+  private void storageUpdate(final SModule m) {
+    CModule old = myRefStorage2.put(m.getModuleReference(), new CModule() {
+      @Override
+      public @NotNull SModuleReference getModuleReference() {
+        return m.getModuleReference();
+      }
+
+      @Override
+      public @Nullable SModule getModule() {
+        return m;
+      }
+    });
+    assert old != null;
+  }
+
+  private void storageAdd(final SModule m) {
+    CModule old = myRefStorage2.put(m.getModuleReference(), new CModule() {
+      @Override
+      public @NotNull SModuleReference getModuleReference() {
+        return m.getModuleReference();
+      }
+
+      @Override
+      public @Nullable SModule getModule() {
+        return m;
+      }
+    });
+    assert old == null;
+  }
+  private void storageAddUnknown(final SModuleReference mRef) {
+    CModule old = myRefStorage2.put(mRef, new CModule() {
+      @Override
+      public @NotNull SModuleReference getModuleReference() {
+        return mRef;
+      }
+
+      @Override
+      public @Nullable SModule getModule() {
+        return null;
+      }
+    });
+    assert old == null;
+  }
+
 }

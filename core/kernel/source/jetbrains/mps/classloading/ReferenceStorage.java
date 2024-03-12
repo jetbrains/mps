@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import java.util.Map;
  * awful place, it is a shame
  * @author apyshkin
  */
-public class ReferenceStorage<M extends SModule> {
+/*package*/ final class ReferenceStorage<M extends SModule> {
   private final Map<SModuleReference, M> myRefToModuleMap = new LinkedHashMap<>();
 
   public M moduleAdded(@NotNull M module) {
