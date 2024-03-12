@@ -48,42 +48,36 @@ import java.util.stream.Stream;
   private final Set<ReloadableModule> myModulesToAdd = new LinkedHashSet<>();
   private final Set<ReloadableModule> myModulesToReload = new LinkedHashSet<>();
   private final Set<SModuleReference> myModulesToRemove = new LinkedHashSet<>();
-  private final Condition<SModule> myWatchableCondition;
-  // FIXME what's invariant here? Do we keep modules that are capable of classloading here (satisfy myWatchableCondition), while myRefStorage just
-  //       keeps all known modules?
+  // FIXME what's invariant here? Do we keep modules that are capable of classloading here, while myRefStorage just keeps all known modules?
   private final GraphHolder<SModuleReference> myDepGraphHolder = new GraphHolder<>();
   private final ReferenceStorage<ReloadableModule> myRefStorage;
   private final SRepository myRepository;
   private final CLDependencies myDependencyCollector;
 
-  public ModuleUpdater(SRepository repository, Condition<SModule> watchableCondition) {
+  public ModuleUpdater(SRepository repository) {
     myRepository = repository;
-    myWatchableCondition = watchableCondition;
     myRefStorage = new ReferenceStorage<>();;
     myDependencyCollector = new CLDependencies(repository);
   }
 
+  // pre: modules.forEach(we've seen this module - either as a CL objective or as a broken/valid dependency target thereof)
   /*package*/ void updateModules(@NotNull Collection<? extends ReloadableModule> modules) {
     synchronized (LOCK) {
       for (ReloadableModule module : modules) {
-        if (myWatchableCondition.met(module) || myDepGraphHolder.contains(module.getModuleReference())) {
-          // either became CL-capable, or we've seen this module as a dependency target
-          myModulesToReload.add(module);
-          myChangedFlag = true;
-        }
+        myModulesToReload.add(module);
+        myChangedFlag = true;
       }
     }
   }
 
+  // pre: modules.forEach(module is CL objective/suitable for CL)
   /*package*/ void addModules(@NotNull Collection<? extends ReloadableModule> modules) {
     synchronized (LOCK) {
       for (ReloadableModule module : modules) {
-        if (myWatchableCondition.met(module)) {
-          myChangedFlag = true;
-          myModulesToAdd.add(module);
-          myModulesToRemove.remove(module.getModuleReference());
-          // XXX do we need to care about myModulesToReload here?
-        }
+        myChangedFlag = true;
+        myModulesToAdd.add(module);
+        myModulesToRemove.remove(module.getModuleReference());
+        // XXX do we need to care about myModulesToReload here?
       }
     }
   }

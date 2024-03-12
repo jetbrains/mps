@@ -30,6 +30,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.util.Condition;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -38,6 +39,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.INVALID_NOT_LOADABLE;
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.INVALID_NO_RECORD;
@@ -74,12 +77,12 @@ public class ModulesWatcher {
   private final SRepository myRepository;
   private final Map<SModuleReference, ClassLoadingStatus> myStatusMap = new HashMap<>();
   private final ModuleUpdater myModuleUpdater;
-  private final Condition<SModule> myWatchableCondition;
+  private final Predicate<SModule> myWatchableCondition;
 
   public ModulesWatcher(SRepository repository, final Condition<SModule> watchableCondition) {
     myRepository = repository;
-    myWatchableCondition = watchableCondition;
-    myModuleUpdater = new ModuleUpdater(repository, watchableCondition);
+    myWatchableCondition = watchableCondition.asPredicate();
+    myModuleUpdater = new ModuleUpdater(repository);
   }
 
   private void update() {
@@ -117,7 +120,19 @@ public class ModulesWatcher {
     if (modules.isEmpty()) {
       return;
     }
-    myModuleUpdater.updateModules(modules);
+    // XXX here we assume modules are unique
+    ArrayList<ReloadableModule> known = new ArrayList<>(modules.size());
+    ArrayList<ReloadableModule> unknown = new ArrayList<>();
+    for (ReloadableModule m : modules) {
+      // FIXME ineffective, just for the sake of refactoring, this code needs further improvement
+      if (myModuleUpdater.contains(m.getModuleReference())) {
+        known.add(m);
+      } else {
+        unknown.add(m);
+      }
+    }
+    myModuleUpdater.updateModules(known);
+    myModuleUpdater.addModules(unknown.stream().filter(myWatchableCondition).collect(Collectors.toList()));
     update();
   }
 
@@ -125,7 +140,7 @@ public class ModulesWatcher {
     if (modules.isEmpty()) {
       return;
     }
-    myModuleUpdater.addModules(modules);
+    myModuleUpdater.addModules(modules.stream().filter(myWatchableCondition).collect(Collectors.toList()));
     update();
   }
 
@@ -272,7 +287,7 @@ public class ModulesWatcher {
     }
     SModule module = mRef.resolve(myRepository);
     assert module != null;
-    if (!myWatchableCondition.met(module)) {
+    if (!myWatchableCondition.test(module)) {
       // although generally dep graph vertices (from #getAllModules()) are 'watchable', there are scenarios when vertices stay in the graph but
       // are no longer capable to load classes (see MPS-36688)
       return String.format("%s doesn't provide classes", mRef.getModuleName());
