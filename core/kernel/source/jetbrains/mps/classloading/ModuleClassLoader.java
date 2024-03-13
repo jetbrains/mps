@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.classloading;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.reloading.ClassBytesProvider.ClassBytes;
+import jetbrains.mps.reloading.IClassPathItem;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.ProtectionDomainUtil;
 import jetbrains.mps.util.iterable.IterableEnumeration;
@@ -38,6 +39,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.function.Supplier;
 
 /**
  * MPS implementation of <code>java.lang.ClassLoader</code> which uses non-standard way of class loading delegation.
@@ -58,7 +60,9 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   private static final ClassLoader SYSTEM_CLASSLOADER = getSystemClassLoader();
 
 
-  private final ModuleClassLoaderSupport mySupport;
+  private final IClassPathItem myClassPathItem;
+  private final ReloadableModule myModule;
+  private Supplier<List<ClassLoader>> myDependencySupplier;
   // null values are not allowed => using <code>Optional</code>
   private final ConcurrentMap<String, Optional<Class<?>>> myClasses = new ConcurrentHashMap<>();
 
@@ -90,11 +94,25 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     }
   }
 
-  // FIXME I don't think ModuleClassLoaderSupport and ModuleClassLoader knowing about each other is right. If it's the former to instantiate latter,
-  //       it shall pass all relevant initialization pieces in here, instead of `this`.
+  /**
+   * @deprecated coupling b/w ModuleClassLoaderSupport and ModuleClassLoader isn't right. If it's the former to instantiate latter,
+   *             it shall pass all relevant initialization pieces in here, instead of `this`.
+   *             May become package-local, if necessary (to avoid long construction argument list)
+   */
+  @Deprecated(forRemoval = true, since = "2024.1")
   public ModuleClassLoader(@NotNull ModuleClassLoaderSupport support) {
     super(support.suggestClassLoaderName(), support.getRootClassLoader());
-    mySupport = support;
+    myModule = support.getModule();
+    myClassPathItem = support.getClassPathItem();
+    myDependencySupplier = support.getCompileDependencies();
+  }
+
+  // XXX could use MPSModuleClassLoader for dependencies
+  /**/ ModuleClassLoader(@NotNull String clName, @NotNull ClassLoader parent, @NotNull ReloadableModule module, @NotNull IClassPathItem cp, @NotNull Supplier<List<ClassLoader>> dependencies) {
+    super(clName, parent);
+    myModule = module;
+    myClassPathItem = cp;
+    myDependencySupplier = dependencies;
   }
 
   @Override
@@ -102,14 +120,14 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   public Class<?> loadOwnClass(String name) throws ClassNotFoundException {
     Class<?> aClass = loadClass(name, false, true);
     if (aClass == null) {
-      throw new ModuleClassNotFoundException(getModule());
+      throw createCLNFException(name);
     }
     return aClass;
   }
 
   @NotNull
   public ReloadableModule getModule() {
-    return mySupport.getModule();
+    return myModule;
   }
 
   @Override
@@ -164,7 +182,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   }
 
   private ModuleClassNotFoundException createCLNFException(String name) {
-    ReloadableModule module = mySupport.getModule();
+    ReloadableModule module = getModule();
     return new ModuleClassNotFoundException(module,
                                             String.format("Unable to load class: '%s' using ModuleClassLoader of the '%s' module", name,
                                                           module.getModuleName()));
@@ -192,7 +210,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
       if (aClass != null) {
         return aClass;
       }
-      ClassBytes classBytes = mySupport.findClassBytes(fqName);
+      ClassBytes classBytes = myClassPathItem.getClassBytes(fqName);
       if (classBytes != null) {
         String pack = NameUtil.namespaceFromLongName(fqName);
         synchronized (myPackageLock) {
@@ -219,7 +237,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
           LOG.trace("checking dep moduleclassloader " + depCL);
         }
         ModuleClassLoader depCL1 = (ModuleClassLoader) depCL;
-        if (depCL1.mySupport.canFindClass(name)) {
+        if (depCL1.myClassPathItem.hasClass(name)) {
           // here it will certainly load with class loader depCL
           return depCL1.loadFromSelf(name);
         }
@@ -288,7 +306,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   public URL getOwnResource(String name) {
     // unlike getResource(), don't look up in parent/bootstrap CL, we care about resources of this module only
     // unlike this.findResource(), don't look up in dependencies
-    return mySupport.findResource(name);
+    return myClassPathItem.getResource(name);
   }
 
 
@@ -300,8 +318,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     classLoadersToCheck.addAll(getDependencyClassLoaders());
     for (ClassLoader dep : classLoadersToCheck) {
       if (dep instanceof ModuleClassLoader) {
-        URL res;
-        res = ((ModuleClassLoader) dep).mySupport.findResource(name);
+        URL res = ((ModuleClassLoader) dep).getOwnResource(name);
         if (res != null) {
           return res;
         }
@@ -321,7 +338,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     for (ClassLoader dep : classLoadersToCheck) {
       if (dep instanceof ModuleClassLoader) {
         Enumeration<URL> resources;
-        resources = ((ModuleClassLoader) dep).mySupport.findResources(name);
+        resources = ((ModuleClassLoader) dep).myClassPathItem.getResources(name);
         while (resources.hasMoreElements()) {
           result.add(resources.nextElement());
         }
@@ -351,7 +368,9 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
    */
   private Collection<ClassLoader> getDependencyClassLoaders() {
     if (myDependenciesClassLoaders == null) {
-      myDependenciesClassLoaders = mySupport.getCompileDependencies();
+      // XXX why not MPSCLRegistry as cons argument + method to query deps?
+      myDependenciesClassLoaders = myDependencySupplier.get();
+      myDependencySupplier = null;
     }
     return myDependenciesClassLoaders;
   }

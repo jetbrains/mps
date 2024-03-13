@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -103,7 +103,8 @@ final class CrossDependentTaskGenerator1 extends TaskGenerator {
     ModuleClassLoaderSupport support = new ModuleClassLoaderSupport(module,
                                                                     () -> Collections.singletonList(dep.get()),
                                                                     new FakeClassPathItem(aClass));
-    return new ModuleClassLoader(support);
+    // with a new ModuleClassLoader constructor exposing all necessary bits, do I care to get ModuleClassLoaderSupport here?
+    return support.getModuleClassLoader();
   }
 
   @NotNull

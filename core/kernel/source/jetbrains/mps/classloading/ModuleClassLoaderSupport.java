@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -96,30 +96,11 @@ public class ModuleClassLoaderSupport {
     return myModule;
   }
 
-  public boolean canFindClass(String name) {
-    return myClassPathItem.hasClass(name);
-  }
-
-  public ClassBytes findClassBytes(String name) {
-    return myClassPathItem.getClassBytes(name);
-  }
-
-  public URL findResource(String name) {
-    return myClassPathItem.getResource(name);
-  }
-
-  public Enumeration<URL> findResources(String name) {
-    return myClassPathItem.getResources(name);
-  }
-
   /**
-   * important to have the calculation here: at the time of construction the classloaders might be not available yet
+   * important to have the calculation of dependency CLs delayed: at the time of construction the classloaders might be not available yet
    */
-  List<ClassLoader> getCompileDependencies() {
-    if (myCompileDependencies == null) {
-      myCompileDependencies = myDependenciesSupplier.get();
-    }
-    return myCompileDependencies;
+  /*package*/ Supplier<List<ClassLoader>> getCompileDependencies() {
+    return myDependenciesSupplier;
   }
 
   /**
@@ -131,5 +112,9 @@ public class ModuleClassLoaderSupport {
 
   /*package*/ String suggestClassLoaderName() {
     return NameUtil.compactNamespace(myModule.getModuleName());
+  }
+
+  /*package*/ IClassPathItem getClassPathItem() {
+    return myClassPathItem;
   }
 }
