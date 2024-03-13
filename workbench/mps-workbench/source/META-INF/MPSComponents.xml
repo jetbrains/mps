@@ -116,8 +116,9 @@
     <listener class="jetbrains.mps.watching.ModelFocusSynchronizer" topic="com.intellij.ide.FrameStateListener"/>
     <listener class="jetbrains.mps.watching.WatchedRootsUpdater$ProjectListener" topic="com.intellij.openapi.project.ProjectManagerListener"
               activeInHeadlessMode="false" activeInTestMode="false"/>
+    <!-- Needed in headless and test mode to load projects libraries for some tasks (eg. migration from ant or tests out of process from IDE, see MPS-36880). -->
     <listener class="jetbrains.mps.project.ProjectLibraryManager$ProjectListener" topic="com.intellij.openapi.project.ProjectManagerListener"
-              activeInHeadlessMode="false" activeInTestMode="false"/>
+              activeInHeadlessMode="true" activeInTestMode="true"/>
   </applicationListeners>
   <projectListeners>
     <listener class="jetbrains.mps.ide.bookmark.BookmarksUIComponent$EditorComponentListener"
