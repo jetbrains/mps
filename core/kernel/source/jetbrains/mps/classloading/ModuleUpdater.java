@@ -133,6 +133,16 @@ import java.util.stream.Stream;
           storageForget(mRef, affectedForRemove);
         }
         final List<SModuleReference> removedCModuleRefs = affectedForRemove.stream().map(CModule::getModuleReference).collect(Collectors.toList());
+
+        HashSet<SModuleReference> checkNoLongerInGraph = new HashSet<>(removedCModuleRefs); // inv: forEach(myRefStorage[v].module == null); we don't
+        // remove valid modules as they may appear as a dependency target for another module, therefore we keep CModule until they explicitly gone from a repo.
+        //
+        // module we removed might be holding the only dependency to another module (already gone), record these for later check
+        myDepGraphHolder.fillOutgoingEdgesDeep(removedCModuleRefs, v -> {
+          if (myRefStorage2.get(v).getModule() == null) {
+            checkNoLongerInGraph.add(v);
+          }
+        });
         myDepGraphHolder.cleanOutgoingEdges(removedCModuleRefs);
         //
         final HashSet<SModuleReference> recalculateStatus = new HashSet<>();
@@ -162,6 +172,7 @@ import java.util.stream.Stream;
                                       // 'known' in added - likely mean we anticipated its appearance as a dependency target of another module
           recalculateStatus.add(mRef);
         }
+        HashSet<SModuleReference> knownAndChanged = new HashSet<>();
         for (ReloadableModule module : myModulesToReload) {
           SModuleReference mRef = module.getModuleReference();
           if (myDepGraphHolder.contains(mRef)) {
@@ -170,6 +181,7 @@ import java.util.stream.Stream;
             // XXX perhaps, deep incoming CModule into affectedForRemove?
             storageUpdate(module, affectedForRemove, affectedForAdd);
             aniticipated.add(mRef);
+            knownAndChanged.add(mRef);
           } else {
             LOG.debug("Adding changed module " + module);
             myDepGraphHolder.add(mRef);
@@ -182,6 +194,14 @@ import java.util.stream.Stream;
         myDepGraphHolder.fillIncomingEdgesDeep(aniticipated, cm -> {
           affectedForAdd.add(myRefStorage2.get(cm));
         });
+        // changed modules we've known before - what if it's a dependency change to a module long gone?
+        // OTOH, perhaps it's just easier/smarter to walk all verticies, find those w/o incoming edges and SModule == null and remove these?
+        //       would need a queue as we shall walk the graph again and again, as long as there are removed verticies.
+        myDepGraphHolder.fillOutgoingEdgesDeep(knownAndChanged, v -> {
+          if (myRefStorage2.get(v).getModule() == null) {
+            checkNoLongerInGraph.add(v);
+          }
+        });
 
         recalculateStatus.removeAll(removedCModuleRefs);
         HashSet<SModuleReference> newTargets = new HashSet<>(); // if changed modules yield any new vertex, update it status
@@ -192,10 +212,9 @@ import java.util.stream.Stream;
         // its own classloading purposes, only when it's both no dependants AND no JMF we can drop it. For now, however, just keep it until explicitly removed
 
         boolean anyChange;
-        ArrayList<SModuleReference> xxx = new ArrayList<>(removedCModuleRefs);
         do {
           anyChange = false;
-          for (Iterator<SModuleReference> it = xxx.iterator(); it.hasNext(); ) {
+          for (Iterator<SModuleReference> it = checkNoLongerInGraph.iterator(); it.hasNext(); ) {
             SModuleReference mRef = it.next();
             if (!myDepGraphHolder.hasIncomingEdges(mRef)) {
               LOG.debug("Removing module " + mRef);
@@ -206,7 +225,7 @@ import java.util.stream.Stream;
               anyChange = true;
             }
           }
-        } while (!xxx.isEmpty() && anyChange);
+        } while (!checkNoLongerInGraph.isEmpty() && anyChange);
 
         // holds all vertices which could have changed their classloading status
         HashSet<SModuleReference> forStatusUpdate = new HashSet<>();
@@ -339,7 +358,7 @@ import java.util.stream.Stream;
   public Collection<SModuleReference> getDeps(Iterable<SModuleReference> mRefs) {
     synchronized (LOCK) {
       final Collection<SModuleReference> result = new ArrayList<>();
-      myDepGraphHolder.fillOutgoingEdgesDeep(mRefs, result);
+      myDepGraphHolder.fillOutgoingEdgesDeep(mRefs, result::add);
       mRefs.forEach(result::remove);
       return result;
     }

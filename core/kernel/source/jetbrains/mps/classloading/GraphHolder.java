@@ -70,7 +70,6 @@ public class GraphHolder<V> {
     myConjugateGraph.addVertex(v);
   }
 
-
   /**
    * removes vertex with all its outs and ins
    * also updates its disposedDeps cache
@@ -108,9 +107,9 @@ public class GraphHolder<V> {
     }
   }
 
-  public void fillOutgoingEdgesDeep(Iterable<? extends V> vv, Collection<? super V> result) {
+  public void fillOutgoingEdgesDeep(Iterable<? extends V> vv, Consumer<? super V> result) {
     checkGraphsCorrectness();
-    myGraph.dfs(vv, result::add);
+    myGraph.dfs(vv, result);
   }
 
   public void cleanOutgoingEdges(Iterable<? extends V> vv) {
@@ -132,6 +131,10 @@ public class GraphHolder<V> {
     }
   }
 
+  public int countIncomingEdges(V v) {
+    return myConjugateGraph.getOuts(v).size();
+  }
+
   public boolean hasIncomingEdges(V v) {
     return !myConjugateGraph.getOuts(v).isEmpty();
   }
@@ -139,7 +142,7 @@ public class GraphHolder<V> {
   // inclusive
   public void fillIncomingEdgesDeep(Iterable<? extends V> vv, Consumer<? super V> result) {
     checkGraphsCorrectness();
-    myConjugateGraph.dfs(vv, result::accept);
+    myConjugateGraph.dfs(vv, result);
   }
 
   // TODO : merge with jetbrains.mps.util.Graph (mps.util.Graph needs to be modified for a bit)
@@ -208,7 +211,7 @@ public class GraphHolder<V> {
       return myOuts.get(v);
     }
 
-    public void dfs(Iterable<? extends V> starts, VertexVisitor<V> visitor) {
+    public void dfs(Iterable<? extends V> starts, Consumer<? super V> visitor) {
       new DfsTraversal<>(this, starts, visitor).dfs();
     }
 
@@ -220,9 +223,9 @@ public class GraphHolder<V> {
       private final Graph<V> myGraph;
       private final Set<V> myVisited = new HashSet<>();
       private final Iterable<? extends V> myStartVs;
-      private final VertexVisitor<V> myVisitor;
+      private final Consumer<? super V> myVisitor;
 
-      public DfsTraversal(Graph<V> graph, Iterable<? extends V> startVs, VertexVisitor<V> visitor) {
+      public DfsTraversal(Graph<V> graph, Iterable<? extends V> startVs, Consumer<? super V> visitor) {
         myGraph = graph;
         myStartVs = startVs;
         myVisitor = visitor;
@@ -230,24 +233,23 @@ public class GraphHolder<V> {
 
       public void dfs() {
         for (V v : myStartVs) {
-          if (myVisited.contains(v)) continue;
-          dfs0(v);
+          assert myGraph.containsVertex(v) : "Graph does not contain vertex " + v;
+          if (!myVisited.contains(v)) {
+            dfs0(v);
+          }
         }
       }
 
+      // pre: v belongs to the graph and hasn't beed visited yeet
       private void dfs0(V v) {
-        assert myGraph.containsVertex(v) : "Graph does not contain vertex " + v;
         myVisited.add(v);
-        myVisitor.visit(v); // FIXME this doesn't look like DFS!
+        myVisitor.accept(v); // DFS despite the name doesn't mandate visit of the vertex as the last element (*after* visit of adjunct verticies, not *before*)
         for (V vOut : myGraph.getOuts(v)) {
-          if (myVisited.contains(vOut)) continue;
-          dfs0(vOut);
+          if (!myVisited.contains(vOut)) {
+            dfs0(vOut);
+          }
         }
       }
-    }
-
-    public interface VertexVisitor<V> {
-      void visit(V v);
     }
   }
 

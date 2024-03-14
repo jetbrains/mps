@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -296,7 +296,9 @@ public class ModulesReloadTest extends ModuleMpsTest {
       Assert.assertTrue(classIsLoadableFromModule(l1));
       removeModule(l3);
       Assert.assertFalse(classIsLoadableFromModule(l1));
-      Assert.assertFalse(myManager.getModulesWatcher().isModuleWatched(l3));
+      // there's still dependency from l1 -> l2 -> l3, and despite the module removal, we still keep it in the dep graph
+      Assert.assertTrue(myManager.getModulesWatcher().isModuleWatched(l3));
+      Assert.assertFalse(myManager.getModulesWatcher().getStatus(l3.getModuleReference()).isValid()); // but it's not valid for CL
     });
     Assert.assertFalse(classIsLoadableFromModule(l1));
   }
