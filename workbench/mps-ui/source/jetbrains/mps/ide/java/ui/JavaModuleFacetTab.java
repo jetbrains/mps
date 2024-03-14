@@ -352,8 +352,10 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
                                                           false));
 
     setTabComponent(advancedTab);
-    updateVisibilityBasedOnCompile();
-    updateVisibilityBasedOnLoading();
+    if (myJavaModuleFacet.getModule() instanceof Solution) {
+      updateVisibilityBasedOnCompile();
+      updateVisibilityBasedOnLoading();
+    }
   }
 
   private void updateVisibilityBasedOnLoading() {
