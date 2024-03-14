@@ -109,7 +109,7 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     Project project = getProject();
     MissionControl missionControl = MissionControl.getInstance(project);
     if (missionControl != null ){
-      MessageStatus status = Registry.is("mps.ProjectPane.messages.error.only") ? MessageStatus.ERROR : MessageStatus.WARNING;
+      MessageStatus status = getMPSSettings().isShowErrorsOnly() ? MessageStatus.ERROR : MessageStatus.WARNING;
       List<ReportItem> messages = missionControl.getMessagesContainer().getMessages(getValue().getModuleReference(), status, false) ;
       presentation.setTooltip(formatErrorsToolTip(messages));
     }
@@ -132,6 +132,11 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     @SuppressWarnings("rawtypes")
     @Override
     public @Nullable Comparable getSortKey() {
+      return myOrdinal;
+    }
+
+    @Override
+    public @Nullable Comparable getTypeSortKey() {
       return myOrdinal;
     }
 

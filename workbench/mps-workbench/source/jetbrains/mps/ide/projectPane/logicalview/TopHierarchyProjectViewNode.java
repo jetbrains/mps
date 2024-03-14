@@ -211,6 +211,11 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
       return myOrdinal;
     }
 
+    @Override
+    public @Nullable Comparable getTypeSortKey() {
+      return myOrdinal;
+    }
+
     private String getVirtualFolder(SModule module) {
       String fqName = module.getModuleName();
       if (module instanceof Generator && fqName.indexOf('#') > 0) {

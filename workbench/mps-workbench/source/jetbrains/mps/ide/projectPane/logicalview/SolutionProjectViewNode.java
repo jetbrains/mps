@@ -14,6 +14,7 @@ import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.icons.MPSIcons.Nodes.Models;
 import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.ide.projectView.MPSProjectViewSettings;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import jetbrains.mps.project.MissionControl;
 import jetbrains.mps.smodel.SObject;
@@ -61,13 +62,17 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
   }
 
   protected void fillChildren(Collection<AbstractTreeNode<?>> children, Collection<SModel> models) {
+    if (getMPSSettings().isShowDescriptorModels()) {
+      models.stream().filter(SModelStereotype::isDescriptorModel).findFirst().ifPresent(m -> {
+        children.add(new SimpleModelProjectViewNode(getProject(), m, getSettings()));
+      });
+    }
     if (models.stream().anyMatch(SModelStereotype::isStubModel)) {
       children.add(new StubsProjectViewNode(getProject(), getValue(), getSettings()));
     }
     if (models.stream().anyMatch(SModelStereotype::isTestModel)) {
       children.add(new TestsProjectViewNode(getProject(), getValue(), getSettings()));
     }
-
     super.fillChildren(children, filterModels(models));
   }
 

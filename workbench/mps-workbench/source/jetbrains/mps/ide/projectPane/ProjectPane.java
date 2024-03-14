@@ -23,11 +23,8 @@ import com.intellij.ide.dnd.DnDSource;
 import com.intellij.ide.dnd.DnDTarget;
 import com.intellij.ide.dnd.aware.DnDAwareTree;
 import com.intellij.ide.projectView.ProjectView;
-import com.intellij.ide.projectView.ViewSettings;
-import com.intellij.ide.projectView.impl.ProjectTreeStructure;
 import com.intellij.ide.projectView.impl.ProjectViewPane;
 import com.intellij.ide.projectView.impl.ProjectViewTree;
-import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.ide.util.treeView.AbstractTreeStructureBase;
 import com.intellij.ide.util.treeView.NodeDescriptor;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -58,7 +55,7 @@ import jetbrains.mps.ide.platform.watching.ReloadManager;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDragSource;
 import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDropTarget;
-import jetbrains.mps.ide.projectPane.logicalview.RootLogicalProjectViewNode;
+import jetbrains.mps.ide.projectView.MPSProjectViewState;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.logging.Logger;
@@ -139,11 +136,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     }
   };
   private MessageBusConnection myConnection;
-  private final ToggleAndRebuildAction myShowDescriptorModelsAction;
-  private final ToggleAndRebuildAction myShowErrorComponent;
-  private final ToggleAndRebuildAction myShowUnderline;
-  private final ToggleAndRebuildAction myShowErrorsOnly;
-  private final ToggleAndRebuildAction myShowErrorStripe;
 
   public ProjectPane(final Project project) {
     super(project);
@@ -159,14 +151,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     };
     // XXX provided we add a listener, perhaps, shall keep instance in a field or introduce a method to take Disposable with listener (IDEA style)
     ReloadManager.getInstance().addReloadListener(myReloadListener);
-    // I'm using RegistryValues, not regular PersistentStateComponent properties to keep settings as I'd like to see statistics if anyone modifies
-    // these settings, and, if yes, how.
-    myShowDescriptorModelsAction = new ToggleAndRebuildAction(this, "@descriptor models in Generators", "mps.ProjectPane.show.descriptor.generator");
-    myShowErrorComponent = new ToggleAndRebuildAction(this, "Show Indicator", "mps.ProjectPane.messages.use.indicator");
-    myShowUnderline = new ToggleAndRebuildAction(this, "Underline Nodes", "mps.ProjectPane.messages.use.underline");
-    myShowErrorsOnly = new ToggleAndRebuildAction(this, "Errors Only", "mps.ProjectPane.messages.error.only");
-    // expose IDEA's registry setting in UI, to ease turn off for those not willing to see it
-    myShowErrorStripe = new ToggleAndRebuildAction(this, "Error Stripe", "error.stripe.enabled");
   }
 
   @Override
@@ -390,18 +374,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
   @Override
   public void addToolbarActions(DefaultActionGroup group) {
     super.addToolbarActions(group);
-    // FIXME these options must be registered in a standard way in order to be displayed on client side
-    group.addAction(myShowDescriptorModelsAction).setAsSecondary(true);
-    group.addAction(myShowErrorsOnly).setAsSecondary(true);
-//
-//    DefaultActionGroup g = new DefaultActionGroup("Errors && Warnings", true);
-//    g.addAction(myShowErrorComponent).setAsSecondary(true);
-//    g.addAction(myShowUnderline).setAsSecondary(true);
-//    g.addAction(myShowErrorStripe).setAsSecondary(true);
-//    g.addSeparator();
-//    group.addAction(g).setAsSecondary(true);
   }
-
 
   //----selection----
 
@@ -501,106 +474,33 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     }
   }
 
+  @Deprecated(forRemoval = true)
   /*package*/ boolean isDescriptorModelInGeneratorVisible() {
-    return myShowDescriptorModelsAction.isSelected();
+    return MPSProjectViewState.getInstance(getProject()).isShowDescriptorModels();
   }
 
+  @Deprecated(forRemoval = true)
   /*package*/ boolean isDescriptorModelInSolutionVisible() {
-    return Registry.is("mps.ProjectPane.show.descriptor.solution");
+    return MPSProjectViewState.getInstance(getProject()).isShowDescriptorModels();
   }
 
   @Deprecated(forRemoval = true)
   /*package*/ Supplier<Boolean> errorIndicatorVisible() {
-    return myShowErrorComponent;
+    return () -> false;
   }
 
   @Deprecated(forRemoval = true)
   /*package*/ Supplier<Boolean> underlineErrorNodes() {
-    return myShowUnderline;
+    return () -> false;
   }
 
   @Deprecated(forRemoval = true)
   /*package*/ Supplier<Boolean> showErrorsOnly() {
-    return myShowErrorsOnly;
+    return () -> MPSProjectViewState.getInstance(getProject()).isShowErrorsOnly();
   }
 
   @Override
   protected @NotNull Comparator<NodeDescriptor<?>> createComparator() {
     return super.createComparator();
-  }
-
-  private static class ProjectPaneTreeStructure extends ProjectTreeStructure {
-
-    public ProjectPaneTreeStructure(@NotNull Project project, String ID) {
-      super(project, ID);
-    }
-
-    @SuppressWarnings("rawtypes")
-    @Override
-    protected AbstractTreeNode createRoot(@NotNull Project project, @NotNull ViewSettings settings) {
-      return new RootLogicalProjectViewNode(project, settings);
-    }
-
-    @Override
-    public boolean isShowExcludedFiles() {
-      return true;
-    }
-
-    @Override
-    public boolean isUseFileNestingRules() {
-      return true;
-    }
-
-    @Override
-    public boolean isFoldersAlwaysOnTop() {
-      return true;
-    }
-
-    @Override
-    public boolean isStructureView() {
-      return true;
-    }
-  }
-
-  // Action associated with a boolean Registry key; facilitates value modification through UI and tracks value state
-  // is anyone changes it through Registry (i.e. RVL is not only to trigger rebuild from UI change, but to
-  // trigger rebuild for any possible change cause)
-  private static class ToggleAndRebuildAction extends ToggleAction implements Supplier<Boolean>, RegistryValueListener {
-    private final ProjectPane myProjectPane;
-    private final RegistryValue myState;
-
-    ToggleAndRebuildAction(ProjectPane projectPane, @NotNull String title, @NotNull String key) {
-      super(title);
-      myState = Registry.get(key);
-      myProjectPane = projectPane;
-      myState.addListener(this, projectPane);
-    }
-
-    public boolean isSelected() {
-      return myState.asBoolean();
-    }
-
-    @Override
-    public boolean isSelected(AnActionEvent e) {
-      return isSelected();
-    }
-
-    @Override
-    public Boolean get() {
-      return isSelected();
-    }
-
-    @Override
-    public void setSelected(AnActionEvent e, boolean state) {
-      if (isSelected() != state) {
-        myState.setValue(state);
-        // expect afterValueChanged to come and trigger rebuild
-      }
-    }
-
-    @Override
-    public void afterValueChanged(@NotNull RegistryValue value) {
-      myProjectPane.rebuild();
-    }
   }
 }

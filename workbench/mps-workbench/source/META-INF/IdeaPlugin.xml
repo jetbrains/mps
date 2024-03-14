@@ -206,6 +206,8 @@
     <projectService serviceInterface="com.intellij.ide.projectView.ProjectView"
                     serviceImplementation="jetbrains.mps.ide.projectView.ProjectViewImpl"
                     overrides="true"/>
+    <projectService serviceInterface="jetbrains.mps.ide.projectView.MPSProjectViewState"
+                    serviceImplementation="jetbrains.mps.ide.projectView.MPSProjectViewState"/>
 
     <fileIconProvider implementation="jetbrains.mps.workbench.editors.MPSIconProvider"/>
 
@@ -234,6 +236,22 @@
     icon="AllIcons.Actions.ToggleVisibility"/>
     <action id="OpenFile" class="jetbrains.mps.workbench.actions.OpenMPSProjectAction" overrides="true" icon="AllIcons.Actions.MenuOpen"/>
     <action id="WelcomeScreen.OpenDirectoryProject" class="jetbrains.mps.workbench.actions.OpenMPSProjectAction$OnMPSWelcomeScreen" overrides="true"/>
+  </actions>
+
+  <actions>
+    <action id="MPSProjectView.ShowErrorsOnly"
+            class="jetbrains.mps.ide.projectView.ProjectViewImpl$Action$ShowErrorsOnly">
+      <add-to-group group-id="ProjectView.ToolWindow.Appearance.Actions" anchor="after" relative-to-action="ProjectView.ShowLibraryContents"/>
+    </action>
+    <action id="MPSProjectView.ShowDescriptorModels"
+            class="jetbrains.mps.ide.projectView.ProjectViewImpl$Action$ShowDescriptorModels">
+      <add-to-group group-id="ProjectView.ToolWindow.Appearance.Actions" anchor="after" relative-to-action="ProjectView.ShowLibraryContents"/>
+    </action>
+    <unregister id="ProjectView.SortByType"/>
+    <action id="MPSProjectView.SortRootsByConcept"
+            class="jetbrains.mps.ide.projectView.ProjectViewImpl$Action$SortRootsByConcept">
+      <add-to-group group-id="ProjectView.ToolWindow.Appearance.Actions" anchor="after" relative-to-action="ProjectView.SortByName"/>
+    </action>
   </actions>
 
 </idea-plugin>

@@ -19,9 +19,11 @@ import com.intellij.ide.CopyProvider;
 import com.intellij.ide.CutProvider;
 import com.intellij.ide.PasteProvider;
 import com.intellij.ide.dnd.aware.DnDAwareTree;
+import com.intellij.ide.projectView.NodeSortKey;
 import com.intellij.ide.projectView.ProjectView;
 import com.intellij.ide.projectView.impl.AbstractProjectViewPaneWithAsyncSupport;
 import com.intellij.ide.projectView.impl.BaseProjectViewPaneWithAsyncSupport;
+import com.intellij.ide.projectView.impl.ProjectViewPane;
 import com.intellij.ide.projectView.impl.ProjectViewState;
 import com.intellij.ide.util.treeView.AbstractTreeStructureBase;
 import com.intellij.openapi.actionSystem.ActionPlaces;
@@ -48,6 +50,7 @@ import jetbrains.mps.ide.actions.SModelActionData;
 import jetbrains.mps.ide.actions.SModuleActionData;
 import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.projectView.MPSProjectViewState;
 import jetbrains.mps.ide.ui.tree.ContextValueProvider;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Models;
 import jetbrains.mps.ide.ui.tree.VirtualFolder;
@@ -137,6 +140,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
   }
 
   /*package*/ ProjectViewState getProjectViewState() {
+    // FIXME
     return ProjectViewState.getInstance(getProject());
   }
 
@@ -269,30 +273,38 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     return !isDisposed() && getProjectView().isShowMembers(getId());
   }
 
+  /**
+   * @deprecated use {@link jetbrains.mps.ide.projectView.MPSProjectViewSettings} instead.
+   */
+  @Deprecated
   public boolean isSortByConcept() {
-    // we re-use IDEA's sort by type for MPS 'sort by root concept'
-    // However, can not re-use it by getProjectView.isSortByType because we have to override supportsSortByType() to return false
-    // not to get IDEA's UI action contributed (we've got our own), but IDEA doesn't set the option unless supportsSortByType() gives true,
-    // see ProjectViewImpl.mySortByType.isEnabled and ProjectViewImpl.Option.isEnabled(), therefore we resort right to view state implementation
     return getProjectViewState().getSortByType();
   }
 
   @Override
   public void installComparator() {
+    // FIXME why is this NOP?
     // Overrode to avoid NPE
   }
 
   @Override
   public boolean supportsSortByType() {
-    // we've got our custom replacement, SortByTypeToggleAction, that uses projectView.isSortByType setting,
-    // but different mechanism to build the tree (not treeBuilder+comparator, hence #installComparator(), above, is no-op)
-    // false is to remove IDEA's provided action
+    return true;
+  }
+
+  @Override
+  public boolean supportsManualOrder() {
+    return false;
+  }
+
+  @Override
+  public boolean supportsSortByTime() {
     return false;
   }
 
   @Override
   public void addToolbarActions(final DefaultActionGroup group) {
-    group.addAction(new SortByTypeToggleAction()).setAsSecondary(true);
+    super.addToolbarActions(group);
   }
 
   protected void removeListeners() {
@@ -619,25 +631,6 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     @Override
     public void afterRefreshFinish(boolean asynchronous) {
       myRepositoryListener.rebuildTreeIfNeeded();
-    }
-  }
-
-  private class SortByTypeToggleAction extends ToggleAction {
-    public SortByTypeToggleAction() {
-      super("Sort Roots by Concept", "Sort root nodes by concept", null);
-    }
-
-    @Override
-    public boolean isSelected(@Nullable AnActionEvent e) {
-      return isSortByConcept();
-    }
-
-    @Override
-    public void setSelected(@Nullable AnActionEvent e, boolean state) {
-      if (state != isSortByConcept()) {
-        getProjectViewState().setSortByType(state);
-        rebuild();
-      }
     }
   }
 }

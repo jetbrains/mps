@@ -73,7 +73,7 @@ public class DevkitProjectViewNode extends BranchProjectViewNode<DevKit> {
     Project project = getProject();
     MissionControl missionControl = MissionControl.getInstance(project);
     if (missionControl != null ){
-      MessageStatus status = Registry.is("mps.ProjectPane.messages.error.only") ? MessageStatus.ERROR : MessageStatus.WARNING;
+      MessageStatus status = getMPSSettings().isShowErrorsOnly() ? MessageStatus.ERROR : MessageStatus.WARNING;
       List<ReportItem> messages = missionControl.getMessagesContainer().getMessages(getValue().getModuleReference(), status, false) ;
       presentation.setTooltip(formatErrorsToolTip(messages));
     }

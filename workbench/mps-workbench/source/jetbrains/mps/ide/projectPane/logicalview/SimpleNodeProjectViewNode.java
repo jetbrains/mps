@@ -19,6 +19,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.smodel.SObject;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -116,6 +117,19 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
         .shallFocus(requestFocus)
         .selectIfChild()
         .open(getValue().getReference());
+  }
+
+  @Override
+  public @Nullable Comparable getTypeSortKey() {
+    return ProjectHelper.fromIdeaProject(getProject()).getModelAccess()
+                 .computeReadAction(() -> {
+                   String key = "unknown";
+                   try {
+                     key = getValue().getConcept().getName();
+                   } catch (RuntimeException ignore) {
+                   }
+                   return key;
+                 });
   }
 
   @Override

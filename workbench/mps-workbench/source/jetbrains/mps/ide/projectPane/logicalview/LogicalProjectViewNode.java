@@ -14,6 +14,8 @@ import com.intellij.ui.LayeredIcon;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.projectView.MPSProjectViewSettings;
+import jetbrains.mps.ide.projectView.MPSProjectViewSettings.Immutable;
 import jetbrains.mps.ide.ui.tree.ContextValueProvider;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
@@ -148,6 +150,12 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
     }
   }
 
+  protected MPSProjectViewSettings getMPSSettings() {
+    // FIXME the method getSettings in superclass should be made open
+    if (getSettings() instanceof MPSProjectViewSettings) return ((MPSProjectViewSettings) getSettings());
+    return Immutable.DEFAULT;
+  }
+
   @Override
   protected void update(@NotNull PresentationData presentation) {
     ProjectHelper.fromIdeaProject(getProject()).getModelAccess()
@@ -169,7 +177,7 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
     Project project = getProject();
     MissionControl missionControl = MissionControl.getInstance(project);
     if (missionControl != null) {
-      return Registry.is("mps.ProjectPane.messages.error.only") ?
+      return getMPSSettings().isShowErrorsOnly() ?
              missionControl.getMessagesContainer().hasErrorsInHierarchy(this::contains) :
              missionControl.getMessagesContainer().hasWarningsOrErrorsInHierarchy(this::contains);
     }

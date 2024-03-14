@@ -12,14 +12,17 @@ import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.ide.projectView.MPSProjectViewSettings;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import jetbrains.mps.project.MissionControl;
 import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -72,11 +75,20 @@ public class GeneratorProjectViewNode extends BaseModuleProjectViewNode<Generato
 
   @Override
   protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
-    List<SModel> models = getValue().getModels()
-                                    .stream()
-                                    .filter(m -> !SModelStereotype.isDescriptorModel(m))
-                                    .collect(Collectors.toList());
-    fillChildren(children, models);
+    List<SModel> models = getValue().getModels();
+    if (getMPSSettings().isShowDescriptorModels()) {
+      models.stream().filter(SModelStereotype::isDescriptorModel).findFirst().ifPresent(m -> {
+        children.add(new SimpleModelProjectViewNode(getProject(), m, getSettings()));
+      });
+    }
+    fillChildren(children, filterModels(models));
+  }
+
+  @NotNull
+  protected List<SModel> filterModels(Collection<SModel> models) {
+    ArrayList<SModel> filtered = new ArrayList<>(models);
+    filtered.removeIf(SModelStereotype::isDescriptorModel);
+    return filtered;
   }
 
   @Override
