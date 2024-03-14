@@ -18,6 +18,7 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.vfs.IFile;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
@@ -113,12 +114,25 @@ import java.util.stream.Collectors;
           rv.add(dep.getTargetModule()); // XXX just return SDependency. I wonder why DD uses Dependency, not SDependency?
         }
       } else {
-        ErrorContainer errorContainer = new ErrorContainer();
+        final LinkedHashSet<SModuleReference> cc = new LinkedHashSet<>(20);
+        // XXX this is a hack to address a change in CLDependencies contract. Now, we expect it to answer with all dependencies
+        //     not only those resolved (ModuleUpdater builds graph with missing modules and updates verticies as modules come and go,
+        //     instead of rebuilding edges). As UsedModulesCollector has to be refactored anyway not to resolve modules and report
+        //     module references right away, this code shall ne be around for long. At the end of the day, we shall get rid
+        //     of any code that analyzes dependencies on demand, and stick to deps.cp/pre-generated set of deps.
+        final ErrorContainer errorContainer = new ErrorContainer() {
+          @Override
+          public void depCannotBeResolved(@NotNull SModule module, @NotNull SDependency unresolvableDep) {
+            super.depCannotBeResolved(module, unresolvableDep);
+            cc.add(unresolvableDep.getTargetModule());
+          }
+        };
         // here, we re-use language rt cache (for each subsequent module after #reset())
-        rv = myModulesCollector.directlyUsedModules(module, errorContainer, true, true).stream().map(SModule::getModuleReference).collect(Collectors.toList());
+        myModulesCollector.directlyUsedModules(module, errorContainer, true, true).stream().map(SModule::getModuleReference).forEach(cc::add);
         if (errorContainer.hasErrors()) {
           myModulesWithAbsentDeps.put(module.getModuleReference(), errorContainer.getErrors());
         }
+        rv = cc;
       }
     }
     return rv;

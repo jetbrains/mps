@@ -26,6 +26,7 @@ import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.util.Computable;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.NotCondition;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -117,7 +118,7 @@ import static jetbrains.mps.classloading.ClassLoadingProgress.UNLOADED;
  *
  * Repository lock policy
  * Every reload requires a repository write lock. Actual ModuleClassLoader construction happens inside the read action,
- * @see #doLoadModules(Iterable, ProgressMonitor)
+ * @see #doLoadModules(Collection, ProgressMonitor)
  *
  *
  * FIXME logic here must be rewritten in a more abstract way to allow both lazy and non-lazy implementations
@@ -398,7 +399,7 @@ public class ClassLoaderManager implements CoreComponent {
    * @see #myValidCondition
    */
   @NotNull
-  private Collection<ReloadableModule> doLoadModules(final Iterable<? extends ReloadableModule> modules, final ProgressMonitor monitor) {
+  private Collection<ReloadableModule> doLoadModules(final Collection<? extends ReloadableModule> modules, final ProgressMonitor monitor) {
     monitor.start("Loading", 1);
     try {
       return runTransaction(() -> {
@@ -416,8 +417,11 @@ public class ClassLoaderManager implements CoreComponent {
 
         LOG.debug("Loading " + modulesToLoad.size() + " modules");
         monitor.advance(1);
-        if (!filterModules(modulesToLoad, myUnloadedCondition).isEmpty()) {
-          LOG.warning("Some modules are not preloaded yet : cannot load them");
+        Set<ReloadableModule> unloadedModules = filterModules(modulesToLoad, myUnloadedCondition);
+        if (!unloadedModules.isEmpty()) {
+          String s1 = modules.stream().map(SModule::getModuleName).map(NameUtil::compactNamespace).collect(Collectors.joining(","));
+          String s2 = unloadedModules.stream().map(SModule::getModuleName).map(NameUtil::compactNamespace).collect(Collectors.joining(","));
+          LOG.warning(String.format("Some modules are not preloaded yet, request to load (%s), unloaded: (%s)", s1, s2));
         }
         myClassLoadersHolder.doLoadModules(modulesToLoad);
         return modulesToLoad;

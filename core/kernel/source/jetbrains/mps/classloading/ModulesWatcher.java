@@ -129,6 +129,9 @@ public class ModulesWatcher {
     UpdateOutcome rv = new UpdateOutcome();
     if (isChanged()) {
       LOG.debug("Recount status map for modules");
+      // FIXME the fact we reset accumulated errors on any change but rely on these in getModuleProblemMessage() (from refillStatusMap()) could
+      //       lead to an unpleasant defects. E.g. change 1 brings a module with broken dependency, change 2 brings its dependency - fine, no errors
+      //       However, if change 2 doesn't bring a dependency in, the fact module has broken dependency is gone with reset()
       myDependencyCollector.reset();
       myModuleUpdater.refreshGraph(rv.unloaded, rv.loaded);
       refillStatusMap();
