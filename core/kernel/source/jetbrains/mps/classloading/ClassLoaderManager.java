@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.classloading.ModulesWatcher.UpdateOutcome;
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.ReloadableModule.DeploymentStatus;
@@ -483,7 +483,7 @@ public class ClassLoaderManager implements CoreComponent {
    * There are also useful {@link #reloadModules(Iterable)} and {@link #reloadModule(SModule)}.
    */
   public void reloadModules(Iterable<? extends SModule> modules, @NotNull ProgressMonitor monitor) {
-    long beginTime = System.nanoTime();
+    final long beginTime = System.nanoTime();
     checkWriteAccess();
     refresh();
     // this is a hack. just a missstep towards better code (once reload process with a new watcher loguc is streamlined, we won't need casts)
@@ -599,18 +599,19 @@ public class ClassLoaderManager implements CoreComponent {
     }
   }
 
+  /**
+   * requires exclusive/write access to CL repository
+   */
   /*package*/ void processModuleChanges(List<ReloadableModuleBase> toLoad, List<SModuleReference> toUnload, List<ReloadableModuleBase> toUpdate,
                                         @NotNull ProgressMonitor monitor) {
-
+    checkWriteAccess();
     monitor.start("", 4);
-    ArrayList<ReloadableModule> unloaded = new ArrayList<>();
-    ArrayList<ReloadableModule> loaded = new ArrayList<>();
-    myModulesWatcher.UPDATE(toLoad, toUnload, toUpdate, unloaded, loaded, monitor.subTask(2, SubProgressKind.REPLACING));
+    UpdateOutcome r = myModulesWatcher.update(toLoad, toUnload, toUpdate, monitor.subTask(2, SubProgressKind.REPLACING));
     // FIXME combine next 2 into single transaction
     // FIXME unload shall take the list as complete closure and not look into myModylesWatcher
-    unloadModules(unloaded.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()), monitor.subTask(1, SubProgressKind.REPLACING));
+    unloadModules(r.unloaded.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()), monitor.subTask(1, SubProgressKind.REPLACING));
     // FIXME preLoadModules shall take the list as complete set and not look into myModulesWatcher and its deps
-    preLoadModules(loaded, monitor.subTask(1, SubProgressKind.REPLACING));
+    preLoadModules(r.loaded, monitor.subTask(1, SubProgressKind.REPLACING));
 
     monitor.done();
   }

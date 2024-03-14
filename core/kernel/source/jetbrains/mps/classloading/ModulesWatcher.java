@@ -36,8 +36,6 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -75,11 +73,15 @@ public class ModulesWatcher {
   private final Map<SModuleReference, ClassLoadingStatus> myStatusMap = new HashMap<>();
   private final ModuleUpdater myModuleUpdater;
   private final Predicate<SModule> myWatchableCondition;
+  private final CLDependencies myDependencyCollector;
+
 
   public ModulesWatcher(SRepository repository, final Condition<SModule> watchableCondition) {
     myRepository = repository;
     myWatchableCondition = watchableCondition.asPredicate();
-    myModuleUpdater = new ModuleUpdater(repository);
+    myDependencyCollector = new CLDependencies(repository);
+    // XXX eventually, ModuleUpdater to get instantiated for upadte() timespan only
+    myModuleUpdater = new ModuleUpdater(m -> myDependencyCollector.directlyUsedModules(m).stream());
   }
 
   /**
@@ -108,9 +110,8 @@ public class ModulesWatcher {
 
   // XXX in fact, looks like ModulesWatcher could become a ModuleUpdater, instantiated once per update, and present ModuleUpdater to be ModuleWatcher,
   //     owned by CLM and supplied to new ModuleUpdater instance to get new status map and loaded+unloaded collections
-  void UPDATE(Collection<? extends ReloadableModule> added, Collection<SModuleReference> removed, Collection<? extends ReloadableModule> changed, Collection<? super ReloadableModule> unloaded, Collection<? super ReloadableModule> loaded,
-                     ProgressMonitor progressMonitor) {
-    myRepository.getModelAccess().checkReadAccess(); // FIXME why read? it's either write end or explicit reload from within write, no?
+  UpdateOutcome update(Collection<? extends ReloadableModule> added, Collection<SModuleReference> removed, Collection<? extends ReloadableModule> changed, ProgressMonitor progressMonitor) {
+    myRepository.getModelAccess().checkWriteAccess(); // either end of write or explicit reload from within write
     // XXX here we assume modules are unique
     ArrayList<ReloadableModule> known = new ArrayList<>(changed.size());
     ArrayList<ReloadableModule> unknown = new ArrayList<>();
@@ -125,12 +126,15 @@ public class ModulesWatcher {
     myModuleUpdater.removeModules(removed);
     myModuleUpdater.addModules(Stream.concat(added.stream(), unknown.stream()).filter(myWatchableCondition).collect(Collectors.toList()));
     myModuleUpdater.updateModules(known);
+    UpdateOutcome rv = new UpdateOutcome();
     if (isChanged()) {
       LOG.debug("Recount status map for modules");
-      myModuleUpdater.refreshGraph(unloaded, loaded);
+      myDependencyCollector.reset();
+      myModuleUpdater.refreshGraph(rv.unloaded, rv.loaded);
       refillStatusMap();
       LOG.debug("Finished recounting");
     }
+    return rv;
   }
 
   /**
@@ -153,14 +157,14 @@ public class ModulesWatcher {
                                        invalidModules.size(),
                                        allModules.size());
         LOG.warning(message);
-        printMap(invalidModules, LOG::warning);
+        invalidModules.values().forEach(LOG::warning);
       }
 
       traceInvalidDeps(invalidModules.keySet(), allInvalidModules);
       LOG.info("Totally " + allInvalidModules.size() + " modules are marked invalid for class loading" + (allInvalidModules.isEmpty() ? "."
                                                                                                                                       : ":"));
       if (!allInvalidModules.isEmpty()) {
-        print(allInvalidModules, LOG::info);
+        allInvalidModules.stream().map(SModuleReference::toString).forEach(LOG::info);
       }
 
       checkStatusMapCorrectness();
@@ -192,18 +196,6 @@ public class ModulesWatcher {
           }
         }
       }
-    }
-  }
-
-  private void printMap(Map<SModuleReference, String> mref2msg, Consumer<String> print) {
-    for (var val : mref2msg.values()) {
-      print.accept(val);
-    }
-  }
-
-  private void print(Collection<SModuleReference> refs, Consumer<String> print) {
-    for (var entry : refs) {
-      print.accept(entry.toString());
     }
   }
 
@@ -250,7 +242,11 @@ public class ModulesWatcher {
       return String.format("Module %s is disposed and therefore was marked invalid for class loading", mRef.getModuleName());
     }
 
-    final List<SearchError> errors = myModuleUpdater.getErrors(mRef);
+    // FIXME provisional; as long as CLDependencies resolves targets. Now it does that in 'legacy' mode (no DD in use, no deps.cp found)
+    List<SearchError> errors = myDependencyCollector.getLegacyDependencyErrors(mRef); // it's assumed each graph refresh clears old errors
+    if (errors == null || errors.isEmpty()) {
+      errors = myModuleUpdater.getErrors(mRef);
+    }
     if (!errors.isEmpty()) {
       return String.format("%s was marked invalid for class loading: %s", mRef.getModuleName(), errors.get(0).getMsg());
     }
@@ -266,6 +262,7 @@ public class ModulesWatcher {
 
   private void checkStatusMapCorrectness() {
     assert myStatusMap.size() == getAllModules().size() : "Modules number inconsistency";
+    // TODO iterate over myStatusMap, find value !isValid, ask graph for incoming edges, if any is from isValid vertex
     for (SModuleReference mRef : getAllModules()) {
       ClassLoadingStatus status = getStatus(mRef);
       for (SModuleReference mRef1 : getDirectDependencies(Collections.singleton(mRef))) {
@@ -314,14 +311,6 @@ public class ModulesWatcher {
     return modules;
   }
 
-  Set<SModuleReference> getModuleRefs(Iterable<? extends ReloadableModule> modules) {
-    Set<SModuleReference> result = new LinkedHashSet<>();
-    for (ReloadableModule module : modules) {
-      result.add(module.getModuleReference());
-    }
-    return result;
-  }
-
   /**
    * @return all back dependencies of this module (closed set under back-dependency-relation)
    */
@@ -329,6 +318,7 @@ public class ModulesWatcher {
     return myModuleUpdater.getBackDeps(mRefs);
   }
 
+  @TestOnly
   boolean isModuleWatched(ReloadableModule module) {
     if (isChanged()) {
       LOG.warning("The class loading status info might be outdated");
@@ -394,5 +384,11 @@ public class ModulesWatcher {
 
   public interface ClassLoadingStatus {
     boolean isValid();
+  }
+
+  // FIXME improve
+  /*package*/ static class UpdateOutcome {
+    final ArrayList<ReloadableModule> unloaded = new ArrayList<>();
+    final ArrayList<ReloadableModule> loaded = new ArrayList<>();
   }
 }

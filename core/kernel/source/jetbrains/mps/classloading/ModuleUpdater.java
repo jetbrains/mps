@@ -35,6 +35,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -53,12 +54,10 @@ import java.util.stream.Stream;
   private final GraphHolder<SModuleReference> myDepGraphHolder = new GraphHolder<>();
   // inv: for each vertex in myDepGraphHolder, there's CModule in myRefStorage2, and vice versa
   private final Map<SModuleReference, CModule> myRefStorage2 = new HashMap<>();
-  private final SRepository myRepository;
-  private final CLDependencies myDependencyCollector;
+  private final Function<SModule, Stream<SModuleReference>> myDependencySupplier;
 
-  public ModuleUpdater(SRepository repository) {
-    myRepository = repository;
-    myDependencyCollector = new CLDependencies(repository);
+  public ModuleUpdater(Function<SModule, Stream<SModuleReference>> dependencySupplier) {
+    myDependencySupplier = dependencySupplier;
   }
 
   // pre: modules.forEach(we've seen this module - either as a CL objective or as a broken/valid dependency target thereof)
@@ -108,14 +107,13 @@ import java.util.stream.Stream;
   // return modules that needs their status re-assessed. Perhaps, shall replace with ReloadableModule, once it's our true
   // graph vertex (not bound to SModule; could keep status right in there and also keep track of origin - which code injected a vertex)
   /*package*/ Set<SModuleReference> refreshGraph(Collection<? super ReloadableModule> unloaded, Collection<? super ReloadableModule> loaded) {
-    myRepository.getModelAccess().checkReadAccess();
+    // assumes appropriate model access
     synchronized (LOCK) {
       final long beginTime = System.nanoTime();
       LOG.debug(String.format("Refreshing classloading graph adding: %d, removing %d, updating %d", myModulesToAdd.size(),
           myModulesToRemove.size(), myModulesToReload.size()));
       try {
         myChangedFlag = false;
-        myDependencyCollector.reset();
         myDepGraphHolder.checkGraphsCorrectness();
         int wasEdges = myDepGraphHolder.getEdgesCount();
         int wasVertices = myDepGraphHolder.getVerticesCount();
@@ -268,11 +266,6 @@ import java.util.stream.Stream;
   // FIXME assuming invoked for each known module and therefore we don't traverse deps here, although it's the proper plact to do that,
   //       rather than to expose traverse/backDeps logic to neighbours
   /*package*/ List<SearchError> getErrors(@NotNull SModuleReference v) {
-    // FIXME provisional; as long as CLDependencies resolves targets. Now it does that in 'legacy' mode (no DD in use, no deps.cp found)
-    List<SearchError> searchErrors = myDependencyCollector.getLegacyDependencyErrors(v);
-    if (searchErrors != null && !searchErrors.isEmpty()) {
-      return searchErrors;
-    }
     CModule reloadableModule = myRefStorage2.get(v);
     if (reloadableModule == null) {
       // shall not happen, provided ModulesWatcher invokes this method for graph vertex and only them.
@@ -302,7 +295,6 @@ import java.util.stream.Stream;
    * XXX in fact, updateEdges() may answer if there's any change in edges, I wonder if caller can make use of this knowledge (optimization)?
    */
   private void updateEdges(Set<SModuleReference> modulesToUpdate, Set<SModuleReference> newTargets) {
-    myRepository.getModelAccess().checkReadAccess();
     for (SModuleReference mRef : modulesToUpdate) {
       assert myDepGraphHolder.contains(mRef);
       // assert myRefStorage.resolveRef(mRef) != null; XXX well, shall not get violated. To get mRef here, we either put it explicitly
@@ -316,14 +308,14 @@ import java.util.stream.Stream;
       // FIXME revisit comment above. With myRefStorage2, likely, can expect reloadableModule != null; seems that CModule(ModuleB).getModule() == null
       //       in this case. We update edges here, ModuleB -> ModuleA edge needs to be cleared here, seems like empty newModuleDeps (for CModule(ModuleB).getModule() == null)
       //       would do the trick as expected.
-      Stream<SModuleReference> newModuleDeps = reloadableModule == null || reloadableModule.getModule() == null ? Stream.empty() : myDependencyCollector.directlyUsedModules(reloadableModule.getModule()).stream();
+      Stream<SModuleReference> newModuleDeps = reloadableModule == null || reloadableModule.getModule() == null ? Stream.empty() : myDependencySupplier.apply(reloadableModule.getModule());
       // XXX do I need to skip if there are no newModuleDeps (assuming this means error) - not to remove existing edges.
       // if (newModuleDeps.isEmpty()) { continue; }
       newModuleDeps.forEach(depRef -> {
         if (!currentDeps.remove(depRef)) {
           // new (not seen before) dependency edge
           // FIXME have to distinguish 2 scenarios here: (a) dependency is necessary for CL --> need an edge; (b) it's a design-time dependency --> edge isn't necessary
-          // XXX how come myDependencyCollector reports non-CL dependency here?
+          // XXX how come myDependencySuppplier reports non-CL dependency here?
           if (!myDepGraphHolder.contains(depRef)) {
             myDepGraphHolder.add(depRef);
             // see no point to update myRefStorage here, wait for depRef module to show up through repository's moduleAdded(); but myRefStorage2, to replace
