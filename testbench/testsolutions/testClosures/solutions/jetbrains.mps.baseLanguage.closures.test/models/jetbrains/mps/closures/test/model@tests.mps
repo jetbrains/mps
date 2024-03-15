@@ -1127,9 +1127,6 @@
                   <node concept="3xLA65" id="5xREo5PH8$y" role="lGtFl">
                     <property role="TrG5h" value="literal" />
                   </node>
-                  <node concept="7CXmI" id="3t0KN6KgLzn" role="lGtFl">
-                    <node concept="1TM$A" id="3t0KN6KgLzo" role="7EUXB" />
-                  </node>
                 </node>
                 <node concept="1Bd96e" id="5xREo5PH8AF" role="2OqNvi" />
               </node>

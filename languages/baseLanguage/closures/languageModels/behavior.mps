@@ -349,6 +349,10 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
+      <concept id="4222318806802425298" name="jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation" flags="ng" index="15s5l7">
+        <property id="8575328350543493365" name="message" index="huDt6" />
+        <property id="2423417345669755629" name="filter" index="1eyWvh" />
+      </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
       <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
@@ -533,6 +537,10 @@
       <property role="13i0it" value="true" />
       <node concept="3clFbS" id="hTgUC0X" role="3clF47">
         <node concept="3clFbF" id="U7sbC7OkPT" role="3cqZAp">
+          <node concept="15s5l7" id="a5PP$HHBAZ" role="lGtFl">
+            <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type node&lt;&gt; is not a subtype of node&lt;Type&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c8959034a(jetbrains.mps.lang.quotation.typesystem)/6019047980178724615]&quot;;" />
+            <property role="huDt6" value="Error: type node&lt;&gt; is not a subtype of node&lt;Type&gt;" />
+          </node>
           <node concept="2c44tf" id="U7sbC7OkPP" role="3clFbG">
             <node concept="9cv3F" id="U7sbC7OkQD" role="2c44tc">
               <node concept="33vP2l" id="U7sbC7OkRn" role="1ajw0F">

@@ -2789,9 +2789,7 @@
               </node>
             </node>
             <node concept="2OqwBi" id="2BTq$1wAmPN" role="33vP2m">
-              <node concept="liA8E" id="2BTq$1wAmPP" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~List.iterator()" resolve="iterator" />
-              </node>
+              <node concept="uNJiE" id="a5PP$GJmPt" role="2OqNvi" />
               <node concept="2OqwBi" id="2DmG$cizweq" role="2Oq$k0">
                 <node concept="3Tsc0h" id="2DmG$cizwey" role="2OqNvi">
                   <ref role="3TtcxE" to="tpee:hDpMfZw" resolve="typeParameter" />
@@ -2826,9 +2824,7 @@
                   <ref role="3TtcxE" to="tpee:g96eVAe" resolve="typeVariableDeclaration" />
                 </node>
               </node>
-              <node concept="liA8E" id="2BTq$1wAmPY" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~List.iterator()" resolve="iterator" />
-              </node>
+              <node concept="uNJiE" id="a5PP$GJtgI" role="2OqNvi" />
             </node>
           </node>
         </node>
@@ -6826,6 +6822,7 @@
       <property role="TrG5h" value="visibleClassifierMembers" />
       <node concept="37vLTG" id="5uRQgQirCgC" role="3clF46">
         <property role="TrG5h" value="contextClassifier" />
+        <property role="3TUv4t" value="true" />
         <node concept="3Tqbb2" id="5uRQgQirCgD" role="1tU5fm">
           <ref role="ehGHo" to="tpee:g7pOWCK" resolve="Classifier" />
         </node>
@@ -7036,6 +7033,7 @@
       </node>
       <node concept="37vLTG" id="5uRQgQirCgE" role="3clF46">
         <property role="TrG5h" value="contextNode" />
+        <property role="3TUv4t" value="true" />
         <node concept="3Tqbb2" id="5uRQgQirCgG" role="1tU5fm" />
       </node>
     </node>
