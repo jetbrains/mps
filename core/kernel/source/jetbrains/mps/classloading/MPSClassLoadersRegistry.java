@@ -25,7 +25,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.util.Consumer;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -133,30 +132,18 @@ class MPSClassLoadersRegistry {
   }
 
   /**
-   * @param toLoadLazy for these modules only notifications {@link DeployListener#onLoaded(Set, ProgressMonitor)} were sent,
-   *                   so for {@link DeployListener} clients these modules appear to be loaded.
-   *                   No actual loading is performed for these modules.
-   * @return modules which changed their ClassLoadingProgress from UNLOADED to LAZY_LOADED
-   *         *AND* are suitable for dispatch with {@link DeployListener#onLoaded(Set, ProgressMonitor)} (for the
-   *         time being, we notify about modules with MPS-managed CL only).
+   * just a change of internal state to let the registry know certain modules are deemed for CL
+   * @param toLoadLazy modules to tranition from UNLOADED state to LAZY_LOADED
    */
-  public Set<ReloadableModule> onLazyLoaded(Collection<ReloadableModule> toLoadLazy) {
-    Set<ReloadableModule> lazyLoaded2Notify = new LinkedHashSet<>();
-    for (ReloadableModule module : toLoadLazy) {
-      SModuleReference mRef = module.getModuleReference();
+  /*package*/ void markLazyLoaded(Collection<SModuleReference> toLoadLazy) {
+    for (SModuleReference mRef : toLoadLazy) {
       ClassLoadingProgress classLoadingProgress = myMPSLoadableModules.get(mRef);
       if (classLoadingProgress != null) {
-        LOG.error("Illegal state: module is already loaded " + module, new Throwable());
+        throw new IllegalStateException(String.format("Module %s is already tracked as %s", mRef.getModuleName(), classLoadingProgress));
       } else {
         myMPSLoadableModules.put(mRef, ClassLoadingProgress.LAZY_LOADED);
-        final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
-        assert jmf != null && jmf.getLoadClasses().classesAvailable();
-//        if (jmf.getCompile() == Compile.MPS) {
-          lazyLoaded2Notify.add(module);
-//        }
       }
     }
-    return lazyLoaded2Notify;
   }
 
   /**

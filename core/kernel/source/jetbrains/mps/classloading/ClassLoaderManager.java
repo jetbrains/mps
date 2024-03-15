@@ -362,13 +362,13 @@ public class ClassLoaderManager implements CoreComponent {
    * Note: currently we need to broadcast load/unload events because there are clients of {@link DeployListener}
    * These clients need to be rewritten in a lazy way, i.e. using only #getClass [#getClassLoader] method. (do they?)
    */
-  Collection<ReloadableModule> preLoadModules(Iterable<? extends ReloadableModule> modules, ProgressMonitor monitor) {
+  private void preLoadModules(Iterable<? extends ReloadableModule> modules, ProgressMonitor monitor) {
     // pre: modules - transitive closure
     checkWriteAccess();
     monitor.start("Loading", 6);
 
     try {
-      return runTransaction(() -> {
+      runTransaction(() -> {
         // TODO would be great to send out events only for modules with non-empty CL, i.e. to avoid
         //       warnings like "Missing language runtime class" on loaded + "No language with id" on unloaded
         //       for modules not yet compiled
@@ -376,17 +376,17 @@ public class ClassLoaderManager implements CoreComponent {
         // XXX myUnloadedCondition sort of implies classloading process for re-loaded module (unloaded and the loaded again) has to be complete at this point
         //     but what if/when I combine unload/preLoad into single transaction, would this assumption cause any throuble then?
         Set<ReloadableModule> modulesPreLoad = filterModules(modules, myUnloadedCondition, myValidCondition);
-        if (modulesPreLoad.isEmpty()) return Collections.emptySet();
+        if (modulesPreLoad.isEmpty()) {
+          return;
+        }
         monitor.advance(1);
 
-        Set<ReloadableModule> modulesToNotify = myClassLoadersHolder.onLazyLoaded(modulesPreLoad);
+        // markLazyLoaded expects modules that meet myWatchableCondition (part of myValidCondition now)
+        myClassLoadersHolder.markLazyLoaded(modulesPreLoad.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()));
         monitor.advance(1);
-        // AFAIU, here, with modulesToNotify(), we exclude modules with ManagedByContributor class loading
-        // and I wonder if this is truly what we need here. Is it true that no DeployListener ever needs anything from
-        // a module with IDEA CL (directly; indirect access works through CL delegation)?
-        myBroadCaster.onLoad(modulesToNotify, monitor.subTask(4, SubProgressKind.AS_COMMENT));
+        myBroadCaster.onLoad(modulesPreLoad, monitor.subTask(4, SubProgressKind.AS_COMMENT));
 
-        return modulesToNotify;
+        return;
       });
     } finally {
       monitor.done();
@@ -409,6 +409,10 @@ public class ClassLoaderManager implements CoreComponent {
         }
 
         // transitive closure
+        // closure is needed as ModuleClassLoaderSupport doesn't go through CLM.getClassLoader() when accessing CLs of dependencies.
+        // instead, it goes directly to the CL registry, therefore we need to make sure we forced creation of CLs for each dependency
+        // XXX I wonder if we can create all necessart CL (CL support) the moment we do "LAZY" loading stuff now (basically, just updating the map),
+        //     and there'd be no need to go through dependencies here
         modulesToLoad.addAll(myModulesWatcher.getResolvedDependencies(modulesToLoad));
         modulesToLoad = filterModules(modulesToLoad, myNotLoadedCondition);
         if (modulesToLoad.isEmpty()) {
