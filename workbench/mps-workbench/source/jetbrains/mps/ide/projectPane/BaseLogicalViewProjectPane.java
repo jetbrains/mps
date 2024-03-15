@@ -56,7 +56,9 @@ import jetbrains.mps.ide.ui.tree.VirtualFolder.Models;
 import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Modules;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Nodes;
+import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
+import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.IMakeNotificationListener.Stub;
@@ -89,6 +91,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -122,10 +125,21 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     }
   };
 
+  /**
+   * Intentionally made non-abstract to enable compilation of dependent code.
+   */
   @Override
-  protected abstract @NotNull AbstractTreeStructureBase createStructure();
+  protected @NotNull AbstractTreeStructureBase createStructure() {
+    throw new UnsupportedOperationException("no implementation provided");
+  }
+
+  /**
+   * Intentionally made non-abstract to enable compilation of dependent code.
+   */
   @Override
-  protected abstract @NotNull DnDAwareTree createTree(@NotNull DefaultTreeModel treeModel);
+  protected @NotNull DnDAwareTree createTree(@NotNull DefaultTreeModel treeModel) {
+    throw new UnsupportedOperationException("no implementation provided");
+  }
   
   protected BaseLogicalViewProjectPane(Project project) {
     super(project);
@@ -363,6 +377,11 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
   }
 
   @Nullable
+  public SModel getSelectedModel() {
+    return ContainerUtil.findInstance(getSelectedValues(getSelectedUserObjects()), SModel.class);
+  }
+
+  @Nullable
   public SModel getContextModel() {
     List<SModel> selectedModels = getSelectedModels();
     return selectedModels.isEmpty() ? null : selectedModels.get(0);
@@ -388,6 +407,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
 
   @NotNull
   public List<Pair<SModel, String>> getSelectedPackages() {
+    // FIXME update the implementation or drop
     JTree tree = getTree();
     if (tree == null) {
       return Collections.emptyList();
@@ -443,7 +463,60 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     }
     return null;
   }
-  
+
+
+  /**
+   * A simplified alternative to {@link #getSelectedTreeNodes(Class)}
+   * <p>
+   * NB! Both these methods deprecated and are to be removed in one of the upcoming releases.
+   * Please use other means to find the selected objects/values in the tree.
+   * The use of swing interfaces is discouraged, since they require the UI thread.
+   */
+  @Nullable
+  @Deprecated(forRemoval = true)
+  protected final <T extends TreeNode> T getSelectedTreeNode(Class<T> nodeClass) {
+    JTree tree = getTree();
+    if (tree == null) {
+      return null;
+    }
+    TreePath selectionPath = tree.getSelectionPath();
+    if (selectionPath == null) {
+      return null;
+    }
+    Object selectedNode = selectionPath.getLastPathComponent();
+    return nodeClass.isInstance(selectedNode) ? nodeClass.cast(selectedNode) : null;
+  }
+
+  /**
+   * See {@link #getSelectedTreeNode(Class)}.
+   *
+   */
+  @NotNull
+  @Deprecated(forRemoval = true)
+  public <T extends TreeNode> List<T> getSelectedTreeNodes(Class<T> nodeClass) {
+    JTree tree = getTree();
+    if (tree == null) {
+      return Collections.emptyList();
+    }
+    TreePath[] selectionPaths = tree.getSelectionPaths();
+    if (selectionPaths == null || selectionPaths.length == 0) {
+      return Collections.emptyList();
+    }
+
+    List<T> selectedTreeNodes = new ArrayList<>(selectionPaths.length);
+
+    for (TreePath selectionPath : selectionPaths) {
+      if (selectionPath == null) {
+        continue;
+      }
+      Object selectedNode = selectionPath.getLastPathComponent();
+      if (nodeClass.isInstance(selectedNode)) {
+        selectedTreeNodes.add(nodeClass.cast(selectedNode));
+      }
+    }
+    return selectedTreeNodes;
+  }
+
   @Nullable
   private VirtualFile[] getSelectedFiles(boolean addModuleFile, boolean addModuleDir) {
     List<IFile> selectedFilesList = new LinkedList<>();
