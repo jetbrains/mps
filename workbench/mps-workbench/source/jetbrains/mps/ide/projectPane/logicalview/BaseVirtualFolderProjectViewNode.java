@@ -145,20 +145,7 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
     }
 
     @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      SModule sModule = extractSModule(getSObject(file));
-      if (sModule != null) {
-        boolean contains = containsValue(sModule);
-        if (LOG.isDebugEnabled() && contains) {
-          LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue().getName(), file));
-        }
-        return contains;
-      }
-      return false;
-    }
-
-    @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSModule(this::containsValue);
     }
 
@@ -216,20 +203,7 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
     }
 
     @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      SModel sModel = extractSModel(getSObject(file));
-      if (sModel != null) {
-        boolean contains = containsValue(sModel);
-        if (LOG.isDebugEnabled() && contains) {
-          LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue().getName(), file));
-        }
-        return contains;
-      }
-      return false;
-    }
-
-    @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSModel(this::containsValue);
     }
 
@@ -260,20 +234,6 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
       super(project, ns, viewSettings, hierarchy);
     }
 
-    @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      SNode sNode = extractSNode(getSObject(file));
-      if (sNode != null) {
-        SNode root = getRoot(sNode);
-        boolean contains = containsValue(root);
-        if (LOG.isDebugEnabled() && contains) {
-          LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue().getName(), file));
-        }
-        return contains;
-      }
-      return false;
-    }
-
     private SNode getRoot(SNode sNode) {
       return ProjectHelper.fromIdeaProject(getProject())
                           .getModelAccess()
@@ -282,7 +242,7 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSNode(node -> containsValue(getRoot(node)));
     }
 

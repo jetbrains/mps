@@ -41,20 +41,7 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
   }
 
   @Override
-  public boolean contains(@NotNull VirtualFile file) {
-    SNode sNode = extractSNode(getSObject(file));
-    boolean contains = false;
-    if (sNode != null) {
-      return isDescendant(sNode);
-    }
-    if (LOG.isDebugEnabled() && contains) {
-      LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
-    }
-    return contains;
-  }
-
-  @Override
-  protected boolean contains(SObject sObject) {
+  protected boolean containsSObject(SObject sObject) {
     return sObject.testIfHasSNode(this::isDescendant);
   }
 
@@ -66,11 +53,8 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
   }
 
   @Override
-  public boolean canRepresent(Object element) {
-    if (element instanceof VirtualFile) {
-      return Objects.equals(getSObject((VirtualFile) element), getValue());
-    }
-    return false;
+  protected boolean canRepresentSObject(SObject sObject) {
+    return sObject.testIfHasSNode(sNode -> Objects.equals(sNode, getValue()));
   }
 
   @Override
@@ -190,7 +174,7 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 
@@ -225,7 +209,7 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 
@@ -262,7 +246,7 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 
@@ -299,7 +283,7 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 
@@ -329,7 +313,7 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 

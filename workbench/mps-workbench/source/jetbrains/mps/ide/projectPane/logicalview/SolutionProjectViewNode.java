@@ -8,15 +8,10 @@ import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.errors.MessageStatus;
-import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.icons.MPSIcons.Nodes.Models;
 import jetbrains.mps.ide.icons.IdeIcons;
-import jetbrains.mps.ide.projectView.MPSProjectViewSettings;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
-import jetbrains.mps.project.MissionControl;
 import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.LanguageID;
@@ -40,25 +35,13 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
   }
 
   @Override
-  public boolean contains(@NotNull VirtualFile file) {
-    boolean contains = Objects.equals(extractSModule(getSObject(file)), getValue());
-    if (LOG.isDebugEnabled() && contains) {
-      LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
-    }
-    return contains;
-  }
-
-  @Override
-  protected boolean contains(SObject sObject) {
+  protected boolean containsSObject(SObject sObject) {
     return sObject.testIfHasSModule(module -> Objects.equals(module, getValue()));
   }
 
   @Override
-  public boolean canRepresent(Object element) {
-    if (element instanceof VirtualFile) {
-      return Objects.equals(getSObject(((VirtualFile) element)), getValue());
-    }
-    return false;
+  protected boolean canRepresentSObject(SObject sObject) {
+    return !sObject.hasSNode() && sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
   }
 
   protected void fillChildren(Collection<AbstractTreeNode<?>> children, Collection<SModel> models) {
@@ -121,16 +104,12 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
     }
 
     @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      SModel sModel = extractSModel(getSObject(file));
-      if (sModel != null) {
-        return !filterModels(List.of(sModel)).isEmpty();
-      }
+    protected boolean canRepresentSObject(SObject sObject) {
       return false;
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSModel(sModel -> !filterModels(List.of(sModel)).isEmpty());
     }
 
@@ -180,17 +159,13 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
     }
 
     @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      SModel sModel = extractSModel(getSObject(file));
-      if (sModel != null) {
-        return !filterModels(List.of(sModel)).isEmpty();
-      }
+    protected boolean canRepresentSObject(SObject sObject) {
       return false;
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
-      return sObject.testIfHasSModule(module -> Objects.equals(module, getValue()));
+    protected boolean containsSObject(SObject sObject) {
+      return sObject.testIfHasSModel(sModel -> !filterModels(List.of(sModel)).isEmpty());
     }
 
     @Override

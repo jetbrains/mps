@@ -27,6 +27,7 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Fedor Isakov
@@ -38,13 +39,8 @@ public class SimpleModelProjectViewNode extends BranchProjectViewNode<SModel> {
   }
 
   @Override
-  public boolean contains(@NotNull VirtualFile file) {
-    return false;
-  }
-
-  @Override
-  protected boolean contains(SObject sObject) {
-    return false;
+  protected boolean containsSObject(SObject sObject) {
+    return sObject.testIfHasSModel(sModel -> Objects.equals(sModel, getValue()));
   }
 
   @Override

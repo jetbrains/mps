@@ -28,6 +28,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -91,8 +93,8 @@ public class MissionControl implements Disposable {
     return myDisposed;
   }
 
-  public SModuleReference lookupProjectModule(IFile descriptionFile) {
-    return myChangesMonitor.lookupProjectModule(descriptionFile);
+  public Collection<SModuleReference> lookupProjectModule(IFile descriptionFile) {
+    return Collections.unmodifiableCollection(myChangesMonitor.lookupProjectModule(descriptionFile));
   }
 
   public MessagesContainer getMessagesContainer() {

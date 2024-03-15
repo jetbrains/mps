@@ -40,6 +40,11 @@ public abstract class VirtualFolder {
     return Objects.hashCode(myName);
   }
 
+  @Override
+  public String toString() {
+    return String.format("'%s'", myName);
+  }
+
   public static class Models extends VirtualFolder {
     public Models(String namespace) {
       super(namespace);

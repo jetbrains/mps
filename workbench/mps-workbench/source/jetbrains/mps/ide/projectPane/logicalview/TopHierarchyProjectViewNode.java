@@ -59,17 +59,13 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     }
 
     @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      SModule sModule = extractSModule(getSObject(file));
-      if (sModule != null) {
-        return getValue().getProjectModulesWithGenerators().contains(sModule);
-      }
+    protected boolean canRepresentSObject(SObject sObject) {
       return false;
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
-      return sObject.testIfHasSModule(sModule -> getValue().getProjectModulesWithGenerators().contains(sModule));
+    protected boolean containsSObject(SObject sObject) {
+      return sObject.testIfHasSModule(sModule -> getValue().isProjectModule(sModule));
     }
 
     @Override
@@ -101,23 +97,19 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     }
 
     @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      SModule sModule = extractSModule(getSObject(file));
-      if (sModule != null) {
-        return containsSModule(sModule);
-      }
+    protected boolean canRepresentSObject(SObject sObject) {
       return false;
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSModule(this::containsSModule);
     }
 
     private Boolean containsSModule(SModule sModule) {
       MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
       return mpsProject.getModelAccess().computeReadAction(() -> {
-        if (mpsProject.getProjectModulesWithGenerators().contains(sModule)) {
+        if (mpsProject.isProjectModule(sModule)) {
           return false; // only support "select in" for non-project modules
         }
 
@@ -174,23 +166,19 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     }
 
     @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      SModule sModule = extractSModule(getSObject(file));
-      if (sModule != null) {
-        return containsSModule(sModule);
-      }
+    protected boolean canRepresentSObject(SObject sObject) {
       return false;
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSModule(this::containsSModule);
     }
 
     private Boolean containsSModule(SModule sModule) {
       MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
       return mpsProject.getModelAccess().computeReadAction(() ->
-                myModulesSupplier.get().contains(sModule) && !mpsProject.getProjectModulesWithGenerators().contains(sModule));
+                myModulesSupplier.get().contains(sModule) && !mpsProject.isProjectModule(sModule));
     }
 
     @Override
@@ -233,25 +221,13 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     }
 
     @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      boolean contains = Objects.equals(extractSModule(getSObject(file)), getValue());
-      if (LOG.isDebugEnabled() && contains) {
-        LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
-      }
-      return contains;
-    }
-
-    @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
     }
-
+    
     @Override
-    public boolean canRepresent(Object element) {
-      if (element instanceof VirtualFile) {
-        return Objects.equals(getSObject(((VirtualFile) element)), getValue());
-      }
-      return false;
+    protected boolean canRepresentSObject(SObject sObject) {
+      return !sObject.hasSModel() && sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
     }
 
     @Override

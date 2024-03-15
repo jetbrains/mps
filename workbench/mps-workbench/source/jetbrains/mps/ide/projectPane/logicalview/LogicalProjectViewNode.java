@@ -11,7 +11,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.LayeredIcon;
-import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectView.MPSProjectViewSettings;
@@ -19,7 +18,6 @@ import jetbrains.mps.ide.projectView.MPSProjectViewSettings.Immutable;
 import jetbrains.mps.ide.ui.tree.ContextValueProvider;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.MissionControl;
@@ -30,15 +28,14 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import javax.swing.Icon;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -74,66 +71,44 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
   }
 
   /**
-   * Tries to extract an object belonging to MPS SModel API from the virtual file.
-   * The returned value may be an instance of:
+   * Tries to extract objects belonging to MPS SModel API from the virtual file.
+   * The associated values may be instances of:
    * <ul>
    *   <li>SModule</li>
    *   <li>SModel</li>
    *   <li>SNode</li>
-   * </ul>
-   *
-   * @return the object corresponding to {@code virtualFile} or null
+   * </ul>.
+   * <p>These are wrapped into {@link SObject} and returned as a collection.
+   * 
+   * @return collection of SObject instances corresponding to {@code virtualFile} or an empty collection
    */
-  protected Object getSObject(VirtualFile virtualFile) {
+  protected Collection<SObject> extractSObjects(VirtualFile virtualFile) {
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
     if (virtualFile instanceof MPSNodeVirtualFile) {
       return mpsProject.getModelAccess()
-                       .computeReadAction(() -> ((MPSNodeVirtualFile) virtualFile).getNode());
+                       .computeReadAction(() -> Collections.singletonList(SObject.of(((MPSNodeVirtualFile) virtualFile).getNode())));
     }
     IFile file = toIFile(virtualFile);
     if (file != null) {
-      SModuleReference moduleRef = MissionControl.getInstance(getProject()).lookupProjectModule(file);
-      if (moduleRef != null) {
-        return moduleRef.resolve(mpsProject.getRepository());
+      Collection<SModuleReference> sModuleReferences = MissionControl.getInstance(getProject()).lookupProjectModule(file);
+      if (!sModuleReferences.isEmpty()) {
+        List<SObject> modules = new ArrayList<>(2);
+        mpsProject.getModelAccess()
+                   .runReadAction(() -> {
+                     for (SModuleReference ref : sModuleReferences) {
+                       modules.add(SObject.of(ref.resolve(mpsProject.getRepository())));
+                     }
+                   });
+        return modules;
       }
       
       SModelReference modelRef = SModelFileTracker.getInstance(mpsProject.getRepository()).modelFor(file);
       if (modelRef != null) {
         return mpsProject.getModelAccess()
-                         .computeReadAction(() -> modelRef.resolve(mpsProject.getRepository()));
+                         .computeReadAction(() -> Collections.singletonList(SObject.of(modelRef.resolve(mpsProject.getRepository()))));
       }
     }
-    return null;
-  }
-
-  protected SNode extractSNode(Object sObject) {
-    if (sObject instanceof SNode) {
-      return (SNode) sObject;
-    }
-    return null;
-  }
-
-  protected SModel extractSModel(Object sObject) {
-    if (sObject instanceof SNode) {
-      return ((SNode) sObject).getModel();
-    }
-    if (sObject instanceof SModel) {
-      return ((SModel) sObject);
-    }
-    return null;
-  }
-
-  protected SModule extractSModule(Object sObject) {
-    if (sObject instanceof SNode) {
-      return ((SNode) sObject).getModel().getModule();
-    }
-    if (sObject instanceof SModel) {
-      return ((SModel) sObject).getModule();
-    }
-    if (sObject instanceof SModule) {
-      return ((SModule) sObject);
-    }
-    return null;
+    return Collections.emptyList();
   }
 
   protected <T> ProjectViewNode<?> createNode(T value) {
@@ -178,8 +153,8 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
     MissionControl missionControl = MissionControl.getInstance(project);
     if (missionControl != null) {
       return getMPSSettings().isShowErrorsOnly() ?
-             missionControl.getMessagesContainer().hasErrorsInHierarchy(this::contains) :
-             missionControl.getMessagesContainer().hasWarningsOrErrorsInHierarchy(this::contains);
+             missionControl.getMessagesContainer().hasErrorsInHierarchy(this::containsSObject) :
+             missionControl.getMessagesContainer().hasWarningsOrErrorsInHierarchy(this::containsSObject);
     }
     return false;
   }
@@ -197,7 +172,27 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
     return sb.toString();
   }
 
-  protected abstract boolean contains(SObject sObject);
+  @Override
+  public boolean contains(@NotNull VirtualFile file) {
+    boolean contains = extractSObjects(file).stream().anyMatch(this::containsSObject);
+    if (LOG.isDebugEnabled() && contains) {
+      LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
+    }
+    return contains;
+  }
+
+  protected abstract boolean containsSObject(SObject sObject);
+
+  public boolean canRepresent(Object element) {
+    if (element instanceof VirtualFile) {
+      return extractSObjects(((VirtualFile) element)).stream().anyMatch(this::canRepresentSObject);
+    }
+    return false;
+  }
+
+  protected boolean canRepresentSObject(SObject sObject) {
+    return false;
+  }
 
   protected Icon layeredIcon(Icon... icons) {
     return LayeredIcon.layeredIcon(icons);

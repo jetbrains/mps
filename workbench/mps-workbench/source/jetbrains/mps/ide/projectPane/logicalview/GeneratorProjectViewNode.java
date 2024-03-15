@@ -52,25 +52,13 @@ public class GeneratorProjectViewNode extends BaseModuleProjectViewNode<Generato
   }
 
   @Override
-  public boolean contains(@NotNull VirtualFile file) {
-    boolean contains = Objects.equals(extractSModule(getSObject(file)), getValue());
-    if (LOG.isDebugEnabled() && contains) {
-      LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
-    }
-    return contains;
-  }
-
-  @Override
-  protected boolean contains(SObject sObject) {
+  protected boolean containsSObject(SObject sObject) {
     return sObject.testIfHasSModule(module -> Objects.equals(module, getValue()));
   }
-
+  
   @Override
-  public boolean canRepresent(Object element) {
-    if (element instanceof VirtualFile) {
-      return Objects.equals(getSObject(((VirtualFile) element)), getValue());
-    }
-    return false;
+  protected boolean canRepresentSObject(SObject sObject) {
+    return !sObject.hasSModel() && sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
   }
 
   @Override

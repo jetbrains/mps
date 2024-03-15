@@ -45,17 +45,7 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
   }
 
   @Override
-  public boolean contains(@NotNull VirtualFile file) {
-    SModule sModule = extractSModule(getSObject(file));
-    boolean contains = containsModule(sModule);
-    if (LOG.isDebugEnabled() && contains) {
-      LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
-    }
-    return contains;
-  }
-
-  @Override
-  protected boolean contains(SObject sObject) {
+  protected boolean containsSObject(SObject sObject) {
     return sObject.testIfHasSModule(sModule -> containsModule(sModule));
   }
 
@@ -63,13 +53,10 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     return ProjectHelper.fromIdeaProject(getProject()).getModelAccess().computeReadAction(() ->
               Objects.equals(sModule, getValue()) || getValue().getOwnedGenerators().contains(sModule));
   }
-
+  
   @Override
-  public boolean canRepresent(Object element) {
-    if (element instanceof VirtualFile) {
-      return Objects.equals(getSObject(((VirtualFile) element)), getValue());
-    }
-    return false;
+  protected boolean canRepresentSObject(SObject sObject) {
+    return !sObject.hasSModel() && sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
   }
 
   @Override
@@ -177,7 +164,7 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 
@@ -218,7 +205,7 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 
@@ -264,7 +251,7 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 
@@ -302,7 +289,7 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 
@@ -338,7 +325,7 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 
@@ -362,7 +349,7 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean contains(SObject sObject) {
+    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 

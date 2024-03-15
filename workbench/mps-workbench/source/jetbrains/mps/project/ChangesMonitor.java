@@ -39,6 +39,7 @@ import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -69,7 +70,7 @@ import java.util.function.Predicate;
   private final MyModelChangeListener myModelChangeListener = new MyModelChangeListener();
   private final Queue<Update> myUpdatesQueue = new ConcurrentLinkedQueue<>();
   private final Map<SObject, AtomicInteger> myUpdateCardinality = new ConcurrentHashMap<>();
-  private final Map<IFile, SModuleReference> myModuleReferencesCache = new ConcurrentHashMap<>();
+  private final Map<IFile, List<SModuleReference>> myModuleReferencesCache = new ConcurrentHashMap<>();
 
   private boolean myDisposed = false;
 
@@ -106,10 +107,18 @@ import java.util.function.Predicate;
     myDisposed = true;
   }
 
-  protected SModuleReference lookupProjectModule(IFile descriptionFile) {
-    return myModuleReferencesCache.get(descriptionFile);
+  protected Collection<SModuleReference> lookupProjectModule(IFile descriptionFile) {
+    return myModuleReferencesCache.getOrDefault(descriptionFile, Collections.emptyList());
   }
-  
+
+  private void cacheModuleReference(@NotNull IFile descriptionFile, @NotNull SModuleReference moduleReference) {
+    myModuleReferencesCache.computeIfAbsent(descriptionFile, (__) -> new ArrayList<>(2)).add(moduleReference);
+  }
+
+  private void clearModuleReference(@NotNull IFile descriptionFile, @NotNull SModuleReference moduleReference) {
+    myModuleReferencesCache.get(descriptionFile).remove(moduleReference);
+  }
+
   protected MissionControlRefreshRequest pumpQueue(MessagesContainer messagesContainer, ProgressIndicator progressIndicator) {
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
     mpsProject.getModelAccess().checkReadAccess();
@@ -172,14 +181,6 @@ import java.util.function.Predicate;
     return event;
   }
 
-  private void cacheModuleReference(@NotNull IFile descriptionFile, @NotNull SModuleReference moduleReference) {
-    myModuleReferencesCache.put(descriptionFile, moduleReference);
-  }
-
-  private void clearModuleReference(@NotNull IFile descriptionFile) {
-    myModuleReferencesCache.remove(descriptionFile);
-  }
-
   private static void addValidationMessages(SModule module, List<ModuleReportItem> messages) {
     ValidationUtil.validateModule(module, messages::add);
   }
@@ -234,6 +235,9 @@ import java.util.function.Predicate;
 
   void enqueueUpdate(SModule module, Function<? super Update, ? extends Update> updateFun) {
     SObject sObject = SObject.of(module);
+    if (module instanceof AbstractModule) {
+      cacheModuleReference(((AbstractModule) module).getDescriptorFile(), module.getModuleReference());
+    }
     myUpdateCardinality.computeIfAbsent(sObject, __ -> new AtomicInteger(0)).incrementAndGet();
     myUpdatesQueue.add(updateFun.apply(new Update(sObject)));
   }
@@ -334,7 +338,7 @@ import java.util.function.Predicate;
     @Override
     public void moduleRemoved(ModulePath modulePath, @NotNull SModule module) {
       enqueueAllModulesInProject();
-      clearModuleReference(modulePath.getFile());
+      clearModuleReference(modulePath.getFile(), module.getModuleReference());
       myMessagesContainer.clearMessages(module.getModuleReference());
       unregisterListener(module);
     }

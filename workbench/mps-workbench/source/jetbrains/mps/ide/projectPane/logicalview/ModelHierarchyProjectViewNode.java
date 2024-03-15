@@ -32,20 +32,7 @@ public class ModelHierarchyProjectViewNode extends SimpleModelProjectViewNode {
   }
 
   @Override
-  public boolean contains(@NotNull VirtualFile file) {
-    SModel sModel = extractSModel(getSObject(file));
-    if (sModel != null) {
-      boolean contains = containsSModel(sModel);
-      if (LOG.isDebugEnabled() && contains) {
-        LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
-      }
-      return contains;
-    }
-    return false;
-  }
-
-  @Override
-  protected boolean contains(SObject sObject) {
+  protected boolean containsSObject(SObject sObject) {
     return sObject.testIfHasSModel(this::containsSModel);
   }
 
@@ -58,13 +45,10 @@ public class ModelHierarchyProjectViewNode extends SimpleModelProjectViewNode {
     contains |= Objects.equals(sModel, getValue());
     return contains;
   }
-
+  
   @Override
-  public boolean canRepresent(Object element) {
-    if (element instanceof VirtualFile) {
-      return Objects.equals(getSObject(((VirtualFile) element)), getValue());
-    }
-    return false;
+  protected boolean canRepresentSObject(SObject sObject) {
+    return !sObject.hasSNode() && sObject.testIfHasSModel(sModel -> Objects.equals(sModel, getValue()));
   }
 
   @Override
