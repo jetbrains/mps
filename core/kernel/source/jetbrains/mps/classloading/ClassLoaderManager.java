@@ -118,22 +118,18 @@ import static jetbrains.mps.classloading.ClassLoadingProgress.UNLOADED;
  * @see #refresh()
  *
  * Repository lock policy
- * Every reload requires a repository write lock. Actual ModuleClassLoader construction happens inside the read action,
- * @see #createClassloaders(Collection, ProgressMonitor)
+ * Every reload requires a repository write lock. Actual ModuleClassLoader construction happens inside the
+ * end of write action or at forced refresh() (inside a write, too). Although we keep reference to SModule inside
+ * classloader/classloader support, it's purely for diagnostic purposes and could be replaced wiht an SModuleReference.
  *
  *
- * FIXME logic here must be rewritten in a more abstract way to allow both lazy and non-lazy implementations
- * FIXME the module dependency tracking must be isolated from the class loading logic
  * FIXME here we give no guarantees when we give out ClassLoader (#getClassLoader) that it will be valid the next moment.
  *  We need to introduce some kind of write/read actions for that matter
- *
- * TODO the workflow between ModuleEventsHandler, ClassLoaderManager and ModulesWatcher is too complicated and impossible to perceive, it needs to be done over again
- * TODO As for 23.01.19 the refactoring is planned for the 202 version, where the reloadable modules will be equipped with persisted cp.
  *
  *  THE PLAN for the future
  *  updates (#reload, #unload, #load):
  *
- *  The dependency graph is updated at the special moments under some lock (now it is updated upon request and in the end of each write action)
+ *  The dependency graph is updated at the special moments under myLoadingModulesLock lock.
  *  This operation is assumed not to happen too often.
  *
  *  Each module has a loaded/unloaded status and that one is updated only upon request (explicit invocation of #reload) and requests a write* action.
@@ -305,7 +301,7 @@ public class ClassLoaderManager implements CoreComponent {
     if (!myValidCondition.met(reloadableModule)) {
       return DEFAULT_DELEGATING_TO_SYSTEM_CL;
     }
-    createClassloaders(Collections.singleton(reloadableModule), new EmptyProgressMonitor());
+//    createClassloaders(Collections.singleton(reloadableModule), new EmptyProgressMonitor());
     MPSModuleClassLoader classLoader = myClassLoadersHolder.getClassLoader(reloadableModule.getModuleReference());
     return classLoader != null ? classLoader : DEFAULT_DELEGATING_TO_SYSTEM_CL;
   }
@@ -366,74 +362,26 @@ public class ClassLoaderManager implements CoreComponent {
     checkWriteAccess();
     monitor.start("Loading", 6);
 
-    try {
-      _runTransaction(() -> {
-        // TODO would be great to send out events only for modules with non-empty CL, i.e. to avoid
-        //       warnings like "Missing language runtime class" on loaded + "No language with id" on unloaded
-        //       for modules not yet compiled
-        // XXX is it ok to assume dependencies could not be in 'lazy_loaded' state at the moment? Why myUnloadedCondition?
-        // XXX myUnloadedCondition sort of implies classloading process for re-loaded module (unloaded and the loaded again) has to be complete at this point
-        //     but what if/when I combine unload/preLoad into single transaction, would this assumption cause any throuble then?
-        Set<ReloadableModule> modulesPreLoad = filterModules(modules, myUnloadedCondition, myValidCondition);
-        if (modulesPreLoad.isEmpty()) {
-          return;
-        }
-        monitor.advance(1);
-
-        // markLazyLoaded expects modules that meet myWatchableCondition (part of myValidCondition now)
-        myClassLoadersHolder.markLazyLoaded(modulesPreLoad.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()));
-        monitor.advance(1);
-        myBroadCaster.onLoad(modulesPreLoad, monitor.subTask(4, SubProgressKind.AS_COMMENT));
-
-        return;
-      });
-    } finally {
-      monitor.done();
+    // TODO would be great to send out events only for modules with non-empty CL, i.e. to avoid
+    //       warnings like "Missing language runtime class" on loaded + "No language with id" on unloaded
+    //       for modules not yet compiled
+    // XXX is it ok to assume dependencies could not be in 'lazy_loaded' state at the moment? Why myUnloadedCondition?
+    // XXX myUnloadedCondition sort of implies classloading process for re-loaded module (unloaded and the loaded again) has to be complete at this point
+    //     but what if/when I combine unload/preLoad into single transaction, would this assumption cause any throuble then?
+    Set<ReloadableModule> modulesPreLoad = filterModules(modules, myUnloadedCondition, myValidCondition);
+    if (modulesPreLoad.isEmpty()) {
+      return;
     }
-  }
+    monitor.advance(1);
 
-  /**
-   * Creates ModuleClassLoader for those modules which are MPS-loadable and valid
-   *
-   * @see #myValidCondition
-   */
-  @NotNull
-  private void createClassloaders(final Collection<? extends ReloadableModule> modules, final ProgressMonitor monitor) {
-    monitor.start("Loading", 1);
-    try {
-      // this is the only place we can't be sure there's model read, hence it's vital to go with runTransaction() that doesn't assert read.
-      // XXX Note, there's no guarantee getClassLoader() -> createClassLoaders is invoked from a thread with model read (although indeed it happens for
-      //     SModule which implies model read. Not the case e.g. for our own ModulesReloadTest
-      _runTransaction(() -> {
-        Set<ReloadableModule> modulesToLoad = filterModules(modules, myValidCondition);
-        if (modulesToLoad.isEmpty()) {
-          return;
-        }
+    // markLazyLoaded expects modules that meet myWatchableCondition (part of myValidCondition now)
+    myClassLoadersHolder.markLazyLoaded(modulesPreLoad.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()));
+    // while we still hold model read for SModule, crate CLs for them
+    myClassLoadersHolder.doLoadModules(modulesPreLoad);
+    monitor.advance(1);
+    myBroadCaster.onLoad(modulesPreLoad, monitor.subTask(4, SubProgressKind.AS_COMMENT));
 
-        // transitive closure
-        // closure is needed as ModuleClassLoaderSupport doesn't go through CLM.getClassLoader() when accessing CLs of dependencies.
-        // instead, it goes directly to the CL registry, therefore we need to make sure we forced creation of CLs for each dependency
-        // XXX I wonder if we can create all necessart CL (CL support) the moment we do "LAZY" loading stuff now (basically, just updating the map),
-        //     and there'd be no need to go through dependencies here
-        modulesToLoad.addAll(myModulesWatcher.getResolvedDependencies(modulesToLoad));
-        modulesToLoad = filterModules(modulesToLoad, myNotLoadedCondition);
-        if (modulesToLoad.isEmpty()) {
-          return;
-        }
-
-        LOG.debug("Loading " + modulesToLoad.size() + " modules");
-        monitor.advance(1);
-        Set<ReloadableModule> unloadedModules = filterModules(modulesToLoad, myUnloadedCondition);
-        if (!unloadedModules.isEmpty()) {
-          String s1 = modules.stream().map(SModule::getModuleName).map(NameUtil::compactNamespace).collect(Collectors.joining(","));
-          String s2 = unloadedModules.stream().map(SModule::getModuleName).map(NameUtil::compactNamespace).collect(Collectors.joining(","));
-          LOG.warning(String.format("Some modules are not preloaded yet, request to load (%s), unloaded: (%s)", s1, s2));
-        }
-        myClassLoadersHolder.doLoadModules(modulesToLoad);
-      });
-    } finally {
-      monitor.done();
-    }
+    monitor.done();
   }
 
   /**
@@ -448,25 +396,20 @@ public class ClassLoaderManager implements CoreComponent {
     // pre: modules - transitive closure
     checkWriteAccess();
     monitor.start("Unloading", 6);
-    try {
-      _runTransaction(() -> {
-        Condition<ReloadableModule> loadedCondition = new NotCondition<>(myUnloadedCondition);
-        // LAZY_LOADED or LOADED
-        Set<ReloadableModule> modulesToUnload = filterModules(modules, loadedCondition);
-        if (modulesToUnload.isEmpty()) {
-          return;
-        }
-        monitor.advance(1);
-
-        LOG.debug("Unloading " + modulesToUnload.size() + " modules");
-        myBroadCaster.onUnload(modulesToUnload, monitor.subTask(4, SubProgressKind.AS_COMMENT));
-        // FIXME Do modulesToUnload contain modules with MPS-managed CL only? What happens for modules with IDEA CL delegate?
-        myClassLoadersHolder.doUnloadModules(modulesToUnload.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()));
-        monitor.advance(1);
-      });
-    } finally {
-      monitor.done();
+    Condition<ReloadableModule> loadedCondition = new NotCondition<>(myUnloadedCondition);
+    // LAZY_LOADED or LOADED
+    Set<ReloadableModule> modulesToUnload = filterModules(modules, loadedCondition);
+    if (modulesToUnload.isEmpty()) {
+      return;
     }
+    monitor.advance(1);
+
+    LOG.debug("Unloading " + modulesToUnload.size() + " modules");
+    myBroadCaster.onUnload(modulesToUnload, monitor.subTask(4, SubProgressKind.AS_COMMENT));
+    // FIXME Do modulesToUnload contain modules with MPS-managed CL only? What happens for modules with IDEA CL delegate?
+    myClassLoadersHolder.doUnloadModules(modulesToUnload.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()));
+    monitor.advance(1);
+    monitor.done();
   }
 
   static <M> Set<M> filterModules(Iterable<? extends M> modules, Condition<? super M>... conditions) {
@@ -612,12 +555,11 @@ public class ClassLoaderManager implements CoreComponent {
                                         @NotNull ProgressMonitor monitor) {
     checkWriteAccess();
     monitor.start("", 4);
-    UpdateOutcome r = myModulesWatcher.update(toLoad, toUnload, toUpdate, monitor.subTask(2, SubProgressKind.REPLACING));
-    // FIXME combine next 2 into single transaction
-    // FIXME unload shall take the list as complete closure and not look into myModylesWatcher
-    unloadModules(r.unloaded, monitor.subTask(1, SubProgressKind.REPLACING));
-    // FIXME preLoadModules shall take the list as complete set and not look into myModulesWatcher and its deps
-    preLoadModules(r.loaded, monitor.subTask(1, SubProgressKind.REPLACING));
+    _runTransaction(() -> {
+      final UpdateOutcome r = myModulesWatcher.update(toLoad, toUnload, toUpdate, monitor.subTask(2, SubProgressKind.REPLACING));
+      unloadModules(r.unloaded, monitor.subTask(1, SubProgressKind.REPLACING));
+      preLoadModules(r.loaded, monitor.subTask(1, SubProgressKind.REPLACING));
+    });
 
     monitor.done();
   }
@@ -707,20 +649,4 @@ public class ClassLoaderManager implements CoreComponent {
       return myClassLoadersHolder.getClassLoadingProgress(module.getModuleReference()) == UNLOADED;
     }
   };
-
-  private final Condition<SModuleReference> myUnloadedRefCondition = new Condition<>() {
-    @Override
-    public boolean met(SModuleReference mRef) {
-      return myClassLoadersHolder.getClassLoadingProgress(mRef) == UNLOADED;
-    }
-  };
-
-  private final Condition<ReloadableModule> myLoadedCondition = new Condition<>() {
-    @Override
-    public boolean met(ReloadableModule module) {
-      return myClassLoadersHolder.getClassLoadingProgress(module.getModuleReference()) == LOADED;
-    }
-  };
-
-  private final Condition<ReloadableModule> myNotLoadedCondition = new NotCondition<>(myLoadedCondition);
 }

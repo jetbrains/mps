@@ -109,8 +109,6 @@ public class ModulesWatcher {
     }
   }
 
-  // XXX in fact, looks like ModulesWatcher could become a ModuleUpdater, instantiated once per update, and present ModuleUpdater to be ModuleWatcher,
-  //     owned by CLM and supplied to new ModuleUpdater instance to get new status map and loaded+unloaded collections
   UpdateOutcome update(Collection<? extends ReloadableModule> added, Collection<SModuleReference> removed, Collection<? extends ReloadableModule> changed, ProgressMonitor progressMonitor) {
     myRepository.getModelAccess().checkWriteAccess(); // either end of write or explicit reload from within write
 
