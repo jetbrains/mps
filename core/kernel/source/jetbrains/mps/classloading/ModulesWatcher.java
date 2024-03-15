@@ -71,8 +71,11 @@ public class ModulesWatcher {
 
   private final SRepository myRepository;
   private final Map<SModuleReference, ClassLoadingStatus> myStatusMap = new HashMap<>();
-  private final ModuleUpdater myModuleUpdater;
   private final Predicate<SModule> myWatchableCondition;
+  // inv: we keep modules capable of classloading and modules that emerged as dependency thereof
+  private final GraphHolder<SModuleReference> myDepGraphHolder = new GraphHolder<>();
+  // inv: for each vertex in myDepGraphHolder, there's CModule in myRefStorage2, and vice versa
+  private final Map<SModuleReference, CModule> myRefStorage2 = new HashMap<>();
   private final CLDependencies myDependencyCollector;
 
 
@@ -80,8 +83,6 @@ public class ModulesWatcher {
     myRepository = repository;
     myWatchableCondition = watchableCondition.asPredicate();
     myDependencyCollector = new CLDependencies(repository);
-    // XXX eventually, ModuleUpdater to get instantiated for upadte() timespan only
-    myModuleUpdater = new ModuleUpdater(m -> myDependencyCollector.directlyUsedModules(m).stream());
   }
 
   /**
@@ -94,7 +95,8 @@ public class ModulesWatcher {
     if (isChanged()) {
       LOG.debug("The class loading status info might be outdated");
     }
-    if (!myModuleUpdater.contains(mRef)) {
+    // FIXME lock graph access, and, if possible, stick to status map access, w/o graph!
+    if (!myDepGraphHolder.contains(mRef)) {
       return INVALID_NOT_LOADABLE;
     } else {
       synchronized (myStatusMapLock) {
@@ -112,28 +114,57 @@ public class ModulesWatcher {
   //     owned by CLM and supplied to new ModuleUpdater instance to get new status map and loaded+unloaded collections
   UpdateOutcome update(Collection<? extends ReloadableModule> added, Collection<SModuleReference> removed, Collection<? extends ReloadableModule> changed, ProgressMonitor progressMonitor) {
     myRepository.getModelAccess().checkWriteAccess(); // either end of write or explicit reload from within write
+    // FIXME guard graph access with a lock
+
+    final ModuleUpdater moduleUpdater = new ModuleUpdater(myDepGraphHolder, myRefStorage2, m -> myDependencyCollector.directlyUsedModules(m).stream());
     // XXX here we assume modules are unique
     ArrayList<ReloadableModule> known = new ArrayList<>(changed.size());
     ArrayList<ReloadableModule> unknown = new ArrayList<>();
     for (ReloadableModule m : changed) {
-      // FIXME ineffective, just for the sake of refactoring, this code needs further improvement
-      if (myModuleUpdater.contains(m.getModuleReference())) {
+      if (myDepGraphHolder.contains(m.getModuleReference())) {
         known.add(m);
       } else {
         unknown.add(m);
       }
     }
-    myModuleUpdater.removeModules(removed);
-    myModuleUpdater.addModules(Stream.concat(added.stream(), unknown.stream()).filter(myWatchableCondition).collect(Collectors.toList()));
-    myModuleUpdater.updateModules(known);
+    moduleUpdater.removeModules(removed);
+    moduleUpdater.addModules(Stream.concat(added.stream(), unknown.stream()).filter(myWatchableCondition).collect(Collectors.toList()));
+    moduleUpdater.updateModules(known);
     UpdateOutcome rv = new UpdateOutcome();
-    if (isChanged()) {
+    if (moduleUpdater.isDirty()) {
       LOG.debug("Recount status map for modules");
-      // FIXME the fact we reset accumulated errors on any change but rely on these in getModuleProblemMessage() (from refillStatusMap()) could
-      //       lead to an unpleasant defects. E.g. change 1 brings a module with broken dependency, change 2 brings its dependency - fine, no errors
-      //       However, if change 2 doesn't bring a dependency in, the fact module has broken dependency is gone with reset()
-      myDependencyCollector.reset();
-      myModuleUpdater.refreshGraph(rv.unloaded, rv.loaded);
+      final long beginTime = System.nanoTime();
+      try {
+        // FIXME the fact we reset accumulated errors on any change but rely on these in getModuleProblemMessage() (from refillStatusMap()) could
+        //       lead to an unpleasant defects. E.g. change 1 brings a module with broken dependency, change 2 brings its dependency - fine, no errors
+        //       However, if change 2 doesn't bring a dependency in, the fact module has broken dependency is gone with reset()
+        myDependencyCollector.reset();
+        myDepGraphHolder.checkGraphsCorrectness();
+        final int wasEdges = myDepGraphHolder.getEdgesCount();
+        final int wasVertices = myDepGraphHolder.getVerticesCount();
+
+        moduleUpdater.refreshGraph();
+
+        LOG.debug("Difference in the vertex count after validation " + (myDepGraphHolder.getVerticesCount() - wasVertices));
+        LOG.debug("Difference in the edge count after validation " + (myDepGraphHolder.getEdgesCount() - wasEdges));
+
+        assert myRefStorage2.size() == myDepGraphHolder.getVerticesCount();
+
+        for (CModule cm : moduleUpdater.affectedForRemove) {
+          if (cm.getModule() instanceof ReloadableModule) {
+            rv.unloaded.add(((ReloadableModule) cm.getModule()));
+          }
+        }
+
+        for (CModule cm : moduleUpdater.affectedForAdd) {
+          if (cm.getModule() instanceof ReloadableModule) {
+            rv.loaded.add(((ReloadableModule) cm.getModule()));
+          }
+        }
+
+      } finally {
+        LOG.info(String.format("Classloading graph refresh took %.3f s", (System.nanoTime() - beginTime) / 1e9));
+      }
       refillStatusMap();
       LOG.debug("Finished recounting");
     }
@@ -248,7 +279,7 @@ public class ModulesWatcher {
     // FIXME provisional; as long as CLDependencies resolves targets. Now it does that in 'legacy' mode (no DD in use, no deps.cp found)
     List<SearchError> errors = myDependencyCollector.getLegacyDependencyErrors(mRef); // it's assumed each graph refresh clears old errors
     if (errors == null || errors.isEmpty()) {
-      errors = myModuleUpdater.getErrors(mRef);
+      errors = getErrors(mRef);
     }
     if (!errors.isEmpty()) {
       return String.format("%s was marked invalid for class loading: %s", mRef.getModuleName(), errors.get(0).getMsg());
@@ -262,6 +293,26 @@ public class ModulesWatcher {
     }
     return null;
   }
+
+  // FIXME assuming invoked for each known module and therefore we don't traverse deps here, although it's the proper plact to do that,
+  //       rather than to expose traverse/backDeps logic to neighbours
+  private List<SearchError> getErrors(@NotNull SModuleReference v) {
+    CModule reloadableModule = myRefStorage2.get(v);
+    if (reloadableModule == null) {
+      // shall not happen, provided ModulesWatcher invokes this method for graph vertex and only them.
+      return Collections.singletonList(SearchError.of("*** UNKNOWN MODULE ***"));
+    }
+    if (reloadableModule.getModule() == null) {
+      return Collections.singletonList(SearchError.of("Module is not in the repository"));
+    }
+    return Collections.emptyList();
+//    ArrayList<SModuleReference> dependencies = new ArrayList<>();
+//    myDepGraphHolder.fillOutgoingEdgesShallow(Collections.singleton(v), dependencies);
+//    if (dependencies.stream().anyMatch(d -> myRefStorage.resolveRef(d) == null)) {
+//      return Collections.singletonList(SearchError.of("Dependency is not in the repository"));
+//    }
+  }
+
 
   private void checkStatusMapCorrectness() {
     assert myStatusMap.size() == getAllModules().size() : "Modules number inconsistency";
@@ -277,19 +328,28 @@ public class ModulesWatcher {
     }
   }
 
-  Collection<SModuleReference> getAllModules() {
-    return myModuleUpdater.getModules();
+  // read-only, do not modify
+  // FIXME guard graph access
+  private Collection<SModuleReference> getAllModules() {
+    return myDepGraphHolder.getVertices();
   }
 
   /**
    * @return all dependencies of this module (closed set under dependency-relation)
    */
   public Collection<SModuleReference> getDependencies(Iterable<SModuleReference> mRefs) {
-    return myModuleUpdater.getDeps(mRefs);
+    assert !isChanged(); // just a reminder for graph access
+    final Collection<SModuleReference> result = new ArrayList<>();
+    myDepGraphHolder.fillOutgoingEdgesDeep(mRefs, result::add);
+    mRefs.forEach(result::remove);
+    return result;
   }
 
   private Collection<SModuleReference> getDirectDependencies(Iterable<SModuleReference> mRefs) {
-    return myModuleUpdater.getDirectDeps(mRefs);
+    assert !isChanged(); // just a reminder for graph access
+    final Collection<SModuleReference> result = new ArrayList<>();
+    myDepGraphHolder.fillOutgoingEdgesShallow(mRefs, result);
+    return result;
   }
 
   Collection<ReloadableModule> getResolvedDependencies(Iterable<? extends ReloadableModule> modules) {
@@ -306,7 +366,8 @@ public class ModulesWatcher {
   private Collection<ReloadableModule> resolveRefs(final Iterable<? extends SModuleReference> refs) {
     final Collection<ReloadableModule> modules = new LinkedHashSet<>();
     for (SModuleReference mRef : refs) {
-      ReloadableModule module = myModuleUpdater.resolveRef(mRef);
+      // invoked for graph verticies only, assume get() != null
+      ReloadableModule module = (ReloadableModule) myRefStorage2.get(mRef).getModule();
       if (module != null) {
         modules.add(module);
       }
@@ -317,8 +378,12 @@ public class ModulesWatcher {
   /**
    * @return all back dependencies of this module (closed set under back-dependency-relation)
    */
-  public Collection<SModuleReference> getBackDependencies(Iterable<? extends SModuleReference> mRefs) {
-    return myModuleUpdater.getBackDeps(mRefs);
+  private Collection<SModuleReference> getBackDependencies(Iterable<? extends SModuleReference> mRefs) {
+    assert !isChanged(); // just a reminder for graph access
+    final Collection<SModuleReference> result = new LinkedHashSet<>();
+    myDepGraphHolder.fillIncomingEdgesDeep(mRefs, result::add);
+    // XXX FWIW, result includes mRefs, is it what we need here?
+    return result;
   }
 
   @TestOnly
@@ -326,11 +391,12 @@ public class ModulesWatcher {
     if (isChanged()) {
       LOG.warning("The class loading status info might be outdated");
     }
-    return myModuleUpdater.contains(module.getModuleReference());
+    return myDepGraphHolder.contains(module.getModuleReference());
   }
 
   private boolean isChanged() {
-    return myModuleUpdater.isDirty();
+    return false; // FIXME replace isChanged() call with lock guarding graph access (if necessary)
+//    return myModuleUpdater.isDirty();
   }
 
   enum DefaultStatuses implements ClassLoadingStatus {
