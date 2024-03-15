@@ -187,6 +187,7 @@
       <concept id="1199542442495" name="jetbrains.mps.baseLanguage.closures.structure.FunctionType" flags="in" index="1ajhzC">
         <child id="1199542457201" name="resultType" index="1ajl9A" />
         <child id="1199542501692" name="parameterType" index="1ajw0F" />
+        <child id="1214831762486" name="throwsType" index="3pBpOG" />
       </concept>
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
@@ -4514,6 +4515,23 @@
       <node concept="1ZxtTE" id="2Iud_fJ5JPR" role="3cqZAp">
         <property role="TrG5h" value="ret" />
       </node>
+      <node concept="1ZxtTE" id="5Q4xWc0xUPO" role="3cqZAp">
+        <property role="TrG5h" value="ignoredThrow" />
+      </node>
+      <node concept="1ZobV4" id="5Q4xWc0_iAg" role="3cqZAp">
+        <node concept="mw_s8" id="5Q4xWc0_iAh" role="1ZfhKB">
+          <node concept="2c44tf" id="5Q4xWc0_iAi" role="mwGJk">
+            <node concept="3uibUv" id="5Q4xWc0_iAj" role="2c44tc">
+              <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="5Q4xWc0_iAk" role="1ZfhK$">
+          <node concept="1Z$b5t" id="5Q4xWc0_iAl" role="mwGJk">
+            <ref role="1Z$eMM" node="5Q4xWc0xUPO" resolve="ignoredThrow" />
+          </node>
+        </node>
+      </node>
       <node concept="1ZoDhX" id="7zyr4C5mwDo" role="3cqZAp">
         <property role="3wDh2S" value="false" />
         <node concept="mw_s8" id="7zyr4C5mwDp" role="1ZfhKB">
@@ -4542,6 +4560,14 @@
                 <node concept="2c44te" id="7zyr4C5mwDO" role="lGtFl">
                   <node concept="1Z$b5t" id="7zyr4C5mwDQ" role="2c44t1">
                     <ref role="1Z$eMM" node="2Iud_fJ5JPR" resolve="ret" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3uibUv" id="5Q4xWc0tTdr" role="3pBpOG">
+                <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+                <node concept="2c44te" id="5Q4xWc0xUV$" role="lGtFl">
+                  <node concept="1Z$b5t" id="5Q4xWc0xUWG" role="2c44t1">
+                    <ref role="1Z$eMM" node="5Q4xWc0xUPO" resolve="ignoredThrow" />
                   </node>
                 </node>
               </node>
@@ -4689,6 +4715,23 @@
       <node concept="1ZxtTE" id="_7WdPveK33" role="3cqZAp">
         <property role="TrG5h" value="ret" />
       </node>
+      <node concept="1ZxtTE" id="5Q4xWc0xp2Z" role="3cqZAp">
+        <property role="TrG5h" value="ignoredThrow" />
+      </node>
+      <node concept="1ZobV4" id="5Q4xWc0_gz8" role="3cqZAp">
+        <node concept="mw_s8" id="5Q4xWc0_g_9" role="1ZfhKB">
+          <node concept="2c44tf" id="5Q4xWc0_gHa" role="mwGJk">
+            <node concept="3uibUv" id="5Q4xWc0_gIv" role="2c44tc">
+              <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="5Q4xWc0_gzb" role="1ZfhK$">
+          <node concept="1Z$b5t" id="5Q4xWc0_gb5" role="mwGJk">
+            <ref role="1Z$eMM" node="5Q4xWc0xp2Z" resolve="ignoredThrow" />
+          </node>
+        </node>
+      </node>
       <node concept="1ZoDhX" id="7zyr4C5mwCZ" role="3cqZAp">
         <property role="3wDh2S" value="false" />
         <node concept="mw_s8" id="7zyr4C5mwD0" role="1ZfhKB">
@@ -4717,6 +4760,14 @@
                 <node concept="2c44te" id="7zyr4C5mwDk" role="lGtFl">
                   <node concept="1Z$b5t" id="7zyr4C5mwDm" role="2c44t1">
                     <ref role="1Z$eMM" node="_7WdPveK33" resolve="ret" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3uibUv" id="5Q4xWc0tTDy" role="3pBpOG">
+                <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+                <node concept="2c44te" id="5Q4xWc0xp9r" role="lGtFl">
+                  <node concept="1Z$b5t" id="5Q4xWc0xp9B" role="2c44t1">
+                    <ref role="1Z$eMM" node="5Q4xWc0xp2Z" resolve="throw" />
                   </node>
                 </node>
               </node>
