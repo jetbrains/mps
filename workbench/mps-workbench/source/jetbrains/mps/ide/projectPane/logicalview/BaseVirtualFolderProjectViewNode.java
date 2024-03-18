@@ -28,6 +28,8 @@ import jetbrains.mps.ide.ui.tree.VirtualFolder.Models;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Modules;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.workbench.ActionPlace;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.smodel.SObject;
@@ -79,7 +81,13 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
 
   protected boolean containsValue(Object value) {
     String virtualFolder = getValue().getName();
-    return myHierarchy.allValues(virtualFolder).anyMatch(m -> Objects.equals(value, m));
+    return myHierarchy.allValues(virtualFolder).anyMatch(module -> {
+      if (Objects.equals(value, module)) return true;
+      if (module instanceof Language && value instanceof Generator)
+        return ProjectHelper.fromIdeaProject(getProject()).getRepository().getModelAccess()
+                            .computeReadAction(()-> ((Language) module).getOwnedGenerators().contains(value));
+      return false;
+    });
   }
 
   @Override
