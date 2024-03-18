@@ -41,7 +41,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.INVALID_NOT_LOADABLE;
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.INVALID_NO_RECORD;
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.SIMPLY_INVALID;
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.VALID;
@@ -79,11 +78,10 @@ public class ModulesWatcher {
   private final Map<SModuleReference, ClassLoadingStatus> myStatusMap = new HashMap<>();
   private final Predicate<SModule> myWatchableCondition;
   // inv: we keep modules capable of classloading and modules that emerged as dependency thereof
-  private final GraphHolder<SModuleReference> myDepGraphHolder = new GraphHolder<>();
-  // inv: for each vertex in myDepGraphHolder, there's CModule in myRefStorage2, and vice versa
-  private final Map<SModuleReference, CModule> myRefStorage2 = new HashMap<>();
+  private final GraphHolder<SModuleReference, CModule> myDepGraph = new GraphHolder<>();
   // would love to convert to a variable once ProjectMPSDependenciesTest.checkDeps no longer access it through findAndPrintInvalidModulesProblems()
   private CLDependencies myDependencyCollector;
+  private int myUpdateNumber; // just to tell one update sequence from another
 
 
   public ModulesWatcher(SRepository repository, final Condition<SModule> watchableCondition) {
@@ -118,14 +116,14 @@ public class ModulesWatcher {
     //       However, if change 2 doesn't bring a dependency in, the fact module has broken dependency is gone with reset()
     myDependencyCollector = new CLDependencies(myRepository);
     synchronized (myDepGraphLock) {
-      final ModuleUpdater moduleUpdater = new ModuleUpdater(myDepGraphHolder, myRefStorage2, m -> myDependencyCollector.directlyUsedModules(m).stream());
+      final ModuleUpdater moduleUpdater = new ModuleUpdater(myDepGraph, m -> myDependencyCollector.directlyUsedModules(m).stream(), myUpdateNumber++);
       // XXX here we assume modules are unique
       ArrayList<ReloadableModule> known = new ArrayList<>(changed.size());
       ArrayList<ReloadableModule> unknown = new ArrayList<>();
       // I'd love to move this code to updateModules(), but need to filter unknown with myWatchableCondition, and don't want MU to know about one
       // although now, with MU as local instance here, not a big deal to pass myWatchableCondition right into updateModules()
       for (ReloadableModule m : changed) {
-        if (myDepGraphHolder.contains(m.getModuleReference())) {
+        if (myDepGraph.contains(m.getModuleReference())) {
           known.add(m);
         } else {
           unknown.add(m);
@@ -140,17 +138,16 @@ public class ModulesWatcher {
       if (moduleUpdater.isDirty()) {
         LOG.debug("Recount status map for modules");
         final long beginTime = System.nanoTime();
-        myDepGraphHolder.checkGraphsCorrectness();
-        final int wasEdges = myDepGraphHolder.getEdgesCount();
-        final int wasVertices = myDepGraphHolder.getVerticesCount();
+        myDepGraph.checkGraphsCorrectness();
+        final int wasEdges = myDepGraph.getEdgesCount();
+        final int wasVertices = myDepGraph.getVerticesCount();
 
         moduleUpdater.refreshGraph();
 
-        LOG.debug("Difference in the vertex count after validation " + (myDepGraphHolder.getVerticesCount() - wasVertices));
-        LOG.debug("Difference in the edge count after validation " + (myDepGraphHolder.getEdgesCount() - wasEdges));
+        LOG.debug("Difference in the vertex count after validation " + (myDepGraph.getVerticesCount() - wasVertices));
+        LOG.debug("Difference in the edge count after validation " + (myDepGraph.getEdgesCount() - wasEdges));
 
-        assert myRefStorage2.size() == myDepGraphHolder.getVerticesCount();
-        myDepGraphHolder.checkGraphsCorrectness();
+        myDepGraph.checkGraphsCorrectness();
 
         for (CModule cm : moduleUpdater.affectedForRemove) {
           if (cm.getModule() instanceof ReloadableModule) {
@@ -242,9 +239,9 @@ public class ModulesWatcher {
   }
 
   /**
-   * Note: here we are interested in the actual status of module. (not {@link ReferenceStorage#resolveRef})
+   * Note: here we are interested in the actual status of a module inside a repository, not an instance we (might) have in myDepGraph
    * if it has been already disposed but still remains in our graphs (i.e. ClassLoader is not disposed yet [!]),
-   * we need to mark it invalid
+   * we need to mark it invalid (although with distinct CModule and/or explicit CL dispose we may reconsider this approach here)
    */
   private boolean isModuleDisposed(SModuleReference mRef) {
     SModule resolvedModule = mRef.resolve(myRepository);
@@ -308,7 +305,7 @@ public class ModulesWatcher {
   //       rather than to expose traverse/backDeps logic to neighbours
   // pre: dep graph lock
   private List<SearchError> getErrors(@NotNull SModuleReference v) {
-    CModule reloadableModule = myRefStorage2.get(v);
+    CModule reloadableModule = myDepGraph.get(v);
     if (reloadableModule == null) {
       // shall not happen, provided ModulesWatcher invokes this method for graph vertex and only them.
       return Collections.singletonList(SearchError.of("*** UNKNOWN MODULE ***"));
@@ -343,7 +340,7 @@ public class ModulesWatcher {
   // read-only
   // pre: dep graph lock
   private Collection<SModuleReference> getAllModules() {
-    return myDepGraphHolder.getVertices();
+    return myDepGraph.getVertices();
   }
 
   /**
@@ -352,7 +349,7 @@ public class ModulesWatcher {
   public Collection<SModuleReference> getDependencies(SModuleReference mRef) {
     synchronized (myDepGraphLock) {
       final Collection<SModuleReference> result = new ArrayDeque<>(); // I assume the vertex we start with would be the first one to get added, hence cheap to remove
-      myDepGraphHolder.fillOutgoingEdgesDeep(Collections.singleton(mRef), result::add);
+      myDepGraph.fillOutgoingEdgesDeep(Collections.singleton(mRef), result::add);
       result.remove(mRef);
       return result;
     }
@@ -361,7 +358,7 @@ public class ModulesWatcher {
   private Collection<SModuleReference> getDirectDependencies(Iterable<SModuleReference> mRefs) {
     synchronized (myDepGraphLock) {
       final Collection<SModuleReference> result = new ArrayList<>();
-      myDepGraphHolder.fillOutgoingEdgesShallow(mRefs, result);
+      myDepGraph.fillOutgoingEdgesShallow(mRefs, result);
       return result;
       }
   }
@@ -372,7 +369,7 @@ public class ModulesWatcher {
   private Collection<SModuleReference> getBackDependencies(Iterable<SModuleReference> mRefs) {
     synchronized (myDepGraphLock) {
       final Collection<SModuleReference> result = new LinkedHashSet<>();
-      myDepGraphHolder.fillIncomingEdgesDeep(mRefs, result::add);
+      myDepGraph.fillIncomingEdgesDeep(mRefs, result::add);
       // XXX FWIW, result includes mRefs, is it what we need here?
       return result;
     }
@@ -381,7 +378,7 @@ public class ModulesWatcher {
   @TestOnly
   boolean isModuleWatched(ReloadableModule module) {
     synchronized (myDepGraphLock) {
-      return myDepGraphHolder.contains(module.getModuleReference());
+      return myDepGraph.contains(module.getModuleReference());
     }
   }
 

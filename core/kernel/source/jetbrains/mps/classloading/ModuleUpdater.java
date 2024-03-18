@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.classloading.ErrorContainer.SearchError;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.util.CollectionUtil;
@@ -23,17 +22,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -41,7 +36,7 @@ import java.util.stream.Stream;
 
 /**
  * Logic to update CL graph based on module dependencies.
- * Collects change deltas and process them at once with {@link #refreshGraph(Collection, Collection)}.
+ * Collects change deltas and process them at once with {@link #refreshGraph()}.
  * Doesn't get/track any locks, created for a single operation and shall get discarded once update is over.
  */
 /*package*/ final class ModuleUpdater {
@@ -54,24 +49,25 @@ import java.util.stream.Stream;
   // inv: modules known to the graph, generally valid (although I could imagine moduleA (known) -> moduleB (reported as dep target), moduleB
   //      not matching "watchable" condition AND never changed, hence never making it neither to addModules() nor to updateModules(changed)
   private final Set<SModuleReference> myModulesToRemove = new LinkedHashSet<>();
-  private final GraphHolder<SModuleReference> myDepGraphHolder;
-  private final Map<SModuleReference, CModule> myRefStorage2;
+  private final GraphHolder<SModuleReference, CModule> myDepGraph;
   private final Function<SModule, Stream<SModuleReference>> myDependencySupplier;
   // unordered. FIXME rename (hide?)
   /*package*/ final Set<CModule> affectedForRemove = new HashSet<>();
   /*package*/ final Set<CModule> affectedForAdd = new HashSet<>();
+  private final int myGen;
+  private int mySeq;
 
 
-  public ModuleUpdater(GraphHolder<SModuleReference> graph, Map<SModuleReference, CModule> storage, Function<SModule, Stream<SModuleReference>> dependencySupplier) {
-    myDepGraphHolder = graph;
-    myRefStorage2 = storage;
+  public ModuleUpdater(GraphHolder<SModuleReference, CModule> graph, Function<SModule, Stream<SModuleReference>> dependencySupplier, int genSeed) {
+    myDepGraph = graph;
     myDependencySupplier = dependencySupplier;
+    myGen = genSeed;
   }
 
   // pre: modules.forEach(we've seen this module - either as a CL objective or as a broken/valid dependency target thereof)
   /*package*/ void updateModules(@NotNull Collection<? extends ReloadableModule> modules) {
     for (ReloadableModule module : modules) {
-      if (myDepGraphHolder.contains(module.getModuleReference())) {
+      if (myDepGraph.contains(module.getModuleReference())) {
         myModulesToReload.add(module); // CModule
         myModulesToAdd.remove(module);
         myModulesToRemove.remove(module.getModuleReference()); // CModule
@@ -87,7 +83,7 @@ import java.util.stream.Stream;
   // pre: modules.forEach(module is CL objective/suitable for CL)
   /*package*/ void addModules(@NotNull Collection<? extends ReloadableModule> modules) {
     for (ReloadableModule module : modules) {
-      if (myDepGraphHolder.contains(module.getModuleReference())) {
+      if (myDepGraph.contains(module.getModuleReference())) {
         assert !myModulesToAdd.contains(module);
         myModulesToReload.add(module); // CModule?
         myModulesToRemove.remove(module.getModuleReference()); // TODO CModule
@@ -102,7 +98,7 @@ import java.util.stream.Stream;
 
   /*package*/ void removeModules(@NotNull Collection<? extends SModuleReference> mRefs) {
     for (SModuleReference mRef : mRefs) {
-      final CModule instance = myRefStorage2.get(mRef); // resolveRef, not moduleRemoved - leave actual changes to refreshGraph()
+      final CModule instance = myDepGraph.get(mRef); // not remove(), leave actual changes to refreshGraph()
       if (instance != null) {
         if (instance.getModule() != null) {
           myModulesToAdd.remove(instance.getModule());
@@ -122,7 +118,7 @@ import java.util.stream.Stream;
 
         assert !CollectionUtil.intersects(myModulesToAdd.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()), myModulesToRemove);
         for (SModuleReference mRef : myModulesToRemove) {
-          if (!myDepGraphHolder.contains(mRef)) {
+          if (!myDepGraph.contains(mRef)) {
             continue;
           }
           // FIXME do we remove CModule from storage here or later, when we get to myDepGraph cleanup, and here just collect deleted CModule?
@@ -135,25 +131,22 @@ import java.util.stream.Stream;
         // remove valid modules as they may appear as a dependency target for another module, therefore we keep CModule until they explicitly gone from a repo.
         //
         // module we removed might be holding the only dependency to another module (already gone), record these for later check
-        myDepGraphHolder.fillOutgoingEdgesDeep(removedCModuleRefs, v -> {
-          if (myRefStorage2.get(v).getModule() == null) {
-            checkNoLongerInGraph.add(v);
+        myDepGraph.visitOutgoingDeep(removedCModuleRefs, cm -> {
+          if (cm.getModule() == null) {
+            checkNoLongerInGraph.add(cm.getModuleReference());
           }
         });
-        myDepGraphHolder.cleanOutgoingEdges(removedCModuleRefs);
+        myDepGraph.cleanOutgoingEdges(removedCModuleRefs);
         //
         final HashSet<SModuleReference> recalculateStatus = new HashSet<>();
         final HashSet<SModuleReference> recalculateEdges = new HashSet<>();
-        myDepGraphHolder.fillIncomingEdgesShallow(removedCModuleRefs, recalculateStatus);
-        myDepGraphHolder.fillIncomingEdgesDeep(removedCModuleRefs, cm -> {
-          affectedForRemove.add(myRefStorage2.get(cm));
-        });
+        myDepGraph.fillIncomingEdgesShallow(removedCModuleRefs, recalculateStatus);
+        myDepGraph.visitIncomingDeep(removedCModuleRefs, affectedForRemove::add);
 
         for (ReloadableModule module : myModulesToAdd) {
           SModuleReference mRef = module.getModuleReference();
-          assert !myDepGraphHolder.contains(mRef);
+          assert !myDepGraph.contains(mRef);
           LOG.debug("Adding previously unknown module " + module);
-          myDepGraphHolder.add(mRef);
           storageAdd(module);
           recalculateEdges.add(mRef); // unknown, need its edges.
           recalculateStatus.add(mRef);
@@ -161,10 +154,10 @@ import java.util.stream.Stream;
         HashSet<SModuleReference> knownAndChanged = new HashSet<>();
         for (ReloadableModule module : myModulesToReload) {
           SModuleReference mRef = module.getModuleReference();
-          assert myDepGraphHolder.contains(mRef);
+          assert myDepGraph.contains(mRef);
           // could be CModule.getModule() == null, if we anticipated its appearance as a dependency target of another module
           LOG.debug("Adding changed module " + module);
-          myDepGraphHolder.fillIncomingEdgesShallow(Collections.singleton(mRef), recalculateStatus);
+          myDepGraph.fillIncomingEdgesShallow(Collections.singleton(mRef), recalculateStatus);
           // anticipated module, all others that depend from it shall get loaded (if their dependencies are satisfied)
           knownAndChanged.add(mRef);
           // XXX perhaps, deep incoming CModule into affectedForRemove?
@@ -173,15 +166,13 @@ import java.util.stream.Stream;
           recalculateStatus.add(mRef);
         }
         // modules with broken dependencies that were expected but not met, get a chance to load
-        myDepGraphHolder.fillIncomingEdgesDeep(knownAndChanged, cm -> {
-          affectedForAdd.add(myRefStorage2.get(cm));
-        });
+        myDepGraph.visitIncomingDeep(knownAndChanged, affectedForAdd::add);
         // changed modules we've known before - what if it's a dependency change to a module long gone?
         // OTOH, perhaps it's just easier/smarter to walk all verticies, find those w/o incoming edges and SModule == null and remove these?
         //       would need a queue as we shall walk the graph again and again, as long as there are removed verticies.
-        myDepGraphHolder.fillOutgoingEdgesDeep(knownAndChanged, v -> {
-          if (myRefStorage2.get(v).getModule() == null) {
-            checkNoLongerInGraph.add(v);
+        myDepGraph.visitOutgoingDeep(knownAndChanged, cm -> {
+          if (cm.getModule() == null) {
+            checkNoLongerInGraph.add(cm.getModuleReference());
           }
         });
 
@@ -198,11 +189,9 @@ import java.util.stream.Stream;
           anyChange = false;
           for (Iterator<SModuleReference> it = checkNoLongerInGraph.iterator(); it.hasNext(); ) {
             SModuleReference mRef = it.next();
-            if (!myDepGraphHolder.hasIncomingEdges(mRef)) {
+            if (!myDepGraph.hasIncomingEdges(mRef)) {
               LOG.debug("Removing module " + mRef);
-              myDepGraphHolder.remove(mRef);
-              myRefStorage2.remove(mRef); // we didn't actually removed an entry when processing myModulesToRemove, just replaced it with a bogus one,
-              // therefore, here we cleaned it when we sure it's not needed
+              myDepGraph.remove(mRef);
               it.remove();
               anyChange = true;
             }
@@ -214,7 +203,7 @@ import java.util.stream.Stream;
 //        forStatusUpdate.addAll(removedToVisitAgain);
         forStatusUpdate.addAll(recalculateStatus);
         forStatusUpdate.addAll(newTargets); // newTargets, if any, is part of new "outgoing" edges
-        myDepGraphHolder.fillIncomingEdgesDeep(recalculateStatus, forStatusUpdate::add);
+        myDepGraph.fillIncomingEdgesDeep(recalculateStatus, forStatusUpdate::add);
 
         // FIXME update status for modules in forStatusUpdate
 
@@ -234,15 +223,15 @@ import java.util.stream.Stream;
    */
   private void updateEdges(Set<SModuleReference> modulesToUpdate, Set<SModuleReference> newTargets) {
     for (SModuleReference mRef : modulesToUpdate) {
-      assert myDepGraphHolder.contains(mRef);
+      assert myDepGraph.contains(mRef);
       // assert myRefStorage.resolveRef(mRef) != null; XXX well, shall not get violated. To get mRef here, we either put it explicitly
       //  from add/update block, which updates myRefStorage, or as an incoming reference for a deleted module, and here's the culprit.
       //  Imagine a chain ModuleC -> ModuleB -> ModuleA. Request to remove ModuleB can't remove ModuleB from the graph as it's dependency
       //  target for ModuleC. We've cleaned its SModule instance in myRefStorage, but we still can get ModuleB reference as incoming
       //  for ModuleA and as required for ModuleC
       final Collection<SModuleReference> currentDeps = new HashSet<>();
-      myDepGraphHolder.fillOutgoingEdgesShallow(Collections.singleton(mRef), currentDeps);
-      CModule reloadableModule = myRefStorage2.get(mRef);
+      myDepGraph.fillOutgoingEdgesShallow(Collections.singleton(mRef), currentDeps);
+      CModule reloadableModule = myDepGraph.get(mRef);
       // FIXME revisit comment above. With myRefStorage2, likely, can expect reloadableModule != null; seems that CModule(ModuleB).getModule() == null
       //       in this case. We update edges here, ModuleB -> ModuleA edge needs to be cleared here, seems like empty newModuleDeps (for CModule(ModuleB).getModule() == null)
       //       would do the trick as expected.
@@ -254,26 +243,17 @@ import java.util.stream.Stream;
           // new (not seen before) dependency edge
           // FIXME have to distinguish 2 scenarios here: (a) dependency is necessary for CL --> need an edge; (b) it's a design-time dependency --> edge isn't necessary
           // XXX how come myDependencySuppplier reports non-CL dependency here?
-          if (!myDepGraphHolder.contains(depRef)) {
-            myDepGraphHolder.add(depRef);
-            // see no point to update myRefStorage here, wait for depRef module to show up through repository's moduleAdded(); but myRefStorage2, to replace
-            // myRefStorage, needs to be updated!
+          if (!myDepGraph.contains(depRef)) {
             storageAddUnknown(depRef);
             // guess, could happen if there's explicit  reloadModule request before moduleAdded() reach CLM
             newTargets.add(depRef);
-          } else if (!myRefStorage2.containsKey(depRef)) {
-            // if we removed the module prior to updateEdges(), e.g. due to module removed - its key is still in the graph, but its CModule
-            // is already among those scheduled for 'unload', and to keep the promise graph matches myRefStorage, need to record new CModule.
-            // FIXME with invariants for myDepGraphHolder and myRefStorage, the comment above (and the else if branch) is likely outdated?
-            storageAddUnknown(depRef);
-            newTargets.add(depRef);
           }
-          myDepGraphHolder.addEdge(mRef, depRef);
+          myDepGraph.addEdge(mRef, depRef);
         }
         // else assert myDepGraphHolder.contains(depRef) : edge shall point to known vertex, that's what we expect from fillOutgoingEdgesShallow()
       });
       for (SModuleReference curDep : currentDeps) {
-        myDepGraphHolder.removeEdge(mRef, curDep);
+        myDepGraph.removeEdge(mRef, curDep);
       }
     }
   }
@@ -283,59 +263,99 @@ import java.util.stream.Stream;
   }
 
   private void storageForget(SModuleReference mRef) {
-    CModule removed = myRefStorage2.remove(mRef);
-    storageAddUnknown(mRef);
+    CModule removed = myDepGraph.update(mRef, new Unknown(mRef, myGen, mySeq++));
     assert removed != null;
     affectedForRemove.add(removed);
   }
 
   private void storageUpdate(final SModule m) {
-    CModule v = new CModule() {
-      @Override
-      public @NotNull SModuleReference getModuleReference() {
-        return m.getModuleReference();
-      }
-
-      @Override
-      public @Nullable SModule getModule() {
-        return m;
-      }
-    };
-    CModule old = myRefStorage2.put(m.getModuleReference(), v);
+    CModule v = new Updated(m, myGen, mySeq++);
+    CModule old = myDepGraph.update(v.getModuleReference(), v);
     assert old != null;
     affectedForRemove.add(old);
     affectedForAdd.add(v);
   }
 
   private void storageAdd(final SModule m) {
-    CModule v = new CModule() {
-      @Override
-      public @NotNull SModuleReference getModuleReference() {
-        return m.getModuleReference();
-      }
-
-      @Override
-      public @Nullable SModule getModule() {
-        return m;
-      }
-    };
-    CModule old = myRefStorage2.put(m.getModuleReference(), v);
+    CModule v = new Existing(m, myGen, mySeq++);
+    CModule old = myDepGraph.add(v.getModuleReference(), v);
     assert old == null;
     affectedForAdd.add(v);
   }
 
   private void storageAddUnknown(final SModuleReference mRef) {
-    CModule old = myRefStorage2.put(mRef, new CModule() {
-      @Override
-      public @NotNull SModuleReference getModuleReference() {
-        return mRef;
-      }
-
-      @Override
-      public @Nullable SModule getModule() {
-        return null;
-      }
-    });
+    CModule old = myDepGraph.add(mRef, new Unknown(mRef, myGen, mySeq++));
     assert old == null;
+  }
+
+  private static abstract class CBase extends CModule {
+    private final SModuleReference myRef;
+    private final long myCreated;
+    private final long myGen, mySeq;
+
+    protected CBase(SModuleReference moduleReference, int generation, int sequence) {
+      myRef = moduleReference;
+      myCreated = System.nanoTime();
+      myGen = generation;
+      mySeq = sequence;
+    }
+
+    @NotNull
+    @Override
+    public final SModuleReference getModuleReference() {
+      return myRef;
+    }
+
+    protected final String toString(String name) {
+      return String.format("'%s' module %s (%d:%d  @%tT)", myRef.getModuleName(), myGen, mySeq, myCreated);
+    }
+  }
+
+  private static class Existing extends CBase {
+    private final SModule myModule;
+
+    Existing(SModule module, int generation, int sequence) {
+      super(module.getModuleReference(), generation, sequence);
+      myModule = module;
+    }
+
+    @Override
+    public @Nullable SModule getModule() {
+      return myModule;
+    }
+
+    @Override
+    public String toString() {
+      return super.toString("existing");
+    }
+  }
+
+  private static class Updated extends Existing {
+    Updated(SModule module, int generation, int sequence) {
+      super(module, generation, sequence);
+    }
+
+    @Override
+    public String toString() {
+      return super.toString("updated");
+    }
+  }
+
+  private static class Unknown extends CBase {
+
+    Unknown(SModuleReference mref, int generation, int sequence) {
+      super(mref, generation, sequence);
+    }
+
+    @Nullable
+    @Override
+    public SModule getModule() {
+      return null;
+    }
+
+    @Override
+    public String toString() {
+      return toString("unknown");
+    }
   }
 }

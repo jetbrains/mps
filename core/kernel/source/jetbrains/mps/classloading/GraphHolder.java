@@ -17,9 +17,12 @@ package jetbrains.mps.classloading;
 
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -27,10 +30,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class GraphHolder<V> {
+/**
+ * @param <V> vertex of a graph
+ * @param <W> value associated with a vertex
+ */
+public final class GraphHolder<V, W> {
   private static final Logger LOG = Logger.getLogger(GraphHolder.class);
   private final Graph<V> myGraph;
   private final Graph<V> myConjugateGraph; // transposed graph
+  // inv: for each vertex in myGraph or myConjucatedGraph, there's a value W in myValueStorage, and vice versa
+  private final Map<V, W> myValueStorage = new HashMap<>();
 
   public GraphHolder() {
     myGraph = new Graph<>();
@@ -52,6 +61,10 @@ public class GraphHolder<V> {
     if (myGraph.getEdgesCount() != myConjugateGraph.getEdgesCount()) {
       throw new GraphsInconsistencyException("Difference in edges' count");
     }
+    if (myValueStorage.size() != myGraph.getVerticesCount()) {
+      String m = String.format("Difference number of verticies (%d) and associated values (%d)", myGraph.getVerticesCount(), myValueStorage.size());
+      throw new GraphsInconsistencyException(m);
+    }
   }
 
   public Collection<V> getVertices() {
@@ -59,13 +72,28 @@ public class GraphHolder<V> {
     return Collections.unmodifiableCollection(myGraph.getVertices());
   }
 
-  public void add(V v) {
+  public W add(V v, W value) {
+    assert v != null;
+    assert value != null;
     if (myGraph.containsVertex(v)) {
       LOG.debug("Already watching vertex " + v);
-      return;
+      W old = update(v, value);// FIXME perhaps, shall rather be an exception thrown here
+      return old;
     }
     myGraph.addVertex(v);
     myConjugateGraph.addVertex(v);
+    myValueStorage.put(v, value);
+    return null;
+  }
+
+  @Nullable
+  public W update(V v, W value) {
+    assert v != null;
+    assert value != null;
+    if (!myGraph.containsVertex(v)) {
+      throw new IllegalStateException();
+    }
+    return myValueStorage.put(v, value);
   }
 
   /**
@@ -77,8 +105,13 @@ public class GraphHolder<V> {
     Collection<? extends V> backOuts = myConjugateGraph.getOuts(v);
     myGraph.removeVertex(v);
     myConjugateGraph.removeVertex(v);
+    myValueStorage.remove(v);
     for (V v1 : outs) myConjugateGraph.removeEdge(v1, v);
     for (V v1 : backOuts) myGraph.removeEdge(v1, v);
+  }
+
+  public W get(V v) {
+    return myValueStorage.get(v);
   }
 
   public boolean addEdge(V v1, V v2) {
@@ -110,6 +143,10 @@ public class GraphHolder<V> {
     myGraph.dfs(vv, result);
   }
 
+  public void visitOutgoingDeep(Iterable<? extends V> vv, Consumer<? super W> result) {
+    myGraph.dfs(vv, v -> result.accept(get(v)));
+  }
+
   public void cleanOutgoingEdges(Iterable<? extends V> vv) {
     checkGraphsCorrectness();
     for (V v : vv) {
@@ -121,14 +158,6 @@ public class GraphHolder<V> {
     }
   }
 
-  // exclusive
-  public void fillIncomingEdgesShallow(Iterable<? extends V> vv, Collection<? super V> result) {
-    checkGraphsCorrectness();
-    for(V v : vv) {
-      result.addAll(myConjugateGraph.getOuts(v));
-    }
-  }
-
   public int countIncomingEdges(V v) {
     return myConjugateGraph.getOuts(v).size();
   }
@@ -137,10 +166,22 @@ public class GraphHolder<V> {
     return !myConjugateGraph.getOuts(v).isEmpty();
   }
 
+  // exclusive
+  public void fillIncomingEdgesShallow(Iterable<? extends V> vv, Collection<? super V> result) {
+    checkGraphsCorrectness();
+    for(V v : vv) {
+      result.addAll(myConjugateGraph.getOuts(v));
+    }
+  }
+
   // inclusive
   public void fillIncomingEdgesDeep(Iterable<? extends V> vv, Consumer<? super V> result) {
     checkGraphsCorrectness();
     myConjugateGraph.dfs(vv, result);
+  }
+
+  public void visitIncomingDeep(Iterable<? extends V> vv, Consumer<? super W> result) {
+    myConjugateGraph.dfs(vv, v -> result.accept(get(v)));
   }
 
   // TODO : merge with jetbrains.mps.util.Graph (mps.util.Graph needs to be modified for a bit)

@@ -373,7 +373,8 @@ public class ClassLoaderManager implements CoreComponent {
     // markLazyLoaded expects modules that meet myWatchableCondition (part of myValidCondition now)
     // XXX in fact, with immediate subsequent createClassLoaders(), it's almost useless, but I left it for another round of refactoring
     myClassLoadersHolder.markLazyLoaded(modulesPreLoad.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()));
-    // while we still hold model read for SModule, crate CLs for them
+    // while we still hold model read for SModule, create CLs for them
+    // FIXME I wonder why we get all dependencies, not just direct and let regular CL delegation to deal with the rest?
     myClassLoadersHolder.createClassLoaders(modulesPreLoad, mr -> myModulesWatcher.getDependencies(mr));
     monitor.advance(1);
     myBroadCaster.onLoad(modulesPreLoad, monitor.subTask(4, SubProgressKind.AS_COMMENT));
