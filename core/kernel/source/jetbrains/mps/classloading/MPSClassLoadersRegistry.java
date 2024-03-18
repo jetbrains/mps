@@ -33,7 +33,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +50,7 @@ import java.util.stream.Collectors;
  *
  * {@code ClassLoaderManager#myLoadableCondition}
  */
-class MPSClassLoadersRegistry {
+final class MPSClassLoadersRegistry {
   private static final Logger LOG = Logger.getLogger(MPSClassLoadersRegistry.class);
 
   private final Map<SModuleReference, ModuleClassLoaderSupport> myMPSClassLoaders = new HashMap<>();
@@ -149,7 +148,7 @@ class MPSClassLoadersRegistry {
   /**
    * @param toLoad for these modules ModuleClassLoaders were actually created
    */
-  public void doLoadModules(final Collection<? extends ReloadableModule> toLoad) {
+  /*package*/ void createClassLoaders(final Collection<? extends ReloadableModule> toLoad) {
     ArrayList<ReloadableModule> forExtLoader = new ArrayList<>();
     for (ReloadableModule module : toLoad) {
       SModuleReference moduleReference = module.getModuleReference();
@@ -175,6 +174,7 @@ class MPSClassLoadersRegistry {
 
   private ModuleClassLoaderSupport prepareModuleClassLoader(@NotNull ReloadableModule module) {
     LOG.debug("Creating ModuleClassLoader for " + module);
+    // FIXME myModulesWatcher is not a state of this class, rather an argument (as a Function, perhaps) to #createClassLoaders()
     Collection<SModuleReference> deps = myModulesWatcher.getDependencies(Collections.singletonList(module.getModuleReference()));
     // we don't need SModule/ReloadableModule instance for dependencies, all CLs (or at least their respective support)
     // have to be initialized the moment we ask for dependencies

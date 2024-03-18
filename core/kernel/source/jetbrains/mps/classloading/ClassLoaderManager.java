@@ -25,8 +25,6 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.tempmodel.TempModule;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.NotCondition;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -50,7 +48,6 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import static java.lang.ClassLoader.getSystemClassLoader;
-import static jetbrains.mps.classloading.ClassLoadingProgress.LOADED;
 import static jetbrains.mps.classloading.ClassLoadingProgress.UNLOADED;
 
 /**
@@ -375,9 +372,10 @@ public class ClassLoaderManager implements CoreComponent {
     monitor.advance(1);
 
     // markLazyLoaded expects modules that meet myWatchableCondition (part of myValidCondition now)
+    // XXX in fact, with immediate subsequent createClassLoaders(), it's almost useless, but I left it for another round of refactoring
     myClassLoadersHolder.markLazyLoaded(modulesPreLoad.stream().map(ReloadableModule::getModuleReference).collect(Collectors.toList()));
     // while we still hold model read for SModule, crate CLs for them
-    myClassLoadersHolder.doLoadModules(modulesPreLoad);
+    myClassLoadersHolder.createClassLoaders(modulesPreLoad);
     monitor.advance(1);
     myBroadCaster.onLoad(modulesPreLoad, monitor.subTask(4, SubProgressKind.AS_COMMENT));
 

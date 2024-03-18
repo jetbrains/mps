@@ -365,36 +365,10 @@ public class ModulesWatcher {
       }
   }
 
-  /*package*/ Collection<ReloadableModule> getResolvedDependencies(Iterable<? extends ReloadableModule> modules) {
-    Collection<SModuleReference> refs = new LinkedHashSet<>();
-    for (ReloadableModule module : modules) {
-      refs.add(module.getModuleReference());
-    }
-    synchronized (myDepGraphLock) {
-      Collection<SModuleReference> referencedDeps = getDependencies(refs);
-      Collection<ReloadableModule> resolvedDeps = resolveRefs(referencedDeps);
-      assert (resolvedDeps.size() == referencedDeps.size());
-      return resolvedDeps;
-    }
-  }
-
-  // pre: dep graph lock
-  private Collection<ReloadableModule> resolveRefs(final Iterable<? extends SModuleReference> refs) {
-    final Collection<ReloadableModule> modules = new LinkedHashSet<>();
-    for (SModuleReference mRef : refs) {
-      // invoked for graph verticies only, assume get() != null
-      ReloadableModule module = (ReloadableModule) myRefStorage2.get(mRef).getModule();
-      if (module != null) {
-        modules.add(module);
-      }
-    }
-    return modules;
-  }
-
   /**
    * @return all back dependencies of this module (closed set under back-dependency-relation)
    */
-  private Collection<SModuleReference> getBackDependencies(Iterable<? extends SModuleReference> mRefs) {
+  private Collection<SModuleReference> getBackDependencies(Iterable<SModuleReference> mRefs) {
     synchronized (myDepGraphLock) {
       final Collection<SModuleReference> result = new LinkedHashSet<>();
       myDepGraphHolder.fillIncomingEdgesDeep(mRefs, result::add);

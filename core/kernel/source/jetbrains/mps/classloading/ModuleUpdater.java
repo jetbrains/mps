@@ -264,6 +264,7 @@ import java.util.stream.Stream;
           } else if (!myRefStorage2.containsKey(depRef)) {
             // if we removed the module prior to updateEdges(), e.g. due to module removed - its key is still in the graph, but its CModule
             // is already among those scheduled for 'unload', and to keep the promise graph matches myRefStorage, need to record new CModule.
+            // FIXME with invariants for myDepGraphHolder and myRefStorage, the comment above (and the else if branch) is likely outdated?
             storageAddUnknown(depRef);
             newTargets.add(depRef);
           }
