@@ -73,6 +73,7 @@ teamcity-info.xml
 /plugins/vcs-git
 /plugins/vcs-svn
 /plugins/vcs-github
+/plugins/yaml
 /plugins/ant
 /plugins/sh
 /plugins/vcs-changeReminder
