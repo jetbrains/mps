@@ -31957,30 +31957,6 @@
       <node concept="m$_wl" id="42kMDMFt6RQ" role="39821P">
         <ref role="m_rDy" node="42kMDMFt4A2" resolve="jetbrains.mps.ide.memtool" />
         <node concept="pUk6w" id="42kMDMFt6RR" role="pUk7w" />
-        <node concept="398223" id="42kMDMFt6RW" role="39821P">
-          <node concept="28jJK3" id="42kMDMFt6RX" role="39821P">
-            <node concept="398BVA" id="42kMDMFt6RY" role="28jJRO">
-              <ref role="398BVh" node="5yMuYWFN8P8" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="42kMDMFt6RZ" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="42kMDMFt6S0" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-memtool" />
-                  <node concept="2Ry0Ak" id="42kMDMFt6S1" role="2Ry0An">
-                    <property role="2Ry0Am" value="META-INF" />
-                    <node concept="2Ry0Ak" id="42kMDMFt6S2" role="2Ry0An">
-                      <property role="2Ry0Am" value="plugin.xml" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3_J27D" id="42kMDMFt6S3" role="Nbhlr">
-            <node concept="3Mxwew" id="42kMDMFt6S4" role="3MwsjC">
-              <property role="3MwjfP" value="META-INF" />
-            </node>
-          </node>
-        </node>
         <node concept="398223" id="42kMDMFt6RS" role="39821P">
           <node concept="3981dx" id="42kMDMFt6RT" role="39821P">
             <node concept="3_J27D" id="42kMDMFt6RU" role="Nbhlr">
@@ -32002,30 +31978,6 @@
       <node concept="m$_wl" id="43_f$S$IhDk" role="39821P">
         <ref role="m_rDy" node="6NgN$9NK$yl" resolve="jetbrains.mps.samples" />
         <node concept="pUk6w" id="43_f$S$IhF5" role="pUk7w" />
-        <node concept="398223" id="1nJh0raW9OJ" role="39821P">
-          <node concept="28jJK3" id="35zoHQHRZ3q" role="39821P">
-            <node concept="398BVA" id="1nJh0raW9OM" role="28jJRO">
-              <ref role="398BVh" node="5yMuYWFN8P8" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="1nJh0raW9ON" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="1nJh0raW9OO" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-samples" />
-                  <node concept="2Ry0Ak" id="1nJh0raW9OP" role="2Ry0An">
-                    <property role="2Ry0Am" value="META-INF" />
-                    <node concept="2Ry0Ak" id="1nJh0raW9OQ" role="2Ry0An">
-                      <property role="2Ry0Am" value="plugin.xml" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3_J27D" id="1nJh0raW9OR" role="Nbhlr">
-            <node concept="3Mxwew" id="1nJh0raW9OS" role="3MwsjC">
-              <property role="3MwjfP" value="META-INF" />
-            </node>
-          </node>
-        </node>
         <node concept="398223" id="5wA$GPhPvLf" role="39821P">
           <node concept="3981dx" id="1nJh0raW9OF" role="39821P">
             <node concept="3_J27D" id="1nJh0raW9OG" role="Nbhlr">
@@ -53204,21 +53156,6 @@
       <node concept="m$_wl" id="1jjxZP6JHO_" role="39821P">
         <ref role="m_rDy" node="1jjxZP6JyD_" resolve="jetbrains.mps.console" />
         <node concept="pUk6w" id="5peYeZGo8Vt" role="pUk7w" />
-        <node concept="398223" id="132wAsKFQG$" role="39821P">
-          <node concept="2HvfSZ" id="132wAsKFSHg" role="39821P">
-            <node concept="398BVA" id="132wAsKFT0y" role="2HvfZ0">
-              <ref role="398BVh" node="3E9C6pCXO$D" resolve="plugin_home" />
-              <node concept="2Ry0Ak" id="132wAsKFT4r" role="iGT6I">
-                <property role="2Ry0Am" value="META-INF" />
-              </node>
-            </node>
-          </node>
-          <node concept="3_J27D" id="132wAsKFQGA" role="Nbhlr">
-            <node concept="3Mxwew" id="132wAsKFRIw" role="3MwsjC">
-              <property role="3MwjfP" value="META-INF" />
-            </node>
-          </node>
-        </node>
         <node concept="398223" id="1KUoCioOW7G" role="39821P">
           <node concept="3_J27D" id="1KUoCioOW7H" role="Nbhlr">
             <node concept="3Mxwew" id="1KUoCioOW7K" role="3MwsjC">
