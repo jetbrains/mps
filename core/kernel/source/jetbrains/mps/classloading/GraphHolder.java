@@ -62,7 +62,7 @@ public final class GraphHolder<V, W> {
       throw new GraphsInconsistencyException("Difference in edges' count");
     }
     if (myValueStorage.size() != myGraph.getVerticesCount()) {
-      String m = String.format("Difference number of verticies (%d) and associated values (%d)", myGraph.getVerticesCount(), myValueStorage.size());
+      String m = String.format("Different number of verticies (%d) and associated values (%d)", myGraph.getVerticesCount(), myValueStorage.size());
       throw new GraphsInconsistencyException(m);
     }
   }
