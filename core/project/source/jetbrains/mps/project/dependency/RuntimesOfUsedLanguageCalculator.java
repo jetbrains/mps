@@ -22,13 +22,16 @@ import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.LanguageModuleScanner;
+import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -95,7 +98,15 @@ class RuntimesOfUsedLanguageCalculator {
    * used when we do not have a deployed module; we have to look for the source module of the language to gather its runtimes
    */
   private void fillForSourceModule(SModule module, Consumer<SModuleReference> sink) {
-    for (SLanguage usedLang : module.getUsedLanguages()) {
+    HashSet<SLanguage> toVisit = new HashSet<>(module.getUsedLanguages());
+    // Unless I make sure runtimes in DD include those of generator-engaged languages, I keep this code to walk models here.
+    // Primary client for these RTs is @descriptor model (MPS-32851). As long as we didn't use @descriptor model for packaged modules, and their dependencies
+    // (lacking RTs of engaged) were so far sufficient to compile user modules, I think I'm safe to keep this code to fillForSourceModule() only.
+    // However, there were some reports that mbeddr guys need to duplicate 'engaged' as 'used', and I'd need to clear these first.
+    for (SModel m : module.getModels()) {
+      toVisit.addAll(new ModelImports(m).getLanguagesEngagedOnGeneration());
+    }
+    for (SLanguage usedLang : toVisit) {
       if (usedLang.getSourceModule() == null) {
         if (!(module instanceof TempModule)) {
           myErrorHandler.langSourceModuleCannotBeResolved(usedLang);
