@@ -37750,33 +37750,281 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="76sgnDpaPzu" role="3cqZAp">
-          <node concept="3cpWsn" id="76sgnDpaPzv" role="3cpWs9">
-            <property role="TrG5h" value="devkitSolutions" />
-            <node concept="A3Dl8" id="76sgnDpaPzw" role="1tU5fm">
-              <node concept="3Tqbb2" id="76sgnDpaPzx" role="A3Ik2">
-                <ref role="ehGHo" to="kdzh:2L4pT56gD3R" resolve="BuildMps_Solution" />
+        <node concept="1X3_iC" id="2uYUp9VmhTP" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3cpWs8" id="76sgnDpaPzu" role="8Wnug">
+            <node concept="3cpWsn" id="76sgnDpaPzv" role="3cpWs9">
+              <property role="TrG5h" value="devkitSolutions" />
+              <node concept="A3Dl8" id="76sgnDpaPzw" role="1tU5fm">
+                <node concept="3Tqbb2" id="76sgnDpaPzx" role="A3Ik2">
+                  <ref role="ehGHo" to="kdzh:2L4pT56gD3R" resolve="BuildMps_Solution" />
+                </node>
+              </node>
+              <node concept="2OqwBi" id="76sgnDpaPzy" role="33vP2m">
+                <node concept="2OqwBi" id="76sgnDpaPzz" role="2Oq$k0">
+                  <node concept="2OqwBi" id="76sgnDpaPz$" role="2Oq$k0">
+                    <node concept="37vLTw" id="76sgnDpaPz_" role="2Oq$k0">
+                      <ref role="3cqZAo" node="76sgnDp4yYr" resolve="devkits" />
+                    </node>
+                    <node concept="13MTOL" id="76sgnDpaPzA" role="2OqNvi">
+                      <ref role="13MTZf" to="kdzh:hS0KzPODQ2" resolve="exports" />
+                    </node>
+                  </node>
+                  <node concept="v3k3i" id="76sgnDpaPzB" role="2OqNvi">
+                    <node concept="chp4Y" id="76sgnDpaR0Z" role="v3oSu">
+                      <ref role="cht4Q" to="kdzh:hS0KzPODPU" resolve="BuildMps_DevKitExportSolution" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="13MTOL" id="76sgnDpaSNu" role="2OqNvi">
+                  <ref role="13MTZf" to="kdzh:hS0KzPODPV" resolve="solution" />
+                </node>
               </node>
             </node>
-            <node concept="2OqwBi" id="76sgnDpaPzy" role="33vP2m">
-              <node concept="2OqwBi" id="76sgnDpaPzz" role="2Oq$k0">
-                <node concept="2OqwBi" id="76sgnDpaPz$" role="2Oq$k0">
-                  <node concept="37vLTw" id="76sgnDpaPz_" role="2Oq$k0">
-                    <ref role="3cqZAo" node="76sgnDp4yYr" resolve="devkits" />
-                  </node>
-                  <node concept="13MTOL" id="76sgnDpaPzA" role="2OqNvi">
-                    <ref role="13MTZf" to="kdzh:hS0KzPODQ2" resolve="exports" />
-                  </node>
-                </node>
-                <node concept="v3k3i" id="76sgnDpaPzB" role="2OqNvi">
-                  <node concept="chp4Y" id="76sgnDpaR0Z" role="v3oSu">
-                    <ref role="cht4Q" to="kdzh:hS0KzPODPU" resolve="BuildMps_DevKitExportSolution" />
-                  </node>
-                </node>
-              </node>
-              <node concept="13MTOL" id="76sgnDpaSNu" role="2OqNvi">
-                <ref role="13MTZf" to="kdzh:hS0KzPODPV" resolve="solution" />
-              </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="2uYUp9VmmAV" role="3cqZAp">
+          <node concept="1PaTwC" id="2uYUp9VmmAW" role="1aUNEU">
+            <node concept="3oM_SD" id="2uYUp9VmohQ" role="1PaTwD">
+              <property role="3oM_SC" value="Solutions" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmohR" role="1PaTwD">
+              <property role="3oM_SC" value="exported" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmohS" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmonW" role="1PaTwD">
+              <property role="3oM_SC" value="devkits" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmood" role="1PaTwD">
+              <property role="3oM_SC" value="used" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmopl" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmoqu" role="1PaTwD">
+              <property role="3oM_SC" value="get" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmor7" role="1PaTwD">
+              <property role="3oM_SC" value="reported" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmoi0" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmoi1" role="1PaTwD">
+              <property role="3oM_SC" value="deployment/classloading" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmoi2" role="1PaTwD">
+              <property role="3oM_SC" value="dependencies" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmoi3" role="1PaTwD">
+              <property role="3oM_SC" value="(although" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmoi4" role="1PaTwD">
+              <property role="3oM_SC" value="they" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmoi5" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmoi6" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmoi7" role="1PaTwD">
+              <property role="3oM_SC" value="necessarily" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmoi8" role="1PaTwD">
+              <property role="3oM_SC" value="essential" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmoi9" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmoia" role="1PaTwD">
+              <property role="3oM_SC" value="classloading)," />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="2uYUp9Vmrjl" role="3cqZAp">
+          <node concept="1PaTwC" id="2uYUp9Vmrjm" role="1aUNEU">
+            <node concept="3oM_SD" id="2uYUp9VmtgF" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmvqu" role="1PaTwD">
+              <property role="3oM_SC" value="since" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvrG" role="1PaTwD">
+              <property role="3oM_SC" value="AM.getDeclaredDependencies()" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmvtx" role="1PaTwD">
+              <property role="3oM_SC" value="stick" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvtQ" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvtW" role="1PaTwD">
+              <property role="3oM_SC" value="declared" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvyG" role="1PaTwD">
+              <property role="3oM_SC" value="dependencies" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvzE" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmv$3" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmv_3" role="1PaTwD">
+              <property role="3oM_SC" value="CLDependencies" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvFc" role="1PaTwD">
+              <property role="3oM_SC" value="respects" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvIq" role="1PaTwD">
+              <property role="3oM_SC" value="that," />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvJX" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvLL" role="1PaTwD">
+              <property role="3oM_SC" value="have" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvMQ" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvN6" role="1PaTwD">
+              <property role="3oM_SC" value="keep" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvOt" role="1PaTwD">
+              <property role="3oM_SC" value="logic" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvSh" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvTU" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvVk" role="1PaTwD">
+              <property role="3oM_SC" value="close" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvWv" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmvWP" role="1PaTwD">
+              <property role="3oM_SC" value="CLDependencies" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="2uYUp9Vmw59" role="3cqZAp">
+          <node concept="1PaTwC" id="2uYUp9Vmw5a" role="1aUNEU">
+            <node concept="3oM_SD" id="2uYUp9Vmw9z" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vmw9_" role="1PaTwD">
+              <property role="3oM_SC" value="possible," />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_D7" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_E1" role="1PaTwD">
+              <property role="3oM_SC" value="make" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_Em" role="1PaTwD">
+              <property role="3oM_SC" value="sure" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_Fi" role="1PaTwD">
+              <property role="3oM_SC" value="CL" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_FD" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_GR" role="1PaTwD">
+              <property role="3oM_SC" value="source" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_HQ" role="1PaTwD">
+              <property role="3oM_SC" value="modules" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_I0" role="1PaTwD">
+              <property role="3oM_SC" value="works" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_Jx" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_KN" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_LQ" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_M4" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_UY" role="1PaTwD">
+              <property role="3oM_SC" value="deployed." />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_Vu" role="1PaTwD">
+              <property role="3oM_SC" value="Eventually," />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_YL" role="1PaTwD">
+              <property role="3oM_SC" value="shall" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_Z3" role="1PaTwD">
+              <property role="3oM_SC" value="pack" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9Vm_Zm" role="1PaTwD">
+              <property role="3oM_SC" value="&quot;deps.cp&quot;" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmA0K" role="1PaTwD">
+              <property role="3oM_SC" value="into" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmA1V" role="1PaTwD">
+              <property role="3oM_SC" value="distributed" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmA8P" role="1PaTwD">
+              <property role="3oM_SC" value="module" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmAay" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmAaU" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmAcp" role="1PaTwD">
+              <property role="3oM_SC" value="these" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmAic" role="1PaTwD">
+              <property role="3oM_SC" value="exact" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmAjY" role="1PaTwD">
+              <property role="3oM_SC" value="values" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmAlh" role="1PaTwD">
+              <property role="3oM_SC" value="instead" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmAmP" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="2uYUp9VmAol" role="3cqZAp">
+          <node concept="1PaTwC" id="2uYUp9VmAnP" role="1aUNEU">
+            <node concept="3oM_SD" id="2uYUp9VmAnO" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmCAv" role="1PaTwD">
+              <property role="3oM_SC" value="rough" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmDbK" role="1PaTwD">
+              <property role="3oM_SC" value="guess" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmDc6" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmDcb" role="1PaTwD">
+              <property role="3oM_SC" value="make" />
+            </node>
+            <node concept="3oM_SD" id="2uYUp9VmDd7" role="1PaTwD">
+              <property role="3oM_SC" value="here." />
             </node>
           </node>
         </node>
@@ -38024,36 +38272,6 @@
               </node>
             </node>
             <node concept="1KnU$U" id="76sgnDpzteo" role="2OqNvi" />
-          </node>
-        </node>
-        <node concept="1X3_iC" id="csCadWiY9p" role="lGtFl">
-          <property role="3V$3am" value="statement" />
-          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-          <node concept="2Gpval" id="1bDwrinXNM4" role="8Wnug">
-            <node concept="2GrKxI" id="1bDwrinXNM6" role="2Gsz3X">
-              <property role="TrG5h" value="s" />
-            </node>
-            <node concept="2OqwBi" id="1bDwrio89x6" role="2GsD0m">
-              <node concept="37vLTw" id="1bDwrinXT6E" role="2Oq$k0">
-                <ref role="3cqZAo" node="76sgnDpaPzv" resolve="devkitSolutions" />
-              </node>
-              <node concept="1KnU$U" id="1bDwrio8ch$" role="2OqNvi" />
-            </node>
-            <node concept="3clFbS" id="1bDwrinXNMa" role="2LFqv$">
-              <node concept="3clFbF" id="1bDwrinXV49" role="3cqZAp">
-                <node concept="2OqwBi" id="1bDwrinXYna" role="3clFbG">
-                  <node concept="37vLTw" id="1bDwrinXV48" role="2Oq$k0">
-                    <ref role="3cqZAo" node="76sgnDoKsTg" resolve="myCompileDeps" />
-                  </node>
-                  <node concept="liA8E" id="1bDwrinY1T0" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
-                    <node concept="2GrUjf" id="1bDwrinY429" role="37wK5m">
-                      <ref role="2Gs0qQ" node="1bDwrinXNM6" resolve="s" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
           </node>
         </node>
         <node concept="3clFbH" id="1bDwrio8eo5" role="3cqZAp" />
@@ -38607,22 +38825,17 @@
       </node>
       <node concept="TZ5HA" id="1bDwrinWh2x" role="TZ5H$">
         <node concept="1dT_AC" id="1bDwrinWh2y" role="1dT_Ay">
-          <property role="1dT_AB" value="4) Solutions exported from devkits (again, including extended devkits) are reported as deployment/classloading dependencies, though they are not necessarily essential for classloading." />
+          <property role="1dT_AB" value="4) Solutions exported from devkits are no longer reported as deployment/classloading dependencies." />
         </node>
       </node>
       <node concept="TZ5HA" id="1bDwrinX9F8" role="TZ5H$">
         <node concept="1dT_AC" id="1bDwrinX9F9" role="1dT_Ay">
-          <property role="1dT_AB" value="   These are exposed in AM.getDeclaredDependencies() as 'default' dependency, thus making them valid reference targets and potential CL dep. " />
-        </node>
-      </node>
-      <node concept="TZ5HA" id="1bDwrinYJXA" role="TZ5H$">
-        <node concept="1dT_AC" id="1bDwrinYJXB" role="1dT_Ay">
-          <property role="1dT_AB" value="   However, devkit story and therefore their status is not clear. If it's in 'used', not in 'depends', perhaps, these solution shall constitute 'design' time dependencies with " />
+          <property role="1dT_AB" value="   Unfortunately, devkit story and therefore their status is not clear. If it's in 'used', not in 'depends', perhaps, these solution shall constitute 'design' time dependencies with " />
         </node>
       </node>
       <node concept="TZ5HA" id="1bDwrinZoVq" role="TZ5H$">
         <node concept="1dT_AC" id="1bDwrinZoVr" role="1dT_Ay">
-          <property role="1dT_AB" value="   reference targets but bo CL dep. OTOH, there's no mechanism to specify 'depends' other than with explicit module reference, and it would be odd to require users to specify these" />
+          <property role="1dT_AB" value="   reference targets but no CL dependency. OTOH, there's no mechanism to specify 'depends' other than with explicit module reference, and it would be odd to require users to specify these" />
         </node>
       </node>
       <node concept="TZ5HA" id="1bDwrio08xN" role="TZ5H$">

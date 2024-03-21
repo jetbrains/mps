@@ -3,6 +3,7 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.classloading.ErrorContainer.SearchError;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.java.ModelDependencies;
@@ -46,7 +47,7 @@ import java.util.stream.Collectors;
  * @since 2022.2
  */
 /*package*/ final class CLDependencies {
-  private static final boolean USE_DD = Boolean.getBoolean("mps.clm.dd");
+  private final boolean USE_DD = !RuntimeFlags.legacyCLDependencies();
 
   private final SRepository myRepository;
 
@@ -60,8 +61,8 @@ import java.util.stream.Collectors;
   /**
    * assumes model read over repository
    *
-   * FIXME consider switching to a wrapper with SModuleReference and dependency kind (for traceability, where dependency comes from - e.g. direct use or
-   *       as a runtime of used language)
+   * FIXME consider switching to a wrapper (SDependency, perhaps) with SModuleReference and dependency kind (for traceability, where
+   *       dependency comes from - e.g. direct use or as a runtime of used language)
    */
   public Collection<SModuleReference> directlyUsedModules(SModule module) {
     final Collection<SModuleReference> rv = new LinkedHashSet<>(20);
