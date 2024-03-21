@@ -79,8 +79,6 @@ public class ModulesWatcher {
   private final Predicate<SModule> myWatchableCondition;
   // inv: we keep modules capable of classloading and modules that emerged as dependency thereof
   private final GraphHolder<SModuleReference, CModule> myDepGraph = new GraphHolder<>();
-  // would love to convert to a variable once ProjectMPSDependenciesTest.checkDeps no longer access it through findAndPrintInvalidModulesProblems()
-  private CLDependencies myDependencyCollector;
   private int myUpdateNumber; // just to tell one update sequence from another
 
 
@@ -111,12 +109,9 @@ public class ModulesWatcher {
   UpdateOutcome update(Collection<? extends ReloadableModule> added, Collection<SModuleReference> removed, Collection<? extends ReloadableModule> changed, ProgressMonitor progressMonitor) {
     myRepository.getModelAccess().checkWriteAccess(); // either end of write or explicit reload from within write
 
-    // FIXME the fact we accumulate errors for a subset of graph modules but rely on these in getModuleProblemMessage() (from refillStatusMap()) could
-    //       lead to an unpleasant defects. E.g. change 1 brings a module with broken dependency, change 2 brings its dependency - fine, no errors
-    //       However, if change 2 doesn't bring a dependency in, the fact module has broken dependency is gone with reset()
-    myDependencyCollector = new CLDependencies(myRepository);
+    final CLDependencies dependencyCollector = new CLDependencies(myRepository);
     synchronized (myDepGraphLock) {
-      final ModuleUpdater moduleUpdater = new ModuleUpdater(myDepGraph, m -> myDependencyCollector.directlyUsedModules(m).stream(), myUpdateNumber++);
+      final ModuleUpdater moduleUpdater = new ModuleUpdater(myDepGraph, m -> dependencyCollector.directlyUsedModules(m).stream(), myUpdateNumber++);
       // XXX here we assume modules are unique
       ArrayList<ReloadableModule> known = new ArrayList<>(changed.size());
       ArrayList<ReloadableModule> unknown = new ArrayList<>();
@@ -283,11 +278,7 @@ public class ModulesWatcher {
       return String.format("Module %s is disposed and therefore was marked invalid for class loading", mRef.getModuleName());
     }
 
-    // FIXME provisional; as long as CLDependencies resolves targets. Now it does that in 'legacy' mode (no DD in use, no deps.cp found)
-    List<SearchError> errors = myDependencyCollector.getLegacyDependencyErrors(mRef); // it's assumed each graph refresh clears old errors
-    if (errors == null || errors.isEmpty()) {
-      errors = getErrors(mRef);
-    }
+    final List<SearchError> errors = getErrors(mRef);
     if (!errors.isEmpty()) {
       return String.format("%s was marked invalid for class loading: %s", mRef.getModuleName(), errors.get(0).getMsg());
     }

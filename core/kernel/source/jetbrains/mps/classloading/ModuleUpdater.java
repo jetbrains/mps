@@ -224,25 +224,22 @@ import java.util.stream.Stream;
   private void updateEdges(Set<SModuleReference> modulesToUpdate, Set<SModuleReference> newTargets) {
     for (SModuleReference mRef : modulesToUpdate) {
       assert myDepGraph.contains(mRef);
-      // assert myRefStorage.resolveRef(mRef) != null; XXX well, shall not get violated. To get mRef here, we either put it explicitly
-      //  from add/update block, which updates myRefStorage, or as an incoming reference for a deleted module, and here's the culprit.
-      //  Imagine a chain ModuleC -> ModuleB -> ModuleA. Request to remove ModuleB can't remove ModuleB from the graph as it's dependency
-      //  target for ModuleC. We've cleaned its SModule instance in myRefStorage, but we still can get ModuleB reference as incoming
-      //  for ModuleA and as required for ModuleC
       final Collection<SModuleReference> currentDeps = new HashSet<>();
       myDepGraph.fillOutgoingEdgesShallow(Collections.singleton(mRef), currentDeps);
       CModule reloadableModule = myDepGraph.get(mRef);
-      // FIXME revisit comment above. With myRefStorage2, likely, can expect reloadableModule != null; seems that CModule(ModuleB).getModule() == null
-      //       in this case. We update edges here, ModuleB -> ModuleA edge needs to be cleared here, seems like empty newModuleDeps (for CModule(ModuleB).getModule() == null)
-      //       would do the trick as expected.
-      Stream<SModuleReference> newModuleDeps = reloadableModule == null || reloadableModule.getModule() == null ? Stream.empty() : myDependencySupplier.apply(reloadableModule.getModule());
+      // We update edges here, ModuleB -> ModuleA edge needs to be cleared here, seems like empty newModuleDeps
+      // (for CModule(ModuleB).getModule() == null) would do the trick as expected.
+      Stream<SModuleReference> newModuleDeps = reloadableModule.getModule() == null ? Stream.empty() : myDependencySupplier.apply(reloadableModule.getModule());
       // XXX do I need to skip if there are no newModuleDeps (assuming this means error) - not to remove existing edges.
       // if (newModuleDeps.isEmpty()) { continue; }
       newModuleDeps.forEach(depRef -> {
         if (!currentDeps.remove(depRef)) {
           // new (not seen before) dependency edge
           // FIXME have to distinguish 2 scenarios here: (a) dependency is necessary for CL --> need an edge; (b) it's a design-time dependency --> edge isn't necessary
-          // XXX how come myDependencySuppplier reports non-CL dependency here?
+          //       myDependencySuppplier does its best not to report non-CL dependency, yet for source module scenario it's not always possible (no deps.cp or
+          //       module.xml data). Would be great to address this (the issue is for 'uncertain' dependency ModuleB -> ModuleA, when ModuleA came with update
+          //       and was ignored as 'non-watchable' (i.e. no JMF), but myDependencySuppplier reports this dependency (e.g. derives it as 'exported' solution
+          //       of an employed devkit) and we end up with 'unknown' vertex in the graph.
           if (!myDepGraph.contains(depRef)) {
             storageAddUnknown(depRef);
             // guess, could happen if there's explicit  reloadModule request before moduleAdded() reach CLM
