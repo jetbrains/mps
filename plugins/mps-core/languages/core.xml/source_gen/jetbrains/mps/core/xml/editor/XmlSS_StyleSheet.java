@@ -9,8 +9,9 @@ import jetbrains.mps.editor.runtime.descriptor.EditorBuilderEnvironment;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import java.awt.Color;
 import jetbrains.mps.nodeEditor.MPSFonts;
+import java.awt.Color;
+import com.intellij.ui.JBColor;
 import jetbrains.mps.nodeEditor.MPSColors;
 
 public class XmlSS_StyleSheet {
@@ -24,10 +25,13 @@ public class XmlSS_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(128)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_p6vyj_a0a()));
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
     }
 
+    private Color _StyleParameter_QueryFunction_p6vyj_a0a() {
+      return new JBColor(0x000080, 0x0060A0);
+    }
   }
   public static class xmlExtensionNameStyleClass extends AbstractStyleClass {
     public xmlExtensionNameStyleClass(EditorContext editorContext, SNode node) {
@@ -54,9 +58,12 @@ public class XmlSS_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(3158064)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_p6vyj_a0c()));
     }
 
+    private Color _StyleParameter_QueryFunction_p6vyj_a0c() {
+      return new JBColor(0x303030, 0xE0E0E0);
+    }
   }
   public static class xmlAttributeNameStyleClass extends AbstractStyleClass {
     public xmlAttributeNameStyleClass(EditorContext editorContext, SNode node) {

@@ -11,6 +11,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSFonts;
 import java.awt.Color;
+import com.intellij.ui.JBColor;
 
 public class workflowStyles_StyleSheet {
   public static class keywordStyleClass extends AbstractStyleClass {
@@ -24,8 +25,11 @@ public class workflowStyles_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
-      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(new Color(3158064)));
+      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_5rxoe8_a1a()));
     }
 
+    private Color _StyleParameter_QueryFunction_5rxoe8_a1a() {
+      return new JBColor(0x303030, 0xC9C9D9);
+    }
   }
 }
