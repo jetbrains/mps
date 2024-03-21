@@ -48,7 +48,7 @@ public final class AnnotateToDocument_Intention extends AbstractIntentionDescrip
 
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3).list(node)).isEmpty() ? "Document" : "Remove Doc Annotation");
+      return (ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3).list(node)).isEmpty() ? "Add Simple Doc Annotation" : "Remove Simple Doc Annotation");
     }
 
     @Override

@@ -1370,10 +1370,10 @@
         <node concept="3cpWs6" id="6OtXG9KaFjH" role="3cqZAp">
           <node concept="3K4zz7" id="6OtXG9KaGic" role="3cqZAk">
             <node concept="Xl_RD" id="6OtXG9KaGBj" role="3K4GZi">
-              <property role="Xl_RC" value="Remove Doc Annotation" />
+              <property role="Xl_RC" value="Remove Simple Doc Annotation" />
             </node>
             <node concept="Xl_RD" id="6OtXG9KaFu5" role="3K4E3e">
-              <property role="Xl_RC" value="Document" />
+              <property role="Xl_RC" value="Add Simple Doc Annotation" />
             </node>
             <node concept="2OqwBi" id="6OtXG9Kbux5" role="3K4Cdx">
               <node concept="2OqwBi" id="6OtXG9Kav13" role="2Oq$k0">
