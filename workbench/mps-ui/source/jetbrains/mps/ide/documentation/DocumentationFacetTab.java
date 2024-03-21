@@ -10,13 +10,17 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.util.EmptyRunnable;
 import com.intellij.ui.FieldPanel;
+import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.InsertPathAction;
+import com.intellij.ui.border.IdeaTitledBorder;
 import com.intellij.ui.components.JBBox;
 
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.JBEmptyBorder;
+import com.intellij.util.ui.JBInsets;
 import jetbrains.mps.icons.MPSIcons.General;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
+import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.ModuleId;
@@ -40,6 +44,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -84,7 +89,10 @@ public class DocumentationFacetTab extends BaseTab implements FacetTab {
     fs = myDocumentationFacet.getLocation().getFS();
     genOutPath.setText(myDocumentationFacet.getLocation().getPath());
 
-    genOutPath.setBorder(new TitledBorder("Output root"));
+    Insets insets = new JBInsets(-1, -1, -1, -1);
+    final IdeaTitledBorder border = IdeBorderFactory.createTitledBorder("Output root:", false, insets);
+    border.setShowLine(false);
+    genOutPath.setBorder(border);
     genOutPath.setAlignmentX(Component.LEFT_ALIGNMENT);
     panel.add(genOutPath);
     panel.add(JBBox.createRigidArea(new Dimension(0, 20)));

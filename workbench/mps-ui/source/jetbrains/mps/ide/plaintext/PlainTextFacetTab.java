@@ -9,11 +9,14 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.util.EmptyRunnable;
 import com.intellij.ui.FieldPanel;
+import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.InsertPathAction;
+import com.intellij.ui.border.IdeaTitledBorder;
 import com.intellij.ui.components.JBBox;
 import com.intellij.ui.components.JBRadioButton;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.JBEmptyBorder;
+import com.intellij.util.ui.JBInsets;
 import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
@@ -29,6 +32,7 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.util.Objects;
 
 /**
@@ -74,7 +78,10 @@ public class PlainTextFacetTab extends BaseTab implements FacetTab {
     //noinspection removal
     fs = myFacet.location().getFileSystem();
     genOutPath.setText(myFacet.location().getPath());
-    genOutPath.setBorder(new TitledBorder("Output root"));
+    Insets insets = new JBInsets(-1, -1, -1, -1);
+    final IdeaTitledBorder border = IdeBorderFactory.createTitledBorder("Output root:", false, insets);
+    border.setShowLine(false);
+    genOutPath.setBorder(border);
     genOutPath.setAlignmentX(Component.LEFT_ALIGNMENT);
     panel.add(genOutPath);
 
@@ -91,7 +98,9 @@ public class PlainTextFacetTab extends BaseTab implements FacetTab {
     myCacheOutField.setAlignmentX(Component.LEFT_ALIGNMENT);
     final Box bbb = Box.createHorizontalBox();
     bbb.add(myCacheOutField);
-    bbb.setBorder(new TitledBorder("Cache root"));
+    final IdeaTitledBorder cacheBorder = IdeBorderFactory.createTitledBorder("Cache root:", false, insets);
+    cacheBorder.setShowLine(false);
+    bbb.setBorder(cacheBorder);
     bbb.setAlignmentX(Component.LEFT_ALIGNMENT);
     panel.add(bbb);
 
