@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -191,8 +192,8 @@ public class ModulesWatcher {
         invalidModules.values().forEach(LOG::warning);
       }
 
-      if (LOG.isTraceLevel()) {
-        traceInvalidDeps(invalidModules.keySet(), allInvalidModules);
+      if (!invalidModules.isEmpty() && LOG.isTraceLevel()) {
+        traceInvalidDeps(invalidModules.keySet(), allInvalidModules, LOG::trace);
       }
       if (LOG.isInfoLevel()) {
         LOG.info("Totally " + allInvalidModules.size() + " modules are marked invalid for class loading" + (allInvalidModules.isEmpty() ? "."
@@ -208,17 +209,16 @@ public class ModulesWatcher {
 
   // pre: dep graph lock
   private void traceInvalidDeps(Collection<? extends SModuleReference> rootInvalid,
-                                Collection<? extends SModuleReference> allInvalid) {
+                                Collection<? extends SModuleReference> allInvalid,
+                                Consumer<String> trace) {
     for (var module : allInvalid) {
       Collection<SModuleReference> directDependencies = getDirectDependencies(Collections.singleton(module));
       directDependencies.remove(module);
       for (var depRef : directDependencies) {
         if (rootInvalid.contains(depRef)) {
-          LOG.trace(MessageFormat.format("The module ''{0}'' is invalid " +
-                                         "since it has a direct dependency on the root invalid module ''{1}''", module, depRef));
+          trace.accept(String.format("The module '%s' is invalid since it has a direct dependency on the root invalid module '%s'", module, depRef));
         } else if (allInvalid.contains(depRef)) {
-          LOG.trace(MessageFormat.format("The module ''{0}'' is invalid and " +
-                                         "it has a direct dependency on another invalid module ''{1}''", module, depRef));
+          trace.accept(String.format("The module '%s' is invalid and it has a direct dependency on another invalid module '%s'", module, depRef));
         }
       }
       Collection<SModuleReference> dependencies = new LinkedHashSet<>(getDependencies(module));
@@ -226,8 +226,7 @@ public class ModulesWatcher {
       dependencies.remove(module); // well, it's not there, getDependencies() is exclusive of the starting element
       for (var depRef : dependencies) {
         if (rootInvalid.contains(depRef)) {
-          LOG.trace(MessageFormat.format("The module ''{0}'' is" +
-                                         " invalid since it has a transitive dependency on the root invalid module ''{1}''", module, depRef));
+          trace.accept(String.format("The module '%s' is invalid since it has a transitive dependency on the root invalid module '%s'", module, depRef));
         }
       }
     }

@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
  *    runtime (compiled classes report relations b/w modules), rather than at this moment.
  * 4) Solutions exported from devkits (again, including extended devkits) are reported as deployment/classloading dependencies, though they are not necessarily essential for classloading.
  *    These are exposed in AM.getDeclaredDependencies() as 'default' dependency, thus making them valid reference targets and potential CL dep. 
- *    However, devkit story and therefore their status is not clear. If it's in 'used', not in 'depends', perhaps, these solution shall consitute 'design' time dependencies with 
+ *    However, devkit story and therefore their status is not clear. If it's in 'used', not in 'depends', perhaps, these solution shall constitute 'design' time dependencies with 
  *    reference targets but bo CL dep. OTOH, there's no mechanism to specify 'depends' other than with explicit module reference, and it would be odd to require users to specify these
  *    in addition to 'used' devkit.
  */
@@ -59,9 +59,6 @@ public final class RuntimeDependencies {
     // Besides, we care about RTs state the moment code was generated, if newer language version decides to change RT, deployed module won't get affected.
     for (SNode rts : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collectMany(includingExtendedLanguages(ListSequence.fromList(allUsedLang).concat(Sequence.fromIterable(targetLanguages))), LINKS.runtime$lxKd), CONCEPTS.BuildMps_ModuleSolutionRuntime$b5), LINKS.solution$3MS)).where(new NotNullWhereFilter())) {
       myLangRuntimes.add(rts);
-    }
-    for (SNode s : Sequence.fromIterable(devkitSolutions).where(new NotNullWhereFilter())) {
-      myCompileDeps.add(s);
     }
 
     for (SNode m : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C), LINKS.module$kGi0)).where(new NotNullWhereFilter())) {
