@@ -38,8 +38,7 @@ public class PasteNodeData {
   private final Set<SModelReference> myNecessaryModels;
   private final SModelReference mySourceModel;
 
-  // for paste scenario, legacy
-  public PasteNodeData(List<SNode> nodes, Set<SReference> references,
+  private PasteNodeData(List<SNode> nodes, Set<SReference> references,
                        SModelReference sourceModelRef,
                        Set<SLanguage> necessaryLanguages,
                        Set<SModelReference> necessaryModels) {

@@ -4,27 +4,27 @@ package jetbrains.mps.ide.datatransfer;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import java.util.Set;
-import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import java.util.Map;
-import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.datatransfer.PasteNodeData;
 import java.util.List;
+import org.jetbrains.mps.openapi.model.SNode;
+import java.util.Map;
+import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.HashMap;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.datatransfer.AssociationLink;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.datatransfer.DataTransferManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.annotations.Nullable;
@@ -56,28 +56,6 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class CopyPasteUtil {
   private static final Logger LOG = Logger.getLogger(CopyPasteUtil.class);
   public CopyPasteUtil() {
-  }
-
-  /**
-   * 
-   * @deprecated use {@code ModelDependencyScanner} instead
-   */
-  @Deprecated(since = "2022.2", forRemoval = true)
-  public static void processImportsAndLanguages(Set<SModelReference> necessaryImports, Set<SLanguage> necessaryLanguages, Map<SNode, SNode> sourceNodesToNewNodes, Set<SReference> allReferences) {
-    necessaryImports.clear();
-    necessaryLanguages.clear();
-    Set<SNode> sourceNodes = sourceNodesToNewNodes.keySet();
-    for (SNode node : sourceNodes) {
-      necessaryLanguages.add(node.getConcept().getLanguage());
-    }
-    for (SReference ref : allReferences) {
-      if (sourceNodesToNewNodes.get(ref.getTargetNode()) == null) {
-        SModelReference targetModelReference = ref.getTargetSModelReference();
-        if (targetModelReference != null) {
-          necessaryImports.add(targetModelReference);
-        }
-      }
-    }
   }
 
   public static PasteNodeData createNodeDataIn(List<SNode> sourceNodes, Map<SNode, Set<SNode>> sourceNodesAndAttributes) {
@@ -156,36 +134,6 @@ public final class CopyPasteUtil {
     }
 
     return new PasteNodeData(SModelOperations.getPointer(model), targetNodes, copiedLinks, necessaryLanguages, necessaryModels);
-  }
-  /**
-   * 
-   * @deprecated use {@link jetbrains.mps.ide.datatransfer.CopyPasteUtil#createNodeDataOut(PasteNodeData) } instead.
-   */
-  @Deprecated(forRemoval = true, since = "2022.2")
-  public static PasteNodeData createNodeDataOut(List<SNode> sourceNodes, SModelReference sourceModel, Set<SLanguage> necessaryLanguages, Set<SModelReference> necessaryModels) {
-    if (sourceNodes.isEmpty()) {
-      return PasteNodeData.emptyPasteNodeData(null);
-    }
-    List<SNode> result = new ArrayList<SNode>();
-    Map<SNode, SNode> sourceNodesToNewNodes = new HashMap<SNode, SNode>();
-    // FIXME sourceNodes are generally detached (copies of the original model) - what's the point to 
-    //      assert originalModel?!
-    SModel originalModel = sourceNodes.get(0).getModel();
-    for (SNode sourceNode : sourceNodes) {
-      assert sourceNode.getModel() == originalModel;
-      SNode nodeToPaste = CopyPasteUtil.copyNode_internal(sourceNode, null, sourceNodesToNewNodes);
-      result.add(nodeToPaste);
-    }
-    // just a poor fallback in case old code uses this method and doesn't use createNodeDataIn (which currently
-    // doesn't add SReference instance to copied nodes, but keep association data separately
-    Set<SReference> allReferences = new HashSet<SReference>();
-    for (SNode sn : Sequence.fromIterable(SNodeUtil.getDescendants(sourceNodes))) {
-      for (SReference al : Sequence.fromIterable(sn.getReferences())) {
-        allReferences.add(al);
-      }
-    }
-    Set<SReference> referencesRequireResolve = CopyPasteUtil.processReferencesOut(sourceNodesToNewNodes, allReferences);
-    return new PasteNodeData(result, referencesRequireResolve, sourceModel, necessaryLanguages, necessaryModels);
   }
 
   public static PasteNodeData createNodeDataOut(PasteNodeData in) {
