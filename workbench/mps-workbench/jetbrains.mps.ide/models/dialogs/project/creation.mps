@@ -6,6 +6,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
   <imports>
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
@@ -5681,51 +5682,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2R7pax8jqvV" role="3cqZAp" />
-        <node concept="3clFbF" id="4diCoAsiklc" role="3cqZAp">
-          <node concept="2OqwBi" id="4diCoAsikld" role="3clFbG">
-            <node concept="liA8E" id="4diCoAsikle" role="2OqNvi">
-              <ref role="37wK5l" to="dwmc:~GridConstraints.setRow(int)" resolve="setRow" />
-              <node concept="3cpWs3" id="4diCoAsiklf" role="37wK5m">
-                <node concept="3cmrfG" id="4diCoAsiklg" role="3uHU7w">
-                  <property role="3cmrfH" value="1" />
-                </node>
-                <node concept="2OqwBi" id="4diCoAsiklh" role="3uHU7B">
-                  <node concept="liA8E" id="4diCoAsikli" role="2OqNvi">
-                    <ref role="37wK5l" to="dwmc:~GridConstraints.getRow()" resolve="getRow" />
-                  </node>
-                  <node concept="37vLTw" id="4diCoAsiklj" role="2Oq$k0">
-                    <ref role="3cqZAo" node="4diCoAs9QER" resolve="constraints" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="37vLTw" id="4diCoAsiklk" role="2Oq$k0">
-              <ref role="3cqZAo" node="4diCoAs9QER" resolve="constraints" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="1pyYjDPRa1Q" role="3cqZAp">
-          <node concept="2OqwBi" id="1pyYjDPRa1R" role="3clFbG">
-            <node concept="37vLTw" id="695k0NOzFbE" role="2Oq$k0">
-              <ref role="3cqZAo" node="695k0NOxX4t" resolve="mySettingsPanel" />
-            </node>
-            <node concept="liA8E" id="1pyYjDPRa1T" role="2OqNvi">
-              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
-              <node concept="2ShNRf" id="1pyYjDPRa1U" role="37wK5m">
-                <node concept="1pGfFk" id="1pyYjDPRa1V" role="2ShVmc">
-                  <ref role="37wK5l" to="dxuu:~JLabel.&lt;init&gt;(java.lang.String)" resolve="JLabel" />
-                  <node concept="1rXfSq" id="3_TiVQaPKeB" role="37wK5m">
-                    <ref role="37wK5l" node="3_TiVQaPemU" resolve="modelNameText" />
-                  </node>
-                </node>
-              </node>
-              <node concept="37vLTw" id="4diCoAsfG2M" role="37wK5m">
-                <ref role="3cqZAo" node="4diCoAs9QER" resolve="constraints" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbH" id="7aLmy0j$2En" role="3cqZAp" />
         <node concept="3cpWs8" id="7aLmy0j$2YE" role="3cqZAp">
           <node concept="3cpWsn" id="7aLmy0j$2YF" role="3cpWs9">
@@ -5740,7 +5696,7 @@
                   <node concept="1pGfFk" id="7aLmy0j$2YK" role="2ShVmc">
                     <ref role="37wK5l" to="dwmc:~GridLayoutManager.&lt;init&gt;(int,int,java.awt.Insets,int,int)" resolve="GridLayoutManager" />
                     <node concept="3cmrfG" id="7aLmy0j$2YL" role="37wK5m">
-                      <property role="3cmrfH" value="1" />
+                      <property role="3cmrfH" value="2" />
                     </node>
                     <node concept="3cmrfG" id="7aLmy0j$2YM" role="37wK5m">
                       <property role="3cmrfH" value="3" />
@@ -5821,6 +5777,88 @@
             </node>
             <node concept="3uibUv" id="7aLmy0j$kcm" role="1tU5fm">
               <ref role="3uigEE" to="dwmc:~GridConstraints" resolve="GridConstraints" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="dt0cu2omHc" role="3cqZAp" />
+        <node concept="3clFbF" id="dt0cu2n3rY" role="3cqZAp">
+          <node concept="2OqwBi" id="dt0cu2nnqD" role="3clFbG">
+            <node concept="37vLTw" id="dt0cu2n8BS" role="2Oq$k0">
+              <ref role="3cqZAo" node="7aLmy0j$2YF" resolve="nameAndStereotype" />
+            </node>
+            <node concept="liA8E" id="dt0cu2nnqE" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
+              <node concept="2ShNRf" id="dt0cu2nnqF" role="37wK5m">
+                <node concept="1pGfFk" id="dt0cu2nnqG" role="2ShVmc">
+                  <ref role="37wK5l" to="dxuu:~JLabel.&lt;init&gt;(java.lang.String)" resolve="JLabel" />
+                  <node concept="1rXfSq" id="dt0cu2nnqH" role="37wK5m">
+                    <ref role="37wK5l" node="3_TiVQaPemU" resolve="modelNameText" />
+                  </node>
+                </node>
+              </node>
+              <node concept="37vLTw" id="dt0cu2nnqI" role="37wK5m">
+                <ref role="3cqZAo" node="7aLmy0j$kc6" resolve="nameConstraints" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="dt0cu2n3s3" role="3cqZAp">
+          <node concept="2OqwBi" id="dt0cu2nsYv" role="3clFbG">
+            <node concept="37vLTw" id="dt0cu2n8Ay" role="2Oq$k0">
+              <ref role="3cqZAo" node="7aLmy0j$kc6" resolve="nameConstraints" />
+            </node>
+            <node concept="liA8E" id="dt0cu2nsYw" role="2OqNvi">
+              <ref role="37wK5l" to="dwmc:~GridConstraints.setColumn(int)" resolve="setColumn" />
+              <node concept="3cmrfG" id="dt0cu2nsYx" role="37wK5m">
+                <property role="3cmrfH" value="2" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="dt0cu2n3s6" role="3cqZAp">
+          <node concept="2OqwBi" id="dt0cu2njs$" role="3clFbG">
+            <node concept="37vLTw" id="dt0cu2n8C4" role="2Oq$k0">
+              <ref role="3cqZAo" node="7aLmy0j$2YF" resolve="nameAndStereotype" />
+            </node>
+            <node concept="liA8E" id="dt0cu2njs_" role="2OqNvi">
+              <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
+              <node concept="2ShNRf" id="dt0cu2njsA" role="37wK5m">
+                <node concept="1pGfFk" id="dt0cu2njsB" role="2ShVmc">
+                  <ref role="37wK5l" to="dxuu:~JLabel.&lt;init&gt;(java.lang.String)" resolve="JLabel" />
+                  <node concept="1rXfSq" id="dt0cu2njsC" role="37wK5m">
+                    <ref role="37wK5l" node="dt0cu2nMV_" resolve="modelStereotypeText" />
+                  </node>
+                </node>
+              </node>
+              <node concept="37vLTw" id="dt0cu2njsI" role="37wK5m">
+                <ref role="3cqZAo" node="7aLmy0j$kc6" resolve="nameConstraints" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="dt0cu2n3sb" role="3cqZAp">
+          <node concept="2OqwBi" id="dt0cu2nhQx" role="3clFbG">
+            <node concept="37vLTw" id="dt0cu2n8CF" role="2Oq$k0">
+              <ref role="3cqZAo" node="7aLmy0j$kc6" resolve="nameConstraints" />
+            </node>
+            <node concept="liA8E" id="dt0cu2nhQy" role="2OqNvi">
+              <ref role="37wK5l" to="dwmc:~GridConstraints.setColumn(int)" resolve="setColumn" />
+              <node concept="3cmrfG" id="dt0cu2nhQz" role="37wK5m">
+                <property role="3cmrfH" value="0" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="dt0cu2n3se" role="3cqZAp">
+          <node concept="2OqwBi" id="dt0cu2np0R" role="3clFbG">
+            <node concept="37vLTw" id="dt0cu2n8AE" role="2Oq$k0">
+              <ref role="3cqZAo" node="7aLmy0j$kc6" resolve="nameConstraints" />
+            </node>
+            <node concept="liA8E" id="dt0cu2np0S" role="2OqNvi">
+              <ref role="37wK5l" to="dwmc:~GridConstraints.setRow(int)" resolve="setRow" />
+              <node concept="3cmrfG" id="dt0cu2np0T" role="37wK5m">
+                <property role="3cmrfH" value="1" />
+              </node>
             </node>
           </node>
         </node>
@@ -7026,6 +7064,25 @@
             </node>
           </node>
         </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="dt0cu2obiD" role="jymVt" />
+    <node concept="2YIFZL" id="dt0cu2nMV_" role="jymVt">
+      <property role="TrG5h" value="modelStereotypeText" />
+      <node concept="3clFbS" id="dt0cu2nMVA" role="3clF47">
+        <node concept="3cpWs6" id="dt0cu2nMVB" role="3cqZAp">
+          <node concept="2YIFZM" id="dt0cu2nSeJ" role="3cqZAk">
+            <ref role="1Pybhc" to="3a50:~IdeBundle" resolve="IdeBundle" />
+            <ref role="37wK5l" to="3a50:~IdeBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+            <node concept="Xl_RD" id="dt0cu2nSeK" role="37wK5m">
+              <property role="Xl_RC" value="dialogs.model.new.settings.stereotype" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="dt0cu2nMVE" role="1B3o_S" />
+      <node concept="3uibUv" id="dt0cu2nMVF" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
     </node>
     <node concept="2tJIrI" id="3_TiVQaPA21" role="jymVt" />
