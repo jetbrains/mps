@@ -16,8 +16,184 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
+  <root nodeRef="r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)/6058851216819286114">
+    <file name="AddRequiredImportsDialog.java">
+      <node id="6058851216819286288" at="43,0,44,0" concept="6" trace="myRequiredImports" />
+      <node id="6058851216819286293" at="44,0,45,0" concept="6" trace="myRequiredLanguages" />
+      <node id="6058851216819286298" at="45,0,46,0" concept="6" trace="myModelsList" />
+      <node id="6058851216819286302" at="46,0,47,0" concept="6" trace="myLanguagesList" />
+      <node id="6058851216819286306" at="47,0,48,0" concept="6" trace="mySelectedImports" />
+      <node id="6058851216819286311" at="48,0,49,0" concept="6" trace="mySelectedLanguages" />
+      <node id="6058851216819420049" at="50,151,51,54" concept="16" />
+      <node id="6058851216819286330" at="51,54,52,24" concept="5" />
+      <node id="6058851216819286334" at="52,24,53,40" concept="5" />
+      <node id="6058851216819286338" at="53,40,54,44" concept="5" />
+      <node id="6058851216819286348" at="55,38,56,45" concept="5" />
+      <node id="6058851216819286357" at="58,40,59,42" concept="5" />
+      <node id="6058851216819286362" at="60,12,61,56" concept="5" />
+      <node id="6058851216819286365" at="62,5,63,11" concept="5" />
+      <node id="6058851216819286373" at="64,31,65,73" concept="5" />
+      <node id="6058851216819286385" at="67,34,68,78" concept="5" />
+      <node id="6058851216819286400" at="73,31,74,20" concept="10" />
+      <node id="6058851216819286409" at="75,31,76,48" concept="5" />
+      <node id="6058851216819286413" at="76,48,77,61" concept="5" />
+      <node id="6058851216819286421" at="77,61,78,71" concept="5" />
+      <node id="6058851216819286434" at="80,34,81,51" concept="5" />
+      <node id="6058851216819286438" at="81,51,82,57" concept="5" />
+      <node id="6058851216819286446" at="82,57,83,73" concept="5" />
+      <node id="6058851216819286453" at="84,5,85,23" concept="5" />
+      <node id="6058851216819286461" at="89,44,90,56" concept="10" />
+      <node id="6058851216819286466" at="90,56,91,161" concept="10" />
+      <node id="6058851216819286470" at="91,161,92,28" concept="5" />
+      <node id="6058851216819286473" at="92,28,93,62" concept="5" />
+      <node id="6058851216819286478" at="93,62,94,64" concept="5" />
+      <node id="6058851216819286485" at="94,64,95,40" concept="5" />
+      <node id="6058851216819286490" at="95,40,96,52" concept="10" />
+      <node id="6058851216819286501" at="97,39,98,80" concept="10" />
+      <node id="6058851216819286505" at="98,80,99,31" concept="5" />
+      <node id="6058851216819286508" at="99,31,100,65" concept="5" />
+      <node id="6058851216819286513" at="100,65,101,67" concept="5" />
+      <node id="6058851216819286520" at="101,67,102,182" concept="5" />
+      <node id="6058851216819286539" at="102,182,103,53" concept="5" />
+      <node id="6058851216819286547" at="103,53,104,66" concept="5" />
+      <node id="6058851216819286551" at="104,66,105,65" concept="5" />
+      <node id="6058851216819286554" at="105,65,106,224" concept="5" />
+      <node id="6058851216819286581" at="108,41,109,56" concept="10" />
+      <node id="6058851216819286585" at="109,56,110,31" concept="5" />
+      <node id="6058851216819286588" at="110,31,111,65" concept="5" />
+      <node id="6058851216819286593" at="111,65,112,67" concept="5" />
+      <node id="6058851216819286600" at="112,67,113,219" concept="5" />
+      <node id="6058851216819286624" at="113,219,114,58" concept="5" />
+      <node id="6058851216819286632" at="114,58,115,69" concept="5" />
+      <node id="6058851216819286636" at="115,69,116,68" concept="5" />
+      <node id="6058851216819286639" at="116,68,117,227" concept="5" />
+      <node id="6058851216819286659" at="118,5,119,43" concept="5" />
+      <node id="6058851216819286663" at="119,43,120,52" concept="5" />
+      <node id="6058851216819286668" at="120,52,121,17" concept="11" />
+      <node id="6058851216819286675" at="124,45,125,112" concept="11" />
+      <node id="6058851216819286682" at="128,49,129,84" concept="11" />
+      <node id="6058851216819286699" at="132,45,133,82" concept="11" />
+      <node id="6058851216819286120" at="136,0,137,0" concept="6" trace="FONT" />
+      <node id="6058851216819286124" at="137,0,138,0" concept="6" trace="myProject" />
+      <node id="6058851216819286133" at="138,47,139,29" concept="5" />
+      <node id="6058851216819286138" at="139,29,140,86" concept="10" />
+      <node id="6058851216819286142" at="140,86,141,90" concept="5" />
+      <node id="6058851216819286149" at="141,90,142,22" concept="5" />
+      <node id="6058851216819286166" at="145,130,146,14" concept="5" />
+      <node id="6058851216819286175" at="147,45,148,60" concept="10" />
+      <node id="6058851216819286747" at="148,60,149,64" concept="12" />
+      <node id="6058851216819604619" at="151,11,152,66" concept="10" />
+      <node id="6058851216819604628" at="152,66,153,71" concept="5" />
+      <node id="6058851216819286197" at="155,11,156,76" concept="5" />
+      <node id="6058851216819286202" at="156,76,157,59" concept="10" />
+      <node id="6058851216819286206" at="157,59,158,77" concept="10" />
+      <node id="6058851216819286223" at="159,60,160,80" concept="5" />
+      <node id="6058851216819286237" at="163,39,164,40" concept="5" />
+      <node id="6058851216819286240" at="164,40,165,96" concept="5" />
+      <node id="6058851216819286250" at="166,14,167,39" concept="5" />
+      <node id="6058851216819286253" at="167,39,168,67" concept="5" />
+      <node id="6058851216819286257" at="169,7,170,20" concept="5" />
+      <node id="6058851216819286264" at="171,23,172,53" concept="5" />
+      <node id="6058851216819286267" at="172,53,173,53" concept="5" />
+      <node id="6058851216819286272" at="174,14,175,44" concept="5" />
+      <node id="6058851216819286275" at="175,44,176,44" concept="5" />
+      <node id="6058851216819286278" at="177,7,178,18" concept="11" />
+      <node id="6058851216819286283" at="41,0,43,0" concept="6" trace="myProject" />
+      <node id="6058851216819286360" at="60,10,62,5" concept="1" />
+      <node id="6058851216819286367" at="63,11,66,5" concept="8" />
+      <node id="6058851216819286379" at="66,5,69,5" concept="8" />
+      <node id="6058851216819286214" at="158,77,161,9" concept="8" />
+      <node id="6058851216819286248" at="166,12,169,7" concept="1" />
+      <node id="6058851216819286270" at="174,12,177,7" concept="1" />
+      <node id="6058851216819286672" at="123,0,127,0" concept="9" trace="getDimensionServiceKey#()Ljava/lang/String;" />
+      <node id="6058851216819286679" at="127,0,131,0" concept="9" trace="getSelectedImports#()[Lorg/jetbrains/mps/openapi/model/SModelReference;" />
+      <node id="6058851216819286696" at="131,0,135,0" concept="9" trace="getSelectedLanguages#()[Lorg/jetbrains/mps/openapi/language/SLanguage;" />
+      <node id="6058851216819604617" at="150,56,154,11" concept="1" />
+      <node id="6058851216819286351" at="57,10,62,5" concept="8" />
+      <node id="6058851216819286403" at="74,20,79,5" concept="8" />
+      <node id="6058851216819286428" at="79,5,84,5" concept="8" />
+      <node id="6058851216819286128" at="138,0,144,0" concept="3" trace="MyCellRenderer#(Ljetbrains/mps/project/Project;)V" />
+      <node id="6058851216819286180" at="149,64,155,11" concept="5" />
+      <node id="6058851216819286231" at="162,12,169,7" concept="8" />
+      <node id="6058851216819286260" at="170,20,177,7" concept="8" />
+      <node id="6058851216819286342" at="54,44,62,5" concept="8" />
+      <node id="6058851216819286494" at="96,52,107,5" concept="8" />
+      <node id="6058851216819286574" at="107,5,118,5" concept="8" />
+      <node id="6058851216819286396" at="72,0,87,0" concept="9" trace="doOKAction#()V" />
+      <node id="6058851216819286316" at="50,0,71,0" concept="3" trace="AddRequiredImportsDialog#(Ljetbrains/mps/project/Project;[Lorg/jetbrains/mps/openapi/model/SModelReference;[Lorg/jetbrains/mps/openapi/language/SLanguage;)V" />
+      <node id="6058851216819286168" at="146,14,169,7" concept="8" />
+      <node id="6058851216819286457" at="88,0,123,0" concept="9" trace="createCenterPanel#()Ljavax/swing/JComponent;" />
+      <node id="6058851216819286153" at="144,0,180,0" concept="9" trace="getListCellRendererComponent#(Ljavax/swing/JList;Ljava/lang/Object;IZZ)Ljava/awt/Component;" />
+      <scope id="6058851216819286347" at="55,38,56,45" />
+      <scope id="6058851216819286356" at="58,40,59,42" />
+      <scope id="6058851216819286361" at="60,12,61,56" />
+      <scope id="6058851216819286372" at="64,31,65,73" />
+      <scope id="6058851216819286384" at="67,34,68,78" />
+      <scope id="6058851216819286674" at="124,45,125,112" />
+      <scope id="6058851216819286681" at="128,49,129,84" />
+      <scope id="6058851216819286698" at="132,45,133,82" />
+      <scope id="6058851216819286222" at="159,60,160,80" />
+      <scope id="6058851216819604618" at="151,11,153,71">
+        <var name="model" id="6058851216819604620" />
+      </scope>
+      <scope id="6058851216819286236" at="163,39,165,96" />
+      <scope id="6058851216819286249" at="166,14,168,67" />
+      <scope id="6058851216819286263" at="171,23,173,53" />
+      <scope id="6058851216819286271" at="174,14,176,44" />
+      <scope id="6058851216819286408" at="75,31,78,71" />
+      <scope id="6058851216819286433" at="80,34,83,73" />
+      <scope id="6058851216819286672" at="123,0,127,0" />
+      <scope id="6058851216819286679" at="127,0,131,0" />
+      <scope id="6058851216819286696" at="131,0,135,0" />
+      <scope id="6058851216819286132" at="138,47,142,22">
+        <var name="scheme" id="6058851216819286137" />
+      </scope>
+      <scope id="6058851216819604616" at="150,56,154,11" />
+      <scope id="6058851216819286128" at="138,0,144,0">
+        <var name="mpsProject" id="6058851216819286130" />
+      </scope>
+      <scope id="6058851216819286499" at="97,39,106,224">
+        <var name="label" id="6058851216819286500" />
+      </scope>
+      <scope id="6058851216819286579" at="108,41,117,227">
+        <var name="label" id="6058851216819286580" />
+      </scope>
+      <scope id="6058851216819286398" at="73,31,85,23">
+        <var name="values" id="6058851216819286399" />
+      </scope>
+      <scope id="6058851216819286173" at="147,45,161,9">
+        <var name="module" id="6058851216819286201" />
+        <var name="moduleName" id="6058851216819286205" />
+        <var name="ref" id="6058851216819286174" />
+      </scope>
+      <scope id="6058851216819286396" at="72,0,87,0" />
+      <scope id="6058851216819286329" at="50,151,69,5" />
+      <scope id="6058851216819286316" at="50,0,71,0">
+        <var name="project" id="6058851216819286318" />
+        <var name="requiredImports" id="6058851216819286321" />
+        <var name="requiredLanguages" id="6058851216819286325" />
+      </scope>
+      <scope id="6058851216819286459" at="89,44,121,17">
+        <var name="area" id="6058851216819286465" />
+        <var name="center" id="6058851216819286489" />
+        <var name="panel" id="6058851216819286460" />
+      </scope>
+      <scope id="6058851216819286165" at="145,130,178,18" />
+      <scope id="6058851216819286457" at="88,0,123,0" />
+      <scope id="6058851216819286153" at="144,0,180,0">
+        <var name="cellHasFocus" id="6058851216819286163" />
+        <var name="index" id="6058851216819286159" />
+        <var name="isSelected" id="6058851216819286161" />
+        <var name="list" id="6058851216819286155" />
+        <var name="value" id="6058851216819286157" />
+      </scope>
+      <unit id="6058851216819286116" at="135,0,181,0" name="jetbrains.mps.ide.datatransfer.AddRequiredImportsDialog$MyCellRenderer" />
+      <unit id="6058851216819286114" at="39,0,182,0" name="jetbrains.mps.ide.datatransfer.AddRequiredImportsDialog" />
+    </file>
+  </root>
   <root nodeRef="r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)/6299533519672638253">
     <file name="CopyPasteUtil.java">
       <node id="6299533519672638253" at="57,0,58,0" concept="14" trace="LOG" />
@@ -281,8 +457,8 @@
       <node id="8168008089078844276" at="116,70,127,11" concept="8" />
       <node id="183739269705851182" at="391,0,402,0" concept="15" trace="addImportsWithDialog#(Ljetbrains/mps/datatransfer/PasteNodeData;Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/project/Project;)Ljava/lang/Runnable;" />
       <node id="6299533519672650500" at="219,126,231,11" concept="8" />
-      <node id="3237530507069942600" at="262,66,274,5" concept="17" />
-      <node id="6299533519672650825" at="313,41,325,7" concept="17" />
+      <node id="3237530507069942600" at="262,66,274,5" concept="18" />
+      <node id="6299533519672650825" at="313,41,325,7" concept="18" />
       <node id="2199634891381805034" at="422,0,434,9" concept="7" />
       <node id="8168008089079441696" at="115,14,128,9" concept="1" />
       <node id="6299533519672650681" at="280,0,293,0" concept="15" trace="copyNodesToClipboard#(Ljava/util/List;)V" />
@@ -672,7 +848,7 @@
       <node id="6591585676810747338" at="84,66,85,32" concept="11" />
       <node id="6299533519672652152" at="87,51,88,29" concept="11" />
       <node id="6299533519672652147" at="90,54,91,47" concept="11" />
-      <node id="6299533519672652142" at="93,5,94,49" concept="16" />
+      <node id="6299533519672652142" at="93,5,94,49" concept="17" />
       <node id="6299533519672652163" at="97,32,98,18" concept="11" />
       <node id="6299533519672652184" at="102,30,103,58" concept="0" />
       <node id="1491152206151461420" at="104,5,105,69" concept="11" />
@@ -780,7 +956,7 @@
       <node id="6299533519672652355" at="16,82,19,7" concept="8" />
       <node id="6299533519672652389" at="26,82,29,7" concept="8" />
       <node id="6299533519672652404" at="31,5,34,5" concept="8" />
-      <node id="6299533519672652423" at="38,18,43,5" concept="17" />
+      <node id="6299533519672652423" at="38,18,43,5" concept="18" />
       <node id="6299533519672652348" at="15,32,21,5" concept="7" />
       <node id="6299533519672652382" at="25,32,31,5" concept="7" />
       <node id="6299533519672652414" at="37,0,46,0" concept="15" trace="getStringFromTransferable#(Ljava/awt/datatransfer/Transferable;)Ljava/lang/String;" />
