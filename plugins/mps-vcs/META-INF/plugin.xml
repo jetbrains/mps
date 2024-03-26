@@ -96,7 +96,7 @@
     <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>
     <editorNotificationProvider implementation="jetbrains.mps.vcs.annotate.AnnotationEditorNotificationProvider"/>
 
-    <changesGroupingPolicy key="extension" id="extension" implementationClass="jetbrains.mps.vcs.integration.ExtensionChangesGroupingPolicy$Factory"/>
+    <changesGroupingPolicy key="extension" id="extension" weight="25" implementationClass="jetbrains.mps.vcs.integration.ExtensionChangesGroupingPolicy$Factory"/>
 
     <!--
       FIXME has to point to /languages as it's in build layout in mpsVcs but that would lead to module discovery errors when running from sources
