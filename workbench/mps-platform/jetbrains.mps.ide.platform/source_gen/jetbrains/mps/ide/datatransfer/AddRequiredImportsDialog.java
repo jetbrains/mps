@@ -21,13 +21,16 @@ import java.awt.Insets;
 import com.intellij.ui.components.JBList;
 import com.intellij.ui.ScrollPaneFactory;
 import java.awt.Dimension;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.ModelImports;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.ModelDependencyUpdate;
 import com.intellij.ui.SimpleColoredComponent;
 import javax.swing.ListCellRenderer;
 import java.awt.Font;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import java.awt.Component;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import com.intellij.ui.SimpleTextAttributes;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -65,11 +68,13 @@ public class AddRequiredImportsDialog extends DialogWrapper {
 
   @Override
   protected void doOKAction() {
+    mySelectedImports = new SModelReference[0];
     if (myModelsList != null) {
-      mySelectedImports = myModelsList.getSelectedValuesList().toArray(new SModelReference[0]);
+      mySelectedImports = myModelsList.getSelectedValuesList().toArray(mySelectedImports);
     }
+    mySelectedLanguages = new SLanguage[0];
     if (myLanguagesList != null) {
-      mySelectedLanguages = myLanguagesList.getSelectedValuesList().toArray(new SLanguage[0]);
+      mySelectedLanguages = myLanguagesList.getSelectedValuesList().toArray(mySelectedLanguages);
     }
     super.doOKAction();
   }
@@ -123,6 +128,38 @@ public class AddRequiredImportsDialog extends DialogWrapper {
   public SLanguage[] getSelectedLanguages() {
     return (mySelectedLanguages != null ? mySelectedLanguages : new SLanguage[0]);
   }
+
+  public Runnable asUpdateCommand(@NotNull final SModel targetModel) {
+    if (mySelectedLanguages == null || myRequiredImports == null) {
+      // !dialog.isOk(), perhaps
+      throw new IllegalStateException();
+    }
+    if (mySelectedLanguages.length == 0 && myRequiredImports.length == 0) {
+      return () -> {
+      };
+    }
+
+    return new Runnable() {
+      @Override
+      public void run() {
+        ModelImports mi = new ModelImports(targetModel);
+        for (SModelReference imported : myRequiredImports) {
+          mi.addModelImport(imported);
+        }
+        for (SLanguage language : myRequiredLanguages) {
+          mi.addUsedLanguage(language);
+        }
+        //  model's module properties
+        SModule targetModule = targetModel.getModule();
+        if (targetModule == null || targetModule.getRepository() == null) {
+          return;
+        }
+        // perhaps, myProject.getRepository instead of module's repo?
+        new ModelDependencyUpdate(targetModel).updateModuleDependencies(targetModule.getRepository());
+      }
+    };
+  }
+
 
   private static class MyCellRenderer extends SimpleColoredComponent implements ListCellRenderer<Object> {
     private final Font FONT;

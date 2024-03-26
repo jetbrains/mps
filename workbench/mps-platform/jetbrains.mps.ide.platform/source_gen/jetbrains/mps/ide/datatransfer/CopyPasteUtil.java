@@ -41,11 +41,6 @@ import java.io.IOException;
 import java.awt.datatransfer.DataFlavor;
 import java.util.Collection;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.project.MPSProject;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.smodel.SModelInternal;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -336,7 +331,7 @@ public final class CopyPasteUtil {
     if (mpsProject == null) {
       return null;
     }
-    final ModelImportsCheck miCheck = new ModelImportsCheck((MPSProject) mpsProject, targetModel);
+    final ModelImportsCheck miCheck = new ModelImportsCheck(mpsProject, targetModel);
     boolean satisfied = mpsProject.getModelAccess().computeReadAction(() -> miCheck.checkSatisfied(necessaryLanguages, necessaryImports));
     if (satisfied) {
       return null;
@@ -345,7 +340,7 @@ public final class CopyPasteUtil {
     AddRequiredImportsDialog dialog = miCheck.configuredDialog();
     dialog.show();
     if (dialog.isOK()) {
-      return addImports(mpsProject, targetModel, dialog.getSelectedLanguages(), dialog.getSelectedImports());
+      return dialog.asUpdateCommand(targetModel);
     } else {
       return null;
     }
@@ -361,42 +356,7 @@ public final class CopyPasteUtil {
 
     return CopyPasteUtil.addImportsWithDialog(targetModel, pasteNodeData.getNecessaryLanguages(), pasteNodeData.getNecessaryModels(), mpsProject);
   }
-  private static Runnable addImports(final Project p, final SModel targetModel, @NotNull final SLanguage[] requiredLanguages, @NotNull final SModelReference[] requiredImports) {
-    if (requiredLanguages.length == 0 && requiredImports.length == 0) {
-      return null;
-    }
 
-    return new Runnable() {
-      @Override
-      public void run() {
-        //  model properties
-        for (SModelReference imported : requiredImports) {
-          ((SModelInternal) targetModel).addModelImport(imported);
-        }
-        for (SLanguage language : requiredLanguages) {
-          ((SModelInternal) targetModel).addLanguage(language);
-        }
-        //  model's module properties
-        SModule targetModule = targetModel.getModule();
-        if (targetModule == null) {
-          return;
-        }
-
-        for (SModelReference modelRef : requiredImports) {
-          SModel model = modelRef.resolve(p.getRepository());
-          if (model == null) {
-            continue;
-          }
-          SModule module = model.getModule();
-          if (module == null || module == targetModule) {
-            continue;
-          }
-
-          ((AbstractModule) targetModule).addDependency(module.getModuleReference(), false);
-        }
-      }
-    };
-  }
   public static boolean isStringOnTopOfClipboard() {
     // This method was created in accordance with TextPasteUtil.hasStringInClipboard()/.getStringFromClipboard()
     // methods we should consider reimplementing these methods in order to iterrate over .getAllContents() collection
