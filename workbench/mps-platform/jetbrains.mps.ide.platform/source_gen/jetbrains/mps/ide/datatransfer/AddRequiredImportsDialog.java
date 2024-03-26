@@ -61,26 +61,15 @@ public class AddRequiredImportsDialog extends DialogWrapper {
       setTitle("Select models and languages to import");
     }
     init();
-    if (myModelsList != null) {
-      myModelsList.setSelectionInterval(0, myRequiredImports.length - 1);
-    }
-    if (myLanguagesList != null) {
-      myLanguagesList.setSelectionInterval(0, myRequiredLanguages.length - 1);
-    }
   }
 
   @Override
   protected void doOKAction() {
-    Object[] values;
     if (myModelsList != null) {
-      values = myModelsList.getSelectedValues();
-      mySelectedImports = new SModelReference[values.length];
-      System.arraycopy(values, 0, mySelectedImports, 0, values.length);
+      mySelectedImports = myModelsList.getSelectedValuesList().toArray(new SModelReference[0]);
     }
     if (myLanguagesList != null) {
-      values = myLanguagesList.getSelectedValues();
-      mySelectedLanguages = new SLanguage[values.length];
-      System.arraycopy(values, 0, mySelectedLanguages, 0, values.length);
+      mySelectedLanguages = myLanguagesList.getSelectedValuesList().toArray(new SLanguage[0]);
     }
     super.doOKAction();
   }
@@ -104,6 +93,7 @@ public class AddRequiredImportsDialog extends DialogWrapper {
       myModelsList.setCellRenderer(new MyCellRenderer(myProject));
       myModelsList.setBorder(BorderFactory.createEtchedBorder());
       center.add(ScrollPaneFactory.createScrollPane(myModelsList), new GridBagConstraints(0, GridBagConstraints.RELATIVE, 2, 1, 1.0, 1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+      myModelsList.setSelectionInterval(0, myRequiredImports.length - 1);
     }
     if (myRequiredLanguages.length > 0) {
       JTextArea label = new JTextArea("Use languages:");
@@ -115,6 +105,7 @@ public class AddRequiredImportsDialog extends DialogWrapper {
       myLanguagesList.setCellRenderer(new MyCellRenderer(myProject));
       myLanguagesList.setBorder(BorderFactory.createEtchedBorder());
       center.add(ScrollPaneFactory.createScrollPane(myLanguagesList), new GridBagConstraints(0, GridBagConstraints.RELATIVE, 2, 1, 1.0, 1.0, GridBagConstraints.NORTHWEST, GridBagConstraints.BOTH, new Insets(0, 0, 0, 0), 0, 0));
+      myLanguagesList.setSelectionInterval(0, myRequiredLanguages.length - 1);
     }
     panel.add(center, BorderLayout.CENTER);
     panel.setPreferredSize(new Dimension(500, 400));
@@ -122,7 +113,7 @@ public class AddRequiredImportsDialog extends DialogWrapper {
   }
   @Override
   protected String getDimensionServiceKey() {
-    return "#jetbrains.mps.workbench.dialogs.project.utildialogs.addmodelimport.AddRequiredModelImportsDialog2";
+    return getClass().getName();
   }
   @NotNull
   public SModelReference[] getSelectedImports() {
@@ -132,9 +123,11 @@ public class AddRequiredImportsDialog extends DialogWrapper {
   public SLanguage[] getSelectedLanguages() {
     return (mySelectedLanguages != null ? mySelectedLanguages : new SLanguage[0]);
   }
+
   private static class MyCellRenderer extends SimpleColoredComponent implements ListCellRenderer<Object> {
     private final Font FONT;
     private final Project myProject;
+
     public MyCellRenderer(Project mpsProject) {
       myProject = mpsProject;
       EditorColorsScheme scheme = EditorColorsManager.getInstance().getGlobalScheme();

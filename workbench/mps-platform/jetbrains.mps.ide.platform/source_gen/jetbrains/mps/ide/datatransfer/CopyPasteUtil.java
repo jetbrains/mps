@@ -41,9 +41,7 @@ import java.io.IOException;
 import java.awt.datatransfer.DataFlavor;
 import java.util.Collection;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.ModelDependencyResolver;
-import jetbrains.mps.smodel.SLanguageHierarchy;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.SModelInternal;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -338,49 +336,13 @@ public final class CopyPasteUtil {
     if (mpsProject == null) {
       return null;
     }
-    final List<SLanguage> additionalLanguages = new ArrayList<SLanguage>();
-    final List<SModelReference> additionalModels = new ArrayList<SModelReference>();
-    mpsProject.getModelAccess().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        final LanguageRegistry langReg = mpsProject.getComponent(LanguageRegistry.class);
-        List<SModelReference> allImportedModels = new ArrayList<SModelReference>();
-        ModelDependencyResolver mdr = new ModelDependencyResolver(langReg, mpsProject.getRepository());
-        //  XXX in fact, neither old allImportedModels nor MDR give us implicit imports, while one in necessaryImports may actually be imported already as implicit
-        // need better way to deal with implicit imports.
-        for (SModel sm : mdr.directImports(targetModel)) {
-          // XXX could just add ModelImports.getImportedModels directly, no point in resolving them to SModel.
-          //    however, this mimics what SModelOperations.allImportedModels used to do for years.
-          allImportedModels.add(sm.getReference());
-        }
-        // these are not aforementioned  'implicit=true' imports, just accessory models coming from used languages
-        for (SModel sm : mdr.implicitImports(targetModel)) {
-          allImportedModels.add(sm.getReference());
-        }
-
-        // MDR doesn't include target model as its own import; denote imports to self are not necessary
-        allImportedModels.add(targetModel.getReference());
-        for (SModelReference modelReference : necessaryImports) {
-          assert modelReference != null;
-          if (!(allImportedModels.contains(modelReference))) {
-            additionalModels.add(modelReference);
-          }
-        }
-        SLanguageHierarchy langHierarchy = new SLanguageHierarchy(langReg, mdr.usedLanguages(targetModel));
-        Set<SLanguage> allVisibleLanguages = langHierarchy.getExtended();
-        allVisibleLanguages.addAll(langHierarchy.getAggregated());
-        for (SLanguage lang : necessaryLanguages) {
-          if (!(allVisibleLanguages.contains(lang))) {
-            additionalLanguages.add(lang);
-          }
-        }
-      }
-    });
-    if (additionalModels.isEmpty() && additionalLanguages.isEmpty()) {
+    final ModelImportsCheck miCheck = new ModelImportsCheck((MPSProject) mpsProject, targetModel);
+    boolean satisfied = mpsProject.getModelAccess().computeReadAction(() -> miCheck.checkSatisfied(necessaryLanguages, necessaryImports));
+    if (satisfied) {
       return null;
     }
 
-    AddRequiredImportsDialog dialog = new AddRequiredImportsDialog(mpsProject, additionalModels.toArray(new SModelReference[additionalModels.size()]), additionalLanguages.toArray(new SLanguage[additionalLanguages.size()]));
+    AddRequiredImportsDialog dialog = miCheck.configuredDialog();
     dialog.show();
     if (dialog.isOK()) {
       return addImports(mpsProject, targetModel, dialog.getSelectedLanguages(), dialog.getSelectedImports());
