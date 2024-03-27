@@ -122,7 +122,7 @@
         <property id="8618885170173601779" name="head" index="2Ry0Am" />
         <child id="8618885170173601778" name="tail" index="2Ry0An" />
       </concept>
-      <concept id="2591537044435828007" name="jetbrains.mps.build.structure.BuildSource_CompilablePart" flags="ng" index="Saw0h">
+      <concept id="2591537044435828007" name="jetbrains.mps.build.structure.BuildSource_CompilablePart" flags="ngI" index="Saw0h">
         <property id="7687809870062809395" name="withKotlin" index="ZpmtF" />
       </concept>
       <concept id="2591537044435828004" name="jetbrains.mps.build.structure.BuildLayout_CompileOutputOf" flags="ng" index="Saw0i">
@@ -191,7 +191,7 @@
       <concept id="4701820937132281259" name="jetbrains.mps.build.structure.BuildCustomWorkflow" flags="ng" index="1y0Vig">
         <child id="4701820937132281260" name="parts" index="1y0Vin" />
       </concept>
-      <concept id="4701820937132344003" name="jetbrains.mps.build.structure.BuildLayout_Container" flags="ng" index="1y1bJS">
+      <concept id="4701820937132344003" name="jetbrains.mps.build.structure.BuildLayout_Container" flags="ngI" index="1y1bJS">
         <child id="7389400916848037006" name="children" index="39821P" />
       </concept>
       <concept id="5610619299013057363" name="jetbrains.mps.build.structure.BuildLayout_ImportContent" flags="ng" index="3ygNvl">
@@ -255,7 +255,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -56080,11 +56080,6 @@
             <ref role="3bR37D" node="3PMETvlnxVs" resolve="jetbrains.mps.kotlin.stubs" />
           </node>
         </node>
-        <node concept="1SiIV0" id="Tni1ZmaWHL" role="3bR37C">
-          <node concept="3bR9La" id="Tni1ZmaWHM" role="1SiIV1">
-            <ref role="3bR37D" node="Tni1ZmaWkg" resolve="jetbrains.mps.kotlin.idePlugin" />
-          </node>
-        </node>
         <node concept="1yeLz9" id="Tni1ZmaJni" role="1TViLv">
           <property role="TrG5h" value="jetbrains.mps.kotlin.generator00" />
           <property role="3LESm3" value="d3337a44-d215-4189-8a03-b5053e6ae21d" />
@@ -56269,9 +56264,43 @@
             <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
           </node>
         </node>
-        <node concept="1SiIV0" id="4L0QGs2y116" role="3bR37C">
-          <node concept="3bR9La" id="4L0QGs2y117" role="1SiIV1">
-            <ref role="3bR37D" node="1d41uYMTVPB" resolve="jetbrains.mps.lang.scopes.runtime" />
+        <node concept="1SiIV0" id="7ffJaDGHIKG" role="3bR37C">
+          <node concept="3bR9La" id="7ffJaDGHIKH" role="1SiIV1">
+            <ref role="3bR37D" node="3PMETvlnxVs" resolve="jetbrains.mps.kotlin.stubs" />
+          </node>
+        </node>
+        <node concept="1yeLz9" id="7ffJaDGHIKY" role="1TViLv">
+          <property role="TrG5h" value="jetbrains.mps.baseLanguage.kotlinRefs.generator" />
+          <property role="3LESm3" value="a3a83e36-5b27-4750-b637-9459331c4d9b" />
+          <node concept="1SiIV0" id="7ffJaDGHIKZ" role="3bR37C">
+            <node concept="3bR9La" id="7ffJaDGHIL0" role="1SiIV1">
+              <ref role="3bR37D" node="Ye$g8PO8Uc" resolve="jetbrains.mps.kotlin" />
+            </node>
+          </node>
+          <node concept="1BupzO" id="7ffJaDGHILk" role="3bR31x">
+            <property role="3ZfqAx" value="generator/templates" />
+            <property role="1Hdu6h" value="true" />
+            <property role="1HemKv" value="true" />
+            <node concept="3LXTmp" id="7ffJaDGHILl" role="1HemKq">
+              <node concept="398BVA" id="7ffJaDGHIL1" role="3LXTmr">
+                <ref role="398BVh" node="1fy59xXoa5p" resolve="plugin_home" />
+                <node concept="2Ry0Ak" id="7ffJaDGHIL2" role="iGT6I">
+                  <property role="2Ry0Am" value="languages" />
+                  <node concept="2Ry0Ak" id="7ffJaDGHIL3" role="2Ry0An">
+                    <property role="2Ry0Am" value="baseLanguage.kotlinRefs" />
+                    <node concept="2Ry0Ak" id="7ffJaDGHIL4" role="2Ry0An">
+                      <property role="2Ry0Am" value="generator" />
+                      <node concept="2Ry0Ak" id="7ffJaDGHIL5" role="2Ry0An">
+                        <property role="2Ry0Am" value="templates" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3qWCbU" id="7ffJaDGHILm" role="3LXTna">
+                <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
+              </node>
+            </node>
           </node>
         </node>
       </node>

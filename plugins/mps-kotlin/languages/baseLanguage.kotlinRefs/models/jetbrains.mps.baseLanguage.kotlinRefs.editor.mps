@@ -124,6 +124,10 @@
       <concept id="1088013125922" name="jetbrains.mps.lang.editor.structure.CellModel_RefCell" flags="sg" stub="730538219795941030" index="1iCGBv">
         <child id="1088186146602" name="editorComponent" index="1sWHZn" />
       </concept>
+      <concept id="7597241200646296619" name="jetbrains.mps.lang.editor.structure.QueryFunction_SNode" flags="in" index="3k4GqP" />
+      <concept id="7597241200646296617" name="jetbrains.mps.lang.editor.structure.NavigatableNodeStyleClassItem" flags="ln" index="3k4GqR">
+        <child id="7597241200646296618" name="functionNode" index="3k4GqO" />
+      </concept>
       <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ngI" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
       </concept>
@@ -1121,8 +1125,19 @@
             <ref role="Ul1FP" to="48vp:UG7NftKS3N" resolve="IKotlinFunctionLikeCall" />
           </node>
         </node>
-        <node concept="3yfXC2" id="1d2BQ0ZsVF2" role="3F10Kt">
-          <ref role="3ygfmf" to="48vp:fz7wK6H" resolve="target" />
+        <node concept="3k4GqR" id="7ffJaDGzSv5" role="3F10Kt">
+          <node concept="3k4GqP" id="7ffJaDGzSv7" role="3k4GqO">
+            <node concept="3clFbS" id="7ffJaDGzSv9" role="2VODD2">
+              <node concept="3clFbF" id="7ffJaDGzSHr" role="3cqZAp">
+                <node concept="2OqwBi" id="7ffJaDGzSTA" role="3clFbG">
+                  <node concept="pncrf" id="7ffJaDGzSHq" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="7ffJaDGzT62" role="2OqNvi">
+                    <ref role="3Tt5mk" to="48vp:fz7wK6H" resolve="target" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
       </node>
       <node concept="PMmxH" id="4L0QGs1Vh93" role="3EZMnx">
