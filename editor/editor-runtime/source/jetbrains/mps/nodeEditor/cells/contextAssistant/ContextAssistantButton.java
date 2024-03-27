@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cells.contextAssistant;
 
+import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.JBUI.Borders;
@@ -42,7 +43,7 @@ import java.awt.Rectangle;
 class ContextAssistantButton extends JButton {
 
   private static final ColorSelector borderColors =
-      new ColorSelector(JBColor.border(), UIUtil.getListSelectionBackground(false), UIUtil.getListSelectionBackground(true));
+      new ColorSelector(new JBColor(Gray._192, Gray._192), UIUtil.getListSelectionBackground(false), UIUtil.getListSelectionBackground(true));
   private static final ColorSelector bgColors =
       new ColorSelector(UIUtil.getListBackground(), UIUtil.getListSelectionBackground(false), UIUtil.getListSelectionBackground(true));
   private static final ColorSelector fgColors =
