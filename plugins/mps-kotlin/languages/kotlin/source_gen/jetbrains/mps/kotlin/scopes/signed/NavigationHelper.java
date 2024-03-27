@@ -8,9 +8,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NavigationHelper {
   /**
@@ -22,7 +21,7 @@ public class NavigationHelper {
    * @param <T> type of return objects from either callbacks
    */
   public static <T> T withCallReceiver(FullScopeContext context, _FunctionTypes._return_P1_E0<? extends T, ? super SNode> ifMemberReceiver, _FunctionTypes._return_P0_E0<? extends T> ifStandalone) {
-    return withReceiver(Kind.CALL, context, ifMemberReceiver, ifStandalone);
+    return withReceiver(KotlinKinds.CALL, context, ifMemberReceiver, ifStandalone);
   }
 
   /**
@@ -34,7 +33,7 @@ public class NavigationHelper {
    * @param <T> type of return objects from either callbacks
    */
   public static <T> T withMemberReceiver(FullScopeContext context, final _FunctionTypes._return_P1_E0<? extends T, ? super SNode> ifMemberReceiver, final _FunctionTypes._return_P0_E0<? extends T> ifStandalone) {
-    return withReceiver(Kind.REFERENCE, context, (operand) -> {
+    return withReceiver(KotlinKinds.REFERENCE, context, (operand) -> {
       if ((operand != null)) {
         return ifMemberReceiver.invoke(operand);
       } else {
@@ -43,23 +42,28 @@ public class NavigationHelper {
     }, ifStandalone);
   }
 
-  private static <T> T withReceiver(Kind kind, FullScopeContext context, _FunctionTypes._return_P1_E0<? extends T, ? super SNode> ifMemberReceiver, _FunctionTypes._return_P0_E0<? extends T> ifStandalone) {
-    SNode navigation = SNodeOperations.as((((context.getReferenceNode() == null) ? context.getNode() : SNodeOperations.getParent(context.getReferenceNode()))), SNodeOperations.asSConcept(kind.navigationConcept));
+  public static <T> T withReceiver(Kind kind, FullScopeContext context, _FunctionTypes._return_P1_E0<? extends T, ? super SNode> ifMemberReceiver, _FunctionTypes._return_P0_E0<? extends T> ifStandalone) {
+    SNode navigation = SNodeOperations.as((((context.getReferenceNode() == null) ? context.getNode() : SNodeOperations.getParent(context.getReferenceNode()))), SNodeOperations.asSConcept(kind.getNavigationConcept()));
     // In navigation -> get from operand type if used target
     if ((navigation != null)) {
-      boolean isTargetFromNode = (context.getReferenceNode() != null) && ListSequence.fromList(SNodeOperations.getChildren(navigation, kind.targetLink)).first() == context.getReferenceNode();
-      boolean isTargetFromLink = kind.targetLink.equals(context.getContainingLink());
+      boolean isTargetFromNode = (context.getReferenceNode() != null) && ListSequence.fromList(SNodeOperations.getChildren(navigation, kind.getTargetLink())).first() == context.getReferenceNode();
+      boolean isTargetFromLink = kind.getTargetLink().equals(context.getContainingLink());
 
       if (isTargetFromLink || isTargetFromNode) {
-        SNode operand = SNodeOperations.as(ListSequence.fromList(SNodeOperations.getChildren(navigation, kind.operandLink)).first(), CONCEPTS.IExpression$2i);
-        return ifMemberReceiver.invoke(operand);
+        return ifMemberReceiver.invoke(ListSequence.fromList(SNodeOperations.getChildren(navigation, kind.getOperandLink())).first());
       }
     }
 
     return ifStandalone.invoke();
   }
 
-  private enum Kind {
+  public interface Kind {
+    SAbstractConcept getNavigationConcept();
+    SContainmentLink getOperandLink();
+    SContainmentLink getTargetLink();
+  }
+
+  private enum KotlinKinds implements Kind {
     CALL(CONCEPTS.NavigationOperation$4I, LINKS.operand$YS5t, LINKS.target$C6zp),
     REFERENCE(CONCEPTS.MemberNavigationExpression$7I, LINKS.operand$8jSC, LINKS.target$aBAp);
 
@@ -67,15 +71,24 @@ public class NavigationHelper {
     private final SContainmentLink operandLink;
     private final SContainmentLink targetLink;
 
-    Kind(SAbstractConcept navigationConcept, SContainmentLink operandLink, SContainmentLink targetLink) {
+    KotlinKinds(SAbstractConcept navigationConcept, SContainmentLink operandLink, SContainmentLink targetLink) {
       this.navigationConcept = navigationConcept;
       this.operandLink = operandLink;
       this.targetLink = targetLink;
     }
+
+    public SAbstractConcept getNavigationConcept() {
+      return this.navigationConcept;
+    }
+    public SContainmentLink getOperandLink() {
+      return this.operandLink;
+    }
+    public SContainmentLink getTargetLink() {
+      return this.targetLink;
+    }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IExpression$2i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression");
     /*package*/ static final SConcept NavigationOperation$4I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af450L, "jetbrains.mps.kotlin.structure.NavigationOperation");
     /*package*/ static final SConcept MemberNavigationExpression$7I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationExpression");
   }

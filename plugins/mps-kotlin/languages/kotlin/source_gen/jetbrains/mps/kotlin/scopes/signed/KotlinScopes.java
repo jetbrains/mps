@@ -47,6 +47,7 @@ public class KotlinScopes {
   protected SignatureFilter filter = null;
   protected List<_FunctionTypes._return_P1_E0<? extends SignatureScope, ? super SignatureScope>> wrappers;
   protected MemberReceiver receiver;
+  protected List<SignatureScope> additionalScopes = null;
 
   protected KotlinScopes(FullScopeContext context) {
     this.context = context;
@@ -71,9 +72,19 @@ public class KotlinScopes {
    * - `::member`: will get the scope from both the standalone methods and the contextual receivers (this@*)
    */
   public KotlinScopes membersReceiver() {
-    this.forceIncludeInstance = true;
+    forceInstanceInclusion();
 
     return NavigationHelper.withMemberReceiver(context, (operand) -> receiver(MemberReceiver.of(operand)), () -> useHierarchy());
+  }
+
+  /**
+   * This enabled inclusion of instance members, regardless of whether the type is static or not.
+   * 
+   * This should mainly be used for member references (...::member)
+   */
+  public KotlinScopes forceInstanceInclusion() {
+    this.forceIncludeInstance = true;
+    return this;
   }
 
   /**
@@ -150,6 +161,14 @@ public class KotlinScopes {
     return this;
   }
 
+  public KotlinScopes plus(SignatureScope scope) {
+    if (additionalScopes == null) {
+      additionalScopes = ListSequence.fromList(new ArrayList<>());
+    }
+    ListSequence.fromList(additionalScopes).addElement(scope);
+    return this;
+  }
+
   /**
    * Build the scopes from provided settings. Returns a list of independent scopes (they can be used for overload resolution).
    * 
@@ -187,6 +206,8 @@ public class KotlinScopes {
       SignatureScope.collectHierarchyScopes(context, collector);
       ListSequence.fromList(scopes.value).addSequence(ListSequence.fromList(collector.getScopes()));
     }
+
+    ListSequence.fromList(scopes.value).addSequence(ListSequence.fromList(additionalScopes));
 
     // If no wrapper, will keep initial form
     ListSequence.fromList(wrappers).visitAll((it) -> {

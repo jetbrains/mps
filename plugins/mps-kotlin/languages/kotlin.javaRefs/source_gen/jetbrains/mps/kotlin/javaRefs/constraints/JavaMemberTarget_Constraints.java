@@ -14,7 +14,11 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
+import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
 import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
+import jetbrains.mps.kotlin.scopes.signed.NavigationHelper;
+import jetbrains.mps.kotlin.behavior.MemberReceiver;
+import jetbrains.mps.scope.CompositeScope;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -37,7 +41,26 @@ public class JavaMemberTarget_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return KotlinScopes.create(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()).functions().membersReceiver().noExtensionMembers().buildScope(CONCEPTS.GenericDeclaration$bC);
+            FullScopeContext context = new FullScopeContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
+            final KotlinScopes scope = KotlinScopes.create(context).functions().noExtensionMembers().forceInstanceInclusion();
+
+            // Same as receiverMember() but store whether it is standalone
+            boolean isStandalone = NavigationHelper.withMemberReceiver(context, (operand) -> {
+              scope.receiver(MemberReceiver.of(operand));
+              return false;
+            }, () -> {
+              // Add constructors for standalone member navigation
+              scope.useHierarchy();
+              return true;
+            });
+
+            Scope regularScope = scope.buildScope(CONCEPTS.GenericDeclaration$bC);
+
+            if (isStandalone) {
+              return new CompositeScope(regularScope, JavaConstructorHelper.getConstructorsScope(_context.getContextNode()), JavaConstructorHelper.getDefaultConstructorScope(_context.getContextNode()));
+            } else {
+              return regularScope;
+            }
           }
         };
       }

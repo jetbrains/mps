@@ -16,9 +16,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kotlin.scopes.signed.ScopeCollector;
-import jetbrains.mps.kotlin.scopes.SignatureFilterImpl;
-import jetbrains.mps.kotlin.signatures.FunctionSignature;
+import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
 import jetbrains.mps.kotlin.scopes.signed.ConstructorsScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -46,15 +44,7 @@ public final class FunctionCallExpression__BehaviorDescriptor extends BaseBHDesc
     return new ImplicitCallReceiver(__thisNode__);
   }
   /*package*/ static Iterable<SignatureScope> getFunctionScopeParts_id6dAo8EmAhT7(@NotNull SAbstractConcept __thisConcept__, FullScopeContext context) {
-    ScopeCollector collector = new ScopeCollector(new SignatureFilterImpl<FunctionSignature>(FunctionSignature.class));
-
-    // We get scopes as a list in the collector rather than as an unified scope as each is independent.
-    SignatureScope.collectHierarchyScopes(context, collector);
-
-    // + scope for constructors
-    collector.declareScope(new ConstructorsScope(context));
-
-    return collector.getScopes();
+    return KotlinScopes.create(context).functions().useHierarchy().plus(new ConstructorsScope(context)).buildScopes();
   }
   @NotNull
   /*package*/ static Iterable<ParameterDeclaration> getAvailableParameters_id1$jFvlD0xqw(@NotNull SNode __thisNode__) {

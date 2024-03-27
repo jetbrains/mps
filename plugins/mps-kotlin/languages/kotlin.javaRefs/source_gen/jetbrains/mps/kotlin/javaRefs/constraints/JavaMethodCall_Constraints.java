@@ -18,12 +18,6 @@ import jetbrains.mps.kotlin.scopes.signed.KotlinScopes;
 import jetbrains.mps.kotlin.scopes.signed.NavigationHelper;
 import jetbrains.mps.kotlin.scopes.signed.FullScopeContext;
 import jetbrains.mps.scope.CompositeScope;
-import jetbrains.mps.scope.FilteringScope;
-import jetbrains.mps.baseLanguage.scopes.VisibleClassConstructorsScope;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -51,14 +45,7 @@ public class JavaMethodCall_Constraints extends BaseConstraintsDescriptor {
 
             return NavigationHelper.withCallReceiver(new FullScopeContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink()), (_receiver) -> regularScope, () -> {
               // Not called on a receiver -> usual constructors scope
-              return new CompositeScope(regularScope, new FilteringScope(new VisibleClassConstructorsScope(_context.getContextNode())) {
-                @Override
-                public boolean isExcluded(SNode node) {
-                  SNode clazz = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);
-                  SNode wrapperClazz = SNodeOperations.getNodeAncestor(clazz, CONCEPTS.ClassConcept$bK, false, false);
-                  return !(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.ClassConcept$bK, false)).contains(wrapperClazz)) && !((boolean) ClassConcept__BehaviorDescriptor.canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk.invoke(clazz, _context.getContextNode()));
-                }
-              });
+              return new CompositeScope(regularScope, JavaConstructorHelper.getConstructorsScope(_context.getContextNode()));
             });
           }
         };
@@ -72,7 +59,6 @@ public class JavaMethodCall_Constraints extends BaseConstraintsDescriptor {
   private static final class CONCEPTS {
     /*package*/ static final SConcept JavaMethodCall$gD = MetaAdapterFactory.getConcept(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x2196e93e834d57ccL, "jetbrains.mps.kotlin.javaRefs.structure.JavaMethodCall");
     /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class LINKS {

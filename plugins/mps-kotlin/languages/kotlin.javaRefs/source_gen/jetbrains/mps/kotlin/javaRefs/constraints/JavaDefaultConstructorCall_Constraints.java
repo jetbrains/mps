@@ -36,7 +36,7 @@ public class JavaDefaultConstructorCall_Constraints extends BaseConstraintsDescr
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return DefaultConstructorHelper.getScope(_context.getContextNode());
+            return JavaConstructorHelper.getDefaultConstructorScope(_context.getContextNode());
           }
         };
       }

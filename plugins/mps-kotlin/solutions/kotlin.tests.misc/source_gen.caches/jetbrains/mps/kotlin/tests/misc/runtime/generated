@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product version="3" modelHash="3j7i7qwr4gikkovb3uswqwsraryfq13">
+  <files names="ExtensionRuntimeTest_Test.java" />
+  <files dir="kotlin/default/jetbrains/mps/kotlin/tests/misc/runtime" names="StringTestUtils.kt" />
+</product>
+

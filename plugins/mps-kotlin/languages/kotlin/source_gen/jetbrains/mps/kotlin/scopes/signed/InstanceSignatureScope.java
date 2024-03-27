@@ -61,11 +61,15 @@ public class InstanceSignatureScope implements SignatureScope {
       }
     });
     // Visit type
-    VisibilityAccess baseAccesToType = KotlinScopesHelper.getBaseAccessToType(myContextNode, type);
+    VisibilityAccess baseAccesToType = getInstanceTypeBaseAccess();
     TypeMembersVisitor visitor = new TypeMembersVisitor(filter, myContextNode, baseAccesToType);
     IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(type, visitor);
 
     return visitor.getMembers();
+  }
+
+  protected VisibilityAccess getInstanceTypeBaseAccess() {
+    return KotlinScopesHelper.getBaseAccessToType(myContextNode, getInstanceType());
   }
 
   @Override

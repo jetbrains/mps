@@ -5,6 +5,7 @@
   <uses language="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
   <uses language="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
   <uses language="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+  <uses language="l:2405a196-e75d-462c-938b-ae8e3fac20aa:jetbrains.mps.baseLanguage.kotlinRefs" />
   <uses language="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
   <uses language="l:f61473f9-130f-42f6-b98d-6c438812c2f6:jetbrains.mps.baseLanguage.unitTest" />
   <uses language="l:515552c7-fcc0-4ab4-9789-2f3c49344e85:jetbrains.mps.baseLanguage.varVariable" />
@@ -40,8 +41,10 @@
   <uses module="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" kind="dp" />
   <uses module="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="rt+dp" />
   <uses module="6b3888c1-9802-44d8-8baf-f8e6c33ed689(jetbrains.mps.kotlin)" kind="dp" />
+  <uses module="9e4ff22b-60f1-43ef-a50b-f9f0fcec22e0(jetbrains.mps.kotlin.javaRefs)" kind="dp" />
   <uses module="b50d89c0-0fb9-4105-b652-222148c26a9b(jetbrains.mps.kotlin.stdlib)" kind="rt+dp" />
   <uses module="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be(jetbrains.mps.kotlin.stubs)" kind="dp" />
+  <uses module="5f5dc7f6-3323-460d-848a-1c2ae461be61(jetbrains.mps.kotlin.tests.editor)" kind="dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
   <uses module="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="dp" />

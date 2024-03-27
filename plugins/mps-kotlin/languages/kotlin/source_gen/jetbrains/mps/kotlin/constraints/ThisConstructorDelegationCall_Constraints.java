@@ -22,9 +22,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
-public class AbstractConstructorDelegationCall_Constraints extends BaseConstraintsDescriptor {
-  public AbstractConstructorDelegationCall_Constraints() {
-    super(CONCEPTS.AbstractConstructorDelegationCall$RC);
+public class ThisConstructorDelegationCall_Constraints extends BaseConstraintsDescriptor {
+  public ThisConstructorDelegationCall_Constraints() {
+    super(CONCEPTS.ThisConstructorDelegationCall$nG);
   }
 
   @Override
@@ -36,13 +36,13 @@ public class AbstractConstructorDelegationCall_Constraints extends BaseConstrain
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return new SNodePointer("r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)", "1806979145064406518");
+            return new SNodePointer("r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)", "8345096074697272670");
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             // Could be the following, but the added complexity does not seem necessary here (needed for automatic resolution though)
             //  KotlinScopes.forKotlinFunction(concept<IFunctionCall>,node<IFunctionCall>,node<>,aggregation,concept<INamedConcept>):Scope
-            return new NamedElementsScope(AbstractConstructorDelegationCall__BehaviorDescriptor.getAvailableConstructors_id4DC0lWpsin.invoke(SNodeOperations.asSConcept(CONCEPTS.SuperConstructorDelegationCall$ob), _context.getContextNode()));
+            return new NamedElementsScope(AbstractConstructorDelegationCall__BehaviorDescriptor.getAvailableConstructors_id4DC0lWpsin.invoke(SNodeOperations.asSConcept(CONCEPTS.ThisConstructorDelegationCall$nG), _context.getContextNode()));
           }
         };
       }
@@ -53,9 +53,9 @@ public class AbstractConstructorDelegationCall_Constraints extends BaseConstrain
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept ThisConstructorDelegationCall$nG = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af591L, "jetbrains.mps.kotlin.structure.ThisConstructorDelegationCall");
     /*package*/ static final SConcept AbstractConstructorDelegationCall$RC = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56a195b73L, "jetbrains.mps.kotlin.structure.AbstractConstructorDelegationCall");
     /*package*/ static final SInterfaceConcept IConstructorDeclaration$rR = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7069a625f2b0238aL, "jetbrains.mps.kotlin.structure.IConstructorDeclaration");
-    /*package*/ static final SConcept SuperConstructorDelegationCall$ob = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af592L, "jetbrains.mps.kotlin.structure.SuperConstructorDelegationCall");
   }
 
   private static final class LINKS {

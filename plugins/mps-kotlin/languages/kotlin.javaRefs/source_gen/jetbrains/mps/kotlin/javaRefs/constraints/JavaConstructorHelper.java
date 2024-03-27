@@ -8,11 +8,14 @@ import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.baseLanguage.scopes.DefaultConstructorUtils;
+import jetbrains.mps.baseLanguage.scopes.VisibleClassConstructorsScope;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class DefaultConstructorHelper {
-  public static Scope getScope(SNode contextNode) {
+public class JavaConstructorHelper {
+  public static Scope getDefaultConstructorScope(SNode contextNode) {
     // TODO visibility handling
     Scope classifiers = ClassifierScopes.getReachableClassifiersScope(SNodeOperations.getModel(contextNode), null, false);
 
@@ -26,6 +29,17 @@ public class DefaultConstructorHelper {
         // note: http://docs.oracle.com/javase/specs/jls/se5.0/html/classes.html#8.8.9
         // visibility of default constructor not implies by visibility of class
         return !(DefaultConstructorUtils.hasDefaultConstructor(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)));
+      }
+    };
+  }
+
+  public static Scope getConstructorsScope(final SNode contextNode) {
+    return new FilteringScope(new VisibleClassConstructorsScope(contextNode)) {
+      @Override
+      public boolean isExcluded(SNode node) {
+        SNode clazz = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);
+        SNode wrapperClazz = SNodeOperations.getNodeAncestor(clazz, CONCEPTS.ClassConcept$bK, false, false);
+        return !(ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.ClassConcept$bK, false)).contains(wrapperClazz)) && !((boolean) ClassConcept__BehaviorDescriptor.canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk.invoke(clazz, contextNode));
       }
     };
   }
