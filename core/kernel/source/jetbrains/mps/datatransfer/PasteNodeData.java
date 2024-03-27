@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,53 +30,52 @@ import java.util.Set;
 /**
  * immutable data
  */
-public class PasteNodeData {
+public final class PasteNodeData {
   private final List<SNode> myNodes;
+  // at the moment, make sense for "out" PND, created from myCopiedLinks
   private final Set<SReference> myRequireResolveReferences;
+  // at the moment, make sense for "in" PND only, serves as an input to constuct myRequireResolveReferences for paste. FIXME get rid of SReference
   private final Collection<AssociationLink> myCopiedLinks;
-  private final Set<SLanguage> myNecessaryLanguages;
-  private final Set<SModelReference> myNecessaryModels;
-  private final SModelReference mySourceModel;
-
-  private PasteNodeData(List<SNode> nodes, Set<SReference> references,
-                       SModelReference sourceModelRef,
-                       Set<SLanguage> necessaryLanguages,
-                       Set<SModelReference> necessaryModels) {
-    myNodes = nodes;
-    myRequireResolveReferences = references;
-    myCopiedLinks = Collections.emptyList();
-    mySourceModel = sourceModelRef;
-    myNecessaryLanguages = necessaryLanguages;
-    myNecessaryModels = necessaryModels;
-  }
+  private final Set<SLanguage> myNecessaryLanguages; // r/o
+  private final Set<SModelReference> myNecessaryModels; // r/o
 
   // for paste scenario, new
   public PasteNodeData(PasteNodeData in, List<SNode> nodes, Set<SReference> references) {
-    this(nodes, references, in.mySourceModel, in.getNecessaryLanguages(), in.getNecessaryModels());
+    myNodes = nodes;
+    myRequireResolveReferences = references;
+    myCopiedLinks = Collections.emptySet(); // employed on copy only
+    myNecessaryLanguages = in.getNecessaryLanguages();
+    myNecessaryModels = in.getNecessaryModels();
   }
 
-    // for copy scenario
+  /**
+   * @deprecated use alternative without model reference; drop once 24.1 is out
+   */
+  @Deprecated(forRemoval = true, since = "2024.1")
+  // for copy scenario, old
   public PasteNodeData(SModelReference sourceModelRef,
                        List<SNode> nodes,
                        @NotNull Collection<AssociationLink> references,
                        Set<SLanguage> necessaryLanguages,
                        Set<SModelReference> necessaryModels) {
+    this(nodes, references, necessaryLanguages, necessaryModels);
+  }
+
+  // for copy scenario, new
+  public PasteNodeData(List<SNode> nodes,
+                       @NotNull Collection<AssociationLink> references,
+                       Set<SLanguage> necessaryLanguages,
+                       Set<SModelReference> necessaryModels) {
     myNodes = nodes;
-    myRequireResolveReferences = Collections.emptySet();
+    myRequireResolveReferences = Collections.emptySet(); // employed on paste only
     myCopiedLinks = references;
-    mySourceModel = sourceModelRef;
     myNecessaryLanguages = necessaryLanguages;
     myNecessaryModels = necessaryModels;
   }
 
-    // empty
-  private PasteNodeData(@Nullable SModelReference sourceModel) {
-    myNodes = Collections.emptyList();
-    myRequireResolveReferences = Collections.emptySet();
-    myCopiedLinks = Collections.emptyList();
-    mySourceModel = sourceModel;
-    myNecessaryLanguages = Collections.emptySet();
-    myNecessaryModels = Collections.emptySet();
+  // empty
+  private PasteNodeData() {
+    this(Collections.emptyList(), Collections.emptySet(), Collections.emptySet(), Collections.emptySet());
   }
 
   public List<SNode> getNodes() {
@@ -91,9 +90,13 @@ public class PasteNodeData {
     return myCopiedLinks;
   }
 
+  /**
+   * @deprecated always null, of no use; drop once 24.1 is out
+   */
   @Nullable
+  @Deprecated(forRemoval = true,since = "2024.1")
   public SModelReference getSourceModel() {
-    return mySourceModel;
+    return null;
   }
 
   public Set<SLanguage> getNecessaryLanguages() {
@@ -104,7 +107,15 @@ public class PasteNodeData {
     return myNecessaryModels;
   }
 
+  /**
+   * @deprecated unused; drop once 24.1 is out
+   */
+  @Deprecated(forRemoval = true,since = "2024.1")
   public static PasteNodeData emptyPasteNodeData(SModelReference sourceModel) {
-    return new PasteNodeData(sourceModel);
+    return new PasteNodeData();
+  }
+
+  public static PasteNodeData emptyPasteNodeData() {
+    return new PasteNodeData();
   }
 }

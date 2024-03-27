@@ -25,7 +25,6 @@ import jetbrains.mps.datatransfer.DataTransferManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -53,7 +52,7 @@ public final class CopyPasteUtil {
 
   public static PasteNodeData createNodeDataIn(List<SNode> sourceNodes, Map<SNode, Set<SNode>> sourceNodesAndAttributes) {
     if (ListSequence.fromList(sourceNodes).isEmpty()) {
-      return PasteNodeData.emptyPasteNodeData(null);
+      return PasteNodeData.emptyPasteNodeData();
     }
 
     SModel model = SNodeOperations.getModel(ListSequence.fromList(sourceNodes).first());
@@ -126,7 +125,7 @@ public final class CopyPasteUtil {
       }
     }
 
-    return new PasteNodeData(SModelOperations.getPointer(model), targetNodes, copiedLinks, necessaryLanguages, necessaryModels);
+    return new PasteNodeData(targetNodes, copiedLinks, necessaryLanguages, necessaryModels);
   }
 
   public static PasteNodeData createNodeDataOut(PasteNodeData in) {
@@ -300,7 +299,7 @@ public final class CopyPasteUtil {
       break;
     }
     if (content == null) {
-      return PasteNodeData.emptyPasteNodeData(model.getReference());
+      return PasteNodeData.emptyPasteNodeData();
     }
     if (content.isDataFlavorSupported(SModelDataFlavor.sNode)) {
       SNodeTransferable nodeTransferable;
@@ -317,7 +316,7 @@ public final class CopyPasteUtil {
         }
       }
     }
-    return PasteNodeData.emptyPasteNodeData(model.getReference());
+    return PasteNodeData.emptyPasteNodeData();
   }
   public static SNode getNodeFromClipboard(SModel model) {
     return CopyPasteUtil.getNodesFromClipboard(model).get(0);
@@ -347,19 +346,12 @@ public final class CopyPasteUtil {
   }
   @Nullable
   public static Runnable addImportsWithDialog(PasteNodeData pasteNodeData, SModel targetModel, Project mpsProject) {
-    // shows dialog if necessary and pasted nodes were taken not from the same model
-    SModelReference oldModel = pasteNodeData.getSourceModel();
-    // no dialog if copying from the same model
-    if (oldModel != null && targetModel.getReference().equals(oldModel)) {
-      return null;
-    }
-
     return CopyPasteUtil.addImportsWithDialog(targetModel, pasteNodeData.getNecessaryLanguages(), pasteNodeData.getNecessaryModels(), mpsProject);
   }
 
   public static boolean isStringOnTopOfClipboard() {
     // This method was created in accordance with TextPasteUtil.hasStringInClipboard()/.getStringFromClipboard()
-    // methods we should consider reimplementing these methods in order to iterrate over .getAllContents() collection
+    // methods we should consider reimplementing these methods in order to iterate over .getAllContents() collection
     // in case first available Transferable does not support neither stringFlavor nor sNode one.
     for (Transferable trf : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
       if (trf != null) {
