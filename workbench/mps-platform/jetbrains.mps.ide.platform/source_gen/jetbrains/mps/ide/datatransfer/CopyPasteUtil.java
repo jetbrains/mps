@@ -12,26 +12,17 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import java.util.HashMap;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.datatransfer.AssociationLink;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.datatransfer.DataTransferManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.language.SProperty;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.model.ResolveInfo;
 import com.intellij.ide.CopyPasteManagerEx;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
@@ -40,11 +31,10 @@ import java.io.IOException;
 import java.awt.datatransfer.DataFlavor;
 import java.util.Collections;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.project.Project;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 @GeneratedClass(node = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)/6299533519672638253", model = "r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)")
 public final class CopyPasteUtil {
@@ -58,22 +48,21 @@ public final class CopyPasteUtil {
     }
 
     SModel model = SNodeOperations.getModel(ListSequence.fromList(sourceNodes).first());
-    Map<SNode, SNode> sourceNodesToNewNodes = new HashMap<>();
     List<SNode> targetNodes = ListSequence.fromList(new ArrayList<SNode>());
+
+    CopyPasteMagic cpm = new CopyPasteMagic();
+    cpm.withSpecialAtrtributeHandling(sourceNodesAndAttributes).copyUserObjects(true);
 
     for (SNode sourceNode : ListSequence.fromList(sourceNodes)) {
       assert SNodeOperations.getModel(sourceNode) == model;
-      ListSequence.fromList(targetNodes).addElement(CopyPasteUtil.copyNode_internal(sourceNode, sourceNodesAndAttributes, sourceNodesToNewNodes));
+      ListSequence.fromList(targetNodes).addElement(cpm.copy(sourceNode));
     }
 
     Set<SModelReference> necessaryModels = SetSequence.fromSet(new HashSet<SModelReference>());
-    Set<SLanguage> necessaryLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
     ArrayList<AssociationLink> copiedLinks = new ArrayList<>();
 
-    Map<SNode, SNode> newNodesToSourceNodes = MapSequence.fromMap(new HashMap<SNode, SNode>());
-    for (IMapping<SNode, SNode> mapping : MapSequence.fromMap(sourceNodesToNewNodes)) {
-      MapSequence.fromMap(newNodesToSourceNodes).put(mapping.value(), mapping.key());
-    }
+    Map<SNode, SNode> sourceNodesToNewNodes = cpm.getOriginal2NewMap();
+    Map<SNode, SNode> newNodesToSourceNodes = cpm.getNew2OriginalMap();
 
     // JFTR preProcessNode may replace some nodes in a node hierarchy of values in newNodesToSourceNodes
     for (SNode target : ListSequence.fromList(targetNodes)) {
@@ -84,7 +73,6 @@ public final class CopyPasteUtil {
     // Note, provided preProcessNode may replace some of the new nodes, we walk targets to collect actual associations,
     // although use original (source) nodes to obtain targets. And yes, we assume topmost target nodes don't get replaced.
     for (SNode copiedSourceNode : Sequence.fromIterable(SNodeUtil.getDescendants(targetNodes))) {
-      SetSequence.fromSet(necessaryLanguages).addElement(copiedSourceNode.getConcept().getLanguage());
       SNode originalSourceNode = MapSequence.fromMap(newNodesToSourceNodes).get(copiedSourceNode);
       final SNode sourceNode;
       if (originalSourceNode == null) {
@@ -127,20 +115,20 @@ public final class CopyPasteUtil {
       }
     }
 
-    return new PasteNodeData(targetNodes, copiedLinks, necessaryLanguages, necessaryModels);
+    return new PasteNodeData(targetNodes, copiedLinks, cpm.getEncounteredLanguages(), necessaryModels);
   }
 
   public static PasteNodeData createNodeDataOut(PasteNodeData in) {
     if (in.getNodes().isEmpty()) {
-      // it's immutable, not point to make a copy
+      // it's immutable, no point to make a copy
       return in;
     }
+    final CopyPasteMagic cpm = new CopyPasteMagic();
     List<SNode> result = new ArrayList<>();
-    Map<SNode, SNode> sourceNodesToNewNodes = new HashMap<>();
     for (SNode sourceNode : in.getNodes()) {
-      SNode nodeToPaste = CopyPasteUtil.copyNode_internal(sourceNode, null, sourceNodesToNewNodes);
-      result.add(nodeToPaste);
+      result.add(cpm.copy(sourceNode));
     }
+    final Map<SNode, SNode> sourceNodesToNewNodes = cpm.getOriginal2NewMap();
 
     Set<SReference> referencesRequireResolve = new HashSet<>();
     // what processReferencesOut used to do
@@ -169,66 +157,6 @@ public final class CopyPasteUtil {
     }
 
     return new PasteNodeData(in, result, referencesRequireResolve);
-  }
-
-  private static SNode copyNode_internal(SNode sourceNode, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes, Map<SNode, SNode> sourceNodesToNewNodes) {
-    SNode targetNode = new jetbrains.mps.smodel.SNode(sourceNode.getConcept(), sourceNode.getNodeId());
-    for (SProperty name : Sequence.fromIterable(sourceNode.getProperties())) {
-      targetNode.setProperty(name, sourceNode.getProperty(name));
-    }
-    sourceNodesToNewNodes.put(sourceNode, targetNode);
-    for (SNode sourceChild : sourceNode.getChildren()) {
-      if (nodesAndAttributes != null) {
-        if (AttributeOperations.isAttribute(sourceChild)) {
-          Set<SNode> nodes = nodesAndAttributes.get(sourceNode);
-          if (nodes != null && !(nodes.contains(sourceChild))) {
-            continue;
-          }
-        }
-      }
-      SNode targetChild = CopyPasteUtil.copyNode_internal(sourceChild, nodesAndAttributes, sourceNodesToNewNodes);
-      SContainmentLink role = sourceChild.getContainmentLink();
-      assert role != null;
-      targetNode.addChild(role, targetChild);
-    }
-    return targetNode;
-  }
-  private static Set<SReference> processReferencesOut(Map<SNode, SNode> sourceNodesToNewNodes, Set<SReference> allReferences) {
-    Set<SReference> referencesRequireResolve = new HashSet<SReference>();
-    for (SReference sourceReference : allReferences) {
-      SNode oldSourceNode = sourceReference.getSourceNode();
-      SNode newSourceNode = sourceNodesToNewNodes.get(oldSourceNode);
-      // XXX sourceReference.getTargetNodeReference would suffice, with a bit of refactoring
-      SNode oldTargetNode = sourceReference.getTargetNode();
-      SNode newTargetNode = sourceNodesToNewNodes.get(oldTargetNode);
-      if (newTargetNode != null) {
-        newSourceNode.setReferenceTarget(sourceReference.getLink(), newTargetNode);
-      } else {
-        // XXX special hack for BL, oh, really?
-        if ((SNodeOperations.isInstanceOf(newSourceNode, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(newSourceNode, CONCEPTS.ClassifierType$bL)) && oldTargetNode != null) {
-          newSourceNode.setReferenceTarget(sourceReference.getLink(), oldTargetNode);
-        } else {
-          // here used to be suspicious code intended (guess) to keep resolveInfo of original link by all means.
-          // I decided to remove it as there's similar logic in StaticReference (that takes node.getName as RI).
-          // If this doesn't work, perhaps, need another ResolveInfo.of method to take SNodePointer hint in addition to String
-          if (oldTargetNode != null) {
-            // XXX seems to be the need to resolveInfo is justified, perhaps, we should set one in AssociationData the moment
-            //     we get detached node as target. Just to facilitate proper later re-resolve in ResolverComponent.resolveScopesOnly
-            newSourceNode.setReferenceTarget(sourceReference.getLink(), oldTargetNode);
-          } else {
-            String resolveInfo = SLinkOperations.getResolveInfo(sourceReference);
-            if (resolveInfo != null) {
-              newSourceNode.setReference(sourceReference.getLink(), ResolveInfo.of(resolveInfo));
-            } else {
-              continue;
-            }
-          }
-          // XXX this odd set deserves attention, too
-          referencesRequireResolve.add(newSourceNode.getReference(sourceReference.getLink()));
-        }
-      }
-    }
-    return referencesRequireResolve;
   }
 
   public static void copyTextToClipboard(String text) {
@@ -381,10 +309,5 @@ public final class CopyPasteUtil {
       break;
     }
     return false;
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }
