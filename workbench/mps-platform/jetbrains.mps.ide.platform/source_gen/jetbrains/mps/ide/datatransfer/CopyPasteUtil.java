@@ -123,7 +123,7 @@ public final class CopyPasteUtil {
       // it's immutable, no point to make a copy
       return in;
     }
-    final CopyPasteMagic cpm = new CopyPasteMagic();
+    final CopyPasteMagic cpm = new CopyPasteMagic().copyUserObjects(!(in.consumed()));
     List<SNode> result = new ArrayList<>();
     for (SNode sourceNode : in.getNodes()) {
       result.add(cpm.copy(sourceNode));

@@ -1768,10 +1768,25 @@
             <node concept="3uibUv" id="1_MDhe9h8qv" role="1tU5fm">
               <ref role="3uigEE" node="1_MDhe9aU_9" resolve="CopyPasteMagic" />
             </node>
-            <node concept="2ShNRf" id="1_MDhe9hgzF" role="33vP2m">
-              <node concept="HV5vD" id="1_MDhe9hm6b" role="2ShVmc">
-                <property role="373rjd" value="true" />
-                <ref role="HV5vE" node="1_MDhe9aU_9" resolve="CopyPasteMagic" />
+            <node concept="2OqwBi" id="3xAMiphiDuL" role="33vP2m">
+              <node concept="2ShNRf" id="1_MDhe9hgzF" role="2Oq$k0">
+                <node concept="HV5vD" id="1_MDhe9hm6b" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="HV5vE" node="1_MDhe9aU_9" resolve="CopyPasteMagic" />
+                </node>
+              </node>
+              <node concept="liA8E" id="3xAMiphiEDA" role="2OqNvi">
+                <ref role="37wK5l" node="1_MDhe9ba9i" resolve="copyUserObjects" />
+                <node concept="3fqX7Q" id="3xAMiphiGy1" role="37wK5m">
+                  <node concept="2OqwBi" id="3xAMiphiJsP" role="3fr31v">
+                    <node concept="37vLTw" id="3xAMiphiIvM" role="2Oq$k0">
+                      <ref role="3cqZAo" node="75qA1j017Fn" resolve="in" />
+                    </node>
+                    <node concept="liA8E" id="3xAMiphiLfP" role="2OqNvi">
+                      <ref role="37wK5l" to="qzxo:~PasteNodeData.consumed()" resolve="consumed" />
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>

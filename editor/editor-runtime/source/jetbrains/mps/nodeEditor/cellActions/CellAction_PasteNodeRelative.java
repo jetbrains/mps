@@ -73,7 +73,7 @@ public class CellAction_PasteNodeRelative extends AbstractCellAction {
     EditorCell selectedCell = editorComponent.getSelectedCell();
     SNode anchorNode = selectedCell.getSNode();
 
-    PasteNodeData pasteNodeData = CopyPasteUtil.getPasteNodeData();
+    final PasteNodeData pasteNodeData = CopyPasteUtil.getPasteNodeData();
     if (pasteNodeData == null || pasteNodeData.getNodes().isEmpty()) {
       return;
     }
@@ -99,5 +99,7 @@ public class CellAction_PasteNodeRelative extends AbstractCellAction {
       SelectionManager selectionManager = editorComponent.getSelectionManager();
       selectionManager.pushSelection(selectionManager.createRangeSelection(pasteNodes.get(0), pasteNodes.get(pasteNodes.size() - 1)));
     }
+
+    pasteNodeData.consume();
   }
 }
