@@ -61,10 +61,7 @@ public class OpenSampleProjectAction extends AnAction {
     VirtualFile result = FileChooser.chooseFile(descriptor, currentProject, samplesFolder);
     if (result != null) {
       if (OpenMPSProjectTrustProjectHelper.checkTrust(result)) {
-        final Application application = ApplicationManager.getApplication();
-        application.executeOnPooledThread(()-> {
-          ProjectUtil.openProject(result.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
-        });
+        ProjectUtil.openProject(result.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
       }
     }
   }
