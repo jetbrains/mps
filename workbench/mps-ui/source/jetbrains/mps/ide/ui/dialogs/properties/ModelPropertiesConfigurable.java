@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.ui.dialogs.properties;
 
 import com.intellij.icons.AllIcons;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.ui.AnActionButton;
 import com.intellij.ui.AnActionButtonUpdater;
@@ -295,6 +296,11 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
           forceCancelCloseDialog();
         }
       }).addExtraAction(new AnActionButton(PropertiesBundle.message("model.dependencies.unused"), MPSIcons.General.ModelChecker) {
+
+        @Override
+        public @NotNull ActionUpdateThread getActionUpdateThread() {
+          return ActionUpdateThread.EDT;
+        }
 
         @Override
         public boolean isEnabled() {
