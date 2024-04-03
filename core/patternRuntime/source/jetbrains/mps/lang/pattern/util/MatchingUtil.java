@@ -38,28 +38,13 @@ import java.util.function.BiPredicate;
 // FIXME seems to be the only class in patternRuntime to use [kernel], not [openapi]. Perhaps, worth moving into [kernel]?
 @Deprecated(since = "2022.2", forRemoval = true)
 public class MatchingUtil {
-
+  // FIXME there are still few uses in mbeddr!
   public static boolean matchNodes(SNode node1, SNode node2) {
     // IMatchModifier.DEFAULT does nothing, no need to care for its methods
     final IdenticalTargetNode ams = new IdenticalTargetNode();
     // FIXME we enforce same child ordering here, while code above is bit relaxed for references or properties. Is it intended?
     final SameOrderChildMatch agms = new SameOrderChildMatch();
     return new SNodeMatcher(MatchingUtil::matchProperties, ams, agms).match(node1, node2);
-  }
-
-  public static boolean matchNodes(SNode node1, SNode node2, final IMatchModifier matchModifier, boolean matchAttributes) {
-    // IdenticalTargetNode strategy with respect to IMatchModifier
-    final AssociationMatchStrategy ams = (n1, n2, link) -> {
-      SNode target1 = n1.getReferenceTarget(link);
-      SNode target2 = n2.getReferenceTarget(link);
-      if (matchModifier.accept(target1, target2)) {
-        matchModifier.performAction(target1, target2);
-        return true;
-      }
-      return target2 == target1;
-    };
-    final SameOrderChildMatch agms = new ChildMatch(matchModifier);
-    return new SNodeMatcher(MatchingUtil::matchProperties, ams, agms).withAttributes(matchAttributes).match(node1, node2);
   }
 
   private static boolean matchProperties(SNode node1, SNode node2, SProperty property) {
@@ -80,41 +65,5 @@ public class MatchingUtil {
       propertyValue2 = stringValue2;
     }
     return Objects.equals(propertyValue1, propertyValue2);
-  }
-
-  // compatibility code to let existing IMatchModifier code to work
-  private static class ChildMatch extends SNodeMatcher.SameOrderChildMatch {
-    private final IMatchModifier myMatchModifier;
-
-    ChildMatch(IMatchModifier mm) {
-      myMatchModifier = mm;
-    }
-
-    @Override
-    public boolean match(@NotNull SNode node1, @NotNull SNode node2, @NotNull SContainmentLink link, @NotNull BiPredicate<SNode, SNode> childMatcher) {
-      BiPredicate<SNode, SNode> withModifier = this::matchChild;
-      return super.match(node1, node2, link, withModifier.or(childMatcher));
-      // this::matchChild works for immediate child check; for next level, SNodeMatcher.match() uses 'this'
-      // for next level and therefore nested children don't get withModifier wrapper
-    }
-
-    // pre: child1.getContainmentLink().equals(child2.getContainmentLink())
-    private boolean matchChild(@Nullable SNode child1, @Nullable SNode child2) {
-      if (myMatchModifier.accept(child1, child2)) {
-        myMatchModifier.performAction(child1, child2);
-        return true;
-      }
-      return false;
-    }
-  }
-
-  /**
-   * @deprecated use some implementation of {@link jetbrains.mps.smodel.SNodeHashStrategy} instead.
-   *             Logic of {@link jetbrains.mps.smodel.SNodeHashStrategy#WholeTreeAndIgnoreAttributes} is practically the same as
-   *             was here in the implementation of this method.
-   */
-  @Deprecated(since = "2022.2", forRemoval = true)
-  public static int hash(SNode node) {
-    return SNodeHashStrategy.WholeTreeAndIgnoreAttributes.hash(node);
   }
 }
