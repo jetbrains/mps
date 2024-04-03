@@ -41749,6 +41749,9 @@
     <node concept="26EafG" id="4nX__hM7r7q" role="26Ea7d">
       <property role="26EafJ" value="lib/mps-workbench.jar" />
     </node>
+    <node concept="26EafG" id="44nat7ZsPd1" role="26Ea7d">
+      <property role="26EafJ" value="lib/opentelemetry.jar" />
+    </node>
     <node concept="26EafG" id="9nERkLKyMC" role="26Ea7d">
       <property role="26EafJ" value="lib/platform-loader.jar" />
     </node>
@@ -41766,6 +41769,9 @@
     </node>
     <node concept="26EafG" id="4nX__hM7qUg" role="26Ea7d">
       <property role="26EafJ" value="lib/testFramework.jar" />
+    </node>
+    <node concept="26EafG" id="44nat7ZsP5s" role="26Ea7d">
+      <property role="26EafJ" value="lib/trove.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7qVZ" role="26Ea7d">
       <property role="26EafJ" value="lib/util.jar" />
