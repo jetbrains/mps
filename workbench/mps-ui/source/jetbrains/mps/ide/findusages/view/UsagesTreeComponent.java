@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.ide.findusages.view;
 
 import com.intellij.icons.AllIcons.General;
 import com.intellij.openapi.actionSystem.ActionGroup;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ToggleAction;
@@ -487,6 +488,12 @@ public class UsagesTreeComponent extends JPanel implements IChangeListener {
   private abstract class MyBaseToggleAction extends ToggleAction {
     protected MyBaseToggleAction(String text, String description, Icon icon) {
       super(text, description, icon);
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      // I assume "toggle" action are safe with EDT and aren't supposed to take a lot of time
+      return ActionUpdateThread.EDT;
     }
 
     public abstract boolean isSelected();
