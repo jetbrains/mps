@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.persistence;
 
-import jetbrains.mps.extapi.model.GeneratableSModel;
+import jetbrains.mps.extapi.model.ModelWithAttributes;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
@@ -81,9 +81,11 @@ final class CopyDefaultModelRootHelper extends CopyFileBasedModelRootHelper<Defa
     // TODO So model content copying should be carried by model itself.
     // TODO This functionality should be extracted in separate interface (like CopyableSModel).
     CopyUtil.copyModelContentAndPreserveIds(modelDataToCopy, targetModel);
+    // XXX use of SModelData (implementation) to transfer imports and other stuff is suspicious, although generally isn't a bad approach. Just need to do it in uniform way
     CopyUtil.copyModelProperties(modelDataToCopy.getSModel(), ((SModelBase) targetModel).getSModel());
-    if (targetModel instanceof GeneratableSModel && modelDataToCopy instanceof GeneratableSModel) {
-      ((GeneratableSModel) targetModel).setDoNotGenerate(((GeneratableSModel) modelDataToCopy).isDoNotGenerate());
+    if (targetModel instanceof ModelWithAttributes && modelDataToCopy instanceof ModelWithAttributes) {
+      final ModelWithAttributes mwa = (ModelWithAttributes) targetModel;
+      ((ModelWithAttributes) modelDataToCopy).forEachAttribute(mwa::setAttribute);
     }
     if (targetModel instanceof EditableSModel) {
       ((EditableSModel) targetModel).save();

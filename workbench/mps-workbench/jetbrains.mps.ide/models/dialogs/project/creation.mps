@@ -7,6 +7,7 @@
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
+    <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
   </languages>
   <imports>
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
@@ -311,6 +312,13 @@
         <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+    </language>
+    <language id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences">
+      <concept id="237887375562511215" name="jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference" flags="ng" index="37Ijox" />
+      <concept id="3507059745126391419" name="jetbrains.mps.baseLanguage.methodReferences.structure.IMethodReference" flags="ngI" index="3UZKCU">
+        <reference id="237887375562511297" name="method" index="37Ijqf" />
+        <child id="962278442658307079" name="target" index="wWaWy" />
+      </concept>
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
@@ -4796,65 +4804,43 @@
                           </node>
                           <node concept="3clFbJ" id="1l1jHO6i8XK" role="3cqZAp">
                             <node concept="3clFbS" id="1l1jHO6i8XM" role="3clFbx">
-                              <node concept="3clFbF" id="1l1jHO6ilzE" role="3cqZAp">
-                                <node concept="2OqwBi" id="1l1jHO6is1h" role="3clFbG">
-                                  <node concept="liA8E" id="1l1jHO6it1k" role="2OqNvi">
-                                    <ref role="37wK5l" to="g3l6:~GeneratableSModel.setDoNotGenerate(boolean)" resolve="setDoNotGenerate" />
-                                    <node concept="2OqwBi" id="1l1jHO6itnX" role="37wK5m">
-                                      <node concept="1eOMI4" id="1l1jHO6ith2" role="2Oq$k0">
-                                        <node concept="10QFUN" id="1l1jHO6ith3" role="1eOMHV">
-                                          <node concept="3uibUv" id="1l1jHO6ith4" role="10QFUM">
-                                            <ref role="3uigEE" to="g3l6:~GeneratableSModel" resolve="GeneratableSModel" />
-                                          </node>
-                                          <node concept="37vLTw" id="1l1jHO6itYd" role="10QFUP">
-                                            <ref role="3cqZAo" node="ZfFelTVB2M" resolve="myClone" />
-                                          </node>
-                                        </node>
-                                      </node>
-                                      <node concept="liA8E" id="1l1jHO6itvK" role="2OqNvi">
-                                        <ref role="37wK5l" to="g3l6:~GeneratableSModel.isDoNotGenerate()" resolve="isDoNotGenerate" />
-                                      </node>
-                                    </node>
+                              <node concept="3cpWs8" id="3DMDTACP7gQ" role="3cqZAp">
+                                <node concept="3cpWsn" id="3DMDTACP7gR" role="3cpWs9">
+                                  <property role="TrG5h" value="mwa" />
+                                  <property role="3TUv4t" value="true" />
+                                  <node concept="3uibUv" id="3DMDTACP7gS" role="1tU5fm">
+                                    <ref role="3uigEE" to="g3l6:~ModelWithAttributes" resolve="ModelWithAttributes" />
                                   </node>
-                                  <node concept="1eOMI4" id="1l1jHO6isG1" role="2Oq$k0">
-                                    <node concept="10QFUN" id="1l1jHO6iru6" role="1eOMHV">
-                                      <node concept="3uibUv" id="1l1jHO6isWI" role="10QFUM">
-                                        <ref role="3uigEE" to="g3l6:~GeneratableSModel" resolve="GeneratableSModel" />
+                                  <node concept="1eOMI4" id="3DMDTACPcS8" role="33vP2m">
+                                    <node concept="10QFUN" id="3DMDTACPcS5" role="1eOMHV">
+                                      <node concept="3uibUv" id="3DMDTACPcSa" role="10QFUM">
+                                        <ref role="3uigEE" to="g3l6:~ModelWithAttributes" resolve="ModelWithAttributes" />
                                       </node>
-                                      <node concept="37vLTw" id="1l1jHO6ilzC" role="10QFUP">
+                                      <node concept="37vLTw" id="3DMDTACPgb4" role="10QFUP">
                                         <ref role="3cqZAo" node="1l1jHO6h5Kv" resolve="result" />
                                       </node>
                                     </node>
                                   </node>
                                 </node>
                               </node>
-                              <node concept="3clFbF" id="1l1jHO6iu4i" role="3cqZAp">
-                                <node concept="2OqwBi" id="1l1jHO6iu4j" role="3clFbG">
-                                  <node concept="liA8E" id="1l1jHO6iu4k" role="2OqNvi">
-                                    <ref role="37wK5l" to="g3l6:~GeneratableSModel.setGenerateIntoModelFolder(boolean)" resolve="setGenerateIntoModelFolder" />
-                                    <node concept="2OqwBi" id="1l1jHO6iu4l" role="37wK5m">
-                                      <node concept="1eOMI4" id="1l1jHO6iu4m" role="2Oq$k0">
-                                        <node concept="10QFUN" id="1l1jHO6iu4n" role="1eOMHV">
-                                          <node concept="3uibUv" id="1l1jHO6iu4o" role="10QFUM">
-                                            <ref role="3uigEE" to="g3l6:~GeneratableSModel" resolve="GeneratableSModel" />
-                                          </node>
-                                          <node concept="37vLTw" id="1l1jHO6iu4p" role="10QFUP">
-                                            <ref role="3cqZAo" node="ZfFelTVB2M" resolve="myClone" />
-                                          </node>
-                                        </node>
-                                      </node>
-                                      <node concept="liA8E" id="1l1jHO6iu4q" role="2OqNvi">
-                                        <ref role="37wK5l" to="g3l6:~GeneratableSModel.isGenerateIntoModelFolder()" resolve="isGenerateIntoModelFolder" />
+                              <node concept="3clFbF" id="1l1jHO6ilzE" role="3cqZAp">
+                                <node concept="2OqwBi" id="1l1jHO6is1h" role="3clFbG">
+                                  <node concept="liA8E" id="1l1jHO6it1k" role="2OqNvi">
+                                    <ref role="37wK5l" to="g3l6:~ModelWithAttributes.forEachAttribute(java.util.function.BiConsumer)" resolve="forEachAttribute" />
+                                    <node concept="37Ijox" id="14DmaBRJu1t" role="37wK5m">
+                                      <ref role="37Ijqf" to="g3l6:~ModelWithAttributes.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
+                                      <node concept="37vLTw" id="14DmaBRJrXp" role="wWaWy">
+                                        <ref role="3cqZAo" node="3DMDTACP7gR" resolve="mwa" />
                                       </node>
                                     </node>
                                   </node>
-                                  <node concept="1eOMI4" id="1l1jHO6iu4r" role="2Oq$k0">
-                                    <node concept="10QFUN" id="1l1jHO6iu4s" role="1eOMHV">
-                                      <node concept="3uibUv" id="1l1jHO6iu4t" role="10QFUM">
-                                        <ref role="3uigEE" to="g3l6:~GeneratableSModel" resolve="GeneratableSModel" />
+                                  <node concept="1eOMI4" id="1l1jHO6isG1" role="2Oq$k0">
+                                    <node concept="10QFUN" id="1l1jHO6iru6" role="1eOMHV">
+                                      <node concept="3uibUv" id="1l1jHO6isWI" role="10QFUM">
+                                        <ref role="3uigEE" to="g3l6:~ModelWithAttributes" resolve="ModelWithAttributes" />
                                       </node>
-                                      <node concept="37vLTw" id="1l1jHO6iu4u" role="10QFUP">
-                                        <ref role="3cqZAo" node="1l1jHO6h5Kv" resolve="result" />
+                                      <node concept="37vLTw" id="1l1jHO6ilzC" role="10QFUP">
+                                        <ref role="3cqZAo" node="ZfFelTVB2M" resolve="myClone" />
                                       </node>
                                     </node>
                                   </node>
@@ -4864,7 +4850,7 @@
                             <node concept="1Wc70l" id="1l1jHO6ikpO" role="3clFbw">
                               <node concept="2ZW3vV" id="1l1jHO6ikU3" role="3uHU7w">
                                 <node concept="3uibUv" id="1l1jHO6ildy" role="2ZW6by">
-                                  <ref role="3uigEE" to="g3l6:~GeneratableSModel" resolve="GeneratableSModel" />
+                                  <ref role="3uigEE" to="g3l6:~ModelWithAttributes" resolve="ModelWithAttributes" />
                                 </node>
                                 <node concept="37vLTw" id="1l1jHO6ikKA" role="2ZW6bz">
                                   <ref role="3cqZAo" node="1l1jHO6h5Kv" resolve="result" />
@@ -4872,7 +4858,7 @@
                               </node>
                               <node concept="2ZW3vV" id="1l1jHO6ijsc" role="3uHU7B">
                                 <node concept="3uibUv" id="1l1jHO6ijVi" role="2ZW6by">
-                                  <ref role="3uigEE" to="g3l6:~GeneratableSModel" resolve="GeneratableSModel" />
+                                  <ref role="3uigEE" to="g3l6:~ModelWithAttributes" resolve="ModelWithAttributes" />
                                 </node>
                                 <node concept="37vLTw" id="1l1jHO6ieAx" role="2ZW6bz">
                                   <ref role="3cqZAo" node="ZfFelTVB2M" resolve="myClone" />
