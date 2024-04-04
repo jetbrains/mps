@@ -2978,7 +2978,7 @@
         <node concept="3clFbF" id="4DC0lWgak8" role="3cqZAp">
           <node concept="359W_D" id="4DC0lWgak7" role="3clFbG">
             <ref role="359W_E" to="5m2i:26mUjU3QZBY" resolve="JavaConstructorSuperSpecifier" />
-            <ref role="359W_F" to="5m2i:26mUjU3R2JX" />
+            <ref role="359W_F" to="5m2i:26mUjU3R2JX" resolve="constructor" />
           </node>
         </node>
       </node>
@@ -4185,7 +4185,7 @@
         <node concept="3clFbF" id="2YQyJG2VkEP" role="3cqZAp">
           <node concept="359W_D" id="2YQyJG2VkEM" role="3clFbG">
             <ref role="359W_E" to="5m2i:5H$PF0dtma6" resolve="JavaDefaultConstructorSuperSpecifier" />
-            <ref role="359W_F" to="5m2i:5H$PF0dtmad" />
+            <ref role="359W_F" to="5m2i:5H$PF0dtmad" resolve="classifier" />
           </node>
         </node>
       </node>

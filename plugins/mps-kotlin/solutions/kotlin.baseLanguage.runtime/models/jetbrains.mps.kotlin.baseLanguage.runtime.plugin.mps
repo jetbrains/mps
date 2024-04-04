@@ -531,7 +531,7 @@
                         <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setReference" />
                         <node concept="359W_D" id="6WP0ZYusrto" role="37wK5m">
                           <ref role="359W_E" to="hcm8:2yYXHtl6Jjv" resolve="ClassType" />
-                          <ref role="359W_F" to="hcm8:5LVUgW$gbdV" />
+                          <ref role="359W_F" to="hcm8:5LVUgW$gbdV" resolve="class" />
                         </node>
                         <node concept="2OqwBi" id="6WP0ZYusuFG" role="37wK5m">
                           <node concept="Rm8GO" id="6WP0ZYusuFH" role="2Oq$k0">
@@ -557,7 +557,7 @@
                           <ref role="3cqZAo" node="6WP0ZYurAEH" resolve="node" />
                         </node>
                         <node concept="3Tsc0h" id="6WP0ZYuszcN" role="2OqNvi">
-                          <ref role="3TtcxE" to="hcm8:5GtPw5yMnlW" />
+                          <ref role="3TtcxE" to="hcm8:5GtPw5yMnlW" resolve="typeProjections" />
                         </node>
                       </node>
                       <node concept="TSZUe" id="6WP0ZYusF$7" role="2OqNvi">
@@ -575,7 +575,7 @@
                               </node>
                             </node>
                             <node concept="3TrEf2" id="6WP0ZYusR0O" role="2OqNvi">
-                              <ref role="3Tt5mk" to="tpee:f_0Q1BS" />
+                              <ref role="3Tt5mk" to="tpee:f_0Q1BS" resolve="componentType" />
                             </node>
                           </node>
                         </node>
@@ -1366,7 +1366,7 @@
                               </node>
                             </node>
                             <node concept="3Tsc0h" id="6WP0ZYureQ4" role="2OqNvi">
-                              <ref role="3TtcxE" to="hcm8:5GtPw5yMnlW" />
+                              <ref role="3TtcxE" to="hcm8:5GtPw5yMnlW" resolve="typeProjections" />
                             </node>
                           </node>
                           <node concept="1uHKPH" id="6WP0ZYurmu8" role="2OqNvi" />

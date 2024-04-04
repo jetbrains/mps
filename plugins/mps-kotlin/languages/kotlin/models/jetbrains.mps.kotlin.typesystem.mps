@@ -3589,19 +3589,16 @@
         </node>
         <node concept="3fqX7Q" id="2J12cYie4u7" role="3clFbw">
           <node concept="2OqwBi" id="2J12cYie4u9" role="3fr31v">
-            <node concept="2OqwBi" id="2J12cYie4ua" role="2Oq$k0">
-              <node concept="2OqwBi" id="2J12cYie4ub" role="2Oq$k0">
-                <node concept="1YBJjd" id="2J12cYie4uc" role="2Oq$k0">
-                  <ref role="1YBMHb" node="2J12cYie11$" resolve="receiverType" />
-                </node>
-                <node concept="3TrEf2" id="2J12cYie4ud" role="2OqNvi">
-                  <ref role="3Tt5mk" to="hcm8:2yYXHtl6Jz0" resolve="type" />
-                </node>
+            <node concept="2OqwBi" id="2J12cYie4ub" role="2Oq$k0">
+              <node concept="1YBJjd" id="2J12cYie4uc" role="2Oq$k0">
+                <ref role="1YBMHb" node="2J12cYie11$" resolve="receiverType" />
               </node>
-              <node concept="2yIwOk" id="2J12cYie4ue" role="2OqNvi" />
+              <node concept="3TrEf2" id="2J12cYie4ud" role="2OqNvi">
+                <ref role="3Tt5mk" to="hcm8:2yYXHtl6Jz0" resolve="type" />
+              </node>
             </node>
             <node concept="2qgKlT" id="2J12cYie4uf" role="2OqNvi">
-              <ref role="37wK5l" to="hez:2J12cYi1t5p" resolve="isExpression" />
+              <ref role="37wK5l" to="hez:3sYZzPj0plI" resolve="isExpression" />
             </node>
           </node>
         </node>
@@ -7229,7 +7226,7 @@
               </node>
             </node>
             <node concept="3Cnw8n" id="3hnD4DbIzM$" role="1urrFz">
-              <ref role="QpYPw" node="3hnD4DbItI2" resolve="PropertyDeclaration_SetToVar" />
+              <ref role="QpYPw" node="3hnD4DbItI2" resolve="PropertyDeclaration_ChangeToVar" />
             </node>
           </node>
         </node>

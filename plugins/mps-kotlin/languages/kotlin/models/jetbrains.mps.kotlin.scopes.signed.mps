@@ -2863,7 +2863,7 @@
           <node concept="3KEzu6" id="1DhEmk5gTPo" role="3cpWs9">
             <property role="TrG5h" value="baseAccesToType" />
             <node concept="1rXfSq" id="1DhEmk5iwur" role="33vP2m">
-              <ref role="37wK5l" node="1DhEmk5gOaR" resolve="getBaseAccess" />
+              <ref role="37wK5l" node="1DhEmk5gOaR" resolve="getInstanceTypeBaseAccess" />
             </node>
             <node concept="PeGgZ" id="1DhEmk5gTPn" role="1tU5fm" />
           </node>
@@ -7964,7 +7964,7 @@
             <ref role="37wK5l" node="3DLhCcp$n9e" resolve="withReceiver" />
             <node concept="Rm8GO" id="3DLhCcp$XCI" role="37wK5m">
               <ref role="Rm8GQ" node="3DLhCcp$fTE" resolve="CALL" />
-              <ref role="1Px2BO" node="3DLhCcp$ftV" resolve="NavigationHelper.Kind" />
+              <ref role="1Px2BO" node="3DLhCcp$ftV" resolve="NavigationHelper.KotlinKinds" />
             </node>
             <node concept="37vLTw" id="3DLhCcp$X0y" role="37wK5m">
               <ref role="3cqZAo" node="3UQQw2l3W8H" resolve="context" />
@@ -8049,7 +8049,7 @@
             <ref role="37wK5l" node="3DLhCcp$n9e" resolve="withReceiver" />
             <node concept="Rm8GO" id="3DLhCcp$RF5" role="37wK5m">
               <ref role="Rm8GQ" node="3DLhCcp$gem" resolve="REFERENCE" />
-              <ref role="1Px2BO" node="3DLhCcp$ftV" resolve="NavigationHelper.Kind" />
+              <ref role="1Px2BO" node="3DLhCcp$ftV" resolve="NavigationHelper.KotlinKinds" />
             </node>
             <node concept="37vLTw" id="pkrm6j5Yvg" role="37wK5m">
               <ref role="3cqZAo" node="pkrm6j5VSu" resolve="context" />
@@ -8394,7 +8394,7 @@
       <node concept="37vLTG" id="3DLhCcp$p_P" role="3clF46">
         <property role="TrG5h" value="kind" />
         <node concept="3uibUv" id="3DLhCcp$pTM" role="1tU5fm">
-          <ref role="3uigEE" node="1GWGb5iqtgW" resolve="Kind" />
+          <ref role="3uigEE" node="1GWGb5iqtgW" resolve="NavigationHelper.Kind" />
         </node>
       </node>
       <node concept="37vLTG" id="pkrm6j60DA" role="3clF46">
@@ -8532,7 +8532,7 @@
       <node concept="2tJIrI" id="1GWGb5iqH0x" role="jymVt" />
       <node concept="QsSxf" id="3DLhCcp$fTE" role="Qtgdg">
         <property role="TrG5h" value="CALL" />
-        <ref role="37wK5l" node="3DLhCcp$hIP" resolve="NavigationHelper.Kind" />
+        <ref role="37wK5l" node="3DLhCcp$hIP" resolve="NavigationHelper.KotlinKinds" />
         <node concept="35c_gC" id="3DLhCcp$j3Z" role="37wK5m">
           <ref role="35c_gD" to="hcm8:2yYXHtl6Jhg" resolve="NavigationOperation" />
         </node>
@@ -8547,7 +8547,7 @@
       </node>
       <node concept="QsSxf" id="3DLhCcp$gem" role="Qtgdg">
         <property role="TrG5h" value="REFERENCE" />
-        <ref role="37wK5l" node="3DLhCcp$hIP" resolve="NavigationHelper.Kind" />
+        <ref role="37wK5l" node="3DLhCcp$hIP" resolve="NavigationHelper.KotlinKinds" />
         <node concept="35c_gC" id="3DLhCcp$jKP" role="37wK5m">
           <ref role="35c_gD" to="hcm8:1502VugCR$H" resolve="MemberNavigationExpression" />
         </node>

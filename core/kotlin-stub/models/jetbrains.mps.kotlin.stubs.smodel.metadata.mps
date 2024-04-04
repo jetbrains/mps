@@ -674,7 +674,7 @@
                               <ref role="1M0zk5" node="2Aaqzls4Xnh" resolve="actualClass" />
                             </node>
                             <node concept="3TrEf2" id="3K5aa8YPqQ6" role="2OqNvi">
-                              <ref role="3Tt5mk" to="hcm8:2yYXHtl6Jty" />
+                              <ref role="3Tt5mk" to="hcm8:2yYXHtl6Jty" resolve="modifier" />
                             </node>
                           </node>
                           <node concept="zfrQC" id="3K5aa8YPxIr" role="2OqNvi">

@@ -746,8 +746,8 @@
         <node concept="3clFbS" id="5H$PF0dqalm" role="2VODD2">
           <node concept="3cpWs6" id="5H$PF0dttzE" role="3cqZAp">
             <node concept="2YIFZM" id="5H$PF0dttXe" role="3cqZAk">
-              <ref role="37wK5l" node="5H$PF0dtrwf" resolve="getScope" />
-              <ref role="1Pybhc" node="5H$PF0dtr0A" resolve="DefaultConstructorHelper" />
+              <ref role="37wK5l" node="5H$PF0dtrwf" resolve="getDefaultConstructorScope" />
+              <ref role="1Pybhc" node="5H$PF0dtr0A" resolve="JavaConstructorHelper" />
               <node concept="2rP1CM" id="5H$PF0dtuni" role="37wK5m" />
             </node>
           </node>
@@ -764,8 +764,8 @@
         <node concept="3clFbS" id="5H$PF0dtqGT" role="2VODD2">
           <node concept="3cpWs6" id="5H$PF0dtuAW" role="3cqZAp">
             <node concept="2YIFZM" id="5H$PF0dtuAX" role="3cqZAk">
-              <ref role="37wK5l" node="5H$PF0dtrwf" resolve="getScope" />
-              <ref role="1Pybhc" node="5H$PF0dtr0A" resolve="DefaultConstructorHelper" />
+              <ref role="37wK5l" node="5H$PF0dtrwf" resolve="getDefaultConstructorScope" />
+              <ref role="1Pybhc" node="5H$PF0dtr0A" resolve="JavaConstructorHelper" />
               <node concept="2rP1CM" id="5H$PF0dtuAY" role="37wK5m" />
             </node>
           </node>
@@ -978,12 +978,12 @@
             <node concept="YeOm9" id="6TifRYAdaql" role="2ShVmc">
               <node concept="1Y3b0j" id="6TifRYAdaqm" role="YeSDq">
                 <property role="2bfB8j" value="true" />
-                <ref role="37wK5l" to="o8zo:3rV3sBXetA2" />
+                <ref role="37wK5l" to="o8zo:3rV3sBXetA2" resolve="FilteringScope" />
                 <ref role="1Y3XeK" to="o8zo:3rV3sBXetA0" resolve="FilteringScope" />
                 <node concept="3Tm1VV" id="6TifRYAdaqn" role="1B3o_S" />
                 <node concept="2ShNRf" id="6TifRYAdaqo" role="37wK5m">
                   <node concept="1pGfFk" id="6TifRYAdaqp" role="2ShVmc">
-                    <ref role="37wK5l" to="fnmy:2BTq$1wAmR1" />
+                    <ref role="37wK5l" to="fnmy:2BTq$1wAmR1" resolve="VisibleClassConstructorsScope" />
                     <node concept="37vLTw" id="6TifRYAddhL" role="37wK5m">
                       <ref role="3cqZAo" node="6TifRYAdcf0" resolve="contextNode" />
                     </node>
@@ -1164,7 +1164,7 @@
               <node concept="2ShNRf" id="7ffJaDH2XXn" role="33vP2m">
                 <node concept="1pGfFk" id="7ffJaDH2XXo" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" to="sjya:pkrm6j0S2M" />
+                  <ref role="37wK5l" to="sjya:pkrm6j0S2M" resolve="FullScopeContext" />
                   <node concept="3kakTB" id="7ffJaDH2XXp" role="37wK5m" />
                   <node concept="2rP1CM" id="7ffJaDH2XXq" role="37wK5m" />
                   <node concept="3dgs5T" id="7ffJaDH2XXr" role="37wK5m" />

@@ -2004,7 +2004,7 @@
                         <node concept="2ShNRf" id="1TQsu41ScMa" role="37wK5m">
                           <node concept="1pGfFk" id="1TQsu41ScMb" role="2ShVmc">
                             <property role="373rjd" value="true" />
-                            <ref role="37wK5l" to="sjya:4oNDtERh_gB" />
+                            <ref role="37wK5l" to="sjya:4oNDtERh_gB" resolve="ConstructorsScope" />
                             <node concept="37vLTw" id="6dAo8EmAzIE" role="37wK5m">
                               <ref role="3cqZAo" node="7ffJaDH2XXd" resolve="context" />
                             </node>
@@ -2873,14 +2873,14 @@
     <property role="3GE5qa" value="annotation.label" />
     <ref role="1M2myG" to="hcm8:1502VugFM$8" resolve="ILabelTarget" />
     <node concept="1N5Pfh" id="6cin1kctlHO" role="1Mr941">
-      <ref role="1N5Vy1" to="hcm8:1502VugFM$9" />
+      <ref role="1N5Vy1" to="hcm8:1502VugFM$9" resolve="targetLabel" />
       <node concept="3dgokm" id="6cin1kctlJZ" role="1N6uqs">
         <node concept="3clFbS" id="6cin1kctlK0" role="2VODD2">
           <node concept="3cpWs6" id="6cin1kctrKg" role="3cqZAp">
             <node concept="2ShNRf" id="6cin1kctrKN" role="3cqZAk">
               <node concept="1pGfFk" id="6cin1kctsST" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="6xgk:7lHSllLpTWM" />
+                <ref role="37wK5l" to="6xgk:7lHSllLpTWM" resolve="NamedElementsScope" />
                 <node concept="2OqwBi" id="6cin1kctpkF" role="37wK5m">
                   <node concept="2OqwBi" id="6cin1kct8ht" role="2Oq$k0">
                     <node concept="2OqwBi" id="6cin1kct2Bu" role="2Oq$k0">
@@ -2895,7 +2895,7 @@
                       </node>
                     </node>
                     <node concept="13MTOL" id="6cin1kctbcX" role="2OqNvi">
-                      <ref role="13MTZf" to="hcm8:6cg9X74hA$J" />
+                      <ref role="13MTZf" to="hcm8:6cg9X74hA$J" resolve="label" />
                     </node>
                   </node>
                   <node concept="1KnU$U" id="6cin1kctqyD" role="2OqNvi" />
@@ -2927,7 +2927,7 @@
     <property role="3GE5qa" value="expression.function.constructor" />
     <ref role="1M2myG" to="hcm8:2yYXHtl6Jmi" resolve="SuperConstructorDelegationCall" />
     <node concept="1N5Pfh" id="1$jFvlE6_AX" role="1Mr941">
-      <ref role="1N5Vy1" to="hcm8:1$jFvlE6mkn" />
+      <ref role="1N5Vy1" to="hcm8:1$jFvlE6mkn" resolve="constructor" />
       <node concept="3dgokm" id="1$jFvlE6_RQ" role="1N6uqs">
         <node concept="3clFbS" id="1$jFvlE6_RS" role="2VODD2">
           <node concept="3SKdUt" id="4DC0lWpi8y" role="3cqZAp">
@@ -3014,7 +3014,7 @@
             <node concept="2ShNRf" id="4DC0lWpek3" role="3cqZAk">
               <node concept="1pGfFk" id="4DC0lWpfNe" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="6xgk:7lHSllLpTWM" />
+                <ref role="37wK5l" to="6xgk:7lHSllLpTWM" resolve="NamedElementsScope" />
                 <node concept="2OqwBi" id="4DC0lWp94W" role="37wK5m">
                   <node concept="35c_gC" id="4DC0lWp7Kh" role="2Oq$k0">
                     <ref role="35c_gD" to="hcm8:2yYXHtl6Jmi" resolve="SuperConstructorDelegationCall" />
@@ -3122,7 +3122,7 @@
             <node concept="2ShNRf" id="7ffJaDGPASE" role="3cqZAk">
               <node concept="1pGfFk" id="7ffJaDGPASF" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="6xgk:7lHSllLpTWM" />
+                <ref role="37wK5l" to="6xgk:7lHSllLpTWM" resolve="NamedElementsScope" />
                 <node concept="2OqwBi" id="7ffJaDGPASG" role="37wK5m">
                   <node concept="35c_gC" id="7ffJaDGPASH" role="2Oq$k0">
                     <ref role="35c_gD" to="hcm8:2yYXHtl6Jmh" resolve="ThisConstructorDelegationCall" />

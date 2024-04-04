@@ -166,9 +166,6 @@
     <node concept="PrWs8" id="2yYXHtl6JEn" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjj" resolve="IDeclaration" />
     </node>
-    <node concept="PrWs8" id="213J8chjiJ$" role="PzmwI">
-      <ref role="PrY4T" node="213J8chjiEQ" resolve="IVariableIdentifier" />
-    </node>
     <node concept="PrWs8" id="1Izr$$XgfUD" role="PzmwI">
       <ref role="PrY4T" node="1Izr$$XgfU$" resolve="IObject" />
     </node>
@@ -4546,7 +4543,7 @@
     <property role="3GE5qa" value="declaration.property.accessor" />
     <property role="TrG5h" value="PropertyAccessor" />
     <property role="R5$K7" value="true" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="3hnD4DbJU$F" role="PzmwI">
       <ref role="PrY4T" node="213J8chjiEQ" resolve="IVariableIdentifier" />
     </node>

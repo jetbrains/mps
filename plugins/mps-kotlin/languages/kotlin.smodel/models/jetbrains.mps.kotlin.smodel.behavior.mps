@@ -48,7 +48,6 @@
       </concept>
       <concept id="1225194413805" name="jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration" flags="in" index="13hLZK" />
       <concept id="1225194472830" name="jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration" flags="ng" index="13i0hz">
-        <property id="5864038008284099149" name="isStatic" index="2Ki8OM" />
         <property id="1225194472832" name="isVirtual" index="13i0it" />
         <property id="1225194472834" name="isAbstract" index="13i0iv" />
         <reference id="1225194472831" name="overriddenMethod" index="13i0hy" />
@@ -1846,8 +1845,7 @@
     </node>
     <node concept="13i0hz" id="2J12cYi1ysl" role="13h7CS">
       <property role="TrG5h" value="isExpression" />
-      <property role="2Ki8OM" value="true" />
-      <ref role="13i0hy" to="hez:2J12cYi1t5p" resolve="isExpression" />
+      <ref role="13i0hy" to="hez:3sYZzPj0plI" resolve="isExpression" />
       <node concept="3clFbS" id="2J12cYi1ysr" role="3clF47">
         <node concept="3clFbF" id="2J12cYi1zCi" role="3cqZAp">
           <node concept="3clFbT" id="2J12cYi1zCh" role="3clFbG">
@@ -1855,8 +1853,8 @@
           </node>
         </node>
       </node>
-      <node concept="10P_77" id="2J12cYi9MFB" role="3clF45" />
-      <node concept="3Tm1VV" id="2J12cYi9MFC" role="1B3o_S" />
+      <node concept="10P_77" id="3sYZzPj0_9B" role="3clF45" />
+      <node concept="3Tm1VV" id="3sYZzPj0_9C" role="1B3o_S" />
     </node>
   </node>
   <node concept="312cEu" id="41naeX0K98I">

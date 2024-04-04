@@ -294,7 +294,7 @@
           <node concept="3clFbF" id="1d2BQ0Zrpw4" role="3cqZAp">
             <node concept="2YIFZM" id="1d2BQ0Zvf8R" role="3clFbG">
               <ref role="37wK5l" node="1d2BQ0ZthPS" resolve="getScopeForAccessor" />
-              <ref role="1Pybhc" node="1d2BQ0Zqi8a" resolve="KotlinInBaseLanguageScopeHelper" />
+              <ref role="1Pybhc" node="1d2BQ0Zqi8a" resolve="KotlinInJavaScopeHelper" />
               <node concept="3kakTB" id="1d2BQ0Zvf8S" role="37wK5m" />
               <node concept="2rP1CM" id="1d2BQ0Zvf8T" role="37wK5m" />
               <node concept="3dgs5T" id="1GWGb5iEbkE" role="37wK5m" />
@@ -342,7 +342,7 @@
           <node concept="3clFbF" id="1d2BQ0Zrnxu" role="3cqZAp">
             <node concept="2YIFZM" id="1d2BQ0ZvfpI" role="3clFbG">
               <ref role="37wK5l" node="1d2BQ0ZthPS" resolve="getScopeForAccessor" />
-              <ref role="1Pybhc" node="1d2BQ0Zqi8a" resolve="KotlinInBaseLanguageScopeHelper" />
+              <ref role="1Pybhc" node="1d2BQ0Zqi8a" resolve="KotlinInJavaScopeHelper" />
               <node concept="3kakTB" id="1d2BQ0ZvfpJ" role="37wK5m" />
               <node concept="2rP1CM" id="1d2BQ0ZvfpK" role="37wK5m" />
               <node concept="3dgs5T" id="1GWGb5iEc8B" role="37wK5m" />
@@ -423,7 +423,7 @@
           <node concept="2ShNRf" id="1GWGb5inV4u" role="3cqZAk">
             <node concept="1pGfFk" id="1GWGb5inVjv" role="2ShVmc">
               <property role="373rjd" value="true" />
-              <ref role="37wK5l" to="sjya:pkrm6j0BLM" />
+              <ref role="37wK5l" to="sjya:pkrm6j0BLM" resolve="FullScopeContext" />
               <node concept="37vLTw" id="1GWGb5inVvj" role="37wK5m">
                 <ref role="3cqZAo" node="1GWGb5inTWB" resolve="referenceNode" />
               </node>
@@ -434,7 +434,7 @@
                 <ref role="3cqZAo" node="1GWGb5inUbP" resolve="containmentLink" />
               </node>
               <node concept="37vLTw" id="1GWGb5inX2x" role="37wK5m">
-                <ref role="3cqZAo" node="1GWGb5io38C" resolve="platform" />
+                <ref role="3cqZAo" node="1GWGb5io38C" resolve="jvmPlatform" />
               </node>
             </node>
           </node>
@@ -483,7 +483,7 @@
                 <node concept="3clFbF" id="1GWGb5irsOV" role="3cqZAp">
                   <node concept="359W_D" id="1GWGb5irsOW" role="3clFbG">
                     <ref role="359W_E" to="tpee:hqOqwz4" resolve="DotExpression" />
-                    <ref role="359W_F" to="tpee:hqOq$gm" />
+                    <ref role="359W_F" to="tpee:hqOq$gm" resolve="operand" />
                   </node>
                 </node>
               </node>
@@ -499,7 +499,7 @@
                 <node concept="3clFbF" id="1GWGb5irsP2" role="3cqZAp">
                   <node concept="359W_D" id="1GWGb5irsP3" role="3clFbG">
                     <ref role="359W_E" to="tpee:hqOqwz4" resolve="DotExpression" />
-                    <ref role="359W_F" to="tpee:hqOqNr4" />
+                    <ref role="359W_F" to="tpee:hqOqNr4" resolve="operation" />
                   </node>
                 </node>
               </node>
@@ -610,7 +610,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="1DhEmk5k5TW" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
     </node>
@@ -717,7 +717,7 @@
             <node concept="2ShNRf" id="2ZbCiJaAZos" role="37wK5m">
               <node concept="1pGfFk" id="2ZbCiJaAZyC" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" node="2ZbCiJaAXKa" resolve="KotlinInBaseLanguageScopeHelper.AccessorFilter" />
+                <ref role="37wK5l" node="2ZbCiJaAXKa" resolve="KotlinInJavaScopeHelper.AccessorFilter" />
                 <node concept="37vLTw" id="2ZbCiJaAZDv" role="37wK5m">
                   <ref role="3cqZAo" node="1d2BQ0ZthT5" resolve="kind" />
                 </node>
@@ -995,7 +995,7 @@
                         <node concept="2ShNRf" id="1DhEmk5j0Gb" role="HW$Y0">
                           <node concept="1pGfFk" id="1DhEmk5kAVp" role="2ShVmc">
                             <property role="373rjd" value="true" />
-                            <ref role="37wK5l" node="1DhEmk5k4wp" />
+                            <ref role="37wK5l" node="1DhEmk5k4wp" resolve="KotlinInJavaScopeHelper.ProtectedInstanceSignatureScope" />
                             <node concept="37vLTw" id="1DhEmk5j0Gf" role="37wK5m">
                               <ref role="3cqZAo" node="1GWGb5isZTm" resolve="instanceType" />
                             </node>
@@ -1156,7 +1156,7 @@
                   <node concept="2ShNRf" id="1DhEmk5lmaM" role="3cqZAk">
                     <node concept="1pGfFk" id="1DhEmk5lq2i" role="2ShVmc">
                       <property role="373rjd" value="true" />
-                      <ref role="37wK5l" to="sjya:1VgEGDn$V6G" />
+                      <ref role="37wK5l" to="sjya:1VgEGDn$V6G" resolve="SignatureScopeAsScope" />
                       <node concept="2YIFZM" id="3UQQw2lyvhx" role="37wK5m">
                         <ref role="37wK5l" to="sjya:3HHsmlLEx0k" resolve="of" />
                         <ref role="1Pybhc" to="sjya:6Ijh6DJE7jt" resolve="HidingBySignatureScope" />
@@ -1260,7 +1260,7 @@
           <node concept="3cpWs6" id="1GWGb5ivghj" role="3cqZAp">
             <node concept="2YIFZM" id="1GWGb5ivdME" role="3cqZAk">
               <ref role="37wK5l" node="1d2BQ0Zrkqo" resolve="getScopeForMember" />
-              <ref role="1Pybhc" node="1d2BQ0Zqi8a" resolve="KotlinInBaseLanguageScopeHelper" />
+              <ref role="1Pybhc" node="1d2BQ0Zqi8a" resolve="KotlinInJavaScopeHelper" />
               <node concept="3kakTB" id="1GWGb5itAk7" role="37wK5m" />
               <node concept="2rP1CM" id="1GWGb5itAk8" role="37wK5m" />
               <node concept="3dgs5T" id="1GWGb5itAk9" role="37wK5m" />
@@ -1270,7 +1270,7 @@
               <node concept="2ShNRf" id="1DhEmk5vuD9" role="37wK5m">
                 <node concept="1pGfFk" id="1DhEmk5vuDa" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" to="tbhz:2ZbCiJaoirw" />
+                  <ref role="37wK5l" to="tbhz:2ZbCiJaoirw" resolve="SignatureFilterImpl" />
                   <node concept="3VsKOn" id="1DhEmk5vuDb" role="37wK5m">
                     <ref role="3VsUkX" to="nww:5q426iHsmma" resolve="FunctionSignature" />
                   </node>
