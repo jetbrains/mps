@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,6 @@ public class InternAwareStringList extends ArrayList<String> {
 
   @Override
   public boolean add(String s) {
-    return super.add(InternUtil.intern(s));
+    return super.add(s == null ? null : s.intern());
   }
 }

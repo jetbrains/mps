@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -155,7 +155,7 @@ public final class StringBasedIdForJavaStubMethods extends SNodeId implements St
    */
   public StringBasedIdForJavaStubMethods(@NotNull String idWithReturnType) {
     checkStartsWithPrefix(idWithReturnType);
-    myStubMethodIdWithReturnTypeNoPrefix = InternUtil.intern(idWithReturnType.substring(1));
+    myStubMethodIdWithReturnTypeNoPrefix = idWithReturnType.substring(1).intern();
     myStubMethodIdWithoutReturnTypeNoPrefix = calcWithoutRetType(myStubMethodIdWithReturnTypeNoPrefix);
   }
 

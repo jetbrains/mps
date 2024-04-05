@@ -5427,11 +5427,21 @@
           <node concept="2YIFZM" id="296OPknLc_d" role="3cqZAk">
             <ref role="1Pybhc" to="2k9e:~MetaAdapterFactoryByName" resolve="MetaAdapterFactoryByName" />
             <ref role="37wK5l" to="2k9e:~MetaAdapterFactoryByName.getConcept(java.lang.String)" resolve="getConcept" />
-            <node concept="2YIFZM" id="296OPknLc_e" role="37wK5m">
-              <ref role="1Pybhc" to="18ew:~InternUtil" resolve="InternUtil" />
-              <ref role="37wK5l" to="18ew:~InternUtil.intern(java.lang.String)" resolve="intern" />
-              <node concept="37vLTw" id="296OPknLc_f" role="37wK5m">
-                <ref role="3cqZAo" node="296OPknLbYK" resolve="conceptQualifiedName" />
+            <node concept="3K4zz7" id="7lc$cbfyhFw" role="37wK5m">
+              <node concept="10Nm6u" id="7lc$cbfyhMe" role="3K4E3e" />
+              <node concept="2OqwBi" id="7lc$cbfyi9y" role="3K4GZi">
+                <node concept="37vLTw" id="7lc$cbfyhQJ" role="2Oq$k0">
+                  <ref role="3cqZAo" node="296OPknLbYK" resolve="conceptQualifiedName" />
+                </node>
+                <node concept="liA8E" id="7lc$cbfyijC" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~String.intern()" resolve="intern" />
+                </node>
+              </node>
+              <node concept="3clFbC" id="7lc$cbfygVo" role="3K4Cdx">
+                <node concept="10Nm6u" id="7lc$cbfyhqI" role="3uHU7w" />
+                <node concept="37vLTw" id="7lc$cbfycMf" role="3uHU7B">
+                  <ref role="3cqZAo" node="296OPknLbYK" resolve="conceptQualifiedName" />
+                </node>
               </node>
             </node>
           </node>

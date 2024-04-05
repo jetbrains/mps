@@ -348,32 +348,32 @@
   </root>
   <root nodeRef="r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)/2469893808083746703">
     <file name="SNodeFactory.java">
-      <node id="2469893808083746709" at="15,60,16,58" concept="9" />
-      <node id="2469893808083746719" at="18,65,19,63" concept="9" />
-      <node id="2469893808083746729" at="21,63,22,54" concept="9" />
-      <node id="2469893808083746747" at="24,66,25,40" concept="10" />
-      <node id="2469893808083746739" at="25,40,26,88" concept="9" />
-      <node id="2469893808083746705" at="15,0,18,0" concept="13" trace="newLazy#(Ljava/lang/String;)Ljetbrains/mps/smodel/SNode;" />
-      <node id="2469893808083746715" at="18,0,21,0" concept="13" trace="newInterface#(Ljava/lang/String;)Ljetbrains/mps/smodel/SNode;" />
-      <node id="2469893808083746725" at="21,0,24,0" concept="13" trace="newRegular#(Ljava/lang/String;)Ljetbrains/mps/smodel/SNode;" />
-      <node id="2469893808083746735" at="24,0,28,0" concept="13" trace="toConcept#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/language/SConcept;" />
-      <scope id="2469893808083746708" at="15,60,16,58" />
-      <scope id="2469893808083746718" at="18,65,19,63" />
-      <scope id="2469893808083746728" at="21,63,22,54" />
-      <scope id="2469893808083746738" at="24,66,26,88" />
-      <scope id="2469893808083746705" at="15,0,18,0">
+      <node id="2469893808083746709" at="14,60,15,58" concept="9" />
+      <node id="2469893808083746719" at="17,65,18,63" concept="9" />
+      <node id="2469893808083746729" at="20,63,21,54" concept="9" />
+      <node id="2469893808083746747" at="23,66,24,40" concept="10" />
+      <node id="2469893808083746739" at="24,40,25,118" concept="9" />
+      <node id="2469893808083746705" at="14,0,17,0" concept="13" trace="newLazy#(Ljava/lang/String;)Ljetbrains/mps/smodel/SNode;" />
+      <node id="2469893808083746715" at="17,0,20,0" concept="13" trace="newInterface#(Ljava/lang/String;)Ljetbrains/mps/smodel/SNode;" />
+      <node id="2469893808083746725" at="20,0,23,0" concept="13" trace="newRegular#(Ljava/lang/String;)Ljetbrains/mps/smodel/SNode;" />
+      <node id="2469893808083746735" at="23,0,27,0" concept="13" trace="toConcept#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/language/SConcept;" />
+      <scope id="2469893808083746708" at="14,60,15,58" />
+      <scope id="2469893808083746718" at="17,65,18,63" />
+      <scope id="2469893808083746728" at="20,63,21,54" />
+      <scope id="2469893808083746738" at="23,66,25,118" />
+      <scope id="2469893808083746705" at="14,0,17,0">
         <var name="conceptQualifiedName" id="2469893808083746706" />
       </scope>
-      <scope id="2469893808083746715" at="18,0,21,0">
+      <scope id="2469893808083746715" at="17,0,20,0">
         <var name="conceptQualifiedName" id="2469893808083746716" />
       </scope>
-      <scope id="2469893808083746725" at="21,0,24,0">
+      <scope id="2469893808083746725" at="20,0,23,0">
         <var name="conceptQualifiedName" id="2469893808083746726" />
       </scope>
-      <scope id="2469893808083746735" at="24,0,28,0">
+      <scope id="2469893808083746735" at="23,0,27,0">
         <var name="conceptQualifiedName" id="2469893808083746736" />
       </scope>
-      <unit id="2469893808083746703" at="13,0,29,0" name="jetbrains.mps.vcspersistence.SNodeFactory" />
+      <unit id="2469893808083746703" at="12,0,28,0" name="jetbrains.mps.vcspersistence.SNodeFactory" />
     </file>
   </root>
   <root nodeRef="r:57faf072-5a23-4c30-9cf6-da73f0e0a8ad(jetbrains.mps.vcspersistence)/5317173964874516731">

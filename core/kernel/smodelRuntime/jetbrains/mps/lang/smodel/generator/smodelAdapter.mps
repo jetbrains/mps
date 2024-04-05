@@ -14400,34 +14400,55 @@
         </node>
       </node>
       <node concept="3clFbS" id="5IkW5anFfos" role="3clF47">
-        <node concept="3clFbJ" id="5IkW5anFfot" role="3cqZAp">
-          <node concept="3y3z36" id="5IkW5anFfou" role="3clFbw">
-            <node concept="37vLTw" id="2BHiRxglaZ_" role="3uHU7B">
-              <ref role="3cqZAo" node="5IkW5anFfoq" resolve="value" />
-            </node>
-            <node concept="10Nm6u" id="5IkW5anFfow" role="3uHU7w" />
-          </node>
-          <node concept="9aQIb" id="5IkW5anFfox" role="9aQIa">
-            <node concept="3clFbS" id="5IkW5anFfoy" role="9aQI4">
-              <node concept="3cpWs6" id="5IkW5anFfoz" role="3cqZAp">
-                <node concept="10Nm6u" id="5IkW5anFfo$" role="3cqZAk" />
+        <node concept="3clFbF" id="7lc$cbfxxh2" role="3cqZAp">
+          <node concept="2OqwBi" id="7lc$cbfxBba" role="3clFbG">
+            <node concept="2YIFZM" id="7lc$cbfxyCx" role="2Oq$k0">
+              <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+              <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+              <node concept="3VsKOn" id="7lc$cbfx_A0" role="37wK5m">
+                <ref role="3VsUkX" node="5IkW5anFfnn" resolve="SPropertyOperations" />
               </node>
             </node>
-          </node>
-          <node concept="3clFbS" id="5IkW5anFfo_" role="3clFbx">
-            <node concept="3cpWs6" id="5IkW5anFfoA" role="3cqZAp">
-              <node concept="2YIFZM" id="5IkW5anFfoB" role="3cqZAk">
-                <ref role="1Pybhc" to="18ew:~InternUtil" resolve="InternUtil" />
-                <ref role="37wK5l" to="18ew:~InternUtil.intern(java.lang.String)" resolve="intern" />
-                <node concept="37vLTw" id="2BHiRxghgjs" role="37wK5m">
-                  <ref role="3cqZAo" node="5IkW5anFfoq" resolve="value" />
-                </node>
+            <node concept="liA8E" id="7lc$cbfxCNG" role="2OqNvi">
+              <ref role="37wK5l" to="wwqx:~Logger.warnDeprecatedUse(java.lang.String)" resolve="warnDeprecatedUse" />
+              <node concept="Xl_RD" id="7lc$cbfxEeo" role="37wK5m">
+                <property role="Xl_RC" value="NO-OP method, shall not use one from templates (let alone from hand-written code)" />
               </node>
             </node>
           </node>
         </node>
+        <node concept="3cpWs6" id="5IkW5anFfoz" role="3cqZAp">
+          <node concept="37vLTw" id="7lc$cbfqHiX" role="3cqZAk">
+            <ref role="3cqZAo" node="5IkW5anFfoq" resolve="value" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="7lc$cbfqHUE" role="lGtFl">
+        <node concept="TZ5HI" id="7lc$cbfqHUF" role="3nqlJM">
+          <node concept="TZ5HA" id="7lc$cbfqHUG" role="3HnX3l">
+            <node concept="1dT_AC" id="7lc$cbfqJi7" role="1dT_Ay">
+              <property role="1dT_AB" value="no uses of the method" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7lc$cbfqHUH" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <node concept="2B6LJw" id="7lc$cbfqJlx" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="7lc$cbfqJo7" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="7lc$cbfqJou" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="7lc$cbfqJs$" role="2B70Vg">
+            <property role="Xl_RC" value="2024.1" />
+          </node>
+        </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="7lc$cbfqJxC" role="jymVt" />
     <node concept="2YIFZL" id="5IkW5anFfoD" role="jymVt">
       <property role="TrG5h" value="getInteger" />
       <node concept="3Tm1VV" id="5IkW5anFfoE" role="1B3o_S" />
