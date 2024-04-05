@@ -8,8 +8,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -23,7 +23,7 @@ public class check_ReceiverType_Usage_NonTypesystemRule extends AbstractNonTypes
   public check_ReceiverType_Usage_NonTypesystemRule() {
   }
   public void applyRule(final SNode receiverType, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((boolean) IType__BehaviorDescriptor.isExpression_id2J12cYi1t5p.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(receiverType, LINKS.type$NVFj)))))) {
+    if (!((boolean) IType__BehaviorDescriptor.isExpression_id3sYZzPj0plI.invoke(SLinkOperations.getTarget(receiverType, LINKS.type$NVFj)))) {
       SNode parentNode = SNodeOperations.getParent(receiverType);
       if (!(SNodeOperations.isInstanceOf(parentNode, CONCEPTS.MemberNavigationExpression$7I)) && !(SNodeOperations.isInstanceOf(parentNode, CONCEPTS.NavigationOperation$4I))) {
         {

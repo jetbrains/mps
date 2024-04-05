@@ -47,9 +47,9 @@ public final class ConceptType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> populateTypeSignatures_id5q426iHK5S9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateTypeSignatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6234117012692426249L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(SignatureCollector.class, ""));
   public static final SMethod<String> toString_id4nn3FPlZH$r = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5032507314964191515L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<TypeKey> typeKey_idJmO2PmZtH5 = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("typeKey").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(853098072584870725L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
-  public static final SMethod<Boolean> isExpression_id2J12cYi1t5p = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExpression").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3152810901737165145L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isExpression_id3sYZzPj0plI = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3980898659981170030L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, getBehaviorMethods_id6IkKv2hCcXi, populateTypeSignatures_id5q426iHK5S9, toString_id4nn3FPlZH$r, typeKey_idJmO2PmZtH5, isExpression_id2J12cYi1t5p);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, getBehaviorMethods_id6IkKv2hCcXi, populateTypeSignatures_id5q426iHK5S9, toString_id4nn3FPlZH$r, typeKey_idJmO2PmZtH5, isExpression_id3sYZzPj0plI);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -100,7 +100,7 @@ public final class ConceptType__BehaviorDescriptor extends BaseBHDescriptor {
     // Class is different as NodeType uses ClassType for its own concept
     return new ConceptTypeKey(SLinkOperations.getPointer(__thisNode__, LINKS.concept$PItp));
   }
-  /*package*/ static boolean isExpression_id2J12cYi1t5p(@NotNull SAbstractConcept __thisConcept__) {
+  /*package*/ static boolean isExpression_id3sYZzPj0plI(@NotNull SNode __thisNode__) {
     return true;
   }
 
@@ -131,6 +131,8 @@ public final class ConceptType__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((String) toString_id4nn3FPlZH$r(node, ((boolean) (Boolean) parameters[0])));
       case 4:
         return (T) ((TypeKey) typeKey_idJmO2PmZtH5(node));
+      case 5:
+        return (T) ((Boolean) isExpression_id3sYZzPj0plI(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -143,8 +145,6 @@ public final class ConceptType__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 5:
-        return (T) ((Boolean) isExpression_id2J12cYi1t5p(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

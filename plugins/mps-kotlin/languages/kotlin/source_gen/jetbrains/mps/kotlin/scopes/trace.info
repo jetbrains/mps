@@ -201,12 +201,13 @@
       <node id="3233005502713787623" at="38,5,39,17" concept="7" />
       <node id="456109728138493759" at="42,55,43,161" concept="6" />
       <node id="456109728138498126" at="43,161,44,0" concept="9" />
-      <node id="5058569165273929004" at="47,45,48,32" concept="8" />
-      <node id="540816939198441546" at="48,32,49,66" concept="7" />
+      <node id="3980898659981067196" at="47,45,48,62" concept="8" />
+      <node id="3980898659981042852" at="48,62,49,202" concept="7" />
       <node id="3233005502710132745" at="55,0,56,0" concept="10" trace="IClassLike$go" />
       <node id="3233005502710132745" at="56,0,57,0" concept="10" trace="InnerClassModifier$wL" />
       <node id="3233005502710132745" at="57,0,58,0" concept="10" trace="IKotlinRoot$xV" />
       <node id="3233005502710132745" at="58,0,59,0" concept="10" trace="IClassDeclaration$bQ" />
+      <node id="3233005502710132745" at="59,0,60,0" concept="10" trace="IObject$38" />
       <node id="3233005502713787599" at="27,97,30,5" concept="4" />
       <node id="3233005502713787606" at="30,5,33,5" concept="4" />
       <node id="3233005502713787613" at="33,5,38,5" concept="4" />
@@ -216,7 +217,7 @@
       <node id="3233005502713787587" at="25,0,41,0" concept="11" trace="hasAccessToInstanceScopeOf#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <scope id="3233005502713787600" at="28,27,29,19" />
       <scope id="3233005502713787607" at="31,34,32,18" />
-      <scope id="5058569165273900355" at="47,45,49,66" />
+      <scope id="5058569165273900355" at="47,45,49,202" />
       <scope id="3233005502713787614" at="34,126,37,65">
         <var name="childToUse" id="3233005502717792611" />
       </scope>
@@ -237,8 +238,8 @@
         <var name="parentClass" id="3233005502713787629" />
       </scope>
       <unit id="5058569165273899828" at="45,15,51,5" name="jetbrains.mps.kotlin.scopes.ClassScopeHelper$1" />
-      <unit id="3233005502710132745" at="54,0,60,0" name="jetbrains.mps.kotlin.scopes.ClassScopeHelper$CONCEPTS" />
-      <unit id="3233005502710132745" at="20,0,61,0" name="jetbrains.mps.kotlin.scopes.ClassScopeHelper" />
+      <unit id="3233005502710132745" at="54,0,61,0" name="jetbrains.mps.kotlin.scopes.ClassScopeHelper$CONCEPTS" />
+      <unit id="3233005502710132745" at="20,0,62,0" name="jetbrains.mps.kotlin.scopes.ClassScopeHelper" />
     </file>
   </root>
   <root nodeRef="r:7d051f7f-1a28-4ed6-9de6-95fd49d3fa23(jetbrains.mps.kotlin.scopes)/3403467835376390424">
