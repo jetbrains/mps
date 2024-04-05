@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -41,7 +42,7 @@ public final class ModuleReference implements SModuleReference {
    * @param moduleId generally, shall not be {@code null}; {@code null} indicates invalid reference
    */
   public ModuleReference(@Nullable String moduleName, @Nullable SModuleId moduleId) {
-    myModuleName = InternUtil.intern(moduleName);
+    myModuleName = moduleName;
     myModuleId = moduleId;
   }
 
@@ -85,11 +86,24 @@ public final class ModuleReference implements SModuleReference {
     return String.format("%s(%s)", myModuleId.toString(), myModuleName == null ? "" : myModuleName);
   }
 
+  /**
+   * @deprecated prefer {@link PersistenceFacade#createModuleReference(String)} instead (if possible, which is generally the case except for some low-level code)
+   */
+  @Deprecated(since = "2024.1", forRemoval = false)
   public static SModuleReference parseReference(@NotNull String text) {
+    return parseReference(text, null);
+  }
+
+  public static SModuleReference parseReference(@NotNull String text, @Nullable PersistenceFacade pf) {
     text = text.trim();
     Matcher m = MODULE_REFERENCE.matcher(text);
     if (m.matches()) {
-      return new ModuleReference(m.group(2), ModuleId.fromString(m.group(1)));
+      if (pf != null) {
+        return pf.createModuleReference(pf.createModuleId(m.group(1)), m.group(2));
+      } else {
+        String name = m.group(2);
+        return new ModuleReference(name == null ? null : name.intern(), ModuleId.fromString(m.group(1)));
+      }
     }
     throw new IllegalArgumentException(String.format("Bad module reference %s", text));
   }
