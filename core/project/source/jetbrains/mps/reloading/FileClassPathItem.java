@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.reloading;
 import gnu.trove.THashMap;
 import gnu.trove.THashSet;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.ReadUtil;
 
@@ -28,7 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -37,16 +36,16 @@ import java.util.Set;
  * @author Kostik
  */
 class FileClassPathItem extends RealClassPathItem {
-  private final String myClassPath;
+  private final File myClassPath;
   private final Map<String, Set<String>> myAvailableClassesCache = new THashMap<>();
 
-  FileClassPathItem(String classPath) {
+  FileClassPathItem(File classPath) {
     myClassPath = classPath;
   }
 
   @Override
   public String getPath() {
-    return myClassPath;
+    return myClassPath.getPath();
   }
 
   @Override
@@ -76,14 +75,14 @@ class FileClassPathItem extends RealClassPathItem {
       return null;
     }
 
-    String path = myClassPath + File.separatorChar + NameUtil.pathFromNamespace(name) + MPSExtentions.DOT_CLASSFILE;
+    File path = new File(getModelDir(namespace), shortName + MPSExtentions.DOT_CLASSFILE);
     try {
       byte[] bytes;
       try (InputStream inp = new FileInputStream(path)) {
         bytes = ReadUtil.read(inp);
       }
 
-      return bytes == null ? null : new DefaultClassBytes(bytes, new File(path).toURI().toURL());
+      return bytes == null ? null : new DefaultClassBytes(bytes, path.toURI().toURL());
     } catch (IOException e) {
       return null;
     }
@@ -92,17 +91,15 @@ class FileClassPathItem extends RealClassPathItem {
   @Override
   public URL getResource(String name) {
     try {
-      File resourceFile = new File(myClassPath + File.separator + name.replace('/', File.separatorChar));
-      if (!resourceFile.exists()) return null;
-      return resourceFile.toURI().toURL();
+      File resourceFile = new File(myClassPath, name.replace('/', File.separatorChar));
+      return resourceFile.exists()? resourceFile.toURI().toURL() : null;
     } catch (MalformedURLException e) {
       return null;
     }
   }
 
   private synchronized void buildCacheFor(String namespace) {
-    namespace = InternUtil.intern(namespace);
-    Set<String> subpacks = null;
+    // namespace != null
     Set<String> classes = null;
     File dir = getModelDir(namespace);
 
@@ -114,35 +111,22 @@ class FileClassPathItem extends RealClassPathItem {
             classes = new THashSet<>(files.length);
           }
           String classname = name.substring(0, name.length() - MPSExtentions.DOT_CLASSFILE.length());
-          classes.add(InternUtil.intern(classname));
-        } else {
-          File file = new File(dir, name);
-          if (file.isDirectory()) {
-            if (subpacks == null) {
-              subpacks = new THashSet<>();
-            }
-            String fqName = namespace.length() > 0 ? namespace + "." + name : name;
-            subpacks.add(InternUtil.intern(fqName));
-          }
+          classes.add(classname.intern()); // not sure if there's any reason to strive for unique classname here, not that many duplicating classes out there
         }
       }
     }
 
-    myAvailableClassesCache.put(namespace, classes);
+    myAvailableClassesCache.put(namespace.intern(), classes);
   }
 
   @Override
   public List<RealClassPathItem> flatten() {
-    List<RealClassPathItem> result = new ArrayList<>();
-    result.add(this);
-    return result;
+    return Collections.singletonList(this);
   }
 
   private File getModelDir(String namespace) {
-    if (namespace == null) {
-      namespace = "";
-    }
-    return new File(myClassPath + File.separatorChar + NameUtil.pathFromNamespace(namespace));
+    // namespace != null
+    return new File(myClassPath, NameUtil.pathFromNamespace(namespace));
   }
 
   public String toString() {
