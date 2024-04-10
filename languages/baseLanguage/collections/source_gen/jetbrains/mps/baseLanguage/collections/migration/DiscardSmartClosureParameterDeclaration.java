@@ -14,14 +14,15 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class DiscardSmartClosureParameterDeclaration extends MigrationScriptBase {
@@ -46,6 +47,10 @@ public class DiscardSmartClosureParameterDeclaration extends MigrationScriptBase
         final SNode newParam = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x2308899d335ce07aL, "jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration"));
         SPropertyOperations.assign(newParam, PROPS.name$MnvL, SPropertyOperations.getString(it, PROPS.name$MnvL));
         SPropertyOperations.assign(newParam, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(it, PROPS.isFinal$gvTP));
+
+        // Copy not needed: being replaced
+        ListSequence.fromList(SLinkOperations.getChildren(newParam, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.smodelAttribute$KJ43)));
+        ListSequence.fromList(SLinkOperations.getChildren(newParam, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.annotation$K49I)));
 
         // Update references
         ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.as(SNodeOperations.getParent(it), CONCEPTS.ClosureLiteral$rp), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where((desc) -> SLinkOperations.getTarget(desc, LINKS.variableDeclaration$N1XG) == it).visitAll((desc) -> SLinkOperations.setTarget(desc, LINKS.variableDeclaration$N1XG, newParam));
@@ -87,6 +92,8 @@ public class DiscardSmartClosureParameterDeclaration extends MigrationScriptBase
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
     /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }
