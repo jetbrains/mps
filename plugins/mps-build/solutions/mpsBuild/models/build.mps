@@ -38980,19 +38980,9 @@
             <ref role="3bR37D" node="ymnOULAU0H" resolve="jetbrains.mps.lang.test" />
           </node>
         </node>
-        <node concept="1SiIV0" id="2hkOslttK3d" role="3bR37C">
-          <node concept="3bR9La" id="2hkOslttK3e" role="1SiIV1">
-            <ref role="3bR37D" node="1TaHNgiIbJt" resolve="jetbrains.mps.ide.platform" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="2hkOslt_Hwp" role="3bR37C">
           <node concept="3bR9La" id="2hkOslt_Hwq" role="1SiIV1">
             <ref role="3bR37D" node="nbn5Dym2sp" resolve="Testbench" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="3z0Jp9Uk5N4" role="3bR37C">
-          <node concept="3bR9La" id="3z0Jp9Uk5N5" role="1SiIV1">
-            <ref role="3bR37D" node="3AyJARA_gJr" resolve="jetbrains.mps.lang.test.generator" />
           </node>
         </node>
         <node concept="1SiIV0" id="70OLlDKpOkz" role="3bR37C">
@@ -39051,11 +39041,6 @@
             <ref role="3bR37D" node="1ULLXZL0gZG" resolve="org.junit.junit5" />
           </node>
         </node>
-        <node concept="1SiIV0" id="465rK6MmPxP" role="3bR37C">
-          <node concept="3bR9La" id="465rK6MmPxQ" role="1SiIV1">
-            <ref role="3bR37D" node="7MSVDs3$Uns" resolve="jetbrains.mps.baseLanguage.unitTest.runtime" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="465rK6MmPIV" role="3bR37C">
           <node concept="3bR9La" id="465rK6MmPIW" role="1SiIV1">
             <ref role="3bR37D" node="465rK6MmPl5" resolve="jetbrains.mps.baselanguage.unitTest.launcher" />
@@ -39064,11 +39049,6 @@
         <node concept="1SiIV0" id="2Oogzg3vk7z" role="3bR37C">
           <node concept="3bR9La" id="2Oogzg3vk7$" role="1SiIV1">
             <ref role="3bR37D" node="2Oogzg3vg0R" resolve="jetbrains.mps.baseLanguage.unitTest.platform" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="82DhFfjel" role="3bR37C">
-          <node concept="3bR9La" id="82DhFfjem" role="1SiIV1">
-            <ref role="3bR37D" node="ymnOULAU1u" resolve="jetbrains.mps.lang.test.runtime" />
           </node>
         </node>
         <node concept="1SiIV0" id="5pvGTa8$dVS" role="3bR37C">

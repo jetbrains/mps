@@ -18,14 +18,6 @@ import org.jetbrains.annotations.NonNls;
  * To me, the need to wrap access to the methods of this class with model read is an indicator of poor design.
  */
 public interface ITestNodeWrapper<N extends SNode> {
-  /**
-   * 
-   * @deprecated 
-   */
-  @Deprecated(forRemoval = true)
-  default N getNode() {
-    throw new UnsupportedOperationException("not implemented");
-  }
 
   SNodeReference getNodePointer();
 
@@ -69,14 +61,6 @@ public interface ITestNodeWrapper<N extends SNode> {
    */
   @NonNls
   String getFqName();
-  /**
-   * 
-   * @deprecated identical to {@link jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper#getFqName() }
-   */
-  @Deprecated(since = "2018.1", forRemoval = true)
-  default String getCachedFqName() {
-    throw new UnsupportedOperationException("not implemented");
-  }
 
   @NotNull
   TestParameters getTestRunParameters();
