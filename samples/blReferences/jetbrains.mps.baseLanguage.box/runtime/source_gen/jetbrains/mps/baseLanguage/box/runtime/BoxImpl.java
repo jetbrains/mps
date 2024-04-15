@@ -12,7 +12,7 @@ public class BoxImpl<T> implements Box<T> {
 
   @Override
   public T getValue() {
-    return this.t;
+    this.t;
   }
   @Override
   public void setValue(T t) {
