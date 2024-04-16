@@ -4,7 +4,7 @@ package jetbrains.mps.baseLanguage.unitTest.execution.tool;
 
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.baseLanguage.unitTest.execution.TestType;
+import jetbrains.mps.baselanguage.unitTest.execution.TestType;
 import java.util.Objects;
 
 public final class MessageFilter {

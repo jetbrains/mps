@@ -68,6 +68,7 @@
     <import index="3vr8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.config(MPS.IDEA/)" />
     <import index="jgl2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.testframework.export(MPS.IDEA/)" />
     <import index="qq03" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)" />
+    <import index="lxc5" ref="r:b25f8540-4e18-427d-a8ac-60f947a3fbc1(jetbrains.mps.baselanguage.unitTest.execution)" />
     <import index="4u8o" ref="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)" implicit="true" />
   </imports>
   <registry>
@@ -2579,7 +2580,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="2zvrUBdTNhR" role="2OqNvi">
-                <ref role="37wK5l" to="tpnd:2zvrUBdv_HM" resolve="getDisplayName" />
+                <ref role="37wK5l" to="lxc5:2zvrUBdv_HM" resolve="getDisplayName" />
               </node>
             </node>
           </node>
@@ -2882,7 +2883,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="2zvrUBdI21K" role="2OqNvi">
-                <ref role="37wK5l" to="tpnd:2zvrUBdv_HM" resolve="getDisplayName" />
+                <ref role="37wK5l" to="lxc5:2zvrUBdv_HM" resolve="getDisplayName" />
               </node>
             </node>
           </node>
@@ -9222,7 +9223,7 @@
                   <ref role="3cqZAo" node="5kPsWkSeU_P" resolve="testNode" />
                 </node>
                 <node concept="liA8E" id="5kPsWkSeU_h" role="2OqNvi">
-                  <ref role="37wK5l" to="tpnd:2Zbjobgq4VN" resolve="getQualifiedName" />
+                  <ref role="37wK5l" to="lxc5:2Zbjobgq4VN" resolve="getQualifiedName" />
                 </node>
               </node>
             </node>
@@ -10566,7 +10567,7 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="36vIONTtQDU" role="2OqNvi">
-                                    <ref role="37wK5l" to="tpnd:2Zbjobgn99S" resolve="getTime" />
+                                    <ref role="37wK5l" to="lxc5:2Zbjobgn99S" resolve="getTime" />
                                   </node>
                                 </node>
                               </node>
@@ -10589,7 +10590,7 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="36vIONTtQE1" role="2OqNvi">
-                                    <ref role="37wK5l" to="tpnd:2Zbjobgn99H" resolve="getMemoryUsage" />
+                                    <ref role="37wK5l" to="lxc5:2Zbjobgn99H" resolve="getMemoryUsage" />
                                   </node>
                                 </node>
                               </node>
@@ -10691,7 +10692,7 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="36vIONTtQEH" role="2OqNvi">
-                                    <ref role="37wK5l" to="tpnd:2Zbjobgn99S" resolve="getTime" />
+                                    <ref role="37wK5l" to="lxc5:2Zbjobgn99S" resolve="getTime" />
                                   </node>
                                 </node>
                               </node>
@@ -10714,7 +10715,7 @@
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="36vIONTtQEO" role="2OqNvi">
-                                    <ref role="37wK5l" to="tpnd:2Zbjobgn99H" resolve="getMemoryUsage" />
+                                    <ref role="37wK5l" to="lxc5:2Zbjobgn99H" resolve="getMemoryUsage" />
                                   </node>
                                 </node>
                               </node>
@@ -18301,15 +18302,15 @@
             </node>
             <node concept="3clFbC" id="5kPsWkS1kAj" role="3uHU7w">
               <node concept="Rm8GO" id="5kPsWkS1l0g" role="3uHU7w">
-                <ref role="Rm8GQ" to="tpnd:2Zbjobg_3bY" resolve="METHOD" />
-                <ref role="1Px2BO" to="tpnd:2ZbjobgI3HY" resolve="TestType" />
+                <ref role="Rm8GQ" to="lxc5:2Zbjobg_3bY" resolve="METHOD" />
+                <ref role="1Px2BO" to="lxc5:2ZbjobgI3HY" resolve="TestType" />
               </node>
               <node concept="2OqwBi" id="5kPsWkS1k3d" role="3uHU7B">
                 <node concept="37vLTw" id="5kPsWkS1sgV" role="2Oq$k0">
                   <ref role="3cqZAo" node="5kPsWkS1sgR" resolve="currentTestNode" />
                 </node>
                 <node concept="liA8E" id="5kPsWkS1kf9" role="2OqNvi">
-                  <ref role="37wK5l" to="tpnd:2ZbjobgI7F7" resolve="getType" />
+                  <ref role="37wK5l" to="lxc5:2ZbjobgI7F7" resolve="getType" />
                 </node>
               </node>
             </node>
@@ -19584,15 +19585,15 @@
           </node>
           <node concept="3clFbC" id="4e85Rl_$zDj" role="3clFbw">
             <node concept="Rm8GO" id="4e85Rl_$zQ8" role="3uHU7w">
-              <ref role="Rm8GQ" to="tpnd:2Zbjobg_3bY" resolve="METHOD" />
-              <ref role="1Px2BO" to="tpnd:2ZbjobgI3HY" resolve="TestType" />
+              <ref role="Rm8GQ" to="lxc5:2Zbjobg_3bY" resolve="METHOD" />
+              <ref role="1Px2BO" to="lxc5:2ZbjobgI3HY" resolve="TestType" />
             </node>
             <node concept="2OqwBi" id="4e85Rl_$z7o" role="3uHU7B">
               <node concept="37vLTw" id="4e85Rl_$yP5" role="2Oq$k0">
                 <ref role="3cqZAo" node="4e85Rl_$v5i" resolve="filterNode" />
               </node>
               <node concept="liA8E" id="4e85Rl_$zjY" role="2OqNvi">
-                <ref role="37wK5l" to="tpnd:2ZbjobgI7F7" resolve="getType" />
+                <ref role="37wK5l" to="lxc5:2ZbjobgI7F7" resolve="getType" />
               </node>
             </node>
           </node>
@@ -19601,15 +19602,15 @@
               <node concept="1gVbGN" id="4e85Rl_$C4Z" role="3cqZAp">
                 <node concept="3clFbC" id="4e85Rl_$D2B" role="1gVkn0">
                   <node concept="Rm8GO" id="4e85Rl_$Daa" role="3uHU7w">
-                    <ref role="Rm8GQ" to="tpnd:2Zbjobg_3c0" resolve="TESTCASE" />
-                    <ref role="1Px2BO" to="tpnd:2ZbjobgI3HY" resolve="TestType" />
+                    <ref role="Rm8GQ" to="lxc5:2Zbjobg_3c0" resolve="TESTCASE" />
+                    <ref role="1Px2BO" to="lxc5:2ZbjobgI3HY" resolve="TestType" />
                   </node>
                   <node concept="2OqwBi" id="4e85Rl_$Cz9" role="3uHU7B">
                     <node concept="37vLTw" id="4e85Rl_$Cav" role="2Oq$k0">
                       <ref role="3cqZAo" node="4e85Rl_$v5i" resolve="filterNode" />
                     </node>
                     <node concept="liA8E" id="4e85Rl_$CHg" role="2OqNvi">
-                      <ref role="37wK5l" to="tpnd:2ZbjobgI7F7" resolve="getType" />
+                      <ref role="37wK5l" to="lxc5:2ZbjobgI7F7" resolve="getType" />
                     </node>
                   </node>
                 </node>

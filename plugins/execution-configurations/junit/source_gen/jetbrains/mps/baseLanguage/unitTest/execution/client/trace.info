@@ -325,7 +325,7 @@
       <node id="3443931564294428821" at="79,0,86,0" concept="9" trace="getTestCaseNodeByString#(Ljava/lang/String;Ljava/lang/String;)Ljetbrains/mps/baseLanguage/unitTest/execution/client/ITestNodeWrapper;" />
       <node id="5397474446245183190" at="57,68,67,5" concept="8" />
       <node id="3443931564293702779" at="39,102,51,5" concept="7" />
-      <node id="3443931564293792430" at="55,0,70,0" concept="9" trace="convert#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestRawKey;)Ljetbrains/mps/baseLanguage/unitTest/execution/TestNodeKey;" />
+      <node id="3443931564293792430" at="55,0,70,0" concept="9" trace="convert#(Ljetbrains/mps/baselanguage/unitTest/execution/TestRawKey;)Ljetbrains/mps/baseLanguage/unitTest/execution/TestNodeKey;" />
       <node id="3443931564293626429" at="37,0,54,0" concept="15" trace="buildKeyMapping#(Ljava/util/Map;)Ljava/util/Map;" />
       <scope id="3443931564293438445" at="33,122,34,59" />
       <scope id="591991257669235722" at="61,35,62,87" />
@@ -850,29 +850,29 @@
       <node id="2254978909344858481" at="58,0,63,0" concept="9" trace="processTestCases#(Ljava/util/List;)V" />
       <node id="2034046503361624859" at="75,5,80,5" concept="7" />
       <node id="5881102044690182681" at="90,0,95,0" concept="9" trace="notifyUpdateListeners#()V" />
-      <node id="3443931564293866231" at="104,0,109,0" concept="9" trace="convertRawEventToNodeEvent#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestRawEvent;)Ljetbrains/mps/baseLanguage/unitTest/execution/TestNodeEvent;" />
-      <node id="3443931564292891727" at="134,0,139,0" concept="9" trace="onTestRunStarted#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestRawEvent;)V" />
+      <node id="3443931564293866231" at="104,0,109,0" concept="9" trace="convertRawEventToNodeEvent#(Ljetbrains/mps/baselanguage/unitTest/execution/TestRawEvent;)Ljetbrains/mps/baseLanguage/unitTest/execution/TestNodeEvent;" />
+      <node id="3443931564292891727" at="134,0,139,0" concept="9" trace="onTestRunStarted#(Ljetbrains/mps/baselanguage/unitTest/execution/TestRawEvent;)V" />
       <node id="6139940957877902334" at="159,75,164,5" concept="8" />
       <node id="3947653727291426636" at="225,56,230,5" concept="8" />
       <node id="4866165190354004250" at="248,0,253,0" concept="9" trace="onStartNotified#()V" />
       <node id="3288785277577177677" at="256,24,261,7" concept="8" />
       <node id="3288785277577236151" at="261,7,266,7" concept="8" />
       <node id="5881102044690183356" at="83,0,89,0" concept="3" trace="TestRunState#(Ljava/util/List;)V" />
-      <node id="5881102044690182724" at="110,0,116,0" concept="9" trace="onTestStarted#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestRawEvent;)V" />
+      <node id="5881102044690182724" at="110,0,116,0" concept="9" trace="onTestStarted#(Ljetbrains/mps/baselanguage/unitTest/execution/TestRawEvent;)V" />
       <node id="4866165190352656317" at="127,0,133,0" concept="9" trace="log#(Ljava/lang/String;)V" />
-      <node id="3443931564292888272" at="140,0,146,0" concept="9" trace="onTestRunFinished#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestRawEvent;)V" />
-      <node id="5881102044690182805" at="147,0,153,0" concept="9" trace="onTestAssumptionFailure#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestRawEvent;)V" />
+      <node id="3443931564292888272" at="140,0,146,0" concept="9" trace="onTestRunFinished#(Ljetbrains/mps/baselanguage/unitTest/execution/TestRawEvent;)V" />
+      <node id="5881102044690182805" at="147,0,153,0" concept="9" trace="onTestAssumptionFailure#(Ljetbrains/mps/baselanguage/unitTest/execution/TestRawEvent;)V" />
       <node id="8526392799789925738" at="180,21,186,7" concept="7" />
-      <node id="3443931564291795730" at="198,0,204,0" concept="9" trace="onTestIgnored#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestRawEvent;)V" />
-      <node id="5881102044690182780" at="205,0,211,0" concept="9" trace="onTestFailure#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestRawEvent;)V" />
+      <node id="3443931564291795730" at="198,0,204,0" concept="9" trace="onTestIgnored#(Ljetbrains/mps/baselanguage/unitTest/execution/TestRawEvent;)V" />
+      <node id="5881102044690182780" at="205,0,211,0" concept="9" trace="onTestFailure#(Ljetbrains/mps/baselanguage/unitTest/execution/TestRawEvent;)V" />
       <node id="6139940957877902365" at="159,0,166,0" concept="9" trace="getCurrentEventTestsCount#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestNodeEvent;)I" />
-      <node id="5881102044690182755" at="117,0,126,0" concept="9" trace="onTestFinished#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestRawEvent;)V" />
+      <node id="5881102044690182755" at="117,0,126,0" concept="9" trace="onTestFinished#(Ljetbrains/mps/baselanguage/unitTest/execution/TestRawEvent;)V" />
       <node id="7858657981744041114" at="213,70,222,5" concept="8" />
       <node id="5881102044690183013" at="272,0,281,0" concept="9" trace="onTextAvailable#(Ljava/lang/String;Lcom/intellij/openapi/util/Key;)V" />
       <node id="5881102044690182860" at="225,0,235,0" concept="9" trace="startTest#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestNodeEvent;)V" />
       <node id="2254978909344965601" at="64,65,75,5" concept="7" />
       <node id="5881102044690182996" at="236,0,247,0" concept="9" trace="onTermination#(Z)V" />
-      <node id="5881102044690183053" at="212,0,224,0" concept="9" trace="removeFinishedTestEvent#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestRawEvent;)V" />
+      <node id="5881102044690183053" at="212,0,224,0" concept="9" trace="removeFinishedTestEvent#(Ljetbrains/mps/baselanguage/unitTest/execution/TestRawEvent;)V" />
       <node id="8526392799789614417" at="178,64,191,5" concept="8" />
       <node id="3288785277577236668" at="254,35,267,5" concept="8" />
       <node id="3364135224078128724" at="254,0,269,0" concept="9" trace="checkConsistency#()V" />
@@ -1211,7 +1211,7 @@
       <node id="5881102044690784842" at="34,0,37,0" concept="9" trace="onSimpleTextAvailable#(Ljava/lang/String;Lcom/intellij/openapi/util/Key;)V" />
       <node id="5881102044690784944" at="21,0,25,0" concept="3" trace="TestEventsDispatcher#(Ljetbrains/mps/baseLanguage/unitTest/execution/client/TestRunState;)V" />
       <node id="3443931564291792689" at="40,44,62,5" concept="16" />
-      <node id="5881102044690784858" at="38,0,64,0" concept="9" trace="onTestEvent#(Ljetbrains/mps/baseLanguage/unitTest/execution/TestEventMessage;)V" />
+      <node id="5881102044690784858" at="38,0,64,0" concept="9" trace="onTestEvent#(Ljetbrains/mps/baselanguage/unitTest/execution/TestEventMessage;)V" />
       <scope id="5881102044690784947" at="22,64,23,24" />
       <scope id="4866165190354003036" at="26,73,27,30" />
       <scope id="5881102044690784752" at="30,77,31,94" />

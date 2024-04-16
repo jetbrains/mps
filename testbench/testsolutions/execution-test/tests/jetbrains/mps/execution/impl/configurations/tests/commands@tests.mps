@@ -30,6 +30,7 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="ni5j" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.regex(JDK/)" />
+    <import index="lxc5" ref="r:b25f8540-4e18-427d-a8ac-60f947a3fbc1(jetbrains.mps.baselanguage.unitTest.execution)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
@@ -1811,7 +1812,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4e85Rl_tNV6" role="2OqNvi">
-                <ref role="37wK5l" to="tpnd:2Zbjobgq4VN" resolve="getQualifiedName" />
+                <ref role="37wK5l" to="lxc5:2Zbjobgq4VN" resolve="getQualifiedName" />
               </node>
             </node>
           </node>
@@ -1905,7 +1906,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4e85Rl_tRDt" role="2OqNvi">
-                <ref role="37wK5l" to="tpnd:2Zbjobgq4VN" resolve="getQualifiedName" />
+                <ref role="37wK5l" to="lxc5:2Zbjobgq4VN" resolve="getQualifiedName" />
               </node>
             </node>
           </node>
@@ -1999,7 +2000,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4e85Rl_tWFU" role="2OqNvi">
-                <ref role="37wK5l" to="tpnd:2Zbjobgq4VN" resolve="getQualifiedName" />
+                <ref role="37wK5l" to="lxc5:2Zbjobgq4VN" resolve="getQualifiedName" />
               </node>
             </node>
           </node>

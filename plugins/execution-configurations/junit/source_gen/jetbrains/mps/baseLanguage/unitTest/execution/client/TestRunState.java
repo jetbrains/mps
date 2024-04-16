@@ -17,7 +17,7 @@ import java.util.LinkedHashMap;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestMethodNodeKey;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeEvent;
-import jetbrains.mps.baseLanguage.unitTest.execution.TestRawEvent;
+import jetbrains.mps.baselanguage.unitTest.execution.TestRawEvent;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestNodeKey;
 import org.jetbrains.mps.annotations.Internal;
 import jetbrains.mps.baseLanguage.unitTest.execution.TestCaseNodeKey;

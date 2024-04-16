@@ -6,13 +6,13 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.process.ProcessEvent;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutor;
 import com.intellij.openapi.util.Key;
-import jetbrains.mps.baseLanguage.unitTest.execution.TestEventMessage;
-import jetbrains.mps.baseLanguage.unitTest.execution.TestRawEvent;
+import jetbrains.mps.baselanguage.unitTest.execution.TestEventMessage;
+import jetbrains.mps.baselanguage.unitTest.execution.TestRawEvent;
 
 /**
  * Redundant MITM anti-pattern. To be refactored away.
  * 
- * Updates {@link jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState } with {@link jetbrains.mps.baseLanguage.unitTest.execution.TestEventMessage } and other events from a futher unspecified source (usually a listener of a test execution process)
+ * Updates {@link jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState } with {@link jetbrains.mps.baselanguage.unitTest.execution.TestEventMessage } and other events from a futher unspecified source (usually a listener of a test execution process)
  */
 @Deprecated(forRemoval = true)
 public final class TestEventsDispatcher {
