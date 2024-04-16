@@ -6,9 +6,9 @@ import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.ide.icons.IconLoadingUtil;
 
 public class IconContainer {
-  protected static IconResource RESOURCE_a0a3a0a62b0ve = new IconResource("tool.png", IconContainer.class);
   protected static IconResource RESOURCE_a0a3a0a7b0ve = (IconLoadingUtil.isNewUIActive() ? new IconResource("actionNew_newui.svg", IconContainer.class) : new IconResource("actionNew.png", IconContainer.class));
   protected static IconResource RESOURCE_a0a3a0a8b0ve = (IconLoadingUtil.isNewUIActive() ? new IconResource("actionGroupNew_newui.svg", IconContainer.class) : new IconResource("actionGroupNew.png", IconContainer.class));
+  protected static IconResource RESOURCE_a0a3a0a62b0ve = (IconLoadingUtil.isNewUIActive() ? new IconResource("tool_newui.svg", IconContainer.class) : new IconResource("tool.png", IconContainer.class));
   protected static IconResource RESOURCE_a0a4a0a05b0ve = (IconLoadingUtil.isNewUIActive() ? new IconResource("tabbedEditor_newui.svg", IconContainer.class) : new IconResource("tabbedEditor.png", IconContainer.class));
   protected static IconResource RESOURCE_a0a4a0a76b0ve = (IconLoadingUtil.isNewUIActive() ? new IconResource("ideaPluginDeclaration_newui.svg", IconContainer.class) : new IconResource("ideaPluginDeclaration.png", IconContainer.class));
   protected static IconResource RESOURCE_a0a3a0a77b0ve = (IconLoadingUtil.isNewUIActive() ? new IconResource("keymapChangesDeclaration_newui.svg", IconContainer.class) : new IconResource("keymapChangesDeclaration.png", IconContainer.class));
