@@ -15,11 +15,13 @@
  */
 package jetbrains.mps.ide.editor.warningPanel;
 
+import com.intellij.openapi.editor.colors.EditorColors;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.ui.HyperlinkLabel;
+import com.intellij.util.ui.JBInsets;
+import com.intellij.util.ui.JBUI.CurrentTheme.Editor.Notification;
 import com.intellij.xml.util.XmlStringUtil;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -41,12 +43,13 @@ public final class WarningPanel extends JPanel {
     myProvider = provider;
     myText = text;
     setLayout(new BorderLayout());
-    final Style wpStyle = StyleRegistry.getInstance().getStyle("WARNING_PANEL");
-    setBackground(wpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR));
-    setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+    EditorColorsScheme colorsScheme = EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
+    setBackground(colorsScheme.getColor(EditorColors.NOTIFICATION_BACKGROUND));
+    JBInsets jbInsets = Notification.borderInsetsWithoutStatus();
+    setBorder(BorderFactory.createEmptyBorder(jbInsets.top, jbInsets.left, jbInsets.bottom, jbInsets.right));
 
     final JLabel label = new JLabel("<html>" + XmlStringUtil.escapeString(text) + "</html>");
-    label.setForeground(wpStyle.get(StyleAttributes.TEXT_COLOR));
+    label.setForeground(colorsScheme.getDefaultForeground());
     add(label, BorderLayout.CENTER);
 
     if (linkText != null && handler != null) {
