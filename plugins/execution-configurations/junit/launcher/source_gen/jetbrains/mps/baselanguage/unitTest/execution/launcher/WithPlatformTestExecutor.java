@@ -91,7 +91,7 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
     if (startupArguments.getAutomaticPLuginDiscoveryMode()) {
       cfg = cfg.withAutomaticPluginDiscovery();
     } else {
-      cfg = cfg.withDefaultPlugins().withDebuggerPlugin();
+      cfg = cfg.withDefaultPlugins().withExecutionPlugins();
     }
 
     // Same code is in MpsWorker, we'd better share it

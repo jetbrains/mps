@@ -165,7 +165,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
   }
 
   @NotNull
-  /*package*/ static SModuleReference MODULE_WITH_EXECUTORS() {
+  private static SModuleReference MODULE_WITH_EXECUTORS() {
     // next module used to be in defaults of TestParameters, don't see a reason why can't do it here, though.
     // With classpath, we have to
     // ensure *TestExecutor classes get loaded (unitTest.execution.launcher package). The best approach in that case
