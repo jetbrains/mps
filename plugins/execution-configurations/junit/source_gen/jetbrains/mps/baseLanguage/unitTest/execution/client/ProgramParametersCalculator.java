@@ -111,6 +111,9 @@ import jetbrains.mps.project.PathMacros;
     myRepo.getModelAccess().runReadAction(() -> {
       List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
       List<SModuleReference> requiredModules = new ArrayList<SModuleReference>(myTestsToRun.getRequiredModules());
+      // FIXME not sure I understand the reason why e618190d included executor module in an explicit way. IMO, when IdeaEnv
+      //     starts, it has to activate respective plugin ([exec-cfg]). Likely, need to add [exec-cfg] + its dependencies like [mps-testing]
+      //     in #addPluginsToStartupArgs, above
       requiredModules.add(CPCalculator.MODULE_WITH_EXECUTORS());
       for (SModuleReference testModule : requiredModules) {
         SModule tm = testModule.resolve(myRepo);

@@ -22,10 +22,6 @@ public class JUnit5TestExecutor extends AbstractJUnitTestMixin {
     //  FIXME similar to AbstractJUnit5Launcher and subclasses. Eventually, shall get converged into single facility
   }
 
-  public JUnit5TestExecutor(TestsContributor testContributor, boolean redirectStdOutErr, Supplier<ClassLoader> contextCL) {
-    this(new JUnit5TestContributorConverter(testContributor), redirectStdOutErr, contextCL);
-  }
-
   @Override
   protected void executeSafe() throws Throwable {
     executeWithContextClassLoader();

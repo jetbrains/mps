@@ -14,13 +14,13 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.ArrayList;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.baseLanguage.execution.api.Java_Command;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.LinkedHashSet;
 import java.io.File;
 import jetbrains.mps.string.Strings;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 /*package*/ class CPCalculator {
   private static final Logger LOG = Logger.getLogger(CPCalculator.class);
@@ -49,12 +49,7 @@ import jetbrains.mps.string.Strings;
     myRepo.getModelAccess().runReadAction(() -> {
       Set<SModule> uniqueModules = SetSequence.fromSet(new HashSet<SModule>());
       List<SModuleReference> requiredModules = new ArrayList<SModuleReference>(myTestsWithParams.getRequiredModules());
-      if (myTestsWithParams.getParameters().useCompatibilityMode()) {
-        // for LegacyTestLauncher, it's enough (and correct) not to put MPS-managed modules (like unitTest.execution) into classpath
-        requiredModules.add(PersistenceFacade.getInstance().createModuleReference("33f214de-6dce-4396-83c7-640823b7c525(jetbrains.mps.baselanguage.unitTest.launcher)"));
-      } else {
-        requiredModules.add(MODULE_WITH_EXECUTORS());
-      }
+      requiredModules.add(MODULE_WITH_EXECUTORS());
       for (SModuleReference testModule : requiredModules) {
         SModule module = testModule.resolve(myRepo);
         if (module != null) {
@@ -72,7 +67,7 @@ import jetbrains.mps.string.Strings;
   }
 
   private List<String> calcForPlatformWithMPS() {
-    final SModuleReference moduleWithExecutors = PersistenceFacade.getInstance().createModuleReference("33f214de-6dce-4396-83c7-640823b7c525(jetbrains.mps.baselanguage.unitTest.launcher)");
+    final SModuleReference moduleWithExecutors = MODULE_WITH_EXECUTORS();
     final List<String> classpath = ListSequence.fromList(new LinkedList<String>());
     if (PathManager.isFromSources()) {
       ListSequence.fromList(classpath).addElement(PathManager.getLauncherClassPathEntry());
@@ -173,15 +168,19 @@ import jetbrains.mps.string.Strings;
   /*package*/ static SModuleReference MODULE_WITH_EXECUTORS() {
     // next module used to be in defaults of TestParameters, don't see a reason why can't do it here, though.
     // With classpath, we have to
-    // ensure *TestExecutor classes get loaded (unitTest.execution.server package). The best approach in that case
+    // ensure *TestExecutor classes get loaded (unitTest.execution.launcher package). The best approach in that case
     // would be for TestParameters to tell set of required modules (instead of/in addition to classpath list)
     // as it's TestParameters class that knows specific contributor class location, however, such a change would
     // require changes in TestParameters#comprises() logic, which needs a thorough refactoring to get rid of
     // Class<> in getExecutorClass() anyway.
     // The reason I put it here is that I lean towards no executorClass in TestParameters at all, so that
-    // this command would pick executor class based on information whether need to start MPS or not, and therfore
+    // this command would pick executor class based on information whether need to start MPS or not, and therefore
     // would add relevant module into classpath here anyway.
 
-    return PersistenceFacade.getInstance().createModuleReference("f618e99a-2641-465c-bb54-31fe76f9e285(jetbrains.mps.baseLanguage.unitTest.execution)");
+    // 'launcher' is a module w/ "provided" CL and classes residing under [exec-cfg-plugin]/lib. The module depends from 
+    // few MPS-managed modules (like org.junit.junit5) for the sake of proper libraries in classpath. It's assumed all 
+    // dependant modules supply their classes as a library suitable for use w/o MPS module classloader (e.g. like JUnit5 libraries
+    // or MPS code from <MPS-HOME>/lib
+    return PersistenceFacade.getInstance().createModuleReference("33f214de-6dce-4396-83c7-640823b7c525(jetbrains.mps.baselanguage.unitTest.launcher)");
   }
 }
