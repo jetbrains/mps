@@ -192,8 +192,8 @@ public class ModulesWatcher {
         invalidModules.values().forEach(LOG::warning);
       }
 
-      if (!invalidModules.isEmpty() && LOG.isTraceLevel()) {
-        traceInvalidDeps(invalidModules.keySet(), allInvalidModules, LOG::trace);
+      if (!invalidModules.isEmpty() && LOG.isDebugLevel()) {
+        traceInvalidDeps(invalidModules.keySet(), allInvalidModules, LOG::debug);
       }
       if (LOG.isInfoLevel()) {
         LOG.info("Totally " + allInvalidModules.size() + " modules are marked invalid for class loading" + (allInvalidModules.isEmpty() ? "."

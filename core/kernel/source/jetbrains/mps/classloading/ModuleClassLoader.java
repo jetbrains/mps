@@ -230,6 +230,10 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   private Class<?> loadFromDeps(String name) throws ClassNotFoundException {
     Collection<? extends ClassLoader> dependencyClassLoaders = getDependencyClassLoaders();
 
+    if (LOG.isDebugLevel()) {
+      LOG.debug(String.format("Looking for %d among %d dependencies of %s", name, dependencyClassLoaders.size(), getName()));
+    }
+
     // loading from ModuleClassLoaders firstly; it's faster, we can tell right here if we can find class there.
     for (ClassLoader depCL : dependencyClassLoaders) {
       if (depCL instanceof ModuleClassLoader) {
