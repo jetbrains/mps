@@ -4,10 +4,9 @@ package jetbrains.mps.baselanguage.unitTest.execution.launcher;
 
 import java.lang.reflect.Constructor;
 import java.util.function.Supplier;
-import java.io.IOException;
-import java.util.Arrays;
 import org.junit.runner.Request;
 import java.util.Collections;
+import java.io.IOException;
 import java.util.List;
 import java.util.LinkedList;
 import org.jetbrains.annotations.NotNull;
@@ -26,28 +25,27 @@ import java.util.ArrayList;
  */
 public class DefaultTestExecutor {
   public static final int EXIT_CODE_FOR_EXCEPTION = -12345;
-  public static final String JUNIT5_OPTION = "-junit5";
 
   public DefaultTestExecutor() {
   }
 
   /**
-   * Called when BTestCase or JUnit3/JUnit4 ClassConcept is executed without need for MPS instance/environment
+   * Called when BTestCase or JUnit5 ClassConcept is executed without need for MPS instance/environment
    */
   public static void main(String[] args) throws Exception {
-    CommandLineTestContributor tc = new CommandLineTestContributor(args);
-    TestExecutor exec;
-    if (hasJUnit5Option(args)) {
-      Class<?> cls = Class.forName("jetbrains.mps.baseLanguage.unitTest.execution.server.JUnit5TestExecutor");
-      Constructor<?> ctor = cls.getConstructor(TestsContributor.class, boolean.class, Supplier.class);
-      Supplier<ClassLoader> getCL = () -> Thread.currentThread().getContextClassLoader();
-      exec = (TestExecutor) ctor.newInstance(tc, true, getCL);
-    } else {
-      Class<?> cls = Class.forName("jetbrains.mps.baseLanguage.unitTest.execution.server.JUnit4TestExecutor");
-      Constructor<?> ctor = cls.getConstructor(TestsContributor.class, boolean.class);
-      exec = (TestExecutor) ctor.newInstance(tc, true);
-    }
+    // FIXME ATM, JUnit5TestExecutor lives in MPS-managed unitTest.execution module, and here we rely on fact its jar is in CP and, more important, works fine w/o MPS classloading.
+    //      which is plain wrong use of MPS CL subsystem (e.g. junit5 libraries get here through transitive dependencies from completely another plugin, [mps-testing])
+    Class<?> cls = Class.forName("jetbrains.mps.baseLanguage.unitTest.execution.server.JUnit5TestExecutor");
+    Constructor<?> ctor = cls.getConstructor(TestsContributor.class, boolean.class, Supplier.class);
+    Supplier<ClassLoader> getCL = () -> Thread.currentThread().getContextClassLoader();
 
+    CommandLineTestContributor tc = new CommandLineTestContributor(args);
+    final TestExecutor exec = (TestExecutor) ctor.newInstance(tc, true, getCL);
+
+    runAndQuit(exec);
+  }
+
+  /*package*/ static void runAndQuit(TestExecutor exec) {
     int exitCode = EXIT_CODE_FOR_EXCEPTION;
     try {
       try {
@@ -67,11 +65,7 @@ public class DefaultTestExecutor {
     }
   }
 
-  protected static boolean hasJUnit5Option(String[] args) throws IOException {
-    return Arrays.stream(args).anyMatch(JUNIT5_OPTION::equals);
-  }
-
-  private static class CommandLineTestContributor implements TestsContributor {
+  /*package*/ static class CommandLineTestContributor implements TestsContributor {
     private final String[] myArgs;
 
     /*package*/ CommandLineTestContributor(String[] args) {

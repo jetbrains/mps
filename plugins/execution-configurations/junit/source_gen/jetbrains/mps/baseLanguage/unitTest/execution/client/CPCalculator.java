@@ -14,8 +14,8 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.execution.api.Java_Command;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import jetbrains.mps.baseLanguage.execution.api.Java_Command;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.LinkedHashSet;
@@ -24,8 +24,6 @@ import jetbrains.mps.string.Strings;
 
 /*package*/ class CPCalculator {
   private static final Logger LOG = Logger.getLogger(CPCalculator.class);
-  private static final String UNIT_TEST_LAUNCHER_MODULE = "33f214de-6dce-4396-83c7-640823b7c525(jetbrains.mps.baselanguage.unitTest.launcher)";
-
   @NotNull
   private final TestsWithParametersAndConfiguration mySettings;
   @NotNull
@@ -51,7 +49,12 @@ import jetbrains.mps.string.Strings;
     myRepo.getModelAccess().runReadAction(() -> {
       Set<SModule> uniqueModules = SetSequence.fromSet(new HashSet<SModule>());
       List<SModuleReference> requiredModules = new ArrayList<SModuleReference>(myTestsWithParams.getRequiredModules());
-      requiredModules.add(MODULE_WITH_EXECUTORS());
+      if (myTestsWithParams.getParameters().useCompatibilityMode()) {
+        // for LegacyTestLauncher, it's enough (and correct) not to put MPS-managed modules (like unitTest.execution) into classpath
+        requiredModules.add(PersistenceFacade.getInstance().createModuleReference("33f214de-6dce-4396-83c7-640823b7c525(jetbrains.mps.baselanguage.unitTest.launcher)"));
+      } else {
+        requiredModules.add(MODULE_WITH_EXECUTORS());
+      }
       for (SModuleReference testModule : requiredModules) {
         SModule module = testModule.resolve(myRepo);
         if (module != null) {
@@ -69,7 +72,7 @@ import jetbrains.mps.string.Strings;
   }
 
   private List<String> calcForPlatformWithMPS() {
-    final SModuleReference moduleWithExecutors = PersistenceFacade.getInstance().createModuleReference(UNIT_TEST_LAUNCHER_MODULE);
+    final SModuleReference moduleWithExecutors = PersistenceFacade.getInstance().createModuleReference("33f214de-6dce-4396-83c7-640823b7c525(jetbrains.mps.baselanguage.unitTest.launcher)");
     final List<String> classpath = ListSequence.fromList(new LinkedList<String>());
     if (PathManager.isFromSources()) {
       ListSequence.fromList(classpath).addElement(PathManager.getLauncherClassPathEntry());

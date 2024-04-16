@@ -56,7 +56,7 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
       Class<?>[] argTypes = new Class<?>[]{Environment.class, ExecutorScript.class};
       TestExecutor exec = (TestExecutor) instantiate(env, className, argTypes, new Object[]{env, execScript});
 
-      //  FIXME copied from DefaultTestExecutor; needs refactoring
+      //  FIXME copied from DefaultTestExecutor.runAndQuit; needs refactoring
       int exitCode = EXIT_CODE_FOR_EXCEPTION;
       try {
         try {
