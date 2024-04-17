@@ -1,6 +1,6 @@
 {
   "expUi": {
-    "MPS.svg": ["mps.svg", "mps_16.svg"],
+    "MPS.svg": "mps_16.svg",
     "actions": {
       "addToVcs.svg": "actions/addToVcs.png",
       "groupByCategory.svg": "actions/groupByCategory.png",
