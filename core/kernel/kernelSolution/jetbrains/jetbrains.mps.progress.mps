@@ -40,6 +40,9 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
+      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
+        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
+      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -1512,6 +1515,58 @@
   <node concept="312cEu" id="3LCCkArgRyb">
     <property role="TrG5h" value="DefaultTaskScheduler" />
     <node concept="2tJIrI" id="3LCCkArgSP3" role="jymVt" />
+    <node concept="312cEg" id="5FdF_yH1NTN" role="jymVt">
+      <property role="TrG5h" value="myExecutor" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="5FdF_yH1NTO" role="1B3o_S" />
+      <node concept="3uibUv" id="5FdF_yH1NTQ" role="1tU5fm">
+        <ref role="3uigEE" to="5zyv:~Executor" resolve="Executor" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="5FdF_yH1Rwt" role="jymVt" />
+    <node concept="3clFbW" id="5FdF_yH1$17" role="jymVt">
+      <node concept="3cqZAl" id="5FdF_yH1$19" role="3clF45" />
+      <node concept="3Tm1VV" id="5FdF_yH1$1a" role="1B3o_S" />
+      <node concept="3clFbS" id="5FdF_yH1$1b" role="3clF47">
+        <node concept="3clFbF" id="5FdF_yH1UnO" role="3cqZAp">
+          <node concept="37vLTI" id="5FdF_yH1ULL" role="3clFbG">
+            <node concept="2ShNRf" id="5FdF_yH1V2S" role="37vLTx">
+              <node concept="HV5vD" id="5FdF_yH1Wxd" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="HV5vE" node="4PMKx6dYr6a" resolve="DirectExecutor" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="5FdF_yH1UnN" role="37vLTJ">
+              <ref role="3cqZAo" node="5FdF_yH1NTN" resolve="myExecutor" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="5FdF_yH1JBH" role="jymVt" />
+    <node concept="3clFbW" id="5FdF_yH1H2$" role="jymVt">
+      <node concept="3cqZAl" id="5FdF_yH1H2_" role="3clF45" />
+      <node concept="3Tm1VV" id="5FdF_yH1H2A" role="1B3o_S" />
+      <node concept="3clFbS" id="5FdF_yH1H2B" role="3clF47">
+        <node concept="3clFbF" id="5FdF_yH1NTR" role="3cqZAp">
+          <node concept="37vLTI" id="5FdF_yH1NTT" role="3clFbG">
+            <node concept="37vLTw" id="5FdF_yH1NTW" role="37vLTJ">
+              <ref role="3cqZAo" node="5FdF_yH1NTN" resolve="myExecutor" />
+            </node>
+            <node concept="37vLTw" id="5FdF_yH1NTX" role="37vLTx">
+              <ref role="3cqZAo" node="5FdF_yH1MJu" resolve="executor" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="5FdF_yH1MJu" role="3clF46">
+        <property role="TrG5h" value="executor" />
+        <node concept="3uibUv" id="5FdF_yH1MJt" role="1tU5fm">
+          <ref role="3uigEE" to="5zyv:~Executor" resolve="Executor" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="5FdF_yH1DQS" role="jymVt" />
     <node concept="3Tm1VV" id="3LCCkArgRyc" role="1B3o_S" />
     <node concept="3uibUv" id="3LCCkArgSEM" role="EKbjA">
       <ref role="3uigEE" node="3LCCkAqUBTY" resolve="TaskScheduler" />
@@ -1729,10 +1784,21 @@
             <node concept="1pGfFk" id="5LDUq$arjeU" role="2ShVmc">
               <property role="373rjd" value="true" />
               <ref role="37wK5l" to="5zyv:~FutureTask.&lt;init&gt;(java.lang.Runnable,java.lang.Object)" resolve="FutureTask" />
-              <node concept="37Ijox" id="5LDUq$arkfs" role="37wK5m">
-                <ref role="37Ijqf" to="wyt6:~Runnable.run()" resolve="run" />
-                <node concept="37vLTw" id="5LDUq$arjLa" role="wWaWy">
-                  <ref role="3cqZAo" node="5LDUq$ardT2" resolve="runnable" />
+              <node concept="1bVj0M" id="29$mY0zIczr" role="37wK5m">
+                <node concept="3clFbS" id="29$mY0zIczs" role="1bW5cS">
+                  <node concept="3clFbF" id="29$mY0zIdu2" role="3cqZAp">
+                    <node concept="2OqwBi" id="5FdF_yH26Eb" role="3clFbG">
+                      <node concept="37vLTw" id="5FdF_yH26Ec" role="2Oq$k0">
+                        <ref role="3cqZAo" node="5FdF_yH1NTN" resolve="myExecutor" />
+                      </node>
+                      <node concept="liA8E" id="5FdF_yH26Ed" role="2OqNvi">
+                        <ref role="37wK5l" to="5zyv:~Executor.execute(java.lang.Runnable)" resolve="execute" />
+                        <node concept="37vLTw" id="5FdF_yH26Ee" role="37wK5m">
+                          <ref role="3cqZAo" node="5LDUq$ardT2" resolve="runnable" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
               <node concept="10Nm6u" id="5LDUq$arlxN" role="37wK5m" />
@@ -1840,7 +1906,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="2PX_jfwEfP8" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Runnable.run()" resolve="run" />
+                      <ref role="37wK5l" to="5zyv:~RunnableFuture.run()" resolve="run" />
                     </node>
                   </node>
                 </node>
