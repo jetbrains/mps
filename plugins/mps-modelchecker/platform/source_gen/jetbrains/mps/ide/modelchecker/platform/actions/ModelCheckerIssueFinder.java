@@ -17,19 +17,19 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.CollectConsumer;
 import java.util.Collections;
 import java.util.concurrent.Executor;
-import jetbrains.mps.smodel.ModelAccessBase;
 import jetbrains.mps.progress.TaskScheduler;
 import jetbrains.mps.workbench.progress.IdeaPlatformTaskScheduler;
 import jetbrains.mps.progress.DefaultTaskScheduler;
 import jetbrains.mps.checkers.IAbstractChecker;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.ide.findusages.model.SearchResult;
+import java.util.stream.Collectors;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.ide.findusages.model.CategoryKind;
 import jetbrains.mps.ide.messages.Icons;
-import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.util.Pair;
 
 /**
@@ -72,31 +72,34 @@ public class ModelCheckerIssueFinder implements SearchTask {
   }
 
   @Override
-  public SearchResults<IssueKindReportItem> execute(final ProgressMonitor monitor) {
-    return new ModelAccessHelper(myRepository).runReadAction(() -> {
-      // the issues are going to come in concurrently
-      CollectConsumer<IssueKindReportItem> errorCollector = new CollectConsumer<IssueKindReportItem>(Collections.synchronizedList(new ArrayList<>()));
-      List<IChecker<?, ? extends IssueKindReportItem>> specificCheckers = ListSequence.fromList(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>());
-      ListSequence.fromList(specificCheckers).addSequence(ListSequence.fromList(getSpecificCheckers()));
-      // FIXME it's odd to create checker here provided outer code cares about ModelCheckerSettings and IssueKindReportItem anyway.
-      //       We could have passed IAbstractChecker (created the way from the line below) to the cons, however, can't do it right away
-      //       as I don't like to expose ModelCheckerBuilder.ItemsToCheck, and need to refactor this.
+  public SearchResults<IssueKindReportItem> execute(ProgressMonitor monitor) {
+    // the issues are going to come in concurrently
+    final CollectConsumer<IssueKindReportItem> errorCollector = new CollectConsumer<IssueKindReportItem>(Collections.synchronizedList(new ArrayList<>()));
+    List<IChecker<?, ? extends IssueKindReportItem>> specificCheckers = ListSequence.fromList(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>());
+    ListSequence.fromList(specificCheckers).addSequence(ListSequence.fromList(getSpecificCheckers()));
 
-      boolean runInParallel = (myMpsProject != null) && ModelCheckerSettings.getInstance().isRunInParallel();
-      Executor shareReadExecutor = ((ModelAccessBase) myMpsProject.getRepository().getModelAccess()).shareRead();
-      TaskScheduler scheduler = (runInParallel ? new IdeaPlatformTaskScheduler(myMpsProject, shareReadExecutor) : new DefaultTaskScheduler());
-      ModelCheckerBuilder modelCheckerBuilder = new ModelCheckerBuilder(ModelCheckerSettings.getInstance().isCheckStubs()).withTaskScheduler(scheduler);
+    // FIXME it's odd to create checker here provided outer code cares about ModelCheckerSettings and IssueKindReportItem anyway.
+    //       We could have passed IAbstractChecker (created the way from the line below) to the cons, however, can't do it right away
+    //       as I don't like to expose ModelCheckerBuilder.ItemsToCheck, and need to refactor this.
 
-      IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem> abstractChecker = modelCheckerBuilder.createChecker(specificCheckers);
+    boolean runInParallel = (myMpsProject != null) && ModelCheckerSettings.getInstance().isRunInParallel();
 
-      abstractChecker.check(itemsToCheck, myRepository, errorCollector, monitor);
+    // read action is going to be acquired for "leaf" items in the ProcessTasks hierarchy
+    Executor readExecutor = (runInParallel ? new IdeaPlatformReadExecutor(myMpsProject.getRepository().getModelAccess()) : new DefaultReadExecutor(myMpsProject.getRepository().getModelAccess()));
+    TaskScheduler scheduler = (runInParallel ? new IdeaPlatformTaskScheduler(myMpsProject, readExecutor) : new DefaultTaskScheduler(readExecutor));
 
-      SearchResults<IssueKindReportItem> result = new SearchResults<IssueKindReportItem>();
-      for (IssueKindReportItem error : errorCollector.getResult()) {
-        result.getSearchResults().add(getSearchResultForReportItem(error));
-      }
-      return result;
+    ModelCheckerBuilder modelCheckerBuilder = new ModelCheckerBuilder(new ModelCheckerBuilder.ModelsExtractorImpl().includeStubs(ModelCheckerSettings.getInstance().isCheckStubs())).withTaskScheduler(scheduler);
+    IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem> abstractChecker = modelCheckerBuilder.createChecker(specificCheckers);
+
+    abstractChecker.check(itemsToCheck, myRepository, errorCollector, monitor);
+
+    final Wrappers._T<List<SearchResult<IssueKindReportItem>>> results = new Wrappers._T<List<SearchResult<IssueKindReportItem>>>();
+    myMpsProject.getModelAccess().runReadAction(() -> {
+      // 
+      results.value = errorCollector.getResult().stream().map(ModelCheckerIssueFinder.this::getSearchResultForReportItem).collect(Collectors.<SearchResult<IssueKindReportItem>>toList());
     });
+
+    return new SearchResults<IssueKindReportItem>(Collections.emptySet(), results.value);
   }
   public static String getResultCategory(MessageStatus messageStatus) {
     switch (messageStatus) {
