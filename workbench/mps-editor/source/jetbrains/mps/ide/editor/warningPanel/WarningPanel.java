@@ -22,6 +22,9 @@ import com.intellij.ui.HyperlinkLabel;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI.CurrentTheme.Editor.Notification;
 import com.intellij.xml.util.XmlStringUtil;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.openapi.editor.style.Style;
+import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -29,6 +32,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 public final class WarningPanel extends JPanel {
   private final String myText;
@@ -43,13 +47,23 @@ public final class WarningPanel extends JPanel {
     myProvider = provider;
     myText = text;
     setLayout(new BorderLayout());
+
+    final Style wpStyle = StyleRegistry.getInstance().getStyle("WARNING_PANEL");
+    Color bg = wpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR);
+    Color fg = wpStyle.get(StyleAttributes.TEXT_COLOR);
+
     EditorColorsScheme colorsScheme = EditorColorsManager.getInstance().getSchemeForCurrentUITheme();
-    setBackground(colorsScheme.getColor(EditorColors.NOTIFICATION_BACKGROUND));
     JBInsets jbInsets = Notification.borderInsetsWithoutStatus();
     setBorder(BorderFactory.createEmptyBorder(jbInsets.top, jbInsets.left, jbInsets.bottom, jbInsets.right));
 
     final JLabel label = new JLabel("<html>" + XmlStringUtil.escapeString(text) + "</html>");
-    label.setForeground(colorsScheme.getDefaultForeground());
+    if (bg!=null && fg!=null) {
+      setBackground(bg);
+      label.setForeground(fg);
+    } else {
+      setBackground(colorsScheme.getColor(EditorColors.NOTIFICATION_BACKGROUND));
+      label.setForeground(colorsScheme.getDefaultForeground());
+    }
     add(label, BorderLayout.CENTER);
 
     if (linkText != null && handler != null) {
