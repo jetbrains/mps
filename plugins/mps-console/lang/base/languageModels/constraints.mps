@@ -2,6 +2,7 @@
 <model ref="r:a35e9456-af18-4589-b3c4-ed9896a657c9(jetbrains.mps.console.base.constraints)">
   <persistence version="9" />
   <languages>
+    <use id="3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1" name="jetbrains.mps.lang.constraints" version="6" />
     <devkit ref="00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)" />
   </languages>
   <imports>
@@ -168,6 +169,7 @@
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
       <concept id="334628810661441841" name="jetbrains.mps.lang.smodel.structure.AsSConcept" flags="nn" index="1rGIog" />
+      <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1144100932627" name="jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion" flags="ng" index="1xIGOp" />
       <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
@@ -420,11 +422,17 @@
           <node concept="3eNFk2" id="147CB3QsVkB" role="3eNLev">
             <node concept="3clFbS" id="147CB3QsVkC" role="3eOfB_">
               <node concept="3cpWs6" id="147CB3QsVkD" role="3cqZAp">
-                <node concept="2OqwBi" id="147CB3QsVkE" role="3cqZAk">
-                  <node concept="nLn13" id="147CB3QsVkF" role="2Oq$k0" />
-                  <node concept="1mIQ4w" id="147CB3QsVkG" role="2OqNvi">
-                    <node concept="chp4Y" id="147CB3QsVkH" role="cj9EA">
-                      <ref role="cht4Q" to="eynw:6D0CP__oaBp" resolve="BLExpression" />
+                <node concept="22lmx$" id="2Dvaii2WTVI" role="3cqZAk">
+                  <node concept="2OqwBi" id="2Dvaii2WUJc" role="3uHU7w">
+                    <node concept="EsrRn" id="2Dvaii2WUi8" role="2Oq$k0" />
+                    <node concept="3w_OXm" id="2Dvaii2WWCU" role="2OqNvi" />
+                  </node>
+                  <node concept="2OqwBi" id="147CB3QsVkE" role="3uHU7B">
+                    <node concept="nLn13" id="147CB3QsVkF" role="2Oq$k0" />
+                    <node concept="1mIQ4w" id="147CB3QsVkG" role="2OqNvi">
+                      <node concept="chp4Y" id="147CB3QsVkH" role="cj9EA">
+                        <ref role="cht4Q" to="eynw:6D0CP__oaBp" resolve="BLExpression" />
+                      </node>
                     </node>
                   </node>
                 </node>

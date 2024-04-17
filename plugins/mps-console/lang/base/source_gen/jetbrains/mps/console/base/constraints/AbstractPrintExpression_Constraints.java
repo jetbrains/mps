@@ -40,7 +40,7 @@ public class AbstractPrintExpression_Constraints extends BaseConstraintsDescript
     if ((SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.Statement$P6, true, false) != null)) {
       return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ExpressionStatement$O8);
     } else if ((SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BLExpression$WS, true, false) != null)) {
-      return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BLExpression$WS);
+      return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BLExpression$WS) || (node == null);
     } else {
       return true;
     }
