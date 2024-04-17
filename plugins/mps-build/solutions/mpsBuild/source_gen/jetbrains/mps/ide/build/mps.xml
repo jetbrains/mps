@@ -213,6 +213,10 @@
     <copy todir="${build.layout}/plugins">
       <fileset dir="${artifacts.mpsDebuggerPlugin}" />
     </copy>
+    <mkdir dir="${build.layout}/plugins/mps-junit5" />
+    <copy todir="${build.layout}/plugins/mps-junit5">
+      <fileset dir="${artifacts.mpsTesting}/mps-junit5" />
+    </copy>
     <mkdir dir="${build.layout}/plugins/mps-testing" />
     <copy todir="${build.layout}/plugins/mps-testing">
       <fileset dir="${artifacts.mpsTesting}/mps-testing" />

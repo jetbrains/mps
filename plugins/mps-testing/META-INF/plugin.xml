@@ -25,6 +25,7 @@
 
   <depends>jetbrains.mps.core</depends>
   <depends optional="true">jetbrains.mps.ide</depends> <!-- FIXME 'optional' is a provisional workaround -->
+  <depends>jetbrains.mps.junit5</depends>
   <depends>com.intellij.modules.lang</depends>
 
   <extensions defaultExtensionNs="com.intellij">

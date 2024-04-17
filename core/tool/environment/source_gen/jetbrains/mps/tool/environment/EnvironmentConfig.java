@@ -131,7 +131,7 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withTestingPlugin() {
-    return withCorePlugin().withIDEPlugin().addDistributedPlugin("mps-testing", "jetbrains.mps.testing");
+    return withCorePlugin().withIDEPlugin().addDistributedPlugin("mps-junit5", "jetbrains.mps.junit5").addDistributedPlugin("mps-testing", "jetbrains.mps.testing");
   }
 
   public EnvironmentConfig withGit4IdeaPlugin() {

@@ -56,8 +56,7 @@ teamcity-info.xml
 /plugins/jetpad/lib
 /plugins/jetpad/lib/*.war
 /plugins/jetpad/lib/jetpadBuildNumber.txt
-/plugins/mps-testing/lib
-/plugins/mps-testing/languages/junit5/lib
+/plugins/mps-junit5/lib
 /plugins/mps-migration/migration-platform/lib
 # Platform bundled plugins
 # (in the same order as in the MPSProperties.groovy to simplify maintaining)

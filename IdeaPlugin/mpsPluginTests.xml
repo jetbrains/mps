@@ -53,6 +53,7 @@
   </path>
   
   <path id="path.java.library.mps-testing-artifacts">
+    <fileset dir="${artifacts.mpsTesting}/mps-junit5" includes="**/*.jar" />
     <fileset dir="${artifacts.mpsTesting}/mps-testing" includes="**/*.jar" />
   </path>
   

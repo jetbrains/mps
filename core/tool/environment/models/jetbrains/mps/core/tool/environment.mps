@@ -1368,12 +1368,23 @@
                 <property role="Xl_RC" value="jetbrains.mps.testing" />
               </node>
             </node>
-            <node concept="2OqwBi" id="5jpAAQ6WKFQ" role="2Oq$k0">
-              <node concept="1rXfSq" id="2btCvgzFG62" role="2Oq$k0">
-                <ref role="37wK5l" node="6BLo1MgrFYe" resolve="withCorePlugin" />
+            <node concept="2OqwBi" id="2_zhCSIFvHE" role="2Oq$k0">
+              <node concept="2OqwBi" id="5jpAAQ6WKFQ" role="2Oq$k0">
+                <node concept="1rXfSq" id="2btCvgzFG62" role="2Oq$k0">
+                  <ref role="37wK5l" node="6BLo1MgrFYe" resolve="withCorePlugin" />
+                </node>
+                <node concept="liA8E" id="5jpAAQ6WMn_" role="2OqNvi">
+                  <ref role="37wK5l" node="5jpAAQ6WBiG" resolve="withIDEPlugin" />
+                </node>
               </node>
-              <node concept="liA8E" id="5jpAAQ6WMn_" role="2OqNvi">
-                <ref role="37wK5l" node="5jpAAQ6WBiG" resolve="withIDEPlugin" />
+              <node concept="liA8E" id="2_zhCSIFwWR" role="2OqNvi">
+                <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                <node concept="Xl_RD" id="2_zhCSIFxWL" role="37wK5m">
+                  <property role="Xl_RC" value="mps-junit5" />
+                </node>
+                <node concept="Xl_RD" id="2_zhCSIFC5R" role="37wK5m">
+                  <property role="Xl_RC" value="jetbrains.mps.junit5" />
+                </node>
               </node>
             </node>
           </node>
