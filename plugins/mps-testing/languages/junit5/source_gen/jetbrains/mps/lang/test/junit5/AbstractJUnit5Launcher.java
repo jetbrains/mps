@@ -5,6 +5,9 @@ package jetbrains.mps.lang.test.junit5;
 import jetbrains.mps.tool.environment.Environment;
 import java.util.Collection;
 import org.junit.platform.launcher.TestExecutionListener;
+import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
+import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
+import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
 import org.junit.platform.commons.PreconditionViolationException;
 import org.junit.platform.launcher.core.LauncherConfig;
 import org.junit.platform.launcher.Launcher;
@@ -31,10 +34,31 @@ public abstract class AbstractJUnit5Launcher {
 
   /**
    * 
-   * 
    * @return number of test failures
    */
   public abstract int launchTests();
+
+  public void launchTestsWithSession(Collection<Class<?>> testClasses, TestExecutionListener executionListener) {
+    TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, myEnvironment);
+    TestSession testSession = TestPlatform.getInstance().openSession(sessionConfig);
+    try {
+      // this class is instantiated via ModuleClassCode which ensures proper MPS classloader for the code.
+      ClassLoader contextCL = getClass().getClassLoader();
+      launchTestsWithContextCL(contextCL, testClasses, executionListener);
+    } finally {
+      TestPlatform.getInstance().closeSession(testSession);
+    }
+  }
+
+  protected void launchTestsWithContextCL(ClassLoader contextCL, Collection<Class<?>> testClasses, TestExecutionListener executionListener) {
+    ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+    try {
+      Thread.currentThread().setContextClassLoader(contextCL);
+      launchTests(testClasses, executionListener);
+    } finally {
+      Thread.currentThread().setContextClassLoader(contextClassLoader);
+    }
+  }
 
   protected void launchTests(Collection<Class<?>> testClasses, TestExecutionListener executionListener) throws PreconditionViolationException {
     LauncherConfig.Builder builder = LauncherConfig.builder().enableTestEngineAutoRegistration(true).enablePostDiscoveryFilterAutoRegistration(false).enableLauncherSessionListenerAutoRegistration(false).enableLauncherDiscoveryListenerAutoRegistration(false).enableTestExecutionListenerAutoRegistration(false);

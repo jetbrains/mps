@@ -4,10 +4,6 @@ package jetbrains.mps.lang.test.junit5;
 
 import java.util.Collection;
 import jetbrains.mps.tool.environment.Environment;
-import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
-import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
-import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
-import java.util.Collections;
 import java.io.File;
 
 public class SimpleJUnit5Launcher extends AbstractJUnit5Launcher {
@@ -21,30 +17,9 @@ public class SimpleJUnit5Launcher extends AbstractJUnit5Launcher {
 
   @Override
   public int launchTests() {
-    TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, myEnvironment);
-    TestSession testSession = TestPlatform.getInstance().openSession(sessionConfig);
-    try {
-      return doLaunchTest();
-    } finally {
-      TestPlatform.getInstance().closeSession(testSession);
-    }
-  }
-
-  private int doLaunchTest() {
     FailureDetector failureDetector = new FailureDetector();
-    ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
-    try {
-      Thread.currentThread().setContextClassLoader(testModuleContextClassLoader());
-      launchTests(myTestClasses, failureDetector);
-
-    } finally {
-      Thread.currentThread().setContextClassLoader(contextClassLoader);
-    }
+    launchTestsWithSession(myTestClasses, failureDetector);
     return failureDetector.failuresCount();
-  }
-
-  private ClassLoader testModuleContextClassLoader() {
-    return ModuleClassLoaderUtil.classLoaderForTestExecution(myEnvironment.getPlatform(), () -> Collections.<String>emptyList());
   }
 
   @Override
