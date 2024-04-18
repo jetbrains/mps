@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,31 +15,29 @@
  */
 package jetbrains.mps.classloading;
 
-import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 /**
  * Internal MPS exception which is thrown specifically from MPS class loading system.
  * May contain the cause of ClassNotFoundException and the corresponding module as well.
  */
 public class ModuleClassNotFoundException extends ClassNotFoundException {
-  private final SModule myModule;
+  private final SModuleReference myModule;
 
-  public ModuleClassNotFoundException(SModule module, String message, Throwable t) {
+  public ModuleClassNotFoundException(SModuleReference module, String message, Throwable t) {
     super(message, t);
     myModule = module;
   }
 
-  public ModuleClassNotFoundException(SModule module, String message) {
-    super(message);
-    myModule = module;
+  public ModuleClassNotFoundException(SModuleReference module, String message) {
+    this(module, message, null);
   }
 
-  public ModuleClassNotFoundException(SModule module) {
-    super();
-    myModule = module;
+  public ModuleClassNotFoundException(SModuleReference module) {
+    this(module, null, null);
   }
 
-  public SModule getModule() {
+  public SModuleReference getModule() {
     return myModule;
   }
 }

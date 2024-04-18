@@ -183,7 +183,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
 
   private ModuleClassNotFoundException createCLNFException(String name) {
     ReloadableModule module = getModule();
-    return new ModuleClassNotFoundException(module,
+    return new ModuleClassNotFoundException(module.getModuleReference(),
                                             String.format("Unable to load class: '%s' using ModuleClassLoader of the '%s' module", name,
                                                           module.getModuleName()));
   }
