@@ -95,7 +95,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -174,7 +174,7 @@
         <child id="1167340453568" name="reductionMappingRule" index="3aUrZf" />
       </concept>
       <concept id="1095672379244" name="jetbrains.mps.lang.generator.structure.TemplateFragment" flags="ng" index="raruj" />
-      <concept id="1722980698497626400" name="jetbrains.mps.lang.generator.structure.ITemplateCall" flags="ngI" index="v9R3L">
+      <concept id="1722980698497626400" name="jetbrains.mps.lang.generator.structure.ITemplateCall" flags="ng" index="v9R3L">
         <reference id="1722980698497626483" name="template" index="v9R2y" />
       </concept>
       <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
@@ -305,7 +305,7 @@
         <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
         <property id="1341860900488019036" name="linkId" index="P3scX" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -942,6 +942,24 @@
                   <property role="2pNUuO" value="refid" />
                   <node concept="2pMdtt" id="3ZNuxuVVS5z" role="2pMdts">
                     <property role="2pMdty" value="mps.tests.path" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2Vbh7Z" id="6DrRQvKqVFa" role="2VaTZU">
+              <node concept="2pNNFK" id="6DrRQvKqZPC" role="2Vbh7K">
+                <property role="2pNNFO" value="property" />
+                <property role="qg3DV" value="true" />
+                <node concept="2pNUuL" id="6DrRQvKqZSW" role="2pNNFR">
+                  <property role="2pNUuO" value="name" />
+                  <node concept="2pMdtt" id="6DrRQvKqZSX" role="2pMdts">
+                    <property role="2pMdty" value="build.jna.library.path" />
+                  </node>
+                </node>
+                <node concept="2pNUuL" id="6DrRQvKqZWh" role="2pNNFR">
+                  <property role="2pNUuO" value="location" />
+                  <node concept="2pMdtt" id="6DrRQvKqZWi" role="2pMdts">
+                    <property role="2pMdty" value="${artifacts.mps}/lib/jna" />
                   </node>
                 </node>
               </node>
@@ -1888,7 +1906,7 @@
                     <node concept="2pNUuL" id="6OON6YVXP4d" role="2pNNFR">
                       <property role="2pNUuO" value="value" />
                       <node concept="2pMdtt" id="6OON6YVXP4e" role="2pMdts">
-                        <property role="2pMdty" value="-Djna.boot.library.path=${artifacts.mps}/lib/jna" />
+                        <property role="2pMdty" value="-Djna.boot.library.path=${build.jna.library.path}" />
                       </node>
                     </node>
                   </node>
