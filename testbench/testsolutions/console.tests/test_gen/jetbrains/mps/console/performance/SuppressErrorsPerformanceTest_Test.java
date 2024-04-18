@@ -72,7 +72,7 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
       SModel modelToCheck = SNodeOperations.getModel(getNodeById("5968606277576107085"));
       IChecker<SNode, NodeReportItem> structureChecker = new StructureChecker();
       long startTime = System.nanoTime();
-      IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem> checker = new ModelCheckerBuilder(false).createChecker(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), structureChecker, new SuppressErrorsChecker()));
+      IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem> checker = new ModelCheckerBuilder(new ModelCheckerBuilder.ModelsExtractorImpl().includeStubs(false)).createChecker(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), structureChecker, new SuppressErrorsChecker()));
       checker.check(ModelCheckerBuilder.ItemsToCheck.forSingleModel(modelToCheck), modelToCheck.getRepository(), new CollectConsumer<IssueKindReportItem>(), new EmptyProgressMonitor());
       long stopTime = System.nanoTime();
       return Duration.ofNanos(stopTime - startTime);

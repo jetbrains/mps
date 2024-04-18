@@ -201,6 +201,9 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ" />
       <concept id="1109279851642" name="jetbrains.mps.baseLanguage.structure.GenericDeclaration" flags="ng" index="16eOlS">
         <child id="1109279881614" name="typeVariableDeclaration" index="16eVyc" />
@@ -7554,8 +7557,19 @@
             <node concept="2OqwBi" id="34euvBSFncQ" role="2Oq$k0">
               <node concept="2ShNRf" id="34euvBSFmn5" role="2Oq$k0">
                 <node concept="1pGfFk" id="34euvBSFmWY" role="2ShVmc">
-                  <ref role="37wK5l" to="wsw7:6bXa3O$ak8k" resolve="ModelCheckerBuilder" />
-                  <node concept="3clFbT" id="fM_JX6m3Bh" role="37wK5m" />
+                  <ref role="37wK5l" to="wsw7:6nj_ILmBNrL" resolve="ModelCheckerBuilder" />
+                  <node concept="2OqwBi" id="1p3K8b3cAa8" role="37wK5m">
+                    <node concept="2ShNRf" id="1p3K8b3caG4" role="2Oq$k0">
+                      <node concept="1pGfFk" id="1p3K8b3cwEc" role="2ShVmc">
+                        <property role="373rjd" value="true" />
+                        <ref role="37wK5l" to="wsw7:6pnunaLnyyn" resolve="ModelsExtractorImpl" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1p3K8b3cAMq" role="2OqNvi">
+                      <ref role="37wK5l" to="wsw7:34euvBSCGJN" resolve="includeStubs" />
+                      <node concept="3clFbT" id="1p3K8b3cBxw" role="37wK5m" />
+                    </node>
+                  </node>
                 </node>
               </node>
               <node concept="liA8E" id="34euvBSFqp5" role="2OqNvi">
