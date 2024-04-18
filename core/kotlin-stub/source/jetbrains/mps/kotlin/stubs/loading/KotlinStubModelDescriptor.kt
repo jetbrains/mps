@@ -83,10 +83,10 @@ class KotlinStubModelDescriptor(val packageName: PackageName, modelReference: SM
     }
 
     private fun loadAndGetSignatureMask(): SignatureMask {
-        return (modelRoot as? KotlinStubModelRoot)
-            .takeIf { kind != KotlinCommonModelKind }
-            ?.commonLibraries
-            ?.get(packageName)
+        return if (kind == KotlinCommonModelKind) SignatureMask()
+        else module?.modelRoots?.asSequence()
+            ?.filterIsInstance<KotlinStubModelRoot>()
+            ?.flatMap { it.commonLibraries[packageName] ?: emptyList() }
             ?.filter {
                 // Filter compatible platforms only
                 it.kind.platform.containsAll(kind.platform)
@@ -104,8 +104,8 @@ class KotlinStubModelDescriptor(val packageName: PackageName, modelReference: SM
             ?.toSet()
             ?.let { SignatureMask(it) }
             ?: SignatureMask()
-    }
 
+    }
 
     override fun fireModelStateChanged(oldState: ModelLoadingState, newState: ModelLoadingState) {
         val importsToAdd = myImportsToAdd

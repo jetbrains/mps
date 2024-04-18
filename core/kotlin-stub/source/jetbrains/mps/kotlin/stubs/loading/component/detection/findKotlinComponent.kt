@@ -12,7 +12,12 @@ fun IFile.findKotlinComponents(): List<KotlinComponent> {
     KLibComponent.of(this)?.let { return listOf(it) }
 
     // 2. Components (several klib or js libs can be contained in a jar
-    childrenOrEmpty.mapNotNull { KLibComponent.of(it) }
+    childrenOrEmpty
+        .flatMap {
+            KLibComponent.of(it)?.let(::listOf)
+            // Investigate two layers deep (some are under commonMain/default for instance)
+                ?: it.childrenOrEmpty.mapNotNull { KLibComponent.of(it) }
+        }
         .nullize()
         ?.let { return it }
 
