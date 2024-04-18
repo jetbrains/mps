@@ -122,6 +122,9 @@
     <copy todir="${base_dir}/IdeaPlugin/mps-migration/META-INF">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsMigrationCore/migration-platform/META-INF"/>
     </copy>
+    <copy todir="${base_dir}/IdeaPlugin/mps-junit5">
+      <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsTesting/mps-junit5"/>
+    </copy>
     <copy todir="${base_dir}/IdeaPlugin/mps-testing">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsTesting/mps-testing"/>
     </copy>
@@ -149,6 +152,9 @@
     </copy>
     <copy todir="${base_dir}/IdeaPlugin/mps-core/languages">
       <fileset dir="${ideaPlugins}/mps-core/languages"/>
+    </copy>
+    <copy todir="${base_dir}/IdeaPlugin/mps-junit5">
+      <fileset dir="${ideaPlugins}/mps-junit5"/>
     </copy>
     <copy todir="${base_dir}/IdeaPlugin/mps-testing">
       <fileset dir="${ideaPlugins}/mps-testing"/>
@@ -523,7 +529,7 @@
       <test name="jetbrains.mps.jps.make.tests.JpsMakeTestSuite"/>
     </junit>
 
-    <java   classname="jetbrains.mps.idea.core.tests.PluginsTestSuite"
+    <java classname="jetbrains.mps.idea.core.tests.PluginsTestSuite"
             fork="true"
            dir="."
            failonerror="false">
@@ -581,7 +587,7 @@
       <sysproperty key="idea.home.path" value="${ideaPath}"/>
       <sysproperty key="java.system.class.loader" value="com.intellij.util.lang.PathClassLoader"/>
       <sysproperty key="idea.load.plugins.id"
-                   value="jetbrains.mps.core,jetbrains.mps.ide,jetbrains.mps.testing,jetbrains.mps.lang.editor.tests,com.intellij.java"/>
+                   value="jetbrains.mps.core,jetbrains.mps.ide,jetbrains.mps.junit5,jetbrains.mps.testing,jetbrains.mps.lang.editor.tests,com.intellij.java"/>
       <sysproperty key="idea.launcher.bin.path" value="${ideaPath}/bin"/>
       <sysproperty key="file.encoding" value="UTF-8"/>
       <!-- TODO: remove property after investigation and fix MPS-25217 -->
@@ -598,6 +604,10 @@
           <include name="**/*.jar"/>
         </fileset>
         <fileset dir="${test.platform.sandbox.dir}/plugins/mps-core/lib">
+          <include name="*.jar"/>
+          <include name="mpsant/mps-tool.jar"/>
+        </fileset>
+        <fileset dir="${test.platform.sandbox.dir}/plugins/mps-junit5/lib">
           <include name="*.jar"/>
         </fileset>
         <fileset dir="${test.platform.sandbox.dir}/plugins/mps-testing/lib">
