@@ -663,13 +663,6 @@
         <child id="2722628536112144966" name="order" index="1rxHDW" />
       </concept>
     </language>
-    <language id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences">
-      <concept id="237887375562511215" name="jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference" flags="ng" index="37Ijox" />
-      <concept id="3507059745126391419" name="jetbrains.mps.baseLanguage.methodReferences.structure.IMethodReference" flags="ngI" index="3UZKCU">
-        <reference id="237887375562511297" name="method" index="37Ijqf" />
-        <child id="962278442658307079" name="target" index="wWaWy" />
-      </concept>
-    </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
       <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
         <property id="2034914114981261751" name="severity" index="RRSoG" />
@@ -15753,23 +15746,6 @@
           </node>
           <node concept="9aQIb" id="2u2lerflA6Q" role="9aQIa">
             <node concept="3clFbS" id="2u2lerflA6S" role="9aQI4">
-              <node concept="3cpWs8" id="2u2lerfmV$H" role="3cqZAp">
-                <node concept="3cpWsn" id="2u2lerfmV$N" role="3cpWs9">
-                  <property role="TrG5h" value="contextCL" />
-                  <node concept="3uibUv" id="2u2lerfmV$P" role="1tU5fm">
-                    <ref role="3uigEE" to="82uw:~Supplier" resolve="Supplier" />
-                    <node concept="3uibUv" id="2u2lerfmX8L" role="11_B2D">
-                      <ref role="3uigEE" to="wyt6:~ClassLoader" resolve="ClassLoader" />
-                    </node>
-                  </node>
-                  <node concept="37Ijox" id="5ZcVFtfhoaX" role="33vP2m">
-                    <ref role="37Ijqf" to="wyt6:~Class.getClassLoader()" resolve="getClassLoader" />
-                    <node concept="3VsKOn" id="5ZcVFtfhmCH" role="wWaWy">
-                      <ref role="3VsUkX" to="34h4:2u2lerfkrHn" resolve="JUnit5TestExecutor" />
-                    </node>
-                  </node>
-                </node>
-              </node>
               <node concept="3clFbF" id="2u2lerflA6U" role="3cqZAp">
                 <node concept="37vLTI" id="2u2lerflA6V" role="3clFbG">
                   <node concept="37vLTw" id="2u2lerflA6W" role="37vLTJ">
@@ -15780,7 +15756,7 @@
                       <node concept="1Y3b0j" id="5m2bsnoY2B$" role="YeSDq">
                         <property role="2bfB8j" value="true" />
                         <property role="373rjd" value="true" />
-                        <ref role="37wK5l" to="34h4:2u2lerfkrVg" resolve="JUnit5TestExecutor" />
+                        <ref role="37wK5l" to="34h4:35_wH_FvjAI" />
                         <ref role="1Y3XeK" to="34h4:2u2lerfkrHn" resolve="JUnit5TestExecutor" />
                         <node concept="2tJIrI" id="5m2bsnoY8YX" role="jymVt" />
                         <node concept="3Tm1VV" id="5m2bsnoY2B_" role="1B3o_S" />
@@ -15810,9 +15786,6 @@
                           </node>
                         </node>
                         <node concept="3clFbT" id="2u2lerfmoUi" role="37wK5m" />
-                        <node concept="37vLTw" id="2u2lerfnOG1" role="37wK5m">
-                          <ref role="3cqZAo" node="2u2lerfmV$N" resolve="contextCL" />
-                        </node>
                         <node concept="3clFb_" id="5m2bsnoY3s3" role="jymVt">
                           <property role="TrG5h" value="executeSafe" />
                           <node concept="3Tmbuc" id="5m2bsnoY3s4" role="1B3o_S" />

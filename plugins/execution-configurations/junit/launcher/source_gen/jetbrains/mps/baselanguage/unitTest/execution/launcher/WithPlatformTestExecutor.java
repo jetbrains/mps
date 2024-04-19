@@ -54,6 +54,10 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
 
       String className = "jetbrains.mps.baseLanguage.unitTest.execution.server.CommandLineTestExecutor";
       Class<?>[] argTypes = new Class<?>[]{Environment.class, ExecutorScript.class};
+      // XXX I'm a bit concerned about ExecutorScript.class matching - here vs CommandLineTestExecutor cons. Here, we've got plain 
+      //     Java CL built from command-line classpath spec, while for CommandLineTestExecutor cons, ExecutorScript.class comes from
+      //     unitTest.launcher module with 'plugin' classloader ("provided"), which is a delegate to IDEA's PluginClassloader.
+      //     I wonder how come [cmdline]ExecutorScript.class == [mps-exec-cfg:unitTestLauncher]ExecutorScript.class. Perhaps, parent CL delegation?
       TestExecutor exec = (TestExecutor) instantiate(env, className, argTypes, new Object[]{env, execScript});
 
       //  FIXME copied from DefaultTestExecutor.runAndQuit; needs refactoring

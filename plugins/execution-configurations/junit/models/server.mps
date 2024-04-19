@@ -309,13 +309,6 @@
       </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
     </language>
-    <language id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences">
-      <concept id="237887375562511215" name="jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference" flags="ng" index="37Ijox" />
-      <concept id="3507059745126391419" name="jetbrains.mps.baseLanguage.methodReferences.structure.IMethodReference" flags="ngI" index="3UZKCU">
-        <reference id="237887375562511297" name="method" index="37Ijqf" />
-        <child id="962278442658307079" name="target" index="wWaWy" />
-      </concept>
-    </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
@@ -5235,40 +5228,6 @@
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="5ZcVFtfjnM_" role="3cqZAp">
-          <node concept="1PaTwC" id="5ZcVFtfjnMA" role="1aUNEU">
-            <node concept="3oM_SD" id="5ZcVFtfjnSC" role="1PaTwD">
-              <property role="3oM_SC" value="FIXME" />
-            </node>
-            <node concept="3oM_SD" id="5ZcVFtfjnT1" role="1PaTwD">
-              <property role="3oM_SC" value="document" />
-            </node>
-            <node concept="3oM_SD" id="5ZcVFtfjnTs" role="1PaTwD">
-              <property role="3oM_SC" value="concerns" />
-            </node>
-            <node concept="3oM_SD" id="5ZcVFtfjnTR" role="1PaTwD">
-              <property role="3oM_SC" value="about" />
-            </node>
-            <node concept="3oM_SD" id="5ZcVFtfjnUj" role="1PaTwD">
-              <property role="3oM_SC" value="ExecutorScript.class" />
-            </node>
-            <node concept="3oM_SD" id="5ZcVFtfjnVP" role="1PaTwD">
-              <property role="3oM_SC" value="matching" />
-            </node>
-            <node concept="3oM_SD" id="5ZcVFtfjnWj" role="1PaTwD">
-              <property role="3oM_SC" value="when" />
-            </node>
-            <node concept="3oM_SD" id="5ZcVFtfjnXw" role="1PaTwD">
-              <property role="3oM_SC" value="invoked" />
-            </node>
-            <node concept="3oM_SD" id="5ZcVFtfjnY0" role="1PaTwD">
-              <property role="3oM_SC" value="from" />
-            </node>
-            <node concept="3oM_SD" id="5ZcVFtfjnYa" role="1PaTwD">
-              <property role="3oM_SC" value="WithPlatformTestExecutor" />
-            </node>
-          </node>
-        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="5m2bsnphHWM" role="jymVt" />
@@ -5388,23 +5347,6 @@
           </node>
           <node concept="9aQIb" id="5m2bsnpic5w" role="9aQIa">
             <node concept="3clFbS" id="5m2bsnpic5x" role="9aQI4">
-              <node concept="3cpWs8" id="5m2bsnpjYin" role="3cqZAp">
-                <node concept="3cpWsn" id="5m2bsnpjYit" role="3cpWs9">
-                  <property role="TrG5h" value="getCL" />
-                  <node concept="3uibUv" id="5m2bsnpjYiv" role="1tU5fm">
-                    <ref role="3uigEE" to="82uw:~Supplier" resolve="Supplier" />
-                    <node concept="3uibUv" id="5m2bsnpjYFg" role="11_B2D">
-                      <ref role="3uigEE" to="wyt6:~ClassLoader" resolve="ClassLoader" />
-                    </node>
-                  </node>
-                  <node concept="37Ijox" id="5ZcVFtfjlp4" role="33vP2m">
-                    <ref role="37Ijqf" to="wyt6:~Class.getClassLoader()" resolve="getClassLoader" />
-                    <node concept="3VsKOn" id="5ZcVFtfjkkw" role="wWaWy">
-                      <ref role="3VsUkX" to="34h4:2u2lerfkrHn" resolve="JUnit5TestExecutor" />
-                    </node>
-                  </node>
-                </node>
-              </node>
               <node concept="3SKdUt" id="5m2bsnpiSlo" role="3cqZAp">
                 <node concept="1PaTwC" id="5m2bsnpiSlp" role="1aUNEU">
                   <node concept="3oM_SD" id="5m2bsnpiTQJ" role="1PaTwD">
@@ -5440,7 +5382,7 @@
                       <node concept="1Y3b0j" id="5m2bsnpiLyZ" role="YeSDq">
                         <property role="2bfB8j" value="true" />
                         <property role="373rjd" value="true" />
-                        <ref role="37wK5l" to="34h4:2u2lerfkrVg" resolve="JUnit5TestExecutor" />
+                        <ref role="37wK5l" to="34h4:35_wH_FvjAI" />
                         <ref role="1Y3XeK" to="34h4:2u2lerfkrHn" resolve="JUnit5TestExecutor" />
                         <node concept="3Tm1VV" id="5m2bsnpiLz0" role="1B3o_S" />
                         <node concept="3clFb_" id="5m2bsnpiPBO" role="jymVt">
@@ -5547,9 +5489,6 @@
                         </node>
                         <node concept="3clFbT" id="5m2bsnpiZ0I" role="37wK5m">
                           <property role="3clFbU" value="true" />
-                        </node>
-                        <node concept="37vLTw" id="5m2bsnpkngM" role="37wK5m">
-                          <ref role="3cqZAo" node="5m2bsnpjYit" resolve="getCL" />
                         </node>
                       </node>
                     </node>

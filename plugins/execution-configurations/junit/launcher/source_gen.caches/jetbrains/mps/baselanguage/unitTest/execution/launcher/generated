@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-8hbdo49dnbhn31r0r0ww6r6vz8s343o">
+<product version="3" modelHash="-1b06cdsmf6akjbz0jqvywv8u38stmso">
   <files names="AbstractJUnitTestMixin.java:CommandOutputStream.java:DefaultRunListener.java:DefaultTestExecutionListener.java:DefaultTestExecutor.java:ExecutorScript.java:JUnit4TestExecutor.java:JUnit5TestContributor.java:JUnit5TestContributorConverter.java:JUnit5TestExecutor.java:LegacyTestLauncher.java:StoppableRunner.java:TestExecutor.java:TestsContributor.java:WithPlatformTestExecutor.java" />
 </product>
 

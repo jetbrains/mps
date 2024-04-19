@@ -22,6 +22,12 @@ public class JUnit5TestExecutor extends AbstractJUnitTestMixin {
     //  FIXME similar to AbstractJUnit5Launcher and subclasses. Eventually, shall get converged into single facility
   }
 
+  public JUnit5TestExecutor(JUnit5TestContributor testContributor, boolean redirectStdOutErr) {
+    this(testContributor, redirectStdOutErr, (Supplier<ClassLoader>) JUnit5TestExecutor.class::getClassLoader);
+    // XXX class::getCL, not getClass().getClassloader() as I don't feel subclasses could do any better (this class has to 
+    //    have access to JUnit5 classes anyway). If needed, could be explicit.
+  }
+
   @Override
   protected void executeSafe() throws Throwable {
     executeWithContextClassLoader();

@@ -19,7 +19,6 @@ import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.JUnit4TestExecutor;
 import jetbrains.mps.baseLanguage.unitTest.execution.server.NodeWrappersTestsContributor;
-import java.util.function.Supplier;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.JUnit5TestExecutor;
 import jetbrains.mps.baseLanguage.unitTest.execution.server.JUnit5InprocessTestsContributor;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
@@ -55,8 +54,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
     if (ListSequence.fromList(legacyTests).isNotEmpty()) {
       myTestsExecutor = new JUnit4TestExecutor(new NodeWrappersTestsContributor(inProcessEnv, (MPSProject) mpsProject, runConfiguration.getName(), testNodeWrappers), false);
     } else {
-      Supplier<ClassLoader> contextCL = JUnit5TestExecutor.class::getClassLoader;
-      myTestsExecutor = new JUnit5TestExecutor(new JUnit5InprocessTestsContributor((MPSProject) mpsProject, runConfiguration.getName(), testNodeWrappers), false, contextCL) {
+      myTestsExecutor = new JUnit5TestExecutor(new JUnit5InprocessTestsContributor((MPSProject) mpsProject, runConfiguration.getName(), testNodeWrappers), false) {
 
         @Override
         protected void executeSafe() throws Throwable {

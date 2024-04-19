@@ -7,7 +7,6 @@ import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.ExecutorScript;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.JUnit4TestExecutor;
-import java.util.function.Supplier;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.JUnit5TestExecutor;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
@@ -26,7 +25,6 @@ public class CommandLineTestExecutor implements TestExecutor {
   public CommandLineTestExecutor(@NotNull Environment env, @NotNull ExecutorScript execScript) {
     myEnv = env;
     myExecScript = execScript;
-    // FIXME document concerns about ExecutorScript.class matching when invoked from WithPlatformTestExecutor
   }
 
   @Override
@@ -35,9 +33,8 @@ public class CommandLineTestExecutor implements TestExecutor {
       // FIXME proper RunnerBuilder into JUnit4TestExecutor!!! (push env) - now in ScriptTestContributor, as long as it doesn't use newAPI()
       myTestExecutor = new JUnit4TestExecutor(new ScriptTestContributor(myEnv, myExecScript.getTests()), true);
     } else {
-      Supplier<ClassLoader> getCL = JUnit5TestExecutor.class::getClassLoader;
       // FIXME similar override in JUnitInProcessRunStarter, need to unify
-      myTestExecutor = new JUnit5TestExecutor(new JUnit5ScriptTestContributor(myEnv, myExecScript.getTests()), true, getCL) {
+      myTestExecutor = new JUnit5TestExecutor(new JUnit5ScriptTestContributor(myEnv, myExecScript.getTests()), true) {
         @Override
         protected void executeSafe() throws Throwable {
           TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, myEnv);
