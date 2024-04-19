@@ -9,11 +9,11 @@ import jetbrains.mps.progress.DefaultTaskScheduler;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -21,6 +21,7 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.progress.ProgressTask;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import org.jetbrains.annotations.NotNull;
@@ -46,22 +47,25 @@ public class ModelCheckerBuilder {
   public ModelCheckerBuilder(ModelExtractor modelExtractor) {
     myModelExtractor = modelExtractor;
   }
+  @Deprecated
   public ModelCheckerBuilder(boolean checkStubs) {
     this(new ModelsExtractorImpl().includeStubs(checkStubs));
   }
 
   public static abstract class ModelExtractor {
     public final List<SModel> getModels(SModule module) {
+      List<SModel> result = ListSequence.fromList(new ArrayList<SModel>());
       Iterable<SModel> models = Sequence.fromIterable(getSubModules(module)).translate(new ITranslator2<SModule, SModel>() {
         public Iterable<SModel> translate(SModule m) {
           return m.getModels();
         }
       });
-      return Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
+      ListSequence.fromList(result).addSequence(Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
         public boolean accept(SModel it) {
           return includeModel(it);
         }
-      }).toListSequence();
+      }));
+      return result;
     }
     public abstract Iterable<SModule> getSubModules(SModule module);
     public abstract boolean includeModel(SModel model);
@@ -70,6 +74,8 @@ public class ModelCheckerBuilder {
   public static class ModelsExtractorImpl extends ModelExtractor {
     private boolean myIncludeStubs = false;
     private boolean myIncludeGenerators = true;
+    public ModelsExtractorImpl() {
+    }
     public ModelsExtractorImpl excludeGenerators() {
       myIncludeGenerators = false;
       return this;
@@ -144,9 +150,13 @@ public class ModelCheckerBuilder {
 
   private IAbstractChecker<ItemsToCheck, IssueKindReportItem> createChecker(final List<IChecker<SModel, ? extends IssueKindReportItem>> specificModelCheckers, final List<IChecker<SModule, ? extends IssueKindReportItem>> specificModuleCheckers) {
     return new IAbstractChecker<ItemsToCheck, IssueKindReportItem>() {
-      public void check(ItemsToCheck itemsToCheck, SRepository repository, Consumer<? super IssueKindReportItem> errorCollector, ProgressMonitor monitor) {
-        ProgressTask checkTask = checkTask(itemsToCheck, repository, errorCollector);
-        myTaskScheduler.scheduleTask(checkTask, monitor).run();
+      public void check(final ItemsToCheck itemsToCheck, final SRepository repository, final Consumer<? super IssueKindReportItem> errorCollector, ProgressMonitor monitor) {
+        final Wrappers._T<ProgressTask> checkTask = new Wrappers._T<ProgressTask>();
+        repository.getModelAccess().runReadAction(() -> {
+          //  
+          checkTask.value = checkTask(itemsToCheck, repository, errorCollector);
+        });
+        myTaskScheduler.scheduleTask(checkTask.value, monitor).run();
       }
 
       @Override
