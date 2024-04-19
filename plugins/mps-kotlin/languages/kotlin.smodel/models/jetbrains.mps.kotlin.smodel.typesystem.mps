@@ -587,7 +587,7 @@
                   <ref role="QwW4h" node="2ul4aX976cx" resolve="shortType" />
                 </node>
                 <node concept="2qgKlT" id="2ul4aX977lm" role="2OqNvi">
-                  <ref role="37wK5l" to="jglh:28CvMylq0Pm" resolve="getConceptType" />
+                  <ref role="37wK5l" to="jglh:4VnyIrvoQ8N" resolve="getConceptType" />
                 </node>
               </node>
             </node>

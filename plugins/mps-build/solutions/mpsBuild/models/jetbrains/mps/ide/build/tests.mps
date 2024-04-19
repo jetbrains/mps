@@ -16297,6 +16297,16 @@
             <ref role="3bR37D" to="ffeo:Ye$g8PO8TM" resolve="jetbrains.mps.kotlin.javaRefs" />
           </node>
         </node>
+        <node concept="1SiIV0" id="7JjKDUl0o$7" role="3bR37C">
+          <node concept="3bR9La" id="7JjKDUl0o$8" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:1G33vFC9d3f" resolve="jetbrains.mps.kotlin.smodel" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="7JjKDUl0o$9" role="3bR37C">
+          <node concept="3bR9La" id="7JjKDUl0o$a" role="1SiIV1">
+            <ref role="3bR37D" to="ffeo:7Kfy9QB6LaO" resolve="jetbrains.mps.lang.structure" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="55IIr" id="1CUeZUoS3hh" role="auvoZ">

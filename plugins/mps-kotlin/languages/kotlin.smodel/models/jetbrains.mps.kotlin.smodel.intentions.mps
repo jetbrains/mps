@@ -127,7 +127,7 @@
                 <node concept="2OqwBi" id="66iE5cCyS5O" role="1P9ThW">
                   <node concept="2Sf5sV" id="66iE5cCyS1Y" role="2Oq$k0" />
                   <node concept="2qgKlT" id="66iE5cCySwh" role="2OqNvi">
-                    <ref role="37wK5l" to="jglh:28CvMylq0Pm" resolve="getConceptType" />
+                    <ref role="37wK5l" to="jglh:4VnyIrvoQ8N" resolve="getConceptType" />
                   </node>
                 </node>
               </node>

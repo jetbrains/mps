@@ -14,7 +14,7 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.kotlin.smodel.behavior.IBehaviorMethodCaller__BehaviorDescriptor;
+import jetbrains.mps.kotlin.smodel.behavior.ShortNodeType__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
@@ -52,7 +52,7 @@ public final class ShortNodeType_ToConceptType_Intention extends AbstractIntenti
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SelectionUtil.selectLabelCellAnSetCaret(editorContext, SNodeOperations.replaceWithAnother(node, IBehaviorMethodCaller__BehaviorDescriptor.getConceptType_id28CvMylq0Pm.invoke(node)), SelectionManager.LAST_EDITABLE_CELL, -1);
+      SelectionUtil.selectLabelCellAnSetCaret(editorContext, SNodeOperations.replaceWithAnother(node, ShortNodeType__BehaviorDescriptor.getConceptType_id4VnyIrvoQ8N.invoke(node)), SelectionManager.LAST_EDITABLE_CELL, -1);
     }
 
     @Override

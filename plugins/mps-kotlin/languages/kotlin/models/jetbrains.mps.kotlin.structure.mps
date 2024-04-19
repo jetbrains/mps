@@ -1776,7 +1776,7 @@
       <property role="IQ2ns" value="7960033071993940670" />
       <property role="20kJfa" value="parameter" />
       <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="2yYXHtl6Jkd" resolve="TypeParameter" />
+      <ref role="20lvS9" node="4QzAmvhcm6x" resolve="ITypeParameter" />
     </node>
     <node concept="PrWs8" id="6cg9X74h_iP" role="PzmwI">
       <ref role="PrY4T" node="6TRHYuCB$BU" resolve="IAnnotated" />
