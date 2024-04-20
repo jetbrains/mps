@@ -116,7 +116,10 @@ import java.util.function.Predicate;
   }
 
   private void clearModuleReference(@NotNull IFile descriptionFile, @NotNull SModuleReference moduleReference) {
-    myModuleReferencesCache.get(descriptionFile).remove(moduleReference);
+    myModuleReferencesCache.computeIfPresent(descriptionFile, (k, cache) -> {
+      cache.remove(moduleReference);
+      return cache.isEmpty() ? null : cache;
+    });
   }
 
   protected MissionControlRefreshRequest pumpQueue(MessagesContainer messagesContainer, ProgressIndicator progressIndicator) {
