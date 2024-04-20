@@ -570,7 +570,7 @@
           </node>
           <node concept="2OqwBi" id="fzIHCHip0e" role="3tpDZA">
             <node concept="3xONca" id="fzIHCHip0F" role="2Oq$k0">
-              <ref role="3xOPvv" node="fzIHCHioZU" resolve="test.jar" />
+              <ref role="3xOPvv" node="fzIHCHioZU" resolve="test.jar.nested" />
             </node>
             <node concept="2qgKlT" id="fzIHCHip0g" role="2OqNvi">
               <ref role="37wK5l" to="vbkb:fzIHCHip1Q" resolve="getOutputPath_WithMacro" />

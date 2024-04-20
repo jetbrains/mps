@@ -111,7 +111,7 @@
   <node concept="1TIwiD" id="IR$DxXuVkC">
     <property role="EcuMT" value="844304638793200936" />
     <property role="TrG5h" value="ModuleActivator" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="IR$DxXuVkF" role="1TKVEi">
       <property role="IQ2ns" value="844304638793200939" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />

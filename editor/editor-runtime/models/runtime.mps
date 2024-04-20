@@ -3052,7 +3052,7 @@
                                 </node>
                                 <node concept="2OqwBi" id="18Ck5oI$ckh" role="3uHU7w">
                                   <node concept="37vLTw" id="18Ck5oI$43y" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="18Ck5oIzJta" resolve="copiedFile" />
+                                    <ref role="3cqZAo" node="18Ck5oIzJta" resolve="resultFile" />
                                   </node>
                                   <node concept="liA8E" id="18Ck5oI$gsV" role="2OqNvi">
                                     <ref role="37wK5l" to="3ju5:~IFile.exists()" resolve="exists" />
@@ -3066,7 +3066,7 @@
                               <property role="TrG5h" value="resultPath" />
                               <node concept="2OqwBi" id="11tXqudPUEe" role="33vP2m">
                                 <node concept="37vLTw" id="11tXqudPUEf" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="18Ck5oIzJta" resolve="copiedFile" />
+                                  <ref role="3cqZAo" node="18Ck5oIzJta" resolve="resultFile" />
                                 </node>
                                 <node concept="liA8E" id="11tXqudPUEg" role="2OqNvi">
                                   <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />

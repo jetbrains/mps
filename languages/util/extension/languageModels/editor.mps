@@ -451,7 +451,7 @@
       <node concept="2iRfu4" id="4gr$69f_fL6" role="2iSdaV" />
       <node concept="3F2HdR" id="4gr$69f_fKY" role="3EZMnx">
         <property role="2czwfO" value="," />
-        <ref role="1NtTu8" to="v54s:4gr$69f_fKT" />
+        <ref role="1NtTu8" to="v54s:4gr$69f_fKT" resolve="tags" />
       </node>
       <node concept="3F0ifn" id="4gr$69f_fLm" role="3EZMnx">
         <property role="3F0ifm" value="]" />
@@ -471,7 +471,7 @@
           <property role="3F0ifm" value="extension for" />
         </node>
         <node concept="1iCGBv" id="4gr$69f_fLP" role="3EZMnx">
-          <ref role="1NtTu8" to="v54s:4gr$69f_fLy" />
+          <ref role="1NtTu8" to="v54s:4gr$69f_fLy" resolve="key" />
           <node concept="1sVBvm" id="4gr$69f_fLR" role="1sWHZn">
             <node concept="1HlG4h" id="4gr$69f_fM4" role="2wV5jI">
               <node concept="1HfYo3" id="4gr$69f_fM5" role="1HlULh">
@@ -501,7 +501,7 @@
           </node>
         </node>
         <node concept="1iCGBv" id="4gr$69f_iik" role="3EZMnx">
-          <ref role="1NtTu8" to="v54s:4gr$69f_fKE" />
+          <ref role="1NtTu8" to="v54s:4gr$69f_fKE" resolve="implementation" />
           <node concept="1sVBvm" id="4gr$69f_iim" role="1sWHZn">
             <node concept="3SHvHV" id="4gr$69f_iiu" role="2wV5jI" />
           </node>
@@ -518,7 +518,7 @@
       </node>
       <node concept="2iRfu4" id="8PnOmiAJxF" role="2iSdaV" />
       <node concept="1iCGBv" id="8PnOmiAJp2" role="3EZMnx">
-        <ref role="1NtTu8" to="v54s:3e7$st3rKA$" />
+        <ref role="1NtTu8" to="v54s:3e7$st3rKA$" resolve="ext" />
         <node concept="1sVBvm" id="8PnOmiAJp4" role="1sWHZn">
           <node concept="3SHvHV" id="8PnOmiAJuf" role="2wV5jI" />
         </node>

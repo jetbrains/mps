@@ -273,7 +273,7 @@
             </node>
             <node concept="2OqwBi" id="2rTnW2A6DW4" role="33vP2m">
               <node concept="37vLTw" id="Xr5NREBFYu" role="2Oq$k0">
-                <ref role="3cqZAo" node="Xr5NREBFYs" resolve="instance" />
+                <ref role="3cqZAo" node="Xr5NREBFYs" resolve="clm" />
               </node>
               <node concept="liA8E" id="2rTnW2A6Ey5" role="2OqNvi">
                 <ref role="37wK5l" to="3qmy:~ClassLoaderManager.getStatus(org.jetbrains.mps.openapi.module.SModule)" resolve="getStatus" />

@@ -4104,7 +4104,7 @@
                         <ref role="1M0zk5" node="2YYbw0fnXCK" resolve="ref" />
                       </node>
                       <node concept="3TrEf2" id="2YYbw0fo4ro" role="2OqNvi">
-                        <ref role="3Tt5mk" to="tpee:fzcqZ_w" />
+                        <ref role="3Tt5mk" to="tpee:fzcqZ_w" resolve="variableDeclaration" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="2YYbw0fo07O" role="37vLTJ">

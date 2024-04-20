@@ -3407,7 +3407,7 @@
             <node concept="YeOm9" id="3QWQ9jDXWwt" role="2ShVmc">
               <node concept="1Y3b0j" id="3QWQ9jDXWww" role="YeSDq">
                 <property role="2bfB8j" value="true" />
-                <ref role="37wK5l" to="tprs:6OsAZEtzI9V" />
+                <ref role="37wK5l" to="tprs:6OsAZEtzI9V" resolve="NewModelActionExecutor" />
                 <ref role="1Y3XeK" to="tprs:695k0NOuUKM" resolve="NewModelActionExecutor" />
                 <node concept="3Tm1VV" id="3QWQ9jDXWwx" role="1B3o_S" />
                 <node concept="2OqwBi" id="3QWQ9jDSUfW" role="37wK5m">
@@ -3423,7 +3423,7 @@
                   </node>
                 </node>
                 <node concept="37vLTw" id="6OsAZEt$W$a" role="37wK5m">
-                  <ref role="3cqZAo" node="6OsAZEt$T9Q" resolve="provider" />
+                  <ref role="3cqZAo" node="6OsAZEt$T9Q" resolve="stereotypeProvider" />
                 </node>
                 <node concept="3clFb_" id="3QWQ9jDXWW0" role="jymVt">
                   <property role="TrG5h" value="onModelCreated" />

@@ -5382,7 +5382,7 @@
                       <node concept="1Y3b0j" id="5m2bsnpiLyZ" role="YeSDq">
                         <property role="2bfB8j" value="true" />
                         <property role="373rjd" value="true" />
-                        <ref role="37wK5l" to="34h4:35_wH_FvjAI" />
+                        <ref role="37wK5l" to="34h4:35_wH_FvjAI" resolve="JUnit5TestExecutor" />
                         <ref role="1Y3XeK" to="34h4:2u2lerfkrHn" resolve="JUnit5TestExecutor" />
                         <node concept="3Tm1VV" id="5m2bsnpiLz0" role="1B3o_S" />
                         <node concept="3clFb_" id="5m2bsnpiPBO" role="jymVt">

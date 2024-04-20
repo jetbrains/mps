@@ -6,7 +6,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet compile="ext" classes="provided" ext="no" type="java">
+    <facet type="java" compile="ext" classes="provided" ext="no">
       <classes generated="true" />
       <library location="${mps_home}/lib/mps-scripts-rt.jar" />
     </facet>

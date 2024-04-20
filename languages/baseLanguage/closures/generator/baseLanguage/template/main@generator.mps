@@ -19359,7 +19359,7 @@
                                       </node>
                                     </node>
                                     <node concept="3Tsc0h" id="doQwy2OZp" role="2OqNvi">
-                                      <ref role="3TtcxE" to="tpee:g91_B6F" />
+                                      <ref role="3TtcxE" to="tpee:g91_B6F" resolve="parameter" />
                                     </node>
                                   </node>
                                 </node>
@@ -19460,7 +19460,7 @@
                                     </node>
                                   </node>
                                   <node concept="3TrEf2" id="doQwy2P0a" role="2OqNvi">
-                                    <ref role="3Tt5mk" to="tpee:g7uigIF" />
+                                    <ref role="3Tt5mk" to="tpee:g7uigIF" resolve="classifier" />
                                   </node>
                                 </node>
                               </node>
@@ -19510,7 +19510,7 @@
                         <node concept="2ShNRf" id="doQwy2P0s" role="3cqZAk">
                           <node concept="YeOm9" id="doQwy2P0t" role="2ShVmc">
                             <node concept="1Y3b0j" id="doQwy2P0u" role="YeSDq">
-                              <ref role="1Y3XeK" node="hvfPDEP" resolve="YieldingIterator" />
+                              <ref role="1Y3XeK" node="hvfPDEP" resolve="AClass.YieldingIterator" />
                               <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                               <node concept="5jKBG" id="doQwy2P0v" role="lGtFl">
                                 <ref role="v9R2y" node="hvkCKfS" resolve="frag_YieldingIterator_anonymous_class" />

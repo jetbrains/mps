@@ -144,10 +144,10 @@
         <node concept="3clFbF" id="5Tw2oG53XMb" role="3cqZAp">
           <node concept="37vLTI" id="5Tw2oG53XMd" role="3clFbG">
             <node concept="37vLTw" id="5Tw2oG53XMg" role="37vLTJ">
-              <ref role="3cqZAo" node="5Tw2oG53XM7" resolve="myRc" />
+              <ref role="3cqZAo" node="5Tw2oG53XM7" resolve="myRegistry" />
             </node>
             <node concept="37vLTw" id="5Tw2oG53XMh" role="37vLTx">
-              <ref role="3cqZAo" node="5Tw2oG53XmN" resolve="rc" />
+              <ref role="3cqZAo" node="5Tw2oG53XmN" resolve="registry" />
             </node>
           </node>
         </node>
@@ -169,7 +169,7 @@
           <node concept="37vLTI" id="1$3BPv3VW9Z" role="3clFbG">
             <node concept="2ShNRf" id="1$3BPv3VWa2" role="37vLTx">
               <node concept="1pGfFk" id="1$3BPv3VWa4" role="2ShVmc">
-                <ref role="37wK5l" node="1$3BPv3VW9j" />
+                <ref role="37wK5l" node="1$3BPv3VW9j" resolve="EditorResolver" />
               </node>
             </node>
             <node concept="37vLTw" id="2BHiRxeuyTZ" role="37vLTJ">
@@ -192,7 +192,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5Tw2oG53Wvn" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="5rIhWKNRZk4" role="jymVt" />

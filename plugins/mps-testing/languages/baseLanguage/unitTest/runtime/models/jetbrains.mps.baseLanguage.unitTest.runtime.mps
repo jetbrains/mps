@@ -3434,11 +3434,11 @@
                     <ref role="3cqZAo" node="7o1qpmkr0FR" resolve="method" />
                   </node>
                   <node concept="3Tsc0h" id="7o1qpmkr0Gw" role="2OqNvi">
-                    <ref role="3TtcxE" to="tpee:hiAJF2X" />
+                    <ref role="3TtcxE" to="tpee:hiAJF2X" resolve="annotation" />
                   </node>
                 </node>
                 <node concept="13MTOL" id="3LuvecXlrW5" role="2OqNvi">
-                  <ref role="13MTZf" to="tpee:hiAI5P0" />
+                  <ref role="13MTZf" to="tpee:hiAI5P0" resolve="annotation" />
                 </node>
               </node>
             </node>

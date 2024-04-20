@@ -320,7 +320,7 @@
                     <ref role="3cqZAo" node="3e7$st3rMf_" resolve="r" />
                   </node>
                   <node concept="3TrEf2" id="3e7$st3rMX3" role="2OqNvi">
-                    <ref role="3Tt5mk" to="v54s:3e7$st3rKA$" />
+                    <ref role="3Tt5mk" to="v54s:3e7$st3rKA$" resolve="ext" />
                   </node>
                 </node>
               </node>
@@ -329,7 +329,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3e7$st3q5Qn" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
   </node>

@@ -262,7 +262,7 @@
     <property role="EcuMT" value="4907674970866646054" />
     <property role="TrG5h" value="BasicExtensionDeclaration" />
     <property role="19KtqR" value="true" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4gr$69f_fKJ" role="1TKVEi">
       <property role="IQ2ns" value="4907674970866646063" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -292,7 +292,7 @@
   <node concept="1TIwiD" id="4gr$69f_fKN">
     <property role="EcuMT" value="4907674970866646067" />
     <property role="TrG5h" value="TagsSelector" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="4gr$69f_fKO" role="PzmwI">
       <ref role="PrY4T" node="4gr$69f_fKG" resolve="Selector" />
     </node>
@@ -307,7 +307,7 @@
   <node concept="1TIwiD" id="4gr$69f_fKQ">
     <property role="EcuMT" value="4907674970866646070" />
     <property role="TrG5h" value="Tag" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="4gr$69f_fKR" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
@@ -316,7 +316,7 @@
     <property role="EcuMT" value="3713096702806132006" />
     <property role="TrG5h" value="ExtensionRegistrar" />
     <property role="19KtqR" value="true" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="3e7$st3rKA$" role="1TKVEi">
       <property role="IQ2ns" value="3713096702806133156" />
       <property role="20kJfa" value="ext" />

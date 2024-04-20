@@ -435,7 +435,7 @@
             </node>
             <node concept="3clFbF" id="4ZZ2R778bZw" role="3cqZAp">
               <node concept="1rXfSq" id="4ZZ2R778bZu" role="3clFbG">
-                <ref role="37wK5l" node="2PvwUKGLYNX" resolve="noMigrationNeeded" />
+                <ref role="37wK5l" node="2PvwUKGLYNX" resolve="_noMigrationNeeded" />
               </node>
             </node>
           </node>
@@ -603,7 +603,7 @@
                         </node>
                         <node concept="2ShNRf" id="2PvwUKGMyJC" role="33vP2m">
                           <node concept="1pGfFk" id="2PvwUKGMyJW" role="2ShVmc">
-                            <ref role="37wK5l" to="bim2:10yOEkEz6b" />
+                            <ref role="37wK5l" to="bim2:10yOEkEz6b" resolve="MigrationSetup" />
                             <node concept="1rXfSq" id="2PvwUKGMyJX" role="37wK5m">
                               <ref role="37wK5l" node="2SnxzQPEfIr" resolve="getContextProject" />
                             </node>
@@ -1137,7 +1137,7 @@
               <ref role="1Pybhc" to="1ctc:~Stream" resolve="Stream" />
             </node>
             <node concept="3uibUv" id="4ZZ2R77aI_Q" role="1tU5fm">
-              <ref role="3uigEE" to="1ctc:~Stream$Builder" resolve="Builder" />
+              <ref role="3uigEE" to="1ctc:~Stream$Builder" resolve="Stream.Builder" />
               <node concept="17QB3L" id="4ZZ2R77aI_R" role="11_B2D" />
             </node>
           </node>

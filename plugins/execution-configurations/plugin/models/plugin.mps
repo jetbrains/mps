@@ -15756,7 +15756,7 @@
                       <node concept="1Y3b0j" id="5m2bsnoY2B$" role="YeSDq">
                         <property role="2bfB8j" value="true" />
                         <property role="373rjd" value="true" />
-                        <ref role="37wK5l" to="34h4:35_wH_FvjAI" />
+                        <ref role="37wK5l" to="34h4:35_wH_FvjAI" resolve="JUnit5TestExecutor" />
                         <ref role="1Y3XeK" to="34h4:2u2lerfkrHn" resolve="JUnit5TestExecutor" />
                         <node concept="2tJIrI" id="5m2bsnoY8YX" role="jymVt" />
                         <node concept="3Tm1VV" id="5m2bsnoY2B_" role="1B3o_S" />

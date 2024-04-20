@@ -1890,7 +1890,7 @@
               <node concept="2ShNRf" id="7XWzEIxxUiT" role="2Oq$k0">
                 <node concept="1pGfFk" id="7XWzEIxxUiU" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" to="4u8o:4rQ9_5dOg04" />
+                  <ref role="37wK5l" to="4u8o:4rQ9_5dOg04" resolve="TestSessionConfig" />
                 </node>
               </node>
               <node concept="liA8E" id="7XWzEIxxUiV" role="2OqNvi">
@@ -2707,7 +2707,7 @@
         </node>
         <node concept="3clFbF" id="7XWzEIxx9yK" role="3cqZAp">
           <node concept="1rXfSq" id="7XWzEIxx9yI" role="3clFbG">
-            <ref role="37wK5l" node="7XWzEIxxLMp" resolve="launchWithSession" />
+            <ref role="37wK5l" node="7XWzEIxxLMp" resolve="launchTestsWithSession" />
             <node concept="37vLTw" id="7XWzEIxxfJZ" role="37wK5m">
               <ref role="3cqZAo" node="3OA_Uj9hwao" resolve="myTestClasses" />
             </node>

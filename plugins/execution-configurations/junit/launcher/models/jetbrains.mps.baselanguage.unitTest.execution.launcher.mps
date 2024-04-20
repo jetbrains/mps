@@ -845,11 +845,11 @@
             <node concept="2ShNRf" id="4a2eZHNP5SX" role="33vP2m">
               <node concept="1pGfFk" id="4a2eZHNP8al" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" node="35_wH_FvjAI" />
+                <ref role="37wK5l" node="35_wH_FvjAI" resolve="JUnit5TestExecutor" />
                 <node concept="2ShNRf" id="5m2bsnoP97b" role="37wK5m">
                   <node concept="1pGfFk" id="5m2bsnoPmU8" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="1wWWPEubiSm" />
+                    <ref role="37wK5l" node="1wWWPEubiSm" resolve="JUnit5TestContributorConverter" />
                     <node concept="37vLTw" id="5m2bsnoPn3m" role="37wK5m">
                       <ref role="3cqZAo" node="5m2bsnoM8Ys" resolve="tc" />
                     </node>
@@ -7285,7 +7285,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="2u2lerfks5S" role="1B3o_S" />
       <node concept="3uibUv" id="2u2lerfks5U" role="1tU5fm">
-        <ref role="3uigEE" node="1wWWPEu9Bc8" />
+        <ref role="3uigEE" node="1wWWPEu9Bc8" resolve="JUnit5TestContributor" />
       </node>
     </node>
     <node concept="312cEg" id="2u2lerfl9ar" role="jymVt">
@@ -7380,7 +7380,7 @@
       <node concept="37vLTG" id="2u2lerfks01" role="3clF46">
         <property role="TrG5h" value="testContributor" />
         <node concept="3uibUv" id="2u2lerfks00" role="1tU5fm">
-          <ref role="3uigEE" node="1wWWPEu9Bc8" />
+          <ref role="3uigEE" node="1wWWPEu9Bc8" resolve="JUnit5TestContributor" />
         </node>
       </node>
       <node concept="37vLTG" id="2u2lerfl8OO" role="3clF46">
@@ -7403,7 +7403,7 @@
       <node concept="3Tm1VV" id="35_wH_FvjAK" role="1B3o_S" />
       <node concept="3clFbS" id="35_wH_FvjAL" role="3clF47">
         <node concept="1VxSAg" id="35_wH_FvmMt" role="3cqZAp">
-          <ref role="37wK5l" node="2u2lerfkrVg" />
+          <ref role="37wK5l" node="2u2lerfkrVg" resolve="JUnit5TestExecutor" />
           <node concept="37vLTw" id="35_wH_FvmXz" role="37wK5m">
             <ref role="3cqZAo" node="35_wH_FvjBc" resolve="testContributor" />
           </node>
@@ -7615,7 +7615,7 @@
                     <ref role="3cqZAo" node="2u2lerfks5R" resolve="myTestContributor" />
                   </node>
                   <node concept="liA8E" id="2u2lerfkCph" role="2OqNvi">
-                    <ref role="37wK5l" node="1wWWPEua5Su" />
+                    <ref role="37wK5l" node="1wWWPEua5Su" resolve="collectSelectors" />
                   </node>
                 </node>
               </node>
@@ -7800,12 +7800,12 @@
           <node concept="3cpWsn" id="2bvzdxLOgEK" role="3cpWs9">
             <property role="TrG5h" value="listener" />
             <node concept="3uibUv" id="2bvzdxLOgEL" role="1tU5fm">
-              <ref role="3uigEE" node="6maaEP0G01l" />
+              <ref role="3uigEE" node="6maaEP0G01l" resolve="DefaultTestExecutionListener" />
             </node>
             <node concept="2ShNRf" id="2bvzdxLOgEM" role="33vP2m">
               <node concept="1pGfFk" id="2bvzdxLOgEN" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" node="6maaEP0G6k$" />
+                <ref role="37wK5l" node="6maaEP0G6k$" resolve="DefaultTestExecutionListener" />
                 <node concept="37vLTw" id="2bvzdxLOgEO" role="37wK5m">
                   <ref role="3cqZAo" node="6WFPrF9Qc1B" resolve="myOutStream" />
                 </node>
@@ -7842,7 +7842,7 @@
                       <ref role="3cqZAo" node="2bvzdxLOgEK" resolve="listener" />
                     </node>
                     <node concept="liA8E" id="2bvzdxLOgF4" role="2OqNvi">
-                      <ref role="37wK5l" node="2NMjZ1W$mqU" />
+                      <ref role="37wK5l" node="2NMjZ1W$mqU" resolve="getFailuresCount" />
                     </node>
                   </node>
                   <node concept="2OqwBi" id="2bvzdxLOgF5" role="37vLTJ">
@@ -7949,7 +7949,7 @@
       </node>
     </node>
     <node concept="3uibUv" id="1wWWPEubi6D" role="EKbjA">
-      <ref role="3uigEE" node="1wWWPEu9Bc8" />
+      <ref role="3uigEE" node="1wWWPEu9Bc8" resolve="JUnit5TestContributor" />
     </node>
     <node concept="2tJIrI" id="4rQ9_5djO2b" role="jymVt" />
     <node concept="3clFb_" id="1wWWPEubi7S" role="jymVt">

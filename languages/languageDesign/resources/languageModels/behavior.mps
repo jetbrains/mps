@@ -416,7 +416,7 @@
           </node>
           <node concept="2OqwBi" id="5S2eoIGtXKq" role="3clFbw">
             <node concept="37vLTw" id="1$fQzw7xYm$" role="2Oq$k0">
-              <ref role="3cqZAo" node="1$fQzw7xYmv" resolve="file" />
+              <ref role="3cqZAo" node="1$fQzw7xYmv" resolve="fileName" />
             </node>
             <node concept="17RlXB" id="5S2eoIGtYWf" role="2OqNvi" />
           </node>
@@ -445,7 +445,7 @@
               <node concept="liA8E" id="2NwO_B0Zo8u" role="2OqNvi">
                 <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
                 <node concept="37vLTw" id="1$fQzw7xYmz" role="37wK5m">
-                  <ref role="3cqZAo" node="1$fQzw7xYmv" resolve="file" />
+                  <ref role="3cqZAo" node="1$fQzw7xYmv" resolve="fileName" />
                 </node>
               </node>
             </node>
@@ -1575,7 +1575,7 @@
               <property role="TrG5h" value="pfe" />
               <node concept="nSUau" id="1$fQzw7$hed" role="1tU5fm">
                 <node concept="3uibUv" id="1$fQzw7$hee" role="nSUat">
-                  <ref role="3uigEE" to="ifj7:~PathFormatChecker$PathFormatException" resolve="PathFormatException" />
+                  <ref role="3uigEE" to="ifj7:~PathFormatChecker$PathFormatException" resolve="PathFormatChecker.PathFormatException" />
                 </node>
               </node>
             </node>
@@ -1949,7 +1949,7 @@
             <node concept="2OqwBi" id="2xAJZV4s52C" role="2Oq$k0">
               <node concept="13iPFW" id="2xAJZV4s52D" role="2Oq$k0" />
               <node concept="3Tsc0h" id="2xAJZV4s52E" role="2OqNvi">
-                <ref role="3TtcxE" to="1oap:7MKI4BBUT$V" />
+                <ref role="3TtcxE" to="1oap:7MKI4BBUT$V" resolve="newuiLayers" />
               </node>
             </node>
             <node concept="3GX2aA" id="2xAJZV4s52F" role="2OqNvi" />
@@ -1984,7 +1984,7 @@
       <node concept="37vLTG" id="2xAJZV4stS_" role="3clF46">
         <property role="TrG5h" value="dc" />
         <node concept="3uibUv" id="2xAJZV4stSA" role="1tU5fm">
-          <ref role="3uigEE" to="18ew:~IconCreationUtil$DrawContext" resolve="DrawContext" />
+          <ref role="3uigEE" to="18ew:~IconCreationUtil$DrawContext" resolve="IconCreationUtil.DrawContext" />
         </node>
       </node>
       <node concept="3Tm6S6" id="2xAJZV4snAW" role="1B3o_S" />
@@ -2187,7 +2187,7 @@
                       <node concept="2OqwBi" id="2xAJZV4s$zB" role="37wK5m">
                         <node concept="13iPFW" id="2xAJZV4szZr" role="2Oq$k0" />
                         <node concept="3Tsc0h" id="2xAJZV4s_$E" role="2OqNvi">
-                          <ref role="3TtcxE" to="1oap:2p1v3tObwTA" />
+                          <ref role="3TtcxE" to="1oap:2p1v3tObwTA" resolve="layers" />
                         </node>
                       </node>
                       <node concept="37vLTw" id="2xAJZV4sApb" role="37wK5m">
@@ -2258,7 +2258,7 @@
                     <node concept="37vLTG" id="2xAJZV4sF4G" role="1bW2Oz">
                       <property role="TrG5h" value="dc" />
                       <node concept="3uibUv" id="2xAJZV4sF4H" role="1tU5fm">
-                        <ref role="3uigEE" to="18ew:~IconCreationUtil$DrawContext" resolve="DrawContext" />
+                        <ref role="3uigEE" to="18ew:~IconCreationUtil$DrawContext" resolve="IconCreationUtil.DrawContext" />
                       </node>
                     </node>
                     <node concept="3clFbS" id="2xAJZV4sF4I" role="1bW5cS">
@@ -2268,7 +2268,7 @@
                           <node concept="2OqwBi" id="2xAJZV4sF4L" role="37wK5m">
                             <node concept="13iPFW" id="2xAJZV4sF4M" role="2Oq$k0" />
                             <node concept="3Tsc0h" id="2xAJZV4sF4N" role="2OqNvi">
-                              <ref role="3TtcxE" to="1oap:7MKI4BBUT$V" />
+                              <ref role="3TtcxE" to="1oap:7MKI4BBUT$V" resolve="newuiLayers" />
                             </node>
                           </node>
                           <node concept="37vLTw" id="2xAJZV4sF4O" role="37wK5m">
@@ -2311,7 +2311,7 @@
             <node concept="2OqwBi" id="2xAJZV4sjTv" role="2Oq$k0">
               <node concept="13iPFW" id="2xAJZV4sjTw" role="2Oq$k0" />
               <node concept="3Tsc0h" id="2xAJZV4sjTx" role="2OqNvi">
-                <ref role="3TtcxE" to="1oap:7MKI4BBUT$V" />
+                <ref role="3TtcxE" to="1oap:7MKI4BBUT$V" resolve="newuiLayers" />
               </node>
             </node>
             <node concept="3GX2aA" id="2xAJZV4sjTy" role="2OqNvi" />
@@ -2319,7 +2319,7 @@
         </node>
         <node concept="3cpWs6" id="Ib_Fk7CFfi" role="3cqZAp">
           <node concept="37vLTw" id="2xAJZV4sJaO" role="3cqZAk">
-            <ref role="3cqZAo" node="2xAJZV4sJaB" resolve="list" />
+            <ref role="3cqZAo" node="2xAJZV4sJaB" resolve="result" />
           </node>
         </node>
       </node>

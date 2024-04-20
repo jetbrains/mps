@@ -1226,7 +1226,7 @@
       <node concept="1TIwiD" id="42qjHUf7kB_" role="1qenE9">
         <property role="EcuMT" value="4655119882631596517" />
         <property role="TrG5h" value="A" />
-        <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+        <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
         <node concept="1TJgyi" id="42qjHUf7kBP" role="1TKVEl">
           <property role="IQ2nx" value="4655119882631596533" />
           <property role="TrG5h" value="propA" />

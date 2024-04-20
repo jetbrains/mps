@@ -426,7 +426,7 @@
                   <node concept="2OqwBi" id="4gr$69fATuJ" role="2Oq$k0">
                     <node concept="EsrRn" id="4gr$69fASQL" role="2Oq$k0" />
                     <node concept="3TrEf2" id="4gr$69fATFz" role="2OqNvi">
-                      <ref role="3Tt5mk" to="v54s:4gr$69f_fLy" />
+                      <ref role="3Tt5mk" to="v54s:4gr$69f_fLy" resolve="key" />
                     </node>
                   </node>
                   <node concept="3TrcHB" id="4gr$69fAUN6" role="2OqNvi">
@@ -590,7 +590,7 @@
   <node concept="1M2fIO" id="8PnOmiBj6Z">
     <ref role="1M2myG" to="v54s:3e7$st3rKkA" resolve="ExtensionRegistrar" />
     <node concept="1N5Pfh" id="8PnOmiBj7Q" role="1Mr941">
-      <ref role="1N5Vy1" to="v54s:3e7$st3rKA$" />
+      <ref role="1N5Vy1" to="v54s:3e7$st3rKA$" resolve="ext" />
       <node concept="3dgokm" id="8PnOmiBjcA" role="1N6uqs">
         <node concept="3clFbS" id="8PnOmiBjcB" role="2VODD2">
           <node concept="3clFbF" id="8PnOmiBCa2" role="3cqZAp">
@@ -607,7 +607,7 @@
                       <node concept="2ShNRf" id="8PnOmiBmOO" role="10QFUP">
                         <node concept="1pGfFk" id="8PnOmiBp6R" role="2ShVmc">
                           <property role="373rjd" value="true" />
-                          <ref role="37wK5l" to="o8zo:4k9eBec$Bew" />
+                          <ref role="37wK5l" to="o8zo:4k9eBec$Bew" resolve="ModelsScope" />
                           <node concept="2OqwBi" id="8PnOmiBmkZ" role="37wK5m">
                             <node concept="2OqwBi" id="8PnOmiBlYE" role="2Oq$k0">
                               <node concept="2JrnkZ" id="8PnOmiBlQa" role="2Oq$k0">

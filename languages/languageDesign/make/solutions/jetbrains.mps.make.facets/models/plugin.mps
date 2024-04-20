@@ -7266,7 +7266,7 @@
                                         <node concept="3cpWsn" id="6KnarftVYeW" role="3cpWs9">
                                           <property role="TrG5h" value="factory" />
                                           <node concept="3uibUv" id="6KnarftVYeU" role="1tU5fm">
-                                            <ref role="3uigEE" to="ap4t:~GeneratorTask$Factory" resolve="Factory" />
+                                            <ref role="3uigEE" to="ap4t:~GeneratorTask$Factory" resolve="GeneratorTask.Factory" />
                                             <node concept="3uibUv" id="6KnarftVYeL" role="11_B2D">
                                               <ref role="3uigEE" to="ap4t:~GeneratorTask" resolve="GeneratorTask" />
                                             </node>
@@ -7275,7 +7275,7 @@
                                             <node concept="YeOm9" id="6KnarftVYeY" role="2ShVmc">
                                               <node concept="1Y3b0j" id="6KnarftVYeZ" role="YeSDq">
                                                 <property role="2bfB8j" value="true" />
-                                                <ref role="1Y3XeK" to="ap4t:~GeneratorTask$Factory" resolve="Factory" />
+                                                <ref role="1Y3XeK" to="ap4t:~GeneratorTask$Factory" resolve="GeneratorTask.Factory" />
                                                 <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                                                 <node concept="3Tm1VV" id="6KnarftVYf0" role="1B3o_S" />
                                                 <node concept="3clFb_" id="6KnarftVYf1" role="jymVt">

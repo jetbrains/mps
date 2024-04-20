@@ -333,7 +333,7 @@
       </node>
       <node concept="3clFbS" id="3SnNvqCbxcE" role="3clF47">
         <node concept="XkiVB" id="7sMvr7H2McW" role="3cqZAp">
-          <ref role="37wK5l" to="4jgh:7sMvr7H2Rci" />
+          <ref role="37wK5l" to="4jgh:7sMvr7H2Rci" resolve="BreakpointIconRenderrerEx" />
           <node concept="37vLTw" id="2BHiRxgkWmY" role="37wK5m">
             <ref role="3cqZAo" node="3SnNvqCbxcA" resolve="breakpoint" />
           </node>
@@ -7879,7 +7879,7 @@
       </node>
       <node concept="3clFbS" id="3SnNvqCbyFr" role="3clF47">
         <node concept="XkiVB" id="2meLaIF5nkx" role="3cqZAp">
-          <ref role="37wK5l" to="4jgh:7Tz7JMVHdJY" />
+          <ref role="37wK5l" to="4jgh:7Tz7JMVHdJY" resolve="BreakpointsUiComponentEx" />
           <node concept="37vLTw" id="2BHiRxgmKIj" role="37wK5m">
             <ref role="3cqZAo" node="3SnNvqCbyFh" resolve="ideaProject" />
           </node>
@@ -11572,7 +11572,7 @@
       </node>
       <node concept="3clFbS" id="3SnNvqCbxHd" role="3clF47">
         <node concept="XkiVB" id="7sMvr7H2QWB" role="3cqZAp">
-          <ref role="37wK5l" to="4jgh:7sMvr7H2Rej" />
+          <ref role="37wK5l" to="4jgh:7sMvr7H2Rej" resolve="BreakpointPainterEx" />
           <node concept="37vLTw" id="6mkTi9xEfnc" role="37wK5m">
             <ref role="3cqZAo" node="3SnNvqCbxHb" resolve="mpsBreakpoint" />
           </node>

@@ -189,7 +189,7 @@
             <node concept="2pJPED" id="6$OCvf8JDdy" role="2pJPEn">
               <ref role="2pJxaS" to="tpdt:gRDMZzC" resolve="PrimitiveTypeRef" />
               <node concept="2pIpSj" id="6$OCvf8JDdz" role="2pJxcM">
-                <ref role="2pIpSl" to="tpdt:gRDMZzB" />
+                <ref role="2pIpSl" to="tpdt:gRDMZzB" resolve="descriptor" />
                 <node concept="36bGnv" id="6$OCvf8JDd$" role="28nt2d">
                   <ref role="36bGnp" to="tpdu:hqvU9J9" resolve="Numeric" />
                 </node>
@@ -241,7 +241,7 @@
           <node concept="2pJPED" id="6$OCvf8JDiR" role="2pJPEn">
             <ref role="2pJxaS" to="tpee:g7uibYu" resolve="ClassifierType" />
             <node concept="2pIpSj" id="6$OCvf8JDiS" role="2pJxcM">
-              <ref role="2pIpSl" to="tpee:g7uigIF" />
+              <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
               <node concept="36bGnv" id="6$OCvf8JDiT" role="28nt2d">
                 <ref role="36bGnp" to="wyt6:~Object" resolve="Object" />
               </node>

@@ -1246,7 +1246,7 @@
         <node concept="3yqFpY" id="3L2iO8sLKhX" role="25yagT">
           <property role="2HvuMZ" value="true" />
           <node concept="3yqFqT" id="1MkTaILVNVs" role="3yqFpW">
-            <ref role="3yqFr6" to="ffeo:6jDaT$jlWWW" />
+            <ref role="3yqFr6" to="ffeo:6jDaT$jlWWW" resolve="mps-junit5" />
           </node>
         </node>
       </node>
@@ -1254,7 +1254,7 @@
         <node concept="3yqFpY" id="6jDaT$joh4D" role="25yagT">
           <property role="2HvuMZ" value="true" />
           <node concept="3yqFqT" id="6jDaT$joh4E" role="3yqFpW">
-            <ref role="3yqFr6" to="ffeo:6jDaT$jlXhe" />
+            <ref role="3yqFr6" to="ffeo:6jDaT$jlXhe" resolve="mps-testing" />
           </node>
         </node>
       </node>

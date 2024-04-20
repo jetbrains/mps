@@ -413,7 +413,7 @@
           </node>
         </node>
         <node concept="3EZMnI" id="2XCQUUY5Or_" role="3EZMnx">
-          <ref role="1ERwB7" node="7MKI4BAhNV$" resolve="DeleteFileIcon" />
+          <ref role="1ERwB7" node="7MKI4BAhNV$" resolve="DeleteNewUIFileIcon" />
           <node concept="3F0ifn" id="2XCQUUY6CDp" role="3EZMnx">
             <property role="3F0ifm" value="[new UI variant:" />
           </node>
@@ -457,7 +457,7 @@
               </node>
               <node concept="3EZMnI" id="2XCQUUY5OrT" role="1QoS34">
                 <node concept="1u4HXA" id="2XCQUUY5OrU" role="3EZMnx">
-                  <ref role="1ERwB7" node="7MKI4BAhNV$" resolve="DeleteFileIcon" />
+                  <ref role="1ERwB7" node="7MKI4BAhNV$" resolve="DeleteNewUIFileIcon" />
                   <node concept="4EIwk" id="2XCQUUY5OrV" role="4GRq3">
                     <node concept="3clFbS" id="2XCQUUY5OrW" role="2VODD2">
                       <node concept="3clFbF" id="2XCQUUY5OrX" role="3cqZAp">
@@ -612,7 +612,7 @@
                 <node concept="3x8VRR" id="2p1v3tOan9T" role="2OqNvi" />
                 <node concept="2OqwBi" id="2p1v3tOan9U" role="2Oq$k0">
                   <node concept="3TrEf2" id="2p1v3tOan9V" role="2OqNvi">
-                    <ref role="3Tt5mk" to="1oap:63hNSM1YIC9" />
+                    <ref role="3Tt5mk" to="1oap:63hNSM1YIC9" resolve="iconExpression" />
                   </node>
                   <node concept="pncrf" id="2p1v3tOan9W" role="2Oq$k0" />
                 </node>
@@ -621,7 +621,7 @@
           </node>
         </node>
         <node concept="3F1sOY" id="63hNSM1YKlw" role="1QoS34">
-          <ref role="1NtTu8" to="1oap:63hNSM1YIC9" />
+          <ref role="1NtTu8" to="1oap:63hNSM1YIC9" resolve="iconExpression" />
         </node>
         <node concept="pkWqt" id="63hNSM20usr" role="pqm2j">
           <node concept="3clFbS" id="63hNSM20uss" role="2VODD2">
@@ -630,7 +630,7 @@
                 <node concept="3x8VRR" id="2p1v3tOamKz" role="2OqNvi" />
                 <node concept="2OqwBi" id="63hNSM20EIU" role="2Oq$k0">
                   <node concept="3TrEf2" id="2p1v3tOalPK" role="2OqNvi">
-                    <ref role="3Tt5mk" to="1oap:63hNSM1YIC9" />
+                    <ref role="3Tt5mk" to="1oap:63hNSM1YIC9" resolve="iconExpression" />
                   </node>
                   <node concept="pncrf" id="63hNSM20ECq" role="2Oq$k0" />
                 </node>
@@ -732,7 +732,7 @@
         </node>
         <node concept="b$f91" id="7MKI4BBVgXi" role="3EZMnx">
           <node concept="3F2HdR" id="7MKI4BBVgXu" role="b$wch">
-            <ref role="1NtTu8" to="1oap:7MKI4BBUT$V" />
+            <ref role="1NtTu8" to="1oap:7MKI4BBUT$V" resolve="newuiLayers" />
             <node concept="3F0ifn" id="7MKI4BBVgXx" role="2czzBI">
               <property role="3F0ifm" value="use the same as for old UI" />
               <ref role="1k5W1q" to="tpco:3VARyd8XcQs" resolve="Comment" />

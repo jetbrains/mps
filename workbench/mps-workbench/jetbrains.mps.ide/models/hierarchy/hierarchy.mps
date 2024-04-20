@@ -11663,7 +11663,7 @@
                               <node concept="I4A8Y" id="7pTo6H6lM7b" role="2OqNvi" />
                             </node>
                             <node concept="37vLTw" id="2KxF7SEkFov" role="3uHU7w">
-                              <ref role="3cqZAo" node="2KxF7SEkFor" resolve="model" />
+                              <ref role="3cqZAo" node="2KxF7SEkFor" resolve="oneModel" />
                             </node>
                           </node>
                         </node>

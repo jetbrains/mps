@@ -621,7 +621,7 @@
                               <node concept="2OqwBi" id="d$zdnvEwBn" role="2Oq$k0">
                                 <node concept="30H73N" id="d$zdnvEwbk" role="2Oq$k0" />
                                 <node concept="3TrEf2" id="d$zdnvEwKT" role="2OqNvi">
-                                  <ref role="3Tt5mk" to="tp5g:hBxOPr6" />
+                                  <ref role="3Tt5mk" to="tp5g:hBxOPr6" resolve="declaration" />
                                 </node>
                               </node>
                               <node concept="3TrcHB" id="d$zdnvExiJ" role="2OqNvi">
@@ -2450,7 +2450,7 @@
                       <node concept="3clFbF" id="7prurfRB4oE" role="3cqZAp">
                         <node concept="2OqwBi" id="7prurfRB4o_" role="3clFbG">
                           <node concept="3Tsc0h" id="7prurfRB4oC" role="2OqNvi">
-                            <ref role="3TtcxE" to="tp5g:hHSKRN6" />
+                            <ref role="3TtcxE" to="tp5g:hHSKRN6" resolve="nodesToCheck" />
                           </node>
                           <node concept="30H73N" id="7prurfRB4oD" role="2Oq$k0" />
                         </node>
@@ -2486,7 +2486,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="7prurfRAGDV" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="2tJIrI" id="BYb1OG0SBz" role="jymVt" />
@@ -4725,7 +4725,7 @@
                 <node concept="2OqwBi" id="62XJ9UeMacG" role="3clFbG">
                   <node concept="2ShNRf" id="62XJ9UeLZT9" role="2Oq$k0">
                     <node concept="1pGfFk" id="62XJ9UeLZTa" role="2ShVmc">
-                      <ref role="37wK5l" to="tp6m:Bszh9vWh3Z" />
+                      <ref role="37wK5l" to="tp6m:Bszh9vWh3Z" resolve="CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable" />
                       <node concept="10Nm6u" id="7OB8Y3vVqTx" role="37wK5m" />
                       <node concept="10Nm6u" id="7OB8Y3vVr2s" role="37wK5m" />
                       <node concept="10Nm6u" id="2yX5aRb59UD" role="37wK5m" />

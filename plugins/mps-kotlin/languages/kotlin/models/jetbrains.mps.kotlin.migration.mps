@@ -4577,7 +4577,7 @@
                             <node concept="2OqwBi" id="3sYZzPj0SzH" role="2Oq$k0">
                               <node concept="2OqwBi" id="3sYZzPj0R63" role="2Oq$k0">
                                 <node concept="37vLTw" id="5$a7_0Dg8wC" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="5$a7_0Dg8w$" resolve="replaceWithNew" />
+                                  <ref role="3cqZAo" node="5$a7_0Dg8w$" resolve="newReceiverType" />
                                 </node>
                                 <node concept="3TrEf2" id="3sYZzPj0RJN" role="2OqNvi">
                                   <ref role="3Tt5mk" to="hcm8:2yYXHtl6Jz0" resolve="type" />

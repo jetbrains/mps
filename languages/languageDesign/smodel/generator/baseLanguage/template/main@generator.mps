@@ -19097,14 +19097,14 @@
                         <node concept="1eOMI4" id="2nIYwg$7GeJ" role="2Oq$k0">
                           <node concept="10QFUN" id="2nIYwg$7GeK" role="1eOMHV">
                             <node concept="3uibUv" id="2nIYwg$7GeL" role="10QFUM">
-                              <ref role="3uigEE" to="w1kc:~SNodeId$Regular" resolve="Regular" />
+                              <ref role="3uigEE" to="w1kc:~SNodeId$Regular" resolve="SNodeId.Regular" />
                             </node>
                             <node concept="2OqwBi" id="2nIYwg$7GeM" role="10QFUP">
                               <node concept="2JrnkZ" id="2nIYwg$7GeN" role="2Oq$k0">
                                 <node concept="2OqwBi" id="2nIYwg$7GeO" role="2JrQYb">
                                   <node concept="30H73N" id="2nIYwg$7GeP" role="2Oq$k0" />
                                   <node concept="3TrEf2" id="2nIYwg$7GeQ" role="2OqNvi">
-                                    <ref role="3Tt5mk" to="tp25:i3HdYqi" />
+                                    <ref role="3Tt5mk" to="tp25:i3HdYqi" resolve="member" />
                                   </node>
                                 </node>
                               </node>
@@ -20109,7 +20109,7 @@
                     <node concept="1eOMI4" id="2nIYwg$7iWw" role="2Oq$k0">
                       <node concept="10QFUN" id="2nIYwg$7iWt" role="1eOMHV">
                         <node concept="3uibUv" id="2nIYwg$7j9G" role="10QFUM">
-                          <ref role="3uigEE" to="w1kc:~SNodeId$Regular" resolve="Regular" />
+                          <ref role="3uigEE" to="w1kc:~SNodeId$Regular" resolve="SNodeId.Regular" />
                         </node>
                         <node concept="2OqwBi" id="2nIYwg$7fCq" role="10QFUP">
                           <node concept="2JrnkZ" id="2nIYwg$7hjo" role="2Oq$k0">
@@ -24315,12 +24315,12 @@
                         <node concept="2OqwBi" id="6M4GgamnVxV" role="3clFbG">
                           <node concept="2OqwBi" id="6M4GgamnVxW" role="2Oq$k0">
                             <node concept="3Tsc0h" id="6M4GgamnVxX" role="2OqNvi">
-                              <ref role="3TtcxE" to="tp25:28aPEVv7XeR" />
+                              <ref role="3TtcxE" to="tp25:28aPEVv7XeR" resolve="cases" />
                             </node>
                             <node concept="30H73N" id="6M4GgamnVxY" role="2Oq$k0" />
                           </node>
                           <node concept="13MTOL" id="6M4GgamnVxZ" role="2OqNvi">
-                            <ref role="13MTZf" to="tp25:28aPEVv7nn$" />
+                            <ref role="13MTZf" to="tp25:28aPEVv7nn$" resolve="members" />
                           </node>
                         </node>
                       </node>

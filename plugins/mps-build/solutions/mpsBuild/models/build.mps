@@ -29861,7 +29861,7 @@
           <ref role="3_I8Xa" node="6jDaT$jlWWW" resolve="mps-junit5" />
         </node>
         <node concept="3_I8Xc" id="5wzCg4BNp52" role="39821P">
-          <ref role="3_I8Xa" node="6jDaT$jlXhe" />
+          <ref role="3_I8Xa" node="6jDaT$jlXhe" resolve="mps-testing" />
         </node>
         <node concept="3ygNvl" id="2BofZ0XdM8N" role="39821P">
           <ref role="3ygNvj" node="6pse5qHNfTZ" />
@@ -39234,7 +39234,7 @@
         <ref role="m$_y1" node="ymnOULATpW" resolve="jetbrains.mps.testing" />
       </node>
       <node concept="m$_yC" id="6jDaT$jlXs1" role="m$_yJ">
-        <ref role="m$_y1" node="6jDaT$jlVJY" />
+        <ref role="m$_y1" node="6jDaT$jlVJY" resolve="jetbrains.mps.junit5" />
       </node>
       <node concept="m$_yC" id="1KavJoHpdE7" role="m$_yJ">
         <ref role="m$_y1" node="5HVSRHdVm9a" resolve="jetbrains.mps.build" />
@@ -46747,7 +46747,7 @@
         <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
       </node>
       <node concept="m$_yC" id="6jDaT$jlW3o" role="m$_yJ">
-        <ref role="m$_y1" node="6jDaT$jlVJY" />
+        <ref role="m$_y1" node="6jDaT$jlVJY" resolve="jetbrains.mps.junit5" />
       </node>
       <node concept="m$f5U" id="ymnOULB62Z" role="m$_yh">
         <ref role="m$f5T" node="ymnOULAU0i" resolve="baseLanguage" />
@@ -46840,7 +46840,7 @@
         <node concept="pUk6x" id="6jDaT$jlXjp" role="pUk7w" />
       </node>
       <node concept="m$_wl" id="6jDaT$jlWWW" role="39821P">
-        <ref role="m_rDy" node="6jDaT$jlVJY" />
+        <ref role="m_rDy" node="6jDaT$jlVJY" resolve="jetbrains.mps.junit5" />
         <node concept="pUk6x" id="6jDaT$jlX03" role="pUk7w" />
         <node concept="398223" id="6jDaT$jlWZ6" role="39821P">
           <node concept="2HvfSZ" id="4MVYzzgm$2O" role="39821P">

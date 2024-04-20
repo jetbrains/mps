@@ -8707,7 +8707,7 @@
                             <node concept="2OqwBi" id="52$arCgNdmQ" role="2Oq$k0">
                               <node concept="30H73N" id="52$arCgNdmR" role="2Oq$k0" />
                               <node concept="3Tsc0h" id="52$arCgNdmS" role="2OqNvi">
-                                <ref role="3TtcxE" to="3ior:6qcrfIJFdLy" />
+                                <ref role="3TtcxE" to="3ior:6qcrfIJFdLy" resolve="sources" />
                               </node>
                             </node>
                             <node concept="v3k3i" id="52$arCgNdmT" role="2OqNvi">
@@ -8735,11 +8735,11 @@
                                           <ref role="3cqZAo" node="52$arCgNdn8" resolve="it" />
                                         </node>
                                         <node concept="3TrEf2" id="52$arCgNdn6" role="2OqNvi">
-                                          <ref role="3Tt5mk" to="3ior:1jjYQYSi0y3" />
+                                          <ref role="3Tt5mk" to="3ior:1jjYQYSi0y3" resolve="resset" />
                                         </node>
                                       </node>
                                       <node concept="3TrEf2" id="52$arCgNdn7" role="2OqNvi">
-                                        <ref role="3Tt5mk" to="3ior:1ZTcb8AgV40" />
+                                        <ref role="3Tt5mk" to="3ior:1ZTcb8AgV40" resolve="path" />
                                       </node>
                                     </node>
                                   </node>
@@ -8769,7 +8769,7 @@
                                 <node concept="2OqwBi" id="52$arCgNdni" role="2Oq$k0">
                                   <node concept="30H73N" id="52$arCgNdnj" role="2Oq$k0" />
                                   <node concept="3Tsc0h" id="52$arCgNdnk" role="2OqNvi">
-                                    <ref role="3TtcxE" to="3ior:6qcrfIJFdLy" />
+                                    <ref role="3TtcxE" to="3ior:6qcrfIJFdLy" resolve="sources" />
                                   </node>
                                 </node>
                                 <node concept="v3k3i" id="52$arCgNdnl" role="2OqNvi">
@@ -8799,7 +8799,7 @@
                                               <ref role="3cqZAo" node="52$arCgNdoa" resolve="it" />
                                             </node>
                                             <node concept="3TrEf2" id="52$arCgNdnz" role="2OqNvi">
-                                              <ref role="3Tt5mk" to="3ior:6qcrfIJFdLj" />
+                                              <ref role="3Tt5mk" to="3ior:6qcrfIJFdLj" resolve="basePath" />
                                             </node>
                                           </node>
                                         </node>
@@ -8813,7 +8813,7 @@
                                               <ref role="3cqZAo" node="52$arCgNdoa" resolve="it" />
                                             </node>
                                             <node concept="3Tsc0h" id="52$arCgNdnD" role="2OqNvi">
-                                              <ref role="3TtcxE" to="3ior:2oUTXgL_krd" />
+                                              <ref role="3TtcxE" to="3ior:2oUTXgL_krd" resolve="folders" />
                                             </node>
                                           </node>
                                           <node concept="3zZkjj" id="52$arCgNdnE" role="2OqNvi">

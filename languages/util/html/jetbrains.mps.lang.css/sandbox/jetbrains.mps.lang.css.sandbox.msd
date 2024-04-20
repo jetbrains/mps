@@ -6,7 +6,7 @@
     </modelRoot>
   </models>
   <facets>
-    <facet folders="true" type="plaintext" />
+    <facet type="plaintext" folders="true" />
   </facets>
   <languageVersions>
     <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="2" />

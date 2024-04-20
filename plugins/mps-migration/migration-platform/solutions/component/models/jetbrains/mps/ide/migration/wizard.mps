@@ -2406,7 +2406,7 @@
             <node concept="liA8E" id="48WE3HczBUF" role="2OqNvi">
               <ref role="37wK5l" to="dxuu:~JComponent.setBorder(javax.swing.border.Border)" resolve="setBorder" />
               <node concept="37vLTw" id="4C8_WzCBne_" role="37wK5m">
-                <ref role="3cqZAo" node="4C8_WzCBnex" resolve="createTitledBorder" />
+                <ref role="3cqZAo" node="4C8_WzCBnex" resolve="border" />
               </node>
             </node>
           </node>

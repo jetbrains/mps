@@ -767,7 +767,7 @@
     <node concept="1QGGSu" id="6tW99mzV1pQ" role="1bitO_">
       <node concept="10M0yZ" id="4CNhY$tqa4q" role="3xaMm5">
         <ref role="3cqZAo" to="l7us:~MPSIcons$Ant.Build" resolve="Build" />
-        <ref role="1PxDUh" to="l7us:~MPSIcons$Ant" resolve="Ant" />
+        <ref role="1PxDUh" to="l7us:~MPSIcons$Ant" resolve="MPSIcons.Ant" />
       </node>
     </node>
   </node>

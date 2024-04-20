@@ -51418,7 +51418,7 @@
                 <node concept="2OqwBi" id="7fGiXOOivbT" role="33vP2m">
                   <node concept="2WthIp" id="7fGiXOOivbW" role="2Oq$k0" />
                   <node concept="2XshWL" id="7fGiXOOivbY" role="2OqNvi">
-                    <ref role="2WH_rO" node="7fGiXOOiqll" resolve="parseHexNumericValue" />
+                    <ref role="2WH_rO" node="7fGiXOOiqll" resolve="parseHexIntegerValue" />
                     <node concept="ub8z3" id="7fGiXOOivgB" role="2XxRq1" />
                   </node>
                 </node>
@@ -51606,7 +51606,7 @@
               <node concept="2OqwBi" id="7fGiXOOiuUg" role="33vP2m">
                 <node concept="2WthIp" id="7fGiXOOiuUj" role="2Oq$k0" />
                 <node concept="2XshWL" id="7fGiXOOiuUl" role="2OqNvi">
-                  <ref role="2WH_rO" node="7fGiXOOiqll" resolve="parseHexNumericValue" />
+                  <ref role="2WH_rO" node="7fGiXOOiqll" resolve="parseHexIntegerValue" />
                   <node concept="ub8z3" id="7fGiXOOiuZe" role="2XxRq1" />
                 </node>
               </node>

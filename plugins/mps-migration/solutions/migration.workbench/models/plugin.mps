@@ -10017,7 +10017,7 @@
                                 <node concept="2ShNRf" id="4izbKSkkpoW" role="2Oq$k0">
                                   <node concept="1pGfFk" id="4izbKSkkpoX" role="2ShVmc">
                                     <property role="373rjd" value="true" />
-                                    <ref role="37wK5l" to="fn29:2O5mK2f2Efu" />
+                                    <ref role="37wK5l" to="fn29:2O5mK2f2Efu" resolve="ModelsToResources" />
                                     <node concept="37vLTw" id="4izbKSkkpoY" role="37wK5m">
                                       <ref role="3cqZAo" node="6Va2kqwD0h5" resolve="modelsToBuild" />
                                     </node>
@@ -10274,12 +10274,12 @@
                                                 <property role="TrG5h" value="session" />
                                                 <node concept="2ShNRf" id="1AfPmE4ty$5" role="33vP2m">
                                                   <node concept="1pGfFk" id="6xMoDGgBDHp" role="2ShVmc">
-                                                    <ref role="37wK5l" to="hfuk:2BjwmTxT7Q7" />
+                                                    <ref role="37wK5l" to="hfuk:2BjwmTxT7Q7" resolve="MakeSession" />
                                                     <node concept="37vLTw" id="5FAP3BJU$qn" role="37wK5m">
                                                       <ref role="3cqZAo" node="5FAP3BJUsz9" resolve="mpsProject" />
                                                     </node>
                                                     <node concept="37vLTw" id="4izbKSkqP0X" role="37wK5m">
-                                                      <ref role="3cqZAo" node="4izbKSkqP0T" resolve="handler" />
+                                                      <ref role="3cqZAo" node="4izbKSkqP0T" resolve="msgHandler" />
                                                     </node>
                                                     <node concept="3clFbT" id="6c0jH7RCEkR" role="37wK5m">
                                                       <property role="3clFbU" value="true" />
@@ -10365,7 +10365,7 @@
                                                           <ref role="3cqZAo" node="1AfPmE4ty$3" resolve="session" />
                                                         </node>
                                                         <node concept="37vLTw" id="4izbKSkndMk" role="37wK5m">
-                                                          <ref role="3cqZAo" node="7tZeFupJF6F" resolve="inputRes" />
+                                                          <ref role="3cqZAo" node="7tZeFupJF6F" resolve="ir" />
                                                         </node>
                                                       </node>
                                                     </node>

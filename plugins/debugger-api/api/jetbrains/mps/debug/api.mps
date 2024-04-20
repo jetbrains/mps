@@ -1509,17 +1509,17 @@
           <property role="Xl_RC" value="Debug Session" />
         </node>
         <node concept="3VsKOn" id="1Va1nD_ddPQ" role="37wK5m">
-          <ref role="3VsUkX" node="3SnNvqCaJmD" resolve="DebugSessionListener" />
+          <ref role="3VsUkX" node="3SnNvqCaJmD" resolve="DebugSessionManagerComponent.DebugSessionListener" />
         </node>
       </node>
       <node concept="3uibUv" id="1Va1nD_cVjW" role="1tU5fm">
         <ref role="3uigEE" to="4b2m:~Topic" resolve="Topic" />
         <node concept="3uibUv" id="1Va1nD_cVya" role="11_B2D">
-          <ref role="3uigEE" node="3SnNvqCaJmD" resolve="DebugSessionListener" />
+          <ref role="3uigEE" node="3SnNvqCaJmD" resolve="DebugSessionManagerComponent.DebugSessionListener" />
         </node>
       </node>
       <node concept="2AHcQZ" id="1Va1nD_fY8p" role="2AJF6D">
-        <ref role="2AI5Lk" to="4b2m:~Topic$ProjectLevel" resolve="ProjectLevel" />
+        <ref role="2AI5Lk" to="4b2m:~Topic$ProjectLevel" resolve="Topic.ProjectLevel" />
       </node>
     </node>
     <node concept="2tJIrI" id="1Va1nD_d5G4" role="jymVt" />
@@ -1564,13 +1564,13 @@
         <ref role="37wK5l" to="9w4s:~EventDispatcher.create(java.lang.Class)" resolve="create" />
         <ref role="1Pybhc" to="9w4s:~EventDispatcher" resolve="EventDispatcher" />
         <node concept="3VsKOn" id="1Va1nD_eKgk" role="37wK5m">
-          <ref role="3VsUkX" node="3SnNvqCaJmD" resolve="DebugSessionListener" />
+          <ref role="3VsUkX" node="3SnNvqCaJmD" resolve="DebugSessionManagerComponent.DebugSessionListener" />
         </node>
       </node>
       <node concept="3uibUv" id="1Va1nD_eJ8w" role="1tU5fm">
         <ref role="3uigEE" to="9w4s:~EventDispatcher" resolve="EventDispatcher" />
         <node concept="3uibUv" id="1Va1nD_eJTe" role="11_B2D">
-          <ref role="3uigEE" node="3SnNvqCaJmD" resolve="DebugSessionListener" />
+          <ref role="3uigEE" node="3SnNvqCaJmD" resolve="DebugSessionManagerComponent.DebugSessionListener" />
         </node>
       </node>
     </node>
@@ -1960,7 +1960,7 @@
     <node concept="3clFb_" id="1Va1nD_djAT" role="jymVt">
       <property role="TrG5h" value="getEventPublisher" />
       <node concept="3uibUv" id="1Va1nD_dntM" role="3clF45">
-        <ref role="3uigEE" node="3SnNvqCaJmD" resolve="DebugSessionListener" />
+        <ref role="3uigEE" node="3SnNvqCaJmD" resolve="DebugSessionManagerComponent.DebugSessionListener" />
       </node>
       <node concept="3Tm1VV" id="1Va1nD_djAW" role="1B3o_S" />
       <node concept="3clFbS" id="1Va1nD_djAX" role="3clF47">
@@ -5110,7 +5110,7 @@
             <node concept="2ShNRf" id="2KxF7SEuZT2" role="37vLTx">
               <node concept="1pGfFk" id="2KxF7SEv1Yg" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" node="3SnNvqCbyD1" />
+                <ref role="37wK5l" node="3SnNvqCbyD1" resolve="BreakpointManagerComponent.MyBreakpointsIO" />
                 <node concept="37vLTw" id="2KxF7SEv3RJ" role="37wK5m">
                   <ref role="3cqZAo" node="2KxF7SEv2LE" resolve="ideaProject" />
                 </node>
@@ -5144,7 +5144,7 @@
             <node concept="2ShNRf" id="2KxF7SEsYpQ" role="37vLTx">
               <node concept="1pGfFk" id="2KxF7SEtfgv" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" node="3SnNvqCaJKq" />
+                <ref role="37wK5l" node="3SnNvqCaJKq" resolve="BreakpointManagerComponent.DummyIO" />
               </node>
             </node>
           </node>
@@ -7134,7 +7134,7 @@
       <node concept="2tJIrI" id="2KxF7SEusdr" role="jymVt" />
       <node concept="3Tm6S6" id="3SnNvqCbyCZ" role="1B3o_S" />
       <node concept="3uibUv" id="3SnNvqCbyD0" role="EKbjA">
-        <ref role="3uigEE" node="3SnNvqCaJKb" resolve="IBreakpointsIO" />
+        <ref role="3uigEE" node="3SnNvqCaJKb" resolve="BreakpointManagerComponent.IBreakpointsIO" />
       </node>
       <node concept="312cEg" id="3p4anUxIn5k" role="jymVt">
         <property role="TrG5h" value="myProject" />

@@ -62,7 +62,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
@@ -126,7 +126,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
         <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
@@ -189,7 +189,7 @@
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
         <child id="4972241301747169160" name="typeArgument" index="3PaCim" />
@@ -223,7 +223,7 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -305,7 +305,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -1554,7 +1554,7 @@
               <property role="TrG5h" value="ex" />
               <node concept="nSUau" id="72FoXGcrqJ0" role="1tU5fm">
                 <node concept="3uibUv" id="72FoXGcruoK" role="nSUat">
-                  <ref role="3uigEE" node="72FoXGcqDfr" resolve="BuildFailureException" />
+                  <ref role="3uigEE" node="72FoXGcqDfr" resolve="WorkerBase.BuildFailureException" />
                 </node>
               </node>
             </node>
@@ -1947,7 +1947,7 @@
             <node concept="YS8fn" id="KL8Aqlj5r9" role="3cqZAp">
               <node concept="2ShNRf" id="KL8Aqlj5ra" role="YScLw">
                 <node concept="1pGfFk" id="6ABb3DqLlTf" role="2ShVmc">
-                  <ref role="37wK5l" node="72FoXGcqNgl" />
+                  <ref role="37wK5l" node="72FoXGcqNgl" resolve="WorkerBase.BuildFailureException" />
                   <node concept="2OqwBi" id="KL8Aqlj5rc" role="37wK5m">
                     <node concept="2OqwBi" id="KL8Aqlj5rd" role="2Oq$k0">
                       <node concept="Xjq3P" id="KL8Aqlj5re" role="2Oq$k0" />
@@ -3029,7 +3029,7 @@
           <node concept="3clFbF" id="72FoXGcqO0z" role="3cqZAp">
             <node concept="37vLTI" id="72FoXGcqO0_" role="3clFbG">
               <node concept="37vLTw" id="72FoXGcqO0C" role="37vLTJ">
-                <ref role="3cqZAo" node="72FoXGcqO0v" resolve="mySystemExitCode" />
+                <ref role="3cqZAo" node="72FoXGcqO0v" resolve="myExitCode" />
               </node>
               <node concept="37vLTw" id="72FoXGcqO0D" role="37vLTx">
                 <ref role="3cqZAo" node="72FoXGcqNvI" resolve="systemExitCode" />

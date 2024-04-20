@@ -3089,7 +3089,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="oR0qGlMTCs" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="oR0qGlMU_j" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
           <node concept="Xl_RD" id="oR0qGlMUFW" role="2B70Vg">
@@ -3192,7 +3192,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="oR0qGlL5vt" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="oR0qGlL6tH" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="oR0qGlL6Qt" role="2B70Vg">
@@ -3420,7 +3420,7 @@
             <node concept="2ShNRf" id="7pMXX1aLqxy" role="33vP2m">
               <node concept="1pGfFk" id="7pMXX1aLqxz" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" node="7pMXX1aJMxT" />
+                <ref role="37wK5l" node="7pMXX1aJMxT" resolve="ModelImportsCheck" />
                 <node concept="37vLTw" id="7pMXX1aLqx$" role="37wK5m">
                   <ref role="3cqZAo" node="2qqFBg4MWnC" resolve="mpsProject" />
                 </node>
@@ -3477,7 +3477,7 @@
             </node>
           </node>
           <node concept="37vLTw" id="7pMXX1aNbAm" role="3clFbw">
-            <ref role="3cqZAo" node="7pMXX1aNbA8" resolve="computeReadAction" />
+            <ref role="3cqZAo" node="7pMXX1aNbA8" resolve="satisfied" />
           </node>
         </node>
         <node concept="3clFbH" id="6Y2_N09sMxw" role="3cqZAp" />
@@ -7221,7 +7221,7 @@
         <node concept="3clFbF" id="7pMXX1aKGp6" role="3cqZAp">
           <node concept="37vLTI" id="7pMXX1aKGp8" role="3clFbG">
             <node concept="37vLTw" id="7pMXX1aKGpb" role="37vLTJ">
-              <ref role="3cqZAo" node="7pMXX1aKGp2" resolve="myMpsProject" />
+              <ref role="3cqZAo" node="7pMXX1aKGp2" resolve="myProject" />
             </node>
             <node concept="37vLTw" id="7pMXX1aKGpc" role="37vLTx">
               <ref role="3cqZAo" node="7pMXX1aJN0D" resolve="mpsProject" />
@@ -7249,7 +7249,7 @@
               </node>
             </node>
             <node concept="37vLTw" id="7pMXX1aM1UQ" role="37vLTJ">
-              <ref role="3cqZAo" node="7pMXX1aM5UM" resolve="additionalLanguages" />
+              <ref role="3cqZAo" node="7pMXX1aM5UM" resolve="myAdditionalLanguages" />
             </node>
           </node>
         </node>
@@ -7264,7 +7264,7 @@
               </node>
             </node>
             <node concept="37vLTw" id="7pMXX1aM7h5" role="37vLTJ">
-              <ref role="3cqZAo" node="7pMXX1aMbeN" resolve="additionalModels" />
+              <ref role="3cqZAo" node="7pMXX1aMbeN" resolve="myAdditionalModels" />
             </node>
           </node>
         </node>
@@ -7993,7 +7993,7 @@
         <node concept="3clFbF" id="7pMXX1aNqEm" role="3cqZAp">
           <node concept="2ShNRf" id="1yqHBnusoc$" role="3clFbG">
             <node concept="1pGfFk" id="1yqHBnusoc_" role="2ShVmc">
-              <ref role="37wK5l" node="5glnhittf4G" />
+              <ref role="37wK5l" node="5glnhittf4G" resolve="AddRequiredImportsDialog" />
               <node concept="37vLTw" id="5_gUK3iElX_" role="37wK5m">
                 <ref role="3cqZAo" node="7pMXX1aKGp2" resolve="myProject" />
               </node>
