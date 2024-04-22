@@ -10,8 +10,12 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.Producer;
 import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.errors.MessageStatus;
+import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.errors.item.ModelReportItem;
+import jetbrains.mps.errors.item.ModelReportItemBase;
 import jetbrains.mps.errors.item.ModuleReportItem;
+import jetbrains.mps.errors.item.ModuleReportItemBase;
 import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.generator.ModelGenerationStatusListener;
@@ -184,29 +188,49 @@ import java.util.function.Predicate;
     return event;
   }
 
-  private static void addValidationMessages(SModule module, List<ModuleReportItem> messages) {
-    ValidationUtil.validateModule(module, messages::add);
-  }
-
   private static void addValidationMessages(SModel model, List<ModelReportItem> messages, Producer<ComponentHost> getPlatform) {
     final ModelValidator modelValidator = new ModelValidator(getPlatform.produce(), model);
     modelValidator.skipUnlessLoaded(); // no reason to load all the models unless user gets to one  (sic!)
-    modelValidator.validate(messages::add, new EmptyProgressMonitor());
+    try {
+      modelValidator.validate(messages::add, new EmptyProgressMonitor());
+    } catch (RuntimeException e) {
+      LOG.debug(e);
+      messages.add(new ModelExceptionError(model.getReference(), e));
+    }
+  }
+
+  private static void addValidationMessages(SModule module, List<ModuleReportItem> messages) {
+    try {
+      ValidationUtil.validateModule(module, messages::add);
+    } catch (RuntimeException e) {
+      LOG.debug(e);
+      messages.add(new ModuleExceptionError(module.getModuleReference(), e));
+    }
+  }
+
+  private static void addGenerationStatusMessages(SModel model, List<ModelReportItem> messages, Predicate<SModel> generationRequired) {
+    try {
+      GenerationStatus generationStatus = GenerationStatusUtil.getGenerationStatus(model, generationRequired);
+      if (generationStatus != GenerationStatus.NOT_REQUIRED) {
+        messages.add(new ModelInplaceComment(model.getReference(), generationStatus));
+      }
+    } catch (RuntimeException e) {
+      LOG.debug(e);
+      messages.add(new ModelExceptionError(model.getReference(), e));
+    }
   }
 
   private static void addGenerationStatusMessages(SModule module, List<ModuleReportItem> messages, Predicate<SModel> generationRequired) {
     if (module instanceof TempModule || module instanceof TempModule2) return;
     if (!(module instanceof EditableSModule) || module.isReadOnly() || module.isPackaged()) return;
-    GenerationStatus generationStatus = GenerationStatusUtil.getGenerationStatus(module, generationRequired);
-    if (generationStatus != GenerationStatus.NOT_REQUIRED) {
-      messages.add(new ModuleInplaceComment(module.getModuleReference(), generationStatus));
-    }
-  }
-
-  private static void addGenerationStatusMessages(SModel model, List<ModelReportItem> messages, Predicate<SModel> generationRequired) {
-    GenerationStatus generationStatus = GenerationStatusUtil.getGenerationStatus(model, generationRequired);
-    if (generationStatus != GenerationStatus.NOT_REQUIRED) {
-      messages.add(new ModelInplaceComment(model.getReference(), generationStatus));
+    try {
+      GenerationStatus generationStatus = GenerationStatusUtil.getGenerationStatus(module, generationRequired);
+      if (generationStatus != GenerationStatus.NOT_REQUIRED) {
+        messages.add(new ModuleInplaceComment(module.getModuleReference(), generationStatus));
+      }
+    } catch (RuntimeException e) {
+      LOG.debug(e);
+      messages.add(new ModuleExceptionError(module.getModuleReference(), e));
     }
   }
 
@@ -230,19 +254,42 @@ import java.util.function.Predicate;
     forAllModulesInProject(module -> enqueueUpdate(module, Update::check));
   }
 
-  void enqueueUpdate(SModel model, Function<? super Update, ? extends Update> updateFun) {
+  private void enqueueUpdate(SModel model, Function<? super Update, ? extends Update> updateFun) {
     SObject sObject = SObject.of(model);
     myUpdateCardinality.computeIfAbsent(sObject, __ -> new AtomicInteger(0)).incrementAndGet();
     myUpdatesQueue.add(updateFun.apply(new Update(sObject)));
   }
 
-  void enqueueUpdate(SModule module, Function<? super Update, ? extends Update> updateFun) {
+  private void enqueueUpdate(SModule module, Function<? super Update, ? extends Update> updateFun) {
     SObject sObject = SObject.of(module);
     if (module instanceof AbstractModule) {
       cacheModuleReference(((AbstractModule) module).getDescriptorFile(), module.getModuleReference());
     }
     myUpdateCardinality.computeIfAbsent(sObject, __ -> new AtomicInteger(0)).incrementAndGet();
     myUpdatesQueue.add(updateFun.apply(new Update(sObject)));
+  }
+
+  protected static class ModelExceptionError extends ModelReportItemBase {
+    protected ModelExceptionError(SModelReference model, Exception ex) {
+      super(MessageStatus.ERROR, model, ex.toString());
+    }
+
+    @Override
+    public IssueKindReportItem.ItemKind getIssueKind() {
+      return IssueKindReportItem.MODEL_PROPERTIES.deriveItemKind("exception");
+    }
+  }
+
+  protected static class ModuleExceptionError extends ModuleReportItemBase {
+    protected ModuleExceptionError(SModuleReference module, Exception ex) {
+      super(MessageStatus.ERROR, module, ex.toString());
+    }
+
+    @Override
+    public IssueKindReportItem.ItemKind getIssueKind() {
+      // see CancelForModel#getIssueKind for whine and frustration
+      return IssueKindReportItem.MODULE_PROPERTIES.deriveItemKind("exception");
+    }
   }
 
   protected static class Update {
