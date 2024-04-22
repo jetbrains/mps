@@ -61,6 +61,7 @@ public abstract class ReferenceInfo {
     // source to decide what to include there - it looks resolveInfo always comes as a result of a query to another node (i.e. not manually constructed),
     // and thus we don't need to introduce anything extra here.
     final DRI dr = new DRI(ref.getSourceNode(), ref.getLink(), resolveInfo, origin);
+    // XXX Could have use ResolveInfo.of(resolveInfo) when origin == null, but need to refactor registerDynamicReference() first
     ref.getGenerator().registerDynamicReference(dr);
     return dr;
   }
@@ -110,6 +111,7 @@ public abstract class ReferenceInfo {
       if (myOrigin != null) {
         return DynamicReference.create(link, source, myResolveInfo, myOrigin);
       } else {
+        //noinspection removal
         return DynamicReference.createDynamicReference(link, source, null, myResolveInfo);
       }
     }

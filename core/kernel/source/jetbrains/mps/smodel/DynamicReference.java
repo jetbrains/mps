@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,14 +72,9 @@ public final class DynamicReference extends SReferenceBase {
   };
 
   /**
-   * @deprecated Use {@link SNode#setReference(SReferenceLink, ResolveInfo)} instead, or {@link #createDynamicReference(SReferenceLink, SNode, String, String)}
-   *             if DynamicReferenceOrigin is necessary
+   * @deprecated Use {@link SNode#setReference(SReferenceLink, ResolveInfo)} instead, with {@link ResolveInfo#of(String)}
    */
-  @Deprecated(forRemoval = true, since = "2022.2")
-  public DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable SModelReference targetModelReference, String resolveInfo) {
-    this(role, sourceNode, new DynamicPtr(resolveInfo));
-  }
-
+  @Deprecated(forRemoval = true, since = "2024.1")
   public static DynamicReference createDynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable String modelName, String resolveInfo) {
     return new DynamicReference(role, sourceNode, new DynamicPtr(resolveInfo));
   }
