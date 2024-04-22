@@ -15,9 +15,9 @@ public interface Box<T> {
   }
 
   default Reference<T> asReference() {
-    new Reference<T>() {
+    return new Reference<T>() {
       public T get() {
-        Box.this.getValue();
+        return Box.this.getValue();
       }
       public void set(T t) {
         Box.this.setValue(t);
