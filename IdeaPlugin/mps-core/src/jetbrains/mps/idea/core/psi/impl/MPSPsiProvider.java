@@ -280,18 +280,12 @@ public class MPSPsiProvider implements Disposable {
         return new ReloadableModel() {
           @Override
           public void reload(SNodeId sNodeId) {
-            MPSPsiNode oldPsiNode = psiModel.lookupNode(sNodeId);
-            if (oldPsiNode != null && psiModel.isRoot(oldPsiNode)) {
-              // sNodeId corresponds to root node
-              save(psiModel);
-            }
             MPSPsiNode psiNode = psiModel.reload(sNodeId);
             notifyPsiChanged(psiModel, psiNode);
           }
 
           @Override
           public void reloadAll() {
-            save(psiModel);
             psiModel.reloadAll();
             notifyPsiChanged(psiModel, null);
           }
