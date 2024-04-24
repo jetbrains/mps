@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.project;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
+import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
 import com.intellij.openapi.vfs.VfsUtil;
@@ -66,11 +67,6 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
     final ProjectRepository repo = new ProjectRepository(this, extRepo, registry, projectMA);
     repo.init();
     initRepository(repo);
-  }
-
-  @Override
-  public void initComponent() {
-    update();
   }
 
   public void disposeComponent() {

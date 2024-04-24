@@ -260,9 +260,17 @@ public abstract class ProjectBase extends Project {
    */
   @Hack
   protected final void loadModules(@NotNull Collection<ModulePath> modulePaths) {
+    // FIXME present approach is unfortunate, as it's impossible to split module discovery (ModulesMiner for a path, and even up to SModule instantiation)
+    //       from its registration in a project/its repo. First step could be initiated in parallel with project startup and done in non-UI thread. Even
+    //       actual registration of the modules could be done in a project repo write w/o EDT access. It's only UI update that MAY (not necessarily SHALL)
+    //       require EDT (with new project model, perhaps, even this might be no longer a requirement).
     myModuleLoader.updatePathsInProject(modulePaths);
   }
 
+  /**
+   * @deprecated onModuleLoad() is about to cease existence, and an independent event dispatch for AM (in addition to that of SRepository) is plain wrong anyway
+   */
+  @Deprecated (forRemoval = true, since = "2024.1")
   @Hack
   protected final void fireModulesLoaded() {
     getModelAccess().checkWriteAccess();
@@ -281,6 +289,7 @@ public abstract class ProjectBase extends Project {
    */
   public final void projectOpened() {
     LOG.info("Project '" + getName() + "' is opened");
+    update();
     myProjectManager.projectOpened(this);
   }
 
