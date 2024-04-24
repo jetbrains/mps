@@ -57,6 +57,7 @@ import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDragSource;
 import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDropTarget;
 import jetbrains.mps.ide.projectView.MPSProjectViewState;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
+import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
@@ -411,8 +412,12 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     if (module instanceof AbstractModule) {
       IFile descriptorFile = ((AbstractModule) module).getDescriptorFile();
       if (descriptorFile != null) {
-        FileSystemBridge fileSystem = ProjectHelper.fromIdeaProject(myProject).getFileSystem();
-        createSelectInTarget().selectIn(new MySelectInContext(fileSystem.asVirtualFile(descriptorFile)), autofocus);
+        VirtualFile virtualFile = getVirtualFile(descriptorFile);
+        if (virtualFile != null) {
+          createSelectInTarget().selectIn(new MySelectInContext(virtualFile), autofocus);
+        }  else {
+          LOG.warning("unable to select module corresponding to path: "+descriptorFile.getPath());
+        }
       }
     }
   }
@@ -424,8 +429,12 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
       ds.getAffectedFiles().stream()
         .findFirst()
         .ifPresent(file -> {
-          FileSystemBridge fileSystem = ProjectHelper.fromIdeaProject(myProject).getFileSystem();
-          createSelectInTarget().selectIn(new MySelectInContext(fileSystem.asVirtualFile(file)), autofocus);
+          VirtualFile virtualFile = getVirtualFile(file);
+          if (virtualFile != null) {
+            createSelectInTarget().selectIn(new MySelectInContext(virtualFile), autofocus);
+          } else {
+            LOG.warning("unable to select model corresponding to path: "+file.getPath());
+          }
         });
     }
   }
@@ -472,6 +481,20 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
         wrapper.run();
       }
     }
+  }
+
+  @SuppressWarnings("removal")
+  @Nullable
+  private VirtualFile getVirtualFile(IFile descriptorFile) {
+    IdeaFileSystem fileSystem = ProjectHelper.fromIdeaProject(myProject).getFileSystem();
+    VirtualFile virtualFile = fileSystem.asVirtualFile(descriptorFile);
+    if (virtualFile == null) {
+      IdeaFile ideaFile = fileSystem.getFile(descriptorFile.getPath());
+      if (ideaFile != null) {
+        virtualFile = ideaFile.getVirtualFile();
+      }
+    }
+    return virtualFile;
   }
 
   @Deprecated(forRemoval = true)

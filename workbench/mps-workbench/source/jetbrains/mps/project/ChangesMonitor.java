@@ -25,6 +25,7 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.validation.ModelValidator;
 import jetbrains.mps.project.validation.ValidationUtil;
+import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.smodel.SModelAdapter;
 import jetbrains.mps.smodel.SModelInternal;
@@ -32,7 +33,10 @@ import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TempModule2;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.QualifiedPath;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -84,6 +88,7 @@ import java.util.function.Predicate;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
     forAllModulesInProject(this::registerListener);
     enqueueAllModulesInProject();
+    enqueueAllModulesInRepository();
     mpsProject.addListener(myProjectListener);
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryObserver).attach();
     myGenerationStatusManager = mpsProject.getComponent(ModelGenerationStatusManager.class);
@@ -112,7 +117,28 @@ import java.util.function.Predicate;
   }
 
   protected Collection<SModuleReference> lookupProjectModule(IFile descriptionFile) {
-    return myModuleReferencesCache.getOrDefault(descriptionFile, Collections.emptyList());
+    Collection<SModuleReference> result = myModuleReferencesCache.getOrDefault(descriptionFile, Collections.emptyList());
+    if (result.isEmpty()) {
+      // module descriptor file might have been loaded with the "default" file system (java.io.File-based)
+      result = myModuleReferencesCache.getOrDefault(extractIoFile(descriptionFile), Collections.emptyList());
+    }
+    return result;
+  }
+
+  @Nullable
+  private IFile extractIoFile(IFile descriptionFile) {
+    VFSManager vfsManager = ProjectHelper.fromIdeaProject(myProject).getPlatform().findComponent(VFSManager.class);
+    QualifiedPath qp = descriptionFile.getQualifiedPath();
+    // try to find an alternative handle for the specified file
+    IFile altFile;
+    if (VFSManager.JAR_FS.equals(qp.getFsId())) {
+      altFile = vfsManager.getFileSystem(VFSManager.JAVA_IO_JAR_FS).getFile(qp.getPath());
+    } else if (VFSManager.FILE_FS.equals(qp.getFsId())) {
+      altFile = vfsManager.getFileSystem(VFSManager.JAVA_IO_FILE_FS).getFile(qp.getPath());
+    } else {
+      altFile = vfsManager.getFile(qp);
+    }
+    return altFile;
   }
 
   private void cacheModuleReference(@NotNull IFile descriptionFile, @NotNull SModuleReference moduleReference) {
@@ -250,8 +276,21 @@ import java.util.function.Predicate;
     });
   }
 
+  @SuppressWarnings("removal")
+  private void forAllModulesInRepository(Consumer<SModule> moduleConsumer) {
+    MPSModuleRepository repository = MPSModuleRepository.getInstance();
+    if (repository == null) return;
+    ApplicationManager.getApplication().invokeLater(() -> {
+      repository.getModelAccess().runReadAction(() -> { repository.getModules().forEach(moduleConsumer); });
+    });
+  }
+
   private void enqueueAllModulesInProject() {
     forAllModulesInProject(module -> enqueueUpdate(module, Update::check));
+  }
+
+  private void enqueueAllModulesInRepository() {
+    forAllModulesInRepository(module -> enqueueUpdate(module, Update::check));
   }
 
   private void enqueueUpdate(SModel model, Function<? super Update, ? extends Update> updateFun) {
@@ -261,6 +300,7 @@ import java.util.function.Predicate;
   }
 
   private void enqueueUpdate(SModule module, Function<? super Update, ? extends Update> updateFun) {
+    if (module instanceof TempModule) return;
     SObject sObject = SObject.of(module);
     if (module instanceof AbstractModule) {
       cacheModuleReference(((AbstractModule) module).getDescriptorFile(), module.getModuleReference());
@@ -447,6 +487,23 @@ import java.util.function.Predicate;
     public void modelDetached(SModel model, SRepository repository) {
       // this doesn't seem to be ever called
 //      ((SModelInternal) model).removeModelListener(myModelChangeListener);
+    }
+
+    @Override
+    public void moduleAdded(@NotNull SModule module) {
+      enqueueUpdate(module, Update::refresh);
+      enqueueAllModulesInProject();
+    }
+
+    @Override
+    public void moduleRemoved(@NotNull SModuleReference module) {
+      enqueueAllModulesInProject();
+    }
+
+    @Override
+    public void moduleChanged(SModule module) {
+      enqueueUpdate(module, Update::refresh);
+      enqueueAllModulesInProject();
     }
   }
   
