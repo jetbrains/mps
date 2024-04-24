@@ -148,8 +148,8 @@ public class SystemBackgroundTaskScheduler extends AbstractBackgroundTaskSchedul
         taskToRun.accept(progressMonitor);
 
       };
-      return CompletableFuture.runAsync(onThreadCallable, ForkJoinPool.commonPool()).handle((result, err) -> {
-        Throwable t = AsyncTaskRunnable.unwrap(err);
+      return CompletableFuture.runAsync(onThreadCallable, ForkJoinPool.commonPool()).handle((Void result, Throwable err) -> {
+        Throwable t = AsyncJobQueueItem.unwrap(err);
         if (progressMonitor.isCanceled()) {
           CancellationException exception = new CancellationException();
           if (t != null) {

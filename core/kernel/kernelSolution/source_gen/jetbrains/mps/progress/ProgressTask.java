@@ -6,6 +6,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.function.BooleanSupplier;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import java.util.concurrent.RunnableFuture;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public abstract class ProgressTask {
    * A task may choose to either schedule execution of its computation directly, or use some of 
    * the schedule* methods in {@link jetbrains.mps.progress.TaskScheduler } to schedule children tasks.
    */
-  public abstract Runnable schedule(TaskScheduler scheduler);
+  public abstract RunnableFuture schedule(TaskScheduler scheduler);
 
   public abstract String getTitle();
 
@@ -145,7 +146,7 @@ public abstract class ProgressTask {
       return myTitle;
     }
     @Override
-    public Runnable schedule(TaskScheduler scheduler) {
+    public RunnableFuture schedule(TaskScheduler scheduler) {
       return scheduler.execute(this::run);
     }
     protected void run() {
@@ -174,7 +175,7 @@ public abstract class ProgressTask {
       return String.format("multi(size=%d, parallel=%b)", myTasks.size(), myParallel);
     }
     @Override
-    public Runnable schedule(TaskScheduler scheduler) {
+    public RunnableFuture schedule(TaskScheduler scheduler) {
       if (myParallel) {
         return scheduler.scheduleAllParallel(myTasks, myMonitor);
 
@@ -195,7 +196,7 @@ public abstract class ProgressTask {
       return String.format("delegating(%s)", myDelegate.getTitle());
     }
     @Override
-    public Runnable schedule(TaskScheduler scheduler) {
+    public RunnableFuture schedule(TaskScheduler scheduler) {
       return scheduler.scheduleTask(myDelegate, myMonitor);
     }
     @Override
