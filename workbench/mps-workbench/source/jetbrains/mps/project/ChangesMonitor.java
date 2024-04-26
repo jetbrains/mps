@@ -142,7 +142,11 @@ import java.util.function.Predicate;
   }
 
   private void cacheModuleReference(@NotNull IFile descriptionFile, @NotNull SModuleReference moduleReference) {
-    myModuleReferencesCache.computeIfAbsent(descriptionFile, (__) -> new ArrayList<>(2)).add(moduleReference);
+    List<SModuleReference> cache = myModuleReferencesCache
+                                       .computeIfAbsent(descriptionFile,
+                                                        (__) ->
+                                                            Collections.synchronizedList(new ArrayList<>(2)));
+    cache.add(moduleReference);
   }
 
   private void clearModuleReference(@NotNull IFile descriptionFile, @NotNull SModuleReference moduleReference) {
