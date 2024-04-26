@@ -817,6 +817,8 @@ class GenerationSession {
   }
 
   private boolean keepTransientForMessageNavigation() {
+    // FIXME (a) would be great to have it as a configuration setting (b) command-line m2t doesn't need transients as well (can't use 'em anyway)
+    //       therefore using !isTestMode in not good enough
     return !RuntimeFlags.isTestMode();
   }
 
@@ -882,6 +884,7 @@ class GenerationSession {
     if (mySessionContext == null) {
       return;
     }
+    ttrace.push("discard transients"); // XXX not nice to use it here once we've shared the instance with status object.
     if (!myControlEnv.getOptions().isSaveTransientModels()) {
       mySessionContext.getModule().clearUnused();
     }
@@ -891,5 +894,6 @@ class GenerationSession {
       myQuerySource = null;
     }
     mySessionContext = null;
+    ttrace.pop();
   }
 }

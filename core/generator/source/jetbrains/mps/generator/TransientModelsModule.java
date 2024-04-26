@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import jetbrains.mps.smodel.SNodeImplAccess;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
+import jetbrains.mps.util.performance.IPerformanceTracer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -116,9 +117,18 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
     // mature references as a distinct step (not as part of unload()) just in case there are reference
     // between the models to publish and unload (hence, mature) in improper order may leave reference broken.
     for (TransientSModelDescriptor model : myModelVault.modelsToPublish()) {
+      if (!model.isLoaded()) {
+        // if it's another model, generated earlier, recorded for publishing, we've already processed its references and unloaded,
+        // no need to do it again.
+        continue;
+      }
       model.makeRefsMature();
     }
     for (TransientSModelDescriptor model : myModelVault.modelsToPublish()) {
+      if (!model.isLoaded()) {
+        // see same condition in makeRefsMature() cycle, above.
+        continue;
+      }
       unloadModel(model);
     }
     for (SModel model : myModelVault.modelsNotToPublish()) {
