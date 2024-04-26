@@ -19304,57 +19304,33 @@
                 </node>
               </node>
             </node>
-            <node concept="1X3_iC" id="3$ZLRFpSUMC" role="lGtFl">
-              <property role="3V$3am" value="statement" />
-              <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-              <node concept="3cpWs8" id="1GqDrYkh9E7" role="8Wnug">
-                <node concept="3cpWsn" id="1GqDrYkh9E8" role="3cpWs9">
-                  <property role="TrG5h" value="labelRef" />
-                  <node concept="2ShNRf" id="1GqDrYkj1Nm" role="33vP2m">
-                    <node concept="1pGfFk" id="1GqDrYkjQBr" role="2ShVmc">
-                      <ref role="37wK5l" to="w1kc:~DynamicReference.&lt;init&gt;(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SModelReference,java.lang.String)" resolve="DynamicReference" />
-                      <node concept="359W_D" id="5xzMQBRGSUB" role="37wK5m">
-                        <ref role="359W_E" to="tpee:fJN13sA" resolve="ContinueStatement" />
-                        <ref role="359W_F" to="tpee:7QIxtrFgVIX" resolve="loopLabelReference" />
-                      </node>
-                      <node concept="37vLTw" id="1GqDrYkkYYB" role="37wK5m">
-                        <ref role="3cqZAo" node="31WmxQNAISs" resolve="result" />
-                      </node>
-                      <node concept="10Nm6u" id="1GqDrYklK3s" role="37wK5m" />
-                      <node concept="2ShNRf" id="1GqDrYknRvK" role="37wK5m">
-                        <node concept="1pGfFk" id="1GqDrYknRvL" role="2ShVmc">
-                          <ref role="37wK5l" to="wyt6:~String.&lt;init&gt;(char[])" resolve="String" />
-                          <node concept="2OqwBi" id="1GqDrYknRvM" role="37wK5m">
-                            <node concept="37vLTw" id="2BHiRxgheEB" role="2Oq$k0">
-                              <ref role="3cqZAo" node="31WmxQNAISo" resolve="x" />
-                            </node>
-                            <node concept="2OwXpG" id="1GqDrYknRvN" role="2OqNvi">
-                              <ref role="2Oxat5" to="twf3:~BranchStatement.label" resolve="label" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="3uibUv" id="1GqDrYkh9E9" role="1tU5fm">
-                    <ref role="3uigEE" to="mhbf:~SReference" resolve="SReference" />
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="1X3_iC" id="3$ZLRFpSUMD" role="lGtFl">
               <property role="3V$3am" value="statement" />
               <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
               <node concept="3clFbF" id="1GqDrYkz6bq" role="8Wnug">
                 <node concept="2OqwBi" id="1GqDrYk$CoG" role="3clFbG">
                   <node concept="liA8E" id="1GqDrYk_1rb" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SNode.setReference(java.lang.String,org.jetbrains.mps.openapi.model.SReference)" resolve="setReference" />
+                    <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.ResolveInfo)" resolve="setReference" />
                     <node concept="359W_D" id="5xzMQBRGSW9" role="37wK5m">
                       <ref role="359W_E" to="tpee:fJN13sA" resolve="ContinueStatement" />
                       <ref role="359W_F" to="tpee:7QIxtrFgVIX" resolve="loopLabelReference" />
                     </node>
-                    <node concept="37vLTw" id="1GqDrYkA8Kl" role="37wK5m">
-                      <ref role="3cqZAo" node="1GqDrYkh9E8" resolve="labelRef" />
+                    <node concept="2YIFZM" id="4I_oZVK8ttb" role="37wK5m">
+                      <ref role="37wK5l" to="mhbf:~ResolveInfo.of(java.lang.String)" resolve="of" />
+                      <ref role="1Pybhc" to="mhbf:~ResolveInfo" resolve="ResolveInfo" />
+                      <node concept="2ShNRf" id="4I_oZVKaSYw" role="37wK5m">
+                        <node concept="1pGfFk" id="4I_oZVKaSYx" role="2ShVmc">
+                          <ref role="37wK5l" to="wyt6:~String.&lt;init&gt;(char[])" resolve="String" />
+                          <node concept="2OqwBi" id="4I_oZVKaSYy" role="37wK5m">
+                            <node concept="2OwXpG" id="4I_oZVKaSYz" role="2OqNvi">
+                              <ref role="2Oxat5" to="twf3:~BranchStatement.label" resolve="label" />
+                            </node>
+                            <node concept="37vLTw" id="4I_oZVKaSY$" role="2Oq$k0">
+                              <ref role="3cqZAo" node="31WmxQNAISo" resolve="x" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                     </node>
                   </node>
                   <node concept="2JrnkZ" id="1GqDrYk$s7p" role="2Oq$k0">

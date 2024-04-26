@@ -9161,6 +9161,19 @@
                                               </node>
                                             </node>
                                           </node>
+                                          <node concept="3clFbJ" id="4I_oZVK4vcF" role="3cqZAp">
+                                            <node concept="3clFbS" id="4I_oZVK4vcH" role="3clFbx">
+                                              <node concept="3cpWs6" id="4I_oZVK4R37" role="3cqZAp" />
+                                            </node>
+                                            <node concept="2OqwBi" id="4I_oZVK4H1m" role="3clFbw">
+                                              <node concept="37vLTw" id="4I_oZVK4A_V" role="2Oq$k0">
+                                                <ref role="3cqZAo" node="7QCr3uXVrTf" resolve="subTask" />
+                                              </node>
+                                              <node concept="liA8E" id="4I_oZVK4MgD" role="2OqNvi">
+                                                <ref role="37wK5l" to="yyf4:~ProgressMonitor.isCanceled()" resolve="isCanceled" />
+                                              </node>
+                                            </node>
+                                          </node>
                                         </node>
                                         <node concept="37vLTw" id="7QCr3uXVwWw" role="2GsD0m">
                                           <ref role="3cqZAo" node="7QCr3uXVwWs" resolve="models" />
