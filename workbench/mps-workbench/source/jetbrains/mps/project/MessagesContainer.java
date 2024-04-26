@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -106,10 +107,12 @@ public class MessagesContainer implements Disposable {
                                                             .collect(Collectors.toList());
     if (!modelsWithErrors.isEmpty()) {
       return mpsProject.getModelAccess()
-                   .computeReadAction(() ->
-                                       modelsWithErrors.stream()
-                                                       .map(ref -> SObject.of(ref.resolve(mpsProject.getRepository())))
-                                                       .anyMatch(hierarchyContains));
+                       .computeReadAction(() ->
+                                              modelsWithErrors.stream()
+                                                              .map(ref -> ref.resolve(mpsProject.getRepository()))
+                                                              .filter(Predicate.not(Objects::isNull))
+                                                              .map(SObject::of)
+                                                              .anyMatch(hierarchyContains));
     }
 
     return false;
