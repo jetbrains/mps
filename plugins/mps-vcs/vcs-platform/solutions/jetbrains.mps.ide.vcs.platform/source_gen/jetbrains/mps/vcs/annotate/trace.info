@@ -1807,120 +1807,124 @@
   </root>
   <root nodeRef="r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4433480198085290549">
     <file name="ViewActionGroup.java">
-      <node id="4433480198085380310" at="16,109,17,18" concept="15" />
-      <node id="4433480198085380313" at="17,18,18,19" concept="2" />
-      <node id="4433480198085381985" at="19,83,20,50" concept="2" />
-      <node id="736151805632551838" at="21,5,22,19" concept="2" />
-      <node id="7939868060437986438" at="22,19,23,27" concept="2" />
-      <node id="7376823514661497264" at="23,27,24,30" concept="2" />
-      <node id="7939868060438027967" at="27,64,28,58" concept="10" />
-      <node id="4433480198085380374" at="32,0,33,0" concept="3" trace="mySubcolumn" />
-      <node id="4433480198085381995" at="33,73,34,31" concept="15" />
-      <node id="4433480198085380378" at="34,31,35,30" concept="2" />
-      <node id="4433480198085380384" at="38,68,39,39" concept="2" />
-      <node id="4433480198085381959" at="42,52,43,37" concept="10" />
-      <node id="3392865186936077599" at="48,26,49,93" concept="15" />
-      <node id="7939868060437771173" at="50,90,51,40" concept="2" />
-      <node id="7376823514661305765" at="57,29,58,96" concept="15" />
-      <node id="7376823514661305772" at="59,108,60,48" concept="2" />
-      <node id="7939868060437753735" at="67,0,68,0" concept="3" trace="myColorMode" />
-      <node id="3250004428988963308" at="69,65,70,42" concept="15" />
-      <node id="7939868060437754292" at="70,42,71,37" concept="2" />
-      <node id="7939868060437742680" at="75,61,76,75" concept="10" />
-      <node id="7939868060437760951" at="80,14,81,66" concept="2" />
-      <node id="7376823514661265017" at="88,0,89,0" concept="3" trace="myShortNameType" />
-      <node id="7376823514661265025" at="90,78,91,44" concept="15" />
-      <node id="7376823514661265029" at="91,44,92,43" concept="2" />
-      <node id="7376823514661265047" at="96,61,97,83" concept="10" />
-      <node id="7376823514661265063" at="101,14,102,74" concept="2" />
-      <node id="4433480198085381974" at="18,19,21,5" concept="5" />
-      <node id="4858046801335972288" at="27,0,30,0" concept="7" trace="getSelectedColorsOption#()Ljetbrains/mps/vcs/annotate/AnnotationOptions/ColorMode;" />
-      <node id="7939868060437616513" at="49,93,52,7" concept="5" />
-      <node id="7376823514661305770" at="58,96,61,7" concept="5" />
-      <node id="7376823514661296919" at="79,70,82,7" concept="6" />
-      <node id="7376823514661301797" at="100,70,103,7" concept="6" />
-      <node id="4433480198085380349" at="33,0,37,0" concept="1" trace="ShowHideSubcolumnAction#(Ljetbrains/mps/vcs/annotate/AnnotationAspectSubcolumn;)V" />
-      <node id="4433480198085380355" at="37,0,41,0" concept="7" trace="setSelected#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Z)V" />
-      <node id="4433480198085380363" at="41,0,45,0" concept="7" trace="isSelected#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Z" />
-      <node id="7939868060437754286" at="69,0,73,0" concept="1" trace="ColorOption#(Ljetbrains/mps/vcs/annotate/AnnotationOptions/ColorMode;)V" />
-      <node id="7939868060437650798" at="74,0,78,0" concept="7" trace="isSelected#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Z" />
-      <node id="7376823514661265021" at="90,0,94,0" concept="1" trace="ShortNameOption#(Ljetbrains/mps/vcs/annotate/AnnotationOptions/MpsShortNameType;)V" />
-      <node id="7376823514661265040" at="95,0,99,0" concept="7" trace="isSelected#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Z" />
-      <node id="3392865186936077592" at="48,0,54,0" concept="1" trace="ColorsGroup#()V" />
-      <node id="7376823514661305761" at="57,0,63,0" concept="1" trace="ShortNameGroup#()V" />
-      <node id="7939868060437650809" at="78,0,84,0" concept="7" trace="setSelected#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Z)V" />
-      <node id="7376823514661265054" at="99,0,105,0" concept="7" trace="setSelected#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Z)V" />
-      <node id="4433480198085290551" at="16,0,26,0" concept="1" trace="ViewActionGroup#(Ljetbrains/mps/vcs/annotate/AnnotationColumn;Ljava/lang/Iterable;)V" />
-      <scope id="4433480198085381977" at="19,83,20,50" />
-      <scope id="4858046801335972291" at="27,64,28,58" />
-      <scope id="4433480198085380362" at="38,68,39,39" />
-      <scope id="4433480198085380368" at="42,52,43,37" />
-      <scope id="7939868060437616515" at="50,90,51,40" />
-      <scope id="7376823514661305771" at="59,108,60,48" />
-      <scope id="7939868060437650805" at="75,61,76,75" />
-      <scope id="7376823514661296921" at="80,14,81,66" />
-      <scope id="7376823514661265046" at="96,61,97,83" />
-      <scope id="7376823514661301799" at="101,14,102,74" />
-      <scope id="4433480198085380352" at="33,73,35,30" />
-      <scope id="7939868060437754289" at="69,65,71,37" />
-      <scope id="7376823514661265024" at="90,78,92,43" />
-      <scope id="4433480198085381974" at="18,19,21,5">
+      <node id="4433480198085380310" at="17,109,18,18" concept="15" />
+      <node id="4433480198085380313" at="18,18,19,19" concept="2" />
+      <node id="4433480198085381985" at="20,83,21,50" concept="2" />
+      <node id="736151805632551838" at="22,5,23,19" concept="2" />
+      <node id="7939868060437986438" at="23,19,24,27" concept="2" />
+      <node id="7376823514661497264" at="24,27,25,30" concept="2" />
+      <node id="7939868060438027967" at="28,64,29,58" concept="10" />
+      <node id="4433480198085380374" at="33,0,34,0" concept="3" trace="mySubcolumn" />
+      <node id="4433480198085381995" at="34,73,35,31" concept="15" />
+      <node id="4433480198085380378" at="35,31,36,30" concept="2" />
+      <node id="4433480198085380384" at="39,68,40,39" concept="2" />
+      <node id="4433480198085381959" at="43,52,44,37" concept="10" />
+      <node id="5450872870606202778" at="48,55,49,36" concept="10" />
+      <node id="3392865186936077599" at="54,26,55,93" concept="15" />
+      <node id="7939868060437771173" at="56,90,57,40" concept="2" />
+      <node id="7376823514661305765" at="63,29,64,96" concept="15" />
+      <node id="7376823514661305772" at="65,108,66,48" concept="2" />
+      <node id="7939868060437753735" at="73,0,74,0" concept="3" trace="myColorMode" />
+      <node id="3250004428988963308" at="75,65,76,42" concept="15" />
+      <node id="7939868060437754292" at="76,42,77,37" concept="2" />
+      <node id="7939868060437742680" at="81,61,82,75" concept="10" />
+      <node id="7939868060437760951" at="86,14,87,66" concept="2" />
+      <node id="7376823514661265017" at="94,0,95,0" concept="3" trace="myShortNameType" />
+      <node id="7376823514661265025" at="96,78,97,44" concept="15" />
+      <node id="7376823514661265029" at="97,44,98,43" concept="2" />
+      <node id="7376823514661265047" at="102,61,103,83" concept="10" />
+      <node id="7376823514661265063" at="107,14,108,74" concept="2" />
+      <node id="4433480198085381974" at="19,19,22,5" concept="5" />
+      <node id="4858046801335972288" at="28,0,31,0" concept="7" trace="getSelectedColorsOption#()Ljetbrains/mps/vcs/annotate/AnnotationOptions/ColorMode;" />
+      <node id="7939868060437616513" at="55,93,58,7" concept="5" />
+      <node id="7376823514661305770" at="64,96,67,7" concept="5" />
+      <node id="7376823514661296919" at="85,70,88,7" concept="6" />
+      <node id="7376823514661301797" at="106,70,109,7" concept="6" />
+      <node id="4433480198085380349" at="34,0,38,0" concept="1" trace="ShowHideSubcolumnAction#(Ljetbrains/mps/vcs/annotate/AnnotationAspectSubcolumn;)V" />
+      <node id="4433480198085380355" at="38,0,42,0" concept="7" trace="setSelected#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Z)V" />
+      <node id="4433480198085380363" at="42,0,46,0" concept="7" trace="isSelected#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Z" />
+      <node id="7939868060437754286" at="75,0,79,0" concept="1" trace="ColorOption#(Ljetbrains/mps/vcs/annotate/AnnotationOptions/ColorMode;)V" />
+      <node id="7939868060437650798" at="80,0,84,0" concept="7" trace="isSelected#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Z" />
+      <node id="7376823514661265021" at="96,0,100,0" concept="1" trace="ShortNameOption#(Ljetbrains/mps/vcs/annotate/AnnotationOptions/MpsShortNameType;)V" />
+      <node id="7376823514661265040" at="101,0,105,0" concept="7" trace="isSelected#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)Z" />
+      <node id="5450872870606171795" at="46,0,51,0" concept="7" trace="getActionUpdateThread#()Lcom/intellij/openapi/actionSystem/ActionUpdateThread;" />
+      <node id="3392865186936077592" at="54,0,60,0" concept="1" trace="ColorsGroup#()V" />
+      <node id="7376823514661305761" at="63,0,69,0" concept="1" trace="ShortNameGroup#()V" />
+      <node id="7939868060437650809" at="84,0,90,0" concept="7" trace="setSelected#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Z)V" />
+      <node id="7376823514661265054" at="105,0,111,0" concept="7" trace="setSelected#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Z)V" />
+      <node id="4433480198085290551" at="17,0,27,0" concept="1" trace="ViewActionGroup#(Ljetbrains/mps/vcs/annotate/AnnotationColumn;Ljava/lang/Iterable;)V" />
+      <scope id="4433480198085381977" at="20,83,21,50" />
+      <scope id="4858046801335972291" at="28,64,29,58" />
+      <scope id="4433480198085380362" at="39,68,40,39" />
+      <scope id="4433480198085380368" at="43,52,44,37" />
+      <scope id="5450872870606171802" at="48,55,49,36" />
+      <scope id="7939868060437616515" at="56,90,57,40" />
+      <scope id="7376823514661305771" at="65,108,66,48" />
+      <scope id="7939868060437650805" at="81,61,82,75" />
+      <scope id="7376823514661296921" at="86,14,87,66" />
+      <scope id="7376823514661265046" at="102,61,103,83" />
+      <scope id="7376823514661301799" at="107,14,108,74" />
+      <scope id="4433480198085380352" at="34,73,36,30" />
+      <scope id="7939868060437754289" at="75,65,77,37" />
+      <scope id="7376823514661265024" at="96,78,98,43" />
+      <scope id="4433480198085381974" at="19,19,22,5">
         <var name="subcolumn" id="4433480198085381975" />
       </scope>
-      <scope id="4858046801335972288" at="27,0,30,0" />
-      <scope id="7939868060437616513" at="49,93,52,7">
+      <scope id="4858046801335972288" at="28,0,31,0" />
+      <scope id="7939868060437616513" at="55,93,58,7">
         <var name="colorMode" id="7939868060437616516" />
       </scope>
-      <scope id="7376823514661305770" at="58,96,61,7">
+      <scope id="7376823514661305770" at="64,96,67,7">
         <var name="shortNameType" id="7376823514661305777" />
       </scope>
-      <scope id="7939868060437650818" at="79,70,82,7" />
-      <scope id="7376823514661265062" at="100,70,103,7" />
-      <scope id="4433480198085380349" at="33,0,37,0">
+      <scope id="7939868060437650818" at="85,70,88,7" />
+      <scope id="7376823514661265062" at="106,70,109,7" />
+      <scope id="4433480198085380349" at="34,0,38,0">
         <var name="subcolumn" id="4433480198085380372" />
       </scope>
-      <scope id="4433480198085380355" at="37,0,41,0">
+      <scope id="4433480198085380355" at="38,0,42,0">
         <var name="event" id="4433480198085380358" />
         <var name="selected" id="4433480198085380360" />
       </scope>
-      <scope id="4433480198085380363" at="41,0,45,0">
+      <scope id="4433480198085380363" at="42,0,46,0">
         <var name="event" id="4433480198085380366" />
       </scope>
-      <scope id="3392865186936077598" at="48,26,52,7" />
-      <scope id="7376823514661305764" at="57,29,61,7" />
-      <scope id="7939868060437754286" at="69,0,73,0">
+      <scope id="3392865186936077598" at="54,26,58,7" />
+      <scope id="7376823514661305764" at="63,29,67,7" />
+      <scope id="7939868060437754286" at="75,0,79,0">
         <var name="myColorMode" id="7939868060437754290" />
       </scope>
-      <scope id="7939868060437650798" at="74,0,78,0">
+      <scope id="7939868060437650798" at="80,0,84,0">
         <var name="event" id="7939868060437650802" />
       </scope>
-      <scope id="7376823514661265021" at="90,0,94,0">
+      <scope id="7376823514661265021" at="96,0,100,0">
         <var name="shortNameType" id="7376823514661265035" />
       </scope>
-      <scope id="7376823514661265040" at="95,0,99,0">
+      <scope id="7376823514661265040" at="101,0,105,0">
         <var name="event" id="7376823514661265043" />
       </scope>
-      <scope id="3392865186936077592" at="48,0,54,0" />
-      <scope id="7376823514661305761" at="57,0,63,0" />
-      <scope id="7939868060437650809" at="78,0,84,0">
+      <scope id="5450872870606171795" at="46,0,51,0" />
+      <scope id="3392865186936077592" at="54,0,60,0" />
+      <scope id="7376823514661305761" at="63,0,69,0" />
+      <scope id="7939868060437650809" at="84,0,90,0">
         <var name="b" id="7939868060437650816" />
         <var name="event" id="7939868060437650813" />
       </scope>
-      <scope id="7376823514661265054" at="99,0,105,0">
+      <scope id="7376823514661265054" at="105,0,111,0">
         <var name="b" id="7376823514661265060" />
         <var name="event" id="7376823514661265057" />
       </scope>
-      <scope id="4433480198085290554" at="16,109,24,30" />
-      <scope id="4433480198085290551" at="16,0,26,0">
+      <scope id="4433480198085290554" at="17,109,25,30" />
+      <scope id="4433480198085290551" at="17,0,27,0">
         <var name="annotationColumn" id="4433480198085380321" />
         <var name="subcolumns" id="4433480198085381968" />
       </scope>
-      <unit id="3392865186936066214" at="47,0,55,0" name="jetbrains.mps.vcs.annotate.ViewActionGroup$ColorsGroup" />
-      <unit id="7376823514661305757" at="56,0,64,0" name="jetbrains.mps.vcs.annotate.ViewActionGroup$ShortNameGroup" />
-      <unit id="4433480198085380347" at="31,0,46,0" name="jetbrains.mps.vcs.annotate.ViewActionGroup$ShowHideSubcolumnAction" />
-      <unit id="7939868060437639950" at="65,0,85,0" name="jetbrains.mps.vcs.annotate.ViewActionGroup$ColorOption" />
-      <unit id="7376823514661265015" at="86,0,106,0" name="jetbrains.mps.vcs.annotate.ViewActionGroup$ShortNameOption" />
-      <unit id="4433480198085290549" at="13,0,107,0" name="jetbrains.mps.vcs.annotate.ViewActionGroup" />
+      <unit id="3392865186936066214" at="53,0,61,0" name="jetbrains.mps.vcs.annotate.ViewActionGroup$ColorsGroup" />
+      <unit id="7376823514661305757" at="62,0,70,0" name="jetbrains.mps.vcs.annotate.ViewActionGroup$ShortNameGroup" />
+      <unit id="4433480198085380347" at="32,0,52,0" name="jetbrains.mps.vcs.annotate.ViewActionGroup$ShowHideSubcolumnAction" />
+      <unit id="7939868060437639950" at="71,0,91,0" name="jetbrains.mps.vcs.annotate.ViewActionGroup$ColorOption" />
+      <unit id="7376823514661265015" at="92,0,112,0" name="jetbrains.mps.vcs.annotate.ViewActionGroup$ShortNameOption" />
+      <unit id="4433480198085290549" at="14,0,113,0" name="jetbrains.mps.vcs.annotate.ViewActionGroup" />
     </file>
   </root>
   <root nodeRef="r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4551186261159211592">
