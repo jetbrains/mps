@@ -9,8 +9,10 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import java.util.Comparator;
 import java.util.Deque;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -20,13 +22,13 @@ import java.util.stream.Stream;
  */
 public abstract class AbstractLanguageProcessor {
   private volatile boolean myNeedsLoading = false;
-  private Set<LanguageRuntime> myLoadedLanguages = new HashSet<>();
-  private Set<LanguageRuntime> myLanguagesToLoad = new HashSet<>();
+  private final Set<LanguageRuntime> myLoadedLanguages = new LinkedHashSet<>();
+  private final Deque<LanguageRuntime> myLanguagesToLoad = new LinkedList<>();
 
   public synchronized void loadLanguages(Iterable<LanguageRuntime> languages) {
     for (LanguageRuntime language : languages) {
       assert !myLoadedLanguages.contains(language);
-      myLanguagesToLoad.add(language);
+      myLanguagesToLoad.addLast(language);
       myNeedsLoading = true;
     }
   }
@@ -35,7 +37,7 @@ public abstract class AbstractLanguageProcessor {
     for (LanguageRuntime language : languages) {
       if (myLoadedLanguages.contains(language)) {
         myLanguagesToLoad.addAll(myLoadedLanguages);
-        myLoadedLanguages = new HashSet<>();
+        myLoadedLanguages.clear();
         clearCache();
       }
       myLanguagesToLoad.remove(language);
@@ -56,13 +58,17 @@ public abstract class AbstractLanguageProcessor {
       languageRanks.put(lang.getNamespace(), rank++);
     }
 
-    for (LanguageRuntime language : myLanguagesToLoad) {
+    while (!myLanguagesToLoad.isEmpty()) {
+      LanguageRuntime language = myLanguagesToLoad.removeFirst();
       assert !myLoadedLanguages.contains(language);
-      myLoadedLanguages.add(language);
-      processLoadedLangugage(language, languageRanks);
+      try {
+        processLoadedLangugage(language, languageRanks);
+        myLoadedLanguages.add(language);
+      } catch (RuntimeException e) {
+        myLanguagesToLoad.addFirst(language);
+        throw e;
+      }
     }
-
-    myLanguagesToLoad = new HashSet<>();
     myNeedsLoading = false;
   }
 
