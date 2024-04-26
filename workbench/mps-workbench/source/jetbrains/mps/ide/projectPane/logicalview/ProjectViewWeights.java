@@ -37,10 +37,11 @@ public class ProjectViewWeights {
   public static final int MODEL_VIRTUAL_FOLDER_WEIGHT = 1;
   public static final int NODE_VIRTUAL_FOLDER_WEIGHT = 2;
   public static final int MODEL_WEIGHT = 3;
-  public static final int NODE_WEIGHT = 4;
+  public static final int DESCRIPTOR_MODEL_WEIGHT = 4;
 
   // node
   public static final int NODE_CONCEPT_WEIGHT = 1;
   public static final int NODE_PROPERTIES_WEIGHT = 2;
   public static final int NODE_REFERENCES_WEIGHT = 3;
+  public static final int NODE_WEIGHT = 4;
 }

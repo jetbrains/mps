@@ -66,7 +66,7 @@ public class GeneratorProjectViewNode extends BaseModuleProjectViewNode<Generato
     List<SModel> models = getValue().getModels();
     if (getMPSSettings().isShowDescriptorModels()) {
       models.stream().filter(SModelStereotype::isDescriptorModel).findFirst().ifPresent(m -> {
-        children.add(new SimpleModelProjectViewNode(getProject(), m, getSettings()));
+        children.add(new DescriptorModelProjectViewNode(getProject(), m, getSettings()));
       });
     }
     fillChildren(children, filterModels(models));

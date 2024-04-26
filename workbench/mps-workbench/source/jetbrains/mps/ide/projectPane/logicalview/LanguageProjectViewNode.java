@@ -31,6 +31,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import javax.swing.Icon;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -295,7 +296,14 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
     @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
-      for (SModel model : getValue().getModels()) {
+      List<SModel> models = new ArrayList<>(getValue().getModels());
+      if (getMPSSettings().isShowDescriptorModels()) {
+        models.stream().filter(SModelStereotype::isDescriptorModel).findFirst().ifPresent(m -> {
+          children.add(new DescriptorModelProjectViewNode(getProject(), m, getSettings()));
+        });
+      }
+      models.removeIf(SModelStereotype::isDescriptorModel);
+      for (SModel model : models) {
         children.add(new SimpleModelProjectViewNode(getProject(), model, getSettings()) {
           @NotNull
           @Override

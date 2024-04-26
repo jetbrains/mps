@@ -94,4 +94,9 @@ public class SimpleModelProjectViewNode extends BranchProjectViewNode<SModel> {
     return getValue().getName().getValue();
   }
 
+  @Override
+  public int getTypeSortWeight(boolean sortByType) {
+    return ProjectViewWeights.MODEL_WEIGHT;
+  }
+
 }

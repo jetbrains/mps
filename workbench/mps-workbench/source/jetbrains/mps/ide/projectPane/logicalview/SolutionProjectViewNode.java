@@ -47,7 +47,7 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
   protected void fillChildren(Collection<AbstractTreeNode<?>> children, Collection<SModel> models) {
     if (getMPSSettings().isShowDescriptorModels()) {
       models.stream().filter(SModelStereotype::isDescriptorModel).findFirst().ifPresent(m -> {
-        children.add(new SimpleModelProjectViewNode(getProject(), m, getSettings()));
+        children.add(new DescriptorModelProjectViewNode(getProject(), m, getSettings()));
       });
     }
     if (models.stream().anyMatch(SModelStereotype::isStubModel)) {
