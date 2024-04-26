@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -155,6 +155,8 @@ public class GenerationController implements ITaskPoolProvider {
       }
 
       if (!(ttrace instanceof NullPerformanceTracer)) {
+        // XXX FWIW, session continues to use ttrace object up to discardTransients(), invoked later in finally(),
+        //     beware of copying (or otherwise using) trace information in setPerformanceTrace (other than keeping the reference)
         status.setPerformanceTrace(ttrace);
       }
       myGenerationHandler.done(task, status);
