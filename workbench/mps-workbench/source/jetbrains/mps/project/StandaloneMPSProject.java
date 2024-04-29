@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,16 +78,12 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
     if (getProject().isDefault()) {
       return null;
     }
-    // FIXME Do I truly need to grab model read here?
-    return new ModelAccessHelper(getModelAccess()).runReadAction(() -> {
-      ProjectDescriptor descriptor = getProjectDescriptor();
-
-      // getProjectFile() uses ideaProject.getPresentableUrl. By contract the project is default <=> presentable url == null
-      IFile projectFile = myManager.getFileSystem(VFSManager.FILE_FS).getFile(getProjectFile());
-      // IDEA expands $PROJECT_DIR$ for us in loadState, but here we need to give paths with the right macro, and
-      //      MacrosFactory.forProjectFile does this.
-      return new ProjectDescriptorPersistence(projectFile, MacrosFactory.forProjectFile(projectFile)).save(descriptor);
-    });
+    ProjectDescriptor descriptor = getProjectDescriptor();
+    // getProjectFile() uses ideaProject.getPresentableUrl. By contract the project is default <=> presentable url == null
+    IFile projectFile = myManager.getFileSystem(VFSManager.FILE_FS).getFile(getProjectFile());
+    // IDEA expands $PROJECT_DIR$ for us in loadState, but here we need to give paths with the right macro, and
+    //      MacrosFactory.forProjectFile does this.
+    return new ProjectDescriptorPersistence(projectFile, MacrosFactory.forProjectFile(projectFile)).save(descriptor);
   }
 
   @Override
@@ -121,7 +117,9 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   @Deprecated(since = "3.3", forRemoval = true)
   public ProjectDescriptor getProjectDescriptor() {
     final ProjectDescriptor pd = new ProjectDescriptor(getName());
-    allModulePaths().forEach(pd::addModulePath);
+    // read access here is just a way to guard myModuleLoader (in allModulePaths) changes from a write action (e.g. update())
+    // perhaps, shall introduce a separate lock, rather than use MA.
+    getModelAccess().runReadAction(() -> allModulePaths().forEach(pd::addModulePath));
     return pd;
   }
 
