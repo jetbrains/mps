@@ -103,12 +103,15 @@ public final class PartialModelDataSupport<T extends SModelData & UpdateModeSupp
             // no reason to go ahead and to try to update a model if there's nothing to update either in source or in destination
             res = fullModel;
           } else {
-            myModel.enterUpdateMode();   //not to send events on changes
-            fullModel.getModelData().enterUpdateMode();
-            new PartialModelUpdateFacility(myModel, fullModel.getModelData(), myModelDescriptor).update();
-            myLoader.completeUpdate(myModel);
-            fullModel.getModelData().leaveUpdateMode();
-            myModel.leaveUpdateMode();  //enable events
+            try {
+              myModel.enterUpdateMode();   //not to send events on changes
+              fullModel.getModelData().enterUpdateMode();
+              new PartialModelUpdateFacility(myModel, fullModel.getModelData(), myModelDescriptor).update();
+              myLoader.completeUpdate(myModel);
+            } finally {
+              fullModel.getModelData().leaveUpdateMode();
+              myModel.leaveUpdateMode();  //enable events
+            }
             res = new ModelLoadResult<>(myModel, fullModel.getState());
           }
           break;
