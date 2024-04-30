@@ -438,10 +438,10 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
   private SModelReference getModel(AbstractTreeNode<?> selectedNode) {
     if (selectedNode instanceof MPSPsiElementTreeNode) {
       MPSPsiNodeBase value = ((MPSPsiElementTreeNode) selectedNode).getValue();
-      return value.getContainingModel().getSModelReference();
+      return value == null ? null : value.getContainingModel().getSModelReference();
     } else if (selectedNode instanceof MPSPsiModelTreeNode) {
       MPSPsiModel psiModel = ((MPSPsiModelTreeNode) selectedNode).getModel();
-      return psiModel.getSModelReference();
+      return psiModel == null ? null : psiModel.getSModelReference();
     } else if (selectedNode instanceof ProjectViewNode && ((ProjectViewNode<?>) selectedNode).getVirtualFile() != null && ((ProjectViewNode<?>) selectedNode).getVirtualFile().isDirectory()) {
       // XXX [artem] FWIW, I don't quite understand ProjectViewNode change by MB. Is it for per-root persistence?
       MPSProject mpsProject = ProjectHelper.fromIdeaProject(selectedNode.getProject());
