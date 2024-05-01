@@ -17,6 +17,7 @@ package jetbrains.mps.smodel.loading;
 
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.InvalidSModel;
 import jetbrains.mps.smodel.ModelLoadResult;
 import org.jetbrains.annotations.NotNull;
@@ -33,6 +34,9 @@ import org.jetbrains.annotations.Nullable;
  * This class has an aim to synchronize all loading processes
  */
 public final class PartialModelDataSupport<T extends SModelData & UpdateModeSupport> {
+
+  private static final Logger LOG = Logger.getLogger(PartialModelDataSupport.class);
+
   private final SModelBase myModelDescriptor;
   private final ModelLoader<T> myLoader;
   private volatile T myModel = null;
@@ -108,6 +112,10 @@ public final class PartialModelDataSupport<T extends SModelData & UpdateModeSupp
               fullModel.getModelData().enterUpdateMode();
               new PartialModelUpdateFacility(myModel, fullModel.getModelData(), myModelDescriptor).update();
               myLoader.completeUpdate(myModel);
+            } catch (Throwable th) {
+              th.printStackTrace();
+              LOG.error("Error while updating the model", th);
+              throw th;
             } finally {
               fullModel.getModelData().leaveUpdateMode();
               myModel.leaveUpdateMode();  //enable events
