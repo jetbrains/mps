@@ -23,6 +23,7 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import java.util.Objects;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -124,7 +125,7 @@ public class SetNodePackage_Action extends BaseAction {
       return;
     }
     final String newValue = dialog.getPackage();
-    if (nameHint.value.equals(newValue) && ListSequence.fromList(packages.value).count() == 1 && nameHint.value.equals(ListSequence.fromList(packages.value).getElement(0))) {
+    if (Objects.equals(nameHint.value, newValue) && ListSequence.fromList(packages.value).count() == 1 && Objects.equals(nameHint.value, ListSequence.fromList(packages.value).getElement(0))) {
       return;
     }
 
