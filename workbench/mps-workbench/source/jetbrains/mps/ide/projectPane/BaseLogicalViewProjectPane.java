@@ -209,7 +209,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     }
 
     if (MPSDataKeys.NAMESPACE.is(dataId)) {
-      Object firstSelected = Arrays.stream(getSelectedUserObjects()).findFirst().orElseGet(() -> null);
+      Object firstSelected = Arrays.stream(getSelectedValues(getSelectedUserObjects())).findFirst().orElseGet(() -> null);
       if (firstSelected instanceof VirtualFolder) {
         return ((VirtualFolder)firstSelected).getName();
       }
