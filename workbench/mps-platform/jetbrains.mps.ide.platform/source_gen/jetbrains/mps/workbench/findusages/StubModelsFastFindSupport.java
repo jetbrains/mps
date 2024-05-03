@@ -8,7 +8,7 @@ import com.intellij.openapi.Disposable;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.workbench.ProjectModelFilter;
-import com.intellij.openapi.startup.StartupActivity;
+import jetbrains.mps.ide.util.MPSProjectActivity;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.project.MPSProject;
@@ -65,7 +65,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
   private final PersistenceRegistry myRegistry;
   private final ProjectModelFilter myModelFilter;
 
-  public static final class Plug implements StartupActivity.Background {
+  public static final class Plug extends MPSProjectActivity {
 
     @Override
     public void runActivity(@NotNull Project project) {

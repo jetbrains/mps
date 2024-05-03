@@ -27,6 +27,7 @@ import com.intellij.util.indexing.ID;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.ModelDigestHelper;
@@ -44,7 +45,7 @@ import java.util.Map;
  * PersistenceFacility/LazyLoadFacility.getModelHash) and could easily drift away.
  * Again, here would be great to have indexing built on top of model layer, rather than vfs layer
  */
-public class IndexBasedModelDigest implements StartupActivity.Background {
+public class IndexBasedModelDigest extends MPSProjectActivity {
 
   @Override
   public void runActivity(@NotNull Project project) {

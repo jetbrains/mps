@@ -54,6 +54,7 @@
     <import index="fpru" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.psi.search(MPS.IDEA/)" />
     <import index="mx55" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.roots(MPS.IDEA/)" />
     <import index="3t2s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.module(MPS.IDEA/)" />
+    <import index="j9ng" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.util(MPS.Platform/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
@@ -133,6 +134,7 @@
         <property id="1075300953594" name="abstractClass" index="1sVAO0" />
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
         <child id="1095933932569" name="implementedInterface" index="EKbjA" />
+        <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
@@ -4411,9 +4413,6 @@
       <property role="TrG5h" value="Plug" />
       <node concept="2tJIrI" id="5YiFMyhwGp1" role="jymVt" />
       <node concept="3Tm1VV" id="5YiFMyhwxV4" role="1B3o_S" />
-      <node concept="3uibUv" id="5YiFMyhwFNX" role="EKbjA">
-        <ref role="3uigEE" to="v27p:~StartupActivity$Background" resolve="StartupActivity.Background" />
-      </node>
       <node concept="3clFb_" id="5YiFMyhwGWo" role="jymVt">
         <property role="TrG5h" value="runActivity" />
         <node concept="3Tm1VV" id="5YiFMyhwGWp" role="1B3o_S" />
@@ -4509,6 +4508,9 @@
         <node concept="2AHcQZ" id="5YiFMyhwGWy" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
+      </node>
+      <node concept="3uibUv" id="5vpqdbnsFiZ" role="1zkMxy">
+        <ref role="3uigEE" to="j9ng:~MPSProjectActivity" resolve="MPSProjectActivity" />
       </node>
     </node>
     <node concept="2tJIrI" id="5aJlj9qOiov" role="jymVt" />
