@@ -17,6 +17,10 @@ package jetbrains.mps.migration.global;
 
 import jetbrains.mps.project.Project;
 
+/**
+ * Intended for use by the MPS team only, see MPS-31055
+ * Cleanup migrations are project migrations which are run before the project and migrations consistency is checked. Which means they can fix the state of the project.
+ */
 public interface CleanupProjectMigration extends ProjectMigration {
   void forceExecutionNextTime(Project p);
 }
