@@ -9731,7 +9731,7 @@
                                   <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                                   <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                                   <node concept="Xl_RD" id="5JD50C$RiEg" role="37wK5m">
-                                    <property role="Xl_RC" value="  at %n%s" />
+                                    <property role="Xl_RC" value="%n  at %s" />
                                   </node>
                                   <node concept="AH0OO" id="5JD50C$RoI3" role="37wK5m">
                                     <node concept="37vLTw" id="5JD50C$RsSa" role="AHEQo">

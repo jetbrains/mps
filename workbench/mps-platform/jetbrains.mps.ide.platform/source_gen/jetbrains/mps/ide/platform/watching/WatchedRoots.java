@@ -88,7 +88,7 @@ public class WatchedRoots {
           StringBuilder sb = new StringBuilder("Remove watch request submitted to disposed LocalFileSystem. Caller should be updated:");
           StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
           for (int idx = 0; idx < stackTrace.length; idx++) {
-            sb.append(String.format("  at %n%s", stackTrace[idx]));
+            sb.append(String.format("%n  at %s", stackTrace[idx]));
           }
           if (LOG.isWarningLevel()) {
             LOG.warning(sb.toString());
