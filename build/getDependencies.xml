@@ -330,7 +330,7 @@
     <unzip src="${basedir}/../lib/app.jar" dest="${basedir}/../lib/platform-impl/"/>
     <delete file="${basedir}/../lib/platform-impl/idea/IdeaApplicationInfo.xml"/>
     <delete file="${basedir}/../lib/platform-impl/META-INF/IdeaPlugin.xml"/>
-    <jar basedir="${basedir}/../lib/platform-impl/" destfile="${basedir}/../lib/platform-impl.patched.jar" zip64Mode="always"/>
+    <jar basedir="${basedir}/../lib/platform-impl/" destfile="${basedir}/../lib/platform-impl.patched.jar" zip64Mode="as-needed"/>
     <copy file="${basedir}/../lib/platform-impl.patched.jar" tofile="${basedir}/../lib/app.jar" overwrite="true"/>
     <delete file="${basedir}/../lib/platform-impl.patched.jar"/>
     <delete dir="${basedir}/../lib/platform-impl/"/>
