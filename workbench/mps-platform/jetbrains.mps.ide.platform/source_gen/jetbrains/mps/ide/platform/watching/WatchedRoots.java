@@ -85,10 +85,13 @@ public class WatchedRoots {
         LocalFileSystem localFileSystem = LocalFileSystem.getInstance();
         if (localFileSystem instanceof LocalFileSystemImpl && !(((LocalFileSystemImpl) localFileSystem).getFileWatcher().isOperational())) {
           // TODO: remove when sure that can not be called after FS dispose
+          StringBuilder sb = new StringBuilder("Remove watch request submitted to disposed LocalFileSystem. Caller should be updated:");
           StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-          String warning = String.format("Remove watch request submitted to disposed LocalFileSystem. Caller should be updated:%n%s", (stackTrace.length >= 2 ? stackTrace[1].toString() : "No stack trace available"));
+          for (int idx = 0; idx < stackTrace.length; idx++) {
+            sb.append(String.format("  at %n%s", stackTrace[idx]));
+          }
           if (LOG.isWarningLevel()) {
-            LOG.warning(warning);
+            LOG.warning(sb.toString());
           }
         } else {
           localFileSystem.removeWatchedRoot(req);

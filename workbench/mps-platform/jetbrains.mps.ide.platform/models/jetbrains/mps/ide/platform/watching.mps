@@ -168,6 +168,9 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ">
         <child id="1214996921760" name="bound" index="3ztrMU" />
       </concept>
@@ -275,6 +278,7 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="1214918800624" name="jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression" flags="nn" index="3uNrnE" />
       <concept id="3093926081414150598" name="jetbrains.mps.baseLanguage.structure.MultipleCatchClause" flags="ng" index="3uVAMA">
         <child id="8276990574895933173" name="catchBody" index="1zc67A" />
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
@@ -293,16 +297,15 @@
       <concept id="1144230876926" name="jetbrains.mps.baseLanguage.structure.AbstractForStatement" flags="nn" index="1DupvO">
         <child id="1144230900587" name="variable" index="1Duv9x" />
       </concept>
+      <concept id="1144231330558" name="jetbrains.mps.baseLanguage.structure.ForStatement" flags="nn" index="1Dw8fO">
+        <child id="1144231399730" name="condition" index="1Dwp0S" />
+        <child id="1144231408325" name="iteration" index="1Dwrff" />
+      </concept>
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
-      </concept>
-      <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
-        <child id="1163668914799" name="condition" index="3K4Cdx" />
-        <child id="1163668922816" name="ifTrue" index="3K4E3e" />
-        <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="1208890769693" name="jetbrains.mps.baseLanguage.structure.ArrayLengthOperation" flags="nn" index="1Rwk04" />
@@ -9679,6 +9682,23 @@
                           </node>
                         </node>
                       </node>
+                      <node concept="3cpWs8" id="5JD50C$Qpli" role="3cqZAp">
+                        <node concept="3cpWsn" id="5JD50C$Qplj" role="3cpWs9">
+                          <property role="TrG5h" value="sb" />
+                          <node concept="3uibUv" id="5JD50C$Qowd" role="1tU5fm">
+                            <ref role="3uigEE" to="wyt6:~StringBuilder" resolve="StringBuilder" />
+                          </node>
+                          <node concept="2ShNRf" id="5JD50C$Qplk" role="33vP2m">
+                            <node concept="1pGfFk" id="5JD50C$Qpll" role="2ShVmc">
+                              <property role="373rjd" value="true" />
+                              <ref role="37wK5l" to="wyt6:~StringBuilder.&lt;init&gt;(java.lang.String)" resolve="StringBuilder" />
+                              <node concept="Xl_RD" id="5JD50C$Qplm" role="37wK5m">
+                                <property role="Xl_RC" value="Remove watch request submitted to disposed LocalFileSystem. Caller should be updated:" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
                       <node concept="3cpWs8" id="7bL9UJ7q13l" role="3cqZAp">
                         <node concept="3cpWsn" id="7bL9UJ7q13m" role="3cpWs9">
                           <property role="TrG5h" value="stackTrace" />
@@ -9698,52 +9718,67 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="3cpWs8" id="7bL9UJ7pV9$" role="3cqZAp">
-                        <node concept="3cpWsn" id="7bL9UJ7pV9_" role="3cpWs9">
-                          <property role="TrG5h" value="warning" />
-                          <node concept="17QB3L" id="7bL9UJ7pV9g" role="1tU5fm" />
-                          <node concept="2YIFZM" id="7bL9UJ7pWjh" role="33vP2m">
-                            <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
-                            <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                            <node concept="Xl_RD" id="7bL9UJ7pV9A" role="37wK5m">
-                              <property role="Xl_RC" value="Remove watch request submitted to disposed LocalFileSystem. Caller should be updated:%n%s" />
-                            </node>
-                            <node concept="3K4zz7" id="7bL9UJ7q2JC" role="37wK5m">
-                              <node concept="2OqwBi" id="7bL9UJ7q3ei" role="3K4E3e">
-                                <node concept="AH0OO" id="7bL9UJ7q36G" role="2Oq$k0">
-                                  <node concept="3cmrfG" id="7bL9UJ7q399" role="AHEQo">
-                                    <property role="3cmrfH" value="1" />
-                                  </node>
-                                  <node concept="37vLTw" id="7bL9UJ7q2MM" role="AHHXb">
-                                    <ref role="3cqZAo" node="7bL9UJ7q13m" resolve="stackTrace" />
-                                  </node>
-                                </node>
-                                <node concept="liA8E" id="7bL9UJ7q3tN" role="2OqNvi">
-                                  <ref role="37wK5l" to="wyt6:~StackTraceElement.toString()" resolve="toString" />
-                                </node>
+                      <node concept="1Dw8fO" id="5JD50C$QA4y" role="3cqZAp">
+                        <node concept="3clFbS" id="5JD50C$QA4$" role="2LFqv$">
+                          <node concept="3clFbF" id="5JD50C$R8Ki" role="3cqZAp">
+                            <node concept="2OqwBi" id="5JD50C$Rbmm" role="3clFbG">
+                              <node concept="37vLTw" id="5JD50C$R8Kg" role="2Oq$k0">
+                                <ref role="3cqZAo" node="5JD50C$Qplj" resolve="sb" />
                               </node>
-                              <node concept="Xl_RD" id="7bL9UJ7q3vC" role="3K4GZi">
-                                <property role="Xl_RC" value="No stack trace available" />
-                              </node>
-                              <node concept="2d3UOw" id="7bL9UJ7q2GW" role="3K4Cdx">
-                                <node concept="2OqwBi" id="7bL9UJ7q1f0" role="3uHU7B">
-                                  <node concept="37vLTw" id="7bL9UJ7q13q" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="7bL9UJ7q13m" resolve="stackTrace" />
+                              <node concept="liA8E" id="5JD50C$RcFN" role="2OqNvi">
+                                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                                <node concept="2YIFZM" id="5JD50C$RgkD" role="37wK5m">
+                                  <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                                  <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                                  <node concept="Xl_RD" id="5JD50C$RiEg" role="37wK5m">
+                                    <property role="Xl_RC" value="  at %n%s" />
                                   </node>
-                                  <node concept="1Rwk04" id="7bL9UJ7q1qf" role="2OqNvi" />
-                                </node>
-                                <node concept="3cmrfG" id="7bL9UJ7q2yP" role="3uHU7w">
-                                  <property role="3cmrfH" value="2" />
+                                  <node concept="AH0OO" id="5JD50C$RoI3" role="37wK5m">
+                                    <node concept="37vLTw" id="5JD50C$RsSa" role="AHEQo">
+                                      <ref role="3cqZAo" node="5JD50C$QA4_" resolve="idx" />
+                                    </node>
+                                    <node concept="37vLTw" id="5JD50C$Rn19" role="AHHXb">
+                                      <ref role="3cqZAo" node="7bL9UJ7q13m" resolve="stackTrace" />
+                                    </node>
+                                  </node>
                                 </node>
                               </node>
                             </node>
                           </node>
                         </node>
+                        <node concept="3cpWsn" id="5JD50C$QA4_" role="1Duv9x">
+                          <property role="TrG5h" value="idx" />
+                          <node concept="10Oyi0" id="5JD50C$QB5V" role="1tU5fm" />
+                          <node concept="3cmrfG" id="5JD50C$QD66" role="33vP2m">
+                            <property role="3cmrfH" value="0" />
+                          </node>
+                        </node>
+                        <node concept="3eOVzh" id="5JD50C$QZ6u" role="1Dwp0S">
+                          <node concept="2OqwBi" id="5JD50C$R1L1" role="3uHU7w">
+                            <node concept="37vLTw" id="5JD50C$R082" role="2Oq$k0">
+                              <ref role="3cqZAo" node="7bL9UJ7q13m" resolve="stackTrace" />
+                            </node>
+                            <node concept="1Rwk04" id="5JD50C$R4rs" role="2OqNvi" />
+                          </node>
+                          <node concept="37vLTw" id="5JD50C$QWNa" role="3uHU7B">
+                            <ref role="3cqZAo" node="5JD50C$QA4_" resolve="idx" />
+                          </node>
+                        </node>
+                        <node concept="3uNrnE" id="5JD50C$R6uj" role="1Dwrff">
+                          <node concept="37vLTw" id="5JD50C$R6ul" role="2$L3a6">
+                            <ref role="3cqZAo" node="5JD50C$QA4_" resolve="idx" />
+                          </node>
+                        </node>
                       </node>
                       <node concept="RRSsy" id="7bL9UJ7pUXe" role="3cqZAp">
                         <property role="RRSoG" value="gZ5fksE/warn" />
-                        <node concept="37vLTw" id="7bL9UJ7pV9B" role="RRSoy">
-                          <ref role="3cqZAo" node="7bL9UJ7pV9_" resolve="warning" />
+                        <node concept="2OqwBi" id="5JD50C$RyDL" role="RRSoy">
+                          <node concept="37vLTw" id="7bL9UJ7pV9B" role="2Oq$k0">
+                            <ref role="3cqZAo" node="5JD50C$Qplj" resolve="sb" />
+                          </node>
+                          <node concept="liA8E" id="5JD50C$R_2S" role="2OqNvi">
+                            <ref role="37wK5l" to="wyt6:~StringBuilder.toString()" resolve="toString" />
+                          </node>
                         </node>
                       </node>
                     </node>
