@@ -25,7 +25,6 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.SwingUtilities;
 import java.lang.reflect.InvocationTargetException;
-import java.util.concurrent.Callable;
 
 /**
  * Interface to platform-specific access to Event Dispatch Thread.
@@ -33,13 +32,8 @@ import java.util.concurrent.Callable;
  */
 public class ThreadUtils {
 
-  @Nullable
-  public static <T> T computeInBGTOrNull(@NotNull Callable<T> code) {
-    try {
-      return ProcessIOExecutorService.INSTANCE.submit(code).get();
-    } catch (Exception e) {
-      return null;
-    }
+  public static void submitToBGT(@NotNull Runnable code) {
+      ProcessIOExecutorService.INSTANCE.submit(code);
   }
 
   @Nullable
