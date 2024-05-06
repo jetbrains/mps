@@ -71,6 +71,8 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
     // but now project libraries get initialized from a lifecycle listener, and I see no point to care to init PLM here.
     // The dependency was introduced in db00760f. Proper dispose order is ensured by the listener now.
     myManager = MPSCoreComponents.getInstance().getPlatform().findComponent(VFSManager.class);
+    myListener = new ModuleFileChangeListener(this);
+    addListener(myListener);
   }
 
   @Override
@@ -99,8 +101,6 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
 
   @Override
   public void initComponent() {
-    myListener = new ModuleFileChangeListener(this);
-    addListener(myListener);
     super.initComponent();
   }
 
