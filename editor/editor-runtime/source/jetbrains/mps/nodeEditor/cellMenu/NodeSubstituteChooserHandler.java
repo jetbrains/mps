@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -203,9 +202,7 @@ public class NodeSubstituteChooserHandler {
   }
 
   private <T> T runRead(final Computable<T> c) {
-    final ComputeRunnable<T> r = new ComputeRunnable<>(c);
-    getRepository().getModelAccess().runReadAction(r);
-    return r.getResult();
+    return getRepository().getModelAccess().computeReadAction(c::compute);
   }
 
   interface MatcherFactory {

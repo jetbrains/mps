@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,12 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.util.RunWithOutcome;
+
+import java.util.function.Supplier;
 
 /**
  * Facility to bridge {@link jetbrains.mps.util.Computable} with openapi's {@link org.jetbrains.mps.openapi.module.ModelAccess} methods.
@@ -60,7 +62,7 @@ public final class ModelAccessHelper {
      * Shall be invoked from EDT thread.
      */
   public <T> T executeCommand(final Computable<T> c) {
-    final ComputeRunnable<T> r = new ComputeRunnable<>(c);
+    final RunWithOutcome<T> r = new RunWithOutcome<>((Supplier<T>) c::compute);
     myModelAccess.executeCommand(r);
     return r.getResult();
   }

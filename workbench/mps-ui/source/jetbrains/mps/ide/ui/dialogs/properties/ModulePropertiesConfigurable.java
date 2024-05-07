@@ -615,8 +615,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
           selectionSet = new ConditionalIterable<>(selectionSet, new VisibleModuleCondition());
         }
 
-        final ModuleCollector moduleCollector = new ModuleCollector(selectionSet);
-        final List<SModuleReference> c = myMPSProject.getModelAccess().computeReadAction(moduleCollector::compute);
+        final List<SModuleReference> c = myMPSProject.getModelAccess().computeReadAction(new ModuleCollector(selectionSet));
         final String dialogTitle = isDevkit ? "Choose DevKit contents" : "Choose modules";
         final List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, dialogTitle, c);
         if (list.isEmpty()) {
@@ -800,8 +799,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
       decorator.setAddAction(anActionButton -> {
         Iterable<SModule> modules = new ConditionalIterable<>(getProjectModules(), new ModuleInstanceCondition(Solution.class));
         modules = new ConditionalIterable<>(modules, new VisibleModuleCondition());
-        final ModuleCollector moduleCollector = new ModuleCollector(modules);
-        List<SModuleReference> c = myMPSProject.getModelAccess().computeReadAction(moduleCollector::compute);
+        List<SModuleReference> c = myMPSProject.getModelAccess().computeReadAction(new ModuleCollector(modules));
         List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, "Choose solutions", c);
         for (SModuleReference reference : list) {
           myRuntimeTableModel.addItem(reference);

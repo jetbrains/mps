@@ -72,7 +72,6 @@ import jetbrains.mps.smodel.ModelDependencyScanner;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.ConditionalIterable;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IterableUtil;
@@ -400,9 +399,9 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
       decorator.setAddAction(anActionButton -> {
         Iterable<SModule> modules = new ConditionalIterable<>(getProjectModules(), new ModuleInstanceCondition(Language.class, DevKit.class));
         modules = new ConditionalIterable<>(modules, new VisibleModuleCondition());
-        ComputeRunnable<List<SModuleReference>> c = new ComputeRunnable<>(new ModuleCollector(modules));
-        myMPSProject.getModelAccess().runReadAction(c);
-        List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, PropertiesBundle.message("model.usedlanguages.choose"), c.getResult());
+        List<SModuleReference> c = myMPSProject.getModelAccess().computeReadAction(new ModuleCollector(modules));
+        ;
+        List<SModuleReference> list = CommonChoosers.showModuleSetChooser(myMPSProject, PropertiesBundle.message("model.usedlanguages.choose"), c);
         for (SModuleReference reference : list) {
           myUsedLangsTableModel.addItem(reference);
         }

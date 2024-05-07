@@ -24,13 +24,14 @@ import jetbrains.mps.ide.undo.WorkbenchUndoHandler;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.undo.DefaultUndoContext;
 import jetbrains.mps.smodel.undo.UndoContext;
-import jetbrains.mps.util.ComputeRunnable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.util.RunWithOutcome;
 
 import java.math.BigDecimal;
+import java.util.concurrent.Callable;
 
 import static java.math.BigDecimal.valueOf;
 
@@ -221,12 +222,8 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
     TaskTimer taskTimer = new TaskTimer();
     // tryWrite ensures our command runnable would be executed from a distinct thread and hence would be 'top' one
     final LockRunnable lockRunnable = new LockRunnable(getWriteLock(), WAIT_FOR_WRITE_LOCK_MILLIS, wrapWithModelWriteDispatch(wrapTopCommandRunnable(r, project)));
-    ComputeRunnable<WriteTimeOutException> computable = new ComputeRunnable<>(() -> {
-      try {
-        myPlatformWriteHelper.tryWrite(new PlatformCancelBlock(lockRunnable));
-      } catch (WriteTimeOutException e) {
-        return e;
-      }
+    RunWithOutcome<Object> computable = new RunWithOutcome<>((Callable<?>) () -> {
+      myPlatformWriteHelper.tryWrite(new PlatformCancelBlock(lockRunnable));
       return null;
     });
     // XXX unlike #executeCommand(Runnable, Project), we don't respect UndoRunnable options here, why?
@@ -241,9 +238,9 @@ public final class WorkbenchModelAccess extends ModelAccess implements Disposabl
       }
     }
     CommandProcessor.getInstance().executeCommand(project.getProject(), computable, name, groupId, confirmUndo);
-    if (computable.getResult() != null) {
+    if (computable.getException() != null) {
       // XXX why on earth do we report platform lock timeout with an exception, while model lock timeout with mere boolean wasExecuted?
-      throw new TimeOutRuntimeException(String.format(IDEA_WRITE_LOCK_FAIL, taskTimer.secondsElapsed()), computable.getResult());
+      throw new TimeOutRuntimeException(String.format(IDEA_WRITE_LOCK_FAIL, taskTimer.secondsElapsed()), computable.getException());
     }
     return lockRunnable.wasExecuted();
   }

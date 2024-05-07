@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,11 +33,10 @@ import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.openapi.editor.selection.Selection.SelectionDirection;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.util.ComputeRunnable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.function.Supplier;
 
 class EditorComponentActions {
   private final HashMap<CellActionType, CellAction> myActionMap;
@@ -108,12 +107,10 @@ class EditorComponentActions {
 
 
   CellAction getComponentAction(final CellActionType type) {
-    final ComputeRunnable<CellAction> r = new ComputeRunnable<>(new ActionGetter(type));
-    myEditorComponent.getEditorContext().getRepository().getModelAccess().runReadAction(r);
-    return r.getResult();
+    return myEditorComponent.getEditorContext().getRepository().getModelAccess().computeReadAction(new ActionGetter(type));
   }
 
-  private class ActionGetter implements Computable<CellAction>{
+  private class ActionGetter implements Supplier<CellAction> {
     private final CellActionType myType;
 
     private ActionGetter(CellActionType type) {
@@ -121,7 +118,7 @@ class EditorComponentActions {
     }
 
     @Override
-    public CellAction compute() {
+    public CellAction get() {
       CellAction action = myActionMap.get(myType);
       if (action != null && action.canExecute(myEditorComponent.getEditorContext())) {
         return action;

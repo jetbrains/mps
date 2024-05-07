@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,27 +15,28 @@
  */
 package jetbrains.mps.ide.ui.dialogs.properties.input;
 
-import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * SModule to SModuleReference
  * @author Artem Tikhomirov
  */
-public class ModuleCollector implements Computable<List<SModuleReference>> {
+public class ModuleCollector implements Supplier<List<SModuleReference>> {
   private final Iterable<SModule> myModules;
 
+  // TODO make it CancellableReadAction!
   public ModuleCollector(@NotNull Iterable<SModule> modules) {
     myModules = modules;
   }
 
   @Override
-  public List<SModuleReference> compute() {
+  public List<SModuleReference> get() {
     ArrayList<SModuleReference> rv = new ArrayList<>(50);
     for (SModule m : myModules) {
       rv.add(m.getModuleReference());
