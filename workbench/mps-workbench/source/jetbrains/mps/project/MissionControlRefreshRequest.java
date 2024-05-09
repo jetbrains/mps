@@ -15,18 +15,12 @@ import java.util.Map;
  */
 public class MissionControlRefreshRequest {
 
-  public static final MissionControlRefreshRequest NONE = new MissionControlRefreshRequest(Collections.emptyList(), Collections.emptyMap());
+  public static final MissionControlRefreshRequest NONE = new MissionControlRefreshRequest(Collections.emptyMap());
 
-  private final Collection<SObject> myToRefresh;
   private final Map<MessagesUpdate, List<SObject>> myToUpdatePresentation;
 
-  public MissionControlRefreshRequest(Collection<SObject> toRefresh, Map<MessagesUpdate, List<SObject>> toUpdatePresentation) {
-    myToRefresh = toRefresh;
+  public MissionControlRefreshRequest(Map<MessagesUpdate, List<SObject>> toUpdatePresentation) {
     myToUpdatePresentation = toUpdatePresentation;
-  }
-
-  public Collection<SObject> getToRefresh() {
-    return myToRefresh;
   }
 
   public Collection<SObject> getToUpdatePresentation(MessagesUpdate update) {

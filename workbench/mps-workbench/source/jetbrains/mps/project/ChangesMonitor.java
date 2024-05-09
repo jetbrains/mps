@@ -42,18 +42,15 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -76,7 +73,7 @@ import java.util.function.Predicate;
   private final MyGenerationStatusListener myGenerationStatusListener = new MyGenerationStatusListener();
   private final MyRepositoryObserver myRepositoryObserver = new MyRepositoryObserver();
   private final MyModelChangeListener myModelChangeListener = new MyModelChangeListener();
-  private final Queue<Update> myUpdatesQueue = new ConcurrentLinkedQueue<>();
+  private final Queue<SObject> myUpdatesQueue = new ConcurrentLinkedQueue<>();
   private final Map<SObject, AtomicInteger> myUpdateCardinality = new ConcurrentHashMap<>();
   private final Map<IFile, List<SModuleReference>> myModuleReferencesCache = new ConcurrentHashMap<>();
 
@@ -165,21 +162,31 @@ import java.util.function.Predicate;
     }
     
     RefreshRequestBuilder requestBuilder = null;
-    Update next;
-    while((next = myUpdatesQueue.poll()) != null) {
-      AtomicInteger leftInQueue = myUpdateCardinality.computeIfPresent(next.mySObject, (__, card) -> card.decrementAndGet() > 0 ? card : null);
+
+    for(SObject next; (next = myUpdatesQueue.poll()) != null;) {
+      AtomicInteger leftInQueue = myUpdateCardinality.computeIfPresent(next, (__, card) -> card.decrementAndGet() > 0 ? card : null);
       if (leftInQueue != null) continue;
-      myUpdateCardinality.remove(next.mySObject);
+      myUpdateCardinality.remove(next);
       if (requestBuilder == null) {
         requestBuilder = new RefreshRequestBuilder();
       }
-      next.buildRequest(requestBuilder, this::checkModel, this::checkModule);
+      buildRequest(next, requestBuilder, this::checkModel, this::checkModule);
       if (progressIndicator.isCanceled()) {
         break;
       }
     }
     
     return requestBuilder != null ? requestBuilder.toRefreshRequest() : MissionControlRefreshRequest.NONE;
+  }
+
+  private void buildRequest(SObject sObject, RefreshRequestBuilder builder, Function<SModel, MessagesUpdate> modelChecker, Function<SModule, MessagesUpdate> moduleChecker) {
+    MessagesUpdate update = sObject.ifHasSModel(modelChecker);
+    if (update == null) {
+      update = sObject.ifHasSModule(moduleChecker);
+    }
+    if (update != null) {
+      builder.toUpdatePresentation.computeIfAbsent(update, __ ->new ArrayList<>()).add(sObject);
+    }
   }
 
   private MessagesUpdate checkModule(SModule module) {
@@ -195,7 +202,7 @@ import java.util.function.Predicate;
         myMessagesContainer.reportMessages(module.getModuleReference(), messages);
         event = event == MessagesUpdate.NONE ? MessagesUpdate.APPEARED : MessagesUpdate.CHANGED;
       }
-      module.getModels().forEach(m -> enqueueUpdate(m, Update::check));
+      module.getModels().forEach(this::enqueueUpdate);
     }
     return event;
   }
@@ -297,13 +304,13 @@ import java.util.function.Predicate;
     forAllModulesInRepository(module -> enqueueUpdate(module, Update::check));
   }
 
-  private void enqueueUpdate(SModel model, Function<? super Update, ? extends Update> updateFun) {
+  private void enqueueUpdate(SModel model) {
     SObject sObject = SObject.of(model);
     myUpdateCardinality.computeIfAbsent(sObject, __ -> new AtomicInteger(0)).incrementAndGet();
-    myUpdatesQueue.add(updateFun.apply(new Update(sObject)));
+    myUpdatesQueue.add(sObject);
   }
 
-  private void enqueueUpdate(SModule module, Function<? super Update, ? extends Update> updateFun) {
+  private void enqueueUpdate(SModule module) {
     if (module instanceof TempModule) return;
     SObject sObject = SObject.of(module);
     if (module instanceof AbstractModule) {
@@ -312,7 +319,7 @@ import java.util.function.Predicate;
       cacheModuleReference(descriptorFile, module.getModuleReference());
     }
     myUpdateCardinality.computeIfAbsent(sObject, __ -> new AtomicInteger(0)).incrementAndGet();
-    myUpdatesQueue.add(updateFun.apply(new Update(sObject)));
+    myUpdatesQueue.add(sObject);
   }
 
   protected static class ModelExceptionError extends ModelReportItemBase {
@@ -338,46 +345,7 @@ import java.util.function.Predicate;
     }
   }
 
-  protected static class Update {
-
-    private final SObject mySObject;
-    private volatile boolean myToRefresh = false;
-    private volatile boolean myToCheck = false;
-
-    public Update(SObject sObject) {
-      this.mySObject = sObject;
-    }
-
-    protected Update refresh() {
-      myToRefresh = true;
-      return this;
-    }
-
-    protected Update check() {
-      myToCheck = true;
-      return this;
-    }
-
-    protected void buildRequest(RefreshRequestBuilder builder, Function<SModel, MessagesUpdate> modelChecker, Function<SModule, MessagesUpdate> moduleChecker) {
-      if (myToCheck) {
-        MessagesUpdate update = mySObject.ifHasSModel(modelChecker);
-        if (update == null) {
-          update = mySObject.ifHasSModule(moduleChecker);
-        }
-        if (update != null) {
-          builder.toUpdatePresentation.computeIfAbsent(update, __ ->new ArrayList<>()).add(mySObject);
-        }
-      };
-      if (myToRefresh) {
-        builder.toRefresh.add(mySObject);
-      }
-    }
-
-  }
-
   protected static class RefreshRequestBuilder {
-
-    Set<SObject> toRefresh = new HashSet<>();
     Map<MessagesUpdate, List<SObject>> toUpdatePresentation = new HashMap<>();
 
     MissionControlRefreshRequest toRefreshRequest() {
@@ -390,34 +358,30 @@ import java.util.function.Predicate;
 
     @Override
     public void modelAdded(SModule module, SModel model) {
-      enqueueUpdate(module, Update::refresh);
       enqueueAllModulesInProject();
     }
 
     @Override
     public void modelRemoved(SModule module, SModelReference ref) {
       myMessagesContainer.clearMessages(ref);
-      enqueueUpdate(module, Update::refresh);
       enqueueAllModulesInProject();
     }
 
     @Override
     public void modelRenamed(SModule module, SModel model, SModelReference oldRef) {
       myMessagesContainer.clearMessages(oldRef);
-      enqueueUpdate(module, Update::refresh);
       enqueueAllModulesInProject();
     }
 
     @Override
     public void moduleRenamed(@NotNull SModule module, @NotNull SModuleReference oldRef) {
       myMessagesContainer.clearMessages(oldRef);
-      enqueueUpdate(module, Update::refresh);
       enqueueAllModulesInProject();
     }
 
     @Override
     public void moduleChanged(SModule module) {
-      enqueueUpdate(module, Update::refresh);
+      enqueueUpdate(module);
       enqueueAllModulesInProject();
     }
   }
@@ -450,7 +414,7 @@ import java.util.function.Predicate;
 
     @Override
     public void generatedFilesChanged(Collection<SModel> models) {
-      models.forEach(m -> enqueueUpdate(m, Update::check));
+      models.forEach(ChangesMonitor.this::enqueueUpdate);
     }
   }
 
@@ -470,34 +434,11 @@ import java.util.function.Predicate;
 
     @Override
     public void modelReplaced(SModel model) {
-      enqueueUpdate(model, Update::refresh);
-    }
-
-    @Override
-    public void modelLoaded(SModel model, boolean partially) {
-//      enqueueUpdate(onUpdate -> onUpdate.refresh(model));
-    }
-
-    @Override
-    public void modelUnloaded(SModel model) {
-//      enqueueUpdate(onUpdate -> onUpdate.refresh(model));
-    }
-
-    @Override
-    public void modelAttached(SModel model, SRepository repository) {
-      // this doesn't seem to be ever called
-//      ((SModelInternal) model).addModelListener(myModelChangeListener);
-    }
-
-    @Override
-    public void modelDetached(SModel model, SRepository repository) {
-      // this doesn't seem to be ever called
-//      ((SModelInternal) model).removeModelListener(myModelChangeListener);
+      enqueueAllModulesInProject();
     }
 
     @Override
     public void moduleAdded(@NotNull SModule module) {
-      enqueueUpdate(module, Update::refresh);
       enqueueAllModulesInProject();
     }
 
@@ -508,7 +449,6 @@ import java.util.function.Predicate;
 
     @Override
     public void moduleChanged(SModule module) {
-      enqueueUpdate(module, Update::refresh);
       enqueueAllModulesInProject();
     }
   }
@@ -517,17 +457,17 @@ import java.util.function.Predicate;
 
     @Override
     public void modelChanged(SModel model) {
-      enqueueUpdate(model, Update::refresh);
+      enqueueUpdate(model);
     }
 
     @Override
     public void modelChangedDramatically(SModel model) {
-      enqueueUpdate(model, Update::refresh);
+      enqueueUpdate(model);
     }
 
     @Override
     public void modelSaved(SModel model) {
-      enqueueUpdate(model, Update::check);
+      enqueueUpdate(model);
     }
 
   }
