@@ -4628,11 +4628,11 @@
             <node concept="398BVA" id="39MFrfLw3nl" role="1BurEY">
               <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
               <node concept="2Ry0Ak" id="1w78goyRUDB" role="iGT6I">
-                <property role="2Ry0Am" value="app.jar" />
+                <property role="2Ry0Am" value="lib.jar" />
               </node>
             </node>
             <node concept="3yrxFa" id="39MFrfLw4kI" role="2gdwQb">
-              <ref role="3yrxFb" node="4LdE6kxkp0J" />
+              <ref role="3yrxFb" node="4SADOBb5p5j" />
             </node>
           </node>
         </node>
