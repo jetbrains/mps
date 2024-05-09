@@ -4,6 +4,7 @@
 package jetbrains.mps.project;
 
 import com.intellij.ide.PowerSaveMode;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProcessCanceledException;
@@ -51,6 +52,8 @@ import java.util.concurrent.atomic.AtomicReference;
  * @author Fedor Isakov
  */
 public class MissionControl implements Disposable {
+
+  /*package*/ static final Logger LOG = Logger.getInstance(MissionControl.class);
 
   public static CheckerCategory GENERATION_STATUS = new CheckerCategory(KindLevel.PROJECT, "generation status");
 
@@ -158,6 +161,9 @@ public class MissionControl implements Disposable {
       // process results of previous runs
       MissionControlRefreshRequest refreshRequest = instance.myRefreshRequest.getAndSet(MissionControlRefreshRequest.NONE);
       if (refreshRequest != MissionControlRefreshRequest.NONE) {
+        if (LOG.isDebugEnabled()) {
+          LOG.debug("dispatching refresh request");
+        }
         MissionControlListener listener = instance.myProject.getMessageBus().syncPublisher(MissionControlListener.MISSION_CONTROL_UPDATE);
         ApplicationManager.getApplication().invokeLater(() -> listener.requestReceived(refreshRequest));
       }

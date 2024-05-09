@@ -297,11 +297,17 @@ import java.util.function.Predicate;
   }
 
   private void enqueueAllModulesInProject() {
-    forAllModulesInProject(module -> enqueueUpdate(module, Update::check));
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("enqueueAllModulesInProject");
+    }
+    forAllModulesInProject(this::enqueueUpdate);
   }
 
   private void enqueueAllModulesInRepository() {
-    forAllModulesInRepository(module -> enqueueUpdate(module, Update::check));
+    if (LOG.isDebugEnabled()) {
+      LOG.debug("enqueueAllModulesInRepository");
+    }
+    forAllModulesInRepository(this::enqueueUpdate);
   }
 
   private void enqueueUpdate(SModel model) {
@@ -349,7 +355,10 @@ import java.util.function.Predicate;
     Map<MessagesUpdate, List<SObject>> toUpdatePresentation = new HashMap<>();
 
     MissionControlRefreshRequest toRefreshRequest() {
-      return new MissionControlRefreshRequest(toRefresh, toUpdatePresentation);
+      if (LOG.isDebugEnabled()) {
+        LOG.debug(String.format("refresh request with %d to updatePresentation", toUpdatePresentation.size()));
+      }
+      return new MissionControlRefreshRequest(toUpdatePresentation);
     }
 
   }
