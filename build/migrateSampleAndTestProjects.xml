@@ -41,10 +41,17 @@
     </present>
     <!--
     alternatively:
-    includes="testFS,testBehavior,simpleProject,testCloneModule,testCompilation,testRefactoring,build.mps.runner.test,build.mps.runner.test/project,testRefactoringWithMigration/MoveConcept_MPS_27372,testCompilationJavaXmlConflict"
+    includes="testBehavior,simpleProject,testCloneModule,testCompilation,testRefactoring,build.mps.runner.test,build.mps.runner.test/project,testRefactoringWithMigration/MoveConcept_MPS_27372,testCompilationJavaXmlConflict"
     -->
     <exclude name="testCompilation" />
   </dirset>
+
+  <dirset id="testbench-projects" dir="${basedir}/testbench/projects">
+    <present targetdir="${basedir}/testbench/projects">
+      <globmapper from="*" to="*/.mps"/>
+    </present>
+  </dirset>
+
 
   <target name="migrateSampleProjects">
     <migrate mpsHome="${mps_home}" makeDistribModules="false" autoPluginDiscovery="true">
@@ -99,6 +106,7 @@
       <project path="${basedir}/testbench/modules/build.mps.runner.test/project"/>
       <project path="${basedir}/testbench/modules/testRefactoringWithMigration/MoveConcept_MPS_27372"/>
       <dirset refid="testbench-modules"/>
+      <dirset refid="testbench-projects"/>
       <jvmargs>
         <arg value="-Xmx1200m" />
         <arg value="-ea" />
