@@ -1215,14 +1215,6 @@
       <property role="1sEMCp" value="testing-languages.html#migrationtests" />
       <ref role="1fZFei" to="rliy:46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
-    <node concept="1TJgyj" id="4K12N3pJ_iz" role="1TKVEi">
-      <property role="IQ2ns" value="5476670926298698915" />
-      <property role="20kJfa" value="migration_old" />
-      <ref role="20lvS9" to="53vh:4uVwhQyFcjm" resolve="IMigrationUnit" />
-      <node concept="asaX9" id="5BeGwkd5D7k" role="lGtFl">
-        <property role="YLPcu" value="2018.1" />
-      </node>
-    </node>
     <node concept="1TJgyj" id="4K12N3pJ$JC" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="inputNodes" />

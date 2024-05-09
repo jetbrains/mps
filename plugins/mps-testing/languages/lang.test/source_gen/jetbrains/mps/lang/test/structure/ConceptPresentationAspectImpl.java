@@ -346,11 +346,10 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_MigrationReference;
       case LanguageConceptSwitch.MigrationTestCase:
         if (props_MigrationTestCase == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L);
-          cpb.deprecateAssociation(0x4c010b30d9be54a3L, "migration_old");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
           cpb.helpUrl(HELP_URL1);
-          cpb.icon(IconContainer.RESOURCE_a0a4a0a63b0dd);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a63b0dd);
           props_MigrationTestCase = cpb.create();
         }
         return props_MigrationTestCase;
