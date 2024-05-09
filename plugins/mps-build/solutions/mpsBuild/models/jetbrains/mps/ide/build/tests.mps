@@ -6651,7 +6651,7 @@
               <node concept="2Ry0Ak" id="EpEP7iiij3" role="iGT6I">
                 <property role="2Ry0Am" value="testbench" />
                 <node concept="2Ry0Ak" id="EpEP7iiij4" role="2Ry0An">
-                  <property role="2Ry0Am" value="modules" />
+                  <property role="2Ry0Am" value="testsolutions" />
                   <node concept="2Ry0Ak" id="EpEP7iiij5" role="2Ry0An">
                     <property role="2Ry0Am" value="testRead" />
                   </node>
@@ -6664,7 +6664,7 @@
           <node concept="2Ry0Ak" id="5N4jA$0t5Uh" role="iGT6I">
             <property role="2Ry0Am" value="testbench" />
             <node concept="2Ry0Ak" id="5N4jA$0t5Uj" role="2Ry0An">
-              <property role="2Ry0Am" value="modules" />
+              <property role="2Ry0Am" value="testsolutions" />
               <node concept="2Ry0Ak" id="5N4jA$0t5Ul" role="2Ry0An">
                 <property role="2Ry0Am" value="testRead" />
                 <node concept="2Ry0Ak" id="5N4jA$0t5Un" role="2Ry0An">
@@ -6718,7 +6718,7 @@
               <node concept="2Ry0Ak" id="73GUf$umQF_" role="iGT6I">
                 <property role="2Ry0Am" value="testbench" />
                 <node concept="2Ry0Ak" id="73GUf$umQFA" role="2Ry0An">
-                  <property role="2Ry0Am" value="modules" />
+                  <property role="2Ry0Am" value="testsolutions" />
                   <node concept="2Ry0Ak" id="73GUf$umQFB" role="2Ry0An">
                     <property role="2Ry0Am" value="testRead" />
                     <node concept="2Ry0Ak" id="73GUf$umQFC" role="2Ry0An">
@@ -6744,7 +6744,7 @@
           <node concept="2Ry0Ak" id="2kP5W5yTHGV" role="iGT6I">
             <property role="2Ry0Am" value="testbench" />
             <node concept="2Ry0Ak" id="2kP5W5yTHHc" role="2Ry0An">
-              <property role="2Ry0Am" value="modules" />
+              <property role="2Ry0Am" value="testsolutions" />
               <node concept="2Ry0Ak" id="2kP5W5yTHI9" role="2Ry0An">
                 <property role="2Ry0Am" value="generator-tests" />
                 <node concept="2Ry0Ak" id="2kP5W5yTHIE" role="2Ry0An">
@@ -6781,7 +6781,7 @@
               <node concept="2Ry0Ak" id="73GUf$umQFH" role="iGT6I">
                 <property role="2Ry0Am" value="testbench" />
                 <node concept="2Ry0Ak" id="73GUf$umQFI" role="2Ry0An">
-                  <property role="2Ry0Am" value="modules" />
+                  <property role="2Ry0Am" value="testsolutions" />
                   <node concept="2Ry0Ak" id="73GUf$umQFJ" role="2Ry0An">
                     <property role="2Ry0Am" value="generator-tests" />
                     <node concept="2Ry0Ak" id="73GUf$umQFK" role="2Ry0An">
