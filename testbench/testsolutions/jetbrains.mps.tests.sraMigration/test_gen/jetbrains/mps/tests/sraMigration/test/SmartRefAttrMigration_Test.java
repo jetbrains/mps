@@ -69,7 +69,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
   private static final SNodeReference ref_explicitCellMenu_HasVisible_RefPresentation_RefCell = ref("r:aeb637c7-e64d-4368-92d6-31aeade23002(test.language.editor)/44712766211671999");
   private static final SNodeReference ref_explicitCellMenu_HasVisible_RefPresentation_RPCell = ref("r:aeb637c7-e64d-4368-92d6-31aeade23002(test.language.editor)/44712766211672001");
   private static final SNodeReference ref_explicitCellMenu_Super_RPCell = ref("r:aeb637c7-e64d-4368-92d6-31aeade23002(test.language.editor)/44712766211689888");
-  private static final String PROJECT_PATH = "testbench/modules/testSmartRefAttrMigration/";
+  private static final String PROJECT_PATH = "testbench/projects/testSmartRefAttrMigration/";
   private MPSProject project;
   @Test
   public void test_testImplicitAttr() throws Exception {

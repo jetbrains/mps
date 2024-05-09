@@ -2,7 +2,7 @@
   <property name="env.JAVA_HOME" value="${java.home}/.."/>
   <property name="jdk.home" value="${env.JAVA_HOME}"/>
 
-  <property name="test.project" location="${basedir}/testbench/modules/testSmartRefAttrMigration"/>
+  <property name="test.project" location="${basedir}/testbench/projects/testSmartRefAttrMigration"/>
 
   <!--this will be specified by test.xml-->
   <property name="mps_home" location="build/artifacts/mps"/>
