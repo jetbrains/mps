@@ -40,7 +40,7 @@ import java.util.Collections;
  */
 public class FSListeningTest implements EnvironmentAware {
   private static final File DESTINATION_PROJECT_DIR = new File(FileUtil.getTempDir(), "testFS");
-  private static final File PROJECT_LOCATION = new File("testbench/modules/testFS");
+  private static final File PROJECT_LOCATION = new File("testbench/projects/testFS");
   private static final File MODULE_FILE = new File(PROJECT_LOCATION, "solutions/solution1/solution1.msd");
   private static final File MODEL_FILE = new File(PROJECT_LOCATION, "solutions/solution1/models/solution1/model1.mps");
 
