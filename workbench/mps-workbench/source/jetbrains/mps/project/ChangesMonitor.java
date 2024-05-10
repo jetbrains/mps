@@ -9,6 +9,7 @@ import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.Producer;
+import com.intellij.util.SmartList;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -114,12 +115,12 @@ import java.util.function.Predicate;
   }
 
   protected Collection<SModuleReference> lookupProjectModule(IFile descriptionFile) {
-    Collection<SModuleReference> result = myModuleReferencesCache.getOrDefault(descriptionFile, Collections.emptyList());
+    Collection<SModuleReference> result = myModuleReferencesCache.getOrDefault(descriptionFile, createCache());
     if (result.isEmpty()) {
       // module descriptor file might have been loaded with the "default" file system (java.io.File-based)
-      result = myModuleReferencesCache.getOrDefault(extractIoFile(descriptionFile), Collections.emptyList());
+      result = myModuleReferencesCache.getOrDefault(extractIoFile(descriptionFile), createCache());
     }
-    return result;
+    return new SmartList<>(result);
   }
 
   @Nullable
@@ -139,10 +140,7 @@ import java.util.function.Predicate;
   }
 
   private void cacheModuleReference(@NotNull IFile descriptionFile, @NotNull SModuleReference moduleReference) {
-    List<SModuleReference> cache = myModuleReferencesCache
-                                       .computeIfAbsent(descriptionFile,
-                                                        (__) ->
-                                                            Collections.synchronizedList(new ArrayList<>(2)));
+    List<SModuleReference> cache = myModuleReferencesCache.computeIfAbsent(descriptionFile, (__) -> createCache());
     cache.add(moduleReference);
   }
 
@@ -151,6 +149,11 @@ import java.util.function.Predicate;
       cache.remove(moduleReference);
       return cache.isEmpty() ? null : cache;
     });
+  }
+
+  @NotNull
+  private static List<SModuleReference> createCache() {
+    return Collections.synchronizedList(new ArrayList<>(2));
   }
 
   protected MissionControlRefreshRequest pumpQueue(MessagesContainer messagesContainer, ProgressIndicator progressIndicator) {
