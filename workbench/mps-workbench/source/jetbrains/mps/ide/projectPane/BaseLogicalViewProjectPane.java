@@ -19,11 +19,8 @@ import com.intellij.ide.CopyProvider;
 import com.intellij.ide.CutProvider;
 import com.intellij.ide.PasteProvider;
 import com.intellij.ide.dnd.aware.DnDAwareTree;
-import com.intellij.ide.projectView.NodeSortKey;
 import com.intellij.ide.projectView.ProjectView;
-import com.intellij.ide.projectView.impl.AbstractProjectViewPaneWithAsyncSupport;
 import com.intellij.ide.projectView.impl.BaseProjectViewPaneWithAsyncSupport;
-import com.intellij.ide.projectView.impl.ProjectViewPane;
 import com.intellij.ide.projectView.impl.ProjectViewState;
 import com.intellij.ide.util.treeView.AbstractTreeStructureBase;
 import com.intellij.openapi.actionSystem.ActionPlaces;
@@ -33,15 +30,15 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.ActionCallback;
 import com.intellij.openapi.vcs.VcsDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileManager;
-import com.intellij.openapi.vfs.VirtualFileManagerListener;
+import com.intellij.util.concurrency.EdtExecutorService;
 import com.intellij.util.containers.ContainerUtil;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
+import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.ide.actions.CopyNode_Action;
 import jetbrains.mps.ide.actions.CutNode_Action;
@@ -50,16 +47,14 @@ import jetbrains.mps.ide.actions.SModelActionData;
 import jetbrains.mps.ide.actions.SModuleActionData;
 import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.projectView.MPSProjectViewState;
 import jetbrains.mps.ide.ui.tree.ContextValueProvider;
-import jetbrains.mps.ide.ui.tree.VirtualFolder.Models;
 import jetbrains.mps.ide.ui.tree.VirtualFolder;
+import jetbrains.mps.ide.ui.tree.VirtualFolder.Models;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Modules;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Nodes;
-import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
-import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.IMakeNotificationListener.Stub;
 import jetbrains.mps.make.MakeNotification;
@@ -72,6 +67,8 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
+import jetbrains.mps.smodel.SModelAdapter;
+import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TempModule2;
 import jetbrains.mps.util.Pair;
@@ -86,8 +83,10 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
+import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.repository.CommandListener;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
@@ -102,10 +101,15 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWithAsyncSupport {
-  private final VirtualFileManagerListener myRefreshListener = new RefreshListener();
+
+  private static final Logger LOG = Logger.getLogger(BaseLogicalViewProjectPane.class);
+
   private final MyRepositoryListener myRepositoryListener = new MyRepositoryListener();
+  private final MyModelChangeListener myModelChangeListener = new MyModelChangeListener();
   protected boolean myDisposed;
 
   private final DeployListener myClassesListener = new DeployListener() {
@@ -126,6 +130,14 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       rebuild();
     }
   };
+
+  @Override
+  public @NotNull ActionCallback selectCB(Object element, VirtualFile file, boolean requestFocus) {
+    ActionCallback callback = new ActionCallback();
+    EdtExecutorService.getScheduledExecutorInstance()
+                      .schedule(() -> super.selectCB(element, file, requestFocus).notify(callback), 100, TimeUnit.MILLISECONDS);
+    return callback;
+  }
 
   /**
    * Intentionally made non-abstract to enable compilation of dependent code.
@@ -159,6 +171,24 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     // FIXME
     return ProjectViewState.getInstance(getProject());
   }
+
+  protected void forEachFile(SModule module, Consumer<IFile> fun) {
+    if (module instanceof AbstractModule) {
+      IFile iFile = ((AbstractModule) module).getDescriptorFile();
+      fun.accept(iFile);
+    }
+  }
+
+  protected void forEachFile(SModel model, Consumer<IFile> fun) {
+    DataSource source = model.getSource();
+    if (source instanceof FileSystemBasedDataSource) {
+      for (IFile iFile : ((FileSystemBasedDataSource) source).getAffectedFiles()) {
+        fun.accept(iFile);
+      }
+    }
+  }
+
+  protected abstract void updateFrom(IFile iFile, boolean updateStructure);
 
   public abstract void rebuild();
 
@@ -329,14 +359,13 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     mpsProject.getModelAccess().removeCommandListener(myRepositoryListener);
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).detach();
     mpsProject.getComponent(MakeServiceComponent.class).get().removeListener(myMakeNotificationListener);
-    VirtualFileManager.getInstance().removeVirtualFileManagerListener(myRefreshListener);
   }
 
   protected void addListeners() {
-    VirtualFileManager.getInstance().addVirtualFileManagerListener(myRefreshListener, this);
     jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).attach();
     mpsProject.getModelAccess().addCommandListener(myRepositoryListener);
+
     // XXX here used to be a hasMakeService() check, which I found superfluous,
     //     as we always have make service in UI (at least, we never check for it in other locations)
     //     However, the idea to keep listeners inside MakeServiceComponent and install them into active
@@ -651,71 +680,68 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
   }
 
   private class MyRepositoryListener extends SRepositoryContentAdapter implements CommandListener {
-    private boolean myNeedRebuild = false;
-
-    /*package*/ void rebuildTreeIfNeeded() {
-      if (myNeedRebuild) {
-        rebuild();
-        myNeedRebuild = false;
-      }
-    }
-
-    @Override
-    public void repositoryChanged() {
-      myNeedRebuild = true;
-    }
-
-    @Override
-    public void moduleAdded(@NotNull SModule module) {
-      myNeedRebuild |= !(module instanceof TempModule || module instanceof TempModule2);
-    }
-
-    @Override
-    public void beforeModuleRemoved(@NotNull SModule module) {
-      myNeedRebuild |= !(module instanceof TempModule || module instanceof TempModule2);
-    }
-
-    @Override
-    public void modelRenamed(SModule module, SModel model, SModelReference oldRef) {
-      myNeedRebuild = true;
-    }
 
     @Override
     protected void startListening(SModel model) {
-      if (!model.isReadOnly()) {
-        model.addModelListener(this);
-      }
+      model.addModelListener(this);
+      ((SModelInternal) model).addModelListener(myModelChangeListener);
     }
 
     @Override
     protected void stopListening(SModel model) {
       model.removeModelListener(this);
+      ((SModelInternal) model).removeModelListener(myModelChangeListener);
+    }
+
+    @Override
+    public void moduleAdded(@NotNull SModule module) {
+      if (!(module instanceof TempModule || module instanceof TempModule2)) {
+        updateFromRoot(true);
+      }
+    }
+
+    @Override
+    public void moduleRenamed(@NotNull SModule module, @NotNull SModuleReference oldRef) {
+      updateFromRoot(true);
+    }
+
+    @Override
+    public void beforeModuleRemoved(@NotNull SModule module) {
+      if (!(module instanceof TempModule || module instanceof TempModule2)) {
+        updateFromRoot(true);
+      }
+    }
+
+    @Override
+    public void modelRenamed(SModule module, SModel model, SModelReference oldRef) {
+      forEachFile(module, f -> updateFrom(f, true));
+    }
+
+    @Override
+    public void modelRemoved(SModule module, SModelReference ref) {
+      forEachFile(module, f -> updateFrom(f, true));
+    }
+
+    @Override
+    public void modelAdded(SModule module, SModel model) {
+      forEachFile(module, f -> updateFrom(f, true));
     }
 
     @Override
     public void modelReplaced(SModel model) {
-      myNeedRebuild = true;
-    }
-
-    @Override
-    public void commandStarted() {
-      myNeedRebuild = false;
-    }
-
-    @Override
-    public void commandFinished() {
-      rebuildTreeIfNeeded();
+      forEachFile(model, f -> updateFrom(f, true));
     }
   }
 
-  private class RefreshListener implements VirtualFileManagerListener {
+  private class MyModelChangeListener extends SModelAdapter {
     @Override
-    public void beforeRefreshStart(boolean asynchronous) {
+    public void modelChangedDramatically(SModel model) {
+      forEachFile(model, f -> updateFrom(f, true));
     }
 
     @Override
-    public void afterRefreshFinish(boolean asynchronous) {
-      myRepositoryListener.rebuildTreeIfNeeded();
+    public void modelChanged(SModel model) {
+      forEachFile(model, f -> updateFrom(f, true));
     }
   }
 }

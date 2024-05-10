@@ -27,17 +27,12 @@ import com.intellij.ide.projectView.impl.ProjectViewPane;
 import com.intellij.ide.projectView.impl.ProjectViewTree;
 import com.intellij.ide.util.treeView.AbstractTreeStructureBase;
 import com.intellij.ide.util.treeView.NodeDescriptor;
-import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
-import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.registry.Registry;
-import com.intellij.openapi.util.registry.RegistryValue;
-import com.intellij.openapi.util.registry.RegistryValueListener;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
@@ -56,7 +51,6 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDragSource;
 import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDropTarget;
 import jetbrains.mps.ide.projectView.MPSProjectViewState;
-import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.logging.Logger;
@@ -68,8 +62,6 @@ import jetbrains.mps.project.MessagesUpdate;
 import jetbrains.mps.project.MissionControlListener;
 import jetbrains.mps.project.MissionControlRefreshRequest;
 import jetbrains.mps.smodel.SObject;
-import jetbrains.mps.smodel.tempmodel.TempModule;
-import jetbrains.mps.smodel.tempmodel.TempModule2;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
@@ -78,7 +70,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SRepositoryListener;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import javax.swing.Icon;
@@ -282,12 +273,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
 
   protected void refresh(MissionControlRefreshRequest refreshRequest) {
     ApplicationManager.getApplication().executeOnPooledThread(() -> {
-      for (SObject toRefresh : refreshRequest.getToRefresh()) {
-        if (!toRefresh.ifHasSModel((Consumer<SModel>) model -> forEachFile(model, f -> updateFrom(f, true)))) {
-          toRefresh.ifHasSModule((Consumer<SModule>) module -> forEachFile(module, f -> updateFrom(f, true)));
-        }
-      }
-
       for (var messagesUpdate : new MessagesUpdate[] {MessagesUpdate.APPEARED, MessagesUpdate.DISAPPEARED}) {
         for (SObject toUpdate : refreshRequest.getToUpdatePresentation(messagesUpdate)) {
           if (!toUpdate.ifHasSModel((Consumer<SModel>) model -> forEachFile(model, f -> fireMessageUpdate(messagesUpdate, f)))) {
@@ -296,22 +281,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
         }
       };
     });
-  }
-  
-  private void forEachFile(SModule module, Consumer<IFile> fun) {
-    if (module instanceof AbstractModule) {
-      IFile iFile = ((AbstractModule) module).getDescriptorFile();
-      fun.accept(iFile);
-    }
-  }
-
-  private void forEachFile(SModel model, Consumer<IFile> fun) {
-    DataSource source = model.getSource();
-    if (source instanceof FileSystemBasedDataSource) {
-      for (IFile iFile : ((FileSystemBasedDataSource) source).getAffectedFiles()) {
-        fun.accept(iFile);
-      }
-    }
   }
 
   @SuppressWarnings("removal")
@@ -332,8 +301,9 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     }
   }
 
+  @Override
   @SuppressWarnings("removal")
-  private void updateFrom(IFile iFile, boolean updateStructure) {
+  protected void updateFrom(IFile iFile, boolean updateStructure) {
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
     IdeaFileSystem fileSystem = mpsProject.getFileSystem();
 
