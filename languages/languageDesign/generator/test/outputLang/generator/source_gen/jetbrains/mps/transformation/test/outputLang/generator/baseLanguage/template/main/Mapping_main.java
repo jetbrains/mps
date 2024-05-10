@@ -25,7 +25,7 @@ import jetbrains.mps.generator.impl.reference.RefResolver;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
+import jetbrains.mps.generator.runtime.PatternMatch;
 import jetbrains.mps.generator.template.PatternRuleContext;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.runtime.MapRootRuleBase;
@@ -215,7 +215,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_0(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_0(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -233,7 +233,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_1(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_1(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -292,7 +292,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_2(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_2(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -323,7 +323,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_3(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_3(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -344,7 +344,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_4(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_4(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -392,7 +392,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_5(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_5(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -409,7 +409,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_6(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_6(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
@@ -447,7 +447,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     }
     @Override
     public Collection<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationException {
-      final GeneratedMatchingPattern pattern = QueriesGenerated.patternRule_Condition_0_7(new PatternRuleContext(templateContext, getRuleNode()));
+      final PatternMatch pattern = QueriesGenerated.patternRule_Condition_0_7(new PatternRuleContext(templateContext, getRuleNode()));
       if (pattern == null) {
         return null;
       }
