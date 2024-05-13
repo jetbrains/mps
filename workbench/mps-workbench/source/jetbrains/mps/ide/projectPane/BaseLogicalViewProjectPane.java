@@ -424,8 +424,15 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
 
   @Nullable
   public SModel getContextModel() {
-    List<SModel> selectedModels = getSelectedModels();
-    return selectedModels.isEmpty() ? null : selectedModels.get(0);
+    @Nullable Object[] userObjects = getSingleSelectedPathUserObjects();
+    if (userObjects == null || userObjects.length == 0) {
+      return null;
+    }
+    Object lastUserObject = userObjects[userObjects.length - 1];
+    if (lastUserObject instanceof ContextValueProvider) {
+      return ((ContextValueProvider) lastUserObject).contextValueOfType(SModel.class).orElseGet(() -> null);
+    }
+    return null;
   }
 
   @NotNull
