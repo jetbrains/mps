@@ -14,7 +14,8 @@ import jetbrains.mps.project.MPSProject;
 import java.awt.Frame;
 import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import javax.swing.JOptionPane;
+import com.intellij.openapi.ui.Messages;
+import com.intellij.icons.AllIcons;
 import java.util.Collection;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import java.util.Collections;
@@ -90,7 +91,7 @@ public class RenamePackage_Action extends BaseAction {
     }
     final String packageName = ((VirtualFolder.Nodes) event.getData(MPSCommonDataKeys.VALUE)).getName();
     ModelAccess modelAccess = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess();
-    final String newName = (String) JOptionPane.showInputDialog(event.getData(MPSCommonDataKeys.FRAME), "Enter virtual folder name", "Rename Virtual Folder", JOptionPane.INFORMATION_MESSAGE, null, null, packageName);
+    final String newName = (String) Messages.showInputDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), "Enter virtual folder name", "Rename Virtual Folder", AllIcons.General.InformationDialog, packageName, null);
     if (newName == null) {
       return;
     }

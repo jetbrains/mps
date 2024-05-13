@@ -14223,30 +14223,34 @@
               <node concept="3uibUv" id="2IpDGgs3jL" role="10QFUM">
                 <ref role="3uigEE" to="wyt6:~String" resolve="String" />
               </node>
-              <node concept="2YIFZM" id="5VIEYrBjNSl" role="10QFUP">
-                <ref role="1Pybhc" to="dxuu:~JOptionPane" resolve="JOptionPane" />
-                <ref role="37wK5l" to="dxuu:~JOptionPane.showInputDialog(java.awt.Component,java.lang.Object,java.lang.String,int,javax.swing.Icon,java.lang.Object[],java.lang.Object)" resolve="showInputDialog" />
-                <node concept="2OqwBi" id="5VIEYrBjNSm" role="37wK5m">
-                  <node concept="2WthIp" id="5VIEYrBjNSn" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="5VIEYrBjNSo" role="2OqNvi">
-                    <ref role="2WH_rO" node="5VIEYrBjNFx" resolve="frame" />
+              <node concept="2YIFZM" id="3PMQks_23mH" role="10QFUP">
+                <ref role="37wK5l" to="jkm4:~Messages.showInputDialog(com.intellij.openapi.project.Project,java.lang.String,java.lang.String,javax.swing.Icon,java.lang.String,com.intellij.openapi.ui.InputValidator)" resolve="showInputDialog" />
+                <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+                <node concept="2OqwBi" id="3PMQks_23mI" role="37wK5m">
+                  <node concept="2OqwBi" id="3PMQks_23mJ" role="2Oq$k0">
+                    <node concept="2WthIp" id="3PMQks_23mK" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="3PMQks_23mL" role="2OqNvi">
+                      <ref role="2WH_rO" node="OqYxEj7HKG" resolve="project" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="3PMQks_23mM" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
                   </node>
                 </node>
-                <node concept="Xl_RD" id="5VIEYrBjNSp" role="37wK5m">
+                <node concept="Xl_RD" id="3PMQks_23mN" role="37wK5m">
                   <property role="Xl_RC" value="Enter virtual folder name" />
                 </node>
-                <node concept="Xl_RD" id="2IpDGgrKMp" role="37wK5m">
+                <node concept="Xl_RD" id="3PMQks_23mO" role="37wK5m">
                   <property role="Xl_RC" value="Rename Virtual Folder" />
                 </node>
-                <node concept="10M0yZ" id="2IpDGgrW_T" role="37wK5m">
-                  <ref role="3cqZAo" to="dxuu:~JOptionPane.INFORMATION_MESSAGE" resolve="INFORMATION_MESSAGE" />
-                  <ref role="1PxDUh" to="dxuu:~JOptionPane" resolve="JOptionPane" />
+                <node concept="10M0yZ" id="3PMQks_23mP" role="37wK5m">
+                  <ref role="3cqZAo" to="z2i8:~AllIcons$General.InformationDialog" resolve="InformationDialog" />
+                  <ref role="1PxDUh" to="z2i8:~AllIcons$General" resolve="AllIcons.General" />
                 </node>
-                <node concept="10Nm6u" id="2IpDGgrXmD" role="37wK5m" />
-                <node concept="10Nm6u" id="2IpDGgs23C" role="37wK5m" />
-                <node concept="37vLTw" id="3GM_nagTsOZ" role="37wK5m">
+                <node concept="37vLTw" id="3PMQks_23mQ" role="37wK5m">
                   <ref role="3cqZAo" node="5VIEYrBjNH1" resolve="packageName" />
                 </node>
+                <node concept="10Nm6u" id="3PMQks_25Hs" role="37wK5m" />
               </node>
             </node>
           </node>
