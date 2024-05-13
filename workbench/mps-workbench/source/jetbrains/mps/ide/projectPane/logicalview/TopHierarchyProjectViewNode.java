@@ -80,7 +80,7 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
       presentation.addText(getValue().getName(), SimpleTextAttributes.REGULAR_BOLD_ATTRIBUTES);
       VirtualFile projectDir = ProjectUtil.guessProjectDir(getProject());
       if (projectDir != null) {
-        presentation.addText(String.format("(%s)", projectDir.getPresentableUrl()), SimpleTextAttributes.GRAYED_ATTRIBUTES);
+        presentation.addText(String.format(" (%s)", projectDir.getPresentableUrl()), SimpleTextAttributes.GRAYED_ATTRIBUTES);
       }
     }
 
