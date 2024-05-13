@@ -37,7 +37,7 @@
 }, {
   "name" : "Apache Commons Codec",
   "url" : "https://commons.apache.org/proper/commons-codec/",
-  "version" : "1.16.0",
+  "version" : "1.16.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/apache/commons-codec/blob/master/LICENSE.txt"
 }, {
@@ -49,7 +49,7 @@
 }, {
   "name" : "Apache Commons Compress",
   "url" : "https://commons.apache.org/proper/commons-compress/",
-  "version" : "1.25.0",
+  "version" : "1.26.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://gitbox.apache.org/repos/asf?p=commons-compress.git;a=blob_plain;f=LICENSE.txt;hb=HEAD"
 }, {
@@ -67,7 +67,7 @@
 }, {
   "name" : "Apache Commons IO",
   "url" : "https://commons.apache.org/proper/commons-io/",
-  "version" : "2.15.0",
+  "version" : "2.15.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://gitbox.apache.org/repos/asf?p=commons-io.git;a=blob_plain;f=LICENSE.txt;hb=HEAD"
 }, {
@@ -937,7 +937,7 @@
 }, {
   "name" : "pty4j",
   "url" : "https://github.com/JetBrains/pty4j",
-  "version" : "0.12.25",
+  "version" : "0.12.26",
   "license" : "Eclipse Public License 1.0",
   "licenseUrl" : "https://github.com/JetBrains/pty4j/blob/master/LICENSE"
 }, {

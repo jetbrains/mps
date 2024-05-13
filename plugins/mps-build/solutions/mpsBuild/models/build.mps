@@ -44573,23 +44573,6 @@
             <property role="3MwjfP" value="plugins" />
           </node>
         </node>
-        <node concept="398223" id="2Bn9knK$Hy8" role="39821P">
-          <node concept="3_J27D" id="2Bn9knK$Hy9" role="Nbhlr">
-            <node concept="3Mxwew" id="7k0BSM0Y06U" role="3MwsjC">
-              <property role="3MwjfP" value="yaml" />
-            </node>
-          </node>
-          <node concept="2HvfSZ" id="2Bn9knK$Hyb" role="39821P">
-            <node concept="55IIr" id="2Bn9knK$Hyc" role="2HvfZ0">
-              <node concept="2Ry0Ak" id="2Bn9knK$Hyd" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="2Bn9knK$HC1" role="2Ry0An">
-                  <property role="2Ry0Am" value="yaml" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="398223" id="6ek1Cjkv_G4" role="39821P">
           <node concept="3_J27D" id="6ek1Cjkv_G6" role="Nbhlr">
             <node concept="3Mxwew" id="6ek1Cjkv_GI" role="3MwsjC">

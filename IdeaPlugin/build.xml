@@ -357,6 +357,7 @@
       <classpath>
         <fileset dir="${ideaPath}/lib">
           <include name="**/*.jar"/>
+          <exclude name="frontend/**"/>
         </fileset>
         <fileset dir="${ideaPath}/plugins/java/lib">
           <include name="**/*.jar"/>
@@ -441,6 +442,7 @@
       <classpath>
         <fileset dir="${ideaPath}/lib">
           <include name="**/*.jar"/>
+          <exclude name="frontend/**"/>
         </fileset>
         <fileset dir="${ideaPath}/plugins/java/lib">
           <include name="**/*.jar"/>
@@ -512,6 +514,7 @@
       <classpath>
         <fileset dir="${ideaPath}/lib">
           <include name="**/*.jar"/>
+          <exclude name="frontend/**"/>
           <exclude name="rt/jps-plugin-system.jar"/>
         </fileset>
         <fileset dir="${ideaPath}/plugins/java/lib">
@@ -599,6 +602,7 @@
         <fileset dir="${ideaPath}/lib">
           <exclude name="junit.jar"/>
           <include name="**/*.jar"/>
+          <exclude name="frontend/**"/>
         </fileset>
         <fileset dir="${ideaPath}/plugins/java/lib">
           <include name="**/*.jar"/>
