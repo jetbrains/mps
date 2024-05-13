@@ -54,6 +54,7 @@ import jetbrains.mps.ide.ui.tree.VirtualFolder.Modules;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Nodes;
 import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.IMakeNotificationListener.Stub;
@@ -188,7 +189,16 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     }
   }
 
-  protected abstract void updateFrom(IFile iFile, boolean updateStructure);
+  @SuppressWarnings("removal")
+  protected void updateFrom(IFile iFile, boolean updateStructure) {
+    MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    IdeaFileSystem fileSystem = mpsProject.getFileSystem();
+
+    VirtualFile virtualFile = fileSystem.asVirtualFile(iFile);
+    if (virtualFile != null) {
+      updateFrom(virtualFile, false, updateStructure);
+    }
+  }
 
   public abstract void rebuild();
 

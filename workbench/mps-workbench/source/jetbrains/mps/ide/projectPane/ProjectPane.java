@@ -302,19 +302,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
   }
 
   @Override
-  @SuppressWarnings("removal")
-  protected void updateFrom(IFile iFile, boolean updateStructure) {
-    MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    IdeaFileSystem fileSystem = mpsProject.getFileSystem();
-
-    VirtualFile virtualFile = fileSystem.asVirtualFile(iFile);
-    if (virtualFile != null) {
-      updateFrom(virtualFile, false, updateStructure);
-    }
-  }
-
-
-  @Override
   public void rebuild() {
     // This method can be called from different threads, however updateFromRoot()
     // merely adds an update to the update queue, and thus it's safe to invoke it
