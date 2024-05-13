@@ -11,16 +11,25 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 /**
  * @author Fedor Isakov
  */
-public class ModelInplaceComment extends ModelReportItemBase {
+public class ModelInplaceComment extends ModelReportItemBase implements HasGenerationStatus {
+
+  private final GenerationStatus myStatus;
 
   public ModelInplaceComment(@NotNull MessageStatus severity,
                              @NotNull SModelReference model,
                              @NotNull String message) {
     super(severity, model, message);
+    myStatus = GenerationStatus.NOT_REQUIRED;
   }
 
   public ModelInplaceComment(@NotNull SModelReference modelRef, @NotNull GenerationStatus status) {
     super(MessageStatus.OK, modelRef, status.getMessage());
+    myStatus = status;
+  }
+
+  @Override
+  public GenerationStatus getStatus() {
+    return myStatus;
   }
 
   @Override

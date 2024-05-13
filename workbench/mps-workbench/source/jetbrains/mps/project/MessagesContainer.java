@@ -25,7 +25,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author Fedor Isakov
@@ -77,15 +76,21 @@ public class MessagesContainer implements Disposable {
     return hasMessagesInHierarchy(hierarchyContains, MessageStatus.WARNING, false);
   }
 
-  /**
-   * Tests if there are errors assigned to a node in the S-objects hierarchy. The parameter {@code hierarchyContains}
-   * is used to test whether the hierarchy contains a given S-object.
-   */
   public boolean hasMessagesInHierarchy(Predicate<SObject> hierarchyContains, MessageStatus severity, boolean exactly) {
+    return hasMessagesInHierarchy(hierarchyContains, ReportItem.class::isInstance, severity, exactly);
+  }
+
+    /**
+     * Tests if there are errors assigned to a node in the S-objects hierarchy. The parameter {@code hierarchyContains}
+     * is used to test whether the hierarchy contains a given S-object.
+     */
+  public boolean hasMessagesInHierarchy(Predicate<SObject> hierarchyContains, Predicate<ReportItem> reportItemFilter, MessageStatus severity, boolean exactly) {
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
 
     List<SModuleReference> modulesWithErrors = myModuleMessages.entrySet().stream()
-                                                               .filter(e -> filterMessages(e.getValue(), severity, exactly).findAny().isPresent())
+                                                               .filter(e -> e.getValue().stream()
+                                                                             .filter(reportItemFilter)
+                                                                             .anyMatch(item -> severityIsAtLeast(item.getSeverity(), severity, exactly)))
                                                                .map(Entry::getKey)
                                                                .collect(Collectors.toList());
     if (!modulesWithErrors.isEmpty()) {
@@ -102,7 +107,9 @@ public class MessagesContainer implements Disposable {
     }
 
     List<SModelReference> modelsWithErrors = myModelMessages.entrySet().stream()
-                                                            .filter(e -> filterMessages(e.getValue(), severity, exactly).findAny().isPresent())
+                                                            .filter(e -> e.getValue().stream()
+                                                                          .filter(reportItemFilter)
+                                                                          .anyMatch(item -> severityIsAtLeast(item.getSeverity(), severity, exactly)))
                                                             .map(Entry::getKey)
                                                             .collect(Collectors.toList());
     if (!modelsWithErrors.isEmpty()) {
@@ -119,13 +126,17 @@ public class MessagesContainer implements Disposable {
   }
 
   public List<ReportItem> getMessages(SModuleReference moduleRef, MessageStatus severity, boolean exactly) {
-    return filterMessages(myModuleMessages.getOrDefault(moduleRef, Collections.emptyList()), severity, exactly)
-               .collect(Collectors.toList());
+    List<ReportItem> messages = myModuleMessages.getOrDefault(moduleRef, Collections.emptyList());
+    return messages.stream()
+                   .filter(item -> severityIsAtLeast(item.getSeverity(), severity, exactly))
+                   .collect(Collectors.toList());
   }
 
   public List<ReportItem> getMessages(SModelReference modelRef, MessageStatus severity, boolean exactly) {
-    return filterMessages(myModelMessages.getOrDefault(modelRef, Collections.emptyList()), severity, exactly)
-               .collect(Collectors.toList());
+    List<ReportItem> messages = myModelMessages.getOrDefault(modelRef, Collections.emptyList());
+    return messages.stream()
+                   .filter(item -> severityIsAtLeast(item.getSeverity(), severity, exactly))
+                   .collect(Collectors.toList());
   }
 
   public List<ReportItem> getInfoMessages(SModel model) {
@@ -150,11 +161,6 @@ public class MessagesContainer implements Disposable {
 
   public List<ReportItem> getErrorMessages(SModule module) {
     return getMessages(module.getModuleReference(), MessageStatus.ERROR, true);
-  }
-
-  private static Stream<ReportItem> filterMessages(List<ReportItem> messages, MessageStatus severity, boolean exactly) {
-    return messages.stream()
-                   .filter(item -> severityIsAtLeast(item.getSeverity(), severity, exactly));
   }
 
   private static boolean severityIsAtLeast(MessageStatus severity, MessageStatus toCompare, boolean exactly) {

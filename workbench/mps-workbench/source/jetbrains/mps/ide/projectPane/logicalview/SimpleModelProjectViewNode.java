@@ -8,17 +8,16 @@ import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.ide.util.treeView.InplaceCommentAppender;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.registry.Registry;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.project.GenerationStatus;
+import jetbrains.mps.project.HasGenerationStatus;
 import jetbrains.mps.project.MissionControl;
-import jetbrains.mps.project.ModelInplaceComment;
-import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.smodel.SNodeUtil;
+import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -61,7 +60,6 @@ public class SimpleModelProjectViewNode extends BranchProjectViewNode<SModel> {
         {
           presentation.addText(getPresentableText(), SimpleTextAttributes.REGULAR_ATTRIBUTES);
           presentation.setIcon(GlobalIconManager.getInstance().getIconFor(getValue()));
-
           updateTooltip(presentation);
         }
     );
@@ -82,8 +80,8 @@ public class SimpleModelProjectViewNode extends BranchProjectViewNode<SModel> {
     MissionControl missionControl = MissionControl.getInstance(myProject);
     if (missionControl != null) {
       missionControl.getMessagesContainer().getInfoMessages(getValue()).forEach(msg -> {
-        if (msg instanceof ModelInplaceComment) {
-          appender.append(String.format("(%s)", msg.getMessage()), SimpleTextAttributes.GRAY_ITALIC_ATTRIBUTES);
+        if ((msg instanceof HasGenerationStatus && ((HasGenerationStatus) msg).getStatus() != GenerationStatus.REQUIRED)) {
+          appender.append(String.format(" (%s)", msg.getMessage()), SimpleTextAttributes.GRAY_ATTRIBUTES);
         }
       });
     }

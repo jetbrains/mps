@@ -3,6 +3,7 @@
  */
 package jetbrains.mps.ide.projectPane.logicalview;
 
+import com.intellij.icons.AllIcons;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ViewSettings;
@@ -11,6 +12,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.LayeredIcon;
+import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectView.MPSProjectViewSettings;
@@ -19,6 +21,8 @@ import jetbrains.mps.ide.ui.tree.ContextValueProvider;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.GenerationStatus;
+import jetbrains.mps.project.HasGenerationStatus;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.MissionControl;
 import jetbrains.mps.project.Solution;
@@ -28,6 +32,7 @@ import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
@@ -145,6 +150,29 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
    */
   protected void updateInReadAction(PresentationData presentation) {
     //
+  }
+
+  @Override
+  protected void postprocess(@NotNull PresentationData presentation) {
+    super.postprocess(presentation);
+    MissionControl missionControl = MissionControl.getInstance(getProject());
+    if (missionControl != null) {
+      if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkModified, MessageStatus.OK, true)) {
+        presentation.setIcon(getModifiedIcon(presentation.getIcon(true)));
+      }
+    }
+  }
+
+  protected boolean shouldMarkModified(ReportItem reportItem) {
+    return (reportItem instanceof HasGenerationStatus &&
+            ((HasGenerationStatus) reportItem).getStatus() == GenerationStatus.REQUIRED);
+  }
+
+  protected Icon getModifiedIcon(@Nullable Icon sourceIcon) {
+    LayeredIcon icon = new LayeredIcon(2);
+    icon.setIcon(sourceIcon, 0);
+    icon.setIcon(AllIcons.General.Modified, 1, -AllIcons.General.Modified.getIconWidth(), 0);
+    return icon;
   }
 
   @Override
