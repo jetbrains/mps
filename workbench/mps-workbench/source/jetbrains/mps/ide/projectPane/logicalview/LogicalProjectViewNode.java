@@ -8,10 +8,12 @@ import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
+import com.intellij.ide.util.treeView.InplaceCommentAppender;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.LayeredIcon;
+import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -160,6 +162,18 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
       if (missionControl != null) {
         if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkModified, MessageStatus.OK, true)) {
           presentation.setIcon(getModifiedIcon(presentation.getIcon(true)));
+        }
+      }
+    }
+  }
+
+  @Override
+  protected void appendInplaceComments(@NotNull InplaceCommentAppender appender) {
+    if (!Registry.is("mps.projectView.generationRequired.icon")) {
+      MissionControl missionControl = MissionControl.getInstance(getProject());
+      if (missionControl != null) {
+        if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkModified, MessageStatus.OK, true)) {
+          appender.append(String.format(" (%s)", GenerationStatus.REQUIRED.getMessage()), SimpleTextAttributes.GRAY_ATTRIBUTES);
         }
       }
     }
