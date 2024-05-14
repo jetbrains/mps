@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,8 +35,6 @@ public final class SMethodBuilder<T> {
   private SModifiersImpl myModifiers;
   private final SAbstractType myReturnType;
   private SAbstractConcept myConcept;
-  @Deprecated
-  private String myId64; // base = 64
   private long myBaseMethodId;
   private long myLangIdLo;
   private long myLangIdHi;
@@ -47,14 +45,12 @@ public final class SMethodBuilder<T> {
 
   @Deprecated
   public SMethod<T> build(SParameter... paramTypes) {
-    return build(Arrays.asList(paramTypes));
+    return build2(Arrays.asList(paramTypes));
   }
 
   @Deprecated
   public SMethod<T> build(List<SParameter> paramTypes) {
-    SMethodTrimmedId methodId = SMethodTrimmedId.create("", myModifiers.isVirtual() ? null : myConcept, myId64);
-    final BehaviorRegistry registry = ConceptRegistry.getInstance().getBehaviorRegistry();
-    return SMethodImpl.create(myName, myModifiers, myReturnType, myConcept, methodId, registry, paramTypes);
+    return build2(paramTypes);
   }
 
   public SMethod<T> build2(SParameter... paramTypes) {
@@ -84,12 +80,6 @@ public final class SMethodBuilder<T> {
 
   public SMethodBuilder<T> concept(@NotNull SAbstractConcept concept) {
     myConcept = concept;
-    return this;
-  }
-
-  @Deprecated
-  public SMethodBuilder<T> id(@NotNull String id) {
-    myId64 = id;
     return this;
   }
 
