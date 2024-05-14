@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package jetbrains.mps.vfs.tracking;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
@@ -33,7 +33,7 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
-import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
 import jetbrains.mps.testbench.ProjectCloneSupport;
 import jetbrains.mps.tool.environment.Environment;
@@ -301,8 +301,18 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
   private SNode getField() {
     SNode node = SNodeOperations.cast(new SNodePointer("r:21cf9f47-5464-40f2-9509-d94ba20bfe82(simpleModel)", "6010389230754495463").resolve(myRepository), CONCEPTS.ClassConcept$IY);
-    SNode theField = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(node, CONCEPTS.ClassConcept$IY,
-                                                                                   SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$IY, "4_LVZ3pC27C")))).first();
+    // FIXME rewrite in MPS, to get rid of manually coded reflective invocation of `ClassConcept.fields()` method
+    SNode theField = null;
+    //noinspection removal
+    for (SMethod<?> dm : myEnv.getPlatform()
+                              .findComponent(ConceptRegistry.class)
+                              .getBehaviorRegistry()
+                              .getBHDescriptor(CONCEPTS.ClassConcept$IY)
+                              .getDeclaredMethods()) {
+      if ("fields".equals(dm.getName()) && !dm.isPrivate() && !dm.isAbstract()) {
+        theField = Sequence.fromIterable(((Iterable<SNode>) dm.invoke(node))).first();
+      }
+    }
     return theField;
   }
 
