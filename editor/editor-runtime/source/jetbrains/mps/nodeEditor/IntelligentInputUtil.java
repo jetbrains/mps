@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.editor.runtime.SideTransformInfoUtil;
 import jetbrains.mps.editor.runtime.commands.EditorComputable;
 import jetbrains.mps.logging.Logger;
@@ -38,7 +38,7 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
-import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -347,8 +347,21 @@ public class IntelligentInputUtil {
       }
       // substituteInAmbigousPosition() is a behavior method declared in BaseConcept
       // No idea why it's handwritten code
-      boolean property = (Boolean) BHReflection.invoke0(MetaAdapterByDeclaration.getConcept(concept), SNodeUtil.concept_BaseConcept,
-                                                        SMethodTrimmedId.create("substituteInAmbigousPosition", null, "1653mnvAgq$"));
+      boolean property = false;
+      // FIXME need a mechanism like myEditorContext.getComponentHost().findComponent(CR.class), just need to figure out how to pass CH into the editor.
+      //       EditorConfigurationBuilder, perhaps?
+      //       Then, need to decide whether BehaviorRegistry is CoreComponent or not. Perhaps, centralized mediator like ConceptRegistry is not that bad, after all.
+      //noinspection removal
+      for (SMethod<?> dm : ConceptRegistry.getInstance()
+                                          .getBehaviorRegistry()
+                                          .getBHDescriptor(SNodeUtil.concept_BaseConcept)
+                                          .getDeclaredMethods()) {
+        if ("substituteInAmbigousPosition".equals(dm.getName()) && !dm.isPrivate() && !dm.isAbstract()) {
+          // we assume only 1 method with this name
+          property = (Boolean) dm.invoke(MetaAdapterByDeclaration.getConcept(concept));
+          break;
+        }
+      }
 
       if (property) {
         SNode outputConcept = substituteInfo.getMatchingActions(text, true).get(0).getOutputConcept();
