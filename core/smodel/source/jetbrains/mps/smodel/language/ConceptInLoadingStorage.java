@@ -1,17 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel.language;
 
@@ -25,7 +13,7 @@ import java.util.Set;
  * Thread-safe storage class.
  * Using ThreadLocal to get rid of concurrency flaws.
  * ConcurrentMap is not suitable since,
- * for example, during the parallel generation we are likely to get {@link jetbrains.mps.smodel.runtime.illegal.IllegalConceptDescriptor}
+ * for example, during the parallel generation we are likely to get {@code jetbrains.mps.smodel.runtime.illegal.IllegalConceptDescriptor}
  * for some of the core baseLanguage concepts (e.g. ConstructorDeclaration). Illegal behavior descriptor breaks
  * the generation, so that implementation is unacceptable.
  *
@@ -34,12 +22,7 @@ import java.util.Set;
  * Created by apyshkin on 7/15/15.
  */
 public final class ConceptInLoadingStorage<T> {
-  private final ThreadLocal<Set<T>> mySet = new ThreadLocal<Set<T>>() {
-    @Override
-    protected Set<T> initialValue() {
-      return new HashSet<>();
-    }
-  };
+  private final ThreadLocal<Set<T>> mySet = ThreadLocal.withInitial(HashSet::new);
 
   /**
    * @param concept -- a concept
