@@ -1,4 +1,4 @@
-/*
+ /*
  * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,11 +25,11 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.api.SMethodId;
 import jetbrains.mps.core.aspects.behaviour.api.SParameter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -215,8 +215,21 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
     if (!Objects.equals(constructor.getConcept(), getConcept())) {
       throw new IllegalArgumentException("Concept of the passed constructor and the concept of the descriptor must coincide");
     }
-    // XXX this is the only class that makes [behavior-runtime] to depend on [kernel]!
-    SNode node = SModelOperations.createNewNode(model, null, myConcept);
+    // don't want to use MetaAdapterByDeclaration.asInstanceConcept(concept) as it brings one more [kernel] dependency.
+    // Besides, using cons of an abstract concept is odd, anyway.
+    if (getConcept().isAbstract() || getConcept() instanceof SConcept == false) {
+      throw new IllegalArgumentException("Can't invoke constructor for an abstract concept");
+    }
+    SConcept properConcept = (SConcept) getConcept();
+    final SNode node;
+    if (model != null) {
+      node = model.createNode(properConcept);
+    } else {
+      // XXX it's unlucky we have to stick to particular SNode implementation. Perhaps, BehaviorRegistry may serve as a factory for openapi.SNode instances?
+      // This is one of few things that make [behavior-runtime] dependent on [kernel]. Either need an abstraction/factory (e.g. through BehaviorRegistryImpl) or
+      //    for smodel.SNNode to move to [smodel]. However, there are other dependencies that need to be addressed first.
+      node = new jetbrains.mps.smodel.SNode(properConcept);
+    }
     new ConstructionHandler(myAncestorCache, myConcept, myBehaviorRegistry).initNode(node, constructor, getParametersArray(Collections.emptyList(), parameters));
     return node;
   }
