@@ -41,6 +41,7 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.impl.welcomeScreen.FlatWelcomeFrame;
 import com.intellij.openapi.wm.impl.welcomeScreen.NewWelcomeScreen;
+import com.intellij.ui.ExperimentalUI;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -91,7 +92,15 @@ public class OpenMPSProjectAction extends AnAction {
 
     if (OpenMPSProjectFileChooserDescriptor.isMpsProjectDirectory(virtualFile) || OpenMPSProjectFileChooserDescriptor.isMpsProjectFile(virtualFile)) {
       if (OpenMPSProjectTrustProjectHelper.checkTrust(virtualFile)) {
-        ProjectUtil.openProject(virtualFile.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
+        if (ExperimentalUI.isNewUI()) {
+          ProjectUtil.openProject(virtualFile.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
+        } else {
+          final Application application = ApplicationManager.getApplication();
+          application.executeOnPooledThread(()->{
+            ProjectUtil.openProject(virtualFile.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
+          });
+
+        }
       }
     } else {
       if (virtualFile.isDirectory()) {
