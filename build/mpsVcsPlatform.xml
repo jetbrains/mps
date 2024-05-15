@@ -146,7 +146,7 @@
     <echo message="generating" />
     <generate fork="true" targetJavaVersion="11" logLevel="${mps.ant.log}">      
       <settings refid="m2m-defaults" />
-      <library file="${artifacts.mpsBootstrapCore}/languages/mps-stubs.jar" />
+      <plugin path="${artifacts.mpsCore}/mps-core" id="jetbrains.mps.core" />
       <chunk>
         <module file="${basedir}/plugins/mps-git4idea/stubs/jetbrains.mps.git4idea.stubs.msd" />
       </chunk>

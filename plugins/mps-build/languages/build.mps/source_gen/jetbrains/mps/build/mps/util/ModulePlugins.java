@@ -10,10 +10,11 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
-import java.util.HashMap;
+import jetbrains.mps.internal.collections.runtime.IListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.build.mps.behavior.BuildMps_IdeaPluginContent__BehaviorDescriptor;
@@ -22,11 +23,11 @@ import jetbrains.mps.build.util.DependenciesHelper;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ModulePlugins {
   private final SNode myInitialProject;
@@ -38,47 +39,40 @@ public class ModulePlugins {
   }
 
   public void collect(@NotNull Iterable<SNode> modules, @NotNull List<SNode> additionalPlugins) {
-    List<SNode> initialPlugins = ListSequence.fromListWithValues(new ArrayList<SNode>(), additionalPlugins);
-    ListSequence.fromList(myNonPluginModules).clear();
-    HashMap<SNode, List<SNode>> project2plugins = new HashMap<SNode, List<SNode>>();
-    for (SNode module : Sequence.fromIterable(modules)) {
-      SNode bp = SNodeOperations.cast(SNodeOperations.getContainingRoot(module), CONCEPTS.BuildProject$ae);
-      if (project2plugins.containsKey(bp)) {
-        continue;
-      }
-      List<SNode> plugins = ListSequence.fromList(new ArrayList<SNode>());
-      for (final SNode p : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(bp, LINKS.parts$mGDj), CONCEPTS.BuildMps_IdeaPlugin$po))) {
-        // Unfortunately, the moment we get here from weave_Tasks, there's no BML_Plugin (they get unwrapped on alias step)
-        // and I can not tell fake mps-workbench plugin from any other regular plugin :(
-        // Therefore, have a hardcoded value here. This is 'fake' idea plugin that represents MPS IDE, no reason to mention it as it's loaded
-        //  automatically from lib/ jars.
-        boolean __FIXME = !("com.intellij.modules.mps".equals(SPropertyOperations.getString(p, PROPS.id$W4AX)));
+    IListSequence<SNode> plugins = ListSequence.fromListWithValues(new ArrayList<>(), additionalPlugins);
+    final Set<SNode> standaloneModules = SetSequence.fromSetWithValues(new HashSet<>(), modules);
 
-        // recognize plugins that get deployed as regular plugins, don't respect hand-crafted
-        // layouts as there's no guarantee it would end up as a <home>/plugins (that's the case of IdeaPlugin from mpsWorkbench, which
-        // I don't want to have referenced as <plugin path=".../lib/mps-workbench.jar"/>
-        // Indeed, use of BML_Plugin doesn't guarantee that either, it's just 'more likely' scenario.
-        // FWIW, I believe we have to refactor mpsWorkbench and the whole story around IdeaPlugins to make this sane.
-        if (__FIXME || ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(bp, LINKS.layout$r7bw), CONCEPTS.BuildMpsLayout_Plugin$cj, false, new SAbstractConcept[]{})).any((it) -> SLinkOperations.getTarget(it, LINKS.plugin$9ewC) == p)) {
-          ListSequence.fromList(plugins).addElement(p);
-        }
+    // Get dependencies from idea plugins, which are pointing to actual dependencies
+    Iterable<SNode> requiredPlugins = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(myInitialProject, LINKS.parts$mGDj), CONCEPTS.BuildMps_IdeaPlugin$po)).concat(Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(myInitialProject, ((boolean) false))).translate((it) -> SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.parts$mGDj), CONCEPTS.BuildMps_IdeaPlugin$po)));
+
+    ListSequence.fromList(additionalPlugins).concat(Sequence.fromIterable(requiredPlugins)).visitAll((final SNode plugin) -> {
+      SNode buildProject = SNodeOperations.cast(SNodeOperations.getContainingRoot(plugin), CONCEPTS.BuildProject$ae);
+
+      // Unfortunately, the moment we get here from weave_Tasks, there's no BML_Plugin (they get unwrapped on alias step)
+      // and I can not tell fake mps-workbench plugin from any other regular plugin :(
+      // Therefore, have a hardcoded value here. This is 'fake' idea plugin that represents MPS IDE, no reason to mention it as it's loaded
+      //  automatically from lib/ jars.
+      boolean __FIXME = !("com.intellij.modules.mps".equals(SPropertyOperations.getString(plugin, PROPS.id$W4AX)));
+
+      // recognize plugins that get deployed as regular plugins, don't respect hand-crafted
+      // layouts as there's no guarantee it would end up as a <home>/plugins (that's the case of IdeaPlugin from mpsWorkbench, which
+      // I don't want to have referenced as <plugin path=".../lib/mps-workbench.jar"/>
+      // Indeed, use of BML_Plugin doesn't guarantee that either, it's just 'more likely' scenario.
+      // FWIW, I believe we have to refactor mpsWorkbench and the whole story around IdeaPlugins to make this sane.
+      if (__FIXME || ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(buildProject, LINKS.layout$r7bw), CONCEPTS.BuildMpsLayout_Plugin$cj, false, new SAbstractConcept[]{})).any((layout) -> SLinkOperations.getTarget(layout, LINKS.plugin$9ewC) == plugin)) {
+        ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.content$9T6D)).visitAll((it) -> Sequence.fromIterable(BuildMps_IdeaPluginContent__BehaviorDescriptor.getModules_id26vVkElqAGr.invoke(it)).visitAll((bundledModule) -> {
+          if (standaloneModules.remove(bundledModule)) {
+            // Keep track of plugins in use
+            ListSequence.fromList(plugins).addElement(plugin);
+          }
+        }));
       }
-      project2plugins.put(bp, plugins);
-    }
-    for (final SNode module : Sequence.fromIterable(modules)) {
-      List<SNode> projectPlugins = project2plugins.get(SNodeOperations.getContainingRoot(module));
-      boolean coveredByPlugin = false;
-      for (SNode plugin : ListSequence.fromList(projectPlugins)) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.content$9T6D)).any((it) -> (boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invoke(it, module))) {
-          ListSequence.fromList(initialPlugins).addElement(plugin);
-          coveredByPlugin = true;
-          break;
-        }
-      }
-      if (!(coveredByPlugin)) {
-        ListSequence.fromList(myNonPluginModules).addElement(module);
-      }
-    }
+    });
+
+    ListSequence.fromList(myNonPluginModules).clear();
+
+    // Set does not ensure stable order, so we sort it before insertion (not always necessary, but may tests from usages that expect stable order)
+    Sequence.fromIterable(Sequence.fromStream(standaloneModules.stream())).sort((it) -> SPropertyOperations.getString(it, PROPS.uuid$pC01), true).visitAll((p1) -> myNonPluginModules.add(p1));
 
     // XXX I wonder if we include dependant plugins, why don't we respect their modules for nonPluginModules, too?
     //    seems that we shall include modules that are not part of any plugin only. However, it's odd if there's a module in deps
@@ -86,7 +80,7 @@ public class ModulePlugins {
     //    for module has to be defined in a different project (perhaps, that's the case of mps-core that exports all bootstrap 
     //    languages, is mentioned as <plugin> under <generate> but bootstrap modules are referenced through mpsBootstrapCore artifact.
 
-    SetSequence.fromSet(myPluginDependencies).addSequence(Sequence.fromIterable(new RequiredPlugins(initialPlugins).returnDepsWithInitial()));
+    SetSequence.fromSet(myPluginDependencies).addSequence(Sequence.fromIterable(new RequiredPlugins(plugins).returnDepsWithInitial()));
   }
 
   public Iterable<SNode> getDependency() {
@@ -131,24 +125,25 @@ public class ModulePlugins {
     return n0.getResult();
   }
 
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink parts$mGDj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SContainmentLink layout$r7bw = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
+    /*package*/ static final SReferenceLink plugin$9ewC = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin");
+    /*package*/ static final SContainmentLink content$9T6D = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content");
+  }
+
   private static final class CONCEPTS {
+    /*package*/ static final SConcept BuildMps_IdeaPlugin$po = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
     /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
     /*package*/ static final SConcept BuildMpsLayout_Plugin$cj = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_Plugin");
-    /*package*/ static final SConcept BuildMps_IdeaPlugin$po = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
     /*package*/ static final SConcept GeneratorInternal_PluginExpanded$$Z = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, "jetbrains.mps.build.mps.structure.GeneratorInternal_PluginExpanded");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty id$W4AX = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bb6fL, "id");
+    /*package*/ static final SProperty uuid$pC01 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty path$4PFd = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4aL, "path");
     /*package*/ static final SProperty id$4PUe = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3283ab1237f81c49L, 0x3283ab1237f81c4bL, "id");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink layout$r7bw = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
-    /*package*/ static final SReferenceLink plugin$9ewC = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb6eL, 0x5b7be37b4dee5919L, "plugin");
-    /*package*/ static final SContainmentLink parts$mGDj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
-    /*package*/ static final SContainmentLink content$9T6D = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content");
   }
 }
