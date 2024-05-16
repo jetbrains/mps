@@ -77,6 +77,12 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread;
       DiffSettingsUtil.setHideIdChangesOption(p1);
       myHighlighter.rehighlightInReadAction(false);
     }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
   }
 
   private class HideResolveInfoOnlyAction extends ToggleAction implements DumbAware {
@@ -95,6 +101,12 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread;
       DiffSettingsUtil.setHideResolveInfoChangesOption(p1);
       myHighlighter.rehighlightInReadAction(false);
     }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
+    }
   }
 
   private class TrackMovedNodesAction extends ToggleAction implements DumbAware {
@@ -112,6 +124,12 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread;
     public void setSelected(@NotNull AnActionEvent p1, boolean p2) {
       DiffSettingsUtil.setTrackMovedNodesDiffOption(p2);
       myHighlighter.rehighlightInReadAction(true);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
     }
   }
 
@@ -136,6 +154,12 @@ import com.intellij.openapi.actionSystem.ActionUpdateThread;
     public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
       DiffSettingsUtil.setHideUnorderedMovesOption(p1);
       myHighlighter.rehighlightInReadAction(false);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.BGT;
     }
   }
 }
