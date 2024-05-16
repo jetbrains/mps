@@ -9,6 +9,7 @@ import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.ide.util.treeView.InplaceCommentAppender;
+import com.intellij.ide.util.treeView.PathElementIdProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -52,10 +53,16 @@ import java.util.Optional;
  *
  * @author Fedor Isakov
  */
-public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Value> implements ContextValueProvider {
+public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Value> implements ContextValueProvider, PathElementIdProvider {
 
   protected LogicalProjectViewNode(Project project, @NotNull Value value, ViewSettings viewSettings) {
     super(project, value, viewSettings);
+  }
+
+  @Override
+  public @NotNull String getPathElementId() {
+    Object value = getEqualityObject();
+    return value != null ? value.toString() : "";
   }
 
   @Override
