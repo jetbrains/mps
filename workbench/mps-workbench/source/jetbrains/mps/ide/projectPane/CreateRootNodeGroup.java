@@ -38,6 +38,7 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.ToStringComparator;
+import jetbrains.mps.workbench.MPSDataKeys;
 import jetbrains.mps.workbench.action.BaseGroup;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -109,15 +110,7 @@ public class CreateRootNodeGroup extends BaseGroup {
         disable(event.getPresentation());
         return;
       }
-
-      TreeNode treeNode = event.getData(MPSCommonDataKeys.TREE_NODE);
-
-      if (!(treeNode instanceof PackageNode)) {
-        _package = null;
-      } else {
-        final PackageNode node = (PackageNode) treeNode;
-        _package = node.getPackage();
-      }
+      _package = event.getData(MPSDataKeys.NAMESPACE);
     } else {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
       if (node != null) {
