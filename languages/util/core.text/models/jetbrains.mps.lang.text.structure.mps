@@ -160,6 +160,9 @@
     <node concept="PrWs8" id="2I7VK7MCAM4" role="PzmwI">
       <ref role="PrY4T" to="tpck:1V3wYmOJsDm" resolve="IDontApplyTypesystemRules" />
     </node>
+    <node concept="PrWs8" id="7tOh0Kn4qev" role="PzmwI">
+      <ref role="PrY4T" to="tpck:7tOh0Kn0S3L" resolve="ICommentedOutFromScope" />
+    </node>
   </node>
   <node concept="PlHQZ" id="6GJhO0n1XxQ">
     <property role="EcuMT" value="7723470226553559158" />
@@ -198,6 +201,9 @@
     </node>
     <node concept="PrWs8" id="2MpFNjy3sHi" role="PzmwI">
       <ref role="PrY4T" to="tpck:1V3wYmOJsDm" resolve="IDontApplyTypesystemRules" />
+    </node>
+    <node concept="PrWs8" id="7tOh0Kn6M0W" role="PzmwI">
+      <ref role="PrY4T" to="tpck:7tOh0Kn0S3L" resolve="ICommentedOutFromScope" />
     </node>
     <node concept="t5JxF" id="5Mky_DWK6m2" role="lGtFl">
       <property role="t5JxN" value="Experimental. Use concepts such as TextConcept, Word, Line, etc. located outside of the &quot;textual&quot; virtual folder" />
