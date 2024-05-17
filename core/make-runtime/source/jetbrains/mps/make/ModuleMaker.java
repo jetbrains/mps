@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -877,17 +877,33 @@ public final class ModuleMaker {
     // XXX shall I remove those JM in components that are not part of 'initial' set?
     //     If I derive 'dirty' for B in the aforementioned example, do I want to exclude it from compile or not - it was not requested
     //     but as long as it's part of the cycle, its recompilation might be necessary
-    //     Another thought: initial MC doesn't contain read-only, source-less modules, which may show up in dependencies
-    //     now I rely on isDirty and !isDirty, would initial.contains() work better?
+    //     However, we don't collect dependencies for modules not in 'initial' set, modules in depJM could not be compiled as their
+    //     classpath would include their classes_gen (or respective jar) only.
+    //     Another thought: initial MC doesn't contain read-only, source-less modules, which may show up in dependencies,
+    //     if I rely on isDirty and !isDirty, wouldn't initial.contains() work better?
+    for (List<JM> cycle : components) {
+      Predicate<JM> inInitial = initial.allJavaModules()::contains;
+      Optional<JM> first = cycle.stream().filter(inInitial.negate()).findFirst();
+      if (first.isPresent()) {
+        String cycleInfo;
+        if (cycle.size() > 1) {
+          cycleInfo = String.format("; cycle: %s", cycle.stream().map(JM::name).collect(Collectors.joining(",")));
+        } else {
+          cycleInfo = "";
+        }
+        myTracer.getSender().warn(String.format("Module %s from dependencies requires compilation%s", first.get().name(), cycleInfo), first.get().moduleReference());
+      }
+    }
+    components.forEach(l -> l.retainAll(initial.allJavaModules()));
+    components.removeIf(List::isEmpty);
+
     for (List<JM> cc : components) {
-//      final MC mc = new MC(cc);
-//      compileCycles(mc);
-      myTracer.getSender().info(String.format("Cycle of %d modules", cc.size()));
+      myTracer.getSender().debug(String.format("Cycle of %d modules", cc.size()));
       for (JM x : cc) {
-        myTracer.getSender().info(String.format("\t%s", x.name()));
-        myTracer.getSender().info(String.format("\t\t%s", x.myDependencies.stream().map(JM::name).collect(Collectors.toList())));
-        myTracer.getSender().info(String.format("\t\t%s  JS:%s", x.compileState(), x.mySources));
-        myTracer.getSender().info(String.format("\t\t%s\n", x.myClasspath));
+        myTracer.getSender().debug(String.format("\t%s", x.name()));
+        myTracer.getSender().debug(String.format("\t\t%s", x.myDependencies.stream().map(JM::name).collect(Collectors.toList())));
+        myTracer.getSender().debug(String.format("\t\t%s  JS:%s", x.compileState(), x.mySources));
+        myTracer.getSender().debug(String.format("\t\t%s\n", x.myClasspath));
       }
     }
     tracer.done();

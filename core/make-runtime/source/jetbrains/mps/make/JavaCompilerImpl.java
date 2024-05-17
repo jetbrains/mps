@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import jetbrains.mps.make.BaseModuleContainer.JavaModule;
 import jetbrains.mps.make.ModuleAnalyzer.ModuleAnalyzerResult;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.performance.IPerformanceTracer.NullPerformanceTracer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -160,42 +161,48 @@ final class JavaCompilerImpl implements AutoCloseable {
       tracer.pop(1);
       //
       tracer.push(InternalJavaCompiler.COMPILING_JAVA_MSG);
-      tracer.getSender().info(String.format("Compiler in use: %s", myJavaCompiler.getClass().getSimpleName()));
+      tracer.getSender().debug(String.format("Compiler in use: %s", myJavaCompiler.getClass().getSimpleName()));
       configureClassPath(classpath);
 
       final int count = (int) modules.getDirtyModules().count();
+      ErrorRecord total = null;
       if (count > 1) {
         tempDir = Files.createTempDirectory("mpsjc").toFile(); // intentionally not FileUtil.createTempDir, want to handle IOException
-        bulkCompileOnlyIntoTempLocation(modules.getDirtyModules(), tempDir, tracer.getSender());
+        total = bulkCompileOnlyIntoTempLocation(modules.getDirtyModules(), tempDir, tracer.getSender());
         tracer.advance(count);
       }
-      ErrorRecord total = new ErrorRecord();
-      for (BaseModuleContainer.JavaModule jm : modules.getDirtyModules().collect(Collectors.toList())) {
-        tracer.push(String.format("Compiling %s", jm.name()));
-        final Collection<Path> moduleCP;
-        if (tempDir != null) {
-          ArrayList<Path> withBulkCompileOut = new ArrayList<>(classpath.size() + 1);
-          withBulkCompileOut.add(tempDir.toPath()); // not sure whether to put it in the front or to the back
-          withBulkCompileOut.addAll(classpath);
-          configureClassPath(withBulkCompileOut);
-          moduleCP = withBulkCompileOut;
-        } else {
-          // cp already set for compilation, just record one for instrumentation
-          moduleCP = classpath;
-        }
-        // XXX no idea if can figure out whether a module has been truly compiled or not
-        //     At the moment, it's not a big deal, as we pass at least some of modules as 'dirty',
-        //     and those that are not dirty but in cycle, would need to get reloaded anyway after
-        //     compilation of their dirty peer.
-        final ErrorRecord errorRecord = compileModule(jm, tracer.getSender());
-        tracer.pop(1);
-        if (errorRecord == null || errorRecord.errors == 0) {
-          // disregard warnings, only errors prevent us from instrumentation
-          // XXX perhaps, shall return boolean if any class has been instrumented
-          instrumentClasses(moduleCP, classesFromOutput(), tracer.subTracer(1));
-        } else {
-          total.add(errorRecord);
-          tracer.advance(1);
+      if (total == null || total.errors == 0) {
+        total = new ErrorRecord(); // clear recorded if there are no errors
+        for (BaseModuleContainer.JavaModule jm : modules.getDirtyModules().collect(Collectors.toList())) {
+          tracer.push(String.format("Compiling %s", jm.name()));
+          final Collection<Path> moduleCP;
+          if (tempDir != null) {
+            ArrayList<Path> withBulkCompileOut = new ArrayList<>(classpath.size() + 1);
+            withBulkCompileOut.add(tempDir.toPath()); // not sure whether to put it in the front or to the back
+            withBulkCompileOut.addAll(classpath);
+            configureClassPath(withBulkCompileOut);
+            moduleCP = withBulkCompileOut;
+          } else {
+            // cp already set for compilation, just record one for instrumentation
+            moduleCP = classpath;
+          }
+          // XXX perhaps, shall warn if jm.dependencies() is empty, Javac has troubles compiling modules w/o JDK dependency (takes ages to
+          //     compile a module with its own source_gen as the only classpath entry.
+          //
+          // XXX no idea if can figure out whether a module has been truly compiled or not
+          //     At the moment, it's not a big deal, as we pass at least some of modules as 'dirty',
+          //     and those that are not dirty but in cycle, would need to get reloaded anyway after
+          //     compilation of their dirty peer.
+          final ErrorRecord errorRecord = compileModule(jm, tracer.getSender());
+          tracer.pop(1);
+          if (errorRecord == null || errorRecord.errors == 0) {
+            // disregard warnings, only errors prevent us from instrumentation
+            // XXX perhaps, shall return boolean if any class has been instrumented
+            instrumentClasses(moduleCP, classesFromOutput(), tracer.subTracer(1));
+          } else {
+            total.add(errorRecord);
+            tracer.advance(1);
+          }
         }
       }
       // as long as we can't tell which one was actually changed during compilation, pretend every one we've tried to compile was.
@@ -225,16 +232,19 @@ final class JavaCompilerImpl implements AutoCloseable {
   }
 
   // neither argument is null. assume classpath configured
-  private void bulkCompileOnlyIntoTempLocation(Stream<? extends BaseModuleContainer.JavaModule> modules, File tempDir, MessageSender sender) throws IOException {
+  private ErrorRecord bulkCompileOnlyIntoTempLocation(Stream<? extends BaseModuleContainer.JavaModule> modules, File tempDir, MessageSender sender) throws IOException {
     configureOutput(null);
     configureTempOutput(tempDir);
-    configureSourcePath(modules.map(BaseModuleContainer.JavaModule::getAllSourcePaths).flatMap(Collection::stream).<Path>map(Path::of));
+    List<? extends JavaModule> modules2 = modules.collect(Collectors.toList());
+    configureSourcePath(modules2.stream().map(BaseModuleContainer.JavaModule::getAllSourcePaths).flatMap(Collection::stream).<Path>map(Path::of));
     final Iterable<JavaFileObject> cu = cuFromSourcePath();
-    DiagnosticListener<JavaFileObject> ignore = diagnostic -> {};
-    final CompilationTask task = myJavaCompiler.getTask(Writer.nullWriter(), myFileManager, ignore, javacOptions(true), null, cu);
-    if (!task.call()) {
-      sender.error("Failed to compile module cycle, see individual modules for errors");
+    DiagnosticCollector<JavaFileObject> diagnostic = new DiagnosticCollector<>();
+    final CompilationTask task = myJavaCompiler.getTask(Writer.nullWriter(), myFileManager, diagnostic, javacOptions(true), null, cu);
+    if (task.call()) {
+      return null;
     }
+    sender.error("Failed to compile module cycle, individual modules won't get compiled");
+    return createErrorRecord(modules2.stream().map(JavaModule::name).map(NameUtil::compactNamespace).collect(Collectors.joining(",")), sender, diagnostic);
   }
 
   @Nullable
@@ -246,6 +256,8 @@ final class JavaCompilerImpl implements AutoCloseable {
     try {
       return doCompile(jm, sender);
     } catch (RuntimeException ex) {
+      // I believe the only reason for this catch (as long as outer code catches all exceptions anyway) is to provide
+      // name of the module along with the exception
       sender.error(String.format("Compile of %s failed with exception", jm.name()));
       throw ex;
     }
@@ -259,46 +271,51 @@ final class JavaCompilerImpl implements AutoCloseable {
     DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
     final CompilationTask task = myJavaCompiler.getTask(Writer.nullWriter(), myFileManager, diagnostics, javacOptions(false), null, cu);
     if (!task.call()) {
-      // XXX perhaps, shall sender.trace() all jfm.location values?
-      final ErrorRecord errorRecord = new ErrorRecord(MAX_ERRORS);
-      for (Diagnostic<? extends JavaFileObject> d : diagnostics.getDiagnostics()) {
-        if (errorRecord.errorMax()) {
-          break;
-        }
-        if (d.getKind() != Kind.ERROR) {
-          if (d.getKind() == Kind.WARNING || d.getKind() == Kind.MANDATORY_WARNING) {
-            errorRecord.warnings++;
-          }
-          if (!errorRecord.warningMax()) {
-            // do not pollute output if we reached max for warnings, don't care to see other messages.
-            // Max for errors already handled, above. Don't break on warnings here, collect as many errors as possible first.
-            sender.trace(d.getMessage(null));
-          }
-          continue;
-        }
-        if (errorRecord.errors++ == 0) {
-          sender.error(InternalJavaCompiler.COMPILATION_PROBLEMS);
-        }
-        if (d.getSource() == null) {
-          // no idea what we can do w/o source file
-          continue;
-        }
-        final Path pathSrc = myFileManager.asPath(d.getSource());
-        final File javaFile = pathSrc.toFile();
-        final long lineNumber = d.getLineNumber();
-        final long columnNumber = d.getColumnNumber();
-        Object hintObject = new FileWithPosition(javaFile, d.getPosition(), lineNumber > 0 ? lineNumber-1 : -1, columnNumber > 0 ? columnNumber-1 : -1);
-        String errMsg = String.format("%s (%s:%d)", d.getMessage(null), d.getSource().getName(), lineNumber);
-        sender.error(errMsg, hintObject);
-      }
-      if (errorRecord.errors > 0) {
-        final Iterable<? extends File> cp = myFileManager.getLocation(StandardLocation.CLASS_PATH);
-        final List<String> cpStrings = StreamSupport.stream(cp.spliterator(), false).map(File::getPath).collect(Collectors.toList());
-        sender.info(String.format(InternalJavaCompiler.MODULES_CLASSPATH_STR, jm.name(), cpStrings));
-      }
-      return errorRecord;
+      return createErrorRecord(NameUtil.compactNamespace(jm.name()), sender, diagnostics);
     }
     return null;
+  }
+
+  @NotNull
+  private ErrorRecord createErrorRecord(String compiledModuleName, MessageSender sender, DiagnosticCollector<JavaFileObject> diagnostics) {
+    // XXX perhaps, shall sender.trace() all jfm.location values?
+    final ErrorRecord errorRecord = new ErrorRecord(MAX_ERRORS);
+    for (Diagnostic<? extends JavaFileObject> d : diagnostics.getDiagnostics()) {
+      if (errorRecord.errorMax()) {
+        break;
+      }
+      if (d.getKind() != Kind.ERROR) {
+        if (d.getKind() == Kind.WARNING || d.getKind() == Kind.MANDATORY_WARNING) {
+          errorRecord.warnings++;
+        }
+        if (!errorRecord.warningMax()) {
+          // do not pollute output if we reached max for warnings, don't care to see other messages.
+          // Max for errors already handled, above. Don't break on warnings here, collect as many errors as possible first.
+          sender.trace(d.getMessage(null));
+        }
+        continue;
+      }
+      if (errorRecord.errors++ == 0) {
+        sender.error(InternalJavaCompiler.COMPILATION_PROBLEMS);
+      }
+      if (d.getSource() == null) {
+        // no idea what we can do w/o source file
+        continue;
+      }
+      final Path pathSrc = myFileManager.asPath(d.getSource());
+      final File javaFile = pathSrc.toFile();
+      final long lineNumber = d.getLineNumber();
+      final long columnNumber = d.getColumnNumber();
+      Object hintObject = new FileWithPosition(javaFile, d.getPosition(), lineNumber > 0 ? lineNumber-1 : -1, columnNumber > 0 ? columnNumber-1 : -1);
+      String errMsg = String.format("%s (%s:%d)", d.getMessage(null), d.getSource().getName(), lineNumber);
+      sender.error(errMsg, hintObject);
+    }
+    if (errorRecord.errors > 0) {
+      final Iterable<? extends File> cp = myFileManager.getLocation(StandardLocation.CLASS_PATH);
+      final List<String> cpStrings = StreamSupport.stream(cp.spliterator(), false).map(File::getPath).collect(Collectors.toList());
+      sender.info(String.format(InternalJavaCompiler.MODULES_CLASSPATH_STR, compiledModuleName, cpStrings));
+    }
+    return errorRecord;
   }
 
   private void instrumentClasses(Collection<Path> classPath, Iterable<JavaFileObject> classFO, CompositeTracer tracer) {
