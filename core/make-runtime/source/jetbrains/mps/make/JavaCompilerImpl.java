@@ -162,7 +162,7 @@ final class JavaCompilerImpl implements AutoCloseable {
       tracer.pop(1);
       //
       tracer.push(InternalJavaCompiler.COMPILING_JAVA_MSG);
-      tracer.getSender().info(String.format("Compiler in use: %s", myJavaCompiler.getClass().getSimpleName()));
+      tracer.getSender().debug(String.format("Compiler in use: %s", myJavaCompiler.getClass().getSimpleName()));
       configureClassPath(classpath);
 
       final int count = (int) modules.getDirtyModules().count();
@@ -187,6 +187,9 @@ final class JavaCompilerImpl implements AutoCloseable {
             // cp already set for compilation, just record one for instrumentation
             moduleCP = classpath;
           }
+          // XXX perhaps, shall warn if jm.dependencies() is empty, Javac has troubles compiling modules w/o JDK dependency (takes ages to
+          //     compile a module with its own source_gen as the only classpath entry.
+          //
           // XXX no idea if can figure out whether a module has been truly compiled or not
           //     At the moment, it's not a big deal, as we pass at least some of modules as 'dirty',
           //     and those that are not dirty but in cycle, would need to get reloaded anyway after
