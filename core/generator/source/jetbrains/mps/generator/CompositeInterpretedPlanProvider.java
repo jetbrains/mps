@@ -52,15 +52,10 @@ public class CompositeInterpretedPlanProvider implements ModelGenerationPlan.Pro
     for (SNode planDecl : planNodes) {
       myMessageHandler.handle(Message.info(InterpretedPlanProvider.class, String.format("Interpreted plan from node %s", planDecl.getPresentation()), planDecl.getReference(), null));
 
-      SNode forkOwner = GenPlanTranslator.getForkOwner(planDecl);
-      if (forkOwner != null) {
-        if (planNodes.contains(forkOwner)) {
-          myMessageHandler.handle(Message.info(InterpretedPlanProvider.class, String.format("Fork of %s", forkOwner.getPresentation()), forkOwner.getReference(), null));
-          sortedPlanNodes.addFirst(planDecl);
-        }else{
-          myMessageHandler.handle(Message.createMessage(MessageKind.ERROR, InterpretedPlanProvider.class.toString(), String.format("Fork owner not in scope %s", forkOwner.getPresentation()), forkOwner.getReference()));
-          return null;
-        }
+      String forkGenerationTarget = GenPlanTranslator.getForkGenerationTarget(planDecl);
+      if (forkGenerationTarget != null) {
+        myMessageHandler.handle(Message.info(InterpretedPlanProvider.class, String.format("Destination target of a fork: %s", forkGenerationTarget), planDecl.getReference(), null));
+        sortedPlanNodes.addFirst(planDecl);
       } else {
         sortedPlanNodes.add(planDecl);
       }
@@ -75,6 +70,7 @@ public class CompositeInterpretedPlanProvider implements ModelGenerationPlan.Pro
       gpt = new GenPlanTranslator(planNode);
       gpt.feedMulti(planBuilder);
     }
+    // because forks come first, the last gpt has the correct (whole plan's) identity
     return planBuilder.wrapUp(gpt.getPlanIdentity());
   }
 

@@ -836,15 +836,13 @@
       <node id="2214485068936964528" at="41,0,42,0" concept="6" trace="myPlanIdentity" />
       <node id="1487024342320916709" at="49,73,50,92" concept="11" />
       <node id="1487024342320917669" at="50,92,51,59" concept="13" />
-      <node id="1884272384613608398" at="54,53,55,191" concept="13" />
-      <node id="2214485068936357543" at="58,60,59,40" concept="5" />
-      <node id="2214485068936943938" at="59,40,60,105" concept="5" />
-      <node id="2214485068936971694" at="63,41,64,26" concept="13" />
-      <node id="2962035315616902345" at="72,77,73,34" concept="13" />
-      <node id="8995348726628160712" at="80,84,81,133" concept="11" />
-      <node id="8995348726628160722" at="82,28,83,223" concept="19" />
-      <node id="8995348726628160730" at="83,223,84,0" concept="15" />
-      <node id="8995348726628160734" at="85,7,86,166" concept="5" />
+      <node id="7914611896310167706" at="55,53,56,16" concept="13" />
+      <node id="7914611896310433000" at="59,65,60,120" concept="13" />
+      <node id="2214485068936357543" at="63,60,64,40" concept="5" />
+      <node id="2214485068936943938" at="64,40,65,105" concept="5" />
+      <node id="2214485068936971694" at="68,41,69,26" concept="13" />
+      <node id="2962035315616902345" at="77,77,78,34" concept="13" />
+      <node id="8995348726628160734" at="85,84,86,166" concept="5" />
       <node id="8995348726628160743" at="86,166,87,18" concept="13" />
       <node id="8995348726628160750" at="88,5,89,0" concept="15" />
       <node id="8995348726628160751" at="89,0,90,34" concept="13" />
@@ -899,45 +897,43 @@
       <node id="2567377358530573360" at="186,106,187,58" concept="13" />
       <node id="2567377358530659689" at="188,5,189,52" concept="13" />
       <node id="2214485068936293220" at="193,0,194,0" concept="16" trace="Plan$X1" />
-      <node id="2214485068936293220" at="194,0,195,0" concept="16" trace="BaseConcept$gP" />
-      <node id="2214485068936293220" at="195,0,196,0" concept="16" trace="Checkpoint$ZV" />
-      <node id="2214485068936293220" at="196,0,197,0" concept="16" trace="Transform$a_" />
-      <node id="2214485068936293220" at="197,0,198,0" concept="16" trace="LanguageIdentity$cN" />
-      <node id="2214485068936293220" at="198,0,199,0" concept="16" trace="ApplyGenerators$PQ" />
-      <node id="2214485068936293220" at="199,0,200,0" concept="16" trace="ModuleIdentity$U1" />
-      <node id="2214485068936293220" at="200,0,201,0" concept="16" trace="GeneratorModulePointer$49" />
-      <node id="2214485068936293220" at="201,0,202,0" concept="16" trace="CheckpointSynchronization$DV" />
-      <node id="2214485068936293220" at="202,0,203,0" concept="16" trace="CheckpointDeclaration$4L" />
-      <node id="2214485068936293220" at="203,0,204,0" concept="16" trace="IncludePlan$sw" />
-      <node id="2214485068936293220" at="204,0,205,0" concept="16" trace="Fork$9c" />
-      <node id="2214485068936293220" at="205,0,206,0" concept="16" trace="InPlaceCheckpointSpec$pM" />
-      <node id="2214485068936293220" at="206,0,207,0" concept="16" trace="DeclaredCheckpointSpec$HD" />
-      <node id="2214485068936293220" at="207,0,208,0" concept="16" trace="InPlaceCheckpointRefSpec$H6" />
-      <node id="2214485068936293220" at="211,0,212,0" concept="16" trace="forkOf$KiHp" />
-      <node id="2214485068936293220" at="212,0,213,0" concept="16" trace="primary$1kMl" />
-      <node id="2214485068936293220" at="213,0,214,0" concept="16" trace="cpSpec$v7$t" />
-      <node id="2214485068936293220" at="214,0,215,0" concept="16" trace="languages$AUhz" />
-      <node id="2214485068936293220" at="215,0,216,0" concept="16" trace="entries$T03u" />
-      <node id="2214485068936293220" at="216,0,217,0" concept="16" trace="language$pqOb" />
-      <node id="2214485068936293220" at="217,0,218,0" concept="16" trace="module$u1do" />
-      <node id="2214485068936293220" at="218,0,219,0" concept="16" trace="generator$bWty" />
-      <node id="2214485068936293220" at="219,0,220,0" concept="16" trace="checkpoint$18uq" />
-      <node id="2214485068936293220" at="220,0,221,0" concept="16" trace="plan$8HNy" />
-      <node id="2214485068936293220" at="221,0,222,0" concept="16" trace="plan$IYKb" />
-      <node id="2214485068936293220" at="222,0,223,0" concept="16" trace="steps$Xwbb" />
-      <node id="2214485068936293220" at="223,0,224,0" concept="16" trace="cpDecl$4hsH" />
-      <node id="2214485068936293220" at="224,0,225,0" concept="16" trace="checkpoint$4Q6y" />
-      <node id="2214485068936293220" at="228,0,229,0" concept="16" trace="name$MnvL" />
-      <node id="2214485068936293220" at="229,0,230,0" concept="16" trace="gentarget$1DTJ" />
-      <node id="2214485068936293220" at="230,0,231,0" concept="16" trace="individualStepPerGenerator$EG46" />
-      <node id="2214485068936293220" at="231,0,232,0" concept="16" trace="withExtended$Vq9q" />
-      <node id="2214485068936293220" at="232,0,233,0" concept="16" trace="withPriorityRules$G6xp" />
-      <node id="2214485068936293220" at="233,0,234,0" concept="16" trace="gentarget$lwnZ" />
-      <node id="2214485068936293220" at="234,0,235,0" concept="16" trace="kind$xL6K" />
+      <node id="2214485068936293220" at="194,0,195,0" concept="16" trace="Checkpoint$ZV" />
+      <node id="2214485068936293220" at="195,0,196,0" concept="16" trace="Transform$a_" />
+      <node id="2214485068936293220" at="196,0,197,0" concept="16" trace="LanguageIdentity$cN" />
+      <node id="2214485068936293220" at="197,0,198,0" concept="16" trace="ApplyGenerators$PQ" />
+      <node id="2214485068936293220" at="198,0,199,0" concept="16" trace="ModuleIdentity$U1" />
+      <node id="2214485068936293220" at="199,0,200,0" concept="16" trace="GeneratorModulePointer$49" />
+      <node id="2214485068936293220" at="200,0,201,0" concept="16" trace="CheckpointSynchronization$DV" />
+      <node id="2214485068936293220" at="201,0,202,0" concept="16" trace="CheckpointDeclaration$4L" />
+      <node id="2214485068936293220" at="202,0,203,0" concept="16" trace="IncludePlan$sw" />
+      <node id="2214485068936293220" at="203,0,204,0" concept="16" trace="Fork$9c" />
+      <node id="2214485068936293220" at="204,0,205,0" concept="16" trace="InPlaceCheckpointSpec$pM" />
+      <node id="2214485068936293220" at="205,0,206,0" concept="16" trace="DeclaredCheckpointSpec$HD" />
+      <node id="2214485068936293220" at="206,0,207,0" concept="16" trace="InPlaceCheckpointRefSpec$H6" />
+      <node id="2214485068936293220" at="210,0,211,0" concept="16" trace="forkAs$K6gO" />
+      <node id="2214485068936293220" at="211,0,212,0" concept="16" trace="cpSpec$v7$t" />
+      <node id="2214485068936293220" at="212,0,213,0" concept="16" trace="languages$AUhz" />
+      <node id="2214485068936293220" at="213,0,214,0" concept="16" trace="entries$T03u" />
+      <node id="2214485068936293220" at="214,0,215,0" concept="16" trace="language$pqOb" />
+      <node id="2214485068936293220" at="215,0,216,0" concept="16" trace="module$u1do" />
+      <node id="2214485068936293220" at="216,0,217,0" concept="16" trace="generator$bWty" />
+      <node id="2214485068936293220" at="217,0,218,0" concept="16" trace="checkpoint$18uq" />
+      <node id="2214485068936293220" at="218,0,219,0" concept="16" trace="plan$8HNy" />
+      <node id="2214485068936293220" at="219,0,220,0" concept="16" trace="plan$IYKb" />
+      <node id="2214485068936293220" at="220,0,221,0" concept="16" trace="steps$Xwbb" />
+      <node id="2214485068936293220" at="221,0,222,0" concept="16" trace="cpDecl$4hsH" />
+      <node id="2214485068936293220" at="222,0,223,0" concept="16" trace="checkpoint$4Q6y" />
+      <node id="2214485068936293220" at="226,0,227,0" concept="16" trace="gentarget$4yRi" />
+      <node id="2214485068936293220" at="227,0,228,0" concept="16" trace="name$MnvL" />
+      <node id="2214485068936293220" at="228,0,229,0" concept="16" trace="individualStepPerGenerator$EG46" />
+      <node id="2214485068936293220" at="229,0,230,0" concept="16" trace="withExtended$Vq9q" />
+      <node id="2214485068936293220" at="230,0,231,0" concept="16" trace="withPriorityRules$G6xp" />
+      <node id="2214485068936293220" at="231,0,232,0" concept="16" trace="gentarget$lwnZ" />
+      <node id="2214485068936293220" at="232,0,233,0" concept="16" trace="kind$xL6K" />
       <node id="2962035315616902227" at="136,14,138,9" concept="1" />
-      <node id="1884272384613565190" at="54,0,57,0" concept="17" trace="getForkOwner#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="2214485068936937487" at="63,0,66,0" concept="10" trace="getPlanIdentity#()Ljetbrains/mps/generator/plan/PlanIdentity;" />
-      <node id="2214485068936358241" at="72,0,75,0" concept="10" trace="feed#(Ljetbrains/mps/generator/GenerationPlanBuilder;)Ljetbrains/mps/generator/impl/GenPlanTranslator;" />
+      <node id="7914611896310395575" at="59,0,62,0" concept="17" trace="getForkGenerationTarget#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="2214485068936937487" at="68,0,71,0" concept="10" trace="getPlanIdentity#()Ljetbrains/mps/generator/plan/PlanIdentity;" />
+      <node id="2214485068936358241" at="77,0,80,0" concept="10" trace="feed#(Ljetbrains/mps/generator/GenerationPlanBuilder;)Ljetbrains/mps/generator/impl/GenPlanTranslator;" />
       <node id="2962035315616902073" at="108,63,111,11" concept="8" />
       <node id="2962035315616902121" at="114,175,117,11" concept="8" />
       <node id="2962035315616902136" at="117,11,120,11" concept="8" />
@@ -946,26 +942,27 @@
       <node id="2433297057224245801" at="173,136,176,7" concept="9" />
       <node id="2567377358530168137" at="182,71,185,5" concept="9" />
       <node id="2567377358530450004" at="185,5,188,5" concept="9" />
-      <node id="2214485068936357454" at="58,0,62,0" concept="3" trace="GenPlanTranslator#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="8995348726628160720" at="81,133,85,7" concept="9" />
+      <node id="1884272384613565190" at="54,0,58,0" concept="17" trace="getForkOwner#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="2214485068936357454" at="63,0,67,0" concept="3" trace="GenPlanTranslator#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="8995348726628160710" at="84,73,88,5" concept="9" />
       <node id="2433297057224110548" at="166,5,170,5" concept="9" />
       <node id="1487024342320864660" at="48,0,53,0" concept="17" trace="fromGenPlanModel#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/generator/impl/GenPlanTranslator;" />
       <node id="2962035315616902208" at="132,9,138,9" concept="9" />
       <node id="1884272384612857754" at="156,0,162,0" concept="10" trace="buildFork#(Ljetbrains/mps/generator/GenerationPlanBuilder;Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
       <node id="2962035315616902180" at="125,114,132,9" concept="8" />
+      <node id="8995348726627937460" at="84,0,92,0" concept="10" trace="feedMulti#(Ljetbrains/mps/generator/GenerationPlanBuilder;)Ljetbrains/mps/generator/impl/GenPlanTranslator;" />
       <node id="2433297057224206387" at="170,5,178,5" concept="9" />
-      <node id="8995348726628160710" at="79,73,88,5" concept="9" />
       <node id="2962035315616902110" at="113,14,122,9" concept="1" />
       <node id="2567377358530106571" at="182,0,191,0" concept="17" trace="option#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/generator/GenerationPlanBuilder/BuilderOption;" />
-      <node id="8995348726627937460" at="79,0,92,0" concept="10" trace="feedMulti#(Ljetbrains/mps/generator/GenerationPlanBuilder;)Ljetbrains/mps/generator/impl/GenPlanTranslator;" />
       <node id="2433297057223987968" at="163,0,181,0" concept="10" trace="cpIdentity#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/generator/plan/CheckpointIdentity;" />
       <node id="2962035315616901935" at="98,82,122,9" concept="9" />
       <node id="2962035315616901911" at="94,93,151,7" concept="9" />
       <node id="2962035315616901909" at="93,79,152,5" concept="8" />
       <node id="2962035315616902340" at="92,0,155,0" concept="10" trace="feedSteps#(Ljetbrains/mps/generator/GenerationPlanBuilder;)Ljetbrains/mps/generator/impl/GenPlanTranslator;" />
-      <scope id="1884272384613565194" at="54,53,55,191" />
-      <scope id="2214485068936937490" at="63,41,64,26" />
-      <scope id="2214485068936358244" at="72,77,73,34" />
+      <scope id="1884272384613565194" at="55,53,56,16" />
+      <scope id="7914611896310395579" at="59,65,60,120" />
+      <scope id="2214485068936937490" at="68,41,69,26" />
+      <scope id="2214485068936358244" at="77,77,78,34" />
       <scope id="2962035315616901912" at="95,75,96,149" />
       <scope id="2962035315616902074" at="109,94,110,168" />
       <scope id="2962035315616902122" at="115,94,116,223" />
@@ -980,8 +977,8 @@
       <scope id="1487024342320864664" at="49,73,51,59">
         <var name="pn" id="1487024342320916710" />
       </scope>
-      <scope id="2214485068936357459" at="58,60,60,105" />
-      <scope id="8995348726628160721" at="82,28,84,0" />
+      <scope id="2214485068936357459" at="63,60,65,105" />
+      <scope id="8995348726628160711" at="85,84,87,18" />
       <scope id="2962035315616902209" at="133,27,135,230">
         <var name="withPriorityRules" id="2962035315616902211" />
       </scope>
@@ -997,11 +994,11 @@
       <scope id="2433297057224110550" at="167,83,169,231">
         <var name="cpDecl" id="2433297057224148250" />
       </scope>
-      <scope id="1884272384613565190" at="54,0,57,0">
-        <var name="maybeFork" id="1884272384613600738" />
+      <scope id="7914611896310395575" at="59,0,62,0">
+        <var name="maybeFork" id="7914611896310395576" />
       </scope>
-      <scope id="2214485068936937487" at="63,0,66,0" />
-      <scope id="2214485068936358241" at="72,0,75,0">
+      <scope id="2214485068936937487" at="68,0,71,0" />
+      <scope id="2214485068936358241" at="77,0,80,0">
         <var name="planBuilder" id="2214485068936358373" />
       </scope>
       <scope id="2962035315616902073" at="108,63,111,11">
@@ -1013,7 +1010,10 @@
       <scope id="2962035315616902136" at="117,11,120,11">
         <var name="le" id="2962035315616902149" />
       </scope>
-      <scope id="2214485068936357454" at="58,0,62,0">
+      <scope id="1884272384613565190" at="54,0,58,0">
+        <var name="maybeFork" id="1884272384613600738" />
+      </scope>
+      <scope id="2214485068936357454" at="63,0,67,0">
         <var name="planDeclaration" id="2214485068936357481" />
       </scope>
       <scope id="1884272384612857709" at="156,97,160,103">
@@ -1025,6 +1025,7 @@
       <scope id="2962035315616902188" at="126,190,131,29">
         <var name="mr" id="2962035315616902190" />
       </scope>
+      <scope id="8995348726627937464" at="84,73,90,34" />
       <scope id="1884272384612857754" at="156,0,162,0">
         <var name="branchPlan" id="1884272384612857741" />
         <var name="gentarget" id="1884272384612857739" />
@@ -1034,22 +1035,18 @@
         <var name="cpStep" id="2433297057224261965" />
         <var name="inPlaceCPSpec" id="2433297057224244026" />
       </scope>
-      <scope id="8995348726628160711" at="80,84,87,18">
-        <var name="primary" id="8995348726628160713" />
-      </scope>
       <scope id="2962035315616902180" at="125,114,132,9">
         <var name="generator" id="2962035315616902181" />
       </scope>
       <scope id="2567377358530106574" at="182,71,189,52" />
+      <scope id="8995348726627937460" at="84,0,92,0">
+        <var name="planBuilder" id="8995348726628075261" />
+      </scope>
       <scope id="2962035315616902111" at="113,16,121,33">
         <var name="stepBuilder" id="2962035315616902113" />
       </scope>
       <scope id="2567377358530106571" at="182,0,191,0">
         <var name="le" id="2567377358530125640" />
-      </scope>
-      <scope id="8995348726627937464" at="79,73,90,34" />
-      <scope id="8995348726627937460" at="79,0,92,0">
-        <var name="planBuilder" id="8995348726628075261" />
       </scope>
       <scope id="2962035315616901936" at="99,214,112,70">
         <var name="ll" id="2962035315616902067" />
@@ -1075,10 +1072,10 @@
       <scope id="2962035315616902340" at="92,0,155,0">
         <var name="planBuilder" id="2962035315616902327" />
       </scope>
-      <unit id="2214485068936293220" at="227,0,236,0" name="jetbrains.mps.generator.impl.GenPlanTranslator$PROPS" />
-      <unit id="2214485068936293220" at="210,0,226,0" name="jetbrains.mps.generator.impl.GenPlanTranslator$LINKS" />
-      <unit id="2214485068936293220" at="192,0,209,0" name="jetbrains.mps.generator.impl.GenPlanTranslator$CONCEPTS" />
-      <unit id="2214485068936293220" at="38,0,237,0" name="jetbrains.mps.generator.impl.GenPlanTranslator" />
+      <unit id="2214485068936293220" at="225,0,234,0" name="jetbrains.mps.generator.impl.GenPlanTranslator$PROPS" />
+      <unit id="2214485068936293220" at="209,0,224,0" name="jetbrains.mps.generator.impl.GenPlanTranslator$LINKS" />
+      <unit id="2214485068936293220" at="192,0,208,0" name="jetbrains.mps.generator.impl.GenPlanTranslator$CONCEPTS" />
+      <unit id="2214485068936293220" at="38,0,235,0" name="jetbrains.mps.generator.impl.GenPlanTranslator" />
     </file>
   </root>
   <root nodeRef="r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)/3864140621130068067">
