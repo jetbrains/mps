@@ -84,6 +84,12 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     children.add(new LanguageAllModelsProjectViewNode(getProject(), getValue(), getSettings()));
+
+    if (getMPSSettings().isShowDescriptorModels()) {
+      getValue().getModels().stream().filter(SModelStereotype::isDescriptorModel).findFirst().ifPresent(m -> {
+        children.add(new DescriptorModelProjectViewNode(getProject(), m, getSettings()));
+      });
+    }
   }
 
   @Override
@@ -297,11 +303,6 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
       List<SModel> models = new ArrayList<>(getValue().getModels());
-      if (getMPSSettings().isShowDescriptorModels()) {
-        models.stream().filter(SModelStereotype::isDescriptorModel).findFirst().ifPresent(m -> {
-          children.add(new DescriptorModelProjectViewNode(getProject(), m, getSettings()));
-        });
-      }
       models.removeIf(SModelStereotype::isDescriptorModel);
       for (SModel model : models) {
         children.add(new SimpleModelProjectViewNode(getProject(), model, getSettings()) {
