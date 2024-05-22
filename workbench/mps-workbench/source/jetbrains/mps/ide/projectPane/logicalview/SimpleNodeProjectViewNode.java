@@ -95,6 +95,11 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
   }
 
   @Override
+  public boolean isAlwaysLeaf() {
+    return !getSettings().isShowMembers();
+  }
+
+  @Override
   public boolean isAutoExpandAllowed() {
     return false;
   }

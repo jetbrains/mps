@@ -34,6 +34,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.ActionCallback;
 import com.intellij.openapi.vcs.VcsDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.PsiFile;
 import com.intellij.util.concurrency.EdtExecutorService;
 import com.intellij.util.containers.ContainerUtil;
 import jetbrains.mps.classloading.ClassLoaderManager;
@@ -134,9 +135,22 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
 
   @Override
   public @NotNull ActionCallback selectCB(Object element, VirtualFile file, boolean requestFocus) {
+    final Object elementToSelect;
+    if (element instanceof PsiFile) {
+      if (LOG.isDebugLevel()) {
+        LOG.debug("selectCB: replace element with null to avoid issues with selection: "+element);
+      }
+      // FIXME this is to work around code in com.intellij.ide.projectView.impl.AbstractProjectViewPane.createVisitor
+      // FIXME which otherwise creates a wrong type of visitor: com.intellij.ide.projectView.impl.ProjectViewNodeVisitor
+      // FIXME while this one is needed: com.intellij.ide.projectView.impl.ProjectViewFileVisitor
+      elementToSelect = null;
+    }
+    else {
+      elementToSelect = element;
+    }
     ActionCallback callback = new ActionCallback();
     EdtExecutorService.getScheduledExecutorInstance()
-                      .schedule(() -> super.selectCB(element, file, requestFocus).notify(callback), 100, TimeUnit.MILLISECONDS);
+                      .schedule(() -> super.selectCB(elementToSelect, file, requestFocus).notify(callback), 100, TimeUnit.MILLISECONDS);
     return callback;
   }
 
