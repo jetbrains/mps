@@ -9,9 +9,6 @@
   <imports />
   <registry>
     <language id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan">
-      <concept id="7595781251204543685" name="jetbrains.mps.lang.generator.plan.structure.ForkOf" flags="ng" index="2GXXo8">
-        <reference id="7595781251204543817" name="primary" index="2GXXu4" />
-      </concept>
       <concept id="1152961914448136207" name="jetbrains.mps.lang.generator.plan.structure.LanguageEntry" flags="ng" index="2Qf6Nf">
         <child id="1152961914448136208" name="language" index="2Qf6Ng" />
       </concept>
@@ -19,7 +16,6 @@
         <property id="1692978518378815178" name="gentarget" index="RabgO" />
       </concept>
       <concept id="1820634577908471803" name="jetbrains.mps.lang.generator.plan.structure.Plan" flags="ng" index="2VgMpV">
-        <child id="7595781251204551294" name="forkOf" index="2GXN2N" />
         <child id="1692978518378946914" name="forkAs" index="R9CIs" />
         <child id="1820634577908471815" name="steps" index="2VgMA7" />
       </concept>
@@ -54,9 +50,6 @@
           <property role="2V$B1Q" value="jetbrains.mps.lang.doctext" />
         </node>
       </node>
-    </node>
-    <node concept="2GXXo8" id="6RmmpomBo8T" role="2GXN2N">
-      <ref role="2GXXu4" node="2iKjvgosNNj" resolve="DocumentationPlan" />
     </node>
     <node concept="Rabix" id="6RmmpomCHge" role="R9CIs">
       <property role="RabgO" value="documentation" />
