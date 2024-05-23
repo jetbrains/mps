@@ -55,11 +55,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForDocText() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.doctext", "DocText", 0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L);
     b.class_(false, false, true);
-    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x38518aff8a105fd6L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x270e002425f43123L);
     b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6b2f47401707d876L);
+    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x18ce7fcc0a02c1ffL);
     b.origin("r:c17bb0de-76cd-48ca-9cc0-ce1b39396c8b(jetbrains.mps.lang.doctext.structure)/747542936069611173");
     b.version(3);
-    b.aggregate("lines", 0x3d1f117681e68108L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(false).ordered(true).multiple(true).origin("4404258161274814728").done();
+    b.aggregate("lines", 0x3d1f117681e68108L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(true).ordered(true).multiple(true).origin("4404258161274814728").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTextNodeReference() {
