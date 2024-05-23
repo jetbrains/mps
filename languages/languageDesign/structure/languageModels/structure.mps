@@ -232,6 +232,9 @@
     <node concept="PrWs8" id="5GuVNMLxi4Q" role="PzmwI">
       <ref role="PrY4T" node="hOIDzy1" resolve="IStructureDeprecatable" />
     </node>
+    <node concept="PrWs8" id="7cLr0yQ8OvH" role="PzmwI">
+      <ref role="PrY4T" node="6OtXG9K2KUI" resolve="DocumentationObjective" />
+    </node>
   </node>
   <node concept="1TIwiD" id="fKAz7CR">
     <property role="19KtqR" value="true" />
@@ -750,6 +753,9 @@
     <property role="19KtqR" value="true" />
     <property role="R5$K2" value="true" />
     <ref role="1TJDcQ" node="fKAxPRU" resolve="DataTypeDeclaration" />
+    <node concept="PrWs8" id="3nu5mKQenOr" role="PzmwI">
+      <ref role="PrY4T" node="6OtXG9K2KUI" resolve="DocumentationObjective" />
+    </node>
     <node concept="1TJgyj" id="2TR3acGo7N1" role="1TKVEi">
       <property role="IQ2ns" value="3348158742936976577" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -781,6 +787,9 @@
     <property role="R5$K2" value="true" />
     <node concept="PrWs8" id="1ob16QT3iN4" role="PzmwI">
       <ref role="PrY4T" node="1ob16QT2yIl" resolve="INamedStructureElement" />
+    </node>
+    <node concept="PrWs8" id="7cLr0yQ8OoL" role="PzmwI">
+      <ref role="PrY4T" node="6OtXG9K2KUI" resolve="DocumentationObjective" />
     </node>
     <node concept="1TJgyi" id="_jzzDSlxy8" role="1TKVEl">
       <property role="IQ2nx" value="672037151186491528" />
