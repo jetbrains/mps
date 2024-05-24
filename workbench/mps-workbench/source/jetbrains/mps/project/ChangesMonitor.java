@@ -282,6 +282,14 @@ import java.util.function.Predicate;
     module.removeModuleListener(myModuleListener);
   }
 
+  private void unregisterListener(SModelInternal model) {
+    model.removeModelListener(myModelChangeListener);
+  }
+
+  private void registerListener(SModelInternal model) {
+    model.addModelListener(myModelChangeListener);
+  }
+
   private void forAllModulesInProject(Consumer<SModule> moduleConsumer) {
     if (myProject.isDisposed()) return;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
@@ -370,7 +378,13 @@ import java.util.function.Predicate;
 
     @Override
     public void modelAdded(SModule module, SModel model) {
+      registerListener((SModelInternal) model);
       enqueueAllModulesInProject();
+    }
+
+    @Override
+    public void beforeModelRemoved(SModule module, SModel model) {
+      unregisterListener((SModelInternal) model);
     }
 
     @Override
@@ -435,13 +449,13 @@ import java.util.function.Predicate;
     @Override
     protected void startListening(@NotNull SModel model) {
       model.addModelListener(this);
-      ((SModelInternal) model).addModelListener(myModelChangeListener);
+      registerListener((SModelInternal) model);
     }
 
     @Override
     protected void stopListening(@NotNull SModel model) {
       model.removeModelListener(this);
-      ((SModelInternal) model).removeModelListener(myModelChangeListener);
+      unregisterListener((SModelInternal) model);
     }
 
     @Override
@@ -464,7 +478,7 @@ import java.util.function.Predicate;
       enqueueAllModulesInProject();
     }
   }
-  
+
   private class MyModelChangeListener extends SModelAdapter {
 
     @Override
