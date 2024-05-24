@@ -254,6 +254,7 @@
             class="jetbrains.mps.ide.projectView.ProjectViewImpl$Action$SortRootsByConcept">
       <add-to-group group-id="ProjectView.ToolWindow.Appearance.Actions" anchor="after" relative-to-action="ProjectView.SortByName"/>
     </action>
+    <unregister id="ProjectView.FoldersAlwaysOnTop"/>
   </actions>
 
 </idea-plugin>
