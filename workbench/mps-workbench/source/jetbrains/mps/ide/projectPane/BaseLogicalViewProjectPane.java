@@ -66,6 +66,7 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
@@ -85,6 +86,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
@@ -111,6 +113,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
   private static final Logger LOG = Logger.getLogger(BaseLogicalViewProjectPane.class);
 
   private final MyRepositoryListener myRepositoryListener = new MyRepositoryListener();
+  private final MyModuleListener myModuleListener = new MyModuleListener();
   private final MyModelChangeListener myModelChangeListener = new MyModelChangeListener();
   protected boolean myDisposed;
 
@@ -169,7 +172,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
   protected @NotNull DnDAwareTree createTree(@NotNull DefaultTreeModel treeModel) {
     throw new UnsupportedOperationException("no implementation provided");
   }
-  
+
   protected BaseLogicalViewProjectPane(Project project) {
     super(project);
   }
@@ -183,14 +186,19 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
   }
 
   /*package*/ ProjectViewState getProjectViewState() {
+
     // FIXME
     return ProjectViewState.getInstance(getProject());
   }
-
   protected void forEachFile(SModule module, Consumer<IFile> fun) {
     if (module instanceof AbstractModule) {
       IFile iFile = ((AbstractModule) module).getDescriptorFile();
-      fun.accept(iFile);
+      if (iFile != null) {
+        fun.accept(iFile);
+      }
+      else if (LOG.isDebugLevel()) {
+        LOG.debug("skipping update for module (no descriptor file) "+module);
+      }
     }
   }
 
@@ -198,8 +206,12 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     DataSource source = model.getSource();
     if (source instanceof FileSystemBasedDataSource) {
       for (IFile iFile : ((FileSystemBasedDataSource) source).getAffectedFiles()) {
-        fun.accept(iFile);
+        if (iFile != null) {
+          fun.accept(iFile);
+        }
       }
+    } else if (LOG.isDebugLevel()) {
+      LOG.debug("skipping update for model (no file) " + model);
     }
   }
 
@@ -398,6 +410,22 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     mpsProject.getComponent(ClassLoaderManager.class).addListener(myClassesListener);
   }
 
+  private void registerListener(SModule module) {
+    module.addModuleListener(myModuleListener);
+  }
+
+  private void unregisterListener(SModule module) {
+    module.removeModuleListener(myModuleListener);
+  }
+
+  private void registerListener(SModelInternal model) {
+    model.addModelListener(myModelChangeListener);
+  }
+
+  private void unregisterListener(SModelInternal model) {
+    model.removeModelListener(myModelChangeListener);
+  }
+
   /**
    * expects model read lock at least
    *
@@ -578,7 +606,6 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     }
     return selectedTreeNodes;
   }
-
   @Nullable
   private VirtualFile[] getSelectedFiles(boolean addModuleFile, boolean addModuleDir) {
     List<IFile> selectedFilesList = new LinkedList<>();
@@ -619,13 +646,14 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
   }
 
   /*package*/
+
   static AnActionEvent createEvent(DataContext context) {
     return ActionUtils.createEvent(ActionPlaces.PROJECT_VIEW_POPUP, context);
   }
-
   protected abstract boolean isComponentCreated();
-
   private static class MyCopyProvider implements CopyProvider {
+
+
     private CopyNode_Action myAction = new CopyNode_Action();
 
     @Override
@@ -640,7 +668,6 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       myAction.update(event);
       return event.getPresentation().isEnabled();
     }
-
     @Override
     public boolean isCopyVisible(@NotNull DataContext dataContext) {
       return true;
@@ -652,8 +679,9 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       return myAction.getActionUpdateThread();
     }
   }
-
   private static class MyPasteProvider implements PasteProvider {
+
+
     private PasteNode_Action myAction = new PasteNode_Action();
 
     @Override
@@ -666,7 +694,6 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     public boolean isPastePossible(@NotNull DataContext dataContext) {
       return true;
     }
-
     @Override
     public boolean isPasteEnabled(@NotNull DataContext dataContext) {
       AnActionEvent event = createEvent(dataContext);
@@ -681,8 +708,9 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       return myAction.getActionUpdateThread();
     }
   }
-
   private static class MyCutProvider implements CutProvider {
+
+
     private CutNode_Action myAction = new CutNode_Action();
 
     @Override
@@ -697,7 +725,6 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       myAction.update(event);
       return event.getPresentation().isEnabled();
     }
-
     @Override
     public boolean isCutVisible(@NotNull DataContext dataContext) {
       return true;
@@ -709,23 +736,22 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       return myAction.getActionUpdateThread();
     }
   }
-
   private class MyRepositoryListener extends SRepositoryContentAdapter implements CommandListener {
-
     @Override
     protected void startListening(SModel model) {
       model.addModelListener(this);
-      ((SModelInternal) model).addModelListener(myModelChangeListener);
+      registerListener((SModelInternal) model);
     }
 
     @Override
     protected void stopListening(SModel model) {
       model.removeModelListener(this);
-      ((SModelInternal) model).removeModelListener(myModelChangeListener);
+      unregisterListener((SModelInternal) model);
     }
 
     @Override
     public void moduleAdded(@NotNull SModule module) {
+      registerListener(module);
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
         updateFromRoot(true);
       }
@@ -741,6 +767,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
         updateFromRoot(true);
       }
+      unregisterListener(module);
     }
 
     @Override
@@ -752,7 +779,6 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     public void modelRemoved(SModule module, SModelReference ref) {
       forEachFile(module, f -> updateFrom(f, true));
     }
-
     @Override
     public void modelAdded(SModule module, SModel model) {
       forEachFile(module, f -> updateFrom(f, true));
@@ -761,6 +787,32 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     @Override
     public void modelReplaced(SModel model) {
       forEachFile(model, f -> updateFrom(f, true));
+    }
+  }
+
+  private class MyModuleListener implements SModuleListener {
+
+    @Override
+    public void modelAdded(SModule module, SModel model) {
+      registerListener((SModelInternal) model);
+      forEachFile(module, f -> updateFrom(f, true));
+    }
+
+    @Override
+    public void beforeModelRemoved(SModule module, SModel model) {
+      unregisterListener((SModelInternal) model);
+    }
+
+    @Override
+    public void modelRemoved(SModule module, SModelReference ref) {
+      forEachFile(module, f -> updateFrom(f, true));
+    }
+    
+    @Override
+    public void moduleChanged(SModule module) {
+      if (!(module instanceof TempModule || module instanceof TempModule2)) {
+        updateFromRoot(true);
+      }
     }
   }
 
@@ -775,4 +827,5 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       forEachFile(model, f -> updateFrom(f, true));
     }
   }
+
 }
