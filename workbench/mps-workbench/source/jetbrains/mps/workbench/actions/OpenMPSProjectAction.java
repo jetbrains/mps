@@ -61,6 +61,7 @@ public class OpenMPSProjectAction extends AnAction {
   public void update(@NotNull AnActionEvent e) {
     Presentation presentation = e.getPresentation();
     presentation.setIcon(AllIcons.Actions.MenuOpen);
+    presentation.setApplicationScope(true);
   }
 
   protected FileChooserDescriptor createFileChooserDescriptor() {
