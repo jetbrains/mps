@@ -3,7 +3,6 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/annotations.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/app.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/byte-buddy-agent.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/external-system-rt.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/externalProcess-rt.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/forms_rt.jar!/" />
@@ -26,7 +25,6 @@
       <root url="jar://$PROJECT_DIR$/lib/bouncy-castle.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/kotlin-compiler-client-embeddable-1.9.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/kotlinx-metadata-jvm-0.7.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/intellij-coverage-agent-1.0.744.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-frontback.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/trove.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/opentelemetry.jar!/" />

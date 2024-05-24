@@ -227,12 +227,6 @@
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/google/incremental-dom/blob/master/LICENSE"
 }, {
-  "name" : "IntelliJ IDEA Code Coverage Agent",
-  "url" : "https://github.com/jetbrains/intellij-coverage",
-  "version" : "1.0.744",
-  "license" : "Apache 2.0",
-  "licenseUrl" : "https://github.com/JetBrains/intellij-coverage/blob/master/LICENSE"
-}, {
   "name" : "IntelliJ IDEA Test Discovery Agent",
   "url" : "https://github.com/JetBrains/intellij-coverage/tree/master/test-discovery",
   "version" : "1.0.744",
