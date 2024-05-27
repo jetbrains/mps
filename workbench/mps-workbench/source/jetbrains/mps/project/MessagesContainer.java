@@ -98,7 +98,9 @@ public class MessagesContainer implements Disposable {
           mpsProject.getModelAccess()
                     .computeReadAction(() ->
                                            modulesWithErrors.stream()
-                                                            .map(ref -> SObject.of(ref.resolve(mpsProject.getRepository())))
+                                                            .map(ref -> ref.resolve(mpsProject.getRepository()))
+                                                            .filter(Objects::nonNull)
+                                                            .map(SObject::of)
                                                             .anyMatch(hierarchyContains)
       );
       if (hasModuleMessages) {
@@ -117,7 +119,7 @@ public class MessagesContainer implements Disposable {
                        .computeReadAction(() ->
                                               modelsWithErrors.stream()
                                                               .map(ref -> ref.resolve(mpsProject.getRepository()))
-                                                              .filter(Predicate.not(Objects::isNull))
+                                                              .filter(Objects::nonNull)
                                                               .map(SObject::of)
                                                               .anyMatch(hierarchyContains));
     }

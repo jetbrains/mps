@@ -36,7 +36,9 @@ import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import javax.swing.Icon;
@@ -101,7 +103,10 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
     if (virtualFile instanceof MPSNodeVirtualFile) {
       return mpsProject.getModelAccess()
-                       .computeReadAction(() -> Collections.singletonList(SObject.of(((MPSNodeVirtualFile) virtualFile).getNode())));
+                       .computeReadAction(() -> {
+                         SNode node = ((MPSNodeVirtualFile) virtualFile).getNode();
+                         return node != null ? Collections.singletonList(SObject.of(node)) : Collections.emptyList();
+                       });
     }
     IFile file = toIFile(virtualFile);
     if (file != null) {
@@ -121,7 +126,10 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
       SModelReference modelRef = SModelFileTracker.getInstance(mpsProject.getRepository()).modelFor(file);
       if (modelRef != null) {
         return mpsProject.getModelAccess()
-                         .computeReadAction(() -> Collections.singletonList(SObject.of(modelRef.resolve(mpsProject.getRepository()))));
+                         .computeReadAction(() -> {
+                           SModel model = modelRef.resolve(mpsProject.getRepository());
+                           return model != null ?  Collections.singletonList(SObject.of(model)) : Collections.emptyList();
+                         });
       }
     }
     return Collections.emptyList();
