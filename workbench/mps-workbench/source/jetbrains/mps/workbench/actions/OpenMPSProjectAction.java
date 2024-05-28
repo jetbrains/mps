@@ -93,15 +93,7 @@ public class OpenMPSProjectAction extends AnAction {
 
     if (OpenMPSProjectFileChooserDescriptor.isMpsProjectDirectory(virtualFile) || OpenMPSProjectFileChooserDescriptor.isMpsProjectFile(virtualFile)) {
       if (OpenMPSProjectTrustProjectHelper.checkTrust(virtualFile)) {
-        if (ExperimentalUI.isNewUI()) {
-          ProjectUtil.openProject(virtualFile.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
-        } else {
-          final Application application = ApplicationManager.getApplication();
-          application.executeOnPooledThread(()->{
-            ProjectUtil.openProject(virtualFile.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
-          });
-
-        }
+        ProjectUtil.openProject(virtualFile.toNioPath(), OpenProjectTask.build().withProjectToClose(currentProject).withForceOpenInNewFrame(false));
       }
     } else {
       if (virtualFile.isDirectory()) {
