@@ -3,6 +3,7 @@
  */
 package jetbrains.mps.ide.projectPane.logicalview;
 
+import com.intellij.icons.AllIcons;
 import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ViewSettings;
@@ -76,7 +77,7 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
 
     @Override
     protected void update(@NotNull PresentationData presentation) {
-      presentation.setIcon(IdeIcons.PROJECT_ICON);
+      presentation.setIcon(Nodes.HomeFolder);
       presentation.addText(getValue().getName(), SimpleTextAttributes.REGULAR_BOLD_ATTRIBUTES);
       VirtualFile projectDir = ProjectUtil.guessProjectDir(getProject());
       if (projectDir != null) {
