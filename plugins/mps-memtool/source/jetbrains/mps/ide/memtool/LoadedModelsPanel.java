@@ -63,6 +63,7 @@ import java.util.function.Consumer;
 public final class LoadedModelsPanel extends TextPanel implements CustomStatusBarWidget, Activatable {
   public static final String WIDGET_ID = "Models";
   private static final Color USED_COLOR = JBColor.namedColor("MemoryIndicator.usedBackground", new JBColor(Gray._185, Gray._110));
+  private static final Color UNUSED_COLOR = JBColor.namedColor("MemoryIndicator.allocatedBackground", new JBColor(Gray._215, Gray._90));
 
   private final MPSProject myProject;
   private ScheduledFuture<?> myFuture;
@@ -145,17 +146,18 @@ public final class LoadedModelsPanel extends TextPanel implements CustomStatusBa
 
     int usedBarLength = myStats.totalModels == 0 ? 0 : barWidth * myStats.loadedModels / myStats.totalModels;
 
-    // background
-    g.setColor(UIUtil.getPanelBackground());
+    // assuming that the width of the whole panel is used for indication of the percentage of loaded models
+    // Otherwise g.setColor(UIUtil.getPanelBackground()); should be used to paint the background of the panel first.
+    g.setColor(UNUSED_COLOR);
     g.fillRect(0, 0, barWidth, size.height - 1);
 
     // gauge (used)
     g.setColor(USED_COLOR);
     g.fillRect(0, 0, usedBarLength, size.height - 1);
 
-    g.setColor(JBColor.GRAY);
-    g.drawLine(size.width - 1, 0, size.width - 1, size.height - 1);
-    g.drawLine(0, 0, 0, size.height - 1);
+//    g.setColor(JBColor.GRAY);
+//    g.drawLine(size.width - 1, 0, size.width - 1, size.height - 1);
+//    g.drawLine(0, 0, 0, size.height - 1);
 
     Icon icon = ProjectPane.LogicalView;
     icon.paintIcon(this, g, size.width - icon.getIconWidth() - 4, (size.height - icon.getIconHeight()) / 2);
