@@ -9573,11 +9573,6 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="7HZe2EwZDjb" role="1oa70y" />
     </node>
-    <node concept="1DS2jV" id="36tV70Zqv$T" role="1NuT2Z">
-      <property role="TrG5h" value="contextModule" />
-      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.CONTEXT_MODULE" resolve="CONTEXT_MODULE" />
-      <node concept="1oajcY" id="7HZe2EwZDhP" role="1oa70y" />
-    </node>
     <node concept="1DS2jV" id="36tV70Zqv$V" role="1NuT2Z">
       <property role="TrG5h" value="models" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MODELS" resolve="MODELS" />
@@ -9882,6 +9877,33 @@
                           </node>
                         </node>
                       </node>
+                      <node concept="3cpWs8" id="TM41oltaun" role="3cqZAp">
+                        <node concept="3cpWsn" id="TM41oltauo" role="3cpWs9">
+                          <property role="TrG5h" value="module" />
+                          <node concept="3uibUv" id="TM41oltakI" role="1tU5fm">
+                            <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                          </node>
+                          <node concept="2OqwBi" id="TM41oltaup" role="33vP2m">
+                            <node concept="2GrUjf" id="TM41oltauq" role="2Oq$k0">
+                              <ref role="2Gs0qQ" node="7l8SZlcOm6o" resolve="model" />
+                            </node>
+                            <node concept="liA8E" id="TM41oltaur" role="2OqNvi">
+                              <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3clFbJ" id="TM41oltbjh" role="3cqZAp">
+                        <node concept="3clFbS" id="TM41oltbjj" role="3clFbx">
+                          <node concept="3N13vt" id="TM41oltdc1" role="3cqZAp" />
+                        </node>
+                        <node concept="3clFbC" id="TM41oltc3g" role="3clFbw">
+                          <node concept="10Nm6u" id="TM41oltcpH" role="3uHU7w" />
+                          <node concept="37vLTw" id="TM41oltbJI" role="3uHU7B">
+                            <ref role="3cqZAo" node="TM41oltauo" resolve="module" />
+                          </node>
+                        </node>
+                      </node>
                       <node concept="3clFbF" id="7l8SZlcOm6_" role="3cqZAp">
                         <node concept="2YIFZM" id="7l8SZlcOm6A" role="3clFbG">
                           <ref role="1Pybhc" to="d94j:~DeleteModelHelper" resolve="DeleteModelHelper" />
@@ -9892,11 +9914,8 @@
                               <ref role="2WH_rO" node="36tV70Zqv$R" resolve="project" />
                             </node>
                           </node>
-                          <node concept="2OqwBi" id="7l8SZlcVmtH" role="37wK5m">
-                            <node concept="2WthIp" id="7l8SZlcVmtK" role="2Oq$k0" />
-                            <node concept="1DTwFV" id="7l8SZlcVmtM" role="2OqNvi">
-                              <ref role="2WH_rO" node="36tV70Zqv$T" resolve="contextModule" />
-                            </node>
+                          <node concept="37vLTw" id="TM41oltaus" role="37wK5m">
+                            <ref role="3cqZAo" node="TM41oltauo" resolve="module" />
                           </node>
                           <node concept="2GrUjf" id="7l8SZlcOm6H" role="37wK5m">
                             <ref role="2Gs0qQ" node="7l8SZlcOm6o" resolve="model" />
