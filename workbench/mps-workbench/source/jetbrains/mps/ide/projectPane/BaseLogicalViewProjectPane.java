@@ -30,6 +30,7 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.ActionCallback;
 import com.intellij.openapi.vcs.VcsDataKeys;
@@ -395,12 +396,15 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     mpsProject.getModelAccess().removeCommandListener(myRepositoryListener);
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).detach();
     mpsProject.getComponent(MakeServiceComponent.class).get().removeListener(myMakeNotificationListener);
+    forAllModulesInProject(this::unregisterListener);
   }
 
   protected void addListeners() {
     jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).attach();
     mpsProject.getModelAccess().addCommandListener(myRepositoryListener);
+
+    forAllModulesInProject(this::registerListener);
 
     // XXX here used to be a hasMakeService() check, which I found superfluous,
     //     as we always have make service in UI (at least, we never check for it in other locations)
@@ -424,6 +428,14 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
 
   private void unregisterListener(SModelInternal model) {
     model.removeModelListener(myModelChangeListener);
+  }
+
+  private void forAllModulesInProject(Consumer<SModule> moduleConsumer) {
+    if (myProject.isDisposed()) return;
+    MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
+    ApplicationManager.getApplication().invokeLater(() -> {
+      mpsProject.getProjectModulesWithGenerators().forEach(moduleConsumer);
+    });
   }
 
   /**
