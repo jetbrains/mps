@@ -41,7 +41,7 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
 
   @Override
   protected boolean canRepresentSObject(SObject sObject) {
-    return !sObject.hasSNode() && sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
+    return !sObject.hasSModel() && sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
   }
 
   protected void fillChildren(Collection<AbstractTreeNode<?>> children, Collection<SModel> models) {
