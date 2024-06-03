@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.SNodePointer;
 @MPSLaunch
 public class OverridingRule_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(OverridingRule_Test.class).projectPath("${mps_home}").modelRef("r:0f4db6eb-148d-44cb-ac9d-a618b0bc8a92(testSubstituteType.model@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(OverridingRule_Test.class).projectPath(null).modelRef("r:0f4db6eb-148d-44cb-ac9d-a618b0bc8a92(testSubstituteType.model@tests)").reopenProject(null).build());
 
   public OverridingRule_Test() {
     super(ourParametersCacheExtension.getParametersCache());

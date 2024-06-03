@@ -15,7 +15,7 @@ import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 @MPSLaunch
 public class DeleteSpaceBetweenWordAndTag_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(DeleteSpaceBetweenWordAndTag_Test.class).projectPath("${mps_home}").modelRef("r:16787a38-3459-4ea1-9150-b215a73f5d27(jetbrains.mps.lang.html.test.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(DeleteSpaceBetweenWordAndTag_Test.class).projectPath(null).modelRef("r:16787a38-3459-4ea1-9150-b215a73f5d27(jetbrains.mps.lang.html.test.tests@tests)").reopenProject(false).build());
 
   public DeleteSpaceBetweenWordAndTag_Test() {
     super(ourParametersCacheExtension.getParametersCache());

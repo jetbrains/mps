@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 @MPSLaunch
 public class TestEditorMenuTraceSubstituteMenuSimpleConceptAction_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestEditorMenuTraceSubstituteMenuSimpleConceptAction_Test.class).projectPath("${mps_home}").modelRef("r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestEditorMenuTraceSubstituteMenuSimpleConceptAction_Test.class).projectPath(null).modelRef("r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)").reopenProject(false).build());
 
   public TestEditorMenuTraceSubstituteMenuSimpleConceptAction_Test() {
     super(ourParametersCacheExtension.getParametersCache());

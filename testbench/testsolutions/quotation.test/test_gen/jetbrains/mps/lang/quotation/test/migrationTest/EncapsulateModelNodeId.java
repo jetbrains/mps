@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 @MPSLaunch
 public class EncapsulateModelNodeId extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(EncapsulateModelNodeId.class).projectPath("${mps_home}").modelRef("r:c0ca7d69-6a8e-4207-889d-76c844df55e0(jetbrains.mps.lang.quotation.test.migrationTest@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(EncapsulateModelNodeId.class).projectPath(null).modelRef("r:c0ca7d69-6a8e-4207-889d-76c844df55e0(jetbrains.mps.lang.quotation.test.migrationTest@tests)").reopenProject(null).build());
 
   @RegisterExtension
   private ExecuteCommandExtension myCommandExtension = new ExecuteCommandExtension(this);

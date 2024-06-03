@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 @MPSLaunch
 public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(NodeOperationsApplicableFlags_Test.class).projectPath("${mps_home}").modelRef("r:3deabf90-227b-4dd7-a1b3-e4735e4a0270(jetbrains.mps.lang.smodel.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(NodeOperationsApplicableFlags_Test.class).projectPath(null).modelRef("r:3deabf90-227b-4dd7-a1b3-e4735e4a0270(jetbrains.mps.lang.smodel.test)").reopenProject(null).build());
 
   public NodeOperationsApplicableFlags_Test() {
     super(ourParametersCacheExtension.getParametersCache());

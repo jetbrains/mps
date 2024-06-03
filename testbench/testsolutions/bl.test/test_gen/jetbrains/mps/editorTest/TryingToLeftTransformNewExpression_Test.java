@@ -15,7 +15,7 @@ import org.junit.Assert;
 @MPSLaunch
 public class TryingToLeftTransformNewExpression_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TryingToLeftTransformNewExpression_Test.class).projectPath("${mps_home}").modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TryingToLeftTransformNewExpression_Test.class).projectPath(null).modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
 
   public TryingToLeftTransformNewExpression_Test() {
     super(ourParametersCacheExtension.getParametersCache());

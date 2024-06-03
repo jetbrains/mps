@@ -15,7 +15,7 @@ import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 @MPSLaunch
 public class BackspaceSpaceBetweenWrapperAndTextNodeReference_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(BackspaceSpaceBetweenWrapperAndTextNodeReference_Test.class).projectPath("${mps_home}").modelRef("r:0f6e0ac5-6758-4c48-a618-b40d4f02a1a6(jetbrains.mps.lang.doctext.test.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(BackspaceSpaceBetweenWrapperAndTextNodeReference_Test.class).projectPath(null).modelRef("r:0f6e0ac5-6758-4c48-a618-b40d4f02a1a6(jetbrains.mps.lang.doctext.test.tests@tests)").reopenProject(false).build());
 
   public BackspaceSpaceBetweenWrapperAndTextNodeReference_Test() {
     super(ourParametersCacheExtension.getParametersCache());

@@ -18,7 +18,7 @@ import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 @MPSLaunch
 public class Functions_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Functions_Test.class).projectPath("${mps_home}").modelRef("r:19fd18b4-427a-460b-866a-b6c54dd2f9f5(jetbrains.mps.kotlin.tests.editor.scopes@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Functions_Test.class).projectPath(null).modelRef("r:19fd18b4-427a-460b-866a-b6c54dd2f9f5(jetbrains.mps.kotlin.tests.editor.scopes@tests)").reopenProject(null).build());
 
   public Functions_Test() {
     super(ourParametersCacheExtension.getParametersCache());

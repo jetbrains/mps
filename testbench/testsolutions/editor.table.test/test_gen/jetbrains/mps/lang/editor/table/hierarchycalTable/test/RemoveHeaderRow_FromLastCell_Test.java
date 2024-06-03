@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @MPSLaunch
 public class RemoveHeaderRow_FromLastCell_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(RemoveHeaderRow_FromLastCell_Test.class).projectPath("${mps_home}").modelRef("r:67b81510-37ee-448c-9923-c51275863bef(jetbrains.mps.lang.editor.table.hierarchycalTable.test@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(RemoveHeaderRow_FromLastCell_Test.class).projectPath(null).modelRef("r:67b81510-37ee-448c-9923-c51275863bef(jetbrains.mps.lang.editor.table.hierarchycalTable.test@tests)").reopenProject(false).build());
 
   public RemoveHeaderRow_FromLastCell_Test() {
     super(ourParametersCacheExtension.getParametersCache());

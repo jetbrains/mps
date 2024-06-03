@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class SurroundWith_BlockStatement_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SurroundWith_BlockStatement_Test.class).projectPath("${mps_home}").modelRef("r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SurroundWith_BlockStatement_Test.class).projectPath(null).modelRef("r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)").reopenProject(false).build());
 
   public SurroundWith_BlockStatement_Test() {
     super(ourParametersCacheExtension.getParametersCache());

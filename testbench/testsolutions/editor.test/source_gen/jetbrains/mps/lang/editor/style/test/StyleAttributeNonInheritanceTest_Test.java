@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 @MPSLaunch
 public class StyleAttributeNonInheritanceTest_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(StyleAttributeNonInheritanceTest_Test.class).projectPath("${mps_home}").modelRef("r:e796bc79-24a8-4433-8903-c71c59526bf7(jetbrains.mps.lang.editor.style.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(StyleAttributeNonInheritanceTest_Test.class).projectPath(null).modelRef("r:e796bc79-24a8-4433-8903-c71c59526bf7(jetbrains.mps.lang.editor.style.test)").reopenProject(false).build());
 
   public StyleAttributeNonInheritanceTest_Test() {
     super(ourParametersCacheExtension.getParametersCache());

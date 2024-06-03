@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class UpdateHidingAttribute_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(UpdateHidingAttribute_Test.class).projectPath("${mps_home}").modelRef("r:09fb198f-3544-4746-9d3e-f773f4bfde46(jetbrains.mps.lang.editor.attribues)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(UpdateHidingAttribute_Test.class).projectPath(null).modelRef("r:09fb198f-3544-4746-9d3e-f773f4bfde46(jetbrains.mps.lang.editor.attribues)").reopenProject(false).build());
 
   public UpdateHidingAttribute_Test() {
     super(ourParametersCacheExtension.getParametersCache());

@@ -19,7 +19,7 @@ import jetbrains.mps.errors.MessageStatus;
 @MPSLaunch
 public class ExtendingNullableAnalyzer_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ExtendingNullableAnalyzer_Test.class).projectPath("${mps_home}").modelRef("r:5c887230-cdf3-4722-bd6c-5a7e20ee92a1(analyzers.test.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ExtendingNullableAnalyzer_Test.class).projectPath(null).modelRef("r:5c887230-cdf3-4722-bd6c-5a7e20ee92a1(analyzers.test.tests@tests)").reopenProject(null).build());
 
   public ExtendingNullableAnalyzer_Test() {
     super(ourParametersCacheExtension.getParametersCache());

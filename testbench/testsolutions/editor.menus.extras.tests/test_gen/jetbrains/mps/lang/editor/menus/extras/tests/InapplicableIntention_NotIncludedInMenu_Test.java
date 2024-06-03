@@ -27,7 +27,7 @@ import org.junit.Assert;
 @MPSLaunch
 public class InapplicableIntention_NotIncludedInMenu_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(InapplicableIntention_NotIncludedInMenu_Test.class).projectPath("${mps_home}").modelRef("r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(InapplicableIntention_NotIncludedInMenu_Test.class).projectPath(null).modelRef("r:a1e8c439-e997-416b-a5dc-df7c3fd41b00(jetbrains.mps.lang.editor.menus.extras.tests@tests)").reopenProject(false).build());
 
   public InapplicableIntention_NotIncludedInMenu_Test() {
     super(ourParametersCacheExtension.getParametersCache());

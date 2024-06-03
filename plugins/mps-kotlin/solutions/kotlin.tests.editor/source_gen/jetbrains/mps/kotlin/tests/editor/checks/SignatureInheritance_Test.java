@@ -20,7 +20,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class SignatureInheritance_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SignatureInheritance_Test.class).projectPath("${mps_home}").modelRef("r:7c8e019c-f730-4087-8f9d-0f24a0e49d4c(jetbrains.mps.kotlin.tests.editor.checks@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SignatureInheritance_Test.class).projectPath(null).modelRef("r:7c8e019c-f730-4087-8f9d-0f24a0e49d4c(jetbrains.mps.kotlin.tests.editor.checks@tests)").reopenProject(null).build());
 
   public SignatureInheritance_Test() {
     super(ourParametersCacheExtension.getParametersCache());

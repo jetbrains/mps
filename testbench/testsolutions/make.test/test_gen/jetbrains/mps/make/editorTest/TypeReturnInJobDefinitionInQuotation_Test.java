@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class TypeReturnInJobDefinitionInQuotation_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TypeReturnInJobDefinitionInQuotation_Test.class).projectPath("${mps_home}").modelRef("r:44f67fb3-9f2f-48cf-be4d-4c511452435b(jetbrains.mps.make.editorTest@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TypeReturnInJobDefinitionInQuotation_Test.class).projectPath(null).modelRef("r:44f67fb3-9f2f-48cf-be4d-4c511452435b(jetbrains.mps.make.editorTest@tests)").reopenProject(false).build());
 
   public TypeReturnInJobDefinitionInQuotation_Test() {
     super(ourParametersCacheExtension.getParametersCache());

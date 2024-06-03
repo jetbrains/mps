@@ -19,7 +19,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class OverridingInference_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(OverridingInference_Test.class).projectPath("${mps_home}").modelRef("r:0f4db6eb-148d-44cb-ac9d-a618b0bc8a92(testSubstituteType.model@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(OverridingInference_Test.class).projectPath(null).modelRef("r:0f4db6eb-148d-44cb-ac9d-a618b0bc8a92(testSubstituteType.model@tests)").reopenProject(null).build());
 
   public OverridingInference_Test() {
     super(ourParametersCacheExtension.getParametersCache());

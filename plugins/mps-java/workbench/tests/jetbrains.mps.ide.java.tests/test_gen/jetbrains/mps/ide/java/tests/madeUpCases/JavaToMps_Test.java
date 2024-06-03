@@ -19,7 +19,7 @@ import jetbrains.mps.project.AbstractModule;
 @MPSLaunch
 public class JavaToMps_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JavaToMps_Test.class).projectPath("${mps_home}").modelRef("r:62acf462-bd7b-40b0-b72a-892ef900fe37(jetbrains.mps.ide.java.tests.madeUpCases@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JavaToMps_Test.class).projectPath(null).modelRef("r:62acf462-bd7b-40b0-b72a-892ef900fe37(jetbrains.mps.ide.java.tests.madeUpCases@tests)").reopenProject(null).build());
 
   public JavaToMps_Test() {
     super(ourParametersCacheExtension.getParametersCache());

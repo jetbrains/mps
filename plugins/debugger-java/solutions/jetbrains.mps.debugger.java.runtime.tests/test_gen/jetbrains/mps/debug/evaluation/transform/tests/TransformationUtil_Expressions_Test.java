@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 @MPSLaunch
 public class TransformationUtil_Expressions_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TransformationUtil_Expressions_Test.class).projectPath("${mps_home}").modelRef("r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TransformationUtil_Expressions_Test.class).projectPath(null).modelRef("r:29a1b5f5-cf76-4978-a4ac-fe622e0f96ff(jetbrains.mps.debug.evaluation.transform.tests@tests)").reopenProject(null).build());
 
   public TransformationUtil_Expressions_Test() {
     super(ourParametersCacheExtension.getParametersCache());

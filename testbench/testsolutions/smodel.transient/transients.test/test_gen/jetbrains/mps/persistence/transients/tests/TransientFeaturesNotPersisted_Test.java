@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 @MPSLaunch
 public class TransientFeaturesNotPersisted_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TransientFeaturesNotPersisted_Test.class).projectPath("${mps_home}").modelRef("r:688f53d4-3997-403e-9588-25640f0414aa(jetbrains.mps.persistence.transients.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TransientFeaturesNotPersisted_Test.class).projectPath(null).modelRef("r:688f53d4-3997-403e-9588-25640f0414aa(jetbrains.mps.persistence.transients.tests@tests)").reopenProject(null).build());
 
   public TransientFeaturesNotPersisted_Test() {
     super(ourParametersCacheExtension.getParametersCache());

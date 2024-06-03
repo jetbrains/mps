@@ -16,7 +16,7 @@ import org.junit.Assert;
 @MPSLaunch
 public class TestSideTransformExceptionActionIcon_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestSideTransformExceptionActionIcon_Test.class).projectPath("${mps_home}").modelRef("r:b4f50ed2-df75-4f06-8889-d503cb129f2d(jetbrains.mps.lang.editor.menus.sideTransform.tests.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestSideTransformExceptionActionIcon_Test.class).projectPath(null).modelRef("r:b4f50ed2-df75-4f06-8889-d503cb129f2d(jetbrains.mps.lang.editor.menus.sideTransform.tests.tests@tests)").reopenProject(false).build());
 
   public TestSideTransformExceptionActionIcon_Test() {
     super(ourParametersCacheExtension.getParametersCache());

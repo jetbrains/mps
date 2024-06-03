@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @MPSLaunch
 public class AddNodeWrapper_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(AddNodeWrapper_Test.class).projectPath("${mps_home}").modelRef("r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(AddNodeWrapper_Test.class).projectPath(null).modelRef("r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)").reopenProject(false).build());
 
   public AddNodeWrapper_Test() {
     super(ourParametersCacheExtension.getParametersCache());

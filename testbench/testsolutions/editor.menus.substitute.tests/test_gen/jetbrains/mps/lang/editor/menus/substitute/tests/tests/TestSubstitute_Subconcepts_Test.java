@@ -17,7 +17,7 @@ import java.util.ArrayList;
 @MPSLaunch
 public class TestSubstitute_Subconcepts_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestSubstitute_Subconcepts_Test.class).projectPath("${mps_home}").modelRef("r:62873c84-7a76-488a-9b84-4e0ffdbec8db(jetbrains.mps.lang.editor.menus.substitute.tests.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestSubstitute_Subconcepts_Test.class).projectPath(null).modelRef("r:62873c84-7a76-488a-9b84-4e0ffdbec8db(jetbrains.mps.lang.editor.menus.substitute.tests.tests@tests)").reopenProject(false).build());
 
   public TestSubstitute_Subconcepts_Test() {
     super(ourParametersCacheExtension.getParametersCache());

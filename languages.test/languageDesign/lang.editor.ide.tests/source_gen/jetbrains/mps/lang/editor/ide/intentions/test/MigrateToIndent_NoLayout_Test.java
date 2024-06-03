@@ -15,7 +15,7 @@ import org.junit.Assert;
 @MPSLaunch
 public class MigrateToIndent_NoLayout_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(MigrateToIndent_NoLayout_Test.class).projectPath("${mps_home}").modelRef("r:ac7fc8d2-009b-4709-96f8-5178c2bb268c(jetbrains.mps.lang.editor.ide.intentions.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(MigrateToIndent_NoLayout_Test.class).projectPath(null).modelRef("r:ac7fc8d2-009b-4709-96f8-5178c2bb268c(jetbrains.mps.lang.editor.ide.intentions.test)").reopenProject(false).build());
 
   public MigrateToIndent_NoLayout_Test() {
     super(ourParametersCacheExtension.getParametersCache());

@@ -17,7 +17,7 @@ import jetbrains.mps.testbench.util.CachingAppender;
 @MPSLaunch
 public class ChildWithIndirectCycle_card1_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ChildWithIndirectCycle_card1_Test.class).projectPath("${mps_home}").modelRef("r:5bc8da8a-ff96-4203-940f-04ea622e05a9(jetbrains.mps.lang.editor.init.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ChildWithIndirectCycle_card1_Test.class).projectPath(null).modelRef("r:5bc8da8a-ff96-4203-940f-04ea622e05a9(jetbrains.mps.lang.editor.init.test)").reopenProject(false).build());
 
   public ChildWithIndirectCycle_card1_Test() {
     super(ourParametersCacheExtension.getParametersCache());

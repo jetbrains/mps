@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class TestCreateLessThanInequationStatement_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestCreateLessThanInequationStatement_Test.class).projectPath("${mps_home}").modelRef("r:ba36a6c7-bab0-4006-ad8b-187ac1fc8f66(jetbrains.mps.lang.typesystem.editorTest@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestCreateLessThanInequationStatement_Test.class).projectPath(null).modelRef("r:ba36a6c7-bab0-4006-ad8b-187ac1fc8f66(jetbrains.mps.lang.typesystem.editorTest@tests)").reopenProject(false).build());
 
   public TestCreateLessThanInequationStatement_Test() {
     super(ourParametersCacheExtension.getParametersCache());

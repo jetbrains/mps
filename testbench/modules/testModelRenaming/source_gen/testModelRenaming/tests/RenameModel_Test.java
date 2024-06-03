@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.persistence.UnsupportedDataSourceException;
 @MPSLaunch
 public class RenameModel_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(RenameModel_Test.class).projectPath("${mps_home}").modelRef("r:dc1e5ac6-993e-4ca9-bf73-f993261504b8(testModelRenaming.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(RenameModel_Test.class).projectPath(null).modelRef("r:dc1e5ac6-993e-4ca9-bf73-f993261504b8(testModelRenaming.tests@tests)").reopenProject(null).build());
 
   public RenameModel_Test() {
     super(ourParametersCacheExtension.getParametersCache());

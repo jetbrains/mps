@@ -18,7 +18,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 @MPSLaunch
 public class InitiallyCollapsedSwingComponent_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(InitiallyCollapsedSwingComponent_Test.class).projectPath("${mps_home}").modelRef("r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(InitiallyCollapsedSwingComponent_Test.class).projectPath(null).modelRef("r:0204c664-b836-4137-bb87-42caecd8a4e3(jetbrains.mps.lang.editor.folding.test)").reopenProject(false).build());
 
   public InitiallyCollapsedSwingComponent_Test() {
     super(ourParametersCacheExtension.getParametersCache());

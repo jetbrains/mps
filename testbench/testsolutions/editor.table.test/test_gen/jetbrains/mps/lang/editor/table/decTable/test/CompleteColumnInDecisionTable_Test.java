@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @MPSLaunch
 public class CompleteColumnInDecisionTable_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CompleteColumnInDecisionTable_Test.class).projectPath("${mps_home}").modelRef("r:c09cbf74-c0bb-4531-bd9d-ade611acf77c(jetbrains.mps.lang.editor.table.decTable.test@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CompleteColumnInDecisionTable_Test.class).projectPath(null).modelRef("r:c09cbf74-c0bb-4531-bd9d-ade611acf77c(jetbrains.mps.lang.editor.table.decTable.test@tests)").reopenProject(false).build());
 
   public CompleteColumnInDecisionTable_Test() {
     super(ourParametersCacheExtension.getParametersCache());

@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @MPSLaunch
 public class SLinkImplicitSelect_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SLinkImplicitSelect_Test.class).projectPath("${mps_home}").modelRef("r:3526f944-06ad-48b3-a2a1-fffa752849ed(jetbrains.mps.smodel.test.smodelOperations@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SLinkImplicitSelect_Test.class).projectPath(null).modelRef("r:3526f944-06ad-48b3-a2a1-fffa752849ed(jetbrains.mps.smodel.test.smodelOperations@tests)").reopenProject(null).build());
 
   public SLinkImplicitSelect_Test() {
     super(ourParametersCacheExtension.getParametersCache());

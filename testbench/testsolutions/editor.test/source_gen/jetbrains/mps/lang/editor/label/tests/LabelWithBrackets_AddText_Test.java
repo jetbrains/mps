@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class LabelWithBrackets_AddText_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(LabelWithBrackets_AddText_Test.class).projectPath("${mps_home}").modelRef("r:40a702b4-7737-42f4-8412-0355208396f3(jetbrains.mps.lang.editor.label.tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(LabelWithBrackets_AddText_Test.class).projectPath(null).modelRef("r:40a702b4-7737-42f4-8412-0355208396f3(jetbrains.mps.lang.editor.label.tests)").reopenProject(false).build());
 
   public LabelWithBrackets_AddText_Test() {
     super(ourParametersCacheExtension.getParametersCache());

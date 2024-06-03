@@ -17,7 +17,7 @@ import java.util.ArrayList;
 @MPSLaunch
 public class SubstituteSmartInvalidReference_CaretInCenter_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SubstituteSmartInvalidReference_CaretInCenter_Test.class).projectPath("${mps_home}").modelRef("r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SubstituteSmartInvalidReference_CaretInCenter_Test.class).projectPath(null).modelRef("r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)").reopenProject(false).build());
 
   public SubstituteSmartInvalidReference_CaretInCenter_Test() {
     super(ourParametersCacheExtension.getParametersCache());

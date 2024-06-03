@@ -15,7 +15,7 @@ import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 @MPSLaunch
 public class QueryParameterList_Delete7_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(QueryParameterList_Delete7_Test.class).projectPath("${mps_home}").modelRef("r:ef2abb2b-cc5a-4776-8085-7767c2890554(jetbrains.mps.lang.smodel.query.test.editorTest@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(QueryParameterList_Delete7_Test.class).projectPath(null).modelRef("r:ef2abb2b-cc5a-4776-8085-7767c2890554(jetbrains.mps.lang.smodel.query.test.editorTest@tests)").reopenProject(false).build());
 
   public QueryParameterList_Delete7_Test() {
     super(ourParametersCacheExtension.getParametersCache());

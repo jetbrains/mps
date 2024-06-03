@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @MPSLaunch
 public class TabNavigationNextLine_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TabNavigationNextLine_Test.class).projectPath("${mps_home}").modelRef("r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TabNavigationNextLine_Test.class).projectPath(null).modelRef("r:e02ee75b-0624-4ff2-b4d9-d2277a157ff4(jetbrains.mps.lang.editor.table.genericTable.test@tests)").reopenProject(false).build());
 
   public TabNavigationNextLine_Test() {
     super(ourParametersCacheExtension.getParametersCache());

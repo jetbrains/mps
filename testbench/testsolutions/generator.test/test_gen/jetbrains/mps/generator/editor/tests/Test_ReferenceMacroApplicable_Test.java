@@ -16,7 +16,7 @@ import jetbrains.mps.lang.generator.helper.EditingUtil;
 @MPSLaunch
 public class Test_ReferenceMacroApplicable_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Test_ReferenceMacroApplicable_Test.class).projectPath("${mps_home}").modelRef("r:cbdcb51c-64a3-4f95-8704-5b9a754c9773(jetbrains.mps.generator.editor.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Test_ReferenceMacroApplicable_Test.class).projectPath(null).modelRef("r:cbdcb51c-64a3-4f95-8704-5b9a754c9773(jetbrains.mps.generator.editor.tests@tests)").reopenProject(false).build());
 
   public Test_ReferenceMacroApplicable_Test() {
     super(ourParametersCacheExtension.getParametersCache());

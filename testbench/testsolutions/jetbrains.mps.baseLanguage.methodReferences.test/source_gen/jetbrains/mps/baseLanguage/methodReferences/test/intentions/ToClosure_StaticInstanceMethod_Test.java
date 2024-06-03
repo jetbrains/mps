@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class ToClosure_StaticInstanceMethod_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ToClosure_StaticInstanceMethod_Test.class).projectPath("${mps_home}").modelRef("r:f59730a6-c5b9-44a6-9d8b-4644752d6525(jetbrains.mps.baseLanguage.methodReferences.test.intentions@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ToClosure_StaticInstanceMethod_Test.class).projectPath(null).modelRef("r:f59730a6-c5b9-44a6-9d8b-4644752d6525(jetbrains.mps.baseLanguage.methodReferences.test.intentions@tests)").reopenProject(false).build());
 
   public ToClosure_StaticInstanceMethod_Test() {
     super(ourParametersCacheExtension.getParametersCache());

@@ -15,7 +15,7 @@ import org.junit.Assert;
 @MPSLaunch
 public class AddMenuPart_ParameterizedSubstitute_smartComplete_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(AddMenuPart_ParameterizedSubstitute_smartComplete_Test.class).projectPath("${mps_home}").modelRef("r:0d47ccef-2a97-4a7c-8ede-5adeaac0a5a7(jetbrains.mps.lang.actions.test.substitute@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(AddMenuPart_ParameterizedSubstitute_smartComplete_Test.class).projectPath(null).modelRef("r:0d47ccef-2a97-4a7c-8ede-5adeaac0a5a7(jetbrains.mps.lang.actions.test.substitute@tests)").reopenProject(false).build());
 
   public AddMenuPart_ParameterizedSubstitute_smartComplete_Test() {
     super(ourParametersCacheExtension.getParametersCache());

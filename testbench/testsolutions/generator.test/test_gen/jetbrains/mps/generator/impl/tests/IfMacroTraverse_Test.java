@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @MPSLaunch
 public class IfMacroTraverse_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(IfMacroTraverse_Test.class).projectPath("${mps_home}").modelRef("r:a8dd08c8-d222-4842-87dd-546039cb1959(jetbrains.mps.generator.impl.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(IfMacroTraverse_Test.class).projectPath(null).modelRef("r:a8dd08c8-d222-4842-87dd-546039cb1959(jetbrains.mps.generator.impl.tests@tests)").reopenProject(null).build());
 
   public IfMacroTraverse_Test() {
     super(ourParametersCacheExtension.getParametersCache());

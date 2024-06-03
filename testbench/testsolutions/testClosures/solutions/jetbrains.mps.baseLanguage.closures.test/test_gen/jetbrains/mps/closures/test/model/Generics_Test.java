@@ -19,7 +19,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class Generics_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Generics_Test.class).projectPath("${mps_home}").modelRef("r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Generics_Test.class).projectPath(null).modelRef("r:115773d0-1d8a-4cef-9476-a19eb511afc3(jetbrains.mps.closures.test.model@tests)").reopenProject(null).build());
 
   public Generics_Test() {
     super(ourParametersCacheExtension.getParametersCache());

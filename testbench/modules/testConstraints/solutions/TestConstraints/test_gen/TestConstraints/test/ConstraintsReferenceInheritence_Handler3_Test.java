@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class ConstraintsReferenceInheritence_Handler3_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ConstraintsReferenceInheritence_Handler3_Test.class).projectPath("${mps_home}").modelRef("r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ConstraintsReferenceInheritence_Handler3_Test.class).projectPath(null).modelRef("r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)").reopenProject(false).build());
 
   public ConstraintsReferenceInheritence_Handler3_Test() {
     super(ourParametersCacheExtension.getParametersCache());

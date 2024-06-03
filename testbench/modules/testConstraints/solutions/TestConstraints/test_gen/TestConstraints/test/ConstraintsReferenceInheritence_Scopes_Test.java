@@ -21,7 +21,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 @MPSLaunch
 public class ConstraintsReferenceInheritence_Scopes_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ConstraintsReferenceInheritence_Scopes_Test.class).projectPath("${mps_home}").modelRef("r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ConstraintsReferenceInheritence_Scopes_Test.class).projectPath(null).modelRef("r:63c35524-f256-4fdd-b128-2c53748bdd7c(TestConstraints.test@tests)").reopenProject(null).build());
 
   public ConstraintsReferenceInheritence_Scopes_Test() {
     super(ourParametersCacheExtension.getParametersCache());

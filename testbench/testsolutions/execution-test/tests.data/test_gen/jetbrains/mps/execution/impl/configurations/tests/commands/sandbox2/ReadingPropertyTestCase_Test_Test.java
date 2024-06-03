@@ -17,7 +17,7 @@ import jetbrains.mps.execution.impl.configurations.tests.commands.sandbox.Readin
 @MPSLaunch
 public class ReadingPropertyTestCase_Test_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ReadingPropertyTestCase_Test_Test.class).projectPath("${mps_home}").modelRef("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ReadingPropertyTestCase_Test_Test.class).projectPath(null).modelRef("r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)").reopenProject(null).build());
 
   public ReadingPropertyTestCase_Test_Test() {
     super(ourParametersCacheExtension.getParametersCache());

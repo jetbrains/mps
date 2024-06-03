@@ -38,7 +38,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @MPSLaunch
 public class SNodeReadAccess_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SNodeReadAccess_Test.class).projectPath("${mps_home}").modelRef("r:ee85802d-3f17-4cb5-b08b-75e01c861019(jetbrains.mps.testRead.SNodeReadTest@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SNodeReadAccess_Test.class).projectPath(null).modelRef("r:ee85802d-3f17-4cb5-b08b-75e01c861019(jetbrains.mps.testRead.SNodeReadTest@tests)").reopenProject(null).build());
 
   public SNodeReadAccess_Test() {
     super(ourParametersCacheExtension.getParametersCache());

@@ -20,7 +20,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class JavaFromKotlin_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JavaFromKotlin_Test.class).projectPath("${mps_home}").modelRef("r:19fd18b4-427a-460b-866a-b6c54dd2f9f5(jetbrains.mps.kotlin.tests.editor.scopes@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JavaFromKotlin_Test.class).projectPath(null).modelRef("r:19fd18b4-427a-460b-866a-b6c54dd2f9f5(jetbrains.mps.kotlin.tests.editor.scopes@tests)").reopenProject(null).build());
 
   public JavaFromKotlin_Test() {
     super(ourParametersCacheExtension.getParametersCache());

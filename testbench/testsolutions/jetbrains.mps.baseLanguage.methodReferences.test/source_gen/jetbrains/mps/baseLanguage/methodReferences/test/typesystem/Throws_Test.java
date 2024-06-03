@@ -20,7 +20,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class Throws_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Throws_Test.class).projectPath("${mps_home}").modelRef("r:7020d7a5-058d-4e72-b598-cff9d9582d11(jetbrains.mps.baseLanguage.methodReferences.test.typesystem@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Throws_Test.class).projectPath(null).modelRef("r:7020d7a5-058d-4e72-b598-cff9d9582d11(jetbrains.mps.baseLanguage.methodReferences.test.typesystem@tests)").reopenProject(null).build());
 
   public Throws_Test() {
     super(ourParametersCacheExtension.getParametersCache());

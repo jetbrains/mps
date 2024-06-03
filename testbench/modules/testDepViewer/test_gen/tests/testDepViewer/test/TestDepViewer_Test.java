@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 @MPSLaunch
 public class TestDepViewer_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestDepViewer_Test.class).projectPath("${mps_home}").modelRef("r:819dd2c2-a64b-45e6-ae94-42a9c653de39(tests.testDepViewer.test@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestDepViewer_Test.class).projectPath(null).modelRef("r:819dd2c2-a64b-45e6-ae94-42a9c653de39(tests.testDepViewer.test@tests)").reopenProject(null).build());
 
   public TestDepViewer_Test() {
     super(ourParametersCacheExtension.getParametersCache());

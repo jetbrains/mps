@@ -15,7 +15,7 @@ import org.junit.Assert;
 @MPSLaunch
 public class Test_CreateAntiquotation_Intention_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Test_CreateAntiquotation_Intention_Test.class).projectPath("${mps_home}").modelRef("r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Test_CreateAntiquotation_Intention_Test.class).projectPath(null).modelRef("r:05c4fa32-3688-4db6-b828-4373b1de41d9(jetbrains.mps.lang.quotation.test.editorTest@tests)").reopenProject(false).build());
 
   public Test_CreateAntiquotation_Intention_Test() {
     super(ourParametersCacheExtension.getParametersCache());

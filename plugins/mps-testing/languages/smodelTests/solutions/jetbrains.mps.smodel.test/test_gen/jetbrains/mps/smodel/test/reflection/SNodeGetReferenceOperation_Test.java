@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @MPSLaunch
 public class SNodeGetReferenceOperation_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SNodeGetReferenceOperation_Test.class).projectPath("${mps_home}").modelRef("r:8ac706c2-cfd2-4da3-8b63-a741ed2733d4(jetbrains.mps.smodel.test.reflection@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SNodeGetReferenceOperation_Test.class).projectPath(null).modelRef("r:8ac706c2-cfd2-4da3-8b63-a741ed2733d4(jetbrains.mps.smodel.test.reflection@tests)").reopenProject(null).build());
 
   public SNodeGetReferenceOperation_Test() {
     super(ourParametersCacheExtension.getParametersCache());

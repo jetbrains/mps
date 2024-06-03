@@ -25,7 +25,7 @@ import java.io.File;
 @MPSLaunch
 public class MPSInstance_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(MPSInstance_Test.class).projectPath("${mps_home}").modelRef("r:70ba7cf7-d705-4776-9784-5a0abc3ae48a(jetbrains.mps.execution.impl.configurations.tests.outproces@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(MPSInstance_Test.class).projectPath(null).modelRef("r:70ba7cf7-d705-4776-9784-5a0abc3ae48a(jetbrains.mps.execution.impl.configurations.tests.outproces@tests)").reopenProject(null).build());
 
   public MPSInstance_Test() {
     super(ourParametersCacheExtension.getParametersCache());

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @MPSLaunch
 public class Test_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Test_Test.class).projectPath("${mps_home}").modelRef("r:d7855642-243e-427f-900a-a50689578160(jetbrains.mps.lang.test.sandbox)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Test_Test.class).projectPath(null).modelRef("r:d7855642-243e-427f-900a-a50689578160(jetbrains.mps.lang.test.sandbox)").reopenProject(null).build());
 
   public Test_Test() {
     super(ourParametersCacheExtension.getParametersCache());

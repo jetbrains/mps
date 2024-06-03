@@ -36,7 +36,7 @@ import java.util.Collections;
 @MPSLaunch
 public class FindUsages_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FindUsages_Test.class).projectPath("${mps_home}").modelRef("r:0fc0617b-a58c-4b18-af63-dc67be77023b(mps.test.findusages@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FindUsages_Test.class).projectPath(null).modelRef("r:0fc0617b-a58c-4b18-af63-dc67be77023b(mps.test.findusages@tests)").reopenProject(null).build());
 
   public FindUsages_Test() {
     super(ourParametersCacheExtension.getParametersCache());

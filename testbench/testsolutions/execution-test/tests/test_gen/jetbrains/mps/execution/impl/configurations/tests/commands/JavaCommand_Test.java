@@ -33,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @MPSLaunch
 public class JavaCommand_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JavaCommand_Test.class).projectPath("${mps_home}").modelRef("r:e2bad6d6-3029-4bc3-b44d-49863f32d863(jetbrains.mps.execution.impl.configurations.tests.commands@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JavaCommand_Test.class).projectPath(null).modelRef("r:e2bad6d6-3029-4bc3-b44d-49863f32d863(jetbrains.mps.execution.impl.configurations.tests.commands@tests)").reopenProject(null).build());
 
   public JavaCommand_Test() {
     super(ourParametersCacheExtension.getParametersCache());

@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class EndWithLineSelection_fromLastCell_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(EndWithLineSelection_fromLastCell_Test.class).projectPath("${mps_home}").modelRef("r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(EndWithLineSelection_fromLastCell_Test.class).projectPath(null).modelRef("r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)").reopenProject(false).build());
 
   public EndWithLineSelection_fromLastCell_Test() {
     super(ourParametersCacheExtension.getParametersCache());

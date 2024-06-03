@@ -28,7 +28,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @MPSLaunch
 public class TestProgramWithModeSpecified_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestProgramWithModeSpecified_Test.class).projectPath("${mps_home}").modelRef("r:5c887230-cdf3-4722-bd6c-5a7e20ee92a1(analyzers.test.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestProgramWithModeSpecified_Test.class).projectPath(null).modelRef("r:5c887230-cdf3-4722-bd6c-5a7e20ee92a1(analyzers.test.tests@tests)").reopenProject(null).build());
 
   public TestProgramWithModeSpecified_Test() {
     super(ourParametersCacheExtension.getParametersCache());

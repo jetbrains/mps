@@ -37,7 +37,7 @@ import com.intellij.execution.ExecutionException;
 public class JUnitInProcessUndo_Test extends BaseTransformationTest {
   private static final Logger LOG = Logger.getLogger(JUnitInProcessUndo_Test.class);
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JUnitInProcessUndo_Test.class).projectPath("${mps_home}").modelRef("r:ff98d12f-bc65-4639-94c3-dee022b33791(jetbrains.mps.execution.impl.configurations.tests.inprocess@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(JUnitInProcessUndo_Test.class).projectPath(null).modelRef("r:ff98d12f-bc65-4639-94c3-dee022b33791(jetbrains.mps.execution.impl.configurations.tests.inprocess@tests)").reopenProject(null).build());
 
   public JUnitInProcessUndo_Test() {
     super(ourParametersCacheExtension.getParametersCache());

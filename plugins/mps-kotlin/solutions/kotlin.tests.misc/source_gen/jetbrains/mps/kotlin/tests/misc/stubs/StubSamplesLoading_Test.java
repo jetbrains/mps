@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @MPSLaunch
 public class StubSamplesLoading_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(StubSamplesLoading_Test.class).projectPath("${mps_home}").modelRef("r:eec037d7-3e10-4036-974a-838b679589c3(jetbrains.mps.kotlin.tests.misc.stubs@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(StubSamplesLoading_Test.class).projectPath(null).modelRef("r:eec037d7-3e10-4036-974a-838b679589c3(jetbrains.mps.kotlin.tests.misc.stubs@tests)").reopenProject(null).build());
 
   public StubSamplesLoading_Test() {
     super(ourParametersCacheExtension.getParametersCache());

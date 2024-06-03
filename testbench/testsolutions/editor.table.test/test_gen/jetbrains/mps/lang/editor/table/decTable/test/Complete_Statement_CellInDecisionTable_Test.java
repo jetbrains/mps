@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class Complete_Statement_CellInDecisionTable_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Complete_Statement_CellInDecisionTable_Test.class).projectPath("${mps_home}").modelRef("r:c09cbf74-c0bb-4531-bd9d-ade611acf77c(jetbrains.mps.lang.editor.table.decTable.test@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Complete_Statement_CellInDecisionTable_Test.class).projectPath(null).modelRef("r:c09cbf74-c0bb-4531-bd9d-ade611acf77c(jetbrains.mps.lang.editor.table.decTable.test@tests)").reopenProject(false).build());
 
   public Complete_Statement_CellInDecisionTable_Test() {
     super(ourParametersCacheExtension.getParametersCache());

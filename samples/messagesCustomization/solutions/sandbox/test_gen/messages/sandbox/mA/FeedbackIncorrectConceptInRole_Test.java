@@ -19,7 +19,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class FeedbackIncorrectConceptInRole_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FeedbackIncorrectConceptInRole_Test.class).projectPath("${mps_home}").modelRef("r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FeedbackIncorrectConceptInRole_Test.class).projectPath(null).modelRef("r:eb16dd70-ac3a-40ca-8c61-d7f237615dbf(messages.sandbox.mA@tests)").reopenProject(null).build());
 
   public FeedbackIncorrectConceptInRole_Test() {
     super(ourParametersCacheExtension.getParametersCache());

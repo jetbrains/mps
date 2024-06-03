@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class UndoInvalidTypingInTransactionalPropertyCell_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(UndoInvalidTypingInTransactionalPropertyCell_Test.class).projectPath("${mps_home}").modelRef("r:686abb70-e3f7-4623-b559-272901399ab3(jetbrains.mps.lang.editor.cells.transactional.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(UndoInvalidTypingInTransactionalPropertyCell_Test.class).projectPath(null).modelRef("r:686abb70-e3f7-4623-b559-272901399ab3(jetbrains.mps.lang.editor.cells.transactional.test)").reopenProject(false).build());
 
   public UndoInvalidTypingInTransactionalPropertyCell_Test() {
     super(ourParametersCacheExtension.getParametersCache());

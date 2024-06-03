@@ -20,7 +20,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 @MPSLaunch
 public class ContextAssistant_InitiallyCollapsedVisibility_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ContextAssistant_InitiallyCollapsedVisibility_Test.class).projectPath("${mps_home}").modelRef("r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ContextAssistant_InitiallyCollapsedVisibility_Test.class).projectPath(null).modelRef("r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)").reopenProject(false).build());
 
   public ContextAssistant_InitiallyCollapsedVisibility_Test() {
     super(ourParametersCacheExtension.getParametersCache());

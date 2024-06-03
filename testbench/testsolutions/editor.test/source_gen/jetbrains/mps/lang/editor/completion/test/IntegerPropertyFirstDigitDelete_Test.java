@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class IntegerPropertyFirstDigitDelete_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(IntegerPropertyFirstDigitDelete_Test.class).projectPath("${mps_home}").modelRef("r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(IntegerPropertyFirstDigitDelete_Test.class).projectPath(null).modelRef("r:f27d9626-8ef5-4cba-bce0-6aa6369f05ff(jetbrains.mps.lang.editor.completion.test)").reopenProject(false).build());
 
   public IntegerPropertyFirstDigitDelete_Test() {
     super(ourParametersCacheExtension.getParametersCache());

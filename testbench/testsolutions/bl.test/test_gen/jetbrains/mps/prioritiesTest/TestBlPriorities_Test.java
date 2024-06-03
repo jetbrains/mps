@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @MPSLaunch
 public class TestBlPriorities_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestBlPriorities_Test.class).projectPath("${mps_home}").modelRef("r:3c49ab36-1271-439f-ac5d-2df7deb7394d(jetbrains.mps.prioritiesTest@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestBlPriorities_Test.class).projectPath(null).modelRef("r:3c49ab36-1271-439f-ac5d-2df7deb7394d(jetbrains.mps.prioritiesTest@tests)").reopenProject(null).build());
 
   public TestBlPriorities_Test() {
     super(ourParametersCacheExtension.getParametersCache());

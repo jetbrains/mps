@@ -19,7 +19,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class DuplicitRoutineNameTest_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(DuplicitRoutineNameTest_Test.class).projectPath("${mps_home}").modelRef("r:a7360bf3-0305-4b0f-a849-53283ec620bf(jetbrains.mps.build.stripping.tests.implementationStrippingTests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(DuplicitRoutineNameTest_Test.class).projectPath(null).modelRef("r:a7360bf3-0305-4b0f-a849-53283ec620bf(jetbrains.mps.build.stripping.tests.implementationStrippingTests@tests)").reopenProject(null).build());
 
   public DuplicitRoutineNameTest_Test() {
     super(ourParametersCacheExtension.getParametersCache());

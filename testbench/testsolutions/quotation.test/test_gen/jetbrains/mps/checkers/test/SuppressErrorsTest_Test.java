@@ -20,7 +20,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class SuppressErrorsTest_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SuppressErrorsTest_Test.class).projectPath("${mps_home}").modelRef("r:afa6200c-5e34-4244-b141-d3f095bc906f(jetbrains.mps.checkers.test@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SuppressErrorsTest_Test.class).projectPath(null).modelRef("r:afa6200c-5e34-4244-b141-d3f095bc906f(jetbrains.mps.checkers.test@tests)").reopenProject(null).build());
 
   public SuppressErrorsTest_Test() {
     super(ourParametersCacheExtension.getParametersCache());

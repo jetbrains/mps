@@ -19,7 +19,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class NullProperties_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(NullProperties_Test.class).projectPath("${mps_home}").modelRef("r:f6873416-2681-4a14-803b-33f9e8bdd0a6(testSubtypingTest.model@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(NullProperties_Test.class).projectPath(null).modelRef("r:f6873416-2681-4a14-803b-33f9e8bdd0a6(testSubtypingTest.model@tests)").reopenProject(null).build());
 
   public NullProperties_Test() {
     super(ourParametersCacheExtension.getParametersCache());

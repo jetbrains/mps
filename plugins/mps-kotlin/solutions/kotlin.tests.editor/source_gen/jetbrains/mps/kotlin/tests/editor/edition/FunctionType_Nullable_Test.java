@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class FunctionType_Nullable_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FunctionType_Nullable_Test.class).projectPath("${mps_home}").modelRef("r:0454b9a6-3097-4b9d-8d62-441f146822c5(jetbrains.mps.kotlin.tests.editor.edition@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FunctionType_Nullable_Test.class).projectPath(null).modelRef("r:0454b9a6-3097-4b9d-8d62-441f146822c5(jetbrains.mps.kotlin.tests.editor.edition@tests)").reopenProject(false).build());
 
   public FunctionType_Nullable_Test() {
     super(ourParametersCacheExtension.getParametersCache());

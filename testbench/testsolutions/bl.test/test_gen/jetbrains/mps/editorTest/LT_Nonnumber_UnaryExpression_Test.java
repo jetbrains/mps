@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @MPSLaunch
 public class LT_Nonnumber_UnaryExpression_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(LT_Nonnumber_UnaryExpression_Test.class).projectPath("${mps_home}").modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(LT_Nonnumber_UnaryExpression_Test.class).projectPath(null).modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
 
   public LT_Nonnumber_UnaryExpression_Test() {
     super(ourParametersCacheExtension.getParametersCache());

@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class TestSideTransform_SimpleNode_DefaultLeftAction_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestSideTransform_SimpleNode_DefaultLeftAction_Test.class).projectPath("${mps_home}").modelRef("r:b4f50ed2-df75-4f06-8889-d503cb129f2d(jetbrains.mps.lang.editor.menus.sideTransform.tests.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestSideTransform_SimpleNode_DefaultLeftAction_Test.class).projectPath(null).modelRef("r:b4f50ed2-df75-4f06-8889-d503cb129f2d(jetbrains.mps.lang.editor.menus.sideTransform.tests.tests@tests)").reopenProject(false).build());
 
   public TestSideTransform_SimpleNode_DefaultLeftAction_Test() {
     super(ourParametersCacheExtension.getParametersCache());

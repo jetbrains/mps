@@ -16,7 +16,7 @@ import java.awt.event.MouseEvent;
 @MPSLaunch
 public class TextCheckbox_CLICK_Toggles_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TextCheckbox_CLICK_Toggles_Test.class).projectPath("${mps_home}").modelRef("r:9dd38274-05d8-45ba-a41e-44ac52909443(jetbrains.mps.lang.editor.forms.test@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TextCheckbox_CLICK_Toggles_Test.class).projectPath(null).modelRef("r:9dd38274-05d8-45ba-a41e-44ac52909443(jetbrains.mps.lang.editor.forms.test@tests)").reopenProject(false).build());
 
   public TextCheckbox_CLICK_Toggles_Test() {
     super(ourParametersCacheExtension.getParametersCache());

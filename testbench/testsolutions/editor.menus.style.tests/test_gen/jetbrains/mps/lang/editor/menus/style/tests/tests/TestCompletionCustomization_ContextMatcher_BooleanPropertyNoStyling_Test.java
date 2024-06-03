@@ -19,7 +19,7 @@ import java.util.ArrayList;
 @MPSLaunch
 public class TestCompletionCustomization_ContextMatcher_BooleanPropertyNoStyling_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestCompletionCustomization_ContextMatcher_BooleanPropertyNoStyling_Test.class).projectPath("${mps_home}").modelRef("r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestCompletionCustomization_ContextMatcher_BooleanPropertyNoStyling_Test.class).projectPath(null).modelRef("r:e67a2364-cd3f-43c0-b822-e9e7747803fc(jetbrains.mps.lang.editor.menus.style.tests.tests@tests)").reopenProject(false).build());
 
   public TestCompletionCustomization_ContextMatcher_BooleanPropertyNoStyling_Test() {
     super(ourParametersCacheExtension.getParametersCache());

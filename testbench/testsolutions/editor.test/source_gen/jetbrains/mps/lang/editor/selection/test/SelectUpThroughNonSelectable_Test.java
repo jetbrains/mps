@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class SelectUpThroughNonSelectable_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SelectUpThroughNonSelectable_Test.class).projectPath("${mps_home}").modelRef("r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SelectUpThroughNonSelectable_Test.class).projectPath(null).modelRef("r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)").reopenProject(false).build());
 
   public SelectUpThroughNonSelectable_Test() {
     super(ourParametersCacheExtension.getParametersCache());

@@ -20,7 +20,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class ActionMapImportCycleDetection_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ActionMapImportCycleDetection_Test.class).projectPath("${mps_home}").modelRef("r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ActionMapImportCycleDetection_Test.class).projectPath(null).modelRef("r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)").reopenProject(null).build());
 
   public ActionMapImportCycleDetection_Test() {
     super(ourParametersCacheExtension.getParametersCache());

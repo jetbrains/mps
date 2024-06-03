@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.SNodePointer;
 @MPSLaunch
 public class CanBeChildParentWorksInRules_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CanBeChildParentWorksInRules_Test.class).projectPath("${mps_home}").modelRef("r:aca600c4-c2ff-4395-8294-417b84791061(TestRulesConstraints.basic@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(CanBeChildParentWorksInRules_Test.class).projectPath(null).modelRef("r:aca600c4-c2ff-4395-8294-417b84791061(TestRulesConstraints.basic@tests)").reopenProject(null).build());
 
   public CanBeChildParentWorksInRules_Test() {
     super(ourParametersCacheExtension.getParametersCache());

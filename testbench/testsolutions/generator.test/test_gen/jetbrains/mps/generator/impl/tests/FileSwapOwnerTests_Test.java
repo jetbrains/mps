@@ -33,7 +33,7 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 @MPSLaunch
 public class FileSwapOwnerTests_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FileSwapOwnerTests_Test.class).projectPath("${mps_home}").modelRef("r:a8dd08c8-d222-4842-87dd-546039cb1959(jetbrains.mps.generator.impl.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(FileSwapOwnerTests_Test.class).projectPath(null).modelRef("r:a8dd08c8-d222-4842-87dd-546039cb1959(jetbrains.mps.generator.impl.tests@tests)").reopenProject(null).build());
 
   public FileSwapOwnerTests_Test() {
     super(ourParametersCacheExtension.getParametersCache());

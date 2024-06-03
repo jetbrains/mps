@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class Test_CompleteActionConstructorParameterDeclaration_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Test_CompleteActionConstructorParameterDeclaration_Test.class).projectPath("${mps_home}").modelRef("r:a5382851-1d9f-41aa-80d5-23778a1655eb(jetbrains.mps.lang.plugin.tests.editorTest@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(Test_CompleteActionConstructorParameterDeclaration_Test.class).projectPath(null).modelRef("r:a5382851-1d9f-41aa-80d5-23778a1655eb(jetbrains.mps.lang.plugin.tests.editorTest@tests)").reopenProject(false).build());
 
   public Test_CompleteActionConstructorParameterDeclaration_Test() {
     super(ourParametersCacheExtension.getParametersCache());

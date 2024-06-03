@@ -35,7 +35,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 @MPSLaunch
 public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SuppressErrorsPerformanceTest_Test.class).projectPath("${mps_home}").modelRef("r:331d12a3-ff36-4324-a0a5-3624fa05f749(jetbrains.mps.console.performance@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SuppressErrorsPerformanceTest_Test.class).projectPath(null).modelRef("r:331d12a3-ff36-4324-a0a5-3624fa05f749(jetbrains.mps.console.performance@tests)").reopenProject(null).build());
 
   public SuppressErrorsPerformanceTest_Test() {
     super(ourParametersCacheExtension.getParametersCache());

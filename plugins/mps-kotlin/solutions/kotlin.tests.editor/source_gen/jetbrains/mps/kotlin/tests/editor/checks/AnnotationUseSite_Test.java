@@ -20,7 +20,7 @@ import java.util.Arrays;
 @MPSLaunch
 public class AnnotationUseSite_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(AnnotationUseSite_Test.class).projectPath("${mps_home}").modelRef("r:7c8e019c-f730-4087-8f9d-0f24a0e49d4c(jetbrains.mps.kotlin.tests.editor.checks@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(AnnotationUseSite_Test.class).projectPath(null).modelRef("r:7c8e019c-f730-4087-8f9d-0f24a0e49d4c(jetbrains.mps.kotlin.tests.editor.checks@tests)").reopenProject(null).build());
 
   public AnnotationUseSite_Test() {
     super(ourParametersCacheExtension.getParametersCache());

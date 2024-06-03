@@ -17,7 +17,7 @@ import java.io.IOException;
 @MPSLaunch
 public class ImageExport_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ImageExport_Test.class).projectPath("${mps_home}").modelRef("r:57812925-2ef0-43c6-8314-0222b2c13acf(jetbrains.mps.lang.editor.imageGen.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(ImageExport_Test.class).projectPath(null).modelRef("r:57812925-2ef0-43c6-8314-0222b2c13acf(jetbrains.mps.lang.editor.imageGen.tests@tests)").reopenProject(null).build());
 
   public ImageExport_Test() {
     super(ourParametersCacheExtension.getParametersCache());

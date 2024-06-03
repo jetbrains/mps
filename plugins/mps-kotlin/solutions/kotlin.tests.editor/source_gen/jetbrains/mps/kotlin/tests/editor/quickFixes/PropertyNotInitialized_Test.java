@@ -14,7 +14,7 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 @MPSLaunch
 public class PropertyNotInitialized_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(PropertyNotInitialized_Test.class).projectPath("${mps_home}").modelRef("r:1e8116dd-1bcd-4a5f-b941-fe5e2f48cccc(jetbrains.mps.kotlin.tests.editor.quickFixes@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(PropertyNotInitialized_Test.class).projectPath(null).modelRef("r:1e8116dd-1bcd-4a5f-b941-fe5e2f48cccc(jetbrains.mps.kotlin.tests.editor.quickFixes@tests)").reopenProject(false).build());
 
   public PropertyNotInitialized_Test() {
     super(ourParametersCacheExtension.getParametersCache());

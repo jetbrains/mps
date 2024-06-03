@@ -18,7 +18,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 @MPSLaunch
 public class InspectorOfCompactPresentation_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(InspectorOfCompactPresentation_Test.class).projectPath("${mps_home}").modelRef("r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(InspectorOfCompactPresentation_Test.class).projectPath(null).modelRef("r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)").reopenProject(false).build());
 
   public InspectorOfCompactPresentation_Test() {
     super(ourParametersCacheExtension.getParametersCache());

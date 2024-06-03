@@ -16,7 +16,7 @@ import jetbrains.mps.smodel.SNodeMatcher;
 @MPSLaunch
 public class MPS_36509_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(MPS_36509_Test.class).projectPath("${mps_home}").modelRef("r:bcc649d1-6257-464b-9e2c-ae8bcd0a568c(jetbrains.mps.tests.matcher@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(MPS_36509_Test.class).projectPath(null).modelRef("r:bcc649d1-6257-464b-9e2c-ae8bcd0a568c(jetbrains.mps.tests.matcher@tests)").reopenProject(null).build());
 
   public MPS_36509_Test() {
     super(ourParametersCacheExtension.getParametersCache());

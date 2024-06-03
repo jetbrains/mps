@@ -17,7 +17,7 @@ import java.util.ArrayList;
 @MPSLaunch
 public class RightTransformWithCustomItem_Simple_checkCanBeParent_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(RightTransformWithCustomItem_Simple_checkCanBeParent_Test.class).projectPath("${mps_home}").modelRef("r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(RightTransformWithCustomItem_Simple_checkCanBeParent_Test.class).projectPath(null).modelRef("r:3643c33a-b564-4832-938b-79a88b40b6f2(jetbrains.mps.lang.actions.test.sidetransform@tests)").reopenProject(false).build());
 
   public RightTransformWithCustomItem_Simple_checkCanBeParent_Test() {
     super(ourParametersCacheExtension.getParametersCache());

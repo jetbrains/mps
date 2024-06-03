@@ -18,7 +18,7 @@ import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.NodeDecoratorView;
 @MPSLaunch
 public class BlockHasNoDecoratorTest_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(BlockHasNoDecoratorTest_Test.class).projectPath("${mps_home}").modelRef("r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(BlockHasNoDecoratorTest_Test.class).projectPath(null).modelRef("r:e41d7e03-7ef3-4161-a48a-e48d8152e422(jetbrains.mps.lang.editor.diagram.tests@tests)").reopenProject(false).build());
 
   public BlockHasNoDecoratorTest_Test() {
     super(ourParametersCacheExtension.getParametersCache());

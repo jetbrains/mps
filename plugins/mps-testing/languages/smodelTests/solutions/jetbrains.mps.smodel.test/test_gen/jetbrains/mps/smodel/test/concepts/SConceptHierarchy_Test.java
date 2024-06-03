@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @MPSLaunch
 public class SConceptHierarchy_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SConceptHierarchy_Test.class).projectPath("${mps_home}").modelRef("r:783567bb-6a97-47d3-ab6c-d2a82efd2145(jetbrains.mps.smodel.test.concepts@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(SConceptHierarchy_Test.class).projectPath(null).modelRef("r:783567bb-6a97-47d3-ab6c-d2a82efd2145(jetbrains.mps.smodel.test.concepts@tests)").reopenProject(null).build());
 
   public SConceptHierarchy_Test() {
     super(ourParametersCacheExtension.getParametersCache());

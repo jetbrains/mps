@@ -18,7 +18,7 @@ import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 @MPSLaunch
 public class TypesystemDataFlow_Test_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TypesystemDataFlow_Test_Test.class).projectPath("${mps_home}").modelRef("r:492b107a-8575-4936-a6cc-bbf97899a142(jetbrains.mps.lang.typesystem.dataFlow@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TypesystemDataFlow_Test_Test.class).projectPath(null).modelRef("r:492b107a-8575-4936-a6cc-bbf97899a142(jetbrains.mps.lang.typesystem.dataFlow@tests)").reopenProject(null).build());
 
   public TypesystemDataFlow_Test_Test() {
     super(ourParametersCacheExtension.getParametersCache());

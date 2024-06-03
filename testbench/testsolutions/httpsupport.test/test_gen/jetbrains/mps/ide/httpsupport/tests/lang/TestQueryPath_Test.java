@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.SNodePointer;
 @MPSLaunch
 public class TestQueryPath_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestQueryPath_Test.class).projectPath("${mps_home}").modelRef("r:9e9ac0ea-b755-4d57-b406-d0cd74445963(jetbrains.mps.ide.httpsupport.tests.lang@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(TestQueryPath_Test.class).projectPath(null).modelRef("r:9e9ac0ea-b755-4d57-b406-d0cd74445963(jetbrains.mps.ide.httpsupport.tests.lang@tests)").reopenProject(null).build());
 
   public TestQueryPath_Test() {
     super(ourParametersCacheExtension.getParametersCache());

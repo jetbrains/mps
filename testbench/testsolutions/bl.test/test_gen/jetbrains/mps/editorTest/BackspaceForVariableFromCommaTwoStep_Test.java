@@ -17,7 +17,7 @@ import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 @MPSLaunch
 public class BackspaceForVariableFromCommaTwoStep_Test extends BaseTransformationTest {
   @RegisterExtension
-  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(BackspaceForVariableFromCommaTwoStep_Test.class).projectPath("${mps_home}").modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
+  private static final TestParametersCacheExtension ourParametersCacheExtension = new TestParametersCacheExtension(new TestParametersCacheBuilder(BackspaceForVariableFromCommaTwoStep_Test.class).projectPath(null).modelRef("r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)").reopenProject(false).build());
 
   public BackspaceForVariableFromCommaTwoStep_Test() {
     super(ourParametersCacheExtension.getParametersCache());
