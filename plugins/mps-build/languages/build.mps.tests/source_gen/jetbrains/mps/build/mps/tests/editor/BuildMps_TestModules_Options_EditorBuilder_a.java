@@ -85,6 +85,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createRefNodeList_0());
     editorCell.addEditorCell(createConstant_5());
     editorCell.addEditorCell(createRefNode_3());
+    editorCell.addEditorCell(createConstant_6());
+    editorCell.addEditorCell(createRefNode_4());
     return editorCell;
   }
   private EditorCell createConstant_1() {
@@ -455,6 +457,73 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return "defaults";
     }
   }
+  private EditorCell createConstant_6() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "project path");
+    editorCell.setCellId("Constant_tu51wq_k1a");
+    Style style = new StyleImpl();
+    new keywordStyleClass(this).apply(style, editorCell);
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createRefNode_4() {
+    SingleRoleCellProvider provider = new projectPathSingleRoleHandler_tu51wq_l1a(myNode, LINKS.projectPath$WGC5, getEditorContext());
+    return provider.createCell();
+  }
+  private static class projectPathSingleRoleHandler_tu51wq_l1a extends SingleRoleCellProvider {
+    @NotNull
+    private SNode myNode;
+
+    public projectPathSingleRoleHandler_tu51wq_l1a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+      super(containmentLink, context);
+      myNode = ownerNode;
+    }
+
+    @Override
+    @NotNull
+    public SNode getNode() {
+      return myNode;
+    }
+
+    protected EditorCell createChildCell(SNode child) {
+      EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.projectPath$WGC5, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.projectPath$WGC5, child));
+      installCellInfo(child, editorCell, false);
+      return editorCell;
+    }
+
+
+
+    private void installCellInfo(SNode child, EditorCell editorCell, boolean isEmpty) {
+      if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
+        editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
+      }
+      if (editorCell.getSRole() == null) {
+        editorCell.setSRole(LINKS.projectPath$WGC5);
+      }
+      Style style = new StyleImpl();
+      style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
+      editorCell.getStyle().putAll(style);
+    }
+    @Override
+    protected EditorCell createEmptyCell() {
+      getCellFactory().pushCellContext();
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.projectPath$WGC5));
+      try {
+        EditorCell editorCell = super.createEmptyCell();
+        editorCell.setCellId("empty_projectPath");
+        installCellInfo(null, editorCell, true);
+        setCellContext(editorCell);
+        return editorCell;
+      } finally {
+        getCellFactory().popCellContext();
+      }
+    }
+    protected String getNoTargetText() {
+      return "unspecified";
+    }
+  }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink haltonfailure$573F = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdfb323cdL, "haltonfailure");
@@ -462,6 +531,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     /*package*/ static final SContainmentLink openTestReport$U4gB = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5069a4074dc718d1L, "openTestReport");
     /*package*/ static final SContainmentLink requiredPlugins$eyJB = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdf7bc31bL, "requiredPlugins");
     /*package*/ static final SContainmentLink jvmArgs$IZpF = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x321879066b697c19L, "jvmArgs");
+    /*package*/ static final SContainmentLink projectPath$WGC5 = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x6eb820dc194450baL, "projectPath");
   }
 
   private static final class CONCEPTS {

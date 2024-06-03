@@ -286,6 +286,18 @@
             <property role="VOm3f" value="true" />
           </node>
         </node>
+        <node concept="3F0ifn" id="6US8dKph57x" role="3EZMnx">
+          <property role="3F0ifm" value="project path" />
+          <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
+        </node>
+        <node concept="3F1sOY" id="6US8dKph57v" role="3EZMnx">
+          <property role="39s7Ar" value="true" />
+          <property role="1$x2rV" value="unspecified" />
+          <ref role="1NtTu8" to="5tjl:6US8dKph52U" />
+          <node concept="ljvvj" id="6US8dKph57w" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
         <node concept="l2Vlx" id="5I1s5NvGLkO" role="2iSdaV" />
         <node concept="1Bsynf" id="5I1s5NvGLl5" role="3F10Kt">
           <property role="VOm3f" value="true" />
