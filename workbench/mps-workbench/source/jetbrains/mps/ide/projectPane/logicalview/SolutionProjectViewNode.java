@@ -17,6 +17,7 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.LanguageID;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
+import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -51,10 +52,10 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
       });
     }
     if (models.stream().anyMatch(SModelStereotype::isStubModel)) {
-      children.add(new StubsProjectViewNode(getProject(), getValue(), getSettings()));
+      children.add(new StubsProjectViewNode(getProject(), "stubs", getSettings()));
     }
     if (models.stream().anyMatch(SModelStereotype::isTestModel)) {
-      children.add(new TestsProjectViewNode(getProject(), getValue(), getSettings()));
+      children.add(new TestsProjectViewNode(getProject(), "tests", getSettings()));
     }
     super.fillChildren(children, filterModels(models));
   }
@@ -82,10 +83,10 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
     return ProjectViewWeights.SOLUTION_WEIGHT;
   }
 
-  protected static class StubsProjectViewNode extends BaseModuleProjectViewNode<Solution> implements StereotypeProvider {
+  protected static class StubsProjectViewNode extends BranchProjectViewNode<String> implements StereotypeProvider {
 
-    protected StubsProjectViewNode(Project project, Solution solution, ViewSettings viewSettings) {
-      super(project, solution, viewSettings);
+    protected StubsProjectViewNode(Project project, String name, ViewSettings viewSettings) {
+      super(project, name, viewSettings);
     }
 
     @Override
@@ -104,11 +105,6 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
     }
 
     @Override
-    protected boolean canRepresentSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSModel(sModel -> !filterModels(List.of(sModel)).isEmpty());
     }
@@ -119,8 +115,17 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
     }
 
     @Override
+    protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Solution) {
+        Collection<SModel> models = IterableUtil.asCollection(((Solution) parentValue).getModels());
+        fillChildren(children, filterModels(models));
+      }
+    }
+
     protected void fillChildren(Collection<AbstractTreeNode<?>> children, Collection<SModel> models) {
-      super.fillChildren(children, filterModels(models));
+      ModelsVirtualFolderHierarchy hierarchy = new ModelsVirtualFolderHierarchy(models, this::getVirtualFolder);
+      hierarchy.fillChildren("", children);
     }
 
     @NotNull
@@ -128,6 +133,10 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
       ArrayList<SModel> filtered = new ArrayList<>(models);
       filtered.removeIf(next -> !SModelStereotype.isStubModel(next));
       return filtered;
+    }
+    
+    protected String getVirtualFolder(SModel model) {
+      return model.getName().getNamespace();
     }
 
     @Override
@@ -137,10 +146,10 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
     }
   }
 
-  protected static class TestsProjectViewNode extends BaseModuleProjectViewNode<Solution> implements StereotypeProvider {
+  protected static class TestsProjectViewNode extends BranchProjectViewNode<String> implements StereotypeProvider {
 
-    protected TestsProjectViewNode(Project project, Solution solution, ViewSettings viewSettings) {
-      super(project, solution, viewSettings);
+    protected TestsProjectViewNode(Project project, String name, ViewSettings viewSettings) {
+      super(project, name, viewSettings);
     }
 
     @Override
@@ -159,11 +168,6 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
     }
 
     @Override
-    protected boolean canRepresentSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSModel(sModel -> !filterModels(List.of(sModel)).isEmpty());
     }
@@ -172,10 +176,19 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
     public int getTypeSortWeight(boolean sortByType) {
       return ProjectViewWeights.TESTS_WEIGHT;
     }
-
+    
     @Override
+    protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Solution) {
+        Collection<SModel> models = IterableUtil.asCollection(((Solution) parentValue).getModels());
+        fillChildren(children, filterModels(models));
+      }
+    }
+
     protected void fillChildren(Collection<AbstractTreeNode<?>> children, Collection<SModel> models) {
-      super.fillChildren(children, filterModels(models));
+      ModelsVirtualFolderHierarchy hierarchy = new ModelsVirtualFolderHierarchy(models, this::getVirtualFolder);
+      hierarchy.fillChildren("", children);
     }
 
     @NotNull
@@ -183,6 +196,10 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
       ArrayList<SModel> filtered = new ArrayList<>(models);
       filtered.removeIf(next -> !SModelStereotype.isTestModel(next));
       return filtered;
+    }
+
+    protected String getVirtualFolder(SModel model) {
+      return model.getName().getNamespace();
     }
 
     @Override

@@ -68,7 +68,7 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     if (!getValue().getAccessoryModels().isEmpty()) {
-      children.add(new AccessorySModelProjectViewNode(getProject(), getValue(), getSettings()));
+      children.add(new AccessorySModelProjectViewNode(getProject(), "accessories", getSettings()));
     }
 
     for (Generator ownedGenerator : getValue().getOwnedGenerators()) {
@@ -76,14 +76,14 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     if (!getValue().getRuntimeModulesReferences().isEmpty()) {
-      children.add(new LanguageRuntimeModulesProjectViewNode(getProject(), getValue(), getSettings()));
+      children.add(new LanguageRuntimeModulesProjectViewNode(getProject(), "runtime", getSettings()));
     }
 
     if (!getValue().getUtilModels().isEmpty()) {
-      children.add(new LanguageUtilModelsProjectViewNode(getProject(), getValue(), getSettings()));
+      children.add(new LanguageUtilModelsProjectViewNode(getProject(), "util", getSettings()));
     }
 
-    children.add(new LanguageAllModelsProjectViewNode(getProject(), getValue(), getSettings()));
+    children.add(new LanguageAllModelsProjectViewNode(getProject(), "all models", getSettings()));
 
     if (getMPSSettings().isShowDescriptorModels()) {
       getValue().getModels().stream().filter(SModelStereotype::isDescriptorModel).findFirst().ifPresent(m -> {
@@ -154,10 +154,10 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
   }
 
-  protected static class AccessorySModelProjectViewNode extends BranchProjectViewNode<Language> {
+  protected static class AccessorySModelProjectViewNode extends BranchProjectViewNode<String> {
 
-    protected AccessorySModelProjectViewNode(Project project, @NotNull Language language, ViewSettings viewSettings) {
-      super(project, language, viewSettings);
+    protected AccessorySModelProjectViewNode(Project project, @NotNull String name, ViewSettings viewSettings) {
+      super(project, name, viewSettings);
     }
 
     @Override
@@ -177,13 +177,16 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
     @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
-      List<SModel> accessoryModels = getValue().getAccessoryModels();
-      for (SModel model : accessoryModels) {
-        // comparison by == was used originally
-        if (model.getModule() == null || model.getModule() == getValue()) {
-          children.add(new SimpleModelProjectViewNode(getProject(), model, getSettings()));
-        } else {
-          children.add(new ModelReferenceProjectViewNode(getProject(), model.getReference(), getSettings()));
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Language) {
+        List<SModel> accessoryModels = ((Language) parentValue).getAccessoryModels();
+        for (SModel model : accessoryModels) {
+          // comparison by == was used originally
+          if (model.getModule() == null || model.getModule() == parentValue) {
+            children.add(new SimpleModelProjectViewNode(getProject(), model, getSettings()));
+          } else {
+            children.add(new ModelReferenceProjectViewNode(getProject(), model.getReference(), getSettings()));
+          }
         }
       }
     }
@@ -195,10 +198,10 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
   }
 
-  protected static class LanguageRuntimeModulesProjectViewNode extends BranchProjectViewNode<Language> {
+  protected static class LanguageRuntimeModulesProjectViewNode extends BranchProjectViewNode<String> {
 
-    protected LanguageRuntimeModulesProjectViewNode(Project project, @NotNull Language language, ViewSettings viewSettings) {
-      super(project, language, viewSettings);
+    protected LanguageRuntimeModulesProjectViewNode(Project project, @NotNull String name, ViewSettings viewSettings) {
+      super(project, name, viewSettings);
     }
 
     @Override
@@ -218,9 +221,12 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
     @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
-      Collection<SModuleReference> references = getValue().getRuntimeModulesReferences();
-      for (SModuleReference reference : references) {
-        children.add(new SolutionReferenceProjectViewNode(getProject(), reference, getSettings()));
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Language) {
+        Collection<SModuleReference> references = ((Language) parentValue).getRuntimeModulesReferences();
+        for (SModuleReference reference : references) {
+          children.add(new SolutionReferenceProjectViewNode(getProject(), reference, getSettings()));
+        }
       }
     }
 
@@ -231,10 +237,10 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
   }
 
-  protected static class LanguageUtilModelsProjectViewNode extends BranchProjectViewNode<Language> implements StereotypeProvider {
+  protected static class LanguageUtilModelsProjectViewNode extends BranchProjectViewNode<String> implements StereotypeProvider {
 
-    protected LanguageUtilModelsProjectViewNode(Project project, @NotNull Language language, ViewSettings viewSettings) {
-      super(project, language, viewSettings);
+    protected LanguageUtilModelsProjectViewNode(Project project, @NotNull String name, ViewSettings viewSettings) {
+      super(project, name, viewSettings);
     }
 
     @Override
@@ -264,8 +270,11 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
     @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
-      AbstractVirtualFolderHierarchy<?> hierarchy = new ModelsVirtualFolderHierarchy(getValue().getUtilModels(), this::getVirtualFolder);
-      hierarchy.fillChildren("", children);
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Language) {
+        AbstractVirtualFolderHierarchy<?> hierarchy = new ModelsVirtualFolderHierarchy(((Language) parentValue).getUtilModels(), this::getVirtualFolder);
+        hierarchy.fillChildren("", children);
+      }
     }
 
     protected String getVirtualFolder(SModel model) {
@@ -279,10 +288,10 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
   }
 
-  protected static class LanguageAllModelsProjectViewNode extends BranchProjectViewNode<Language> {
+  protected static class LanguageAllModelsProjectViewNode extends BranchProjectViewNode<String> {
 
-    protected LanguageAllModelsProjectViewNode(Project project, @NotNull Language language, ViewSettings viewSettings) {
-      super(project, language, viewSettings);
+    protected LanguageAllModelsProjectViewNode(Project project, @NotNull String name, ViewSettings viewSettings) {
+      super(project, name, viewSettings);
     }
 
     @Override
@@ -302,16 +311,19 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
     @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
-      List<SModel> models = new ArrayList<>(getValue().getModels());
-      models.removeIf(SModelStereotype::isDescriptorModel);
-      for (SModel model : models) {
-        children.add(new SimpleModelProjectViewNode(getProject(), model, getSettings()) {
-          @NotNull
-          @Override
-          protected String getPresentableText() {
-            return getValue().getName().getShortNameWithStereotype();
-          }
-        });
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Language) {
+        List<SModel> models = new ArrayList<>(((Language) parentValue).getModels());
+        models.removeIf(SModelStereotype::isDescriptorModel);
+        for (SModel model : models) {
+          children.add(new SimpleModelProjectViewNode(getProject(), model, getSettings()) {
+            @NotNull
+            @Override
+            protected String getPresentableText() {
+              return getValue().getName().getShortNameWithStereotype();
+            }
+          });
+        }
       }
     }
 
