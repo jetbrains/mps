@@ -63,9 +63,6 @@
       <concept id="1227182079811" name="jetbrains.mps.lang.test.structure.TypeKeyStatement" flags="nn" index="2TK7Tu">
         <property id="1227184461946" name="keys" index="2TTd_B" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="5773579205429866751" name="jetbrains.mps.lang.test.structure.EditorComponentExpression" flags="nn" index="369mXd" />
       <concept id="210559400608047267" name="jetbrains.mps.lang.test.structure.DragMouseStatement" flags="ng" index="37GaSb">
         <property id="210559400608047600" name="x" index="37GaXo" />
@@ -359,9 +356,6 @@
         <node concept="3KmR04" id="IjmD_G8XyM" role="3KmR01" />
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="xym1v5Q6yg">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
   <node concept="LiM7Y" id="4lIfGX7KILB">
     <property role="TrG5h" value="DeleteDiagramNode" />

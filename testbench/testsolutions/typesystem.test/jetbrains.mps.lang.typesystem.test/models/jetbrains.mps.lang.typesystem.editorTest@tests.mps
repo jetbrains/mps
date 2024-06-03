@@ -28,9 +28,6 @@
       <concept id="1227182079811" name="jetbrains.mps.lang.test.structure.TypeKeyStatement" flags="nn" index="2TK7Tu">
         <property id="1227184461946" name="keys" index="2TTd_B" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="1216989428737" name="jetbrains.mps.lang.test.structure.TestNode" flags="ng" index="1qefOq">
         <child id="1216989461394" name="nodeToCheck" index="1qenE9" />
       </concept>
@@ -108,9 +105,6 @@
       </concept>
     </language>
   </registry>
-  <node concept="2XOHcx" id="4kyUJJa0uy6">
-    <property role="2XOHcw" value="${mps_home}" />
-  </node>
   <node concept="LiM7Y" id="4kyUJJa0K05">
     <property role="TrG5h" value="TestCreateStrongLessThanInequationStatement" />
     <node concept="3clFbS" id="4kyUJJa0K0L" role="LjaKd">

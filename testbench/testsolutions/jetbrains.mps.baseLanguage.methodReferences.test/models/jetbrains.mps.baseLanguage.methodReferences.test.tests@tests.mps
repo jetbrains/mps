@@ -18,11 +18,6 @@
     <import index="xlxw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.math(JDK/)" />
   </imports>
   <registry>
-    <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
-    </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1224071154655" name="jetbrains.mps.baseLanguage.structure.AsExpression" flags="nn" index="0kSF2">
         <child id="1224071154657" name="classifierType" index="0kSFW" />
@@ -2098,9 +2093,6 @@
     </node>
     <node concept="2tJIrI" id="rk4dneZnZK" role="jymVt" />
     <node concept="2tJIrI" id="rk4dneYO6q" role="jymVt" />
-  </node>
-  <node concept="2XOHcx" id="5DBbMQ1Hau4">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
   <node concept="3s_ewN" id="7GF94Zpa60M">
     <property role="3s_ewP" value="BoundsTypes" />

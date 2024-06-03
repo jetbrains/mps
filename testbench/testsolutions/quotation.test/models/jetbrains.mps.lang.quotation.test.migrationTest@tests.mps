@@ -18,9 +18,6 @@
         <child id="5476670926298698900" name="outputNodes" index="2lJPY$" />
         <child id="6626913010124294914" name="migration" index="3ea0P7" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="6626913010124185481" name="jetbrains.mps.lang.test.structure.MigrationReference" flags="ng" index="3ea_Bc">
         <reference id="6626913010124185482" name="migration" index="3ea_Bf" />
       </concept>
@@ -302,9 +299,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="6dQuMDP9KwA">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
 </model>
 

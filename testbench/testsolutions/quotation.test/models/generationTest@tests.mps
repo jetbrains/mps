@@ -28,9 +28,6 @@
         <child id="1211979305365" name="before" index="JA92f" />
         <child id="1211979322383" name="after" index="JAdkl" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
         <property id="2616911529524314943" name="accessMode" index="3DII0k" />
         <child id="1217501895093" name="testMethods" index="1SL9yI" />
@@ -1334,9 +1331,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="6dQuMDP9KwA">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
   <node concept="1lH9Xt" id="29gobADrNp5">
     <property role="TrG5h" value="LightQuotationFinal" />

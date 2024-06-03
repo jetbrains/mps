@@ -31,9 +31,6 @@
       <concept id="1215607067978" name="jetbrains.mps.lang.test.structure.CheckNodeForErrorMessagesOperation" flags="ng" index="7OXhh">
         <property id="3743352646565420194" name="includeSelf" index="GvXf4" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="1225469856668" name="jetbrains.mps.lang.test.structure.ModelExpression" flags="nn" index="1jGwE1" />
       <concept id="1216913645126" name="jetbrains.mps.lang.test.structure.NodesTestCase" flags="lg" index="1lH9Xt">
         <property id="2616911529524314943" name="accessMode" index="3DII0k" />
@@ -917,9 +914,6 @@
         </node>
       </node>
     </node>
-  </node>
-  <node concept="2XOHcx" id="3qccatP58Hs">
-    <property role="2XOHcw" value="${mps_home}" />
   </node>
   <node concept="1lH9Xt" id="30flKNokdWu">
     <property role="3DII0k" value="2hh8MJdVwqX/command" />

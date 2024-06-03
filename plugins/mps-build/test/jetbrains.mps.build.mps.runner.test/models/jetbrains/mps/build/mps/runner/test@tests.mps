@@ -27,11 +27,6 @@
     <import index="ew0j" ref="920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.tool.environment(Testbench/)" implicit="true" />
   </imports>
   <registry>
-    <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
-    </language>
     <language id="f3347d8a-0e79-4f35-8ac9-1574f25c986f" name="jetbrains.mps.execution.commands">
       <concept id="856705193941281780" name="jetbrains.mps.execution.commands.structure.CommandBuilderExpression" flags="nn" index="2LYoGx">
         <reference id="6129022259108621329" name="commandPart" index="3rFKlk" />
@@ -240,9 +235,6 @@
       </concept>
     </language>
   </registry>
-  <node concept="2XOHcx" id="2sj4mwvrNYf">
-    <property role="2XOHcw" value="${mps_home}" />
-  </node>
   <node concept="3s_ewN" id="1ZVcZhrX4HH">
     <property role="3s_ewP" value="RunCodeFromSolution" />
     <node concept="2AHcQZ" id="5CL$HpprSc8" role="2AJF6D">

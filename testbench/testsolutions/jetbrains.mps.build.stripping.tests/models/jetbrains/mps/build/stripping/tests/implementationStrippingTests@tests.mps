@@ -36,9 +36,6 @@
       <concept id="1227182079811" name="jetbrains.mps.lang.test.structure.TypeKeyStatement" flags="nn" index="2TK7Tu">
         <property id="1227184461946" name="keys" index="2TTd_B" />
       </concept>
-      <concept id="5097124989038916362" name="jetbrains.mps.lang.test.structure.TestInfo" flags="ng" index="2XOHcx">
-        <property id="5097124989038916363" name="projectPath" index="2XOHcw" />
-      </concept>
       <concept id="4239542196496927193" name="jetbrains.mps.lang.test.structure.MPSActionReference" flags="ng" index="1iFQzN">
         <reference id="4239542196496929559" name="action" index="1iFR8X" />
       </concept>
@@ -139,9 +136,6 @@
       <concept id="3265739055509559138" name="jetbrains.mps.samples.Kaja.structure.Step" flags="nn" index="1x_AGW" />
     </language>
   </registry>
-  <node concept="2XOHcx" id="1NKy5CJqdFf">
-    <property role="2XOHcw" value="${mps_home}" />
-  </node>
   <node concept="LiM7Y" id="1NKy5CJqeSF">
     <property role="TrG5h" value="LeftTransformTest" />
     <node concept="3clFbS" id="1NKy5CJqfYA" role="LjaKd">
