@@ -269,14 +269,10 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     if (MPSDataKeys.CONTEXT_MODULE.is(dataId)) {
       return getContextModule();
     }
-
-
     if (MPSDataKeys.VIRTUAL_PACKAGES.is(dataId)) {
-      // FIXME getSelectedPackages() requires model read (resolves model references)
       final List<Pair<SModel, String>> rv = getSelectedPackages();
       return rv.isEmpty() ? null : rv;
     }
-
     if (MPSDataKeys.NAMESPACE.is(dataId)) {
       Object firstSelected = Arrays.stream(getSelectedValues(getSelectedUserObjects())).findFirst().orElseGet(() -> null);
       if (firstSelected instanceof VirtualFolder) {
@@ -509,26 +505,19 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
 
   @NotNull
   public List<Pair<SModel, String>> getSelectedPackages() {
-    // FIXME update the implementation or drop
-    JTree tree = getTree();
-    if (tree == null) {
+    @Nullable Object[] userObjects = getSelectedUserObjects();
+    if (userObjects == null || userObjects.length == 0) {
       return Collections.emptyList();
     }
-    TreePath[] paths = tree.getSelectionPaths();
-    SRepository projectRepo = ProjectHelper.getProjectRepository(getProject());
-    if (paths == null || paths.length == 0 || projectRepo == null) {
-      return Collections.emptyList();
-    }
-    List<Pair<SModel, String>> result = new ArrayList<>();
-    for (TreePath path : paths) {
-      if (path.getLastPathComponent() instanceof PackageNode) {
-        PackageNode pn = (PackageNode) path.getLastPathComponent();
-        projectRepo.getModelAccess().runReadAction(new Runnable() {
-          @Override
-          public void run() {
-            result.add(new Pair<>(pn.getModelReference().resolve(projectRepo), pn.getFullPackage()));
-          }
-        });
+    ArrayList<Pair<SModel, String>> result = new ArrayList<>(userObjects.length);
+    for (Object userObject : userObjects) {
+      Object value = getValueFromNode(userObject);
+      if (value instanceof VirtualFolder) {
+        if (userObject instanceof ContextValueProvider) {
+          ((ContextValueProvider) userObject)
+              .contextValueOfType(SModel.class)
+              .ifPresent((model) -> result.add(new Pair<>(model, ((VirtualFolder) value).getName())));
+        }
       }
     }
     return result;
