@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +47,7 @@ import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -93,8 +94,8 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     }
 
     BiConsumer<String, KeyStroke> removeDefaultKeyStroke = (keymapId, keyStroke) -> {
-      String favoritesViewId = ActivateToolWindowAction.getActionIdForToolWindow(ToolWindowId.FAVORITES_VIEW);
-      String bookmarksViewId = ActivateToolWindowAction.getActionIdForToolWindow(ToolWindowId.BOOKMARKS);
+      String favoritesViewId = ActivateToolWindowAction.Manager.getActionIdForToolWindow(ToolWindowId.FAVORITES_VIEW);
+      String bookmarksViewId = ActivateToolWindowAction.Manager.getActionIdForToolWindow(ToolWindowId.BOOKMARKS);
       final Keymap keymap = KeymapManager.getInstance().getKeymap(keymapId);
       if (keymap == null) {
         return;
@@ -167,9 +168,9 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
 
   protected void createTool() {
     StartupManager.getInstance(getProject()).registerStartupActivity(() -> ApplicationManager.getApplication().invokeLater(() -> {
-      InspectorTool.this.myMessagePanel = new MyMessagePanel();
+      final MPSProject project = ProjectHelper.fromIdeaProject(getProject());
+      InspectorTool.this.myMessagePanel = new MyMessagePanel(project.getComponent(StyleRegistry.class));
       myComponent = new MyPanel();
-      jetbrains.mps.project.Project project = ProjectHelper.fromIdeaProject(getProject());
       myInspectorComponent = new InspectorEditorComponent(project.getRepository(),
                                                           new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(project)).notifies(true).build());
       EditorExtensionUtil.extendUsingProject(myInspectorComponent, project);
@@ -257,15 +258,17 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
     private HyperlinkLabel myOpenConceptLabel = new HyperlinkLabel("Open Concept Declaration");
     private SNode myNode;
 
-    private MyMessagePanel() {
+    private MyMessagePanel(StyleRegistry styleRegistry) {
       setLayout(new BorderLayout());
 
       // there's also INFO_ATTRIBUTES in CodeInsightColors, but perhaps worth to come with own style for 'messages' panel?
-      // FWIW, project instance is available at cons time (to access StyleRegistry, eventually).
-      final Style wpStyle = StyleRegistry.getInstance().getStyle("WARNING_PANEL");
+      final Style wpStyle = styleRegistry.getStyle("WARNING_PANEL");
       setBackground(wpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR));
       setBorder(BorderFactory.createEmptyBorder(10, 4, 10, 4));
 
+      // XXX I wonder if we shall consult StyleRegistry here, instead. E.g. wpStyle.get(StyleAttributes.TEXT_COLOR)
+      //     Indeed, JBColor works for light and dark themes, nevertheless, it's odd to have
+      //     hardcoded color when we can use style indirection
       myLabel.setForeground(MPSColors.BLACK);
 
       add(myLabel, BorderLayout.CENTER);

@@ -33,9 +33,6 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
-      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
-        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
-      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
@@ -242,9 +239,18 @@
       </node>
       <node concept="3clFbS" id="av3ZwHUEg3" role="3clF47">
         <node concept="3cpWs6" id="av3ZwHUEz4" role="3cqZAp">
-          <node concept="2YIFZM" id="av3ZwHUF0o" role="3cqZAk">
-            <ref role="37wK5l" to="hox0:~StyleRegistry.getInstance()" resolve="getInstance" />
-            <ref role="1Pybhc" to="hox0:~StyleRegistry" resolve="StyleRegistry" />
+          <node concept="2OqwBi" id="449zbQAZavh" role="3cqZAk">
+            <node concept="2OqwBi" id="449zbQAZ86N" role="2Oq$k0">
+              <node concept="37vLTw" id="449zbQAZ7Kk" role="2Oq$k0">
+                <ref role="3cqZAo" node="4qA9Zh9H5Ic" resolve="myEditorContext" />
+              </node>
+              <node concept="liA8E" id="449zbQAZa8w" role="2OqNvi">
+                <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
+              </node>
+            </node>
+            <node concept="liA8E" id="449zbQAZaXt" role="2OqNvi">
+              <ref role="37wK5l" to="cj4x:~EditorComponent.getStyleRegistry()" resolve="getStyleRegistry" />
+            </node>
           </node>
         </node>
       </node>
