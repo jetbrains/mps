@@ -596,6 +596,7 @@
       <!-- TODO: remove property after investigation and fix MPS-25217 -->
       <!-- See com.intellij.openapi.project.impl.ProjectManagerImpl#newProject and ProjectManagerImpl#LOG_PROJECT_LEAKAGE_IN_TESTS-->
       <sysproperty key="idea.log.leaked.projects.in.tests" value="false"/>
+      <sysproperty key="mps.test.project.path" value="${base_dir}"/>
       <sysproperty key="mps.test.module.names"
                    value="jetbrains.mps.lang.editor.tests,jetbrains.mps.lang.editor.multiple.tests,jetbrains.mps.console.test,jetbrains.mps.lang.actions.test,jetbrains.mps.lang.editor.table.tests,jetbrains.mps.baseLanguage.test"/>
       <classpath>
