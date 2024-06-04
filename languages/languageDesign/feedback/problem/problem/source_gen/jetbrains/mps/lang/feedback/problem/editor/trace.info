@@ -285,30 +285,23 @@
   </root>
   <root nodeRef="r:908dfefb-9454-4702-8da4-1ce2a1dc1656(jetbrains.mps.lang.feedback.problem.editor)/24399255755751902">
     <file name="ProblemKindStyle_StyleSheet.java">
-      <node id="2740527090601232175" at="19,75,20,33" concept="9" />
-      <node id="2740527090601232175" at="22,71,23,24" concept="9" />
-      <node id="2740527090601232183" at="27,59,28,59" concept="1" />
-      <node id="2740527090601232168" at="28,59,29,82" concept="1" />
-      <node id="8018723092206567147" at="29,82,30,99" concept="1" />
-      <node id="2740527090601232175" at="19,0,22,0" concept="0" trace="ProblemKindStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="2740527090601232175" at="22,0,25,0" concept="0" trace="ProblemKindStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
-      <node id="2740527090601232175" at="26,0,32,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="2740527090601232175" at="19,75,20,33" />
-      <scope id="2740527090601232175" at="22,71,23,24" />
-      <scope id="2740527090601232175" at="19,0,22,0">
-        <var name="editorContext" id="2740527090601232175" />
-        <var name="node" id="2740527090601232175" />
-      </scope>
-      <scope id="2740527090601232175" at="22,0,25,0">
+      <node id="2740527090601232175" at="17,71,18,24" concept="9" />
+      <node id="2740527090601232183" at="22,59,23,59" concept="1" />
+      <node id="2740527090601232168" at="23,59,24,82" concept="1" />
+      <node id="8018723092206567147" at="24,82,25,99" concept="1" />
+      <node id="2740527090601232175" at="17,0,20,0" concept="0" trace="ProblemKindStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
+      <node id="2740527090601232175" at="21,0,27,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="2740527090601232175" at="17,71,18,24" />
+      <scope id="2740527090601232175" at="17,0,20,0">
         <var name="builderEnv" id="2740527090601232175" />
       </scope>
-      <scope id="2740527090601232175" at="27,59,30,99" />
-      <scope id="2740527090601232175" at="26,0,32,0">
+      <scope id="2740527090601232175" at="22,59,25,99" />
+      <scope id="2740527090601232175" at="21,0,27,0">
         <var name="editorCell" id="2740527090601232175" />
         <var name="style" id="2740527090601232175" />
       </scope>
-      <unit id="2740527090601232175" at="18,0,34,0" name="jetbrains.mps.lang.feedback.problem.editor.ProblemKindStyle_StyleSheet$ProblemKindStyleClass" />
-      <unit id="24399255755751902" at="17,0,35,0" name="jetbrains.mps.lang.feedback.problem.editor.ProblemKindStyle_StyleSheet" />
+      <unit id="2740527090601232175" at="16,0,29,0" name="jetbrains.mps.lang.feedback.problem.editor.ProblemKindStyle_StyleSheet$ProblemKindStyleClass" />
+      <unit id="24399255755751902" at="15,0,30,0" name="jetbrains.mps.lang.feedback.problem.editor.ProblemKindStyle_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:908dfefb-9454-4702-8da4-1ce2a1dc1656(jetbrains.mps.lang.feedback.problem.editor)/693143365153253883">

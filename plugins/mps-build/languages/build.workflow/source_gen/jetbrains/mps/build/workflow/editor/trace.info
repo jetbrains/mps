@@ -3777,33 +3777,26 @@
   </root>
   <root nodeRef="r:1267752b-a233-4432-a848-3e68e0ea0db1(jetbrains.mps.build.workflow.editor)/2769948622284574315">
     <file name="workflowStyles_StyleSheet.java">
-      <node id="1203598923024" at="18,71,19,33" concept="13" />
-      <node id="1203598923024" at="21,67,22,24" concept="13" />
-      <node id="7389400916848136224" at="26,59,27,59" concept="2" />
-      <node id="1203598935275" at="27,59,28,123" concept="2" />
-      <node id="8136953028844348062" at="31,62,32,45" concept="8" />
-      <node id="1203598923024" at="18,0,21,0" concept="1" trace="keywordStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1203598923024" at="21,0,24,0" concept="1" trace="keywordStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
-      <node id="8136953028845027427" at="31,0,34,0" concept="6" trace="_StyleParameter_QueryFunction_5rxoe8_a1a#()Ljava/awt/Color;" />
-      <node id="1203598923024" at="25,0,30,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="1203598923024" at="18,71,19,33" />
-      <scope id="1203598923024" at="21,67,22,24" />
-      <scope id="8136953028845027428" at="31,62,32,45" />
-      <scope id="1203598923024" at="26,59,28,123" />
-      <scope id="1203598923024" at="18,0,21,0">
-        <var name="editorContext" id="1203598923024" />
-        <var name="node" id="1203598923024" />
-      </scope>
-      <scope id="1203598923024" at="21,0,24,0">
+      <node id="1203598923024" at="16,67,17,24" concept="13" />
+      <node id="7389400916848136224" at="21,59,22,59" concept="2" />
+      <node id="1203598935275" at="22,59,23,123" concept="2" />
+      <node id="8136953028844348062" at="26,62,27,45" concept="8" />
+      <node id="1203598923024" at="16,0,19,0" concept="1" trace="keywordStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
+      <node id="8136953028845027427" at="26,0,29,0" concept="6" trace="_StyleParameter_QueryFunction_5rxoe8_a1a#()Ljava/awt/Color;" />
+      <node id="1203598923024" at="20,0,25,0" concept="6" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="1203598923024" at="16,67,17,24" />
+      <scope id="8136953028845027428" at="26,62,27,45" />
+      <scope id="1203598923024" at="21,59,23,123" />
+      <scope id="1203598923024" at="16,0,19,0">
         <var name="builderEnv" id="1203598923024" />
       </scope>
-      <scope id="8136953028845027427" at="31,0,34,0" />
-      <scope id="1203598923024" at="25,0,30,0">
+      <scope id="8136953028845027427" at="26,0,29,0" />
+      <scope id="1203598923024" at="20,0,25,0">
         <var name="editorCell" id="1203598923024" />
         <var name="style" id="1203598923024" />
       </scope>
-      <unit id="1203598923024" at="17,0,35,0" name="jetbrains.mps.build.workflow.editor.workflowStyles_StyleSheet$keywordStyleClass" />
-      <unit id="2769948622284574315" at="16,0,36,0" name="jetbrains.mps.build.workflow.editor.workflowStyles_StyleSheet" />
+      <unit id="1203598923024" at="15,0,30,0" name="jetbrains.mps.build.workflow.editor.workflowStyles_StyleSheet$keywordStyleClass" />
+      <unit id="2769948622284574315" at="14,0,31,0" name="jetbrains.mps.build.workflow.editor.workflowStyles_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:1267752b-a233-4432-a848-3e68e0ea0db1(jetbrains.mps.build.workflow.editor)/2769948622284605882">

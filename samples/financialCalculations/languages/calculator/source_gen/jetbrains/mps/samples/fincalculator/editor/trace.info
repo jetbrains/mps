@@ -2248,95 +2248,67 @@
   </root>
   <root nodeRef="r:fb9e85a1-15cf-45ea-8495-bd74b79ce90c(jetbrains.mps.samples.fincalculator.editor)/5087448708487012929">
     <file name="Styles_StyleSheet.java">
-      <node id="5087448708487012932" at="17,71,18,33" concept="9" />
-      <node id="5087448708487012932" at="20,67,21,24" concept="9" />
-      <node id="5087448708487012937" at="25,59,26,59" concept="1" />
-      <node id="5087448708487012943" at="26,59,27,100" concept="1" />
-      <node id="5087448708487013006" at="32,70,33,33" concept="9" />
-      <node id="5087448708487013006" at="35,66,36,24" concept="9" />
-      <node id="5087448708487013120" at="40,59,41,66" concept="1" />
-      <node id="5087448708487013121" at="41,66,42,95" concept="1" />
-      <node id="5087448708487187751" at="47,68,48,33" concept="9" />
-      <node id="5087448708487187751" at="50,64,51,24" concept="9" />
-      <node id="5087448708487187752" at="55,59,56,60" concept="1" />
-      <node id="5087448708487187753" at="56,60,57,96" concept="1" />
-      <node id="5087448708487013213" at="62,68,63,33" concept="9" />
-      <node id="5087448708487013213" at="65,64,66,24" concept="9" />
-      <node id="5087448708487013222" at="70,59,71,59" concept="1" />
-      <node id="5087448708487013223" at="71,59,72,103" concept="1" />
-      <node id="5087448708487012932" at="17,0,20,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="5087448708487012932" at="20,0,23,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
-      <node id="5087448708487013006" at="32,0,35,0" concept="0" trace="NumberStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="5087448708487013006" at="35,0,38,0" concept="0" trace="NumberStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
-      <node id="5087448708487187751" at="47,0,50,0" concept="0" trace="TextStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="5087448708487187751" at="50,0,53,0" concept="0" trace="TextStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
-      <node id="5087448708487013213" at="62,0,65,0" concept="0" trace="NameStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="5087448708487013213" at="65,0,68,0" concept="0" trace="NameStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
-      <node id="5087448708487012932" at="24,0,29,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="5087448708487013006" at="39,0,44,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="5087448708487187751" at="54,0,59,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <node id="5087448708487013213" at="69,0,74,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
-      <scope id="5087448708487012932" at="17,71,18,33" />
-      <scope id="5087448708487012932" at="20,67,21,24" />
-      <scope id="5087448708487013006" at="32,70,33,33" />
-      <scope id="5087448708487013006" at="35,66,36,24" />
-      <scope id="5087448708487187751" at="47,68,48,33" />
-      <scope id="5087448708487187751" at="50,64,51,24" />
-      <scope id="5087448708487013213" at="62,68,63,33" />
-      <scope id="5087448708487013213" at="65,64,66,24" />
-      <scope id="5087448708487012932" at="25,59,27,100" />
-      <scope id="5087448708487013006" at="40,59,42,95" />
-      <scope id="5087448708487187751" at="55,59,57,96" />
-      <scope id="5087448708487013213" at="70,59,72,103" />
-      <scope id="5087448708487012932" at="17,0,20,0">
-        <var name="editorContext" id="5087448708487012932" />
-        <var name="node" id="5087448708487012932" />
-      </scope>
-      <scope id="5087448708487012932" at="20,0,23,0">
+      <node id="5087448708487012932" at="15,67,16,24" concept="9" />
+      <node id="5087448708487012937" at="20,59,21,59" concept="1" />
+      <node id="5087448708487012943" at="21,59,22,100" concept="1" />
+      <node id="5087448708487013006" at="27,66,28,24" concept="9" />
+      <node id="5087448708487013120" at="32,59,33,66" concept="1" />
+      <node id="5087448708487013121" at="33,66,34,95" concept="1" />
+      <node id="5087448708487187751" at="39,64,40,24" concept="9" />
+      <node id="5087448708487187752" at="44,59,45,60" concept="1" />
+      <node id="5087448708487187753" at="45,60,46,96" concept="1" />
+      <node id="5087448708487013213" at="51,64,52,24" concept="9" />
+      <node id="5087448708487013222" at="56,59,57,59" concept="1" />
+      <node id="5087448708487013223" at="57,59,58,103" concept="1" />
+      <node id="5087448708487012932" at="15,0,18,0" concept="0" trace="KeyWordStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
+      <node id="5087448708487013006" at="27,0,30,0" concept="0" trace="NumberStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
+      <node id="5087448708487187751" at="39,0,42,0" concept="0" trace="TextStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
+      <node id="5087448708487013213" at="51,0,54,0" concept="0" trace="NameStyleClass#(Ljetbrains/mps/editor/runtime/descriptor/EditorBuilderEnvironment;)V" />
+      <node id="5087448708487012932" at="19,0,24,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="5087448708487013006" at="31,0,36,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="5087448708487187751" at="43,0,48,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <node id="5087448708487013213" at="55,0,60,0" concept="4" trace="apply#(Ljetbrains/mps/openapi/editor/style/Style;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
+      <scope id="5087448708487012932" at="15,67,16,24" />
+      <scope id="5087448708487013006" at="27,66,28,24" />
+      <scope id="5087448708487187751" at="39,64,40,24" />
+      <scope id="5087448708487013213" at="51,64,52,24" />
+      <scope id="5087448708487012932" at="20,59,22,100" />
+      <scope id="5087448708487013006" at="32,59,34,95" />
+      <scope id="5087448708487187751" at="44,59,46,96" />
+      <scope id="5087448708487013213" at="56,59,58,103" />
+      <scope id="5087448708487012932" at="15,0,18,0">
         <var name="builderEnv" id="5087448708487012932" />
       </scope>
-      <scope id="5087448708487013006" at="32,0,35,0">
-        <var name="editorContext" id="5087448708487013006" />
-        <var name="node" id="5087448708487013006" />
-      </scope>
-      <scope id="5087448708487013006" at="35,0,38,0">
+      <scope id="5087448708487013006" at="27,0,30,0">
         <var name="builderEnv" id="5087448708487013006" />
       </scope>
-      <scope id="5087448708487187751" at="47,0,50,0">
-        <var name="editorContext" id="5087448708487187751" />
-        <var name="node" id="5087448708487187751" />
-      </scope>
-      <scope id="5087448708487187751" at="50,0,53,0">
+      <scope id="5087448708487187751" at="39,0,42,0">
         <var name="builderEnv" id="5087448708487187751" />
       </scope>
-      <scope id="5087448708487013213" at="62,0,65,0">
-        <var name="editorContext" id="5087448708487013213" />
-        <var name="node" id="5087448708487013213" />
-      </scope>
-      <scope id="5087448708487013213" at="65,0,68,0">
+      <scope id="5087448708487013213" at="51,0,54,0">
         <var name="builderEnv" id="5087448708487013213" />
       </scope>
-      <scope id="5087448708487012932" at="24,0,29,0">
+      <scope id="5087448708487012932" at="19,0,24,0">
         <var name="editorCell" id="5087448708487012932" />
         <var name="style" id="5087448708487012932" />
       </scope>
-      <scope id="5087448708487013006" at="39,0,44,0">
+      <scope id="5087448708487013006" at="31,0,36,0">
         <var name="editorCell" id="5087448708487013006" />
         <var name="style" id="5087448708487013006" />
       </scope>
-      <scope id="5087448708487187751" at="54,0,59,0">
+      <scope id="5087448708487187751" at="43,0,48,0">
         <var name="editorCell" id="5087448708487187751" />
         <var name="style" id="5087448708487187751" />
       </scope>
-      <scope id="5087448708487013213" at="69,0,74,0">
+      <scope id="5087448708487013213" at="55,0,60,0">
         <var name="editorCell" id="5087448708487013213" />
         <var name="style" id="5087448708487013213" />
       </scope>
-      <unit id="5087448708487012932" at="16,0,31,0" name="jetbrains.mps.samples.fincalculator.editor.Styles_StyleSheet$KeyWordStyleClass" />
-      <unit id="5087448708487013006" at="31,0,46,0" name="jetbrains.mps.samples.fincalculator.editor.Styles_StyleSheet$NumberStyleClass" />
-      <unit id="5087448708487187751" at="46,0,61,0" name="jetbrains.mps.samples.fincalculator.editor.Styles_StyleSheet$TextStyleClass" />
-      <unit id="5087448708487013213" at="61,0,76,0" name="jetbrains.mps.samples.fincalculator.editor.Styles_StyleSheet$NameStyleClass" />
-      <unit id="5087448708487012929" at="15,0,77,0" name="jetbrains.mps.samples.fincalculator.editor.Styles_StyleSheet" />
+      <unit id="5087448708487012932" at="14,0,26,0" name="jetbrains.mps.samples.fincalculator.editor.Styles_StyleSheet$KeyWordStyleClass" />
+      <unit id="5087448708487013006" at="26,0,38,0" name="jetbrains.mps.samples.fincalculator.editor.Styles_StyleSheet$NumberStyleClass" />
+      <unit id="5087448708487187751" at="38,0,50,0" name="jetbrains.mps.samples.fincalculator.editor.Styles_StyleSheet$TextStyleClass" />
+      <unit id="5087448708487013213" at="50,0,62,0" name="jetbrains.mps.samples.fincalculator.editor.Styles_StyleSheet$NameStyleClass" />
+      <unit id="5087448708487012929" at="13,0,63,0" name="jetbrains.mps.samples.fincalculator.editor.Styles_StyleSheet" />
     </file>
   </root>
   <root nodeRef="r:fb9e85a1-15cf-45ea-8495-bd74b79ce90c(jetbrains.mps.samples.fincalculator.editor)/5982026979498910674">
