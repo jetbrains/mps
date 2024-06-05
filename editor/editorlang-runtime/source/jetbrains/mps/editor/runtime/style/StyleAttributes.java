@@ -162,7 +162,7 @@ public class StyleAttributes {
   public static final StyleAttribute<Boolean> READ_ONLY = new InheritableStyleAttribute<>("read-only", false, true);
   public static final StyleAttribute<Boolean> UNDERLINED = new SimpleStyleAttribute<>("underlined", false, true);
   public static final StyleAttribute<Boolean> STRIKE_OUT = new SimpleStyleAttribute<>("deprecated", false, true);
-  public static final StyleAttribute<Boolean> PLACEHOLDER = new SimpleStyleAttribute<>("paceholder", false, true);
+  public static final StyleAttribute<Boolean> PLACEHOLDER = new SimpleStyleAttribute<>("placeholder", false, true);
 
   public static final StyleAttribute<Boolean> BASE_LINE_CELL = new SimpleStyleAttribute<>("baseLineCell", false, true);
   public static final StyleAttribute<DefaultBaseLine> DEFAULT_BASE_LINE =
