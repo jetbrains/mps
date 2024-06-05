@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -104,8 +104,13 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
 
 
     CompletionCustomizationManager completionCustomizationManager = mySubstituteChooser.getCompletionCustomizationManager();
-    Optional<Color> actionTextColor = completionCustomizationManager.getTextColor(action, pattern);
-    Color foreground = actionTextColor.orElse(list.getForeground());
+    Color foreground;
+    if (isSelected) {
+      foreground = list.getSelectionForeground();
+    } else {
+      Optional<Color> actionTextColor = completionCustomizationManager.getTextColor(action, pattern);
+      foreground = actionTextColor.orElse(list.getForeground());
+    }
     try {
       String visibleMatchingText = action.getVisibleMatchingText(pattern);
       if (visibleMatchingText != null) {
@@ -150,11 +155,10 @@ class NodeItemCellRenderer extends JPanel implements ListCellRenderer<Substitute
   }
 
   private void appendText(String pattern, SimpleColoredComponent component, boolean isSelected, String text, Color textColor, int style, boolean isStrikeout) {
-    Color foreground = isSelected ? NodeSubstituteChooserUi.SELECTED_FOREGROUND_COLOR : textColor;
     if (isStrikeout) {
       style = style | SimpleTextAttributes.STYLE_STRIKEOUT;
     }
-    final SimpleTextAttributes base = new SimpleTextAttributes(style, foreground);
+    final SimpleTextAttributes base = new SimpleTextAttributes(style, textColor);
 
     Iterable<TextRange> ranges = mySubstituteChooser.isMenuEmpty() ? null : getMatchingFragments(pattern, text);
     if (ranges != null) {

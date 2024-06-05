@@ -89,6 +89,7 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
     sc.set(StyleAttributes.BACKGROUND_COLOR, bg); // just in case, not sure what's the difference b/w the two
     sc.set(StyleAttributes.SELECTED_TEXT_COLOR, getColorsScheme().getColor(EditorColors.SELECTION_FOREGROUND_COLOR));
     sc.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getColorsScheme().getColor(EditorColors.SELECTION_BACKGROUND_COLOR));
+    // TODO HIGHLIGHT_COLOR, SELECTION_HIGHLIGHT_COLOR attributes for use in NodeItemCellRenderer
     setStyle("COMPLETION_POPUP", sc);
 
     // afaiu, IDEA's EditorColorsScheme.getAttributes() gives TextAttributes with overridden values only (no inherited/derived)

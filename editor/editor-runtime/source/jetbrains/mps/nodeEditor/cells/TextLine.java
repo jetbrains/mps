@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,6 +73,7 @@ public class TextLine {
   private int myMinimalLength = 0;
 
   private final double myLineSpacing = EditorSettings.getInstance().getLineSpacing();
+  // FIXME use "COMPLETION_POPUP" (or dedicated) style instead of EditorSettings service
   private Color mySelectedTextColor = EditorSettings.getInstance().getSelectionForegroundColor();
   private final Color myTextSelectedTextColor = EditorSettings.getInstance().getSelectionForegroundColor();
   private final Color myTextSelectedBackgroundColor = EditorSettings.getInstance().getSelectionBackgroundColor();
