@@ -26,5 +26,4 @@
 -Didea.trust.disabled=false
 -Dfreeze.reporter.enabled=false
 -Didea.indices.psi.dependent.default=false
--Dide.experimental.ui=false
 #-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071
