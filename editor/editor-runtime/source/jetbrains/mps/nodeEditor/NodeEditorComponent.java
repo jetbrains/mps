@@ -23,6 +23,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.LocalTimeCounter;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
@@ -116,6 +117,11 @@ public class NodeEditorComponent extends EditorComponent {
   public void rebuildEditorContent() {
     SNode editedNode = getEditedNode();
     if (editedNode == null || !org.jetbrains.mps.openapi.model.SNodeUtil.isAccessible(editedNode, getEditorContext().getRepository())) {
+      return;
+    }
+    Project project = ProjectHelper.getProject(getEditorContext().getRepository());
+    if (project == null || project.isDisposed()) {
+      // avoid triggering assertions in UpdateImpl
       return;
     }
     super.rebuildEditorContent();
