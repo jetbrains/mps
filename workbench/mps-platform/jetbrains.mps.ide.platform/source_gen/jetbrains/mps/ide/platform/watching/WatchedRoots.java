@@ -90,8 +90,8 @@ public class WatchedRoots {
           for (int idx = 0; idx < stackTrace.length; idx++) {
             sb.append(String.format("%n  at %s", stackTrace[idx]));
           }
-          if (LOG.isWarningLevel()) {
-            LOG.warning(sb.toString());
+          if (LOG.isDebugLevel()) {
+            LOG.debug(sb.toString());
           }
         } else {
           localFileSystem.removeWatchedRoot(req);
