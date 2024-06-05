@@ -25,11 +25,6 @@
     </component>
 
     <component>
-      <interface-class>jetbrains.mps.openapi.editor.extensions.EditorExtensionRegistry</interface-class>
-      <implementation-class>jetbrains.mps.ide.editor.EditorExtensionRegistryImpl</implementation-class>
-    </component>
-
-    <component>
       <implementation-class>jetbrains.mps.ide.editor.MPSValidationComponent</implementation-class>
     </component>
 
