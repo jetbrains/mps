@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -152,6 +152,7 @@ public class StyleAttributes {
   public static final StyleAttribute<Color> TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("text-background-color", null, true);
   public static final StyleAttribute<Color> NULL_TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("null-text-color", null, true);
   public static final StyleAttribute<Color> SELECTED_TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("selected-text-background-color", null, true);
+  public static final StyleAttribute<Color> SELECTED_TEXT_COLOR = new InheritableStyleAttribute<>("selected-text-color", null, true);
   public static final StyleAttribute<Color> NULL_SELECTED_TEXT_BACKGROUND_COLOR = new InheritableStyleAttribute<>("null-selected-text-color", null, true);
 
   public static final StyleAttribute<Boolean> DRAW_BRACKETS = new SimpleStyleAttribute<>("draw-brackets", false, true);

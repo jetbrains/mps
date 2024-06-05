@@ -82,6 +82,15 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
     da.set(StyleAttributes.TEXT_BACKGROUND_COLOR, new Color(cc.getRed(), cc.getGreen(), cc.getBlue(), cc.getAlpha() / 5));
     setStyle("DELETION_APPROVER", da);
 
+    final StyleImpl sc = new StyleImpl();
+    sc.set(StyleAttributes.TEXT_COLOR, getEditorForeground());
+    final JBColor bg = new JBColor(new Color(235, 244, 254), new Color(0x141D29));
+    sc.set(StyleAttributes.TEXT_BACKGROUND_COLOR, bg);
+    sc.set(StyleAttributes.BACKGROUND_COLOR, bg); // just in case, not sure what's the difference b/w the two
+    sc.set(StyleAttributes.SELECTED_TEXT_COLOR, getColorsScheme().getColor(EditorColors.SELECTION_FOREGROUND_COLOR));
+    sc.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getColorsScheme().getColor(EditorColors.SELECTION_BACKGROUND_COLOR));
+    setStyle("COMPLETION_POPUP", sc);
+
     // afaiu, IDEA's EditorColorsScheme.getAttributes() gives TextAttributes with overridden values only (no inherited/derived)
     // which makes it tricky to use getStyle("IDEA_STYLE") w/o knowledge which exact attributes the style specifies.
     // I didn't find a way for TextAttributes to supply defaults (other than TextAttributesKey.getDefaultAttributes(), which

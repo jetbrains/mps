@@ -16,6 +16,7 @@
 package jetbrains.mps.nodeEditor.cellMenu;
 
 import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.MPSColors;
@@ -26,6 +27,7 @@ import jetbrains.mps.nodeEditor.keyboard.TextChangeEvent;
 import jetbrains.mps.openapi.editor.EditorComponentSettings;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import org.jetbrains.annotations.NotNull;
 
@@ -429,10 +431,10 @@ public class NodeSubstitutePatternEditor {
         // XXX another TextLineOperations uses font of a cell, removing styles like bold/italic.
         //     Which approach is right? Can't we use editor's default font everywhere?
         setFont(context.getEditorComponent().getEditorComponentSettings().getDefaultFont());
-        final StyleRegistry styleRegistry = context.getEditorComponent().getStyleRegistry();
-        // FIXME declare style for substitute chooser UI (e.g. "COMPLETION_POPUP") and use it here
-        p.setBackground(StyleRegistry.getInstance().getSimpleColor(MPSColors.YELLOW));
-        p.setForeground(StyleRegistry.getInstance().getSimpleColor(MPSColors.GRAY));
+        final Style cpStyle = context.getEditorComponent().getStyleRegistry().getStyle("COMPLETION_POPUP");
+        // XXX I wonder if we can use Style to pass Font information, not to use EditorComponentSettings
+        p.setBackground(cpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR));
+        p.setForeground(cpStyle.get(StyleAttributes.TEXT_COLOR));
       } else {
         // just a transition line for mbeddr using NodeSubstitutePatternEditor no-arg cons
         myTextLine = new TextLine("", new StyleImpl(), false);
