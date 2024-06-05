@@ -71,14 +71,14 @@ public class AspectDependenciesChecker extends SpecificChecker {
         }
         SNode targetNode = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
         if (targetNode == null) {
-          ListSequence.fromList(results).addElement(new UnresolvedReferenceReportItem(ref, () -> ResolverComponent.getInstance().resolve(ref, myProject.getRepository())));
+          ListSequence.fromList(results).addElement(new UnresolvedReferenceReportItem(ref, () -> myProject.getComponent(ResolverComponent.class).resolve(ref, myProject.getRepository())));
           continue;
         }
 
         SModel targetModel = SNodeOperations.getModel(targetNode);
         int targetKind = getModelKind(targetModel, ref);
         if (targetKind > modelKind) {
-          ListSequence.fromList(results).addElement(new ReferenceReportItem(MessageStatus.ERROR, ref, "Wrong reference: " + SLinkOperations.getResolveInfo(ref) + ", reference from " + kindToString(modelKind) + " to " + kindToString(targetKind)) {
+          ListSequence.fromList(results).addElement(new ReferenceReportItem(MessageStatus.ERROR, ref, String.format("Wrong reference: %s, reference from %s to %s", SLinkOperations.getResolveInfo(ref), kindToString(modelKind), kindToString(targetKind))) {
             public IssueKindReportItem.ItemKind getIssueKind() {
               return WRONG_ASPECT_DEPENDENCIES.deriveItemKind(kindToString(modelKind));
             }

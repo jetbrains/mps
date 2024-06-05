@@ -1434,6 +1434,26 @@
                                       </node>
                                     </node>
                                   </node>
+                                  <node concept="3cpWs8" id="6kkED_btKW_" role="3cqZAp">
+                                    <node concept="3cpWsn" id="6kkED_btKWA" role="3cpWs9">
+                                      <property role="TrG5h" value="resolver" />
+                                      <property role="3TUv4t" value="true" />
+                                      <node concept="3uibUv" id="6kkED_btHr$" role="1tU5fm">
+                                        <ref role="3uigEE" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
+                                      </node>
+                                      <node concept="2OqwBi" id="6kkED_bupND" role="33vP2m">
+                                        <node concept="37vLTw" id="6kkED_buleA" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="15Dv6lKf6It" resolve="myProject" />
+                                        </node>
+                                        <node concept="liA8E" id="6kkED_buuq2" role="2OqNvi">
+                                          <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                                          <node concept="3VsKOn" id="6kkED_bu9vZ" role="37wK5m">
+                                            <ref role="3VsUkX" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
+                                          </node>
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
                                   <node concept="3SKdUt" id="77jjuPIc_54" role="3cqZAp">
                                     <node concept="1PaTwC" id="ATZLwXoa9T" role="1aUNEU">
                                       <node concept="3oM_SD" id="ATZLwXoa9U" role="1PaTwD">
@@ -1490,9 +1510,8 @@
                                           <property role="TrG5h" value="resolvedByScope" />
                                           <node concept="10P_77" id="77jjuPI7xDH" role="1tU5fm" />
                                           <node concept="2OqwBi" id="77jjuPI7xEy" role="33vP2m">
-                                            <node concept="2YIFZM" id="77jjuPI7xEz" role="2Oq$k0">
-                                              <ref role="1Pybhc" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
-                                              <ref role="37wK5l" to="5ijk:1$3BPv3Ve2T" resolve="getInstance" />
+                                            <node concept="37vLTw" id="6kkED_btKWC" role="2Oq$k0">
+                                              <ref role="3cqZAo" node="6kkED_btKWA" resolve="instance" />
                                             </node>
                                             <node concept="liA8E" id="77jjuPI7xE$" role="2OqNvi">
                                               <ref role="37wK5l" to="5ijk:2uxkWp9XZ7U" resolve="resolveScopesOnly" />
@@ -1904,7 +1923,7 @@
                                                 <property role="3oM_SC" value="force" />
                                               </node>
                                               <node concept="3oM_SD" id="ATZLwXoaaR" role="1PaTwD">
-                                                <property role="3oM_SC" value="autofix" />
+                                                <property role="3oM_SC" value="auto-fix" />
                                               </node>
                                               <node concept="3oM_SD" id="ATZLwXoaaS" role="1PaTwD">
                                                 <property role="3oM_SC" value="mode" />

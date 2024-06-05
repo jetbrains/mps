@@ -132,6 +132,9 @@
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
+      </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
@@ -2195,9 +2198,16 @@
                                           </node>
                                         </node>
                                       </node>
-                                      <node concept="2YIFZM" id="7xOXVW7WYF" role="2Oq$k0">
-                                        <ref role="37wK5l" to="5ijk:1$3BPv3Ve2T" resolve="getInstance" />
-                                        <ref role="1Pybhc" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
+                                      <node concept="2OqwBi" id="6kkED_bt8aT" role="2Oq$k0">
+                                        <node concept="37vLTw" id="6kkED_bt6IZ" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="7SNXUnYXwS2" resolve="myProject" />
+                                        </node>
+                                        <node concept="liA8E" id="6kkED_btalN" role="2OqNvi">
+                                          <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                                          <node concept="3VsKOn" id="6kkED_bt3Eo" role="37wK5m">
+                                            <ref role="3VsUkX" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
+                                          </node>
+                                        </node>
                                       </node>
                                     </node>
                                   </node>
@@ -2295,40 +2305,28 @@
                                 <node concept="2GrUjf" id="6iohsvjUSjz" role="37wK5m">
                                   <ref role="2Gs0qQ" node="2tRCcbzc1Fi" resolve="ref" />
                                 </node>
-                                <node concept="3cpWs3" id="7xOXVW7WYL" role="37wK5m">
-                                  <node concept="3cpWs3" id="7xOXVW7WYM" role="3uHU7B">
-                                    <node concept="3cpWs3" id="7xOXVW7WYN" role="3uHU7B">
-                                      <node concept="1rXfSq" id="7xOXVW7WYO" role="3uHU7w">
-                                        <ref role="37wK5l" node="2tRCcbzc5VP" resolve="kindToString" />
-                                        <node concept="37vLTw" id="7xOXVW7WYP" role="37wK5m">
-                                          <ref role="3cqZAo" node="2tRCcbzc5Um" resolve="modelKind" />
-                                        </node>
-                                      </node>
-                                      <node concept="3cpWs3" id="7xOXVW7WYQ" role="3uHU7B">
-                                        <node concept="3cpWs3" id="7xOXVW7WYR" role="3uHU7B">
-                                          <node concept="2OqwBi" id="7xOXVW7WYS" role="3uHU7w">
-                                            <node concept="1FfNbt" id="7xOXVW7WYT" role="2OqNvi" />
-                                            <node concept="2GrUjf" id="7xOXVW7WYU" role="2Oq$k0">
-                                              <ref role="2Gs0qQ" node="2tRCcbzc1Fi" resolve="ref" />
-                                            </node>
-                                          </node>
-                                          <node concept="Xl_RD" id="7xOXVW7WYV" role="3uHU7B">
-                                            <property role="Xl_RC" value="Wrong reference: " />
-                                          </node>
-                                        </node>
-                                        <node concept="Xl_RD" id="7xOXVW7WYW" role="3uHU7w">
-                                          <property role="Xl_RC" value=", reference from " />
-                                        </node>
-                                      </node>
-                                    </node>
-                                    <node concept="Xl_RD" id="7xOXVW7WYX" role="3uHU7w">
-                                      <property role="Xl_RC" value=" to " />
-                                    </node>
+                                <node concept="2OqwBi" id="6kkED_bsZ7V" role="37wK5m">
+                                  <node concept="Xl_RD" id="6kkED_bsZ7W" role="2Oq$k0">
+                                    <property role="Xl_RC" value="Wrong reference: %s, reference from %s to %s" />
                                   </node>
-                                  <node concept="1rXfSq" id="7xOXVW7WYY" role="3uHU7w">
-                                    <ref role="37wK5l" node="2tRCcbzc5VP" resolve="kindToString" />
-                                    <node concept="37vLTw" id="7xOXVW7WYZ" role="37wK5m">
-                                      <ref role="3cqZAo" node="2tRCcbzc5Vc" resolve="targetKind" />
+                                  <node concept="2cAKMz" id="6kkED_bsZ7X" role="2OqNvi">
+                                    <node concept="2OqwBi" id="7xOXVW7WYS" role="2cAKU6">
+                                      <node concept="1FfNbt" id="7xOXVW7WYT" role="2OqNvi" />
+                                      <node concept="2GrUjf" id="7xOXVW7WYU" role="2Oq$k0">
+                                        <ref role="2Gs0qQ" node="2tRCcbzc1Fi" resolve="ref" />
+                                      </node>
+                                    </node>
+                                    <node concept="1rXfSq" id="7xOXVW7WYO" role="2cAKU6">
+                                      <ref role="37wK5l" node="2tRCcbzc5VP" resolve="kindToString" />
+                                      <node concept="37vLTw" id="7xOXVW7WYP" role="37wK5m">
+                                        <ref role="3cqZAo" node="2tRCcbzc5Um" resolve="modelKind" />
+                                      </node>
+                                    </node>
+                                    <node concept="1rXfSq" id="7xOXVW7WYY" role="2cAKU6">
+                                      <ref role="37wK5l" node="2tRCcbzc5VP" resolve="kindToString" />
+                                      <node concept="37vLTw" id="7xOXVW7WYZ" role="37wK5m">
+                                        <ref role="3cqZAo" node="2tRCcbzc5Vc" resolve="targetKind" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>

@@ -16948,10 +16948,6 @@
                                             <node concept="3clFbS" id="65AzcDp5Vmu" role="3clF47">
                                               <node concept="3clFbF" id="1$3BPv3VdCv" role="3cqZAp">
                                                 <node concept="2OqwBi" id="1$3BPv3Vey4" role="3clFbG">
-                                                  <node concept="2YIFZM" id="1$3BPv3VexJ" role="2Oq$k0">
-                                                    <ref role="37wK5l" to="5ijk:1$3BPv3Ve2T" resolve="getInstance" />
-                                                    <ref role="1Pybhc" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
-                                                  </node>
                                                   <node concept="liA8E" id="1$3BPv3Veya" role="2OqNvi">
                                                     <ref role="37wK5l" to="5ijk:1$3BPv3Vdyw" resolve="resolve" />
                                                     <node concept="37vLTw" id="3GM_nagTA8l" role="37wK5m">
@@ -16963,6 +16959,17 @@
                                                       </node>
                                                       <node concept="liA8E" id="2FCg7iP9WDv" role="2OqNvi">
                                                         <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                                                      </node>
+                                                    </node>
+                                                  </node>
+                                                  <node concept="2OqwBi" id="6kkED_bpPxK" role="2Oq$k0">
+                                                    <node concept="37vLTw" id="6kkED_bpNYD" role="2Oq$k0">
+                                                      <ref role="3cqZAo" node="589x9V3B8qQ" resolve="mpsProject" />
+                                                    </node>
+                                                    <node concept="liA8E" id="6kkED_bpQMh" role="2OqNvi">
+                                                      <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                                                      <node concept="3VsKOn" id="6kkED_bpUmP" role="37wK5m">
+                                                        <ref role="3VsUkX" to="5ijk:3lcbx72875n" resolve="ResolverComponent" />
                                                       </node>
                                                     </node>
                                                   </node>

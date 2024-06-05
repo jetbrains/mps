@@ -145,9 +145,10 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
 
           // in case this becomes a performance bottleneck, consider reusing the editor's typechecking context
           boolean doRecheckEditor = false;
+          final ResolverComponent resolver = myProject.getComponent(ResolverComponent.class);
           // Trying to resolve all broken references using scope and then using substitute actions.
           for (SReference brokenRef : SetSequence.fromSet(badReferences)) {
-            boolean resolvedByScope = ResolverComponent.getInstance().resolveScopesOnly(brokenRef, editorComponent.getEditorContext().getRepository());
+            boolean resolvedByScope = resolver.resolveScopesOnly(brokenRef, editorComponent.getEditorContext().getRepository());
 
             final jetbrains.mps.openapi.editor.cells.EditorCell cellWithRole;
             if (resolvedByScope) {
@@ -186,7 +187,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
             editorComponent.restoreState(state);
 
             if (wasForceAutofix) {
-              // re-running next checker in force autofix mode
+              // re-running next checker in force auto-fix mode
               myForceAutofix = true;
             }
           }

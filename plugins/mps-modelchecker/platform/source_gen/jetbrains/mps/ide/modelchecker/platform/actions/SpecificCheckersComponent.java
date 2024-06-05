@@ -34,7 +34,7 @@ public class SpecificCheckersComponent implements BaseComponent {
     if (myCheckerRegistry == null) {
       return;
     }
-    myCheckers = ListSequence.fromListAndArray(new ArrayList<IChecker<?, ?>>(), new UnresolvedReferencesChecker(), new GeneratorTemplatesChecker(), new ProperGenPlanChecker(platform));
+    myCheckers = ListSequence.fromListAndArray(new ArrayList<IChecker<?, ?>>(), new UnresolvedReferencesChecker(platform), new GeneratorTemplatesChecker(), new ProperGenPlanChecker(platform));
     for (IChecker<?, ?> checker : ListSequence.fromList(myCheckers)) {
       myCheckerRegistry.registerChecker(checker);
     }
