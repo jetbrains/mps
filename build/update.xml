@@ -451,8 +451,8 @@
              url="https://www.jetbrains.com/mps/download/previous.html"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2023" minorVersoin="2">
-      <build number="232.10072.781" version="2023.2">
-        <message>JetBrains MPS 2023.2 is now available.</message>
+      <build number="232.10300.938" version="2023.2.1">
+        <message>JetBrains MPS 2023.2.1 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download/previous.html" download="true"/>
       </build>
     </channel>
@@ -460,8 +460,8 @@
              url="https://www.jetbrains.com/mps/download/previous.html"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2023" minorVersoin="2">
-      <build number="232.10072.781" version="2023.2">
-        <message>JetBrains MPS 2023.2 is now available.</message>
+      <build number="232.10300.938" version="2023.2.1">
+        <message>JetBrains MPS 2023.2.1 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download/previous.html" download="true"/>
       </build>
     </channel>
@@ -469,8 +469,8 @@
              url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2023" minorVersoin="3">
-      <build number="233.13135.979" version="2023.3">
-        <message>JetBrains MPS 2023.3 is now available.</message>
+      <build number="233.13135.1068" version="2023.3.1">
+        <message>JetBrains MPS 2023.3.1 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
@@ -478,8 +478,8 @@
              url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2023" minorVersoin="3">
-      <build number="233.13135.979" version="2023.3">
-        <message>JetBrains MPS 2023.3 is now available.</message>
+      <build number="233.13135.1068" version="2023.3.1">
+        <message>JetBrains MPS 2023.3.1 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
@@ -487,7 +487,7 @@
              url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2024" minorVersoin="1">
-      <build number="241.17011.705" version="2024.1 EAP1">
+      <build number="241.17011.787" version="2024.1 EAP2">
         <message>JetBrains MPS 2024.1 EAP1 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/nextversion" download="true"/>
       </build>
