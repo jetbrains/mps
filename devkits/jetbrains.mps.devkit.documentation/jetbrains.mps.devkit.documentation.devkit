@@ -5,6 +5,6 @@
   <exported-solutions>
     <exported-solution>f0aec392-47e3-40ae-a843-4519e73ec102(jetbrains.mps.lang.descriptor.documentation)</exported-solution>
   </exported-solutions>
-  <generation-plan model="r:d1cf1bdc-d32d-481e-8ec6-73dc1f9dcb76(jetbrains.mps.lang.descriptor.structure_doc@genplan)" />
+  <generation-plan model="r:d1cf1bdc-d32d-481e-8ec6-73dc1f9dcb76(jetbrains.mps.lang.documentation@genplan.mps)" />
 </dev-kit>
 
