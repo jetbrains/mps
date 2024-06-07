@@ -20,6 +20,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -139,7 +140,11 @@ public class ClassifierScopes {
     final Set<SNode> enclosingClassifierAncestors = SetSequence.fromSet(new HashSet<SNode>());
     SetSequence.fromSet(enclosingClassifierAncestors).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$Ix, false)));
 
-    return new FilteringScope(ClassifierScopes.getVisibleClassifiersScope(contextNode, true)) {
+    Scope visibleClassifiersScope = ClassifierScopes.getVisibleClassifiersScope(contextNode, true);
+    if (visibleClassifiersScope == null) {
+      return new EmptyScope();
+    }
+    return new FilteringScope(visibleClassifiersScope) {
       @Override
       public boolean isExcluded(SNode node) {
         if (SetSequence.fromSet(enclosingClassifierAncestors).contains(node)) {

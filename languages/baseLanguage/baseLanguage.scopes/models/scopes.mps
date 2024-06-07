@@ -4508,6 +4508,42 @@
           </node>
         </node>
         <node concept="3clFbH" id="7NB0385wmTy" role="3cqZAp" />
+        <node concept="3cpWs8" id="5LKYMd6N72I" role="3cqZAp">
+          <node concept="3cpWsn" id="5LKYMd6N72J" role="3cpWs9">
+            <property role="TrG5h" value="visibleClassifiersScope" />
+            <node concept="3uibUv" id="5LKYMd6N3Ur" role="1tU5fm">
+              <ref role="3uigEE" to="o8zo:3fifI_xCtN$" resolve="Scope" />
+            </node>
+            <node concept="2YIFZM" id="5LKYMd6N72K" role="33vP2m">
+              <ref role="1Pybhc" node="7mWjQkQg3ix" resolve="ClassifierScopes" />
+              <ref role="37wK5l" node="7mWjQkQg3iP" resolve="getVisibleClassifiersScope" />
+              <node concept="37vLTw" id="5LKYMd6N72L" role="37wK5m">
+                <ref role="3cqZAo" node="7NB0385wmQC" resolve="contextNode" />
+              </node>
+              <node concept="3clFbT" id="5LKYMd6N72M" role="37wK5m">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="5LKYMd6NbLU" role="3cqZAp">
+          <node concept="3clFbS" id="5LKYMd6NbLW" role="3clFbx">
+            <node concept="3cpWs6" id="5LKYMd6NejY" role="3cqZAp">
+              <node concept="2ShNRf" id="5LKYMd6Nfkv" role="3cqZAk">
+                <node concept="1pGfFk" id="5LKYMd6NjHA" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="o8zo:7ipADkTfAzT" resolve="EmptyScope" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="5LKYMd6Nd8j" role="3clFbw">
+            <node concept="10Nm6u" id="5LKYMd6NdIy" role="3uHU7w" />
+            <node concept="37vLTw" id="5LKYMd6NcrP" role="3uHU7B">
+              <ref role="3cqZAo" node="5LKYMd6N72J" resolve="visibleClassifiersScope" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="7NB0385wmQP" role="3cqZAp">
           <node concept="2ShNRf" id="7NB0385wmQQ" role="3clFbG">
             <node concept="YeOm9" id="7NB0385wmRh" role="2ShVmc">
@@ -4515,15 +4551,8 @@
                 <property role="2bfB8j" value="true" />
                 <ref role="1Y3XeK" to="o8zo:3rV3sBXetA0" resolve="FilteringScope" />
                 <ref role="37wK5l" to="o8zo:3rV3sBXetA2" resolve="FilteringScope" />
-                <node concept="2YIFZM" id="17WpDCZl6BI" role="37wK5m">
-                  <ref role="1Pybhc" node="7mWjQkQg3ix" resolve="ClassifierScopes" />
-                  <ref role="37wK5l" node="7mWjQkQg3iP" resolve="getVisibleClassifiersScope" />
-                  <node concept="37vLTw" id="2BHiRxgm60a" role="37wK5m">
-                    <ref role="3cqZAo" node="7NB0385wmQC" resolve="contextNode" />
-                  </node>
-                  <node concept="3clFbT" id="17WpDCZl6BK" role="37wK5m">
-                    <property role="3clFbU" value="true" />
-                  </node>
+                <node concept="37vLTw" id="5LKYMd6N72N" role="37wK5m">
+                  <ref role="3cqZAo" node="5LKYMd6N72J" resolve="visibleClassifiersScope" />
                 </node>
                 <node concept="3clFb_" id="7NB0385wmRk" role="jymVt">
                   <property role="1EzhhJ" value="false" />
