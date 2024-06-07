@@ -9,6 +9,7 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
 import java.util.List;
 import java.io.File;
+import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -52,7 +53,7 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
       if (projectDirectories.size() > 1) {
         myWorkerCallback.error("only one project directory can be specified", new IllegalStateException());
       }
-      config = config.withProperty("mps.test.project.path", projectDirectories.get(0).getAbsolutePath());
+      config = config.withSystemProperty(SystemProperties.PROJECT_PATH, projectDirectories.get(0).getAbsolutePath());
     }
     return config;
   }

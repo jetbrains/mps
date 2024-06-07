@@ -651,9 +651,10 @@
                     <ref role="3cqZAo" node="3mL9Y7r1Cnm" resolve="config" />
                   </node>
                   <node concept="liA8E" id="3mL9Y7r1JiL" role="2OqNvi">
-                    <ref role="37wK5l" to="4u8o:15ZFihwSBZV" resolve="withProperty" />
-                    <node concept="Xl_RD" id="3mL9Y7r1Jj2" role="37wK5m">
-                      <property role="Xl_RC" value="mps.test.project.path" />
+                    <ref role="37wK5l" to="4u8o:15ZFihwSBZV" resolve="withSystemProperty" />
+                    <node concept="10M0yZ" id="5qUkJhvp8JU" role="37wK5m">
+                      <ref role="3cqZAo" to="4u8o:5qUkJhvm5dl" resolve="PROJECT_PATH" />
+                      <ref role="1PxDUh" to="4u8o:5qUkJhvm4Q_" resolve="SystemProperties" />
                     </node>
                     <node concept="2OqwBi" id="7CPkROrufwj" role="37wK5m">
                       <node concept="2OqwBi" id="7CPkROru8ub" role="2Oq$k0">

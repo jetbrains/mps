@@ -21022,8 +21022,9 @@
             <node concept="2YIFZM" id="6US8dKoOFxO" role="37vLTx">
               <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
               <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-              <node concept="Xl_RD" id="6US8dKoOFxP" role="37wK5m">
-                <property role="Xl_RC" value="mps.test.project.path" />
+              <node concept="10M0yZ" id="5qUkJhvprPd" role="37wK5m">
+                <ref role="3cqZAo" to="4u8o:5qUkJhvm5dl" resolve="PROJECT_PATH" />
+                <ref role="1PxDUh" to="4u8o:5qUkJhvm4Q_" resolve="SystemProperties" />
               </node>
             </node>
           </node>

@@ -33,11 +33,11 @@
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
-      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
-        <property id="1070475926801" name="value" index="Xl_RC" />
-      </concept>
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
+      </concept>
+      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
+        <reference id="1144433057691" name="classifier" index="1PxDUh" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
@@ -186,9 +186,10 @@
                                 <ref role="3cqZAo" node="4rQ9_5eeUMU" resolve="testSession" />
                               </node>
                               <node concept="liA8E" id="15ZFihwTHXR" role="2OqNvi">
-                                <ref role="37wK5l" to="4u8o:15ZFihwSubz" resolve="getProperty" />
-                                <node concept="Xl_RD" id="15ZFihwTHXS" role="37wK5m">
-                                  <property role="Xl_RC" value="mps.test.project.path" />
+                                <ref role="37wK5l" to="4u8o:15ZFihwSubz" resolve="getSystemProperty" />
+                                <node concept="10M0yZ" id="5qUkJhvoEQa" role="37wK5m">
+                                  <ref role="3cqZAo" to="4u8o:5qUkJhvm5dl" resolve="PROJECT_PATH" />
+                                  <ref role="1PxDUh" to="4u8o:5qUkJhvm4Q_" resolve="SystemProperties" />
                                 </node>
                               </node>
                             </node>
@@ -281,9 +282,10 @@
                       <ref role="3cqZAo" node="4rQ9_5eeUN2" resolve="testSession" />
                     </node>
                     <node concept="liA8E" id="15ZFihwTI$b" role="2OqNvi">
-                      <ref role="37wK5l" to="4u8o:15ZFihwSubz" resolve="getProperty" />
-                      <node concept="Xl_RD" id="15ZFihwTI$c" role="37wK5m">
-                        <property role="Xl_RC" value="mps.test.project.path" />
+                      <ref role="37wK5l" to="4u8o:15ZFihwSubz" resolve="getSystemProperty" />
+                      <node concept="10M0yZ" id="5qUkJhvoD9k" role="37wK5m">
+                        <ref role="3cqZAo" to="4u8o:5qUkJhvm5dl" resolve="PROJECT_PATH" />
+                        <ref role="1PxDUh" to="4u8o:5qUkJhvm4Q_" resolve="SystemProperties" />
                       </node>
                     </node>
                   </node>

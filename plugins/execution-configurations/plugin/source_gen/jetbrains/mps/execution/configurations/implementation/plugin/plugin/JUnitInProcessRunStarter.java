@@ -22,6 +22,7 @@ import jetbrains.mps.baseLanguage.unitTest.execution.server.NodeWrappersTestsCon
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.JUnit5TestExecutor;
 import jetbrains.mps.baseLanguage.unitTest.execution.server.JUnit5InprocessTestsContributor;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
+import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
 import com.intellij.execution.process.ProcessHandler;
@@ -58,7 +59,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
 
         @Override
         protected void executeSafe() throws Throwable {
-          TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, inProcessEnv).withProperty("mps.test.project.path", ((MPSProject) mpsProject).getProject().getPresentableUrl());
+          TestSessionConfig sessionConfig = new TestSessionConfig().withAccessory(Environment.class, inProcessEnv).withSystemProperty(SystemProperties.PROJECT_PATH, ((MPSProject) mpsProject).getProject().getPresentableUrl());
           TestSession testSession = TestPlatform.getInstance().openSession(sessionConfig);
           try {
             super.executeSafe();

@@ -3693,7 +3693,7 @@
     </node>
     <node concept="2tJIrI" id="15ZFihwStyd" role="jymVt" />
     <node concept="3clFb_" id="15ZFihwSubz" role="jymVt">
-      <property role="TrG5h" value="getProperty" />
+      <property role="TrG5h" value="getSystemProperty" />
       <node concept="37vLTG" id="15ZFihwS__6" role="3clF46">
         <property role="TrG5h" value="key" />
         <node concept="17QB3L" id="15ZFihwS_Vs" role="1tU5fm" />
@@ -3927,7 +3927,7 @@
     </node>
     <node concept="2tJIrI" id="15ZFihwSBvA" role="jymVt" />
     <node concept="3clFb_" id="15ZFihwSBZV" role="jymVt">
-      <property role="TrG5h" value="withProperty" />
+      <property role="TrG5h" value="withSystemProperty" />
       <node concept="37vLTG" id="15ZFihwSCQL" role="3clF46">
         <property role="TrG5h" value="key" />
         <node concept="17QB3L" id="15ZFihwSD11" role="1tU5fm" />
@@ -4018,6 +4018,51 @@
           </node>
         </node>
         <node concept="1dT_AC" id="642Zr9K_Q7y" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="312cEu" id="5qUkJhvm4Q_">
+    <property role="TrG5h" value="SystemProperties" />
+    <node concept="2tJIrI" id="5qUkJhvm56c" role="jymVt" />
+    <node concept="Wx3nA" id="5qUkJhvm5dl" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="PROJECT_PATH" />
+      <node concept="17QB3L" id="5qUkJhvm5f_" role="1tU5fm" />
+      <node concept="3Tm1VV" id="5qUkJhvm5dn" role="1B3o_S" />
+      <node concept="Xl_RD" id="5qUkJhvm5h5" role="33vP2m">
+        <property role="Xl_RC" value="mps.test.project.path" />
+      </node>
+      <node concept="z59LJ" id="5qUkJhvm5ob" role="lGtFl">
+        <node concept="TZ5HA" id="5qUkJhvm5oc" role="TZ5H$">
+          <node concept="1dT_AC" id="5qUkJhvm5od" role="1dT_Ay">
+            <property role="1dT_AB" value="Can be used to pass the URL (filesystem path) of the project to open." />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="5qUkJhvm56h" role="jymVt" />
+    <node concept="3Tm1VV" id="5qUkJhvm4QA" role="1B3o_S" />
+    <node concept="3UR2Jj" id="5qUkJhvm4UT" role="lGtFl">
+      <node concept="TZ5HA" id="5qUkJhvm4UU" role="TZ5H$">
+        <node concept="1dT_AC" id="5qUkJhvm4UV" role="1dT_Ay">
+          <property role="1dT_AB" value="Defines the system property keys that are used internally by the test platform. " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="5qUkJhvm5sj" role="TZ5H$">
+        <node concept="1dT_AC" id="5qUkJhvm5sk" role="1dT_Ay">
+          <property role="1dT_AB" value="&lt;p&gt;See " />
+        </node>
+        <node concept="1dT_AA" id="5qUkJhvm5uM" role="1dT_Ay">
+          <node concept="92FcH" id="5qUkJhvm5vB" role="qph3F">
+            <node concept="TZ5HA" id="5qUkJhvm5vD" role="2XjZqd" />
+            <node concept="VXe0Z" id="5qUkJhvm5Ud" role="92FcQ">
+              <ref role="VXe0S" node="15ZFihwSubz" resolve="getSystemProperty" />
+            </node>
+          </node>
+        </node>
+        <node concept="1dT_AC" id="5qUkJhvm5uL" role="1dT_Ay">
           <property role="1dT_AB" value="" />
         </node>
       </node>

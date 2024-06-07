@@ -39,7 +39,7 @@ public class TestSession {
    * Instead of calling directly {@code System.getProperty()}, this method should be used, which 
    * delegates to {@link java.lang.System } for properties that are not defined for this session.
    */
-  public String getProperty(String key) {
+  public String getSystemProperty(String key) {
     if (myProperties.containsKey(key)) {
       return myProperties.get(key);
     }

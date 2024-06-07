@@ -31,7 +31,7 @@ public class TestSessionConfig {
   /**
    * Set a value for a system property that needs to be overridden.
    */
-  public TestSessionConfig withProperty(String key, String property) {
+  public TestSessionConfig withSystemProperty(String key, String property) {
     if (property != null) {
       myProperties.put(key, property);
     }
