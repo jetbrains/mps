@@ -339,7 +339,22 @@
       <node concept="22LTRM" id="30QAtkedoZT" role="22LTRK">
         <ref role="22LTRN" node="30QAtkedp05" resolve="jetbrains.mps.execution.impl.tests" />
       </node>
-      <node concept="22LTRF" id="2LuGVbI_FC_" role="22LTRK">
+    </node>
+    <node concept="22LTRH" id="5qUkJhvr$5H" role="1hWBAP">
+      <property role="TrG5h" value="debugger" />
+      <node concept="24cAiW" id="5qUkJhvr$5I" role="24cAkG">
+        <node concept="NbPM2" id="5qUkJhvr$5J" role="XX84c">
+          <node concept="3Mxwew" id="5qUkJhvr$5K" role="3MwsjC">
+            <property role="3MwjfP" value="true" />
+          </node>
+        </node>
+        <node concept="NbPM2" id="5qUkJhvr$5L" role="1psgkv">
+          <node concept="3Mxwew" id="5qUkJhvr$5M" role="3MwsjC">
+            <property role="3MwjfP" value="-Xmx2048m" />
+          </node>
+        </node>
+      </node>
+      <node concept="22LTRF" id="5qUkJhvr$5O" role="22LTRK">
         <ref role="22LTRG" node="2LuGVbI_FmB" resolve="debugger-tests" />
       </node>
     </node>
