@@ -17,6 +17,7 @@ package jetbrains.mps.smodel.constraints;
 
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.scope.ErrorScope;
+import jetbrains.mps.scope.FilterCommentedScope;
 import jetbrains.mps.scope.FilteringByConceptScope;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.language.ConceptRegistryUtil;
@@ -55,6 +56,7 @@ public abstract class ReferenceDescriptor {
    * {@code EvaluateScopeContext} not necessarily support multi-thread operation,
    * don't share the instance among different threads (i.e. {@code getScope(ESC)} call with same ESC instance)
    * unless you provide special implementation.
+   *
    * @param evaluateContext helps to evaluate scope instances effectively
    * @return scope for a reference, could be {@code ErrorScope}
    */
@@ -151,7 +153,11 @@ public abstract class ReferenceDescriptor {
           }
         }
         // global search scope
-        return context.getScopeEvaluationContext().ofNodesDefault(getModel(), myLinkTarget);
+        // `FilterCommentedScope` is not moved in ofNodesDefault as it requires knowing the context node rather than being applicable to the whole model
+        return new FilterCommentedScope(
+            myContextNode,
+            context.getScopeEvaluationContext().ofNodesDefault(myContextNode.getModel(), myLinkTarget)
+        );
       } catch (Exception t) {
         LOG.error(String.format("Context node %s", myContextNode), t);
         return new ErrorScope("can't create search scope for link `" + myReferenceLink + "' in '" + myNodeConcept.getName() + "'", t);

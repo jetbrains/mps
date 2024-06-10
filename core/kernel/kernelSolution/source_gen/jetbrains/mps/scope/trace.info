@@ -15,6 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/16879048186085434">
     <file name="ModelsScope.java">
@@ -217,11 +218,11 @@
       <node id="7799657015830739428" at="88,0,94,0" concept="7" trace="getAdditionalDependencies#()Ljava/util/Collection;" />
       <node id="5811245382203682662" at="107,26,113,7" concept="6" />
       <node id="5811245382203350499" at="122,101,128,5" concept="6" />
-      <node id="3734116213129936013" at="138,55,144,9" concept="15" />
+      <node id="3734116213129936013" at="138,55,144,9" concept="16" />
       <node id="7799657015830858922" at="86,73,94,6" concept="9" />
       <node id="5811245382203350495" at="122,0,131,0" concept="13" trace="getScope#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SContainmentLink;ILorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljetbrains/mps/scope/Scope;" />
       <node id="7799657015830739419" at="86,0,96,0" concept="7" trace="withAdditionalDependencies#(Ljava/util/Collection;)Ljetbrains/mps/scope/Scope;" />
-      <node id="5811245382203682744" at="106,27,116,5" concept="15" />
+      <node id="5811245382203682744" at="106,27,116,5" concept="16" />
       <node id="3734116213129935991" at="136,41,147,7" concept="6" />
       <node id="3734116213129862534" at="135,39,149,5" concept="6" />
       <node id="5811245382203682704" at="104,0,119,0" concept="13" trace="getScope#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljetbrains/mps/scope/Scope;" />
@@ -998,6 +999,41 @@
         <var name="node" id="8401916545537576794" />
       </scope>
       <unit id="8401916545537566967" at="10,0,30,0" name="jetbrains.mps.scope.EmptyScope" />
+    </file>
+  </root>
+  <root nodeRef="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)/8607579606528368776">
+    <file name="FilterCommentedScope.java">
+      <node id="2831685337924389322" at="18,0,19,0" concept="4" trace="excludeCommentedOut" />
+      <node id="2831685337924400637" at="19,72,20,48" concept="15" />
+      <node id="2831685337924374431" at="23,82,24,17" concept="14" />
+      <node id="2831685337924409141" at="24,17,25,51" concept="3" />
+      <node id="2831685337924433726" at="29,41,30,55" concept="9" />
+      <node id="8607579606528390000" at="33,52,34,107" concept="9" />
+      <node id="8607579606528368776" at="38,0,39,0" concept="12" trace="ICommentedOutFromScope$0" />
+      <node id="2831685337924374421" at="19,0,22,0" concept="1" trace="FilterCommentedScope#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/scope/Scope;)V" />
+      <node id="8607579606528389997" at="33,0,36,0" concept="13" trace="isCommentedOut#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="2831685337924387789" at="23,0,27,0" concept="1" trace="FilterCommentedScope#(ZLjetbrains/mps/scope/Scope;)V" />
+      <node id="2831685337924421499" at="28,0,32,0" concept="7" trace="isExcluded#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <scope id="2831685337924374430" at="19,72,20,48" />
+      <scope id="2831685337924421507" at="29,41,30,55" />
+      <scope id="8607579606528389999" at="33,52,34,107" />
+      <scope id="2831685337924387793" at="23,82,25,51" />
+      <scope id="2831685337924374421" at="19,0,22,0">
+        <var name="contextNode" id="2831685337924386518" />
+        <var name="scope" id="2831685337924374427" />
+      </scope>
+      <scope id="8607579606528389997" at="33,0,36,0">
+        <var name="node" id="8607579606528390011" />
+      </scope>
+      <scope id="2831685337924387789" at="23,0,27,0">
+        <var name="excludeCommentedOut" id="2831685337924389863" />
+        <var name="scope" id="2831685337924395475" />
+      </scope>
+      <scope id="2831685337924421499" at="28,0,32,0">
+        <var name="node" id="2831685337924421505" />
+      </scope>
+      <unit id="8607579606528368776" at="37,0,40,0" name="jetbrains.mps.scope.FilterCommentedScope$CONCEPTS" />
+      <unit id="8607579606528368776" at="16,0,41,0" name="jetbrains.mps.scope.FilterCommentedScope" />
     </file>
   </root>
 </debug-info>
