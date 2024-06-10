@@ -16,13 +16,13 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.List;
 import jetbrains.mps.ide.findusages.model.SearchResult;
-import jetbrains.mps.ide.findusages.model.SearchResults;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -57,9 +57,17 @@ public class ReplaceFieldWithProperty extends BaseRefactoring {
     // Direct field usages search
     refactoringContext.setParameter("propResults", FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) refactoringContext.getParameter("node")), projectRepository, "jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder"));
     // Getter usages search
-    refactoringContext.setParameter("getterResults", FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) refactoringContext.getParameter("getterMethod")), projectRepository, "jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder"));
+    if ((((SNode) refactoringContext.getParameter("getterMethod")) != null)) {
+      refactoringContext.setParameter("getterResults", FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) refactoringContext.getParameter("getterMethod")), projectRepository, "jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder"));
+    } else {
+      refactoringContext.setParameter("getterResults", new SearchResults());
+    }
     // Setter usages search
-    refactoringContext.setParameter("setterResults", FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) refactoringContext.getParameter("setterMethod")), projectRepository, "jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder"));
+    if ((((SNode) refactoringContext.getParameter("setterMethod")) != null)) {
+      refactoringContext.setParameter("setterResults", FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) refactoringContext.getParameter("setterMethod")), projectRepository, "jetbrains.mps.lang.structure.findUsages.NodeUsages_Finder"));
+    } else {
+      refactoringContext.setParameter("setterResults", new SearchResults());
+    }
     return true;
   }
   public void refactor(final RefactoringContext refactoringContext) {
