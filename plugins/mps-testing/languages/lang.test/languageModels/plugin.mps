@@ -168,7 +168,7 @@
       </node>
     </node>
     <node concept="1sEMCm" id="46nPloex5BH" role="1fTXyH">
-      <property role="1sEMCp" value="/testing-languages.html" />
+      <property role="1sEMCp" value="testing-languages.html" />
       <ref role="1fZFei" node="46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>

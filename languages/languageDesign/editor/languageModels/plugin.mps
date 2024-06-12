@@ -107,7 +107,7 @@
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />
     </node>
     <node concept="1sEMCm" id="46nPloex5Bp" role="1fTXyH">
-      <property role="1sEMCp" value="/editor.html" />
+      <property role="1sEMCp" value="editor.html" />
       <ref role="1fZFei" node="46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
     <node concept="2tMXy7" id="1vVlZUUzDn_" role="2tMXzP">

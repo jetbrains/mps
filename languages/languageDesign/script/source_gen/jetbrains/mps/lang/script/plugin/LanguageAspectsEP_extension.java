@@ -44,5 +44,5 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
     };
   }
-  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "/scripts.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "scripts.html";
 }

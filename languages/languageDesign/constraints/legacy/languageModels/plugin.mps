@@ -123,7 +123,7 @@
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />
     </node>
     <node concept="1sEMCm" id="46nPloex5Bl" role="1fTXyH">
-      <property role="1sEMCp" value="/constraints.html" />
+      <property role="1sEMCp" value="constraints.html" />
       <ref role="1fZFei" node="46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
     <node concept="T9mpH" id="6GnzfDRiiE6" role="TkT64">

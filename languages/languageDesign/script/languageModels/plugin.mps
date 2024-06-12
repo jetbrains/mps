@@ -86,7 +86,7 @@
       <property role="1iqoE4" value="${module}/icons/scriptsModel.png" />
     </node>
     <node concept="1sEMCm" id="46nPloex5B_" role="1fTXyH">
-      <property role="1sEMCp" value="/scripts.html" />
+      <property role="1sEMCp" value="scripts.html" />
       <ref role="1fZFei" node="46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
   </node>

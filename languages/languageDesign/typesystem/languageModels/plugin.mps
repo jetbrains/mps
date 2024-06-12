@@ -91,7 +91,7 @@
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />
     </node>
     <node concept="1sEMCm" id="46nPloex5BF" role="1fTXyH">
-      <property role="1sEMCp" value="/typesystem.html" />
+      <property role="1sEMCp" value="typesystem.html" />
       <ref role="1fZFei" node="46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
     <node concept="T9mpH" id="33Cba0CiJUp" role="TkT64">

@@ -101,7 +101,7 @@
       <ref role="2vPcib" to="tpcc:264$spPfYX1" resolve="MPSAspects" />
     </node>
     <node concept="1sEMCm" id="46nPloex5Bv" role="1fTXyH">
-      <property role="1sEMCp" value="/migrations.html" />
+      <property role="1sEMCp" value="migrations.html" />
       <ref role="1fZFei" node="46nPloez0vX" resolve="HelpCenterDocUrl" />
     </node>
     <node concept="T9mpH" id="4frscTR3lsn" role="TkT64">
