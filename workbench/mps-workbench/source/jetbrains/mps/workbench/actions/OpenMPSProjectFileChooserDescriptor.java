@@ -26,7 +26,7 @@ import javax.swing.Icon;
 
 public class OpenMPSProjectFileChooserDescriptor extends FileChooserDescriptor {
   public OpenMPSProjectFileChooserDescriptor(boolean chooseFiles) {
-    super(chooseFiles, true, chooseFiles, chooseFiles, false, false);
+    super(chooseFiles, true, chooseFiles, chooseFiles, false, true);
   }
 
   @Override
