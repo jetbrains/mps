@@ -259,12 +259,16 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      return false;
+    protected boolean containsSObject(SObject sObject) {
+      return sObject.testIfHasSModel(this::containsSModel);
     }
 
-    @Override
-    protected boolean containsSObject(SObject sObject) {
+    private boolean containsSModel(SModel model) {
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Language) {
+        return ProjectHelper.fromIdeaProject(getProject()).getModelAccess()
+                            .computeReadAction(() -> ((Language) parentValue).getUtilModels().contains(model));
+      }
       return false;
     }
 
