@@ -29,10 +29,6 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.nodeEditor.SearchHistoryComponent</implementation-class>
-    </component>
-
-    <component>
       <implementation-class>jetbrains.mps.nodeEditor.InspectorTool</implementation-class>
     </component>
 
@@ -57,6 +53,8 @@
     <projectService serviceImplementation="jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintSettingsComponent" />
     <projectService serviceImplementation="jetbrains.mps.ide.editor.EditorTrackService" />
     <projectService serviceImplementation="jetbrains.mps.nodeEditor.documentation.MPSDocumentationToolWindowManager"/>
+
+    <projectService serviceInterface="jetbrains.mps.ide.search.SearchHistoryStorage" serviceImplementation="jetbrains.mps.nodeEditor.SearchHistoryComponent"/>
 
     <fileEditorProvider implementation="jetbrains.mps.ide.editor.MPSFileNodeEditorProvider"/>
 
