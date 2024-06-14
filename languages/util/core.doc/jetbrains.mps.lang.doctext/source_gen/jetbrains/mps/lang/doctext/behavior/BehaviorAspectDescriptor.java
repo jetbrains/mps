@@ -13,7 +13,6 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
   private final BHDescriptor myDocText__BehaviorDescriptor = new DocText__BehaviorDescriptor();
-  private final BHDescriptor myTextNodeReference__BehaviorDescriptor = new TextNodeReference__BehaviorDescriptor();
 
   public BehaviorAspectDescriptor() {
   }
@@ -24,11 +23,9 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
     switch (conceptIndex.index(cncpt)) {
       case 0:
         return myDocText__BehaviorDescriptor;
-      case 1:
-        return myTextNodeReference__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L), MetaIdFactory.conceptId(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0x6cc063b139472ce7L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L)).seal();
 }

@@ -84,8 +84,9 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 5:
         if (true) {
           // concept
-          intentions = new IntentionFactory[1];
+          intentions = new IntentionFactory[2];
           intentions[0] = new ConvertToNodeWrapperElement_Intention();
+          intentions[1] = new ConvertToTextNodeReference_Intention();
         }
         break;
       default:
@@ -97,7 +98,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[21];
+    IntentionFactory[] rv = new IntentionFactory[22];
     rv[0] = new InsertNodeWrapper_Intention();
     rv[1] = new ConvertToParagraphs_Intention();
     rv[2] = new InsertUrlIntoParagraph_Intention();
@@ -119,6 +120,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[18] = new ConvertToHeader5_Intention();
     rv[19] = new ConvertToHeader6_Intention();
     rv[20] = new ConvertToNodeWrapperElement_Intention();
+    rv[21] = new ConvertToTextNodeReference_Intention();
     return Arrays.asList(rv);
   }
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L)).seal();

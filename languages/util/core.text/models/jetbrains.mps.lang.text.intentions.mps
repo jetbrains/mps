@@ -2991,5 +2991,53 @@
       </node>
     </node>
   </node>
+  <node concept="2S6QgY" id="3baUqW8a4nQ">
+    <property role="3GE5qa" value="doc" />
+    <property role="TrG5h" value="ConvertToTextNodeReference" />
+    <ref role="2ZfgGC" to="zqge:8D0iRqSPW4" resolve="Word" />
+    <node concept="2S6ZIM" id="3baUqW8a4nR" role="2ZfVej">
+      <node concept="3clFbS" id="3baUqW8a4nS" role="2VODD2">
+        <node concept="3clFbF" id="3baUqW8a4D4" role="3cqZAp">
+          <node concept="Xl_RD" id="3baUqW8a4D3" role="3clFbG">
+            <property role="Xl_RC" value="Create Text Node Reference" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2Sbjvc" id="3baUqW8a4nT" role="2ZfgGD">
+      <node concept="3clFbS" id="3baUqW8a4nU" role="2VODD2">
+        <node concept="3clFbF" id="3baUqW8ac0I" role="3cqZAp">
+          <node concept="2OqwBi" id="3baUqW8ac0J" role="3clFbG">
+            <node concept="2Sf5sV" id="3baUqW8ac0K" role="2Oq$k0" />
+            <node concept="2DeJnW" id="3baUqW8ac0L" role="2OqNvi">
+              <ref role="1_rbq0" to="zqge:6N0oV4ThMNB" resolve="TextNodeReference" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2SaL7w" id="3baUqW8a7Sc" role="2ZfVeh">
+      <node concept="3clFbS" id="3baUqW8a7Sd" role="2VODD2">
+        <node concept="3clFbF" id="3baUqW8a85T" role="3cqZAp">
+          <node concept="3clFbC" id="3baUqW8a85U" role="3clFbG">
+            <node concept="3cmrfG" id="3baUqW8a85V" role="3uHU7w">
+              <property role="3cmrfH" value="0" />
+            </node>
+            <node concept="2OqwBi" id="3baUqW8a85W" role="3uHU7B">
+              <node concept="2OqwBi" id="3baUqW8a85X" role="2Oq$k0">
+                <node concept="2Sf5sV" id="3baUqW8a85Y" role="2Oq$k0" />
+                <node concept="3TrcHB" id="3baUqW8a85Z" role="2OqNvi">
+                  <ref role="3TsBF5" to="zqge:8D0iRqSPW5" resolve="value" />
+                </node>
+              </node>
+              <node concept="liA8E" id="3baUqW8a860" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~String.length()" resolve="length" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 

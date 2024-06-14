@@ -13,6 +13,7 @@
     <import index="f4zo" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.cells(MPS.Editor/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -6413,6 +6414,34 @@
       </node>
       <node concept="10P_77" id="6pDt4TARHdm" role="3clF45" />
       <node concept="3Tm1VV" id="6pDt4TARHdn" role="1B3o_S" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="6N0oV4ThUeH">
+    <property role="3GE5qa" value="doc" />
+    <ref role="13h7C2" to="zqge:6N0oV4ThMNB" resolve="TextNodeReference" />
+    <node concept="13i0hz" id="6N0oV4ThUhC" role="13h7CS">
+      <property role="TrG5h" value="getTextualRepresentation" />
+      <ref role="13i0hy" node="fB3l81it7u" resolve="getTextualRepresentation" />
+      <node concept="3Tm1VV" id="6N0oV4ThUhD" role="1B3o_S" />
+      <node concept="3clFbS" id="6N0oV4ThUhE" role="3clF47">
+        <node concept="3clFbF" id="6N0oV4ThUhF" role="3cqZAp">
+          <node concept="2OqwBi" id="2jcE11Zzsrw" role="3clFbG">
+            <node concept="2OqwBi" id="2jcE11Zzqat" role="2Oq$k0">
+              <node concept="13iPFW" id="2jcE11ZzpYr" role="2Oq$k0" />
+              <node concept="3TrEf2" id="2jcE11Zzs1e" role="2OqNvi">
+                <ref role="3Tt5mk" to="zqge:rh3Y2YeW$V" />
+              </node>
+            </node>
+            <node concept="3TrcHB" id="2jcE11ZzsEW" role="2OqNvi">
+              <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="17QB3L" id="6N0oV4ThUhQ" role="3clF45" />
+    </node>
+    <node concept="13hLZK" id="6N0oV4ThUeI" role="13h7CW">
+      <node concept="3clFbS" id="6N0oV4ThUeJ" role="2VODD2" />
     </node>
   </node>
 </model>
