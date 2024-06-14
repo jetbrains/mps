@@ -15,19 +15,15 @@
  */
 package jetbrains.mps.ide.editor.warningPanel;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ProjectComponent;
-import com.intellij.openapi.extensions.Extensions;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vcs.FileStatusListener;
-import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
@@ -63,16 +59,18 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class MPSEditorWarningsManager implements ProjectComponent {
+public class MPSEditorWarningsManager implements Disposable {
 
   private final MPSProject myProject;
   private ClassLoaderManager myClassLoaderManager;
   private final DeployListener myClassesListener = new EditorWarningsListenerAdapter();
-  private final MyFileStatusListener myFileStatusListener = new MyFileStatusListener();
-  private MessageBusConnection myProjectBus;
   // I don't truly need atomic boolean here, regular boolean would suffice in most cases, as requests generally come
   // from same thread sequentially (e.g. modelLoaded). Nevertheless, it doesn't hurt to account for more complicated scenario.
   private final AtomicBoolean myScheduledUpdateAllWarnings = new AtomicBoolean(false);
+
+  public static MPSEditorWarningsManager getInstance(Project ideaProject) {
+    return ideaProject.getService(MPSEditorWarningsManager.class);
+  }
 
   private final SRepositoryContentAdapter myRepoListener = new SRepositoryContentAdapter() {
     @Override
@@ -112,24 +110,15 @@ public class MPSEditorWarningsManager implements ProjectComponent {
   public MPSEditorWarningsManager(Project ideaProject) {
     myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
     myClassLoaderManager = MPSCoreComponents.getInstance().getClassLoaderManager();
-  }
-
-  @Override
-  public void projectOpened() {
-    myProjectBus = myProject.getProject().getMessageBus().connect();
-    myProjectBus.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new MyFileEditorManagerListener());
     myClassLoaderManager.addListener(myClassesListener);
-    // TODO: What disposable to use?
-    FileStatusManager.getInstance(myProject.getProject()).addFileStatusListener(myFileStatusListener, myProject.getProject());
     new RepoListenerRegistrar(myProject.getRepository(), myRepoListener).attach();
   }
 
   @Override
-  public void projectClosed() {
+  public void dispose() {
     new RepoListenerRegistrar(myProject.getRepository(), myRepoListener).detach();
     myClassLoaderManager.removeListener(myClassesListener);
     myClassLoaderManager = null;
-    myProjectBus.disconnect();
   }
 
   private void updateWarnings(@NotNull final MPSFileNodeEditor editor) {
@@ -236,8 +225,17 @@ public class MPSEditorWarningsManager implements ProjectComponent {
     }
   }
 
-  private class MyFileEditorManagerListener implements FileEditorManagerListener {
-    /*package*/ MyFileEditorManagerListener() {
+  /*package*/ void forgetAllExcept(List<FileEditor> list) {
+    // FIXME ugly API
+    myWarnings.keySet().retainAll(list);
+  }
+
+
+  public static class EditorManagerListener implements FileEditorManagerListener {
+    private final Project myProject;
+
+    public EditorManagerListener(Project ideaProject) {
+      myProject = ideaProject;
     }
 
     @Override
@@ -246,7 +244,7 @@ public class MPSEditorWarningsManager implements ProjectComponent {
       if (file instanceof MPSNodeVirtualFile) {
         for (FileEditor fe : source.getEditors(file)) {
           if (fe instanceof MPSFileNodeEditor) {
-            updateWarnings((MPSFileNodeEditor) fe);
+            getInstance(myProject).updateWarnings((MPSFileNodeEditor) fe);
           }
         }
       }
@@ -254,12 +252,12 @@ public class MPSEditorWarningsManager implements ProjectComponent {
 
     @Override
     public void fileClosed(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
-      myWarnings.keySet().retainAll(Arrays.asList(source.getAllEditors()));
+      getInstance(myProject).forgetAllExcept(Arrays.asList(source.getAllEditors()));
     }
 
     @Override
     public void selectionChanged(@NotNull FileEditorManagerEvent event) {
-      updateAllWarnings();
+      getInstance(myProject).updateAllWarnings();
     }
   }
 
@@ -270,15 +268,21 @@ public class MPSEditorWarningsManager implements ProjectComponent {
     }
   }
 
-  private class MyFileStatusListener implements FileStatusListener {
+  public static class FileStatusListener implements com.intellij.openapi.vcs.FileStatusListener {
+    private final Project myProject;
+
+    public FileStatusListener(Project ideaProject) {
+      myProject = ideaProject;
+    }
+
     @Override
     public void fileStatusChanged(@NotNull final VirtualFile virtualFile) {
-      updateAllWarnings(virtualFile);
+      getInstance(myProject).updateAllWarnings(virtualFile);
     }
 
     @Override
     public void fileStatusesChanged() {
-      updateAllWarnings();
+      getInstance(myProject).updateAllWarnings();
     }
   }
 }
