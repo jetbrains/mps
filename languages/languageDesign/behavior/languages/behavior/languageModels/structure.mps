@@ -93,6 +93,9 @@
     <node concept="PrWs8" id="y4kaOHAq9B" role="PzmwI">
       <ref role="PrY4T" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />
     </node>
+    <node concept="PrWs8" id="3baUqW6So68" role="PzmwI">
+      <ref role="PrY4T" to="tpce:6OtXG9K2KUI" resolve="DocumentationObjective" />
+    </node>
     <node concept="1TJgyj" id="hP3h7Gv" role="1TKVEi">
       <property role="20kJfa" value="concept" />
       <property role="IQ2ns" value="1225194240799" />
@@ -124,6 +127,9 @@
     <property role="3GE5qa" value="" />
     <property role="EcuMT" value="1225194413805" />
     <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+    <node concept="PrWs8" id="3baUqW6TUzD" role="PzmwI">
+      <ref role="PrY4T" to="tpce:6OtXG9K2KUI" resolve="DocumentationObjective" />
+    </node>
   </node>
   <node concept="1TIwiD" id="hP3i0lY">
     <property role="TrG5h" value="ConceptMethodDeclaration" />
@@ -160,6 +166,9 @@
     </node>
     <node concept="PrWs8" id="hP3i0m3" role="PzmwI">
       <ref role="PrY4T" to="tpee:h9B3isZ" resolve="IVisible" />
+    </node>
+    <node concept="PrWs8" id="3baUqW6VqNK" role="PzmwI">
+      <ref role="PrY4T" to="tpce:6OtXG9K2KUI" resolve="DocumentationObjective" />
     </node>
   </node>
   <node concept="1TIwiD" id="hP3iAlo">
