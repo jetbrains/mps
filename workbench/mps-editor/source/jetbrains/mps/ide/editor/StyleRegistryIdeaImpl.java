@@ -76,12 +76,6 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
    */
   @SuppressWarnings("UseJBColor")
   private void fillCustomStyles() {
-    StyleImpl da = new StyleImpl();
-    final Color cc = isDarkTheme() ? Color.GREEN : Color.RED;
-    // logic for new color taken from DeletionApproverImpl
-    da.set(StyleAttributes.TEXT_BACKGROUND_COLOR, new Color(cc.getRed(), cc.getGreen(), cc.getBlue(), cc.getAlpha() / 5));
-    setStyle("DELETION_APPROVER", da);
-
     final StyleImpl sc = new StyleImpl();
     sc.set(StyleAttributes.TEXT_COLOR, getEditorForeground());
     final JBColor bg = new JBColor(new Color(235, 244, 254), new Color(0x141D29));

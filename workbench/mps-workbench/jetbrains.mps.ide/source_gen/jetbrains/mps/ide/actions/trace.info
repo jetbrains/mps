@@ -4897,15 +4897,30 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/227146524086772103">
     <file name="HighlightConstants.java">
-      <node id="227146524086772109" at="11,0,12,0" concept="16" trace="DEPENDENCY_COLOR" />
-      <node id="227146524086772119" at="12,0,13,0" concept="16" trace="NODE_COLOR" />
-      <node id="227146524086812310" at="13,0,14,0" concept="16" trace="INSTANCES_COLOR" />
-      <node id="5533671870987185443" at="14,0,15,0" concept="16" trace="USAGES_COLOR" />
-      <node id="6710380512701234015" at="15,0,16,0" concept="16" trace="ANCESTOR_COLOR" />
-      <node id="5249055041137750162" at="16,0,18,0" concept="3" trace="HighlightConstants#()V" />
-      <scope id="5249055041137750164" at="16,31,16,31" />
-      <scope id="5249055041137750162" at="16,0,18,0" />
-      <unit id="227146524086772103" at="9,0,19,0" name="jetbrains.mps.ide.actions.HighlightConstants" />
+      <node id="227146524086812310" at="15,0,16,0" concept="16" trace="INSTANCES_COLOR" />
+      <node id="6710380512701234015" at="16,0,17,0" concept="16" trace="ANCESTOR_COLOR" />
+      <node id="7817278991233435916" at="19,57,20,101" concept="12" />
+      <node id="7817278991233435922" at="20,101,21,98" concept="12" />
+      <node id="7817278991233435929" at="21,98,22,43" concept="13" />
+      <node id="7817278991233437625" at="24,63,25,101" concept="12" />
+      <node id="7817278991233437631" at="25,101,26,104" concept="12" />
+      <node id="7817278991233437638" at="26,104,27,43" concept="13" />
+      <node id="5249055041137750162" at="17,0,19,0" concept="3" trace="HighlightConstants#()V" />
+      <node id="7817278991233435914" at="19,0,24,0" concept="17" trace="getSearchResultsBackgroundColor#()Ljava/awt/Color;" />
+      <node id="7817278991233437623" at="24,0,29,0" concept="17" trace="getSearchResultsSourceBackgroundColor#()Ljava/awt/Color;" />
+      <scope id="5249055041137750164" at="17,31,17,31" />
+      <scope id="5249055041137750162" at="17,0,19,0" />
+      <scope id="7817278991233435915" at="19,57,22,43">
+        <var name="attributes" id="7817278991233435923" />
+        <var name="globalScheme" id="7817278991233435917" />
+      </scope>
+      <scope id="7817278991233437624" at="24,63,27,43">
+        <var name="attributes" id="7817278991233437632" />
+        <var name="globalScheme" id="7817278991233437626" />
+      </scope>
+      <scope id="7817278991233435914" at="19,0,24,0" />
+      <scope id="7817278991233437623" at="24,0,29,0" />
+      <unit id="227146524086772103" at="13,0,30,0" name="jetbrains.mps.ide.actions.HighlightConstants" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/227146524086812204">
@@ -8463,9 +8478,9 @@
       <node id="5533671870987099312" at="85,118,86,101" concept="12" />
       <node id="5533671870987100177" at="86,101,87,202" concept="12" />
       <node id="5533671870987100196" at="87,202,88,88" concept="12" />
-      <node id="5533671870987185434" at="90,24,91,98" concept="6" />
+      <node id="5533671870987185434" at="90,24,91,127" concept="6" />
       <node id="2372163530067851552" at="93,122,94,45" concept="6" />
-      <node id="5533671870987188816" at="100,26,101,121" concept="6" />
+      <node id="5533671870987188816" at="100,26,101,142" concept="6" />
       <node id="2372163530067851571" at="103,149,104,47" concept="6" />
       <node id="5533671870987188795" at="108,7,109,57" concept="6" />
       <node id="5533671870987003804" at="47,95,50,5" concept="10" />
@@ -8499,9 +8514,9 @@
       <scope id="8898893144448210438" at="62,22,63,21" />
       <scope id="8898893144448210494" at="68,22,69,21" />
       <scope id="5938312768543415172" at="74,22,75,21" />
-      <scope id="5533671870987170545" at="90,24,91,98" />
+      <scope id="5533671870987170545" at="90,24,91,127" />
       <scope id="2372163530067851544" at="93,122,94,45" />
-      <scope id="5533671870987188808" at="100,26,101,121" />
+      <scope id="5533671870987188808" at="100,26,101,142" />
       <scope id="2372163530067851570" at="103,149,104,47" />
       <scope id="2372163530067851541" at="92,16,95,11">
         <var name="message" id="2372163530067851542" />

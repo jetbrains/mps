@@ -5002,9 +5002,9 @@
                             <ref role="37wK5l" to="f4zo:~EditorCell.getSNode()" resolve="getSNode" />
                           </node>
                         </node>
-                        <node concept="10M0yZ" id="2jM9X_IgWTt" role="37wK5m">
-                          <ref role="1PxDUh" to="tprs:cAZ8XCa267" resolve="HighlightConstants" />
-                          <ref role="3cqZAo" to="tprs:cAZ8XCa26n" resolve="NODE_COLOR" />
+                        <node concept="2YIFZM" id="2ZCExIdsniv" role="37wK5m">
+                          <ref role="37wK5l" to="tprs:6LWztcA_WYR" resolve="getWriteSearchResultsBackgroundColor" />
+                          <ref role="1Pybhc" to="tprs:cAZ8XCa267" resolve="HighlightConstants" />
                         </node>
                         <node concept="Xl_RD" id="2jM9X_IgWTu" role="37wK5m">
                           <property role="Xl_RC" value="node" />
@@ -5060,9 +5060,9 @@
                                 <node concept="2GrUjf" id="2jM9X_IgWTP" role="37wK5m">
                                   <ref role="2Gs0qQ" node="2jM9X_IgWTJ" resolve="node" />
                                 </node>
-                                <node concept="10M0yZ" id="2jM9X_IgWTQ" role="37wK5m">
-                                  <ref role="1PxDUh" to="tprs:cAZ8XCa267" resolve="HighlightConstants" />
-                                  <ref role="3cqZAo" to="tprs:cAZ8XCa26d" resolve="DEPENDENCY_COLOR" />
+                                <node concept="2YIFZM" id="1Ufo6LAFtc2" role="37wK5m">
+                                  <ref role="37wK5l" to="tprs:6LWztcA_W$a" resolve="getSearchResultsBackgroundColor" />
+                                  <ref role="1Pybhc" to="tprs:cAZ8XCa267" resolve="HighlightConstants" />
                                 </node>
                                 <node concept="Xl_RD" id="2jM9X_IgWTR" role="37wK5m">
                                   <property role="Xl_RC" value="usage" />
@@ -5155,9 +5155,9 @@
                                     <node concept="37vLTw" id="3wEhGj$ue72" role="37wK5m">
                                       <ref role="3cqZAo" node="3wEhGj$udj1" resolve="tgt" />
                                     </node>
-                                    <node concept="10M0yZ" id="2jM9X_IgWUo" role="37wK5m">
-                                      <ref role="1PxDUh" to="tprs:cAZ8XCa267" resolve="HighlightConstants" />
-                                      <ref role="3cqZAo" to="tprs:cAZ8XCa26d" resolve="DEPENDENCY_COLOR" />
+                                    <node concept="2YIFZM" id="1Ufo6LAFtGY" role="37wK5m">
+                                      <ref role="37wK5l" to="tprs:6LWztcA_W$a" resolve="getSearchResultsBackgroundColor" />
+                                      <ref role="1Pybhc" to="tprs:cAZ8XCa267" resolve="HighlightConstants" />
                                     </node>
                                     <node concept="Xl_RD" id="2jM9X_IgWUp" role="37wK5m">
                                       <property role="Xl_RC" value="usage" />

@@ -15,6 +15,10 @@
  */
 package jetbrains.mps.nodeEditor.deletionApprover;
 
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.colors.TextAttributesKey;
+import com.intellij.openapi.editor.markup.TextAttributes;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.DefaultEditorMessage;
@@ -80,9 +84,11 @@ public class DeletionApproverImpl implements DeletionApprover, EditorMessageOwne
   public void approveForDeletion(@NotNull EditorCell cell) {
     myCellToBeDeleted = cell;
     myHighlightManager.clearForOwner(this);
-    final Style daStyle = cell.getEditorComponent().getStyleRegistry().getStyle("DELETION_APPROVER");
-    final Color c = daStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR);
-    myHighlightManager.mark(new ApproveDeleteMessage(cell, c, "to be deleted", this));
+    EditorColorsScheme globalScheme = EditorColorsManager.getInstance().getGlobalScheme();
+    TextAttributes attributes = globalScheme.getAttributes(TextAttributesKey.createTextAttributesKey("ERRORS_ATTRIBUTES"));
+    final Color configuredColor = attributes.getErrorStripeColor();
+    final Color colorToSet = new Color(configuredColor.getRed(), configuredColor.getGreen(), configuredColor.getBlue(), configuredColor.getAlpha() / 3);
+    myHighlightManager.mark(new ApproveDeleteMessage(cell, colorToSet, "to be deleted", this));
     myHighlightManager.repaintAndRebuildEditorMessages();
   }
 

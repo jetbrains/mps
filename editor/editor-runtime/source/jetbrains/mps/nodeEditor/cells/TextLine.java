@@ -45,10 +45,10 @@ import java.util.Map;
 import java.util.Set;
 
 public class TextLine {
-  // COLORS: Remove hardcoded color
+  // TODO COLORS: Remove hardcoded color
   private static final Color SELECTED_OR_BACKGROUND_ERROR_COLOR =
-      new JBColor(new Color(255, 220, 220, 128), ColorUtil.mix(StyleRegistry.getInstance().getEditorBackground(), DarculaColors.RED, 0.1));
-  private static final Color ERROR_FOREGROUND_COLOR = new JBColor(new Color(168, 30, 30, 255), DarculaColors.RED);
+      new JBColor(new Color(255, 220, 220, 90), ColorUtil.mix(StyleRegistry.getInstance().getEditorBackground(), DarculaColors.RED, 0.1));
+  private static final Color ERROR_FOREGROUND_COLOR = new JBColor(new Color(168, 30, 30, 190), DarculaColors.RED);
 
   private String myText;
   private int myDescent = 0;

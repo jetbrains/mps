@@ -10,6 +10,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.MPSFonts;
 import jetbrains.mps.lang.structure.editor.structure_StyleSheet.KeywordStyleClass;
+import java.awt.Color;
 
 public class Styles_StyleSheet {
   public static class GeneratorKeyWordStyleClass extends AbstractStyleClass {
@@ -93,10 +94,12 @@ public class Styles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.orange));
-      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.black, getStyleRegistry().getSimpleColor(MPSColors.orange)));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_kkd5s1_a0g()));
     }
 
+    private Color _StyleParameter_QueryFunction_kkd5s1_a0g() {
+      return GeneratorColorUtil.MAPPING_LABEL_BACKGROUND_COLOR;
+    }
   }
   public static class macroDescriptionTextStyleClass extends AbstractStyleClass {
     public macroDescriptionTextStyleClass(EditorBuilderEnvironment builderEnv) {
@@ -117,10 +120,12 @@ public class Styles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.orange));
-      style.set(StyleAttributes.TEXT_COLOR, getStyleRegistry().getSimpleColor(MPSColors.darkGray, getStyleRegistry().getSimpleColor(MPSColors.orange)));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_kkd5s1_a0i()));
     }
 
+    private Color _StyleParameter_QueryFunction_kkd5s1_a0i() {
+      return GeneratorColorUtil.MAPPING_LABEL_BACKGROUND_COLOR;
+    }
   }
   public static class mappingRuleReferenceStyleClass extends AbstractStyleClass {
     public mappingRuleReferenceStyleClass(EditorBuilderEnvironment builderEnv) {

@@ -88,7 +88,7 @@ public class HighlightUsages_Action extends BaseAction {
       boolean highlight = highlightManager.getMessagesFor(node, messageOwner).isEmpty();
       if (SNodeOperations.getContainingRoot(node) == event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getRootCell().getSNode().getContainingRoot()) {
         if (highlight) {
-          highlightManager.mark(node, HighlightConstants.NODE_COLOR, "source node", messageOwner);
+          highlightManager.mark(node, HighlightConstants.getSearchResultsSourceBackgroundColor(), "source node", messageOwner);
         } else {
           for (SimpleEditorMessage message : ListSequence.fromList(highlightManager.getMessagesFor(node, messageOwner))) {
             highlightManager.unmark(message);
@@ -98,7 +98,7 @@ public class HighlightUsages_Action extends BaseAction {
       for (SReference ref : SetSequence.fromSet(usages)) {
         if (ref.getSourceNode().getContainingRoot() == event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getRootCell().getSNode().getContainingRoot()) {
           if (highlight) {
-            highlightManager.mark(((SNode) ref.getSourceNode()), HighlightConstants.USAGES_COLOR, "usage", messageOwner);
+            highlightManager.mark(((SNode) ref.getSourceNode()), HighlightConstants.getSearchResultsBackgroundColor(), "usage", messageOwner);
           } else {
             for (SimpleEditorMessage message : ListSequence.fromList(highlightManager.getMessagesFor(((SNode) ref.getSourceNode()), messageOwner))) {
               highlightManager.unmark(message);
