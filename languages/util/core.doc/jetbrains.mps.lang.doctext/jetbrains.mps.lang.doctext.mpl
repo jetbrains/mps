@@ -14,7 +14,7 @@
   <generators>
     <generator alias="main" namespace="jetbrains.mps.lang.doctext.generator" uuid="1837bd98-ffab-40fa-8397-f5d8e76317e5">
       <models>
-        <modelRoot type="default" contentPath="${module}/generator">
+        <modelRoot contentPath="${module}/generator" type="default">
           <sourceRoot location="templates" />
         </modelRoot>
       </models>
