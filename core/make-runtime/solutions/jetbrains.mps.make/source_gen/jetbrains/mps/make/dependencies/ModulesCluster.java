@@ -19,7 +19,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.ArrayList;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -29,6 +29,7 @@ import java.util.Collections;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.LinkedList;
+import java.util.HashSet;
 import jetbrains.mps.internal.make.runtime.util.GraphAnalyzer;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 
@@ -85,9 +86,9 @@ public class ModulesCluster {
     ArrayList<SModule> modExt = new ArrayList<SModule>();
     modExt.add(mod);
 
-    Set<SLanguage> moduleUsedLanguages;
+    final Set<SLanguage> moduleUsedLanguages = SetSequence.fromSet(new LinkedHashSet<SLanguage>());
     // inv: reference existing vertexes only
-    Set<ModuleDeps> reqs = SetSequence.fromSet(new HashSet<ModuleDeps>());
+    final Set<ModuleDeps> reqs = SetSequence.fromSet(new LinkedHashSet<ModuleDeps>());
     if (mod instanceof Generator) {
       Generator generator = (Generator) mod;
       // Unfortunately, GMDM doesn't recognize generator's source language as COMPILE or VISIBLE dependency, therefore have to add it here
@@ -101,12 +102,12 @@ public class ModulesCluster {
         // XXX though it looks suspicious that we require source language module to build a generator, the reason to have it there
         //     is likely the need to satisfy module load dependency (not the need to have language available the moment generator module is being generated/textgen'ed)
       }
-      moduleUsedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
       for (SModel m : generator.getModels()) {
         SetSequence.fromSet(moduleUsedLanguages).addSequence(CollectionSequence.fromCollection(ModelContentUtil.getUsedLanguages(m)));
       }
     } else {
-      moduleUsedLanguages = mod.getUsedLanguages();
+      // XXX perhaps, shall ask each model individually and ignore models that aren't subject to m2m?
+      SetSequence.fromSet(moduleUsedLanguages).addSequence(SetSequence.fromSet(mod.getUsedLanguages()));
       // XXX ModelContentUtil adds auto-imported and engaged on generation languages as well, shall I use it here, too?
       //     I didn't add them as previous version relied on SModule.getUsedLanguages() collection, which does not include engaged nor auto-imports, and is working for years
     }
