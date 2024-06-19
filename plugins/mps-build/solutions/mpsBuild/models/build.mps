@@ -30725,11 +30725,6 @@
           <ref role="3bR37D" node="HHlBn9$wJ2" resolve="org.jdom" />
         </node>
       </node>
-      <node concept="1SiIV0" id="1TbFj7URtPP" role="3bR37C">
-        <node concept="3bR9La" id="1TbFj7URtPQ" role="1SiIV1">
-          <ref role="3bR37D" node="4m1I2e4jdlp" resolve="MPS.Boot" />
-        </node>
-      </node>
       <node concept="398BVA" id="4xYibpYKR3" role="3LF7KH">
         <ref role="398BVh" node="5lGJ4TaqfAJ" resolve="plugin_home" />
         <node concept="2Ry0Ak" id="4xYibpYKRa" role="iGT6I">

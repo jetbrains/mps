@@ -5360,18 +5360,18 @@
                 </node>
                 <node concept="2ShNRf" id="xWHpBq6dXZ" role="HW$Y0">
                   <node concept="1pGfFk" id="xWHpBq6jVS" role="2ShVmc">
-                    <ref role="37wK5l" to="phxh:3etVqSRK$6o" />
+                    <ref role="37wK5l" to="phxh:3etVqSRK$6o" resolve="UnresolvedReferencesChecker" />
                     <node concept="XUXob" id="3GjUzwgD7Al" role="37wK5m" />
                   </node>
                 </node>
                 <node concept="2ShNRf" id="xWHpBq6MUh" role="HW$Y0">
                   <node concept="1pGfFk" id="xWHpBq6OSJ" role="2ShVmc">
-                    <ref role="37wK5l" to="phxh:3etVqSRT$IG" />
+                    <ref role="37wK5l" to="phxh:3etVqSRT$IG" resolve="GeneratorTemplatesChecker" />
                   </node>
                 </node>
                 <node concept="2ShNRf" id="4ascWT9iaEJ" role="HW$Y0">
                   <node concept="1pGfFk" id="4ascWT9iddu" role="2ShVmc">
-                    <ref role="37wK5l" to="phxh:4ascWT9fP2U" />
+                    <ref role="37wK5l" to="phxh:4ascWT9fP2U" resolve="ProperGenPlanChecker" />
                     <node concept="XUXob" id="3GjUzwgD8KT" role="37wK5m" />
                   </node>
                 </node>

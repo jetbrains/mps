@@ -2292,7 +2292,7 @@
                 <node concept="1pGfFk" id="5FdF_yH1AI2" role="2ShVmc">
                   <ref role="37wK5l" to="xzav:5FdF_yH1H2$" resolve="DefaultTaskScheduler" />
                   <node concept="37vLTw" id="5FdF_yH8gDw" role="37wK5m">
-                    <ref role="3cqZAo" node="5FdF_yH7VE5" resolve="executor" />
+                    <ref role="3cqZAo" node="5FdF_yH7VE5" resolve="readExecutor" />
                   </node>
                 </node>
               </node>
@@ -2307,7 +2307,7 @@
                     <ref role="3cqZAo" node="2$qlEUMAil9" resolve="myMpsProject" />
                   </node>
                   <node concept="37vLTw" id="5FdF_yH7VEd" role="37wK5m">
-                    <ref role="3cqZAo" node="5FdF_yH7VE5" resolve="executor" />
+                    <ref role="3cqZAo" node="5FdF_yH7VE5" resolve="readExecutor" />
                   </node>
                 </node>
               </node>
@@ -2330,7 +2330,7 @@
                     <node concept="2ShNRf" id="1p3K8b3bw3C" role="2Oq$k0">
                       <node concept="1pGfFk" id="1p3K8b3bHpU" role="2ShVmc">
                         <property role="373rjd" value="true" />
-                        <ref role="37wK5l" to="wsw7:6pnunaLnyyn" resolve="ModelsExtractorImpl" />
+                        <ref role="37wK5l" to="wsw7:6pnunaLnyyn" resolve="ModelCheckerBuilder.ModelsExtractorImpl" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1p3K8b3c3si" role="2OqNvi">
@@ -2363,7 +2363,7 @@
             <node concept="3uibUv" id="5FdF_yGZ7uz" role="1tU5fm">
               <ref role="3uigEE" to="wsw7:3xfDcbRbJai" resolve="IAbstractChecker" />
               <node concept="3uibUv" id="5FdF_yGZ7u$" role="11_B2D">
-                <ref role="3uigEE" to="wsw7:4QJbmJH1Aa8" resolve="ItemsToCheck" />
+                <ref role="3uigEE" to="wsw7:4QJbmJH1Aa8" resolve="ModelCheckerBuilder.ItemsToCheck" />
               </node>
               <node concept="3uibUv" id="5FdF_yGZ7u_" role="11_B2D">
                 <ref role="3uigEE" to="d6hs:~IssueKindReportItem" resolve="IssueKindReportItem" />
@@ -5139,10 +5139,10 @@
         <node concept="3clFbF" id="7SNXUnYXbX$" role="3cqZAp">
           <node concept="37vLTI" id="7SNXUnYXcq9" role="3clFbG">
             <node concept="37vLTw" id="7SNXUnYXcwI" role="37vLTx">
-              <ref role="3cqZAo" node="7SNXUnYXapp" resolve="mpsProject" />
+              <ref role="3cqZAo" node="7SNXUnYXapp" resolve="host" />
             </node>
             <node concept="37vLTw" id="7SNXUnYXbXz" role="37vLTJ">
-              <ref role="3cqZAo" node="7SNXUnYXb2c" resolve="myProject" />
+              <ref role="3cqZAo" node="7SNXUnYXb2c" resolve="myComponentHost" />
             </node>
           </node>
         </node>
