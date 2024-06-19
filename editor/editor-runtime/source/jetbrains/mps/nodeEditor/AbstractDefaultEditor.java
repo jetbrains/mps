@@ -56,7 +56,6 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
   private static final int NAME_ADD_PRIORITY = 1000;
   private static final String QUALIFIED_NAME = "qualified";
   private static final int QUALIFIED_PRIORITY = 200;
-  private static final Color FIRST_LABEL_BACKGROUND_COLOR = new Color(107, 142, 20, 100);
 
   private SNode mySNode;
   private SConcept myConcept;
@@ -89,7 +88,8 @@ public abstract class AbstractDefaultEditor extends DefaultNodeEditor implements
     mainCellCollection.setBig(true);
     mainCellCollection.setCellContext(getCellFactory().getCellContext());
     addLabel(camelToLabel(myConcept.getName()));
-    addStyle(StyleAttributes.TEXT_BACKGROUND_COLOR, FIRST_LABEL_BACKGROUND_COLOR);
+    final Color firstLabelBackgroundColor = editorContext.getEditorComponent().getStyleRegistry().getStyle("REFLECTIVE_EDITOR_FIRST_LABEL").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
+    addStyle(StyleAttributes.TEXT_BACKGROUND_COLOR, firstLabelBackgroundColor);
     if (nameProperty != null) {
       getProperties().remove(nameProperty);
       addPropertyCell(nameProperty);

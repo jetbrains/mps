@@ -49,6 +49,8 @@
     <import index="tpdg" ref="r:00000000-0000-4000-0000-011c895902a8(jetbrains.mps.lang.actions.structure)" />
     <import index="tp4f" ref="r:00000000-0000-4000-0000-011c89590373(jetbrains.mps.baseLanguage.classifiers.structure)" />
     <import index="fulz" ref="r:6f792c44-2a5d-40e8-9f05-33f7d4ae26ec(jetbrains.mps.editor.runtime.completion)" />
+    <import index="5ueo" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.editor.runtime.style(MPS.Editor/)" />
+    <import index="hox0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.style(MPS.Editor/)" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -593,9 +595,6 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
-      </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
-        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ" />
       <concept id="1109279851642" name="jetbrains.mps.baseLanguage.structure.GenericDeclaration" flags="ng" index="16eOlS">
@@ -1228,43 +1227,34 @@
         </node>
         <node concept="30gYXW" id="hF0kJSL" role="3F10Kt">
           <property role="Vb096" value="fLwANPo/pink" />
-          <node concept="mot77" id="2kGogaC28eT" role="VblUZ">
-            <node concept="3clFbS" id="2kGogaC28eU" role="2VODD2">
-              <node concept="3clFbF" id="2kGogaC28Em" role="3cqZAp">
-                <node concept="2ShNRf" id="2kGogaC28Ek" role="3clFbG">
-                  <node concept="1pGfFk" id="2kGogaC2c49" role="2ShVmc">
-                    <property role="373rjd" value="true" />
-                    <ref role="37wK5l" to="18ew:~Pair.&lt;init&gt;(java.lang.Object,java.lang.Object)" resolve="Pair" />
-                    <node concept="2ShNRf" id="3PDMFoCg0ps" role="37wK5m">
-                      <node concept="1pGfFk" id="3PDMFoCg0pt" role="2ShVmc">
-                        <ref role="37wK5l" to="z60i:~Color.&lt;init&gt;(int,int,int,int)" resolve="Color" />
-                        <node concept="3cmrfG" id="3PDMFoCg0pu" role="37wK5m">
-                          <property role="3cmrfH" value="255" />
+          <node concept="3ZlJ5R" id="6HWDDE42e$z" role="VblUZ">
+            <node concept="3clFbS" id="6HWDDE42e$$" role="2VODD2">
+              <node concept="3clFbF" id="7WFkLno$Wct" role="3cqZAp">
+                <node concept="2OqwBi" id="7WFkLno_1Fy" role="3clFbG">
+                  <node concept="2OqwBi" id="7WFkLno_047" role="2Oq$k0">
+                    <node concept="2OqwBi" id="7WFkLno$Z0q" role="2Oq$k0">
+                      <node concept="2OqwBi" id="7WFkLno$Wxp" role="2Oq$k0">
+                        <node concept="1Q80Hx" id="7WFkLno$Wcs" role="2Oq$k0" />
+                        <node concept="liA8E" id="7WFkLno$YQQ" role="2OqNvi">
+                          <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
                         </node>
-                        <node concept="3cmrfG" id="3PDMFoCg0pv" role="37wK5m">
-                          <property role="3cmrfH" value="220" />
-                        </node>
-                        <node concept="3cmrfG" id="3PDMFoCg0pw" role="37wK5m">
-                          <property role="3cmrfH" value="220" />
-                        </node>
-                        <node concept="3cmrfG" id="3PDMFoCg0px" role="37wK5m">
-                          <property role="3cmrfH" value="90" />
-                        </node>
+                      </node>
+                      <node concept="liA8E" id="7WFkLno$Z_5" role="2OqNvi">
+                        <ref role="37wK5l" to="cj4x:~EditorComponent.getStyleRegistry()" resolve="getStyleRegistry" />
                       </node>
                     </node>
-                    <node concept="2ShNRf" id="2kGogaC2cMX" role="37wK5m">
-                      <node concept="1pGfFk" id="2kGogaC2dnN" role="2ShVmc">
-                        <ref role="37wK5l" to="z60i:~Color.&lt;init&gt;(int,int,int)" resolve="Color" />
-                        <node concept="3cmrfG" id="2kGogaC2dnO" role="37wK5m">
-                          <property role="3cmrfH" value="255" />
-                        </node>
-                        <node concept="3cmrfG" id="2kGogaC2dnP" role="37wK5m">
-                          <property role="3cmrfH" value="100" />
-                        </node>
-                        <node concept="3cmrfG" id="2kGogaC2dnQ" role="37wK5m">
-                          <property role="3cmrfH" value="100" />
-                        </node>
+                    <node concept="liA8E" id="7WFkLno_0CF" role="2OqNvi">
+                      <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String)" resolve="getStyle" />
+                      <node concept="Xl_RD" id="7WFkLno_0R_" role="37wK5m">
+                        <property role="Xl_RC" value="ERROR_CELL" />
                       </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="7WFkLno_25E" role="2OqNvi">
+                    <ref role="37wK5l" to="hox0:~Style.get(jetbrains.mps.openapi.editor.style.StyleAttribute)" resolve="get" />
+                    <node concept="10M0yZ" id="7WFkLno_3nT" role="37wK5m">
+                      <ref role="3cqZAo" to="5ueo:~StyleAttributes.TEXT_BACKGROUND_COLOR" resolve="TEXT_BACKGROUND_COLOR" />
+                      <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
                     </node>
                   </node>
                 </node>
@@ -1308,6 +1298,40 @@
             </node>
             <node concept="30gYXW" id="hF0kJTU" role="3F10Kt">
               <property role="Vb096" value="fLwANPo/pink" />
+              <node concept="3ZlJ5R" id="6HWDDE42fuI" role="VblUZ">
+                <node concept="3clFbS" id="6HWDDE42fuJ" role="2VODD2">
+                  <node concept="3clFbF" id="6HWDDE42fFW" role="3cqZAp">
+                    <node concept="2OqwBi" id="6HWDDE42fFX" role="3clFbG">
+                      <node concept="2OqwBi" id="6HWDDE42fFY" role="2Oq$k0">
+                        <node concept="2OqwBi" id="6HWDDE42fFZ" role="2Oq$k0">
+                          <node concept="2OqwBi" id="6HWDDE42fG0" role="2Oq$k0">
+                            <node concept="1Q80Hx" id="6HWDDE42fG1" role="2Oq$k0" />
+                            <node concept="liA8E" id="6HWDDE42fG2" role="2OqNvi">
+                              <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="6HWDDE42fG3" role="2OqNvi">
+                            <ref role="37wK5l" to="cj4x:~EditorComponent.getStyleRegistry()" resolve="getStyleRegistry" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="6HWDDE42fG4" role="2OqNvi">
+                          <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String)" resolve="getStyle" />
+                          <node concept="Xl_RD" id="6HWDDE42fG5" role="37wK5m">
+                            <property role="Xl_RC" value="ERROR_CELL" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="6HWDDE42fG6" role="2OqNvi">
+                        <ref role="37wK5l" to="hox0:~Style.get(jetbrains.mps.openapi.editor.style.StyleAttribute)" resolve="get" />
+                        <node concept="10M0yZ" id="6HWDDE42fG7" role="37wK5m">
+                          <ref role="3cqZAo" to="5ueo:~StyleAttributes.TEXT_BACKGROUND_COLOR" resolve="TEXT_BACKGROUND_COLOR" />
+                          <ref role="1PxDUh" to="5ueo:~StyleAttributes" resolve="StyleAttributes" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
             <node concept="30h1P$" id="hF0kJW3" role="3F10Kt">
               <property role="Vb096" value="fLwANPs/magenta" />

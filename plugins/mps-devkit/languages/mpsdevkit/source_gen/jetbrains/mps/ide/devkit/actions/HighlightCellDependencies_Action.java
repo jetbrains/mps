@@ -60,7 +60,7 @@ public class HighlightCellDependencies_Action extends BaseAction {
     final SRepository repo = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditorContext().getRepository();
     repo.getModelAccess().runReadAction(() -> {
       EditorMessageOwner messageOwner = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getHighlightMessagesOwner();
-      highlightManager.mark(event.getData(MPSEditorDataKeys.EDITOR_CELL).getSNode(), HighlightConstants.getWriteSearchResultsBackgroundColor(), "node", messageOwner);
+      highlightManager.mark(event.getData(MPSEditorDataKeys.EDITOR_CELL).getSNode(), HighlightConstants.getSearchResultsSourceBackgroundColor(), "node", messageOwner);
       Set<SNode> nodes = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getNodesCellDependOn(event.getData(MPSEditorDataKeys.EDITOR_CELL));
       if (nodes != null) {
         for (SNode node : SetSequence.fromSet(nodes)) {

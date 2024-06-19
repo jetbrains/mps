@@ -47,7 +47,7 @@ import java.util.Set;
 public class TextLine {
   // TODO COLORS: Remove hardcoded color
   private static final Color SELECTED_OR_BACKGROUND_ERROR_COLOR =
-      new JBColor(new Color(255, 220, 220, 90), ColorUtil.mix(StyleRegistry.getInstance().getEditorBackground(), DarculaColors.RED, 0.1));
+      new JBColor(new Color(255, 220, 220, 90), new Color(0xd6, 0x4d, 0x5b, 50));
   private static final Color ERROR_FOREGROUND_COLOR = new JBColor(new Color(168, 30, 30, 190), DarculaColors.RED);
 
   private String myText;

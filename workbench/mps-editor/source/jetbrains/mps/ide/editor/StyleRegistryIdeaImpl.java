@@ -76,6 +76,24 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
    */
   @SuppressWarnings("UseJBColor")
   private void fillCustomStyles() {
+    final StyleImpl mappingLabelStyle = new StyleImpl();
+    final JBColor backgroundColor = new JBColor(new Color(0xff, 0xe9, 0x59, 100), new Color(0x11, 0x49, 0x57, 200));
+    mappingLabelStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, backgroundColor);
+    mappingLabelStyle.set(StyleAttributes.BACKGROUND_COLOR, backgroundColor); // just in case, not sure what's the difference b/w the two
+    setStyle("MAPPING_LABEL", mappingLabelStyle);
+
+    final StyleImpl errorCellStyle = new StyleImpl();
+    final JBColor errorCellColor = new JBColor(new  Color(255, 220, 220, 90), new Color(0xd6, 0x4d, 0x5b, 50));
+    errorCellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, errorCellColor);
+    errorCellStyle.set(StyleAttributes.BACKGROUND_COLOR, errorCellColor); // just in case, not sure what's the difference b/w the two
+    setStyle("ERROR_CELL", errorCellStyle);
+
+    final StyleImpl reflectiveEditorFirstLabelCellStyle = new StyleImpl();
+    final JBColor reflectiveEditorFirstLabelColor = new JBColor(new Color(107, 142, 20, 60), new Color(107, 142, 20, 100));
+    reflectiveEditorFirstLabelCellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, reflectiveEditorFirstLabelColor);
+    reflectiveEditorFirstLabelCellStyle.set(StyleAttributes.BACKGROUND_COLOR, reflectiveEditorFirstLabelColor); // just in case, not sure what's the difference b/w the two
+    setStyle("REFLECTIVE_EDITOR_FIRST_LABEL", reflectiveEditorFirstLabelCellStyle);
+
     final StyleImpl sc = new StyleImpl();
     sc.set(StyleAttributes.TEXT_COLOR, getEditorForeground());
     final JBColor bg = new JBColor(new Color(235, 244, 254), new Color(0x141D29));

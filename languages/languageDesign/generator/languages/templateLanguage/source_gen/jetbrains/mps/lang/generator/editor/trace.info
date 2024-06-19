@@ -12951,13 +12951,13 @@
       <node id="1215516491316" at="85,53,86,105" concept="3" />
       <node id="1216755869996" at="91,81,92,24" concept="14" />
       <node id="1216755908559" at="96,59,97,134" concept="3" />
-      <node id="7817278991233724209" at="100,62,101,63" concept="9" />
+      <node id="9163509220108387101" at="100,62,101,141" concept="9" />
       <node id="8696125237882251414" at="105,80,106,24" concept="14" />
       <node id="8696125237882251415" at="110,59,111,112" concept="3" />
       <node id="8696125237882251417" at="111,112,112,157" concept="3" />
       <node id="2854950237272258311" at="117,82,118,24" concept="14" />
       <node id="1368657476427091646" at="122,59,123,134" concept="3" />
-      <node id="7817278991233442119" at="126,62,127,63" concept="9" />
+      <node id="9163509220108421507" at="126,62,127,141" concept="9" />
       <node id="7253250149918727554" at="131,80,132,24" concept="14" />
       <node id="4284599143868091651" at="136,59,137,74" concept="3" />
       <node id="1215010868182" at="142,71,143,24" concept="14" />
@@ -13027,11 +13027,11 @@
       <scope id="1215514347972" at="79,74,80,24" />
       <scope id="1216755869996" at="91,81,92,24" />
       <scope id="1216755869996" at="96,59,97,134" />
-      <scope id="7817278991233723433" at="100,62,101,63" />
+      <scope id="7817278991233723433" at="100,62,101,141" />
       <scope id="8696125237882251414" at="105,80,106,24" />
       <scope id="2854950237272258311" at="117,82,118,24" />
       <scope id="2854950237272258311" at="122,59,123,134" />
-      <scope id="1368657476427091649" at="126,62,127,63" />
+      <scope id="1368657476427091649" at="126,62,127,141" />
       <scope id="7253250149918727554" at="131,80,132,24" />
       <scope id="7253250149918727554" at="136,59,137,74" />
       <scope id="1215010868182" at="142,71,143,24" />
@@ -22429,7 +22429,7 @@
       <node id="1200917562297" at="188,91,189,147" concept="9" />
       <node id="1200917562297" at="190,14,191,26" concept="9" />
       <node id="1200917562297" at="192,17,193,42" concept="3" />
-      <node id="7817278991233444922" at="196,66,197,63" concept="9" />
+      <node id="9163509220108426128" at="196,66,197,141" concept="9" />
       <node id="7898029224690793202" at="200,41,201,93" concept="8" />
       <node id="7898029224690793202" at="201,93,202,48" concept="3" />
       <node id="7898029224690793202" at="202,48,203,34" concept="8" />
@@ -22489,7 +22489,7 @@
       <scope id="1200917562297" at="162,41,163,32" />
       <scope id="1200917562297" at="168,28,169,20" />
       <scope id="1200917562297" at="192,17,193,42" />
-      <scope id="1368657476426628699" at="196,66,197,63" />
+      <scope id="1368657476426628699" at="196,66,197,141" />
       <scope id="7898029224686240909" at="226,15,227,40" />
       <scope id="7898029224686240839" at="42,106,44,18" />
       <scope id="7898029224686240839" at="138,40,140,55" />
@@ -23231,12 +23231,6 @@
       <unit id="8612733435392875288" at="289,0,340,0" name="jetbrains.mps.lang.generator.editor.ReferenceReductionRule_EditorBuilder_a$conditionFunctionSingleRoleHandler_93s0ck_b2a0" />
       <unit id="8612733435392875288" at="363,0,417,0" name="jetbrains.mps.lang.generator.editor.ReferenceReductionRule_EditorBuilder_a$referentFunctionSingleRoleHandler_93s0ck_b1a" />
       <unit id="8612733435392875288" at="52,0,446,0" name="jetbrains.mps.lang.generator.editor.ReferenceReductionRule_EditorBuilder_a" />
-    </file>
-  </root>
-  <root nodeRef="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)/8884996600214226192">
-    <file name="GeneratorColorUtil.java">
-      <node id="7216393378269176552" at="9,0,10,0" concept="12" trace="MAPPING_LABEL_BACKGROUND_COLOR" />
-      <unit id="8884996600214226192" at="8,0,11,0" name="jetbrains.mps.lang.generator.editor.GeneratorColorUtil" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e3(jetbrains.mps.lang.generator.editor)/8900764248744242392">

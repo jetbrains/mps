@@ -27,7 +27,6 @@ import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 import java.awt.Color;
-import jetbrains.mps.util.Pair;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -78,7 +77,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       Style style = new StyleImpl();
       style.set(StyleAttributes.DRAW_BORDER, true);
       style.set(StyleAttributes.BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_xkqo7y_a1b0()));
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, (!(getStyleRegistry().isDarkTheme()) ? _StyleParameter_QueryFunction_xkqo7y_a2b0().o1 : _StyleParameter_QueryFunction_xkqo7y_a2b0().o2));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_xkqo7y_a2b0()));
       style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.magenta));
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
@@ -97,8 +96,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private Color _StyleParameter_QueryFunction_xkqo7y_a1b0() {
     return _EditorUtil.grayIfNotSelectable(getNode());
   }
-  private Pair<Color, Color> _StyleParameter_QueryFunction_xkqo7y_a2b0() {
-    return new Pair<>(new Color(255, 220, 220, 90), new Color(255, 100, 100));
+  private Color _StyleParameter_QueryFunction_xkqo7y_a2b0() {
+    return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("ERROR_CELL").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
   }
   private EditorCell createComponent_1() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor._CloseTag");
