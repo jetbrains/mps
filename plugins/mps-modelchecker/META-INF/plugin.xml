@@ -21,12 +21,6 @@
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
   <depends>jetbrains.mps.testing</depends>
 
-  <application-components>
-    <component>
-      <implementation-class>jetbrains.mps.ide.modelchecker.platform.actions.SpecificCheckersComponent</implementation-class>
-    </component>
-  </application-components>
-
   <project-components>
     <component>
       <implementation-class>jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool</implementation-class>

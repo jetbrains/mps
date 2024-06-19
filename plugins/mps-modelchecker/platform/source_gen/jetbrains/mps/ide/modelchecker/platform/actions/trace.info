@@ -1416,45 +1416,6 @@
       <unit id="4799768263955155253" at="28,0,124,0" name="jetbrains.mps.ide.modelchecker.platform.actions.ProperGenPlanChecker" />
     </file>
   </root>
-  <root nodeRef="r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/611563321809061563">
-    <file name="SpecificCheckersComponent.java">
-      <node id="611563321809137785" at="24,0,25,0" concept="6" trace="myCheckers" />
-      <node id="7979302097856641631" at="25,0,26,0" concept="6" trace="myCheckerRegistry" />
-      <node id="4799768263955899262" at="31,31,32,75" concept="11" />
-      <node id="9068322517338174924" at="32,75,33,70" concept="5" />
-      <node id="7979302097856686869" at="34,36,35,13" concept="12" />
-      <node id="611563321809138545" at="36,5,37,192" concept="5" />
-      <node id="611563321809250278" at="38,70,39,49" concept="5" />
-      <node id="7979302097856690731" at="44,36,45,13" concept="12" />
-      <node id="611563321809247908" at="47,70,48,51" concept="5" />
-      <node id="7979302097856635036" at="27,0,29,0" concept="3" trace="SpecificCheckersComponent#()V" />
-      <node id="7979302097856677375" at="33,70,36,5" concept="9" />
-      <node id="611563321809250274" at="37,192,40,5" concept="8" />
-      <node id="7979302097856690729" at="43,34,46,5" concept="9" />
-      <node id="611563321809235448" at="46,5,49,5" concept="8" />
-      <node id="611563321809132648" at="42,0,51,0" concept="10" trace="disposeComponent#()V" />
-      <node id="611563321809132641" at="30,0,42,0" concept="10" trace="initComponent#()V" />
-      <scope id="7979302097856635041" at="27,38,27,38" />
-      <scope id="7979302097856677377" at="34,36,35,13" />
-      <scope id="611563321809250277" at="38,70,39,49" />
-      <scope id="7979302097856690730" at="44,36,45,13" />
-      <scope id="611563321809235451" at="47,70,48,51" />
-      <scope id="7979302097856635036" at="27,0,29,0" />
-      <scope id="611563321809250274" at="37,192,40,5">
-        <var name="checker" id="611563321809250275" />
-      </scope>
-      <scope id="611563321809235448" at="46,5,49,5">
-        <var name="checker" id="611563321809235449" />
-      </scope>
-      <scope id="611563321809132653" at="43,34,49,5" />
-      <scope id="611563321809132646" at="31,31,40,5">
-        <var name="platform" id="4799768263955899263" />
-      </scope>
-      <scope id="611563321809132648" at="42,0,51,0" />
-      <scope id="611563321809132641" at="30,0,42,0" />
-      <unit id="611563321809061563" at="22,0,52,0" name="jetbrains.mps.ide.modelchecker.platform.actions.SpecificCheckersComponent" />
-    </file>
-  </root>
   <root nodeRef="r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/6543077529522285868">
     <file name="DefaultReadExecutor.java">
       <node id="6543077529522335933" at="13,0,14,0" concept="6" trace="myModelAccess" />

@@ -12,6 +12,8 @@ import jetbrains.mps.ide.actions.DevkitActions_ActionGroup;
 import jetbrains.mps.ide.actions.ModelActions_ActionGroup;
 import jetbrains.mps.ide.actions.NamespaceActions_ActionGroup;
 import jetbrains.mps.ide.actions.ToolsInternal_ActionGroup;
+import java.util.List;
+import jetbrains.mps.plugins.part.ApplicationPluginPart;
 
 @GeneratedClass(node = "r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)/7162597690968047815", model = "r:e2c8c94a-404b-4b97-a3a4-c76946bd1913(jetbrains.mps.ide.modelchecker.actions)")
 public class Modelchecker_ApplicationPlugin extends BaseApplicationPlugin {
@@ -48,5 +50,9 @@ public class Modelchecker_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(CheckModel_ActionGroup.ID, ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_check);
     insertGroupIntoAnother(CheckNamespace_ActionGroup.ID, NamespaceActions_ActionGroup.ID, NamespaceActions_ActionGroup.LABEL_ID_check);
     insertGroupIntoAnother(ToolsInternalEx_ActionGroup.ID, ToolsInternal_ActionGroup.ID, null);
+  }
+  @Override
+  public void fillCustomParts(List<ApplicationPluginPart> parts) {
+    parts.add(new SpecificCheckersComponent_AppPluginPart());
   }
 }
