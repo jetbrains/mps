@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.editor.util.EditorComponentUtil;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.nodeEditor.AdditionalPainter;
@@ -105,15 +105,17 @@ public abstract class CurrentLinePositionComponentEx<S> {
           @Override
           public void run() {
             final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
+            // FIXME this check, as well as the whole method is quite odd, given we can deal with node-ptr and sometimes even w/o EDT access
             mpsProject.getModelAccess().checkWriteAccess();
-            SNode node = (newPainter.getSNode() == null ? null : newPainter.getSNode().resolve(mpsProject.getRepository()));
+            final SNode node = (newPainter.getSNode() == null ? null : newPainter.getSNode().resolve(mpsProject.getRepository()));
             if (node != null) {
               if (visible && focus) {
-                jetbrains.mps.openapi.editor.EditorComponent currentEditorComponent = NavigationSupport.getInstance().openNode(mpsProject, node, true, false).getCurrentEditorComponent();
-                currentEditorComponent = EditorComponentUtil.scrollToNode(node, currentEditorComponent);
-                if (currentEditorComponent instanceof EditorComponent) {
-                  attach(newPainter, (EditorComponent) currentEditorComponent);
-                }
+                new EditorNavigator(mpsProject).shallFocus(true).onceEditorReady((n, editor) -> {
+                  jetbrains.mps.openapi.editor.EditorComponent currentEditorComponent = EditorComponentUtil.scrollToNode(node, editor.getCurrentEditorComponent());
+                  if (currentEditorComponent instanceof EditorComponent) {
+                    attach(newPainter, (EditorComponent) currentEditorComponent);
+                  }
+                }).open(node.getReference());
               }
 
               for (EditorComponent component : ListSequence.fromList(EditorComponentUtil.findComponentForNode(node, FileEditorManager.getInstance(myProject)))) {

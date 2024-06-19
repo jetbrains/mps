@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -94,7 +94,7 @@ public final class EditorNavigator {
     myProject.getModelAccess().runReadInEDT(() -> {
       SNode target = node.resolve(myProject.getRepository());
       if (target != null) {
-        final Editor editor = NavigationSupport.getInstance().openNode(myProject, target, needFocus(target), needSelection(target));
+        final Editor editor = NavigationSupport.getInstance(myProject).openNode(myProject, target, needFocus(target), needSelection(target));
         if (myHandler != null && editor != null) {
           myHandler.accept(target, editor);
         }

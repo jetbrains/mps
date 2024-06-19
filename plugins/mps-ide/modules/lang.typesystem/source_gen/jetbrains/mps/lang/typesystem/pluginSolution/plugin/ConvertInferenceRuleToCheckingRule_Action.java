@@ -17,7 +17,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -80,7 +80,7 @@ public class ConvertInferenceRuleToCheckingRule_Action extends BaseAction {
       }
     }
     SNodeOperations.deleteNode(event.getData(MPSCommonDataKeys.NODE));
-    NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), nonTypesystemRule, true, false);
+    new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).open(SNodeOperations.getPointer(nonTypesystemRule));
   }
 
   private static final class CONCEPTS {

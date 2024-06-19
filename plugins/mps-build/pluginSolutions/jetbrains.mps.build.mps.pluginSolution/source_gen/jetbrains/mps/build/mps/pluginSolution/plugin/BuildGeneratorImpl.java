@@ -11,8 +11,9 @@ import com.intellij.openapi.progress.EmptyProgressIndicator;
 import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.vfs.IFile;
 import com.intellij.openapi.application.ex.ApplicationInfoEx;
@@ -46,7 +47,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Comparator;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.build.mps.util.ModuleLoader;
 import jetbrains.mps.messages.LogHandler;
@@ -94,8 +94,9 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
       Iterable<SNode> result = createBuildScripts(targetModelDescriptor, BuildGeneratorImpl.this.getProjectName(), BuildGeneratorImpl.this.getModules());
       ((AbstractModule) targetModelDescriptor.getModule()).save();
       targetModelDescriptor.save();
+      EditorNavigator edNav = new EditorNavigator(myProject).shallFocus(true).shallSelect(true);
       for (SNode node : Sequence.fromIterable(result)) {
-        NavigationSupport.getInstance().openNode(myProject, node, true, true);
+        edNav.open(SNodeOperations.getPointer(node));
       }
 
       myProject.addModule(descriptor.getModule());

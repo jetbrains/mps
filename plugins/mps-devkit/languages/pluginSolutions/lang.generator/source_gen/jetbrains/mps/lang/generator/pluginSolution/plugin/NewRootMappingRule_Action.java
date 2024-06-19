@@ -21,7 +21,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Objects;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -98,7 +98,7 @@ public class NewRootMappingRule_Action extends BaseAction {
     SLinkOperations.setTarget(rule, LINKS.applicableConcept$Hpnk, SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(event.getData(MPSCommonDataKeys.NODE)), LINKS.applicableConcept$LAIX));
     SLinkOperations.setTarget(rule, LINKS.template$n_Qy, event.getData(MPSCommonDataKeys.NODE));
     //  open in editor
-    NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), rule, true, true);
+    new EditorNavigator(event.getData(MPSCommonDataKeys.MPS_PROJECT)).shallFocus(true).shallSelect(true).open(SNodeOperations.getPointer(rule));
   }
 
   private static final class CONCEPTS {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,8 +35,19 @@ import org.jetbrains.mps.openapi.module.SModule;
 public abstract class NavigationSupport implements CoreComponent {
   private static NavigationSupport INSTANCE;
 
+  /**
+   * @deprecated use {@link EditorNavigator} or {@link ProjectPaneNavigator} instead.
+   *             If utterly necessary, for transition purposes can use {@link #getInstance(Project)}
+   */
+  @Deprecated(forRemoval = true, since = "2024.1")
   public static NavigationSupport getInstance() {
     return INSTANCE;
+  }
+
+  public static NavigationSupport getInstance(@SuppressWarnings("unused") Project mpsProject) {
+    // I'd love to initialize instance from MPSEditorPlugin, and access it with mpsProject.getComponent() here,
+    // but at the moment NavigationSupportImpl is part of [mps-workbench], no luck
+    return getInstance();
   }
 
   @Override
