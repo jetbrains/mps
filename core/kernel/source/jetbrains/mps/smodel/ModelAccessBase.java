@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,16 @@ import org.jetbrains.mps.openapi.repository.WriteActionListener;
  * Created by Alex Pyshkin on 9/3/14.
  */
 public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
+
+  private final ModelAccess myDelegate;
+
+  protected ModelAccessBase() {
+    myDelegate = null;
+  }
+
+  protected ModelAccessBase(ModelAccess delegate) {
+    myDelegate = delegate;
+  }
 
   @Override
   public boolean canRead() {
@@ -101,9 +111,9 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
   }
 
   // not null
-  public /*protected*/ final ModelAccess getDelegate() {
-    // Can't be cons argument as subclasses might get instantiated BEFORE WorkbenchModelAccess had a chance to register itself as a global MA.
-    return ModelAccess.instance();
+  protected final ModelAccess getDelegate() {
+    // Keep in mind subclasses might get instantiated BEFORE WorkbenchModelAccess had a chance to register itself as a global MA.
+    return myDelegate != null ? myDelegate : ModelAccess.instance();
   }
 
   /**

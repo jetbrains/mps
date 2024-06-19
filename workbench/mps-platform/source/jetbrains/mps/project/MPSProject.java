@@ -18,7 +18,6 @@ package jetbrains.mps.project;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
-import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.vcs.changes.VcsDirtyScopeManager;
 import com.intellij.openapi.vfs.VfsUtil;
@@ -63,7 +62,7 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
     Platform platform = MPSCoreComponents.getInstance().getPlatform();
     final MPSModuleRepository extRepo = platform.findComponent(MPSModuleRepository.class);
     final SRepositoryRegistry registry = platform.findComponent(SRepositoryRegistry.class);
-    final ModelAccess projectMA = ((WorkbenchModelAccess) ApplicationManager.getApplication().getComponent(ModelAccess.class)).createForProject(MPSProject.this);
+    final ModelAccess projectMA = WorkbenchModelAccess.getInstance().createForProject(MPSProject.this);
     final ProjectRepository repo = new ProjectRepository(this, extRepo, registry, projectMA);
     repo.init();
     initRepository(repo);

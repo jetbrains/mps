@@ -4,13 +4,9 @@ package jetbrains.mps.ide.devkit.actions;
 
 import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.ModelAccess;
-import jetbrains.mps.smodel.ModelAccessBase;
 import jetbrains.mps.smodel.WorkbenchModelAccess;
 
 public class InternalReactivateEDTExecutorQueue_Action extends BaseAction {
@@ -27,26 +23,7 @@ public class InternalReactivateEDTExecutorQueue_Action extends BaseAction {
     return true;
   }
   @Override
-  protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
-    if (!(super.collectActionData(event, _params))) {
-      return false;
-    }
-    {
-      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      if (p == null) {
-        return false;
-      }
-    }
-    return true;
-  }
-  @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ModelAccess modelAccess = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess();
-    if (modelAccess instanceof ModelAccessBase) {
-      jetbrains.mps.smodel.ModelAccess delegate = ((ModelAccessBase) modelAccess).getDelegate();
-      if (delegate instanceof WorkbenchModelAccess) {
-        ((WorkbenchModelAccess) delegate).forceFlush();
-      }
-    }
+    WorkbenchModelAccess.getInstance().forceFlush();
   }
 }

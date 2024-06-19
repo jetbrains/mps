@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ final class ProjectModelAccess2 extends ModelAccessBase {
   private final WorkbenchModelAccess mySharedImpl;
 
   /*package*/ ProjectModelAccess2(MPSProject mpsProject, WorkbenchModelAccess sharedImpl) {
+    super(sharedImpl);
     myProject = mpsProject;
     mySharedImpl = sharedImpl;
   }
