@@ -5,12 +5,6 @@
                                 http://www.w3.org/2001/XInclude.xsd">
   <xi:include href="JavaPlatformActions.xml"/>
 
-  <application-components>
-    <component>
-      <implementation-class>jetbrains.mps.java.core.sourceStubs.EmptyJavaSourceStubsFindUsages</implementation-class>
-    </component>
-  </application-components>
-
   <project-components>
     <component>
       <implementation-class>jetbrains.mps.java.platform.highlighters.JavaHighlighters</implementation-class>

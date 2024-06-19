@@ -3249,28 +3249,12 @@
     <node concept="3uibUv" id="7Z8mn0jsKzr" role="EKbjA">
       <ref role="3uigEE" to="dush:~FindUsagesParticipant" resolve="FindUsagesParticipant" />
     </node>
-    <node concept="3uibUv" id="5rIhWKNPMuP" role="EKbjA">
-      <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
-    </node>
     <node concept="2tJIrI" id="5rIhWKNS2MF" role="jymVt" />
     <node concept="3clFbW" id="7Z8mn0jsKzt" role="jymVt">
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <node concept="3cqZAl" id="7Z8mn0jsKzu" role="3clF45" />
-      <node concept="3clFbS" id="7Z8mn0jsKzv" role="3clF47">
-        <node concept="3clFbF" id="7Z8mn0jsK$$" role="3cqZAp">
-          <node concept="2OqwBi" id="7Z8mn0jsK$_" role="3clFbG">
-            <node concept="2YIFZM" id="7Z8mn0jsKWJ" role="2Oq$k0">
-              <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-              <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
-            </node>
-            <node concept="liA8E" id="7Z8mn0jsK$C" role="2OqNvi">
-              <ref role="37wK5l" to="dush:~PersistenceFacade.addFindUsagesParticipant(org.jetbrains.mps.openapi.persistence.FindUsagesParticipant)" resolve="addFindUsagesParticipant" />
-              <node concept="Xjq3P" id="7Z8mn0jsK$D" role="37wK5m" />
-            </node>
-          </node>
-        </node>
-      </node>
+      <node concept="3clFbS" id="7Z8mn0jsKzv" role="3clF47" />
       <node concept="3Tm1VV" id="7Z8mn0jsKzw" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="5rIhWKNS22s" role="jymVt" />
@@ -3598,31 +3582,6 @@
       <node concept="3Tm1VV" id="7Z8mn0jsK$w" role="1B3o_S" />
       <node concept="3cqZAl" id="7Z8mn0jsK$x" role="3clF45" />
     </node>
-    <node concept="2tJIrI" id="5rIhWKNS2s9" role="jymVt" />
-    <node concept="3clFb_" id="7Z8mn0jsK$G" role="jymVt">
-      <property role="TrG5h" value="dispose" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="3clFbS" id="7Z8mn0jsK$H" role="3clF47">
-        <node concept="3clFbF" id="7Z8mn0jsK$I" role="3cqZAp">
-          <node concept="2OqwBi" id="7Z8mn0jsK$J" role="3clFbG">
-            <node concept="2YIFZM" id="7Z8mn0jsKWL" role="2Oq$k0">
-              <ref role="1Pybhc" to="dush:~PersistenceFacade" resolve="PersistenceFacade" />
-              <ref role="37wK5l" to="dush:~PersistenceFacade.getInstance()" resolve="getInstance" />
-            </node>
-            <node concept="liA8E" id="7Z8mn0jsK$M" role="2OqNvi">
-              <ref role="37wK5l" to="dush:~PersistenceFacade.removeFindUsagesParticipant(org.jetbrains.mps.openapi.persistence.FindUsagesParticipant)" resolve="removeFindUsagesParticipant" />
-              <node concept="Xjq3P" id="7Z8mn0jsK$N" role="37wK5m" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="7Z8mn0jsK$O" role="1B3o_S" />
-      <node concept="3cqZAl" id="7Z8mn0jsK$P" role="3clF45" />
-      <node concept="2AHcQZ" id="5rIhWKNS2$S" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
     <node concept="3UR2Jj" id="7Z8mn0jsMIM" role="lGtFl">
       <node concept="TZ5HA" id="7Z8mn0jsMYZ" role="TZ5H$">
         <node concept="1dT_AC" id="7Z8mn0jsMZ0" role="1dT_Ay">
@@ -3632,6 +3591,11 @@
       <node concept="TZ5HA" id="7Z8mn0jsMZ1" role="TZ5H$">
         <node concept="1dT_AC" id="7Z8mn0jsMZ2" role="1dT_Ay">
           <property role="1dT_AB" value="For now MPS seems to do the default thing: goes through the model nodes which turns out to be very slow" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="4bJcJMOYoam" role="TZ5H$">
+        <node concept="1dT_AC" id="4bJcJMOYoan" role="1dT_Ay">
+          <property role="1dT_AB" value="FWI, Installed into PersistenceRegistry with a help of ModuleActivator code" />
         </node>
       </node>
     </node>

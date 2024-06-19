@@ -4,8 +4,6 @@ package jetbrains.mps.java.core.sourceStubs;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.persistence.FindUsagesParticipant;
-import com.intellij.openapi.Disposable;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Set;
@@ -18,12 +16,12 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 /**
  * Will be gone when I implement find usages for source stubs.
  * For now MPS seems to do the default thing: goes through the model nodes which turns out to be very slow
+ * FWI, Installed into PersistenceRegistry with a help of ModuleActivator code
  */
 @GeneratedClass(node = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)/9207707776056494296", model = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)")
-public class EmptyJavaSourceStubsFindUsages implements FindUsagesParticipant, Disposable {
+public class EmptyJavaSourceStubsFindUsages implements FindUsagesParticipant {
 
   public EmptyJavaSourceStubsFindUsages() {
-    PersistenceFacade.getInstance().addFindUsagesParticipant(this);
   }
 
   public void findUsages(Collection<SModel> models, Set<SNode> set, Consumer<SReference> consumer, Consumer<SModel> processedConsumer) {
@@ -42,10 +40,5 @@ public class EmptyJavaSourceStubsFindUsages implements FindUsagesParticipant, Di
 
   public void findModelUsages(Collection<SModel> collection, Set<SModelReference> set, Consumer<SModel> consumer, Consumer<SModel> consumer1) {
     // let's not skip this, it's not going to slow down anything
-  }
-
-  @Override
-  public void dispose() {
-    PersistenceFacade.getInstance().removeFindUsagesParticipant(this);
   }
 }
