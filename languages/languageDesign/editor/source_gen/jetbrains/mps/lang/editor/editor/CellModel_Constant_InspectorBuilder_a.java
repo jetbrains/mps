@@ -30,6 +30,7 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import java.awt.Color;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -130,7 +131,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("property_text");
       Style style = new StyleImpl();
       style.set(StyleAttributes.DRAW_BORDER, true);
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.yellow));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_8hdu2g_a1b0d0()));
       style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.cyan));
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
@@ -145,6 +146,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     } finally {
       getCellFactory().popCellContext();
     }
+  }
+  private Color _StyleParameter_QueryFunction_8hdu2g_a1b0d0() {
+    return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("HIGHLIGHTED_CELL").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
   }
   private EditorCell createCollection_3() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
@@ -176,7 +180,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("property_nullText");
       Style style = new StyleImpl();
       style.set(StyleAttributes.DRAW_BORDER, true);
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.yellow));
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_8hdu2g_a1b1d0()));
       style.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(MPSColors.cyan));
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
@@ -191,6 +195,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     } finally {
       getCellFactory().popCellContext();
     }
+  }
+  private Color _StyleParameter_QueryFunction_8hdu2g_a1b1d0() {
+    return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("HIGHLIGHTED_CELL").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
   }
 
   private static final class PROPS {

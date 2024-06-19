@@ -82,6 +82,12 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
     mappingLabelStyle.set(StyleAttributes.BACKGROUND_COLOR, backgroundColor); // just in case, not sure what's the difference b/w the two
     setStyle("MAPPING_LABEL", mappingLabelStyle);
 
+    final StyleImpl highlightedCellStyle = new StyleImpl();
+    final JBColor highlightedCellColor = new JBColor(new Color(0xff, 0xe9, 0x59, 160), new Color(0x11, 0x49, 0x57, 255));
+    highlightedCellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, highlightedCellColor);
+    highlightedCellStyle.set(StyleAttributes.BACKGROUND_COLOR, highlightedCellColor); // just in case, not sure what's the difference b/w the two
+    setStyle("HIGHLIGHTED_CELL", highlightedCellStyle);
+
     final StyleImpl errorCellStyle = new StyleImpl();
     final JBColor errorCellColor = new JBColor(new  Color(255, 220, 220, 90), new Color(0xd6, 0x4d, 0x5b, 50));
     errorCellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, errorCellColor);
