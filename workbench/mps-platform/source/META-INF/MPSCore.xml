@@ -37,10 +37,6 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.ide.blame.dialog.BlameDialogComponent</implementation-class>
-    </component>
-
-    <component>
       <implementation-class>jetbrains.mps.persistence.ModelFactoryRegister</implementation-class>
     </component>
 
@@ -116,6 +112,7 @@
     <applicationService serviceImplementation="jetbrains.mps.VisibleModuleRegistry"/>
     <applicationService serviceImplementation="jetbrains.mps.ide.platform.watching.WatchedRoots"/>
     <applicationService serviceImplementation="jetbrains.mps.repository.FSNotificationsImprover"/>
+    <applicationService serviceImplementation="jetbrains.mps.ide.blame.dialog.BlameDialogComponent" />
 
     <projectService serviceImplementation="jetbrains.mps.ide.vfs.ProjectRootListenerComponent" />
 

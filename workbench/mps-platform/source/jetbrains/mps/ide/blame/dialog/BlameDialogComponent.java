@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,26 +32,18 @@ import java.awt.Component;
 import java.awt.Dialog;
 import java.awt.Frame;
 
+// FIXME why there's "deprecated" storage? I didn't get the idea of 43a7fe48, and there's no more
+//       MPSErrorReporterConfigurable (gone in ec8309aa). Is there still need for this storage file?
+//       Seems that BlameDialog now uses CredentialAttributesKt and doesn't need this state any more
 @State(
     name = "CharismaBlameDialog",
     storages = @Storage(value = "charismaBlameDialog.xml", deprecated = true, roamingType = RoamingType.DISABLED)
 )
-public class BlameDialogComponent implements ApplicationComponent, PersistentStateComponent<MyState> {
+public final class BlameDialogComponent implements PersistentStateComponent<MyState> {
   private MyState myDialogState = new MyState();
 
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "Charisma Error Reporter";
-  }
-
-  @Override
-  public void initComponent() {
-  }
-
-  @Override
-  public void disposeComponent() {
+  BlameDialogComponent() {
+    setDefaultAction();
   }
 
   private void setDefaultAction() {
@@ -61,11 +53,6 @@ public class BlameDialogComponent implements ApplicationComponent, PersistentSta
     if (lastActionName == null) {
       PropertiesComponent.getInstance().setValue(LAST_OK_ACTION, DEFAULT_ACTION_NAME);
     }
-  }
-
-  @Override
-  public void initializeComponent() {
-    setDefaultAction();
   }
 
   @Override
@@ -94,7 +81,7 @@ public class BlameDialogComponent implements ApplicationComponent, PersistentSta
   }
 
   public static BlameDialogComponent getInstance() {
-    return ApplicationManager.getApplication().getComponent(BlameDialogComponent.class);
+    return ApplicationManager.getApplication().getService(BlameDialogComponent.class);
   }
 
   public static class MyState {
