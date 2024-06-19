@@ -28,6 +28,9 @@ import jetbrains.mps.project.ModelsAutoImportsManager;
  *
  * AppComponent seems too much, but I don't know any better-suited mechanism. If you do, please step out
  * and tell me.
+ * XXX seems that I need a dedicated solution under mps-testing plugin, using ModuleRuntime.Activator to install this
+ *     integration. Didn't find any proper existing module among lang.test or baseLanguage.unitTest modules to put
+ *     that code into.
  */
 public class AbstractModuleWorkbenchAdjuster implements Disposable {
   private final MPSCoreComponents myCoreComponents;
