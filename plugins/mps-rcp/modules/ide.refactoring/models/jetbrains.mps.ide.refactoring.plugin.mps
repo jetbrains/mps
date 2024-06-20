@@ -6643,7 +6643,6 @@
     <node concept="1DS2jV" id="7YjnSrg1ASb" role="1NuT2Z">
       <property role="TrG5h" value="targetModel" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.TARGET_MODEL" resolve="TARGET_MODEL" />
-      <node concept="1oajcY" id="7YjnSrg1ASc" role="1oa70y" />
     </node>
     <node concept="tnohg" id="I5wdVHTn$$" role="tncku">
       <node concept="3clFbS" id="I5wdVHTn$_" role="2VODD2">

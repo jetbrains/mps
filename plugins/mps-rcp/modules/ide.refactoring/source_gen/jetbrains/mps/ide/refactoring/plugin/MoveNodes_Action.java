@@ -87,9 +87,6 @@ public class MoveNodes_Action extends BaseAction {
     {
       SModel p = event.getData(MPSCommonDataKeys.TARGET_MODEL);
       MapSequence.fromMap(_params).put("targetModel", p);
-      if (p == null) {
-        return false;
-      }
     }
     return true;
   }
