@@ -52,7 +52,14 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public abstract class ModelAccess extends AbstractModelAccess implements ModelCommandExecutor, org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
   protected static final Logger LOG = Logger.getLogger(ModelAccess.class);
 
-  protected static ModelAccess ourInstance = new DefaultModelAccess();
+  protected static ModelAccess ourInstance = newInstance();
+
+  /**
+   * INTERNAL, TRANSITION CODE, DON'T USE!
+   */
+  public static ModelAccess newInstance() {
+    return new DefaultModelAccess();
+  }
 
   private final ReentrantReadWriteLockEx myReadWriteLock = new ReentrantReadWriteLockEx();
 

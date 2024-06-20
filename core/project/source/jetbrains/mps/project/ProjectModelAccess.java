@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.smodel.ModelAccess;
 import jetbrains.mps.smodel.ModelAccessBase;
 
 import javax.swing.SwingUtilities;
@@ -33,8 +34,14 @@ public class ProjectModelAccess extends ModelAccessBase {
   private final Project myProject;
 
   public ProjectModelAccess(Project project) {
+    this(project, ModelAccess.newInstance());
+  }
+
+  public ProjectModelAccess(Project project, ModelAccess delegate) {
+    super(delegate);
     myProject = project;
   }
+
 
   @Override
   public void executeCommand(Runnable r) {
