@@ -7,6 +7,7 @@ import java.util.List;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
@@ -19,8 +20,9 @@ import java.util.Collection;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/3577160840697329341", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)")
 public class MigrationSetup {
-  private final List<ProjectMigration> myProjectMigrations = ListSequence.fromList(new ArrayList<ProjectMigration>());
-  private final List<AppliedScript> myModuleMigrations = ListSequence.fromList(new ArrayList<AppliedScript>());
+  private final List<ProjectMigration> myProjectMigrations = ListSequence.fromList(new ArrayList<>());
+  private final List<AppliedScript> myModuleMigrations = ListSequence.fromList(new ArrayList<>());
+  private final List<SModuleReference> myModulesWithWrongVersions = ListSequence.fromList(new ArrayList<>());
   private boolean myBrokenDepsOfProjectModules;
   private boolean myNeedImportVersionUpdate;
 
@@ -69,10 +71,8 @@ public class MigrationSetup {
       mv.resetVersions();
       for (SModule module : Sequence.fromIterable(modules)) {
         if (mv.needsUpdate(module)) {
-          // XXX perhaps, have a list of all modules that needs update and report it to user?
-          // it would help me to understand whether to apply migration or to perform manual update (if there are few modules only)
+          ListSequence.fromList(myModulesWithWrongVersions).addElement(module.getModuleReference());
           myNeedImportVersionUpdate = true;
-          break;
         }
       }
     }
@@ -101,5 +101,18 @@ public class MigrationSetup {
    */
   public boolean importVersionsUpdateRequired() {
     return !(myBrokenDepsOfProjectModules) && myNeedImportVersionUpdate;
+  }
+
+  /**
+   * 
+   * @return true if affected modules have to be re-saved prior to migration
+   */
+  public boolean isRepositorySaveRequired() {
+    // well, this is an odd property, tribute to legacy parameter wandering around
+    return isMigrationRequired() || importVersionsUpdateRequired();
+  }
+
+  public List<SModuleReference> modulesToUpdateVersions() {
+    return (importVersionsUpdateRequired() ? myModulesWithWrongVersions : ListSequence.fromList(new ArrayList<SModuleReference>()));
   }
 }

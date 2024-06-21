@@ -286,7 +286,7 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
               final Tuples._2<MigrationResult, MigrationError> result = runMigration(migrationSetup);
               if (result._0() == MigrationResult.POSTPONED) {
                 myPostponedState.set(newState);
-                myNotifications.showRequired();
+                myNotifications.showRequired(migrationSetup);
               } else if (result._0() == MigrationResult.FINISHED_WITH_ERRORS) {
                 ProgressManager.getInstance().run(new Task.Modal(myProject, "Collecting Errors", false) {
                   public void run(@NotNull final ProgressIndicator progressIndicator) {
@@ -297,7 +297,7 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
                   }
                 });
                 myPostponedState.set(newState);
-                myNotifications.showRequired();
+                myNotifications.showRequired(null);
                 cleanup();
               } else if (result._0() == MigrationResult.FINISHED) {
                 myPostponedState.set(null);
@@ -309,7 +309,7 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
               myNotifications.showNotRequired();
             }
           } else {
-            if (myNotifications.showRequired()) {
+            if (myNotifications.showRequired(null)) {
               myPostponedState.accumulateAndGet(newState, new BinaryOperator<PostponedState>() {
                 @Override
                 public PostponedState apply(PostponedState current, PostponedState additional) {
@@ -376,12 +376,7 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
   private Tuples._2<MigrationResult, MigrationError> runMigration(MigrationSetup migrationSetup) {
     myMigrationRunning = true;
     try {
-      // FIXME logic copied from PostponedState. Don't see a reason though to pass this explicitly
-      //      into MigrationSessionImpl as long as we pass MigrationSetup there as well.
-      final boolean updateVersions = migrationSetup.importVersionsUpdateRequired();
-      // aka PostponedState.hasMigrations()
-      final boolean migrate = migrationSetup.isMigrationRequired();
-      MigrationSessionImpl session = new MigrationSessionImpl(myMpsProject, migrationSetup, true, updateVersions, migrate);
+      MigrationSessionImpl session = new MigrationSessionImpl(myMpsProject, migrationSetup);
       final MigrationWizard wizard = new MigrationWizard(myProject, session);
       boolean finished = wizard.showAndGet();
       MigrationError errors = session.getError();
