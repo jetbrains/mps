@@ -51,6 +51,7 @@
     <import index="fulz" ref="r:6f792c44-2a5d-40e8-9f05-33f7d4ae26ec(jetbrains.mps.editor.runtime.completion)" />
     <import index="5ueo" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.editor.runtime.style(MPS.Editor/)" />
     <import index="hox0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.style(MPS.Editor/)" />
+    <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -6370,19 +6371,9 @@
         <node concept="3clFbJ" id="h8433ef" role="3cqZAp">
           <node concept="3clFbS" id="h8433eh" role="3clFbx">
             <node concept="3cpWs6" id="h843mWE" role="3cqZAp">
-              <node concept="2ShNRf" id="hDI_36T" role="3cqZAk">
-                <node concept="1pGfFk" id="hDI_36V" role="2ShVmc">
-                  <ref role="37wK5l" to="z60i:~Color.&lt;init&gt;(int,int,int)" resolve="Color" />
-                  <node concept="3cmrfG" id="h843q7M" role="37wK5m">
-                    <property role="3cmrfH" value="230" />
-                  </node>
-                  <node concept="3cmrfG" id="h843qZY" role="37wK5m">
-                    <property role="3cmrfH" value="230" />
-                  </node>
-                  <node concept="3cmrfG" id="h843rJ8" role="37wK5m">
-                    <property role="3cmrfH" value="230" />
-                  </node>
-                </node>
+              <node concept="10M0yZ" id="3_uycY_nYdn" role="3cqZAk">
+                <ref role="3cqZAo" to="exr9:~MPSColors.gray_bg" resolve="gray_bg" />
+                <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
               </node>
             </node>
           </node>

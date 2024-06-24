@@ -5,11 +5,12 @@ package jetbrains.mps.lang.editor.editor;
 import java.awt.Color;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
+import jetbrains.mps.nodeEditor.MPSColors;
 
 public class _EditorUtil {
   public static Color grayIfNotSelectable(SNode cellModel) {
     if (!((boolean) EditorCellModel__BehaviorDescriptor.isSelectable_idhJF6SX1.invoke(cellModel))) {
-      return new Color(230, 230, 230);
+      return MPSColors.gray_bg;
     }
     return null;
   }

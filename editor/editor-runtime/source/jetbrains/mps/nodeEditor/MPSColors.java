@@ -51,6 +51,9 @@ public final class MPSColors extends JBColor {
   public static final Color green = JBColor.green;
   public static final Color GREEN = green;
 
+  public static final Color gray_bg = new  JBColor(new  Color(230, 230, 230), new  Color(84, 84, 84));
+  public static final Color GRAY_BG = gray_bg;
+
   public static final Color cyan = JBColor.cyan;
   public static final Color CYAN = cyan;
 
