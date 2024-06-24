@@ -20,7 +20,7 @@
       <unit at="3288,0,3315,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$PPQ" />
       <unit at="3446,0,3484,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$CONCEPTS" />
       <unit at="1865,0,1906,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$WRQ" />
-      <unit at="3485,0,3527,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$PROPS" />
+      <unit at="3485,0,3526,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$PROPS" />
       <unit at="3065,0,3113,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$RTQ" />
       <unit at="3141,0,3192,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$VVQ" />
       <unit at="3221,0,3274,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$CAQ" />
@@ -29,7 +29,7 @@
       <unit at="2104,0,2237,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$SNsQ" />
       <unit at="2824,0,2995,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$IfMC" />
       <unit at="2405,0,2735,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated$PVQ" />
-      <unit at="103,0,3528,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated" />
+      <unit at="103,0,3527,0" name="jetbrains.mps.build.mps.generator.template.main.QueriesGenerated" />
     </file>
   </root>
   <root nodeRef="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)/1265949165890610447">
@@ -3108,7 +3108,7 @@
       <node id="5413931468219490127" at="148,159,149,149" concept="7" />
       <node id="5413931468219492681" at="149,149,150,152" concept="7" />
       <node id="5413931468219497402" at="150,152,151,46" concept="7" />
-      <node id="6136186284559331947" at="151,46,152,238" concept="6" />
+      <node id="6136186284559331947" at="151,46,152,266" concept="6" />
       <node id="6136186284559370743" at="153,5,154,17" concept="6" />
       <node id="6136186284559412659" at="156,83,157,135" concept="6" />
       <node id="7753544965996882287" at="159,83,160,138" concept="6" />
@@ -3414,7 +3414,7 @@
         <var name="_context" id="4031822141866304305" />
       </scope>
       <scope id="1241280061045074209" at="1156,92,1160,120" />
-      <scope id="6136186284559309051" at="146,136,152,238">
+      <scope id="6136186284559309051" at="146,136,152,266">
         <var name="solution" id="6136186284559325826" />
       </scope>
       <scope id="4031822141866289525" at="162,83,168,17" />

@@ -395,7 +395,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_BuildMps_Language;
       case LanguageConceptSwitch.BuildMps_Module:
         if (props_BuildMps_Module == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL);
+          cpb.deprecateProperty(0x14d3fb6fb84ac614L, "doNotCompile");
           props_BuildMps_Module = cpb.create();
         }
         return props_BuildMps_Module;

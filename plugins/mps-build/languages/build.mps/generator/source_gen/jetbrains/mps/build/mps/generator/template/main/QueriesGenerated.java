@@ -149,7 +149,7 @@ public class QueriesGenerated extends QueryProviderBase {
       // rationale for the new condition here (replaces "module has no jar dependencies") is to allow explicit source specification for modules built
       // outside of MPS, so that they get bundled into distinct -src.jar like modules compiled in MPS do. Still, keep mechanism to build simple one-jar 
       // distribution bundles for stub modules
-      return SPropertyOperations.getBoolean(solution, PROPS.doNotCompile$4EF) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(solution, LINKS.sources$mT1j), CONCEPTS.BuildMps_ModuleJavaSource$M6)).isEmpty();
+      return !((boolean) BuildMps_Module__BehaviorDescriptor.isCompilable_id6tOCIA6_7jg.invoke(solution)) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(solution, LINKS.sources$mT1j), CONCEPTS.BuildMps_ModuleJavaSource$M6)).isEmpty();
     }
     return false;
   }
@@ -3485,7 +3485,6 @@ public class QueriesGenerated extends QueryProviderBase {
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty pluginXmlProvided$f2I = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x450018b736351dc3L, "pluginXmlProvided");
-    /*package*/ static final SProperty doNotCompile$4EF = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
     /*package*/ static final SProperty customPackaging$31Ex = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x37fdb3de482cf2dfL, "customPackaging");
     /*package*/ static final SProperty targetReexport$48k4 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0c18L, 0x44e5dd192e7c0c1aL, "targetReexport");
     /*package*/ static final SProperty useMakeTask$aRFt = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, 0x3f7149bc568e8eb4L, "useMakeTask");

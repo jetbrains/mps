@@ -11,12 +11,15 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.util.iterable.RecursiveIterator;
 import java.util.Iterator;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 /**
  * Collect dependencies we would like to record in a deployment MD.
@@ -64,9 +67,15 @@ public final class RuntimeDependencies {
     }
 
     for (SNode m : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyOnModule$1C), LINKS.module$kGi0)).where(new NotNullWhereFilter())) {
+      if (SEnumOperations.isMember(SPropertyOperations.getEnum(m, PROPS.javaCode$OceX), 0x352834178d0efa6bL)) {
+        continue;
+      }
       myCompileDeps.add(m);
     }
     for (SNode m : Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(declaredDependencies(module), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W), LINKS.language$NYXp)).where(new NotNullWhereFilter())) {
+      if (SEnumOperations.isMember(SPropertyOperations.getEnum(m, PROPS.javaCode$OceX), 0x352834178d0efa6bL)) {
+        continue;
+      }
       myCompileDeps.add(m);
     }
   }
@@ -132,5 +141,9 @@ public final class RuntimeDependencies {
     /*package*/ static final SContainmentLink dependency$u_ko = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x64bd442e1cf7aaeeL, 0x64bd442e1cf7aaefL, "dependency");
     /*package*/ static final SContainmentLink extends$SF0h = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, 0x4780308f5d23142L, "extends");
     /*package*/ static final SReferenceLink devkit$uPRS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2313aL, 0x4780308f5d2313bL, "devkit");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty javaCode$OceX = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x28a3c6c6f75d7a0bL, "javaCode");
   }
 }

@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -53,7 +54,12 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static boolean isCompilable_id6tOCIA6_7jg(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.doNotCompile$4EF) == false;
+    // check the old value first (if it is not migrated yet)
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.doNotCompile$4EF) == true) {
+      return false;
+    }
+
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.javaCode$OceX), 0x352834178d0efa68L);
   }
   /*package*/ static Iterable<SNode> getDependenciesUnwrapped_id3QtfwKhgryb(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.dependencies$j8Lj)).select((it) -> (SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8) ? SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.BuildMps_ExtractedModuleDependency$e8), LINKS.dependency$u_ko) : it));
@@ -245,6 +251,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
 
   private static final class PROPS {
     /*package*/ static final SProperty doNotCompile$4EF = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
+    /*package*/ static final SProperty javaCode$OceX = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x28a3c6c6f75d7a0bL, "javaCode");
     /*package*/ static final SProperty optionsName$Rr_z = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, 0xcdff0e1a96739c3L, "optionsName");
   }
 

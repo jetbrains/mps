@@ -102,6 +102,12 @@
       <property role="TrG5h" value="doNotCompile" />
       <property role="IQ2nx" value="1500819558096356884" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="asaX9" id="2yzLGrRnotl" role="lGtFl" />
+    </node>
+    <node concept="1TJgyi" id="2yzLGrRnnCb" role="1TKVEl">
+      <property role="IQ2nx" value="2928402740576877067" />
+      <property role="TrG5h" value="javaCode" />
+      <ref role="AX2Wp" node="3kCd1ud3JDB" resolve="BuildMps_CompileKind" />
     </node>
     <node concept="1TJgyj" id="4zCbl23d1OL" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -1883,6 +1889,27 @@
       <property role="20kJfa" value="files" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" to="3ior:4zlO3QT8$m$" resolve="BuildInputFiles" />
+    </node>
+  </node>
+  <node concept="25R3W" id="3kCd1ud3JDB">
+    <property role="TrG5h" value="BuildMps_CodeKind" />
+    <property role="3GE5qa" value="Project.Sources" />
+    <property role="3F6X1D" value="3830368758834068071" />
+    <ref role="1H5jkz" node="3kCd1ud3JDC" resolve="compile_in_mps" />
+    <node concept="25R33" id="3kCd1ud3JDC" role="25R1y">
+      <property role="TrG5h" value="compile_mps" />
+      <property role="3tVfz5" value="3830368758834068072" />
+      <property role="1L1pqM" value="compile in MPS" />
+    </node>
+    <node concept="25R33" id="3kCd1ud3JDD" role="25R1y">
+      <property role="TrG5h" value="compile_ext" />
+      <property role="1L1pqM" value="compile externally" />
+      <property role="3tVfz5" value="3830368758834068073" />
+    </node>
+    <node concept="25R33" id="3kCd1ud3JDF" role="25R1y">
+      <property role="3tVfz5" value="3830368758834068075" />
+      <property role="TrG5h" value="none" />
+      <property role="1L1pqM" value="no code" />
     </node>
   </node>
 </model>

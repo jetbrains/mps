@@ -9299,12 +9299,14 @@
                   </node>
                   <node concept="3cpWs6" id="5kC7eCQM79F" role="3cqZAp">
                     <node concept="1Wc70l" id="5kC7eCQMaBJ" role="3cqZAk">
-                      <node concept="2OqwBi" id="5kC7eCQM88L" role="3uHU7B">
-                        <node concept="37vLTw" id="5kC7eCQM79H" role="2Oq$k0">
-                          <ref role="3cqZAo" node="5kC7eCQM5E2" resolve="solution" />
-                        </node>
-                        <node concept="3TrcHB" id="5kC7eCQM8Wy" role="2OqNvi">
-                          <ref role="3TsBF5" to="kdzh:1jjYQYSiGok" resolve="doNotCompile" />
+                      <node concept="3fqX7Q" id="4cumEIL76E" role="3uHU7B">
+                        <node concept="2OqwBi" id="4cumEIL76G" role="3fr31v">
+                          <node concept="37vLTw" id="4cumEIL76H" role="2Oq$k0">
+                            <ref role="3cqZAo" node="5kC7eCQM5E2" resolve="solution" />
+                          </node>
+                          <node concept="2qgKlT" id="4cumEIL76I" role="2OqNvi">
+                            <ref role="37wK5l" to="2txq:6tOCIA6_7jg" resolve="isCompilable" />
+                          </node>
                         </node>
                       </node>
                       <node concept="2OqwBi" id="4Gy9vLLy1eC" role="3uHU7w">
