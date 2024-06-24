@@ -47,7 +47,7 @@ public class TypeExtensionsScope implements SignatureScope {
 
     */
 
-    return ExtensionsHelper.withTypesystem(myContext.getNode(), () -> Sequence.fromIterable(Collections.<SourcedSignature>emptyList()), (typesystem) -> {
+    return ExtensionsHelper.<Iterable<SourcedSignature>>withTypesystem(myContext.getNode(), () -> Sequence.fromIterable(Collections.<SourcedSignature>emptyList()), (typesystem) -> {
       // Here, ReceiverTypeFilter already does some light checking
       ScopeCollector collector = new ScopeCollector(mySignatureFilter);
       SignatureScope.collectHierarchyScopes(myContext, collector);
