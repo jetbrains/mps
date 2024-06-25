@@ -65,7 +65,7 @@ public final class ConvertToNodeWrapperElement_Intention extends AbstractIntenti
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return SPropertyOperations.getString(node, PROPS.value$zQr_).length() == 0;
+      return SPropertyOperations.getString(node, PROPS.value$zQr_) != null && SPropertyOperations.getString(node, PROPS.value$zQr_).length() == 0;
     }
 
 
