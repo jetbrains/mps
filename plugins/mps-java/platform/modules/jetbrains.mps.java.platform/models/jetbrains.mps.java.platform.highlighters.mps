@@ -43,6 +43,8 @@
     <import index="ew8r" ref="r:579b6612-4f9e-4479-8e4c-5ef2ee0f9722(jetbrains.mps.ide.editor.popup)" />
     <import index="ntzd" ref="r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
+    <import index="drih" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.colors(MPS.IDEA/)" />
+    <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -4156,10 +4158,6 @@
   <node concept="312cEu" id="58syclRvsJS">
     <property role="TrG5h" value="ToDoMessage" />
     <node concept="3clFbW" id="58syclRvsJT" role="jymVt">
-      <node concept="37vLTG" id="58syclRvsK2" role="3clF46">
-        <property role="TrG5h" value="node" />
-        <node concept="3Tqbb2" id="58syclRvsK3" role="1tU5fm" />
-      </node>
       <node concept="3Tm1VV" id="58syclRvsJV" role="1B3o_S" />
       <node concept="3cqZAl" id="58syclRvsJU" role="3clF45" />
       <node concept="3clFbS" id="58syclRvsJW" role="3clF47">
@@ -4168,9 +4166,8 @@
           <node concept="37vLTw" id="2BHiRxgm5G4" role="37wK5m">
             <ref role="3cqZAo" node="58syclRvsK2" resolve="node" />
           </node>
-          <node concept="10M0yZ" id="58syclRvsJZ" role="37wK5m">
-            <ref role="3cqZAo" to="z60i:~Color.BLUE" resolve="BLUE" />
-            <ref role="1PxDUh" to="z60i:~Color" resolve="Color" />
+          <node concept="37vLTw" id="58HxBH26OSL" role="37wK5m">
+            <ref role="3cqZAo" node="58HxBH26Mwa" resolve="color" />
           </node>
           <node concept="37vLTw" id="2BHiRxgheG$" role="37wK5m">
             <ref role="3cqZAo" node="58syclRvsK4" resolve="message" />
@@ -4180,6 +4177,10 @@
           </node>
         </node>
       </node>
+      <node concept="37vLTG" id="58syclRvsK2" role="3clF46">
+        <property role="TrG5h" value="node" />
+        <node concept="3Tqbb2" id="58syclRvsK3" role="1tU5fm" />
+      </node>
       <node concept="37vLTG" id="58syclRvsK4" role="3clF46">
         <property role="TrG5h" value="message" />
         <node concept="17QB3L" id="58syclRvsK5" role="1tU5fm" />
@@ -4188,6 +4189,12 @@
         <property role="TrG5h" value="owner" />
         <node concept="3uibUv" id="58syclRvsK7" role="1tU5fm">
           <ref role="3uigEE" to="kpve:~EditorMessageOwner" resolve="EditorMessageOwner" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="58HxBH26Mwa" role="3clF46">
+        <property role="TrG5h" value="color" />
+        <node concept="3uibUv" id="58HxBH26Mwb" role="1tU5fm">
+          <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
         </node>
       </node>
     </node>
@@ -4293,6 +4300,51 @@
           <node concept="3clFbS" id="fB3l80iR9A" role="2LFqv$">
             <node concept="3clFbJ" id="fB3l80iR9B" role="3cqZAp">
               <node concept="3clFbS" id="fB3l80iR9C" role="3clFbx">
+                <node concept="3cpWs8" id="58HxBH25GwQ" role="3cqZAp">
+                  <node concept="3cpWsn" id="58HxBH25GwP" role="3cpWs9">
+                    <property role="TrG5h" value="scheme" />
+                    <node concept="3uibUv" id="58HxBH25GwR" role="1tU5fm">
+                      <ref role="3uigEE" to="drih:~EditorColorsScheme" resolve="EditorColorsScheme" />
+                    </node>
+                    <node concept="2OqwBi" id="58HxBH267i2" role="33vP2m">
+                      <node concept="2YIFZM" id="58HxBH262Mn" role="2Oq$k0">
+                        <ref role="1Pybhc" to="drih:~EditorColorsManager" resolve="EditorColorsManager" />
+                        <ref role="37wK5l" to="drih:~EditorColorsManager.getInstance()" resolve="getInstance" />
+                      </node>
+                      <node concept="liA8E" id="58HxBH267i3" role="2OqNvi">
+                        <ref role="37wK5l" to="drih:~EditorColorsManager.getSchemeForCurrentUITheme()" resolve="getSchemeForCurrentUITheme" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3cpWs8" id="58HxBH26xZc" role="3cqZAp">
+                  <node concept="3cpWsn" id="58HxBH26xZd" role="3cpWs9">
+                    <property role="TrG5h" value="foregroundColor" />
+                    <node concept="3uibUv" id="58HxBH26xIM" role="1tU5fm">
+                      <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
+                    </node>
+                    <node concept="2OqwBi" id="58HxBH26xZe" role="33vP2m">
+                      <node concept="2OqwBi" id="58HxBH26xZf" role="2Oq$k0">
+                        <node concept="37vLTw" id="58HxBH26xZg" role="2Oq$k0">
+                          <ref role="3cqZAo" node="58HxBH25GwP" resolve="globalScheme" />
+                        </node>
+                        <node concept="liA8E" id="58HxBH26xZh" role="2OqNvi">
+                          <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />
+                          <node concept="2YIFZM" id="58HxBH26xZi" role="37wK5m">
+                            <ref role="1Pybhc" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
+                            <ref role="37wK5l" to="drih:~TextAttributesKey.createTextAttributesKey(java.lang.String)" resolve="createTextAttributesKey" />
+                            <node concept="Xl_RD" id="58HxBH26xZj" role="37wK5m">
+                              <property role="Xl_RC" value="TODO_DEFAULT_ATTRIBUTES" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="58HxBH26xZk" role="2OqNvi">
+                        <ref role="37wK5l" to="8m69:~TextAttributes.getForegroundColor()" resolve="getForegroundColor" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
                 <node concept="3clFbF" id="fB3l80iR9D" role="3cqZAp">
                   <node concept="2OqwBi" id="fB3l80iR9E" role="3clFbG">
                     <node concept="37vLTw" id="fB3l80iR9F" role="2Oq$k0">
@@ -4314,6 +4366,9 @@
                             </node>
                           </node>
                           <node concept="Xjq3P" id="fB3l80iR9N" role="37wK5m" />
+                          <node concept="37vLTw" id="58HxBH26Jjl" role="37wK5m">
+                            <ref role="3cqZAo" node="58HxBH26xZd" resolve="foregroundColor" />
+                          </node>
                         </node>
                       </node>
                     </node>
