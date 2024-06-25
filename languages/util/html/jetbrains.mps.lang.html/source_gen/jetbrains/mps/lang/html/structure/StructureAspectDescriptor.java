@@ -24,6 +24,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptHtmlEntityRefValue = createDescriptorForHtmlEntityRefValue();
   /*package*/ final ConceptDescriptor myConceptHtmlFile = createDescriptorForHtmlFile();
   /*package*/ final ConceptDescriptor myConceptHtmlLine = createDescriptorForHtmlLine();
+  /*package*/ final ConceptDescriptor myConceptHtmlLineWithoutSpaces = createDescriptorForHtmlLineWithoutSpaces();
   /*package*/ final ConceptDescriptor myConceptHtmlOpeningTag = createDescriptorForHtmlOpeningTag();
   /*package*/ final ConceptDescriptor myConceptHtmlPart = createDescriptorForHtmlPart();
   /*package*/ final ConceptDescriptor myConceptHtmlTag = createDescriptorForHtmlTag();
@@ -45,7 +46,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptHtmlAttribute, myConceptHtmlBaseAttribute, myConceptHtmlClosingTag, myConceptHtmlContent, myConceptHtmlDocument, myConceptHtmlEntityRef, myConceptHtmlEntityRefValue, myConceptHtmlFile, myConceptHtmlLine, myConceptHtmlOpeningTag, myConceptHtmlPart, myConceptHtmlTag, myConceptHtmlTextValue, myConceptHtmlValuePart, myConceptHtmlWord);
+    return Arrays.asList(myConceptHtmlAttribute, myConceptHtmlBaseAttribute, myConceptHtmlClosingTag, myConceptHtmlContent, myConceptHtmlDocument, myConceptHtmlEntityRef, myConceptHtmlEntityRefValue, myConceptHtmlFile, myConceptHtmlLine, myConceptHtmlLineWithoutSpaces, myConceptHtmlOpeningTag, myConceptHtmlPart, myConceptHtmlTag, myConceptHtmlTextValue, myConceptHtmlValuePart, myConceptHtmlWord);
   }
 
   @Override
@@ -70,6 +71,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptHtmlFile;
       case LanguageConceptSwitch.HtmlLine:
         return myConceptHtmlLine;
+      case LanguageConceptSwitch.HtmlLineWithoutSpaces:
+        return myConceptHtmlLineWithoutSpaces;
       case LanguageConceptSwitch.HtmlOpeningTag:
         return myConceptHtmlOpeningTag;
       case LanguageConceptSwitch.HtmlPart:
@@ -179,6 +182,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.aggregate("elements", 0xbe995479a94d8aL).target(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0xbe995479c821ffL).optional(true).ordered(true).multiple(true).origin("53648833672465802").done();
     b.alias("line");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForHtmlLineWithoutSpaces() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.html", "HtmlLineWithoutSpaces", 0x8a10cb27224943abL, 0xad374b804d24ba45L, 0x409a2725ed94f7d7L);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.lang.html.structure.HtmlLine
+    b.super_(0x8a10cb27224943abL, 0xad374b804d24ba45L, 0xbe995479a944fcL);
+    b.origin("r:3b76a1f9-9c6e-4847-bffe-2a259b07008a(jetbrains.mps.lang.html.structure)/4655076208694065111");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForHtmlOpeningTag() {

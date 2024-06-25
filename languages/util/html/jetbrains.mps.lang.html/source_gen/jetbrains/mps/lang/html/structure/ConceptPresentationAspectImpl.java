@@ -18,6 +18,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_HtmlEntityRefValue;
   private ConceptPresentation props_HtmlFile;
   private ConceptPresentation props_HtmlLine;
+  private ConceptPresentation props_HtmlLineWithoutSpaces;
   private ConceptPresentation props_HtmlOpeningTag;
   private ConceptPresentation props_HtmlPart;
   private ConceptPresentation props_HtmlTag;
@@ -94,6 +95,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_HtmlLine = cpb.create();
         }
         return props_HtmlLine;
+      case LanguageConceptSwitch.HtmlLineWithoutSpaces:
+        if (props_HtmlLineWithoutSpaces == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("HtmlLineWithoutSpaces");
+          props_HtmlLineWithoutSpaces = cpb.create();
+        }
+        return props_HtmlLineWithoutSpaces;
       case LanguageConceptSwitch.HtmlOpeningTag:
         if (props_HtmlOpeningTag == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

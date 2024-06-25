@@ -179,11 +179,11 @@
   <node concept="1TIwiD" id="1q3yNZeAEkj">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
-    <property role="R4oN_" value="plain text" />
     <property role="TrG5h" value="HtmlWord" />
     <property role="2_RsDV" value="4G1g3fIR8JG/none" />
     <property role="EcuMT" value="1622293396948952339" />
     <property role="34LRSv" value="word" />
+    <property role="R4oN_" value="plain text" />
     <ref role="1TJDcQ" node="2YAlhTM27Z" resolve="HtmlContent" />
     <node concept="1TJgyi" id="1q3yNZeAEDC" role="1TKVEl">
       <property role="TrG5h" value="value" />
@@ -264,6 +264,11 @@
       <property role="IQ2nx" value="6666499814681543256" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="42q9MnH_fvn">
+    <property role="EcuMT" value="4655076208694065111" />
+    <property role="TrG5h" value="HtmlLineWithoutSpaces" />
+    <ref role="1TJDcQ" node="2YAlhTEkjW" resolve="HtmlLine" />
   </node>
 </model>
 
