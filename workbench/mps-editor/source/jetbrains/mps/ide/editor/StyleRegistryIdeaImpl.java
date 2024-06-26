@@ -79,38 +79,50 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
     final StyleImpl mappingLabelStyle = new StyleImpl();
     final JBColor backgroundColor = new JBColor(new Color(0xff, 0xe9, 0x59, 100), new Color(0x11, 0x49, 0x57, 200));
     mappingLabelStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, backgroundColor);
-    mappingLabelStyle.set(StyleAttributes.BACKGROUND_COLOR, backgroundColor); // just in case, not sure what's the difference b/w the two
+    mappingLabelStyle.set(StyleAttributes.BACKGROUND_COLOR, backgroundColor);
     setStyle("HIGHLIGHTED_LABEL_IN_EDITOR", mappingLabelStyle);
 
     final StyleImpl highlightedCellStyle = new StyleImpl();
     final JBColor highlightedCellColor = new JBColor(new Color(0xff, 0xe9, 0x59, 160), new Color(0x11, 0x49, 0x57, 255));
     highlightedCellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, highlightedCellColor);
-    highlightedCellStyle.set(StyleAttributes.BACKGROUND_COLOR, highlightedCellColor); // just in case, not sure what's the difference b/w the two
+    highlightedCellStyle.set(StyleAttributes.BACKGROUND_COLOR, highlightedCellColor);
     setStyle("HIGHLIGHTED_CELL", highlightedCellStyle);
+
+    final StyleImpl quotationStyle = new StyleImpl();
+    final JBColor quotationColor = new JBColor(new  Color(0, 200, 200, 90), new Color(0, 155, 155, 200));
+    quotationStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, quotationColor);
+    quotationStyle.set(StyleAttributes.BACKGROUND_COLOR, quotationColor);
+    setStyle("QUOTATION_BRACE", quotationStyle);
+
+    final StyleImpl lightQuotationStyle = new StyleImpl();
+    final JBColor lightQuotationColor = new JBColor(new  Color(0x74, 0xa4, 0xc8, 200), new Color(0x74, 0xa4, 0xc8, 190));
+    lightQuotationStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, lightQuotationColor);
+    lightQuotationStyle.set(StyleAttributes.BACKGROUND_COLOR, lightQuotationColor);
+    setStyle("LIGHT_QUOTATION_BRACE", lightQuotationStyle);
 
     final StyleImpl errorCellStyle = new StyleImpl();
     final JBColor errorCellColor = new JBColor(new  Color(255, 220, 220, 90), new Color(0xd6, 0x4d, 0x5b, 50));
     errorCellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, errorCellColor);
-    errorCellStyle.set(StyleAttributes.BACKGROUND_COLOR, errorCellColor); // just in case, not sure what's the difference b/w the two
+    errorCellStyle.set(StyleAttributes.BACKGROUND_COLOR, errorCellColor);
     setStyle("ERROR_CELL", errorCellStyle);
 
     final StyleImpl reflectiveEditorFirstLabelCellStyle = new StyleImpl();
     final JBColor reflectiveEditorFirstLabelColor = new JBColor(new Color(107, 142, 20, 60), new Color(107, 142, 20, 100));
     reflectiveEditorFirstLabelCellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, reflectiveEditorFirstLabelColor);
-    reflectiveEditorFirstLabelCellStyle.set(StyleAttributes.BACKGROUND_COLOR, reflectiveEditorFirstLabelColor); // just in case, not sure what's the difference b/w the two
+    reflectiveEditorFirstLabelCellStyle.set(StyleAttributes.BACKGROUND_COLOR, reflectiveEditorFirstLabelColor);
     setStyle("REFLECTIVE_EDITOR_FIRST_LABEL", reflectiveEditorFirstLabelCellStyle);
 
     final StyleImpl cellCollectionTagStyle = new StyleImpl();
     final JBColor cellCollectionTagColor = new  JBColor(new  Color(230, 230, 230), new  Color(84, 84, 84));
     cellCollectionTagStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, cellCollectionTagColor);
-    cellCollectionTagStyle.set(StyleAttributes.BACKGROUND_COLOR, cellCollectionTagColor); // just in case, not sure what's the difference b/w the two
+    cellCollectionTagStyle.set(StyleAttributes.BACKGROUND_COLOR, cellCollectionTagColor);
     setStyle("CELL_COLLECTION_TAG_BACKGROUND", cellCollectionTagStyle);
 
     final StyleImpl sc = new StyleImpl();
     sc.set(StyleAttributes.TEXT_COLOR, getEditorForeground());
     final JBColor bg = new JBColor(new Color(235, 244, 254), new Color(0x141D29));
     sc.set(StyleAttributes.TEXT_BACKGROUND_COLOR, bg);
-    sc.set(StyleAttributes.BACKGROUND_COLOR, bg); // just in case, not sure what's the difference b/w the two
+    sc.set(StyleAttributes.BACKGROUND_COLOR, bg);
     sc.set(StyleAttributes.SELECTED_TEXT_COLOR, getColorsScheme().getColor(EditorColors.SELECTION_FOREGROUND_COLOR));
     sc.set(StyleAttributes.SELECTED_TEXT_BACKGROUND_COLOR, getColorsScheme().getColor(EditorColors.SELECTION_BACKGROUND_COLOR));
     // TODO HIGHLIGHT_COLOR, SELECTION_HIGHLIGHT_COLOR attributes for use in NodeItemCellRenderer

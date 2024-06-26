@@ -17,9 +17,9 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.LeftParenStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import java.awt.Color;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.Measure;
+import java.awt.Color;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -78,12 +78,15 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     Style style = new StyleImpl();
     new LeftParenStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(7644360)));
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_x54h4p_a1a0()));
     style.set(StyleAttributes.PADDING_RIGHT, new Padding(0.0, Measure.SPACES));
     style.set(StyleAttributes.MATCHING_LABEL, (String) null);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+  private Color _StyleParameter_QueryFunction_x54h4p_a1a0() {
+    return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("LIGHT_QUOTATION_BRACE").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
   }
   private EditorCell createRefNode_0() {
     SingleRoleCellProvider provider = new quotedNodeSingleRoleHandler_x54h4p_b0(myNode, LINKS.quotedNode$cF64, getEditorContext());
@@ -149,11 +152,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     Style style = new StyleImpl();
     new RightParenStyleClass(this).apply(style, editorCell);
     style.set(StyleAttributes.SELECTABLE, true);
-    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(new Color(7644360)));
+    style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, getStyleRegistry().getSimpleColor(_StyleParameter_QueryFunction_x54h4p_a1c0()));
     style.set(StyleAttributes.MATCHING_LABEL, (String) null);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
+  }
+  private Color _StyleParameter_QueryFunction_x54h4p_a1c0() {
+    return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("LIGHT_QUOTATION_BRACE").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
   }
   private EditorCell createRefNode_1() {
     SingleRoleCellProvider provider = new modelToCreateSingleRoleHandler_x54h4p_d0(myNode, LINKS.modelToCreate$AyVT, getEditorContext());
