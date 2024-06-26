@@ -47,9 +47,10 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
   @Override
   protected boolean containsSObject(SObject sObject) {
-    return sObject.testIfHasSModule(sModule -> containsModule(sModule));
+    return sObject.testIfHasSModule(this::containsModule);
   }
 
+  @SuppressWarnings("SuspiciousMethodCalls")
   private boolean containsModule(SModule sModule) {
     return ProjectHelper.fromIdeaProject(getProject()).getModelAccess().computeReadAction(() ->
               Objects.equals(sModule, getValue()) || getValue().getOwnedGenerators().contains(sModule));
@@ -128,7 +129,7 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     public @Nullable Comparable getSortKey() {
       return myOrdinal;
     }
-
+    
     @Override
     public @Nullable Comparable getTypeSortKey() {
       return myOrdinal;
@@ -166,12 +167,17 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    public boolean contains(@NotNull VirtualFile file) {
-      return false;
+    protected boolean containsSObject(SObject sObject) {
+      return sObject.testIfHasSModel(this::containsModel);
     }
 
-    @Override
-    protected boolean containsSObject(SObject sObject) {
+    private boolean containsModel(SModel sModel) {
+      final Object parentValue = getParentValue();
+      if (parentValue instanceof Language) {
+        return ((Language) parentValue).getAccessoryModels().stream()
+            .filter(model -> model.getModule() == null || model.getModule() == parentValue)
+            .anyMatch(model -> model == sModel);
+      }
       return false;
     }
 
