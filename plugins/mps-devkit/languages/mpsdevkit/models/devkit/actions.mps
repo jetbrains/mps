@@ -5000,7 +5000,7 @@
                           </node>
                         </node>
                         <node concept="2YIFZM" id="2ZCExIdsniv" role="37wK5m">
-                          <ref role="37wK5l" to="tprs:6LWztcA_WYR" resolve="getWriteSearchResultsBackgroundColor" />
+                          <ref role="37wK5l" to="tprs:6LWztcA_WYR" resolve="getSearchResultsSourceBackgroundColor" />
                           <ref role="1Pybhc" to="tprs:cAZ8XCa267" resolve="HighlightConstants" />
                         </node>
                         <node concept="Xl_RD" id="2jM9X_IgWTu" role="37wK5m">

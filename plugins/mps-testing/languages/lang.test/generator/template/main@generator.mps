@@ -1880,7 +1880,7 @@
                           <node concept="3clFbS" id="4dqLDEZ0kEC" role="2VODD2">
                             <node concept="3clFbF" id="6US8dKoXsXx" role="3cqZAp">
                               <node concept="1mL9RQ" id="6US8dKoXsXw" role="3clFbG">
-                                <ref role="1mL9RD" node="6US8dKoXryG" resolve="projectPane" />
+                                <ref role="1mL9RD" node="6US8dKoXryG" resolve="projectPath" />
                               </node>
                             </node>
                           </node>
@@ -1893,7 +1893,7 @@
                               <node concept="3y3z36" id="6US8dKoXvEz" role="3clFbG">
                                 <node concept="10Nm6u" id="6US8dKoXwHK" role="3uHU7w" />
                                 <node concept="1mL9RQ" id="6US8dKoXtU$" role="3uHU7B">
-                                  <ref role="1mL9RD" node="6US8dKoXryG" resolve="projectPane" />
+                                  <ref role="1mL9RD" node="6US8dKoXryG" resolve="projectPath" />
                                 </node>
                               </node>
                             </node>
@@ -3572,11 +3572,11 @@
                             <node concept="2OqwBi" id="2IvnPUIqjDf" role="2Oq$k0">
                               <node concept="30H73N" id="2IvnPUIqj_S" role="2Oq$k0" />
                               <node concept="3TrEf2" id="2IvnPUIqjHe" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tp5g:2IvnPUIp3ly" />
+                                <ref role="3Tt5mk" to="tp5g:2IvnPUIp3ly" resolve="testNodeBefore" />
                               </node>
                             </node>
                             <node concept="3TrEf2" id="2IvnPUIqlIA" role="2OqNvi">
-                              <ref role="3Tt5mk" to="tp5g:hHqenIi" />
+                              <ref role="3Tt5mk" to="tp5g:hHqenIi" resolve="nodeToCheck" />
                             </node>
                           </node>
                         </node>
@@ -3670,11 +3670,11 @@
                             <node concept="2OqwBi" id="2IvnPUIqHId" role="2Oq$k0">
                               <node concept="30H73N" id="2IvnPUIqHpv" role="2Oq$k0" />
                               <node concept="3TrEf2" id="2IvnPUIqHXo" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tp5g:2IvnPUIp3m5" />
+                                <ref role="3Tt5mk" to="tp5g:2IvnPUIp3m5" resolve="testNodeResult" />
                               </node>
                             </node>
                             <node concept="3TrEf2" id="2IvnPUIqJZv" role="2OqNvi">
-                              <ref role="3Tt5mk" to="tp5g:hHqenIi" />
+                              <ref role="3Tt5mk" to="tp5g:hHqenIi" resolve="nodeToCheck" />
                             </node>
                           </node>
                         </node>

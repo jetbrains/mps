@@ -9592,7 +9592,7 @@
         <ref role="ehGHo" to="bjdw:1_4co2y1LvV" resolve="Plan" />
       </node>
       <node concept="2AHcQZ" id="6RmmpomDheX" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="6RmmpomDhuT" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="6RmmpomDhxt" role="2B70Vg">
@@ -9767,7 +9767,7 @@
                       <ref role="3cqZAo" node="1UVrAZQmUqz" resolve="myPlanDeclaration" />
                     </node>
                     <node concept="3TrEf2" id="7NlTw7DrLjA" role="2OqNvi">
-                      <ref role="3Tt5mk" to="bjdw:1tYEJSwm25y" />
+                      <ref role="3Tt5mk" to="bjdw:1tYEJSwm25y" resolve="forkAs" />
                     </node>
                   </node>
                 </node>
@@ -9783,7 +9783,7 @@
                 <ref role="3cqZAo" node="1UVrAZQmUqz" resolve="myPlanDeclaration" />
               </node>
               <node concept="3TrEf2" id="7NlTw7DrLjG" role="2OqNvi">
-                <ref role="3Tt5mk" to="bjdw:1tYEJSwm25y" />
+                <ref role="3Tt5mk" to="bjdw:1tYEJSwm25y" resolve="forkAs" />
               </node>
             </node>
             <node concept="3x8VRR" id="7NlTw7DrLjH" role="2OqNvi" />

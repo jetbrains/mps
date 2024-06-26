@@ -362,7 +362,7 @@
               <ref role="3cqZAo" node="av3ZwHUVVL" resolve="env" />
             </node>
             <node concept="37vLTw" id="av3ZwHUV95" role="37vLTJ">
-              <ref role="3cqZAo" node="av3ZwHUIiN" resolve="myDelegateEnv" />
+              <ref role="3cqZAo" node="av3ZwHUIiN" resolve="myEditorEnv" />
             </node>
           </node>
         </node>

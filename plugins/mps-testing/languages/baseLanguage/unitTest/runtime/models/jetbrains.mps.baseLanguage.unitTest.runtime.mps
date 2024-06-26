@@ -393,12 +393,12 @@
         <node concept="3clFbF" id="6dghH8J681P" role="3cqZAp">
           <node concept="2OqwBi" id="6dghH8J68m8" role="3clFbG">
             <node concept="37vLTw" id="6dghH8J681N" role="2Oq$k0">
-              <ref role="3cqZAo" node="6dghH8J5ZVS" resolve="ourScriptData" />
+              <ref role="3cqZAo" node="6dghH8J5ZVS" resolve="ourProjectUrl" />
             </node>
             <node concept="liA8E" id="6dghH8J69Fm" role="2OqNvi">
               <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
               <node concept="37vLTw" id="6dghH8J69MK" role="37wK5m">
-                <ref role="3cqZAo" node="6dghH8IXV$e" resolve="scriptData" />
+                <ref role="3cqZAo" node="6dghH8IXV$e" resolve="projectUrl" />
               </node>
             </node>
           </node>
@@ -497,7 +497,7 @@
               <node concept="2OqwBi" id="6dghH8J6bCf" role="3clFbG">
                 <node concept="2OqwBi" id="6dghH8J6aQB" role="2Oq$k0">
                   <node concept="37vLTw" id="6dghH8J6asy" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6dghH8J5ZVS" resolve="ourScriptData" />
+                    <ref role="3cqZAo" node="6dghH8J5ZVS" resolve="ourProjectUrl" />
                   </node>
                   <node concept="liA8E" id="6dghH8J6bjI" role="2OqNvi">
                     <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />

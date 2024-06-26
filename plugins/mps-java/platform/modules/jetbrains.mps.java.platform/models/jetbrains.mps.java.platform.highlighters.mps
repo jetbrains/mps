@@ -4326,7 +4326,7 @@
                     <node concept="2OqwBi" id="58HxBH26xZe" role="33vP2m">
                       <node concept="2OqwBi" id="58HxBH26xZf" role="2Oq$k0">
                         <node concept="37vLTw" id="58HxBH26xZg" role="2Oq$k0">
-                          <ref role="3cqZAo" node="58HxBH25GwP" resolve="globalScheme" />
+                          <ref role="3cqZAo" node="58HxBH25GwP" resolve="scheme" />
                         </node>
                         <node concept="liA8E" id="58HxBH26xZh" role="2OqNvi">
                           <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />

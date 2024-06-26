@@ -1511,7 +1511,7 @@
                                           <node concept="10P_77" id="77jjuPI7xDH" role="1tU5fm" />
                                           <node concept="2OqwBi" id="77jjuPI7xEy" role="33vP2m">
                                             <node concept="37vLTw" id="6kkED_btKWC" role="2Oq$k0">
-                                              <ref role="3cqZAo" node="6kkED_btKWA" resolve="instance" />
+                                              <ref role="3cqZAo" node="6kkED_btKWA" resolve="resolver" />
                                             </node>
                                             <node concept="liA8E" id="77jjuPI7xE$" role="2OqNvi">
                                               <ref role="37wK5l" to="5ijk:2uxkWp9XZ7U" resolve="resolveScopesOnly" />
@@ -2602,7 +2602,7 @@
             <node concept="1pGfFk" id="2uxkWp9Xvty" role="2ShVmc">
               <ref role="37wK5l" node="1$3BPv3W06F" resolve="RefScopeCheckerInEditor.ResolveReferenceEditorBasedQuickFix" />
               <node concept="37vLTw" id="pGO2w7w21d" role="37wK5m">
-                <ref role="3cqZAo" node="pGO2w7w218" resolve="findComponent" />
+                <ref role="3cqZAo" node="pGO2w7w218" resolve="resolver" />
               </node>
               <node concept="37vLTw" id="2uxkWp9Xwe_" role="37wK5m">
                 <ref role="3cqZAo" node="2uxkWp9VQCy" resolve="reference" />
@@ -3626,7 +3626,7 @@
         <node concept="3Tm1VV" id="1$3BPv3W06H" role="1B3o_S" />
         <node concept="3clFbS" id="1$3BPv3W06I" role="3clF47">
           <node concept="XkiVB" id="5s7RUu7MsWg" role="3cqZAp">
-            <ref role="37wK5l" to="k2t0:~RefScopeChecker$ResolveReferenceQuickFix.&lt;init&gt;(jetbrains.mps.resolve.ResolverComponent,org.jetbrains.mps.openapi.model.SReference,boolean)" resolve="ResolveReferenceQuickFix" />
+            <ref role="37wK5l" to="k2t0:~RefScopeChecker$ResolveReferenceQuickFix.&lt;init&gt;(jetbrains.mps.resolve.ResolverComponent,org.jetbrains.mps.openapi.model.SReference,boolean)" resolve="RefScopeChecker.ResolveReferenceQuickFix" />
             <node concept="37vLTw" id="pGO2w7vp4u" role="37wK5m">
               <ref role="3cqZAo" node="pGO2w7vgFm" resolve="resolver" />
             </node>

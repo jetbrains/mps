@@ -2,7 +2,7 @@
 <model ref="r:c038eee7-4c1b-499b-b130-c7394a2f3517(jetbrains.mps.generator.xmodel.build.test.build)">
   <persistence version="9" />
   <languages>
-    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="7" />
+    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="8" />
     <use id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build" version="0" />
   </languages>
   <imports>
@@ -75,7 +75,6 @@
       </concept>
       <concept id="868032131020265945" name="jetbrains.mps.build.mps.structure.BuildMPSPlugin" flags="ng" index="3b7kt6" />
       <concept id="5253498789149381388" name="jetbrains.mps.build.mps.structure.BuildMps_Module" flags="ng" index="3bQrTs">
-        <property id="1500819558096356884" name="doNotCompile" index="2GAjPV" />
         <child id="5253498789149547825" name="sources" index="3bR31x" />
         <child id="5253498789149547704" name="dependencies" index="3bR37C" />
       </concept>
@@ -134,7 +133,6 @@
       <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.generator.xmodel.test" />
       <property role="3LESm3" value="519e5d27-6128-4ba6-8758-43a055b1222d" />
-      <property role="2GAjPV" value="false" />
       <node concept="55IIr" id="3Af5TgnBvr$" role="3LF7KH">
         <node concept="2Ry0Ak" id="3Af5TgnBvrJ" role="iGT6I">
           <property role="2Ry0Am" value="languages" />
@@ -215,7 +213,6 @@
       <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.generator.test.xmodel.lang1" />
       <property role="3LESm3" value="b2d9d19b-9a47-47a4-93f4-0c9390001bf2" />
-      <property role="2GAjPV" value="false" />
       <node concept="55IIr" id="3Af5TgnBvsy" role="3LF7KH">
         <node concept="2Ry0Ak" id="3Af5TgnBvsP" role="iGT6I">
           <property role="2Ry0Am" value="languages" />
@@ -239,7 +236,6 @@
       <node concept="1yeLz9" id="3Af5TgnBvsW" role="1TViLv">
         <property role="TrG5h" value="jetbrains.mps.generator.test.xmodel.lang1#7618674748894117488" />
         <property role="3LESm3" value="b91edd51-b22d-4568-9ef0-89fad4f753d2" />
-        <property role="2GAjPV" value="false" />
         <node concept="1SiIV0" id="3Af5TgnBvu5" role="3bR37C">
           <node concept="3bR9La" id="3Af5TgnBvu6" role="1SiIV1">
             <property role="3bR36h" value="false" />
@@ -317,7 +313,6 @@
       <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.generator.xmodel.test2" />
       <property role="3LESm3" value="d8256d18-f5f5-4d78-8999-0bf716e43a91" />
-      <property role="2GAjPV" value="false" />
       <node concept="55IIr" id="3Af5TgnEtn5" role="3LF7KH">
         <node concept="2Ry0Ak" id="3Af5TgnEtnb" role="iGT6I">
           <property role="2Ry0Am" value="languages" />

@@ -2851,11 +2851,11 @@
                                   <node concept="2OqwBi" id="KUYoaWYPr7" role="2Oq$k0">
                                     <node concept="30H73N" id="KUYoaWYPr8" role="2Oq$k0" />
                                     <node concept="3TrEf2" id="KUYoaWYPr9" role="2OqNvi">
-                                      <ref role="3Tt5mk" to="5tjl:5I1s5NvGLlK" />
+                                      <ref role="3Tt5mk" to="5tjl:5I1s5NvGLlK" resolve="options" />
                                     </node>
                                   </node>
                                   <node concept="3TrEf2" id="KUYoaWYPra" role="2OqNvi">
-                                    <ref role="3Tt5mk" to="5tjl:6US8dKph52U" />
+                                    <ref role="3Tt5mk" to="5tjl:6US8dKph52U" resolve="projectPath" />
                                   </node>
                                 </node>
                               </node>
@@ -2888,7 +2888,7 @@
                                     <node concept="2OqwBi" id="KUYoaWYPrR" role="33vP2m">
                                       <node concept="2ShNRf" id="KUYoaWYPrS" role="2Oq$k0">
                                         <node concept="1pGfFk" id="KUYoaWYPrT" role="2ShVmc">
-                                          <ref role="37wK5l" to="o3n2:5DY7s5F2Pa1" />
+                                          <ref role="37wK5l" to="o3n2:5DY7s5F2Pa1" resolve="MacroHelper.MacroContext" />
                                           <node concept="37vLTw" id="KUYoaWYPrU" role="37wK5m">
                                             <ref role="3cqZAo" node="KUYoaWYPrH" resolve="project" />
                                           </node>

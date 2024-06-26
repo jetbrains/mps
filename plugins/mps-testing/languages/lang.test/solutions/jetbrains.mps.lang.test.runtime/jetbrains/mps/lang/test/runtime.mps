@@ -4856,7 +4856,7 @@
                     </node>
                     <node concept="2ShNRf" id="4POnHPbmis4" role="33vP2m">
                       <node concept="1pGfFk" id="4POnHPbmis5" role="2ShVmc">
-                        <ref role="37wK5l" node="2lja8zi28uQ" />
+                        <ref role="37wK5l" node="2lja8zi28uQ" resolve="TestsErrorsChecker" />
                         <node concept="37vLTw" id="4POnHPbmis6" role="37wK5m">
                           <ref role="3cqZAo" node="hSPZLlg" resolve="myBefore" />
                         </node>
@@ -7245,7 +7245,7 @@
         <node concept="3clFbF" id="6dghH8J6R5w" role="3cqZAp">
           <node concept="37vLTI" id="6dghH8J6R5y" role="3clFbG">
             <node concept="37vLTw" id="6dghH8J6R5_" role="37vLTJ">
-              <ref role="3cqZAo" node="6dghH8J6R5s" resolve="myScriptData" />
+              <ref role="3cqZAo" node="6dghH8J6R5s" resolve="myProjectUrlSupplier" />
             </node>
             <node concept="37vLTw" id="6dghH8J6R5A" role="37vLTx">
               <ref role="3cqZAo" node="22rviD7eYpD" resolve="projectUrlSupplier" />
@@ -7254,7 +7254,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="22rviD7eYpL" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="DRazW7Z7EV" role="jymVt" />
@@ -7407,7 +7407,7 @@
                     <ref role="3cqZAo" node="3hj1t46gkWd" resolve="myEnvironment" />
                   </node>
                   <node concept="37vLTw" id="6dghH8JgwVB" role="37wK5m">
-                    <ref role="3cqZAo" node="6dghH8J6R5s" resolve="myScriptData" />
+                    <ref role="3cqZAo" node="6dghH8J6R5s" resolve="myProjectUrlSupplier" />
                   </node>
                 </node>
               </node>
@@ -8472,7 +8472,7 @@
                     <node concept="2ShNRf" id="1p3K8b3caG4" role="2Oq$k0">
                       <node concept="1pGfFk" id="1p3K8b3cwEc" role="2ShVmc">
                         <property role="373rjd" value="true" />
-                        <ref role="37wK5l" to="wsw7:6pnunaLnyyn" resolve="ModelsExtractorImpl" />
+                        <ref role="37wK5l" to="wsw7:6pnunaLnyyn" resolve="ModelCheckerBuilder.ModelsExtractorImpl" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1p3K8b3cAMq" role="2OqNvi">
@@ -8745,7 +8745,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2xlO_Lwi26D" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2tJIrI" id="62XJ9UeIdvm" role="jymVt" />
@@ -11892,7 +11892,7 @@
               <ref role="3cqZAo" node="BMoFi_ydl$" resolve="environment" />
             </node>
             <node concept="37vLTw" id="6dghH8JgJDa" role="37wK5m">
-              <ref role="3cqZAo" node="6dghH8JgpSt" resolve="scriptData" />
+              <ref role="3cqZAo" node="6dghH8JgpSt" resolve="projectUrlSupplier" />
             </node>
           </node>
         </node>
@@ -12244,7 +12244,7 @@
               <node concept="37vLTI" id="6dghH8JhcKM" role="3clFbG">
                 <node concept="2OqwBi" id="3gSqQHuYvlS" role="37vLTx">
                   <node concept="37vLTw" id="3gSqQHuYuvd" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6dghH8JgK9l" resolve="scriptData" />
+                    <ref role="3cqZAo" node="6dghH8JgK9l" resolve="projectUrlSupplier" />
                   </node>
                   <node concept="liA8E" id="22rviD7fkYc" role="2OqNvi">
                     <ref role="37wK5l" to="82uw:~Supplier.get()" resolve="get" />
@@ -12284,7 +12284,7 @@
           <node concept="2OqwBi" id="BMoFi_qky3" role="3clFbw">
             <node concept="17RlXB" id="BMoFi_r3wP" role="2OqNvi" />
             <node concept="37vLTw" id="6dghH8JgQx2" role="2Oq$k0">
-              <ref role="3cqZAo" node="6dghH8JgQx0" resolve="string" />
+              <ref role="3cqZAo" node="6dghH8JgQx0" resolve="projectPath" />
             </node>
           </node>
         </node>
@@ -12328,7 +12328,7 @@
               <node concept="liA8E" id="BMoFi_qkyd" role="2OqNvi">
                 <ref role="37wK5l" to="18ew:~MacroHelper.expandPath(java.lang.String)" resolve="expandPath" />
                 <node concept="37vLTw" id="6dghH8JgQx4" role="37wK5m">
-                  <ref role="3cqZAo" node="6dghH8JgQx0" resolve="string" />
+                  <ref role="3cqZAo" node="6dghH8JgQx0" resolve="projectPath" />
                 </node>
               </node>
             </node>
@@ -12341,7 +12341,7 @@
                 <node concept="1pGfFk" id="BMoFi_qkyj" role="2ShVmc">
                   <ref role="37wK5l" node="3oT7WQ91OGp" resolve="ExpandedProjectPathIsNullException" />
                   <node concept="37vLTw" id="6dghH8JgQx5" role="37wK5m">
-                    <ref role="3cqZAo" node="6dghH8JgQx0" resolve="string" />
+                    <ref role="3cqZAo" node="6dghH8JgQx0" resolve="projectPath" />
                   </node>
                 </node>
               </node>
@@ -21177,7 +21177,7 @@
             <node concept="3clFbF" id="6US8dKoOuqD" role="3cqZAp">
               <node concept="37vLTI" id="6US8dKoOwng" role="3clFbG">
                 <node concept="37vLTw" id="6US8dKoResi" role="37vLTx">
-                  <ref role="3cqZAo" node="6US8dKoRa9O" resolve="reopen" />
+                  <ref role="3cqZAo" node="6US8dKoRa9O" resolve="reopenProject" />
                 </node>
                 <node concept="2OqwBi" id="6US8dKoOuEj" role="37vLTJ">
                   <node concept="Xjq3P" id="6US8dKoOuqC" role="2Oq$k0" />
@@ -21191,7 +21191,7 @@
           <node concept="3y3z36" id="6US8dKoRc$Z" role="3clFbw">
             <node concept="10Nm6u" id="6US8dKoRdri" role="3uHU7w" />
             <node concept="37vLTw" id="6US8dKoRbwx" role="3uHU7B">
-              <ref role="3cqZAo" node="6US8dKoRa9O" resolve="reopen" />
+              <ref role="3cqZAo" node="6US8dKoRa9O" resolve="reopenProject" />
             </node>
           </node>
         </node>
@@ -21220,7 +21220,7 @@
                 <ref role="3cqZAo" node="6US8dKoOm73" resolve="projectPath" />
               </node>
               <node concept="37vLTw" id="6US8dKoOscF" role="37wK5m">
-                <ref role="3cqZAo" node="6US8dKoOr2V" resolve="modelPath" />
+                <ref role="3cqZAo" node="6US8dKoOr2V" resolve="modelRef" />
               </node>
               <node concept="37vLTw" id="6US8dKoOqB6" role="37wK5m">
                 <ref role="3cqZAo" node="6US8dKoOn7a" resolve="reopenProject" />

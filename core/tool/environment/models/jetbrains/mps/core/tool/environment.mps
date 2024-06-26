@@ -7486,7 +7486,7 @@
           <node concept="92FcH" id="6dghH8IXO4z" role="qph3F">
             <node concept="TZ5HA" id="6dghH8IXO4_" role="2XjZqd" />
             <node concept="VXe0Z" id="6dghH8IXO4G" role="92FcQ">
-              <ref role="VXe0S" node="6dghH8IXNke" resolve="setStartupData" />
+              <ref role="VXe0S" node="6dghH8IXNke" resolve="setProjectUrl" />
             </node>
           </node>
         </node>

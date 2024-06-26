@@ -9159,7 +9159,7 @@
               <node concept="2OqwBi" id="1mQJZ8CDeeL" role="3Ah4Yx">
                 <node concept="3__QtB" id="1mQJZ8CDeeM" role="2Oq$k0" />
                 <node concept="3TrEf2" id="1mQJZ8CDeeN" role="2OqNvi">
-                  <ref role="3Tt5mk" to="tpee:5fcjBnBAGc2" />
+                  <ref role="3Tt5mk" to="tpee:5fcjBnBAGc2" resolve="getValueExpression" />
                 </node>
               </node>
             </node>
@@ -9168,7 +9168,7 @@
             <node concept="2OqwBi" id="1mQJZ8CDeeP" role="2Oq$k0">
               <node concept="3__QtB" id="1mQJZ8CDeeQ" role="2Oq$k0" />
               <node concept="3TrEf2" id="1mQJZ8CDeeR" role="2OqNvi">
-                <ref role="3Tt5mk" to="tpee:5fcjBnBAGc2" />
+                <ref role="3Tt5mk" to="tpee:5fcjBnBAGc2" resolve="getValueExpression" />
               </node>
             </node>
             <node concept="3x8VRR" id="1mQJZ8CDeeS" role="2OqNvi" />

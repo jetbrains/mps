@@ -3418,7 +3418,7 @@
                                       <ref role="3cqZAo" node="7zhTBKNgezH" resolve="node" />
                                     </node>
                                     <node concept="3TrcHB" id="7zhTBKNg4PC" role="2OqNvi">
-                                      <ref role="3TsBF5" to="kdzh:2yzLGrRnnCb" resolve="code" />
+                                      <ref role="3TsBF5" to="kdzh:2yzLGrRnnCb" resolve="javaCode" />
                                     </node>
                                   </node>
                                   <node concept="tyxLq" id="7zhTBKNg61S" role="2OqNvi">
@@ -3433,7 +3433,7 @@
                           <node concept="3clFbF" id="7zhTBKNg7bI" role="3cqZAp">
                             <node concept="2OqwBi" id="7zhTBKNg7xf" role="3clFbG">
                               <node concept="37vLTw" id="7zhTBKNg7bG" role="2Oq$k0">
-                                <ref role="3cqZAo" node="7zhTBKNgez_" resolve="n" />
+                                <ref role="3cqZAo" node="7zhTBKNgez_" resolve="snode" />
                               </node>
                               <node concept="liA8E" id="7zhTBKNg8ad" role="2OqNvi">
                                 <ref role="37wK5l" to="mhbf:~SNode.setProperty(org.jetbrains.mps.openapi.language.SProperty,java.lang.String)" resolve="setProperty" />
@@ -3448,7 +3448,7 @@
                         </node>
                         <node concept="2OqwBi" id="7zhTBKNgfFl" role="3clFbw">
                           <node concept="37vLTw" id="7zhTBKNgfFm" role="2Oq$k0">
-                            <ref role="3cqZAo" node="7zhTBKNgez_" resolve="n" />
+                            <ref role="3cqZAo" node="7zhTBKNgez_" resolve="snode" />
                           </node>
                           <node concept="liA8E" id="7zhTBKNgfFn" role="2OqNvi">
                             <ref role="37wK5l" to="mhbf:~SNode.hasProperty(org.jetbrains.mps.openapi.language.SProperty)" resolve="hasProperty" />

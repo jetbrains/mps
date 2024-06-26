@@ -1213,7 +1213,7 @@
                         <node concept="2ShNRf" id="7ffJaDH2XXn" role="33vP2m">
                           <node concept="1pGfFk" id="7ffJaDH2XXo" role="2ShVmc">
                             <property role="373rjd" value="true" />
-                            <ref role="37wK5l" to="sjya:pkrm6j0S2M" />
+                            <ref role="37wK5l" to="sjya:pkrm6j0S2M" resolve="FullScopeContext" />
                             <node concept="3kakTB" id="7ffJaDH2XXp" role="37wK5m" />
                             <node concept="2rP1CM" id="7ffJaDH2XXq" role="37wK5m" />
                             <node concept="3dgs5T" id="7ffJaDH2XXr" role="37wK5m" />

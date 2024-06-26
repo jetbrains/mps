@@ -14339,7 +14339,7 @@
             <node concept="liA8E" id="7IEriiVIq0R" role="2OqNvi">
               <ref role="37wK5l" to="r791:~JTextComponent.setText(java.lang.String)" resolve="setText" />
               <node concept="37vLTw" id="7IEriiVIuqb" role="37wK5m">
-                <ref role="3cqZAo" node="7IEriiVHAED" resolve="textValue" />
+                <ref role="3cqZAo" node="7IEriiVHAED" resolve="wordValue" />
               </node>
             </node>
           </node>

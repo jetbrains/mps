@@ -3858,7 +3858,7 @@
                 </node>
                 <node concept="2ShNRf" id="2BADSPNH74v" role="33vP2m">
                   <node concept="1pGfFk" id="2BADSPNH74w" role="2ShVmc">
-                    <ref role="37wK5l" node="$lftgT1yR2" />
+                    <ref role="37wK5l" node="$lftgT1yR2" resolve="MigrationSessionImpl" />
                     <node concept="37vLTw" id="2BADSPNH74x" role="37wK5m">
                       <ref role="3cqZAo" node="1AzqgyAfbh5" resolve="myMpsProject" />
                     </node>
@@ -11606,7 +11606,7 @@
                   <node concept="2ShNRf" id="$lftgT6aat" role="37wK5m">
                     <node concept="1pGfFk" id="$lftgT6gWx" role="2ShVmc">
                       <property role="373rjd" value="true" />
-                      <ref role="37wK5l" node="$lftgT6kNe" />
+                      <ref role="37wK5l" node="$lftgT6kNe" resolve="MigrationNotificationsSupport.ShowModuleVersionDetails" />
                       <node concept="2OqwBi" id="$lftgT6YlR" role="37wK5m">
                         <node concept="37vLTw" id="$lftgT6X5D" role="2Oq$k0">
                           <ref role="3cqZAo" node="$lftgT2TWi" resolve="migrationSetup" />
@@ -13092,7 +13092,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="6gAnkc3Sf1V" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="3clFb_" id="2oo0Ycn264q" role="jymVt">
@@ -13256,7 +13256,7 @@
           <node concept="3clFbF" id="$lftgT7fhI" role="3cqZAp">
             <node concept="37vLTI" id="$lftgT8mVs" role="3clFbG">
               <node concept="37vLTw" id="$lftgT7Qco" role="37vLTJ">
-                <ref role="3cqZAo" node="$lftgT8aBI" resolve="list" />
+                <ref role="3cqZAo" node="$lftgT8aBI" resolve="myModules" />
               </node>
               <node concept="2OqwBi" id="$lftgT7Qcb" role="37vLTx">
                 <node concept="2OqwBi" id="$lftgT7Qcc" role="2Oq$k0">
@@ -15328,21 +15328,21 @@
       <node concept="3Tm1VV" id="$lftgT1yR5" role="1B3o_S" />
       <node concept="3clFbS" id="$lftgT1yR6" role="3clF47">
         <node concept="1VxSAg" id="$lftgT20pm" role="3cqZAp">
-          <ref role="37wK5l" node="4KYwLYuvD7u" />
+          <ref role="37wK5l" node="4KYwLYuvD7u" resolve="MigrationSessionImpl" />
           <node concept="37vLTw" id="$lftgT20BK" role="37wK5m">
             <ref role="3cqZAo" node="$lftgT1zeT" resolve="mpsProject" />
           </node>
           <node concept="37vLTw" id="$lftgT210F" role="37wK5m">
-            <ref role="3cqZAo" node="$lftgT1zls" resolve="migrationConfig" />
+            <ref role="3cqZAo" node="$lftgT1zls" resolve="mc" />
           </node>
           <node concept="2ShNRf" id="$lftgT21cT" role="37wK5m">
             <node concept="1pGfFk" id="$lftgT21cU" role="2ShVmc">
-              <ref role="37wK5l" node="2wbhCYFF5cu" />
+              <ref role="37wK5l" node="2wbhCYFF5cu" resolve="MigrationCheckerImpl" />
               <node concept="37vLTw" id="$lftgT21cV" role="37wK5m">
                 <ref role="3cqZAo" node="$lftgT1zeT" resolve="mpsProject" />
               </node>
               <node concept="37vLTw" id="$lftgT21cW" role="37wK5m">
-                <ref role="3cqZAo" node="$lftgT1zls" resolve="migrationConfig" />
+                <ref role="3cqZAo" node="$lftgT1zls" resolve="mc" />
               </node>
             </node>
           </node>
@@ -15356,7 +15356,7 @@
           </node>
           <node concept="2OqwBi" id="$lftgT22nU" role="37wK5m">
             <node concept="37vLTw" id="$lftgT228a" role="2Oq$k0">
-              <ref role="3cqZAo" node="$lftgT1zls" resolve="migrationConfig" />
+              <ref role="3cqZAo" node="$lftgT1zls" resolve="mc" />
             </node>
             <node concept="liA8E" id="$lftgT22YT" role="2OqNvi">
               <ref role="37wK5l" node="$lftgT1Kfd" resolve="isRepositorySaveRequired" />
@@ -15364,7 +15364,7 @@
           </node>
           <node concept="2OqwBi" id="$lftgT24D8" role="37wK5m">
             <node concept="37vLTw" id="$lftgT24kD" role="2Oq$k0">
-              <ref role="3cqZAo" node="$lftgT1zls" resolve="migrationConfig" />
+              <ref role="3cqZAo" node="$lftgT1zls" resolve="mc" />
             </node>
             <node concept="liA8E" id="$lftgT24Rh" role="2OqNvi">
               <ref role="37wK5l" node="64uPopzcTz3" resolve="importVersionsUpdateRequired" />
@@ -15372,7 +15372,7 @@
           </node>
           <node concept="2OqwBi" id="$lftgT23Ce" role="37wK5m">
             <node concept="37vLTw" id="$lftgT23pr" role="2Oq$k0">
-              <ref role="3cqZAo" node="$lftgT1zls" resolve="migrationConfig" />
+              <ref role="3cqZAo" node="$lftgT1zls" resolve="mc" />
             </node>
             <node concept="liA8E" id="$lftgT23PH" role="2OqNvi">
               <ref role="37wK5l" node="1hucSHYiO1k" resolve="isMigrationRequired" />

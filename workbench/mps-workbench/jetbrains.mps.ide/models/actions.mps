@@ -13182,7 +13182,7 @@
                                   <ref role="3cqZAo" node="4NbzjXXKtML" resolve="node" />
                                 </node>
                                 <node concept="2YIFZM" id="2ZCExIdqqU0" role="37wK5m">
-                                  <ref role="37wK5l" node="6LWztcA_WYR" resolve="getWriteSearchResultsBackgroundColor" />
+                                  <ref role="37wK5l" node="6LWztcA_WYR" resolve="getSearchResultsSourceBackgroundColor" />
                                   <ref role="1Pybhc" node="cAZ8XCa267" resolve="HighlightConstants" />
                                 </node>
                                 <node concept="Xl_RD" id="4NbzjXXKNBH" role="37wK5m">
@@ -33603,7 +33603,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="7xtyrCngV5r" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
     </node>
@@ -33837,7 +33837,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="7xtyrCniDkN" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
     </node>

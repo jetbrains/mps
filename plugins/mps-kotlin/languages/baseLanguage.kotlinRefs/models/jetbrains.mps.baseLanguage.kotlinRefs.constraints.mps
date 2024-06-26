@@ -1365,11 +1365,11 @@
                             </node>
                             <node concept="2ShNRf" id="42NctsYEv5h" role="33vP2m">
                               <node concept="1pGfFk" id="42NctsYEv5i" role="2ShVmc">
-                                <ref role="37wK5l" to="sjya:3HHsmlLSKgK" />
+                                <ref role="37wK5l" to="sjya:3HHsmlLSKgK" resolve="ScopeCollector" />
                                 <node concept="2ShNRf" id="42NctsYEv5j" role="37wK5m">
                                   <node concept="1pGfFk" id="42NctsYEv5k" role="2ShVmc">
                                     <property role="373rjd" value="true" />
-                                    <ref role="37wK5l" to="sjya:3HHsmlLs8I9" resolve="TypeExtensionsScope.ReceiverTypeFilter" />
+                                    <ref role="37wK5l" to="sjya:3HHsmlLs8I9" resolve="ReceiverTypeFilter" />
                                     <node concept="37vLTw" id="42NctsYOL9u" role="37wK5m">
                                       <ref role="3cqZAo" node="1d2BQ0Zrkqu" resolve="signatureFilter" />
                                     </node>
@@ -1445,7 +1445,7 @@
                           <node concept="2ShNRf" id="1DhEmk5j0GE" role="3clFbG">
                             <node concept="1pGfFk" id="1DhEmk5j0GF" role="2ShVmc">
                               <property role="373rjd" value="true" />
-                              <ref role="37wK5l" to="sjya:1VgEGDngi_Z" />
+                              <ref role="37wK5l" to="sjya:1VgEGDngi_Z" resolve="TypeExtensionsScope" />
                               <node concept="37vLTw" id="1DhEmk5j0GG" role="37wK5m">
                                 <ref role="3cqZAo" node="1GWGb5iuS9i" resolve="context" />
                               </node>

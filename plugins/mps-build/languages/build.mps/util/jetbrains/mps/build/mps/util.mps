@@ -35697,7 +35697,7 @@
                     <ref role="3cqZAo" node="3pzPpUFO9wE" resolve="myInitialProject" />
                   </node>
                   <node concept="3Tsc0h" id="6QF50dCKA6r" role="2OqNvi">
-                    <ref role="3TtcxE" to="3ior:6qcrfIJFfrM" />
+                    <ref role="3TtcxE" to="3ior:6qcrfIJFfrM" resolve="parts" />
                   </node>
                 </node>
                 <node concept="v3k3i" id="6QF50dCKIOz" role="2OqNvi">
@@ -35727,7 +35727,7 @@
                                 <ref role="3cqZAo" node="7g3hiPQ$Jah" resolve="it" />
                               </node>
                               <node concept="3Tsc0h" id="3GBTgRlK5Ym" role="2OqNvi">
-                                <ref role="3TtcxE" to="3ior:6qcrfIJFfrM" />
+                                <ref role="3TtcxE" to="3ior:6qcrfIJFfrM" resolve="parts" />
                               </node>
                             </node>
                             <node concept="v3k3i" id="3GBTgRlK5Yn" role="2OqNvi">
@@ -36374,7 +36374,7 @@
                               <ref role="3cqZAo" node="26vVkElLd_u" resolve="plugin" />
                             </node>
                             <node concept="3Tsc0h" id="s3QqWhdYrG" role="2OqNvi">
-                              <ref role="3TtcxE" to="kdzh:5HVSRHdUrJE" />
+                              <ref role="3TtcxE" to="kdzh:5HVSRHdUrJE" resolve="content" />
                             </node>
                           </node>
                         </node>

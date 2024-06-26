@@ -3818,7 +3818,7 @@
                   <property role="2bfB8j" value="true" />
                   <property role="373rjd" value="true" />
                   <ref role="1Y3XeK" to="r99j:~PatternMatch" resolve="PatternMatch" />
-                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <node concept="3Tm1VV" id="2EChGJgO7mU" role="1B3o_S" />
                   <node concept="3clFb_" id="2EChGJgO7n8" role="jymVt">
                     <property role="TrG5h" value="getValue" />
@@ -3851,7 +3851,7 @@
                       </node>
                     </node>
                     <node concept="2AHcQZ" id="2EChGJgO7nh" role="2AJF6D">
-                      <ref role="2AI5Lk" to="wyt6:~Override" />
+                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                     </node>
                   </node>
                 </node>

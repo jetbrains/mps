@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="798100da-4f0a-421a-b991-71f8c50ce5d2" name="jetbrains.mps.build" version="-1" />
-    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="7" />
+    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="8" />
     <use id="3600cb0a-44dd-4a5b-9968-22924406419e" name="jetbrains.mps.build.mps.tests" version="-1" />
   </languages>
   <imports>
@@ -767,13 +767,13 @@
       </node>
     </node>
     <node concept="13uUGR" id="7CPkROrbWbn" role="1l3spa">
-      <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" />
+      <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" resolve="IDEA" />
       <node concept="398BVA" id="7CPkROrbWbo" role="13uUGP">
         <ref role="398BVh" node="7CPkROrbWbs" resolve="idea_home" />
       </node>
     </node>
     <node concept="2sgV4H" id="7CPkROrbWbp" role="1l3spa">
-      <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" />
+      <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" resolve="mps" />
       <node concept="398BVA" id="7CPkROrbWbq" role="2JcizS">
         <ref role="398BVh" node="7CPkROrbWbr" resolve="mps_home" />
       </node>
@@ -1065,13 +1065,13 @@
       </node>
     </node>
     <node concept="13uUGR" id="7CPkROrbWlR" role="1l3spa">
-      <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" />
+      <ref role="13uUGO" to="ffeo:6eCuTcwOnJO" resolve="IDEA" />
       <node concept="398BVA" id="7CPkROrbWlS" role="13uUGP">
         <ref role="398BVh" node="7CPkROrbWlW" resolve="idea_home" />
       </node>
     </node>
     <node concept="2sgV4H" id="7CPkROrbWlT" role="1l3spa">
-      <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" />
+      <ref role="1l3spb" to="ffeo:3IKDaVZmzS6" resolve="mps" />
       <node concept="398BVA" id="7CPkROrbWlU" role="2JcizS">
         <ref role="398BVh" node="7CPkROrbWlV" resolve="mps_home" />
       </node>

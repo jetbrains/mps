@@ -6383,7 +6383,7 @@
                     <node concept="3cpWs6" id="2cLqkTmciq0" role="3cqZAp">
                       <node concept="2ShNRf" id="2cLqkTmciq1" role="3cqZAk">
                         <node concept="1pGfFk" id="2cLqkTmciq2" role="2ShVmc">
-                          <ref role="37wK5l" node="2cLqkTmaz7N" resolve="TextDeleteStrategyFactory.RemoveWholeTextStrategy" />
+                          <ref role="37wK5l" node="2cLqkTmaz7N" resolve="TextDeleteStrategyFactory.RemoveLastLineStrategy" />
                           <node concept="37vLTw" id="2cLqkTmckdg" role="37wK5m">
                             <ref role="3cqZAo" node="2cLqkTmc6_w" resolve="currentLine" />
                           </node>

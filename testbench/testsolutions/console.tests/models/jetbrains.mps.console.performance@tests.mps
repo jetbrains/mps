@@ -369,7 +369,7 @@
                     <node concept="2ShNRf" id="1p3K8b39TJ5" role="2Oq$k0">
                       <node concept="1pGfFk" id="1p3K8b39UUM" role="2ShVmc">
                         <property role="373rjd" value="true" />
-                        <ref role="37wK5l" to="wsw7:6pnunaLnyyn" resolve="ModelsExtractorImpl" />
+                        <ref role="37wK5l" to="wsw7:6pnunaLnyyn" resolve="ModelCheckerBuilder.ModelsExtractorImpl" />
                       </node>
                     </node>
                     <node concept="liA8E" id="1p3K8b3a31A" role="2OqNvi">

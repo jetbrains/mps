@@ -408,7 +408,7 @@
     <property role="EcuMT" value="1692978518378815071" />
     <property role="TrG5h" value="ForkAs" />
     <property role="34LRSv" value="fork as" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyi" id="1tYEJSwlxVa" role="1TKVEl">
       <property role="IQ2nx" value="1692978518378815178" />
       <property role="TrG5h" value="gentarget" />

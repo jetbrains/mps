@@ -609,7 +609,7 @@
           <node concept="3fqX7Q" id="KL8Aql8erc" role="3clFbw">
             <node concept="2OqwBi" id="KL8Aql8erd" role="3fr31v">
               <node concept="37vLTw" id="2BHiRxeuiU7" role="2Oq$k0">
-                <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myMPSProjects" />
+                <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myProjectDir" />
               </node>
               <node concept="liA8E" id="KL8Aql8erf" role="2OqNvi">
                 <ref role="37wK5l" to="33ny:~List.contains(java.lang.Object)" resolve="contains" />
@@ -623,7 +623,7 @@
             <node concept="3clFbF" id="KL8Aql8eri" role="3cqZAp">
               <node concept="2OqwBi" id="KL8Aql8erj" role="3clFbG">
                 <node concept="37vLTw" id="2BHiRxeuO47" role="2Oq$k0">
-                  <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myMPSProjects" />
+                  <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myProjectDir" />
                 </node>
                 <node concept="liA8E" id="KL8Aql8erl" role="2OqNvi">
                   <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
@@ -998,7 +998,7 @@
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <ref role="37wK5l" to="33ny:~Collections.unmodifiableList(java.util.List)" resolve="unmodifiableList" />
             <node concept="37vLTw" id="7CPkROrt7HQ" role="37wK5m">
-              <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myMPSProjects" />
+              <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myProjectDir" />
             </node>
           </node>
         </node>
@@ -1022,13 +1022,13 @@
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <ref role="37wK5l" to="33ny:~Collections.unmodifiableList(java.util.List)" resolve="unmodifiableList" />
             <node concept="37vLTw" id="6tzA4yIj1ST" role="37wK5m">
-              <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myMPSProjects" />
+              <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myProjectDir" />
             </node>
           </node>
         </node>
       </node>
       <node concept="2AHcQZ" id="7CPkROrrluY" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="7CPkROrrzr$" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="7CPkROrrzwB" role="2B70Vg">
@@ -1058,7 +1058,7 @@
         <node concept="3clFbF" id="KL8Aql8etp" role="3cqZAp">
           <node concept="2OqwBi" id="KL8Aql8etq" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxeuTxY" role="2Oq$k0">
-              <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myMPSProjects" />
+              <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myProjectDir" />
             </node>
             <node concept="liA8E" id="KL8Aql8ets" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~List.addAll(java.util.Collection)" resolve="addAll" />
@@ -2003,7 +2003,7 @@
             </node>
           </node>
           <node concept="37vLTw" id="2BHiRxeuoXr" role="1DdaDG">
-            <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myMPSProjects" />
+            <ref role="3cqZAo" node="KL8Aql8eoN" resolve="myProjectDir" />
           </node>
         </node>
         <node concept="1DcWWT" id="3GGnItM8Nd8" role="3cqZAp">

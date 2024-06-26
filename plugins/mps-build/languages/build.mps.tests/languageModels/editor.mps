@@ -293,7 +293,7 @@
         <node concept="3F1sOY" id="6US8dKph57v" role="3EZMnx">
           <property role="39s7Ar" value="true" />
           <property role="1$x2rV" value="unspecified" />
-          <ref role="1NtTu8" to="5tjl:6US8dKph52U" />
+          <ref role="1NtTu8" to="5tjl:6US8dKph52U" resolve="projectPath" />
           <node concept="ljvvj" id="6US8dKph57w" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>

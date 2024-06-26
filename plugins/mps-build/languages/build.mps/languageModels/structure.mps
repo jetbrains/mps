@@ -107,7 +107,7 @@
     <node concept="1TJgyi" id="2yzLGrRnnCb" role="1TKVEl">
       <property role="IQ2nx" value="2928402740576877067" />
       <property role="TrG5h" value="javaCode" />
-      <ref role="AX2Wp" node="3kCd1ud3JDB" resolve="BuildMps_CompileKind" />
+      <ref role="AX2Wp" node="3kCd1ud3JDB" resolve="BuildMps_CodeKind" />
     </node>
     <node concept="1TJgyj" id="4zCbl23d1OL" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -1895,7 +1895,7 @@
     <property role="TrG5h" value="BuildMps_CodeKind" />
     <property role="3GE5qa" value="Project.Sources" />
     <property role="3F6X1D" value="3830368758834068071" />
-    <ref role="1H5jkz" node="3kCd1ud3JDC" resolve="compile_in_mps" />
+    <ref role="1H5jkz" node="3kCd1ud3JDC" resolve="compile_mps" />
     <node concept="25R33" id="3kCd1ud3JDC" role="25R1y">
       <property role="TrG5h" value="compile_mps" />
       <property role="3tVfz5" value="3830368758834068072" />

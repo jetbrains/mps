@@ -55,7 +55,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
@@ -117,7 +117,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
         <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ" />
@@ -187,7 +187,7 @@
       <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
         <child id="1160998896846" name="condition" index="1gVkn0" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -219,7 +219,7 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -261,13 +261,13 @@
     </language>
     <language id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences">
       <concept id="237887375562511215" name="jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference" flags="ng" index="37Ijox" />
-      <concept id="3507059745126391419" name="jetbrains.mps.baseLanguage.methodReferences.structure.IMethodReference" flags="ng" index="3UZKCU">
+      <concept id="3507059745126391419" name="jetbrains.mps.baseLanguage.methodReferences.structure.IMethodReference" flags="ngI" index="3UZKCU">
         <reference id="237887375562511297" name="method" index="37Ijqf" />
         <child id="962278442658307079" name="target" index="wWaWy" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -344,7 +344,7 @@
         <node concept="10Oyi0" id="55lWaiod05R" role="1tU5fm" />
       </node>
       <node concept="3uibUv" id="55lWaiocA4U" role="3clF45">
-        <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractJobQueue" />
+        <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue" />
         <node concept="3uibUv" id="55lWaiocA4Y" role="11_B2D">
           <ref role="3uigEE" to="xygl:~Task$Backgroundable" resolve="Task.Backgroundable" />
         </node>
@@ -671,7 +671,7 @@
         <node concept="3Tmbuc" id="7VnE_5wF7Ks" role="1B3o_S" />
         <node concept="3clFbS" id="44kBqqKYNMF" role="3clF47">
           <node concept="XkiVB" id="55lWaio5Lmd" role="3cqZAp">
-            <ref role="37wK5l" node="55lWaio56Sv" resolve="AbstractBackgroundTaskScheduler.AbstractTaskQueue" />
+            <ref role="37wK5l" node="55lWaio56Sv" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue" />
             <node concept="37vLTw" id="55lWaio75Sv" role="37wK5m">
               <ref role="3cqZAo" node="2OlOPwVWpOB" resolve="queueSize" />
             </node>
@@ -703,7 +703,7 @@
           </node>
         </node>
         <node concept="3uibUv" id="55lWaio8jVb" role="3clF45">
-          <ref role="3uigEE" node="44kBqqKWYVH" resolve="BackgroundableJobQueueItem" />
+          <ref role="3uigEE" node="44kBqqKWYVH" resolve="IdeaPlatformTaskScheduler.BackgroundableJobQueueItem" />
         </node>
         <node concept="3Tm1VV" id="55lWaio8jV9" role="1B3o_S" />
         <node concept="3clFbS" id="55lWaio8jVd" role="3clF47">
@@ -733,7 +733,7 @@
             <node concept="2ShNRf" id="55lWaio8MOb" role="3clFbG">
               <node concept="1pGfFk" id="55lWaio8MOc" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" node="44kBqqKX81s" resolve="IdeaPlatformTaskScheduler.BackgroundableTaskRunnable" />
+                <ref role="37wK5l" node="44kBqqKX81s" resolve="IdeaPlatformTaskScheduler.BackgroundableJobQueueItem" />
                 <node concept="37vLTw" id="55lWaio8MOd" role="37wK5m">
                   <ref role="3cqZAo" node="55lWaio8jV2" resolve="bgdable" />
                 </node>
@@ -757,7 +757,7 @@
         <node concept="37vLTG" id="11M_Zz6iUZR" role="3clF46">
           <property role="TrG5h" value="blocking" />
           <node concept="3uibUv" id="11M_Zz6iUZS" role="1tU5fm">
-            <ref role="3uigEE" node="11M_Zz6gS4S" resolve="AbstractBackgroundTaskScheduler.AbstractTaskQueue.Blocking" />
+            <ref role="3uigEE" node="11M_Zz6gS4S" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue.Blocking" />
           </node>
         </node>
         <node concept="3cqZAl" id="11M_Zz6iUZT" role="3clF45" />
@@ -948,7 +948,7 @@
       <node concept="2tJIrI" id="44kBqqKWL0o" role="jymVt" />
       <node concept="3Tmbuc" id="55lWaiobtnx" role="1B3o_S" />
       <node concept="3uibUv" id="55lWaio0GWR" role="1zkMxy">
-        <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractJobQueue" />
+        <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue" />
         <node concept="3uibUv" id="55lWaio0Rb$" role="11_B2D">
           <ref role="3uigEE" to="xygl:~Task$Backgroundable" resolve="Task.Backgroundable" />
         </node>
@@ -1012,7 +1012,7 @@
           <node concept="3clFbF" id="55lWaio1AKY" role="3cqZAp">
             <node concept="37vLTI" id="55lWaio1AL0" role="3clFbG">
               <node concept="37vLTw" id="55lWaio1AL3" role="37vLTJ">
-                <ref role="3cqZAo" node="55lWaio1AKU" resolve="myTaskContinuation" />
+                <ref role="3cqZAo" node="55lWaio1AKU" resolve="myContinuation" />
               </node>
               <node concept="37vLTw" id="55lWaio1AL4" role="37vLTx">
                 <ref role="3cqZAo" node="55lWaio1krd" resolve="continuation" />
@@ -1149,7 +1149,7 @@
                       <ref role="3cqZAo" node="44kBqqKXVN_" resolve="myProgressIndicator" />
                     </node>
                     <node concept="37vLTw" id="55lWaio1OzE" role="37wK5m">
-                      <ref role="3cqZAo" node="55lWaio1AKU" resolve="myTaskContinuation" />
+                      <ref role="3cqZAo" node="55lWaio1AKU" resolve="myContinuation" />
                     </node>
                     <node concept="10M0yZ" id="2OlOPwVX7yv" role="37wK5m">
                       <ref role="3cqZAo" to="bd8o:~ModalityState.NON_MODAL" resolve="NON_MODAL" />
@@ -1204,7 +1204,7 @@
       <node concept="2tJIrI" id="44kBqqKX4iy" role="jymVt" />
       <node concept="3Tmbuc" id="55lWaiobwv5" role="1B3o_S" />
       <node concept="3uibUv" id="44kBqqKX3KK" role="EKbjA">
-        <ref role="3uigEE" node="44kBqqKWPbs" resolve="JobQueueItem" />
+        <ref role="3uigEE" node="44kBqqKWPbs" resolve="AbstractBackgroundTaskScheduler.JobQueueItem" />
       </node>
     </node>
     <node concept="2tJIrI" id="55lWainOlzr" role="jymVt" />
@@ -1351,7 +1351,7 @@
             <property role="TrG5h" value="queue" />
             <property role="3TUv4t" value="true" />
             <node concept="3uibUv" id="7rL3NR5WpHA" role="1tU5fm">
-              <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractBackgroundTaskScheduler.AbstractTaskQueue" />
+              <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue" />
               <node concept="16syzq" id="7rL3NR5WpHB" role="11_B2D">
                 <ref role="16sUi3" node="55lWaio3CqU" resolve="JOB" />
               </node>
@@ -1474,7 +1474,7 @@
       <node concept="37vLTG" id="55lWaioeANo" role="3clF46">
         <property role="TrG5h" value="queue" />
         <node concept="3uibUv" id="55lWaioeANp" role="1tU5fm">
-          <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractJobQueue" />
+          <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue" />
           <node concept="16syzq" id="55lWaioeHgf" role="11_B2D">
             <ref role="16sUi3" node="55lWaio3CqU" resolve="JOB" />
           </node>
@@ -1535,7 +1535,7 @@
         <node concept="10Oyi0" id="55lWaiodadh" role="1tU5fm" />
       </node>
       <node concept="3uibUv" id="55lWaio9IRw" role="3clF45">
-        <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractJobQueue" />
+        <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue" />
         <node concept="16syzq" id="55lWaio9JvU" role="11_B2D">
           <ref role="16sUi3" node="55lWaio3CqU" resolve="JOB" />
         </node>
@@ -1639,7 +1639,7 @@
         <node concept="3uibUv" id="55lWaio5ayl" role="1tU5fm">
           <ref role="3uigEE" to="ixe9:~QueueProcessor" resolve="QueueProcessor" />
           <node concept="3uibUv" id="55lWaio9KGe" role="11_B2D">
-            <ref role="3uigEE" node="44kBqqKWPbs" resolve="JobQueueItem" />
+            <ref role="3uigEE" node="44kBqqKWPbs" resolve="AbstractBackgroundTaskScheduler.JobQueueItem" />
           </node>
         </node>
       </node>
@@ -1797,7 +1797,7 @@
                     <node concept="37vLTG" id="55lWaio5dLG" role="1bW2Oz">
                       <property role="TrG5h" value="bgRunnable" />
                       <node concept="3uibUv" id="55lWaio9LYW" role="1tU5fm">
-                        <ref role="3uigEE" node="44kBqqKWPbs" resolve="JobQueueItem" />
+                        <ref role="3uigEE" node="44kBqqKWPbs" resolve="AbstractBackgroundTaskScheduler.JobQueueItem" />
                       </node>
                     </node>
                     <node concept="37vLTG" id="55lWaio5dLI" role="1bW2Oz">
@@ -1808,7 +1808,7 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="55lWaio9LA3" role="1pMfVU">
-                    <ref role="3uigEE" node="44kBqqKWPbs" resolve="JobQueueItem" />
+                    <ref role="3uigEE" node="44kBqqKWPbs" resolve="AbstractBackgroundTaskScheduler.JobQueueItem" />
                   </node>
                   <node concept="3clFbT" id="55lWaio5dLL" role="37wK5m">
                     <property role="3clFbU" value="true" />
@@ -1867,7 +1867,7 @@
           </node>
         </node>
         <node concept="3uibUv" id="55lWaio9PNw" role="3clF45">
-          <ref role="3uigEE" node="44kBqqKWPbs" resolve="JobQueueItem" />
+          <ref role="3uigEE" node="44kBqqKWPbs" resolve="AbstractBackgroundTaskScheduler.JobQueueItem" />
         </node>
         <node concept="3Tmbuc" id="55lWaiofncZ" role="1B3o_S" />
         <node concept="3clFbS" id="55lWaio7TlJ" role="3clF47" />
@@ -1879,7 +1879,7 @@
         <node concept="37vLTG" id="11M_Zz6hlQb" role="3clF46">
           <property role="TrG5h" value="blocking" />
           <node concept="3uibUv" id="11M_Zz6hmWQ" role="1tU5fm">
-            <ref role="3uigEE" node="11M_Zz6gS4S" resolve="AbstractBackgroundTaskScheduler.AbstractTaskQueue.Blocking" />
+            <ref role="3uigEE" node="11M_Zz6gS4S" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue.Blocking" />
           </node>
         </node>
         <node concept="3cqZAl" id="11M_Zz6hfVG" role="3clF45" />
@@ -1956,7 +1956,7 @@
                         <property role="2bfB8j" value="true" />
                         <property role="373rjd" value="true" />
                         <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                        <ref role="1Y3XeK" node="11M_Zz6gS4S" resolve="AbstractBackgroundTaskScheduler.AbstractTaskQueue.Blocking" />
+                        <ref role="1Y3XeK" node="11M_Zz6gS4S" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue.Blocking" />
                         <node concept="3Tm1VV" id="11M_Zz6hsuI" role="1B3o_S" />
                         <node concept="3clFb_" id="11M_Zz6hsuZ" role="jymVt">
                           <property role="TrG5h" value="willBlock" />
@@ -2142,7 +2142,7 @@
         <node concept="10Oyi0" id="55lWaiofHYA" role="1tU5fm" />
       </node>
       <node concept="3uibUv" id="55lWaiofHYB" role="3clF45">
-        <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractJobQueue" />
+        <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue" />
         <node concept="3uibUv" id="55lWaiofHYF" role="11_B2D">
           <ref role="3uigEE" to="xzav:5eSWTn2PSGA" resolve="ProgressTask" />
         </node>
@@ -2279,7 +2279,7 @@
       <node concept="2tJIrI" id="1DD4wlLqyGC" role="jymVt" />
       <node concept="3Tmbuc" id="7VnE_5wF3AQ" role="1B3o_S" />
       <node concept="3uibUv" id="1DD4wlLqxxR" role="1zkMxy">
-        <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractJobQueue" />
+        <ref role="3uigEE" node="55lWaio0s3O" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue" />
         <node concept="3uibUv" id="1DD4wlLqyr5" role="11_B2D">
           <ref role="3uigEE" to="xzav:5eSWTn2PSGA" resolve="ProgressTask" />
         </node>
@@ -2297,7 +2297,7 @@
         <node concept="3Tmbuc" id="7VnE_5wF5OZ" role="1B3o_S" />
         <node concept="3clFbS" id="1DD4wlLqyRA" role="3clF47">
           <node concept="XkiVB" id="1DD4wlLqyRC" role="3cqZAp">
-            <ref role="37wK5l" node="55lWaio56Sv" resolve="AbstractBackgroundTaskScheduler.AbstractTaskQueue" />
+            <ref role="37wK5l" node="55lWaio56Sv" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue" />
             <node concept="37vLTw" id="1DD4wlLqyRG" role="37wK5m">
               <ref role="3cqZAo" node="1DD4wlLqyRD" resolve="queueSize" />
             </node>
@@ -2355,7 +2355,7 @@
           </node>
         </node>
         <node concept="3uibUv" id="1DD4wlLqzMo" role="3clF45">
-          <ref role="3uigEE" node="44kBqqKWPbs" resolve="JobQueueItem" />
+          <ref role="3uigEE" node="44kBqqKWPbs" resolve="AbstractBackgroundTaskScheduler.JobQueueItem" />
         </node>
         <node concept="3Tmbuc" id="1DD4wlLqzMp" role="1B3o_S" />
         <node concept="3clFbS" id="1DD4wlLqzMs" role="3clF47">
@@ -2363,12 +2363,12 @@
             <node concept="2ShNRf" id="1DD4wlLqCEh" role="3clFbG">
               <node concept="1pGfFk" id="1DD4wlLqH0T" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" node="55lWaioiij4" resolve="SystemBackgroundTaskScheduler.AsyncTaskRunnable" />
+                <ref role="37wK5l" node="55lWaioiij4" resolve="SystemBackgroundTaskScheduler.AsyncJobQueueItem" />
                 <node concept="37vLTw" id="1DD4wlLqI00" role="37wK5m">
                   <ref role="3cqZAo" node="1DD4wlLqzMi" resolve="task" />
                 </node>
                 <node concept="37vLTw" id="1DD4wlLqKSs" role="37wK5m">
-                  <ref role="3cqZAo" node="1DD4wlLqzMk" resolve="afterFinished" />
+                  <ref role="3cqZAo" node="1DD4wlLqzMk" resolve="afterTask" />
                 </node>
                 <node concept="2ShNRf" id="11M_Zz6bjgh" role="37wK5m">
                   <node concept="1pGfFk" id="11M_Zz6bzmr" role="2ShVmc">
@@ -2397,7 +2397,7 @@
           <property role="TrG5h" value="blocking" />
           <property role="3TUv4t" value="true" />
           <node concept="3uibUv" id="11M_Zz6hT$P" role="1tU5fm">
-            <ref role="3uigEE" node="11M_Zz6gS4S" resolve="AbstractBackgroundTaskScheduler.AbstractTaskQueue.Blocking" />
+            <ref role="3uigEE" node="11M_Zz6gS4S" resolve="AbstractBackgroundTaskScheduler.AbstractJobQueue.Blocking" />
           </node>
         </node>
         <node concept="3cqZAl" id="11M_Zz6iINu" role="3clF45" />
@@ -2563,7 +2563,7 @@
       <node concept="2tJIrI" id="55lWaioieH_" role="jymVt" />
       <node concept="3Tm1VV" id="55lWaiofrkF" role="1B3o_S" />
       <node concept="3uibUv" id="55lWaioftYZ" role="EKbjA">
-        <ref role="3uigEE" node="44kBqqKWPbs" resolve="JobQueueItem" />
+        <ref role="3uigEE" node="44kBqqKWPbs" resolve="AbstractBackgroundTaskScheduler.JobQueueItem" />
       </node>
       <node concept="3clFb_" id="55lWaiofuhH" role="jymVt">
         <property role="TrG5h" value="accept" />
@@ -3019,7 +3019,7 @@
                         </node>
                         <node concept="2YIFZM" id="4hBTRHskYJh" role="33vP2m">
                           <ref role="37wK5l" node="55lWainVYDU" resolve="unwrap" />
-                          <ref role="1Pybhc" node="55lWaiofrkE" resolve="AsyncJobQueueItem" />
+                          <ref role="1Pybhc" node="55lWaiofrkE" resolve="SystemBackgroundTaskScheduler.AsyncJobQueueItem" />
                           <node concept="37vLTw" id="4hBTRHskYJi" role="37wK5m">
                             <ref role="3cqZAo" node="55lWainVQuk" resolve="err" />
                           </node>
