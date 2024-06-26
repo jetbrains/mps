@@ -347,7 +347,7 @@
       <concept id="2105528055260548241" name="jetbrains.mps.build.mps.structure.BuildMpsLayout_FolderWithSources" flags="ng" index="1bldCd" />
       <concept id="5253498789149381388" name="jetbrains.mps.build.mps.structure.BuildMps_Module" flags="ng" index="3bQrTs">
         <property id="1500819558096356884" name="doNotCompile" index="2GAjPV" />
-        <property id="2928402740576877067" name="code" index="3vZFNd" />
+        <property id="2928402740576877067" name="javaCode" index="3vZFNd" />
         <child id="5253498789149547825" name="sources" index="3bR31x" />
         <child id="5253498789149547704" name="dependencies" index="3bR37C" />
       </concept>
@@ -32859,6 +32859,16 @@
             <ref role="3bR37D" node="67xNhT4NRcz" resolve="gnu.trove" />
           </node>
         </node>
+        <node concept="1SiIV0" id="72v3Fbzn3wQ" role="3bR37C">
+          <node concept="3bR9La" id="72v3Fbzn3wR" role="1SiIV1">
+            <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="72v3Fbzn3wS" role="3bR37C">
+          <node concept="3bR9La" id="72v3Fbzn3wT" role="1SiIV1">
+            <ref role="3bR37D" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtD" id="3X9rC2XIG0s" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -41613,11 +41623,6 @@
           <node concept="3bR9La" id="2a9bszgrvUh" role="1SiIV1">
             <property role="3bR36h" value="true" />
             <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="2a9bszgrvUk" role="3bR37C">
-          <node concept="3bR9La" id="2a9bszgrvUj" role="1SiIV1">
-            <ref role="3bR37D" node="2eDSGe9d1q1" resolve="MPS.Workbench" />
           </node>
         </node>
         <node concept="1SiIV0" id="2a9bszgrvUm" role="3bR37C">
