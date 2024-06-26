@@ -4,12 +4,24 @@ package jetbrains.mps.lang.editor.editor;
 
 import java.awt.Color;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
 import com.intellij.ui.JBColor;
 
 public class _EditorUtil {
+  /**
+   * 
+   * @deprecated Use the two-parameter method below to get a reasonable gray color under dark scheme.
+   */
+  @Deprecated
+  public static Color grayIfNotSelectable(SNode cellModel) {
+    if (!((boolean) EditorCellModel__BehaviorDescriptor.isSelectable_idhJF6SX1.invoke(cellModel))) {
+      return new Color(230, 230, 230);
+    }
+    return null;
+  }
+
   public static Color grayIfNotSelectable(SNode cellModel, EditorContext editorContext) {
     Color bgColor = editorContext.getEditorComponent().getStyleRegistry().getStyle("CELL_COLLECTION_TAG_BACKGROUND").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
     if (!((boolean) EditorCellModel__BehaviorDescriptor.isSelectable_idhJF6SX1.invoke(cellModel))) {
@@ -17,4 +29,5 @@ public class _EditorUtil {
     }
     return null;
   }
+
 }
