@@ -194,7 +194,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     }
     private Color _StyleParameter_QueryFunction_3ei7nb_a0a0a2a() {
-      return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("MAPPING_LABEL").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
+      return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("HIGHLIGHTED_LABEL_IN_EDITOR").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
     }
   }
   private EditorCell createConstant_4() {

@@ -98,7 +98,7 @@ public class Styles_StyleSheet {
     }
 
     private Color _StyleParameter_QueryFunction_kkd5s1_a0g() {
-      return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("MAPPING_LABEL").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
+      return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("HIGHLIGHTED_LABEL_IN_EDITOR").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
     }
   }
   public static class macroDescriptionTextStyleClass extends AbstractStyleClass {
@@ -124,7 +124,7 @@ public class Styles_StyleSheet {
     }
 
     private Color _StyleParameter_QueryFunction_kkd5s1_a0i() {
-      return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("MAPPING_LABEL").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
+      return getEditorContext().getEditorComponent().getStyleRegistry().getStyle("HIGHLIGHTED_LABEL_IN_EDITOR").get(StyleAttributes.TEXT_BACKGROUND_COLOR);
     }
   }
   public static class mappingRuleReferenceStyleClass extends AbstractStyleClass {

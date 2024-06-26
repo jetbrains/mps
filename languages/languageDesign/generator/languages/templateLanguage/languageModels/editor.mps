@@ -4302,7 +4302,7 @@
                   <node concept="liA8E" id="7WFkLno_0CF" role="2OqNvi">
                     <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String)" resolve="getStyle" />
                     <node concept="Xl_RD" id="7WFkLno_0R_" role="37wK5m">
-                      <property role="Xl_RC" value="MAPPING_LABEL" />
+                      <property role="Xl_RC" value="HIGHLIGHTED_LABEL_IN_EDITOR" />
                     </node>
                   </node>
                 </node>
@@ -4351,7 +4351,7 @@
                   <node concept="liA8E" id="7WFkLno_4Ab" role="2OqNvi">
                     <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String)" resolve="getStyle" />
                     <node concept="Xl_RD" id="7WFkLno_4Ac" role="37wK5m">
-                      <property role="Xl_RC" value="MAPPING_LABEL" />
+                      <property role="Xl_RC" value="HIGHLIGHTED_LABEL_IN_EDITOR" />
                     </node>
                   </node>
                 </node>
@@ -6603,7 +6603,7 @@
                           <node concept="liA8E" id="7WFkLno_5Io" role="2OqNvi">
                             <ref role="37wK5l" to="hox0:~StyleRegistry.getStyle(java.lang.String)" resolve="getStyle" />
                             <node concept="Xl_RD" id="7WFkLno_5Ip" role="37wK5m">
-                              <property role="Xl_RC" value="MAPPING_LABEL" />
+                              <property role="Xl_RC" value="HIGHLIGHTED_LABEL_IN_EDITOR" />
                             </node>
                           </node>
                         </node>
