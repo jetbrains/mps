@@ -22,7 +22,6 @@ import com.intellij.ui.awt.RelativePoint;
 import com.intellij.ui.popup.AbstractPopup;
 import com.intellij.util.ui.JBUI;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.nodeEditor.EditorTooltipProvider;
 import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationPopupUI;
 import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationUI;
 import org.jetbrains.annotations.NotNull;
@@ -34,6 +33,7 @@ import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
+import java.awt.Window;
 import java.lang.ref.WeakReference;
 import java.util.function.Consumer;
 
@@ -115,6 +115,12 @@ public class MPSDocumentationManager {
       HoverInfo info = new HoverInfo(popupDocMessage, tooltipRenderer, tooltipGroup);
       AbstractPopup hint = info.createHint(editor, project);
       hint.show(showPoint);
+
+      Window window = hint.getPopupWindow();
+      if (window != null) {
+        window.setFocusableWindowState(true);
+      }
+
       myHintPopupReference = new WeakReference<>(hint);
       continuation.accept(hint);
 
