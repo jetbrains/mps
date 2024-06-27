@@ -8,15 +8,18 @@ import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
+import com.intellij.ide.util.treeView.InplaceCommentAppender;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.ReportItem;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
+import jetbrains.mps.project.GenerationStatus;
 import jetbrains.mps.project.MissionControl;
 import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.smodel.Generator;
@@ -107,6 +110,17 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
       MessageStatus status = getMPSSettings().isShowErrorsOnly() ? MessageStatus.ERROR : MessageStatus.WARNING;
       List<ReportItem> messages = missionControl.getMessagesContainer().getMessages(getValue().getModuleReference(), status, false) ;
       presentation.setTooltip(formatErrorsToolTip(messages));
+    }
+  }
+
+  @Override
+  protected void appendInplaceComments(@NotNull InplaceCommentAppender appender) {
+    super.appendInplaceComments(appender);
+    MissionControl missionControl = MissionControl.getInstance(getProject());
+    if (missionControl != null) {
+      if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkModified, MessageStatus.OK, true)) {
+        appender.append(String.format(" (%s)", GenerationStatus.READONLY.getMessage()), SimpleTextAttributes.GRAY_ATTRIBUTES);
+      }
     }
   }
 

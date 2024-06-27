@@ -7,11 +7,16 @@ import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
+import com.intellij.ide.util.treeView.InplaceCommentAppender;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.ui.SimpleTextAttributes;
+import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.icons.MPSIcons.Nodes.Models;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
+import jetbrains.mps.project.GenerationStatus;
+import jetbrains.mps.project.MissionControl;
 import jetbrains.mps.smodel.SObject;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.LanguageID;
@@ -77,6 +82,16 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
     updateTooltip(presentation);
   }
 
+  @Override
+  protected void appendInplaceComments(@NotNull InplaceCommentAppender appender) {
+    super.appendInplaceComments(appender);
+    MissionControl missionControl = MissionControl.getInstance(getProject());
+    if (missionControl != null) {
+      if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkModified, MessageStatus.OK.OK, true)) {
+        appender.append(String.format(" (%s)", GenerationStatus.READONLY.getMessage()), SimpleTextAttributes.GRAY_ATTRIBUTES);
+      }
+    }
+  }
 
   @Override
   public int getTypeSortWeight(boolean sortByType) {

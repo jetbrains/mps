@@ -199,6 +199,11 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
             ((HasGenerationStatus) reportItem).getStatus() == GenerationStatus.REQUIRED);
   }
 
+  protected boolean shouldMarkReadonly(ReportItem reportItem) {
+    return (reportItem instanceof HasGenerationStatus &&
+            ((HasGenerationStatus) reportItem).getStatus() == GenerationStatus.READONLY);
+  }
+
   protected Icon getModifiedIcon(@Nullable Icon sourceIcon) {
     LayeredIcon icon = new LayeredIcon(2);
     icon.setIcon(sourceIcon, 0);
