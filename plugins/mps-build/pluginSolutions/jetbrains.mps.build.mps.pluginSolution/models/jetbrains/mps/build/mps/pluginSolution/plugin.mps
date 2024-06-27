@@ -17,6 +17,9 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
+    <use id="479c7a8c-02f9-43b5-9139-d910cb22f298" name="jetbrains.mps.core.xml" version="0" />
+    <use id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi" version="0" />
   </languages>
   <imports>
     <import index="kdzh" ref="r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)" />
@@ -77,11 +80,11 @@
     <import index="mqhh" ref="r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)" />
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="ovkb" ref="r:0557cc4d-c1b6-4dcc-b443-b6bca6a7a6f6(jetbrains.mps.build.startup.util)" />
-    <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" implicit="true" />
-    <import index="vbkb" ref="r:08f2b659-8469-4592-93bf-a6edb46ec86d(jetbrains.mps.build.behavior)" implicit="true" />
-    <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" implicit="true" />
-    <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" implicit="true" />
-    <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
+    <import index="vbkb" ref="r:08f2b659-8469-4592-93bf-a6edb46ec86d(jetbrains.mps.build.behavior)" />
+    <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" />
+    <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
+    <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -6932,7 +6935,7 @@
               </node>
             </node>
             <node concept="Xl_RD" id="7$e6lgA3AYn" role="3uHU7w">
-              <property role="Xl_RC" value=" already exists, choose another name." />
+              <property role="Xl_RC" value=" already exists or the name is invalid, choose another name." />
             </node>
           </node>
         </node>
@@ -11280,7 +11283,41 @@
             <node concept="17RlXB" id="5CazLt5XzjV" role="2OqNvi" />
           </node>
         </node>
-        <node concept="3clFbH" id="5CazLt5Yk1O" role="3cqZAp" />
+        <node concept="3cpWs8" id="3SNdI$7s5am" role="3cqZAp">
+          <node concept="3cpWsn" id="3SNdI$7s5an" role="3cpWs9">
+            <property role="TrG5h" value="validationResult" />
+            <node concept="3uibUv" id="3SNdI$7rXs5" role="1tU5fm">
+              <ref role="3uigEE" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelName.SModelNameCheck" />
+            </node>
+            <node concept="2YIFZM" id="3SNdI$7s5ao" role="33vP2m">
+              <ref role="1Pybhc" to="mhbf:~SModelName" resolve="SModelName" />
+              <ref role="37wK5l" to="mhbf:~SModelName.checkModelName(java.lang.CharSequence,java.lang.CharSequence)" resolve="checkModelName" />
+              <node concept="37vLTw" id="3SNdI$7s5ap" role="37wK5m">
+                <ref role="3cqZAo" node="Tb4PsnqO$B" resolve="text" />
+              </node>
+              <node concept="Xl_RD" id="3SNdI$7s5aq" role="37wK5m">
+                <property role="Xl_RC" value="stereotype" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3SNdI$7pKGS" role="3cqZAp">
+          <node concept="3y3z36" id="3SNdI$7roZR" role="3clFbw">
+            <node concept="Rm8GO" id="3SNdI$7rUjd" role="3uHU7w">
+              <ref role="Rm8GQ" to="mhbf:~SModelName$SModelNameCheck.Pass" resolve="Pass" />
+              <ref role="1Px2BO" to="mhbf:~SModelName$SModelNameCheck" resolve="SModelName.SModelNameCheck" />
+            </node>
+            <node concept="37vLTw" id="3SNdI$7rdI7" role="3uHU7B">
+              <ref role="3cqZAo" node="3SNdI$7s5an" resolve="validationResult" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="3SNdI$7pKGX" role="3clFbx">
+            <node concept="3cpWs6" id="3SNdI$7pKH1" role="3cqZAp">
+              <node concept="3clFbT" id="3SNdI$7pKH2" role="3cqZAk" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="3SNdI$7ngHV" role="3cqZAp" />
         <node concept="3SKdUt" id="Tb4PsnrhQT" role="3cqZAp">
           <node concept="1PaTwC" id="ATZLwXog0D" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXog0E" role="1PaTwD">

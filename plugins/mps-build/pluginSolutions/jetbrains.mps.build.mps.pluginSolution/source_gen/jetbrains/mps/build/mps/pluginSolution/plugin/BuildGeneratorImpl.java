@@ -217,6 +217,10 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     if ((text == null || text.length() == 0)) {
       return false;
     }
+    SModelName.SModelNameCheck validationResult = SModelName.checkModelName(text, "stereotype");
+    if (validationResult != SModelName.SModelNameCheck.Pass) {
+      return false;
+    }
 
     // FIXME once there's no single model repository, there would be no reason to limit model name to unique in the repo
     return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> new ModuleRepositoryFacade(myProject).getModelsByName(new SModelName(text)).isEmpty());

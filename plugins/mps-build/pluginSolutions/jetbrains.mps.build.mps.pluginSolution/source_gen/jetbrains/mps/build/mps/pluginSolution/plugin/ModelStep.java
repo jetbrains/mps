@@ -95,6 +95,6 @@ public class ModelStep extends TwoOptionsStep<SModel> {
     if (text.equals("")) {
       return "Empty model name is not allowed.";
     }
-    return "Model " + text + " already exists, choose another name.";
+    return "Model " + text + " already exists or the name is invalid, choose another name.";
   }
 }
