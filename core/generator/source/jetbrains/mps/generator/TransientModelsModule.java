@@ -480,6 +480,7 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
       } else {
         getModelHeader().setOptionalProperty(key, value);
       }
+      setChanged(true);
     }
 
     @Nullable

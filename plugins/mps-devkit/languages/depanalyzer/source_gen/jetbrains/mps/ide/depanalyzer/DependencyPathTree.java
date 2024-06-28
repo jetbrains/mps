@@ -41,7 +41,7 @@ public class DependencyPathTree extends MPSTree implements DataProvider {
   }
   private void buildTree(DepLink depNode, Map<Dependency, LinkFrom> visited) {
     List<DepLink> dependencyPath = ListSequence.fromList(new LinkedList<DepLink>());
-    // unwind up to source of depdendency path, effectively reversing it, top (source of dep) -> bottom (target of dep)
+    // unwind up to source of dependency path, effectively reversing it, top (source of dep) -> bottom (target of dep)
     while (depNode != null) {
       ListSequence.fromList(dependencyPath).insertElement(0, depNode);
       depNode = depNode.parent();
@@ -73,6 +73,9 @@ public class DependencyPathTree extends MPSTree implements DataProvider {
     // merge dependency paths by role and module
     for (DepLink dep : ListSequence.fromList(myAllDependencies)) {
       buildTree(dep, deps);
+      for (DepLink rd : ListSequence.fromList(dep.reusedFrom())) {
+        buildTree(rd, deps);
+      }
     }
     // attach roots of merged paths to top node
     for (LinkFrom lf : Sequence.fromIterable(MapSequence.fromMap(deps).values())) {

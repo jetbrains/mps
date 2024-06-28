@@ -87,19 +87,26 @@ public class DependencyTree extends MPSTree implements DataProvider {
       }
     });
     for (final SModuleReference module : Sequence.fromIterable(sortedModules)) {
-      Iterable<DepLink> moduleDeps = Sequence.fromIterable(allDependencies).where((it) -> module.equals(it.module) && it.role.isDependency()).distinct();
+      Iterable<DepLink> moduleDeps = Sequence.fromIterable(allDependencies).where((it) -> module.equals(it.module) && it.isDependencyRole());
       if (Sequence.fromIterable(moduleDeps).isEmpty()) {
         continue;
       }
-      ModuleDependencyNode n = new ModuleDependencyNode(module, moduleDeps, false);
+      ModuleDependencyNode n = new ModuleDependencyNode(module, Sequence.fromIterable(moduleDeps).distinct(), false);
       n.updateIcon(myModule.getRepository());
       if (module.equals(myModule.getModuleReference())) {
-        n.addTreeMessage(DEPENDENCY_CYCLE);
+        // we could get to a same module dependency through a path which is not necessarily a 
+        // "proper" dependency. E.g. generator owned by a language depends from the language ("proper") 
+        // dependency, and at the same time is in "owned generator" relation, which is not a dependency
+        // for module's load/run. With ancestors check, make sure 'cycle' is reported only when complete
+        // path is through "proper" dependencies
+        if (Sequence.fromIterable(moduleDeps).any((it) -> Sequence.fromIterable(it.ancestors()).all((it2) -> it2.isDependencyRole()))) {
+          n.addTreeMessage(DEPENDENCY_CYCLE);
+        }
       } else {
         // if there's any dependency with loop to itself, and role of each element of this path isDependency, then it's dependency cycle
         //  NOTE, selectMany ends up as TranslatingSequence, it we don't want cycles to be recalculated again and again on any
-        // ModuleDependencyNode.isLeaf call, shall keep it calcualted in a collection once and for all (e.g. with toList)
-        List<DepPath> cycles = Sequence.fromIterable(moduleDeps).translate((dep) -> cbDeps.cyclePaths(dep)).toList();
+        // ModuleDependencyNode.isLeaf call, shall keep it calculated in a collection once and for all (e.g. with toList)
+        List<DepPath> cycles = Sequence.fromIterable(moduleDeps).distinct().translate((dep) -> cbDeps.cyclePaths(dep)).toList();
         if (ListSequence.fromList(cycles).isNotEmpty()) {
           n.setCycles(cycles);
           n.addTreeMessage(HAS_CYCLE);
