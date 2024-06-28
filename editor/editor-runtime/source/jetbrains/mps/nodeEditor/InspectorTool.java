@@ -21,14 +21,12 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.KeyboardShortcut;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.Shortcut;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorProvider;
 import com.intellij.openapi.keymap.Keymap;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowId;
@@ -153,8 +151,6 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
 
   @Override
   public void initComponent() {
-    createTool();
-    StartupManager.getInstance(getProject()).runAfterOpened(this::registerLater);
   }
 
   @Override
@@ -168,7 +164,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
 
   @Override
   public void projectOpened() {
-
+    registerLater();
   }
 
   @Override
@@ -176,22 +172,20 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
 
   }
 
-  protected void createTool() {
-    StartupManager.getInstance(getProject()).registerStartupActivity(() -> ApplicationManager.getApplication().invokeLater(() -> {
-      final MPSProject project = ProjectHelper.fromIdeaProject(getProject());
-      InspectorTool.this.myMessagePanel = new MyMessagePanel(project.getComponent(StyleRegistry.class));
-      myComponent = new MyPanel();
-      myInspectorComponent = new InspectorEditorComponent(project.getRepository(),
-                                                          new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(project)).notifies(true).build());
-      EditorExtensionUtil.extendUsingProject(myInspectorComponent, project);
-      myComponent.setContent(myInspectorComponent.getExternalComponent());
-      myMessagePanel.setNode(null);
-      myComponent.setToolbar(myMessagePanel);
-      AnAction moveDownAction = ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.MoveElementsDown_Action");
-      moveDownAction.registerCustomShortcutSet(moveDownAction.getShortcutSet(), myComponent);
-      AnAction moveUpAction = ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.MoveElementsUp_Action");
-      moveUpAction.registerCustomShortcutSet(moveUpAction.getShortcutSet(), myComponent);
-    }));
+  private void createTool() {
+    final MPSProject project = ProjectHelper.fromIdeaProject(getProject());
+    InspectorTool.this.myMessagePanel = new MyMessagePanel(project.getComponent(StyleRegistry.class));
+    myComponent = new MyPanel();
+    myInspectorComponent = new InspectorEditorComponent(project.getRepository(),
+                                                        new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(project)).notifies(true).build());
+    EditorExtensionUtil.extendUsingProject(myInspectorComponent, project);
+    myComponent.setContent(myInspectorComponent.getExternalComponent());
+    myMessagePanel.setNode(null);
+    myComponent.setToolbar(myMessagePanel);
+    AnAction moveDownAction = ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.MoveElementsDown_Action");
+    moveDownAction.registerCustomShortcutSet(moveDownAction.getShortcutSet(), myComponent);
+    AnAction moveUpAction = ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.MoveElementsUp_Action");
+    moveUpAction.registerCustomShortcutSet(moveUpAction.getShortcutSet(), myComponent);
   }
 
   @Override
@@ -205,11 +199,19 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
   }
 
   public EditorComponent getInspector() {
+    if (myComponent == null) {
+      createTool();
+    }
     return myInspectorComponent;
   }
 
   @Override
   public JComponent getComponent() {
+    // FIXME don't need to keep myComponent field here; getComponent() serves as a factory method
+    //       XXX however, keep in mind getInspector() scenario from tests, where no UI is shown and therefore getComponent() never invoked!
+    if (myComponent == null) {
+      createTool();
+    }
     return myComponent;
   }
 
