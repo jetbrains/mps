@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -127,7 +127,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     myClassLoaderManager.addListener(myClassesListener);
     myEventCollector.startListening(myMPSProject.getRepository());
 
-    myInspectorTool = myProject.getComponent(InspectorTool.class);
+    myInspectorTool = InspectorTool.getInstance(myMPSProject);
     // perhaps, should register myDisposable with myProject as parent not to rely
     // solely on projectClose()?
     MessageBusConnection mbCon = myProject.getMessageBus().connect(myDisposable);

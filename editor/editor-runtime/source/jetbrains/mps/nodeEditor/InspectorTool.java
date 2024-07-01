@@ -62,7 +62,6 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Graphics;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -83,6 +82,15 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
   private InspectorEditorComponent myInspectorComponent;
   private MyMessagePanel myMessagePanel;
   private FileEditor myFileEditor;
+
+  /**
+   * This is the only endorsed way to obtain InspectorTool instance, we are going to switch from IDEA's ProjectComponent in the next release.
+   * @since 2024.1
+   */
+  @Nullable
+  public static InspectorTool getInstance(@Nullable jetbrains.mps.project.Project mpsProject) {
+    return mpsProject == null ? null : mpsProject.getComponent(InspectorTool.class);
+  }
 
   public InspectorTool(Project project) {
     super(project, ID, getDefaultShortCuts(), IdeIcons.INSPECTOR_ICON, ToolWindowAnchor.BOTTOM, true, false);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -217,7 +217,7 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
   @Nullable
   private InspectorTool inspectorTool() {
     Project project = ProjectHelper.getProject(myRepository);
-    return project != null ? project.getComponent(InspectorTool.class) : null;
+    return project != null ? InspectorTool.getInstance(project) : null;
   }
 
   @Override
