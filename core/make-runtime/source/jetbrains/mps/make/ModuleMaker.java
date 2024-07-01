@@ -456,10 +456,11 @@ public final class ModuleMaker {
       mySourcePaths = allSourcePaths;
       mySourcesOut = sourceOutRoot == null ? null : new File(sourceOutRoot);
       mySourcesCache = sourceOutCacheRoot == null ? null : new File(sourceOutCacheRoot);
+      myClassesOut = new File(classOut);
 
       // Get kotlin cache and walk output
       KotlinModuleCache cache = !js.myKotlinFiles.isEmpty() && kotlinCache != null ? kotlinCache.getCache(new JvmKotlinModule(this)) : null;
-      js.walkOutput(myClassesOut = new File(classOut), cache);
+      js.walkOutput(myClassesOut, cache);
     }
 
     @Override
@@ -529,7 +530,7 @@ public final class ModuleMaker {
     private final List<File> myFilesToDelete = new ArrayList<>();
     private final List<JavaFile> myFilesToCompile = new ArrayList<>(); // FIXME remove
     private boolean myHasKotlinFilesToCompile = false;
-    private final List<File> myKotlinCompiledFiles = new ArrayList<>();
+    private final Set<File> myKotlinCompiledFiles = new HashSet<>();
     private final List<ResourceFile> myResourcesToCopy = new ArrayList<>();
 
     void collectSources(Stream<File> srcRoot) {
@@ -597,6 +598,8 @@ public final class ModuleMaker {
       }
 
       classes(classesRoot, new PackagePrefix(), cache);
+
+      myHasKotlinFilesToCompile |= cache != null && cache.missesOutput(myKotlinCompiledFiles);
     }
 
     // pre: dir.exists()

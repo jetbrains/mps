@@ -44,7 +44,7 @@ public class JvmKotlinCompileCacheHandler implements KotlinCompileCacheHandler {
 
     try {
       final Document document = JDOMUtil.loadDocument(cacheFile);
-      return JvmKotlinCompileCacheUtil.deserialize(document.getRootElement());
+      return JvmKotlinCompileCacheUtil.deserialize(document.getRootElement(), module.getClassesOut().getAbsolutePath());
     } catch (JDOMException | IOException e) {
       Message msg = new Message(MessageKind.ERROR, JvmKotlinCompileCacheHandler.class, (e.getMessage() == null ? e.getClass().getName() : e.getMessage()));
       msg.setException(e);
