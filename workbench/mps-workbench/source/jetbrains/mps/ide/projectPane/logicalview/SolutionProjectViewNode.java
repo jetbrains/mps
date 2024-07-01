@@ -87,7 +87,7 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
     super.appendInplaceComments(appender);
     MissionControl missionControl = MissionControl.getInstance(getProject());
     if (missionControl != null) {
-      if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkModified, MessageStatus.OK.OK, true)) {
+      if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkReadonly, MessageStatus.OK.OK, true)) {
         appender.append(String.format(" (%s)", GenerationStatus.READONLY.getMessage()), SimpleTextAttributes.GRAY_ATTRIBUTES);
       }
     }
