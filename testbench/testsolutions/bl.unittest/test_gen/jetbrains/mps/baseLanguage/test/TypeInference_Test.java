@@ -15,6 +15,7 @@ import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
 import java.util.Arrays;
+import jetbrains.mps.smodel.SNodePointer;
 
 @MPSLaunch
 public class TypeInference_Test extends BaseTransformationTest {
@@ -104,6 +105,10 @@ public class TypeInference_Test extends BaseTransformationTest {
   @Test
   public void test_ErrorMessagesCheck488298296050687637() throws Throwable {
     new TestBody(this).test_ErrorMessagesCheck488298296050687637();
+  }
+  @Test
+  public void test_NodeRawUseOfParameterizedCheck3780435688576526874() throws Throwable {
+    new TestBody(this).test_NodeRawUseOfParameterizedCheck3780435688576526874();
   }
   @Test
   public void test_ErrorMessagesCheck7261441936922433825() throws Throwable {
@@ -261,11 +266,18 @@ public class TypeInference_Test extends BaseTransformationTest {
         new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(false).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("3951985765451228506"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("3951985765451228240"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("3951985765451228066"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedTypesystemMessageRunnable(getNodeById("3951985765451222927"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()), new CheckExpectedMessageRunnable.CheckAnyMessageRunnable(getNodeById("3951985765451230917"), MessageStatus.ERROR, "", myProject.getRepository(), myProject.getPlatform()))).run();
       });
     }
+    public void test_NodeRawUseOfParameterizedCheck3780435688576526874() throws Exception {
+      initTestNodes();
+      runWithinCommand(() -> {
+        SNode nodeToCheck = getNodeById("5089784887112054955");
+        new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8329232789335967727"), "", myProject.getRepository(), myProject.getPlatform()).run();
+      });
+    }
     public void test_ErrorMessagesCheck7261441936922433825() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
         SNode nodeToCheck = getNodeById("5089784887111887929");
-        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(false).exclude(Arrays.<CheckExpectedMessageRunnable>asList()).run();
+        new CheckErrorMessagesRunnable(nodeToCheck, false, false, myProject.getPlatform()).includeSelf(false).exclude(Arrays.<CheckExpectedMessageRunnable>asList(new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getNodeById("5089784887112054955"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8329232789335967727"), "", myProject.getRepository(), myProject.getPlatform()))).run();
       });
     }
 
