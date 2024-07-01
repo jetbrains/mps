@@ -7,6 +7,9 @@
     </modelRoot>
     <modelRoot contentPath="${mps_home}/plugins/vcs-svn/lib" type="java_classes">
       <sourceRoot location="vcs-svn.jar" />
+      <PackageScope>
+        <include prefix="org.jetbrains.idea.svn."/>
+      </PackageScope>
     </modelRoot>
   </models>
   <facets>
