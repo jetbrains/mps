@@ -9,12 +9,14 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class typeof_FoldLeftOperation_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
   public typeof_FoldLeftOperation_InferenceRule() {
@@ -22,6 +24,7 @@ public class typeof_FoldLeftOperation_InferenceRule extends AbstractInferenceRul
   public void applyRule(final SNode operation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode elementType_typevar_1522217801069396613 = typeCheckingContext.createNewRuntimeTypesVariable();
     final SNode seedType_typevar_1522217801069396654 = typeCheckingContext.createNewRuntimeTypesVariable();
+    final SNode resultType_typevar_2462863295919730914 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
       SNode _nodeToCheck_1029348928467 = operation;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1522217801069396627", 0, null);
@@ -29,10 +32,45 @@ public class typeof_FoldLeftOperation_InferenceRule extends AbstractInferenceRul
     }
     {
       SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.seed$WJ2H);
-      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1522217801069421807", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1522217801069421799", true), (SNode) typeCheckingContext.getRepresentative(seedType_typevar_1522217801069396654), _info_12389875345);
+      EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "8703633805927013155", 0, null);
+      typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2462863295918181680", true), (SNode) typeCheckingContext.getRepresentative(seedType_typevar_1522217801069396654), false, true, _info_12389875345);
     }
-    OperationInference.inferInternalOperation(typeCheckingContext, operation, typeCheckingContext.getRepresentative(elementType_typevar_1522217801069396613), _quotation_createNode_qjaq37_d0e0b(typeCheckingContext.getRepresentative(seedType_typevar_1522217801069396654), typeCheckingContext.getRepresentative(elementType_typevar_1522217801069396613), typeCheckingContext.getRepresentative(seedType_typevar_1522217801069396654)));
+
+    /*
+      This pull up is necessary to compute the type properly. The seed type depends on:
+      * Type of the seed / first parameter
+      * Type of the first parameter of the closure, if **explicit**
+      
+      It does not directly depend on the return type of the closure, which is inferred independently.
+      
+      Consider the following example:
+      * B <: A
+      * seqB has type sequence<B>, sampleA has type A, sampleB has type B
+      * `seqB.foldLeft(sampleB, {A acc, B it => acc}) `
+      
+      In such call, seed type should be A:
+      * First param has type B, acc parameter has A set explicitly
+      * During constraint resolution, we end up with `seedType <: A` and `B <: seedType`
+      * Without pull up, seedType is inferred to be B, raising an error with the last constraint in this rule (when seedType concrete, `resultType <: seedType`)
+      * The last constraint is necessary to be delayed with when concrete to deal with cases closure parameter types are not explicitly set and avoid return type to be considered (which does not happen in java)
+      
+      See ReductionOperations test case for a more exhaustive list of cases under the same assumption.
+
+    */
+
+    SPropertyOperations.assign(SNodeOperations.as(typeCheckingContext.getRepresentative(seedType_typevar_1522217801069396654), CONCEPTS.RuntimeTypeVariable$4a), PROPS.pullUp$lTOJ, true);
+
+    OperationInference.inferInternalOperation(typeCheckingContext, operation, typeCheckingContext.getRepresentative(elementType_typevar_1522217801069396613), _quotation_createNode_qjaq37_d0j0b(typeCheckingContext.getRepresentative(seedType_typevar_1522217801069396654), typeCheckingContext.getRepresentative(elementType_typevar_1522217801069396613), typeCheckingContext.getRepresentative(resultType_typevar_2462863295919730914)));
+    {
+      final SNode _seed = typeCheckingContext.getRepresentative(seedType_typevar_1522217801069396654);
+      typeCheckingContext.whenConcrete(_seed, () -> {
+        {
+          SNode _nodeToCheck_1029348928467 = operation;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2462863295919731325", 0, null);
+          typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(resultType_typevar_2462863295919730914), (SNode) typeCheckingContext.getRepresentative(seedType_typevar_1522217801069396654), false, true, _info_12389875345);
+        }
+      }, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "2462863295920376631", true, false);
+    }
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.FoldLeftOperation$S0;
@@ -43,7 +81,7 @@ public class typeof_FoldLeftOperation_InferenceRule extends AbstractInferenceRul
   public boolean overrides() {
     return false;
   }
-  private static SNode _quotation_createNode_qjaq37_d0e0b(Object parameter_1, Object parameter_2, Object parameter_3) {
+  private static SNode _quotation_createNode_qjaq37_d0j0b(Object parameter_1, Object parameter_2, Object parameter_3) {
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
     SNode quotedNode_6 = null;
@@ -70,6 +108,11 @@ public class typeof_FoldLeftOperation_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept RuntimeTypeVariable$4a = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
     /*package*/ static final SConcept FoldLeftOperation$S0 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1520010667848262L, "jetbrains.mps.baseLanguage.collections.structure.FoldLeftOperation");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty pullUp$lTOJ = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, 0x36a9a25a86aee366L, "pullUp");
   }
 }
