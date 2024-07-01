@@ -929,7 +929,6 @@
         <child id="1237721435807" name="elementType" index="HW$YZ" />
       </concept>
       <concept id="1205598340672" name="jetbrains.mps.baseLanguage.collections.structure.DisjunctOperation" flags="nn" index="2NgGto" />
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1205679737078" name="jetbrains.mps.baseLanguage.collections.structure.SortOperation" flags="nn" index="2S7cBI">
         <child id="1205679832066" name="ascending" index="2S7zOq" />
       </concept>
@@ -36578,9 +36577,6 @@
           <property role="1EXbeo" value="false" />
           <property role="TrG5h" value="Item" />
           <node concept="3Tm6S6" id="4sA1wziQ02u" role="1B3o_S" />
-          <node concept="3uibUv" id="6evnIa3SCNg" role="1zkMxy">
-            <ref role="3uigEE" to="9eyi:~ActionItemBase" resolve="ActionItemBase" />
-          </node>
           <node concept="3clFbW" id="4sA1wziQ0Pv" role="jymVt">
             <node concept="3cqZAl" id="4sA1wziQ0Pw" role="3clF45" />
             <node concept="3clFbS" id="4sA1wziQ0Pz" role="3clF47">
@@ -37140,6 +37136,9 @@
                 </node>
               </node>
             </node>
+          </node>
+          <node concept="3uibUv" id="6evnIa3SCNg" role="1zkMxy">
+            <ref role="3uigEE" to="9eyi:~ActionItemBase" resolve="ActionItemBase" />
           </node>
         </node>
         <node concept="3Tm6S6" id="4sA1wzjas$N" role="1B3o_S" />
@@ -44080,7 +44079,7 @@
                                       <node concept="3clFbF" id="61YQJHw8mXX" role="3cqZAp">
                                         <node concept="2OqwBi" id="61YQJHw8mXY" role="3clFbG">
                                           <node concept="37vLTw" id="61YQJHw8mXZ" role="2Oq$k0">
-                                            <ref role="3cqZAo" node="61YQJHw8mY6" resolve="it" />
+                                            <ref role="3cqZAo" node="7XBu3oV1ufv" resolve="it" />
                                           </node>
                                           <node concept="2qgKlT" id="61YQJHw8mY0" role="2OqNvi">
                                             <ref role="37wK5l" to="tpek:6dL7A1DpKo1" resolve="isDescendant" />
@@ -44100,9 +44099,9 @@
                                         </node>
                                       </node>
                                     </node>
-                                    <node concept="Rh6nW" id="61YQJHw8mY6" role="1bW2Oz">
+                                    <node concept="gl6BB" id="7XBu3oV1ufv" role="1bW2Oz">
                                       <property role="TrG5h" value="it" />
-                                      <node concept="2jxLKc" id="61YQJHw8mY7" role="1tU5fm" />
+                                      <node concept="2jxLKc" id="7XBu3oV1ufw" role="1tU5fm" />
                                     </node>
                                   </node>
                                 </node>

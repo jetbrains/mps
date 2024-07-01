@@ -517,7 +517,6 @@
       <concept id="1201306600024" name="jetbrains.mps.baseLanguage.collections.structure.ContainsKeyOperation" flags="nn" index="2Nt0df">
         <child id="1201654602639" name="key" index="38cxEo" />
       </concept>
-      <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1237909114519" name="jetbrains.mps.baseLanguage.collections.structure.GetValuesOperation" flags="nn" index="T8wYR" />
       <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
@@ -10707,14 +10706,14 @@
                           <node concept="1rXfSq" id="6pnunaLoQGP" role="3clFbG">
                             <ref role="37wK5l" node="6nj_ILmCbDD" resolve="includeModel" />
                             <node concept="37vLTw" id="6pnunaLoQGQ" role="37wK5m">
-                              <ref role="3cqZAo" node="6pnunaLoQGR" resolve="it" />
+                              <ref role="3cqZAo" node="7XBu3oV1ufD" resolve="it" />
                             </node>
                           </node>
                         </node>
                       </node>
-                      <node concept="Rh6nW" id="6pnunaLoQGR" role="1bW2Oz">
+                      <node concept="gl6BB" id="7XBu3oV1ufD" role="1bW2Oz">
                         <property role="TrG5h" value="it" />
-                        <node concept="2jxLKc" id="6pnunaLoQGS" role="1tU5fm" />
+                        <node concept="2jxLKc" id="7XBu3oV1ufE" role="1tU5fm" />
                       </node>
                     </node>
                   </node>
