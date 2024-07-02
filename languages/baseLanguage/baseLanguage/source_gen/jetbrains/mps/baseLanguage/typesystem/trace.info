@@ -32539,7 +32539,7 @@
     <file name="check_HexLongLiteral_NonTypesystemRule.java">
       <node id="8353134822275488128" at="22,127,23,86" concept="12" />
       <node id="8353134822275488136" at="24,24,25,13" concept="13" />
-      <node id="8353134822275488150" at="27,9,28,75" concept="6" />
+      <node id="8353134822275488150" at="27,9,28,82" concept="6" />
       <node id="8353134822275488162" at="30,21,31,66" concept="12" />
       <node id="8353134822275488162" at="31,66,32,243" concept="12" />
       <node id="8353134822275488109" at="36,50,37,38" concept="13" />
@@ -32557,7 +32557,7 @@
       <node id="8353134822275488109" at="22,0,36,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="8353134822275488109" at="20,51,20,51" />
       <scope id="8353134822275488135" at="24,24,25,13" />
-      <scope id="8353134822275488141" at="27,9,28,75" />
+      <scope id="8353134822275488141" at="27,9,28,82" />
       <scope id="8353134822275488109" at="36,50,37,38" />
       <scope id="8353134822275488109" at="39,68,40,102" />
       <scope id="8353134822275488109" at="42,30,43,17" />

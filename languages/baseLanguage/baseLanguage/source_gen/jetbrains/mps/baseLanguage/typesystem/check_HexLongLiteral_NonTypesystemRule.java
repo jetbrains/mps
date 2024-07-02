@@ -25,7 +25,7 @@ public class check_HexLongLiteral_NonTypesystemRule extends AbstractNonTypesyste
       return;
     }
     try {
-      Long.parseLong(value.replaceFirst("(-?[0-9a-fA-F])(l|L)", "$1"), 16);
+      Long.parseUnsignedLong(value.replaceFirst("([0-9a-fA-F]+)(l|L)", "$1"), 16);
     } catch (NumberFormatException e) {
       if (!(false)) {
         final MessageTarget errorTarget = new NodeMessageTarget();
