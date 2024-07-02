@@ -18,6 +18,7 @@ package jetbrains.mps.ide.ui;
 import com.intellij.find.SearchTextArea;
 import com.intellij.ide.IdeEventQueue;
 import com.intellij.openapi.actionSystem.ActionManager;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -706,6 +707,12 @@ public final class FindTextInModelDialog extends DialogWrapper {
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
       navigateToSelectedUsage();
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      // updates UI
+      return ActionUpdateThread.EDT;
     }
   }
 }
