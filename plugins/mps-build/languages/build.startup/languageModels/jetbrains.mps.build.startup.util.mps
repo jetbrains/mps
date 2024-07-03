@@ -5,7 +5,7 @@
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
-    <import index="s7om" ref="r:a930f08c-5447-4203-8f2e-507bb76fab12(jetbrains.mps.build.startup.structure)" implicit="true" />
+    <import index="s7om" ref="r:a930f08c-5447-4203-8f2e-507bb76fab12(jetbrains.mps.build.startup.structure)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -750,6 +750,17 @@
                   </node>
                 </node>
               </node>
+              <node concept="2pJPED" id="7vi_RqAS_ge" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="7vi_RqAS_gf" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="7vi_RqAS_gg" role="28ntcv">
+                    <node concept="Xl_RD" id="7vi_RqAS_gh" role="WxPPp">
+                      <property role="Xl_RC" value="lib/opentelemetry.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="2pJPED" id="3rleFKvpH0u" role="36be1Z">
                 <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
                 <node concept="2pJxcG" id="3rleFKvpH0v" role="2pJxcM">
@@ -812,6 +823,17 @@
                   <node concept="WxPPo" id="3rleFKvpH0O" role="28ntcv">
                     <node concept="Xl_RD" id="3rleFKvpH0P" role="WxPPp">
                       <property role="Xl_RC" value="lib/testFramework.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2pJPED" id="7vi_RqAS_K7" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="7vi_RqAS_K8" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="7vi_RqAS_K9" role="28ntcv">
+                    <node concept="Xl_RD" id="7vi_RqAS_Ka" role="WxPPp">
+                      <property role="Xl_RC" value="lib/trove.jar" />
                     </node>
                   </node>
                 </node>
