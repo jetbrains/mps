@@ -34,11 +34,26 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 0:
         if (true) {
           // concept
+          intentions = new IntentionFactory[2];
+          intentions[0] = new TogglePrimaryAttribute_Intention();
+          intentions[1] = new TriggerNodeChange_Intention();
+        }
+        break;
+      case 1:
+        if (true) {
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddTestReferenceAnnotation_Intention();
         }
         break;
-      case 1:
+      case 2:
+        if (true) {
+          // concept
+          intentions = new IntentionFactory[1];
+          intentions[0] = new ToggleSecondaryAttribute_Intention();
+        }
+        break;
+      case 3:
         if (true) {
           // concept
           intentions = new IntentionFactory[2];
@@ -46,14 +61,14 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[1] = new MoveAttributeToNodeParam_Intention();
         }
         break;
-      case 2:
+      case 4:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new AddSimplePropertyAttribute_Intention();
         }
         break;
-      case 3:
+      case 5:
         if (true) {
           // concept
           intentions = new IntentionFactory[1];
@@ -69,13 +84,16 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[5];
+    IntentionFactory[] rv = new IntentionFactory[8];
     rv[0] = new AddTestReferenceAnnotation_Intention();
     rv[1] = new AddSimplePropertyAttribute_Intention();
     rv[2] = new TwoStepDeleteDefaultChild_AddAttribute_Intention();
     rv[3] = new AddPlaceholderChildAttribute_Intention();
     rv[4] = new MoveAttributeToNodeParam_Intention();
+    rv[5] = new TogglePrimaryAttribute_Intention();
+    rv[6] = new TriggerNodeChange_Intention();
+    rv[7] = new ToggleSecondaryAttribute_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5f4994bb9f207829L), MetaIdFactory.conceptId(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2c59702023f8181eL), MetaIdFactory.conceptId(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d5eL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x25383c1567db67d6L), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x25383c1567f6773cL), MetaIdFactory.conceptId(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5f4994bb9f207829L), MetaIdFactory.conceptId(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2c59702023f8181eL), MetaIdFactory.conceptId(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x29e25dc0d0251d5eL)).seal();
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="85kdsg3wu852zfo3dqeb5g8r5xdehlv">
-  <files names="AddPlaceholderChildAttribute_Intention.java:AddSimplePropertyAttribute_Intention.java:AddTestReferenceAnnotation_Intention.java:IntentionsDescriptor.java:MoveAttributeToNodeParam_Intention.java:TwoStepDeleteDefaultChild_AddAttribute_Intention.java" />
+<product version="3" modelHash="-avbfzfw5f82hu12fpmpgw71tzoimfy5">
+  <files names="AddPlaceholderChildAttribute_Intention.java:AddSimplePropertyAttribute_Intention.java:AddTestReferenceAnnotation_Intention.java:IntentionsDescriptor.java:MoveAttributeToNodeParam_Intention.java:TogglePrimaryAttribute_Intention.java:ToggleSecondaryAttribute_Intention.java:TriggerNodeChange_Intention.java:TwoStepDeleteDefaultChild_AddAttribute_Intention.java" />
 </product>
 
