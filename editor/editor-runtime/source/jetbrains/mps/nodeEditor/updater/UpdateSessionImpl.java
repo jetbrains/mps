@@ -95,6 +95,20 @@ public class UpdateSessionImpl implements UpdateSession {
   }
 
   @Override
+  public void registerAdditionalDependencies(EditorCell cell, Iterable<SNode> nodes, Iterable<SNodeReference> refTargets) {
+    Set<SNode> registeredRelatedNodes = myRelatedNodes.computeIfAbsent(cell, editorCell -> new HashSet<>());
+    for (SNode nextNode : nodes) {
+      assert nextNode != null;
+      registeredRelatedNodes.add(nextNode);
+    }
+    Set<SNodeReference> registeredRefTargets = myRelatedRefTargets.computeIfAbsent(cell, editorCell -> new HashSet<>());
+    for (SNodeReference nextRefTarget : refTargets) {
+      assert nextRefTarget != null;
+      registeredRefTargets.add(nextRefTarget);
+    }
+  }
+
+  @Override
   public void registerDependencies(EditorCell cell, Iterable<SNode> nodes, Iterable<SNodeReference> refTargets) {
     Set<SNode> registeredRelatedNodes = new HashSet<>();
     myRelatedNodes.put(cell, registeredRelatedNodes);
