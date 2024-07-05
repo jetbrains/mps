@@ -17,6 +17,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Iterator;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.actions.descriptor.ActionAspectDescriptor;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -100,6 +101,7 @@ public final class DataTransferManager implements LanguageRegistryListener {
       postProcessor.postProcessNode(pastedNode);
       return;
     }
+    NodeIdentityComponent.getInstance().configure(pastedNode, SNodeOperations.getModel(pastedNode), null);
 
     for (SNode pastedChild : ListSequence.fromList(SNodeOperations.getChildren(pastedNode))) {
       postProcessNode(pastedChild);
