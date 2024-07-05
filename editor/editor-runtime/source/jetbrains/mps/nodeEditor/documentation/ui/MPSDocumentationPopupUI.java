@@ -193,7 +193,7 @@ public class MPSDocumentationPopupUI implements Disposable {
     @NotNull
     @Override
     public ActionUpdateThread getActionUpdateThread() {
-      return super.getActionUpdateThread();
+      return ActionUpdateThread.EDT;
     }
   }
 
