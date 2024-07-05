@@ -3801,6 +3801,26 @@
                                   <property role="TrG5h" value="oldNode" />
                                 </node>
                               </node>
+                              <node concept="3cpWs8" id="48Zcg3Tk9UX" role="3cqZAp">
+                                <node concept="3cpWsn" id="48Zcg3Tk9UY" role="3cpWs9">
+                                  <property role="TrG5h" value="nic" />
+                                  <property role="3TUv4t" value="true" />
+                                  <node concept="3uibUv" id="48Zcg3Tk8_1" role="1tU5fm">
+                                    <ref role="3uigEE" to="w1kc:~NodeIdentityComponent" resolve="NodeIdentityComponent" />
+                                  </node>
+                                  <node concept="2OqwBi" id="48Zcg3Tk9UZ" role="33vP2m">
+                                    <node concept="37vLTw" id="48Zcg3Tk9V0" role="2Oq$k0">
+                                      <ref role="3cqZAo" to="lfzw:5sZ4VO_ZF5t" resolve="myProject" />
+                                    </node>
+                                    <node concept="liA8E" id="48Zcg3Tk9V1" role="2OqNvi">
+                                      <ref role="37wK5l" to="z1c4:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                                      <node concept="3VsKOn" id="48Zcg3Tk9V2" role="37wK5m">
+                                        <ref role="3VsUkX" to="w1kc:~NodeIdentityComponent" resolve="NodeIdentityComponent" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
                               <node concept="2Gpval" id="7wz7QM0RC1T" role="3cqZAp">
                                 <node concept="3clFbS" id="7wz7QM0RC1V" role="2LFqv$">
                                   <node concept="3cpWs8" id="7wz7QM0RC1W" role="3cqZAp">
@@ -3893,6 +3913,37 @@
                                             <ref role="2Gs0qQ" node="7wz7QM0RC2B" resolve="oldNode" />
                                           </node>
                                           <node concept="3YRAZt" id="7tV5ZLw74NG" role="2OqNvi" />
+                                        </node>
+                                      </node>
+                                      <node concept="3clFbJ" id="48Zcg3TkDhV" role="3cqZAp">
+                                        <node concept="3clFbS" id="48Zcg3TkDhX" role="3clFbx">
+                                          <node concept="3clFbF" id="48Zcg3TkPPv" role="3cqZAp">
+                                            <node concept="2OqwBi" id="48Zcg3TkQ_R" role="3clFbG">
+                                              <node concept="37vLTw" id="48Zcg3TkPPt" role="2Oq$k0">
+                                                <ref role="3cqZAo" node="48Zcg3Tk9UY" resolve="nic" />
+                                              </node>
+                                              <node concept="liA8E" id="48Zcg3TkS9e" role="2OqNvi">
+                                                <ref role="37wK5l" to="w1kc:~NodeIdentityComponent.moved(org.jetbrains.mps.openapi.model.SNode,java.util.Map)" resolve="moved" />
+                                                <node concept="2GrUjf" id="48Zcg3TkV8q" role="37wK5m">
+                                                  <ref role="2Gs0qQ" node="7wz7QM0RC2B" resolve="oldNode" />
+                                                </node>
+                                                <node concept="2OqwBi" id="3BY7x6EsAFF" role="37wK5m">
+                                                  <node concept="37vLTw" id="48Zcg3TkZyX" role="2Oq$k0">
+                                                    <ref role="3cqZAo" node="7Sw_42UC8nb" resolve="copyMap" />
+                                                  </node>
+                                                  <node concept="liA8E" id="3BY7x6EsDpo" role="2OqNvi">
+                                                    <ref role="37wK5l" to="5nvm:44mXFSxhV$4" resolve="getCopyMap" />
+                                                  </node>
+                                                </node>
+                                              </node>
+                                            </node>
+                                          </node>
+                                        </node>
+                                        <node concept="3y3z36" id="48Zcg3TkKaW" role="3clFbw">
+                                          <node concept="10Nm6u" id="48Zcg3TkMb9" role="3uHU7w" />
+                                          <node concept="37vLTw" id="48Zcg3TkIz2" role="3uHU7B">
+                                            <ref role="3cqZAo" node="48Zcg3Tk9UY" resolve="nic" />
+                                          </node>
                                         </node>
                                       </node>
                                     </node>
