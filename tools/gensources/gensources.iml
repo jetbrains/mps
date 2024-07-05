@@ -944,6 +944,8 @@
       <sourceFolder url="file://$MODULE_DIR$/../../samples/multipleProjections/languages/org.jetbrains.mps.requestTracking/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/multipleProjections/languages/org.jetbrains.mps.stateMachine.tabular/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/multipleProjections/languages/org.jetbrains.mps.stateMachine/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../samples/nodeuid/lang/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../samples/nodeuid/pls/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/sandbox/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/source_gen" isTestSource="false" />
@@ -1126,6 +1128,8 @@
       <excludeFolder url="file://$MODULE_DIR$/../../samples/multipleProjections/languages/org.jetbrains.mps.requestTracking/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/multipleProjections/languages/org.jetbrains.mps.stateMachine.tabular/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/multipleProjections/languages/org.jetbrains.mps.stateMachine/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../samples/nodeuid/lang/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../samples/nodeuid/pls/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/generator/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/sandbox/classes_gen" />
