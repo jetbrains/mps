@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.persistence.def;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.logging.Logger;
@@ -296,6 +297,9 @@ public class ModelPersistence {
   private static ModelSaveOption[] saveOptionsFor(SModelData model) {
     final SModelHeader header = model instanceof DefaultSModel ? ((DefaultSModel) model).getSModelHeader() : null;
     if (header != null) {
+      if (RuntimeFlags.customNodeIdentitySupport()) {
+        return new UserObjectsPersistence[]{UserObjectsPersistence.DESIRED};
+      }
       String value = header.getOptionalProperty(MPSPersistence.UO_MODEL_ATTRIBUTE);
       return value != null ? new UserObjectsPersistence[]{UserObjectsPersistence.valueOf(value)} : null;
     }

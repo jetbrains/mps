@@ -3,6 +3,7 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.model.SModelData;
 import org.jetbrains.annotations.NotNull;
@@ -56,6 +57,9 @@ public final class NodeIdentityComponent implements NodeIdentitySupplier, CoreCo
 
   @Override
   public SNodeId issue(SModel model) {
+    if (!RuntimeFlags.customNodeIdentitySupport()) {
+      return issueDefault();
+    }
     final NodeIdentitySupplier active = mySupplier.peek();
     return active != null ? active.issue(model) : issueDefault();
   }
@@ -66,6 +70,9 @@ public final class NodeIdentityComponent implements NodeIdentitySupplier, CoreCo
 
   @Override
   public void configure(@NotNull SNode node, @Nullable SModel model, @Nullable SNode origin) {
+    if (!RuntimeFlags.customNodeIdentitySupport()) {
+      return;
+    }
     if (!canHoldIdentity(node.getConcept())) {
       return;
     }
@@ -77,6 +84,9 @@ public final class NodeIdentityComponent implements NodeIdentitySupplier, CoreCo
 
   @Override
   public void moved(@NotNull SNode origin, @NotNull Map<SNode, SNode> newNodes) {
+    if (!RuntimeFlags.customNodeIdentitySupport()) {
+      return;
+    }
     if (!canHoldIdentity(origin.getConcept())) {
       return;
     }
