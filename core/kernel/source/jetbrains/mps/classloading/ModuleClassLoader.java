@@ -243,6 +243,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
           LOG.trace("checking dep moduleclassloader " + depCL);
         }
         ModuleClassLoader depCL1 = (ModuleClassLoader) depCL;
+        depCL1.checkNotDisposed();
         if (depCL1.myClassPathItem.hasClass(name)) {
           // here it will certainly load with class loader depCL
           return depCL1.loadFromSelf(name);
