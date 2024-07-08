@@ -10404,14 +10404,20 @@
     </node>
     <node concept="tnohg" id="4npc6Q0ooI5" role="tncku">
       <node concept="3clFbS" id="4npc6Q0ooI6" role="2VODD2">
-        <node concept="3clFbF" id="4npc6Q0ooZ9" role="3cqZAp">
-          <node concept="2YIFZM" id="5B4qHGk7JXl" role="3clFbG">
-            <ref role="37wK5l" to="dp1x:5tGs5KqKiIT" resolve="copyNodesToClipboard" />
-            <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
-            <node concept="2OqwBi" id="5B4qHGk7JXm" role="37wK5m">
-              <node concept="2WthIp" id="5B4qHGk7JXn" role="2Oq$k0" />
-              <node concept="3gHZIF" id="5B4qHGk7JXo" role="2OqNvi">
-                <ref role="2WH_rO" node="4npc6Q0ooIg" resolve="nodes" />
+        <node concept="3cpWs8" id="UjTWcK9s6v" role="3cqZAp">
+          <node concept="3cpWsn" id="UjTWcK9s6w" role="3cpWs9">
+            <property role="TrG5h" value="transferable" />
+            <node concept="3uibUv" id="UjTWcK9rYe" role="1tU5fm">
+              <ref role="3uigEE" to="dp1x:5tGs5KqKj2K" resolve="SNodeTransferable" />
+            </node>
+            <node concept="2YIFZM" id="UjTWcK9s6x" role="33vP2m">
+              <ref role="37wK5l" to="dp1x:5tGs5KqKiIT" resolve="copyNodesToClipboard" />
+              <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
+              <node concept="2OqwBi" id="UjTWcK9s6y" role="37wK5m">
+                <node concept="2WthIp" id="UjTWcK9s6z" role="2Oq$k0" />
+                <node concept="3gHZIF" id="UjTWcK9s6$" role="2OqNvi">
+                  <ref role="2WH_rO" node="4npc6Q0ooIg" resolve="nodes" />
+                </node>
               </node>
             </node>
           </node>
@@ -10477,13 +10483,17 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="4Z_ZrCET8$$" role="3cqZAp">
-          <node concept="2OqwBi" id="4Z_ZrCETa_O" role="3clFbG">
-            <node concept="2YIFZM" id="4Z_ZrCETatm" role="2Oq$k0">
-              <ref role="37wK5l" to="dp1x:oR0qGlKAkB" resolve="getPasteNodeData" />
-              <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
+        <node concept="3clFbF" id="4npc6Q0ooZ9" role="3cqZAp">
+          <node concept="2OqwBi" id="UjTWcKba4B" role="3clFbG">
+            <node concept="2OqwBi" id="UjTWcKb9t0" role="2Oq$k0">
+              <node concept="37vLTw" id="UjTWcK9s6_" role="2Oq$k0">
+                <ref role="3cqZAo" node="UjTWcK9s6w" resolve="transferable" />
+              </node>
+              <node concept="liA8E" id="UjTWcKb9XO" role="2OqNvi">
+                <ref role="37wK5l" to="dp1x:5tGs5KqKj7n" resolve="createNodeData" />
+              </node>
             </node>
-            <node concept="liA8E" id="4Z_ZrCETaKo" role="2OqNvi">
+            <node concept="liA8E" id="UjTWcKbahQ" role="2OqNvi">
               <ref role="37wK5l" to="qzxn:~PasteNodeData.consume()" resolve="consume" />
             </node>
           </node>

@@ -2618,7 +2618,6 @@
     <node concept="2YIFZL" id="5tGs5KqKiIy" role="jymVt">
       <property role="TrG5h" value="copyNodesAndTextToClipboard" />
       <node concept="3Tm1VV" id="5tGs5KqKiIz" role="1B3o_S" />
-      <node concept="3cqZAl" id="5tGs5KqKiI$" role="3clF45" />
       <node concept="37vLTG" id="5tGs5KqKiI_" role="3clF46">
         <property role="TrG5h" value="nodes" />
         <node concept="3uibUv" id="5tGs5KqKiIA" role="1tU5fm">
@@ -2650,25 +2649,44 @@
         </node>
       </node>
       <node concept="3clFbS" id="5tGs5KqKiIJ" role="3clF47">
-        <node concept="3clFbF" id="2NI1dvfpgmM" role="3cqZAp">
-          <node concept="1rXfSq" id="4hiugqysw79" role="3clFbG">
-            <ref role="37wK5l" node="2NI1dvfpeH1" resolve="setClipboardContents" />
-            <node concept="2ShNRf" id="5tGs5KqKiIO" role="37wK5m">
-              <node concept="1pGfFk" id="5tGs5KqKiIP" role="2ShVmc">
+        <node concept="3cpWs8" id="2M0CR5h$Aw4" role="3cqZAp">
+          <node concept="3cpWsn" id="2M0CR5h$Aw5" role="3cpWs9">
+            <property role="TrG5h" value="transferable" />
+            <node concept="3uibUv" id="2M0CR5h$_vy" role="1tU5fm">
+              <ref role="3uigEE" node="5tGs5KqKj2K" resolve="SNodeTransferable" />
+            </node>
+            <node concept="2ShNRf" id="2M0CR5h$Aw6" role="33vP2m">
+              <node concept="1pGfFk" id="2M0CR5h$Aw7" role="2ShVmc">
                 <ref role="37wK5l" node="5tGs5KqKj4f" resolve="SNodeTransferable" />
-                <node concept="37vLTw" id="2BHiRxglrKr" role="37wK5m">
+                <node concept="37vLTw" id="2M0CR5h$Aw8" role="37wK5m">
                   <ref role="3cqZAo" node="5tGs5KqKiI_" resolve="nodes" />
                 </node>
-                <node concept="37vLTw" id="2BHiRxgmy$u" role="37wK5m">
+                <node concept="37vLTw" id="2M0CR5h$Aw9" role="37wK5m">
                   <ref role="3cqZAo" node="5tGs5KqKiIH" resolve="text" />
                 </node>
-                <node concept="37vLTw" id="2BHiRxghiXc" role="37wK5m">
+                <node concept="37vLTw" id="2M0CR5h$Awa" role="37wK5m">
                   <ref role="3cqZAo" node="5tGs5KqKiIC" resolve="nodesAndAttributes" />
                 </node>
               </node>
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="2NI1dvfpgmM" role="3cqZAp">
+          <node concept="1rXfSq" id="4hiugqysw79" role="3clFbG">
+            <ref role="37wK5l" node="2NI1dvfpeH1" resolve="setClipboardContents" />
+            <node concept="37vLTw" id="2M0CR5h$Awb" role="37wK5m">
+              <ref role="3cqZAo" node="2M0CR5h$Aw5" resolve="transferable" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="2M0CR5h$Dfi" role="3cqZAp">
+          <node concept="37vLTw" id="2M0CR5h$Ezr" role="3cqZAk">
+            <ref role="3cqZAo" node="2M0CR5h$Aw5" resolve="transferable" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="2M0CR5h$_sR" role="3clF45">
+        <ref role="3uigEE" node="5tGs5KqKj2K" resolve="SNodeTransferable" />
       </node>
     </node>
     <node concept="2YIFZL" id="2NI1dvfpeH1" role="jymVt">
@@ -2682,119 +2700,129 @@
       <node concept="3cqZAl" id="2NI1dvfpeH2" role="3clF45" />
       <node concept="3Tm6S6" id="2NI1dvfpeH5" role="1B3o_S" />
       <node concept="3clFbS" id="2NI1dvfpeH4" role="3clF47">
-        <node concept="3J1_TO" id="2NI1dvfpeH8" role="3cqZAp">
-          <node concept="3clFbS" id="2NI1dvfpeHh" role="1zxBo7">
-            <node concept="3cpWs8" id="2NI1dvfpeHi" role="3cqZAp">
-              <node concept="3cpWsn" id="2NI1dvfpeHj" role="3cpWs9">
-                <property role="TrG5h" value="stringContent" />
-                <property role="3TUv4t" value="false" />
-                <node concept="17QB3L" id="2NI1dvfpeHU" role="1tU5fm" />
-                <node concept="1rXfSq" id="4hiugqyssTS" role="33vP2m">
-                  <ref role="37wK5l" node="2NI1dvfp7XA" resolve="getStringContent" />
-                  <node concept="37vLTw" id="2BHiRxghgfu" role="37wK5m">
-                    <ref role="3cqZAo" node="2NI1dvfpeH6" resolve="content" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbJ" id="2NI1dvfpeHn" role="3cqZAp">
-              <node concept="3y3z36" id="2NI1dvfpeHo" role="3clFbw">
-                <node concept="37vLTw" id="3GM_nagTB$n" role="3uHU7B">
-                  <ref role="3cqZAo" node="2NI1dvfpeHj" resolve="stringContent" />
-                </node>
-                <node concept="10Nm6u" id="2NI1dvfpeHq" role="3uHU7w" />
-              </node>
-              <node concept="3clFbS" id="2NI1dvfpeHr" role="3clFbx">
-                <node concept="1DcWWT" id="2NI1dvfpeHs" role="3cqZAp">
-                  <node concept="3cpWsn" id="2NI1dvfpeHy" role="1Duv9x">
-                    <property role="TrG5h" value="existingContent" />
-                    <property role="3TUv4t" value="false" />
-                    <node concept="3uibUv" id="2NI1dvfpeHY" role="1tU5fm">
-                      <ref role="3uigEE" to="kt01:~Transferable" resolve="Transferable" />
-                    </node>
-                  </node>
-                  <node concept="3clFbS" id="2NI1dvfpeH$" role="2LFqv$">
-                    <node concept="3clFbJ" id="2NI1dvfpeH_" role="3cqZAp">
-                      <node concept="2OqwBi" id="2NI1dvfpeHA" role="3clFbw">
-                        <node concept="37vLTw" id="3GM_nagTsss" role="2Oq$k0">
-                          <ref role="3cqZAo" node="2NI1dvfpeHj" resolve="stringContent" />
-                        </node>
-                        <node concept="liA8E" id="2NI1dvfpeHC" role="2OqNvi">
-                          <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
-                          <node concept="1rXfSq" id="4hiugqystVs" role="37wK5m">
-                            <ref role="37wK5l" node="2NI1dvfp7XA" resolve="getStringContent" />
-                            <node concept="37vLTw" id="3GM_nagTrkX" role="37wK5m">
-                              <ref role="3cqZAo" node="2NI1dvfpeHy" resolve="existingContent" />
-                            </node>
+        <node concept="3clFbF" id="2M0CR5h$Pp$" role="3cqZAp">
+          <node concept="2YIFZM" id="2M0CR5h$Qf1" role="3clFbG">
+            <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
+            <ref role="1Pybhc" to="dxuu:~SwingUtilities" resolve="SwingUtilities" />
+            <node concept="1bVj0M" id="2M0CR5h$R7Q" role="37wK5m">
+              <node concept="3clFbS" id="2M0CR5h$R7T" role="1bW5cS">
+                <node concept="3J1_TO" id="2NI1dvfpeH8" role="3cqZAp">
+                  <node concept="3clFbS" id="2NI1dvfpeHh" role="1zxBo7">
+                    <node concept="3cpWs8" id="2NI1dvfpeHi" role="3cqZAp">
+                      <node concept="3cpWsn" id="2NI1dvfpeHj" role="3cpWs9">
+                        <property role="TrG5h" value="stringContent" />
+                        <property role="3TUv4t" value="false" />
+                        <node concept="17QB3L" id="2NI1dvfpeHU" role="1tU5fm" />
+                        <node concept="1rXfSq" id="4hiugqyssTS" role="33vP2m">
+                          <ref role="37wK5l" node="2NI1dvfp7XA" resolve="getStringContent" />
+                          <node concept="37vLTw" id="2BHiRxghgfu" role="37wK5m">
+                            <ref role="3cqZAo" node="2NI1dvfpeH6" resolve="content" />
                           </node>
                         </node>
                       </node>
-                      <node concept="3clFbS" id="2NI1dvfpeHF" role="3clFbx">
-                        <node concept="3clFbF" id="2NI1dvfpgmf" role="3cqZAp">
-                          <node concept="2OqwBi" id="2NI1dvfpgmj" role="3clFbG">
-                            <node concept="2YIFZM" id="$mzrmRC_2A" role="2Oq$k0">
-                              <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.getInstanceEx()" resolve="getInstanceEx" />
-                              <ref role="1Pybhc" to="ddhc:~CopyPasteManagerEx" resolve="CopyPasteManagerEx" />
+                    </node>
+                    <node concept="3clFbJ" id="2NI1dvfpeHn" role="3cqZAp">
+                      <node concept="3y3z36" id="2NI1dvfpeHo" role="3clFbw">
+                        <node concept="37vLTw" id="3GM_nagTB$n" role="3uHU7B">
+                          <ref role="3cqZAo" node="2NI1dvfpeHj" resolve="stringContent" />
+                        </node>
+                        <node concept="10Nm6u" id="2NI1dvfpeHq" role="3uHU7w" />
+                      </node>
+                      <node concept="3clFbS" id="2NI1dvfpeHr" role="3clFbx">
+                        <node concept="1DcWWT" id="2NI1dvfpeHs" role="3cqZAp">
+                          <node concept="3cpWsn" id="2NI1dvfpeHy" role="1Duv9x">
+                            <property role="TrG5h" value="existingContent" />
+                            <property role="3TUv4t" value="false" />
+                            <node concept="3uibUv" id="2NI1dvfpeHY" role="1tU5fm">
+                              <ref role="3uigEE" to="kt01:~Transferable" resolve="Transferable" />
                             </node>
-                            <node concept="liA8E" id="2NI1dvfpgmn" role="2OqNvi">
-                              <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.removeContent(java.awt.datatransfer.Transferable)" resolve="removeContent" />
-                              <node concept="37vLTw" id="3GM_nagTAVl" role="37wK5m">
-                                <ref role="3cqZAo" node="2NI1dvfpeHy" resolve="existingContent" />
+                          </node>
+                          <node concept="3clFbS" id="2NI1dvfpeH$" role="2LFqv$">
+                            <node concept="3clFbJ" id="2NI1dvfpeH_" role="3cqZAp">
+                              <node concept="2OqwBi" id="2NI1dvfpeHA" role="3clFbw">
+                                <node concept="37vLTw" id="3GM_nagTsss" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="2NI1dvfpeHj" resolve="stringContent" />
+                                </node>
+                                <node concept="liA8E" id="2NI1dvfpeHC" role="2OqNvi">
+                                  <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+                                  <node concept="1rXfSq" id="4hiugqystVs" role="37wK5m">
+                                    <ref role="37wK5l" node="2NI1dvfp7XA" resolve="getStringContent" />
+                                    <node concept="37vLTw" id="3GM_nagTrkX" role="37wK5m">
+                                      <ref role="3cqZAo" node="2NI1dvfpeHy" resolve="existingContent" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3clFbS" id="2NI1dvfpeHF" role="3clFbx">
+                                <node concept="3clFbF" id="2NI1dvfpgmf" role="3cqZAp">
+                                  <node concept="2OqwBi" id="2NI1dvfpgmj" role="3clFbG">
+                                    <node concept="2YIFZM" id="$mzrmRC_2A" role="2Oq$k0">
+                                      <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.getInstanceEx()" resolve="getInstanceEx" />
+                                      <ref role="1Pybhc" to="ddhc:~CopyPasteManagerEx" resolve="CopyPasteManagerEx" />
+                                    </node>
+                                    <node concept="liA8E" id="2NI1dvfpgmn" role="2OqNvi">
+                                      <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.removeContent(java.awt.datatransfer.Transferable)" resolve="removeContent" />
+                                      <node concept="37vLTw" id="3GM_nagTAVl" role="37wK5m">
+                                        <ref role="3cqZAo" node="2NI1dvfpeHy" resolve="existingContent" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
                               </node>
                             </node>
                           </node>
+                          <node concept="2OqwBi" id="2NI1dvfpeI7" role="1DdaDG">
+                            <node concept="2YIFZM" id="$mzrmRC_2C" role="2Oq$k0">
+                              <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.getInstanceEx()" resolve="getInstanceEx" />
+                              <ref role="1Pybhc" to="ddhc:~CopyPasteManagerEx" resolve="CopyPasteManagerEx" />
+                            </node>
+                            <node concept="liA8E" id="2NI1dvfpeIb" role="2OqNvi">
+                              <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.getAllContents()" resolve="getAllContents" />
+                            </node>
+                          </node>
                         </node>
                       </node>
                     </node>
                   </node>
-                  <node concept="2OqwBi" id="2NI1dvfpeI7" role="1DdaDG">
-                    <node concept="2YIFZM" id="$mzrmRC_2C" role="2Oq$k0">
+                  <node concept="3uVAMA" id="2NI1dvfpeH9" role="1zxBo5">
+                    <node concept="XOnhg" id="2NI1dvfpeHb" role="1zc67B">
+                      <property role="3TUv4t" value="false" />
+                      <property role="TrG5h" value="e" />
+                      <node concept="nSUau" id="xvs04dIxyv" role="1tU5fm">
+                        <node concept="3uibUv" id="2NI1dvfpeHc" role="nSUat">
+                          <ref role="3uigEE" to="kt01:~UnsupportedFlavorException" resolve="UnsupportedFlavorException" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3clFbS" id="2NI1dvfpeHa" role="1zc67A" />
+                  </node>
+                  <node concept="3uVAMA" id="2NI1dvfpeHd" role="1zxBo5">
+                    <node concept="XOnhg" id="2NI1dvfpeHf" role="1zc67B">
+                      <property role="3TUv4t" value="false" />
+                      <property role="TrG5h" value="ex" />
+                      <node concept="nSUau" id="xvs04dIxyx" role="1tU5fm">
+                        <node concept="3uibUv" id="2NI1dvfpeHg" role="nSUat">
+                          <ref role="3uigEE" to="guwi:~IOException" resolve="IOException" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3clFbS" id="2NI1dvfpeHe" role="1zc67A" />
+                  </node>
+                </node>
+                <node concept="3clFbF" id="2NI1dvfpgm$" role="3cqZAp">
+                  <node concept="2OqwBi" id="2NI1dvfpgmB" role="3clFbG">
+                    <node concept="2YIFZM" id="$mzrmRC_2G" role="2Oq$k0">
                       <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.getInstanceEx()" resolve="getInstanceEx" />
                       <ref role="1Pybhc" to="ddhc:~CopyPasteManagerEx" resolve="CopyPasteManagerEx" />
                     </node>
-                    <node concept="liA8E" id="2NI1dvfpeIb" role="2OqNvi">
-                      <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.getAllContents()" resolve="getAllContents" />
+                    <node concept="liA8E" id="2NI1dvfpgmF" role="2OqNvi">
+                      <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.setContents(java.awt.datatransfer.Transferable)" resolve="setContents" />
+                      <node concept="37vLTw" id="2BHiRxghfwf" role="37wK5m">
+                        <ref role="3cqZAo" node="2NI1dvfpeH6" resolve="content" />
+                      </node>
                     </node>
                   </node>
                 </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3uVAMA" id="2NI1dvfpeH9" role="1zxBo5">
-            <node concept="XOnhg" id="2NI1dvfpeHb" role="1zc67B">
-              <property role="3TUv4t" value="false" />
-              <property role="TrG5h" value="e" />
-              <node concept="nSUau" id="xvs04dIxyv" role="1tU5fm">
-                <node concept="3uibUv" id="2NI1dvfpeHc" role="nSUat">
-                  <ref role="3uigEE" to="kt01:~UnsupportedFlavorException" resolve="UnsupportedFlavorException" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbS" id="2NI1dvfpeHa" role="1zc67A" />
-          </node>
-          <node concept="3uVAMA" id="2NI1dvfpeHd" role="1zxBo5">
-            <node concept="XOnhg" id="2NI1dvfpeHf" role="1zc67B">
-              <property role="3TUv4t" value="false" />
-              <property role="TrG5h" value="ex" />
-              <node concept="nSUau" id="xvs04dIxyx" role="1tU5fm">
-                <node concept="3uibUv" id="2NI1dvfpeHg" role="nSUat">
-                  <ref role="3uigEE" to="guwi:~IOException" resolve="IOException" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbS" id="2NI1dvfpeHe" role="1zc67A" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="2NI1dvfpgm$" role="3cqZAp">
-          <node concept="2OqwBi" id="2NI1dvfpgmB" role="3clFbG">
-            <node concept="2YIFZM" id="$mzrmRC_2G" role="2Oq$k0">
-              <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.getInstanceEx()" resolve="getInstanceEx" />
-              <ref role="1Pybhc" to="ddhc:~CopyPasteManagerEx" resolve="CopyPasteManagerEx" />
-            </node>
-            <node concept="liA8E" id="2NI1dvfpgmF" role="2OqNvi">
-              <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.setContents(java.awt.datatransfer.Transferable)" resolve="setContents" />
-              <node concept="37vLTw" id="2BHiRxghfwf" role="37wK5m">
-                <ref role="3cqZAo" node="2NI1dvfpeH6" resolve="content" />
               </node>
             </node>
           </node>
@@ -2888,7 +2916,6 @@
     <node concept="2YIFZL" id="5tGs5KqKiIT" role="jymVt">
       <property role="TrG5h" value="copyNodesToClipboard" />
       <node concept="3Tm1VV" id="5tGs5KqKiIU" role="1B3o_S" />
-      <node concept="3cqZAl" id="5tGs5KqKiIV" role="3clF45" />
       <node concept="37vLTG" id="5tGs5KqKiIW" role="3clF46">
         <property role="TrG5h" value="nodes" />
         <node concept="3uibUv" id="5tGs5KqKiIX" role="1tU5fm">
@@ -2997,20 +3024,23 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2cGWpZaJ7jH" role="3cqZAp">
-          <node concept="1rXfSq" id="2cGWpZaJ7jI" role="3clFbG">
-            <ref role="37wK5l" node="2NI1dvfpeH1" resolve="setClipboardContents" />
-            <node concept="2ShNRf" id="2cGWpZaJ7jJ" role="37wK5m">
-              <node concept="1pGfFk" id="2cGWpZaJ7jK" role="2ShVmc">
+        <node concept="3cpWs8" id="2M0CR5h$Hy$" role="3cqZAp">
+          <node concept="3cpWsn" id="2M0CR5h$Hy_" role="3cpWs9">
+            <property role="TrG5h" value="transferable" />
+            <node concept="3uibUv" id="2M0CR5h$GFX" role="1tU5fm">
+              <ref role="3uigEE" node="5tGs5KqKj2K" resolve="SNodeTransferable" />
+            </node>
+            <node concept="2ShNRf" id="2M0CR5h$HyA" role="33vP2m">
+              <node concept="1pGfFk" id="2M0CR5h$HyB" role="2ShVmc">
                 <ref role="37wK5l" node="5tGs5KqKj3N" resolve="SNodeTransferable" />
-                <node concept="37vLTw" id="2cGWpZaJ7jL" role="37wK5m">
+                <node concept="37vLTw" id="2M0CR5h$HyC" role="37wK5m">
                   <ref role="3cqZAo" node="5tGs5KqKiIW" resolve="nodes" />
                 </node>
-                <node concept="2OqwBi" id="5tGs5KqKiJF" role="37wK5m">
-                  <node concept="37vLTw" id="3GM_nagTyep" role="2Oq$k0">
+                <node concept="2OqwBi" id="2M0CR5h$HyD" role="37wK5m">
+                  <node concept="37vLTw" id="2M0CR5h$HyE" role="2Oq$k0">
                     <ref role="3cqZAo" node="5tGs5KqKiJ1" resolve="stringBuilder" />
                   </node>
-                  <node concept="liA8E" id="5tGs5KqKiJH" role="2OqNvi">
+                  <node concept="liA8E" id="2M0CR5h$HyF" role="2OqNvi">
                     <ref role="37wK5l" to="wyt6:~StringBuilder.toString()" resolve="toString" />
                   </node>
                 </node>
@@ -3018,6 +3048,22 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="2cGWpZaJ7jH" role="3cqZAp">
+          <node concept="1rXfSq" id="2cGWpZaJ7jI" role="3clFbG">
+            <ref role="37wK5l" node="2NI1dvfpeH1" resolve="setClipboardContents" />
+            <node concept="37vLTw" id="2M0CR5h$HyG" role="37wK5m">
+              <ref role="3cqZAo" node="2M0CR5h$Hy_" resolve="transferable" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="2M0CR5h$KDR" role="3cqZAp">
+          <node concept="37vLTw" id="2M0CR5h$MBs" role="3cqZAk">
+            <ref role="3cqZAo" node="2M0CR5h$Hy_" resolve="transferable" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="2M0CR5h$GCv" role="3clF45">
+        <ref role="3uigEE" node="5tGs5KqKj2K" resolve="SNodeTransferable" />
       </node>
     </node>
     <node concept="2YIFZL" id="5tGs5KqKiJI" role="jymVt">

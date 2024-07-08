@@ -16,6 +16,7 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
+import jetbrains.mps.ide.datatransfer.SNodeTransferable;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5033107305426684804", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -69,8 +70,8 @@ public class CopyNode_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    CopyPasteUtil.copyNodesToClipboard(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
+    SNodeTransferable transferable = CopyPasteUtil.copyNodesToClipboard(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
     //  sort of hack. indicate nodes copied into clipboard are present elsewhere (as if were cut and pasted back)
-    CopyPasteUtil.getPasteNodeData().consume();
+    transferable.createNodeData().consume();
   }
 }

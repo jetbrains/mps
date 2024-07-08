@@ -26,6 +26,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import com.intellij.ide.CopyPasteManagerEx;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
+import javax.swing.SwingUtilities;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 import java.awt.datatransfer.DataFlavor;
@@ -166,8 +167,10 @@ public final class CopyPasteUtil {
   public static void copyTextAndNodeToClipboard(String text, SNode node) {
     setClipboardContents(new SNodeTransferable(text, node));
   }
-  public static void copyNodesAndTextToClipboard(List<SNode> nodes, Map<SNode, Set<SNode>> nodesAndAttributes, String text) {
-    setClipboardContents(new SNodeTransferable(nodes, text, nodesAndAttributes));
+  public static SNodeTransferable copyNodesAndTextToClipboard(List<SNode> nodes, Map<SNode, Set<SNode>> nodesAndAttributes, String text) {
+    SNodeTransferable transferable = new SNodeTransferable(nodes, text, nodesAndAttributes);
+    setClipboardContents(transferable);
+    return transferable;
   }
   /**
    * A workaround for the following problem with CopyPasteManagerEx:
@@ -181,25 +184,31 @@ public final class CopyPasteUtil {
    * (SNodeTransferables) is generally wrong, so we have to work around this logic by deleting all exiting Transferables
    * to avoid possible collisions between copied elements preventing user from copying actual node under mouse in editor.
    */
-  private static void setClipboardContents(Transferable content) {
-    try {
-      String stringContent = getStringContent(content);
-      if (stringContent != null) {
-        for (Transferable existingContent : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
-          if (stringContent.equals(getStringContent(existingContent))) {
-            CopyPasteManagerEx.getInstanceEx().removeContent(existingContent);
+  private static void setClipboardContents(final Transferable content) {
+    // SwingUtilities.invokeLater to workaround MPS-37419 until IJPL-157587 is resolved.
+    // There may be a parallel thread (clipboard synchronizer) running that holds the clipboard lock and is waiting for the Write lock
+    // that we are currently holding (executing a Command). So we must not attempt to access the clipboard here to avoid deadlock. Let's release the Write
+    // lock and set the clipboard content later.
+    SwingUtilities.invokeLater(() -> {
+      try {
+        String stringContent = getStringContent(content);
+        if (stringContent != null) {
+          for (Transferable existingContent : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
+            if (stringContent.equals(getStringContent(existingContent))) {
+              CopyPasteManagerEx.getInstanceEx().removeContent(existingContent);
+            }
           }
         }
+      } catch (UnsupportedFlavorException e) {
+      } catch (IOException ex) {
       }
-    } catch (UnsupportedFlavorException e) {
-    } catch (IOException ex) {
-    }
-    CopyPasteManagerEx.getInstanceEx().setContents(content);
+      CopyPasteManagerEx.getInstanceEx().setContents(content);
+    });
   }
   private static String getStringContent(Transferable content) throws UnsupportedFlavorException, IOException {
     return (String) content.getTransferData(DataFlavor.stringFlavor);
   }
-  public static void copyNodesToClipboard(List<SNode> nodes) {
+  public static SNodeTransferable copyNodesToClipboard(List<SNode> nodes) {
     StringBuilder stringBuilder = new StringBuilder();
     int i = 1;
     int size = nodes.size();
@@ -210,7 +219,9 @@ public final class CopyPasteUtil {
       }
       i++;
     }
-    setClipboardContents(new SNodeTransferable(nodes, stringBuilder.toString()));
+    SNodeTransferable transferable = new SNodeTransferable(nodes, stringBuilder.toString());
+    setClipboardContents(transferable);
+    return transferable;
   }
   public static void copyNodeToClipboard(SNode node) {
     CopyPasteUtil.copyNodesToClipboard(Collections.singletonList(node));
