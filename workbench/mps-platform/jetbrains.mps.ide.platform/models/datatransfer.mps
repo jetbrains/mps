@@ -2700,6 +2700,211 @@
       <node concept="3cqZAl" id="2NI1dvfpeH2" role="3clF45" />
       <node concept="3Tm6S6" id="2NI1dvfpeH5" role="1B3o_S" />
       <node concept="3clFbS" id="2NI1dvfpeH4" role="3clF47">
+        <node concept="3SKdUt" id="4aiIrgTuAe0" role="3cqZAp">
+          <node concept="1PaTwC" id="4aiIrgTuAe1" role="1aUNEU">
+            <node concept="3oM_SD" id="4aiIrgTuB37" role="1PaTwD">
+              <property role="3oM_SC" value="SwingUtilities.invokeLater" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuB38" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuB39" role="1PaTwD">
+              <property role="3oM_SC" value="workaround" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuB3a" role="1PaTwD">
+              <property role="3oM_SC" value="MPS-37419" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuB3b" role="1PaTwD">
+              <property role="3oM_SC" value="until" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuB3c" role="1PaTwD">
+              <property role="3oM_SC" value="IJPL-157587" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuB3d" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuB3e" role="1PaTwD">
+              <property role="3oM_SC" value="resolved." />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpn" role="1PaTwD">
+              <property role="3oM_SC" value="There" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpo" role="1PaTwD">
+              <property role="3oM_SC" value="may" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpp" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpq" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpr" role="1PaTwD">
+              <property role="3oM_SC" value="parallel" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKps" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="4aiIrgTHOiF" role="3cqZAp">
+          <node concept="1PaTwC" id="4aiIrgTHOhG" role="1aUNEU">
+            <node concept="3oM_SD" id="4aiIrgTHOhF" role="1PaTwD">
+              <property role="3oM_SC" value="thread" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpt" role="1PaTwD">
+              <property role="3oM_SC" value="(clipboard" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpu" role="1PaTwD">
+              <property role="3oM_SC" value="synchronizer)" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpv" role="1PaTwD">
+              <property role="3oM_SC" value="running" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpw" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpx" role="1PaTwD">
+              <property role="3oM_SC" value="holds" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpy" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpz" role="1PaTwD">
+              <property role="3oM_SC" value="clipboard" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKp$" role="1PaTwD">
+              <property role="3oM_SC" value="lock" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKp_" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpA" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpB" role="1PaTwD">
+              <property role="3oM_SC" value="waiting" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpC" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpD" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKpE" role="1PaTwD">
+              <property role="3oM_SC" value="Write" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuKr1" role="1PaTwD">
+              <property role="3oM_SC" value="lock" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7z" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7$" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="4aiIrgTHQaN" role="3cqZAp">
+          <node concept="1PaTwC" id="4aiIrgTHQa1" role="1aUNEU">
+            <node concept="3oM_SD" id="4aiIrgTHQa0" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7_" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7A" role="1PaTwD">
+              <property role="3oM_SC" value="currently" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7B" role="1PaTwD">
+              <property role="3oM_SC" value="holding" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7C" role="1PaTwD">
+              <property role="3oM_SC" value="(executing" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7D" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7E" role="1PaTwD">
+              <property role="3oM_SC" value="Command)." />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7F" role="1PaTwD">
+              <property role="3oM_SC" value="So" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7G" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7H" role="1PaTwD">
+              <property role="3oM_SC" value="must" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7I" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7J" role="1PaTwD">
+              <property role="3oM_SC" value="attempt" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7K" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7L" role="1PaTwD">
+              <property role="3oM_SC" value="access" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7M" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7N" role="1PaTwD">
+              <property role="3oM_SC" value="clipboard" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7O" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7P" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTHR2j" role="1PaTwD">
+              <property role="3oM_SC" value="avoid" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="4aiIrgTHR35" role="3cqZAp">
+          <node concept="1PaTwC" id="4aiIrgTHR2_" role="1aUNEU">
+            <node concept="3oM_SD" id="4aiIrgTHR2$" role="1PaTwD">
+              <property role="3oM_SC" value="deadlock." />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7S" role="1PaTwD">
+              <property role="3oM_SC" value="Let's" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7T" role="1PaTwD">
+              <property role="3oM_SC" value="release" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7U" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuM7V" role="1PaTwD">
+              <property role="3oM_SC" value="Write" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuMZp" role="1PaTwD">
+              <property role="3oM_SC" value="lock" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuMZq" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuMZr" role="1PaTwD">
+              <property role="3oM_SC" value="set" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuMZs" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuMZt" role="1PaTwD">
+              <property role="3oM_SC" value="clipboard" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuMZu" role="1PaTwD">
+              <property role="3oM_SC" value="content" />
+            </node>
+            <node concept="3oM_SD" id="4aiIrgTuMZv" role="1PaTwD">
+              <property role="3oM_SC" value="later." />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="2M0CR5h$Pp$" role="3cqZAp">
           <node concept="2YIFZM" id="2M0CR5h$Qf1" role="3clFbG">
             <ref role="37wK5l" to="dxuu:~SwingUtilities.invokeLater(java.lang.Runnable)" resolve="invokeLater" />

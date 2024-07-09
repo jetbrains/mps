@@ -185,6 +185,10 @@ public final class CopyPasteUtil {
    * to avoid possible collisions between copied elements preventing user from copying actual node under mouse in editor.
    */
   private static void setClipboardContents(final Transferable content) {
+    // SwingUtilities.invokeLater to workaround MPS-37419 until IJPL-157587 is resolved. There may be a parallel 
+    // thread (clipboard synchronizer) running that holds the clipboard lock and is waiting for the Write lock that 
+    // we are currently holding (executing a Command). So we must not attempt to access the clipboard here to avoid
+    // deadlock. Let's release the Write lock and set the clipboard content later.
     SwingUtilities.invokeLater(() -> {
       try {
         String stringContent = getStringContent(content);
