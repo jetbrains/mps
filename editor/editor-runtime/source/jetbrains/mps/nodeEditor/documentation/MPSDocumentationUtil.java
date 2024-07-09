@@ -5,7 +5,6 @@ package jetbrains.mps.nodeEditor.documentation;
 
 import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.project.Project;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -17,7 +16,7 @@ public class MPSDocumentationUtil {
   }
 
   /**
-   * Returns the link for an instance of TextNodeReference using {@link MPSDocumentationManagerProtocol#TEXT_NODE_REFERENCE} protocol.
+   * Returns the link for the {@code reference} of a {@code TextNodeReference} using {@link MPSDocumentationManagerProtocol#TEXT_NODE_REFERENCE} protocol.
    *
    * @return The link as a {@code String}, or {@code null} if it could not be generated.
    */
@@ -28,6 +27,20 @@ public class MPSDocumentationUtil {
       return null;
     }
     return MPSDocumentationManagerProtocol.TEXT_NODE_REFERENCE + PersistenceFacade.getInstance().asString(targetNode.getReference());
+  }
+
+  /**
+   * Returns the link for the {@code Word} concept with URL using {@link MPSDocumentationManagerProtocol#WORD} protocol.
+   *
+   * @return The link as a {@code String}, or {@code null} if it could not be generated.
+   */
+  @Nullable
+  public static String getLinkForWord(SNode word) {
+    String url = DocumentationProvider.getWordUrl(word);
+    if (url == null) {
+      return null;
+    }
+    return MPSDocumentationManagerProtocol.WORD + url;
   }
 
 
@@ -51,15 +64,4 @@ public class MPSDocumentationUtil {
     });
     return targetNode[0];
   }
-
-  /**
-   * The protocols used for links to elements in quick documentation.
-   */
-  private interface MPSDocumentationManagerProtocol {
-    /**
-     * The protocol used for linking to reference of the {@code TextNodeReference} concept in quick documentation.
-     */
-    @NonNls String TEXT_NODE_REFERENCE = "TextNodeReference://";
-  }
-
 }

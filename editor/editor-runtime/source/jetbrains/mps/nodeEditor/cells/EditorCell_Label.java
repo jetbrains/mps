@@ -150,9 +150,15 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
       htmlChunk = htmlChunk.wrapWith("u");
     }
 
+    String link = null;
     if (DocumentationProvider.isDocTextNodeReference(this.getSNode())) {
-       String href =  MPSDocumentationUtil.getLinkForTextNodeReference(this.getSNode());
-       htmlChunk = HtmlChunk.link(href, htmlChunk);
+       link = MPSDocumentationUtil.getLinkForTextNodeReference(this.getSNode());
+    }
+    if (DocumentationProvider.isWord(this.getSNode())) {
+      link =  MPSDocumentationUtil.getLinkForWord(this.getSNode());
+    }
+    if (link != null) {
+      htmlChunk = HtmlChunk.link(link, htmlChunk);
     }
 
     // color

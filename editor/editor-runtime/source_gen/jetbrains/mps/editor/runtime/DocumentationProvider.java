@@ -21,6 +21,7 @@ import jetbrains.mps.nodeEditor.documentation.MPSDocumentationMarkup;
 import com.intellij.openapi.util.text.HtmlChunk;
 import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -132,14 +133,31 @@ public class DocumentationProvider {
     return SLinkOperations.getTarget(SNodeOperations.as(textNodeReference, CONCEPTS.TextNodeReference$Ml), LINKS.reference$iuvT);
   }
 
+  public static boolean isWord(SNode node) {
+    return node.isInstanceOfConcept(CONCEPTS.Word$Dn);
+  }
+
+  @Nullable
+  public static String getWordUrl(SNode word) {
+    if (!(DocumentationProvider.isWord(word))) {
+      return null;
+    }
+    return SPropertyOperations.getString(SNodeOperations.as(word, CONCEPTS.Word$Dn), PROPS.url$SIrt);
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept DocumentationAnnotation$ug = MetaAdapterFactory.getConcept(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, "jetbrains.mps.lang.core.doc.structure.DocumentationAnnotation");
     /*package*/ static final SInterfaceConcept DocumentationObjective$OD = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6d1df6c2700b0eaeL, "jetbrains.mps.lang.structure.structure.DocumentationObjective");
     /*package*/ static final SConcept TextNodeReference$Ml = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cc063b139472ce7L, "jetbrains.mps.lang.text.structure.TextNodeReference");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink text$Dgpy = MetaAdapterFactory.getContainmentLink(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, 0x1ec73eba262d6d52L, "text");
     /*package*/ static final SReferenceLink reference$iuvT = MetaAdapterFactory.getReferenceLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cc063b139472ce7L, 0x6d10fe0be3bc93bL, "reference");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
   }
 }

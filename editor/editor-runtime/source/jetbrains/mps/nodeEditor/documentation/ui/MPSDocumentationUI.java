@@ -21,7 +21,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationEditorPane;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManagerProtocol;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationScrollPane;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationUtil;
 import org.jetbrains.annotations.NotNull;
@@ -30,12 +32,14 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
-import javax.swing.text.Document;
 import java.awt.Color;
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
 import java.util.Stack;
 
 public class MPSDocumentationUI implements DataProvider, Disposable {
-
+  private static final Logger LOG = Logger.getLogger(MPSDocumentationUI.class);
   /*package*/ final MPSDocumentationScrollPane myScrollPane;
   /*package*/ final MPSDocumentationEditorPane myEditorPane;
   private final Stack<Context> myBackStack = new Stack<>();
@@ -94,19 +98,29 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
     return copyOfNavigateActions;
   }
 
-  private void navigateByLink(HyperlinkEvent e) {
-    String link = e.getDescription();
-    jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
+  private void navigateByLink(HyperlinkEvent event) {
+    String link = event.getDescription();
+    if (link.startsWith(MPSDocumentationManagerProtocol.TEXT_NODE_REFERENCE)) {
+      jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
 
-    String[] newDocumentation = new String[]{null};
-    mpsProject.getModelAccess().runReadAction(() -> {
-      SNode targetNode = MPSDocumentationUtil.getSNodeForLink(mpsProject, link);
-      newDocumentation[0] = new DocumentationProvider(targetNode).getDecoratedDocumentation();
-    });
+      String[] newDocumentation = new String[]{null};
+      mpsProject.getModelAccess().runReadAction(() -> {
+        SNode targetNode = MPSDocumentationUtil.getSNodeForLink(mpsProject, link);
+        newDocumentation[0] = new DocumentationProvider(targetNode).getDecoratedDocumentation();
+      });
 
-    if (newDocumentation[0] != null && !newDocumentation[0].isEmpty()) {
-      myBackStack.push(getCurrentContext());
-      myEditorPane.setText(newDocumentation[0]);
+      if (newDocumentation[0] != null && !newDocumentation[0].isEmpty()) {
+        myBackStack.push(getCurrentContext());
+        myEditorPane.setText(newDocumentation[0]);
+      }
+    }
+    if(link.startsWith(MPSDocumentationManagerProtocol.WORD)){
+      String url = link.split(MPSDocumentationManagerProtocol.WORD)[1];
+      try {
+        Desktop.getDesktop().browse(URI.create(url));
+      } catch (IOException e) {
+        LOG.error("Failed to open the URL. " + e);
+      }
     }
   }
 
