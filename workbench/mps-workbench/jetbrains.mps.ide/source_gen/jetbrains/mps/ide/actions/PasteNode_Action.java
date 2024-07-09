@@ -101,7 +101,7 @@ public class PasteNode_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess();
-    PasteNodeData pasteNodeData = PasteNode_Action.this.getPasteData(modelAccess, _params);
+    final PasteNodeData pasteNodeData = PasteNode_Action.this.getPasteData(modelAccess, _params);
     final Runnable addImportsRunnable = CopyPasteUtil.addImportsWithDialog(pasteNodeData, ((SModel) MapSequence.fromMap(_params).get("contextModel")), ((MPSProject) MapSequence.fromMap(_params).get("project")));
     final List<SNode> pasteNodes = pasteNodeData.getNodes();
     final Set<SReference> refsToResolve = pasteNodeData.getRequireResolveReferences();
@@ -137,6 +137,7 @@ public class PasteNode_Action extends BaseAction {
         new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).shallSelect(true).open(root.getReference());
         new ProjectPaneNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).select(root.getReference());
       }
+      pasteNodeData.consume();
     });
   }
   private PasteNodeData getPasteData(ModelAccess modelAccess, final Map<String, Object> _params) {

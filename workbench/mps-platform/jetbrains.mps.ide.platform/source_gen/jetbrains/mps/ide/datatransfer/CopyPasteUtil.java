@@ -18,6 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.HashMap;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.smodel.CopyUtil;
 import java.util.HashSet;
 import jetbrains.mps.datatransfer.AssociationLink;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -28,7 +29,6 @@ import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -92,6 +92,9 @@ public final class CopyPasteUtil {
     for (SNode sourceNode : ListSequence.fromList(sourceNodes)) {
       assert SNodeOperations.getModel(sourceNode) == model;
       ListSequence.fromList(targetNodes).addElement(CopyPasteUtil.copyNode_internal(sourceNode, sourceNodesAndAttributes, sourceNodesToNewNodes));
+    }
+    for (SNode sn : SetSequence.fromSet(sourceNodesToNewNodes.keySet())) {
+      CopyUtil.copyUserObjects(sn, sourceNodesToNewNodes.get(sn));
     }
 
     Set<SModelReference> necessaryModels = SetSequence.fromSet(new HashSet<SModelReference>());
@@ -199,6 +202,13 @@ public final class CopyPasteUtil {
       SNode nodeToPaste = CopyPasteUtil.copyNode_internal(sourceNode, null, sourceNodesToNewNodes);
       result.add(nodeToPaste);
     }
+    if (!(in.consumed())) {
+      //  FIXME should not be for all node attributes, just those copy/cut-sensitive.
+      for (SNode sn : SetSequence.fromSet(sourceNodesToNewNodes.keySet())) {
+        CopyUtil.copyUserObjects(sn, sourceNodesToNewNodes.get(sn));
+      }
+    }
+
 
     Set<SReference> referencesRequireResolve = new HashSet<>();
     // what processReferencesOut used to do
@@ -231,9 +241,7 @@ public final class CopyPasteUtil {
 
   private static SNode copyNode_internal(SNode sourceNode, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes, Map<SNode, SNode> sourceNodesToNewNodes) {
     SNode targetNode = new jetbrains.mps.smodel.SNode(sourceNode.getConcept(), sourceNode.getNodeId());
-    for (SProperty name : Sequence.fromIterable(sourceNode.getProperties())) {
-      targetNode.setProperty(name, sourceNode.getProperty(name));
-    }
+    CopyUtil.copyProperties(sourceNode, targetNode);
     sourceNodesToNewNodes.put(sourceNode, targetNode);
     for (SNode sourceChild : sourceNode.getChildren()) {
       if (nodesAndAttributes != null) {
@@ -489,7 +497,7 @@ public final class CopyPasteUtil {
   }
   public static boolean isStringOnTopOfClipboard() {
     // This method was created in accordance with TextPasteUtil.hasStringInClipboard()/.getStringFromClipboard()
-    // methods we should consider reimplementing these methods in order to iterrate over .getAllContents() collection
+    // methods we should consider reimplementing these methods in order to iterate over .getAllContents() collection
     // in case first available Transferable does not support neither stringFlavor nor sNode one.
     for (Transferable trf : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
       if (trf != null) {

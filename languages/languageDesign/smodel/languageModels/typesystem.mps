@@ -16983,5 +16983,62 @@
       </node>
     </node>
   </node>
+  <node concept="1YbPZF" id="lhC5EINm6S">
+    <property role="TrG5h" value="typeof_Node_GetUID" />
+    <property role="3GE5qa" value="operation.node" />
+    <node concept="3clFbS" id="lhC5EINm6T" role="18ibNy">
+      <node concept="1Z5TYs" id="lhC5EINnDF" role="3cqZAp">
+        <node concept="mw_s8" id="lhC5EINnDI" role="1ZfhK$">
+          <node concept="1Z2H0r" id="lhC5EINnnO" role="mwGJk">
+            <node concept="1YBJjd" id="lhC5EINnqS" role="1Z2MuG">
+              <ref role="1YBMHb" node="lhC5EINm6V" resolve="op" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="lhC5EINovy" role="1ZfhKB">
+          <node concept="2pJPEk" id="lhC5EINovu" role="mwGJk">
+            <node concept="2pJPED" id="lhC5EINovw" role="2pJPEn">
+              <ref role="2pJxaS" to="tpee:hP7QB7G" resolve="StringType" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="lhC5EINm6V" role="1YuTPh">
+      <property role="TrG5h" value="op" />
+      <ref role="1YaFvo" to="tp25:lhC5EIKpoC" resolve="Node_GetUID" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="lhC5EINoDF">
+    <property role="TrG5h" value="typeof_Node_SetUID" />
+    <property role="3GE5qa" value="operation.node" />
+    <node concept="3clFbS" id="lhC5EINoDG" role="18ibNy">
+      <node concept="1ZobV4" id="lhC5EINoT2" role="3cqZAp">
+        <node concept="mw_s8" id="lhC5EINpzT" role="1ZfhKB">
+          <node concept="2pJPEk" id="lhC5EINpzP" role="mwGJk">
+            <node concept="2pJPED" id="lhC5EINpzR" role="2pJPEn">
+              <ref role="2pJxaS" to="tpee:hP7QB7G" resolve="StringType" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="lhC5EIOkgW" role="1ZfhK$">
+          <node concept="1Z2H0r" id="lhC5EIOkgU" role="mwGJk">
+            <node concept="2OqwBi" id="lhC5EIOkvM" role="1Z2MuG">
+              <node concept="1YBJjd" id="lhC5EIOkm5" role="2Oq$k0">
+                <ref role="1YBMHb" node="lhC5EINoDI" resolve="op" />
+              </node>
+              <node concept="3TrEf2" id="lhC5EIOkHo" role="2OqNvi">
+                <ref role="3Tt5mk" to="tp25:lhC5EIKs5I" resolve="value" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="lhC5EINoDI" role="1YuTPh">
+      <property role="TrG5h" value="op" />
+      <ref role="1YaFvo" to="tp25:lhC5EIKrMB" resolve="Node_SetUID" />
+    </node>
+  </node>
 </model>
 

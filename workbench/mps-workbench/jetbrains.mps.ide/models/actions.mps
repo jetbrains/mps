@@ -161,7 +161,6 @@
     <import index="2mml" ref="r:74ecf5af-2b45-470e-b13c-a863221987cf(jetbrains.mps.ide.editor.util.renderer)" />
     <import index="9teg" ref="r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)" />
     <import index="iyvn" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence.datasource(MPS.Core/)" />
-    <import index="a6r2" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.ui(MPS.Platform/)" />
     <import index="b8lf" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.selection(MPS.Editor/)" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="5rcs" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.popup(MPS.IDEA/)" />
@@ -177,7 +176,7 @@
     <import index="mqhh" ref="r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)" />
     <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
     <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
-    <import index="a6r3" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.ui(MPS.Workbench/)" />
+    <import index="a6r2" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.ui(MPS.Workbench/)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
   </imports>
@@ -10124,6 +10123,29 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="7w0WxgVBcWp" role="3cqZAp">
+          <node concept="2OqwBi" id="7w0WxgVBjMi" role="3clFbG">
+            <node concept="2YIFZM" id="7w0WxgVBd4j" role="2Oq$k0">
+              <ref role="37wK5l" to="dp1x:5tGs5KqKiKf" resolve="getPasteNodeDataFromClipboard" />
+              <ref role="1Pybhc" to="dp1x:5tGs5KqKfGH" resolve="CopyPasteUtil" />
+              <node concept="2OqwBi" id="7w0WxgVBjll" role="37wK5m">
+                <node concept="2OqwBi" id="7w0WxgVBhyt" role="2Oq$k0">
+                  <node concept="2OqwBi" id="7w0WxgVBg7M" role="2Oq$k0">
+                    <node concept="2WthIp" id="7w0WxgVBg7P" role="2Oq$k0" />
+                    <node concept="3gHZIF" id="7w0WxgVBg7R" role="2OqNvi">
+                      <ref role="2WH_rO" node="4npc6Q0ooIg" resolve="nodes" />
+                    </node>
+                  </node>
+                  <node concept="1uHKPH" id="7w0WxgVBiQ3" role="2OqNvi" />
+                </node>
+                <node concept="I4A8Y" id="7w0WxgVBjCV" role="2OqNvi" />
+              </node>
+            </node>
+            <node concept="liA8E" id="7w0WxgVBk1x" role="2OqNvi">
+              <ref role="37wK5l" to="qzxn:~PasteNodeData.consume()" resolve="consume" />
+            </node>
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2ScWuX" id="4EsiHpyHSbH" role="tmbBb">
@@ -14413,6 +14435,7 @@
         <node concept="3cpWs8" id="4NbzjXXKNLZ" role="3cqZAp">
           <node concept="3cpWsn" id="4NbzjXXKNM0" role="3cpWs9">
             <property role="TrG5h" value="pasteNodeData" />
+            <property role="3TUv4t" value="true" />
             <node concept="3uibUv" id="4NbzjXXKNM1" role="1tU5fm">
               <ref role="3uigEE" to="qzxn:~PasteNodeData" resolve="PasteNodeData" />
             </node>
@@ -14858,6 +14881,16 @@
                         </node>
                       </node>
                       <node concept="10Nm6u" id="6rTGE_t4oYy" role="3uHU7w" />
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="7w0WxgVBWvx" role="3cqZAp">
+                    <node concept="2OqwBi" id="7w0WxgVBWYZ" role="3clFbG">
+                      <node concept="37vLTw" id="7w0WxgVBWvv" role="2Oq$k0">
+                        <ref role="3cqZAo" node="4NbzjXXKNM0" resolve="pasteNodeData" />
+                      </node>
+                      <node concept="liA8E" id="7w0WxgVBYH5" role="2OqNvi">
+                        <ref role="37wK5l" to="qzxn:~PasteNodeData.consume()" resolve="consume" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -39119,11 +39152,11 @@
           <node concept="3cpWsn" id="7KZgf2c$brA" role="3cpWs9">
             <property role="TrG5h" value="dialog" />
             <node concept="3uibUv" id="7KZgf2c$br8" role="1tU5fm">
-              <ref role="3uigEE" to="a6r3:~FindTextInModelDialog" resolve="FindTextInModelDialog" />
+              <ref role="3uigEE" to="a6r2:~FindTextInModelDialog" resolve="FindTextInModelDialog" />
             </node>
             <node concept="2ShNRf" id="7KZgf2c$brB" role="33vP2m">
               <node concept="1pGfFk" id="7KZgf2c$brC" role="2ShVmc">
-                <ref role="37wK5l" to="a6r3:~FindTextInModelDialog.&lt;init&gt;(jetbrains.mps.project.MPSProject)" resolve="FindTextInModelDialog" />
+                <ref role="37wK5l" to="a6r2:~FindTextInModelDialog.&lt;init&gt;(jetbrains.mps.project.MPSProject)" resolve="FindTextInModelDialog" />
                 <node concept="37vLTw" id="7KZgf2c$brD" role="37wK5m">
                   <ref role="3cqZAo" node="CYSHSSsOL3" resolve="mpsProject" />
                 </node>
@@ -39264,7 +39297,7 @@
                       <ref role="3cqZAo" node="7KZgf2c$brA" resolve="dialog" />
                     </node>
                     <node concept="liA8E" id="7VU42f2DgKe" role="2OqNvi">
-                      <ref role="37wK5l" to="a6r3:~FindTextInModelDialog.setText(java.lang.String)" resolve="setText" />
+                      <ref role="37wK5l" to="a6r2:~FindTextInModelDialog.setText(java.lang.String)" resolve="setText" />
                       <node concept="2OqwBi" id="7VU42f2Dg16" role="37wK5m">
                         <node concept="2OqwBi" id="7VU42f2DftN" role="2Oq$k0">
                           <node concept="1eOMI4" id="7VU42f2Df30" role="2Oq$k0">
@@ -39328,7 +39361,7 @@
               <ref role="3cqZAo" node="7KZgf2c$brA" resolve="dialog" />
             </node>
             <node concept="liA8E" id="1tinHSP8ra9" role="2OqNvi">
-              <ref role="37wK5l" to="a6r3:~FindTextInModelDialog.show()" resolve="show" />
+              <ref role="37wK5l" to="a6r2:~FindTextInModelDialog.show()" resolve="show" />
             </node>
           </node>
         </node>

@@ -19,6 +19,7 @@ import jetbrains.mps.util.IterableUtil;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
@@ -109,9 +110,7 @@ public final class SModelOperations {
     final SConcept properConcept = MetaAdapterByDeclaration.asInstanceConcept(concept);
 
     final SNode result = newNode(model, id, properConcept);
-    if (result == null) {
-      return null;
-    }
+    NodeIdentityComponent.getInstance().configure(result, model, null);
 
     BHReflection.initNode(result);
     return result;
@@ -131,6 +130,7 @@ public final class SModelOperations {
 
   public static SNode createNewRootNode(SModel model, @Nullable SNodeId nodeId, SConcept concept) {
     SNode newNode = newNode(model, nodeId, concept);
+    NodeIdentityComponent.getInstance().configure(newNode, model, null);
     BHReflection.initNode(newNode);
     model.addRootNode(newNode);
     return newNode;

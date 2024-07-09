@@ -70,5 +70,6 @@ public class CopyNode_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     CopyPasteUtil.copyNodesToClipboard(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
+    CopyPasteUtil.getPasteNodeDataFromClipboard(SNodeOperations.getModel(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first())).consume();
   }
 }

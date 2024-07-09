@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,6 +40,7 @@ import jetbrains.mps.smodel.Generator.GeneratorModelsAutoImports;
 import jetbrains.mps.smodel.Language.LanguageModelsAutoImports;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.smodel.SNodeAccessUtilImpl;
 import jetbrains.mps.smodel.adapter.structure.types.TypeRegistry;
@@ -76,6 +77,7 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
   private ModelsAutoImportsManager myAutoImportsManager;
   private DescriptorIOFacade myModuleDescriptorFacade;
   private VFSManager myVFSManager;
+  private NodeIdentityComponent myIdentitySupplier;
   private ProjectManager myProjectManager;
 
   /**
@@ -115,6 +117,7 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
 
   private void doInit() {
     SNodeAccessUtil.setInstance(new SNodeAccessUtilImpl());
+    myIdentitySupplier = init(new NodeIdentityComponent());
     myVFSManager = init(new VFSManager());
     // in fact, could be part of PersistenceRegistry to minimize number of components. OTOH, complicates access
     // to the instance, findComponent(PersistenceRegistry.class).getDataSourceService() is longer than just findComponent(DataSourceFactoryRuleService.class)
@@ -252,6 +255,9 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     }
     if (ProjectManager.class == componentClass) {
       return componentClass.cast(myProjectManager);
+    }
+    if (NodeIdentityComponent.class.equals(componentClass)) {
+      return componentClass.cast(myIdentitySupplier);
     }
     return null;
   }

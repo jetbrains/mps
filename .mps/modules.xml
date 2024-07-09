@@ -485,6 +485,9 @@
       <modulePath path="$PROJECT_DIR$/samples/multipleProjections/languages/org.jetbrains.mps.stateMachine.tabular/org.jetbrains.mps.stateMachine.tabular.mpl" folder="samples.multipleProjections" />
       <modulePath path="$PROJECT_DIR$/samples/multipleProjections/languages/org.jetbrains.mps.stateMachine/org.jetbrains.mps.stateMachine.mpl" folder="samples.multipleProjections" />
       <modulePath path="$PROJECT_DIR$/samples/multipleProjections/solutions/org.jetbrains.mps.stateMachine.sadbox/org.jetbrains.mps.stateMachine.sadbox.msd" folder="samples.multipleProjections" />
+      <modulePath path="$PROJECT_DIR$/samples/nodeuid/lang/jetbrains.mps.samples.nodeuid.lang.mpl" folder="samples.nodeuid" />
+      <modulePath path="$PROJECT_DIR$/samples/nodeuid/pls/jetbrains.mps.samples.nodeuid.msd" folder="samples.nodeuid" />
+      <modulePath path="$PROJECT_DIR$/samples/nodeuid/sandbox/jetbrains.mps.samples.nodeuid.sandbox.msd" folder="samples.nodeuid" />
       <modulePath path="$PROJECT_DIR$/samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/jetbrains.mps.samples.notesOrganizer.mpl" folder="samples.notesOrganizer" />
       <modulePath path="$PROJECT_DIR$/samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/sandbox/jetbrains.mps.samples.notesOrganizer.sandbox.msd" folder="samples.notesOrganizer" />
       <modulePath path="$PROJECT_DIR$/samples/notesOrganizer/solutions/jetbrains.mps.samples.notesOrganizer.build/jetbrains.mps.samples.notesOrganizer.build.msd" folder="samples.notesOrganizer" />

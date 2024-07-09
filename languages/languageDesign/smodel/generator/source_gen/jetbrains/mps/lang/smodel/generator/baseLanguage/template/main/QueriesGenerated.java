@@ -2191,6 +2191,15 @@ public class QueriesGenerated {
   public static SNode sourceNodeQuery_119_14(final SourceSubstituteMacroNodeContext _context) {
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(_context.getNode());
   }
+  public static SNode sourceNodeQuery_119_15(final SourceSubstituteMacroNodeContext _context) {
+    return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(_context.getNode());
+  }
+  public static SNode sourceNodeQuery_119_16(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.value$eiCm);
+  }
+  public static SNode sourceNodeQuery_119_17(final SourceSubstituteMacroNodeContext _context) {
+    return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(_context.getNode());
+  }
   public static SNode sourceNodeQuery_120_0(final SourceSubstituteMacroNodeContext _context) {
     return (SNode) SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(_context.getNode());
   }
@@ -2726,6 +2735,7 @@ public class QueriesGenerated {
     /*package*/ static final SContainmentLink member$40Vw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0135694L, 0x414edd67c0135695L, "member");
     /*package*/ static final SContainmentLink conceptArgument$pVqq = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10956bb6029L, 0x1120c4c9bb4L, "conceptArgument");
     /*package*/ static final SContainmentLink linkQualifier$ru6w = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x32187d80f5b88800L, 0x32187d80f5b89154L, "linkQualifier");
+    /*package*/ static final SContainmentLink value$eiCm = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x551a05aaec1bca7L, 0x551a05aaec1c16eL, "value");
     /*package*/ static final SContainmentLink nodeArgument$feYx = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x118e7faea40L, 0x118e7faea42L, "nodeArgument");
     /*package*/ static final SContainmentLink ref$U7VA = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, 0x2e154e2e58d91f06L, "ref");
     /*package*/ static final SContainmentLink value$hNc0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10ae2053294L, 0x10ae2053295L, "value");

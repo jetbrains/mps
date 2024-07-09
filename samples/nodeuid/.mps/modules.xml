@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MPSProject">
+    <projectModules>
+      <modulePath path="$PROJECT_DIR$/lang/jetbrains.mps.samples.nodeuid.lang.mpl" folder="" />
+      <modulePath path="$PROJECT_DIR$/pls/jetbrains.mps.samples.nodeuid.msd" folder="" />
+      <modulePath path="$PROJECT_DIR$/sandbox/jetbrains.mps.samples.nodeuid.sandbox.msd" folder="" />
+    </projectModules>
+  </component>
+</project>

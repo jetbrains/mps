@@ -239,6 +239,8 @@ public class CellAction_PasteNode extends AbstractCellAction {
           editorComponent.getUpdater().flushModelEvents();
           SNode lastNode = pasteNodes.get(pasteNodes.size() - 1);
           editorComponent.getSelectionManager().setSelection(lastNode, SelectionManager.LAST_CELL, -1);
+
+          pasteNodeData.consume();
         }
       });
     }, ModalityState.current());

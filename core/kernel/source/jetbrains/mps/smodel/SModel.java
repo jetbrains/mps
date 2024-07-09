@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -622,11 +622,11 @@ public class SModel implements SModelData, UpdateModeSupport {
   }
 
   private void assignNewId(SNode node) {
-    SNodeId id;
-    id = generateUniqueId();
+    org.jetbrains.mps.openapi.model.SNodeId id;
+    id = NodeIdentityComponent.getInstance().issue(myModelDescriptor);
     while (myIdToNodeMap.containsKey(id)) {
       resetIdCounter();
-      id = generateUniqueId();
+      id = NodeIdentityComponent.getInstance().issue(myModelDescriptor);
     }
     node.setId(id);
     myIdToNodeMap.put(id, node);

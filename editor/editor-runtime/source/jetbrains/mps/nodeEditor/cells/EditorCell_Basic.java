@@ -498,7 +498,7 @@ public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mp
     if (node.getConcept().equals(concreteConcept)) {
       return null;
     }
-    jetbrains.mps.smodel.SNode newNode = new jetbrains.mps.smodel.SNode(concreteConcept);
+    SNode newNode = getContext().getModel().createNode(concreteConcept);
     SNodeUtil.replaceWithAnother(node, newNode);
     getContext().flushEvents();
     return newNode;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.IllegalModelAccessException;
 import jetbrains.mps.smodel.InvalidSModel;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
 import jetbrains.mps.smodel.event.ModelListenerDispatch;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
@@ -93,13 +94,13 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   public SNode createNode(@NotNull SConcept concept) {
     // nodeId should be model's responsibility, not SNode's as we shall migrate towards model-local node ids, preferably int instead of long,
     // and at least not random
-    return new jetbrains.mps.smodel.SNode(concept, jetbrains.mps.smodel.SModel.generateUniqueId());
+    return new jetbrains.mps.smodel.SNode(concept, NodeIdentityComponent.getInstance().issue(this));
   }
 
   @Override
   public SNode createNode(@NotNull SConcept concept, @Nullable SNodeId nodeId) {
     if (nodeId == null) {
-      nodeId = jetbrains.mps.smodel.SModel.generateUniqueId();
+      nodeId = NodeIdentityComponent.getInstance().issue(this);
     }
     return new jetbrains.mps.smodel.SNode(concept, nodeId);
   }
