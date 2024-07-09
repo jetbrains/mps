@@ -152,19 +152,26 @@ import java.util.stream.Stream;
           recalculateStatus.add(mRef);
         }
         HashSet<SModuleReference> knownAndChanged = new HashSet<>();
+        // first, collect information about current deps of modules to reload, then update CModule instances -
+        // otherwise, we may miss modules to unload or attempt to unload same module more than once.
         for (ReloadableModule module : myModulesToReload) {
           SModuleReference mRef = module.getModuleReference();
           assert myDepGraph.contains(mRef);
           // could be CModule.getModule() == null, if we anticipated its appearance as a dependency target of another module
           LOG.debug("Adding changed module " + module);
           myDepGraph.fillIncomingEdgesShallow(Collections.singleton(mRef), recalculateStatus);
-          // anticipated module, all others that depend from it shall get loaded (if their dependencies are satisfied)
+          // deep incoming CModule into affectedForRemove -> all CLs for modules that may use classes of this one has to be reloaded
+          // to get their list of dependent classloaders updated.
+          myDepGraph.visitIncomingDeep(Collections.singleton(mRef), affectedForRemove::add);
+          // anticipated module, all others that depend on it shall get loaded (if their dependencies are satisfied)
           knownAndChanged.add(mRef);
-          // XXX perhaps, deep incoming CModule into affectedForRemove?
-          storageUpdate(module);
           recalculateEdges.add(mRef); // need to figure out its dependencies again
           recalculateStatus.add(mRef);
         }
+        // well, in fact it should be knownAndChanged, just don't want to go throw SModuleReference->SModule map again, and
+        // therefore sort of rely on flawless assert myDepGraph.contains(mRef) in the loop, above
+        myModulesToReload.forEach(this::storageUpdate);
+
         // modules with broken dependencies that were expected but not met, get a chance to load
         myDepGraph.visitIncomingDeep(knownAndChanged, affectedForAdd::add);
         // changed modules we've known before - what if it's a dependency change to a module long gone?
