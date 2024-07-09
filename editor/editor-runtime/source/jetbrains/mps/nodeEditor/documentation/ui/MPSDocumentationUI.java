@@ -64,13 +64,10 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
     ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, toolbarActionGroup, true);
     toolbar.setTargetComponent(myEditorPane);
 
-    HyperlinkListener hyperlinkListener = new HyperlinkListener() {
-      @Override
-      public void hyperlinkUpdate(HyperlinkEvent e) {
-        HyperlinkEvent.EventType type = e.getEventType();
-        if (type == HyperlinkEvent.EventType.ACTIVATED) {
-          navigateByLink(e);
-        }
+    HyperlinkListener hyperlinkListener = (HyperlinkEvent e) -> {
+      HyperlinkEvent.EventType type = e.getEventType();
+      if (type == HyperlinkEvent.EventType.ACTIVATED) {
+        navigateByLink(e);
       }
     };
     myEditorPane.addHyperlinkListener(hyperlinkListener);
@@ -114,7 +111,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
         myEditorPane.setText(newDocumentation[0]);
       }
     }
-    if(link.startsWith(MPSDocumentationManagerProtocol.WORD)){
+    if (link.startsWith(MPSDocumentationManagerProtocol.WORD)) {
       String url = link.split(MPSDocumentationManagerProtocol.WORD)[1];
       try {
         Desktop.getDesktop().browse(URI.create(url));

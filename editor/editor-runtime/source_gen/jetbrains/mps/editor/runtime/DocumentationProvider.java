@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/156597066336189561", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public class DocumentationProvider {
-  private SNode myNode;
+  private final SNode myNode;
 
   public DocumentationProvider(SNode node) {
     myNode = node;

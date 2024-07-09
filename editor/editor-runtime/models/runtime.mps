@@ -12242,6 +12242,7 @@
     <property role="TrG5h" value="DocumentationProvider" />
     <node concept="312cEg" id="5c8BzTYRzOA" role="jymVt">
       <property role="TrG5h" value="myNode" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="5c8BzTYRzQg" role="1B3o_S" />
       <node concept="3uibUv" id="5c8BzTYUXZm" role="1tU5fm">
         <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />

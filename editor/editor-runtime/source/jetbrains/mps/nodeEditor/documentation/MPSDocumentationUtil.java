@@ -59,9 +59,7 @@ public class MPSDocumentationUtil {
     String protocol = MPSDocumentationManagerProtocol.TEXT_NODE_REFERENCE;
     SNodeReference nodeRef = PersistenceFacade.getInstance().createNodeReference(link.split(protocol)[1]);
     final SNode[] targetNode = new SNode[]{null};
-    project.getModelAccess().runReadAction(() -> {
-      targetNode[0] = nodeRef.resolve(project.getRepository());
-    });
+    project.getModelAccess().runReadAction(() -> targetNode[0] = nodeRef.resolve(project.getRepository()));
     return targetNode[0];
   }
 }
