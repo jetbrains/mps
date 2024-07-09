@@ -58,7 +58,7 @@
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
       <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT" />
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
@@ -76,7 +76,7 @@
         <property id="1757699476691236117" name="name_DebugInfo" index="2qtEX9" />
         <property id="1341860900487648621" name="propertyId" index="P4ACc" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -492,7 +492,7 @@
       <node concept="1dewGC" id="hYBaULQCLi" role="1qenE9">
         <node concept="12SPJ3" id="hYBaULQCLj" role="1dewow">
           <property role="TrG5h" value="first" />
-          <ref role="12SPlw" node="hYBaULQCLm" resolve="second" />
+          <ref role="12SPlw" node="hYBaULQCLm" resolve="second change" />
           <node concept="12N$GD" id="hYBaULQCLk" role="lGtFl">
             <property role="3AMSlG" value="0" />
             <property role="TrG5h" value="Documentation 0" />

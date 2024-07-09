@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.samples.nodeuid.sandbox" uuid="ff43a7ee-8428-4eb6-ab6f-ab45c0c2f158" moduleVersion="0" compileInMPS="true">
+<solution name="jetbrains.mps.samples.nodeuid.sandbox" uuid="ff43a7ee-8428-4eb6-ab6f-ab45c0c2f158" moduleVersion="0">
   <models>
     <modelRoot type="default" contentPath="${module}">
       <sourceRoot location="models" />
@@ -10,7 +10,6 @@
       <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
-  <sourcePath />
   <dependencies>
     <dependency reexport="false">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
   </dependencies>

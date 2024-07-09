@@ -1658,7 +1658,7 @@
       </node>
       <node concept="1SiIV0" id="4WGKd_KIwwS" role="3bR37C">
         <node concept="3bR9La" id="4WGKd_KIwwT" role="1SiIV1">
-          <ref role="3bR37D" node="4WGKd_KIwrs" />
+          <ref role="3bR37D" node="4WGKd_KIwrs" resolve="jetbrains.mps.vcs.mergehints.runtime" />
         </node>
       </node>
       <node concept="1SiIV0" id="5p7yZr8wVrZ" role="3bR37C">
@@ -1914,7 +1914,7 @@
       </node>
       <node concept="1SiIV0" id="6ifcnI8$LdV" role="3bR37C">
         <node concept="3bR9La" id="6ifcnI8$LdW" role="1SiIV1">
-          <ref role="3bR37D" node="6ifcnI8$2iU" />
+          <ref role="3bR37D" node="6ifcnI8$2iU" resolve="jetbrains.mps.ide.vcs.modelmetadata" />
         </node>
       </node>
       <node concept="1BupzO" id="73GUf$umQk_" role="3bR31x">

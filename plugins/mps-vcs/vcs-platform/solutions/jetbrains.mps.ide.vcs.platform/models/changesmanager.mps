@@ -12186,7 +12186,7 @@
                                       <ref role="3cqZAo" node="2QnDi8QvAQf" resolve="childRole" />
                                     </node>
                                     <node concept="37vLTw" id="2_s9gYoHN6Z" role="37wK5m">
-                                      <ref role="3cqZAo" node="2_s9gYoHe5l" resolve="list" />
+                                      <ref role="3cqZAo" node="2_s9gYoHe5l" resolve="oldChildrenIds" />
                                     </node>
                                     <node concept="37vLTw" id="2_s9gYoI6Jx" role="37wK5m">
                                       <ref role="3cqZAo" node="jXG_1kfbBy" resolve="childrenRightAfterEvent" />
