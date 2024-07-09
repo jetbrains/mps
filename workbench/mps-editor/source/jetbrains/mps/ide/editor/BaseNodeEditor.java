@@ -320,7 +320,7 @@ public abstract class BaseNodeEditor implements Editor {
         inspectorEditorComponent.restoreState(s.inspectorMemento);
         inspectorEditorComponent.getFocusTracker().setEffectiveFocusState(s.isInspectorFocused);
         if (s.isInspectorFocused && focusManager != null) {
-          InspectorTool inspectorTool = myProject.getComponent(InspectorTool.class);
+          InspectorTool inspectorTool =InspectorTool.getInstance(myProject);
           if (inspectorTool != null && inspectorTool.isAvailable()) {
             inspectorTool.activate();
           }

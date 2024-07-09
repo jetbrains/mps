@@ -39,7 +39,7 @@ public class DefaultCellInfoTest_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5560058483159205760", "5560058483159208304");
-      EditorComponent inspector = myProject.getComponent(InspectorTool.class).getInspector();
+      EditorComponent inspector = InspectorTool.getInstance(myProject).getInspector();
       Set<EditorCell> errorCells = inspector.getCellTracker().getErrorCells();
       Assert.assertTrue(!(errorCells.isEmpty()));
 
