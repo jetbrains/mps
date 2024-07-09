@@ -60,7 +60,7 @@ public class MPSDocumentationManager {
     }
     cancelAll();
 
-    MPSDocumentationUI documentationUI = new MPSDocumentationUI(docMessage);
+    MPSDocumentationUI documentationUI = new MPSDocumentationUI(project, docMessage);
     if (docMessage != null && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
       // redirect to the tool window
       MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(documentationUI);
@@ -104,7 +104,7 @@ public class MPSDocumentationManager {
       String popupDocMessage = docMessage;
       if (docMessage != null && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
         // redirect to the tool window
-        MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(new MPSDocumentationUI(docMessage));
+        MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(new MPSDocumentationUI(project, docMessage));
         popupDocMessage = null;
       }
 
@@ -241,7 +241,7 @@ public class MPSDocumentationManager {
 
 
     private @Nullable JComponent createQuickDocComponent(@NotNull Project project, boolean jointPopup) {
-      this.myPopupUI = new MPSDocumentationPopupUI(project, new MPSDocumentationUI(myQuickDocMessage));
+      this.myPopupUI = new MPSDocumentationPopupUI(project, new MPSDocumentationUI(project, myQuickDocMessage));
       if (jointPopup) {
         myPopupUI.jointHover();
       }

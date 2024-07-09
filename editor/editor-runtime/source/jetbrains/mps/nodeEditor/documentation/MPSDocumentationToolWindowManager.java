@@ -10,6 +10,7 @@ import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowAnchor;
+import com.intellij.openapi.wm.ex.ToolWindowEx;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
 import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
@@ -47,12 +48,14 @@ public class MPSDocumentationToolWindowManager {
   }
 
   private void showInNewTab(MPSDocumentationUI ui) {
+    installToolWindowActions(ui);
     Content content = addNewContent();
     initUI(ui, content);
     makeVisible();
   }
 
   private void initUI(MPSDocumentationUI ui, Content content) {
+    installToolWindowActions(ui);
     MPSDocumentationToolWindowUI toolWindowUI = new MPSDocumentationToolWindowUI(ui, content);
     toolWindowUI.setContentComponent(content);
     content.putUserData(TW_UI_KEY, toolWindowUI);
@@ -65,6 +68,11 @@ public class MPSDocumentationToolWindowManager {
     content.putUserData(ToolWindow.SHOW_CONTENT_ICON, true);
     myToolWindow.addContent(content);
     return content;
+  }
+
+  private void installToolWindowActions(MPSDocumentationUI ui) {
+    ToolWindowEx toolWindowEx = (ToolWindowEx) myToolWindow.getToolWindow();
+    toolWindowEx.setTitleActions(ui.getNavigateActions());
   }
 
   private void makeVisible() {

@@ -34,7 +34,6 @@ import javax.swing.JComponent;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -66,6 +65,7 @@ public class MPSDocumentationPopupUI implements Disposable {
     secondaryActions.add(showToolbarAction);
     secondaryActions.add(openInToolwindowAction);
     DefaultActionGroup toolbarActionGroup = new DefaultActionGroup();
+    toolbarActionGroup.add(ui.getNavigateActions());
     for (AnAction secondaryAction : secondaryActions) {
       toolbarActionGroup.addAction(secondaryAction).setAsSecondary(true);
     }

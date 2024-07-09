@@ -851,7 +851,7 @@ public class NodeEditorActions {
     String decoratedDocumentation = new DocumentationProvider(context.getRepository(), target).getDecoratedDocumentation();
     Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(context.getRepository()));
     if (decoratedDocumentation != null && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
-      MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(new MPSDocumentationUI(decoratedDocumentation));
+      MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(new MPSDocumentationUI(project, decoratedDocumentation));
     }
   }
 }

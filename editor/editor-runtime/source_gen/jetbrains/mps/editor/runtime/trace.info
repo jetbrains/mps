@@ -75,18 +75,26 @@
       <node id="8358778633170210153" at="117,37,118,37" concept="11" />
       <node id="8358778633170442288" at="118,37,119,24" concept="0" />
       <node id="2844715009149114292" at="119,24,120,171" concept="12" />
-      <node id="156597066336189561" at="124,0,125,0" concept="15" trace="DocumentationAnnotation$ug" />
-      <node id="156597066336189561" at="125,0,126,0" concept="15" trace="DocumentationObjective$OD" />
-      <node id="156597066336189561" at="129,0,130,0" concept="15" trace="text$Dgpy" />
+      <node id="8339369386956486670" at="123,60,124,67" concept="12" />
+      <node id="7066748938511328505" at="129,77,130,18" concept="12" />
+      <node id="2558991146955168443" at="131,5,132,129" concept="12" />
+      <node id="156597066336189561" at="136,0,137,0" concept="15" trace="DocumentationAnnotation$ug" />
+      <node id="156597066336189561" at="137,0,138,0" concept="15" trace="DocumentationObjective$OD" />
+      <node id="156597066336189561" at="138,0,139,0" concept="15" trace="TextNodeReference$Ml" />
+      <node id="156597066336189561" at="142,0,143,0" concept="15" trace="text$Dgpy" />
+      <node id="156597066336189561" at="143,0,144,0" concept="15" trace="reference$iuvT" />
       <node id="2892080573455001024" at="78,10,80,5" concept="1" />
       <node id="5983206096215361431" at="33,0,36,0" concept="3" trace="DocumentationProvider#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2892080573454896217" at="37,0,40,0" concept="3" trace="DocumentationProvider#(Lorg/jetbrains/mps/openapi/module/SRepository;Ljetbrains/mps/openapi/editor/cells/EditorCell;)V" />
       <node id="7396309645545016680" at="96,45,99,5" concept="9" />
       <node id="7067533250293586844" at="99,5,102,5" concept="9" />
+      <node id="8339369386956486667" at="123,0,126,0" concept="16" trace="isDocTextNodeReference#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="7066748938511308203" at="128,81,131,5" concept="9" />
       <node id="2892080573455000969" at="58,11,62,11" concept="9" />
       <node id="2892080573455000988" at="64,7,68,7" concept="9" />
       <node id="2892080573455000951" at="53,69,58,11" concept="9" />
       <node id="2844715009149090616" at="116,0,122,0" concept="10" trace="getModelInfo#()Lcom/intellij/openapi/util/text/HtmlChunk;" />
+      <node id="2558991146955168440" at="127,0,134,0" concept="16" trace="getReferenceForTextNodeReference#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2892080573455001010" at="71,0,80,5" concept="9" />
       <node id="5983206096215387648" at="84,0,94,0" concept="10" trace="getDocumentationContent#()Ljava/lang/String;" />
       <node id="2892080573455000943" at="51,69,63,9" concept="9" />
@@ -100,6 +108,8 @@
       <scope id="2892080573455001025" at="78,12,79,25" />
       <scope id="7396309645545016682" at="97,25,98,18" />
       <scope id="7067533250293586845" at="100,238,101,18" />
+      <scope id="8339369386956486669" at="123,60,124,67" />
+      <scope id="7066748938511308205" at="129,77,130,18" />
       <scope id="2892080573455000970" at="59,54,61,18" />
       <scope id="2892080573455000989" at="65,32,67,14" />
       <scope id="2892080573455001031" at="72,32,74,0" />
@@ -113,11 +123,18 @@
       </scope>
       <scope id="2892080573455000918" at="46,61,49,14" />
       <scope id="2892080573455000952" at="54,37,57,18" />
+      <scope id="8339369386956486667" at="123,0,126,0">
+        <var name="node" id="8339369386956486677" />
+      </scope>
       <scope id="2844715009149090619" at="116,36,120,171">
         <var name="icon" id="8358778633170210154" />
         <var name="model" id="2844715009149100456" />
       </scope>
+      <scope id="2558991146955168442" at="128,81,132,129" />
       <scope id="2844715009149090616" at="116,0,122,0" />
+      <scope id="2558991146955168440" at="127,0,134,0">
+        <var name="textNodeReference" id="2558991146955168450" />
+      </scope>
       <scope id="5983206096215387651" at="84,44,92,28">
         <var name="component" id="6615996675661130514" />
         <var name="docTextNode" id="6615996675661130489" />
@@ -146,9 +163,9 @@
         <var name="currentCell" id="2892080573455015352" />
         <var name="repository" id="2892080573455000889" />
       </scope>
-      <unit id="156597066336189561" at="128,0,131,0" name="jetbrains.mps.editor.runtime.DocumentationProvider$LINKS" />
-      <unit id="156597066336189561" at="123,0,127,0" name="jetbrains.mps.editor.runtime.DocumentationProvider$CONCEPTS" />
-      <unit id="156597066336189561" at="29,0,132,0" name="jetbrains.mps.editor.runtime.DocumentationProvider" />
+      <unit id="156597066336189561" at="141,0,145,0" name="jetbrains.mps.editor.runtime.DocumentationProvider$LINKS" />
+      <unit id="156597066336189561" at="135,0,140,0" name="jetbrains.mps.editor.runtime.DocumentationProvider$CONCEPTS" />
+      <unit id="156597066336189561" at="29,0,146,0" name="jetbrains.mps.editor.runtime.DocumentationProvider" />
     </file>
   </root>
   <root nodeRef="r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/4952318787899710481">

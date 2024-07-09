@@ -18,6 +18,7 @@ package jetbrains.mps.nodeEditor.cells;
 import com.intellij.openapi.command.CommandProcessor;
 import com.intellij.openapi.util.text.HtmlChunk;
 import com.intellij.util.ui.StartupUiUtil;
+import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
@@ -35,6 +36,7 @@ import jetbrains.mps.nodeEditor.IntelligentInputUtil.IntelligentCellProcessor;
 import jetbrains.mps.nodeEditor.cellLayout.PunctuationUtil;
 import jetbrains.mps.nodeEditor.cellMenu.CompletionHelper;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstitutePatternEditor;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationUtil;
 import jetbrains.mps.nodeEditor.keyboard.TextChangeEvent;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 import jetbrains.mps.openapi.editor.ActionHandler;
@@ -148,6 +150,11 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
       htmlChunk = htmlChunk.wrapWith("u");
     }
 
+    if (DocumentationProvider.isDocTextNodeReference(this.getSNode())) {
+       String href =  MPSDocumentationUtil.getLinkForTextNodeReference(this.getSNode());
+       htmlChunk = HtmlChunk.link(href, htmlChunk);
+    }
+
     // color
     Color color = this.getRenderedTextLine().getTextColor();
     String rgbString = "rgb(" + color.getRed() + ", " + color.getGreen() + ", " + color.getBlue() + ")";
@@ -161,7 +168,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     int fontSize = StartupUiUtil.getLabelFont().getSize();
     float cellFontSize = this.getRenderedTextLine().getFont().getSize2D();
     if (fontSize != cellFontSize) {
-      htmlChunk = HtmlChunk.span("font-size: " + cellFontSize + "px").child(htmlChunk);
+      htmlChunk = HtmlChunk.font((int) cellFontSize).child(htmlChunk);
     }
     return htmlChunk.toString();
   }

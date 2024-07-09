@@ -120,12 +120,26 @@ public class DocumentationProvider {
     return HtmlChunk.fragment(HtmlChunk.tag("icon").attr("src", "jetbrains.mps.icons.MPSIcons.Nodes.Model"), HtmlChunk.nbsp(), HtmlChunk.text(model.getName().getValue()));
   }
 
+  public static boolean isDocTextNodeReference(SNode node) {
+    return node.isInstanceOfConcept(CONCEPTS.TextNodeReference$Ml);
+  }
+
+  @Nullable
+  public static SNode getReferenceForTextNodeReference(SNode textNodeReference) {
+    if (!(DocumentationProvider.isDocTextNodeReference(textNodeReference))) {
+      return null;
+    }
+    return SLinkOperations.getTarget(SNodeOperations.as(textNodeReference, CONCEPTS.TextNodeReference$Ml), LINKS.reference$iuvT);
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept DocumentationAnnotation$ug = MetaAdapterFactory.getConcept(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, "jetbrains.mps.lang.core.doc.structure.DocumentationAnnotation");
     /*package*/ static final SInterfaceConcept DocumentationObjective$OD = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6d1df6c2700b0eaeL, "jetbrains.mps.lang.structure.structure.DocumentationObjective");
+    /*package*/ static final SConcept TextNodeReference$Ml = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cc063b139472ce7L, "jetbrains.mps.lang.text.structure.TextNodeReference");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink text$Dgpy = MetaAdapterFactory.getContainmentLink(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, 0x1ec73eba262d6d52L, "text");
+    /*package*/ static final SReferenceLink reference$iuvT = MetaAdapterFactory.getReferenceLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cc063b139472ce7L, 0x6d10fe0be3bc93bL, "reference");
   }
 }
