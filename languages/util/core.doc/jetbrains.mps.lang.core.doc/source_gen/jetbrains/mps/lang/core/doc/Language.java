@@ -7,13 +7,8 @@ import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
-import jetbrains.mps.smodel.runtime.BehaviorAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.lang.core.doc.editor.EditorAspectDescriptorImpl;
-import jetbrains.mps.openapi.intentions.IntentionAspectDescriptor;
-import jetbrains.mps.lang.core.doc.intentions.IntentionsDescriptor;
-import jetbrains.mps.lang.migration.runtime.base.MigrationAspectDescriptor;
-import jetbrains.mps.lang.core.doc.migration.MigrationDescriptor;
 import jetbrains.mps.smodel.runtime.MakeAspectDescriptor;
 import jetbrains.mps.lang.core.doc.plugin.FacetAspectDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
@@ -49,17 +44,8 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected <T extends ILanguageAspect> T createAspect(Class<T> aspectClass) {
-    if (aspectClass == BehaviorAspectDescriptor.class) {
-      return aspectClass.cast(new jetbrains.mps.lang.core.doc.behavior.BehaviorAspectDescriptor());
-    }
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());
-    }
-    if (aspectClass == IntentionAspectDescriptor.class) {
-      return aspectClass.cast(new IntentionsDescriptor());
-    }
-    if (aspectClass == MigrationAspectDescriptor.class) {
-      return aspectClass.cast(new MigrationDescriptor());
     }
     if (aspectClass == MakeAspectDescriptor.class) {
       return aspectClass.cast(new FacetAspectDescriptor());
