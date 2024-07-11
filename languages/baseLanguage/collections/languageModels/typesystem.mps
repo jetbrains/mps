@@ -11982,7 +11982,7 @@
             </node>
             <node concept="mw_s8" id="1kw0gpBwZat" role="1ZfhK$">
               <node concept="37vLTw" id="1vV_iLMD3my" role="mwGJk">
-                <ref role="3cqZAo" node="1vV_iLMD3mt" resolve="node" />
+                <ref role="3cqZAo" node="1vV_iLMD3mt" resolve="closureType" />
               </node>
             </node>
           </node>

@@ -536,7 +536,7 @@
                         </node>
                       </node>
                       <node concept="3TrEf2" id="42q9MnGKDfi" role="2OqNvi">
-                        <ref role="3Tt5mk" to="1i04:hP3h7Gv" />
+                        <ref role="3Tt5mk" to="1i04:hP3h7Gv" resolve="concept" />
                       </node>
                     </node>
                     <node concept="3TrcHB" id="42q9MnGKDfj" role="2OqNvi">
@@ -718,7 +718,7 @@
             <node concept="17QB3L" id="42q9MnGEd9z" role="1tU5fm" />
             <node concept="2YIFZM" id="42q9MnGDUfD" role="33vP2m">
               <ref role="37wK5l" node="42q9MnGDDNG" resolve="getDocumentationLocation" />
-              <ref role="1Pybhc" node="42q9MnGJ0ci" resolve="ClassHelp" />
+              <ref role="1Pybhc" node="42q9MnGJ0ci" resolve="DocumentationPathResolver" />
               <node concept="37vLTw" id="42q9MnGLt4K" role="37wK5m">
                 <ref role="3cqZAo" node="42q9MnGLpJy" resolve="node" />
               </node>
@@ -747,7 +747,7 @@
             <node concept="17QB3L" id="42q9MnGFv6d" role="1tU5fm" />
             <node concept="2YIFZM" id="42q9MnGFzlE" role="33vP2m">
               <ref role="37wK5l" node="42q9MnGEqwi" resolve="getModulePath" />
-              <ref role="1Pybhc" node="42q9MnGJ0ci" resolve="ClassHelp" />
+              <ref role="1Pybhc" node="42q9MnGJ0ci" resolve="DocumentationPathResolver" />
               <node concept="37vLTw" id="42q9MnGLtOY" role="37wK5m">
                 <ref role="3cqZAo" node="42q9MnGLpJy" resolve="node" />
               </node>
@@ -763,7 +763,7 @@
             <node concept="17QB3L" id="42q9MnGFB4k" role="1tU5fm" />
             <node concept="2YIFZM" id="42q9MnGFFBz" role="33vP2m">
               <ref role="37wK5l" node="42q9MnGEQMD" resolve="getDocFileNameWithExtension" />
-              <ref role="1Pybhc" node="42q9MnGJ0ci" resolve="ClassHelp" />
+              <ref role="1Pybhc" node="42q9MnGJ0ci" resolve="DocumentationPathResolver" />
               <node concept="37vLTw" id="42q9MnGLupt" role="37wK5m">
                 <ref role="3cqZAo" node="42q9MnGLpJy" resolve="node" />
               </node>

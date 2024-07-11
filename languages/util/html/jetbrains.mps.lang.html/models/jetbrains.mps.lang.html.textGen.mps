@@ -608,7 +608,7 @@
             <node concept="2OqwBi" id="42q9MnHMLjM" role="lbANJ">
               <node concept="117lpO" id="42q9MnHMLbv" role="2Oq$k0" />
               <node concept="3Tsc0h" id="42q9MnHMLtb" role="2OqNvi">
-                <ref role="3TtcxE" to="7vgx:2YAlhTEkQa" />
+                <ref role="3TtcxE" to="7vgx:2YAlhTEkQa" resolve="elements" />
               </node>
             </node>
           </node>

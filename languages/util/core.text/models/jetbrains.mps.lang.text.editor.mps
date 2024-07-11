@@ -38045,7 +38045,7 @@
               </node>
               <node concept="2ShNRf" id="1vS6d1O6TWa" role="33vP2m">
                 <node concept="1pGfFk" id="1vS6d1O6TVJ" role="2ShVmc">
-                  <ref role="37wK5l" node="1vS6d1O6IWQ" />
+                  <ref role="37wK5l" node="1vS6d1O6IWQ" resolve="CaretPositionHelper" />
                   <node concept="1Q80Hx" id="1vS6d1O6TXT" role="37wK5m" />
                 </node>
               </node>
@@ -38181,7 +38181,7 @@
                 <node concept="2ShNRf" id="1vS6d1Ohp5V" role="2Oq$k0">
                   <node concept="1pGfFk" id="1vS6d1OhpnH" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="1vS6d1O6IWQ" />
+                    <ref role="37wK5l" node="1vS6d1O6IWQ" resolve="CaretPositionHelper" />
                     <node concept="1Q80Hx" id="1vS6d1Ohpu7" role="37wK5m" />
                   </node>
                 </node>
@@ -38272,7 +38272,7 @@
                 </node>
                 <node concept="2ShNRf" id="1vS6d1OhN$T" role="2Oq$k0">
                   <node concept="1pGfFk" id="1vS6d1OhN$U" role="2ShVmc">
-                    <ref role="37wK5l" node="1vS6d1O6IWQ" />
+                    <ref role="37wK5l" node="1vS6d1O6IWQ" resolve="CaretPositionHelper" />
                     <node concept="1Q80Hx" id="1vS6d1OhN$V" role="37wK5m" />
                   </node>
                 </node>
@@ -38341,7 +38341,7 @@
     <property role="3GE5qa" value="doc" />
     <ref role="1XX52x" to="zqge:6N0oV4ThMNB" resolve="TextNodeReference" />
     <node concept="3EZMnI" id="6qMaajV4KpE" role="2wV5jI">
-      <ref role="34QXea" node="1vS6d1NLatB" />
+      <ref role="34QXea" node="1vS6d1NLatB" resolve="TextNodeReference_KeyMap" />
       <ref role="1ERwB7" node="1vS6d1NOuvb" resolve="TextNodeReference_Actions" />
       <node concept="3F0ifn" id="1vS6d1NMQYA" role="3EZMnx">
         <node concept="11LMrY" id="1vS6d1NMRrf" role="3F10Kt">
@@ -38350,9 +38350,9 @@
         <node concept="VPM3Z" id="1vS6d1NVrXs" role="3F10Kt" />
       </node>
       <node concept="1iCGBv" id="rh3Y2YeXCF" role="3EZMnx">
-        <ref role="1NtTu8" to="zqge:rh3Y2YeW$V" />
+        <ref role="1NtTu8" to="zqge:rh3Y2YeW$V" resolve="reference" />
         <ref role="1ERwB7" node="1vS6d1NOuvb" resolve="TextNodeReference_Actions" />
-        <ref role="34QXea" node="1vS6d1NLatB" />
+        <ref role="34QXea" node="1vS6d1NLatB" resolve="TextNodeReference_KeyMap" />
         <node concept="1sVBvm" id="rh3Y2YeXCH" role="1sWHZn">
           <node concept="3F0A7n" id="rh3Y2YiDd_" role="2wV5jI">
             <property role="1Intyy" value="true" />
@@ -38410,7 +38410,7 @@
               </node>
               <node concept="2ShNRf" id="1vS6d1O7hEP" role="33vP2m">
                 <node concept="1pGfFk" id="1vS6d1O7hEQ" role="2ShVmc">
-                  <ref role="37wK5l" node="1vS6d1O6IWQ" />
+                  <ref role="37wK5l" node="1vS6d1O6IWQ" resolve="CaretPositionHelper" />
                   <node concept="1Q80Hx" id="1vS6d1O7hER" role="37wK5m" />
                 </node>
               </node>
@@ -39456,7 +39456,7 @@
     <node concept="22hDWj" id="3baUqW83jCS" role="22hAXT" />
     <node concept="3ft6gV" id="3baUqW84Ble" role="3ft7WO">
       <node concept="3XHNnq" id="3baUqW84Blg" role="3ft5RZ">
-        <ref role="3XGfJA" to="zqge:rh3Y2YeW$V" />
+        <ref role="3XGfJA" to="zqge:rh3Y2YeW$V" resolve="reference" />
       </node>
       <node concept="3ft6gW" id="3baUqW85TS1" role="3ft5RY">
         <node concept="3clFbS" id="3baUqW85TS2" role="2VODD2">

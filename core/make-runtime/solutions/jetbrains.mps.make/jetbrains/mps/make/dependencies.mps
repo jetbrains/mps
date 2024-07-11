@@ -1382,13 +1382,13 @@
             <property role="3TUv4t" value="true" />
             <node concept="2hMVRd" id="3bdlBcZrHym" role="1tU5fm">
               <node concept="3uibUv" id="7LvIcpX3$Gj" role="2hN53Y">
-                <ref role="3uigEE" node="6QF8nMT33HA" resolve="ModuleDeps" />
+                <ref role="3uigEE" node="6QF8nMT33HA" resolve="ModulesCluster.ModuleDeps" />
               </node>
             </node>
             <node concept="2ShNRf" id="3bdlBcZrJyH" role="33vP2m">
               <node concept="32HrFt" id="7hKpAhuBMIu" role="2ShVmc">
                 <node concept="3uibUv" id="7hKpAhuBZ6G" role="HW$YZ">
-                  <ref role="3uigEE" node="6QF8nMT33HA" resolve="ModuleDeps" />
+                  <ref role="3uigEE" node="6QF8nMT33HA" resolve="ModulesCluster.ModuleDeps" />
                 </node>
               </node>
             </node>
@@ -2194,7 +2194,7 @@
                   <node concept="3cpWsn" id="3H3GmHPz1N2" role="3cpWs9">
                     <property role="TrG5h" value="dl" />
                     <node concept="3uibUv" id="3H3GmHPz0zb" role="1tU5fm">
-                      <ref role="3uigEE" node="6QF8nMT33HA" resolve="ModuleDeps" />
+                      <ref role="3uigEE" node="6QF8nMT33HA" resolve="ModulesCluster.ModuleDeps" />
                     </node>
                     <node concept="3EllGN" id="3H3GmHPz1N3" role="33vP2m">
                       <node concept="37vLTw" id="3H3GmHPz1N4" role="3ElVtu">
