@@ -722,6 +722,21 @@ public class SNodeOperations {
     return ((String) BHReflection.invoke0(((SNode) node), CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
   }
 
+  public static void set_uid(SNode node, Object value) {
+    if (node != null) {
+      node.putUserObject("mps.experimental.uid", value);
+    }
+  }
+
+  public static String get_uid(SNode node) {
+    if (node == null) {
+      return null;
+    } else {
+      Object uo = node.getUserObject("mps.experimental.uid");
+      return (uo instanceof String ? (String) uo : null);
+    }
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
     /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");

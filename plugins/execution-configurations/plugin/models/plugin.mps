@@ -111,12 +111,12 @@
     <import index="mmaq" ref="f647e48e-4568-4f4c-b48a-1546492c6a2e/java:org.jdom(org.jdom/)" />
     <import index="fhz7" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.runners(MPS.IDEA/)" />
     <import index="34h4" ref="r:263b648a-3e00-426c-ab4b-ba47ccd788c9(jetbrains.mps.baselanguage.unitTest.execution.launcher)" />
-    <import index="uemk" ref="r:e59b0550-8a55-4ba7-959c-684743b5ee3c(jetbrains.mps.lang.test.junit5)" />
-    <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
-    <import index="79ha" ref="r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)" />
     <import index="4u8o" ref="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)" />
+    <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="4o98" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.core.platform(MPS.Core/)" />
+    <import index="79ha" ref="r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)" />
+    <import index="uemk" ref="r:e59b0550-8a55-4ba7-959c-684743b5ee3c(jetbrains.mps.lang.test.junit5)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" implicit="true" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
@@ -8327,9 +8327,6 @@
                                     <node concept="3cpWs3" id="4nmyK_eErkm" role="3uHU7B">
                                       <node concept="3cpWs3" id="4nmyK_eEpuy" role="3uHU7B">
                                         <node concept="3cpWs3" id="rnX0t1pw_M" role="3uHU7B">
-                                          <node concept="Xl_RD" id="rnX0t1pw_Z" role="3uHU7w">
-                                            <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.text=ALL-UNNAMED" />
-                                          </node>
                                           <node concept="3cpWs3" id="4nmyK_eE5_0" role="3uHU7B">
                                             <node concept="3cpWs3" id="4nmyK_eEnJU" role="3uHU7B">
                                               <node concept="3cpWs3" id="4nmyK_eEm8q" role="3uHU7B">
@@ -8457,6 +8454,9 @@
                                             <node concept="Xl_RD" id="4nmyK_eEpuC" role="3uHU7w">
                                               <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED\n" />
                                             </node>
+                                          </node>
+                                          <node concept="Xl_RD" id="rnX0t1pw_Z" role="3uHU7w">
+                                            <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.text=ALL-UNNAMED" />
                                           </node>
                                         </node>
                                         <node concept="Xl_RD" id="4nmyK_eErks" role="3uHU7w">

@@ -131,6 +131,7 @@ public final class CopyUtil {
     mapping.put(node, result);
     copyProperties(node, result);
     copyUserObjects(node, result);
+    NodeIdentityComponent.getInstance().configure(result, null, node);
     for (SNode child : node.getChildren()) {
       if (!copyAttributes && AttributeOperations.isAttribute(child)) continue;
       SContainmentLink role = child.getContainmentLink();
@@ -157,6 +158,9 @@ public final class CopyUtil {
 
   public static void copyUserObjects(SNode from, final SNode to) {
     for (Object key : from.getUserObjectKeys()) {
+      if (key instanceof InherentUserObject) {
+        continue;
+      }
       to.putUserObject(key, from.getUserObject(key));
     }
   }

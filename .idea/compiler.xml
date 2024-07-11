@@ -557,6 +557,8 @@
       <directory url="file://$PROJECT_DIR$/samples/multipleProjections/languages/org.jetbrains.mps.stateMachine.tabular/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/multipleProjections/languages/org.jetbrains.mps.stateMachine/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/multipleProjections/solutions/org.jetbrains.mps.stateMachine.sadbox/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/nodeuid/lang/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/nodeuid/pls/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/notesOrganizer/languages/jetbrains.mps.samples.notesOrganizer/source_gen" includeSubdirectories="true" />

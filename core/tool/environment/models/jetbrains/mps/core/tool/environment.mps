@@ -7435,21 +7435,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="6dghH8IXNip" role="jymVt" />
-    <node concept="3clFb_" id="6dghH8IXNke" role="jymVt">
-      <property role="TrG5h" value="setProjectUrl" />
-      <node concept="37vLTG" id="6dghH8IXNlP" role="3clF46">
-        <property role="TrG5h" value="projectUrlSupplier" />
-        <node concept="3uibUv" id="6dghH8IXNAq" role="1tU5fm">
-          <ref role="3uigEE" to="82uw:~Supplier" resolve="Supplier" />
-          <node concept="17QB3L" id="22rviD7ePki" role="11_B2D" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="6dghH8IXNkh" role="3clF47" />
-      <node concept="3Tm1VV" id="6dghH8IXNki" role="1B3o_S" />
-      <node concept="3cqZAl" id="6dghH8IXNk2" role="3clF45" />
-      <node concept="2JFqV2" id="6dghH8IXNjl" role="2frcjj" />
-    </node>
     <node concept="3Tm1VV" id="7KC1aYnI6jE" role="1B3o_S" />
     <node concept="3UR2Jj" id="7KC1aYnI6nm" role="lGtFl">
       <node concept="TZ5HA" id="7KC1aYnI6nn" role="TZ5H$">
@@ -7499,6 +7484,21 @@
           <property role="1dT_AB" value="of project URL (filesystem path) to be used when running this test instance." />
         </node>
       </node>
+    </node>
+    <node concept="2tJIrI" id="6dghH8IXNip" role="jymVt" />
+    <node concept="3clFb_" id="6dghH8IXNke" role="jymVt">
+      <property role="TrG5h" value="setProjectUrl" />
+      <node concept="37vLTG" id="6dghH8IXNlP" role="3clF46">
+        <property role="TrG5h" value="projectUrlSupplier" />
+        <node concept="3uibUv" id="6dghH8IXNAq" role="1tU5fm">
+          <ref role="3uigEE" to="82uw:~Supplier" resolve="Supplier" />
+          <node concept="17QB3L" id="22rviD7ePki" role="11_B2D" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="6dghH8IXNkh" role="3clF47" />
+      <node concept="3Tm1VV" id="6dghH8IXNki" role="1B3o_S" />
+      <node concept="3cqZAl" id="6dghH8IXNk2" role="3clF45" />
+      <node concept="2JFqV2" id="6dghH8IXNjl" role="2frcjj" />
     </node>
   </node>
   <node concept="312cEu" id="1_D5Bk1O3_5">
