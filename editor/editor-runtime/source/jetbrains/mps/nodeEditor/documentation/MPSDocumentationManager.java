@@ -43,10 +43,26 @@ public class MPSDocumentationManager {
   private WeakReference<JBPopup> myQuickDocPopupReference;
   private WeakReference<JBPopup> myHintPopupReference;
   private ProgressIndicator myCurrentProgress;
-
+  private boolean myToolbarSelected = true;
 
   public static MPSDocumentationManager getInstance() {
     return ApplicationManager.getApplication().getService(MPSDocumentationManager.class);
+  }
+
+  public boolean getToolbarSelected(){
+    return myToolbarSelected;
+  }
+
+  public boolean getShowOnMouseMove(){
+    return myShowOnMouseMove;
+  }
+
+  public void setToolbarSelected(boolean state){
+    myToolbarSelected = state;
+  }
+
+  public void setShowOnMouseMove(boolean state){
+    myShowOnMouseMove = state;
   }
   
   /**

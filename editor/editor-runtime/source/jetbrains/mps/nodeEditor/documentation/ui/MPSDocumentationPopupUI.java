@@ -25,6 +25,7 @@ import com.intellij.ui.components.JBLayeredPane;
 import com.intellij.ui.popup.AbstractPopup;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationEditorPane;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationScrollPane;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationToolWindowManager;
 import jetbrains.mps.nodeEditor.documentation.PopupMouseListener;
@@ -47,7 +48,6 @@ public class MPSDocumentationPopupUI implements Disposable {
   private final JComponent myToolbarComponent;
   private final ActionButton myCorner;
   private final JComponent myComponent;
-  private boolean myToolbarSelected = false;
   private AbstractPopup myPopup;
   private final Project myProject;
 
@@ -61,7 +61,7 @@ public class MPSDocumentationPopupUI implements Disposable {
 
     List<AnAction> secondaryActions = new ArrayList<>();
     OpenInToolwindowAction openInToolwindowAction = new OpenInToolwindowAction();
-    ShowToolbarAction showToolbarAction = new ShowToolbarAction("Show Toolbar");
+    ShowToolbarAction showToolbarAction = new ShowToolbarAction();
     secondaryActions.add(showToolbarAction);
     secondaryActions.add(openInToolwindowAction);
     DefaultActionGroup toolbarActionGroup = new DefaultActionGroup();
@@ -118,7 +118,7 @@ public class MPSDocumentationPopupUI implements Disposable {
 
     openInToolwindowAction.registerCustomShortcutSet(KeymapUtil.getActiveKeymapShortcuts(IdeActions.ACTION_QUICK_JAVADOC), myComponent, this);
 
-    showToolbar(myToolbarSelected);
+    showToolbar(MPSDocumentationManager.getInstance().getToolbarSelected());
   }
 
   @Override
@@ -175,18 +175,18 @@ public class MPSDocumentationPopupUI implements Disposable {
   }
 
   private class ShowToolbarAction extends ToggleAction {
-    ShowToolbarAction(String text) {
-      super(text);
+    ShowToolbarAction() {
+      super("Show Toolbar", null, null);
     }
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent e) {
-      return myToolbarSelected;
+      return MPSDocumentationManager.getInstance().getToolbarSelected();
     }
 
     @Override
     public void setSelected(@NotNull AnActionEvent e, boolean state) {
-      myToolbarSelected = state;
+      MPSDocumentationManager.getInstance().setToolbarSelected(state);
       showToolbar(state);
     }
 
