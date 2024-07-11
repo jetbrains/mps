@@ -42,6 +42,7 @@ public class MPSDocumentationManager {
   private static final Logger LOG = Logger.getLogger(MPSDocumentationManager.class);
   private WeakReference<JBPopup> myQuickDocPopupReference;
   private WeakReference<JBPopup> myHintPopupReference;
+  private boolean myShowOnMouseMove = true;
   private ProgressIndicator myCurrentProgress;
   private boolean myToolbarSelected = true;
 

@@ -62,8 +62,10 @@ public class MPSDocumentationPopupUI implements Disposable {
     List<AnAction> secondaryActions = new ArrayList<>();
     OpenInToolwindowAction openInToolwindowAction = new OpenInToolwindowAction();
     ShowToolbarAction showToolbarAction = new ShowToolbarAction();
+    ShowOnMouseMove showOnMouseMove = new ShowOnMouseMove();
     secondaryActions.add(showToolbarAction);
     secondaryActions.add(openInToolwindowAction);
+    secondaryActions.add(showOnMouseMove);
     DefaultActionGroup toolbarActionGroup = new DefaultActionGroup();
     toolbarActionGroup.add(ui.getNavigateActions());
     for (AnAction secondaryAction : secondaryActions) {
@@ -188,6 +190,28 @@ public class MPSDocumentationPopupUI implements Disposable {
     public void setSelected(@NotNull AnActionEvent e, boolean state) {
       MPSDocumentationManager.getInstance().setToolbarSelected(state);
       showToolbar(state);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
+    }
+  }
+
+  private static class ShowOnMouseMove extends ToggleAction {
+    ShowOnMouseMove() {
+      super("Show On Mouse Move", null, null);
+    }
+
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent e) {
+      return MPSDocumentationManager.getInstance().getShowOnMouseMove();
+    }
+
+    @Override
+    public void setSelected(@NotNull AnActionEvent e, boolean state) {
+      MPSDocumentationManager.getInstance().setShowOnMouseMove(state);
     }
 
     @NotNull
