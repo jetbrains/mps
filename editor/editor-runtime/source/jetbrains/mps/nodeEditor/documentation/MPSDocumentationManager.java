@@ -274,6 +274,7 @@ public class MPSDocumentationManager {
       return (AbstractPopup) JBPopupFactory.getInstance()
                                            .createComponentPopupBuilder(component, component)
                                            .setRequestFocus(false)
+                                           .setFocusable(true)
                                            .setMovable(true)
                                            .setResizable(true)
                                            .setCancelOnClickOutside(false)
