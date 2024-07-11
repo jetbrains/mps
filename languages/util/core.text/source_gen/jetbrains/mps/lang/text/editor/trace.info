@@ -3162,18 +3162,20 @@
       <node id="2784226378586726986" at="325,107,326,322" concept="5" />
       <node id="2784226378586727020" at="328,133,329,111" concept="5" />
       <node id="2784226378586727028" at="329,111,330,322" concept="5" />
-      <node id="2784226378586727060" at="331,5,332,0" concept="14" />
-      <node id="2535923850359250088" at="337,0,338,0" concept="15" trace="Word$Dn" />
-      <node id="2535923850359250088" at="338,0,339,0" concept="15" trace="Line$yC" />
-      <node id="2535923850359250088" at="339,0,340,0" concept="15" trace="TextElement$WN" />
-      <node id="2535923850359250088" at="340,0,341,0" concept="15" trace="Header$d7" />
-      <node id="2535923850359250088" at="344,0,345,0" concept="15" trace="elements$_j45" />
-      <node id="2535923850359250088" at="348,0,349,0" concept="15" trace="value$zQr_" />
-      <node id="2535923850359250088" at="349,0,350,0" concept="15" trace="level$YKTp" />
-      <node id="2535923850359250088" at="350,0,351,0" concept="15" trace="url$SIrt" />
-      <node id="2535923850359250088" at="351,0,352,0" concept="15" trace="underlined$SQS1" />
-      <node id="2535923850359250088" at="352,0,353,0" concept="15" trace="bold$SBR1" />
-      <node id="2535923850359250088" at="353,0,354,0" concept="15" trace="italic$SC$4" />
+      <node id="7923734833314260758" at="331,5,332,216" concept="5" />
+      <node id="5842988570136970316" at="332,216,333,216" concept="5" />
+      <node id="5842988570136996674" at="333,216,334,216" concept="5" />
+      <node id="2535923850359250088" at="339,0,340,0" concept="15" trace="Word$Dn" />
+      <node id="2535923850359250088" at="340,0,341,0" concept="15" trace="Line$yC" />
+      <node id="2535923850359250088" at="341,0,342,0" concept="15" trace="TextElement$WN" />
+      <node id="2535923850359250088" at="342,0,343,0" concept="15" trace="Header$d7" />
+      <node id="2535923850359250088" at="346,0,347,0" concept="15" trace="elements$_j45" />
+      <node id="2535923850359250088" at="350,0,351,0" concept="15" trace="value$zQr_" />
+      <node id="2535923850359250088" at="351,0,352,0" concept="15" trace="level$YKTp" />
+      <node id="2535923850359250088" at="352,0,353,0" concept="15" trace="url$SIrt" />
+      <node id="2535923850359250088" at="353,0,354,0" concept="15" trace="underlined$SQS1" />
+      <node id="2535923850359250088" at="354,0,355,0" concept="15" trace="bold$SBR1" />
+      <node id="2535923850359250088" at="355,0,356,0" concept="15" trace="italic$SC$4" />
       <node id="6681408443910770854" at="28,0,30,0" concept="3" trace="NewElementStrategyFactory#()V" />
       <node id="6681408443911011898" at="34,10,36,5" concept="1" />
       <node id="6681408443912274333" at="41,10,43,5" concept="1" />
@@ -3228,7 +3230,7 @@
       <node id="6681408443910774236" at="265,0,278,0" concept="3" trace="WordSplitter#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="6681408443910881614" at="134,0,149,0" concept="10" trace="execute#()V" />
       <node id="8356039341264798757" at="65,72,89,7" concept="9" />
-      <node id="2784226378586726808" at="304,0,334,0" concept="16" trace="replacePatternsWithFormats#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="2784226378586726808" at="304,0,336,0" concept="16" trace="replacePatternsWithFormats#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6681408443911501325" at="57,0,91,0" concept="10" trace="execute#()V" />
       <node id="7356842945349844829" at="208,37,248,9" concept="18" />
       <node id="7356842945349844807" at="203,47,254,7" concept="9" />
@@ -3375,21 +3377,21 @@
       <scope id="8356039341264798759" at="66,213,84,9">
         <var name="newLine" id="6681408443911501336" />
       </scope>
-      <scope id="2784226378586726810" at="304,65,332,0">
+      <scope id="2784226378586726810" at="304,65,334,216">
         <var name="boldFormat" id="2784226378586726816" />
         <var name="horizontalRules" id="2784226378586726812" />
         <var name="italicBoldFormat" id="2784226378586726824" />
         <var name="italicForamt" id="2784226378586726820" />
         <var name="underlinedFormat" id="2784226378586726828" />
       </scope>
-      <scope id="2784226378586726808" at="304,0,334,0">
-        <var name="element" id="2784226378586727063" />
-      </scope>
       <scope id="6681408443911501327" at="58,27,89,7">
         <var name="currentLine" id="474718489010705398" />
         <var name="currentSibling" id="6681408443911501349" />
         <var name="lineContainer" id="8356039341261814117" />
         <var name="newElement" id="6681408443911501330" />
+      </scope>
+      <scope id="2784226378586726808" at="304,0,336,0">
+        <var name="element" id="2784226378586727063" />
       </scope>
       <scope id="6681408443911501325" at="57,0,91,0" />
       <scope id="7356842945349844808" at="204,209,253,9">
@@ -3400,16 +3402,16 @@
       </scope>
       <scope id="7356842945349737877" at="203,47,254,7" />
       <scope id="7356842945349737874" at="203,0,256,0" />
-      <unit id="2535923850359250088" at="343,0,346,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory$LINKS" />
-      <unit id="2535923850359250088" at="336,0,342,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory$CONCEPTS" />
-      <unit id="2535923850359250088" at="347,0,355,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory$PROPS" />
+      <unit id="2535923850359250088" at="345,0,348,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory$LINKS" />
+      <unit id="2535923850359250088" at="338,0,344,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory$CONCEPTS" />
+      <unit id="2535923850359250088" at="349,0,357,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory$PROPS" />
       <unit id="6681408443911652791" at="103,0,124,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory$AddNewLineAndSplitWordStrategy" />
       <unit id="6681408443912114580" at="153,0,178,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory$SplitWordStrategy" />
       <unit id="6681408443910881583" at="125,0,153,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory$AddNewWordStrategy" />
       <unit id="6681408443911986388" at="259,0,303,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory$WordSplitter" />
       <unit id="6681408443911495045" at="46,0,103,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory$AddNewLineStrategy" />
       <unit id="4404258161275727062" at="179,0,257,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory$IntroduceElementStrategy" />
-      <unit id="2535923850359250088" at="26,0,356,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory" />
+      <unit id="2535923850359250088" at="26,0,358,0" name="jetbrains.mps.lang.text.editor.NewElementStrategyFactory" />
     </file>
   </root>
   <root nodeRef="r:ad87c166-8161-4e40-b79b-3d7ba4070d9e(jetbrains.mps.lang.text.editor)/2535923850359271793">

@@ -329,7 +329,9 @@ public class NewElementStrategyFactory {
       SPropertyOperations.assign(SNodeOperations.cast(element, CONCEPTS.Word$Dn), PROPS.underlined$SQS1, true);
       SPropertyOperations.assign(SNodeOperations.cast(element, CONCEPTS.Word$Dn), PROPS.value$zQr_, SPropertyOperations.getString(SNodeOperations.cast(element, CONCEPTS.Word$Dn), PROPS.value$zQr_).substring(2, SPropertyOperations.getString(SNodeOperations.cast(element, CONCEPTS.Word$Dn), PROPS.value$zQr_).length() - 2));
     }
-
+    SPropertyOperations.assign(SNodeOperations.cast(element, CONCEPTS.Word$Dn), PROPS.value$zQr_, SPropertyOperations.getString(SNodeOperations.cast(element, CONCEPTS.Word$Dn), PROPS.value$zQr_).replace("\\*", "*"));
+    SPropertyOperations.assign(SNodeOperations.cast(element, CONCEPTS.Word$Dn), PROPS.value$zQr_, SPropertyOperations.getString(SNodeOperations.cast(element, CONCEPTS.Word$Dn), PROPS.value$zQr_).replace("\\_", "_"));
+    SPropertyOperations.assign(SNodeOperations.cast(element, CONCEPTS.Word$Dn), PROPS.value$zQr_, SPropertyOperations.getString(SNodeOperations.cast(element, CONCEPTS.Word$Dn), PROPS.value$zQr_).replace("\\~", "~"));
   }
 
 
