@@ -11172,10 +11172,6 @@
         <node concept="3clFbJ" id="7ECFGRPAHx6" role="3cqZAp">
           <node concept="3clFbS" id="7ECFGRPAHx7" role="3clFbx">
             <node concept="3cpWs8" id="7ECFGRPAHx8" role="3cqZAp">
-              <node concept="15s5l7" id="7pMXX1bcaU4" role="lGtFl">
-                <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type java.util.List&lt;SNodeReference&gt; is not comparable with sequence&lt;node-ptr&lt;BaseMethodDeclaration&gt;&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/6469607165247478858]&quot;;" />
-                <property role="huDt6" value="Error: type java.util.List&lt;SNodeReference&gt; is not comparable with sequence&lt;node-ptr&lt;BaseMethodDeclaration&gt;&gt;" />
-              </node>
               <node concept="3cpWsn" id="7ECFGRPAHx9" role="3cpWs9">
                 <property role="TrG5h" value="selectedElements" />
                 <property role="3TUv4t" value="true" />
@@ -11199,6 +11195,10 @@
                     </node>
                   </node>
                 </node>
+              </node>
+              <node concept="15s5l7" id="7pMXX1bcaU4" role="lGtFl">
+                <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: type java.util.List&lt;SNodeReference&gt; is not comparable with sequence&lt;node-ptr&lt;BaseMethodDeclaration&gt;&gt;&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/6469607165247478858]&quot;;" />
+                <property role="huDt6" value="Error: type java.util.List&lt;SNodeReference&gt; is not comparable with sequence&lt;node-ptr&lt;BaseMethodDeclaration&gt;&gt;" />
               </node>
             </node>
             <node concept="3clFbH" id="7ECFGRPAHxi" role="3cqZAp" />
@@ -11619,9 +11619,6 @@
             <node concept="3clFbH" id="3rp2IlBu7MD" role="3cqZAp" />
             <node concept="3clFbF" id="eMGtlU85f_" role="3cqZAp">
               <node concept="2OqwBi" id="eMGtlU86KB" role="3clFbG">
-                <node concept="37vLTw" id="7pMXX1bbVh5" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2eZyLQF_j69" resolve="mah" />
-                </node>
                 <node concept="liA8E" id="eMGtlU86VT" role="2OqNvi">
                   <ref role="37wK5l" to="lui2:~ModelAccess.runReadInEDT(java.lang.Runnable)" resolve="runReadInEDT" />
                   <node concept="2ShNRf" id="eMGtlU8_Wq" role="37wK5m">
@@ -11791,6 +11788,9 @@
                       </node>
                     </node>
                   </node>
+                </node>
+                <node concept="37vLTw" id="7pMXX1bbVh5" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2eZyLQF_j69" resolve="mah" />
                 </node>
               </node>
             </node>

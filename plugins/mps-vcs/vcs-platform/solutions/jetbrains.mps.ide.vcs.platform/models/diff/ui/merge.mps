@@ -4466,6 +4466,13 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
+      <node concept="3Tm6S6" id="6wKQvsBVFUE" role="1B3o_S" />
+      <node concept="3uibUv" id="6wKQvsBVKke" role="1zkMxy">
+        <ref role="3uigEE" to="qkt:~ToggleAction" resolve="ToggleAction" />
+      </node>
+      <node concept="3uibUv" id="_jo$4cCn1P" role="EKbjA">
+        <ref role="3uigEE" to="4nm9:~DumbAware" resolve="DumbAware" />
+      </node>
       <node concept="2tJIrI" id="7Ei9SmbfIpq" role="jymVt" />
       <node concept="3clFb_" id="6lFKwfyH6mh" role="jymVt">
         <property role="TrG5h" value="getActionUpdateThread" />
@@ -4487,13 +4494,6 @@
         <node concept="2AHcQZ" id="6lFKwfyH6mo" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
-      </node>
-      <node concept="3Tm6S6" id="6wKQvsBVFUE" role="1B3o_S" />
-      <node concept="3uibUv" id="6wKQvsBVKke" role="1zkMxy">
-        <ref role="3uigEE" to="qkt:~ToggleAction" resolve="ToggleAction" />
-      </node>
-      <node concept="3uibUv" id="_jo$4cCn1P" role="EKbjA">
-        <ref role="3uigEE" to="4nm9:~DumbAware" resolve="DumbAware" />
       </node>
     </node>
     <node concept="2tJIrI" id="44EradnQcZ1" role="jymVt" />

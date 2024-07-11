@@ -79,7 +79,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -1988,7 +1988,7 @@
     <property role="EcuMT" value="2681959640736085821" />
     <property role="3GE5qa" value="attributes.nested" />
     <property role="TrG5h" value="AttributedNodesCollection" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2kSf1lC0zCP" role="1TKVEi">
       <property role="IQ2ns" value="2681959640736086581" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -2001,7 +2001,7 @@
     <property role="EcuMT" value="2681959640733542358" />
     <property role="3GE5qa" value="attributes.nested" />
     <property role="TrG5h" value="AttributedNodeWithReference" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2kSf1lBQQ_P" role="1TKVEi">
       <property role="IQ2ns" value="2681959640733542773" />
       <property role="20kJfa" value="otherNodes" />

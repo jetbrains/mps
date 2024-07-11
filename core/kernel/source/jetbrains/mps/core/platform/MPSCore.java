@@ -40,6 +40,7 @@ import jetbrains.mps.smodel.Generator.GeneratorModelsAutoImports;
 import jetbrains.mps.smodel.Language.LanguageModelsAutoImports;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.smodel.SNodeAccessUtilImpl;
 import jetbrains.mps.smodel.adapter.structure.types.TypeRegistry;
@@ -76,6 +77,7 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
   private ModelsAutoImportsManager myAutoImportsManager;
   private DescriptorIOFacade myModuleDescriptorFacade;
   private VFSManager myVFSManager;
+  private NodeIdentityComponent myIdentitySupplier;
   private ProjectManager myProjectManager;
   private ResolverComponent myResolver;
 
@@ -117,6 +119,7 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
 
   private void doInit() {
     SNodeAccessUtil.setInstance(new SNodeAccessUtilImpl());
+    myIdentitySupplier = init(new NodeIdentityComponent());
     myVFSManager = init(new VFSManager());
     // in fact, could be part of PersistenceRegistry to minimize number of components. OTOH, complicates access
     // to the instance, findComponent(PersistenceRegistry.class).getDataSourceService() is longer than just findComponent(DataSourceFactoryRuleService.class)
@@ -257,6 +260,9 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     }
     if (ResolverComponent.class == componentClass) {
       return componentClass.cast(myResolver);
+    }
+    if (NodeIdentityComponent.class.equals(componentClass)) {
+      return componentClass.cast(myIdentitySupplier);
     }
     return null;
   }

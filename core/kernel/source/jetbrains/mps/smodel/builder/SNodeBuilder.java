@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.smodel.builder;
 
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.NodeIdentityComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -127,11 +128,7 @@ public class SNodeBuilder implements AbstractNodeBuilder {
     if (myModel != null) {
       return myModel.createNode(c, myNodeIdHint);
     }
-    if (myNodeIdHint != null) {
-      return new jetbrains.mps.smodel.SNode(c, myNodeIdHint);
-    } else {
-      return new jetbrains.mps.smodel.SNode(c);
-    }
+    return new jetbrains.mps.smodel.SNode(c, myNodeIdHint != null ? myNodeIdHint : NodeIdentityComponent.getInstance().issue(null));
   }
 
   @Override

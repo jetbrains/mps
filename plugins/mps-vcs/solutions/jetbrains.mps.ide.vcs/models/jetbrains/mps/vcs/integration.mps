@@ -1984,12 +1984,6 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="7pVeK7_3X3B" role="1B3o_S" />
-    <node concept="3uibUv" id="4pDKQegj07u" role="1zkMxy">
-      <ref role="3uigEE" to="cyi7:~SimpleChangesGroupingPolicy" resolve="SimpleChangesGroupingPolicy" />
-      <node concept="3uibUv" id="4pDKQeglCVV" role="11_B2D">
-        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-      </node>
-    </node>
     <node concept="3clFb_" id="4pDKQegjczT" role="jymVt">
       <property role="TrG5h" value="getGroupRootValueFor" />
       <node concept="3Tmbuc" id="4pDKQegjczU" role="1B3o_S" />
@@ -2195,6 +2189,12 @@
         <node concept="2AHcQZ" id="7pVeK7_6DiO" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
+      </node>
+    </node>
+    <node concept="3uibUv" id="4pDKQegj07u" role="1zkMxy">
+      <ref role="3uigEE" to="cyi7:~SimpleChangesGroupingPolicy" resolve="SimpleChangesGroupingPolicy" />
+      <node concept="3uibUv" id="4pDKQeglCVV" role="11_B2D">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
     </node>
   </node>

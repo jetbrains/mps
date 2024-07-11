@@ -29,6 +29,7 @@ public final class RuntimeFlags {
   private static Boolean ourCastException = null;
   private static Boolean ourEclipseJavaCompiler = null;
   private static Boolean ourLegacyLoadModels = null;
+  private static Boolean ourCustomNodeIdentitySupport;
 
   private static Boolean ourLegacyCLDeps = null;
 
@@ -120,5 +121,12 @@ public final class RuntimeFlags {
       ourLegacyCLDeps = Boolean.getBoolean("mps.clm.deps.legacy");
     }
     return ourLegacyCLDeps;
+  }
+
+  public static boolean customNodeIdentitySupport() {
+    if (ourCustomNodeIdentitySupport == null) {
+      ourCustomNodeIdentitySupport = Boolean.getBoolean("mps.nodeuid");
+    }
+    return ourCustomNodeIdentitySupport;
   }
 }
