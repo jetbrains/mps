@@ -121,9 +121,11 @@ public class ModelCheckerBuilder {
     for (IChecker<?, ? extends IssueKindReportItem> it : ListSequence.fromList(specificCheckers)) {
       IChecker<?, ? extends IssueKindReportItem> checker = it;
       if (checker instanceof IChecker.AbstractModuleChecker) {
-        ListSequence.fromList(moduleCheckers).addElement((IChecker.AbstractModuleChecker<? extends IssueKindReportItem>) checker);
+        IChecker.AbstractModuleChecker<? extends IssueKindReportItem> moduleChecker = (IChecker.AbstractModuleChecker<? extends IssueKindReportItem>) checker;
+        ListSequence.fromList(moduleCheckers).addElement(moduleChecker.catchingErrors());
       } else if (checker instanceof IChecker.AbstractModelChecker) {
-        ListSequence.fromList(modelCheckers).addElement((IChecker.AbstractModelChecker<?>) checker);
+        IChecker.AbstractModelChecker<?> moduleChecker = (IChecker.AbstractModelChecker<?>) checker;
+        ListSequence.fromList(modelCheckers).addElement(moduleChecker.catchingErrors());
       } else if (checker instanceof IChecker.AbstractRootChecker) {
         ListSequence.fromList(modelCheckers).addElement(((IChecker.AbstractRootChecker<?>) checker).asModelChecker());
       } else if (checker instanceof IChecker.AbstractNodeChecker) {
