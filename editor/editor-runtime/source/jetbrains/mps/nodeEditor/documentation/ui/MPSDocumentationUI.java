@@ -60,9 +60,6 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
     ForwardAction forward = new ForwardAction();
     myNavigateActions.add(back);
     myNavigateActions.add(forward);
-    DefaultActionGroup toolbarActionGroup = new DefaultActionGroup();
-    ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, toolbarActionGroup, true);
-    toolbar.setTargetComponent(myEditorPane);
 
     HyperlinkListener hyperlinkListener = (HyperlinkEvent e) -> {
       HyperlinkEvent.EventType type = e.getEventType();
