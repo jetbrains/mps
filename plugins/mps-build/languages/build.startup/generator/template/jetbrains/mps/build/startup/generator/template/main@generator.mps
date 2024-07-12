@@ -2143,7 +2143,7 @@
       <property role="2DPR8u" value="SET IDE_BIN_DIR=%~dp0" />
     </node>
     <node concept="2DRAP_" id="4eWOtElZKrh" role="2DRAPQ">
-      <property role="2DPR8u" value="FOR /F &quot;delims=&quot; %%i in (&quot;%IDE_BIN_DIR%\..&quot;) DO SET IDE_HOME=%%~fi" />
+      <property role="2DPR8u" value="FOR /F &quot;delims=&quot; %%i in (&quot;%IDE_BIN_DIR%\..&quot;) DO SET &quot;IDE_HOME=%%~fi&quot;" />
     </node>
     <node concept="2DRAP_" id="61awNsXLWq4" role="2DRAPQ" />
     <node concept="2DRAP_" id="61awNsXLYMH" role="2DRAPQ">
@@ -2533,7 +2533,7 @@
     </node>
     <node concept="2DRAP_" id="4eWOtElZSZh" role="2DRAPQ" />
     <node concept="2DRAP_" id="4eWOtElZT3m" role="2DRAPQ">
-      <property role="2DPR8u" value="IF EXIST &quot;%MPS_JDK%&quot; SET JDK=%MPS_JDK%" />
+      <property role="2DPR8u" value="IF EXIST &quot;%MPS_JDK%&quot; SET &quot;JDK=%MPS_JDK%&quot;" />
       <node concept="17Uvod" id="4eWOtEm0K9a" role="lGtFl">
         <property role="P4ACc" value="d5033cee-f632-44b6-b308-89d4fbde34ff/1731640411964205218/1731640411964798937" />
         <property role="2qtEX9" value="text" />
@@ -2584,7 +2584,7 @@
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <node concept="Xl_RD" id="4eWOtEm0Lh0" role="37wK5m">
-                  <property role="Xl_RC" value="IF EXIST \&quot;%%%s_JDK%%\&quot; SET JDK=%%%s_JDK%%" />
+                  <property role="Xl_RC" value="IF EXIST \&quot;%%%s_JDK%%\&quot; SET \&quot;JDK=%%%s_JDK%%\&quot;" />
                 </node>
                 <node concept="37vLTw" id="4eWOtEm14oI" role="37wK5m">
                   <ref role="3cqZAo" node="4eWOtEm14o_" resolve="productShortName" />
@@ -2747,7 +2747,7 @@
       <property role="2DPR8u" value="IF NOT &quot;%JDK%&quot; == &quot;&quot; (" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm0dcd" role="2DRAPQ">
-      <property role="2DPR8u" value="  IF NOT EXIST &quot;%JDK%&quot; SET JDK=&quot;%IDE_HOME%\%JDK%&quot;" />
+      <property role="2DPR8u" value="  IF NOT EXIST &quot;%JDK%&quot; SET &quot;JDK=%IDE_HOME%\%JDK%&quot;" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm0ejj" role="2DRAPQ">
       <property role="2DPR8u" value="  IF EXIST &quot;%JDK%&quot; GOTO check" />
@@ -2760,7 +2760,7 @@
       <property role="2DPR8u" value="IF &quot;%PROCESSOR_ARCHITECTURE%&quot; == &quot;AMD64&quot; (" />
     </node>
     <node concept="2DRAP_" id="2XRBtU2epmd" role="2DRAPQ">
-      <property role="2DPR8u" value="  IF EXIST &quot;%IDE_HOME%\jbr&quot; SET JDK=%IDE_HOME%\jbr" />
+      <property role="2DPR8u" value="  IF EXIST &quot;%IDE_HOME%\jbr&quot; SET &quot;JDK=%IDE_HOME%\jbr&quot;" />
     </node>
     <node concept="2DRAP_" id="2XRBtU2epme" role="2DRAPQ">
       <property role="2DPR8u" value="  IF EXIST &quot;%JDK%&quot; GOTO check" />
@@ -2769,21 +2769,21 @@
       <property role="2DPR8u" value=")" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm0ohb" role="2DRAPQ">
-      <property role="2DPR8u" value="IF EXIST &quot;%IDE_HOME%\jbr-x86&quot; SET JDK=%IDE_HOME%\jbr-x86" />
+      <property role="2DPR8u" value="IF EXIST &quot;%IDE_HOME%\jbr-x86&quot; SET &quot;JDK=%IDE_HOME%\jbr-x86&quot;" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm0pS8" role="2DRAPQ">
       <property role="2DPR8u" value="IF EXIST &quot;%JDK%&quot; GOTO check" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm0r2h" role="2DRAPQ" />
     <node concept="2DRAP_" id="4eWOtEm0uqx" role="2DRAPQ">
-      <property role="2DPR8u" value="IF EXIST &quot;%JDK_HOME%&quot; SET JDK=%JDK_HOME%" />
+      <property role="2DPR8u" value="IF EXIST &quot;%JDK_HOME%&quot; SET &quot;JDK=%JDK_HOME%&quot;" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm0v$J" role="2DRAPQ">
       <property role="2DPR8u" value="IF EXIST &quot;%JDK%&quot; GOTO check" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm0wIY" role="2DRAPQ" />
     <node concept="2DRAP_" id="4eWOtEm0wNO" role="2DRAPQ">
-      <property role="2DPR8u" value="IF EXIST &quot;%JAVA_HOME%&quot; SET JDK=%JAVA_HOME%" />
+      <property role="2DPR8u" value="IF EXIST &quot;%JAVA_HOME%&quot; SET &quot;JDK=%JAVA_HOME%&quot;" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm0xY5" role="2DRAPQ" />
     <node concept="2DRAP_" id="4eWOtEm0y2X" role="2DRAPQ">
@@ -2914,7 +2914,7 @@
       <property role="2DPR8u" value="SET JRE=%JDK%" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm1b1N" role="2DRAPQ">
-      <property role="2DPR8u" value="IF EXIST &quot;%JRE%\jre&quot; SET JRE=%JDK%\jre" />
+      <property role="2DPR8u" value="IF EXIST &quot;%JRE%\jre&quot; SET &quot;JRE=%JDK%\jre&quot;" />
     </node>
     <node concept="2DRAP_" id="3MPxqbC2T3D" role="2DRAPQ" />
     <node concept="2DRAP_" id="3MPxqbC2IRD" role="2DRAPQ">
