@@ -198,10 +198,10 @@ public class NodeGroupChange extends StructureChange {
     if (ListSequence.fromList(nodesToAdd).isEmpty()) {
       return;
     }
-    SContainmentLink link = (myRespectCommentedOutNodes && SNodeOperations.isInstanceOf(ListSequence.fromList(nodesToAdd).first(), CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : myRole);
     SNode parent = nodeCopier.getNode(model, getParentNodeId(false));
     SNode beforAnchor = nodeCopier.getNode(model, myBeforeAnchorId);
     for (SNode newNode : ListSequence.fromList(nodesToAdd)) {
+      SContainmentLink link = (myRespectCommentedOutNodes && SNodeOperations.isInstanceOf(newNode, CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : myRole);
       parent.insertChildBefore(link, newNode, beforAnchor);
     }
     StructureChange.fixInnerModelReferences(nodesToAdd, SModelOperations.getPointer(getChangeSet().getNewModel()), model);

@@ -3525,41 +3525,6 @@
             <node concept="3cpWs6" id="6JdHP0O8nAK" role="3cqZAp" />
           </node>
         </node>
-        <node concept="3cpWs8" id="6JdHP0O8284" role="3cqZAp">
-          <node concept="3cpWsn" id="6JdHP0O8285" role="3cpWs9">
-            <property role="TrG5h" value="link" />
-            <node concept="3uibUv" id="6JdHP0O8286" role="1tU5fm">
-              <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
-            </node>
-            <node concept="3K4zz7" id="6JdHP0O8287" role="33vP2m">
-              <node concept="359W_D" id="6JdHP0O8288" role="3K4E3e">
-                <ref role="359W_E" to="tpck:gw2VY9q" resolve="BaseConcept" />
-                <ref role="359W_F" to="tpck:4uZwTti3__2" resolve="smodelAttribute" />
-              </node>
-              <node concept="37vLTw" id="6JdHP0O8289" role="3K4GZi">
-                <ref role="3cqZAo" node="4k3fuHGsETj" resolve="myRole" />
-              </node>
-              <node concept="1Wc70l" id="1giPwdCN1KP" role="3K4Cdx">
-                <node concept="37vLTw" id="1giPwdCN9_J" role="3uHU7B">
-                  <ref role="3cqZAo" node="BcZwSMUzWn" resolve="myRespectCommentedOutNodes" />
-                </node>
-                <node concept="2OqwBi" id="6JdHP0O828a" role="3uHU7w">
-                  <node concept="2OqwBi" id="6JdHP0O83cn" role="2Oq$k0">
-                    <node concept="1uHKPH" id="6JdHP0O83Pj" role="2OqNvi" />
-                    <node concept="37vLTw" id="7Z36gFZvu0V" role="2Oq$k0">
-                      <ref role="3cqZAo" node="7Z36gFZvtaf" resolve="nodesToAdd" />
-                    </node>
-                  </node>
-                  <node concept="1mIQ4w" id="6JdHP0O828c" role="2OqNvi">
-                    <node concept="chp4Y" id="6JdHP0O828d" role="cj9EA">
-                      <ref role="cht4Q" to="tpck:BpxLfMhSxq" resolve="ChildAttribute" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="1OlhIyN82b_" role="3cqZAp">
           <node concept="3cpWsn" id="1OlhIyN82bC" role="3cpWs9">
             <property role="TrG5h" value="parent" />
@@ -3608,6 +3573,38 @@
             <property role="TrG5h" value="newNode" />
           </node>
           <node concept="3clFbS" id="2W$ok$XXIif" role="2LFqv$">
+            <node concept="3cpWs8" id="6JdHP0O8284" role="3cqZAp">
+              <node concept="3cpWsn" id="6JdHP0O8285" role="3cpWs9">
+                <property role="TrG5h" value="link" />
+                <node concept="3uibUv" id="6JdHP0O8286" role="1tU5fm">
+                  <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
+                </node>
+                <node concept="3K4zz7" id="6JdHP0O8287" role="33vP2m">
+                  <node concept="359W_D" id="6JdHP0O8288" role="3K4E3e">
+                    <ref role="359W_E" to="tpck:gw2VY9q" resolve="BaseConcept" />
+                    <ref role="359W_F" to="tpck:4uZwTti3__2" resolve="smodelAttribute" />
+                  </node>
+                  <node concept="37vLTw" id="6JdHP0O8289" role="3K4GZi">
+                    <ref role="3cqZAo" node="4k3fuHGsETj" resolve="myRole" />
+                  </node>
+                  <node concept="1Wc70l" id="1giPwdCN1KP" role="3K4Cdx">
+                    <node concept="37vLTw" id="1giPwdCN9_J" role="3uHU7B">
+                      <ref role="3cqZAo" node="BcZwSMUzWn" resolve="myRespectCommentedOutNodes" />
+                    </node>
+                    <node concept="2OqwBi" id="6JdHP0O828a" role="3uHU7w">
+                      <node concept="2GrUjf" id="1sBUfjKytHl" role="2Oq$k0">
+                        <ref role="2Gs0qQ" node="2W$ok$XXIid" resolve="newNode" />
+                      </node>
+                      <node concept="1mIQ4w" id="6JdHP0O828c" role="2OqNvi">
+                        <node concept="chp4Y" id="6JdHP0O828d" role="cj9EA">
+                          <ref role="cht4Q" to="tpck:BpxLfMhSxq" resolve="ChildAttribute" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="6JdHP0O7X5$" role="3cqZAp">
               <node concept="2OqwBi" id="6JdHP0O7X5_" role="3clFbG">
                 <node concept="2JrnkZ" id="6JdHP0O7X5A" role="2Oq$k0">
