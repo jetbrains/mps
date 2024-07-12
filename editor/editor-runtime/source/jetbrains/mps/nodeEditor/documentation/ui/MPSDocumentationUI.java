@@ -65,12 +65,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
       }
     };
     myEditorPane.addHyperlinkListener(hyperlinkListener);
-    Disposer.register(this, new Disposable() {
-      @Override
-      public void dispose() {
-        myEditorPane.removeHyperlinkListener(hyperlinkListener);
-      }
-    });
+    Disposer.register(this, () -> myEditorPane.removeHyperlinkListener(hyperlinkListener));
   }
 
   @Override
