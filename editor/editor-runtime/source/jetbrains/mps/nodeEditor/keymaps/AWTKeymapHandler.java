@@ -218,6 +218,7 @@ public class AWTKeymapHandler extends KeymapHandler<KeyEvent> {
       menuItem.setUI(new BasicMenuItemUI(){
         @Override
         protected void paintBackground(Graphics g, JMenuItem mi, Color bgColor) {
+          final Color originalColor = g.getColor();
           if (mi.isArmed() || (mi instanceof JMenu && mi.getModel().isSelected())) {
             g.setColor(selectionColor);
             g.fillRect(0, 0, mi.getWidth(), mi.getHeight());
@@ -225,6 +226,7 @@ public class AWTKeymapHandler extends KeymapHandler<KeyEvent> {
             g.setColor(mi.getBackground());
             g.fillRect(0, 0, mi.getWidth(), mi.getHeight());
           }
+          g.setColor(originalColor);
         }
       });
       menu.add(menuItem);
