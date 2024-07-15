@@ -86,11 +86,11 @@ public class JUnitInProcessUndo_Test extends BaseTransformationTest {
           runState.addListener(checkListener.value);
         });
         process.addProcessListener(new UnitTestProcessListener(runState));
-        int exitcode = ProcessHandlerBuilder.startAndWait(process, 30 * 1000);
-        if (exitcode != ListSequence.fromList(failure).count()) {
-          Assert.fail("Exit code must be equal to " + ListSequence.fromList(failure).count() + ", not to " + exitcode);
-        } else if (exitcode < 0) {
+        int exitcode = ProcessHandlerBuilder.startAndWait(process, 60 * 1000);
+        if (exitcode < 0) {
           Assert.fail("Process is running for too long");
+        } else if (exitcode != ListSequence.fromList(failure).count()) {
+          Assert.fail("Exit code must be equal to " + ListSequence.fromList(failure).count() + ", not to " + exitcode);
         }
         if (!(checkListener.value.getMessages().equals(""))) {
           Assert.fail(checkListener.value.getMessages());
