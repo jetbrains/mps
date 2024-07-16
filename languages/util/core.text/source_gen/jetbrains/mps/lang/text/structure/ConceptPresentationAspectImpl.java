@@ -13,6 +13,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BulletPoint;
   private ConceptPresentation props_EmptyParagraphLetter;
   private ConceptPresentation props_Header;
+  private ConceptPresentation props_HtmlTag;
   private ConceptPresentation props_IHoldComment;
   private ConceptPresentation props_IHoldLines;
   private ConceptPresentation props_IHoldParagraphs;
@@ -65,6 +66,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Header = cpb.create();
         }
         return props_Header;
+      case LanguageConceptSwitch.HtmlTag:
+        if (props_HtmlTag == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("html tag");
+          cpb.rawPresentation("</");
+          props_HtmlTag = cpb.create();
+        }
+        return props_HtmlTag;
       case LanguageConceptSwitch.IHoldComment:
         if (props_IHoldComment == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
