@@ -11,7 +11,7 @@ SET PRODUCT=mps
 :: Ensure IDE_HOME points to the directory where the IDE is installed.
 :: ---------------------------------------------------------------------
 SET IDE_BIN_DIR=%~dp0
-FOR /F "delims=" %%i in ("%IDE_BIN_DIR%\..") DO SET IDE_HOME=%%~fi
+FOR /F "delims=" %%i in ("%IDE_BIN_DIR%\..") DO SET "IDE_HOME=%%~fi"
 
 IF "%IDE_BIN_DIR:~-8%" == "bin\win\" (
   echo.
@@ -31,7 +31,7 @@ IF "%IDE_BIN_DIR:~-8%" == "bin\win\" (
 SET JDK=
 SET IDEA_VENDOR_NAME=JetBrains
 
-IF EXIST "%MPS_JDK%" SET JDK=%MPS_JDK%
+IF EXIST "%MPS_JDK%" SET "JDK=%MPS_JDK%"
 IF EXIST "%JDK%" GOTO check
 
 SET BITS=64
@@ -44,17 +44,17 @@ IF EXIST "%USER_JDK64_FILE%" (
   IF EXIST "%USER_JDK_FILE%" SET /P JDK=<%USER_JDK_FILE%
 )
 IF NOT "%JDK%" == "" (
-  IF NOT EXIST "%JDK%" SET JDK="%IDE_HOME%\%JDK%"
+  IF NOT EXIST "%JDK%" SET "JDK=%IDE_HOME%\%JDK%"
   IF EXIST "%JDK%" GOTO check
 )
 
-IF EXIST "%IDE_HOME%\jbr" SET JDK=%IDE_HOME%\jbr
+IF EXIST "%IDE_HOME%\jbr" SET "JDK=%IDE_HOME%\jbr"
 IF EXIST "%JDK%" GOTO check
 
-IF EXIST "%JDK_HOME%" SET JDK=%JDK_HOME%
+IF EXIST "%JDK_HOME%" SET "JDK=%JDK_HOME%"
 IF EXIST "%JDK%" GOTO check
 
-IF EXIST "%JAVA_HOME%" SET JDK=%JAVA_HOME%
+IF EXIST "%JAVA_HOME%" SET "JDK=%JAVA_HOME%"
 
 :check
 SET JAVA_EXE=%JDK%\bin\javaw.exe
@@ -65,7 +65,7 @@ IF NOT EXIST "%JAVA_EXE%" (
 )
 
 SET JRE=%JDK%
-IF EXIST "%JRE%\jre" SET JRE=%JDK%\jre
+IF EXIST "%JRE%\jre" SET "JRE=%JDK%\jre"
 
 SET BITS=
 FINDSTR /B /C:"OS_ARCH=\"x86_64\"" "%JRE%\release" > NUL
