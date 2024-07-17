@@ -215,8 +215,7 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
         // looking for the existing generator with same ID
         Generator nextGeneratorCandidate = it.next();
         GeneratorDescriptor nextGeneratorCandidateDescriptor = nextGeneratorCandidate.getModuleDescriptor();
-        if (Objects.equals(nextGeneratorCandidateDescriptor.getNamespace(), nextDescriptor.getNamespace()) &&
-            Objects.equals(nextGeneratorCandidateDescriptor.getId(), nextDescriptor.getId())) {
+        if (Objects.equals(nextGeneratorCandidateDescriptor.getId(), nextDescriptor.getId())) {
           nextGenerator = nextGeneratorCandidate;
           it.remove();
           break;
