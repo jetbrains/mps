@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,6 +107,9 @@ public abstract class TemplateModuleInterpreted2 extends TemplateModuleBase {
       return null;
     }
     synchronized (this) {
+      if (myModels == null) {
+        return null;
+      }
       for (TemplateModelInterpreted tm : myModels) {
         if (tm.isStale()) {
           myModels = null;
