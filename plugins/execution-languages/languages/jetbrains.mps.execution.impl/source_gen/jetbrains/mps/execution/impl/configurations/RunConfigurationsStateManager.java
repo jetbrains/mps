@@ -12,14 +12,15 @@ import jetbrains.mps.ide.ThreadUtils;
 import com.intellij.execution.ui.RunContentDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.ui.content.Content;
+import java.util.ArrayList;
+import com.intellij.execution.RunManager;
+import com.intellij.execution.RunManagerEx;
 import com.intellij.execution.ExecutionManager;
 import com.intellij.execution.ui.RunContentManagerImpl;
 import com.intellij.execution.configurations.RunConfiguration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.classloading.ModuleClassLoader;
-import java.util.ArrayList;
 import com.intellij.execution.impl.RunManagerImpl;
-import com.intellij.execution.RunManagerEx;
 import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.execution.RunnerAndConfigurationSettings;
 import org.jetbrains.annotations.Nullable;
@@ -47,6 +48,9 @@ public class RunConfigurationsStateManager implements PluginReloadingListener {
     // works on per-project basis.
     myProject = project;
     // XXX I wonder if this could be a project part in a regular MPS plugin (with MPS-managed classloader)?
+    //    I strongly suggest to go this way, as this listener is invoked w/o a contract of 
+    //    afterLoaded/beforeUnloaded ordering. As it's a MB listener, one could get beforeUnloaded first, for
+    //    a project just being initialized (see #collectDescriptorsForDispose())
   }
 
   @Override
@@ -96,12 +100,22 @@ public class RunConfigurationsStateManager implements PluginReloadingListener {
   }
 
   private List<RunContentDescriptor> collectDescriptorsToDispose() {
+    final List<RunContentDescriptor> descriptors = ListSequence.fromList(new ArrayList<RunContentDescriptor>());
+
+    // this listener could get beforePluginsUnloaded for a not yet initialized project.
+    // IDEA starts to open the project and closing the previous one. MPS notices close and
+    // discards plugins, sending notification to MB. IDEA instantiates and notifies RCSM listener 
+    // for a new project, triggering unnecessary init of RunManager
+    RunManager runManager = RunManagerEx.getInstanceIfCreated(myProject);
+    if (runManager == null) {
+      return descriptors;
+    }
+
     ExecutionManager executionManager = ExecutionManager.getInstance(myProject);
     final RunContentManagerImpl contentManager = (RunContentManagerImpl) executionManager.getContentManager();
 
-    Iterable<RunConfiguration> allConfigurationsList = getRunManager().getAllConfigurationsList();
+    Iterable<RunConfiguration> allConfigurationsList = runManager.getAllConfigurationsList();
     final List<String> reloadableConfigurationNames = Sequence.fromIterable(allConfigurationsList).where((it) -> it.getClass().getClassLoader() instanceof ModuleClassLoader).select((it) -> it.getName()).toList();
-    final List<RunContentDescriptor> descriptors = ListSequence.fromList(new ArrayList<RunContentDescriptor>());
     for (RunContentDescriptor descriptor : ListSequence.fromList(contentManager.getAllDescriptors())) {
       if (ListSequence.fromList(reloadableConfigurationNames).contains(descriptor.getDisplayName())) {
         ListSequence.fromList(descriptors).addElement(descriptor);

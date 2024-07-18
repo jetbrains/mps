@@ -84,6 +84,7 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
   private final MyPropertiesListener myPropertiesListener = new MyPropertiesListener();
   private final LanguageRegistryListener myLanguageDeployListener = new MyLangDeployListener();
   private boolean myListenersAdded = false;
+  private boolean myExecutorDiscarded = false;
 
   private final MigrationBlock myMigrationBlock = new MigrationBlock(this);
   private final AtomicReference<PostponedState> myPostponedState = new AtomicReference<PostponedState>();
@@ -148,6 +149,9 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
   public void projectOpened() {
     // wait until project is fully loaded (if not yet)
     StartupManager.getInstance(myProject).runWhenProjectIsInitialized(() -> {
+      if (myExecutorDiscarded) {
+        return;
+      }
       addListeners();
       ApplicationManager.getApplication().executeOnPooledThread(() -> {
         if (myProject.isDisposed()) {
@@ -160,6 +164,10 @@ public class MigrationTrigger implements IStartupMigrationExecutor {
   }
 
   public void projectClosed() {
+    // addListeners() in projectOpened(), above is postponed until project is fully open, while 
+    // our CL/Plugin logic could get this instance disposed before the project is at that state,
+    // let scheduled code know there's no more need in this executor instance.
+    myExecutorDiscarded = true;
     removeListeners();
   }
 
