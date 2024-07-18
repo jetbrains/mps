@@ -59,6 +59,8 @@ public class MPSDocumentationPopupUI implements Disposable {
 
     Disposer.register(this, myUI);
 
+    DefaultActionGroup navigateActions = ui.getNavigateActions();
+
     List<AnAction> secondaryActions = new ArrayList<>();
     OpenInToolwindowAction openInToolwindowAction = new OpenInToolwindowAction();
     ShowToolbarAction showToolbarAction = new ShowToolbarAction();
@@ -67,14 +69,15 @@ public class MPSDocumentationPopupUI implements Disposable {
     secondaryActions.add(openInToolwindowAction);
     secondaryActions.add(showOnMouseMove);
     DefaultActionGroup toolbarActionGroup = new DefaultActionGroup();
-    toolbarActionGroup.add(ui.getNavigateActions());
+    toolbarActionGroup.add(navigateActions);
     for (AnAction secondaryAction : secondaryActions) {
       toolbarActionGroup.addAction(secondaryAction).setAsSecondary(true);
     }
     DefaultActionGroup gearActions = new DefaultActionGroup();
     gearActions.setPopup(true);
     gearActions.addAll(secondaryActions);
-
+    gearActions.addSeparator();
+    gearActions.add(navigateActions);
 
     ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, toolbarActionGroup, true);
     toolbar.setTargetComponent(myEditorPane);
