@@ -119,7 +119,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
 
   private class BackAction extends AnAction implements HintManagerImpl.ActionToIgnore {
     BackAction() {
-      super(CodeInsightBundle.messagePointer("javadoc.action.back"), AllIcons.Actions.Back);
+      super(AllIcons.Actions.Back);
     }
 
     @Override
@@ -141,7 +141,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
 
   private class ForwardAction extends AnAction implements HintManagerImpl.ActionToIgnore {
     ForwardAction() {
-      super(CodeInsightBundle.messagePointer("javadoc.action.forward"), Actions.Forward);
+      super(Actions.Forward);
     }
 
     @Override
