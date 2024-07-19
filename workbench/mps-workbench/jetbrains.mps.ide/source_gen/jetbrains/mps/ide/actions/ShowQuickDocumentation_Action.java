@@ -21,7 +21,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.editor.runtime.DocumentationProvider;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2625078824549984775", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -80,16 +79,11 @@ public class ShowQuickDocumentation_Action extends BaseAction {
     MPSDocumentationManager manager = MPSDocumentationManager.getInstance();
     SNode rootNode = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode();
     SModel rootModel = SNodeOperations.getModel(rootNode);
-    final SRepository rootRepository = rootModel.getRepository();
-    final Wrappers._T<String> documentation = new Wrappers._T<String>();
-
-    rootRepository.getModelAccess().runReadAction(() -> {
-      DocumentationProvider provider = new DocumentationProvider(rootRepository, event.getData(MPSEditorDataKeys.EDITOR_CELL));
-      documentation.value = provider.getDecoratedDocumentation();
-    });
-    if (documentation.value == null) {
+    SRepository rootRepository = rootModel.getRepository();
+    DocumentationProvider provider = new DocumentationProvider(rootRepository, event.getData(MPSEditorDataKeys.EDITOR_CELL));
+    if (!(provider.hasDocumentation())) {
       return;
     }
-    manager.showQuickDocumentation(event.getData(MPSCommonDataKeys.FRAME), event.getData(CommonDataKeys.PROJECT), point, documentation.value);
+    manager.showQuickDocumentation(event.getData(MPSCommonDataKeys.FRAME), event.getData(CommonDataKeys.PROJECT), point, provider);
   }
 }

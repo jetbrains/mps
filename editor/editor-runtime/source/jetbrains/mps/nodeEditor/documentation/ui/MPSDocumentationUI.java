@@ -3,7 +3,6 @@
  */
 package jetbrains.mps.nodeEditor.documentation.ui;
 
-import com.intellij.codeInsight.CodeInsightBundle;
 import com.intellij.codeInsight.hint.HintManagerImpl;
 import com.intellij.icons.AllIcons;
 import com.intellij.icons.AllIcons.Actions;
@@ -20,9 +19,11 @@ import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationEditorPane;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManagerProtocol;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationScrollPane;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationUtil;
+import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -43,20 +44,24 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
   private final Stack<Context> myForwardStack = new Stack<>();
   private final Project myProject;
   private final DefaultActionGroup myNavigateActions;
+  private SNode myNode;
 
-  public MPSDocumentationUI(@NotNull Project project, @NotNull String documentation) {
+  public MPSDocumentationUI(@NotNull Project project, @NotNull DocumentationProvider provider) {
     myProject = project;
+    myNode = provider.getNode();
     myScrollPane = new MPSDocumentationScrollPane();
     myEditorPane = new MPSDocumentationEditorPane();
     Disposer.register(this, myEditorPane);
     myScrollPane.setViewportView(myEditorPane);
-    myEditorPane.setText(documentation);
+    myEditorPane.setText(provider.getDecoratedDocumentation());
 
     myNavigateActions = new DefaultActionGroup();
     BackAction back = new BackAction();
     ForwardAction forward = new ForwardAction();
+    EditDocumentationSourceAction edit = new EditDocumentationSourceAction();
     myNavigateActions.add(back);
     myNavigateActions.add(forward);
+    myNavigateActions.add(edit);
 
     HyperlinkListener hyperlinkListener = (HyperlinkEvent e) -> {
       HyperlinkEvent.EventType type = e.getEventType();
@@ -95,15 +100,15 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
     if (link.startsWith(MPSDocumentationManagerProtocol.TEXT_NODE_REFERENCE)) {
       jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
 
-      String[] newDocumentation = new String[]{null};
+      Context[] contexts = new Context[]{null};
       mpsProject.getModelAccess().runReadAction(() -> {
         SNode targetNode = MPSDocumentationUtil.getSNodeForLink(mpsProject, link);
-        newDocumentation[0] = new DocumentationProvider(targetNode).getDecoratedDocumentation();
+        contexts[0] = new Context(new DocumentationProvider(targetNode, mpsProject.getRepository()).getDecoratedDocumentation(), targetNode);
       });
 
-      if (newDocumentation[0] != null && !newDocumentation[0].isEmpty()) {
+      if (contexts[0].getDecoratedDocumentation() != null && !contexts[0].getDecoratedDocumentation().isEmpty()) {
         myBackStack.push(getCurrentContext());
-        myEditorPane.setText(newDocumentation[0]);
+        restoreContext(contexts[0]);
       }
     }
     if (link.startsWith(MPSDocumentationManagerProtocol.WORD)) {
@@ -161,6 +166,23 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
     }
   }
 
+  private final class EditDocumentationSourceAction extends AnAction {
+    private EditDocumentationSourceAction() {
+      super(AllIcons.Actions.EditSource);
+    }
+
+    @Override
+    public void actionPerformed(@NotNull AnActionEvent e) {
+      MPSDocumentationManager.getInstance().cancelAll();
+      new EditorNavigator(ProjectHelper.fromIdeaProject(myProject)).shallFocus(true).open(myNode.getReference());
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
+    }
+  }
+
   private void goBack() {
     if (myBackStack.empty()) {
       return;
@@ -181,22 +203,29 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
 
   private Context getCurrentContext() {
     String decoratedDocumentation = myEditorPane.getText();
-    return new Context(decoratedDocumentation);
+    return new Context(decoratedDocumentation, myNode);
   }
 
   private void restoreContext(@NotNull Context context) {
     myEditorPane.setText(context.getDecoratedDocumentation());
+    myNode = context.getNode();
   }
 
   private static class Context {
     private final String myDecoratedDocumentation;
+    private final SNode myNode;
 
-    Context(String decoratedDocumentation) {
+    Context(String decoratedDocumentation, SNode node) {
       myDecoratedDocumentation = decoratedDocumentation;
+      myNode = node;
     }
 
     String getDecoratedDocumentation() {
       return myDecoratedDocumentation;
+    }
+
+    SNode getNode() {
+      return myNode;
     }
   }
 }

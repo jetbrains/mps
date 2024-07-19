@@ -848,10 +848,10 @@ public class NodeEditorActions {
   }
 
   private static void updateDocInToolWindow(EditorContext context, EditorCell target){
-    String decoratedDocumentation = new DocumentationProvider(context.getRepository(), target).getDecoratedDocumentation();
+    DocumentationProvider provider = new DocumentationProvider(context.getRepository(), target);
     Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(context.getRepository()));
-    if (decoratedDocumentation != null && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
-      MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(new MPSDocumentationUI(project, decoratedDocumentation));
+    if (provider.hasDocumentation() && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
+      MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(new MPSDocumentationUI(project, provider));
     }
   }
 }

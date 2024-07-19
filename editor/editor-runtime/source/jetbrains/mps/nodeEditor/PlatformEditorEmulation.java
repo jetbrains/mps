@@ -690,14 +690,14 @@ final class PlatformEditorEmulation implements Editor {
 
     final TooltipRenderer tooltipRenderer = tooltipProvider.getTooltipRenderer(event);
     final TooltipGroup tooltipGroup = tooltipProvider.getTooltipGroup();
-    final String docMessage = getDocMessage(event);
-    if ((tooltipRenderer == null && docMessage == null) || this.isDisposed()) {
+    final DocumentationProvider provider = getDocumentationProvider(event);
+    if ((tooltipRenderer == null && (provider == null || !provider.hasDocumentation())) || this.isDisposed()) {
       return;
     }
 
     final RelativePoint showPoint = getShowPoint(event, isGutter);
     Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(myEditorComponent.getRepository()));
-    myHintPopupController.showInfoToolTip(project, this, docMessage, tooltipRenderer, tooltipGroup, showPoint);
+    myHintPopupController.showInfoToolTip(project, this, provider, tooltipRenderer, tooltipGroup, showPoint);
   }
 
   @NotNull
@@ -723,9 +723,9 @@ final class PlatformEditorEmulation implements Editor {
     return rv.get();
   }
   
-  private @Nullable String getDocMessage(MouseEvent event) {
-    final Reference<EditorCell> rv = new Reference<>(null);
-    AtomicReference<String> decoratedDocumentationRef = new AtomicReference<>(null);
+  @Nullable
+  private DocumentationProvider getDocumentationProvider(MouseEvent event) {
+    final Reference<DocumentationProvider> providerRef = new Reference<>(null);
     myEditorComponent.getRepository().getModelAccess().runReadAction(new CancellableReadAction() {
       @Override
       protected void execute() {
@@ -733,18 +733,14 @@ final class PlatformEditorEmulation implements Editor {
           return;
         }
         jetbrains.mps.openapi.editor.cells.EditorCell cell = myEditorComponent.getRootCell().findLeaf(event.getX(), event.getY());
-        rv.set(cell);
-        if (rv.isNull()) {
+        if (cell == null) {
           return;
         }
-
-        String decoratedDocumentation = new DocumentationProvider(myEditorComponent.getRepository(), rv.get()).getDecoratedDocumentation();
-        if (decoratedDocumentation != null) {
-          decoratedDocumentationRef.set(decoratedDocumentation);
-        }
+        DocumentationProvider provider = new DocumentationProvider(myEditorComponent.getRepository(), cell);
+        providerRef.set(provider);
       }
     });
-    return decoratedDocumentationRef.get();
+    return providerRef.get();
   }
 
   public void release() {

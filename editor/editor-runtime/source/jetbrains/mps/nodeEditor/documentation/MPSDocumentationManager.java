@@ -21,6 +21,7 @@ import com.intellij.ui.LightweightHint;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.ui.popup.AbstractPopup;
 import com.intellij.util.ui.JBUI;
+import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationPopupUI;
 import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationUI;
@@ -70,15 +71,15 @@ public class MPSDocumentationManager {
    * Show quick documentation: either as a popup or in the tool window.
    * Calling this method results in focus being transferred to the documentation UI component.
    */
-  public void showQuickDocumentation(Frame owner, Project project, Point location, String docMessage) {
-    if (docMessage == null) {
+  public void showQuickDocumentation(Frame owner, Project project, Point location, @NotNull DocumentationProvider provider) {
+    if (!provider.hasDocumentation()) {
       LOG.warning("null doc message specified");
       return;
     }
     cancelAll();
 
-    MPSDocumentationUI documentationUI = new MPSDocumentationUI(project, docMessage);
-    if (docMessage != null && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
+    MPSDocumentationUI documentationUI = new MPSDocumentationUI(project, provider);
+    if (provider.hasDocumentation() && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
       // redirect to the tool window
       MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(documentationUI);
       return;
@@ -110,7 +111,7 @@ public class MPSDocumentationManager {
    * The code in {@code continuation} is called after the popup window has been created, so that
    * the caller has a chance to install appropriate callbacks, etc. 
    */
-  public void showHintPopup(Project project, Editor editor, String docMessage, TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup, RelativePoint showPoint, Consumer<AbstractPopup> continuation) {
+  public void showHintPopup(Project project, Editor editor, @Nullable DocumentationProvider provider, TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup, RelativePoint showPoint, Consumer<AbstractPopup> continuation) {
     cancelProgress();
     ProgressManager.getInstance().executeProcessUnderProgress(() -> {
       cancelHintPopup();
@@ -118,18 +119,18 @@ public class MPSDocumentationManager {
         // avoid showing two popups
         return;
       }
-      String popupDocMessage = docMessage;
-      if (docMessage != null && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
+      DocumentationProvider currentProvider = provider;
+      if (currentProvider != null && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
         // redirect to the tool window
-        MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(new MPSDocumentationUI(project, docMessage));
-        popupDocMessage = null;
+        MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(new MPSDocumentationUI(project, currentProvider));
+        currentProvider = null;
       }
 
-      if (popupDocMessage == null && tooltipRenderer == null) {
+      if (currentProvider == null && tooltipRenderer == null) {
         return;
       }
 
-      HoverInfo info = new HoverInfo(popupDocMessage, tooltipRenderer, tooltipGroup);
+      HoverInfo info = new HoverInfo(currentProvider, tooltipRenderer, tooltipGroup);
       AbstractPopup hint = info.createHint(editor, project);
       hint.show(showPoint);
 
@@ -194,17 +195,17 @@ public class MPSDocumentationManager {
    * A factory for highlight + doc components to be shown in a popup.
    */
   private static class HoverInfo {
-    private final String myQuickDocMessage;
+    private final DocumentationProvider myDocumentationProvider;
     private final TooltipRenderer myTooltipRenderer;
     private final TooltipGroup myTooltipGroup;
     private MPSDocumentationPopupUI myPopupUI;
 
     /**
-     * Either {@code quickDocMessage} or {@code tooltipRenderer} may be null, but not both!
+     * Either {@code documentationProvider} or {@code tooltipRenderer} may be null, but not both!
      */
-    HoverInfo(String quickDocMessage, TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup) {
-      assert (quickDocMessage != null) || (tooltipRenderer != null);
-      myQuickDocMessage = quickDocMessage;
+    HoverInfo(@Nullable DocumentationProvider documentationProvider, TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup) {
+      assert (documentationProvider != null) || (tooltipRenderer != null);
+      myDocumentationProvider = documentationProvider;
       myTooltipRenderer = tooltipRenderer;
       myTooltipGroup = tooltipGroup;
     }
@@ -224,7 +225,7 @@ public class MPSDocumentationManager {
                                                 @NotNull Project project) {
       JComponent c1 = myTooltipRenderer == null
                       ? null : createHighlightInfoComponent(editor);
-      JComponent c2 = myQuickDocMessage == null
+      JComponent c2 = myDocumentationProvider == null || !myDocumentationProvider.hasDocumentation()
                       ? null : createQuickDocComponent(project, c1 != null);
       assert (c1 != null || c2 != null);
 
@@ -262,8 +263,8 @@ public class MPSDocumentationManager {
       if(!MPSDocumentationManager.getInstance().getShowOnMouseMove()) {
         return null;
       }
-
-      this.myPopupUI = new MPSDocumentationPopupUI(project, new MPSDocumentationUI(project, myQuickDocMessage));
+      MPSDocumentationUI ui = new MPSDocumentationUI(project, myDocumentationProvider);
+      this.myPopupUI = new MPSDocumentationPopupUI(project, ui);
       if (jointPopup) {
         myPopupUI.jointHover();
       }
