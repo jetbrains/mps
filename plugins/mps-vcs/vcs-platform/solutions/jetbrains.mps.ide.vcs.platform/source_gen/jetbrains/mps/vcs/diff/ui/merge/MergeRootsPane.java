@@ -46,11 +46,11 @@ import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.project.DumbAware;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.diff.DiffBundle;
 import jetbrains.mps.workbench.action.BaseGroup;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
-import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.diff.tools.util.DiffSplitter;
 import java.awt.Graphics;
 import com.intellij.openapi.actionSystem.ActionGroup;
@@ -234,6 +234,11 @@ public class MergeRootsPane implements PropertyChangeListener {
     public void setSelected(AnActionEvent e, boolean b) {
       showInspector(b);
     }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
+    }
   }
 
   private class SyncScrollingAction extends ToggleAction implements DumbAware {
@@ -253,6 +258,11 @@ public class MergeRootsPane implements PropertyChangeListener {
     public void update(@NotNull AnActionEvent e) {
       super.update(e);
       enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
+    }
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
     }
   }
 
@@ -283,6 +293,12 @@ public class MergeRootsPane implements PropertyChangeListener {
     @Override
     public void setSelected(@NotNull AnActionEvent p1, boolean p2) {
       check_lifo0_a0a5fc(myTrackMovedNodesModeUpdater);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
     }
   }
 

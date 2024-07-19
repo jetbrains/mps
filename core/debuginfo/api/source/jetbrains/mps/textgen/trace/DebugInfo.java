@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.textgen.trace;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,12 +33,18 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 public class DebugInfo {
+  private static final Logger LOG = Logger.getLogger(DebugInfo.class);
+
   private final Map<SNodeReference, DebugInfoRoot> myRoots = new HashMap<>();
 
   public DebugInfo() {
   }
 
   private DebugInfoRoot getOrCreateDebugInfoRoot(SNode rootNode) {
+    if (rootNode == null) {
+      LOG.warning("rootNode is null in getOrCreateDebugInfoRoot()!", new Throwable());
+    }
+
     SNodeReference ref = getRef(rootNode);
     DebugInfoRoot infoRoot = myRoots.get(ref);
     if (infoRoot == null) {
@@ -196,6 +203,7 @@ public class DebugInfo {
     PersistenceFacade persFacade = PersistenceFacade.getInstance();
     ArrayList<SNodeReference> unitNodes = new ArrayList<>();
     for (DebugInfoRoot dr : getRootsForFile(fileName)) {
+      if (dr.getNodeRef() == null)  continue;
       ArrayList<UnitPositionInfo> positionInfos = new ArrayList<>(dr.getUnitPositions());
       Collections.sort(positionInfos, Collections.reverseOrder(new PositionInfo.StartLineComparator()));
       for (UnitPositionInfo upi : positionInfos) {
