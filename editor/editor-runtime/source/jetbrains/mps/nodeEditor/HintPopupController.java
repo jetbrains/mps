@@ -70,9 +70,7 @@ class HintPopupController {
       }
       // FIXME magic constant 300? 600?
       if (myMoveAlarm.getActiveRequestCount() == 0) {
-        myMoveAlarm.addRequest(() -> {
-          MPSDocumentationManager.getInstance().cancelAll();
-        }, 300);
+        myMoveAlarm.addRequest(() -> MPSDocumentationManager.getInstance().cancelAll(), 300);
       }
       myHoverAlarm.cancelAllRequests();
       myHoverAlarm.addRequest(() -> {

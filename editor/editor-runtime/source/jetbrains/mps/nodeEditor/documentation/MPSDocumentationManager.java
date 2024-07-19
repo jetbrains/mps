@@ -51,22 +51,22 @@ public class MPSDocumentationManager {
     return ApplicationManager.getApplication().getService(MPSDocumentationManager.class);
   }
 
-  public boolean getToolbarSelected(){
+  public boolean getToolbarSelected() {
     return myToolbarSelected;
   }
 
-  public boolean getShowOnMouseMove(){
+  public boolean getShowOnMouseMove() {
     return myShowOnMouseMove;
   }
 
-  public void setToolbarSelected(boolean state){
+  public void setToolbarSelected(boolean state) {
     myToolbarSelected = state;
   }
 
-  public void setShowOnMouseMove(boolean state){
+  public void setShowOnMouseMove(boolean state) {
     myShowOnMouseMove = state;
   }
-  
+
   /**
    * Show quick documentation: either as a popup or in the tool window.
    * Calling this method results in focus being transferred to the documentation UI component.
@@ -109,9 +109,10 @@ public class MPSDocumentationManager {
    * Does nothing if both {@code docMessage} and {@code tooltipRenderer} are null.
    * <p>
    * The code in {@code continuation} is called after the popup window has been created, so that
-   * the caller has a chance to install appropriate callbacks, etc. 
+   * the caller has a chance to install appropriate callbacks, etc.
    */
-  public void showHintPopup(Project project, Editor editor, @Nullable DocumentationProvider provider, TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup, RelativePoint showPoint, Consumer<AbstractPopup> continuation) {
+  public void showHintPopup(Project project, Editor editor, @Nullable DocumentationProvider provider, TooltipRenderer tooltipRenderer,
+                            TooltipGroup tooltipGroup, RelativePoint showPoint, Consumer<AbstractPopup> continuation) {
     cancelProgress();
     ProgressManager.getInstance().executeProcessUnderProgress(() -> {
       cancelHintPopup();
@@ -260,7 +261,7 @@ public class MPSDocumentationManager {
 
     private @Nullable JComponent createQuickDocComponent(@NotNull Project project, boolean jointPopup) {
       // If the flag is set to false, the documentation popup will not appear on mouse movement. It can only be displayed using the shortcut.
-      if(!MPSDocumentationManager.getInstance().getShowOnMouseMove()) {
+      if (!MPSDocumentationManager.getInstance().getShowOnMouseMove()) {
         return null;
       }
       MPSDocumentationUI ui = new MPSDocumentationUI(project, myDocumentationProvider);
@@ -272,7 +273,7 @@ public class MPSDocumentationManager {
     }
 
     private AbstractPopup createHintPopup(JComponent component) {
-      JComponent preferableFocusComponent = myPopupUI == null ? component :  myPopupUI.getPreferableFocusComponent();
+      JComponent preferableFocusComponent = myPopupUI == null ? component : myPopupUI.getPreferableFocusComponent();
       return (AbstractPopup) JBPopupFactory.getInstance()
                                            .createComponentPopupBuilder(component, preferableFocusComponent)
                                            .setRequestFocus(false)
