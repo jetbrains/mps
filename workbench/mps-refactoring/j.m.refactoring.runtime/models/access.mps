@@ -32,14 +32,9 @@
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
-      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
-        <reference id="1188214555875" name="key" index="2B6OnR" />
-        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -177,11 +172,6 @@
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
-      <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
-        <child id="1163668914799" name="condition" index="3K4Cdx" />
-        <child id="1163668922816" name="ifTrue" index="3K4E3e" />
-        <child id="1163668934364" name="ifFalse" index="3K4GZi" />
-      </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
@@ -203,8 +193,8 @@
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
       </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
+      <concept id="8465538089690324397" name="jetbrains.mps.baseLanguage.javadoc.structure.SinceBlockDocTag" flags="ng" index="TZ7YB">
+        <property id="8465538089690324399" name="text" index="TZ7Y_" />
       </concept>
       <concept id="2217234381367049075" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTag" flags="ng" index="VVOAv">
         <child id="3106559687488741665" name="line" index="2Xj1qM" />
@@ -1313,147 +1303,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="4A08mlSGsq2" role="jymVt" />
-    <node concept="2tJIrI" id="4A08mlSGsvs" role="jymVt" />
-    <node concept="2YIFZL" id="1dH5fOG2bPt" role="jymVt">
-      <property role="TrG5h" value="getInstance" />
-      <node concept="3uibUv" id="3dEPKBAxEVU" role="3clF45">
-        <ref role="3uigEE" node="3dEPKBAxz0O" resolve="RefactoringAccess" />
-      </node>
-      <node concept="3Tm1VV" id="1dH5fOG2bPv" role="1B3o_S" />
-      <node concept="3clFbS" id="1dH5fOG2bPw" role="3clF47">
-        <node concept="3SKdUt" id="4xB7mi2r6QJ" role="3cqZAp">
-          <node concept="1PaTwC" id="4xB7mi2r6QK" role="1aUNEU">
-            <node concept="3oM_SD" id="4xB7mi2rdSg" role="1PaTwD">
-              <property role="3oM_SC" value="I" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r80d" role="1PaTwD">
-              <property role="3oM_SC" value="don't" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r80h" role="1PaTwD">
-              <property role="3oM_SC" value="expect" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r80m" role="1PaTwD">
-              <property role="3oM_SC" value="RA" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r80s" role="1PaTwD">
-              <property role="3oM_SC" value="instance" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r80O" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r80z" role="1PaTwD">
-              <property role="3oM_SC" value="be" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r80Y" role="1PaTwD">
-              <property role="3oM_SC" value="different" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r819" role="1PaTwD">
-              <property role="3oM_SC" value="per" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2rdVb" role="1PaTwD">
-              <property role="3oM_SC" value="project," />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2rdVF" role="1PaTwD">
-              <property role="3oM_SC" value="just" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r83o" role="1PaTwD">
-              <property role="3oM_SC" value="need" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2rdXh" role="1PaTwD">
-              <property role="3oM_SC" value="context" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r83E" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r83X" role="1PaTwD">
-              <property role="3oM_SC" value="access" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r84A" role="1PaTwD">
-              <property role="3oM_SC" value="component" />
-            </node>
-            <node concept="3oM_SD" id="4xB7mi2r84U" role="1PaTwD">
-              <property role="3oM_SC" value="instance" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="4xB7mi2poWI" role="3cqZAp">
-          <node concept="3cpWsn" id="4xB7mi2poWJ" role="3cpWs9">
-            <property role="TrG5h" value="openedProjects" />
-            <node concept="3uibUv" id="4xB7mi2poBo" role="1tU5fm">
-              <ref role="3uigEE" to="33ny:~List" resolve="List" />
-              <node concept="3uibUv" id="4xB7mi2poBr" role="11_B2D">
-                <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
-              </node>
-            </node>
-            <node concept="2OqwBi" id="4xB7mi2poWK" role="33vP2m">
-              <node concept="2YIFZM" id="4xB7mi2poWL" role="2Oq$k0">
-                <ref role="37wK5l" to="z1c3:~ProjectManager.getInstance()" resolve="getInstance" />
-                <ref role="1Pybhc" to="z1c3:~ProjectManager" resolve="ProjectManager" />
-              </node>
-              <node concept="liA8E" id="4xB7mi2poWM" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~ProjectManager.getOpenedProjects()" resolve="getOpenedProjects" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="4xB7mi2ppSx" role="3cqZAp">
-          <node concept="3clFbS" id="4xB7mi2ppSz" role="3clFbx">
-            <node concept="3cpWs6" id="4xB7mi2puFt" role="3cqZAp">
-              <node concept="10Nm6u" id="4xB7mi2renP" role="3cqZAk" />
-            </node>
-          </node>
-          <node concept="2OqwBi" id="4xB7mi2prJh" role="3clFbw">
-            <node concept="37vLTw" id="4xB7mi2pqOg" role="2Oq$k0">
-              <ref role="3cqZAo" node="4xB7mi2poWJ" resolve="openedProjects" />
-            </node>
-            <node concept="liA8E" id="4xB7mi2ptF2" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="4xB7mi2reIw" role="3cqZAp">
-          <node concept="1rXfSq" id="4xB7mi2rf9J" role="3cqZAk">
-            <ref role="37wK5l" node="4xB7mi2r8bh" resolve="getInstance" />
-            <node concept="2OqwBi" id="4xB7mi2pJKN" role="37wK5m">
-              <node concept="37vLTw" id="4xB7mi2pIyx" role="2Oq$k0">
-                <ref role="3cqZAo" node="4xB7mi2poWJ" resolve="openedProjects" />
-              </node>
-              <node concept="liA8E" id="4xB7mi2pL1U" role="2OqNvi">
-                <ref role="37wK5l" to="33ny:~List.get(int)" resolve="get" />
-                <node concept="3cmrfG" id="4xB7mi2pM4c" role="37wK5m">
-                  <property role="3cmrfH" value="0" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="P$JXv" id="4xB7mi2rb_V" role="lGtFl">
-        <node concept="TZ5HI" id="4xB7mi2rb_W" role="3nqlJM">
-          <node concept="TZ5HA" id="4xB7mi2rb_X" role="3HnX3l">
-            <node concept="1dT_AC" id="4xB7mi2rbGA" role="1dT_Ay">
-              <property role="1dT_AB" value="use getInstance(Project) instead. Remove once mbeddr switches to 2022.3 and can use new API" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="4xB7mi2rb_Y" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-        <node concept="2B6LJw" id="4xB7mi2rbCV" role="2B76xF">
-          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
-          <node concept="3clFbT" id="4xB7mi2rbE7" role="2B70Vg">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-        <node concept="2B6LJw" id="4xB7mi2rbEu" role="2B76xF">
-          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
-          <node concept="Xl_RD" id="4xB7mi2rbFT" role="2B70Vg">
-            <property role="Xl_RC" value="2022.2" />
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="2tJIrI" id="4xB7mi2ra22" role="jymVt" />
     <node concept="2YIFZL" id="4xB7mi2r8bh" role="jymVt">
       <property role="TrG5h" value="getInstance" />
@@ -1463,23 +1312,14 @@
       <node concept="3Tm1VV" id="4xB7mi2r8bj" role="1B3o_S" />
       <node concept="3clFbS" id="4xB7mi2r8bk" role="3clF47">
         <node concept="3cpWs6" id="4xB7mi2rA1Y" role="3cqZAp">
-          <node concept="3K4zz7" id="36u$e0Plafz" role="3cqZAk">
-            <node concept="10Nm6u" id="36u$e0Plaf$" role="3K4E3e" />
-            <node concept="3clFbC" id="36u$e0Plaf_" role="3K4Cdx">
-              <node concept="10Nm6u" id="36u$e0PlafA" role="3uHU7w" />
-              <node concept="37vLTw" id="36u$e0PlafB" role="3uHU7B">
-                <ref role="3cqZAo" node="4xB7mi2rbxA" resolve="project" />
-              </node>
+          <node concept="2OqwBi" id="36u$e0PlafC" role="3cqZAk">
+            <node concept="37vLTw" id="36u$e0PlafD" role="2Oq$k0">
+              <ref role="3cqZAo" node="4xB7mi2rbxA" resolve="project" />
             </node>
-            <node concept="2OqwBi" id="36u$e0PlafC" role="3K4GZi">
-              <node concept="37vLTw" id="36u$e0PlafD" role="2Oq$k0">
-                <ref role="3cqZAo" node="4xB7mi2rbxA" resolve="project" />
-              </node>
-              <node concept="liA8E" id="36u$e0PlafE" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="36u$e0PlafF" role="37wK5m">
-                  <ref role="3VsUkX" node="3dEPKBAxz0O" resolve="RefactoringAccess" />
-                </node>
+            <node concept="liA8E" id="36u$e0PlafE" role="2OqNvi">
+              <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+              <node concept="3VsKOn" id="36u$e0PlafF" role="37wK5m">
+                <ref role="3VsUkX" node="3dEPKBAxz0O" resolve="RefactoringAccess" />
               </node>
             </node>
           </node>
@@ -1489,6 +1329,21 @@
         <property role="TrG5h" value="project" />
         <node concept="3uibUv" id="4xB7mi2rbx_" role="1tU5fm">
           <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="6FIFKQjQeNd" role="lGtFl">
+        <node concept="TZ7YB" id="6FIFKQjQf20" role="3nqlJM">
+          <property role="TZ7Y_" value="2022.2" />
+        </node>
+        <node concept="TZ5HA" id="6FIFKQjQf_A" role="TZ5H$">
+          <node concept="1dT_AC" id="6FIFKQjQf_B" role="1dT_Ay">
+            <property role="1dT_AB" value="Generally, there's a single RA instance (i.e. not a different one per project), however, need a context to access CoreComponent instance." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="6FIFKQjQgrI" role="TZ5H$">
+          <node concept="1dT_AC" id="6FIFKQjQgrJ" role="1dT_Ay">
+            <property role="1dT_AB" value="Prefer platform-level access (e.g. RefacroringAccessEx) if your code doesn't need to be platform-agnostic." />
+          </node>
         </node>
       </node>
     </node>
