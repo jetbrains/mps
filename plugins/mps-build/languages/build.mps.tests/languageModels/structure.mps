@@ -181,7 +181,7 @@
       <property role="IQ2ns" value="7978162869575635130" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="projectPath" />
-      <ref role="20lvS9" to="3ior:3NagsOfThPf" resolve="BuildString" />
+      <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
   </node>
 </model>

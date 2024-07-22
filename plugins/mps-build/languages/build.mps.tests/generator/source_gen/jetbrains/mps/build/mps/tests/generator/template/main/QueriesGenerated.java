@@ -123,9 +123,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_0_12(final PropertyMacroContext _context) {
     SNode projectPath = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.projectPath$WGC5);
     if (projectPath != null) {
-      SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
-      MacroHelper macroHelper = new MacroHelper.MacroContext(project, _context).getMacros(project);
-      return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(projectPath, macroHelper);
+      return BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(projectPath, Context.defaultContext(_context));
     }
     return _context.getTemplateValue();
   }

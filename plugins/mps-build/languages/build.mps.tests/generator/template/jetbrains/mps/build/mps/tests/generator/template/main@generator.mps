@@ -2845,7 +2845,7 @@
                               <node concept="3cpWsn" id="KUYoaWYPr4" role="3cpWs9">
                                 <property role="TrG5h" value="projectPath" />
                                 <node concept="3Tqbb2" id="KUYoaWYPr5" role="1tU5fm">
-                                  <ref role="ehGHo" to="3ior:3NagsOfThPf" resolve="BuildString" />
+                                  <ref role="ehGHo" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
                                 </node>
                                 <node concept="2OqwBi" id="KUYoaWYPr6" role="33vP2m">
                                   <node concept="2OqwBi" id="KUYoaWYPr7" role="2Oq$k0">
@@ -2862,57 +2862,17 @@
                             </node>
                             <node concept="3clFbJ" id="KUYoaWYPrb" role="3cqZAp">
                               <node concept="3clFbS" id="KUYoaWYPrc" role="3clFbx">
-                                <node concept="3cpWs8" id="KUYoaWYPrG" role="3cqZAp">
-                                  <node concept="3cpWsn" id="KUYoaWYPrH" role="3cpWs9">
-                                    <property role="TrG5h" value="project" />
-                                    <node concept="3Tqbb2" id="KUYoaWYPrI" role="1tU5fm">
-                                      <ref role="ehGHo" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
-                                    </node>
-                                    <node concept="1PxgMI" id="KUYoaWYPrJ" role="33vP2m">
-                                      <node concept="2OqwBi" id="KUYoaWYPrK" role="1m5AlR">
-                                        <node concept="2Rxl7S" id="KUYoaWYPrL" role="2OqNvi" />
-                                        <node concept="30H73N" id="KUYoaWYPrM" role="2Oq$k0" />
-                                      </node>
-                                      <node concept="chp4Y" id="KUYoaWYPrN" role="3oSUPX">
-                                        <ref role="cht4Q" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
-                                      </node>
-                                    </node>
-                                  </node>
-                                </node>
-                                <node concept="3cpWs8" id="KUYoaWYPrO" role="3cqZAp">
-                                  <node concept="3cpWsn" id="KUYoaWYPrP" role="3cpWs9">
-                                    <property role="TrG5h" value="macroHelper" />
-                                    <node concept="3uibUv" id="KUYoaWYPrQ" role="1tU5fm">
-                                      <ref role="3uigEE" to="o3n2:5FtnUVJR86u" resolve="MacroHelper" />
-                                    </node>
-                                    <node concept="2OqwBi" id="KUYoaWYPrR" role="33vP2m">
-                                      <node concept="2ShNRf" id="KUYoaWYPrS" role="2Oq$k0">
-                                        <node concept="1pGfFk" id="KUYoaWYPrT" role="2ShVmc">
-                                          <ref role="37wK5l" to="o3n2:5DY7s5F2Pa1" resolve="MacroHelper.MacroContext" />
-                                          <node concept="37vLTw" id="KUYoaWYPrU" role="37wK5m">
-                                            <ref role="3cqZAo" node="KUYoaWYPrH" resolve="project" />
-                                          </node>
-                                          <node concept="1iwH7S" id="KUYoaWYPrV" role="37wK5m" />
-                                        </node>
-                                      </node>
-                                      <node concept="liA8E" id="KUYoaWYPrW" role="2OqNvi">
-                                        <ref role="37wK5l" to="o3n2:5DY7s5F2PaT" resolve="getMacros" />
-                                        <node concept="37vLTw" id="KUYoaWYPrX" role="37wK5m">
-                                          <ref role="3cqZAo" node="KUYoaWYPrH" resolve="project" />
-                                        </node>
-                                      </node>
-                                    </node>
-                                  </node>
-                                </node>
                                 <node concept="3cpWs6" id="KUYoaWYPrY" role="3cqZAp">
                                   <node concept="2OqwBi" id="KUYoaWYPs0" role="3cqZAk">
                                     <node concept="37vLTw" id="KUYoaWYPs1" role="2Oq$k0">
                                       <ref role="3cqZAo" node="KUYoaWYPr4" resolve="projectPath" />
                                     </node>
-                                    <node concept="2qgKlT" id="KUYoaWYPs2" role="2OqNvi">
-                                      <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
-                                      <node concept="37vLTw" id="KUYoaWYPs3" role="37wK5m">
-                                        <ref role="3cqZAo" node="KUYoaWYPrP" resolve="macroHelper" />
+                                    <node concept="2qgKlT" id="5q_BJsUw8pE" role="2OqNvi">
+                                      <ref role="37wK5l" to="vbkb:7ro1ZztyOh5" resolve="getAntPath" />
+                                      <node concept="2YIFZM" id="5q_BJsUwcJq" role="37wK5m">
+                                        <ref role="37wK5l" to="o3n2:19KdqCVerNJ" resolve="defaultContext" />
+                                        <ref role="1Pybhc" to="o3n2:4jjtc7WZOAv" resolve="Context" />
+                                        <node concept="1iwH7S" id="5q_BJsUwdKu" role="37wK5m" />
                                       </node>
                                     </node>
                                   </node>
