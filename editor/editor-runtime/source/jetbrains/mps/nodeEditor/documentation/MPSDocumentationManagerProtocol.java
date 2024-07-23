@@ -10,12 +10,12 @@ import org.jetbrains.annotations.NonNls;
  */
 public interface MPSDocumentationManagerProtocol {
   /**
-   * The protocol used for linking to references of the {@code TextNodeReference} concept in quick documentation.
+   * The protocol used for linking to references in quick documentation.
    */
-  @NonNls String TEXT_NODE_REFERENCE = "TextNodeReference://";
+  @NonNls String S_NODE_REFERENCE = "SNodeReference://";
 
   /**
-   * The protocol used for linking to URLs of the {@code Word} concept in quick documentation.
+   * The protocol used for linking to URLs in quick documentation.
    */
-  @NonNls String WORD = "Word://";
+  @NonNls String URL = "Url://";
 }

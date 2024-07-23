@@ -17,8 +17,9 @@ package jetbrains.mps.nodeEditor.cells;
 
 import com.intellij.openapi.command.CommandProcessor;
 import com.intellij.openapi.util.text.HtmlChunk;
+import com.intellij.openapi.vfs.VirtualFileManager;
+import com.intellij.util.io.URLUtil;
 import com.intellij.util.ui.StartupUiUtil;
-import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.editor.runtime.HtmlTextBuilderImpl;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
@@ -150,12 +151,16 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
       htmlChunk = htmlChunk.wrapWith("u");
     }
 
-    String link = null;
-    if (DocumentationProvider.isDocTextNodeReference(this.getSNode())) {
-       link = MPSDocumentationUtil.getLinkForTextNodeReference(this.getSNode());
-    }
-    if (DocumentationProvider.isWord(this.getSNode())) {
-      link =  MPSDocumentationUtil.getLinkForWord(this.getSNode());
+    String link;
+    String url = this.getStyle().get(StyleAttributes.URL);
+    if (url != null){
+      if (!url.startsWith(URLUtil.HTTP_PROTOCOL)) {
+        url = VirtualFileManager.constructUrl(URLUtil.HTTP_PROTOCOL, url);
+      }
+      link = MPSDocumentationUtil.getLinkForUrl(url);
+    } else {
+      SNode node = APICellAdapter.getSNodeWRTReference(this);
+      link = MPSDocumentationUtil.getLinkForSNodeReference(node.getReference());
     }
     if (link != null) {
       htmlChunk = HtmlChunk.link(link, htmlChunk);

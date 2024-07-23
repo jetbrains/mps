@@ -97,7 +97,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
 
   private void navigateByLink(HyperlinkEvent event) {
     String link = event.getDescription();
-    if (link.startsWith(MPSDocumentationManagerProtocol.TEXT_NODE_REFERENCE)) {
+    if (link.startsWith(MPSDocumentationManagerProtocol.S_NODE_REFERENCE)) {
       jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
 
       Context[] contexts = new Context[]{null};
@@ -111,8 +111,8 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
         restoreContext(contexts[0]);
       }
     }
-    if (link.startsWith(MPSDocumentationManagerProtocol.WORD)) {
-      String url = link.split(MPSDocumentationManagerProtocol.WORD)[1];
+    if (link.startsWith(MPSDocumentationManagerProtocol.URL)) {
+      String url = link.split(MPSDocumentationManagerProtocol.URL)[1];
       try {
         Desktop.getDesktop().browse(URI.create(url));
       } catch (IOException e) {
