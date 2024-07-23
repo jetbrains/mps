@@ -35,6 +35,7 @@ import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.diff.DiffBundle;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.diff.tools.util.DiffSplitter;
@@ -188,6 +189,11 @@ public class StructDifferencePane implements PropertyChangeListener {
       public void setSelected(AnActionEvent e, boolean b) {
         showInspector(b);
       }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.EDT;
+      }
     });
     myActionGroup.add(new ToggleAction(() -> DiffBundle.message("synchronize.scrolling", new Object[0]), Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
       @Override
@@ -203,6 +209,11 @@ public class StructDifferencePane implements PropertyChangeListener {
       public void update(@NotNull AnActionEvent e) {
         super.update(e);
         enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
+      }
+      @NotNull
+      @Override
+      public ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
       }
     });
   }
