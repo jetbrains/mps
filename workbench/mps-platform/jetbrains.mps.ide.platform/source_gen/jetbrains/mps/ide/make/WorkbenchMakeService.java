@@ -59,7 +59,6 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.make.facet.ITarget;
-import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.internal.make.cfg.JavaCompileFacetInitializer;
 import jetbrains.mps.make.kotlin.KotlinCompilerOptions;
 import jetbrains.mps.make.script.IOption;
@@ -385,10 +384,8 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
       ppool.setPredecessor(predParamPool);
       predParamPool = ppool;
 
-      // FIXME WorkbenchMakeService is generic code and doesn't need to know/care about JavaCompile facet existence.
-      jetbrains.mps.project.Project mpsProject = getSession().getProject();
-      JavaCompilerOptionsComponent jcOptions = mpsProject.getComponent(JavaCompilerOptionsComponent.class);
-      new JavaCompileFacetInitializer().setJavaCompileOptions(jcOptions.getJavaCompilerOptions(mpsProject)).setKotlinCompileOptions(new KotlinCompilerOptions(getAliveFlagFile())).populate(ppool);
+      // FIXME WorkbenchMakeService is generic code and doesn't need to know/care about JavaCompile facet existence or Kotlin compilation parameters.
+      new JavaCompileFacetInitializer().setKotlinCompileOptions(new KotlinCompilerOptions(getAliveFlagFile())).populate(ppool);
 
       if (delegateScrCtr != null) {
         delegateScrCtr.setup(ppool, targets, input);

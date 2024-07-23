@@ -35,7 +35,6 @@
     <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" />
     <import index="ud0o" ref="r:71895ceb-c89d-4545-aa38-89d1cd891f17(jetbrains.mps.make.facet)" />
     <import index="1gam" ref="r:dc013bd4-6bcf-44c3-9e08-a65e07c88df7(jetbrains.mps.internal.make.cfg)" />
-    <import index="l46t" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.compiler(MPS.Core/)" />
     <import index="jqcx" ref="r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="mk8z" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.progress(MPS.Platform/)" />
@@ -3549,67 +3548,28 @@
                 <property role="3oM_SC" value="facet" />
               </node>
               <node concept="3oM_SD" id="2qoqtMKP_73" role="1PaTwD">
-                <property role="3oM_SC" value="existence." />
+                <property role="3oM_SC" value="existence" />
               </node>
-            </node>
-          </node>
-          <node concept="3cpWs8" id="2qoqtMKNWmt" role="3cqZAp">
-            <node concept="3cpWsn" id="2qoqtMKNWmu" role="3cpWs9">
-              <property role="TrG5h" value="mpsProject" />
-              <node concept="3uibUv" id="2qoqtMKNS7p" role="1tU5fm">
-                <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
+              <node concept="3oM_SD" id="3ZzSubugyBu" role="1PaTwD">
+                <property role="3oM_SC" value="or" />
               </node>
-              <node concept="2OqwBi" id="2qoqtMKNWmv" role="33vP2m">
-                <node concept="1rXfSq" id="2qoqtMKNWmw" role="2Oq$k0">
-                  <ref role="37wK5l" node="9D0Ba05vfM" resolve="getSession" />
-                </node>
-                <node concept="liA8E" id="2qoqtMKNWmx" role="2OqNvi">
-                  <ref role="37wK5l" to="hfuk:2BjwmTxTf34" resolve="getProject" />
-                </node>
+              <node concept="3oM_SD" id="3ZzSubugyDp" role="1PaTwD">
+                <property role="3oM_SC" value="Kotlin" />
               </node>
-            </node>
-          </node>
-          <node concept="3cpWs8" id="2qoqtMKOOzX" role="3cqZAp">
-            <node concept="3cpWsn" id="2qoqtMKOOzY" role="3cpWs9">
-              <property role="TrG5h" value="jcOptions" />
-              <node concept="3uibUv" id="2qoqtMKOJHV" role="1tU5fm">
-                <ref role="3uigEE" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
+              <node concept="3oM_SD" id="3ZzSubugyDS" role="1PaTwD">
+                <property role="3oM_SC" value="compilation" />
               </node>
-              <node concept="2OqwBi" id="2qoqtMKOOzZ" role="33vP2m">
-                <node concept="37vLTw" id="2qoqtMKOO$0" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2qoqtMKNWmu" resolve="mpsProject" />
-                </node>
-                <node concept="liA8E" id="2qoqtMKOO$1" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
-                  <node concept="3VsKOn" id="2qoqtMKOO$2" role="37wK5m">
-                    <ref role="3VsUkX" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
-                  </node>
-                </node>
+              <node concept="3oM_SD" id="3ZzSubugyEn" role="1PaTwD">
+                <property role="3oM_SC" value="parameters." />
               </node>
             </node>
           </node>
           <node concept="3clFbF" id="bvkaYAI0Xd" role="3cqZAp">
             <node concept="2OqwBi" id="bvkaYAHYsw" role="3clFbG">
               <node concept="2OqwBi" id="1_R49hKcXQW" role="2Oq$k0">
-                <node concept="2OqwBi" id="bvkaYAHxFo" role="2Oq$k0">
-                  <node concept="2ShNRf" id="bvkaYAGZgT" role="2Oq$k0">
-                    <node concept="1pGfFk" id="bvkaYAHwVI" role="2ShVmc">
-                      <ref role="37wK5l" to="1gam:5OeL7nc8$v7" resolve="JavaCompileFacetInitializer" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="bvkaYAHUoC" role="2OqNvi">
-                    <ref role="37wK5l" to="1gam:bvkaYAGPPJ" resolve="setJavaCompileOptions" />
-                    <node concept="2OqwBi" id="bvkaYAHVbF" role="37wK5m">
-                      <node concept="37vLTw" id="2qoqtMKPi87" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2qoqtMKOOzY" resolve="jcOptions" />
-                      </node>
-                      <node concept="liA8E" id="bvkaYAHV_C" role="2OqNvi">
-                        <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getJavaCompilerOptions(jetbrains.mps.project.Project)" resolve="getJavaCompilerOptions" />
-                        <node concept="37vLTw" id="2qoqtMKNWmy" role="37wK5m">
-                          <ref role="3cqZAo" node="2qoqtMKNWmu" resolve="project" />
-                        </node>
-                      </node>
-                    </node>
+                <node concept="2ShNRf" id="bvkaYAGZgT" role="2Oq$k0">
+                  <node concept="1pGfFk" id="bvkaYAHwVI" role="2ShVmc">
+                    <ref role="37wK5l" to="1gam:5OeL7nc8$v7" resolve="JavaCompileFacetInitializer" />
                   </node>
                 </node>
                 <node concept="liA8E" id="1_R49hKd2wf" role="2OqNvi">
