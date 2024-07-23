@@ -43,7 +43,7 @@ public class DefaultMakeTask extends Task.Modal {
         if (needClean) {
           maker.clean(modules, monitor.subTask(1));
         }
-        maker.options(JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(myProject));
+        maker.options(myProject.getComponent(JavaCompilerOptionsComponent.class).getJavaCompilerOptions(myProject));
         maker.prepare(modules, needClean, monitor.subTask(3));
       });
 

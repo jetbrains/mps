@@ -27738,6 +27738,75 @@
             <node concept="3oM_SD" id="2mcQqJKaI0n" role="1PaTwD">
               <property role="3oM_SC" value="code." />
             </node>
+            <node concept="3oM_SD" id="2qoqtMKT60e" role="1PaTwD">
+              <property role="3oM_SC" value="OTOH," />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT60Z" role="1PaTwD">
+              <property role="3oM_SC" value="IDEA" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT61g" role="1PaTwD">
+              <property role="3oM_SC" value="has" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT61h" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT61i" role="1PaTwD">
+              <property role="3oM_SC" value="deal" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT61j" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT61k" role="1PaTwD">
+              <property role="3oM_SC" value="persistence" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT61P" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT626" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT627" role="1PaTwD">
+              <property role="3oM_SC" value="settings" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT62o" role="1PaTwD">
+              <property role="3oM_SC" value="only," />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT62T" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT63a" role="1PaTwD">
+              <property role="3oM_SC" value="accessing" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT63r" role="1PaTwD">
+              <property role="3oM_SC" value="them" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT63s" role="1PaTwD">
+              <property role="3oM_SC" value="through" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT63H" role="1PaTwD">
+              <property role="3oM_SC" value="MPS-level" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT64u" role="1PaTwD">
+              <property role="3oM_SC" value="JCOC" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT65v" role="1PaTwD">
+              <property role="3oM_SC" value="might" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT65M" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT65N" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT66k" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT66_" role="1PaTwD">
+              <property role="3oM_SC" value="bad" />
+            </node>
+            <node concept="3oM_SD" id="2qoqtMKT66Q" role="1PaTwD">
+              <property role="3oM_SC" value="idea" />
+            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="6fye98S_6ad" role="3cqZAp">
@@ -27749,14 +27818,21 @@
             </node>
             <node concept="2OqwBi" id="6fye98S_6ag" role="33vP2m">
               <node concept="2OqwBi" id="6fye98S_6ah" role="2Oq$k0">
-                <node concept="2YIFZM" id="6fye98S_6ai" role="2Oq$k0">
-                  <ref role="1Pybhc" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
-                  <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getInstance()" resolve="getInstance" />
-                </node>
                 <node concept="liA8E" id="6fye98S_6aj" role="2OqNvi">
                   <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getJavaCompilerOptions(jetbrains.mps.project.Project)" resolve="getJavaCompilerOptions" />
                   <node concept="37vLTw" id="6fye98S_6ak" role="37wK5m">
                     <ref role="3cqZAo" node="2mcQqJKbtPC" resolve="project" />
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="2qoqtMKSWGu" role="2Oq$k0">
+                  <node concept="37vLTw" id="2qoqtMKSUCh" role="2Oq$k0">
+                    <ref role="3cqZAo" node="2mcQqJKbtPC" resolve="project" />
+                  </node>
+                  <node concept="liA8E" id="2qoqtMKSY0v" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c4:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                    <node concept="3VsKOn" id="2qoqtMKQl5c" role="37wK5m">
+                      <ref role="3VsUkX" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
+                    </node>
                   </node>
                 </node>
               </node>

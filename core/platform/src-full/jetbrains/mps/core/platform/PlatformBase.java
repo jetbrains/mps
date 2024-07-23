@@ -25,6 +25,7 @@ import jetbrains.mps.make.facets.MPSMake;
 import jetbrains.mps.persistence.MPSPersistence;
 import jetbrains.mps.persistence.ModelDigestHelper;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.language.ExtensionRegistry;
 import jetbrains.mps.text.impl.MPSTextGenerator;
 import jetbrains.mps.typechecking.internal.MPSTypechecking;
 import jetbrains.mps.typesystem.MPSTypesystem;

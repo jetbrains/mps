@@ -40,7 +40,6 @@
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="mk8z" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.progress(MPS.Platform/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
-    <import index="ap4t" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator(MPS.Generator/)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
     <import index="mzcb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.make.kotlin(MPS.Core/)" />
     <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
@@ -3507,80 +3506,88 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="72ouys9J2Ce" role="3cqZAp">
-            <node concept="2OqwBi" id="72ouys9J4i_" role="3clFbG">
-              <node concept="2ShNRf" id="72ouys9J2Ca" role="2Oq$k0">
-                <node concept="1pGfFk" id="72ouys9J3VE" role="2ShVmc">
-                  <ref role="37wK5l" to="1gam:3D3uKT_NmCA" resolve="GenerateFacetInitializer" />
-                </node>
-              </node>
-              <node concept="liA8E" id="72ouys9J4ET" role="2OqNvi">
-                <ref role="37wK5l" to="1gam:7UozGIENpIK" resolve="populate" />
-                <node concept="37vLTw" id="72ouys9J4Tp" role="37wK5m">
-                  <ref role="3cqZAo" node="9D0Ba05v4d" resolve="ppool" />
-                </node>
-              </node>
-            </node>
-          </node>
           <node concept="3clFbH" id="2zR2ackd7in" role="3cqZAp" />
-          <node concept="3cpWs8" id="72ouys9IxgZ" role="3cqZAp">
-            <node concept="3cpWsn" id="72ouys9Ixh0" role="3cpWs9">
-              <property role="TrG5h" value="genSettings" />
-              <node concept="3uibUv" id="72ouys9IyVb" role="1tU5fm">
-                <ref role="3uigEE" to="ap4t:~IModifiableGenerationSettings" resolve="IModifiableGenerationSettings" />
+          <node concept="3SKdUt" id="2qoqtMKPusp" role="3cqZAp">
+            <node concept="1PaTwC" id="2qoqtMKPusq" role="1aUNEU">
+              <node concept="3oM_SD" id="2qoqtMKPusr" role="1PaTwD">
+                <property role="3oM_SC" value="FIXME" />
               </node>
-              <node concept="2OqwBi" id="72ouys9IxMI" role="33vP2m">
-                <node concept="liA8E" id="65agz9YeM1V" role="2OqNvi">
-                  <ref role="37wK5l" to="ap4t:~GenerationSettingsProvider.getGenerationSettings()" resolve="getGenerationSettings" />
+              <node concept="3oM_SD" id="2qoqtMKP_0k" role="1PaTwD">
+                <property role="3oM_SC" value="WorkbenchMakeService" />
+              </node>
+              <node concept="3oM_SD" id="2qoqtMKP_2e" role="1PaTwD">
+                <property role="3oM_SC" value="is" />
+              </node>
+              <node concept="3oM_SD" id="2qoqtMKP_2f" role="1PaTwD">
+                <property role="3oM_SC" value="generic" />
+              </node>
+              <node concept="3oM_SD" id="2qoqtMKP_2u" role="1PaTwD">
+                <property role="3oM_SC" value="code" />
+              </node>
+              <node concept="3oM_SD" id="2qoqtMKP_2v" role="1PaTwD">
+                <property role="3oM_SC" value="and" />
+              </node>
+              <node concept="3oM_SD" id="2qoqtMKP_2w" role="1PaTwD">
+                <property role="3oM_SC" value="doesn't" />
+              </node>
+              <node concept="3oM_SD" id="2qoqtMKP_2Z" role="1PaTwD">
+                <property role="3oM_SC" value="need" />
+              </node>
+              <node concept="3oM_SD" id="2qoqtMKP_3G" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="2qoqtMKP_4d" role="1PaTwD">
+                <property role="3oM_SC" value="know/care" />
+              </node>
+              <node concept="3oM_SD" id="2qoqtMKP_4s" role="1PaTwD">
+                <property role="3oM_SC" value="about" />
+              </node>
+              <node concept="3oM_SD" id="2qoqtMKP_4t" role="1PaTwD">
+                <property role="3oM_SC" value="JavaCompile" />
+              </node>
+              <node concept="3oM_SD" id="2qoqtMKP_6$" role="1PaTwD">
+                <property role="3oM_SC" value="facet" />
+              </node>
+              <node concept="3oM_SD" id="2qoqtMKP_73" role="1PaTwD">
+                <property role="3oM_SC" value="existence." />
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs8" id="2qoqtMKNWmt" role="3cqZAp">
+            <node concept="3cpWsn" id="2qoqtMKNWmu" role="3cpWs9">
+              <property role="TrG5h" value="mpsProject" />
+              <node concept="3uibUv" id="2qoqtMKNS7p" role="1tU5fm">
+                <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
+              </node>
+              <node concept="2OqwBi" id="2qoqtMKNWmv" role="33vP2m">
+                <node concept="1rXfSq" id="2qoqtMKNWmw" role="2Oq$k0">
+                  <ref role="37wK5l" node="9D0Ba05vfM" resolve="getSession" />
                 </node>
-                <node concept="2OqwBi" id="65agz9YeK8o" role="2Oq$k0">
-                  <node concept="2OqwBi" id="65agz9YeGYq" role="2Oq$k0">
-                    <node concept="1rXfSq" id="65agz9YeFMm" role="2Oq$k0">
-                      <ref role="37wK5l" node="9D0Ba05vfM" resolve="getSession" />
-                    </node>
-                    <node concept="liA8E" id="65agz9YeHHL" role="2OqNvi">
-                      <ref role="37wK5l" to="hfuk:2BjwmTxTf34" resolve="getProject" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="65agz9YeLop" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
-                    <node concept="3VsKOn" id="65agz9YeLN7" role="37wK5m">
-                      <ref role="3VsUkX" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
-                    </node>
+                <node concept="liA8E" id="2qoqtMKNWmx" role="2OqNvi">
+                  <ref role="37wK5l" to="hfuk:2BjwmTxTf34" resolve="getProject" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs8" id="2qoqtMKOOzX" role="3cqZAp">
+            <node concept="3cpWsn" id="2qoqtMKOOzY" role="3cpWs9">
+              <property role="TrG5h" value="jcOptions" />
+              <node concept="3uibUv" id="2qoqtMKOJHV" role="1tU5fm">
+                <ref role="3uigEE" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
+              </node>
+              <node concept="2OqwBi" id="2qoqtMKOOzZ" role="33vP2m">
+                <node concept="37vLTw" id="2qoqtMKOO$0" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2qoqtMKNWmu" resolve="mpsProject" />
+                </node>
+                <node concept="liA8E" id="2qoqtMKOO$1" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                  <node concept="3VsKOn" id="2qoqtMKOO$2" role="37wK5m">
+                    <ref role="3VsUkX" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
                   </node>
                 </node>
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="72ouys9I5$T" role="3cqZAp">
-            <node concept="2OqwBi" id="72ouys9IvR9" role="3clFbG">
-              <node concept="2OqwBi" id="72ouys9Iv$x" role="2Oq$k0">
-                <node concept="2ShNRf" id="72ouys9I5$P" role="2Oq$k0">
-                  <node concept="1pGfFk" id="72ouys9Ivi3" role="2ShVmc">
-                    <ref role="37wK5l" to="1gam:1LzZ23MgdKU" resolve="TextGenFacetInitializer" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="72ouys9IvQf" role="2OqNvi">
-                  <ref role="37wK5l" to="1gam:7UozGIEPrKT" resolve="generateDebugInfo" />
-                  <node concept="2OqwBi" id="72ouys9Iyuo" role="37wK5m">
-                    <node concept="37vLTw" id="72ouys9IylZ" role="2Oq$k0">
-                      <ref role="3cqZAo" node="72ouys9Ixh0" resolve="genSettings" />
-                    </node>
-                    <node concept="liA8E" id="72ouys9Iz0r" role="2OqNvi">
-                      <ref role="37wK5l" to="ap4t:~IGenerationSettings.isGenerateDebugInfo()" resolve="isGenerateDebugInfo" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="liA8E" id="72ouys9Iwcw" role="2OqNvi">
-                <ref role="37wK5l" to="1gam:7UozGIEP8Yt" resolve="populate" />
-                <node concept="37vLTw" id="72ouys9Iwre" role="37wK5m">
-                  <ref role="3cqZAo" node="9D0Ba05v4d" resolve="ppool" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbH" id="1_R49hKeuUa" role="3cqZAp" />
           <node concept="3clFbF" id="bvkaYAI0Xd" role="3cqZAp">
             <node concept="2OqwBi" id="bvkaYAHYsw" role="3clFbG">
               <node concept="2OqwBi" id="1_R49hKcXQW" role="2Oq$k0">
@@ -3593,19 +3600,13 @@
                   <node concept="liA8E" id="bvkaYAHUoC" role="2OqNvi">
                     <ref role="37wK5l" to="1gam:bvkaYAGPPJ" resolve="setJavaCompileOptions" />
                     <node concept="2OqwBi" id="bvkaYAHVbF" role="37wK5m">
-                      <node concept="2YIFZM" id="bvkaYAHV8Z" role="2Oq$k0">
-                        <ref role="1Pybhc" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
-                        <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getInstance()" resolve="getInstance" />
+                      <node concept="37vLTw" id="2qoqtMKPi87" role="2Oq$k0">
+                        <ref role="3cqZAo" node="2qoqtMKOOzY" resolve="jcOptions" />
                       </node>
                       <node concept="liA8E" id="bvkaYAHV_C" role="2OqNvi">
                         <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.getJavaCompilerOptions(jetbrains.mps.project.Project)" resolve="getJavaCompilerOptions" />
-                        <node concept="2OqwBi" id="bvkaYAHWuB" role="37wK5m">
-                          <node concept="1rXfSq" id="bvkaYAHVKW" role="2Oq$k0">
-                            <ref role="37wK5l" node="9D0Ba05vfM" resolve="getSession" />
-                          </node>
-                          <node concept="liA8E" id="bvkaYAHXfE" role="2OqNvi">
-                            <ref role="37wK5l" to="hfuk:2BjwmTxTf34" resolve="getProject" />
-                          </node>
+                        <node concept="37vLTw" id="2qoqtMKNWmy" role="37wK5m">
+                          <ref role="3cqZAo" node="2qoqtMKNWmu" resolve="project" />
                         </node>
                       </node>
                     </node>

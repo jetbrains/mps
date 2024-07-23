@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,12 +52,6 @@ public class CompilerSettingsConfigurable implements SearchableConfigurable {
     return "mps.compiler";
   }
 
-  @Nullable
-  @Override
-  public Runnable enableSearch(String option) {
-    return null;
-  }
-
   @Nls
   @Override
   public String getDisplayName() {
@@ -93,7 +87,7 @@ public class CompilerSettingsConfigurable implements SearchableConfigurable {
     }
     CompilerSettingsComponent instance = CompilerSettingsComponent.getInstance(myProject);
     MPSProject project = ProjectHelper.fromIdeaProject(myProject);
-    JavaVersion oldJavaVer = JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(project).getTargetJavaVersion();
+    JavaVersion oldJavaVer = myProject.getComponent(JavaCompilerOptionsComponent.class).getJavaCompilerOptions(project).getTargetJavaVersion();
     instance.loadState(compilerState);
     if (selectedTargetJavaVersion != oldJavaVer) {
       UIUtil.invokeLaterIfNeeded(() -> {
@@ -111,10 +105,6 @@ public class CompilerSettingsConfigurable implements SearchableConfigurable {
   @Override
   public void reset() {
     getPreferencePage().reset();
-  }
-
-  @Override
-  public void disposeUIResources() {
   }
 
   private CompilerSettingsPreferencePage getPreferencePage() {

@@ -33,8 +33,8 @@ public class JavaTargetVersionCheck extends IChecker.AbstractModuleChecker<Issue
 
     final JavaLanguageLevel srcLevel = jmf.getLanguageLevel();
     // FIXME I believe using CompilerSettingsComponent directly is better approach here. After all, this is workbench-level extension, and got no troubles
-    //      accessing IDEA code.
-    final JavaCompilerOptionsComponent.JavaVersion targetLevel = JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(project).getTargetJavaVersion();
+    //      accessing IDEA code. OTOH, IDEA has to deal with persistence of the settings only, and accessing them through MPS-level JCOC might not be that bad idea
+    final JavaCompilerOptionsComponent.JavaVersion targetLevel = project.getComponent(JavaCompilerOptionsComponent.class).getJavaCompilerOptions(project).getTargetJavaVersion();
     final JavaCompilerOptionsComponent.JavaVersion atLeast;
     switch (srcLevel) {
       case JAVA_7:

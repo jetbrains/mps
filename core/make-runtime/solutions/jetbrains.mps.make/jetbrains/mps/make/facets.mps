@@ -12,6 +12,7 @@
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
+    <import index="l46t" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.compiler(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -42,6 +43,9 @@
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ">
         <child id="1214996921760" name="bound" index="3ztrMU" />
@@ -154,16 +158,23 @@
         <ref role="3uigEE" to="ud0o:5mqBoD3U4oX" resolve="FacetRegistry" />
       </node>
     </node>
+    <node concept="312cEg" id="5QDFyyufvJD" role="jymVt">
+      <property role="TrG5h" value="myJavaCompilerOptions" />
+      <node concept="3Tm6S6" id="5QDFyyufvJE" role="1B3o_S" />
+      <node concept="3uibUv" id="5QDFyyuf_8W" role="1tU5fm">
+        <ref role="3uigEE" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="1PwNLcbNZUy" role="jymVt" />
     <node concept="3clFbW" id="1PwNLcbO00J" role="jymVt">
       <node concept="3cqZAl" id="1PwNLcbO00K" role="3clF45" />
       <node concept="3clFbS" id="1PwNLcbO00M" role="3clF47">
-        <node concept="3clFbF" id="1PwNLcbO04$" role="3cqZAp">
-          <node concept="37vLTI" id="1PwNLcbO04A" role="3clFbG">
-            <node concept="37vLTw" id="1PwNLcbO04D" role="37vLTJ">
+        <node concept="3clFbF" id="4VpndibDnpI" role="3cqZAp">
+          <node concept="37vLTI" id="4VpndibDnpJ" role="3clFbG">
+            <node concept="37vLTw" id="4VpndibDnpK" role="37vLTJ">
               <ref role="3cqZAo" node="1PwNLcbO04w" resolve="myLanguageRegistry" />
             </node>
-            <node concept="37vLTw" id="1PwNLcbO04E" role="37vLTx">
+            <node concept="37vLTw" id="4VpndibDnpL" role="37vLTx">
               <ref role="3cqZAo" node="1PwNLcbO02H" resolve="languageRegistry" />
             </node>
           </node>
@@ -219,12 +230,27 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="5QDFyyuf_LG" role="3cqZAp">
+          <node concept="37vLTI" id="5QDFyyufA3A" role="3clFbG">
+            <node concept="1rXfSq" id="5QDFyyufAde" role="37vLTx">
+              <ref role="37wK5l" to="wyuk:~ComponentPlugin.init(jetbrains.mps.components.CoreComponent)" resolve="init" />
+              <node concept="2ShNRf" id="5QDFyyufAnG" role="37wK5m">
+                <node concept="1pGfFk" id="4VpndibDbcV" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="l46t:~JavaCompilerOptionsComponent.&lt;init&gt;()" resolve="JavaCompilerOptionsComponent" />
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="5QDFyyuf_LE" role="37vLTJ">
+              <ref role="3cqZAo" node="5QDFyyufvJD" resolve="myJavaCompilerOptions" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="2AHcQZ" id="1PwNLcbNzFz" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="1LibDRnKMuw" role="jymVt" />
     <node concept="2tJIrI" id="1LibDRnKMv6" role="jymVt" />
     <node concept="3clFb_" id="1LibDRnKMyV" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -304,6 +330,31 @@
             </node>
             <node concept="37vLTw" id="YDT75BqUED" role="3uHU7B">
               <ref role="3cqZAo" node="1LibDRnKMz2" resolve="aClass" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="4VpndibDqiO" role="3cqZAp">
+          <node concept="3clFbS" id="4VpndibDqiQ" role="3clFbx">
+            <node concept="3cpWs6" id="4VpndibDvRk" role="3cqZAp">
+              <node concept="2OqwBi" id="4VpndibDwvK" role="3cqZAk">
+                <node concept="37vLTw" id="4VpndibDwbI" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1LibDRnKMz2" resolve="aClass" />
+                </node>
+                <node concept="liA8E" id="4VpndibDwYq" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~Class.cast(java.lang.Object)" resolve="cast" />
+                  <node concept="37vLTw" id="4VpndibDxby" role="37wK5m">
+                    <ref role="3cqZAo" node="5QDFyyufvJD" resolve="myJavaCompilerOptions" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="4VpndibDvxL" role="3clFbw">
+            <node concept="37vLTw" id="4VpndibDvGA" role="3uHU7w">
+              <ref role="3cqZAo" node="1LibDRnKMz2" resolve="aClass" />
+            </node>
+            <node concept="3VsKOn" id="4VpndibDuzZ" role="3uHU7B">
+              <ref role="3VsUkX" to="l46t:~JavaCompilerOptionsComponent" resolve="JavaCompilerOptionsComponent" />
             </node>
           </node>
         </node>
