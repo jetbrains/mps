@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -84,14 +84,14 @@ public class DebugInfoBuilder {
     return null;
   }
 
-  /*package*/ void addTraceablePosition(SNode inputNode, String fileName, TraceablePositionInfo positionInfo) {
+  /*package*/ void addTraceablePosition(@NotNull SNode inputNode, String fileName, TraceablePositionInfo positionInfo) {
     positionInfo.setNodeId(inputNode.getNodeId().toString());
     positionInfo.setFileName(fileName);
     SNode topmostAncestor = inputNode.getContainingRoot();
     myDebugInfo.addPosition(positionInfo, topmostAncestor);
   }
 
-  /*package*/ void addScopePosition(SNode inputNode, String fileName, ScopePositionInfo positionInfo) {
+  /*package*/ void addScopePosition(@NotNull SNode inputNode, String fileName, ScopePositionInfo positionInfo) {
     positionInfo.setNodeId(inputNode.getNodeId().toString());
     positionInfo.setFileName(fileName);
     Map<SNode, VarInfo> varMap = positionInfo.getTempVarInfoMap();
@@ -108,7 +108,7 @@ public class DebugInfoBuilder {
     myDebugInfo.addScopePosition(positionInfo, inputNode.getContainingRoot());
   }
 
-  /*package*/ void addUnitPosition(SNode inputNode, String fileName, UnitPositionInfo positionInfo) {
+  /*package*/ void addUnitPosition(@Nullable SNode inputNode, String fileName, UnitPositionInfo positionInfo) {
     positionInfo.setFileName(fileName);
     SNode topmostAncestor = null;
     if (inputNode != null) {
