@@ -2184,7 +2184,7 @@
                             <node concept="liA8E" id="2H817XX55$a" role="2OqNvi">
                               <ref role="37wK5l" to="ze1i:~CheckingNodeContext.setBreakingNode(org.jetbrains.mps.openapi.model.SNodeReference)" resolve="setBreakingNode" />
                               <node concept="1dyn4i" id="2H817XX55$b" role="37wK5m">
-                                <property role="1dyqJU" value="canBeRootBreakingPoint" />
+                                <property role="1dyqJU" value="canBeAncestorBreakingPoint" />
                                 <node concept="2ShNRf" id="2H817XX55$c" role="1dyrYi">
                                   <node concept="1pGfFk" id="2H817XX55$d" role="2ShVmc">
                                     <ref role="37wK5l" to="w1kc:~SNodePointer.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="SNodePointer" />
