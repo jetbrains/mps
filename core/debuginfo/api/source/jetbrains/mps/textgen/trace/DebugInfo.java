@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.textgen.trace;
 
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,18 +32,15 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 public class DebugInfo {
-  private static final Logger LOG = Logger.getLogger(DebugInfo.class);
 
   private final Map<SNodeReference, DebugInfoRoot> myRoots = new HashMap<>();
 
   public DebugInfo() {
   }
 
-  private DebugInfoRoot getOrCreateDebugInfoRoot(SNode rootNode) {
-    if (rootNode == null) {
-      LOG.warning("rootNode is null in getOrCreateDebugInfoRoot()!", new Throwable());
-    }
-
+  private DebugInfoRoot getOrCreateDebugInfoRoot(@Nullable SNode rootNode) {
+    // rootNode could be null for some unit positions (scope and trace are always !null). Not sure I understand, why and
+    // if there's any sense to keep these positions
     SNodeReference ref = getRef(rootNode);
     DebugInfoRoot infoRoot = myRoots.get(ref);
     if (infoRoot == null) {
@@ -66,7 +62,7 @@ public class DebugInfo {
     getOrCreateDebugInfoRoot(containingRoot).addScopePosition(position);
   }
 
-  public void addUnitPosition(UnitPositionInfo unitPosition, SNode containingRoot) {
+  public void addUnitPosition(UnitPositionInfo unitPosition, @Nullable SNode containingRoot) {
     getOrCreateDebugInfoRoot(containingRoot).addUnitPosition(unitPosition);
   }
 
