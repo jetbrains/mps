@@ -11118,26 +11118,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="jzhoHG2UVg" role="jymVt" />
-    <node concept="3clFb_" id="jzhoHG2S$7" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="updateTimestamp" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="3Tm1VV" id="jzhoHG2S$8" role="1B3o_S" />
-      <node concept="3cqZAl" id="jzhoHG2S$a" role="3clF45" />
-      <node concept="3clFbS" id="jzhoHG2S$d" role="3clF47">
-        <node concept="3SKdUt" id="jzhoHG2VzW" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXolsM" role="1aUNEU">
-            <node concept="3oM_SD" id="ATZLwXolsN" role="1PaTwD">
-              <property role="3oM_SC" value="no-op" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="jzhoHG309n" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
     <node concept="3clFb_" id="jzhoHG2S$e" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="needsReloading" />

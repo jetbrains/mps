@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,14 +70,7 @@ public interface EditableSModel extends SModel {
    */
   void rename(@NotNull String newModelName, boolean changeFile);
 
-  /**
-   * @deprecated use #save(new SaveOptionsBuilder().force().build()) instead
-   */
-  @Deprecated
-  @ScheduledForRemoval(inVersion = "2021.2")
-  void updateTimestamp();
-
-  boolean needsReloading();
+  boolean needsReloading(); // FWIW, single use outside of implementation, need to reconsider conflict resolution approach.
 
 
   /**

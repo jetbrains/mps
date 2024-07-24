@@ -2285,16 +2285,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="1nLyZqZ6ijh" role="jymVt" />
-    <node concept="3clFb_" id="1nLyZqZ6eTF" role="jymVt">
-      <property role="TrG5h" value="updateTimestamp" />
-      <node concept="3Tm1VV" id="1nLyZqZ6eTG" role="1B3o_S" />
-      <node concept="3cqZAl" id="1nLyZqZ6eTI" role="3clF45" />
-      <node concept="3clFbS" id="1nLyZqZ6eTM" role="3clF47" />
-      <node concept="2AHcQZ" id="1nLyZqZ6eTN" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="1nLyZqZ6hAy" role="jymVt" />
     <node concept="3clFb_" id="1nLyZqZ6eTO" role="jymVt">
       <property role="TrG5h" value="needsReloading" />
       <node concept="3Tm1VV" id="1nLyZqZ6eTP" role="1B3o_S" />

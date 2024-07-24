@@ -80,10 +80,6 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
   }
 
   @Override
-  public void updateTimestamp() {
-    // no-op
-  }
-  @Override
   public boolean needsReloading() {
     return false;
   }

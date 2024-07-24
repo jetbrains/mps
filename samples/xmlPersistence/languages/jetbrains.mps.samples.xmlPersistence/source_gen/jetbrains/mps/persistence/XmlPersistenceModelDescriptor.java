@@ -145,10 +145,6 @@ public class XmlPersistenceModelDescriptor extends EditableModelDescriptor {
   }
 
   @Override
-  public void updateTimestamp() {
-  }
-
-  @Override
   public boolean needsReloading() {
     return false;
   }
