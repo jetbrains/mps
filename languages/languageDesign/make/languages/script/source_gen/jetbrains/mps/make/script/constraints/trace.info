@@ -121,13 +121,13 @@
       <node id="5579506316679941757" at="22,38,23,37" concept="9" />
       <node id="5579506316679941757" at="30,130,31,161" concept="4" />
       <node id="5579506316679941757" at="31,161,32,0" concept="6" />
-      <node id="5579506316679941757" at="33,55,34,70" concept="1" />
+      <node id="5579506316679941757" at="33,55,34,74" concept="1" />
       <node id="5579506316679941757" at="35,9,36,0" concept="6" />
       <node id="5579506316679941757" at="36,0,37,22" concept="5" />
       <node id="6127528946925588181" at="41,149,42,115" concept="4" />
       <node id="6127528946925595315" at="43,27,44,116" concept="5" />
       <node id="6127528946925596975" at="45,5,46,16" concept="5" />
-      <node id="5579506316679941757" at="48,0,49,0" concept="7" trace="canBeRootBreakingPoint" />
+      <node id="5579506316679941757" at="48,0,49,0" concept="7" trace="canBeAncestorBreakingPoint" />
       <node id="5579506316679941757" at="51,0,52,0" concept="7" trace="JobDefinition$Sj" />
       <node id="5579506316679941757" at="52,0,53,0" concept="7" trace="IStatementListContainer$xz" />
       <node id="5579506316679941757" at="53,0,54,0" concept="7" trace="ReturnStatement$lt" />
@@ -139,7 +139,7 @@
       <node id="5579506316679941757" at="27,109,39,6" concept="5" />
       <node id="5579506316679941757" at="26,0,41,0" concept="3" trace="calculateCanBeAncestorConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
       <scope id="5579506316679941757" at="22,38,23,37" />
-      <scope id="5579506316679941757" at="33,55,34,70" />
+      <scope id="5579506316679941757" at="33,55,34,74" />
       <scope id="6127528946925590059" at="43,27,44,116" />
       <scope id="5579506316679941757" at="22,0,25,0" />
       <scope id="5579506316679941759" at="41,149,46,16">
@@ -171,13 +171,13 @@
       <node id="5579506316679949084" at="22,41,23,40" concept="9" />
       <node id="5579506316679949084" at="30,130,31,161" concept="4" />
       <node id="5579506316679949084" at="31,161,32,0" concept="6" />
-      <node id="5579506316679949084" at="33,55,34,70" concept="1" />
+      <node id="5579506316679949084" at="33,55,34,74" concept="1" />
       <node id="5579506316679949084" at="35,9,36,0" concept="6" />
       <node id="5579506316679949084" at="36,0,37,22" concept="5" />
       <node id="6127528946925600536" at="41,149,42,115" concept="4" />
       <node id="6127528946925600547" at="43,27,44,116" concept="5" />
       <node id="6127528946925600556" at="45,5,46,16" concept="5" />
-      <node id="5579506316679949084" at="48,0,49,0" concept="7" trace="canBeRootBreakingPoint" />
+      <node id="5579506316679949084" at="48,0,49,0" concept="7" trace="canBeAncestorBreakingPoint" />
       <node id="5579506316679949084" at="51,0,52,0" concept="7" trace="ConfigDefinition$YG" />
       <node id="5579506316679949084" at="52,0,53,0" concept="7" trace="IStatementListContainer$xz" />
       <node id="5579506316679949084" at="53,0,54,0" concept="7" trace="ReturnStatement$lt" />
@@ -189,7 +189,7 @@
       <node id="5579506316679949084" at="27,109,39,6" concept="5" />
       <node id="5579506316679949084" at="26,0,41,0" concept="3" trace="calculateCanBeAncestorConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
       <scope id="5579506316679949084" at="22,41,23,40" />
-      <scope id="5579506316679949084" at="33,55,34,70" />
+      <scope id="5579506316679949084" at="33,55,34,74" />
       <scope id="6127528946925600546" at="43,27,44,116" />
       <scope id="5579506316679949084" at="22,0,25,0" />
       <scope id="5579506316679949086" at="41,149,46,16">

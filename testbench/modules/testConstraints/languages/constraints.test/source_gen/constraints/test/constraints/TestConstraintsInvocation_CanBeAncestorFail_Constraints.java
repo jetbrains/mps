@@ -28,7 +28,7 @@ public class TestConstraintsInvocation_CanBeAncestorFail_Constraints extends Bas
         boolean result = staticCanBeAnAncestor(context.getNode(), context.getChildNode(), context.getChildConcept(), context.getParentNode(), context.getLink());
 
         if (!(result) && checkingNodeContext != null) {
-          checkingNodeContext.setBreakingNode(canBeRootBreakingPoint);
+          checkingNodeContext.setBreakingNode(canBeAncestorBreakingPoint);
         }
 
         return result;
@@ -38,7 +38,7 @@ public class TestConstraintsInvocation_CanBeAncestorFail_Constraints extends Bas
   private static boolean staticCanBeAnAncestor(SNode node, SNode childNode, SAbstractConcept childConcept, SNode parentNode, SContainmentLink link) {
     return !(childConcept.equals(CONCEPTS.TestConstraintsInvocation_Child$$t));
   }
-  private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589402676");
+  private static final SNodePointer canBeAncestorBreakingPoint = new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589402676");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept TestConstraintsInvocation_CanBeAncestorFail$Ue = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x7438d976714223ebL, "constraints.test.structure.TestConstraintsInvocation_CanBeAncestorFail");

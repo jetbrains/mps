@@ -594,12 +594,12 @@
       <node id="8144732810705663998" at="26,39,27,38" concept="11" />
       <node id="8144732810705663998" at="34,130,35,161" concept="6" />
       <node id="8144732810705663998" at="35,161,36,0" concept="8" />
-      <node id="8144732810705663998" at="37,55,38,70" concept="2" />
+      <node id="8144732810705663998" at="37,55,38,74" concept="2" />
       <node id="8144732810705663998" at="39,9,40,0" concept="8" />
       <node id="8144732810705663998" at="40,0,41,22" concept="7" />
       <node id="8144732810705695911" at="46,596,47,109" concept="7" />
       <node id="8144732810705700322" at="48,12,49,18" concept="7" />
-      <node id="8144732810705663998" at="52,0,53,0" concept="9" trace="canBeRootBreakingPoint" />
+      <node id="8144732810705663998" at="52,0,53,0" concept="9" trace="canBeAncestorBreakingPoint" />
       <node id="8144732810705663998" at="55,0,56,0" concept="9" trace="PatternBuilder$2H" />
       <node id="8144732810705663998" at="56,0,57,0" concept="9" trace="NodeBuilderExpression$UJ" />
       <node id="8144732810705663998" at="57,0,58,0" concept="9" trace="NodeBuilderInitLink$XR" />
@@ -617,7 +617,7 @@
       <node id="8144732810705663998" at="31,109,43,6" concept="7" />
       <node id="8144732810705663998" at="30,0,45,0" concept="5" trace="calculateCanBeAncestorConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
       <scope id="8144732810705663998" at="26,39,27,38" />
-      <scope id="8144732810705663998" at="37,55,38,70" />
+      <scope id="8144732810705663998" at="37,55,38,74" />
       <scope id="8144732810705664253" at="46,596,47,109" />
       <scope id="8144732810705699227" at="48,12,49,18" />
       <scope id="8144732810705663998" at="26,0,29,0" />

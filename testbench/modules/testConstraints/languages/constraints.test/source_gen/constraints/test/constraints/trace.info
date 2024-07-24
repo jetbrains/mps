@@ -495,11 +495,11 @@
       <node id="730305212589402675" at="19,68,20,67" concept="9" />
       <node id="730305212589402675" at="27,130,28,161" concept="4" />
       <node id="730305212589402675" at="28,161,29,0" concept="6" />
-      <node id="730305212589402675" at="30,55,31,70" concept="1" />
+      <node id="730305212589402675" at="30,55,31,74" concept="1" />
       <node id="730305212589402675" at="32,9,33,0" concept="6" />
       <node id="730305212589402675" at="33,0,34,22" concept="5" />
       <node id="730305212589592073" at="38,149,39,79" concept="5" />
-      <node id="730305212589402675" at="41,0,42,0" concept="7" trace="canBeRootBreakingPoint" />
+      <node id="730305212589402675" at="41,0,42,0" concept="7" trace="canBeAncestorBreakingPoint" />
       <node id="730305212589402675" at="44,0,45,0" concept="7" trace="TestConstraintsInvocation_CanBeAncestorFail$Ue" />
       <node id="730305212589402675" at="45,0,46,0" concept="7" trace="TestConstraintsInvocation_Child$$t" />
       <node id="730305212589402675" at="19,0,22,0" concept="0" trace="TestConstraintsInvocation_CanBeAncestorFail_Constraints#()V" />
@@ -509,7 +509,7 @@
       <node id="730305212589402675" at="24,109,36,6" concept="5" />
       <node id="730305212589402675" at="23,0,38,0" concept="3" trace="calculateCanBeAncestorConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
       <scope id="730305212589402675" at="19,68,20,67" />
-      <scope id="730305212589402675" at="30,55,31,70" />
+      <scope id="730305212589402675" at="30,55,31,74" />
       <scope id="730305212589402677" at="38,149,39,79" />
       <scope id="730305212589402675" at="19,0,22,0" />
       <scope id="730305212589402675" at="38,0,41,0">
