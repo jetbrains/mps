@@ -110,6 +110,7 @@
       <action id="ShowFAQ"
               class="jetbrains.mps.ide.devkit.help.ShowFAQAction"
               text="FAQ"/>
+      <separator/>
       <add-to-group group-id="HelpMenu" relative-to-action="WhatsNewAction" anchor="after"/>
     </group>
 
