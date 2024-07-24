@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,6 +110,7 @@ public final class ModelDependencyUpdate {
         if (false == languageModule instanceof Language) {
           continue;
         }
+        // FIXME I wonder if this is necessary, provided myModelScanner detects accessory model references among x-model refs
         for (SModel am : ((Language) languageModule).getAccessoryModels()) {
           importedModels.add(am.getReference());
         }
