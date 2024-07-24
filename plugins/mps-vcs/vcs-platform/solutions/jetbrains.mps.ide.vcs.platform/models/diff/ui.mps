@@ -8491,7 +8491,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="5zPLqcHKa2n" role="3cqZAp" />
         <node concept="3clFbF" id="5zPLqcHK30z" role="3cqZAp">
           <node concept="2OqwBi" id="5zPLqcHK30$" role="3clFbG">
             <node concept="liA8E" id="5zPLqcHK30_" role="2OqNvi">
@@ -8527,16 +8526,41 @@
                 </node>
               </node>
             </node>
+            <node concept="3cpWs8" id="4qjsehsDuDv" role="3cqZAp">
+              <node concept="3cpWsn" id="4qjsehsDuDw" role="3cpWs9">
+                <property role="TrG5h" value="scrollPane" />
+                <node concept="3uibUv" id="4qjsehsD5XI" role="1tU5fm">
+                  <ref role="3uigEE" to="dxuu:~JScrollPane" resolve="JScrollPane" />
+                </node>
+                <node concept="2YIFZM" id="4qjsehsDuDx" role="33vP2m">
+                  <ref role="1Pybhc" to="lzb2:~ScrollPaneFactory" resolve="ScrollPaneFactory" />
+                  <ref role="37wK5l" to="lzb2:~ScrollPaneFactory.createScrollPane(java.awt.Component)" resolve="createScrollPane" />
+                  <node concept="37vLTw" id="4qjsehsDuDy" role="37wK5m">
+                    <ref role="3cqZAo" node="5zPLqcHJB9f" resolve="myTree" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="tDYuqTvXbM" role="3cqZAp">
+              <node concept="2OqwBi" id="tDYuqTvXbN" role="3clFbG">
+                <node concept="37vLTw" id="tDYuqTvXbO" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4qjsehsDuDw" resolve="createScrollPane" />
+                </node>
+                <node concept="liA8E" id="tDYuqTvXbP" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~JScrollPane.setViewportBorder(javax.swing.border.Border)" resolve="setViewportBorder" />
+                  <node concept="2YIFZM" id="5wibb2v9aRr" role="37wK5m">
+                    <ref role="37wK5l" to="lzb2:~IdeBorderFactory.createBorder()" resolve="createBorder" />
+                    <ref role="1Pybhc" to="lzb2:~IdeBorderFactory" resolve="IdeBorderFactory" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="5zPLqcHK30t" role="3cqZAp">
               <node concept="2OqwBi" id="5zPLqcHK30u" role="3clFbG">
                 <node concept="liA8E" id="5zPLqcHK30v" role="2OqNvi">
                   <ref role="37wK5l" to="jkm4:~Splitter.setFirstComponent(javax.swing.JComponent)" resolve="setFirstComponent" />
-                  <node concept="2YIFZM" id="5zPLqcHK30w" role="37wK5m">
-                    <ref role="1Pybhc" to="lzb2:~ScrollPaneFactory" resolve="ScrollPaneFactory" />
-                    <ref role="37wK5l" to="lzb2:~ScrollPaneFactory.createScrollPane(java.awt.Component)" resolve="createScrollPane" />
-                    <node concept="37vLTw" id="5zPLqcHK30x" role="37wK5m">
-                      <ref role="3cqZAo" node="5zPLqcHJB9f" resolve="myTree" />
-                    </node>
+                  <node concept="37vLTw" id="4qjsehsDuDz" role="37wK5m">
+                    <ref role="3cqZAo" node="4qjsehsDuDw" resolve="createScrollPane" />
                   </node>
                 </node>
                 <node concept="37vLTw" id="5zPLqcHK30y" role="2Oq$k0">
