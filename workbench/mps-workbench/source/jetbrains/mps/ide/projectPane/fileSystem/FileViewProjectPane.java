@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.application.AccessToken;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
 import com.intellij.openapi.fileEditor.FileEditorManagerListener;
@@ -34,6 +35,7 @@ import com.intellij.openapi.util.ActionCallback;
 import com.intellij.openapi.vcs.FileStatusListener;
 import com.intellij.openapi.vcs.FileStatusManager;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
+import com.intellij.openapi.vcs.VcsMappingListener;
 import com.intellij.openapi.vcs.changes.ChangeListAdapter;
 import com.intellij.openapi.vcs.changes.ChangeListListener;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
@@ -47,6 +49,7 @@ import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.ScrollPaneFactory;
+import com.intellij.util.SlowOperations;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.ide.ThreadUtils;
@@ -82,8 +85,6 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.event.ActionEvent;
@@ -171,13 +172,15 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
 
       @Override
       protected MPSTreeNode rebuild() {
-        MPSTreeNode node;
-        if (!myProject.isDisposed() && ProjectUtil.guessProjectDir(myProject) != null && ProjectHelper.fromIdeaProject(myProject) != null) {
-          node = new ProjectTreeNode(ProjectHelper.fromIdeaProject(myProject));
-        } else {
-          node = new TextTreeNode("No Project");
+        try (AccessToken ignored = SlowOperations.allowSlowOperations(SlowOperations.GENERIC)) { // MPS-36709
+          MPSTreeNode node;
+          if (!myProject.isDisposed() && ProjectUtil.guessProjectDir(myProject) != null && ProjectHelper.fromIdeaProject(myProject) != null) {
+            node = new ProjectTreeNode(ProjectHelper.fromIdeaProject(myProject));
+          } else {
+            node = new TextTreeNode("No Project");
+          }
+          return node;
         }
-        return node;
       }
 
       @Override
@@ -201,7 +204,7 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
     ChangeListManager.getInstance(myProject).addChangeListListener(myChangeListListener = new ChangeListUpdateListener());
     myMessageBusConnection = myProject.getMessageBus().connect(this);
     myMessageBusConnection.subscribe(VirtualFileManager.VFS_CHANGES, new FileChangesListener());
-    myMessageBusConnection.subscribe(ProjectLevelVcsManager.VCS_CONFIGURATION_CHANGED, this::rebuildTreeLater);
+    myMessageBusConnection.subscribe(ProjectLevelVcsManager.VCS_CONFIGURATION_CHANGED, (VcsMappingListener) this::rebuildTreeLater);
     myMessageBusConnection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
       @Override
       public void fileOpened(@NotNull FileEditorManager source, @NotNull VirtualFile file) {
