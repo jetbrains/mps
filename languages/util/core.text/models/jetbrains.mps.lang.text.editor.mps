@@ -3,6 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="-1" />
+    <use id="c64fb051-a02a-4400-8f65-1735dd616a7c" name="jetbrains.mps.lang.editor.doc" version="0" />
     <devkit ref="2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)" />
   </languages>
   <imports>
@@ -611,6 +612,12 @@
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
+      </concept>
+    </language>
+    <language id="c64fb051-a02a-4400-8f65-1735dd616a7c" name="jetbrains.mps.lang.editor.doc">
+      <concept id="1285659875393567816" name="jetbrains.mps.lang.editor.doc.structure.CellModel_HtmlTag" flags="ng" index="1v6uyg">
+        <child id="6803781190384112358" name="name" index="28fV0n" />
+        <child id="9185659875393569181" name="visibleCell" index="1j7Clw" />
       </concept>
     </language>
     <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
@@ -39562,57 +39569,15 @@
     <property role="3GE5qa" value="doc" />
     <ref role="1XX52x" to="zqge:GWtNbsAtfA" resolve="HtmlTag" />
     <node concept="3EZMnI" id="GWtNbsAtUH" role="2wV5jI">
-      <node concept="3F0ifn" id="GWtNbsAtUL" role="3EZMnx">
-        <property role="3F0ifm" value="&lt;" />
-        <node concept="11LMrY" id="33J4IjaliCO" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="3F0A7n" id="GWtNbsAtUO" role="3EZMnx">
-        <ref role="1NtTu8" to="zqge:5M4a$b5iL2Q" resolve="tagName" />
-      </node>
-      <node concept="3F0ifn" id="GWtNbsAtUR" role="3EZMnx">
-        <property role="3F0ifm" value="&gt;" />
-        <node concept="11L4FC" id="3j8D9h51kPN" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="3F2HdR" id="GWtNbsAtUU" role="3EZMnx">
-        <ref role="1NtTu8" to="zqge:1q3yNZeA$$y" resolve="content" />
-        <node concept="l2Vlx" id="GWtNbsAtUW" role="2czzBx" />
-        <node concept="3F0ifn" id="7LKuVLvQlH_" role="2czzBI">
-          <ref role="34QXea" node="7LKuVLvPOx_" resolve="HtmlTag_createEmptyLine" />
-        </node>
-      </node>
-      <node concept="3F0ifn" id="GWtNbsAtV0" role="3EZMnx">
-        <property role="3F0ifm" value="&lt;/" />
-        <node concept="11LMrY" id="3j8D9h52NGc" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
-      <node concept="1HlG4h" id="3_F$cr2o6k$" role="3EZMnx">
-        <node concept="1HfYo3" id="3_F$cr2o6kA" role="1HlULh">
-          <node concept="3TQlhw" id="3_F$cr2o6kC" role="1Hhtcw">
-            <node concept="3clFbS" id="3_F$cr2o6kE" role="2VODD2">
-              <node concept="3clFbF" id="3_F$cr2oi8s" role="3cqZAp">
-                <node concept="2OqwBi" id="3_F$cr2oi$u" role="3clFbG">
-                  <node concept="pncrf" id="3_F$cr2oi8r" role="2Oq$k0" />
-                  <node concept="3TrcHB" id="3_F$cr2okEW" role="2OqNvi">
-                    <ref role="3TsBF5" to="zqge:5M4a$b5iL2Q" resolve="tagName" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3F0ifn" id="GWtNbsAtV6" role="3EZMnx">
-        <property role="3F0ifm" value="&gt;" />
-        <node concept="11L4FC" id="3j8D9h52NGd" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
-      </node>
       <node concept="l2Vlx" id="GWtNbsAtUK" role="2iSdaV" />
+      <node concept="1v6uyg" id="2yJIINoWLyO" role="3EZMnx">
+        <node concept="3F2HdR" id="2yJIINoWLyR" role="1j7Clw">
+          <ref role="1NtTu8" to="zqge:1q3yNZeA$$y" resolve="content" />
+        </node>
+        <node concept="3F0A7n" id="2yJIINoWLyQ" role="28fV0n">
+          <ref role="1NtTu8" to="zqge:5M4a$b5iL2Q" resolve="tagName" />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="325Ffw" id="7LKuVLvPOx_">
