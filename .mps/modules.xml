@@ -216,7 +216,6 @@
       <modulePath path="$PROJECT_DIR$/languages/util/builders/sandbox/jetbrains.mps.baseLanguage.builders.sandbox.msd" folder="core.baseLanguage.builders" />
       <modulePath path="$PROJECT_DIR$/languages/util/core.doc/jetbrains.mps.lang.core.doc/jetbrains.mps.lang.core.doc.mpl" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/languages/util/core.doc/jetbrains.mps.lang.doctext/jetbrains.mps.lang.doctext.mpl" folder="core.languages.text" />
-      <modulePath path="$PROJECT_DIR$/languages/util/core.doc/jetbrains.mps.lang.doctext/test/jetbrains.mps.lang.doctext.test.msd" folder="core.languages.text" />
       <modulePath path="$PROJECT_DIR$/languages/util/core.text/jetbrains.mps.lang.text.mpl" folder="core.languages.text" />
       <modulePath path="$PROJECT_DIR$/languages/util/execution/util/jetbrains.mps.execution.util.mpl" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/languages/util/ext.plug/jetbrains.mps.lang.extension.plug.msd" folder="core.extensions" />
