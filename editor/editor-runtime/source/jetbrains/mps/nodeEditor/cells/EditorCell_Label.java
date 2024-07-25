@@ -30,6 +30,7 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.ide.datatransfer.TextPasteUtil;
+import jetbrains.mps.ide.undo.WorkbenchUndoHandler;
 import jetbrains.mps.nodeEditor.CellSide;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.IntelligentInputUtil;
@@ -78,7 +79,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   protected TextLine myNullTextLine;
   protected CaretState myCaretState = new CaretState();
 
-  protected EditorCell_Label(@NotNull jetbrains.mps.openapi.editor.EditorContext editorContext, SNode node, String text) {
+  protected EditorCell_Label(@NotNull EditorContext editorContext, SNode node, String text) {
     super(editorContext, node);
     myTextLine = new TextLine("", getStyle(), false, editorContext.getEditorComponent().getEditorComponentSettings());
     myNullTextLine = new TextLine("", getStyle(), true, editorContext.getEditorComponent().getEditorComponentSettings());
@@ -151,7 +152,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
       htmlChunk = htmlChunk.wrapWith("u");
     }
 
-    String link;
+    String link = null;
     String url = this.getStyle().get(StyleAttributes.URL);
     if (url != null){
       if (!url.startsWith(URLUtil.HTTP_PROTOCOL)) {
@@ -160,7 +161,9 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
       link = MPSDocumentationUtil.getLinkForUrl(url);
     } else {
       SNode node = APICellAdapter.getSNodeWRTReference(this);
-      link = MPSDocumentationUtil.getLinkForSNodeReference(node.getReference());
+      if (node != this.getSNode()){
+        link = MPSDocumentationUtil.getLinkForSNodeReference(node.getReference());
+      }
     }
     if (link != null) {
       htmlChunk = HtmlChunk.link(link, htmlChunk);
@@ -658,7 +661,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
   private void addChangeTextUndoableAction() {
     final ModelAccess ma = getContext().getRepository().getModelAccess();
-    if (ma instanceof ModelCommandContext.Provider) {
+    if (ma instanceof Provider) {
       final ModelCommandContext cc = ((Provider) ma).getCommandContext(getContext().getModel());
       if (cc != null) {
         cc.registerActionWithUndo(new DummyUndoableAction(getSNode()));
@@ -689,7 +692,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
     return currentText.substring(0, startSelection) + replacingText + currentText.substring(endSelection);
   }
 
-  private boolean canDeleteFrom(jetbrains.mps.openapi.editor.cells.EditorCell cell) {
+  private boolean canDeleteFrom(EditorCell cell) {
     if (getText().length() == 0) {
       return false;
     }
@@ -924,7 +927,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
   }
 
   private boolean isTheOnlyCompletelySelectedLabelInBigCell() {
-    jetbrains.mps.openapi.editor.cells.EditorCell containingBigCell = CellTraversalUtil.getContainingBigCell(this);
+    EditorCell containingBigCell = CellTraversalUtil.getContainingBigCell(this);
     return CellTraversalUtil.getFirstLeaf(containingBigCell) == this && CellTraversalUtil.getLastLeaf(containingBigCell) == this &&
            getText().equals(getSelectedText());
   }
@@ -1351,8 +1354,8 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
 
   /**
    * This action can be used to introduce empty action into the stack of actions within UndoHelper
-   * forcing it to add undoable command into IDEA undo stack: see {@link jetbrains.mps.ide.undo.WorkbenchUndoHandler}
-   * flushCommand() method implementation. This method will not add {@link jetbrains.mps.ide.undo.SNodeIdeaUndoableAction}
+   * forcing it to add undoable command into IDEA undo stack: see {@link WorkbenchUndoHandler}
+   * flushCommand() method implementation. This method will not add {@link SNodeIdeaUndoableAction}
    * action into IDEA undo stack if it has no own undoable actions.
    * <p/>
    * This is helpful in case of UI-only modifications performed upon the cells. For example, if the textual cell is modified
