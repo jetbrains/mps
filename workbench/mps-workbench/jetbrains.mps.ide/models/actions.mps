@@ -3760,11 +3760,9 @@
             <node concept="3uibUv" id="1Fqksy7AWpv" role="1tU5fm">
               <ref role="3uigEE" to="fyhk:~VisibleModuleRegistry" resolve="VisibleModuleRegistry" />
             </node>
-            <node concept="2ShNRf" id="1Fqksy7AWx9" role="33vP2m">
-              <node concept="1pGfFk" id="1Fqksy7AWxa" role="2ShVmc">
-                <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="fyhk:~VisibleModuleRegistry.&lt;init&gt;()" resolve="VisibleModuleRegistry" />
-              </node>
+            <node concept="2YIFZM" id="5q_BJsUWbLc" role="33vP2m">
+              <ref role="37wK5l" to="fyhk:~VisibleModuleRegistry.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="fyhk:~VisibleModuleRegistry" resolve="VisibleModuleRegistry" />
             </node>
           </node>
         </node>
