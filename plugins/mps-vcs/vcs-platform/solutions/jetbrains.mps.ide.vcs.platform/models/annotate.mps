@@ -19372,7 +19372,7 @@
                   <node concept="liA8E" id="5iqtVopFLhI" role="2OqNvi">
                     <ref role="37wK5l" to="drih:~EditorColorsManager.getScheme(java.lang.String)" resolve="getScheme" />
                     <node concept="Xl_RD" id="5iqtVopFLhJ" role="37wK5m">
-                      <property role="Xl_RC" value="IntelliJ Light" />
+                      <property role="Xl_RC" value="Default" />
                     </node>
                   </node>
                 </node>
@@ -19411,7 +19411,7 @@
             <node concept="liA8E" id="2CeUBM7S0Ia" role="2OqNvi">
               <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
               <node concept="Xl_RD" id="2CeUBM7SJq9" role="37wK5m">
-                <property role="Xl_RC" value="user_Light" />
+                <property role="Xl_RC" value="Light" />
               </node>
             </node>
           </node>
