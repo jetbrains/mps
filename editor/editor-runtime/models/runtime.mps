@@ -12788,7 +12788,7 @@
                         </node>
                       </node>
                       <node concept="13MTOL" id="2O543T79duP" role="2OqNvi">
-                        <ref role="13MTZf" to="hdb0:1V7fFCAbmPi" />
+                        <ref role="13MTZf" to="hdb0:1V7fFCAbmPi" resolve="text" />
                       </node>
                     </node>
                     <node concept="1uHKPH" id="2O543T79duQ" role="2OqNvi" />
@@ -12834,7 +12834,7 @@
                   <node concept="2ShNRf" id="2O543T79dv6" role="33vP2m">
                     <node concept="1pGfFk" id="2O543T79dv7" role="2ShVmc">
                       <property role="373rjd" value="true" />
-                      <ref role="37wK5l" node="2iNJDZP2RE6" />
+                      <ref role="37wK5l" node="2iNJDZP2RE6" resolve="HeadlessEditorComponent" />
                       <node concept="37vLTw" id="2O543T79dv8" role="37wK5m">
                         <ref role="3cqZAo" node="2O543T79duY" resolve="repo" />
                       </node>
@@ -12955,7 +12955,7 @@
                         </node>
                       </node>
                       <node concept="13MTOL" id="2O543T78CfV" role="2OqNvi">
-                        <ref role="13MTZf" to="hdb0:1V7fFCAbmPi" />
+                        <ref role="13MTZf" to="hdb0:1V7fFCAbmPi" resolve="text" />
                       </node>
                     </node>
                     <node concept="1uHKPH" id="2O543T78CfW" role="2OqNvi" />
@@ -13228,7 +13228,7 @@
                         </node>
                       </node>
                       <node concept="13MTOL" id="5OwdZ3mreZi" role="2OqNvi">
-                        <ref role="13MTZf" to="hdb0:1V7fFCAbmPi" />
+                        <ref role="13MTZf" to="hdb0:1V7fFCAbmPi" resolve="text" />
                       </node>
                     </node>
                     <node concept="1uHKPH" id="5OwdZ3mreZj" role="2OqNvi" />

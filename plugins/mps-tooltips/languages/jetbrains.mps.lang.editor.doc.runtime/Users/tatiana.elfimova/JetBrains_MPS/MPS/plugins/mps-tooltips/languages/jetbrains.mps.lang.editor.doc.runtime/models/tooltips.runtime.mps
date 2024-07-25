@@ -146,7 +146,7 @@
           </node>
           <node concept="2ShNRf" id="7XU1fOGns$D" role="37wK5m">
             <node concept="1pGfFk" id="2yJIINoLtoP" role="2ShVmc">
-              <ref role="37wK5l" node="2yJIINoLs_t" />
+              <ref role="37wK5l" node="2yJIINoLs_t" resolve="EditorCell_HtmlTag.CellLayout_HtmlTag123" />
             </node>
           </node>
         </node>
@@ -175,7 +175,7 @@
           <node concept="1rXfSq" id="3e_4fpSnA5M" role="3clFbG">
             <ref role="37wK5l" to="g51k:~EditorCell_Collection.addEditorCell(jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="addEditorCell" />
             <node concept="37vLTw" id="3e_4fpSnC6t" role="37wK5m">
-              <ref role="3cqZAo" node="5TFSJ7mhrSz" resolve="visibleCell2" />
+              <ref role="3cqZAo" node="5TFSJ7mhrSz" resolve="openTag" />
             </node>
           </node>
         </node>
@@ -203,7 +203,7 @@
           <node concept="1rXfSq" id="7XU1fOGnuzV" role="3clFbG">
             <ref role="37wK5l" to="g51k:~EditorCell_Collection.addEditorCell(jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="addEditorCell" />
             <node concept="37vLTw" id="7XU1fOGnuC_" role="37wK5m">
-              <ref role="3cqZAo" node="7XU1fOGnt0R" resolve="visibleCell" />
+              <ref role="3cqZAo" node="7XU1fOGnt0R" resolve="content" />
             </node>
           </node>
         </node>

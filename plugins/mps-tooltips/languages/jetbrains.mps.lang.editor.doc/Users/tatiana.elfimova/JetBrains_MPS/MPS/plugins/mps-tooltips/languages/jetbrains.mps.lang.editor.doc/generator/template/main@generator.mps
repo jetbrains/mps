@@ -159,14 +159,14 @@
   <node concept="bUwia" id="6zKSYRPQ9rr">
     <property role="TrG5h" value="main" />
     <node concept="3aamgX" id="48TKAW3VfZV" role="3acgRq">
-      <ref role="30HIoZ" to="kaxz:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
+      <ref role="30HIoZ" to="kaxz:6XU1fOGp7Jy" resolve="CellModel_HtmlTag" />
       <node concept="1Koe21" id="48TKAW3VfZW" role="1lVwrX">
         <node concept="9aQIb" id="48TKAW3VfZX" role="1Koe22">
           <node concept="3clFbS" id="48TKAW3VfZY" role="9aQI4">
             <node concept="3clFbH" id="48TKAW3VfZZ" role="3cqZAp">
               <node concept="raruj" id="48TKAW3Vg00" role="lGtFl" />
               <node concept="5jKBG" id="48TKAW3Vg01" role="lGtFl">
-                <ref role="v9R2y" node="7XU1fOGp8aY" resolve="reduce_CellModel_Tooltip" />
+                <ref role="v9R2y" node="7XU1fOGp8aY" resolve="reduce_CellModel_HtmlTag" />
               </node>
             </node>
             <node concept="3clFbH" id="48TKAW3Vg0h" role="3cqZAp">
@@ -216,7 +216,7 @@
   </node>
   <node concept="13MO4I" id="7XU1fOGp8aY">
     <property role="TrG5h" value="reduce_CellModel_HtmlTag" />
-    <ref role="3gUMe" to="kaxz:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
+    <ref role="3gUMe" to="kaxz:6XU1fOGp7Jy" resolve="CellModel_HtmlTag" />
     <node concept="312cEu" id="7XU1fOGpbcE" role="13RCb5">
       <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="_context_class_" />
@@ -332,7 +332,7 @@
                               <node concept="2OqwBi" id="2yJIINoYfnR" role="1iwH7V">
                                 <node concept="30H73N" id="2yJIINoYfnS" role="2Oq$k0" />
                                 <node concept="3TrEf2" id="2yJIINoYfnT" role="2OqNvi">
-                                  <ref role="3Tt5mk" to="kaxz:5TFSJ7ml5bA" />
+                                  <ref role="3Tt5mk" to="kaxz:5TFSJ7ml5bA" resolve="name" />
                                 </node>
                               </node>
                             </node>
@@ -355,7 +355,7 @@
               </node>
               <node concept="2ShNRf" id="7XU1fOGpo97" role="33vP2m">
                 <node concept="1pGfFk" id="7XU1fOGpo2A" role="2ShVmc">
-                  <ref role="37wK5l" to="49c:7XU1fOGnsqq" />
+                  <ref role="37wK5l" to="49c:7XU1fOGnsqq" resolve="EditorCell_HtmlTag" />
                   <node concept="37vLTw" id="7XU1fOGpsz6" role="37wK5m">
                     <ref role="3cqZAo" node="fYh_FQ2" resolve="editorContext" />
                   </node>
@@ -363,7 +363,7 @@
                     <ref role="3cqZAo" node="fYh_FQ7" resolve="node" />
                   </node>
                   <node concept="37vLTw" id="7XU1fOGpvtR" role="37wK5m">
-                    <ref role="3cqZAo" node="7XU1fOGpryL" resolve="visibleCell1" />
+                    <ref role="3cqZAo" node="7XU1fOGpryL" resolve="conetentCell" />
                   </node>
                   <node concept="37vLTw" id="_8llz8$vvU" role="37wK5m">
                     <ref role="3cqZAo" node="5TFSJ7mkXTt" resolve="openTagCell" />

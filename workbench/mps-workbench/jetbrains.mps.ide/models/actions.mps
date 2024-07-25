@@ -49017,7 +49017,7 @@
             <node concept="2ShNRf" id="5OwdZ3mrSOl" role="33vP2m">
               <node concept="1pGfFk" id="5OwdZ3mrSOm" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="7a0s:2wyIZlE_$Lp" />
+                <ref role="37wK5l" to="7a0s:2wyIZlE_$Lp" resolve="DocumentationProvider" />
                 <node concept="37vLTw" id="5OwdZ3mrSOn" role="37wK5m">
                   <ref role="3cqZAo" node="yRIyp4fWhH" resolve="rootRepository" />
                 </node>
@@ -49069,7 +49069,7 @@
                 <ref role="3cqZAo" node="4bmJRoNynXT" resolve="point" />
               </node>
               <node concept="37vLTw" id="6QgEayDKw2i" role="37wK5m">
-                <ref role="3cqZAo" node="6QgEayDKsav" resolve="pr" />
+                <ref role="3cqZAo" node="6QgEayDKsav" resolve="provider" />
               </node>
             </node>
           </node>
