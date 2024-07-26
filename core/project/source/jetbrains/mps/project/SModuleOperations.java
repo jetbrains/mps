@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.project;
 
-import jetbrains.mps.kernel.model.MissingDependenciesFixer;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
 import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
@@ -27,10 +25,8 @@ import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -170,21 +166,6 @@ public class SModuleOperations {
       }
     }
     return new TreeSet<>(paths);
-  }
-
-  /**
-   * @deprecated It's unclear what 'adjustments' refer to; no reason to prefer this method to regular {@code ModelRoot.createModel()}
-   * @see ModelsAutoImportsManager
-   * @see MissingDependenciesFixer#fixModuleDependencies()
-   */
-  @Nullable
-  @Deprecated(since = "2021.3", forRemoval = true)
-  public static EditableSModel createModelWithAdjustments(@NotNull String name, @NotNull ModelRoot root) {
-    // As of 2022.3, there are no uses in MPS code; and I didn't find any uses in MPS-extensions and mbeddr, too. Remove once 22.3 is out
-    Logger.getLogger(SModuleOperations.class).warnDeprecatedUse("SModuleOperations.createModelWithAdjustments() will be removed in the next release");
-    EditableSModel model = (EditableSModel) root.createModel(name);
-    model.save();
-    return model;
   }
 
   /**
