@@ -1927,34 +1927,49 @@
                   <property role="373rjd" value="true" />
                   <ref role="37wK5l" node="41innpAnahF" resolve="WorkbenchMakeTask" />
                   <ref role="1Y3XeK" node="9D0Ba05uFz" resolve="WorkbenchMakeTask" />
-                  <node concept="3clFb_" id="41innpAoSuG" role="jymVt">
-                    <property role="1EzhhJ" value="false" />
-                    <property role="TrG5h" value="aboutToStart" />
-                    <node concept="3cqZAl" id="41innpAoSuH" role="3clF45" />
-                    <node concept="3Tmbuc" id="41innpAoSuI" role="1B3o_S" />
-                    <node concept="3clFbS" id="41innpAoSuJ" role="3clF47">
+                  <node concept="2tJIrI" id="2l43ouTGDuS" role="jymVt" />
+                  <node concept="3clFb_" id="2l43ouTGKYh" role="jymVt">
+                    <property role="TrG5h" value="doRun" />
+                    <node concept="3Tmbuc" id="2l43ouTGKYi" role="1B3o_S" />
+                    <node concept="3cqZAl" id="2l43ouTGKYj" role="3clF45" />
+                    <node concept="37vLTG" id="2l43ouTGKYk" role="3clF46">
+                      <property role="TrG5h" value="monitor" />
+                      <node concept="3uibUv" id="2l43ouTGKYl" role="1tU5fm">
+                        <ref role="3uigEE" to="yyf4:~ProgressMonitor" resolve="ProgressMonitor" />
+                      </node>
+                    </node>
+                    <node concept="2AHcQZ" id="2l43ouTGKYA" role="2AJF6D">
+                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                    </node>
+                    <node concept="3clFbS" id="2l43ouTGKYC" role="3clF47">
                       <node concept="3clFbF" id="41innpAoSuK" role="3cqZAp">
                         <node concept="1rXfSq" id="41innpAoSuL" role="3clFbG">
                           <ref role="37wK5l" node="9D0Ba05vgk" resolve="notifyListeners" />
                           <node concept="2ShNRf" id="41innpAoSuM" role="37wK5m">
                             <node concept="1pGfFk" id="41innpAoSuN" role="2ShVmc">
-                              <ref role="37wK5l" to="hfuk:7lTD6YZtg3_" resolve="MakeNotification" />
+                              <ref role="37wK5l" to="hfuk:7lTD6YZtg3_" />
                               <node concept="Xjq3P" id="41innpAoSuO" role="37wK5m">
                                 <ref role="1HBi2w" node="9D0Ba05uYl" resolve="WorkbenchMakeService" />
                               </node>
                               <node concept="Rm8GO" id="41innpAoSuP" role="37wK5m">
-                                <ref role="1Px2BO" to="hfuk:7lTD6YZtjgd" resolve="MakeNotification.Kind" />
+                                <ref role="1Px2BO" to="hfuk:7lTD6YZtjgd" resolve="Kind" />
                                 <ref role="Rm8GQ" to="hfuk:7lTD6YZtjgj" resolve="SCRIPT_ABOUT_TO_START" />
                               </node>
                             </node>
                           </node>
                         </node>
                       </node>
-                    </node>
-                    <node concept="2AHcQZ" id="41innpAoSuQ" role="2AJF6D">
-                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                      <node concept="3clFbF" id="2l43ouTGKYF" role="3cqZAp">
+                        <node concept="3nyPlj" id="2l43ouTGKYE" role="3clFbG">
+                          <ref role="37wK5l" node="9D0Ba05uGD" resolve="doRun" />
+                          <node concept="37vLTw" id="2l43ouTGKYD" role="37wK5m">
+                            <ref role="3cqZAo" node="2l43ouTGKYk" resolve="monitor" />
+                          </node>
+                        </node>
+                      </node>
                     </node>
                   </node>
+                  <node concept="2tJIrI" id="2l43ouTI_i3" role="jymVt" />
                   <node concept="3clFb_" id="41innpAoSuR" role="jymVt">
                     <property role="TrG5h" value="done" />
                     <node concept="3cqZAl" id="41innpAoSuS" role="3clF45" />
@@ -2377,9 +2392,6 @@
                     </node>
                   </node>
                   <node concept="3Tm1VV" id="2Eb$RRp$Fab" role="1B3o_S" />
-                  <node concept="37vLTw" id="2Eb$RRp$BcZ" role="37wK5m">
-                    <ref role="3cqZAo" node="9D0Ba05vjy" resolve="scrName" />
-                  </node>
                   <node concept="37vLTw" id="41innpAqz7k" role="37wK5m">
                     <ref role="3cqZAo" node="41innpAkY8K" resolve="makeSeq" />
                   </node>
@@ -4421,15 +4433,6 @@
       <ref role="3uigEE" to="4rvk:6eQ0BhLYtbb" resolve="CoreMakeTask" />
     </node>
     <node concept="3clFbW" id="41innpAnahF" role="jymVt">
-      <node concept="37vLTG" id="41innpAnbPi" role="3clF46">
-        <property role="TrG5h" value="title" />
-        <node concept="3uibUv" id="41innpAnbPj" role="1tU5fm">
-          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-        </node>
-        <node concept="2AHcQZ" id="41innpAnbPk" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
       <node concept="37vLTG" id="41innpAnbYd" role="3clF46">
         <property role="TrG5h" value="makeSeq" />
         <node concept="3uibUv" id="41innpAndh4" role="1tU5fm">
@@ -4451,10 +4454,7 @@
       <node concept="3cqZAl" id="41innpAnahG" role="3clF45" />
       <node concept="3clFbS" id="41innpAnahI" role="3clF47">
         <node concept="XkiVB" id="41innpAnff3" role="3cqZAp">
-          <ref role="37wK5l" to="4rvk:41innpAgd54" resolve="CoreMakeTask" />
-          <node concept="37vLTw" id="41innpAnfWc" role="37wK5m">
-            <ref role="3cqZAo" node="41innpAnbPi" resolve="title" />
-          </node>
+          <ref role="37wK5l" to="4rvk:4uO1VCfEygl" />
           <node concept="37vLTw" id="41innpAnfXw" role="37wK5m">
             <ref role="3cqZAo" node="41innpAnbYd" resolve="makeSeq" />
           </node>
@@ -4702,12 +4702,11 @@
       </node>
     </node>
     <node concept="2tJIrI" id="2Eb$RRpyf7o" role="jymVt" />
-    <node concept="2tJIrI" id="6DhoVFdfaVo" role="jymVt" />
     <node concept="3clFb_" id="9D0Ba05uG2" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="reconcile" />
       <node concept="3cqZAl" id="9D0Ba05uG3" role="3clF45" />
-      <node concept="3Tmbuc" id="9D0Ba05uG4" role="1B3o_S" />
+      <node concept="3Tm6S6" id="2l43ouTJj5t" role="1B3o_S" />
       <node concept="3clFbS" id="9D0Ba05uG5" role="3clF47">
         <node concept="3clFbF" id="9D0Ba05uG6" role="3cqZAp">
           <node concept="2OqwBi" id="9D0Ba05uG7" role="3clFbG">
@@ -4754,11 +4753,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="9D0Ba05uGv" role="3cqZAp">
-              <node concept="3nyPlj" id="9D0Ba05uGw" role="3clFbG">
-                <ref role="37wK5l" to="4rvk:1Z_kCIGSOrN" resolve="reconcile" />
-              </node>
-            </node>
           </node>
           <node concept="1wplmZ" id="xvs04dI$UH" role="1zxBo6">
             <node concept="3clFbS" id="9D0Ba05uGx" role="1wplMD">
@@ -4781,9 +4775,6 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="9D0Ba05uGC" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
     </node>
     <node concept="2tJIrI" id="6DhoVFdfaVp" role="jymVt" />
     <node concept="3clFb_" id="9D0Ba05uGD" role="jymVt">
@@ -4798,44 +4789,57 @@
         </node>
       </node>
       <node concept="3clFbS" id="9D0Ba05uGI" role="3clF47">
-        <node concept="3clFbJ" id="9D0Ba05uBh" role="3cqZAp">
-          <node concept="3clFbS" id="9D0Ba05uBi" role="3clFbx">
-            <node concept="3clFbF" id="9D0Ba05uGJ" role="3cqZAp">
-              <node concept="3nyPlj" id="9D0Ba05uGK" role="3clFbG">
-                <ref role="37wK5l" to="4rvk:1Z_kCIGSOoj" resolve="doRun" />
-                <node concept="37vLTw" id="2BHiRxgm9Xa" role="37wK5m">
-                  <ref role="3cqZAo" node="9D0Ba05uGG" resolve="monitor" />
+        <node concept="3J1_TO" id="2l43ouTIRxM" role="3cqZAp">
+          <node concept="3clFbS" id="2l43ouTIRxO" role="1zxBo7">
+            <node concept="3clFbJ" id="9D0Ba05uBh" role="3cqZAp">
+              <node concept="3clFbS" id="9D0Ba05uBi" role="3clFbx">
+                <node concept="3clFbF" id="9D0Ba05uGJ" role="3cqZAp">
+                  <node concept="3nyPlj" id="9D0Ba05uGK" role="3clFbG">
+                    <ref role="37wK5l" to="4rvk:1Z_kCIGSOoj" resolve="doRun" />
+                    <node concept="37vLTw" id="2BHiRxgm9Xa" role="37wK5m">
+                      <ref role="3cqZAo" node="9D0Ba05uGG" resolve="monitor" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="9D0Ba05uGM" role="3cqZAp">
+                  <node concept="2OqwBi" id="9D0Ba05uGN" role="3clFbG">
+                    <node concept="37vLTw" id="2Eb$RRpvZ8q" role="2Oq$k0">
+                      <ref role="3cqZAo" node="9D0Ba05uFi" resolve="myState" />
+                    </node>
+                    <node concept="liA8E" id="9D0Ba05uGR" role="2OqNvi">
+                      <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
+                      <node concept="Rm8GO" id="9D0Ba05uGS" role="37wK5m">
+                        <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
+                        <ref role="Rm8GQ" node="9D0Ba05uJV" resolve="INDETERMINATE" />
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
-            </node>
-            <node concept="3clFbF" id="9D0Ba05uGM" role="3cqZAp">
-              <node concept="2OqwBi" id="9D0Ba05uGN" role="3clFbG">
-                <node concept="37vLTw" id="2Eb$RRpvZ8q" role="2Oq$k0">
+              <node concept="2OqwBi" id="9D0Ba05uBA" role="3clFbw">
+                <node concept="37vLTw" id="2BHiRxeuvyB" role="2Oq$k0">
                   <ref role="3cqZAo" node="9D0Ba05uFi" resolve="myState" />
                 </node>
-                <node concept="liA8E" id="9D0Ba05uGR" role="2OqNvi">
-                  <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
-                  <node concept="Rm8GO" id="9D0Ba05uGS" role="37wK5m">
+                <node concept="liA8E" id="9D0Ba05uBC" role="2OqNvi">
+                  <ref role="37wK5l" to="i5cy:~AtomicReference.compareAndSet(java.lang.Object,java.lang.Object)" resolve="compareAndSet" />
+                  <node concept="Rm8GO" id="9D0Ba05uBD" role="37wK5m">
                     <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
-                    <ref role="Rm8GQ" node="9D0Ba05uJV" resolve="INDETERMINATE" />
+                    <ref role="Rm8GQ" node="9D0Ba05uJR" resolve="NOT_STARTED" />
+                  </node>
+                  <node concept="Rm8GO" id="9D0Ba05uBE" role="37wK5m">
+                    <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
+                    <ref role="Rm8GQ" node="9D0Ba05uJS" resolve="RUNNING" />
                   </node>
                 </node>
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="9D0Ba05uBA" role="3clFbw">
-            <node concept="37vLTw" id="2BHiRxeuvyB" role="2Oq$k0">
-              <ref role="3cqZAo" node="9D0Ba05uFi" resolve="myState" />
-            </node>
-            <node concept="liA8E" id="9D0Ba05uBC" role="2OqNvi">
-              <ref role="37wK5l" to="i5cy:~AtomicReference.compareAndSet(java.lang.Object,java.lang.Object)" resolve="compareAndSet" />
-              <node concept="Rm8GO" id="9D0Ba05uBD" role="37wK5m">
-                <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
-                <ref role="Rm8GQ" node="9D0Ba05uJR" resolve="NOT_STARTED" />
-              </node>
-              <node concept="Rm8GO" id="9D0Ba05uBE" role="37wK5m">
-                <ref role="1Px2BO" node="9D0Ba05uHf" resolve="WorkbenchMakeTask.TaskState" />
-                <ref role="Rm8GQ" node="9D0Ba05uJS" resolve="RUNNING" />
+          <node concept="1wplmZ" id="2l43ouTISdU" role="1zxBo6">
+            <node concept="3clFbS" id="2l43ouTISdV" role="1wplMD">
+              <node concept="3clFbF" id="2l43ouTISV0" role="3cqZAp">
+                <node concept="1rXfSq" id="2l43ouTISUZ" role="3clFbG">
+                  <ref role="37wK5l" node="9D0Ba05uG2" resolve="reconcile" />
+                </node>
               </node>
             </node>
           </node>
@@ -4880,7 +4884,6 @@
       </node>
       <node concept="3Tm6S6" id="9D0Ba05uJW" role="1B3o_S" />
     </node>
-    <node concept="2tJIrI" id="2Eb$RRpz76Y" role="jymVt" />
     <node concept="3uibUv" id="2Eb$RRpxO6Q" role="EKbjA">
       <ref role="3uigEE" to="5zyv:~Future" resolve="Future" />
       <node concept="3uibUv" id="2Eb$RRpxSnG" role="11_B2D">

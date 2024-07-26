@@ -227,11 +227,14 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     MakeSequence makeSeq = new MakeSequence(inputRes, defaultScript, session);
 
     Project ideaPrj = ProjectHelper.toIdeaProject(session.getProject());
-    final WorkbenchMakeTask makeTask = new WorkbenchMakeTask(scrName, makeSeq, new Controller(controller, mh), mh) {
+    final WorkbenchMakeTask makeTask = new WorkbenchMakeTask(makeSeq, new Controller(controller, mh), mh) {
+
       @Override
-      protected void aboutToStart() {
+      protected void doRun(ProgressMonitor monitor) {
         notifyListeners(new MakeNotification(WorkbenchMakeService.this, MakeNotification.Kind.SCRIPT_ABOUT_TO_START));
+        super.doRun(monitor);
       }
+
       @Override
       protected void done() {
         if (getResult() == null) {
