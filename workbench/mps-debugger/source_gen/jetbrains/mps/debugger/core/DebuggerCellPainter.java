@@ -31,47 +31,19 @@ public abstract class DebuggerCellPainter<E> extends AbstractAdditionalPainter<E
   private Map<EditorComponent, EditorCell> myCells = MapSequence.fromMap(new HashMap<EditorComponent, EditorCell>());
   public DebuggerCellPainter() {
   }
-  /**
-   * 
-   * @deprecated replaced with similar method that takes EditorComponent instance, override that one, instead
-   */
-  @Nullable
-  @Deprecated
-  protected Color getCellBackgroundColor() {
-    return null;
-  }
+
   @Nullable
   protected Color getCellBackgroundColor(jetbrains.mps.openapi.editor.EditorComponent ec) {
-    // transition code until 22.3 is out, remove the body and deprecated method, make this one abstract
-    return getCellBackgroundColor();
-  }
-  /**
-   * 
-   * @deprecated replaced with similar method that takes EditorComponent instance, override that one, instead
-   */
-  @Nullable
-  @Deprecated
-  protected Color getStripeBackgroundColor() {
     return null;
   }
+
   @Nullable
   protected Color getStripeBackgroundColor(jetbrains.mps.openapi.editor.EditorComponent ec) {
-    // transition code until 22.3 is out, remove the body and deprecated method, make this one abstract
-    return getStripeBackgroundColor();
-  }
-  /**
-   * 
-   * @deprecated replaced with similar method that takes EditorComponent instance, override that one, instead
-   */
-  @Nullable
-  @Deprecated
-  protected Color getFrameColor() {
     return null;
   }
   @Nullable
   protected Color getFrameColor(jetbrains.mps.openapi.editor.EditorComponent ec) {
-    // transition code until 22.3 is out, remove the body and deprecated method, make this one abstract
-    return getFrameColor();
+    return null;
   }
 
   @Nullable

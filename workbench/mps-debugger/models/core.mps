@@ -4,7 +4,6 @@
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
@@ -248,9 +247,6 @@
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -2811,34 +2807,7 @@
       <node concept="3Tm1VV" id="7jEVj$vXJYi" role="1B3o_S" />
       <node concept="3clFbS" id="7jEVj$vXJYj" role="3clF47" />
     </node>
-    <node concept="3clFb_" id="7jEVj$vY0x3" role="jymVt">
-      <property role="TrG5h" value="getCellBackgroundColor" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tmbuc" id="7jEVj$vY0x4" role="1B3o_S" />
-      <node concept="3uibUv" id="7jEVj$vY0x5" role="3clF45">
-        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
-      </node>
-      <node concept="3clFbS" id="7jEVj$vY0x6" role="3clF47">
-        <node concept="3clFbF" id="788lcaFK1o3" role="3cqZAp">
-          <node concept="10Nm6u" id="788lcaFK1o2" role="3clFbG" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="7jEVj$vY0x7" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-      <node concept="P$JXv" id="788lcaFJX_f" role="lGtFl">
-        <node concept="TZ5HI" id="788lcaFJX_g" role="3nqlJM">
-          <node concept="TZ5HA" id="788lcaFJX_h" role="3HnX3l">
-            <node concept="1dT_AC" id="788lcaFK1dk" role="1dT_Ay">
-              <property role="1dT_AB" value="replaced with similar method that takes EditorComponent instance, override that one, instead" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="788lcaFJX_i" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-    </node>
+    <node concept="2tJIrI" id="12Vcw85x91Z" role="jymVt" />
     <node concept="3clFb_" id="788lcaFITKa" role="jymVt">
       <property role="TrG5h" value="getCellBackgroundColor" />
       <property role="DiZV1" value="false" />
@@ -2847,62 +2816,8 @@
         <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
       </node>
       <node concept="3clFbS" id="788lcaFITKd" role="3clF47">
-        <node concept="3SKdUt" id="788lcaFK39L" role="3cqZAp">
-          <node concept="1PaTwC" id="788lcaFK39M" role="1aUNEU">
-            <node concept="3oM_SD" id="788lcaFK39N" role="1PaTwD">
-              <property role="3oM_SC" value="transition" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK39O" role="1PaTwD">
-              <property role="3oM_SC" value="code" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK39P" role="1PaTwD">
-              <property role="3oM_SC" value="until" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK39Q" role="1PaTwD">
-              <property role="3oM_SC" value="22.3" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK39R" role="1PaTwD">
-              <property role="3oM_SC" value="is" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK39S" role="1PaTwD">
-              <property role="3oM_SC" value="out," />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK39T" role="1PaTwD">
-              <property role="3oM_SC" value="remove" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK39U" role="1PaTwD">
-              <property role="3oM_SC" value="the" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK39V" role="1PaTwD">
-              <property role="3oM_SC" value="body" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK39W" role="1PaTwD">
-              <property role="3oM_SC" value="and" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK39X" role="1PaTwD">
-              <property role="3oM_SC" value="deprecated" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK39Y" role="1PaTwD">
-              <property role="3oM_SC" value="method," />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK39Z" role="1PaTwD">
-              <property role="3oM_SC" value="make" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK3a0" role="1PaTwD">
-              <property role="3oM_SC" value="this" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK3a1" role="1PaTwD">
-              <property role="3oM_SC" value="one" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFK3a2" role="1PaTwD">
-              <property role="3oM_SC" value="abstract" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="788lcaFJPC8" role="3cqZAp">
-          <node concept="1rXfSq" id="788lcaFJTW5" role="3cqZAk">
-            <ref role="37wK5l" node="7jEVj$vY0x3" resolve="getCellBackgroundColor" />
-          </node>
+        <node concept="3clFbF" id="12Vcw85x4TZ" role="3cqZAp">
+          <node concept="10Nm6u" id="12Vcw85x4TX" role="3clFbG" />
         </node>
       </node>
       <node concept="2AHcQZ" id="788lcaFITKe" role="2AJF6D">
@@ -2915,34 +2830,7 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="7jEVj$vY0x8" role="jymVt">
-      <property role="TrG5h" value="getStripeBackgroundColor" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tmbuc" id="7jEVj$vY0x9" role="1B3o_S" />
-      <node concept="3uibUv" id="7jEVj$vY0xa" role="3clF45">
-        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
-      </node>
-      <node concept="3clFbS" id="7jEVj$vY0xb" role="3clF47">
-        <node concept="3clFbF" id="788lcaFJLZA" role="3cqZAp">
-          <node concept="10Nm6u" id="788lcaFJLZz" role="3clFbG" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="7jEVj$vY0xc" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-      <node concept="P$JXv" id="788lcaFJVK5" role="lGtFl">
-        <node concept="TZ5HI" id="788lcaFJVK6" role="3nqlJM">
-          <node concept="TZ5HA" id="788lcaFJVK7" role="3HnX3l">
-            <node concept="1dT_AC" id="788lcaFJXxN" role="1dT_Ay">
-              <property role="1dT_AB" value="replaced with similar method that takes EditorComponent instance, override that one, instead" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="788lcaFJVK8" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-    </node>
+    <node concept="2tJIrI" id="12Vcw85xbDM" role="jymVt" />
     <node concept="3clFb_" id="788lcaFJ3f$" role="jymVt">
       <property role="TrG5h" value="getStripeBackgroundColor" />
       <property role="DiZV1" value="false" />
@@ -2957,94 +2845,12 @@
         <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
       </node>
       <node concept="3clFbS" id="788lcaFJ3fB" role="3clF47">
-        <node concept="3SKdUt" id="788lcaFJyr0" role="3cqZAp">
-          <node concept="1PaTwC" id="788lcaFJyr1" role="1aUNEU">
-            <node concept="3oM_SD" id="788lcaFJyr2" role="1PaTwD">
-              <property role="3oM_SC" value="transition" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyr3" role="1PaTwD">
-              <property role="3oM_SC" value="code" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyr4" role="1PaTwD">
-              <property role="3oM_SC" value="until" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyr5" role="1PaTwD">
-              <property role="3oM_SC" value="22.3" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyr6" role="1PaTwD">
-              <property role="3oM_SC" value="is" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyr7" role="1PaTwD">
-              <property role="3oM_SC" value="out," />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyr8" role="1PaTwD">
-              <property role="3oM_SC" value="remove" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyr9" role="1PaTwD">
-              <property role="3oM_SC" value="the" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyra" role="1PaTwD">
-              <property role="3oM_SC" value="body" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyrb" role="1PaTwD">
-              <property role="3oM_SC" value="and" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyrc" role="1PaTwD">
-              <property role="3oM_SC" value="deprecated" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyrd" role="1PaTwD">
-              <property role="3oM_SC" value="method," />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyre" role="1PaTwD">
-              <property role="3oM_SC" value="make" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyrf" role="1PaTwD">
-              <property role="3oM_SC" value="this" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyrg" role="1PaTwD">
-              <property role="3oM_SC" value="one" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJyrh" role="1PaTwD">
-              <property role="3oM_SC" value="abstract" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="788lcaFJAH7" role="3cqZAp">
-          <node concept="1rXfSq" id="788lcaFJD89" role="3cqZAk">
-            <ref role="37wK5l" node="7jEVj$vY0x8" resolve="getStripeBackgroundColor" />
-          </node>
+        <node concept="3clFbF" id="12Vcw85xiid" role="3cqZAp">
+          <node concept="10Nm6u" id="12Vcw85xiia" role="3clFbG" />
         </node>
       </node>
       <node concept="2AHcQZ" id="788lcaFJ3fC" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="7jEVj$vY0xd" role="jymVt">
-      <property role="TrG5h" value="getFrameColor" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tmbuc" id="7jEVj$vY0xe" role="1B3o_S" />
-      <node concept="3uibUv" id="7jEVj$vY0xf" role="3clF45">
-        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
-      </node>
-      <node concept="3clFbS" id="7jEVj$vY0xg" role="3clF47">
-        <node concept="3clFbF" id="788lcaFJjBP" role="3cqZAp">
-          <node concept="10Nm6u" id="788lcaFJjBM" role="3clFbG" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="7jEVj$vY0xh" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-      <node concept="P$JXv" id="788lcaFJboR" role="lGtFl">
-        <node concept="TZ5HI" id="788lcaFJboS" role="3nqlJM">
-          <node concept="TZ5HA" id="788lcaFJboT" role="3HnX3l">
-            <node concept="1dT_AC" id="788lcaFJd$0" role="1dT_Ay">
-              <property role="1dT_AB" value="replaced with similar method that takes EditorComponent instance, override that one, instead" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="788lcaFJboU" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="3clFb_" id="788lcaFJ7hk" role="jymVt">
@@ -3061,62 +2867,8 @@
         <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
       </node>
       <node concept="3clFbS" id="788lcaFJ7hn" role="3clF47">
-        <node concept="3SKdUt" id="788lcaFJurL" role="3cqZAp">
-          <node concept="1PaTwC" id="788lcaFJurM" role="1aUNEU">
-            <node concept="3oM_SD" id="788lcaFJvYu" role="1PaTwD">
-              <property role="3oM_SC" value="transition" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJw49" role="1PaTwD">
-              <property role="3oM_SC" value="code" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwbD" role="1PaTwD">
-              <property role="3oM_SC" value="until" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwbR" role="1PaTwD">
-              <property role="3oM_SC" value="22.3" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwc6" role="1PaTwD">
-              <property role="3oM_SC" value="is" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwcm" role="1PaTwD">
-              <property role="3oM_SC" value="out," />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJw4c" role="1PaTwD">
-              <property role="3oM_SC" value="remove" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwao" role="1PaTwD">
-              <property role="3oM_SC" value="the" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwat" role="1PaTwD">
-              <property role="3oM_SC" value="body" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwaz" role="1PaTwD">
-              <property role="3oM_SC" value="and" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwaE" role="1PaTwD">
-              <property role="3oM_SC" value="deprecated" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwaM" role="1PaTwD">
-              <property role="3oM_SC" value="method," />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwaV" role="1PaTwD">
-              <property role="3oM_SC" value="make" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwb5" role="1PaTwD">
-              <property role="3oM_SC" value="this" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwbg" role="1PaTwD">
-              <property role="3oM_SC" value="one" />
-            </node>
-            <node concept="3oM_SD" id="788lcaFJwbs" role="1PaTwD">
-              <property role="3oM_SC" value="abstract" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="788lcaFJpBD" role="3cqZAp">
-          <node concept="1rXfSq" id="788lcaFJr1x" role="3cqZAk">
-            <ref role="37wK5l" node="7jEVj$vY0xd" resolve="getFrameColor" />
-          </node>
+        <node concept="3clFbF" id="12Vcw85xrFd" role="3cqZAp">
+          <node concept="10Nm6u" id="12Vcw85xrFa" role="3clFbG" />
         </node>
       </node>
       <node concept="2AHcQZ" id="788lcaFJ7ho" role="2AJF6D">

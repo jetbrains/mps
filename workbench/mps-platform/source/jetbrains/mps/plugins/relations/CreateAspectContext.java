@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2023 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.plugins.relations;
 
@@ -34,15 +34,14 @@ public class CreateAspectContext {
     return myBaseNode;
   }
 
+  /**
+   * Assume access to base node happens with appropriate model access lock (read/command).
+   * @return resolved {@link #getBaseNodePointer()}
+   */
   public SNode getBaseNode() {
-    // generally, shall assume access to base node happens with appropriate model access lock (read/command);
-    // however, for transition period (as long as we call createAspect(SNode,SConcept)), let's account for calls outside of model read
-    if (myProject.getModelAccess().canRead()) {
-      return myBaseNode.resolve(myProject.getRepository());
-    } else {
-      // FIXME remove this branch once RelationDescriptor#createAspect(SNode,SConcept) gone
-      return myProject.getModelAccess().computeReadAction(() -> myBaseNode.resolve(myProject.getRepository()));
-    }
+    // XXX I wonder what's the need to resolve it here, why not use node-ptr?
+    myProject.getModelAccess().checkReadAccess();
+    return myBaseNode.resolve(myProject.getRepository());
   }
 
   public SConcept getAspectConcept() {

@@ -65,14 +65,9 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
-      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
-        <reference id="1188214555875" name="key" index="2B6OnR" />
-        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -302,14 +297,10 @@
       </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
-        <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
       <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
         <reference id="2217234381367530213" name="classifier" index="VXe09" />
@@ -548,49 +539,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="4uLJMq1$EVt" role="jymVt" />
-    <node concept="3clFbW" id="5x0q8wkvS3L" role="jymVt">
-      <node concept="3cqZAl" id="5x0q8wkvS3M" role="3clF45" />
-      <node concept="3Tmbuc" id="5x0q8wkvS43" role="1B3o_S" />
-      <node concept="3clFbS" id="5x0q8wkvS3P" role="3clF47">
-        <node concept="3clFbF" id="5x0q8wkvS3S" role="3cqZAp">
-          <node concept="37vLTI" id="5x0q8wkvS3U" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuQuG" role="37vLTJ">
-              <ref role="3cqZAo" node="5x0q8wkvS3H" resolve="myChangeSet" />
-            </node>
-            <node concept="37vLTw" id="2BHiRxgha32" role="37vLTx">
-              <ref role="3cqZAo" node="5x0q8wkvS3Q" resolve="changeSet" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="4uLJMq1$Fwh" role="3cqZAp">
-          <node concept="37vLTI" id="4uLJMq1$FNl" role="3clFbG">
-            <node concept="10Nm6u" id="4uLJMq1$FOT" role="37vLTx" />
-            <node concept="37vLTw" id="4uLJMq1$Fwf" role="37vLTJ">
-              <ref role="3cqZAo" node="4uLJMq1$Fm1" resolve="myRootId" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="5x0q8wkvS3Q" role="3clF46">
-        <property role="TrG5h" value="changeSet" />
-        <node concept="3uibUv" id="3kRMfhMvhro" role="1tU5fm">
-          <ref role="3uigEE" to="bfxj:3kRMfhMv03j" resolve="ChangeSet" />
-        </node>
-        <node concept="2AHcQZ" id="2W$ok$XXEZb" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="4uLJMq1$FuS" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-        <node concept="2B6LJw" id="4uLJMq1$FuU" role="2B76xF">
-          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
-          <node concept="3clFbT" id="4uLJMq1$Fvy" role="2B70Vg">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4uLJMq1$FYq" role="jymVt" />
     <node concept="3clFbW" id="4uLJMq1$FOW" role="jymVt">
       <node concept="3cqZAl" id="4uLJMq1$FOX" role="3clF45" />
       <node concept="3Tmbuc" id="4uLJMq1$FOY" role="1B3o_S" />
@@ -2762,39 +2710,6 @@
       <node concept="3Tm6S6" id="4uLJMq1$IkC" role="1B3o_S" />
       <node concept="3uibUv" id="4uLJMq1$IkD" role="3clF45">
         <ref role="3uigEE" to="mhbf:~SNodeId" resolve="SNodeId" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4uLJMq1$HK3" role="jymVt" />
-    <node concept="3clFb_" id="4k3fuHGtdrF" role="jymVt">
-      <property role="TrG5h" value="getRole" />
-      <node concept="P$JXv" id="63cAeS_ywfT" role="lGtFl">
-        <node concept="TZ5HI" id="63cAeS_yy_f" role="3nqlJM">
-          <node concept="TZ5HA" id="63cAeS_yy_g" role="3HnX3l">
-            <node concept="1dT_AC" id="63cAeS_yDXI" role="1dT_Ay">
-              <property role="1dT_AB" value="use getRoleLink()" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="2W$ok$XXFDS" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="63cAeS_yy_h" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="17QB3L" id="4k3fuHGtdrG" role="3clF45" />
-      <node concept="3Tm1VV" id="4k3fuHGtdrH" role="1B3o_S" />
-      <node concept="3clFbS" id="4k3fuHGtdrI" role="3clF47">
-        <node concept="3clFbF" id="4k3fuHGtdrJ" role="3cqZAp">
-          <node concept="2OqwBi" id="58$PzbkaLuE" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuR5j" role="2Oq$k0">
-              <ref role="3cqZAo" node="4k3fuHGsETj" resolve="myRole" />
-            </node>
-            <node concept="liA8E" id="58$PzbkaLL1" role="2OqNvi">
-              <ref role="37wK5l" to="c17a:~SContainmentLink.getRoleName()" resolve="getRoleName" />
-            </node>
-          </node>
-        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="4uLJMq1$HK4" role="jymVt" />

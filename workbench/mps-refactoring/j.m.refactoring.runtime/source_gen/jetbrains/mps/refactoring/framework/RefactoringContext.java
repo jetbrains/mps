@@ -212,15 +212,6 @@ public class RefactoringContext {
     return myCurrentScope;
   }
 
-  /**
-   * 
-   * @deprecated fix reduce_OperationContextOperation and delete
-   * @return always null
-   */
-  @Deprecated
-  public Object getCurrentOperationContext() {
-    return null;
-  }
   private void setTarget(final Object target) {
     final IRefactoringTarget refTarget = myRefactoring.getRefactoringTarget();
     getRepository().getModelAccess().runReadAction(() -> {
