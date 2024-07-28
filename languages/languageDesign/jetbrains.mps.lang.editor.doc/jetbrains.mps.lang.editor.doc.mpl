@@ -2,7 +2,7 @@
 <language namespace="jetbrains.mps.lang.editor.doc" uuid="c64fb051-a02a-4400-8f65-1735dd616a7c" languageVersion="0" moduleVersion="0">
   <models>
     <modelRoot contentPath="${module}" type="default">
-      <sourceRoot location="/Users/tatiana.elfimova/JetBrains_MPS/MPS/plugins/mps-tooltips/languages/jetbrains.mps.lang.editor.doc/languageModels" />
+      <sourceRoot location="models" />
     </modelRoot>
   </models>
   <facets>
@@ -15,7 +15,7 @@
     <generator alias="" namespace="jetbrains.mps.lang.editor.doc.generator" uuid="e85ce403-dc22-4934-8e8d-b215f30df283">
       <models>
         <modelRoot contentPath="${module}" type="default">
-          <sourceRoot location="/Users/tatiana.elfimova/JetBrains_MPS/MPS/plugins/mps-tooltips/languages/jetbrains.mps.lang.editor.doc/generator/template" />
+          <sourceRoot path="${module}/generator/template" />
         </modelRoot>
       </models>
       <facets>

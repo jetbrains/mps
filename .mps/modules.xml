@@ -384,8 +384,8 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-testing/languages/smodelTests/solutions/jetbrains.mps.smodel.test/jetbrains.mps.smodel.test.msd" folder="core.languages.smodel" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-testing/languages/test.dk/jetbrains.mps.devkit.tests.devkit" folder="core.languages.test" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-testing/solutions/launcher/jetbrains.mps.lang.test.launcher.msd" folder="core.languages.test" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-tooltips/languages/jetbrains.mps.lang.editor.doc.runtime/jetbrains.mps.lang.editor.doc.runtime.msd" folder="core.aspects.editor.documentation" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-tooltips/languages/jetbrains.mps.lang.editor.doc/jetbrains.mps.lang.editor.doc.mpl" folder="core.aspects.editor.documentation" />
+      <modulePath path="$PROJECT_DIR$/solutions/jetbrains.mps.lang.editor.doc.runtime/jetbrains.mps.lang.editor.doc.runtime.msd" folder="core.aspects.editor.documentation" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/jetbrains.mps.lang.editor.doc/jetbrains.mps.lang.editor.doc.mpl" folder="core.aspects.editor.documentation" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-tooltips/languages/tooltips.runtime/jetbrains.mps.lang.editor.tooltips.runtime.msd" folder="core.aspects.editor.tooltips" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-tooltips/languages/tooltips/jetbrains.mps.lang.editor.tooltips.mpl" folder="core.aspects.editor.tooltips" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-vcs/languages/jetbrains.mps.devkit.aspect.vcs/jetbrains.mps.devkit.aspect.vcs.devkit" folder="platform.vcs" />
