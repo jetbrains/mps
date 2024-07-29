@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,15 +59,10 @@ public abstract class BaseProjectMigration implements ProjectMigration {
   @Override
   public final void execute(Project p) {
     if (!doExecute(p)) return;
-    setExecuted(p);
+    setExecuted(p, true);
   }
 
   public abstract boolean doExecute(Project p);
-
-  @Deprecated
-  public final void setExecuted(Project p) {
-    setExecuted(p, true);
-  }
 
   public final void setExecuted(@NotNull Project p, boolean executed) {
     MigrationProperties.getInstance(p).setProperty(migrationId, executed ? EXECUTED_VALUE : null);
@@ -75,7 +70,7 @@ public abstract class BaseProjectMigration implements ProjectMigration {
 
   @Override
   public void applyToCreatedProject(Project p) {
-    setExecuted(p);
+    setExecuted(p, true);
   }
 
   @Override

@@ -209,29 +209,19 @@ import jetbrains.mps.migration.global.MigrationOptions;
   }
 
   private static class MyModuleMigration extends MigrationScriptBase {
-    private final SLanguage myLang;
-    private final int myVersion;
+    private final MigrationScriptReference myRef;
     private final boolean myError;
 
     public MyModuleMigration(SLanguage lang, int version, boolean error) {
-      myLang = lang;
-      myVersion = version;
+      myRef = new MigrationScriptReference(lang, version);
       myError = error;
     }
     @Override
     public String getCaption() {
-      return myLang + ": " + myVersion;
+      return myRef.getLanguage() + ": " + myRef.getFromVersion();
     }
     public MigrationScriptReference getReference() {
-      // todo this is suspicious
-      // todo name is used as id here
-      final MyModuleMigration _this = this;
-      return new MigrationScriptReference(myLang, 0) {
-        @Override
-        public MigrationScript resolve(Project p, boolean silent) {
-          return _this;
-        }
-      };
+      return myRef;
     }
     @Nullable
     public SNode execute(SModule module) {
