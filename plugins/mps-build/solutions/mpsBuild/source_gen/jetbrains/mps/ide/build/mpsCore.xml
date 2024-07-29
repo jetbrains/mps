@@ -1517,7 +1517,6 @@
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.scopes.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/languageDesign/jetbrains.mps.lang.structure.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/languages/text/jetbrains.mps.lang.text.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
