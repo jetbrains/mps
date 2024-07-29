@@ -28,7 +28,7 @@ public abstract class MergeDriverPacker {
   /**
    * this is essentially the list of jars identical to that in bootstrap:mps-core artifact in IDEA project
    */
-  private static final Iterable<String> mpsLibJars = Arrays.asList("mps-closures.jar", "mps-collections.jar", "mps-tuples.jar", "mps-core.jar", "mps-openapi.jar", "mps-references.jar", "mps-behavior-api.jar", "mps-behavior-runtime.jar", "mps-annotations.jar", "mps-boot-util.jar", "mps-persistence.jar", "mps-constraints-runtime.jar");
+  private static final Iterable<String> mpsLibJars = Arrays.asList("mps-closures.jar", "mps-collections.jar", "mps-tuples.jar", "mps-core.jar", "mps-openapi.jar", "mps-references.jar", "mps-behavior-api.jar", "mps-behavior-runtime.jar", "mps-annotations.jar", "mps-boot-util.jar", "mps-persistence.jar", "mps-constraints-runtime.jar", "trove.jar");
   protected static Iterable<String> mpsAddJars = Arrays.asList("ext" + File.separator + "diffutils-1.2.1.jar");
   private static final Iterable<String> ideaLibJars = Arrays.asList("util-8.jar", "util.jar", "util_rt.jar", "annotations.jar");
   private static final String MERGEDRIVER_PATH = "mergedriver";
