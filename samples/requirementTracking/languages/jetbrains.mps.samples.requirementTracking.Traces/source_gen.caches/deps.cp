@@ -54,7 +54,6 @@
   <uses module="0a98f3e2-decf-4e97-bf80-9109eccc59bb(jetbrains.mps.lang.feedback.problem.rules)" kind="rt" />
   <uses module="9abaaae2-decf-4e97-bf80-9109e8b759cc(jetbrains.mps.lang.messages.api)" kind="rt" />
   <uses module="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
-  <uses module="c7fb639f-be78-4307-89b0-b5959c3fa8c8(jetbrains.mps.lang.text)" kind="dp" />
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt+dp" />
   <uses module="06144ad3-3416-4d7e-bbaf-076e158e80cf(jetbrains.mps.samples.requirementTracking.RequirementDefinition)" kind="dp" />
   <uses module="81a3307b-d10f-4e90-8043-ff6aa5380c33(jetbrains.mps.samples.requirementTracking.Traces)" kind="dp" />
