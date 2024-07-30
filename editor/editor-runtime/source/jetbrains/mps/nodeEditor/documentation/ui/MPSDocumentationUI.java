@@ -10,8 +10,10 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CustomShortcutSet;
 import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.actionSystem.KeyboardShortcut;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
@@ -71,6 +73,9 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
     };
     myEditorPane.addHyperlinkListener(hyperlinkListener);
     Disposer.register(this, () -> myEditorPane.removeHyperlinkListener(hyperlinkListener));
+
+    back.registerCustomShortcutSet(new CustomShortcutSet(KeyboardShortcut.fromString("alt LEFT")), myEditorPane);
+    forward.registerCustomShortcutSet(new CustomShortcutSet(KeyboardShortcut.fromString("alt RIGHT")), myEditorPane);
   }
 
   @Override
