@@ -129,7 +129,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
 
   private class BackAction extends AnAction implements HintManagerImpl.ActionToIgnore {
     BackAction() {
-      super(AllIcons.Actions.Back);
+      super("Back", null, AllIcons.Actions.Back);
     }
 
     @Override
@@ -151,7 +151,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
 
   private class ForwardAction extends AnAction implements HintManagerImpl.ActionToIgnore {
     ForwardAction() {
-      super(Actions.Forward);
+      super("Forward", null, Actions.Forward);
     }
 
     @Override
@@ -173,7 +173,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
 
   private final class EditDocumentationSourceAction extends AnAction {
     private EditDocumentationSourceAction() {
-      super(AllIcons.Actions.EditSource);
+      super("To Source", null, AllIcons.Actions.EditSource);
     }
 
     @Override
