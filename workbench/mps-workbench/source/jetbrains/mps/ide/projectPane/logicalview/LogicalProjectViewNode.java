@@ -48,6 +48,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Defines basic structure of the project view nodes hierarchy.
@@ -96,40 +97,32 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
    *   <li>SNode</li>
    * </ul>.
    * <p>These are wrapped into {@link SObject} and returned as a collection.
+   * <p>Must be called in a read action
    *
    * @return collection of SObject instances corresponding to {@code virtualFile} or an empty collection
    */
   protected Collection<SObject> extractSObjects(VirtualFile virtualFile) {
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    mpsProject.getModelAccess().checkReadAccess();
     if (virtualFile instanceof MPSNodeVirtualFile) {
-      return mpsProject.getModelAccess()
-                       .computeReadAction(() -> {
-                         SNode node = ((MPSNodeVirtualFile) virtualFile).getNode();
-                         return node != null ? Collections.singletonList(SObject.of(node)) : Collections.emptyList();
-                       });
+      SNode node = ((MPSNodeVirtualFile) virtualFile).getNode();
+      return node != null ? Collections.singletonList(SObject.of(node)) : Collections.emptyList();
     }
     IFile file = toIFile(virtualFile);
     if (file != null) {
       Collection<SModuleReference> sModuleReferences = MissionControl.getInstance(getProject()).lookupProjectModule(file);
       if (!sModuleReferences.isEmpty()) {
-        List<SObject> modules = new ArrayList<>(2);
-        mpsProject.getModelAccess()
-                  .runReadAction(() ->
-                                     sModuleReferences.stream()
-                                                      .map(ref -> ref.resolve(mpsProject.getRepository()))
-                                                      .filter(Objects::nonNull)
-                                                      .map(SObject::of)
-                                                      .forEach(modules::add));
-        return modules;
+        return sModuleReferences.stream()
+                         .map(ref -> ref.resolve(mpsProject.getRepository()))
+                         .filter(Objects::nonNull)
+                         .map(SObject::of)
+                         .collect(Collectors.toList());
       }
 
       SModelReference modelRef = MissionControl.getInstance(getProject()).lookupProjectModel(file);
       if (modelRef != null) {
-        return mpsProject.getModelAccess()
-                         .computeReadAction(() -> {
-                           SModel model = modelRef.resolve(mpsProject.getRepository());
-                           return model != null ?  Collections.singletonList(SObject.of(model)) : Collections.emptyList();
-                         });
+        SModel model = modelRef.resolve(mpsProject.getRepository());
+        return model != null ?  Collections.singletonList(SObject.of(model)) : Collections.emptyList();
       }
     }
     return Collections.emptyList();
@@ -240,22 +233,36 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
 
   @Override
   public boolean contains(@NotNull VirtualFile file) {
-    boolean contains = extractSObjects(file).stream().anyMatch(this::containsSObject);
-    if (LOG.isDebugEnabled() && contains) {
-      LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
-    }
-    return contains;
+    MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    return mpsProject.getModelAccess()
+             .computeReadAction(() -> {
+                 boolean contains = extractSObjects(file).stream().anyMatch(this::containsSObject);
+                 if (LOG.isDebugEnabled() && contains) {
+                   LOG.debug(String.format("%s(%s) contains %s", this.getClass().getSimpleName(), getValue(), file));
+                 }
+                 return contains;
+             });
   }
 
-  protected abstract boolean containsSObject(SObject sObject);
+  /**
+   * Always called in a read action.
+   */
+  protected boolean containsSObject(SObject sObject) {
+    return false;
+  }
 
   public boolean canRepresent(Object element) {
     if (element instanceof VirtualFile) {
-      return extractSObjects(((VirtualFile) element)).stream().anyMatch(this::canRepresentSObject);
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      return mpsProject.getModelAccess()
+               .computeReadAction(() ->  extractSObjects(((VirtualFile) element)).stream().anyMatch(this::canRepresentSObject));
     }
     return false;
   }
 
+  /**
+   * Always called in a read action.
+   */
   protected boolean canRepresentSObject(SObject sObject) {
     return false;
   }

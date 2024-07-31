@@ -95,11 +95,6 @@ public class DevkitProjectViewNode extends BranchProjectViewNode<DevKit> {
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
       for (SModule module : myContentsSupplier.get()) {
         children.add(new ModuleReferenceProjectViewNode(myProject, module.getModuleReference(), myReferenceKind, getSettings()));
@@ -130,11 +125,6 @@ public class DevkitProjectViewNode extends BranchProjectViewNode<DevKit> {
 
     @Override
     public boolean contains(@NotNull VirtualFile file) {
-      return false;
-    }
-
-    @Override
-    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 

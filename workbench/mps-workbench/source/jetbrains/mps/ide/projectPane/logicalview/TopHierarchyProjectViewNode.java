@@ -60,11 +60,6 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     }
 
     @Override
-    protected boolean canRepresentSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSModule(sModule -> getValue().isProjectModule(sModule));
     }
@@ -95,11 +90,6 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
 
     protected ModulesPoolProjectViewNode(@NotNull Project project, ViewSettings viewSettings) {
       super(project, new ModulesPool(), viewSettings);
-    }
-
-    @Override
-    protected boolean canRepresentSObject(SObject sObject) {
-      return false;
     }
 
     @Override
@@ -167,11 +157,6 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
       super(project, virtualFolder, viewSettings);
       myOrdinal = ordinal;
       myModulesSupplier = modulesSupplier;
-    }
-
-    @Override
-    protected boolean canRepresentSObject(SObject sObject) {
-      return false;
     }
 
     @Override

@@ -235,11 +235,6 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
       Object parentValue = getParentValue();
       if (parentValue instanceof Language) {
@@ -329,11 +324,6 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
       Object parentValue = getParentValue();
       if (parentValue instanceof Language) {
@@ -370,11 +360,6 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected void update(@NotNull PresentationData presentation) {
       presentation.setPresentableText(getValue().getName().getValue());
       Icon icon = IdeIcons.MODEL_ICON;
@@ -390,11 +375,6 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
     @Override
     public boolean contains(@NotNull VirtualFile file) {
-      return false;
-    }
-
-    @Override
-    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 

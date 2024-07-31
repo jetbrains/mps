@@ -215,11 +215,6 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     public boolean canNavigate() {
       return true;
     }
@@ -246,11 +241,6 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
 
     @Override
     public boolean contains(@NotNull VirtualFile file) {
-      return false;
-    }
-
-    @Override
-    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 
@@ -287,11 +277,6 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected void update(@NotNull PresentationData presentation) {
       presentation.setPresentableText("references");
       // original todo
@@ -324,11 +309,6 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     }
 
     @Override
-    protected boolean containsSObject(SObject sObject) {
-      return false;
-    }
-
-    @Override
     protected void updateInReadAction(PresentationData presentation) {
       Object parentValue = getParentValue();
       String text = "?error?";
@@ -350,11 +330,6 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
 
     @Override
     public boolean contains(@NotNull VirtualFile file) {
-      return false;
-    }
-
-    @Override
-    protected boolean containsSObject(SObject sObject) {
       return false;
     }
 
