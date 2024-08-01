@@ -76,6 +76,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
 
     back.registerCustomShortcutSet(new CustomShortcutSet(KeyboardShortcut.fromString("alt LEFT")), myEditorPane);
     forward.registerCustomShortcutSet(new CustomShortcutSet(KeyboardShortcut.fromString("alt RIGHT")), myEditorPane);
+    edit.registerCustomShortcutSet(new CustomShortcutSet(KeyboardShortcut.fromString("alt DOWN")), myEditorPane);
   }
 
   @Override
@@ -173,7 +174,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
 
   private final class EditDocumentationSourceAction extends AnAction {
     private EditDocumentationSourceAction() {
-      super("To Source", null, AllIcons.Actions.EditSource);
+      super("Jump To Source", null, AllIcons.Actions.EditSource);
     }
 
     @Override
