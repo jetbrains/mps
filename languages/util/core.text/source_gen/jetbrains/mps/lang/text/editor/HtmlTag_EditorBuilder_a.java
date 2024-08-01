@@ -62,60 +62,55 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.addEditorCell(createConstant_0());
-    editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createHtmlTag_1());
-    editorCell.addEditorCell(createConstant_2());
-    editorCell.addEditorCell(createConstant_3());
+    editorCell.addEditorCell(createConstant_5());
     return editorCell;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
     editorCell.setCellId("Constant_x7iq66_a0");
     Style style = new StyleImpl();
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     editorCell.getStyle().putAll(style);
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-  private EditorCell createConstant_1() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, " ");
-    editorCell.setCellId("Constant_x7iq66_b0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.SELECTABLE, true);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-    editorCell.getStyle().putAll(style);
-    HtmlTag_LeftBrace_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
-    editorCell.addKeyMap(new HtmlTag_LeftBrace_KeyMap());
     editorCell.setDefaultText("");
     return editorCell;
   }
   private EditorCell createHtmlTag_0(final EditorContext editorContext, final SNode node) {
+    EditorCell openBracket1 = createConstant_1();
+    EditorCell closeBracket1 = createConstant_2();
+    EditorCell openBracket2 = createConstant_3();
+    EditorCell closeBracket2 = createConstant_4();
+
+
     EditorCell conetentCell = createRefNode_0();
     EditorCell_Property openTagCell = (EditorCell_Property) createProperty_0();
     EditorCell_Property closedTagCell = (EditorCell_Property) createProperty_0();
 
 
-    EditorCell_HtmlTag editorCell = new EditorCell_HtmlTag(editorContext, node, conetentCell, openTagCell, closedTagCell);
-    editorCell.setCellId("HtmlTag_x7iq66_c0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
-    editorCell.getStyle().putAll(style);
+    EditorCell_HtmlTag editorCell = new EditorCell_HtmlTag(editorContext, node, openBracket1, openTagCell, closeBracket1, conetentCell, openBracket2, closedTagCell, closeBracket2);
+    editorCell.setCellId("HtmlTag_x7iq66_b0");
     return editorCell;
   }
   private EditorCell createHtmlTag_1() {
     return createHtmlTag_0(getEditorContext(), myNode);
   }
+  private EditorCell createConstant_1() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<");
+    editorCell.setCellId("Constant_x7iq66_a1a");
+    HtmlTag_LeftBrace_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
+    editorCell.addKeyMap(new HtmlTag_LeftBrace_KeyMap());
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new contentSingleRoleHandler_x7iq66_a2a(myNode, LINKS.content$ybyu, getEditorContext());
+    SingleRoleCellProvider provider = new contentSingleRoleHandler_x7iq66_a1a(myNode, LINKS.content$ybyu, getEditorContext());
     return provider.createCell();
   }
-  private static class contentSingleRoleHandler_x7iq66_a2a extends SingleRoleCellProvider {
+  private static class contentSingleRoleHandler_x7iq66_a1a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public contentSingleRoleHandler_x7iq66_a2a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public contentSingleRoleHandler_x7iq66_a1a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -162,6 +157,18 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return "<no content>";
     }
   }
+  private EditorCell createConstant_2() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ">");
+    editorCell.setCellId("Constant_x7iq66_a1a_0");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createConstant_3() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "</");
+    editorCell.setCellId("Constant_x7iq66_a1a_1");
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
@@ -183,24 +190,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
       getCellFactory().popCellContext();
     }
   }
-  private EditorCell createConstant_2() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, " ");
-    editorCell.setCellId("Constant_x7iq66_d0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.SELECTABLE, true);
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    editorCell.getStyle().putAll(style);
+  private EditorCell createConstant_4() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ">");
+    editorCell.setCellId("Constant_x7iq66_a1a_2");
     HtmlTag_RightBrace_ActionMap.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addKeyMap(new HtmlTag_RightBrace_KeyMap());
     editorCell.setDefaultText("");
     return editorCell;
   }
-  private EditorCell createConstant_3() {
+  private EditorCell createConstant_5() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
-    editorCell.setCellId("Constant_x7iq66_e0");
+    editorCell.setCellId("Constant_x7iq66_c0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;

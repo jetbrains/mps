@@ -246,9 +246,6 @@
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="1143511969223" name="jetbrains.mps.lang.smodel.structure.Node_GetPrevSiblingOperation" flags="nn" index="YBYNd" />
       <concept id="1143512015885" name="jetbrains.mps.lang.smodel.structure.Node_GetNextSiblingOperation" flags="nn" index="YCak7" />
-      <concept id="3562215692195599741" name="jetbrains.mps.lang.smodel.structure.SLinkImplicitSelect" flags="nn" index="13MTOL">
-        <reference id="3562215692195600259" name="link" index="13MTZf" />
-      </concept>
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
@@ -6495,12 +6492,12 @@
           <node concept="2OqwBi" id="GWtNbsAWly" role="2GsD0m">
             <node concept="2OqwBi" id="GWtNbsAON3" role="2Oq$k0">
               <node concept="13iPFW" id="GWtNbsAOot" role="2Oq$k0" />
-              <node concept="3Tsc0h" id="GWtNbsAPjs" role="2OqNvi">
-                <ref role="3TtcxE" to="zqge:1q3yNZeA$$y" resolve="content" />
+              <node concept="3TrEf2" id="45v$Upa8q$$" role="2OqNvi">
+                <ref role="3Tt5mk" to="zqge:1q3yNZeA$$y" resolve="content" />
               </node>
             </node>
-            <node concept="13MTOL" id="GWtNbsAZ4q" role="2OqNvi">
-              <ref role="13MTZf" to="zqge:2cLqkTm6J5B" resolve="elements" />
+            <node concept="3Tsc0h" id="45v$Upa8qOr" role="2OqNvi">
+              <ref role="3TtcxE" to="zqge:2cLqkTm6J5B" resolve="elements" />
             </node>
           </node>
           <node concept="3clFbS" id="GWtNbsAL4n" role="2LFqv$">

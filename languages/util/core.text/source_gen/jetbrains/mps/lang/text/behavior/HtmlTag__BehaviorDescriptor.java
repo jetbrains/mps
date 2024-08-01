@@ -14,7 +14,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -34,7 +34,7 @@ public final class HtmlTag__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static String getTextualRepresentation_idfB3l81it7u(@NotNull SNode __thisNode__) {
     String returnString = "<" + SPropertyOperations.getString(__thisNode__, PROPS.tagName$YfpN) + ">";
-    for (SNode content : Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.getChildren(__thisNode__, LINKS.content$ybyu), LINKS.elements$_j45))) {
+    for (SNode content : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.content$ybyu), LINKS.elements$_j45))) {
       returnString += TextElement__BehaviorDescriptor.getTextualRepresentation_idfB3l81it7u.invoke(content);
     }
     returnString += "</" + SPropertyOperations.getString(__thisNode__, PROPS.tagName$YfpN) + ">";
