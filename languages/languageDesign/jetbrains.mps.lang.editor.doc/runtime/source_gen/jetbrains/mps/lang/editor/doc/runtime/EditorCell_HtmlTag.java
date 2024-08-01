@@ -8,7 +8,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.openapi.editor.HtmlTextBuilder;
 import java.util.List;
@@ -20,16 +19,16 @@ import jetbrains.mps.editor.runtime.TextBuilderImpl;
 public class EditorCell_HtmlTag extends EditorCell_Collection {
 
 
-  public EditorCell_HtmlTag(@NotNull final EditorContext context, @NotNull final SNode node, @NotNull final EditorCell content, @NotNull final EditorCell_Property openTag, @NotNull final EditorCell_Property closedTag) {
+  public EditorCell_HtmlTag(@NotNull final EditorContext context, @NotNull final SNode node, @NotNull final EditorCell openBracket1, @NotNull final EditorCell_Property openTag, @NotNull final EditorCell closeBracket1, @NotNull final EditorCell content, @NotNull final EditorCell openBracket2, @NotNull final EditorCell_Property closedTag, @NotNull final EditorCell closeBracket2) {
     super(context, node, new CellLayout_HtmlTag123());
 
-    addEditorCell(new EditorCell_Constant(context, node, "<"));
+    addEditorCell(openBracket1);
     addEditorCell(openTag);
-    addEditorCell(new EditorCell_Constant(context, node, ">"));
+    addEditorCell(closeBracket1);
     addEditorCell(content);
-    addEditorCell(new EditorCell_Constant(context, node, "</"));
+    addEditorCell(openBracket2);
     addEditorCell(closedTag);
-    addEditorCell(new EditorCell_Constant(context, node, ">"));
+    addEditorCell(closeBracket2);
   }
 
   public static class CellLayout_HtmlTag123 extends CellLayout_Horizontal {

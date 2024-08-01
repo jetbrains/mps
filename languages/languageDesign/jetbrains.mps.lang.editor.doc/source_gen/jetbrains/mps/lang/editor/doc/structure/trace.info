@@ -16,7 +16,7 @@
       <unit at="10,0,28,0" name="jetbrains.mps.lang.editor.doc.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="14,0,63,0" name="jetbrains.mps.lang.editor.doc.structure.StructureAspectDescriptor" />
+      <unit at="14,0,67,0" name="jetbrains.mps.lang.editor.doc.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:ac08a7f4-7464-4c43-96f8-ac3a8b69f7ea(jetbrains.mps.lang.editor.doc.structure)/8032738370786720738">
@@ -47,14 +47,18 @@
       <node id="8032738370786720738" at="55,116,56,17" concept="0" />
       <node id="9185659875393569181" at="56,17,57,199" concept="0" />
       <node id="6803781190384112358" at="57,199,58,192" concept="0" />
-      <node id="8032738370786720738" at="58,192,59,23" concept="0" />
-      <node id="8032738370786720738" at="59,23,60,22" concept="4" />
-      <node id="8032738370786720738" at="50,0,62,0" concept="7" trace="createDescriptorForCellModel_HtmlTag#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="8744622371126097635" at="58,192,59,206" concept="0" />
+      <node id="4710646077655960662" at="59,206,60,207" concept="0" />
+      <node id="4710646077659750112" at="60,207,61,206" concept="0" />
+      <node id="4710646077659750114" at="61,206,62,207" concept="0" />
+      <node id="8032738370786720738" at="62,207,63,23" concept="0" />
+      <node id="8032738370786720738" at="63,23,64,22" concept="4" />
+      <node id="8032738370786720738" at="50,0,66,0" concept="7" trace="createDescriptorForCellModel_HtmlTag#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="8032738370786720738" at="38,51,39,42" />
-      <scope id="8032738370786720738" at="50,75,60,22">
+      <scope id="8032738370786720738" at="50,75,64,22">
         <var name="b" id="8032738370786720738" />
       </scope>
-      <scope id="8032738370786720738" at="50,0,62,0" />
+      <scope id="8032738370786720738" at="50,0,66,0" />
     </file>
   </root>
 </debug-info>

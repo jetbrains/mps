@@ -56,6 +56,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.aggregate("visibleCell", 0x7f7a04fd2c64819dL).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L).optional(false).ordered(true).multiple(false).origin("9185659875393569181").done();
     b.aggregate("name", 0x5e6be2f1d65452e6L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb02612eL).optional(false).ordered(true).multiple(false).origin("6803781190384112358").done();
+    b.aggregate("openBracket1", 0x795b23b72de7b6e3L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x415f93a648c6e6fcL).optional(false).ordered(true).multiple(false).origin("8744622371126097635").done();
+    b.aggregate("closeBracket1", 0x415f93a649454c56L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x415f93a6491d19c3L).optional(false).ordered(true).multiple(false).origin("4710646077655960662").done();
+    b.aggregate("openBracket2", 0x415f93a6497f1ee0L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x415f93a6495a4f6aL).optional(false).ordered(true).multiple(false).origin("4710646077659750112").done();
+    b.aggregate("closeBracket2", 0x415f93a6497f1ee2L).target(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x415f93a6491d19c3L).optional(false).ordered(true).multiple(false).origin("4710646077659750114").done();
     b.alias("htmlTag");
     return b.create();
   }

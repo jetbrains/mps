@@ -22,20 +22,22 @@
       <concept id="1078939183254" name="jetbrains.mps.lang.editor.structure.CellModel_Component" flags="sg" stub="3162947552742194261" index="PMmxH">
         <reference id="1078939183255" name="editorComponent" index="PMmxG" />
       </concept>
+      <concept id="1186403694788" name="jetbrains.mps.lang.editor.structure.ColorStyleClassItem" flags="ln" index="VaVBg">
+        <property id="1186403713874" name="color" index="Vb096" />
+      </concept>
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
       </concept>
       <concept id="1186414928363" name="jetbrains.mps.lang.editor.structure.SelectableStyleSheetItem" flags="ln" index="VPM3Z" />
       <concept id="1186414976055" name="jetbrains.mps.lang.editor.structure.DrawBorderStyleClassItem" flags="ln" index="VPXOz" />
+      <concept id="1214406454886" name="jetbrains.mps.lang.editor.structure.TextBackgroundColorStyleClassItem" flags="ln" index="30gYXW" />
       <concept id="1139848536355" name="jetbrains.mps.lang.editor.structure.CellModel_WithRole" flags="ng" index="1$h60E">
+        <property id="1139852716018" name="noTargetText" index="1$x2rV" />
         <reference id="1140103550593" name="relationDeclaration" index="1NtTu8" />
       </concept>
       <concept id="1073389446423" name="jetbrains.mps.lang.editor.structure.CellModel_Collection" flags="sn" stub="3013115976261988961" index="3EZMnI">
         <child id="1106270802874" name="cellLayout" index="2iSdaV" />
         <child id="1073389446424" name="childCellModel" index="3EZMnx" />
-      </concept>
-      <concept id="1073389577006" name="jetbrains.mps.lang.editor.structure.CellModel_Constant" flags="sn" stub="3610246225209162225" index="3F0ifn">
-        <property id="1073389577007" name="text" index="3F0ifm" />
       </concept>
       <concept id="1219418625346" name="jetbrains.mps.lang.editor.structure.IStyleContainer" flags="ngI" index="3F0Thp">
         <child id="1219418656006" name="styleItem" index="3F10Kt" />
@@ -57,27 +59,31 @@
     <node concept="3EZMnI" id="4omk_tmE6UR" role="2wV5jI">
       <node concept="3EZMnI" id="5NifZHjzee3" role="3EZMnx">
         <node concept="VPM3Z" id="5NifZHjzee5" role="3F10Kt" />
-        <node concept="3F0ifn" id="2yJIINoVbAK" role="3EZMnx">
-          <property role="3F0ifm" value="&lt;" />
+        <node concept="3F1sOY" id="54rhM8v64OE" role="3EZMnx">
+          <property role="1$x2rV" value="&lt;" />
+          <ref role="1NtTu8" to="kaxz:7_r8VsHTVrz" resolve="openBracket1" />
+          <node concept="30gYXW" id="45v$Up8LFkl" role="3F10Kt">
+            <property role="Vb096" value="fLwANPu/blue" />
+          </node>
         </node>
         <node concept="3F1sOY" id="5TFSJ7ml5bC" role="3EZMnx">
           <ref role="1NtTu8" to="kaxz:5TFSJ7ml5bA" resolve="name" />
         </node>
-        <node concept="3F0ifn" id="2yJIINoVbAN" role="3EZMnx">
-          <property role="3F0ifm" value="&gt;" />
+        <node concept="3F1sOY" id="45v$Up9vML_" role="3EZMnx">
+          <ref role="1NtTu8" to="kaxz:45v$Up9hkLm" resolve="closeBracket1" />
         </node>
         <node concept="3F1sOY" id="5NifZHjzeeh" role="3EZMnx">
           <ref role="1NtTu8" to="kaxz:7XU1fOGp86t" resolve="visibleCell" />
         </node>
-        <node concept="3F0ifn" id="2yJIINoVbAQ" role="3EZMnx">
-          <property role="3F0ifm" value="&lt;/" />
+        <node concept="3F1sOY" id="45v$Up9vMLB" role="3EZMnx">
+          <ref role="1NtTu8" to="kaxz:45v$Up9vLVw" resolve="openBracket2" />
         </node>
         <node concept="3F1sOY" id="2yJIINoF0iV" role="3EZMnx">
           <ref role="1NtTu8" to="kaxz:5TFSJ7ml5bA" resolve="name" />
         </node>
         <node concept="l2Vlx" id="5NifZHjzee8" role="2iSdaV" />
-        <node concept="3F0ifn" id="2yJIINoVbAT" role="3EZMnx">
-          <property role="3F0ifm" value="&gt;" />
+        <node concept="3F1sOY" id="45v$Up9hkLn" role="3EZMnx">
+          <ref role="1NtTu8" to="kaxz:45v$Up9vLVy" />
         </node>
       </node>
       <node concept="2iRkQZ" id="4omk_tmE6UW" role="2iSdaV" />

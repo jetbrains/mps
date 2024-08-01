@@ -32,25 +32,53 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) EditorCellModel__BehaviorDescriptor.getFactoryMethodName_idhHfE2BD.invoke(_context.getNode(), _context);
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.visibleCell$xL2L), "cellFactory.factoryMethod");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.openBracket1$PtZc), "cellFactory.factoryMethod");
   }
   public static Object referenceMacro_GetReferent_1_1(final ReferenceMacroContext _context) {
-    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.name$OX3p), "cellFactory.factoryMethod");
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.closeBracket1$CYRu), "cellFactory.factoryMethod");
   }
   public static Object referenceMacro_GetReferent_1_2(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.openBracket2$L5A3), "cellFactory.factoryMethod");
+  }
+  public static Object referenceMacro_GetReferent_1_3(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.closeBracket2$L645), "cellFactory.factoryMethod");
+  }
+  public static Object referenceMacro_GetReferent_1_4(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.visibleCell$xL2L), "cellFactory.factoryMethod");
+  }
+  public static Object referenceMacro_GetReferent_1_5(final ReferenceMacroContext _context) {
+    return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.name$OX3p), "cellFactory.factoryMethod");
+  }
+  public static Object referenceMacro_GetReferent_1_6(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(SLinkOperations.getTarget(_context.getNode(), LINKS.name$OX3p), "cellFactory.factoryMethod");
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.visibleCell$xL2L);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.openBracket1$PtZc);
   }
   public static SNode sourceNodeQuery_0_1(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.visibleCell$xL2L);
+  }
+  public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.closeBracket1$CYRu);
+  }
+  public static SNode sourceNodeQuery_0_3(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.openBracket2$L5A3);
+  }
+  public static SNode sourceNodeQuery_0_4(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.name$OX3p);
+  }
+  public static SNode sourceNodeQuery_0_5(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.closeBracket2$L645);
   }
   private final Map<String, SourceNodeQuery> snqMethods = new HashMap<String, SourceNodeQuery>();
   {
     int i = 0;
-    snqMethods.put("4772059062238773268", new SNQ(i++));
-    snqMethods.put("6803781190384857935", new SNQ(i++));
+    snqMethods.put("225340050384478935", new SNQ(i++));
+    snqMethods.put("225340050384478944", new SNQ(i++));
+    snqMethods.put("4710646077659754247", new SNQ(i++));
+    snqMethods.put("4710646077659757770", new SNQ(i++));
+    snqMethods.put("225340050384478953", new SNQ(i++));
+    snqMethods.put("4710646077655974916", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -70,6 +98,14 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.sourceNodeQuery_0_0(ctx);
         case 1:
           return QueriesGenerated.sourceNodeQuery_0_1(ctx);
+        case 2:
+          return QueriesGenerated.sourceNodeQuery_0_2(ctx);
+        case 3:
+          return QueriesGenerated.sourceNodeQuery_0_3(ctx);
+        case 4:
+          return QueriesGenerated.sourceNodeQuery_0_4(ctx);
+        case 5:
+          return QueriesGenerated.sourceNodeQuery_0_5(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -104,9 +140,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
-    rtqMethods.put("9185659875393648822", new RTQ(0, "cellFactory"));
-    rtqMethods.put("6803781190384082528", new RTQ(1, "cellFactory"));
-    rtqMethods.put("2931767408856724976", new RTQ(2, "cellFactory"));
+    rtqMethods.put("8744622371126107776", new RTQ(0, "cellFactory"));
+    rtqMethods.put("4710646077659768499", new RTQ(1, "cellFactory"));
+    rtqMethods.put("4710646077659774913", new RTQ(2, "cellFactory"));
+    rtqMethods.put("4710646077659774927", new RTQ(3, "cellFactory"));
+    rtqMethods.put("9185659875393648822", new RTQ(4, "cellFactory"));
+    rtqMethods.put("6803781190384082528", new RTQ(5, "cellFactory"));
+    rtqMethods.put("2931767408856724976", new RTQ(6, "cellFactory"));
   }
   @NotNull
   @Override
@@ -129,6 +169,14 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.referenceMacro_GetReferent_1_1(ctx);
         case 2:
           return QueriesGenerated.referenceMacro_GetReferent_1_2(ctx);
+        case 3:
+          return QueriesGenerated.referenceMacro_GetReferent_1_3(ctx);
+        case 4:
+          return QueriesGenerated.referenceMacro_GetReferent_1_4(ctx);
+        case 5:
+          return QueriesGenerated.referenceMacro_GetReferent_1_5(ctx);
+        case 6:
+          return QueriesGenerated.referenceMacro_GetReferent_1_6(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -136,6 +184,10 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink openBracket1$PtZc = MetaAdapterFactory.getContainmentLink(0xc64fb051a02a4400L, 0x8f651735dd616a7cL, 0x11d794d84ece7c48L, 0x795b23b72de7b6e3L, "openBracket1");
+    /*package*/ static final SContainmentLink closeBracket1$CYRu = MetaAdapterFactory.getContainmentLink(0xc64fb051a02a4400L, 0x8f651735dd616a7cL, 0x11d794d84ece7c48L, 0x415f93a649454c56L, "closeBracket1");
+    /*package*/ static final SContainmentLink openBracket2$L5A3 = MetaAdapterFactory.getContainmentLink(0xc64fb051a02a4400L, 0x8f651735dd616a7cL, 0x11d794d84ece7c48L, 0x415f93a6497f1ee0L, "openBracket2");
+    /*package*/ static final SContainmentLink closeBracket2$L645 = MetaAdapterFactory.getContainmentLink(0xc64fb051a02a4400L, 0x8f651735dd616a7cL, 0x11d794d84ece7c48L, 0x415f93a6497f1ee2L, "closeBracket2");
     /*package*/ static final SContainmentLink visibleCell$xL2L = MetaAdapterFactory.getContainmentLink(0xc64fb051a02a4400L, 0x8f651735dd616a7cL, 0x11d794d84ece7c48L, 0x7f7a04fd2c64819dL, "visibleCell");
     /*package*/ static final SContainmentLink name$OX3p = MetaAdapterFactory.getContainmentLink(0xc64fb051a02a4400L, 0x8f651735dd616a7cL, 0x11d794d84ece7c48L, 0x5e6be2f1d65452e6L, "name");
   }
