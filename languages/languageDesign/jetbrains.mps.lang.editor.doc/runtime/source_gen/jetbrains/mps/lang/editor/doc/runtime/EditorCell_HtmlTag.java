@@ -20,7 +20,7 @@ public class EditorCell_HtmlTag extends EditorCell_Collection {
 
 
   public EditorCell_HtmlTag(@NotNull final EditorContext context, @NotNull final SNode node, @NotNull final EditorCell openBracket1, @NotNull final EditorCell_Property openTag, @NotNull final EditorCell closeBracket1, @NotNull final EditorCell content, @NotNull final EditorCell openBracket2, @NotNull final EditorCell_Property closedTag, @NotNull final EditorCell closeBracket2) {
-    super(context, node, new CellLayout_HtmlTag123());
+    super(context, node, new CellLayout_HtmlTag123(openTag, content));
 
     addEditorCell(openBracket1);
     addEditorCell(openTag);
@@ -31,10 +31,14 @@ public class EditorCell_HtmlTag extends EditorCell_Collection {
     addEditorCell(closeBracket2);
   }
 
-  public static class CellLayout_HtmlTag123 extends CellLayout_Horizontal {
+  private static class CellLayout_HtmlTag123 extends CellLayout_Horizontal {
+    private final EditorCell_Property myTagNameCell;
+    private final EditorCell myContentCell;
 
-    public CellLayout_HtmlTag123() {
+    public CellLayout_HtmlTag123(EditorCell_Property tagNameCell, EditorCell contentCell) {
       super();
+      myTagNameCell = tagNameCell;
+      myContentCell = contentCell;
     }
 
     @Override
@@ -43,17 +47,12 @@ public class EditorCell_HtmlTag extends EditorCell_Collection {
       for (EditorCell editorCell : Sequence.fromIterable(editorCells)) {
         editorCellsList.add(editorCell);
       }
-
-      EditorCell_Property tagNameCell = (EditorCell_Property) editorCellsList.get(1);
-      String tagName = tagNameCell.getText();
-      EditorCell contentCell = editorCellsList.get(3);
-
+      String tagName = myTagNameCell.getText();
       HtmlTextBuilder result = new HtmlTextBuilderImpl();
       result.appendToTheRight(new TextBuilderImpl("<" + tagName + ">"), false);
-      result.appendToTheRight(contentCell.renderHtml(), false);
+      result.appendToTheRight(myContentCell.renderHtml(), false);
       result.appendToTheRight(new TextBuilderImpl("</" + tagName + ">"), false);
       return result;
-
     }
   }
 }
