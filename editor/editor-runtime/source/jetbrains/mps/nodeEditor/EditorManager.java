@@ -66,9 +66,8 @@ public class EditorManager {
   private final EditorContext myEditorContext;
 
   private final Deque<Map<ReferencedNodeContext, EditorCell>> myContextToOldCellMap = new ArrayDeque<>();
-  private final Deque<SNode> myAttributeStack = new ArrayDeque<>();
 
-  private boolean myCreatingInspectedCell = false;
+  private boolean myCreatingInspectedCell;
 
   @Nullable
   public static EditorManager getInstanceFromContext(EditorContext editorContext) {
@@ -269,8 +268,9 @@ public class EditorManager {
   }
 
   public EditorCell createEditorCell(List<Pair<SNode, SNodeReference>> modifications, ReferencedNodeContext refContext) {
+    boolean showAttributes = areAttributesShown();
     EditorCell nodeCell = createEditorCellWithoutAttributes(modifications, refContext);
-    if (areAttributesShown()) {
+    if (showAttributes) {
       SNode node = refContext.getNode();
       Iterable<SNode> nodeAttributes = AttributeOperations.getNodeAttributes(node);
 
