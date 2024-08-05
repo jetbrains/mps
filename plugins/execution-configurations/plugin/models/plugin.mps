@@ -8456,7 +8456,7 @@
                                             </node>
                                           </node>
                                           <node concept="Xl_RD" id="rnX0t1pw_Z" role="3uHU7w">
-                                            <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.text=ALL-UNNAMED" />
+                                            <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.text=ALL-UNNAMED\n" />
                                           </node>
                                         </node>
                                         <node concept="Xl_RD" id="4nmyK_eErks" role="3uHU7w">
