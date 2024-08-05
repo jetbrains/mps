@@ -89,7 +89,7 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   public String getDescription() {
     return "In MPS, you create new languages and then use them to write code " +
            "in solutions. An <a href=\"" + DocumentationHelper.getHelpCenterBase() +
-           "MPS+project+structure#MPSprojectstructure-languages\">MPS language</a> describes the syntax, editor, generator and other aspects of the " +
+           "mps-project-structure.html#languages\">MPS language</a> describes the syntax, editor, generator and other aspects of the " +
            "new language.";
   }
 

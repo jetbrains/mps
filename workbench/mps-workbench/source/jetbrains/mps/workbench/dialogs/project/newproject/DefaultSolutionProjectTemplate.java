@@ -55,7 +55,7 @@ public class DefaultSolutionProjectTemplate implements SolutionProjectTemplate {
   @Override
   public String getDescription() {
     return "Solutions are used to store code written in MPS languages. " +
-           "Each <a href=\"" + DocumentationHelper.getHelpCenterBase() + "MPS+project+structure#MPSprojectstructure-solutions\">MPS solution</a> " +
+           "Each <a href=\"" + DocumentationHelper.getHelpCenterBase() + "mps-project-structure.html#solutions\">MPS solution</a> " +
            "is a set of models with a name.";
   }
 
