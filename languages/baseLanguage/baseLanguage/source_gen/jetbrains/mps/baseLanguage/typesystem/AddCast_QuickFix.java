@@ -5,9 +5,6 @@ package jetbrains.mps.baseLanguage.typesystem;
 import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.ExpressionStatement__BehaviorDescriptor;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
@@ -24,17 +21,6 @@ public class AddCast_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4017912752400074243"));
   }
   public String getDescription(SNode node) {
-    ListSequence.fromList(ListSequence.fromList(new ArrayList<String>())).visitAll(new _FunctionTypes._void_P1_E0<String>() {
-      public void invoke(String node) {
-        System.out.println("");
-      }
-    });
-    Runnable r = new Runnable() {
-      @Override
-      public void run() {
-        int node = 10;
-      }
-    };
     String text;
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseAssignmentExpression$PA)) {
       text = "right side of assignment";

@@ -12,7 +12,6 @@ import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.baseLanguage.behavior.ConceptFunctionParameter__BehaviorDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -38,7 +37,7 @@ public class check_ConceptFunction_NonTypesystemRule extends AbstractNonTypesyst
       }
       DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(nodeToCheck, LINKS.body$e68K), checkReturns);
 
-      Iterable<SConcept> params = ListSequence.fromList(ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke(nodeToCheck)).where((paramConcept) -> (boolean) ConceptFunctionParameter__BehaviorDescriptor.dontUseParameterObject_id1653mnvAgv$.invoke(SNodeOperations.asSConcept(paramConcept)) || !((boolean) ConceptFunction__BehaviorDescriptor.usesParameterObject_id1653mnvAgq0.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(nodeToCheck)))) || !((boolean) ConceptFunction__BehaviorDescriptor.usesParameterObjectFor_idhEwIGRw.invoke(nodeToCheck, SNodeFactoryOperations.createNewNode(paramConcept, null))));
+      Iterable<SConcept> params = ListSequence.fromList(ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke(nodeToCheck)).where((paramConcept) -> !((boolean) ConceptFunction__BehaviorDescriptor.usesParameterObjectFor_idhEwIGRw.invoke(nodeToCheck, SNodeFactoryOperations.createNewNode(paramConcept, null))));
 
       final Iterable<String> paramNames = Sequence.fromIterable(params).select((param) -> SConceptOperations.conceptAlias(param));
       ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(nodeToCheck, LINKS.body$e68K), CONCEPTS.VariableDeclaration$Y0, false, new SAbstractConcept[]{})).where((var) -> Objects.equals(SNodeOperations.getNodeAncestor(var, CONCEPTS.IMethodLike$L7, false, false), nodeToCheck)).visitAll((var) -> {
