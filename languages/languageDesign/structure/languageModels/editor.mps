@@ -1700,6 +1700,7 @@
           </node>
         </node>
         <node concept="1HlG4h" id="hPR1nTY" role="3EZMnx">
+          <ref role="1k5W1q" to="tpco:3VARyd8XcQs" resolve="Comment" />
           <node concept="1HfYo3" id="hPR1nTZ" role="1HlULh">
             <node concept="3TQlhw" id="hPR1nU0" role="1Hhtcw">
               <node concept="3clFbS" id="hPR1nU1" role="2VODD2">
@@ -1730,9 +1731,6 @@
                 </node>
               </node>
             </node>
-          </node>
-          <node concept="30gYXW" id="hQ6vSXD" role="3F10Kt">
-            <property role="Vb096" value="fLJRk5A/lightGray" />
           </node>
         </node>
         <node concept="3F0ifn" id="24YP6ZDt1JB" role="3EZMnx">
