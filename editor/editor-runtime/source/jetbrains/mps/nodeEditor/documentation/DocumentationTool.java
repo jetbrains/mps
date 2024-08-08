@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
 public class DocumentationTool extends BaseTabbedProjectTool implements PersistentStateComponent<Element> {
-  public static final String ID = "Documentation";
+  public static final String ID = "Doc";
 
   @Nullable
   public static DocumentationTool getInstance(@Nullable jetbrains.mps.project.Project mpsProject) {
