@@ -466,30 +466,39 @@
       </build>
     </channel>
     <channel id="MPS233EAP" name="MPS 2023.3" status="eap"
-             url="https://www.jetbrains.com/mps/download"
+             url="https://www.jetbrains.com/mps/download/previous.html"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2023" minorVersoin="3">
       <build number="233.13135.1068" version="2023.3.1">
         <message>JetBrains MPS 2023.3.1 is now available.</message>
-        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
+        <button name="Download" url="https://www.jetbrains.com/mps/download/previous.html" download="true"/>
       </build>
     </channel>
     <channel id="MPS233" name="MPS 2023.3" status="release"
-             url="https://www.jetbrains.com/mps/download"
+             url="https://www.jetbrains.com/mps/download/previous.html"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2023" minorVersoin="3">
       <build number="233.13135.1068" version="2023.3.1">
         <message>JetBrains MPS 2023.3.1 is now available.</message>
-        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
+        <button name="Download" url="https://www.jetbrains.com/mps/download/previous.html" download="true"/>
       </build>
     </channel>
     <channel id="MPS241EAP" name="MPS 2024.1" status="eap"
              url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2024" minorVersoin="1">
-      <build number="241.18034.990" version="2024.1 RC1">
-        <message>JetBrains MPS 2024.1 RC1 is now available.</message>
-        <button name="Download" url="https://www.jetbrains.com/mps/nextversion" download="true"/>
+      <build number="241.18034.1093" version="2024.1">
+        <message>JetBrains MPS 2024.1 is now available.</message>
+        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
+      </build>
+    </channel>
+    <channel id="MPS241" name="MPS 2024.1" status="release"
+             url="https://www.jetbrains.com/mps/download"
+             feedback="http://youtrack.jetbrains.net/issues/MPS"
+             majorVersion="2024" minorVersoin="1">
+      <build number="241.18034.1093" version="2024.1">
+        <message>JetBrains MPS 2024.1 is now available.</message>
+        <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
   </product>
