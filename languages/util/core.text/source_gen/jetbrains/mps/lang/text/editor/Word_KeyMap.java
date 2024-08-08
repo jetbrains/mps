@@ -31,23 +31,23 @@ public class Word_KeyMap extends KeyMapImpl {
     action = new Word_KeyMap_Action0();
     this.putAction("ctrl", "VK_B", action);
     action = new Word_KeyMap_Action1();
-    this.putAction("ctrl", "VK_I", action);
-    action = new Word_KeyMap_Action2();
     this.putAction("ctrl", "VK_U", action);
-    action = new Word_KeyMap_Action3();
+    action = new Word_KeyMap_Action2();
     this.putAction("ctrl", "VK_0", action);
-    action = new Word_KeyMap_Action4();
+    action = new Word_KeyMap_Action3();
     this.putAction("ctrl", "VK_1", action);
-    action = new Word_KeyMap_Action5();
+    action = new Word_KeyMap_Action4();
     this.putAction("ctrl", "VK_2", action);
-    action = new Word_KeyMap_Action6();
+    action = new Word_KeyMap_Action5();
     this.putAction("ctrl", "VK_3", action);
-    action = new Word_KeyMap_Action7();
+    action = new Word_KeyMap_Action6();
     this.putAction("ctrl", "VK_4", action);
-    action = new Word_KeyMap_Action8();
+    action = new Word_KeyMap_Action7();
     this.putAction("ctrl", "VK_5", action);
-    action = new Word_KeyMap_Action9();
+    action = new Word_KeyMap_Action8();
     this.putAction("ctrl", "VK_6", action);
+    action = new Word_KeyMap_Action9();
+    this.putAction("any", " ", action);
     action = new Word_KeyMap_Action10();
     this.putAction("any", " ", action);
     action = new Word_KeyMap_Action11();
@@ -55,10 +55,8 @@ public class Word_KeyMap extends KeyMapImpl {
     action = new Word_KeyMap_Action12();
     this.putAction("any", " ", action);
     action = new Word_KeyMap_Action13();
-    this.putAction("any", " ", action);
-    action = new Word_KeyMap_Action14();
     this.putAction("none", "VK_TAB", action);
-    action = new Word_KeyMap_Action15();
+    action = new Word_KeyMap_Action14();
     this.putAction("shift", "VK_TAB", action);
   }
   public static class Word_KeyMap_Action0 extends KeyMapActionImpl {
@@ -119,46 +117,14 @@ public class Word_KeyMap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SPropertyOperations.assign(node, PROPS.italic$SC$4, !(SPropertyOperations.getBoolean(node, PROPS.italic$SC$4)));
-    }
-    public String getKeyStroke() {
-      return "ctrl I";
-    }
-  }
-  public static class Word_KeyMap_Action2 extends KeyMapActionImpl {
-    public Word_KeyMap_Action2() {
-      this.setShownInPopupMenu(false);
-    }
-    public boolean isMenuAlwaysShown() {
-      return false;
-    }
-    public boolean canExecute(final EditorContext editorContext) {
-      EditorCell contextCell = editorContext.getContextCell();
-      if ((contextCell == null)) {
-        return false;
-      }
-      SNode contextNode = contextCell.getSNode();
-      if (contextNode == null) {
-        return false;
-      }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Word$Dn))) {
-        return false;
-      }
-      return true;
-    }
-    public void execute(final EditorContext editorContext) {
-      EditorCell contextCell = editorContext.getContextCell();
-      this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
-    }
-    private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SPropertyOperations.assign(node, PROPS.underlined$SQS1, !(SPropertyOperations.getBoolean(node, PROPS.underlined$SQS1)));
     }
     public String getKeyStroke() {
       return "ctrl U";
     }
   }
-  public static class Word_KeyMap_Action3 extends KeyMapActionImpl {
-    public Word_KeyMap_Action3() {
+  public static class Word_KeyMap_Action2 extends KeyMapActionImpl {
+    public Word_KeyMap_Action2() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -192,8 +158,8 @@ public class Word_KeyMap extends KeyMapImpl {
       return "ctrl 0";
     }
   }
-  public static class Word_KeyMap_Action4 extends KeyMapActionImpl {
-    public Word_KeyMap_Action4() {
+  public static class Word_KeyMap_Action3 extends KeyMapActionImpl {
+    public Word_KeyMap_Action3() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -232,8 +198,8 @@ public class Word_KeyMap extends KeyMapImpl {
       return "ctrl 1";
     }
   }
-  public static class Word_KeyMap_Action5 extends KeyMapActionImpl {
-    public Word_KeyMap_Action5() {
+  public static class Word_KeyMap_Action4 extends KeyMapActionImpl {
+    public Word_KeyMap_Action4() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -272,8 +238,8 @@ public class Word_KeyMap extends KeyMapImpl {
       return "ctrl 2";
     }
   }
-  public static class Word_KeyMap_Action6 extends KeyMapActionImpl {
-    public Word_KeyMap_Action6() {
+  public static class Word_KeyMap_Action5 extends KeyMapActionImpl {
+    public Word_KeyMap_Action5() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -312,8 +278,8 @@ public class Word_KeyMap extends KeyMapImpl {
       return "ctrl 3";
     }
   }
-  public static class Word_KeyMap_Action7 extends KeyMapActionImpl {
-    public Word_KeyMap_Action7() {
+  public static class Word_KeyMap_Action6 extends KeyMapActionImpl {
+    public Word_KeyMap_Action6() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -352,8 +318,8 @@ public class Word_KeyMap extends KeyMapImpl {
       return "ctrl 4";
     }
   }
-  public static class Word_KeyMap_Action8 extends KeyMapActionImpl {
-    public Word_KeyMap_Action8() {
+  public static class Word_KeyMap_Action7 extends KeyMapActionImpl {
+    public Word_KeyMap_Action7() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -392,8 +358,8 @@ public class Word_KeyMap extends KeyMapImpl {
       return "ctrl 5";
     }
   }
-  public static class Word_KeyMap_Action9 extends KeyMapActionImpl {
-    public Word_KeyMap_Action9() {
+  public static class Word_KeyMap_Action8 extends KeyMapActionImpl {
+    public Word_KeyMap_Action8() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -432,8 +398,8 @@ public class Word_KeyMap extends KeyMapImpl {
       return "ctrl 6";
     }
   }
-  public static class Word_KeyMap_Action10 extends KeyMapActionImpl {
-    public Word_KeyMap_Action10() {
+  public static class Word_KeyMap_Action9 extends KeyMapActionImpl {
+    public Word_KeyMap_Action9() {
       super.setCaretPolicy(KeyMapAction.CARET_AT_LAST_POSITION);
       this.setShownInPopupMenu(false);
     }
@@ -465,8 +431,8 @@ public class Word_KeyMap extends KeyMapImpl {
       return "  ";
     }
   }
-  public static class Word_KeyMap_Action11 extends KeyMapActionImpl {
-    public Word_KeyMap_Action11() {
+  public static class Word_KeyMap_Action10 extends KeyMapActionImpl {
+    public Word_KeyMap_Action10() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -500,8 +466,8 @@ public class Word_KeyMap extends KeyMapImpl {
       return "  ";
     }
   }
-  public static class Word_KeyMap_Action12 extends KeyMapActionImpl {
-    public Word_KeyMap_Action12() {
+  public static class Word_KeyMap_Action11 extends KeyMapActionImpl {
+    public Word_KeyMap_Action11() {
       super.setCaretPolicy(KeyMapAction.CARET_AT_FIRST_POSITION);
       this.setShownInPopupMenu(false);
     }
@@ -533,8 +499,8 @@ public class Word_KeyMap extends KeyMapImpl {
       return "  ";
     }
   }
-  public static class Word_KeyMap_Action13 extends KeyMapActionImpl {
-    public Word_KeyMap_Action13() {
+  public static class Word_KeyMap_Action12 extends KeyMapActionImpl {
+    public Word_KeyMap_Action12() {
       super.setCaretPolicy(KeyMapAction.CARET_AT_INTERMEDIATE_POSITION);
       this.setShownInPopupMenu(false);
     }
@@ -566,8 +532,8 @@ public class Word_KeyMap extends KeyMapImpl {
       return "  ";
     }
   }
-  public static class Word_KeyMap_Action14 extends KeyMapActionImpl {
-    public Word_KeyMap_Action14() {
+  public static class Word_KeyMap_Action13 extends KeyMapActionImpl {
+    public Word_KeyMap_Action13() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -610,8 +576,8 @@ public class Word_KeyMap extends KeyMapImpl {
       return "none TAB";
     }
   }
-  public static class Word_KeyMap_Action15 extends KeyMapActionImpl {
-    public Word_KeyMap_Action15() {
+  public static class Word_KeyMap_Action14 extends KeyMapActionImpl {
+    public Word_KeyMap_Action14() {
       this.setShownInPopupMenu(false);
     }
     public boolean isMenuAlwaysShown() {
@@ -656,7 +622,6 @@ public class Word_KeyMap extends KeyMapImpl {
 
   private static final class PROPS {
     /*package*/ static final SProperty bold$SBR1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
-    /*package*/ static final SProperty italic$SC$4 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
     /*package*/ static final SProperty underlined$SQS1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d494L, "underlined");
     /*package*/ static final SProperty level$YKTp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cb23f222fb47accL, 0x6cb23f222fb47b9dL, "level");
     /*package*/ static final SProperty indentation$8ZOp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, 0x46ded40cf13ae6fbL, "indentation");
