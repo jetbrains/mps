@@ -20,10 +20,10 @@ import jetbrains.mps.classloading.MPSModuleClassLoader;
 import jetbrains.mps.classloading.ModuleClassLoader;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModule;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -82,38 +82,26 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
     return myManager.getClassLoader(this);
   }
 
-  @Override
-  protected void dependenciesChanged() {
-    super.dependenciesChanged();
-    // XXX quite questionable code, why would I want to reload code when design dependency changes?
-    if (SModuleOperations.canSupplyExtensionsForMPS(this)) {
-      fireDependenciesChanged();
-    }
-  }
-
-  protected final void fireDependenciesChanged() {
-    assertCanChange();
-
-    // XXX what's wrong with SModuleListener.moduleChanged event? Nothing, really. It just happen that we strted to send moduleChanged for dependencies
-    //     in 2016, while dependenciesChanged() has been introduced in 2013 and utilized for CL purposes in 2014 (see a722d0dd)
-    for (SModuleDependenciesListener listener : myListeners) {
-      listener.dependenciesChanged(this);
-    }
-  }
-
   // NOTE: for internal use
+  @Deprecated(forRemoval = true)
   public final void addDependenciesListener(SModuleDependenciesListener listener) {
-    myListeners.add(listener);
+    LOG.warnDeprecatedUse("This method is no-op, stop using SModuleDependenciesListener");
   }
 
   // NOTE: for internal use
+  @Deprecated(forRemoval = true)
   public final void removeDependenciesListener(SModuleDependenciesListener listener) {
-    myListeners.remove(listener);
+    LOG.warnDeprecatedUse("This method is no-op, stop using SModuleDependenciesListener");
   }
 
   // NOTE: for internal use
   // notifies about ANY changes in deps, used languages, etc.
   // designed specifically for the class loading client
+  /**
+   * NOT IN USE ANY MORE
+   * @deprecated Use {@link org.jetbrains.mps.openapi.module.SModuleListener#moduleChanged(SModule)}
+   */
+  @Deprecated(since = "2024.2", forRemoval = true)
   public interface SModuleDependenciesListener {
     void dependenciesChanged(@NotNull ReloadableModuleBase module);
   }
