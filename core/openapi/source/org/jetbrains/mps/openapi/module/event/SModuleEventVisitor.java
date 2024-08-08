@@ -15,6 +15,8 @@
  */
 package org.jetbrains.mps.openapi.module.event;
 
+import org.jetbrains.annotations.NotNull;
+
 public interface SModuleEventVisitor {
   default void visit(SModuleAddedEvent event) {
   }
@@ -26,5 +28,13 @@ public interface SModuleEventVisitor {
   }
 
   default void visit(SModuleChangedEvent event) {
+  }
+
+  /**
+   * just a handy method to invert {@code this} for {@link SRepositoryModuleEvent#accept(SModuleEventVisitor)} call, handy for method references and stream.
+   * Generally, there's no reason to provide alternative implementation, default one is ok.
+   */
+  default void dispatch(@NotNull SRepositoryEvent event) {
+    event.accept(this);
   }
 }

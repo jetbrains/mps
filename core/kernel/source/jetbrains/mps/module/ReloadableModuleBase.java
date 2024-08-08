@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -94,6 +94,8 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
   protected final void fireDependenciesChanged() {
     assertCanChange();
 
+    // XXX what's wrong with SModuleListener.moduleChanged event? Nothing, really. It just happen that we strted to send moduleChanged for dependencies
+    //     in 2016, while dependenciesChanged() has been introduced in 2013 and utilized for CL purposes in 2014 (see a722d0dd)
     for (SModuleDependenciesListener listener : myListeners) {
       listener.dependenciesChanged(this);
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,7 @@ import org.jetbrains.mps.openapi.module.SRepositoryListener;
 import org.jetbrains.mps.openapi.module.event.SModuleAddedEvent;
 import org.jetbrains.mps.openapi.module.event.SModuleChangedEvent;
 import org.jetbrains.mps.openapi.module.event.SModuleRemovedEvent;
+import org.jetbrains.mps.openapi.module.event.SModuleRemovingEvent;
 import org.jetbrains.mps.openapi.module.event.SRepositoryEvent;
 
 import java.util.ArrayList;
@@ -122,6 +123,7 @@ public class BatchEventsProcessor {
     @Override
     public void beforeModuleRemoved(@NotNull SModule module) {
       if (!myBatchStarted) return;
+      addEventToList(new SModuleRemovingEvent(module));
       if (module instanceof ReloadableModuleBase) {
         ((ReloadableModuleBase) module).removeDependenciesListener(this);
         module.removeModuleListener(this);

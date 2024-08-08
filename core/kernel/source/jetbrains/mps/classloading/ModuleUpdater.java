@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.event.SModuleAddedEvent;
 import org.jetbrains.mps.openapi.module.event.SModuleChangedEvent;
 import org.jetbrains.mps.openapi.module.event.SModuleEventVisitor;
-import org.jetbrains.mps.openapi.module.event.SModuleRemovedEvent;
+import org.jetbrains.mps.openapi.module.event.SModuleRemovingEvent;
 import org.jetbrains.mps.openapi.module.event.SRepositoryEvent;
 
 import java.util.Collection;
@@ -85,6 +85,7 @@ import java.util.stream.Stream;
   /*package*/ void processRepositoryChanges(List<SRepositoryEvent> changes, final Predicate<SModule> suitsClassLoading) {
     // FIXME check present logic accounts for different events for the same module
     // XXX it's only here that we still check instanceof ReloadableModule, the check that shall eventually go away (or at least get hidden in suitesClassLoading)
+    // TODO ^^^ well, in fact, we check instanceof ReloadableModule once we deal with the outcome (unloaded/loaded collections of CModule, so we can safely remove instancceof here)
     SModuleEventVisitor v = new SModuleEventVisitor() {
       @Override
       public void visit(SModuleAddedEvent event) {
@@ -95,8 +96,18 @@ import java.util.stream.Stream;
       }
 
       @Override
-      public void visit(SModuleRemovedEvent event) {
-        removeModules(event.getModuleReference());
+      public void visit(SModuleRemovingEvent event) {
+        // event.getModule() is likely already detached from a repository, but we only care about instance identity
+        // and module reference here, therefore can deal with detached SModule instance
+        recordRemoved(event.getModuleReference(), event.getModule());
+      }
+
+      private void recordRemoved(@NotNull SModuleReference mref, @NotNull SModule module) {
+        // final CModule instance = myDepGraph.get(mRef); // not remove(), leave actual changes to refreshGraph() - here we just record deletion
+        //       and update pending add/reload change queues
+        myModulesToAdd.remove(module);
+        myModulesToReload.remove(module);
+        myModulesToRemove.add(mref);
       }
 
       @Override
@@ -109,7 +120,7 @@ import java.util.stream.Stream;
               // XXX I wonder if update is just == remove + add?
               updateModules(module);
             } else {
-              removeModules(module.getModuleReference());
+              recordRemoved(module.getModuleReference(), module);
             }
           } else if (suitsClassLoading.test(module)) {
             // didn't see the module, add for CL
@@ -118,11 +129,8 @@ import java.util.stream.Stream;
         }
       }
     };
-    // FIXME for some reason BatchEventsProcessor doesn't send SModuleRemovingEvent (which seems to be just a placeholder for now).
-    //       I wonder why not to use it, as we care about instance identity and module reference, therefore can deal with detached SModule instance
-    for (SRepositoryEvent e : changes) {
-      e.accept(v);
-    }
+
+    changes.forEach(v::dispatch);
   }
 
   // REVIEW: the purpose of the three methods below  [update|add|remove]Modules
@@ -163,18 +171,6 @@ import java.util.stream.Stream;
           module.getModuleReference()); // can't remove(CModule), OTOH could be just assert myModulesToRemove.noneMatch(cm.getMR() == module.MR())
       // as there's no chance to get removeModules() for known MR and then addModules() as unknown (we don't remove anything from the graph while collecting changes)
     }
-  }
-
-  /*package*/ void removeModules(@NotNull SModuleReference mRef) {
-    final CModule instance = myDepGraph.get(mRef); // not remove(), leave actual changes to refreshGraph()
-    if (instance != null) {
-      if (instance.getModule() != null) {
-        myModulesToAdd.remove(instance.getModule());
-        myModulesToReload.remove(instance.getModule());
-      }
-      myModulesToRemove.add(mRef);
-    }
-    // FIXME what about scenario when myModulesToAdd contain module with mRef?!
   }
 
   // return modules that needs their status re-assessed. Perhaps, shall replace with CModule, once it's our true
