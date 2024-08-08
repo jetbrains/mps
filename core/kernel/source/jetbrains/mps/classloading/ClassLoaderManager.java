@@ -40,12 +40,14 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import static java.lang.ClassLoader.getSystemClassLoader;
@@ -347,7 +349,7 @@ public class ClassLoaderManager implements CoreComponent {
    * Note: currently we need to broadcast load/unload events because there are clients of {@link DeployListener}
    * These clients need to be rewritten in a lazy way, i.e. using only #getClass [#getClassLoader] method. (do they?)
    */
-  private void preLoadModules(Iterable<? extends ReloadableModule> modules, ProgressMonitor monitor) {
+  private void preLoadModules(Collection<CModule> modules, ProgressMonitor monitor) {
     // pre: modules - transitive closure
     checkWriteAccess();
     monitor.start("Loading", 6);
@@ -358,7 +360,7 @@ public class ClassLoaderManager implements CoreComponent {
     // XXX is it ok to assume dependencies could not be in 'lazy_loaded' state at the moment? Why myUnloadedCondition?
     // XXX myUnloadedCondition sort of implies classloading process for re-loaded module (unloaded and the loaded again) has to be complete at this point
     //     but what if/when I combine unload/preLoad into single transaction, would this assumption cause any throuble then?
-    Set<ReloadableModule> modulesPreLoad = filterModules(modules, myClassLoadersHolder.getUnloadedCondition().and(myValidCondition));
+    Set<ReloadableModule> modulesPreLoad = filterModules(onlyRM(modules), myClassLoadersHolder.getUnloadedCondition().and(myValidCondition));
     if (modulesPreLoad.isEmpty()) {
       return;
     }
@@ -384,11 +386,11 @@ public class ClassLoaderManager implements CoreComponent {
    * FIXME not sure supplied modules match myMPSLoadableCondition, perhaps externally-managed modules are
    *       among these, as well. If yes, this means we dispatch different set of modules in onLoaded and in onUnloaded
    */
-  private void unloadModules(Iterable<? extends ReloadableModule> modules, @NotNull ProgressMonitor monitor) {
+  private void unloadModules(Collection<CModule> modules, @NotNull ProgressMonitor monitor) {
     // pre: modules - transitive closure
     checkWriteAccess();
     monitor.start("Unloading", 6);
-    Set<ReloadableModule> modulesToUnload = filterModules(modules, myClassLoadersHolder.getLoadedCondition());
+    Set<ReloadableModule> modulesToUnload = filterModules(onlyRM(modules), myClassLoadersHolder.getLoadedCondition());
     if (modulesToUnload.isEmpty()) {
       return;
     }
@@ -403,9 +405,13 @@ public class ClassLoaderManager implements CoreComponent {
     monitor.done();
   }
 
-  static <M> Set<M> filterModules(Iterable<? extends M> modules, Predicate<? super M> condition) {
+  private static Stream<ReloadableModule> onlyRM(final Collection<CModule> modules) {
+    return modules.stream().map(CModule::getModule).filter(ReloadableModule.class::isInstance).map(ReloadableModule.class::cast);
+  }
+
+  static <M> Set<M> filterModules(Stream<? extends M> modules, Predicate<? super M> condition) {
     Set<M> filteredModules = new LinkedHashSet<>();
-    StreamSupport.stream(modules.spliterator(), false).filter(condition).forEach(filteredModules::add);
+    modules.filter(condition).forEach(filteredModules::add);
     return filteredModules;
   }
 

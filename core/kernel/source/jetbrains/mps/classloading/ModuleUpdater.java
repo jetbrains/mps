@@ -44,6 +44,7 @@ import java.util.stream.Stream;
  * Logic to update CL graph based on module dependencies.
  * Collects change deltas and process them at once with {@link #refreshGraph()}.
  * Doesn't get/track any locks, created for a single operation and shall get discarded once update is over.
+ * Please note, this class is a run-and-discard operation, with a number of parameters and few output values, and very limited usage scenario (new->use->discard)
  */
 /*package*/ final class ModuleUpdater {
   private static final Logger LOG = Logger.getLogger(ModuleUpdater.class);
@@ -55,24 +56,17 @@ import java.util.stream.Stream;
   // inv: modules known to the graph, generally valid (although I could imagine moduleA (known) -> moduleB (reported as dep target), moduleB
   //      not matching "watchable" condition AND never changed, hence never making it neither to addModules() nor to updateModules(changed)
   private final Set<SModuleReference> myModulesToRemove = new LinkedHashSet<>();
+  // this is a state this update operation deals with.
+  // This class is responsible to transition dependency graph from one state to another based on a sequence of repository events.
   private final GraphHolder<SModuleReference, CModule> myDepGraph;
   private final Function<SModule, Stream<SModuleReference>> myDependencySupplier;
-  // unordered. FIXME rename (hide?)
-  // REVIEW: internal fields are exposed and can be potentially modifed from outside
-  //    This class is a run-and-discard operation, with a number of parameters and few output values,
-  //    its very limited use (new->use->discard) and package-local access requires quite a tricky mind to
-  //    abuse the fields. Nevertheless, they are named not like regular fields to draw attention and
-  //    to get eventually refactored into accessor methods during the next iteration of refactoring.
 
   // REVIEW: none of CModule's descendants implement equals/hashCode contract, why use set and not list?
   //       Set, not List, to convey the idea we expect unique instances.
   //       No equals/hashCode as we do rely on identity. myDepthGraph keeps the instances, and these collections
   //       just reference these instances. No instance is expected to show up in any collection more than once.
-
-  // REVIEW: why breaking the naming convention for these fields? other fields follow my* convention
-  //       The reason is that these are to become accessor methods, to spot it right away.
-  /*package*/ final Set<CModule> affectedForRemove = new HashSet<>();
-  /*package*/ final Set<CModule> affectedForAdd = new HashSet<>();
+  private final Set<CModule> myAffectedForRemove = new HashSet<>(); // unordered, don't care about specific order.
+  private final Set<CModule> myAffectedForAdd = new HashSet<>(); // ditto
   private final int myGen;
   private int mySeq;
 
@@ -180,11 +174,13 @@ import java.util.stream.Stream;
       }
       myModulesToRemove.add(mRef);
     }
+    // FIXME what about scenario when myModulesToAdd contain module with mRef?!
   }
 
   // return modules that needs their status re-assessed. Perhaps, shall replace with CModule, once it's our true
   // graph vertex (not bound to SModule; could keep status right in there and also keep track of origin - which code injected a vertex)
-  /*package*/ Set<SModuleReference> refreshGraph() {
+  // Parameters: output, populated with graph vertices affected by the update
+  /*package*/ Set<SModuleReference> refreshGraph(Collection<CModule> removedFromGraph, Collection<CModule> addedToGraph) {
     // assumes appropriate model access
     LOG.debug(String.format("Refreshing classloading graph adding: %d, removing %d, updating %d", myModulesToAdd.size(),
                             myModulesToRemove.size(), myModulesToReload.size()));
@@ -208,7 +204,7 @@ import java.util.stream.Stream;
     //    case of external code populating exposed affectedForRemove field).
     // REVIEW: what happens if this method is called multiple times?
     //    This method is not supposed to be called more than once, the whole class is indended for single update operation.
-    final List<SModuleReference> removedCModuleRefs = affectedForRemove.stream().map(CModule::getModuleReference).collect(Collectors.toList());
+    final List<SModuleReference> removedCModuleRefs = myAffectedForRemove.stream().map(CModule::getModuleReference).collect(Collectors.toList());
 
     HashSet<SModuleReference> checkNoLongerInGraph = new HashSet<>(removedCModuleRefs); // inv: forEach(myRefStorage[v].module == null); we don't
     // remove valid modules as they may appear as a dependency target for another module, therefore we keep CModule until they explicitly gone from a repo.
@@ -230,7 +226,7 @@ import java.util.stream.Stream;
     //     affectedForRemove value there instead of myModulesToRemove + myDepGraph.contains() condition.
     //     Indeed, could populate removedCModuleRefs from the loop over myModulesToRemove, just liked it more with a stream API.
     //     Here, for each explicitly removed module, we record all that depend on it as "subject to be unloaded (removed from CLM)"
-    myDepGraph.visitIncomingDeep(removedCModuleRefs, affectedForRemove::add);
+    myDepGraph.visitIncomingDeep(removedCModuleRefs, myAffectedForRemove::add);
 
     for (SModule module : myModulesToAdd) {
       SModuleReference mRef = module.getModuleReference();
@@ -258,7 +254,7 @@ import java.util.stream.Stream;
       //    here we mark *all* dependant modules as "subject to be unloaded(removed from the CLM), while
       //    storageUpdate() call, below, deals with modules *explicitly* mentined for reload only.
       //    Indeed, there's intersection, but as long as it's Set, does it matter?
-      myDepGraph.visitIncomingDeep(Collections.singleton(mRef), affectedForRemove::add);
+      myDepGraph.visitIncomingDeep(Collections.singleton(mRef), myAffectedForRemove::add);
       // anticipated module, all others that depend on it shall get loaded (if their dependencies are satisfied)
       knownAndChanged.add(mRef);
       recalculateEdges.add(mRef); // need to figure out its dependencies again
@@ -276,7 +272,7 @@ import java.util.stream.Stream;
     myModulesToReload.forEach(this::storageUpdate);
 
     // modules with broken dependencies that were expected but not met, get a chance to load
-    myDepGraph.visitIncomingDeep(knownAndChanged, affectedForAdd::add);
+    myDepGraph.visitIncomingDeep(knownAndChanged, myAffectedForAdd::add);
     // changed modules we've known before - what if it's a dependency change to a module long gone?
     // OTOH, perhaps it's just easier/smarter to walk all verticies, find those w/o incoming edges and SModule == null and remove these?
     //       would need a queue as we shall walk the graph again and again, as long as there are removed verticies.
@@ -288,8 +284,7 @@ import java.util.stream.Stream;
 
     recalculateStatus.removeAll(removedCModuleRefs);
     HashSet<SModuleReference> newTargets = new HashSet<>(); // if changed modules yield any new vertex, update it status
-    updateEdges(recalculateEdges,
-                newTargets); // XXX updateEdges may report verticies that lost incoming edge, to check here if the vertex got no incoming refs and we can drop it from the graph, see +2 lines below. FUTURE
+    updateEdges(recalculateEdges, newTargets); // XXX updateEdges may report verticies that lost incoming edge, to check here if the vertex got no incoming refs and we can drop it from the graph, see +2 lines below. FUTURE
     // now we've got graph reflecting actual dependencies, see if we can forget any removed vertex
     // in fact, after edge update, there could be other verticis w/o incoming edges (i.e. module not removed but got no dependants)
     // and I wonder if we could update removedToVisitAgain here for potential subsequent removal (module w/o dependants may still need CL for
@@ -315,6 +310,9 @@ import java.util.stream.Stream;
     forStatusUpdate.addAll(recalculateStatus);
     forStatusUpdate.addAll(newTargets); // newTargets, if any, is part of new "outgoing" edges
     myDepGraph.fillIncomingEdgesDeep(recalculateStatus, forStatusUpdate::add);
+
+    removedFromGraph.addAll(myAffectedForRemove);
+    addedToGraph.addAll(myAffectedForAdd);
 
     // FIXME update status for modules in forStatusUpdate
 
@@ -396,22 +394,22 @@ import java.util.stream.Stream;
   private void storageForget(SModuleReference mRef) {
     CModule removed = myDepGraph.update(mRef, new Unknown(mRef, myGen, mySeq++));
     assert removed != null;
-    affectedForRemove.add(removed);
+    myAffectedForRemove.add(removed);
   }
 
   private void storageUpdate(final SModule m) {
     CModule v = new Updated(m, myGen, mySeq++);
     CModule old = myDepGraph.update(v.getModuleReference(), v);
     assert old != null;
-    affectedForRemove.add(old);
-    affectedForAdd.add(v);
+    myAffectedForRemove.add(old);
+    myAffectedForAdd.add(v);
   }
 
   private void storageAdd(final SModule m) {
     CModule v = new Existing(m, myGen, mySeq++);
     CModule old = myDepGraph.add(v.getModuleReference(), v);
     assert old == null;
-    affectedForAdd.add(v);
+    myAffectedForAdd.add(v);
   }
 
   private void storageAddUnknown(final SModuleReference mRef) {

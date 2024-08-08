@@ -17,7 +17,6 @@ package jetbrains.mps.classloading;
 
 import jetbrains.mps.classloading.ErrorContainer.SearchError;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -123,24 +122,12 @@ public class ModulesWatcher {
         //    There's refillStatusMap() call down here, which is supposed to make use of this information eventually.
         //    Now, for historical reasons, complete map is refreshed, which is not effective if just a coupled of modules
         //    got updated
-        moduleUpdater.refreshGraph();
+        moduleUpdater.refreshGraph(rv.unloaded, rv.loaded);
 
         LOG.debug("Difference in the vertex count after validation " + (myDepGraph.getVerticesCount() - wasVertices));
         LOG.debug("Difference in the edge count after validation " + (myDepGraph.getEdgesCount() - wasEdges));
 
         myDepGraph.checkGraphsCorrectness();
-
-        for (CModule cm : moduleUpdater.affectedForRemove) {
-          if (cm.getModule() instanceof ReloadableModule) {
-            rv.unloaded.add(((ReloadableModule) cm.getModule()));
-          }
-        }
-
-        for (CModule cm : moduleUpdater.affectedForAdd) {
-          if (cm.getModule() instanceof ReloadableModule) {
-            rv.loaded.add(((ReloadableModule) cm.getModule()));
-          }
-        }
 
         final long statusMapStart = System.nanoTime();
         // we're inside myDepGraphLock, and about to take myStatusMapLock. Be careful not to get into scenario
@@ -413,9 +400,9 @@ public class ModulesWatcher {
     boolean isValid();
   }
 
-  // FIXME improve
+  // 'record'
   /*package*/ static class UpdateOutcome {
-    final ArrayList<ReloadableModule> unloaded = new ArrayList<>();
-    final ArrayList<ReloadableModule> loaded = new ArrayList<>();
+    final ArrayList<CModule> unloaded = new ArrayList<>();
+    final ArrayList<CModule> loaded = new ArrayList<>();
   }
 }
