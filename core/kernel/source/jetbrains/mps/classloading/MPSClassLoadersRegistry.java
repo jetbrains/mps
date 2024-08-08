@@ -25,7 +25,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.util.Consumer;
-import org.jetbrains.mps.util.Condition;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -42,6 +41,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -76,12 +76,12 @@ final class MPSClassLoadersRegistry {
     }
   }
 
-  /*package*/ Condition<SModule> getUnloadedCondition() {
+  /*package*/ Predicate<SModule> getUnloadedCondition() {
     return (m -> getClassLoadingProgress(m.getModuleReference()) == ClassLoadingProgress.UNLOADED);
   }
 
   // LAZY_LOADED or LOADED
-  /*package*/ Condition<SModule> getLoadedCondition() {
+  /*package*/ Predicate<SModule> getLoadedCondition() {
     return (m -> getClassLoadingProgress(m.getModuleReference()) != ClassLoadingProgress.UNLOADED);
   }
 

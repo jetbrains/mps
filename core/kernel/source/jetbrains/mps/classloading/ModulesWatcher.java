@@ -27,7 +27,6 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.event.SRepositoryEvent;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import org.jetbrains.mps.util.Condition;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -81,9 +80,9 @@ public class ModulesWatcher {
   private int myUpdateNumber; // just to tell one update sequence from another
 
 
-  public ModulesWatcher(SRepository repository, final Condition<SModule> watchableCondition) {
+  public ModulesWatcher(SRepository repository, final Predicate<SModule> watchableCondition) {
     myRepository = repository;
-    myWatchableCondition = watchableCondition.asPredicate();
+    myWatchableCondition = watchableCondition;
   }
 
   /**

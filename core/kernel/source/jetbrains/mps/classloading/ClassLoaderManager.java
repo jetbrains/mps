@@ -25,7 +25,6 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.tempmodel.TempModule;
-import jetbrains.mps.util.NotCondition;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
@@ -37,7 +36,6 @@ import org.jetbrains.mps.openapi.module.event.SModuleChangedEvent;
 import org.jetbrains.mps.openapi.module.event.SRepositoryEvent;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
-import org.jetbrains.mps.util.Condition;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -46,6 +44,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -275,7 +274,7 @@ public class ClassLoaderManager implements CoreComponent {
    */
   @NotNull
   public MPSModuleClassLoader getClassLoader(final SModule module) {
-    if (!myWatchableCondition.met(module)) {
+    if (!myWatchableCondition.test(module)) {
       // FTR, prior to use of JMF for condition, we didn't get into this if for a module removed inside the same write.
       //      Instead, refresh(), below, brought the watcher state up-to-date. Now, module removed from a repo got no
       //      facets, and we get into this if right away. Not sure how important is this scenario (see related change in
@@ -289,7 +288,7 @@ public class ClassLoaderManager implements CoreComponent {
       refresh();
     }
 
-    if (!myValidCondition.met(module)) {
+    if (!myValidCondition.test(module)) {
       return DEFAULT_DELEGATING_TO_SYSTEM_CL;
     }
 //    createClassloaders(Collections.singleton(reloadableModule), new EmptyProgressMonitor());
@@ -359,7 +358,7 @@ public class ClassLoaderManager implements CoreComponent {
     // XXX is it ok to assume dependencies could not be in 'lazy_loaded' state at the moment? Why myUnloadedCondition?
     // XXX myUnloadedCondition sort of implies classloading process for re-loaded module (unloaded and the loaded again) has to be complete at this point
     //     but what if/when I combine unload/preLoad into single transaction, would this assumption cause any throuble then?
-    Set<ReloadableModule> modulesPreLoad = filterModules(modules, myClassLoadersHolder.getUnloadedCondition(), myValidCondition);
+    Set<ReloadableModule> modulesPreLoad = filterModules(modules, myClassLoadersHolder.getUnloadedCondition().and(myValidCondition));
     if (modulesPreLoad.isEmpty()) {
       return;
     }
@@ -404,10 +403,9 @@ public class ClassLoaderManager implements CoreComponent {
     monitor.done();
   }
 
-  static <M> Set<M> filterModules(Iterable<? extends M> modules, Condition<? super M>... conditions) {
-    CompositeCondition<M> compositeCondition = new CompositeCondition<M>(conditions);
+  static <M> Set<M> filterModules(Iterable<? extends M> modules, Predicate<? super M> condition) {
     Set<M> filteredModules = new LinkedHashSet<>();
-    StreamSupport.stream(modules.spliterator(), false).filter(compositeCondition.asPredicate()).forEach(filteredModules::add);
+    StreamSupport.stream(modules.spliterator(), false).filter(condition).forEach(filteredModules::add);
     return filteredModules;
   }
 
@@ -571,40 +569,20 @@ public class ClassLoaderManager implements CoreComponent {
     }
   }
 
-  // conditions part
-  private static class CompositeCondition<T> implements Condition<T> {
-    private final Condition<? super T>[] myConditions;
-
-    public CompositeCondition(Condition<? super T>... conditions) {
-      myConditions = conditions;
-    }
-
-    @Override
-    public boolean met(T t) {
-      for (Condition<? super T> condition : myConditions) {
-        if (!condition.met(t)) {
-          return false;
-        }
-      }
-      return true;
-    }
-  }
-
   /**
    * the modules we want to watch (and trace the dependencies between them)
    * Answers if it is possible to associate a ClassLoader (whether IDEA-delegating or true MPS module CL) with the module
    */
-  private final Condition<SModule> myWatchableCondition = SModuleOperations::classesAvailableToMPS;
+  private final Predicate<SModule> myWatchableCondition = SModuleOperations::classesAvailableToMPS;
 
   /**
    * status of this module is valid in the dependencies graph
    * @see ModulesWatcher
    */
-  private final Condition<SModule> myValidCondition = new Condition<>() {
+  private final Predicate<SModule> myValidCondition = myWatchableCondition.and(new Predicate<SModule>() {
     @Override
-    public boolean met(SModule module) {
-      SModuleReference mRef = module.getModuleReference();
-      return myWatchableCondition.met(module) && myModulesWatcher.getStatus(mRef).isValid();
+    public boolean test(SModule module) {
+      return myModulesWatcher.getStatus(module.getModuleReference()).isValid();
     }
-  };
+  });
 }
