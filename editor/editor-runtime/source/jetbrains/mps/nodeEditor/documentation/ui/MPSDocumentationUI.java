@@ -24,6 +24,7 @@ import jetbrains.mps.nodeEditor.documentation.MPSDocumentationEditorPane;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManagerProtocol;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationScrollPane;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationToolWindowManager;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationUtil;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.jetbrains.annotations.NotNull;
@@ -211,5 +212,10 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
     myEditorPane.setText(provider.getDecoratedDocumentation());
     myEditorPane.setSize(myEditorPane.getPreferredSize());
     myCurrentProvider = provider;
+
+    MPSDocumentationToolWindowManager manager = MPSDocumentationToolWindowManager.getInstance(myProject);
+    if (manager.toolIsVisible()) {
+      manager.updateContentDisplayName(provider.getName());
+    }
   }
 }

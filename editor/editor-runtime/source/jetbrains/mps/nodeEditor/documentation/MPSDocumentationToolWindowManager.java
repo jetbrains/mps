@@ -52,7 +52,7 @@ public class MPSDocumentationToolWindowManager {
 
   @NotNull
   private Content addNewContent() {
-    Content content = ContentFactory.getInstance().createContent(new JPanel(), "Document", false);
+    Content content = ContentFactory.getInstance().createContent(new JPanel(), null, false);
     content.setCloseable(true);
     content.putUserData(ToolWindow.SHOW_CONTENT_ICON, true);
     myToolWindow.addContent(content);
@@ -87,4 +87,12 @@ public class MPSDocumentationToolWindowManager {
       return null;
     }
   }
+
+  public void updateContentDisplayName(String newName) {
+    Content reusableContent = getReusableContent();
+    if (reusableContent != null) {
+      reusableContent.setDisplayName(newName);
+    }
+  }
+
 }

@@ -105,6 +105,28 @@ public class DocumentationProvider {
   }
 
   @Nullable
+  public String getConcept() {
+    if (myNode == null) {
+      return null;
+    }
+    final Wrappers._T<String> answer = new Wrappers._T<String>(null);
+    myRepository.getModelAccess().runReadAction(() -> answer.value = myNode.getConcept().getName());
+    return answer.value;
+  }
+
+  @Nullable
+  public String getName() {
+    if (myNode == null) {
+      return null;
+    }
+    final Wrappers._T<String> answer = new Wrappers._T<String>(null);
+    myRepository.getModelAccess().runReadAction(() -> answer.value = myNode.getName());
+    return answer.value;
+  }
+
+
+
+  @Nullable
   public String getDecoratedDocumentation() {
     if (myNode == null) {
       return null;
@@ -118,18 +140,16 @@ public class DocumentationProvider {
     if (emptyDocumentation.value) {
       return null;
     }
-    final StringBuilder sb = new StringBuilder();
-    myRepository.getModelAccess().runReadAction(() -> {
-      sb.append(MPSDocumentationMarkup.DEFINITION_START);
-      sb.append("Concept: " + myNode.getConcept().getName());
-      sb.append("<br>");
-      sb.append("Name: " + myNode.getName());
-      sb.append(MPSDocumentationMarkup.DEFINITION_END);
-      sb.append(MPSDocumentationMarkup.CONTENT_START);
-      sb.append(getDocumentationContent());
-      sb.append(MPSDocumentationMarkup.CONTENT_END);
-      sb.append(HtmlChunk.div().setClass("bottom").child(getModelInfo()));
-    });
+    StringBuilder sb = new StringBuilder();
+    sb.append(MPSDocumentationMarkup.DEFINITION_START);
+    sb.append("Concept: " + this.getConcept());
+    sb.append("<br>");
+    sb.append("Name: " + this.getName());
+    sb.append(MPSDocumentationMarkup.DEFINITION_END);
+    sb.append(MPSDocumentationMarkup.CONTENT_START);
+    sb.append(getDocumentationContent());
+    sb.append(MPSDocumentationMarkup.CONTENT_END);
+    sb.append(HtmlChunk.div().setClass("bottom").child(getModelInfo()));
     return sb.toString();
   }
 
