@@ -59,17 +59,14 @@ public class MPSDocumentationPopupUI implements Disposable {
     myEditorPane = myUI.myEditorPane;
     myScrollPane = myUI.myScrollPane;
 
-    DefaultActionGroup navigateActions = ui.getNavigateActions();
-
     List<AnAction> secondaryActions = new ArrayList<>();
     OpenInToolwindowAction openInToolwindowAction = new OpenInToolwindowAction();
     ShowToolbarAction showToolbarAction = new ShowToolbarAction();
-    ShowOnMouseMove showOnMouseMove = new ShowOnMouseMove();
     secondaryActions.add(showToolbarAction);
     secondaryActions.add(openInToolwindowAction);
-    secondaryActions.add(showOnMouseMove);
+    secondaryActions.addAll(ui.getCommonGearActions());
     DefaultActionGroup toolbarActionGroup = new DefaultActionGroup();
-    toolbarActionGroup.add(navigateActions);
+    toolbarActionGroup.addAll(ui.getNavigateActions());
     for (AnAction secondaryAction : secondaryActions) {
       toolbarActionGroup.addAction(secondaryAction).setAsSecondary(true);
     }
@@ -77,7 +74,7 @@ public class MPSDocumentationPopupUI implements Disposable {
     gearActions.setPopup(true);
     gearActions.addAll(secondaryActions);
     gearActions.addSeparator();
-    gearActions.add(navigateActions);
+    gearActions.addAll(ui.getNavigateActions());
 
     ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, toolbarActionGroup, true);
     toolbar.setTargetComponent(myEditorPane);
@@ -221,28 +218,6 @@ public class MPSDocumentationPopupUI implements Disposable {
     public void setSelected(@NotNull AnActionEvent e, boolean state) {
       MPSDocumentationManager.getInstance().setToolbarSelected(state);
       showToolbar(state);
-    }
-
-    @NotNull
-    @Override
-    public ActionUpdateThread getActionUpdateThread() {
-      return ActionUpdateThread.EDT;
-    }
-  }
-
-  private static class ShowOnMouseMove extends ToggleAction {
-    ShowOnMouseMove() {
-      super("Show On Mouse Move", null, null);
-    }
-
-    @Override
-    public boolean isSelected(@NotNull AnActionEvent e) {
-      return MPSDocumentationManager.getInstance().getShowOnMouseMove();
-    }
-
-    @Override
-    public void setSelected(@NotNull AnActionEvent e, boolean state) {
-      MPSDocumentationManager.getInstance().setShowOnMouseMove(state);
     }
 
     @NotNull

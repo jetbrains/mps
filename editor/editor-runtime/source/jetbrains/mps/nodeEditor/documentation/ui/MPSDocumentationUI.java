@@ -3,6 +3,8 @@
  */
 package jetbrains.mps.nodeEditor.documentation.ui;
 
+import com.intellij.codeInsight.documentation.DocFontSizePopup;
+import com.intellij.codeInsight.documentation.DocumentationFontSize;
 import com.intellij.codeInsight.hint.HintManagerImpl;
 import com.intellij.icons.AllIcons;
 import com.intellij.icons.AllIcons.Actions;
@@ -12,9 +14,10 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
 import com.intellij.openapi.actionSystem.DataProvider;
-import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.KeyboardShortcut;
 import com.intellij.openapi.actionSystem.Presentation;
+import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.openapi.options.FontSize;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.editor.runtime.DocumentationProvider;
@@ -37,6 +40,8 @@ import java.awt.Color;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class MPSDocumentationUI implements DataProvider, Disposable {
@@ -46,7 +51,8 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
   private final Stack<DocumentationProvider> myBackStack = new Stack<>();
   private final Stack<DocumentationProvider> myForwardStack = new Stack<>();
   private final Project myProject;
-  private final DefaultActionGroup myNavigateActions;
+  private final List<AnAction> myNavigateActions = new ArrayList<>();
+  private final List<AnAction> myCommonGearActions = new ArrayList<>();
   /*package*/ DocumentationProvider myCurrentProvider;
 
   public MPSDocumentationUI(@NotNull Project project, @NotNull DocumentationProvider provider) {
@@ -57,14 +63,17 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
     Disposer.register(this, myEditorPane);
     myScrollPane.setViewportView(myEditorPane);
     myEditorPane.setText(provider.getDecoratedDocumentation());
+    myEditorPane.applyFontProps(DocumentationFontSize.getDocumentationFontSize());
 
-    myNavigateActions = new DefaultActionGroup();
     BackAction back = new BackAction();
     ForwardAction forward = new ForwardAction();
     EditDocumentationSourceAction edit = new EditDocumentationSourceAction();
     myNavigateActions.add(back);
     myNavigateActions.add(forward);
     myNavigateActions.add(edit);
+
+    myCommonGearActions.add(new AdjustFontSizeAction());
+    myCommonGearActions.add(new ShowOnMouseMoveAction());
 
     HyperlinkListener hyperlinkListener = (HyperlinkEvent e) -> {
       HyperlinkEvent.EventType type = e.getEventType();
@@ -96,10 +105,12 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
     return () -> myEditorPane.setBackground(editorPaneColor);
   }
 
-  public DefaultActionGroup getNavigateActions() {
-    DefaultActionGroup copyOfNavigateActions = new DefaultActionGroup();
-    copyOfNavigateActions.copyFromGroup(myNavigateActions);
-    return copyOfNavigateActions;
+  public List<AnAction> getNavigateActions() {
+    return List.copyOf(myNavigateActions);
+  }
+
+  public List<AnAction> getCommonGearActions() {
+    return List.copyOf(myCommonGearActions);
   }
 
   private void navigateByLink(HyperlinkEvent event) {
@@ -218,4 +229,42 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
       manager.updateContentDisplayName(provider.getName());
     }
   }
+
+  public void setFontSize(FontSize size) {
+    myEditorPane.applyFontProps(size);
+  }
+
+  private class AdjustFontSizeAction extends AnAction {
+    AdjustFontSizeAction() {
+      super("Adjust Font Size...", null, null);
+    }
+
+    @Override
+    public void actionPerformed(@NotNull AnActionEvent e) {
+      DocFontSizePopup.show(myEditorPane, MPSDocumentationUI.this::setFontSize);
+    }
+  }
+
+  private static class ShowOnMouseMoveAction extends ToggleAction {
+    ShowOnMouseMoveAction() {
+      super("Show On Mouse Move", null, null);
+    }
+
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent e) {
+      return MPSDocumentationManager.getInstance().getShowOnMouseMove();
+    }
+
+    @Override
+    public void setSelected(@NotNull AnActionEvent e, boolean state) {
+      MPSDocumentationManager.getInstance().setShowOnMouseMove(state);
+    }
+
+    @NotNull
+    @Override
+    public ActionUpdateThread getActionUpdateThread() {
+      return ActionUpdateThread.EDT;
+    }
+  }
+
 }

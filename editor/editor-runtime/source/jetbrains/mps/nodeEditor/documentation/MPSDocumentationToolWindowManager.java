@@ -3,6 +3,7 @@
  */
 package jetbrains.mps.nodeEditor.documentation;
 
+import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.Key;
@@ -63,6 +64,7 @@ public class MPSDocumentationToolWindowManager {
     ToolWindowEx toolWindowEx = (ToolWindowEx) myToolWindow.getToolWindow();
     if (toolWindowEx != null) {
       toolWindowEx.setTitleActions(ui.getNavigateActions());
+      toolWindowEx.setAdditionalGearActions(new DefaultActionGroup(ui.getCommonGearActions()));
     }
   }
 
