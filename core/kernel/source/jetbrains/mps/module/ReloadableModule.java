@@ -73,6 +73,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
  * @deprecated this interface is not bad per se, just the fact it extends {@code SModule} is unfortunate.
  *             Eventually, {@code ClassLoaderManager} shall use this one (and aggregate SModule)
  *             for its CL purposes, keeping SModule hierarchy (Solution, Language, Generator, etc) independent.
+ *             <br/>Required change: If you need to access SModule, don't assume this class extends {@code SModule}, get one using {@link #getModule()}
  */
 @Deprecated(forRemoval = false, since = "2023.3")
 public interface ReloadableModule extends SModule {

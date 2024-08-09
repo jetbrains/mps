@@ -16,7 +16,6 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.util.CollectionUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -86,8 +85,6 @@ import java.util.stream.Stream;
 
   /*package*/ void processRepositoryChanges(List<SRepositoryEvent> changes, final Predicate<SModule> suitsClassLoading) {
     // FIXME check present logic accounts for different events for the same module
-    // XXX it's only here that we still check instanceof ReloadableModule, the check that shall eventually go away (or at least get hidden in suitesClassLoading)
-    // TODO ^^^ well, in fact, we check instanceof ReloadableModule once we deal with the outcome (unloaded/loaded collections of CModule, so we can safely remove instanceof here)
     SModuleEventVisitor v = new SModuleEventVisitor() {
       @Override
       public void visit(SModuleAddedEvent event) {
@@ -101,7 +98,7 @@ import java.util.stream.Stream;
             recordRemoved(module.getModuleReference(), module);
           }
         } else {
-          if (module instanceof ReloadableModule && suitsClassLoading.test(module)) {
+          if (suitsClassLoading.test(module)) {
             recordAdded(module);
           }
         }
@@ -120,20 +117,18 @@ import java.util.stream.Stream;
       @Override
       public void visit(SModuleChangedEvent event) {
         SModule module = event.getModule();
-        if (module instanceof ReloadableModule) {
-          if (myDepGraph.contains(module.getModuleReference())) {
-            // if we've seen it, what it if actual instance doesn't suite CL needs any more?
-            if (suitsClassLoading.test(module)) {
-              // XXX I wonder if update is just == remove + add? As long as we don't *remove* graph nodes but update stored value, remove+add could serve
-              //     as a reasonable alternative to update. The only thing lost is specific CModule kind for update case.
-              recordUpdate(module);
-            } else {
-              recordRemoved(module.getModuleReference(), module);
-            }
-          } else if (suitsClassLoading.test(module)) {
-            // didn't see the module, add for CL
-            recordAdded(module);
+        if (myDepGraph.contains(module.getModuleReference())) {
+          // if we've seen it, what it if actual instance doesn't suite CL needs any more?
+          if (suitsClassLoading.test(module)) {
+            // XXX I wonder if update is just == remove + add? As long as we don't *remove* graph nodes but update stored value, remove+add could serve
+            //     as a reasonable alternative to update. The only thing lost is specific CModule kind for update case.
+            recordUpdate(module);
+          } else {
+            recordRemoved(module.getModuleReference(), module);
           }
+        } else if (suitsClassLoading.test(module)) {
+          // didn't see the module, add for CL
+          recordAdded(module);
         }
       }
     };
