@@ -9299,16 +9299,6 @@
                   </node>
                   <node concept="3cpWs6" id="5kC7eCQM79F" role="3cqZAp">
                     <node concept="1Wc70l" id="5kC7eCQMaBJ" role="3cqZAk">
-                      <node concept="3fqX7Q" id="4cumEIL76E" role="3uHU7B">
-                        <node concept="2OqwBi" id="4cumEIL76G" role="3fr31v">
-                          <node concept="37vLTw" id="4cumEIL76H" role="2Oq$k0">
-                            <ref role="3cqZAo" node="5kC7eCQM5E2" resolve="solution" />
-                          </node>
-                          <node concept="2qgKlT" id="4cumEIL76I" role="2OqNvi">
-                            <ref role="37wK5l" to="2txq:6tOCIA6_7jg" resolve="isCompilable" />
-                          </node>
-                        </node>
-                      </node>
                       <node concept="2OqwBi" id="4Gy9vLLy1eC" role="3uHU7w">
                         <node concept="2OqwBi" id="14LJu4ZgBTo" role="2Oq$k0">
                           <node concept="2OqwBi" id="14LJu4ZgBSW" role="2Oq$k0">
@@ -9326,6 +9316,16 @@
                           </node>
                         </node>
                         <node concept="1v1jN8" id="4Gy9vLLy1xp" role="2OqNvi" />
+                      </node>
+                      <node concept="3fqX7Q" id="4cumEIL76E" role="3uHU7B">
+                        <node concept="2OqwBi" id="4cumEIL76G" role="3fr31v">
+                          <node concept="37vLTw" id="4cumEIL76H" role="2Oq$k0">
+                            <ref role="3cqZAo" node="5kC7eCQM5E2" resolve="solution" />
+                          </node>
+                          <node concept="2qgKlT" id="4cumEIL76I" role="2OqNvi">
+                            <ref role="37wK5l" to="2txq:6tOCIA6_7jg" resolve="isCompilable" />
+                          </node>
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -16546,6 +16546,26 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="2pNNFK" id="7aYn41gUsuj" role="3o6s8t">
+                    <property role="qg3DV" value="true" />
+                    <property role="2pNNFO" value="arg" />
+                    <node concept="2pNUuL" id="7aYn41gUtjX" role="2pNNFR">
+                      <property role="2pNUuO" value="value" />
+                      <node concept="2pMdtt" id="7aYn41gUtjY" role="2pMdts">
+                        <property role="2pMdty" value="-Didea.config.path=${build.mps.config.path}" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="7aYn41gUtk9" role="3o6s8t">
+                    <property role="qg3DV" value="true" />
+                    <property role="2pNNFO" value="arg" />
+                    <node concept="2pNUuL" id="7aYn41gUu9Q" role="2pNNFR">
+                      <property role="2pNUuO" value="value" />
+                      <node concept="2pMdtt" id="7aYn41gUu9R" role="2pMdts">
+                        <property role="2pMdty" value="-Didea.system.path=${build.mps.system.path}" />
+                      </node>
+                    </node>
+                  </node>
                   <node concept="2pNNFK" id="4mf44un4dsE" role="3o6s8t">
                     <property role="2pNNFO" value="arg" />
                     <property role="qg3DV" value="true" />
@@ -17447,6 +17467,78 @@
                                       <ref role="3cqZAo" node="3w1$bnwPiaO" resolve="heapSize" />
                                     </node>
                                   </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="1ICn6ejfe6S" role="3o6s8t">
+                    <property role="qg3DV" value="true" />
+                    <property role="2pNNFO" value="arg" />
+                    <node concept="2pNUuL" id="1ICn6ejfe6T" role="2pNNFR">
+                      <property role="2pNUuO" value="value" />
+                      <node concept="2pMdtt" id="1ICn6ejfe6U" role="2pMdts">
+                        <property role="2pMdty" value="-Didea.config.path=${build.mps.config.path}" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="1ICn6ejfe6V" role="3o6s8t">
+                    <property role="qg3DV" value="true" />
+                    <property role="2pNNFO" value="arg" />
+                    <node concept="2pNUuL" id="1ICn6ejfe6W" role="2pNNFR">
+                      <property role="2pNUuO" value="value" />
+                      <node concept="2pMdtt" id="1ICn6ejfe6X" role="2pMdts">
+                        <property role="2pMdty" value="-Didea.system.path=${build.mps.system.path}" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="1ICn6ejff9l" role="3o6s8t">
+                    <property role="2pNNFO" value="arg" />
+                    <property role="qg3DV" value="true" />
+                    <node concept="2pNUuL" id="1ICn6ejff9m" role="2pNNFR">
+                      <property role="2pNUuO" value="value" />
+                      <node concept="2pMdtt" id="1ICn6ejff9n" role="2pMdts">
+                        <property role="2pMdty" value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="1ICn6ejfezF" role="3o6s8t">
+                    <property role="2pNNFO" value="arg" />
+                    <node concept="2pNUuL" id="1ICn6ejfezG" role="2pNNFR">
+                      <property role="2pNUuO" value="value" />
+                      <node concept="2pMdtt" id="1ICn6ejfezH" role="2pMdts">
+                        <property role="2pMdty" value="--options" />
+                        <node concept="17Uvod" id="1ICn6ejfezI" role="lGtFl">
+                          <property role="2qtEX9" value="text" />
+                          <property role="P4ACc" value="479c7a8c-02f9-43b5-9139-d910cb22f298/6666499814681541919/6666499814681541920" />
+                          <node concept="3zFVjK" id="1ICn6ejfezJ" role="3zH0cK">
+                            <node concept="3clFbS" id="1ICn6ejfezK" role="2VODD2">
+                              <node concept="3clFbF" id="1ICn6ejfezL" role="3cqZAp">
+                                <node concept="2OqwBi" id="1ICn6ejfezM" role="3clFbG">
+                                  <node concept="1iwH7S" id="1ICn6ejfezN" role="2Oq$k0" />
+                                  <node concept="1psM6Z" id="1ICn6ejfezO" role="2OqNvi">
+                                    <ref role="1psM6Y" node="1FkcQH_$a29" resolve="generatorOptions" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="1W57fq" id="1ICn6ejfezP" role="lGtFl">
+                      <node concept="3IZrLx" id="1ICn6ejfezQ" role="3IZSJc">
+                        <node concept="3clFbS" id="1ICn6ejfezR" role="2VODD2">
+                          <node concept="3clFbF" id="1ICn6ejfezS" role="3cqZAp">
+                            <node concept="3y3z36" id="1ICn6ejfezT" role="3clFbG">
+                              <node concept="10Nm6u" id="1ICn6ejfezU" role="3uHU7w" />
+                              <node concept="2OqwBi" id="1ICn6ejfezV" role="3uHU7B">
+                                <node concept="1iwH7S" id="1ICn6ejfezW" role="2Oq$k0" />
+                                <node concept="1psM6Z" id="1ICn6ejfezX" role="2OqNvi">
+                                  <ref role="1psM6Y" node="1FkcQH_$a29" resolve="generatorOptions" />
                                 </node>
                               </node>
                             </node>
@@ -18683,6 +18775,26 @@
                             </node>
                           </node>
                         </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="1ICn6ejfgKj" role="3o6s8t">
+                    <property role="qg3DV" value="true" />
+                    <property role="2pNNFO" value="arg" />
+                    <node concept="2pNUuL" id="1ICn6ejfgKk" role="2pNNFR">
+                      <property role="2pNUuO" value="value" />
+                      <node concept="2pMdtt" id="1ICn6ejfgKl" role="2pMdts">
+                        <property role="2pMdty" value="-Didea.config.path=${build.mps.config.path}" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2pNNFK" id="1ICn6ejfgKm" role="3o6s8t">
+                    <property role="qg3DV" value="true" />
+                    <property role="2pNNFO" value="arg" />
+                    <node concept="2pNUuL" id="1ICn6ejfgKn" role="2pNNFR">
+                      <property role="2pNUuO" value="value" />
+                      <node concept="2pMdtt" id="1ICn6ejfgKo" role="2pMdts">
+                        <property role="2pMdty" value="-Didea.system.path=${build.mps.system.path}" />
                       </node>
                     </node>
                   </node>
