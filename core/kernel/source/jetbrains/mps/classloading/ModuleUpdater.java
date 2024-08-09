@@ -71,10 +71,12 @@ import java.util.stream.Stream;
   private int mySeq;
 
 
-  // REVIEW: the parameter graph passed to this constructor is modified by methods in this class
-  // REVIEW: is it supposed to be private? if not, why keep it as a field?
-  //    Not sure I follow. There's an external state (graph), there's an operation that updates the state. What's wrong
-  //    with the state being field of the operation?
+  /**
+   * This update operation takes a dependencies graph and a function to get dependencies for new nodes.
+   * It translates repository changes into changes of the graph.
+   * Note, add/remove in a repository not necessaru=ily translates into add/remove of graph nodes. Graph could keep nodes for modules not yet present or
+   * long gone based on other module dependencies.
+   */
   public ModuleUpdater(GraphHolder<SModuleReference, CModule> graph, Function<SModule, Stream<SModuleReference>> dependencySupplier, int genSeed) {
     myDepGraph = graph;
     myDependencySupplier = dependencySupplier;
@@ -85,13 +87,23 @@ import java.util.stream.Stream;
   /*package*/ void processRepositoryChanges(List<SRepositoryEvent> changes, final Predicate<SModule> suitsClassLoading) {
     // FIXME check present logic accounts for different events for the same module
     // XXX it's only here that we still check instanceof ReloadableModule, the check that shall eventually go away (or at least get hidden in suitesClassLoading)
-    // TODO ^^^ well, in fact, we check instanceof ReloadableModule once we deal with the outcome (unloaded/loaded collections of CModule, so we can safely remove instancceof here)
+    // TODO ^^^ well, in fact, we check instanceof ReloadableModule once we deal with the outcome (unloaded/loaded collections of CModule, so we can safely remove instanceof here)
     SModuleEventVisitor v = new SModuleEventVisitor() {
       @Override
       public void visit(SModuleAddedEvent event) {
         SModule module = event.getModule();
-        if (module instanceof ReloadableModule && suitsClassLoading.test(module)) {
-          addModules(module);
+        if (myDepGraph.contains(module.getModuleReference())) {
+          if (suitsClassLoading.test(module)) {
+            // XXX this one bothers me. What's a scenario for the check? Like, we know a module,
+            // got 'remove' and then 'added' w/o JMF facet?
+            recordUpdate(module);
+          } else {
+            recordRemoved(module.getModuleReference(), module);
+          }
+        } else {
+          if (module instanceof ReloadableModule && suitsClassLoading.test(module)) {
+            recordAdded(module);
+          }
         }
       }
 
@@ -100,14 +112,9 @@ import java.util.stream.Stream;
         // event.getModule() is likely already detached from a repository, but we only care about instance identity
         // and module reference here, therefore can deal with detached SModule instance
         recordRemoved(event.getModuleReference(), event.getModule());
-      }
-
-      private void recordRemoved(@NotNull SModuleReference mref, @NotNull SModule module) {
-        // final CModule instance = myDepGraph.get(mRef); // not remove(), leave actual changes to refreshGraph() - here we just record deletion
-        //       and update pending add/reload change queues
-        myModulesToAdd.remove(module);
-        myModulesToReload.remove(module);
-        myModulesToRemove.add(mref);
+        // well, for completeness, may add if (myDephGraph.contains()) check, not to record mref in case the module
+        // wasn't in the graph. However, still need to clean toAdd/toReload collections (could get populated by prev events),
+        // therefore just need to be careful to use myModulesToRemove values in refreshGraph()
       }
 
       @Override
@@ -117,60 +124,21 @@ import java.util.stream.Stream;
           if (myDepGraph.contains(module.getModuleReference())) {
             // if we've seen it, what it if actual instance doesn't suite CL needs any more?
             if (suitsClassLoading.test(module)) {
-              // XXX I wonder if update is just == remove + add?
-              updateModules(module);
+              // XXX I wonder if update is just == remove + add? As long as we don't *remove* graph nodes but update stored value, remove+add could serve
+              //     as a reasonable alternative to update. The only thing lost is specific CModule kind for update case.
+              recordUpdate(module);
             } else {
               recordRemoved(module.getModuleReference(), module);
             }
           } else if (suitsClassLoading.test(module)) {
             // didn't see the module, add for CL
-            addModules(module);
+            recordAdded(module);
           }
         }
       }
     };
 
     changes.forEach(v::dispatch);
-  }
-
-  // REVIEW: the purpose of the three methods below  [update|add|remove]Modules
-  // REVIEW: seems to be to prime the contents of myModulesTo[Reload|Add|Remove]
-  // REVIEW: before finally calling refreshGraph
-  // REVIEW: this can be expressed better with a "parameter object" pattern (using e.g. a "builder")
-  // REVIEW: otherwise the intent is not clear
-  //    Split into 3 methods is an unfortunate heritage. There's no need to group updates into these groups anyway, as it
-  //    may lead to wrong results (e.g. sequence of remove, add, remove for the same module). Has to become a single method
-  //    that takes ordered list of update events.
-
-  // pre: module: we've seen this module - either as a CL objective or as a broken/valid dependency target thereof
-  /*package*/ void updateModules(@NotNull SModule module) {
-    if (myDepGraph.contains(module.getModuleReference())) {
-      myModulesToReload.add(module); // CModule
-      myModulesToAdd.remove(module);
-      myModulesToRemove.remove(module.getModuleReference()); // CModule
-    } else {
-      // e.g. module didn't have JMF, we ignored it on add, nobody depends; now got JMF, and is reported as "changed"
-      // FIXME drop this logic as it's done 1 level up
-      myModulesToReload.remove(module);
-      myModulesToAdd.add(module);
-      myModulesToRemove.remove(module.getModuleReference()); // assert noneMatch
-    }
-  }
-
-  // pre: module is CL objective/suitable for CL
-  /*package*/ void addModules(@NotNull SModule module) {
-    // FIXME move contains() logic outside
-    if (myDepGraph.contains(module.getModuleReference())) {
-      assert !myModulesToAdd.contains(module);
-      myModulesToReload.add(module); // CModule?
-      myModulesToRemove.remove(module.getModuleReference()); // TODO CModule
-    } else {
-      myModulesToAdd.add(module);
-      assert !myModulesToReload.contains(module); // just in case, for the sake of completeness. can't imagine we get "changed" first, and then "added"
-      myModulesToRemove.remove(
-          module.getModuleReference()); // can't remove(CModule), OTOH could be just assert myModulesToRemove.noneMatch(cm.getMR() == module.MR())
-      // as there's no chance to get removeModules() for known MR and then addModules() as unknown (we don't remove anything from the graph while collecting changes)
-    }
   }
 
   // return modules that needs their status re-assessed. Perhaps, shall replace with CModule, once it's our true
@@ -312,6 +280,7 @@ import java.util.stream.Stream;
 
     // FIXME update status for modules in forStatusUpdate
 
+    // these clear() aren't necessary, just make it a bit easier for GC being explicit.
     myAffectedForRemove.clear();
     myAffectedForAdd.clear();
     myModulesToRemove.clear();
@@ -372,6 +341,34 @@ import java.util.stream.Stream;
 
   public boolean isDirty() {
     return !(myModulesToAdd.isEmpty() && myModulesToReload.isEmpty() && myModulesToRemove.isEmpty());
+  }
+
+
+  // Next three methods below, record[Added|Removed|Update], reflect changes according to repository events
+  // against myDephGraph state. IOW, transforms sequence of repository modifications into (possibly more concise) graph update events
+  // pre: !myDepGraph.contains(module.getModuleReference())
+  private void recordAdded(SModule module) {
+    myModulesToAdd.add(module);
+    assert !myModulesToReload.contains(module); // just in case, for the sake of completeness. can't imagine we get "changed" first, and then "added"
+    myModulesToRemove.remove(module.getModuleReference()); // can't remove(CModule), OTOH could be just assert myModulesToRemove.noneMatch(cm.getMR() == module.MR())
+    // as there's no chance to get removeModules() for known MR and then addModules() as unknown (we don't remove anything from the graph while collecting changes)
+  }
+
+  // removed for CL purposes (aka graph update), not necessarily removed from a repository
+  private void recordRemoved(@NotNull SModuleReference mref, @NotNull SModule module) {
+    // final CModule instance = myDepGraph.get(mRef); // not remove(), leave actual changes to refreshGraph() - here we just record deletion
+    //       and update pending add/reload change queues
+    myModulesToAdd.remove(module);
+    myModulesToReload.remove(module);
+    myModulesToRemove.add(mref);
+  }
+
+  // pre: myDepGraph.contains(module.getModuleReference())
+  private void recordUpdate(SModule module) {
+    myModulesToReload.add(module); // CModule? Would be tricky to remove() on deletion then (when we've got module reference)
+    myModulesToAdd.remove(module); // OTOH, scenario like a module present in the graph, and sequence of events (removed, added, changed)
+    // treated as just 'changed' could be bit far stretching, no?
+    myModulesToRemove.remove(module.getModuleReference()); // CModule?
   }
 
   // REVIEW: the names of the four methods below storage[Forget|Update|Add|AddUnknown]
