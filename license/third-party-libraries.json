@@ -260,7 +260,7 @@
   "name" : "JDOM (JetBrains's fork)",
   "url" : "https://github.com/JetBrains/intellij-deps-jdom/",
   "version" : "2",
-  "license" : null,
+  "license" : "JDOM License",
   "licenseUrl" : "https://github.com/JetBrains/intellij-deps-jdom/blob/master/LICENSE.txt"
 }, {
   "name" : "JGit (Settings Sync and SettingsRepo)",
@@ -739,13 +739,13 @@
 }, {
   "name" : "jediterm-core",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.41",
+  "version" : "3.42",
   "license" : "LGPL 3",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
   "name" : "jediterm-ui",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.41",
+  "version" : "3.42",
   "license" : "LGPL 3",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
@@ -913,7 +913,7 @@
 }, {
   "name" : "pty4j",
   "url" : "https://github.com/JetBrains/pty4j",
-  "version" : "0.12.26",
+  "version" : "0.12.29",
   "license" : "Eclipse Public License 1.0",
   "licenseUrl" : "https://github.com/JetBrains/pty4j/blob/master/LICENSE"
 }, {
