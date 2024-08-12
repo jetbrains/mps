@@ -3,6 +3,8 @@
   <property name="build.dir" location="build" />
   <property name="build.mps.config.path" location="${build.dir}/config" />
   <property name="build.mps.system.path" location="${build.dir}/system" />
+  <property name="build.mps.config.path" location="${build.dir}/config" />
+  <property name="build.mps.system.path" location="${build.dir}/system" />
   <property name="build.tmp" location="${build.dir}/tmp/mpsVCS" />
   <property name="build.layout" location="${build.dir}/artifacts/mpsVCS" />
   <property name="mps_home" location="${basedir}" />
@@ -91,6 +93,8 @@
   <target name="clean">
     <delete dir="${build.mps.config.path}" />
     <delete dir="${build.mps.system.path}" />
+    <delete dir="${build.mps.config.path}" />
+    <delete dir="${build.mps.system.path}" />
     <delete dir="${build.tmp}" />
     <delete dir="${build.layout}" />
   </target>
@@ -118,6 +122,8 @@
       <jvmargs>
         <arg value="-ea" />
         <arg value="-Xmx512m" />
+        <arg value="-Didea.config.path=${build.mps.config.path}" />
+        <arg value="-Didea.system.path=${build.mps.system.path}" />
         <arg value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
       </jvmargs>
       <macro name="mps_home" path="${mps_home}" />
