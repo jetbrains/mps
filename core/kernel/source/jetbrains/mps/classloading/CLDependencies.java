@@ -4,11 +4,8 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.classloading.ErrorContainer.SearchError;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.java.ModelDependencies;
-import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.dependency.UsedModulesCollector;
 import jetbrains.mps.project.facets.JavaModuleFacet;
@@ -16,7 +13,6 @@ import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
@@ -28,12 +24,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Responsible to figure out module dependencies to satisfy Class Loading Dependencies.

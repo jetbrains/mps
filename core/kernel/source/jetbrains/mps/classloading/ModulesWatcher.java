@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.classloading.ErrorContainer.SearchError;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.annotation.Hack;
@@ -33,11 +32,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -241,11 +238,16 @@ public class ModulesWatcher {
       return String.format("Module %s is disposed and therefore was marked invalid for class loading", mRef.getModuleName());
     }
 
-    final List<SearchError> errors = getErrors(mRef);
-    if (!errors.isEmpty()) {
-      return String.format("%s was marked invalid for class loading: %s", mRef.getModuleName(), errors.get(0).getMsg());
+    CModule reloadableModule = myDepGraph.get(mRef);
+    if (reloadableModule == null) {
+      // shall not happen, provided ModulesWatcher invokes this method for graph vertex and only them.
+      return String.format("%s: *** UNKNOWN MODULE ***", mRef.getModuleName());
     }
-    SModule module = mRef.resolve(myRepository);
+    if (reloadableModule.getModule() == null) {
+      // FIXME bad message, module isn't necessarily missing, might be lacking JMF to be part of CL
+      return String.format("%s: module is not in the repository", mRef.getModuleName());
+    }
+    SModule module = mRef.resolve(myRepository); // FIXME do I care to resolve here? I've got CModule.getModule() != null here
     assert module != null;
     if (!myWatchableCondition.test(module)) {
       // although generally dep graph vertices (from #getAllModules()) are 'watchable', there are scenarios when vertices stay in the graph but
@@ -254,22 +256,6 @@ public class ModulesWatcher {
     }
     return null;
   }
-
-  // FIXME assuming invoked for each known module and therefore we don't traverse deps here, although it's the proper plact to do that,
-  //       rather than to expose traverse/backDeps logic to neighbours
-  // pre: dep graph lock
-  private List<SearchError> getErrors(@NotNull SModuleReference v) {
-    CModule reloadableModule = myDepGraph.get(v);
-    if (reloadableModule == null) {
-      // shall not happen, provided ModulesWatcher invokes this method for graph vertex and only them.
-      return Collections.singletonList(SearchError.of("*** UNKNOWN MODULE ***"));
-    }
-    if (reloadableModule.getModule() == null) {
-      return Collections.singletonList(SearchError.of("Module is not in the repository"));
-    }
-    return Collections.emptyList();
-  }
-
 
   // pre: invoked with dep graph lock & myStatusMapLock
   private void checkStatusMapCorrectness() {
