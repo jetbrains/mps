@@ -204,27 +204,18 @@ public class ModulesWatcher {
   }
 
   @TestOnly
-  Map<SModuleReference, String> findAndPrintInvalidModulesProblems() {
+  Map<SModuleReference, String> findInvalidModulesProblems() {
     myRepository.getModelAccess().checkReadAccess();
     synchronized (myDepGraphLock) {
-      // XXX strange code - why would tests care to log these messages?
-      Map<SModuleReference, String> rv = findInvalidModules(getAllModules());
-      rv.values().forEach(LOG::error);
-      return rv;
-    }
-  }
-
-  // pre: dep graph lock & repo model read
-  @NotNull
-  private Map<SModuleReference, String> findInvalidModules(Collection<SModuleReference> allModules) {
-    Map<SModuleReference, String> mRefToProblem = new HashMap<>();
-    for (SModuleReference mRef : allModules) {
-      String msg = getModuleProblemMessage(mRef);
-      if (msg != null) {
-        mRefToProblem.put(mRef, msg);
+      Map<SModuleReference, String> mRefToProblem = new HashMap<>(myDepGraph.getVerticesCount());
+      for (SModuleReference mRef : myDepGraph.getVertices()) {
+        String msg = getModuleProblemMessage(mRef);
+        if (msg != null) {
+          mRefToProblem.put(mRef, msg);
+        }
       }
+      return mRefToProblem;
     }
-    return mRefToProblem;
   }
 
   /**
@@ -248,7 +239,7 @@ public class ModulesWatcher {
       return String.format("%s: module is not in the repository", mRef.getModuleName());
     }
     SModule module = mRef.resolve(myRepository); // FIXME do I care to resolve here? I've got CModule.getModule() != null here
-    assert module != null;
+    assert module != null; // FIXME it's isModuleDisposed(), above, that ensures this. However, isn't it odd to resolve twice?
     if (!myWatchableCondition.test(module)) {
       // although generally dep graph vertices (from #getAllModules()) are 'watchable', there are scenarios when vertices stay in the graph but
       // are no longer capable to load classes (see MPS-36688)

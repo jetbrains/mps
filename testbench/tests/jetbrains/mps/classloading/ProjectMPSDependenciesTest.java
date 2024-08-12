@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,7 +108,7 @@ public class ProjectMPSDependenciesTest implements EnvironmentAware {
     final ModulesWatcher modulesWatcher = getModulesWatcher();
     final SRepository repository = getRepository();
     repository.getModelAccess().runWriteAction(() -> {
-      Map<SModuleReference, String> invalidModules2Problems = modulesWatcher.findAndPrintInvalidModulesProblems();
+      Map<SModuleReference, String> invalidModules2Problems = modulesWatcher.findInvalidModulesProblems();
 
       for (SModuleReference mRef : invalidModules2Problems.keySet()) {
         final String msg = String.format("Invalid dependencies (%s) for module %s: %s", levelIndicator, mRef.getModuleName(), invalidModules2Problems.get(mRef));
