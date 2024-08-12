@@ -10647,48 +10647,6 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="ubtK7iYwKj" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="addConfiguredAllMpsModules" />
-      <property role="od$2w" value="false" />
-      <property role="DiZV1" value="false" />
-      <property role="2aFKle" value="false" />
-      <node concept="2AHcQZ" id="1sAB67Twy5q" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="P$JXv" id="1sAB67Twy5n" role="lGtFl">
-        <node concept="TZ5HI" id="1sAB67Twy5o" role="3nqlJM">
-          <node concept="TZ5HA" id="1sAB67Twy5p" role="3HnX3l" />
-        </node>
-        <node concept="TZ5HA" id="1sAB67Twyef" role="TZ5H$">
-          <node concept="1dT_AC" id="1sAB67Twyeg" role="1dT_Ay">
-            <property role="1dT_AB" value="By default, now /lib and /languages and /workbench folders are already included" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="1sAB67TwKgj" role="TZ5H$">
-          <node concept="1dT_AC" id="1sAB67TwKgk" role="1dT_Ay">
-            <property role="1dT_AB" value="Later, the task will be generated and only needed modules will be specified" />
-          </node>
-        </node>
-      </node>
-      <node concept="3clFbS" id="ubtK7iYwKk" role="3clF47">
-        <node concept="3SKdUt" id="1sAB67Twy0i" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXo8iQ" role="1aUNEU">
-            <node concept="3oM_SD" id="ATZLwXo8iR" role="1PaTwD">
-              <property role="3oM_SC" value="deprecated" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="ubtK7iYwKl" role="1B3o_S" />
-      <node concept="3cqZAl" id="ubtK7iYwKm" role="3clF45" />
-      <node concept="37vLTG" id="ubtK7j0IMR" role="3clF46">
-        <property role="TrG5h" value="value" />
-        <node concept="3uibUv" id="ubtK7j0IMQ" role="1tU5fm">
-          <ref role="3uigEE" node="ubtK7j0IDC" resolve="AllModulesDataType" />
-        </node>
-      </node>
-    </node>
     <node concept="3clFb_" id="6aGZllYQgxg" role="jymVt">
       <property role="TrG5h" value="addConfiguredModules" />
       <node concept="3cqZAl" id="6aGZllYQgxh" role="3clF45" />
@@ -11067,41 +11025,6 @@
           </node>
         </node>
       </node>
-    </node>
-  </node>
-  <node concept="312cEu" id="ubtK7j0IDC">
-    <property role="TrG5h" value="AllModulesDataType" />
-    <property role="1sVAO0" value="false" />
-    <property role="1EXbeo" value="false" />
-    <property role="3GE5qa" value="repo" />
-    <node concept="2AHcQZ" id="1sAB67TwKgP" role="2AJF6D">
-      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-    </node>
-    <node concept="3UR2Jj" id="1sAB67TwKgM" role="lGtFl">
-      <node concept="TZ5HI" id="1sAB67TwKgN" role="3nqlJM">
-        <node concept="TZ5HA" id="1sAB67TwKgO" role="3HnX3l" />
-      </node>
-      <node concept="TZ5HA" id="1sAB67TwKh1" role="TZ5H$">
-        <node concept="1dT_AC" id="1sAB67TwKh2" role="1dT_Ay">
-          <property role="1dT_AB" value="Occurences of " />
-        </node>
-        <node concept="2U$1Ah" id="1sAB67TwKh7" role="1dT_Ay">
-          <property role="2U$1Ai" value="allmpsmodules" />
-          <node concept="TZ5HA" id="1sAB67TwKh8" role="2U$1Aj" />
-        </node>
-        <node concept="1dT_AC" id="1sAB67TwKh6" role="1dT_Ay">
-          <property role="1dT_AB" value=" may be just removed" />
-        </node>
-      </node>
-    </node>
-    <node concept="3Tm1VV" id="ubtK7j0IDD" role="1B3o_S" />
-    <node concept="3uibUv" id="ubtK7j0IDE" role="1zkMxy">
-      <ref role="3uigEE" to="rg95:~DataType" resolve="DataType" />
-    </node>
-    <node concept="3clFbW" id="ubtK7j0IDF" role="jymVt">
-      <node concept="3Tm1VV" id="ubtK7j0IDG" role="1B3o_S" />
-      <node concept="3cqZAl" id="ubtK7j0IDH" role="3clF45" />
-      <node concept="3clFbS" id="ubtK7j0IDI" role="3clF47" />
     </node>
   </node>
   <node concept="312cEu" id="QkG2t1bwWL">

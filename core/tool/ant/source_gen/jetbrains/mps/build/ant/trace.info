@@ -241,31 +241,25 @@
     <file name="RepositoryDataType.java">
       <node id="7110336455353441003" at="11,0,12,0" concept="6" trace="myDescriptor" />
       <node id="7110336455353446541" at="14,47,15,24" concept="12" />
-      <node id="1668192656599162898" at="24,68,25,17" concept="13" />
-      <node id="7110336455353448499" at="27,60,28,64" concept="5" />
-      <node id="7110336455353465524" at="30,58,31,65" concept="5" />
+      <node id="7110336455353448499" at="17,60,18,64" concept="5" />
+      <node id="7110336455353465524" at="20,58,21,65" concept="5" />
       <node id="7110336455353267596" at="12,0,14,0" concept="3" trace="RepositoryDataType#()V" />
       <node id="7110336455353446537" at="14,0,17,0" concept="10" trace="getDescriptor#()Ljetbrains/mps/tool/common/RepositoryDescriptor;" />
-      <node id="7110336455353370704" at="27,0,30,0" concept="10" trace="addConfiguredModules#(Ljetbrains/mps/build/ant/ModulesDataType;)V" />
-      <node id="7110336455353370769" at="30,0,33,0" concept="10" trace="addConfiguredModule#(Ljetbrains/mps/build/ant/ModuleDataType;)V" />
-      <node id="543659029746551827" at="23,0,27,0" concept="10" trace="addConfiguredAllMpsModules#(Ljetbrains/mps/build/ant/AllModulesDataType;)V" />
+      <node id="7110336455353370704" at="17,0,20,0" concept="10" trace="addConfiguredModules#(Ljetbrains/mps/build/ant/ModulesDataType;)V" />
+      <node id="7110336455353370769" at="20,0,23,0" concept="10" trace="addConfiguredModule#(Ljetbrains/mps/build/ant/ModuleDataType;)V" />
       <scope id="7110336455353267600" at="12,31,12,31" />
       <scope id="7110336455353446540" at="14,47,15,24" />
-      <scope id="543659029746551828" at="24,68,25,17" />
-      <scope id="7110336455353370707" at="27,60,28,64" />
-      <scope id="7110336455353370772" at="30,58,31,65" />
+      <scope id="7110336455353370707" at="17,60,18,64" />
+      <scope id="7110336455353370772" at="20,58,21,65" />
       <scope id="7110336455353267596" at="12,0,14,0" />
       <scope id="7110336455353446537" at="14,0,17,0" />
-      <scope id="7110336455353370704" at="27,0,30,0">
+      <scope id="7110336455353370704" at="17,0,20,0">
         <var name="folder" id="7110336455353448712" />
       </scope>
-      <scope id="7110336455353370769" at="30,0,33,0">
+      <scope id="7110336455353370769" at="20,0,23,0">
         <var name="module" id="7110336455353467077" />
       </scope>
-      <scope id="543659029746551827" at="23,0,27,0">
-        <var name="value" id="543659029747133623" />
-      </scope>
-      <unit id="2194822006344541151" at="9,0,34,0" name="jetbrains.mps.build.ant.RepositoryDataType" />
+      <unit id="2194822006344541151" at="9,0,24,0" name="jetbrains.mps.build.ant.RepositoryDataType" />
     </file>
   </root>
   <root nodeRef="r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/2194822006344541909">
@@ -1535,14 +1529,6 @@
       </scope>
       <scope id="4031029858777368718" at="20,0,23,0" />
       <unit id="4031029858777365867" at="9,0,24,0" name="jetbrains.mps.build.ant.ProjectPath" />
-    </file>
-  </root>
-  <root nodeRef="r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/543659029747133032">
-    <file name="AllModulesDataType.java">
-      <node id="543659029747133035" at="16,0,19,0" concept="3" trace="AllModulesDataType#()V" />
-      <scope id="543659029747133038" at="17,31,17,31" />
-      <scope id="543659029747133035" at="16,0,19,0" />
-      <unit id="543659029747133032" at="13,0,20,0" name="jetbrains.mps.build.ant.AllModulesDataType" />
     </file>
   </root>
   <root nodeRef="r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/978600701689990961">

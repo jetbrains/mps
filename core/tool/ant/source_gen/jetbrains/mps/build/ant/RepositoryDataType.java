@@ -14,16 +14,6 @@ public class RepositoryDataType extends DataType {
   public RepositoryDescriptor getDescriptor() {
     return myDescriptor;
   }
-  /**
-   * By default, now /lib and /languages and /workbench folders are already included
-   * Later, the task will be generated and only needed modules will be specified
-   * 
-   * @deprecated 
-   */
-  @Deprecated
-  public void addConfiguredAllMpsModules(AllModulesDataType value) {
-    // deprecated
-  }
   public void addConfiguredModules(ModulesDataType folder) {
     myDescriptor.folders.add(folder.getDir().getAbsolutePath());
   }
