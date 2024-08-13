@@ -225,7 +225,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
     myCurrentProvider = provider;
 
     MPSDocumentationToolWindowManager manager = MPSDocumentationToolWindowManager.getInstance(myProject);
-    if (manager.toolIsVisible()) {
+    if (manager.isVisible()) {
       manager.updateContentDisplayName(provider.getName());
     }
   }
