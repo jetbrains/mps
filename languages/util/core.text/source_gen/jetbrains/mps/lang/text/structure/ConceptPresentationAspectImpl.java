@@ -70,7 +70,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_HtmlTag == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("html tag");
-          cpb.rawPresentation("</");
+          cpb.rawPresentation("tag");
           props_HtmlTag = cpb.create();
         }
         return props_HtmlTag;

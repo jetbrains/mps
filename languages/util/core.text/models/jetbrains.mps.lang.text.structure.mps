@@ -449,7 +449,7 @@
     <property role="EcuMT" value="809653093352985574" />
     <property role="3GE5qa" value="doc" />
     <property role="TrG5h" value="HtmlTag" />
-    <property role="34LRSv" value="&lt;/" />
+    <property role="34LRSv" value="tag" />
     <property role="R4oN_" value="html tag" />
     <ref role="1TJDcQ" node="8D0iRqSPVB" resolve="TextElement" />
     <node concept="1TJgyj" id="1q3yNZeA$$y" role="1TKVEi">
