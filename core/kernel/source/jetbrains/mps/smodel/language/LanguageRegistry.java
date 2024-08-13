@@ -111,6 +111,8 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
 
   private final Map<SLanguageId, LanguageRuntime> myLanguagesById = new HashMap<>();
 
+  private final Set<SModuleReference> myLanguagesNoRuntime = new HashSet<>();
+
   private final Map<SModuleReference, ModuleRuntime> myModuleRuntime = new HashMap<>();
 
   /*
@@ -540,7 +542,9 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
       for (Language language : collectLanguageModules(unloadedModules)) {
         SLanguageId sl = MetaIdByDeclaration.getLanguageId(language);
         if (!myLanguagesById.containsKey(sl)) {
-          LOG.warning("No language with id " + sl + " to unload");
+          if (!myLanguagesNoRuntime.remove(language.getModuleReference())) {
+            LOG.warning(String.format("No language %s to unload", language.getModuleReference()));
+          } // we've seen this langauge, but there's no runtime class (e.g. broken or missing), no reason to warn then
         } else {
           languagesToUnload.add(myLanguagesById.get(sl));
         }
@@ -609,6 +613,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
         try {
           LanguageRuntime langRuntime = createRuntime(language);
           if (langRuntime == null) {
+            myLanguagesNoRuntime.add(language.getModuleReference());
             continue;
           }
           SLanguageId sl = langRuntime.getId();
