@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -42,6 +43,7 @@ import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.ERROR;
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.INVALID_DEPENDENCIES;
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.INVALID_NOT_LOADABLE;
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.INVALID_NO_RECORD;
+import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.LIKELY_VALID;
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.PENDING;
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.UNDEFINED;
 import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.VALID;
@@ -121,7 +123,9 @@ public class ModulesWatcher {
         myDepGraph.checkGraphsCorrectness();
 
         final long statusMapStart = System.nanoTime();
-        refillStatusMap(forStatusUpdate);
+        if (!forStatusUpdate.isEmpty()) {
+          refillStatusMap(forStatusUpdate);
+        }
 
         LOG.info(String.format("Classloading graph update took %.3f s (of that, graph refresh %.3f s)", (System.nanoTime() - beginTime) / 1e9, (statusMapStart - beginTime)/1e9));
       }
@@ -133,11 +137,14 @@ public class ModulesWatcher {
   private void refillStatusMap(final Collection<SModuleReference> forStatusUpdate) {
     final List<String> invalidRoots = new ArrayList<>();
     final List<String> invalidDeps = new ArrayList<>();
+    // mark all vertices to make sure we don't miss any and update all of them
     myDepGraph.getValues().filter(cm -> forStatusUpdate.contains(cm.getModuleReference())).forEach(cm -> cm.setStatus(PENDING));
+    // there could be cycles in the dependency graph, might need a second run to get final status for some cycle elements.
+    final HashSet<SModuleReference> secondRun = new HashSet<>();
     myDepGraph.visitOutgoingDeep(forStatusUpdate, cm -> {
       if (!forStatusUpdate.contains(cm.getModuleReference())) {
         // hit a dependency of one of the nodes for update, don't re-calculate its status
-        // assert cm.getStatus() != UNDEFINED
+        // assert cm.getStatus() != PENDING
         return;
       }
       if (cm.getModule() == null) {
@@ -151,17 +158,24 @@ public class ModulesWatcher {
         invalidRoots.add(error);
         return;
       }
-      // module itself seems fine, check its dependencies. This code visit dependencies first, so their status is known by now.
-      // however, we shall account for cycles, when two modules depend on each other, and one of the dependencies would be in PENDING or UNDEFINED state.
-      // The difference b/w PENDING and UNDEFINDED is that former is for modules explicitly requested for status update, while latter is for values updated
-      // in the graph. Generally, all 'UNDEFINED' modules has to subbmitted for status update and would get 'PENDING' right away, but it doesn't hurt to check.
-      // We expect that all 'PENDING' would eventually show up in this visitor, and just in case there's an extra check in #checkStatusMapCorrectness()
-      // that no module is left in 'UNDEFINED' or 'PENDING' state.
-      List<CModule> brokenDeps = myDepGraph.forOutgoingShallow(cm.getModuleReference()).filter(d -> !d.getStatus().isValid() && d.getStatus() != PENDING).collect(Collectors.toList());
+      List<CModule> allBrokenDeps = myDepGraph.forOutgoingShallow(cm.getModuleReference()).filter(d -> !d.getStatus().isValid()).collect(Collectors.toList());
+      final boolean hasPendingDeps = allBrokenDeps.stream().anyMatch(d -> d.getStatus() == PENDING);
+      final boolean hasPartiallyValidDeps = allBrokenDeps.stream().anyMatch(d -> d.getStatus() == LIKELY_VALID);
+      if (hasPendingDeps || hasPartiallyValidDeps) {
+        secondRun.add(cm.getModuleReference());
+      }
+      // module itself seems fine, check its dependencies. This dfs code visit dependencies first, so their status is known by now.
+      // However, we shall account for cycles, when two modules depend on each other, and one of the dependencies would be in PENDING or LIKELY_VALID state.
+      // Technically, we could face modules in UNDEFINED state as well (for values updated in the graph), though we expect all 'UNDEFINED' modules has to
+      // submitted for status update and would get 'PENDING' right away at the beginning. Nevertheless, UNDEFINED is !isValid() and would invalidate status
+      // of this this module. Just in case there's an extra check in #checkStatusMapCorrectness() that no module is left in 'UNDEFINED' or 'PENDING' state.
+      List<CModule> brokenDeps = allBrokenDeps.stream().filter(d -> d.getStatus() != PENDING && d.getStatus() != LIKELY_VALID).collect(Collectors.toList());
       if (brokenDeps.isEmpty()) {
-        cm.setStatus(VALID);
+        // no other invalid dependencies except for cycle elements. To give a chance for other cycle elements to move on, denote this one as "likely ok".
+        cm.setStatus(hasPendingDeps || hasPartiallyValidDeps ? LIKELY_VALID : VALID);
         return;
       }
+      // regardless of "likely ok" or yet unprocessed dependencies, there are some "hard" broken deps.
       cm.setStatus(INVALID_DEPENDENCIES);
       List<CModule> nonTransitive = brokenDeps.stream().filter(d -> d.getStatus() != INVALID_DEPENDENCIES).collect(Collectors.toList());
       String msg;
@@ -176,11 +190,43 @@ public class ModulesWatcher {
         if (nonTransitive.size() == brokenDeps.size()) {
           msg = String.format("%s: depends on broken modules [%s]", cm.getModuleReference().getModuleName(), brokenDepsNames);
         } else {
-          msg = String.format("%s: depends on broken modules [%s] and %d broken transitive dependencies", cm.getModuleReference().getModuleName(), brokenDepsNames, nonTransitive.size());
+          msg = String.format("%s: depends on broken modules [%s] and %d broken transitive dependencies", cm.getModuleReference().getModuleName(), brokenDepsNames, brokenDeps.size() - nonTransitive.size());
         }
       }
       invalidDeps.add(msg);
     }, true); // POST VISIT == TRUE is essential for the logic
+
+    myDepGraph.visitOutgoingDeep(secondRun, cm -> {
+      if (!secondRun.contains(cm.getModuleReference())) {
+        // we care to recalculate state of the vertices that we denoted as required, not their dependencies or anything else.
+        return;
+      }
+      if (myDepGraph.forOutgoingShallow(cm.getModuleReference()).anyMatch(d -> d.getStatus() == PENDING)) {
+        // we don't expect any vertex to keep PENDING, event if we get to a cycle from a different vertex than during the first run.
+        // First run shall visit all vertices, and leave those in secondRun either in VALID, LIKELY_VALID or INVALID_DEPENDENCIES
+        cm.setStatus(ERROR);
+        String cycle = myDepGraph.forOutgoingShallow(cm.getModuleReference())
+                                   .map(d -> String.format("%s(%s)", NameUtil.compactNamespace(d.getModuleReference().getModuleName()), d.getStatus()))
+                                   .collect(Collectors.joining(", "));
+        invalidDeps.add(String.format("%s: unresolved depenency cycle [%s]", cm.getModuleReference().getModuleName(), cycle));
+        return;
+      }
+      List<CModule> brokenDeps = myDepGraph.forOutgoingShallow(cm.getModuleReference()).filter(d -> !d.getStatus().isValid() && d.getStatus() != LIKELY_VALID).collect(Collectors.toList());
+      // condition is pretty much the same as in the first run, except for no PENDING, which we don't expect/tolerate here any more.
+      if (brokenDeps.isEmpty()) {
+        cm.setStatus(VALID);
+        return;
+      } else {
+        cm.setStatus(INVALID_DEPENDENCIES);
+        String brokenDepsNames = brokenDeps.stream()
+                                              .map(CModule::getModuleReference)
+                                              .map(SModuleReference::getModuleName)
+                                              .map(NameUtil::compactNamespace)
+                                              .collect(Collectors.joining(","));
+        String msg = String.format("%s: depends on broken modules [%s]", cm.getModuleReference().getModuleName(), brokenDepsNames);
+        invalidDeps.add(msg);
+      }
+    }, true);
 
     if (!invalidRoots.isEmpty()) {
       String message = String.format("%d modules are marked as invalid roots for class loading out of %d modules totally in the CL graph",
@@ -188,7 +234,6 @@ public class ModulesWatcher {
                                      myDepGraph.getVerticesCount());
       LOG.warning(message);
       invalidRoots.forEach(LOG::warning);
-
     }
 
     if (!invalidDeps.isEmpty() && LOG.isDebugLevel()) {
@@ -196,7 +241,13 @@ public class ModulesWatcher {
     }
 
     if (LOG.isInfoLevel()) {
-      LOG.info(String.format("Totally %d+%d modules are marked invalid for class loading after updating %d", invalidRoots.size(), invalidDeps.size(), forStatusUpdate.size()));
+      if (invalidDeps.isEmpty() && invalidRoots.isEmpty()) {
+        LOG.info(String.format("No modules marked invalid for class loading after updating %d (%d total in the graph)",
+                               forStatusUpdate.size(), myDepGraph.getVerticesCount()));
+      } else {
+        LOG.info(String.format("%d+%d modules are marked invalid for class loading after updating %d (%d total in the graph)", invalidRoots.size(),
+                               invalidDeps.size(), forStatusUpdate.size(), myDepGraph.getVerticesCount()));
+      }
     }
 
     checkStatusMapCorrectness();
@@ -314,9 +365,15 @@ public class ModulesWatcher {
     UNDEFINED,
 
     /**
-     * State of modules scheduled for status update
+     * State of modules scheduled for status update.
+     * Internal state, shall not get exposed outsude of this class
      */
     PENDING,
+
+    /**
+     * State of modules in a cycle w/o any explicit error but one or more PENDIND dependency
+     */
+    LIKELY_VALID,
 
     /**
      * no record in the map (module not in CL graph nor mentioned by any other module present there)
