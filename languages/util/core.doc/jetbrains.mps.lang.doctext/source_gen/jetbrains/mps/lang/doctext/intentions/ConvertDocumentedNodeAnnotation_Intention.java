@@ -15,17 +15,14 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.doctext.behavior.DocText__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
-import jetbrains.mps.lang.text.behavior.IHoldLines__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ConvertDocumentedNodeAnnotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
@@ -62,7 +59,7 @@ public final class ConvertDocumentedNodeAnnotation_Intention extends AbstractInt
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode docAnnotation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, "jetbrains.mps.lang.core.doc.structure.DocumentationAnnotation"));
-      SLinkOperations.setTarget(docAnnotation, LINKS.text$Dgpy, this._additional_extractDocText(node));
+      SLinkOperations.setTarget(docAnnotation, LINKS.text$Dgpy, DocText__BehaviorDescriptor.extractDocText_id3ahYUteDckr.invoke(SNodeOperations.asSConcept(CONCEPTS.DocText$WM), node));
       SNodeOperations.replaceWithAnother(node, docAnnotation);
     }
 
@@ -79,23 +76,6 @@ public final class ConvertDocumentedNodeAnnotation_Intention extends AbstractInt
     }
 
 
-    private SNode _additional_extractDocText(SNode oldAnnotation) {
-      String docString = SPropertyOperations.getString(oldAnnotation, PROPS.text$W7yf);
-      String[] words = new String[0];
-      if (docString != null) {
-        words = docString.split("\\s+");
-      }
-      SNode lineNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-      for (String word : words) {
-        SNode wordNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
-        SPropertyOperations.assign(wordNode, PROPS.value$zQr_, word);
-        Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(lineNode, wordNode);
-      }
-
-      SNode docTextNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L, "jetbrains.mps.lang.doctext.structure.DocText"));
-      IHoldLines__BehaviorDescriptor.addLine_id7q4YwcerggR.invoke(docTextNode, lineNode);
-      return docTextNode;
-    }
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertDocumentedNodeAnnotation_Intention.this;
@@ -108,12 +88,8 @@ public final class ConvertDocumentedNodeAnnotation_Intention extends AbstractInt
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept DocText$WM = MetaAdapterFactory.getConcept(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L, "jetbrains.mps.lang.doctext.structure.DocText");
     /*package*/ static final SConcept DocumentationAnnotation$ug = MetaAdapterFactory.getConcept(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, "jetbrains.mps.lang.core.doc.structure.DocumentationAnnotation");
     /*package*/ static final SInterfaceConcept DocumentationObjective$OD = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6d1df6c2700b0eaeL, "jetbrains.mps.lang.structure.structure.DocumentationObjective");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty text$W7yf = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6d1df6c2700b0ea9L, 0x6d1df6c2700b0eb1L, "text");
-    /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 }
