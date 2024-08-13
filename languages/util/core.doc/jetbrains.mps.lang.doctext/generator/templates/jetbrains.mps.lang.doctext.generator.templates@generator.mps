@@ -221,9 +221,6 @@
         <child id="1219952317655" name="conditionFunction" index="aOLnb" />
       </concept>
       <concept id="1219952151850" name="jetbrains.mps.lang.generator.structure.DropRootRule_Condition" flags="in" index="aO8KQ" />
-      <concept id="1114729360583" name="jetbrains.mps.lang.generator.structure.CopySrcListMacro" flags="ln" index="2b32R4">
-        <child id="1168278589236" name="sourceNodesQuery" index="2P8S$" />
-      </concept>
       <concept id="1202776937179" name="jetbrains.mps.lang.generator.structure.AbandonInput_RuleConsequence" flags="lg" index="b5Tf3" />
       <concept id="1095416546421" name="jetbrains.mps.lang.generator.structure.MappingConfiguration" flags="ig" index="bUwia">
         <child id="7830515785164764091" name="condition" index="avys_" />
@@ -15615,15 +15612,15 @@
       <node concept="2pNNFK" id="5IuJnEMXpc7" role="1T5Xju">
         <property role="2pNNFO" value="a" />
         <node concept="1T5XQC" id="5IuJnEMXpc8" role="3o6s8t">
-          <node concept="2b32R4" id="5IuJnEMXpps" role="lGtFl">
-            <node concept="3JmXsc" id="5IuJnEMXppv" role="2P8S$">
-              <node concept="3clFbS" id="5IuJnEMXppw" role="2VODD2">
-                <node concept="3clFbF" id="5IuJnEMXppA" role="3cqZAp">
-                  <node concept="2OqwBi" id="5IuJnEMXppx" role="3clFbG">
-                    <node concept="3Tsc0h" id="5IuJnEMXpp$" role="2OqNvi">
-                      <ref role="3TtcxE" to="zqge:1q3yNZeA$$y" resolve="content" />
+          <node concept="29HgVG" id="5m3zBags0DR" role="lGtFl">
+            <node concept="3NFfHV" id="5m3zBags0GP" role="3NFExx">
+              <node concept="3clFbS" id="5m3zBags0GQ" role="2VODD2">
+                <node concept="3clFbF" id="5m3zBags0GT" role="3cqZAp">
+                  <node concept="2OqwBi" id="5m3zBags0T4" role="3clFbG">
+                    <node concept="30H73N" id="5m3zBags0GS" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="5m3zBags17y" role="2OqNvi">
+                      <ref role="3Tt5mk" to="zqge:1q3yNZeA$$y" resolve="content" />
                     </node>
-                    <node concept="30H73N" id="5IuJnEMXpp_" role="2Oq$k0" />
                   </node>
                 </node>
               </node>

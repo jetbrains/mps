@@ -812,6 +812,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_18_1(final SourceSubstituteMacroNodeContext _context) {
     return Sequence.fromIterable(SLinkOperations.collect(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentationAnnotation$ug).list(_context.getNode()), LINKS.text$Dgpy)).first();
   }
+  public static SNode sourceNodeQuery_21_0(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.content$ybyu);
+  }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.lines$4Ez6);
   }
@@ -866,7 +869,7 @@ public class QueriesGenerated extends QueryProviderBase {
     List<SNode> returnList = ListSequence.fromList(new ArrayList<>());
 
     for (IFile f : ListSequence.fromList(allFiles)) {
-      SNode node_f = createStringLiteral_x583g4_a0a0o0vg(f.getPath());
+      SNode node_f = createStringLiteral_x583g4_a0a0o0wg(f.getPath());
       ListSequence.fromList(returnList).addElement(node_f);
     }
     return returnList;
@@ -952,7 +955,7 @@ public class QueriesGenerated extends QueryProviderBase {
     List<SNode> returnList = ListSequence.fromList(new ArrayList<>());
 
     for (IFile f : ListSequence.fromList(allFiles)) {
-      SNode node_f = createStringLiteral_x583g4_a0a0o0lh(f.getPath());
+      SNode node_f = createStringLiteral_x583g4_a0a0o0mh(f.getPath());
       ListSequence.fromList(returnList).addElement(node_f);
     }
     return returnList;
@@ -990,7 +993,7 @@ public class QueriesGenerated extends QueryProviderBase {
     List<SNode> returnList = ListSequence.fromList(new ArrayList<>());
 
     for (IFile f : ListSequence.fromList(allFiles)) {
-      SNode node_f = createStringLiteral_x583g4_a0a0o0mh(f.getPath());
+      SNode node_f = createStringLiteral_x583g4_a0a0o0nh(f.getPath());
       ListSequence.fromList(returnList).addElement(node_f);
     }
     return returnList;
@@ -1028,7 +1031,7 @@ public class QueriesGenerated extends QueryProviderBase {
     List<SNode> returnList = ListSequence.fromList(new ArrayList<>());
 
     for (IFile f : ListSequence.fromList(allFiles)) {
-      SNode node_f = createStringLiteral_x583g4_a0a0o0nh(f.getPath());
+      SNode node_f = createStringLiteral_x583g4_a0a0o0oh(f.getPath());
       ListSequence.fromList(returnList).addElement(node_f);
     }
     return returnList;
@@ -1041,9 +1044,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_19_0(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.nodes(_context.getInputModel(), CONCEPTS.ConceptBehavior$2);
-  }
-  public static Iterable<SNode> sourceNodesQuery_21_0(final SourceSubstituteMacroNodesContext _context) {
-    return SLinkOperations.getChildren(_context.getNode(), LINKS.content$ybyu);
   }
   public static boolean mc_Condition_0(final TemplateQueryContext _context) {
     SModule module = _context.getOriginalInputModel().getModule();
@@ -1221,6 +1221,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("7185394057936033015", new SNQ(i++));
     snqMethods.put("3659994585149142569", new SNQ(i++));
     snqMethods.put("3659994585152789152", new SNQ(i++));
+    snqMethods.put("6161925337873648437", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -1260,6 +1261,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.sourceNodeQuery_18_0(ctx);
         case 11:
           return QueriesGenerated.sourceNodeQuery_18_1(ctx);
+        case 12:
+          return QueriesGenerated.sourceNodeQuery_21_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -1297,7 +1300,6 @@ public class QueriesGenerated extends QueryProviderBase {
     snsqMethods.put("3659994585147904237", new SNsQ(i++));
     snsqMethods.put("3659994585152537003", new SNsQ(i++));
     snsqMethods.put("3659994585146678599", new SNsQ(i++));
-    snsqMethods.put("6601922438457824863", new SNsQ(i++));
   }
   @NotNull
   @Override
@@ -1371,8 +1373,6 @@ public class QueriesGenerated extends QueryProviderBase {
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_18_2(ctx));
         case 28:
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_19_0(ctx));
-        case 29:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_21_0(ctx));
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -1897,12 +1897,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createStringLiteral_x583g4_a0a0o0vg(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StringLiteral$xu);
-    n0.setProperty(PROPS.value$w7MM, p0);
-    return n0.getResult();
-  }
-  private static SNode createStringLiteral_x583g4_a0a0o0lh(String p0) {
+  private static SNode createStringLiteral_x583g4_a0a0o0wg(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StringLiteral$xu);
     n0.setProperty(PROPS.value$w7MM, p0);
     return n0.getResult();
@@ -1913,6 +1908,11 @@ public class QueriesGenerated extends QueryProviderBase {
     return n0.getResult();
   }
   private static SNode createStringLiteral_x583g4_a0a0o0nh(String p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StringLiteral$xu);
+    n0.setProperty(PROPS.value$w7MM, p0);
+    return n0.getResult();
+  }
+  private static SNode createStringLiteral_x583g4_a0a0o0oh(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StringLiteral$xu);
     n0.setProperty(PROPS.value$w7MM, p0);
     return n0.getResult();
@@ -1989,12 +1989,12 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
     /*package*/ static final SReferenceLink reference$iuvT = MetaAdapterFactory.getReferenceLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6cc063b139472ce7L, 0x6d10fe0be3bc93bL, "reference");
     /*package*/ static final SContainmentLink text$Dgpy = MetaAdapterFactory.getContainmentLink(0x343f8205dc88465bL, 0x9c5bce46b5f1c193L, 0x3b971d44f99760b4L, 0x1ec73eba262d6d52L, "text");
+    /*package*/ static final SContainmentLink content$ybyu = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, 0x16838b3fce9a4922L, "content");
     /*package*/ static final SContainmentLink lines$4Ez6 = MetaAdapterFactory.getContainmentLink(0xd304f2474944479dL, 0xac8b972b953bcdfeL, 0xa5fce56f6c81ea5L, 0x3d1f117681e68108L, "lines");
     /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
     /*package*/ static final SContainmentLink propertyDeclaration$YUgg = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
     /*package*/ static final SContainmentLink linkDeclaration$YU1f = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
     /*package*/ static final SContainmentLink members$wmsL = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
     /*package*/ static final SContainmentLink method$w_in = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
-    /*package*/ static final SContainmentLink content$ybyu = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, 0x16838b3fce9a4922L, "content");
   }
 }
