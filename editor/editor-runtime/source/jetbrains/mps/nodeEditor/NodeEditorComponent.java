@@ -22,14 +22,19 @@ import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.LocalTimeCounter;
 import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationToolWindowManager;
+import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationUI;
 import jetbrains.mps.nodeEditor.selection.SingularSelectionListenerAdapter;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.selection.SingularSelection;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NonNls;
@@ -62,6 +67,7 @@ public class NodeEditorComponent extends EditorComponent {
           if (isShowing() || RuntimeFlags.getTestMode().isInsideTestEnvironment()) {
             inspect(toSelect[0]);
           }
+          updateDocInToolWindow(NodeEditorComponent.this.getEditorContext(), newSelection.getEditorCell());
         });
       }
     });
@@ -183,5 +189,13 @@ public class NodeEditorComponent extends EditorComponent {
       return getVirtualFile() != null ? new VirtualFile[]{getVirtualFile()} : new VirtualFile[0];
     }
     return super.getData(dataId);
+  }
+
+  private static void updateDocInToolWindow(EditorContext context, EditorCell target) {
+    DocumentationProvider provider = new DocumentationProvider(context.getRepository(), target);
+    com.intellij.openapi.project.Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(context.getRepository()));
+    if (provider.hasDocumentation() && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
+      MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(new MPSDocumentationUI(project, provider));
+    }
   }
 }

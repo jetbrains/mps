@@ -130,7 +130,6 @@ public class NodeEditorActions {
         EditorCell_Label label = (EditorCell_Label) target;
         label.end();
       }
-      updateDocInToolWindow(context, target);
     }
 
     private EditorCell getDeepestSelectedCell(EditorContext context) {
@@ -282,7 +281,6 @@ public class NodeEditorActions {
         EditorCell_Label label = (EditorCell_Label) target;
         label.home();
       }
-      updateDocInToolWindow(context, target);
     }
 
     private EditorCell getDeepestSelectedCell(EditorContext context) {
@@ -325,7 +323,6 @@ public class NodeEditorActions {
       target.setCaretX(caretX);
       context.getEditorComponent().changeSelection(target);
       myPositionTracker.savePosition(caretX);
-      updateDocInToolWindow(context, target);
     }
 
     private EditorCell getDeepestSelectedCell(EditorContext context) {
@@ -377,7 +374,6 @@ public class NodeEditorActions {
       target.setCaretX(caretX);
       context.getEditorComponent().changeSelection(target);
       myPositionTracker.savePosition(caretX);
-      updateDocInToolWindow(context, target);
     }
 
     private EditorCell getDeepestSelectedCell(EditorContext context) {
@@ -847,11 +843,4 @@ public class NodeEditorActions {
     }
   }
 
-  private static void updateDocInToolWindow(EditorContext context, EditorCell target){
-    DocumentationProvider provider = new DocumentationProvider(context.getRepository(), target);
-    Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(context.getRepository()));
-    if (provider.hasDocumentation() && MPSDocumentationToolWindowManager.getInstance(project).isVisible()) {
-      MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(new MPSDocumentationUI(project, provider));
-    }
-  }
 }
