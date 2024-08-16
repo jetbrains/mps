@@ -232,6 +232,7 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
 
   public void setFontSize(FontSize size) {
     myEditorPane.applyFontProps(size);
+    myEditorPane.setSize(myEditorPane.getPreferredSize());
   }
 
   private class AdjustFontSizeAction extends AnAction {
