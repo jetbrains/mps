@@ -303,7 +303,7 @@
             <node concept="3cpWs6" id="42q9MnGEtnC" role="3cqZAp">
               <node concept="3cpWs3" id="42q9MnGEtF2" role="3cqZAk">
                 <node concept="Xl_RD" id="42q9MnGEtF3" role="3uHU7w">
-                  <property role="Xl_RC" value="_AbstractConceptDeclaration" />
+                  <property role="Xl_RC" value="_AConcept" />
                 </node>
                 <node concept="2OqwBi" id="42q9MnGEMiw" role="3uHU7B">
                   <node concept="1PxgMI" id="42q9MnGEuF8" role="2Oq$k0">
@@ -337,7 +337,7 @@
               <node concept="3cpWs6" id="42q9MnGEw3r" role="3cqZAp">
                 <node concept="3cpWs3" id="42q9MnGEw3s" role="3cqZAk">
                   <node concept="Xl_RD" id="42q9MnGEw3t" role="3uHU7w">
-                    <property role="Xl_RC" value="_ConstrainedDataTypeDeclaration" />
+                    <property role="Xl_RC" value="_ConstrainedDataType" />
                   </node>
                   <node concept="2OqwBi" id="42q9MnGELeR" role="3uHU7B">
                     <node concept="1PxgMI" id="42q9MnGEw3u" role="2Oq$k0">
@@ -372,7 +372,7 @@
               <node concept="3cpWs6" id="42q9MnGJTKy" role="3cqZAp">
                 <node concept="3cpWs3" id="42q9MnGJTKz" role="3cqZAk">
                   <node concept="Xl_RD" id="42q9MnGJTK$" role="3uHU7w">
-                    <property role="Xl_RC" value="_EnumerationDeclaration" />
+                    <property role="Xl_RC" value="_Enum" />
                   </node>
                   <node concept="2OqwBi" id="42q9MnGJTK_" role="3uHU7B">
                     <node concept="1PxgMI" id="42q9MnGJTKA" role="2Oq$k0">
@@ -407,7 +407,7 @@
               <node concept="3cpWs6" id="42q9MnGJYeu" role="3cqZAp">
                 <node concept="3cpWs3" id="42q9MnGJYev" role="3cqZAk">
                   <node concept="Xl_RD" id="42q9MnGJYew" role="3uHU7w">
-                    <property role="Xl_RC" value="_PrimitiveDataTypeDeclaration" />
+                    <property role="Xl_RC" value="_PrimitiveDataType" />
                   </node>
                   <node concept="2OqwBi" id="42q9MnGJYex" role="3uHU7B">
                     <node concept="1PxgMI" id="42q9MnGJYey" role="2Oq$k0">
@@ -442,7 +442,7 @@
               <node concept="3cpWs6" id="42q9MnGK9g0" role="3cqZAp">
                 <node concept="3cpWs3" id="42q9MnGK9g1" role="3cqZAk">
                   <node concept="Xl_RD" id="42q9MnGK9g2" role="3uHU7w">
-                    <property role="Xl_RC" value="_ConceptEditorDeclaration" />
+                    <property role="Xl_RC" value="_Editor" />
                   </node>
                   <node concept="2OqwBi" id="42q9MnGKsnc" role="3uHU7B">
                     <node concept="2OqwBi" id="42q9MnGK9g3" role="2Oq$k0">
@@ -482,7 +482,7 @@
               <node concept="3cpWs6" id="42q9MnGKnL8" role="3cqZAp">
                 <node concept="3cpWs3" id="42q9MnGKnL9" role="3cqZAk">
                   <node concept="Xl_RD" id="42q9MnGKnLa" role="3uHU7w">
-                    <property role="Xl_RC" value="_EditorComponentDeclaration" />
+                    <property role="Xl_RC" value="_EditorComponent" />
                   </node>
                   <node concept="2OqwBi" id="42q9MnGKwr1" role="3uHU7B">
                     <node concept="2OqwBi" id="42q9MnGKnLb" role="2Oq$k0">
@@ -522,7 +522,7 @@
               <node concept="3cpWs6" id="42q9MnGKDfa" role="3cqZAp">
                 <node concept="3cpWs3" id="42q9MnGKDfb" role="3cqZAk">
                   <node concept="Xl_RD" id="42q9MnGKDfc" role="3uHU7w">
-                    <property role="Xl_RC" value="_EditorComponentDeclaration" />
+                    <property role="Xl_RC" value="_Behavior" />
                   </node>
                   <node concept="2OqwBi" id="42q9MnGKDfd" role="3uHU7B">
                     <node concept="2OqwBi" id="42q9MnGKDfe" role="2Oq$k0">

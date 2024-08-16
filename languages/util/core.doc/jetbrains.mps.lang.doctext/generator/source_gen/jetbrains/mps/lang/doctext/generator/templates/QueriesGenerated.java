@@ -256,7 +256,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModelOperations.getModelName(_context.getInputModel());
   }
   public static Object propertyMacro_GetValue_10_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.conceptId$rrGe) + "_AbstractConceptDeclaration" + ".html";
+    return DocumentationPathResolver.getDocFileNameWithoutExtension(_context.getNode());
   }
   public static Object propertyMacro_GetValue_10_2(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -265,7 +265,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.conceptShortDescription$is9d);
   }
   public static Object propertyMacro_GetValue_10_4(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.conceptId$rrGe) + "_AbstractConceptDeclaration" + ".html";
+    return DocumentationPathResolver.getDocFileNameWithoutExtension(_context.getNode());
   }
   public static Object propertyMacro_GetValue_10_5(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -274,19 +274,19 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.conceptShortDescription$is9d);
   }
   public static Object propertyMacro_GetValue_10_7(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.datatypeId$$gBg) + "_EnumerationDeclaration" + ".html";
+    return DocumentationPathResolver.getDocFileNameWithoutExtension(_context.getNode());
   }
   public static Object propertyMacro_GetValue_10_8(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_10_9(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.datatypeId$$gBg) + "_PrimitiveDataTypeDeclaration" + ".html";
+    return DocumentationPathResolver.getDocFileNameWithoutExtension(_context.getNode());
   }
   public static Object propertyMacro_GetValue_10_10(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_10_11(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.datatypeId$$gBg) + "_ConstrainedDataTypeDeclaration" + ".html";
+    return DocumentationPathResolver.getDocFileNameWithoutExtension(_context.getNode());
   }
   public static Object propertyMacro_GetValue_10_12(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -346,25 +346,25 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModelOperations.getModelName(_context.getInputModel());
   }
   public static Object propertyMacro_GetValue_15_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + "_ConceptEditorDeclaration" + ".html";
+    return DocumentationPathResolver.getDocFileNameWithoutExtension(_context.getNode());
   }
   public static Object propertyMacro_GetValue_15_2(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_15_3(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.conceptDeclaration$HJmJ), PROPS.conceptId$rrGe) + "_EditorComponentDeclaration" + ".html";
+    return DocumentationPathResolver.getDocFileNameWithoutExtension(_context.getNode());
   }
   public static Object propertyMacro_GetValue_15_4(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_15_5(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.conceptDeclaration$h3E), PROPS.conceptId$rrGe) + "_SubstituteMenu" + ".html";
+    return DocumentationPathResolver.getDocFileNameWithoutExtension(_context.getNode());
   }
   public static Object propertyMacro_GetValue_15_6(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_15_7(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.conceptDeclaration$h3E), PROPS.conceptId$rrGe) + "_TransformationMenu" + ".html";
+    return DocumentationPathResolver.getDocFileNameWithoutExtension(_context.getNode());
   }
   public static Object propertyMacro_GetValue_15_8(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -434,7 +434,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModelOperations.getModelName(_context.getInputModel());
   }
   public static Object propertyMacro_GetValue_19_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.concept$u6dL), PROPS.conceptId$rrGe) + "_ConceptBehavior" + ".html";
+    return DocumentationPathResolver.getDocFileNameWithoutExtension(_context.getNode());
   }
   public static Object propertyMacro_GetValue_19_2(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.concept$u6dL), PROPS.name$MnvL);
@@ -1642,10 +1642,10 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SProperty conceptShortDescription$is9d = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772bbe20L, "conceptShortDescription");
     /*package*/ static final SProperty conceptAlias$OL_L = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
     /*package*/ static final SProperty sourceCardinality$cxYK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
-    /*package*/ static final SProperty conceptId$rrGe = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
     /*package*/ static final SProperty datatypeId$$gBg = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
     /*package*/ static final SProperty constraint$Gtcd = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc268c7a37L, 0xfc2bc4ff02L, "constraint");
     /*package*/ static final SProperty presentation$BjyV = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x9538e3a78561888L, "presentation");
+    /*package*/ static final SProperty conceptId$rrGe = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
     /*package*/ static final SProperty tagName$YfpN = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0xb3c7732dc99d3e6L, 0x5c842a42c54b10b6L, "tagName");
     /*package*/ static final SProperty indentation$8ZOp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, 0x46ded40cf13ae6fbL, "indentation");
     /*package*/ static final SProperty abstract$ibpT = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
@@ -1661,7 +1661,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
     /*package*/ static final SReferenceLink defaultMember$vlmG = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0xeeb344f63fe016cL, "defaultMember");
     /*package*/ static final SReferenceLink conceptDeclaration$HJmJ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
-    /*package*/ static final SReferenceLink conceptDeclaration$h3E = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
     /*package*/ static final SReferenceLink concept$u6dL = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
     /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
     /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");

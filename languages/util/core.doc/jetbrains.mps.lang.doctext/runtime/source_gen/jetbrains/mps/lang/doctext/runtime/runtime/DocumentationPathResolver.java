@@ -36,19 +36,19 @@ public class DocumentationPathResolver {
 
   public static String getDocFileNameWithoutExtension(SNode node) throws IllegalArgumentException {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA)) {
-      return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.AbstractConceptDeclaration$KA), PROPS.conceptId$rrGe) + "_AbstractConceptDeclaration";
+      return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.AbstractConceptDeclaration$KA), PROPS.conceptId$rrGe) + "_AConcept";
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConstrainedDataTypeDeclaration$Ch)) {
-      return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.ConstrainedDataTypeDeclaration$Ch), PROPS.datatypeId$$gBg) + "_ConstrainedDataTypeDeclaration";
+      return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.ConstrainedDataTypeDeclaration$Ch), PROPS.datatypeId$$gBg) + "_ConstrainedDataType";
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.EnumerationDeclaration$hv)) {
-      return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.EnumerationDeclaration$hv), PROPS.datatypeId$$gBg) + "_EnumerationDeclaration";
+      return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.EnumerationDeclaration$hv), PROPS.datatypeId$$gBg) + "_Enum";
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.PrimitiveDataTypeDeclaration$80)) {
-      return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.PrimitiveDataTypeDeclaration$80), PROPS.datatypeId$$gBg) + "_PrimitiveDataTypeDeclaration";
+      return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.PrimitiveDataTypeDeclaration$80), PROPS.datatypeId$$gBg) + "_PrimitiveDataType";
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptEditorDeclaration$BH)) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.ConceptEditorDeclaration$BH), LINKS.conceptDeclaration$HJmJ), PROPS.conceptId$rrGe) + "_ConceptEditorDeclaration";
+      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.ConceptEditorDeclaration$BH), LINKS.conceptDeclaration$HJmJ), PROPS.conceptId$rrGe) + "_Editor";
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.EditorComponentDeclaration$WM)) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.EditorComponentDeclaration$WM), LINKS.conceptDeclaration$HJmJ), PROPS.conceptId$rrGe) + "_EditorComponentDeclaration";
+      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.EditorComponentDeclaration$WM), LINKS.conceptDeclaration$HJmJ), PROPS.conceptId$rrGe) + "_EditorComponent";
     } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptBehavior$2)) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.ConceptBehavior$2), LINKS.concept$u6dL), PROPS.conceptId$rrGe) + "_EditorComponentDeclaration";
+      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(node, CONCEPTS.ConceptBehavior$2), LINKS.concept$u6dL), PROPS.conceptId$rrGe) + "_Behavior";
     }
     LogContext.with(DocumentationPathResolver.class, null, null, null).error("File name for concept " + node + "cannot be evaluated.");
     return "File name for concept " + node + "cannot be evaluated.";
