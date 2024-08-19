@@ -136,11 +136,11 @@ __switch__:
   }
 
 
-  private static Method getProcessKeyEventMethod(Component eventTargMpsTestsSuiteetComponent) {
-    if (eventTargMpsTestsSuiteetComponent == null) {
+  private static Method getProcessKeyEventMethod(Component eventTargetComponent) {
+    if (eventTargetComponent == null) {
       return null;
     }
-    Class<?> clazz = eventTargMpsTestsSuiteetComponent.getClass();
+    Class<?> clazz = eventTargetComponent.getClass();
     Method theMethod = null;
     while (theMethod == null && clazz != null) {
       try {
@@ -151,7 +151,7 @@ __switch__:
       }
       clazz = clazz.getSuperclass();
     }
-    Assert.fail("Cannot find processKeyEvent method in " + eventTargMpsTestsSuiteetComponent.getClass() + "class");
+    Assert.fail("Cannot find processKeyEvent method in " + eventTargetComponent.getClass() + "class");
     return null;
   }
 }

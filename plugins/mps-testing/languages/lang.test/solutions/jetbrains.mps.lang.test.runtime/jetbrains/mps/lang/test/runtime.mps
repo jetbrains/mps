@@ -14021,7 +14021,7 @@
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <node concept="37vLTG" id="5s44y2LgIl_" role="3clF46">
-        <property role="TrG5h" value="eventTargMpsTestsSuiteetComponent" />
+        <property role="TrG5h" value="eventTargetComponent" />
         <node concept="3uibUv" id="5s44y2LgIlA" role="1tU5fm">
           <ref role="3uigEE" to="z60i:~Component" resolve="Component" />
         </node>
