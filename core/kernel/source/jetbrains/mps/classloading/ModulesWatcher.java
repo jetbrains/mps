@@ -17,7 +17,6 @@ package jetbrains.mps.classloading;
 
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
@@ -152,7 +151,7 @@ public class ModulesWatcher {
         invalidRoots.add(String.format("%s: not tracked for classloading (no respective module facet or absent in a repository)", cm.getModuleReference().getModuleName()));
         return;
       }
-      String error = getModuleProblemMessage(cm.getModuleReference());
+      String error = getModuleProblemMessage(cm);
       if (error != null) {
         cm.setStatus(ERROR);
         invalidRoots.add(error);
@@ -257,57 +256,44 @@ public class ModulesWatcher {
     }
   }
 
-  /**
-   * Note: here we are interested in the actual status of a module inside a repository, not an instance we (might) have in myDepGraph
-   * if it has been already disposed but still remains in our graphs (i.e. ClassLoader is not disposed yet [!]),
-   * we need to mark it invalid (although with distinct CModule and/or explicit CL dispose we may reconsider this approach here)
-   */
-  private boolean isModuleDisposed(SModuleReference mRef) {
-    SModule resolvedModule = mRef.resolve(myRepository);
-    return (resolvedModule == null || resolvedModule.getRepository() == null);
-  }
-
   @TestOnly
   Map<SModuleReference, String> findInvalidModulesProblems() {
     myRepository.getModelAccess().checkReadAccess();
     synchronized (myDepGraphLock) {
       Map<SModuleReference, String> mRefToProblem = new HashMap<>(myDepGraph.getVerticesCount());
-      for (SModuleReference mRef : myDepGraph.getVertices()) {
-        String msg = getModuleProblemMessage(mRef);
+      myDepGraph.getValues().forEach(cm -> {
+        String msg = getModuleProblemMessage(cm);
         if (msg != null) {
-          mRefToProblem.put(mRef, msg);
+          mRefToProblem.put(cm.getModuleReference(), msg);
         }
-      }
+      });
       return mRefToProblem;
     }
   }
 
   /**
    * pre: dep graph lock & repo read acccess
+   *      CModule.getStatus() doesn't denote anything reasonable, instead, this method is to help to establish its value
    * @return message with the problem description or null if the module is valid
    */
   @Nullable
-  @Hack
-  private String getModuleProblemMessage(SModuleReference mRef) {
-    if (isModuleDisposed(mRef)) {
-      return String.format("Module %s is disposed and therefore was marked invalid for class loading", mRef.getModuleName());
+  private String getModuleProblemMessage(@NotNull CModule cm) {
+    SModuleReference mRef = cm.getModuleReference();
+    SModule module = mRef.resolve(myRepository);
+    if (cm.getModule() == null) {
+      if (module != null) {
+        // e.g. there are scenarios when vertices stay in the graph but are no longer capable to load classes (see MPS-36688)
+        return String.format("%s: module is in the repository but not subject to classloading (does not provide classes, missing Java facet?)", mRef.getModuleName());
+      } else {
+        return String.format("%s: module is not in the repository", mRef.getModuleName());
+      }
     }
-
-    CModule reloadableModule = myDepGraph.get(mRef);
-    if (reloadableModule == null) {
-      // shall not happen, provided ModulesWatcher invokes this method for graph vertex and only them.
-      return String.format("%s: *** UNKNOWN MODULE ***", mRef.getModuleName());
+    if (module == null) {
+      return String.format("%s: module is not in the repository and therefore was marked invalid for class loading", mRef.getModuleName());
     }
-    if (reloadableModule.getModule() == null) {
-      // FIXME bad message, module isn't necessarily missing, might be lacking JMF to be part of CL
-      return String.format("%s: module is not in the repository", mRef.getModuleName());
-    }
-    SModule module = mRef.resolve(myRepository); // FIXME do I care to resolve here? I've got CModule.getModule() != null here
-    assert module != null; // FIXME it's isModuleDisposed(), above, that ensures this. However, isn't it odd to resolve twice?
-    if (!myWatchableCondition.test(module)) {
-      // although generally dep graph vertices (from #getAllModules()) are 'watchable', there are scenarios when vertices stay in the graph but
-      // are no longer capable to load classes (see MPS-36688)
-      return String.format("%s doesn't provide classes", mRef.getModuleName());
+    if (module != cm.getModule()) {
+      // generally not expected to happen, ever
+      return String.format("%s: weird inconsistency, reposiory module %s is not the same as CL module %s", mRef.getModuleName(), module, cm.getModule());
     }
     return null;
   }
@@ -322,12 +308,6 @@ public class ModulesWatcher {
         throw new IllegalStateException(String.format("Valid module %s depends on invalid (%s) %s", m1.getModuleReference(), m2.getStatus(), m2.getModuleReference()));
       });
     });
-  }
-
-  // read-only
-  // pre: dep graph lock
-  private Collection<SModuleReference> getAllModules() {
-    return myDepGraph.getVertices();
   }
 
   /**
