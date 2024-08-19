@@ -12,6 +12,7 @@ import java.io.File;
 import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.classloading.ClassLoaderManager;
 
 public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
 
@@ -74,7 +75,7 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
 
     project.getModelAccess().runReadAction(() -> {
 
-      new TestDiscovery(visitor).surveyModules(project.getProjectModules());
+      new TestDiscovery(myEnvironment.getPlatform().findComponent(ClassLoaderManager.class), visitor).surveyModules(project.getProjectModules());
 
     });
 

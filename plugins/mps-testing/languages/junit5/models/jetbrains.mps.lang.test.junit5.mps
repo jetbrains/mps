@@ -8,7 +8,6 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
-    <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
   </languages>
   <imports>
     <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
@@ -26,7 +25,6 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
-    <import index="j8aq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.module(MPS.Core/)" />
     <import index="n4ib" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.engine(org.junit.junit5/)" />
     <import index="s3rp" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.engine.discovery(org.junit.junit5/)" />
     <import index="z4cc" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.launcher.core(org.junit.junit5/)" />
@@ -38,6 +36,7 @@
     <import index="4f8w" ref="r:1cb9f3bb-9050-412e-95bb-906faebc74ca(jetbrains.mps.lang.test.launcher)" />
     <import index="4u8o" ref="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)" />
     <import index="fojo" ref="63b449db-0918-4a4a-a891-2c430ab133e4/java:org.junit.platform.reporting.open.xml(org.junit.junit5/)" />
+    <import index="3qmy" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.classloading(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -855,6 +854,22 @@
                       <node concept="2ShNRf" id="HwplGM6Hpz" role="2Oq$k0">
                         <node concept="1pGfFk" id="HwplGM6Hp$" role="2ShVmc">
                           <ref role="37wK5l" node="5gsHVK_JKSL" resolve="TestDiscovery" />
+                          <node concept="2OqwBi" id="4Zd8$4Y5bdr" role="37wK5m">
+                            <node concept="2OqwBi" id="4Zd8$4Y59nl" role="2Oq$k0">
+                              <node concept="37vLTw" id="4Zd8$4Y58hZ" role="2Oq$k0">
+                                <ref role="3cqZAo" node="7MSVDs2_8tx" resolve="myEnvironment" />
+                              </node>
+                              <node concept="liA8E" id="4Zd8$4Y5akF" role="2OqNvi">
+                                <ref role="37wK5l" to="79ha:8Pnvxgloc_" resolve="getPlatform" />
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="4Zd8$4Y5cpl" role="2OqNvi">
+                              <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                              <node concept="3VsKOn" id="4Zd8$4Y5eCy" role="37wK5m">
+                                <ref role="3VsUkX" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
+                              </node>
+                            </node>
+                          </node>
                           <node concept="37vLTw" id="HwplGM6Hp_" role="37wK5m">
                             <ref role="3cqZAo" node="HwplGM6HoM" resolve="visitor" />
                           </node>
@@ -1154,8 +1169,22 @@
         <ref role="3uigEE" node="5gsHVK_Jw60" resolve="TestDiscoveryVisitor" />
       </node>
     </node>
+    <node concept="312cEg" id="4Zd8$4Y4OBP" role="jymVt">
+      <property role="TrG5h" value="myClassManager" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="4Zd8$4Y4OBQ" role="1B3o_S" />
+      <node concept="3uibUv" id="4Zd8$4Y4OBS" role="1tU5fm">
+        <ref role="3uigEE" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="5gsHVK_JV2U" role="jymVt" />
     <node concept="3clFbW" id="5gsHVK_JKSL" role="jymVt">
+      <node concept="37vLTG" id="4Zd8$4Y4NKr" role="3clF46">
+        <property role="TrG5h" value="clm" />
+        <node concept="3uibUv" id="4Zd8$4Y4O$B" role="1tU5fm">
+          <ref role="3uigEE" to="3qmy:~ClassLoaderManager" resolve="ClassLoaderManager" />
+        </node>
+      </node>
       <node concept="37vLTG" id="5gsHVK_JOjp" role="3clF46">
         <property role="TrG5h" value="discoveryVisitor" />
         <node concept="3uibUv" id="5gsHVK_JPWV" role="1tU5fm">
@@ -1172,6 +1201,16 @@
             </node>
             <node concept="37vLTw" id="5gsHVK_JTfj" role="37vLTx">
               <ref role="3cqZAo" node="5gsHVK_JOjp" resolve="discoveryVisitor" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4Zd8$4Y4OBT" role="3cqZAp">
+          <node concept="37vLTI" id="4Zd8$4Y4OBV" role="3clFbG">
+            <node concept="37vLTw" id="4Zd8$4Y4OBY" role="37vLTJ">
+              <ref role="3cqZAo" node="4Zd8$4Y4OBP" resolve="myClm" />
+            </node>
+            <node concept="37vLTw" id="4Zd8$4Y4OBZ" role="37vLTx">
+              <ref role="3cqZAo" node="4Zd8$4Y4NKr" resolve="clm" />
             </node>
           </node>
         </node>
@@ -1287,19 +1326,15 @@
             <node concept="3uibUv" id="4oW2E9aSh9D" role="1tU5fm">
               <ref role="3uigEE" to="wyt6:~ClassLoader" resolve="ClassLoader" />
             </node>
-            <node concept="2OqwBi" id="4oW2E9aSh9E" role="33vP2m">
-              <node concept="1eOMI4" id="4oW2E9aSh9I" role="2Oq$k0">
-                <node concept="10QFUN" id="4oW2E9aSh9F" role="1eOMHV">
-                  <node concept="37vLTw" id="5gsHVK_fRTf" role="10QFUP">
-                    <ref role="3cqZAo" node="5gsHVK_f8mJ" resolve="module" />
-                  </node>
-                  <node concept="3uibUv" id="4oW2E9aSh9H" role="10QFUM">
-                    <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
-                  </node>
-                </node>
+            <node concept="2OqwBi" id="4Zd8$4Y4VnJ" role="33vP2m">
+              <node concept="37vLTw" id="4Zd8$4Y4ScA" role="2Oq$k0">
+                <ref role="3cqZAo" node="4Zd8$4Y4OBP" resolve="myClassManager" />
               </node>
-              <node concept="liA8E" id="5N$sdYeU1dp" role="2OqNvi">
-                <ref role="37wK5l" to="j8aq:~ReloadableModule.getClassLoader()" resolve="getClassLoader" />
+              <node concept="liA8E" id="4Zd8$4Y4XcL" role="2OqNvi">
+                <ref role="37wK5l" to="3qmy:~ClassLoaderManager.getClassLoader(org.jetbrains.mps.openapi.module.SModule)" resolve="getClassLoader" />
+                <node concept="37vLTw" id="4Zd8$4Y4YLS" role="37wK5m">
+                  <ref role="3cqZAo" node="5gsHVK_f8mJ" resolve="module" />
+                </node>
               </node>
             </node>
           </node>
