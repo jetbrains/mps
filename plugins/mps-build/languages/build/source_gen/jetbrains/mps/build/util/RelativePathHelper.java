@@ -40,8 +40,8 @@ public class RelativePathHelper {
     }
     // The purpose of the code below is to keep this class purely string/Path-based, without need to access FS or care about file existence.
     try {
-      String[] base = myBasePath.split("/");
-      String[] target = normalized.split("/");
+      String[] base = removeDots(myBasePath.split("/"));
+      String[] target = removeDots(normalized.split("/"));
       int commonLength = 0;
       while (commonLength < target.length && commonLength < base.length && target[commonLength].equals(base[commonLength])) {
         commonLength++;
@@ -76,6 +76,43 @@ public class RelativePathHelper {
     }
   }
 
+  /**
+   * Normalize segments to resolve '.' and '..' according to standard rules.
+   */
+  public static String[] removeDots(String[] segments) {
+    // An array of boolean indicating whether a segment is excluded from the final result
+    boolean[] ignore = new boolean[segments.length];
+    int remainingCount = segments.length;
+
+    for (int i = 0; i < segments.length; i++) {
+      // Ignore each '.'.
+      // In case of '..', ignore it only if it is preceded by a non-ignored segment, ignore that segment as well.
+      if (".".equals(segments[i])) {
+        ignore[i] = true;
+        remainingCount--;
+      } else if ("..".equals(segments[i])) {
+        for (int j = i - 1; j >= 0; j--) {
+          if (!(ignore[j])) {
+            ignore[j] = true;
+            ignore[i] = true;
+            remainingCount -= 2;
+            break;
+          }
+        }
+      }
+    }
+
+    // Return an array of all non-ignored segments.
+    String[] result = new String[remainingCount];
+    int out = 0;
+    for (int in = 0; in < segments.length; in++) {
+      if (!(ignore[in])) {
+        result[out++] = segments[in];
+      }
+    }
+    return result;
+  }
+
   public String makeAbsolute(String shortPath) throws PathException {
     if ((shortPath == null || shortPath.length() == 0)) {
       return myBasePath;
@@ -97,7 +134,6 @@ public class RelativePathHelper {
   public String getBasePath() {
     return myBasePath;
   }
-
 
   /**
    * Translates backslashes in the path, if any, to regular slashed, and appends a trailing one if requested.
