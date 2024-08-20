@@ -43,6 +43,32 @@ public class TestRelativePathHelper_Test {
     Assert.assertEquals(oneUp.replace("\\", "/"), new RelativePathHelper(scriptsFolder).makeAbsolute("../"));
   }
   @Test
+  public void test_dots() throws Exception {
+    {
+      RelativePathHelper rph = new RelativePathHelper("/root/./a/./b/../..");
+      Assert.assertEquals("a/b", rph.makeRelative("/root/a/b"));
+      Assert.assertEquals("c/d/", rph.makeRelative("/root/c/d/"));
+      Assert.assertEquals("c/d/", rph.makeRelative("/root/c/./e/../d/./"));
+    }
+
+    {
+      RelativePathHelper rph = new RelativePathHelper("/a/b/c/d/../..");
+      Assert.assertEquals("c/d", rph.makeRelative("/a/b/c/d"));
+      Assert.assertEquals("c/d/", rph.makeRelative("/a/b/c/d/"));
+    }
+  }
+  @Test
+  public void test_noCommonPart() throws Exception {
+    Assert.assertEquals("../../c/d", new RelativePathHelper("/a/b").makeRelative("/c/d"));
+    Assert.assertThrows(RelativePathHelper.PathException.class, () -> new RelativePathHelper("a/b").makeRelative("/c/d"));
+  }
+  @Test
+  public void test_backslashes() throws Exception {
+    RelativePathHelper rph = new RelativePathHelper("a\\b");
+
+    Assert.assertEquals("c/d", rph.makeRelative("a\\b\\c\\d"));
+  }
+  @Test
   public void test_nonExistentPath() throws Exception {
     // rph assumes its initial path is directory, i.e. "someFolder/"
     RelativePathHelper rph = new RelativePathHelper("common-root/build/someFolder");

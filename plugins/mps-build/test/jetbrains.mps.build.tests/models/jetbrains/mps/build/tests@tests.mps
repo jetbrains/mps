@@ -43,6 +43,9 @@
       <concept id="1225978065297" name="jetbrains.mps.lang.test.structure.SimpleNodeTest" flags="ng" index="1LZb2c" />
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
+        <child id="1082485599096" name="statements" index="9aQI4" />
+      </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
@@ -87,6 +90,9 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
+      </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
@@ -154,6 +160,14 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
+      </concept>
+    </language>
+    <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
+      <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
+        <child id="1199569916463" name="body" index="1bW5cS" />
+      </concept>
     </language>
     <language id="443f4c36-fcf5-4eb6-9500-8d06ed259e3e" name="jetbrains.mps.baseLanguage.classifiers">
       <concept id="1205752633985" name="jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression" flags="nn" index="2WthIp" />
@@ -2505,6 +2519,266 @@
                   <ref role="37wK5l" to="o3n2:5iAPpylXsd9" resolve="makeAbsolute" />
                   <node concept="Xl_RD" id="1AfwOXhJ77M" role="37wK5m">
                     <property role="Xl_RC" value="../" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3s$Bmu" id="h4X9S5vWM" role="3s_gse">
+        <property role="3s$Bm0" value="dots" />
+        <node concept="3cqZAl" id="h4X9S5vWN" role="3clF45" />
+        <node concept="3Tm1VV" id="h4X9S5vWO" role="1B3o_S" />
+        <node concept="3clFbS" id="h4X9S5vWP" role="3clF47">
+          <node concept="9aQIb" id="h4X9SaKm$" role="3cqZAp">
+            <node concept="3clFbS" id="h4X9SaKmA" role="9aQI4">
+              <node concept="3cpWs8" id="h4X9S5wSd" role="3cqZAp">
+                <node concept="3cpWsn" id="h4X9S5wSe" role="3cpWs9">
+                  <property role="TrG5h" value="rph" />
+                  <node concept="3uibUv" id="h4X9S5wSf" role="1tU5fm">
+                    <ref role="3uigEE" to="o3n2:5iAPpylXsc4" resolve="RelativePathHelper" />
+                  </node>
+                  <node concept="2ShNRf" id="h4X9S5wW_" role="33vP2m">
+                    <node concept="1pGfFk" id="h4X9S5yYO" role="2ShVmc">
+                      <property role="373rjd" value="true" />
+                      <ref role="37wK5l" to="o3n2:1AfwOXhIBBI" resolve="RelativePathHelper" />
+                      <node concept="Xl_RD" id="h4X9S5z2t" role="37wK5m">
+                        <property role="Xl_RC" value="/root/./a/./b/../.." />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="h4X9S5zka" role="3cqZAp">
+                <node concept="2YIFZM" id="h4X9S5zvy" role="3clFbG">
+                  <ref role="37wK5l" to="rjhg:~Assert.assertEquals(java.lang.Object,java.lang.Object)" resolve="assertEquals" />
+                  <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
+                  <node concept="Xl_RD" id="h4X9S5zDS" role="37wK5m">
+                    <property role="Xl_RC" value="a/b" />
+                  </node>
+                  <node concept="2OqwBi" id="h4X9S5$fk" role="37wK5m">
+                    <node concept="37vLTw" id="h4X9S5$93" role="2Oq$k0">
+                      <ref role="3cqZAo" node="h4X9S5wSe" resolve="rph" />
+                    </node>
+                    <node concept="liA8E" id="h4X9S5_ee" role="2OqNvi">
+                      <ref role="37wK5l" to="o3n2:5iAPpylXscy" resolve="makeRelative" />
+                      <node concept="Xl_RD" id="h4X9S5_pw" role="37wK5m">
+                        <property role="Xl_RC" value="/root/a/b" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="h4X9S8EJ3" role="3cqZAp">
+                <node concept="2YIFZM" id="h4X9S8EJ4" role="3clFbG">
+                  <ref role="37wK5l" to="rjhg:~Assert.assertEquals(java.lang.Object,java.lang.Object)" resolve="assertEquals" />
+                  <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
+                  <node concept="Xl_RD" id="h4X9S8EJ5" role="37wK5m">
+                    <property role="Xl_RC" value="c/d/" />
+                  </node>
+                  <node concept="2OqwBi" id="h4X9S8EJ6" role="37wK5m">
+                    <node concept="37vLTw" id="h4X9S8EJ7" role="2Oq$k0">
+                      <ref role="3cqZAo" node="h4X9S5wSe" resolve="rph" />
+                    </node>
+                    <node concept="liA8E" id="h4X9S8EJ8" role="2OqNvi">
+                      <ref role="37wK5l" to="o3n2:5iAPpylXscy" resolve="makeRelative" />
+                      <node concept="Xl_RD" id="h4X9S8EJ9" role="37wK5m">
+                        <property role="Xl_RC" value="/root/c/d/" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="h4X9Sh$3U" role="3cqZAp">
+                <node concept="2YIFZM" id="h4X9Sh$3V" role="3clFbG">
+                  <ref role="37wK5l" to="rjhg:~Assert.assertEquals(java.lang.Object,java.lang.Object)" resolve="assertEquals" />
+                  <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
+                  <node concept="Xl_RD" id="h4X9Sh$3W" role="37wK5m">
+                    <property role="Xl_RC" value="c/d/" />
+                  </node>
+                  <node concept="2OqwBi" id="h4X9Sh$3X" role="37wK5m">
+                    <node concept="37vLTw" id="h4X9Sh$3Y" role="2Oq$k0">
+                      <ref role="3cqZAo" node="h4X9S5wSe" resolve="rph" />
+                    </node>
+                    <node concept="liA8E" id="h4X9Sh$3Z" role="2OqNvi">
+                      <ref role="37wK5l" to="o3n2:5iAPpylXscy" resolve="makeRelative" />
+                      <node concept="Xl_RD" id="h4X9Sh$40" role="37wK5m">
+                        <property role="Xl_RC" value="/root/c/./e/../d/./" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="h4X9S9j9O" role="3cqZAp" />
+          <node concept="9aQIb" id="h4X9SaL1i" role="3cqZAp">
+            <node concept="3clFbS" id="h4X9SaL1k" role="9aQI4">
+              <node concept="3cpWs8" id="h4X9S9jzn" role="3cqZAp">
+                <node concept="3cpWsn" id="h4X9S9jzo" role="3cpWs9">
+                  <property role="TrG5h" value="rph" />
+                  <node concept="3uibUv" id="h4X9S9jzp" role="1tU5fm">
+                    <ref role="3uigEE" to="o3n2:5iAPpylXsc4" resolve="RelativePathHelper" />
+                  </node>
+                  <node concept="2ShNRf" id="h4X9S9jHE" role="33vP2m">
+                    <node concept="1pGfFk" id="h4X9S9kzj" role="2ShVmc">
+                      <property role="373rjd" value="true" />
+                      <ref role="37wK5l" to="o3n2:1AfwOXhIBBI" resolve="RelativePathHelper" />
+                      <node concept="Xl_RD" id="h4X9S9kHI" role="37wK5m">
+                        <property role="Xl_RC" value="/a/b/c/d/../.." />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="h4X9S9l9L" role="3cqZAp">
+                <node concept="2YIFZM" id="h4X9S9l9M" role="3clFbG">
+                  <ref role="37wK5l" to="rjhg:~Assert.assertEquals(java.lang.Object,java.lang.Object)" resolve="assertEquals" />
+                  <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
+                  <node concept="Xl_RD" id="h4X9S9l9N" role="37wK5m">
+                    <property role="Xl_RC" value="c/d" />
+                  </node>
+                  <node concept="2OqwBi" id="h4X9S9l9O" role="37wK5m">
+                    <node concept="37vLTw" id="h4X9S9l9P" role="2Oq$k0">
+                      <ref role="3cqZAo" node="h4X9S9jzo" resolve="rph2" />
+                    </node>
+                    <node concept="liA8E" id="h4X9S9l9Q" role="2OqNvi">
+                      <ref role="37wK5l" to="o3n2:5iAPpylXscy" resolve="makeRelative" />
+                      <node concept="Xl_RD" id="h4X9S9l9R" role="37wK5m">
+                        <property role="Xl_RC" value="/a/b/c/d" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="h4X9S9l9S" role="3cqZAp">
+                <node concept="2YIFZM" id="h4X9S9l9T" role="3clFbG">
+                  <ref role="37wK5l" to="rjhg:~Assert.assertEquals(java.lang.Object,java.lang.Object)" resolve="assertEquals" />
+                  <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
+                  <node concept="Xl_RD" id="h4X9S9l9U" role="37wK5m">
+                    <property role="Xl_RC" value="c/d/" />
+                  </node>
+                  <node concept="2OqwBi" id="h4X9S9l9V" role="37wK5m">
+                    <node concept="37vLTw" id="h4X9S9l9W" role="2Oq$k0">
+                      <ref role="3cqZAo" node="h4X9S9jzo" resolve="rph2" />
+                    </node>
+                    <node concept="liA8E" id="h4X9S9l9X" role="2OqNvi">
+                      <ref role="37wK5l" to="o3n2:5iAPpylXscy" resolve="makeRelative" />
+                      <node concept="Xl_RD" id="h4X9S9l9Y" role="37wK5m">
+                        <property role="Xl_RC" value="/a/b/c/d/" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3s$Bmu" id="h4X9SiZ_r" role="3s_gse">
+        <property role="3s$Bm0" value="noCommonPart" />
+        <node concept="3cqZAl" id="h4X9SiZ_s" role="3clF45" />
+        <node concept="3Tm1VV" id="h4X9SiZ_t" role="1B3o_S" />
+        <node concept="3clFbS" id="h4X9SiZ_u" role="3clF47">
+          <node concept="3clFbF" id="h4X9Sk98j" role="3cqZAp">
+            <node concept="2YIFZM" id="h4X9Sk98k" role="3clFbG">
+              <ref role="37wK5l" to="rjhg:~Assert.assertEquals(java.lang.Object,java.lang.Object)" resolve="assertEquals" />
+              <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
+              <node concept="Xl_RD" id="h4X9Sk98l" role="37wK5m">
+                <property role="Xl_RC" value="../../c/d" />
+              </node>
+              <node concept="2OqwBi" id="h4X9Sk98m" role="37wK5m">
+                <node concept="liA8E" id="h4X9Sk98o" role="2OqNvi">
+                  <ref role="37wK5l" to="o3n2:5iAPpylXscy" resolve="makeRelative" />
+                  <node concept="Xl_RD" id="h4X9Sk98p" role="37wK5m">
+                    <property role="Xl_RC" value="/c/d" />
+                  </node>
+                </node>
+                <node concept="2ShNRf" id="h4X9Skpo_" role="2Oq$k0">
+                  <node concept="1pGfFk" id="h4X9Skq5$" role="2ShVmc">
+                    <property role="373rjd" value="true" />
+                    <ref role="37wK5l" to="o3n2:1AfwOXhIBBI" resolve="RelativePathHelper" />
+                    <node concept="Xl_RD" id="h4X9Skqdk" role="37wK5m">
+                      <property role="Xl_RC" value="/a/b" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="h4X9Sj1jj" role="3cqZAp">
+            <node concept="2YIFZM" id="h4X9Sj1Df" role="3clFbG">
+              <ref role="37wK5l" to="rjhg:~Assert.assertThrows(java.lang.Class,org.junit.function.ThrowingRunnable)" resolve="assertThrows" />
+              <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
+              <node concept="3VsKOn" id="h4X9Sj1OZ" role="37wK5m">
+                <ref role="3VsUkX" to="o3n2:1AfwOXhIPFt" resolve="PathException" />
+              </node>
+              <node concept="1bVj0M" id="h4X9Sj21z" role="37wK5m">
+                <node concept="3clFbS" id="h4X9Sj21_" role="1bW5cS">
+                  <node concept="3clFbF" id="h4X9Sj3XG" role="3cqZAp">
+                    <node concept="2OqwBi" id="h4X9Sj45k" role="3clFbG">
+                      <node concept="liA8E" id="h4X9Sj4rA" role="2OqNvi">
+                        <ref role="37wK5l" to="o3n2:5iAPpylXscy" resolve="makeRelative" />
+                        <node concept="Xl_RD" id="h4X9Sj4Dv" role="37wK5m">
+                          <property role="Xl_RC" value="/c/d" />
+                        </node>
+                      </node>
+                      <node concept="2ShNRf" id="h4X9Sj0r5" role="2Oq$k0">
+                        <node concept="1pGfFk" id="h4X9Sj14x" role="2ShVmc">
+                          <property role="373rjd" value="true" />
+                          <ref role="37wK5l" to="o3n2:1AfwOXhIBBI" resolve="RelativePathHelper" />
+                          <node concept="Xl_RD" id="h4X9Sj18G" role="37wK5m">
+                            <property role="Xl_RC" value="a/b" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3s$Bmu" id="h4X9SaPGv" role="3s_gse">
+        <property role="3s$Bm0" value="backslashes" />
+        <node concept="3cqZAl" id="h4X9SaPGw" role="3clF45" />
+        <node concept="3Tm1VV" id="h4X9SaPGx" role="1B3o_S" />
+        <node concept="3clFbS" id="h4X9SaPGy" role="3clF47">
+          <node concept="3cpWs8" id="h4X9SaQm5" role="3cqZAp">
+            <node concept="3cpWsn" id="h4X9SaQm6" role="3cpWs9">
+              <property role="TrG5h" value="rph" />
+              <node concept="3uibUv" id="h4X9SaQm7" role="1tU5fm">
+                <ref role="3uigEE" to="o3n2:5iAPpylXsc4" resolve="RelativePathHelper" />
+              </node>
+              <node concept="2ShNRf" id="h4X9SaQm8" role="33vP2m">
+                <node concept="1pGfFk" id="h4X9SaQm9" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="o3n2:1AfwOXhIBBI" resolve="RelativePathHelper" />
+                  <node concept="Xl_RD" id="h4X9SaQma" role="37wK5m">
+                    <property role="Xl_RC" value="a\\b" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="h4X9SaQmh" role="3cqZAp" />
+          <node concept="3clFbF" id="h4X9SaQmi" role="3cqZAp">
+            <node concept="2YIFZM" id="h4X9SaQmj" role="3clFbG">
+              <ref role="37wK5l" to="rjhg:~Assert.assertEquals(java.lang.Object,java.lang.Object)" resolve="assertEquals" />
+              <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
+              <node concept="Xl_RD" id="h4X9SaQmk" role="37wK5m">
+                <property role="Xl_RC" value="c/d" />
+              </node>
+              <node concept="2OqwBi" id="h4X9SaQml" role="37wK5m">
+                <node concept="37vLTw" id="h4X9SaQmm" role="2Oq$k0">
+                  <ref role="3cqZAo" node="h4X9SaQm6" resolve="rph" />
+                </node>
+                <node concept="liA8E" id="h4X9SaQmn" role="2OqNvi">
+                  <ref role="37wK5l" to="o3n2:5iAPpylXscy" resolve="makeRelative" />
+                  <node concept="Xl_RD" id="h4X9SaQmo" role="37wK5m">
+                    <property role="Xl_RC" value="a\\b\\c\\d" />
                   </node>
                 </node>
               </node>
