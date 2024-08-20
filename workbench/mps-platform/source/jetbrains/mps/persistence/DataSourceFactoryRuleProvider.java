@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,37 @@
  */
 package jetbrains.mps.persistence;
 
-import com.intellij.openapi.extensions.AbstractExtensionPointBean;
 import com.intellij.openapi.extensions.ExtensionPointName;
+import com.intellij.openapi.extensions.PluginAware;
+import com.intellij.openapi.extensions.PluginDescriptor;
+import com.intellij.openapi.extensions.RequiredElement;
 import com.intellij.util.xmlb.annotations.Attribute;
+import com.intellij.util.xmlb.annotations.Transient;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Internal;
 
 /**
  * Extension point declaration, nothing else.
- *
- * Created by apyshkin on 1/19/17.
+ * FTR, I don't see any reason to use 'bean' extension point, not 'interface'
  */
 @Internal
-public final class DataSourceFactoryRuleProvider extends AbstractExtensionPointBean {
+public final class DataSourceFactoryRuleProvider implements PluginAware {
   public static final ExtensionPointName<DataSourceFactoryRuleProvider> EP_DATA_SOURCE_FACTORY =
       ExtensionPointName.create("com.intellij.mps.DataSourceFactoryRuleProvider");
 
+  @Transient
+  public PluginDescriptor myPluginDescriptor;
+
   @Attribute(value = "implementationClass")
+  @RequiredElement
   public String myImplementationClass;
 
   public String getImplementationClass() {
     return myImplementationClass;
+  }
+
+  @Override
+  public void setPluginDescriptor(@NotNull PluginDescriptor pluginDescriptor) {
+    myPluginDescriptor = pluginDescriptor;
   }
 }

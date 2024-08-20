@@ -112,15 +112,11 @@ public final class ModelFactoryRegister extends ComponentPlugin {
     // used to live in DataSourceFactoryRuleRegistrar
     for (DataSourceFactoryRuleProvider provider : DataSourceFactoryRuleProvider.EP_DATA_SOURCE_FACTORY.getExtensions()) {
       try {
-        // TODO: 232 platform API change
-        // FIXME DOESN'T WORK AS SECOND ARGUMENT CAN'T BE NULL!
-        DataSourceFactoryRule factoryRule = provider.instantiate(provider.getImplementationClass(), null);//ApplicationManager.getApplication().getPicoContainer());
+        @SuppressWarnings("UnstableApiUsage")
+        DataSourceFactoryRule factoryRule = ApplicationManager.getApplication().instantiateClass(provider.getImplementationClass(), provider.myPluginDescriptor);
         myRegisteredRules.add(factoryRule);
-      } catch (ClassNotFoundException e) {
-        String message = String.format("Failed to load %s in the plugin %s",
-                                       provider.getImplementationClass(),
-                                       provider.getPluginDescriptor().getPluginId());
-        Logger.getLogger(getClass()).error(message, e);
+      } catch (RuntimeException e) {
+        Logger.getLogger(getClass()).error(e);
       }
     }
     final DataSourceFactoryRuleService dsRegistry = myPlatform.findComponent(DataSourceFactoryRuleService.class);

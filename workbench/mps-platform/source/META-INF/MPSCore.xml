@@ -64,7 +64,9 @@
     <extensionPoint qualifiedName="com.intellij.mps.ModelFactoryProvider"
                     beanClass="jetbrains.mps.persistence.ModelFactoryRegister$ModelFactoryProvider"/>
     <extensionPoint qualifiedName="com.intellij.mps.DataSourceFactoryRuleProvider"
-                    beanClass="jetbrains.mps.persistence.DataSourceFactoryRuleProvider"/>
+                    beanClass="jetbrains.mps.persistence.DataSourceFactoryRuleProvider">
+      <with attribute="implementationClass" implements="jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRule"/>
+    </extensionPoint>
     <extensionPoint qualifiedName="com.intellij.mps.PluginComponentContributor"
                     beanClass="jetbrains.mps.plugins.ComponentContributorExtension"/>
     <extensionPoint qualifiedName="com.intellij.mps.gotoParticipant"
