@@ -136,12 +136,19 @@ public class MPSDocumentationManager {
         currentProvider = null;
       }
 
-      if (currentProvider == null && tooltipRenderer == null) {
+      JComponent highlightHoverInfo = tooltipRenderer == null
+                                      ? null : createHighlightInfoComponent(editor, tooltipRenderer, tooltipGroup);
+
+      MPSDocumentationPopupUI popupUI = currentProvider == null ? null : new MPSDocumentationPopupUI(project, new MPSDocumentationUI(project, provider));
+      JComponent documentationHoverInfo = currentProvider == null || !currentProvider.hasDocumentation()
+                                          ? null : createQuickDocComponent(highlightHoverInfo != null, popupUI);
+
+      if (highlightHoverInfo == null && documentationHoverInfo == null) {
         return;
       }
 
-      HoverInfo info = new HoverInfo(currentProvider, tooltipRenderer, tooltipGroup);
-      AbstractPopup hint = info.createHint(editor, project);
+      HoverInfo info = new HoverInfo(highlightHoverInfo, documentationHoverInfo);
+      AbstractPopup hint = info.createHint(popupUI);
       hint.show(showPoint);
 
       Window window = hint.getPopupWindow();
@@ -153,6 +160,34 @@ public class MPSDocumentationManager {
       continuation.accept(hint);
 
     }, myCurrentProgress);
+  }
+
+  private @Nullable JComponent createHighlightInfoComponent(@NotNull Editor editor, @Nullable TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup) {
+    if (tooltipRenderer == null) {
+      return null;
+    }
+    // FIXME: how is this hard cast justified?
+    LightweightHint hint = ((LineTooltipRenderer) tooltipRenderer).createHint(editor,
+                                                                              new Point(),
+                                                                              false,
+                                                                              tooltipGroup,
+                                                                              HintUtil.getInformationHint(),
+                                                                              true,
+                                                                              true,
+                                                                              null);
+    return hint.getComponent();
+  }
+
+
+  private @Nullable JComponent createQuickDocComponent(boolean jointPopup, MPSDocumentationPopupUI popupUI) {
+    // If the flag is set to false, the documentation popup will not appear on mouse movement. It can only be displayed using the shortcut.
+    if (!getShowOnMouseMove()) {
+      return null;
+    }
+    if (jointPopup) {
+      popupUI.jointHover();
+    }
+    return popupUI.getComponent();
   }
 
   public boolean isQuickDocPopupShown() {
@@ -205,84 +240,47 @@ public class MPSDocumentationManager {
    * A factory for highlight + doc components to be shown in a popup.
    */
   private static class HoverInfo {
-    private final DocumentationProvider myDocumentationProvider;
-    private final TooltipRenderer myTooltipRenderer;
-    private final TooltipGroup myTooltipGroup;
-    private MPSDocumentationPopupUI myPopupUI;
+    private final JComponent myHighlightHoverInfo;
+    private final JComponent myDocumentationHoverInfo;
 
     /**
      * Either {@code documentationProvider} or {@code tooltipRenderer} may be null, but not both!
      */
-    HoverInfo(@Nullable DocumentationProvider documentationProvider, TooltipRenderer tooltipRenderer, TooltipGroup tooltipGroup) {
-      assert (documentationProvider != null) || (tooltipRenderer != null);
-      myDocumentationProvider = documentationProvider;
-      myTooltipRenderer = tooltipRenderer;
-      myTooltipGroup = tooltipGroup;
+    HoverInfo(@Nullable JComponent highlightHoverInfo, @Nullable JComponent documentationHoverInfo) {
+      assert (highlightHoverInfo != null) || (documentationHoverInfo != null);
+      myHighlightHoverInfo = highlightHoverInfo;
+      myDocumentationHoverInfo = documentationHoverInfo;
     }
 
-    public AbstractPopup createHint(Editor editor, Project project) {
-      JComponent component = createComponent(editor, project);
+    AbstractPopup createHint(@Nullable MPSDocumentationPopupUI popupUI) {
+      JComponent component = createComponent();
       assert component != null;
-      AbstractPopup popup = createHintPopup(component);
-      if (myPopupUI != null) {
-        myPopupUI.setPopup(popup);
+      AbstractPopup popup = createHintPopup(component, popupUI);
+      if (popupUI != null) {
+        popupUI.setPopup(popup);
       }
       return popup;
     }
 
 
-    private @NotNull JComponent createComponent(@NotNull Editor editor,
-                                                @NotNull Project project) {
-      JComponent c1 = myTooltipRenderer == null
-                      ? null : createHighlightInfoComponent(editor);
-      JComponent c2 = myDocumentationProvider == null || !myDocumentationProvider.hasDocumentation()
-                      ? null : createQuickDocComponent(project, c1 != null);
-      assert (c1 != null || c2 != null);
-
+    private @NotNull JComponent createComponent() {
       JPanel p = new JPanel(new GridBagLayout());
       GridBagConstraints c = new GridBagConstraints(0, 0, 1, 1, 1, 0, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
                                                     JBUI.emptyInsets(), 0, 0);
-      if (c1 != null) {
-        p.add(c1, c);
+      if (myHighlightHoverInfo != null) {
+        p.add(myHighlightHoverInfo, c);
       }
       c.gridy = 1;
       c.weighty = 1;
       c.fill = GridBagConstraints.BOTH;
-      if (c2 != null) {
-        p.add(c2, c);
+      if (myDocumentationHoverInfo != null) {
+        p.add(myDocumentationHoverInfo, c);
       }
       return p;
     }
 
-    private @Nullable JComponent createHighlightInfoComponent(@NotNull Editor editor) {
-      // FIXME: how is this hard cast justified?
-      LightweightHint hint = ((LineTooltipRenderer) myTooltipRenderer).createHint(editor,
-                                                                                  new Point(),
-                                                                                  false,
-                                                                                  myTooltipGroup,
-                                                                                  HintUtil.getInformationHint(),
-                                                                                  true,
-                                                                                  true,
-                                                                                  null);
-      return hint.getComponent();
-    }
-
-
-    private @Nullable JComponent createQuickDocComponent(@NotNull Project project, boolean jointPopup) {
-      // If the flag is set to false, the documentation popup will not appear on mouse movement. It can only be displayed using the shortcut.
-      if (!MPSDocumentationManager.getInstance().getShowOnMouseMove()) {
-        return null;
-      }
-      MPSDocumentationUI ui = new MPSDocumentationUI(project, myDocumentationProvider);
-      this.myPopupUI = new MPSDocumentationPopupUI(project, ui);
-      if (jointPopup) {
-        myPopupUI.jointHover();
-      }
-      return myPopupUI.getComponent();
-    }
-
-    private AbstractPopup createHintPopup(JComponent component) {
-      JComponent preferableFocusComponent = myPopupUI == null ? component : myPopupUI.getPreferableFocusComponent();
+    private AbstractPopup createHintPopup(JComponent component, @Nullable MPSDocumentationPopupUI popupUI) {
+      JComponent preferableFocusComponent = popupUI == null ? component : popupUI.getPreferableFocusComponent();
       return (AbstractPopup) JBPopupFactory.getInstance()
                                            .createComponentPopupBuilder(component, preferableFocusComponent)
                                            .setRequestFocus(false)
