@@ -24,8 +24,8 @@ import com.intellij.ui.SideBorder;
 import com.intellij.ui.components.JBLayeredPane;
 import com.intellij.ui.popup.AbstractPopup;
 import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationEditorPane;
-import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationScrollPane;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationToolWindowManager;
 import jetbrains.mps.nodeEditor.documentation.PopupMouseListener;
@@ -122,7 +122,7 @@ public class MPSDocumentationPopupUI implements Disposable {
 
     openInToolwindowAction.registerCustomShortcutSet(KeymapUtil.getActiveKeymapShortcuts(IdeActions.ACTION_QUICK_JAVADOC), myComponent, this);
 
-    showToolbar(MPSDocumentationManager.getInstance().getToolbarSelected());
+    showToolbar(EditorSettings.getInstance().isToolbarSelected());
 
     ComponentListener editorPaneListener = new ComponentListener() {
       @Override
@@ -211,12 +211,12 @@ public class MPSDocumentationPopupUI implements Disposable {
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent e) {
-      return MPSDocumentationManager.getInstance().getToolbarSelected();
+      return EditorSettings.getInstance().isToolbarSelected();
     }
 
     @Override
     public void setSelected(@NotNull AnActionEvent e, boolean state) {
-      MPSDocumentationManager.getInstance().setToolbarSelected(state);
+      EditorSettings.getInstance().setToolbarSelected(state);
       showToolbar(state);
     }
 

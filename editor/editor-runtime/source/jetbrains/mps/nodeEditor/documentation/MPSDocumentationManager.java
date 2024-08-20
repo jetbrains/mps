@@ -23,6 +23,7 @@ import com.intellij.ui.popup.AbstractPopup;
 import com.intellij.util.ui.JBUI;
 import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationPopupUI;
 import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationUI;
 import org.jetbrains.annotations.NotNull;
@@ -43,37 +44,10 @@ public class MPSDocumentationManager {
   private static final Logger LOG = Logger.getLogger(MPSDocumentationManager.class);
   private WeakReference<JBPopup> myQuickDocPopupReference;
   private WeakReference<JBPopup> myHintPopupReference;
-  private boolean myShowOnMouseMove = true;
-  private boolean myShowDocumentationPopupFirst = true;
   private ProgressIndicator myCurrentProgress;
-  private boolean myToolbarSelected = true;
 
   public static MPSDocumentationManager getInstance() {
     return ApplicationManager.getApplication().getService(MPSDocumentationManager.class);
-  }
-
-  public boolean getToolbarSelected() {
-    return myToolbarSelected;
-  }
-
-  public boolean getShowOnMouseMove() {
-    return myShowOnMouseMove;
-  }
-
-  public boolean getShowDocumentationPopupFirst() {
-    return myShowDocumentationPopupFirst;
-  }
-
-  public void setToolbarSelected(boolean state) {
-    myToolbarSelected = state;
-  }
-
-  public void setShowOnMouseMove(boolean state) {
-    myShowOnMouseMove = state;
-  }
-
-  public void setShowDocumentationPopupFirst(boolean state) {
-    myShowDocumentationPopupFirst = state;
   }
 
   /**
@@ -88,7 +62,8 @@ public class MPSDocumentationManager {
     cancelAll();
 
     MPSDocumentationUI documentationUI = new MPSDocumentationUI(project, provider);
-    if (provider.hasDocumentation() && (MPSDocumentationToolWindowManager.getInstance(project).isVisible() || !myShowDocumentationPopupFirst)) {
+    if (provider.hasDocumentation() && (MPSDocumentationToolWindowManager.getInstance(project).isVisible() || !EditorSettings.getInstance()
+                                                                                                                             .isShowDocumentationPopupFirst())) {
       // redirect to the tool window
       MPSDocumentationToolWindowManager.getInstance(project).showInToolWindow(documentationUI);
       return;
@@ -181,7 +156,7 @@ public class MPSDocumentationManager {
 
   private @Nullable JComponent createQuickDocComponent(boolean jointPopup, MPSDocumentationPopupUI popupUI) {
     // If the flag is set to false, the documentation popup will not appear on mouse movement. It can only be displayed using the shortcut.
-    if (!getShowOnMouseMove()) {
+    if (!EditorSettings.getInstance().isShowOnMouseMove()) {
       return null;
     }
     if (jointPopup) {

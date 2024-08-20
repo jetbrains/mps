@@ -23,6 +23,7 @@ import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.editor.runtime.DocumentationProvider;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationEditorPane;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager;
 import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManagerProtocol;
@@ -254,12 +255,12 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent e) {
-      return MPSDocumentationManager.getInstance().getShowOnMouseMove();
+      return EditorSettings.getInstance().isShowOnMouseMove();
     }
 
     @Override
     public void setSelected(@NotNull AnActionEvent e, boolean state) {
-      MPSDocumentationManager.getInstance().setShowOnMouseMove(state);
+      EditorSettings.getInstance().setShowOnMouseMove(state);
     }
 
     @NotNull
@@ -276,12 +277,12 @@ public class MPSDocumentationUI implements DataProvider, Disposable {
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent e) {
-      return MPSDocumentationManager.getInstance().getShowDocumentationPopupFirst();
+      return EditorSettings.getInstance().isShowDocumentationPopupFirst();
     }
 
     @Override
     public void setSelected(@NotNull AnActionEvent e, boolean state) {
-      MPSDocumentationManager.getInstance().setShowDocumentationPopupFirst(state);
+      EditorSettings.getInstance().setShowDocumentationPopupFirst(state);
     }
 
     @NotNull
