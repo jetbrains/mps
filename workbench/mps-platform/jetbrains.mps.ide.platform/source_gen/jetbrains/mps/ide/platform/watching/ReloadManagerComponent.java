@@ -238,26 +238,35 @@ public class ReloadManagerComponent extends ReloadManager implements Disposable 
   }
 
   private class NotReloadingOnMakeListener extends IMakeNotificationListener.Stub {
+    private boolean myInFirstRun = true;
     @Override
     public void sessionOpened(MakeNotification notification) {
+      myInFirstRun = false;
       suspendReloads();
     }
 
     @Override
     public void sessionClosed(MakeNotification notification) {
+      if (myInFirstRun) {
+        return;
+      }
       resumeReloads();
     }
   }
 
   private class NoReloadOnRefresh implements VirtualFileManagerListener {
+    private boolean myInFirstRun = true;
     @Override
     public void beforeRefreshStart(boolean async) {
+      myInFirstRun = false;
       suspendReloads();
     }
 
     @Override
     public void afterRefreshFinish(boolean async) {
-      resumeReloads();
+      if (!(myInFirstRun)) {
+        resumeReloads();
+      }
       if (!(async)) {
         flushAllPendingReloads();
       }
