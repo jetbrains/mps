@@ -8697,83 +8697,6 @@
     <node concept="2YIFZL" id="3mWeFTSoQZV" role="jymVt">
       <property role="TrG5h" value="getInstance" />
       <node concept="3clFbS" id="3mWeFTSoQZY" role="3clF47">
-        <node concept="3SKdUt" id="3mWeFTSoVud" role="3cqZAp">
-          <node concept="1PaTwC" id="3mWeFTSoVue" role="1aUNEU">
-            <node concept="3oM_SD" id="3mWeFTSoVwW" role="1PaTwD">
-              <property role="3oM_SC" value="towards" />
-            </node>
-            <node concept="3oM_SD" id="3mWeFTSoVwY" role="1PaTwD">
-              <property role="3oM_SC" value="replacing" />
-            </node>
-            <node concept="3oM_SD" id="3mWeFTSoVx1" role="1PaTwD">
-              <property role="3oM_SC" value="App" />
-            </node>
-            <node concept="3oM_SD" id="3mWeFTSoVx5" role="1PaTwD">
-              <property role="3oM_SC" value="Component" />
-            </node>
-            <node concept="3oM_SD" id="3mWeFTSoVxa" role="1PaTwD">
-              <property role="3oM_SC" value="with" />
-            </node>
-            <node concept="3oM_SD" id="3mWeFTSoVxg" role="1PaTwD">
-              <property role="3oM_SC" value="a" />
-            </node>
-            <node concept="3oM_SD" id="3mWeFTSoVxn" role="1PaTwD">
-              <property role="3oM_SC" value="Service" />
-            </node>
-          </node>
-        </node>
-        <node concept="3SKdUt" id="5WvFJ_yUX8a" role="3cqZAp">
-          <node concept="1PaTwC" id="5WvFJ_yUX8b" role="1aUNEU">
-            <node concept="3oM_SD" id="5WvFJ_yUXb2" role="1PaTwD">
-              <property role="3oM_SC" value="FIXME" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXb4" role="1PaTwD">
-              <property role="3oM_SC" value="once" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXb7" role="1PaTwD">
-              <property role="3oM_SC" value="we" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXbb" role="1PaTwD">
-              <property role="3oM_SC" value="can" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXbg" role="1PaTwD">
-              <property role="3oM_SC" value="update" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXbm" role="1PaTwD">
-              <property role="3oM_SC" value="uses" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXbt" role="1PaTwD">
-              <property role="3oM_SC" value="in" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXb_" role="1PaTwD">
-              <property role="3oM_SC" value="mps-ext/mbeddr" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXbI" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXbS" role="1PaTwD">
-              <property role="3oM_SC" value="use" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXc3" role="1PaTwD">
-              <property role="3oM_SC" value="this" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXcf" role="1PaTwD">
-              <property role="3oM_SC" value="method," />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXcs" role="1PaTwD">
-              <property role="3oM_SC" value="make" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXcE" role="1PaTwD">
-              <property role="3oM_SC" value="it" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXcT" role="1PaTwD">
-              <property role="3oM_SC" value="a" />
-            </node>
-            <node concept="3oM_SD" id="5WvFJ_yUXd9" role="1PaTwD">
-              <property role="3oM_SC" value="service" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="3mWeFTSoRht" role="3cqZAp">
           <node concept="2OqwBi" id="3mWeFTSoUOz" role="3clFbG">
             <node concept="2YIFZM" id="3mWeFTSoRif" role="2Oq$k0">
@@ -8781,7 +8704,7 @@
               <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
             </node>
             <node concept="liA8E" id="3mWeFTSoV37" role="2OqNvi">
-              <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+              <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
               <node concept="3VsKOn" id="3mWeFTSoVlX" role="37wK5m">
                 <ref role="3VsUkX" node="491od_XJZeq" resolve="ReloadManager" />
               </node>
