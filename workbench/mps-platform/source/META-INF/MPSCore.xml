@@ -58,11 +58,17 @@
     <extensionPoint qualifiedName="com.intellij.mps.VisibleModuleMask"
                     beanClass="jetbrains.mps.VisibleModuleMask"/>
     <extensionPoint qualifiedName="com.intellij.mps.modelRootFactory"
-                    beanClass="jetbrains.mps.ide.persistence.ModelRootFactoryEP"/>
+                    beanClass="jetbrains.mps.ide.persistence.ModelRootFactoryEP">
+      <with attribute="className" implements="org.jetbrains.mps.openapi.persistence.ModelRootFactory"/>
+    </extensionPoint>
     <extensionPoint qualifiedName="com.intellij.mps.modelIdFactory"
-                    beanClass="jetbrains.mps.ide.persistence.ModelIdFactoryExtension"/>
+                    beanClass="jetbrains.mps.ide.persistence.ModelIdFactoryExtension">
+      <with attribute="className" implements="org.jetbrains.mps.openapi.persistence.SModelIdFactory"/>
+    </extensionPoint>
     <extensionPoint qualifiedName="com.intellij.mps.ModelFactoryProvider"
-                    beanClass="jetbrains.mps.persistence.ModelFactoryRegister$ModelFactoryProvider"/>
+                    beanClass="jetbrains.mps.persistence.ModelFactoryRegister$ModelFactoryProvider">
+      <with attribute="implementationClass" implements="org.jetbrains.mps.openapi.persistence.ModelFactory"/>
+    </extensionPoint>
     <extensionPoint qualifiedName="com.intellij.mps.DataSourceFactoryRuleProvider"
                     beanClass="jetbrains.mps.persistence.DataSourceFactoryRuleProvider">
       <with attribute="implementationClass" implements="jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRule"/>

@@ -1,20 +1,18 @@
 /*
- * Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.persistence;
 
-import com.intellij.diagnostic.PluginException;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.extensions.AbstractExtensionPointBean;
 import com.intellij.openapi.extensions.ExtensionPointName;
 import com.intellij.openapi.extensions.PluginAware;
 import com.intellij.openapi.extensions.PluginDescriptor;
+import com.intellij.openapi.extensions.RequiredElement;
 import com.intellij.serviceContainer.LazyExtensionInstance;
 import com.intellij.util.xmlb.annotations.Attribute;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.ModelRootFactory;
-import org.jetbrains.mps.openapi.persistence.SModelIdFactory;
 
 /**
  * Extension point to contribute own {@link ModelRootFactory} implementations.
@@ -26,9 +24,11 @@ public class ModelRootFactoryEP extends LazyExtensionInstance<ModelRootFactory> 
   public static final ExtensionPointName<ModelRootFactoryEP> EP_NAME = ExtensionPointName.create("com.intellij.mps.modelRootFactory");
 
   @Attribute("rootType")
+  @RequiredElement
   public String rootType;
 
   @Attribute("className")
+  @RequiredElement
   public String className;
 
   private PluginDescriptor myPluginDescriptor;
