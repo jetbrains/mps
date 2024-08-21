@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,6 @@ public class TempModule extends ReloadableModuleBase implements SModule, MPSModu
     // FIXME who cares to have MD for a temp module?
     myDescriptor = new ModuleDescriptor();
     myDescriptor.getModelRootDescriptors().addAll(modelRoots);
-    dependenciesChanged();
 
     if (withJavaFacet) {
       myJavaModuleFacet = new NaiveJavaModuleFacet(this,

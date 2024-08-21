@@ -90,7 +90,6 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
     LanguageDescriptor moduleDescriptor = getModuleDescriptor();
     moduleDescriptor.getExtendedLanguages().add(langRef);
 
-    dependenciesChanged();
     setChanged();
 
     fireChanged();

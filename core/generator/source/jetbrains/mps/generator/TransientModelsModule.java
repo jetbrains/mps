@@ -105,7 +105,6 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
 
   public void clearAll() {
     removeAll();
-    dependenciesChanged();
     myPublished.clear();
     myModelVault.clear();
   }

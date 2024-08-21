@@ -283,7 +283,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
     reloadAfterDescriptorChange();
     fireChanged();
-    dependenciesChanged();
   }
 
   // no notifications are sent
@@ -410,7 +409,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
       if (reexport && !dep.isReexport()) {
         dep.setReexport(true);
-        dependenciesChanged();
         fireChanged();
         setChanged();
       }
@@ -420,7 +418,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     Dependency dep = new Dependency(moduleRef, reexport);
     descriptor.getDependencies().add(dep);
 
-    dependenciesChanged();
     fireChanged();
     setChanged();
     return dep;
@@ -438,7 +435,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
     descriptor.getDependencies().remove(dependency);
 
-    dependenciesChanged();
     fireChanged();
     setChanged();
   }
@@ -886,16 +882,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     if (moduleDescriptor.updateModuleRefs(repository)) {
       setChanged();
     }
-  }
-
-  protected void dependenciesChanged() {
-    // todo: review all usages after migration!
-
-    // callback on dependencies (any of them) changed event
-    // you can override this method with some invalidation action
-    // call super.dependenciesChanged() at the end
-
-    // todo: as we haven't dependencies listeners...
   }
 
   @Override
