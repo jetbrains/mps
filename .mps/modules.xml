@@ -232,6 +232,7 @@
       <modulePath path="$PROJECT_DIR$/languages/util/regexp/solutions/jetbrains.mps.regexp.examples/jetbrains.mps.baseLanguage.regexp.examples.msd" folder="core.baseLanguage.regexp" />
       <modulePath path="$PROJECT_DIR$/languages/util/regexp/solutions/jetbrains.mps.regexp.sandbox/jetbrains.mps.baseLanguage.regexp.sandbox.msd" folder="core.baseLanguage.regexp" />
       <modulePath path="$PROJECT_DIR$/plugins/debugger-api/api/jetbrains.mps.debugger.api.api.msd" folder="workbench.debugger.plugin" />
+      <modulePath path="$PROJECT_DIR$/plugins/debugger-api/core/jetbrains.mps.debugger.core.msd" folder="workbench.debugger.plugin" />
       <modulePath path="$PROJECT_DIR$/plugins/debugger-api/languages/jetbrains.mps.debugger.api.lang/jetbrains.mps.debugger.api.lang.mpl" folder="workbench.debugger.plugin" />
       <modulePath path="$PROJECT_DIR$/plugins/debugger-api/runtime/jetbrains.mps.debugger.api.runtime.msd" folder="workbench.debugger.plugin" />
       <modulePath path="$PROJECT_DIR$/plugins/debugger-java/api/jetbrains.mps.debugger.java.api.msd" folder="workbench.debugger.plugin" />
@@ -682,7 +683,6 @@
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/traceInfo.test/jetbrains.mps.traceInfo.test.msd" folder="tests" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/traceInfo.testWeaving/jetbrains.mps.traceInfo.testWeaving.msd" folder="platform.traceInfo" />
       <modulePath path="$PROJECT_DIR$/testbench/testsolutions/typesystem.test/jetbrains.mps.lang.typesystem.test/jetbrains.mps.lang.typesystem.test.msd" folder="core.aspects.typesystem" />
-      <modulePath path="$PROJECT_DIR$/workbench/mps-debugger/jetbrains.mps.debugger.core.msd" folder="workbench.debugger" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-editor/jetbrains.mps.ide.editor.msd" folder="workbench.editor" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-platform/jetbrains.mps.ide.platform/jetbrains.mps.ide.platform.msd" folder="platform" />
       <modulePath path="$PROJECT_DIR$/workbench/mps-refactoring/j.m.refactoring.runtime/jetbrains.mps.refactoring.runtime.msd" folder="core.aspects.refactoring" />

@@ -429,27 +429,27 @@
           <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
         </uses>
-        <library jar="/lib/mps-platform.jar" />
+        <library jar="../lib/debugger-api.jar" />
         <sources jar="jetbrains.mps.debugger.core-src.jar" descriptor="jetbrains.mps.debugger.core.msd" />
       </module>
     </echoxml>
     <jar destfile="${build.layout}/mps-debugger-api/languages/jetbrains.mps.debugger.core.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/workbench/mps-debugger" includes="icons/**" />
-      <fileset dir="${mps_home}/workbench/mps-debugger/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/plugins/debugger-api/core" includes="icons/**" />
+      <fileset dir="${mps_home}/plugins/debugger-api/core/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.debugger.core.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/workbench-mps-debugger-models">
-      <fileset dir="${mps_home}/workbench/mps-debugger/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-api-core-models">
+      <fileset dir="${mps_home}/plugins/debugger-api/core/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-debugger-api/languages/jetbrains.mps.debugger.core-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/workbench/mps-debugger/source_gen">
+      <fileset dir="${mps_home}/plugins/debugger-api/core/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/workbench/mps-debugger/jetbrains.mps.debugger.core.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/workbench-mps-debugger-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/plugins/debugger-api/core/jetbrains.mps.debugger.core.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-debugger-api-core-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.api.api.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.api.api.jar/META-INF" />
@@ -1463,7 +1463,7 @@
         <module file="${mps_home}/plugins/debugger-api/api/jetbrains.mps.debugger.api.api.msd" />
         <module file="${mps_home}/plugins/debugger-api/languages/jetbrains.mps.debugger.api.lang/jetbrains.mps.debugger.api.lang.mpl" />
         <module file="${mps_home}/plugins/debugger-api/runtime/jetbrains.mps.debugger.api.runtime.msd" />
-        <module file="${mps_home}/workbench/mps-debugger/jetbrains.mps.debugger.core.msd" />
+        <module file="${mps_home}/plugins/debugger-api/core/jetbrains.mps.debugger.core.msd" />
         <module file="${mps_home}/plugins/debugger-java/api/jetbrains.mps.debugger.java.api.msd" />
         <module file="${mps_home}/plugins/debugger-java/languages/customViewers/jetbrains.mps.debugger.java.customViewers.mpl" />
         <module file="${mps_home}/plugins/debugger-java/languages/evaluation/jetbrains.mps.debugger.java.evaluation.mpl" />
@@ -1565,6 +1565,7 @@
   
   <target name="java.compile.debugger-api" depends="java.compile.execution-api, fetchDependencies">
     <mkdir dir="${mps_home}/plugins/debugger-api/api/source_gen" />
+    <mkdir dir="${mps_home}/plugins/debugger-api/core/source_gen" />
     <mkdir dir="${mps_home}/plugins/debugger-api/runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/debugger-api" />
     <javac2 destdir="${build.tmp}/java/out/debugger-api" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
@@ -1575,6 +1576,7 @@
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${mps_home}/plugins/debugger-api/api/source_gen" />
+        <path location="${mps_home}/plugins/debugger-api/core/source_gen" />
         <path location="${mps_home}/plugins/debugger-api/runtime/source_gen" />
       </src>
       <classpath>
@@ -1619,6 +1621,7 @@
     </javac2>
     <copy todir="${build.tmp}/java/out/debugger-api">
       <fileset dir="${mps_home}/plugins/debugger-api/api/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/debugger-api/core/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/plugins/debugger-api/runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
@@ -2442,7 +2445,7 @@
     <delete dir="${mps_home}/plugins/debugger-api/languages/jetbrains.mps.debugger.api.lang/source_gen" />
     <delete dir="${mps_home}/plugins/debugger-api/languages/jetbrains.mps.debugger.api.lang/generator/source_gen" />
     <delete dir="${mps_home}/plugins/debugger-api/runtime/source_gen" />
-    <delete dir="${mps_home}/workbench/mps-debugger/source_gen" />
+    <delete dir="${mps_home}/plugins/debugger-api/core/source_gen" />
     <delete dir="${mps_home}/plugins/debugger-java/api/source_gen" />
     <delete dir="${mps_home}/plugins/debugger-java/languages/customViewers/source_gen" />
     <delete dir="${mps_home}/plugins/debugger-java/languages/evaluation/source_gen" />

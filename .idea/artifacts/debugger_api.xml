@@ -4,6 +4,7 @@
     <root id="archive" name="debugger_api.jar">
       <element id="module-output" name="debugger-api-api" />
       <element id="module-output" name="debugger-api-runtime" />
+      <element id="module-output" name="debugger-core" />
     </root>
   </artifact>
 </component>

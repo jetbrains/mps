@@ -1935,35 +1935,6 @@
         </node>
       </node>
     </node>
-    <node concept="398b33" id="4LDuh$UetHY" role="3989C9">
-      <property role="TrG5h" value="mps-debugger" />
-      <property role="ZpmtF" value="true" />
-      <node concept="2GAZfH" id="WgHS__B4mu" role="398b2p">
-        <node concept="TIC1d" id="WgHS__B4mv" role="2GAZfG">
-          <node concept="398BVA" id="WgHS__B4mx" role="TIC6M">
-            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="WgHS__B4my" role="iGT6I">
-              <property role="2Ry0Am" value="workbench" />
-              <node concept="2Ry0Ak" id="WgHS__B4mz" role="2Ry0An">
-                <property role="2Ry0Am" value="mps-debugger" />
-                <node concept="2Ry0Ak" id="WgHS__B4m$" role="2Ry0An">
-                  <property role="2Ry0Am" value="source_gen" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="nCB5N" id="4LDuh$UetHZ" role="nCB5Z">
-        <ref role="nCB5Y" node="16Vg0jOco3P" resolve="mps-platform" />
-      </node>
-      <node concept="nCB5N" id="2HOG2qFzQ10" role="nCB5Z">
-        <ref role="nCB5Y" node="16Vg0jOdbW2" resolve="mps-editor" />
-      </node>
-      <node concept="nCB5N" id="2gLJqH2QymG" role="nCB5Z">
-        <ref role="nCB5Y" node="7NoQ7Z63Z9b" resolve="mps-debuginfo-impl" />
-      </node>
-    </node>
     <node concept="398b33" id="16Vg0jOdbW2" role="3989C9">
       <property role="TrG5h" value="mps-editor" />
       <property role="ZpmtF" value="true" />
@@ -2445,9 +2416,6 @@
           </node>
           <node concept="Saw0i" id="2RGx_7lhrlr" role="39821P">
             <ref role="Saw0g" node="7KapL9OAx4G" resolve="mps-ui" />
-          </node>
-          <node concept="Saw0i" id="2fQZjorSjPO" role="39821P">
-            <ref role="Saw0g" node="4LDuh$UetHY" resolve="mps-debugger" />
           </node>
           <node concept="Saw0i" id="uKctmfxhcR" role="39821P">
             <ref role="Saw0g" node="uKctmfwPD8" resolve="refactoring" />
@@ -35684,6 +35652,25 @@
           </node>
         </node>
       </node>
+      <node concept="2GAZfH" id="WgHS__B4mu" role="398b2p">
+        <node concept="TIC1d" id="WgHS__B4mv" role="2GAZfG">
+          <node concept="398BVA" id="WgHS__B4mx" role="TIC6M">
+            <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="WgHS__B4my" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="3N2qgdP1bmb" role="2Ry0An">
+                <property role="2Ry0Am" value="debugger-api" />
+                <node concept="2Ry0Ak" id="3N2qgdP1bvS" role="2Ry0An">
+                  <property role="2Ry0Am" value="core" />
+                  <node concept="2Ry0Ak" id="3N2qgdP1bvT" role="2Ry0An">
+                    <property role="2Ry0Am" value="source_gen" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
       <node concept="2GAZfH" id="3IKDaVZorWE" role="398b2p">
         <node concept="TIC1d" id="3IKDaVZorWF" role="2GAZfG">
           <node concept="398BVA" id="3IKDaVZorWG" role="TIC6M">
@@ -36230,11 +36217,14 @@
         <node concept="398BVA" id="399mEuGgZIp" role="3LF7KH">
           <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
           <node concept="2Ry0Ak" id="399mEuGgZJH" role="iGT6I">
-            <property role="2Ry0Am" value="workbench" />
+            <property role="2Ry0Am" value="plugins" />
             <node concept="2Ry0Ak" id="399mEuGgZLI" role="2Ry0An">
-              <property role="2Ry0Am" value="mps-debugger" />
-              <node concept="2Ry0Ak" id="399mEuGgZMT" role="2Ry0An">
-                <property role="2Ry0Am" value="jetbrains.mps.debugger.core.msd" />
+              <property role="2Ry0Am" value="debugger-api" />
+              <node concept="2Ry0Ak" id="3N2qgdP1cyD" role="2Ry0An">
+                <property role="2Ry0Am" value="core" />
+                <node concept="2Ry0Ak" id="3N2qgdP1cyE" role="2Ry0An">
+                  <property role="2Ry0Am" value="jetbrains.mps.debugger.core.msd" />
+                </node>
               </node>
             </node>
           </node>
@@ -36279,11 +36269,14 @@
           <node concept="398BVA" id="399mEuGh6n6" role="17Grwy">
             <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
             <node concept="2Ry0Ak" id="399mEuGh6sO" role="iGT6I">
-              <property role="2Ry0Am" value="workbench" />
-              <node concept="2Ry0Ak" id="399mEuGh6wP" role="2Ry0An">
-                <property role="2Ry0Am" value="mps-debugger" />
-                <node concept="2Ry0Ak" id="399mEuGh6GC" role="2Ry0An">
-                  <property role="2Ry0Am" value="classes" />
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="3N2qgdP1cY8" role="2Ry0An">
+                <property role="2Ry0Am" value="debugger-api" />
+                <node concept="2Ry0Ak" id="3N2qgdP1cY9" role="2Ry0An">
+                  <property role="2Ry0Am" value="core" />
+                  <node concept="2Ry0Ak" id="3N2qgdP1cYa" role="2Ry0An">
+                    <property role="2Ry0Am" value="classes" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -36297,11 +36290,14 @@
             <node concept="398BVA" id="399mEuGgZQH" role="3LXTmr">
               <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
               <node concept="2Ry0Ak" id="399mEuGgZQI" role="iGT6I">
-                <property role="2Ry0Am" value="workbench" />
+                <property role="2Ry0Am" value="plugins" />
                 <node concept="2Ry0Ak" id="399mEuGgZQJ" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-debugger" />
-                  <node concept="2Ry0Ak" id="399mEuGgZQK" role="2Ry0An">
-                    <property role="2Ry0Am" value="models" />
+                  <property role="2Ry0Am" value="debugger-api" />
+                  <node concept="2Ry0Ak" id="3N2qgdP1cL8" role="2Ry0An">
+                    <property role="2Ry0Am" value="core" />
+                    <node concept="2Ry0Ak" id="3N2qgdP1cL9" role="2Ry0An">
+                      <property role="2Ry0Am" value="models" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -36316,9 +36312,12 @@
             <node concept="398BVA" id="399mEuGgZZi" role="3LXTmr">
               <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
               <node concept="2Ry0Ak" id="399mEuGgZZj" role="iGT6I">
-                <property role="2Ry0Am" value="workbench" />
-                <node concept="2Ry0Ak" id="399mEuGgZZk" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-debugger" />
+                <property role="2Ry0Am" value="plugins" />
+                <node concept="2Ry0Ak" id="3N2qgdP1cRI" role="2Ry0An">
+                  <property role="2Ry0Am" value="debugger-api" />
+                  <node concept="2Ry0Ak" id="3N2qgdP1cTE" role="2Ry0An">
+                    <property role="2Ry0Am" value="core" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -38023,15 +38022,18 @@
           <node concept="L2wRC" id="399mEuGh0vd" role="39821P">
             <ref role="L2wRA" node="399mEuGgZy4" resolve="jetbrains.mps.debugger.core" />
             <node concept="3yLZsm" id="399mEuGh0$f" role="3yL2VB">
-              <property role="3yLZsk" value="/lib/mps-platform.jar" />
+              <property role="3yLZsk" value="../lib/debugger-api.jar" />
               <node concept="398BVA" id="399mEuGh0RH" role="3yLZsn">
                 <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
                 <node concept="2Ry0Ak" id="399mEuGh0TF" role="iGT6I">
-                  <property role="2Ry0Am" value="workbench" />
+                  <property role="2Ry0Am" value="plugins" />
                   <node concept="2Ry0Ak" id="399mEuGh0VC" role="2Ry0An">
-                    <property role="2Ry0Am" value="mps-debugger" />
-                    <node concept="2Ry0Ak" id="399mEuGh0VF" role="2Ry0An">
-                      <property role="2Ry0Am" value="classes" />
+                    <property role="2Ry0Am" value="debugger-api" />
+                    <node concept="2Ry0Ak" id="3N2qgdP1dbk" role="2Ry0An">
+                      <property role="2Ry0Am" value="core" />
+                      <node concept="2Ry0Ak" id="3N2qgdP1dbl" role="2Ry0An">
+                        <property role="2Ry0Am" value="classes" />
+                      </node>
                     </node>
                   </node>
                 </node>
