@@ -7247,27 +7247,20 @@
     <property role="2YLI8m" value="6u2MFnph2wS/none" />
     <node concept="tnohg" id="hXrtPYZ" role="tncku">
       <node concept="3clFbS" id="hXrtPZ0" role="2VODD2">
-        <node concept="3clFbF" id="hXru4Og" role="3cqZAp">
-          <node concept="2OqwBi" id="hXru8Vn" role="3clFbG">
-            <node concept="2OqwBi" id="hXru5Og" role="2Oq$k0">
-              <node concept="2OqwBi" id="hXru4Oh" role="2Oq$k0">
-                <node concept="2WthIp" id="hXru4Oi" role="2Oq$k0" />
-                <node concept="1DTwFV" id="hXru4Oj" role="2OqNvi">
+        <node concept="3clFbF" id="2zcD0yBFd8r" role="3cqZAp">
+          <node concept="2OqwBi" id="2zcD0yBFgem" role="3clFbG">
+            <node concept="2YIFZM" id="2zcD0yBFdia" role="2Oq$k0">
+              <ref role="37wK5l" to="3nps:~BookmarksTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="3nps:~BookmarksTool" resolve="BookmarksTool" />
+              <node concept="2OqwBi" id="2zcD0yBFfTW" role="37wK5m">
+                <node concept="2WthIp" id="2zcD0yBFfTZ" role="2Oq$k0" />
+                <node concept="1DTwFV" id="2zcD0yBFfU1" role="2OqNvi">
                   <ref role="2WH_rO" node="hXrtW$6" resolve="project" />
                 </node>
               </node>
-              <node concept="liA8E" id="hXru6Td" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1tbrSmAaBuJ" role="37wK5m">
-                  <ref role="3VsUkX" to="3nps:~BookmarksTool" resolve="BookmarksTool" />
-                </node>
-              </node>
             </node>
-            <node concept="liA8E" id="hXrubbO" role="2OqNvi">
-              <ref role="37wK5l" to="71xd:~BaseTool.openToolLater(boolean)" resolve="openToolLater" />
-              <node concept="3clFbT" id="hXrubzY" role="37wK5m">
-                <property role="3clFbU" value="true" />
-              </node>
+            <node concept="liA8E" id="2zcD0yBFgM2" role="2OqNvi">
+              <ref role="37wK5l" to="3nps:~BookmarksTool.openTool()" resolve="openTool" />
             </node>
           </node>
         </node>

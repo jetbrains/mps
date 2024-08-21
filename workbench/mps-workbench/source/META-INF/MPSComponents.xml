@@ -43,9 +43,6 @@
       <implementation-class>jetbrains.mps.ide.hierarchy.HierarchyViewTool</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.bookmark.BookmarksTool</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.ide.hierarchy.BaseLanguageHierarchyViewTool</implementation-class>
     </component>
     <component>
@@ -92,6 +89,7 @@
     <projectService serviceImplementation="jetbrains.mps.ide.bookmark.BookmarksUIComponent"/>
     <projectService serviceImplementation="jetbrains.mps.project.ProjectLibraryManager" />
     <projectService serviceImplementation="jetbrains.mps.project.MissionControl" />
+    <projectService serviceImplementation="jetbrains.mps.ide.bookmark.BookmarksTool" /> <!-- in use from toolWindow extension, below -->
     <applicationService serviceInterface="jetbrains.mps.ide.platform.watching.FileSystemListenersContainer"
                         serviceImplementation="jetbrains.mps.ide.vfs.WatchingFileSystemListenersContainer" />
     <applicationService serviceImplementation="jetbrains.mps.ide.generator.TransientSwapOwnerComponent" />
@@ -103,6 +101,9 @@
     <!-- next app service and app init listeners work together -->
     <applicationService serviceImplementation="jetbrains.mps.plugins.PluginLoaderRegistry"/>
     <applicationInitializedListener implementation="jetbrains.mps.plugins.MPSApplicationInitializedListener"/>
+    <toolWindow factoryClass="jetbrains.mps.ide.bookmark.BookmarksTool$Factory"
+                id="Bookmarks tool" anchor="left" canCloseContents="true" secondary="false"
+                icon="AllIcons.Toolwindows.ToolWindowBookmarks" doNotActivateOnStart="true"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">
