@@ -86,6 +86,12 @@ public class MissionControl implements Disposable {
       stopAndRestartUpdate(false);
       myDisposed = true;
     });
+    ApplicationManager.getApplication().executeOnPooledThread(() -> {
+      // this instantiates the service
+      MissionControl missionControl = MissionControl.getInstance(project);
+      // start update loop
+      missionControl.stopAndRestartUpdate(true);
+    });
   }
 
   @Override
@@ -224,19 +230,6 @@ public class MissionControl implements Disposable {
 
     @Override
     public void onCanceled(@NotNull ProgressIndicator indicator) {
-    }
-  }
-
-  public static class Initializer implements ProjectActivity {
-
-    @Nullable
-    @Override
-    public Object execute(@NotNull Project project, @NotNull Continuation<? super Unit> continuation) {
-      // this instantiates the service
-      MissionControl missionControl = MissionControl.getInstance(project);
-      // start update loop
-      missionControl.stopAndRestartUpdate(true);
-      return null;
     }
   }
 
