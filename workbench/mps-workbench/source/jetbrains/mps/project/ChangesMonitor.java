@@ -304,8 +304,8 @@ import java.util.function.Predicate;
   private void forAllModulesInProject(Consumer<SModule> moduleConsumer) {
     if (myProject.isDisposed()) return;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
-    ApplicationManager.getApplication().invokeLater(() -> {
-      mpsProject.getProjectModulesWithGenerators().forEach(moduleConsumer);
+    ApplicationManager.getApplication().executeOnPooledThread(() -> {
+      mpsProject.getModelAccess().runReadAction(() -> mpsProject.getProjectModulesWithGenerators().forEach(moduleConsumer));
     });
   }
 
@@ -313,7 +313,7 @@ import java.util.function.Predicate;
   private void forAllModulesInRepository(Consumer<SModule> moduleConsumer) {
     MPSModuleRepository repository = MPSModuleRepository.getInstance();
     if (repository == null) return;
-    ApplicationManager.getApplication().invokeLater(() -> {
+    ApplicationManager.getApplication().executeOnPooledThread(() -> {
       repository.getModelAccess().runReadAction(() -> { repository.getModules().forEach(moduleConsumer); });
     });
   }
