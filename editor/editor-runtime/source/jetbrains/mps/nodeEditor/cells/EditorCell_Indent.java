@@ -41,4 +41,12 @@ public class EditorCell_Indent extends EditorCell_Label {
     }
     return result.toString();
   }
+
+  public static String getIndentHtml() {
+    StringBuilder result = new StringBuilder();
+    for (int i = 0; i < EditorSettings.getInstance().getIndentSize(); i++) {
+      result.append("&nbsp;");
+    }
+    return result.toString();
+  }
 }

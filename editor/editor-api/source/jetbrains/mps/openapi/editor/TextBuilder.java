@@ -62,4 +62,6 @@ public interface TextBuilder {
    * @return TextBuilder instance with the result of this operation
    */
   TextBuilder appendToTheRight(TextBuilder builder, boolean insertSpace);
+
+  TextBuilder appendToTheRightHtml(TextBuilder builder, boolean insertSpace);
 }
