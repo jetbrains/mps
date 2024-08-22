@@ -23,12 +23,6 @@ public class HtmlTextBuilderImpl extends TextBuilderImpl implements HtmlTextBuil
       if (nextLine.length() == 0) {
         continue;
       }
-      // check if the line contains only empty elements
-      if (nextLine.chars().distinct().count() == 1 && nextLine.chars().findAny().getAsInt() == 32){
-        sb.append("</p><p>");
-        firstInParagraph = true;
-        continue;
-      }
       if (!firstInParagraph) {
         sb.append("<br>");
       }
