@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright 2003-2023 JetBrains s.r.o.
+  ~ Copyright 2003-2024 JetBrains s.r.o.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -16,10 +16,10 @@
 <!DOCTYPE idea-plugin PUBLIC "Plugin/DTD" "http://plugins.intellij.net/plugin.dtd">
 <idea-plugin>
   <id>jetbrains.mps.ide.modelchecker</id>
-  <name>Model Checker</name>
-  <description>Settings and tooling to audit MPS models</description>
+  <name>MPS Model Checker</name>
+  <description>Settings and tooling to audit MPS models and modules</description>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <depends>jetbrains.mps.testing</depends>
+  <depends>com.intellij.modules.mps</depends>
 
   <project-components>
     <component>

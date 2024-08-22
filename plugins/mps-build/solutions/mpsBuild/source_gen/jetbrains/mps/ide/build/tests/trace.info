@@ -87,7 +87,7 @@
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/6147098677962246363">
     <file name="mpsHttpSupport.xml">
-      <unit id="6147098677962246363" at="1,0,383,10" name="jetbrains.mps.ide.build.tests.mpsHttpSupport" />
+      <unit id="6147098677962246363" at="1,0,378,10" name="jetbrains.mps.ide.build.tests.mpsHttpSupport" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/617882099353312053">
@@ -127,12 +127,12 @@
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/9064011936883918541">
     <file name="mpsToolTests.xml">
-      <unit id="9064011936883918541" at="1,0,487,10" name="jetbrains.mps.ide.build.tests.mpsToolTests" />
+      <unit id="9064011936883918541" at="1,0,468,10" name="jetbrains.mps.ide.build.tests.mpsToolTests" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/9219004022556570565">
     <file name="mpsConsole.xml">
-      <unit id="9219004022556570565" at="1,0,392,10" name="jetbrains.mps.ide.build.tests.mpsConsole" />
+      <unit id="9219004022556570565" at="1,0,377,10" name="jetbrains.mps.ide.build.tests.mpsConsole" />
     </file>
   </root>
 </debug-info>

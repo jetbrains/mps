@@ -158,7 +158,6 @@ public class EnvironmentConfig {
     if (!(PathManager.isFromSources())) {
       // we're running from app bundle/installed app
       return addDistributedPlugin("mps-debugger-api", "jetbrains.mps.debugger.api").addDistributedPlugin("mps-debugger-java", "jetbrains.mps.debugger.java").addDistributedPlugin("mps-execution-api", "jetbrains.mps.execution.api");
-
     } else {
       return addDistributedPlugin("debugger-api", "jetbrains.mps.debugger.api").addDistributedPlugin("debugger-java", "jetbrains.mps.debugger.java").addDistributedPlugin("execution-api", "jetbrains.mps.execution.api");
     }
@@ -175,7 +174,7 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withModelCheckerPlugin() {
-    return addDistributedPlugin("mps-modelchecker", "jetbrains.mps.ide.modelchecker").withTestingPlugin();
+    return addDistributedPlugin("mps-modelchecker", "jetbrains.mps.ide.modelchecker");
   }
 
   public EnvironmentConfig withMigrationPlugin() {

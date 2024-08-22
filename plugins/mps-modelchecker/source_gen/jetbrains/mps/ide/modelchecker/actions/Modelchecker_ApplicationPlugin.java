@@ -11,7 +11,6 @@ import jetbrains.mps.ide.actions.CommonModuleActions_ActionGroup;
 import jetbrains.mps.ide.actions.DevkitActions_ActionGroup;
 import jetbrains.mps.ide.actions.ModelActions_ActionGroup;
 import jetbrains.mps.ide.actions.NamespaceActions_ActionGroup;
-import jetbrains.mps.ide.actions.ToolsInternal_ActionGroup;
 import java.util.List;
 import jetbrains.mps.plugins.part.ApplicationPluginPart;
 
@@ -33,15 +32,11 @@ public class Modelchecker_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new CheckModule_Action());
     addAction(new CheckNamespace_Action());
     addAction(new CheckProject_Action());
-    addAction(new FindCrossTemplateReferences_Action());
-    addAction(new FindReferencesToNonReferenceable_Action());
-    addAction(new FindWrongAspectDependencies_Action());
     // groups
     addGroup(new CheckModel_ActionGroup(this));
     addGroup(new CheckModule_ActionGroup(this));
     addGroup(new CheckNamespace_ActionGroup(this));
     addGroup(new CheckProject_ActionGroup(this));
-    addGroup(new ToolsInternalEx_ActionGroup(this));
   }
   public void adjustRegularGroups() {
     insertGroupIntoAnother(CheckProject_ActionGroup.ID, ProjectActions_ActionGroup.ID, ProjectActions_ActionGroup.LABEL_ID_check);
@@ -49,7 +44,6 @@ public class Modelchecker_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(CheckModule_ActionGroup.ID, DevkitActions_ActionGroup.ID, DevkitActions_ActionGroup.LABEL_ID_check);
     insertGroupIntoAnother(CheckModel_ActionGroup.ID, ModelActions_ActionGroup.ID, ModelActions_ActionGroup.LABEL_ID_check);
     insertGroupIntoAnother(CheckNamespace_ActionGroup.ID, NamespaceActions_ActionGroup.ID, NamespaceActions_ActionGroup.LABEL_ID_check);
-    insertGroupIntoAnother(ToolsInternalEx_ActionGroup.ID, ToolsInternal_ActionGroup.ID, null);
   }
   @Override
   public void fillCustomParts(List<ApplicationPluginPart> parts) {
