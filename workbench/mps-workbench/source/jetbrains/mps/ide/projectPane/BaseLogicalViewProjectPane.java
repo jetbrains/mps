@@ -218,7 +218,9 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
 
   @SuppressWarnings("removal")
   protected void updateFrom(IFile iFile, boolean updateStructure) {
-    MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    Project project = getProject();
+    if (project.isDisposed()) return;
+    MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
     IdeaFileSystem fileSystem = mpsProject.getFileSystem();
 
     VirtualFile virtualFile = fileSystem.asVirtualFile(iFile);
