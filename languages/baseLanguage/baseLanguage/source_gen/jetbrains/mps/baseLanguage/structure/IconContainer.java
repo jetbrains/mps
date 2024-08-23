@@ -6,8 +6,8 @@ import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.ide.icons.IconLoadingUtil;
 
 public class IconContainer {
-  protected static IconResource RESOURCE_a0a4a0a71b0lm = new IconResource("anonymousClass.png", IconContainer.class);
   protected static IconResource RESOURCE_a0a3a0a21b0lm = (IconLoadingUtil.isNewUIActive() ? new IconResource("annotationtype_newui.svg", IconContainer.class) : new IconResource("annotationtype.png", IconContainer.class));
+  protected static IconResource RESOURCE_a0a4a0a71b0lm = (IconLoadingUtil.isNewUIActive() ? new IconResource("anonymousClass_newui.svg", IconContainer.class) : new IconResource("anonymousClass.png", IconContainer.class));
   protected static IconResource RESOURCE_a0a1a0a33b0lm = (IconLoadingUtil.isNewUIActive() ? new IconResource("method_newui.svg", IconContainer.class) : new IconResource("method.png", IconContainer.class));
   protected static IconResource RESOURCE_a0a01a0a55b0lm = (IconLoadingUtil.isNewUIActive() ? new IconResource("class_newui.svg", IconContainer.class) : new IconResource("class.png", IconContainer.class));
   protected static IconResource RESOURCE_a0a1a0a96b0lm = (IconLoadingUtil.isNewUIActive() ? new IconResource("parameter_newui.svg", IconContainer.class) : new IconResource("parameter.png", IconContainer.class));
