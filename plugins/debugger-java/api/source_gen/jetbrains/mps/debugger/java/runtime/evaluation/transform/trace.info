@@ -16,7 +16,6 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1170075670744:jetbrains.mps.baseLanguage.structure.SynchronizedStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1164991038168:jetbrains.mps.baseLanguage.structure.ThrowStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:7f073096-c94d-44be-8c16-e03c412508f0(jetbrains.mps.debugger.java.runtime.evaluation.transform)/2476748692227884194">
@@ -1054,7 +1053,7 @@
       <node id="2476748692227885634" at="306,71,313,5" concept="7" />
       <node id="2476748692227885744" at="322,0,329,0" concept="9" trace="replaceLocalVariableDeclarations#()Z" />
       <node id="2476748692227885839" at="339,0,346,0" concept="9" trace="replaceAssignments#()Z" />
-      <node id="816097550962325331" at="350,30,357,7" concept="18" />
+      <node id="816097550962325331" at="350,30,357,7" concept="17" />
       <node id="2476748692227886788" at="477,87,484,7" concept="8" />
       <node id="2476748692227886840" at="488,0,495,0" concept="9" trace="replaceInstanceofs#()V" />
       <node id="2476748692227885827" at="605,0,612,0" concept="15" trace="_quotation_createNode_s72qk1_b0a0a0a1a22#()Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -1122,7 +1121,7 @@
       <node id="2476748692227885335" at="251,0,270,0" concept="9" trace="replaceLowLevelVariableReferences#()V" />
       <node id="2476748692227884587" at="98,0,118,0" concept="9" trace="postprocess#()V" />
       <node id="2476748692227886889" at="495,0,515,0" concept="9" trace="replaceArrayOperations#()Z" />
-      <node id="2476748692227884233" at="70,18,92,5" concept="18" />
+      <node id="2476748692227884233" at="70,18,92,5" concept="17" />
       <node id="2476748692227886047" at="372,12,394,7" concept="1" />
       <node id="2476748692227887031" at="515,0,537,0" concept="9" trace="replaceCasts#()Z" />
       <node id="2476748692227886016" at="681,0,703,0" concept="15" trace="_quotation_createNode_s72qk1_a0a0a0c0b0z#(Ljava/lang/Object;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -2020,7 +2019,7 @@
       <node id="2476748692227887939" at="124,91,125,111" concept="5" />
       <node id="2476748692227887958" at="127,71,128,79" concept="12" />
       <node id="2476748692227887960" at="128,79,129,53" concept="10" />
-      <node id="2476748692227887967" at="130,154,131,96" concept="17" />
+      <node id="2476748692227887967" at="130,154,131,96" concept="16" />
       <node id="2476748692227887984" at="134,49,135,66" concept="10" />
       <node id="2476748692227887990" at="135,66,136,166" concept="11" />
       <node id="2476748692227888006" at="138,51,139,205" concept="11" />
@@ -3272,7 +3271,7 @@
       <node id="2476748692227888893" at="1596,39,1599,5" concept="8" />
       <node id="2476748692227887980" at="134,0,138,0" concept="15" trace="isNotNullProxy#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="2476748692227888060" at="150,0,154,0" concept="15" trace="findEvaluateMethod#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="2476748692227888605" at="270,27,274,9" concept="18" />
+      <node id="2476748692227888605" at="270,27,274,9" concept="17" />
       <node id="2476748692227887201" at="36,0,41,0" concept="15" trace="replaceArrayConstructor#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2476748692227887234" at="41,0,46,0" concept="15" trace="replaceArrayWithInitializerConstructor#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)V" />
       <node id="2476748692227887267" at="46,0,51,0" concept="15" trace="replaceConstructor#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)V" />
@@ -3334,7 +3333,7 @@
       <node id="2476748692227888199" at="184,0,194,0" concept="15" trace="createClassFqNameNode#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="2476748692227888255" at="197,5,208,5" concept="8" />
       <node id="2476748692227888857" at="323,0,334,0" concept="15" trace="replaceForEachStatement#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="2476748692227889014" at="349,60,360,5" concept="18" />
+      <node id="2476748692227889014" at="349,60,360,5" concept="17" />
       <node id="2476748692227889099" at="367,28,378,5" concept="8" />
       <node id="2476748692227888557" at="264,24,276,7" concept="8" />
       <node id="2476748692227888772" at="302,88,317,5" concept="8" />
@@ -4462,41 +4461,29 @@
   </root>
   <root nodeRef="r:7f073096-c94d-44be-8c16-e03c412508f0(jetbrains.mps.debugger.java.runtime.evaluation.transform)/7157912897227100955">
     <file name="TransformatorBuilderImpl.java">
-      <node id="7157912897227102623" at="16,25,17,22" concept="5" />
-      <node id="7157912897227102636" at="22,25,23,22" concept="5" />
-      <node id="2476748692227960270" at="27,102,28,39" concept="11" />
-      <node id="2476748692227960278" at="31,53,32,60" concept="11" />
-      <node id="2476748692227960288" at="35,49,36,62" concept="11" />
+      <node id="2476748692227960270" at="15,102,16,39" concept="11" />
+      <node id="2476748692227960278" at="19,53,20,60" concept="11" />
+      <node id="2476748692227960288" at="23,49,24,62" concept="11" />
       <node id="7157912897227100957" at="12,0,14,0" concept="3" trace="TransformatorBuilderImpl#()V" />
-      <node id="7494124042451491867" at="15,22,18,5" concept="16" />
-      <node id="7494124042451491872" at="21,25,24,5" concept="16" />
-      <node id="7157912897227102654" at="26,0,30,0" concept="9" trace="build#(Lorg/jetbrains/mps/openapi/model/SNode;Z)Ljetbrains/mps/debugger/java/api/evaluation/transform/TransformatorBuilder/Transformator;" />
-      <node id="7157912897227102648" at="30,0,34,0" concept="9" trace="getJniSignatureFromType#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="7157912897227102642" at="34,0,38,0" concept="9" trace="getProxyTypeFromType#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="7157912897227100995" at="14,0,20,0" concept="9" trace="init#()V" />
-      <node id="7157912897227102632" at="20,0,26,0" concept="9" trace="dispose#()V" />
+      <node id="7157912897227102654" at="14,0,18,0" concept="9" trace="build#(Lorg/jetbrains/mps/openapi/model/SNode;Z)Ljetbrains/mps/debugger/java/api/evaluation/transform/TransformatorBuilder/Transformator;" />
+      <node id="7157912897227102648" at="18,0,22,0" concept="9" trace="getJniSignatureFromType#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="7157912897227102642" at="22,0,26,0" concept="9" trace="getProxyTypeFromType#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="7157912897227100960" at="12,37,12,37" />
-      <scope id="7494124042451491869" at="16,25,17,22" />
-      <scope id="7494124042451491874" at="22,25,23,22" />
-      <scope id="7157912897227102661" at="27,102,28,39" />
-      <scope id="7157912897227102653" at="31,53,32,60" />
-      <scope id="7157912897227102647" at="35,49,36,62" />
+      <scope id="7157912897227102661" at="15,102,16,39" />
+      <scope id="7157912897227102653" at="19,53,20,60" />
+      <scope id="7157912897227102647" at="23,49,24,62" />
       <scope id="7157912897227100957" at="12,0,14,0" />
-      <scope id="7157912897227100998" at="15,22,18,5" />
-      <scope id="7157912897227102635" at="21,25,24,5" />
-      <scope id="7157912897227102654" at="26,0,30,0">
+      <scope id="7157912897227102654" at="14,0,18,0">
         <var name="insideTransformation" id="7157912897227102659" />
         <var name="node" id="7157912897227102657" />
       </scope>
-      <scope id="7157912897227102648" at="30,0,34,0">
+      <scope id="7157912897227102648" at="18,0,22,0">
         <var name="type" id="7157912897227102651" />
       </scope>
-      <scope id="7157912897227102642" at="34,0,38,0">
+      <scope id="7157912897227102642" at="22,0,26,0">
         <var name="type" id="7157912897227102645" />
       </scope>
-      <scope id="7157912897227100995" at="14,0,20,0" />
-      <scope id="7157912897227102632" at="20,0,26,0" />
-      <unit id="7157912897227100955" at="10,0,39,0" name="jetbrains.mps.debugger.java.runtime.evaluation.transform.TransformatorBuilderImpl" />
+      <unit id="7157912897227100955" at="10,0,27,0" name="jetbrains.mps.debugger.java.runtime.evaluation.transform.TransformatorBuilderImpl" />
     </file>
   </root>
 </debug-info>

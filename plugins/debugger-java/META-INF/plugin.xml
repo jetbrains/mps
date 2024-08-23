@@ -37,6 +37,9 @@
     <applicationService
             serviceInterface="jetbrains.mps.debugger.java.api.evaluation.proxies.MirrorUtil"
             serviceImplementation="jetbrains.mps.debugger.java.runtime.evaluation.proxies.MirrorUtilImpl" />
+    <applicationService
+            serviceInterface="jetbrains.mps.debugger.java.api.evaluation.transform.TransformatorBuilder"
+            serviceImplementation="jetbrains.mps.debugger.java.runtime.evaluation.transform.TransformatorBuilderImpl" />
   </extensions>
 
   <projectListeners>

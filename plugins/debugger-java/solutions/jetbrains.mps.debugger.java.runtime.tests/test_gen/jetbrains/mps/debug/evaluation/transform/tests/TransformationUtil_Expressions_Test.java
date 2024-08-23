@@ -580,10 +580,8 @@ public class TransformationUtil_Expressions_Test extends BaseTransformationTest 
     }
 
     public void init() {
-      DebuggerInitializer.init();
     }
     public void dispose() {
-      DebuggerInitializer.dispose();
     }
     private static SNode _quotation_createNode_n7zrdh_a0d0a0b0r53(Object parameter_1) {
       SNode quotedNode_2 = null;
