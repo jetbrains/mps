@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.ide.modelchecker" uuid="190bd57b-8f4d-4411-955f-e9cc0378366a" moduleVersion="0" generatorOutputPath="${mps_home}/plugins/mps-modelchecker/source_gen">
+<solution name="jetbrains.mps.ide.modelchecker" uuid="190bd57b-8f4d-4411-955f-e9cc0378366a" moduleVersion="0">
   <compileInIDEA />
   <models>
     <modelRoot contentPath="${module}" type="default">
-      <sourceRoot location="." />
+      <sourceRoot location="models" />
     </modelRoot>
   </models>
   <facets>
     <facet type="java" compile="ext" classes="provided" ext="yes">
       <classes generated="true" />
-      <library location="${mps_home}/plugins/mps-modelchecker/classes" />
     </facet>
   </facets>
   <dependencies>

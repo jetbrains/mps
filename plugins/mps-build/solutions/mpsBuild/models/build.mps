@@ -30773,10 +30773,6 @@
           <property role="nFU4j" value="source" />
           <property role="3LZaj6" value="source" />
         </node>
-        <node concept="nFU4i" id="1nJh0raVm5e" role="nFU4p">
-          <property role="nFU4j" value="source_gen" />
-          <property role="3LZaj6" value="source" />
-        </node>
       </node>
       <node concept="2GAZfH" id="3NkcTj4zF_A" role="398b2p">
         <node concept="TIC1d" id="3NkcTj4zF_u" role="2GAZfG">
@@ -30789,6 +30785,25 @@
                 <node concept="2Ry0Ak" id="3NkcTj4zC_1" role="2Ry0An">
                   <property role="2Ry0Am" value="platform" />
                   <node concept="2Ry0Ak" id="3NkcTj4zCOZ" role="2Ry0An">
+                    <property role="2Ry0Am" value="source_gen" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2GAZfH" id="6yw1ZDMgkKg" role="398b2p">
+        <node concept="TIC1d" id="6yw1ZDMgkKh" role="2GAZfG">
+          <node concept="398BVA" id="6yw1ZDMgkKi" role="TIC6M">
+            <ref role="398BVh" node="5yMuYWFN8P8" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="6yw1ZDMgkKj" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="6yw1ZDMgkKk" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-modelchecker" />
+                <node concept="2Ry0Ak" id="6yw1ZDMgkKl" role="2Ry0An">
+                  <property role="2Ry0Am" value="solution" />
+                  <node concept="2Ry0Ak" id="3$nddd11N1x" role="2Ry0An">
                     <property role="2Ry0Am" value="source_gen" />
                   </node>
                 </node>
@@ -30982,22 +30997,6 @@
       <node concept="1SiIV0" id="1_7hqbu4n0x" role="3bR37C">
         <node concept="3bR9La" id="1_7hqbu4n0y" role="1SiIV1">
           <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
-        </node>
-      </node>
-      <node concept="1E1SXE" id="1_7hqbu4Kvj" role="3bR37C">
-        <property role="1E1SXH" value="true" />
-        <ref role="1E1SXG" node="1nJh0raVm57" resolve="mps-modelchecker" />
-        <node concept="398BVA" id="1_7hqbu4KwU" role="17Grwy">
-          <ref role="398BVh" node="5yMuYWFN8P8" resolve="mps_home" />
-          <node concept="2Ry0Ak" id="1_7hqbu4Ky2" role="iGT6I">
-            <property role="2Ry0Am" value="plugins" />
-            <node concept="2Ry0Ak" id="4xYibpYKSk" role="2Ry0An">
-              <property role="2Ry0Am" value="mps-modelchecker" />
-              <node concept="2Ry0Ak" id="4xYibpYKSl" role="2Ry0An">
-                <property role="2Ry0Am" value="classes" />
-              </node>
-            </node>
-          </node>
         </node>
       </node>
       <node concept="1SiIV0" id="1_7hqbu4n09" role="3bR37C">
@@ -32065,21 +32064,6 @@
           </node>
           <node concept="L2wRC" id="1_7hqbu4sHO" role="39821P">
             <ref role="L2wRA" node="1_7hqbu4mXQ" resolve="jetbrains.mps.ide.modelchecker" />
-            <node concept="3yLZsm" id="1_7hqbu4sI7" role="3yL2VB">
-              <property role="3yLZsk" value="../lib/modelchecker.jar" />
-              <node concept="398BVA" id="4xYibpYKT0" role="3yLZsn">
-                <ref role="398BVh" node="5yMuYWFN8P8" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="4xYibpYKT1" role="iGT6I">
-                  <property role="2Ry0Am" value="plugins" />
-                  <node concept="2Ry0Ak" id="4xYibpYKT2" role="2Ry0An">
-                    <property role="2Ry0Am" value="mps-modelchecker" />
-                    <node concept="2Ry0Ak" id="4xYibpYKT3" role="2Ry0An">
-                      <property role="2Ry0Am" value="classes" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
           </node>
           <node concept="L2wRC" id="1_7hqbu4sHT" role="39821P">
             <ref role="L2wRA" node="4IP11oWmB07" resolve="jetbrains.mps.ide.modelchecker.platform" />

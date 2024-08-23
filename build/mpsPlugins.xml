@@ -111,27 +111,26 @@
           <language id="l:69b8a993-9b87-4d96-bf0c-3559f4bb0c63:jetbrains.mps.lang.slanguage" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
         </uses>
-        <library jar="../lib/modelchecker.jar" />
         <sources jar="jetbrains.mps.ide.modelchecker-src.jar" descriptor="jetbrains.mps.ide.modelchecker.msd" />
       </module>
     </echoxml>
     <jar destfile="${build.layout}/mps-modelchecker/languages/jetbrains.mps.ide.modelchecker.jar" duplicate="preserve">
       <fileset dir="${plugin_home}/mps-modelchecker/solution" includes="icons/**" />
-      <fileset dir="${plugin_home}/mps-modelchecker/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${plugin_home}/mps-modelchecker/solution/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.modelchecker.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/mps-modelchecker-solution">
-      <fileset dir="${plugin_home}/mps-modelchecker/solution" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/mps-modelchecker-solution-models">
+      <fileset dir="${plugin_home}/mps-modelchecker/solution/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/mps-modelchecker/languages/jetbrains.mps.ide.modelchecker-src.jar" duplicate="preserve">
-      <fileset dir="${plugin_home}/mps-modelchecker/source_gen">
+      <fileset dir="${plugin_home}/mps-modelchecker/solution/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
       <zipfileset file="${plugin_home}/mps-modelchecker/solution/jetbrains.mps.ide.modelchecker.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/mps-modelchecker-solution" prefix="module/" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/mps-modelchecker-solution-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.modelchecker.platform.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.modelchecker.platform.jar/META-INF" />
@@ -806,6 +805,7 @@
   
   <target name="java.compile.mps-modelchecker" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-modelchecker/platform/source_gen" />
+    <mkdir dir="${mps_home}/plugins/mps-modelchecker/solution/source_gen" />
     <mkdir dir="${build.tmp}/java/out/mps-modelchecker" />
     <javac2 destdir="${build.tmp}/java/out/mps-modelchecker" fork="false" encoding="utf8" includeantruntime="false" debug="true" source="11" target="11">
       <withKotlin moduleName="mps-modelchecker">        
@@ -815,8 +815,8 @@
       <compilerarg value="-Xlint:none" />
       <src>
         <pathelement path="${mps_home}/plugins/mps-modelchecker/source" />
-        <pathelement path="${mps_home}/plugins/mps-modelchecker/source_gen" />
         <path location="${mps_home}/plugins/mps-modelchecker/platform/source_gen" />
+        <path location="${mps_home}/plugins/mps-modelchecker/solution/source_gen" />
       </src>
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-generator.jar" />
@@ -860,8 +860,8 @@
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-modelchecker">
       <fileset dir="${mps_home}/plugins/mps-modelchecker/platform/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-modelchecker/solution/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/plugins/mps-modelchecker/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/plugins/mps-modelchecker/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -1503,7 +1503,7 @@
   
   <target name="cleanSources">
     <delete dir="${plugin_home}/mps-ide/modules/bl.lightweightdsl/source_gen" />
-    <delete dir="${plugin_home}/mps-modelchecker/source_gen" />
+    <delete dir="${plugin_home}/mps-modelchecker/solution/source_gen" />
     <delete dir="${plugin_home}/mps-modelchecker/platform/source_gen" />
     <delete dir="${plugin_home}/mps-rcp/modules/ide.refactoring/source_gen" />
     <delete dir="${plugin_home}/mps-ide/modules/tools.todo/source_gen" />
