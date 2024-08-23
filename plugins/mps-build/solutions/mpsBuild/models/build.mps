@@ -50568,23 +50568,11 @@
     <node concept="2sgV4H" id="6pse5qHNg7_" role="1l3spa">
       <ref role="1l3spb" node="6S1jmf0xDFC" resolve="mpsBootstrapCore" />
     </node>
-    <node concept="2sgV4H" id="6pse5qHNg7A" role="1l3spa">
-      <ref role="1l3spb" node="5D1dJ7xWer5" resolve="mpsCore" />
-    </node>
-    <node concept="2sgV4H" id="6pse5qHNg7B" role="1l3spa">
-      <ref role="1l3spb" node="6qT2v0qOlpw" resolve="mpsJavaPlatform" />
-    </node>
-    <node concept="2sgV4H" id="6pse5qHNg7C" role="1l3spa">
-      <ref role="1l3spb" node="2eDSGe9d1ot" resolve="mpsWorkbench" />
-    </node>
     <node concept="2sgV4H" id="6pse5qHNg7D" role="1l3spa">
       <ref role="1l3spb" node="3IKDaVZoWUr" resolve="mpsTroveCollections" />
     </node>
-    <node concept="2sgV4H" id="6pse5qHNg7E" role="1l3spa">
-      <ref role="1l3spb" node="4O0hKJpjIUQ" resolve="mpsDevKit" />
-    </node>
-    <node concept="2sgV4H" id="6pse5qHNg7F" role="1l3spa">
-      <ref role="1l3spb" node="5rNMDvYzelV" resolve="mpsMakePlugin" />
+    <node concept="2sgV4H" id="6pse5qHNg7A" role="1l3spa">
+      <ref role="1l3spb" node="2eDSGe9d1ot" resolve="mpsWorkbench" />
     </node>
     <node concept="398rNT" id="6pse5qHNgdV" role="1l3spd">
       <property role="TrG5h" value="idea_home" />
@@ -50709,11 +50697,8 @@
           </node>
         </node>
       </node>
-      <node concept="m$_yC" id="5xhjlkpPj9X" role="m$_yJ">
-        <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
-      </node>
       <node concept="m$_yC" id="5xhjlkpPj9Y" role="m$_yJ">
-        <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />
+        <ref role="m$_y1" node="4k71ibbLe59" />
       </node>
       <node concept="m$f5U" id="5xhjlkpPkDQ" role="m$_yh">
         <ref role="m$f5T" node="5xhjlkpPk8j" resolve="mps-http-support" />
