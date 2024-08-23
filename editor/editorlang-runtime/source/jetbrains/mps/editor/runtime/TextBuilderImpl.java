@@ -27,8 +27,8 @@ import java.util.List;
  * Date: 03/03/16
  */
 public class TextBuilderImpl implements TextBuilder {
-  private List<StringBuilder> myLines = new ArrayList<>();
-  private int myWidth;
+  protected List<StringBuilder> myLines = new ArrayList<>();
+  protected int myWidth;
 
   public TextBuilderImpl() {
   }
@@ -112,35 +112,6 @@ public class TextBuilderImpl implements TextBuilder {
     normalizeWidth();
     return this;
 
-  }
-
-  public TextBuilder appendToTheRightHtml(TextBuilder builder, boolean insertSpace) {
-    if (!insertSpace && (builder.getSize() == 0 || builder.getWidth() == 0)) {
-      return this;
-    }
-
-    String delim = getWidth() != 0 && insertSpace ? "&nbsp;" : "";
-    int delimWidth = delim.length();
-
-    int newWidth = myWidth + builder.getWidth() + delimWidth;
-
-    Iterator<CharSequence> builderIterator = builder.getLines().iterator();
-    for (StringBuilder nextLine : myLines) {
-      nextLine.append(delim);
-      if (builderIterator.hasNext()) {
-        nextLine.append(builderIterator.next());
-      }
-    }
-    while (builderIterator.hasNext()) {
-      StringBuilder nextLine = new StringBuilder(newWidth);
-      for (int i = 0; i < myWidth + delimWidth; i++) {
-        nextLine.append("&nbsp;");
-      }
-      nextLine.append(builderIterator.next());
-      myLines.add(nextLine);
-    }
-    myWidth = newWidth;
-    return this;
   }
 
   private void normalizeWidth() {

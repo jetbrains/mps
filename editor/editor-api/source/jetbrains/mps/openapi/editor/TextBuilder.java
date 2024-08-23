@@ -63,5 +63,4 @@ public interface TextBuilder {
    */
   TextBuilder appendToTheRight(TextBuilder builder, boolean insertSpace);
 
-  TextBuilder appendToTheRightHtml(TextBuilder builder, boolean insertSpace);
 }

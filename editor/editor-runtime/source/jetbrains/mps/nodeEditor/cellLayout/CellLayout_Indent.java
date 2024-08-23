@@ -238,9 +238,9 @@ public class CellLayout_Indent extends AbstractCellLayout {
         }
         if (isOnNewLine(rootCell, current) || newLineAfter) {
           newLineAfter = false;
-          result.appendToTheRightHtml(new TextBuilderImpl("<br>"), true);
+          result.appendToTheRightHtml(new HtmlTextBuilderImpl("<br>"), true);
           for (int i = 0; i < getIndent(rootCell, current, false); i++) {
-            result.appendToTheRightHtml(new TextBuilderImpl(EditorCell_Indent.getIndentHtml()), false);
+            result.appendToTheRightHtml(new HtmlTextBuilderImpl(EditorCell_Indent.getIndentHtml()), false);
           }
         }
 

@@ -21,5 +21,6 @@ package jetbrains.mps.openapi.editor;
 public interface HtmlTextBuilder extends TextBuilder {
 
   String getHtmlText();
-  
+
+  HtmlTextBuilder appendToTheRightHtml(HtmlTextBuilder builder, boolean insertSpace);
 }
