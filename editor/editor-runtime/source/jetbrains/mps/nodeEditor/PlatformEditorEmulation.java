@@ -675,6 +675,10 @@ final class PlatformEditorEmulation implements Editor {
     controller.showTooltipByMouseMove(this, showPoint, tr, false, tooltipProvider.getTooltipGroup(), hint);
   }
 
+  protected void cancelShowInfoToolTipRequest() {
+    myHintPopupController.cancelAllRequests();
+  }
+
   private void showInfoToolTip(@NotNull MouseEvent event) {
     if (getComponent().getRootPane() == null || MPSDocumentationManager.getInstance().isQuickDocPopupShown()) {
       return;

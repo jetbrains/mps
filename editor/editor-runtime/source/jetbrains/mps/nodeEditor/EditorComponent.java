@@ -2178,6 +2178,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   public void showCellError() {
     final jetbrains.mps.openapi.editor.cells.EditorCell selectedCell = getSelectedCell();
     if (selectedCell != null) {
+      myPlatformEditorEmulation.cancelShowInfoToolTipRequest();
       final HighlighterMessage message = getHighlighterMessageFor(selectedCell);
       MPSErrorDialog.showCellErrorDialog(getCurrentProject(), SwingUtilities.windowForComponent(EditorComponent.this), message);
     }

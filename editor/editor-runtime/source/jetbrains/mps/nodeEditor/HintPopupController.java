@@ -59,6 +59,11 @@ class HintPopupController {
     }
   }
 
+  protected void cancelAllRequests() {
+    myMoveAlarm.cancelAllRequests();
+    myHoverAlarm.cancelAllRequests();
+  }
+
   private class MyMouseMotionAdapter extends MouseMotionAdapter {
     @Override
     public void mouseMoved(MouseEvent e) {
