@@ -56,9 +56,18 @@ public class CustomViewersManagerImpl extends CustomViewersManager {
     MapSequence.fromMap(myFactories).removeKey(factory.getClass().getName());
   }
 
+  private Map<String, ValueWrapperFactory> allFactories() {
+    Map<String, ValueWrapperFactory> rv = MapSequence.fromMap(new HashMap<String, ValueWrapperFactory>());
+    for (ValueWrapperFactory f : CustomViewersManager.EXT_POINT.getExtensionList()) {
+      MapSequence.fromMap(rv).put(f.getClass().getName(), f);
+    }
+    MapSequence.fromMap(rv).putAll(myFactories);
+    return rv;
+  }
+
   public Set<ValueWrapperFactory> getValueWrapperFactories(@NotNull final IValueProxy originalValue) {
     Set<ValueWrapperFactory> result = SetSequence.fromSet(new LinkedHashSet<ValueWrapperFactory>());
-    for (ValueWrapperFactory factory : MapSequence.fromMap(myFactories).values()) {
+    for (ValueWrapperFactory factory : MapSequence.fromMap(allFactories()).values()) {
       if (factory.canWrapValue(originalValue)) {
         SetSequence.fromSet(result).addElement(factory);
       }
@@ -92,7 +101,7 @@ public class CustomViewersManagerImpl extends CustomViewersManager {
 
   public synchronized ValueWrapper getValueWrapper(@NotNull IValueProxy proxy, ThreadReference threadReference) {
     if (proxy instanceof INullValueProxy) {
-      return MapSequence.fromMap(myFactories).get(ObjectWrapperFactory.class.getName()).createValueWrapper(proxy, threadReference);
+      return MapSequence.fromMap(allFactories()).get(ObjectWrapperFactory.class.getName()).createValueWrapper(proxy, threadReference);
     }
 
     ValueWrapperFactory factory = null;
@@ -107,7 +116,7 @@ public class CustomViewersManagerImpl extends CustomViewersManager {
       long uniqueID = getValueId(proxy);
       String factoryId = MapSequence.fromMap(objectIdToFactory).get(uniqueID);
       if ((factoryId != null && factoryId.length() > 0)) {
-        factory = MapSequence.fromMap(myFactories).get(factoryId);
+        factory = MapSequence.fromMap(allFactories()).get(factoryId);
       }
     }
 

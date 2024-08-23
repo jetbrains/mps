@@ -10,14 +10,14 @@
   <depends>com.intellij.modules.mps</depends>
 
   <application-components>
-    <!--runtime-->
-    <component>
-      <implementation-class>jetbrains.mps.debugger.java.runtime.state.customViewers.BaseLanguageCustomViewers</implementation-class>
-    </component>
     <component>
       <implementation-class>jetbrains.mps.debugger.java.runtime.JavaDebugger</implementation-class>
     </component>
   </application-components>
+
+  <extensionPoints>
+    <extensionPoint qualifiedName="jetbrains.mps.debugger.valueViewer" interface="jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory" dynamic="true" />
+  </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">
     <!--runtime-->
@@ -44,5 +44,11 @@
     <debugger.PositionProvider key="jetbrains.mps.debug.api.source.NodePositionProvider"
                                weight="200"
                                class="jetbrains.mps.debugger.java.runtime.JavaNodePositionProvider"/>
+
+    <!-- Base Language Custom Viewers -->
+    <debugger.valueViewer implementation="jetbrains.mps.debugger.java.runtime.state.customViewers.ObjectWrapperFactory" />
+    <debugger.valueViewer implementation="jetbrains.mps.debugger.java.runtime.state.customViewers.ArrayWrapperFactory" />
+    <debugger.valueViewer implementation="jetbrains.mps.debugger.java.runtime.state.customViewers.PrimitiveWrapperFactory" />
+    <debugger.valueViewer implementation="jetbrains.mps.debugger.java.runtime.state.customViewers.StringWrapperFactory" />
   </extensions>
 </idea-plugin>

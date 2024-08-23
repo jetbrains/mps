@@ -10,6 +10,7 @@
     <import index="y3sp" ref="r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="frkw" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi(JDK-tools/)" />
+    <import index="9ti4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.extensions(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -25,6 +26,10 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
+      <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
+        <property id="1070475926801" name="value" index="Xl_RC" />
+      </concept>
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
@@ -35,6 +40,7 @@
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
+        <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
@@ -67,6 +73,7 @@
       </concept>
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
+        <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
@@ -87,7 +94,26 @@
     <property role="TrG5h" value="CustomViewersManager" />
     <property role="1sVAO0" value="true" />
     <property role="1EXbeo" value="false" />
+    <node concept="Wx3nA" id="1MgGTZ24nks" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="EXT_POINT" />
+      <node concept="3Tm1VV" id="1MgGTZ24nt$" role="1B3o_S" />
+      <node concept="3uibUv" id="1MgGTZ24n$D" role="1tU5fm">
+        <ref role="3uigEE" to="9ti4:~ExtensionPointName" resolve="ExtensionPointName" />
+        <node concept="3uibUv" id="1MgGTZ24oJJ" role="11_B2D">
+          <ref role="3uigEE" to="y3sp:2Y$mRnICmxQ" resolve="ValueWrapperFactory" />
+        </node>
+      </node>
+      <node concept="2YIFZM" id="1MgGTZ24nRR" role="33vP2m">
+        <ref role="37wK5l" to="9ti4:~ExtensionPointName.create(java.lang.String)" resolve="create" />
+        <ref role="1Pybhc" to="9ti4:~ExtensionPointName" resolve="ExtensionPointName" />
+        <node concept="Xl_RD" id="1MgGTZ24nVT" role="37wK5m">
+          <property role="Xl_RC" value="jetbrains.mps.debugger.valueViewer" />
+        </node>
+      </node>
+    </node>
     <node concept="3Tm1VV" id="2Y$mRnICmv_" role="1B3o_S" />
+    <node concept="2tJIrI" id="1MgGTZ24np3" role="jymVt" />
     <node concept="3clFbW" id="2Y$mRnICmvN" role="jymVt">
       <node concept="3Tmbuc" id="2I1kig2xj07" role="1B3o_S" />
       <node concept="3cqZAl" id="2Y$mRnICmvP" role="3clF45" />
