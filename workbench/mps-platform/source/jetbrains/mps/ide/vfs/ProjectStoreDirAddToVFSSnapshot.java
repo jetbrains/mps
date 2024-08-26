@@ -20,6 +20,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.project.ProjectKt;
+import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 
@@ -44,20 +45,16 @@ import java.nio.file.Path;
  *
  * AP
  */
-public final class ProjectStoreDirAddToVFSSnapshot implements ProjectComponent {
-  private final Project myProject;
+public final class ProjectStoreDirAddToVFSSnapshot extends MPSProjectActivity {
 
-  public ProjectStoreDirAddToVFSSnapshot(@NotNull Project project) {
-    myProject = project;
-  }
-
-  public void initComponent() {
-    Path directoryStorePath = ProjectKt.getStateStore(myProject).getDirectoryStorePath();
+  @Override
+  public void runActivity(@NotNull Project project) {
+    Path directoryStorePath = ProjectKt.getStateStore(project).getDirectoryStorePath();
     if (directoryStorePath != null) {
       VirtualFile virtualFile = VfsUtil.findFile(directoryStorePath, false);
       VfsUtil.markDirty(true, true, virtualFile);
     } else {
-      Logger.getLogger(ProjectStoreDirAddToVFSSnapshot.class).error("Could not find the directory store path (.mps) of the project " + myProject);
+      Logger.getLogger(ProjectStoreDirAddToVFSSnapshot.class).error("Could not find the directory store path (.mps) of the project " + project);
     }
   }
 }

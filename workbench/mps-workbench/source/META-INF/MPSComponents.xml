@@ -33,9 +33,6 @@
       <implementation-class>jetbrains.mps.project.StandaloneMPSProject</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.vfs.ProjectStoreDirAddToVFSSnapshot</implementation-class>
-    </component>
-    <component>
       <interface-class>jetbrains.mps.generator.TransientModelsProvider</interface-class>
       <implementation-class>jetbrains.mps.ide.generator.TransientModelsComponent</implementation-class>
     </component>
@@ -82,6 +79,7 @@
     <postStartupActivity implementation="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" />
     <postStartupActivity implementation="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" />
     <postStartupActivity implementation="jetbrains.mps.ide.make.StartupModuleMakerImpl" />
+    <postStartupActivity implementation="jetbrains.mps.ide.vfs.ProjectStoreDirAddToVFSSnapshot" />
     <projectService serviceImplementation="jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent"/>
     <projectService serviceImplementation="jetbrains.mps.ide.editor.tabs.TabRootNodesTracker"/>
     <projectService serviceImplementation="jetbrains.mps.ide.editor.tabs.FileStatusChangeListener"/>
