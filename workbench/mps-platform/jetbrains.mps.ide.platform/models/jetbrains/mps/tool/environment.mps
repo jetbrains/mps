@@ -41,8 +41,6 @@
     <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="ew0j" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.tool.environment(MPS.Platform/)" />
-    <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
-    <import index="3fye" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application.impl(MPS.IDEA/)" />
     <import index="cyhs" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs.impl.jar(MPS.IDEA/)" />
     <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
@@ -1064,17 +1062,9 @@
       </node>
       <node concept="3clFbS" id="5A5jZrz2$aa" role="3clF47">
         <node concept="3cpWs6" id="5A5jZrz2$ak" role="3cqZAp">
-          <node concept="2OqwBi" id="5A5jZrz2$ag" role="3cqZAk">
-            <node concept="2YIFZM" id="5A5jZrz2$ah" role="2Oq$k0">
-              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-            </node>
-            <node concept="liA8E" id="5A5jZrz2$ai" role="2OqNvi">
-              <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-              <node concept="3VsKOn" id="5A5jZrz2$aj" role="37wK5m">
-                <ref role="3VsUkX" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
-              </node>
-            </node>
+          <node concept="2YIFZM" id="4qHsSzVSMVu" role="3cqZAk">
+            <ref role="37wK5l" to="3a50:~MPSCoreComponents.getInstance()" resolve="getInstance" />
+            <ref role="1Pybhc" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
           </node>
         </node>
       </node>
@@ -3348,17 +3338,9 @@
             <node concept="3cpWs8" id="1_ERPxYOnoo" role="3cqZAp">
               <node concept="3cpWsn" id="1_ERPxYOnop" role="3cpWs9">
                 <property role="TrG5h" value="fs" />
-                <node concept="2OqwBi" id="1_ERPxYOnBw" role="33vP2m">
-                  <node concept="2YIFZM" id="1_ERPxYOnzK" role="2Oq$k0">
-                    <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-                    <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-                  </node>
-                  <node concept="liA8E" id="1_ERPxYOnK0" role="2OqNvi">
-                    <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                    <node concept="3VsKOn" id="1_ERPxYOo2K" role="37wK5m">
-                      <ref role="3VsUkX" to="4hrd:~IdeaFileSystem" resolve="IdeaFileSystem" />
-                    </node>
-                  </node>
+                <node concept="2YIFZM" id="4qHsSzVT1WD" role="33vP2m">
+                  <ref role="37wK5l" to="4hrd:~IdeaFileSystem.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="4hrd:~IdeaFileSystem" resolve="IdeaFileSystem" />
                 </node>
                 <node concept="3uibUv" id="7LZvUiIId4K" role="1tU5fm">
                   <ref role="3uigEE" to="7nyy:~CachingFileSystem" resolve="CachingFileSystem" />

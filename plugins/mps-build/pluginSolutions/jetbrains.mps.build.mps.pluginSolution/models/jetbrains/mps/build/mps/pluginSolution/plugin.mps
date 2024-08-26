@@ -10172,7 +10172,7 @@
         <node concept="3clFbF" id="1q4WFGK3qGd" role="3cqZAp">
           <node concept="2OqwBi" id="1q4WFGK3qGe" role="3clFbG">
             <node concept="liA8E" id="1q4WFGK3qGg" role="2OqNvi">
-              <ref role="37wK5l" to="4hrd:~BaseIdeaFileSystem.runWriteTransaction(java.lang.Runnable)" resolve="runWriteTransaction" />
+              <ref role="37wK5l" to="4hrd:~IdeaFileSystem.runWriteTransaction(java.lang.Runnable)" resolve="runWriteTransaction" />
               <node concept="2ShNRf" id="1q4WFGK3qGh" role="37wK5m">
                 <node concept="YeOm9" id="1q4WFGK3qGi" role="2ShVmc">
                   <node concept="1Y3b0j" id="1q4WFGK3qGj" role="YeSDq">

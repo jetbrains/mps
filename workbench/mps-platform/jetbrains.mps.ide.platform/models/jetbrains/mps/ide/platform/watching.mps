@@ -1537,32 +1537,13 @@
                         <ref role="3uigEE" node="6KWQXOSp6dh" resolve="FileProcessor" />
                       </node>
                       <node concept="3clFbS" id="2CbzOko6_MX" role="3clF47">
-                        <node concept="3cpWs8" id="2aUbUKfIFnl" role="3cqZAp">
-                          <node concept="3cpWsn" id="2aUbUKfIFnm" role="3cpWs9">
-                            <property role="TrG5h" value="ideaFileSystem" />
-                            <node concept="3uibUv" id="2aUbUKfIEFc" role="1tU5fm">
-                              <ref role="3uigEE" to="4hrd:~IdeaFileSystem" resolve="IdeaFileSystem" />
-                            </node>
-                            <node concept="2OqwBi" id="2aUbUKfIFnn" role="33vP2m">
-                              <node concept="2YIFZM" id="2aUbUKfIFno" role="2Oq$k0">
-                                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-                                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-                              </node>
-                              <node concept="liA8E" id="2aUbUKfIFnp" role="2OqNvi">
-                                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                                <node concept="3VsKOn" id="2aUbUKfIFnq" role="37wK5m">
-                                  <ref role="3VsUkX" to="4hrd:~IdeaFileSystem" resolve="IdeaFileSystem" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
                         <node concept="3cpWs6" id="2CbzOko6BZW" role="3cqZAp">
                           <node concept="2ShNRf" id="2CbzOko6CpA" role="3cqZAk">
                             <node concept="1pGfFk" id="2CbzOko6Dwc" role="2ShVmc">
                               <ref role="37wK5l" node="6KWQXOSp6oy" resolve="FileProcessor" />
-                              <node concept="37vLTw" id="2aUbUKfIHOA" role="37wK5m">
-                                <ref role="3cqZAo" node="2aUbUKfIFnm" resolve="ideaFileSystem" />
+                              <node concept="2YIFZM" id="4qHsSzVS1wM" role="37wK5m">
+                                <ref role="37wK5l" to="4hrd:~IdeaFileSystem.getInstance()" resolve="getInstance" />
+                                <ref role="1Pybhc" to="4hrd:~IdeaFileSystem" resolve="IdeaFileSystem" />
                               </node>
                             </node>
                           </node>
@@ -2036,7 +2017,7 @@
                 <ref role="3cqZAo" node="2CbzOko73fc" resolve="fs" />
               </node>
               <node concept="liA8E" id="5p_KN$yYOHN" role="2OqNvi">
-                <ref role="37wK5l" to="4hrd:~BaseIdeaFileSystem.getListenersContainer()" resolve="getListenersContainer" />
+                <ref role="37wK5l" to="4hrd:~IdeaFileSystem.getListenersContainer()" resolve="getListenersContainer" />
               </node>
             </node>
             <node concept="37vLTw" id="5p_KN$yYVEm" role="37vLTJ">

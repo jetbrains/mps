@@ -23,12 +23,12 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 
 /**
- * this is going to be revived
  * Note the IFileSystem is per-protocol, in which it differs from FileSystem.
  */
 public interface FileSystem extends jetbrains.mps.vfs.openapi.FileSystem {
-@Deprecated(since = "2019.1", forRemoval = true)
-  @NotNull IFile getFile(@NotNull String path);
+
+  @NotNull
+  IFile getFile(@NotNull String path);
 
   @NotNull
   default IFile getFile(@NotNull Path path) {
@@ -36,24 +36,17 @@ public interface FileSystem extends jetbrains.mps.vfs.openapi.FileSystem {
     return getFile(path.toUnixPathFormat().toText());
   }
 
-  /**
-   * As long as {@link #getFile(String)} is very peculiar about path notation, and it's often hard to ensure proper path string comes from an external location,
-   * this method comes as a handy alternative that performs necessary path mangling to decrease failure rate of aforementioned {@code getFile()}.
-   *
-   * @return same as {@link #getFile(String)}
-   * @since 2024.2
-   */
   @NotNull
   default IFile getFile(@NotNull File file) {
     return getFile(PathUtil.toSystemIndependent(FileUtil.getCanonicalPath(file.getAbsolutePath())));
   }
 
-@Deprecated(since = "2019.1", forRemoval = true)
+  @Deprecated(since = "2019.1", forRemoval = true)
   static FileSystem getInstance() {
     return FileSystemExtPoint.getFS();
   }
 
-@Deprecated(since = "2019.1", forRemoval = true)
+  @Deprecated(since = "2019.1", forRemoval = true)
   boolean isFileIgnored(@NotNull String name);
 
   /**
@@ -61,6 +54,6 @@ public interface FileSystem extends jetbrains.mps.vfs.openapi.FileSystem {
    * @param r code to execute within platform write lock
    * @return <code>false</code> if an exception was encountered
    */
-@Deprecated(since = "2019.1", forRemoval = true)
+  @Deprecated(since = "2019.1", forRemoval = true)
   boolean runWriteTransaction(@NotNull Runnable r);
 }

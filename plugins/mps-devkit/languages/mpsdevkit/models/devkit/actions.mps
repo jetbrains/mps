@@ -1135,7 +1135,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="42eHksA7bp$" role="2OqNvi">
-                              <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                              <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.io.File)" resolve="getFile" />
                               <node concept="37vLTw" id="42eHksA7byC" role="37wK5m">
                                 <ref role="3cqZAo" node="7o065EtvZeL" resolve="devkitLocation" />
                               </node>
@@ -1816,7 +1816,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="339vUuzVoRI" role="2OqNvi">
-                              <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                              <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.io.File)" resolve="getFile" />
                               <node concept="37vLTw" id="339vUuzVoRJ" role="37wK5m">
                                 <ref role="3cqZAo" node="339vUuzUWur" resolve="moduleLocation" />
                               </node>

@@ -41,8 +41,7 @@ public final class FSChangesWatcher implements BulkFileListener {
     }
     ReloadManager.getInstance().runReload(getClass().getName(), new Supplier<FileProcessor>() {
       public FileProcessor get() {
-        IdeaFileSystem ideaFileSystem = ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
-        return new FileProcessor(ideaFileSystem);
+        return new FileProcessor(IdeaFileSystem.getInstance());
       }
     }, new ReloadAction<FileProcessor>() {
       public void runAction(final FileProcessor participant) {

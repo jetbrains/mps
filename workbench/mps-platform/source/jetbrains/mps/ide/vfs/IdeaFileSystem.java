@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.vfs;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.WriteAction;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.fileTypes.FileTypeManager;
@@ -62,6 +63,14 @@ public final class IdeaFileSystem implements FileSystem, CachingFileSystem, File
   private JarIdeaFileSystem fs1;
   private LocalIdeaFileSystem fs2;
   private JrtIdeaFileSystem fs3;
+
+  /**
+   * Use this one to hide knowledge whether this is an app component or a service
+   * @since 2024.2
+   */
+  public static IdeaFileSystem getInstance() {
+    return ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
+  }
 
   public IdeaFileSystem() {
     myListenersContainer = FileSystemListenersContainer.getInstance();

@@ -13,7 +13,6 @@ import java.io.File;
 import jetbrains.mps.tool.common.PluginData;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.PathManager;
 import java.awt.GraphicsEnvironment;
 import com.intellij.testFramework.TestApplicationManager;
@@ -23,6 +22,7 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.util.Disposer;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.openapi.application.ModalityState;
@@ -149,7 +149,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
   }
 
   private MPSCoreComponents getMPSCoreComponents() {
-    return ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+    return MPSCoreComponents.getInstance();
   }
 
   private void createIdeaApplication() {
@@ -343,7 +343,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
     // if unit-test is executed with the "reuse caches" option.
     String basePath = project.getBasePath();
     if (basePath != null) {
-      CachingFileSystem fs = ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
+      CachingFileSystem fs = IdeaFileSystem.getInstance();
       fs.getFile(basePath).refresh(new DefaultCachingContext(true, true));
     }
   }

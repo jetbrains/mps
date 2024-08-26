@@ -6807,7 +6807,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="1vFZXjb$u62" role="2OqNvi">
-                              <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                              <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.io.File)" resolve="getFile" />
                               <node concept="37vLTw" id="1vFZXjb$ued" role="37wK5m">
                                 <ref role="3cqZAo" node="7o065EtvZeL" resolve="moduleLocation" />
                               </node>
@@ -37224,7 +37224,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="2Sw_cz2vSiJ" role="2OqNvi">
-                            <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                            <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.io.File)" resolve="getFile" />
                             <node concept="2OqwBi" id="3JBXuJHmWNC" role="37wK5m">
                               <node concept="37vLTw" id="2Sw_cz2vT8z" role="2Oq$k0">
                                 <ref role="3cqZAo" node="3JBXuJHkSKH" resolve="cfg" />

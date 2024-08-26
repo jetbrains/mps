@@ -57,7 +57,7 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
   public MPSProject(@NotNull com.intellij.openapi.project.Project project) {
     super(project.getName(), MPSCoreComponents.getInstance().getPlatform(), false);
     myProject = project;
-    myProjectFileSystem = ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
+    myProjectFileSystem = IdeaFileSystem.getInstance();
     project.getService(ProjectRootListenerComponent.class).boostProjectRead(myProjectFileSystem);
     Platform platform = MPSCoreComponents.getInstance().getPlatform();
     final MPSModuleRepository extRepo = platform.findComponent(MPSModuleRepository.class);

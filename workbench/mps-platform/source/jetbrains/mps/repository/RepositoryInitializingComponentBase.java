@@ -61,12 +61,10 @@ public class RepositoryInitializingComponentBase implements BaseComponent {
     // Besides, it's IdeaFileSystem that registers various IFileSystem implementations into VFSManager.
     // Though JAVA_IO_FILE_FS we need here is omnipresent, there could be another code that asks VFSManager for
     // other FS protocol, and it may get unexpected value in case of IdeaFileSystem not initialized.
-    final IdeaFileSystem ideaFileSystem = ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
-    if (PathManager.isFromSources()) {
-      return ideaFileSystem;
-    } else {
-      return MPSCoreComponents.getInstance().getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
-    }
+    @SuppressWarnings({"removal", "unused"})
+    final IdeaFileSystem ideaFileSystem = IdeaFileSystem.getInstance();
+    VFSManager vfsManager = MPSCoreComponents.getInstance().getPlatform().findComponent(VFSManager.class);
+    return vfsManager.getFileSystem(PathManager.isFromSources() ? VFSManager.FILE_FS : VFSManager.JAVA_IO_FILE_FS);
   }
 
   @Override

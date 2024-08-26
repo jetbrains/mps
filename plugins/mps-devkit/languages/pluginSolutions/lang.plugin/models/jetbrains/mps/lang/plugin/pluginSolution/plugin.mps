@@ -867,7 +867,7 @@
                               </node>
                             </node>
                             <node concept="liA8E" id="2AzpHdO4nj1" role="2OqNvi">
-                              <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                              <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.io.File)" resolve="getFile" />
                               <node concept="37vLTw" id="2AzpHdO4nsG" role="37wK5m">
                                 <ref role="3cqZAo" node="7o065EtvZeL" resolve="moduleLocation" />
                               </node>

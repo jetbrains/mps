@@ -17,6 +17,7 @@ package jetbrains.mps.vfs;
 
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
@@ -24,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 
-public interface IFileSystem {
+public interface IFileSystem extends FileSystem {
   char SEPARATOR_CHAR = '/';
   String SEPARATOR = "/";
 

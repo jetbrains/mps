@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ public class VfsTest implements EnvironmentAware {
     final Throwable[] ex = new Throwable[1];
     ApplicationManager.getApplication().invokeAndWait(() -> ApplicationManager.getApplication().runWriteAction(() -> {
       try {
-        testRunnable.accept(ApplicationManager.getApplication().getComponent(IdeaFileSystem.class));
+        testRunnable.accept(IdeaFileSystem.getInstance());
       } catch (Throwable e) {
         ex[0] = e;
       }

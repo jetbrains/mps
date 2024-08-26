@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,32 @@
 package jetbrains.mps.vfs.openapi;
 
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Deprecated
+import java.io.File;
+
+/**
+ * Generic contract of any VFS, common ground for various implementations MPS got throughout the years
+ */
 public interface FileSystem {
-  @Deprecated
+  /**
+   * @param path generally the value has to be in an endorsed, uniform way
+   * @return file manipulation handler, file does not necessarily exist.
+   */
   @NotNull
   IFile getFile(@NotNull String path);
 
-  @Deprecated
+  @Nullable
   IFile findExistingFile(@NotNull String path);
+
+  /**
+   * As long as {@link #getFile(String)} is very peculiar about path notation, and it's often hard to ensure proper path string comes from an external location,
+   * this method comes as a handy alternative that performs necessary path mangling to decrease failure rate of aforementioned {@code getFile()}.
+   *
+   * @return same as {@link #getFile(String)}
+   * @since 2024.2
+   */
+  @NotNull
+  IFile getFile(@NotNull File file);
 }
