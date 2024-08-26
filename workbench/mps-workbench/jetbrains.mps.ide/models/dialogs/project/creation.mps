@@ -1025,7 +1025,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="eb0uW_jCPe" role="1B3o_S" />
       <node concept="3uibUv" id="1wfemhjcljL" role="1tU5fm">
-        <ref role="3uigEE" to="3ju5:~IFileSystem" resolve="IFileSystem" />
+        <ref role="3uigEE" to="3ju5:~FileSystem" resolve="FileSystem" />
       </node>
     </node>
     <node concept="312cEg" id="15bf9of7$5y" role="jymVt">
@@ -2397,7 +2397,7 @@
                 <ref role="3cqZAo" node="eb0uW_jEZW" resolve="myProjectFS" />
               </node>
               <node concept="liA8E" id="eb0uW_jMEn" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.lang.String)" resolve="getFile" />
+                <ref role="37wK5l" to="3ju5:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
                 <node concept="37vLTw" id="5UptKEdczHR" role="37wK5m">
                   <ref role="3cqZAo" node="5UptKEdczHN" resolve="filePath" />
                 </node>

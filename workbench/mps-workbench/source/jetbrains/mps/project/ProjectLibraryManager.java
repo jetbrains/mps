@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,13 +21,13 @@ import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManagerListener;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.library.BaseLibraryManager;
 import jetbrains.mps.library.contributor.LibraryContributor;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -85,7 +85,8 @@ public class ProjectLibraryManager extends BaseLibraryManager {
       if (project.isDefault()) {
         return;
       }
-      myContributor = ProjectLibraryManager.getInstance(project).createContributor(ProjectHelper.fromIdeaProject(project).getFileSystem());
+      VFSManager vfsManager = MPSCoreComponents.getInstance().getPlatform().findComponent(VFSManager.class);
+      myContributor = ProjectLibraryManager.getInstance(project).createContributor(vfsManager.getFileSystem(VFSManager.FILE_FS));
       MPSCoreComponents.getInstance().getLibraryInitializer().load(Collections.singletonList(myContributor));
     }
 

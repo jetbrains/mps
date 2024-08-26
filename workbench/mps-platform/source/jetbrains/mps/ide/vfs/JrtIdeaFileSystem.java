@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package jetbrains.mps.ide.vfs;
 import jetbrains.mps.vfs.VFSManager;
 
 public class JrtIdeaFileSystem extends BaseIdeaFileSystem {
-  public JrtIdeaFileSystem() {
-    super(VFSManager.JRT_FS);
+  public JrtIdeaFileSystem(IdeaFileSystem fs) {
+    super(VFSManager.JRT_FS, fs);
   }
 }

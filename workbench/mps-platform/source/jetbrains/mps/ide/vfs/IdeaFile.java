@@ -22,7 +22,6 @@ import com.intellij.openapi.fileTypes.FileTypes;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.JarFileSystem;
 import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.openapi.vfs.SavingRequestor;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import com.intellij.openapi.vfs.newvfs.ArchiveFileSystem;
@@ -67,6 +66,7 @@ import java.util.List;
  * That means that some IdeaFiles which point to essentially the same place on fs, might not be equal in the sense
  * of the current #equals relation
  */
+@SuppressWarnings("removal")
 @Immutable
 public class IdeaFile implements IFile, CachingFile {
   private final static Logger LOG = Logger.getLogger(IdeaFile.class);
@@ -154,7 +154,7 @@ public class IdeaFile implements IFile, CachingFile {
   @Override
   public CachingFileSystem getFileSystem() {
     //this should go after 2019.1, when we remove FileSystem and ony use IFileSystem
-    return ApplicationManager.getApplication().getComponent(IdeaFileSystem.class);
+    return myFS.getUmbrellaFileSystem();
   }
 
   @NotNull
@@ -378,13 +378,17 @@ public class IdeaFile implements IFile, CachingFile {
   }
 
   private void checkNoListenersWhenRemove() {
-    FileSystemListenersContainer container = myFS.getListenersContainer();
+    IdeaFileSystem umbrellaFileSystem = myFS.getUmbrellaFileSystem();
+    FileSystemListenersContainer container = umbrellaFileSystem.getListenersContainer();
     ListenersForPath listenersForPath = container.getListenersForPath(myPath);
     List<FileSystemListener> all = listenersForPath.getMeAndDescendants();
     if (!all.isEmpty()) {
       LOG.warning(String.format("%d listener(s) have not been unregistered for the path '%s':", all.size(), getPath()));
       for (FileSystemListener listener : all) {
-        myFS.removeListener(listener);
+        // FIXME I don't like use of umbrellaFileSystem here, if we know FSListenerContainer and
+        //  start directly with its methods/values. Why not use it to remove listeners?
+        //  Guess, it's FileListener vs FileSystemListener and their unfortunate 'extends' relation.
+        umbrellaFileSystem.removeListener(listener);
       }
     }
   }
@@ -415,9 +419,7 @@ public class IdeaFile implements IFile, CachingFile {
 
   @Override
   public IdeaFile copy(@NotNull IFile newParent, @NotNull String newName) {
-    if (!(newParent instanceof IdeaFile)) {
-//      LOG.info("copying from IdeaFile to non-IdeaFile");
-    }
+    // XXX I wonder why do we assume here newParent is in the same proto/FS as this one?
     VirtualFile newParentFile = new IdeaFile(myFS, newParent.getPath()).findVirtualFile();
     if (newParentFile != null) {
       try {
@@ -558,11 +560,11 @@ public class IdeaFile implements IFile, CachingFile {
   public void refresh(@NotNull CachingContext context) {
     VirtualFile virtualFile = findVirtualFile();
     if (virtualFile != null) {
-      myFS.refresh(context, Collections.singleton(this));
+      myFS.getUmbrellaFileSystem().refresh(context, Collections.singleton(this));
     } else {
       virtualFile = findVirtualFile0(true); // not a mistake the same logic is in LFS#findFileByIoFile
       if (virtualFile != null) {
-        myFS.refresh(context, Collections.singleton(this));
+        myFS.getUmbrellaFileSystem().refresh(context, Collections.singleton(this));
       }
     }
   }
@@ -588,7 +590,7 @@ public class IdeaFile implements IFile, CachingFile {
 
   @Override
   public IFile getBundleHome() {
-    BaseIdeaFileSystem localFS = myFS.getLocalFS();
+    BaseIdeaFileSystem localFS = myFS.getUmbrellaFileSystem().getLocalFS();
     VirtualFile virtualFile = findVirtualFile();
     if (virtualFile != null) {
       if (virtualFile.getFileSystem() instanceof ArchiveFileSystem) {
