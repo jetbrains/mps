@@ -5,19 +5,11 @@ package jetbrains.mps.ide.newSolutionDialog;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.MPSProject;
-import javax.lang.model.SourceVersion;
-import jetbrains.mps.util.NameUtil;
-import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.project.modules.NewModuleCheck;
+import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.util.IStatus;
 import java.io.File;
-import com.intellij.openapi.vfs.VFileProperty;
-import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.vfs.util.PathFormatChecker;
 
 /**
  * 
@@ -27,84 +19,45 @@ import jetbrains.mps.vfs.util.PathFormatChecker;
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)/5890305283801268194", model = "r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)")
 public class NewModuleUtil {
 
-  public static String check(@Nullable MPSProject mpsProject, String extension, final String namespace, String rootPath) {
-    if (!(SourceVersion.isName(namespace))) {
-      return "Module namespace should be a valid Java package";
+  /**
+   * 
+   * @deprecated use {@code NewModuleCheck} instead
+   */
+  @Deprecated
+  public static String check(@Nullable MPSProject mpsProject, String extension, String namespace, String rootPath) {
+    Logger.getLogger(NewModuleUtil.class).warnDeprecatedUse("Use NewModuleCheck instead");
+    NewModuleCheck c = new NewModuleCheck();
+    if (MPSExtentions.DOT_LANGUAGE.equals(extension)) {
+      c.forLanguage();
+    } else if (MPSExtentions.DOT_GENERATOR.equals(extension)) {
+      c.forGenerator();
+    } else if (MPSExtentions.DOT_DEVKIT.equals(extension)) {
+      c.forDevkit();
+    } else {
+      c.forSolution();
     }
-    if (rootPath.length() == 0) {
-      return "Path should be specified";
-    }
-    if (namespace.length() == 0) {
-      return "Namespace should be specified";
-    }
-    if (NameUtil.shortNameFromLongName(namespace).length() == 0) {
-      return "Enter valid namespace";
+    // legacy code always enforces valid java name for modules
+    c.validJavaName(true);
+    c.withName(namespace);
+
+    IStatus s = c.checkNamespace();
+    if (s.isError()) {
+      return s.getMessage();
     }
 
-    LocalFileSystem fs = LocalFileSystem.getInstance();
-    VirtualFile moduleF = fs.refreshAndFindFileByIoFile(new File(rootPath, namespace + extension));
-    if (moduleF != null && moduleF.exists()) {
-      return "The module file " + namespace + extension + " already exists";
+    c.withHome(new File(rootPath));
+    s = c.checkHome();
+    if (s.isError()) {
+      return s.getMessage();
     }
-
-    VirtualFile moduleD = fs.refreshAndFindFileByIoFile(new File(rootPath));
-    if (moduleD != null && moduleD.exists()) {
-      VirtualFile[] files = moduleD.getChildren();
-      int count = 0;
-      for (VirtualFile f : files) {
-        if (!(f.is(VFileProperty.HIDDEN))) {
-          count += 1;
-        }
-      }
-      if (count > 0) {
-        return "The module folder " + rootPath + " is not empty";
-      }
-    }
-
-    // TODO io-based approach is more reliable so not sure which one to use
-
     if (mpsProject == null) {
       return null;
     }
-    final SRepository repo = mpsProject.getRepository();
-    // FIXME in fact, no reason to bother with identical name, it's module id that matters
-    boolean duplicateName = new ModelAccessHelper(repo).runReadAction(() -> !(new ModuleRepositoryFacade(repo).getModulesByName(namespace).isEmpty()));
-    if (duplicateName) {
-      return "Module namespace already exists";
-    }
-    try {
-      IFile moduleRoot = mpsProject.getFileSystem().getFile(rootPath);
-      IFile moduleDir = getModuleFile(namespace, moduleRoot, extension).getParent();
-      if (!(moduleDir.exists())) {
-        return null;
-      }
-      if (!(moduleDir.isDirectory())) {
-        return String.format("%s is not a directory", moduleDir.getPath());
-      }
-      for (IFile child : moduleDir.getChildren()) {
-        if (child.isDirectory()) {
-          // FIXME it's suspicious to check existence of a model directory to tell existence of a module
-          // E.g. it might be empty, or named differently. Left intact for now, although deserves a refactoring
-          // FWIW, LANGUAGE_MODELS==SOLUTION_MODELS
-          if (Language.LANGUAGE_MODELS.equals(child.getName()) || Language.LEGACY_LANGUAGE_MODELS.equals(child.getName()) || Solution.SOLUTION_MODELS.equals(child.getName())) {
-            return "Module already exists in this folder";
-          }
-        } else {
-          if (child.getName().endsWith(extension)) {
-            // that's what NewModuleCheckUtil.checkModuleDirectory (6b693c1e) did.
-            return String.format("Selected folder already contains module descriptor file (%s)", child.getPath());
-          }
-        }
-      }
-    } catch (PathFormatChecker.PathFormatException ex) {
-      // any invalid character in namespace may cause this exception
-      // alternatively, shall come up with a namespace check
-      return ex.getMessage();
+    c.withScope(mpsProject.getRepository());
+    s = c.checkUnique();
+    if (s.isError()) {
+      return s.getMessage();
     }
     return null;
-  }
-
-  private static IFile getModuleFile(String namespace, IFile rootPath, String extension) {
-    return rootPath.findChild(namespace + extension);
   }
 }

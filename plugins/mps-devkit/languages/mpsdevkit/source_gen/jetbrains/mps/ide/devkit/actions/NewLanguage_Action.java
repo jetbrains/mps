@@ -14,9 +14,9 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.JCheckBox;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
 import jetbrains.mps.ide.ui.dialogs.modules.NewModuleDialog;
+import jetbrains.mps.project.modules.NewModuleCheck;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
-import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.util.IStatus;
 import java.io.File;
 import jetbrains.mps.project.modules.LanguageAndSolutionsProducer;
 import java.util.function.Consumer;
@@ -75,11 +75,16 @@ public class NewLanguage_Action extends BaseAction {
     };
     cfg.withDefaults("NewLanguage", "languages");
 
-
+    final NewModuleCheck mc = new NewModuleCheck().forLanguage();
+    mc.withScope(mpsProject.getRepository());
 
     NewModuleDialog<Language> dialog = new NewModuleDialog<>(mpsProject, cfg);
     dialog.setTitle("New Language");
-    dialog.withCheck(() -> NewModuleUtil.check(mpsProject, MPSExtentions.DOT_LANGUAGE, cfg.getModuleName(), cfg.getModuleLocation().getAbsolutePath()));
+    dialog.withCheck(() -> {
+      mc.withName(cfg.getModuleName()).withHome(cfg.getModuleLocation());
+      IStatus s = mc.checkAll();
+      return (s.isOk() ? null : s.getMessage());
+    });
     dialog.withFactory(() -> {
       String moduleName = cfg.getModuleName();
       File moduleLocation = cfg.getModuleLocation();

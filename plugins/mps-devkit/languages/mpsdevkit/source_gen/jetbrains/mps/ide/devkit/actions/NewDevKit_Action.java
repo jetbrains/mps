@@ -13,9 +13,9 @@ import jetbrains.mps.workbench.MPSDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
 import jetbrains.mps.ide.ui.dialogs.modules.NewModuleDialog;
+import jetbrains.mps.project.modules.NewModuleCheck;
 import jetbrains.mps.project.DevKit;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
-import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.util.IStatus;
 import java.io.File;
 import jetbrains.mps.project.modules.DevkitProducer;
 import jetbrains.mps.ide.projectPane.ProjectPane;
@@ -55,8 +55,15 @@ public class NewDevKit_Action extends BaseAction {
     final String virtualFolder = event.getData(MPSDataKeys.NAMESPACE);
     final NameLocationPanel cfg = new NameLocationPanel(NewModuleDialog.projectHome(mpsProject), "Devkit name:", "Devkit file location:");
     cfg.withDefaults("NewDevkit", "devkits");
+    final NewModuleCheck mc = new NewModuleCheck().forDevkit();
+    mc.withScope(mpsProject.getRepository());
+
     NewModuleDialog<DevKit> dialog = new NewModuleDialog<>(mpsProject, cfg);
-    dialog.withCheck(() -> NewModuleUtil.check(mpsProject, MPSExtentions.DOT_DEVKIT, cfg.getModuleName(), cfg.getModuleLocation().getAbsolutePath()));
+    dialog.withCheck(() -> {
+      mc.withName(cfg.getModuleName()).withHome(cfg.getModuleLocation());
+      IStatus s = mc.checkAll();
+      return (s.isOk() ? null : s.getMessage());
+    });
     dialog.withFactory(() -> {
       String devkitName = cfg.getModuleName();
       File devkitLocation = cfg.getModuleLocation();
