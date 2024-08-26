@@ -20,9 +20,7 @@ import com.intellij.openapi.application.WriteAction;
 import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.fileTypes.FileTypeManager;
 import com.intellij.openapi.vfs.JarFileSystem;
-import com.intellij.openapi.vfs.LargeFileWriteRequestor;
 import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.openapi.vfs.SafeWriteRequestor;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.ThrowableRunnable;
@@ -51,10 +49,7 @@ import java.util.Objects;
  */
 @SuppressWarnings({"removal", "deprecation"})
 @Deprecated(since = "2019.1", forRemoval = true)
-public final class IdeaFileSystem implements FileSystem, CachingFileSystem, FileSystemBridge,
-                                                                        SafeWriteRequestor,
-                                                                        LargeFileWriteRequestor,
-                                                                        BaseComponent {
+public final class IdeaFileSystem implements FileSystem, CachingFileSystem, FileSystemBridge, BaseComponent {
 
   private final FileSystemListenersContainer myListenersContainer;
   private FileSystem myOldFileSystem;
