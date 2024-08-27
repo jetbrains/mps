@@ -8058,5 +8058,66 @@
       <node concept="l2Vlx" id="7PHI2cMHfh2" role="2iSdaV" />
     </node>
   </node>
+  <node concept="24kQdi" id="sVPqdgwPac">
+    <property role="3GE5qa" value="inspector" />
+    <ref role="1XX52x" to="68nn:sVPqdgvdiO" resolve="TestInspectorParent" />
+    <node concept="3EZMnI" id="sVPqdgwPiD" role="2wV5jI">
+      <node concept="3EZMnI" id="sVPqdgwPlw" role="3EZMnx">
+        <node concept="VPM3Z" id="sVPqdgwPly" role="3F10Kt" />
+        <node concept="3F0ifn" id="sVPqdgwPnt" role="3EZMnx">
+          <property role="3F0ifm" value="Name:" />
+        </node>
+        <node concept="l2Vlx" id="sVPqdgwPl_" role="2iSdaV" />
+        <node concept="3F0A7n" id="sVPqdgwPun" role="3EZMnx">
+          <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="sVPqdgwPAI" role="3EZMnx">
+        <property role="3F0ifm" value="Child:" />
+      </node>
+      <node concept="3EZMnI" id="sVPqdgwQb9" role="3EZMnx">
+        <node concept="VPM3Z" id="sVPqdgwQbb" role="3F10Kt" />
+        <node concept="xShMh" id="sVPqdgwQvx" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="3F1sOY" id="sVPqdgwQlX" role="3EZMnx">
+          <ref role="1NtTu8" to="68nn:sVPqdgwOTg" resolve="children" />
+        </node>
+        <node concept="l2Vlx" id="sVPqdgwQbe" role="2iSdaV" />
+      </node>
+      <node concept="2iRkQZ" id="sVPqdgwPiG" role="2iSdaV" />
+    </node>
+    <node concept="3EZMnI" id="sVPqdgwQz9" role="6VMZX">
+      <node concept="l2Vlx" id="sVPqdgwQza" role="2iSdaV" />
+      <node concept="3F0ifn" id="sVPqdgwQEB" role="3EZMnx">
+        <property role="3F0ifm" value="Parent name:" />
+      </node>
+      <node concept="3F0A7n" id="sVPqdgwQKH" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="sVPqdgwQRt">
+    <property role="3GE5qa" value="inspector" />
+    <ref role="1XX52x" to="68nn:sVPqdgwOvl" resolve="TestInspectorChild" />
+    <node concept="3EZMnI" id="sVPqdgwQUf" role="2wV5jI">
+      <node concept="3F0ifn" id="sVPqdgwQW8" role="3EZMnx">
+        <property role="3F0ifm" value="Name:" />
+      </node>
+      <node concept="l2Vlx" id="sVPqdgwQUi" role="2iSdaV" />
+      <node concept="3F0A7n" id="sVPqdgwR62" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
+    </node>
+    <node concept="3EZMnI" id="sVPqdgwRa4" role="6VMZX">
+      <node concept="l2Vlx" id="sVPqdgwRa5" role="2iSdaV" />
+      <node concept="3F0ifn" id="sVPqdgwRkM" role="3EZMnx">
+        <property role="3F0ifm" value="Inspected name:" />
+      </node>
+      <node concept="3F0A7n" id="sVPqdgwRq4" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
+    </node>
+  </node>
 </model>
 

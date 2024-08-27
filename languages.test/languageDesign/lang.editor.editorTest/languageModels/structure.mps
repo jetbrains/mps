@@ -1984,5 +1984,30 @@
       <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
     </node>
   </node>
+  <node concept="1TIwiD" id="sVPqdgvdiO">
+    <property role="EcuMT" value="521245079298167988" />
+    <property role="TrG5h" value="TestInspectorParent" />
+    <property role="3GE5qa" value="inspector" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="PrWs8" id="sVPqdgvdAL" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1TJgyj" id="sVPqdgwOTg" role="1TKVEi">
+      <property role="IQ2ns" value="521245079298592336" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="children" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="sVPqdgwOvl" resolve="TestInspectorChild" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="sVPqdgwOvl">
+    <property role="EcuMT" value="521245079298590677" />
+    <property role="3GE5qa" value="inspector" />
+    <property role="TrG5h" value="TestInspectorChild" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="PrWs8" id="sVPqdgwONR" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
 </model>
 
