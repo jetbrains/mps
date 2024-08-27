@@ -22,7 +22,7 @@ public final class Mac_10_5_KeymapChanges extends BaseKeymapChanges {
     replace("jetbrains.mps.ide.actions.GoToModule_Action", "meta alt O");
     replace("jetbrains.mps.ide.actions.ShowClassInHierarchy_Action", "ctrl H");
     replace("jetbrains.mps.ide.actions.ShowConceptInHierarchy_Action", "ctrl H");
-    replace("jetbrains.mps.ide.actions.ShowNodeInfo_Action", "ctrl Q");
+    replace("jetbrains.mps.ide.actions.ShowNodeInfo_Action", "ctrl shift Q");
     // parameterized
     replaceTemplate("jetbrains.mps.ide.actions.GoToRootNode_Action", "meta O");
     customTemplate("jetbrains.mps.ide.actions.GoToBookmark_Action", new ShortcutChange0());
