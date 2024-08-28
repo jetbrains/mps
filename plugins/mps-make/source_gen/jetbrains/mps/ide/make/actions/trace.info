@@ -1575,7 +1575,7 @@
       <node id="3839308812912144914" at="46,34,47,18" concept="11" />
       <node id="7550858217961929329" at="47,18,48,139" concept="9" />
       <node id="621016502014035560" at="48,139,49,127" concept="9" />
-      <node id="4517385494359470564" at="49,127,50,243" concept="9" />
+      <node id="4517385494359470564" at="49,127,50,235" concept="9" />
       <node id="4517385494359470595" at="51,20,52,35" concept="4" />
       <node id="7035395638377099138" at="53,5,54,52" concept="9" />
       <node id="7035395638377112092" at="54,52,55,37" concept="4" />
@@ -1601,7 +1601,7 @@
       <node id="9186796564629073673" at="93,49,94,83" concept="9" />
       <node id="9186796564629073680" at="94,83,95,102" concept="4" />
       <node id="721478377485348913" at="42,0,45,0" concept="8" trace="dispose#()V" />
-      <node id="4517385494359470588" at="50,243,53,5" concept="7" />
+      <node id="4517385494359470588" at="50,235,53,5" concept="7" />
       <node id="621016502014035524" at="85,40,88,5" concept="7" />
       <node id="721478377485341573" at="32,0,36,0" concept="2" trace="TransientModelBallonDisplayer#(Lcom/intellij/openapi/wm/StatusBar;Ljetbrains/mps/ide/make/actions/TransientModelsWidget;)V" />
       <node id="721478377485348908" at="37,0,41,0" concept="8" trace="init#()V" />

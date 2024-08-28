@@ -10,7 +10,7 @@ import com.intellij.notification.impl.NotificationsConfigurationImpl;
 import com.intellij.notification.NotificationDisplayType;
 import com.intellij.openapi.ui.popup.BalloonBuilder;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.intellij.ui.LightColors;
+import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.util.Disposer;
 import java.awt.Component;
@@ -47,7 +47,7 @@ public final class TransientModelBallonDisplayer implements Disposable {
     // Assumes EDT
     Notification notification = new Notification(ID, "Saving transient models", "Saving transient models is on", NotificationType.WARNING);
     boolean sticky = NotificationsConfigurationImpl.getSettings(ID).getDisplayType() == NotificationDisplayType.STICKY_BALLOON;
-    BalloonBuilder builder = JBPopupFactory.getInstance().createHtmlTextBalloonBuilder("Saving transient models is on", null, LightColors.YELLOW, null).setHideOnAction(!(sticky)).setHideOnClickOutside(!(sticky)).setHideOnKeyOutside(!(sticky));
+    BalloonBuilder builder = JBPopupFactory.getInstance().createHtmlTextBalloonBuilder("Saving transient models is on", MessageType.INFO, null).setHideOnAction(!(sticky)).setHideOnClickOutside(!(sticky)).setHideOnKeyOutside(!(sticky));
     if (!(sticky)) {
       builder.setFadeoutTime(3000);
     }

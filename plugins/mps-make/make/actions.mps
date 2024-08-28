@@ -10627,14 +10627,13 @@
                   </node>
                   <node concept="2OqwBi" id="3UKYyL8N77E" role="2Oq$k0">
                     <node concept="liA8E" id="3UKYyL8N77G" role="2OqNvi">
-                      <ref role="37wK5l" to="gspm:~JBPopupFactory.createHtmlTextBalloonBuilder(java.lang.String,javax.swing.Icon,java.awt.Color,javax.swing.event.HyperlinkListener)" resolve="createHtmlTextBalloonBuilder" />
+                      <ref role="37wK5l" to="gspm:~JBPopupFactory.createHtmlTextBalloonBuilder(java.lang.String,com.intellij.openapi.ui.MessageType,javax.swing.event.HyperlinkListener)" resolve="createHtmlTextBalloonBuilder" />
                       <node concept="Xl_RD" id="3UKYyL8N77H" role="37wK5m">
                         <property role="Xl_RC" value="Saving transient models is on" />
                       </node>
-                      <node concept="10Nm6u" id="3UKYyL8N77I" role="37wK5m" />
-                      <node concept="10M0yZ" id="3UKYyL8N77J" role="37wK5m">
-                        <ref role="3cqZAo" to="lzb2:~LightColors.YELLOW" resolve="YELLOW" />
-                        <ref role="1PxDUh" to="lzb2:~LightColors" resolve="LightColors" />
+                      <node concept="10M0yZ" id="5MsRCEsbqcP" role="37wK5m">
+                        <ref role="3cqZAo" to="jkm4:~MessageType.INFO" resolve="INFO" />
+                        <ref role="1PxDUh" to="jkm4:~MessageType" resolve="MessageType" />
                       </node>
                       <node concept="10Nm6u" id="3UKYyL8N77K" role="37wK5m" />
                     </node>
