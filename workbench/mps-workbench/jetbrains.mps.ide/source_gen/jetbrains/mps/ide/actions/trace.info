@@ -4907,30 +4907,29 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/227146524086772103">
     <file name="HighlightConstants.java">
-      <node id="227146524086812310" at="15,0,16,0" concept="16" trace="INSTANCES_COLOR" />
-      <node id="6710380512701234015" at="16,0,17,0" concept="16" trace="ANCESTOR_COLOR" />
-      <node id="7817278991233435916" at="19,57,20,101" concept="12" />
-      <node id="7817278991233435922" at="20,101,21,98" concept="12" />
-      <node id="7817278991233435929" at="21,98,22,43" concept="13" />
-      <node id="7817278991233437625" at="24,63,25,101" concept="12" />
-      <node id="7817278991233437631" at="25,101,26,104" concept="12" />
-      <node id="7817278991233437638" at="26,104,27,43" concept="13" />
-      <node id="5249055041137750162" at="17,0,19,0" concept="3" trace="HighlightConstants#()V" />
-      <node id="7817278991233435914" at="19,0,24,0" concept="17" trace="getSearchResultsBackgroundColor#()Ljava/awt/Color;" />
-      <node id="7817278991233437623" at="24,0,29,0" concept="17" trace="getSearchResultsSourceBackgroundColor#()Ljava/awt/Color;" />
-      <scope id="5249055041137750164" at="17,31,17,31" />
-      <scope id="5249055041137750162" at="17,0,19,0" />
-      <scope id="7817278991233435915" at="19,57,22,43">
+      <node id="6710380512701234015" at="15,0,16,0" concept="16" trace="ANCESTOR_COLOR" />
+      <node id="7817278991233435916" at="18,57,19,101" concept="12" />
+      <node id="7817278991233435922" at="19,101,20,98" concept="12" />
+      <node id="7817278991233435929" at="20,98,21,43" concept="13" />
+      <node id="7817278991233437625" at="23,63,24,101" concept="12" />
+      <node id="7817278991233437631" at="24,101,25,104" concept="12" />
+      <node id="7817278991233437638" at="25,104,26,43" concept="13" />
+      <node id="5249055041137750162" at="16,0,18,0" concept="3" trace="HighlightConstants#()V" />
+      <node id="7817278991233435914" at="18,0,23,0" concept="17" trace="getSearchResultsBackgroundColor#()Ljava/awt/Color;" />
+      <node id="7817278991233437623" at="23,0,28,0" concept="17" trace="getSearchResultsSourceBackgroundColor#()Ljava/awt/Color;" />
+      <scope id="5249055041137750164" at="16,31,16,31" />
+      <scope id="5249055041137750162" at="16,0,18,0" />
+      <scope id="7817278991233435915" at="18,57,21,43">
         <var name="attributes" id="7817278991233435923" />
         <var name="globalScheme" id="7817278991233435917" />
       </scope>
-      <scope id="7817278991233437624" at="24,63,27,43">
+      <scope id="7817278991233437624" at="23,63,26,43">
         <var name="attributes" id="7817278991233437632" />
         <var name="globalScheme" id="7817278991233437626" />
       </scope>
-      <scope id="7817278991233435914" at="19,0,24,0" />
-      <scope id="7817278991233437623" at="24,0,29,0" />
-      <unit id="227146524086772103" at="13,0,30,0" name="jetbrains.mps.ide.actions.HighlightConstants" />
+      <scope id="7817278991233435914" at="18,0,23,0" />
+      <scope id="7817278991233437623" at="23,0,28,0" />
+      <unit id="227146524086772103" at="13,0,29,0" name="jetbrains.mps.ide.actions.HighlightConstants" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/227146524086812204">
@@ -4955,7 +4954,7 @@
       <node id="299059313917246840" at="71,116,72,0" concept="15" />
       <node id="3839513696115040160" at="72,0,73,82" concept="12" />
       <node id="1603865323670465831" at="73,82,74,201" concept="12" />
-      <node id="227146524086812463" at="76,134,77,104" concept="6" />
+      <node id="227146524086812463" at="76,134,77,122" concept="6" />
       <node id="1709218712959265252" at="79,5,80,55" concept="6" />
       <node id="227146524086812204" at="41,95,44,5" concept="10" />
       <node id="227146524086812303" at="46,90,49,7" concept="10" />
@@ -4977,7 +4976,7 @@
       <scope id="8898893144448210373" at="50,36,51,21" />
       <scope id="8898893144448210419" at="56,22,57,21" />
       <scope id="8898893144448210325" at="62,25,63,21" />
-      <scope id="227146524086812403" at="76,134,77,104" />
+      <scope id="227146524086812403" at="76,134,77,122" />
       <scope id="227146524086812384" at="75,51,78,7" />
       <scope id="227146524086812204" at="30,38,34,29" />
       <scope id="227146524086812204" at="36,0,40,0" />

@@ -12,7 +12,6 @@ import com.intellij.openapi.editor.colors.EditorColors;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/227146524086772103", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class HighlightConstants {
-  public static final Color INSTANCES_COLOR = MPSColors.BLUE;
   public static final Color ANCESTOR_COLOR = MPSColors.GREEN;
   public HighlightConstants() {
   }

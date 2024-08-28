@@ -14589,18 +14589,6 @@
   <node concept="312cEu" id="cAZ8XCa267">
     <property role="TrG5h" value="HighlightConstants" />
     <property role="3GE5qa" value="Menu.EditorPopup.Actions" />
-    <node concept="Wx3nA" id="cAZ8XCabUm" role="jymVt">
-      <property role="TrG5h" value="INSTANCES_COLOR" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="cAZ8XCabUo" role="1tU5fm">
-        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
-      </node>
-      <node concept="10M0yZ" id="cAZ8XCabUp" role="33vP2m">
-        <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
-        <ref role="3cqZAo" to="lzb2:~JBColor.BLUE" resolve="BLUE" />
-      </node>
-      <node concept="3Tm1VV" id="cAZ8XCabUn" role="1B3o_S" />
-    </node>
     <node concept="Wx3nA" id="5Ow3SnJgFHv" role="jymVt">
       <property role="TrG5h" value="ANCESTOR_COLOR" />
       <property role="3TUv4t" value="true" />
@@ -14903,9 +14891,9 @@
                           </node>
                         </node>
                       </node>
-                      <node concept="10M0yZ" id="cAZ8XCabWU" role="37wK5m">
-                        <ref role="1PxDUh" node="cAZ8XCa267" resolve="HighlightConstants" />
-                        <ref role="3cqZAo" node="cAZ8XCabUm" resolve="INSTANCES_COLOR" />
+                      <node concept="2YIFZM" id="7CbDiUyg6$0" role="37wK5m">
+                        <ref role="37wK5l" node="6LWztcA_W$a" resolve="getSearchResultsBackgroundColor" />
+                        <ref role="1Pybhc" node="cAZ8XCa267" resolve="HighlightConstants" />
                       </node>
                       <node concept="Xl_RD" id="cAZ8XCabX2" role="37wK5m">
                         <property role="Xl_RC" value="usage" />
