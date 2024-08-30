@@ -223,7 +223,6 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
     if (myContentDir != null) {
       memento.put(CONTENT_PATH, myContentDir.shrink(mh));
     }
-    memento.put("type", getType()); // historically we put contentDir first, and to avoid diff on module save, keep it this way
     for (SourceRootKind kind : getSupportedFileKinds1()) {
       for (SourceRoot root : getSourceRoots(kind)) {
         Memento modelRootMemento = memento.createChild(kind.getName());
