@@ -7,7 +7,19 @@ import jetbrains.mps.annotations.GeneratedClass;
 @GeneratedClass(node = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)/8905019541642880645", model = "r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)")
 public interface IHttpRequestHandler {
 
-  boolean canHandle();
+  /**
+   * Additional checks to verify the request can be handled. Otherwise, it is passed to the next MPS handler, if any.
+   */
+  default boolean canHandle() {
+    return true;
+  }
+
+  /**
+   * Initialize handler from request
+   * 
+   * @return false if the request is malformed
+   */
+  boolean init();
 
   void handle() throws Exception;
 

@@ -147,7 +147,7 @@ public class TestRHBehavior_Test extends BaseTransformationTest {
       initTestNodes();
       runWithinCommand(() -> {
         String url = TestBody.this.buildRequest("/handlerTest/requiredParams");
-        TestBody.this.testRequestResponse(url, 404, null);
+        TestBody.this.testRequestResponse(url, 400, null);
       });
     }
     public void test_testRHRequiredParams() throws Exception {
