@@ -1959,6 +1959,15 @@
           <ref role="3uigEE" to="dush:~Memento" resolve="Memento" />
         </node>
       </node>
+      <node concept="37vLTG" id="1XoQW1M1y4L" role="3clF46">
+        <property role="TrG5h" value="context" />
+        <node concept="3uibUv" id="1XoQW1M1y4M" role="1tU5fm">
+          <ref role="3uigEE" to="dush:~ModulePersistenceContext" resolve="ModulePersistenceContext" />
+        </node>
+        <node concept="2AHcQZ" id="1XoQW1M1y4N" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
       <node concept="3clFbS" id="rP8MxQUY2p" role="3clF47">
         <node concept="3cpWs8" id="CWmjREQD_s" role="3cqZAp">
           <node concept="3cpWsn" id="CWmjREQD_t" role="3cpWs9">
@@ -2118,9 +2127,12 @@
         </node>
         <node concept="3clFbF" id="rP8MxQV0nz" role="3cqZAp">
           <node concept="3nyPlj" id="rP8MxQV0ny" role="3clFbG">
-            <ref role="37wK5l" to="ends:~FileBasedModelRoot.load(org.jetbrains.mps.openapi.persistence.Memento)" resolve="load" />
+            <ref role="37wK5l" to="ends:~FileBasedModelRoot.load(org.jetbrains.mps.openapi.persistence.Memento,org.jetbrains.mps.openapi.persistence.ModulePersistenceContext)" resolve="load" />
             <node concept="37vLTw" id="rP8MxQV0nx" role="37wK5m">
               <ref role="3cqZAo" node="rP8MxQUY2n" resolve="memento" />
+            </node>
+            <node concept="37vLTw" id="1XoQW1M1W$p" role="37wK5m">
+              <ref role="3cqZAo" node="1XoQW1M1y4L" resolve="context" />
             </node>
           </node>
         </node>
@@ -2386,12 +2398,24 @@
           <ref role="3uigEE" to="dush:~Memento" resolve="Memento" />
         </node>
       </node>
+      <node concept="37vLTG" id="1XoQW1M0L2s" role="3clF46">
+        <property role="TrG5h" value="context" />
+        <node concept="3uibUv" id="1XoQW1M0TGS" role="1tU5fm">
+          <ref role="3uigEE" to="dush:~ModulePersistenceContext" resolve="ModulePersistenceContext" />
+        </node>
+        <node concept="2AHcQZ" id="1XoQW1M0WdX" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
       <node concept="3clFbS" id="4KlVfHJ29_" role="3clF47">
         <node concept="3clFbF" id="4KlVfHJ29D" role="3cqZAp">
           <node concept="3nyPlj" id="4KlVfHJ29C" role="3clFbG">
-            <ref role="37wK5l" to="ends:~FileBasedModelRoot.save(org.jetbrains.mps.openapi.persistence.Memento)" resolve="save" />
+            <ref role="37wK5l" to="ends:~FileBasedModelRoot.save(org.jetbrains.mps.openapi.persistence.Memento,org.jetbrains.mps.openapi.persistence.ModulePersistenceContext)" resolve="save" />
             <node concept="37vLTw" id="4KlVfHJ29B" role="37wK5m">
               <ref role="3cqZAo" node="4KlVfHJ29z" resolve="memento" />
+            </node>
+            <node concept="37vLTw" id="1XoQW1M16wA" role="37wK5m">
+              <ref role="3cqZAo" node="1XoQW1M0L2s" resolve="context" />
             </node>
           </node>
         </node>

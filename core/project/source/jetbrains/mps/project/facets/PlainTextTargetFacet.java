@@ -5,9 +5,9 @@ package jetbrains.mps.project.facets;
 
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.generator.fileGenerator.FileGenerationUtil;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.util.IFileUtil;
-import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
@@ -16,6 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 
 /**
  * @author Artem Tikhomirov
@@ -98,7 +99,7 @@ public class PlainTextTargetFacet extends ModuleFacetBase implements GenerationT
   }
 
   @Override
-  public void load(@NotNull Memento memento) {
+  public void load(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
     final String foldersValue = memento.get("folders");
     myUseModelNameForFolder = foldersValue == null || Boolean.parseBoolean(foldersValue);
     String locationValue = memento.get("root");
@@ -109,22 +110,19 @@ public class PlainTextTargetFacet extends ModuleFacetBase implements GenerationT
     } else {
       myOutputRootFromDescriptor = false;
       myOutputRoot = new PathSpec(locationValue);
-      myOutputRoot.resolve(s -> {
-        final String expanded = MacrosFactory.forModule(getModule()).expandPath(locationValue);
-        return am.getFileSystem().getFile(expanded);
-      });
+      myOutputRoot.resolve(PersistenceContextImpl.pathResolveFunction(context));
     }
     //noinspection removal
     myOutputCacheRoot = myOutputRoot != null && myOutputRoot.resolved() ? FileGenerationUtil.getCachesDir(myOutputRoot.resolvedFile()) : null;
   }
 
   @Override
-  public void save(@NotNull Memento memento) {
+  public void save(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
     memento.put("folders", String.valueOf(myUseModelNameForFolder));
     if (myOutputRootFromDescriptor || myOutputRoot == null) {
       memento.put("root", null);
     } else {
-      memento.put("root", myOutputRoot.shrink(MacrosFactory.forModule(getModule())));
+      memento.put("root", myOutputRoot.shrink(PersistenceContextImpl.macroHelper(context)));
     }
   }
 }

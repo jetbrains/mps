@@ -15,9 +15,11 @@
  */
 package jetbrains.mps.extapi.persistence;
 
+import jetbrains.mps.core.context.PerConceptContext;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.FileUtil;
@@ -39,6 +41,7 @@ import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayList;
@@ -211,7 +214,8 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   }
 
   @Override
-  public void save(@NotNull Memento memento) {
+  public void save(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    super.save(memento, context); // support subclasses that override save(Memento)
     if (myBrokenState) {
       assert this.memento != null;
       copyMemento(this.memento, memento);
@@ -250,7 +254,8 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   }
 
   @Override
-  public void load(@NotNull Memento memento) {
+  public void load(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    super.load(memento, context); // support subclasses that override load(Memento)
     checkNotRegistered();
 
     mySourcePathStorage.clearAll(); // AP: I'd rather force a single invocation of the #load method
@@ -304,9 +309,10 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   @Override
   public void setModule(@NotNull SModuleBase module) {
     super.setModule(module);
+    // FIXME refactor load/setModule() pair, now that we pass MPC into load() and likely don't need this code here
     myFileSystem = module instanceof AbstractModule ? ((AbstractModule) module).getFileSystem() : null;
-    final MacroHelper mh = MacrosFactory.forModule(module);
-    final Function<String, IFile> path2file = s -> myFileSystem.getFile(mh.expandPath(s));
+    final Function<String, IFile> path2file = PersistenceContextImpl.pathResolveFunction(
+        module instanceof AbstractModule ? PersistenceContextImpl.forModule((AbstractModule) module) : null);
     if (myContentDir != null) {
       myContentDir.resolve(path2file);
     }

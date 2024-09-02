@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 import java.io.File;
 import jetbrains.mps.baseLanguage.javastub.SingleZipWithJavaSources;
 import java.util.List;
@@ -69,7 +70,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
   }
 
   @Override
-  public void load(@NotNull Memento memento) {
+  public void load(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
     String provided = memento.get("provided");
     if (myStubPathProvider != null && provided != null && myStubPathProvider.supports(provided)) {
       // in case provider add anything to memento, don't want anyone to see that changes or try to persist them afterwards
@@ -77,7 +78,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
       myStubPathProvider.configure(provided, copy);
       memento = copy;
     }
-    super.load(memento);
+    super.load(memento, context);
     // Perhaps, shall support multiple scope configurations per root
     Memento packScope = memento.getChild("PackageScope");
     if (packScope != null) {
@@ -98,8 +99,8 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
   }
 
   @Override
-  public void save(@NotNull Memento memento) {
-    super.save(memento);
+  public void save(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    super.save(memento, context);
     if (myPackageScope != null) {
       // XXX save package scope iff it was part or initial memento, not from path provider
       myPackageScope.save(memento.createChild("PackageScope"));

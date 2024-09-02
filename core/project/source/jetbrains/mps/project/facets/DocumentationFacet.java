@@ -4,7 +4,7 @@
 package jetbrains.mps.project.facets;
 
 import jetbrains.mps.extapi.module.ModuleFacetBase;
-import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.PathSpec;
@@ -16,6 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 
 public class DocumentationFacet extends ModuleFacetBase implements GenerationTargetFacet {
 
@@ -78,7 +79,7 @@ public class DocumentationFacet extends ModuleFacetBase implements GenerationTar
     return IFileUtil.getDescendant(root, packagePath);
   }
 
-  public void load(@NotNull Memento memento) {
+  public void load(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
     String locationValue = memento.get("doc_src");
     if (locationValue == null && JavaModuleFacetImpl.isBlank(memento)) {
       // ModulePropertiesConfigurable$FacetCheckBox.itemStateChanged() for an explanation
@@ -88,23 +89,12 @@ public class DocumentationFacet extends ModuleFacetBase implements GenerationTar
     myOutputCacheRoot = myOutputRoot;
     if (myOutputRoot != null) {
       // as long as myOutputCacheRoot == myOutputRoot, it's enough to resolve only one.
-      myOutputRoot.resolve(s -> {
-        try {
-          final AbstractModule am = (AbstractModule) getModule();
-          final String expanded = MacrosFactory.forModule(am).expandPath(s);
-          if (MacrosFactory.containsMacro(expanded)) {
-            return null;
-          }
-          return am.getFileSystem().getFile(expanded);
-        } catch (Exception ex) {
-          return null;
-        }
-      });
+      myOutputRoot.resolve(PersistenceContextImpl.pathResolveFunction(context));
     }
   }
 
-  public void save(@NotNull Memento memento) {
-    final String shrank = myOutputRoot == null ? null : myOutputRoot.shrink(MacrosFactory.forModule(getModule()));
+  public void save(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    final String shrank = myOutputRoot == null ? null : myOutputRoot.shrink(PersistenceContextImpl.macroHelper(context));
     memento.put("doc_src", shrank);
   }
 
