@@ -12,17 +12,16 @@ import jetbrains.mps.extapi.persistence.SourceRootKind;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
+import org.jetbrains.mps.openapi.model.SModel;
 import java.util.Collection;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Set;
 import jetbrains.mps.vfs.IFile;
 import java.util.HashSet;
+import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.util.FileUtil;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -47,13 +46,6 @@ public class PropertyFilesStubModelRoot extends FileBasedModelRoot implements Co
   @Override
   public String getType() {
     return "property_files_stubs";
-  }
-
-  @Override
-  @Nullable
-  public SModel getModel(@NotNull SModelId id) {
-    // TODO why is this method empty? Why does it exist? It seems not to be used
-    return null;
   }
 
   @Override

@@ -49,11 +49,6 @@ class KotlinStubModelRoot : FileBasedModelRoot() {
 
     override fun canCreateModel(modelName: SModelName) = false
 
-    /**
-     * not implemented in BL either
-     */
-    override fun getModel(id: SModelId) = null
-
     private fun Collection<SourceRoot>.toFiles(): List<IFile> = this.map { it.absolutePath }
 
     override fun loadModels(): Iterable<SModel> {

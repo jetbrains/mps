@@ -58,7 +58,10 @@ public interface ModelRoot {
    * @return the model with a given id
    * one-to-one relation is assumed
    */
-  @Nullable SModel getModel(@NotNull SModelId id);
+  default @Nullable SModel getModel(@NotNull SModelId id) {
+    // XXX there are no uses of the method, is there any reason to have one?
+    return null;
+  }
 
   /**
    * @return a sequence of the models under this model root.

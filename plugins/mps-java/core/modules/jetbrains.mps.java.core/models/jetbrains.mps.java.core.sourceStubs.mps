@@ -29,7 +29,6 @@
     <import index="i290" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.java.stub(MPS.Core/)" />
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
-    <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
   </imports>
@@ -480,44 +479,6 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="1OabvAsgOpr" role="jymVt" />
-    <node concept="3clFb_" id="3PyP5yK7peZ" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getModel" />
-      <property role="DiZV1" value="false" />
-      <node concept="3uibUv" id="3PyP5yK7unX" role="3clF45">
-        <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
-      </node>
-      <node concept="3Tm1VV" id="3PyP5yK7pf0" role="1B3o_S" />
-      <node concept="37vLTG" id="3PyP5yK7pf3" role="3clF46">
-        <property role="TrG5h" value="id" />
-        <node concept="3uibUv" id="3PyP5yK7ux4" role="1tU5fm">
-          <ref role="3uigEE" to="mhbf:~SModelId" resolve="SModelId" />
-        </node>
-        <node concept="2AHcQZ" id="D47cPOL6KT" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="3PyP5yK7pf7" role="3clF47">
-        <node concept="3SKdUt" id="3PyP5yK7wL0" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXoh$r" role="1aUNEU">
-            <node concept="3oM_SD" id="ATZLwXoh$s" role="1PaTwD">
-              <property role="3oM_SC" value="TODO" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3PyP5yK7pf9" role="3cqZAp">
-          <node concept="10Nm6u" id="3PyP5yK7pf8" role="3clFbG" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3PyP5yK7vtO" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="2AHcQZ" id="D47cPOL8z5" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="1OabvAsgOps" role="jymVt" />
     <node concept="2tJIrI" id="D47cPOLDZo" role="jymVt" />
     <node concept="3clFb_" id="D47cPOLGvk" role="jymVt">
       <property role="TrG5h" value="canCreateModels" />
@@ -532,6 +493,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="OLcV8TRQo6" role="jymVt" />
     <node concept="3clFb_" id="7S0PgEhrIFP" role="jymVt">
       <property role="TrG5h" value="newDataSource" />
       <node concept="3uibUv" id="3se2FvxAaD_" role="3clF45">

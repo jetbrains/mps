@@ -9,14 +9,12 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.java.stub.PackageScopeControl;
 import jetbrains.mps.baseLanguage.javastub.JavadocSupplier;
 import jetbrains.mps.java.stub.ClassStubRootConfiguration;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 import java.io.File;
 import jetbrains.mps.baseLanguage.javastub.SingleZipWithJavaSources;
+import org.jetbrains.mps.openapi.model.SModel;
 import java.util.List;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
@@ -25,6 +23,7 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.vfs.path.Path;
 import java.util.Map;
+import org.jetbrains.mps.openapi.model.SModelId;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.Collection;
@@ -38,6 +37,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.java.stub.JavaPackageNameStub;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
 import org.jetbrains.mps.openapi.persistence.DataSourceListener;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.extapi.persistence.CopyNotSupportedException;
 import jetbrains.mps.persistence.CopyFileBasedModelRootHelper;
 
@@ -60,13 +60,6 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
   @Override
   public String getType() {
     return JavaClassStubConstants.STUB_TYPE;
-  }
-
-  @Override
-  @Nullable
-  public SModel getModel(@NotNull SModelId id) {
-    // todo implement
-    return null;
   }
 
   @Override
