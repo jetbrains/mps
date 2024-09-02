@@ -118,9 +118,11 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   public void setGeneratedClassesLocation(IFile classesGen) {
     setGeneratedClassesLocation(classesGen == null ? null : new PathSpec(classesGen));
   }
-  public void setGeneratedClassesLocation(PathSpec classesGen) {
+  public void setGeneratedClassesLocation(@Nullable PathSpec classesGen) {
+    if (classesGen != null && !classesGen.resolved() && getModule() != null) {
+      throw new IllegalArgumentException("Facet already attached to a module needs resolved paths: " + classesGen.value());
+    }
     myGeneratedClassesLocation = classesGen;
-    resolvePaths(Collections.emptyList(), Collections.emptyList());
   }
 
   @NotNull
@@ -431,6 +433,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     }
   }
 
+  // FIXME check file history, it's except from load(), once there's context to take MacroHelper and FileSystem from, use it here instead of MF.forModule()
   private void resolvePaths(java.util.List<PathSpec> libraries, List<PathSpec> sources) {
     if (!libraries.isEmpty() || !sources.isEmpty() || myGeneratedClassesLocation != null) {
       // resolve PathSpec instances

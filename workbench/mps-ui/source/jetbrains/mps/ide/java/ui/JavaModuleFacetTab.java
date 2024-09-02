@@ -606,14 +606,16 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       SolutionDescriptor descriptor = (SolutionDescriptor) myJavaModuleFacet.getAbstractModule().getModuleDescriptor();
       assert descriptor != null;
       if(!myCompileOutPath.getText().isBlank()) {
-        myJavaModuleFacet.setGeneratedClassesLocation(new PathSpec(myCompileOutPath.getText()));
+        IFile classesGen = myJavaModuleFacet.getAbstractModule().getFileSystem().getFile(new File(myCompileOutPath.getText()));
+        myJavaModuleFacet.setGeneratedClassesLocation(new PathSpec(classesGen));
       }
       if (myCompileInMPS.isSelected()) {
         myJavaModuleFacet.setCompile(Compile.MPS);
         //Keep this as a fallback in case the gen class location is null. Do this only for MPS-compiled modules,
         //     external compiler handles classes location in some other way.
         if (myJavaModuleFacet.getClassesGen() == null) {
-          myJavaModuleFacet.setGeneratedClassesLocation(myJavaModuleFacet.getAbstractModule().getModuleSourceDir().findChild(AbstractModule.CLASSES_GEN));
+          IFile classesGenDefault = myJavaModuleFacet.getAbstractModule().getModuleSourceDir().findChild(AbstractModule.CLASSES_GEN);
+          myJavaModuleFacet.setGeneratedClassesLocation(new PathSpec(classesGenDefault));
         }
 
       } else if (myCompileExternal.isSelected()) {
