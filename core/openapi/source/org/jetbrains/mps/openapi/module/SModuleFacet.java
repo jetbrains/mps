@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package org.jetbrains.mps.openapi.module;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.Memento;
+import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 
 /**
  *  Facets allow to store language or feature-specific settings on a module-level.
@@ -44,15 +45,39 @@ public interface SModuleFacet extends DetachableFacet {
   @Nullable SModule getModule();
 
   /**
-   * Gives the module facet the opportunity to persist into the supplied memento whatever configuration information
-   * may be needed to restore the models in the future.
+   * Override {@link #save(Memento, ModulePersistenceContext)} instead.
+   * No-op by default
    */
-  void save(@NotNull Memento memento);
+  default void save(@NotNull Memento memento) {
+    //  no-op
+  }
 
   /**
-   * Allows the model root to read its previously saved configuration information
+   * Gives the facet an opportunity to persist into the supplied memento whatever configuration information
+   * may be needed to restore the models in the future. {@code context} gives access to various facilities
+   * one may need to convert paths/files to strings
+   * @since 2024.2
    */
-  void load(@NotNull Memento memento);
+  default void save(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    save(memento);
+  }
+
+  /**
+   * Override {@link #load(Memento, ModulePersistenceContext)} instead.
+   * No-op by default.
+   */
+  default void load(@NotNull Memento memento) {
+    // no-op
+  }
+
+  /**
+   * Facet implementation reads its configuration information.
+   * {@code context} gives access to various facilities one may need to convert memento/persistence strings to path/file objects.
+   * @since 2024.2
+   */
+  default void load(@NotNull Memento memento, @NotNull ModulePersistenceContext context) {
+    load(memento);
+  }
 
   @Override
   default void attach(@NotNull SModule module) {
