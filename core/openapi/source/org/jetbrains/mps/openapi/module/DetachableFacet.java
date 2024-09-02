@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,27 +27,9 @@ import org.jetbrains.mps.annotations.Internal;
  * @internal since this functionality is currently used only on facet construction
  *
  * @author apyshkin
+ * @deprecated Everything one needs is in {@link  SModuleFacet}. Will be removed in the next release.
  */
 @Internal
+@Deprecated(since = "2024.2", forRemoval = true)
 public interface DetachableFacet {
-  /**
-   * The owning module
-   * @return null if the module is not attached to this facet
-   */
-  @Nullable SModule getModule();
-
-  /**
-   * @param module will be returned from #getModule afterwards
-   * @throws IllegalStateException if the facet is already attached to some module
-   */
-  void attach(@NotNull SModule module);
-
-  /**
-   * #getModule will return null after this invocation
-   */
-  void detach();
-
-  default boolean isAttached() {
-    return getModule() != null;
-  }
 }

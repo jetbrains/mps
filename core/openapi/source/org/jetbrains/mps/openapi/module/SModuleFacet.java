@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
  *  For read-only modules, facets are not expected to change/persist settings.
  *  @see FacetsFacade
  */
-public interface SModuleFacet extends DetachableFacet {
+public interface SModuleFacet {
 
   /**
    * Identity of the facet, see {@link FacetsFacade#getFacetFactory(String)}
@@ -79,13 +79,15 @@ public interface SModuleFacet extends DetachableFacet {
     load(memento);
   }
 
-  @Override
   default void attach(@NotNull SModule module) {
     throw new UnsupportedOperationException();
   }
 
-  @Override
   default void detach() {
     throw new UnsupportedOperationException();
+  }
+
+  default boolean isAttached() {
+    return getModule() != null;
   }
 }
