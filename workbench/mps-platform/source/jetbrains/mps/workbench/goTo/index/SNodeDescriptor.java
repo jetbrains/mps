@@ -15,10 +15,12 @@
  */
 package jetbrains.mps.workbench.goTo.index;
 
+import jetbrains.mps.smodel.SNodeUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant.NavigationTarget;
 
@@ -32,7 +34,7 @@ public final class SNodeDescriptor implements NavigationTarget {
   private final SConcept myConcept;
 
   public SNodeDescriptor(@NotNull SNode node) {
-    this(node.getName(), node.getConcept(), node.getReference());
+    this(SNodeAccessUtil.getProperty(node, SNodeUtil.property_INamedConcept_name), node.getConcept(), node.getReference());
   }
 
   public SNodeDescriptor(@Nullable String nodeName, @NotNull SConcept concept, @NotNull SNodeReference nodePtr) {
