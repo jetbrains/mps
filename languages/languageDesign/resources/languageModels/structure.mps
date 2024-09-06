@@ -50,6 +50,7 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
+      <concept id="418049251856799813" name="jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute" flags="ig" index="1AhYRh" />
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="5404671619616246344" name="staticScope" index="2_RsDV" />
         <property id="1096454100552" name="rootable" index="19KtqR" />
@@ -410,6 +411,26 @@
       <property role="TrG5h" value="small" />
       <property role="3tVfz5" value="1571777932759345039" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="39fSgdSEt5B">
+    <property role="EcuMT" value="3625363630082085223" />
+    <property role="3GE5qa" value="icons" />
+    <property role="TrG5h" value="GeneratedImage" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="1TJgyj" id="39fSgdSHrm0" role="1TKVEi">
+      <property role="IQ2ns" value="3625363630082864512" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="layers" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <ref role="20lvS9" node="2p1v3tObwT_" resolve="IconLayerDescription" />
+    </node>
+    <node concept="1TJgyi" id="39fSgdSEtdf" role="1TKVEl">
+      <property role="IQ2nx" value="3625363630082085711" />
+      <property role="TrG5h" value="fileName" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1AhYRh" id="39fSgdSEt90" role="lGtFl" />
   </node>
 </model>
 

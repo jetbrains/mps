@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082113931046:jetbrains.mps.baseLanguage.structure.ContinueStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <root>
+    <file name="TextGenAspectDescriptor.java">
+      <unit at="59,0,62,0" name="jetbrains.mps.lang.resources.textGen.TextGenAspectDescriptor$CONCEPTS" />
+      <unit at="63,0,66,0" name="jetbrains.mps.lang.resources.textGen.TextGenAspectDescriptor$PROPS" />
+      <unit at="19,0,67,0" name="jetbrains.mps.lang.resources.textGen.TextGenAspectDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:ee887510-ea76-4f06-8cef-7dc5af062973(jetbrains.mps.lang.resources.textGen)/3625363630082865412">
+    <file name="TextGenAspectDescriptor.java">
+      <node id="3625363630082865412" at="36,65,37,56" concept="3" />
+      <node id="3625363630082865412" at="37,56,38,59" concept="3" />
+      <node id="3625363630082865412" at="38,59,39,131" concept="1" />
+      <node id="3625363630082865412" at="39,131,40,17" concept="0" />
+      <node id="3625363630082972742" at="44,64,45,73" concept="3" />
+      <node id="3625363630082886970" at="45,73,46,34" concept="3" />
+      <node id="3625363630082866774" at="46,34,47,49" concept="4" />
+      <node id="3625363630082952306" at="47,49,48,0" concept="5" />
+      <node id="3625363630082973890" at="50,69,51,73" concept="3" />
+      <node id="3625363630082973896" at="51,73,52,34" concept="3" />
+      <node id="3625363630082978415" at="52,34,53,50" concept="4" />
+      <node id="3625363630082865412" at="55,54,56,24" concept="4" />
+      <node id="3625363630082865412" at="55,0,58,0" concept="6" trace="getEncoding_GeneratedImage#()Ljava/lang/String;" />
+      <node id="3625363630082865412" at="50,0,55,0" concept="6" trace="getFileExtension_GeneratedImage#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="3625363630082865412" at="35,58,41,7" concept="2" />
+      <node id="3625363630082865412" at="44,0,50,0" concept="6" trace="getFileName_GeneratedImage#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <scope id="3625363630082865412" at="55,54,56,24" />
+      <scope id="3625363630082865412" at="50,69,53,50">
+        <var name="dot" id="3625363630082973897" />
+        <var name="fn" id="3625363630082973891" />
+      </scope>
+      <scope id="3625363630082865412" at="55,0,58,0" />
+      <scope id="3625363630082865412" at="36,65,40,17">
+        <var name="ext" id="3625363630082865412" />
+        <var name="fname" id="3625363630082865412" />
+      </scope>
+      <scope id="3625363630082865412" at="44,64,48,0">
+        <var name="dot" id="3625363630082886971" />
+        <var name="fn" id="3625363630082972743" />
+      </scope>
+      <scope id="3625363630082865412" at="50,0,55,0">
+        <var name="node" id="3625363630082865412" />
+      </scope>
+      <scope id="3625363630082865412" at="44,0,50,0">
+        <var name="node" id="3625363630082865412" />
+      </scope>
+    </file>
+  </root>
+</debug-info>
+

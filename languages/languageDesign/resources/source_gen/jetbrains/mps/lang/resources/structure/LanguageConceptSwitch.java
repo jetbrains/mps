@@ -17,18 +17,19 @@ public final class LanguageConceptSwitch {
   public static final int ColorLiteral = 5;
   public static final int ConceptIconResourceExpression = 6;
   public static final int FileIcon = 7;
-  public static final int HelpURL = 8;
-  public static final int Icon = 9;
-  public static final int IconExpression = 10;
-  public static final int IconLayerDescription = 11;
-  public static final int IconResourceExpression = 12;
-  public static final int Image = 13;
-  public static final int NodeIconResourceExpression = 14;
-  public static final int Primitive = 15;
-  public static final int Rect = 16;
-  public static final int Resource = 17;
-  public static final int Text = 18;
-  public static final int TextIcon = 19;
+  public static final int GeneratedImage = 8;
+  public static final int HelpURL = 9;
+  public static final int Icon = 10;
+  public static final int IconExpression = 11;
+  public static final int IconLayerDescription = 12;
+  public static final int IconResourceExpression = 13;
+  public static final int Image = 14;
+  public static final int NodeIconResourceExpression = 15;
+  public static final int Primitive = 16;
+  public static final int Rect = 17;
+  public static final int Resource = 18;
+  public static final int Text = 19;
+  public static final int TextIcon = 20;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x982eb8df2c964bd7L, 0x996311712ea622e5L);
@@ -40,6 +41,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x19d079f4ec114bddL, ColorLiteral);
     builder.put(0x7ce01982590bd1eL, ConceptIconResourceExpression);
     builder.put(0x7c8b08a50a39c6bbL, FileIcon);
+    builder.put(0x324fe10378a9d167L, GeneratedImage);
     builder.put(0x47d8f9811b73d397L, HelpURL);
     builder.put(0x26417c3774289eeeL, Icon);
     builder.put(0x7c8b08a50a39c6c3L, IconExpression);

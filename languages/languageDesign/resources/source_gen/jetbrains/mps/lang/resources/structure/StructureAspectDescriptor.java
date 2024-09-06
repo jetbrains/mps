@@ -28,6 +28,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptColorLiteral = createDescriptorForColorLiteral();
   /*package*/ final ConceptDescriptor myConceptConceptIconResourceExpression = createDescriptorForConceptIconResourceExpression();
   /*package*/ final ConceptDescriptor myConceptFileIcon = createDescriptorForFileIcon();
+  /*package*/ final ConceptDescriptor myConceptGeneratedImage = createDescriptorForGeneratedImage();
   /*package*/ final ConceptDescriptor myConceptHelpURL = createDescriptorForHelpURL();
   /*package*/ final ConceptDescriptor myConceptIcon = createDescriptorForIcon();
   /*package*/ final ConceptDescriptor myConceptIconExpression = createDescriptorForIconExpression();
@@ -61,7 +62,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBaseURL, myConceptBaseURLFunction, myConceptBaseURLLiteral, myConceptCircle, myConceptColor, myConceptColorLiteral, myConceptConceptIconResourceExpression, myConceptFileIcon, myConceptHelpURL, myConceptIcon, myConceptIconExpression, myConceptIconLayerDescription, myConceptIconResourceExpression, myConceptImage, myConceptNodeIconResourceExpression, myConceptPrimitive, myConceptRect, myConceptResource, myConceptText, myConceptTextIcon);
+    return Arrays.asList(myConceptBaseURL, myConceptBaseURLFunction, myConceptBaseURLLiteral, myConceptCircle, myConceptColor, myConceptColorLiteral, myConceptConceptIconResourceExpression, myConceptFileIcon, myConceptGeneratedImage, myConceptHelpURL, myConceptIcon, myConceptIconExpression, myConceptIconLayerDescription, myConceptIconResourceExpression, myConceptImage, myConceptNodeIconResourceExpression, myConceptPrimitive, myConceptRect, myConceptResource, myConceptText, myConceptTextIcon);
   }
 
   @Override
@@ -84,6 +85,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptConceptIconResourceExpression;
       case LanguageConceptSwitch.FileIcon:
         return myConceptFileIcon;
+      case LanguageConceptSwitch.GeneratedImage:
+        return myConceptGeneratedImage;
       case LanguageConceptSwitch.HelpURL:
         return myConceptHelpURL;
       case LanguageConceptSwitch.Icon:
@@ -200,6 +203,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("newuiFile", 0x190fda380786ee29L).type(PrimitiveTypeId.STRING).origin("1805901909778165289").done();
     b.aggregate("iconExpression", 0x60d1cf8c81faea09L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("6976585500156684809").done();
     b.alias("file");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForGeneratedImage() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.resources", "GeneratedImage", 0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L);
+    b.class_(false, false, true);
+    b.origin("r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)/3625363630082085223");
+    b.version(3);
+    b.property("fileName", 0x324fe10378a9d34fL).type(PrimitiveTypeId.STRING).origin("3625363630082085711").done();
+    b.aggregate("layers", 0x324fe10378b5b580L).target(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0e65L).optional(false).ordered(true).multiple(true).origin("3625363630082864512").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForHelpURL() {

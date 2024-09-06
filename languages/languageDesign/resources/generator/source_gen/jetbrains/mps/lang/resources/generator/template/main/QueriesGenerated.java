@@ -7,8 +7,10 @@ import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.generator.template.PropertyMacroContext;
+import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.resources.behavior.Icon__BehaviorDescriptor;
+import java.util.Objects;
+import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
@@ -19,14 +21,18 @@ import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.generator.template.IfMacroContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
+import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import java.util.Objects;
+import jetbrains.mps.generator.template.InsertMacroContext;
+import java.util.List;
 import java.util.Map;
-import jetbrains.mps.generator.impl.query.CreateRootCondition;
+import jetbrains.mps.generator.impl.query.MapRootRuleCondition;
 import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.impl.query.QueryKey;
+import jetbrains.mps.generator.template.MapRootRuleContext;
 import jetbrains.mps.generator.impl.GenerationFailureException;
+import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
@@ -37,6 +43,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.generator.impl.query.IfMacroCondition;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
+import jetbrains.mps.generator.impl.query.CallArgumentQuery;
+import jetbrains.mps.generator.impl.query.InsertMacroQuery;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -49,6 +57,12 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean createRootRule_Condition_0_0(final CreateRootRuleContext _context) {
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IconExpression$d3)).isNotEmpty() || ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IconResourceExpression$Qx)).isNotEmpty();
+  }
+  public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
+    return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode()) != null;
+  }
+  public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
+    return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode()) != null && !(Objects.equals(Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(_context.getNode()), Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode())));
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
     return _context.createUniqueName("ICON", null);
@@ -170,6 +184,18 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_8_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.calculator$qerM);
   }
+  public static Object templateArgumentQuery_12_0(final TemplateArgumentContext _context) {
+    return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode());
+  }
+  public static Object templateArgumentQuery_12_1(final TemplateArgumentContext _context) {
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.layers$pqJD);
+  }
+  public static Object templateArgumentQuery_13_0(final TemplateArgumentContext _context) {
+    return Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(_context.getNode());
+  }
+  public static Object templateArgumentQuery_13_1(final TemplateArgumentContext _context) {
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.newuiLayers$lptJ);
+  }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IconExpression$d3)).where((it) -> Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(it, LINKS.icon$OBvj)) != null && Objects.equals(Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(it, LINKS.icon$OBvj)), Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(SNodeOperations.as(_context.getOriginalCopiedInputNode(SLinkOperations.getTarget(it, LINKS.icon$OBvj)), CONCEPTS.Icon$9F))));
   }
@@ -187,6 +213,41 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_2_5(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(SModelOperations.nodes(_context.getInputModel(), CONCEPTS.IconResourceExpression$Qx)).where((it) -> Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(it, LINKS.icon$xBV6)) != null && !(Objects.equals(Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(it, LINKS.icon$xBV6)), Icon__BehaviorDescriptor.getNewuiResourceId_id1$fQzw7$LYY.invoke(SNodeOperations.as(_context.getOriginalCopiedInputNode(SLinkOperations.getTarget(it, LINKS.icon$xBV6)), CONCEPTS.Icon$9F)))));
+  }
+  public static SNode insertMacro_Query_11_0(final InsertMacroContext _context) {
+    final SNode rv = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratedImage$_G);
+    SPropertyOperations.assign(rv, PROPS.fileName$JiWl, ((String) _context.getVariable("resourceId")));
+    ListSequence.fromList(((List<SNode>) _context.getVariable("layers"))).visitAll((it) -> ListSequence.fromList(SLinkOperations.getChildren(rv, LINKS.layers$ahIF)).addElement(SNodeOperations.copyNode(it)));
+    return rv;
+  }
+  private final Map<String, MapRootRuleCondition> mrrcMethods = new HashMap<String, MapRootRuleCondition>();
+  {
+    int i = 0;
+    mrrcMethods.put("3625363630083014663", new MRRC(i++));
+    mrrcMethods.put("3625363630083272362", new MRRC(i++));
+  }
+  @Override
+  @NotNull
+  public MapRootRuleCondition getMapRootRuleCondition(@NotNull QueryKey identity) {
+    MapRootRuleCondition query = identity.forTemplateNode(mrrcMethods);
+    return (query != null ? query : super.getMapRootRuleCondition(identity));
+  }
+  private static class MRRC implements MapRootRuleCondition {
+    private final int methodKey;
+    public MRRC(int methodKey) {
+      this.methodKey = methodKey;
+    }
+    @Override
+    public boolean check(@NotNull MapRootRuleContext ctx) throws GenerationFailureException {
+      switch (methodKey) {
+        case 0:
+          return QueriesGenerated.rule_Condition_0_0(ctx);
+        case 1:
+          return QueriesGenerated.rule_Condition_0_1(ctx);
+        default:
+          throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for rule %s (key: #%d)", ctx.getTemplateReference(), methodKey));
+      }
+    }
   }
   private final Map<String, CreateRootCondition> crcMethods = new HashMap<String, CreateRootCondition>();
   {
@@ -462,6 +523,65 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
+  private final Map<String, CallArgumentQuery> caqMethods = new HashMap<String, CallArgumentQuery>();
+  {
+    caqMethods.put("3625363630083341661", new CAQ(0));
+    caqMethods.put("3625363630083344383", new CAQ(1));
+    caqMethods.put("3625363630083346210", new CAQ(2));
+    caqMethods.put("3625363630083346213", new CAQ(3));
+  }
+  @NotNull
+  @Override
+  public CallArgumentQuery getTemplateCallArgumentQuery(@NotNull QueryKey queryKey) {
+    CallArgumentQuery query = queryKey.forTemplateNode(caqMethods);
+    return (query != null ? query : super.getTemplateCallArgumentQuery(queryKey));
+  }
+  private static class CAQ implements CallArgumentQuery {
+    private final int methodKey;
+    /*package*/ CAQ(int methodKey) {
+      this.methodKey = methodKey;
+    }
+    @Nullable
+    public Object evaluate(@NotNull TemplateArgumentContext ctx) throws GenerationFailureException {
+      switch (methodKey) {
+        case 0:
+          return QueriesGenerated.templateArgumentQuery_12_0(ctx);
+        case 1:
+          return QueriesGenerated.templateArgumentQuery_12_1(ctx);
+        case 2:
+          return QueriesGenerated.templateArgumentQuery_13_0(ctx);
+        case 3:
+          return QueriesGenerated.templateArgumentQuery_13_1(ctx);
+        default:
+          throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
+      }
+    }
+  }
+  private final Map<String, InsertMacroQuery> imqMethods = new HashMap<String, InsertMacroQuery>();
+  {
+    imqMethods.put("3625363630083100005", new IMQ(0));
+  }
+  @NotNull
+  @Override
+  public InsertMacroQuery getInsertMacroQuery(@NotNull QueryKey queryKey) {
+    InsertMacroQuery query = queryKey.forTemplateNode(imqMethods);
+    return (query != null ? query : super.getInsertMacroQuery(queryKey));
+  }
+  private static class IMQ implements InsertMacroQuery {
+    private final int methodKey;
+    /*package*/ IMQ(int methodKey) {
+      this.methodKey = methodKey;
+    }
+    @Nullable
+    public SNode evaluate(@NotNull InsertMacroContext ctx) throws GenerationFailureException {
+      switch (methodKey) {
+        case 0:
+          return QueriesGenerated.insertMacro_Query_11_0(ctx);
+        default:
+          throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
+      }
+    }
+  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept IconExpression$d3 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c3L, "jetbrains.mps.lang.resources.structure.IconExpression");
@@ -471,6 +591,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept FileIcon$Z0 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, "jetbrains.mps.lang.resources.structure.FileIcon");
     /*package*/ static final SConcept PoundExpression$$N = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11885c0d945L, "jetbrains.mps.lang.smodel.structure.PoundExpression");
+    /*package*/ static final SConcept GeneratedImage$_G = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, "jetbrains.mps.lang.resources.structure.GeneratedImage");
   }
 
   private static final class LINKS {
@@ -483,10 +604,14 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SReferenceLink conceptDeclaration$3mP7 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration");
     /*package*/ static final SContainmentLink node$SPGN = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7ce019825925c1aL, 0x7ce019825925c1cL, "node");
     /*package*/ static final SContainmentLink calculator$qerM = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e696656L, 0x4197d5560e696657L, "calculator");
+    /*package*/ static final SContainmentLink layers$pqJD = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers");
+    /*package*/ static final SContainmentLink newuiLayers$lptJ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x7cb0b849e7eb993bL, "newuiLayers");
+    /*package*/ static final SContainmentLink layers$ahIF = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, 0x324fe10378b5b580L, "layers");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty url$qUOP = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L, 0x4197d5560e6a38f3L, "url");
     /*package*/ static final SProperty url$UpM = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x47d8f9811b73d398L, "url");
+    /*package*/ static final SProperty fileName$JiWl = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, 0x324fe10378a9d34fL, "fileName");
   }
 }
