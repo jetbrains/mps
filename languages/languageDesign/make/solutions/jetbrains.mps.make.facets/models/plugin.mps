@@ -3530,6 +3530,20 @@
                                             </node>
                                           </node>
                                         </node>
+                                        <node concept="3clFbJ" id="ECV7zt8BIQ" role="3cqZAp">
+                                          <node concept="3clFbS" id="ECV7zt8BIS" role="3clFbx">
+                                            <node concept="3N13vt" id="ECV7zt8CKr" role="3cqZAp" />
+                                          </node>
+                                          <node concept="3clFbC" id="ECV7zt8C7x" role="3clFbw">
+                                            <node concept="37vLTw" id="ECV7zt8BUR" role="3uHU7B">
+                                              <ref role="3cqZAo" node="ECV7zt8_NV" resolve="tgState" />
+                                            </node>
+                                            <node concept="Rm8GO" id="ECV7zt8C_$" role="3uHU7w">
+                                              <ref role="Rm8GQ" to="ao3:~TextUnit$Status.Empty" resolve="Empty" />
+                                              <ref role="1Px2BO" to="ao3:~TextUnit$Status" resolve="TextUnit.Status" />
+                                            </node>
+                                          </node>
+                                        </node>
                                         <node concept="3clFbF" id="3NK3q5VbLks" role="3cqZAp">
                                           <node concept="2OqwBi" id="3NK3q5VbLzw" role="3clFbG">
                                             <node concept="37vLTw" id="3NK3q5VbLkq" role="2Oq$k0">
@@ -3553,20 +3567,6 @@
                                                   <ref role="37wK5l" to="ao3:~TextUnit.getFileName()" resolve="getFileName" />
                                                 </node>
                                               </node>
-                                            </node>
-                                          </node>
-                                        </node>
-                                        <node concept="3clFbJ" id="ECV7zt8BIQ" role="3cqZAp">
-                                          <node concept="3clFbS" id="ECV7zt8BIS" role="3clFbx">
-                                            <node concept="3N13vt" id="ECV7zt8CKr" role="3cqZAp" />
-                                          </node>
-                                          <node concept="3clFbC" id="ECV7zt8C7x" role="3clFbw">
-                                            <node concept="37vLTw" id="ECV7zt8BUR" role="3uHU7B">
-                                              <ref role="3cqZAo" node="ECV7zt8_NV" resolve="tgState" />
-                                            </node>
-                                            <node concept="Rm8GO" id="ECV7zt8C_$" role="3uHU7w">
-                                              <ref role="Rm8GQ" to="ao3:~TextUnit$Status.Empty" resolve="Empty" />
-                                              <ref role="1Px2BO" to="ao3:~TextUnit$Status" resolve="TextUnit.Status" />
                                             </node>
                                           </node>
                                         </node>

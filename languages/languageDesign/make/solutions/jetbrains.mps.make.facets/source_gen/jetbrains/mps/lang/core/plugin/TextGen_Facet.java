@@ -320,10 +320,10 @@ public class TextGen_Facet extends IFacet.Stub {
                       for (TextUnit tu : tgr.getUnits()) {
                         TextUnit.Status tgState = tu.getState();
                         assert tgState != TextUnit.Status.Undefined;
-                        genDeps.update(tu.getFilePath(), tu.getFileName());
                         if (tgState == TextUnit.Status.Empty) {
                           continue;
                         }
+                        genDeps.update(tu.getFilePath(), tu.getFileName());
                         if (tgState == TextUnit.Status.Failed) {
                           monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(String.format("Text outcome for %s has been generated with errors", tu.getFileName()))));
                           // fall through
