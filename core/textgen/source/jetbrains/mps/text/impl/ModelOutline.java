@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,6 +59,11 @@ public final class ModelOutline implements TextGenModelOutline {
   @Override
   public void registerTextUnit(@NotNull String unitName, @Nullable String unitPath, @Nullable Charset encoding, SNode... input) {
     registerTextUnit(new RegularTextUnit(input[0], unitName, unitPath, encoding, getPlatform()));
+  }
+
+  @Override
+  public void registerBinaryUnit(@NotNull String unitName, @Nullable String unitPath, SNode... input) {
+    myTextUnits.add(new BinaryTextUnit(input[0], unitName, unitPath, myPlatform));
   }
 
   @Override
