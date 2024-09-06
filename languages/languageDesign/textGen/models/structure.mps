@@ -157,6 +157,14 @@
     <property role="34LRSv" value="do generate text" />
     <property role="EcuMT" value="1233749247888" />
     <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+    <node concept="1TJgyi" id="mnd_T6VhrG" role="1TKVEl">
+      <property role="IQ2nx" value="402850470217717484" />
+      <property role="TrG5h" value="binaryOutput" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="mnd_T6VhwL" role="lGtFl">
+        <property role="t5JxN" value="implementation code access binary (sequence of bytes) output instead of a text buffer" />
+      </node>
+    </node>
   </node>
   <node concept="1TIwiD" id="hX1kVMc">
     <property role="R5$K7" value="true" />
@@ -675,6 +683,20 @@
     <ref role="1TJDcQ" to="tpee:gyVMwX8" resolve="ConceptFunction" />
     <node concept="PrWs8" id="6NuIk8swWsw" role="PzmwI">
       <ref role="PrY4T" node="6NuIk8swUPh" resolve="FilePathSpec" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4URE8v98gJD">
+    <property role="EcuMT" value="5672187556844866537" />
+    <property role="3GE5qa" value="operation" />
+    <property role="TrG5h" value="BinaryWriteOperation" />
+    <property role="34LRSv" value="write" />
+    <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
+    <node concept="1TJgyj" id="4URE8v98h6s" role="1TKVEi">
+      <property role="IQ2ns" value="5672187556844867996" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="data" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
   </node>
 </model>

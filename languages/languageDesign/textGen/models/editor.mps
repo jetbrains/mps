@@ -2189,5 +2189,25 @@
     <ref role="aqKnT" to="2omo:hY4Spyd" resolve="AbstractTextGenParameter" />
     <node concept="22hDWj" id="xzgvwPPpKo" role="22hAXT" />
   </node>
+  <node concept="24kQdi" id="4URE8v9faf2">
+    <property role="3GE5qa" value="operation" />
+    <ref role="1XX52x" to="2omo:4URE8v98gJD" resolve="BinaryWriteOperation" />
+    <node concept="3EZMnI" id="4URE8v9faji" role="2wV5jI">
+      <node concept="3F0ifn" id="4URE8v9falT" role="3EZMnx">
+        <property role="3F0ifm" value="write" />
+        <ref role="1k5W1q" node="hWXehqE" resolve="TextGenOperation" />
+      </node>
+      <node concept="3F1sOY" id="4URE8v9faxJ" role="3EZMnx">
+        <ref role="1NtTu8" to="2omo:4URE8v98h6s" resolve="data" />
+      </node>
+      <node concept="3F0ifn" id="4URE8v9faEe" role="3EZMnx">
+        <property role="3F0ifm" value=";" />
+        <node concept="3$7fVu" id="4URE8v9faJk" role="3F10Kt">
+          <property role="3$6WeP" value="-1.0" />
+        </node>
+      </node>
+      <node concept="l2Vlx" id="4URE8v9faMH" role="2iSdaV" />
+    </node>
+  </node>
 </model>
 
