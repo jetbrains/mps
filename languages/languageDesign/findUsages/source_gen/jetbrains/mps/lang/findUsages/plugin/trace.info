@@ -13,7 +13,7 @@
       <unit at="8,0,13,0" name="jetbrains.mps.lang.findUsages.plugin.ExtensionDescriptor" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.findUsages.plugin.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.findUsages.plugin.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:7be9d1d9-acb4-4fe3-8096-96178feee8f5(jetbrains.mps.lang.findUsages.plugin)/3193873080290339088">

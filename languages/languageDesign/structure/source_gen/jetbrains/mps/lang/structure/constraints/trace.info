@@ -19,7 +19,7 @@
       <unit at="13,0,57,0" name="jetbrains.mps.lang.structure.constraints.ConstraintsAspectDescriptor" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,12,0" name="jetbrains.mps.lang.structure.constraints.IconContainer" />
+      <unit at="8,0,13,0" name="jetbrains.mps.lang.structure.constraints.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)/1075010451653674063">
@@ -187,8 +187,8 @@
       <unit id="1213104840673" at="33,0,114,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints" />
     </file>
     <file name="IconContainer.java">
-      <node id="1229065756974292339" at="9,0,10,0" concept="9" trace="RESOURCE_a0a0a" />
-      <node id="1229065756974292875" at="10,0,11,0" concept="9" trace="RESOURCE_a0a0a_0" />
+      <node id="1229065756974292339" at="10,0,11,0" concept="9" trace="RESOURCE_a0a0a" />
+      <node id="1229065756974292875" at="11,0,12,0" concept="9" trace="RESOURCE_a0a0a_0" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)/1213104841300">

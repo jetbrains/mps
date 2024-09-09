@@ -13,7 +13,7 @@
       <unit at="11,0,48,0" name="jetbrains.mps.lang.generator.generationParameters.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.generator.generationParameters.structure.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.generator.generationParameters.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,32,0" name="jetbrains.mps.lang.generator.generationParameters.structure.LanguageConceptSwitch" />

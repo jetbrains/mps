@@ -12,7 +12,7 @@
       <unit at="11,0,31,0" name="testPackagedLanguage.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="7,0,10,0" name="testPackagedLanguage.structure.IconContainer" />
+      <unit at="8,0,12,0" name="testPackagedLanguage.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,28,0" name="testPackagedLanguage.structure.LanguageConceptSwitch" />

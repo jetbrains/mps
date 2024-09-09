@@ -13,7 +13,7 @@
       <unit at="11,0,218,0" name="jetbrains.mps.lang.actions.testLanguage.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="7,0,12,0" name="jetbrains.mps.lang.actions.testLanguage.structure.IconContainer" />
+      <unit at="8,0,14,0" name="jetbrains.mps.lang.actions.testLanguage.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,76,0" name="jetbrains.mps.lang.actions.testLanguage.structure.LanguageConceptSwitch" />

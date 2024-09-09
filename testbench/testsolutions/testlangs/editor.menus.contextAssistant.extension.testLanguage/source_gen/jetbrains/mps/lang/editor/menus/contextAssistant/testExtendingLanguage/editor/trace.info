@@ -15,7 +15,7 @@
       <unit at="17,0,54,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="7,0,12,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.editor.IconContainer" />
+      <unit at="8,0,14,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.editor.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:1ed8add9-1a05-4a2d-a8ee-1a24e378c5f6(jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.editor)/2468431357009903065">
@@ -137,8 +137,8 @@
       <unit id="2468431357009903065" at="28,0,133,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.editor.Extras" />
     </file>
     <file name="IconContainer.java">
-      <node id="7343030876207069147" at="8,0,9,0" concept="7" trace="RESOURCE_a0a2e4" />
-      <node id="7343030876207068866" at="9,0,10,0" concept="7" trace="RESOURCE_a0a2e5" />
+      <node id="7343030876207069147" at="10,0,11,0" concept="7" trace="RESOURCE_a0a2e4" />
+      <node id="7343030876207068866" at="11,0,12,0" concept="7" trace="RESOURCE_a0a2e5" />
     </file>
   </root>
   <root nodeRef="r:1ed8add9-1a05-4a2d-a8ee-1a24e378c5f6(jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.editor)/4233361609417483771">
@@ -429,7 +429,7 @@
       <unit id="7253742591936257513" at="26,0,117,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.editor.DefaultMenuContribution" />
     </file>
     <file name="IconContainer.java">
-      <node id="7343030876207068037" at="10,0,11,0" concept="7" trace="RESOURCE_a0a7c5" />
+      <node id="7343030876207068037" at="12,0,13,0" concept="7" trace="RESOURCE_a0a7c5" />
     </file>
   </root>
   <root nodeRef="r:1ed8add9-1a05-4a2d-a8ee-1a24e378c5f6(jetbrains.mps.lang.editor.menus.contextAssistant.testExtendingLanguage.editor)/7253742591936257514">

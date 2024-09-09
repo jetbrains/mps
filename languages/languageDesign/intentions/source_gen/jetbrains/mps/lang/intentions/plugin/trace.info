@@ -13,7 +13,7 @@
       <unit at="8,0,13,0" name="jetbrains.mps.lang.intentions.plugin.ExtensionDescriptor" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.intentions.plugin.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.intentions.plugin.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:dbde341a-c09d-4dfc-8b0a-5ed08f460369(jetbrains.mps.lang.intentions.plugin)/3193873080290339088">

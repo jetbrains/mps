@@ -20,7 +20,7 @@
       <unit at="19,0,158,0" name="jetbrains.mps.baseLanguage.math.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="7,0,23,0" name="jetbrains.mps.baseLanguage.math.editor.IconContainer" />
+      <unit at="8,0,25,0" name="jetbrains.mps.baseLanguage.math.editor.IconContainer" />
     </file>
     <file name="MathSymbolIndexReference_SubstituteMenu.java">
       <unit at="61,0,64,0" name="jetbrains.mps.baseLanguage.math.editor.MathSymbolIndexReference_SubstituteMenu$CONCEPTS" />
@@ -4877,20 +4877,20 @@
   </root>
   <root nodeRef="r:93eafd6e-0a56-402c-930d-564027be226b(jetbrains.mps.baseLanguage.math.editor)/3425189563111377433">
     <file name="IconContainer.java">
-      <node id="405309736224871579" at="8,0,9,0" concept="11" trace="RESOURCE_a0a7c6g4" />
-      <node id="405309736224870065" at="9,0,10,0" concept="11" trace="RESOURCE_a0a7c7g4" />
-      <node id="3425189563111388525" at="10,0,11,0" concept="11" trace="RESOURCE_a0a7c8g4" />
-      <node id="1616241631379993978" at="11,0,12,0" concept="11" trace="RESOURCE_a0a7c9g4" />
-      <node id="151184313612430308" at="12,0,13,0" concept="11" trace="RESOURCE_a0a7c6f" />
-      <node id="1616241631380045042" at="13,0,14,0" concept="11" trace="RESOURCE_a0a7c7f" />
-      <node id="151184313612372187" at="14,0,15,0" concept="11" trace="RESOURCE_a0a7c6g" />
-      <node id="151184313612372209" at="15,0,16,0" concept="11" trace="RESOURCE_a0a7c7g" />
-      <node id="151184313612372231" at="16,0,17,0" concept="11" trace="RESOURCE_a0a7c8g" />
-      <node id="151184313612372253" at="17,0,18,0" concept="11" trace="RESOURCE_a0a7c9g" />
-      <node id="405309736224554628" at="18,0,19,0" concept="11" trace="RESOURCE_a0a7c6h" />
-      <node id="405309736224656612" at="19,0,20,0" concept="11" trace="RESOURCE_a0a7c7h" />
-      <node id="405309736224706289" at="20,0,21,0" concept="11" trace="RESOURCE_a0a7c8h" />
-      <node id="151184313612429208" at="21,0,22,0" concept="11" trace="RESOURCE_a0a7c9h" />
+      <node id="405309736224871579" at="10,0,11,0" concept="11" trace="RESOURCE_a0a7c6g4" />
+      <node id="405309736224870065" at="11,0,12,0" concept="11" trace="RESOURCE_a0a7c7g4" />
+      <node id="3425189563111388525" at="12,0,13,0" concept="11" trace="RESOURCE_a0a7c8g4" />
+      <node id="1616241631379993978" at="13,0,14,0" concept="11" trace="RESOURCE_a0a7c9g4" />
+      <node id="151184313612430308" at="14,0,15,0" concept="11" trace="RESOURCE_a0a7c6f" />
+      <node id="1616241631380045042" at="15,0,16,0" concept="11" trace="RESOURCE_a0a7c7f" />
+      <node id="151184313612372187" at="16,0,17,0" concept="11" trace="RESOURCE_a0a7c6g" />
+      <node id="151184313612372209" at="17,0,18,0" concept="11" trace="RESOURCE_a0a7c7g" />
+      <node id="151184313612372231" at="18,0,19,0" concept="11" trace="RESOURCE_a0a7c8g" />
+      <node id="151184313612372253" at="19,0,20,0" concept="11" trace="RESOURCE_a0a7c9g" />
+      <node id="405309736224554628" at="20,0,21,0" concept="11" trace="RESOURCE_a0a7c6h" />
+      <node id="405309736224656612" at="21,0,22,0" concept="11" trace="RESOURCE_a0a7c7h" />
+      <node id="405309736224706289" at="22,0,23,0" concept="11" trace="RESOURCE_a0a7c8h" />
+      <node id="151184313612429208" at="23,0,24,0" concept="11" trace="RESOURCE_a0a7c9h" />
     </file>
     <file name="Math.java">
       <node id="3425189563111377433" at="31,17,32,298" concept="13" />

@@ -17,7 +17,7 @@
       <unit at="11,0,1091,0" name="jetbrains.mps.build.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,27,0" name="jetbrains.mps.build.structure.IconContainer" />
+      <unit at="8,0,28,0" name="jetbrains.mps.build.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,296,0" name="jetbrains.mps.build.structure.LanguageConceptSwitch" />

@@ -13,7 +13,7 @@
       <unit at="8,0,13,0" name="jetbrains.mps.lang.feedback.skeleton.plugin.ExtensionDescriptor" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.feedback.skeleton.plugin.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.feedback.skeleton.plugin.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:cc9efe31-86c5-4ceb-80d1-8a8efeb255e0(jetbrains.mps.lang.feedback.skeleton.plugin)/4726480899536586749">

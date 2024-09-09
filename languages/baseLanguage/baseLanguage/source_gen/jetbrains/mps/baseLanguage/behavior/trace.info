@@ -27,7 +27,7 @@
       <unit at="14,0,722,0" name="jetbrains.mps.baseLanguage.behavior.BehaviorAspectDescriptor" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,17,0" name="jetbrains.mps.baseLanguage.behavior.IconContainer" />
+      <unit at="8,0,18,0" name="jetbrains.mps.baseLanguage.behavior.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)/1023687332192481690">
@@ -28069,13 +28069,13 @@
       <unit id="4928127990026270313" at="7,0,17,0" name="jetbrains.mps.baseLanguage.behavior.BLIconMarks" />
     </file>
     <file name="IconContainer.java">
-      <node id="4928127990026271911" at="9,0,10,0" concept="15" trace="RESOURCE_a4" />
-      <node id="4928127990026271955" at="10,0,11,0" concept="15" trace="RESOURCE_a5" />
-      <node id="4928127990026273317" at="11,0,12,0" concept="15" trace="RESOURCE_a6" />
-      <node id="4928127990026273363" at="12,0,13,0" concept="15" trace="RESOURCE_a7" />
-      <node id="4928127990026271542" at="13,0,14,0" concept="15" trace="RESOURCE_a0" />
-      <node id="4928127990026271576" at="14,0,15,0" concept="15" trace="RESOURCE_a1" />
-      <node id="4928127990026271626" at="15,0,16,0" concept="15" trace="RESOURCE_a2" />
+      <node id="4928127990026271542" at="10,0,11,0" concept="15" trace="RESOURCE_a0" />
+      <node id="4928127990026271576" at="11,0,12,0" concept="15" trace="RESOURCE_a1" />
+      <node id="4928127990026271626" at="12,0,13,0" concept="15" trace="RESOURCE_a2" />
+      <node id="4928127990026271911" at="13,0,14,0" concept="15" trace="RESOURCE_a4" />
+      <node id="4928127990026271955" at="14,0,15,0" concept="15" trace="RESOURCE_a5" />
+      <node id="4928127990026273317" at="15,0,16,0" concept="15" trace="RESOURCE_a6" />
+      <node id="4928127990026273363" at="16,0,17,0" concept="15" trace="RESOURCE_a7" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)/5017341185733869578">

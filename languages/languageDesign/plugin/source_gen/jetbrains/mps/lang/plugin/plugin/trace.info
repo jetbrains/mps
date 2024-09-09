@@ -27,7 +27,7 @@
       <unit at="11,0,23,0" name="jetbrains.mps.lang.plugin.plugin.FacetManifest" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.plugin.plugin.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.plugin.plugin.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:01d327ba-040c-402c-a2b6-8832116588df(jetbrains.mps.lang.plugin.plugin)/1675754527181903316">

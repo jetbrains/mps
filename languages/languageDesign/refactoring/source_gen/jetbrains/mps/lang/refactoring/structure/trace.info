@@ -17,7 +17,7 @@
       <unit at="12,0,410,0" name="jetbrains.mps.lang.refactoring.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.refactoring.structure.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.refactoring.structure.IconContainer" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,122,0" name="jetbrains.mps.lang.refactoring.structure.LanguageConceptSwitch" />

@@ -13,7 +13,7 @@
       <unit at="8,0,13,0" name="jetbrains.mps.lang.textGen.plugin.ExtensionDescriptor" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.textGen.plugin.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.textGen.plugin.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:60e7ad77-a9db-453a-a2df-fed6c145c654(jetbrains.mps.lang.textGen.plugin)/3193873080290339088">

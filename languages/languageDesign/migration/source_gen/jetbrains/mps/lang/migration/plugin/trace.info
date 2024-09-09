@@ -14,7 +14,7 @@
       <unit at="8,0,13,0" name="jetbrains.mps.lang.migration.plugin.ExtensionDescriptor" />
     </file>
     <file name="IconContainer.java">
-      <unit at="8,0,11,0" name="jetbrains.mps.lang.migration.plugin.IconContainer" />
+      <unit at="8,0,12,0" name="jetbrains.mps.lang.migration.plugin.IconContainer" />
     </file>
   </root>
   <root nodeRef="r:e5186c75-12ba-46bf-934f-f0e026ef8c26(jetbrains.mps.lang.migration.plugin)/3193873080290339088">
