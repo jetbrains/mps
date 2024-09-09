@@ -11,7 +11,11 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import javax.swing.Icon;
 import jetbrains.mps.smodel.language.ConceptRegistry;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.persistence.PersistenceRegistry;
 import java.util.Set;
 import jetbrains.mps.module.ReloadableModule;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -37,6 +41,9 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.runtime.ConceptPresentation;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.util.IconLoader;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Stream;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)/1315815304215925444", model = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)")
@@ -45,9 +52,16 @@ public class BaseIconManager {
   private Map<SAbstractConcept, IconResource> myConceptToIcon = MapSequence.fromMap(new HashMap<SAbstractConcept, IconResource>());
   private Map<IconResource, Icon> myResToIcon = MapSequence.fromMap(new HashMap<IconResource, Icon>());
   private final ConceptRegistry myConceptRegistry;
+  private final LanguageRegistry myModuleRuntimeRegistry;
+  private final PersistenceFacade myPersistenceFacade;
+  private final boolean myNewUI;
 
-  public BaseIconManager(@NotNull ConceptRegistry conceptRegistry) {
-    myConceptRegistry = conceptRegistry;
+  public BaseIconManager(@NotNull ComponentHost platform) {
+    myConceptRegistry = platform.findComponent(ConceptRegistry.class);
+    myModuleRuntimeRegistry = platform.findComponent(LanguageRegistry.class);
+    myPersistenceFacade = platform.findComponent(PersistenceRegistry.class);
+    // FIXME how do we react to UI switch? Could I listen to anything?
+    myNewUI = IconLoadingUtil.isNewUIActive();
   }
 
   public void invalidate(Set<ReloadableModule> modules) {
@@ -205,18 +219,44 @@ public class BaseIconManager {
     if (ir == null) {
       return null;
     }
-    if (ir.isAlreadyReloaded()) {
-      MapSequence.fromMap(myResToIcon).removeKey(ir);
-    }
-    if (MapSequence.fromMap(myResToIcon).containsKey(ir)) {
-      return MapSequence.fromMap(myResToIcon).get(ir);
-    }
+    Icon icon = null;
+    if (ir.isLegacy()) {
+      if (ir.isAlreadyReloaded()) {
+        MapSequence.fromMap(myResToIcon).removeKey(ir);
+      }
+      if (MapSequence.fromMap(myResToIcon).containsKey(ir)) {
+        return MapSequence.fromMap(myResToIcon).get(ir);
+      }
 
-    Class provider = ir.getProvider();
-    Icon icon = IconLoadingUtil.loadIcon(ir.getResourceId(), provider);
-    if (provider != null && icon instanceof IconLoader.CachedImageIcon) {
-      // see MPS-30995. There's no way to ensure the provider will not be disposed already when the icon will be required the first time. That's why we ensure here that for a non-default provider we load the icon exactly at the moment it's requested
-      icon = ((IconLoader.CachedImageIcon) icon).getRealIcon();
+      Class<?> provider = ir.getProvider();
+      icon = IconLoadingUtil.loadIcon(ir.getResourceId(myNewUI), provider);
+      if (provider != null && icon instanceof IconLoader.CachedImageIcon) {
+        // see MPS-30995. There's no way to ensure the provider will not be disposed already when the icon will be required the first time. That's why we ensure here that for a non-default provider we load the icon exactly at the moment it's requested
+        icon = ((IconLoader.CachedImageIcon) icon).getRealIcon();
+      }
+    } else {
+      // XXX I wonder if there's solid reason to cache myResToIcon, as IDEA's IconLoader likely does it anyway.
+      //    Perhaps, shall record SModuleReference and clean these on module reload
+      if (MapSequence.fromMap(myResToIcon).containsKey(ir)) {
+        return MapSequence.fromMap(myResToIcon).get(ir);
+      }
+
+      SModuleReference originModule = ir.getOriginModule(myPersistenceFacade);
+      if (originModule == null) {
+        return null;
+      }
+      final String resourceId = ir.getResourceId(myNewUI);
+      final AtomicReference<Icon> rv = new AtomicReference<>();
+      myModuleRuntimeRegistry.withModuleRuntime(Stream.of(originModule), (mr) -> {
+        // pretty much copy of IconLoadingUtil.loadIcon().
+        // XXX here, using MR.getOwnResource() is possible. Can I use it, instead?
+        rv.set(IconLoader.findIcon(resourceId, mr.getModuleClassLoader()));
+      });
+      icon = rv.get();
+      if (icon instanceof IconLoader.CachedImageIcon) {
+        // see comment above, in isLegacy section. Icons coming from modules are always subject to unpredictable CL changes
+        icon = ((IconLoader.CachedImageIcon) icon).getRealIcon();
+      }
     }
     if (icon == null) {
       if (LOG.isWarningLevel()) {

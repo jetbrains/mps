@@ -5,11 +5,9 @@ package jetbrains.mps.ide.icons;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.Disposable;
 import jetbrains.mps.classloading.ClassLoaderManager;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.smodel.language.ConceptRegistry;
 import com.intellij.openapi.util.Disposer;
-import com.intellij.openapi.components.ServiceManager;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.classloading.DeployListener;
 import java.util.Set;
 import jetbrains.mps.module.ReloadableModule;
@@ -22,15 +20,17 @@ public class GlobalIconManager extends BaseIconManager implements Disposable {
   private MyDeployListener myListener = new MyDeployListener();
 
   public GlobalIconManager() {
-    super(ApplicationManager.getApplication().getComponent(MPSCoreComponents.class).getPlatform().findComponent(ConceptRegistry.class));
-    MPSCoreComponents cc = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+    super(MPSCoreComponents.getInstance().getPlatform());
+    MPSCoreComponents cc = MPSCoreComponents.getInstance();
     myClm = cc.getClassLoaderManager();
     myClm.addListener(this.myListener);
+    // XXX is explicit Disposer necessary? Perhaps, as lon as MPSCoreComponent is AppComponent, and we want
+    // this service to go sooner? OTOH, why do I care when this service is disposed?
     Disposer.register(cc, this);
   }
 
   public static GlobalIconManager getInstance() {
-    return ServiceManager.getService(GlobalIconManager.class);
+    return ApplicationManager.getApplication().getService(GlobalIconManager.class);
   }
 
   @Override
