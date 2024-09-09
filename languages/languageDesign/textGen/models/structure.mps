@@ -126,7 +126,7 @@
       <property role="20kJfa" value="conceptDeclaration" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1233670257997" />
-      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+      <ref role="20lvS9" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
     </node>
     <node concept="PrWs8" id="3gHHc5sBWgv" role="PzmwI">
       <ref role="PrY4T" to="tpce:2hxg_BDjKM4" resolve="IConceptAspect" />

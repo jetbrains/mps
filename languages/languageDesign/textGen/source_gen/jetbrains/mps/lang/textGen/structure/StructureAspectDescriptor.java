@@ -263,7 +263,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L);
     b.origin("r:de0d3c0c-d049-41cf-bbf9-a920ba513cd3(jetbrains.mps.lang.textGen.structure)/1233670071145");
     b.version(3);
-    b.associate("conceptDeclaration", 0x11f3c7a3d4dL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("1233670257997").done();
+    b.associate("conceptDeclaration", 0x11f3c7a3d4dL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L).optional(false).origin("1233670257997").done();
     b.aggregate("extension", 0x6ee6b5c5ad5f7279L).target(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x7bf48616723f681dL).optional(true).ordered(true).multiple(false).origin("7991274449437422201").done();
     b.aggregate("encoding", 0x10fd02ec599e8fbeL).target(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x10fd02ec599e8fbbL).optional(true).ordered(true).multiple(false).origin("1224137887853744062").done();
     b.aggregate("textGenBlock", 0x11f41304578L).target(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f412f8790L).optional(true).ordered(true).multiple(false).origin("1233749296504").done();
