@@ -4,8 +4,6 @@ package jetbrains.mps.ide.make.actions;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.wm.StatusBar;
-import com.intellij.notification.Notification;
-import com.intellij.notification.NotificationType;
 import com.intellij.notification.impl.NotificationsConfigurationImpl;
 import com.intellij.notification.NotificationDisplayType;
 import com.intellij.openapi.ui.popup.BalloonBuilder;
@@ -45,14 +43,12 @@ public final class TransientModelBallonDisplayer implements Disposable {
 
   /*package*/ void showBalloon() {
     // Assumes EDT
-    Notification notification = new Notification(ID, "Saving transient models", "Saving transient models is on", NotificationType.WARNING);
     boolean sticky = NotificationsConfigurationImpl.getSettings(ID).getDisplayType() == NotificationDisplayType.STICKY_BALLOON;
     BalloonBuilder builder = JBPopupFactory.getInstance().createHtmlTextBalloonBuilder("Saving transient models is on", MessageType.INFO, null).setHideOnAction(!(sticky)).setHideOnClickOutside(!(sticky)).setHideOnKeyOutside(!(sticky));
     if (!(sticky)) {
       builder.setFadeoutTime(3000);
     }
     final Balloon balloon = builder.createBalloon();
-    notification.setBalloon(balloon);
 
     Disposer.register(this, balloon);
 

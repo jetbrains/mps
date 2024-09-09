@@ -10542,32 +10542,6 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="6za2oG6XrDL" role="3cqZAp">
-          <node concept="3cpWsn" id="6za2oG6XrDM" role="3cpWs9">
-            <property role="TrG5h" value="notification" />
-            <node concept="2ShNRf" id="6za2oG6XrDO" role="33vP2m">
-              <node concept="1pGfFk" id="6za2oG6XrDP" role="2ShVmc">
-                <ref role="37wK5l" to="fnpx:~Notification.&lt;init&gt;(java.lang.String,java.lang.String,java.lang.String,com.intellij.notification.NotificationType)" resolve="Notification" />
-                <node concept="37vLTw" id="2BHiRxeon37" role="37wK5m">
-                  <ref role="3cqZAo" node="6za2oG6XsvV" resolve="ID" />
-                </node>
-                <node concept="Xl_RD" id="6za2oG6XrDR" role="37wK5m">
-                  <property role="Xl_RC" value="Saving transient models" />
-                </node>
-                <node concept="Xl_RD" id="6RTyL85HSIG" role="37wK5m">
-                  <property role="Xl_RC" value="Saving transient models is on" />
-                </node>
-                <node concept="Rm8GO" id="6RTyL85HSIF" role="37wK5m">
-                  <ref role="Rm8GQ" to="fnpx:~NotificationType.WARNING" resolve="WARNING" />
-                  <ref role="1Px2BO" to="fnpx:~NotificationType" resolve="NotificationType" />
-                </node>
-              </node>
-            </node>
-            <node concept="3uibUv" id="6za2oG6XrDN" role="1tU5fm">
-              <ref role="3uigEE" to="fnpx:~Notification" resolve="Notification" />
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="yuiNvycWpC" role="3cqZAp">
           <node concept="3cpWsn" id="yuiNvycWpD" role="3cpWs9">
             <property role="TrG5h" value="sticky" />
@@ -10631,7 +10605,7 @@
                       <node concept="Xl_RD" id="3UKYyL8N77H" role="37wK5m">
                         <property role="Xl_RC" value="Saving transient models is on" />
                       </node>
-                      <node concept="10M0yZ" id="5MsRCEsbqcP" role="37wK5m">
+                      <node concept="10M0yZ" id="6Nbkq$5NTI3" role="37wK5m">
                         <ref role="3cqZAo" to="jkm4:~MessageType.INFO" resolve="INFO" />
                         <ref role="1PxDUh" to="jkm4:~MessageType" resolve="MessageType" />
                       </node>
@@ -10683,19 +10657,6 @@
             </node>
             <node concept="3uibUv" id="C3dcc38Tef" role="1tU5fm">
               <ref role="3uigEE" to="gspm:~Balloon" resolve="Balloon" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="66yJKVnNe8s" role="3cqZAp">
-          <node concept="2OqwBi" id="66yJKVnNe8u" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTvt_" role="2Oq$k0">
-              <ref role="3cqZAo" node="6za2oG6XrDM" resolve="notification" />
-            </node>
-            <node concept="liA8E" id="66yJKVnNe8y" role="2OqNvi">
-              <ref role="37wK5l" to="fnpx:~Notification.setBalloon(com.intellij.openapi.ui.popup.Balloon)" resolve="setBalloon" />
-              <node concept="37vLTw" id="3GM_nagTwZu" role="37wK5m">
-                <ref role="3cqZAo" node="C3dcc38Tee" resolve="balloon" />
-              </node>
             </node>
           </node>
         </node>
