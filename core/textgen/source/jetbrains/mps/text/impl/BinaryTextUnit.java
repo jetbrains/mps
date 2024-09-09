@@ -4,9 +4,7 @@
 package jetbrains.mps.text.impl;
 
 import jetbrains.mps.components.ComponentHost;
-import jetbrains.mps.text.TextBuffer;
 import jetbrains.mps.text.TextUnit;
-import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.rt.TextGenDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -59,9 +57,15 @@ public class BinaryTextUnit implements TextUnit {
     myState = Status.Failed;
     TextGenDescriptor tgd = textGenRegistry.getTextGenDescriptor(getStartNode());
     final ByteArrayOutputStream bos = new ByteArrayOutputStream(4096);
-    tgd.generateBinary(new TextGenBinContext(getStartNode(), bos));
-    myOutcome = bos.toByteArray();
-    myState = Status.Generated;
+    TextGenBinContext bc = new TextGenBinContext(getStartNode(), bos);
+    tgd.generateBinary(bc);
+    if (bc.writeAttempted()) {
+      myOutcome = bos.toByteArray();
+      myState = Status.Generated;
+    } else {
+      // XXX note, this is not like RegularTextUnit does this, and I believe it's RTU to change
+      myState = Status.Empty;
+    }
   }
 
   @Override

@@ -19,6 +19,22 @@ public class TextGenBinContext implements TextGenContext {
   private final SNode myStartNode;
   private final ByteArrayOutputStream myStream;
 
+  /**
+   * There's no condition for ConceptTextGenDeclaration, if any, would be part of the TextGen function.
+   * To tell whether attempt to generate produces an output or not, we track the fact "write" has been invoked
+   * Imagine binary TextGen function:
+   * <code>
+   *   if (condition) {
+   *     // TextUnit.Status.Generated, empty file written/updated
+   *     write new byte[0];
+   *   } else {
+   *     // TextUnit.Status.Empty, file untouched/removed
+   *     return;
+   *   }
+   * </code>
+   */
+  private boolean myHasBeenWrite = false;
+
   public TextGenBinContext(SNode startNode, ByteArrayOutputStream bos) {
     myStartNode = startNode;
     myStream = bos;
@@ -35,6 +51,11 @@ public class TextGenBinContext implements TextGenContext {
   }
 
   public void write(byte[] bytes) {
+    myHasBeenWrite = true;
     myStream.writeBytes(bytes);
+  }
+
+  public boolean writeAttempted() {
+    return myHasBeenWrite;
   }
 }
