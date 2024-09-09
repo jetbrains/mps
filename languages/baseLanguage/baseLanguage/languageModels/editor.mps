@@ -966,12 +966,6 @@
         <child id="3757480014665175786" name="prototype" index="1wAxb0" />
       </concept>
     </language>
-    <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
-      <concept id="6332851714983831325" name="jetbrains.mps.baseLanguage.logging.structure.MsgStatement" flags="ng" index="2xdQw9">
-        <property id="6332851714983843871" name="severity" index="2xdLsb" />
-        <child id="5721587534047265374" name="message" index="9lYJi" />
-      </concept>
-    </language>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
@@ -75348,12 +75342,6 @@
       </node>
       <node concept="2PzhpH" id="7znaeCkQ0OL" role="2PL9iG">
         <node concept="3clFbS" id="7znaeCkQ0OM" role="2VODD2">
-          <node concept="2xdQw9" id="7znaeCkQ0ON" role="3cqZAp">
-            <property role="2xdLsb" value="gZ5fh_4/error" />
-            <node concept="Xl_RD" id="7znaeCkQ0OO" role="9lYJi">
-              <property role="Xl_RC" value="EEEEEEEEEEE" />
-            </node>
-          </node>
           <node concept="3cpWs8" id="7znaeCkQ0OP" role="3cqZAp">
             <node concept="3cpWsn" id="7znaeCkQ0OQ" role="3cpWs9">
               <property role="TrG5h" value="text" />
