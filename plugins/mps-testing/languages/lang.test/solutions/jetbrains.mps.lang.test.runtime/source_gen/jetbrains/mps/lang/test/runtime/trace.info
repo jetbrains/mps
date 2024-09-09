@@ -851,7 +851,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)/1302453276762085176">
     <file name="NodeCheckerUtil.java">
       <node id="1302453276762085235" at="36,61,37,73" concept="12" />
-      <node id="6353154051987139581" at="40,94,41,176" concept="6" />
+      <node id="6353154051987139581" at="40,106,41,248" concept="6" />
       <node id="4866539458460623431" at="45,100,46,127" concept="11" />
       <node id="2436047764492929511" at="47,58,48,18" concept="12" />
       <node id="4866539458460622190" at="49,5,50,78" concept="11" />
@@ -883,7 +883,7 @@
       <node id="284455749621197098" at="54,0,65,0" concept="16" trace="getStandardCheckers#(Ljetbrains/mps/components/ComponentHost;)Ljava/util/List;" />
       <node id="284455749621194126" at="66,0,78,0" concept="16" trace="checkForNodeMessages#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/components/ComponentHost;)Ljava/util/Collection;" />
       <scope id="1302453276762085234" at="36,61,37,73" />
-      <scope id="1302453276762085252" at="40,94,41,176" />
+      <scope id="1302453276762085252" at="40,106,41,248" />
       <scope id="2436047764492927449" at="47,58,48,18" />
       <scope id="284455749619731469" at="72,163,73,60" />
       <scope id="3743352646565401348" at="82,197,84,28">
@@ -893,9 +893,9 @@
         <var name="node" id="1302453276762085248" />
       </scope>
       <scope id="1302453276762085251" at="40,0,43,0">
+        <var name="actualType" id="1302453276762085273" />
+        <var name="expectedType" id="1302453276762085275" />
         <var name="node" id="1302453276762085271" />
-        <var name="type1" id="1302453276762085273" />
-        <var name="type2" id="1302453276762085275" />
       </scope>
       <scope id="284455749619234065" at="70,247,74,7">
         <var name="reportedNode" id="284455749619798776" />
