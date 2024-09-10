@@ -143,6 +143,9 @@
       <concept id="1153422305557" name="jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression" flags="nn" index="2dkUwp" />
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="1179360813171" name="jetbrains.mps.baseLanguage.structure.HexIntegerLiteral" flags="nn" index="2nou5x">
+        <property id="1179360856892" name="value" index="2noCCI" />
+      </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1239709250944" name="jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression" flags="nn" index="2$rviw" />
       <concept id="5279705229678483897" name="jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant" flags="nn" index="2$xPTn">
@@ -2186,6 +2189,7 @@
       </node>
       <node concept="3Tm6S6" id="2ogabBqQPiU" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="7SfloSVDr8A" role="jymVt" />
     <node concept="312cEg" id="71ZVM0hlLcB" role="jymVt">
       <property role="TrG5h" value="MOVE_COLOR" />
       <property role="3TUv4t" value="true" />
@@ -2193,17 +2197,39 @@
       <node concept="3uibUv" id="71ZVM0hlL53" role="1tU5fm">
         <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
       </node>
-      <node concept="2ShNRf" id="71ZVM0hlLX_" role="33vP2m">
-        <node concept="1pGfFk" id="71ZVM0hlLXA" role="2ShVmc">
-          <ref role="37wK5l" to="z60i:~Color.&lt;init&gt;(int,int,int)" resolve="Color" />
-          <node concept="3cmrfG" id="71ZVM0hlLXB" role="37wK5m">
-            <property role="3cmrfH" value="255" />
+      <node concept="2ShNRf" id="7SfloSVDQE1" role="33vP2m">
+        <node concept="1pGfFk" id="7SfloSVEWEQ" role="2ShVmc">
+          <property role="373rjd" value="true" />
+          <ref role="37wK5l" to="lzb2:~JBColor.&lt;init&gt;(java.awt.Color,java.awt.Color)" resolve="JBColor" />
+          <node concept="2ShNRf" id="7SfloSVEXC7" role="37wK5m">
+            <node concept="1pGfFk" id="7SfloSVF6T1" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="z60i:~Color.&lt;init&gt;(int,int,int)" resolve="Color" />
+              <node concept="3cmrfG" id="7SfloSVFiJa" role="37wK5m">
+                <property role="3cmrfH" value="238" />
+              </node>
+              <node concept="3cmrfG" id="7SfloSVFlpw" role="37wK5m">
+                <property role="3cmrfH" value="239" />
+              </node>
+              <node concept="3cmrfG" id="7SfloSVFqzd" role="37wK5m">
+                <property role="3cmrfH" value="211" />
+              </node>
+            </node>
           </node>
-          <node concept="3cmrfG" id="71ZVM0hlLXC" role="37wK5m">
-            <property role="3cmrfH" value="255" />
-          </node>
-          <node concept="3cmrfG" id="71ZVM0hlLXD" role="37wK5m">
-            <property role="3cmrfH" value="224" />
+          <node concept="2ShNRf" id="7SfloSVF96u" role="37wK5m">
+            <node concept="1pGfFk" id="7SfloSVFhZs" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="z60i:~Color.&lt;init&gt;(int,int,int)" resolve="Color" />
+              <node concept="2nou5x" id="7SfloSVFtKJ" role="37wK5m">
+                <property role="2noCCI" value="11" />
+              </node>
+              <node concept="2nou5x" id="7SfloSVFwOo" role="37wK5m">
+                <property role="2noCCI" value="49" />
+              </node>
+              <node concept="2nou5x" id="7SfloSVFATR" role="37wK5m">
+                <property role="2noCCI" value="57" />
+              </node>
+            </node>
           </node>
         </node>
       </node>
@@ -2885,7 +2911,7 @@
                 <ref role="3cqZAo" node="2ogabBqQPiL" resolve="myErrorStripeColors" />
               </node>
             </node>
-            <node concept="37vLTw" id="71ZVM0hlPhU" role="37vLTx">
+            <node concept="37vLTw" id="6Vg0nMpFCuJ" role="37vLTx">
               <ref role="3cqZAo" node="71ZVM0hlLcB" resolve="MOVE_COLOR" />
             </node>
           </node>
