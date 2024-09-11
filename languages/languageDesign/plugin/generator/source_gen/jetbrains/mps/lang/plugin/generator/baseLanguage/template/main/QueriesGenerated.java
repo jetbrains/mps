@@ -41,7 +41,6 @@ import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.plugin.behavior.OrderConstraints__BehaviorDescriptor;
 import jetbrains.mps.generator.template.IfMacroContext;
-import jetbrains.mps.lang.resources.behavior.Icon__BehaviorDescriptor;
 import jetbrains.mps.lang.plugin.typesystem.MnemonicChecker;
 import java.util.Objects;
 import java.util.List;
@@ -752,7 +751,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.icon$L_Fq) != null);
   }
   public static boolean ifMacro_Condition_0_1(final IfMacroContext _context) {
-    return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.icon$L_Fq)) != null;
+    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.icon$L_Fq), CONCEPTS.ConstantFieldIcon$r));
   }
   public static boolean ifMacro_Condition_0_2(final IfMacroContext _context) {
     return !(SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), PROPS.requiredAccess$TB4H), 0x6782cab5d9442837L)) || !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.outsideCommandExecution$RB$x));
@@ -903,7 +902,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.toolIcon$eTw$) != null);
   }
   public static boolean ifMacro_Condition_44_1(final IfMacroContext _context) {
-    return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.toolIcon$eTw$)) != null;
+    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.toolIcon$eTw$), CONCEPTS.ConstantFieldIcon$r));
   }
   public static boolean ifMacro_Condition_44_2(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.shortcut$Z0O7) != null);
@@ -927,7 +926,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.icon$3d5) != null);
   }
   public static boolean ifMacro_Condition_52_1(final IfMacroContext _context) {
-    return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.icon$3d5)) != null;
+    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.icon$3d5), CONCEPTS.ConstantFieldIcon$r));
   }
   public static boolean ifMacro_Condition_52_2(final IfMacroContext _context) {
     return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.shortcutChar$FuTZ));
@@ -1018,8 +1017,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.icon$L_Fq);
   }
   public static SNode sourceNodeQuery_0_1(final SourceSubstituteMacroNodeContext _context) {
-    // todo compatibility code to be removed after 3.4
-    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.icon$L_Fq), CONCEPTS.FileIcon$Z0), LINKS.iconExpression$tVgU);
+    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.icon$L_Fq), CONCEPTS.ConstantFieldIcon$r), LINKS.field$_Pxf);
   }
   public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.type$a1UY);
@@ -1144,8 +1142,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.toolIcon$eTw$);
   }
   public static SNode sourceNodeQuery_44_1(final SourceSubstituteMacroNodeContext _context) {
-    // todo compatibility code to be removed after 3.4
-    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.toolIcon$eTw$), CONCEPTS.FileIcon$Z0), LINKS.iconExpression$tVgU);
+    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.toolIcon$eTw$), CONCEPTS.ConstantFieldIcon$r), LINKS.field$_Pxf);
   }
   public static SNode sourceNodeQuery_44_2(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.shortcut$Z0O7);
@@ -1181,8 +1178,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.icon$3d5);
   }
   public static SNode sourceNodeQuery_52_1(final SourceSubstituteMacroNodeContext _context) {
-    // todo compatibility code to be removed after 3.4
-    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.icon$3d5), CONCEPTS.FileIcon$Z0), LINKS.iconExpression$tVgU);
+    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.icon$3d5), CONCEPTS.ConstantFieldIcon$r), LINKS.field$_Pxf);
   }
   public static SNode sourceNodeQuery_52_2(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.listenBlock$KqDn), LINKS.body$e68K);
@@ -3344,7 +3340,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink createBlock$rCox = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x16c373ab7fdbb667L, 0x6785022a196e8f03L, "createBlock");
     /*package*/ static final SContainmentLink actions$oOtg = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x45b64b294c2b3514L, 0x498be7ea73fbb5cL, "actions");
     /*package*/ static final SContainmentLink actions$aiX4 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, 0x2c7d36ab0e3b095cL, "actions");
-    /*package*/ static final SContainmentLink iconExpression$tVgU = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x60d1cf8c81faea09L, "iconExpression");
+    /*package*/ static final SContainmentLink field$_Pxf = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x6e053ee00272f4f8L, 0x6e053ee00272f8eaL, "field");
     /*package*/ static final SContainmentLink body$e68K = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
     /*package*/ static final SContainmentLink toStringFunction$uXgw = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11daf6d2bdcL, 0x11db00a8280L, "toStringFunction");
     /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
@@ -3423,11 +3419,11 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept SNodeListType$Qe = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aae26be32L, "jetbrains.mps.lang.smodel.structure.SNodeListType");
     /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
+    /*package*/ static final SConcept ConstantFieldIcon$r = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x6e053ee00272f4f8L, "jetbrains.mps.lang.resources.structure.ConstantFieldIcon");
     /*package*/ static final SConcept IsApplicableBlock$dM = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b833c6a5L, "jetbrains.mps.lang.plugin.structure.IsApplicableBlock");
     /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
     /*package*/ static final SConcept ElementListContents$NF = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f756bc5L, "jetbrains.mps.lang.plugin.structure.ElementListContents");
     /*package*/ static final SConcept UpdateGroupBlock$Gl = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x120b44a69d3L, "jetbrains.mps.lang.plugin.structure.UpdateGroupBlock");
-    /*package*/ static final SConcept FileIcon$Z0 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, "jetbrains.mps.lang.resources.structure.FileIcon");
     /*package*/ static final SConcept ToolDeclaration$cZ = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca8f3faL, "jetbrains.mps.lang.plugin.structure.ToolDeclaration");
     /*package*/ static final SConcept TabbedToolDeclaration$ug = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x51d51510f17223c5L, "jetbrains.mps.lang.plugin.structure.TabbedToolDeclaration");
     /*package*/ static final SConcept GetNodesBlock$lu = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1184b2c2cdeL, "jetbrains.mps.lang.plugin.structure.GetNodesBlock");
