@@ -7278,7 +7278,7 @@
       <scope id="476103360382571677" at="153,141,154,127" />
     </file>
     <file name="IconContainer.java">
-      <node id="8135300941718538716" at="10,0,11,0" concept="11" trace="RESOURCE_a2a9d4" />
+      <node id="8135300941718538716" at="10,0,11,0" concept="11" trace="RESOURCE_0" />
     </file>
     <file name="TestSubstituteParentPropertyAndReference_ReferenceMenuPart.java">
       <node id="476103360382571677" at="29,71,30,329" concept="12" />
@@ -7306,7 +7306,7 @@
       <node id="8135300941718482936" at="91,141,92,110" concept="8" />
       <node id="8135300941719177040" at="95,51,96,141" concept="7" />
       <node id="8135300941719176831" at="96,141,97,0" concept="10" />
-      <node id="8135300941718538719" at="97,0,98,45" concept="8" />
+      <node id="8135300941718538719" at="97,0,98,40" concept="8" />
       <node id="8135300941719177936" at="101,70,102,141" concept="7" />
       <node id="8135300941719177362" at="102,141,103,0" concept="10" />
       <node id="8135300941718517949" at="103,0,104,46" concept="8" />
@@ -7344,7 +7344,7 @@
       </scope>
       <scope id="476103360382571677" at="29,0,32,0" />
       <scope id="476103360382572733" at="69,95,72,27" />
-      <scope id="8135300941718533358" at="95,51,98,45">
+      <scope id="8135300941718533358" at="95,51,98,40">
         <var name="val" id="8135300941719177041" />
       </scope>
       <scope id="8135300941718512014" at="101,70,104,46">

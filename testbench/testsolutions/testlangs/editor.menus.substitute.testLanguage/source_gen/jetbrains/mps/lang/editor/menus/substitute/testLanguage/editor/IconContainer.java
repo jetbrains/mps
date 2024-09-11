@@ -7,5 +7,5 @@ import jetbrains.mps.smodel.runtime.IconResource;
 
 @ResourceModule("cb6d5703-7c8e-46a9-b993-c1373dc0942f(jetbrains.mps.lang.editor.menus.substitute.testLanguage)")
 public class IconContainer {
-  protected static IconResource RESOURCE_a2a9d4 = new IconResource("TextIcon_1.png", null, IconContainer.class);
+  protected static IconResource RESOURCE_0 = new IconResource("TextIcon_1.png", null, IconContainer.class);
 }
