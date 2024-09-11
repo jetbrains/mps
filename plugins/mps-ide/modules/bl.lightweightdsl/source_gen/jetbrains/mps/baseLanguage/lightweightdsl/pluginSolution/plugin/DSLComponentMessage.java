@@ -24,7 +24,7 @@ public class DSLComponentMessage extends AbstractLeftEditorHighlighterMessage {
   }
 
   public Icon getIcon() {
-    return IconContainer.ICON_a0a4;
+    return IconContainer.ICON0;
   }
   public EditorMessageIconRenderer.IconRendererType getType() {
     return DSLComponentMessage.TYPE;

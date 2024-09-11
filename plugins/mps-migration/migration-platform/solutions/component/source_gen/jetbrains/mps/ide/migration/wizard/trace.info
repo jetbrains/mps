@@ -533,7 +533,7 @@
   </root>
   <root nodeRef="a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/4570314324458801858">
     <file name="IconContainer.java">
-      <node id="4570314324458856281" at="11,0,12,0" concept="15" trace="ICON_a0" />
+      <node id="4570314324458856281" at="11,0,12,0" concept="15" trace="ICON0" />
     </file>
     <file name="Icons.java">
       <node id="4570314324458801948" at="10,0,11,0" concept="15" trace="Language" />

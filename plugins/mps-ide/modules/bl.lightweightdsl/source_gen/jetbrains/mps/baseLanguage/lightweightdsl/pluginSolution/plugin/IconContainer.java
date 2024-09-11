@@ -6,5 +6,5 @@ import javax.swing.Icon;
 import jetbrains.mps.ide.icons.IconLoadingUtil;
 
 public class IconContainer {
-  protected static Icon ICON_a0a4 = IconLoadingUtil.loadIcon("arrow.png", IconContainer.class);
+  protected static Icon ICON0 = IconLoadingUtil.loadIcon("/icons/arrow.png", IconContainer.class);
 }
