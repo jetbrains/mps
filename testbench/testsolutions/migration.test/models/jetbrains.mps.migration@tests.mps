@@ -912,6 +912,40 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="2SaPHiJ5Fhx" role="3cqZAp">
+          <node concept="2OqwBi" id="2SaPHiJ6R0X" role="3clFbG">
+            <node concept="2OqwBi" id="2SaPHiJ6GXT" role="2Oq$k0">
+              <node concept="2OqwBi" id="2SaPHiJ5JiD" role="2Oq$k0">
+                <node concept="37vLTw" id="2SaPHiJ5Fhv" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2PvwUKGLYPQ" resolve="message" />
+                </node>
+                <node concept="liA8E" id="2SaPHiJ5M3g" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                  <node concept="Xl_RD" id="2SaPHiJ5Pdx" role="37wK5m">
+                    <property role="Xl_RC" value="Project: " />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="2SaPHiJ6fuP" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="2OqwBi" id="2SaPHiJ6lnI" role="37wK5m">
+                  <node concept="1rXfSq" id="2SaPHiJ6hd4" role="2Oq$k0">
+                    <ref role="37wK5l" node="2SnxzQPEfIr" resolve="getContextProject" />
+                  </node>
+                  <node concept="liA8E" id="2SaPHiJ6oG7" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~Project.getName()" resolve="getName" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="2SaPHiJ6xLu" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+              <node concept="Xl_RD" id="2SaPHiJ6xLv" role="37wK5m">
+                <property role="Xl_RC" value="\n" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="2PvwUKGLYQy" role="3cqZAp">
           <node concept="2YIFZM" id="2PvwUKGM0V0" role="3clFbG">
             <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />

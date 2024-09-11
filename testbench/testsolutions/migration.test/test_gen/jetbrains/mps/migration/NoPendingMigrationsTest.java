@@ -92,6 +92,7 @@ public class NoPendingMigrationsTest extends EnvironmentAwareTestCase {
     for (String mm : moduleMigrations) {
       message.append(mm).append("\n");
     }
+    message.append("Project: ").append(getContextProject().getName()).append("\n");
     Assert.assertFalse(message.toString(), migrationRequired[0] || migrationRequired[1]);
   }
 
