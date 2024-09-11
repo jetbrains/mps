@@ -1215,5 +1215,18 @@
       </node>
     </node>
   </node>
+  <node concept="24kQdi" id="6S5fI02tqpQ">
+    <property role="3GE5qa" value="icons.descriptors" />
+    <ref role="1XX52x" to="1oap:6S5fI02sJjS" resolve="ConstantFieldIcon" />
+    <node concept="3EZMnI" id="6S5fI02tqso" role="2wV5jI">
+      <node concept="3F0ifn" id="6S5fI02tqtX" role="3EZMnx">
+        <property role="3F0ifm" value="constant:" />
+      </node>
+      <node concept="3F1sOY" id="6S5fI02tquZ" role="3EZMnx">
+        <ref role="1NtTu8" to="1oap:6S5fI02sJzE" resolve="field" />
+      </node>
+      <node concept="l2Vlx" id="6S5fI02tqsr" role="2iSdaV" />
+    </node>
+  </node>
 </model>
 

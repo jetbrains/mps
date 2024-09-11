@@ -432,5 +432,25 @@
     </node>
     <node concept="1AhYRh" id="39fSgdSEt90" role="lGtFl" />
   </node>
+  <node concept="1TIwiD" id="6S5fI02sJjS">
+    <property role="EcuMT" value="7927811850890310904" />
+    <property role="3GE5qa" value="icons.descriptors" />
+    <property role="TrG5h" value="ConstantFieldIcon" />
+    <property role="34LRSv" value="constant" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="6S5fI02sJrT" role="PzmwI">
+      <ref role="PrY4T" node="2p1v3tOa9VI" resolve="Icon" />
+    </node>
+    <node concept="1TJgyj" id="6S5fI02sJzE" role="1TKVEi">
+      <property role="IQ2ns" value="7927811850890311914" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="field" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:f_0M0x6" resolve="StaticFieldReference" />
+      <node concept="t5JxF" id="6S5fI02sJCb" role="lGtFl">
+        <property role="t5JxN" value="use to reference some distributed icons, like AllIcons.ToolWindows.Messages" />
+      </node>
+    </node>
+  </node>
 </model>
 

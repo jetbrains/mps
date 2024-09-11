@@ -267,6 +267,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_15_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.iconExpression$tVgU);
   }
+  public static SNode sourceNodeQuery_15_1(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.field$_Pxf);
+  }
   public static Object templateArgumentQuery_12_0(final TemplateArgumentContext _context) {
     return Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(_context.getNode());
   }
@@ -415,6 +418,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("562388756444903398", new SNQ(i++));
     snqMethods.put("4726480899534702845", new SNQ(i++));
     snqMethods.put("7927811850890827710", new SNQ(i++));
+    snqMethods.put("7927811850892103470", new SNQ(i++));
   }
   @NotNull
   @Override
@@ -444,6 +448,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.sourceNodeQuery_8_0(ctx);
         case 6:
           return QueriesGenerated.sourceNodeQuery_15_0(ctx);
+        case 7:
+          return QueriesGenerated.sourceNodeQuery_15_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -758,6 +764,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SReferenceLink conceptDeclaration$3mP7 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration");
     /*package*/ static final SContainmentLink node$SPGN = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7ce019825925c1aL, 0x7ce019825925c1cL, "node");
     /*package*/ static final SContainmentLink calculator$qerM = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e696656L, 0x4197d5560e696657L, "calculator");
+    /*package*/ static final SContainmentLink field$_Pxf = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x6e053ee00272f4f8L, 0x6e053ee00272f8eaL, "field");
     /*package*/ static final SContainmentLink layers$pqJD = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers");
     /*package*/ static final SContainmentLink newuiLayers$lptJ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x7cb0b849e7eb993bL, "newuiLayers");
     /*package*/ static final SContainmentLink layers$ahIF = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, 0x324fe10378b5b580L, "layers");

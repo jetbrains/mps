@@ -16,6 +16,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Color;
   private ConceptPresentation props_ColorLiteral;
   private ConceptPresentation props_ConceptIconResourceExpression;
+  private ConceptPresentation props_ConstantFieldIcon;
   private ConceptPresentation props_FileIcon;
   private ConceptPresentation props_GeneratedImage;
   private ConceptPresentation props_HelpURL;
@@ -83,6 +84,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ConceptIconResourceExpression = cpb.create();
         }
         return props_ConceptIconResourceExpression;
+      case LanguageConceptSwitch.ConstantFieldIcon:
+        if (props_ConstantFieldIcon == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("constant");
+          props_ConstantFieldIcon = cpb.create();
+        }
+        return props_ConstantFieldIcon;
       case LanguageConceptSwitch.FileIcon:
         if (props_FileIcon == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL);

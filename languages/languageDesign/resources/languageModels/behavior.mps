@@ -4102,5 +4102,54 @@
       </node>
     </node>
   </node>
+  <node concept="13h7C7" id="6S5fI02sJHc">
+    <property role="3GE5qa" value="icons.descriptors" />
+    <ref role="13h7C2" to="1oap:6S5fI02sJjS" resolve="ConstantFieldIcon" />
+    <node concept="13hLZK" id="6S5fI02sJHd" role="13h7CW">
+      <node concept="3clFbS" id="6S5fI02sJHe" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="6S5fI02sJHZ" role="13h7CS">
+      <property role="TrG5h" value="getResourceId" />
+      <ref role="13i0hy" node="2p1v3tOadt0" resolve="getResourceId" />
+      <node concept="3Tm1VV" id="6S5fI02sJI0" role="1B3o_S" />
+      <node concept="3clFbS" id="6S5fI02sJI6" role="3clF47">
+        <node concept="3clFbF" id="6S5fI02sJI9" role="3cqZAp">
+          <node concept="10Nm6u" id="6S5fI02sJI8" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="3uibUv" id="6S5fI02sJI7" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+      </node>
+    </node>
+    <node concept="13i0hz" id="6S5fI02sJVL" role="13h7CS">
+      <property role="TrG5h" value="generate" />
+      <ref role="13i0hy" node="7Mb2akaesv8" resolve="generate" />
+      <node concept="3Tm1VV" id="6S5fI02sJVO" role="1B3o_S" />
+      <node concept="2AHcQZ" id="6S5fI02sJVV" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="3clFbS" id="6S5fI02sJVW" role="3clF47">
+        <node concept="3clFbF" id="6S5fI02tjzM" role="3cqZAp">
+          <node concept="10Nm6u" id="6S5fI02tjzL" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="6S5fI02sJVX" role="3clF46">
+        <property role="TrG5h" value="outputDir" />
+        <node concept="3uibUv" id="6S5fI02sJVY" role="1tU5fm">
+          <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+        </node>
+      </node>
+      <node concept="_YKpA" id="6S5fI02sJVZ" role="3clF45">
+        <node concept="1LlUBW" id="6S5fI02sJW0" role="_ZDj9">
+          <node concept="3uibUv" id="6S5fI02sJW1" role="1Lm7xW">
+            <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+          </node>
+          <node concept="10Q1$e" id="6S5fI02sJW2" role="1Lm7xW">
+            <node concept="10PrrI" id="6S5fI02sJW3" role="10Q1$1" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
