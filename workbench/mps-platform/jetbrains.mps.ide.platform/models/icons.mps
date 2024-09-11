@@ -2846,7 +2846,7 @@
                               <ref role="3cqZAo" node="192HKKPP2rW" resolve="icon" />
                             </node>
                             <node concept="3uibUv" id="3Vy23wLez$V" role="10QFUM">
-                              <ref role="3uigEE" to="zn9m:~IconLoader$CachedImageIcon" resolve="CachedImageIcon" />
+                              <ref role="3uigEE" to="zn9m:~IconLoader$CachedImageIcon" resolve="IconLoader.CachedImageIcon" />
                             </node>
                           </node>
                         </node>

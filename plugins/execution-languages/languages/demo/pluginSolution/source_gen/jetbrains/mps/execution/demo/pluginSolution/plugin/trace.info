@@ -214,7 +214,7 @@
   </root>
   <root nodeRef="r:3efdf908-9d74-483a-b1cf-495292800da4(jetbrains.mps.execution.demo.pluginSolution.plugin)/8750596094204760415">
     <file name="RunConfigurationsInitializer_AppPluginPart.java">
-      <node id="8750596094204760415" at="27,5,28,119" concept="8" />
+      <node id="8750596094204760415" at="27,5,28,110" concept="8" />
       <node id="8750596094204760415" at="29,98,30,98" concept="3" />
       <node id="8750596094204760415" at="30,98,31,74" concept="3" />
       <node id="8750596094204760415" at="26,152,32,5" concept="0" />
@@ -383,7 +383,7 @@
       <unit id="8750596094204760417" at="15,0,43,0" name="jetbrains.mps.execution.demo.pluginSolution.plugin.DemoApplication_Configuration_Editor" />
     </file>
     <file name="RunConfigurationsInitializer_AppPluginPart.java">
-      <node id="8750596094204760417" at="28,119,29,98" concept="3" />
+      <node id="8750596094204760417" at="28,110,29,98" concept="3" />
     </file>
   </root>
 </debug-info>

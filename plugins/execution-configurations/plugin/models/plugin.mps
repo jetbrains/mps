@@ -15,7 +15,7 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="6" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="-1" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
@@ -141,8 +141,8 @@
       </concept>
     </language>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
-      <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
-        <child id="6976585500156684809" name="iconExpression" index="3xaMm5" />
+      <concept id="7927811850890310904" name="jetbrains.mps.lang.resources.structure.ConstantFieldIcon" flags="ng" index="1GtWCo">
+        <child id="7927811850890311914" name="field" index="1GtWoa" />
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -1803,8 +1803,8 @@
   <node concept="3wDVqV" id="5gyVhZ17Jm9">
     <property role="TrG5h" value="Java Application" />
     <property role="3GE5qa" value="java" />
-    <node concept="1QGGSu" id="1sDdZ5$RWXl" role="1bitO_">
-      <node concept="10M0yZ" id="1sDdZ5$ScDH" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAr" role="1bitO_">
+      <node concept="10M0yZ" id="1sDdZ5$ScDH" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$RunConfigurations.Application" resolve="Application" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$RunConfigurations" resolve="AllIcons.RunConfigurations" />
       </node>
@@ -2380,8 +2380,8 @@
   <node concept="3wDVqV" id="5gyVhZ187Zs">
     <property role="TrG5h" value="JUnit Tests" />
     <property role="3GE5qa" value="junit" />
-    <node concept="1QGGSu" id="4rA9Dd$P7z0" role="1bitO_">
-      <node concept="10M0yZ" id="4rA9Dd$Pgjt" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAs" role="1bitO_">
+      <node concept="10M0yZ" id="4rA9Dd$Pgjt" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$RunConfigurations.Junit" resolve="Junit" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$RunConfigurations" resolve="AllIcons.RunConfigurations" />
       </node>
@@ -5478,8 +5478,8 @@
   <node concept="3wDVqV" id="5gyVhZ18biK">
     <property role="TrG5h" value="MPS" />
     <property role="3GE5qa" value="mps.newInstance" />
-    <node concept="1QGGSu" id="5ixRteZZuPH" role="1bitO_">
-      <node concept="10M0yZ" id="5ixRteZZErI" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAt" role="1bitO_">
+      <node concept="10M0yZ" id="5ixRteZZErI" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons" resolve="MPSIcons" />
         <ref role="3cqZAo" to="l7us:~MPSIcons.MPS16x16" resolve="MPS16x16" />
       </node>
@@ -6672,8 +6672,8 @@
   <node concept="3wDVqV" id="5yNeVI8Lrp3">
     <property role="TrG5h" value="Remote" />
     <property role="3GE5qa" value="remote" />
-    <node concept="1QGGSu" id="7tJbp6UEHPo" role="1bitO_">
-      <node concept="10M0yZ" id="7tJbp6UF9HI" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAu" role="1bitO_">
+      <node concept="10M0yZ" id="7tJbp6UF9HI" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$RunConfigurations" resolve="AllIcons.RunConfigurations" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$RunConfigurations.Remote" resolve="Remote" />
       </node>
@@ -15597,7 +15597,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="6uxylimb_6N" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="2tJIrI" id="3L_EFdmAPpF" role="jymVt" />

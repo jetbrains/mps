@@ -365,12 +365,12 @@
       <unit id="4468328282078607076" at="17,0,55,0" name="jetbrains.mps.build.pluginSolution.plugin.BuildScript_Configuration_Editor" />
     </file>
     <file name="RunConfigurationsInitializer_AppPluginPart.java">
-      <node id="4468328282078607076" at="28,143,29,90" concept="3" />
+      <node id="4468328282078607076" at="28,134,29,90" concept="3" />
     </file>
   </root>
   <root nodeRef="r:baa8d683-513d-4695-bd7b-2c1c3e940d01(jetbrains.mps.build.pluginSolution.plugin)/4468328282078639071">
     <file name="RunConfigurationsInitializer_AppPluginPart.java">
-      <node id="4468328282078639071" at="27,5,28,143" concept="8" />
+      <node id="4468328282078639071" at="27,5,28,134" concept="8" />
       <node id="4468328282078639071" at="29,90,30,98" concept="3" />
       <node id="4468328282078639071" at="30,98,31,74" concept="3" />
       <node id="4468328282078639071" at="26,152,32,5" concept="0" />

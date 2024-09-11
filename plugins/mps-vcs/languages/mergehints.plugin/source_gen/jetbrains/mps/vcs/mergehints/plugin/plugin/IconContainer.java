@@ -6,5 +6,5 @@ import javax.swing.Icon;
 import jetbrains.mps.ide.icons.IconLoadingUtil;
 
 public class IconContainer {
-  protected static Icon ICON_a0 = (IconLoadingUtil.isNewUIActive() ? IconLoadingUtil.loadIcon("commit_newui.svg", IconContainer.class) : IconLoadingUtil.loadIcon("commit.png", IconContainer.class));
+  protected static Icon ICON0 = IconLoadingUtil.loadIcon((IconLoadingUtil.isNewUIActive() ? "/icons/commit_newui.svg" : "/icons/commit.png"), IconContainer.class);
 }

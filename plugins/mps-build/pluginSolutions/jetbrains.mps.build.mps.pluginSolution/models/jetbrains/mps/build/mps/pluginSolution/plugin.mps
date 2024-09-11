@@ -11,7 +11,7 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="6" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="8" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
@@ -88,8 +88,8 @@
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
-      <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
-        <child id="6976585500156684809" name="iconExpression" index="3xaMm5" />
+      <concept id="7927811850890310904" name="jetbrains.mps.lang.resources.structure.ConstantFieldIcon" flags="ng" index="1GtWCo">
+        <child id="7927811850890311914" name="field" index="1GtWoa" />
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -1358,8 +1358,8 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="59D800tX0PJ" role="1oa70y" />
     </node>
-    <node concept="1QGGSu" id="1_rASLzqFmZ" role="3Uehp1">
-      <node concept="10M0yZ" id="1_rASLzqY5v" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAv" role="3Uehp1">
+      <node concept="10M0yZ" id="1_rASLzqY5v" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Actions" resolve="MPSIcons.Actions" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Actions.ImportModulesFromFolder" resolve="ImportModulesFromFolder" />
       </node>
@@ -17322,8 +17322,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="6XsdSphCKok" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphD6DK" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGAw" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphD6DK" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Ant" resolve="MPSIcons.Ant" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Ant.Build" resolve="Build" />
       </node>

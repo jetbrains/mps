@@ -598,7 +598,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7Zu713oXmED" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="7Zu713oZRFh" role="jymVt" />
@@ -639,7 +639,7 @@
                 <ref role="3cqZAo" node="7Zu713oZUv9" resolve="request" />
               </node>
               <node concept="37vLTw" id="7Zu713p0nKJ" role="37wK5m">
-                <ref role="3cqZAo" node="2Zv85d0B_PJ" resolve="TRUSTED" />
+                <ref role="3cqZAo" node="2Zv85d0B_PJ" resolve="trustedHosts" />
               </node>
               <node concept="37vLTw" id="7Zu713p17MI" role="37wK5m">
                 <ref role="3cqZAo" node="7Zu713p0V_3" resolve="propertyKeyForTrustedHosts" />
@@ -658,7 +658,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7Zu713oZUvi" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="7Zu713oQetR" role="jymVt" />

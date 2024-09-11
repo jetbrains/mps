@@ -1472,7 +1472,7 @@
       <node concept="3Tm1VV" id="3D_I_vuDQoV" role="1B3o_S" />
       <node concept="3clFbS" id="3D_I_vuDQoX" role="3clF47">
         <node concept="XkiVB" id="3D_I_vuDQoZ" role="3cqZAp">
-          <ref role="37wK5l" to="ciba:3D_I_vuD$tS" />
+          <ref role="37wK5l" to="ciba:3D_I_vuD$tS" resolve="HttpRequestHandlerBase" />
           <node concept="37vLTw" id="3D_I_vuDQp3" role="37wK5m">
             <ref role="3cqZAo" node="3D_I_vuDQp0" resolve="request" />
           </node>

@@ -5817,7 +5817,7 @@
         </node>
         <node concept="3cpWs6" id="ZAhE5qVIGx" role="3cqZAp">
           <node concept="1rXfSq" id="ZAhE5qVQZG" role="3cqZAk">
-            <ref role="37wK5l" node="ZAhE5qVMjt" resolve="validJavaNamespace" />
+            <ref role="37wK5l" node="ZAhE5qVMjt" resolve="validJavaName" />
             <node concept="3clFbT" id="ZAhE5qVQZH" role="37wK5m" />
           </node>
         </node>
@@ -5843,7 +5843,7 @@
         </node>
         <node concept="3cpWs6" id="ZAhE5qVKyN" role="3cqZAp">
           <node concept="1rXfSq" id="ZAhE5qVQTA" role="3cqZAk">
-            <ref role="37wK5l" node="ZAhE5qVMjt" resolve="validJavaNamespace" />
+            <ref role="37wK5l" node="ZAhE5qVMjt" resolve="validJavaName" />
             <node concept="3clFbT" id="ZAhE5qVQTB" role="37wK5m">
               <property role="3clFbU" value="true" />
             </node>
@@ -5871,7 +5871,7 @@
         </node>
         <node concept="3cpWs6" id="ZAhE5qVKKk" role="3cqZAp">
           <node concept="1rXfSq" id="ZAhE5qVQEA" role="3cqZAk">
-            <ref role="37wK5l" node="ZAhE5qVMjt" resolve="validJavaNamespace" />
+            <ref role="37wK5l" node="ZAhE5qVMjt" resolve="validJavaName" />
             <node concept="3clFbT" id="ZAhE5qVQMU" role="37wK5m" />
           </node>
         </node>
@@ -5897,7 +5897,7 @@
         </node>
         <node concept="3cpWs6" id="ZAhE5qVL5P" role="3cqZAp">
           <node concept="1rXfSq" id="ZAhE5qVQb0" role="3cqZAk">
-            <ref role="37wK5l" node="ZAhE5qVMjt" resolve="validJavaNamespace" />
+            <ref role="37wK5l" node="ZAhE5qVMjt" resolve="validJavaName" />
             <node concept="3clFbT" id="ZAhE5qVQzj" role="37wK5m">
               <property role="3clFbU" value="true" />
             </node>
@@ -5973,7 +5973,7 @@
         <node concept="3clFbF" id="ZAhE5qW8oL" role="3cqZAp">
           <node concept="37vLTI" id="ZAhE5qW8oM" role="3clFbG">
             <node concept="37vLTw" id="ZAhE5qW8oN" role="37vLTx">
-              <ref role="3cqZAo" node="ZAhE5qW8oR" resolve="name" />
+              <ref role="3cqZAo" node="ZAhE5qW8oR" resolve="moduleDir" />
             </node>
             <node concept="37vLTw" id="ZAhE5qW8oO" role="37vLTJ">
               <ref role="3cqZAo" node="ZAhE5qWa47" resolve="myModuleDir" />
@@ -6167,7 +6167,7 @@
               <node concept="2ShNRf" id="ZAhE5r10O3" role="3cqZAk">
                 <node concept="1pGfFk" id="ZAhE5r10O4" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" to="18ew:~Status$ERROR.&lt;init&gt;(java.lang.String)" resolve="ERROR" />
+                  <ref role="37wK5l" to="18ew:~Status$ERROR.&lt;init&gt;(java.lang.String)" resolve="Status.ERROR" />
                   <node concept="Xl_RD" id="ZAhE5r10O5" role="37wK5m">
                     <property role="Xl_RC" value="Namespace should be specified" />
                   </node>
@@ -6233,7 +6233,7 @@
               <node concept="liA8E" id="1Xj2NS_z$Kz" role="2OqNvi">
                 <ref role="37wK5l" to="jlff:~LocalFileSystem.refreshAndFindFileByIoFile(java.io.File)" resolve="refreshAndFindFileByIoFile" />
                 <node concept="37vLTw" id="ZAhE5r1757" role="37wK5m">
-                  <ref role="3cqZAo" node="ZAhE5r1750" resolve="file" />
+                  <ref role="3cqZAo" node="ZAhE5r1750" resolve="fn" />
                 </node>
               </node>
             </node>
@@ -6518,7 +6518,7 @@
               <node concept="2ShNRf" id="ZAhE5r2w89" role="3cqZAk">
                 <node concept="1pGfFk" id="ZAhE5r2w8a" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" to="18ew:~Status$ERROR.&lt;init&gt;(java.lang.String)" resolve="ERROR" />
+                  <ref role="37wK5l" to="18ew:~Status$ERROR.&lt;init&gt;(java.lang.String)" resolve="Status.ERROR" />
                   <node concept="Xl_RD" id="ZAhE5r2w8b" role="37wK5m">
                     <property role="Xl_RC" value="Need module scope/repository to check module name" />
                   </node>

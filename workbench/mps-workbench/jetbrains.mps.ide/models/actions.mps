@@ -15,7 +15,7 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="6" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="-1" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
@@ -189,8 +189,8 @@
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
-      <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
-        <child id="6976585500156684809" name="iconExpression" index="3xaMm5" />
+      <concept id="7927811850890310904" name="jetbrains.mps.lang.resources.structure.ConstantFieldIcon" flags="ng" index="1GtWCo">
+        <child id="7927811850890311914" name="field" index="1GtWoa" />
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -2612,8 +2612,8 @@
     <property role="2uzpH1" value="Model" />
     <property role="3GE5qa" value="Menu.ProjectPane.Module.Actions" />
     <property role="1teQrl" value="true" />
-    <node concept="1QGGSu" id="77nRokVR8jO" role="3Uehp1">
-      <node concept="10M0yZ" id="77nRokVRzZZ" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBn" role="3Uehp1">
+      <node concept="10M0yZ" id="77nRokVRzZZ" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Model" resolve="Model" />
       </node>
@@ -3220,8 +3220,8 @@
     <property role="2uzpH1" value="Show Concept in Hierarchy" />
     <property role="3GE5qa" value="DevKit" />
     <property role="72QZ$" value="true" />
-    <node concept="1QGGSu" id="6XsdSpi9u0l" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSpi9udz" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBo" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSpi9udz" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="AllIcons.Toolwindows" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Toolwindows.ToolWindowHierarchy" resolve="ToolWindowHierarchy" />
       </node>
@@ -3814,8 +3814,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="3x2$JuFPfQb" role="3Uehp1">
-      <node concept="10M0yZ" id="5ezKql6hyvu" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBp" role="3Uehp1">
+      <node concept="10M0yZ" id="5ezKql6hyvu" role="1GtWoa">
         <ref role="3cqZAo" to="l7us:~MPSIcons$ProjectPane.LogicalView" resolve="LogicalView" />
         <ref role="1PxDUh" to="l7us:~MPSIcons$ProjectPane" resolve="MPSIcons.ProjectPane" />
       </node>
@@ -4153,8 +4153,8 @@
     <property role="3GE5qa" value="Menu.ProjectPane.Module.Actions" />
     <property role="1teQrl" value="true" />
     <property role="1rBW0U" value="true" />
-    <node concept="1QGGSu" id="6XsdSpi8_Fi" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSpi8A5K" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBq" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSpi8A5K" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$General.Settings" resolve="Settings" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$General" resolve="AllIcons.General" />
       </node>
@@ -7049,8 +7049,8 @@
       <property role="TrG5h" value="namespace" />
       <ref role="1DUlNI" to="3s15:~MPSDataKeys.NAMESPACE" resolve="NAMESPACE" />
     </node>
-    <node concept="1QGGSu" id="4LxHW5_okK_" role="3Uehp1">
-      <node concept="10M0yZ" id="4LxHW5_pdTg" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBr" role="3Uehp1">
+      <node concept="10M0yZ" id="4LxHW5_pdTg" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Solution" resolve="Solution" />
       </node>
@@ -7346,8 +7346,8 @@
     <property role="2uzpH1" value="Model Properties" />
     <property role="3GE5qa" value="Menu.ProjectPane.Model.Actions" />
     <property role="1teQrl" value="true" />
-    <node concept="1QGGSu" id="6XsdSpi8sml" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSpi8t6K" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBs" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSpi8t6K" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$General" resolve="AllIcons.General" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$General.Settings" resolve="Settings" />
       </node>
@@ -10698,8 +10698,8 @@
     <property role="3GE5qa" value="Menu.ProjectPane.Node.Actions" />
     <property role="1teQrl" value="true" />
     <property role="1rBW0U" value="true" />
-    <node concept="1QGGSu" id="6XsdSpi8ggu" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSpi8gTt" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBt" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSpi8gTt" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Copy" resolve="Copy" />
       </node>
@@ -10871,8 +10871,8 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="OqYxEj5wsW" role="1oa70y" />
     </node>
-    <node concept="1QGGSu" id="63hNSM2rfJQ" role="3Uehp1">
-      <node concept="10M0yZ" id="GAcTvhnNkq" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBu" role="3Uehp1">
+      <node concept="10M0yZ" id="GAcTvhnNkq" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.MenuCut" resolve="MenuCut" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
       </node>
@@ -11029,8 +11029,8 @@
     <property role="3GE5qa" value="Menu.ProjectPane.Node.Actions" />
     <property role="1teQrl" value="true" />
     <property role="72QZ$" value="true" />
-    <node concept="1QGGSu" id="6XsdSpi8jE6" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSpi8k9R" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBv" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSpi8k9R" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Find" resolve="Find" />
       </node>
@@ -11141,8 +11141,8 @@
     <property role="2uzpH1" value="Find Usages Settings..." />
     <property role="3GE5qa" value="Menu.ProjectPane.Node.Actions" />
     <property role="1teQrl" value="true" />
-    <node concept="1QGGSu" id="6XsdSpi8nu1" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSpi8nyU" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBw" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSpi8nyU" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Find" resolve="Find" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
       </node>
@@ -15398,8 +15398,8 @@
     <property role="3GE5qa" value="Menu.MainMenu.EditActions" />
     <property role="1teQrl" value="true" />
     <property role="2YLI8m" value="6u2MFnph2wS/none" />
-    <node concept="1QGGSu" id="6XsdSpi98ZQ" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSpi9k0j" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBx" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSpi9k0j" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Menu_paste" resolve="Menu_paste" />
       </node>
@@ -19273,8 +19273,8 @@
     <property role="72QZ$" value="true" />
     <property role="2uzpH1" value="Model" />
     <property role="3GE5qa" value="Menu.ProjectPane.Model.Actions" />
-    <node concept="1QGGSu" id="18ld1NQVZUU" role="3Uehp1">
-      <node concept="10M0yZ" id="18ld1NQWEZA" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBy" role="3Uehp1">
+      <node concept="10M0yZ" id="18ld1NQWEZA" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Model" resolve="Model" />
       </node>
@@ -20744,8 +20744,8 @@
     <property role="3GE5qa" value="Menu.FileView.Actions" />
     <property role="72QZ$" value="true" />
     <property role="1rBW0U" value="true" />
-    <node concept="1QGGSu" id="3YM7NwaMEmV" role="3Uehp1">
-      <node concept="10M0yZ" id="3YM7NwaN8$c" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBz" role="3Uehp1">
+      <node concept="10M0yZ" id="3YM7NwaN8$c" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$FileTypes" resolve="AllIcons.FileTypes" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$FileTypes.Any_type" resolve="Any_type" />
       </node>
@@ -22340,8 +22340,8 @@
     <property role="72QZ$" value="true" />
     <property role="2uzpH1" value="Test Model" />
     <property role="3GE5qa" value="Menu.ProjectPane.Model.Actions" />
-    <node concept="1QGGSu" id="3WVt5L$JcJE" role="3Uehp1">
-      <node concept="10M0yZ" id="3WVt5L$JiLy" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGB$" role="3Uehp1">
+      <node concept="10M0yZ" id="3WVt5L$JiLy" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.TestModel" resolve="TestModel" />
       </node>
@@ -28719,8 +28719,8 @@
     <property role="3GE5qa" value="Menu.ProjectPane.Model.Actions" />
     <property role="72QZ$" value="true" />
     <property role="1rBW0U" value="true" />
-    <node concept="1QGGSu" id="6XsdSpi8mJa" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSpi8mVJ" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGB_" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSpi8mVJ" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Find" resolve="Find" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
       </node>
@@ -30856,8 +30856,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="1XNTwqFf_n7" role="3Uehp1">
-      <node concept="10M0yZ" id="1XNTwqFf_n8" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBA" role="3Uehp1">
+      <node concept="10M0yZ" id="1XNTwqFf_n8" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Find" resolve="Find" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
       </node>
@@ -37263,7 +37263,7 @@
                       <node concept="10Nm6u" id="ZAhE5r4CEH" role="3K4E3e" />
                       <node concept="2OqwBi" id="ZAhE5r4Dfx" role="3K4GZi">
                         <node concept="37vLTw" id="ZAhE5r4CME" role="2Oq$k0">
-                          <ref role="3cqZAo" node="ZAhE5r4Aed" resolve="checkAll" />
+                          <ref role="3cqZAo" node="ZAhE5r4Aed" resolve="s" />
                         </node>
                         <node concept="liA8E" id="ZAhE5r4DCK" role="2OqNvi">
                           <ref role="37wK5l" to="18ew:~IStatus.getMessage()" resolve="getMessage" />
@@ -37271,7 +37271,7 @@
                       </node>
                       <node concept="2OqwBi" id="ZAhE5r4ABA" role="3K4Cdx">
                         <node concept="37vLTw" id="ZAhE5r4Aeh" role="2Oq$k0">
-                          <ref role="3cqZAo" node="ZAhE5r4Aed" resolve="checkAll" />
+                          <ref role="3cqZAo" node="ZAhE5r4Aed" resolve="s" />
                         </node>
                         <node concept="liA8E" id="ZAhE5r4BkS" role="2OqNvi">
                           <ref role="37wK5l" to="18ew:~IStatus.isOk()" resolve="isOk" />

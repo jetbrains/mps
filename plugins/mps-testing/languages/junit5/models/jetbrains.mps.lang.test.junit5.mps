@@ -1207,7 +1207,7 @@
         <node concept="3clFbF" id="4Zd8$4Y4OBT" role="3cqZAp">
           <node concept="37vLTI" id="4Zd8$4Y4OBV" role="3clFbG">
             <node concept="37vLTw" id="4Zd8$4Y4OBY" role="37vLTJ">
-              <ref role="3cqZAo" node="4Zd8$4Y4OBP" resolve="myClm" />
+              <ref role="3cqZAo" node="4Zd8$4Y4OBP" resolve="myClassManager" />
             </node>
             <node concept="37vLTw" id="4Zd8$4Y4OBZ" role="37vLTx">
               <ref role="3cqZAo" node="4Zd8$4Y4NKr" resolve="clm" />

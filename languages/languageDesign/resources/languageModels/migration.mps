@@ -580,7 +580,7 @@
                           <node concept="2OqwBi" id="6S5fI02zWb5" role="3clFbG">
                             <node concept="2OqwBi" id="6S5fI02zWb6" role="2Oq$k0">
                               <node concept="3TrEf2" id="6S5fI02zWbc" role="2OqNvi">
-                                <ref role="3Tt5mk" to="1oap:63hNSM1YIC9" />
+                                <ref role="3Tt5mk" to="1oap:63hNSM1YIC9" resolve="iconExpression" />
                               </node>
                               <node concept="37vLTw" id="6S5fI02zX95" role="2Oq$k0">
                                 <ref role="3cqZAo" node="6S5fI02zWbe" resolve="it" />

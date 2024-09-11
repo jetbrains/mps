@@ -1858,7 +1858,7 @@
               <node concept="2ShNRf" id="ApPuqRRe31" role="3cqZAk">
                 <node concept="1pGfFk" id="ApPuqRRjuY" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" to="6xgk:6Kqn2fZxA8P" />
+                  <ref role="37wK5l" to="6xgk:6Kqn2fZxA8P" resolve="HidingByNameScope" />
                   <node concept="35c_gC" id="5MsRCEs8nmd" role="37wK5m">
                     <ref role="35c_gD" to="tp3t:2r4rhgaDx1I" resolve="PatternBuilderVariable" />
                   </node>
@@ -1866,7 +1866,7 @@
                     <ref role="3cqZAo" node="2r4rhgaESsO" resolve="kind" />
                   </node>
                   <node concept="37vLTw" id="ApPuqRRljN" role="37wK5m">
-                    <ref role="3cqZAo" node="ApPuqRRc6X" resolve="scope" />
+                    <ref role="3cqZAo" node="ApPuqRRc6X" resolve="varScope" />
                   </node>
                   <node concept="iy90A" id="5MsRCEs8$su" role="37wK5m" />
                 </node>

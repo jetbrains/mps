@@ -9,7 +9,7 @@
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="6" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
-    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
+    <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="3" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
@@ -68,8 +68,8 @@
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
-      <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
-        <child id="6976585500156684809" name="iconExpression" index="3xaMm5" />
+      <concept id="7927811850890310904" name="jetbrains.mps.lang.resources.structure.ConstantFieldIcon" flags="ng" index="1GtWCo">
+        <child id="7927811850890311914" name="field" index="1GtWoa" />
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -2430,8 +2430,8 @@
     <property role="3GE5qa" value="Actions" />
     <property role="2uzpH1" value="Add Module to VCS" />
     <property role="1rBW0U" value="true" />
-    <node concept="1QGGSu" id="2hX4PxwLP3n" role="3Uehp1">
-      <node concept="10M0yZ" id="2hX4PxwM2MW" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGB8" role="3Uehp1">
+      <node concept="10M0yZ" id="2hX4PxwM2MW" role="1GtWoa">
         <ref role="1PxDUh" to="l7us:~MPSIcons$Actions" resolve="MPSIcons.Actions" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$Actions.AddToVCS" resolve="AddToVCS" />
       </node>
@@ -2933,8 +2933,8 @@
         </node>
       </node>
     </node>
-    <node concept="1QGGSu" id="6XsdSphTP5d" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphTPkx" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGB9" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphTPkx" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Diff" resolve="Diff" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
       </node>
@@ -3967,8 +3967,8 @@
       <ref role="1DUlNI" to="qkt:~CommonDataKeys.PROJECT" resolve="PROJECT" />
       <node concept="1oajcY" id="4$Favkc8OnP" role="1oa70y" />
     </node>
-    <node concept="1QGGSu" id="6XsdSphTxUB" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphTEox" role="3xaMm5">
+    <node concept="1GtWCo" id="6S5fI02CGBa" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphTEox" role="1GtWoa">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
         <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Diff" resolve="Diff" />
       </node>

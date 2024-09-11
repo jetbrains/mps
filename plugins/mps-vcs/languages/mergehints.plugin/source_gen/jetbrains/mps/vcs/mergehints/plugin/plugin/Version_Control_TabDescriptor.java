@@ -28,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Version_Control_TabDescriptor extends RelationDescriptor {
-  private static final Icon ICON = IconContainer.ICON_a0;
+  private static final Icon ICON = IconContainer.ICON0;
 
   public Version_Control_TabDescriptor() {
   }

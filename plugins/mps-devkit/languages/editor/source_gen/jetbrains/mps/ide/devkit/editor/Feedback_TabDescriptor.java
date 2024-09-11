@@ -25,7 +25,7 @@ import jetbrains.mps.lang.structure.behavior.IConceptAspect__BehaviorDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Feedback_TabDescriptor extends RelationDescriptor {
-  private static final Icon ICON = IconContainer.ICON_a0;
+  private static final Icon ICON = IconContainer.ICON0;
 
   public Feedback_TabDescriptor() {
   }

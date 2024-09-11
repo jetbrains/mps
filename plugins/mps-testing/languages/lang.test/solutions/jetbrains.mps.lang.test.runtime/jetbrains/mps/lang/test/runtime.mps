@@ -14035,7 +14035,7 @@
           </node>
           <node concept="3clFbC" id="5s44y2LgIlG" role="3clFbw">
             <node concept="37vLTw" id="5s44y2LgIlH" role="3uHU7B">
-              <ref role="3cqZAo" node="5s44y2LgIl_" resolve="eventTargMpsTestsSuiteetComponent" />
+              <ref role="3cqZAo" node="5s44y2LgIl_" resolve="eventTargetComponent" />
             </node>
             <node concept="10Nm6u" id="5s44y2LgIlI" role="3uHU7w" />
           </node>
@@ -14049,7 +14049,7 @@
             </node>
             <node concept="2OqwBi" id="5s44y2LgIlN" role="33vP2m">
               <node concept="37vLTw" id="5s44y2LgIlO" role="2Oq$k0">
-                <ref role="3cqZAo" node="5s44y2LgIl_" resolve="eventTargMpsTestsSuiteetComponent" />
+                <ref role="3cqZAo" node="5s44y2LgIl_" resolve="eventTargetComponent" />
               </node>
               <node concept="liA8E" id="5s44y2LgIlP" role="2OqNvi">
                 <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
@@ -14166,7 +14166,7 @@
                 </node>
                 <node concept="2OqwBi" id="5s44y2LgIm$" role="3uHU7w">
                   <node concept="37vLTw" id="5s44y2LgIm_" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5s44y2LgIl_" resolve="eventTargMpsTestsSuiteetComponent" />
+                    <ref role="3cqZAo" node="5s44y2LgIl_" resolve="eventTargetComponent" />
                   </node>
                   <node concept="liA8E" id="5s44y2LgImA" role="2OqNvi">
                     <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />

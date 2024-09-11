@@ -31830,7 +31830,7 @@
     <node concept="m$_wf" id="5lGJ4Taqfsl" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.ide.modelchecker" />
       <node concept="m$_yC" id="1cnFdKEyDJ4" role="m$_yJ">
-        <ref role="m$_y1" node="4k71ibbLe59" />
+        <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />
       </node>
       <node concept="m$_yB" id="1cnFdKEyD2P" role="m$_yh">
         <ref role="m$_yA" node="1_7hqbu4mXQ" resolve="jetbrains.mps.ide.modelchecker" />
@@ -42765,7 +42765,7 @@
         <ref role="m$_y1" node="16mx0EU4lyh" resolve="jetbrains.mps.ide" />
       </node>
       <node concept="m$_yC" id="1cnFdKEyEXF" role="m$_yJ">
-        <ref role="m$_y1" node="5lGJ4Taqfsl" />
+        <ref role="m$_y1" node="5lGJ4Taqfsl" resolve="jetbrains.mps.ide.modelchecker" />
       </node>
     </node>
     <node concept="2_Ic$z" id="6mtDI7J_9Bl" role="3989C9">
@@ -50648,7 +50648,7 @@
         </node>
       </node>
       <node concept="m$_yC" id="5xhjlkpPj9Y" role="m$_yJ">
-        <ref role="m$_y1" node="4k71ibbLe59" />
+        <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />
       </node>
       <node concept="m$f5U" id="5xhjlkpPkDQ" role="m$_yh">
         <ref role="m$f5T" node="5xhjlkpPk8j" resolve="mps-http-support" />
@@ -51142,7 +51142,7 @@
       <property role="m$_wk" value="jetbrains.mps.ide.migration.workbench" />
       <property role="1NdglO" value="true" />
       <node concept="m$_yC" id="1cnFdKEyEzh" role="m$_yJ">
-        <ref role="m$_y1" node="4k71ibbKLe8" />
+        <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
       </node>
       <node concept="m$_yB" id="5lGJ4Tajp8z" role="m$_yh">
         <ref role="m$_yA" node="5lGJ4Tajp1p" resolve="jetbrains.mps.migration.component" />

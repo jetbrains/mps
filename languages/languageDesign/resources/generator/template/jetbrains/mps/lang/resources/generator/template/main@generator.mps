@@ -640,7 +640,7 @@
           <node concept="2OqwBi" id="6S5fI02vVcU" role="v9R3O">
             <node concept="2OqwBi" id="6S5fI02vVcV" role="2Oq$k0">
               <node concept="3TrEf2" id="6S5fI02vVcW" role="2OqNvi">
-                <ref role="3Tt5mk" to="1oap:7Mb2akaesr5" />
+                <ref role="3Tt5mk" to="1oap:7Mb2akaesr5" resolve="icon" />
               </node>
               <node concept="30H73N" id="6S5fI02vWqv" role="2Oq$k0" />
             </node>
@@ -662,7 +662,7 @@
                     <node concept="2OqwBi" id="6S5fI02vXi0" role="12$y8L">
                       <node concept="30H73N" id="6S5fI02vXi1" role="2Oq$k0" />
                       <node concept="3TrEf2" id="6S5fI02vXi2" role="2OqNvi">
-                        <ref role="3Tt5mk" to="1oap:7Mb2akaesr5" />
+                        <ref role="3Tt5mk" to="1oap:7Mb2akaesr5" resolve="icon" />
                       </node>
                     </node>
                   </node>
@@ -678,7 +678,7 @@
                 <node concept="2OqwBi" id="6S5fI02vXi7" role="2Oq$k0">
                   <node concept="30H73N" id="6S5fI02vXi8" role="2Oq$k0" />
                   <node concept="3TrEf2" id="6S5fI02vXi9" role="2OqNvi">
-                    <ref role="3Tt5mk" to="1oap:7Mb2akaesr5" />
+                    <ref role="3Tt5mk" to="1oap:7Mb2akaesr5" resolve="icon" />
                   </node>
                 </node>
                 <node concept="2qgKlT" id="6S5fI02vXia" role="2OqNvi">
@@ -1971,7 +1971,7 @@
                               <ref role="3cqZAo" node="39fSgdSIlgn" resolve="rv" />
                             </node>
                             <node concept="3Tsc0h" id="39fSgdSIEdq" role="2OqNvi">
-                              <ref role="3TtcxE" to="1oap:39fSgdSHrm0" />
+                              <ref role="3TtcxE" to="1oap:39fSgdSHrm0" resolve="layers" />
                             </node>
                           </node>
                           <node concept="TSZUe" id="39fSgdSIGlj" role="2OqNvi">
@@ -2044,7 +2044,7 @@
       <node concept="2OqwBi" id="39fSgdSJgW_" role="v9R3O">
         <node concept="30H73N" id="39fSgdSJgWA" role="2Oq$k0" />
         <node concept="3Tsc0h" id="39fSgdSJgWB" role="2OqNvi">
-          <ref role="3TtcxE" to="1oap:7MKI4BBUT$V" />
+          <ref role="3TtcxE" to="1oap:7MKI4BBUT$V" resolve="newuiLayers" />
         </node>
       </node>
     </node>
@@ -2825,7 +2825,7 @@
                 <node concept="22lmx$" id="6S5fI02uWYl" role="3cqZAk">
                   <node concept="2OqwBi" id="6S5fI02uTTZ" role="3uHU7B">
                     <node concept="37vLTw" id="6S5fI02vfGj" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6S5fI02vfGf" resolve="file" />
+                      <ref role="3cqZAo" node="6S5fI02vfGf" resolve="n1" />
                     </node>
                     <node concept="liA8E" id="6S5fI02uTU3" role="2OqNvi">
                       <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
@@ -2837,7 +2837,7 @@
                   </node>
                   <node concept="2OqwBi" id="6S5fI02v4V_" role="3uHU7w">
                     <node concept="37vLTw" id="6S5fI02vgzY" role="2Oq$k0">
-                      <ref role="3cqZAo" node="6S5fI02vgzU" resolve="newuiFileName" />
+                      <ref role="3cqZAo" node="6S5fI02vgzU" resolve="n2" />
                     </node>
                     <node concept="liA8E" id="6S5fI02v6Qk" role="2OqNvi">
                       <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
