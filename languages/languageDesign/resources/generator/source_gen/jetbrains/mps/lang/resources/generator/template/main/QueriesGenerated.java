@@ -10,6 +10,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
 import jetbrains.mps.lang.resources.behavior.Icon__BehaviorDescriptor;
 import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.util.MacrosFactory;
+import jetbrains.mps.lang.resources.behavior.FileIcon__BehaviorDescriptor;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -17,7 +20,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.resources.behavior.BaseURL__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.generator.template.IfMacroContext;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -71,6 +73,17 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((String) _context.getVariable("oldResourceId")) == null;
   }
   public static boolean rule_Condition_14_1(final BaseMappingRuleContext _context) {
+    String n1 = SPropertyOperations.getString(_context.getNode(), PROPS.file$686H);
+    boolean moduleFile1 = (n1 != null && n1.length() > 0) && n1.startsWith(MacrosFactory.MODULE);
+    boolean moduleFile2 = false;
+    if (!(Objects.equals(((String) _context.getVariable("oldResourceId")), ((String) _context.getVariable("newResourceId"))))) {
+      // hacky way to figure out if there's a newUI file
+      String n2 = FileIcon__BehaviorDescriptor.getNewuiFileName_id1$fQzw7yhpR.invoke(_context.getNode());
+      moduleFile2 = (n2 != null && n2.length() > 0) && n2.startsWith(MacrosFactory.MODULE);
+    }
+    return moduleFile1 || moduleFile2;
+  }
+  public static boolean rule_Condition_14_2(final BaseMappingRuleContext _context) {
     return ((String) _context.getVariable("oldResourceId")) != null;
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
@@ -92,7 +105,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.createUniqueName("ICON", null);
   }
   public static Object propertyMacro_GetValue_2_6(final PropertyMacroContext _context) {
-    return _context.createUniqueName("RESOURCE_", null);
+    // IconContainer is generated once for a model with a create root rule.
+    // (a) there's no easy context node (although could have used any IconResourceExpression or even any root of the inputModel)
+    // (b) generation happens once per model, likely, we are fine with the fake context and the sequence would be 0..n
+    return _context.createIndexedName("RESOURCE_", null, false);
   }
   public static Object propertyMacro_GetValue_2_7(final PropertyMacroContext _context) {
     return PersistenceFacade.getInstance().asString(_context.getOriginalInputModel().getModule().getModuleReference());
@@ -146,9 +162,24 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.url$UpM);
   }
   public static Object propertyMacro_GetValue_14_0(final PropertyMacroContext _context) {
+    if (SPropertyOperations.getString(_context.getNode(), PROPS.file$686H).startsWith(MacrosFactory.MODULE)) {
+      // I expect '/' after '${module} to get module-absolute path
+      return SPropertyOperations.getString(_context.getNode(), PROPS.file$686H).substring(MacrosFactory.MODULE.length());
+    }
     return ((String) _context.getVariable("oldResourceId"));
   }
   public static Object propertyMacro_GetValue_14_1(final PropertyMacroContext _context) {
+    String fn = FileIcon__BehaviorDescriptor.getNewuiFileName_id1$fQzw7yhpR.invoke(_context.getNode());
+    if ((fn != null && fn.length() > 0) && fn.startsWith(MacrosFactory.MODULE)) {
+      // expect module-absolute path, starting with '/'
+      return fn.substring(MacrosFactory.MODULE.length());
+    }
+    return ((String) _context.getVariable("newResourceId"));
+  }
+  public static Object propertyMacro_GetValue_14_2(final PropertyMacroContext _context) {
+    return ((String) _context.getVariable("oldResourceId"));
+  }
+  public static Object propertyMacro_GetValue_14_3(final PropertyMacroContext _context) {
     return ((String) _context.getVariable("newResourceId"));
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
@@ -176,6 +207,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.baseURL$ZoS) != null);
   }
   public static boolean ifMacro_Condition_14_0(final IfMacroContext _context) {
+    return !(Objects.equals(((String) _context.getVariable("oldResourceId")), ((String) _context.getVariable("newResourceId"))));
+  }
+  public static boolean ifMacro_Condition_14_1(final IfMacroContext _context) {
     return !(Objects.equals(((String) _context.getVariable("oldResourceId")), ((String) _context.getVariable("newResourceId"))));
   }
   public static SNode sourceNodeQuery_2_0(final SourceSubstituteMacroNodeContext _context) {
@@ -236,6 +270,7 @@ public class QueriesGenerated extends QueryProviderBase {
   {
     int i = 0;
     rrcMethods.put("2630821694146588114", new RRC(i++));
+    rrcMethods.put("5571135398644841637", new RRC(i++));
     rrcMethods.put("2630821694146599163", new RRC(i++));
   }
   @Override
@@ -256,6 +291,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.rule_Condition_14_0(ctx);
         case 1:
           return QueriesGenerated.rule_Condition_14_1(ctx);
+        case 2:
+          return QueriesGenerated.rule_Condition_14_2(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for rule %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -417,6 +454,8 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("4726480899536928299", new PVQ(i++, MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1115749abe3L, 0x1115767a8eeL, "fqClassName"), "class"));
     pvqMethods.put("4726480899536378235", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "mySuffix"));
     pvqMethods.put("4726480899536397444", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), "mySuffix"));
+    pvqMethods.put("5571135398645049604", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
+    pvqMethods.put("5571135398645049610", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), null));
     pvqMethods.put("2630821694146619837", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), ""));
     pvqMethods.put("2630821694146672971", new PVQ(i++, MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value"), null));
   }
@@ -483,6 +522,10 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.propertyMacro_GetValue_14_0(ctx);
         case 23:
           return QueriesGenerated.propertyMacro_GetValue_14_1(ctx);
+        case 24:
+          return QueriesGenerated.propertyMacro_GetValue_14_2(ctx);
+        case 25:
+          return QueriesGenerated.propertyMacro_GetValue_14_3(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -495,6 +538,7 @@ public class QueriesGenerated extends QueryProviderBase {
     imcMethods.put("4786190798786580766", new IfMC(i++));
     imcMethods.put("6638738203687335894", new IfMC(i++));
     imcMethods.put("4726480899536381408", new IfMC(i++));
+    imcMethods.put("5571135398645049615", new IfMC(i++));
     imcMethods.put("2630821694146674433", new IfMC(i++));
   }
   @NotNull
@@ -521,6 +565,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.ifMacro_Condition_10_0(ctx);
         case 4:
           return QueriesGenerated.ifMacro_Condition_14_0(ctx);
+        case 5:
+          return QueriesGenerated.ifMacro_Condition_14_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -638,6 +684,13 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept GeneratedImage$_G = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, "jetbrains.mps.lang.resources.structure.GeneratedImage");
   }
 
+  private static final class PROPS {
+    /*package*/ static final SProperty file$686H = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file");
+    /*package*/ static final SProperty url$qUOP = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L, 0x4197d5560e6a38f3L, "url");
+    /*package*/ static final SProperty url$UpM = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x47d8f9811b73d398L, "url");
+    /*package*/ static final SProperty fileName$JiWl = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, 0x324fe10378a9d34fL, "fileName");
+  }
+
   private static final class LINKS {
     /*package*/ static final SContainmentLink icon$OBvj = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6c3L, 0x7c8b08a50a39c6c5L, "icon");
     /*package*/ static final SReferenceLink baseURL$ZoS = MetaAdapterFactory.getReferenceLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x4197d5560e6966c4L, "baseURL");
@@ -651,11 +704,5 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink layers$pqJD = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x26417c37742e0e66L, "layers");
     /*package*/ static final SContainmentLink newuiLayers$lptJ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x7cb0b849e7eb993bL, "newuiLayers");
     /*package*/ static final SContainmentLink layers$ahIF = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, 0x324fe10378b5b580L, "layers");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty url$qUOP = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x4197d5560e6a38b8L, 0x4197d5560e6a38f3L, "url");
-    /*package*/ static final SProperty url$UpM = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x47d8f9811b73d398L, "url");
-    /*package*/ static final SProperty fileName$JiWl = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x324fe10378a9d167L, 0x324fe10378a9d34fL, "fileName");
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.classloading.ModuleClassLoaderSupport;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
 import java.net.URL;
 import java.util.Collection;
 import java.util.Enumeration;
@@ -57,5 +58,13 @@ public interface IClassPathItem extends ClassBytesProvider {
       classPathItem.add(pathItem);
     }
     return classPathItem;
+  }
+
+  @NotNull
+  static IClassPathItem createResourceOnlyPathItem(@NotNull File resourceLocation) {
+    if (resourceLocation.exists()) {
+      return new LocalResourceClassPathItem(resourceLocation);
+    }
+    return new NonExistingClassPathItem(resourceLocation.getPath());
   }
 }

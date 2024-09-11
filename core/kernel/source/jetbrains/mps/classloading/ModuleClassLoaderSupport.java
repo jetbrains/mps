@@ -16,13 +16,17 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.reloading.CompositeClassPathItem;
 import jetbrains.mps.reloading.IClassPathItem;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.util.List;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class ModuleClassLoaderSupport {
   private final ReloadableModule myModule;
@@ -37,7 +41,12 @@ public class ModuleClassLoaderSupport {
   private static IClassPathItem calcClassPath(@NotNull ReloadableModule module) {
     JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
     assert facet != null;
-    return IClassPathItem.createClassPathItem(facet.getClassPath());
+    IClassPathItem rv = IClassPathItem.createClassPathItem(facet.getClassPath());
+    if (!module.isPackaged() && module instanceof AbstractModule && ((AbstractModule) module).getModuleSourceDir() != null) {
+      IClassPathItem extra = IClassPathItem.createResourceOnlyPathItem(new File(((AbstractModule) module).getModuleSourceDir().getPath()));
+      rv = new CompositeClassPathItem(Stream.concat(rv.flatten().stream(), extra.flatten().stream()));
+    }
+    return rv;
   }
 
   ModuleClassLoaderSupport(@NotNull ReloadableModule module,
