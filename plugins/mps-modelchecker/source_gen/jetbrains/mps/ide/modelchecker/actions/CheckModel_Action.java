@@ -104,10 +104,14 @@ public class CheckModel_Action extends BaseAction {
   }
   private void completeWithNested(List<SModel> models, final Map<String, Object> _params) {
     for (SModel model : models.toArray(new SModel[models.size()])) {
-      String name = model.getName().getLongName();
+      if (SModelStereotype.isDescriptorModel(model)) {
+        // all modules of a module would be considered 'inner' when using long name of a descriptor model, it's not what we wont, I suppose
+        continue;
+      }
+      String prefix = model.getName().getLongName() + '.';
       boolean isStub = SModelStereotype.isStubModel(model);
       for (SModel innerModel : Sequence.fromIterable(model.getModule().getModels())) {
-        if (innerModel.getName().getLongName().startsWith(name + ".")) {
+        if (innerModel.getName().getLongName().startsWith(prefix)) {
           if (isStub == SModelStereotype.isStubModel(innerModel)) {
             models.add(innerModel);
           }
