@@ -30,6 +30,7 @@ import jetbrains.mps.project.structure.modules.SolutionKind;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.util.MacroHelper;
+import jetbrains.mps.util.MacroHelper.MacroNoHelper;
 import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.util.PathSpecBundle;
@@ -252,7 +253,10 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       toUpdate = memento.createChild(CLASSES_KEY);
       toUpdate.put(GENERATED_KEY, Boolean.toString(true));
     }
-    final MacroHelper mh = MacrosFactory.forModule(getModule());
+    // for a detached facet, same paths in full (without any path variable, even ${mps_home} as
+    // even though it renders proper path on subsequent use, our 'shrink' logic would stick to the same
+    // macro forever (and I prefer not to keep ${mps_home} where ${module} is ok).
+    final MacroHelper mh = getModule() == null ? new MacroNoHelper() : MacrosFactory.forModule(getModule());
     toUpdate.put(PATH_KEY, myGeneratedClassesLocation != null ? myGeneratedClassesLocation.shrink(mh) : null);
     memento.put(KEY_COMPILE, myCompile.toPersistenceValue());
     memento.put(KEY_CLASSLOADER, myLoadClasses.toPersistenceValue());
