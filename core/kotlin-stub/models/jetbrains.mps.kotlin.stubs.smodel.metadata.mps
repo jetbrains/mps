@@ -6976,10 +6976,6 @@
       </node>
       <node concept="3clFbS" id="6ZbwqG7V6Y2" role="3clF47">
         <node concept="3clFbF" id="3UI2r1WQqMF" role="3cqZAp">
-          <node concept="15s5l7" id="71Ad6gR53Gf" role="lGtFl">
-            <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;FLAVOUR_MESSAGE=&quot;Error: incompatible types: jetbrains.mps.kotlin.stubs.common.references.ClassStereotype and jetbrains.mps.kotlin.stubs.common.references.ClassStereotype&quot;;FLAVOUR_RULE_ID=&quot;[r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/7192154694570987550,r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/4660288602099522921]&quot;;" />
-            <property role="huDt6" value="Error: incompatible types: jetbrains.mps.kotlin.stubs.common.references.ClassStereotype and jetbrains.mps.kotlin.stubs.common.references.ClassStereotype" />
-          </node>
           <node concept="2OqwBi" id="3UI2r1WQXsr" role="3clFbG">
             <node concept="2YIFZM" id="3UI2r1WQt_u" role="2Oq$k0">
               <ref role="37wK5l" to="oawq:~KtReferenceResolverKt.resolveClassReference(jetbrains.mps.kotlin.stubs.loading.references.KtReferenceResolver,java.lang.String,jetbrains.mps.kotlin.stubs.loading.kind.KotlinModelKind)" resolve="resolveClassReference" />
@@ -7000,6 +6996,10 @@
                 <ref role="3cqZAo" node="1Uhah3j46zq" resolve="resultHandler" />
               </node>
             </node>
+          </node>
+          <node concept="15s5l7" id="2w6bYgGYp13" role="lGtFl">
+            <property role="1eyWvh" value="FLAVOUR_ISSUE_KIND=&quot;typesystem (typesystem)&quot;;" />
+            <property role="huDt6" value="all typesystem messages" />
           </node>
         </node>
       </node>
