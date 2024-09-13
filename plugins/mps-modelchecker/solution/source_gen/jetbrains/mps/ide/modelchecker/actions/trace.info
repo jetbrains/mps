@@ -264,9 +264,11 @@
       <node id="6392785737886310028" at="95,78,96,88" concept="4" />
       <node id="6392785737886310050" at="98,154,99,78" concept="4" />
       <node id="6392785737886314682" at="100,5,101,25" concept="10" />
-      <node id="6392785737886390036" at="104,68,105,50" concept="9" />
-      <node id="6392785737886390044" at="105,50,106,59" concept="9" />
-      <node id="6392785737886390066" at="109,67,110,35" concept="4" />
+      <node id="8407211836643259032" at="105,54,106,139" concept="11" />
+      <node id="8407211836643254103" at="106,139,107,17" concept="3" />
+      <node id="6392785737886390036" at="108,7,109,58" concept="9" />
+      <node id="6392785737886390044" at="109,58,110,59" concept="9" />
+      <node id="6392785737886390066" at="113,67,114,35" concept="4" />
       <node id="1453248744423276394" at="42,33,45,5" concept="7" />
       <node id="1453248744423276340" at="51,95,54,5" concept="7" />
       <node id="8898893144448210006" at="65,53,68,7" concept="7" />
@@ -274,21 +276,22 @@
       <node id="7233034492819658235" at="86,7,89,5" concept="7" />
       <node id="6392785737886310021" at="94,57,97,5" concept="7" />
       <node id="6392785737886310035" at="97,5,100,5" concept="7" />
-      <node id="6392785737886390064" at="108,72,111,11" concept="7" />
+      <node id="6392785737886390064" at="112,68,115,11" concept="7" />
       <node id="1453248744423276340" at="34,0,38,0" concept="8" trace="isDumbAware#()Z" />
       <node id="1453248744423276341" at="54,5,58,5" concept="0" />
       <node id="1453248744423276342" at="58,5,62,5" concept="0" />
+      <node id="8407211836643234141" at="104,68,108,7" concept="7" />
       <node id="5670662933669196213" at="81,32,86,7" concept="9" />
-      <node id="6392785737886390052" at="107,86,112,9" concept="7" />
+      <node id="6392785737886390052" at="111,86,116,9" concept="7" />
       <node id="1453248744423276340" at="27,0,34,0" concept="2" trace="CheckModel_Action#()V" />
       <node id="1453248744423276343" at="62,5,69,5" concept="0" />
       <node id="6392785737886379813" at="69,5,76,5" concept="0" />
-      <node id="6392785737886390049" at="106,59,113,7" concept="6" />
+      <node id="6392785737886390049" at="110,59,117,7" concept="6" />
       <node id="6392785737886297741" at="93,0,103,0" concept="8" trace="selectedModels#(Ljava/util/Map;)Ljava/util/List;" />
-      <node id="6392785737886390024" at="103,91,114,5" concept="6" />
       <node id="1453248744423276340" at="38,0,50,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="6392785737886383863" at="103,0,116,0" concept="8" trace="completeWithNested#(Ljava/util/List;Ljava/util/Map;)V" />
       <node id="1453248744423276340" at="79,0,93,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="6392785737886390024" at="103,91,118,5" concept="6" />
+      <node id="6392785737886383863" at="103,0,120,0" concept="8" trace="completeWithNested#(Ljava/util/List;Ljava/util/Map;)V" />
       <node id="1453248744423276340" at="50,0,79,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <scope id="1453248744423276340" at="35,32,36,16" />
       <scope id="1453248744423276395" at="43,35,44,53" />
@@ -298,17 +301,18 @@
       <scope id="7233034492819658237" at="87,34,88,13" />
       <scope id="6392785737886310027" at="95,78,96,88" />
       <scope id="6392785737886310049" at="98,154,99,78" />
-      <scope id="6392785737886390065" at="109,67,110,35" />
+      <scope id="6392785737886390065" at="113,67,114,35" />
       <scope id="1453248744423276341" at="55,5,57,51">
         <var name="p" id="1453248744423276341" />
       </scope>
       <scope id="1453248744423276342" at="59,5,61,52">
         <var name="p" id="1453248744423276342" />
       </scope>
+      <scope id="8407211836643234143" at="105,54,107,17" />
       <scope id="6392785737886478127" at="82,156,85,16">
         <var name="rv" id="6392785737886549992" />
       </scope>
-      <scope id="6392785737886390063" at="108,72,111,11" />
+      <scope id="6392785737886390063" at="112,68,115,11" />
       <scope id="1453248744423276340" at="34,0,38,0" />
       <scope id="1453248744423276340" at="27,30,32,24" />
       <scope id="1453248744423276343" at="63,5,68,7">
@@ -317,9 +321,9 @@
       <scope id="6392785737886379813" at="70,5,75,7">
         <var name="p" id="6392785737886379813" />
       </scope>
-      <scope id="6392785737886390051" at="107,86,112,9" />
+      <scope id="6392785737886390051" at="111,86,116,9" />
       <scope id="1453248744423276340" at="27,0,34,0" />
-      <scope id="6392785737886390049" at="106,59,113,7">
+      <scope id="6392785737886390049" at="110,59,117,7">
         <var name="innerModel" id="6392785737886390050" />
       </scope>
       <scope id="6392785737886297743" at="93,74,101,25">
@@ -329,38 +333,38 @@
         <var name="modelsToCheck" id="7233034492821222568" />
         <var name="whatToCheck" id="1453248744423276391" />
       </scope>
-      <scope id="6392785737886390035" at="104,68,113,7">
-        <var name="isStub" id="6392785737886390045" />
-        <var name="name" id="6392785737886390037" />
-      </scope>
       <scope id="6392785737886297741" at="93,0,103,0">
         <var name="_params" id="6392785737886297741" />
       </scope>
       <scope id="1453248744423276340" at="80,96,91,130">
         <var name="modelsToCheck" id="5670662933669196214" />
       </scope>
-      <scope id="6392785737886383865" at="103,91,114,5" />
-      <scope id="6392785737886390024" at="103,91,114,5">
-        <var name="model" id="6392785737886390080" />
-      </scope>
       <scope id="1453248744423276340" at="38,0,50,0">
         <var name="_params" id="1453248744423276340" />
         <var name="event" id="1453248744423276340" />
       </scope>
-      <scope id="6392785737886383863" at="103,0,116,0">
-        <var name="_params" id="6392785737886383863" />
-        <var name="models" id="6392785737886389367" />
+      <scope id="6392785737886390035" at="104,68,117,7">
+        <var name="isStub" id="6392785737886390045" />
+        <var name="prefix" id="6392785737886390037" />
       </scope>
       <scope id="1453248744423276340" at="79,0,93,0">
         <var name="_params" id="1453248744423276340" />
         <var name="event" id="1453248744423276340" />
+      </scope>
+      <scope id="6392785737886383865" at="103,91,118,5" />
+      <scope id="6392785737886390024" at="103,91,118,5">
+        <var name="model" id="6392785737886390080" />
+      </scope>
+      <scope id="6392785737886383863" at="103,0,120,0">
+        <var name="_params" id="6392785737886383863" />
+        <var name="models" id="6392785737886389367" />
       </scope>
       <scope id="1453248744423276340" at="51,95,77,16" />
       <scope id="1453248744423276340" at="50,0,79,0">
         <var name="_params" id="1453248744423276340" />
         <var name="event" id="1453248744423276340" />
       </scope>
-      <unit id="1453248744423276340" at="24,0,117,0" name="jetbrains.mps.ide.modelchecker.actions.CheckModel_Action" />
+      <unit id="1453248744423276340" at="24,0,121,0" name="jetbrains.mps.ide.modelchecker.actions.CheckModel_Action" />
     </file>
     <file name="Modelchecker_ApplicationPlugin.java">
       <node id="1453248744423276340" at="28,29,29,39" concept="4" />
