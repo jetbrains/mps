@@ -140,18 +140,20 @@ public final class LanguageConceptSwitch {
   public static final int SwingComponentContainer = 128;
   public static final int SwingComponentinFoldedCell = 129;
   public static final int TestBlockList = 130;
-  public static final int TwoStepDeleteAbstractChildContainer = 131;
-  public static final int TwoStepDeleteAttribute = 132;
-  public static final int TwoStepDeleteCellCollectionChild = 133;
-  public static final int TwoStepDeleteCustomChild = 134;
-  public static final int TwoStepDeleteCustomChildContainer = 135;
-  public static final int TwoStepDeleteDefaultChild = 136;
-  public static final int TwoStepDeleteDefaultChildContainer = 137;
-  public static final int TwoStepDeleteLabelChild = 138;
-  public static final int TwoStepDeleteTestRoot = 139;
-  public static final int VariableDeclarationBlock = 140;
-  public static final int VariableDeclarationReference = 141;
-  public static final int VerticalLayoutBlockList = 142;
+  public static final int TestInspectorChild = 131;
+  public static final int TestInspectorParent = 132;
+  public static final int TwoStepDeleteAbstractChildContainer = 133;
+  public static final int TwoStepDeleteAttribute = 134;
+  public static final int TwoStepDeleteCellCollectionChild = 135;
+  public static final int TwoStepDeleteCustomChild = 136;
+  public static final int TwoStepDeleteCustomChildContainer = 137;
+  public static final int TwoStepDeleteDefaultChild = 138;
+  public static final int TwoStepDeleteDefaultChildContainer = 139;
+  public static final int TwoStepDeleteLabelChild = 140;
+  public static final int TwoStepDeleteTestRoot = 141;
+  public static final int VariableDeclarationBlock = 142;
+  public static final int VariableDeclarationReference = 143;
+  public static final int VerticalLayoutBlockList = 144;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L);
@@ -286,6 +288,8 @@ public final class LanguageConceptSwitch {
     builder.put(0x4c2f3af68ccbed52L, SwingComponentContainer);
     builder.put(0x3511b2d0e7e6e5e7L, SwingComponentinFoldedCell);
     builder.put(0x3361ce1b17d62dbbL, TestBlockList);
+    builder.put(0x73bd5a3508347d5L, TestInspectorChild);
+    builder.put(0x73bd5a3507cd4b4L, TestInspectorParent);
     builder.put(0x29e25dc0d0251d65L, TwoStepDeleteAbstractChildContainer);
     builder.put(0x2198294affa4d593L, TwoStepDeleteAttribute);
     builder.put(0x1139cad76e28ba86L, TwoStepDeleteCellCollectionChild);

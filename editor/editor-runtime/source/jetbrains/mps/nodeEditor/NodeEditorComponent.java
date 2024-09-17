@@ -22,6 +22,7 @@ import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.LocalTimeCounter;
 import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
@@ -29,6 +30,7 @@ import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.nodeEditor.selection.SingularSelectionListenerAdapter;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.selection.SingularSelection;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NonNls;
@@ -38,6 +40,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.awt.event.HierarchyEvent;
+import java.util.Collections;
 
 public class NodeEditorComponent extends EditorComponent {
   private SNode myLastInspectedNode = null;
@@ -56,11 +59,13 @@ public class NodeEditorComponent extends EditorComponent {
     getSelectionManager().addSelectionListener(new SingularSelectionListenerAdapter() {
       @Override
       protected void selectionChangedTo(jetbrains.mps.openapi.editor.EditorComponent editorComponent, SingularSelection newSelection) {
-        final SNode[] toSelect = new SNode[]{newSelection.getEditorCell().getSNode()};
+        if (!isShowing() && !RuntimeFlags.getTestMode().isInsideTestEnvironment()) {
+          return;
+        }
+        EditorCell cell = newSelection.getEditorCell();
+        boolean readOnlyInEditor = ReadOnlyUtil.isCellsReadOnlyInEditor(editorComponent, Collections.singleton(cell));
         getRepository().getModelAccess().runReadAction(() -> {
-          if (isShowing() || RuntimeFlags.getTestMode().isInsideTestEnvironment()) {
-            inspect(toSelect[0]);
-          }
+          inspect(cell.getSNode(), readOnlyInEditor);
         });
       }
     });
@@ -78,18 +83,17 @@ public class NodeEditorComponent extends EditorComponent {
 
   private void adjustInspector() {
     getRepository().getModelAccess().runReadAction(() -> {
-      SNode selectedNode = getSelectedNode();
-
-      if (selectedNode == null) {
-        inspect(null);
-        return;
+      EditorCell selectedCell = getSelectedCell();
+      SNode selectedNode = null;
+      if (selectedCell != null) {
+        selectedNode = selectedCell.getSNode();
+        if (selectedNode != null) {
+          if (selectedNode.getModel() == null) {
+            return;
+          }
+        }
       }
-
-      if (selectedNode.getModel() == null) {
-        return;
-      }
-
-      inspect(selectedNode);
+      inspect(selectedNode, selectedCell != null && ReadOnlyUtil.isCellReadOnly(selectedCell));
     });
   }
 
@@ -98,7 +102,7 @@ public class NodeEditorComponent extends EditorComponent {
     return myLastInspectedNode;
   }
 
-  private void inspect(final SNode toSelect) {
+  private void inspect(SNode toSelect, boolean readOnly) {
     myLastInspectedNode = toSelect;
     if (getInspector() == null) {
       return;
@@ -108,7 +112,7 @@ public class NodeEditorComponent extends EditorComponent {
     FileEditor fileEditor = MPSCommonDataKeys.FILE_EDITOR.getData(dataContext);
     String[] inspectorInitialEditorHints = getEditorHintsForNode(toSelect);
     if (getInspectorTool() != null) {
-      getInspectorTool().inspect(toSelect, fileEditor, inspectorInitialEditorHints);
+      getInspectorTool().inspect(toSelect, fileEditor, inspectorInitialEditorHints ,readOnly);
     }
   }
 
@@ -142,7 +146,7 @@ public class NodeEditorComponent extends EditorComponent {
     InspectorTool inspectorTool = getInspectorTool();
     if (inspectorTool != null && inspectorTool.getInspector() != null) {
       if (inspectorTool.getInspector().getEditedNode() == this.getLastInspectedNode()) {
-        inspectorTool.inspect(null, null, null);
+        inspectorTool.inspect(null, null, null, false);
       }
     }
     myLastInspectedNode = null;
