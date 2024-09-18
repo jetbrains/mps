@@ -19,6 +19,7 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.openapi.ui.messages.MessageDialog;
 import com.intellij.openapi.ui.Messages;
 
 @GeneratedClass(node = "r:cb723a04-ead3-4054-b750-edbb165cca03(jetbrains.mps.ide.editor.actions.core)/7711023363876674047", model = "r:cb723a04-ead3-4054-b750-edbb165cca03(jetbrains.mps.ide.editor.actions.core)")
@@ -93,7 +94,9 @@ public class ShowNodeMessages_Action extends BaseAction {
     }
     sb.append("<html>");
 
-    Messages.showInfoMessage(((Project) MapSequence.fromMap(_params).get("project")), sb.toString(), "Node Messages");
+    MessageDialog dialog = new MessageDialog(((Project) MapSequence.fromMap(_params).get("project")), null, sb.toString(), "Node Messages", new String[]{Messages.getOkButton()}, 0, -1, Messages.getInformationIcon(), null, false, null);
+    dialog.setResizable(true);
+    dialog.show();
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
