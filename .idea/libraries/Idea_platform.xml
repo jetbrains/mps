@@ -13,6 +13,34 @@
       <root url="jar://$PROJECT_DIR$/lib/lib.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-loader.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-frontback.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.libraries.compose.desktop.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.libraries.ktor.client.cio.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.libraries.ktor.client.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.libraries.microba.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.libraries.skiko.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.clouds.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.collaborationTools.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.compose.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.execution.dashboard.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.execution.serviceView.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.images.backend.svg.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.images.copyright.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.kernel.backend.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.lvcs.impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.navbar.backend.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.navbar.frontend.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.navbar.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.navbar.monolith.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.progress.backend.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.project.backend.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.rpc.backend.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.settings.local.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.smRunner.vcs.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.vcs.dvcs.impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.vcs.impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.vcs.log.impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.smart.update.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/nio-fs.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
