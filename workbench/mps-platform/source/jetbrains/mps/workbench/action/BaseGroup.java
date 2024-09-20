@@ -126,7 +126,7 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
   }
 
   public void addPlace(ActionPlace place, @Nullable Condition<BaseAction> condition) {
-    List<AnAction> actionList = Arrays.asList(getChildren(null));
+    List<AnAction> actionList = Arrays.asList(getChildren((AnActionEvent) null));
     addPlaceToActionList(actionList, place, condition);
   }
 

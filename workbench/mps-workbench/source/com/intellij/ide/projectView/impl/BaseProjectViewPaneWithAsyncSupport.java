@@ -22,7 +22,7 @@ public abstract class BaseProjectViewPaneWithAsyncSupport extends AbstractProjec
   @Override
   public void updateFrom(Object element, boolean forceResort, boolean updateStructure) {
     if (element instanceof VirtualFile) {
-      AsyncProjectViewSupport support = getAsyncSupport();
+      ProjectViewPaneSupport support = getAsyncSupport();
       if (support != null) support.updateByFile((VirtualFile) element, updateStructure);
     }
     super.updateFrom(element, forceResort, updateStructure);
@@ -34,7 +34,7 @@ public abstract class BaseProjectViewPaneWithAsyncSupport extends AbstractProjec
    */
   @SuppressWarnings("UnstableApiUsage")
   @Override
-  protected AsyncProjectViewSupport getAsyncSupport() {
+  protected ProjectViewPaneSupport getAsyncSupport() {
     return super.getAsyncSupport();
   }
 }

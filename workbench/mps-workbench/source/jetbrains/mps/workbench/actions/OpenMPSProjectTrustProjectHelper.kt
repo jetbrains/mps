@@ -87,7 +87,7 @@ object OpenMPSProjectTrustProjectHelper {
         .focusedButton(cancelButtonText)
         .doNotAsk(doNotAskOption)
         .asWarning()
-        .help(TRUSTED_PROJECTS_HELP_TOPIC)
+        .help("Project_security")
         .show()
 
     private fun createDoNotAskOptionForLocation(projectLocation: Path): DoNotAskOption {

@@ -71,7 +71,7 @@ teamcity-info.xml
 /plugins/tasks
 /plugins/vcs-git
 /plugins/vcs-svn
-/plugins/vcs-github
+/plugins/vcs-github-community
 /plugins/yaml
 /plugins/ant
 /plugins/sh

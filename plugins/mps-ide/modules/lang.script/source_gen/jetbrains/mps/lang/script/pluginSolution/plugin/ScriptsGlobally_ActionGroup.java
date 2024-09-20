@@ -41,7 +41,7 @@ public class ScriptsGlobally_ActionGroup extends GeneratedActionGroup {
 
     ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(project);
     BaseGroup catGroup = menuBuilder.createPopup(false);
-    for (AnAction a : catGroup.getChildren(null)) {
+    for (AnAction a : catGroup.getChildren((AnActionEvent) null)) {
       ScriptsGlobally_ActionGroup.this.add(a);
     }
     ScriptsGlobally_ActionGroup.this.addParameterizedAction(new RunMigrationScripts_Action(false), false);

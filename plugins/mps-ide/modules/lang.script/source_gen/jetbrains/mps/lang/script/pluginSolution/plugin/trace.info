@@ -122,7 +122,7 @@
       <node id="5487985028841902309" at="49,45,50,0" concept="11" />
       <node id="5487985028841902310" at="50,0,51,69" concept="8" />
       <node id="5487985028841902316" at="51,69,52,55" concept="8" />
-      <node id="8083090344627125622" at="53,51,54,50" concept="2" />
+      <node id="8083090344627125622" at="53,67,54,50" concept="2" />
       <node id="5487985028841902333" at="55,5,56,108" concept="2" />
       <node id="5487985028841902259" at="57,70,58,39" concept="2" />
       <node id="5487985028841902259" at="61,81,62,109" concept="2" />
@@ -135,7 +135,7 @@
       <node id="5315016546079162309" at="44,64,48,5" concept="6" />
       <node id="5487985028841902259" at="31,0,36,0" concept="1" trace="ScriptsForSelection_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
       <node id="5487985028841902259" at="36,0,61,0" concept="7" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)V" />
-      <scope id="5487985028841902323" at="53,51,54,50" />
+      <scope id="5487985028841902323" at="53,67,54,50" />
       <scope id="5487985028841902259" at="57,70,58,39" />
       <scope id="5487985028841902259" at="61,81,62,109" />
       <scope id="5487985028841902259" at="64,29,65,17" />
@@ -225,7 +225,7 @@
       <node id="5487985028841902537" at="40,45,41,0" concept="11" />
       <node id="5487985028841902538" at="41,0,42,69" concept="8" />
       <node id="5487985028841902544" at="42,69,43,56" concept="8" />
-      <node id="8083090344627138040" at="44,51,45,46" concept="2" />
+      <node id="8083090344627138040" at="44,67,45,46" concept="2" />
       <node id="5487985028841902561" at="46,5,47,106" concept="2" />
       <node id="5487985028841902494" at="48,70,49,39" concept="2" />
       <node id="5487985028841902494" at="52,81,53,109" concept="2" />
@@ -237,7 +237,7 @@
       <node id="5487985028841902517" at="35,64,39,5" concept="6" />
       <node id="5487985028841902494" at="26,0,32,0" concept="1" trace="ScriptsGlobally_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
       <node id="5487985028841902494" at="32,0,52,0" concept="7" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;)V" />
-      <scope id="5487985028841902551" at="44,51,45,46" />
+      <scope id="5487985028841902551" at="44,67,45,46" />
       <scope id="5487985028841902494" at="48,70,49,39" />
       <scope id="5487985028841902494" at="52,81,53,109" />
       <scope id="5487985028841902494" at="55,29,56,17" />

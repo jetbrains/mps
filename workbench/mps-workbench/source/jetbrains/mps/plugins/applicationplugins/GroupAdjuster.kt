@@ -11,9 +11,6 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.application.EDT
 import com.intellij.openapi.project.ProjectManager
 import com.intellij.openapi.wm.ex.WindowManagerEx
-import com.intellij.platform.diagnostic.telemetry.EDT
-import com.intellij.platform.ijent.IjentProcessWatcher.Companion.launch
-import com.intellij.warmup.util.yieldAndWaitForDumbModeEnd
 import jetbrains.mps.RuntimeFlags
 import jetbrains.mps.ide.actions.MPSActions
 import jetbrains.mps.ide.actions.ModuleActions_ActionGroup
