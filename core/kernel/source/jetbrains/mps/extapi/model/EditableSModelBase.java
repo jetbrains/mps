@@ -198,7 +198,7 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
     if (myResolveConflictInProgress.compareAndSet(false, true)) {
       // fixme obviously the warning is here because MPS is not ideal in this matter: saveAll on each fs reload
       LOG.warning("Model file " + getReference().getModelName() + " was modified externally! " +
-                  "You might want to turn \"Synchronize files on frame activation/deactivation\" option on to avoid conflicts.");
+                  "You might want to modify the autosave settings in \"Settings/Preferences | Appearance & Behavior | System Settings\" to avoid conflicts.");
       return myConflictResolver.resolveConflict(this)
                                .thenApply(EditableSModelBase::convert)
                                .handle((saveResult, throwable) -> {
