@@ -2170,6 +2170,11 @@
       <node concept="3Tmbuc" id="2FkQk2QY2h6" role="1B3o_S" />
       <node concept="3cqZAl" id="2FkQk2QY2h8" role="3clF45" />
       <node concept="3clFbS" id="2FkQk2QY2h9" role="3clF47">
+        <node concept="3clFbF" id="58exvrFIX06" role="3cqZAp">
+          <node concept="3nyPlj" id="58exvrFIX04" role="3clFbG">
+            <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.doUnregister()" resolve="doUnregister" />
+          </node>
+        </node>
         <node concept="3clFbF" id="2FkQk2QYg7q" role="3cqZAp">
           <node concept="37vLTI" id="2FkQk2QYmhB" role="3clFbG">
             <node concept="10Nm6u" id="2FkQk2QYr7N" role="37vLTx" />

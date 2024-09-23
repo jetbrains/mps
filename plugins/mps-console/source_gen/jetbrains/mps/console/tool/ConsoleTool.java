@@ -112,6 +112,7 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
 
   @Override
   protected void doUnregister() {
+    super.doUnregister();
     myContentManager = null;
   }
 
