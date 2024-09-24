@@ -5,11 +5,11 @@
         >
 <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
   <id>jetbrains.mps.ide.mpsmigration</id>
-  <name>Migration 2024.1</name>
+  <name>Migration 2024.3</name>
   <description>Provides actions to migrate models and languages developed using previous versions of MPS</description>
-  <version>2024.1</version>
+  <version>2024.3</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="241.1" until-build="242.1"/>
+  <idea-version since-build="243.1" until-build="251.1"/>
 
   <depends>jetbrains.mps.ide.migration.workbench</depends>
 
