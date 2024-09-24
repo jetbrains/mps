@@ -84,7 +84,7 @@ public final class TabbedToolDeclaration__BehaviorDescriptor extends BaseBHDescr
   private static SNode createClassifierType_se925p_a0a0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$bL);
-    n0.setReference(LINKS.classifier$cxMr, new SNodePointer(facade.createModelReference("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.tools(MPS.Platform/)"), facade.createNodeId("~BaseTabbedProjectTool")));
+    n0.setReference(LINKS.classifier$cxMr, new SNodePointer(facade.createModelReference("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.tools(MPS.Platform/)"), facade.createNodeId("~BaseTabbedProjectServiceTool")));
     return n0.getResult();
   }
 

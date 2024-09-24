@@ -6611,7 +6611,7 @@
               <node concept="2pIpSj" id="1wgDEmyj153" role="2pJxcM">
                 <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
                 <node concept="36bGnv" id="1wgDEmyj2BM" role="28nt2d">
-                  <ref role="36bGnp" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
+                  <ref role="36bGnp" to="71xd:~BaseTabbedProjectServiceTool" resolve="BaseTabbedProjectServiceTool" />
                 </node>
               </node>
             </node>
