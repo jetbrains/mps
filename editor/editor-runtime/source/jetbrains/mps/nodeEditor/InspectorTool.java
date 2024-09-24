@@ -22,9 +22,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.KeyboardShortcut;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.Shortcut;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.fileEditor.FileEditor;
-import com.intellij.openapi.fileEditor.FileEditorProvider;
 import com.intellij.openapi.keymap.Keymap;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.Project;
@@ -62,22 +60,12 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
 public class InspectorTool extends BaseTool implements EditorInspector, Disposable {
   public static final String ID = "Inspector";
-  // Check with component registered only in plugin
-  private static final boolean IS_IN_MPS_PLUGIN =
-      FileEditorProvider.EP_FILE_EDITOR_PROVIDER.getExtensionList().stream().anyMatch(
-          fileEditorProvider ->
-              "jetbrains.mps.idea.core.editor.ModelFileToRootDispatchingEditorProvider".equals(
-                  fileEditorProvider.getClass().getCanonicalName()
-              )
-      );
-
   private MyPanel myComponent;
   private InspectorEditorComponent myInspectorComponent;
   private MyMessagePanel myMessagePanel;
@@ -100,10 +88,6 @@ public class InspectorTool extends BaseTool implements EditorInspector, Disposab
   }
 
   private static void hackFavoritesAndBookmarksKeymap() {
-    if (IS_IN_MPS_PLUGIN) {
-      return;
-    }
-
     BiConsumer<String, KeyStroke> removeDefaultKeyStroke = (keymapId, keyStroke) -> {
       String favoritesViewId = ActivateToolWindowAction.Manager.getActionIdForToolWindow(ToolWindowId.FAVORITES_VIEW);
       String bookmarksViewId = ActivateToolWindowAction.Manager.getActionIdForToolWindow(ToolWindowId.BOOKMARKS);
@@ -132,10 +116,6 @@ public class InspectorTool extends BaseTool implements EditorInspector, Disposab
   }
 
   private static Map<String, KeyStroke> getDefaultShortCuts() {
-    if (IS_IN_MPS_PLUGIN) {
-      return Collections.emptyMap();
-    }
-
     final Map<String, KeyStroke> result = new HashMap<>(6);
 
     BiConsumer<String, String> addKeyStroke = (keymapId, shortCut) -> {
