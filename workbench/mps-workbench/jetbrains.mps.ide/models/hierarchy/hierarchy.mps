@@ -100,7 +100,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1095950406618" name="jetbrains.mps.baseLanguage.structure.DivExpression" flags="nn" index="FJ1c_" />
@@ -173,7 +173,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
         <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1092119917967" name="jetbrains.mps.baseLanguage.structure.MulExpression" flags="nn" index="17qRlL" />
@@ -247,7 +247,7 @@
       <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
         <child id="1160998896846" name="condition" index="1gVkn0" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
         <child id="4972241301747169160" name="typeArgument" index="3PaCim" />
@@ -282,7 +282,7 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -420,7 +420,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -495,12 +495,6 @@
           <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
       </node>
-      <node concept="37vLTG" id="1Vv_gC6WWNg" role="3clF46">
-        <property role="TrG5h" value="tool" />
-        <node concept="3uibUv" id="1Vv_gC6WWNh" role="1tU5fm">
-          <ref role="3uigEE" to="71xd:~BaseTool" resolve="BaseTool" />
-        </node>
-      </node>
       <node concept="3clFbS" id="51NkKCgB39K" role="3clF47">
         <node concept="XkiVB" id="51NkKCgB39L" role="3cqZAp">
           <ref role="37wK5l" node="51NkKCgB3dz" resolve="AbstractHierarchyView" />
@@ -510,6 +504,12 @@
           <node concept="37vLTw" id="1Vv_gC6WXlA" role="37wK5m">
             <ref role="3cqZAo" node="1Vv_gC6WWNg" resolve="tool" />
           </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="1Vv_gC6WWNg" role="3clF46">
+        <property role="TrG5h" value="tool" />
+        <node concept="3uibUv" id="1Vv_gC6WWNh" role="1tU5fm">
+          <ref role="3uigEE" to="71xd:~BaseTool" resolve="BaseTool" />
         </node>
       </node>
     </node>
@@ -586,6 +586,7 @@
   <node concept="312cEu" id="51NkKCgB38Y">
     <property role="TrG5h" value="AbstractHierarchyViewState" />
     <property role="1sVAO0" value="true" />
+    <node concept="3Tm1VV" id="51NkKCgB3d5" role="1B3o_S" />
     <node concept="312cEg" id="1Vv_gC6Paoh" role="jymVt">
       <property role="TrG5h" value="project" />
       <property role="3TUv4t" value="true" />
@@ -602,7 +603,6 @@
         <ref role="3uigEE" to="71xd:~BaseTool" resolve="BaseTool" />
       </node>
     </node>
-    <node concept="3Tm1VV" id="51NkKCgB3d5" role="1B3o_S" />
     <node concept="312cEg" id="51NkKCgB3d9" role="jymVt">
       <property role="TrG5h" value="myHierarchyTree" />
       <node concept="3uibUv" id="51NkKCgB3da" role="1tU5fm">
@@ -634,12 +634,6 @@
           <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
       </node>
-      <node concept="37vLTG" id="1Vv_gC6TWEE" role="3clF46">
-        <property role="TrG5h" value="tool" />
-        <node concept="3uibUv" id="1Vv_gC6TXeq" role="1tU5fm">
-          <ref role="3uigEE" to="71xd:~BaseTool" resolve="BaseTool" />
-        </node>
-      </node>
       <node concept="3clFbS" id="51NkKCgB3dI" role="3clF47">
         <node concept="3clFbF" id="1Vv_gC6Pkuq" role="3cqZAp">
           <node concept="37vLTI" id="1Vv_gC6PmFS" role="3clFbG">
@@ -666,6 +660,12 @@
               </node>
             </node>
           </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="1Vv_gC6TWEE" role="3clF46">
+        <property role="TrG5h" value="tool" />
+        <node concept="3uibUv" id="1Vv_gC6TXeq" role="1tU5fm">
+          <ref role="3uigEE" to="71xd:~BaseTool" resolve="BaseTool" />
         </node>
       </node>
     </node>
@@ -2271,7 +2271,7 @@
           </node>
           <node concept="3cpWs6" id="22Czinas0f6" role="3cqZAp">
             <node concept="3nyPlj" id="6hSp8SHdi2t" role="3cqZAk">
-              <ref role="37wK5l" to="jkm4:~SimpleToolWindowPanel.getData(java.lang.String)" resolve="getData" />
+              <ref role="37wK5l" to="qkt:~UiCompatibleDataProvider.getData(java.lang.String)" resolve="getData" />
               <node concept="37vLTw" id="6hSp8SHdkDq" role="37wK5m">
                 <ref role="3cqZAo" node="22CzinarWbs" resolve="id" />
               </node>
@@ -2501,12 +2501,6 @@
           <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
       </node>
-      <node concept="37vLTG" id="1Vv_gC6VgHv" role="3clF46">
-        <property role="TrG5h" value="tool" />
-        <node concept="3uibUv" id="1Vv_gC6VgHw" role="1tU5fm">
-          <ref role="3uigEE" to="71xd:~BaseTool" resolve="BaseTool" />
-        </node>
-      </node>
       <node concept="3clFbS" id="51NkKCgB3m$" role="3clF47">
         <node concept="XkiVB" id="51NkKCgB3m_" role="3cqZAp">
           <ref role="37wK5l" node="51NkKCgB3dz" resolve="AbstractHierarchyView" />
@@ -2516,6 +2510,12 @@
           <node concept="37vLTw" id="1Vv_gC6VhQt" role="37wK5m">
             <ref role="3cqZAo" node="1Vv_gC6VgHv" resolve="tool" />
           </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="1Vv_gC6VgHv" role="3clF46">
+        <property role="TrG5h" value="tool" />
+        <node concept="3uibUv" id="1Vv_gC6VgHw" role="1tU5fm">
+          <ref role="3uigEE" to="71xd:~BaseTool" resolve="BaseTool" />
         </node>
       </node>
     </node>

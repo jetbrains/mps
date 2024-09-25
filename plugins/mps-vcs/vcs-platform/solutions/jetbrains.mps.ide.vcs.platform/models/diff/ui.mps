@@ -18035,7 +18035,12 @@
             </node>
             <node concept="liA8E" id="2cnBllv8RXT" role="2OqNvi">
               <ref role="37wK5l" to="qkt:~DefaultActionGroup.getChildren(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="getChildren" />
-              <node concept="10Nm6u" id="2cnBllv8RXU" role="37wK5m" />
+              <node concept="10QFUN" id="5_GG3tBxWdl" role="37wK5m">
+                <node concept="3uibUv" id="5_GG3tBxZbL" role="10QFUM">
+                  <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+                </node>
+                <node concept="10Nm6u" id="2cnBllv8RXU" role="10QFUP" />
+              </node>
             </node>
           </node>
           <node concept="3cpWsn" id="2cnBllv8NIZ" role="1Duv9x">
