@@ -141,6 +141,7 @@
         <fileset dir="${artifacts.IDEA}/plugins/vcs-svn/lib" includes="*.jar" />
         <fileset dir="${artifacts.IDEA}/plugins/vcs-git/lib" includes="*.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
+        <fileset dir="${artifacts.IDEA}/lib/modules" includes="*.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>

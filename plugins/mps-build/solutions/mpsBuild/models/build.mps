@@ -26650,6 +26650,20 @@
           <property role="3MwjfP" value="lib" />
         </node>
       </node>
+      <node concept="398223" id="2lbt9GM20nd" role="39821P">
+        <node concept="3_J27D" id="2lbt9GM20nf" role="Nbhlr">
+          <node concept="3Mxwew" id="2lbt9GM20qx" role="3MwsjC">
+            <property role="3MwjfP" value="modules" />
+          </node>
+        </node>
+        <node concept="13uQ2_" id="2lbt9GM20rB" role="39821P">
+          <node concept="3_J27D" id="2lbt9GM20rC" role="13uQ07">
+            <node concept="3Mxwew" id="2lbt9GM20vX" role="3MwsjC">
+              <property role="3MwjfP" value="intellij.platform.vcs.impl.jar" />
+            </node>
+          </node>
+        </node>
+      </node>
       <node concept="398223" id="6eCuTcwOX2i" role="39821P">
         <node concept="3_J27D" id="6eCuTcwOX2j" role="Nbhlr">
           <node concept="3Mxwew" id="6eCuTcwOX2k" role="3MwsjC">
@@ -49357,6 +49371,13 @@
         <node concept="3yqFpY" id="1QfYSW$ddZ5" role="25yagT">
           <node concept="3yqFqT" id="1QfYSW$ddZ6" role="3yqFpW">
             <ref role="3yqFr6" node="6eCuTcwOvjK" resolve="lib" />
+          </node>
+        </node>
+      </node>
+      <node concept="25yagZ" id="3Mp$eHqrsSl" role="PiKyV">
+        <node concept="3yqFpY" id="3Mp$eHqrsSh" role="25yagT">
+          <node concept="3yqFqT" id="3Mp$eHqrsSj" role="3yqFpW">
+            <ref role="3yqFr6" node="2lbt9GM20nd" />
           </node>
         </node>
       </node>
