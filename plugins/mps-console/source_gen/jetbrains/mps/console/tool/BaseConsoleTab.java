@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.intellij.openapi.Disposable;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.console.actions.IConsoleTool;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.fileEditor.FileEditor;
@@ -89,7 +90,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 @GeneratedClass(node = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)/4914591330900787311", model = "r:de40a5a4-f08c-4c67-ac43-e1f5c384f7d6(jetbrains.mps.console.tool)")
 public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Disposable {
   private static final Logger LOG = Logger.getLogger(BaseConsoleTab.class);
-  private ConsoleTool myTool;
+  private IConsoleTool myTool;
   private SModel myModel;
   private MPSProject myProject;
   private FileEditor myFileEditor;
@@ -99,7 +100,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
 
   protected SNode myRoot;
 
-  public BaseConsoleTab(MPSProject project, ConsoleTool tool, String title, @Nullable Element history) {
+  public BaseConsoleTab(MPSProject project, IConsoleTool tool, String title, @Nullable Element history) {
     super(false, true);
     myTool = tool;
     myTabTitle = title;
@@ -111,7 +112,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     return myTabTitle;
   }
 
-  public ConsoleTool getTool() {
+  public IConsoleTool getTool() {
     return myTool;
   }
 
@@ -131,7 +132,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     return myRoot;
   }
 
-  public ConsoleTool getConsoleTool() {
+  public IConsoleTool getConsoleTool() {
     return myTool;
   }
 

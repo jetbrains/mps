@@ -53,6 +53,16 @@ public abstract class BaseTabbedProjectServiceTool extends BaseTool {
     }
   }
 
+  /**
+   * Changing the visibility, since the generated subclasses need to call this method,
+   * yet the actual TabbedTool concept instances are not subclasses of {@link BaseTabbedProjectServiceTool}
+   * @return Delegates to the BaseTool class
+   */
+  @Override
+  public @Nullable ContentManager getContentManager() {
+    return super.getContentManager();
+  }
+
   public void closeTab(JComponent component) {
     ContentManager contentManager = getContentManager();
     if (contentManager == null) {

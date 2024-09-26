@@ -7,6 +7,7 @@ import com.intellij.openapi.actionSystem.DataProvider;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.console.actions.IConsoleTool;
 import org.jetbrains.annotations.Nullable;
 import org.jdom.Element;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -53,7 +54,7 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
   }
 
 
-  public DialogConsoleTab(MPSProject project, ConsoleTool tool, String title, @Nullable Element history) {
+  public DialogConsoleTab(MPSProject project, IConsoleTool tool, String title, @Nullable Element history) {
     super(project, tool, title, history);
   }
 

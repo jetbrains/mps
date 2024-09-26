@@ -14,11 +14,8 @@
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="" hide="true"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
+
+    <projectService serviceImplementation="jetbrains.mps.console.plugin.ConsoleNewTool_Tool" />
   </extensions>
 
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.console.tool.ConsoleTool</implementation-class>
-    </component>
-  </project-components>
 </idea-plugin>

@@ -17,7 +17,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.console.tool.ConsoleTool;
+import jetbrains.mps.console.plugin.ConsoleNewTool_Tool;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.IdeActions;
@@ -76,6 +78,7 @@ public class PasteOriginalNode_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((Project) MapSequence.fromMap(_params).get("project")).getComponent(ConsoleTool.class).runWithoutPasteAsRef(() -> ActionUtils.updateAndPerformAction(ActionManager.getInstance().getAction(IdeActions.ACTION_PASTE), event));
+    ConsoleNewTool_Tool console = ProjectPluginManager.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).getTool(ConsoleNewTool_Tool.class);
+    console.runWithoutPasteAsRef(((_FunctionTypes._void_P0_E0) () -> ActionUtils.updateAndPerformAction(ActionManager.getInstance().getAction(IdeActions.ACTION_PASTE), event)));
   }
 }
