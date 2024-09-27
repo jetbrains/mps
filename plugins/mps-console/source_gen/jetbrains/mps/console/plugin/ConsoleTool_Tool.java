@@ -44,7 +44,6 @@ public class ConsoleTool_Tool extends BaseTabbedProjectServiceTool {
   private boolean pasteAsRef = true;
   private Object myself = ConsoleTool_Tool.this;
   private ContentManager contentManager;
-  private boolean disposed = false;
   public ConsoleTool_Tool(Project project) {
     super(project, "Console", MapSequence.fromMapAndEntryArray(new HashMap<String, KeyStroke>(), Map.entry("$default", KeyStroke.getKeyStroke("alt F11"))), ICON, ToolWindowAnchor.BOTTOM, true);
   }
@@ -52,10 +51,6 @@ public class ConsoleTool_Tool extends BaseTabbedProjectServiceTool {
     super.init(project);
     ConsoleTool_Tool.this.myIdeaProject = project;
     ConsoleTool_Tool.this.myMPSProject = ProjectHelper.fromIdeaProjectOrFail(project);
-  }
-  public void dispose() {
-    ConsoleTool_Tool.this.disposed = true;
-    super.dispose();
   }
   @Override
   protected boolean isInitiallyAvailable() {
@@ -67,9 +62,6 @@ public class ConsoleTool_Tool extends BaseTabbedProjectServiceTool {
   }
   @Override
   protected void doRegister() {
-    if (ConsoleTool_Tool.this.disposed) {
-      return;
-    }
     ConsoleTool_Tool.this.contentManager = ConsoleTool_Tool.this.getMyself().getContentManager();
     ConsoleTool_Tool.this.initTabs();
   }
@@ -177,9 +169,9 @@ public class ConsoleTool_Tool extends BaseTabbedProjectServiceTool {
   }
   public DialogConsoleTab getCurrentEditableTab() {
     if (ListSequence.fromList(ConsoleTool_Tool.this.myTabs).getElement(ConsoleTool_Tool.this.getCurrentTabIndex()) instanceof DialogConsoleTab) {
-      return as_39mclg_a0a0a0w(ListSequence.fromList(ConsoleTool_Tool.this.myTabs).getElement(ConsoleTool_Tool.this.getCurrentTabIndex()), DialogConsoleTab.class);
+      return as_39mclg_a0a0a0u(ListSequence.fromList(ConsoleTool_Tool.this.myTabs).getElement(ConsoleTool_Tool.this.getCurrentTabIndex()), DialogConsoleTab.class);
     }
-    return as_39mclg_a0b0w(ListSequence.fromList(ConsoleTool_Tool.this.myTabs).getElement(0), DialogConsoleTab.class);
+    return as_39mclg_a0b0u(ListSequence.fromList(ConsoleTool_Tool.this.myTabs).getElement(0), DialogConsoleTab.class);
   }
   @Nullable
   public MyState getState() {
@@ -254,10 +246,10 @@ public class ConsoleTool_Tool extends BaseTabbedProjectServiceTool {
     }
 
   }
-  private static <T> T as_39mclg_a0a0a0w(Object o, Class<T> type) {
+  private static <T> T as_39mclg_a0a0a0u(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_39mclg_a0b0w(Object o, Class<T> type) {
+  private static <T> T as_39mclg_a0b0u(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

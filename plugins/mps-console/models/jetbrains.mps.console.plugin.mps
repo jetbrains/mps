@@ -44,12 +44,10 @@
       </concept>
       <concept id="5896642449625981893" name="jetbrains.mps.lang.plugin.structure.TabbedToolDeclaration" flags="ng" index="2wDNrl" />
       <concept id="1213888653896" name="jetbrains.mps.lang.plugin.structure.InitBlock" flags="in" index="2xpIHi" />
-      <concept id="1213888677711" name="jetbrains.mps.lang.plugin.structure.DisposeBlock" flags="in" index="2xpOpl" />
       <concept id="1213888797251" name="jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_Project" flags="nn" index="2xqhHp" />
       <concept id="6547237850567458268" name="jetbrains.mps.lang.plugin.structure.BaseToolDeclaration" flags="ng" index="2XNcJY">
         <property id="43535111852086466" name="isAvailableOnStartup" index="tEvSQ" />
         <property id="6547237850567462620" name="caption" index="2XNbzY" />
-        <child id="8096638938275469615" name="toolDisposeBlock" index="uR5co" />
         <child id="8096638938275469614" name="toolInitBlock" index="uR5cp" />
         <child id="6547237850567462848" name="methodDeclaration" index="2XNbBy" />
         <child id="6547237850567462849" name="fieldDeclaration" index="2XNbBz" />
@@ -384,17 +382,6 @@
     <node concept="2XrIbr" id="2$nlLZc0PFd" role="2XNbBy">
       <property role="TrG5h" value="doRegister" />
       <node concept="3clFbS" id="11UfqYTPC0S" role="3clF47">
-        <node concept="3clFbJ" id="4qsxhdjKpZc" role="3cqZAp">
-          <node concept="3clFbS" id="4qsxhdjKpZe" role="3clFbx">
-            <node concept="3cpWs6" id="4qsxhdjKqRC" role="3cqZAp" />
-          </node>
-          <node concept="2OqwBi" id="4qsxhdjKqam" role="3clFbw">
-            <node concept="2WthIp" id="4qsxhdjKq1L" role="2Oq$k0" />
-            <node concept="2BZ7hE" id="4qsxhdjKqzp" role="2OqNvi">
-              <ref role="2WH_rO" node="4qsxhdjKkve" resolve="disposed" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="5Twlnu9PNCq" role="3cqZAp">
           <node concept="37vLTI" id="5Twlnu9POAZ" role="3clFbG">
             <node concept="2OqwBi" id="5Twlnu9PNNC" role="37vLTJ">
@@ -1977,12 +1964,6 @@
         <ref role="3uigEE" to="v7ux:~ContentManager" resolve="ContentManager" />
       </node>
     </node>
-    <node concept="2BZ0e9" id="4qsxhdjKkve" role="2XNbBz">
-      <property role="TrG5h" value="disposed" />
-      <node concept="3Tm6S6" id="4qsxhdjKkvf" role="1B3o_S" />
-      <node concept="10P_77" id="4qsxhdjKoGq" role="1tU5fm" />
-      <node concept="3clFbT" id="4qsxhdjKoLi" role="33vP2m" />
-    </node>
     <node concept="15feLH" id="2$nlLZbW0F7" role="15cTzA">
       <node concept="15fezS" id="2$nlLZbW0F5" role="15fezK">
         <node concept="pLAjd" id="2$nlLZbW0F6" role="15feLI">
@@ -2022,23 +2003,6 @@
               <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProjectOrFail(com.intellij.openapi.project.Project)" resolve="fromIdeaProjectOrFail" />
               <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
               <node concept="2xqhHp" id="2$nlLZbYkzy" role="37wK5m" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2xpOpl" id="2pebujXO_Qw" role="uR5co">
-      <node concept="3clFbS" id="2pebujXO_Qx" role="2VODD2">
-        <node concept="3clFbF" id="4qsxhdjKp9B" role="3cqZAp">
-          <node concept="37vLTI" id="4qsxhdjKpFk" role="3clFbG">
-            <node concept="3clFbT" id="4qsxhdjKpGP" role="37vLTx">
-              <property role="3clFbU" value="true" />
-            </node>
-            <node concept="2OqwBi" id="4qsxhdjKp9x" role="37vLTJ">
-              <node concept="2WthIp" id="4qsxhdjKp9$" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="4qsxhdjKp9A" role="2OqNvi">
-                <ref role="2WH_rO" node="4qsxhdjKkve" resolve="disposed" />
-              </node>
             </node>
           </node>
         </node>
