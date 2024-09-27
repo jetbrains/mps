@@ -31,7 +31,6 @@
   <extensions defaultExtensionNs="com.intellij">
     <checkinHandlerFactory
             implementation="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerCheckinHandler$ModelCheckerCheckinHandlerFactory"/>
-    <mps.ModelValidator implementation="jetbrains.mps.ide.modelchecker.ModelValidatorAdapter"/>
     <applicationService serviceImplementation="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerSettings" />
     <applicationConfigurable groupId="tools" groupWeight="160" instance="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerPreferencesPage" id="preferences.modelCheckerSettings" displayName="Model Checker"/>
     <mps.LanguageLibrary dir="/" hide="true"/>

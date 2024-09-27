@@ -81,7 +81,7 @@
 
   <extensionPoints>
     <extensionPoint name="mps.CodeNavigationProvider" interface="jetbrains.mps.ide.navigation.CodeNavigationProvider"/>
-    <extensionPoint name="mps.ModelValidator" interface="jetbrains.mps.ide.generator.ModelValidator"/>
+    <extensionPoint name="mps.ModelValidator" interface="jetbrains.mps.ide.generator.ModelValidator"/> <!-- DEPRECATED -->
     <extensionPoint name="mps.TabColorProvider" area="IDEA_PROJECT" interface="jetbrains.mps.ide.editorTabs.TabColorProvider"/>
     <extensionPoint name="mps.projectPrefsPanel" interface="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectPrefsExtraPanel"
                     area="IDEA_PROJECT"/>

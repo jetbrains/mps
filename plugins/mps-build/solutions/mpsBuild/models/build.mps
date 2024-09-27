@@ -30744,22 +30744,6 @@
     <node concept="398b33" id="1nJh0raVm57" role="3989C9">
       <property role="TrG5h" value="mps-modelchecker" />
       <property role="ZpmtF" value="true" />
-      <node concept="2GAZfH" id="3NkcTj4zF_A" role="398b2p">
-        <node concept="TIC1d" id="3NkcTj4zF_u" role="2GAZfG">
-          <node concept="398BVA" id="3NkcTj4zC9i" role="TIC6M">
-            <ref role="398BVh" node="5yMuYWFN8P8" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="3NkcTj4zC9j" role="iGT6I">
-              <property role="2Ry0Am" value="plugins" />
-              <node concept="2Ry0Ak" id="3NkcTj4zC9k" role="2Ry0An">
-                <property role="2Ry0Am" value="mps-modelchecker" />
-                <node concept="2Ry0Ak" id="3$nddd1zg2Z" role="2Ry0An">
-                  <property role="2Ry0Am" value="source" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="2GAZfH" id="3$nddd1zfXC" role="398b2p">
         <node concept="TIC1d" id="3$nddd1zfXD" role="2GAZfG">
           <node concept="398BVA" id="3$nddd1zfXE" role="TIC6M">
@@ -30962,7 +30946,12 @@
       </node>
       <node concept="1SiIV0" id="1_7hqbu4n0x" role="3bR37C">
         <node concept="3bR9La" id="1_7hqbu4n0y" role="1SiIV1">
-          <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
+          <ref role="3bR37D" node="2eDSGe9d1q1" resolve="MPS.Workbench" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="7sVqoycThk1" role="3bR37C">
+        <node concept="3bR9La" id="7sVqoycThk2" role="1SiIV1">
+          <ref role="3bR37D" node="rD7wKO6k$" resolve="MPS.Generator" />
         </node>
       </node>
       <node concept="1SiIV0" id="1_7hqbu4n09" role="3bR37C">

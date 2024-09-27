@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:c6a69ad3-3fa7-49b3-9d3a-0c72f1eb3bb9(jetbrains.mps.ide.modelchecker)/8201991791033940811">
+    <file name="ModelValidatorAdapter.java">
+      <node id="8201991791033940912" at="43,87,44,86" concept="6" />
+      <node id="8201991791033940917" at="44,86,45,70" concept="6" />
+      <node id="8201991791033940927" at="46,23,47,18" concept="7" />
+      <node id="8201991791033940930" at="48,5,49,37" concept="6" />
+      <node id="8201991791033941127" at="49,37,50,75" concept="8" />
+      <node id="8201991791033941136" at="50,75,51,51" concept="8" />
+      <node id="8201991791033940939" at="52,57,53,56" concept="2" />
+      <node id="8201991791033940945" at="53,56,54,53" concept="6" />
+      <node id="8201991791033966229" at="56,9,57,113" concept="6" />
+      <node id="8201991791033966235" at="57,113,58,30" concept="2" />
+      <node id="8201991791033966240" at="58,30,59,136" concept="6" />
+      <node id="8201991791033966252" at="59,136,60,103" concept="6" />
+      <node id="8201991791033966260" at="60,103,61,24" concept="2" />
+      <node id="8201991791033966264" at="61,24,62,99" concept="2" />
+      <node id="8201991791033966275" at="62,99,63,20" concept="2" />
+      <node id="8201991791033940996" at="65,9,66,107" concept="2" />
+      <node id="8201991791033941006" at="67,12,68,39" concept="2" />
+      <node id="8201991791033941011" at="69,5,70,64" concept="6" />
+      <node id="8201991791033941016" at="70,64,71,74" concept="6" />
+      <node id="8201991791033941141" at="72,25,73,18" concept="8" />
+      <node id="8201991791033941026" at="73,18,74,19" concept="7" />
+      <node id="8201991791033941029" at="75,5,76,134" concept="6" />
+      <node id="8201991791033941036" at="76,134,77,112" concept="6" />
+      <node id="8201991791033941042" at="77,112,78,108" concept="6" />
+      <node id="8201991791033941054" at="79,22,80,155" concept="6" />
+      <node id="8201991791033941061" at="80,155,81,113" concept="6" />
+      <node id="8201991791033941067" at="81,113,82,20" concept="2" />
+      <node id="8201991791033941145" at="83,26,84,53" concept="8" />
+      <node id="8201991791033941073" at="84,53,85,88" concept="2" />
+      <node id="8201991791033941078" at="85,88,86,21" concept="7" />
+      <node id="8201991791033941154" at="87,14,88,37" concept="8" />
+      <node id="8201991791033941082" at="88,37,89,20" concept="7" />
+      <node id="8201991791033941084" at="91,5,92,16" concept="7" />
+      <node id="8201991791033940816" at="95,0,96,0" concept="3" trace="mySettings" />
+      <node id="8201991791033940820" at="96,0,97,0" concept="3" trace="myDialogMessage" />
+      <node id="8201991791033966286" at="97,142,98,27" concept="9" />
+      <node id="8201991791033940833" at="98,27,99,28" concept="2" />
+      <node id="8201991791033940837" at="99,28,100,32" concept="2" />
+      <node id="8201991791033940841" at="100,32,101,42" concept="2" />
+      <node id="8201991791033940844" at="101,42,102,39" concept="2" />
+      <node id="8201991791033940847" at="102,39,103,43" concept="2" />
+      <node id="8201991791033940850" at="103,43,104,13" concept="2" />
+      <node id="8201991791033940861" at="108,46,109,52" concept="6" />
+      <node id="8201991791033940866" at="109,52,110,81" concept="6" />
+      <node id="8201991791034020848" at="112,9,113,71" concept="6" />
+      <node id="8201991791034020855" at="113,71,114,65" concept="2" />
+      <node id="8201991791033940888" at="116,9,117,66" concept="2" />
+      <node id="8201991791033940893" at="117,66,118,46" concept="2" />
+      <node id="8201991791033940897" at="118,46,119,19" concept="7" />
+      <node id="8201991791033941004" at="67,10,69,5" concept="0" />
+      <node id="8201991791033940921" at="45,70,48,5" concept="4" />
+      <node id="8201991791033941080" at="87,12,90,7" concept="0" />
+      <node id="8201991791033941020" at="71,74,75,5" concept="4" />
+      <node id="8201991791034020846" at="111,40,115,9" concept="0" />
+      <node id="8201991791033940870" at="110,81,116,9" concept="2" />
+      <node id="8201991791033941069" at="82,20,90,7" concept="4" />
+      <node id="8201991791033966227" at="55,83,64,9" concept="0" />
+      <node id="8201991791033940824" at="97,0,106,0" concept="1" trace="CheckBeforeGenerationDialog#(Lcom/intellij/openapi/project/Project;Ljava/lang/String;Ljetbrains/mps/generator/IModifiableGenerationSettings;)V" />
+      <node id="8201991791033940949" at="54,53,65,9" concept="6" />
+      <node id="8201991791033941047" at="78,108,91,5" concept="4" />
+      <node id="8201991791033940856" at="106,0,121,0" concept="5" trace="createCenterPanel#()Ljavax/swing/JComponent;" />
+      <node id="8201991791033940933" at="51,51,69,5" concept="4" />
+      <node id="8201991791033940902" at="42,0,94,0" concept="5" trace="check#(Ljetbrains/mps/project/Project;Ljava/util/List;)Z" />
+      <scope id="8201991791033940926" at="46,23,47,18" />
+      <scope id="8201991791033941005" at="67,12,68,39" />
+      <scope id="8201991791033941025" at="72,25,74,19" />
+      <scope id="8201991791033941081" at="87,14,89,20" />
+      <scope id="8201991791034020847" at="112,9,114,65">
+        <var name="selected" id="8201991791034020849" />
+      </scope>
+      <scope id="8201991791033941072" at="83,26,86,21" />
+      <scope id="8201991791034020845" at="111,40,115,9" />
+      <scope id="8201991791033966228" at="56,9,63,20">
+        <var name="mrl" id="8201991791033966241" />
+        <var name="pm" id="8201991791033966230" />
+        <var name="projectModels" id="8201991791033966253" />
+      </scope>
+      <scope id="8201991791033940832" at="97,142,104,13" />
+      <scope id="8201991791033966226" at="55,83,64,9" />
+      <scope id="8201991791033940824" at="97,0,106,0">
+        <var name="message" id="8201991791033940828" />
+        <var name="project" id="8201991791033940826" />
+        <var name="settings" id="8201991791033940830" />
+      </scope>
+      <scope id="8201991791033941052" at="79,22,90,7">
+        <var name="dialog" id="8201991791033941060" />
+        <var name="msg" id="8201991791033941053" />
+      </scope>
+      <scope id="8201991791033940859" at="108,46,119,19">
+        <var name="checkBox" id="8201991791033940865" />
+        <var name="panel" id="8201991791033940860" />
+      </scope>
+      <scope id="8201991791033940938" at="52,57,66,107">
+        <var name="r" id="8201991791033940948" />
+        <var name="title" id="8201991791033940944" />
+      </scope>
+      <scope id="8201991791033940856" at="106,0,121,0" />
+      <scope id="8201991791033940910" at="43,87,92,16">
+        <var name="errors" id="8201991791033941041" />
+        <var name="generationSettings" id="8201991791033941028" />
+        <var name="ideaProject" id="8201991791033940911" />
+        <var name="issues" id="8201991791033941015" />
+        <var name="modelsToCheck" id="8201991791033940929" />
+        <var name="tool" id="8201991791033940916" />
+        <var name="viewer" id="8201991791033941010" />
+        <var name="warnings" id="8201991791033941035" />
+      </scope>
+      <scope id="8201991791033940902" at="42,0,94,0">
+        <var name="modelDescriptors" id="8201991791033940907" />
+        <var name="p" id="8201991791033940904" />
+      </scope>
+      <unit id="8201991791033940813" at="94,0,122,0" name="jetbrains.mps.ide.modelchecker.ModelValidatorAdapter$CheckBeforeGenerationDialog" />
+      <unit id="8201991791033940811" at="40,0,123,0" name="jetbrains.mps.ide.modelchecker.ModelValidatorAdapter" />
+    </file>
+  </root>
+  <root nodeRef="r:c6a69ad3-3fa7-49b3-9d3a-0c72f1eb3bb9(jetbrains.mps.ide.modelchecker)/8201991791034285090">
+    <file name="ModuleActivator.java">
+      <node id="4475567139869330517" at="11,0,12,0" concept="3" trace="myPlatform" />
+      <node id="4475567139869330521" at="13,53,14,29" concept="2" />
+      <node id="8201991791034314312" at="19,71,20,103" concept="2" />
+      <node id="4475567139869330295" at="13,0,16,0" concept="1" trace="ModuleActivator#(Ljetbrains/mps/components/ComponentHost;)V" />
+      <node id="8201991791034308825" at="18,0,22,0" concept="5" trace="contribute#(Ljetbrains/mps/smodel/runtime/ModuleRuntime/ActivatorContext;)V" />
+      <scope id="4475567139869330299" at="13,53,14,29" />
+      <scope id="8201991791034308833" at="19,71,20,103" />
+      <scope id="4475567139869330295" at="13,0,16,0">
+        <var name="mpsPlatform" id="4475567139869330395" />
+      </scope>
+      <scope id="8201991791034308825" at="18,0,22,0">
+        <var name="ctx" id="8201991791034308830" />
+      </scope>
+      <unit id="8201991791034285090" at="10,0,24,0" name="jetbrains.mps.ide.modelchecker.ModuleActivator" />
+    </file>
+  </root>
+</debug-info>
+
