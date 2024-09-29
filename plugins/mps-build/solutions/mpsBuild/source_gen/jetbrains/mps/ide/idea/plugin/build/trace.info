@@ -22,7 +22,7 @@
   </root>
   <root nodeRef="r:5c70a88b-9c77-4970-b930-a9ff601a03a0(jetbrains.mps.ide.idea.plugin.build)/4762870812623561207">
     <file name="mpsIdeaMigration.xml">
-      <unit id="4762870812623561207" at="1,0,327,10" name="jetbrains.mps.ide.idea.plugin.build.mpsIdeaMigration" />
+      <unit id="4762870812623561207" at="1,0,422,10" name="jetbrains.mps.ide.idea.plugin.build.mpsIdeaMigration" />
     </file>
   </root>
   <root nodeRef="r:5c70a88b-9c77-4970-b930-a9ff601a03a0(jetbrains.mps.ide.idea.plugin.build)/5148601452480491524">
