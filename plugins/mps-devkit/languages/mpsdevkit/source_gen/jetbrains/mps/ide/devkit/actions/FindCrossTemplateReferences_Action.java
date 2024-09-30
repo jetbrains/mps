@@ -19,7 +19,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
-import jetbrains.mps.ide.modelchecker.platform.actions.GeneratorTemplatesChecker;
+import jetbrains.mps.ide.modelchecker.GeneratorTemplatesChecker;
 
 public class FindCrossTemplateReferences_Action extends BaseAction {
   private static final Icon ICON = null;

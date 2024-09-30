@@ -165,6 +165,7 @@
     <import index="xg48" ref="r:7be9d1d9-acb4-4fe3-8096-96178feee8f5(jetbrains.mps.lang.findUsages.plugin)" />
     <import index="6qgz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.model(MPS.Core/)" />
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
+    <import index="cvcb" ref="r:c6a69ad3-3fa7-49b3-9d3a-0c72f1eb3bb9(jetbrains.mps.ide.modelchecker)" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -15393,7 +15394,7 @@
               </node>
               <node concept="2ShNRf" id="6h3t152gTRI" role="37wK5m">
                 <node concept="1pGfFk" id="6h3t152gTRJ" role="2ShVmc">
-                  <ref role="37wK5l" to="phxh:3etVqSRT$IG" resolve="GeneratorTemplatesChecker" />
+                  <ref role="37wK5l" to="cvcb:3etVqSRT$IG" resolve="GeneratorTemplatesChecker" />
                 </node>
               </node>
             </node>
@@ -16725,7 +16726,7 @@
     </node>
     <node concept="3Tm1VV" id="2tRCcbzc1$Y" role="1B3o_S" />
     <node concept="3uibUv" id="2tRCcbzc1Et" role="1zkMxy">
-      <ref role="3uigEE" to="phxh:3etVqSRRx7i" resolve="SpecificChecker" />
+      <ref role="3uigEE" to="cvcb:3etVqSRRx7i" resolve="SpecificChecker" />
     </node>
   </node>
   <node concept="sE7Ow" id="1_LT7K4ncS$">

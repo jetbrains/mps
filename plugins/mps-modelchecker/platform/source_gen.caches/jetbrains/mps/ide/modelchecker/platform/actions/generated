@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="2xjsw40yl8aazhl5guy3cdwzv9whad2">
-  <files names="DefaultReadExecutor.java:GeneratorTemplatesChecker.java:IdeaPlatformReadExecutor.java:ModelCheckerCheckinHandler.java:ModelCheckerIssueFinder.java:ModelCheckerPreferencesPage.java:ModelCheckerSettings.java:ModelCheckerTool.java:ModelCheckerUtils.java:ModelCheckerViewer.java:ProperGenPlanChecker.java:SpecificChecker.java:UnresolvedReferencesChecker.java" />
+<product version="3" modelHash="6818polznq6lgkem085ehlcvb1x1kfr">
+  <files names="DefaultReadExecutor.java:IdeaPlatformReadExecutor.java:ModelCheckerCheckinHandler.java:ModelCheckerIssueFinder.java:ModelCheckerPreferencesPage.java:ModelCheckerSettings.java:ModelCheckerTool.java:ModelCheckerUtils.java:ModelCheckerViewer.java" />
 </product>
 

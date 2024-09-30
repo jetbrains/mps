@@ -39,6 +39,7 @@
     <import index="7e8u" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.ui.tree(MPS.Platform/)" />
     <import index="wsw7" ref="r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
+    <import index="cvcb" ref="r:c6a69ad3-3fa7-49b3-9d3a-0c72f1eb3bb9(jetbrains.mps.ide.modelchecker)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" implicit="true" />
   </imports>
@@ -1782,7 +1783,7 @@
     <property role="3GE5qa" value="Model Checker" />
     <node concept="3Tm1VV" id="1_LT7K4ot0B" role="1B3o_S" />
     <node concept="3uibUv" id="1_LT7K4oCa5" role="1zkMxy">
-      <ref role="3uigEE" to="phxh:3etVqSRRx7i" resolve="SpecificChecker" />
+      <ref role="3uigEE" to="cvcb:3etVqSRRx7i" resolve="SpecificChecker" />
     </node>
     <node concept="3clFbW" id="1_LT7K4oFQ5" role="jymVt">
       <node concept="3cqZAl" id="1_LT7K4oFQ6" role="3clF45" />
@@ -3349,18 +3350,18 @@
                 </node>
                 <node concept="2ShNRf" id="xWHpBq6dXZ" role="HW$Y0">
                   <node concept="1pGfFk" id="xWHpBq6jVS" role="2ShVmc">
-                    <ref role="37wK5l" to="phxh:3etVqSRK$6o" resolve="UnresolvedReferencesChecker" />
+                    <ref role="37wK5l" to="cvcb:3etVqSRK$6o" resolve="UnresolvedReferencesChecker" />
                     <node concept="XUXob" id="3GjUzwgD7Al" role="37wK5m" />
                   </node>
                 </node>
                 <node concept="2ShNRf" id="xWHpBq6MUh" role="HW$Y0">
                   <node concept="1pGfFk" id="xWHpBq6OSJ" role="2ShVmc">
-                    <ref role="37wK5l" to="phxh:3etVqSRT$IG" resolve="GeneratorTemplatesChecker" />
+                    <ref role="37wK5l" to="cvcb:3etVqSRT$IG" resolve="GeneratorTemplatesChecker" />
                   </node>
                 </node>
                 <node concept="2ShNRf" id="4ascWT9iaEJ" role="HW$Y0">
                   <node concept="1pGfFk" id="4ascWT9iddu" role="2ShVmc">
-                    <ref role="37wK5l" to="phxh:4ascWT9fP2U" resolve="ProperGenPlanChecker" />
+                    <ref role="37wK5l" to="cvcb:4ascWT9fP2U" resolve="ProperGenPlanChecker" />
                     <node concept="XUXob" id="3GjUzwgD8KT" role="37wK5m" />
                   </node>
                 </node>

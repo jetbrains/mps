@@ -8,9 +8,9 @@ import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.CheckerRegistry;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.ide.modelchecker.platform.actions.UnresolvedReferencesChecker;
-import jetbrains.mps.ide.modelchecker.platform.actions.GeneratorTemplatesChecker;
-import jetbrains.mps.ide.modelchecker.platform.actions.ProperGenPlanChecker;
+import jetbrains.mps.ide.modelchecker.UnresolvedReferencesChecker;
+import jetbrains.mps.ide.modelchecker.GeneratorTemplatesChecker;
+import jetbrains.mps.ide.modelchecker.ProperGenPlanChecker;
 
 public class SpecificCheckersComponent_AppPluginPart extends ApplicationPluginPart {
   private List<IChecker<?, ?>> myCheckers;
