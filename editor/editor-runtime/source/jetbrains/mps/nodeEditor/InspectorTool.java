@@ -216,7 +216,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, Disposab
     return myComponent;
   }
 
-  public void inspect(SNode node, FileEditor fileEditor, String[] enabledHints) {
+  public void inspect(SNode node, FileEditor fileEditor, String[] enabledHints, boolean readOnly) {
     if (node instanceof jetbrains.mps.smodel.SNode && !SNodeUtil.isAccessible(node, myInspectorComponent.getRepository())) {
       // Note: inspector does not support disposed nodes. If we get one, just clear the tool.
       // The editor holds references to nodes between read actions and these references are updated asynchronously.
@@ -226,6 +226,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, Disposab
 
     myFileEditor = fileEditor;
 
+    myInspectorComponent.setReadOnly(readOnly);
     boolean needToEdit = myInspectorComponent.getUpdater().setInitialEditorHints(enabledHints);
     if (needToEdit || myInspectorComponent.getEditedNode() != node) {
       myInspectorComponent.editNode(node);
