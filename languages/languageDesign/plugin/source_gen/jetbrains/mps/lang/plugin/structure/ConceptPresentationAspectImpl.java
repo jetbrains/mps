@@ -318,7 +318,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.BaseProjectOperation:
         if (props_BaseProjectOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("BaseProjectOperation");
           props_BaseProjectOperation = cpb.create();
         }
         return props_BaseProjectOperation;

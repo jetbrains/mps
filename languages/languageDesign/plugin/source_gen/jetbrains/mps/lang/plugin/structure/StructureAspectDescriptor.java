@@ -727,7 +727,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   }
   private static ConceptDescriptor createDescriptorForBaseProjectOperation() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.plugin", "BaseProjectOperation", 0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2e56fadb4d375f27L);
-    b.class_(false, false, false);
+    b.class_(false, true, false);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46ac030L);
     b.origin("r:00000000-0000-4000-0000-011c89590368(jetbrains.mps.lang.plugin.structure)/3339131993542057767");
     b.version(3);
