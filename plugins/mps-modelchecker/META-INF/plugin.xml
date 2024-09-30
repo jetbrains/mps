@@ -21,13 +21,6 @@
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
   <depends>com.intellij.modules.mps</depends>
 
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool</implementation-class>
-    </component>
-
-  </project-components>
-
   <extensions defaultExtensionNs="com.intellij">
     <checkinHandlerFactory
             implementation="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerCheckinHandler$ModelCheckerCheckinHandlerFactory"/>
@@ -35,6 +28,7 @@
     <applicationConfigurable groupId="tools" groupWeight="160" instance="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerPreferencesPage" id="preferences.modelCheckerSettings" displayName="Model Checker"/>
     <mps.LanguageLibrary dir="/" hide="true"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
+    <mps.PluginComponentContributor project="jetbrains.mps.ide.modelchecker.Platform_ProjectPlugin" />
     <registryKey key="mps.check.model.genplan" defaultValue="true" description="Check languages used in a model against associated generation plan, if any" restartRequired="false"/>
     <registryKey key="mps.vcs.commit.check.models.all" defaultValue="true" description="Include dependent models in VCS pre-commit check " restartRequired="false"/>
     <registryKey key="mps.make.check.models.all" defaultValue="true" description="Include dependent models in pre-Make check " restartRequired="false"/>

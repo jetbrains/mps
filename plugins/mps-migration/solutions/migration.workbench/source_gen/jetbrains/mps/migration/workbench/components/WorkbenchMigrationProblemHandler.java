@@ -13,6 +13,7 @@ import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerViewer;
+import java.util.ArrayList;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import java.util.Collections;
 import com.intellij.icons.AllIcons;
@@ -33,14 +34,9 @@ public class WorkbenchMigrationProblemHandler implements MigrationProblemHandler
     }
 
     final ModelCheckerTool mcTool = ModelCheckerTool.getInstance(myMpsProject.getProject());
-    ModelCheckerViewer v = new ModelCheckerViewer(myMpsProject.getProject(), false) {
-      @Override
-      protected void close() {
-        mcTool.closeTab(this);
-        super.close();
-      }
-    };
-
+    // perhaps, shall rather expose createViewerForTab or introduce a method that takes collection of IssueKindReportItems
+    // here, we just pretend we run check on empty set of models
+    ModelCheckerViewer v = mcTool.checkModels(ListSequence.fromList(new ArrayList<>()));
     SearchResults<IssueKindReportItem> result = new SearchResults<IssueKindReportItem>(Collections.emptyList(), items);
     v.setSearchResults(result);
     mcTool.showTabWithResults(v, "Migration issues", AllIcons.Nodes.ModuleGroup);
