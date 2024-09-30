@@ -408,6 +408,7 @@
         <fileset file="${artifacts.IDEA}/lib/stats.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-loader.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/trove.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
