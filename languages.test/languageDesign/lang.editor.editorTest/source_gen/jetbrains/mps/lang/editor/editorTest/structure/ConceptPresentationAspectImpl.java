@@ -140,6 +140,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_SwingComponentContainer;
   private ConceptPresentation props_SwingComponentinFoldedCell;
   private ConceptPresentation props_TestBlockList;
+  private ConceptPresentation props_TestInspectorChild;
+  private ConceptPresentation props_TestInspectorParent;
   private ConceptPresentation props_TwoStepDeleteAbstractChildContainer;
   private ConceptPresentation props_TwoStepDeleteAttribute;
   private ConceptPresentation props_TwoStepDeleteCellCollectionChild;
@@ -1065,6 +1067,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TestBlockList = cpb.create();
         }
         return props_TestBlockList;
+      case LanguageConceptSwitch.TestInspectorChild:
+        if (props_TestInspectorChild == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_TestInspectorChild = cpb.create();
+        }
+        return props_TestInspectorChild;
+      case LanguageConceptSwitch.TestInspectorParent:
+        if (props_TestInspectorParent == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_TestInspectorParent = cpb.create();
+        }
+        return props_TestInspectorParent;
       case LanguageConceptSwitch.TwoStepDeleteAbstractChildContainer:
         if (props_TwoStepDeleteAbstractChildContainer == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
