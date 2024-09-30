@@ -29,7 +29,7 @@ public class AntTaskExecutionUtil {
     // FWIW, MigrationWorker starts this in EDT
     final AtomicReference<Boolean> rv = new AtomicReference<>(null);
 
-    MigrationExecutorImpl tracingExecutor = new MigrationExecutorImpl(project) {
+    MigrationExecutorImpl tracingExecutor = new NotifyingMigrationExecutor(project) {
       @Override
       public void execute(ScriptApplied s) {
         if (LOG.isTraceLevel()) {

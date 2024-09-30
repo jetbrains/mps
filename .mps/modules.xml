@@ -361,6 +361,7 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.ui.dsl/jetbrains.mps.kotlin.ui.dsl.msd" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-make/jetbrains.mps.ide.make.msd" folder="workbench" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-migration/migration-platform/solutions/component/jetbrains.mps.migration.component.msd" folder="platform.migration" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-migration/solutions/migration.listener/jetbrains.mps.migration.listener.msd" folder="platform.migration" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-migration/solutions/migration.workbench/jetbrains.mps.migration.workbench.msd" folder="platform.migration" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-modelchecker/platform/jetbrains.mps.ide.modelchecker.platform.msd" folder="platform.modelchecker" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-modelchecker/solution/jetbrains.mps.ide.modelchecker.msd" folder="platform.modelchecker" />

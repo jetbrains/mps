@@ -19,7 +19,7 @@ public class MigrationSessionImpl extends MigrationSession.MigrationSessionBase 
   }
 
   public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationConfig, boolean forceSave, boolean updateVersions, boolean migrate) {
-    this(mpsProject, migrationConfig, new MigrationCheckerImpl(mpsProject, migrationConfig), new MigrationExecutorImpl(mpsProject), forceSave, updateVersions, migrate);
+    this(mpsProject, migrationConfig, new MigrationCheckerImpl(mpsProject, migrationConfig), new NotifyingMigrationExecutor(mpsProject), forceSave, updateVersions, migrate);
   }
 
   public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationConfig, MigrationChecker checker, MigrationExecutor executor, boolean forceSave, boolean updateVersions, boolean migrate) {
