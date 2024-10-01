@@ -120,9 +120,6 @@ public class ConsoleTool_Tool extends BaseTabbedProjectServiceTool {
       }
     }, openTool);
 
-    // TODO Solve the problem of initializing the Console_ProjectPlugin twice, perhaps the plugin model should be somewhere else
-    // TODO Update the MPS build scripts to include the new "plugin" model
-    // TODO persistent state - split the state between ConsoleTool and ConsoleToolPersistence better
     return tab;
   }
   private void initTabs() {
