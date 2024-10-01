@@ -8,6 +8,7 @@ import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.projectPane.logicalview.BaseVirtualFolderProjectViewNode.ModelsVirtualFolderProjectViewNode;
 import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Modules;
 import org.jetbrains.annotations.NotNull;
@@ -53,6 +54,11 @@ public abstract class BranchProjectViewNode<Value> extends LogicalProjectViewNod
     }
 
     @Override
+    protected <T extends SModule> String asFolderName(T value) {
+      return value.getModuleName();
+    }
+
+    @Override
     protected <T extends SModule> ProjectViewNode<?> valueNodeFactory(T value) {
       return createNode(value);
     }
@@ -67,6 +73,11 @@ public abstract class BranchProjectViewNode<Value> extends LogicalProjectViewNod
   protected class NodesVirtualFolderHierarchy extends AbstractVirtualFolderHierarchy<SNode> {
     protected NodesVirtualFolderHierarchy(Collection<? extends SNode> values, Function<SNode, String> virtualFolderNameSupplier) {
       super(values, virtualFolderNameSupplier);
+    }
+
+    @Override
+    protected <T extends SNode> String asFolderName(T value) {
+      return "";
     }
 
     @Override
@@ -95,6 +106,15 @@ public abstract class BranchProjectViewNode<Value> extends LogicalProjectViewNod
     }
 
     @Override
+    protected <T extends SModel> String asFolderName(T value) {
+      if (value instanceof SModel) {
+        return value.getName().getLongName();
+      } else {
+        return null;
+      }
+    }
+
+    @Override
     protected <T extends SModel> ProjectViewNode<?> valueNodeFactory(T value) {
       if (value instanceof SModel) {
         return new ModelHierarchyProjectViewNode(getProject(), value, getSettings(), this);
@@ -109,15 +129,7 @@ public abstract class BranchProjectViewNode<Value> extends LogicalProjectViewNod
         return null; // skip ""
       }
 
-      int lastDot = virtualFolder.lastIndexOf('.');
-      String containingVirtualFolder = lastDot >= 0 ? virtualFolder.substring(0, lastDot) : "";
-      boolean modelExists = values(containingVirtualFolder).anyMatch(m -> m.getName().getLongName().equals(virtualFolder));
-      if (modelExists) {
-        return null; // skip virtual folder if a model with the same name exists
-      }
-
-      return new BaseVirtualFolderProjectViewNode.ModelsVirtualFolderProjectViewNode(getProject(), new VirtualFolder.Models(virtualFolder), getSettings(),
-                                                                                     this);
+      return new ModelsVirtualFolderProjectViewNode(getProject(), new VirtualFolder.Models(virtualFolder), getSettings(), this);
     }
   }
 

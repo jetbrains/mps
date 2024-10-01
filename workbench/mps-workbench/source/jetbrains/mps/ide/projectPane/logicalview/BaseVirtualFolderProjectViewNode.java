@@ -17,7 +17,6 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.impl.SimpleDataContext;
 import com.intellij.openapi.actionSystem.impl.SimpleDataContext.Builder;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFileSystemItem;
 import com.intellij.util.ui.tree.TreeUtil;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -104,16 +103,11 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
   @Override
   protected void update(@NotNull PresentationData presentation) {
     String virtualFolder = getValue().getName();
-    Object parentValue = getParentValue();
-    String presentableText;
-    if (isVirtualFolder(parentValue)) {
-      VirtualFolder parentVirtualFolder = (VirtualFolder) parentValue;
-      assert virtualFolder.startsWith(parentVirtualFolder.getName());
-      int lastDot = virtualFolder.indexOf('.', parentVirtualFolder.getName().length());
-      presentableText = lastDot >= 0 ? virtualFolder.substring(lastDot + 1) : virtualFolder;
-    } else {
-      presentableText = virtualFolder;
-    }
+    String parentVirtualFolder = asVirtualFolder(getParentValue());
+    assert virtualFolder.startsWith(parentVirtualFolder);
+    int prefixLength = parentVirtualFolder.length();
+    int lastDot = prefixLength > 0 ? virtualFolder.indexOf('.', prefixLength) : -1;
+    String presentableText = lastDot >= 0 ? virtualFolder.substring(lastDot + 1) : virtualFolder;
     presentation.setPresentableText(presentableText);
     presentation.setIcon(Nodes.Folder);
   }
@@ -143,7 +137,9 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
   }
 
   protected abstract boolean isVirtualFolder(Object parentValue);
-  
+
+  protected abstract String asVirtualFolder(Object parentValue);
+
   public static class ModulesVirtualFolderProjectViewNode extends BaseVirtualFolderProjectViewNode<Modules> implements DiscoveryValueProvider {
 
 
@@ -160,6 +156,14 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
     @Override
     protected boolean isVirtualFolder(Object parentValue) {
       return parentValue instanceof Modules;
+    }
+
+    @Override
+    protected String asVirtualFolder(Object parentValue) {
+      if (parentValue instanceof Modules) {
+        return ((Modules) parentValue).getName();
+      }
+      return "";
     }
 
     @Override
@@ -221,6 +225,17 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
     }
 
     @Override
+    protected String asVirtualFolder(Object parentValue) {
+      if (parentValue instanceof Models) {
+        return ((Models) parentValue).getName();
+      }
+      else if (parentValue instanceof SModel) {
+        return ((SModel) parentValue).getName().getLongName();
+      }
+      return "";
+    }
+
+    @Override
     public int getTypeSortWeight(boolean sortByType) {
       return ProjectViewWeights.MODEL_VIRTUAL_FOLDER_WEIGHT;
     }
@@ -262,6 +277,14 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
     @Override
     protected boolean isVirtualFolder(Object parentValue) {
       return parentValue instanceof VirtualFolder.Nodes;
+    }
+
+    @Override
+    protected String asVirtualFolder(Object parentValue) {
+      if (parentValue instanceof VirtualFolder.Nodes) {
+        return ((VirtualFolder.Nodes) parentValue).getName();
+      }
+      return "";
     }
 
     @Override
