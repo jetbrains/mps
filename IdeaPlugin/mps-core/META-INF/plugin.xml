@@ -31,9 +31,9 @@
       <interface-class>jetbrains.mps.make.IMakeService</interface-class>
       <implementation-class>jetbrains.mps.ide.make.WorkbenchMakeService</implementation-class>
     </component>
-    <component>
+    <!-- component>
       <implementation-class>jetbrains.mps.idea.core.navigation.NavigationSupportImpl</implementation-class>
-    </component>
+    </component -->
     <component>
       <implementation-class>jetbrains.mps.idea.core.refactoring.RefactoringAccessImpl$Plug</implementation-class>
     </component>

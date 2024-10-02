@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.navigation;
 
-import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.ide.editor.MPSEditorOpener;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import jetbrains.mps.openapi.editor.Editor;
@@ -30,23 +29,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 /**
  * Idea-aware navigation implementation
  */
-public class NavigationSupportImpl extends NavigationSupport implements ApplicationComponent {
-
-  @Override
-  @NotNull
-  public String getComponentName() {
-    return "Navigation Support";
-  }
-
-  @Override
-  public void initComponent() {
-    init();
-  }
-
-  @Override
-  public void disposeComponent() {
-    dispose();
-  }
+public class NavigationSupportImpl extends NavigationSupport {
 
   @Override
   public Editor openNode(@NotNull Project project, @NotNull SNode node, boolean focus, boolean select) {

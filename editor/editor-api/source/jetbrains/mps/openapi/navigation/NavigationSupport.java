@@ -16,6 +16,7 @@
 package jetbrains.mps.openapi.navigation;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
@@ -41,13 +42,13 @@ public abstract class NavigationSupport implements CoreComponent {
    */
   @Deprecated(forRemoval = true, since = "2024.1")
   public static NavigationSupport getInstance() {
+    Logger.getLogger(NavigationSupport.class).warnDeprecatedUse("Replace with #getInstance(project) call");
     return INSTANCE;
   }
 
-  public static NavigationSupport getInstance(@SuppressWarnings("unused") Project mpsProject) {
-    // I'd love to initialize instance from MPSEditorPlugin, and access it with mpsProject.getComponent() here,
-    // but at the moment NavigationSupportImpl is part of [mps-workbench], no luck
-    return getInstance();
+  public static NavigationSupport getInstance(@NotNull Project mpsProject) {
+    // NavigationSupportImpl is part of [mps-workbench] and gets registered through j.m.ide module plugin (AppPart)
+    return mpsProject.getComponent(NavigationSupport.class);
   }
 
   @Override

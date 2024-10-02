@@ -10,6 +10,7 @@ import java.util.List;
 import jetbrains.mps.plugins.actions.BaseKeymapChanges;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.plugins.part.ApplicationPluginPart;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7162597690968192621", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
@@ -242,5 +243,9 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     ListSequence.fromList(res).addElement(new Mac_10_5_KeymapChanges());
     ListSequence.fromList(res).addElement(new Mac_KeymapChanges());
     return res;
+  }
+  @Override
+  public void fillCustomParts(List<ApplicationPluginPart> parts) {
+    parts.add(new InstallNavigationSupport_AppPluginPart());
   }
 }

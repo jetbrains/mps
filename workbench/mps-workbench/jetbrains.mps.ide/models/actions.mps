@@ -186,6 +186,10 @@
     <import index="3s16" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench(MPS.Platform/)" />
     <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" />
     <import index="drih" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.colors(MPS.IDEA/)" />
+    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
+    <import index="4o98" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.core.platform(MPS.Core/)" />
+    <import index="kx0u" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.ide.navigation(MPS.Workbench/)" />
+    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -327,17 +331,25 @@
       </concept>
     </language>
     <language id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone">
+      <concept id="481983775135178851" name="jetbrains.mps.lang.plugin.standalone.structure.ApplicationPluginInitBlock" flags="in" index="2uRRBj" />
       <concept id="481983775135178834" name="jetbrains.mps.lang.plugin.standalone.structure.ProjectPluginDeclaration" flags="ng" index="2uRRBy">
         <child id="481983775135178836" name="initBlock" index="2uRRB$" />
         <child id="481983775135178837" name="disposeBlock" index="2uRRB_" />
         <child id="481983775135178838" name="fieldDeclaration" index="2uRRBA" />
       </concept>
+      <concept id="481983775135178840" name="jetbrains.mps.lang.plugin.standalone.structure.ApplicationPluginDeclaration" flags="ng" index="2uRRBC">
+        <child id="481983775135178842" name="initBlock" index="2uRRBE" />
+        <child id="481983775135178843" name="disposeBlock" index="2uRRBF" />
+        <child id="481983775135178844" name="fieldDeclaration" index="2uRRBG" />
+      </concept>
+      <concept id="481983775135178846" name="jetbrains.mps.lang.plugin.standalone.structure.ApplicationPluginDisposeBlock" flags="in" index="2uRRBI" />
       <concept id="481983775135178819" name="jetbrains.mps.lang.plugin.standalone.structure.ProjectPluginDisposeBlock" flags="in" index="2uRRBN" />
       <concept id="481983775135178825" name="jetbrains.mps.lang.plugin.standalone.structure.ProjectPluginInitBlock" flags="in" index="2uRRBT" />
       <concept id="7520713872864775836" name="jetbrains.mps.lang.plugin.standalone.structure.StandalonePluginDescriptor" flags="ng" index="2DaZZR" />
       <concept id="681855071694758168" name="jetbrains.mps.lang.plugin.standalone.structure.GetPreferencesComponentInProjectOperation" flags="nn" index="LR4Ub">
         <reference id="681855071694758169" name="componentDeclaration" index="LR4Ua" />
       </concept>
+      <concept id="3418954410726344423" name="jetbrains.mps.lang.plugin.standalone.structure.PlatformAccessExpression" flags="ng" index="XUXob" />
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1224071154655" name="jetbrains.mps.baseLanguage.structure.AsExpression" flags="nn" index="0kSF2">
@@ -19691,6 +19703,7 @@
   </node>
   <node concept="312cEu" id="67BMVWAGqSB">
     <property role="TrG5h" value="MappingDialog" />
+    <property role="3GE5qa" value="Generator" />
     <node concept="312cEg" id="67BMVWAGRnn" role="jymVt">
       <property role="TrG5h" value="myMainComponent" />
       <node concept="3uibUv" id="2g2iVaZE4a6" role="1tU5fm">
@@ -49640,6 +49653,170 @@
       <property role="Xl_RC" value="ProjectViewPopupMenu" />
     </node>
     <node concept="ftmFs" id="7NCdSDnS1G2" role="ftER_" />
+  </node>
+  <node concept="2uRRBC" id="BDT41mk55P">
+    <property role="TrG5h" value="InstallNavigationSupport" />
+    <node concept="2BZ0e9" id="2sJZShLL0e6" role="2uRRBG">
+      <property role="TrG5h" value="myNavSupportImpl" />
+      <node concept="3Tm6S6" id="2sJZShLL0e7" role="1B3o_S" />
+      <node concept="3uibUv" id="2sJZShLL0j0" role="1tU5fm">
+        <ref role="3uigEE" to="4o98:~DynamicComponentWarden$Token" resolve="Token" />
+      </node>
+    </node>
+    <node concept="2uRRBj" id="BDT41mk5aU" role="2uRRBE">
+      <node concept="3clFbS" id="BDT41mk5aV" role="2VODD2">
+        <node concept="3cpWs8" id="36u$e0Phva$" role="3cqZAp">
+          <node concept="3cpWsn" id="36u$e0Phva_" role="3cpWs9">
+            <property role="TrG5h" value="dcw" />
+            <node concept="3uibUv" id="36u$e0Phv0V" role="1tU5fm">
+              <ref role="3uigEE" to="4o98:~DynamicComponentWarden" resolve="DynamicComponentWarden" />
+            </node>
+            <node concept="2OqwBi" id="36u$e0PhvaA" role="33vP2m">
+              <node concept="XUXob" id="36u$e0PhvaB" role="2Oq$k0" />
+              <node concept="liA8E" id="36u$e0PhvaC" role="2OqNvi">
+                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                <node concept="3VsKOn" id="36u$e0PhvaD" role="37wK5m">
+                  <ref role="3VsUkX" to="4o98:~DynamicComponentWarden" resolve="DynamicComponentWarden" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="BDT41mla$Q" role="3cqZAp">
+          <node concept="3clFbS" id="BDT41mla$S" role="3clFbx">
+            <node concept="3cpWs6" id="BDT41mlbkY" role="3cqZAp" />
+          </node>
+          <node concept="3clFbC" id="BDT41mlaPZ" role="3clFbw">
+            <node concept="10Nm6u" id="BDT41mlaVI" role="3uHU7w" />
+            <node concept="37vLTw" id="BDT41mlaFL" role="3uHU7B">
+              <ref role="3cqZAo" node="36u$e0Phva_" resolve="dcw" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3XHo2y6AWvL" role="3cqZAp">
+          <node concept="3cpWsn" id="3XHo2y6AWvM" role="3cpWs9">
+            <property role="TrG5h" value="lazyInstance" />
+            <node concept="3uibUv" id="3XHo2y6Crda" role="1tU5fm">
+              <ref role="3uigEE" to="82uw:~Supplier" resolve="Supplier" />
+              <node concept="3uibUv" id="3XHo2y6Ct2P" role="11_B2D">
+                <ref role="3uigEE" to="kz9k:~NavigationSupport" resolve="NavigationSupport" />
+              </node>
+            </node>
+            <node concept="1bVj0M" id="3XHo2y6AWvN" role="33vP2m">
+              <node concept="3clFbS" id="3XHo2y6AWvO" role="1bW5cS">
+                <node concept="3clFbF" id="3XHo2y6AWvP" role="3cqZAp">
+                  <node concept="2ShNRf" id="3XHo2y6AWvQ" role="3clFbG">
+                    <node concept="1pGfFk" id="3XHo2y6AWvR" role="2ShVmc">
+                      <property role="373rjd" value="true" />
+                      <ref role="37wK5l" to="kx0u:~NavigationSupportImpl.&lt;init&gt;()" resolve="NavigationSupportImpl" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="BDT41mnkJV" role="3cqZAp">
+          <node concept="1PaTwC" id="BDT41mnkJW" role="1aUNEU">
+            <node concept="3oM_SD" id="BDT41mnkJX" role="1PaTwD">
+              <property role="3oM_SC" value="NavigationSupport" />
+            </node>
+            <node concept="3oM_SD" id="BDT41mnkT3" role="1PaTwD">
+              <property role="3oM_SC" value="used" />
+            </node>
+            <node concept="3oM_SD" id="BDT41mnkTu" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="BDT41mnkUG" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="BDT41mnkV4" role="1PaTwD">
+              <property role="3oM_SC" value="IDEA" />
+            </node>
+            <node concept="3oM_SD" id="BDT41mnl01" role="1PaTwD">
+              <property role="3oM_SC" value="now" />
+            </node>
+            <node concept="3oM_SD" id="BDT41mnkYO" role="1PaTwD">
+              <property role="3oM_SC" value="AppComponent," />
+            </node>
+            <node concept="3oM_SD" id="BDT41mnl0W" role="1PaTwD">
+              <property role="3oM_SC" value="it's" />
+            </node>
+            <node concept="3oM_SD" id="BDT41mnl1m" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="BDT41mnl2f" role="1PaTwD">
+              <property role="3oM_SC" value="CC" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="BDT41mkcvj" role="3cqZAp">
+          <node concept="37vLTI" id="BDT41mkcK_" role="3clFbG">
+            <node concept="2OqwBi" id="BDT41mkdCs" role="37vLTx">
+              <node concept="37vLTw" id="BDT41mkdvZ" role="2Oq$k0">
+                <ref role="3cqZAo" node="36u$e0Phva_" resolve="dcw" />
+              </node>
+              <node concept="liA8E" id="BDT41mkdPv" role="2OqNvi">
+                <ref role="37wK5l" to="4o98:~DynamicComponentWarden.publish(java.lang.Class,java.util.function.Supplier)" resolve="publish" />
+                <node concept="3VsKOn" id="BDT41mkdVH" role="37wK5m">
+                  <ref role="3VsUkX" to="kz9k:~NavigationSupport" resolve="NavigationSupport" />
+                </node>
+                <node concept="37vLTw" id="3XHo2y6AWvS" role="37wK5m">
+                  <ref role="3cqZAo" node="3XHo2y6AWvM" resolve="function" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="BDT41mkcvd" role="37vLTJ">
+              <node concept="2WthIp" id="BDT41mkcvg" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="BDT41mkcvi" role="2OqNvi">
+                <ref role="2WH_rO" node="2sJZShLL0e6" resolve="myNavSupportImpl" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2uRRBI" id="BDT41mlbn4" role="2uRRBF">
+      <node concept="3clFbS" id="BDT41mlbn5" role="2VODD2">
+        <node concept="3clFbJ" id="BDT41mlbJq" role="3cqZAp">
+          <node concept="3y3z36" id="BDT41mlbZ7" role="3clFbw">
+            <node concept="10Nm6u" id="BDT41mlc3v" role="3uHU7w" />
+            <node concept="2OqwBi" id="BDT41mlbKI" role="3uHU7B">
+              <node concept="2WthIp" id="BDT41mlbKL" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="BDT41mlbKN" role="2OqNvi">
+                <ref role="2WH_rO" node="2sJZShLL0e6" resolve="myNavSupportImpl" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="BDT41mlbJs" role="3clFbx">
+            <node concept="3clFbF" id="BDT41mld0t" role="3cqZAp">
+              <node concept="2OqwBi" id="BDT41mldf6" role="3clFbG">
+                <node concept="2OqwBi" id="BDT41mld0n" role="2Oq$k0">
+                  <node concept="2WthIp" id="BDT41mld0q" role="2Oq$k0" />
+                  <node concept="2BZ7hE" id="BDT41mld0s" role="2OqNvi">
+                    <ref role="2WH_rO" node="2sJZShLL0e6" resolve="myNavSupportImpl" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="BDT41mldnY" role="2OqNvi">
+                  <ref role="37wK5l" to="4o98:~DynamicComponentWarden$Token.discard()" resolve="discard" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="BDT41mlcjq" role="3cqZAp">
+              <node concept="37vLTI" id="BDT41mlcBa" role="3clFbG">
+                <node concept="10Nm6u" id="BDT41mlcCT" role="37vLTx" />
+                <node concept="2OqwBi" id="BDT41mlcjk" role="37vLTJ">
+                  <node concept="2WthIp" id="BDT41mlcjn" role="2Oq$k0" />
+                  <node concept="2BZ7hE" id="BDT41mlcjp" role="2OqNvi">
+                    <ref role="2WH_rO" node="2sJZShLL0e6" resolve="myNavSupportImpl" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 
