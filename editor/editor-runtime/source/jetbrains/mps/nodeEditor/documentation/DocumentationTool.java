@@ -5,13 +5,16 @@ package jetbrains.mps.nodeEditor.documentation;
 
 import com.intellij.icons.AllIcons.Toolwindows;
 import com.intellij.openapi.components.PersistentStateComponent;
+import com.intellij.openapi.components.Service;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.ui.content.Content;
-import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.tools.BaseTabbedProjectServiceTool;
+import jetbrains.mps.ide.util.MPSProjectActivity;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -20,12 +23,14 @@ import org.jetbrains.annotations.Nullable;
     name = "DocumentationTool",
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
-public class DocumentationTool extends BaseTabbedProjectTool implements PersistentStateComponent<Element> {
+@Service(Service.Level.PROJECT)
+public final class DocumentationTool extends BaseTabbedProjectServiceTool implements PersistentStateComponent<Element> {
   public static final String ID = "Doc";
 
   @Nullable
   public static DocumentationTool getInstance(@Nullable jetbrains.mps.project.Project mpsProject) {
-    return mpsProject == null ? null : mpsProject.getComponent(DocumentationTool.class);
+    final Project ideaProject = ProjectHelper.toIdeaProject(mpsProject);
+    return mpsProject == null ? null : ideaProject.getService(DocumentationTool.class);
   }
 
   public DocumentationTool(Project project) {
@@ -49,4 +54,14 @@ public class DocumentationTool extends BaseTabbedProjectTool implements Persiste
   public void loadState(@NotNull Element state) {
 
   }
+
+  private static class Plug extends MPSProjectActivity {
+
+    @Override
+    public void runActivity(@NotNull Project project) {
+      final DocumentationTool tool = DocumentationTool.getInstance(ProjectHelper.fromIdeaProject(project));
+      tool.registerLater();
+    }
+  }
+
 }

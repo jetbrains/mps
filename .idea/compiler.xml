@@ -372,6 +372,7 @@
       <directory url="file://$PROJECT_DIR$/plugins/mps-ide/modules/lang.script/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-ide/modules/lang.text/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-ide/modules/lang.typesystem/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/plugins/mps-ide/modules/tools.hierarchy/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-ide/modules/tools.todo/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-java/workbench/modules/jetbrains.mps.java.workbench/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.tests/source_gen" includeSubdirectories="true" />
