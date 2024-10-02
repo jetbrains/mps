@@ -17,16 +17,17 @@ package jetbrains.mps.ide.devkit.cellExplorer;
 
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.tools.BaseTabbedProjectServiceTool;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Kostik
  */
-@Service(Service.Level.PROJECT)
 public final class CellExplorerTool extends BaseTabbedProjectServiceTool {
   // FIXME public LOG is nice, indeed
   public static final Logger LOG = Logger.getLogger(CellExplorerTool.class);
@@ -44,5 +45,13 @@ public final class CellExplorerTool extends BaseTabbedProjectServiceTool {
     CellExplorerTab tab = new CellExplorerTab(this, cell.getEditorComponent(), editorActivator);
     tab.showCell(cell);
     tab.openTab(true);
+  }
+
+  private static class Factory implements com.intellij.openapi.wm.ToolWindowFactory {
+    @Override
+    public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
+      final CellExplorerTool cellExplorerTool = new CellExplorerTool(project);
+      cellExplorerTool.register();
+    }
   }
 }

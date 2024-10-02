@@ -29,6 +29,8 @@
   <extensions defaultExtensionNs="com.intellij">
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter" />
     <postStartupActivity implementation="jetbrains.mps.ide.devkit.generator.GenerationTracerViewTool$Plug" />
+    <toolWindow id="Cell Explorer" anchor="bottom" icon="jetbrains.mps.icons.MPSIcons.ToolWindows.CellExplorer" factoryClass="jetbrains.mps.ide.devkit.cellExplorer.CellExplorerTool$Factory" doNotActivateOnStart="true" canCloseContents="false"/>
+    <toolWindow id="Menu Trace" anchor="bottom" icon="jetbrains.mps.icons.MPSIcons.ToolWindows.Default" factoryClass="jetbrains.mps.ide.devkit.editorMenuTrace.EditorMenuTraceTool$Factory" doNotActivateOnStart="true" canCloseContents="false"/>
   </extensions>
 
   <extensions defaultExtensionNs="com.intellij">

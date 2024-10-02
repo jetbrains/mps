@@ -5733,17 +5733,15 @@
             <node concept="3uibUv" id="7QifpChp2JS" role="1tU5fm">
               <ref role="3uigEE" to="3hg4:~CellExplorerTool" resolve="CellExplorerTool" />
             </node>
-            <node concept="2OqwBi" id="7QifpChp2JY" role="33vP2m">
-              <node concept="2OqwBi" id="7QifpChp2JZ" role="2Oq$k0">
-                <node concept="2WthIp" id="7QifpChp2K0" role="2Oq$k0" />
-                <node concept="1DTwFV" id="13$TqNLLaH6" role="2OqNvi">
-                  <ref role="2WH_rO" node="75IRN57mU_1" resolve="project" />
-                </node>
-              </node>
-              <node concept="liA8E" id="7QifpChp2K2" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
-                <node concept="3VsKOn" id="7QifpChp2K3" role="37wK5m">
-                  <ref role="3VsUkX" to="3hg4:~CellExplorerTool" resolve="CellExplorerTool" />
+            <node concept="2ShNRf" id="1SAg_0TnNlv" role="33vP2m">
+              <node concept="1pGfFk" id="1SAg_0Ton_B" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="3hg4:~CellExplorerTool.&lt;init&gt;(com.intellij.openapi.project.Project)" resolve="CellExplorerTool" />
+                <node concept="2OqwBi" id="1SAg_0TonId" role="37wK5m">
+                  <node concept="2WthIp" id="1SAg_0TonIg" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="1SAg_0TonIi" role="2OqNvi">
+                    <ref role="2WH_rO" node="75IRN57mU_1" resolve="project" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -10404,17 +10402,15 @@
             <node concept="3uibUv" id="WbWijtMSNP" role="1tU5fm">
               <ref role="3uigEE" to="bmdi:~EditorMenuTraceTool" resolve="EditorMenuTraceTool" />
             </node>
-            <node concept="2OqwBi" id="6_Er4i_HfCw" role="33vP2m">
-              <node concept="2OqwBi" id="6_Er4i_HfCx" role="2Oq$k0">
-                <node concept="1DTwFV" id="WbWijtNKEi" role="2OqNvi">
-                  <ref role="2WH_rO" node="WbWijtNJMx" resolve="project" />
-                </node>
-                <node concept="2WthIp" id="6_Er4i_HfCy" role="2Oq$k0" />
-              </node>
-              <node concept="liA8E" id="6_Er4i_HfC$" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
-                <node concept="3VsKOn" id="6_Er4i_HfC_" role="37wK5m">
-                  <ref role="3VsUkX" to="bmdi:~EditorMenuTraceTool" resolve="EditorMenuTraceTool" />
+            <node concept="2ShNRf" id="jDjKy1ZXrt" role="33vP2m">
+              <node concept="1pGfFk" id="jDjKy20xCU" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="bmdi:~EditorMenuTraceTool.&lt;init&gt;(com.intellij.openapi.project.Project)" resolve="EditorMenuTraceTool" />
+                <node concept="2OqwBi" id="jDjKy20ybh" role="37wK5m">
+                  <node concept="2WthIp" id="jDjKy20ybk" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="jDjKy20ybm" role="2OqNvi">
+                    <ref role="2WH_rO" node="WbWijtNJMx" resolve="project" />
+                  </node>
                 </node>
               </node>
             </node>

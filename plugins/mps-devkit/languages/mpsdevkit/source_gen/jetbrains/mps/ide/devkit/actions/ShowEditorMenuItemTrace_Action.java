@@ -58,7 +58,7 @@ public class ShowEditorMenuItemTrace_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    EditorMenuTraceTool tool = event.getData(CommonDataKeys.PROJECT).getService(EditorMenuTraceTool.class);
+    EditorMenuTraceTool tool = new EditorMenuTraceTool(event.getData(CommonDataKeys.PROJECT));
     EditorMenuTraceInfo editorMenuTraceInfo = null;
     if (event.getData(PlatformCoreDataKeys.SELECTED_ITEM) instanceof SubstituteAction) {
       editorMenuTraceInfo = ((SubstituteAction) event.getData(PlatformCoreDataKeys.SELECTED_ITEM)).getEditorMenuTraceInfo();

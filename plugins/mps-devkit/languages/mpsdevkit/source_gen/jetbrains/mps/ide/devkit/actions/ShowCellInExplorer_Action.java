@@ -86,7 +86,7 @@ public class ShowCellInExplorer_Action extends BaseAction {
     if (runnable == null) {
       return;
     }
-    CellExplorerTool tool = event.getData(CommonDataKeys.PROJECT).getService(CellExplorerTool.class);
+    CellExplorerTool tool = new CellExplorerTool(event.getData(CommonDataKeys.PROJECT));
 
     tool.showCell(event.getData(MPSEditorDataKeys.EDITOR_CELL), runnable);
   }

@@ -15,19 +15,18 @@
  */
 package jetbrains.mps.ide.devkit.editorMenuTrace;
 
-import com.intellij.openapi.components.Service;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
 import jetbrains.mps.icons.MPSIcons.ToolWindows;
 import jetbrains.mps.ide.tools.BaseTabbedProjectServiceTool;
-import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.project.MPSProject;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Service(Service.Level.PROJECT)
 public final class EditorMenuTraceTool extends BaseTabbedProjectServiceTool {
 
   public static final String TOOL_ID = "Menu Trace";
@@ -44,6 +43,14 @@ public final class EditorMenuTraceTool extends BaseTabbedProjectServiceTool {
     } else {
       final ToolWindowManager manager = ToolWindowManager.getInstance(getProject());
       manager.notifyByBalloon(TOOL_ID, MessageType.INFO, "No trace for that item");
+    }
+  }
+
+  private static class Factory implements com.intellij.openapi.wm.ToolWindowFactory {
+    @Override
+    public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
+      final EditorMenuTraceTool tool = new EditorMenuTraceTool(project);
+      tool.register();
     }
   }
 }
