@@ -3,7 +3,7 @@
     <projectService serviceImplementation="jetbrains.mps.ide.messages.navigation.NavigationManager"/>
     <projectService serviceImplementation="jetbrains.mps.ide.messages.MessagesViewTool"/>
     <postStartupActivity implementation="jetbrains.mps.ide.messages.MessagesViewTool$MessageViewToolInitialization"/>
-    <postStartupActivity implementation="jetbrains.mps.ide.findusages.view.UsagesViewTool$Plug" />
+    <toolWindow id="Usages" anchor="bottom" icon="AllIcons.Toolwindows.ToolWindowFind" factoryClass="jetbrains.mps.ide.findusages.view.UsagesViewTool$Factory" doNotActivateOnStart="false" canCloseContents="true"/>
   </extensions>
 
   <applicationListeners>

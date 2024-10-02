@@ -36,7 +36,9 @@ import com.intellij.openapi.progress.Task.Backgroundable;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowAnchor;
+import com.intellij.openapi.wm.ToolWindowEP;
 import com.intellij.openapi.wm.ToolWindowManager;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSActions;
@@ -449,12 +451,10 @@ public final class UsagesViewTool extends BaseTabbedProjectServiceTool implement
     }
   }
 
-  private static class Plug extends MPSProjectActivity {
-
+  private static class Factory implements com.intellij.openapi.wm.ToolWindowFactory {
     @Override
-    public void runActivity(@NotNull Project project) {
-      final UsagesViewTool tool = project.getService(UsagesViewTool.class);
-      tool.registerLater();
+    public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
+      project.getService(UsagesViewTool.class).register();
     }
   }
 }
