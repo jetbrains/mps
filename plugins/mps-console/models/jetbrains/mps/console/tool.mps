@@ -1656,55 +1656,136 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="6ysF3v1j_gs" role="3cqZAp">
-          <node concept="2OqwBi" id="6ysF3v1j_gt" role="3clFbG">
-            <node concept="37vLTw" id="791RMwCWCHr" role="2Oq$k0">
-              <ref role="3cqZAo" node="3sIEoj5P59E" resolve="group" />
+        <node concept="3cpWs8" id="6$3DLmwPWoe" role="3cqZAp">
+          <node concept="3cpWsn" id="6$3DLmwPWof" role="3cpWs9">
+            <property role="TrG5h" value="action" />
+            <node concept="3uibUv" id="6$3DLmwPQRv" role="1tU5fm">
+              <ref role="3uigEE" to="7bx7:~BaseAction" resolve="BaseAction" />
             </node>
-            <node concept="liA8E" id="6ysF3v1j_gv" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
-              <node concept="3$FdUm" id="791RMwCWICy" role="37wK5m">
-                <ref role="3$FpRE" to="oh9p:791RMwCQSU4" resolve="ConsoleExecute" />
+            <node concept="3$FdUm" id="6$3DLmwPWog" role="33vP2m">
+              <ref role="3$FpRE" to="oh9p:791RMwCQSU4" resolve="ConsoleExecute" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6$3DLmwQc0o" role="3cqZAp">
+          <node concept="3clFbS" id="6$3DLmwQc0q" role="3clFbx">
+            <node concept="3clFbF" id="6ysF3v1j_gs" role="3cqZAp">
+              <node concept="2OqwBi" id="6ysF3v1j_gt" role="3clFbG">
+                <node concept="37vLTw" id="791RMwCWCHr" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3sIEoj5P59E" resolve="group" />
+                </node>
+                <node concept="liA8E" id="6ysF3v1j_gv" role="2OqNvi">
+                  <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
+                  <node concept="37vLTw" id="6$3DLmwPWoh" role="37wK5m">
+                    <ref role="3cqZAo" node="6$3DLmwPWof" resolve="action" />
+                  </node>
+                </node>
               </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="6$3DLmwQybW" role="3clFbw">
+            <node concept="10Nm6u" id="6$3DLmwQAy8" role="3uHU7w" />
+            <node concept="37vLTw" id="6$3DLmwQqMp" role="3uHU7B">
+              <ref role="3cqZAo" node="6$3DLmwPWof" resolve="action" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="6ysF3v1j_g$" role="3cqZAp">
-          <node concept="2OqwBi" id="6ysF3v1j_g_" role="3clFbG">
-            <node concept="37vLTw" id="6ysF3v1j_gA" role="2Oq$k0">
-              <ref role="3cqZAo" node="3sIEoj5P59E" resolve="group" />
+          <node concept="37vLTI" id="6$3DLmwQTaR" role="3clFbG">
+            <node concept="37vLTw" id="6$3DLmwR9eW" role="37vLTJ">
+              <ref role="3cqZAo" node="6$3DLmwPWof" resolve="action" />
             </node>
-            <node concept="liA8E" id="6ysF3v1j_gB" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
-              <node concept="3$FdUm" id="6QZWsVD$d0x" role="37wK5m">
-                <ref role="3$FpRE" to="oh9p:6QZWsVDzQaJ" resolve="ConsolePrev" />
-              </node>
+            <node concept="3$FdUm" id="6QZWsVD$d0x" role="37vLTx">
+              <ref role="3$FpRE" to="oh9p:6QZWsVDzQaJ" resolve="ConsolePrev" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="6ysF3v1j_gG" role="3cqZAp">
-          <node concept="2OqwBi" id="6ysF3v1j_gH" role="3clFbG">
-            <node concept="37vLTw" id="6ysF3v1j_gI" role="2Oq$k0">
-              <ref role="3cqZAo" node="3sIEoj5P59E" resolve="group" />
-            </node>
-            <node concept="liA8E" id="6ysF3v1j_gJ" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
-              <node concept="3$FdUm" id="6QZWsVD$hrS" role="37wK5m">
-                <ref role="3$FpRE" to="oh9p:6QZWsVDzvm_" resolve="ConsoleNext" />
+        <node concept="3clFbJ" id="6$3DLmwRPyP" role="3cqZAp">
+          <node concept="3clFbS" id="6$3DLmwRPyQ" role="3clFbx">
+            <node concept="3clFbF" id="6$3DLmwRPyR" role="3cqZAp">
+              <node concept="2OqwBi" id="6$3DLmwRPyS" role="3clFbG">
+                <node concept="37vLTw" id="6$3DLmwRPyT" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3sIEoj5P59E" resolve="group" />
+                </node>
+                <node concept="liA8E" id="6$3DLmwRPyU" role="2OqNvi">
+                  <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
+                  <node concept="37vLTw" id="6$3DLmwRPyV" role="37wK5m">
+                    <ref role="3cqZAo" node="6$3DLmwPWof" resolve="action" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
-        </node>
-        <node concept="3clFbF" id="6ysF3v1j_gO" role="3cqZAp">
-          <node concept="2OqwBi" id="6ysF3v1j_gP" role="3clFbG">
-            <node concept="37vLTw" id="6ysF3v1j_gQ" role="2Oq$k0">
-              <ref role="3cqZAo" node="3sIEoj5P59E" resolve="group" />
+          <node concept="3y3z36" id="6$3DLmwRPyW" role="3clFbw">
+            <node concept="10Nm6u" id="6$3DLmwRPyX" role="3uHU7w" />
+            <node concept="37vLTw" id="6$3DLmwRPyY" role="3uHU7B">
+              <ref role="3cqZAo" node="6$3DLmwPWof" resolve="action" />
             </node>
-            <node concept="liA8E" id="6ysF3v1j_gR" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
-              <node concept="3$FdUm" id="6QZWsVD_ELs" role="37wK5m">
-                <ref role="3$FpRE" to="oh9p:6QZWsVD$rO8" resolve="ConsoleClear" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="6$3DLmwRrdU" role="3cqZAp">
+          <node concept="37vLTI" id="6$3DLmwRrdV" role="3clFbG">
+            <node concept="37vLTw" id="6$3DLmwRrdW" role="37vLTJ">
+              <ref role="3cqZAo" node="6$3DLmwPWof" resolve="action" />
+            </node>
+            <node concept="3$FdUm" id="6$3DLmwRxow" role="37vLTx">
+              <ref role="3$FpRE" to="oh9p:6QZWsVDzvm_" resolve="ConsoleNext" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6$3DLmwS2qU" role="3cqZAp">
+          <node concept="3clFbS" id="6$3DLmwS2qV" role="3clFbx">
+            <node concept="3clFbF" id="6$3DLmwS2qW" role="3cqZAp">
+              <node concept="2OqwBi" id="6$3DLmwS2qX" role="3clFbG">
+                <node concept="37vLTw" id="6$3DLmwS2qY" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3sIEoj5P59E" resolve="group" />
+                </node>
+                <node concept="liA8E" id="6$3DLmwS2qZ" role="2OqNvi">
+                  <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
+                  <node concept="37vLTw" id="6$3DLmwS2r0" role="37wK5m">
+                    <ref role="3cqZAo" node="6$3DLmwPWof" resolve="action" />
+                  </node>
+                </node>
               </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="6$3DLmwS2r1" role="3clFbw">
+            <node concept="10Nm6u" id="6$3DLmwS2r2" role="3uHU7w" />
+            <node concept="37vLTw" id="6$3DLmwS2r3" role="3uHU7B">
+              <ref role="3cqZAo" node="6$3DLmwPWof" resolve="action" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6$3DLmwRrdY" role="3cqZAp">
+          <node concept="37vLTI" id="6$3DLmwRrdZ" role="3clFbG">
+            <node concept="37vLTw" id="6$3DLmwRre0" role="37vLTJ">
+              <ref role="3cqZAo" node="6$3DLmwPWof" resolve="action" />
+            </node>
+            <node concept="3$FdUm" id="6$3DLmwRB_S" role="37vLTx">
+              <ref role="3$FpRE" to="oh9p:6QZWsVD$rO8" resolve="ConsoleClear" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6$3DLmwSk3N" role="3cqZAp">
+          <node concept="3clFbS" id="6$3DLmwSk3O" role="3clFbx">
+            <node concept="3clFbF" id="6$3DLmwSk3P" role="3cqZAp">
+              <node concept="2OqwBi" id="6$3DLmwSk3Q" role="3clFbG">
+                <node concept="37vLTw" id="6$3DLmwSk3R" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3sIEoj5P59E" resolve="group" />
+                </node>
+                <node concept="liA8E" id="6$3DLmwSk3S" role="2OqNvi">
+                  <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
+                  <node concept="37vLTw" id="6$3DLmwSk3T" role="37wK5m">
+                    <ref role="3cqZAo" node="6$3DLmwPWof" resolve="action" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="6$3DLmwSk3U" role="3clFbw">
+            <node concept="10Nm6u" id="6$3DLmwSk3V" role="3uHU7w" />
+            <node concept="37vLTw" id="6$3DLmwSk3W" role="3uHU7B">
+              <ref role="3cqZAo" node="6$3DLmwPWof" resolve="action" />
             </node>
           </node>
         </node>
@@ -1714,6 +1795,9 @@
         <node concept="3uibUv" id="3sIEoj5P59D" role="1tU5fm">
           <ref role="3uigEE" to="qkt:~DefaultActionGroup" resolve="DefaultActionGroup" />
         </node>
+      </node>
+      <node concept="2AHcQZ" id="2hdvs6Xy3e6" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="6ysF3v1j_hD" role="jymVt" />

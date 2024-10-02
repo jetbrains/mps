@@ -58,12 +58,25 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
     super(project, tool, title, history);
   }
 
+  @Override
   protected void registerActions(DefaultActionGroup group) {
     super.registerActions(group);
-    group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleExecute_Action")));
-    group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsolePrev_Action")));
-    group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleNext_Action")));
-    group.add(((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleClear_Action")));
+    BaseAction action = ((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleExecute_Action"));
+    if (action != null) {
+      group.add(action);
+    }
+    action = ((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsolePrev_Action"));
+    if (action != null) {
+      group.add(action);
+    }
+    action = ((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleNext_Action"));
+    if (action != null) {
+      group.add(action);
+    }
+    action = ((BaseAction) ActionManager.getInstance().getAction("jetbrains.mps.console.actions.ConsoleClear_Action"));
+    if (action != null) {
+      group.add(action);
+    }
   }
 
   private SNode lastCmd() {
