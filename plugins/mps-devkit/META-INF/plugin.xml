@@ -35,9 +35,6 @@
       <implementation-class>jetbrains.mps.ide.devkit.editorMenuTrace.EditorMenuTraceTool</implementation-class>
     </component>
 
-    <component>
-      <implementation-class>jetbrains.mps.ide.devkit.cellExplorer.CellExplorerTool</implementation-class>
-    </component>
   </project-components>
 
   <extensions defaultExtensionNs="com.intellij">

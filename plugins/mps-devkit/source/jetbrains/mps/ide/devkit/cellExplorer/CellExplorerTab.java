@@ -30,13 +30,12 @@ import com.intellij.ui.ScrollPaneFactory;
 import jetbrains.mps.ide.devkit.cellExplorer.cellsTree.CellsTree;
 import jetbrains.mps.ide.devkit.cellExplorer.detailTree.CellDetailTree;
 import jetbrains.mps.ide.icons.GlobalIconManager;
-import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
+import jetbrains.mps.ide.tools.BaseTabbedProjectServiceTool;
 import jetbrains.mps.nodeEditor.EditorComponent.EditorDisposeListener;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.plugins.tool.IComponentDisposer;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.workbench.action.BaseAction;
@@ -45,14 +44,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Map;
 
 public class CellExplorerTab implements IComponentDisposer<JComponent> {
-  private final BaseTabbedProjectTool myTool;
+  private final BaseTabbedProjectServiceTool myTool;
   private final EditorComponent myEditorComponent;
   private final Runnable myEditorActivator;
   private final EditorDisposeListener myCloseTabOnEditorDisposeListener = new CloseTabOnEditorDisposeListener();
@@ -60,7 +56,7 @@ public class CellExplorerTab implements IComponentDisposer<JComponent> {
   private final CellsTree myCellsTree;
   private final CellDetailTree myCellDetailTree;
 
-  public CellExplorerTab(@NotNull BaseTabbedProjectTool tool, @NotNull EditorComponent editorComponent, @NotNull Runnable editorActivator) {
+  public CellExplorerTab(@NotNull BaseTabbedProjectServiceTool tool, @NotNull EditorComponent editorComponent, @NotNull Runnable editorActivator) {
     myTool = tool;
     myEditorComponent = editorComponent;
     myEditorActivator = editorActivator;
