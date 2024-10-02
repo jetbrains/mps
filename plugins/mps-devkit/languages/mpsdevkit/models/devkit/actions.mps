@@ -11393,17 +11393,12 @@
           </node>
         </node>
         <node concept="3clFbF" id="6d6_Xfr6xuO" role="3cqZAp">
-          <node concept="2OqwBi" id="6d6_Xfr6BQK" role="3clFbG">
-            <node concept="2OqwBi" id="6d6_Xfr6$x9" role="2Oq$k0">
-              <node concept="37vLTw" id="6d6_Xfr6xuM" role="2Oq$k0">
-                <ref role="3cqZAo" node="DmFJ5GCKPp" resolve="md" />
-              </node>
-              <node concept="liA8E" id="6d6_Xfr6B53" role="2OqNvi">
-                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getModelRootDescriptors()" resolve="getModelRootDescriptors" />
-              </node>
+          <node concept="2OqwBi" id="7_7zRcng8Tt" role="3clFbG">
+            <node concept="37vLTw" id="6d6_Xfr6xuM" role="2Oq$k0">
+              <ref role="3cqZAo" node="DmFJ5GCKPp" resolve="md" />
             </node>
-            <node concept="liA8E" id="6d6_Xfr6F8L" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Collection.clear()" resolve="clear" />
+            <node concept="liA8E" id="7_7zRcngb2Q" role="2OqNvi">
+              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.clearModelRootDescriptors()" resolve="clearModelRootDescriptors" />
             </node>
           </node>
         </node>
@@ -11633,17 +11628,12 @@
           </node>
         </node>
         <node concept="3clFbF" id="6d6_Xfr7rUW" role="3cqZAp">
-          <node concept="2OqwBi" id="6d6_Xfr7_w7" role="3clFbG">
-            <node concept="2OqwBi" id="6d6_Xfr7zwh" role="2Oq$k0">
-              <node concept="37vLTw" id="6d6_Xfr7rUU" role="2Oq$k0">
-                <ref role="3cqZAo" node="DmFJ5GCKPp" resolve="md" />
-              </node>
-              <node concept="liA8E" id="6d6_Xfr7$OL" role="2OqNvi">
-                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getModuleFacetDescriptors()" resolve="getModuleFacetDescriptors" />
-              </node>
+          <node concept="2OqwBi" id="6d6_Xfr7zwh" role="3clFbG">
+            <node concept="37vLTw" id="6d6_Xfr7rUU" role="2Oq$k0">
+              <ref role="3cqZAo" node="DmFJ5GCKPp" resolve="md" />
             </node>
-            <node concept="liA8E" id="6d6_Xfr7BtM" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Collection.clear()" resolve="clear" />
+            <node concept="liA8E" id="6d6_Xfr7$OL" role="2OqNvi">
+              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.clearModuleFacetDescriptors()" resolve="clearModuleFacetDescriptors" />
             </node>
           </node>
         </node>

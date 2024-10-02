@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -258,8 +258,25 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     return myModelRoots;
   }
 
+  /**
+   * Hides the fact if {@link #getModelRootDescriptors()} gives a copy or by-reference value
+   * @since 2024.2
+   */
+  public void clearModelRootDescriptors() {
+    myModelRoots.clear();
+  }
+
   public final Collection<ModuleFacetDescriptor> getModuleFacetDescriptors() {
     return myFacets;
+  }
+
+
+  /**
+   * Hides the fact if {@link #getModuleFacetDescriptors()} gives a copy or by-reference value
+   * @since 2024.2
+   */
+  public void clearModuleFacetDescriptors() {
+    myFacets.clear();
   }
 
   /**

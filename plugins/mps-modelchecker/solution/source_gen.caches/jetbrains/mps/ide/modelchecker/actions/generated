@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-cc5s08w20qjluwmjsrakbtmkvie25rv">
+<product version="3" modelHash="ddwd5oqx5dgluzl670w1cfbbk2304cg">
   <files names="CheckModel_Action.java:CheckModel_ActionGroup.java:CheckModule_Action.java:CheckModule_ActionGroup.java:CheckNamespace_Action.java:CheckNamespace_ActionGroup.java:CheckProject_Action.java:CheckProject_ActionGroup.java:Modelchecker_ApplicationPlugin.java:ReferenceableConceptsChecker.java:SpecificCheckersComponent_AppPluginPart.java:startup.properties" />
 </product>
 

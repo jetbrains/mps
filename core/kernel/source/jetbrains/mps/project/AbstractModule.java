@@ -380,7 +380,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
         }
       }
       newDescriptors.addAll(descriptors);
-      moduleDescriptor.getModelRootDescriptors().clear();
+      moduleDescriptor.clearModelRootDescriptors();
       moduleDescriptor.getModelRootDescriptors().addAll(newDescriptors);
 
       // make sure module facets serialize their changes as well.

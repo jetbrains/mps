@@ -1182,17 +1182,12 @@
           </node>
         </node>
         <node concept="3clFbF" id="48wykyVMv6L" role="3cqZAp">
-          <node concept="2OqwBi" id="48wykyVMv6M" role="3clFbG">
-            <node concept="2OqwBi" id="48wykyVMv6N" role="2Oq$k0">
-              <node concept="37vLTw" id="48wykyVMv72" role="2Oq$k0">
-                <ref role="3cqZAo" node="48wykyVMv6Z" resolve="copyDescriptor" />
-              </node>
-              <node concept="liA8E" id="48wykyVMv6P" role="2OqNvi">
-                <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getModelRootDescriptors()" resolve="getModelRootDescriptors" />
-              </node>
+          <node concept="2OqwBi" id="48wykyVMv6N" role="3clFbG">
+            <node concept="37vLTw" id="48wykyVMv72" role="2Oq$k0">
+              <ref role="3cqZAo" node="48wykyVMv6Z" resolve="copyDescriptor" />
             </node>
-            <node concept="liA8E" id="48wykyVMv6Q" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Collection.clear()" resolve="clear" />
+            <node concept="liA8E" id="48wykyVMv6P" role="2OqNvi">
+              <ref role="37wK5l" to="w0gx:~ModuleDescriptor.clearModelRootDescriptors()" resolve="clearModelRootDescriptors" />
             </node>
           </node>
         </node>

@@ -577,8 +577,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         if (myGeneratorAlias != null) {
           ((GeneratorDescriptor) myModuleDescriptor).setAlias(myGeneratorAlias.getText().trim());
         }
-        // XXX utilize the fact getModelRootDescriptors() gives by-reference value.
-        myModuleDescriptor.getModelRootDescriptors().clear();
+        myModuleDescriptor.clearModelRootDescriptors();
         myEntriesEditor.apply(myModuleDescriptor.getModelRootDescriptors());
       }
       if (renameTo != null) {

@@ -99,7 +99,7 @@ import jetbrains.mps.project.ModuleId;
 
     // FWIW, it's CopyModuleHelper.copyModelRoots() that performs adjustment of the roots.
     // XXX not sure if this logic is still valid, need to check if just cloning MRD works.
-    copyDescriptor.getModelRootDescriptors().clear();
+    copyDescriptor.clearModelRootDescriptors();
   }
 
   private static void setNewIdAndTimestamp(final ModuleDescriptor descriptor) {

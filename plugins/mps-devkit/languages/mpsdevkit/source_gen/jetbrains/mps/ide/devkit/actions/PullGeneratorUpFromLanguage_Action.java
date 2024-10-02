@@ -101,7 +101,7 @@ public class PullGeneratorUpFromLanguage_Action extends BaseAction {
     sourceLanguage.getModuleDescriptor().getGenerators().remove(md);
     sourceLanguage.setChanged();
     md.standaloneModule(true);
-    md.getModelRootDescriptors().clear();
+    md.clearModelRootDescriptors();
     // facets and model roots from a disposed module get their File values serialized in full (not "shrank" with any macro).
     // Once they get loaded back, they point to same proper location (no macro to resolve), and get serialized with a new ${module} location
     // on eventual save(). 
@@ -110,7 +110,7 @@ public class PullGeneratorUpFromLanguage_Action extends BaseAction {
       mr.save(m);
       md.getModelRootDescriptors().add(new ModelRootDescriptor(mr.getType(), m));
     }
-    md.getModuleFacetDescriptors().clear();
+    md.clearModuleFacetDescriptors();
     for (SModuleFacet mf : moduleFacets) {
       MementoImpl m = new MementoImpl();
       mf.save(m);
