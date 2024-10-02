@@ -1,9 +1,4 @@
 <idea-plugin>
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.ide.findusages.view.UsagesViewTool</implementation-class>
-    </component>
-  </project-components>
   <extensions defaultExtensionNs="com.intellij">
     <projectService serviceImplementation="jetbrains.mps.ide.messages.navigation.NavigationManager"/>
     <projectService serviceImplementation="jetbrains.mps.ide.messages.MessagesViewTool"/>

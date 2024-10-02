@@ -7679,7 +7679,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="YwfKjlWKKQ" role="2OqNvi">
-                    <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+                    <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
                     <node concept="3VsKOn" id="YwfKjlWLmT" role="37wK5m">
                       <ref role="3VsUkX" to="ngmm:~UsagesViewTool" resolve="UsagesViewTool" />
                     </node>
@@ -8613,10 +8613,6 @@
       </node>
       <node concept="3Tm1VV" id="7nWAV$2m10P" role="1B3o_S" />
     </node>
-    <node concept="3Tm1VV" id="7nWAV$2lW2c" role="1B3o_S" />
-    <node concept="3uibUv" id="7nWAV$2meaA" role="1zkMxy">
-      <ref role="3uigEE" to="qq03:~MPSCommonDataKeys" resolve="MPSCommonDataKeys" />
-    </node>
     <node concept="Wx3nA" id="gyVkU1lAw7" role="jymVt">
       <property role="TrG5h" value="PARENT_PASTE_PROVIDER" />
       <property role="3TUv4t" value="true" />
@@ -8643,6 +8639,10 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="gyVkU1lAwf" role="1B3o_S" />
+    </node>
+    <node concept="3Tm1VV" id="7nWAV$2lW2c" role="1B3o_S" />
+    <node concept="3uibUv" id="7nWAV$2meaA" role="1zkMxy">
+      <ref role="3uigEE" to="qq03:~MPSCommonDataKeys" resolve="MPSCommonDataKeys" />
     </node>
   </node>
   <node concept="312cEu" id="2ONldth5Ft3">

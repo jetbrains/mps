@@ -36,7 +36,7 @@ import jetbrains.mps.ide.findusages.view.UsageToolOptions;
     return DefaultSearchOptionsComponent.getOptions(myProject);
   }
   private UsagesViewTool getTool() {
-    return myIdeaProject.getComponent(UsagesViewTool.class);
+    return myIdeaProject.getService(UsagesViewTool.class);
   }
   /*package*/ boolean isApplicable() {
     return getTool() != null && getDefaultOptions() != null;

@@ -26,6 +26,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
+import com.intellij.openapi.components.Service;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
@@ -53,6 +54,7 @@ import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTreeChangesNotifier
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.tools.BaseTabbedProjectServiceTool;
 import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
@@ -74,7 +76,8 @@ import java.util.List;
     name = "UsagesViewTool",
     storages = @Storage(StoragePathMacros.WORKSPACE_FILE)
 )
-public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentStateComponent<Element> {
+@Service(Service.Level.PROJECT)
+public final class UsagesViewTool extends BaseTabbedProjectServiceTool implements PersistentStateComponent<Element> {
 
   private static final String VERSION_NUMBER = "1";
   private static final String VERSION = "version";
@@ -111,8 +114,8 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
   }
 
   @Override
-  public void disposeComponent() {
-    super.disposeComponent();
+  public void dispose() {
+    super.dispose();
     // if any data left (e.g. data restored but not visualized by addTab() - still in the myUsagesViewsData)
     ArrayList<UsageViewData> copy = new ArrayList<>(myUsageViewsData);
     // pretty much the same what we do in Tab.disposeTab(), below
@@ -135,7 +138,7 @@ public class UsagesViewTool extends BaseTabbedProjectTool implements PersistentS
    * Display usages in a tool window of a respective project, according to options supplied.
    */
   public static void showUsages(@NotNull Project project, @NotNull IResultProvider provider, @NotNull SearchQuery query, @NotNull UsageToolOptions options) {
-    project.getComponent(UsagesViewTool.class).findUsages(provider, query, options);
+    project.getService(UsagesViewTool.class).findUsages(provider, query, options);
   }
 
   private void findUsages(IResultProvider provider, final SearchQuery query, final UsageToolOptions options) {

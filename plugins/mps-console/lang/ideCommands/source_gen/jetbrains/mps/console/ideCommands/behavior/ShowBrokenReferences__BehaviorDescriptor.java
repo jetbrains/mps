@@ -115,7 +115,7 @@ public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescri
   }
   private static UsagesViewTool check_5hdxhn_a0b0a0a0a0b0a(com.intellij.openapi.project.Project checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return checkedDotOperand.getComponent(UsagesViewTool.class);
+      return checkedDotOperand.getService(UsagesViewTool.class);
     }
     return null;
   }
