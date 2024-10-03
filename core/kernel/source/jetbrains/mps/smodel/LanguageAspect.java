@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,7 +69,7 @@ public enum LanguageAspect {
   TYPESYSTEM("typesystem", BootstrapLanguages.typesystemLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "typesystem.html"),
 
   //mostly migrated
-  REFACTORINGS("refactorings", BootstrapLanguages.refactoringLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "refactoring.html"),
+  REFACTORINGS("refactorings", BootstrapLanguages.refactoringLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "mps-refactoring.html"),
 
   //mostly migrated
   SCRIPTS("scripts", BootstrapLanguages.scriptLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "scripts.html"),

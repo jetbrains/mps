@@ -24,17 +24,8 @@ public class BootstrapLanguages {
   public static SLanguage getGeneratorLang() {
     return MetaAdapterFactory.getLanguage(0xb401a68083254110L, 0x8fd384331ff25befL, "jetbrains.mps.lang.generator");
   }
-  public static SLanguage getGenContextLang() {
-    return MetaAdapterFactory.getLanguage(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, "jetbrains.mps.lang.generator.generationContext");
-  }
   public static SLanguage getBaseLang() {
     return MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
-  }
-  public static SLanguage getBaseLangUnitTestLang() {
-    return MetaAdapterFactory.getLanguage(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, "jetbrains.mps.baseLanguage.unitTest");
-  }
-  public static SLanguage getLangTest() {
-    return MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test");
   }
   public static SLanguage getLanguageDescriptorLang() {
     return MetaAdapterFactory.getLanguage(0xf4ad079dbc714ffbL, 0x96009328705cf998L, "jetbrains.mps.lang.descriptor");
@@ -50,29 +41,8 @@ public class BootstrapLanguages {
     // we identify devkit at RT.
     return PersistenceFacade.getInstance().createModuleReference("a2eb3a43-fcc2-4200-80dc-c60110c4862d(jetbrains.mps.devkit.templates)");
   }
-  public static SModuleReference getStructureAspectDevKit() {
-    return PersistenceFacade.getInstance().createModuleReference("78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)");
-  }
-  public static SModuleReference getConstraintAspectDevKit() {
-    return PersistenceFacade.getInstance().createModuleReference("00000000-0000-4000-0000-5604ebd4f22c(jetbrains.mps.devkit.aspect.constraints)");
-  }
-  public static SModuleReference getDataFlowAspectDevKit() {
-    return PersistenceFacade.getInstance().createModuleReference("00000000-0000-4000-0000-443879f56b80(jetbrains.mps.devkit.aspect.dataflow)");
-  }
-  public static SModuleReference getTextGenAspectDevKit() {
-    return PersistenceFacade.getInstance().createModuleReference("fa73d85a-ac7f-447b-846c-fcdc41caa600(jetbrains.mps.devkit.aspect.textgen)");
-  }
-  public static SModuleReference getTypesystemAspectDevKit() {
-    return PersistenceFacade.getInstance().createModuleReference("00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)");
-  }
-  public static SModuleReference getLanguageDesignDevKit() {
-    return PersistenceFacade.getInstance().createModuleReference("2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)");
-  }
   public static SModuleReference descriptorLanguageRef() {
     return PersistenceFacade.getInstance().createModuleReference("f4ad079d-bc71-4ffb-9600-9328705cf998(jetbrains.mps.lang.descriptor)");
-  }
-  public static SModuleReference projectLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("86ef8290-12bb-4ca7-947f-093788f263a9(jetbrains.mps.lang.project)");
   }
   public static SModuleReference coreLanguageRef() {
     return PersistenceFacade.getInstance().createModuleReference("ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)");
@@ -127,9 +97,6 @@ public class BootstrapLanguages {
   }
   public static SModuleReference migrationLanguageRef() {
     return PersistenceFacade.getInstance().createModuleReference("90746344-04fd-4286-97d5-b46ae6a81709(jetbrains.mps.lang.migration)");
-  }
-  public static SModuleReference unitTestLanguageRef() {
-    return PersistenceFacade.getInstance().createModuleReference("f61473f9-130f-42f6-b98d-6c438812c2f6(jetbrains.mps.baseLanguage.unitTest)");
   }
   public static SModuleReference jdkRef() {
     return PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)");
