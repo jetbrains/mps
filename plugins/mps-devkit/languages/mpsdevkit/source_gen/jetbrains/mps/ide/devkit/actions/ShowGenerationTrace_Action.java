@@ -33,7 +33,7 @@ public class ShowGenerationTrace_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    GenerationTracerViewTool tool = event.getData(CommonDataKeys.PROJECT).getService(GenerationTracerViewTool.class);
+    GenerationTracerViewTool tool = GenerationTracerViewTool.getInstance(event.getData(CommonDataKeys.PROJECT));
     if ((event.getData(MPSCommonDataKeys.NODE) == null) || tool == null) {
       disable(event.getPresentation());
     } else {
@@ -61,7 +61,7 @@ public class ShowGenerationTrace_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    GenerationTracerViewTool tool = event.getData(CommonDataKeys.PROJECT).getService(GenerationTracerViewTool.class);
+    GenerationTracerViewTool tool = GenerationTracerViewTool.getInstance(event.getData(CommonDataKeys.PROJECT));
     if (!(tool.showTraceInputData(event.getData(MPSCommonDataKeys.NODE)))) {
       JBPopup m = JBPopupFactory.getInstance().createMessage("No tracing data available");
       m.showCenteredInCurrentWindow(event.getData(CommonDataKeys.PROJECT));

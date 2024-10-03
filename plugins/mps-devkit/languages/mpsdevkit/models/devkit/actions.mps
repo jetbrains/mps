@@ -5858,17 +5858,13 @@
             <node concept="3uibUv" id="5oSeKmCexAh" role="1tU5fm">
               <ref role="3uigEE" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
             </node>
-            <node concept="2OqwBi" id="5oSeKmCexAi" role="33vP2m">
-              <node concept="2OqwBi" id="5oSeKmCexAj" role="2Oq$k0">
-                <node concept="2WthIp" id="5oSeKmCexAk" role="2Oq$k0" />
-                <node concept="1DTwFV" id="5oSeKmCexAl" role="2OqNvi">
+            <node concept="2YIFZM" id="7_DlbL9M$05" role="33vP2m">
+              <ref role="37wK5l" to="a0yo:~GenerationTracerViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
+              <node concept="2OqwBi" id="7_DlbL9M$06" role="37wK5m">
+                <node concept="2WthIp" id="7_DlbL9M$07" role="2Oq$k0" />
+                <node concept="1DTwFV" id="7_DlbL9M$08" role="2OqNvi">
                   <ref role="2WH_rO" node="14z8V6nEs7M" resolve="project" />
-                </node>
-              </node>
-              <node concept="liA8E" id="5oSeKmCexAm" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
-                <node concept="3VsKOn" id="5oSeKmCexAn" role="37wK5m">
-                  <ref role="3VsUkX" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
                 </node>
               </node>
             </node>
@@ -5940,17 +5936,13 @@
             <node concept="3uibUv" id="5oSeKmCevcW" role="1tU5fm">
               <ref role="3uigEE" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
             </node>
-            <node concept="2OqwBi" id="5oSeKmCew3p" role="33vP2m">
-              <node concept="2OqwBi" id="5oSeKmCevlx" role="2Oq$k0">
-                <node concept="2WthIp" id="5oSeKmCevl$" role="2Oq$k0" />
-                <node concept="1DTwFV" id="5oSeKmCevlA" role="2OqNvi">
+            <node concept="2YIFZM" id="7_DlbL9Lqou" role="33vP2m">
+              <ref role="37wK5l" to="a0yo:~GenerationTracerViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
+              <node concept="2OqwBi" id="7_DlbL9Lr0V" role="37wK5m">
+                <node concept="2WthIp" id="7_DlbL9Lr0Y" role="2Oq$k0" />
+                <node concept="1DTwFV" id="7_DlbL9Lr10" role="2OqNvi">
                   <ref role="2WH_rO" node="14z8V6nEs7M" resolve="project" />
-                </node>
-              </node>
-              <node concept="liA8E" id="5oSeKmCewP_" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
-                <node concept="3VsKOn" id="5oSeKmCewUI" role="37wK5m">
-                  <ref role="3VsUkX" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
                 </node>
               </node>
             </node>
@@ -6041,17 +6033,13 @@
             <node concept="3uibUv" id="5oSeKmCes53" role="1tU5fm">
               <ref role="3uigEE" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
             </node>
-            <node concept="2OqwBi" id="5oSeKmCes54" role="33vP2m">
-              <node concept="2OqwBi" id="5oSeKmCes55" role="2Oq$k0">
-                <node concept="2WthIp" id="5oSeKmCes56" role="2Oq$k0" />
-                <node concept="1DTwFV" id="5VaWw4ewjb0" role="2OqNvi">
+            <node concept="2YIFZM" id="7_DlbL9MnOs" role="33vP2m">
+              <ref role="37wK5l" to="a0yo:~GenerationTracerViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
+              <node concept="2OqwBi" id="7_DlbL9MnOt" role="37wK5m">
+                <node concept="2WthIp" id="7_DlbL9MnOu" role="2Oq$k0" />
+                <node concept="1DTwFV" id="7_DlbL9MnOv" role="2OqNvi">
                   <ref role="2WH_rO" node="5VaWw4ew4wl" resolve="project" />
-                </node>
-              </node>
-              <node concept="liA8E" id="5oSeKmCes58" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
-                <node concept="3VsKOn" id="5oSeKmCes59" role="37wK5m">
-                  <ref role="3VsUkX" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
                 </node>
               </node>
             </node>
@@ -6123,17 +6111,13 @@
             <node concept="3uibUv" id="5oSeKmCenEM" role="1tU5fm">
               <ref role="3uigEE" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
             </node>
-            <node concept="2OqwBi" id="5oSeKmCenEW" role="33vP2m">
-              <node concept="2OqwBi" id="5oSeKmCenEX" role="2Oq$k0">
-                <node concept="2WthIp" id="5oSeKmCenEY" role="2Oq$k0" />
-                <node concept="1DTwFV" id="5VaWw4ewbKa" role="2OqNvi">
+            <node concept="2YIFZM" id="7_DlbL9Lskw" role="33vP2m">
+              <ref role="37wK5l" to="a0yo:~GenerationTracerViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
+              <node concept="2OqwBi" id="7_DlbL9LszM" role="37wK5m">
+                <node concept="2WthIp" id="7_DlbL9LszP" role="2Oq$k0" />
+                <node concept="1DTwFV" id="7_DlbL9LszR" role="2OqNvi">
                   <ref role="2WH_rO" node="5VaWw4ew4wl" resolve="project" />
-                </node>
-              </node>
-              <node concept="liA8E" id="5oSeKmCenF0" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
-                <node concept="3VsKOn" id="5oSeKmCenF1" role="37wK5m">
-                  <ref role="3VsUkX" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
                 </node>
               </node>
             </node>

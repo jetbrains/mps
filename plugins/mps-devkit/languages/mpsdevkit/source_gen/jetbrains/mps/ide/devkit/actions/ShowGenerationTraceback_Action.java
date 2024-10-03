@@ -34,7 +34,7 @@ public class ShowGenerationTraceback_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    GenerationTracerViewTool tool = event.getData(CommonDataKeys.PROJECT).getService(GenerationTracerViewTool.class);
+    GenerationTracerViewTool tool = GenerationTracerViewTool.getInstance(event.getData(CommonDataKeys.PROJECT));
     SNode n = event.getData(MPSCommonDataKeys.NODE);
     if ((n == null) || !(SNodeOperations.getModel(n) instanceof TransientSModel) || tool == null) {
       disable(event.getPresentation());
@@ -63,7 +63,7 @@ public class ShowGenerationTraceback_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    GenerationTracerViewTool tool = event.getData(CommonDataKeys.PROJECT).getService(GenerationTracerViewTool.class);
+    GenerationTracerViewTool tool = GenerationTracerViewTool.getInstance(event.getData(CommonDataKeys.PROJECT));
     if (!(tool.showTracebackData(event.getData(MPSCommonDataKeys.NODE)))) {
       JBPopup m = JBPopupFactory.getInstance().createMessage("No tracing data available");
       m.showCenteredInCurrentWindow(event.getData(CommonDataKeys.PROJECT));

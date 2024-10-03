@@ -23,7 +23,9 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.Service;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupManager;
+import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowAnchor;
+import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.ContentManagerAdapter;
@@ -62,6 +64,7 @@ import java.util.List;
 
 @Service(Service.Level.PROJECT)
 public final class GenerationTracerViewTool extends BaseTool {
+  private static final String ID = "Generation Tracer";
   private NoTabsComponent myNoTabsComponent;
 
   private List<GenerationTracerView> myTracerViews = new ArrayList<>();
@@ -70,12 +73,22 @@ public final class GenerationTracerViewTool extends BaseTool {
   private final GenTraceSettings myTraceSettings;
   private boolean myAutoscroll;
 
-
   public GenerationTracerViewTool(Project project) {
-    super(project, "Generation Tracer", null, IdeIcons.DEFAULT_ICON, ToolWindowAnchor.BOTTOM, false, true);
+    super(project, ID, null, IdeIcons.DEFAULT_ICON, ToolWindowAnchor.BOTTOM, false, true);
     myTransientModelsOwner = project.getComponent(TransientModelsProvider.class);
     myNoTabsComponent = new NoTabsComponent(this);
     myTraceSettings = ProjectHelper.fromIdeaProject(project).getComponent(GenerationSettingsProvider.class).getGenerationSettings().getTraceSettings();
+  }
+
+  public static GenerationTracerViewTool getInstance(Project project) {
+    final GenerationTracerViewTool tool = project.getService(GenerationTracerViewTool.class);
+    //Ensure tool window initialization
+    final ToolWindow toolWindow = ToolWindowManager.getInstance(project).getToolWindow(ID);
+    if (toolWindow!=null) {
+      return tool;
+    } else {
+      return null;
+    }
   }
 
   //////
@@ -93,6 +106,7 @@ public final class GenerationTracerViewTool extends BaseTool {
     return modelReference != null && myTransientModelsOwner.getTrace(modelReference) != null;
   }
   public boolean showTraceInputData(@NotNull SNode node) {
+    assert getContentManager()!=null:"The GenerationTracerViewTool has not been initialized";
     int index = getTabIndex(GenerationTracerView.Kind.TraceForward, node.getReference());
     if (index > -1) {
       selectIndex(index);
@@ -109,6 +123,7 @@ public final class GenerationTracerViewTool extends BaseTool {
   }
 
   public boolean showTracebackData(SNode node) {
+    assert getContentManager()!=null:"The GenerationTracerViewTool has not been initialized";
     int index = getTabIndex(GenerationTracerView.Kind.TraceBackward, node.getReference());
     if (index > -1) {
       selectIndex(index);
@@ -179,13 +194,13 @@ public final class GenerationTracerViewTool extends BaseTool {
     getContentManager().removeAllContents(true);
   }
 
-  void selectIndex(int index) {
+  private void selectIndex(int index) {
     ContentManager manager = getContentManager();
     //noinspection ConstantConditions
     manager.setSelectedContent(manager.getContent(index));
   }
 
-  int getTabIndex(GenerationTracerView.Kind kind, SNodeReference node) {
+  private int getTabIndex(GenerationTracerView.Kind kind, SNodeReference node) {
     int index = 0;
     for (GenerationTracerView tracerView : myTracerViews) {
       if (tracerView.isViewFor(kind, node)) {
@@ -299,13 +314,12 @@ public final class GenerationTracerViewTool extends BaseTool {
     }
   }
 
-  private static class Plug extends MPSProjectActivity {
-
+  private static class Factory implements com.intellij.openapi.wm.ToolWindowFactory {
     @Override
-    public void runActivity(@NotNull Project project) {
+    public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
       final GenerationTracerViewTool tool = project.getService(GenerationTracerViewTool.class);
       tool.createTool();
-      tool.registerLater();
+      tool.register();
     }
   }
 }
