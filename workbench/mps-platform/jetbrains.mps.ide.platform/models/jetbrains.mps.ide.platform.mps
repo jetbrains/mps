@@ -22,6 +22,9 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
+    <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
+    <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
+    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -123,6 +126,7 @@
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
+      <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
@@ -184,6 +188,13 @@
       <node concept="3Tm6S6" id="x4tNzP2mQE" role="1B3o_S" />
       <node concept="3uibUv" id="x4tNzP2mQG" role="1tU5fm">
         <ref role="3uigEE" node="x4tNzP2e5F" resolve="ModuleActivator.TestsModelAutoImports" />
+      </node>
+    </node>
+    <node concept="312cEg" id="1aDdKrsHgrN" role="jymVt">
+      <property role="TrG5h" value="myMakeService" />
+      <node concept="3Tm6S6" id="1aDdKrsHgrO" role="1B3o_S" />
+      <node concept="3uibUv" id="1aDdKrsHgUI" role="1tU5fm">
+        <ref role="3uigEE" to="hfuk:1NAY6bPd4nM" resolve="IMakeService" />
       </node>
     </node>
     <node concept="2tJIrI" id="3Ssq9B$kCN8" role="jymVt" />
@@ -635,6 +646,182 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="1aDdKrsHhsx" role="3cqZAp">
+          <node concept="1PaTwC" id="1aDdKrsHhsy" role="1aUNEU">
+            <node concept="3oM_SD" id="1aDdKrsHhsz" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1aDdKrsHrrC" role="3cqZAp">
+          <node concept="1PaTwC" id="1aDdKrsHrrD" role="1aUNEU">
+            <node concept="3oM_SD" id="1aDdKrsHGKf" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrs_" role="1PaTwD">
+              <property role="3oM_SC" value="don't" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrCF" role="1PaTwD">
+              <property role="3oM_SC" value="like" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrDy" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrDz" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrD$" role="1PaTwD">
+              <property role="3oM_SC" value="AppManager" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrHN" role="1PaTwD">
+              <property role="3oM_SC" value="during" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrKm" role="1PaTwD">
+              <property role="3oM_SC" value="module" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrLd" role="1PaTwD">
+              <property role="3oM_SC" value="activation," />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrMU" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrNL" role="1PaTwD">
+              <property role="3oM_SC" value="at" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrNM" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrOD" role="1PaTwD">
+              <property role="3oM_SC" value="moment" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrPw" role="1PaTwD">
+              <property role="3oM_SC" value="there're" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrRd" role="1PaTwD">
+              <property role="3oM_SC" value="uses" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrRe" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHrRf" role="1PaTwD">
+              <property role="3oM_SC" value="IMakeService" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHGMc" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHGMt" role="1PaTwD">
+              <property role="3oM_SC" value="no" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1aDdKrsHGrA" role="3cqZAp">
+          <node concept="1PaTwC" id="1aDdKrsHGrB" role="1aUNEU">
+            <node concept="3oM_SD" id="1aDdKrsHGrC" role="1PaTwD">
+              <property role="3oM_SC" value="confidence" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHGPg" role="1PaTwD">
+              <property role="3oM_SC" value="MakeServiceComponent" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHkC" role="1PaTwD">
+              <property role="3oM_SC" value="get" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHlJ" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHlK" role="1PaTwD">
+              <property role="3oM_SC" value="chance" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHn7" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHoe" role="1PaTwD">
+              <property role="3oM_SC" value="initialize" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHu_" role="1PaTwD">
+              <property role="3oM_SC" value="(see" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHuA" role="1PaTwD">
+              <property role="3oM_SC" value="ReloadManagerComponent)," />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHqb" role="1PaTwD">
+              <property role="3oM_SC" value="therefore" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHsC" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHzP" role="1PaTwD">
+              <property role="3oM_SC" value="stick" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHA$" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHA_" role="1PaTwD">
+              <property role="3oM_SC" value="IDEA" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHBW" role="1PaTwD">
+              <property role="3oM_SC" value="service" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHCd" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHDk" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsHHDl" role="1PaTwD">
+              <property role="3oM_SC" value="instance" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1aDdKrsHisu" role="3cqZAp">
+          <node concept="37vLTI" id="1aDdKrsHj8_" role="3clFbG">
+            <node concept="2OqwBi" id="1aDdKrsHl7j" role="37vLTx">
+              <node concept="2YIFZM" id="1aDdKrsHk_U" role="2Oq$k0">
+                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+              </node>
+              <node concept="liA8E" id="1aDdKrsHnqF" role="2OqNvi">
+                <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
+                <node concept="3VsKOn" id="1aDdKrsHoeh" role="37wK5m">
+                  <ref role="3VsUkX" to="hfuk:1NAY6bPd4nM" resolve="IMakeService" />
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="1aDdKrsHiss" role="37vLTJ">
+              <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1aDdKrsHIlO" role="3cqZAp">
+          <node concept="3clFbS" id="1aDdKrsHIlQ" role="3clFbx">
+            <node concept="3clFbF" id="1aDdKrsHJXV" role="3cqZAp">
+              <node concept="2OqwBi" id="1aDdKrsHLBl" role="3clFbG">
+                <node concept="2OqwBi" id="1aDdKrsHJXX" role="2Oq$k0">
+                  <node concept="37vLTw" id="1aDdKrsHJXY" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3Ssq9B$kCLl" resolve="myPlatform" />
+                  </node>
+                  <node concept="liA8E" id="1aDdKrsHJXZ" role="2OqNvi">
+                    <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                    <node concept="3VsKOn" id="1aDdKrsHJY0" role="37wK5m">
+                      <ref role="3VsUkX" to="hfuk:4QUA3Sqts3M" resolve="MakeServiceComponent" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="1aDdKrsHMdr" role="2OqNvi">
+                  <ref role="37wK5l" to="hfuk:4QUA3SqtAPh" resolve="install" />
+                  <node concept="37vLTw" id="1aDdKrsHMED" role="37wK5m">
+                    <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="1aDdKrsHJaX" role="3clFbw">
+            <node concept="10Nm6u" id="1aDdKrsHJ$L" role="3uHU7w" />
+            <node concept="37vLTw" id="1aDdKrsHIJo" role="3uHU7B">
+              <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="2AHcQZ" id="x4tNzP29en" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" />
@@ -671,6 +858,45 @@
             <node concept="10Nm6u" id="x4tNzP2pO1" role="37vLTx" />
             <node concept="37vLTw" id="x4tNzP2p8a" role="37vLTJ">
               <ref role="3cqZAo" node="x4tNzP2mQD" resolve="myTestModelImports" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1aDdKrsHNRz" role="3cqZAp">
+          <node concept="3clFbS" id="1aDdKrsHNR_" role="3clFbx">
+            <node concept="3clFbF" id="1aDdKrsHRw6" role="3cqZAp">
+              <node concept="2OqwBi" id="1aDdKrsHRw7" role="3clFbG">
+                <node concept="2OqwBi" id="1aDdKrsHRw8" role="2Oq$k0">
+                  <node concept="37vLTw" id="1aDdKrsHRw9" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3Ssq9B$kCLl" resolve="myPlatform" />
+                  </node>
+                  <node concept="liA8E" id="1aDdKrsHRwa" role="2OqNvi">
+                    <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                    <node concept="3VsKOn" id="1aDdKrsHRwb" role="37wK5m">
+                      <ref role="3VsUkX" to="hfuk:4QUA3Sqts3M" resolve="MakeServiceComponent" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="1aDdKrsHRwc" role="2OqNvi">
+                  <ref role="37wK5l" to="hfuk:4QUA3SqtAZW" resolve="uninstall" />
+                  <node concept="37vLTw" id="1aDdKrsHRwd" role="37wK5m">
+                    <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="1aDdKrsHPzM" role="3cqZAp">
+              <node concept="37vLTI" id="1aDdKrsHQ4H" role="3clFbG">
+                <node concept="10Nm6u" id="1aDdKrsHQwb" role="37vLTx" />
+                <node concept="37vLTw" id="1aDdKrsHPzK" role="37vLTJ">
+                  <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="1aDdKrsHOJV" role="3clFbw">
+            <node concept="10Nm6u" id="1aDdKrsHPbM" role="3uHU7w" />
+            <node concept="37vLTw" id="1aDdKrsHOhk" role="3uHU7B">
+              <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
             </node>
           </node>
         </node>

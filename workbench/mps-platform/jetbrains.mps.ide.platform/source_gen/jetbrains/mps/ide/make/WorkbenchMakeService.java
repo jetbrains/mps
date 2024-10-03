@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import jetbrains.mps.core.platform.Platform;
 import java.io.File;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.script.IScriptController;
@@ -48,6 +47,7 @@ import jetbrains.mps.progress.ProgressMonitorAdapter;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.ide.IdeEventQueue;
 import com.intellij.openapi.progress.ProgressManager;
+import jetbrains.mps.make.MakeServiceComponent;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.ToolWindowManager;
@@ -65,6 +65,9 @@ import jetbrains.mps.make.script.IOption;
 import jetbrains.mps.make.script.IQuery;
 import jetbrains.mps.internal.make.runtime.script.MessageFeedbackStrategy;
 
+/**
+ * IDEA App Service, its instance is registered into MakeServiceComponent CC from activator of [mps-platform]/j.m.ide.platform
+ */
 @GeneratedClass(node = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)/173672751428923285", model = "r:abe0ad99-3ef3-4277-a170-d1efd7986b86(jetbrains.mps.ide.make)")
 public class WorkbenchMakeService extends AbstractMakeService implements IMakeService, Disposable {
 
@@ -80,12 +83,11 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
   public WorkbenchMakeService() {
     myPlatform = MPSCoreComponents.getInstance().getPlatform();
-    myPlatform.findComponent(MakeServiceComponent.class).install(this);
   }
 
   @Override
   public void dispose() {
-    myPlatform.findComponent(MakeServiceComponent.class).uninstall(this);
+    // just serve as a top for dependant disposable
   }
 
   @Override

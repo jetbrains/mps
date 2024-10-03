@@ -16,11 +16,6 @@
     <component>
       <implementation-class>jetbrains.mps.repository.RepositoryInitializingComponent</implementation-class>
     </component>
-
-    <component>
-      <interface-class>jetbrains.mps.make.IMakeService</interface-class>
-      <implementation-class>jetbrains.mps.ide.make.WorkbenchMakeService</implementation-class>
-    </component>
   </application-components>
 
   <project-components>
@@ -90,6 +85,8 @@
     <applicationService serviceImplementation="jetbrains.mps.ide.generator.TransientSwapOwnerComponent" />
     <applicationService serviceImplementation="jetbrains.mps.watching.WatchedRootsUpdater" />
     <applicationService serviceImplementation="jetbrains.mps.library.AdditionalLibrariesManager"/>
+    <applicationService serviceInterface="jetbrains.mps.make.IMakeService"
+                        serviceImplementation="jetbrains.mps.ide.make.WorkbenchMakeService"/>
 
     <notificationGroup id="jetbrains.mps.ide.make.StartupModuleMaker" displayType="STICKY_BALLOON" key="smm.group.name" bundle="jetbrains.mps.ide.make.Messages"/>
     <applicationService serviceImplementation="jetbrains.mps.ide.generator.GeneratorCacheComponent"/>

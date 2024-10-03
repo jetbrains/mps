@@ -5,7 +5,10 @@ package jetbrains.mps.ide.platform;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.project.ModelsAutoImportsManager;
+import com.intellij.openapi.application.ApplicationManager;
+import jetbrains.mps.make.MakeServiceComponent;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.util.CodeStyleSettingsProvider;
 import jetbrains.mps.compiler.JavaCompilerOptions;
@@ -28,6 +31,7 @@ import java.util.Collections;
 public final class ModuleActivator implements ModuleRuntime.Activator {
   private final ComponentHost myPlatform;
   private TestsModelAutoImports myTestModelImports;
+  private IMakeService myMakeService;
 
   public ModuleActivator(ComponentHost mpsPlatform) {
     myPlatform = mpsPlatform;
@@ -45,11 +49,22 @@ public final class ModuleActivator implements ModuleRuntime.Activator {
     // this activator and trivial contributor.
     myTestModelImports = new TestsModelAutoImports();
     myPlatform.findComponent(ModelsAutoImportsManager.class).register(myTestModelImports);
+    // 
+    // I don't like use of AppManager during module activation, but at the moment there're uses of IMakeService with no
+    // confidence MakeServiceComponent get a chance to initialize (see ReloadManagerComponent), therefore we stick to IDEA service for the instance
+    myMakeService = ApplicationManager.getApplication().getService(IMakeService.class);
+    if (myMakeService != null) {
+      myPlatform.findComponent(MakeServiceComponent.class).install(myMakeService);
+    }
   }
   @Override
   public void deactivate() {
     myPlatform.findComponent(ModelsAutoImportsManager.class).unregister(myTestModelImports);
     myTestModelImports = null;
+    if (myMakeService != null) {
+      myPlatform.findComponent(MakeServiceComponent.class).uninstall(myMakeService);
+      myMakeService = null;
+    }
   }
 
   @Override

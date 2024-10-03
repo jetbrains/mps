@@ -360,7 +360,7 @@
     <node concept="3uibUv" id="9D0Ba05vmE" role="EKbjA">
       <ref role="3uigEE" to="hfuk:1NAY6bPd4nM" resolve="IMakeService" />
     </node>
-    <node concept="3uibUv" id="5rIhWKNRst8" role="EKbjA">
+    <node concept="3uibUv" id="1aDdKrsJ$hW" role="EKbjA">
       <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
     </node>
     <node concept="3uibUv" id="9D0Ba05vmJ" role="1zkMxy">
@@ -478,25 +478,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="1LibDRnMxcS" role="3cqZAp">
-          <node concept="2OqwBi" id="1LibDRnMy$D" role="3clFbG">
-            <node concept="2OqwBi" id="1LibDRnMxFO" role="2Oq$k0">
-              <node concept="37vLTw" id="1LibDRnMxcN" role="2Oq$k0">
-                <ref role="3cqZAo" node="1LibDRnMi__" resolve="myPlatform" />
-              </node>
-              <node concept="liA8E" id="1LibDRnMy66" role="2OqNvi">
-                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
-                <node concept="3VsKOn" id="1LibDRnMyn5" role="37wK5m">
-                  <ref role="3VsUkX" to="hfuk:4QUA3Sqts3M" resolve="MakeServiceComponent" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="1LibDRnMzgI" role="2OqNvi">
-              <ref role="37wK5l" to="hfuk:4QUA3SqtAPh" resolve="install" />
-              <node concept="Xjq3P" id="1LibDRnMzuE" role="37wK5m" />
-            </node>
-          </node>
-        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="6ZzUxXZQXlE" role="jymVt" />
@@ -507,22 +488,31 @@
       <node concept="3Tm1VV" id="9D0Ba05vaL" role="1B3o_S" />
       <node concept="3cqZAl" id="9D0Ba05vaM" role="3clF45" />
       <node concept="3clFbS" id="9D0Ba05vaN" role="3clF47">
-        <node concept="3clFbF" id="1LibDRnM$1y" role="3cqZAp">
-          <node concept="2OqwBi" id="1LibDRnM$1z" role="3clFbG">
-            <node concept="2OqwBi" id="1LibDRnM$1$" role="2Oq$k0">
-              <node concept="37vLTw" id="1LibDRnM$1_" role="2Oq$k0">
-                <ref role="3cqZAo" node="1LibDRnMi__" resolve="myPlatform" />
-              </node>
-              <node concept="liA8E" id="1LibDRnM$1A" role="2OqNvi">
-                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
-                <node concept="3VsKOn" id="1LibDRnM$1B" role="37wK5m">
-                  <ref role="3VsUkX" to="hfuk:4QUA3Sqts3M" resolve="MakeServiceComponent" />
-                </node>
-              </node>
+        <node concept="3SKdUt" id="1aDdKrsJUKK" role="3cqZAp">
+          <node concept="1PaTwC" id="1aDdKrsJUKL" role="1aUNEU">
+            <node concept="3oM_SD" id="1aDdKrsJUKM" role="1PaTwD">
+              <property role="3oM_SC" value="just" />
             </node>
-            <node concept="liA8E" id="1LibDRnM$1C" role="2OqNvi">
-              <ref role="37wK5l" to="hfuk:4QUA3SqtAZW" resolve="uninstall" />
-              <node concept="Xjq3P" id="1LibDRnM$1D" role="37wK5m" />
+            <node concept="3oM_SD" id="1aDdKrsK1$J" role="1PaTwD">
+              <property role="3oM_SC" value="serve" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsK1A5" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsK1A6" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsK1A7" role="1PaTwD">
+              <property role="3oM_SC" value="top" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsK1AY" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsK1AZ" role="1PaTwD">
+              <property role="3oM_SC" value="dependant" />
+            </node>
+            <node concept="3oM_SD" id="1aDdKrsK1Da" role="1PaTwD">
+              <property role="3oM_SC" value="disposable" />
             </node>
           </node>
         </node>
@@ -3866,6 +3856,13 @@
       </node>
       <node concept="3uibUv" id="1qAwLBZXkuT" role="EKbjA">
         <ref role="3uigEE" to="i9so:4231y0oKQyu" resolve="IScriptController" />
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="1aDdKrsIhp8" role="lGtFl">
+      <node concept="TZ5HA" id="1aDdKrsIhp9" role="TZ5H$">
+        <node concept="1dT_AC" id="1aDdKrsIhpa" role="1dT_Ay">
+          <property role="1dT_AB" value="IDEA App Service, its instance is registered into MakeServiceComponent CC from activator of [mps-platform]/j.m.ide.platform" />
+        </node>
       </node>
     </node>
   </node>

@@ -49,8 +49,10 @@ public class ReloadManagerComponent extends ReloadManager implements Disposable 
   public ReloadManagerComponent() {
     myTaskQueue.setRestartTimerOnAdd(true);
     // I'd love to use MakeServiceComponent.get() but no mechanism to ensure MakeServiceComponent is already initialized,
-    // (it's WorkbenchMakeService AppComponent that is responsible for init), therefore have to access the instance explicitly
-    myMakeService = ApplicationManager.getApplication().getComponent(IMakeService.class);
+    // (it's [mps-platform]/j.m.ide.platform activator that registers WorkbenchMakeService implementation), therefore have to access the instance explicitly
+    // We can't have IMakeService.getInstance() (the class comes from MPS Core, no IDEA AppManager access), but even if we do, I'd prefer to discourage use
+    // of IDEA service mechanism to access implementation, and rather stick to MakeServiceComponent CC
+    myMakeService = ApplicationManager.getApplication().getService(IMakeService.class);
     myMakeService.addListener(myMakeListener);
     VirtualFileManager.getInstance().addVirtualFileManagerListener(new NoReloadOnRefresh(), this);
   }

@@ -27,10 +27,11 @@
   <depends optional="true" config-file="intellij-ides-support.xml">com.intellij.modules.platform</depends>
 
   <application-components>
-    <component>
+    <!--component>
+      Now an App Service, and no longer part of mps-workbench, rather mps-platform (contributed by j.m.ide.platform module activator)
       <interface-class>jetbrains.mps.make.IMakeService</interface-class>
       <implementation-class>jetbrains.mps.ide.make.WorkbenchMakeService</implementation-class>
-    </component>
+    </component -->
     <!-- component>
       <implementation-class>jetbrains.mps.idea.core.navigation.NavigationSupportImpl</implementation-class>
     </component -->
