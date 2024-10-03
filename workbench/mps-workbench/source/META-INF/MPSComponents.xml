@@ -7,11 +7,19 @@
   <xi:include href="/META-INF/MPSCore.xml"/>
   <xi:include href="/META-INF/MPSEditor.xml"/>
   <xi:include href="/META-INF/MPSUI.xml"/>
-  <xi:include href="/META-INF/MPSWorkbench.xml"/>
 
   <application-components>
     <component>
       <implementation-class>jetbrains.mps.plugins.applicationplugins.ApplicationPluginManager</implementation-class>
+    </component>
+
+    <component>
+      <implementation-class>jetbrains.mps.repository.RepositoryInitializingComponent</implementation-class>
+    </component>
+
+    <component>
+      <interface-class>jetbrains.mps.make.IMakeService</interface-class>
+      <implementation-class>jetbrains.mps.ide.make.WorkbenchMakeService</implementation-class>
     </component>
   </application-components>
 
@@ -93,6 +101,13 @@
                 icon="AllIcons.Toolwindows.ToolWindowBookmarks" doNotActivateOnStart="true"/>
     <applicationService serviceImplementation="jetbrains.mps.smodel.ModelValidationSettings" />
     <applicationService serviceImplementation="jetbrains.mps.ide.generator.GenerationSettings" />
+
+    <projectService serviceImplementation="jetbrains.mps.ide.projectPane.TreeNodeSortService"/>
+    <projectService serviceImplementation="jetbrains.mps.ide.make.MakeServiceConfiguration"/>
+    <mps.projectPrefsPanel implementation="jetbrains.mps.ide.make.MakeSettingsPanel"/>
+    <registryKey key="mps.actions.about.libraries" defaultValue="true" description="MPS: Show app/project libraries in About dialog" restartRequired="false"/>
+    <aboutPopupDescriptionProvider implementation="jetbrains.mps.library.GlobalLibraryDescriptionProvider" id="GlobalLibraryDescriptionProvider"/>
+    <aboutPopupDescriptionProvider implementation="jetbrains.mps.library.ProjectLibraryDescriptionProvider" order="after GlobalLibraryDescriptionProvider"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">
@@ -101,6 +116,8 @@
   </extensions>
 
   <applicationListeners>
+    <listener class="jetbrains.mps.intellij.integration.LafFixer$MyAppLifecycleListener" topic="com.intellij.ide.AppLifecycleListener"/>
+    <listener class="jetbrains.mps.ide.blame.IntelliJReporterReplacer" topic="com.intellij.ide.AppLifecycleListener"/>
     <listener class="jetbrains.mps.watching.ModelFocusSynchronizer" topic="com.intellij.ide.FrameStateListener"/>
     <listener class="jetbrains.mps.watching.WatchedRootsUpdater$ProjectListener" topic="com.intellij.openapi.project.ProjectManagerListener"
               activeInHeadlessMode="false" activeInTestMode="false"/>
@@ -108,6 +125,7 @@
     <listener class="jetbrains.mps.project.ProjectLibraryManager$ProjectListener" topic="com.intellij.openapi.project.ProjectManagerListener"
               activeInHeadlessMode="true" activeInTestMode="true"/>
   </applicationListeners>
+
   <projectListeners>
     <listener class="jetbrains.mps.ide.bookmark.BookmarksUIComponent$EditorComponentListener"
               topic="jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener"
