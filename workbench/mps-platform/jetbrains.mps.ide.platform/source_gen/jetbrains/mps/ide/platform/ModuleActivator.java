@@ -5,6 +5,7 @@ package jetbrains.mps.ide.platform;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import jetbrains.mps.components.ComponentHost;
+import jetbrains.mps.project.ModelsAutoImportsManager;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.util.CodeStyleSettingsProvider;
 import jetbrains.mps.compiler.JavaCompilerOptions;
@@ -13,15 +14,43 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.codeStyle.CodeStyleSettingsComponent;
 import jetbrains.mps.ide.compiler.CompilerSettingsComponent;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.Solution;
+import java.util.Collection;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.SModelStereotype;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import java.util.Arrays;
+import java.util.Collections;
 
 @GeneratedClass(node = "r:c3f8847b-5450-45d4-8ef0-445954b1dc9e(jetbrains.mps.ide.platform)/4475567139869328645", model = "r:c3f8847b-5450-45d4-8ef0-445954b1dc9e(jetbrains.mps.ide.platform)")
 public final class ModuleActivator implements ModuleRuntime.Activator {
   private final ComponentHost myPlatform;
+  private TestsModelAutoImports myTestModelImports;
 
   public ModuleActivator(ComponentHost mpsPlatform) {
     myPlatform = mpsPlatform;
   }
 
+
+  @Override
+  public void activate() {
+    // Although I see no reason why TestsModelAutoImports is any different from other AutoImportsContributor registered right in MPSCore,
+    // I keep this code as an example of CC configuration from another module.
+    // This contributor used to live in [mps-workbench], and now moved to [mps-platform] as I don't quite the reason for it to be part of 
+    // Workbench (aka "Big MPS") functionality, after all, it's quite general. Alternative approach is to have this in some lang.test 
+    // solution (to keep test-related functionality close), just didn't feel confident to use lang.test.pluginSolution (same reason as 
+    // for workbench->platform move - doesn't seem to be IDE/Workbench functionality at all), and lazy to create a new solution just for 
+    // this activator and trivial contributor.
+    myTestModelImports = new TestsModelAutoImports();
+    myPlatform.findComponent(ModelsAutoImportsManager.class).register(myTestModelImports);
+  }
+  @Override
+  public void deactivate() {
+    myPlatform.findComponent(ModelsAutoImportsManager.class).unregister(myTestModelImports);
+    myTestModelImports = null;
+  }
 
   @Override
   public void contribute(@NotNull ModuleRuntime.ActivatorContext ctx) {
@@ -55,6 +84,26 @@ public final class ModuleActivator implements ModuleRuntime.Activator {
         CompilerSettingsComponent cs = CompilerSettingsComponent.getInstance(ideaProject);
         return (cs == null ? null : cs.createOptions());
       }
+    }
+  }
+
+  private static final class TestsModelAutoImports extends ModelsAutoImportsManager.AutoImportsContributor {
+
+    @Override
+    public boolean isApplicable(SModule module) {
+      return module instanceof Solution;
+    }
+
+
+    @NotNull
+    @Override
+    public Collection<SLanguage> getLanguages(SModule contextModule, SModel model) {
+      if (SModelStereotype.isTestModel(model)) {
+        SLanguage l1 = MetaAdapterFactory.getLanguage(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, "jetbrains.mps.lang.test");
+        SLanguage l2 = MetaAdapterFactory.getLanguage(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, "jetbrains.mps.baseLanguage.unitTest");
+        return Arrays.asList(l1, l2);
+      }
+      return Collections.emptySet();
     }
   }
 }

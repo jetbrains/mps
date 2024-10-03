@@ -13,9 +13,6 @@
     <component>
       <implementation-class>jetbrains.mps.plugins.applicationplugins.ApplicationPluginManager</implementation-class>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.project.listener.AbstractModuleWorkbenchAdjuster</implementation-class>
-    </component>
   </application-components>
 
   <project-components>
