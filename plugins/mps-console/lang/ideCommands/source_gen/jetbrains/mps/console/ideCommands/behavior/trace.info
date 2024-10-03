@@ -48,21 +48,17 @@
       <node id="2087237500458009230" at="100,14,101,58" concept="17" />
       <node id="2087237500458009230" at="107,48,108,22" concept="11" />
       <node id="2087237500458009230" at="113,40,114,19" concept="11" />
-      <node id="7189186857237956047" at="117,36,118,64" concept="11" />
-      <node id="7189186857237956047" at="119,5,120,16" concept="11" />
-      <node id="2087237500458009230" at="124,0,125,0" concept="14" trace="target$s$Bi" />
+      <node id="2087237500458009230" at="118,0,119,0" concept="14" trace="target$s$Bi" />
       <node id="2087237500458009230" at="43,0,45,0" concept="15" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2087237500458009230" at="70,0,72,0" concept="3" trace="ShowBrokenReferences__BehaviorDescriptor#()V" />
       <node id="2087237500458009230" at="80,49,83,5" concept="8" />
       <node id="2087237500458009230" at="95,49,98,5" concept="8" />
-      <node id="7189186857237956047" at="116,116,119,5" concept="8" />
       <node id="3474569792786886941" at="60,0,64,0" concept="9" trace="getAdditionalInfo#(Lorg/jetbrains/mps/openapi/model/SReference;)Ljava/lang/String;" />
       <node id="2087237500458009230" at="73,0,77,0" concept="9" trace="initNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SConstructor;[Ljava/lang/Object;)V" />
       <node id="2087237500458009230" at="98,5,102,5" concept="16" />
       <node id="2087237500458009230" at="105,0,110,0" concept="9" trace="getDeclaredMethods#()Ljava/util/List;" />
       <node id="2087237500458009230" at="111,0,116,0" concept="9" trace="getConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="890044799104991336" at="58,77,64,13" concept="5" />
-      <node id="7189186857237956047" at="116,0,122,0" concept="15" trace="check_5hdxhn_a0b0a0a0a0b0a#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/ide/findusages/view/UsagesViewTool;" />
       <node id="2087237500458009230" at="83,5,90,5" concept="16" />
       <node id="3237470200221266052" at="54,28,65,11" concept="5" />
       <node id="2087237500458009230" at="93,0,104,0" concept="9" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
@@ -82,7 +78,6 @@
       <scope id="2087237500458009230" at="100,14,101,58" />
       <scope id="2087237500458009230" at="107,48,108,22" />
       <scope id="2087237500458009230" at="113,40,114,19" />
-      <scope id="7189186857237956047" at="117,36,118,64" />
       <scope id="2087237500458009230" at="43,0,45,0">
         <var name="__thisNode__" id="2087237500458009230" />
       </scope>
@@ -96,12 +91,8 @@
         <var name="node" id="2087237500458009230" />
         <var name="parameters" id="2087237500458009230" />
       </scope>
-      <scope id="7189186857237956047" at="116,116,120,16" />
       <scope id="2087237500458009230" at="105,0,110,0" />
       <scope id="2087237500458009230" at="111,0,116,0" />
-      <scope id="7189186857237956047" at="116,0,122,0">
-        <var name="checkedDotOperand" id="7189186857237956047" />
-      </scope>
       <scope id="2087237500458009230" at="94,128,102,5">
         <var name="methodIndex" id="2087237500458009230" />
       </scope>
@@ -135,9 +126,9 @@
         <var name="console" id="3321948346082875933" />
         <var name="context" id="3321948346082875931" />
       </scope>
-      <unit id="2087237500458009230" at="123,0,126,0" name="jetbrains.mps.console.ideCommands.behavior.ShowBrokenReferences__BehaviorDescriptor$LINKS" />
+      <unit id="2087237500458009230" at="117,0,120,0" name="jetbrains.mps.console.ideCommands.behavior.ShowBrokenReferences__BehaviorDescriptor$LINKS" />
       <unit id="7189186857238771562" at="59,50,64,11" name="jetbrains.mps.console.ideCommands.behavior.ShowBrokenReferences__BehaviorDescriptor$1" />
-      <unit id="2087237500458009230" at="36,0,127,0" name="jetbrains.mps.console.ideCommands.behavior.ShowBrokenReferences__BehaviorDescriptor" />
+      <unit id="2087237500458009230" at="36,0,121,0" name="jetbrains.mps.console.ideCommands.behavior.ShowBrokenReferences__BehaviorDescriptor" />
     </file>
   </root>
   <root nodeRef="r:18b0a31c-6c8b-45fd-b098-332c1656d60c(jetbrains.mps.console.ideCommands.behavior)/2087237500458473183">

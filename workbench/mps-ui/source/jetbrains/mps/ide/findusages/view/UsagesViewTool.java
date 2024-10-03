@@ -102,6 +102,17 @@ public final class UsagesViewTool extends BaseTabbedProjectServiceTool implement
     super(project, TOOL_WINDOW_ID, shortcutsFromNumber(3), Toolwindows.ToolWindowFind, ToolWindowAnchor.BOTTOM, true);
   }
 
+  public static UsagesViewTool getInstance(Project project) {
+    final UsagesViewTool service = project.getService(UsagesViewTool.class);
+    //ensure tool window registration
+    final ToolWindow toolWindow = ToolWindowManager.getInstance(project).getToolWindow(TOOL_WINDOW_ID);
+    if (toolWindow!=null) {
+      return service;
+    } else {
+      return null;
+    }
+  }
+
   /*package*/ void register(UsageViewData viewData) {
     if (myUsageViewsData.isEmpty()) {
       new RepoListenerRegistrar(ProjectHelper.getProjectRepository(getProject()), myChangeTracker).attach();
@@ -141,7 +152,7 @@ public final class UsagesViewTool extends BaseTabbedProjectServiceTool implement
    * Display usages in a tool window of a respective project, according to options supplied.
    */
   public static void showUsages(@NotNull Project project, @NotNull IResultProvider provider, @NotNull SearchQuery query, @NotNull UsageToolOptions options) {
-    project.getService(UsagesViewTool.class).findUsages(provider, query, options);
+    UsagesViewTool.getInstance(project).findUsages(provider, query, options);
   }
 
   private void findUsages(IResultProvider provider, final SearchQuery query, final UsageToolOptions options) {
@@ -162,15 +173,18 @@ public final class UsagesViewTool extends BaseTabbedProjectServiceTool implement
   }
 
   public void show(SearchResults<?> results, String notFoundMsg) {
+    assert getContentManager()!=null : "The UsagesViewTool tool window has not been registered. Use UsagesViewTool::getInstance to obtain UsagesViewTool.";
     show(results, notFoundMsg, null);
   }
 
   public <T> void show(SearchResults<T> results, String notFoundMsg, @Nullable INodeRepresentator<T> representator) {
     ThreadUtils.assertEDT();
+    assert getContentManager()!=null : "The UsagesViewTool tool window has not been registered. Use UsagesViewTool::getInstance to obtain UsagesViewTool.";
     showResults(null, results, new UsageToolOptions().navigateIfSingle(false).allowRunAgain(false).notFoundMessage(notFoundMsg), representator);
   }
 
   public <T> void showResults(@Nullable SearchTaskImpl searchTask, final SearchResults<T> searchResults, UsageToolOptions options, @Nullable INodeRepresentator<T> representator) {
+    assert getContentManager()!=null : "The UsagesViewTool tool window has not been registered. Use UsagesViewTool::getInstance to obtain UsagesViewTool.";
     if (options.myRunAgain && searchTask == null) {
       throw new IllegalStateException("Search task should be provided to allow rerunning.");
     }

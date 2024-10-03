@@ -90,7 +90,7 @@ public class FindUsagesOfDeprecated_Action extends BaseAction {
       @Override
       public void onSuccess() {
         SearchResults<SNode> sr = (myResults.isEmpty() ? SearchResults.<SNode>empty() : new SearchResults<>(Collections.emptyList(), myResults));
-        event.getData(CommonDataKeys.PROJECT).getService(UsagesViewTool.class).show(sr, "No usages found");
+        UsagesViewTool.getInstance(event.getData(CommonDataKeys.PROJECT)).show(sr, "No usages found");
       }
     }.queue();
   }

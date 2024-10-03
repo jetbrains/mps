@@ -24967,16 +24967,12 @@
         <ref role="3uigEE" to="ngmn:~UsagesViewTool" resolve="UsagesViewTool" />
       </node>
       <node concept="3clFbS" id="2dWvJ8RutxO" role="3clF47">
-        <node concept="3clFbF" id="2dWvJ8RutxP" role="3cqZAp">
-          <node concept="2OqwBi" id="2dWvJ8RutxQ" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuHrZ" role="2Oq$k0">
+        <node concept="3clFbF" id="2GpCVW5oZPk" role="3cqZAp">
+          <node concept="2YIFZM" id="2GpCVW5p0oH" role="3clFbG">
+            <ref role="37wK5l" to="ngmn:~UsagesViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+            <ref role="1Pybhc" to="ngmn:~UsagesViewTool" resolve="UsagesViewTool" />
+            <node concept="37vLTw" id="2GpCVW5p1_y" role="37wK5m">
               <ref role="3cqZAo" node="2dWvJ8RuvHr" resolve="myIdeaProject" />
-            </node>
-            <node concept="liA8E" id="2dWvJ8RutxU" role="2OqNvi">
-              <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
-              <node concept="3VsKOn" id="2dWvJ8RutxV" role="37wK5m">
-                <ref role="3VsUkX" to="ngmn:~UsagesViewTool" resolve="UsagesViewTool" />
-              </node>
             </node>
           </node>
         </node>

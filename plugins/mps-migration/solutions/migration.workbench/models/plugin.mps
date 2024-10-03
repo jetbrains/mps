@@ -6170,20 +6170,6 @@
                       </node>
                       <node concept="3clFbF" id="75sEHjoVXbk" role="3cqZAp">
                         <node concept="2OqwBi" id="75sEHjoVXbl" role="3clFbG">
-                          <node concept="2OqwBi" id="75sEHjoVXbm" role="2Oq$k0">
-                            <node concept="liA8E" id="75sEHjoVXbn" role="2OqNvi">
-                              <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
-                              <node concept="3VsKOn" id="75sEHjoVXbo" role="37wK5m">
-                                <ref role="3VsUkX" to="ngmm:~UsagesViewTool" resolve="UsagesViewTool" />
-                              </node>
-                            </node>
-                            <node concept="2OqwBi" id="75sEHjoVXbp" role="2Oq$k0">
-                              <node concept="2WthIp" id="75sEHjoVXbq" role="2Oq$k0" />
-                              <node concept="1DTwFV" id="75sEHjoVXbr" role="2OqNvi">
-                                <ref role="2WH_rO" node="51adnVzXyUS" resolve="project" />
-                              </node>
-                            </node>
-                          </node>
                           <node concept="liA8E" id="75sEHjoVXbs" role="2OqNvi">
                             <ref role="37wK5l" to="ngmm:~UsagesViewTool.show(jetbrains.mps.ide.findusages.model.SearchResults,java.lang.String)" resolve="show" />
                             <node concept="37vLTw" id="7LdOb2PhlSA" role="37wK5m">
@@ -6191,6 +6177,16 @@
                             </node>
                             <node concept="Xl_RD" id="75sEHjoVXbu" role="37wK5m">
                               <property role="Xl_RC" value="No usages found" />
+                            </node>
+                          </node>
+                          <node concept="2YIFZM" id="1MOxAVt2GML" role="2Oq$k0">
+                            <ref role="37wK5l" to="ngmm:~UsagesViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                            <ref role="1Pybhc" to="ngmm:~UsagesViewTool" resolve="UsagesViewTool" />
+                            <node concept="2OqwBi" id="1MOxAVt2GMM" role="37wK5m">
+                              <node concept="2WthIp" id="1MOxAVt2GMN" role="2Oq$k0" />
+                              <node concept="1DTwFV" id="1MOxAVt2GMO" role="2OqNvi">
+                                <ref role="2WH_rO" node="51adnVzXyUS" resolve="project" />
+                              </node>
                             </node>
                           </node>
                         </node>
@@ -8959,20 +8955,6 @@
                       </node>
                       <node concept="3clFbF" id="6IA9TNsP8mH" role="3cqZAp">
                         <node concept="2OqwBi" id="6IA9TNsP8mI" role="3clFbG">
-                          <node concept="2OqwBi" id="6IA9TNsP8mJ" role="2Oq$k0">
-                            <node concept="liA8E" id="6IA9TNsP8mK" role="2OqNvi">
-                              <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
-                              <node concept="3VsKOn" id="6IA9TNsP8mL" role="37wK5m">
-                                <ref role="3VsUkX" to="ngmm:~UsagesViewTool" resolve="UsagesViewTool" />
-                              </node>
-                            </node>
-                            <node concept="2OqwBi" id="6IA9TNsP8mM" role="2Oq$k0">
-                              <node concept="2WthIp" id="6IA9TNsP8mN" role="2Oq$k0" />
-                              <node concept="1DTwFV" id="6IA9TNsP8mO" role="2OqNvi">
-                                <ref role="2WH_rO" node="5$zfhXzt8TX" resolve="project" />
-                              </node>
-                            </node>
-                          </node>
                           <node concept="liA8E" id="6IA9TNsP8mP" role="2OqNvi">
                             <ref role="37wK5l" to="ngmm:~UsagesViewTool.show(jetbrains.mps.ide.findusages.model.SearchResults,java.lang.String)" resolve="show" />
                             <node concept="37vLTw" id="6IA9TNsP8mQ" role="37wK5m">
@@ -8980,6 +8962,16 @@
                             </node>
                             <node concept="Xl_RD" id="6IA9TNsP8mR" role="37wK5m">
                               <property role="Xl_RC" value="No usages found" />
+                            </node>
+                          </node>
+                          <node concept="2YIFZM" id="1MOxAVt2$1R" role="2Oq$k0">
+                            <ref role="37wK5l" to="ngmm:~UsagesViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                            <ref role="1Pybhc" to="ngmm:~UsagesViewTool" resolve="UsagesViewTool" />
+                            <node concept="2OqwBi" id="1MOxAVt2CSJ" role="37wK5m">
+                              <node concept="2WthIp" id="1MOxAVt2Bg5" role="2Oq$k0" />
+                              <node concept="1DTwFV" id="1MOxAVt2FPT" role="2OqNvi">
+                                <ref role="2WH_rO" node="5$zfhXzt8TX" resolve="project" />
+                              </node>
                             </node>
                           </node>
                         </node>
@@ -9486,20 +9478,6 @@
                       </node>
                       <node concept="3clFbF" id="6IA9TNsOBMu" role="3cqZAp">
                         <node concept="2OqwBi" id="6IA9TNsOBMv" role="3clFbG">
-                          <node concept="2OqwBi" id="6IA9TNsOBMw" role="2Oq$k0">
-                            <node concept="liA8E" id="6IA9TNsOBMx" role="2OqNvi">
-                              <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
-                              <node concept="3VsKOn" id="6IA9TNsOBMy" role="37wK5m">
-                                <ref role="3VsUkX" to="ngmm:~UsagesViewTool" resolve="UsagesViewTool" />
-                              </node>
-                            </node>
-                            <node concept="2OqwBi" id="6IA9TNsOBMz" role="2Oq$k0">
-                              <node concept="2WthIp" id="6IA9TNsOBM$" role="2Oq$k0" />
-                              <node concept="1DTwFV" id="6IA9TNsOBM_" role="2OqNvi">
-                                <ref role="2WH_rO" node="2t6hOiXSDf1" resolve="project" />
-                              </node>
-                            </node>
-                          </node>
                           <node concept="liA8E" id="6IA9TNsOBMA" role="2OqNvi">
                             <ref role="37wK5l" to="ngmm:~UsagesViewTool.show(jetbrains.mps.ide.findusages.model.SearchResults,java.lang.String)" resolve="show" />
                             <node concept="37vLTw" id="6IA9TNsOBMB" role="37wK5m">
@@ -9507,6 +9485,16 @@
                             </node>
                             <node concept="Xl_RD" id="6IA9TNsOBMC" role="37wK5m">
                               <property role="Xl_RC" value="No usages found" />
+                            </node>
+                          </node>
+                          <node concept="2YIFZM" id="1MOxAVt2P12" role="2Oq$k0">
+                            <ref role="37wK5l" to="ngmm:~UsagesViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                            <ref role="1Pybhc" to="ngmm:~UsagesViewTool" resolve="UsagesViewTool" />
+                            <node concept="2OqwBi" id="1MOxAVt2P13" role="37wK5m">
+                              <node concept="2WthIp" id="1MOxAVt2P14" role="2Oq$k0" />
+                              <node concept="1DTwFV" id="1MOxAVt2P15" role="2OqNvi">
+                                <ref role="2WH_rO" node="2t6hOiXSDf1" resolve="project" />
+                              </node>
                             </node>
                           </node>
                         </node>
