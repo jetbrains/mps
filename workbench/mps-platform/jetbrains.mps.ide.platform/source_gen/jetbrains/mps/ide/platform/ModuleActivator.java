@@ -6,9 +6,11 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.runtime.ModuleRuntime;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.make.IMakeService;
+import jetbrains.mps.workbench.findusages.InternalModelsFindUsagesParticipant;
 import jetbrains.mps.project.ModelsAutoImportsManager;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.make.MakeServiceComponent;
+import jetbrains.mps.persistence.PersistenceRegistry;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.baseLanguage.util.CodeStyleSettingsProvider;
 import jetbrains.mps.compiler.JavaCompilerOptions;
@@ -32,11 +34,11 @@ public final class ModuleActivator implements ModuleRuntime.Activator {
   private final ComponentHost myPlatform;
   private TestsModelAutoImports myTestModelImports;
   private IMakeService myMakeService;
+  private InternalModelsFindUsagesParticipant myInternaModelsFindUsages;
 
   public ModuleActivator(ComponentHost mpsPlatform) {
     myPlatform = mpsPlatform;
   }
-
 
   @Override
   public void activate() {
@@ -56,15 +58,22 @@ public final class ModuleActivator implements ModuleRuntime.Activator {
     if (myMakeService != null) {
       myPlatform.findComponent(MakeServiceComponent.class).install(myMakeService);
     }
+    // 
+    myInternaModelsFindUsages = new InternalModelsFindUsagesParticipant();
+    myPlatform.findComponent(PersistenceRegistry.class).addFindUsagesParticipant(myInternaModelsFindUsages);
   }
   @Override
   public void deactivate() {
     myPlatform.findComponent(ModelsAutoImportsManager.class).unregister(myTestModelImports);
     myTestModelImports = null;
+    // 
     if (myMakeService != null) {
       myPlatform.findComponent(MakeServiceComponent.class).uninstall(myMakeService);
       myMakeService = null;
     }
+    // 
+    myPlatform.findComponent(PersistenceRegistry.class).removeFindUsagesParticipant(myInternaModelsFindUsages);
+    myInternaModelsFindUsages = null;
   }
 
   @Override

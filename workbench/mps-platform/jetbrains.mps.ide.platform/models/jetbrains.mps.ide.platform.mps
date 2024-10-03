@@ -24,6 +24,8 @@
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
+    <import index="64tv" ref="r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)" />
+    <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
@@ -115,6 +117,7 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
+      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
       </concept>
@@ -197,6 +200,13 @@
         <ref role="3uigEE" to="hfuk:1NAY6bPd4nM" resolve="IMakeService" />
       </node>
     </node>
+    <node concept="312cEg" id="7hqv7emwz8W" role="jymVt">
+      <property role="TrG5h" value="myInternaModelsFindUsages" />
+      <node concept="3Tm6S6" id="7hqv7emwz8X" role="1B3o_S" />
+      <node concept="3uibUv" id="7hqv7emwz8Z" role="1tU5fm">
+        <ref role="3uigEE" to="64tv:4fSpAVATXgk" resolve="InternalModelsFindUsagesParticipant" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="3Ssq9B$kCN8" role="jymVt" />
     <node concept="3clFbW" id="3Ssq9B$kCHR" role="jymVt">
       <node concept="37vLTG" id="3Ssq9B$kCJr" role="3clF46">
@@ -220,7 +230,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="3Ssq9B$kCOP" role="jymVt" />
     <node concept="2tJIrI" id="x4tNzP28MH" role="jymVt" />
     <node concept="3clFb_" id="x4tNzP29eh" role="jymVt">
       <property role="TrG5h" value="activate" />
@@ -822,6 +831,47 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="7hqv7emwjfi" role="3cqZAp">
+          <node concept="1PaTwC" id="7hqv7emwjfj" role="1aUNEU">
+            <node concept="3oM_SD" id="7hqv7emwjfk" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7hqv7emwyEE" role="3cqZAp">
+          <node concept="37vLTI" id="7hqv7emwyEG" role="3clFbG">
+            <node concept="2ShNRf" id="7hqv7emwxPq" role="37vLTx">
+              <node concept="1pGfFk" id="7hqv7emwxPr" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="64tv:2TJjT4dEjSC" resolve="InternalModelsFindUsagesParticipant" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="7hqv7emwyEK" role="37vLTJ">
+              <ref role="3cqZAo" node="7hqv7emwz8W" resolve="participant" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7hqv7emwKhL" role="3cqZAp">
+          <node concept="2OqwBi" id="7hqv7emwZ8b" role="3clFbG">
+            <node concept="2OqwBi" id="7hqv7emwWZG" role="2Oq$k0">
+              <node concept="37vLTw" id="7hqv7emwKhJ" role="2Oq$k0">
+                <ref role="3cqZAo" node="3Ssq9B$kCLl" resolve="myPlatform" />
+              </node>
+              <node concept="liA8E" id="7hqv7emwXJ4" role="2OqNvi">
+                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                <node concept="3VsKOn" id="7hqv7emwYxb" role="37wK5m">
+                  <ref role="3VsUkX" to="pa15:~PersistenceRegistry" resolve="PersistenceRegistry" />
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="7hqv7emx02A" role="2OqNvi">
+              <ref role="37wK5l" to="pa15:~PersistenceRegistry.addFindUsagesParticipant(org.jetbrains.mps.openapi.persistence.FindUsagesParticipant)" resolve="addFindUsagesParticipant" />
+              <node concept="37vLTw" id="7hqv7emx0$g" role="37wK5m">
+                <ref role="3cqZAo" node="7hqv7emwz8W" resolve="myInternaModelsFindUsages" />
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="2AHcQZ" id="x4tNzP29en" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" />
@@ -861,6 +911,13 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="7hqv7emwWoi" role="3cqZAp">
+          <node concept="1PaTwC" id="7hqv7emwWoj" role="1aUNEU">
+            <node concept="3oM_SD" id="7hqv7emwWok" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="1aDdKrsHNRz" role="3cqZAp">
           <node concept="3clFbS" id="1aDdKrsHNR_" role="3clFbx">
             <node concept="3clFbF" id="1aDdKrsHRw6" role="3cqZAp">
@@ -897,6 +954,42 @@
             <node concept="10Nm6u" id="1aDdKrsHPbM" role="3uHU7w" />
             <node concept="37vLTw" id="1aDdKrsHOhk" role="3uHU7B">
               <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="7hqv7emwVqQ" role="3cqZAp">
+          <node concept="1PaTwC" id="7hqv7emwVqR" role="1aUNEU">
+            <node concept="3oM_SD" id="7hqv7emwVqS" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7hqv7emwLeB" role="3cqZAp">
+          <node concept="2OqwBi" id="7hqv7emwQM$" role="3clFbG">
+            <node concept="2OqwBi" id="7hqv7emwMaA" role="2Oq$k0">
+              <node concept="37vLTw" id="7hqv7emwLe_" role="2Oq$k0">
+                <ref role="3cqZAo" node="3Ssq9B$kCLl" resolve="myPlatform" />
+              </node>
+              <node concept="liA8E" id="7hqv7emwOrL" role="2OqNvi">
+                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                <node concept="3VsKOn" id="7hqv7emwQas" role="37wK5m">
+                  <ref role="3VsUkX" to="pa15:~PersistenceRegistry" resolve="PersistenceRegistry" />
+                </node>
+              </node>
+            </node>
+            <node concept="liA8E" id="7hqv7emwRri" role="2OqNvi">
+              <ref role="37wK5l" to="pa15:~PersistenceRegistry.removeFindUsagesParticipant(org.jetbrains.mps.openapi.persistence.FindUsagesParticipant)" resolve="removeFindUsagesParticipant" />
+              <node concept="37vLTw" id="7hqv7emwRSf" role="37wK5m">
+                <ref role="3cqZAo" node="7hqv7emwz8W" resolve="myInternaModelsFindUsages" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7hqv7emwSRw" role="3cqZAp">
+          <node concept="37vLTI" id="7hqv7emwT$U" role="3clFbG">
+            <node concept="10Nm6u" id="7hqv7emwU0D" role="37vLTx" />
+            <node concept="37vLTw" id="7hqv7emwSRu" role="37vLTJ">
+              <ref role="3cqZAo" node="7hqv7emwz8W" resolve="myInternaModelsFindUsages" />
             </node>
           </node>
         </node>

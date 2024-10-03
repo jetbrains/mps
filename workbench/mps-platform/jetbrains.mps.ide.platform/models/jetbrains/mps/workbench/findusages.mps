@@ -6958,33 +6958,17 @@
     <node concept="3clFbW" id="2TJjT4dEjSC" role="jymVt">
       <node concept="3cqZAl" id="2TJjT4dEjSD" role="3clF45" />
       <node concept="3Tm1VV" id="2TJjT4dEjSE" role="1B3o_S" />
-      <node concept="3clFbS" id="2TJjT4dEjSG" role="3clF47">
-        <node concept="3clFbF" id="4fSpAVATXjV" role="3cqZAp">
-          <node concept="2OqwBi" id="4fSpAVATXjW" role="3clFbG">
-            <node concept="2YIFZM" id="4fSpAVATYDi" role="2Oq$k0">
-              <ref role="1Pybhc" to="pa15:~PersistenceRegistry" resolve="PersistenceRegistry" />
-              <ref role="37wK5l" to="pa15:~PersistenceRegistry.getInstance()" resolve="getInstance" />
-            </node>
-            <node concept="liA8E" id="4fSpAVATXjY" role="2OqNvi">
-              <ref role="37wK5l" to="pa15:~PersistenceRegistry.addFindUsagesParticipant(org.jetbrains.mps.openapi.persistence.FindUsagesParticipant)" resolve="addFindUsagesParticipant" />
-              <node concept="Xjq3P" id="4fSpAVATXjZ" role="37wK5m" />
-            </node>
-          </node>
-        </node>
-      </node>
+      <node concept="3clFbS" id="2TJjT4dEjSG" role="3clF47" />
     </node>
     <node concept="2tJIrI" id="2TJjT4dEioq" role="jymVt" />
     <node concept="3Tm1VV" id="4fSpAVATXgm" role="1B3o_S" />
-    <node concept="3uibUv" id="2TJjT4dEi6D" role="EKbjA">
-      <ref role="3uigEE" to="v23q:~Disposable" resolve="Disposable" />
-    </node>
     <node concept="3uibUv" id="4fSpAVATXgo" role="EKbjA">
       <ref role="3uigEE" to="dush:~FindUsagesParticipant" resolve="FindUsagesParticipant" />
     </node>
     <node concept="3UR2Jj" id="4fSpAVATXkc" role="lGtFl">
       <node concept="TZ5HA" id="4fSpAVATXkw" role="TZ5H$">
         <node concept="1dT_AC" id="4fSpAVATXkx" role="1dT_Ay">
-          <property role="1dT_AB" value="evgeny, 3/11/13" />
+          <property role="1dT_AB" value="Used to be an app component, now just a POJO" />
         </node>
       </node>
     </node>
@@ -7578,31 +7562,6 @@
       </node>
       <node concept="3Tm1VV" id="4fSpAVATXjE" role="1B3o_S" />
       <node concept="3cqZAl" id="4fSpAVATXjF" role="3clF45" />
-    </node>
-    <node concept="2tJIrI" id="2TJjT4dEjF1" role="jymVt" />
-    <node concept="3clFb_" id="4fSpAVATXk2" role="jymVt">
-      <property role="TrG5h" value="dispose" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="2AHcQZ" id="4fSpAVATXk3" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="3clFbS" id="4fSpAVATXk4" role="3clF47">
-        <node concept="3clFbF" id="4fSpAVATXk5" role="3cqZAp">
-          <node concept="2OqwBi" id="4fSpAVATXk6" role="3clFbG">
-            <node concept="2YIFZM" id="4fSpAVATYDl" role="2Oq$k0">
-              <ref role="1Pybhc" to="pa15:~PersistenceRegistry" resolve="PersistenceRegistry" />
-              <ref role="37wK5l" to="pa15:~PersistenceRegistry.getInstance()" resolve="getInstance" />
-            </node>
-            <node concept="liA8E" id="4fSpAVATXk8" role="2OqNvi">
-              <ref role="37wK5l" to="pa15:~PersistenceRegistry.removeFindUsagesParticipant(org.jetbrains.mps.openapi.persistence.FindUsagesParticipant)" resolve="removeFindUsagesParticipant" />
-              <node concept="Xjq3P" id="4fSpAVATXk9" role="37wK5m" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="4fSpAVATXka" role="1B3o_S" />
-      <node concept="3cqZAl" id="4fSpAVATXkb" role="3clF45" />
     </node>
   </node>
   <node concept="312cEu" id="2s2BsXxOyG9">
