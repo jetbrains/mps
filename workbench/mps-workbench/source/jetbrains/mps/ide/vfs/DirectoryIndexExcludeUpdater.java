@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,29 +43,15 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * This component tells IDEA when roots it shall index change based on MPS module changes
+ * This component tells IDEA to re-consult project roots when there's a folder MPS wants to be ignored
+ * (although it's not clear why having DirectoryIndexExcludePolicy is not sufficient)
  * @author Evgeny Gerashchenko
  */
 public class DirectoryIndexExcludeUpdater implements ProjectComponent {
   private final MPSProject myProject;
-  private final MyModuleRepositoryListener myRepositoryListener = new MyModuleRepositoryListener();
   private MessageBusConnection myConnection;
   private final BulkFileListener myFSListener = new BulkFileChangesListener();
   private final DirectoryIndexExcludePolicy[] myExcludePolicies;
-
-  private final Object LOCK = new Object();
-  private boolean myInvalidated = false;
-
-  private ApplicationListener myListener = new ApplicationListener() {
-    @Override
-    public void writeActionFinished(@NotNull Object action) {
-      synchronized (LOCK) {
-        if (!myInvalidated) return;
-        myInvalidated = false;
-      }
-      notifyRootsChanged(false);
-    }
-  };
 
   public DirectoryIndexExcludeUpdater(Project ideaProject) {
     myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
@@ -82,39 +68,25 @@ public class DirectoryIndexExcludeUpdater implements ProjectComponent {
 
   @Override
   public void initComponent() {
-    new RepoListenerRegistrar(getRepository(), myRepositoryListener).attach();
     myConnection = myProject.getProject().getMessageBus().connect();
-    // these 2 could get replaced with message bus subscription in xml
+    // this could get replaced with message bus subscription in xml
     myConnection.subscribe(VirtualFileManager.VFS_CHANGES, myFSListener);
-    ApplicationManager.getApplication().addApplicationListener(myListener);
   }
 
   @Override
   public void disposeComponent() {
-    ApplicationManager.getApplication().removeApplicationListener(myListener);
     myConnection.disconnect();
-    new RepoListenerRegistrar(getRepository(), myRepositoryListener).detach();
   }
 
-  private SRepository getRepository() {
-    return myProject.getRepository();
-  }
-
-  private void notifyRootsChanged(boolean async) {
+  private void notifyRootsChanged() {
     if (!myProject.isDisposed()) {
-      if (async) {
-        synchronized (LOCK) {
-          myInvalidated = true;
-        }
-      } else {
-        // MPS-24027: send event with beforeRootsChange() to avoid exception in com.intellij.psi.impl.file.impl.PsiVFSListener.MyModuleRootListener
-        final Project ideaProject = myProject.getProject();
-        final MessageBus messageBus = ideaProject.getMessageBus();
-        // FTR, IndexableRootCalculator.invalidateCache uses "API" approach for same notifications,
-        // namely, ProjectRootManagerEx.makeRootsChange(), endorsed by IDEA platform team
-        messageBus.syncPublisher(ProjectTopics.PROJECT_ROOTS).beforeRootsChange(new ModuleRootEventImpl(ideaProject, false));
-        messageBus.syncPublisher(ProjectTopics.PROJECT_ROOTS).rootsChanged(new ModuleRootEventImpl(ideaProject, false));
-      }
+      // MPS-24027: send event with beforeRootsChange() to avoid exception in com.intellij.psi.impl.file.impl.PsiVFSListener.MyModuleRootListener
+      final Project ideaProject = myProject.getProject();
+      final MessageBus messageBus = ideaProject.getMessageBus();
+      // FTR, IndexableRootCalculator.invalidateCache uses "API" approach for same notifications,
+      // namely, ProjectRootManagerEx.makeRootsChange(), endorsed by IDEA platform team
+      messageBus.syncPublisher(ProjectTopics.PROJECT_ROOTS).beforeRootsChange(new ModuleRootEventImpl(ideaProject, false));
+      messageBus.syncPublisher(ProjectTopics.PROJECT_ROOTS).rootsChanged(new ModuleRootEventImpl(ideaProject, false));
     }
   }
 
@@ -134,27 +106,9 @@ public class DirectoryIndexExcludeUpdater implements ProjectComponent {
         if (event instanceof VFileCreateEvent) {
           VirtualFile file = event.getFile();
           if (file != null && file.isDirectory() && isExcluded(file)) {
-            notifyRootsChanged(false);
+            notifyRootsChanged();
           }
         }
-      }
-    }
-  }
-
-  private class MyModuleRepositoryListener extends SRepositoryContentAdapter {
-    @Override
-    public void moduleAdded(@NotNull SModule module) {
-      super.moduleAdded(module);
-      if (myProject.isProjectModule(module)) {
-        notifyRootsChanged(true);
-      }
-    }
-
-    @Override
-    public void moduleChanged(SModule module) {
-      super.moduleChanged(module);
-      if (myProject.isProjectModule(module)) {
-        notifyRootsChanged(true);
       }
     }
   }
