@@ -36,9 +36,6 @@
     <component>
       <implementation-class>jetbrains.mps.ide.bookmark.BookmarkManager</implementation-class>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.vfs.DirectoryIndexExcludeUpdater</implementation-class>
-    </component>
 
     <component>
       <implementation-class>jetbrains.mps.plugins.projectplugins.ProjectPluginManager</implementation-class>
@@ -121,6 +118,8 @@
     <!-- Needed in headless and test mode to load projects libraries for some tasks (eg. migration from ant or tests out of process from IDE, see MPS-36880). -->
     <listener class="jetbrains.mps.project.ProjectLibraryManager$ProjectListener" topic="com.intellij.openapi.project.ProjectManagerListener"
               activeInHeadlessMode="true" activeInTestMode="true"/>
+
+    <listener class="jetbrains.mps.ide.vfs.DirectoryIndexExcludeUpdater" topic="com.intellij.openapi.vfs.newvfs.BulkFileListener" />
   </applicationListeners>
 
   <projectListeners>
