@@ -60,12 +60,10 @@ public final class OnReloadingUndoCleaner implements Disposable {
   }
 
   /**
-   * Dependency on {@link FileSystemProjectBridge} was introduced here just to reflect the fact that this
-   * functionality will not work without another component.
+   * This class depends on {@link FileSystemProjectBridge} which is now essential part of MPSProject (used to be an independent ProjectComponent)
    */
   public OnReloadingUndoCleaner(Project ideaProject) {
     myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
-    assert null != ideaProject.getComponent(FileSystemProjectBridge.class);
     init();
   }
 

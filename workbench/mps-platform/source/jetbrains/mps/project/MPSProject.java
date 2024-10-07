@@ -27,6 +27,7 @@ import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.ide.vfs.ProjectRootListenerComponent;
+import jetbrains.mps.nodefs.FileSystemProjectBridge;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.WorkbenchModelAccess;
 import jetbrains.mps.vfs.IFile;
@@ -51,6 +52,8 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
   private final com.intellij.openapi.project.Project myProject;
   private final IdeaFileSystem myProjectFileSystem;
 
+  private FileSystemProjectBridge myFileSystemBridge;
+
   // WorkbenchModelAccess is provisional argument. Now it provides implementation of executeCommand method
   // with respect to shared model lock object from its smodel.ModelAccess superclass. Once each MA has own
   // model lock object and executeCommand* implementations, we won't need this WMA parameter
@@ -68,7 +71,17 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
     initRepository(repo);
   }
 
+  @Override
+  public void initComponent() {
+    // can't override projectOpened(), go with initComponent() now; have to fix ether of these anyway once get to ProjectComponent here
+    myFileSystemBridge = new FileSystemProjectBridge(this);
+    // FWIW, there's OnReloadingUndoCleaner (at least) that depends on this bridge present for a project
+    myFileSystemBridge.projectOpened();
+  }
+
   public void disposeComponent() {
+    myFileSystemBridge.projectClosed();
+    myFileSystemBridge = null;
     dispose();
   }
 

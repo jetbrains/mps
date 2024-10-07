@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,34 +15,30 @@
  */
 package jetbrains.mps.nodefs;
 
-import com.intellij.openapi.components.ProjectComponent;
-import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
 
 /**
  * Bridge {@link com.intellij.openapi.vfs.VirtualFileSystem} and {@linkplain jetbrains.mps.project.MPSProject mps project's}
  * {@linkplain jetbrains.mps.project.Project#getRepository() repository}.
+ * <p>Used to be a project component, now {@link MPSProject} initializes one explicitly</p>
  * @author Artem Tikhomirov
  * @since 3.4
  */
-public class FileSystemProjectBridge implements ProjectComponent {
+public class FileSystemProjectBridge {
+  // doesn't look like this class could become a service, we need RVF association w/o explicit call to this bridge
 
   private final MPSProject myProject;
   private RepositoryVirtualFiles myProjectVirtualFiles;
 
-  public FileSystemProjectBridge(Project ideaProject) {
-    // doesn't look like this class could become a service, we need RVF association w/o explicit call to this bridge
-    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
+  public FileSystemProjectBridge(MPSProject mpsProject) {
+    myProject = mpsProject;
   }
 
-  @Override
   public void projectOpened() {
     myProjectVirtualFiles = new RepositoryVirtualFiles(NodeVirtualFileSystem.getInstance(), myProject);
     myProjectVirtualFiles.register();
   }
 
-  @Override
   public void projectClosed() {
     if (myProjectVirtualFiles != null) {
       myProjectVirtualFiles.unregister();

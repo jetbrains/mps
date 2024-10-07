@@ -33,12 +33,6 @@
     </component>
   </application-components>
 
-  <project-components>
-    <component>
-      <implementation-class>jetbrains.mps.nodefs.FileSystemProjectBridge</implementation-class>
-    </component>
-  </project-components>
-
   <applicationListeners>
     <listener class="jetbrains.mps.help.PlatformHelpURLProvider" topic="com.intellij.ide.AppLifecycleListener"/>
     <listener class="jetbrains.mps.ide.save.IdeMPSFileSaver" topic="com.intellij.openapi.fileEditor.FileDocumentManagerListener" activeInHeadlessMode="false"/>
