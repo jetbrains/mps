@@ -156,6 +156,7 @@ public final class UsagesViewTool extends BaseTabbedProjectServiceTool implement
   }
 
   private void findUsages(IResultProvider provider, final SearchQuery query, final UsageToolOptions options) {
+    assert getContentManager()!=null : "The UsagesViewTool tool window has not been registered. Use UsagesViewTool::getInstance to obtain UsagesViewTool.";
     final SearchTaskImpl searchTask = new SearchTaskImpl(ProjectHelper.fromIdeaProject(getProject()), provider, query);
     ThreadUtils.runInUIThreadNoWait(() -> new Backgroundable(getProject(), "Searching", true, PerformInBackgroundOption.DEAF) {
       private SearchResults<?> searchResults;
@@ -242,6 +243,7 @@ public final class UsagesViewTool extends BaseTabbedProjectServiceTool implement
     }
 
     Element tabsXML = element.getChild(TABS);
+    final List<UsageViewData> loadedUsageViewData = new ArrayList<>();
     if (tabsXML != null) {
       for (Element tabXML : tabsXML.getChildren()) {
         final UsageViewData usageViewData;
@@ -253,26 +255,28 @@ public final class UsagesViewTool extends BaseTabbedProjectServiceTool implement
         } catch (CantLoadSomethingException e) {
           continue;
         }
-        register(usageViewData);
+        loadedUsageViewData.add(usageViewData);
       }
     }
 
     Element defaultViewOptionsXML = element.getChild(DEFAULT_VIEW_OPTIONS);
     myDefaultViewOptions.read(defaultViewOptionsXML, project);
 
-    if (!myUsageViewsData.isEmpty()) {
-      // XXX not really nice to assume myUsagesViewData doesn't change between here and EDT when we add tabs,
-      //     but I'm not ready for a thorough refactoring of this piece now. Likely, need to collect UVD
-      //     into a list here, and register+addTab later from EDT to ensure the state is consistent
-      ApplicationManager.getApplication().invokeLater(() -> {
-        for (UsageViewData d : myUsageViewsData) {
-          // we re-open tabs here, shall force new tab for each restored data element, but no need to bring tool to front
-          UsagesViewTool.this.addTab(d, true, false);
+    ApplicationManager.getApplication().invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        register();
+        if (!loadedUsageViewData.isEmpty()) {
+            for (UsageViewData d : loadedUsageViewData) {
+              register(d);
+            }
+            for (UsageViewData d : myUsageViewsData) {
+              // we re-open tabs here, shall force new tab for each restored data element, but no need to bring tool to front
+              UsagesViewTool.this.addTab(d, true, false);
+            }
         }
-      });
-    } else {
-      makeUnavailableLater();
-    }
+      }
+    });
   }
 
   private void write(Element element, jetbrains.mps.project.Project project) {
@@ -310,15 +314,11 @@ public final class UsagesViewTool extends BaseTabbedProjectServiceTool implement
 
   @Override
   public void loadState(@NotNull final Element state) {
-    //startup manager is needed cause the contract is that you can't use read and write locks
-    //on component load - it can cause a deadlock (MPS-2811) 
-    StartupManager.getInstance(getProject()).runWhenProjectIsInitialized(() -> {
       if (getProject().isDisposed()) {
         return;
       }
-      final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(getProject());
+      final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(getProject());
       mpsProject.getModelAccess().runReadAction(() -> read(state, mpsProject));
-    });
   }
 
   private UsagesView createUsageView(@Nullable SearchTaskImpl searchTask) {
