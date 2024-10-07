@@ -27,9 +27,11 @@ import jetbrains.mps.components.ComponentPluginFactory;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
+import jetbrains.mps.ide.project.WorkbenchPathMacros;
 import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.WorkbenchModelAccess;
 import org.jetbrains.annotations.NotNull;
@@ -50,6 +52,10 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
  */
 public class MPSCoreComponents implements Disposable {
   private final Platform myPlatform;
+  // XXX I don't like the fact MPSCoreComponents know about WorkbenchPathMacros and PathMacros, but find this approach
+  // better than ApplicationLifecycleListener. Perhaps, shall introduce an extension like ComponentPluginFactory for
+  // initializations like that.
+  private WorkbenchPathMacros myPathMacros;
 
   public MPSCoreComponents() {
     @NotNull ManagingFS fs = ManagingFS.getInstance();
@@ -71,10 +77,20 @@ public class MPSCoreComponents implements Disposable {
 
     // Required to maintain correct dispose order between PersistenceFacade and FileBasedIndexImpl.
     Disposer.register(this, (PersistentFSImpl) fs);
+
+    myPathMacros = ApplicationManager.getApplication().getService(WorkbenchPathMacros.class);
+    if (myPathMacros == null) {
+      // would be great to have it instantiated and registered here directly, but no easy way
+      // to pass the instance down to WorkbenchPathMacros.MyProjectManagerListener
+      throw new IllegalStateException("Failed to initialize WorkbenchPathMacros, necessary to be ready before any attempt to load a module");
+    }
+    myPlatform.findComponent(PathMacros.class).addMacrosProvider(myPathMacros);
   }
 
   @Override
   public void dispose() {
+    myPlatform.findComponent(PathMacros.class).removeMacrosProvider(myPathMacros);
+    myPathMacros = null;
     myPlatform.dispose();
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.project.impl.UndefinedMacrosConfigurable;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.project.PathMacrosProvider;
@@ -49,14 +48,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import static com.intellij.notification.Notifications.SYSTEM_MESSAGES_GROUP_ID;
 
-// app component
+// app service, initialized from MPSCoreComponents.
 public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
-  private final MessageBusConnection myConnection;
-
   public WorkbenchPathMacros() {
-    myConnection = ApplicationManager.getApplication().getMessageBus().connect();
-    myConnection.subscribe(ProjectManager.TOPIC, new MyProjectManagerListener());
-    getMPSCounterpart().addMacrosProvider(this);
+    ApplicationManager.getApplication().getMessageBus().connect(this).subscribe(ProjectManager.TOPIC, new MyProjectManagerListener());
   }
 
   private com.intellij.openapi.application.PathMacros getIDEACounterpart() {
@@ -70,8 +65,7 @@ public class WorkbenchPathMacros implements Disposable, PathMacrosProvider {
 
   @Override
   public void dispose() {
-    getMPSCounterpart().removeMacrosProvider(this);
-    myConnection.disconnect();
+    // Disposable just to serve as parent for MB connection
   }
 
   @NotNull

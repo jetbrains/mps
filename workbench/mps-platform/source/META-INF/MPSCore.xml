@@ -25,10 +25,6 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.ide.project.WorkbenchPathMacros</implementation-class>
-    </component>
-
-    <component>
       <implementation-class>jetbrains.mps.ide.vfs.IdeaFileSystem</implementation-class>
     </component>
   </application-components>
@@ -77,6 +73,7 @@
     <applicationService serviceImplementation="jetbrains.mps.VisibleModuleRegistry"/>
     <applicationService serviceImplementation="jetbrains.mps.ide.platform.watching.WatchedRoots"/>
     <applicationService serviceImplementation="jetbrains.mps.repository.FSNotificationsImprover"/>
+    <applicationService serviceImplementation="jetbrains.mps.ide.project.WorkbenchPathMacros" />
 
     <applicationService
             serviceInterface="org.jetbrains.mps.openapi.module.ModelAccess"
