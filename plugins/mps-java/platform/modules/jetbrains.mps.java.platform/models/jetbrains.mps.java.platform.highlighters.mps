@@ -29,7 +29,6 @@
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="qkt" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)" />
-    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
@@ -42,7 +41,6 @@
     <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" />
     <import index="ew8r" ref="r:579b6612-4f9e-4479-8e4c-5ef2ee0f9722(jetbrains.mps.ide.editor.popup)" />
     <import index="ntzd" ref="r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)" />
-    <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="drih" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.colors(MPS.IDEA/)" />
     <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" implicit="true" />
   </imports>
@@ -3894,20 +3892,6 @@
   <node concept="312cEu" id="7k6J8c3u3EG">
     <property role="TrG5h" value="JavaHighlighters" />
     <property role="1EXbeo" value="true" />
-    <node concept="312cEg" id="7k6J8c3u3Uu" role="jymVt">
-      <property role="TrG5h" value="myProject" />
-      <node concept="3Tm6S6" id="7k6J8c3u3Uv" role="1B3o_S" />
-      <node concept="3uibUv" id="13$TqNLKwUf" role="1tU5fm">
-        <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
-      </node>
-    </node>
-    <node concept="312cEg" id="1JsJJ3D2aVW" role="jymVt">
-      <property role="TrG5h" value="myHighlighter" />
-      <node concept="3Tm6S6" id="1JsJJ3D2aVX" role="1B3o_S" />
-      <node concept="3uibUv" id="1JsJJ3D2aVZ" role="1tU5fm">
-        <ref role="3uigEE" to="exr9:~Highlighter" resolve="Highlighter" />
-      </node>
-    </node>
     <node concept="312cEg" id="58syclRvsO_" role="jymVt">
       <property role="TrG5h" value="myCheckers" />
       <node concept="3Tm6S6" id="58syclRvsOA" role="1B3o_S" />
@@ -3926,22 +3910,7 @@
     </node>
     <node concept="2tJIrI" id="1JsJJ3D2c3E" role="jymVt" />
     <node concept="3clFbW" id="7k6J8c3u3EI" role="jymVt">
-      <node concept="3clFbS" id="7k6J8c3u3EL" role="3clF47">
-        <node concept="3clFbF" id="7k6J8c3u3Uy" role="3cqZAp">
-          <node concept="37vLTI" id="7k6J8c3u3US" role="3clFbG">
-            <node concept="2YIFZM" id="3NrJY7lgIS0" role="37vLTx">
-              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProjectOrFail(com.intellij.openapi.project.Project)" resolve="fromIdeaProjectOrFail" />
-              <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-              <node concept="37vLTw" id="3NrJY7lgJRq" role="37wK5m">
-                <ref role="3cqZAo" node="7OyUyLn8DF0" resolve="project" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="2BHiRxeuBuV" role="37vLTJ">
-              <ref role="3cqZAo" node="7k6J8c3u3Uu" resolve="myProject" />
-            </node>
-          </node>
-        </node>
-      </node>
+      <node concept="3clFbS" id="7k6J8c3u3EL" role="3clF47" />
       <node concept="3Tm1VV" id="7k6J8c3u3EK" role="1B3o_S" />
       <node concept="3cqZAl" id="7k6J8c3u3EJ" role="3clF45" />
       <node concept="37vLTG" id="7OyUyLn8DF0" role="3clF46">
@@ -3954,28 +3923,23 @@
     <node concept="2tJIrI" id="1dN09JzSmS1" role="jymVt" />
     <node concept="3clFb_" id="7k6J8c3u3EN" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="projectOpened" />
+      <property role="TrG5h" value="install" />
       <property role="DiZV1" value="false" />
+      <node concept="37vLTG" id="7rHnnspD4hu" role="3clF46">
+        <property role="TrG5h" value="highlighter" />
+        <node concept="3uibUv" id="7rHnnspDmXO" role="1tU5fm">
+          <ref role="3uigEE" to="exr9:~Highlighter" resolve="Highlighter" />
+        </node>
+        <node concept="2AHcQZ" id="7rHnnspDna2" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
       <node concept="2AHcQZ" id="3tYsUK_SfR9" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
       <node concept="3cqZAl" id="7k6J8c3u3EP" role="3clF45" />
       <node concept="3Tm1VV" id="7k6J8c3u3EO" role="1B3o_S" />
       <node concept="3clFbS" id="7k6J8c3u3EQ" role="3clF47">
-        <node concept="3clFbF" id="3NrJY7lgvEf" role="3cqZAp">
-          <node concept="37vLTI" id="3NrJY7lgwWE" role="3clFbG">
-            <node concept="2YIFZM" id="3NrJY7lgzXZ" role="37vLTx">
-              <ref role="37wK5l" to="exr9:~Highlighter.getInstance(jetbrains.mps.project.MPSProject)" resolve="getInstance" />
-              <ref role="1Pybhc" to="exr9:~Highlighter" resolve="Highlighter" />
-              <node concept="37vLTw" id="3NrJY7lgAum" role="37wK5m">
-                <ref role="3cqZAo" node="7k6J8c3u3Uu" resolve="myProject" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="3NrJY7lgvEd" role="37vLTJ">
-              <ref role="3cqZAo" node="1JsJJ3D2aVW" resolve="myHighlighter" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="1W7gAtGJNJ2" role="3cqZAp">
           <node concept="2OqwBi" id="1W7gAtGJNJo" role="3clFbG">
             <node concept="liA8E" id="1W7gAtGJNJu" role="2OqNvi">
@@ -3985,8 +3949,13 @@
                   <node concept="2ShNRf" id="7k6J8c3u6tv" role="25WWJ7">
                     <node concept="1pGfFk" id="7k6J8c3u6tz" role="2ShVmc">
                       <ref role="37wK5l" node="7k6J8c3tiiy" resolve="OverrideMethodsChecker" />
-                      <node concept="37vLTw" id="13$TqNLKxZB" role="37wK5m">
-                        <ref role="3cqZAo" node="7k6J8c3u3Uu" resolve="myProject" />
+                      <node concept="2OqwBi" id="7rHnnspDGPU" role="37wK5m">
+                        <node concept="37vLTw" id="13$TqNLKxZB" role="2Oq$k0">
+                          <ref role="3cqZAo" node="7rHnnspD4hu" resolve="highlighter" />
+                        </node>
+                        <node concept="liA8E" id="7rHnnspDJ6m" role="2OqNvi">
+                          <ref role="37wK5l" to="exr9:~Highlighter.getProject()" resolve="getProject" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -3997,14 +3966,14 @@
               </node>
             </node>
             <node concept="37vLTw" id="1JsJJ3D2C55" role="2Oq$k0">
-              <ref role="3cqZAo" node="1JsJJ3D2aVW" resolve="myHighlighter" />
+              <ref role="3cqZAo" node="7rHnnspD4hu" resolve="highlighter" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="1W7gAtGJNK0" role="3cqZAp">
           <node concept="2OqwBi" id="1W7gAtGJNK1" role="3clFbG">
             <node concept="37vLTw" id="1JsJJ3D2C57" role="2Oq$k0">
-              <ref role="3cqZAo" node="1JsJJ3D2aVW" resolve="myHighlighter" />
+              <ref role="3cqZAo" node="7rHnnspD4hu" resolve="highlighter" />
             </node>
             <node concept="liA8E" id="1W7gAtGJNK3" role="2OqNvi">
               <ref role="37wK5l" to="exr9:~Highlighter.addChecker(jetbrains.mps.nodeEditor.checking.EditorChecker)" resolve="addChecker" />
@@ -4036,11 +4005,16 @@
                     <node concept="1pGfFk" id="SZ_Iv7TMX6" role="2ShVmc">
                       <ref role="37wK5l" to="4fnz:SZ_Iv7SGYj" resolve="MethodCallsFixer" />
                       <node concept="2OqwBi" id="SZ_Iv7TO40" role="37wK5m">
-                        <node concept="37vLTw" id="SZ_Iv7TNgP" role="2Oq$k0">
-                          <ref role="3cqZAo" node="7k6J8c3u3Uu" resolve="myProject" />
-                        </node>
                         <node concept="liA8E" id="SZ_Iv7TPCa" role="2OqNvi">
                           <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                        </node>
+                        <node concept="2OqwBi" id="7rHnnspDJBV" role="2Oq$k0">
+                          <node concept="37vLTw" id="7rHnnspDJBW" role="2Oq$k0">
+                            <ref role="3cqZAo" node="7rHnnspD4hu" resolve="highlighter" />
+                          </node>
+                          <node concept="liA8E" id="7rHnnspDJBX" role="2OqNvi">
+                            <ref role="37wK5l" to="exr9:~Highlighter.getProject()" resolve="getProject" />
+                          </node>
                         </node>
                       </node>
                     </node>
@@ -4049,7 +4023,7 @@
               </node>
             </node>
             <node concept="37vLTw" id="1JsJJ3D2C56" role="2Oq$k0">
-              <ref role="3cqZAo" node="1JsJJ3D2aVW" resolve="myHighlighter" />
+              <ref role="3cqZAo" node="7rHnnspD4hu" resolve="highlighter" />
             </node>
           </node>
         </node>
@@ -4058,8 +4032,17 @@
     <node concept="2tJIrI" id="1dN09JzSmS2" role="jymVt" />
     <node concept="3clFb_" id="7k6J8c3u3ER" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="projectClosed" />
+      <property role="TrG5h" value="uninstall" />
       <property role="DiZV1" value="false" />
+      <node concept="37vLTG" id="7rHnnspDnme" role="3clF46">
+        <property role="TrG5h" value="highlighter" />
+        <node concept="3uibUv" id="7rHnnspDnmf" role="1tU5fm">
+          <ref role="3uigEE" to="exr9:~Highlighter" resolve="Highlighter" />
+        </node>
+        <node concept="2AHcQZ" id="7rHnnspDnmg" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
       <node concept="2AHcQZ" id="3tYsUK_SfR5" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
@@ -4091,7 +4074,7 @@
                   </node>
                 </node>
                 <node concept="37vLTw" id="1JsJJ3D2CPy" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1JsJJ3D2aVW" resolve="myHighlighter" />
+                  <ref role="3cqZAo" node="7rHnnspDnme" resolve="highlighter" />
                 </node>
               </node>
             </node>
@@ -4132,27 +4115,11 @@
             <node concept="3GX2aA" id="58syclRvsRL" role="2OqNvi" />
           </node>
         </node>
-        <node concept="3clFbF" id="7k6J8c3u3UW" role="3cqZAp">
-          <node concept="37vLTI" id="7k6J8c3u3Vi" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeut2g" role="37vLTJ">
-              <ref role="3cqZAo" node="7k6J8c3u3Uu" resolve="myProject" />
-            </node>
-            <node concept="10Nm6u" id="7k6J8c3u3Vl" role="37vLTx" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="1JsJJ3D2I1v" role="3cqZAp">
-          <node concept="37vLTI" id="1JsJJ3D2Lfn" role="3clFbG">
-            <node concept="10Nm6u" id="1JsJJ3D2LnO" role="37vLTx" />
-            <node concept="37vLTw" id="1JsJJ3D2I1t" role="37vLTJ">
-              <ref role="3cqZAo" node="1JsJJ3D2aVW" resolve="myHighlighter" />
-            </node>
-          </node>
-        </node>
       </node>
     </node>
     <node concept="3Tm1VV" id="7k6J8c3u3EH" role="1B3o_S" />
-    <node concept="3uibUv" id="7k6J8c3u3EM" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ProjectComponent" resolve="ProjectComponent" />
+    <node concept="3uibUv" id="3xoxh4ubBb1" role="EKbjA">
+      <ref role="3uigEE" to="exr9:~HighlighterContribution" resolve="HighlighterContribution" />
     </node>
   </node>
   <node concept="312cEu" id="58syclRvsJS">

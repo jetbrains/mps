@@ -15,6 +15,9 @@
                     interface="jetbrains.mps.ide.editor.warningPanel.EditorWarningsProvider"/>
     <extensionPoint qualifiedName="com.intellij.mps.IntentionActionsProvider"
                     interface="jetbrains.mps.nodeEditor.IntentionActionsProvider"/>
+    <extensionPoint qualifiedName="jetbrains.mps.editor.highlighter.contributor"
+                    interface="jetbrains.mps.nodeEditor.HighlighterContribution"
+                    area="IDEA_PROJECT"/>
   </extensionPoints>
 
   <project-components>
@@ -22,10 +25,6 @@
       <interface-class>jetbrains.mps.nodeEditor.Highlighter</interface-class>
       <implementation-class>jetbrains.mps.nodeEditor.Highlighter</implementation-class>
       <headless-implementation-class>jetbrains.mps.nodeEditor.EmptyHighlighter</headless-implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.ide.editor.MPSValidationComponent</implementation-class>
     </component>
 
     <component>
@@ -87,6 +86,7 @@
 
   <extensions defaultExtensionNs="jetbrains.mps">
     <componentPluginFactory implementation="jetbrains.mps.ide.editor.MPSEditorPlugin$Factory"/>
+    <editor.highlighter.contributor implementation="jetbrains.mps.ide.editor.MPSValidationComponent" />
   </extensions>
 
   <actions>

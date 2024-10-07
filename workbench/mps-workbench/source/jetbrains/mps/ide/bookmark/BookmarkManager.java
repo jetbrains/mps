@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,6 +92,7 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
 
   @Override
   public void projectOpened() {
+    // There's a new extpoint to contriute checkers, see HighlighterContribution, use it!
     myHighlighter = Highlighter.getInstance(myProject);
     myChecker = new BookmarksHighlighter(this);
     myHighlighter.addChecker(myChecker);

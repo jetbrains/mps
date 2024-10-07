@@ -58,6 +58,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.repository.CommandListener;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -82,6 +83,8 @@ public class Highlighter implements IHighlighter, ProjectComponent {
   private final Disposable myDisposable = Disposer.newDisposable(Highlighter.class.getName());
 
   private final List<EditorCheckerWrapper> myCheckers = new CopyOnWriteArrayList<>();
+
+  private final List<HighlighterContribution> myContributors = new ArrayList<>();
 
   /**
    * Whether to force running all checkers in power-save mode. Accessed from the highlighter thread only, therefore non-volatile.
@@ -127,6 +130,18 @@ public class Highlighter implements IHighlighter, ProjectComponent {
 
   @Override
   public void projectOpened() {
+    // I didn't find an easy way to make these contributions stateless, checkers often need some initialization code,
+    // and using non-dynamic ext. point is ok for our purposes at the moment (it's not a primary contribution
+    // mechanism, after all - proper clients register with MPS own reloadable plugin project parts)
+    for (HighlighterContribution hc : HighlighterContribution.EP.getExtensionList(myProject)) {
+      myContributors.add(hc);
+      try {
+        hc.install(this);
+      } catch (Exception ex) {
+        LOG.error(String.format("Failed to install highlighters from %s", hc.getClass()), ex);
+      }
+    }
+
     myClassLoaderManager.addListener(myClassesListener);
     myEventCollector.startListening(myMPSProject.getRepository());
 
@@ -158,6 +173,15 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     Disposer.dispose(myDisposable);
     myEventCollector.stopListening(myMPSProject.getRepository());
     myClassLoaderManager.removeListener(myClassesListener);
+
+    for (HighlighterContribution hc : myContributors) {
+      try {
+        hc.uninstall(this);
+      } catch (Exception ex) {
+        LOG.error(String.format("Failed to install highlighters from %s", hc.getClass()), ex);
+      }
+    }
+    myContributors.clear();
   }
 
   @Override
