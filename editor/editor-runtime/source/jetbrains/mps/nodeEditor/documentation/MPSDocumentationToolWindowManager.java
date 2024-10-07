@@ -64,7 +64,7 @@ public class MPSDocumentationToolWindowManager {
 
   private @Nullable ToolWindow getToolWindow() {
     ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(myProject);
-    return toolWindowManager.getToolWindow("DocNew");
+    return toolWindowManager.getToolWindow("Doc");
   }
 
   private void installToolWindowActions(MPSDocumentationUI ui) {

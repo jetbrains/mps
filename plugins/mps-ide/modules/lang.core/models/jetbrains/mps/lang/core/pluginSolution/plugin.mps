@@ -4267,7 +4267,7 @@
   </node>
   <node concept="2wDNrl" id="j$8LF20P4T">
     <property role="TrG5h" value="DocumentationToolNew" />
-    <property role="2XNbzY" value="DocNew" />
+    <property role="2XNbzY" value="Doc" />
     <property role="2bmUCM" value="2aGS$UDXOxV/RIGHT" />
     <node concept="1GtWCo" id="j$8LF20PsC" role="1nVCmq">
       <node concept="10M0yZ" id="j$8LF20QLr" role="1GtWoa">
