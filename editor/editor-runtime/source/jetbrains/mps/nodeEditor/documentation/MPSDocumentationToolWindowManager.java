@@ -4,10 +4,12 @@
 package jetbrains.mps.nodeEditor.documentation;
 
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.wm.ToolWindow;
+import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.openapi.wm.ex.ToolWindowEx;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
@@ -20,15 +22,15 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.JPanel;
 
 public class MPSDocumentationToolWindowManager {
-  private final DocumentationTool myToolWindow;
   private final Key<MPSDocumentationToolWindowUI> TW_UI_KEY = Key.create("mps.documentation.tw.ui");
+  private final Project myProject;
 
   public static MPSDocumentationToolWindowManager getInstance(@NotNull Project project) {
     return project.getService(MPSDocumentationToolWindowManager.class);
   }
 
   private MPSDocumentationToolWindowManager(Project project) {
-    myToolWindow = new DocumentationTool(project);
+    myProject = project;
   }
 
   public void showInToolWindow(MPSDocumentationUI ui) {
@@ -56,12 +58,17 @@ public class MPSDocumentationToolWindowManager {
     Content content = ContentFactory.getInstance().createContent(new JPanel(), null, false);
     content.setCloseable(true);
     content.putUserData(ToolWindow.SHOW_CONTENT_ICON, true);
-    myToolWindow.addContent(content);
+    getToolWindow().getContentManager().addContent(content);
     return content;
   }
 
+  private @Nullable ToolWindow getToolWindow() {
+    ToolWindowManager toolWindowManager = ToolWindowManager.getInstance(myProject);
+    return toolWindowManager.getToolWindow("DocNew");
+  }
+
   private void installToolWindowActions(MPSDocumentationUI ui) {
-    ToolWindowEx toolWindowEx = (ToolWindowEx) myToolWindow.getToolWindow();
+    ToolWindowEx toolWindowEx = (ToolWindowEx) getToolWindow();
     if (toolWindowEx != null) {
       toolWindowEx.setTitleActions(ui.getNavigateActions());
       toolWindowEx.setAdditionalGearActions(new DefaultActionGroup(ui.getCommonGearActions()));
@@ -69,19 +76,25 @@ public class MPSDocumentationToolWindowManager {
   }
 
   private void makeVisible() {
-    if (myToolWindow.toolIsOpened()) {
+    if (getToolWindow().isVisible()) {
       return;
     }
-    myToolWindow.openToolLater(true);
+    ApplicationManager.getApplication().invokeLater(() -> {
+      if (!getToolWindow().isAvailable()) {
+        getToolWindow().setAvailable(true);
+      }
+      getToolWindow().show();
+      getToolWindow().activate(null);
+    });
   }
 
   public boolean isVisible() {
-    return myToolWindow.toolIsOpened();
+    return getToolWindow().isVisible();
   }
 
   @Nullable
   private Content getReusableContent() {
-    Content[] contents = myToolWindow.getContent();
+    Content[] contents = getToolWindow().getContentManager().getContents();
     assert (contents.length == 1 || contents.length == 0);
     if (contents.length == 1) {
       return contents[0];
