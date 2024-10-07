@@ -19,7 +19,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.ide.devkit.cellExplorer.CellExplorerTool;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 
@@ -86,7 +86,7 @@ public class ShowCellInExplorer_Action extends BaseAction {
     if (runnable == null) {
       return;
     }
-    CellExplorerTool tool = new CellExplorerTool(event.getData(CommonDataKeys.PROJECT));
+    CellExplorerTool_Tool tool = ProjectPluginManager.getInstance(event.getData(CommonDataKeys.PROJECT)).getTool(CellExplorerTool_Tool.class);
 
     tool.showCell(event.getData(MPSEditorDataKeys.EDITOR_CELL), runnable);
   }
