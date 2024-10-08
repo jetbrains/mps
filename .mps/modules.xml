@@ -339,7 +339,6 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/lang.script/jetbrains.mps.lang.script.pluginSolution.msd" folder="core.aspects.script" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/lang.text/jetbrains.mps.lang.text.pluginSolution.msd" folder="core.languages.text" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/lang.typesystem/jetbrains.mps.lang.typesystem.pluginSolution.msd" folder="core.aspects.typesystem" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/tools.hierarchy/jetbrains.mps.ide.tools.hierarchy.msd" folder="plugins.mps-ide" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-ide/modules/tools.todo/jetbrains.mps.ide.tools.todo.msd" folder="plugins.mps-ide" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-idea-integration/MPSPlugin/jetbrains.mps.ideaIntegration.msd" folder="platform" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-java/core/modules/jetbrains.mps.java.core/jetbrains.mps.java.core.msd" folder="plugins.mpsjava" />
