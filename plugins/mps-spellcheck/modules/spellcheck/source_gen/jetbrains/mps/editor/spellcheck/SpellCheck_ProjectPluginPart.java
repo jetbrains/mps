@@ -14,13 +14,11 @@ public class SpellCheck_ProjectPluginPart extends ProjectPluginPart {
   @Override
   public void init(MPSProject project) {
     SpellCheck_ProjectPluginPart.this.mySpellChecker = new CommentSpellChecker(project);
-    Highlighter highlighter = project.getComponent(Highlighter.class);
-    highlighter.addChecker(SpellCheck_ProjectPluginPart.this.mySpellChecker);
+    Highlighter.getInstance(project).addChecker(SpellCheck_ProjectPluginPart.this.mySpellChecker);
   }
   @Override
   public void dispose(MPSProject project) {
-    Highlighter highlighter = project.getComponent(Highlighter.class);
-    highlighter.removeChecker(SpellCheck_ProjectPluginPart.this.mySpellChecker);
+    Highlighter.getInstance(project).removeChecker(SpellCheck_ProjectPluginPart.this.mySpellChecker);
     SpellCheck_ProjectPluginPart.this.mySpellChecker = null;
   }
 }

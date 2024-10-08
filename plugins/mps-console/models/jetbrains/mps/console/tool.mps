@@ -5572,20 +5572,11 @@
             <node concept="37vLTw" id="4G7QzZY$W8u" role="37vLTJ">
               <ref role="3cqZAo" node="4gO8GruCdfs" resolve="myHighlighter" />
             </node>
-            <node concept="2OqwBi" id="758rrhN1c8l" role="37vLTx">
-              <node concept="2OqwBi" id="758rrhN2aSY" role="2Oq$k0">
-                <node concept="37vLTw" id="758rrhN2aqI" role="2Oq$k0">
-                  <ref role="3cqZAo" node="758rrhN1tVs" resolve="myProject" />
-                </node>
-                <node concept="liA8E" id="758rrhN2b3i" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
-                </node>
-              </node>
-              <node concept="liA8E" id="6ysF3v1j_fZ" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="6ysF3v1j_g0" role="37wK5m">
-                  <ref role="3VsUkX" to="exr9:~Highlighter" resolve="Highlighter" />
-                </node>
+            <node concept="2YIFZM" id="6Z07o0_XkSh" role="37vLTx">
+              <ref role="37wK5l" to="exr9:~Highlighter.getInstance(jetbrains.mps.project.MPSProject)" resolve="getInstance" />
+              <ref role="1Pybhc" to="exr9:~Highlighter" resolve="Highlighter" />
+              <node concept="37vLTw" id="6Z07o0_XSfT" role="37wK5m">
+                <ref role="3cqZAo" node="758rrhN1tVs" resolve="myProject" />
               </node>
             </node>
           </node>

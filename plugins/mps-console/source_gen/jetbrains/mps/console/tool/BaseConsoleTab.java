@@ -221,7 +221,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
 
     Disposer.register(this, myFileEditor);
 
-    myHighlighter = myProject.getProject().getComponent(Highlighter.class);
+    myHighlighter = Highlighter.getInstance(myProject);
     check_6q36mf_a41a43(myHighlighter, myEditor);
   }
 
