@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,11 @@ package jetbrains.mps.newTypesystem.context.typechecking;
 
 import gnu.trove.THashMap;
 import gnu.trove.THashSet;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.typesystem.runtime.ICheckingRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.newTypesystem.context.component.ITypeErrorComponent;
 import jetbrains.mps.newTypesystem.context.component.IncrementalTypecheckingComponent;
 import jetbrains.mps.newTypesystem.context.component.NonTypeSystemComponent;
@@ -37,6 +34,8 @@ import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.smodel.event.SModelEventVisitorAdapter;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import jetbrains.mps.smodel.event.SModelReferenceEvent;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import jetbrains.mps.typechecking.TypeInvalidationListener;
 import jetbrains.mps.typechecking.TypecheckingObservable;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
@@ -46,13 +45,13 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.WeakSet;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.util.Consumer;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
@@ -68,24 +67,16 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSystemComponent> {
 
-  private ConcurrentLinkedQueue<SModelEvent> myEvents = new ConcurrentLinkedQueue<>();
-  private ConcurrentLinkedQueue<SModel> myReplacedModels = new ConcurrentLinkedQueue<>();
+  private final ConcurrentLinkedQueue<SModelEvent> myEvents = new ConcurrentLinkedQueue<>();
+  private final ConcurrentLinkedQueue<SModel> myReplacedModels = new ConcurrentLinkedQueue<>();
 
-  private DeployListener myClassesListener = new DeployListener() {
-    @Override
-    public void onUnloaded(Set<ReloadableModule> unloadedModules, @NotNull ProgressMonitor monitor) {
-      clear();
-    }
-    @Override
-    public void onLoaded(Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
-    }
-  };
+  private final ModuleDeploymentListener myClassesListener = change -> clear();
 
-  private Map<SModel, Set<SNode>> mySModelNodes = new THashMap<>();
+  private final Map<SModel, Set<SNode>> mySModelNodes = new THashMap<>();
 
-  private MyTypeRecalculatedListener myTypeRecalculatedListener = new MyTypeRecalculatedListener();
+  private final MyTypeRecalculatedListener myTypeRecalculatedListener = new MyTypeRecalculatedListener();
 
-  private MyModelListener myModelListener = new MyModelListener();
+  private final MyModelListener myModelListener = new MyModelListener();
 
   private MyModelListenerManager myModelListenerManager = new MyModelListenerManager();
 
@@ -95,19 +86,19 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
 
   private static final Logger LOG = Logger.getLogger(IncrementalTypechecking.class);
 
-  private NodeTypeAccess myNodeTypeAccess = new NodeTypeAccess();
+  private final NodeTypeAccess myNodeTypeAccess = new NodeTypeAccess();
 
   private ITypeErrorComponent myTypeErrorComponent;
 
-  private final ClassLoaderManager myClassManager;
+  private final LanguageRegistry myClassManager;
   private final Consumer<SNode> myTypeInvalidationNotifier;
 
   public IncrementalTypechecking(SNode node,
                                  State state,
-                                 ClassLoaderManager clManager,
+                                 @Nullable LanguageRegistry deployManager,
                                  Consumer<SNode> typeInvalidationNotifier) {
     super(node, state);
-    myClassManager = clManager;
+    myClassManager = deployManager;
     myTypeInvalidationNotifier = typeInvalidationNotifier;
     myNonTypeSystemComponent = new NonTypeSystemComponent(state, this);
     init();
@@ -116,7 +107,7 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
   private void init() {
     myModelListenerManager.track(myRootNode);
     if (myClassManager != null) {
-      myClassManager.addListener(myClassesListener);
+      myClassManager.addRegistryListener(myClassesListener);
     }
   }
 
@@ -172,7 +163,7 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
   @Override
   public void dispose() {
     if (myClassManager != null) {
-      myClassManager.removeListener(myClassesListener);
+      myClassManager.removeRegistryListener(myClassesListener);
     }
     if (myModelListenerManager != null) {
       myModelListenerManager.dispose();

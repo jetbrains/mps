@@ -30,14 +30,10 @@ import com.intellij.util.ConcurrencyUtil;
 import com.intellij.util.concurrency.EdtExecutorService;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.DeployListener;
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.MakeServiceComponent;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.nodeEditor.checking.EditorChecker;
 import jetbrains.mps.nodeEditor.highlighter.EditorCheckerWrapper;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
@@ -51,12 +47,14 @@ import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.smodel.event.SModelReplacedEvent;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentChange;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.repository.CommandListener;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -75,7 +73,6 @@ public class Highlighter implements IHighlighter, ProjectComponent {
   private volatile boolean myPaused;
   private final com.intellij.openapi.command.CommandListener myCommandListener = new PauseDuringCommandOrUndoTransparentAction();
 
-  private final ClassLoaderManager myClassLoaderManager;
   private ScheduledExecutorService myBackgroundExecutor;
   private ScheduleHighlighterUpdate myScheduleHighlighterUpdate;
 
@@ -95,9 +92,9 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     return InspectorTool.getInstance(myMPSProject);
   };
 
-  private final DeployListener myClassesListener = new DeployListener() {
+  private final ModuleDeploymentListener myClassesListener = new ModuleDeploymentListener() {
     @Override
-    public void onUnloaded(@NotNull Set<ReloadableModule> modules, @NotNull ProgressMonitor monitor) {
+    public void deploymentStateChanged(@NotNull ModuleDeploymentChange change) {
       addPendingAction(() -> {
         myEditorTracker.markEverythingUnchecked();
         myEditorList.clearAdditionalEditors();
@@ -123,9 +120,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     myMPSProject = ProjectHelper.fromIdeaProjectOrFail(project);
     myProject = project;
     myEditorList = new HighlighterEditorList(FileEditorManager.getInstance(project));
-    MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
-    myClassLoaderManager = coreComponents.getClassLoaderManager();
-    myMakeComponent = coreComponents.getPlatform().findComponent(MakeServiceComponent.class);
+    myMakeComponent = myMPSProject.getPlatform().findComponent(MakeServiceComponent.class);
   }
 
   @Override
@@ -142,7 +137,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
       }
     }
 
-    myClassLoaderManager.addListener(myClassesListener);
+    myMPSProject.getPlatform().findComponent(LanguageRegistry.class).addRegistryListener(myClassesListener);
     myEventCollector.startListening(myMPSProject.getRepository());
 
     // perhaps, should register myDisposable with myProject as parent not to rely
@@ -172,7 +167,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     // remove all listeners associated with our own Disposable instance, including those from message buss
     Disposer.dispose(myDisposable);
     myEventCollector.stopListening(myMPSProject.getRepository());
-    myClassLoaderManager.removeListener(myClassesListener);
+    myMPSProject.getPlatform().findComponent(LanguageRegistry.class).removeRegistryListener(myClassesListener);
 
     for (HighlighterContribution hc : myContributors) {
       try {

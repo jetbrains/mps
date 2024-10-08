@@ -25,14 +25,11 @@ import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.editor.MPSFileNodeEditor;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.EditorComponent;
@@ -41,6 +38,8 @@ import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import jetbrains.mps.util.containers.MultiMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -49,21 +48,18 @@ import org.jetbrains.mps.openapi.model.SModel.Problem;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
-import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class MPSEditorWarningsManager implements Disposable {
 
   private final MPSProject myProject;
-  private ClassLoaderManager myClassLoaderManager;
-  private final DeployListener myClassesListener = new EditorWarningsListenerAdapter();
+  private final ModuleDeploymentListener myClassesListener = change -> updateAllWarningsLater();
   // I don't truly need atomic boolean here, regular boolean would suffice in most cases, as requests generally come
   // from same thread sequentially (e.g. modelLoaded). Nevertheless, it doesn't hurt to account for more complicated scenario.
   private final AtomicBoolean myScheduledUpdateAllWarnings = new AtomicBoolean(false);
@@ -109,16 +105,16 @@ public class MPSEditorWarningsManager implements Disposable {
 
   public MPSEditorWarningsManager(Project ideaProject) {
     myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
-    myClassLoaderManager = MPSCoreComponents.getInstance().getClassLoaderManager();
-    myClassLoaderManager.addListener(myClassesListener);
+    LanguageRegistry lr = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
+    lr.addRegistryListener(myClassesListener);
     new RepoListenerRegistrar(myProject.getRepository(), myRepoListener).attach();
   }
 
   @Override
   public void dispose() {
     new RepoListenerRegistrar(myProject.getRepository(), myRepoListener).detach();
-    myClassLoaderManager.removeListener(myClassesListener);
-    myClassLoaderManager = null;
+    LanguageRegistry lr = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
+    lr.removeRegistryListener(myClassesListener);
   }
 
   private void updateWarnings(@NotNull final MPSFileNodeEditor editor) {
@@ -258,13 +254,6 @@ public class MPSEditorWarningsManager implements Disposable {
     @Override
     public void selectionChanged(@NotNull FileEditorManagerEvent event) {
       getInstance(myProject).updateAllWarnings();
-    }
-  }
-
-  private class EditorWarningsListenerAdapter implements DeployListener {
-    @Override
-    public void onLoaded(@NotNull Set<ReloadableModule> modules, @NotNull ProgressMonitor monitor) {
-      updateAllWarningsLater();
     }
   }
 

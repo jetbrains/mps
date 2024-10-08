@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,16 @@
  */
 package jetbrains.mps.newTypesystem.context;
 
-import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.newTypesystem.state.blocks.WhenConcreteBlock;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.util.Consumer;
 
@@ -31,18 +32,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IncrementalTypecheckingContext extends ReportingTypecheckingContext<State, IncrementalTypechecking> {
-  private final ClassLoaderManager myClassManager;
+  private final LanguageRegistry myDeployManager;
   private Consumer<SNode> myTypeInvalidatedNotifier = null;
 
   private volatile NonTypesystemComputationMode myNonTypesystemComputationMode = NonTypesystemComputationMode.OFF;
 //  private boolean myIsInferenceMode = false;
 
-  private Map<Object, Integer> myRequesting = new HashMap<>();
+  private final Map<Object, Integer> myRequesting = new HashMap<>();
   private Integer myOldHash = 0;
 
-  public IncrementalTypecheckingContext(SNode node, TypeCheckerHelper typeCheckerHelper, ClassLoaderManager clManager) {
+  public IncrementalTypecheckingContext(SNode node, TypeCheckerHelper typeCheckerHelper, @Nullable LanguageRegistry moduleManager) {
     super(node, typeCheckerHelper);
-    myClassManager = clManager;
+    myDeployManager = moduleManager;
   }
 
   public void setTypeInvalidateNotifier(Consumer<SNode> notifier) {
@@ -51,7 +52,7 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
 
   @Override
   protected IncrementalTypechecking createTypechecking() {
-    return new IncrementalTypechecking(getNode(), getState(), myClassManager, myTypeInvalidatedNotifier);
+    return new IncrementalTypechecking(getNode(), getState(), myDeployManager, myTypeInvalidatedNotifier);
   }
 
   @Override
