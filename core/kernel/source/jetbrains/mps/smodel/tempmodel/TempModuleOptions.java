@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,7 +60,7 @@ public abstract class TempModuleOptions {
     return new NewModuleOptions(Collections.emptySet(), true, true);
   }
 
-  private static class NewModuleOptions extends TempModuleOptions {
+  private static class NewModuleOptions extends TempModuleOptions implements MPSModuleOwner {
     private final Set<ModelRootDescriptor> myModelRoots;
     private final boolean myWithSourceGen;
     private final boolean myWithJavaFacet;
@@ -78,14 +78,19 @@ public abstract class TempModuleOptions {
     @Override
     public SModule createModule() {
       myCreatedModule = new TempModule(myModelRoots, myWithSourceGen, myWithJavaFacet);
-      TempModule regModule = myRepository.registerModule(myCreatedModule, myCreatedModule);
+      TempModule regModule = myRepository.registerModule(myCreatedModule, this);
       assert myCreatedModule == regModule : "Temporary module with same id already registered";
       return myCreatedModule;
     }
 
     @Override
     public void disposeModule() {
-      myRepository.unregisterModule(myCreatedModule, myCreatedModule);
+      myRepository.unregisterModule(myCreatedModule, this);
+    }
+
+    @Override
+    public boolean isHidden() {
+      return true;
     }
   }
 

@@ -38,7 +38,7 @@ import java.util.Set;
  * TODO: it does not belong to any repository
  *       ^^ is this true?
  */
-public class TempModule extends ReloadableModuleBase implements SModule, MPSModuleOwner {
+public class TempModule extends ReloadableModuleBase implements SModule {
   private final ModuleDescriptor myDescriptor;
   private final JavaModuleFacet myJavaModuleFacet;
 
@@ -61,10 +61,6 @@ public class TempModule extends ReloadableModuleBase implements SModule, MPSModu
     } else {
       myJavaModuleFacet = null;
     }
-  }
-
-  public boolean isHidden() {
-    return true;
   }
 
   @Override
