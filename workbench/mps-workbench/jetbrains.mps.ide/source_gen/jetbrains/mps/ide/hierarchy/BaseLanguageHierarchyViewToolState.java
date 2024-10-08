@@ -4,7 +4,7 @@ package jetbrains.mps.ide.hierarchy;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.project.Project;
-import com.intellij.icons.AllIcons;
+import jetbrains.mps.ide.tools.BaseTool;
 import jetbrains.mps.ide.ui.tree.TreeHighlighterExtension;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -34,9 +34,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 @GeneratedClass(node = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)/5797068448049411442", model = "r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)")
-public class BaseLanguageHierarchyViewTool extends AbstractHierarchyView {
-  public BaseLanguageHierarchyViewTool(Project project) {
-    super(project, "Class Hierarchy", -1, AllIcons.Toolwindows.ToolWindowHierarchy);
+public class BaseLanguageHierarchyViewToolState extends AbstractHierarchyViewState {
+  public BaseLanguageHierarchyViewToolState(Project project, BaseTool tool) {
+    super(project, tool);
   }
   @Override
   protected AbstractHierarchyTree createHierarchyTree(boolean isParentHierarchy) {

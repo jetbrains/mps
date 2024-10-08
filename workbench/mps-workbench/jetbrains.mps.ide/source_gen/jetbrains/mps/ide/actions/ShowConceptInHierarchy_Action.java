@@ -16,7 +16,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.openapi.editor.Editor;
-import jetbrains.mps.ide.hierarchy.HierarchyViewTool;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
+import jetbrains.mps.ide.hierarchy.HierarchyViewToolState;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -79,9 +80,10 @@ public class ShowConceptInHierarchy_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final HierarchyViewTool tool = event.getData(CommonDataKeys.PROJECT).getComponent(HierarchyViewTool.class);
+    HierarchyViewTool_Tool tool = ProjectPluginManager.getInstance(event.getData(CommonDataKeys.PROJECT)).getTool(HierarchyViewTool_Tool.class);
+    final HierarchyViewToolState state = tool.getToolState();
     SNodeReference cd = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(() -> SNodeOperations.getPointer(ShowConceptInHierarchy_Action.this.getConceptNode(event)));
-    tool.showItemInHierarchy(cd);
+    state.showItemInHierarchy(cd);
     tool.openToolLater(true);
   }
   private SNode getConceptNode(final AnActionEvent event) {

@@ -28,12 +28,6 @@
       <implementation-class>jetbrains.mps.ide.generator.TransientModelsComponent</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.hierarchy.HierarchyViewTool</implementation-class>
-    </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.hierarchy.BaseLanguageHierarchyViewTool</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.ide.bookmark.BookmarkManager</implementation-class>
     </component>
 

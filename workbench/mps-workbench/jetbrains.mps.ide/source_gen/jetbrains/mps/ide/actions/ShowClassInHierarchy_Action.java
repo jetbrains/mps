@@ -8,11 +8,14 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.ide.hierarchy.BaseLanguageHierarchyViewTool;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
+import jetbrains.mps.ide.hierarchy.BaseLanguageHierarchyViewToolState;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -48,6 +51,12 @@ public class ShowClassInHierarchy_Action extends BaseAction {
       return false;
     }
     {
+      Project p = event.getData(CommonDataKeys.PROJECT);
+      if (p == null) {
+        return false;
+      }
+    }
+    {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       if (p == null) {
         return false;
@@ -66,9 +75,10 @@ public class ShowClassInHierarchy_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final BaseLanguageHierarchyViewTool tool = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(BaseLanguageHierarchyViewTool.class);
+    BaseLanguageHierarchyViewTool_Tool tool = ProjectPluginManager.getInstance(event.getData(CommonDataKeys.PROJECT)).getTool(BaseLanguageHierarchyViewTool_Tool.class);
+    final BaseLanguageHierarchyViewToolState state = tool.getToolState();
     SNodeReference c = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(() -> SNodeOperations.getPointer(ShowClassInHierarchy_Action.this.getContextClassifier(event)));
-    tool.showItemInHierarchy(c);
+    state.showItemInHierarchy(c);
     tool.openToolLater(true);
   }
   private SNode getContextClassifier(final AnActionEvent event) {
