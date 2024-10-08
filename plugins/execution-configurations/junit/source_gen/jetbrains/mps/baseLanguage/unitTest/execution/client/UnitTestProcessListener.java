@@ -17,6 +17,7 @@ import com.intellij.execution.process.ProcessOutputTypes;
 public final class UnitTestProcessListener extends ProcessAdapter {
   private final TestEventsDispatcher myDispatcher;
   private TestEventMessage myLastEvent;
+  private StringBuilder myLastText = new StringBuilder();
 
   public UnitTestProcessListener(TestRunState runState) {
     myDispatcher = new TestEventsDispatcher(runState);
@@ -38,8 +39,14 @@ public final class UnitTestProcessListener extends ProcessAdapter {
     if (text == null) {
       return;
     }
+    myLastText.append(text);
+    if (!(text.endsWith("\n"))) {
+      return;
+    }
 
-    TestEventMessage testEvent = TestEventMessage.parse(text.trim());
+    String line = myLastText.toString();
+    myLastText = new StringBuilder();
+    TestEventMessage testEvent = TestEventMessage.parse(line.trim());
     if (testEvent != null) {
       // event happened
       myLastEvent = testEvent;
@@ -49,7 +56,7 @@ public final class UnitTestProcessListener extends ProcessAdapter {
       if (isErrorOutputInProgress()) {
         outputKind = ProcessOutputTypes.STDERR;
       }
-      myDispatcher.onSimpleTextAvailable(text, outputKind);
+      myDispatcher.onSimpleTextAvailable(line, outputKind);
     }
   }
 

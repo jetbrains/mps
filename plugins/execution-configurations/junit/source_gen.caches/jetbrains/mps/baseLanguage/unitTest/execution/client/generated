@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="sa5fx2badro4p3b78jo6tocolpvyot">
+<product version="3" modelHash="-5jpqrle5hzs7wnatrf0gjx67r2acj55">
   <files names="CPCalculator.java:ClientExecutorScript.java:ITestNodeWrapper.java:JUnit_Command.java:ProgramParametersCalculator.java:RunCachesManager.java:String2NodeTestKeyConverter.java:TestDescriptorWrapper.java:TestEventsDispatcher.java:TestNodeWrapperFactory.java:TestParameters.java:TestRunData.java:TestRunState.java:TestRunStateUpdateListener.java:TestStateAdapter.java:TestStateListener.java:TestsWithParameters.java:TestsWithParametersAndConfiguration.java:UnitTestProcessListener.java:UserProvidedPluginsCalculator.java:UserProvidedPluginsConfiguration.java" />
 </product>
 
