@@ -6,6 +6,7 @@ import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.wm.StatusBar;
 import jetbrains.mps.generator.IModifiableGenerationSettings;
 import jetbrains.mps.make.IMakeNotificationListener;
+import jetbrains.mps.make.IMakeService;
 import com.intellij.openapi.wm.WindowManager;
 import jetbrains.mps.generator.GenerationSettingsProvider;
 import com.intellij.openapi.util.Disposer;
@@ -25,6 +26,7 @@ public class TransientModelsNotification {
     }
   };
   private final IMakeNotificationListener myMakeNotificationListener = new MyMakeNotificationListener();
+  private IMakeService myMakeService;
 
   public TransientModelsNotification(final MPSProject project) {
     myProject = project;
@@ -39,11 +41,13 @@ public class TransientModelsNotification {
     myDisplayer = new TransientModelBallonDisplayer(myStatusBar, myWidget);
     Disposer.register(myWidget, myDisplayer);
     myProject.getComponent(GenerationSettingsProvider.class).addSettingsListener(mySettingsListener);
-    myProject.getComponent(MakeServiceComponent.class).get().addListener(myMakeNotificationListener);
+    myMakeService = myProject.getComponent(MakeServiceComponent.class).get();
+    myMakeService.addListener(myMakeNotificationListener);
   }
 
   public void projectClosed() {
-    myProject.getComponent(MakeServiceComponent.class).get().removeListener(myMakeNotificationListener);
+    myMakeService.removeListener(myMakeNotificationListener);
+    myMakeService = null;
     myProject.getComponent(GenerationSettingsProvider.class).removeSettingsListener(mySettingsListener);
     myStatusBar.removeWidget(TransientModelsWidget.WIDGET_ID);
     Disposer.dispose(myWidget);

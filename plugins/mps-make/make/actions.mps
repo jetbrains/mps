@@ -51,7 +51,6 @@
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
-    <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
     <import index="z2i8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.icons(MPS.IDEA/)" />
     <import index="xygl" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.progress(MPS.IDEA/)" />
     <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
@@ -11615,6 +11614,13 @@
         </node>
       </node>
     </node>
+    <node concept="312cEg" id="4bElavfic6y" role="jymVt">
+      <property role="TrG5h" value="myMakeService" />
+      <node concept="3Tm6S6" id="4bElavfic6z" role="1B3o_S" />
+      <node concept="3uibUv" id="4bElavfic6_" role="1tU5fm">
+        <ref role="3uigEE" to="hfuk:1NAY6bPd4nM" resolve="IMakeService" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="3l7XKooDWTF" role="jymVt" />
     <node concept="3clFbW" id="5do60t9uy55" role="jymVt">
       <node concept="37vLTG" id="5do60t9uS2B" role="3clF46">
@@ -11776,23 +11782,33 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="3l7XKooE1k1" role="3cqZAp">
-          <node concept="2OqwBi" id="3l7XKooE7d$" role="3clFbG">
-            <node concept="2OqwBi" id="3l7XKooE5We" role="2Oq$k0">
-              <node concept="2OqwBi" id="3l7XKooE2lL" role="2Oq$k0">
-                <node concept="37vLTw" id="3l7XKooE1jZ" role="2Oq$k0">
+        <node concept="3clFbF" id="4bElavfic6A" role="3cqZAp">
+          <node concept="37vLTI" id="4bElavfic6C" role="3clFbG">
+            <node concept="37vLTw" id="4bElavfic6F" role="37vLTJ">
+              <ref role="3cqZAo" node="4bElavfic6y" resolve="makeService" />
+            </node>
+            <node concept="2OqwBi" id="4bElavfi9M6" role="37vLTx">
+              <node concept="2OqwBi" id="4bElavfi9M7" role="2Oq$k0">
+                <node concept="37vLTw" id="4bElavfi9M8" role="2Oq$k0">
                   <ref role="3cqZAo" node="5do60t9uS2E" resolve="myProject" />
                 </node>
-                <node concept="liA8E" id="3l7XKooE3RB" role="2OqNvi">
+                <node concept="liA8E" id="4bElavfi9M9" role="2OqNvi">
                   <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-                  <node concept="3VsKOn" id="3l7XKooE4qg" role="37wK5m">
+                  <node concept="3VsKOn" id="4bElavfi9Ma" role="37wK5m">
                     <ref role="3VsUkX" to="hfuk:4QUA3Sqts3M" resolve="MakeServiceComponent" />
                   </node>
                 </node>
               </node>
-              <node concept="liA8E" id="3l7XKooE6Ul" role="2OqNvi">
+              <node concept="liA8E" id="4bElavfi9Mb" role="2OqNvi">
                 <ref role="37wK5l" to="hfuk:4QUA3SqtLoe" resolve="get" />
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3l7XKooE1k1" role="3cqZAp">
+          <node concept="2OqwBi" id="3l7XKooE7d$" role="3clFbG">
+            <node concept="37vLTw" id="4bElavfi9Mc" role="2Oq$k0">
+              <ref role="3cqZAo" node="4bElavfic6y" resolve="makeService" />
             </node>
             <node concept="liA8E" id="3l7XKooE8AV" role="2OqNvi">
               <ref role="37wK5l" to="hfuk:7lTD6YZtjhM" resolve="addListener" />
@@ -11814,27 +11830,22 @@
       <node concept="3clFbS" id="5do60t9u_lz" role="3clF47">
         <node concept="3clFbF" id="3l7XKooEamp" role="3cqZAp">
           <node concept="2OqwBi" id="3l7XKooEamq" role="3clFbG">
-            <node concept="2OqwBi" id="3l7XKooEamr" role="2Oq$k0">
-              <node concept="2OqwBi" id="3l7XKooEams" role="2Oq$k0">
-                <node concept="37vLTw" id="3l7XKooEamt" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5do60t9uS2E" resolve="myProject" />
-                </node>
-                <node concept="liA8E" id="3l7XKooEamu" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-                  <node concept="3VsKOn" id="3l7XKooEamv" role="37wK5m">
-                    <ref role="3VsUkX" to="hfuk:4QUA3Sqts3M" resolve="MakeServiceComponent" />
-                  </node>
-                </node>
-              </node>
-              <node concept="liA8E" id="3l7XKooEamw" role="2OqNvi">
-                <ref role="37wK5l" to="hfuk:4QUA3SqtLoe" resolve="get" />
-              </node>
+            <node concept="37vLTw" id="4bElavfiTuP" role="2Oq$k0">
+              <ref role="3cqZAo" node="4bElavfic6y" resolve="myMakeService" />
             </node>
             <node concept="liA8E" id="3l7XKooEamx" role="2OqNvi">
               <ref role="37wK5l" to="hfuk:7lTD6YZtjhT" resolve="removeListener" />
               <node concept="37vLTw" id="3l7XKooEamy" role="37wK5m">
                 <ref role="3cqZAo" node="16OFrd77GJR" resolve="myMakeNotificationListener" />
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4bElavfiVTh" role="3cqZAp">
+          <node concept="37vLTI" id="4bElavfiX$i" role="3clFbG">
+            <node concept="10Nm6u" id="4bElavfiYWt" role="37vLTx" />
+            <node concept="37vLTw" id="4bElavfiVTf" role="37vLTJ">
+              <ref role="3cqZAo" node="4bElavfic6y" resolve="myMakeService" />
             </node>
           </node>
         </node>

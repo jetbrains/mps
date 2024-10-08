@@ -163,7 +163,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
   @Override
   public void removeListener(IMakeNotificationListener listener) {
-    checkValidUsage();
+    // provisionally allow to unregister listeners at any moment (not necessarily when this is an active make service)
     ListSequence.fromList(listeners).removeElement(listener);
   }
 
