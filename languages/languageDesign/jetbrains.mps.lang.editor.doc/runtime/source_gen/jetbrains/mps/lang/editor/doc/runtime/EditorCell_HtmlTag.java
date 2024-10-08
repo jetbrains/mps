@@ -20,7 +20,7 @@ public class EditorCell_HtmlTag extends EditorCell_Collection {
 
 
   public EditorCell_HtmlTag(@NotNull final EditorContext context, @NotNull final SNode node, @NotNull final EditorCell openBracket1, @NotNull final EditorCell_Property openTag, @NotNull final EditorCell closeBracket1, @NotNull final EditorCell content, @NotNull final EditorCell openBracket2, @NotNull final EditorCell_Property closedTag, @NotNull final EditorCell closeBracket2) {
-    super(context, node, new CellLayout_HtmlTag123(openTag, content));
+    super(context, node, new CellLayout_HtmlTag(openTag, content));
 
     addEditorCell(openBracket1);
     addEditorCell(openTag);
@@ -31,11 +31,11 @@ public class EditorCell_HtmlTag extends EditorCell_Collection {
     addEditorCell(closeBracket2);
   }
 
-  private static class CellLayout_HtmlTag123 extends CellLayout_Horizontal {
+  private static class CellLayout_HtmlTag extends CellLayout_Horizontal {
     private final EditorCell_Property myTagNameCell;
     private final EditorCell myContentCell;
 
-    public CellLayout_HtmlTag123(EditorCell_Property tagNameCell, EditorCell contentCell) {
+    public CellLayout_HtmlTag(EditorCell_Property tagNameCell, EditorCell contentCell) {
       super();
       myTagNameCell = tagNameCell;
       myContentCell = contentCell;

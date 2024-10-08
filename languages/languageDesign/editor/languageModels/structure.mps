@@ -8168,47 +8168,5 @@
     <property role="EcuMT" value="7236675728702326206" />
     <ref role="1TJDcQ" node="hgVOiwV" resolve="BooleanStyleSheetItem" />
   </node>
-  <node concept="1TIwiD" id="45v$Up8LIrW">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="CellModel_OpenAngleBracket" />
-    <property role="3GE5qa" value="CellModel" />
-    <property role="EcuMT" value="4710646077647677180" />
-    <property role="34LRSv" value="&lt;" />
-    <ref role="1TJDcQ" node="fBEYTCT" resolve="EditorCellModel" />
-    <node concept="1TJgyi" id="45v$Up8LIrX" role="1TKVEl">
-      <property role="TrG5h" value="openBracket" />
-      <property role="IQ2nx" value="4710646077647677181" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="45v$Up97hB3">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="CellModel_CloseAngleBracket" />
-    <property role="3GE5qa" value="CellModel" />
-    <property role="EcuMT" value="4710646077653326275" />
-    <property role="34LRSv" value="&gt;" />
-    <ref role="1TJDcQ" node="fBEYTCT" resolve="EditorCellModel" />
-    <node concept="1TJgyi" id="45v$Up97hB4" role="1TKVEl">
-      <property role="TrG5h" value="closeBracket" />
-      <property role="IQ2nx" value="4710646077653326276" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="45v$Up9m$XE">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="TrG5h" value="CellModel_OpenAngleBracketSlash" />
-    <property role="3GE5qa" value="CellModel" />
-    <property role="EcuMT" value="4710646077657337706" />
-    <property role="34LRSv" value="&lt;/" />
-    <ref role="1TJDcQ" node="fBEYTCT" resolve="EditorCellModel" />
-    <node concept="1TJgyi" id="45v$Up9m$XF" role="1TKVEl">
-      <property role="TrG5h" value="openBracketSlash" />
-      <property role="IQ2nx" value="4710646077657337707" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-    </node>
-  </node>
 </model>
 

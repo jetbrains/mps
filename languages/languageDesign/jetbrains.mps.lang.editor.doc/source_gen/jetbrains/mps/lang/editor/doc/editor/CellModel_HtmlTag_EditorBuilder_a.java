@@ -13,6 +13,8 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
+import jetbrains.mps.lang.editor.editor.Styles_StyleSheet.tagStyleClass;
+import jetbrains.mps.lang.editor.editor.CellModel_Collection_Actions;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -60,6 +62,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(createComponent_0());
     editorCell.addEditorCell(createRefNode_0());
     editorCell.addEditorCell(createRefNode_1());
     editorCell.addEditorCell(createRefNode_2());
@@ -67,17 +70,26 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     editorCell.addEditorCell(createRefNode_4());
     editorCell.addEditorCell(createRefNode_5());
     editorCell.addEditorCell(createRefNode_6());
+    editorCell.addEditorCell(createComponent_1());
+    return editorCell;
+  }
+  private EditorCell createComponent_0() {
+    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor._OpenTag");
+    Style style = new StyleImpl();
+    new tagStyleClass(this).apply(style, editorCell);
+    editorCell.getStyle().putAll(style);
+    CellModel_Collection_Actions.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new openBracket1SingleRoleHandler_6rsugq_a0a(myNode, LINKS.openBracket1$PtZc, getEditorContext());
+    SingleRoleCellProvider provider = new openBracket1SingleRoleHandler_6rsugq_b0a(myNode, LINKS.openBracket1$PtZc, getEditorContext());
     return provider.createCell();
   }
-  private static class openBracket1SingleRoleHandler_6rsugq_a0a extends SingleRoleCellProvider {
+  private static class openBracket1SingleRoleHandler_6rsugq_b0a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public openBracket1SingleRoleHandler_6rsugq_a0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public openBracket1SingleRoleHandler_6rsugq_b0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -128,14 +140,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new nameSingleRoleHandler_6rsugq_b0a(myNode, LINKS.name$OX3p, getEditorContext());
+    SingleRoleCellProvider provider = new nameSingleRoleHandler_6rsugq_c0a(myNode, LINKS.name$OX3p, getEditorContext());
     return provider.createCell();
   }
-  private static class nameSingleRoleHandler_6rsugq_b0a extends SingleRoleCellProvider {
+  private static class nameSingleRoleHandler_6rsugq_c0a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public nameSingleRoleHandler_6rsugq_b0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public nameSingleRoleHandler_6rsugq_c0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -183,14 +195,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new closeBracket1SingleRoleHandler_6rsugq_c0a(myNode, LINKS.closeBracket1$CYRu, getEditorContext());
+    SingleRoleCellProvider provider = new closeBracket1SingleRoleHandler_6rsugq_d0a(myNode, LINKS.closeBracket1$CYRu, getEditorContext());
     return provider.createCell();
   }
-  private static class closeBracket1SingleRoleHandler_6rsugq_c0a extends SingleRoleCellProvider {
+  private static class closeBracket1SingleRoleHandler_6rsugq_d0a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public closeBracket1SingleRoleHandler_6rsugq_c0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public closeBracket1SingleRoleHandler_6rsugq_d0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -238,14 +250,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new visibleCellSingleRoleHandler_6rsugq_d0a(myNode, LINKS.visibleCell$xL2L, getEditorContext());
+    SingleRoleCellProvider provider = new visibleCellSingleRoleHandler_6rsugq_e0a(myNode, LINKS.visibleCell$xL2L, getEditorContext());
     return provider.createCell();
   }
-  private static class visibleCellSingleRoleHandler_6rsugq_d0a extends SingleRoleCellProvider {
+  private static class visibleCellSingleRoleHandler_6rsugq_e0a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public visibleCellSingleRoleHandler_6rsugq_d0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public visibleCellSingleRoleHandler_6rsugq_e0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -293,14 +305,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
   }
   private EditorCell createRefNode_4() {
-    SingleRoleCellProvider provider = new openBracket2SingleRoleHandler_6rsugq_e0a(myNode, LINKS.openBracket2$L5A3, getEditorContext());
+    SingleRoleCellProvider provider = new openBracket2SingleRoleHandler_6rsugq_f0a(myNode, LINKS.openBracket2$L5A3, getEditorContext());
     return provider.createCell();
   }
-  private static class openBracket2SingleRoleHandler_6rsugq_e0a extends SingleRoleCellProvider {
+  private static class openBracket2SingleRoleHandler_6rsugq_f0a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public openBracket2SingleRoleHandler_6rsugq_e0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public openBracket2SingleRoleHandler_6rsugq_f0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -348,14 +360,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
   }
   private EditorCell createRefNode_5() {
-    SingleRoleCellProvider provider = new nameSingleRoleHandler_6rsugq_f0a(myNode, LINKS.name$OX3p, getEditorContext());
+    SingleRoleCellProvider provider = new nameSingleRoleHandler_6rsugq_g0a(myNode, LINKS.name$OX3p, getEditorContext());
     return provider.createCell();
   }
-  private static class nameSingleRoleHandler_6rsugq_f0a extends SingleRoleCellProvider {
+  private static class nameSingleRoleHandler_6rsugq_g0a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public nameSingleRoleHandler_6rsugq_f0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public nameSingleRoleHandler_6rsugq_g0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -403,14 +415,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
   }
   private EditorCell createRefNode_6() {
-    SingleRoleCellProvider provider = new closeBracket2SingleRoleHandler_6rsugq_g0a(myNode, LINKS.closeBracket2$L645, getEditorContext());
+    SingleRoleCellProvider provider = new closeBracket2SingleRoleHandler_6rsugq_h0a(myNode, LINKS.closeBracket2$L645, getEditorContext());
     return provider.createCell();
   }
-  private static class closeBracket2SingleRoleHandler_6rsugq_g0a extends SingleRoleCellProvider {
+  private static class closeBracket2SingleRoleHandler_6rsugq_h0a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public closeBracket2SingleRoleHandler_6rsugq_g0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public closeBracket2SingleRoleHandler_6rsugq_h0a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -456,6 +468,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     protected String getNoTargetText() {
       return "<no closeBracket2>";
     }
+  }
+  private EditorCell createComponent_1() {
+    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.editor.editor._CloseTag");
+    Style style = new StyleImpl();
+    new tagStyleClass(this).apply(style, editorCell);
+    editorCell.getStyle().putAll(style);
+    CellModel_Collection_Actions.setCellActions(editorCell, myNode, getEditorContext());
+    return editorCell;
   }
 
   private static final class LINKS {

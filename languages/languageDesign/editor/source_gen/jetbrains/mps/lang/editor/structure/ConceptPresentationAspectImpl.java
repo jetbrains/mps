@@ -98,7 +98,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_CellModel_Block;
   private ConceptPresentation props_CellModel_BlockEnd;
   private ConceptPresentation props_CellModel_BlockStart;
-  private ConceptPresentation props_CellModel_CloseAngleBracket;
   private ConceptPresentation props_CellModel_Collection;
   private ConceptPresentation props_CellModel_Component;
   private ConceptPresentation props_CellModel_Constant;
@@ -113,8 +112,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_CellModel_ModelAccess;
   private ConceptPresentation props_CellModel_NextEditor;
   private ConceptPresentation props_CellModel_NonEmptyProperty;
-  private ConceptPresentation props_CellModel_OpenAngleBracket;
-  private ConceptPresentation props_CellModel_OpenAngleBracketSlash;
   private ConceptPresentation props_CellModel_Property;
   private ConceptPresentation props_CellModel_ReadOnlyModelAccessor;
   private ConceptPresentation props_CellModel_RefCell;
@@ -1082,13 +1079,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CellModel_BlockStart = cpb.create();
         }
         return props_CellModel_BlockStart;
-      case LanguageConceptSwitch.CellModel_CloseAngleBracket:
-        if (props_CellModel_CloseAngleBracket == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation(">");
-          props_CellModel_CloseAngleBracket = cpb.create();
-        }
-        return props_CellModel_CloseAngleBracket;
       case LanguageConceptSwitch.CellModel_Collection:
         if (props_CellModel_Collection == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L);
@@ -1199,20 +1189,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CellModel_NonEmptyProperty = cpb.create();
         }
         return props_CellModel_NonEmptyProperty;
-      case LanguageConceptSwitch.CellModel_OpenAngleBracket:
-        if (props_CellModel_OpenAngleBracket == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("<");
-          props_CellModel_OpenAngleBracket = cpb.create();
-        }
-        return props_CellModel_OpenAngleBracket;
-      case LanguageConceptSwitch.CellModel_OpenAngleBracketSlash:
-        if (props_CellModel_OpenAngleBracketSlash == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("</");
-          props_CellModel_OpenAngleBracketSlash = cpb.create();
-        }
-        return props_CellModel_OpenAngleBracketSlash;
       case LanguageConceptSwitch.CellModel_Property:
         if (props_CellModel_Property == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

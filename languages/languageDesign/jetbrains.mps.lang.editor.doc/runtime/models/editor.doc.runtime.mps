@@ -308,7 +308,7 @@
     </node>
     <node concept="2tJIrI" id="2yJIINoA9c0" role="jymVt" />
     <node concept="312cEu" id="2yJIINoAEd4" role="jymVt">
-      <property role="TrG5h" value="CellLayout_HtmlTag123" />
+      <property role="TrG5h" value="CellLayout_HtmlTag" />
       <node concept="312cEg" id="47_zCsM$oVz" role="jymVt">
         <property role="TrG5h" value="myTagNameCell" />
         <property role="3TUv4t" value="true" />

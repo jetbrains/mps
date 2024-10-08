@@ -9,13 +9,23 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_CellModel_CloseAngleBracket;
   private ConceptPresentation props_CellModel_HtmlTag;
+  private ConceptPresentation props_CellModel_OpenAngleBracket;
+  private ConceptPresentation props_CellModel_OpenAngleBracketSlash;
 
   @Override
   @Nullable
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.CellModel_CloseAngleBracket:
+        if (props_CellModel_CloseAngleBracket == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation(">");
+          props_CellModel_CloseAngleBracket = cpb.create();
+        }
+        return props_CellModel_CloseAngleBracket;
       case LanguageConceptSwitch.CellModel_HtmlTag:
         if (props_CellModel_HtmlTag == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -23,6 +33,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CellModel_HtmlTag = cpb.create();
         }
         return props_CellModel_HtmlTag;
+      case LanguageConceptSwitch.CellModel_OpenAngleBracket:
+        if (props_CellModel_OpenAngleBracket == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("<");
+          props_CellModel_OpenAngleBracket = cpb.create();
+        }
+        return props_CellModel_OpenAngleBracket;
+      case LanguageConceptSwitch.CellModel_OpenAngleBracketSlash:
+        if (props_CellModel_OpenAngleBracketSlash == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("</");
+          props_CellModel_OpenAngleBracketSlash = cpb.create();
+        }
+        return props_CellModel_OpenAngleBracketSlash;
     }
     return null;
   }

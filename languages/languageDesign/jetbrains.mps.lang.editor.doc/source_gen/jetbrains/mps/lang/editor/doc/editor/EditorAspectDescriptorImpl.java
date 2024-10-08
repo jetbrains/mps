@@ -18,7 +18,13 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex.index(cncpt)) {
       case 0:
+        return Collections.<ConceptEditor>singletonList(new CellModel_CloseAngleBracket_Editor());
+      case 1:
         return Collections.<ConceptEditor>singletonList(new CellModel_HtmlTag_Editor());
+      case 2:
+        return Collections.<ConceptEditor>singletonList(new CellModel_OpenAngleBracket_Editor());
+      case 3:
+        return Collections.<ConceptEditor>singletonList(new CellModel_OpenAngleBracketSlash_Editor());
       default:
     }
     return Collections.<ConceptEditor>emptyList();
@@ -26,5 +32,5 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
 
 
 
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xc64fb051a02a4400L, 0x8f651735dd616a7cL, 0x11d794d84ece7c48L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xc64fb051a02a4400L, 0x8f651735dd616a7cL, 0x415f93a6491d19c3L), MetaIdFactory.conceptId(0xc64fb051a02a4400L, 0x8f651735dd616a7cL, 0x11d794d84ece7c48L), MetaIdFactory.conceptId(0xc64fb051a02a4400L, 0x8f651735dd616a7cL, 0x415f93a648c6e6fcL), MetaIdFactory.conceptId(0xc64fb051a02a4400L, 0x8f651735dd616a7cL, 0x415f93a6495a4f6aL)).seal();
 }

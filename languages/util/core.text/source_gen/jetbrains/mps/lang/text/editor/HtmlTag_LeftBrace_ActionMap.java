@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -41,8 +40,6 @@ public class HtmlTag_LeftBrace_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        LogContext.with(HtmlTag_LeftBrace_ActionMap.class, null, null, null).info("hello2");
-
         if (DeletionApproverUtil.approve(editorContext, node)) {
           return;
         }
@@ -57,8 +54,6 @@ public class HtmlTag_LeftBrace_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        LogContext.with(HtmlTag_LeftBrace_ActionMap.class, null, null, null).info("hello3");
-
         NewElementStrategyFactory.createNewLineStrategy(node, editorContext, true, true).execute();
       }
 
@@ -70,8 +65,6 @@ public class HtmlTag_LeftBrace_ActionMap {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        LogContext.with(HtmlTag_LeftBrace_ActionMap.class, null, null, null).info("hello4");
-
         NewElementStrategyFactory.createNewLineStrategy(node, editorContext, true, true).execute();
       }
 

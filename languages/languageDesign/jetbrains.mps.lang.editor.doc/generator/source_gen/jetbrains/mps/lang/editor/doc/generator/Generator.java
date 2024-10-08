@@ -41,14 +41,16 @@ public class Generator extends TemplateModuleInterpreted2 {
 
   @Override
   public Collection<SLanguage> getTargetLanguages() {
-    SLanguage[] rv = new SLanguage[2];
+    SLanguage[] rv = new SLanguage[4];
     rv[0] = MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
-    rv[1] = MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
+    rv[1] = MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor");
+    rv[2] = MetaAdapterFactory.getLanguage(0xc64fb051a02a4400L, 0x8f651735dd616a7cL, "jetbrains.mps.lang.editor.doc");
+    rv[3] = MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
     return Arrays.asList(rv);
   }
 
   @Override
   public Collection<TemplateMappingPriorityRule> getPriorities() {
-    return TemplateUtil.asCollection(TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("e85ce403-dc22-4934-8e8d-b215f30df283(jetbrains.mps.lang.editor.doc.generator)", TemplateUtil.createRefNormal("r:845ad5a8-9ab4-47d8-9b3c-da612dd626ad(jetbrains.mps.lang.editor.tooltips.generator.template.main@generator)", "7561794385526429403", "main")), TemplateUtil.createRefExternal("0647eca7-da98-422a-8a8b-6ebc0bd014ea(jetbrains.mps.lang.editor#1129914002149)", TemplateUtil.createRefNormal("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1096629760203", "MAPPING_main"))), TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("e85ce403-dc22-4934-8e8d-b215f30df283(jetbrains.mps.lang.editor.doc.generator)", TemplateUtil.createRefNormal("r:845ad5a8-9ab4-47d8-9b3c-da612dd626ad(jetbrains.mps.lang.editor.tooltips.generator.template.main@generator)", "3462177627478823549", "3462177627478823549")), TemplateUtil.createRefExternal("0647eca7-da98-422a-8a8b-6ebc0bd014ea(jetbrains.mps.lang.editor#1129914002149)", TemplateUtil.createRefNormal("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1198258322917", "MAPPING_Sugar"))));
+    return TemplateUtil.asCollection(TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("e85ce403-dc22-4934-8e8d-b215f30df283(jetbrains.mps.lang.editor.doc.generator)", TemplateUtil.createRefNormal("r:845ad5a8-9ab4-47d8-9b3c-da612dd626ad(jetbrains.mps.lang.editor.tooltips.generator.template.main@generator)", "7561794385526429403", "main")), TemplateUtil.createRefExternal("0647eca7-da98-422a-8a8b-6ebc0bd014ea(jetbrains.mps.lang.editor#1129914002149)", TemplateUtil.createRefNormal("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1096629760203", "MAPPING_main"))), TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("e85ce403-dc22-4934-8e8d-b215f30df283(jetbrains.mps.lang.editor.doc.generator)", TemplateUtil.createRefNormal("r:845ad5a8-9ab4-47d8-9b3c-da612dd626ad(jetbrains.mps.lang.editor.tooltips.generator.template.main@generator)", "1895006837230792735", "sugar")), TemplateUtil.createRefExternal("0647eca7-da98-422a-8a8b-6ebc0bd014ea(jetbrains.mps.lang.editor#1129914002149)", TemplateUtil.createRefNormal("r:00000000-0000-4000-0000-011c8959029f(jetbrains.mps.lang.editor.generator.baseLanguage.template.main@generator)", "1198258322917", "MAPPING_Sugar"))));
   }
 }

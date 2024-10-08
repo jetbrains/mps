@@ -9,11 +9,17 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
-  public static final int CellModel_HtmlTag = 0;
+  public static final int CellModel_CloseAngleBracket = 0;
+  public static final int CellModel_HtmlTag = 1;
+  public static final int CellModel_OpenAngleBracket = 2;
+  public static final int CellModel_OpenAngleBracketSlash = 3;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xc64fb051a02a4400L, 0x8f651735dd616a7cL);
+    builder.put(0x415f93a6491d19c3L, CellModel_CloseAngleBracket);
     builder.put(0x11d794d84ece7c48L, CellModel_HtmlTag);
+    builder.put(0x415f93a648c6e6fcL, CellModel_OpenAngleBracket);
+    builder.put(0x415f93a6495a4f6aL, CellModel_OpenAngleBracketSlash);
     myIndex = builder.seal();
   }
 

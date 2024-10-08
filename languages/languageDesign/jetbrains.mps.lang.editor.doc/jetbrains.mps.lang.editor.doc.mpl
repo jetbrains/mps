@@ -39,6 +39,7 @@
         <language slang="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" version="0" />
         <language slang="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" version="2" />
         <language slang="l:18bc6592-03a6-4e29-a83a-7ff23bde13ba:jetbrains.mps.lang.editor" version="14" />
+        <language slang="l:c64fb051-a02a-4400-8f65-1735dd616a7c:jetbrains.mps.lang.editor.doc" version="0" />
         <language slang="l:b401a680-8325-4110-8fd3-84331ff25bef:jetbrains.mps.lang.generator" version="4" />
         <language slang="l:d7706f63-9be2-479c-a3da-ae92af1e64d5:jetbrains.mps.lang.generator.generationContext" version="2" />
         <language slang="l:446c26eb-2b7b-4bf0-9b35-f83fa582753e:jetbrains.mps.lang.modelapi" version="0" />
@@ -96,7 +97,7 @@
           <greater-priority-mapping>
             <generator generatorUID="e85ce403-dc22-4934-8e8d-b215f30df283(jetbrains.mps.lang.editor.doc.generator)" />
             <external-mapping>
-              <mapping-node modelUID="r:845ad5a8-9ab4-47d8-9b3c-da612dd626ad(jetbrains.mps.lang.editor.tooltips.generator.template.main@generator)" nodeID="3462177627478823549" />
+              <mapping-node modelUID="r:845ad5a8-9ab4-47d8-9b3c-da612dd626ad(jetbrains.mps.lang.editor.tooltips.generator.template.main@generator)" nodeID="1895006837230792735" />
             </external-mapping>
           </greater-priority-mapping>
           <lesser-priority-mapping>
