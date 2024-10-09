@@ -7,7 +7,7 @@
   <id>jetbrains.mps.ide.mpsmigration</id>
   <name>Migration 2022.2</name>
   <description>Provides actions to migrate models and languages developed using previous versions of MPS</description>
-  <version>2022.2.4</version>
+  <version>2022.2.5</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
   <idea-version since-build="222.1" until-build="223.1"/>
 

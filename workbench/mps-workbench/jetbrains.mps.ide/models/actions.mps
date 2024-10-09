@@ -24220,7 +24220,7 @@
     <property role="9BnSM" value="JetBrains" />
     <property role="TrG5h" value="IDE" />
     <property role="9BnSO" value="222.1" />
-    <property role="9BnSK" value="2022.2.4" />
+    <property role="9BnSK" value="2022.2.5" />
   </node>
   <node concept="sE7Ow" id="1JAxb5h3N20">
     <property role="TrG5h" value="EditGivenNode" />
