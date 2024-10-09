@@ -20,12 +20,9 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.Service;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.wm.ToolWindow;
-import com.intellij.openapi.wm.ToolWindowAnchor;
-import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.ContentManagerAdapter;
@@ -35,13 +32,9 @@ import jetbrains.mps.generator.GenerationSettingsProvider;
 import jetbrains.mps.generator.GenerationTrace;
 import jetbrains.mps.generator.IGenerationSettings.GenTraceSettings;
 import jetbrains.mps.generator.TransientModelsProvider;
-import jetbrains.mps.ide.findusages.view.UsagesViewTool;
-import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.tools.BaseProjectTool;
 import jetbrains.mps.ide.tools.BaseTool;
 import jetbrains.mps.ide.tools.CloseAction;
-import jetbrains.mps.ide.util.MPSProjectActivity;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.workbench.action.ActionUtils;
@@ -53,6 +46,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -62,33 +56,24 @@ import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service(Service.Level.PROJECT)
-public final class GenerationTracerViewTool extends BaseTool {
+public final class GenerationTracerViewToolState {
   private static final String ID = "Generation Tracer";
   private NoTabsComponent myNoTabsComponent;
 
   private List<GenerationTracerView> myTracerViews = new ArrayList<>();
   private ContentManagerListener myContentListener;
   private final TransientModelsProvider myTransientModelsOwner;
+  private final Project myProject;
+  private final BaseTool myTool;
   private final GenTraceSettings myTraceSettings;
   private boolean myAutoscroll;
 
-  public GenerationTracerViewTool(Project project) {
-    super(project, ID, null, IdeIcons.DEFAULT_ICON, ToolWindowAnchor.BOTTOM, false, true);
+  public GenerationTracerViewToolState(Project project, BaseTool tool) {
+    myProject = project;
+    myTool = tool;
     myTransientModelsOwner = project.getComponent(TransientModelsProvider.class);
     myNoTabsComponent = new NoTabsComponent(this);
     myTraceSettings = ProjectHelper.fromIdeaProject(project).getComponent(GenerationSettingsProvider.class).getGenerationSettings().getTraceSettings();
-  }
-
-  public static GenerationTracerViewTool getInstance(Project project) {
-    final GenerationTracerViewTool tool = project.getService(GenerationTracerViewTool.class);
-    //Ensure tool window initialization
-    final ToolWindow toolWindow = ToolWindowManager.getInstance(project).getToolWindow(ID);
-    if (toolWindow!=null) {
-      return tool;
-    } else {
-      return null;
-    }
   }
 
   //////
@@ -106,11 +91,10 @@ public final class GenerationTracerViewTool extends BaseTool {
     return modelReference != null && myTransientModelsOwner.getTrace(modelReference) != null;
   }
   public boolean showTraceInputData(@NotNull SNode node) {
-    assert getContentManager()!=null:"The GenerationTracerViewTool has not been initialized";
     int index = getTabIndex(GenerationTracerView.Kind.TraceForward, node.getReference());
     if (index > -1) {
       selectIndex(index);
-      openToolLater(true);
+      myTool.openToolLater(true);
       return true;
     }
 
@@ -123,11 +107,10 @@ public final class GenerationTracerViewTool extends BaseTool {
   }
 
   public boolean showTracebackData(SNode node) {
-    assert getContentManager()!=null:"The GenerationTracerViewTool has not been initialized";
     int index = getTabIndex(GenerationTracerView.Kind.TraceBackward, node.getReference());
     if (index > -1) {
       selectIndex(index);
-      openToolLater(true);
+      myTool.openToolLater(true);
       return true;
     }
     TraceNodeUI tracerNode = buildBackwardTrace(node);
@@ -140,16 +123,17 @@ public final class GenerationTracerViewTool extends BaseTool {
 
   //////////////////
 
-  private void createTool() {
+  public void createTool() {
     StartupManager.getInstance(getProject()).runWhenProjectIsInitialized(() -> {
+      if (getProject().isDisposed()) return;
       showNoTabsComponent();
       setTracingDataIsAvailable(hasTracingData());
-      setAvailable(false);
+      myTool.setAvailable(false);
+      registerContentManagerListener();
     });
   }
 
-  protected void doRegister() {
-    super.doRegister();
+  private void registerContentManagerListener() {
     myContentListener = new ContentManagerAdapter() {
       public void contentRemoved(ContentManagerEvent event) {
         final boolean removedNoTabsTab = event.getContent().getComponent() == myNoTabsComponent;
@@ -160,29 +144,58 @@ public final class GenerationTracerViewTool extends BaseTool {
         if (getContentManager().getContentCount() == 0) {
           showNoTabsComponent();
           if (removedNoTabsTab) {
-            makeUnavailableLater();
+            myTool.makeUnavailableLater();
           }
         }
       }
     };
 
+    if (getContentManager().isDisposed()) return;
     getContentManager().addContentManagerListener(myContentListener);
   }
 
-  @Override
-  protected void doUnregister() {
+  public void unregister() {
     final ContentManager contentManager = getContentManager();
-    if (myContentListener != null && contentManager != null && !contentManager.isDisposed()) {
-      contentManager.removeContentManagerListener(myContentListener);
+    if (contentManager != null && !contentManager.isDisposed()) {
+      if (myContentListener != null) {
+        contentManager.removeContentManagerListener(myContentListener);
+      }
+      closeAll();
+      Content noTabsContent = getContentManager().getContent(myNoTabsComponent);
+      if (noTabsContent != null) {
+        getContentManager().removeContent(noTabsContent, true);
+      }
     }
     myContentListener = null;
-    super.doUnregister();
+  }
+
+  private ContentManager getContentManager() {
+    if (myProject.isDisposed()) {
+      return null;
+    }
+    ToolWindow tw = myTool == null ? null : myTool.getToolWindow();
+    return tw == null ? null : tw.getContentManager();
+  }
+
+  private Content addContent(JComponent component, @NotNull String name, Icon icon, boolean isLockable) {
+    ContentManager contentManager = getContentManager();
+    Content content = contentManager.getFactory().createContent(component, name, isLockable);
+    if (icon != null) {
+      content.putUserData(ToolWindow.SHOW_CONTENT_ICON, Boolean.TRUE);
+      content.setIcon(icon);
+    } else {
+      content.setIcon(myTool.getIcon());
+    }
+    contentManager.addContent(content);
+    return content;
   }
 
   private void showNoTabsComponent() {
     ContentManager manager = getContentManager();
-    manager.removeAllContents(true);
-    addContent(myNoTabsComponent, "", null, false);
+    if (manager != null) {
+      manager.removeAllContents(true);
+      addContent(myNoTabsComponent, "", null, false);
+    }
   }
 
   private void closeTab(int index) {
@@ -236,17 +249,15 @@ public final class GenerationTracerViewTool extends BaseTool {
     if (noTabsContent != null) {
       getContentManager().removeContent(noTabsContent, true);
     }
-
-    openToolLater(true);
+    myTool.openToolLater(true);
   }
 
   public void setTracingDataIsAvailable(final boolean dataPresent) {
     ApplicationManager.getApplication().invokeLater(() -> myNoTabsComponent.setDataIsAvailable(dataPresent));
   }
 
-  @Override
   public Project getProject() {
-    return super.getProject(); // public for GenerationTracerView
+    return myProject; // public for GenerationTracerView
   }
 
   TraceNodeUI buildForwardTrace(SNode node) {
@@ -277,7 +288,7 @@ public final class GenerationTracerViewTool extends BaseTool {
   public static class NoTabsComponent extends JPanel {
     JPanel myLabelsPanel = new JPanel();
 
-    public NoTabsComponent(final GenerationTracerViewTool tool) {
+    public NoTabsComponent(final GenerationTracerViewToolState tool) {
       setLayout(new BorderLayout());
 
       JPanel mainPanel = new JPanel(new GridBagLayout());
@@ -288,7 +299,7 @@ public final class GenerationTracerViewTool extends BaseTool {
       add(mainPanel, BorderLayout.CENTER);
 
       ApplicationManager.getApplication().invokeLater(() -> {
-        ActionGroup group = ActionUtils.groupFromActions(new CloseAction(tool));
+        ActionGroup group = ActionUtils.groupFromActions(new CloseAction(tool.myTool));
 
         ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, false);
         toolbar.setTargetComponent(this);
@@ -311,15 +322,6 @@ public final class GenerationTracerViewTool extends BaseTool {
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         myLabelsPanel.add(label);
       }
-    }
-  }
-
-  private static class Factory implements com.intellij.openapi.wm.ToolWindowFactory {
-    @Override
-    public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
-      final GenerationTracerViewTool tool = project.getService(GenerationTracerViewTool.class);
-      tool.createTool();
-      tool.register();
     }
   }
 }

@@ -28,7 +28,6 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter" />
-    <toolWindow id="Generation Tracer" anchor="bottom" icon="jetbrains.mps.ide.icons.IdeIcons.DEFAULT_ICON" factoryClass="jetbrains.mps.ide.devkit.generator.GenerationTracerViewTool$Factory" doNotActivateOnStart="false" canCloseContents="true"/>
   </extensions>
 
   <extensions defaultExtensionNs="com.intellij">

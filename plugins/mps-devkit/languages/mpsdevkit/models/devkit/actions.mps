@@ -5854,18 +5854,24 @@
       <node concept="3clFbS" id="14z8V6nEs7S" role="2VODD2">
         <node concept="3cpWs8" id="5oSeKmCexAf" role="3cqZAp">
           <node concept="3cpWsn" id="5oSeKmCexAg" role="3cpWs9">
-            <property role="TrG5h" value="tool" />
+            <property role="TrG5h" value="toolState" />
             <node concept="3uibUv" id="5oSeKmCexAh" role="1tU5fm">
-              <ref role="3uigEE" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
+              <ref role="3uigEE" to="a0yo:~GenerationTracerViewToolState" resolve="GenerationTracerViewToolState" />
             </node>
-            <node concept="2YIFZM" id="7_DlbL9M$05" role="33vP2m">
-              <ref role="37wK5l" to="a0yo:~GenerationTracerViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-              <ref role="1Pybhc" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
-              <node concept="2OqwBi" id="7_DlbL9M$06" role="37wK5m">
-                <node concept="2WthIp" id="7_DlbL9M$07" role="2Oq$k0" />
-                <node concept="1DTwFV" id="7_DlbL9M$08" role="2OqNvi">
-                  <ref role="2WH_rO" node="14z8V6nEs7M" resolve="project" />
+            <node concept="2OqwBi" id="2b5HLXPzfI1" role="33vP2m">
+              <node concept="2OqwBi" id="2b5HLXPzfI2" role="2Oq$k0">
+                <node concept="2OqwBi" id="2b5HLXPzfI3" role="2Oq$k0">
+                  <node concept="2WthIp" id="2b5HLXPzfI4" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="2b5HLXPzfI5" role="2OqNvi">
+                    <ref role="2WH_rO" node="14z8V6nEs7M" resolve="project" />
+                  </node>
                 </node>
+                <node concept="LR4U6" id="2b5HLXPzfI6" role="2OqNvi">
+                  <ref role="LR4U5" node="62rhvrhIDvD" resolve="GenerationTracerTool" />
+                </node>
+              </node>
+              <node concept="2XshWL" id="2b5HLXPzfI7" role="2OqNvi">
+                <ref role="2WH_rO" node="2b5HLXPymSw" resolve="getState" />
               </node>
             </node>
           </node>
@@ -5915,7 +5921,7 @@
                 <ref role="3cqZAo" node="5oSeKmCexAg" resolve="tool" />
               </node>
               <node concept="liA8E" id="14z8V6nEs8a" role="2OqNvi">
-                <ref role="37wK5l" to="a0yo:~GenerationTracerViewTool.showTraceInputData(org.jetbrains.mps.openapi.model.SNode)" resolve="showTraceInputData" />
+                <ref role="37wK5l" to="a0yo:~GenerationTracerViewToolState.showTraceInputData(org.jetbrains.mps.openapi.model.SNode)" resolve="showTraceInputData" />
                 <node concept="2OqwBi" id="14z8V6nEs8c" role="37wK5m">
                   <node concept="2WthIp" id="14z8V6nEs8d" role="2Oq$k0" />
                   <node concept="3gHZIF" id="5VaWw4eyjwF" role="2OqNvi">
@@ -5932,18 +5938,24 @@
       <node concept="3clFbS" id="14z8V6nEs8h" role="2VODD2">
         <node concept="3cpWs8" id="5oSeKmCevcU" role="3cqZAp">
           <node concept="3cpWsn" id="5oSeKmCevcV" role="3cpWs9">
-            <property role="TrG5h" value="tool" />
+            <property role="TrG5h" value="toolState" />
             <node concept="3uibUv" id="5oSeKmCevcW" role="1tU5fm">
-              <ref role="3uigEE" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
+              <ref role="3uigEE" to="a0yo:~GenerationTracerViewToolState" resolve="GenerationTracerViewToolState" />
             </node>
-            <node concept="2YIFZM" id="7_DlbL9Lqou" role="33vP2m">
-              <ref role="37wK5l" to="a0yo:~GenerationTracerViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-              <ref role="1Pybhc" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
-              <node concept="2OqwBi" id="7_DlbL9Lr0V" role="37wK5m">
-                <node concept="2WthIp" id="7_DlbL9Lr0Y" role="2Oq$k0" />
-                <node concept="1DTwFV" id="7_DlbL9Lr10" role="2OqNvi">
-                  <ref role="2WH_rO" node="14z8V6nEs7M" resolve="project" />
+            <node concept="2OqwBi" id="2b5HLXPzdAK" role="33vP2m">
+              <node concept="2OqwBi" id="2b5HLXPzcru" role="2Oq$k0">
+                <node concept="2OqwBi" id="2b5HLXPz9$c" role="2Oq$k0">
+                  <node concept="2WthIp" id="2b5HLXPz982" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="2b5HLXPzbNs" role="2OqNvi">
+                    <ref role="2WH_rO" node="14z8V6nEs7M" resolve="project" />
+                  </node>
                 </node>
+                <node concept="LR4U6" id="2b5HLXPzdln" role="2OqNvi">
+                  <ref role="LR4U5" node="62rhvrhIDvD" resolve="GenerationTracerTool" />
+                </node>
+              </node>
+              <node concept="2XshWL" id="2b5HLXPzfwP" role="2OqNvi">
+                <ref role="2WH_rO" node="2b5HLXPymSw" resolve="getState" />
               </node>
             </node>
           </node>
@@ -5965,7 +5977,7 @@
                       <ref role="3cqZAo" node="5oSeKmCevcV" resolve="tool" />
                     </node>
                     <node concept="liA8E" id="5VaWw4eye7B" role="2OqNvi">
-                      <ref role="37wK5l" to="a0yo:~GenerationTracerViewTool.hasTraceInputData(org.jetbrains.mps.openapi.model.SModelReference)" resolve="hasTraceInputData" />
+                      <ref role="37wK5l" to="a0yo:~GenerationTracerViewToolState.hasTraceInputData(org.jetbrains.mps.openapi.model.SModelReference)" resolve="hasTraceInputData" />
                       <node concept="2OqwBi" id="3XR0QgVCo9B" role="37wK5m">
                         <node concept="2OqwBi" id="3XR0QgVCo9y" role="2Oq$k0">
                           <node concept="2OqwBi" id="3XR0QgVCo9z" role="2Oq$k0">
@@ -6029,18 +6041,24 @@
       <node concept="3clFbS" id="14z8V6nEs9l" role="2VODD2">
         <node concept="3cpWs8" id="5oSeKmCes51" role="3cqZAp">
           <node concept="3cpWsn" id="5oSeKmCes52" role="3cpWs9">
-            <property role="TrG5h" value="tool" />
+            <property role="TrG5h" value="toolState" />
             <node concept="3uibUv" id="5oSeKmCes53" role="1tU5fm">
-              <ref role="3uigEE" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
+              <ref role="3uigEE" to="a0yo:~GenerationTracerViewToolState" resolve="GenerationTracerViewToolState" />
             </node>
-            <node concept="2YIFZM" id="7_DlbL9MnOs" role="33vP2m">
-              <ref role="37wK5l" to="a0yo:~GenerationTracerViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-              <ref role="1Pybhc" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
-              <node concept="2OqwBi" id="7_DlbL9MnOt" role="37wK5m">
-                <node concept="2WthIp" id="7_DlbL9MnOu" role="2Oq$k0" />
-                <node concept="1DTwFV" id="7_DlbL9MnOv" role="2OqNvi">
-                  <ref role="2WH_rO" node="5VaWw4ew4wl" resolve="project" />
+            <node concept="2OqwBi" id="2b5HLXPzhll" role="33vP2m">
+              <node concept="2OqwBi" id="2b5HLXPzhlm" role="2Oq$k0">
+                <node concept="2OqwBi" id="2b5HLXPzhln" role="2Oq$k0">
+                  <node concept="2WthIp" id="2b5HLXPzhlo" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="2b5HLXPzhlp" role="2OqNvi">
+                    <ref role="2WH_rO" node="5VaWw4ew4wl" resolve="project" />
+                  </node>
                 </node>
+                <node concept="LR4U6" id="2b5HLXPzhlq" role="2OqNvi">
+                  <ref role="LR4U5" node="62rhvrhIDvD" resolve="GenerationTracerTool" />
+                </node>
+              </node>
+              <node concept="2XshWL" id="2b5HLXPzhlr" role="2OqNvi">
+                <ref role="2WH_rO" node="2b5HLXPymSw" resolve="getState" />
               </node>
             </node>
           </node>
@@ -6090,7 +6108,7 @@
                 <ref role="3cqZAo" node="5oSeKmCes52" resolve="tool" />
               </node>
               <node concept="liA8E" id="14z8V6nEs9E" role="2OqNvi">
-                <ref role="37wK5l" to="a0yo:~GenerationTracerViewTool.showTracebackData(org.jetbrains.mps.openapi.model.SNode)" resolve="showTracebackData" />
+                <ref role="37wK5l" to="a0yo:~GenerationTracerViewToolState.showTracebackData(org.jetbrains.mps.openapi.model.SNode)" resolve="showTracebackData" />
                 <node concept="2OqwBi" id="14z8V6nEs9F" role="37wK5m">
                   <node concept="2WthIp" id="14z8V6nEs9G" role="2Oq$k0" />
                   <node concept="3gHZIF" id="14z8V6nEs9H" role="2OqNvi">
@@ -6107,18 +6125,24 @@
       <node concept="3clFbS" id="14z8V6nEs9J" role="2VODD2">
         <node concept="3cpWs8" id="5oSeKmCenEU" role="3cqZAp">
           <node concept="3cpWsn" id="5oSeKmCenEV" role="3cpWs9">
-            <property role="TrG5h" value="tool" />
+            <property role="TrG5h" value="toolState" />
             <node concept="3uibUv" id="5oSeKmCenEM" role="1tU5fm">
-              <ref role="3uigEE" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
+              <ref role="3uigEE" to="a0yo:~GenerationTracerViewToolState" resolve="GenerationTracerViewToolState" />
             </node>
-            <node concept="2YIFZM" id="7_DlbL9Lskw" role="33vP2m">
-              <ref role="37wK5l" to="a0yo:~GenerationTracerViewTool.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-              <ref role="1Pybhc" to="a0yo:~GenerationTracerViewTool" resolve="GenerationTracerViewTool" />
-              <node concept="2OqwBi" id="7_DlbL9LszM" role="37wK5m">
-                <node concept="2WthIp" id="7_DlbL9LszP" role="2Oq$k0" />
-                <node concept="1DTwFV" id="7_DlbL9LszR" role="2OqNvi">
-                  <ref role="2WH_rO" node="5VaWw4ew4wl" resolve="project" />
+            <node concept="2OqwBi" id="2b5HLXPzgVb" role="33vP2m">
+              <node concept="2OqwBi" id="2b5HLXPzgVc" role="2Oq$k0">
+                <node concept="2OqwBi" id="2b5HLXPzgVd" role="2Oq$k0">
+                  <node concept="2WthIp" id="2b5HLXPzgVe" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="2b5HLXPzgVf" role="2OqNvi">
+                    <ref role="2WH_rO" node="5VaWw4ew4wl" resolve="project" />
+                  </node>
                 </node>
+                <node concept="LR4U6" id="2b5HLXPzgVg" role="2OqNvi">
+                  <ref role="LR4U5" node="62rhvrhIDvD" resolve="GenerationTracerTool" />
+                </node>
+              </node>
+              <node concept="2XshWL" id="2b5HLXPzgVh" role="2OqNvi">
+                <ref role="2WH_rO" node="2b5HLXPymSw" resolve="getState" />
               </node>
             </node>
           </node>
@@ -6152,7 +6176,7 @@
                       <ref role="3cqZAo" node="5oSeKmCenEV" resolve="tool" />
                     </node>
                     <node concept="liA8E" id="14z8V6nEsaq" role="2OqNvi">
-                      <ref role="37wK5l" to="a0yo:~GenerationTracerViewTool.hasTracebackData(org.jetbrains.mps.openapi.model.SModelReference)" resolve="hasTracebackData" />
+                      <ref role="37wK5l" to="a0yo:~GenerationTracerViewToolState.hasTracebackData(org.jetbrains.mps.openapi.model.SModelReference)" resolve="hasTracebackData" />
                       <node concept="2OqwBi" id="3XR0QgVCo9Y" role="37wK5m">
                         <node concept="2OqwBi" id="3XR0QgVCo9V" role="2Oq$k0">
                           <node concept="37vLTw" id="3XR0QgVCo9W" role="2Oq$k0">
@@ -17484,6 +17508,157 @@
               <node concept="2WthIp" id="6gZ$BJoV63P" role="2Oq$k0" />
               <node concept="2BZ7hE" id="6gZ$BJoV63R" role="2OqNvi">
                 <ref role="2WH_rO" node="6gZ$BJoV4tv" resolve="myProject" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="sEfby" id="62rhvrhIDvD">
+    <property role="3GE5qa" value="Tools" />
+    <property role="TrG5h" value="GenerationTracerViewTool" />
+    <property role="2XNbzY" value="Generation Tracer" />
+    <node concept="2XrIbr" id="6C5CpMSuZZX" role="2XNbBy">
+      <property role="TrG5h" value="doRegister" />
+      <node concept="3cqZAl" id="6C5CpMSvx_D" role="3clF45" />
+      <node concept="3clFbS" id="6C5CpMSuZZZ" role="3clF47">
+        <node concept="3clFbJ" id="69M65zr26oo" role="3cqZAp">
+          <node concept="3clFbS" id="69M65zr26oq" role="3clFbx">
+            <node concept="3clFbF" id="2b5HLXPyvRb" role="3cqZAp">
+              <node concept="2OqwBi" id="2b5HLXPyw_R" role="3clFbG">
+                <node concept="2OqwBi" id="2b5HLXPyw0E" role="2Oq$k0">
+                  <node concept="2WthIp" id="2b5HLXPyvR9" role="2Oq$k0" />
+                  <node concept="2BZ7hE" id="2b5HLXPywjx" role="2OqNvi">
+                    <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="2b5HLXPyx7U" role="2OqNvi">
+                  <ref role="37wK5l" to="a0yo:~GenerationTracerViewToolState.createTool()" resolve="createTool" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="69M65zr26Ro" role="3clFbw">
+            <node concept="10Nm6u" id="69M65zr26W$" role="3uHU7w" />
+            <node concept="2OqwBi" id="69M65zr26yV" role="3uHU7B">
+              <node concept="2WthIp" id="69M65zr26qF" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="69M65zr26JQ" role="2OqNvi">
+                <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tmbuc" id="6C5CpMSvxFO" role="1B3o_S" />
+      <node concept="2AHcQZ" id="6C5CpMSvxIf" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2XrIbr" id="2v4zK4WBogN" role="2XNbBy">
+      <property role="TrG5h" value="doUnregister" />
+      <node concept="3cqZAl" id="2v4zK4WBogO" role="3clF45" />
+      <node concept="3clFbS" id="2v4zK4WBogP" role="3clF47">
+        <node concept="3clFbJ" id="69M65zr275A" role="3cqZAp">
+          <node concept="3clFbS" id="69M65zr275B" role="3clFbx">
+            <node concept="3clFbF" id="2v4zK4WBovr" role="3cqZAp">
+              <node concept="2OqwBi" id="2v4zK4WBovs" role="3clFbG">
+                <node concept="2OqwBi" id="2v4zK4WBovt" role="2Oq$k0">
+                  <node concept="2WthIp" id="2v4zK4WBovu" role="2Oq$k0" />
+                  <node concept="2BZ7hE" id="2v4zK4WBovv" role="2OqNvi">
+                    <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="2v4zK4WBovw" role="2OqNvi">
+                  <ref role="37wK5l" to="a0yo:~GenerationTracerViewToolState.unregister()" resolve="unregister" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="69M65zr275I" role="3clFbw">
+            <node concept="10Nm6u" id="69M65zr275J" role="3uHU7w" />
+            <node concept="2OqwBi" id="69M65zr275K" role="3uHU7B">
+              <node concept="2WthIp" id="69M65zr275L" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="69M65zr275M" role="2OqNvi">
+                <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tmbuc" id="2v4zK4WBogW" role="1B3o_S" />
+      <node concept="2AHcQZ" id="2v4zK4WBogX" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2XrIbr" id="2b5HLXPymSw" role="2XNbBy">
+      <property role="TrG5h" value="getState" />
+      <node concept="3uibUv" id="2b5HLXPze9x" role="3clF45">
+        <ref role="3uigEE" to="a0yo:~GenerationTracerViewToolState" resolve="GenerationTracerViewToolState" />
+      </node>
+      <node concept="3clFbS" id="2b5HLXPymSy" role="3clF47">
+        <node concept="3cpWs6" id="2b5HLXPzeY_" role="3cqZAp">
+          <node concept="2OqwBi" id="2b5HLXPzf1C" role="3cqZAk">
+            <node concept="2WthIp" id="2b5HLXPzf1F" role="2Oq$k0" />
+            <node concept="2BZ7hE" id="2b5HLXPzf1H" role="2OqNvi">
+              <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2b5HLXPze1d" role="1B3o_S" />
+    </node>
+    <node concept="2BZ0e9" id="62rhvrhIMk3" role="2XNbBz">
+      <property role="TrG5h" value="state" />
+      <node concept="3Tm6S6" id="62rhvrhIMk4" role="1B3o_S" />
+      <node concept="3uibUv" id="62rhvrhINCq" role="1tU5fm">
+        <ref role="3uigEE" to="a0yo:~GenerationTracerViewToolState" resolve="GenerationTracerViewToolState" />
+      </node>
+    </node>
+    <node concept="2UmK3q" id="62rhvrhIDvE" role="2Um5zG">
+      <node concept="3clFbS" id="62rhvrhIDvF" role="2VODD2">
+        <node concept="3clFbF" id="SNOplpEHmK" role="3cqZAp">
+          <node concept="10Nm6u" id="SNOplpEHmD" role="3clFbG" />
+        </node>
+      </node>
+    </node>
+    <node concept="1GtWCo" id="62rhvrhIDKM" role="1nVCmq">
+      <node concept="10M0yZ" id="62rhvrhIMez" role="1GtWoa">
+        <ref role="3cqZAo" to="xnls:~IdeIcons.DEFAULT_ICON" resolve="DEFAULT_ICON" />
+        <ref role="1PxDUh" to="xnls:~IdeIcons" resolve="IdeIcons" />
+      </node>
+    </node>
+    <node concept="2xpIHi" id="62rhvrhINGO" role="uR5cp">
+      <node concept="3clFbS" id="62rhvrhINGP" role="2VODD2">
+        <node concept="3clFbF" id="62rhvrhIObc" role="3cqZAp">
+          <node concept="37vLTI" id="62rhvrhIOvF" role="3clFbG">
+            <node concept="2ShNRf" id="62rhvrhIOzy" role="37vLTx">
+              <node concept="1pGfFk" id="62rhvrhJwXF" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="a0yo:~GenerationTracerViewToolState.&lt;init&gt;(com.intellij.openapi.project.Project,jetbrains.mps.ide.tools.BaseTool)" resolve="GenerationTracerViewToolState" />
+                <node concept="2xqhHp" id="62rhvrhJx0x" role="37wK5m" />
+                <node concept="2WthIp" id="2b5HLXPymGV" role="37wK5m" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="62rhvrhIOb6" role="37vLTJ">
+              <node concept="2WthIp" id="62rhvrhIOb9" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="62rhvrhIObb" role="2OqNvi">
+                <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2xpOpl" id="3QZAx3M2GXR" role="uR5co">
+      <node concept="3clFbS" id="3QZAx3M2GXS" role="2VODD2">
+        <node concept="3clFbF" id="7$tu1BTTIsE" role="3cqZAp">
+          <node concept="37vLTI" id="7$tu1BTTJ07" role="3clFbG">
+            <node concept="10Nm6u" id="7$tu1BTTJ2t" role="37vLTx" />
+            <node concept="2OqwBi" id="7$tu1BTTI$G" role="37vLTJ">
+              <node concept="2WthIp" id="7$tu1BTTIsC" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="7$tu1BTTIKu" role="2OqNvi">
+                <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
               </node>
             </node>
           </node>

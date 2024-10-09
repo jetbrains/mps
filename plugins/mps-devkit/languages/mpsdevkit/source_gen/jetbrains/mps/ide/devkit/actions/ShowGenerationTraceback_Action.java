@@ -8,7 +8,8 @@ import jetbrains.mps.workbench.action.ActionAccess;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.ide.devkit.generator.GenerationTracerViewTool;
+import jetbrains.mps.ide.devkit.generator.GenerationTracerViewToolState;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -34,12 +35,12 @@ public class ShowGenerationTraceback_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    GenerationTracerViewTool tool = GenerationTracerViewTool.getInstance(event.getData(CommonDataKeys.PROJECT));
+    GenerationTracerViewToolState toolState = ProjectPluginManager.getInstance(event.getData(CommonDataKeys.PROJECT)).getTool(GenerationTracerViewTool_Tool.class).getState();
     SNode n = event.getData(MPSCommonDataKeys.NODE);
-    if ((n == null) || !(SNodeOperations.getModel(n) instanceof TransientSModel) || tool == null) {
+    if ((n == null) || !(SNodeOperations.getModel(n) instanceof TransientSModel) || toolState == null) {
       disable(event.getPresentation());
     } else {
-      setEnabledState(event.getPresentation(), tool.hasTracebackData(SModelOperations.getPointer(SNodeOperations.getModel(n))));
+      setEnabledState(event.getPresentation(), toolState.hasTracebackData(SModelOperations.getPointer(SNodeOperations.getModel(n))));
     }
   }
   @Override
@@ -63,8 +64,8 @@ public class ShowGenerationTraceback_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    GenerationTracerViewTool tool = GenerationTracerViewTool.getInstance(event.getData(CommonDataKeys.PROJECT));
-    if (!(tool.showTracebackData(event.getData(MPSCommonDataKeys.NODE)))) {
+    GenerationTracerViewToolState toolState = ProjectPluginManager.getInstance(event.getData(CommonDataKeys.PROJECT)).getTool(GenerationTracerViewTool_Tool.class).getState();
+    if (!(toolState.showTracebackData(event.getData(MPSCommonDataKeys.NODE)))) {
       JBPopup m = JBPopupFactory.getInstance().createMessage("No tracing data available");
       m.showCenteredInCurrentWindow(event.getData(CommonDataKeys.PROJECT));
     }
