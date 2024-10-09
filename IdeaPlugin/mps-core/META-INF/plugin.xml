@@ -19,7 +19,7 @@
   <name>MPS Core</name>
   <category>Custom Languages</category>
   <description>The plugin provides support for MPS in IDEA</description>
-  <version>2023.2.2</version>
+  <version>2023.2.3</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
   <idea-version since-build="232.1" until-build="233.1"/>
 

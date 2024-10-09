@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-8z70edb7hb7e1hf9m2dz8quy06qil97">
+<product version="3" modelHash="-bjrksla2lz4lvq3kmree29kmz8bjuc">
   <files names="Collections.java:CustomViewersInitializer_AppPluginPart.java:DebugInfoProvider_AppPluginPart.java:IndexedTupleViewer_WrapperFactory.java:List_WrapperFactory.java:MapEntry_WrapperFactory.java:Map_WrapperFactory.java:Plugin_ApplicationPlugin.java:SNodeViewer_WrapperFactory.java:SNodeWatchables.java:Set_WrapperFactory.java:TuplesWatchables.java:plugin.xml" />
 </product>
 
