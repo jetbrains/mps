@@ -98,7 +98,7 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1153422305557" name="jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression" flags="nn" index="2dkUwp" />
-      <concept id="2323553266850475941" name="jetbrains.mps.baseLanguage.structure.IHasModifiers" flags="ngI" index="2frcj7">
+      <concept id="2323553266850475941" name="jetbrains.mps.baseLanguage.structure.IHasModifiers" flags="ng" index="2frcj7">
         <child id="2323553266850475953" name="modifiers" index="2frcjj" />
       </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
@@ -115,7 +115,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
@@ -193,7 +193,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
         <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ">
@@ -272,7 +272,7 @@
         <child id="1160998896846" name="condition" index="1gVkn0" />
         <child id="1160998916832" name="message" index="1gVpfI" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
         <child id="4972241301747169160" name="typeArgument" index="3PaCim" />
@@ -311,7 +311,7 @@
       <concept id="1184952934362" name="jetbrains.mps.baseLanguage.structure.DimensionExpression" flags="nn" index="3$GHV9">
         <child id="1184953288404" name="expression" index="3$I4v7" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -430,7 +430,7 @@
         <child id="7915009415671751864" name="type" index="2FaQuo" />
       </concept>
       <concept id="237887375562511215" name="jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference" flags="ng" index="37Ijox" />
-      <concept id="3507059745126391419" name="jetbrains.mps.baseLanguage.methodReferences.structure.IMethodReference" flags="ngI" index="3UZKCU">
+      <concept id="3507059745126391419" name="jetbrains.mps.baseLanguage.methodReferences.structure.IMethodReference" flags="ng" index="3UZKCU">
         <reference id="237887375562511297" name="method" index="37Ijqf" />
         <child id="962278442658307079" name="target" index="wWaWy" />
       </concept>
@@ -460,7 +460,7 @@
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -6402,7 +6402,6 @@
         </node>
       </node>
     </node>
-    <node concept="3Tm1VV" id="36$CdjYcVqY" role="1B3o_S" />
     <node concept="2tJIrI" id="$lftgT1JbN" role="jymVt" />
     <node concept="3clFb_" id="$lftgT1Kfd" role="jymVt">
       <property role="TrG5h" value="isRepositorySaveRequired" />
@@ -6495,6 +6494,7 @@
         </node>
       </node>
     </node>
+    <node concept="3Tm1VV" id="36$CdjYcVqY" role="1B3o_S" />
   </node>
   <node concept="312cEu" id="6fMyXCHDaRA">
     <property role="3GE5qa" value="" />
@@ -9329,8 +9329,8 @@
       </node>
       <node concept="2JFqV2" id="2$iyr2g1pKt" role="2frcjj" />
     </node>
-    <node concept="2tJIrI" id="2$iyr2g1r5b" role="jymVt" />
     <node concept="3Tm1VV" id="4biA4YBo9Fc" role="1B3o_S" />
+    <node concept="2tJIrI" id="2$iyr2g1r5b" role="jymVt" />
   </node>
   <node concept="312cEu" id="4biA4YBp1hH">
     <property role="TrG5h" value="MigrationExecutorImpl" />
@@ -11454,6 +11454,15 @@
     <node concept="2tJIrI" id="53d0N_LgrFf" role="jymVt" />
     <node concept="3clFb_" id="53d0N_LgtLX" role="jymVt">
       <property role="TrG5h" value="showRequired" />
+      <node concept="37vLTG" id="$lftgT2TWi" role="3clF46">
+        <property role="TrG5h" value="migrationSetup" />
+        <node concept="3uibUv" id="$lftgT31j1" role="1tU5fm">
+          <ref role="3uigEE" node="36$CdjYcVqX" resolve="MigrationSetup" />
+        </node>
+        <node concept="2AHcQZ" id="$lftgT333L" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
+      </node>
       <node concept="3clFbS" id="53d0N_LgtLZ" role="3clF47">
         <node concept="3clFbJ" id="53d0N_LgwIP" role="3cqZAp">
           <node concept="3clFbS" id="53d0N_LgwIQ" role="3clFbx">
@@ -11815,15 +11824,6 @@
       </node>
       <node concept="10P_77" id="53d0N_LgtMP" role="3clF45" />
       <node concept="3Tm1VV" id="53d0N_LgtMQ" role="1B3o_S" />
-      <node concept="37vLTG" id="$lftgT2TWi" role="3clF46">
-        <property role="TrG5h" value="migrationSetup" />
-        <node concept="3uibUv" id="$lftgT31j1" role="1tU5fm">
-          <ref role="3uigEE" node="36$CdjYcVqX" resolve="MigrationSetup" />
-        </node>
-        <node concept="2AHcQZ" id="$lftgT333L" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-        </node>
-      </node>
     </node>
     <node concept="2tJIrI" id="6b$YhINhRja" role="jymVt" />
     <node concept="3clFb_" id="6b$YhINi12t" role="jymVt">
@@ -19708,6 +19708,7 @@
           <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
         </node>
       </node>
+      <node concept="2JFqV2" id="_$U1YqW3y1" role="2frcjj" />
     </node>
     <node concept="3clFb_" id="1st5UDpZYD$" role="jymVt">
       <property role="TrG5h" value="migrationBatchEnded" />
@@ -19720,6 +19721,7 @@
           <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
         </node>
       </node>
+      <node concept="2JFqV2" id="_$U1YqW3Aj" role="2frcjj" />
     </node>
     <node concept="2tJIrI" id="1st5UDqbkj0" role="jymVt" />
     <node concept="3clFb_" id="1st5UDqbkwM" role="jymVt">
@@ -19739,6 +19741,7 @@
           <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
         </node>
       </node>
+      <node concept="2JFqV2" id="_$U1YqW3FE" role="2frcjj" />
     </node>
     <node concept="3clFb_" id="1st5UDqbkTe" role="jymVt">
       <property role="TrG5h" value="projectMigrationEnded" />
@@ -19757,6 +19760,7 @@
           <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
         </node>
       </node>
+      <node concept="2JFqV2" id="_$U1YqW3L1" role="2frcjj" />
     </node>
     <node concept="2tJIrI" id="1st5UDpZY8M" role="jymVt" />
     <node concept="3clFb_" id="1st5UDpZXU1" role="jymVt">
@@ -19782,6 +19786,7 @@
       <node concept="3clFbS" id="1st5UDpZXU4" role="3clF47" />
       <node concept="3Tm1VV" id="1st5UDpZXU5" role="1B3o_S" />
       <node concept="3cqZAl" id="1st5UDpZXJ5" role="3clF45" />
+      <node concept="2JFqV2" id="_$U1YqW3Qo" role="2frcjj" />
     </node>
     <node concept="3clFb_" id="1st5UDpZY2s" role="jymVt">
       <property role="TrG5h" value="migrationScriptEnded" />
@@ -19806,8 +19811,8 @@
           <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
         </node>
       </node>
+      <node concept="2JFqV2" id="_$U1YqW3VJ" role="2frcjj" />
     </node>
-    <node concept="2tJIrI" id="1st5UDpZY4f" role="jymVt" />
     <node concept="3Tm1VV" id="1st5UDpZXwr" role="1B3o_S" />
   </node>
   <node concept="312cEu" id="1st5UDq0120">
