@@ -90,6 +90,16 @@ public class ThreadWatcher implements Output {
 
       // com.intellij.util.io.DirectByteBufferAllocator#singleThreadAllocator
       builder.append("|(DirectBufferWrapper allocation thread)");
+
+      // com.intellij.internal.statistic.eventLog#logExecutor
+      builder.append("|(LocalStatisticsFileEventLogger)");
+
+      // com.intellij.util.indexing.contentQueue.dev.LegacyMultiThreadedIndexWriter
+      builder.append("|(IdIndex Writer)");
+      builder.append("|(Stubs Writer)");
+      builder.append("|(Trigram Writer)");
+      builder.append("|(Aux Index Writer .*)");
+
       // --------------------------------
 
 
