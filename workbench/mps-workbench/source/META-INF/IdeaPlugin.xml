@@ -2,7 +2,1667 @@
   <id>com.intellij</id>
   <name>IDEA CORE</name>
 
-  <xi:include href="/META-INF/common-ide-modules.xml"/>
+  <content>
+
+    <module name="intellij.platform.settings.local"><![CDATA[<idea-plugin package="com.intellij.platform.settings.local">
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceInterface="com.intellij.platform.settings.SettingsController" serviceImplementation="com.intellij.platform.settings.local.SettingsControllerMediator" />
+    <settingsController id="local" implementation="com.intellij.platform.settings.local.LocalSettingsController" order="last" />
+    <settingsController id="jsonMirror" implementation="com.intellij.platform.settings.local.JsonMirrorController" />
+    <cachesInvalidator implementation="com.intellij.platform.settings.local.CacheStateStorageInvalidator" />
+  </extensions>
+  <extensionPoints>
+    <extensionPoint name="settingsController" interface="com.intellij.platform.settings.DelegatedSettingsController" />
+  </extensionPoints>
+</idea-plugin>]]></module>
+
+    <module name="intellij.libraries.ktor.client"><![CDATA[<idea-plugin />]]></module>
+
+    <module name="intellij.libraries.ktor.client.cio"><![CDATA[<idea-plugin>
+  <dependencies>
+    <module name="intellij.libraries.ktor.client" />
+  </dependencies>
+</idea-plugin>]]></module>
+
+
+    <module name="intellij.libraries.skiko"><![CDATA[<idea-plugin />]]></module>
+    <module name="intellij.libraries.compose.desktop"><![CDATA[<idea-plugin>
+  <dependencies>
+    <module name="intellij.libraries.skiko" />
+  </dependencies>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.compose"><![CDATA[<idea-plugin>
+  <actions>
+    <action id="ComposeShowcaseAction" internal="true" class="com.intellij.platform.compose.showcase.ComposeShowcaseAction" text="Compose Components Showcase" />
+  </actions>
+  <extensions defaultExtensionNs="com.intellij">
+    <registryKey defaultValue="true" description="Allows changing how ComposePanel is rendered using rendering on Graphics (when `true`, it provides smooth Swing interop) or on native AWT texture (when `false`). Works only in internal mode" key="compose.swing.render.on.graphics" />
+  </extensions>
+  <dependencies>
+    <module name="intellij.libraries.compose.desktop" />
+    <module name="intellij.libraries.skiko" />
+  </dependencies>
+</idea-plugin>]]></module>
+
+
+    <module name="intellij.platform.rpc.backend"><![CDATA[<idea-plugin package="com.intellij.platform.rpc.backend">
+  <dependencies>
+    <plugin id="com.intellij.platform.experimental.backend" />
+  </dependencies>
+  <extensionPoints>
+    <extensionPoint qualifiedName="com.intellij.platform.rpc.backend.remoteApiProvider" interface="com.intellij.platform.rpc.backend.RemoteApiProvider" dynamic="true" />
+  </extensionPoints>
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceInterface="com.intellij.platform.rpc.RemoteApiProviderService" serviceImplementation="com.intellij.platform.rpc.backend.impl.RemoteApiRegistry" />
+  </extensions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.kernel.backend"><![CDATA[<idea-plugin package="com.intellij.platform.kernel.backend">
+  <dependencies>
+    <module name="intellij.platform.rpc.backend" />
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceInterface="com.intellij.platform.kernel.KernelService" serviceImplementation="com.intellij.platform.kernel.backend.BackendKernelService" />
+  </extensions>
+  <extensions defaultExtensionNs="com.intellij.platform">
+    <rpc.backend.remoteApiProvider implementation="com.intellij.platform.kernel.backend.RemoteKernelProvider" />
+  </extensions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.project.backend"><![CDATA[<idea-plugin package="com.intellij.platform.project.backend">
+  <dependencies>
+    <plugin id="com.intellij.platform.experimental.backend" />
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceInterface="com.intellij.platform.project.ProjectEntitiesStorage" serviceImplementation="com.intellij.platform.project.backend.BackendProjectEntitiesStorage" />
+  </extensions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.progress.backend"><![CDATA[<idea-plugin package="com.intellij.platform.progress.backend">
+  <dependencies>
+    <plugin id="com.intellij.platform.experimental.backend" />
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceInterface="com.intellij.platform.ide.progress.TaskStorage" serviceImplementation="com.intellij.platform.progress.backend.BackendTaskStorage" />
+  </extensions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.navbar"><![CDATA[<idea-plugin package="com.intellij.platform.navbar" />]]></module>
+    <module name="intellij.platform.navbar.backend"><![CDATA[<idea-plugin package="com.intellij.platform.navbar.backend">
+  <dependencies>
+    <module name="intellij.platform.navbar" />
+  </dependencies>
+  <extensionPoints>
+    <extensionPoint name="navbar.item.provider" interface="com.intellij.platform.navbar.backend.NavBarItemProvider" dynamic="true" />
+  </extensionPoints>
+  <extensions defaultExtensionNs="com.intellij">
+    <getDataRule key="navigationBarItem" type="context" order="last" implementationClass="com.intellij.platform.navbar.backend.impl.DefaultNavBarItemDataRule" />
+    <uiDataRule implementation="com.intellij.platform.navbar.backend.impl.NavBarBgtDataRule" />
+    <navbar.item.provider order="last" implementation="com.intellij.platform.navbar.backend.impl.DefaultNavBarItemProvider" />
+  </extensions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.navbar.frontend"><![CDATA[<idea-plugin package="com.intellij.platform.navbar.frontend">
+  <dependencies>
+    <module name="intellij.platform.navbar" />
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <ideRootPaneNorth implementation="com.intellij.platform.navbar.frontend.NavBarRootPaneExtension" />
+    <uiDataRule implementation="com.intellij.platform.navbar.frontend.actions.NavBarUiDataRule" />
+    <selectInTarget implementation="com.intellij.platform.navbar.frontend.actions.SelectInNavBarTarget" />
+  </extensions>
+  <actions resource-bundle="messages.NavBarFrontendBundle">
+    <group id="NavBarActions">
+      <action id="NavBar-selectHome" class="com.intellij.platform.navbar.frontend.actions.NavBarActions$Home" use-shortcut-of="EditorLineStart" />
+      <action id="NavBar-selectEnd" class="com.intellij.platform.navbar.frontend.actions.NavBarActions$End" use-shortcut-of="EditorLineEnd" />
+      <action id="NavBar-selectUp" class="com.intellij.platform.navbar.frontend.actions.NavBarActions$Up" use-shortcut-of="EditorUp" />
+      <action id="NavBar-selectDown" class="com.intellij.platform.navbar.frontend.actions.NavBarActions$Down" use-shortcut-of="EditorDown" />
+      <action id="NavBar-selectLeft" class="com.intellij.platform.navbar.frontend.actions.NavBarActions$Left" use-shortcut-of="EditorLeft" />
+      <action id="NavBar-selectRight" class="com.intellij.platform.navbar.frontend.actions.NavBarActions$Right" use-shortcut-of="EditorRight" />
+      <action id="NavBar-return" class="com.intellij.platform.navbar.frontend.actions.NavBarActions$Enter" use-shortcut-of="EditorEnter" />
+      <add-to-group group-id="Other.KeymapGroup" />
+    </group>
+    <group id="NavBarContextMenu" class="com.intellij.platform.navbar.frontend.actions.NavBarContextMenuActionGroup" />
+    <action id="ShowNavBar" class="com.intellij.platform.navbar.frontend.actions.ShowNavBarAction">
+      <add-to-group group-id="EditorPopupMenu.GoTo" anchor="first" />
+      <add-to-group group-id="GoToCodeGroup" relative-to-action="SelectIn" anchor="after" />
+    </action>
+  </actions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.navbar.monolith"><![CDATA[<idea-plugin package="com.intellij.platform.navbar.monolith">
+  <dependencies>
+    <module name="intellij.platform.navbar.frontend" />
+    <module name="intellij.platform.navbar.backend" />
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <projectService serviceInterface="com.intellij.platform.navbar.frontend.NavBarServiceDelegate" serviceImplementation="com.intellij.platform.navbar.monolith.MonolithNavbarServiceDelegate" />
+  </extensions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.clouds"><![CDATA[<idea-plugin package="com.intellij.platform.clouds">
+  <dependencies>
+    <plugin id="com.intellij.modules.remoteServers" />
+    <module name="intellij.platform.execution.dashboard" />
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <serviceViewContributor implementation="com.intellij.platform.clouds.impl.runtime.ui.DefaultRemoteServersServiceViewContributor" />
+  </extensions>
+  <actions resource-bundle="messages.CloudsBundle">
+    <group id="RemoteServersViewToolbar">
+      <action id="RemoteServers.ConnectServer" icon="AllIcons.Actions.Execute" class="com.intellij.platform.clouds.impl.runtime.ui.tree.actions.RemoteServerConnectAction" />
+      <action id="RemoteServers.DisconnectServer" icon="AllIcons.Actions.Suspend" class="com.intellij.platform.clouds.impl.runtime.ui.tree.actions.RemoteServerDisconnectAction" />
+      <action id="RemoteServers.EditServerConfig" icon="AllIcons.Actions.EditSource" use-shortcut-of="EditSourceInNewWindow" class="com.intellij.platform.clouds.impl.runtime.ui.tree.actions.RemoteServerConfigAction" />
+      <action id="RemoteServers.ChooseServerDeployment" icon="AllIcons.Nodes.Deploy" class="com.intellij.platform.clouds.impl.runtime.ui.tree.actions.ChooseDeploymentAction" />
+      <action id="RemoteServers.ChooseServerDeploymentWithDebug" icon="AllIcons.Actions.StartDebugger" class="com.intellij.platform.clouds.impl.runtime.ui.tree.actions.ChooseDeploymentWithDebugAction" />
+      <action id="Servers.Deploy" icon="AllIcons.Nodes.Deploy" class="com.intellij.platform.clouds.impl.runtime.ui.tree.actions.DeployAction">
+        <add-to-group group-id="RunDashboardContentToolbar" anchor="last" />
+      </action>
+      <action id="Servers.Undeploy" icon="AllIcons.Nodes.Undeploy" class="com.intellij.platform.clouds.impl.runtime.ui.tree.actions.UndeployAction">
+        <add-to-group group-id="RunDashboardContentToolbar" anchor="last" />
+      </action>
+      <action id="Servers.DeployWithDebug" icon="AllIcons.Actions.StartDebugger" class="com.intellij.platform.clouds.impl.runtime.ui.tree.actions.DeployWithDebugAction" />
+      <action id="RemoteServers.EditDeploymentConfig" icon="AllIcons.Actions.EditSource" class="com.intellij.platform.clouds.impl.runtime.ui.tree.actions.DeploymentConfigAction" />
+      <add-to-group group-id="Other.KeymapGroup" />
+    </group>
+    <group id="RemoteServersViewPopup" />
+    <group id="RemoteServersViewToolbar.Top">
+      <add-to-group group-id="Other.KeymapGroup" />
+    </group>
+    <group id="RemoteServers.AddCloudConnectionGroup" popup="true" class="com.intellij.platform.clouds.impl.runtime.ui.tree.actions.AddCloudConnectionActionGroup">
+      <add-to-group group-id="ServiceView.AddService" />
+    </group>
+  </actions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.execution.dashboard"><![CDATA[<idea-plugin package="com.intellij.platform.execution.dashboard">
+  <dependencies>
+    <module name="intellij.platform.execution.serviceView" />
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <projectService serviceInterface="com.intellij.execution.dashboard.RunDashboardManager" serviceImplementation="com.intellij.platform.execution.dashboard.RunDashboardManagerImpl" />
+    <backgroundPostStartupActivity implementation="com.intellij.platform.execution.dashboard.RunDashboardCheckerActivity" />
+    <notificationGroup id="Services Tool Window" displayType="BALLOON" isLogByDefault="true" bundle="messages.ExecutionBundle" key="notification.group.services" notificationIds="run.dashboard.multiple.run.configurations" />
+    <runDashboardGroupingRule id="type" order="first" implementation="com.intellij.platform.execution.dashboard.tree.ConfigurationTypeDashboardGroupingRule" />
+    <runDashboardGroupingRule id="status" order="after type" implementation="com.intellij.platform.execution.dashboard.tree.StatusDashboardGroupingRule" />
+    <runDashboardGroupingRule id="folder" order="after status" implementation="com.intellij.platform.execution.dashboard.tree.FolderDashboardGroupingRule" />
+    <actionPromoter implementation="com.intellij.platform.execution.dashboard.actions.RunDashboardActionPromoter" />
+    <serviceViewContributor implementation="com.intellij.platform.execution.dashboard.RunDashboardServiceViewContributor" />
+  </extensions>
+  <extensions defaultExtensionNs="com.intellij.statistics">
+    <projectUsagesCollector implementation="com.intellij.platform.execution.dashboard.RunDashboardUsagesCollector" />
+    <validation.customValidationRule implementation="com.intellij.platform.execution.dashboard.RunDashboardUsagesCollector$RunConfigurationTypeValidator" />
+  </extensions>
+  <extensionPoints>
+    <extensionPoint name="runDashboardChecker" interface="com.intellij.execution.dashboard.RunDashboardChecker" dynamic="true" />
+  </extensionPoints>
+  <actions>
+    <group id="RunDashboardContentToolbar">
+      <action id="RunDashboard.Run" icon="AllIcons.Actions.Execute" use-shortcut-of="RunClass" class="com.intellij.platform.execution.dashboard.actions.RunAction">
+        <add-to-group anchor="first" group-id="RunTab.TopToolbar" />
+        <add-to-group anchor="first" group-id="RunTab.TopToolbar.Old" />
+        <add-to-group anchor="first" group-id="XDebugger.ToolWindow.TopToolbar3" />
+      </action>
+      <action id="RunDashboard.Debug" icon="AllIcons.Actions.StartDebugger" use-shortcut-of="DebugClass" class="com.intellij.platform.execution.dashboard.actions.DebugAction">
+        <add-to-group anchor="after" relative-to-action="RunDashboard.Run" group-id="RunTab.TopToolbar" />
+        <add-to-group anchor="after" relative-to-action="RunDashboard.Run" group-id="RunTab.TopToolbar.Old" />
+        <add-to-group anchor="after" relative-to-action="RunDashboard.Run" group-id="XDebugger.ToolWindow.TopToolbar3" />
+      </action>
+      <action id="RunDashboard.Stop" icon="AllIcons.Actions.Suspend" use-shortcut-of="Stop" class="com.intellij.platform.execution.dashboard.actions.StopAction" />
+      <separator />
+      <reference id="ExpandAll" />
+      <reference id="CollapseAll" />
+    </group>
+    <group id="RunDashboardPopup">
+      <action id="RunDashboard.EditConfiguration" icon="AllIcons.Actions.EditSource" use-shortcut-of="EditSourceInNewWindow" class="com.intellij.platform.execution.dashboard.actions.EditConfigurationAction" />
+      <action id="RunDashboard.CopyConfiguration" icon="AllIcons.Actions.Copy" use-shortcut-of="EditorDuplicate" class="com.intellij.platform.execution.dashboard.actions.CopyConfigurationAction" />
+      <separator />
+      <action id="RunDashboard.HideConfiguration" class="com.intellij.platform.execution.dashboard.actions.HideConfigurationAction" />
+      <action id="RunDashboard.RestoreHiddenConfigurations" class="com.intellij.platform.execution.dashboard.actions.RestoreHiddenConfigurationsAction" />
+      <action id="RunDashboard.RemoveType" class="com.intellij.platform.execution.dashboard.actions.RemoveRunConfigurationTypeAction" />
+      <action id="RunDashboard.OpenRunningConfigInNewTab" class="com.intellij.platform.execution.dashboard.actions.OpenRunningConfigInNewTabAction" />
+      <separator />
+      <action id="RunDashboard.ClearConsole" icon="AllIcons.General.Delete" class="com.intellij.platform.execution.dashboard.actions.ClearConsoleAction" />
+      <action id="RunDashboard.ClearContent" icon="AllIcons.Actions.Cancel" class="com.intellij.platform.execution.dashboard.actions.ClearContentAction" />
+      <action id="RunDashboard.RestoreConfiguration" icon="AllIcons.Actions.Rollback" class="com.intellij.platform.execution.dashboard.actions.RestoreConfigurationAction" />
+      <separator />
+      <action id="RunDashboard.GroupConfigurations" icon="AllIcons.Actions.GroupByPackage" class="com.intellij.platform.execution.dashboard.actions.GroupConfigurationsAction" />
+      <action id="RunDashboard.UngroupConfigurations" icon="AllIcons.General.Remove" use-shortcut-of="$Delete" class="com.intellij.platform.execution.dashboard.actions.UngroupConfigurationsActions" />
+      <separator />
+    </group>
+    <group id="RunDashboard.ViewOptions" popup="true" class="com.intellij.ide.actions.NonEmptyActionGroup">
+      <separator key="separator.RunDashboard.GroupBy" />
+      <action id="RunDashboard.GroupByType" class="com.intellij.platform.execution.dashboard.actions.GroupByConfigurationTypeAction" />
+      <action id="RunDashboard.GroupByStatus" class="com.intellij.platform.execution.dashboard.actions.GroupByConfigurationStatusAction" />
+      <separator />
+      <separator key="separator.RunDashboard.Filter" />
+      <group id="RunDashboard.Filter" class="com.intellij.platform.execution.dashboard.actions.RunDashboardFilterActionGroup" />
+      <add-to-group group-id="ServiceView.ViewOptions" />
+    </group>
+    <action id="RunDashboard.AddConfiguration" class="com.intellij.platform.execution.dashboard.actions.AddRunConfigurationAction">
+      <add-to-group group-id="ServiceView.AddService" />
+    </action>
+    <reference id="RunDashboard.RestoreHiddenConfigurations">
+      <add-to-group group-id="ServiceView.AddService" anchor="after" relative-to-action="RunDashboard.AddType" />
+    </reference>
+  </actions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.execution.serviceView"><![CDATA[<idea-plugin package="com.intellij.platform.execution.serviceView">
+  <dependencies>
+    <module name="intellij.platform.navbar.frontend" />
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <actionPromoter implementation="com.intellij.platform.execution.serviceView.ServiceViewActionPromoter" />
+    <navbar implementation="com.intellij.platform.execution.serviceView.ServiceViewNavBarExtension" />
+    <postStartupActivity implementation="com.intellij.platform.execution.serviceView.ServiceViewStartupActivity" />
+    <projectService serviceInterface="com.intellij.execution.services.ServiceViewManager" serviceImplementation="com.intellij.platform.execution.serviceView.ServiceViewManagerImpl" />
+    <projectService serviceInterface="com.intellij.execution.services.ServiceViewToolWindowFactory$CompatibilityDelegate" serviceImplementation="com.intellij.platform.execution.serviceView.ServiceViewToolWindowManager" />
+  </extensions>
+  <actions>
+    <group id="ServiceViewTreeToolbar">
+      <group id="ServiceView.AddService" popup="true" icon="AllIcons.General.Add" use-shortcut-of="NewElement" class="com.intellij.platform.execution.serviceView.AddServiceActionGroup" />
+      <group id="ServiceView.ViewOptions" popup="true" icon="AllIcons.Actions.GroupBy" class="com.intellij.ide.actions.NonEmptyActionGroup">
+        <action id="ServiceView.GroupByContributor" class="com.intellij.platform.execution.serviceView.GroupByContributorAction" />
+        <separator />
+      </group>
+      <group id="ServiceView.OpenInNewTabGroup" popup="true" icon="AllIcons.Actions.OpenNewTab" class="com.intellij.platform.execution.serviceView.OpenInNewTabActionGroup">
+        <action id="ServiceView.OpenInNewTab" class="com.intellij.platform.execution.serviceView.OpenInNewTabAction" />
+        <action id="ServiceView.OpenEachInNewTab" class="com.intellij.platform.execution.serviceView.OpenEachInNewTabAction" />
+        <action id="ServiceView.SplitByType" class="com.intellij.platform.execution.serviceView.SplitByTypeAction" />
+      </group>
+    </group>
+    <group id="ServiceViewItemToolbar">
+      <group id="ServiceViewItemToolbarGroup" class="com.intellij.platform.execution.serviceView.ServiceViewActionProvider$ItemToolbarActionGroup" />
+      <separator />
+    </group>
+    <group id="ServiceViewItemPopup">
+      <group id="ServiceViewItemPopupGroup" class="com.intellij.platform.execution.serviceView.ServiceViewActionProvider$ItemPopupActionGroup" />
+      <separator />
+      <reference id="ServiceView.OpenInNewTab" />
+      <reference id="ServiceView.OpenEachInNewTab" />
+      <reference id="ServiceView.SplitByType" />
+      <action id="ServiceView.OpenInToolWindow" class="com.intellij.platform.execution.serviceView.OpenInToolWindowAction" />
+      <separator />
+      <reference id="$Delete" />
+      <separator />
+      <reference id="EditSource" />
+      <action id="ServiceView.JumpToServices" use-shortcut-of="ShowNavBar" class="com.intellij.platform.execution.serviceView.JumpToServicesAction" />
+    </group>
+    <action id="ServiceView.SelectActiveService" class="com.intellij.platform.execution.serviceView.SelectActiveServiceAction" />
+    <action id="ServiceView.ShowServices" icon="AllIcons.Actions.ShowAsTree" class="com.intellij.platform.execution.serviceView.ShowServicesAction" />
+    <action id="ServiceView.ConfigureServices" icon="AllIcons.General.GearPlain" class="com.intellij.platform.execution.serviceView.ConfigureServicesAction" />
+  </actions>
+</idea-plugin>]]></module>
+
+
+    <module name="intellij.platform.images.copyright"><![CDATA[<idea-plugin package="org.intellij.images.copyright">
+  <dependencies>
+    <plugin id="com.intellij.platform.images" />
+    <plugin id="com.intellij.copyright" />
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <copyright.updater filetype="SVG" implementationClass="org.intellij.images.copyright.SvgCopyrightUpdater" />
+  </extensions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.images.backend.svg"><![CDATA[<idea-plugin package="com.intellij.platform.images.backend.svg">
+  <dependencies>
+    <plugin id="com.intellij.modules.xml" />
+    <plugin id="com.intellij.modules.lang" />
+    <plugin id="com.intellij.platform.images" />
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <lang.parserDefinition language="SVG" implementationClass="com.intellij.platform.images.backend.svg.SvgParserDefinition" />
+  </extensions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.lvcs.impl"><![CDATA[<idea-plugin>
+  <dependencies>
+    <module name="intellij.platform.vcs.impl" />
+  </dependencies>
+  <actions resource-bundle="messages.LocalHistoryBundle">
+    <action id="LocalHistory.ShowHistory" class="com.intellij.history.integration.ui.actions.ShowHistoryAction">
+      <override-text place="GoToAction" />
+      <override-text place="ActionPlace.VcsQuickListPopupAction" />
+      <add-to-group group-id="Vcs.Operations.Popup" anchor="after" relative-to-action="ShowAnnotateOperationsPopupGroup" />
+    </action>
+    <action id="LocalHistory.ShowSelectionHistory" class="com.intellij.history.integration.ui.actions.ShowSelectionHistoryAction">
+      <synonym key="action.synonym.LocalHistory.ShowSelectionHistory.method.text" />
+      <synonym key="action.synonym.LocalHistory.ShowSelectionHistory.class.text" />
+      <override-text place="GoToAction" />
+    </action>
+    <action id="LocalHistory.ShowProjectHistory" class="com.intellij.history.integration.ui.actions.ShowProjectHistoryAction">
+      <override-text place="GoToAction" />
+      <override-text place="Vcs.Toolbar.Widget" />
+    </action>
+    <action id="RecentChanges" class="com.intellij.history.integration.ui.actions.RecentChangesAction">
+      <keyboard-shortcut first-keystroke="alt shift C" keymap="$default" />
+      <add-to-group group-id="ViewRecentActions" anchor="last" />
+    </action>
+    <action id="LocalHistory.PutLabel" class="com.intellij.history.integration.ui.actions.PutLabelAction" />
+    <group id="LocalHistory" class="com.intellij.history.integration.ui.actions.LocalHistoryGroup" popup="true">
+      <reference ref="LocalHistory.ShowHistory" />
+      <reference ref="LocalHistory.ShowSelectionHistory" />
+      <separator />
+      <reference ref="LocalHistory.ShowProjectHistory" />
+      <reference ref="RecentChanges" />
+      <reference ref="LocalHistory.PutLabel" />
+      <add-to-group group-id="VersionControlsGroup" anchor="first" />
+    </group>
+    <group id="LocalHistory.MainMenuGroup">
+      <separator />
+      <reference ref="LocalHistory" />
+      <separator />
+      <add-to-group group-id="FileMenu" relative-to-action="SaveAll" anchor="before" />
+    </group>
+    <action internal="true" id="ValidateLocalHistory" class="com.intellij.history.integration.ValidateHistoryAction">
+      <add-to-group group-id="Internal.VFS" />
+    </action>
+    <action id="ActivityView.Revert" class="com.intellij.platform.lvcs.impl.actions.RevertAction" icon="AllIcons.Actions.Rollback" />
+    <action id="ActivityView.RevertDifferences" class="com.intellij.platform.lvcs.impl.actions.RevertDifferencesAction" icon="AllIcons.Actions.Rollback" />
+    <action id="ActivityView.CreatePatch" class="com.intellij.platform.lvcs.impl.actions.CreatePatchAction" icon="AllIcons.Vcs.Patch" />
+    <group id="ActivityView.Toolbar">
+      <reference id="ActivityView.Revert" />
+      <reference id="ActivityView.CreatePatch" />
+    </group>
+    <group id="ActivityView.Popup">
+      <reference id="ActivityView.Revert" />
+      <reference id="ActivityView.CreatePatch" />
+      <reference id="Diff.ShowDiff" />
+    </group>
+    <group id="ActivityView.ChangesBrowser.Toolbar">
+      <reference id="ActivityView.RevertDifferences" />
+    </group>
+    <group id="ActivityView.ChangesBrowser.Popup">
+      <reference id="ActivityView.RevertDifferences" />
+    </group>
+  </actions>
+  <extensionPoints>
+    <extensionPoint name="history.activityPresentationProvider" interface="com.intellij.history.ActivityPresentationProvider" dynamic="true" />
+  </extensionPoints>
+  <extensions defaultExtensionNs="com.intellij">
+    <undoProvider implementation="com.intellij.openapi.command.impl.FileUndoProvider" />
+    <projectUndoProvider implementation="com.intellij.openapi.command.impl.FileUndoProvider" />
+    <applicationService serviceInterface="com.intellij.history.LocalHistory" serviceImplementation="com.intellij.history.integration.LocalHistoryImpl" />
+    <applicationService serviceImplementation="com.intellij.history.integration.IdeaGateway" />
+    <virtualFileManagerListener implementation="com.intellij.history.integration.LocalHistoryEventDispatcher$LocalHistoryFileManagerListener" />
+    <advancedSetting id="localHistory.daysToKeep" default="5" groupKey="group.advanced.settings.ide" />
+    <history.activityPresentationProvider implementation="com.intellij.history.integration.CommonActivityPresentationProvider" />
+    <applicationService serviceImplementation="com.intellij.platform.lvcs.impl.settings.ActivityViewApplicationSettings" />
+    <notificationGroup displayType="BALLOON" id="LocalHistory.General" bundle="messages.LocalHistoryBundle" key="notification.group.general" />
+    <statistics.counterUsagesCollector implementationClass="com.intellij.platform.lvcs.impl.statistics.LocalHistoryCounter" />
+    <statistics.notificationIdsHolder implementation="com.intellij.history.core.LocalHistoryNotificationIdsHolder" />
+  </extensions>
+  <applicationListeners>
+    <listener class="com.intellij.history.integration.LocalHistoryEventDispatcher$LocalHistoryCommandListener" topic="com.intellij.openapi.command.CommandListener" />
+    <listener class="com.intellij.history.integration.LocalHistoryEventDispatcher$LocalHistoryBulkFileListener" topic="com.intellij.openapi.vfs.newvfs.BulkFileListener" />
+  </applicationListeners>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.smRunner.vcs"><![CDATA[<idea-plugin package="com.intellij.execution.testframework.sm.vcs">
+  <dependencies>
+    <module name="intellij.platform.vcs.impl" />
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <checkinHandlerFactory implementation="com.intellij.execution.testframework.sm.vcs.RunTestsCheckinHandlerFactory" id="tests" />
+  </extensions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.collaborationTools"><![CDATA[<idea-plugin>
+  <dependencies>
+    <module name="intellij.platform.vcs.dvcs.impl" />
+    <module name="intellij.platform.vcs.log.impl" />
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <themeMetadataProvider path="/META-INF/CollaborationTools.themeMetadata.json" />
+    <statistics.notificationIdsHolder implementation="com.intellij.collaboration.ui.notification.CollaborationToolsNotificationIdsHolder" />
+    <notificationGroup id="VCS Hosting Integrations" displayType="BALLOON" bundle="messages.CollaborationToolsBundle" key="notification.group.vcs.hosting.integrations" />
+    <diff.actions.ShowDiffAction.ExtensionProvider implementation="com.intellij.collaboration.ui.codereview.action.CodeReviewShowDiffActionProvider$Preview" />
+    <advancedSetting id="enable.combined.diff.for.codereview" default="true" bundle="messages.CollaborationToolsBundle" groupKey="advanced.settings.collab.tools" />
+  </extensions>
+  <applicationListeners>
+    <listener class="com.intellij.collaboration.ui.codereview.CodeReviewCombinedDiffAdvancedSettingsChangeListener" topic="com.intellij.openapi.options.advanced.AdvancedSettingsChangeListener" />
+  </applicationListeners>
+  <actions>
+    <action id="Code.Review.Editor.Show.Diff" class="com.intellij.collaboration.ui.codereview.editor.action.CodeReviewEditorShowFileDiffAction" icon="AllIcons.Actions.Diff">
+      <add-to-group group-id="EditorPopupMenu" anchor="last" />
+    </action>
+    <action id="Code.Review.Editor.New.Comment" class="com.intellij.collaboration.ui.codereview.editor.action.CodeReviewEditorNewCommentAction">
+      <keyboard-shortcut first-keystroke="control shift X" keymap="$default" />
+      <keyboard-shortcut first-keystroke="control shift X" keymap="Eclipse" remove="true" />
+      <keyboard-shortcut first-keystroke="control shift X" keymap="Eclipse (Mac OS X)" remove="true" />
+      <keyboard-shortcut first-keystroke="meta shift X" keymap="Eclipse (Mac OS X)" remove="true" />
+      <keyboard-shortcut first-keystroke="control shift X" keymap="Emacs" remove="true" />
+      <add-to-group group-id="EditorPopupMenu" anchor="last" />
+      <add-to-group group-id="Diff.EditorPopupMenu" anchor="last" />
+    </action>
+  </actions>
+</idea-plugin>]]></module>
+    <module name="intellij.libraries.microba"><![CDATA[<idea-plugin />]]></module>
+
+
+
+
+    <module name="intellij.platform.vcs.impl"><![CDATA[<idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
+  <module value="com.intellij.modules.vcs" />
+  <dependencies>
+    <module name="intellij.libraries.microba" />
+  </dependencies>
+  <extensionPoints>
+    <extensionPoint name="checkoutProvider" interface="com.intellij.openapi.vcs.CheckoutProvider" dynamic="true" />
+    <extensionPoint name="vcs.checkoutProcessor" interface="com.intellij.openapi.vcs.VcsCheckoutProcessor" dynamic="true" />
+    <extensionPoint name="vcsRootChecker" interface="com.intellij.openapi.vcs.VcsRootChecker" dynamic="true" />
+    <extensionPoint name="vcsIgnoreChecker" interface="com.intellij.openapi.vcs.VcsIgnoreChecker" dynamic="true" />
+    <extensionPoint name="checkoutListener" interface="com.intellij.openapi.vcs.checkout.CheckoutListener" dynamic="true" />
+    <extensionPoint name="vcsAwareCheckoutListener" interface="com.intellij.openapi.vcs.checkout.VcsAwareCheckoutListener" dynamic="true" />
+    <extensionPoint name="checkoutCompletedListener" interface="com.intellij.openapi.vcs.checkout.CheckoutListener" dynamic="true" />
+    <extensionPoint name="vcs" beanClass="com.intellij.openapi.vcs.impl.VcsEP" dynamic="true">
+      <with attribute="vcsClass" implements="com.intellij.openapi.vcs.AbstractVcs" />
+    </extensionPoint>
+    <extensionPoint name="checkinHandlerFactory" interface="com.intellij.openapi.vcs.checkin.CheckinHandlerFactory" dynamic="true" />
+    <extensionPoint name="vcsCheckinHandlerFactory" interface="com.intellij.openapi.vcs.checkin.VcsCheckinHandlerFactory" dynamic="true" />
+    <extensionPoint name="unresolvedMergeCheckProvider" interface="com.intellij.openapi.vcs.checkin.UnresolvedMergeCheckProvider" dynamic="true" />
+    <extensionPoint name="changesViewContent" beanClass="com.intellij.openapi.vcs.changes.ui.ChangesViewContentEP" area="IDEA_PROJECT" dynamic="true">
+      <with attribute="className" implements="com.intellij.openapi.vcs.changes.ui.ChangesViewContentProvider" />
+      <with attribute="predicateClassName" implements="java.util.function.Predicate" />
+      <with attribute="preloaderClassName" implements="com.intellij.openapi.vcs.changes.ui.ChangesViewContentProvider$Preloader" />
+    </extensionPoint>
+    <extensionPoint name="changesGroupingPolicy" beanClass="com.intellij.openapi.vcs.changes.ui.ChangesGroupingPolicyFactoryEPBean" dynamic="true">
+      <with attribute="implementationClass" implements="com.intellij.openapi.vcs.changes.ui.ChangesGroupingPolicyFactory" />
+    </extensionPoint>
+    <extensionPoint name="openapi.vcs.impl.LocalLineStatusTrackerProvider" interface="com.intellij.openapi.vcs.impl.LocalLineStatusTrackerProvider" dynamic="true" />
+    <extensionPoint name="vcs.branchStateProvider" interface="com.intellij.vcs.branch.BranchStateProvider" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="vcs.commitMessageProvider" interface="com.intellij.openapi.vcs.changes.ui.CommitMessageProvider" dynamic="true" />
+    <extensionPoint name="vcs.changes.changesViewModifier" interface="com.intellij.openapi.vcs.changes.ChangesViewModifier" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="vcs.changes.changesViewNodeAction" interface="com.intellij.openapi.vcs.changes.ChangesViewNodeAction" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="editChangelistSupport" interface="com.intellij.openapi.vcs.changes.ui.EditChangelistSupport" area="IDEA_PROJECT" />
+    <extensionPoint name="vcsSelectionProvider" interface="com.intellij.vcsUtil.VcsSelectionProvider" dynamic="true" />
+    <extensionPoint name="vcs.changes.localCommitExecutor" interface="com.intellij.openapi.vcs.changes.CommitExecutor" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="vcsConfigurableProvider" interface="com.intellij.openapi.vcs.VcsConfigurableProvider" dynamic="true" />
+    <extensionPoint name="generalVcsSettingsExtension" beanClass="com.intellij.openapi.vcs.configurable.GeneralVcsSettingsProviderEP" area="IDEA_PROJECT" dynamic="true">
+      <with attribute="instance" implements="com.intellij.openapi.options.UnnamedConfigurable" />
+    </extensionPoint>
+    <extensionPoint name="vcs.fileStatusProvider" interface="com.intellij.openapi.vcs.impl.FileStatusProvider" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="vcs.baseContentProvider" interface="com.intellij.openapi.vcs.impl.VcsBaseContentProvider" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="vcs.ignoredFilesHolder" interface="com.intellij.openapi.vcs.changes.VcsManagedFilesHolder$Provider" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="vcs.unversionedFilesHolder" interface="com.intellij.openapi.vcs.changes.VcsManagedFilesHolder$Provider" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="vcsPopupProvider" interface="com.intellij.openapi.vcs.actions.VcsQuickListContentProvider" dynamic="true" />
+    <extensionPoint name="patch.extension" interface="com.intellij.openapi.diff.impl.patch.PatchEP" dynamic="true" />
+    <extensionPoint name="vcsChangesViewRefresher" interface="com.intellij.openapi.vcs.changes.ChangesViewRefresher" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="vcsAnnotationGutterActionProvider" interface="com.intellij.openapi.vcs.annotate.AnnotationGutterActionProvider" dynamic="true" />
+    <extensionPoint name="vcsAnnotationGutterColumnProvider" interface="com.intellij.openapi.vcs.annotate.AnnotationGutterColumnProvider" dynamic="true" />
+    <extensionPoint name="vcs.taskHandler" interface="com.intellij.openapi.vcs.VcsTaskHandler" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="vcs.changeListDecorator" interface="com.intellij.openapi.vcs.changes.ChangeListDecorator" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="openapi.vcs.changes.actions.diff.ChangeDiffRequestProvider" interface="com.intellij.openapi.vcs.changes.actions.diff.ChangeDiffRequestProvider" dynamic="true" />
+    <extensionPoint name="openapi.vcs.changes.actions.diff.ChangeDiffViewerWrapperProvider" interface="com.intellij.openapi.vcs.changes.actions.diff.ChangeDiffViewerWrapperProvider" dynamic="true" />
+    <extensionPoint name="openapi.vcs.actions.AnnotateToggleAction.Provider" interface="com.intellij.openapi.vcs.actions.AnnotateToggleAction$Provider" dynamic="true" />
+    <extensionPoint name="ignoredFileProvider" dynamic="true" interface="com.intellij.openapi.vcs.changes.IgnoredFileProvider" />
+    <extensionPoint name="ignoredFileContentProvider" dynamic="true" interface="com.intellij.openapi.vcs.changes.IgnoredFileContentProvider" area="IDEA_PROJECT" />
+    <extensionPoint name="openapi.vcs.history.actions.ShowDiffBeforeWithLocalAction.ExtensionProvider" interface="com.intellij.openapi.actionSystem.AnActionExtensionProvider" dynamic="true" />
+    <extensionPoint name="openapi.vcs.history.actions.ShowDiffAfterWithLocalAction.ExtensionProvider" interface="com.intellij.openapi.actionSystem.AnActionExtensionProvider" dynamic="true" />
+    <extensionPoint name="openapi.vcs.changes.actions.CreatePatchFromChangesAction.Dialog.ExtensionProvider" interface="com.intellij.openapi.actionSystem.AnActionExtensionProvider" dynamic="true" />
+    <extensionPoint name="openapi.vcs.changes.actions.CreatePatchFromChangesAction.Clipboard.ExtensionProvider" interface="com.intellij.openapi.actionSystem.AnActionExtensionProvider" dynamic="true" />
+    <extensionPoint name="openapi.vcs.history.actions.GetVersionAction.ExtensionProvider" interface="com.intellij.openapi.actionSystem.AnActionExtensionProvider" dynamic="true" />
+    <extensionPoint name="vcsRepositoryInitializer" interface="com.intellij.vcs.VcsRepositoryInitializer" dynamic="true" />
+    <extensionPoint name="openapi.vcs.changes.vcsPreservingExecutor" interface="com.intellij.openapi.vcs.changes.VcsPreservingExecutor" dynamic="true" />
+    <extensionPoint qualifiedName="com.intellij.openapi.vcs.ui.cloneDialog.VcsCloneDialogExtension" interface="com.intellij.openapi.vcs.ui.cloneDialog.VcsCloneDialogExtension" dynamic="true" />
+    <extensionPoint qualifiedName="com.intellij.openapi.vcs.ui.commitOptionsDialogExtension" interface="com.intellij.openapi.vcs.ui.CommitOptionsDialogExtension" dynamic="true" />
+    <extensionPoint qualifiedName="com.intellij.openapi.vcs.changes.ui.filePathIconProvider" interface="com.intellij.openapi.vcs.changes.FilePathIconProvider" dynamic="true" />
+    <extensionPoint name="vcs.actions.ScheduleForAdditionActionExtension" interface="com.intellij.openapi.vcs.changes.actions.ScheduleForAdditionActionExtension" dynamic="true" />
+    <extensionPoint name="vcsStartupActivity" interface="com.intellij.openapi.vcs.impl.VcsStartupActivity" dynamic="false" />
+    <extensionPoint name="vcsBulkMovesOnlyChangesFilter" interface="com.intellij.openapi.vcs.changes.ui.browser.BulkMovesOnlyChangesFilter" dynamic="true" />
+    <extensionPoint name="vcs.consoleFolding" interface="com.intellij.vcs.console.VcsConsoleFolding" dynamic="true" />
+    <extensionPoint name="vcs.changeListChangeAssigner" interface="com.intellij.openapi.vcs.changes.ChangeListChangeAssigner" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="vcs.lineStatusClientIdRenderer" interface="com.intellij.openapi.vcs.ex.LineStatusClientIdRenderer" area="IDEA_PROJECT" dynamic="false" />
+    <extensionPoint name="vcs.envCustomizer" interface="com.intellij.openapi.vcs.VcsEnvCustomizer" dynamic="true" />
+    <extensionPoint name="vcs.vcsSymlinkResolver" interface="com.intellij.vcs.VcsSymlinkResolver" area="IDEA_PROJECT" dynamic="false" />
+    <extensionPoint name="vcs.codeVisionLanguageContext" beanClass="com.intellij.lang.LanguageExtensionPoint" dynamic="true">
+      <with attribute="implementationClass" implements="com.intellij.codeInsight.hints.VcsCodeVisionLanguageContext" />
+    </extensionPoint>
+  </extensionPoints>
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceInterface="com.intellij.openapi.vcs.actions.VcsContextFactory" serviceImplementation="com.intellij.peer.impl.VcsContextFactoryImpl" />
+    <applicationService serviceInterface="com.intellij.codeInsight.actions.VcsFacade" serviceImplementation="com.intellij.codeInsight.actions.VcsFacadeImpl" overrides="true" />
+    <applicationService serviceImplementation="com.intellij.openapi.vcs.actions.AnnotationsSettings" />
+    <applicationService serviceInterface="com.intellij.vfs.AsyncVfsEventsPostProcessor" serviceImplementation="com.intellij.vfs.AsyncVfsEventsPostProcessorImpl" />
+    <applicationService serviceInterface="com.intellij.conversion.ConversionService" serviceImplementation="com.intellij.impl.ConversionServiceImpl" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.changes.ChangeListManager" serviceImplementation="com.intellij.openapi.vcs.changes.ChangeListManagerImpl" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.AbstractVcsHelper" serviceImplementation="com.intellij.openapi.vcs.impl.AbstractVcsHelperImpl" />
+    <projectService serviceImplementation="com.intellij.openapi.vcs.IssueNavigationConfiguration" />
+    <projectService serviceImplementation="com.intellij.openapi.vcs.contentAnnotation.VcsContentAnnotationSettings" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.roots.VcsRootDetector" serviceImplementation="com.intellij.openapi.vcs.roots.VcsRootDetectorImpl" />
+    <projectService serviceImplementation="com.intellij.openapi.vcs.VcsNotifier" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.changes.patch.PatchBaseDirectoryDetector" serviceImplementation="com.intellij.openapi.vcs.changes.patch.PsiPatchBaseDirectoryDetector" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.changes.ui.ChangesFileNameDecorator" serviceImplementation="com.intellij.openapi.vcs.changes.ui.WolfChangesFileNameDecorator" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.CodeSmellDetector" serviceImplementation="com.intellij.openapi.vcs.impl.CodeSmellDetectorImpl" />
+    <projectService serviceImplementation="com.intellij.vcs.commit.message.CommitMessageInspectionProfile" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.contentAnnotation.VcsContentAnnotation" serviceImplementation="com.intellij.openapi.vcs.contentAnnotation.VcsContentAnnotationImpl" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.changes.VcsAnnotationLocalChangesListener" serviceImplementation="com.intellij.openapi.vcs.changes.VcsAnnotationLocalChangesListenerImpl" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.contentAnnotation.ContentAnnotationCache" serviceImplementation="com.intellij.openapi.vcs.contentAnnotation.ContentAnnotationCacheImpl" />
+    <projectService serviceImplementation="com.intellij.openapi.vcs.changes.ignore.cache.PatternCache" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.changes.IgnoredFileGenerator" serviceImplementation="com.intellij.openapi.vcs.changes.ignore.IgnoredFileGeneratorImpl" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.changes.VcsIgnoreManager" serviceImplementation="com.intellij.openapi.vcs.changes.VcsIgnoreManagerImpl" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.ProjectLevelVcsManager" serviceImplementation="com.intellij.openapi.vcs.impl.ProjectLevelVcsManagerImpl" preload="notHeadless" />
+    <projectService serviceImplementation="com.intellij.openapi.vcs.impl.OptionsAndConfirmationsHolder" />
+    <projectService serviceInterface="com.intellij.vcs.console.VcsConsoleTabService" serviceImplementation="com.intellij.vcs.console.VcsConsoleTabServiceImpl" headlessImplementation="com.intellij.vcs.console.MockVcsConsoleTabService" />
+    <postStartupActivity implementation="com.intellij.openapi.vcs.impl.VcsInitialization$StartUpActivity" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.FileStatusManager" serviceImplementation="com.intellij.openapi.vcs.impl.FileStatusManagerImpl" overrides="true" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.ElementStatusTracker" serviceImplementation="com.intellij.openapi.vcs.impl.ElementStatusTrackerImpl" overrides="true" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.changes.VcsDirtyScopeManager" serviceImplementation="com.intellij.openapi.vcs.changes.VcsDirtyScopeManagerImpl" />
+    <postStartupActivity implementation="com.intellij.openapi.vcs.changes.shelf.ShelveChangeManagerProjectActivity" />
+    <projectService serviceImplementation="com.intellij.openapi.vcs.changes.shelf.ShelvedChangesViewManager" headlessImplementation="" />
+    <fileDocumentManagerListener implementation="com.intellij.openapi.vcs.impl.FileStatusManagerImpl$FileStatusManagerDocumentListener" />
+    <editorFactoryDocumentListener implementation="com.intellij.openapi.vcs.impl.FileStatusManagerImpl$FileStatusManagerDocumentListener" />
+    <daemon.intentionActionFilter implementation="com.intellij.vcs.commit.message.BaseCommitMessageInspection$EmptyIntentionActionFilter" />
+    <trafficLightRendererContributor implementation="com.intellij.openapi.vcs.ui.CommitMessage$CommitMessageTrafficLightRendererContributor" />
+    <diff.merge.MergeTool implementation="com.intellij.openapi.vcs.changes.patch.tool.ApplyPatchMergeTool" />
+    <diff.DiffTool implementation="com.intellij.openapi.vcs.changes.patch.tool.ApplyPatchDiffTool" />
+    <diff.DiffTool implementation="com.intellij.openapi.vcs.changes.patch.tool.PatchDiffTool$Unified" />
+    <diff.DiffTool implementation="com.intellij.openapi.vcs.changes.patch.tool.PatchDiffTool$SideBySide" />
+    <diff.impl.DiffToolSubstitutor implementation="com.intellij.openapi.vcs.changes.actions.diff.lst.LocalChangeListDiffTool$Simple" />
+    <diff.impl.DiffToolSubstitutor implementation="com.intellij.openapi.vcs.changes.actions.diff.lst.LocalChangeListDiffTool$Unified" />
+    <projectService serviceInterface="com.intellij.diff.tools.combined.search.CombinedDiffSearchProvider" serviceImplementation="com.intellij.openapi.diff.impl.combined.search.CombinedDiffSearchProviderImpl" />
+    <editorActionHandler action="Find" implementationClass="com.intellij.openapi.diff.impl.combined.search.CombinedDiffSearchEditorActionHandler" id="combinedDiffFind" order="first" />
+    <editorActionHandler action="Replace" implementationClass="com.intellij.openapi.diff.impl.combined.search.CombinedDiffReplaceEditorActionHandler" id="combinedDiffReplace" order="first" />
+    <editorActionHandler action="FindNext" implementationClass="com.intellij.openapi.diff.impl.combined.search.SearchNextHandler" id="combinedDiffFindNext" order="first" />
+    <editorActionHandler action="FindPrevious" implementationClass="com.intellij.openapi.diff.impl.combined.search.SearchPreviousHandler" id="combinedDiffFindPrevious" order="first" />
+    <fileEditorProvider implementation="com.intellij.openapi.vcs.changes.patch.tool.DiffPatchFileEditorProvider" id="DiffPatchFileEditorProvider" fileType="PATCH" />
+    <diff.actions.ShowDiffAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.shelf.DiffShelvedChangesActionProvider" />
+    <diff.actions.ShowStandaloneDiffAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.shelf.DiffShelvedChangesActionProvider" />
+    <diff.actions.ShowDiffAction.ExtensionProvider implementation="com.intellij.openapi.vcs.update.ShowUpdatedDiffActionProvider" />
+    <diff.actions.ShowDiffAction.ExtensionProvider implementation="com.intellij.openapi.vcs.history.actions.CompareRevisionsAction" />
+    <diff.actions.ShowDiffAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.actions.diff.ShowDiffFromLocalChangesActionProvider" />
+    <diff.actions.ShowStandaloneDiffAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.actions.diff.ShowDiffFromLocalChangesActionProvider" />
+    <diff.actions.ShowStandaloneDiffAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.ui.ChangesBrowserBase$ShowStandaloneDiff" />
+    <diff.actions.ShowDiffAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.ShowEditorDiffPreviewActionProvider" order="first" />
+    <diff.actions.ShowDiffAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.actions.diff.ShowDiffAction" order="last" />
+    <diff.actions.ShowDiffAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.savedPatches.ShowDiffForSavedPatchesAction" />
+    <diff.actions.ShowStandaloneDiffAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.savedPatches.ShowDiffForSavedPatchesAction" />
+    <openapi.vcs.changes.actions.CreatePatchFromChangesAction.Dialog.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.actions.diff.DiffViewerCreatePatchActionProvider$Dialog" />
+    <openapi.vcs.changes.actions.CreatePatchFromChangesAction.Clipboard.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.actions.diff.DiffViewerCreatePatchActionProvider$Clipboard" />
+    <openapi.vcs.history.actions.ShowDiffAfterWithLocalAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.shelf.DiffShelvedChangesWithLocalActionProvider" />
+    <openapi.vcs.changes.actions.CreatePatchFromChangesAction.Dialog.ExtensionProvider implementation="com.intellij.openapi.vcs.history.actions.CreatePatchFromDirectoryAction" />
+    <openapi.vcs.history.actions.ShowDiffAfterWithLocalAction.ExtensionProvider implementation="com.intellij.openapi.vcs.history.actions.ShowDiffWithLocalFromTableHistoryAction" />
+    <openapi.vcs.history.actions.ShowDiffAfterWithLocalAction.ExtensionProvider implementation="com.intellij.openapi.vcs.impl.DiffRepoWithLocalAction" />
+    <openapi.vcs.history.actions.ShowDiffAfterWithLocalAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.actions.ShowDiffWithLocalAction" order="last" />
+    <openapi.vcs.history.actions.ShowDiffBeforeWithLocalAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.actions.ShowDiffWithLocalAction$ShowDiffBeforeWithLocalAction" order="last" />
+    <openapi.vcs.history.actions.GetVersionAction.ExtensionProvider implementation="com.intellij.openapi.vcs.history.actions.FileHistoryGetVersionActionProvider" />
+    <openapi.vcs.history.actions.GetVersionAction.ExtensionProvider implementation="com.intellij.vcs.CompareWithLocalDialog$GetVersionActionProvider" />
+    <openapi.vcs.history.actions.GetVersionAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.actions.GetVersionFromRepositoryActionProvider" order="last" />
+    <openapi.vcs.history.actions.ShowDiffAfterWithLocalAction.ExtensionProvider implementation="com.intellij.openapi.vcs.history.impl.VcsSelectionHistoryDialog$MyDiffAfterWithLocalAction" />
+    <diff.actions.ShowDiffAction.ExtensionProvider implementation="com.intellij.openapi.vcs.history.impl.VcsSelectionHistoryDialog$MyDiffAction" />
+    <openapi.vcs.history.actions.ShowDiffAfterWithLocalAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.savedPatches.CompareWithLocalForSavedPatchesAction" />
+    <openapi.vcs.history.actions.ShowDiffBeforeWithLocalAction.ExtensionProvider implementation="com.intellij.openapi.vcs.changes.savedPatches.CompareBeforeWithLocalForSavedPatchesAction" />
+    <referenceProviderType key="commentsReferenceProvider" implementationClass="com.intellij.psi.impl.source.resolve.reference.ArbitraryPlaceUrlReferenceProvider" />
+    <psi.symbolReferenceProvider hostLanguage="" hostElementClass="com.intellij.model.psi.UrlReferenceHost" referenceClass="com.intellij.openapi.paths.UrlReference" targetClass="com.intellij.openapi.paths.UrlSymbol" implementationClass="com.intellij.psi.impl.source.resolve.reference.UrlReferenceProvider" />
+    <psi.referenceContributor language="" implementation="com.intellij.psi.impl.source.resolve.reference.UrlReferenceContributor" />
+    <psi.symbolReferenceProvider hostLanguage="" hostElementClass="com.intellij.psi.PsiLiteralValue" referenceClass="com.intellij.openapi.paths.UrlReference" targetClass="com.intellij.openapi.paths.UrlSymbol" implementationClass="com.intellij.psi.impl.source.resolve.reference.LiteralUrlReferenceProvider" />
+    <selectInTarget implementation="com.intellij.openapi.vcs.changes.SelectInChangesViewTarget" />
+    <search.projectOptionsTopHitProvider implementation="com.intellij.openapi.vcs.configurable.VcsOptionsTopHitProvider" />
+    <projectConfigurable groupId="root" groupWeight="45" dynamic="true" key="version.control.main.configurable.name" bundle="messages.VcsBundle" provider="com.intellij.openapi.vcs.configurable.VcsManagerConfigurableProvider" id="project.propVCSSupport.Mappings" />
+    <colorAndFontPanelFactory implementation="com.intellij.openapi.vcs.actions.VcsColorsPageFactory" />
+    <colorAndFontDescriptorProvider implementation="com.intellij.openapi.vcs.actions.VcsColorsPageFactory" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.changes.ChangesViewI" serviceImplementation="com.intellij.openapi.vcs.changes.ChangesViewManager" testServiceImplementation="com.intellij.openapi.vcs.changes.DummyChangesView" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.changes.ui.ChangesViewContentI" serviceImplementation="com.intellij.openapi.vcs.changes.ui.ChangesViewContentManager" testServiceImplementation="com.intellij.openapi.vcs.changes.ui.DummyChangesViewContentManager" />
+    <toolWindow id="Commit" anchor="left" icon="AllIcons.Toolwindows.ToolWindowCommit" factoryClass="com.intellij.openapi.vcs.changes.ui.CommitToolWindowFactory" />
+    <toolWindow id="Version Control" anchor="bottom" canCloseContents="true" icon="AllIcons.Toolwindows.ToolWindowChanges" factoryClass="com.intellij.openapi.vcs.changes.ui.ChangeViewToolWindowFactory" />
+    <registryKey defaultValue="true" description="Show Version Control tool window in project without VCS" key="vcs.empty.toolwindow.show" />
+    <changesViewContent tabName="Repository" className="com.intellij.openapi.vcs.changes.committed.CommittedChangesViewManager" predicateClassName="com.intellij.openapi.vcs.changes.committed.CommittedChangesViewManager$VisibilityPredicate" displayNameSupplierClassName="com.intellij.openapi.vcs.changes.committed.CommittedChangesViewManager$DisplayNameSupplier" />
+    <changesViewContent tabName="Incoming" className="com.intellij.openapi.vcs.changes.committed.IncomingChangesViewProvider" predicateClassName="com.intellij.openapi.vcs.changes.committed.IncomingChangesViewProvider$VisibilityPredicate" displayNameSupplierClassName="com.intellij.openapi.vcs.changes.committed.IncomingChangesViewProvider$DisplayNameSupplier" />
+    <changesViewContent tabName="Local Changes" className="com.intellij.openapi.vcs.changes.ChangesViewManager$ContentProvider" preloaderClassName="com.intellij.openapi.vcs.changes.ChangesViewManager$ContentPreloader" predicateClassName="com.intellij.openapi.vcs.changes.ChangesViewManager$ContentPredicate" displayNameSupplierClassName="com.intellij.openapi.vcs.changes.ChangesViewManager$DisplayNameSupplier" isInCommitToolWindow="true" />
+    <changesViewContent tabName="Shelf" className="com.intellij.openapi.vcs.changes.shelf.ShelvedChangesViewManager$ContentProvider" preloaderClassName="com.intellij.openapi.vcs.changes.shelf.ShelvedChangesViewManager$ContentPreloader" predicateClassName="com.intellij.openapi.vcs.changes.shelf.ShelvedChangesViewManager$ContentPredicate" displayNameSupplierClassName="com.intellij.openapi.vcs.changes.shelf.ShelvedChangesViewManager$DisplayNameSupplier" isInCommitToolWindow="true" />
+    <statusBarWidgetFactory id="IncomingChanges" implementation="com.intellij.openapi.vcs.changes.committed.IncomingChangesIndicatorFactory" />
+    <editorNotificationProvider implementation="com.intellij.openapi.vcs.changes.committed.OutdatedVersionNotifier" />
+    <editorTabTitleProvider implementation="com.intellij.openapi.vcs.vfs.VcsFileEditorTabTitleProvider" />
+    <customizableActionGroupProvider implementation="com.intellij.openapi.vcs.ui.VcsCustomizableActionGroupProvider" />
+    <changesGroupingPolicy key="directory" id="directory" weight="10" implementationClass="com.intellij.openapi.vcs.changes.ui.DirectoryChangesGroupingPolicy$Factory" />
+    <vcs.changes.changesViewModifier implementation="com.intellij.vcs.commit.EditedCommitChangesViewModifier" />
+    <checkinHandlerFactory implementation="com.intellij.openapi.vcs.checkin.MultipleChangeListsCheckFactory" />
+    <checkinHandlerFactory implementation="com.intellij.openapi.vcs.checkin.UnresolvedMergeCheckFactory" />
+    <checkinHandlerFactory implementation="com.intellij.openapi.vcs.checkin.ReformatCheckinHandlerFactory" />
+    <checkinHandlerFactory implementation="com.intellij.openapi.vcs.checkin.RearrangeCheckinHandlerFactory" />
+    <checkinHandlerFactory implementation="com.intellij.openapi.vcs.checkin.OptimizeOptionsCheckinHandlerFactory" />
+    <checkinHandlerFactory implementation="com.intellij.openapi.vcs.checkin.CodeAnalysisCheckinHandlerFactory" />
+    <checkinHandlerFactory implementation="com.intellij.openapi.vcs.checkin.TodoCheckinHandlerFactory" id="todo" />
+    <checkinHandlerFactory implementation="com.intellij.openapi.vcs.checkin.CodeCleanupCheckinHandlerFactory" id="codeCleanup" />
+    <completion.preselectionBehaviourProvider implementation="com.intellij.openapi.vcs.CommitCompletionPreselectionBehaviourProvider" />
+    <completion.contributor language="TEXT" implementationClass="com.intellij.openapi.vcs.RecentMessagesCommitCompletionContributor" id="commitCompletion" order="first, before liveTemplates" />
+    <completion.contributor language="TEXT" implementationClass="com.intellij.openapi.vcs.CoAuthoredByCommitCompletionContributor" id="coAuthoredCompletion" order="first, before liveTemplates" />
+    <completion.contributor language="TEXT" implementationClass="com.intellij.openapi.vcs.ChangedFilesCommitCompletionContributor" order="first, before liveTemplates, after commitCompletion, after coAuthoredCompletion" />
+    <completion.contributor language="TEXT" implementationClass="com.intellij.openapi.vcs.changes.ChangeListCompletionContributor" order="first" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.impl.projectlevelman.AllVcsesI" serviceImplementation="com.intellij.openapi.vcs.impl.projectlevelman.AllVcses" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.VcsFileListenerContextHelper" serviceImplementation="com.intellij.openapi.vcs.VcsFileListenerContextHelperImpl" />
+    <vcs.fileStatusProvider implementation="com.intellij.openapi.vcs.changes.conflicts.ChangelistConflictFileStatusProvider" />
+    <writingAccessProvider implementation="com.intellij.openapi.vcs.changes.conflicts.ChangelistConflictAccessProvider" />
+    <writingAccessProvider implementation="com.intellij.openapi.vcs.changes.shelf.ShelfFileWritingAccessProvider" />
+    <editorNotificationProvider implementation="com.intellij.openapi.vcs.changes.conflicts.ChangelistConflictNotificationProvider" />
+    <fileDropHandler implementation="com.intellij.openapi.vcs.changes.patch.PatchFileDropHandler" />
+    <handleTypeFactory implementation="com.intellij.openapi.vcs.readOnlyHandler.VcsHandleTypeFactory" />
+    <keymapExtension implementation="com.intellij.openapi.vcs.impl.VcsKeymapExtension" />
+    <fileType name="PATCH" implementationClass="com.intellij.openapi.vcs.changes.patch.PatchFileType" fieldName="INSTANCE" extensions="diff;patch" />
+    <virtualFileSystem key="vcs" implementationClass="com.intellij.openapi.vcs.vfs.VcsFileSystem" />
+    <fileDocumentSynchronizationVetoer implementation="com.intellij.vcs.commit.SaveCommittingDocumentsVetoer" />
+    <fileDocumentManagerListener implementation="com.intellij.vcs.commit.SaveCommittingDocumentsVetoer" />
+    <applicationService serviceImplementation="com.intellij.openapi.vcs.VcsApplicationSettings" />
+    <applicationService serviceInterface="com.intellij.openapi.vcs.impl.CheckinHandlersManager" serviceImplementation="com.intellij.openapi.vcs.impl.CheckinHandlersManagerImpl" />
+    <pathMacroFilter implementation="com.intellij.openapi.vcs.VcsPathMacroFilter" />
+    <search.topHitProvider implementation="com.intellij.openapi.vcs.actions.VcsTopHitProvider" />
+    <actionPromoter implementation="com.intellij.openapi.vcs.actions.VcsActionPromoter" />
+    <actionPromoter implementation="com.intellij.diff.tools.combined.CombinedDiffActionPromoter" />
+    <projectSetProcessor implementation="com.intellij.openapi.vcs.VcsProjectSetProcessor" />
+    <projectSetProcessor implementation="com.intellij.openapi.vcs.OpenProjectSetProcessor" />
+    <getDataRule key="VCS_VIRTUAL_FILES" implementationClass="com.intellij.openapi.vcs.VcsVirtualFilesRule" />
+    <getDataRule key="VCS_REVISION_NUMBERS" implementationClass="com.intellij.openapi.vcs.history.VcsRevisionNumberArrayRule" />
+    <uiDataRule implementation="com.intellij.openapi.vcs.ui.VcsUiDataRule" />
+    <jbProtocolCommand implementation="com.intellij.openapi.vcs.checkout.JBProtocolCheckoutCommand" />
+    <diff.DiffExtension implementation="com.intellij.openapi.vcs.actions.AnnotateDiffViewerAction$MyDiffExtension" />
+    <patch.extension implementation="com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP" />
+    <patch.extension implementation="com.intellij.openapi.diff.impl.patch.CharsetEP" />
+    <openapi.vcs.actions.AnnotateToggleAction.Provider implementation="com.intellij.openapi.vcs.actions.AnnotateLocalFileAction$Provider" />
+    <openapi.vcs.actions.AnnotateToggleAction.Provider implementation="com.intellij.openapi.vcs.actions.AnnotateVcsVirtualFileAction$Provider" />
+    <openapi.vcs.actions.AnnotateToggleAction.Provider implementation="com.intellij.openapi.vcs.actions.AnnotateDiffViewerAction$Provider" order="first" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.impl.LineStatusTrackerManagerI" serviceImplementation="com.intellij.openapi.vcs.impl.LineStatusTrackerManager" />
+    <checkinHandlerFactory implementation="com.intellij.openapi.vcs.impl.LineStatusTrackerManager$CheckinFactory" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.impl.ActiveChangeListTracker" serviceImplementation="com.intellij.openapi.vcs.impl.ActiveChangeListTrackerImpl" />
+    <gutterMarkPreprocessor implementation="com.intellij.openapi.vcs.ex.ClientIdGutterIconMerge" />
+    <checkoutListener implementation="com.intellij.openapi.vcs.checkout.ProjectDirCheckoutListener" id="ProjectDirCheckoutListener" order="first" />
+    <checkoutListener implementation="com.intellij.openapi.vcs.checkout.ProjectCheckoutListener" id="ProjectCheckoutListener" />
+    <checkoutListener implementation="com.intellij.openapi.vcs.checkout.PlatformProjectCheckoutListener" id="PlatformProjectCheckoutListener" order="last" />
+    <ignoredFileProvider id="VCS.DefaultIgnoredFileProvider" implementation="com.intellij.openapi.vcs.changes.ChangeListManagerImpl$DefaultIgnoredFileProvider" order="first" />
+    <ignoredFileProvider implementation="com.intellij.openapi.vcs.changes.ProjectExcludesIgnoredFileProvider" order="after VCS.DefaultIgnoredFileProvider" />
+    <nonProjectFileWritingAccessExtension implementation="com.intellij.openapi.vcs.changes.IgnoredFileWritingAccessExtension" />
+    <statistics.counterUsagesCollector implementationClass="com.intellij.openapi.vcs.changes.actions.VcsStatisticsCollector" />
+    <statistics.applicationUsagesCollector implementation="com.intellij.openapi.vcs.statistics.VcsApplicationOptionsUsagesCollector" />
+    <openapi.vcs.ui.cloneDialog.VcsCloneDialogExtension id="com.intellij.util.ui.cloneDialog.RepositoryUrlCloneDialogExtension" implementation="com.intellij.util.ui.cloneDialog.RepositoryUrlCloneDialogExtension" order="first" />
+    <openapi.vcs.changes.vcsPreservingExecutor implementation="com.intellij.openapi.vcs.changes.DefaultPreservingExecutor" order="last" />
+    <postStartupActivity implementation="com.intellij.openapi.vcs.update.RestoreUpdateTree$RestoreUpdateTreeStartUpActivity" />
+    <vcsStartupActivity implementation="com.intellij.openapi.vcs.impl.ProjectLevelVcsManagerImpl$ActivateVcsesStartupActivity" />
+    <vcsStartupActivity implementation="com.intellij.openapi.vcs.changes.ChangeListManagerImpl$MyStartupActivity" />
+    <vcsStartupActivity implementation="com.intellij.openapi.vcs.changes.VcsDirtyScopeManagerImpl$MyStartupActivity" />
+    <vcsStartupActivity implementation="com.intellij.openapi.vcs.impl.LineStatusTrackerManager$MyStartupActivity" />
+    <vcsStartupActivity implementation="com.intellij.openapi.vcs.roots.VcsRootScanner$DetectRootsStartupActivity" />
+    <fileDocumentManagerListener implementation="com.intellij.openapi.vcs.impl.LineStatusTrackerManager$MyFileDocumentManagerListener" />
+    <notificationGroup id="Vcs Messages" displayType="TOOL_WINDOW" toolWindowId="Version Control" bundle="messages.VcsBundle" key="notification.group.vcs.messages" />
+    <notificationGroup id="Vcs Important Messages" displayType="STICKY_BALLOON" bundle="messages.VcsBundle" key="notification.group.vcs.important.messages" />
+    <notificationGroup id="Vcs Notifications" displayType="BALLOON" bundle="messages.VcsBundle" key="notification.group.vcs.notifications" />
+    <notificationGroup id="Vcs Silent Notifications" displayType="NONE" bundle="messages.VcsBundle" key="notification.group.vcs.silent.notifications" />
+    <projectService serviceInterface="com.intellij.execution.configurations.RunConfigurationVcsSupport" serviceImplementation="com.intellij.impl.RunConfigurationVcsSupportImpl" overrides="true" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.impl.VcsPathPresenter" serviceImplementation="com.intellij.openapi.vcs.impl.PlatformVcsPathPresenter" />
+    <projectService serviceInterface="com.intellij.openapi.vcs.impl.DefaultVcsRootPolicy" serviceImplementation="com.intellij.openapi.vcs.impl.ModuleDefaultVcsRootPolicy" />
+    <projectService serviceInterface="com.intellij.ide.todo.TodoViewChangesSupport" serviceImplementation="com.intellij.ide.todo.TodoViewChangesSupportImpl" overrides="true" />
+    <projectService serviceImplementation="com.intellij.openapi.vcs.impl.ModuleVcsDetector" />
+    <vcsStartupActivity implementation="com.intellij.openapi.vcs.impl.ModuleVcsDetector$MyStartUpActivity" />
+    <searchScopesProvider implementation="com.intellij.vcs.changes.ChangeListsSearchScopeProvider" />
+    <generalVcsSettingsExtension instance="com.intellij.options.VcsGeneralEditorOptionsExtension" />
+    <modelScopeItemPresenter implementation="com.intellij.analysis.VcsScopeItemPresenter" id="vcs_scope" order="after module_scope" />
+    <customScopesProvider implementation="com.intellij.vcs.changes.ChangeListsScopesProvider" order="last" />
+    <checkinHandlerFactory implementation="com.intellij.tools.ExternalToolsCheckinHandlerFactory" />
+    <findInProjectExtension implementation="com.intellij.vcs.changes.ChangeListsFindInProjectExtension" />
+    <silentChangeVetoer implementation="com.intellij.codeInsight.daemon.VcsSilentChangeVetoer" />
+    <statistics.projectUsagesCollector implementation="com.intellij.openapi.vcs.statistics.VcsOptionsUsagesCollector" />
+    <statistics.projectUsagesCollector implementation="com.intellij.openapi.vcs.statistics.VcsUsagesCollector" />
+    <statistics.notificationIdsHolder implementation="com.intellij.openapi.vcs.VcsNotificationIdsHolder" />
+    <diff.editor.diffRequestProcessorEditorCustomizer implementation="com.intellij.openapi.vcs.changes.ShowDiffInEditorTooltipInstaller" />
+    <registryKey key="patch.context.line.count" defaultValue="3" description="Number of context lines for creating patches" />
+    <diff.DiffExtension implementation="com.intellij.vcs.commit.CommitSessionCollector$MyDiffExtension" />
+    <statistics.counterUsagesCollector implementationClass="com.intellij.vcs.commit.CommitSessionCounterUsagesCollector" />
+    <advancedSetting id="vcs.annotations.preload" default="false" bundle="messages.VcsBundle" groupKey="advanced.settings.vcs" />
+    <advancedSetting id="vcs.process.ignored" default="true" bundle="messages.VcsBundle" groupKey="advanced.settings.vcs" />
+    <advancedSetting id="vcs.commit.tool.window" default="true" bundle="messages.VcsBundle" groupKey="advanced.settings.vcs" />
+    <advancedSetting id="vcs.non.modal.commit.toggle.ui" default="false" bundle="messages.VcsBundle" groupKey="advanced.settings.vcs" />
+    <advancedSetting id="vcs.push.all.with.commits" default="false" bundle="messages.VcsBundle" groupKey="advanced.settings.vcs" />
+    <notificationGroup id="External Executable Critical Failures" displayType="STICKY_BALLOON" bundle="messages.VcsBundle" key="notification.group.external.executable" />
+    <codeInsight.codeVisionProvider implementation="com.intellij.codeInsight.hints.VcsCodeVisionProvider" />
+    <backgroundPostStartupActivity implementation="com.intellij.codeInsight.ChangesToolwindowPassCache" />
+    <vcs.vcsSymlinkResolver implementation="com.intellij.vcs.DefaultVcsSymlinkResolver" order="last" />
+    <history.activityPresentationProvider implementation="com.intellij.vcs.VcsActivityPresentationProvider" />
+    <editorSearchAreaProvider implementation="com.intellij.openapi.diff.impl.SearchInDiffChangesProvider" />
+  </extensions>
+  <extensions defaultExtensionNs="org.jetbrains">
+    <webServerRootsProvider implementation="com.intellij.openapi.vcs.impl.VcsRootWebServerRootsProvider" order="before LastResortProvider" />
+  </extensions>
+  <applicationListeners>
+    <listener class="com.intellij.openapi.vcs.changes.patch.PatchClipboardListener" topic="com.intellij.openapi.application.ApplicationActivationListener" />
+    <listener class="com.intellij.openapi.vcs.impl.ProjectLevelVcsManagerImpl$TrustListener" topic="com.intellij.ide.trustedProjects.TrustedProjectsListener" activeInHeadlessMode="false" activeInTestMode="false" />
+    <listener class="com.intellij.openapi.vcs.roots.VcsRootScanner$TrustListener" topic="com.intellij.ide.trustedProjects.TrustedProjectsListener" activeInHeadlessMode="false" activeInTestMode="false" />
+    <listener class="com.intellij.vcs.commit.CommitSessionCollector$MyAnActionListener" topic="com.intellij.openapi.actionSystem.ex.AnActionListener" />
+  </applicationListeners>
+  <projectListeners>
+    <listener class="com.intellij.openapi.vcs.changes.committed.OutdatedVersionNotifier$IncomingChangesListener" topic="com.intellij.openapi.vcs.changes.committed.CommittedChangesListener" />
+    <listener class="com.intellij.impl.VcsModuleAttachListener" topic="com.intellij.platform.ModuleAttachListener" />
+    <listener class="com.intellij.vcs.changes.ChangeListScopeViewUpdater" topic="com.intellij.openapi.vcs.changes.ChangeListListener" />
+    <listener class="com.intellij.vcs.changes.ChangeListScopeViewUpdater$InitialRefresh" topic="com.intellij.openapi.vcs.changes.LocalChangeListsLoadedListener" />
+    <listener class="com.intellij.openapi.vcs.configurable.VcsOptionsTopHitProviderBase$InitMappingsListenerActivity" topic="com.intellij.openapi.vcs.VcsMappingListener" />
+    <listener class="com.intellij.openapi.vcs.changes.VcsIgnoreFilesChecker" topic="com.intellij.openapi.vcs.VcsMappingListener" />
+    <listener class="com.intellij.openapi.vcs.changes.committed.IncomingChangesIndicatorFactory$Listener" topic="com.intellij.openapi.vcs.VcsMappingListener" />
+    <listener class="com.intellij.vcs.commit.CommitSessionCollector$MyToolWindowManagerListener" topic="com.intellij.openapi.wm.ex.ToolWindowManagerListener" />
+    <listener class="com.intellij.openapi.vcs.changes.shelf.ShelvedChangesViewManager$MyShelfManagerListener" topic="com.intellij.openapi.vcs.changes.shelf.ShelveChangesManagerListener" />
+  </projectListeners>
+  <actions>
+    <action id="Vcs.ShowTabbedFileHistory" class="com.intellij.openapi.vcs.actions.TabbedShowHistoryAction" icon="AllIcons.Vcs.History" />
+    <action id="Vcs.ShowHistoryForRevision" class="com.intellij.openapi.vcs.actions.TabbedShowHistoryForRevisionAction" icon="AllIcons.Vcs.History" />
+    <action id="CheckinProject" class="com.intellij.openapi.vcs.actions.commit.CommonCheckinProjectAction" icon="AllIcons.Actions.Commit">
+      <keyboard-shortcut first-keystroke="control K" keymap="$default" />
+      <add-to-group group-id="SegmentedVcsActionsBarGroup" anchor="first" />
+    </action>
+    <action id="ChangesView.ToggleCommitUi" class="com.intellij.openapi.vcs.actions.commit.ToggleChangesViewCommitUiAction" use-shortcut-of="CheckinProject" icon="AllIcons.Actions.Commit">
+      <add-to-group group-id="SegmentedVcsActionsBarGroup" anchor="first" />
+    </action>
+    <action id="CheckinFiles" class="com.intellij.openapi.vcs.actions.commit.CommonCheckinFilesAction" />
+    <action id="UpdateFiles" class="com.intellij.openapi.vcs.update.CommonUpdateFileOrDirectoryAction" />
+    <action id="CheckStatusForFiles" class="com.intellij.openapi.vcs.update.CommonStatusFileOrDirectoryAction" />
+    <action id="IntegrateFiles" class="com.intellij.openapi.vcs.update.CommonIntegrateFileOrDirectoryAction" />
+    <action id="Annotate" class="com.intellij.openapi.vcs.actions.AnnotateToggleAction">
+      <synonym key="action.Annotate.synonym1" />
+      <synonym key="action.Annotate.with.Blame.text" />
+      <add-to-group group-id="Diff.EditorPopupMenu" />
+      <add-to-group group-id="Diff.EditorGutterPopupMenu" anchor="first" />
+    </action>
+    <action id="Show.Current.Revision" class="com.intellij.openapi.vcs.actions.ShowBaseRevisionAction" />
+    <action id="Compare.SameVersion" class="com.intellij.openapi.vcs.actions.CompareWithTheSameVersionAction" icon="AllIcons.Actions.Diff" />
+    <action id="Compare.LastVersion" class="com.intellij.openapi.vcs.actions.CompareWithLastVersion" />
+    <action id="Compare.Selected" class="com.intellij.openapi.vcs.actions.CompareWithSelectedRevisionAction" popup="true" />
+    <action id="Compare.Specified" class="com.intellij.openapi.vcs.actions.SelectAndCompareWithSelectedRevisionAction" popup="true" />
+    <action id="Vcs.ShowHistoryForBlock" class="com.intellij.openapi.vcs.actions.SelectedBlockHistoryAction">
+      <synonym key="action.synonym.Vcs.ShowHistoryForBlock.method.text" />
+      <synonym key="action.synonym.Vcs.ShowHistoryForBlock.class.text" />
+    </action>
+    <action id="Vcs.GetVersion" class="com.intellij.openapi.vcs.history.actions.GetVersionAction" icon="AllIcons.Actions.Download" />
+    <action id="Vcs.RefreshFileHistory" class="com.intellij.openapi.vcs.history.actions.RefreshFileHistoryAction" use-shortcut-of="Refresh" />
+    <action id="Vcs.ShowDiffWithLocal.Before" class="com.intellij.openapi.vcs.history.actions.ShowDiffBeforeWithLocalAction" />
+    <action id="Vcs.ShowDiffWithLocal" class="com.intellij.openapi.vcs.history.actions.ShowDiffAfterWithLocalAction" />
+    <action id="Vcs.VcsClone" class="com.intellij.openapi.wm.impl.welcomeScreen.GetFromVersionControlAction">
+      <synonym key="action.Vcs.VcsClone.text.synonym1" />
+      <synonym key="action.Vcs.VcsClone.text.synonym2" />
+    </action>
+    <group class="com.intellij.openapi.vcs.actions.VcsActionGroup" id="VcsGroup" searchable="false" />
+    <action id="Vcs.UpdateProject" class="com.intellij.openapi.vcs.update.CommonUpdateProjectAction" icon="AllIcons.Actions.CheckOut">
+      <keyboard-shortcut first-keystroke="control T" keymap="$default" />
+      <add-to-group group-id="SegmentedVcsActionsBarGroup" anchor="first" />
+    </action>
+    <action id="Vcs.Toolbar.ShowMoreActions" class="com.intellij.openapi.vcs.actions.VcsQuickActionsToolbarPopup">
+      <add-to-group group-id="SegmentedVcsActionsBarGroup" anchor="last" />
+    </action>
+    <group class="com.intellij.openapi.vcs.actions.VcsGroupsWrapper" id="VcsFileGroupPopup" popup="true">
+      <add-to-group group-id="VersionControlsGroup" />
+    </group>
+    <group id="GoToChangeMarkerGroup">
+      <separator />
+      <action id="VcsShowNextChangeMarker" class="com.intellij.openapi.vcs.actions.ShowChangeMarkerAction$Next" icon="AllIcons.Actions.NextOccurence" />
+      <action id="VcsShowPrevChangeMarker" class="com.intellij.openapi.vcs.actions.ShowChangeMarkerAction$Prev" icon="AllIcons.Actions.PreviousOccurence" />
+      <add-to-group group-id="NavigateInFileGroup" anchor="last" />
+    </group>
+    <action id="VcsShowCurrentChangeMarker" class="com.intellij.openapi.vcs.actions.ShowChangeMarkerAction$Current" />
+    <group id="VcsTouchBarGroup">
+      <reference ref="Vcs.UpdateProject" />
+      <reference ref="CheckinProject" />
+      <reference ref="ChangesView.ToggleCommitUi" />
+      <add-to-group group-id="TouchBarDefaultOptionalGroup" anchor="first" />
+    </group>
+    <action id="ChangesView.Refresh" class="com.intellij.openapi.vcs.changes.actions.RefreshAction" icon="AllIcons.Actions.Refresh">
+      <override-text place="MainMenu" />
+      <override-text place="GoToAction" use-text-of-place="MainMenu" />
+    </action>
+    <action id="ChangesView.SingleClickPreview" class="com.intellij.openapi.vcs.changes.ToggleDetailsAction" />
+    <group id="VcsGroups" class="com.intellij.openapi.vcs.actions.VcsGroupsActionGroup" popup="true">
+      <group id="Vcs.MainMenu" class="com.intellij.openapi.vcs.actions.VcsMainMenuActionGroup">
+        <action id="Start.Use.Vcs" class="com.intellij.ide.actions.StartUseVcsAction">
+          <override-text place="Vcs.Toolbar.Widget" />
+        </action>
+        <separator />
+        <group class="com.intellij.openapi.vcs.actions.VcsActionGroup" id="VcsGlobalGroup">
+          <action id="Vcs.QuickListPopupAction" class="com.intellij.openapi.vcs.actions.VcsQuickListPopupAction" />
+          <reference ref="CheckinProject" />
+          <reference ref="ChangesView.ToggleCommitUi" />
+          <reference ref="Vcs.UpdateProject" />
+          <action id="Vcs.IntegrateProject" class="com.intellij.openapi.vcs.update.CommonIntegrateProjectAction" />
+          <reference ref="ChangesView.Refresh" />
+          <separator />
+          <group id="Vcs.Specific" class="com.intellij.ide.actions.NonEmptyActionGroup" />
+          <separator />
+          <action id="ChangesView.CreatePatch" class="com.intellij.openapi.vcs.changes.actions.CreatePatchAction" icon="AllIcons.Vcs.Patch" />
+          <action id="ChangesView.ApplyPatch" class="com.intellij.openapi.vcs.changes.patch.ApplyPatchAction">
+            <add-to-group group-id="ProjectViewPopupMenu" relative-to-action="ProjectViewEditSource" anchor="after" />
+            <add-to-group group-id="NavbarPopupMenu" relative-to-action="EditSource" anchor="after" />
+          </action>
+          <action id="ChangesView.ApplyPatchFromClipboard" class="com.intellij.openapi.vcs.changes.patch.ApplyPatchFromClipboardAction" />
+          <action id="ChangesView.Shelve" class="com.intellij.openapi.vcs.changes.shelf.ShelveChangesAction" icon="com.intellij.platform.vcs.impl.icons.PlatformVcsImplIcons.Shelve" />
+        </group>
+        <separator />
+        <reference id="Vcs.VcsClone" />
+        <group id="Vcs.Browse" class="com.intellij.ide.actions.NonEmptyActionGroup" popup="true" />
+        <separator />
+        <group id="Vcs.Import" class="com.intellij.ide.actions.NonEmptyActionGroup" />
+      </group>
+      <add-to-group group-id="MainMenu" anchor="after" relative-to-action="ToolsMenu" />
+    </group>
+    <group id="Patch.MainMenu" popup="true">
+      <reference ref="ChangesView.CreatePatch" />
+      <reference ref="ChangesView.ApplyPatch" />
+      <reference ref="ChangesView.ApplyPatchFromClipboard" />
+    </group>
+    <group id="Vcs.UmlDiff" />
+    <action id="ChangesView.Revert" class="com.intellij.openapi.vcs.changes.actions.RollbackAction" icon="AllIcons.Actions.Rollback" />
+    <action id="ChangesView.RevertFiles" class="com.intellij.openapi.vcs.changes.actions.RollbackFilesAction" />
+    <group id="ChangesView.ViewOptions" />
+    <group id="ChangesView.GroupBy" icon="AllIcons.Actions.GroupBy" popup="true" class="com.intellij.openapi.vcs.changes.actions.SelectChangesGroupingActionGroup">
+      <separator key="group.ChangesView.GroupBy.text" />
+      <action id="ChangesView.GroupBy.Directory" class="com.intellij.openapi.vcs.changes.actions.SetDirectoryChangesGroupingAction" />
+      <add-to-group group-id="Vcs.KeymapGroup" />
+    </group>
+    <group id="ChangesViewToolbar">
+      <reference ref="ChangesView.Refresh" />
+      <reference ref="CheckinProject" />
+      <reference ref="ChangesView.ToggleCommitUi" />
+      <reference ref="ChangesView.Revert" />
+      <reference ref="Diff.ShowDiff" />
+      <group icon="AllIcons.Vcs.Changelist" id="ChangesView.Changelists" class="com.intellij.openapi.vcs.changes.actions.ChangeListActionGroup" popup="true">
+        <action id="ChangesView.NewChangeList" class="com.intellij.openapi.vcs.changes.actions.AddChangeListAction" icon="AllIcons.General.Add" />
+        <action id="ChangesView.Rename" class="com.intellij.openapi.vcs.changes.actions.RenameChangeListAction" icon="AllIcons.Actions.Edit" />
+        <action id="ChangesView.RemoveChangeList" class="com.intellij.openapi.vcs.changes.actions.RemoveChangeListAction" icon="AllIcons.General.Remove" />
+        <action id="ChangesView.SetDefault" class="com.intellij.openapi.vcs.changes.actions.SetDefaultChangeListAction" icon="AllIcons.Actions.Selectall" />
+        <action id="ChangesView.Move" class="com.intellij.openapi.vcs.changes.actions.MoveChangesToAnotherListAction" />
+      </group>
+      <action id="ChangesView.ShelveSilently" class="com.intellij.openapi.vcs.changes.actions.ShelveSilentlyAction" icon="AllIcons.Vcs.ShelveSilent">
+        <keyboard-shortcut first-keystroke="shift control H" keymap="$default" />
+      </action>
+    </group>
+    <action id="ChangesView.SaveToShelve" class="com.intellij.openapi.vcs.changes.actions.SaveToShelveAction" />
+    <action id="Vcs.Diff.ShowCombinedDiff" class="com.intellij.openapi.vcs.changes.actions.diff.ShowCombinedDiffAction" internal="true" icon="AllIcons.Actions.Diff" />
+    <action id="Vcs.CombinedDiff.CaretToPrevBlock" class="com.intellij.diff.tools.combined.CombinedCaretToPrevBlockAction" use-shortcut-of="EditorUp">
+      <keyboard-shortcut first-keystroke="LEFT" keymap="$default" />
+      <keyboard-shortcut first-keystroke="PAGE_UP" keymap="$default" />
+    </action>
+    <action id="Vcs.CombinedDiff.CaretToNextBlock" class="com.intellij.diff.tools.combined.CombinedCaretToNextBlockAction" use-shortcut-of="EditorDown">
+      <keyboard-shortcut first-keystroke="RIGHT" keymap="$default" />
+      <keyboard-shortcut first-keystroke="PAGE_DOWN" keymap="$default" />
+    </action>
+    <action id="Vcs.CombinedDiff.ToggleCollapseBlock" class="com.intellij.diff.tools.combined.CombinedToggleBlockCollapseAction">
+      <keyboard-shortcut first-keystroke="control ESCAPE" keymap="$default" />
+    </action>
+    <group id="ChangesViewPopupMenu">
+      <reference ref="CheckinFiles" />
+      <reference ref="ChangesView.Revert" />
+      <reference ref="ChangesView.RevertFiles" />
+      <reference ref="ChangesView.Move" />
+      <reference ref="Diff.ShowDiff" />
+      <reference ref="Diff.ShowStandaloneDiff" />
+      <reference ref="EditSource" />
+      <separator />
+      <reference ref="$Delete" />
+      <action id="ChangesView.AddUnversioned" class="com.intellij.openapi.vcs.changes.actions.ScheduleForAdditionWithIgnoredFilesConfirmationAction">
+        <keyboard-shortcut first-keystroke="control alt A" keymap="$default" />
+      </action>
+      <action id="ChangesView.RemoveDeleted" class="com.intellij.openapi.vcs.changes.actions.ScheduleForRemovalAction" icon="AllIcons.General.Remove" />
+      <action id="ChangesView.Edit" class="com.intellij.openapi.vcs.changes.actions.EditAction" />
+      <separator />
+      <reference ref="ChangesView.NewChangeList" />
+      <reference ref="ChangesView.RemoveChangeList" />
+      <reference ref="ChangesView.SetDefault" />
+      <reference ref="ChangesView.Rename" />
+      <reference ref="ChangesView.CreatePatch" />
+      <action id="ChangesView.CreatePatchToClipboard" class="com.intellij.openapi.vcs.changes.actions.CreatePatchFromChangesAction$Clipboard" />
+      <reference ref="ChangesView.Shelve" />
+      <separator />
+      <reference ref="ChangesView.Refresh" />
+      <separator />
+      <reference ref="VersionControlsGroup" />
+    </group>
+    <group id="Unversioned.Files.Dialog">
+      <reference ref="ChangesView.AddUnversioned" />
+      <reference ref="$Delete" />
+    </group>
+    <group id="Unversioned.Files.Dialog.Popup">
+      <reference ref="ChangesView.AddUnversioned" />
+      <reference ref="ChangesView.Move" />
+      <reference ref="$Delete" />
+    </group>
+    <group id="ShelvedChangesPopupMenu" popup="true">
+      <action id="ShelveChanges.UnshelveWithDialog" class="com.intellij.openapi.vcs.changes.shelf.UnshelveWithDialogAction" icon="AllIcons.Vcs.Unshelve" />
+      <action id="ShelvedChanges.Restore" class="com.intellij.openapi.vcs.changes.shelf.RestoreShelvedChange" />
+      <reference id="Diff.ShowDiff" />
+      <reference ref="Diff.ShowStandaloneDiff" />
+      <reference id="Vcs.ShowDiffWithLocal" />
+      <action id="ChangesView.CreatePatchFromChanges" class="com.intellij.openapi.vcs.changes.actions.CreatePatchFromChangesAction$Dialog" icon="AllIcons.Vcs.Patch" />
+      <reference ref="ChangesView.CreatePatchToClipboard" />
+      <action id="ShelvedChanges.ImportPatches" class="com.intellij.openapi.vcs.changes.shelf.ImportIntoShelfAction" />
+      <separator />
+      <action id="ShelvedChanges.Rename" class="com.intellij.openapi.vcs.changes.shelf.RenameShelvedChangeListAction" />
+      <reference ref="$Delete" />
+      <separator />
+    </group>
+    <group id="ShelvedChangesToolbar">
+      <action id="ChangesView.UnshelveSilently" class="com.intellij.openapi.vcs.changes.actions.UnshelveSilentlyAction" icon="AllIcons.Vcs.UnshelveSilent">
+        <keyboard-shortcut first-keystroke="control alt U" keymap="$default" />
+      </action>
+      <reference ref="Diff.ShowDiff" />
+      <group id="ShelvedChangesToolbar.ViewOptions" popup="true" icon="AllIcons.Actions.GroupBy">
+        <reference ref="ChangesView.GroupBy" />
+        <separator key="separator.show" />
+        <action id="ShelvedChanges.ShowHideDeleted" class="com.intellij.openapi.vcs.changes.shelf.ShowHideRecycledAction" />
+      </group>
+      <reference ref="ExpandAll" />
+      <reference ref="CollapseAll" />
+    </group>
+    <action id="Vcs.Shelf.Apply" class="com.intellij.openapi.vcs.changes.savedPatches.ApplyShelfAction" />
+    <action id="Vcs.Shelf.Pop" class="com.intellij.openapi.vcs.changes.savedPatches.PopShelfAction" />
+    <action id="Vcs.Shelf.Drop" class="com.intellij.openapi.vcs.changes.savedPatches.DropShelfAction" use-shortcut-of="$Delete" />
+    <action id="Vcs.Shelf.UnshelveChanges" class="com.intellij.openapi.vcs.changes.savedPatches.UnshelveChangesAction" />
+    <action id="Vcs.Shelf.UnshelveChangesAndRemove" class="com.intellij.openapi.vcs.changes.savedPatches.UnshelveChangesAndRemoveAction" />
+    <group id="Vcs.Shelf.Operations.ContextMenu" class="com.intellij.openapi.vcs.changes.savedPatches.ShelfOperationsGroup">
+      <reference id="Vcs.Shelf.Apply" />
+      <reference id="Vcs.Shelf.Pop" />
+      <reference id="ShelveChanges.UnshelveWithDialog" />
+      <reference ref="Vcs.Shelf.Drop" />
+      <reference ref="ShelvedChanges.Restore" />
+      <reference ref="ShelvedChanges.ImportPatches" />
+    </group>
+    <group id="Vcs.Shelf.ChangesBrowser.ContextMenu" class="com.intellij.openapi.vcs.changes.savedPatches.ShelfOperationsGroup">
+      <reference ref="Vcs.Shelf.UnshelveChanges" />
+      <reference ref="Vcs.Shelf.UnshelveChangesAndRemove" />
+    </group>
+    <action id="Vcs.EditSource" class="com.intellij.openapi.vcs.changes.committed.EditSourceFromChangesBrowserAction" icon="AllIcons.Actions.EditSource" use-shortcut-of="EditSource" />
+    <action id="Vcs.OpenRepositoryVersion" class="com.intellij.openapi.vcs.changes.actions.OpenRepositoryVersionAction" />
+    <action id="Vcs.RevertSelectedChanges" class="com.intellij.openapi.vcs.changes.actions.RevertSelectedChangesAction$Revert" icon="AllIcons.Actions.Rollback" />
+    <action id="Vcs.ApplySelectedChanges" class="com.intellij.openapi.vcs.changes.actions.RevertSelectedChangesAction$Apply" />
+    <group id="Vcs.SavedPatches.ContextMenu">
+      <reference id="Vcs.Shelf.Operations.ContextMenu" />
+      <separator />
+      <reference id="Diff.ShowDiff" />
+      <reference ref="Diff.ShowStandaloneDiff" />
+      <reference id="Vcs.ShowDiffWithLocal" />
+    </group>
+    <group id="Vcs.SavedPatches.ChangesBrowser.ContextMenu">
+      <reference ref="Vcs.ShowDiffWithLocal" />
+      <reference ref="Vcs.Shelf.ChangesBrowser.ContextMenu" />
+    </group>
+    <group id="Vcs.SavedPatches.ChangesBrowser.Toolbar" />
+    <group id="VcsHistoryActionsGroup" />
+    <group id="VcsHistoryActionsGroup.Toolbar" />
+    <action id="FileHistory.AnnotateRevision" class="com.intellij.openapi.vcs.history.actions.AnnotateRevisionAction" />
+    <group id="VcsHistoryInternalGroup.Popup">
+      <reference ref="Diff.ShowDiff" />
+      <reference ref="Vcs.ShowDiffWithLocal" />
+      <reference ref="ChangesView.CreatePatchFromChanges" />
+      <reference ref="Vcs.GetVersion" />
+      <reference ref="FileHistory.AnnotateRevision" />
+    </group>
+    <group id="VcsHistoryInternalGroup.Toolbar">
+      <reference ref="Vcs.RefreshFileHistory" />
+      <reference ref="Diff.ShowDiff" />
+    </group>
+    <group id="CommittedChangesToolbar">
+      <action id="CommittedChanges.Refresh" class="com.intellij.openapi.vcs.changes.committed.RefreshCommittedAction" icon="AllIcons.Actions.Refresh" />
+      <action id="CommittedChanges.Filter" class="com.intellij.openapi.vcs.changes.committed.FilterCommittedAction" icon="AllIcons.General.Filter" />
+      <action id="CommittedChanges.Details" class="com.intellij.openapi.vcs.changes.committed.ChangeListDetailsAction" icon="AllIcons.Actions.Preview" />
+      <reference ref="ChangesView.CreatePatchFromChanges" />
+      <action id="CommittedChanges.Revert" class="com.intellij.openapi.vcs.changes.actions.RevertChangeListAction" icon="AllIcons.Actions.Rollback" />
+      <action id="CommittedChanges.Clear" class="com.intellij.openapi.vcs.changes.committed.ClearCommittedAction" icon="AllIcons.Actions.GC" />
+    </group>
+    <group id="Vcs.RepositoryChangesBrowserToolbar">
+      <reference ref="Vcs.RevertSelectedChanges" />
+      <reference ref="Vcs.ShowHistoryForRevision" />
+    </group>
+    <group id="ChangesBrowser.FiltererGroup" class="com.intellij.openapi.vcs.changes.ui.browser.ChangesFilterer$FilterGroup" />
+    <group id="Vcs.RepositoryChangesBrowserMenu">
+      <reference ref="Vcs.ShowDiffWithLocal" />
+      <reference ref="Vcs.ShowDiffWithLocal.Before" />
+      <reference ref="Vcs.EditSource" />
+      <reference ref="Vcs.OpenRepositoryVersion" />
+      <reference ref="Vcs.RevertSelectedChanges" />
+      <reference ref="Vcs.ApplySelectedChanges" />
+      <reference id="ChangesView.CreatePatchFromChanges" />
+      <reference ref="Vcs.GetVersion" />
+      <reference ref="Vcs.ShowHistoryForRevision" />
+    </group>
+    <group id="RepositoryChangesBrowserToolbar">
+      <reference ref="Vcs.ShowHistoryForRevision" />
+    </group>
+    <group id="IncomingChangesToolbar">
+      <action id="IncomingChanges.Refresh" class="com.intellij.openapi.vcs.changes.committed.RefreshIncomingChangesAction" icon="AllIcons.Actions.Refresh" />
+      <reference ref="CommittedChanges.Details" />
+      <reference ref="Vcs.UpdateProject" />
+    </group>
+    <group id="Vcs.History">
+      <action id="VcsHistory.ShowAllAffected" class="com.intellij.openapi.vcs.annotate.ShowAllAffectedGenericAction" icon="AllIcons.Actions.ListChanges" />
+    </group>
+    <action id="ChangesView.Browse" class="com.intellij.openapi.vcs.changes.committed.BrowseCommittedChangesAction" />
+    <group id="EditorGutterVcsPopupMenu">
+      <reference ref="Annotate" />
+      <add-to-group group-id="EditorGutterPopupMenu" anchor="first" />
+      <separator />
+    </group>
+    <group id="Vcs.CheckinProjectToolbar" />
+    <group id="Vcs.CheckinProjectMenu" />
+    <group id="UpdateActionGroup">
+      <reference ref="EditSource" />
+      <reference ref="$Delete" />
+      <reference id="Diff.ShowDiff" />
+    </group>
+    <action id="Vcs.ReformatCommitMessage" class="com.intellij.vcs.commit.message.ReformatCommitMessageAction" use-shortcut-of="ReformatCode" />
+    <group id="Vcs.MessageActionGroup">
+      <action id="Vcs.ShowMessageHistory" class="com.intellij.openapi.vcs.actions.ShowMessageHistoryAction" icon="AllIcons.Vcs.History" />
+    </group>
+    <group id="Vcs.Commit.PrimaryCommitActions" />
+    <group id="Vcs.CommitExecutor.Actions" />
+    <group id="ChangesView.CommitToolbar">
+      <action id="Vcs.ToggleAmendCommitMode" class="com.intellij.vcs.commit.ToggleAmendCommitModeAction" />
+      <reference id="Vcs.MessageActionGroup" />
+    </group>
+    <action id="ChangesView.ShowCommitOptions" class="com.intellij.openapi.vcs.actions.ShowCommitOptionsAction" />
+    <action id="Vcs.RunCommitChecks" class="com.intellij.vcs.commit.RunCommitChecksAction" />
+    <action class="com.intellij.openapi.vcs.actions.VcsToolbarLabelAction" id="VcsToolbarLabelAction" />
+    <group id="VcsToolbarActions">
+      <reference ref="VcsToolbarLabelAction" />
+      <reference ref="Vcs.UpdateProject" />
+      <reference ref="CheckinProject" />
+      <reference ref="ChangesView.ToggleCommitUi" />
+      <reference ref="Compare.SameVersion" />
+      <reference ref="Vcs.ShowTabbedFileHistory" />
+      <reference ref="ChangesView.Revert" />
+      <separator />
+      <add-to-group group-id="MainToolBarSettings" />
+    </group>
+    <group id="VcsNavBarToolbarActions">
+      <reference ref="VcsToolbarLabelAction" />
+      <reference ref="Vcs.UpdateProject" />
+      <reference ref="CheckinProject" />
+      <reference ref="ChangesView.ToggleCommitUi" />
+      <reference ref="Vcs.ShowTabbedFileHistory" />
+      <reference ref="ChangesView.Revert" />
+      <separator />
+      <add-to-group group-id="NavBarVcsGroup" anchor="first" />
+    </group>
+    <action id="CloseAllUnmodifiedEditors" class="com.intellij.ide.actions.CloseAllUnmodifiedEditorsAction">
+      <add-to-group group-id="CloseEditorsGroup" anchor="after" relative-to-action="CloseAllEditors" />
+      <add-to-group group-id="EditorTabsEntryPoint" anchor="after" relative-to-action="CloseAllEditors" />
+    </action>
+    <group id="Vcs.Diff.Commit.KeymapGroup" searchable="false">
+      <action id="Vcs.Diff.IncludeChangedLinesIntoCommit" class="com.intellij.openapi.actionSystem.EmptyAction" />
+      <action id="Vcs.Diff.ExcludeChangedLinesFromCommit" class="com.intellij.openapi.actionSystem.EmptyAction" />
+      <action id="Vcs.Diff.IncludeWholeChangedLinesIntoCommit" class="com.intellij.openapi.actionSystem.EmptyAction" />
+      <add-to-group group-id="Diff.KeymapGroup" relative-to-action="Diff.ResolveConflict" anchor="after" />
+    </group>
+    <group id="Vcs.Diff.KeymapGroup" searchable="false">
+      <action id="Vcs.RollbackChangedLines" class="com.intellij.openapi.vcs.ex.RollbackLineStatusAction" icon="AllIcons.Actions.Rollback" />
+      <action id="Vcs.ShowDiffChangedLines" class="com.intellij.openapi.vcs.ex.ShowDiffLineStatusAction" icon="AllIcons.Actions.Diff" />
+      <action id="Vcs.MoveChangedLinesToChangelist" class="com.intellij.openapi.vcs.ex.MoveChangesLineStatusAction" />
+      <action id="Vcs.Diff.ToggleDiffAligningMode" class="com.intellij.diff.actions.impl.ToggleDiffAligningModeAction">
+        <add-to-group group-id="Diff.EditorGutterPopupMenu.EditorSettings" />
+        <override-text place="popup@DiffToolbar" />
+      </action>
+      <action id="Vcs.Diff.ResolveConflictsInImports" class="com.intellij.diff.merge.ResolveConflictsInImportsToggleAction">
+        <add-to-group group-id="Diff.EditorGutterPopupMenu.EditorSettings" />
+      </action>
+      <action id="Vcs.Diff.ShowDiffInEditorTab" class="com.intellij.diff.editor.MoveDiffEditorAction$ToEditor">
+        <add-to-group group-id="Diff.EditorGutterPopupMenu.EditorSettings" anchor="last" />
+        <add-to-group group-id="Diff.Binary.Settings" anchor="last" />
+      </action>
+      <group id="Vcs.Diff.EditorTabs.Group" searchable="false">
+        <action id="Vcs.Diff.ShowDiffInNewWindow" icon="AllIcons.Actions.MoveToWindow" class="com.intellij.diff.editor.MoveDiffEditorAction$ToWindow">
+          <add-to-group group-id="Diff.Binary.Settings" />
+        </action>
+        <action id="Vcs.Diff.EnableDisableCombinedDiff" class="com.intellij.diff.actions.impl.CombinedDiffToggleAction" />
+        <separator />
+        <action id="Vcs.CombinedDiff.ToggleCollapseAllBlock" class="com.intellij.diff.tools.combined.CombinedToggleBlockCollapseAllAction" />
+        <add-to-group group-id="EditorTabPopupMenu" anchor="before" relative-to-action="SplitVertically" />
+        <add-to-group group-id="Diff.EditorGutterPopupMenu.EditorSettings" anchor="last" />
+      </group>
+      <add-to-group group-id="Diff.KeymapGroup" />
+    </group>
+    <action id="Vcs.Diff.ToggleSearchInChanges" class="com.intellij.openapi.diff.impl.ToggleSearchInChangesAction">
+      <add-to-group group-id="Editor.Search.Filter.Results" />
+    </action>
+    <reference ref="Vcs.VcsClone">
+      <add-to-group group-id="WelcomeScreen.QuickStart" anchor="first" />
+    </reference>
+    <action id="Vcs.CopyRevisionNumberAction" class="com.intellij.openapi.vcs.history.actions.CopyRevisionNumberAction" icon="AllIcons.Actions.Copy" use-shortcut-of="CopyReference" />
+    <action id="Vcs.CopyCommitSubjectAction" class="com.intellij.openapi.vcs.history.actions.CopyCommitSubjectAction" icon="AllIcons.Actions.Copy" />
+    <group id="VcsSelectionHistoryDialog.Popup">
+      <reference id="Diff.ShowDiff" />
+      <reference id="Vcs.ShowDiffWithLocal" />
+      <reference id="VcsHistory.ShowAllAffected" />
+      <reference id="Vcs.CopyRevisionNumberAction" />
+    </group>
+    <group id="Shelve.KeymapGroup" searchable="false">
+      <reference ref="ChangesView.Shelve" />
+      <reference ref="ChangesView.ShelveSilently" />
+      <reference ref="ChangesView.SaveToShelve" />
+      <reference ref="ShelveChanges.UnshelveWithDialog" />
+      <reference ref="ChangesView.UnshelveSilently" />
+      <reference ref="ShelvedChanges.Restore" />
+      <reference ref="ShelvedChanges.ImportPatches" />
+      <separator />
+      <reference ref="ShelvedChanges.Rename" />
+      <separator />
+      <reference ref="Diff.ShowDiff" />
+      <reference ref="ChangesView.CreatePatchFromChanges" />
+      <separator />
+      <reference ref="ShelvedChanges.ShowHideDeleted" />
+      <separator />
+      <reference ref="Vcs.Shelf.Operations.ContextMenu" />
+      <reference ref="Vcs.Shelf.ChangesBrowser.ContextMenu" />
+      <add-to-group group-id="Vcs.KeymapGroup" anchor="first" />
+    </group>
+    <group id="FileHistory.KeymapGroup" searchable="false">
+      <reference id="Vcs.GetVersion" />
+      <reference id="FileHistory.AnnotateRevision" />
+      <add-to-group group-id="Vcs.KeymapGroup" />
+    </group>
+    <group id="VcsActions.KeymapGroup" searchable="false">
+      <reference ref="Vcs.ToggleAmendCommitMode" />
+      <reference ref="CheckinProject" />
+      <reference ref="CheckinFiles" />
+      <reference ref="Vcs.RunCommitChecks" />
+      <reference ref="ChangesView.ShowCommitOptions" />
+      <reference ref="UpdateFiles" />
+      <reference ref="CheckStatusForFiles" />
+      <reference ref="IntegrateFiles" />
+      <separator />
+      <reference ref="Show.Current.Revision" />
+      <reference ref="Vcs.ShowHistoryForBlock" />
+      <reference ref="Vcs.ShowTabbedFileHistory" />
+      <reference ref="Vcs.ShowHistoryForRevision" />
+      <reference ref="VcsHistory.ShowAllAffected" />
+      <reference ref="Compare.Specified" />
+      <reference ref="Compare.Selected" />
+      <reference ref="Annotate" />
+      <separator />
+      <reference ref="VcsShowNextChangeMarker" />
+      <reference ref="VcsShowPrevChangeMarker" />
+      <reference ref="VcsShowCurrentChangeMarker" />
+      <reference ref="Vcs.RollbackChangedLines" />
+      <reference ref="Vcs.ShowDiffChangedLines" />
+      <reference ref="Vcs.MoveChangedLinesToChangelist" />
+      <separator />
+      <reference ref="Start.Use.Vcs" />
+      <reference ref="Vcs.QuickListPopupAction" />
+      <reference ref="Vcs.UpdateProject" />
+      <reference ref="Vcs.IntegrateProject" />
+      <separator />
+      <reference ref="ChangesView.Browse" />
+      <reference ref="ChangesView.CreatePatch" />
+      <reference ref="ChangesView.CreatePatchToClipboard" />
+      <reference ref="ChangesView.ApplyPatch" />
+      <reference ref="ChangesView.ApplyPatchFromClipboard" />
+      <reference ref="ChangesView.Revert" />
+      <reference ref="ChangesView.RevertFiles" />
+      <reference ref="ChangesView.Refresh" />
+      <reference ref="ChangesView.NewChangeList" />
+      <reference ref="ChangesView.RemoveChangeList" />
+      <reference ref="ChangesView.SetDefault" />
+      <reference ref="ChangesView.Move" />
+      <reference ref="Diff.ShowDiff" />
+      <reference ref="ChangesView.SingleClickPreview" />
+      <reference ref="$Delete" />
+      <reference ref="ChangesView.AddUnversioned" />
+      <reference ref="ChangesView.RemoveDeleted" />
+      <reference ref="ChangesView.Edit" />
+      <reference ref="ChangesView.Rename" />
+      <separator />
+      <reference ref="CommittedChanges.Refresh" />
+      <reference ref="CommittedChanges.Filter" />
+      <reference ref="CommittedChanges.Details" />
+      <reference ref="CommittedChanges.Revert" />
+      <reference ref="CommittedChanges.Clear" />
+      <reference ref="IncomingChanges.Refresh" />
+      <separator />
+      <reference ref="Vcs.ShowDiffWithLocal" />
+      <reference ref="Vcs.ShowDiffWithLocal.Before" />
+      <reference ref="Vcs.EditSource" />
+      <reference ref="Vcs.OpenRepositoryVersion" />
+      <reference ref="Vcs.RevertSelectedChanges" />
+      <reference ref="Vcs.ApplySelectedChanges" />
+      <separator />
+      <reference ref="Vcs.ShowMessageHistory" />
+      <reference ref="CloseAllUnmodifiedEditors" />
+      <reference ref="Vcs.VcsClone" />
+      <reference ref="Vcs.CopyRevisionNumberAction" />
+      <separator />
+      <add-to-group group-id="VcsGeneral.KeymapGroup" />
+    </group>
+    <group id="Diff.CompareWith.KeymapGroup" searchable="false">
+      <reference ref="Compare.SameVersion" />
+      <reference ref="Compare.LastVersion" />
+      <reference ref="Compare.Specified" />
+      <reference ref="Vcs.ShowDiffWithLocal.Before" />
+      <reference ref="Vcs.ShowDiffWithLocal" />
+      <separator />
+      <add-to-group group-id="Diff.KeymapGroup" anchor="after" relative-to-action="CompareClipboardWithSelection" />
+    </group>
+    <group id="Vcs.ToolWindow.CreateRepository" searchable="false" />
+    <action id="ActivateCommitToolWindow" class="com.intellij.openapi.vcs.changes.ui.ActivateCommitToolWindowAction">
+      <add-to-group group-id="ActivateToolWindowActions" />
+    </action>
+    <action id="Vcs.ShowConsoleTab" class="com.intellij.vcs.console.ShowVcsConsoleTabAction" />
+    <group id="CommitView.GearActions">
+      <group id="CommitView.ShowOnDoubleClick" popup="true" searchable="false">
+        <action id="CommitView.ShowOnDoubleClick.EditorPreview" class="com.intellij.openapi.vcs.changes.actions.ShowOnDoubleClickToggleAction$EditorPreview">
+          <override-text place="ToolwindowPopup" />
+        </action>
+        <action id="CommitView.ShowOnDoubleClick.Source" class="com.intellij.openapi.vcs.changes.actions.ShowOnDoubleClickToggleAction$Source">
+          <override-text place="ToolwindowPopup" />
+        </action>
+      </group>
+      <add-to-group group-id="VcsGeneral.KeymapGroup" />
+    </group>
+    <group id="LocalChangesView.GearActions">
+      <group id="LocalChangesView.ShowOnDoubleClick" popup="true" searchable="false" class="com.intellij.ide.actions.NonEmptyActionGroup">
+        <reference ref="CommitView.ShowOnDoubleClick.EditorPreview" />
+        <reference ref="CommitView.ShowOnDoubleClick.Source" />
+      </group>
+      <add-to-group group-id="VcsGeneral.KeymapGroup" />
+    </group>
+    <group id="LocalChangesView.TabActions" />
+    <group id="Vcs.Show.Toolwindow.Tab">
+      <add-to-group group-id="VcsGeneral.KeymapGroup" />
+      <action id="Vcs.Show.Local.Changes" class="com.intellij.vcs.VcsShowLocalChangesAction" />
+      <action id="Vcs.Show.Shelf" class="com.intellij.vcs.VcsShowShelfAction" />
+    </group>
+    <action id="AnnotateStackTraceAction.show.files.modification.info" class="com.intellij.unscramble.AnnotateStackTraceAction" icon="AllIcons.Actions.Annotate">
+      <add-to-group group-id="AnalyzeStacktraceToolbar" anchor="first" />
+    </action>
+    <action id="Vcs.Operations.Popup.Annotate" class="com.intellij.openapi.vcs.actions.ShowAnnotateOperationsPopup">
+      <add-to-group group-id="VcsGeneral.KeymapGroup" />
+    </action>
+    <group id="Vcs.Operations.Popup">
+      <group id="Vcs.Operations.Popup.VcsAware" class="com.intellij.openapi.vcs.actions.VcsQuickListPopupAction$VcsAware">
+        <group id="Vcs.Operations.Popup.VcsNameSeparator" class="com.intellij.openapi.vcs.actions.VcsQuickListPopupAction$VcsNameSeparator" />
+        <reference id="ChangesView.AddUnversioned" />
+        <reference id="CheckinProject" />
+        <reference ref="ChangesView.ToggleCommitUi" />
+        <reference id="CheckinFiles" />
+        <reference id="ChangesView.Revert" />
+        <separator />
+        <reference id="Vcs.ShowTabbedFileHistory" />
+        <reference id="Annotate" />
+        <reference id="Compare.SameVersion" />
+      </group>
+      <separator />
+      <group id="Vcs.Operations.Popup.Vcs.Providers" class="com.intellij.openapi.vcs.actions.VcsQuickListPopupAction$Providers" />
+      <group id="Vcs.Operations.Popup.NonVcsAware" class="com.intellij.openapi.vcs.actions.VcsQuickListPopupAction$NonVcsAware">
+        <reference id="Start.Use.Vcs" />
+      </group>
+      <separator />
+      <group class="com.intellij.openapi.vcs.actions.ShowAnnotateOperationsPopup$Group" popup="true" id="ShowAnnotateOperationsPopupGroup" />
+    </group>
+    <action id="MarkFileDirty" internal="true" class="com.intellij.openapi.vcs.changes.actions.MarkFileDirtyAction">
+      <add-to-group group-id="Internal.VFS" />
+    </action>
+  </actions>
+  <extensions defaultExtensionNs="com.intellij">
+    <fileType language="IgnoreLang" extensions="ignore" fieldName="INSTANCE" name="IgnoreLang file" implementationClass="com.intellij.openapi.vcs.changes.ignore.lang.IgnoreFileType" />
+    <psi.referenceContributor language="IgnoreLang" implementation="com.intellij.openapi.vcs.changes.ignore.reference.IgnoreReferenceContributor" />
+    <lang.elementManipulator forClass="com.intellij.openapi.vcs.changes.ignore.psi.IgnoreEntry" implementationClass="com.intellij.openapi.vcs.changes.ignore.psi.IgnoreEntryManipulator" />
+    <lang.parserDefinition language="IgnoreLang" implementationClass="com.intellij.openapi.vcs.changes.ignore.lang.IgnoreParserDefinition" />
+    <completion.contributor language="IgnoreLang" implementationClass="com.intellij.openapi.vcs.changes.ignore.codeInsight.SyntaxCompletionContributor" />
+    <completion.contributor language="IgnoreLang" implementationClass="com.intellij.openapi.vcs.changes.ignore.codeInsight.FileExtensionCompletionContributor" />
+    <lang.syntaxHighlighterFactory language="IgnoreLang" implementationClass="com.intellij.openapi.vcs.changes.ignore.lang.IgnoreLanguageHighlighterFactory" />
+    <localInspection language="IgnoreLang" bundle="messages.VcsBundle" enabledByDefault="true" groupKey="ignore.codeInspection.group" implementationClass="com.intellij.openapi.vcs.changes.ignore.codeInspection.IgnoreFileDuplicateEntryInspection" key="ignore.codeInspection.duplicateEntry" level="WARNING" />
+    <vcsStartupActivity implementation="com.intellij.vcs.commit.CommitModeManager$MyStartupActivity" />
+    <projectService serviceInterface="com.intellij.diff.tools.combined.CombinedDiffManager" serviceImplementation="com.intellij.openapi.vcs.changes.actions.diff.CombinedDiffManagerImpl" />
+    <intentionAction>
+      <language />
+      <className>com.intellij.openapi.vcs.intentions.SelectedBlockHistoryIntention</className>
+    </intentionAction>
+  </extensions>
+  <projectListeners>
+    <listener class="com.intellij.openapi.vcs.annotate.AnnotationsPreloader$AnnotationsPreloaderFileEditorManagerListener" topic="com.intellij.openapi.fileEditor.FileEditorManagerListener" />
+    <listener class="com.intellij.platform.ide.impl.statistic.ToolWindowStateListener" topic="com.intellij.openapi.wm.ex.ToolWindowManagerListener" />
+  </projectListeners>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.vcs.log.impl"><![CDATA[<idea-plugin>
+  <dependencies>
+    <module name="intellij.platform.vcs.impl" />
+  </dependencies>
+  <extensionPoints>
+    <extensionPoint name="logProvider" interface="com.intellij.vcs.log.VcsLogProvider" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="logHighlighterFactory" interface="com.intellij.vcs.log.ui.highlighters.VcsLogHighlighterFactory" dynamic="true" />
+    <extensionPoint name="customVcsLogUiFactoryProvider" interface="com.intellij.vcs.log.impl.CustomVcsLogUiFactoryProvider" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="vcsLogCustomColumn" interface="com.intellij.vcs.log.ui.table.column.VcsLogCustomColumn" dynamic="true" />
+    <extensionPoint name="vcsLogCommitStatusProvider" interface="com.intellij.vcs.log.ui.frame.VcsCommitExternalStatusProvider" dynamic="true" />
+    <extensionPoint name="vcsLogFileHistoryHandler" interface="com.intellij.vcs.log.VcsLogFileHistoryHandler" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="fileHistoryPerformanceListener" interface="com.intellij.vcs.log.history.FileHistoryPerformanceListener" dynamic="true" />
+  </extensionPoints>
+  <extensions defaultExtensionNs="com.intellij">
+    <changesViewContent tabName="Log" className="com.intellij.vcs.log.impl.VcsLogContentProvider" predicateClassName="com.intellij.vcs.log.impl.VcsLogContentProvider$VcsLogVisibilityPredicate" displayNameSupplierClassName="com.intellij.vcs.log.impl.VcsLogContentProvider$DisplayNameSupplier" />
+    <applicationService serviceImplementation="com.intellij.vcs.log.impl.VcsLogApplicationSettings" />
+    <projectConfigurable id="vcs.log" parentId="project.propVCSSupport.Mappings" provider="com.intellij.vcs.log.ui.VcsLogConfigurableProvider" key="vcs.log.settings.group.title" bundle="messages.VcsLogBundle" />
+    <projectService serviceInterface="com.intellij.vcs.log.VcsLogObjectsFactory" serviceImplementation="com.intellij.vcs.log.impl.VcsLogObjectsFactoryImpl" />
+    <projectService serviceInterface="com.intellij.vcs.log.VcsUserRegistry" serviceImplementation="com.intellij.vcs.log.data.VcsUserRegistryImpl" />
+    <statistics.projectUsagesCollector implementation="com.intellij.vcs.log.statistics.VcsLogRepoSizeCollector" />
+    <statistics.projectUsagesCollector implementation="com.intellij.vcs.log.statistics.VcsLogFeaturesCollector" />
+    <statistics.projectUsagesCollector implementation="com.intellij.vcs.log.statistics.VcsLogIndexProjectStatisticsCollector" />
+    <statistics.applicationUsagesCollector implementation="com.intellij.vcs.log.statistics.VcsLogIndexApplicationStatisticsCollector" />
+    <statistics.counterUsagesCollector implementationClass="com.intellij.vcs.log.statistics.VcsLogUsageTriggerCollector" />
+    <statistics.counterUsagesCollector implementationClass="com.intellij.vcs.log.statistics.VcsLogPerformanceStatisticsCollector" />
+    <statistics.notificationIdsHolder implementation="com.intellij.vcs.log.ui.VcsLogNotificationIdsHolder" />
+    <logHighlighterFactory implementation="com.intellij.vcs.log.ui.highlighters.VcsLogCommitsHighlighter$Factory" />
+    <logHighlighterFactory implementation="com.intellij.vcs.log.ui.highlighters.MergeCommitsHighlighter$Factory" />
+    <logHighlighterFactory implementation="com.intellij.vcs.log.ui.highlighters.CurrentBranchHighlighter$Factory" />
+    <logHighlighterFactory implementation="com.intellij.vcs.log.ui.highlighters.IndexHighlighter$Factory" />
+    <postStartupActivity implementation="com.intellij.vcs.log.impl.VcsProjectLog$InitLogStartupActivity" />
+    <cachesInvalidator implementation="com.intellij.vcs.log.impl.VcsLogCachesInvalidator" />
+    <projectService serviceInterface="com.intellij.vcs.log.VcsLogFileHistoryProvider" serviceImplementation="com.intellij.vcs.log.history.VcsLogFileHistoryProviderImpl" />
+    <uiDataRule implementation="com.intellij.vcs.log.ui.VcsLogUiDataRule" />
+    <diff.actions.ShowDiffAction.ExtensionProvider implementation="com.intellij.vcs.log.ui.actions.history.CompareRevisionsFromFileHistoryActionProvider$ShowDiff" />
+    <diff.actions.ShowStandaloneDiffAction.ExtensionProvider implementation="com.intellij.vcs.log.ui.actions.history.CompareRevisionsFromFileHistoryActionProvider$ShowStandaloneDiff" />
+    <diff.actions.ShowStandaloneDiffAction.ExtensionProvider implementation="com.intellij.vcs.log.ui.actions.ShowStandaloneDiffFromLogActionProvider" />
+    <openapi.vcs.history.actions.ShowDiffAfterWithLocalAction.ExtensionProvider implementation="com.intellij.vcs.log.ui.actions.history.ShowDiffAfterWithLocalFromFileHistoryActionProvider" />
+    <openapi.vcs.history.actions.ShowDiffAfterWithLocalAction.ExtensionProvider implementation="com.intellij.vcs.log.ui.actions.ShowDiffAfterWithLocalFromLogActionProvider" />
+    <openapi.vcs.changes.actions.CreatePatchFromChangesAction.Dialog.ExtensionProvider implementation="com.intellij.vcs.log.ui.actions.history.CreatePatchFromHistoryActionProvider$Dialog" />
+    <openapi.vcs.changes.actions.CreatePatchFromChangesAction.Clipboard.ExtensionProvider implementation="com.intellij.vcs.log.ui.actions.history.CreatePatchFromHistoryActionProvider$Clipboard" />
+    <openapi.vcs.changes.actions.CreatePatchFromChangesAction.Dialog.ExtensionProvider implementation="com.intellij.vcs.log.ui.actions.VcsLogCreatePatchActionProvider$Dialog" />
+    <openapi.vcs.changes.actions.CreatePatchFromChangesAction.Clipboard.ExtensionProvider implementation="com.intellij.vcs.log.ui.actions.VcsLogCreatePatchActionProvider$Clipboard" />
+    <openapi.vcs.history.actions.GetVersionAction.ExtensionProvider implementation="com.intellij.vcs.log.ui.actions.history.GetVersionFromHistoryAction" />
+    <openapi.vcs.changes.actions.diff.ChangeDiffRequestProvider implementation="com.intellij.vcs.log.impl.MergedChangeDiffRequestProvider" />
+    <vcsAnnotationGutterActionProvider implementation="com.intellij.vcs.log.ui.actions.history.ShowInFileHistoryAnnotationActionProvider" />
+    <actionPromoter implementation="com.intellij.vcs.log.ui.actions.VcsLogActionPromoter" />
+    <customizableActionGroupProvider implementation="com.intellij.vcs.log.ui.actions.VcsLogCustomizableActionGroupProvider" />
+    <virtualFileSystem key="vcs-log" implementationClass="com.intellij.vcs.log.ui.editor.VcsLogVirtualFileSystem" />
+    <fileIconProvider implementation="com.intellij.vcs.log.ui.editor.VcsLogIconProvider" />
+    <fileEditorProvider id="VcsLogEditor" implementation="com.intellij.vcs.log.ui.editor.VcsLogEditorProvider" fileType="VcsLog" />
+    <editorTabTitleProvider implementation="com.intellij.vcs.log.ui.editor.DefaultVcsLogFileTabTitleProvider" />
+    <openTelemetryExporterProvider implementation="com.intellij.vcs.log.statistics.VcsLogTelemetryExporter" />
+    <bookmarkProvider implementation="com.intellij.vcs.log.ui.VcsLogBookmarkProvider" />
+  </extensions>
+  <projectListeners>
+    <listener topic="com.intellij.openapi.wm.ex.ToolWindowManagerListener" class="com.intellij.vcs.log.impl.VcsLogToolwindowManagerListener" />
+    <listener class="com.intellij.vcs.log.ui.VcsLogBookmarksManagerListener" topic="com.intellij.ide.bookmark.BookmarksListener" />
+  </projectListeners>
+  <actions resource-bundle="messages.VcsLogBundle">
+    <group id="Log.Unsorted.KeymapGroup" searchable="false">
+      <action class="com.intellij.vcs.log.ui.actions.GoToHashOrRefAction" id="Vcs.Log.GoToRef" icon="AllIcons.Actions.Find" use-shortcut-of="Find" />
+      <action class="com.intellij.vcs.log.ui.actions.GoToParentRowAction" id="Vcs.Log.GoToParent">
+        <keyboard-shortcut first-keystroke="RIGHT" keymap="$default" />
+      </action>
+      <action class="com.intellij.vcs.log.ui.actions.GoToChildRowAction" id="Vcs.Log.GoToChild">
+        <keyboard-shortcut first-keystroke="LEFT" keymap="$default" />
+      </action>
+      <action class="com.intellij.vcs.log.ui.actions.VcsShowLogAction" id="Vcs.Show.Log" icon="AllIcons.Toolwindows.ToolWindowChanges">
+        <add-to-group group-id="Vcs.Show.Toolwindow.Tab" />
+      </action>
+      <action class="com.intellij.vcs.log.ui.actions.CompactReferencesViewAction" id="Vcs.Log.CompactReferencesView" />
+      <action class="com.intellij.vcs.log.ui.actions.ShowTagNamesAction" id="Vcs.Log.ShowTagNames" />
+      <action class="com.intellij.vcs.log.ui.actions.AlignLabelsAction" id="Vcs.Log.AlignLabels" />
+      <action class="com.intellij.vcs.log.ui.actions.CollapseGraphAction" id="Vcs.Log.CollapseAll" />
+      <action class="com.intellij.vcs.log.ui.actions.ExpandGraphAction" id="Vcs.Log.ExpandAll" />
+      <action class="com.intellij.vcs.log.ui.actions.ShowLongEdgesAction" id="Vcs.Log.ShowLongEdges" />
+      <action class="com.intellij.vcs.log.ui.actions.ShowDetailsAction" id="Vcs.Log.ShowDetailsAction" />
+      <action class="com.intellij.vcs.log.ui.actions.ShowDiffPreviewAction" id="Vcs.Log.ShowDiffPreview" />
+      <action class="com.intellij.vcs.log.ui.actions.MoveDiffPreviewToBottomAction" id="Vcs.Log.MoveDiffPreviewToBottom" />
+      <action class="com.intellij.vcs.log.ui.actions.MoveDiffPreviewToRightAction" id="Vcs.Log.MoveDiffPreviewToRight" />
+      <action class="com.intellij.vcs.log.ui.actions.ShowChangesFromParentsAction" id="Vcs.Log.ShowChangesFromParents" />
+      <action class="com.intellij.vcs.log.ui.actions.ShowOnlyAffectedChangesAction" id="Vcs.Log.ShowOnlyAffectedChanges" icon="AllIcons.Nodes.Folder" />
+      <action class="com.intellij.vcs.log.ui.actions.ShowRootsColumnAction" id="Vcs.Log.ShowRootsColumnAction" />
+      <action class="com.intellij.vcs.log.ui.actions.PreferCommitDateAction" id="Vcs.Log.PreferCommitDate" />
+      <action class="com.intellij.vcs.log.ui.actions.FocusTextFilterAction" id="Vcs.Log.FocusTextFilter">
+        <keyboard-shortcut first-keystroke="control L" keymap="$default" />
+        <keyboard-shortcut first-keystroke="control L" keymap="Visual Studio" remove="true" />
+      </action>
+      <group class="com.intellij.vcs.log.ui.actions.ToggleLogColumnsActionGroup" id="Vcs.Log.ToggleColumns" />
+      <group class="com.intellij.vcs.log.ui.actions.HighlightersActionGroup" id="Vcs.Log.HighlightersActionGroup" />
+      <action class="com.intellij.vcs.log.ui.actions.OpenAnotherLogTabAction$InToolWindow" id="Vcs.Log.OpenAnotherTab" icon="AllIcons.General.Add" />
+      <action class="com.intellij.vcs.log.ui.actions.OpenAnotherLogTabAction$InEditor" id="Vcs.Log.OpenAnotherTabInEditor" icon="AllIcons.Actions.OpenNewTab" />
+      <action class="com.intellij.vcs.log.ui.actions.RefreshLogAction" id="Vcs.Log.Refresh" use-shortcut-of="Refresh" icon="AllIcons.Actions.Refresh" />
+      <action class="com.intellij.vcs.log.ui.actions.ShowCommitTooltipAction" id="Vcs.Log.ShowTooltip" use-shortcut-of="QuickJavaDoc" />
+      <action class="com.intellij.vcs.log.ui.actions.EnableFilterByRegexAction" id="Vcs.Log.EnableFilterByRegexAction" icon="AllIcons.Actions.Regex" />
+      <action class="com.intellij.vcs.log.ui.actions.EnableMatchCaseAction" id="Vcs.Log.MatchCaseAction" icon="AllIcons.Actions.MatchCase" />
+      <action class="com.intellij.vcs.log.ui.actions.history.OpenRepositoryVersionFromHistoryAction" id="Vcs.Log.OpenRepositoryVersion" use-shortcut-of="Vcs.OpenRepositoryVersion" />
+      <action class="com.intellij.vcs.log.ui.actions.history.AnnotateRevisionFromHistoryAction" id="Vcs.Log.AnnotateRevisionAction" use-shortcut-of="Annotate" icon="AllIcons.Actions.Annotate" />
+      <action class="com.intellij.vcs.log.ui.actions.history.ShowAllAffectedFromHistoryAction" id="Vcs.Log.ShowAllAffected" use-shortcut-of="VcsHistory.ShowAllAffected" icon="AllIcons.Actions.ListChanges" />
+      <action class="com.intellij.vcs.log.ui.actions.CompareRevisionsFromLogAction" id="Vcs.Log.CompareRevisions" icon="AllIcons.Actions.Diff" />
+      <action class="com.intellij.vcs.log.ui.actions.ResumeIndexingAction" id="Vcs.Log.ResumeIndexing" icon="AllIcons.Process.ProgressResumeSmall" />
+      <action class="com.intellij.vcs.log.ui.actions.InvalidateVcsLogCaches" id="Vcs.Log.InvalidateCaches" internal="true" />
+      <action class="com.intellij.vcs.log.ui.actions.CheckSelectedCommits" id="Vcs.Log.CheckSelectedCommitsIndexData" internal="true" />
+      <action class="com.intellij.vcs.log.ui.actions.CheckOldCommits" id="Vcs.Log.CheckFirstCommitsIndexData" internal="true" />
+      <action class="com.intellij.vcs.log.ui.actions.VcsLogShowBigRepositoriesList" id="Vcs.Log.ShowBigRepositories" internal="true" />
+      <action class="com.intellij.vcs.log.ui.actions.ShowCommitInLogAction" id="Vcs.Log.SelectInLog" icon="AllIcons.Toolwindows.ToolWindowChanges">
+        <add-to-group group-id="VcsSelectionHistoryDialog.Popup" anchor="after" relative-to-action="Vcs.CopyRevisionNumberAction" />
+      </action>
+      <action class="com.intellij.vcs.log.ui.actions.VcsLogShowSettingsAction" id="Vcs.Log.ShowSettingsAction">
+        <override-text place="GoToAction" />
+      </action>
+    </group>
+    <group id="Vcs.Log.BranchActionsGroup" popup="false">
+      <separator key="action.vcs.log.branches.separator" />
+      <reference id="Vcs.Log.CollapseAll" />
+      <reference id="Vcs.Log.ExpandAll" />
+    </group>
+    <group id="Vcs.Log.PresentationSettings" class="com.intellij.vcs.log.ui.actions.VcsLogToolbarPopupActionGroup" icon="AllIcons.Actions.GroupBy" popup="true">
+      <separator key="action.vcs.log.show.separator" />
+      <reference id="Vcs.Log.ShowRootsColumnAction" />
+      <reference id="Vcs.Log.CompactReferencesView" />
+      <reference id="Vcs.Log.ShowTagNames" />
+      <reference id="Vcs.Log.ShowLongEdges" />
+      <reference id="Vcs.Log.PreferCommitDate" />
+      <reference id="Vcs.Log.AlignLabels" />
+      <reference id="Vcs.Log.ToggleColumns" />
+      <separator />
+      <reference id="Vcs.Log.HighlightersActionGroup" />
+    </group>
+    <group id="Vcs.Log.TextFilterSettings" icon="AllIcons.General.GearPlain">
+      <reference id="Vcs.Log.EnableFilterByRegexAction" />
+      <reference id="Vcs.Log.MatchCaseAction" />
+    </group>
+    <group id="Vcs.Log.Toolbar.Internal">
+      <reference ref="Vcs.Log.OpenAnotherTabInEditor" />
+    </group>
+    <group id="Vcs.Log.ContextMenu">
+      <reference id="Vcs.CopyRevisionNumberAction" />
+      <reference id="ChangesView.CreatePatchFromChanges" />
+      <separator />
+      <reference id="Vcs.Log.CompareRevisions" />
+      <reference id="Vcs.ShowDiffWithLocal" />
+      <separator />
+      <reference id="Vcs.Log.GoToChild" />
+      <reference id="Vcs.Log.GoToParent" />
+      <separator />
+    </group>
+    <group id="Vcs.Log.Toolbar.RightCorner">
+      <reference id="Vcs.Log.ResumeIndexing" />
+      <reference id="Vcs.Log.Refresh" />
+      <group id="Vcs.Log.Toolbar" />
+      <reference id="Vcs.Log.PresentationSettings" />
+      <reference id="Vcs.Log.GoToRef" />
+    </group>
+    <group id="Vcs.Log.Diff.Preview.Location" popup="true" class="com.intellij.vcs.log.ui.actions.DiffPreviewLocationActionGroup">
+      <reference id="Vcs.Log.MoveDiffPreviewToBottom" />
+      <reference id="Vcs.Log.MoveDiffPreviewToRight" />
+    </group>
+    <group id="Vcs.Log.LayoutConfiguration" class="com.intellij.vcs.log.ui.actions.VcsLogToolbarPopupActionGroup" icon="AllIcons.Debugger.RestoreLayout" popup="false">
+      <separator key="group.Vcs.Log.LayoutConfiguration.separator.text" />
+      <reference id="Vcs.Log.ShowDetailsAction" />
+      <reference id="Vcs.Log.ShowDiffPreview" />
+      <reference id="Vcs.Log.Diff.Preview.Location" />
+    </group>
+    <group id="Vcs.Log.ChangesBrowser.PresentationSettings" icon="AllIcons.Actions.GroupBy" popup="true">
+      <reference id="ChangesView.GroupBy" />
+      <reference id="ChangesBrowser.FiltererGroup" />
+      <reference id="Vcs.Log.LayoutConfiguration" />
+    </group>
+    <group id="Vcs.Log.ChangesBrowser.Toolbar">
+      <reference id="Vcs.RepositoryChangesBrowserToolbar" />
+      <reference id="Vcs.Log.ShowOnlyAffectedChanges" />
+      <reference id="Vcs.Log.ChangesBrowser.PresentationSettings" />
+    </group>
+    <group id="Vcs.Log.ChangesBrowser.Popup">
+      <reference id="Vcs.RepositoryChangesBrowserMenu" />
+      <reference id="Vcs.Log.ShowChangesFromParents" />
+    </group>
+    <group id="Vcs.Log.ToolWindow.TabActions">
+      <reference id="Vcs.Log.OpenAnotherTab" />
+      <group id="Vcs.Log.ToolWindow.TabActions.DropDown" icon="AllIcons.Toolbar.Expand" popup="true" class="com.intellij.vcs.log.ui.actions.VcsLogToolWindowDropdownActionGroup">
+        <reference id="Vcs.Log.OpenAnotherTabInEditor" />
+        <reference id="Vcs.ShowTabbedFileHistory" />
+        <reference id="Vcs.ShowConsoleTab" />
+        <separator />
+        <reference id="Vcs.Log.ShowSettingsAction" />
+      </group>
+      <add-to-group group-id="LocalChangesView.TabActions" />
+    </group>
+    <group id="Vcs.FileHistory.ContextMenu">
+      <reference id="Vcs.CopyRevisionNumberAction" />
+      <reference id="ChangesView.CreatePatchFromChanges" />
+      <separator />
+      <reference id="Vcs.GetVersion" />
+      <reference id="Vcs.Log.OpenRepositoryVersion" />
+      <reference id="Vcs.ShowDiffWithLocal" />
+      <reference id="Diff.ShowDiff" />
+      <reference ref="Diff.ShowStandaloneDiff" />
+      <reference id="Vcs.Log.ShowAllAffected" />
+      <reference id="Vcs.Log.AnnotateRevisionAction" />
+      <reference id="Vcs.Log.SelectInLog" />
+      <reference id="VcsHistoryActionsGroup" />
+    </group>
+    <group id="Vcs.FileHistory.PresentationSettings" class="com.intellij.vcs.log.ui.actions.VcsLogToolbarPopupActionGroup" icon="AllIcons.Actions.GroupBy" popup="true">
+      <separator key="action.vcs.log.show.separator" />
+      <reference id="Vcs.Log.PreferCommitDate" />
+      <reference id="Vcs.Log.ToggleColumns" />
+      <reference id="Vcs.Log.LayoutConfiguration" />
+    </group>
+    <group id="Vcs.FileHistory.Toolbar">
+      <reference id="Vcs.Log.Refresh" />
+      <reference id="Diff.ShowDiff" />
+      <reference id="Vcs.Log.ShowAllAffected" />
+      <separator />
+      <reference id="Vcs.FileHistory.PresentationSettings" />
+      <separator />
+      <reference id="VcsHistoryActionsGroup.Toolbar" />
+      <reference id="Vcs.Log.ResumeIndexing" />
+    </group>
+    <group id="Vcs.FileHistory.Toolbar.RightCorner">
+      <reference id="Vcs.Log.SelectInLog" />
+    </group>
+    <group id="Vcs.Log.Internal" internal="true" popup="true">
+      <reference id="Vcs.Log.InvalidateCaches" />
+      <reference id="Vcs.Log.CheckFirstCommitsIndexData" />
+      <reference id="Vcs.Log.CheckSelectedCommitsIndexData" />
+      <reference id="Vcs.Log.ShowBigRepositories" />
+      <add-to-group group-id="Internal" />
+    </group>
+    <group id="Log.KeymapGroup" searchable="false">
+      <reference ref="ChangesView.CreatePatchFromChanges" />
+      <reference ref="Vcs.Log.CompareRevisions" />
+      <separator />
+      <reference ref="Vcs.Log.GoToRef" />
+      <reference ref="Vcs.Log.GoToParent" />
+      <reference ref="Vcs.Log.GoToChild" />
+      <reference ref="Vcs.Log.FocusTextFilter" />
+      <reference ref="Vcs.Log.TextFilterSettings" />
+      <separator />
+      <reference ref="Vcs.Log.PresentationSettings" />
+      <separator />
+      <reference ref="Vcs.Log.ShowDetailsAction" />
+      <reference ref="Vcs.Log.ShowChangesFromParents" />
+      <reference ref="Vcs.Log.ShowOnlyAffectedChanges" />
+      <reference ref="Vcs.Log.ShowDiffPreview" />
+      <reference ref="Vcs.Log.Diff.Preview.Location" />
+      <separator />
+      <reference ref="Vcs.Log.Refresh" />
+      <reference ref="Vcs.Log.OpenAnotherTab" />
+      <reference ref="Vcs.Log.OpenAnotherTabInEditor" />
+      <reference ref="Vcs.Log.ResumeIndexing" />
+      <reference id="Log.Unsorted.KeymapGroup" />
+      <add-to-group group-id="Vcs.KeymapGroup" />
+    </group>
+    <group id="Log.FileHistory.KeymapGroup" popup="false">
+      <reference id="Vcs.Log.OpenRepositoryVersion" />
+      <reference id="Diff.ShowDiff" />
+      <reference id="Vcs.ShowDiffWithLocal" />
+      <reference id="ChangesView.CreatePatchFromChanges" />
+      <reference id="Vcs.Log.AnnotateRevisionAction" />
+      <reference id="Vcs.Log.ShowAllAffected" />
+      <reference id="Vcs.CopyRevisionNumberAction" />
+      <separator />
+      <reference id="Vcs.Log.Refresh" />
+      <reference id="Vcs.Log.ShowDetailsAction" />
+      <reference id="Vcs.Log.ShowDiffPreview" />
+      <reference id="Vcs.FileHistory.ContextMenu" />
+      <reference id="Vcs.FileHistory.Toolbar" />
+      <reference id="VcsHistoryActionsGroup" />
+      <reference id="VcsHistoryActionsGroup.Toolbar" />
+      <add-to-group group-id="FileHistory.KeymapGroup" />
+    </group>
+  </actions>
+</idea-plugin>]]></module>
+    <module name="intellij.platform.vcs.dvcs.impl"><![CDATA[<idea-plugin>
+  <dependencies>
+    <module name="intellij.platform.vcs.log.impl" />
+  </dependencies>
+  <extensionPoints>
+    <extensionPoint name="pushSupport" interface="com.intellij.dvcs.push.PushSupport" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="cherryPicker" interface="com.intellij.dvcs.cherrypick.VcsCherryPicker" area="IDEA_PROJECT" dynamic="true" />
+    <extensionPoint name="vcsRepositoryCreator" interface="com.intellij.dvcs.repo.VcsRepositoryCreator" dynamic="true" />
+    <extensionPoint name="prePushHandler" interface="com.intellij.dvcs.push.PrePushHandler" dynamic="true" />
+    <extensionPoint name="clonePathProvider" interface="com.intellij.dvcs.repo.ClonePathProvider" dynamic="true" />
+    <extensionPoint name="pushDialogActionsProvider" interface="com.intellij.dvcs.push.PushDialogActionsProvider" dynamic="true" />
+    <extensionPoint name="pushDialogCustomizer" interface="com.intellij.dvcs.push.PushDialogCustomizer" dynamic="true" />
+    <extensionPoint name="commitNodeUiRenderExtension" interface="com.intellij.dvcs.push.ui.CommitNodeUiRenderExtension" dynamic="true" />
+    <extensionPoint name="customPushOptionsPanelFactory" interface="com.intellij.dvcs.push.CustomPushOptionsPanelFactory" dynamic="true" />
+  </extensionPoints>
+  <actions>
+    <action id="Vcs.CherryPick" class="com.intellij.dvcs.cherrypick.VcsCherryPickAction" icon="DvcsImplIcons.CherryPick" />
+    <action id="Vcs.Push" class="com.intellij.dvcs.push.VcsPushAction" icon="AllIcons.Vcs.Push">
+      <keyboard-shortcut first-keystroke="control shift K" keymap="$default" />
+      <add-to-group group-id="VcsToolbarActions" anchor="after" relative-to-action="ChangesView.ToggleCommitUi" />
+      <add-to-group group-id="VcsNavBarToolbarActions" anchor="after" relative-to-action="ChangesView.ToggleCommitUi" />
+      <add-to-group group-id="SegmentedVcsActionsBarGroup" anchor="after" relative-to-action="ChangesView.ToggleCommitUi" />
+    </action>
+    <group id="Vcs.Push.Actions">
+      <action id="Vcs.Push.Simple" class="com.intellij.dvcs.push.ui.SimplePushAction" />
+      <action id="Vcs.Push.Force" class="com.intellij.dvcs.push.ui.ForcePushAction" />
+      <add-to-group group-id="VcsGeneral.KeymapGroup" />
+    </group>
+    <group id="Dvcs.Log.ContextMenu">
+      <reference id="Vcs.CherryPick" />
+      <add-to-group group-id="Vcs.Log.ContextMenu" relative-to-action="ChangesView.CreatePatchFromChanges" anchor="after" />
+    </group>
+    <group id="Dvcs.FileHistory.ContextMenu">
+      <reference id="Vcs.CherryPick" />
+      <add-to-group group-id="Vcs.FileHistory.ContextMenu" relative-to-action="ChangesView.CreatePatchFromChanges" anchor="after" />
+    </group>
+    <group id="Dvcs.Log.Toolbar">
+      <reference id="Vcs.CherryPick" />
+      <add-to-group group-id="Vcs.Log.Toolbar" />
+    </group>
+    <group id="Vcs.CherryPick.KeymapGroup" searchable="false">
+      <reference ref="Vcs.CherryPick" />
+      <reference ref="Vcs.Push" />
+      <separator />
+      <add-to-group group-id="VcsGeneral.KeymapGroup" />
+    </group>
+    <action id="ChangesView.GroupBy.Repository" class="com.intellij.dvcs.actions.SetRepositoryChangesGroupingAction">
+      <add-to-group group-id="ChangesView.GroupBy" />
+    </action>
+    <action id="CheckIgnoredAndNotExcludedDirectories" class="com.intellij.dvcs.ignore.CheckIgnoredToExcludeAction" />
+  </actions>
+  <projectListeners>
+    <listener class="com.intellij.dvcs.shelf.ShelfViewUpdater" topic="com.intellij.dvcs.repo.VcsRepositoryMappingListener" activeInHeadlessMode="false" />
+  </projectListeners>
+  <extensions defaultExtensionNs="com.intellij">
+    <changesGroupingPolicy key="repository" id="repository" weight="30" implementationClass="com.intellij.dvcs.ui.RepositoryChangesGroupingPolicy$Factory" />
+    <vcsStartupActivity implementation="com.intellij.dvcs.repo.VcsRepositoryManager$MyStartupActivity" />
+    <iconDescriptionBundle resourceBundle="messages.DvcsBundle" />
+    <editorNotificationProvider implementation="com.intellij.dvcs.ignore.IgnoredToExcludeNotificationProvider" />
+    <statistics.notificationIdsHolder implementation="com.intellij.dvcs.DvcsNotificationIdsHolder" />
+    <productivityFeaturesProvider implementation="com.intellij.dvcs.featureStatistics.VcsProductivityFeaturesProvider" />
+    <featureStatisticsBundle qualifiedName="messages.VcsProductivityFeatures" />
+    <openapi.vcs.history.actions.GetVersionAction.ExtensionProvider implementation="com.intellij.dvcs.ui.CompareBranchesDiffPanel$GetVersionActionProvider" />
+  </extensions>
+</idea-plugin>]]></module>
+    <module name="intellij.smart.update"><![CDATA[<idea-plugin package="com.intellij.smartUpdate">
+  <dependencies>
+    <module name="intellij.platform.vcs.impl" />
+  </dependencies>
+  <extensionPoints>
+    <extensionPoint name="smartUpdateStep" interface="com.intellij.smartUpdate.SmartUpdateStep" dynamic="true" />
+  </extensionPoints>
+  <extensions defaultExtensionNs="com.intellij">
+    <smartUpdateStep id="ide.update" implementation="com.intellij.smartUpdate.IdeUpdateStep" />
+    <smartUpdateStep id="plugins.update" implementation="com.intellij.smartUpdate.PluginsUpdateStep" />
+    <smartUpdateStep id="vcs.update" implementation="com.intellij.smartUpdate.VcsUpdateStep" />
+    <smartUpdateStep id="build.project" implementation="com.intellij.smartUpdate.BuildProjectStep" />
+    <backgroundPostStartupActivity implementation="com.intellij.smartUpdate.IdeRestartedActivity" />
+    <statistics.counterUsagesCollector implementationClass="com.intellij.smartUpdate.SmartUpdateUsagesCollector" />
+    <registryKey key="ide.smart.update" defaultValue="false" description="Enables the 'Update and Build' action which allows to upgrade the IDE installation,                  and to update and build the sources" />
+  </extensions>
+  <actions resource-bundle="messages.SmartUpdateBundle">
+    <action id="smart.update" class="com.intellij.smartUpdate.SmartUpdateAction">
+      <add-to-group group-id="UpdateEntryPointGroup" />
+    </action>
+  </actions>
+</idea-plugin>]]></module>
+
+  </content>
 
   <module value="com.intellij.modules.mps"/>
   <module value="com.intellij.modules.all"/>
