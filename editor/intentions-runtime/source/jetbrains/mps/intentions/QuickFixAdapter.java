@@ -34,6 +34,9 @@ import java.util.Collections;
 
 import static jetbrains.mps.errors.item.RuleIdFlavouredItem.FLAVOUR_RULE_ID;
 
+/**
+ * Wraps a {@link EditorQuickFix} in order to show it as an intention menu item. 
+ */
 public class QuickFixAdapter extends OldBaseIntentionFactory {
   private final EditorQuickFix myQuickFix;
   private final MessageStatus myStatus;
@@ -92,6 +95,11 @@ public class QuickFixAdapter extends OldBaseIntentionFactory {
     @Override
     public String getDescription(SNode node, EditorContext editorContext) {
       return myQuickFix.getDescription(editorContext.getRepository());
+    }
+
+    @Override
+    public boolean isApplicable(SNode node, EditorContext editorContext) {
+      return myQuickFix.isApplicable(editorContext.getRepository());
     }
 
     @Override

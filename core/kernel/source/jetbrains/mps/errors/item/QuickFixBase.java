@@ -17,6 +17,12 @@ package jetbrains.mps.errors.item;
 
 import org.jetbrains.mps.openapi.module.SRepository;
 
+/**
+ * Abstract interface all quickfix implementations need to implement.
+ * <p>
+ * <strong>NB! </strong>Not to be confused with {@link jetbrains.mps.errors.QuickFix_Runtime},
+ * which is merely an executable object that the quickfix implementation compiles into.
+ */
 public interface QuickFixBase {
   boolean isExecutedImmediately();
 
