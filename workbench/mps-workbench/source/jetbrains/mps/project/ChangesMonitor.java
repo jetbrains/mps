@@ -4,7 +4,6 @@
 package jetbrains.mps.project;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.project.Project;
@@ -55,9 +54,9 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -75,6 +74,8 @@ import java.util.function.Predicate;
   private final MyGenerationStatusListener myGenerationStatusListener = new MyGenerationStatusListener();
   private final MyRepositoryObserver myRepositoryObserver = new MyRepositoryObserver();
   private final MyModelChangeListener myModelChangeListener = new MyModelChangeListener();
+  private final AtomicBoolean myEnqueueAllModulesInProject = new AtomicBoolean(true);
+  private final AtomicBoolean myEnqueueAllModulesInRepository = new AtomicBoolean(true);
   private final Queue<SObject> myUpdatesQueue = new ConcurrentLinkedQueue<>();
   private final Map<SObject, AtomicInteger> myUpdateCardinality = new ConcurrentHashMap<>();
   private final Map<IFile, List<SModuleReference>> myModuleReferencesCache = new ConcurrentHashMap<>();
@@ -86,8 +87,6 @@ import java.util.function.Predicate;
     myMessagesContainer = messagesContainer;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
     forAllModulesInProject(this::registerListener);
-    enqueueAllModulesInProject();
-    enqueueAllModulesInRepository();
     mpsProject.addListener(myProjectListener);
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryObserver).attach();
     myGenerationStatusManager = mpsProject.getComponent(ModelGenerationStatusManager.class);
@@ -174,17 +173,25 @@ import java.util.function.Predicate;
     if (progressIndicator.isCanceled()) {
       return MissionControlRefreshRequest.NONE;
     }
-    
-    RefreshRequestBuilder requestBuilder = null;
-
-    for(SObject next; (next = myUpdatesQueue.poll()) != null;) {
-      AtomicInteger leftInQueue = myUpdateCardinality.computeIfPresent(next, (__, card) -> card.decrementAndGet() > 0 ? card : null);
-      if (leftInQueue != null) continue;
-      myUpdateCardinality.remove(next);
-      if (requestBuilder == null) {
-        requestBuilder = new RefreshRequestBuilder();
+    if (myEnqueueAllModulesInRepository.getAndSet(false)) {
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("enqueueAllModulesInRepository");
       }
-      buildRequest(next, requestBuilder, this::checkModel, this::checkModule);
+      forAllModulesInRepository(this::enqueueUpdate);
+    }
+    if (myEnqueueAllModulesInProject.getAndSet(false)) {
+      if (LOG.isDebugEnabled()) {
+        LOG.debug("enqueueAllModulesInProject");
+      }
+      forAllModulesInProject(this::enqueueUpdate);
+    }
+    if (progressIndicator.isCanceled()) {
+      return MissionControlRefreshRequest.NONE;
+    }
+
+    RefreshRequestBuilder requestBuilder = null;
+    for(SObject next; (next = myUpdatesQueue.poll()) != null;) {
+      requestBuilder = buildRefreshRequest(next, requestBuilder);
       if (progressIndicator.isCanceled()) {
         break;
       }
@@ -193,14 +200,22 @@ import java.util.function.Predicate;
     return requestBuilder != null ? requestBuilder.toRefreshRequest() : MissionControlRefreshRequest.NONE;
   }
 
-  private void buildRequest(SObject sObject, RefreshRequestBuilder builder, Function<SModel, MessagesUpdate> modelChecker, Function<SModule, MessagesUpdate> moduleChecker) {
-    MessagesUpdate update = sObject.ifHasSModel(modelChecker);
+  @Nullable
+  private RefreshRequestBuilder buildRefreshRequest(SObject toUpdate, RefreshRequestBuilder requestBuilder) {
+    AtomicInteger leftInQueue = myUpdateCardinality.computeIfPresent(toUpdate, (__, card) -> card.decrementAndGet() > 0 ? card : null);
+    if (leftInQueue != null) return requestBuilder;
+    myUpdateCardinality.remove(toUpdate);
+    if (requestBuilder == null) {
+      requestBuilder = new RefreshRequestBuilder();
+    }
+    MessagesUpdate update = toUpdate.ifHasSModel(this::checkModel);
     if (update == null) {
-      update = sObject.ifHasSModule(moduleChecker);
+      update = toUpdate.ifHasSModule(this::checkModule);
     }
     if (update != null) {
-      builder.toUpdatePresentation.computeIfAbsent(update, __ ->new ArrayList<>()).add(sObject);
+      requestBuilder.toUpdatePresentation.computeIfAbsent(update, __ ->new ArrayList<>()).add(toUpdate);
     }
+    return requestBuilder;
   }
 
   private MessagesUpdate checkModule(SModule module) {
@@ -304,32 +319,18 @@ import java.util.function.Predicate;
   private void forAllModulesInProject(Consumer<SModule> moduleConsumer) {
     if (myProject.isDisposed()) return;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
-    ApplicationManager.getApplication().executeOnPooledThread(() -> {
-      mpsProject.getModelAccess().runReadAction(() -> mpsProject.getProjectModulesWithGenerators().forEach(moduleConsumer));
-    });
+    mpsProject.getProjectModulesWithGenerators().forEach(moduleConsumer);
   }
 
   @SuppressWarnings("removal")
   private void forAllModulesInRepository(Consumer<SModule> moduleConsumer) {
     MPSModuleRepository repository = MPSModuleRepository.getInstance();
     if (repository == null) return;
-    ApplicationManager.getApplication().executeOnPooledThread(() -> {
-      repository.getModelAccess().runReadAction(() -> { repository.getModules().forEach(moduleConsumer); });
-    });
+    repository.getModules().forEach(moduleConsumer);
   }
 
   private void enqueueAllModulesInProject() {
-    if (LOG.isDebugEnabled()) {
-      LOG.debug("enqueueAllModulesInProject");
-    }
-    forAllModulesInProject(this::enqueueUpdate);
-  }
-
-  private void enqueueAllModulesInRepository() {
-    if (LOG.isDebugEnabled()) {
-      LOG.debug("enqueueAllModulesInRepository");
-    }
-    forAllModulesInRepository(this::enqueueUpdate);
+    myEnqueueAllModulesInProject.set(true);
   }
 
   private void enqueueUpdate(SModel model) {
