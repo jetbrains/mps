@@ -922,7 +922,7 @@
     <path location="${build.layout}/jetbrains.mps.execution.impl.tests.jar" id="mps.tests.path" />
     <pathconvert property="mps.tests.path.string" refid="mps.tests.path" />
     <property name="build.jna.library.path" location="${artifacts.mps}/lib/jna" />
-    <launchtests fork="true" haltonfailure="false" mpshome="${artifacts.mps}" reports="${build.tmp}">      
+    <launchtests fork="true" haltonfailure="false" mpshome="${artifacts.mps}" reports=".">      
       <jvmargs>
         <arg value="-ea" />
         <arg value="-Xmx2048m" />
@@ -960,22 +960,20 @@
         <path refid="mps.tests.path" />
       </testmodules>
     </launchtests>
-    <copy todir=".">      
-      <fileset dir="${build.tmp}">
-        <include name="TEST*.xml" />
-        <include name="junit-platform-events*.xml" />
+    <move todir=".">      
+      <fileset dir=".">
+        <include name="TEST-junit-jupiter.xml" />
+        <include name="TEST-junit-vintage.xml" />
       </fileset>
-      
       <globmapper from="*.xml" to="*-mpsExecution.xml" />
-      
-    </copy>
+    </move>
   </target>
   
   <target name="test.debugger" depends="assemble">
     <path location="${build.layout}/jetbrains.mps.debugger.java.runtime.tests.jar" id="mps.tests.path" />
     <pathconvert property="mps.tests.path.string" refid="mps.tests.path" />
     <property name="build.jna.library.path" location="${artifacts.mps}/lib/jna" />
-    <launchtests fork="true" haltonfailure="false" mpshome="${artifacts.mps}" reports="${build.tmp}">      
+    <launchtests fork="true" haltonfailure="false" mpshome="${artifacts.mps}" reports=".">      
       <jvmargs>
         <arg value="-ea" />
         <arg value="-Xmx2048m" />
@@ -1002,15 +1000,13 @@
         <path refid="mps.tests.path" />
       </testmodules>
     </launchtests>
-    <copy todir=".">      
-      <fileset dir="${build.tmp}">
-        <include name="TEST*.xml" />
-        <include name="junit-platform-events*.xml" />
+    <move todir=".">      
+      <fileset dir=".">
+        <include name="TEST-junit-jupiter.xml" />
+        <include name="TEST-junit-vintage.xml" />
       </fileset>
-      
       <globmapper from="*.xml" to="*-mpsExecution.xml" />
-      
-    </copy>
+    </move>
   </target>
   
   <target name="cleanSources">
