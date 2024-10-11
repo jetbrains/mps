@@ -16,7 +16,7 @@
       <unit at="10,0,40,0" name="jetbrains.mps.build.mps.tests.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="16,0,149,0" name="jetbrains.mps.build.mps.tests.structure.StructureAspectDescriptor" />
+      <unit at="16,0,150,0" name="jetbrains.mps.build.mps.tests.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:5315d75f-2eea-4bf2-899f-f3d94810cea5(jetbrains.mps.build.mps.tests.structure)/4005526075820600484">
@@ -225,18 +225,18 @@
     <file name="StructureAspectDescriptor.java">
       <node id="6593674873635848984" at="23,0,24,0" concept="1" trace="myConceptRequiredPlugin" />
       <node id="6593674873635848984" at="59,48,60,39" concept="4" />
-      <node id="6593674873635848984" at="140,72,141,178" concept="3" />
-      <node id="6593674873635848984" at="141,178,142,34" concept="0" />
-      <node id="6593674873635848984" at="142,34,143,116" concept="0" />
-      <node id="6593674873635848984" at="143,116,144,17" concept="0" />
-      <node id="6593674873635848985" at="144,17,145,169" concept="0" />
-      <node id="6593674873635848984" at="145,169,146,22" concept="4" />
-      <node id="6593674873635848984" at="140,0,148,0" concept="7" trace="createDescriptorForRequiredPlugin#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="6593674873635848984" at="141,72,142,178" concept="3" />
+      <node id="6593674873635848984" at="142,178,143,34" concept="0" />
+      <node id="6593674873635848984" at="143,34,144,116" concept="0" />
+      <node id="6593674873635848984" at="144,116,145,17" concept="0" />
+      <node id="6593674873635848985" at="145,17,146,169" concept="0" />
+      <node id="6593674873635848984" at="146,169,147,22" concept="4" />
+      <node id="6593674873635848984" at="141,0,149,0" concept="7" trace="createDescriptorForRequiredPlugin#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="6593674873635848984" at="59,48,60,39" />
-      <scope id="6593674873635848984" at="140,72,146,22">
+      <scope id="6593674873635848984" at="141,72,147,22">
         <var name="b" id="6593674873635848984" />
       </scope>
-      <scope id="6593674873635848984" at="140,0,148,0" />
+      <scope id="6593674873635848984" at="141,0,149,0" />
     </file>
   </root>
   <root nodeRef="r:5315d75f-2eea-4bf2-899f-f3d94810cea5(jetbrains.mps.build.mps.tests.structure)/6593674873639474400">
@@ -265,17 +265,18 @@
       <node id="6593674873639474400" at="130,116,131,17" concept="0" />
       <node id="6593674873639478221" at="131,17,132,206" concept="0" />
       <node id="1688667350638517006" at="132,206,133,205" concept="0" />
-      <node id="5794342746865473745" at="133,205,134,207" concept="0" />
-      <node id="6593674873635848987" at="134,207,135,207" concept="0" />
-      <node id="3609768169816292377" at="135,207,136,200" concept="0" />
-      <node id="7978162869575635130" at="136,200,137,204" concept="0" />
-      <node id="6593674873639474400" at="137,204,138,22" concept="4" />
-      <node id="6593674873639474400" at="127,0,140,0" concept="7" trace="createDescriptorForBuildMps_TestModules_Options#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="8658160622849806934" at="133,205,134,203" concept="0" />
+      <node id="5794342746865473745" at="134,203,135,207" concept="0" />
+      <node id="6593674873635848987" at="135,207,136,207" concept="0" />
+      <node id="3609768169816292377" at="136,207,137,200" concept="0" />
+      <node id="7978162869575635130" at="137,200,138,204" concept="0" />
+      <node id="6593674873639474400" at="138,204,139,22" concept="4" />
+      <node id="6593674873639474400" at="127,0,141,0" concept="7" trace="createDescriptorForBuildMps_TestModules_Options#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="6593674873639474400" at="57,62,58,53" />
-      <scope id="6593674873639474400" at="127,86,138,22">
+      <scope id="6593674873639474400" at="127,86,139,22">
         <var name="b" id="6593674873639474400" />
       </scope>
-      <scope id="6593674873639474400" at="127,0,140,0" />
+      <scope id="6593674873639474400" at="127,0,141,0" />
     </file>
   </root>
 </debug-info>

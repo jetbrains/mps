@@ -248,14 +248,26 @@
             <property role="VOm3f" value="true" />
           </node>
         </node>
-        <node concept="3F0ifn" id="51DD0tdLogL" role="3EZMnx">
+        <node concept="3F0ifn" id="7wBXNqHfdoR" role="3EZMnx">
+          <property role="3F0ifm" value="reports dir" />
+          <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
+        </node>
+        <node concept="3F1sOY" id="7wBXNqHfdoS" role="3EZMnx">
+          <property role="39s7Ar" value="true" />
+          <property role="1$x2rV" value="." />
+          <ref role="1NtTu8" to="5tjl:7wBXNqHfd9m" />
+          <node concept="ljvvj" id="7wBXNqHfdoT" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
+        <node concept="3F0ifn" id="7wBXNqHfdo7" role="3EZMnx">
           <property role="3F0ifm" value="create open test report" />
           <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
         </node>
-        <node concept="3F1sOY" id="51DD0tdLogJ" role="3EZMnx">
+        <node concept="3F1sOY" id="7wBXNqHfdo5" role="3EZMnx">
           <property role="1$x2rV" value="false" />
           <ref role="1NtTu8" to="5tjl:51DD0tdLLzh" resolve="openTestReport" />
-          <node concept="ljvvj" id="51DD0tdLogK" role="3F10Kt">
+          <node concept="ljvvj" id="7wBXNqHfdo6" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>
         </node>

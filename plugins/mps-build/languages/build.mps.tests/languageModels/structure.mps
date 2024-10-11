@@ -155,6 +155,12 @@
         <property role="t5JxN" value="using JAVA_TOOL_OPTIONS variable to prevent issues like https://youtrack.jetbrains.com/issue/MPS-24137" />
       </node>
     </node>
+    <node concept="1TJgyj" id="7wBXNqHfd9m" role="1TKVEi">
+      <property role="IQ2ns" value="8658160622849806934" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="reportsDir" />
+      <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
     <node concept="1TJgyj" id="51DD0tdLLzh" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="openTestReport" />
