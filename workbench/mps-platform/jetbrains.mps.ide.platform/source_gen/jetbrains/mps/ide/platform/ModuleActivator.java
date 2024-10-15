@@ -8,6 +8,7 @@ import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.workbench.findusages.InternalModelsFindUsagesParticipant;
 import jetbrains.mps.project.ModelsAutoImportsManager;
+import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.persistence.PersistenceRegistry;
@@ -54,9 +55,12 @@ public final class ModuleActivator implements ModuleRuntime.Activator {
     // 
     // I don't like use of AppManager during module activation, but at the moment there're uses of IMakeService with no
     // confidence MakeServiceComponent get a chance to initialize (see ReloadManagerComponent), therefore we stick to IDEA service for the instance
-    myMakeService = ApplicationManager.getApplication().getService(IMakeService.class);
-    if (myMakeService != null) {
-      myPlatform.findComponent(MakeServiceComponent.class).install(myMakeService);
+    Application application = ApplicationManager.getApplication();
+    if (application != null) {
+      myMakeService = application.getService(IMakeService.class);
+      if (myMakeService != null) {
+        myPlatform.findComponent(MakeServiceComponent.class).install(myMakeService);
+      }
     }
     // 
     myInternaModelsFindUsages = new InternalModelsFindUsagesParticipant();

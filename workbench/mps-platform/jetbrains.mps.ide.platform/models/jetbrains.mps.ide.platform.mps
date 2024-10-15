@@ -781,53 +781,74 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="1aDdKrsHisu" role="3cqZAp">
-          <node concept="37vLTI" id="1aDdKrsHj8_" role="3clFbG">
-            <node concept="2OqwBi" id="1aDdKrsHl7j" role="37vLTx">
-              <node concept="2YIFZM" id="1aDdKrsHk_U" role="2Oq$k0">
-                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-              </node>
-              <node concept="liA8E" id="1aDdKrsHnqF" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
-                <node concept="3VsKOn" id="1aDdKrsHoeh" role="37wK5m">
-                  <ref role="3VsUkX" to="hfuk:1NAY6bPd4nM" resolve="IMakeService" />
-                </node>
-              </node>
+        <node concept="3cpWs8" id="3TOnJ3TaGk6" role="3cqZAp">
+          <node concept="3cpWsn" id="3TOnJ3TaGk7" role="3cpWs9">
+            <property role="TrG5h" value="application" />
+            <node concept="3uibUv" id="3TOnJ3TaF7N" role="1tU5fm">
+              <ref role="3uigEE" to="bd8o:~Application" resolve="Application" />
             </node>
-            <node concept="37vLTw" id="1aDdKrsHiss" role="37vLTJ">
-              <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
+            <node concept="2YIFZM" id="3TOnJ3TaGk8" role="33vP2m">
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="1aDdKrsHIlO" role="3cqZAp">
-          <node concept="3clFbS" id="1aDdKrsHIlQ" role="3clFbx">
-            <node concept="3clFbF" id="1aDdKrsHJXV" role="3cqZAp">
-              <node concept="2OqwBi" id="1aDdKrsHLBl" role="3clFbG">
-                <node concept="2OqwBi" id="1aDdKrsHJXX" role="2Oq$k0">
-                  <node concept="37vLTw" id="1aDdKrsHJXY" role="2Oq$k0">
-                    <ref role="3cqZAo" node="3Ssq9B$kCLl" resolve="myPlatform" />
+        <node concept="3clFbJ" id="3TOnJ3TaIdo" role="3cqZAp">
+          <node concept="3clFbS" id="3TOnJ3TaIdq" role="3clFbx">
+            <node concept="3clFbF" id="1aDdKrsHisu" role="3cqZAp">
+              <node concept="37vLTI" id="1aDdKrsHj8_" role="3clFbG">
+                <node concept="2OqwBi" id="1aDdKrsHl7j" role="37vLTx">
+                  <node concept="37vLTw" id="3TOnJ3TaGk9" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3TOnJ3TaGk7" resolve="application" />
                   </node>
-                  <node concept="liA8E" id="1aDdKrsHJXZ" role="2OqNvi">
-                    <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
-                    <node concept="3VsKOn" id="1aDdKrsHJY0" role="37wK5m">
-                      <ref role="3VsUkX" to="hfuk:4QUA3Sqts3M" resolve="MakeServiceComponent" />
+                  <node concept="liA8E" id="1aDdKrsHnqF" role="2OqNvi">
+                    <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
+                    <node concept="3VsKOn" id="1aDdKrsHoeh" role="37wK5m">
+                      <ref role="3VsUkX" to="hfuk:1NAY6bPd4nM" resolve="IMakeService" />
                     </node>
                   </node>
                 </node>
-                <node concept="liA8E" id="1aDdKrsHMdr" role="2OqNvi">
-                  <ref role="37wK5l" to="hfuk:4QUA3SqtAPh" resolve="install" />
-                  <node concept="37vLTw" id="1aDdKrsHMED" role="37wK5m">
-                    <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
+                <node concept="37vLTw" id="1aDdKrsHiss" role="37vLTJ">
+                  <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="1aDdKrsHIlO" role="3cqZAp">
+              <node concept="3clFbS" id="1aDdKrsHIlQ" role="3clFbx">
+                <node concept="3clFbF" id="1aDdKrsHJXV" role="3cqZAp">
+                  <node concept="2OqwBi" id="1aDdKrsHLBl" role="3clFbG">
+                    <node concept="2OqwBi" id="1aDdKrsHJXX" role="2Oq$k0">
+                      <node concept="37vLTw" id="1aDdKrsHJXY" role="2Oq$k0">
+                        <ref role="3cqZAo" node="3Ssq9B$kCLl" resolve="myPlatform" />
+                      </node>
+                      <node concept="liA8E" id="1aDdKrsHJXZ" role="2OqNvi">
+                        <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                        <node concept="3VsKOn" id="1aDdKrsHJY0" role="37wK5m">
+                          <ref role="3VsUkX" to="hfuk:4QUA3Sqts3M" resolve="MakeServiceComponent" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1aDdKrsHMdr" role="2OqNvi">
+                      <ref role="37wK5l" to="hfuk:4QUA3SqtAPh" resolve="install" />
+                      <node concept="37vLTw" id="1aDdKrsHMED" role="37wK5m">
+                        <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
+                      </node>
+                    </node>
                   </node>
+                </node>
+              </node>
+              <node concept="3y3z36" id="1aDdKrsHJaX" role="3clFbw">
+                <node concept="10Nm6u" id="1aDdKrsHJ$L" role="3uHU7w" />
+                <node concept="37vLTw" id="1aDdKrsHIJo" role="3uHU7B">
+                  <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="3y3z36" id="1aDdKrsHJaX" role="3clFbw">
-            <node concept="10Nm6u" id="1aDdKrsHJ$L" role="3uHU7w" />
-            <node concept="37vLTw" id="1aDdKrsHIJo" role="3uHU7B">
-              <ref role="3cqZAo" node="1aDdKrsHgrN" resolve="myMakeService" />
+          <node concept="3y3z36" id="3TOnJ3TaJCn" role="3clFbw">
+            <node concept="10Nm6u" id="3TOnJ3TaKjn" role="3uHU7w" />
+            <node concept="37vLTw" id="3TOnJ3TaIFw" role="3uHU7B">
+              <ref role="3cqZAo" node="3TOnJ3TaGk7" resolve="application" />
             </node>
           </node>
         </node>
