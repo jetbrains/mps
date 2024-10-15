@@ -123,6 +123,8 @@ public final class UsagesViewTool extends BaseTabbedTool implements PersistentSt
     }
   }
 
+  //----TOOL STUFF----
+
   @Override
   public void dispose() {
     super.dispose();
@@ -134,8 +136,6 @@ public final class UsagesViewTool extends BaseTabbedTool implements PersistentSt
       uv.myUsagesView.dispose();
     }
   }
-
-  //----TOOL STUFF----
 
   @Override
   protected boolean isInitiallyAvailable() {
@@ -152,7 +152,6 @@ public final class UsagesViewTool extends BaseTabbedTool implements PersistentSt
   }
 
   private void findUsages(IResultProvider provider, final SearchQuery query, final UsageToolOptions options) {
-    assert getContentManager()!=null : "The UsagesViewTool tool window has not been registered. Use UsagesViewTool::getInstance to obtain UsagesViewTool.";
     final SearchTaskImpl searchTask = new SearchTaskImpl(ProjectHelper.fromIdeaProject(getProject()), provider, query);
     ThreadUtils.runInUIThreadNoWait(() -> new Backgroundable(getProject(), "Searching", true, PerformInBackgroundOption.DEAF) {
       private SearchResults<?> searchResults;
@@ -170,18 +169,15 @@ public final class UsagesViewTool extends BaseTabbedTool implements PersistentSt
   }
 
   public void show(SearchResults<?> results, String notFoundMsg) {
-    assert getContentManager()!=null : "The UsagesViewTool tool window has not been registered. Use UsagesViewTool::getInstance to obtain UsagesViewTool.";
     show(results, notFoundMsg, null);
   }
 
   public <T> void show(SearchResults<T> results, String notFoundMsg, @Nullable INodeRepresentator<T> representator) {
     ThreadUtils.assertEDT();
-    assert getContentManager()!=null : "The UsagesViewTool tool window has not been registered. Use UsagesViewTool::getInstance to obtain UsagesViewTool.";
     showResults(null, results, new UsageToolOptions().navigateIfSingle(false).allowRunAgain(false).notFoundMessage(notFoundMsg), representator);
   }
 
   public <T> void showResults(@Nullable SearchTaskImpl searchTask, final SearchResults<T> searchResults, UsageToolOptions options, @Nullable INodeRepresentator<T> representator) {
-    assert getContentManager()!=null : "The UsagesViewTool tool window has not been registered. Use UsagesViewTool::getInstance to obtain UsagesViewTool.";
     if (options.myRunAgain && searchTask == null) {
       throw new IllegalStateException("Search task should be provided to allow rerunning.");
     }
@@ -261,7 +257,6 @@ public final class UsagesViewTool extends BaseTabbedTool implements PersistentSt
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       @Override
       public void run() {
-        register();
         if (!loadedUsageViewData.isEmpty()) {
             for (UsageViewData d : loadedUsageViewData) {
               register(d);
@@ -464,7 +459,16 @@ public final class UsagesViewTool extends BaseTabbedTool implements PersistentSt
   private static class Factory implements com.intellij.openapi.wm.ToolWindowFactory {
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
-      project.getService(UsagesViewTool.class).register();
+      //Initialize loading of saved tabs
+      if (project.getService(UsagesViewTool.class) != null) {
+        ApplicationManager.getApplication().invokeLater(new Runnable() {
+          @Override
+          public void run() {
+            //Wait until the tabs are read (the service gets loaded)
+            toolWindow.show();
+          }
+        });
+      }
     }
   }
 }
