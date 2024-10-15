@@ -6,7 +6,7 @@
   TODO: this looks like hack and does not in any way reflects real version set in jetbrains.mps.ide.build.mps-->
   <version major="2024" minor="3" eap="true"/>
   <company name="JetBrains s.r.o." url="https://www.jetbrains.com/?fromIDE" copyrightStart="2009"/>
-  <build number="243.15521" date="__BUILD_DATE__"/>
+  <build number="243.20847" date="__BUILD_DATE__"/>
   <!--  <build number="MPS-221.5080.SNAPSHOT" date="__BUILD_DATE__"/>-->
   <!--<install-over minbuild="" maxbuild="" version=""/>-->
   <logo url="/splash.png" textcolor="FFFFFF" progressColor="FFFFFF" progressY="396" progressHeight="4"/>
