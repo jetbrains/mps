@@ -49,9 +49,6 @@
     <!-- works in conjunction with project listeners, above. -->
     <projectService serviceImplementation="jetbrains.mps.ide.editor.warningPanel.MPSEditorWarningsManager" />
 
-    <projectService serviceImplementation="jetbrains.mps.nodeEditor.InspectorTool" />
-    <postStartupActivity implementation="jetbrains.mps.nodeEditor.InspectorTool$Plug" />
-
     <projectService serviceInterface="jetbrains.mps.nodeEditor.Highlighter"
                     serviceImplementation="jetbrains.mps.nodeEditor.Highlighter"
                     headlessImplementation="jetbrains.mps.nodeEditor.EmptyHighlighter"/>

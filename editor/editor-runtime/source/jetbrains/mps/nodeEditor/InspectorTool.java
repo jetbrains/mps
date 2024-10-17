@@ -15,61 +15,21 @@
  */
 package jetbrains.mps.nodeEditor;
 
-import com.intellij.ide.actions.ActivateToolWindowAction;
-import com.intellij.openapi.Disposable;
-import com.intellij.openapi.actionSystem.ActionManager;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.KeyboardShortcut;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.actionSystem.Shortcut;
 import com.intellij.openapi.fileEditor.FileEditor;
-import com.intellij.openapi.keymap.Keymap;
-import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.SimpleToolWindowPanel;
-import com.intellij.openapi.wm.ToolWindowAnchor;
-import com.intellij.openapi.wm.ToolWindowId;
-import com.intellij.ui.HyperlinkLabel;
-import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.ide.actions.InspectorNew_Tool;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.tools.BaseTool;
-import jetbrains.mps.ide.util.MPSProjectActivity;
-import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
-import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.openapi.editor.EditorInspector;
-import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
-import jetbrains.mps.openapi.editor.style.Style;
-import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.openapi.navigation.EditorNavigator;
-import jetbrains.mps.project.MPSProject;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
 
-import javax.swing.BorderFactory;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.KeyStroke;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.BiConsumer;
+public class InspectorTool implements EditorInspector {
+  private final InspectorNew_Tool myInspector;
 
-public class InspectorTool extends BaseTool implements EditorInspector, Disposable {
-  public static final String ID = "Inspector";
-  private MyPanel myComponent;
-  private InspectorEditorComponent myInspectorComponent;
-  private MyMessagePanel myMessagePanel;
-  private FileEditor myFileEditor;
+  public InspectorTool(InspectorNew_Tool tool) {
+    myInspector = tool;
+  }
 
   /**
    * This is the only endorsed way to obtain InspectorTool instance, we are going to switch from IDEA's ProjectComponent in the next release.
@@ -78,230 +38,27 @@ public class InspectorTool extends BaseTool implements EditorInspector, Disposab
   @Nullable
   public static InspectorTool getInstance(@Nullable jetbrains.mps.project.Project mpsProject) {
     final Project ideaProject = ProjectHelper.toIdeaProject(mpsProject);
-    return mpsProject == null ? null : ideaProject.getService(InspectorTool.class);
-  }
-
-  public InspectorTool(Project project) {
-    super(project, ID, getDefaultShortCuts(), IdeIcons.INSPECTOR_ICON, ToolWindowAnchor.BOTTOM, true, false);
-
-    hackFavoritesAndBookmarksKeymap();
-  }
-
-  private static void hackFavoritesAndBookmarksKeymap() {
-    BiConsumer<String, KeyStroke> removeDefaultKeyStroke = (keymapId, keyStroke) -> {
-      String favoritesViewId = ActivateToolWindowAction.Manager.getActionIdForToolWindow(ToolWindowId.FAVORITES_VIEW);
-      String bookmarksViewId = ActivateToolWindowAction.Manager.getActionIdForToolWindow(ToolWindowId.BOOKMARKS);
-      final Keymap keymap = KeymapManager.getInstance().getKeymap(keymapId);
-      if (keymap == null) {
-        return;
-      }
-      for (Shortcut shortcut : keymap.getShortcuts(favoritesViewId)) {
-        if (shortcut instanceof KeyboardShortcut && ((KeyboardShortcut) shortcut).getFirstKeyStroke().equals(keyStroke)) {
-          keymap.removeShortcut(favoritesViewId, shortcut);
-        }
-      }
-      for (Shortcut shortcut : keymap.getShortcuts(bookmarksViewId)) {
-        if (shortcut instanceof KeyboardShortcut && ((KeyboardShortcut) shortcut).getFirstKeyStroke().equals(keyStroke)) {
-          keymap.removeShortcut(bookmarksViewId, shortcut);
-        }
-      }
-    };
-
-    final KeyStroke winKeyStroke = KeyStroke.getKeyStroke("alt 2");
-    removeDefaultKeyStroke.accept(KeymapManager.DEFAULT_IDEA_KEYMAP, winKeyStroke);
-
-    final KeyStroke macKeyStroke = KeyStroke.getKeyStroke("meta 2");
-    removeDefaultKeyStroke.accept(KeymapManager.MAC_OS_X_KEYMAP, macKeyStroke);
-    removeDefaultKeyStroke.accept(KeymapManager.MAC_OS_X_10_5_PLUS_KEYMAP, macKeyStroke);
-  }
-
-  private static Map<String, KeyStroke> getDefaultShortCuts() {
-    final Map<String, KeyStroke> result = new HashMap<>(6);
-
-    BiConsumer<String, String> addKeyStroke = (keymapId, shortCut) -> {
-      final Keymap keymap = KeymapManager.getInstance().getKeymap(keymapId);
-      if (keymap != null) {
-        result.put(keymapId, KeyStroke.getKeyStroke(shortCut));
-      }
-    };
-
-    addKeyStroke.accept(KeymapManager.DEFAULT_IDEA_KEYMAP, "alt 2");
-    addKeyStroke.accept(KeymapManager.MAC_OS_X_KEYMAP, "meta 2");
-    addKeyStroke.accept(KeymapManager.MAC_OS_X_10_5_PLUS_KEYMAP, "meta 2");
-
-    return result;
-  }
-
-  @Override
-  public void dispose() {
-    if (myInspectorComponent == null) {
-      return;
+    if(ideaProject == null) {
+      return null;
     }
-    ThreadUtils.runInUIThreadNoWait(myInspectorComponent::dispose);
-    unregister();
-  }
-
-  private static class Plug extends MPSProjectActivity {
-
-    @Override
-    public void runActivity(@NotNull Project project) {
-      final InspectorTool inspectorTool = InspectorTool.getInstance(ProjectHelper.fromIdeaProject(project));
-      inspectorTool.registerLater();
-    }
-  }
-
-  private void createTool() {
-    final MPSProject project = ProjectHelper.fromIdeaProject(getProject());
-    InspectorTool.this.myMessagePanel = new MyMessagePanel(project.getComponent(StyleRegistry.class));
-    myComponent = new MyPanel();
-    myInspectorComponent = new InspectorEditorComponent(project.getRepository(),
-                                                        new EditorConfigurationBuilder().editorPanelManager(new EditorPanelManagerImpl(project)).notifies(true).build());
-    EditorExtensionUtil.extendUsingProject(myInspectorComponent, project);
-    myComponent.setContent(myInspectorComponent.getExternalComponent());
-    myMessagePanel.setNode(null);
-    myComponent.setToolbar(myMessagePanel);
-    AnAction moveDownAction = ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.MoveElementsDown_Action");
-    moveDownAction.registerCustomShortcutSet(moveDownAction.getShortcutSet(), myComponent);
-    AnAction moveUpAction = ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.MoveElementsUp_Action");
-    moveUpAction.registerCustomShortcutSet(moveUpAction.getShortcutSet(), myComponent);
-  }
-
-  @Override
-  protected boolean isInitiallyAvailable() {
-    return true;
+    final InspectorNew_Tool tool = ProjectPluginManager.getInstance(ideaProject).getTool(InspectorNew_Tool.class);
+    return tool == null ? null : new InspectorTool(tool);
   }
 
   @Override
   public void activate() {
-    openToolLater(true);
+    myInspector.openToolLater(true);
   }
 
   public EditorComponent getInspector() {
-    final Exception exception = ThreadUtils.runInUIThreadAndWait(() -> {
-      if (myComponent == null) {
-        createTool();
-      }
-    });
-    if(exception != null) {throw new RuntimeException("Inspector tool failed to initialize the UI in createTool().", exception);}
-    return myInspectorComponent;
-  }
-
-  @Override
-  public JComponent getComponent() {
-    // FIXME don't need to keep myComponent field here; getComponent() serves as a factory method
-    //       XXX however, keep in mind getInspector() scenario from tests, where no UI is shown and therefore getComponent() never invoked!
-    if (myComponent == null) {
-      createTool();
-    }
-    return myComponent;
+    return myInspector.getInspector();
   }
 
   public void inspect(SNode node, FileEditor fileEditor, String[] enabledHints, boolean readOnly) {
-    if (node instanceof jetbrains.mps.smodel.SNode && !SNodeUtil.isAccessible(node, myInspectorComponent.getRepository())) {
-      // Note: inspector does not support disposed nodes. If we get one, just clear the tool.
-      // The editor holds references to nodes between read actions and these references are updated asynchronously.
-      // This means that sometimes an editor may give us an outdated node.
-      node = null;
-    }
-
-    myFileEditor = fileEditor;
-
-    myInspectorComponent.setReadOnly(readOnly);
-    boolean needToEdit = myInspectorComponent.getUpdater().setInitialEditorHints(enabledHints);
-    if (needToEdit || myInspectorComponent.getEditedNode() != node) {
-      myInspectorComponent.editNode(node);
-    }
-    myMessagePanel.setNode(node);
+    myInspector.inspect(node, fileEditor, enabledHints, readOnly);
   }
 
-  private final class MyPanel extends SimpleToolWindowPanel {
-    private MyPanel() {
-      super(true, true);
-      setProvideQuickActions(false);
-    }
-
-    @Override
-    @Nullable
-    public Object getData(@NotNull @NonNls String dataId) {
-      if (MPSCommonDataKeys.FILE_EDITOR.is(dataId)) {
-        return myFileEditor;
-      }
-      if (PlatformDataKeys.VIRTUAL_FILE.is(dataId) && myFileEditor != null) {
-        return myFileEditor.getFile();
-      }
-      if (PlatformDataKeys.HELP_ID.is(dataId)) {
-        return "ideaInterface.editor.inspector";
-      }
-      if (PlatformDataKeys.PROJECT.is(dataId)) {
-        return getProject();
-      }
-      if (MPSEditorDataKeys.EDITOR_COMPONENT.is(dataId)) {
-        return myInspectorComponent;
-      }
-      if (MPSCommonDataKeys.MPS_PROJECT.is(dataId)) {
-        return ProjectHelper.fromIdeaProject(getProject());
-      }
-      return super.getData(dataId);
-    }
-  }
-
-  private final class MyMessagePanel extends JPanel {
-    private static final String NO_CONCEPT_MESSAGE = "<no node>";
-
-    private final JLabel myLabel = new JLabel();
-    private final HyperlinkLabel myOpenConceptLabel = new HyperlinkLabel("Open Concept Declaration");
-    private final Color myBackgroundColor; // for reasons see #setBackground() override
-    private SNode myNode;
-
-    MyMessagePanel(StyleRegistry styleRegistry) {
-      super(new BorderLayout());
-
-      final Style wpStyle = styleRegistry.getStyle("INFORMATION_PANEL");
-      myBackgroundColor = wpStyle.get(StyleAttributes.TEXT_BACKGROUND_COLOR);
-      setBorder(BorderFactory.createEmptyBorder(10, 4, 10, 4));
-
-      // unfortunately, wpStyle.get() now gives plain Color which doesn't reflect scheme changes (i.e. the moment user changes
-      // UI scheme, tool windows are not re-created, just re-painted, keeping the old Color values. Restart helps.
-      // In the perfect world, it's StyleRegistryIdeaImpl that has to ensure proper JBColor is in use (the one that knows about or reacts
-      // to scheme change in a way that doesn't require us to care here)
-      myLabel.setForeground(wpStyle.get(StyleAttributes.TEXT_COLOR));
-
-      add(myLabel, BorderLayout.CENTER);
-      add(myOpenConceptLabel, BorderLayout.EAST);
-
-      myOpenConceptLabel.setOpaque(false);
-      myOpenConceptLabel.addHyperlinkListener(e -> {
-        if (myNode == null) {
-          return;
-        }
-        SNodeReference conceptDecl = myNode.getConcept().getSourceNode();
-        if (conceptDecl != null) {
-          new EditorNavigator(ProjectHelper.fromIdeaProject(getProject())).shallFocus(true).shallSelect(false).open(conceptDecl);
-        }
-      });
-    }
-
-    public void setNode(SNode node) {
-      myNode = node;
-      if (node == null) {
-        myLabel.setText(NO_CONCEPT_MESSAGE);
-        myOpenConceptLabel.setVisible(false);
-      } else {
-        myLabel.setText(node.getConcept().getQualifiedName());
-        myOpenConceptLabel.setVisible(true);
-      }
-    }
-
-    @Override
-    public void setBackground(Color bg) {
-      // intentionally no-op to facilitate custom style-managed background color.
-      // for whatever reason, ToolWindowImpl.kt, in ensureContentInitialized() -> createContentIfNeeded(), forces all components
-      // within content manager to paint with default background (when isNewUi, see line 599)
-    }
-
-    @Override
-    public Color getBackground() {
-      return myBackgroundColor;
-    }
+  public boolean isAvailable() {
+    return myInspector.isAvailable();
   }
 }

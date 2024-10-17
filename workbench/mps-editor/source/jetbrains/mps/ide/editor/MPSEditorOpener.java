@@ -181,7 +181,7 @@ public class MPSEditorOpener {
       getFocusManager().requestFocus(toBeFocused, false);
     } else {
       final InspectorTool inspectorTool = getInspector();
-      inspectorTool.getToolWindow().activate(null);
+      inspectorTool.activate();
       getFocusManager().requestFocus(inspectorTool.getInspector(), false);
     }
   }

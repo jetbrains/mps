@@ -244,7 +244,7 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
     ThreadUtils.runInUIThreadNoWait(() -> IdeFocusManager.getGlobalInstance().doWhenFocusSettlesDown(() -> {
       final InspectorTool inspector = inspectorTool();
       if (inspector != null) {
-        inspector.openToolLater(true);
+        inspector.activate();
       }
     }));
   }
