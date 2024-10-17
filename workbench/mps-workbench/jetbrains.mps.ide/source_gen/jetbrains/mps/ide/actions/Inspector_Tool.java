@@ -21,20 +21,20 @@ import jetbrains.mps.ide.ThreadUtils;
 import javax.swing.JComponent;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3105693458873676787", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
-public class InspectorNew_Tool extends GeneratedTool {
+public class Inspector_Tool extends GeneratedTool {
   private static final Icon ICON = IdeIcons.INSPECTOR_ICON;
   private InspectorContainer myContainer;
-  public InspectorNew_Tool(Project project) {
+  public Inspector_Tool(Project project) {
     super(project, "InspectorNew", BaseTool.shortcutsFromNumber(2), ICON, ToolWindowAnchor.BOTTOM, false, true);
   }
   public void init(Project project) {
     super.init(project);
-    InspectorNew_Tool.this.myContainer = new InspectorContainer(project);
-    InspectorNew_Tool.this.myContainer.createTool();
+    Inspector_Tool.this.myContainer = new InspectorContainer(project);
+    Inspector_Tool.this.myContainer.createTool();
   }
   public void dispose() {
-    InspectorNew_Tool.this.myContainer.getInspectorComponent().dispose();
-    InspectorNew_Tool.this.myContainer = null;
+    Inspector_Tool.this.myContainer.getInspectorComponent().dispose();
+    Inspector_Tool.this.myContainer = null;
     super.dispose();
   }
   @Override
@@ -46,12 +46,12 @@ public class InspectorNew_Tool extends GeneratedTool {
     return new EditorInspector() {
       @Override
       public void activate() {
-        ProjectPluginManager.getInstance(InspectorNew_Tool.this.myContainer.getProject()).getTool(InspectorNew_Tool.class).openToolLater(true);
+        ProjectPluginManager.getInstance(Inspector_Tool.this.myContainer.getProject()).getTool(Inspector_Tool.class).openToolLater(true);
       }
     };
   }
   public void inspect(SNode node, FileEditor fileEditor, String[] enabledHints, boolean readOnly) {
-    MPSProject mpsProject = ProjectHelper.fromIdeaProject(InspectorNew_Tool.this.myContainer.getProject());
+    MPSProject mpsProject = ProjectHelper.fromIdeaProject(Inspector_Tool.this.myContainer.getProject());
     assert mpsProject != null : "Unexpected null value of MPSProject";
     if (node instanceof jetbrains.mps.smodel.SNode && !(SNodeUtil.isAccessible(node, mpsProject.getRepository()))) {
       // Note: inspector does not support disposed nodes. If we get one, just clear the tool.
@@ -59,23 +59,23 @@ public class InspectorNew_Tool extends GeneratedTool {
       // This means that sometimes an editor may give us an outdated node.
       node = null;
     }
-    InspectorNew_Tool.this.myContainer.inspect(node, fileEditor, enabledHints, readOnly);
+    Inspector_Tool.this.myContainer.inspect(node, fileEditor, enabledHints, readOnly);
   }
   public EditorComponent getInspector() {
     final Exception exception = ThreadUtils.runInUIThreadAndWait(() -> {
-      if (InspectorNew_Tool.this.myContainer.getComponent() == null) {
-        InspectorNew_Tool.this.myContainer.createTool();
+      if (Inspector_Tool.this.myContainer.getComponent() == null) {
+        Inspector_Tool.this.myContainer.createTool();
       }
     });
     if (exception != null) {
       throw new RuntimeException("Inspector tool failed to initialize the UI in createTool().", exception);
     }
-    return InspectorNew_Tool.this.myContainer.getInspectorComponent();
+    return Inspector_Tool.this.myContainer.getInspectorComponent();
   }
   public JComponent getComponent() {
-    InspectorContainer.MyPanel component = InspectorNew_Tool.this.myContainer.getComponent();
+    InspectorContainer.MyPanel component = Inspector_Tool.this.myContainer.getComponent();
     if (component == null) {
-      InspectorNew_Tool.this.myContainer.createTool();
+      Inspector_Tool.this.myContainer.createTool();
     }
     return component;
   }

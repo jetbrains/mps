@@ -7240,6 +7240,15 @@
       <node concept="3clFbS" id="hXheiqN" role="2VODD2">
         <node concept="3clFbF" id="2GNOBvcBJcz" role="3cqZAp">
           <node concept="2OqwBi" id="2GNOBvcBKQO" role="3clFbG">
+            <node concept="liA8E" id="2GNOBvcBM1Z" role="2OqNvi">
+              <ref role="37wK5l" to="3nps:~BookmarkManager.navigateToBookmark(int)" resolve="navigateToBookmark" />
+              <node concept="2OqwBi" id="2GNOBvcBMHG" role="37wK5m">
+                <node concept="2WthIp" id="2GNOBvcBM9E" role="2Oq$k0" />
+                <node concept="2BZ7hE" id="2GNOBvcFxcH" role="2OqNvi">
+                  <ref role="2WH_rO" node="73o9OgiDRe8" resolve="num" />
+                </node>
+              </node>
+            </node>
             <node concept="2YIFZM" id="2GNOBvcBJpH" role="2Oq$k0">
               <ref role="37wK5l" to="3nps:~BookmarkManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
               <ref role="1Pybhc" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
@@ -7247,15 +7256,6 @@
                 <node concept="2WthIp" id="2GNOBvcBJwl" role="2Oq$k0" />
                 <node concept="1DTwFV" id="2GNOBvcBKwm" role="2OqNvi">
                   <ref role="2WH_rO" node="hXheiqZ" resolve="project" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="2GNOBvcBM1Z" role="2OqNvi">
-              <ref role="37wK5l" to="3nps:~BookmarkManager.navigateToBookmark(int)" resolve="navigateToBookmark" />
-              <node concept="2OqwBi" id="2GNOBvcBMHG" role="37wK5m">
-                <node concept="2WthIp" id="2GNOBvcBM9E" role="2Oq$k0" />
-                <node concept="2BZ7hE" id="2GNOBvcFxcH" role="2OqNvi">
-                  <ref role="2WH_rO" node="73o9OgiDRe8" resolve="num" />
                 </node>
               </node>
             </node>
@@ -51977,7 +51977,7 @@
     </node>
   </node>
   <node concept="sEfby" id="2GpCVW5qRfN">
-    <property role="TrG5h" value="InspectorNew" />
+    <property role="TrG5h" value="Inspector" />
     <property role="2XNbzY" value="InspectorNew" />
     <property role="tEvSQ" value="true" />
     <property role="2bmUCM" value="6ynJ8PRv7RF/BOTTOM_RIGHT" />

@@ -20,7 +20,7 @@ public class Ide_ProjectPlugin extends BaseProjectPlugin {
     List<BaseTool> tools = ListSequence.fromList(new ArrayList<BaseTool>());
     ListSequence.fromList(tools).addElement(new BaseLanguageHierarchyViewTool_Tool(project));
     ListSequence.fromList(tools).addElement(new HierarchyViewTool_Tool(project));
-    ListSequence.fromList(tools).addElement(new InspectorNew_Tool(project));
+    ListSequence.fromList(tools).addElement(new Inspector_Tool(project));
     return tools;
   }
   public List<BaseProjectPrefsComponent> createPreferencesComponents(Project project) {

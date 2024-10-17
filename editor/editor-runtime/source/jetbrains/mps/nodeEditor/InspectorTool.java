@@ -17,7 +17,7 @@ package jetbrains.mps.nodeEditor;
 
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.actions.InspectorNew_Tool;
+import jetbrains.mps.ide.actions.Inspector_Tool;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.openapi.editor.EditorInspector;
 import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
@@ -25,9 +25,9 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 public class InspectorTool implements EditorInspector {
-  private final InspectorNew_Tool myInspector;
+  private final Inspector_Tool myInspector;
 
-  public InspectorTool(InspectorNew_Tool tool) {
+  public InspectorTool(Inspector_Tool tool) {
     myInspector = tool;
   }
 
@@ -41,7 +41,7 @@ public class InspectorTool implements EditorInspector {
     if(ideaProject == null) {
       return null;
     }
-    final InspectorNew_Tool tool = ProjectPluginManager.getInstance(ideaProject).getTool(InspectorNew_Tool.class);
+    final Inspector_Tool tool = ProjectPluginManager.getInstance(ideaProject).getTool(Inspector_Tool.class);
     return tool == null ? null : new InspectorTool(tool);
   }
 
