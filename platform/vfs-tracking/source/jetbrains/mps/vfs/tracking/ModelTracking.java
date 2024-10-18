@@ -35,9 +35,9 @@ public final class ModelTracking implements Disposable {
     MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
     // FIXME I don't agree with ModelStorageConflictsListener approach. To listen to every
     //       model in a repository to set a resolver doesn't sound right to me.
-    myConflictsListener = new ModelStorageConflictsListener(myProject,
+    myConflictsListener = new ModelStorageConflictsListener(new ConflictResolverImpl(myProject,
                                                             coreComponents.getPersistenceFacade(),
-                                                            coreComponents.getPlatform().findComponent(VFSManager.class));
+                                                            coreComponents.getPlatform().findComponent(VFSManager.class)));
     new RepoListenerRegistrar(myProject.getRepository(), myConflictsListener).attach();
   }
 

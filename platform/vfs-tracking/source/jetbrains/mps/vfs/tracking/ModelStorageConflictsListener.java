@@ -18,13 +18,10 @@ package jetbrains.mps.vfs.tracking;
 import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.extapi.model.StorageMemoryConflictResolver;
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,17 +38,11 @@ import java.util.concurrent.CompletionStage;
 /*package*/ final class ModelStorageConflictsListener extends SRepositoryContentAdapter implements StorageMemoryConflictResolver<EditableSModel> {
   private static final Logger LOG = Logger.getLogger(ModelStorageConflictsListener.class);
 
-  private final ConflictResolverImpl myMemoryDiskConflictResolver;
+  private final StorageMemoryConflictResolver<? super EditableSModel> myMemoryDiskConflictResolver;
 
   private final Map<EditableSModel, StorageMemoryConflictResolver<EditableSModel>> myModel2OldConflictResolver = new HashMap<>();
 
-  /*package*/ ModelStorageConflictsListener(@NotNull MPSProject project,
-                                            @NotNull PersistenceFacade persistenceFacade,
-                                            @NotNull VFSManager vfsManager) {
-    this(new ConflictResolverImpl(project, persistenceFacade, vfsManager));
-  }
-
-  /*package*/ ModelStorageConflictsListener(@NotNull ConflictResolverImpl resolver) {
+  public ModelStorageConflictsListener(@NotNull StorageMemoryConflictResolver<? super EditableSModel> resolver) {
     myMemoryDiskConflictResolver = resolver;
   }
 
@@ -87,6 +78,6 @@ import java.util.concurrent.CompletionStage;
       return CompletableFuture.failedFuture(no_conflict_detected);
     }
 
-    return myMemoryDiskConflictResolver.resolve(model);
+    return myMemoryDiskConflictResolver.resolveConflict(model);
   }
 }
