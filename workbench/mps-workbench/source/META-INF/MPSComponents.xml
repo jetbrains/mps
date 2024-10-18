@@ -34,10 +34,6 @@
     <component>
       <implementation-class>jetbrains.mps.plugins.projectplugins.ProjectPluginManager</implementation-class>
     </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.vfs.tracking.ModelTracking</implementation-class>
-    </component>
   </project-components>
 
   <extensions defaultExtensionNs="com.intellij">

@@ -82,6 +82,7 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
     // to be part of MPS-as-IDEA-plugin project init sequence (likely, in MPSFacet or directly by MPSProject), but as long as
     // MPS-as-IDEA-plugin is now a history, *AND* this listener is relevant for IDE/UI activities only (not for headless IDEA-backed
     // environment where we still can get simple MPSProject instance), I decided to put it here.
+    // FWIW, could be ProjectRepository attribute, not a listener. See conflict resolver in superclass
     myProblemsListener = new ModelStorageProblemsListener(this);
   }
 

@@ -86,7 +86,7 @@ public final class ConflictResolverImpl implements StorageMemoryConflictResolver
     myDialogExposer = exposer;
   }
 
-  ConflictResolverImpl(MPSProject project,
+  public ConflictResolverImpl(MPSProject project,
                        PersistenceFacade persistenceFacade,
                        VFSManager vfsManager) {
     myProject = project;

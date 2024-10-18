@@ -34,7 +34,8 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 /**
- * Extracted from {@link ModelStorageConflictsListener}.
+ * Extracted from {@code ModelStorageConflictsListener}.
+ * Perhaps, have to become SRepository-wide parameter rather than per-model listener
  *
  * @author apyshkin
  * @since 02/11/2020

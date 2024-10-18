@@ -17,6 +17,7 @@ package jetbrains.mps.extapi.model;
 
 import jetbrains.mps.extapi.model.StorageMemoryConflictResolver.ConflictResolved;
 import jetbrains.mps.extapi.module.SModuleBase;
+import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.ModelSourceChangeTracker;
 import jetbrains.mps.logging.Logger;
@@ -56,7 +57,6 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
 
   private static final Logger LOG = Logger.getLogger(EditableSModelBase.class);
   protected final ModelSourceChangeTracker myTimestampTracker;
-  @NotNull private volatile StorageMemoryConflictResolver<EditableSModel> myConflictResolver = createDefaultResolver();
   private final AtomicBoolean myResolveConflictInProgress = new AtomicBoolean();
 
   private boolean myChanged = false;
@@ -64,22 +64,6 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
   protected EditableSModelBase(@NotNull SModelReference modelReference, @NotNull DataSource source) {
     super(modelReference, source);
     myTimestampTracker = new ModelSourceChangeTracker(this::doReloadFromDiskSafe);
-  }
-
-  @NotNull
-  private static StorageMemoryConflictResolver<EditableSModel> createDefaultResolver() {
-    // just force-save in case of a conflict
-    return new StorageMemoryConflictResolver<EditableSModel>() {
-      @NotNull
-      @Override
-      public CompletionStage<ConflictResolved> resolveConflict(@NotNull EditableSModel model) {
-        LOG.warning("Conflict happens, we always choose memory data by default", new Throwable());
-        model.save(new SaveOptions.SaveOptionsBuilder()
-                       .forceSave()
-                       .build());
-        return CompletableFuture.completedFuture(ConflictResolved.MEMORY_CHOSEN);
-      }
-    };
   }
 
   @Override
@@ -107,14 +91,19 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
   /**
    * AP: leaving here for 2020.3, to be pulled up.
    * I want to ensure that the proposed solution is ok
+   * @deprecated NO OP, DO NOT USE. As a providional internal-only workaround, check {@link SRepositoryExt#getConflictResolver()}
    * @param resolver null will reset to the default resolver
    */
   @NotNull
+  @Deprecated(forRemoval = true)
   public final StorageMemoryConflictResolver<EditableSModel> setConflictResolver(@Nullable StorageMemoryConflictResolver<EditableSModel> resolver) {
-    var oldImpl = myConflictResolver;
-    myConflictResolver = resolver != null ? resolver
-                                          : createDefaultResolver();
-    return oldImpl;
+    LOG.warnDeprecatedUse("Do not set conflict resolver for an individual model!");
+    return new StorageMemoryConflictResolver<EditableSModel>() {
+      @Override
+      public @NotNull CompletionStage<ConflictResolved> resolveConflict(@NotNull EditableSModel model) {
+        return CompletableFuture.completedFuture(ConflictResolved.NOTHING_HAPPENED);
+      }
+    };
   }
 
   @Override
@@ -200,11 +189,19 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
    */
   @NotNull
   private CompletionStage<SaveResult> resolveConflict0() {
+    SRepository repo = getRepository();
+    final StorageMemoryConflictResolver<EditableSModel> conflictResolver = repo instanceof SRepositoryExt ? ((SRepositoryExt) repo).getConflictResolver() : null;
+    if (conflictResolver == null) {
+      return CompletableFuture.completedFuture(SaveResult.SAVE_PROBLEM);
+    }
     if (myResolveConflictInProgress.compareAndSet(false, true)) {
       // fixme obviously the warning is here because MPS is not ideal in this matter: saveAll on each fs reload
       LOG.warning("Model file " + getReference().getModelName() + " was modified externally! " +
                   "You might want to modify the autosave settings in \"Settings/Preferences | Appearance & Behavior | System Settings\" to avoid conflicts.");
-      return myConflictResolver.resolveConflict(this)
+      // FIXME I wonder if resolve process has to be blocked on per-model or repository level? Keep it the way it used to be. However, with
+      //       exlicit single resolver instace (used to be single, but not explicitly), the question is what happens if there's more than
+      //       1 changed+needs reload model?
+      return conflictResolver.resolveConflict(this)
                                .thenApply(EditableSModelBase::convert)
                                .handle((saveResult, throwable) -> {
                                  myResolveConflictInProgress.set(false);

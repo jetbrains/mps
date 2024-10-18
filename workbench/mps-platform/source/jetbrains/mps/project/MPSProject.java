@@ -28,9 +28,12 @@ import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.ide.vfs.ProjectRootListenerComponent;
 import jetbrains.mps.nodefs.FileSystemProjectBridge;
+import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.WorkbenchModelAccess;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.VFSManager;
+import jetbrains.mps.vfs.tracking.ConflictResolverImpl;
 import org.jdom.JDOMException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -69,6 +72,7 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
     final ProjectRepository repo = new ProjectRepository(this, extRepo, registry, projectMA);
     repo.init();
     initRepository(repo);
+    repo.setConflictResolver(new ConflictResolverImpl(this, platform.findComponent(PersistenceRegistry.class), platform.findComponent(VFSManager.class)));
   }
 
   @Override
@@ -82,6 +86,7 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
   public void disposeComponent() {
     myFileSystemBridge.projectClosed();
     myFileSystemBridge = null;
+    ((ProjectRepository) getRepository()).setConflictResolver(null);
     dispose();
   }
 

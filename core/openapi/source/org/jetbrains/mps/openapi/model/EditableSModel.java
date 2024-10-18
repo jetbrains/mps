@@ -60,6 +60,8 @@ public interface EditableSModel extends SModel {
    * But as always I doubt that changing the semantics of such a popular method is the right way
    */
   default CompletionStage<SaveResult> save(@NotNull SaveOptions options) {
+    // FIXME I don't quite see a benefit of using CompletionStage<SaveResult> as a return value, as the only place we consume it is the
+    // conflict resolver itself, which is usually is invoked from within save(?) methods.
     save();
     return CompletableFuture.completedFuture(SaveResult.SAVED_TO_DATA_SOURCE);
   }
