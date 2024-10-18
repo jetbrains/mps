@@ -44,7 +44,6 @@ public class BookmarksTool implements PersistentStateComponent<BookmarksTool.MyS
   private static String ID = "Bookmarks tool"; // same as value in the xml
   private final Project myProject;
   private JScrollPane myComponent;
-  private BookmarkManager myBookmarkManager;
   private MPSTree myTree;
   private TreeState myTreeState;
 
@@ -82,6 +81,7 @@ public class BookmarksTool implements PersistentStateComponent<BookmarksTool.MyS
     Content content = cm.getFactory().createContent(myComponent, "", false);
     content.setPreferredFocusableComponent(myTree);
     content.setIcon(toolWindow.getIcon());
+    cm.addContent(content);
     cm.setSelectedContent(content);
   }
 
