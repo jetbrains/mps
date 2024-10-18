@@ -193,6 +193,11 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
     fireConflictDetected();
   }
 
+  /**
+   * nb: resolving conflict might happen much later (hence CompletionStage is returned).
+   *
+   * pre: {@code isChanged() && needsReloading()}, see {@link StorageMemoryConflictResolver#resolveConflict(Object)}
+   */
   @NotNull
   private CompletionStage<SaveResult> resolveConflict0() {
     if (myResolveConflictInProgress.compareAndSet(false, true)) {
@@ -210,19 +215,6 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
     }
   }
 
-  /**
-   * nb: resolving conflict might happen much later (hence CompletionStage is returned).
-   *
-   * @return null iff there are no conflicts
-   */
-  @Nullable
-  private CompletionStage<SaveResult> resolveConflictsOnSave() {
-    if (needsReloading()) {
-      return resolveConflict0();
-    }
-    return null;
-  }
-
   @Override
   public final void save() {
     assertCanChange();
@@ -233,8 +225,14 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
 
     LOG.debug("Saving the model " + getName().getLongName());
 
-    CompletionStage<SaveResult> asyncRes = resolveConflictsOnSave();
-    if (asyncRes != null) {
+    if (isChanged() && needsReloading()) {
+      // On one hand, there's certain contract of StorageMemoryConflictResolver#resolveConflict(), on the other - save() might be trying to
+      // save "used to be" state over changed disk state. And the question goes what we are going to save() here if the model !isChanged() but
+      // not yet (completely) loaded. Perhaps, isChanged() check has to be combined as (isChanged() || isLoaded()), although it doesn't help
+      // for partially loaded models - do we treat it as a conflict? What's state we are going to get after save() then? The one "used to be" or
+      // the one that combines "reloaded" with "in-memory"? Don't forget that disk changes (aka needsReloading()) could mean anything, even model
+      // removal (e.g. model id changes)
+      resolveConflict0();
       return;
     }
 
@@ -267,11 +265,9 @@ public abstract class EditableSModelBase extends SModelBase implements EditableS
     if (options.refreshDataSource()) {
       getSource().refresh();
     }
-    if (options.resolveConflicts()) {
-      CompletionStage<SaveResult> conflictFuture = resolveConflictsOnSave();
-      if (conflictFuture != null) {
-        return conflictFuture;
-      }
+    if (options.resolveConflicts() && needsReloading()) {
+      // isChanged() == true, see above
+      return resolveConflict0();
     }
 
     return save0();
