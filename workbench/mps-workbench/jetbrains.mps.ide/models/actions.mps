@@ -317,7 +317,7 @@
       <concept id="471625927503601927" name="jetbrains.mps.lang.plugin.structure.NumberToolShortcut" flags="ng" index="15feLf">
         <property id="471625927503601955" name="number" index="15feLF" />
       </concept>
-      <concept id="6193305307616715384" name="jetbrains.mps.lang.plugin.structure.ShortcutChange" flags="ng" index="1bYyw_">
+      <concept id="6193305307616715384" name="jetbrains.mps.lang.plugin.structure.ShortcutChange" flags="ngI" index="1bYyw_">
         <reference id="6193305307616734326" name="action" index="1bYAoF" />
       </concept>
       <concept id="6193305307616734266" name="jetbrains.mps.lang.plugin.structure.ParameterizedShortcutChange" flags="in" index="1bYApB">
@@ -347,7 +347,7 @@
         <child id="1206193920040" name="groupID" index="3mKD$K" />
       </concept>
       <concept id="1204478074808" name="jetbrains.mps.lang.plugin.structure.ConceptFunctionParameter_MPSProject" flags="nn" index="1KvdUw" />
-      <concept id="1217413147516" name="jetbrains.mps.lang.plugin.structure.ActionParameter" flags="ng" index="1NuADB">
+      <concept id="1217413147516" name="jetbrains.mps.lang.plugin.structure.ActionParameter" flags="ngI" index="1NuADB">
         <child id="5538333046911298738" name="condition" index="1oa70y" />
       </concept>
     </language>
@@ -421,7 +421,7 @@
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
         <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
@@ -429,7 +429,7 @@
         <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1095950406618" name="jetbrains.mps.baseLanguage.structure.DivExpression" flags="nn" index="FJ1c_" />
-      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ng" index="IEa8$">
+      <concept id="1224848483129" name="jetbrains.mps.baseLanguage.structure.IBLDeprecatable" flags="ngI" index="IEa8$">
         <property id="1224848525476" name="isDeprecated" index="IEkAT" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
@@ -507,7 +507,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
         <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ" />
@@ -598,7 +598,7 @@
         <child id="1160998896846" name="condition" index="1gVkn0" />
         <child id="1160998916832" name="message" index="1gVpfI" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
         <child id="4972241301747169160" name="typeArgument" index="3PaCim" />
@@ -645,7 +645,7 @@
       <concept id="1184952934362" name="jetbrains.mps.baseLanguage.structure.DimensionExpression" flags="nn" index="3$GHV9">
         <child id="1184953288404" name="expression" index="3$I4v7" />
       </concept>
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -781,7 +781,7 @@
       <concept id="1205752633985" name="jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression" flags="nn" index="2WthIp">
         <reference id="1218736638915" name="classifier" index="32nkFo" />
       </concept>
-      <concept id="1205756064662" name="jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation" flags="ng" index="2WEnae">
+      <concept id="1205756064662" name="jetbrains.mps.baseLanguage.classifiers.structure.IMemberOperation" flags="ngI" index="2WEnae">
         <reference id="1205756909548" name="member" index="2WH_rO" />
       </concept>
       <concept id="1205769003971" name="jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodDeclaration" flags="ng" index="2XrIbr" />
@@ -790,7 +790,7 @@
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
-      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ng" index="2c44t0">
+      <concept id="1196350785110" name="jetbrains.mps.lang.quotation.structure.AbstractAntiquotation" flags="ngI" index="2c44t0">
         <property id="6489343236075007666" name="label" index="3hQQBS" />
         <child id="1196350785111" name="expression" index="2c44t1" />
       </concept>
@@ -803,7 +803,7 @@
     </language>
     <language id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences">
       <concept id="237887375562511215" name="jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference" flags="ng" index="37Ijox" />
-      <concept id="3507059745126391419" name="jetbrains.mps.baseLanguage.methodReferences.structure.IMethodReference" flags="ng" index="3UZKCU">
+      <concept id="3507059745126391419" name="jetbrains.mps.baseLanguage.methodReferences.structure.IMethodReference" flags="ngI" index="3UZKCU">
         <reference id="237887375562511297" name="method" index="37Ijqf" />
         <child id="962278442658307079" name="target" index="wWaWy" />
       </concept>
@@ -917,7 +917,7 @@
         <property id="1757699476691236116" name="role_DebugInfo" index="2qtEX8" />
         <property id="1341860900488019036" name="linkId" index="P3scX" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
       <concept id="3717301156197626279" name="jetbrains.mps.lang.core.structure.BasePlaceholder" flags="ng" index="3DQ70j" />
@@ -7234,27 +7234,23 @@
     <property role="1rBW0U" value="true" />
     <node concept="tnohg" id="hXheiqM" role="tncku">
       <node concept="3clFbS" id="hXheiqN" role="2VODD2">
-        <node concept="3clFbF" id="hXheiqO" role="3cqZAp">
-          <node concept="2OqwBi" id="hXheiqP" role="3clFbG">
-            <node concept="2OqwBi" id="hXheiqQ" role="2Oq$k0">
-              <node concept="2OqwBi" id="hXheiqR" role="2Oq$k0">
-                <node concept="2WthIp" id="hXheiqS" role="2Oq$k0" />
-                <node concept="1DTwFV" id="hXheiqT" role="2OqNvi">
+        <node concept="3clFbF" id="2GNOBvcBJcz" role="3cqZAp">
+          <node concept="2OqwBi" id="2GNOBvcBKQO" role="3clFbG">
+            <node concept="2YIFZM" id="2GNOBvcBJpH" role="2Oq$k0">
+              <ref role="37wK5l" to="3nps:~BookmarkManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
+              <node concept="2OqwBi" id="2GNOBvcBJNa" role="37wK5m">
+                <node concept="2WthIp" id="2GNOBvcBJwl" role="2Oq$k0" />
+                <node concept="1DTwFV" id="2GNOBvcBKwm" role="2OqNvi">
                   <ref role="2WH_rO" node="hXheiqZ" resolve="project" />
                 </node>
               </node>
-              <node concept="liA8E" id="hXheiqU" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1tbrSmAaBuv" role="37wK5m">
-                  <ref role="3VsUkX" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
-                </node>
-              </node>
             </node>
-            <node concept="liA8E" id="hXheiqW" role="2OqNvi">
+            <node concept="liA8E" id="2GNOBvcBM1Z" role="2OqNvi">
               <ref role="37wK5l" to="3nps:~BookmarkManager.navigateToBookmark(int)" resolve="navigateToBookmark" />
-              <node concept="2OqwBi" id="73o9OgiDR_4" role="37wK5m">
-                <node concept="2WthIp" id="73o9OgiDR_5" role="2Oq$k0" />
-                <node concept="2BZ7hE" id="73o9OgiDR_6" role="2OqNvi">
+              <node concept="2OqwBi" id="2GNOBvcBMHG" role="37wK5m">
+                <node concept="2WthIp" id="2GNOBvcBM9E" role="2Oq$k0" />
+                <node concept="2BZ7hE" id="2GNOBvcFxcH" role="2OqNvi">
                   <ref role="2WH_rO" node="73o9OgiDRe8" resolve="num" />
                 </node>
               </node>
@@ -7299,6 +7295,7 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbH" id="2GNOBvcDArv" role="3cqZAp" />
         <node concept="3clFbF" id="1E5lpmNdAjk" role="3cqZAp">
           <node concept="2OqwBi" id="1E5lpmNdAjr" role="3clFbG">
             <node concept="2OqwBi" id="1E5lpmNdAjm" role="2Oq$k0">
@@ -7312,26 +7309,22 @@
               <node concept="3y3z36" id="1E5lpmNdAxW" role="37wK5m">
                 <node concept="10Nm6u" id="1E5lpmNdAxZ" role="3uHU7w" />
                 <node concept="2OqwBi" id="1E5lpmNdAxO" role="3uHU7B">
-                  <node concept="2OqwBi" id="1E5lpmNdAkt" role="2Oq$k0">
-                    <node concept="2OqwBi" id="1E5lpmNdAjw" role="2Oq$k0">
-                      <node concept="2WthIp" id="1E5lpmNdAjx" role="2Oq$k0" />
-                      <node concept="1DTwFV" id="1E5lpmNdAks" role="2OqNvi">
-                        <ref role="2WH_rO" node="hXheiqZ" resolve="project" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="1E5lpmNdAuO" role="2OqNvi">
-                      <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                      <node concept="3VsKOn" id="1tbrSmAaBuy" role="37wK5m">
-                        <ref role="3VsUkX" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
-                      </node>
-                    </node>
-                  </node>
                   <node concept="liA8E" id="1E5lpmNdAxS" role="2OqNvi">
                     <ref role="37wK5l" to="3nps:~BookmarkManager.getBookmark(int)" resolve="getBookmark" />
                     <node concept="2OqwBi" id="1E5lpmNdAxT" role="37wK5m">
                       <node concept="2WthIp" id="1E5lpmNdAxU" role="2Oq$k0" />
                       <node concept="2BZ7hE" id="1E5lpmNdAxV" role="2OqNvi">
                         <ref role="2WH_rO" node="73o9OgiDRe8" resolve="num" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="2YIFZM" id="2GNOBvcBNQB" role="2Oq$k0">
+                    <ref role="37wK5l" to="3nps:~BookmarkManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                    <ref role="1Pybhc" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
+                    <node concept="2OqwBi" id="2GNOBvcBNQC" role="37wK5m">
+                      <node concept="2WthIp" id="2GNOBvcBNQD" role="2Oq$k0" />
+                      <node concept="1DTwFV" id="2GNOBvcBNQE" role="2OqNvi">
+                        <ref role="2WH_rO" node="hXheiqZ" resolve="project" />
                       </node>
                     </node>
                   </node>
@@ -7357,22 +7350,18 @@
       <node concept="3clFbS" id="hXqU0ZJ" role="2VODD2">
         <node concept="3clFbF" id="hXqUbXR" role="3cqZAp">
           <node concept="2OqwBi" id="hXqUk3v" role="3clFbG">
-            <node concept="2OqwBi" id="hXqUbXS" role="2Oq$k0">
-              <node concept="2OqwBi" id="hXqUbXT" role="2Oq$k0">
-                <node concept="2WthIp" id="hXqUbXU" role="2Oq$k0" />
-                <node concept="1DTwFV" id="hXqUbXV" role="2OqNvi">
+            <node concept="liA8E" id="hXqUkrx" role="2OqNvi">
+              <ref role="37wK5l" to="3nps:~BookmarkManager.clearBookmarks()" resolve="clearBookmarks" />
+            </node>
+            <node concept="2YIFZM" id="2GNOBvcHb$X" role="2Oq$k0">
+              <ref role="37wK5l" to="3nps:~BookmarkManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
+              <node concept="2OqwBi" id="2GNOBvcHb$Y" role="37wK5m">
+                <node concept="2WthIp" id="2GNOBvcHb$Z" role="2Oq$k0" />
+                <node concept="1DTwFV" id="2GNOBvcHb_0" role="2OqNvi">
                   <ref role="2WH_rO" node="hXqU8eJ" resolve="project" />
                 </node>
               </node>
-              <node concept="liA8E" id="hXqUbXW" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1tbrSmAaBu_" role="37wK5m">
-                  <ref role="3VsUkX" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="hXqUkrx" role="2OqNvi">
-              <ref role="37wK5l" to="3nps:~BookmarkManager.clearBookmarks()" resolve="clearBookmarks" />
             </node>
           </node>
         </node>
@@ -7915,17 +7904,13 @@
             <node concept="3uibUv" id="1tbrSmAaBuE" role="1tU5fm">
               <ref role="3uigEE" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
             </node>
-            <node concept="2OqwBi" id="hZrM3px" role="33vP2m">
-              <node concept="2OqwBi" id="hZrM3py" role="2Oq$k0">
-                <node concept="2WthIp" id="hZrM3pz" role="2Oq$k0" />
-                <node concept="1DTwFV" id="hZrM3p$" role="2OqNvi">
+            <node concept="2YIFZM" id="2GNOBvcIQm5" role="33vP2m">
+              <ref role="37wK5l" to="3nps:~BookmarkManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
+              <node concept="2OqwBi" id="2GNOBvcIQm6" role="37wK5m">
+                <node concept="2WthIp" id="2GNOBvcIQm7" role="2Oq$k0" />
+                <node concept="1DTwFV" id="2GNOBvcIQm8" role="2OqNvi">
                   <ref role="2WH_rO" node="hZrLVVn" resolve="project" />
-                </node>
-              </node>
-              <node concept="liA8E" id="hZrM3p_" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1tbrSmAaBuH" role="37wK5m">
-                  <ref role="3VsUkX" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
                 </node>
               </node>
             </node>
@@ -9049,17 +9034,13 @@
             <node concept="3uibUv" id="1tbrSmAaBuK" role="1tU5fm">
               <ref role="3uigEE" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
             </node>
-            <node concept="2OqwBi" id="hZsuFZs" role="33vP2m">
-              <node concept="2OqwBi" id="hZsuFdL" role="2Oq$k0">
-                <node concept="2WthIp" id="hZsuFdM" role="2Oq$k0" />
-                <node concept="1DTwFV" id="hZsuFdN" role="2OqNvi">
+            <node concept="2YIFZM" id="2GNOBvcKxQc" role="33vP2m">
+              <ref role="37wK5l" to="3nps:~BookmarkManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
+              <node concept="2OqwBi" id="2GNOBvcKxQd" role="37wK5m">
+                <node concept="2WthIp" id="2GNOBvcKxQe" role="2Oq$k0" />
+                <node concept="1DTwFV" id="2GNOBvcKxQf" role="2OqNvi">
                   <ref role="2WH_rO" node="hZsuoXQ" resolve="project" />
-                </node>
-              </node>
-              <node concept="liA8E" id="hZsuHqM" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1tbrSmAaBuM" role="37wK5m">
-                  <ref role="3VsUkX" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
                 </node>
               </node>
             </node>
@@ -24486,20 +24467,6 @@
       <node concept="3clFbS" id="73o9OgiE94W" role="2VODD2">
         <node concept="3clFbF" id="73o9OgiE95A" role="3cqZAp">
           <node concept="2OqwBi" id="73o9OgiE95B" role="3clFbG">
-            <node concept="2OqwBi" id="73o9OgiE95M" role="2Oq$k0">
-              <node concept="2OqwBi" id="73o9OgiE95N" role="2Oq$k0">
-                <node concept="2WthIp" id="73o9OgiE95O" role="2Oq$k0" />
-                <node concept="1DTwFV" id="73o9OgiE95P" role="2OqNvi">
-                  <ref role="2WH_rO" node="73o9OgiE959" resolve="project" />
-                </node>
-              </node>
-              <node concept="liA8E" id="73o9OgiE95Q" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1tbrSmAaBuB" role="37wK5m">
-                  <ref role="3VsUkX" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
-                </node>
-              </node>
-            </node>
             <node concept="liA8E" id="73o9OgiE95D" role="2OqNvi">
               <ref role="37wK5l" to="3nps:~BookmarkManager.setBookmark(org.jetbrains.mps.openapi.model.SNode,int)" resolve="setBookmark" />
               <node concept="2OqwBi" id="73o9OgiE95E" role="37wK5m">
@@ -24512,6 +24479,16 @@
                 <node concept="2WthIp" id="73o9OgiE95K" role="2Oq$k0" />
                 <node concept="2BZ7hE" id="73o9OgiE95L" role="2OqNvi">
                   <ref role="2WH_rO" node="73o9OgiE95a" resolve="num" />
+                </node>
+              </node>
+            </node>
+            <node concept="2YIFZM" id="2GNOBvcIPD_" role="2Oq$k0">
+              <ref role="37wK5l" to="3nps:~BookmarkManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="3nps:~BookmarkManager" resolve="BookmarkManager" />
+              <node concept="2OqwBi" id="2GNOBvcIPDA" role="37wK5m">
+                <node concept="2WthIp" id="2GNOBvcIPDB" role="2Oq$k0" />
+                <node concept="1DTwFV" id="2GNOBvcIPDC" role="2OqNvi">
+                  <ref role="2WH_rO" node="73o9OgiE959" resolve="project" />
                 </node>
               </node>
             </node>
