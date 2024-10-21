@@ -27,7 +27,7 @@
       <node id="5822313438509069667" at="13,0,14,0" concept="6" trace="myMigrationConfig" />
       <node id="4815078419491651742" at="14,0,15,0" concept="6" trace="myChecker" />
       <node id="4815078419491655077" at="15,0,16,0" concept="6" trace="myExecutor" />
-      <node id="654497302551463510" at="17,70,18,198" concept="18" />
+      <node id="654497302551463510" at="17,70,18,203" concept="18" />
       <node id="5493972767264948741" at="21,143,22,173" concept="18" />
       <node id="5493972767264903648" at="25,197,26,30" concept="5" />
       <node id="5493972767264903652" at="26,30,27,40" concept="5" />
@@ -50,7 +50,7 @@
       <node id="2885477569139444402" at="51,0,55,0" concept="10" trace="getChecker#()Ljetbrains/mps/ide/migration/MigrationChecker;" />
       <node id="4815078419491561401" at="56,0,60,0" concept="10" trace="getExecutor#()Ljetbrains/mps/ide/migration/MigrationExecutor;" />
       <node id="5493972767264903646" at="25,0,40,0" concept="3" trace="MigrationSessionImpl#(Ljetbrains/mps/project/Project;Ljetbrains/mps/ide/migration/MigrationSetup;Ljetbrains/mps/ide/migration/MigrationChecker;Ljetbrains/mps/ide/migration/MigrationExecutor;ZZZ)V" />
-      <scope id="654497302551342534" at="17,70,18,198" />
+      <scope id="654497302551342534" at="17,70,18,203" />
       <scope id="1244156871960204840" at="21,143,22,173" />
       <scope id="5493972767264903670" at="30,20,31,101" />
       <scope id="4941303095730722034" at="33,25,34,106" />
