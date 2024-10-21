@@ -7,9 +7,6 @@ import jetbrains.mps.logging.Logger;
 import com.intellij.history.LocalHistoryAction;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.ide.migration.MigrationListener;
-import jetbrains.mps.smodel.structure.ExtensionPoint;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import jetbrains.mps.util.Status;
 import java.util.List;
@@ -19,6 +16,9 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.messages.LogHandler;
+import jetbrains.mps.ide.migration.MigrationListener;
+import jetbrains.mps.smodel.structure.ExtensionPoint;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.project.Project;
 import com.intellij.history.LocalHistory;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -71,8 +71,6 @@ public class MigrationTask {
 
   public void run(ProgressMonitor pm) {
     PersistenceRegistry.getInstance().disableFastFindUsages();
-    Iterable<MigrationListener> seq = new ExtensionPoint<MigrationListener>("jetbrains.mps.migration.listener.MigrationListenerEP").getObjects();
-    Sequence.fromIterable(seq).visitAll((it) -> it.migrationBatchStarted(mySession.getProject()));
     try {
       pm.start("Migrating...", 11);
       // just to get some progress indication (otherwise shows as indefinite until first subtask ends)
@@ -86,7 +84,6 @@ public class MigrationTask {
       pm.advance(0);
       error(me);
     } finally {
-      Sequence.fromIterable(seq).visitAll((it) -> it.migrationBatchEnded(mySession.getProject()));
       mySession.completed();
       // XXX saveProject() shall follow session.completed() which may alter
       //     MigrationProperties we need to have saved. Not sure if need EDT, definitely doesn't need write.
@@ -168,18 +165,24 @@ public class MigrationTask {
       }
     }
 
-    // from here, we don't ignore errors
-    addGlobalLabel(mySession.getProject(), STARTED);
-    Status pmStatus = runProjectMigrations(monitor.subTask(5, SubProgressKind.REPLACING));
-    if (!(pmStatus.isOk())) {
-      throw new MigrationExceptionError(pmStatus);
-    }
+    Iterable<MigrationListener> seq = new ExtensionPoint<MigrationListener>("jetbrains.mps.migration.listener.MigrationListenerEP").getObjects();
+    Sequence.fromIterable(seq).visitAll((it) -> it.migrationBatchStarted(mySession.getProject()));
+    try {
+      // from here, we don't ignore errors
+      addGlobalLabel(mySession.getProject(), STARTED);
+      Status pmStatus = runProjectMigrations(monitor.subTask(5, SubProgressKind.REPLACING));
+      if (!(pmStatus.isOk())) {
+        throw new MigrationExceptionError(pmStatus);
+      }
 
-    Status lmStatus = runLanguageMigrations(monitor.subTask(30, SubProgressKind.REPLACING));
-    if (!(lmStatus.isOk())) {
-      throw new MigrationExceptionError(lmStatus);
+      Status lmStatus = runLanguageMigrations(monitor.subTask(30, SubProgressKind.REPLACING));
+      if (!(lmStatus.isOk())) {
+        throw new MigrationExceptionError(lmStatus);
+      }
+      addGlobalLabel(mySession.getProject(), FINISHED);
+    } finally {
+      Sequence.fromIterable(seq).visitAll((it) -> it.migrationBatchEnded(mySession.getProject()));
     }
-    addGlobalLabel(mySession.getProject(), FINISHED);
 
     // todo move from here to migration annotations
     if (findNotMigrated(monitor.subTask(15, SubProgressKind.REPLACING))) {

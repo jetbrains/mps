@@ -15,7 +15,7 @@ public class MigrationSessionImpl extends MigrationSession.MigrationSessionBase 
   private final MigrationExecutor myExecutor;
 
   public MigrationSessionImpl(Project mpsProject, MigrationSetup mc) {
-    this(mpsProject, mc, new MigrationCheckerImpl(mpsProject, mc), new MigrationExecutorImpl(mpsProject), mc.isRepositorySaveRequired(), mc.importVersionsUpdateRequired(), mc.isMigrationRequired());
+    this(mpsProject, mc, new MigrationCheckerImpl(mpsProject, mc), new NotifyingMigrationExecutor(mpsProject), mc.isRepositorySaveRequired(), mc.importVersionsUpdateRequired(), mc.isMigrationRequired());
   }
 
   public MigrationSessionImpl(Project mpsProject, MigrationSetup migrationConfig, boolean forceSave, boolean updateVersions, boolean migrate) {
