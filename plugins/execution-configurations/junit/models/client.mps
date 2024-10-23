@@ -13454,6 +13454,31 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="36IwNP4ce_1" role="3cqZAp">
+          <node concept="2OqwBi" id="36IwNP4ce_2" role="3clFbG">
+            <node concept="37vLTw" id="36IwNP4ce_3" role="2Oq$k0">
+              <ref role="3cqZAo" node="4NLJPy97Q_M" resolve="libPaths" />
+            </node>
+            <node concept="liA8E" id="36IwNP4ce_4" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~HashSet.add(java.lang.Object)" resolve="add" />
+              <node concept="3cpWs3" id="36IwNP4ce_5" role="37wK5m">
+                <node concept="Xl_RD" id="36IwNP4ce_6" role="3uHU7w">
+                  <property role="Xl_RC" value="modules" />
+                </node>
+                <node concept="3cpWs3" id="36IwNP4ce_7" role="3uHU7B">
+                  <node concept="10M0yZ" id="36IwNP4ce_8" role="3uHU7w">
+                    <ref role="3cqZAo" to="guwi:~File.separator" resolve="separator" />
+                    <ref role="1PxDUh" to="guwi:~File" resolve="File" />
+                  </node>
+                  <node concept="2YIFZM" id="36IwNP4ce_9" role="3uHU7B">
+                    <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
+                    <ref role="37wK5l" to="18ew:~PathManager.getLibPath()" resolve="getLibPath" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="1mVhhl9jl1p" role="3cqZAp">
           <node concept="2OqwBi" id="1mVhhl9jl1q" role="3clFbG">
             <node concept="37vLTw" id="1mVhhl9jl1r" role="2Oq$k0">

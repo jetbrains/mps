@@ -99,6 +99,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
     libPaths.add(PathManager.getPlatformLibPath());
     libPaths.add(PathManager.getLibPath());
     libPaths.add(PathManager.getLibPath() + File.separator + "mpsant");
+    libPaths.add(PathManager.getLibPath() + File.separator + "modules");
     libPaths.add(PathManager.getLibExtPath());
     List<String> rv = new ArrayList<String>();
     for (String lp : libPaths) {
