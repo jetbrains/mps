@@ -1040,7 +1040,7 @@
                           <node concept="3cpWs6" id="29M5tb0R_$B" role="3cqZAp">
                             <node concept="2tJFMh" id="29M5tb0RITk" role="3cqZAk">
                               <node concept="ZC_QK" id="29M5tb0RKs8" role="2tJFKM">
-                                <ref role="2aWVGs" to="71xd:~BaseTabbedTool" resolve="BaseTabbedTool" />
+                                <ref role="2aWVGs" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
                               </node>
                             </node>
                           </node>

@@ -6191,7 +6191,7 @@
             <node concept="2OqwBi" id="rl1Z4LccFd" role="33vP2m">
               <node concept="1OG3hB" id="rl1Z4LcbY2" role="2Oq$k0" />
               <node concept="liA8E" id="rl1Z4LcdH5" role="2OqNvi">
-                <ref role="37wK5l" to="71xd:~BaseTabbedTool.getProject()" resolve="getProject" />
+                <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.getProject()" resolve="getProject" />
               </node>
             </node>
           </node>
@@ -6569,7 +6569,7 @@
                   <node concept="2OqwBi" id="1ZhbvpqQrBz" role="37wK5m">
                     <node concept="1OG3hB" id="1ZhbvpqQrB$" role="2Oq$k0" />
                     <node concept="liA8E" id="1ZhbvpqQrB_" role="2OqNvi">
-                      <ref role="37wK5l" to="71xd:~BaseTabbedTool.getProject()" resolve="getProject" />
+                      <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.getProject()" resolve="getProject" />
                     </node>
                   </node>
                   <node concept="3clFb_" id="6m98d5YYbG2" role="jymVt">

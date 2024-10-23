@@ -17270,10 +17270,10 @@
             </node>
             <node concept="2ShNRf" id="HJ19zcoYR3" role="33vP2m">
               <node concept="1pGfFk" id="HJ19zcoYS7" role="2ShVmc">
-                <ref role="37wK5l" to="3hg4:~CellExplorerTab.&lt;init&gt;(jetbrains.mps.ide.tools.BaseTabbedTool,jetbrains.mps.openapi.editor.EditorComponent,java.lang.Runnable)" resolve="CellExplorerTab" />
+                <ref role="37wK5l" to="3hg4:~CellExplorerTab.&lt;init&gt;(jetbrains.mps.ide.tools.BaseTabbedProjectTool,jetbrains.mps.openapi.editor.EditorComponent,java.lang.Runnable)" resolve="CellExplorerTab" />
                 <node concept="10QFUN" id="HJ19zcp0LJ" role="37wK5m">
                   <node concept="3uibUv" id="HJ19zcp1gr" role="10QFUM">
-                    <ref role="3uigEE" to="71xd:~BaseTabbedTool" resolve="BaseTabbedTool" />
+                    <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
                   </node>
                   <node concept="1eOMI4" id="HJ19zcp1kp" role="10QFUP">
                     <node concept="10QFUN" id="HJ19zcp1km" role="1eOMHV">
@@ -17430,10 +17430,10 @@
                 </node>
                 <node concept="2ShNRf" id="6gZ$BJoV47w" role="33vP2m">
                   <node concept="1pGfFk" id="6gZ$BJoV48$" role="2ShVmc">
-                    <ref role="37wK5l" to="bmdi:~EditorMenuTraceTab.&lt;init&gt;(jetbrains.mps.ide.tools.BaseTabbedTool,jetbrains.mps.project.Project)" resolve="EditorMenuTraceTab" />
+                    <ref role="37wK5l" to="bmdi:~EditorMenuTraceTab.&lt;init&gt;(jetbrains.mps.ide.tools.BaseTabbedProjectTool,jetbrains.mps.project.Project)" resolve="EditorMenuTraceTab" />
                     <node concept="10QFUN" id="6gZ$BJoV88A" role="37wK5m">
                       <node concept="3uibUv" id="6gZ$BJoVb0D" role="10QFUM">
-                        <ref role="3uigEE" to="71xd:~BaseTabbedTool" resolve="BaseTabbedTool" />
+                        <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
                       </node>
                       <node concept="1eOMI4" id="6gZ$BJoVbkX" role="10QFUP">
                         <node concept="10QFUN" id="6gZ$BJoVbkU" role="1eOMHV">

@@ -10878,7 +10878,7 @@
         <node concept="3Tm1VV" id="1K93OtlOveT" role="1B3o_S" />
         <node concept="3clFbS" id="1K93OtlOveV" role="3clF47">
           <node concept="XkiVB" id="1K93OtlOveX" role="3cqZAp">
-            <ref role="37wK5l" to="71xd:~BaseTabbedTool.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,java.util.Map,javax.swing.Icon,com.intellij.openapi.wm.ToolWindowAnchor,boolean)" resolve="BaseTabbedTool" />
+            <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,java.util.Map,javax.swing.Icon,com.intellij.openapi.wm.ToolWindowAnchor,boolean)" resolve="BaseTabbedProjectTool" />
             <node concept="37vLTw" id="1K93OtlOvf1" role="37wK5m">
               <ref role="3cqZAo" node="1K93OtlOveY" resolve="project" />
             </node>
@@ -10948,7 +10948,7 @@
           <node concept="3clFbF" id="2DYqLDNhjpE" role="3cqZAp">
             <node concept="2OqwBi" id="2DYqLDNhjpF" role="3clFbG">
               <node concept="liA8E" id="2DYqLDNhjpI" role="2OqNvi">
-                <ref role="37wK5l" to="71xd:~BaseTabbedTool.addTab(javax.swing.JComponent,java.lang.String,javax.swing.Icon,jetbrains.mps.plugins.tool.IComponentDisposer,boolean)" resolve="addTab" />
+                <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.addTab(javax.swing.JComponent,java.lang.String,javax.swing.Icon,jetbrains.mps.plugins.tool.IComponentDisposer,boolean)" resolve="addTab" />
                 <node concept="raruj" id="2DYqLDNhjqi" role="lGtFl" />
                 <node concept="2ShNRf" id="7hpVa1P$w5n" role="37wK5m">
                   <node concept="1pGfFk" id="7hpVa1P$BL7" role="2ShVmc">
@@ -11191,8 +11191,8 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="2DYqLDNhjqj" role="1B3o_S" />
-      <node concept="3uibUv" id="1K93OtlOujv" role="1zkMxy">
-        <ref role="3uigEE" to="71xd:~BaseTabbedTool" resolve="BaseTabbedTool" />
+      <node concept="3uibUv" id="2gwXCKr2_HB" role="1zkMxy">
+        <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
       </node>
     </node>
   </node>
@@ -11209,7 +11209,7 @@
           <node concept="3cpWsn" id="kv6JvdBPRL" role="3cpWs9">
             <property role="TrG5h" value="tool" />
             <node concept="3uibUv" id="1_DBczKq_4E" role="1tU5fm">
-              <ref role="3uigEE" to="71xd:~BaseTabbedTool" resolve="BaseTabbedTool" />
+              <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
             </node>
             <node concept="10Nm6u" id="kv6JvdBPRO" role="33vP2m" />
           </node>
@@ -11220,7 +11220,7 @@
               <ref role="3cqZAo" node="kv6JvdBPRL" resolve="tool" />
             </node>
             <node concept="liA8E" id="2DYqLDNhHsS" role="2OqNvi">
-              <ref role="37wK5l" to="71xd:~BaseTabbedTool.closeTab(javax.swing.JComponent)" resolve="closeTab" />
+              <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.closeTab(javax.swing.JComponent)" resolve="closeTab" />
               <node concept="raruj" id="2DYqLDNhHsT" role="lGtFl" />
               <node concept="2ShNRf" id="5$AmPtLg_Mg" role="37wK5m">
                 <node concept="1pGfFk" id="5$AmPtLgHez" role="2ShVmc">
@@ -11260,7 +11260,7 @@
           <node concept="3cpWsn" id="kv6JvdBPRT" role="3cpWs9">
             <property role="TrG5h" value="tool" />
             <node concept="3uibUv" id="1_DBczKq_kK" role="1tU5fm">
-              <ref role="3uigEE" to="71xd:~BaseTabbedTool" resolve="BaseTabbedTool" />
+              <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
             </node>
             <node concept="10Nm6u" id="kv6JvdBPRV" role="33vP2m" />
           </node>
@@ -11271,7 +11271,7 @@
               <ref role="3cqZAo" node="kv6JvdBPRT" resolve="tool" />
             </node>
             <node concept="liA8E" id="4IVbMrJHM6H" role="2OqNvi">
-              <ref role="37wK5l" to="71xd:~BaseTabbedTool.getSelectedTab()" resolve="getSelectedTab" />
+              <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.getSelectedTab()" resolve="getSelectedTab" />
               <node concept="raruj" id="4IVbMrJI3hO" role="lGtFl" />
             </node>
           </node>
@@ -11879,7 +11879,7 @@
                   <node concept="3cpWs6" id="4LNA5o6dMvz" role="3cqZAp">
                     <node concept="2c44tf" id="4LNA5o6dMv$" role="3cqZAk">
                       <node concept="3uibUv" id="7002P5iV5Gt" role="2c44tc">
-                        <ref role="3uigEE" to="71xd:~BaseTabbedTool" resolve="BaseTabbedTool" />
+                        <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
                       </node>
                     </node>
                   </node>
@@ -11896,7 +11896,7 @@
               <node concept="9aQIb" id="4LNA5o6dMvG" role="9aQIa">
                 <node concept="3clFbS" id="4LNA5o6dMvH" role="9aQI4">
                   <node concept="3cpWs6" id="4LNA5o6dMvI" role="3cqZAp">
-                    <node concept="10Nm6u" id="4LNA5o6dMvK" role="3cqZAk" />
+                    <node concept="10Nm6u" id="2gwXCKr7LKn" role="3cqZAk" />
                   </node>
                 </node>
               </node>
@@ -17800,7 +17800,7 @@
         <node concept="3Tm1VV" id="1K93OtlOw3J" role="1B3o_S" />
         <node concept="3clFbS" id="1K93OtlOw3L" role="3clF47">
           <node concept="XkiVB" id="1K93OtlOw3N" role="3cqZAp">
-            <ref role="37wK5l" to="71xd:~BaseTabbedTool.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,java.util.Map,javax.swing.Icon,com.intellij.openapi.wm.ToolWindowAnchor,boolean)" resolve="BaseTabbedTool" />
+            <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,java.util.Map,javax.swing.Icon,com.intellij.openapi.wm.ToolWindowAnchor,boolean)" resolve="BaseTabbedProjectTool" />
             <node concept="37vLTw" id="1K93OtlOw3R" role="37wK5m">
               <ref role="3cqZAo" node="1K93OtlOw3O" resolve="project" />
             </node>
@@ -17873,7 +17873,7 @@
             <node concept="2OqwBi" id="3ItNAtJeadG" role="3clFbG">
               <node concept="Xjq3P" id="3ItNAtJeabN" role="2Oq$k0" />
               <node concept="liA8E" id="3ItNAtJeams" role="2OqNvi">
-                <ref role="37wK5l" to="71xd:~BaseTabbedTool.pinTab(javax.swing.JComponent)" resolve="pinTab" />
+                <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.pinTab(javax.swing.JComponent)" resolve="pinTab" />
                 <node concept="2ShNRf" id="3ItNAtJeaq7" role="37wK5m">
                   <node concept="1pGfFk" id="3ItNAtJedp$" role="2ShVmc">
                     <ref role="37wK5l" to="dxuu:~JComponent.&lt;init&gt;()" resolve="JComponent" />
@@ -17902,8 +17902,8 @@
         <node concept="3cqZAl" id="3ItNAtJeaaU" role="3clF45" />
       </node>
       <node concept="3Tm1VV" id="3ItNAtJea0j" role="1B3o_S" />
-      <node concept="3uibUv" id="1K93OtlOvL7" role="1zkMxy">
-        <ref role="3uigEE" to="71xd:~BaseTabbedTool" resolve="BaseTabbedTool" />
+      <node concept="3uibUv" id="2gwXCKr2B5F" role="1zkMxy">
+        <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
       </node>
     </node>
   </node>
@@ -17960,7 +17960,7 @@
         </node>
         <node concept="3clFbS" id="6NznWq1ia2y" role="3clF47">
           <node concept="XkiVB" id="6NznWq1ia2z" role="3cqZAp">
-            <ref role="37wK5l" to="71xd:~BaseTabbedTool.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,java.util.Map,javax.swing.Icon,com.intellij.openapi.wm.ToolWindowAnchor,boolean)" resolve="BaseTabbedTool" />
+            <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,java.util.Map,javax.swing.Icon,com.intellij.openapi.wm.ToolWindowAnchor,boolean)" resolve="BaseTabbedProjectTool" />
             <node concept="37vLTw" id="6NznWq1ia2$" role="37wK5m">
               <ref role="3cqZAo" node="6NznWq1ia2k" resolve="project" />
             </node>
@@ -17993,7 +17993,7 @@
             <node concept="2OqwBi" id="4F0ra6ZrTLz" role="3clFbG">
               <node concept="Xjq3P" id="4F0ra6ZrTL$" role="2Oq$k0" />
               <node concept="liA8E" id="4F0ra6ZrTL_" role="2OqNvi">
-                <ref role="37wK5l" to="71xd:~BaseTabbedTool.unpinTab(javax.swing.JComponent)" resolve="unpinTab" />
+                <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.unpinTab(javax.swing.JComponent)" resolve="unpinTab" />
                 <node concept="2ShNRf" id="4F0ra6ZrTLA" role="37wK5m">
                   <node concept="1pGfFk" id="4F0ra6ZrTLB" role="2ShVmc">
                     <ref role="37wK5l" to="dxuu:~JComponent.&lt;init&gt;()" resolve="JComponent" />
@@ -18022,8 +18022,8 @@
         <node concept="3cqZAl" id="4F0ra6ZrTLL" role="3clF45" />
       </node>
       <node concept="3Tm1VV" id="4F0ra6ZrTLM" role="1B3o_S" />
-      <node concept="3uibUv" id="6NznWq1i9M8" role="1zkMxy">
-        <ref role="3uigEE" to="71xd:~BaseTabbedTool" resolve="BaseTabbedTool" />
+      <node concept="3uibUv" id="2gwXCKr2B$N" role="1zkMxy">
+        <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
       </node>
     </node>
   </node>

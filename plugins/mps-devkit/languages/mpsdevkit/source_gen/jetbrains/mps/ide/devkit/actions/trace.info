@@ -3082,8 +3082,8 @@
     <file name="CellExplorerTool_Tool.java">
       <node id="4941742842296525157" at="14,0,15,0" concept="14" trace="ICON" />
       <node id="4941742842296525157" at="15,49,16,79" concept="16" />
-      <node id="823882311142522277" at="18,67,19,146" concept="10" />
-      <node id="823882311142522283" at="19,146,20,23" concept="5" />
+      <node id="823882311142522277" at="18,67,19,153" concept="10" />
+      <node id="823882311142522283" at="19,153,20,23" concept="5" />
       <node id="823882311142522286" at="20,23,21,22" concept="5" />
       <node id="4941742842296525157" at="15,0,18,0" concept="3" trace="CellExplorerTool_Tool#(Lcom/intellij/openapi/project/Project;)V" />
       <node id="4941742842296573524" at="18,0,23,0" concept="9" trace="showCell#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Ljava/lang/Runnable;)V" />
@@ -4052,8 +4052,8 @@
       <node id="7223653387943513864" at="20,48,21,76" concept="16" />
       <node id="7223653387943513864" at="23,37,24,24" concept="5" />
       <node id="7223653387943567608" at="24,24,25,50" concept="5" />
-      <node id="7223653387943559531" at="28,23,29,177" concept="10" />
-      <node id="7223653387943559539" at="29,177,30,40" concept="5" />
+      <node id="7223653387943559531" at="28,23,29,184" concept="10" />
+      <node id="7223653387943559539" at="29,184,30,40" concept="5" />
       <node id="7223653387943559542" at="30,40,31,24" concept="5" />
       <node id="7223653387943559548" at="32,12,33,107" concept="10" />
       <node id="7223653387943559552" at="33,107,34,88" concept="5" />

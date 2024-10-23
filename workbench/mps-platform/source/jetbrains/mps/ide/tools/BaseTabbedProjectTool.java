@@ -32,13 +32,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public abstract class BaseTabbedTool extends BaseTool {
+public abstract class BaseTabbedProjectTool extends BaseTool {
 
   private final List<IDisposableTab> myTabList = new ArrayList<>();
   private boolean myContentRemovedListenerAdded = false;
 
-  protected BaseTabbedTool(Project project, String id, Map<String, KeyStroke> shortcutsByKeymap, Icon icon,
-                           ToolWindowAnchor anchor, boolean canCloseContent) {
+  protected BaseTabbedProjectTool(Project project, String id, Map<String, KeyStroke> shortcutsByKeymap, Icon icon,
+                                  ToolWindowAnchor anchor, boolean canCloseContent) {
     super(project, id, shortcutsByKeymap, icon, anchor, false, canCloseContent);
   }
 
@@ -52,7 +52,7 @@ public abstract class BaseTabbedTool extends BaseTool {
 
   /**
    * Changing the visibility, since the generated subclasses need to call this method,
-   * yet the actual TabbedTool concept instances are not subclasses of {@link BaseTabbedTool}
+   * yet the actual TabbedTool concept instances are not subclasses of {@link BaseTabbedProjectTool}
    * @return Delegates to the BaseTool class
    */
   @Override

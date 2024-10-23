@@ -26,7 +26,7 @@ import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.ui.SimpleToolWindowPanel;
 import com.intellij.ui.ScrollPaneFactory;
-import jetbrains.mps.ide.tools.BaseTabbedTool;
+import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.plugins.tool.IComponentDisposer;
 import jetbrains.mps.project.Project;
@@ -38,12 +38,12 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
 public class EditorMenuTraceTab implements IComponentDisposer<JComponent> {
-  private final BaseTabbedTool myTool;
+  private final BaseTabbedProjectTool myTool;
   private final EditorMenuTraceToolWindowPanel myComponent;
   private final EditorMenuTraceTree myEditorMenuTraceTree;
 
 
-  public EditorMenuTraceTab(@NotNull BaseTabbedTool tool, Project project) {
+  public EditorMenuTraceTab(@NotNull BaseTabbedProjectTool tool, Project project) {
     myTool = tool;
     myEditorMenuTraceTree = new EditorMenuTraceTree(project);
 

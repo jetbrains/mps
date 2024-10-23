@@ -30,7 +30,7 @@ import com.intellij.ui.ScrollPaneFactory;
 import jetbrains.mps.ide.devkit.cellExplorer.cellsTree.CellsTree;
 import jetbrains.mps.ide.devkit.cellExplorer.detailTree.CellDetailTree;
 import jetbrains.mps.ide.icons.GlobalIconManager;
-import jetbrains.mps.ide.tools.BaseTabbedTool;
+import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
 import jetbrains.mps.nodeEditor.EditorComponent.EditorDisposeListener;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -48,7 +48,7 @@ import java.awt.event.ActionListener;
 import java.util.Map;
 
 public class CellExplorerTab implements IComponentDisposer<JComponent> {
-  private final BaseTabbedTool myTool;
+  private final BaseTabbedProjectTool myTool;
   private final EditorComponent myEditorComponent;
   private final Runnable myEditorActivator;
   private final EditorDisposeListener myCloseTabOnEditorDisposeListener = new CloseTabOnEditorDisposeListener();
@@ -56,7 +56,7 @@ public class CellExplorerTab implements IComponentDisposer<JComponent> {
   private final CellsTree myCellsTree;
   private final CellDetailTree myCellDetailTree;
 
-  public CellExplorerTab(@NotNull BaseTabbedTool tool, @NotNull EditorComponent editorComponent, @NotNull Runnable editorActivator) {
+  public CellExplorerTab(@NotNull BaseTabbedProjectTool tool, @NotNull EditorComponent editorComponent, @NotNull Runnable editorActivator) {
     myTool = tool;
     myEditorComponent = editorComponent;
     myEditorActivator = editorActivator;

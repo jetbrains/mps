@@ -382,7 +382,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="5Twlnu9PM65" role="2OqNvi">
-                <ref role="37wK5l" to="71xd:~BaseTabbedTool.getContentManager()" resolve="getContentManager" />
+                <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.getContentManager()" resolve="getContentManager" />
               </node>
             </node>
           </node>
@@ -409,7 +409,7 @@
           <node concept="1eOMI4" id="4GSEy3uNgeR" role="3cqZAk">
             <node concept="10QFUN" id="4GSEy3uNgeS" role="1eOMHV">
               <node concept="3uibUv" id="4GSEy3uNgeT" role="10QFUM">
-                <ref role="3uigEE" to="71xd:~BaseTabbedTool" resolve="BaseTabbedTool" />
+                <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
               </node>
               <node concept="2OqwBi" id="4GSEy3uNgeU" role="10QFUP">
                 <node concept="2WthIp" id="4GSEy3uNgeV" role="2Oq$k0">
@@ -424,7 +424,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="4GSEy3uNgf0" role="3clF45">
-        <ref role="3uigEE" to="71xd:~BaseTabbedTool" resolve="BaseTabbedTool" />
+        <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
       </node>
       <node concept="3Tm6S6" id="4GSEy3uNgeZ" role="1B3o_S" />
     </node>
@@ -760,7 +760,7 @@
                             </node>
                           </node>
                           <node concept="liA8E" id="9fcK6$QroE" role="2OqNvi">
-                            <ref role="37wK5l" to="71xd:~BaseTabbedTool.closeTab(javax.swing.JComponent)" resolve="closeTab" />
+                            <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.closeTab(javax.swing.JComponent)" resolve="closeTab" />
                             <node concept="37vLTw" id="9fcK6$Qu45" role="37wK5m">
                               <ref role="3cqZAo" node="9fcK6$QdBc" resolve="tab" />
                             </node>
@@ -881,7 +881,7 @@
               </node>
             </node>
             <node concept="liA8E" id="4GSEy3uNKhT" role="2OqNvi">
-              <ref role="37wK5l" to="71xd:~BaseTabbedTool.addTab(javax.swing.JComponent,java.lang.String,javax.swing.Icon,jetbrains.mps.plugins.tool.IComponentDisposer,boolean)" resolve="addTab" />
+              <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.addTab(javax.swing.JComponent,java.lang.String,javax.swing.Icon,jetbrains.mps.plugins.tool.IComponentDisposer,boolean)" resolve="addTab" />
               <node concept="37vLTw" id="4GSEy3uNMnY" role="37wK5m">
                 <ref role="3cqZAo" node="5VzHAncaQTU" resolve="tab" />
               </node>

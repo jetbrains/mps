@@ -214,7 +214,7 @@
                 <node concept="2OqwBi" id="3iJf4n4Wyu_" role="37wK5m">
                   <node concept="1OG3hB" id="3iJf4n4Wy8z" role="2Oq$k0" />
                   <node concept="liA8E" id="3iJf4n4WyJV" role="2OqNvi">
-                    <ref role="37wK5l" to="71xd:~BaseTabbedTool.getProject()" resolve="getProject" />
+                    <ref role="37wK5l" to="71xd:~BaseTabbedProjectTool.getProject()" resolve="getProject" />
                   </node>
                 </node>
               </node>

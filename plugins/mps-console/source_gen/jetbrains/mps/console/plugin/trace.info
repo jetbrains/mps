@@ -32,7 +32,7 @@
       <node id="2760194083158948557" at="59,48,60,64" concept="3" />
       <node id="6800529409231501850" at="63,31,64,97" concept="3" />
       <node id="2960931074097765075" at="64,97,65,37" concept="3" />
-      <node id="5420269209694045110" at="67,38,68,59" concept="9" />
+      <node id="5420269209694045110" at="67,45,68,66" concept="9" />
       <node id="2960931074102754936" at="71,78,72,98" concept="3" />
       <node id="6432254542208963396" at="73,5,74,118" concept="8" />
       <node id="6432254542208970659" at="75,30,76,50" concept="3" />
@@ -102,7 +102,7 @@
       <node id="2960931074096488202" at="237,0,238,0" concept="11" trace="BaseConcept$gP" />
       <node id="6837509207611940148" at="112,10,114,5" concept="0" />
       <node id="2960931074096488202" at="46,0,49,0" concept="1" trace="ConsoleTool_Tool#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="5420269209694117436" at="67,0,70,0" concept="7" trace="getMyself#()Ljetbrains/mps/ide/tools/BaseTabbedTool;" />
+      <node id="5420269209694117436" at="67,0,70,0" concept="7" trace="getMyself#()Ljetbrains/mps/ide/tools/BaseTabbedProjectTool;" />
       <node id="3260982758886265722" at="70,26,73,5" concept="14" />
       <node id="6432254542208965961" at="74,118,77,5" concept="6" />
       <node id="3127002781009593592" at="80,45,83,5" concept="6" />
@@ -155,7 +155,7 @@
       <node id="2960931074097165943" at="85,0,125,0" concept="7" trace="addConsoleTab#(Ljetbrains/mps/console/actions/TabState;Ljavax/swing/Icon;Z)Ljetbrains/mps/console/tool/BaseConsoleTab;" />
       <scope id="2960931074096488202" at="46,44,47,193" />
       <scope id="2960931074096488202" at="55,44,56,16" />
-      <scope id="5420269209694045109" at="67,38,68,59" />
+      <scope id="5420269209694045109" at="67,45,68,66" />
       <scope id="3260982758886265724" at="71,78,72,98" />
       <scope id="6432254542208965963" at="75,30,76,50" />
       <scope id="3127002781009593594" at="81,57,82,116" />
