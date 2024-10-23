@@ -380,7 +380,16 @@ public final class CreateProjectWizard extends DialogWrapper {
     if (myProjectName.getText().isEmpty()) {
       getOKAction().setEnabled(false);
       setErrorText("Project name cannot be empty");
-
+      return;
+    }
+    if (myProjectPath.getPath().isEmpty()) {
+      getOKAction().setEnabled(false);
+      setErrorText("Project location must not be empty");
+      return;
+    }
+    if (!new File(myProjectPath.getPath()).isAbsolute()) {
+      getOKAction().setEnabled(false);
+      setErrorText("Project location must be an absolute path");
       return;
     }
 
