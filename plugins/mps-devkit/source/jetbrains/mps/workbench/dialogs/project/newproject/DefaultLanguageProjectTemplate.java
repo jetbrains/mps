@@ -23,6 +23,8 @@ import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.modules.LanguageAndSolutionsProducer;
+import jetbrains.mps.project.modules.NewModuleCheck;
+import jetbrains.mps.util.IStatus;
 import jetbrains.mps.workbench.DocumentationHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -126,22 +128,24 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   @Nullable
   @Override
   public String checkSettings() {
-    String checkResult = NewModuleUtil.check(null, MPSExtentions.DOT_LANGUAGE, mySettings.getModuleName(), mySettings.getModuleLocation().getAbsolutePath());
-    if (checkResult != null && !checkResult.isEmpty()) {
-      return checkResult;
+    final IStatus s = new NewModuleCheck().forLanguage().withName(mySettings.getModuleName()).withHome(mySettings.getModuleLocation()).checkAll();
+    if (s.isError()) {
+      return s.getMessage();
     }
     if (myRuntimeSolution.isSelected()) {
-      checkResult = NewModuleUtil.check(null, MPSExtentions.DOT_SOLUTION, mySettings.getModuleName() + ".runtime", mySettings.getModuleLocation().getAbsolutePath() + ".runtime");
-      if (checkResult != null && !checkResult.isEmpty()) {
-        return checkResult;
+      final File moduleLocation = new File(mySettings.getModuleLocation().getAbsolutePath() + ".runtime");
+      final IStatus status = new NewModuleCheck().forSolution().withName(mySettings.getModuleName() + ".runtime").withHome(moduleLocation).checkAll();
+      if (status.isError()) {
+        return status.getMessage();
       }
     }
     if (mySandboxSolution.isSelected()) {
-      checkResult = NewModuleUtil.check(null, MPSExtentions.DOT_SOLUTION, mySettings.getModuleName() + ".sandbox", mySettings.getModuleLocation().getAbsolutePath() + ".sandbox");
-      if (checkResult != null && !checkResult.isEmpty()) {
-        return checkResult;
+      final File moduleLocation = new File(mySettings.getModuleLocation().getAbsolutePath() + ".sandbox");
+      final IStatus status = new NewModuleCheck().forSolution().withName(mySettings.getModuleName() + ".sandbox").withHome(moduleLocation).checkAll();
+      if (status.isError()) {
+        return status.getMessage();
       }
     }
-    return checkResult;
+    return s.getMessage();
   }
 }

@@ -6183,6 +6183,43 @@
           </node>
         </node>
         <node concept="3clFbH" id="ZAhE5qZDXR" role="3cqZAp" />
+        <node concept="3clFbJ" id="50GnWB7LG1I" role="3cqZAp">
+          <node concept="3clFbS" id="50GnWB7LG1J" role="3clFbx">
+            <node concept="3cpWs6" id="50GnWB7LG1K" role="3cqZAp">
+              <node concept="2ShNRf" id="50GnWB7LG1L" role="3cqZAk">
+                <node concept="1pGfFk" id="50GnWB7LG1M" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="18ew:~Status$ERROR.&lt;init&gt;(java.lang.String)" resolve="Status.ERROR" />
+                  <node concept="2OqwBi" id="50GnWB7LG1N" role="37wK5m">
+                    <node concept="Xl_RD" id="50GnWB7LG1O" role="2Oq$k0">
+                      <property role="Xl_RC" value="The path %s must be absolute" />
+                    </node>
+                    <node concept="2cAKMz" id="50GnWB7LG1P" role="2OqNvi">
+                      <node concept="2OqwBi" id="50GnWB7LG1Q" role="2cAKU6">
+                        <node concept="37vLTw" id="50GnWB7LG1R" role="2Oq$k0">
+                          <ref role="3cqZAo" node="ZAhE5qWa47" resolve="myModuleDir" />
+                        </node>
+                        <node concept="liA8E" id="50GnWB7LG1S" role="2OqNvi">
+                          <ref role="37wK5l" to="guwi:~File.getPath()" resolve="getPath" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3fqX7Q" id="50GnWB7LJTs" role="3clFbw">
+            <node concept="2OqwBi" id="50GnWB7LJTu" role="3fr31v">
+              <node concept="37vLTw" id="50GnWB7LJTv" role="2Oq$k0">
+                <ref role="3cqZAo" node="ZAhE5qWa47" resolve="myModuleDir" />
+              </node>
+              <node concept="liA8E" id="50GnWB7LJTw" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~File.isAbsolute()" resolve="isAbsolute" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="1DSFK5mSFZz" role="3cqZAp">
           <node concept="3cpWsn" id="1DSFK5mSFZ$" role="3cpWs9">
             <property role="TrG5h" value="fs" />

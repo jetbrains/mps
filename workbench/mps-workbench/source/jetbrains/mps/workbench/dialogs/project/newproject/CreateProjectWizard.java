@@ -403,7 +403,7 @@ public final class CreateProjectWizard extends DialogWrapper {
     // Extension point for project template to check settings on template choose
     if (myCurrentTemplateItem != null) {
       final String errorText = myCurrentTemplateItem.myTemplate.checkSettings();
-      getOKAction().setEnabled(errorText == null);
+      getOKAction().setEnabled(errorText == null || errorText.trim().length()==0);
       setErrorText(errorText);
 
       return;

@@ -20,7 +20,9 @@ import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
 import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.project.modules.NewModuleCheck;
 import jetbrains.mps.project.modules.SolutionProducer;
+import jetbrains.mps.util.IStatus;
 import jetbrains.mps.workbench.DocumentationHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -82,6 +84,7 @@ public class DefaultSolutionProjectTemplate implements SolutionProjectTemplate {
   @Nullable
   @Override
   public String checkSettings() {
-    return NewModuleUtil.check(null, MPSExtentions.DOT_SOLUTION, myNewSolutionSettings.getModuleName(), myNewSolutionSettings.getModuleLocation().getAbsolutePath());
+    final IStatus s = new NewModuleCheck().forSolution().withName(myNewSolutionSettings.getModuleName()).withHome(myNewSolutionSettings.getModuleLocation()).checkAll();
+    return s.getMessage();
   }
 }

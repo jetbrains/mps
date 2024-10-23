@@ -92,6 +92,9 @@ public class NewModuleCheck {
       return new Status.ERROR("Namespace should be specified");
     }
 
+    if (!(myModuleDir.isAbsolute())) {
+      return new Status.ERROR(String.format("The path %s must be absolute", myModuleDir.getPath()));
+    }
     LocalFileSystem fs = LocalFileSystem.getInstance();
     File fn = new File(myModuleDir, myName + myExt);
     VirtualFile moduleF = fs.refreshAndFindFileByIoFile(fn);
