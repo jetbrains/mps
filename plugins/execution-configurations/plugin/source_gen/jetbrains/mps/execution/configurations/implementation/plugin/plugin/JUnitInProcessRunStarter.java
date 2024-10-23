@@ -36,7 +36,6 @@ import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecuto
 import com.intellij.util.WaitFor;
 import org.jetbrains.annotations.Nullable;
 import java.io.OutputStream;
-import com.intellij.execution.process.ProcessOutputTypes;
 
 public class JUnitInProcessRunStarter implements JUnitProcessStarter {
   private static final Logger LOG = Logger.getLogger(JUnitInProcessRunStarter.class);
@@ -44,9 +43,9 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
   private final TestExecutor myTestsExecutor;
   private final FakeProcess myFakeProcess = new FakeProcess();
   private final TestInProcessRunState myTestRunState;
-
+  private final JUnitTests_Configuration myRun_configuration;
   public JUnitInProcessRunStarter(@NotNull final Project mpsProject, @NotNull JUnitTests_Configuration runConfiguration, @NotNull Iterable<ITestNodeWrapper> testNodeWrappers) {
-
+    myRun_configuration = runConfiguration;
     List<ITestNodeWrapper> legacyTests = Sequence.fromIterable(testNodeWrappers).where((it) -> it.useCompatibilityMode()).toList();
     List<ITestNodeWrapper> jupiterTests = Sequence.fromIterable(testNodeWrappers).where((it) -> !(it.useCompatibilityMode())).toList();
     if (ListSequence.fromList(legacyTests).isNotEmpty() && ListSequence.fromList(jupiterTests).isNotEmpty()) {
@@ -220,7 +219,10 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
     public void startNotify() {
       super.startNotify();
       String terminateMessage = "Only one test instance is allowed to run in process.\n" + "To run in the outer process change the corresponding property in the junit run configuration.\n" + "Process finished with exit code " + -1 + ".\n";
-      notifyTextAvailable(terminateMessage, ProcessOutputTypes.STDERR);
+      if (LOG.isWarningLevel()) {
+        LOG.warning(terminateMessage);
+      }
+      ExecutionUtil.handleExecutionError(myTestRunState.getProject(), ToolWindowId.RUN, myRun_configuration.getName(), new IllegalStateException("Only one test instance is allowed to run in process"), terminateMessage, null);
       this.notifyProcessTerminated(-1);
     }
   }

@@ -117,6 +117,7 @@
     <import index="4o98" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.core.platform(MPS.Core/)" />
     <import index="79ha" ref="r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)" />
     <import index="uemk" ref="r:e59b0550-8a55-4ba7-959c-684743b5ee3c(jetbrains.mps.lang.test.junit5)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="v23q" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi(MPS.IDEA/)" implicit="true" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
@@ -15739,7 +15740,14 @@
       </node>
       <node concept="3Tm6S6" id="78MxLJAHuiZ" role="1B3o_S" />
     </node>
-    <node concept="2tJIrI" id="5m2bsnoZBKo" role="jymVt" />
+    <node concept="312cEg" id="7iI$oq4yH8Z" role="jymVt">
+      <property role="TrG5h" value="myRun_configuration" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="7iI$oq4yH90" role="1B3o_S" />
+      <node concept="3nJ2Q3" id="7iI$oq4yJxX" role="1tU5fm">
+        <ref role="yHkHG" node="5gyVhZ187Zu" resolve="JUnit Tests" />
+      </node>
+    </node>
     <node concept="3clFbW" id="5iYlssmVFgA" role="jymVt">
       <node concept="37vLTG" id="2qFJdjDAnwF" role="3clF46">
         <property role="TrG5h" value="mpsProject" />
@@ -15762,7 +15770,16 @@
       </node>
       <node concept="3cqZAl" id="5iYlssmVFgB" role="3clF45" />
       <node concept="3clFbS" id="5iYlssmVFgD" role="3clF47">
-        <node concept="3clFbH" id="4Tt$OebmX$4" role="3cqZAp" />
+        <node concept="3clFbF" id="7iI$oq4yLoA" role="3cqZAp">
+          <node concept="37vLTI" id="7iI$oq4yORM" role="3clFbG">
+            <node concept="37vLTw" id="7iI$oq4yQXU" role="37vLTx">
+              <ref role="3cqZAo" node="5kPsWkS8gVB" resolve="runConfiguration" />
+            </node>
+            <node concept="37vLTw" id="7iI$oq4yLo$" role="37vLTJ">
+              <ref role="3cqZAo" node="7iI$oq4yH8Z" resolve="myRun_configuration" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="4Tt$Oebn8NT" role="3cqZAp">
           <node concept="3cpWsn" id="4Tt$Oebn8NU" role="3cpWs9">
             <property role="TrG5h" value="legacyTests" />
@@ -17811,16 +17828,49 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="31Rnc32gh6u" role="3cqZAp">
-            <node concept="1rXfSq" id="31Rnc32gh6s" role="3clFbG">
-              <ref role="37wK5l" to="uu3z:~ProcessHandler.notifyTextAvailable(java.lang.String,com.intellij.openapi.util.Key)" resolve="notifyTextAvailable" />
-              <node concept="37vLTw" id="31Rnc32gimf" role="37wK5m">
+          <node concept="RRSsy" id="7iI$oq4GIe5" role="3cqZAp">
+            <property role="RRSoG" value="gZ5fksE/warn" />
+            <node concept="37vLTw" id="7iI$oq4GMNI" role="RRSoy">
+              <ref role="3cqZAo" node="KJkipGwl6G" resolve="terminateMessage" />
+            </node>
+          </node>
+          <node concept="3clFbF" id="7iI$oq4xX6G" role="3cqZAp">
+            <node concept="2YIFZM" id="7iI$oq4xZmS" role="3clFbG">
+              <ref role="37wK5l" to="fhz7:~ExecutionUtil.handleExecutionError(com.intellij.openapi.project.Project,java.lang.String,java.lang.String,java.lang.Throwable,java.lang.String,javax.swing.event.HyperlinkListener)" resolve="handleExecutionError" />
+              <ref role="1Pybhc" to="fhz7:~ExecutionUtil" resolve="ExecutionUtil" />
+              <node concept="2OqwBi" id="7iI$oq4yYkt" role="37wK5m">
+                <node concept="37vLTw" id="7iI$oq4yVbs" role="2Oq$k0">
+                  <ref role="3cqZAo" node="78MxLJAHuiW" resolve="myTestRunState" />
+                </node>
+                <node concept="liA8E" id="7iI$oq4zchW" role="2OqNvi">
+                  <ref role="37wK5l" node="7iI$oq4y_sG" resolve="getProject" />
+                </node>
+              </node>
+              <node concept="10M0yZ" id="7iI$oq4zo1m" role="37wK5m">
+                <ref role="3cqZAo" to="jkny:~ToolWindowId.RUN" resolve="RUN" />
+                <ref role="1PxDUh" to="jkny:~ToolWindowId" resolve="ToolWindowId" />
+              </node>
+              <node concept="2OqwBi" id="7iI$oq4z_gx" role="37wK5m">
+                <node concept="37vLTw" id="7iI$oq4zx9d" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7iI$oq4yH8Z" resolve="myRun_configuration" />
+                </node>
+                <node concept="liA8E" id="7iI$oq4zH8q" role="2OqNvi">
+                  <ref role="37wK5l" to="dj99:~RunConfigurationBase.getName()" resolve="getName" />
+                </node>
+              </node>
+              <node concept="2ShNRf" id="7iI$oq4zNqm" role="37wK5m">
+                <node concept="1pGfFk" id="7iI$oq4$QdO" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="wyt6:~IllegalStateException.&lt;init&gt;(java.lang.String)" resolve="IllegalStateException" />
+                  <node concept="Xl_RD" id="7iI$oq4_0By" role="37wK5m">
+                    <property role="Xl_RC" value="Only one test instance is allowed to run in process" />
+                  </node>
+                </node>
+              </node>
+              <node concept="37vLTw" id="7iI$oq4$X_w" role="37wK5m">
                 <ref role="3cqZAo" node="KJkipGwl6G" resolve="terminateMessage" />
               </node>
-              <node concept="10M0yZ" id="2AL$R6N8duC" role="37wK5m">
-                <ref role="3cqZAo" to="uu3z:~ProcessOutputTypes.STDERR" resolve="STDERR" />
-                <ref role="1PxDUh" to="uu3z:~ProcessOutputTypes" resolve="ProcessOutputTypes" />
-              </node>
+              <node concept="10Nm6u" id="7iI$oq4FA_v" role="37wK5m" />
             </node>
           </node>
           <node concept="3clFbF" id="3UUW6Nin_EQ" role="3cqZAp">
@@ -18404,6 +18454,14 @@
       </node>
       <node concept="3Tm6S6" id="1$FrpHy4udB" role="1B3o_S" />
     </node>
+    <node concept="312cEg" id="7iI$oq4yg2Q" role="jymVt">
+      <property role="TrG5h" value="myIdeaProject" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="7iI$oq4yg2R" role="1B3o_S" />
+      <node concept="3uibUv" id="7iI$oq4yg2T" role="1tU5fm">
+        <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="78MxLJAHnrf" role="jymVt" />
     <node concept="2YIFZL" id="78MxLJAHsh8" role="jymVt">
       <property role="DiZV1" value="false" />
@@ -18591,6 +18649,9 @@
           <node concept="2ShNRf" id="6$65u8qbCtA" role="3cqZAk">
             <node concept="1pGfFk" id="6$65u8qcqfD" role="2ShVmc">
               <ref role="37wK5l" node="1$FrpHy4udC" resolve="TestInProcessRunState" />
+              <node concept="37vLTw" id="7iI$oq4yaWu" role="37wK5m">
+                <ref role="3cqZAo" node="6$65u8qbaCb" resolve="ideaProject" />
+              </node>
               <node concept="37vLTw" id="6$65u8qcqOx" role="37wK5m">
                 <ref role="3cqZAo" node="6$65u8qbwlm" resolve="knownState" />
               </node>
@@ -18607,6 +18668,12 @@
     <node concept="3clFbW" id="1$FrpHy4udC" role="jymVt">
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
+      <node concept="37vLTG" id="7iI$oq4ybNG" role="3clF46">
+        <property role="TrG5h" value="ideaProject" />
+        <node concept="3uibUv" id="7iI$oq4yeVH" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+        </node>
+      </node>
       <node concept="37vLTG" id="6$65u8qcqXF" role="3clF46">
         <property role="TrG5h" value="value" />
         <node concept="3uibUv" id="6$65u8qcrc3" role="1tU5fm">
@@ -18618,6 +18685,16 @@
       </node>
       <node concept="3cqZAl" id="1$FrpHy4udD" role="3clF45" />
       <node concept="3clFbS" id="1$FrpHy4udE" role="3clF47">
+        <node concept="3clFbF" id="7iI$oq4yg2U" role="3cqZAp">
+          <node concept="37vLTI" id="7iI$oq4yg2W" role="3clFbG">
+            <node concept="37vLTw" id="7iI$oq4yg2Z" role="37vLTJ">
+              <ref role="3cqZAo" node="7iI$oq4yg2Q" resolve="myIdeaProject" />
+            </node>
+            <node concept="37vLTw" id="7iI$oq4yg30" role="37vLTx">
+              <ref role="3cqZAo" node="7iI$oq4ybNG" resolve="ideaProject" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="1$FrpHy4udF" role="3cqZAp">
           <node concept="37vLTI" id="1$FrpHy4udG" role="3clFbG">
             <node concept="37vLTw" id="1$FrpHy4udH" role="37vLTJ">
@@ -18683,6 +18760,21 @@
       </node>
       <node concept="3Tm1VV" id="1$FrpHy4udZ" role="1B3o_S" />
       <node concept="3cqZAl" id="1$FrpHy4ue0" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="7iI$oq4yi9h" role="jymVt" />
+    <node concept="3clFb_" id="7iI$oq4y_sG" role="jymVt">
+      <property role="TrG5h" value="getProject" />
+      <node concept="3uibUv" id="7iI$oq4z4nY" role="3clF45">
+        <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+      </node>
+      <node concept="3Tm1VV" id="7iI$oq4y_sJ" role="1B3o_S" />
+      <node concept="3clFbS" id="7iI$oq4y_sK" role="3clF47">
+        <node concept="3clFbF" id="7iI$oq4zaTH" role="3cqZAp">
+          <node concept="37vLTw" id="7iI$oq4zaTG" role="3clFbG">
+            <ref role="3cqZAo" node="7iI$oq4yg2Q" resolve="myIdeaProject" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="5uCAHWJVevW" role="jymVt" />
     <node concept="3clFb_" id="1$FrpHy4ue1" role="jymVt">
