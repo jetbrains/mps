@@ -10,6 +10,7 @@ import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
 import java.util.List;
 import java.io.File;
 import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
+import jetbrains.mps.lang.test.junit5.tcutil.JUnit5TestExecutionListener;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.classloading.ClassLoaderManager;
@@ -57,6 +58,16 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
       config = config.withSystemProperty(SystemProperties.PROJECT_PATH, projectDirectories.get(0).getAbsolutePath());
     }
     return config;
+  }
+
+  @Override
+  protected JUnit5TestExecutionListener createTestExecutionListener() {
+    return new JUnit5TestExecutionListener() {
+      @Override
+      protected void flushSystemStreams() {
+        // NOP: avoid attempting to flush stdout/stderr in order not to deadlock; MPS-37852
+      }
+    };
   }
 
   private List<Class<?>> collectTestClasses(final Project project) {

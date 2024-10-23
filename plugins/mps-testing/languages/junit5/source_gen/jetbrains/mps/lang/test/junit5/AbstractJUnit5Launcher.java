@@ -12,11 +12,11 @@ import org.junit.platform.commons.PreconditionViolationException;
 import org.junit.platform.launcher.core.LauncherConfig;
 import org.junit.platform.launcher.Launcher;
 import org.junit.platform.launcher.core.LauncherFactory;
-import jetbrains.mps.lang.test.junit5.tcutil.JUnit5TestExecutionListener;
 import java.io.File;
 import org.junit.platform.reporting.open.xml.OpenTestReportGeneratingListener;
 import org.junit.platform.reporting.legacy.xml.LegacyXmlReportGeneratingListener;
 import java.io.PrintWriter;
+import jetbrains.mps.lang.test.junit5.tcutil.JUnit5TestExecutionListener;
 import org.junit.platform.launcher.LauncherDiscoveryRequest;
 import java.util.List;
 import org.junit.platform.engine.DiscoverySelector;
@@ -70,7 +70,7 @@ public abstract class AbstractJUnit5Launcher {
 
     Launcher launcher = LauncherFactory.openSession(launcherConfig).getLauncher();
     if (isRunningOnTeamCity()) {
-      launcher.registerTestExecutionListeners(new JUnit5TestExecutionListener());
+      launcher.registerTestExecutionListeners(createTestExecutionListener());
     }
     File testReportsDir = getTestReportsDir();
     if (testReportsDir != null) {
@@ -85,6 +85,10 @@ public abstract class AbstractJUnit5Launcher {
       launcher.registerTestExecutionListeners(executionListener);
     }
     launcher.execute(buildRequest(testClasses));
+  }
+
+  protected JUnit5TestExecutionListener createTestExecutionListener() {
+    return new JUnit5TestExecutionListener();
   }
 
   private LauncherDiscoveryRequest buildRequest(final Collection<Class<?>> testClasses) {

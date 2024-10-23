@@ -25,6 +25,7 @@ import jetbrains.mps.baseLanguage.unitTest.platform.TestSessionConfig;
 import jetbrains.mps.baseLanguage.unitTest.platform.SystemProperties;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestSession;
 import jetbrains.mps.baseLanguage.unitTest.platform.TestPlatform;
+import jetbrains.mps.baselanguage.unitTest.execution.launcher.DefaultTestExecutionListener;
 import com.intellij.execution.process.ProcessHandler;
 import java.util.concurrent.Future;
 import jetbrains.mps.baselanguage.unitTest.execution.launcher.AbstractJUnitTestMixin;
@@ -66,6 +67,11 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
           } finally {
             TestPlatform.getInstance().closeSession(testSession);
           }
+        }
+
+        @Override
+        protected DefaultTestExecutionListener createTestExecutionListener() {
+          return super.createTestExecutionListener();
         }
       };
     }
