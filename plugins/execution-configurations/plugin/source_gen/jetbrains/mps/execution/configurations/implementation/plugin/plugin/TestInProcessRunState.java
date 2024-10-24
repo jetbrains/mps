@@ -72,6 +72,10 @@ public final class TestInProcessRunState implements Comparable<TestInProcessRunS
     return myValue.get().compareTo(another.myValue.get());
   }
 
+  public boolean isIdle() {
+    return myValue.get() == RunStateEnum.IDLE;
+  }
+
   public boolean isInitialized() {
     return myValue.get() == RunStateEnum.INITIALIZED;
   }
