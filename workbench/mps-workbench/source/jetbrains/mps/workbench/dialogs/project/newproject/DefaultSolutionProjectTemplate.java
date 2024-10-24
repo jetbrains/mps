@@ -17,7 +17,6 @@ package jetbrains.mps.workbench.dialogs.project.newproject;
 
 import com.intellij.openapi.startup.StartupManager;
 import jetbrains.mps.icons.MPSIcons.Nodes;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.modules.NewModuleCheck;
