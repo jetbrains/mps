@@ -87,13 +87,7 @@ public abstract class ModuleInProjectTest implements EnvironmentAware {
   void refreshProjectRecursively() {
     IFile projectFile = myProject.getFileSystem().getFile(getProjectRoot());
     projectFile.refresh(new DefaultCachingContext(true, true));
-    // TODO: Needs kotlin support in TC runner
-    //StoreReloadManager.getInstance().reloadChangedStorageFiles();
-    ApplicationManager.getApplication().invokeAndWait(() -> {
-      // needed to trigger refresh on the project folder components in test environment
-      // TODO: 223FIX
-      //StoreReloadManager.getInstance().flushChangedProjectFileAlarm();
-    }, ModalityState.NON_MODAL);
+    TestUtil.reloadFiles(myProject.getProject());
   }
 
   @NotNull
