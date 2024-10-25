@@ -14,7 +14,13 @@ import java.io.IOError;
 import org.jetbrains.annotations.Nullable;
 import java.io.OutputStream;
 import com.intellij.openapi.util.Key;
+import java.util.concurrent.LinkedTransferQueue;
 import java.io.Reader;
+import com.intellij.util.ConcurrencyUtil;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ExecutionException;
+import com.intellij.openapi.diagnostic.ControlFlowException;
+import java.util.concurrent.TimeoutException;
 
 public abstract class FakeProcessHandler extends BaseOSProcessHandler {
   private static final Logger LOG = Logger.getLogger(FakeProcessHandler.class);
@@ -96,6 +102,9 @@ public abstract class FakeProcessHandler extends BaseOSProcessHandler {
   private class BlockingReader extends BaseOutputReader {
     private final Key<?> myProcessOutputType;
     private final String myPresentableName;
+    private Future<?> myFinishedPumpingFuture;
+    private LinkedTransferQueue<String> myTextQueue = new LinkedTransferQueue<>();
+    private final Object myPumpSleepMonitor = new Object();
 
     public BlockingReader(Reader reader, Key<?> outputType, @NotNull String presentableName) {
       super(reader, BaseOutputReader.Options.BLOCKING);
@@ -105,6 +114,47 @@ public abstract class FakeProcessHandler extends BaseOSProcessHandler {
 
     public void startReading() {
       start(myPresentableName);
+      if (myFinishedPumpingFuture == null) {
+        this.myFinishedPumpingFuture = executeOnPooledThread(() -> {
+          ConcurrencyUtil.runUnderThreadName("FakeProcessHandler: " + myPresentableName, BlockingReader.this::doRunPumping);
+
+        });
+      }
+    }
+
+    private void doRunPumping() {
+      try {
+        boolean shouldStop = false;
+        while (true) {
+          if (shouldStop) {
+            break;
+          }
+          pumpText(10, TimeUnit.MILLISECONDS);
+          shouldStop = isStopped;
+        }
+      } catch (Exception e) {
+        if (LOG.isErrorLevel()) {
+          LOG.error("", e);
+        }
+      } finally {
+        // ???
+      }
+    }
+
+    private void pumpText(int time, TimeUnit unit) throws InterruptedException {
+      try {
+        while (true) {
+          String text = myTextQueue.poll(time, unit);
+          if (text == null) {
+            break;
+          }
+          notifyTextAvailable(text, myProcessOutputType);
+        }
+      } catch (InterruptedException ex) {
+        if (LOG.isDebugLevel()) {
+          LOG.debug("", ex);
+        }
+      }
     }
 
     @Override
@@ -158,7 +208,35 @@ public abstract class FakeProcessHandler extends BaseOSProcessHandler {
 
     @Override
     protected void onTextAvailable(@NotNull String text) {
-      notifyTextAvailable(text, myProcessOutputType);
+      myTextQueue.offer(text);
+    }
+
+    @Override
+    public void waitFor() throws InterruptedException {
+      super.waitFor();
+      try {
+        myFinishedPumpingFuture.get();
+      } catch (ExecutionException e) {
+        if (!(e instanceof ControlFlowException)) {
+          if (LOG.isErrorLevel()) {
+            LOG.error("", e);
+          }
+        }
+      }
+    }
+
+    @Override
+    public void waitFor(long timeout, TimeUnit unit) throws InterruptedException, TimeoutException {
+      super.waitFor(timeout, unit);
+      try {
+        myFinishedPumpingFuture.get(timeout, unit);
+      } catch (ExecutionException e) {
+        if (!(e instanceof ControlFlowException)) {
+          if (LOG.isErrorLevel()) {
+            LOG.error("", e);
+          }
+        }
+      }
     }
   }
 }
