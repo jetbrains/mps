@@ -7,11 +7,16 @@ import jetbrains.mps.internal.collections.runtime.ILinkedList;
 import java.util.Queue;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import jetbrains.mps.internal.collections.runtime.IListSequence;
 import jetbrains.mps.internal.collections.runtime.ISequence;
 
 public class NullLinkedListSequence<T> extends NullListSequence<T> implements ILinkedListSequence<T>, ILinkedList<T> {
   private static final NullLinkedListSequence<Object> INSTANCE = new NullLinkedListSequence<Object>();
   protected NullLinkedListSequence() {
+  }
+  @Override
+  public NullLinkedListSequence<T> reversed() {
+    return this;
   }
   @Override
   public void addFirst(T t) {
