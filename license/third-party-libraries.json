@@ -913,7 +913,7 @@
 }, {
   "name" : "netty-buffer",
   "url" : "https://netty.io",
-  "version" : "4.2.0.Alpha5",
+  "version" : "4.2.0.Alpha4",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/netty/netty/blob/4.1/LICENSE.txt"
 }, {
@@ -925,13 +925,13 @@
 }, {
   "name" : "netty-codec-http",
   "url" : "https://netty.io",
-  "version" : "4.2.0.Alpha5",
+  "version" : "4.2.0.Alpha4",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/netty/netty/blob/4.1/LICENSE.txt"
 }, {
   "name" : "netty-codec-protobuf",
   "url" : "https://netty.io",
-  "version" : "4.2.0.Alpha5",
+  "version" : "4.2.0.Alpha4",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/netty/netty/blob/4.1/LICENSE.txt"
 }, {
