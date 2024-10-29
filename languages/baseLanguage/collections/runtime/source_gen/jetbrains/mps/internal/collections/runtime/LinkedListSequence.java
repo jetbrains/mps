@@ -23,7 +23,7 @@ public class LinkedListSequence<T> extends AbstractListSequence<T> implements IL
   }
   @Override
   public LinkedListSequence<T> reversed() {
-    return this.reversed();
+    return this.reversedList();
   }
   @Override
   public void addFirst(T t) {
