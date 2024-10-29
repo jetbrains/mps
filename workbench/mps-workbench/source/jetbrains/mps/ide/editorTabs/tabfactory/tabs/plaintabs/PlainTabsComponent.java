@@ -128,7 +128,9 @@ public class PlainTabsComponent extends BaseTabsComponent<PlainEditorTab> {
     if (myLastEmptyTab != null) {
       return myLastEmptyTab;
     }
-    final int i = myTabs.getIndexOf(myTabs.getSelectedInfo());
+    TabInfo selectedInfo = myTabs.getSelectedInfo();
+    if (selectedInfo == null) return null;
+    final int i = myTabs.getIndexOf(selectedInfo);
     return i == -1 ? null : myRealTabs.get(i).getTab();
   }
 
