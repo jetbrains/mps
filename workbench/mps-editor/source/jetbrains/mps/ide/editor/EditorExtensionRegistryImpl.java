@@ -101,13 +101,23 @@ public class EditorExtensionRegistryImpl implements EditorExtensionRegistry {
 
   private void installExtensions(EditorComponent editorComponent, Iterable<EditorExtension> applicableExtensions) {
     for (EditorExtension extension : applicableExtensions) {
-      extension.install(editorComponent);
+      try {
+        extension.install(editorComponent);
+      } catch (Throwable e) {
+        LOG.error("Exception on editor extension installation: " + extension, e);
+        e.printStackTrace();
+      }
     }
   }
 
   private void uninstallExtensions(EditorComponent editorComponent, Iterable<EditorExtension> extensions) {
     for (EditorExtension extension : extensions) {
-      extension.uninstall(editorComponent);
+      try {
+        extension.uninstall(editorComponent);
+      } catch (Throwable e) {
+        LOG.error("Exception on editor extension deinstallation: " + extension, e);
+        e.printStackTrace();
+      }
     }
   }
 
