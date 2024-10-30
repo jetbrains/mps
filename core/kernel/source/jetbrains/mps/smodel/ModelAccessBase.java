@@ -31,13 +31,9 @@ import org.jetbrains.mps.openapi.repository.WriteActionListener;
  */
 public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
 
-  private final ModelAccess myDelegate;
+  private final org.jetbrains.mps.openapi.module.ModelAccess myDelegate;
 
-  protected ModelAccessBase() {
-    myDelegate = null;
-  }
-
-  protected ModelAccessBase(ModelAccess delegate) {
+  protected ModelAccessBase(@NotNull org.jetbrains.mps.openapi.module.ModelAccess delegate) {
     myDelegate = delegate;
   }
 
@@ -111,9 +107,24 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
   }
 
   // not null
-  protected final ModelAccess getDelegate() {
-    // Keep in mind subclasses might get instantiated BEFORE WorkbenchModelAccess had a chance to register itself as a global MA.
-    return myDelegate != null ? myDelegate : ModelAccess.instance();
+  protected final org.jetbrains.mps.openapi.module.ModelAccess getDelegate() {
+    return myDelegate;
+  }
+
+  // provisional code. as long as there are 2 "real" smodel.MA implementations, DMA and WMA, and few "frontend" openapi.MA, we
+  // need to reach "real" MA in certain scenarios.
+  protected final ModelAccess delegateImpl() {
+    org.jetbrains.mps.openapi.module.ModelAccess d = myDelegate;
+    do {
+      if (d instanceof ModelAccess) {
+        return (ModelAccess) d;
+      } else if (d instanceof ModelAccessBase) {
+        d = ((ModelAccessBase) d).getDelegate();
+      } else {
+        break;
+      }
+    } while (d != null);
+    return null;
   }
 
   /**
@@ -123,12 +134,16 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
    */
   public SharedReadModelAccess shareRead() throws IllegalModelAccessError {
     checkReadAccess();
+    ModelAccess actualImpl = delegateImpl();
+    if (actualImpl == null) {
+      throw new IllegalModelAccessError(String.format("MA instance (%s) doesn't support shared reads", myDelegate));
+    }
     // FIXME shall prevent using this method from within a thread that canRead with the help of readEnabledFlag,
     //       to allow only 'true' owners of the read lock to share it. However, once legacy implementation with readEnabledFlag gone,
     //       there'd be no need in the code, therefore I opted not to bother (except this note).
     // FIXME LegacySharedReadAccess violates SharedReadModelAccess contract as it keeps 'read access' regardless of read lock in original thread
     //       Shall deal with that once proper implementation is in place.
-    return new LegacySharedReadAccess(getDelegate());
+    return new LegacySharedReadAccess(actualImpl);
   }
 
   @Nullable

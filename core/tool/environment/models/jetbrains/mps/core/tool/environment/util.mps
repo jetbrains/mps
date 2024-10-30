@@ -441,6 +441,25 @@
           </node>
           <node concept="3clFbT" id="79ZAv07BA6X" role="37wK5m" />
         </node>
+        <node concept="3cpWs8" id="72xjIHfHWRZ" role="3cqZAp">
+          <node concept="3cpWsn" id="72xjIHfHWS0" role="3cpWs9">
+            <property role="TrG5h" value="rootRepo" />
+            <node concept="3uibUv" id="72xjIHfHWDK" role="1tU5fm">
+              <ref role="3uigEE" to="w1kc:~MPSModuleRepository" resolve="MPSModuleRepository" />
+            </node>
+            <node concept="2OqwBi" id="72xjIHfHWS1" role="33vP2m">
+              <node concept="37vLTw" id="72xjIHfHWS2" role="2Oq$k0">
+                <ref role="3cqZAo" node="76OnFPC8ZGQ" resolve="mpsPlatform" />
+              </node>
+              <node concept="liA8E" id="72xjIHfHWS3" role="2OqNvi">
+                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
+                <node concept="3VsKOn" id="72xjIHfHWS4" role="37wK5m">
+                  <ref role="3VsUkX" to="w1kc:~MPSModuleRepository" resolve="MPSModuleRepository" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="79ZAv07BA$y" role="3cqZAp">
           <node concept="3cpWsn" id="79ZAv07BA$z" role="3cpWs9">
             <property role="TrG5h" value="pma" />
@@ -450,11 +469,15 @@
             <node concept="2ShNRf" id="79ZAv07BAPY" role="33vP2m">
               <node concept="1pGfFk" id="79ZAv07BD4Z" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="z1c3:~ProjectModelAccess.&lt;init&gt;(jetbrains.mps.project.Project,jetbrains.mps.smodel.ModelAccess)" resolve="ProjectModelAccess" />
+                <ref role="37wK5l" to="z1c3:~ProjectModelAccess.&lt;init&gt;(jetbrains.mps.project.Project,org.jetbrains.mps.openapi.module.ModelAccess)" resolve="ProjectModelAccess" />
                 <node concept="Xjq3P" id="79ZAv07BDdF" role="37wK5m" />
-                <node concept="2YIFZM" id="79ZAv07BEd9" role="37wK5m">
-                  <ref role="37wK5l" to="w1kc:~ModelAccess.instance()" resolve="instance" />
-                  <ref role="1Pybhc" to="w1kc:~ModelAccess" resolve="ModelAccess" />
+                <node concept="2OqwBi" id="72xjIHfHYOp" role="37wK5m">
+                  <node concept="37vLTw" id="72xjIHfHYsr" role="2Oq$k0">
+                    <ref role="3cqZAo" node="72xjIHfHWS0" resolve="rootRepo" />
+                  </node>
+                  <node concept="liA8E" id="72xjIHfHZaD" role="2OqNvi">
+                    <ref role="37wK5l" to="w1kc:~MPSModuleRepository.getModelAccess()" resolve="getModelAccess" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -471,16 +494,8 @@
                 <property role="373rjd" value="true" />
                 <ref role="37wK5l" to="z1c3:~ProjectRepository.&lt;init&gt;(jetbrains.mps.project.Project,jetbrains.mps.extapi.module.SRepositoryExt,jetbrains.mps.extapi.module.SRepositoryRegistry,org.jetbrains.mps.openapi.module.ModelAccess)" resolve="ProjectRepository" />
                 <node concept="Xjq3P" id="79ZAv07BH9s" role="37wK5m" />
-                <node concept="2OqwBi" id="79ZAv07BHDT" role="37wK5m">
-                  <node concept="37vLTw" id="79ZAv07BHl7" role="2Oq$k0">
-                    <ref role="3cqZAo" node="76OnFPC8ZGQ" resolve="mpsPlatform" />
-                  </node>
-                  <node concept="liA8E" id="79ZAv07BHXs" role="2OqNvi">
-                    <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
-                    <node concept="3VsKOn" id="79ZAv07BIoA" role="37wK5m">
-                      <ref role="3VsUkX" to="w1kc:~MPSModuleRepository" resolve="MPSModuleRepository" />
-                    </node>
-                  </node>
+                <node concept="37vLTw" id="72xjIHfHWS6" role="37wK5m">
+                  <ref role="3cqZAo" node="72xjIHfHWS0" resolve="findComponent" />
                 </node>
                 <node concept="2OqwBi" id="79ZAv07BKNn" role="37wK5m">
                   <node concept="37vLTw" id="79ZAv07BKbX" role="2Oq$k0">

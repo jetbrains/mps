@@ -8,10 +8,9 @@ import jetbrains.mps.project.FileBasedProject;
 import java.io.File;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.platform.Platform;
-import jetbrains.mps.project.ProjectModelAccess;
-import jetbrains.mps.smodel.ModelAccess;
-import jetbrains.mps.project.ProjectRepository;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.project.ProjectModelAccess;
+import jetbrains.mps.project.ProjectRepository;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
@@ -28,8 +27,9 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
 
   public FileMPSProject(@NotNull File file, @NotNull Platform mpsPlatform) {
     super(file.getName(), mpsPlatform, false);
-    ProjectModelAccess pma = new ProjectModelAccess(this, ModelAccess.instance());
-    ProjectRepository r = new ProjectRepository(this, mpsPlatform.findComponent(MPSModuleRepository.class), mpsPlatform.findComponent(SRepositoryRegistry.class), pma);
+    MPSModuleRepository rootRepo = mpsPlatform.findComponent(MPSModuleRepository.class);
+    ProjectModelAccess pma = new ProjectModelAccess(this, rootRepo.getModelAccess());
+    ProjectRepository r = new ProjectRepository(this, rootRepo, mpsPlatform.findComponent(SRepositoryRegistry.class), pma);
     r.init();
     initRepository(r);
     myProjectFile = file;

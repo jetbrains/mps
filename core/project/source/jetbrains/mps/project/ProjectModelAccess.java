@@ -37,7 +37,7 @@ public class ProjectModelAccess extends ModelAccessBase {
     this(project, ModelAccess.newInstance());
   }
 
-  public ProjectModelAccess(Project project, ModelAccess delegate) {
+  public ProjectModelAccess(Project project, org.jetbrains.mps.openapi.module.ModelAccess delegate) {
     super(delegate);
     myProject = project;
   }
@@ -55,7 +55,7 @@ public class ProjectModelAccess extends ModelAccessBase {
     // DMA.executeCommand() would be here.
     // Another aspect that prevents me from implementing DMA's executeCommand here is the need to access commandActionDispatcher, which is protected to
     // hierarchy of 'true' MA (unlike this one, delegation-based, 'true' have locks and record/notify listeners)
-    getDelegate().executeCommand(r);
+    delegateImpl().executeCommand(r);
   }
 
   @Override
@@ -63,7 +63,7 @@ public class ProjectModelAccess extends ModelAccessBase {
     // we can get here either with p.getModelAccess() or through MA.instance().runCommandInEDT re-dispatch.
     // see #executeCommand(Runnable) above why we don't use myProject
     // Since this method have not been used through MA.instance(), we are free to implement it the way DMA would implement it, right here
-    SwingUtilities.invokeLater(() -> getDelegate().executeCommand(r));
+    SwingUtilities.invokeLater(() -> delegateImpl().executeCommand(r));
   }
 
   @Override
@@ -74,6 +74,6 @@ public class ProjectModelAccess extends ModelAccessBase {
 
   @Override
   public boolean isCommandAction() {
-    return getDelegate().isCommandAction();
+    return delegateImpl().isCommandAction();
   }
 }
