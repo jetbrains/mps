@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.references.ImmatureReferences;
 import jetbrains.mps.smodel.references.UnregisteredNodes;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -49,7 +48,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  *
  * @see org.jetbrains.mps.openapi.module.ModelAccess
  */
-public abstract class ModelAccess extends AbstractModelAccess implements ModelCommandExecutor, org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
+public abstract class ModelAccess extends AbstractModelAccess implements org.jetbrains.mps.openapi.module.ModelAccess, ModelCommandContext.Provider {
   protected static final Logger LOG = Logger.getLogger(ModelAccess.class);
 
   protected static ModelAccess ourInstance = newInstance();
@@ -92,22 +91,6 @@ public abstract class ModelAccess extends AbstractModelAccess implements ModelCo
 
   protected Lock getWriteLock() {
     return myReadWriteLock.writeLock();
-  }
-
-  @Override
-  public final <T> T runReadAction(final Computable<T> c) {
-    if (canRead()) {
-      return c.compute();
-    }
-    return computeReadAction(c::compute);
-  }
-
-  @Override
-  public final <T> T runWriteAction(final Computable<T> c) {
-    if (canWrite()) {
-      return c.compute();
-    }
-    return computeWriteAction(c::compute);
   }
 
   protected final void assertNotWriteFromRead() {
