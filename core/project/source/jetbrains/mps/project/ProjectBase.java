@@ -256,21 +256,6 @@ public abstract class ProjectBase extends Project {
   }
 
   /**
-   * @deprecated onModuleLoad() is about to cease existence, and an independent event dispatch for AM (in addition to that of SRepository) is plain wrong anyway
-   */
-  @Deprecated (forRemoval = true, since = "2024.1")
-  @Hack
-  protected final void fireModulesLoaded() {
-    getModelAccess().checkWriteAccess();
-    //  TODO FIXME get rid of onModuleLoad
-    for (SModule m : getProjectModulesWithGenerators()) {
-      if (m instanceof AbstractModule) {
-        ((AbstractModule) m).onModuleLoad();
-      }
-    }
-  }
-
-  /**
    * these are our own project opened/closed events.
    * in the case of idea platform presence they are triggered from the corresponding idea project opened/closed events.
    * in the other case they are triggered at the init/dispose methods

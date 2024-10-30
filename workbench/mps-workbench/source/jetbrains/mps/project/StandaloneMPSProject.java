@@ -145,7 +145,6 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
       getModelAccess().runWriteAction(() -> {
         loadModules(myProjectDescriptor.getModulePaths());
         myProjectDescriptor = null; // indicate it's all in RT now.
-        fireModulesLoaded();
       });
       if (progressIndicator != null) {
         progressIndicator.setText2("");

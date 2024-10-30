@@ -832,11 +832,6 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="3clFbF" id="6wBM5jhYZ_T" role="3cqZAp">
-                    <node concept="1rXfSq" id="6wBM5jhYZ_R" role="3clFbG">
-                      <ref role="37wK5l" to="z1c3:~ProjectBase.fireModulesLoaded()" resolve="fireModulesLoaded" />
-                    </node>
-                  </node>
                 </node>
               </node>
             </node>

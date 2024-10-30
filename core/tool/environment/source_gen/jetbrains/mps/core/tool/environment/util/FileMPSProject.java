@@ -66,7 +66,6 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
     getModelAccess().runWriteAction(() -> {
       ProjectDescriptor pd = new ProjectDescriptorPersistence(projectHome(), createMacroHelper()).loadFromFile();
       loadModules(pd.getModulePaths());
-      fireModulesLoaded();
     });
   }
 

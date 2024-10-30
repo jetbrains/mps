@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -201,6 +201,8 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
 
   private void instantiateAndActivateModules(Collection<ModuleHandle> moduleHandles) {
     ModuleRepositoryFacade mrf = new ModuleRepositoryFacade(myRepository);
+    // I feel it makes sense to keep 'loaded' recorded and use these in dispose() instead of unregister by owner
+    //noinspection MismatchedQueryAndUpdateOfCollection
     List<SModule> loaded = new ArrayList<>(moduleHandles.size());
     Set<IFile> uniqueFiles = new THashSet<>();
     for (ModuleHandle moduleHandle : moduleHandles) {
@@ -217,11 +219,6 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
         String m = "Failed to load module %s from file %s";
         final ModuleDescriptor md = moduleHandle.getDescriptor();
         LOG.error(String.format(m, md == null ? "<unknown>" : md.getNamespace(), moduleHandle.getFile()), ex);
-      }
-    }
-    for (SModule module : loaded) {
-      if (module instanceof AbstractModule) {
-        ((AbstractModule) module).onModuleLoad();
       }
     }
     // FIXME it shall be myFileTracker that is responsible for listener attach/detach on track/forget, though have to figure out how

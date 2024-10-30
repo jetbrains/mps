@@ -579,19 +579,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     myFacets.clear();
   }
 
-  /**
-   * @deprecated There's no direct replacement, as the method was crafted for MPS internal needs (MPSProject init).
-   *             In case there's need for disting 'loaded' (vs 'added'), has to be part of repository listener.
-   */
-  @Deprecated(since = "2024.1", forRemoval = true)
-  public void onModuleLoad() {
-    // FIXME any reason to update references for read-only (deployed) modules?
-    // FIXME any reason to update references on module load at all?
-    //       if any, has to be part of migration and explicit action, rather than silent
-    //       update on startup (triggers loading of all models due to update of priority rules in generators)
-    // updateExternalReferences();
-  }
-
   @Override
   public boolean isReadOnly() {
 //    assertCanRead(); getModuleSourceDir() doesn't require read, why isPackaged() does?
