@@ -15,6 +15,7 @@ import com.intellij.execution.process.ProcessOutputTypes;
  * You likely don't need this one unless there's {@link jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState } you'd like to refresh.
  */
 public final class UnitTestProcessListener extends ProcessAdapter {
+  private final Object myToken = new Object();
   private final TestEventsDispatcher myDispatcher;
   private TestEventMessage myLastEvent;
   private StringBuilder myLastText = new StringBuilder();
@@ -25,38 +26,44 @@ public final class UnitTestProcessListener extends ProcessAdapter {
 
   @Override
   public void startNotified(@NotNull ProcessEvent event) {
-    myDispatcher.onStartNotified(event);
+    synchronized (myToken) {
+      myDispatcher.onStartNotified(event);
+    }
   }
 
   @Override
   public void processTerminated(@NotNull ProcessEvent event) {
-    myDispatcher.onProcessTerminated(event);
+    synchronized (myToken) {
+      myDispatcher.onProcessTerminated(event);
+    }
   }
 
   @Override
   public void onTextAvailable(@NotNull ProcessEvent event, @NotNull Key outputKind) {
-    String text = event.getText();
-    if (text == null) {
-      return;
-    }
-    myLastText.append(text);
-    if (!(text.endsWith("\n"))) {
-      return;
-    }
-
-    String line = myLastText.toString();
-    myLastText = new StringBuilder();
-    TestEventMessage testEvent = TestEventMessage.parse(line.trim());
-    if (testEvent != null) {
-      // event happened
-      myLastEvent = testEvent;
-      myDispatcher.onTestEvent(testEvent);
-    } else {
-      // just text came
-      if (isErrorOutputInProgress()) {
-        outputKind = ProcessOutputTypes.STDERR;
+    synchronized (myToken) {
+      String text = event.getText();
+      if (text == null) {
+        return;
       }
-      myDispatcher.onSimpleTextAvailable(line, outputKind);
+      myLastText.append(text);
+      if (!(text.endsWith("\n"))) {
+        return;
+      }
+
+      String line = myLastText.toString();
+      myLastText = new StringBuilder();
+      TestEventMessage testEvent = TestEventMessage.parse(line.trim());
+      if (testEvent != null) {
+        // event happened
+        myLastEvent = testEvent;
+        myDispatcher.onTestEvent(testEvent);
+      } else {
+        // just text came
+        if (isErrorOutputInProgress()) {
+          outputKind = ProcessOutputTypes.STDERR;
+        }
+        myDispatcher.onSimpleTextAvailable(line, outputKind);
+      }
     }
   }
 

@@ -1077,66 +1077,73 @@
   </root>
   <root nodeRef="r:63a75970-913d-4a7b-99e2-8ca72ff6f509(jetbrains.mps.baseLanguage.unitTest.execution.client)/5881102044690183390">
     <file name="UnitTestProcessListener.java">
-      <node id="5881102044690183593" at="18,0,19,0" concept="6" trace="myDispatcher" />
-      <node id="5881102044690183596" at="19,0,20,0" concept="6" trace="myLastEvent" />
-      <node id="5672535223915666381" at="20,0,21,0" concept="6" trace="myLastText" />
-      <node id="5881102044690183606" at="22,57,23,54" concept="5" />
-      <node id="4866165190354002533" at="27,58,28,40" concept="5" />
-      <node id="3492362019011226148" at="32,62,33,44" concept="5" />
-      <node id="5881102044690183505" at="37,85,38,34" concept="10" />
-      <node id="5881102044690183523" at="39,23,40,13" concept="11" />
-      <node id="5672535223915690134" at="41,5,42,28" concept="5" />
-      <node id="5672535223915703754" at="43,33,44,13" concept="11" />
-      <node id="6959886588351842369" at="45,5,46,0" concept="13" />
-      <node id="5672535223915708936" at="46,0,47,40" concept="10" />
-      <node id="5672535223915754198" at="47,40,48,37" concept="5" />
-      <node id="5881102044690183533" at="48,37,49,69" concept="10" />
-      <node id="6959886588352099994" at="50,28,51,23" concept="12" />
-      <node id="5881102044690183540" at="51,23,52,30" concept="5" />
-      <node id="5881102044690183544" at="52,30,53,42" concept="5" />
-      <node id="6959886588352100084" at="54,12,55,23" concept="12" />
-      <node id="5881102044690183558" at="56,38,57,47" concept="5" />
-      <node id="5881102044690183580" at="58,7,59,59" concept="5" />
-      <node id="2254978909345573053" at="66,45,67,58" concept="11" />
-      <node id="5881102044690183600" at="22,0,25,0" concept="3" trace="UnitTestProcessListener#(Ljetbrains/mps/baseLanguage/unitTest/execution/client/TestRunState;)V" />
-      <node id="5881102044690183521" at="38,34,41,5" concept="8" />
-      <node id="5672535223915672835" at="42,28,45,5" concept="8" />
-      <node id="5881102044690183556" at="55,23,58,7" concept="8" />
-      <node id="2254978909345573286" at="66,0,69,0" concept="9" trace="isErrorOutputInProgress#()Z" />
-      <node id="4866165190354002522" at="26,0,30,0" concept="9" trace="startNotified#(Lcom/intellij/execution/process/ProcessEvent;)V" />
-      <node id="3492362019011223542" at="31,0,35,0" concept="9" trace="processTerminated#(Lcom/intellij/execution/process/ProcessEvent;)V" />
-      <node id="5881102044690183554" at="54,10,60,5" concept="1" />
-      <node id="5881102044690183538" at="49,69,60,5" concept="8" />
-      <node id="5881102044690183469" at="36,0,62,0" concept="9" trace="onTextAvailable#(Lcom/intellij/execution/process/ProcessEvent;Lcom/intellij/openapi/util/Key;)V" />
-      <scope id="5881102044690183605" at="22,57,23,54" />
-      <scope id="4866165190354002529" at="27,58,28,40" />
-      <scope id="3492362019011223549" at="32,62,33,44" />
-      <scope id="5881102044690183522" at="39,23,40,13" />
-      <scope id="5672535223915672837" at="43,33,44,13" />
-      <scope id="5881102044690183557" at="56,38,57,47" />
-      <scope id="2254978909345572839" at="66,45,67,58" />
-      <scope id="5881102044690183600" at="22,0,25,0">
+      <node id="3438111506103268558" at="18,0,19,0" concept="6" trace="myToken" />
+      <node id="5881102044690183593" at="19,0,20,0" concept="6" trace="myDispatcher" />
+      <node id="5881102044690183596" at="20,0,21,0" concept="6" trace="myLastEvent" />
+      <node id="5672535223915666381" at="21,0,22,0" concept="6" trace="myLastText" />
+      <node id="5881102044690183606" at="23,57,24,54" concept="5" />
+      <node id="4866165190354002533" at="29,28,30,42" concept="5" />
+      <node id="3492362019011226148" at="36,28,37,46" concept="5" />
+      <node id="5881102044690183505" at="43,28,44,36" concept="10" />
+      <node id="5881102044690183523" at="45,25,46,15" concept="11" />
+      <node id="5672535223915690134" at="47,7,48,30" concept="5" />
+      <node id="5672535223915703754" at="49,35,50,15" concept="11" />
+      <node id="6959886588351842369" at="51,7,52,0" concept="13" />
+      <node id="5672535223915708936" at="52,0,53,42" concept="10" />
+      <node id="5672535223915754198" at="53,42,54,39" concept="5" />
+      <node id="5881102044690183533" at="54,39,55,71" concept="10" />
+      <node id="6959886588352099994" at="56,30,57,25" concept="12" />
+      <node id="5881102044690183540" at="57,25,58,32" concept="5" />
+      <node id="5881102044690183544" at="58,32,59,44" concept="5" />
+      <node id="6959886588352100084" at="60,14,61,25" concept="12" />
+      <node id="5881102044690183558" at="62,40,63,49" concept="5" />
+      <node id="5881102044690183580" at="64,9,65,61" concept="5" />
+      <node id="2254978909345573053" at="73,45,74,58" concept="11" />
+      <node id="5881102044690183600" at="23,0,26,0" concept="3" trace="UnitTestProcessListener#(Ljetbrains/mps/baseLanguage/unitTest/execution/client/TestRunState;)V" />
+      <node id="3438111506103362266" at="28,58,31,5" concept="17" />
+      <node id="3438111506103357781" at="35,62,38,5" concept="17" />
+      <node id="5881102044690183521" at="44,36,47,7" concept="8" />
+      <node id="5672535223915672835" at="48,30,51,7" concept="8" />
+      <node id="5881102044690183556" at="61,25,64,9" concept="8" />
+      <node id="2254978909345573286" at="73,0,76,0" concept="9" trace="isErrorOutputInProgress#()Z" />
+      <node id="4866165190354002522" at="27,0,33,0" concept="9" trace="startNotified#(Lcom/intellij/execution/process/ProcessEvent;)V" />
+      <node id="3492362019011223542" at="34,0,40,0" concept="9" trace="processTerminated#(Lcom/intellij/execution/process/ProcessEvent;)V" />
+      <node id="5881102044690183554" at="60,12,66,7" concept="1" />
+      <node id="5881102044690183538" at="55,71,66,7" concept="8" />
+      <node id="3438111506103266538" at="42,85,67,5" concept="17" />
+      <node id="5881102044690183469" at="41,0,69,0" concept="9" trace="onTextAvailable#(Lcom/intellij/execution/process/ProcessEvent;Lcom/intellij/openapi/util/Key;)V" />
+      <scope id="5881102044690183605" at="23,57,24,54" />
+      <scope id="3438111506103362270" at="29,28,30,42" />
+      <scope id="3438111506103357785" at="36,28,37,46" />
+      <scope id="5881102044690183522" at="45,25,46,15" />
+      <scope id="5672535223915672837" at="49,35,50,15" />
+      <scope id="5881102044690183557" at="62,40,63,49" />
+      <scope id="2254978909345572839" at="73,45,74,58" />
+      <scope id="5881102044690183600" at="23,0,26,0">
         <var name="runState" id="5881102044690183601" />
       </scope>
-      <scope id="5881102044690183539" at="50,28,53,42" />
-      <scope id="2254978909345573286" at="66,0,69,0" />
-      <scope id="4866165190354002522" at="26,0,30,0">
+      <scope id="4866165190354002529" at="28,58,31,5" />
+      <scope id="3492362019011223549" at="35,62,38,5" />
+      <scope id="5881102044690183539" at="56,30,59,44" />
+      <scope id="2254978909345573286" at="73,0,76,0" />
+      <scope id="5881102044690183555" at="60,14,65,61" />
+      <scope id="4866165190354002522" at="27,0,33,0">
         <var name="event" id="4866165190354002526" />
       </scope>
-      <scope id="3492362019011223542" at="31,0,35,0">
+      <scope id="3492362019011223542" at="34,0,40,0">
         <var name="event" id="3492362019011223546" />
       </scope>
-      <scope id="5881102044690183555" at="54,12,59,59" />
-      <scope id="5881102044690183476" at="37,85,60,5">
+      <scope id="3438111506103266542" at="43,28,66,7">
         <var name="line" id="5672535223915708937" />
         <var name="testEvent" id="5881102044690183534" />
         <var name="text" id="5881102044690183506" />
       </scope>
-      <scope id="5881102044690183469" at="36,0,62,0">
+      <scope id="5881102044690183476" at="42,85,67,5" />
+      <scope id="5881102044690183469" at="41,0,69,0">
         <var name="event" id="5881102044690183472" />
         <var name="outputKind" id="5881102044690183474" />
       </scope>
-      <unit id="5881102044690183390" at="17,0,70,0" name="jetbrains.mps.baseLanguage.unitTest.execution.client.UnitTestProcessListener" />
+      <unit id="5881102044690183390" at="17,0,77,0" name="jetbrains.mps.baseLanguage.unitTest.execution.client.UnitTestProcessListener" />
     </file>
   </root>
   <root nodeRef="r:63a75970-913d-4a7b-99e2-8ca72ff6f509(jetbrains.mps.baseLanguage.unitTest.execution.client)/5881102044690375193">
