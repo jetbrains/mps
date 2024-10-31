@@ -108,8 +108,10 @@ public final class JavaCompilerOptionsComponent implements CoreComponent, JavaCo
       return JavaVersion.VERSION_16;
     } else if (property.startsWith("17")) {
       return JavaVersion.VERSION_17;
+    } else if (property.startsWith("21")) {
+      return JavaVersion.VERSION_21;
     }
-    return JavaVersion.VERSION_17;
+    return JavaVersion.VERSION_21;
   }
 
   public enum JavaVersion {
@@ -125,7 +127,8 @@ public final class JavaCompilerOptionsComponent implements CoreComponent, JavaCo
     VERSION_14("14"),
     VERSION_15("15"),
     VERSION_16("16"),
-    VERSION_17("17");
+    VERSION_17("17"),
+    VERSION_21("21");
 
     private final String myCompilerVersion;
 
