@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.extapi.model.StorageMemoryConflictResolver;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.module.SRepositoryBase;
@@ -370,6 +371,23 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   private boolean checkModulesModelsChanged() {
     boolean changedModule = myModules.stream().filter(EditableSModule.class::isInstance).map(EditableSModule.class::cast).anyMatch(EditableSModule::isChanged);
     return changedModule || myModelRepository.hasModelsToSave();
+  }
+
+  // provisional duplication of ConflictResolver logic from ProjectRepository for the time while this one is the true
+  // owner of all modules. Once we keep project modules inside ProjectRepository only, can keep independent resolvers (or no resolver at all for this one)
+  private StorageMemoryConflictResolver<EditableSModel> myConflictResolver;
+
+  @Override
+  public StorageMemoryConflictResolver<EditableSModel> getConflictResolver() {
+    if (myConflictResolver != null) {
+      return myConflictResolver;
+    }
+    return SRepositoryExt.super.getConflictResolver();
+  }
+
+  public void setConflictResolver(StorageMemoryConflictResolver<? super EditableSModel> resolver) {
+    // null value resets to a default resolver logic.
+    myConflictResolver = (StorageMemoryConflictResolver<EditableSModel>) resolver;
   }
 
   //

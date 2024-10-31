@@ -175,6 +175,8 @@ public class ProjectRepository extends SRepositoryBase implements SRepositoryExt
     // null value resets to a default resolver logic.
     myConflictResolver = (StorageMemoryConflictResolver<EditableSModel>) resolver;
     // don't care if the original resolver deals with any other model, our code pass only EditableSModel instances.
+    if (myRootRepo instanceof MPSModuleRepository) {
+      ((MPSModuleRepository) myRootRepo).setConflictResolver(resolver);
+    }
   }
-
 }

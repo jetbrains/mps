@@ -15,13 +15,13 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
 import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
-import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -182,9 +182,9 @@ public class SModuleOperations {
     SRepository repository = module.getRepository();
     if (repository instanceof ProjectRepository) {
       project = ((ProjectRepository) repository).getProject();
-    } else if (repository instanceof MPSModuleRepository) {
+    } else if (repository instanceof SRepositoryExt) {
       // XXX perhaps, shall use ModuleRepositoryFacade here?
-      Set<MPSModuleOwner> owners = ((MPSModuleRepository) repository).getOwners(module);
+      Set<MPSModuleOwner> owners = ((SRepositoryExt) repository).getOwners(module);
       for (MPSModuleOwner owner : owners) {
         if (owner instanceof Project) {
           project = ((Project) owner);
