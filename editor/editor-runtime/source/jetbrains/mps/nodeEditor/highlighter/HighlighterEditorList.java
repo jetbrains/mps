@@ -64,7 +64,7 @@ public class HighlighterEditorList {
     }
     //
     for (FileEditor selectedEditor : myFileEditorManager.getSelectedEditors()) {
-      final DataContext dc = DataManager.getInstance().getDataContext(selectedEditor.getComponent());
+      final DataContext dc = DataManager.getInstance().getDataContext(selectedEditor.getPreferredFocusedComponent());
       // could use MPSEditorDataKeys.MPS_EDITOR, although neither helps to get rid of [mps-editor] dependency
       editorComponents.add(dc.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
     }
@@ -95,7 +95,7 @@ public class HighlighterEditorList {
     //     but here might be of use.
 
     for (FileEditor editor : myFileEditorManager.getAllEditors()) {
-      final DataContext dc = DataManager.getInstance().getDataContext(editor.getComponent());
+      final DataContext dc = DataManager.getInstance().getDataContext(editor.getPreferredFocusedComponent());
       EditorComponent editorComponent = dc.getData(MPSEditorDataKeys.EDITOR_COMPONENT);
       if (editorComponent != null) {
         editorComponents.add(editorComponent);
