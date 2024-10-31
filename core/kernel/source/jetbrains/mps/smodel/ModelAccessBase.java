@@ -141,9 +141,9 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
     // FIXME shall prevent using this method from within a thread that canRead with the help of readEnabledFlag,
     //       to allow only 'true' owners of the read lock to share it. However, once legacy implementation with readEnabledFlag gone,
     //       there'd be no need in the code, therefore I opted not to bother (except this note).
-    // FIXME LegacySharedReadAccess violates SharedReadModelAccess contract as it keeps 'read access' regardless of read lock in original thread
-    //       Shall deal with that once proper implementation is in place.
-    return new LegacySharedReadAccess(actualImpl);
+    //       Check MA.shareRead() implementation for further considerations. Shall move the call here and make a decision whether
+    //       to give SRMA or throw an error.
+    return new SharedReadImpl(actualImpl);
   }
 
   @Nullable
@@ -152,16 +152,16 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
     return getDelegate() instanceof ModelCommandContext.Provider ? ((ModelCommandContext.Provider) getDelegate()).getCommandContext(model) : null;
   }
 
-  private static class LegacySharedReadAccess implements SharedReadModelAccess {
-    private final ModelAccess myDelegate;
+  private static class SharedReadImpl implements SharedReadModelAccess {
+    private final ReadAccessToken myAccessControl;
 
-    public LegacySharedReadAccess(ModelAccess delegate) {
-      myDelegate = delegate;
+    public SharedReadImpl(ModelAccess delegate) {
+      myAccessControl = delegate.shareRead();
     }
 
     @Override
     public boolean canRead() {
-      return false;
+      return myAccessControl.isAlive();
     }
 
     @Override
@@ -170,25 +170,17 @@ public abstract class ModelAccessBase implements org.jetbrains.mps.openapi.modul
     }
 
     @Override
-    public void execute(@NotNull Runnable command) {
-      /*
-       * readEnabledFlag is a workaround to deal with implementation peculiarities of non-fair ReentrantReadWriteLock.
-       * IDEA uses non-fair RRWL for its read/write actions, which we use for our model read-write actions.
-       * Generator starts with a read action, and grabs platform read lock. GenerationTaskPool#waitForCompletion
-       * blocks read, and spawns few other threads which try to grab read lock. Unless there's a platform write action,
-       * everything is fine. If, however, there's a write action (e.g. focus lost event and document save action), platform
-       * tries to lock write lock of RRWL, which, in its non-fair state, put write requestee to the top of waiting queue,
-       * effectively preventing any further read attempts. Threads of GenerationTaskPool has no chance to complete,
-       * and read lock of primary generator thread is never released. Deadlock.
-       *
-       * Note, readEnabledFlag (or any other 'lightweight' model read alternative) doesn't look as a decent solution,
-       * as the read lock of primary thread still blocks platform write actions.
-       */
-      final boolean flag = myDelegate.setReadEnabledFlag(true);
-      try {
-        command.run();
-      } finally {
-        myDelegate.setReadEnabledFlag(flag);
+    public void execute(@NotNull final Runnable command) {
+      if (command instanceof CancellableReadAction) {
+        myAccessControl.runRead((CancellableReadAction) command);
+      } else {
+        // this is not perfect, yet still gives some cancellation support (won't start if cancellation comes before 'execute')
+        myAccessControl.runRead(new CancellableReadAction() {
+          @Override
+          protected void execute() {
+            command.run();
+          }
+        });
       }
     }
   }

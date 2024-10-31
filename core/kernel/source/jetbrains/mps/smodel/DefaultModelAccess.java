@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,6 +41,7 @@ class DefaultModelAccess extends ModelAccess {
     try {
       myReadActionDispatcher.dispatch(r);
     } finally {
+      sharedReadIsOver();
       getReadLock().unlock();
     }
   }
@@ -56,6 +57,7 @@ class DefaultModelAccess extends ModelAccess {
     try {
       myWriteActionDispatcher.dispatch(r);
     } finally {
+      sharedReadIsOver();
       getWriteLock().unlock();
     }
   }
