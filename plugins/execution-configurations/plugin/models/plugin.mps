@@ -8313,222 +8313,227 @@
     <node concept="yHkDC" id="q00jVsOUD1" role="yHkDi">
       <property role="TrG5h" value="myVmOptions" />
       <node concept="17QB3L" id="q00jVsOUD2" role="1tU5fm" />
-      <node concept="3cpWs3" id="4nmyK_eEJrs" role="33vP2m">
-        <node concept="3cpWs3" id="2JQcTZRP_tO" role="3uHU7B">
-          <node concept="Xl_RD" id="4v0OxldvcIT" role="3uHU7w">
-            <property role="Xl_RC" value="-Dintellij.platform.load.app.info.from.resources=true\n" />
-          </node>
-          <node concept="3cpWs3" id="2JQcTZRQfKV" role="3uHU7B">
-            <node concept="Xl_RD" id="2JQcTZRQeUa" role="3uHU7w">
-              <property role="Xl_RC" value="-DjbScreenMenuBar.useStubItem=true\n" />
-            </node>
-            <node concept="3cpWs3" id="4v0Oxlduny2" role="3uHU7B">
-              <node concept="3cpWs3" id="4nmyK_eEGyo" role="3uHU7B">
-                <node concept="3cpWs3" id="4nmyK_eE3hG" role="3uHU7B">
-                  <node concept="3cpWs3" id="4nmyK_eEDrm" role="3uHU7B">
-                    <node concept="3cpWs3" id="4nmyK_eEAnE" role="3uHU7B">
-                      <node concept="3cpWs3" id="4nmyK_eE3Ri" role="3uHU7B">
-                        <node concept="3cpWs3" id="4nmyK_eEzTA" role="3uHU7B">
-                          <node concept="3cpWs3" id="4nmyK_eEx$a" role="3uHU7B">
-                            <node concept="3cpWs3" id="4nmyK_eE4yK" role="3uHU7B">
-                              <node concept="3cpWs3" id="4nmyK_eEvmU" role="3uHU7B">
-                                <node concept="3cpWs3" id="4nmyK_eEthM" role="3uHU7B">
-                                  <node concept="3cpWs3" id="4nmyK_eE4YW" role="3uHU7B">
-                                    <node concept="3cpWs3" id="4nmyK_eErkm" role="3uHU7B">
-                                      <node concept="3cpWs3" id="4nmyK_eEpuy" role="3uHU7B">
-                                        <node concept="3cpWs3" id="rnX0t1pw_M" role="3uHU7B">
-                                          <node concept="3cpWs3" id="4nmyK_eE5_0" role="3uHU7B">
-                                            <node concept="3cpWs3" id="4nmyK_eEnJU" role="3uHU7B">
-                                              <node concept="3cpWs3" id="4nmyK_eEm8q" role="3uHU7B">
-                                                <node concept="3cpWs3" id="4nmyK_eE6I6" role="3uHU7B">
-                                                  <node concept="3cpWs3" id="4nmyK_eEkBA" role="3uHU7B">
-                                                    <node concept="3cpWs3" id="4nmyK_eEjdq" role="3uHU7B">
-                                                      <node concept="3cpWs3" id="4nmyK_eE854" role="3uHU7B">
-                                                        <node concept="3cpWs3" id="4nmyK_eEhyg" role="3uHU7B">
-                                                          <node concept="3cpWs3" id="4nmyK_eE8EK" role="3uHU7B">
-                                                            <node concept="3cpWs3" id="4nmyK_eEfRg" role="3uHU7B">
-                                                              <node concept="3cpWs3" id="4nmyK_eE7zg" role="3uHU7B">
-                                                                <node concept="3cpWs3" id="4nmyK_eEQm8" role="3uHU7B">
-                                                                  <node concept="3cpWs3" id="4nmyK_eEeIS" role="3uHU7B">
-                                                                    <node concept="3cpWs3" id="4nmyK_eEdG8" role="3uHU7B">
-                                                                      <node concept="3cpWs3" id="4nmyK_eE5Wk" role="3uHU7B">
-                                                                        <node concept="3cpWs3" id="4nmyK_eEcI$" role="3uHU7B">
-                                                                          <node concept="3cpWs3" id="4nmyK_eE5g$" role="3uHU7B">
-                                                                            <node concept="3cpWs3" id="4nmyK_eEbPW" role="3uHU7B">
-                                                                              <node concept="3cpWs3" id="4nmyK_eEb2c" role="3uHU7B">
-                                                                                <node concept="3cpWs3" id="4nmyK_eE4JG" role="3uHU7B">
-                                                                                  <node concept="3cpWs3" id="4nmyK_eE9kK" role="3uHU7B">
-                                                                                    <node concept="3cpWs3" id="4nmyK_eE4nG" role="3uHU7B">
-                                                                                      <node concept="3cpWs3" id="4nmyK_eE3og" role="3uHU7B">
-                                                                                        <node concept="3cpWs3" id="4nmyK_eE366" role="3uHU7B">
-                                                                                          <node concept="3cpWs3" id="4nmyK_eE2x3" role="3uHU7B">
-                                                                                            <node concept="Xl_RD" id="4nmyK_eE2x9" role="3uHU7B">
-                                                                                              <property role="Xl_RC" value="--add-opens=java.base/java.io=ALL-UNNAMED\n" />
-                                                                                            </node>
-                                                                                            <node concept="Xl_RD" id="4nmyK_eE36c" role="3uHU7w">
-                                                                                              <property role="Xl_RC" value="--add-opens=java.base/java.lang=ALL-UNNAMED\n" />
-                                                                                            </node>
-                                                                                          </node>
-                                                                                          <node concept="Xl_RD" id="4nmyK_eE3om" role="3uHU7w">
-                                                                                            <property role="Xl_RC" value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED\n" />
-                                                                                          </node>
-                                                                                        </node>
-                                                                                        <node concept="Xl_RD" id="4nmyK_eE4nM" role="3uHU7w">
-                                                                                          <property role="Xl_RC" value="--add-opens=java.base/java.net=ALL-UNNAMED\n" />
-                                                                                        </node>
-                                                                                      </node>
-                                                                                      <node concept="Xl_RD" id="4nmyK_eE9kQ" role="3uHU7w">
-                                                                                        <property role="Xl_RC" value="--add-opens=java.base/java.nio=ALL-UNNAMED\n" />
-                                                                                      </node>
-                                                                                    </node>
-                                                                                    <node concept="Xl_RD" id="4nmyK_eE9kS" role="3uHU7w">
-                                                                                      <property role="Xl_RC" value="--add-opens=java.base/java.nio.charset=ALL-UNNAMED\n" />
-                                                                                    </node>
-                                                                                  </node>
-                                                                                  <node concept="Xl_RD" id="4nmyK_eEb2i" role="3uHU7w">
-                                                                                    <property role="Xl_RC" value="--add-opens=java.base/java.text=ALL-UNNAMED\n" />
-                                                                                  </node>
-                                                                                </node>
-                                                                                <node concept="Xl_RD" id="4nmyK_eEbQ2" role="3uHU7w">
-                                                                                  <property role="Xl_RC" value="--add-opens=java.base/java.time=ALL-UNNAMED\n" />
-                                                                                </node>
-                                                                              </node>
-                                                                              <node concept="Xl_RD" id="4nmyK_eEbQ4" role="3uHU7w">
-                                                                                <property role="Xl_RC" value="--add-opens=java.base/java.util=ALL-UNNAMED\n" />
-                                                                              </node>
-                                                                            </node>
-                                                                            <node concept="Xl_RD" id="4nmyK_eEcIE" role="3uHU7w">
-                                                                              <property role="Xl_RC" value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED\n" />
-                                                                            </node>
-                                                                          </node>
-                                                                          <node concept="Xl_RD" id="4nmyK_eEcIG" role="3uHU7w">
-                                                                            <property role="Xl_RC" value="--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED\n" />
-                                                                          </node>
-                                                                        </node>
-                                                                        <node concept="Xl_RD" id="4nmyK_eEdGe" role="3uHU7w">
-                                                                          <property role="Xl_RC" value="--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED\n" />
-                                                                        </node>
-                                                                      </node>
-                                                                      <node concept="Xl_RD" id="4nmyK_eEeIY" role="3uHU7w">
-                                                                        <property role="Xl_RC" value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED\n" />
-                                                                      </node>
-                                                                    </node>
-                                                                    <node concept="Xl_RD" id="4nmyK_eFTNw" role="3uHU7w">
-                                                                      <property role="Xl_RC" value="--add-opens=java.base/sun.nio.fs=ALL-UNNAMED\n" />
-                                                                    </node>
-                                                                  </node>
-                                                                  <node concept="Xl_RD" id="4nmyK_eEeJ0" role="3uHU7w">
-                                                                    <property role="Xl_RC" value="--add-opens=java.base/sun.security.ssl=ALL-UNNAMED\n" />
-                                                                  </node>
-                                                                </node>
-                                                                <node concept="Xl_RD" id="4nmyK_eEfRm" role="3uHU7w">
-                                                                  <property role="Xl_RC" value="--add-opens=java.base/sun.security.util=ALL-UNNAMED\n" />
-                                                                </node>
-                                                              </node>
-                                                              <node concept="Xl_RD" id="4nmyK_eEfRo" role="3uHU7w">
-                                                                <property role="Xl_RC" value="--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED\n" />
-                                                              </node>
-                                                            </node>
-                                                            <node concept="Xl_RD" id="4nmyK_eEhym" role="3uHU7w">
-                                                              <property role="Xl_RC" value="--add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED\n" />
-                                                            </node>
-                                                          </node>
-                                                          <node concept="Xl_RD" id="4nmyK_eEhyo" role="3uHU7w">
-                                                            <property role="Xl_RC" value="--add-opens=java.desktop/com.apple.laf=ALL-UNNAMED\n" />
-                                                          </node>
-                                                        </node>
-                                                        <node concept="Xl_RD" id="4nmyK_eEjdw" role="3uHU7w">
-                                                          <property role="Xl_RC" value="--add-opens=java.desktop/java.awt=ALL-UNNAMED\n" />
-                                                        </node>
-                                                      </node>
-                                                      <node concept="Xl_RD" id="4nmyK_eEkBG" role="3uHU7w">
-                                                        <property role="Xl_RC" value="--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED\n" />
-                                                      </node>
-                                                    </node>
-                                                    <node concept="Xl_RD" id="4nmyK_eEkBI" role="3uHU7w">
-                                                      <property role="Xl_RC" value="--add-opens=java.desktop/java.awt.event=ALL-UNNAMED\n" />
-                                                    </node>
-                                                  </node>
-                                                  <node concept="Xl_RD" id="4nmyK_eEm8w" role="3uHU7w">
-                                                    <property role="Xl_RC" value="--add-opens=java.desktop/java.awt.image=ALL-UNNAMED\n" />
-                                                  </node>
-                                                </node>
-                                                <node concept="Xl_RD" id="4nmyK_eEnK0" role="3uHU7w">
-                                                  <property role="Xl_RC" value="--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED\n" />
-                                                </node>
-                                              </node>
-                                              <node concept="Xl_RD" id="4nmyK_eEnK2" role="3uHU7w">
-                                                <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing=ALL-UNNAMED\n" />
-                                              </node>
-                                            </node>
-                                            <node concept="Xl_RD" id="4nmyK_eEpuC" role="3uHU7w">
-                                              <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED\n" />
-                                            </node>
-                                          </node>
-                                          <node concept="Xl_RD" id="rnX0t1pw_Z" role="3uHU7w">
-                                            <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.text=ALL-UNNAMED\n" />
-                                          </node>
-                                        </node>
-                                        <node concept="Xl_RD" id="4nmyK_eErks" role="3uHU7w">
-                                          <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED\n" />
-                                        </node>
-                                      </node>
-                                      <node concept="Xl_RD" id="4nmyK_eErku" role="3uHU7w">
-                                        <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED\n" />
-                                      </node>
-                                    </node>
-                                    <node concept="Xl_RD" id="4nmyK_eEthS" role="3uHU7w">
-                                      <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED\n" />
-                                    </node>
-                                  </node>
-                                  <node concept="Xl_RD" id="4nmyK_eEvn0" role="3uHU7w">
-                                    <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt.windows=ALL-UNNAMED\n" />
-                                  </node>
-                                </node>
-                                <node concept="Xl_RD" id="4nmyK_eEvn2" role="3uHU7w">
-                                  <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt=ALL-UNNAMED\n" />
-                                </node>
-                              </node>
-                              <node concept="Xl_RD" id="4nmyK_eEx$g" role="3uHU7w">
-                                <property role="Xl_RC" value="--add-opens=java.desktop/sun.font=ALL-UNNAMED\n" />
-                              </node>
-                            </node>
-                            <node concept="Xl_RD" id="4nmyK_eEzTG" role="3uHU7w">
-                              <property role="Xl_RC" value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED\n" />
-                            </node>
-                          </node>
-                          <node concept="Xl_RD" id="4nmyK_eEzTI" role="3uHU7w">
-                            <property role="Xl_RC" value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED\n" />
-                          </node>
-                        </node>
-                        <node concept="Xl_RD" id="4nmyK_eEAnK" role="3uHU7w">
-                          <property role="Xl_RC" value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED\n" />
-                        </node>
-                      </node>
-                      <node concept="Xl_RD" id="4nmyK_eEDrs" role="3uHU7w">
-                        <property role="Xl_RC" value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED\n" />
-                      </node>
-                    </node>
-                    <node concept="Xl_RD" id="4nmyK_eEDru" role="3uHU7w">
-                      <property role="Xl_RC" value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED\n" />
-                    </node>
-                  </node>
-                  <node concept="Xl_RD" id="4nmyK_eEGyu" role="3uHU7w">
-                    <property role="Xl_RC" value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED\n" />
-                  </node>
-                </node>
-                <node concept="Xl_RD" id="4nmyK_eEJry" role="3uHU7w">
-                  <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED\n" />
-                </node>
-              </node>
-              <node concept="Xl_RD" id="2JQcTZRQfVo" role="3uHU7w">
-                <property role="Xl_RC" value="-DjbScreenMenuBar.enabled=true\n" />
-              </node>
-            </node>
-          </node>
+      <node concept="3cpWs3" id="5HBSC1us$4E" role="33vP2m">
+        <node concept="Xl_RD" id="5HBSC1usAnn" role="3uHU7w">
+          <property role="Xl_RC" value="-Dij.startup.error.report.url=https://youtrack.jetbrains.com/newissue?project=MPS&amp;clearDraft=true&amp;summary=$TITLE$&amp;description=$DESCR$" />
         </node>
-        <node concept="Xl_RD" id="4nmyK_eEJr$" role="3uHU7w">
-          <property role="Xl_RC" value="-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader" />
+        <node concept="3cpWs3" id="4nmyK_eEJrs" role="3uHU7B">
+          <node concept="3cpWs3" id="2JQcTZRP_tO" role="3uHU7B">
+            <node concept="Xl_RD" id="4v0OxldvcIT" role="3uHU7w">
+              <property role="Xl_RC" value="-Dintellij.platform.load.app.info.from.resources=true\n" />
+            </node>
+            <node concept="3cpWs3" id="2JQcTZRQfKV" role="3uHU7B">
+              <node concept="Xl_RD" id="2JQcTZRQeUa" role="3uHU7w">
+                <property role="Xl_RC" value="-DjbScreenMenuBar.useStubItem=true\n" />
+              </node>
+              <node concept="3cpWs3" id="4v0Oxlduny2" role="3uHU7B">
+                <node concept="3cpWs3" id="4nmyK_eEGyo" role="3uHU7B">
+                  <node concept="3cpWs3" id="4nmyK_eE3hG" role="3uHU7B">
+                    <node concept="3cpWs3" id="4nmyK_eEDrm" role="3uHU7B">
+                      <node concept="3cpWs3" id="4nmyK_eEAnE" role="3uHU7B">
+                        <node concept="3cpWs3" id="4nmyK_eE3Ri" role="3uHU7B">
+                          <node concept="3cpWs3" id="4nmyK_eEzTA" role="3uHU7B">
+                            <node concept="3cpWs3" id="4nmyK_eEx$a" role="3uHU7B">
+                              <node concept="3cpWs3" id="4nmyK_eE4yK" role="3uHU7B">
+                                <node concept="3cpWs3" id="4nmyK_eEvmU" role="3uHU7B">
+                                  <node concept="3cpWs3" id="4nmyK_eEthM" role="3uHU7B">
+                                    <node concept="3cpWs3" id="4nmyK_eE4YW" role="3uHU7B">
+                                      <node concept="3cpWs3" id="4nmyK_eErkm" role="3uHU7B">
+                                        <node concept="3cpWs3" id="4nmyK_eEpuy" role="3uHU7B">
+                                          <node concept="3cpWs3" id="rnX0t1pw_M" role="3uHU7B">
+                                            <node concept="3cpWs3" id="4nmyK_eE5_0" role="3uHU7B">
+                                              <node concept="3cpWs3" id="4nmyK_eEnJU" role="3uHU7B">
+                                                <node concept="3cpWs3" id="4nmyK_eEm8q" role="3uHU7B">
+                                                  <node concept="3cpWs3" id="4nmyK_eE6I6" role="3uHU7B">
+                                                    <node concept="3cpWs3" id="4nmyK_eEkBA" role="3uHU7B">
+                                                      <node concept="3cpWs3" id="4nmyK_eEjdq" role="3uHU7B">
+                                                        <node concept="3cpWs3" id="4nmyK_eE854" role="3uHU7B">
+                                                          <node concept="3cpWs3" id="4nmyK_eEhyg" role="3uHU7B">
+                                                            <node concept="3cpWs3" id="4nmyK_eE8EK" role="3uHU7B">
+                                                              <node concept="3cpWs3" id="4nmyK_eEfRg" role="3uHU7B">
+                                                                <node concept="3cpWs3" id="4nmyK_eE7zg" role="3uHU7B">
+                                                                  <node concept="3cpWs3" id="4nmyK_eEQm8" role="3uHU7B">
+                                                                    <node concept="3cpWs3" id="4nmyK_eEeIS" role="3uHU7B">
+                                                                      <node concept="3cpWs3" id="4nmyK_eEdG8" role="3uHU7B">
+                                                                        <node concept="3cpWs3" id="4nmyK_eE5Wk" role="3uHU7B">
+                                                                          <node concept="3cpWs3" id="4nmyK_eEcI$" role="3uHU7B">
+                                                                            <node concept="3cpWs3" id="4nmyK_eE5g$" role="3uHU7B">
+                                                                              <node concept="3cpWs3" id="4nmyK_eEbPW" role="3uHU7B">
+                                                                                <node concept="3cpWs3" id="4nmyK_eEb2c" role="3uHU7B">
+                                                                                  <node concept="3cpWs3" id="4nmyK_eE4JG" role="3uHU7B">
+                                                                                    <node concept="3cpWs3" id="4nmyK_eE9kK" role="3uHU7B">
+                                                                                      <node concept="3cpWs3" id="4nmyK_eE4nG" role="3uHU7B">
+                                                                                        <node concept="3cpWs3" id="4nmyK_eE3og" role="3uHU7B">
+                                                                                          <node concept="3cpWs3" id="4nmyK_eE366" role="3uHU7B">
+                                                                                            <node concept="3cpWs3" id="4nmyK_eE2x3" role="3uHU7B">
+                                                                                              <node concept="Xl_RD" id="4nmyK_eE2x9" role="3uHU7B">
+                                                                                                <property role="Xl_RC" value="--add-opens=java.base/java.io=ALL-UNNAMED\n" />
+                                                                                              </node>
+                                                                                              <node concept="Xl_RD" id="4nmyK_eE36c" role="3uHU7w">
+                                                                                                <property role="Xl_RC" value="--add-opens=java.base/java.lang=ALL-UNNAMED\n" />
+                                                                                              </node>
+                                                                                            </node>
+                                                                                            <node concept="Xl_RD" id="4nmyK_eE3om" role="3uHU7w">
+                                                                                              <property role="Xl_RC" value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED\n" />
+                                                                                            </node>
+                                                                                          </node>
+                                                                                          <node concept="Xl_RD" id="4nmyK_eE4nM" role="3uHU7w">
+                                                                                            <property role="Xl_RC" value="--add-opens=java.base/java.net=ALL-UNNAMED\n" />
+                                                                                          </node>
+                                                                                        </node>
+                                                                                        <node concept="Xl_RD" id="4nmyK_eE9kQ" role="3uHU7w">
+                                                                                          <property role="Xl_RC" value="--add-opens=java.base/java.nio=ALL-UNNAMED\n" />
+                                                                                        </node>
+                                                                                      </node>
+                                                                                      <node concept="Xl_RD" id="4nmyK_eE9kS" role="3uHU7w">
+                                                                                        <property role="Xl_RC" value="--add-opens=java.base/java.nio.charset=ALL-UNNAMED\n" />
+                                                                                      </node>
+                                                                                    </node>
+                                                                                    <node concept="Xl_RD" id="4nmyK_eEb2i" role="3uHU7w">
+                                                                                      <property role="Xl_RC" value="--add-opens=java.base/java.text=ALL-UNNAMED\n" />
+                                                                                    </node>
+                                                                                  </node>
+                                                                                  <node concept="Xl_RD" id="4nmyK_eEbQ2" role="3uHU7w">
+                                                                                    <property role="Xl_RC" value="--add-opens=java.base/java.time=ALL-UNNAMED\n" />
+                                                                                  </node>
+                                                                                </node>
+                                                                                <node concept="Xl_RD" id="4nmyK_eEbQ4" role="3uHU7w">
+                                                                                  <property role="Xl_RC" value="--add-opens=java.base/java.util=ALL-UNNAMED\n" />
+                                                                                </node>
+                                                                              </node>
+                                                                              <node concept="Xl_RD" id="4nmyK_eEcIE" role="3uHU7w">
+                                                                                <property role="Xl_RC" value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED\n" />
+                                                                              </node>
+                                                                            </node>
+                                                                            <node concept="Xl_RD" id="4nmyK_eEcIG" role="3uHU7w">
+                                                                              <property role="Xl_RC" value="--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED\n" />
+                                                                            </node>
+                                                                          </node>
+                                                                          <node concept="Xl_RD" id="4nmyK_eEdGe" role="3uHU7w">
+                                                                            <property role="Xl_RC" value="--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED\n" />
+                                                                          </node>
+                                                                        </node>
+                                                                        <node concept="Xl_RD" id="4nmyK_eEeIY" role="3uHU7w">
+                                                                          <property role="Xl_RC" value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED\n" />
+                                                                        </node>
+                                                                      </node>
+                                                                      <node concept="Xl_RD" id="4nmyK_eFTNw" role="3uHU7w">
+                                                                        <property role="Xl_RC" value="--add-opens=java.base/sun.nio.fs=ALL-UNNAMED\n" />
+                                                                      </node>
+                                                                    </node>
+                                                                    <node concept="Xl_RD" id="4nmyK_eEeJ0" role="3uHU7w">
+                                                                      <property role="Xl_RC" value="--add-opens=java.base/sun.security.ssl=ALL-UNNAMED\n" />
+                                                                    </node>
+                                                                  </node>
+                                                                  <node concept="Xl_RD" id="4nmyK_eEfRm" role="3uHU7w">
+                                                                    <property role="Xl_RC" value="--add-opens=java.base/sun.security.util=ALL-UNNAMED\n" />
+                                                                  </node>
+                                                                </node>
+                                                                <node concept="Xl_RD" id="4nmyK_eEfRo" role="3uHU7w">
+                                                                  <property role="Xl_RC" value="--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED\n" />
+                                                                </node>
+                                                              </node>
+                                                              <node concept="Xl_RD" id="4nmyK_eEhym" role="3uHU7w">
+                                                                <property role="Xl_RC" value="--add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED\n" />
+                                                              </node>
+                                                            </node>
+                                                            <node concept="Xl_RD" id="4nmyK_eEhyo" role="3uHU7w">
+                                                              <property role="Xl_RC" value="--add-opens=java.desktop/com.apple.laf=ALL-UNNAMED\n" />
+                                                            </node>
+                                                          </node>
+                                                          <node concept="Xl_RD" id="4nmyK_eEjdw" role="3uHU7w">
+                                                            <property role="Xl_RC" value="--add-opens=java.desktop/java.awt=ALL-UNNAMED\n" />
+                                                          </node>
+                                                        </node>
+                                                        <node concept="Xl_RD" id="4nmyK_eEkBG" role="3uHU7w">
+                                                          <property role="Xl_RC" value="--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED\n" />
+                                                        </node>
+                                                      </node>
+                                                      <node concept="Xl_RD" id="4nmyK_eEkBI" role="3uHU7w">
+                                                        <property role="Xl_RC" value="--add-opens=java.desktop/java.awt.event=ALL-UNNAMED\n" />
+                                                      </node>
+                                                    </node>
+                                                    <node concept="Xl_RD" id="4nmyK_eEm8w" role="3uHU7w">
+                                                      <property role="Xl_RC" value="--add-opens=java.desktop/java.awt.image=ALL-UNNAMED\n" />
+                                                    </node>
+                                                  </node>
+                                                  <node concept="Xl_RD" id="4nmyK_eEnK0" role="3uHU7w">
+                                                    <property role="Xl_RC" value="--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED\n" />
+                                                  </node>
+                                                </node>
+                                                <node concept="Xl_RD" id="4nmyK_eEnK2" role="3uHU7w">
+                                                  <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing=ALL-UNNAMED\n" />
+                                                </node>
+                                              </node>
+                                              <node concept="Xl_RD" id="4nmyK_eEpuC" role="3uHU7w">
+                                                <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED\n" />
+                                              </node>
+                                            </node>
+                                            <node concept="Xl_RD" id="rnX0t1pw_Z" role="3uHU7w">
+                                              <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.text=ALL-UNNAMED\n" />
+                                            </node>
+                                          </node>
+                                          <node concept="Xl_RD" id="4nmyK_eErks" role="3uHU7w">
+                                            <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED\n" />
+                                          </node>
+                                        </node>
+                                        <node concept="Xl_RD" id="4nmyK_eErku" role="3uHU7w">
+                                          <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED\n" />
+                                        </node>
+                                      </node>
+                                      <node concept="Xl_RD" id="4nmyK_eEthS" role="3uHU7w">
+                                        <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED\n" />
+                                      </node>
+                                    </node>
+                                    <node concept="Xl_RD" id="4nmyK_eEvn0" role="3uHU7w">
+                                      <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt.windows=ALL-UNNAMED\n" />
+                                    </node>
+                                  </node>
+                                  <node concept="Xl_RD" id="4nmyK_eEvn2" role="3uHU7w">
+                                    <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt=ALL-UNNAMED\n" />
+                                  </node>
+                                </node>
+                                <node concept="Xl_RD" id="4nmyK_eEx$g" role="3uHU7w">
+                                  <property role="Xl_RC" value="--add-opens=java.desktop/sun.font=ALL-UNNAMED\n" />
+                                </node>
+                              </node>
+                              <node concept="Xl_RD" id="4nmyK_eEzTG" role="3uHU7w">
+                                <property role="Xl_RC" value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED\n" />
+                              </node>
+                            </node>
+                            <node concept="Xl_RD" id="4nmyK_eEzTI" role="3uHU7w">
+                              <property role="Xl_RC" value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED\n" />
+                            </node>
+                          </node>
+                          <node concept="Xl_RD" id="4nmyK_eEAnK" role="3uHU7w">
+                            <property role="Xl_RC" value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED\n" />
+                          </node>
+                        </node>
+                        <node concept="Xl_RD" id="4nmyK_eEDrs" role="3uHU7w">
+                          <property role="Xl_RC" value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED\n" />
+                        </node>
+                      </node>
+                      <node concept="Xl_RD" id="4nmyK_eEDru" role="3uHU7w">
+                        <property role="Xl_RC" value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED\n" />
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="4nmyK_eEGyu" role="3uHU7w">
+                      <property role="Xl_RC" value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED\n" />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="4nmyK_eEJry" role="3uHU7w">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED\n" />
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="2JQcTZRQfVo" role="3uHU7w">
+                  <property role="Xl_RC" value="-DjbScreenMenuBar.enabled=true\n" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="Xl_RD" id="4nmyK_eEJr$" role="3uHU7w">
+            <property role="Xl_RC" value="-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader\n" />
+          </node>
         </node>
       </node>
     </node>

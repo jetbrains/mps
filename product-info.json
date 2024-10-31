@@ -145,7 +145,8 @@
         "-DjbScreenMenuBar.enabled=true",
         "-DjbScreenMenuBar.useStubItem=true",
         "-Dide.home.macro.test=$APP_PACKAGE/Contents",
-        "-Dcache.dir.macro.test=$IDE_CACHE_DIR"
+        "-Dcache.dir.macro.test=$IDE_CACHE_DIR",
+        "-Dij.startup.error.report.url=https://youtrack.jetbrains.com/newissue?project=MPS&clearDraft=true&summary=$TITLE$&description=$DESCR$"
       ],
       "mainClass": "jetbrains.mps.Launcher",
       "customCommands": [
