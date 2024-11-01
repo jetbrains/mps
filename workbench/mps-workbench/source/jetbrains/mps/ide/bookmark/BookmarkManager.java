@@ -85,7 +85,7 @@ public class BookmarkManager implements PersistentStateComponent<MyState>, Highl
   private BookmarksHighlighter myChecker;
 
   public static BookmarkManager getInstance(Project ideaProject) {
-    return ideaProject.getComponent(BookmarkManager.class);
+    return ideaProject.getService(BookmarkManager.class);
   }
 
   public BookmarkManager(Project ideaProject) {
@@ -94,7 +94,8 @@ public class BookmarkManager implements PersistentStateComponent<MyState>, Highl
 
   @Override
   public void install(@NotNull Highlighter highlighter) {
-    myChecker = new BookmarksHighlighter(this);
+//    myChecker = new BookmarksHighlighter(this);
+    myChecker = new BookmarksHighlighter(getInstance(ProjectHelper.toIdeaProject(myProject)));
     highlighter.addChecker(myChecker);
   }
 

@@ -27,9 +27,6 @@
       <interface-class>jetbrains.mps.generator.TransientModelsProvider</interface-class>
       <implementation-class>jetbrains.mps.ide.generator.TransientModelsComponent</implementation-class>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.bookmark.BookmarkManager</implementation-class>
-    </component>
 
     <component>
       <implementation-class>jetbrains.mps.plugins.projectplugins.ProjectPluginManager</implementation-class>
