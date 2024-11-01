@@ -89,7 +89,8 @@ import jetbrains.mps.ide.platform.watching.ReloadListener;
 
     public void run() {
       myTask = null;
-      List<SModule> toUpdate = SetSequence.fromSet(modulesTouched).distinct().where((it) -> isProjectMigrateableModule(it)).toList();
+      // some of the changed module could be obsolete, make sure all changed modules we report for further processing are actual.
+      List<SModule> toUpdate = SetSequence.fromSet(modulesTouched).distinct().where((it) -> isProjectMigrateableModule(it) && it.getRepository() != null).toList();
       if (!(touchedUnderReload)) {
         updateSingleModuleDescriptorSilently(toUpdate);
       }
