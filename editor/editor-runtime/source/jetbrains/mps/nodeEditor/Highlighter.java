@@ -20,7 +20,6 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationListener;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.command.CommandEvent;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.IndexNotReadyException;
@@ -50,7 +49,7 @@ import jetbrains.mps.smodel.event.SModelReplacedEvent;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.runtime.ModuleDeploymentChange;
 import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
-import org.jetbrains.annotations.NonNls;
+import jetbrains.mps.util.annotation.AccessAsPlatformService;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -67,11 +66,11 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class Highlighter implements IHighlighter, ProjectComponent {
+@AccessAsPlatformService
+public class Highlighter implements IHighlighter, Disposable {
   private static final Logger LOG = Logger.getLogger(Highlighter.class);
 
   private volatile boolean myPaused;
-  private final com.intellij.openapi.command.CommandListener myCommandListener = new PauseDuringCommandOrUndoTransparentAction();
 
   private ScheduledExecutorService myBackgroundExecutor;
   private ScheduleHighlighterUpdate myScheduleHighlighterUpdate;
@@ -116,26 +115,20 @@ public class Highlighter implements IHighlighter, ProjectComponent {
   }
 
   public Highlighter(Project project) {
+    this(project, false);
+  }
+
+  protected Highlighter(Project project, boolean emptyHighlighter) {
     // it's important that MPSProject is initialized before this component, and un-initialized after
     myMPSProject = ProjectHelper.fromIdeaProjectOrFail(project);
     myProject = project;
     myEditorList = new HighlighterEditorList(FileEditorManager.getInstance(project));
     myMakeComponent = myMPSProject.getPlatform().findComponent(MakeServiceComponent.class);
-  }
 
-  @Override
-  public void projectOpened() {
-    // I didn't find an easy way to make these contributions stateless, checkers often need some initialization code,
-    // and using non-dynamic ext. point is ok for our purposes at the moment (it's not a primary contribution
-    // mechanism, after all - proper clients register with MPS own reloadable plugin project parts)
-    for (HighlighterContribution hc : HighlighterContribution.EP.getExtensionList(myProject)) {
-      myContributors.add(hc);
-      try {
-        hc.install(this);
-      } catch (Exception ex) {
-        LOG.error(String.format("Failed to install highlighters from %s", hc.getClass()), ex);
-      }
+    if (emptyHighlighter) {
+      return;
     }
+    Disposer.register(this, myDisposable);
 
     myMPSProject.getPlatform().findComponent(LanguageRegistry.class).addRegistryListener(myClassesListener);
     myEventCollector.startListening(myMPSProject.getRepository());
@@ -143,6 +136,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     // perhaps, should register myDisposable with myProject as parent not to rely
     // solely on projectClose()?
     MessageBusConnection mbCon = myProject.getMessageBus().connect(myDisposable);
+    // XXX I wonder if EditorComponentLifecycleListener suites the task better
     mbCon.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new EditorComponentCreateListener() {
       @Override
       public void editorComponentCreated(@NotNull EditorComponent editorComponent) {
@@ -157,18 +151,26 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     });
 
     ApplicationManager.getApplication().addApplicationListener(new PauseDuringWriteAction(), myDisposable);
-    mbCon.subscribe(com.intellij.openapi.command.CommandListener.TOPIC, myCommandListener);
+    mbCon.subscribe(com.intellij.openapi.command.CommandListener.TOPIC, new PauseDuringCommandOrUndoTransparentAction());
     myMPSProject.getModelAccess().addCommandListener(myCommandWatcher);
+    //
+    startUpdater();
+
+    // I didn't find an easy way to make these contributions stateless, checkers often need some initialization code,
+    // and using non-dynamic ext. point is ok for our purposes at the moment (it's not a primary contribution
+    // mechanism, after all - proper clients register with MPS own reloadable plugin project parts)
+    for (HighlighterContribution hc : HighlighterContribution.EP.getExtensionList(myProject)) {
+      myContributors.add(hc);
+      try {
+        hc.install(this);
+      } catch (Exception ex) {
+        LOG.error(String.format("Failed to install highlighters from %s", hc.getClass()), ex);
+      }
+    }
   }
 
   @Override
-  public void projectClosed() {
-    myMPSProject.getModelAccess().removeCommandListener(myCommandWatcher);
-    // remove all listeners associated with our own Disposable instance, including those from message buss
-    Disposer.dispose(myDisposable);
-    myEventCollector.stopListening(myMPSProject.getRepository());
-    myMPSProject.getPlatform().findComponent(LanguageRegistry.class).removeRegistryListener(myClassesListener);
-
+  public void dispose() {
     for (HighlighterContribution hc : myContributors) {
       try {
         hc.uninstall(this);
@@ -177,23 +179,13 @@ public class Highlighter implements IHighlighter, ProjectComponent {
       }
     }
     myContributors.clear();
-  }
 
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return "MPS Highlighter";
-  }
-
-  @Override
-  public void initComponent() {
-    startUpdater();
-  }
-
-  @Override
-  public void disposeComponent() {
     stopUpdater();
+    // our own Disposable instance has been disposed already, removing all associated listeners (including those from message bus)
+    myMPSProject.getModelAccess().removeCommandListener(myCommandWatcher);
+    Disposer.dispose(myDisposable);
+    myEventCollector.stopListening(myMPSProject.getRepository());
+    myMPSProject.getPlatform().findComponent(LanguageRegistry.class).removeRegistryListener(myClassesListener);
   }
 
   @Override
@@ -424,12 +416,12 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     private int myLevel = 0;
 
     @Override
-    public void commandStarted(CommandEvent event) {
+    public void commandStarted(@NotNull CommandEvent event) {
       increaseLevel();
     }
 
     @Override
-    public void commandFinished(CommandEvent event) {
+    public void commandFinished(@NotNull CommandEvent event) {
       decreaseLevel();
     }
 

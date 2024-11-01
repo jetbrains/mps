@@ -20,15 +20,6 @@
                     area="IDEA_PROJECT"/>
   </extensionPoints>
 
-  <project-components>
-    <component>
-      <interface-class>jetbrains.mps.nodeEditor.Highlighter</interface-class>
-      <implementation-class>jetbrains.mps.nodeEditor.Highlighter</implementation-class>
-      <headless-implementation-class>jetbrains.mps.nodeEditor.EmptyHighlighter</headless-implementation-class>
-    </component>
-
-  </project-components>
-
   <projectListeners>
     <listener class="jetbrains.mps.ide.editor.icons.NodeIconUpdater"
               topic="jetbrains.mps.nodefs.NodeFileEventListener"
@@ -60,6 +51,11 @@
 
     <projectService serviceImplementation="jetbrains.mps.nodeEditor.InspectorTool" />
     <postStartupActivity implementation="jetbrains.mps.nodeEditor.InspectorTool$Plug" />
+
+    <projectService serviceInterface="jetbrains.mps.nodeEditor.Highlighter"
+                    serviceImplementation="jetbrains.mps.nodeEditor.Highlighter"
+                    headlessImplementation="jetbrains.mps.nodeEditor.EmptyHighlighter"/>
+    <!-- No idea if there's any reason to keep serviceInterface == serviceImplementation, just leave it as it was with project component -->
 
     <fileEditorProvider implementation="jetbrains.mps.ide.editor.MPSFileNodeEditorProvider"/>
 
