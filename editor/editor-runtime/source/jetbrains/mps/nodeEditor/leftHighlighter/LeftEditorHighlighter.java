@@ -45,6 +45,7 @@ import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer.IconRendererType;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.EditorTooltipProvider;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager;
 import jetbrains.mps.nodeEditor.leftHighlighter.IconPositionCalculator.IntLocation;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.update.UpdaterListenerAdapter;
@@ -695,6 +696,8 @@ public final class LeftEditorHighlighter extends JComponent {
   }
 
   private void mousePressedInIconsArea(MouseEvent e) {
+    MPSDocumentationManager.getInstance().cancelAll();
+    myEditorComponent.getPlatformEditorEmulation().cancelShowInfoToolTipRequest();
     EditorMessageIconRenderer iconRenderer = getIconRendererUnderMouse(e);
     if (iconRenderer != null) {
       if (e.getButton() == MouseEvent.BUTTON3) {

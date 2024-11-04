@@ -83,6 +83,7 @@ import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.nodeEditor.commands.CommandContextWrapper;
 import jetbrains.mps.nodeEditor.configuration.EditorConfiguration;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
+import jetbrains.mps.nodeEditor.documentation.MPSDocumentationManager;
 import jetbrains.mps.nodeEditor.highlighter.EditorHighlighter;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.nodeEditor.keymaps.AWTKeymapHandler;
@@ -732,7 +733,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return new FontSizeChangingScrollPane();
   }
 
-  protected Editor getPlatformEditorEmulation() {
+  public PlatformEditorEmulation getPlatformEditorEmulation() {
     return myPlatformEditorEmulation;
   }
 
@@ -2179,6 +2180,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     final jetbrains.mps.openapi.editor.cells.EditorCell selectedCell = getSelectedCell();
     if (selectedCell != null) {
       myPlatformEditorEmulation.cancelShowInfoToolTipRequest();
+      MPSDocumentationManager.getInstance().cancelAll();
       final HighlighterMessage message = getHighlighterMessageFor(selectedCell);
       MPSErrorDialog.showCellErrorDialog(getCurrentProject(), SwingUtilities.windowForComponent(EditorComponent.this), message);
     }
