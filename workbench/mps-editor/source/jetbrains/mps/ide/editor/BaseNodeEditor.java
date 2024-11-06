@@ -306,27 +306,31 @@ public abstract class BaseNodeEditor implements Editor {
     if (s.inspectorMemento == null) {
       return;
     }
-    final EditorComponent inspectorEditorComponent = editorComponent.getInspector();
-    if (inspectorEditorComponent == null) {
-      LOG.error("No inspector - memento will not be restored");
-      return;
-    }
-    executeInEDT(new PrioritizedTask(TaskType.INSPECTOR_MEMENTO, myType2TaskMap) {
-      @Override
-      public void performTask() {
-        if (editorComponent.isDisposed()) {
-          return;
-        }
-        inspectorEditorComponent.restoreState(s.inspectorMemento);
-        inspectorEditorComponent.getFocusTracker().setEffectiveFocusState(s.isInspectorFocused);
-        if (s.isInspectorFocused && focusManager != null) {
-          InspectorTool inspectorTool =InspectorTool.getInstance(myProject);
-          if (inspectorTool != null && inspectorTool.isAvailable()) {
-            inspectorTool.activate();
+    InspectorTool.executeWhenInspectorAvailable(myProject, () -> {
+      executeInEDT(new PrioritizedTask(TaskType.INSPECTOR_MEMENTO, myType2TaskMap) {
+        @Override
+        public void performTask() {
+          if (editorComponent.isDisposed()) {
+            return;
           }
-          focusManager.requestFocus(inspectorEditorComponent, true);
+
+          final EditorComponent inspectorEditorComponent = editorComponent.getInspector();
+          if (inspectorEditorComponent == null) {
+            LOG.error("No inspector - memento will not be restored");
+            return;
+          }
+
+          inspectorEditorComponent.restoreState(s.inspectorMemento);
+          inspectorEditorComponent.getFocusTracker().setEffectiveFocusState(s.isInspectorFocused);
+          if (s.isInspectorFocused && focusManager != null) {
+            InspectorTool inspectorTool = InspectorTool.getInstance(myProject);
+            if (inspectorTool != null && inspectorTool.isAvailable()) {
+              inspectorTool.activate();
+            }
+            focusManager.requestFocus(inspectorEditorComponent, true);
+          }
         }
-      }
+      });
     });
   }
 

@@ -22,12 +22,18 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 public class InspectorTool implements EditorInspector {
 
   private static ConcurrentMap<Project, InspectorAccessor> ourAccessors = new ConcurrentHashMap<>();
+  private static Map<Project, List<Runnable>> ourDelayedTasks = new HashMap<>();
+  private static final Object ourDelayedTasksLock = new Object();
 
   public interface InspectorAccessor {
 
@@ -51,6 +57,7 @@ public class InspectorTool implements EditorInspector {
     if (previous != null) {
       throw new IllegalStateException("Inspector already registered");
     }
+    processDelayedTasks(project);
   }
 
   public static void unregisterInspectorInstance(@NotNull jetbrains.mps.project.Project project, InspectorAccessor accessor) {
@@ -59,8 +66,10 @@ public class InspectorTool implements EditorInspector {
       throw new IllegalStateException("Inspector already unregistered");
     }
   }
+
   /**
    * This is the only endorsed way to obtain InspectorTool instance, we are going to switch from IDEA's ProjectComponent in the next release.
+   *
    * @since 2024.1
    */
   @Nullable
@@ -84,5 +93,28 @@ public class InspectorTool implements EditorInspector {
 
   public boolean isAvailable() {
     return myInspector.isAvailable();
+  }
+
+  public static void executeWhenInspectorAvailable(@NotNull jetbrains.mps.project.Project project, Runnable runnable) {
+    synchronized (ourDelayedTasksLock) {
+      ourDelayedTasks.putIfAbsent(project, new ArrayList<>());
+      final List<Runnable> runnables = ourDelayedTasks.get(project);
+      runnables.add(runnable);
+    }
+    processDelayedTasks(project);
+  }
+
+  private static void processDelayedTasks(@NotNull jetbrains.mps.project.Project project) {
+    if (!ourAccessors.containsKey(project)) {
+      return;
+    }
+    synchronized (ourDelayedTasksLock) {
+      final List<Runnable> runnables = ourDelayedTasks.remove(project);
+      if (runnables != null) {
+        for (Runnable runnable : runnables) {
+          runnable.run();
+        }
+      }
+    }
   }
 }
