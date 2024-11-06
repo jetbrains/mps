@@ -309,7 +309,7 @@ public class Highlighter implements IHighlighter, Disposable {
   }
 
   @NotNull
-  private HighlighterUpdateSession createUpdateSession(List<EditorComponent> activeEditors, boolean essentialOnly) {
+  private HighlighterUpdateSession createUpdateSession(List<EditorComponent> activeEditors, @Nullable EditorComponent inspector,  boolean essentialOnly) {
     processAccumulatedEvents();
 
     final Set<EditorCheckerWrapper> checkers = new LinkedHashSet<>();
@@ -333,7 +333,7 @@ public class Highlighter implements IHighlighter, Disposable {
     } else {
       myEditorTracker.markOnlyEditorsChecked(activeEditors);
     }
-    return new HighlighterUpdateSession(Highlighter.this, checkers, activeEditors, getInspector());
+    return new HighlighterUpdateSession(Highlighter.this, checkers, activeEditors, inspector);
   }
 
   public void resetCheckedStateInBackground(final EditorComponent editorComponent) {
@@ -492,6 +492,11 @@ public class Highlighter implements IHighlighter, Disposable {
     }
 
     private void update(List<EditorComponent> activeEditors) {
+      EditorComponent inspector = getInspector();
+      if (myMPSProject.getProject().isDisposed()) {
+        // it may happen that after trying to get the InspectorTool service the project switches to DISPOSED state (if it's just being closed for example)
+        return;
+      }
       try {
         final boolean updateAllCheckers = myCommandWatcher.getAndClearHasChangesFlag();
         // there had been changes, ensure we check with all possible checkers and do it asap.
@@ -499,7 +504,7 @@ public class Highlighter implements IHighlighter, Disposable {
           // I reset grace period here, prior to update to ensure we fire check again soon in case something goes wrong
           myCommandWatcher.resetGracePeriod();
         }
-        createUpdateSession(activeEditors, !updateAllCheckers).update();
+        createUpdateSession(activeEditors, inspector, !updateAllCheckers).update();
         // XXX in fact, would be better to check if update() had succeeded and only then extend grace period.
         myCommandWatcher.extendGracePeriod();
       } catch (IndexNotReadyException ex) {
