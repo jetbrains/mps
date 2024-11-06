@@ -5668,6 +5668,7 @@
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.constraints.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.constraints" />
       <fileset dir="${mps_home}/languages/languageDesign/constraints" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/languages/languageDesign/constraints/legacy" includes="icons/**, resources/**" />
       <fileset dir="${mps_home}/languages/languageDesign/constraints/legacy/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.constraints.jar" />
     </jar>

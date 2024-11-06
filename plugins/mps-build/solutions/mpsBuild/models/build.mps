@@ -14762,6 +14762,28 @@
             </node>
           </node>
         </node>
+        <node concept="3rtmxn" id="71YYnvQcsZt" role="3bR31x">
+          <node concept="3LXTmp" id="71YYnvQcsZu" role="3rtmxm">
+            <node concept="3qWCbU" id="71YYnvQcsZv" role="3LXTna">
+              <property role="3qWCbO" value="icons/**, resources/**" />
+            </node>
+            <node concept="398BVA" id="71YYnvQcsZw" role="3LXTmr">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="71YYnvQcsZx" role="iGT6I">
+                <property role="2Ry0Am" value="languages" />
+                <node concept="2Ry0Ak" id="71YYnvQcsZy" role="2Ry0An">
+                  <property role="2Ry0Am" value="languageDesign" />
+                  <node concept="2Ry0Ak" id="71YYnvQcsZz" role="2Ry0An">
+                    <property role="2Ry0Am" value="constraints" />
+                    <node concept="2Ry0Ak" id="71YYnvQct4h" role="2Ry0An">
+                      <property role="2Ry0Am" value="legacy" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="1yeLz9" id="7YI57w6K0i2" role="1TViLv">
           <property role="TrG5h" value="jetbrains.mps.lang.constraints#1147476727047" />
           <property role="3LESm3" value="e00b808b-8cda-4cba-becc-a390490358b1" />
