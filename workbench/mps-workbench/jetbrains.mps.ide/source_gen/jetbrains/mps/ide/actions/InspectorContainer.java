@@ -60,6 +60,9 @@ public class InspectorContainer {
   }
 
   /*package*/ void inspect(SNode node, FileEditor fileEditor, String[] enabledHints, boolean readOnly) {
+    if (myInspectorComponent.isDisposed()) {
+      return;
+    }
     myFileEditor = fileEditor;
     myInspectorComponent.setReadOnly(readOnly);
     boolean needToEdit = myInspectorComponent.getUpdater().setInitialEditorHints(enabledHints);
