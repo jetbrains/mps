@@ -31,7 +31,6 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
-import jetbrains.mps.project.structure.modules.LibraryDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.util.FileUtil;
@@ -749,8 +748,6 @@ public final class ModulesMiner {
       stream.writeByte(3);
     } else if (descriptor instanceof GeneratorDescriptor) {
       stream.writeByte(4);
-    } else if (descriptor instanceof LibraryDescriptor) {
-      stream.writeByte(5);
     } else {
       throw new IllegalArgumentException("unknown module:" + descriptor);
     }
@@ -770,8 +767,6 @@ public final class ModulesMiner {
       descriptor = new DevkitDescriptor();
     } else if (type == 4) {
       descriptor = new GeneratorDescriptor();
-    } else if (type == 5) {
-      descriptor = new LibraryDescriptor();
     } else {
       throw new IOException("broken stream: invalid descriptor type");
     }
