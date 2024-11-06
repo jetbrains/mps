@@ -229,6 +229,9 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     // no-op, subclasses that do support this setting shall override
   }
 
+  /**
+   * @since 2023.3
+   */
   @Nullable
   public String getOutputRoot() {
     return myOutputRoot;
@@ -351,42 +354,12 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
 
 
   /**
-   * Paths to extra jar files needed to compile and run given module, generally empty unless a module has some peculiar dependencies on existing java libraries.
-   * As of today, these come from {@code <stubModelEntry path=""/>} in a module descriptor.
-   * according to {@code LanguageDescriptorPersistence}, legacy entries were {@code classPath} and {@code runtimeClassPath}.
-   * This method is just a better name for what used to be {@code getAdditionalJavaStubPaths()}.
-   * FIXME WHY DOES IT USE String for File location, which FS shall I use to resolve these locations?
-   * @deprecated replaced with {@link jetbrains.mps.project.facets.JavaModuleFacetImpl#getJavaLibrarySpec()}, although if all you need is
-   *             to access libraries, {@link jetbrains.mps.project.facets.JavaModuleFacet#getLibraryClassPath()} might be better alternative
-   *             This method will be removed after few releases (as it's part of well-known MD class, we'll keep it for a couple of releases)
-   */
-  @Deprecated(since = "2023.1", forRemoval = true)
-  public final Collection<String> getJavaLibs() {
-    Logger.getLogger(getClass()).warnDeprecatedUse("Java Libraries are part of JavaModuleFacet specification now");
-    return myJavaLibsWarnWrap;
-  }
-
-  /**
    * Provisional API to migrate usages of {@code MD.getJavaLibs()} to libraries from {@code JavaModuleFacet}
    * This field reflects legacy persisted values, these are converted to respective elements in JMF
    */
   @Deprecated(forRemoval = true, since = "0")
   public final Collection<String> getJavaLibPersistedValues() {
     return myJavaLibs;
-  }
-
-    /**
-     * Additional source files to compile along with module's own generated output.
-     * Though, uses are bit odd:
-     *  - There's unused {@link AbstractModule#getSourcePaths()}
-     *  - JavaModuleFacet manifests these {@link jetbrains.mps.project.facets.JavaModuleFacet#getAdditionalSourcePaths()}, likely using module descriptor just as a storage (it's what JMF does anyway)
-     *  - Make respects these to compile a module
-     * @deprecated not an attribute of every module, use {@link jetbrains.mps.project.facets.JavaModuleFacet#getAdditionalSourcePaths()} instead
-     */
-  @Deprecated(since = "2023.1", forRemoval = true)
-  public final Collection<String> getSourcePaths() {
-    Logger.getLogger(getClass()).warnDeprecatedUse("Additional source paths are part of JavaModuleFacet specification now");
-    return getSourcePathPersistedValue();
   }
 
   @Deprecated(forRemoval = true, since = "0")
