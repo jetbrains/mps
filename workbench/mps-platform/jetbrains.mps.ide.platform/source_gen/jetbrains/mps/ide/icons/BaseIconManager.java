@@ -43,6 +43,7 @@ import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
+import com.intellij.ui.icons.CachedImageIcon;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)/1315815304215925444", model = "r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)")
@@ -263,6 +264,10 @@ public class BaseIconManager {
       if (icon instanceof IconLoader.CachedImageIcon) {
         // see comment above, in isLegacy section. Icons coming from modules are always subject to unpredictable CL changes
         icon = ((IconLoader.CachedImageIcon) icon).getRealIcon();
+      }
+      if (icon instanceof CachedImageIcon) {
+        // see comment above, in isLegacy section. Icons coming from modules are always subject to unpredictable CL changes
+        icon = ((CachedImageIcon) icon).getRealIcon();
       }
     }
     if (icon == null) {
