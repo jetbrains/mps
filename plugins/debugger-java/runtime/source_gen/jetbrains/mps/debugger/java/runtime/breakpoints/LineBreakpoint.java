@@ -79,16 +79,6 @@ public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoin
   @Override
   protected String getClassNameToPrepare() {
     String className = getLocation().getTargetUnitName();
-    if (className == null) {
-      //  todo when this case does actually happen?
-      String fileName = getLocation().getFileName();
-      if (fileName != null && fileName.endsWith(".java")) {
-        fileName = fileName.substring(0, fileName.length() - ".java".length());
-        className = myNode.getModelReference().getName().getLongName() + "." + fileName;
-      } else {
-        return null;
-      }
-    }
     return className;
   }
   @NotNull
@@ -98,7 +88,7 @@ public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoin
   }
   @Override
   public boolean isValid() {
-    return isNotEmptyString(getLocation().getTargetUnitName()) || isNotEmptyString(getLocation().getFileName());
+    return isNotEmptyString(getLocation().getTargetUnitName());
   }
   @Override
   public String getPresentation() {

@@ -55,9 +55,14 @@ public class BreakpointLocation {
     TraceablePositionInfo pos = getTargetCodePosition();
     return (pos == null ? -1 : pos.getStartLine() + 1);
   }
+  /**
+   * 
+   * @deprecated always null. of no use, besides, location is going to get rid of all traceinfo stuff
+   */
   @Nullable
+  @Deprecated
   public String getFileName() {
-    return myTargetCodeLocation.getFileName();
+    return null;
   }
 
   public String getPresentation() {

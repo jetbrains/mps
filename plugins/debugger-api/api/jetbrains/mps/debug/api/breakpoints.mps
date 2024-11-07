@@ -198,9 +198,14 @@
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
+      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -839,18 +844,23 @@
       <node concept="17QB3L" id="7hy7kVIHWBf" role="3clF45" />
       <node concept="3clFbS" id="3SnNvqCaJY5" role="3clF47">
         <node concept="3cpWs6" id="3Gc6Q_RYrZn" role="3cqZAp">
-          <node concept="2OqwBi" id="3Gc6Q_RZK0A" role="3cqZAk">
-            <node concept="37vLTw" id="3Gc6Q_RZJN3" role="2Oq$k0">
-              <ref role="3cqZAo" node="3Gc6Q_RZzjR" resolve="myTargetCodeLocation" />
-            </node>
-            <node concept="liA8E" id="3Gc6Q_RZKd6" role="2OqNvi">
-              <ref role="37wK5l" to="fwk:~NodeTraceInfo.getFileName()" resolve="getFileName" />
-            </node>
-          </node>
+          <node concept="10Nm6u" id="2WipSYwtWGq" role="3cqZAk" />
         </node>
       </node>
       <node concept="2AHcQZ" id="7hy7kVIHWRc" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="P$JXv" id="2WipSYwtX8Z" role="lGtFl">
+        <node concept="TZ5HI" id="2WipSYwtX90" role="3nqlJM">
+          <node concept="TZ5HA" id="2WipSYwtX91" role="3HnX3l">
+            <node concept="1dT_AC" id="2WipSYwtXqt" role="1dT_Ay">
+              <property role="1dT_AB" value="always null. of no use, besides, location is going to get rid of all traceinfo stuff" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="2WipSYwtX92" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
       </node>
     </node>
     <node concept="2tJIrI" id="3Gc6Q_RU7YG" role="jymVt" />
