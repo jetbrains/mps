@@ -242,13 +242,16 @@ public class BaseIconManager {
         // see MPS-30995. There's no way to ensure the provider will not be disposed already when the icon will be required the first time. That's why we ensure here that for a non-default provider we load the icon exactly at the moment it's requested
         icon = ((IconLoader.CachedImageIcon) icon).getRealIcon();
       }
-    } else {
-      // XXX I wonder if there's solid reason to cache myResToIcon, as IDEA's IconLoader likely does it anyway.
-      //    Perhaps, shall record SModuleReference and clean these on module reload
-      if (MapSequence.fromMap(myResToIcon).containsKey(ir)) {
-        return MapSequence.fromMap(myResToIcon).get(ir);
+      if (icon == null) {
+        if (LOG.isWarningLevel()) {
+          LOG.warning("Icon was not found for " + ir);
+        }
+        return null;
       }
+      MapSequence.fromMap(myResToIcon).put(ir, icon);
+      return icon;
 
+    } else {
       SModuleReference originModule = ir.getOriginModule(myPersistenceFacade);
       if (originModule == null) {
         return null;
@@ -269,15 +272,13 @@ public class BaseIconManager {
         // see comment above, in isLegacy section. Icons coming from modules are always subject to unpredictable CL changes
         icon = ((CachedImageIcon) icon).getRealIcon();
       }
-    }
-    if (icon == null) {
-      if (LOG.isWarningLevel()) {
-        LOG.warning("Icon was not found for " + ir);
+      if (icon == null) {
+        if (LOG.isWarningLevel()) {
+          LOG.warning("Icon was not found for " + ir);
+        }
       }
-      return null;
+      return icon;
     }
-    MapSequence.fromMap(myResToIcon).put(ir, icon);
-    return icon;
   }
 
   private static final class CONCEPTS {
