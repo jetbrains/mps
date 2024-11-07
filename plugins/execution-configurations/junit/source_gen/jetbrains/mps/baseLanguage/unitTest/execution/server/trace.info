@@ -85,17 +85,17 @@
       <node id="20930126051827444" at="35,136,36,53" concept="11" />
       <node id="20930126051907729" at="41,120,42,144" concept="10" />
       <node id="20930126052248511" at="42,144,43,66" concept="11" />
-      <node id="20930126051981982" at="47,87,48,47" concept="12" />
-      <node id="20930126052000273" at="48,47,49,66" concept="16" />
-      <node id="20930126052104166" at="53,111,54,47" concept="12" />
-      <node id="20930126052104173" at="54,47,55,66" concept="16" />
+      <node id="1589389150740268266" at="47,87,48,71" concept="11" />
+      <node id="1589389150740275428" at="52,111,53,103" concept="11" />
       <node id="20930126051752705" at="22,0,26,0" concept="2" trace="JUnit5ScriptTestContributor#(Ljetbrains/mps/tool/environment/Environment;Ljava/util/Collection;)V" />
       <node id="20930126051758090" at="27,0,31,0" concept="9" trace="collectSelectors#()Ljava/util/List;" />
-      <node id="20930126051886359" at="46,0,51,0" concept="9" trace="createFailedRequestForClass#(Ljava/lang/String;Ljava/lang/Exception;)Lorg/junit/platform/engine/DiscoverySelector;" />
-      <node id="20930126051886375" at="52,0,57,0" concept="9" trace="createFailedRequestForMethod#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Exception;)Lorg/junit/platform/engine/DiscoverySelector;" />
+      <node id="20930126051886359" at="46,0,50,0" concept="9" trace="createFailedRequestForClass#(Ljava/lang/String;Ljava/lang/Exception;)Lorg/junit/platform/engine/DiscoverySelector;" />
+      <node id="20930126051886375" at="51,0,55,0" concept="9" trace="createFailedRequestForMethod#(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Exception;)Lorg/junit/platform/engine/DiscoverySelector;" />
       <node id="20930126051827410" at="32,0,38,0" concept="9" trace="processTestCase#(Ljava/lang/ClassLoader;Ljava/lang/String;)Lorg/junit/platform/engine/DiscoverySelector;" />
       <node id="20930126051907662" at="39,0,45,0" concept="9" trace="processTestMethod#(Ljava/lang/ClassLoader;Ljava/lang/String;Ljava/lang/String;)Lorg/junit/platform/engine/DiscoverySelector;" />
       <scope id="20930126051758095" at="28,53,29,39" />
+      <scope id="20930126051886366" at="47,87,48,71" />
+      <scope id="20930126051886384" at="52,111,53,103" />
       <scope id="20930126051752709" at="22,118,24,20" />
       <scope id="20930126051827420" at="34,95,36,53">
         <var name="testClass" id="20930126051827437" />
@@ -103,18 +103,16 @@
       <scope id="20930126051907672" at="41,120,43,66">
         <var name="testClass" id="20930126051907730" />
       </scope>
-      <scope id="20930126051886366" at="47,87,49,66" />
-      <scope id="20930126051886384" at="53,111,55,66" />
       <scope id="20930126051752705" at="22,0,26,0">
         <var name="env" id="20930126051754576" />
         <var name="tests" id="20930126051754579" />
       </scope>
       <scope id="20930126051758090" at="27,0,31,0" />
-      <scope id="20930126051886359" at="46,0,51,0">
+      <scope id="20930126051886359" at="46,0,50,0">
         <var name="e" id="20930126051886364" />
         <var name="fqName" id="20930126051886362" />
       </scope>
-      <scope id="20930126051886375" at="52,0,57,0">
+      <scope id="20930126051886375" at="51,0,55,0">
         <var name="e" id="20930126051886382" />
         <var name="methodName" id="20930126051886380" />
         <var name="testFqName" id="20930126051886378" />
@@ -128,7 +126,7 @@
         <var name="methodName" id="6161537567976218164" />
         <var name="testFqName" id="20930126051907668" />
       </scope>
-      <unit id="20930126051744997" at="18,0,58,0" name="jetbrains.mps.baseLanguage.unitTest.execution.server.JUnit5ScriptTestContributor" />
+      <unit id="20930126051744997" at="18,0,56,0" name="jetbrains.mps.baseLanguage.unitTest.execution.server.JUnit5ScriptTestContributor" />
     </file>
   </root>
   <root nodeRef="r:a8dde698-9468-4a76-b89d-abdfa4716001(jetbrains.mps.baseLanguage.unitTest.execution.server)/4901831380543726915">
