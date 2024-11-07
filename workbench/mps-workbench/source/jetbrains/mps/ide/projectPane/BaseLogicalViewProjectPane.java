@@ -138,9 +138,17 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     else {
       elementToSelect = element;
     }
+    final VirtualFile fileToSelect;
+    if (getProjectViewState().getShowMembers() && element instanceof VirtualFile) {
+      // member (non-root node) may be passed as a VirtualFile instance
+      fileToSelect = (VirtualFile) element;
+    }
+    else {
+      fileToSelect = file;
+    }
     ActionCallback callback = new ActionCallback();
     EdtExecutorService.getScheduledExecutorInstance()
-                      .schedule(() -> super.selectCB(elementToSelect, file, requestFocus).notify(callback), 100, TimeUnit.MILLISECONDS);
+                      .schedule(() -> super.selectCB(elementToSelect, fileToSelect, requestFocus).notify(callback), 100, TimeUnit.MILLISECONDS);
     return callback;
   }
 
