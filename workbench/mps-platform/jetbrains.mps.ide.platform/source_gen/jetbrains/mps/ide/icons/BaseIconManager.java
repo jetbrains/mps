@@ -267,7 +267,9 @@ public class BaseIconManager {
       }
       if (icon instanceof CachedImageIcon) {
         // see comment above, in isLegacy section. Icons coming from modules are always subject to unpredictable CL changes
-        icon = ((CachedImageIcon) icon).getRealIcon();
+        // NB! we only request the icon data to be loaded by CachedImageIcon, but we don't want to lose the functionality
+        // provided by that class (adapting to the changed theme, for example)
+        ((CachedImageIcon) icon).getRealIcon();
       }
     }
     if (icon == null) {
