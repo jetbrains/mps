@@ -51,16 +51,20 @@ public class BreakpointLocation {
     return myTargetCodeLocation.getUnitName();
   }
 
+  /**
+   * 
+   * @deprecated not in use, always -1
+   */
+  @Deprecated(forRemoval = true, since = "2024.3")
   public int getLineIndexInFile() {
-    TraceablePositionInfo pos = getTargetCodePosition();
-    return (pos == null ? -1 : pos.getStartLine() + 1);
+    return -1;
   }
   /**
    * 
    * @deprecated always null. of no use, besides, location is going to get rid of all traceinfo stuff
    */
   @Nullable
-  @Deprecated
+  @Deprecated(forRemoval = true, since = "2024.3")
   public String getFileName() {
     return null;
   }

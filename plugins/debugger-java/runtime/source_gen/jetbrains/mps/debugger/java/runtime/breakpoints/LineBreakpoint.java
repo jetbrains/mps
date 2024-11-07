@@ -13,6 +13,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 import com.sun.jdi.ReferenceType;
 import jetbrains.mps.debugger.java.runtime.engine.RequestManager;
+import jetbrains.mps.textgen.trace.TraceablePositionInfo;
 import java.util.List;
 import com.sun.jdi.Location;
 import com.sun.jdi.request.BreakpointRequest;
@@ -48,7 +49,11 @@ public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoin
   protected void createRequestForPreparedClass(EventsProcessor debugProcess, final ReferenceType classType) {
     RequestManager requestManager = debugProcess.getRequestManager();
     try {
-      int lineIndex = getLocation().getLineIndexInFile();
+      TraceablePositionInfo targetCodePosition = getLocation().getTargetCodePosition();
+      if (targetCodePosition == null) {
+        return;
+      }
+      int lineIndex = targetCodePosition.getStartLine() + 1;
       List<Location> locs = classType.locationsOfLine(lineIndex);
       if (locs.size() > 0) {
         for (final Location location : locs) {
@@ -74,8 +79,7 @@ public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoin
   @Nullable
   @Override
   protected String getClassNameToPrepare() {
-    String className = getLocation().getTargetUnitName();
-    return className;
+    return getLocation().getTargetUnitName();
   }
   @NotNull
   @Override
