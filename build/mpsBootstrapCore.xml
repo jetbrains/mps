@@ -4179,6 +4179,7 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.feedback.skeleton.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.feedback.skeleton" />
+      <fileset dir="${mps_home}/languages/languageDesign/feedback/skeleton" includes="icons/**, resources/**" />
       <fileset dir="${mps_home}/languages/languageDesign/feedback/skeleton/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.feedback.skeleton.jar" />
     </jar>
@@ -6184,6 +6185,7 @@
     <jar destfile="${build.layout}/languages/languageDesign/jetbrains.mps.lang.constraints.rules.skeleton.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.lang.constraints.rules.skeleton" />
       <fileset dir="${mps_home}/languages/languageDesign/constraints" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/languages/languageDesign/constraints/rules/skeleton" includes="icons/**, resources/**" />
       <fileset dir="${mps_home}/languages/languageDesign/constraints/rules/skeleton/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.constraints.rules.skeleton.jar" />
     </jar>

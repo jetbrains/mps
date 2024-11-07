@@ -13487,6 +13487,28 @@
             </node>
           </node>
         </node>
+        <node concept="3rtmxn" id="68Z$UrhQNgP" role="3bR31x">
+          <node concept="3LXTmp" id="68Z$UrhQNgQ" role="3rtmxm">
+            <node concept="3qWCbU" id="68Z$UrhQNgR" role="3LXTna">
+              <property role="3qWCbO" value="icons/**, resources/**" />
+            </node>
+            <node concept="398BVA" id="68Z$UrhQNgS" role="3LXTmr">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="68Z$UrhQNgT" role="iGT6I">
+                <property role="2Ry0Am" value="languages" />
+                <node concept="2Ry0Ak" id="68Z$UrhQNgU" role="2Ry0An">
+                  <property role="2Ry0Am" value="languageDesign" />
+                  <node concept="2Ry0Ak" id="68Z$UrhQNgV" role="2Ry0An">
+                    <property role="2Ry0Am" value="feedback" />
+                    <node concept="2Ry0Ak" id="68Z$UrhQNgW" role="2Ry0An">
+                      <property role="2Ry0Am" value="skeleton" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="3qkjbZn8bgc" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -15588,6 +15610,31 @@
                   <property role="2Ry0Am" value="languageDesign" />
                   <node concept="2Ry0Ak" id="3qkjbZn7YUn" role="2Ry0An">
                     <property role="2Ry0Am" value="constraints" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3rtmxn" id="68Z$UrhQM5a" role="3bR31x">
+          <node concept="3LXTmp" id="68Z$UrhQM5b" role="3rtmxm">
+            <node concept="3qWCbU" id="68Z$UrhQM5c" role="3LXTna">
+              <property role="3qWCbO" value="icons/**, resources/**" />
+            </node>
+            <node concept="398BVA" id="68Z$UrhQM5d" role="3LXTmr">
+              <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+              <node concept="2Ry0Ak" id="68Z$UrhQM5e" role="iGT6I">
+                <property role="2Ry0Am" value="languages" />
+                <node concept="2Ry0Ak" id="68Z$UrhQM5f" role="2Ry0An">
+                  <property role="2Ry0Am" value="languageDesign" />
+                  <node concept="2Ry0Ak" id="68Z$UrhQM5g" role="2Ry0An">
+                    <property role="2Ry0Am" value="constraints" />
+                    <node concept="2Ry0Ak" id="68Z$UrhQMfn" role="2Ry0An">
+                      <property role="2Ry0Am" value="rules" />
+                      <node concept="2Ry0Ak" id="68Z$UrhQMjI" role="2Ry0An">
+                        <property role="2Ry0Am" value="skeleton" />
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>
@@ -34866,6 +34913,28 @@
           </node>
           <node concept="3qWCbU" id="73GUf$umQgp" role="3LXTna">
             <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
+          </node>
+        </node>
+      </node>
+      <node concept="3rtmxn" id="68Z$UrhR0KI" role="3bR31x">
+        <node concept="3LXTmp" id="68Z$UrhR0KJ" role="3rtmxm">
+          <node concept="3qWCbU" id="68Z$UrhR0KK" role="3LXTna">
+            <property role="3qWCbO" value="icons/**, resources/**" />
+          </node>
+          <node concept="398BVA" id="68Z$UrhR0KL" role="3LXTmr">
+            <ref role="398BVh" node="1lMM4owFq61" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="68Z$UrhR0KM" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="68Z$UrhR0KN" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-vcs" />
+                <node concept="2Ry0Ak" id="68Z$UrhR0KO" role="2Ry0An">
+                  <property role="2Ry0Am" value="languages" />
+                  <node concept="2Ry0Ak" id="68Z$UrhR0KP" role="2Ry0An">
+                    <property role="2Ry0Am" value="mergehints" />
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
         </node>
       </node>
