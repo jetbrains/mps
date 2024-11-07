@@ -151,14 +151,12 @@
       <node id="4531193212525230343" at="264,55,265,123" concept="9" />
       <node id="4531193212525230388" at="265,123,266,65" concept="2" />
       <node id="8106190672940211209" at="268,44,269,123" concept="9" />
-      <node id="5377108763935915204" at="269,123,270,121" concept="9" />
-      <node id="5377108763935929571" at="270,121,271,78" concept="9" />
-      <node id="5377108763935882711" at="271,78,272,47" concept="2" />
-      <node id="3968623274586993772" at="276,33,277,52" concept="2" />
-      <node id="1315815304216192775" at="278,7,279,18" concept="8" />
-      <node id="1315815304216192827" at="280,5,281,51" concept="2" />
-      <node id="1315815304216192833" at="281,51,282,16" concept="8" />
-      <node id="1315815304215925444" at="286,0,287,0" concept="11" trace="BaseConcept$gP" />
+      <node id="8106190672940211228" at="269,123,270,54" concept="2" />
+      <node id="3968623274586993772" at="274,33,275,52" concept="2" />
+      <node id="1315815304216192775" at="276,7,277,18" concept="8" />
+      <node id="1315815304216192827" at="278,5,279,51" concept="2" />
+      <node id="1315815304216192833" at="279,51,280,16" concept="8" />
+      <node id="1315815304215925444" at="284,0,285,0" concept="11" trace="BaseConcept$gP" />
       <node id="8372010473396818805" at="118,12,120,7" concept="0" />
       <node id="7845819426928905285" at="69,119,72,5" concept="5" />
       <node id="1315815304215972093" at="87,76,90,5" concept="5" />
@@ -189,15 +187,15 @@
       <node id="1315815304216192736" at="234,7,237,7" concept="5" />
       <node id="4531193212525292361" at="247,83,250,7" concept="5" />
       <node id="4531193212523824767" at="252,78,255,7" concept="5" />
-      <node id="3968623274586993772" at="275,23,278,7" concept="5" />
+      <node id="3968623274586993772" at="273,23,276,7" concept="5" />
       <node id="7980942092862106707" at="76,0,80,0" concept="6" trace="invalidate#()V" />
       <node id="1315815304215972068" at="81,52,85,5" concept="5" />
       <node id="1788958176606305528" at="240,75,244,7" concept="5" />
       <node id="4531193212525230341" at="263,22,267,7" concept="5" />
+      <node id="8106190672940211207" at="267,7,271,7" concept="5" />
       <node id="8372010473396818799" at="115,27,120,7" concept="5" />
       <node id="4531193212523884156" at="257,63,262,9" concept="2" />
-      <node id="8106190672940211207" at="267,7,273,7" concept="5" />
-      <node id="1315815304216192773" at="274,5,280,5" concept="5" />
+      <node id="1315815304216192773" at="272,5,278,5" concept="5" />
       <node id="6478603752171481302" at="59,0,66,0" concept="1" trace="BaseIconManager#(Ljetbrains/mps/components/ComponentHost;)V" />
       <node id="8372010473396818794" at="114,5,121,5" concept="5" />
       <node id="1788958176606411611" at="169,32,176,5" concept="14" />
@@ -212,9 +210,9 @@
       <node id="8372010473396818764" at="106,0,128,0" concept="6" trace="getIconFor1#(Lorg/jetbrains/mps/openapi/model/SNode;Z)Ljavax/swing/Icon;" />
       <node id="1315815304215976244" at="129,0,151,0" concept="6" trace="getIconFor#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljavax/swing/Icon;" />
       <node id="1315815304215981378" at="183,0,205,0" concept="6" trace="addIconFeatures#(Ljavax/swing/Icon;Lorg/jetbrains/mps/openapi/model/SNode;)Ljavax/swing/Icon;" />
-      <node id="4531193212523623798" at="245,10,274,5" concept="0" />
-      <node id="4531193212523558752" at="230,21,274,5" concept="5" />
-      <node id="1315815304216192715" at="226,0,284,0" concept="6" trace="getIconForResource#(Ljetbrains/mps/smodel/runtime/IconResource;)Ljavax/swing/Icon;" />
+      <node id="4531193212523623798" at="245,10,272,5" concept="0" />
+      <node id="4531193212523558752" at="230,21,272,5" concept="5" />
+      <node id="1315815304216192715" at="226,0,282,0" concept="6" trace="getIconForResource#(Ljetbrains/mps/smodel/runtime/IconResource;)Ljavax/swing/Icon;" />
       <scope id="7845819426928905285" at="70,31,71,98" />
       <scope id="1315815304215972094" at="88,25,89,44" />
       <scope id="1315815304215972106" at="92,23,93,44" />
@@ -247,13 +245,14 @@
       <scope id="1315815304216192737" at="235,61,236,56" />
       <scope id="4531193212525292362" at="248,61,249,56" />
       <scope id="4531193212523824769" at="253,33,254,20" />
-      <scope id="3968623274586993772" at="276,33,277,52" />
+      <scope id="3968623274586993772" at="274,33,275,52" />
       <scope id="7980942092862106711" at="76,34,78,45" />
       <scope id="1315815304215972069" at="82,71,84,60">
         <var name="ir" id="1315815304215972071" />
       </scope>
       <scope id="1788958176606305530" at="241,75,243,65" />
       <scope id="4531193212525230342" at="264,55,266,65" />
+      <scope id="8106190672940211208" at="268,44,270,54" />
       <scope id="8335510736429864123" at="98,0,101,0">
         <var name="concept" id="8335510736429864140" />
       </scope>
@@ -269,8 +268,7 @@
       <scope id="1788958176606411612" at="172,5,176,5">
         <var name="t" id="1788958176606411602" />
       </scope>
-      <scope id="8106190672940211208" at="268,44,272,47" />
-      <scope id="1315815304216192774" at="275,23,279,18" />
+      <scope id="1315815304216192774" at="273,23,277,18" />
       <scope id="6478603752171481307" at="59,59,64,46" />
       <scope id="8372010473396818798" at="115,27,120,7" />
       <scope id="1315815304215994103" at="208,29,213,96">
@@ -340,19 +338,19 @@
         <var name="mainIcon" id="1315815304215981382" />
         <var name="node" id="1315815304215981384" />
       </scope>
-      <scope id="4531193212523623799" at="245,12,273,7">
+      <scope id="4531193212523623799" at="245,12,271,7">
         <var name="originModule" id="4531193212523780781" />
         <var name="resourceId" id="4531193212524147700" />
         <var name="rv" id="4531193212524210912" />
       </scope>
-      <scope id="1315815304216192718" at="226,61,282,16">
+      <scope id="1315815304216192718" at="226,61,280,16">
         <var name="icon" id="1315815304216192764" />
       </scope>
-      <scope id="1315815304216192715" at="226,0,284,0">
+      <scope id="1315815304216192715" at="226,0,282,0">
         <var name="ir" id="1315815304216192836" />
       </scope>
-      <unit id="1315815304215925444" at="285,0,288,0" name="jetbrains.mps.ide.icons.BaseIconManager$CONCEPTS" />
-      <unit id="1315815304215925444" at="49,0,289,0" name="jetbrains.mps.ide.icons.BaseIconManager" />
+      <unit id="1315815304215925444" at="283,0,286,0" name="jetbrains.mps.ide.icons.BaseIconManager$CONCEPTS" />
+      <unit id="1315815304215925444" at="49,0,287,0" name="jetbrains.mps.ide.icons.BaseIconManager" />
     </file>
   </root>
   <root nodeRef="r:836426ab-a6f4-4fa3-9a9c-34c02ed6ab5d(jetbrains.mps.ide.icons)/4459225238462083668">
