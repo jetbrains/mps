@@ -1909,9 +1909,11 @@
     <unregister id="ProjectView.SortByType"/>
     <action id="MPSProjectView.SortRootsByConcept"
             class="jetbrains.mps.ide.projectView.ProjectViewImpl$Action$SortRootsByConcept">
-      <add-to-group group-id="ProjectView.ToolWindow.Appearance.Actions" anchor="after" relative-to-action="ProjectView.SortByName"/>
+      <add-to-group group-id="ProjectView.ToolWindow.Sort.Actions" anchor="after" relative-to-action="ProjectView.SortByName"/>
     </action>
     <unregister id="ProjectView.FoldersAlwaysOnTop"/>
+    <unregister id="ViewInplaceComments"/>
+    <unregister id="ProjectView.CustomizeTrees"/>
   </actions>
 
 </idea-plugin>

@@ -47,7 +47,7 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
   private final MPSProjectViewState myState;
   private final Project myProject; // FIXME superclass's field is private and there's no accessor
 
-  private final Option myShowDescriptorModels = new Option("Show Descriptor Models", "Show descriptor models in generator modules") {
+  private final Option myShowDescriptorModels = new Option("Descriptor Models", "Show descriptor models of languages, solutions, and generators") {
 
     @Override
     public boolean isSelected() {
@@ -69,7 +69,7 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
     }
   }
   ;
-  private final Option myShowErrorsOnly = new Option("Show Errors Only", "Only show errors reported on modules and models") {
+  private final Option myShowErrorsOnly = new Option("Errors Only", "Only show errors reported on modules and models") {
 
     @Override
     public boolean isSelected() {
@@ -178,7 +178,7 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
 
     static final class SortRootsByConcept extends SortKeyAction {
       SortRootsByConcept() {
-        super(NodeSortKey.BY_TYPE, "Sort by Concept", "Sort root nodes by their concept");
+        super(NodeSortKey.BY_TYPE, "Concept", "Sort root nodes by their concept");
       }
     }
 
