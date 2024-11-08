@@ -198,7 +198,6 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
    */
   private final SRepository myModuleRepository;
   private final Project myIdeaProject;
-  private final List<FacetCheckBox> myCheckBoxes = new ArrayList<>();
   private final FacetTabsPersistence myFacetTabsPersistence;
 
   private AddFacetsTab myControlTab;
@@ -1493,6 +1492,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
   }
 
   public class AddFacetsTab extends BaseTab {
+    private final List<FacetCheckBox> myCheckBoxes = new ArrayList<>();
 
     public AddFacetsTab() {
       super(PropertiesBundle.message("module.facets.title"), Nodes.Plugin, PropertiesBundle.message("module.facets.tip"));
