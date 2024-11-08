@@ -13,7 +13,6 @@ import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.openapi.wm.ex.ToolWindowEx;
 import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentFactory;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationToolWindowUI;
 import jetbrains.mps.nodeEditor.documentation.ui.MPSDocumentationUI;
 import org.jetbrains.annotations.NotNull;
@@ -89,7 +88,8 @@ public class MPSDocumentationToolWindowManager {
   }
 
   public boolean isVisible() {
-    return getToolWindow().isVisible();
+    final ToolWindow toolWindow = getToolWindow();
+    return toolWindow != null && toolWindow.isVisible();
   }
 
   @Nullable
