@@ -22,6 +22,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
  * 
  * NOTE, with all the attempts to improve it, it's bad design anyway. Location API shall not expose implementation details like TraceablePositionInfo at all.
  * XXX Now with all uses of trace info gone, this ^^^ comment deserves an update (together with removal of deprecated methods)
+ *     Don't forget to check [debugger-api-api] dependencies, likely there's no need for [debuginfo] dependency (as well as in mpsDebuggerPlugin build project)
  */
 @GeneratedClass(node = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)/4474271214082916065", model = "r:d910d08e-4a00-41f9-ac8b-b7c374586874(jetbrains.mps.debug.api.breakpoints)")
 public class BreakpointLocation {
@@ -52,9 +53,14 @@ public class BreakpointLocation {
     return null;
   }
 
+  /**
+   * 
+   * @deprecated 
+   */
   @Nullable
+  @Deprecated
   public String getTargetUnitName() {
-    return myTargetCodeLocation.getUnitName();
+    return null;
   }
 
   /**

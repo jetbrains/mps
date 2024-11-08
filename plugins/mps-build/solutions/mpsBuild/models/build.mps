@@ -35793,6 +35793,9 @@
       <node concept="nCB5N" id="3oXfwtX9SPg" role="nCB5Z">
         <ref role="nCB5Y" node="3dkXFAFkSFA" resolve="mps-persistence" />
       </node>
+      <node concept="nCB5N" id="5Eb06nerV36" role="nCB5Z">
+        <ref role="nCB5Y" node="7NoQ7Z63Z9b" resolve="mps-debuginfo-impl" />
+      </node>
     </node>
     <node concept="2G$12M" id="73u3wWztViq" role="3989C9">
       <property role="TrG5h" value="mps-execution-api" />

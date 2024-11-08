@@ -58,7 +58,7 @@ public class MethodBreakpoint extends JavaBreakpoint implements ILocationBreakpo
 
   @Override
   protected String getClassNameToPrepare() {
-    return getLocation().getTargetUnitName();
+    return getTargetCodeLocation().getUnitName();
   }
   @NotNull
   @Override

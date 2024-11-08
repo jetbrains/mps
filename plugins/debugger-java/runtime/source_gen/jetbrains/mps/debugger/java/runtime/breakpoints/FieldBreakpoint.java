@@ -56,7 +56,7 @@ public class FieldBreakpoint extends JavaBreakpoint implements ILocationBreakpoi
   @Override
   @Nullable
   protected String getClassNameToPrepare() {
-    return getLocation().getTargetUnitName();
+    return getTargetCodeLocation().getUnitName();
   }
   @NotNull
   @Override

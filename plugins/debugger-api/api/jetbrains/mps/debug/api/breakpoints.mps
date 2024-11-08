@@ -791,18 +791,19 @@
       <node concept="17QB3L" id="6RIg_xO4GRw" role="3clF45" />
       <node concept="3clFbS" id="3SnNvqCaJXd" role="3clF47">
         <node concept="3cpWs6" id="3Gc6Q_RYqEC" role="3cqZAp">
-          <node concept="2OqwBi" id="3Gc6Q_RZDbd" role="3cqZAk">
-            <node concept="37vLTw" id="3Gc6Q_RZD1m" role="2Oq$k0">
-              <ref role="3cqZAo" node="3Gc6Q_RZzjR" resolve="myTargetCodeLocation" />
-            </node>
-            <node concept="liA8E" id="3Gc6Q_RZDiH" role="2OqNvi">
-              <ref role="37wK5l" to="fwk:~NodeTraceInfo.getUnitName()" resolve="getUnitName" />
-            </node>
-          </node>
+          <node concept="10Nm6u" id="5Eb06neCV$N" role="3cqZAk" />
         </node>
       </node>
       <node concept="2AHcQZ" id="7hy7kVII526" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="P$JXv" id="5Eb06neCW5f" role="lGtFl">
+        <node concept="TZ5HI" id="5Eb06neCW5g" role="3nqlJM">
+          <node concept="TZ5HA" id="5Eb06neCW5h" role="3HnX3l" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="5Eb06neCW5i" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
       </node>
     </node>
     <node concept="2tJIrI" id="3Gc6Q_RW_gf" role="jymVt" />
@@ -1142,6 +1143,11 @@
       <node concept="TZ5HA" id="2WipSYwypm8" role="TZ5H$">
         <node concept="1dT_AC" id="2WipSYwypm9" role="1dT_Ay">
           <property role="1dT_AB" value="XXX Now with all uses of trace info gone, this ^^^ comment deserves an update (together with removal of deprecated methods)" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="5Eb06neCWlF" role="TZ5H$">
+        <node concept="1dT_AC" id="5Eb06neCWlG" role="1dT_Ay">
+          <property role="1dT_AB" value="    Don't forget to check [debugger-api-api] dependencies, likely there's no need for [debuginfo] dependency (as well as in mpsDebuggerPlugin build project)" />
         </node>
       </node>
     </node>

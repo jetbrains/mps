@@ -85,7 +85,7 @@ public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoin
   @Nullable
   @Override
   protected String getClassNameToPrepare() {
-    return getLocation().getTargetUnitName();
+    return getTargetCodeLocation().getUnitName();
   }
   @NotNull
   @Override
@@ -94,7 +94,7 @@ public class LineBreakpoint extends JavaBreakpoint implements ILocationBreakpoin
   }
   @Override
   public boolean isValid() {
-    return isNotEmptyString(getLocation().getTargetUnitName());
+    return isNotEmptyString(getClassNameToPrepare());
   }
   @Override
   public String getPresentation() {
