@@ -17741,33 +17741,62 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="3eBQcrRwsCE" role="3cqZAp">
-          <node concept="2OqwBi" id="3eBQcrRwtQw" role="3clFbG">
-            <node concept="2YIFZM" id="3eBQcrRwtoD" role="2Oq$k0">
-              <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
-              <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
+        <node concept="3cpWs8" id="1oeDgbVNbwI" role="3cqZAp">
+          <node concept="3cpWsn" id="1oeDgbVNbwJ" role="3cpWs9">
+            <property role="TrG5h" value="handle" />
+            <node concept="3uibUv" id="1oeDgbVNbip" role="1tU5fm">
+              <ref role="3uigEE" to="1ka:~TypecheckingSession$Handle" resolve="TypecheckingSession.Handle" />
             </node>
-            <node concept="liA8E" id="3eBQcrRwukP" role="2OqNvi">
-              <ref role="37wK5l" to="1ka:~TypecheckingComputations.runWithSession(jetbrains.mps.typechecking.TypecheckingSession,java.lang.Runnable)" resolve="runWithSession" />
-              <node concept="2OqwBi" id="2QI4rR5ide6" role="37wK5m">
-                <node concept="2OqwBi" id="2QI4rR5FXrB" role="2Oq$k0">
-                  <node concept="2YIFZM" id="2QI4rR5FXrC" role="2Oq$k0">
-                    <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
-                    <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
-                  </node>
-                  <node concept="liA8E" id="2QI4rR5FXrD" role="2OqNvi">
-                    <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.requestNewSession(jetbrains.mps.typechecking.TypecheckingSession$Flags)" resolve="requestNewSession" />
-                    <node concept="37vLTw" id="2QI4rR5FXrE" role="37wK5m">
-                      <ref role="3cqZAo" node="2QI4rR5hvtW" resolve="flags" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="liA8E" id="2QI4rR5idyJ" role="2OqNvi">
-                  <ref role="37wK5l" to="1ka:~TypecheckingSession$Handle.session()" resolve="session" />
+            <node concept="2OqwBi" id="1oeDgbVNbwK" role="33vP2m">
+              <node concept="2YIFZM" id="1oeDgbVNbwL" role="2Oq$k0">
+                <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
+                <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
+              </node>
+              <node concept="liA8E" id="1oeDgbVNbwM" role="2OqNvi">
+                <ref role="37wK5l" to="ev0w:~TypecheckingSessionHandler.requestNewSession(jetbrains.mps.typechecking.TypecheckingSession$Flags)" resolve="requestNewSession" />
+                <node concept="37vLTw" id="1oeDgbVNbwN" role="37wK5m">
+                  <ref role="3cqZAo" node="2QI4rR5hvtW" resolve="flags" />
                 </node>
               </node>
-              <node concept="37vLTw" id="7MRY$8GdjFL" role="37wK5m">
-                <ref role="3cqZAo" node="7OB8Y3vJRaj" resolve="checkingAction" />
+            </node>
+          </node>
+        </node>
+        <node concept="3J1_TO" id="1oeDgbVN1po" role="3cqZAp">
+          <node concept="3clFbS" id="1oeDgbVN1pq" role="1zxBo7">
+            <node concept="3clFbF" id="3eBQcrRwsCE" role="3cqZAp">
+              <node concept="2OqwBi" id="3eBQcrRwtQw" role="3clFbG">
+                <node concept="2YIFZM" id="3eBQcrRwtoD" role="2Oq$k0">
+                  <ref role="37wK5l" to="1ka:~TypecheckingFacade.getFromContext()" resolve="getFromContext" />
+                  <ref role="1Pybhc" to="1ka:~TypecheckingFacade" resolve="TypecheckingFacade" />
+                </node>
+                <node concept="liA8E" id="3eBQcrRwukP" role="2OqNvi">
+                  <ref role="37wK5l" to="1ka:~TypecheckingComputations.runWithSession(jetbrains.mps.typechecking.TypecheckingSession,java.lang.Runnable)" resolve="runWithSession" />
+                  <node concept="2OqwBi" id="1oeDgbVNdrC" role="37wK5m">
+                    <node concept="37vLTw" id="1oeDgbVNdrD" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1oeDgbVNbwJ" resolve="handle" />
+                    </node>
+                    <node concept="liA8E" id="1oeDgbVNdrE" role="2OqNvi">
+                      <ref role="37wK5l" to="1ka:~TypecheckingSession$Handle.session()" resolve="session" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="7MRY$8GdjFL" role="37wK5m">
+                    <ref role="3cqZAo" node="7OB8Y3vJRaj" resolve="checkingAction" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1wplmZ" id="1oeDgbVN1OO" role="1zxBo6">
+            <node concept="3clFbS" id="1oeDgbVN1OP" role="1wplMD">
+              <node concept="3clFbF" id="1oeDgbVNa6c" role="3cqZAp">
+                <node concept="2OqwBi" id="1oeDgbVNa_w" role="3clFbG">
+                  <node concept="37vLTw" id="1oeDgbVNa6b" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1oeDgbVNbwJ" resolve="handle" />
+                  </node>
+                  <node concept="liA8E" id="1oeDgbVNd8L" role="2OqNvi">
+                    <ref role="37wK5l" to="1ka:~TypecheckingSession$Handle.release()" resolve="release" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
