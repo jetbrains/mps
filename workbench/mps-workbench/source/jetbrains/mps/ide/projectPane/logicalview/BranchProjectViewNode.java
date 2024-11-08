@@ -50,7 +50,7 @@ public abstract class BranchProjectViewNode<Value> extends LogicalProjectViewNod
   protected class ModulesVirtualFolderHierarchy extends AbstractVirtualFolderHierarchy<SModule> {
 
     protected ModulesVirtualFolderHierarchy(Collection<? extends SModule> values, Function<SModule, String> virtualFolderNameSupplier) {
-      super(values, virtualFolderNameSupplier);
+      super(values, virtualFolderNameSupplier, true);
     }
 
     @Override

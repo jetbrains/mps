@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -25,8 +24,16 @@ import java.util.stream.Collectors;
  */
 public abstract class AbstractVirtualFolderHierarchy<U> extends VirtualFolderHelper<U> {
 
+  private final boolean myAllowValueVirtualFolders;
+
   protected AbstractVirtualFolderHierarchy(Collection<? extends U> values, Function<U, String> virtualFolderNameSupplier) {
+    this(values, virtualFolderNameSupplier, false);
+  }
+
+  protected AbstractVirtualFolderHierarchy(Collection<? extends U> values, Function<U, String> virtualFolderNameSupplier,
+                                           boolean allowValueVirtualFolders) {
     super(values, virtualFolderNameSupplier);
+    myAllowValueVirtualFolders = allowValueVirtualFolders;
   }
 
   protected abstract <T extends U> String asFolderName(T value);
@@ -56,9 +63,9 @@ public abstract class AbstractVirtualFolderHierarchy<U> extends VirtualFolderHel
                                                         .filter(Objects::nonNull)
                                                         .collect(Collectors.toList());
 
-    Set<String> existingFolders = values(virtualFolder).map(this::asFolderName).collect(Collectors.toSet());
+    Set<String> valueVirtualFolders = values(virtualFolder).map(this::asFolderName).collect(Collectors.toSet());
     List<? extends ProjectViewNode<?>> virtualFolderNodes = folders(virtualFolderToPrefix(virtualFolder))
-                                                              .filter(Predicate.not(existingFolders::contains))
+                                                              .filter((s) -> myAllowValueVirtualFolders || !valueVirtualFolders.contains(s))
                                                               .map(this::createVirtualFolderNode)
                                                               .filter(Objects::nonNull)
                                                               .collect(Collectors.toList());
