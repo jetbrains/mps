@@ -23,11 +23,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
+import jetbrains.mps.textgen.trace.NodeTraceInfo;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.textgen.trace.DebugInfo;
 import jetbrains.mps.textgen.trace.BaseLanguageNodeLookup;
@@ -147,10 +148,11 @@ public class TraceInfoTest implements EnvironmentAware {
   @Test
   public void internalClassTest() {
     invokeTestWithModelRead(() -> {
-      SNode testClass = SNodeOperations.cast(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").resolve(myProject.getRepository()), CONCEPTS.ClassConcept$bK);
+      SNode testClass = SPointerOperations.resolveNode(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650"), myProject.getRepository());
       SNode statement = Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(testClass)).where((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals("internalClassTest")), LINKS.body$5xQk), LINKS.statement$53DE)).first();
-      BreakpointLocation location = new BreakpointLocation(statement);
-      Assert.assertEquals("jetbrains.mps.traceInfo.test.TestClass", location.getTargetUnitName());
+      NodeTraceInfo location = new NodeTraceInfo(statement, new TraceInfo().getDebugInfo(SNodeOperations.getModel(testClass)));
+      Assert.assertEquals("jetbrains.mps.traceInfo.test.TestClass", location.getUnitName());
+      Assert.assertEquals("TestClass.java", location.getFileName());
     });
   }
 
@@ -175,7 +177,6 @@ public class TraceInfoTest implements EnvironmentAware {
     /*package*/ static final SConcept ForStatement$qV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
     /*package*/ static final SConcept ThrowStatement$Zy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
     /*package*/ static final SConcept ForEachVariable$mK = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6f0962L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable");
-    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
