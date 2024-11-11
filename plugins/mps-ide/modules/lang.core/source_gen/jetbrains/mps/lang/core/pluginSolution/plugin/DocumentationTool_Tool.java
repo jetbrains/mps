@@ -8,9 +8,9 @@ import com.intellij.icons.AllIcons;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 
-public class DocumentationToolNew_Tool extends BaseTabbedProjectTool {
+public class DocumentationTool_Tool extends BaseTabbedProjectTool {
   private static final Icon ICON = AllIcons.Toolwindows.Documentation;
-  public DocumentationToolNew_Tool(Project project) {
+  public DocumentationTool_Tool(Project project) {
     super(project, "Doc", null, ICON, ToolWindowAnchor.RIGHT, true);
   }
 }

@@ -14,7 +14,7 @@ public class PluginSolution_ProjectPlugin extends BaseProjectPlugin {
   }
   public List<BaseTool> initAllTools1(Project project) {
     List<BaseTool> tools = ListSequence.fromList(new ArrayList<BaseTool>());
-    ListSequence.fromList(tools).addElement(new DocumentationToolNew_Tool(project));
+    ListSequence.fromList(tools).addElement(new DocumentationTool_Tool(project));
     return tools;
   }
 }
