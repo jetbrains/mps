@@ -13,27 +13,28 @@ import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.editor.menus.GroupMenuPart;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import java.util.Arrays;
-import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
-import jetbrains.mps.openapi.editor.menus.transformation.ConstraintsVerifiableActionItem;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.lang.editor.menus.GroupMenuPart;
+import java.util.Arrays;
+import jetbrains.mps.lang.editor.menus.transformation.ConstraintsFilteringTransformationMenuPartDecorator;
+import jetbrains.mps.openapi.editor.menus.transformation.ConstraintsVerifiableActionItem;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -53,14 +54,58 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TMP_Group_j08dcv_a0());
+      result.add(new TMP_Action_j08dcv_a0());
       result.add(new TMP_Group_j08dcv_b0());
+      result.add(new TMP_Group_j08dcv_c0());
     }
     return result;
   }
 
-  public class TMP_Group_j08dcv_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
-    public TMP_Group_j08dcv_a0() {
+  private class TMP_Action_j08dcv_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    @Nullable
+    protected TransformationMenuItem createItem(TransformationMenuContext context) {
+      return new Item(context).resetTraceInfo();
+    }
+
+    private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
+      /*package*/ Item(TransformationMenuContext context) {
+        super(context);
+      }
+      /*package*/ Item resetTraceInfo() {
+        updateTraceInfo("single item: " + getLabelText(""), new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "564163457300578997"));
+        return this;
+      }
+      @Nullable
+      @Override
+      public String getLabelText(String pattern) {
+        return ".";
+      }
+
+      @Override
+      public void execute(@NotNull String pattern) {
+        SNode ref = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.StaticFieldReference$cU);
+        SLinkOperations.setTarget(ref, LINKS.classifier$BPY8, SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$ndCQ));
+        SelectionUtil.selectCell(_context.getEditorContext(), ref, SelectionManager.LAST_EDITABLE_CELL);
+      }
+
+      @Override
+      public boolean canExecute(@NotNull String pattern) {
+        return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Expression$mB)) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Statement$P6));
+      }
+
+
+      public void customize(String pattern, EditorMenuItemStyle style) {
+        EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
+        SAbstractConcept outputConcept = null;
+        EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
+        for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
+          customizer.customize(style, compositeContext);
+        }
+      }
+    }
+  }
+  public class TMP_Group_j08dcv_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_j08dcv_b0() {
       super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586945507")));
     }
     @Override
@@ -69,9 +114,9 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_a0a(), CONCEPTS.LocalVariableDeclarationStatement$4w), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_b0a(), CONCEPTS.LocalVariableDeclarationStatement$4w));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_a1a(), CONCEPTS.LocalVariableDeclarationStatement$4w), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_b1a(), CONCEPTS.LocalVariableDeclarationStatement$4w));
     }
-    private class TMP_Action_j08dcv_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    private class TMP_Action_j08dcv_a1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
         return new Item(context).resetTraceInfo();
@@ -93,8 +138,8 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode classifierType = _quotation_createNode_j08dcv_a0a0a0a0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$ndCQ));
-          SNodeOperations.replaceWithAnother(SNodeOperations.getParent(_context.getNode()), _quotation_createNode_j08dcv_a0a1a0a0a(classifierType));
+          SNode classifierType = _quotation_createNode_j08dcv_a0a0a0b0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$ndCQ));
+          SNodeOperations.replaceWithAnother(SNodeOperations.getParent(_context.getNode()), _quotation_createNode_j08dcv_a0a1a0a1a(classifierType));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$oqG$)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -119,7 +164,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
         }
       }
     }
-    private class TMP_Action_j08dcv_b0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    private class TMP_Action_j08dcv_b1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
         return new Item(context).resetTraceInfo();
@@ -141,7 +186,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode statement = SNodeOperations.replaceWithAnother(SNodeOperations.getParent(_context.getNode()), _quotation_createNode_j08dcv_a0a0a0a1a0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$ndCQ)));
+          SNode statement = SNodeOperations.replaceWithAnother(SNodeOperations.getParent(_context.getNode()), _quotation_createNode_j08dcv_a0a0a0a1b0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$ndCQ)));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(statement, LINKS.localVariableDeclaration$RpjM), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -167,8 +212,8 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
       }
     }
   }
-  public class TMP_Group_j08dcv_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
-    public TMP_Group_j08dcv_b0() {
+  public class TMP_Group_j08dcv_c0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    public TMP_Group_j08dcv_c0() {
       super(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "1741258697586945614")));
     }
     @Override
@@ -190,9 +235,9 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
           }
         }
 
-      }, new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_b1a(), CONCEPTS.ArrayType$rh));
+      }, new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_b2a(), CONCEPTS.ArrayType$rh));
     }
-    private class TMP_Action_j08dcv_b1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    private class TMP_Action_j08dcv_b2a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
       protected TransformationMenuItem createItem(TransformationMenuContext context) {
         return new Item(context).resetTraceInfo();
@@ -214,7 +259,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode arrayType = SNodeOperations.replaceWithAnother(_context.getNode(), _quotation_createNode_j08dcv_a0a0a0a1b0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$ndCQ)));
+          SNode arrayType = SNodeOperations.replaceWithAnother(_context.getNode(), _quotation_createNode_j08dcv_a0a0a0a1c0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$ndCQ)));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), arrayType, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -240,7 +285,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
       }
     }
   }
-  private static SNode _quotation_createNode_j08dcv_a0a0a0a0(Object parameter_1) {
+  private static SNode _quotation_createNode_j08dcv_a0a0a0b0(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
@@ -251,7 +296,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter"), quotedNode_3);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_j08dcv_a0a1a0a0a(Object parameter_1) {
+  private static SNode _quotation_createNode_j08dcv_a0a1a0a1a(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
@@ -266,7 +311,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), quotedNode_3);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_j08dcv_a0a0a0a1a0(Object parameter_1) {
+  private static SNode _quotation_createNode_j08dcv_a0a0a0a1b0(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
@@ -285,7 +330,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration"), quotedNode_3);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_j08dcv_a0a0a0a1b0(Object parameter_1) {
+  private static SNode _quotation_createNode_j08dcv_a0a0a0a1c0(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940d819f7L, "ArrayType"));
@@ -298,6 +343,9 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept StaticFieldReference$cU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
     /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
     /*package*/ static final SConcept LocalVariableDeclarationStatement$4w = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
     /*package*/ static final SConcept AbstractClassifierReference$Wh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, "jetbrains.mps.baseLanguage.structure.AbstractClassifierReference");
@@ -305,6 +353,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
   }
 
   private static final class LINKS {
+    /*package*/ static final SReferenceLink classifier$BPY8 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
     /*package*/ static final SReferenceLink classifier$ndCQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier");
     /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
     /*package*/ static final SContainmentLink localVariableDeclaration$RpjM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
