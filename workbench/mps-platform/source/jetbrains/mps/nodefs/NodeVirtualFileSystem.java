@@ -500,7 +500,7 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
       if (vf1 != null) {
         files.add(vf1);
       }
-      if (root != null && root.equals(changed)) {
+      if (root != null && !root.equals(changed)) {
         MPSNodeVirtualFile vf2 = rvf.getVirtualFile(root);
         if (vf2 != null && !vf2.equals(vf1)) {
           files.add(vf2);
