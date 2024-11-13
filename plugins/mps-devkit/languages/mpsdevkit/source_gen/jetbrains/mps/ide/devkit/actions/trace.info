@@ -125,7 +125,7 @@
       <node id="1234869968490316273" at="27,35,28,52" concept="5" />
       <node id="1234869968490316273" at="28,52,29,29" concept="5" />
       <node id="1234869968490316273" at="32,32,33,16" concept="11" />
-      <node id="6212780581440844602" at="36,89,37,174" concept="10" />
+      <node id="6212780581440844602" at="36,89,37,175" concept="10" />
       <node id="6830537871213461153" at="38,79,39,39" concept="5" />
       <node id="6830537871213514461" at="40,12,41,170" concept="5" />
       <node id="1234869968490316273" at="46,53,47,19" concept="11" />
@@ -134,7 +134,7 @@
       <node id="6830537871213482796" at="55,5,56,57" concept="10" />
       <node id="6830537871213482798" at="57,25,58,21" concept="11" />
       <node id="1234869968490316273" at="60,5,61,16" concept="11" />
-      <node id="6212780581440854415" at="64,96,65,174" concept="10" />
+      <node id="6212780581440854415" at="64,96,65,175" concept="10" />
       <node id="4474661439615212148" at="66,81,67,90" concept="10" />
       <node id="4474661439615209772" at="67,90,68,75" concept="5" />
       <node id="23770751830573390" at="40,10,42,5" concept="1" />
@@ -142,8 +142,8 @@
       <node id="8898893144448210165" at="50,56,53,7" concept="8" />
       <node id="6830537871213482798" at="56,57,59,7" concept="8" />
       <node id="1234869968490316273" at="31,0,35,0" concept="9" trace="isDumbAware#()Z" />
-      <node id="1234869968490316287" at="65,174,69,5" concept="8" />
-      <node id="1234869968490316321" at="37,174,42,5" concept="8" />
+      <node id="1234869968490316287" at="65,175,69,5" concept="8" />
+      <node id="1234869968490316321" at="37,175,42,5" concept="8" />
       <node id="1234869968490316273" at="25,0,31,0" concept="3" trace="ShowGenerationTrace_Action#()V" />
       <node id="1234869968490316274" at="48,5,54,5" concept="1" />
       <node id="6830537871213482796" at="54,5,60,5" concept="1" />
@@ -201,8 +201,8 @@
       <node id="1234869968490316371" at="28,35,29,52" concept="5" />
       <node id="1234869968490316371" at="29,52,30,29" concept="5" />
       <node id="1234869968490316371" at="33,32,34,16" concept="11" />
-      <node id="6212780581440813754" at="37,89,38,174" concept="10" />
-      <node id="288031599793305396" at="38,174,39,52" concept="10" />
+      <node id="6212780581440813754" at="37,89,38,175" concept="10" />
+      <node id="288031599793305396" at="38,175,39,52" concept="10" />
       <node id="7201967929020863779" at="40,104,41,39" concept="5" />
       <node id="6830537871213529469" at="42,12,43,133" concept="5" />
       <node id="1234869968490316371" at="48,53,49,19" concept="11" />
@@ -211,7 +211,7 @@
       <node id="1234869968490316451" at="57,5,58,57" concept="10" />
       <node id="8898893144448210133" at="59,25,60,21" concept="11" />
       <node id="1234869968490316371" at="62,5,63,16" concept="11" />
-      <node id="6212780581440831809" at="66,96,67,174" concept="10" />
+      <node id="6212780581440831809" at="66,96,67,175" concept="10" />
       <node id="4474661439615228988" at="68,80,69,90" concept="10" />
       <node id="4474661439615228995" at="69,90,70,75" concept="5" />
       <node id="23770751830571545" at="42,10,44,5" concept="1" />
@@ -219,7 +219,7 @@
       <node id="6830537871212955670" at="52,56,55,7" concept="8" />
       <node id="8898893144448210133" at="58,57,61,7" concept="8" />
       <node id="1234869968490316371" at="32,0,36,0" concept="9" trace="isDumbAware#()Z" />
-      <node id="1234869968490316383" at="67,174,71,5" concept="8" />
+      <node id="1234869968490316383" at="67,175,71,5" concept="8" />
       <node id="1234869968490316400" at="39,52,44,5" concept="8" />
       <node id="1234869968490316371" at="26,0,32,0" concept="3" trace="ShowGenerationTraceback_Action#()V" />
       <node id="6830537871212955669" at="50,5,56,5" concept="1" />
@@ -1455,6 +1455,50 @@
       <unit id="2776737884285469617" at="15,54,24,5" name="jetbrains.mps.ide.devkit.actions.MockMakeSessionProvider$MockMakeSession$1" />
       <unit id="2060615461621509993" at="14,0,29,0" name="jetbrains.mps.ide.devkit.actions.MockMakeSessionProvider$MockMakeSession" />
       <unit id="2060615461621434047" at="13,0,45,0" name="jetbrains.mps.ide.devkit.actions.MockMakeSessionProvider" />
+    </file>
+  </root>
+  <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/2106075593025858145">
+    <file name="GenerationTracerViewTool2_Tool.java">
+      <node id="2106075593025858145" at="13,0,14,0" concept="14" trace="ICON" />
+      <node id="2106075593026000100" at="14,0,15,0" concept="6" trace="state" />
+      <node id="2106075593025858145" at="15,58,16,85" concept="16" />
+      <node id="2106075593025858145" at="18,37,19,24" concept="5" />
+      <node id="2106075593026000253" at="19,24,20,152" concept="5" />
+      <node id="2106075593026000734" at="22,25,23,53" concept="5" />
+      <node id="2106075593025858145" at="23,53,24,20" concept="5" />
+      <node id="2106075593026001299" at="28,60,29,61" concept="5" />
+      <node id="2106075593026001317" at="34,60,35,61" concept="5" />
+      <node id="2106075593026001333" at="38,51,39,53" concept="11" />
+      <node id="2106075593025858145" at="15,0,18,0" concept="3" trace="GenerationTracerViewTool2_Tool#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="2106075593026001297" at="27,31,30,5" concept="8" />
+      <node id="2106075593026001315" at="33,33,36,5" concept="8" />
+      <node id="2106075593026001330" at="38,0,41,0" concept="9" trace="getState#()Ljetbrains/mps/ide/devkit/generator/GenerationTracerViewToolState;" />
+      <node id="2106075593025858145" at="18,0,22,0" concept="9" trace="init#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="2106075593025858145" at="22,0,26,0" concept="9" trace="dispose#()V" />
+      <node id="2106075593026001294" at="26,0,32,0" concept="9" trace="doRegister#()V" />
+      <node id="2106075593026001312" at="32,0,38,0" concept="9" trace="doUnregister#()V" />
+      <scope id="2106075593025858145" at="15,58,16,85" />
+      <scope id="2106075593026001298" at="28,60,29,61" />
+      <scope id="2106075593026001316" at="34,60,35,61" />
+      <scope id="2106075593026001332" at="38,51,39,53" />
+      <scope id="2106075593025858145" at="18,37,20,152" />
+      <scope id="2106075593025858145" at="22,25,24,20" />
+      <scope id="2106075593025858145" at="15,0,18,0">
+        <var name="project" id="2106075593025858145" />
+      </scope>
+      <scope id="2106075593026001296" at="27,31,30,5" />
+      <scope id="2106075593026001314" at="33,33,36,5" />
+      <scope id="2106075593026001330" at="38,0,41,0" />
+      <scope id="2106075593025858145" at="18,0,22,0">
+        <var name="project" id="2106075593025858145" />
+      </scope>
+      <scope id="2106075593025858145" at="22,0,26,0" />
+      <scope id="2106075593026001294" at="26,0,32,0" />
+      <scope id="2106075593026001312" at="32,0,38,0" />
+      <unit id="2106075593025858145" at="12,0,42,0" name="jetbrains.mps.ide.devkit.actions.GenerationTracerViewTool2_Tool" />
+    </file>
+    <file name="Mpsdevkit_ProjectPlugin.java">
+      <node id="2106075593025858145" at="18,79,19,89" concept="5" />
     </file>
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/2151742525039069961">
@@ -3861,54 +3905,6 @@
       <unit id="6830537871213907260" at="20,0,69,0" name="jetbrains.mps.ide.devkit.actions.ShowOriginNode_Action" />
     </file>
   </root>
-  <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/6961234575414171625">
-    <file name="GenerationTracerViewTool_Tool.java">
-      <node id="6961234575414171625" at="14,0,15,0" concept="14" trace="ICON" />
-      <node id="6961234575414207747" at="15,0,16,0" concept="6" trace="state" />
-      <node id="6961234575414171625" at="16,57,17,84" concept="16" />
-      <node id="6961234575414171625" at="19,37,20,24" concept="5" />
-      <node id="6961234575414215372" at="20,24,21,126" concept="5" />
-      <node id="8727263705876064042" at="23,25,24,52" concept="5" />
-      <node id="6961234575414171625" at="24,52,25,20" concept="5" />
-      <node id="2505610113445395915" at="29,59,30,60" concept="5" />
-      <node id="2865572498389174235" at="35,59,36,60" concept="5" />
-      <node id="2505610113445588901" at="39,51,40,52" concept="11" />
-      <node id="1023391979727934896" at="42,36,43,16" concept="11" />
-      <node id="6961234575414171625" at="16,0,19,0" concept="3" trace="GenerationTracerViewTool_Tool#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="7093759132972901912" at="28,31,31,5" concept="8" />
-      <node id="7093759132972904806" at="34,33,37,5" concept="8" />
-      <node id="2505610113445359136" at="39,0,42,0" concept="9" trace="getState#()Ljetbrains/mps/ide/devkit/generator/GenerationTracerViewToolState;" />
-      <node id="6961234575414171625" at="42,0,45,0" concept="9" trace="getComponent#()Ljavax/swing/JComponent;" />
-      <node id="6961234575414171625" at="19,0,23,0" concept="9" trace="init#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="6961234575414171625" at="23,0,27,0" concept="9" trace="dispose#()V" />
-      <node id="7639690037386018813" at="27,0,33,0" concept="9" trace="doRegister#()V" />
-      <node id="2865572498389173299" at="33,0,39,0" concept="9" trace="doUnregister#()V" />
-      <scope id="6961234575414171625" at="16,57,17,84" />
-      <scope id="7093759132972901914" at="29,59,30,60" />
-      <scope id="7093759132972904807" at="35,59,36,60" />
-      <scope id="2505610113445359138" at="39,51,40,52" />
-      <scope id="6961234575414171627" at="42,36,43,16" />
-      <scope id="6961234575414171625" at="19,37,21,126" />
-      <scope id="6961234575414171625" at="23,25,25,20" />
-      <scope id="6961234575414171625" at="16,0,19,0">
-        <var name="project" id="6961234575414171625" />
-      </scope>
-      <scope id="7639690037386018815" at="28,31,31,5" />
-      <scope id="2865572498389173301" at="34,33,37,5" />
-      <scope id="2505610113445359136" at="39,0,42,0" />
-      <scope id="6961234575414171625" at="42,0,45,0" />
-      <scope id="6961234575414171625" at="19,0,23,0">
-        <var name="project" id="6961234575414171625" />
-      </scope>
-      <scope id="6961234575414171625" at="23,0,27,0" />
-      <scope id="7639690037386018813" at="27,0,33,0" />
-      <scope id="2865572498389173299" at="33,0,39,0" />
-      <unit id="6961234575414171625" at="13,0,46,0" name="jetbrains.mps.ide.devkit.actions.GenerationTracerViewTool_Tool" />
-    </file>
-    <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="6961234575414171625" at="18,79,19,88" concept="5" />
-    </file>
-  </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/7162597690968047817">
     <file name="Mpsdevkit_ApplicationPlugin.java">
       <node id="7162597690968047817" at="28,0,29,0" concept="6" trace="myId" />
@@ -4807,7 +4803,7 @@
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/8878628697752593564">
     <file name="Mpsdevkit_ProjectPlugin.java">
-      <node id="8878628697752593564" at="19,88,20,76" concept="5" />
+      <node id="8878628697752593564" at="19,89,20,76" concept="5" />
     </file>
     <file name="NodeExplorer_Tool.java">
       <node id="8878628697752593564" at="15,0,16,0" concept="14" trace="ICON" />

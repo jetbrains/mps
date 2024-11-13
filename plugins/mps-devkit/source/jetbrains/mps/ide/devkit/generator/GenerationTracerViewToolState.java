@@ -32,6 +32,8 @@ import jetbrains.mps.generator.GenerationTrace;
 import jetbrains.mps.generator.IGenerationSettings.GenTraceSettings;
 import jetbrains.mps.generator.TransientModelsProvider;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.tools.BaseTabbedProjectTool;
+import jetbrains.mps.ide.tools.BaseTabbedProjectTool.Tab;
 import jetbrains.mps.ide.tools.BaseTool;
 import jetbrains.mps.ide.tools.CloseAction;
 import jetbrains.mps.project.MPSProject;
@@ -63,11 +65,11 @@ public final class GenerationTracerViewToolState {
   private ContentManagerListener myContentListener;
   private final TransientModelsProvider myTransientModelsOwner;
   private final Project myProject;
-  private final BaseTool myTool;
+  private final BaseTabbedProjectTool myTool;
   private final GenTraceSettings myTraceSettings;
   private boolean myAutoscroll;
 
-  public GenerationTracerViewToolState(Project project, BaseTool tool) {
+  public GenerationTracerViewToolState(Project project, BaseTabbedProjectTool tool) {
     myProject = project;
     myTool = tool;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
@@ -177,29 +179,17 @@ public final class GenerationTracerViewToolState {
     return tw == null ? null : tw.getContentManager();
   }
 
-  private Content addContent(JComponent component, @NotNull String name, Icon icon, boolean isLockable) {
-    ContentManager contentManager = getContentManager();
-    Content content = contentManager.getFactory().createContent(component, name, isLockable);
-    if (icon != null) {
-      content.putUserData(ToolWindow.SHOW_CONTENT_ICON, Boolean.TRUE);
-      content.setIcon(icon);
-    } else {
-      content.setIcon(myTool.getIcon());
-    }
-    contentManager.addContent(content);
-    return content;
-  }
 
   private void showNoTabsComponent() {
     ContentManager manager = getContentManager();
     if (manager != null) {
       manager.removeAllContents(true);
-      addContent(myNoTabsComponent, "", null, false);
+      final Tab tab = new Tab(myNoTabsComponent, "", null);
+      myTool.addTab(tab, false, false);
     }
   }
 
   private void closeTab(int index) {
-    //noinspection ConstantConditions
     getContentManager().removeContent(getContentManager().getContent(index), true);
   }
 
@@ -242,8 +232,8 @@ public final class GenerationTracerViewToolState {
     GenerationTracerView tracerView = new GenerationTracerView(this, node.getReference(), viewToken, tracerNode);
     myTracerViews.add(tracerView);
     Icon i = Icons.getIcon(tracerView.isForwardTraceView() ? TraceNodeUI.Kind.INPUT : TraceNodeUI.Kind.OUTPUT, node);
-    Content content = addContent(tracerView.getComponent(), node.getPresentation(), i, true);
-    getContentManager().setSelectedContent(content);
+    final Tab tab = new Tab(tracerView.getComponent(), node.getPresentation(), i);
+    myTool.addTab(tab, true, true);
 
     Content noTabsContent = getContentManager().getContent(myNoTabsComponent);
     if (noTabsContent != null) {

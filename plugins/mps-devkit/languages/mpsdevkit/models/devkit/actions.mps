@@ -5868,11 +5868,11 @@
                   </node>
                 </node>
                 <node concept="LR4U6" id="2b5HLXPzfI6" role="2OqNvi">
-                  <ref role="LR4U5" node="62rhvrhIDvD" resolve="GenerationTracerTool" />
+                  <ref role="LR4U5" node="1OUi9vCriDx" resolve="GenerationTracerViewTool2" />
                 </node>
               </node>
               <node concept="2XshWL" id="2b5HLXPzfI7" role="2OqNvi">
-                <ref role="2WH_rO" node="2b5HLXPymSw" resolve="getState" />
+                <ref role="2WH_rO" node="1OUi9vCrPAM" resolve="getState" />
               </node>
             </node>
           </node>
@@ -5952,11 +5952,11 @@
                   </node>
                 </node>
                 <node concept="LR4U6" id="2b5HLXPzdln" role="2OqNvi">
-                  <ref role="LR4U5" node="62rhvrhIDvD" resolve="GenerationTracerTool" />
+                  <ref role="LR4U5" node="1OUi9vCriDx" resolve="GenerationTracerViewTool2" />
                 </node>
               </node>
               <node concept="2XshWL" id="2b5HLXPzfwP" role="2OqNvi">
-                <ref role="2WH_rO" node="2b5HLXPymSw" resolve="getState" />
+                <ref role="2WH_rO" node="1OUi9vCrPAM" resolve="getState" />
               </node>
             </node>
           </node>
@@ -6055,11 +6055,11 @@
                   </node>
                 </node>
                 <node concept="LR4U6" id="2b5HLXPzhlq" role="2OqNvi">
-                  <ref role="LR4U5" node="62rhvrhIDvD" resolve="GenerationTracerTool" />
+                  <ref role="LR4U5" node="1OUi9vCriDx" resolve="GenerationTracerViewTool2" />
                 </node>
               </node>
               <node concept="2XshWL" id="2b5HLXPzhlr" role="2OqNvi">
-                <ref role="2WH_rO" node="2b5HLXPymSw" resolve="getState" />
+                <ref role="2WH_rO" node="1OUi9vCrPAM" resolve="getState" />
               </node>
             </node>
           </node>
@@ -6139,11 +6139,11 @@
                   </node>
                 </node>
                 <node concept="LR4U6" id="2b5HLXPzgVg" role="2OqNvi">
-                  <ref role="LR4U5" node="62rhvrhIDvD" resolve="GenerationTracerTool" />
+                  <ref role="LR4U5" node="1OUi9vCriDx" resolve="GenerationTracerViewTool2" />
                 </node>
               </node>
               <node concept="2XshWL" id="2b5HLXPzgVh" role="2OqNvi">
-                <ref role="2WH_rO" node="2b5HLXPymSw" resolve="getState" />
+                <ref role="2WH_rO" node="1OUi9vCrPAM" resolve="getState" />
               </node>
             </node>
           </node>
@@ -17518,150 +17518,148 @@
       </node>
     </node>
   </node>
-  <node concept="sEfby" id="62rhvrhIDvD">
+  <node concept="2wDNrl" id="1OUi9vCriDx">
     <property role="3GE5qa" value="Tools" />
-    <property role="TrG5h" value="GenerationTracerViewTool" />
-    <property role="2XNbzY" value="Generation Tracer" />
-    <node concept="2XrIbr" id="6C5CpMSuZZX" role="2XNbBy">
+    <property role="TrG5h" value="GenerationTracerViewTool2" />
+    <property role="2XNbzY" value="Generation Tracer 2" />
+    <node concept="2XrIbr" id="1OUi9vCrPAe" role="2XNbBy">
       <property role="TrG5h" value="doRegister" />
-      <node concept="3cqZAl" id="6C5CpMSvx_D" role="3clF45" />
-      <node concept="3clFbS" id="6C5CpMSuZZZ" role="3clF47">
-        <node concept="3clFbJ" id="69M65zr26oo" role="3cqZAp">
-          <node concept="3clFbS" id="69M65zr26oq" role="3clFbx">
-            <node concept="3clFbF" id="2b5HLXPyvRb" role="3cqZAp">
-              <node concept="2OqwBi" id="2b5HLXPyw_R" role="3clFbG">
-                <node concept="2OqwBi" id="2b5HLXPyw0E" role="2Oq$k0">
-                  <node concept="2WthIp" id="2b5HLXPyvR9" role="2Oq$k0" />
-                  <node concept="2BZ7hE" id="2b5HLXPywjx" role="2OqNvi">
-                    <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+      <node concept="3cqZAl" id="1OUi9vCrPAf" role="3clF45" />
+      <node concept="3clFbS" id="1OUi9vCrPAg" role="3clF47">
+        <node concept="3clFbJ" id="1OUi9vCrPAh" role="3cqZAp">
+          <node concept="3clFbS" id="1OUi9vCrPAi" role="3clFbx">
+            <node concept="3clFbF" id="1OUi9vCrPAj" role="3cqZAp">
+              <node concept="2OqwBi" id="1OUi9vCrPAk" role="3clFbG">
+                <node concept="2OqwBi" id="1OUi9vCrPAl" role="2Oq$k0">
+                  <node concept="2WthIp" id="1OUi9vCrPAm" role="2Oq$k0" />
+                  <node concept="2BZ7hE" id="1OUi9vCrPAn" role="2OqNvi">
+                    <ref role="2WH_rO" node="1OUi9vCrPj$" resolve="state" />
                   </node>
                 </node>
-                <node concept="liA8E" id="2b5HLXPyx7U" role="2OqNvi">
+                <node concept="liA8E" id="1OUi9vCrPAo" role="2OqNvi">
                   <ref role="37wK5l" to="a0yo:~GenerationTracerViewToolState.createTool()" resolve="createTool" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="3y3z36" id="69M65zr26Ro" role="3clFbw">
-            <node concept="10Nm6u" id="69M65zr26W$" role="3uHU7w" />
-            <node concept="2OqwBi" id="69M65zr26yV" role="3uHU7B">
-              <node concept="2WthIp" id="69M65zr26qF" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="69M65zr26JQ" role="2OqNvi">
-                <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+          <node concept="3y3z36" id="1OUi9vCrPAp" role="3clFbw">
+            <node concept="10Nm6u" id="1OUi9vCrPAq" role="3uHU7w" />
+            <node concept="2OqwBi" id="1OUi9vCrPAr" role="3uHU7B">
+              <node concept="2WthIp" id="1OUi9vCrPAs" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="1OUi9vCrPAt" role="2OqNvi">
+                <ref role="2WH_rO" node="1OUi9vCrPj$" resolve="state" />
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tmbuc" id="6C5CpMSvxFO" role="1B3o_S" />
-      <node concept="2AHcQZ" id="6C5CpMSvxIf" role="2AJF6D">
+      <node concept="3Tmbuc" id="1OUi9vCrPAu" role="1B3o_S" />
+      <node concept="2AHcQZ" id="1OUi9vCrPAv" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2XrIbr" id="2v4zK4WBogN" role="2XNbBy">
+    <node concept="2XrIbr" id="1OUi9vCrPAw" role="2XNbBy">
       <property role="TrG5h" value="doUnregister" />
-      <node concept="3cqZAl" id="2v4zK4WBogO" role="3clF45" />
-      <node concept="3clFbS" id="2v4zK4WBogP" role="3clF47">
-        <node concept="3clFbJ" id="69M65zr275A" role="3cqZAp">
-          <node concept="3clFbS" id="69M65zr275B" role="3clFbx">
-            <node concept="3clFbF" id="2v4zK4WBovr" role="3cqZAp">
-              <node concept="2OqwBi" id="2v4zK4WBovs" role="3clFbG">
-                <node concept="2OqwBi" id="2v4zK4WBovt" role="2Oq$k0">
-                  <node concept="2WthIp" id="2v4zK4WBovu" role="2Oq$k0" />
-                  <node concept="2BZ7hE" id="2v4zK4WBovv" role="2OqNvi">
-                    <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+      <node concept="3cqZAl" id="1OUi9vCrPAx" role="3clF45" />
+      <node concept="3clFbS" id="1OUi9vCrPAy" role="3clF47">
+        <node concept="3clFbJ" id="1OUi9vCrPAz" role="3cqZAp">
+          <node concept="3clFbS" id="1OUi9vCrPA$" role="3clFbx">
+            <node concept="3clFbF" id="1OUi9vCrPA_" role="3cqZAp">
+              <node concept="2OqwBi" id="1OUi9vCrPAA" role="3clFbG">
+                <node concept="2OqwBi" id="1OUi9vCrPAB" role="2Oq$k0">
+                  <node concept="2WthIp" id="1OUi9vCrPAC" role="2Oq$k0" />
+                  <node concept="2BZ7hE" id="1OUi9vCrPAD" role="2OqNvi">
+                    <ref role="2WH_rO" node="1OUi9vCrPj$" resolve="state" />
                   </node>
                 </node>
-                <node concept="liA8E" id="2v4zK4WBovw" role="2OqNvi">
+                <node concept="liA8E" id="1OUi9vCrPAE" role="2OqNvi">
                   <ref role="37wK5l" to="a0yo:~GenerationTracerViewToolState.unregister()" resolve="unregister" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="3y3z36" id="69M65zr275I" role="3clFbw">
-            <node concept="10Nm6u" id="69M65zr275J" role="3uHU7w" />
-            <node concept="2OqwBi" id="69M65zr275K" role="3uHU7B">
-              <node concept="2WthIp" id="69M65zr275L" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="69M65zr275M" role="2OqNvi">
-                <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+          <node concept="3y3z36" id="1OUi9vCrPAF" role="3clFbw">
+            <node concept="10Nm6u" id="1OUi9vCrPAG" role="3uHU7w" />
+            <node concept="2OqwBi" id="1OUi9vCrPAH" role="3uHU7B">
+              <node concept="2WthIp" id="1OUi9vCrPAI" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="1OUi9vCrPAJ" role="2OqNvi">
+                <ref role="2WH_rO" node="1OUi9vCrPj$" resolve="state" />
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tmbuc" id="2v4zK4WBogW" role="1B3o_S" />
-      <node concept="2AHcQZ" id="2v4zK4WBogX" role="2AJF6D">
+      <node concept="3Tmbuc" id="1OUi9vCrPAK" role="1B3o_S" />
+      <node concept="2AHcQZ" id="1OUi9vCrPAL" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2XrIbr" id="2b5HLXPymSw" role="2XNbBy">
+    <node concept="2XrIbr" id="1OUi9vCrPAM" role="2XNbBy">
       <property role="TrG5h" value="getState" />
-      <node concept="3uibUv" id="2b5HLXPze9x" role="3clF45">
+      <node concept="3uibUv" id="1OUi9vCrPAN" role="3clF45">
         <ref role="3uigEE" to="a0yo:~GenerationTracerViewToolState" resolve="GenerationTracerViewToolState" />
       </node>
-      <node concept="3clFbS" id="2b5HLXPymSy" role="3clF47">
-        <node concept="3cpWs6" id="2b5HLXPzeY_" role="3cqZAp">
-          <node concept="2OqwBi" id="2b5HLXPzf1C" role="3cqZAk">
-            <node concept="2WthIp" id="2b5HLXPzf1F" role="2Oq$k0" />
-            <node concept="2BZ7hE" id="2b5HLXPzf1H" role="2OqNvi">
-              <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+      <node concept="3clFbS" id="1OUi9vCrPAO" role="3clF47">
+        <node concept="3cpWs6" id="1OUi9vCrPAP" role="3cqZAp">
+          <node concept="2OqwBi" id="1OUi9vCrPAQ" role="3cqZAk">
+            <node concept="2WthIp" id="1OUi9vCrPAR" role="2Oq$k0" />
+            <node concept="2BZ7hE" id="1OUi9vCrPAS" role="2OqNvi">
+              <ref role="2WH_rO" node="1OUi9vCrPj$" resolve="state" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="2b5HLXPze1d" role="1B3o_S" />
+      <node concept="3Tm1VV" id="1OUi9vCrPAT" role="1B3o_S" />
     </node>
-    <node concept="2BZ0e9" id="62rhvrhIMk3" role="2XNbBz">
+    <node concept="2BZ0e9" id="1OUi9vCrPj$" role="2XNbBz">
       <property role="TrG5h" value="state" />
-      <node concept="3Tm6S6" id="62rhvrhIMk4" role="1B3o_S" />
-      <node concept="3uibUv" id="62rhvrhINCq" role="1tU5fm">
+      <node concept="3Tm6S6" id="1OUi9vCrPj_" role="1B3o_S" />
+      <node concept="3uibUv" id="1OUi9vCrPjA" role="1tU5fm">
         <ref role="3uigEE" to="a0yo:~GenerationTracerViewToolState" resolve="GenerationTracerViewToolState" />
       </node>
     </node>
-    <node concept="2UmK3q" id="62rhvrhIDvE" role="2Um5zG">
-      <node concept="3clFbS" id="62rhvrhIDvF" role="2VODD2">
-        <node concept="3clFbF" id="SNOplpEHmK" role="3cqZAp">
-          <node concept="10Nm6u" id="SNOplpEHmD" role="3clFbG" />
-        </node>
-      </node>
-    </node>
-    <node concept="1GtWCo" id="62rhvrhIDKM" role="1nVCmq">
-      <node concept="10M0yZ" id="62rhvrhIMez" role="1GtWoa">
+    <node concept="1GtWCo" id="1OUi9vCriE8" role="1nVCmq">
+      <node concept="10M0yZ" id="1OUi9vCriE9" role="1GtWoa">
         <ref role="3cqZAo" to="xnls:~IdeIcons.DEFAULT_ICON" resolve="DEFAULT_ICON" />
         <ref role="1PxDUh" to="xnls:~IdeIcons" resolve="IdeIcons" />
       </node>
     </node>
-    <node concept="2xpIHi" id="62rhvrhINGO" role="uR5cp">
-      <node concept="3clFbS" id="62rhvrhINGP" role="2VODD2">
-        <node concept="3clFbF" id="62rhvrhIObc" role="3cqZAp">
-          <node concept="37vLTI" id="62rhvrhIOvF" role="3clFbG">
-            <node concept="2ShNRf" id="62rhvrhIOzy" role="37vLTx">
-              <node concept="1pGfFk" id="62rhvrhJwXF" role="2ShVmc">
+    <node concept="2xpIHi" id="1OUi9vCrPlE" role="uR5cp">
+      <node concept="3clFbS" id="1OUi9vCrPlF" role="2VODD2">
+        <node concept="3clFbF" id="1OUi9vCrPlX" role="3cqZAp">
+          <node concept="37vLTI" id="1OUi9vCrPlY" role="3clFbG">
+            <node concept="2ShNRf" id="1OUi9vCrPlZ" role="37vLTx">
+              <node concept="1pGfFk" id="1OUi9vCrPm0" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="a0yo:~GenerationTracerViewToolState.&lt;init&gt;(com.intellij.openapi.project.Project,jetbrains.mps.ide.tools.BaseTool)" resolve="GenerationTracerViewToolState" />
-                <node concept="2xqhHp" id="62rhvrhJx0x" role="37wK5m" />
-                <node concept="2WthIp" id="2b5HLXPymGV" role="37wK5m" />
+                <ref role="37wK5l" to="a0yo:~GenerationTracerViewToolState.&lt;init&gt;(com.intellij.openapi.project.Project,jetbrains.mps.ide.tools.BaseTabbedProjectTool)" resolve="GenerationTracerViewToolState" />
+                <node concept="2xqhHp" id="1OUi9vCrPm1" role="37wK5m" />
+                <node concept="10QFUN" id="1jv8YkoxvbC" role="37wK5m">
+                  <node concept="3uibUv" id="1jv8Ykoxvuo" role="10QFUM">
+                    <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
+                  </node>
+                  <node concept="2WthIp" id="1OUi9vCrPm2" role="10QFUP" />
+                </node>
               </node>
             </node>
-            <node concept="2OqwBi" id="62rhvrhIOb6" role="37vLTJ">
-              <node concept="2WthIp" id="62rhvrhIOb9" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="62rhvrhIObb" role="2OqNvi">
-                <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+            <node concept="2OqwBi" id="1OUi9vCrPm3" role="37vLTJ">
+              <node concept="2WthIp" id="1OUi9vCrPm4" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="1OUi9vCrPm5" role="2OqNvi">
+                <ref role="2WH_rO" node="1OUi9vCrPj$" resolve="state" />
               </node>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node concept="2xpOpl" id="3QZAx3M2GXR" role="uR5co">
-      <node concept="3clFbS" id="3QZAx3M2GXS" role="2VODD2">
-        <node concept="3clFbF" id="7$tu1BTTIsE" role="3cqZAp">
-          <node concept="37vLTI" id="7$tu1BTTJ07" role="3clFbG">
-            <node concept="10Nm6u" id="7$tu1BTTJ2t" role="37vLTx" />
-            <node concept="2OqwBi" id="7$tu1BTTI$G" role="37vLTJ">
-              <node concept="2WthIp" id="7$tu1BTTIsC" role="2Oq$k0" />
-              <node concept="2BZ7hE" id="7$tu1BTTIKu" role="2OqNvi">
-                <ref role="2WH_rO" node="62rhvrhIMk3" resolve="state" />
+    <node concept="2xpOpl" id="1OUi9vCrPso" role="uR5co">
+      <node concept="3clFbS" id="1OUi9vCrPsp" role="2VODD2">
+        <node concept="3clFbF" id="1OUi9vCrPtu" role="3cqZAp">
+          <node concept="37vLTI" id="1OUi9vCrPtv" role="3clFbG">
+            <node concept="10Nm6u" id="1OUi9vCrPtw" role="37vLTx" />
+            <node concept="2OqwBi" id="1OUi9vCrPtx" role="37vLTJ">
+              <node concept="2WthIp" id="1OUi9vCrPty" role="2Oq$k0" />
+              <node concept="2BZ7hE" id="1OUi9vCrPtz" role="2OqNvi">
+                <ref role="2WH_rO" node="1OUi9vCrPj$" resolve="state" />
               </node>
             </node>
           </node>
