@@ -90,25 +90,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
 
   public static final String ID = ProjectViewPane.ID;
 
-  private final FileEditorManagerListener myEditorListener = new FileEditorManagerListener() {
-    @Override
-    public void selectionChanged(@NotNull FileEditorManagerEvent event) {
-      FileEditor fileEditor = event.getNewEditor();
-      if (fileEditor instanceof MPSFileNodeEditor) {
-        final MPSFileNodeEditor editor = (MPSFileNodeEditor) fileEditor;
-        if (getProjectView().isAutoscrollFromSource(ID)) {
-          EditorComponent editorComponent = editor.getNodeEditor().getCurrentEditorComponent();
-          if (editorComponent == null) {
-            return;
-          }
-          final SNodeReference sNode = editorComponent.getEditedNodePointer();
-          if (sNode != null) {
-            selectNodeWithoutExpansion(sNode);
-          }
-        }
-      }
-    }
-  };
   private MessageBusConnection myConnection;
 
   public ProjectPane(final Project project) {
@@ -169,7 +150,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
         selectNodeWithoutExpansion(nodeRef);
       }
     });
-    myConnection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, myEditorListener);
     myConnection.subscribe(MissionControlListener.MISSION_CONTROL_UPDATE, (MissionControlListener) this::refresh);
   }
 
