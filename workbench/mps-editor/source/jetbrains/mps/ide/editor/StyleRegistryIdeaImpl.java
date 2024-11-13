@@ -95,7 +95,7 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
     setStyle("QUOTATION_BRACE", quotationStyle);
 
     final StyleImpl lightQuotationStyle = new StyleImpl();
-    final JBColor lightQuotationColor = new JBColor(new  Color(0x74, 0xa4, 0xc8, 200), new Color(0x74, 0xa4, 0xc8, 190));
+    final JBColor lightQuotationColor = new JBColor(new  Color(0x74, 0xa4, 0xc8, 200), new Color(0x74, 0xb4, 0xd8, 140));
     lightQuotationStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, lightQuotationColor);
     lightQuotationStyle.set(StyleAttributes.BACKGROUND_COLOR, lightQuotationColor);
     setStyle("LIGHT_QUOTATION_BRACE", lightQuotationStyle);
