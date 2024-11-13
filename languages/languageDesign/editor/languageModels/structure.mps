@@ -6650,86 +6650,103 @@
     <node concept="25R33" id="3Ftr4R6BF5y" role="25R1y">
       <property role="TrG5h" value="red" />
       <property role="3tVfz5" value="1083952545111" />
+      <property role="1L1pqM" value="red (#FF0000)" />
       <ref role="2wpffI" node="fLwANPn" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5z" role="25R1y">
       <property role="TrG5h" value="pink" />
       <property role="3tVfz5" value="1083952545112" />
+      <property role="1L1pqM" value="pink / lampoon (#FFAFAF / #7D5656)" />
       <ref role="2wpffI" node="fLwANPo" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5$" role="25R1y">
       <property role="TrG5h" value="orange" />
       <property role="3tVfz5" value="1083952545113" />
+      <property role="1L1pqM" value="orange / cumin ochre (#FFC800 / #9F6B00)" />
       <ref role="2wpffI" node="fLwANPp" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5_" role="25R1y">
       <property role="TrG5h" value="yellow" />
       <property role="3tVfz5" value="1083952545114" />
+      <property role="1L1pqM" value="yellow / old asparagus (#FFFF00 / #8A8A00)" />
       <ref role="2wpffI" node="fLwANPq" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5A" role="25R1y">
       <property role="TrG5h" value="green" />
       <property role="3tVfz5" value="1083952545115" />
+      <property role="1L1pqM" value="green / fluorite green (#00FF00 / #629655)" />
       <ref role="2wpffI" node="fLwANPr" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5B" role="25R1y">
       <property role="TrG5h" value="darkGreen" />
       <property role="3tVfz5" value="1101213169706" />
+      <property role="1L1pqM" value="dark green / green (#007D00 / #00FF00)" />
       <ref role="2wpffI" node="g1_qRwE" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5C" role="25R1y">
       <property role="TrG5h" value="magenta" />
       <property role="3tVfz5" value="1083952545116" />
+      <property role="1L1pqM" value="magenta / ce soir (#FF00FF / #9776A9)" />
       <ref role="2wpffI" node="fLwANPs" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5D" role="25R1y">
       <property role="TrG5h" value="darkMagenta" />
       <property role="3tVfz5" value="1101213185757" />
+      <property role="1L1pqM" value="dark magenta / magenta (#7D007D / #FF00FF)" />
       <ref role="2wpffI" node="g1_qVrt" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5E" role="25R1y">
       <property role="TrG5h" value="cyan" />
       <property role="3tVfz5" value="1083952545117" />
+      <property role="1L1pqM" value="cyan / green moblin (#00FFFF / #008989)" />
       <ref role="2wpffI" node="fLwANPt" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5F" role="25R1y">
       <property role="TrG5h" value="blue" />
       <property role="3tVfz5" value="1083952545118" />
+      <property role="1L1pqM" value="blue / feather star (#0000FF / #589DF6)" />
       <ref role="2wpffI" node="fLwANPu" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5G" role="25R1y">
       <property role="TrG5h" value="lightBlue" />
       <property role="3tVfz5" value="1216404713420" />
+      <property role="1L1pqM" value="light blue / lupine blue (#A2B8D0 / #6897BA)" />
       <ref role="2wpffI" node="hGRnIZc" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5H" role="25R1y">
       <property role="TrG5h" value="darkBlue" />
       <property role="3tVfz5" value="1101209985304" />
+      <property role="1L1pqM" value="dark blue / orange (#000080 / #FFC800)" />
       <ref role="2wpffI" node="g1_eI4o" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5I" role="25R1y">
       <property role="TrG5h" value="gray" />
       <property role="3tVfz5" value="1084208529765" />
+      <property role="1L1pqM" value="gray (#808080)" />
       <ref role="2wpffI" node="fLJRk5_" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5J" role="25R1y">
       <property role="TrG5h" value="lightGray" />
       <property role="3tVfz5" value="1084208529766" />
+      <property role="1L1pqM" value="light gray / dark gray (#C0C0C0 / #404040)" />
       <ref role="2wpffI" node="fLJRk5A" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5K" role="25R1y">
       <property role="TrG5h" value="darkGray" />
       <property role="3tVfz5" value="1084208529767" />
+      <property role="1L1pqM" value="dark gray / light gray (#404040 / #C0C0C0)" />
       <ref role="2wpffI" node="fLJRk5B" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5L" role="25R1y">
       <property role="TrG5h" value="white" />
       <property role="3tVfz5" value="1214395400259" />
+      <property role="1L1pqM" value="white / theme's background color" />
       <ref role="2wpffI" node="hEZAO13" />
     </node>
     <node concept="25R33" id="3Ftr4R6BF5M" role="25R1y">
       <property role="TrG5h" value="black" />
       <property role="3tVfz5" value="7151630269404055096" />
+      <property role="1L1pqM" value="black / theme's foreground color" />
       <ref role="2wpffI" node="6cZGtrcKCoS" />
     </node>
   </node>
