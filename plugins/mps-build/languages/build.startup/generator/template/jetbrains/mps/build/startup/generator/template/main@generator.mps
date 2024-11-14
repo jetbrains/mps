@@ -2482,7 +2482,7 @@
       <property role="2DPR8u" value="SET COMMON_JVM_ARGS=&quot;-XX:ErrorFile=%USERPROFILE%\java_error_in_%PRODUCT%_%%p.log&quot; &quot;-XX:HeapDumpPath=%USERPROFILE%\java_error_in_%PRODUCT%.hprof&quot; -Didea.paths.selector=%IDEA_PATHS_SELECTOR% -Didea.vendor.name=&quot;%IDEA_VENDOR_NAME%&quot; %IDE_PROPERTIES_PROPERTY%" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm22ts" role="2DRAPQ">
-      <property role="2DPR8u" value="SET IDE_JVM_ARGS=-Didea.platform.prefix=Idea -Dintellij.platform.load.app.info.from.resources=true -Didea.jre.check=true -Dpty4j.preferred.native.folder=&quot;%IDE_HOME%/lib/pty4j&quot; -Djna.boot.library.path=&quot;%IDE_HOME%/lib/jna&quot; -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader" />
+      <property role="2DPR8u" value="SET IDE_JVM_ARGS=-Didea.platform.prefix=Idea -Dintellij.platform.load.app.info.from.resources=true -Didea.jre.check=true -Dpty4j.preferred.native.folder=&quot;%IDE_HOME%/lib/pty4j&quot; -Djna.boot.library.path=&quot;%IDE_HOME%/lib/jna&quot; -Djava.system.class.loader=com.intellij.util.lang.PathClassLoader -Dij.startup.error.report.url=https://youtrack.jetbrains.com/newissue?project=MPS&amp;clearDraft=true&amp;summary=$TITLE$&amp;description=$DESCR$" />
     </node>
     <node concept="2DRAP_" id="4eWOtEm264z" role="2DRAPQ">
       <property role="2DPR8u" value="SET ALL_JVM_ARGS=%ACC% %COMMON_JVM_ARGS% %IDE_JVM_ARGS%" />
@@ -4647,6 +4647,9 @@
           </node>
         </node>
       </node>
+    </node>
+    <node concept="2DRAP_" id="g4OpMoOzPQ" role="2DRAPQ">
+      <property role="2DPR8u" value="  -Dij.startup.error.report.url=https://youtrack.jetbrains.com/newissue?project=MPS\&amp;clearDraft=true\&amp;summary=\$TITLE\$\&amp;description=\$DESCR\$ \" />
     </node>
     <node concept="2DRAP_" id="7C7qUK4tehq" role="2DRAPQ">
       <property role="2DPR8u" value="  ${MAIN_CLASS} \" />
