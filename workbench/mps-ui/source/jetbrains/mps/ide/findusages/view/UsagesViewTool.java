@@ -465,7 +465,11 @@ public final class UsagesViewTool extends BaseTabbedProjectTool implements Persi
           @Override
           public void run() {
             //Wait until the tabs are read (the service gets loaded)
-            toolWindow.show();
+            final UsagesViewTool usages = getInstance(project);
+            //Do not show the tool window, since it would happen unexpectedly. Just pre-load the contents of the tool here.
+//            if (usages.getSelectedTab() != null) {
+//              toolWindow.show();
+//            }
           }
         });
       }
