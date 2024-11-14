@@ -3089,7 +3089,7 @@
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/4032646381570777493">
     <file name="Mpsdevkit_ApplicationPlugin.java">
       <node id="4032646381570777493" at="97,57,98,58" concept="5" />
-      <node id="4032646381570777495" at="123,158,124,107" concept="5" />
+      <node id="4032646381570777495" at="123,158,124,155" concept="5" />
     </file>
     <file name="NamespaceNewActionsEx_ActionGroup.java">
       <node id="4032646381570777493" at="10,0,11,0" concept="14" trace="ID" />
@@ -3327,7 +3327,7 @@
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/5361317699454626937">
     <file name="Mpsdevkit_ApplicationPlugin.java">
       <node id="5361317699454626937" at="103,55,104,52" concept="5" />
-      <node id="5361317699454650269" at="124,107,125,95" concept="5" />
+      <node id="5361317699454650269" at="124,155,125,95" concept="5" />
     </file>
     <file name="ToolsInternalEx_ActionGroup.java">
       <node id="5361317699454626937" at="10,0,11,0" concept="14" trace="ID" />

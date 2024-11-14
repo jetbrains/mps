@@ -7238,6 +7238,7 @@
     <property role="3GE5qa" value="New.Group" />
     <node concept="tT9cl" id="3vQPCiAiA6n" role="2f5YQi">
       <ref role="tU$_T" to="tprs:3vQPCiAiTP$" resolve="NamespaceNewActions" />
+      <ref role="2f8Tey" to="tprs:g4OpMp1SEM" resolve="languageExt" />
     </node>
     <node concept="ftmFs" id="3vQPCiAiA6q" role="ftER_">
       <node concept="tCFHf" id="3vQPCiAiA6r" role="ftvYc">

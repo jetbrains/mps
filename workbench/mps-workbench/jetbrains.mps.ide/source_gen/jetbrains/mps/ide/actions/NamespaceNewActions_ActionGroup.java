@@ -10,11 +10,14 @@ import jetbrains.mps.workbench.action.ApplicationPlugin;
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/4032646381570858340", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class NamespaceNewActions_ActionGroup extends GeneratedActionGroup {
   public static final String ID = "jetbrains.mps.ide.actions.NamespaceNewActions_ActionGroup";
+  public static final String LABEL_ID_languageExt = ID + "languageExt";
 
   public NamespaceNewActions_ActionGroup(@NotNull ApplicationPlugin plugin) {
     super("New", ID, plugin);
     setIsInternal(false);
     setPopup(true);
     NamespaceNewActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.NewSolution_Action");
+    addNamedAnchor(LABEL_ID_languageExt);
+    NamespaceNewActions_ActionGroup.this.addSeparator();
   }
 }
