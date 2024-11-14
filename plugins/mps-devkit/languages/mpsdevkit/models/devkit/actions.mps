@@ -17633,12 +17633,7 @@
                 <property role="373rjd" value="true" />
                 <ref role="37wK5l" to="a0yo:~GenerationTracerViewToolState.&lt;init&gt;(com.intellij.openapi.project.Project,jetbrains.mps.ide.tools.BaseTabbedProjectTool)" resolve="GenerationTracerViewToolState" />
                 <node concept="2xqhHp" id="1OUi9vCrPm1" role="37wK5m" />
-                <node concept="10QFUN" id="1jv8YkoxvbC" role="37wK5m">
-                  <node concept="3uibUv" id="1jv8Ykoxvuo" role="10QFUM">
-                    <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
-                  </node>
-                  <node concept="2WthIp" id="1OUi9vCrPm2" role="10QFUP" />
-                </node>
+                <node concept="2WthIp" id="1OUi9vCrPm2" role="37wK5m" />
               </node>
             </node>
             <node concept="2OqwBi" id="1OUi9vCrPm3" role="37vLTJ">

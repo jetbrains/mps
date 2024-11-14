@@ -528,10 +528,40 @@
     <property role="TrG5h" value="Typeof_ToolType_Instanceof_BaseTool" />
     <property role="3GE5qa" value="Tool" />
     <node concept="3clFbS" id="h_xYE3Y" role="2sgrp5">
-      <node concept="3cpWs6" id="1WJEr2RAQuy" role="3cqZAp">
-        <node concept="2c44tf" id="1WJEr2RAQuz" role="3cqZAk">
-          <node concept="3uibUv" id="4SCpAJX2ntg" role="2c44tc">
-            <ref role="3uigEE" to="71xd:~BaseTool" resolve="BaseTool" />
+      <node concept="3clFbJ" id="g4OpMoMtjj" role="3cqZAp">
+        <node concept="3clFbS" id="g4OpMoMtjl" role="3clFbx">
+          <node concept="3cpWs6" id="g4OpMoMwq2" role="3cqZAp">
+            <node concept="2c44tf" id="g4OpMoMwq3" role="3cqZAk">
+              <node concept="3uibUv" id="g4OpMoMwq4" role="2c44tc">
+                <ref role="3uigEE" to="71xd:~BaseTabbedProjectTool" resolve="BaseTabbedProjectTool" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2OqwBi" id="g4OpMoMvDY" role="3clFbw">
+          <node concept="2OqwBi" id="g4OpMoMtwB" role="2Oq$k0">
+            <node concept="1YBJjd" id="g4OpMoMtjT" role="2Oq$k0">
+              <ref role="1YBMHb" node="h_xYIVl" resolve="toolType" />
+            </node>
+            <node concept="3TrEf2" id="g4OpMoMvq2" role="2OqNvi">
+              <ref role="3Tt5mk" to="tp4k:h_xYkIF" resolve="tool" />
+            </node>
+          </node>
+          <node concept="1mIQ4w" id="g4OpMoMwgn" role="2OqNvi">
+            <node concept="chp4Y" id="g4OpMoMwm4" role="cj9EA">
+              <ref role="cht4Q" to="tp4k:57l5h3Lsyf5" resolve="TabbedToolDeclaration" />
+            </node>
+          </node>
+        </node>
+        <node concept="9aQIb" id="g4OpMoMwsU" role="9aQIa">
+          <node concept="3clFbS" id="g4OpMoMwsV" role="9aQI4">
+            <node concept="3cpWs6" id="1WJEr2RAQuy" role="3cqZAp">
+              <node concept="2c44tf" id="1WJEr2RAQuz" role="3cqZAk">
+                <node concept="3uibUv" id="4SCpAJX2ntg" role="2c44tc">
+                  <ref role="3uigEE" to="71xd:~BaseTool" resolve="BaseTool" />
+                </node>
+              </node>
+            </node>
           </node>
         </node>
       </node>

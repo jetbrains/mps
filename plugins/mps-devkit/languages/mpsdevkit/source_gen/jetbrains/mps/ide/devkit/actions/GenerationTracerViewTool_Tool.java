@@ -17,7 +17,7 @@ public class GenerationTracerViewTool_Tool extends BaseTabbedProjectTool {
   }
   public void init(Project project) {
     super.init(project);
-    GenerationTracerViewTool_Tool.this.state = new GenerationTracerViewToolState(project, (BaseTabbedProjectTool) GenerationTracerViewTool_Tool.this);
+    GenerationTracerViewTool_Tool.this.state = new GenerationTracerViewToolState(project, GenerationTracerViewTool_Tool.this);
   }
   public void dispose() {
     GenerationTracerViewTool_Tool.this.state = null;
