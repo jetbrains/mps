@@ -338,7 +338,7 @@ public class TabbedEditor extends BaseNodeEditor {
   }
 
   @Override
-  public void loadState(@NotNull final EditorState newState) {
+  public void loadState(@NotNull final EditorState newState, boolean isUndo) {
     myProject.getModelAccess().runReadAction(() -> loadStateImpl(newState));
   }
 

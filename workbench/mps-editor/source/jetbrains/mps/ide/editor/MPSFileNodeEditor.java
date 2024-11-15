@@ -142,9 +142,9 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
     myDelayedState = null;
     if (isUndo) {
       //we need it here since undo might need to flush events which requires write action
-      myProject.getModelAccess().runWriteAction(() -> myNodeEditor.loadState(editorState));
+      myProject.getModelAccess().runWriteAction(() -> myNodeEditor.loadState(editorState, isUndo));
     } else {
-      myNodeEditor.loadState(editorState);
+      myNodeEditor.loadState(editorState, isUndo);
       final EditorState result = myProject.getModelAccess().computeReadAction(myNodeEditor::saveState);
       if (result.getClass() != editorState.getClass()) {
         myDelayedState = editorState;

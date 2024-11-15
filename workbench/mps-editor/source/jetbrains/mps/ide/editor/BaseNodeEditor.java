@@ -276,7 +276,7 @@ public abstract class BaseNodeEditor implements Editor {
   }
 
   @Override
-  public void loadState(@NotNull EditorState state) {
+  public void loadState(@NotNull EditorState state, boolean isUndo) {
     if (!(state instanceof BaseEditorState)) {
       return;
     }
@@ -297,7 +297,7 @@ public abstract class BaseNodeEditor implements Editor {
         editorComponent.restoreState(s.memento);
 
         editorComponent.getFocusTracker().setEffectiveFocusState(s.isEditorFocused);
-        if (s.isEditorFocused && focusManager != null) {
+        if (!isUndo && s.isEditorFocused && focusManager != null) {
           focusManager.requestFocus(editorComponent, true);
         }
         editorComponent.deactivateSubstituteChooser();
