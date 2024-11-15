@@ -38,6 +38,7 @@ import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.problems.ProblemListener;
+import com.intellij.util.IJSwingUtilities;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.icons.MPSIcons;
@@ -146,7 +147,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     assert myConnection == null; // double initialization
     myConnection = getProject().getMessageBus().connect();
     myConnection.subscribe(TabbedEditor.TAB_CHANGES, (TabChangedListener) nodeRef -> {
-      if (getProjectView().isAutoscrollFromSource(ID)) {
+      if (getProjectView().isAutoscrollFromSource(ID) && !IJSwingUtilities.hasFocus(getComponentToFocus())) {
         selectNodeWithoutExpansion(nodeRef);
       }
     });
