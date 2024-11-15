@@ -40,9 +40,7 @@ public interface Editor {
   //---state
   EditorState saveState();
 
-  default void loadState(@NotNull EditorState state) {
-    loadState(state, false);
-  }
+  void loadState(@NotNull EditorState state);
 
   default void loadState(@NotNull EditorState state, boolean isUndo) {
     loadState(state);

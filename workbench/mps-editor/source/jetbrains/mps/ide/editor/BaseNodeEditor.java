@@ -276,7 +276,16 @@ public abstract class BaseNodeEditor implements Editor {
   }
 
   @Override
+  public void loadState(@NotNull EditorState state) {
+    loadStateImpl(state, false);
+  }
+
+  @Override
   public void loadState(@NotNull EditorState state, boolean isUndo) {
+    loadStateImpl(state, isUndo);
+  }
+
+  protected void loadStateImpl(@NotNull EditorState state, boolean isUndo) {
     if (!(state instanceof BaseEditorState)) {
       return;
     }
