@@ -501,5 +501,14 @@
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
+    <channel id="MPS243EAP" name="MPS 2024.3" status="eap"
+             url="https://www.jetbrains.com/mps/nextversion"
+             feedback="http://youtrack.jetbrains.net/issues/MPS"
+             majorVersion="2024" minorVersoin="3">
+      <build number="243.21565.167" version="2024.3 EAP1">
+        <message>JetBrains MPS 2024.3 EAP1 is now available.</message>
+        <button name="Download" url="https://www.jetbrains.com/mps/nextversion" download="true"/>
+      </build>
+    </channel>
   </product>
 </products>
