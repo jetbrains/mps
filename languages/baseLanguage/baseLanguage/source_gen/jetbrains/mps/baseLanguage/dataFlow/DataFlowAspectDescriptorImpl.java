@@ -20,7 +20,7 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
   public Collection<DataFlowConstructor> getConstructors(String analyzerId) {
     switch (analyzerId) {
       case "jetbrains.mps.baseLanguage.dataFlow.Nullable":
-        return Arrays.asList(new DataFlowConstructor[]{new RuleAfterDotExpression(), new RuleAssertNotNull(), new RuleAssertNull(), new RuleCreator(), new RuleEqualsExpression(), new RuleFieldReference(), new RuleInstanceofExpression(), new RuleMethodCall(), new RuleNonNullExpression(), new RuleNotEqualsExpression(), new RuleNullLiteral(), new RuleTernaryOperation(), new RuleVariableDeclaration()});
+        return Arrays.asList(new DataFlowConstructor[]{new RuleAfterDotExpression(), new RuleAssertNotNull(), new RuleAssertNull(), new RuleCreator(), new RuleEqualsExpression(), new RuleFieldReference(), new RuleInstanceofExpression(), new RuleIsEmptyStringExpression(), new RuleIsNotEmptyStringExpression(), new RuleMethodCall(), new RuleNonNullExpression(), new RuleNotEqualsExpression(), new RuleNullLiteral(), new RuleTernaryOperation(), new RuleVariableDeclaration()});
       default:
     }
     return Collections.<DataFlowConstructor>emptyList();
