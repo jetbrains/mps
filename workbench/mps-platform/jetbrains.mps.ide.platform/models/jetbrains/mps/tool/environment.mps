@@ -1808,6 +1808,25 @@
                 </node>
               </node>
             </node>
+            <node concept="3clFbF" id="2dqaY0Ct9V4" role="3cqZAp">
+              <node concept="2OqwBi" id="2dqaY0CtpqC" role="3clFbG">
+                <node concept="10M0yZ" id="2dqaY0CtkMF" role="2Oq$k0">
+                  <ref role="3cqZAo" to="anz6:~IndexingTestUtil.Companion" resolve="Companion" />
+                  <ref role="1PxDUh" to="anz6:~IndexingTestUtil" resolve="IndexingTestUtil" />
+                </node>
+                <node concept="liA8E" id="2dqaY0Ctv8c" role="2OqNvi">
+                  <ref role="37wK5l" to="anz6:~IndexingTestUtil$Companion.waitUntilIndexesAreReady(com.intellij.openapi.project.Project)" resolve="waitUntilIndexesAreReady" />
+                  <node concept="2OqwBi" id="2dqaY0CtAXz" role="37wK5m">
+                    <node concept="37vLTw" id="2dqaY0CtAX$" role="2Oq$k0">
+                      <ref role="3cqZAo" node="3qbI1lNoBDX" resolve="openedProject" />
+                    </node>
+                    <node concept="liA8E" id="2dqaY0CtAX_" role="2OqNvi">
+                      <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
           <node concept="37vLTw" id="3qbI1lNp8y_" role="3clFbw">
             <ref role="3cqZAo" node="3qbI1lNp2CW" resolve="testMode" />

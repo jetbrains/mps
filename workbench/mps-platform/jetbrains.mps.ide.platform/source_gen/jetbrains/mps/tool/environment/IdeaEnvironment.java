@@ -23,6 +23,7 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.util.Disposer;
+import com.intellij.testFramework.IndexingTestUtil;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.openapi.application.ModalityState;
@@ -207,6 +208,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
     MPSProject openedProject = openProjectInIdeaEnvironment(projectFile);
     if (testMode) {
       Disposer.register(openedProject.getProject(), disposable0);
+      IndexingTestUtil.Companion.waitUntilIndexesAreReady(openedProject.getProject());
     }
     return openedProject;
   }
