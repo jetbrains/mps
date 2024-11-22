@@ -146,7 +146,8 @@
       <zipfileset file="${basedir}/bin/mac/fsnotifier" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" filemode="755" />
       <zipfileset file="${basedir}/bin/mac/printenv" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" filemode="755" />
       <zipfileset file="${basedir}/build/resources/mps.icns" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/Resources" />
-      <zipfileset file="${basedir}/build/resources/mps" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/MacOS" filemode="755" />
+      <zipfileset file="${basedir}/build/resources/mps-x64" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/MacOS" filemode="755" />
+      <zipfileset file="${basedir}/build/resources/mps-aarch64" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/MacOS" filemode="755" />
       <zipfileset dir="${basedir}/lib/jna/darwin-aarch64" prefix="MPS ${mpsBootstrapCore.version}/lib/jna/aarch64" />
       <zipfileset dir="${basedir}/lib/jna/linux-aarch64" prefix="MPS ${mpsBootstrapCore.version}/lib/jna/aarch64" />
       <zipfileset dir="${basedir}/lib/jna/win32-aarch64" prefix="MPS ${mpsBootstrapCore.version}/lib/jna/aarch64" />
