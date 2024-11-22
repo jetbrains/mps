@@ -131,10 +131,18 @@ public class CurrentDifferenceRegistry {
    */
   @NotNull
   public CurrentDifference getCurrentDifference(@NotNull EditableSModel modelDescriptor) {
+    SModelReference modelRef = modelDescriptor.getReference();
     synchronized (myCurrentDifferences) {
-      SModelReference modelRef = modelDescriptor.getReference();
-      if (!(MapSequence.fromMap(myCurrentDifferences).containsKey(modelRef))) {
-        MapSequence.fromMap(myCurrentDifferences).put(modelRef, new CurrentDifference(this, modelDescriptor));
+      if (MapSequence.fromMap(myCurrentDifferences).containsKey(modelRef)) {
+        return MapSequence.fromMap(myCurrentDifferences).get(modelRef);
+      }
+    }
+    CurrentDifference difference = new CurrentDifference(this, modelDescriptor);
+    synchronized (myCurrentDifferences) {
+      if (MapSequence.fromMap(myCurrentDifferences).containsKey(modelRef)) {
+        difference.dispose();
+      } else {
+        MapSequence.fromMap(myCurrentDifferences).put(modelRef, difference);
       }
       return MapSequence.fromMap(myCurrentDifferences).get(modelRef);
     }
