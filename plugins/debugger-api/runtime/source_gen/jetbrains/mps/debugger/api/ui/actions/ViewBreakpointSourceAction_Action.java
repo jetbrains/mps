@@ -20,7 +20,7 @@ import jetbrains.mps.openapi.navigation.EditorNavigator;
 
 @GeneratedClass(node = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)/6515087165749935206", model = "r:01820806-c285-4459-a416-37590f94adc8(jetbrains.mps.debugger.api.ui.actions)")
 public class ViewBreakpointSourceAction_Action extends BaseAction {
-  private static final Icon ICON = AllIcons.Actions.ShowViewer;
+  private static final Icon ICON = AllIcons.Actions.ShowCode;
 
   public ViewBreakpointSourceAction_Action() {
     super("View Source", "View Source", ICON);

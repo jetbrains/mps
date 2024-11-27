@@ -2534,9 +2534,9 @@
       <node concept="1oajcY" id="1_xVpoi0ERK" role="1oa70y" />
     </node>
     <node concept="1GtWCo" id="6S5fI02CGAn" role="3Uehp1">
-      <node concept="10M0yZ" id="3SQRqvYTzFN" role="1GtWoa">
+      <node concept="10M0yZ" id="6FJbCpTvhN5" role="1GtWoa">
+        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.ShowCode" resolve="ShowCode" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
-        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.ShowViewer" resolve="ShowViewer" />
       </node>
     </node>
     <node concept="tnohg" id="5DEfk93eNLB" role="tncku">
