@@ -22,6 +22,7 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.RoamingType;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task.Modal;
@@ -51,6 +52,7 @@ import java.util.stream.Collectors;
 )
 public final class SamplesExtractor implements PersistentStateComponent<MyState>, SamplesInfo {
   private static final String SAMPLES_IN_MPS_HOME_DIR = "samples";
+  private static final Logger LOG = Logger.getInstance(SamplesExtractor.class);
 
   private MyState myState = new MyState();
   private final boolean myIsSamplesInMPSHome;
@@ -175,7 +177,7 @@ public final class SamplesExtractor implements PersistentStateComponent<MyState>
 
     @Override
     public void onThrowable(@NotNull Throwable error) {
-      super.onThrowable(error);
+      LOG.warn(error.getMessage());
       boolean restored = tryToRestoreSamples();
       Messages.showErrorDialog(
           SamplesBundle.message("modal.task.fail.text",
