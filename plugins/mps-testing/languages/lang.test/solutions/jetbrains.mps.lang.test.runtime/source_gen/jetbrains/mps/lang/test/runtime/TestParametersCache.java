@@ -95,13 +95,14 @@ public final class TestParametersCache implements TestRule {
     if (myProject == null) {
       return;
     }
+    final SModel modelToDispose = myTransientModel;
     myProject.getModelAccess().runWriteInEDT(() -> {
       if (LOG.isInfoLevel()) {
         LOG.info("Disposing the temporary model");
       }
-      TemporaryModels.getInstance().dispose(myTransientModel);
-      myTransientModel = null;
+      TemporaryModels.getInstance().dispose(modelToDispose);
     });
+    myTransientModel = null;
     myProject = null;
     myTestModel = null;
     myInitialized = false;
