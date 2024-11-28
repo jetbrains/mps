@@ -1358,20 +1358,20 @@
       <node id="4853409916376461016" at="17,0,18,0" concept="7" trace="myParametersCache" />
       <node id="4853409916376507028" at="19,66,20,35" concept="6" />
       <node id="4853409916376594176" at="23,51,24,29" concept="12" />
-      <node id="4853409916376518325" at="41,36,42,32" concept="6" />
+      <node id="4853409916376518325" at="33,36,34,32" concept="6" />
       <node id="4853409916376504278" at="19,0,22,0" concept="3" trace="TestParametersCacheExtension#(Ljetbrains/mps/lang/test/runtime/TestParametersCache;)V" />
       <node id="4853409916376582832" at="23,0,26,0" concept="10" trace="getParametersCache#()Ljetbrains/mps/lang/test/runtime/TestParametersCache;" />
       <node id="4853409916376452672" at="27,0,30,0" concept="10" trace="beforeAll#(Lorg/junit/jupiter/api/extension/ExtensionContext;)V" />
-      <node id="4853409916376452681" at="31,0,34,0" concept="10" trace="afterAll#(Lorg/junit/jupiter/api/extension/ExtensionContext;)V" />
-      <node id="4853409916376515590" at="35,0,38,0" concept="10" trace="beforeEach#(Lorg/junit/jupiter/api/extension/ExtensionContext;)V" />
-      <node id="7978162869571062897" at="40,68,43,5" concept="9" />
-      <node id="4853409916376515601" at="39,0,45,0" concept="10" trace="afterEach#(Lorg/junit/jupiter/api/extension/ExtensionContext;)V" />
+      <node id="7978162869571062897" at="32,67,35,5" concept="9" />
+      <node id="4853409916376515590" at="38,0,41,0" concept="10" trace="beforeEach#(Lorg/junit/jupiter/api/extension/ExtensionContext;)V" />
+      <node id="4853409916376515601" at="42,0,45,0" concept="10" trace="afterEach#(Lorg/junit/jupiter/api/extension/ExtensionContext;)V" />
+      <node id="4853409916376452681" at="31,0,37,0" concept="10" trace="afterAll#(Lorg/junit/jupiter/api/extension/ExtensionContext;)V" />
       <scope id="4853409916376452679" at="28,68,28,68" />
-      <scope id="4853409916376452689" at="32,67,32,67" />
-      <scope id="4853409916376515599" at="36,69,36,69" />
+      <scope id="4853409916376515599" at="39,69,39,69" />
+      <scope id="4853409916376515611" at="43,68,43,68" />
       <scope id="4853409916376504282" at="19,66,20,35" />
       <scope id="4853409916376582836" at="23,51,24,29" />
-      <scope id="7978162869571062899" at="41,36,42,32" />
+      <scope id="7978162869571062899" at="33,36,34,32" />
       <scope id="4853409916376504278" at="19,0,22,0">
         <var name="cache" id="4853409916376504933" />
       </scope>
@@ -1379,15 +1379,15 @@
       <scope id="4853409916376452672" at="27,0,30,0">
         <var name="context" id="4853409916376452676" />
       </scope>
-      <scope id="4853409916376452681" at="31,0,34,0">
-        <var name="context" id="4853409916376452685" />
-      </scope>
-      <scope id="4853409916376515590" at="35,0,38,0">
+      <scope id="4853409916376452689" at="32,67,35,5" />
+      <scope id="4853409916376515590" at="38,0,41,0">
         <var name="context" id="4853409916376515594" />
       </scope>
-      <scope id="4853409916376515611" at="40,68,43,5" />
-      <scope id="4853409916376515601" at="39,0,45,0">
+      <scope id="4853409916376515601" at="42,0,45,0">
         <var name="context" id="4853409916376515605" />
+      </scope>
+      <scope id="4853409916376452681" at="31,0,37,0">
+        <var name="context" id="4853409916376452685" />
       </scope>
       <unit id="4853409916376450089" at="15,0,46,0" name="jetbrains.mps.lang.test.runtime.TestParametersCacheExtension" />
     </file>
