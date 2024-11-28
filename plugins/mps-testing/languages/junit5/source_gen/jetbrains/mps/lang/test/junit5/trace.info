@@ -402,7 +402,7 @@
   <root nodeRef="r:e59b0550-8a55-4ba7-959c-684743b5ee3c(jetbrains.mps.lang.test.junit5)/819766574533564192">
     <file name="FailureDetector.java">
       <node id="819766574534397343" at="13,0,14,0" concept="3" trace="errors" />
-      <node id="819766574534620102" at="17,79,18,69" concept="2" />
+      <node id="819766574534620102" at="17,79,18,108" concept="2" />
       <node id="819766574533635421" at="22,32,23,31" concept="8" />
       <node id="4406376019440972377" at="26,30,27,25" concept="8" />
       <node id="819766574538058559" at="31,31,32,26" concept="2" />
@@ -412,7 +412,7 @@
       <node id="819766574534438986" at="30,52,33,5" concept="4" />
       <node id="819766574534417290" at="30,0,35,0" concept="6" trace="flushErrors#(Ljetbrains/mps/lang/test/launcher/WorkerCallback;)V" />
       <node id="819766574533576628" at="15,0,21,0" concept="6" trace="executionFinished#(Lorg/junit/platform/launcher/TestIdentifier;Lorg/junit/platform/engine/TestExecutionResult;)V" />
-      <scope id="819766574533587711" at="17,79,18,69" />
+      <scope id="819766574533587711" at="17,79,18,108" />
       <scope id="819766574533628750" at="22,32,23,31" />
       <scope id="4406376019440946466" at="26,30,27,25" />
       <scope id="819766574534438989" at="31,31,32,26" />

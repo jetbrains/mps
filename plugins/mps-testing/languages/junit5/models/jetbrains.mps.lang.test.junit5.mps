@@ -1950,17 +1950,32 @@
                 </node>
                 <node concept="liA8E" id="HwplGLS591" role="2OqNvi">
                   <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
-                  <node concept="3cpWs3" id="HwplGLOO3U" role="37wK5m">
-                    <node concept="2OqwBi" id="HwplGLOQwS" role="3uHU7w">
-                      <node concept="37vLTw" id="HwplGLOPtR" role="2Oq$k0">
-                        <ref role="3cqZAo" node="HwplGLO0uT" resolve="testIdentifier" />
+                  <node concept="3cpWs3" id="6cj1r3kRkMt" role="37wK5m">
+                    <node concept="2OqwBi" id="6cj1r3kRsHk" role="3uHU7w">
+                      <node concept="37vLTw" id="6cj1r3kRrNU" role="2Oq$k0">
+                        <ref role="3cqZAo" node="HwplGLO0uV" resolve="testExecutionResult" />
                       </node>
-                      <node concept="liA8E" id="HwplGLOREh" role="2OqNvi">
-                        <ref role="37wK5l" to="bws1:~TestIdentifier.getDisplayName()" resolve="getDisplayName" />
+                      <node concept="liA8E" id="6cj1r3kRucT" role="2OqNvi">
+                        <ref role="37wK5l" to="n4ib:~TestExecutionResult.toString()" resolve="toString" />
                       </node>
                     </node>
-                    <node concept="Xl_RD" id="HwplGLOIr_" role="3uHU7B">
-                      <property role="Xl_RC" value="Test failure: " />
+                    <node concept="3cpWs3" id="6cj1r3kRvFO" role="3uHU7B">
+                      <node concept="Xl_RD" id="6cj1r3kRwx6" role="3uHU7w">
+                        <property role="Xl_RC" value=" " />
+                      </node>
+                      <node concept="3cpWs3" id="HwplGLOO3U" role="3uHU7B">
+                        <node concept="Xl_RD" id="HwplGLOIr_" role="3uHU7B">
+                          <property role="Xl_RC" value="Test failure: " />
+                        </node>
+                        <node concept="2OqwBi" id="HwplGLOQwS" role="3uHU7w">
+                          <node concept="37vLTw" id="HwplGLOPtR" role="2Oq$k0">
+                            <ref role="3cqZAo" node="HwplGLO0uT" resolve="testIdentifier" />
+                          </node>
+                          <node concept="liA8E" id="HwplGLOREh" role="2OqNvi">
+                            <ref role="37wK5l" to="bws1:~TestIdentifier.getDisplayName()" resolve="getDisplayName" />
+                          </node>
+                        </node>
+                      </node>
                     </node>
                   </node>
                 </node>
