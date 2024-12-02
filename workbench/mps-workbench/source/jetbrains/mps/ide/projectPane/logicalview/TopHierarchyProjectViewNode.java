@@ -243,11 +243,22 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     }
 
     protected String getVirtualFolder(SModel model) {
+      StringBuilder sb = new StringBuilder();
       // original comment:
       // FIXME I know I'm not supposed to use TransientSModelDescriptor directly, rather extapi.TransientSModel
       //       but there's no mechanism to access serial through that interface yet
       int branch = model instanceof TransientSModelDescriptor ? ((TransientSModelDescriptor) model).getBranchSerial() : 0;
-      return branch == 0 ? "" : String.format("Transformation branch #%d", branch);
+      if (branch != 0) {
+        sb.append(String.format("Transformation branch #%d", branch));
+      }
+      String namespace = model.getName().getNamespace();
+      if (!namespace.isEmpty()) {
+        if (sb.length() > 0) {
+          sb.append(".");
+        }
+        sb.append(namespace);
+      }
+      return sb.toString();
     }
 
     @Override

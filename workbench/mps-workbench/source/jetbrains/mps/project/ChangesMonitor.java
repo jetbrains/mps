@@ -240,9 +240,12 @@ import java.util.function.Predicate;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
     boolean wereMessagesReported = myMessagesContainer.clearMessages(model.getReference());
     MessagesUpdate event = wereMessagesReported ? MessagesUpdate.DISAPPEARED : MessagesUpdate.NONE;
-    if (model != null && !(model instanceof TransientSModel)) {
+    if (model != null) {
       List<ModelReportItem> messages = new ArrayList<>();
-      addValidationMessages(model, messages, mpsProject::getPlatform);
+      if (!(model instanceof TransientSModel)) {
+        // generation status messages are applicable to transient models, too
+        addValidationMessages(model, messages, mpsProject::getPlatform);
+      }
       if (myGenerationStatusManager != null) {
         addGenerationStatusMessages(model, messages, myGenerationStatusManager::generationRequired);
       }
@@ -462,6 +465,8 @@ import java.util.function.Predicate;
     protected void startListening(@NotNull SModel model) {
       model.addModelListener(this);
       registerListener((SModelInternal) model);
+      // ensure messages for a new model are updated
+      enqueueUpdate(model);
     }
 
     @Override
@@ -477,6 +482,8 @@ import java.util.function.Predicate;
 
     @Override
     public void moduleAdded(@NotNull SModule module) {
+      // the superclass's implementation does this as well
+      startListening(module);
       enqueueAllModulesInProject();
     }
 
