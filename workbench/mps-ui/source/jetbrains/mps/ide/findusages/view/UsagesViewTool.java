@@ -92,6 +92,8 @@ public final class UsagesViewTool extends BaseTabbedProjectTool implements Persi
   private final ViewOptions myDefaultViewOptions = new ViewOptions();
   private final DataTreeChangesNotifier myChangeTracker = new DataTreeChangesNotifier();
 
+  private volatile Runnable loadedTabInitializer = null;
+
   //----CONSTRUCT STUFF----
 
   public UsagesViewTool(Project project) {
@@ -254,20 +256,22 @@ public final class UsagesViewTool extends BaseTabbedProjectTool implements Persi
     Element defaultViewOptionsXML = element.getChild(DEFAULT_VIEW_OPTIONS);
     myDefaultViewOptions.read(defaultViewOptionsXML, project);
 
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      @Override
-      public void run() {
-        if (!loadedUsageViewData.isEmpty()) {
-            for (UsageViewData d : loadedUsageViewData) {
-              register(d);
-            }
-            for (UsageViewData d : myUsageViewsData) {
-              // we re-open tabs here, shall force new tab for each restored data element, but no need to bring tool to front
-              UsagesViewTool.this.addTab(d, true, false);
-            }
+    assert loadedTabInitializer == null;
+    if (!loadedUsageViewData.isEmpty()) {
+      // We must delay adding visual tabs until the tool window is registered with ToolWindowManager,
+      loadedTabInitializer = new Runnable() {
+        @Override
+        public void run() {
+          for (UsageViewData d : loadedUsageViewData) {
+            register(d);
+          }
+          for (UsageViewData d : myUsageViewsData) {
+            // we re-open tabs here, shall force new tab for each restored data element, but no need to bring tool to front
+            UsagesViewTool.this.addTab(d, true, false);
+          }
         }
-      }
-    });
+      };
+    }
   }
 
   private void write(Element element, jetbrains.mps.project.Project project) {
@@ -457,21 +461,38 @@ public final class UsagesViewTool extends BaseTabbedProjectTool implements Persi
   }
 
   private static class Factory implements com.intellij.openapi.wm.ToolWindowFactory {
+    /**
+     * Returning false when no usages data has been loaded ensures that the tool button is not shown upon start.
+     * If no usages report data was loaded, without this method the platform shows a tool button, which disappears as soon as clicked.
+     * This method instantiates the Usages service and loads its persistent state.
+     * Special care must be taken in the service's loadState/read methods to avoid registering this tool window with ToolWindowManager,
+     * since it leads to double-registering and an exception thrown.
+     */
+    @Override
+    public boolean shouldBeAvailable(@NotNull Project project) {
+      final UsagesViewTool service = project.getService(UsagesViewTool.class);
+      if (service != null) {
+        return service.loadedTabInitializer != null;
+      }
+      return false;
+    }
+
+    /**
+     * Initializes the tabs from loaded state, hides the window explicitly so as not to start with open Usages
+     */
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
       //Initialize loading of saved tabs
-      if (project.getService(UsagesViewTool.class) != null) {
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          @Override
-          public void run() {
-            //Wait until the tabs are read (the service gets loaded)
-            final UsagesViewTool usages = getInstance(project);
-            //Do not show the tool window, since it would happen unexpectedly. Just pre-load the contents of the tool here.
-//            if (usages.getSelectedTab() != null) {
-//              toolWindow.show();
-//            }
-          }
-        });
+      final UsagesViewTool service = project.getService(UsagesViewTool.class);
+      if (service != null) {
+        toolWindow.hide();
+        //Propagate the loaded usages report data into actual visual tabs
+        if (service.loadedTabInitializer != null) {
+          ApplicationManager.getApplication().invokeLater(() -> {
+            service.loadedTabInitializer.run();
+            service.loadedTabInitializer = null;
+          });
+        }
       }
     }
   }
