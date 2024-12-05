@@ -38,6 +38,7 @@ import com.intellij.openapi.ui.MessageType;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowAnchor;
 import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.ui.content.Content;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
@@ -59,6 +60,7 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
+import org.jdom.Attribute;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -222,6 +224,10 @@ public final class UsagesViewTool extends BaseTabbedProjectTool implements Persi
         uv.dispose();
       }
     }, forceNewTab, openTool);
+    if (usageViewData.myPinned) {
+      final Content content = getContentManager().getContent(component);
+      content.setPinned(true);
+    }
   }
 
   //---END FIND STUFF----
@@ -286,7 +292,8 @@ public final class UsagesViewTool extends BaseTabbedProjectTool implements Persi
       }
       try {
         Element tabXML = new Element(TAB);
-        usageViewData.write(tabXML, project);
+        final Content content = getContentManager().getContent(usageViewData.myUsagesView.getComponent());
+        usageViewData.write(tabXML, project, content);
         tabsXML.addContent(tabXML);
       } catch (CantSaveSomethingException e) {
         // ignore
@@ -351,13 +358,19 @@ public final class UsagesViewTool extends BaseTabbedProjectTool implements Persi
 
     public final UsagesView myUsagesView;
     public final SearchTaskImpl mySearchTask;
+    private final boolean myPinned;
     private boolean myIsTransientView = false;
     // now it's not in use, but will be used to implement constructable finders
 //    private FindUsagesOptions myOptions = new FindUsagesOptions();
 
-    public UsageViewData(@NotNull UsagesView view, @Nullable SearchTaskImpl searchTask) {
+    public UsageViewData(@NotNull UsagesView view, @Nullable SearchTaskImpl searchTask, boolean pinned) {
       myUsagesView = view;
       mySearchTask = searchTask;
+      myPinned = pinned;
+    }
+
+    public UsageViewData(@NotNull UsagesView view, @Nullable SearchTaskImpl searchTask) {
+      this(view, searchTask, false);
     }
 
     /*package*/void setTransientView(boolean isTransientView) {
@@ -377,15 +390,16 @@ public final class UsagesViewTool extends BaseTabbedProjectTool implements Persi
 
 //      Element usageViewOptionsXML = element.getChild(USAGE_VIEW_OPTIONS);
 //      myOptions = new FindUsagesOptions(usageViewOptionsXML, project);
-      return new UsageViewData(usageView, task);
+      final Attribute pinned = element.getAttribute("pinned");
+      return new UsageViewData(usageView, task, pinned!=null && "true".equals(pinned.getValue()));
     }
 
-    public void write(Element element, jetbrains.mps.project.Project project) throws CantSaveSomethingException {
+    public void write(Element element, jetbrains.mps.project.Project project, Content content) throws CantSaveSomethingException {
       //this is to partially fix MPS-14671
       if (myUsagesView.getIncludedResultNodes().size() > 500) {
         throw new CantSaveSomethingException("usages view size too big to save");
       }
-
+      element.setAttribute("pinned", Boolean.toString(content.isPinned()));
 
       if (mySearchTask != null) {
         mySearchTask.write(element, project);
@@ -471,10 +485,7 @@ public final class UsagesViewTool extends BaseTabbedProjectTool implements Persi
     @Override
     public boolean shouldBeAvailable(@NotNull Project project) {
       final UsagesViewTool service = project.getService(UsagesViewTool.class);
-      if (service != null) {
-        return service.loadedTabInitializer != null;
-      }
-      return false;
+      return service != null && service.loadedTabInitializer != null;
     }
 
     /**
