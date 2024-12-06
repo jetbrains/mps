@@ -128,6 +128,21 @@
       </filterchain>
       <globmapper from="*" to="Info.plist" />
     </copy>
+    <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip/MPS ${mpsBootstrapCore.version}">
+      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info.json" />
+      <filterchain>
+        <tokenfilter>
+          <replaceregex pattern="\$version\$" replace="${mpsBootstrapCore.version}" flags="g" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="\$build\$" replace="${mps.build.number}" flags="g" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="\$path\.selector\$" replace="MPS${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}" flags="g" />
+        </tokenfilter>
+        <fixcrlf eol="lf" eof="remove" />
+      </filterchain>
+    </copy>
     <zip destfile="${build.layout}/${mps.build.number}.zip">
       <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}" />
       <zipfileset dir="${basedir}/bin/win" prefix="MPS ${mpsBootstrapCore.version}/bin/win">
@@ -206,6 +221,21 @@
         <fixcrlf eol="lf" eof="remove" />
       </filterchain>
     </copy>
+    <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-linux.tar.gz/MPS ${mpsBootstrapCore.version}">
+      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info.json" />
+      <filterchain>
+        <tokenfilter>
+          <replaceregex pattern="\$version\$" replace="${mpsBootstrapCore.version}" flags="g" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="\$build\$" replace="${mps.build.number}" flags="g" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="\$path\.selector\$" replace="MPS${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}" flags="g" />
+        </tokenfilter>
+        <fixcrlf eol="lf" eof="remove" />
+      </filterchain>
+    </copy>
     <tar destfile="${build.layout}/${mps.build.number}-linux.tar.gz" compression="gzip" longfile="gnu">
       <tarfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}" />
       <tarfileset file="${basedir}/lib/jna/linux-x86-64/libjnidispatch.so" prefix="MPS ${mpsBootstrapCore.version}/lib/jna" />
@@ -258,6 +288,21 @@
         <fixcrlf eol="crlf" />
       </filterchain>
     </copy>
+    <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-windows.zip/MPS ${mpsBootstrapCore.version}">
+      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info.json" />
+      <filterchain>
+        <tokenfilter>
+          <replaceregex pattern="\$version\$" replace="${mpsBootstrapCore.version}" flags="g" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="\$build\$" replace="${mps.build.number}" flags="g" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="\$path\.selector\$" replace="MPS${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}" flags="g" />
+        </tokenfilter>
+        <fixcrlf eol="crlf" eof="remove" />
+      </filterchain>
+    </copy>
     <zip destfile="${build.layout}/${mps.build.number}-windows.zip">
       <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}" />
       <zipfileset dir="${basedir}/bin/win" prefix="MPS ${mpsBootstrapCore.version}/bin">
@@ -277,6 +322,22 @@
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip" />
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip/MPS ${mpsBootstrapCore.version}.app" />
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip/MPS ${mpsBootstrapCore.version}.app/Contents" />
+    <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip/MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
+    <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip/MPS ${mpsBootstrapCore.version}.app/Contents/Resources">
+      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info.json" />
+      <filterchain>
+        <tokenfilter>
+          <replaceregex pattern="\$version\$" replace="${mpsBootstrapCore.version}" flags="g" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="\$build\$" replace="${mps.build.number}" flags="g" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="\$path\.selector\$" replace="MPS${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}" flags="g" />
+        </tokenfilter>
+        <fixcrlf eol="lf" eof="remove" />
+      </filterchain>
+    </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip_f755" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip_f755">
       <fileset file="${basedir}/build/resources/mps-x64" />
@@ -321,7 +382,6 @@
     <zip destfile="${build.layout}/${mps.build.number}-macos.zip">
       <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}.app/Contents" />
       <zipfileset file="${basedir}/build/resources/mps.icns" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
-      <zipfileset file="${basedir}/product-info.json" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
       <zipfileset file="${basedir}/bin/mac/libnst64.dylib" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" />
       <zipfileset file="${basedir}/bin/mac/libmacscreenmenu64.dylib" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" />
       <zipfileset file="${basedir}/bin/mac/amd64/restarter" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" filemode="755" />
@@ -336,6 +396,22 @@
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip" />
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip/MPS ${mpsBootstrapCore.version}.app" />
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip/MPS ${mpsBootstrapCore.version}.app/Contents" />
+    <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip/MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
+    <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip/MPS ${mpsBootstrapCore.version}.app/Contents/Resources">
+      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info.json" />
+      <filterchain>
+        <tokenfilter>
+          <replaceregex pattern="\$version\$" replace="${mpsBootstrapCore.version}" flags="g" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="\$build\$" replace="${mps.build.number}" flags="g" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="\$path\.selector\$" replace="MPS${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}" flags="g" />
+        </tokenfilter>
+        <fixcrlf eol="lf" eof="remove" />
+      </filterchain>
+    </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip_f755" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip_f755">
       <fileset file="${basedir}/build/resources/mps-aarch64" />
@@ -380,7 +456,6 @@
     <zip destfile="${build.layout}/${mps.build.number}-macos-aarch64.zip">
       <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}.app/Contents" />
       <zipfileset file="${basedir}/build/resources/mps.icns" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
-      <zipfileset file="${basedir}/product-info.json" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
       <zipfileset file="${basedir}/bin/mac/libnst64.dylib" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" />
       <zipfileset file="${basedir}/bin/mac/libmacscreenmenu64.dylib" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" />
       <zipfileset file="${basedir}/bin/mac/aarch64/restarter" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" filemode="755" />

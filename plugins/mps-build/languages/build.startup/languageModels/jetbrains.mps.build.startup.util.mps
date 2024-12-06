@@ -750,6 +750,17 @@
                   </node>
                 </node>
               </node>
+              <node concept="2pJPED" id="4EMkPAqtlRt" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
+                <node concept="2pJxcG" id="4EMkPAqtlRu" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRka" resolve="path" />
+                  <node concept="WxPPo" id="4EMkPAqtlRv" role="28ntcv">
+                    <node concept="Xl_RD" id="4EMkPAqtlRw" role="WxPPp">
+                      <property role="Xl_RC" value="lib/nio-fs.jar" />
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="2pJPED" id="7vi_RqAS_ge" role="36be1Z">
                 <ref role="2pJxaS" to="s7om:3nFPImNgRk9" resolve="ClassPathItem" />
                 <node concept="2pJxcG" id="7vi_RqAS_gf" role="2pJxcM">
