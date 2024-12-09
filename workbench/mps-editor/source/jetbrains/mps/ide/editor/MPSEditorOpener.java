@@ -85,7 +85,7 @@ public class MPSEditorOpener {
     if (!SNodeUtil.isAccessible(node, myProject.getRepository())) {
       return null;
     }
-    final Editor nodeEditor = openEditor(node.getContainingRoot(), false);
+    final Editor nodeEditor = openEditor(node.getContainingRoot(), focus);
 
     if ((nodeEditor.getCurrentEditorComponent() instanceof NodeEditorComponent)) {
       NodeEditorComponent nec = (NodeEditorComponent) nodeEditor.getCurrentEditorComponent();
