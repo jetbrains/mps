@@ -406,7 +406,7 @@
     <statistics.notificationIdsHolder implementation="com.intellij.collaboration.ui.notification.CollaborationToolsNotificationIdsHolder" />
     <notificationGroup id="VCS Hosting Integrations" displayType="BALLOON" bundle="messages.CollaborationToolsBundle" key="notification.group.vcs.hosting.integrations" />
     <diff.actions.ShowDiffAction.ExtensionProvider implementation="com.intellij.collaboration.ui.codereview.action.CodeReviewShowDiffActionProvider$Preview" />
-    <advancedSetting id="enable.combined.diff.for.codereview" default="true" bundle="messages.CollaborationToolsBundle" groupKey="advanced.settings.collab.tools" />
+    <advancedSetting id="enable.combined.diff.for.codereview" default="false" bundle="messages.CollaborationToolsBundle" groupKey="advanced.settings.collab.tools" />
   </extensions>
   <applicationListeners>
     <listener class="com.intellij.collaboration.ui.codereview.CodeReviewCombinedDiffAdvancedSettingsChangeListener" topic="com.intellij.openapi.options.advanced.AdvancedSettingsChangeListener" />
