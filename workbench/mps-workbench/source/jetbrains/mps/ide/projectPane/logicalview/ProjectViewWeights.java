@@ -13,7 +13,11 @@ public class ProjectViewWeights {
   // top-level
   public static final int TOP_PROJECT_WEIGHT = 10;
   public static final int MODULES_POOL_WEIGHT = 20;
-  public static final int TRANSIENT_MODELS_WEIGHT = 30;
+  public static final int TRANSIENTS_WEIGHT = 30;
+
+  // transients
+  public static final int CHECKPOINT_MODULE_WEIGHT = 10;
+  public static final int TRANSIENT_MODULE_WEIGHT = 20;
 
   // modules
   public static final int TOP_VIRTUAL_FOLDER_WEIGHT = 10;

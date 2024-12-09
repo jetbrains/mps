@@ -533,7 +533,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       return ActionPlace.PROJECT_PANE_PROJECT;
     } else if (selectedValue instanceof Generator) {
       return ActionPlace.PROJECT_PANE_GENERATOR;
-    } else if (selectedValue instanceof TransientModelsModule) {
+    } else if (selectedValue instanceof TransientModelsModule || selectedValue instanceof VirtualFolder.Transients) {
       return ActionPlace.PROJECT_PANE_TRANSIENT_MODULES;
     } else if (selectedValue instanceof Nodes) {
       return ActionPlace.PROJECT_PANE_PACKAGE;

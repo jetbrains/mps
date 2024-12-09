@@ -83,17 +83,6 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
   }
 
   @Override
-  protected void appendInplaceComments(@NotNull InplaceCommentAppender appender) {
-    super.appendInplaceComments(appender);
-    MissionControl missionControl = MissionControl.getInstance(getProject());
-    if (missionControl != null) {
-      if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkReadonly, MessageStatus.OK.OK, true)) {
-        appender.append(String.format(" (%s)", GenerationStatus.READONLY.getMessage()), SimpleTextAttributes.GRAY_ATTRIBUTES);
-      }
-    }
-  }
-
-  @Override
   public int getTypeSortWeight(boolean sortByType) {
     return ProjectViewWeights.SOLUTION_WEIGHT;
   }

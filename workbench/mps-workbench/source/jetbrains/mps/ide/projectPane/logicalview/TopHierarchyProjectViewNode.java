@@ -3,9 +3,10 @@
  */
 package jetbrains.mps.ide.projectPane.logicalview;
 
-import com.intellij.icons.AllIcons;
 import com.intellij.icons.AllIcons.Nodes;
+import com.intellij.icons.AllIcons.Scope;
 import com.intellij.ide.projectView.PresentationData;
+import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.openapi.project.Project;
@@ -15,14 +16,15 @@ import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.VisibleModuleRegistry;
 import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.generator.TransientModelsModule.TransientSModelDescriptor;
+import jetbrains.mps.generator.TransientModelsProvider;
 import jetbrains.mps.icons.MPSIcons;
-import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.DevKitsModulesPool;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.LanguagesModulesPool;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.ModulesPool;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.SolutionsModulesPool;
+import jetbrains.mps.ide.ui.tree.VirtualFolder.Transients;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.project.MPSProject;
@@ -220,6 +222,47 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
 
   }
 
+  protected static class TransientsProjectViewNode extends TopHierarchyProjectViewNode<Transients> {
+
+    protected TransientsProjectViewNode(@NotNull Project project, ViewSettings viewSettings) {
+      super(project, new Transients(), viewSettings);
+    }
+
+    @Override
+    protected boolean containsSObject(SObject sObject) {
+      return sObject.testIfHasSModule(this::containsSModule);
+    }
+
+    private Boolean containsSModule(SModule sModule) {
+      return sModule instanceof TransientModelsModule;
+    }
+
+    @Override
+    protected void fillChildren(final Collection<AbstractTreeNode<?>> children) {
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      TransientModelsProvider transientModelsProvider = mpsProject.getComponent(TransientModelsProvider.class);
+      if (transientModelsProvider != null) {
+        mpsProject.getModelAccess().runReadAction(() -> {
+          for (TransientModelsModule module : transientModelsProvider.getModules()) {
+            children.add(new TransientModuleProjectViewNode(getProject(), module, getSettings()));
+          }
+        });
+      }
+    }
+
+    @Override
+    public int getTypeSortWeight(boolean sortByType) {
+      return ProjectViewWeights.TRANSIENTS_WEIGHT;
+    }
+
+    @Override
+    protected void update(@NotNull PresentationData presentation) {
+      presentation.setIcon(Scope.Scratches);
+      presentation.addText(getValue().getName(), SimpleTextAttributes.REGULAR_ATTRIBUTES);
+    }
+
+  }
+
   protected static class TransientModuleProjectViewNode extends BaseModuleProjectViewNode<TransientModelsModule> {
 
     protected TransientModuleProjectViewNode(Project project, TransientModelsModule module, ViewSettings viewSettings) {
@@ -230,7 +273,7 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
     }
-    
+
     @Override
     protected boolean canRepresentSObject(SObject sObject) {
       return !sObject.hasSModel() && sObject.testIfHasSModule(sModule -> Objects.equals(sModule, getValue()));
@@ -270,9 +313,9 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
 
     @Override
     public int getTypeSortWeight(boolean sortByType) {
-      return ProjectViewWeights.TRANSIENT_MODELS_WEIGHT;
+      return ProjectViewWeights.CHECKPOINT_MODULE_WEIGHT;
     }
 
   }
-
+  
 }

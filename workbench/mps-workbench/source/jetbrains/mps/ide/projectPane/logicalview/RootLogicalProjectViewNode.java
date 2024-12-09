@@ -15,7 +15,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.logicalview.TopHierarchyProjectViewNode.ModulesPoolProjectViewNode;
 import jetbrains.mps.ide.projectPane.logicalview.TopHierarchyProjectViewNode.TopProjectViewNode;
 import jetbrains.mps.ide.projectPane.logicalview.TopHierarchyProjectViewNode.TransientModuleProjectViewNode;
-import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.projectPane.logicalview.TopHierarchyProjectViewNode.TransientsProjectViewNode;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -44,15 +44,7 @@ public class RootLogicalProjectViewNode extends ProjectViewNode<Project> {
     ArrayList<ProjectViewNode<?>> topNodes = new ArrayList<>();
     topNodes.add(new TopProjectViewNode(getProject(), getSettings()));
     topNodes.add(new ModulesPoolProjectViewNode(getProject(), getSettings()));
-    MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    TransientModelsProvider transientModelsProvider = mpsProject.getComponent(TransientModelsProvider.class);
-    if (transientModelsProvider != null) {
-      mpsProject.getModelAccess().runReadAction(() -> {
-        for (TransientModelsModule module : transientModelsProvider.getModules()) {
-          topNodes.add(new TransientModuleProjectViewNode(getProject(), module, getSettings()));
-        }
-      });
-    }
+    topNodes.add(new TransientsProjectViewNode(getProject(), getSettings()));
     return Collections.unmodifiableList(topNodes);
   }
 
