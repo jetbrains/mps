@@ -355,7 +355,7 @@ public class TabbedEditor extends BaseNodeEditor {
       SNode node = nodePointer == null ? null : nodePointer.resolve(myProject.getRepository());
       if (node != null) {
         showNode(node, false);
-        super.loadState(state.loadState(nodePointer));
+        super.loadStateImpl(state.loadState(nodePointer), isUndo);
       }
     } else {
       //regular editor was shown for that node last time
