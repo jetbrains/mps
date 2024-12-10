@@ -27500,40 +27500,6 @@
                   </node>
                 </node>
               </node>
-              <node concept="28jJK3" id="2lgcjg39Yuh" role="39821P">
-                <property role="28jJZ5" value="755" />
-                <node concept="55IIr" id="2lgcjg39Yuj" role="28jJRO">
-                  <node concept="2Ry0Ak" id="2lgcjg39Yuk" role="iGT6I">
-                    <property role="2Ry0Am" value="bin" />
-                    <node concept="2Ry0Ak" id="2lgcjg39Yul" role="2Ry0An">
-                      <property role="2Ry0Am" value="mac" />
-                      <node concept="2Ry0Ak" id="3t1G1ARqygM" role="2Ry0An">
-                        <property role="2Ry0Am" value="amd64" />
-                        <node concept="2Ry0Ak" id="3t1G1ARqyhW" role="2Ry0An">
-                          <property role="2Ry0Am" value="restarter" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="28jJK3" id="3t1G1ARqyld" role="39821P">
-                <property role="28jJZ5" value="755" />
-                <node concept="55IIr" id="3t1G1ARqyle" role="28jJRO">
-                  <node concept="2Ry0Ak" id="3t1G1ARqylf" role="iGT6I">
-                    <property role="2Ry0Am" value="bin" />
-                    <node concept="2Ry0Ak" id="3t1G1ARqylg" role="2Ry0An">
-                      <property role="2Ry0Am" value="mac" />
-                      <node concept="2Ry0Ak" id="3t1G1ARqylh" role="2Ry0An">
-                        <property role="2Ry0Am" value="aarch64" />
-                        <node concept="2Ry0Ak" id="3t1G1ARqyli" role="2Ry0An">
-                          <property role="2Ry0Am" value="restarter" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
               <node concept="28jJK3" id="2lgcjg39Yun" role="39821P">
                 <property role="28jJZ5" value="755" />
                 <node concept="55IIr" id="2lgcjg39Yus" role="28jJRO">
@@ -27557,6 +27523,54 @@
                       <property role="2Ry0Am" value="mac" />
                       <node concept="2Ry0Ak" id="j0QWE8u2SE" role="2Ry0An">
                         <property role="2Ry0Am" value="printenv" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="398223" id="7MqpeAlq3vL" role="39821P">
+                <node concept="3_J27D" id="7MqpeAlq3vN" role="Nbhlr">
+                  <node concept="3Mxwew" id="7MqpeAlq3vQ" role="3MwsjC">
+                    <property role="3MwjfP" value="aarch64" />
+                  </node>
+                </node>
+                <node concept="28jJK3" id="3t1G1ARqyld" role="39821P">
+                  <property role="28jJZ5" value="755" />
+                  <node concept="55IIr" id="3t1G1ARqyle" role="28jJRO">
+                    <node concept="2Ry0Ak" id="3t1G1ARqylf" role="iGT6I">
+                      <property role="2Ry0Am" value="bin" />
+                      <node concept="2Ry0Ak" id="3t1G1ARqylg" role="2Ry0An">
+                        <property role="2Ry0Am" value="mac" />
+                        <node concept="2Ry0Ak" id="3t1G1ARqylh" role="2Ry0An">
+                          <property role="2Ry0Am" value="aarch64" />
+                          <node concept="2Ry0Ak" id="3t1G1ARqyli" role="2Ry0An">
+                            <property role="2Ry0Am" value="restarter" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="398223" id="7MqpeAlq3vF" role="39821P">
+                <node concept="3_J27D" id="7MqpeAlq3vH" role="Nbhlr">
+                  <node concept="3Mxwew" id="7MqpeAlq3vJ" role="3MwsjC">
+                    <property role="3MwjfP" value="amd64" />
+                  </node>
+                </node>
+                <node concept="28jJK3" id="2lgcjg39Yuh" role="39821P">
+                  <property role="28jJZ5" value="755" />
+                  <node concept="55IIr" id="2lgcjg39Yuj" role="28jJRO">
+                    <node concept="2Ry0Ak" id="2lgcjg39Yuk" role="iGT6I">
+                      <property role="2Ry0Am" value="bin" />
+                      <node concept="2Ry0Ak" id="2lgcjg39Yul" role="2Ry0An">
+                        <property role="2Ry0Am" value="mac" />
+                        <node concept="2Ry0Ak" id="3t1G1ARqygM" role="2Ry0An">
+                          <property role="2Ry0Am" value="amd64" />
+                          <node concept="2Ry0Ak" id="3t1G1ARqyhW" role="2Ry0An">
+                            <property role="2Ry0Am" value="restarter" />
+                          </node>
+                        </node>
                       </node>
                     </node>
                   </node>
