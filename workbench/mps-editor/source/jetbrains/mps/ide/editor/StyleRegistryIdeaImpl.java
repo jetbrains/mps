@@ -101,7 +101,7 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
     setStyle("LIGHT_QUOTATION_BRACE", lightQuotationStyle);
 
     final StyleImpl errorCellStyle = new StyleImpl();
-    final JBColor errorCellColor = new JBColor(new  Color(255, 220, 220, 90), new Color(0xd6, 0x4d, 0x5b, 50));
+    final JBColor errorCellColor = new JBColor(new  Color(255, 220, 220, 250), new Color(0xd6, 0x4d, 0x5b, 150));
     errorCellStyle.set(StyleAttributes.TEXT_BACKGROUND_COLOR, errorCellColor);
     errorCellStyle.set(StyleAttributes.BACKGROUND_COLOR, errorCellColor);
     setStyle("ERROR_CELL", errorCellStyle);
