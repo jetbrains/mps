@@ -4370,7 +4370,7 @@
                     </node>
                     <node concept="3cpWs6" id="hT$QsT7" role="3cqZAp">
                       <node concept="37vLTw" id="7DjWGFrrwFZ" role="3cqZAk">
-                        <ref role="3cqZAo" node="hT$QsT2" resolve="a" />
+                        <ref role="3cqZAo" node="hT$QsT2" resolve="b" />
                       </node>
                     </node>
                   </node>
@@ -4851,11 +4851,11 @@
             <node concept="3clFbF" id="7yNlrCfpgYH" role="3cqZAp">
               <node concept="2OqwBi" id="7yNlrCfpgYE" role="3clFbG">
                 <node concept="10M0yZ" id="7yNlrCfpgYF" role="2Oq$k0">
-                  <ref role="1PxDUh" to="wyt6:~System" />
-                  <ref role="3cqZAo" to="wyt6:~System.out" />
+                  <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                  <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                 </node>
                 <node concept="liA8E" id="7yNlrCfpgYG" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~PrintStream.println()" />
+                  <ref role="37wK5l" to="guwi:~PrintStream.println()" resolve="println" />
                 </node>
                 <node concept="3xLA65" id="7yNlrCfph11" role="lGtFl">
                   <property role="TrG5h" value="expression" />
@@ -12794,8 +12794,8 @@
             <node concept="3clFbF" id="hT_aPcQ" role="3cqZAp">
               <node concept="2OqwBi" id="3n6d$Z48EgA" role="3clFbG">
                 <node concept="10M0yZ" id="3n6d$Z48EgB" role="2Oq$k0">
-                  <ref role="1PxDUh" to="wyt6:~System" />
-                  <ref role="3cqZAo" to="wyt6:~System.out" />
+                  <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                  <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                 </node>
                 <node concept="liA8E" id="3n6d$Z48EgC" role="2OqNvi">
                   <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
@@ -12840,8 +12840,8 @@
             <node concept="3clFbF" id="3n6d$Z48I7i" role="3cqZAp">
               <node concept="2OqwBi" id="3n6d$Z48I7k" role="3clFbG">
                 <node concept="10M0yZ" id="3n6d$Z48I7l" role="2Oq$k0">
-                  <ref role="1PxDUh" to="wyt6:~System" />
-                  <ref role="3cqZAo" to="wyt6:~System.out" />
+                  <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                  <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                 </node>
                 <node concept="liA8E" id="3n6d$Z48I7m" role="2OqNvi">
                   <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
@@ -12860,8 +12860,8 @@
             <node concept="3clFbF" id="3n6d$Z48IQG" role="3cqZAp">
               <node concept="2OqwBi" id="3n6d$Z48IQI" role="3clFbG">
                 <node concept="10M0yZ" id="3n6d$Z48IQJ" role="2Oq$k0">
-                  <ref role="1PxDUh" to="wyt6:~System" />
-                  <ref role="3cqZAo" to="wyt6:~System.out" />
+                  <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                  <ref role="3cqZAo" to="wyt6:~System.out" resolve="out" />
                 </node>
                 <node concept="liA8E" id="3n6d$Z48IQK" role="2OqNvi">
                   <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />

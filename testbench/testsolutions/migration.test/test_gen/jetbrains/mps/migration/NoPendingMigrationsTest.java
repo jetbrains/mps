@@ -113,7 +113,7 @@ public class NoPendingMigrationsTest extends EnvironmentAwareTestCase {
     // this method supplies parameters for the test method with the same name
 
     String projectsDir = System.getProperty("projects_dir");
-    Assert.assertNotNull("Need system property 'projectts_dir'", projectsDir);
+    Assert.assertNotNull("Need system property 'projects_dir'", projectsDir);
     VirtualFile projectsRoot = LocalFileSystem.getInstance().findFileByPath(projectsDir);
 
 

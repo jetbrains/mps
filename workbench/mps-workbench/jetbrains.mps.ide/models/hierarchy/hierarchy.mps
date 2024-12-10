@@ -100,7 +100,7 @@
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
+      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1095950406618" name="jetbrains.mps.baseLanguage.structure.DivExpression" flags="nn" index="FJ1c_" />
@@ -173,7 +173,7 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
-      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ngI" index="366HgL">
         <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
       </concept>
       <concept id="1092119917967" name="jetbrains.mps.baseLanguage.structure.MulExpression" flags="nn" index="17qRlL" />
@@ -247,7 +247,7 @@
       <concept id="1160998861373" name="jetbrains.mps.baseLanguage.structure.AssertStatement" flags="nn" index="1gVbGN">
         <child id="1160998896846" name="condition" index="1gVkn0" />
       </concept>
-      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
+      <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ngI" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
         <child id="4972241301747169160" name="typeArgument" index="3PaCim" />
@@ -282,7 +282,7 @@
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
       <concept id="1081855346303" name="jetbrains.mps.baseLanguage.structure.BreakStatement" flags="nn" index="3zACq4" />
-      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
+      <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ngI" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="1144226303539" name="jetbrains.mps.baseLanguage.structure.ForeachStatement" flags="nn" index="1DcWWT">
@@ -420,7 +420,7 @@
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
-      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
@@ -484,7 +484,7 @@
     <property role="TrG5h" value="HierarchyViewToolState" />
     <node concept="3Tm1VV" id="51NkKCgB398" role="1B3o_S" />
     <node concept="3uibUv" id="51NkKCgB399" role="1zkMxy">
-      <ref role="3uigEE" node="51NkKCgB38Y" resolve="AbstractHierarchyView" />
+      <ref role="3uigEE" node="51NkKCgB38Y" resolve="AbstractHierarchyViewState" />
     </node>
     <node concept="3clFbW" id="51NkKCgB39D" role="jymVt">
       <node concept="3Tm1VV" id="51NkKCgB39E" role="1B3o_S" />
@@ -497,7 +497,7 @@
       </node>
       <node concept="3clFbS" id="51NkKCgB39K" role="3clF47">
         <node concept="XkiVB" id="51NkKCgB39L" role="3cqZAp">
-          <ref role="37wK5l" node="51NkKCgB3dz" resolve="AbstractHierarchyView" />
+          <ref role="37wK5l" node="51NkKCgB3dz" resolve="AbstractHierarchyViewState" />
           <node concept="37vLTw" id="2BHiRxgha9E" role="37wK5m">
             <ref role="3cqZAo" node="51NkKCgB39G" resolve="project" />
           </node>
@@ -613,7 +613,7 @@
     <node concept="312cEg" id="51NkKCgB3dh" role="jymVt">
       <property role="TrG5h" value="myComponent" />
       <node concept="3uibUv" id="7ucF$Rjvdta" role="1tU5fm">
-        <ref role="3uigEE" node="3cy8vNEdt5R" resolve="AbstractHierarchyView.RootPanel" />
+        <ref role="3uigEE" node="3cy8vNEdt5R" resolve="AbstractHierarchyViewState.RootPanel" />
       </node>
       <node concept="3Tmbuc" id="51NkKCgB3dj" role="1B3o_S" />
     </node>
@@ -952,7 +952,7 @@
           <node concept="37vLTI" id="YlfeaJOSil" role="3clFbG">
             <node concept="2ShNRf" id="YlfeaJOSio" role="37vLTx">
               <node concept="1pGfFk" id="YlfeaJOSis" role="2ShVmc">
-                <ref role="37wK5l" node="3cy8vNEdt5T" resolve="AbstractHierarchyView.RootPanel" />
+                <ref role="37wK5l" node="3cy8vNEdt5T" resolve="AbstractHierarchyViewState.RootPanel" />
               </node>
             </node>
             <node concept="37vLTw" id="3WF3aHSnMbY" role="37vLTJ">
@@ -2490,7 +2490,7 @@
     <property role="TrG5h" value="BaseLanguageHierarchyViewToolState" />
     <node concept="3Tm1VV" id="51NkKCgB3lN" role="1B3o_S" />
     <node concept="3uibUv" id="51NkKCgB3lO" role="1zkMxy">
-      <ref role="3uigEE" node="51NkKCgB38Y" resolve="AbstractHierarchyView" />
+      <ref role="3uigEE" node="51NkKCgB38Y" resolve="AbstractHierarchyViewState" />
     </node>
     <node concept="3clFbW" id="51NkKCgB3mv" role="jymVt">
       <node concept="3Tm1VV" id="51NkKCgB3mw" role="1B3o_S" />
@@ -2503,7 +2503,7 @@
       </node>
       <node concept="3clFbS" id="51NkKCgB3m$" role="3clF47">
         <node concept="XkiVB" id="51NkKCgB3m_" role="3cqZAp">
-          <ref role="37wK5l" node="51NkKCgB3dz" resolve="AbstractHierarchyView" />
+          <ref role="37wK5l" node="51NkKCgB3dz" resolve="AbstractHierarchyViewState" />
           <node concept="37vLTw" id="2BHiRxgmanG" role="37wK5m">
             <ref role="3cqZAo" node="51NkKCgB3my" resolve="project" />
           </node>
@@ -2534,11 +2534,11 @@
           <node concept="3cpWsn" id="32hQGdSHxx8" role="3cpWs9">
             <property role="TrG5h" value="tree" />
             <node concept="3uibUv" id="32hQGdSHxx9" role="1tU5fm">
-              <ref role="3uigEE" node="51NkKCgB3lQ" resolve="BaseLanguageHierarchyViewTool.BaseLanguageHierarchyTree" />
+              <ref role="3uigEE" node="51NkKCgB3lQ" resolve="BaseLanguageHierarchyViewToolState.BaseLanguageHierarchyTree" />
             </node>
             <node concept="2ShNRf" id="32hQGdSHxxa" role="33vP2m">
               <node concept="1pGfFk" id="32hQGdSHxxb" role="2ShVmc">
-                <ref role="37wK5l" node="1ZFc3Q16e5J" resolve="BaseLanguageHierarchyViewTool.BaseLanguageHierarchyTree" />
+                <ref role="37wK5l" node="1ZFc3Q16e5J" resolve="BaseLanguageHierarchyViewToolState.BaseLanguageHierarchyTree" />
                 <node concept="2OqwBi" id="1ZFc3Q16ylg" role="37wK5m">
                   <node concept="1rXfSq" id="1ZFc3Q16ydJ" role="2Oq$k0">
                     <ref role="37wK5l" node="4rg4d7KX6yd" resolve="getMPSProject" />
@@ -10834,7 +10834,7 @@
     <node concept="312cEg" id="51NkKCgB481" role="jymVt">
       <property role="TrG5h" value="myHierarchyView" />
       <node concept="3uibUv" id="3P7s6VtYkva" role="1tU5fm">
-        <ref role="3uigEE" node="51NkKCgB38Y" resolve="AbstractHierarchyView" />
+        <ref role="3uigEE" node="51NkKCgB38Y" resolve="AbstractHierarchyViewState" />
       </node>
       <node concept="3Tm6S6" id="5QAlHFi_qVj" role="1B3o_S" />
     </node>
@@ -10923,7 +10923,7 @@
       <node concept="37vLTG" id="1ZFc3Q13yqQ" role="3clF46">
         <property role="TrG5h" value="hv" />
         <node concept="3uibUv" id="1ZFc3Q13yqP" role="1tU5fm">
-          <ref role="3uigEE" node="51NkKCgB38Y" resolve="AbstractHierarchyView" />
+          <ref role="3uigEE" node="51NkKCgB38Y" resolve="AbstractHierarchyViewState" />
         </node>
       </node>
       <node concept="P$JXv" id="1ZFc3Q13GyZ" role="lGtFl">
@@ -11057,7 +11057,7 @@
       <property role="TrG5h" value="getHierarchyView" />
       <node concept="3Tm1VV" id="51NkKCgB48I" role="1B3o_S" />
       <node concept="3uibUv" id="51NkKCgB48J" role="3clF45">
-        <ref role="3uigEE" node="51NkKCgB38Y" resolve="AbstractHierarchyView" />
+        <ref role="3uigEE" node="51NkKCgB38Y" resolve="AbstractHierarchyViewState" />
       </node>
       <node concept="3clFbS" id="51NkKCgB48L" role="3clF47">
         <node concept="3cpWs6" id="51NkKCgB48M" role="3cqZAp">
@@ -12512,7 +12512,7 @@
             <property role="TrG5h" value="hierarchyView" />
             <property role="3TUv4t" value="true" />
             <node concept="3uibUv" id="6Cflg7ykye_" role="1tU5fm">
-              <ref role="3uigEE" node="51NkKCgB38Y" resolve="AbstractHierarchyView" />
+              <ref role="3uigEE" node="51NkKCgB38Y" resolve="AbstractHierarchyViewState" />
             </node>
             <node concept="1rXfSq" id="6Cflg7yktVa" role="33vP2m">
               <ref role="37wK5l" node="51NkKCgB48H" resolve="getHierarchyView" />

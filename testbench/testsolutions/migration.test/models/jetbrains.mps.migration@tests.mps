@@ -1134,7 +1134,7 @@
             <ref role="37wK5l" to="rjhg:~Assert.assertNotNull(java.lang.String,java.lang.Object)" resolve="assertNotNull" />
             <ref role="1Pybhc" to="rjhg:~Assert" resolve="Assert" />
             <node concept="Xl_RD" id="4ZZ2R77k2DI" role="37wK5m">
-              <property role="Xl_RC" value="Need system property 'projectts_dir'" />
+              <property role="Xl_RC" value="Need system property 'projects_dir'" />
             </node>
             <node concept="37vLTw" id="4ZZ2R77k1Oy" role="37wK5m">
               <ref role="3cqZAo" node="2SnxzQPDHRN" resolve="projectsDir" />
