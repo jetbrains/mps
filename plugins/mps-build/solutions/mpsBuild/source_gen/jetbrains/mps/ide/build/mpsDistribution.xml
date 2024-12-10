@@ -156,10 +156,10 @@
       <zipfileset file="${basedir}/bin/linux/amd64/restarter" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" filemode="755" />
       <zipfileset file="${basedir}/bin/mac/libnst64.dylib" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" />
       <zipfileset file="${basedir}/bin/mac/libmacscreenmenu64.dylib" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" />
-      <zipfileset file="${basedir}/bin/mac/amd64/restarter" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" filemode="755" />
-      <zipfileset file="${basedir}/bin/mac/aarch64/restarter" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" filemode="755" />
       <zipfileset file="${basedir}/bin/mac/fsnotifier" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" filemode="755" />
       <zipfileset file="${basedir}/bin/mac/printenv" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" filemode="755" />
+      <zipfileset file="${basedir}/bin/mac/aarch64/restarter" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/aarch64" filemode="755" />
+      <zipfileset file="${basedir}/bin/mac/amd64/restarter" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/amd64" filemode="755" />
       <zipfileset file="${basedir}/build/resources/mps.icns" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/Resources" />
       <zipfileset file="${basedir}/build/resources/mps-x64" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/MacOS" filemode="755" />
       <zipfileset file="${basedir}/build/resources/mps-aarch64" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/MacOS" filemode="755" />
