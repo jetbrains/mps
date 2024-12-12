@@ -1255,6 +1255,17 @@
                   </node>
                 </node>
               </node>
+              <node concept="2pJPED" id="6RvRF8fCti_" role="36be1Z">
+                <ref role="2pJxaS" to="s7om:3nFPImNgRtc" resolve="SimpleVmOptions" />
+                <node concept="2pJxcG" id="6RvRF8fCtiA" role="2pJxcM">
+                  <ref role="2pJxcJ" to="s7om:3nFPImNgRtd" resolve="options" />
+                  <node concept="WxPPo" id="6RvRF8fCtiB" role="28ntcv">
+                    <node concept="Xl_RD" id="6RvRF8fCtiC" role="WxPPp">
+                      <property role="Xl_RC" value="-Didea.disable.collect.statistics=true" />
+                    </node>
+                  </node>
+                </node>
+              </node>
               <node concept="2pJPED" id="3rleFKvpH32" role="36be1Z">
                 <ref role="2pJxaS" to="s7om:3nFPImNgRtc" resolve="SimpleVmOptions" />
                 <node concept="2pJxcG" id="3rleFKvpH33" role="2pJxcM">

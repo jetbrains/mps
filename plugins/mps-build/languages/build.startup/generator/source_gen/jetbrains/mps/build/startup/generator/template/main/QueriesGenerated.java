@@ -11,6 +11,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.build.util.MacroHelper;
 import jetbrains.mps.build.util.Context;
 import jetbrains.mps.build.startup.behavior.MpsStartupScript__BehaviorDescriptor;
+import jetbrains.mps.build.mps.behavior.BuildMps_Branding__BehaviorDescriptor;
 import java.text.MessageFormat;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.build.startup.util.OpenedPackages;
@@ -138,9 +139,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g) == null)) {
       return _context.getTemplateValue();
     }
-
-    String vendor = ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.vendor$kK9e) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.vendor$kK9e), null) : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.company$8fEj), LINKS.name$a7Qw), null));
-    return String.format("SET IDEA_VENDOR_NAME=%s", vendor);
+    return String.format("SET IDEA_VENDOR_NAME=%s", BuildMps_Branding__BehaviorDescriptor.getVendor_id6RvRF8fBDEC.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), null));
   }
   public static Object propertyMacro_GetValue_2_8(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g) == null)) {
@@ -244,9 +243,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g) == null)) {
       return _context.getTemplateValue();
     }
-
-    String vendor = ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.vendor$kK9e) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.vendor$kK9e), null) : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.company$8fEj), LINKS.name$a7Qw), null));
-    return String.format("IDEA_VENDOR_NAME='%s'", vendor);
+    return String.format("IDEA_VENDOR_NAME='%s'", BuildMps_Branding__BehaviorDescriptor.getVendor_id6RvRF8fBDEC.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), null));
   }
   public static Object propertyMacro_GetValue_4_5(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g) == null)) {
@@ -357,7 +354,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return String.format(_context.getTemplateValue(), prefix);
   }
   public static Object propertyMacro_GetValue_6_4(final PropertyMacroContext _context) {
-    return String.format(_context.getTemplateValue(), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.vendor$kK9e), null));
+    return String.format(_context.getTemplateValue(), BuildMps_Branding__BehaviorDescriptor.getVendor_id6RvRF8fBDEC.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), null));
   }
   public static Object propertyMacro_GetValue_6_5(final PropertyMacroContext _context) {
     String runnable = ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.script$MlVT) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.script$MlVT), null) : ((SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.product$RfQu) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.product$RfQu), null).toLowerCase() : "mps"));
@@ -378,7 +375,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.text$DMB3);
   }
   public static Object propertyMacro_GetValue_6_9(final PropertyMacroContext _context) {
-    return String.format(_context.getTemplateValue(), BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.vendor$kK9e), null));
+    return String.format(_context.getTemplateValue(), BuildMps_Branding__BehaviorDescriptor.getVendor_id6RvRF8fBDEC.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), null));
   }
   public static boolean ifMacro_Condition_6_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.vendor$kK9e) != null);
@@ -693,8 +690,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink fullName$Rg5v = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54c4eb89feb230b0L, "fullName");
     /*package*/ static final SContainmentLink product$RfQu = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x54c4eb89feb230afL, "product");
     /*package*/ static final SContainmentLink vendor$kK9e = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x565a3894500dd6d9L, "vendor");
-    /*package*/ static final SContainmentLink company$8fEj = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0xad72aee24ac230dL, "company");
-    /*package*/ static final SContainmentLink name$a7Qw = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xad72aee24ac03d8L, 0xad72aee24ac03e1L, "name");
     /*package*/ static final SContainmentLink bootClasspath$_ysz = MetaAdapterFactory.getContainmentLink(0xd5033ceef63244b6L, 0xb30889d4fbde34ffL, 0x35ebd6e5b3437508L, 0x35ebd6e5b3437728L, "bootClasspath");
   }
 

@@ -19,6 +19,7 @@
     <import index="25x5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.text(JDK/)" />
     <import index="v5fn" ref="r:a1f8bf7f-c66e-4481-9108-2c3944879584(jetbrains.mps.build.startup.util)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
+    <import index="2txq" ref="r:2c8fa2a8-11a0-4729-bd56-47f702d30278(jetbrains.mps.build.mps.behavior)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1663,68 +1664,6 @@
                 <node concept="3w_OXm" id="1QEui$pmNmp" role="2OqNvi" />
               </node>
             </node>
-            <node concept="3clFbH" id="1QEui$pmNmq" role="3cqZAp" />
-            <node concept="3cpWs8" id="1QEui$pmNmr" role="3cqZAp">
-              <node concept="3cpWsn" id="1QEui$pmNms" role="3cpWs9">
-                <property role="TrG5h" value="vendor" />
-                <node concept="17QB3L" id="1QEui$pmNmt" role="1tU5fm" />
-                <node concept="3K4zz7" id="1QEui$pmNmu" role="33vP2m">
-                  <node concept="2OqwBi" id="1QEui$pmNmv" role="3K4Cdx">
-                    <node concept="2OqwBi" id="1QEui$pmNmw" role="2Oq$k0">
-                      <node concept="2OqwBi" id="1QEui$pmNmx" role="2Oq$k0">
-                        <node concept="30H73N" id="1QEui$pmNmy" role="2Oq$k0" />
-                        <node concept="3TrEf2" id="1QEui$pmNmz" role="2OqNvi">
-                          <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
-                        </node>
-                      </node>
-                      <node concept="3TrEf2" id="1QEui$pmNm$" role="2OqNvi">
-                        <ref role="3Tt5mk" to="kdzh:5pqe9hg3trp" resolve="vendor" />
-                      </node>
-                    </node>
-                    <node concept="3x8VRR" id="1QEui$pmNm_" role="2OqNvi" />
-                  </node>
-                  <node concept="2OqwBi" id="1QEui$pmNmA" role="3K4E3e">
-                    <node concept="2OqwBi" id="1QEui$pmNmB" role="2Oq$k0">
-                      <node concept="2OqwBi" id="1QEui$pmNmC" role="2Oq$k0">
-                        <node concept="30H73N" id="1QEui$pmNmD" role="2Oq$k0" />
-                        <node concept="3TrEf2" id="1QEui$pmNmE" role="2OqNvi">
-                          <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
-                        </node>
-                      </node>
-                      <node concept="3TrEf2" id="1QEui$pmNmF" role="2OqNvi">
-                        <ref role="3Tt5mk" to="kdzh:5pqe9hg3trp" resolve="vendor" />
-                      </node>
-                    </node>
-                    <node concept="2qgKlT" id="1QEui$pmNmG" role="2OqNvi">
-                      <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
-                      <node concept="10Nm6u" id="1QEui$pmNmH" role="37wK5m" />
-                    </node>
-                  </node>
-                  <node concept="2OqwBi" id="1QEui$pmNmI" role="3K4GZi">
-                    <node concept="2OqwBi" id="1QEui$pmNmJ" role="2Oq$k0">
-                      <node concept="2OqwBi" id="1QEui$pmNmK" role="2Oq$k0">
-                        <node concept="2OqwBi" id="1QEui$pmNmL" role="2Oq$k0">
-                          <node concept="30H73N" id="1QEui$pmNmM" role="2Oq$k0" />
-                          <node concept="3TrEf2" id="1QEui$pmNmN" role="2OqNvi">
-                            <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
-                          </node>
-                        </node>
-                        <node concept="3TrEf2" id="1QEui$pmNmO" role="2OqNvi">
-                          <ref role="3Tt5mk" to="kdzh:FnaIS$F2cd" resolve="company" />
-                        </node>
-                      </node>
-                      <node concept="3TrEf2" id="1QEui$pmNmP" role="2OqNvi">
-                        <ref role="3Tt5mk" to="kdzh:FnaIS$F0fx" resolve="name" />
-                      </node>
-                    </node>
-                    <node concept="2qgKlT" id="1QEui$pmNmQ" role="2OqNvi">
-                      <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
-                      <node concept="10Nm6u" id="1QEui$pmNmR" role="37wK5m" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3clFbF" id="1QEui$pmNmS" role="3cqZAp">
               <node concept="2YIFZM" id="1QEui$pmNmT" role="3clFbG">
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -1732,8 +1671,17 @@
                 <node concept="Xl_RD" id="1QEui$pmNmU" role="37wK5m">
                   <property role="Xl_RC" value="SET IDEA_VENDOR_NAME=%s" />
                 </node>
-                <node concept="37vLTw" id="1QEui$pmNmV" role="37wK5m">
-                  <ref role="3cqZAo" node="1QEui$pmNms" resolve="vendor" />
+                <node concept="2OqwBi" id="6RvRF8fBZKb" role="37wK5m">
+                  <node concept="2OqwBi" id="6RvRF8fBZbz" role="2Oq$k0">
+                    <node concept="30H73N" id="6RvRF8fBYMd" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="6RvRF8fBZvW" role="2OqNvi">
+                      <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
+                    </node>
+                  </node>
+                  <node concept="2qgKlT" id="6RvRF8fC0fH" role="2OqNvi">
+                    <ref role="37wK5l" to="2txq:6RvRF8fBDEC" resolve="getVendor" />
+                    <node concept="10Nm6u" id="6RvRF8fC0Dq" role="37wK5m" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -3320,68 +3268,6 @@
                 <node concept="3w_OXm" id="5pqe9hgEytX" role="2OqNvi" />
               </node>
             </node>
-            <node concept="3clFbH" id="5pqe9hgEytY" role="3cqZAp" />
-            <node concept="3cpWs8" id="5pqe9hgEytZ" role="3cqZAp">
-              <node concept="3cpWsn" id="5pqe9hgEyu0" role="3cpWs9">
-                <property role="TrG5h" value="vendor" />
-                <node concept="17QB3L" id="5pqe9hgEyu1" role="1tU5fm" />
-                <node concept="3K4zz7" id="5pqe9hgEyu2" role="33vP2m">
-                  <node concept="2OqwBi" id="5pqe9hgEyu3" role="3K4Cdx">
-                    <node concept="2OqwBi" id="5pqe9hgEyu4" role="2Oq$k0">
-                      <node concept="2OqwBi" id="5pqe9hgEyu5" role="2Oq$k0">
-                        <node concept="30H73N" id="5pqe9hgEyu6" role="2Oq$k0" />
-                        <node concept="3TrEf2" id="5pqe9hgEyu7" role="2OqNvi">
-                          <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
-                        </node>
-                      </node>
-                      <node concept="3TrEf2" id="5pqe9hgEyu8" role="2OqNvi">
-                        <ref role="3Tt5mk" to="kdzh:5pqe9hg3trp" resolve="vendor" />
-                      </node>
-                    </node>
-                    <node concept="3x8VRR" id="5pqe9hgEyu9" role="2OqNvi" />
-                  </node>
-                  <node concept="2OqwBi" id="5pqe9hgEyua" role="3K4E3e">
-                    <node concept="2OqwBi" id="5pqe9hgEyub" role="2Oq$k0">
-                      <node concept="2OqwBi" id="5pqe9hgEyuc" role="2Oq$k0">
-                        <node concept="30H73N" id="5pqe9hgEyud" role="2Oq$k0" />
-                        <node concept="3TrEf2" id="5pqe9hgEyue" role="2OqNvi">
-                          <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
-                        </node>
-                      </node>
-                      <node concept="3TrEf2" id="5pqe9hgEyuf" role="2OqNvi">
-                        <ref role="3Tt5mk" to="kdzh:5pqe9hg3trp" resolve="vendor" />
-                      </node>
-                    </node>
-                    <node concept="2qgKlT" id="5pqe9hgEyug" role="2OqNvi">
-                      <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
-                      <node concept="10Nm6u" id="5pqe9hgEyuh" role="37wK5m" />
-                    </node>
-                  </node>
-                  <node concept="2OqwBi" id="5pqe9hgEyui" role="3K4GZi">
-                    <node concept="2OqwBi" id="5pqe9hgEyuj" role="2Oq$k0">
-                      <node concept="2OqwBi" id="5pqe9hgEyuk" role="2Oq$k0">
-                        <node concept="2OqwBi" id="5pqe9hgEyul" role="2Oq$k0">
-                          <node concept="30H73N" id="5pqe9hgEyum" role="2Oq$k0" />
-                          <node concept="3TrEf2" id="5pqe9hgEyun" role="2OqNvi">
-                            <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
-                          </node>
-                        </node>
-                        <node concept="3TrEf2" id="5pqe9hgEyuo" role="2OqNvi">
-                          <ref role="3Tt5mk" to="kdzh:FnaIS$F2cd" resolve="company" />
-                        </node>
-                      </node>
-                      <node concept="3TrEf2" id="5pqe9hgEyup" role="2OqNvi">
-                        <ref role="3Tt5mk" to="kdzh:FnaIS$F0fx" resolve="name" />
-                      </node>
-                    </node>
-                    <node concept="2qgKlT" id="5pqe9hgEyuq" role="2OqNvi">
-                      <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
-                      <node concept="10Nm6u" id="5pqe9hgEyur" role="37wK5m" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3clFbF" id="5pqe9hgEyus" role="3cqZAp">
               <node concept="2YIFZM" id="5pqe9hgEyut" role="3clFbG">
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -3389,8 +3275,17 @@
                 <node concept="Xl_RD" id="5pqe9hgEyuu" role="37wK5m">
                   <property role="Xl_RC" value="IDEA_VENDOR_NAME='%s'" />
                 </node>
-                <node concept="37vLTw" id="5pqe9hgEyuv" role="37wK5m">
-                  <ref role="3cqZAo" node="5pqe9hgEyu0" resolve="vendor" />
+                <node concept="2OqwBi" id="6RvRF8fBPCe" role="37wK5m">
+                  <node concept="2OqwBi" id="6RvRF8fBOAN" role="2Oq$k0">
+                    <node concept="30H73N" id="6RvRF8fBOcd" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="6RvRF8fBPmJ" role="2OqNvi">
+                      <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
+                    </node>
+                  </node>
+                  <node concept="2qgKlT" id="6RvRF8fBQG2" role="2OqNvi">
+                    <ref role="37wK5l" to="2txq:6RvRF8fBDEC" resolve="getVendor" />
+                    <node concept="10Nm6u" id="6RvRF8fBRxj" role="37wK5m" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -5110,21 +5005,16 @@
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="3zGtF$" id="1E0$AnNBBa0" role="37wK5m" />
-                <node concept="2OqwBi" id="1E0$AnNBA7a" role="37wK5m">
-                  <node concept="2OqwBi" id="1E0$AnNBA7b" role="2Oq$k0">
-                    <node concept="2OqwBi" id="1E0$AnNBA7c" role="2Oq$k0">
-                      <node concept="30H73N" id="1E0$AnNBA7d" role="2Oq$k0" />
-                      <node concept="3TrEf2" id="1E0$AnNBA7e" role="2OqNvi">
-                        <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" />
-                      </node>
-                    </node>
-                    <node concept="3TrEf2" id="1E0$AnNBA7f" role="2OqNvi">
-                      <ref role="3Tt5mk" to="kdzh:5pqe9hg3trp" />
+                <node concept="2OqwBi" id="1E0$AnNBA7b" role="37wK5m">
+                  <node concept="2OqwBi" id="1E0$AnNBA7c" role="2Oq$k0">
+                    <node concept="30H73N" id="1E0$AnNBA7d" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="1E0$AnNBA7e" role="2OqNvi">
+                      <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
                     </node>
                   </node>
-                  <node concept="2qgKlT" id="1E0$AnNBA7g" role="2OqNvi">
-                    <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
-                    <node concept="10Nm6u" id="1E0$AnNBA7h" role="37wK5m" />
+                  <node concept="2qgKlT" id="6RvRF8fC4yo" role="2OqNvi">
+                    <ref role="37wK5l" to="2txq:6RvRF8fBDEC" resolve="getVendor" />
+                    <node concept="10Nm6u" id="6RvRF8fC4If" role="37wK5m" />
                   </node>
                 </node>
               </node>
@@ -5594,21 +5484,16 @@
                 <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                 <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                 <node concept="3zGtF$" id="4EMkPApkBDC" role="37wK5m" />
-                <node concept="2OqwBi" id="4EMkPApkBDD" role="37wK5m">
-                  <node concept="2OqwBi" id="4EMkPApkBDE" role="2Oq$k0">
-                    <node concept="2OqwBi" id="4EMkPApkBDF" role="2Oq$k0">
-                      <node concept="30H73N" id="4EMkPApkBDG" role="2Oq$k0" />
-                      <node concept="3TrEf2" id="4EMkPApkBDH" role="2OqNvi">
-                        <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" />
-                      </node>
-                    </node>
-                    <node concept="3TrEf2" id="4EMkPApkBDI" role="2OqNvi">
-                      <ref role="3Tt5mk" to="kdzh:5pqe9hg3trp" />
+                <node concept="2OqwBi" id="4EMkPApkBDE" role="37wK5m">
+                  <node concept="2OqwBi" id="4EMkPApkBDF" role="2Oq$k0">
+                    <node concept="30H73N" id="4EMkPApkBDG" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="4EMkPApkBDH" role="2OqNvi">
+                      <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
                     </node>
                   </node>
-                  <node concept="2qgKlT" id="4EMkPApkBDJ" role="2OqNvi">
-                    <ref role="37wK5l" to="vbkb:3NagsOfTioI" resolve="getText" />
-                    <node concept="10Nm6u" id="4EMkPApkBDK" role="37wK5m" />
+                  <node concept="2qgKlT" id="6RvRF8fC6iu" role="2OqNvi">
+                    <ref role="37wK5l" to="2txq:6RvRF8fBDEC" resolve="getVendor" />
+                    <node concept="10Nm6u" id="6RvRF8fC6uA" role="37wK5m" />
                   </node>
                 </node>
               </node>
