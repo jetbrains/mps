@@ -21,8 +21,7 @@ import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.actionSystem.ex.CustomComponentAction;
 import com.intellij.openapi.actionSystem.impl.ActionButtonWithText;
-import com.intellij.openapi.fileChooser.FileElement;
-import com.intellij.openapi.fileChooser.ex.FileNodeDescriptor;
+import com.intellij.openapi.fileChooser.tree.FileNode;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
@@ -38,7 +37,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -123,13 +121,8 @@ public abstract class ToggleFBModelRootKindAction extends ToggleAction implement
     }
     final List<VirtualFile> selected = new ArrayList<>();
     for (TreePath treePath : selectionPaths) {
-      final DefaultMutableTreeNode node = (DefaultMutableTreeNode) treePath.getLastPathComponent();
-      final Object nodeDescriptor = node.getUserObject();
-      if (!(nodeDescriptor instanceof FileNodeDescriptor)) {
-        return Collections.emptyList();
-      }
-      final FileElement fileElement = ((FileNodeDescriptor) nodeDescriptor).getElement();
-      final VirtualFile file = fileElement.getFile();
+      final FileNode node = (FileNode) treePath.getLastPathComponent();
+      final VirtualFile file = node.getFile();
       if (file != null) {
         selected.add(file);
       }
