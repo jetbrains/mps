@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,8 +36,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 public class CustomGenerationModuleFacet extends ModuleFacetBase implements ModelGenerationPlan.Provider {
   public static final String FACET_TYPE = "generator";
   private SModelReference myPlanModel;
-  private ModelGenerationPlan myCachedPlanInstance;
-  private long myCachedPlanTimestamp;
 
   public CustomGenerationModuleFacet(@NotNull SModule module) {
     super(FACET_TYPE, module);
@@ -53,13 +51,6 @@ public class CustomGenerationModuleFacet extends ModuleFacetBase implements Mode
       return null;
     }
 
-    final long modelActualTimestamp = planModel.getSource().getTimestamp();
-    if (myCachedPlanInstance != null && myCachedPlanTimestamp == modelActualTimestamp) {
-      // as long as there's single plan per module, no need to create MGP instance for each model, reuse.
-      return myCachedPlanInstance;
-    }
-    myCachedPlanTimestamp = modelActualTimestamp;
-
     GenPlanTranslator gpt = GenPlanTranslator.fromGenPlanModel(planModel);
     if (gpt == null) {
       Logger.getLogger(getClass()).warning(String.format("No genplan declaration found in the model %s", myPlanModel.getName()), myPlanModel);
@@ -69,8 +60,7 @@ public class CustomGenerationModuleFacet extends ModuleFacetBase implements Mode
     EngagedGeneratorCollector egc = new EngagedGeneratorCollector(languageRegistry, model); // see comment in GenPlanExtractor regarding additional languages
     RegularPlanBuilder planBuilder = new RegularPlanBuilder(languageRegistry, egc.getGenerators());
     gpt.feed(planBuilder);
-    myCachedPlanInstance = planBuilder.wrapUp(gpt.getPlanIdentity());
-    return myCachedPlanInstance;
+    return planBuilder.wrapUp(gpt.getPlanIdentity());
   }
 
   // despite public, these methods are not part of the contract.
@@ -83,7 +73,6 @@ public class CustomGenerationModuleFacet extends ModuleFacetBase implements Mode
 
   public void setPlanModelReference(@Nullable SModelReference modelRef) {
     myPlanModel = modelRef;
-    myCachedPlanInstance = null;
   }
 
   @Override
