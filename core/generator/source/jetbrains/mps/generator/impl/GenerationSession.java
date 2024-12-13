@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2024 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -210,11 +210,11 @@ class GenerationSession {
       while (!forkQueue.isEmpty()) {
         PlanBranchInfo branchInfo = forkQueue.removeFirst();
         SModel output = processGenPlanBranch(branchInfo, forkQueue, monitor);
-        gentargetByOutputModel.put(output.getReference(), branchInfo.generationTarget);
         // for *each* completed GP branch, keep model as it's the outcome we are going to process further
         if (output != null) {
           allOutputModels.add(output);
           mySessionContext.getModule().addModelToKeep(output.getReference(), true);
+          gentargetByOutputModel.put(output.getReference(), branchInfo.generationTarget);
         }
       }
 
