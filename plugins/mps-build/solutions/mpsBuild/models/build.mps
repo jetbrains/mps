@@ -30139,7 +30139,7 @@
         </node>
         <node concept="NbPM2" id="6Iq8148f_YW" role="HFWMp">
           <node concept="3Mxwew" id="2$8uTVzLlTJ" role="3MwsjC">
-            <property role="3MwjfP" value="MPS241" />
+            <property role="3MwjfP" value="MPS243" />
           </node>
         </node>
       </node>
@@ -30222,14 +30222,7 @@
             <ref role="3Mxwex" node="3AMbuf1N5Oy" resolve="version.bugfixNr" />
           </node>
         </node>
-        <node concept="NbPM2" id="3AMbuf6qfk7" role="3ZAF11">
-          <node concept="3Mxwey" id="7mSZAeOmk9n" role="3MwsjC">
-            <ref role="3Mxwex" node="3AMbuf1a7On" resolve="version.eap" />
-          </node>
-          <node concept="3Mxwew" id="7mSZAeOmk3X" role="3MwsjC">
-            <property role="3MwjfP" value="{" />
-          </node>
-        </node>
+        <node concept="NbPM2" id="3AMbuf6qfk7" role="3ZAF11" />
       </node>
       <node concept="2pNNFK" id="4Nc8eEDY$eW" role="27hc03">
         <property role="2pNNFO" value="youtrack" />
