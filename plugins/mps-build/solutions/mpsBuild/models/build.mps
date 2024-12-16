@@ -28012,6 +28012,14 @@
             </node>
           </node>
           <node concept="28jJK3" id="1sQhFOgglTc" role="39821P">
+            <node concept="2$gBol" id="6GoDrz9tCQc" role="28jJR8">
+              <property role="2$htvj" value="*" />
+              <node concept="NbPM2" id="6GoDrz9tCQd" role="2$htvi">
+                <node concept="3Mxwew" id="6GoDrz9tCQe" role="3MwsjC">
+                  <property role="3MwjfP" value="product-info.json" />
+                </node>
+              </node>
+            </node>
             <node concept="1688n2" id="1sQhFOgglTd" role="28jJR8">
               <property role="1688n3" value="\$version\$" />
               <property role="1688n6" value="g" />
@@ -28071,8 +28079,8 @@
                               <property role="2Ry0Am" value="ide" />
                               <node concept="2Ry0Ak" id="1sQhFOgglTz" role="2Ry0An">
                                 <property role="2Ry0Am" value="build" />
-                                <node concept="2Ry0Ak" id="1sQhFOgglT$" role="2Ry0An">
-                                  <property role="2Ry0Am" value="product-info.json" />
+                                <node concept="2Ry0Ak" id="6GoDrz9tCQf" role="2Ry0An">
+                                  <property role="2Ry0Am" value="product-info-linux-amd64.json" />
                                 </node>
                               </node>
                             </node>
@@ -28398,6 +28406,14 @@
             </node>
           </node>
           <node concept="28jJK3" id="4EMkPAqx9Js" role="39821P">
+            <node concept="2$gBol" id="6GoDrz9tCQ9" role="28jJR8">
+              <property role="2$htvj" value="*" />
+              <node concept="NbPM2" id="6GoDrz9tCQa" role="2$htvi">
+                <node concept="3Mxwew" id="6GoDrz9tCQb" role="3MwsjC">
+                  <property role="3MwjfP" value="product-info.json" />
+                </node>
+              </node>
+            </node>
             <node concept="1688n2" id="4EMkPAqx9Jt" role="28jJR8">
               <property role="1688n3" value="\$version\$" />
               <property role="1688n6" value="g" />
@@ -28457,8 +28473,8 @@
                               <property role="2Ry0Am" value="ide" />
                               <node concept="2Ry0Ak" id="4EMkPAqx9JW" role="2Ry0An">
                                 <property role="2Ry0Am" value="build" />
-                                <node concept="2Ry0Ak" id="4EMkPAqx9JX" role="2Ry0An">
-                                  <property role="2Ry0Am" value="product-info.json" />
+                                <node concept="2Ry0Ak" id="6GoDrz9tCQg" role="2Ry0An">
+                                  <property role="2Ry0Am" value="product-info-linux-amd64.json" />
                                 </node>
                               </node>
                             </node>
@@ -28827,6 +28843,14 @@
             </node>
           </node>
           <node concept="28jJK3" id="4EMkPAqx9JY" role="39821P">
+            <node concept="2$gBol" id="6GoDrz9tCQ6" role="28jJR8">
+              <property role="2$htvj" value="*" />
+              <node concept="NbPM2" id="6GoDrz9tCQ7" role="2$htvi">
+                <node concept="3Mxwew" id="6GoDrz9tCQ8" role="3MwsjC">
+                  <property role="3MwjfP" value="product-info.json" />
+                </node>
+              </node>
+            </node>
             <node concept="1688n2" id="4EMkPAqx9JZ" role="28jJR8">
               <property role="1688n3" value="\$version\$" />
               <property role="1688n6" value="g" />
@@ -28886,8 +28910,8 @@
                               <property role="2Ry0Am" value="ide" />
                               <node concept="2Ry0Ak" id="4EMkPAqx9Ku" role="2Ry0An">
                                 <property role="2Ry0Am" value="build" />
-                                <node concept="2Ry0Ak" id="4EMkPAqx9Kv" role="2Ry0An">
-                                  <property role="2Ry0Am" value="product-info.json" />
+                                <node concept="2Ry0Ak" id="6GoDrz9tCQh" role="2Ry0An">
+                                  <property role="2Ry0Am" value="product-info-windows-amd64.json" />
                                 </node>
                               </node>
                             </node>
@@ -28957,6 +28981,14 @@
                 </node>
               </node>
               <node concept="28jJK3" id="2YQC3bFlEZL" role="39821P">
+                <node concept="2$gBol" id="6GoDrz9tCQ3" role="28jJR8">
+                  <property role="2$htvj" value="*" />
+                  <node concept="NbPM2" id="6GoDrz9tCQ4" role="2$htvi">
+                    <node concept="3Mxwew" id="6GoDrz9tCQ5" role="3MwsjC">
+                      <property role="3MwjfP" value="product-info.json" />
+                    </node>
+                  </node>
+                </node>
                 <node concept="1688n2" id="4EMkPAqx9HZ" role="28jJR8">
                   <property role="1688n3" value="\$version\$" />
                   <property role="1688n6" value="g" />
@@ -29016,8 +29048,8 @@
                                   <property role="2Ry0Am" value="ide" />
                                   <node concept="2Ry0Ak" id="4EMkPAqx9HU" role="2Ry0An">
                                     <property role="2Ry0Am" value="build" />
-                                    <node concept="2Ry0Ak" id="4EMkPAqx9HX" role="2Ry0An">
-                                      <property role="2Ry0Am" value="product-info.json" />
+                                    <node concept="2Ry0Ak" id="6GoDrz9tCQi" role="2Ry0An">
+                                      <property role="2Ry0Am" value="product-info-macos-amd64.json" />
                                     </node>
                                   </node>
                                 </node>
@@ -29426,6 +29458,14 @@
                 </node>
               </node>
               <node concept="28jJK3" id="4EMkPAqx9In" role="39821P">
+                <node concept="2$gBol" id="6GoDrz9tCQ0" role="28jJR8">
+                  <property role="2$htvj" value="*" />
+                  <node concept="NbPM2" id="6GoDrz9tCQ1" role="2$htvi">
+                    <node concept="3Mxwew" id="6GoDrz9tCQ2" role="3MwsjC">
+                      <property role="3MwjfP" value="product-info.json" />
+                    </node>
+                  </node>
+                </node>
                 <node concept="1688n2" id="4EMkPAqx9Io" role="28jJR8">
                   <property role="1688n3" value="\$version\$" />
                   <property role="1688n6" value="g" />
@@ -29485,8 +29525,8 @@
                                   <property role="2Ry0Am" value="ide" />
                                   <node concept="2Ry0Ak" id="4EMkPAqx9IR" role="2Ry0An">
                                     <property role="2Ry0Am" value="build" />
-                                    <node concept="2Ry0Ak" id="4EMkPAqx9IS" role="2Ry0An">
-                                      <property role="2Ry0Am" value="product-info.json" />
+                                    <node concept="2Ry0Ak" id="6GoDrz9tCQj" role="2Ry0An">
+                                      <property role="2Ry0Am" value="product-info-macos-aarch64.json" />
                                     </node>
                                   </node>
                                 </node>

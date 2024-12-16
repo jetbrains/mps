@@ -129,7 +129,7 @@
       <globmapper from="*" to="Info.plist" />
     </copy>
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip/MPS ${mpsBootstrapCore.version}">
-      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info.json" />
+      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info-linux-amd64.json" />
       <filterchain>
         <tokenfilter>
           <replaceregex pattern="\$version\$" replace="${mpsBootstrapCore.version}" flags="g" />
@@ -142,6 +142,7 @@
         </tokenfilter>
         <fixcrlf eol="lf" eof="remove" />
       </filterchain>
+      <globmapper from="*" to="product-info.json" />
     </copy>
     <zip destfile="${build.layout}/${mps.build.number}.zip">
       <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}" />
@@ -222,7 +223,7 @@
       </filterchain>
     </copy>
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-linux.tar.gz/MPS ${mpsBootstrapCore.version}">
-      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info.json" />
+      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info-linux-amd64.json" />
       <filterchain>
         <tokenfilter>
           <replaceregex pattern="\$version\$" replace="${mpsBootstrapCore.version}" flags="g" />
@@ -235,6 +236,7 @@
         </tokenfilter>
         <fixcrlf eol="lf" eof="remove" />
       </filterchain>
+      <globmapper from="*" to="product-info.json" />
     </copy>
     <tar destfile="${build.layout}/${mps.build.number}-linux.tar.gz" compression="gzip" longfile="gnu">
       <tarfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}" />
@@ -289,7 +291,7 @@
       </filterchain>
     </copy>
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-windows.zip/MPS ${mpsBootstrapCore.version}">
-      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info.json" />
+      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info-windows-amd64.json" />
       <filterchain>
         <tokenfilter>
           <replaceregex pattern="\$version\$" replace="${mpsBootstrapCore.version}" flags="g" />
@@ -302,6 +304,7 @@
         </tokenfilter>
         <fixcrlf eol="crlf" eof="remove" />
       </filterchain>
+      <globmapper from="*" to="product-info.json" />
     </copy>
     <zip destfile="${build.layout}/${mps.build.number}-windows.zip">
       <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}" />
@@ -324,7 +327,7 @@
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip/MPS ${mpsBootstrapCore.version}.app/Contents" />
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip/MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip/MPS ${mpsBootstrapCore.version}.app/Contents/Resources">
-      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info.json" />
+      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info-macos-amd64.json" />
       <filterchain>
         <tokenfilter>
           <replaceregex pattern="\$version\$" replace="${mpsBootstrapCore.version}" flags="g" />
@@ -337,6 +340,7 @@
         </tokenfilter>
         <fixcrlf eol="lf" eof="remove" />
       </filterchain>
+      <globmapper from="*" to="product-info.json" />
     </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip_f755" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip_f755">
@@ -398,7 +402,7 @@
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip/MPS ${mpsBootstrapCore.version}.app/Contents" />
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip/MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip/MPS ${mpsBootstrapCore.version}.app/Contents/Resources">
-      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info.json" />
+      <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/product-info-macos-aarch64.json" />
       <filterchain>
         <tokenfilter>
           <replaceregex pattern="\$version\$" replace="${mpsBootstrapCore.version}" flags="g" />
@@ -411,6 +415,7 @@
         </tokenfilter>
         <fixcrlf eol="lf" eof="remove" />
       </filterchain>
+      <globmapper from="*" to="product-info.json" />
     </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip_f755" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos-aarch64.zip_f755">

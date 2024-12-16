@@ -3,14 +3,15 @@
   "version": "$version$",
   "buildNumber": "$build$",
   "productCode": "MPS",
-  "envVarBaseName": "mps",
+  "envVarBaseName": "MPS",
   "dataDirectoryName": "$path.selector$",
-  "svgIconPath": "bin/mps.svg",
+  "svgIconPath": "../bin/mps.svg",
   "productVendor": "JetBrains",
   "launch": [
     {
       "os": "macOS",
-      "launcherPath": "../MacOS/mps",
+      "arch": "amd64",
+      "launcherPath": "../MacOS/bin/mps",
       "javaExecutablePath": "../jbr/Contents/Home/bin/java",
       "vmOptionsFilePath": "../bin/mps.vmoptions",
       "bootClassPathJarNames": [
@@ -147,19 +148,7 @@
         "-Dcache.dir.macro.test=$IDE_CACHE_DIR",
         "-Dij.startup.error.report.url=https://youtrack.jetbrains.com/newissue?project=MPS&clearDraft=true&summary=$TITLE$&description=$DESCR$"
       ],
-      "mainClass": "jetbrains.mps.Launcher",
-      "customCommands": [
-        {
-          "commands": [
-            "custom-command"
-          ],
-          "additionalJvmArguments": [
-            "-Dproduct.property=product.value"
-          ],
-          "mainClass": "com.intellij.idea.CustomMain",
-          "dataDirectoryName": "XPlatLauncherTestCustom"
-        }
-      ]
+      "mainClass": "jetbrains.mps.Launcher"
     }
   ]
 }
