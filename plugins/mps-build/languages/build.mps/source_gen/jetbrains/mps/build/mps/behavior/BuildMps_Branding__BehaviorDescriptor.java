@@ -54,7 +54,7 @@ public final class BuildMps_Branding__BehaviorDescriptor extends BaseBHDescripto
     return (SLinkOperations.getTarget(__thisNode__, LINKS.version$1QyI) != null);
   }
   /*package*/ static String getVendor_id6RvRF8fBDEC(@NotNull SNode __thisNode__, MacroHelper helper) {
-    return ((SLinkOperations.getTarget(__thisNode__, LINKS.vendor$kK9e) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.vendor$kK9e), helper) : BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.company$8fEj), LINKS.name$a7Qw), helper));
+    return ((SLinkOperations.getTarget(__thisNode__, LINKS.vendor$kK9e) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.vendor$kK9e), helper) : ((SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.company$8fEj), LINKS.name$a7Qw) != null) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.company$8fEj), LINKS.name$a7Qw), helper) : "NoCompany"));
   }
 
   /*package*/ BuildMps_Branding__BehaviorDescriptor() {

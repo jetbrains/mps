@@ -15,7 +15,6 @@ import jetbrains.mps.build.mps.behavior.BuildMps_Branding__BehaviorDescriptor;
 import java.text.MessageFormat;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.build.startup.util.OpenedPackages;
-import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -32,7 +31,6 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.generator.impl.query.PropertyValueQuery;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.generator.impl.query.IfMacroCondition;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -403,12 +401,6 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_6_12(final PropertyMacroContext _context) {
     return String.format(_context.getTemplateValue(), BuildMps_Branding__BehaviorDescriptor.getVendor_id6RvRF8fBDEC.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), null));
   }
-  public static boolean ifMacro_Condition_6_0(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.vendor$kK9e) != null);
-  }
-  public static boolean ifMacro_Condition_6_1(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.vendor$kK9e) != null);
-  }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
     // replace all the lib/xxx.jar entries with a single lib/* to shorten classpath
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$_ysz)).where((it) -> !(SPropertyOperations.getString(it, PROPS.path$jtyZ).startsWith("lib/") && SPropertyOperations.getString(it, PROPS.path$jtyZ).indexOf('/', 4) == -1 && SPropertyOperations.getString(it, PROPS.path$jtyZ).endsWith(".jar")));
@@ -686,35 +678,6 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.propertyMacro_GetValue_6_12(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
-      }
-    }
-  }
-  private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
-  {
-    int i = 0;
-    imcMethods.put("7717100174560616316", new IfMC(i++));
-    imcMethods.put("7717100174560616501", new IfMC(i++));
-  }
-  @NotNull
-  @Override
-  public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    IfMacroCondition query = identity.forTemplateNode(imcMethods);
-    return (query != null ? query : super.getIfMacroCondition(identity));
-  }
-  private static class IfMC implements IfMacroCondition {
-    private final int methodKey;
-    public IfMC(int methodKey) {
-      this.methodKey = methodKey;
-    }
-    @Override
-    public boolean check(@NotNull IfMacroContext ctx) throws GenerationFailureException {
-      switch (methodKey) {
-        case 0:
-          return QueriesGenerated.ifMacro_Condition_6_0(ctx);
-        case 1:
-          return QueriesGenerated.ifMacro_Condition_6_1(ctx);
-        default:
-          throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
   }

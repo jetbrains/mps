@@ -208,13 +208,9 @@
       </concept>
       <concept id="1167756080639" name="jetbrains.mps.lang.generator.structure.PropertyMacro_GetPropertyValue" flags="in" index="3zFVjK" />
       <concept id="1167756221419" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_templatePropertyValue" flags="nn" index="3zGtF$" />
-      <concept id="1167945743726" name="jetbrains.mps.lang.generator.structure.IfMacro_Condition" flags="in" index="3IZrLx" />
       <concept id="1167951910403" name="jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery" flags="in" index="3JmXsc" />
       <concept id="1805153994415891174" name="jetbrains.mps.lang.generator.structure.TemplateParameterDeclaration" flags="ng" index="1N15co">
         <child id="1805153994415893199" name="type" index="1N15GL" />
-      </concept>
-      <concept id="1118773211870" name="jetbrains.mps.lang.generator.structure.IfMacro" flags="ln" index="1W57fq">
-        <child id="1167945861827" name="conditionFunction" index="3IZSJc" />
       </concept>
       <concept id="1118786554307" name="jetbrains.mps.lang.generator.structure.LoopMacro" flags="ln" index="1WS0z7">
         <child id="1167952069335" name="sourceNodesQuery" index="3Jn$fo" />
@@ -5086,28 +5082,6 @@
           </node>
         </node>
         <node concept="raruj" id="6GoDrz8MGDL" role="lGtFl" />
-        <node concept="1W57fq" id="6GoDrz8M_XW" role="lGtFl">
-          <node concept="3IZrLx" id="6GoDrz8M_XX" role="3IZSJc">
-            <node concept="3clFbS" id="6GoDrz8M_XY" role="2VODD2">
-              <node concept="3clFbF" id="6GoDrz8M_XZ" role="3cqZAp">
-                <node concept="2OqwBi" id="6GoDrz8M_Y0" role="3clFbG">
-                  <node concept="2OqwBi" id="6GoDrz8M_Y1" role="2Oq$k0">
-                    <node concept="2OqwBi" id="6GoDrz8M_Y2" role="2Oq$k0">
-                      <node concept="30H73N" id="6GoDrz8M_Y3" role="2Oq$k0" />
-                      <node concept="3TrEf2" id="6GoDrz8M_Y4" role="2OqNvi">
-                        <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
-                      </node>
-                    </node>
-                    <node concept="3TrEf2" id="6GoDrz8M_Y5" role="2OqNvi">
-                      <ref role="3Tt5mk" to="kdzh:5pqe9hg3trp" resolve="vendor" />
-                    </node>
-                  </node>
-                  <node concept="3x8VRR" id="6GoDrz8M_Y6" role="2OqNvi" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="2DRAP_" id="6GoDrz8M_Y7" role="2DRAPQ">
         <property role="2DPR8u" value="  &quot;launch&quot;: [" />
@@ -5855,28 +5829,6 @@
           </node>
         </node>
         <node concept="raruj" id="6GoDrz8MJAo" role="lGtFl" />
-        <node concept="1W57fq" id="6GoDrz8MA0P" role="lGtFl">
-          <node concept="3IZrLx" id="6GoDrz8MA0Q" role="3IZSJc">
-            <node concept="3clFbS" id="6GoDrz8MA0R" role="2VODD2">
-              <node concept="3clFbF" id="6GoDrz8MA0S" role="3cqZAp">
-                <node concept="2OqwBi" id="6GoDrz8MA0T" role="3clFbG">
-                  <node concept="2OqwBi" id="6GoDrz8MA0U" role="2Oq$k0">
-                    <node concept="2OqwBi" id="6GoDrz8MA0V" role="2Oq$k0">
-                      <node concept="30H73N" id="6GoDrz8MA0W" role="2Oq$k0" />
-                      <node concept="3TrEf2" id="6GoDrz8MA0X" role="2OqNvi">
-                        <ref role="3Tt5mk" to="s7om:32A7APlXEJ9" resolve="branding" />
-                      </node>
-                    </node>
-                    <node concept="3TrEf2" id="6GoDrz8MA0Y" role="2OqNvi">
-                      <ref role="3Tt5mk" to="kdzh:5pqe9hg3trp" resolve="vendor" />
-                    </node>
-                  </node>
-                  <node concept="3x8VRR" id="6GoDrz8MA0Z" role="2OqNvi" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
       </node>
       <node concept="2DRAP_" id="6GoDrz8MA1c" role="2DRAPQ">
         <property role="2DPR8u" value="        &quot;-Didea.paths.selector=$path.selector$&quot;," />
