@@ -15,10 +15,10 @@
  */
 package jetbrains.mps.nodefs;
 
-import com.intellij.openapi.fileEditor.impl.FileEditorManagerImpl;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
+import com.intellij.openapi.vfs.VirtualFileWithoutContent;
 import com.intellij.psi.search.ProjectAwareVirtualFile;
 import com.intellij.util.LocalTimeCounter;
 import jetbrains.mps.extapi.module.TransientSModule;
@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwareVirtualFile {
+public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwareVirtualFile, VirtualFileWithoutContent {
   private static final byte[] CONTENTS = new byte[0];
   private static final Logger LOG = Logger.getLogger(MPSNodeVirtualFile.class);
   static final String NODE_PREFIX = "node://";
