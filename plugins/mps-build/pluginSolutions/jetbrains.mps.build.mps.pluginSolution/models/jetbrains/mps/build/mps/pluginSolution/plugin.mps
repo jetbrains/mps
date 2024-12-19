@@ -541,6 +541,9 @@
         <property id="4198392933254551900" name="removeEOF" index="3cpA_W" />
       </concept>
       <concept id="5617550519002745364" name="jetbrains.mps.build.structure.BuildLayout" flags="ng" index="1l3spV" />
+      <concept id="8654221991637384182" name="jetbrains.mps.build.structure.BuildFileIncludesSelector" flags="ng" index="3qWCbU">
+        <property id="8654221991637384184" name="pattern" index="3qWCbO" />
+      </concept>
       <concept id="8577651205286814211" name="jetbrains.mps.build.structure.BuildLayout_Tar" flags="ng" index="1tmT9g">
         <property id="1979010778009209128" name="compression" index="AB_bT" />
       </concept>
@@ -563,6 +566,10 @@
       </concept>
       <concept id="5248329904288051100" name="jetbrains.mps.build.structure.BuildFileIncludeSelector" flags="ng" index="3LWZYx">
         <property id="5248329904288051101" name="pattern" index="3LWZYw" />
+      </concept>
+      <concept id="5248329904287794596" name="jetbrains.mps.build.structure.BuildInputFiles" flags="ng" index="3LXTmp">
+        <child id="5248329904287794598" name="dir" index="3LXTmr" />
+        <child id="5248329904287794679" name="selectors" index="3LXTna" />
       </concept>
       <concept id="4903714810883702019" name="jetbrains.mps.build.structure.BuildTextStringPart" flags="ng" index="3Mxwew">
         <property id="4903714810883755350" name="text" index="3MwjfP" />
@@ -809,6 +816,9 @@
       <concept id="8174907532631382425" name="jetbrains.mps.build.mps.structure.BuildMps_TipsMps" flags="ng" index="3jmSaf" />
       <concept id="8174907532628842428" name="jetbrains.mps.build.mps.structure.BuildMps_Tips" flags="ng" index="3jsGME">
         <child id="8174907532631382423" name="imports" index="3jmSa1" />
+      </concept>
+      <concept id="763829979718664966" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleResources" flags="ng" index="3rtmxn">
+        <child id="763829979718664967" name="files" index="3rtmxm" />
       </concept>
       <concept id="5507251971038816436" name="jetbrains.mps.build.mps.structure.BuildMps_Generator" flags="ng" index="1yeLz9" />
       <concept id="7753544965996377997" name="jetbrains.mps.build.mps.structure.BuildMps_Branding" flags="ng" index="1zClus">
@@ -16789,6 +16799,29 @@
           </node>
         </node>
         <node concept="3clFbH" id="7vf_vNz43xS" role="3cqZAp" />
+        <node concept="3cpWs8" id="6CMgq1DFPBC" role="3cqZAp">
+          <node concept="3cpWsn" id="6CMgq1DFPBD" role="3cpWs9">
+            <property role="TrG5h" value="descriptorFile" />
+            <node concept="3uibUv" id="6CMgq1DFJ8n" role="1tU5fm">
+              <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+            </node>
+            <node concept="2OqwBi" id="6CMgq1DFPBE" role="33vP2m">
+              <node concept="1eOMI4" id="6CMgq1DFPBF" role="2Oq$k0">
+                <node concept="10QFUN" id="6CMgq1DFPBG" role="1eOMHV">
+                  <node concept="3uibUv" id="6CMgq1DFPBH" role="10QFUM">
+                    <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
+                  </node>
+                  <node concept="37vLTw" id="6CMgq1DFPBI" role="10QFUP">
+                    <ref role="3cqZAo" node="7vf_vNz43xM" resolve="module" />
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="6CMgq1DFPBJ" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~AbstractModule.getDescriptorFile()" resolve="getDescriptorFile" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="7vf_vNz43xT" role="3cqZAp">
           <node concept="3cpWsn" id="7vf_vNz43xU" role="3cpWs9">
             <property role="TrG5h" value="path" />
@@ -16804,20 +16837,8 @@
                 <node concept="1rXfSq" id="4hiugqyz3Nh" role="37vLTx">
                   <ref role="37wK5l" node="7vf_vNz3Stp" resolve="createPathFromFullPath" />
                   <node concept="2OqwBi" id="7vf_vNz43y1" role="37wK5m">
-                    <node concept="2OqwBi" id="7vf_vNz43y2" role="2Oq$k0">
-                      <node concept="1eOMI4" id="voRWC5KBO_" role="2Oq$k0">
-                        <node concept="10QFUN" id="voRWC5KBOA" role="1eOMHV">
-                          <node concept="3uibUv" id="voRWC5KBOB" role="10QFUM">
-                            <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
-                          </node>
-                          <node concept="37vLTw" id="3GM_nagTsmx" role="10QFUP">
-                            <ref role="3cqZAo" node="7vf_vNz43xM" resolve="module" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="7vf_vNz43y4" role="2OqNvi">
-                        <ref role="37wK5l" to="z1c3:~AbstractModule.getDescriptorFile()" resolve="getDescriptorFile" />
-                      </node>
+                    <node concept="37vLTw" id="6CMgq1DFPBK" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6CMgq1DFPBD" resolve="descriptorFile" />
                     </node>
                     <node concept="liA8E" id="7vf_vNz43y5" role="2OqNvi">
                       <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
@@ -16912,6 +16933,82 @@
                             <ref role="3cqZAo" node="7vf_vNz43xU" resolve="path" />
                           </node>
                         </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3J1_TO" id="6CMgq1DGWZB" role="3cqZAp">
+                <node concept="3clFbS" id="6CMgq1DGWZC" role="1zxBo7">
+                  <node concept="3clFbF" id="6CMgq1DDmHJ" role="3cqZAp">
+                    <node concept="2OqwBi" id="6CMgq1DDPRU" role="3clFbG">
+                      <node concept="2OqwBi" id="6CMgq1DDrps" role="2Oq$k0">
+                        <node concept="37vLTw" id="6CMgq1DDmHH" role="2Oq$k0">
+                          <ref role="3cqZAo" node="53Al8V5EUi4" resolve="langNode" />
+                        </node>
+                        <node concept="3Tsc0h" id="6CMgq1DDD4l" role="2OqNvi">
+                          <ref role="3TtcxE" to="kdzh:4zCbl23d1OL" resolve="sources" />
+                        </node>
+                      </node>
+                      <node concept="TSZUe" id="6CMgq1DE2Nh" role="2OqNvi">
+                        <node concept="2c44tf" id="6CMgq1DEc3Y" role="25WWJ7">
+                          <node concept="3rtmxn" id="68Z$UrhR0KI" role="2c44tc">
+                            <node concept="3LXTmp" id="68Z$UrhR0KJ" role="3rtmxm">
+                              <node concept="3qWCbU" id="68Z$UrhR0KK" role="3LXTna">
+                                <property role="3qWCbO" value="icons/**, resources/**" />
+                              </node>
+                              <node concept="55IIr" id="6CMgq1DMnSh" role="3LXTmr">
+                                <node concept="2Ry0Ak" id="6CMgq1DMnTj" role="iGT6I">
+                                  <property role="2Ry0Am" value="Language" />
+                                </node>
+                                <node concept="2c44te" id="6CMgq1DMo36" role="lGtFl">
+                                  <node concept="1rXfSq" id="6CMgq1DMo6g" role="2c44t1">
+                                    <ref role="37wK5l" node="7vf_vNz3Stp" resolve="createPathFromFullPath" />
+                                    <node concept="2OqwBi" id="6CMgq1DMo6h" role="37wK5m">
+                                      <node concept="2OqwBi" id="6CMgq1DMo6i" role="2Oq$k0">
+                                        <node concept="37vLTw" id="6CMgq1DMo6j" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="6CMgq1DFPBD" resolve="descriptorFile" />
+                                        </node>
+                                        <node concept="liA8E" id="6CMgq1DMo6k" role="2OqNvi">
+                                          <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
+                                        </node>
+                                      </node>
+                                      <node concept="liA8E" id="6CMgq1DMo6l" role="2OqNvi">
+                                        <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3uVAMA" id="6CMgq1DGWZE" role="1zxBo5">
+                  <node concept="3clFbS" id="6CMgq1DGWZF" role="1zc67A">
+                    <node concept="RRSsy" id="6CMgq1DH8TU" role="3cqZAp">
+                      <property role="RRSoG" value="gZ5fksE/warn" />
+                      <node concept="3cpWs3" id="6CMgq1DH8TV" role="RRSoy">
+                        <node concept="37vLTw" id="6CMgq1DH8TW" role="3uHU7w">
+                          <ref role="3cqZAo" node="7vf_vNz43xM" resolve="module" />
+                        </node>
+                        <node concept="Xl_RD" id="6CMgq1DH8TX" role="3uHU7B">
+                          <property role="Xl_RC" value="Can't make relative path from build model base directory to module " />
+                        </node>
+                      </node>
+                      <node concept="37vLTw" id="6CMgq1DH8TY" role="RRSow">
+                        <ref role="3cqZAo" node="6CMgq1DGWZG" resolve="e" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="XOnhg" id="6CMgq1DGWZG" role="1zc67B">
+                    <property role="TrG5h" value="e" />
+                    <node concept="nSUau" id="6CMgq1DGWZH" role="1tU5fm">
+                      <node concept="3uibUv" id="6CMgq1DGWZD" role="nSUat">
+                        <ref role="3uigEE" to="o3n2:1AfwOXhIPFt" resolve="RelativePathHelper.PathException" />
                       </node>
                     </node>
                   </node>
