@@ -91,100 +91,134 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)/1213104840673">
     <file name="ConceptDeclaration_Constraints.java">
-      <node id="1213104840673" at="34,43,35,42" concept="11" />
-      <node id="2098761829388394981" at="37,51,38,125" concept="6" />
-      <node id="1213104840673" at="48,63,49,143" concept="6" />
-      <node id="6504854981849650188" at="52,80,53,184" concept="6" />
-      <node id="1213104840673" at="63,126,64,62" concept="5" />
-      <node id="1213104840673" at="64,62,65,0" concept="8" />
-      <node id="1213104840673" at="66,55,67,70" concept="1" />
-      <node id="1213104840673" at="68,9,69,0" concept="8" />
-      <node id="1213104840673" at="69,0,70,22" concept="6" />
-      <node id="1213104841230" at="82,63,83,143" concept="6" />
-      <node id="6836281137582805247" at="86,80,87,34" concept="7" />
-      <node id="6836281137582805249" at="87,34,88,111" concept="6" />
-      <node id="1213104840673" at="92,6,93,131" concept="5" />
-      <node id="1213104841230" at="93,131,94,42" concept="1" />
-      <node id="1213104840673" at="94,42,95,22" concept="6" />
-      <node id="1227087338533" at="97,57,98,102" concept="6" />
-      <node id="1213104840673" at="100,0,101,0" concept="9" trace="canBeRootBreakingPoint" />
-      <node id="1213104840673" at="103,0,104,0" concept="9" trace="ConceptDeclaration$gH" />
-      <node id="1213104840673" at="107,0,108,0" concept="9" trace="rootable$_9pz" />
-      <node id="1213104840673" at="111,0,112,0" concept="9" trace="extends$_Isg" />
-      <node id="1213104840673" at="34,0,37,0" concept="0" trace="ConceptDeclaration_Constraints#()V" />
-      <node id="1213104840673" at="37,0,40,0" concept="4" trace="getInstanceIcon#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/smodel/runtime/IconResource;" />
-      <node id="1213104840673" at="65,0,68,9" concept="3" />
-      <node id="1213104840673" at="97,0,100,0" concept="10" trace="staticCanBeARoot#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
-      <node id="1213104840673" at="47,0,51,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="1213104840673" at="51,0,55,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="1213104841230" at="81,0,85,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="1213104841230" at="85,0,90,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="1213104840673" at="45,152,55,10" concept="6" />
-      <node id="1213104840673" at="62,0,72,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="1213104841230" at="79,56,90,10" concept="6" />
-      <node id="1213104840673" at="60,98,72,6" concept="6" />
-      <node id="1213104840673" at="44,0,57,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_DefaultScopeProvider;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="1213104840673" at="42,127,57,6" concept="6" />
-      <node id="1213104840673" at="59,0,74,0" concept="4" trace="calculateCanBeRootConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <node id="1213104841230" at="77,0,92,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="1213104841230" at="75,90,92,6" concept="5" />
-      <node id="1213104840673" at="41,0,59,0" concept="4" trace="calculateDefaultScopeConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <node id="1213104840673" at="74,0,97,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1213104840673" at="34,43,35,42" />
-      <scope id="1426851521647353924" at="37,51,38,125" />
-      <scope id="1213104840673" at="48,63,49,143" />
-      <scope id="1213104840673" at="52,80,53,184" />
-      <scope id="1213104840673" at="66,55,67,70" />
-      <scope id="1213104841230" at="82,63,83,143" />
-      <scope id="1227087258261" at="97,57,98,102" />
-      <scope id="1213104841230" at="86,80,88,111" />
-      <scope id="1213104840673" at="34,0,37,0" />
-      <scope id="1213104840673" at="37,0,40,0">
+      <node id="1213104840673" at="40,43,41,42" concept="11" />
+      <node id="2098761829388394981" at="43,51,44,125" concept="6" />
+      <node id="1213104840673" at="54,63,55,143" concept="6" />
+      <node id="6504854981849650188" at="58,80,59,184" concept="6" />
+      <node id="1213104840673" at="69,128,70,133" concept="5" />
+      <node id="1213104840673" at="70,133,71,0" concept="8" />
+      <node id="1213104840673" at="72,55,73,72" concept="1" />
+      <node id="1213104840673" at="74,9,75,0" concept="8" />
+      <node id="1213104840673" at="75,0,76,22" concept="6" />
+      <node id="1213104840673" at="84,126,85,62" concept="5" />
+      <node id="1213104840673" at="85,62,86,0" concept="8" />
+      <node id="1213104840673" at="87,55,88,70" concept="1" />
+      <node id="1213104840673" at="89,9,90,0" concept="8" />
+      <node id="1213104840673" at="90,0,91,22" concept="6" />
+      <node id="1213104841230" at="103,63,104,143" concept="6" />
+      <node id="6836281137582805247" at="107,80,108,34" concept="7" />
+      <node id="6836281137582805249" at="108,34,109,111" concept="6" />
+      <node id="1213104840673" at="113,6,114,131" concept="5" />
+      <node id="1213104841230" at="114,131,115,42" concept="1" />
+      <node id="1213104840673" at="115,42,116,22" concept="6" />
+      <node id="1227087338533" at="118,57,119,102" concept="6" />
+      <node id="5814497342257348695" at="121,128,122,105" concept="7" />
+      <node id="5814497342257349635" at="122,105,123,41" concept="7" />
+      <node id="5814497342257253248" at="123,41,124,159" concept="6" />
+      <node id="1213104840673" at="126,0,127,0" concept="9" trace="canBeParentBreakingPoint" />
+      <node id="1213104840673" at="127,0,128,0" concept="9" trace="canBeRootBreakingPoint" />
+      <node id="1213104840673" at="130,0,131,0" concept="9" trace="ConceptDeclaration$gH" />
+      <node id="1213104840673" at="131,0,132,0" concept="9" trace="ConstantFieldIcon$r" />
+      <node id="1213104840673" at="135,0,136,0" concept="9" trace="rootable$_9pz" />
+      <node id="1213104840673" at="139,0,140,0" concept="9" trace="extends$_Isg" />
+      <node id="1213104840673" at="140,0,141,0" concept="9" trace="icon$HKhR" />
+      <node id="1213104840673" at="40,0,43,0" concept="0" trace="ConceptDeclaration_Constraints#()V" />
+      <node id="1213104840673" at="43,0,46,0" concept="4" trace="getInstanceIcon#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/smodel/runtime/IconResource;" />
+      <node id="1213104840673" at="71,0,74,9" concept="3" />
+      <node id="1213104840673" at="86,0,89,9" concept="3" />
+      <node id="1213104840673" at="118,0,121,0" concept="10" trace="staticCanBeARoot#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
+      <node id="1213104840673" at="53,0,57,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="1213104840673" at="57,0,61,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="1213104841230" at="102,0,106,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="1213104841230" at="106,0,111,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="1213104840673" at="121,0,126,0" concept="10" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="1213104840673" at="51,152,61,10" concept="6" />
+      <node id="1213104840673" at="68,0,78,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="1213104840673" at="83,0,93,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeRoot;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="1213104841230" at="100,56,111,10" concept="6" />
+      <node id="1213104840673" at="66,105,78,6" concept="6" />
+      <node id="1213104840673" at="81,98,93,6" concept="6" />
+      <node id="1213104840673" at="50,0,63,0" concept="4" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_DefaultScopeProvider;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="1213104840673" at="48,127,63,6" concept="6" />
+      <node id="1213104840673" at="65,0,80,0" concept="4" trace="calculateCanBeParentConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <node id="1213104840673" at="80,0,95,0" concept="4" trace="calculateCanBeRootConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <node id="1213104841230" at="98,0,113,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="1213104841230" at="96,90,113,6" concept="5" />
+      <node id="1213104840673" at="47,0,65,0" concept="4" trace="calculateDefaultScopeConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <node id="1213104840673" at="95,0,118,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="1213104840673" at="40,43,41,42" />
+      <scope id="1426851521647353924" at="43,51,44,125" />
+      <scope id="1213104840673" at="54,63,55,143" />
+      <scope id="1213104840673" at="58,80,59,184" />
+      <scope id="1213104840673" at="72,55,73,72" />
+      <scope id="1213104840673" at="87,55,88,70" />
+      <scope id="1213104841230" at="103,63,104,143" />
+      <scope id="1227087258261" at="118,57,119,102" />
+      <scope id="1213104841230" at="107,80,109,111" />
+      <scope id="1213104840673" at="40,0,43,0" />
+      <scope id="1213104840673" at="43,0,46,0">
         <var name="node" id="1213104840673" />
       </scope>
-      <scope id="1213104840673" at="97,0,100,0">
+      <scope id="1213104840673" at="118,0,121,0">
         <var name="model" id="1213104840673" />
       </scope>
-      <scope id="1213104840673" at="47,0,51,0" />
-      <scope id="1213104840673" at="51,0,55,0">
+      <scope id="5814497342257226115" at="121,128,124,159" />
+      <scope id="1213104840673" at="53,0,57,0" />
+      <scope id="1213104840673" at="57,0,61,0">
         <var name="_context" id="1213104840673" />
       </scope>
-      <scope id="1213104841230" at="81,0,85,0" />
-      <scope id="1213104841230" at="85,0,90,0">
+      <scope id="1213104841230" at="102,0,106,0" />
+      <scope id="1213104841230" at="106,0,111,0">
         <var name="_context" id="1213104841230" />
       </scope>
-      <scope id="1213104840673" at="63,126,70,22">
+      <scope id="1213104840673" at="121,0,126,0">
+        <var name="childConcept" id="1213104840673" />
+        <var name="childNode" id="1213104840673" />
+        <var name="link" id="1213104840673" />
+        <var name="node" id="1213104840673" />
+      </scope>
+      <scope id="1213104840673" at="69,128,76,22">
         <var name="result" id="1213104840673" />
       </scope>
-      <scope id="1213104840673" at="45,152,55,10" />
-      <scope id="1213104840673" at="62,0,72,0">
+      <scope id="1213104840673" at="84,126,91,22">
+        <var name="result" id="1213104840673" />
+      </scope>
+      <scope id="1213104840673" at="51,152,61,10" />
+      <scope id="1213104840673" at="68,0,78,0">
         <var name="checkingNodeContext" id="1213104840673" />
         <var name="context" id="1213104840673" />
       </scope>
-      <scope id="1213104841230" at="79,56,90,10" />
-      <scope id="1213104840673" at="60,98,72,6" />
-      <scope id="1213104840673" at="44,0,57,0">
+      <scope id="1213104840673" at="83,0,93,0">
         <var name="checkingNodeContext" id="1213104840673" />
         <var name="context" id="1213104840673" />
       </scope>
-      <scope id="1213104840673" at="42,127,57,6" />
-      <scope id="1213104840673" at="59,0,74,0" />
-      <scope id="1213104841230" at="77,0,92,0" />
-      <scope id="1213104840673" at="41,0,59,0" />
-      <scope id="1213104840673" at="75,90,95,22">
+      <scope id="1213104841230" at="100,56,111,10" />
+      <scope id="1213104840673" at="66,105,78,6" />
+      <scope id="1213104840673" at="81,98,93,6" />
+      <scope id="1213104840673" at="50,0,63,0">
+        <var name="checkingNodeContext" id="1213104840673" />
+        <var name="context" id="1213104840673" />
+      </scope>
+      <scope id="1213104840673" at="48,127,63,6" />
+      <scope id="1213104840673" at="65,0,80,0" />
+      <scope id="1213104840673" at="80,0,95,0" />
+      <scope id="1213104841230" at="98,0,113,0" />
+      <scope id="1213104840673" at="47,0,65,0" />
+      <scope id="1213104840673" at="96,90,116,22">
         <var name="d0" id="1213104841230" />
         <var name="references" id="1213104840673" />
       </scope>
-      <scope id="1213104840673" at="74,0,97,0" />
-      <unit id="1213104840673" at="102,0,105,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$CONCEPTS" />
-      <unit id="1213104840673" at="106,0,109,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$PROPS" />
-      <unit id="1213104840673" at="110,0,113,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$LINKS" />
-      <unit id="1213104840673" at="46,19,55,9" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$1$1" />
-      <unit id="1213104841230" at="80,19,90,9" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$3$1" />
-      <unit id="1213104840673" at="61,15,72,5" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$2" />
-      <unit id="1213104840673" at="43,15,57,5" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$1" />
-      <unit id="1213104841230" at="76,48,92,5" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$3" />
-      <unit id="1213104840673" at="33,0,114,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints" />
+      <scope id="1213104840673" at="95,0,118,0" />
+      <unit id="1213104840673" at="134,0,137,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$PROPS" />
+      <unit id="1213104840673" at="129,0,133,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$CONCEPTS" />
+      <unit id="1213104840673" at="138,0,142,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$LINKS" />
+      <unit id="1213104840673" at="52,19,61,9" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$1$1" />
+      <unit id="1213104841230" at="101,19,111,9" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$4$1" />
+      <unit id="1213104840673" at="67,15,78,5" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$2" />
+      <unit id="1213104840673" at="82,15,93,5" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$3" />
+      <unit id="1213104840673" at="49,15,63,5" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$1" />
+      <unit id="1213104841230" at="97,48,113,5" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints$4" />
+      <unit id="1213104840673" at="39,0,143,0" name="jetbrains.mps.lang.structure.constraints.ConceptDeclaration_Constraints" />
     </file>
     <file name="IconContainer.java">
       <node id="1229065756974292339" at="10,0,11,0" concept="9" trace="RESOURCE_0" />
