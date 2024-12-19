@@ -440,9 +440,10 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
   private SNode createModuleNode(ModuleData moduleData) {
     SModule module = moduleData.getModule();
 
+    IFile descriptorFile = ((AbstractModule) module).getDescriptorFile();
     SNode path;
     try {
-      path = createPathFromFullPath(((AbstractModule) module).getDescriptorFile().getPath());
+      path = createPathFromFullPath(descriptorFile.getPath());
     } catch (RelativePathHelper.PathException e) {
       if (LOG.isWarningLevel()) {
         LOG.warning("Can't make relative path from build model base directory to module " + module, e);
@@ -451,9 +452,16 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     }
 
     if (module instanceof Solution) {
-      return _quotation_createNode_un708i_a0a5a63(path);
+      return _quotation_createNode_un708i_a0a6a63(path);
     } else if (module instanceof Language) {
-      SNode langNode = _quotation_createNode_un708i_a0a0a5a63(path);
+      SNode langNode = _quotation_createNode_un708i_a0a0a6a63(path);
+      try {
+        ListSequence.fromList(SLinkOperations.getChildren(langNode, LINKS.sources$mT1j)).addElement(_quotation_createNode_un708i_a0a0a1a0g0kb(createPathFromFullPath(descriptorFile.getParent().getPath())));
+      } catch (RelativePathHelper.PathException e) {
+        if (LOG.isWarningLevel()) {
+          LOG.warning("Can't make relative path from build model base directory to module " + module, e);
+        }
+      }
       myLanguageNodes.put(module.getModuleReference(), langNode);
       return langNode;
     } else if (module instanceof Generator) {
@@ -461,9 +469,9 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
       SNode srcLang = myLanguageNodes.get(((Generator) module).sourceLanguage().getSourceModuleReference());
       // at the moment, LanguagesStep uses project.getProjectModules() to populate tree, hence only standalone generator modules could end up here
       // If, however, we would need to make sure it's top-level module here, likely would have to resort to GeneratorDescriptor.isStandaloneModule check here.
-      return _quotation_createNode_un708i_a4a1f0kb(path, srcLang);
+      return _quotation_createNode_un708i_a4a1g0kb(path, srcLang);
     } else {
-      return _quotation_createNode_un708i_a0a0f0kb(path);
+      return _quotation_createNode_un708i_a0a0g0kb(path);
     }
   }
 
@@ -3044,7 +3052,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, 0x440d7ea3b68cba4bL, "parts"), quotedNode_2);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_un708i_a0a5a63(Object parameter_1) {
+  private static SNode _quotation_createNode_un708i_a0a6a63(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0x2c446791464290f7L, "BuildMps_Solution"));
@@ -3056,7 +3064,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_un708i_a0a0a5a63(Object parameter_1) {
+  private static SNode _quotation_createNode_un708i_a0a0a6a63(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0x2c446791464290f8L, "BuildMps_Language"));
@@ -3068,7 +3076,28 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     }
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_un708i_a4a1f0kb(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_un708i_a0a0a1a0g0kb(Object parameter_1) {
+    SNode quotedNode_2 = null;
+    SNode quotedNode_3 = null;
+    SNode quotedNode_4 = null;
+    SNode quotedNode_5 = null;
+    SNode quotedNode_6 = null;
+    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0xa99ab51d1ecc306L, "BuildMps_ModuleResources"));
+    quotedNode_2 = nb.getResult();
+    SNodeBuilder nb1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x48d5d03db92245a4L, "BuildInputFiles"));
+    quotedNode_3 = nb1.getResult();
+    SNodeBuilder nb2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x7819f90ca2eb7bf6L, "BuildFileIncludesSelector"));
+    quotedNode_4 = nb2.getResult();
+    nb2.setProperty(MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, 0x7819f90ca2eb7bf8L, "pattern"), "icons/**, resources/**");
+    quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245f7L, "selectors"), quotedNode_4);
+    quotedNode_5 = (SNode) parameter_1;
+    if (quotedNode_5 != null) {
+      quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir"), SNodeOperations.copyIfNecessary(quotedNode_5));
+    }
+    quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xa99ab51d1ecc306L, 0xa99ab51d1ecc307L, "files"), quotedNode_3);
+    return quotedNode_2;
+  }
+  private static SNode _quotation_createNode_un708i_a4a1g0kb(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0x4c6db07d2e56a8b4L, "BuildMps_Generator"));
@@ -3081,7 +3110,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     }
     return quotedNode_3;
   }
-  private static SNode _quotation_createNode_un708i_a0a0f0kb(Object parameter_1) {
+  private static SNode _quotation_createNode_un708i_a0a0g0kb(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0x4780308f5d2060eL, "BuildMps_DevKit"));
@@ -3132,6 +3161,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     /*package*/ static final SContainmentLink tail$$gpz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
     /*package*/ static final SContainmentLink compositePart$blMW = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
     /*package*/ static final SReferenceLink macro$kdvp = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, 0x668c6cfbafae122aL, "macro");
+    /*package*/ static final SContainmentLink sources$mT1j = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
     /*package*/ static final SReferenceLink script$6Ehy = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
     /*package*/ static final SContainmentLink artifacts$MVTa = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x395055ca96617d32L, "artifacts");
   }
