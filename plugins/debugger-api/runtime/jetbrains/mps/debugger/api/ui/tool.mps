@@ -2116,7 +2116,7 @@
                   <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.HELP_ID" resolve="HELP_ID" />
                 </node>
                 <node concept="Xl_RD" id="7uTsLnwnRKC" role="37wK5m">
-                  <property role="Xl_RC" value="ideaInterface.debuggerView" />
+                  <property role="Xl_RC" value="debugging.DebugWindow" />
                 </node>
               </node>
             </node>

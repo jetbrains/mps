@@ -86,7 +86,7 @@ public class DebuggerToolPanel {
     @RequiresEdt
     @Override
     public void uiDataSnapshot(@NotNull DataSink sink) {
-      sink.set(PlatformDataKeys.HELP_ID, "ideaInterface.debuggerView");
+      sink.set(PlatformDataKeys.HELP_ID, "debugging.DebugWindow");
     }
   }
 
