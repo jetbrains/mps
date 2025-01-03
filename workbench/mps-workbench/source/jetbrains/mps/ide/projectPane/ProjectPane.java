@@ -29,9 +29,6 @@ import com.intellij.ide.util.treeView.AbstractTreeStructureBase;
 import com.intellij.ide.util.treeView.NodeDescriptor;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.fileEditor.FileEditor;
-import com.intellij.openapi.fileEditor.FileEditorManagerEvent;
-import com.intellij.openapi.fileEditor.FileEditorManagerListener;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.ToolWindow;
@@ -39,11 +36,11 @@ import com.intellij.openapi.wm.ToolWindowId;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.problems.ProblemListener;
 import com.intellij.util.IJSwingUtilities;
+import com.intellij.util.concurrency.ThreadingAssertions;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.ThreadUtils;
-import jetbrains.mps.ide.editor.MPSFileNodeEditor;
 import jetbrains.mps.ide.editor.tabs.TabbedEditor;
 import jetbrains.mps.ide.editor.tabs.TabbedEditor.TabChangedListener;
 import jetbrains.mps.ide.platform.watching.ReloadListener;
@@ -56,7 +53,6 @@ import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
-import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.MessagesUpdate;
@@ -330,12 +326,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     if (module instanceof AbstractModule) {
       IFile descriptorFile = ((AbstractModule) module).getDescriptorFile();
       if (descriptorFile != null) {
-        VirtualFile virtualFile = getVirtualFile(descriptorFile);
-        if (virtualFile != null) {
-          createSelectInTarget().selectIn(new MySelectInContext(virtualFile), autofocus);
-        }  else {
-          LOG.warning("unable to select module corresponding to path: "+descriptorFile.getPath());
-        }
+        selectLater(autofocus).accept(descriptorFile);
       }
     }
   }
@@ -346,15 +337,22 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
       var ds = (FileSystemBasedDataSource) source;
       ds.getAffectedFiles().stream()
         .findFirst()
-        .ifPresent(file -> {
-          VirtualFile virtualFile = getVirtualFile(file);
-          if (virtualFile != null) {
-            createSelectInTarget().selectIn(new MySelectInContext(virtualFile), autofocus);
-          } else {
-            LOG.warning("unable to select model corresponding to path: "+file.getPath());
-          }
-        });
+        .ifPresent(selectLater(autofocus));
     }
+  }
+
+  private @NotNull Consumer<IFile> selectLater(boolean autofocus) {
+    return file -> ApplicationManager.getApplication().executeOnPooledThread(() -> {
+      // getVirtualFile requires a resource-heavy operation
+      VirtualFile virtualFile = getVirtualFile(file);
+      if (virtualFile != null) {
+        ApplicationManager.getApplication().runReadAction(() ->
+            // selection is done in EDT
+            createSelectInTarget().selectIn(new MySelectInContext(virtualFile), autofocus));
+      } else {
+        LOG.warning("unable to select node corresponding to path: " + file.getPath());
+      }
+    });
   }
 
   public void selectNode(@NotNull final SNode node, boolean autofocus) {
@@ -401,9 +399,14 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     }
   }
 
+
+  /**
+   * Must never be called from EDT.
+   */
   @SuppressWarnings("removal")
   @Nullable
   private VirtualFile getVirtualFile(IFile descriptorFile) {
+    ThreadingAssertions.assertBackgroundThread();
     IdeaFileSystem fileSystem = ProjectHelper.fromIdeaProject(myProject).getFileSystem();
     VirtualFile virtualFile = fileSystem.asVirtualFile(descriptorFile);
     if (virtualFile == null) {
