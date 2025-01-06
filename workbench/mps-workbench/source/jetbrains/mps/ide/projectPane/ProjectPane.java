@@ -23,6 +23,7 @@ import com.intellij.ide.dnd.DnDSource;
 import com.intellij.ide.dnd.DnDTarget;
 import com.intellij.ide.dnd.aware.DnDAwareTree;
 import com.intellij.ide.projectView.ProjectView;
+import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.impl.ProjectViewPane;
 import com.intellij.ide.projectView.impl.ProjectViewTree;
 import com.intellij.ide.util.treeView.AbstractTreeStructureBase;
@@ -38,6 +39,7 @@ import com.intellij.problems.ProblemListener;
 import com.intellij.util.IJSwingUtilities;
 import com.intellij.util.concurrency.ThreadingAssertions;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.util.ui.tree.TreeUtil;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.ide.ThreadUtils;
@@ -49,6 +51,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDragSource;
 import jetbrains.mps.ide.projectPane.logicalview.LogicalViewDropTarget;
 import jetbrains.mps.ide.projectView.MPSProjectViewState;
+import jetbrains.mps.ide.ui.tree.VirtualFolder.Transients;
 import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.logging.Logger;
@@ -71,7 +74,11 @@ import org.jetbrains.mps.openapi.persistence.DataSource;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
 import java.util.Comparator;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -361,6 +368,26 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
 
   public void selectNode(@NotNull SNodeReference node, boolean autofocus) {
     createSelectInTarget().selectIn(new MySelectInContext(NodeVirtualFileSystem.getInstance().getFileFor(getMPSProject().getRepository(), node)), autofocus);
+  }
+
+  /**
+   * A hackish way to select and expand the "checkpoints and transients models" folder. See MPS-38077
+   */
+  @Deprecated
+  public void selectTransientsFolder() {
+    TreeModel model = getTree().getModel();
+    Object o = TreeUtil.nodeChildren(model.getRoot(), model).find(n -> isTransientsFolderNode(TreeUtil.getUserObject(n)));
+    TreeNode toSelect = o instanceof TreeNode ? (TreeNode) o : null;
+    if (toSelect != null) {
+      TreePath path = TreeUtil.getPath((TreeNode) model.getRoot(), toSelect);
+      getTree().expandPath(path);
+      TreeUtil.selectInTree((DefaultMutableTreeNode) toSelect, true, getTree());
+      getTree().scrollPathToVisible(path);
+    }
+  }
+
+  private boolean isTransientsFolderNode(Object abstractNode) {
+    return abstractNode instanceof ProjectViewNode && ((ProjectViewNode<?>) abstractNode).getValue() instanceof Transients;
   }
 
   private void selectNodeWithoutExpansion(@NotNull SNodeReference nodeRef) {
