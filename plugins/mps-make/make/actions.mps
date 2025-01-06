@@ -12254,6 +12254,84 @@
       </node>
       <node concept="3cqZAl" id="7yo6vBMyst_" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="6sV_U0LtV7S" role="jymVt" />
+    <node concept="3clFb_" id="6sV_U0Luc_x" role="jymVt">
+      <property role="TrG5h" value="selectTransientsFolderLater" />
+      <node concept="3cqZAl" id="6sV_U0Luc_z" role="3clF45" />
+      <node concept="3clFbS" id="6sV_U0Luc__" role="3clF47">
+        <node concept="3cpWs8" id="6sV_U0Lui26" role="3cqZAp">
+          <node concept="3cpWsn" id="6sV_U0Lui27" role="3cpWs9">
+            <property role="TrG5h" value="sp" />
+            <node concept="3uibUv" id="6sV_U0Lui28" role="1tU5fm">
+              <ref role="3uigEE" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
+            </node>
+            <node concept="2OqwBi" id="6sV_U0Lui29" role="33vP2m">
+              <node concept="37vLTw" id="6sV_U0Lui2a" role="2Oq$k0">
+                <ref role="3cqZAo" node="5do60t9uS2E" resolve="myProject" />
+              </node>
+              <node concept="liA8E" id="6sV_U0Lui2b" role="2OqNvi">
+                <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="6sV_U0Lui2c" role="37wK5m">
+                  <ref role="3VsUkX" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6sV_U0Lui2d" role="3cqZAp">
+          <node concept="3clFbS" id="6sV_U0Lui2e" role="3clFbx">
+            <node concept="3cpWs6" id="6sV_U0Lui2f" role="3cqZAp" />
+          </node>
+          <node concept="22lmx$" id="6sV_U0Lui2g" role="3clFbw">
+            <node concept="3fqX7Q" id="6sV_U0Lui2h" role="3uHU7w">
+              <node concept="2YIFZM" id="6sV_U0Lui2i" role="3fr31v">
+                <ref role="1Pybhc" node="C3dcc38Te3" resolve="TransientModelBalloonDisplayer" />
+                <ref role="37wK5l" node="7XY3GP2vBC9" resolve="isPopupShown" />
+              </node>
+            </node>
+            <node concept="3fqX7Q" id="6sV_U0Lui2j" role="3uHU7B">
+              <node concept="2OqwBi" id="6sV_U0Lui2k" role="3fr31v">
+                <node concept="liA8E" id="6sV_U0Lui2l" role="2OqNvi">
+                  <ref role="37wK5l" to="ap4t:~IGenerationSettings.isSaveTransientModels()" resolve="isSaveTransientModels" />
+                </node>
+                <node concept="2OqwBi" id="6sV_U0Lui2m" role="2Oq$k0">
+                  <node concept="37vLTw" id="6sV_U0Lui2n" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6sV_U0Lui27" resolve="sp" />
+                  </node>
+                  <node concept="liA8E" id="6sV_U0Lui2o" role="2OqNvi">
+                    <ref role="37wK5l" to="ap4t:~GenerationSettingsProvider.getGenerationSettings()" resolve="getGenerationSettings" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6sV_U0Lulvm" role="3cqZAp">
+          <node concept="2YIFZM" id="5IDZVs0mEe6" role="3clFbG">
+            <ref role="37wK5l" to="3a50:~ThreadUtils.runInUIThreadNoWait(java.lang.Runnable)" resolve="runInUIThreadNoWait" />
+            <ref role="1Pybhc" to="3a50:~ThreadUtils" resolve="ThreadUtils" />
+            <node concept="1bVj0M" id="5IDZVs0mEe7" role="37wK5m">
+              <node concept="3clFbS" id="5IDZVs0mEe8" role="1bW5cS">
+                <node concept="3clFbF" id="5IDZVs0mEe9" role="3cqZAp">
+                  <node concept="2OqwBi" id="5IDZVs0mEea" role="3clFbG">
+                    <node concept="2YIFZM" id="5IDZVs0mEeb" role="2Oq$k0">
+                      <ref role="37wK5l" to="rvbb:~ProjectPane.getInstance(jetbrains.mps.project.Project)" resolve="getInstance" />
+                      <ref role="1Pybhc" to="rvbb:~ProjectPane" resolve="ProjectPane" />
+                      <node concept="37vLTw" id="5IDZVs0mEec" role="37wK5m">
+                        <ref role="3cqZAo" node="5do60t9uS2E" resolve="myProject" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="5IDZVs0mEed" role="2OqNvi">
+                      <ref role="37wK5l" to="rvbb:~ProjectPane.selectTransientsFolder()" resolve="selectTransientsFolder" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="3l7XKooD7iz" role="jymVt" />
     <node concept="312cEu" id="16OFrd77RJ$" role="jymVt">
       <property role="TrG5h" value="MyMakeNotificationListener" />
@@ -12344,6 +12422,11 @@
               <node concept="3clFbT" id="1WP$eo4r$q9" role="37vLTx">
                 <property role="3clFbU" value="false" />
               </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="5ajqZ$6gj59" role="3cqZAp">
+            <node concept="1rXfSq" id="5ajqZ$6gj57" role="3clFbG">
+              <ref role="37wK5l" node="6sV_U0Luc_x" resolve="selectTransientsFolderLater" />
             </node>
           </node>
         </node>

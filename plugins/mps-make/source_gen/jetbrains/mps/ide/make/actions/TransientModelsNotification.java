@@ -13,6 +13,7 @@ import com.intellij.openapi.wm.WindowManager;
 import jetbrains.mps.generator.GenerationSettingsProvider;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.ide.projectPane.ProjectPane;
 import jetbrains.mps.make.MakeNotification;
 
 public class TransientModelsNotification {
@@ -84,6 +85,14 @@ public class TransientModelsNotification {
     });
   }
 
+  /*package*/ void selectTransientsFolderLater() {
+    GenerationSettingsProvider sp = myProject.getComponent(GenerationSettingsProvider.class);
+    if (!(sp.getGenerationSettings().isSaveTransientModels()) || !(TransientModelBalloonDisplayer.isPopupShown())) {
+      return;
+    }
+    ThreadUtils.runInUIThreadNoWait(() -> ProjectPane.getInstance(myProject).selectTransientsFolder());
+  }
+
   private class MyMakeNotificationListener extends IMakeNotificationListener.Stub {
     private volatile boolean mySessionJustOpened;
 
@@ -101,6 +110,7 @@ public class TransientModelsNotification {
     @Override
     public void sessionClosed(MakeNotification notification) {
       mySessionJustOpened = false;
+      selectTransientsFolderLater();
     }
   }
 
