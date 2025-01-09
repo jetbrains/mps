@@ -45,6 +45,7 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 /**
  * Top node in the project tree.
@@ -102,6 +103,10 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     }
 
     private Boolean containsSModule(SModule sModule) {
+      if (Stream.of(Solution.class, Language.class, Generator.class, DevKit.class).noneMatch(c -> c.isInstance(sModule))) {
+        // Modules Pool displays only the modules from the above list
+        return false;
+      }
       MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
       return mpsProject.getModelAccess().computeReadAction(() -> {
         ProjectManager projectManager = mpsProject.getPlatform().findComponent(ProjectManager.class);
