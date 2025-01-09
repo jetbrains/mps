@@ -44,9 +44,9 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   private final Collection<TemplateDropRootRule> dropRules;
   public Mapping_main(@NotNull TemplateModel model) {
     super(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "3729007189729193567"), "main", model, false, new MO());
-    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3(), new ReductionRule4());
+    rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0(), new ReductionRule1(), new ReductionRule2(), new ReductionRule3());
     createRules = TemplateUtil.<TemplateCreateRootRule>asCollection(new CreateRootRule0());
-    rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0(), new RootMappingRule1());
+    rootRules = TemplateUtil.<TemplateRootMappingRule>asCollection(new RootMappingRule0());
     dropRules = TemplateUtil.<TemplateDropRootRule>asCollection(new DropRootRule0());
   }
   @Override
@@ -121,17 +121,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
-      super(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "7036359038356270632"), CONCEPTS.ExtensionFieldReference$SV, false);
-    }
-    @Override
-    public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
-      final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ExtensionFieldReference(), new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "7036359038356270636")).apply(context);
-      return tlist1;
-    }
-  }
-  /*package*/ final class ReductionRule3 extends ReductionRuleBase {
-    public ReductionRule3() {
       super(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "3175313036448599421"), CONCEPTS.GetExtensionObjectsOperation$5a, false);
     }
     @Override
@@ -142,8 +131,8 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       return TemplateUtil.singletonList(tnode1);
     }
   }
-  /*package*/ final class ReductionRule4 extends ReductionRuleBase implements TemplateRuleWithCondition {
-    public ReductionRule4() {
+  /*package*/ final class ReductionRule3 extends ReductionRuleBase implements TemplateRuleWithCondition {
+    public ReductionRule3() {
       super(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "1778592072147425062"), CONCEPTS.Extension$oQ, false);
     }
     @Override
@@ -160,18 +149,6 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
-      super(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "63012922130977673"), CONCEPTS.ExtensionDeclaration$rd, false, false);
-    }
-    @Override
-    public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
-      final TemplateExecutionEnvironment environment = context.getEnvironment();
-      Collection<SNode> result = environment.callSite(new Template_Extension(), new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "63012922130977673")).apply(context);
-      environment.registerLabel(context.getInput(), result, "extensionClassOld");
-      return result;
-    }
-  }
-  /*package*/ final class RootMappingRule1 extends MapRootRuleBase implements TemplateRootMappingRule {
-    public RootMappingRule1() {
       super(new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "4103205777867107082"), CONCEPTS.Extension$oQ, false, false);
     }
     @Override
@@ -250,10 +227,8 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   private static final class CONCEPTS {
     /*package*/ static final SConcept ExtensionPointExpression$Mq = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x5bf74eafefe0e940L, "jetbrains.mps.lang.extension.structure.ExtensionPointExpression");
     /*package*/ static final SConcept ExtensionPointType$bp = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, "jetbrains.mps.lang.extension.structure.ExtensionPointType");
-    /*package*/ static final SConcept ExtensionFieldReference$SV = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e9eL, "jetbrains.mps.lang.extension.structure.ExtensionFieldReference");
     /*package*/ static final SConcept GetExtensionObjectsOperation$5a = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142ef747L, "jetbrains.mps.lang.extension.structure.GetExtensionObjectsOperation");
     /*package*/ static final SConcept Extension$oQ = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x1c30c5b543be3b2L, "jetbrains.mps.lang.extension.structure.Extension");
-    /*package*/ static final SConcept ExtensionDeclaration$rd = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d4L, "jetbrains.mps.lang.extension.structure.ExtensionDeclaration");
     /*package*/ static final SConcept ExtensionPointDeclaration$sb = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, "jetbrains.mps.lang.extension.structure.ExtensionPointDeclaration");
   }
 }

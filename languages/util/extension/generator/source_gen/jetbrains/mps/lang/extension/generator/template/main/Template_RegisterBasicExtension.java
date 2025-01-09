@@ -62,7 +62,7 @@ public class Template_RegisterBasicExtension extends TemplateDeclarationBase {
                 environment.resolve(new RefResolver(tnode5, myAssociationLinks[2], context3, new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "4907674970866793743"), "Object") {
                   @Override
                   public Object resolve() {
-                    return QueriesGenerated.referenceMacro_GetReferent_7_0(createQueryContext());
+                    return QueriesGenerated.referenceMacro_GetReferent_5_0(createQueryContext());
                   }
                 });
                 environment.aggregate(tnode4, myAggregationLinks[1], tnode5);
@@ -87,7 +87,7 @@ public class Template_RegisterBasicExtension extends TemplateDeclarationBase {
                             environment.resolve(new RefResolver(tnode9, myAssociationLinks[5], context6, new SNodePointer("r:9b417160-a560-428b-b721-a26a33b5bd8c(jetbrains.mps.lang.extension.generator.template.main@generator)", "4907674970866798849"), "Object") {
                               @Override
                               public Object resolve() {
-                                return QueriesGenerated.referenceMacro_GetReferent_7_1(createQueryContext());
+                                return QueriesGenerated.referenceMacro_GetReferent_5_1(createQueryContext());
                               }
                             });
                             environment.aggregate(tnode8, myAggregationLinks[2], tnode9);
@@ -100,14 +100,14 @@ public class Template_RegisterBasicExtension extends TemplateDeclarationBase {
                   }
                   {
                     final List<SNode> tlist10 = new ArrayList<SNode>();
-                    final Iterable<SNode> loopList10 = QueriesGenerated.sourceNodesQuery_7_0(new SourceSubstituteMacroNodesContext(context4, loopMacroRef));
+                    final Iterable<SNode> loopList10 = QueriesGenerated.sourceNodesQuery_5_0(new SourceSubstituteMacroNodesContext(context4, loopMacroRef));
                     for (SNode itnode10 : loopList10) {
                       if (itnode10 == null) {
                         continue;
                       }
                       TemplateContext context7 = context4.subContext(itnode10);
                       final SNode tnode11 = environment.createOutputNode(myConcepts[9]);
-                      SNodeAccessUtil.setPropertyValue(tnode11, myProperties[0], QueriesGenerated.propertyMacro_GetValue_7_0(new PropertyMacroContext(context7, "tag", propertyMacro)));
+                      SNodeAccessUtil.setPropertyValue(tnode11, myProperties[0], QueriesGenerated.propertyMacro_GetValue_5_0(new PropertyMacroContext(context7, "tag", propertyMacro)));
                       tlist10.add(tnode11);
                     }
                     environment.aggregate(tnode6, myAggregationLinks[1], tlist10);

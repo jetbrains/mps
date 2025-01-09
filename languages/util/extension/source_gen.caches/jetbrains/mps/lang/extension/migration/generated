@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="93pgwnixkkdg49y7nzg321jar6vb6qn">
-  <files names="ExtensionPoint_name.java:MigrationDescriptor.java:Pattern_2kk9yi_a3a2.java:Pattern_2kk9yi_a5a2.java:Pattern_2kk9yi_a7a2.java:Pattern_2kk9yi_a9a2.java:migrateExtension.java" />
+<product version="3" modelHash="-3cruvqh4qnzodqr2tkznez2l6sbjal4">
+  <files names="ExtensionPoint_name.java:MigrationDescriptor.java" />
 </product>
 
