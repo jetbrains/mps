@@ -804,7 +804,12 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     public void modelRemoved(SModule module, SModelReference ref) {
       forEachFile(module, f -> updateFrom(f, true));
     }
-    
+
+    @Override
+    public void modelRenamed(SModule module, SModel model, SModelReference oldRef) {
+      forEachFile(module, f -> updateFrom(f, true));
+    }
+
     @Override
     public void moduleChanged(SModule module) {
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
