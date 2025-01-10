@@ -701,130 +701,130 @@
   <root nodeRef="r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)/6299533519672649753">
     <file name="SModelDataFlavor.java">
       <node id="6299533519672652323" at="11,0,12,0" concept="14" trace="sNode" />
-      <node id="8365379837260012517" at="12,0,13,0" concept="14" trace="sNodeReference" />
-      <node id="6299533519672652330" at="13,0,15,0" concept="3" trace="SModelDataFlavor#()V" />
-      <scope id="6299533519672652333" at="13,29,13,29" />
-      <scope id="6299533519672652330" at="13,0,15,0" />
-      <unit id="6299533519672649753" at="9,0,16,0" name="jetbrains.mps.ide.datatransfer.SModelDataFlavor" />
+      <node id="8365379837260012517" at="16,0,18,0" concept="14" trace="sNodeReference" />
+      <node id="6299533519672652330" at="18,0,20,0" concept="3" trace="SModelDataFlavor#()V" />
+      <scope id="6299533519672652333" at="18,29,18,29" />
+      <scope id="6299533519672652330" at="18,0,20,0" />
+      <unit id="6299533519672649753" at="9,0,21,0" name="jetbrains.mps.ide.datatransfer.SModelDataFlavor" />
     </file>
   </root>
   <root nodeRef="r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)/6299533519672651952">
     <file name="SNodeTransferable.java">
-      <node id="1491152206151185839" at="27,0,28,0" concept="6" trace="myPasteData" />
-      <node id="1491152206151519595" at="34,60,35,41" concept="5" />
-      <node id="1491152206151503018" at="35,41,36,55" concept="5" />
-      <node id="1491152206151616964" at="37,28,38,53" concept="5" />
-      <node id="7543585797632656094" at="38,53,39,66" concept="5" />
-      <node id="1491152206151666281" at="40,12,41,30" concept="5" />
-      <node id="7543585797632765467" at="42,5,43,19" concept="5" />
-      <node id="1491152206151534368" at="46,112,47,55" concept="5" />
-      <node id="7543585797632533545" at="47,55,48,55" concept="5" />
-      <node id="1491152206151678583" at="49,28,50,53" concept="5" />
-      <node id="1491152206151678592" at="50,53,51,66" concept="5" />
-      <node id="1491152206151678604" at="52,12,53,30" concept="5" />
-      <node id="7543585797632813944" at="54,5,55,19" concept="5" />
-      <node id="1394475639613497293" at="58,53,59,57" concept="12" />
-      <node id="1394475639613499005" at="59,57,60,85" concept="12" />
-      <node id="1394475639613502441" at="60,85,61,89" concept="12" />
-      <node id="1394475639613580139" at="61,89,62,95" concept="12" />
-      <node id="1394475639612945332" at="62,95,63,19" concept="5" />
-      <node id="1394475639612940642" at="63,19,64,67" concept="5" />
-      <node id="1394475639612948917" at="64,67,65,55" concept="5" />
-      <node id="1394475639612954070" at="65,55,66,43" concept="5" />
-      <node id="1394475639612954079" at="66,43,67,64" concept="5" />
-      <node id="7543585797631567195" at="71,48,72,89" concept="11" />
-      <node id="7543585797631836180" at="75,59,76,51" concept="11" />
-      <node id="6299533519672652155" at="82,50,83,20" concept="11" />
-      <node id="6591585676810747338" at="84,66,85,32" concept="11" />
-      <node id="6299533519672652152" at="87,51,88,29" concept="11" />
-      <node id="6299533519672652147" at="90,54,91,47" concept="11" />
-      <node id="6299533519672652142" at="93,5,94,49" concept="17" />
-      <node id="6299533519672652163" at="97,32,98,18" concept="11" />
-      <node id="6299533519672652184" at="102,30,103,58" concept="0" />
-      <node id="1491152206151461420" at="104,5,105,69" concept="11" />
-      <node id="7543585797632778826" at="107,38,108,18" concept="5" />
-      <node id="7543585797632779931" at="108,18,109,56" concept="5" />
-      <node id="7543585797632798632" at="109,56,110,59" concept="5" />
-      <node id="6299533519672652297" at="112,41,113,56" concept="11" />
-      <node id="6299533519672652315" at="115,34,116,47" concept="11" />
-      <node id="6591585676809131704" at="24,0,26,0" concept="6" trace="mySNodeReference" />
-      <node id="6299533519672652003" at="29,0,31,0" concept="6" trace="myText" />
-      <node id="7543585797631536734" at="31,0,33,0" concept="6" trace="mySupportedDataFlavors" />
-      <node id="1491152206151664303" at="40,10,42,5" concept="1" />
-      <node id="1491152206151678602" at="52,10,54,5" concept="1" />
-      <node id="6299533519672652133" at="89,12,92,7" concept="8" />
-      <node id="6299533519672652159" at="97,0,100,0" concept="9" trace="getAsString#()Ljava/lang/String;" />
-      <node id="6299533519672652179" at="101,123,104,5" concept="7" />
-      <node id="6299533519672652247" at="112,0,115,0" concept="9" trace="createNodeData#()Ljetbrains/mps/datatransfer/PasteNodeData;" />
-      <node id="6299533519672652311" at="115,0,118,0" concept="9" trace="containsNodes#()Z" />
-      <node id="6299533519672652007" at="70,0,74,0" concept="9" trace="getTransferDataFlavors#()[Ljava/awt/datatransfer/DataFlavor;" />
-      <node id="6299533519672652092" at="74,0,78,0" concept="9" trace="isDataFlavorSupported#(Ljava/awt/datatransfer/DataFlavor;)Z" />
-      <node id="7543585797632680861" at="107,0,112,0" concept="9" trace="saveText#(Ljava/lang/String;)V" />
-      <node id="6444276518578716871" at="36,55,42,5" concept="8" />
-      <node id="1491152206151678581" at="48,55,54,5" concept="8" />
-      <node id="6299533519672652126" at="86,12,92,7" concept="8" />
-      <node id="1491152206151411702" at="101,0,107,0" concept="15" trace="saveNodes#(Ljava/util/List;Ljava/util/Map;)Ljetbrains/mps/datatransfer/PasteNodeData;" />
-      <node id="6299533519672652019" at="34,0,45,0" concept="3" trace="SNodeTransferable#(Ljava/util/List;Ljava/lang/String;)V" />
-      <node id="6299533519672652047" at="46,0,57,0" concept="3" trace="SNodeTransferable#(Ljava/util/List;Ljava/lang/String;Ljava/util/Map;)V" />
-      <node id="7543585797633354521" at="58,0,69,0" concept="3" trace="SNodeTransferable#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="6299533519672652119" at="81,40,92,7" concept="8" />
-      <node id="7543585797633196474" at="80,99,93,5" concept="8" />
-      <node id="6299533519672652113" at="79,0,96,0" concept="9" trace="getTransferData#(Ljava/awt/datatransfer/DataFlavor;)Ljava/lang/Object;" />
-      <scope id="1491152206151664304" at="40,12,41,30" />
-      <scope id="1491152206151678603" at="52,12,53,30" />
-      <scope id="6299533519672652011" at="71,48,72,89" />
-      <scope id="6299533519672652097" at="75,59,76,51" />
-      <scope id="6299533519672652154" at="82,50,83,20" />
-      <scope id="6591585676810717367" at="84,66,85,32" />
-      <scope id="6299533519672652151" at="87,51,88,29" />
-      <scope id="6299533519672652146" at="90,54,91,47" />
-      <scope id="6299533519672652162" at="97,32,98,18" />
-      <scope id="6299533519672652183" at="102,30,103,58" />
-      <scope id="6299533519672652252" at="112,41,113,56" />
-      <scope id="6299533519672652314" at="115,34,116,47" />
-      <scope id="6444276518578716872" at="37,28,39,66" />
-      <scope id="1491152206151678582" at="49,28,51,66" />
-      <scope id="6299533519672652159" at="97,0,100,0" />
-      <scope id="6299533519672652179" at="101,123,104,5">
+      <node id="1491152206151185839" at="28,0,29,0" concept="6" trace="myPasteData" />
+      <node id="1491152206151519595" at="35,60,36,41" concept="5" />
+      <node id="1491152206151503018" at="36,41,37,55" concept="5" />
+      <node id="1491152206151616964" at="38,28,39,53" concept="5" />
+      <node id="7543585797632656094" at="39,53,40,52" concept="5" />
+      <node id="1491152206151666281" at="41,12,42,30" concept="5" />
+      <node id="7543585797632765467" at="43,5,44,19" concept="5" />
+      <node id="1491152206151534368" at="47,112,48,55" concept="5" />
+      <node id="7543585797632533545" at="48,55,49,55" concept="5" />
+      <node id="1491152206151678583" at="50,28,51,53" concept="5" />
+      <node id="1491152206151678592" at="51,53,52,52" concept="5" />
+      <node id="1491152206151678604" at="53,12,54,30" concept="5" />
+      <node id="7543585797632813944" at="55,5,56,19" concept="5" />
+      <node id="1394475639613497293" at="59,53,60,57" concept="12" />
+      <node id="1394475639613499005" at="60,57,61,85" concept="12" />
+      <node id="1394475639613502441" at="61,85,62,89" concept="12" />
+      <node id="1394475639613580139" at="62,89,63,95" concept="12" />
+      <node id="1394475639612945332" at="63,95,64,19" concept="5" />
+      <node id="1394475639612940642" at="64,19,65,67" concept="5" />
+      <node id="1394475639612948917" at="65,67,66,55" concept="5" />
+      <node id="1394475639612954070" at="66,55,67,43" concept="5" />
+      <node id="1394475639612954079" at="67,43,68,50" concept="5" />
+      <node id="7543585797631567195" at="72,48,73,89" concept="11" />
+      <node id="7543585797631836180" at="76,59,77,51" concept="11" />
+      <node id="6299533519672652155" at="83,50,84,20" concept="11" />
+      <node id="6591585676810747338" at="85,52,86,32" concept="11" />
+      <node id="6299533519672652152" at="88,51,89,29" concept="11" />
+      <node id="6299533519672652147" at="91,54,92,47" concept="11" />
+      <node id="6299533519672652142" at="94,5,95,49" concept="17" />
+      <node id="6299533519672652163" at="98,32,99,18" concept="11" />
+      <node id="6299533519672652184" at="103,30,104,58" concept="0" />
+      <node id="1491152206151461420" at="105,5,106,69" concept="11" />
+      <node id="7543585797632778826" at="108,38,109,18" concept="5" />
+      <node id="7543585797632779931" at="109,18,110,56" concept="5" />
+      <node id="7543585797632798632" at="110,56,111,59" concept="5" />
+      <node id="6299533519672652297" at="113,41,114,56" concept="11" />
+      <node id="6299533519672652315" at="116,34,117,47" concept="11" />
+      <node id="6591585676809131704" at="25,0,27,0" concept="6" trace="mySNodeReference" />
+      <node id="6299533519672652003" at="30,0,32,0" concept="6" trace="myText" />
+      <node id="7543585797631536734" at="32,0,34,0" concept="6" trace="mySupportedDataFlavors" />
+      <node id="1491152206151664303" at="41,10,43,5" concept="1" />
+      <node id="1491152206151678602" at="53,10,55,5" concept="1" />
+      <node id="6299533519672652133" at="90,12,93,7" concept="8" />
+      <node id="6299533519672652159" at="98,0,101,0" concept="9" trace="getAsString#()Ljava/lang/String;" />
+      <node id="6299533519672652179" at="102,123,105,5" concept="7" />
+      <node id="6299533519672652247" at="113,0,116,0" concept="9" trace="createNodeData#()Ljetbrains/mps/datatransfer/PasteNodeData;" />
+      <node id="6299533519672652311" at="116,0,119,0" concept="9" trace="containsNodes#()Z" />
+      <node id="6299533519672652007" at="71,0,75,0" concept="9" trace="getTransferDataFlavors#()[Ljava/awt/datatransfer/DataFlavor;" />
+      <node id="6299533519672652092" at="75,0,79,0" concept="9" trace="isDataFlavorSupported#(Ljava/awt/datatransfer/DataFlavor;)Z" />
+      <node id="7543585797632680861" at="108,0,113,0" concept="9" trace="saveText#(Ljava/lang/String;)V" />
+      <node id="6444276518578716871" at="37,55,43,5" concept="8" />
+      <node id="1491152206151678581" at="49,55,55,5" concept="8" />
+      <node id="6299533519672652126" at="87,12,93,7" concept="8" />
+      <node id="1491152206151411702" at="102,0,108,0" concept="15" trace="saveNodes#(Ljava/util/List;Ljava/util/Map;)Ljetbrains/mps/datatransfer/PasteNodeData;" />
+      <node id="6299533519672652019" at="35,0,46,0" concept="3" trace="SNodeTransferable#(Ljava/util/List;Ljava/lang/String;)V" />
+      <node id="6299533519672652047" at="47,0,58,0" concept="3" trace="SNodeTransferable#(Ljava/util/List;Ljava/lang/String;Ljava/util/Map;)V" />
+      <node id="7543585797633354521" at="59,0,70,0" concept="3" trace="SNodeTransferable#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="6299533519672652119" at="82,40,93,7" concept="8" />
+      <node id="7543585797633196474" at="81,99,94,5" concept="8" />
+      <node id="6299533519672652113" at="80,0,97,0" concept="9" trace="getTransferData#(Ljava/awt/datatransfer/DataFlavor;)Ljava/lang/Object;" />
+      <scope id="1491152206151664304" at="41,12,42,30" />
+      <scope id="1491152206151678603" at="53,12,54,30" />
+      <scope id="6299533519672652011" at="72,48,73,89" />
+      <scope id="6299533519672652097" at="76,59,77,51" />
+      <scope id="6299533519672652154" at="83,50,84,20" />
+      <scope id="6591585676810717367" at="85,52,86,32" />
+      <scope id="6299533519672652151" at="88,51,89,29" />
+      <scope id="6299533519672652146" at="91,54,92,47" />
+      <scope id="6299533519672652162" at="98,32,99,18" />
+      <scope id="6299533519672652183" at="103,30,104,58" />
+      <scope id="6299533519672652252" at="113,41,114,56" />
+      <scope id="6299533519672652314" at="116,34,117,47" />
+      <scope id="6444276518578716872" at="38,28,40,52" />
+      <scope id="1491152206151678582" at="50,28,52,52" />
+      <scope id="6299533519672652159" at="98,0,101,0" />
+      <scope id="6299533519672652179" at="102,123,105,5">
         <var name="node" id="6299533519672652181" />
       </scope>
-      <scope id="7543585797632680865" at="107,38,110,59" />
-      <scope id="6299533519672652247" at="112,0,115,0" />
-      <scope id="6299533519672652311" at="115,0,118,0" />
-      <scope id="6299533519672652007" at="70,0,74,0" />
-      <scope id="6299533519672652092" at="74,0,78,0">
+      <scope id="7543585797632680865" at="108,38,111,59" />
+      <scope id="6299533519672652247" at="113,0,116,0" />
+      <scope id="6299533519672652311" at="116,0,119,0" />
+      <scope id="6299533519672652007" at="71,0,75,0" />
+      <scope id="6299533519672652092" at="75,0,79,0">
         <var name="flavor" id="6299533519672652095" />
       </scope>
-      <scope id="6299533519672652178" at="101,123,105,69" />
-      <scope id="7543585797632680861" at="107,0,112,0">
+      <scope id="6299533519672652178" at="102,123,106,69" />
+      <scope id="7543585797632680861" at="108,0,113,0">
         <var name="text" id="7543585797632769099" />
       </scope>
-      <scope id="1491152206151411702" at="101,0,107,0">
+      <scope id="1491152206151411702" at="102,0,108,0">
         <var name="nodes" id="6299533519672652168" />
         <var name="nodesAndAttributes" id="6299533519672652172" />
       </scope>
-      <scope id="6299533519672652027" at="34,60,43,19" />
-      <scope id="6299533519672652061" at="46,112,55,19" />
-      <scope id="7543585797633384733" at="58,53,67,64" />
-      <scope id="6299533519672652019" at="34,0,45,0">
+      <scope id="6299533519672652027" at="35,60,44,19" />
+      <scope id="6299533519672652061" at="47,112,56,19" />
+      <scope id="7543585797633384733" at="59,53,68,50" />
+      <scope id="6299533519672652019" at="35,0,46,0">
         <var name="nodes" id="6299533519672652022" />
         <var name="text" id="6299533519672652025" />
       </scope>
-      <scope id="6299533519672652047" at="46,0,57,0">
+      <scope id="6299533519672652047" at="47,0,58,0">
         <var name="nodes" id="6299533519672652050" />
         <var name="nodesAndAttributes" id="6299533519672652056" />
         <var name="text" id="6299533519672652054" />
       </scope>
-      <scope id="7543585797633354521" at="58,0,69,0">
+      <scope id="7543585797633354521" at="59,0,70,0">
         <var name="node" id="7543585797633364801" />
         <var name="text" id="7543585797633364610" />
       </scope>
-      <scope id="7543585797633196477" at="81,40,92,7" />
-      <scope id="6299533519672652118" at="80,99,94,49" />
-      <scope id="6299533519672652113" at="79,0,96,0">
+      <scope id="7543585797633196477" at="82,40,93,7" />
+      <scope id="6299533519672652118" at="81,99,95,49" />
+      <scope id="6299533519672652113" at="80,0,97,0">
         <var name="flavor" id="6299533519672652116" />
       </scope>
-      <unit id="6299533519672651952" at="22,0,119,0" name="jetbrains.mps.ide.datatransfer.SNodeTransferable" />
+      <unit id="6299533519672651952" at="23,0,120,0" name="jetbrains.mps.ide.datatransfer.SNodeTransferable" />
     </file>
   </root>
   <root nodeRef="r:84719e1a-99f6-4297-90ba-8ad2a947fa4a(jetbrains.mps.ide.datatransfer)/6299533519672652334">

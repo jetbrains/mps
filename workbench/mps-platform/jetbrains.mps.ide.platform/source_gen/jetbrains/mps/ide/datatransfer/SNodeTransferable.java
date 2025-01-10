@@ -12,6 +12,7 @@ import java.util.List;
 import java.awt.datatransfer.DataFlavor;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.datatransfer.SNodeClip;
 import java.util.Map;
 import java.util.Set;
 import java.util.Collections;
@@ -36,7 +37,7 @@ public class SNodeTransferable implements Transferable {
     mySupportedDataFlavors.add(SModelDataFlavor.sNode);
     if (nodes.size() == 1) {
       mySNodeReference = nodes.get(0).getReference();
-      mySupportedDataFlavors.add(SModelDataFlavor.sNodeReference);
+      mySupportedDataFlavors.add(SNodeClip.NODEREF);
     } else {
       mySNodeReference = null;
     }
@@ -48,7 +49,7 @@ public class SNodeTransferable implements Transferable {
     mySupportedDataFlavors.add(SModelDataFlavor.sNode);
     if (nodes.size() == 1) {
       mySNodeReference = nodes.get(0).getReference();
-      mySupportedDataFlavors.add(SModelDataFlavor.sNodeReference);
+      mySupportedDataFlavors.add(SNodeClip.NODEREF);
     } else {
       mySNodeReference = null;
     }
@@ -64,7 +65,7 @@ public class SNodeTransferable implements Transferable {
     myPasteData = saveNodes(Collections.singletonList(node), null);
     mySupportedDataFlavors.add(SModelDataFlavor.sNode);
     mySNodeReference = node.getReference();
-    mySupportedDataFlavors.add(SModelDataFlavor.sNodeReference);
+    mySupportedDataFlavors.add(SNodeClip.NODEREF);
   }
 
   @Override
@@ -81,7 +82,7 @@ public class SNodeTransferable implements Transferable {
     if (isDataFlavorSupported(flavor)) {
       if (flavor.equals(SModelDataFlavor.sNode)) {
         return this;
-      } else if (flavor.equals(SModelDataFlavor.sNodeReference)) {
+      } else if (flavor.equals(SNodeClip.NODEREF)) {
         return mySNodeReference;
       } else
       if (flavor.equals(DataFlavor.stringFlavor)) {

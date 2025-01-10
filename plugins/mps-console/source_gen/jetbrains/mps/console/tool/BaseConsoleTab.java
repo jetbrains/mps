@@ -59,12 +59,10 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.actionSystem.DataContext;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import java.util.Optional;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import java.awt.datatransfer.Transferable;
+import jetbrains.mps.datatransfer.SNodeClip;
 import com.intellij.ide.CopyPasteManagerEx;
-import jetbrains.mps.ide.datatransfer.SModelDataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.IOException;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.nodeEditor.datatransfer.NodePaster;
@@ -351,23 +349,16 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     public final void performPaste(@NotNull final DataContext context) {
       myProject.getModelAccess().executeCommand(new EditorCommand(myEditor) {
         protected void doExecute() {
+          //  XXX I wonder if this check and clipboard access have to be part of the command?
           if (!(isPastePossible(context))) {
             return;
           }
-          SNodeReference pastingNodeReference = null;
-          try {
-            for (Transferable trf : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
-              if (trf != null && trf.isDataFlavorSupported(SModelDataFlavor.sNodeReference)) {
-                pastingNodeReference = (SNodeReference) trf.getTransferData(SModelDataFlavor.sNodeReference);
-              }
-              break;
-            }
-          } catch (UnsupportedFlavorException ignored) {
-          } catch (IOException ignored) {
-          }
+          Optional<SNodeReference> nrf = SNodeClip.findNodeReferenceFlavor(CopyPasteManagerEx.getInstanceEx().getAllContents());
+          final SNodeReference pastingNodeReference = nrf.orElse(null);
+
           EditorCell currentCell = myEditor.getSelectedCell();
-          SNode referenceTarget = check_6q36mf_a0e0a0a0a0a0f06(pastingNodeReference, myProject);
-          if (referenceTarget != null && currentCell != null && !(check_6q36mf_a0a5a0a0a0a0a5ic(check_6q36mf_a0a0f0a0a0a0a0f06(pastingNodeReference), myModel))) {
+          SNode referenceTarget = check_6q36mf_a0g0a0a0a0a0f06(pastingNodeReference, myProject);
+          if (referenceTarget != null && currentCell != null && !(check_6q36mf_a0a7a0a0a0a0a5ic(check_6q36mf_a0a0h0a0a0a0a0f06(pastingNodeReference), myModel))) {
             SNode refContainer = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x51132a123c89fa7eL, "jetbrains.mps.console.base.structure.PastedNodeReference"));
             SLinkOperations.setTarget(refContainer, LINKS.target$CsE, referenceTarget);
             NodePaster paster = new NodePaster(ListSequence.fromListAndArray(new ArrayList<SNode>(), refContainer));
@@ -380,7 +371,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
             myEditor.getUpdater().flushModelEvents();
             SelectionUtil.selectLabelCellAnSetCaret(myEditor.getEditorContext(), refContainer, SelectionManager.LAST_CELL, -1);
           } else {
-            check_6q36mf_a0a0f0a0a0a0a0f06_0(myDefaultPasteProvider, context);
+            check_6q36mf_a0a0h0a0a0a0a0f06_0(myDefaultPasteProvider, context);
           }
         }
       });
@@ -519,25 +510,25 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
     }
 
   }
-  private static SNode check_6q36mf_a0e0a0a0a0a0f06(SNodeReference checkedDotOperand, MPSProject myProject) {
+  private static SNode check_6q36mf_a0g0a0a0a0a0f06(SNodeReference checkedDotOperand, MPSProject myProject) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.resolve(myProject.getRepository());
     }
     return null;
   }
-  private static boolean check_6q36mf_a0a5a0a0a0a0a5ic(SModelReference checkedDotOperand, SModel myModel) {
+  private static boolean check_6q36mf_a0a7a0a0a0a0a5ic(SModelReference checkedDotOperand, SModel myModel) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.equals(SModelOperations.getPointer(myModel));
     }
     return false;
   }
-  private static SModelReference check_6q36mf_a0a0f0a0a0a0a0f06(SNodeReference checkedDotOperand) {
+  private static SModelReference check_6q36mf_a0a0h0a0a0a0a0f06(SNodeReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelReference();
     }
     return null;
   }
-  private static void check_6q36mf_a0a0f0a0a0a0a0f06_0(PasteProvider checkedDotOperand, DataContext context) {
+  private static void check_6q36mf_a0a0h0a0a0a0a0f06_0(PasteProvider checkedDotOperand, DataContext context) {
     if (null != checkedDotOperand) {
       checkedDotOperand.performPaste(context);
     }

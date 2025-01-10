@@ -283,6 +283,7 @@
       <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
         <property id="5858074156537516431" name="text" index="x79VB" />
       </concept>
+      <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
         <child id="5383422241790532083" name="tags" index="3nqlJM" />
@@ -300,12 +301,16 @@
       <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
         <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
       </concept>
+      <concept id="5562345046718956738" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseVariableDocReference" flags="ng" index="YTMYr">
+        <reference id="5562345046718956740" name="declaration" index="YTMYt" />
+      </concept>
       <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
         <child id="6962838954693749192" name="tag" index="qph3F" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
+      <concept id="6501140109493894267" name="jetbrains.mps.baseLanguage.javadoc.structure.StaticFieldDocReference" flags="ng" index="1RlsK7" />
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
@@ -4239,9 +4244,9 @@
                 </node>
                 <node concept="liA8E" id="6yKcP2S$Uft" role="2OqNvi">
                   <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
-                  <node concept="10M0yZ" id="6yKcP2S$UsE" role="37wK5m">
-                    <ref role="3cqZAo" node="7gnNafF6hJ_" resolve="sNodeReference" />
-                    <ref role="1PxDUh" node="5tGs5KqKiwp" resolve="SModelDataFlavor" />
+                  <node concept="10M0yZ" id="55dLdDTZXi1" role="37wK5m">
+                    <ref role="3cqZAo" to="qzxo:~SNodeClip.NODEREF" resolve="NODEREF" />
+                    <ref role="1PxDUh" to="qzxo:~SNodeClip" resolve="SNodeClip" />
                   </node>
                 </node>
               </node>
@@ -4381,9 +4386,9 @@
                 </node>
                 <node concept="liA8E" id="1iLCKvLHvE3" role="2OqNvi">
                   <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
-                  <node concept="10M0yZ" id="1iLCKvLHvE4" role="37wK5m">
-                    <ref role="1PxDUh" node="5tGs5KqKiwp" resolve="SModelDataFlavor" />
-                    <ref role="3cqZAo" node="7gnNafF6hJ_" resolve="sNodeReference" />
+                  <node concept="10M0yZ" id="55dLdDTZYyC" role="37wK5m">
+                    <ref role="3cqZAo" to="qzxo:~SNodeClip.NODEREF" resolve="NODEREF" />
+                    <ref role="1PxDUh" to="qzxo:~SNodeClip" resolve="SNodeClip" />
                   </node>
                 </node>
               </node>
@@ -4650,9 +4655,9 @@
             </node>
             <node concept="liA8E" id="1dqb3iV4dny" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
-              <node concept="10M0yZ" id="1dqb3iV4dnz" role="37wK5m">
-                <ref role="1PxDUh" node="5tGs5KqKiwp" resolve="SModelDataFlavor" />
-                <ref role="3cqZAo" node="7gnNafF6hJ_" resolve="sNodeReference" />
+              <node concept="10M0yZ" id="55dLdDTZYSK" role="37wK5m">
+                <ref role="3cqZAo" to="qzxo:~SNodeClip.NODEREF" resolve="NODEREF" />
+                <ref role="1PxDUh" to="qzxo:~SNodeClip" resolve="SNodeClip" />
               </node>
             </node>
           </node>
@@ -4818,9 +4823,9 @@
                   </node>
                   <node concept="liA8E" id="5HU13ZkQPYD" role="2OqNvi">
                     <ref role="37wK5l" to="kt01:~DataFlavor.equals(java.awt.datatransfer.DataFlavor)" resolve="equals" />
-                    <node concept="10M0yZ" id="6yKcP2SBdd7" role="37wK5m">
-                      <ref role="3cqZAo" node="7gnNafF6hJ_" resolve="sNodeReference" />
-                      <ref role="1PxDUh" node="5tGs5KqKiwp" resolve="SModelDataFlavor" />
+                    <node concept="10M0yZ" id="55dLdDTZZ9$" role="37wK5m">
+                      <ref role="3cqZAo" to="qzxo:~SNodeClip.NODEREF" resolve="NODEREF" />
+                      <ref role="1PxDUh" to="qzxo:~SNodeClip" resolve="SNodeClip" />
                     </node>
                   </node>
                 </node>
@@ -5091,14 +5096,42 @@
       <node concept="3uibUv" id="7gnNafF6hJT" role="1tU5fm">
         <ref role="3uigEE" to="kt01:~DataFlavor" resolve="DataFlavor" />
       </node>
-      <node concept="2ShNRf" id="7gnNafF6hLE" role="33vP2m">
-        <node concept="1pGfFk" id="7gnNafF6sJ0" role="2ShVmc">
-          <ref role="37wK5l" to="kt01:~DataFlavor.&lt;init&gt;(java.lang.Class,java.lang.String)" resolve="DataFlavor" />
-          <node concept="3VsKOn" id="15R8ocNVYse" role="37wK5m">
-            <ref role="3VsUkX" to="mhbf:~SNodeReference" resolve="SNodeReference" />
+      <node concept="10M0yZ" id="55dLdDTG9C4" role="33vP2m">
+        <ref role="3cqZAo" to="qzxo:~SNodeClip.NODEREF" resolve="NODEREF" />
+        <ref role="1PxDUh" to="qzxo:~SNodeClip" resolve="SNodeClip" />
+      </node>
+      <node concept="z59LJ" id="55dLdDTFxSN" role="lGtFl">
+        <node concept="TZ5HI" id="55dLdDTFxSO" role="3nqlJM">
+          <node concept="TZ5HA" id="55dLdDTFxSP" role="3HnX3l">
+            <node concept="1dT_AC" id="55dLdDTFFKT" role="1dT_Ay">
+              <property role="1dT_AB" value="Use " />
+            </node>
+            <node concept="1dT_AA" id="55dLdDTFFKV" role="1dT_Ay">
+              <node concept="92FcH" id="55dLdDTFFKX" role="qph3F">
+                <node concept="TZ5HA" id="55dLdDTFFKZ" role="2XjZqd" />
+                <node concept="1RlsK7" id="55dLdDTG8hu" role="92FcQ">
+                  <ref role="YTMYt" to="qzxo:~SNodeClip.NODEREF" resolve="NODEREF" />
+                </node>
+              </node>
+            </node>
+            <node concept="1dT_AC" id="55dLdDTFFKU" role="1dT_Ay">
+              <property role="1dT_AB" value=" directly" />
+            </node>
           </node>
-          <node concept="Xl_RD" id="4u2DBV6_PDl" role="37wK5m">
-            <property role="Xl_RC" value="SNodeReference" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="55dLdDTFxSQ" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <node concept="2B6LJw" id="55dLdDTFxUH" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="55dLdDTFFBH" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="55dLdDTFFBN" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="55dLdDTFFKM" role="2B70Vg">
+            <property role="Xl_RC" value="2025.1" />
           </node>
         </node>
       </node>

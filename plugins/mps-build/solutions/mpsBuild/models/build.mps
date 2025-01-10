@@ -53158,11 +53158,6 @@
           <ref role="3bR37D" node="1TaHNgiIbIZ" resolve="MPS.Editor" />
         </node>
       </node>
-      <node concept="1SiIV0" id="7Jzw3XJN4Mb" role="3bR37C">
-        <node concept="3bR9La" id="7Jzw3XJN4Mc" role="1SiIV1">
-          <ref role="3bR37D" node="1TaHNgiIbJt" resolve="jetbrains.mps.ide.platform" />
-        </node>
-      </node>
       <node concept="1SiIV0" id="6NdQLvrt0BK" role="3bR37C">
         <node concept="3bR9La" id="6NdQLvrt0BL" role="1SiIV1">
           <ref role="3bR37D" node="7Kfy9QB6Lg2" resolve="jetbrains.mps.smodel.resources" />
