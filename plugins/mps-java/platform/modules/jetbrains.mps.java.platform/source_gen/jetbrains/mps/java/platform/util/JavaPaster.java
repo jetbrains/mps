@@ -36,7 +36,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.ide.datatransfer.SModelDataFlavor;
+import jetbrains.mps.datatransfer.SNodeClip;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
@@ -242,7 +242,7 @@ public class JavaPaster {
   }
 
   public static boolean isStringOnlyDataAvailableInClipboard() {
-    return CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(DataFlavor.stringFlavor) && !(CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(SModelDataFlavor.sNode));
+    return CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(DataFlavor.stringFlavor) && !(CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(SNodeClip.NODE));
   }
 
   private static final class CONCEPTS {

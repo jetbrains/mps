@@ -84,6 +84,11 @@ public class SNodeTransferable implements Transferable {
   public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
     if (isDataFlavorSupported(flavor)) {
       if (SModelDataFlavor.sNode.equals(flavor)) {
+        // FIXME for transition period of 1 release we still support this flavor, and keep [ide.platform]SNodeTransferable
+        //      in Clipboard. I'm not aware of clients using SNodeTransferable directly, and generally there's no need to,
+        //      and the code will be removed after 2025.1
+        //      Perhaps, we shall replace SNodeTransferable with another Transferable implementation (SNodeClip?), which
+        //      won't be part of [ide.platform], not to drag complete IDEA platform just for the sake of Clipboard operations.
         return this;
       } else if (SNodeClip.NODEREF.equals(flavor)) {
         return mySNodeReference;

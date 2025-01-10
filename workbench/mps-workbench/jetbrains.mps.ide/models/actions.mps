@@ -15456,9 +15456,9 @@
     <property role="1teQrl" value="true" />
     <property role="2YLI8m" value="6u2MFnph2wS/none" />
     <node concept="1GtWCo" id="6S5fI02CGBx" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSpi9k0j" role="1GtWoa">
+      <node concept="10M0yZ" id="55dLdDUeavB" role="1GtWoa">
+        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.MenuPaste" resolve="MenuPaste" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
-        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Menu_paste" resolve="Menu_paste" />
       </node>
     </node>
     <node concept="1DS2jV" id="7nlecdCD_TC" role="1NuT2Z">
@@ -16082,6 +16082,46 @@
       <property role="TrG5h" value="canPasteNodes" />
       <node concept="10P_77" id="5ZDTGDawPmM" role="3clF45" />
       <node concept="3clFbS" id="5ZDTGDaww52" role="3clF47">
+        <node concept="3SKdUt" id="55dLdDUed5H" role="3cqZAp">
+          <node concept="1PaTwC" id="55dLdDUed5I" role="1aUNEU">
+            <node concept="3oM_SD" id="55dLdDUeeQf" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="55dLdDUefv8" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="55dLdDUefvq" role="1PaTwD">
+              <property role="3oM_SC" value="quite" />
+            </node>
+            <node concept="3oM_SD" id="55dLdDUefvr" role="1PaTwD">
+              <property role="3oM_SC" value="nice" />
+            </node>
+            <node concept="3oM_SD" id="55dLdDUefvs" role="1PaTwD">
+              <property role="3oM_SC" value="-" />
+            </node>
+            <node concept="3oM_SD" id="55dLdDUefvt" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="55dLdDUefvY" role="1PaTwD">
+              <property role="3oM_SC" value="imply" />
+            </node>
+            <node concept="3oM_SD" id="55dLdDUefvZ" role="1PaTwD">
+              <property role="3oM_SC" value="CopyPasteUtil.getPasteNodeData()" />
+            </node>
+            <node concept="3oM_SD" id="55dLdDUefyw" role="1PaTwD">
+              <property role="3oM_SC" value="uses" />
+            </node>
+            <node concept="3oM_SD" id="55dLdDUefyL" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="55dLdDUefzi" role="1PaTwD">
+              <property role="3oM_SC" value="data" />
+            </node>
+            <node concept="3oM_SD" id="55dLdDUefzN" role="1PaTwD">
+              <property role="3oM_SC" value="flavor" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="1Gyb7mMRHFR" role="3cqZAp">
           <node concept="2OqwBi" id="6u_mZnPjPim" role="3clFbG">
             <node concept="2YIFZM" id="6u_mZnPjPin" role="2Oq$k0">
@@ -16090,9 +16130,9 @@
             </node>
             <node concept="liA8E" id="6u_mZnPjPio" role="2OqNvi">
               <ref role="37wK5l" to="ddhc:~CopyPasteManagerEx.areDataFlavorsAvailable(java.awt.datatransfer.DataFlavor...)" resolve="areDataFlavorsAvailable" />
-              <node concept="10M0yZ" id="6u_mZnPjPip" role="37wK5m">
-                <ref role="3cqZAo" to="dp1x:5tGs5KqKj8z" resolve="sNode" />
-                <ref role="1PxDUh" to="dp1x:5tGs5KqKiwp" resolve="SModelDataFlavor" />
+              <node concept="10M0yZ" id="55dLdDUe5BP" role="37wK5m">
+                <ref role="3cqZAo" to="qzxn:~SNodeClip.NODE" resolve="NODE" />
+                <ref role="1PxDUh" to="qzxn:~SNodeClip" resolve="SNodeClip" />
               </node>
             </node>
           </node>

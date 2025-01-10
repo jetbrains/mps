@@ -33,14 +33,14 @@ import jetbrains.mps.resolve.ResolverComponent;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import com.intellij.ide.CopyPasteManagerEx;
-import jetbrains.mps.ide.datatransfer.SModelDataFlavor;
+import jetbrains.mps.datatransfer.SNodeClip;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5533671870987188872", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class PasteNode_Action extends BaseAction {
-  private static final Icon ICON = AllIcons.Actions.Menu_paste;
+  private static final Icon ICON = AllIcons.Actions.MenuPaste;
 
   public PasteNode_Action() {
     super("Paste", "", ICON);
@@ -145,7 +145,8 @@ public class PasteNode_Action extends BaseAction {
     });
   }
   private boolean canPasteNodes(final Map<String, Object> _params) {
-    return CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(SModelDataFlavor.sNode);
+    // XXX not quite nice - we imply CopyPasteUtil.getPasteNodeData() uses this data flavor
+    return CopyPasteManagerEx.getInstanceEx().areDataFlavorsAvailable(SNodeClip.NODE);
   }
   private String getContextPackage(final Map<String, Object> _params) {
     if (((SNode) MapSequence.fromMap(_params).get("node")) != null) {

@@ -280,10 +280,10 @@ public final class CopyPasteUtil {
     for (Transferable trf : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
       if (trf != null) {
         for (DataFlavor nextFlavor : trf.getTransferDataFlavors()) {
-          if (nextFlavor == SModelDataFlavor.stringFlavor) {
+          if (nextFlavor == DataFlavor.stringFlavor) {
             return true;
           }
-          if (nextFlavor == SModelDataFlavor.sNode) {
+          if (nextFlavor == SNodeClip.NODE) {
             return false;
           }
         }
