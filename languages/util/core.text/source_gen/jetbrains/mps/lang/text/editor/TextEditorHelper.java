@@ -4,7 +4,9 @@ package jetbrains.mps.lang.text.editor;
 
 import java.awt.datatransfer.Transferable;
 import com.intellij.ide.CopyPasteManagerEx;
-import jetbrains.mps.ide.datatransfer.SModelDataFlavor;
+import java.util.Optional;
+import jetbrains.mps.datatransfer.PasteNodeData;
+import jetbrains.mps.datatransfer.SNodeClip;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
@@ -26,33 +28,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class TextEditorHelper {
 
   public static Object getDataFromClipboard() {
-    Transferable contents = null;
-    for (Transferable trf : CopyPasteManagerEx.getInstanceEx().getAllContents()) {
-      if (trf != null && (trf.isDataFlavorSupported(SModelDataFlavor.sNode) || trf.isDataFlavorSupported(DataFlavor.stringFlavor))) {
-        contents = trf;
+    Transferable[] allContents = CopyPasteManagerEx.getInstanceEx().getAllContents();
+    Optional<PasteNodeData> nf = SNodeClip.findNodeFlavor(allContents);
+    if (nf.isPresent()) {
+      return nf.get();
+    }
+
+    for (Transferable trf : allContents) {
+      if (trf != null && trf.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+        try {
+          return trf.getTransferData(DataFlavor.stringFlavor);
+        } catch (UnsupportedFlavorException | IOException ex) {
+          return null;
+        }
       }
       break;
-    }
-    if (contents == null) {
-      return null;
-    }
-    if (contents.isDataFlavorSupported(SModelDataFlavor.sNode)) {
-      try {
-        return contents.getTransferData(SModelDataFlavor.sNode);
-      } catch (UnsupportedFlavorException ex) {
-        return null;
-      } catch (IOException ex) {
-        return null;
-      }
-    }
-    if (contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-      try {
-        return contents.getTransferData(DataFlavor.stringFlavor);
-      } catch (UnsupportedFlavorException ex) {
-        return null;
-      } catch (IOException ex) {
-        return null;
-      }
     }
     return null;
   }

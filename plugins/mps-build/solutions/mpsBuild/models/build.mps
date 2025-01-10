@@ -23695,11 +23695,6 @@
             </node>
           </node>
         </node>
-        <node concept="1SiIV0" id="WdrIy_XH3t" role="3bR37C">
-          <node concept="3bR9La" id="WdrIy_XH3u" role="1SiIV1">
-            <ref role="3bR37D" node="1TaHNgiIbJt" resolve="jetbrains.mps.ide.platform" />
-          </node>
-        </node>
       </node>
     </node>
     <node concept="2G$12M" id="3knW2ZMLWvv" role="3989C9">
