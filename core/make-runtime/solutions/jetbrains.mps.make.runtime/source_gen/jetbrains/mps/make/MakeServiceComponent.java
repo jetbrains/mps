@@ -4,6 +4,7 @@ package jetbrains.mps.make;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.components.CoreComponent;
+import java.util.concurrent.CopyOnWriteArrayList;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -11,15 +12,38 @@ import org.jetbrains.annotations.NotNull;
  * Its {@link jetbrains.mps.make.MakeServiceComponent#install(IMakeService) } and {@link jetbrains.mps.make.MakeServiceComponent#uninstall(IMakeService) } methods are intended for other MPS components that contribute 
  * particular facility implementation. Clients access active service using {@link jetbrains.mps.make.MakeServiceComponent#get() }
  * 
- * XXX might be fruitful to have add/remove listeners code here, which would re-register
- *     listeners the moment active make service changes. No, there's no such scenario at the moment.
- * 
- * XXX seems that there's no reason (at least, now), to keep this CC and not use app.getService(IMakeService.class) directly
- *     as all the present uses seem to be from IDEA-aware code anyway, and there's no longer need for IMakeService to implement
- *     anything like App/Project component
+ * Add/remove listeners code here re-registers listeners the moment active make service changes. 
+ * Clients can install their listeners irrespective of the moment proper {@code IMakeService} implementation is installed.
  */
 @GeneratedClass(node = "r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)/5600956479087952114", model = "r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)")
 public final class MakeServiceComponent implements CoreComponent {
+  private final CopyOnWriteArrayList<IMakeNotificationListener> myListeners = new CopyOnWriteArrayList<>();
+  private final IMakeNotificationListener myDelegate = new IMakeNotificationListener() {
+
+    @Override
+    public void handleNotification(final MakeNotification notification) {
+      // this is the only method invoked from outside, others are just for Stub implementation
+      // (don't ask me why it's that way)
+      myListeners.forEach((l) -> l.handleNotification(notification));
+    }
+    @Override
+    public void scriptAboutToStart(MakeNotification notification) {
+      throw new UnsupportedOperationException();
+    }
+    @Override
+    public void scriptFinished(MakeNotification notification) {
+      throw new UnsupportedOperationException();
+    }
+    @Override
+    public void sessionOpened(MakeNotification notification) {
+      throw new UnsupportedOperationException();
+    }
+    @Override
+    public void sessionClosed(MakeNotification notification) {
+      throw new UnsupportedOperationException();
+    }
+  };
+
   private IMakeService myActiveMakeService;
 
   public MakeServiceComponent() {
@@ -28,9 +52,12 @@ public final class MakeServiceComponent implements CoreComponent {
   public void install(@NotNull IMakeService makeService) {
     assert myActiveMakeService == null;
     myActiveMakeService = makeService;
+    myActiveMakeService.addListener(myDelegate);
   }
 
   public void uninstall(@NotNull IMakeService makeService) {
+    assert myActiveMakeService == makeService;
+    myActiveMakeService.removeListener(myDelegate);
     myActiveMakeService = null;
   }
 
@@ -47,10 +74,12 @@ public final class MakeServiceComponent implements CoreComponent {
     return myActiveMakeService;
   }
 
-  @Override
-  public void init() {
+  public void addListener(IMakeNotificationListener listener) {
+    assert !(myListeners.contains(listener));
+    myListeners.add(listener);
   }
-  @Override
-  public void dispose() {
+
+  public void removeListener(IMakeNotificationListener listener) {
+    myListeners.remove(listener);
   }
 }
