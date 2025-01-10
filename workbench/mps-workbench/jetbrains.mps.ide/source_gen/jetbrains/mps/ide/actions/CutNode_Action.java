@@ -18,6 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import java.util.ArrayList;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
+import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -45,6 +46,7 @@ public class CutNode_Action extends BaseAction {
         return false;
       }
     }
+    // FIXME odd check, some legacy from 2009?!
     return CutNode_Action.this.getProjectPane(_params) != null;
   }
   @Override
@@ -82,7 +84,8 @@ public class CutNode_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    CopyPasteUtil.copyNodesToClipboard(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
+    // 'cut' deletes original nodes, hence their copies in clipboard are "fresh"/new
+    CopyPasteUtil.putToClipboard(((List<SNode>) MapSequence.fromMap(_params).get("nodes")), null, IterableUtils.join(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).select((it) -> SNodeOperations.present(it)), "\n"), true);
     for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))) {
       SNodeOperations.deleteNode(node);
     }

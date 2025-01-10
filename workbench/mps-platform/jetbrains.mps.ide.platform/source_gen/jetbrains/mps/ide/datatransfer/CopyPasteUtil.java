@@ -24,6 +24,8 @@ import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import com.intellij.ide.CopyPasteManagerEx;
 import java.awt.datatransfer.StringSelection;
+import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.util.IterableUtil;
 import java.awt.datatransfer.Transferable;
 import javax.swing.SwingUtilities;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -33,7 +35,6 @@ import java.util.Collections;
 import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 import jetbrains.mps.datatransfer.SNodeClip;
-import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.project.Project;
@@ -167,11 +168,34 @@ public final class CopyPasteUtil {
   public static void copyTextAndNodeToClipboard(String text, SNode node) {
     setClipboardContents(new SNodeTransferable(text, node));
   }
-  public static SNodeTransferable copyNodesAndTextToClipboard(List<SNode> nodes, Map<SNode, Set<SNode>> nodesAndAttributes, String text) {
-    SNodeTransferable transferable = new SNodeTransferable(nodes, text, nodesAndAttributes);
-    setClipboardContents(transferable);
-    return transferable;
+
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.ide.datatransfer.CopyPasteUtil#putToClipboard(Iterable<SNode>, Map<SNode, Set<SNode>>, String, boolean) } instead, or {@code EditorContext.getClipboard()} if you're in editor.
+   */
+  @Deprecated(forRemoval = true, since = "2025.1")
+  public static void copyNodesAndTextToClipboard(List<SNode> nodes, Map<SNode, Set<SNode>> nodesAndAttributes, String text) {
+    // although uses of this method generally didn't care about whether they supplied unique nodes or duplicates of some nodes
+    // existing in a model, I bet it's safe to go with "copy of existing" aka "not fresh/new", hence last 'false'
+    putToClipboard(nodes, nodesAndAttributes, text, false);
   }
+
+  /**
+   * 
+   * @since 2025.1
+   * @param freshNodes use {@code false} to indicate original nodes are still in a model and copied nodes are not deemed 'unique'
+   */
+  public static void putToClipboard(Iterable<SNode> nodes, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes, String text, boolean freshNodes) {
+    SNodeTransferable transferable = new SNodeTransferable(IterableUtil.asList(nodes), text, nodesAndAttributes);
+    setClipboardContents(transferable);
+    if (!(freshNodes)) {
+      // sort of hack. indicate nodes copied into clipboard are present elsewhere, not "freshly" made for Clipboard
+      // Consume them as if were cut and pasted back
+      transferable.createNodeData().consume();
+    }
+  }
+
+
   /**
    * A workaround for the following problem with CopyPasteManagerEx:
    * 
@@ -208,7 +232,13 @@ public final class CopyPasteUtil {
   private static String getStringContent(Transferable content) throws UnsupportedFlavorException, IOException {
     return (String) content.getTransferData(DataFlavor.stringFlavor);
   }
-  public static SNodeTransferable copyNodesToClipboard(List<SNode> nodes) {
+
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.ide.datatransfer.CopyPasteUtil#putToClipboard(Iterable<SNode>, Map<SNode, Set<SNode>>, String, boolean) } instead
+   */
+  @Deprecated
+  public static void copyNodesToClipboard(List<SNode> nodes) {
     StringBuilder stringBuilder = new StringBuilder();
     int i = 1;
     int size = nodes.size();
@@ -219,9 +249,8 @@ public final class CopyPasteUtil {
       }
       i++;
     }
-    SNodeTransferable transferable = new SNodeTransferable(nodes, stringBuilder.toString());
-    setClipboardContents(transferable);
-    return transferable;
+    // see #copyNodesAndTextToClipboard() for reasons why freshNodes=='false'
+    putToClipboard(nodes, null, stringBuilder.toString(), false);
   }
   public static void copyNodeToClipboard(SNode node) {
     CopyPasteUtil.copyNodesToClipboard(Collections.singletonList(node));
