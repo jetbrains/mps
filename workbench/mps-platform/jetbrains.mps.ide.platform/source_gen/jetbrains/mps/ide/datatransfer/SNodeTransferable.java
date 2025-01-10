@@ -35,6 +35,7 @@ public class SNodeTransferable implements Transferable {
   public SNodeTransferable(List<SNode> nodes, String text) {
     myPasteData = saveNodes(nodes, null);
     mySupportedDataFlavors.add(SModelDataFlavor.sNode);
+    mySupportedDataFlavors.add(SNodeClip.NODE);
     if (nodes.size() == 1) {
       mySNodeReference = nodes.get(0).getReference();
       mySupportedDataFlavors.add(SNodeClip.NODEREF);
@@ -47,6 +48,7 @@ public class SNodeTransferable implements Transferable {
   public SNodeTransferable(@NotNull List<SNode> nodes, String text, Map<SNode, Set<SNode>> nodesAndAttributes) {
     myPasteData = saveNodes(nodes, nodesAndAttributes);
     mySupportedDataFlavors.add(SModelDataFlavor.sNode);
+    mySupportedDataFlavors.add(SNodeClip.NODE);
     if (nodes.size() == 1) {
       mySNodeReference = nodes.get(0).getReference();
       mySupportedDataFlavors.add(SNodeClip.NODEREF);
@@ -64,6 +66,7 @@ public class SNodeTransferable implements Transferable {
     saveText(text);
     myPasteData = saveNodes(Collections.singletonList(node), null);
     mySupportedDataFlavors.add(SModelDataFlavor.sNode);
+    mySupportedDataFlavors.add(SNodeClip.NODE);
     mySNodeReference = node.getReference();
     mySupportedDataFlavors.add(SNodeClip.NODEREF);
   }
@@ -80,15 +83,15 @@ public class SNodeTransferable implements Transferable {
   @Override
   public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
     if (isDataFlavorSupported(flavor)) {
-      if (flavor.equals(SModelDataFlavor.sNode)) {
+      if (SModelDataFlavor.sNode.equals(flavor)) {
         return this;
-      } else if (flavor.equals(SNodeClip.NODEREF)) {
+      } else if (SNodeClip.NODEREF.equals(flavor)) {
         return mySNodeReference;
-      } else
-      if (flavor.equals(DataFlavor.stringFlavor)) {
+      } else if (SNodeClip.NODE.equals(flavor)) {
+        return createNodeData();
+      } else if (DataFlavor.stringFlavor.equals(flavor)) {
         return getAsString();
-      } else
-      if (flavor.equals(DataFlavor.plainTextFlavor)) {
+      } else if (flavor.equals(DataFlavor.plainTextFlavor)) {
         return new StringReader(getAsString());
       }
     }
