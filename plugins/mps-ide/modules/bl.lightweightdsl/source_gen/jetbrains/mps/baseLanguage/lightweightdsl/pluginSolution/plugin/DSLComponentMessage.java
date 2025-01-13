@@ -7,6 +7,7 @@ import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import javax.swing.Icon;
+import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
@@ -24,7 +25,7 @@ public class DSLComponentMessage extends AbstractLeftEditorHighlighterMessage {
   }
 
   public Icon getIcon() {
-    return IconContainer.ICON0;
+    return GlobalIconManager.getInstance().getIconForResource(IconContainer.RESOURCE_0);
   }
   public EditorMessageIconRenderer.IconRendererType getType() {
     return DSLComponentMessage.TYPE;

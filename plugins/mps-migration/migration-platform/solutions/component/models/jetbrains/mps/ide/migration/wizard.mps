@@ -63,11 +63,12 @@
     <import index="gbvg" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.border(MPS.IDEA/)" />
     <import index="53vh" ref="r:53885008-7612-46ff-8b11-27f1d42c3adb(jetbrains.mps.lang.migration.structure)" />
     <import index="ozmc" ref="r:9e07290b-999d-4e6b-8a40-240d8213c439(jetbrains.mps.migration.listener.plugin)" />
+    <import index="l7us" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.icons(MPS.Platform/)" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
-      <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
-        <property id="2756621024541341363" name="file" index="1iqoE4" />
+      <concept id="7927811850890310904" name="jetbrains.mps.lang.resources.structure.ConstantFieldIcon" flags="ng" index="1GtWCo">
+        <child id="7927811850890311914" name="field" index="1GtWoa" />
       </concept>
       <concept id="8974276187400029891" name="jetbrains.mps.lang.resources.structure.IconExpression" flags="nn" index="1QGGTA">
         <child id="8974276187400029893" name="icon" index="1QGGTw" />
@@ -104,9 +105,14 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ngI" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -357,6 +363,9 @@
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
       </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
+      </concept>
       <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
         <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
       </concept>
@@ -366,6 +375,7 @@
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
+      <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
     </language>
     <language id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences">
       <concept id="7915009415671748557" name="jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceTypeTargetExpression" flags="ng" index="2FaPjH">
@@ -4342,9 +4352,9 @@
                               </node>
                             </node>
                           </node>
-                          <node concept="10M0yZ" id="4cEc5tJmnYq" role="37wK5m">
-                            <ref role="3cqZAo" node="3XH1aBtfKGs" resolve="Language" />
-                            <ref role="1PxDUh" node="3XH1aBtfKF2" resolve="Icons" />
+                          <node concept="10M0yZ" id="1_Lbg1yDQ6$" role="37wK5m">
+                            <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Language" resolve="Language" />
+                            <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
                           </node>
                         </node>
                       </node>
@@ -15219,13 +15229,40 @@
         <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
       </node>
       <node concept="1QGGTA" id="3XH1aBtfXXp" role="33vP2m">
-        <node concept="1QGGSu" id="3XH1aBtfXXF" role="1QGGTw">
-          <property role="1iqoE4" value="${mps_home}/plugins/mps-migration/migration-platform/icons/language.png" />
+        <node concept="1GtWCo" id="1_Lbg1yDTbz" role="1QGGTw">
+          <node concept="10M0yZ" id="1_Lbg1yDUfG" role="1GtWoa">
+            <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Language" resolve="Language" />
+            <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
+          </node>
         </node>
       </node>
       <node concept="3Tm1VV" id="3XH1aBtfKGw" role="1B3o_S" />
     </node>
     <node concept="3Tm1VV" id="3XH1aBtfKF3" role="1B3o_S" />
+    <node concept="3UR2Jj" id="1_Lbg1yDUg4" role="lGtFl">
+      <node concept="TZ5HI" id="1_Lbg1yDUg5" role="3nqlJM">
+        <node concept="TZ5HA" id="1_Lbg1yDUg6" role="3HnX3l">
+          <node concept="1dT_AC" id="1_Lbg1yDUgW" role="1dT_Ay">
+            <property role="1dT_AB" value="use MPSIcons directly" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2AHcQZ" id="1_Lbg1yDUg7" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      <node concept="2B6LJw" id="1_Lbg1yDUgX" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+        <node concept="3clFbT" id="1_Lbg1yDUHg" role="2B70Vg">
+          <property role="3clFbU" value="true" />
+        </node>
+      </node>
+      <node concept="2B6LJw" id="1_Lbg1yDUHm" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+        <node concept="Xl_RD" id="1_Lbg1yDUPJ" role="2B70Vg">
+          <property role="Xl_RC" value="2025.1" />
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 

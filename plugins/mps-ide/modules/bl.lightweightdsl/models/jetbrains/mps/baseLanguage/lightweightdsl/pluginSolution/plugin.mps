@@ -51,11 +51,11 @@
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
+      <concept id="5979521222239143262" name="jetbrains.mps.lang.resources.structure.IconResourceExpression" flags="ng" index="2SwGe0">
+        <child id="5979521222239172928" name="icon" index="2SwzYu" />
+      </concept>
       <concept id="8974276187400029883" name="jetbrains.mps.lang.resources.structure.FileIcon" flags="ng" index="1QGGSu">
         <property id="2756621024541341363" name="file" index="1iqoE4" />
-      </concept>
-      <concept id="8974276187400029891" name="jetbrains.mps.lang.resources.structure.IconExpression" flags="nn" index="1QGGTA">
-        <child id="8974276187400029893" name="icon" index="1QGGTw" />
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
@@ -2031,10 +2031,19 @@
         <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
       </node>
       <node concept="3clFbS" id="1aVHDCk5gk1" role="3clF47">
-        <node concept="3clFbF" id="3ezQTUrYhS5" role="3cqZAp">
-          <node concept="1QGGTA" id="3ezQTUrYhRZ" role="3clFbG">
-            <node concept="1QGGSu" id="3ezQTUrYhS2" role="1QGGTw">
-              <property role="1iqoE4" value="${module}/icons/arrow.png" />
+        <node concept="3clFbF" id="1_Lbg1ytFgy" role="3cqZAp">
+          <node concept="2OqwBi" id="1_Lbg1ytG0Q" role="3clFbG">
+            <node concept="2YIFZM" id="1_Lbg1ytF$D" role="2Oq$k0">
+              <ref role="37wK5l" to="sn11:5UC$YgehaLf" resolve="getInstance" />
+              <ref role="1Pybhc" to="sn11:192HKKPMXeL" resolve="GlobalIconManager" />
+            </node>
+            <node concept="liA8E" id="1_Lbg1ytIlC" role="2OqNvi">
+              <ref role="37wK5l" to="sn11:192HKKPP2rb" resolve="getIconForResource" />
+              <node concept="2SwGe0" id="1_Lbg1ytJ2l" role="37wK5m">
+                <node concept="1QGGSu" id="3ezQTUrYhS2" role="2SwzYu">
+                  <property role="1iqoE4" value="${module}/icons/arrow.png" />
+                </node>
+              </node>
             </node>
           </node>
         </node>

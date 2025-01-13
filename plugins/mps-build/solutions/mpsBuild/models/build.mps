@@ -19767,6 +19767,11 @@
               <ref role="3bR37D" node="HHlBn9$wJ2" resolve="org.jdom" />
             </node>
           </node>
+          <node concept="1SiIV0" id="1_Lbg1ywYHH" role="3bR37C">
+            <node concept="3bR9La" id="1_Lbg1ywYHI" role="1SiIV1">
+              <ref role="3bR37D" node="1TaHNgiIbJt" resolve="jetbrains.mps.ide.platform" />
+            </node>
+          </node>
         </node>
         <node concept="1E0d5M" id="2a9bszgrunw" role="1E1XAP">
           <ref role="1E0d5P" node="7Kfy9QB6LfQ" resolve="jetbrains.mps.kernel" />
@@ -52438,6 +52443,9 @@
       </node>
       <node concept="nCB5N" id="1nJh0raUWjF" role="nCB5Z">
         <ref role="nCB5Y" node="16Vg0jOco3P" resolve="mps-platform" />
+      </node>
+      <node concept="nCB5N" id="3CIt4cKhweK" role="nCB5Z">
+        <ref role="nCB5Y" node="5_uX04TlQXW" resolve="mps-icons" />
       </node>
       <node concept="nCB5N" id="42rJ_CGYJaq" role="nCB5Z">
         <ref role="nCB5Y" node="1FaKCGJSzEy" resolve="mps-kernel" />

@@ -36,6 +36,7 @@ import jetbrains.mps.lang.migration.runtime.base.RefactoringScriptReference;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.icons.MPSIcons;
 import com.intellij.ide.wizard.AbstractWizardStepEx;
 import com.intellij.ide.wizard.CommitStepException;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -221,7 +222,7 @@ public class InitialStep extends BaseStep {
     final Map<SLanguage, DefaultMutableTreeNode> l2n = MapSequence.fromMap(new HashMap<SLanguage, DefaultMutableTreeNode>());
     List<AppliedScript> msrScripts = Sequence.fromIterable(scripts).where((it) -> it.scriptReference() instanceof MigrationScriptReference).toList();
     Iterable<MigrationScriptReference> seq = ListSequence.fromList(msrScripts).select((this0) -> this0.scriptReference()).ofType(MigrationScriptReference.class);
-    Sequence.fromIterable(seq).select((this0) -> this0.getLanguage()).distinct().visitAll((it) -> MapSequence.fromMap(l2n).put(it, new MyTreeNode(NameUtil.compactNamespace(it.getQualifiedName()), Icons.Language)));
+    Sequence.fromIterable(seq).select((this0) -> this0.getLanguage()).distinct().visitAll((it) -> MapSequence.fromMap(l2n).put(it, new MyTreeNode(NameUtil.compactNamespace(it.getQualifiedName()), MPSIcons.Nodes.Language)));
     ListSequence.fromList(msrScripts).visitAll((it) -> {
       MigrationScriptReference msr = (MigrationScriptReference) it.scriptReference();
       String caption = (it.scriptPresent() ? it.caption() : String.format("Missing: <script for version %d", msr.getFromVersion()));
