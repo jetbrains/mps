@@ -14060,7 +14060,7 @@
                   <ref role="3cqZAo" node="2g$3PZU5qGZ" resolve="generatedOutputPath" />
                 </node>
                 <node concept="Xl_RD" id="6GoDrzauk_F" role="3uHU7w">
-                  <property role="Xl_RC" value="product-info-macos-amd64.json" />
+                  <property role="Xl_RC" value="product-info-macos-aarch64.json" />
                 </node>
               </node>
             </node>
@@ -15847,7 +15847,7 @@
               <property role="3oM_SC" value="Copy" />
             </node>
             <node concept="3oM_SD" id="2CLHf7ODk6p" role="1PaTwD">
-              <property role="3oM_SC" value="macroZip" />
+              <property role="3oM_SC" value="macosZip" />
             </node>
             <node concept="3oM_SD" id="2CLHf7ODk6s" role="1PaTwD">
               <property role="3oM_SC" value="and" />
@@ -16276,7 +16276,7 @@
                         <node concept="liA8E" id="68Q93W$0f$G" role="2OqNvi">
                           <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
                           <node concept="Xl_RD" id="68Q93W$0f$H" role="37wK5m">
-                            <property role="Xl_RC" value="$platform$" />
+                            <property role="Xl_RC" value="\\$platform\\$" />
                           </node>
                         </node>
                       </node>
