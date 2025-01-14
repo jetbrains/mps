@@ -2592,62 +2592,6 @@
       <zipfileset file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/jetbrains.mps.ide.platform.msd" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-jetbrains.mps.ide.platform-models" prefix="module/models" />
     </jar>
-    <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.ui.jar" />
-    <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.ui.jar/META-INF" />
-    <echoxml file="${build.tmp}/default/jetbrains.mps.ide.ui.jar/META-INF/module.xml">
-      <module namespace="jetbrains.mps.ide.ui" type="solution" uuid="25092e07-e655-497c-92fb-558a8e3080ed">
-        <dependencies>
-          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
-          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
-          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
-          <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
-          <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
-          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
-          <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="rt" />
-          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
-          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
-          <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
-          <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
-          <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
-          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
-          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
-          <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
-          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
-          <module ref="bfbdd672-7ff5-403f-af4f-16da5226f34c(jetbrains.mps.findUsages.runtime)" kind="cl" />
-          <module ref="c72da2b9-7cce-4447-8389-f407dc1158b7(jetbrains.mps.lang.structure)" kind="cl" />
-        </dependencies>
-        <uses>
-          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
-          <language id="l:774bf8a0-62e5-41e1-af63-f4812e60e48b:jetbrains.mps.baseLanguage.checkedDots" />
-          <language id="l:443f4c36-fcf5-4eb6-9500-8d06ed259e3e:jetbrains.mps.baseLanguage.classifiers" />
-          <language id="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
-          <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
-          <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
-          <language id="l:28f9e497-3b42-4291-aeba-0a1039153ab1:jetbrains.mps.lang.plugin" />
-          <language id="l:982eb8df-2c96-4bd7-9963-11712ea622e5:jetbrains.mps.lang.resources" />
-          <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
-        </uses>
-        <sources jar="jetbrains.mps.ide.ui-src.jar" descriptor="jetbrains.mps.ide.ui.msd" />
-      </module>
-    </echoxml>
-    <jar destfile="${build.layout}/languages/plaf/jetbrains.mps.ide.ui.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/workbench/mps-ui" includes="icons/**, resources/**" />
-      <fileset dir="${mps_home}/workbench/mps-ui/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
-      <fileset dir="${build.tmp}/default/jetbrains.mps.ide.ui.jar" />
-    </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/workbench-mps-ui-models">
-      <fileset dir="${mps_home}/workbench/mps-ui/models" includes="**/*.mps, **/*.mpsr, **/.model" />
-    </copyModels>
-    <jar destfile="${build.layout}/languages/plaf/jetbrains.mps.ide.ui-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/workbench/mps-ui/source_gen">
-        <exclude name="**/trace.info" />
-        <exclude name="**/exports" />
-        <exclude name="**/checkpoints" />
-        <exclude name="**/*.mps" />
-      </fileset>
-      <zipfileset file="${mps_home}/workbench/mps-ui/jetbrains.mps.ide.ui.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/workbench-mps-ui-models" prefix="module/models" />
-    </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguage.search.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguage.search.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.baseLanguage.search.jar/META-INF/module.xml">
@@ -16849,7 +16793,6 @@
         <module file="${mps_home}/editor/editing-runtime/jetbrains.mps.editing.runtime.msd" />
         <module file="${mps_home}/core/generator/solutions/generator/jetbrains.mps.generator.msd" />
         <module file="${mps_home}/workbench/mps-editor/jetbrains.mps.ide.editor.msd" />
-        <module file="${mps_home}/workbench/mps-ui/jetbrains.mps.ide.ui.msd" />
         <module file="${mps_home}/languages/languageDesign/jetbrains.mps.lang.editor.imageGen/jetbrains.mps.lang.editor.imageGen.mpl" />
         <module file="${mps_home}/languages/languageDesign/editor.menus.extras/jetbrains.mps.lang.editor.menus.extras.mpl" />
         <module file="${mps_home}/languages/languageDesign/editor.menus.extras/runtime/jetbrains.mps.lang.editor.menus.extras.runtime.msd" />
