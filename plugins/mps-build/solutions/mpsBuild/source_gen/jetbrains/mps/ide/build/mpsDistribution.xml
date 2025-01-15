@@ -138,6 +138,9 @@
           <replaceregex pattern="\$build\$" replace="${mps.build.number}" flags="g" />
         </tokenfilter>
         <tokenfilter>
+          <replaceregex pattern="&quot;buildNumber&quot;: &quot;MPS-([0-9\.]+)&quot;" replace="&quot;buildNumber&quot;: &quot;\1&quot;" flags="" />
+        </tokenfilter>
+        <tokenfilter>
           <replaceregex pattern="\$path\.selector\$" replace="MPS${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}" flags="g" />
         </tokenfilter>
         <fixcrlf eol="lf" eof="remove" />
@@ -232,6 +235,9 @@
           <replaceregex pattern="\$build\$" replace="${mps.build.number}" flags="g" />
         </tokenfilter>
         <tokenfilter>
+          <replaceregex pattern="&quot;buildNumber&quot;: &quot;MPS-([0-9\.]+)&quot;" replace="&quot;buildNumber&quot;: &quot;\1&quot;" flags="" />
+        </tokenfilter>
+        <tokenfilter>
           <replaceregex pattern="\$path\.selector\$" replace="MPS${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}" flags="g" />
         </tokenfilter>
         <fixcrlf eol="lf" eof="remove" />
@@ -300,6 +306,9 @@
           <replaceregex pattern="\$build\$" replace="${mps.build.number}" flags="g" />
         </tokenfilter>
         <tokenfilter>
+          <replaceregex pattern="&quot;buildNumber&quot;: &quot;MPS-([0-9\.]+)&quot;" replace="&quot;buildNumber&quot;: &quot;\1&quot;" flags="" />
+        </tokenfilter>
+        <tokenfilter>
           <replaceregex pattern="\$path\.selector\$" replace="MPS${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}" flags="g" />
         </tokenfilter>
         <fixcrlf eol="crlf" eof="remove" />
@@ -334,6 +343,9 @@
         </tokenfilter>
         <tokenfilter>
           <replaceregex pattern="\$build\$" replace="${mps.build.number}" flags="g" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="&quot;buildNumber&quot;: &quot;MPS-([0-9\.]+)&quot;" replace="&quot;buildNumber&quot;: &quot;\1&quot;" flags="" />
         </tokenfilter>
         <tokenfilter>
           <replaceregex pattern="\$path\.selector\$" replace="MPS${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}" flags="g" />
@@ -409,6 +421,9 @@
         </tokenfilter>
         <tokenfilter>
           <replaceregex pattern="\$build\$" replace="${mps.build.number}" flags="g" />
+        </tokenfilter>
+        <tokenfilter>
+          <replaceregex pattern="&quot;buildNumber&quot;: &quot;MPS-([0-9\.]+)&quot;" replace="&quot;buildNumber&quot;: &quot;\1&quot;" flags="" />
         </tokenfilter>
         <tokenfilter>
           <replaceregex pattern="\$path\.selector\$" replace="MPS${mpsBootstrapCore.version.major}.${mpsBootstrapCore.version.minor}" flags="g" />
