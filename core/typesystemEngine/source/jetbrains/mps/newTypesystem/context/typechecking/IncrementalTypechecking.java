@@ -18,6 +18,7 @@ package jetbrains.mps.newTypesystem.context.typechecking;
 import gnu.trove.THashMap;
 import gnu.trove.THashSet;
 import jetbrains.mps.errors.IErrorReporter;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.typesystem.runtime.ICheckingRule_Runtime;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
@@ -147,7 +148,8 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
     try {
       rule.applyRule(node, typeCheckingContext, status);
     } catch (Throwable t) {
-      LOG.error("an error occurred while applying rule to node " + node, t, node);
+      typeCheckingContext.reportTypeError(node, "an error occurred while applying rule to node ", null, null, null, new NodeMessageTarget());
+      LOG.warning("an error occurred while applying rule to node " + node, t, node);
     }
   }
 
