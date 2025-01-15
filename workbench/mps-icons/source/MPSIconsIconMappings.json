@@ -83,7 +83,7 @@
       "structure.svg": "nodes/structure.png",
       "textGen.svg": "nodes/textGen.png",
       "transient.svg": "nodes/transient.svg",
-      "transientDisable.svg": "nodes/transientDisable.png",
+      "transientDisable.svg": "nodes/transientDisable.svg",
       "type.svg": "nodes/type.png",
       "unknown.svg": "nodes/unknown.png",
       "usagesFinder.svg": "nodes/usagesFinder.png",
