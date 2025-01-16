@@ -43,7 +43,7 @@ public final class MacroHelper {
       if (usedNames.contains(SPropertyOperations.getString(m, PROPS.name$MnvL))) {
         context.reportProblem("duplicate macro name", m);
       }
-      add(m, null, ((boolean) BuildMacro__BehaviorDescriptor.isPublic_id5FtnUVJQZyL.invoke(m) ? SPropertyOperations.getString(project, PROPS.name$MnvL) + "." + SPropertyOperations.getString(m, PROPS.name$MnvL) : null));
+      add(m, SPropertyOperations.getString(m, PROPS.name$MnvL), null, ((boolean) BuildMacro__BehaviorDescriptor.isPublic_id5FtnUVJQZyL.invoke(m) ? SPropertyOperations.getString(project, PROPS.name$MnvL) + "." + SPropertyOperations.getString(m, PROPS.name$MnvL) : null));
     }
     for (SNode dep : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN)) {
       SNode depProject = SLinkOperations.getTarget(dep, LINKS.script$6Ehy);
@@ -66,17 +66,17 @@ public final class MacroHelper {
           depprefix = makeUnique("import." + SPropertyOperations.getString(SLinkOperations.getTarget(dep, LINKS.script$6Ehy), PROPS.name$MnvL), usedPrefixes);
           depPrefixes.put(dep, depprefix);
         }
-        add(m, depprefix + "." + exportName, exportName);
+        add(m, exportName, depprefix + "." + exportName, exportName);
       }
     }
   }
-  private void add(SNode macro, String importName, String exportName) {
-    SNode macroProject = SNodeOperations.as(SNodeOperations.getContainingRoot(macro), CONCEPTS.BuildProject$ae);
-    if (macroProject == null) {
+  private void add(SNode macro, String macroName, String importName, String exportName) {
+    if (SNodeOperations.as(SNodeOperations.getContainingRoot(macro), CONCEPTS.BuildProject$ae) == null) {
+      // odd check, macro nodes in MH don't show up from nowhere, are taken from project.macros only
       context.reportProblem("macro is defined outside of the project", macro);
       return;
     }
-    String name = makeUnique((macroProject == project ? SPropertyOperations.getString(macro, PROPS.name$MnvL) : SNodeOperations.present(macroProject) + "." + SPropertyOperations.getString(macro, PROPS.name$MnvL)), usedNames);
+    String name = makeUnique(macroName, usedNames);
     macroToName.put(macro, name);
     availableMacros.add(macro);
     if (importName != null) {
