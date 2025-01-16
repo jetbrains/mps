@@ -32073,7 +32073,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.make.facets" />
         <pathelement path="${build.tmp}/java/out/mps-test" />
         <pathelement path="${build.tmp}/java/out/mps-tool" />
-        <fileset file="${lib_ext}/diffutils-1.2.1.jar" />
+        <fileset file="${lib_ext}/java-diff-utils-4.15.jar" />
         <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
         <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />

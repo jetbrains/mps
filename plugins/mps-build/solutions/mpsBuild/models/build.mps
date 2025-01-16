@@ -24015,12 +24015,12 @@
             <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
           </node>
         </node>
-        <node concept="1SiIV0" id="10txAzI7gZS" role="3bR37C">
-          <node concept="1BurEX" id="10txAzI7gZT" role="1SiIV1">
-            <node concept="398BVA" id="10txAzI7gZF" role="1BurEY">
+        <node concept="1SiIV0" id="6wNBSI_K1xb" role="3bR37C">
+          <node concept="1BurEX" id="6wNBSI_K1xc" role="1SiIV1">
+            <node concept="398BVA" id="6wNBSI_K1x9" role="1BurEY">
               <ref role="398BVh" node="10txAzI7cb8" resolve="lib_ext" />
-              <node concept="2Ry0Ak" id="10txAzI7gZG" role="iGT6I">
-                <property role="2Ry0Am" value="diffutils-1.2.1.jar" />
+              <node concept="2Ry0Ak" id="6wNBSI_K1xa" role="iGT6I">
+                <property role="2Ry0Am" value="java-diff-utils-4.15.jar" />
               </node>
             </node>
           </node>
