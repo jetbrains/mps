@@ -14,6 +14,7 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.build.editor.buildStyles_StyleSheet.keywordStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
@@ -77,7 +78,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.getStyle().putAll(style);
     editorCell.addEditorCell(createConstant_1());
     editorCell.addEditorCell(createRefNode_0());
-    editorCell.addEditorCell(createConstant_2());
+    if (nodeCondition_tu51wq_a2b0()) {
+      editorCell.addEditorCell(createConstant_2());
+    }
     editorCell.addEditorCell(createRefNode_1());
     editorCell.addEditorCell(createConstant_3());
     editorCell.addEditorCell(createRefNode_2());
@@ -90,6 +93,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createConstant_7());
     editorCell.addEditorCell(createRefNode_5());
     return editorCell;
+  }
+  private boolean nodeCondition_tu51wq_a2b0() {
+    return (SLinkOperations.getTarget(myNode, LINKS.compressArgs$RBk7) != null);
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "halt on failure");
@@ -163,6 +169,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_tu51wq_c1a");
     Style style = new StyleImpl();
     new keywordStyleClass(this).apply(style, editorCell);
+    style.set(StyleAttributes.STRIKE_OUT, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
     return editorCell;
@@ -595,8 +602,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink haltonfailure$573F = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdfb323cdL, "haltonfailure");
     /*package*/ static final SContainmentLink compressArgs$RBk7 = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x176f5a022a9bdb0eL, "compressArgs");
+    /*package*/ static final SContainmentLink haltonfailure$573F = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdfb323cdL, "haltonfailure");
     /*package*/ static final SContainmentLink reportsDir$43Sq = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x7827f736ad3cd256L, "reportsDir");
     /*package*/ static final SContainmentLink openTestReport$U4gB = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5069a4074dc718d1L, "openTestReport");
     /*package*/ static final SContainmentLink requiredPlugins$eyJB = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdf7bc31bL, "requiredPlugins");

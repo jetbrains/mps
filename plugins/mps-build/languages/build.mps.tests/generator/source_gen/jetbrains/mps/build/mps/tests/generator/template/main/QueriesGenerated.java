@@ -238,13 +238,6 @@ public class QueriesGenerated extends QueryProviderBase {
     return new MacroHelper.MacroContext(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae), _context).getProjectHelper();
   }
   public static Object varMacro_Value_0_5(final TemplateVarContext _context) {
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.compressArgs$RBk7) == null)) {
-      return false;
-    }
-    String text = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.compressArgs$RBk7), ((MacroHelper) _context.getVariable("var:macroHelper")));
-    return "true".equals(text);
-  }
-  public static Object varMacro_Value_0_6(final TemplateVarContext _context) {
     return ((ModulePlugins) _context.getVariable("var:requiredPlugins")).getModulesNotInPlugins();
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
@@ -437,8 +430,7 @@ public class QueriesGenerated extends QueryProviderBase {
     vvqMethods.put("2409421742521905393", new VVQ(2));
     vvqMethods.put("2409421742521905397", new VVQ(3));
     vvqMethods.put("8722582819256361524", new VVQ(4));
-    vvqMethods.put("1688667350638627524", new VVQ(5));
-    vvqMethods.put("819766574531080626", new VVQ(6));
+    vvqMethods.put("819766574531080626", new VVQ(5));
   }
   @NotNull
   @Override
@@ -466,8 +458,6 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.varMacro_Value_0_4(ctx);
         case 5:
           return QueriesGenerated.varMacro_Value_0_5(ctx);
-        case 6:
-          return QueriesGenerated.varMacro_Value_0_6(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -494,7 +484,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink jvmArgs$IZpF = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x321879066b697c19L, "jvmArgs");
     /*package*/ static final SContainmentLink requiredPlugins$eyJB = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x5b81705cdf7bc31bL, "requiredPlugins");
     /*package*/ static final SReferenceLink plugin$qDpN = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L, 0x5b81705cdf7bc319L, "plugin");
-    /*package*/ static final SContainmentLink compressArgs$RBk7 = MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, 0x176f5a022a9bdb0eL, "compressArgs");
   }
 
   private static final class CONCEPTS {
