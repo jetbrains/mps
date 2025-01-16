@@ -110,7 +110,12 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
 
     @Override
     protected boolean containsSObject(SObject sObject) {
-      return sObject.testIfHasSModel(sModel -> !filterModels(List.of(sModel)).isEmpty());
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Solution) {
+        return sObject.testIfHasSModule(module -> Objects.equals(module, parentValue)) &&
+               sObject.testIfHasSModel(sModel -> !filterModels(List.of(sModel)).isEmpty());
+      }
+      return false;
     }
 
     @Override
@@ -173,7 +178,12 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
 
     @Override
     protected boolean containsSObject(SObject sObject) {
-      return sObject.testIfHasSModel(sModel -> !filterModels(List.of(sModel)).isEmpty());
+      Object parentValue = getParentValue();
+      if (parentValue instanceof Solution) {
+        return sObject.testIfHasSModule(module -> Objects.equals(module, parentValue)) &&
+               sObject.testIfHasSModel(sModel -> !filterModels(List.of(sModel)).isEmpty());
+      }
+      return false;
     }
 
     @Override
