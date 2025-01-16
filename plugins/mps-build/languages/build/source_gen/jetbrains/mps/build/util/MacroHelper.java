@@ -95,17 +95,17 @@ public final class MacroHelper {
     }
     return name;
   }
-  public Collection<SNode> getAvailableMacros() {
+  /*package*/ Iterable<SNode> getAvailableMacros() {
     return availableMacros;
   }
   public Iterable<SNode> getVarsContainers() {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(this.project, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN)).where((it) -> depPrefixes.containsKey(it));
   }
   public Iterable<SNode> getMacrosToExport() {
-    return Sequence.fromIterable(((Iterable<SNode>) availableMacros)).where((it) -> exportNames.containsKey(it));
+    return Sequence.fromIterable(getAvailableMacros()).where((it) -> exportNames.containsKey(it));
   }
   public Iterable<SNode> getMacrosToImport() {
-    return Sequence.fromIterable(((Iterable<SNode>) availableMacros)).where((it) -> importNames.containsKey(it));
+    return Sequence.fromIterable(getAvailableMacros()).where((it) -> importNames.containsKey(it));
   }
   public String getName(SNode macro) {
     return macroToName.get(context.getOriginalMacro(macro));
@@ -117,7 +117,7 @@ public final class MacroHelper {
     return importNames.get(macro);
   }
   public String getPrefix(SNode dep) {
-    return depPrefixes.get(context.getOriginalDep(dep));
+    return depPrefixes.get(dep);
   }
   public String getProjectName() {
     return SPropertyOperations.getString(project, PROPS.name$MnvL);
@@ -166,9 +166,6 @@ public final class MacroHelper {
     }
     /*package*/ SNode getOriginalMacro(SNode macro) {
       return SNodeOperations.as(DependenciesHelper.getOriginalNode(macro, genContext), CONCEPTS.BuildMacro$qd);
-    }
-    /*package*/ SNode getOriginalDep(SNode dep) {
-      return SNodeOperations.as(DependenciesHelper.getOriginalNode(dep, genContext), CONCEPTS.BuildProjectDependency$sN);
     }
     /*package*/ void reportProblem(String message, SNode node) {
       genContext.showErrorMessage(node, message);

@@ -2524,14 +2524,14 @@
       <node id="6520682027040860196" at="91,27,92,14" concept="12" />
       <node id="6520682027040860190" at="93,36,94,28" concept="6" />
       <node id="6520682027040860230" at="95,5,96,16" concept="13" />
-      <node id="6520682027040860368" at="98,49,99,27" concept="13" />
+      <node id="6520682027040860368" at="98,52,99,27" concept="13" />
       <node id="6520682027041001868" at="101,46,102,207" concept="13" />
-      <node id="6520682027040929221" at="104,46,105,113" concept="13" />
-      <node id="6520682027040940351" at="107,46,108,113" concept="13" />
+      <node id="6520682027040929221" at="104,46,105,98" concept="13" />
+      <node id="6520682027040940351" at="107,46,108,98" concept="13" />
       <node id="2590653267525251749" at="110,38,111,60" concept="13" />
       <node id="2590653267525251804" at="113,44,114,34" concept="13" />
       <node id="6520682027040857013" at="116,44,117,34" concept="13" />
-      <node id="6520682027041002365" at="119,38,120,56" concept="13" />
+      <node id="6520682027041002365" at="119,38,120,32" concept="13" />
       <node id="6520682027041026773" at="122,34,123,67" concept="13" />
       <node id="6520682027041026670" at="125,50,126,41" concept="6" />
       <node id="6520682027040821715" at="129,0,130,0" concept="7" trace="seenProjects" />
@@ -2552,22 +2552,21 @@
       <node id="6520682027040854567" at="162,14,163,60" concept="6" />
       <node id="6520682027040856163" at="163,60,164,20" concept="13" />
       <node id="6520682027041049531" at="167,53,168,111" concept="13" />
-      <node id="6520682027041049585" at="170,49,171,121" concept="13" />
-      <node id="6520682027040856189" at="173,64,174,49" concept="6" />
-      <node id="6547494638219723166" at="179,0,180,0" concept="16" trace="macros$r8_A" />
-      <node id="6547494638219723166" at="180,0,181,0" concept="16" trace="dependencies$redY" />
-      <node id="6547494638219723166" at="181,0,182,0" concept="16" trace="script$6Ehy" />
-      <node id="6547494638219723166" at="185,0,186,0" concept="16" trace="name$MnvL" />
-      <node id="6547494638219723166" at="189,0,190,0" concept="16" trace="BuildProjectDependency$sN" />
-      <node id="6547494638219723166" at="190,0,191,0" concept="16" trace="BuildProject$ae" />
-      <node id="6547494638219723166" at="191,0,192,0" concept="16" trace="BuildMacro$qd" />
+      <node id="6520682027040856189" at="170,64,171,49" concept="6" />
+      <node id="6547494638219723166" at="176,0,177,0" concept="16" trace="macros$r8_A" />
+      <node id="6547494638219723166" at="177,0,178,0" concept="16" trace="dependencies$redY" />
+      <node id="6547494638219723166" at="178,0,179,0" concept="16" trace="script$6Ehy" />
+      <node id="6547494638219723166" at="182,0,183,0" concept="16" trace="name$MnvL" />
+      <node id="6547494638219723166" at="186,0,187,0" concept="16" trace="BuildProjectDependency$sN" />
+      <node id="6547494638219723166" at="187,0,188,0" concept="16" trace="BuildProject$ae" />
+      <node id="6547494638219723166" at="188,0,189,0" concept="16" trace="BuildMacro$qd" />
       <node id="2590653267525251366" at="42,77,45,7" concept="10" />
       <node id="6520682027040859555" at="50,60,53,7" concept="10" />
       <node id="6592112598315170689" at="55,54,58,9" concept="10" />
       <node id="6520682027040860077" at="60,55,63,9" concept="10" />
       <node id="6520682027040859833" at="81,31,84,5" concept="10" />
       <node id="6520682027040860146" at="92,14,95,5" concept="22" />
-      <node id="6520682027040857025" at="98,0,101,0" concept="11" trace="getAvailableMacros#()Ljava/util/Collection;" />
+      <node id="6520682027040857025" at="98,0,101,0" concept="11" trace="getAvailableMacros#()Ljava/lang/Iterable;" />
       <node id="6520682027041001862" at="101,0,104,0" concept="11" trace="getVarsContainers#()Ljava/lang/Iterable;" />
       <node id="6520682027040929216" at="104,0,107,0" concept="11" trace="getMacrosToExport#()Ljava/lang/Iterable;" />
       <node id="6520682027040940346" at="107,0,110,0" concept="11" trace="getMacrosToImport#()Ljava/lang/Iterable;" />
@@ -2582,8 +2581,7 @@
       <node id="6520682027040856533" at="153,26,156,13" concept="10" />
       <node id="6520682027040854565" at="162,12,165,7" concept="1" />
       <node id="6520682027041049524" at="167,0,170,0" concept="11" trace="getOriginalMacro#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="6520682027041049582" at="170,0,173,0" concept="11" trace="getOriginalDep#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="2590653267525251370" at="173,0,176,0" concept="11" trace="reportProblem#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="2590653267525251370" at="170,0,173,0" concept="11" trace="reportProblem#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6547494638219723168" at="37,0,41,0" concept="3" trace="MacroHelper#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/build/util/MacroHelper/MacroContext;)V" />
       <node id="6520682027041001534" at="64,48,68,9" concept="10" />
       <node id="6520682027040857127" at="74,112,78,5" concept="10" />
@@ -2605,14 +2603,14 @@
       <scope id="6520682027040860078" at="61,33,62,19" />
       <scope id="6520682027040859834" at="82,29,83,41" />
       <scope id="6520682027040860148" at="93,36,94,28" />
-      <scope id="6520682027040857028" at="98,49,99,27" />
+      <scope id="6520682027040857028" at="98,52,99,27" />
       <scope id="6520682027041001865" at="101,46,102,207" />
-      <scope id="6520682027040929220" at="104,46,105,113" />
-      <scope id="6520682027040940350" at="107,46,108,113" />
+      <scope id="6520682027040929220" at="104,46,105,98" />
+      <scope id="6520682027040940350" at="107,46,108,98" />
       <scope id="2590653267525218538" at="110,38,111,60" />
       <scope id="2590653267525251803" at="113,44,114,34" />
       <scope id="6520682027040857012" at="116,44,117,34" />
-      <scope id="6520682027041002363" at="119,38,120,56" />
+      <scope id="6520682027041002363" at="119,38,120,32" />
       <scope id="6520682027041026771" at="122,34,123,67" />
       <scope id="6520682027041026664" at="125,50,126,41" />
       <scope id="8722582819256025494" at="140,43,141,27" />
@@ -2620,8 +2618,7 @@
       <scope id="6520682027040856534" at="154,71,155,52" />
       <scope id="6520682027040854533" at="159,19,160,35" />
       <scope id="6520682027041049527" at="167,53,168,111" />
-      <scope id="6520682027041049584" at="170,49,171,121" />
-      <scope id="2590653267525251373" at="173,64,174,49" />
+      <scope id="2590653267525251373" at="170,64,171,49" />
       <scope id="6547494638219723171" at="37,60,39,27" />
       <scope id="6520682027041001535" at="65,32,67,42" />
       <scope id="6520682027040857128" at="75,31,77,13" />
@@ -2653,10 +2650,7 @@
       <scope id="6520682027041049524" at="167,0,170,0">
         <var name="macro" id="6520682027041049529" />
       </scope>
-      <scope id="6520682027041049582" at="170,0,173,0">
-        <var name="dep" id="6520682027041049591" />
-      </scope>
-      <scope id="2590653267525251370" at="173,0,176,0">
+      <scope id="2590653267525251370" at="170,0,173,0">
         <var name="message" id="2590653267525251374" />
         <var name="node" id="2590653267525251377" />
       </scope>
@@ -2714,11 +2708,11 @@
       </scope>
       <scope id="2590653267525251421" at="41,22,71,5" />
       <scope id="2590653267525251418" at="41,0,73,0" />
-      <unit id="6547494638219723166" at="184,0,187,0" name="jetbrains.mps.build.util.MacroHelper$PROPS" />
-      <unit id="6547494638219723166" at="178,0,183,0" name="jetbrains.mps.build.util.MacroHelper$LINKS" />
-      <unit id="6547494638219723166" at="188,0,193,0" name="jetbrains.mps.build.util.MacroHelper$CONCEPTS" />
-      <unit id="6520682027040854655" at="128,0,177,0" name="jetbrains.mps.build.util.MacroHelper$MacroContext" />
-      <unit id="6547494638219723166" at="25,0,194,0" name="jetbrains.mps.build.util.MacroHelper" />
+      <unit id="6547494638219723166" at="181,0,184,0" name="jetbrains.mps.build.util.MacroHelper$PROPS" />
+      <unit id="6547494638219723166" at="175,0,180,0" name="jetbrains.mps.build.util.MacroHelper$LINKS" />
+      <unit id="6547494638219723166" at="185,0,190,0" name="jetbrains.mps.build.util.MacroHelper$CONCEPTS" />
+      <unit id="6520682027040854655" at="128,0,174,0" name="jetbrains.mps.build.util.MacroHelper$MacroContext" />
+      <unit id="6547494638219723166" at="25,0,191,0" name="jetbrains.mps.build.util.MacroHelper" />
     </file>
   </root>
   <root nodeRef="r:26eadcf0-f275-4e90-be37-e4432772a74d(jetbrains.mps.build.util)/7880069565647313573">

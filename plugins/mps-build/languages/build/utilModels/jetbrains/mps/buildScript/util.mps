@@ -11912,9 +11912,8 @@
     </node>
     <node concept="3clFb_" id="5DY7s5F2PJ1" role="jymVt">
       <property role="TrG5h" value="getAvailableMacros" />
-      <node concept="3uibUv" id="5DY7s5F2PJ5" role="3clF45">
-        <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
-        <node concept="3Tqbb2" id="5DY7s5F2PJ7" role="11_B2D">
+      <node concept="A3Dl8" id="1_zhZIMOiYt" role="3clF45">
+        <node concept="3Tqbb2" id="5DY7s5F2PJ7" role="A3Ik2">
           <ref role="ehGHo" to="3ior:4RPz6WoY4Cv" resolve="BuildMacro" />
         </node>
       </node>
@@ -11925,7 +11924,6 @@
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="5DY7s5F2PJ3" role="1B3o_S" />
     </node>
     <node concept="3clFb_" id="5DY7s5F3p66" role="jymVt">
       <property role="TrG5h" value="getVarsContainers" />
@@ -12012,17 +12010,8 @@
                 </node>
               </node>
             </node>
-            <node concept="1eOMI4" id="5DY7s5F37nx" role="2Oq$k0">
-              <node concept="10QFUN" id="5DY7s5F37ny" role="1eOMHV">
-                <node concept="37vLTw" id="2BHiRxeuVpO" role="10QFUP">
-                  <ref role="3cqZAo" node="5DY7s5F2PJ_" resolve="availableMacros" />
-                </node>
-                <node concept="A3Dl8" id="5DY7s5F37n_" role="10QFUM">
-                  <node concept="3Tqbb2" id="5DY7s5F37nB" role="A3Ik2">
-                    <ref role="ehGHo" to="3ior:4RPz6WoY4Cv" resolve="BuildMacro" />
-                  </node>
-                </node>
-              </node>
+            <node concept="1rXfSq" id="1_zhZIMOETW" role="2Oq$k0">
+              <ref role="37wK5l" node="5DY7s5F2PJ1" resolve="getAvailableMacros" />
             </node>
           </node>
         </node>
@@ -12039,18 +12028,6 @@
       <node concept="3clFbS" id="5DY7s5F3a4Y" role="3clF47">
         <node concept="3clFbF" id="5DY7s5F3a4Z" role="3cqZAp">
           <node concept="2OqwBi" id="5DY7s5F3a50" role="3clFbG">
-            <node concept="1eOMI4" id="5DY7s5F3a51" role="2Oq$k0">
-              <node concept="10QFUN" id="5DY7s5F3a52" role="1eOMHV">
-                <node concept="A3Dl8" id="5DY7s5F3a53" role="10QFUM">
-                  <node concept="3Tqbb2" id="5DY7s5F3a54" role="A3Ik2">
-                    <ref role="ehGHo" to="3ior:4RPz6WoY4Cv" resolve="BuildMacro" />
-                  </node>
-                </node>
-                <node concept="37vLTw" id="2BHiRxeuIxs" role="10QFUP">
-                  <ref role="3cqZAo" node="5DY7s5F2PJ_" resolve="availableMacros" />
-                </node>
-              </node>
-            </node>
             <node concept="3zZkjj" id="5DY7s5F3a56" role="2OqNvi">
               <node concept="1bVj0M" id="5DY7s5F3a57" role="23t8la">
                 <node concept="3clFbS" id="5DY7s5F3a58" role="1bW5cS">
@@ -12073,6 +12050,9 @@
                   <node concept="2jxLKc" id="5W7E4fV0WKj" role="1tU5fm" />
                 </node>
               </node>
+            </node>
+            <node concept="1rXfSq" id="1_zhZIMOJnQ" role="2Oq$k0">
+              <ref role="37wK5l" node="5DY7s5F2PJ1" resolve="getAvailableMacros" />
             </node>
           </node>
         </node>
@@ -12184,16 +12164,8 @@
           <node concept="2OqwBi" id="5DY7s5F3pet" role="3clFbG">
             <node concept="liA8E" id="5DY7s5F3pez" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~Map.get(java.lang.Object)" resolve="get" />
-              <node concept="2OqwBi" id="5DY7s5F3$Kj" role="37wK5m">
-                <node concept="liA8E" id="5DY7s5F3$Kp" role="2OqNvi">
-                  <ref role="37wK5l" node="5DY7s5F3$JI" resolve="getOriginalDep" />
-                  <node concept="37vLTw" id="2BHiRxgmyA$" role="37wK5m">
-                    <ref role="3cqZAo" node="5DY7s5F3pe$" resolve="dep" />
-                  </node>
-                </node>
-                <node concept="37vLTw" id="2BHiRxeudDz" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5DY7s5F2Pai" resolve="context" />
-                </node>
+              <node concept="37vLTw" id="1_zhZIMMMd_" role="37wK5m">
+                <ref role="3cqZAo" node="5DY7s5F3pe$" resolve="dep" />
               </node>
             </node>
             <node concept="37vLTw" id="2BHiRxeuvMy" role="2Oq$k0">
@@ -12624,38 +12596,6 @@
                 <ref role="cht4Q" to="3ior:4RPz6WoY4Cv" resolve="BuildMacro" />
               </node>
             </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3clFb_" id="5DY7s5F3$JI" role="jymVt">
-        <property role="TrG5h" value="getOriginalDep" />
-        <node concept="3clFbS" id="5DY7s5F3$JK" role="3clF47">
-          <node concept="3clFbF" id="5DY7s5F3$JL" role="3cqZAp">
-            <node concept="1PxgMI" id="5DY7s5F3$JM" role="3clFbG">
-              <property role="1BlNFB" value="true" />
-              <node concept="2YIFZM" id="5DY7s5F3$JN" role="1m5AlR">
-                <ref role="1Pybhc" node="41__iZjkZ0W" resolve="DependenciesHelper" />
-                <ref role="37wK5l" node="5FtnUVJQfvo" resolve="getOriginalNode" />
-                <node concept="37vLTw" id="2BHiRxgh9Xv" role="37wK5m">
-                  <ref role="3cqZAo" node="5DY7s5F3$JR" resolve="dep" />
-                </node>
-                <node concept="37vLTw" id="2BHiRxeujR8" role="37wK5m">
-                  <ref role="3cqZAo" node="5DY7s5F2Pb2" resolve="genContext" />
-                </node>
-              </node>
-              <node concept="chp4Y" id="714IaVdH0_m" role="3oSUPX">
-                <ref role="cht4Q" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3Tqbb2" id="5DY7s5F3$JQ" role="3clF45">
-          <ref role="ehGHo" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
-        </node>
-        <node concept="37vLTG" id="5DY7s5F3$JR" role="3clF46">
-          <property role="TrG5h" value="dep" />
-          <node concept="3Tqbb2" id="5DY7s5F3$JS" role="1tU5fm">
-            <ref role="ehGHo" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
           </node>
         </node>
       </node>
