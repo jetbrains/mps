@@ -47,7 +47,7 @@ public class Context {
     if (buildProject == null) {
       return null;
     }
-    return new MacroHelper.MacroContext(buildProject, myGenerationContext).getMacros(buildProject);
+    return new MacroHelper.MacroContext(buildProject, myGenerationContext).getProjectHelper();
   }
 
   public String getTempPath(SNode node, String name, String... categories) {

@@ -1778,7 +1778,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(dependencies).select((it) -> createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a224(it._1(), it._0())).toList();
   }
   public static Object varMacro_Value_1_5(final TemplateVarContext _context) {
-    return new MacroHelper.MacroContext(_context.getNode(), _context).getMacros(_context.getNode());
+    return new MacroHelper.MacroContext(_context.getNode(), _context).getProjectHelper();
   }
   public static Object varMacro_Value_2_0(final TemplateVarContext _context) {
     MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());

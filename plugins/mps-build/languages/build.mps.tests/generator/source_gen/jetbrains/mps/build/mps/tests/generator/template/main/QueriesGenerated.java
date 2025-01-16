@@ -7,10 +7,10 @@ import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
+import jetbrains.mps.build.util.MacroHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.build.util.MacroHelper;
-import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.build.util.DependenciesHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
@@ -59,9 +59,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.haltonfailure$573F) == null)) {
       return "false";
     }
-    SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
-    MacroHelper macroHelper = new MacroHelper.MacroContext(project, _context).getMacros(project);
-    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.haltonfailure$573F), macroHelper);
+    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.haltonfailure$573F), ((MacroHelper) _context.getVariable("var:macroHelper")));
   }
   public static Object propertyMacro_GetValue_0_2(final PropertyMacroContext _context) {
     SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
@@ -97,9 +95,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.openTestReport$U4gB) == null)) {
       return "false";
     }
-    SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
-    MacroHelper macroHelper = new MacroHelper.MacroContext(project, _context).getMacros(project);
-    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.openTestReport$U4gB), macroHelper);
+    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.openTestReport$U4gB), ((MacroHelper) _context.getVariable("var:macroHelper")));
   }
   public static Object propertyMacro_GetValue_0_5(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.path$oN2q);
@@ -224,9 +220,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.jvmArgs$IZpF) == null)) {
       return "-Xss2048k -Xmx1024m";
     }
-    SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
-    MacroHelper macroHelper = new MacroHelper.MacroContext(project, _context).getMacros(project);
-    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.jvmArgs$IZpF), macroHelper);
+    return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.jvmArgs$IZpF), ((MacroHelper) _context.getVariable("var:macroHelper")));
   }
   public static Object varMacro_Value_0_1(final TemplateVarContext _context) {
     return "mps.macro.";
@@ -241,15 +235,16 @@ public class QueriesGenerated extends QueryProviderBase {
     return plugins;
   }
   public static Object varMacro_Value_0_4(final TemplateVarContext _context) {
+    return new MacroHelper.MacroContext(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae), _context).getProjectHelper();
+  }
+  public static Object varMacro_Value_0_5(final TemplateVarContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.compressArgs$RBk7) == null)) {
       return false;
     }
-    SNode project = SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
-    MacroHelper macroHelper = new MacroHelper.MacroContext(project, _context).getMacros(project);
-    String text = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.compressArgs$RBk7), macroHelper);
+    String text = BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.compressArgs$RBk7), ((MacroHelper) _context.getVariable("var:macroHelper")));
     return "true".equals(text);
   }
-  public static Object varMacro_Value_0_5(final TemplateVarContext _context) {
+  public static Object varMacro_Value_0_6(final TemplateVarContext _context) {
     return ((ModulePlugins) _context.getVariable("var:requiredPlugins")).getModulesNotInPlugins();
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
@@ -441,8 +436,9 @@ public class QueriesGenerated extends QueryProviderBase {
     vvqMethods.put("8597400937104346013", new VVQ(1));
     vvqMethods.put("2409421742521905393", new VVQ(2));
     vvqMethods.put("2409421742521905397", new VVQ(3));
-    vvqMethods.put("1688667350638627524", new VVQ(4));
-    vvqMethods.put("819766574531080626", new VVQ(5));
+    vvqMethods.put("8722582819256361524", new VVQ(4));
+    vvqMethods.put("1688667350638627524", new VVQ(5));
+    vvqMethods.put("819766574531080626", new VVQ(6));
   }
   @NotNull
   @Override
@@ -470,6 +466,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.varMacro_Value_0_4(ctx);
         case 5:
           return QueriesGenerated.varMacro_Value_0_5(ctx);
+        case 6:
+          return QueriesGenerated.varMacro_Value_0_6(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }

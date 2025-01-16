@@ -33,6 +33,7 @@ public final class MacroHelper {
   private final Set<String> usedPrefixes = new HashSet<String>();
   private final SNode project;
   private final MacroContext context;
+
   private MacroHelper(SNode project, MacroContext context) {
     this.project = project;
     this.context = context;
@@ -127,11 +128,19 @@ public final class MacroHelper {
   public static class MacroContext {
     private final Set<SNode> seenProjects = new HashSet<SNode>();
     private final TemplateQueryContext genContext;
+    private final MacroHelper projectHelper;
     private final ConcurrentMap<SNode, MacroHelper> existingMacros;
+
     public MacroContext(SNode project, TemplateQueryContext genContext) {
       this.genContext = genContext;
       this.existingMacros = GenerationUtil.<SNode,MacroHelper>getSessionMap(project, genContext, "macroHelpers");
+      projectHelper = getMacros(project);
     }
+
+    public MacroHelper getProjectHelper() {
+      return projectHelper;
+    }
+
     public MacroHelper getMacros(SNode dep) {
       dep = SNodeOperations.as(DependenciesHelper.getOriginalNode(dep, genContext), CONCEPTS.BuildProject$ae);
       if (dep == null) {
