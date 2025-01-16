@@ -43,9 +43,9 @@
     <condition property="difutill.missing" value="true" else="false">
       <not>
         <and>
-          <available file="${diffutils.lib}"/>
-          <available file="${diffutils.sources}"/>
-          <available file="${diffutils.javadoc}"/>
+          <available file="${java-diff-utils.lib}"/>
+          <available file="${java-diff-utils.sources}"/>
+          <available file="${java-diff-utils.javadoc}"/>
         </and>
       </not>
     </condition>
@@ -331,7 +331,7 @@
   </target>
 
   <target name="download-diffutils" depends="check-diffutils,install-ivy" if="${difutill.missing}"
-          description="Download com.googlecode.java-diff-utils-diffutils library">
+          description="Download io.github.java-diff-utils library">
     <echo message="DiffUtil library is missing. Downloading..."/>
     <ivy:resolve file="ivyDiffUtils.xml" showprogress="true"/>
     <ivy:retrieve pattern="${basedir}/../lib/ext/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
@@ -455,9 +455,9 @@
 
 
   <target name="clean-diffutils">
-    <delete file="${diffutils.lib}" failonerror="false"/>
-    <delete file="${diffutils.sources}" failonerror="false"/>
-    <delete file="${diffutils.javadoc}" failonerror="false"/>
+    <delete file="${java-diff-utils.lib}" failonerror="false"/>
+    <delete file="${java-diff-utils.sources}" failonerror="false"/>
+    <delete file="${java-diff-utils.javadoc}" failonerror="false"/>
   </target>
 
   <target name="clean-testlib">
