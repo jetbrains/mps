@@ -18,12 +18,14 @@ public class UnpackHelper extends DependenciesHelper {
   private final Set<SNode> requiredWithContent = new HashSet<SNode>();
   private boolean evaluated = false;
   private PathProvider myPathProvider;
+  private final TemplateQueryContext myGenContext;
 
   /*package*/ UnpackHelper(VisibleArtifacts visible, TemplateQueryContext genContext) {
     super(genContext, visible.getProject());
     this.visible = visible;
     // PathProvider shares its state regardless of legacyDH just to make sure temp paths are consistent
     this.myPathProvider = new PathProvider(genContext, visible.getProject());
+    myGenContext = genContext;
   }
 
   /*package*/ void add(SNode n, boolean withContent) {
@@ -63,5 +65,10 @@ public class UnpackHelper extends DependenciesHelper {
   }
   public PathProvider getPathProvider() {
     return myPathProvider;
+  }
+
+  public TemplateQueryContext getGenContext() {
+    // FIXME DH/UnpackHelper doesn't need genContext directly, just for casual error reporting and initial configuration
+    return myGenContext;
   }
 }
