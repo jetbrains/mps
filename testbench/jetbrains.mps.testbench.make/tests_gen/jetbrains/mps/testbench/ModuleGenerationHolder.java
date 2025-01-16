@@ -29,8 +29,9 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import difflib.Patch;
-import difflib.DiffUtils;
+import com.github.difflib.patch.Patch;
+import com.github.difflib.DiffUtils;
+import com.github.difflib.UnifiedDiffUtils;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.FileInputStream;
@@ -214,7 +215,7 @@ public class ModuleGenerationHolder {
             }
             continue;
           }
-          ListSequence.fromList(diffs).addSequence(ListSequence.fromList(DiffUtils.generateUnifiedDiff(onext.getPath(), rnext.getPath(), olines, patch, 3)));
+          ListSequence.fromList(diffs).addSequence(ListSequence.fromList(UnifiedDiffUtils.generateUnifiedDiff(onext.getPath(), rnext.getPath(), olines, patch, 3)));
         } else {
           diffDirs(onext, rnext, diffs);
         }
