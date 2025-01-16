@@ -7743,7 +7743,7 @@
         <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
         <node concept="3cpWs3" id="10txAzIcfnU" role="37wK5m">
           <node concept="Xl_RD" id="3PaWMnROBBC" role="3uHU7w">
-            <property role="Xl_RC" value="diffutils-1.2.1.jar" />
+            <property role="Xl_RC" value="java-diff-utils-4.15.jar" />
           </node>
           <node concept="3cpWs3" id="10txAzIcHVa" role="3uHU7B">
             <node concept="Xl_RD" id="10txAzIcJn1" role="3uHU7B">
