@@ -1629,10 +1629,12 @@ public class QueriesGenerated extends QueryProviderBase {
     }
 
     final Context ctx = Context.defaultContext(_context);
+
+    // prepare macro names (so that we don't need to go to 'original node' to match instances
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.BuildProject$ae)).visitAll((it) -> ctx.getMacros(it));
+
     for (SNode root : SModelOperations.roots(_context.getModel(), CONCEPTS.BuildProject$ae)) {
       new FetchDependenciesProcessor(root, _context).alternativeProcess("build.mps");
-      // prepare macro names (so that we don't need to go to 'original node' to match instances
-      ctx.getMacros(root);
     }
   }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {

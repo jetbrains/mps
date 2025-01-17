@@ -1695,6 +1695,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getOutputNodeByInputNodeAndMappingLabel(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false), "buildProjectToBwfProject"), LINKS.parts$$VTL), CONCEPTS.BwfTaskPart$sR)).findFirst((it) -> SLinkOperations.hasPointer(it, LINKS.task$ai78, new SNodePointer("r:0d66e868-9778-4307-b6f9-4795c00f662f(jetbrains.mps.build.workflow.preset.general)", "4701820937132277082")));
   }
   public static void mappingScript_CodeBlock_17(final MappingScriptContext _context) {
+    final Context ctx = Context.defaultContext(_context);
+    ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.BuildProject$ae)).visitAll((it) -> ctx.getMacros(it));
+
     for (SNode root : SModelOperations.roots(_context.getModel(), CONCEPTS.BuildProject$ae)) {
       new FetchDependenciesProcessor(root, _context).alternativeProcess("j.m.build");
     }
