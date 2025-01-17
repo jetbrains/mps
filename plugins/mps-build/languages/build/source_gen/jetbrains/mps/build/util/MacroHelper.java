@@ -29,6 +29,7 @@ public final class MacroHelper {
   private final Map<SNode, String> exportNames = new HashMap<SNode, String>();
   private final Map<SNode, String> importNames = new HashMap<SNode, String>();
   private final Map<SNode, String> depPrefixes = new HashMap<SNode, String>();
+  private final Map<SNode, String> depNames = new HashMap<SNode, String>();
   private final Set<String> usedNames = new HashSet<String>();
   private final Set<String> usedExports = new HashSet<String>();
   private final Set<String> usedPrefixes = new HashSet<String>();
@@ -71,6 +72,7 @@ public final class MacroHelper {
         if (depprefix == null) {
           depprefix = makeUnique("import." + SPropertyOperations.getString(SLinkOperations.getTarget(dep, LINKS.script$6Ehy), PROPS.name$MnvL), usedPrefixes);
           depPrefixes.put(dep, depprefix);
+          depNames.put(dep, SPropertyOperations.getString(SLinkOperations.getTarget(dep, LINKS.script$6Ehy), PROPS.name$MnvL));
         }
         add(m, exportName, depprefix + "." + exportName, exportName);
       }
@@ -136,8 +138,11 @@ public final class MacroHelper {
   public String getImportName(SNode macro) {
     return importNames.get(macro);
   }
-  public String getPrefix(SNode dep) {
+  public String getVarContainerPrefix(SNode dep) {
     return depPrefixes.get(dep);
+  }
+  public String getVarContainerName(SNode dep) {
+    return depNames.get(dep);
   }
   public String getProjectName() {
     return SPropertyOperations.getString(project, PROPS.name$MnvL);

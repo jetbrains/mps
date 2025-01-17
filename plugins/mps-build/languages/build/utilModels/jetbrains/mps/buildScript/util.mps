@@ -11062,6 +11062,27 @@
       </node>
       <node concept="3Tm6S6" id="5DY7s5F3oTG" role="1B3o_S" />
     </node>
+    <node concept="312cEg" id="7u3RhgSMANB" role="jymVt">
+      <property role="TrG5h" value="depNames" />
+      <property role="3TUv4t" value="true" />
+      <node concept="2ShNRf" id="7u3RhgSMANC" role="33vP2m">
+        <node concept="1pGfFk" id="7u3RhgSMAND" role="2ShVmc">
+          <ref role="37wK5l" to="33ny:~HashMap.&lt;init&gt;()" resolve="HashMap" />
+          <node concept="3Tqbb2" id="7u3RhgSMANE" role="1pMfVU">
+            <ref role="ehGHo" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
+          </node>
+          <node concept="17QB3L" id="7u3RhgSMANF" role="1pMfVU" />
+        </node>
+      </node>
+      <node concept="3uibUv" id="7u3RhgSMANG" role="1tU5fm">
+        <ref role="3uigEE" to="33ny:~Map" resolve="Map" />
+        <node concept="3Tqbb2" id="7u3RhgSMANH" role="11_B2D">
+          <ref role="ehGHo" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
+        </node>
+        <node concept="17QB3L" id="7u3RhgSMANI" role="11_B2D" />
+      </node>
+      <node concept="3Tm6S6" id="7u3RhgSMANJ" role="1B3o_S" />
+    </node>
     <node concept="312cEg" id="2fNQmJ32V3H" role="jymVt">
       <property role="TrG5h" value="usedNames" />
       <property role="3TUv4t" value="true" />
@@ -11598,6 +11619,32 @@
                         </node>
                       </node>
                     </node>
+                    <node concept="3clFbF" id="7u3RhgSMQmZ" role="3cqZAp">
+                      <node concept="2OqwBi" id="7u3RhgSMUWO" role="3clFbG">
+                        <node concept="37vLTw" id="7u3RhgSMQmX" role="2Oq$k0">
+                          <ref role="3cqZAo" node="7u3RhgSMANB" resolve="depNames" />
+                        </node>
+                        <node concept="liA8E" id="7u3RhgSN256" role="2OqNvi">
+                          <ref role="37wK5l" to="33ny:~Map.put(java.lang.Object,java.lang.Object)" resolve="put" />
+                          <node concept="37vLTw" id="7u3RhgSN71b" role="37wK5m">
+                            <ref role="3cqZAo" node="2fNQmJ3336y" resolve="dep" />
+                          </node>
+                          <node concept="2OqwBi" id="7u3RhgSNGYK" role="37wK5m">
+                            <node concept="2OqwBi" id="7u3RhgSNi9p" role="2Oq$k0">
+                              <node concept="37vLTw" id="7u3RhgSNfhs" role="2Oq$k0">
+                                <ref role="3cqZAo" node="2fNQmJ3336y" resolve="dep" />
+                              </node>
+                              <node concept="3TrEf2" id="7u3RhgSNm$$" role="2OqNvi">
+                                <ref role="3Tt5mk" to="3ior:4RPz6WoY4C$" resolve="script" />
+                              </node>
+                            </node>
+                            <node concept="3TrcHB" id="7u3RhgSNLDd" role="2OqNvi">
+                              <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
                   </node>
                 </node>
                 <node concept="3clFbF" id="5DY7s5F2Qn2" role="3cqZAp">
@@ -12088,9 +12135,8 @@
     </node>
     <node concept="3clFb_" id="5DY7s5F3p66" role="jymVt">
       <property role="TrG5h" value="getVarsContainers" />
-      <node concept="3uibUv" id="5DY7s5F3p6a" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~Iterable" resolve="Iterable" />
-        <node concept="3Tqbb2" id="5DY7s5F3p6b" role="11_B2D">
+      <node concept="A3Dl8" id="7u3RhgSLX4m" role="3clF45">
+        <node concept="3Tqbb2" id="5DY7s5F3p6b" role="A3Ik2">
           <ref role="ehGHo" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
         </node>
       </node>
@@ -12337,7 +12383,7 @@
       </node>
     </node>
     <node concept="3clFb_" id="5DY7s5F3pdS" role="jymVt">
-      <property role="TrG5h" value="getPrefix" />
+      <property role="TrG5h" value="getVarContainerPrefix" />
       <node concept="37vLTG" id="5DY7s5F3pe$" role="3clF46">
         <property role="TrG5h" value="dep" />
         <node concept="3Tqbb2" id="5DY7s5F3pe_" role="1tU5fm">
@@ -12361,6 +12407,32 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="5DY7s5F3pdU" role="1B3o_S" />
+    </node>
+    <node concept="3clFb_" id="7u3RhgSMbJN" role="jymVt">
+      <property role="TrG5h" value="getVarContainerName" />
+      <node concept="37vLTG" id="7u3RhgSMbJO" role="3clF46">
+        <property role="TrG5h" value="dep" />
+        <node concept="3Tqbb2" id="7u3RhgSMbJP" role="1tU5fm">
+          <ref role="ehGHo" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
+        </node>
+      </node>
+      <node concept="17QB3L" id="7u3RhgSMbJQ" role="3clF45" />
+      <node concept="3clFbS" id="7u3RhgSMbJR" role="3clF47">
+        <node concept="3clFbF" id="7u3RhgSMbJS" role="3cqZAp">
+          <node concept="2OqwBi" id="7u3RhgSMbJT" role="3clFbG">
+            <node concept="liA8E" id="7u3RhgSMbJU" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Map.get(java.lang.Object)" resolve="get" />
+              <node concept="37vLTw" id="7u3RhgSMbJV" role="37wK5m">
+                <ref role="3cqZAo" node="7u3RhgSMbJO" resolve="dep" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="7u3RhgSMbJW" role="2Oq$k0">
+              <ref role="3cqZAo" node="7u3RhgSMANB" resolve="depNames" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="7u3RhgSMbJX" role="1B3o_S" />
     </node>
     <node concept="3clFb_" id="5DY7s5F3vbg" role="jymVt">
       <property role="TrG5h" value="getProjectName" />

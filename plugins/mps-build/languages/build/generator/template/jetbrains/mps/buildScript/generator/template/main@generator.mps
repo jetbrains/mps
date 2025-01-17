@@ -11596,22 +11596,15 @@
         <node concept="3JmXsc" id="5DY7s5F3paN" role="3Jn$fo">
           <node concept="3clFbS" id="5DY7s5F3paO" role="2VODD2">
             <node concept="3clFbF" id="5DY7s5F3paP" role="3cqZAp">
-              <node concept="10QFUN" id="5DY7s5F3pbG" role="3clFbG">
-                <node concept="A3Dl8" id="5DY7s5F3pbJ" role="10QFUM">
-                  <node concept="3Tqbb2" id="5DY7s5F3pbL" role="A3Ik2">
-                    <ref role="ehGHo" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
+              <node concept="2OqwBi" id="5DY7s5F3pbv" role="3clFbG">
+                <node concept="2OqwBi" id="5DY7s5F3pb7" role="2Oq$k0">
+                  <node concept="1iwH7S" id="5DY7s5F3paQ" role="2Oq$k0" />
+                  <node concept="1psM6Z" id="25JZ4W_7JH0" role="2OqNvi">
+                    <ref role="1psM6Y" node="25JZ4W_7JGY" resolve="macroHelper" />
                   </node>
                 </node>
-                <node concept="2OqwBi" id="5DY7s5F3pbv" role="10QFUP">
-                  <node concept="2OqwBi" id="5DY7s5F3pb7" role="2Oq$k0">
-                    <node concept="1iwH7S" id="5DY7s5F3paQ" role="2Oq$k0" />
-                    <node concept="1psM6Z" id="25JZ4W_7JH0" role="2OqNvi">
-                      <ref role="1psM6Y" node="25JZ4W_7JGY" resolve="macroHelper" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="5DY7s5F3pb$" role="2OqNvi">
-                    <ref role="37wK5l" to="o3n2:5DY7s5F3p66" resolve="getVarsContainers" />
-                  </node>
+                <node concept="liA8E" id="5DY7s5F3pb$" role="2OqNvi">
+                  <ref role="37wK5l" to="o3n2:5DY7s5F3p66" resolve="getVarsContainers" />
                 </node>
               </node>
             </node>
@@ -11629,20 +11622,16 @@
                   <node concept="Xl_RD" id="5DY7s5F3pcA" role="3uHU7B">
                     <property role="Xl_RC" value="${artifacts." />
                   </node>
-                  <node concept="2OqwBi" id="5DY7s5F3pcB" role="3uHU7w">
-                    <node concept="2OqwBi" id="5DY7s5F3pcC" role="2Oq$k0">
-                      <node concept="1PxgMI" id="5DY7s5F3pcD" role="2Oq$k0">
-                        <node concept="30H73N" id="5DY7s5F3pcE" role="1m5AlR" />
-                        <node concept="chp4Y" id="714IaVdH0DC" role="3oSUPX">
-                          <ref role="cht4Q" to="3ior:4lbsKRp2c8w" resolve="BuildProjectDependency" />
-                        </node>
-                      </node>
-                      <node concept="3TrEf2" id="5DY7s5F3pcF" role="2OqNvi">
-                        <ref role="3Tt5mk" to="3ior:4RPz6WoY4C$" resolve="script" />
+                  <node concept="2OqwBi" id="7u3RhgSNT3i" role="3uHU7w">
+                    <node concept="2OqwBi" id="7u3RhgSNSEB" role="2Oq$k0">
+                      <node concept="1iwH7S" id="7u3RhgSNSyr" role="2Oq$k0" />
+                      <node concept="1psM6Z" id="7u3RhgSNSKx" role="2OqNvi">
+                        <ref role="1psM6Y" node="25JZ4W_7JGY" resolve="macroHelper" />
                       </node>
                     </node>
-                    <node concept="3TrcHB" id="5DY7s5F3pcG" role="2OqNvi">
-                      <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                    <node concept="liA8E" id="7u3RhgSNTxy" role="2OqNvi">
+                      <ref role="37wK5l" to="o3n2:7u3RhgSMbJN" resolve="getVarContainerName" />
+                      <node concept="30H73N" id="7u3RhgSNUaB" role="37wK5m" />
                     </node>
                   </node>
                 </node>
