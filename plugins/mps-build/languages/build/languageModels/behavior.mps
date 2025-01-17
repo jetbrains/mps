@@ -59,6 +59,9 @@
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
+      </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
@@ -5737,30 +5740,23 @@
                     </node>
                     <node concept="liA8E" id="5DY7s5F3vah" role="2OqNvi">
                       <ref role="37wK5l" to="o3n2:5DY7s5F3v9_" resolve="report" />
-                      <node concept="3cpWs3" id="5DY7s5F3tce" role="37wK5m">
-                        <node concept="3cpWs3" id="5DY7s5F3tbl" role="3uHU7B">
-                          <node concept="3cpWs3" id="5DY7s5F3taW" role="3uHU7B">
-                            <node concept="3cpWs3" id="5DY7s5F3taj" role="3uHU7B">
-                              <node concept="Xl_RD" id="5DY7s5F3ta8" role="3uHU7B">
-                                <property role="Xl_RC" value="macro " />
-                              </node>
-                              <node concept="2OqwBi" id="5DY7s5F3taF" role="3uHU7w">
-                                <node concept="2OqwBi" id="5DY7s5F3vaG" role="2Oq$k0">
-                                  <node concept="13iPFW" id="5DY7s5F3var" role="2Oq$k0" />
-                                  <node concept="3TrEf2" id="5DY7s5F3vaL" role="2OqNvi">
-                                    <ref role="3Tt5mk" to="3ior:4gdvEeQyRO2" resolve="macro" />
-                                  </node>
-                                </node>
-                                <node concept="3TrcHB" id="5DY7s5F3vaN" role="2OqNvi">
-                                  <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
-                                </node>
+                      <node concept="2OqwBi" id="7u3RhgSmLpH" role="37wK5m">
+                        <node concept="Xl_RD" id="7u3RhgSmLpI" role="2Oq$k0">
+                          <property role="Xl_RC" value="macro %s is not available in %s, make it exportable" />
+                        </node>
+                        <node concept="2cAKMz" id="7u3RhgSmLpJ" role="2OqNvi">
+                          <node concept="2OqwBi" id="5DY7s5F3taF" role="2cAKU6">
+                            <node concept="2OqwBi" id="5DY7s5F3vaG" role="2Oq$k0">
+                              <node concept="13iPFW" id="5DY7s5F3var" role="2Oq$k0" />
+                              <node concept="3TrEf2" id="5DY7s5F3vaL" role="2OqNvi">
+                                <ref role="3Tt5mk" to="3ior:4gdvEeQyRO2" resolve="macro" />
                               </node>
                             </node>
-                            <node concept="Xl_RD" id="5DY7s5F3taZ" role="3uHU7w">
-                              <property role="Xl_RC" value=" is not available in " />
+                            <node concept="3TrcHB" id="5DY7s5F3vaN" role="2OqNvi">
+                              <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
                             </node>
                           </node>
-                          <node concept="2OqwBi" id="5DY7s5F3vba" role="3uHU7w">
+                          <node concept="2OqwBi" id="5DY7s5F3vba" role="2cAKU6">
                             <node concept="37vLTw" id="2BHiRxgllfB" role="2Oq$k0">
                               <ref role="3cqZAo" node="5DY7s5F3v6$" resolve="helper" />
                             </node>
@@ -5769,21 +5765,8 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="Xl_RD" id="5DY7s5F3tch" role="3uHU7w">
-                          <property role="Xl_RC" value=", make it exportable" />
-                        </node>
                       </node>
                       <node concept="13iPFW" id="5DY7s5F3vbY" role="37wK5m" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbF" id="5DY7s5F3vc0" role="3cqZAp">
-                  <node concept="37vLTI" id="5DY7s5F3vci" role="3clFbG">
-                    <node concept="Xl_RD" id="5DY7s5F3vcl" role="37vLTx">
-                      <property role="Xl_RC" value="???" />
-                    </node>
-                    <node concept="37vLTw" id="3GM_nagTysl" role="37vLTJ">
-                      <ref role="3cqZAo" node="3S3OT2ln0q" resolve="macroName" />
                     </node>
                   </node>
                 </node>
