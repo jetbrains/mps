@@ -3164,25 +3164,16 @@
               <property role="TrG5h" value="macroHelper" />
               <node concept="2jfdEK" id="7$cPHKxGQ8P" role="1ps_xN">
                 <node concept="3clFbS" id="7$cPHKxGQ8Q" role="2VODD2">
-                  <node concept="3clFbF" id="7$cPHKxGUOg" role="3cqZAp">
-                    <node concept="2OqwBi" id="7$cPHKxGUoJ" role="3clFbG">
-                      <node concept="2ShNRf" id="7$cPHKxGUoK" role="2Oq$k0">
-                        <node concept="1pGfFk" id="7$cPHKxGUoL" role="2ShVmc">
-                          <ref role="37wK5l" to="o3n2:5DY7s5F2Pa1" resolve="MacroHelper.MacroContext" />
-                          <node concept="1PxgMI" id="7$cPHKxGUoB" role="37wK5m">
-                            <node concept="2OqwBi" id="7$cPHKxGUoC" role="1m5AlR">
-                              <node concept="2Rxl7S" id="7$cPHKxGUoD" role="2OqNvi" />
-                              <node concept="30H73N" id="7$cPHKxGUoE" role="2Oq$k0" />
-                            </node>
-                            <node concept="chp4Y" id="7$cPHKxGUoF" role="3oSUPX">
-                              <ref role="cht4Q" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
-                            </node>
-                          </node>
-                          <node concept="1iwH7S" id="7$cPHKxGUoN" role="37wK5m" />
-                        </node>
+                  <node concept="3clFbF" id="7u3RhgSja$X" role="3cqZAp">
+                    <node concept="2OqwBi" id="7u3RhgSjcpJ" role="3clFbG">
+                      <node concept="2YIFZM" id="7u3RhgSjaWb" role="2Oq$k0">
+                        <ref role="37wK5l" to="o3n2:19KdqCVerNJ" resolve="defaultContext" />
+                        <ref role="1Pybhc" to="o3n2:4jjtc7WZOAv" resolve="Context" />
+                        <node concept="1iwH7S" id="7u3RhgSjbYS" role="37wK5m" />
                       </node>
-                      <node concept="liA8E" id="7$cPHKxGUIR" role="2OqNvi">
-                        <ref role="37wK5l" to="o3n2:7$cPHKxF$6i" resolve="getProjectHelper" />
+                      <node concept="liA8E" id="7u3RhgSjcOf" role="2OqNvi">
+                        <ref role="37wK5l" to="o3n2:5DY7s5F3vd2" resolve="getMacros" />
+                        <node concept="30H73N" id="7u3RhgSjdGc" role="37wK5m" />
                       </node>
                     </node>
                   </node>

@@ -125,19 +125,20 @@ public final class MacroHelper {
   public void report(String message, SNode node) {
     context.reportProblem(message, node);
   }
-  public static class MacroContext {
+
+  /*package*/ static class MacroContext {
     private final Set<SNode> seenProjects = new HashSet<SNode>();
     private final TemplateQueryContext genContext;
     private final MacroHelper projectHelper;
     private final ConcurrentMap<SNode, MacroHelper> existingMacros;
 
-    public MacroContext(SNode project, TemplateQueryContext genContext) {
+    /*package*/ MacroContext(SNode project, TemplateQueryContext genContext) {
       this.genContext = genContext;
       this.existingMacros = GenerationUtil.<SNode,MacroHelper>getSessionMap(project, genContext, "macroHelpers");
-      projectHelper = getMacros(SNodeOperations.as(DependenciesHelper.getOriginalNode(project, genContext), CONCEPTS.BuildProject$ae));
+      projectHelper = getMacros(project);
     }
 
-    public MacroHelper getProjectHelper() {
+    /*package*/ MacroHelper getProjectHelper() {
       return projectHelper;
     }
 

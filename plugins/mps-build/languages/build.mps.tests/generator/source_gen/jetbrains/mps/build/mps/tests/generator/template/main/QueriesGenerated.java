@@ -235,7 +235,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return plugins;
   }
   public static Object varMacro_Value_0_4(final TemplateVarContext _context) {
-    return new MacroHelper.MacroContext(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae), _context).getProjectHelper();
+    return Context.defaultContext(_context).getMacros(_context.getNode());
   }
   public static Object varMacro_Value_0_5(final TemplateVarContext _context) {
     return ((ModulePlugins) _context.getVariable("var:requiredPlugins")).getModulesNotInPlugins();

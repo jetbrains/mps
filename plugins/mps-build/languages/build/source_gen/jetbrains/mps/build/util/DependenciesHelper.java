@@ -32,7 +32,7 @@ public class DependenciesHelper {
     locationMap = new HashMap<SNode, String>(100);
     contentLocationMap = new HashMap<SNode, String>(100);
     idToArtifactMap = new HashMap<Object, SNode>(100);
-    this.macros = new MacroHelper.MacroContext(project, genContext).getProjectHelper();
+    this.macros = Context.defaultContext(genContext).getMacros(project);
     myProject = project;
     final String qualifiedProjectName = SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
     myLocationKey = "location:" + qualifiedProjectName;
