@@ -153,12 +153,15 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4), CONCEPTS.BuildLayout_Container$vv) && (boolean) BuildLayout_Node__BehaviorDescriptor.isFolder_id1bWeed$oPYW.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4));
   }
   public static boolean rule_Condition_10_1(final BaseMappingRuleContext _context) {
-    return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.filemode$Xiae)) && (boolean) BuildLayout_File__BehaviorDescriptor.canHaveFilemode_id7UAfeVQUccL.invoke(_context.getNode());
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4), CONCEPTS.BuildLayout_NamedContainer$Ug);
   }
   public static boolean rule_Condition_10_2(final BaseMappingRuleContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$xu7T)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9));
+    return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.filemode$Xiae)) && (boolean) BuildLayout_File__BehaviorDescriptor.canHaveFilemode_id7UAfeVQUccL.invoke(_context.getNode());
   }
   public static boolean rule_Condition_10_3(final BaseMappingRuleContext _context) {
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$xu7T)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9));
+  }
+  public static boolean rule_Condition_10_4(final BaseMappingRuleContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.parameters$WlG4)).any((it) -> SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_CopyHandler$W9));
   }
   public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
@@ -794,22 +797,25 @@ public class QueriesGenerated extends QueryProviderBase {
     return val;
   }
   public static Object propertyMacro_GetValue_10_0(final PropertyMacroContext _context) {
-    SNode project = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false);
-    if (project == null) {
-      _context.showErrorMessage(_context.getNode(), "no context project defined");
-      return "";
-    }
     // Here used to be DH.getLocation(node.target).lastSegmentAfterSlash 
     // but with DH initialization moved to pre-processing script of main (which goes after aliases),
     // can't use DH here. 
     // However, it's only BL_Folder or BML_Plugin that answer isFolder() == true
-    Context cc = Context.defaultContext(_context);
-    // as long as BL_Folder shares BL_NamedContainer.getOutputPath_WithMacro() impl, use BL_NC
+    // FTR, as long as BL_Folder shares BL_NamedContainer.getOutputPath_WithMacro() impl, use BL_NC
     // FIXME In fact, I think BML_Plugin has to be BL_NamedContainer, that would simplify my life here
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4), CONCEPTS.BuildLayout_NamedContainer$Ug)) {
-      // Could use BL_NamedContainer.getOutputPath_WithMacro(), but don't care to cut last segment
-      return BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4), CONCEPTS.BuildLayout_NamedContainer$Ug), LINKS.containerName$ES_Y), cc.getMacros(project));
-    }
+    // 
+    //  Note, BL_NamedContainer (BLFolder) scenario is now handled separately, as there's proper
+    //  NC.containerName:BuildStringNotEmpty we can COPY_SRC instead of constructing a name using MacroHelepr
+    //  that hasn't been initialized yet (part of 'main' pre-processing scripts, while this 'aliases' run before -
+    //  pretty much the same issue we solved here before with missing DH state). If we get MH initialized from here,
+    //  and this is not the first root in a model (j.m.build.sandbox, buildA, buildB projects, later references var of
+    //  the former), we may get MH initialized in a state where user objects get injected into a wrong model and not copied
+    //  to the output - buildB initializes MH based on inputModel, while buildA root has been already copied into outputModel.
+    //  Of course, this happens when in-place is off)
+    //  Indeed, next code triggers HM initialization, however, at the moment, it's only BML_Plugin that answers isFolder
+    //  except BLFolder. And as long as we're in j.mps.build (not m.build.mps), I hope I don't get BML_Plugin here, as it
+    //  has to be transformed into BLFolder already
+    Context cc = Context.defaultContext(_context);
     // for BML_Plugin, use the fact its BL_Container.getChildrenOutputDir_WithMacro == getOutputPath_WithMacro
     // which gives full path, with last segment containing value that we need.
     // FWIW, I assume node.target is from external model (not the one being transformed) if I get here.
@@ -1024,6 +1030,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(((SNode) _context.getVariable("dependency")), "javamodule");
   }
   public static Object referenceMacro_GetReferent_10_0(final ReferenceMacroContext _context) {
+    return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4), CONCEPTS.BuildLayout_Container$vv);
+  }
+  public static Object referenceMacro_GetReferent_10_1(final ReferenceMacroContext _context) {
     return SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4), CONCEPTS.BuildLayout_Container$vv);
   }
   public static Object referenceMacro_GetReferent_14_0(final ReferenceMacroContext _context) {
@@ -1375,7 +1384,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.fileset$tUzn);
   }
   public static SNode sourceNodeQuery_10_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.path$xmoo);
+    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4), CONCEPTS.BuildLayout_NamedContainer$Ug), LINKS.containerName$ES_Y);
   }
   public static SNode sourceNodeQuery_10_1(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.path$xmoo);
@@ -1387,9 +1396,12 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.path$xmoo);
   }
   public static SNode sourceNodeQuery_10_4(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.path$Wlt3);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.path$xmoo);
   }
   public static SNode sourceNodeQuery_10_5(final SourceSubstituteMacroNodeContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.path$Wlt3);
+  }
+  public static SNode sourceNodeQuery_10_6(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.path$Wlt3);
   }
   public static Object templateArgumentQuery_0_0(final TemplateArgumentContext _context) {
@@ -1777,7 +1789,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_1_4(final TemplateVarContext _context) {
     List<Tuples._2<SNode, String>> dependencies = new ProjectDependency(_context, _context.getNode()).collectDependencies().getDependencies();
-    return ListSequence.fromList(dependencies).select((it) -> createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a224(it._1(), it._0())).toList();
+    return ListSequence.fromList(dependencies).select((it) -> createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a524(it._1(), it._0())).toList();
   }
   public static Object varMacro_Value_1_5(final TemplateVarContext _context) {
     return Context.defaultContext(_context).getMacros(_context.getNode());
@@ -1995,6 +2007,7 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("3717132724153138073", new SNQ(i++));
     snqMethods.put("6408167411310621712", new SNQ(i++));
     snqMethods.put("1330375798088316886", new SNQ(i++));
+    snqMethods.put("5597279446477253366", new SNQ(i++));
     snqMethods.put("2750015747481191517", new SNQ(i++));
     snqMethods.put("2750015747481207051", new SNQ(i++));
     snqMethods.put("2750015747481063363", new SNQ(i++));
@@ -2060,6 +2073,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.sourceNodeQuery_10_4(ctx);
         case 21:
           return QueriesGenerated.sourceNodeQuery_10_5(ctx);
+        case 22:
+          return QueriesGenerated.sourceNodeQuery_10_6(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -2428,7 +2443,7 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("8169228734285529580", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "module.jar"));
     pvqMethods.put("6859736767834590112", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "module.jar"));
     pvqMethods.put("5610619299014531950", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "folder"));
-    pvqMethods.put("1556400259614055521", new PVQ(i++, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"), "aaaa"));
+    pvqMethods.put("5597279446477273557", new PVQ(i++, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text"), "aaaa"));
     pvqMethods.put("2750015747481191461", new PVQ(i++, MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6c4335df4e838e40L, 0x6c4335df4e838e44L, "filemode"), "777"));
     pvqMethods.put("342830306171239729", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "folder"));
     pvqMethods.put("8944013247820405373", new PVQ(i++, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), "prepare.archive"));
@@ -3101,6 +3116,7 @@ public class QueriesGenerated extends QueryProviderBase {
     isccMethods.put("6921160174096663331", new ISCC(i++));
     isccMethods.put("244868996532694195", new ISCC(i++));
     isccMethods.put("1330375798088685234", new ISCC(i++));
+    isccMethods.put("5597279446477251598", new ISCC(i++));
     isccMethods.put("2750015747481190655", new ISCC(i++));
     isccMethods.put("2750015747481031593", new ISCC(i++));
     isccMethods.put("2750015747481074522", new ISCC(i++));
@@ -3137,6 +3153,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.rule_Condition_10_2(ctx);
         case 8:
           return QueriesGenerated.rule_Condition_10_3(ctx);
+        case 9:
+          return QueriesGenerated.rule_Condition_10_4(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for inline switch's case %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -3173,8 +3191,9 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("6854204111265839187", new RTQ(26, "fetchDependencies"));
     rtqMethods.put("144710003695561044", new RTQ(27, "library"));
     rtqMethods.put("4821808014881207364", new RTQ(28, "module1"));
-    rtqMethods.put("8847838005406041706", new RTQ(29, "aaaa"));
-    rtqMethods.put("8944013247822378624", new RTQ(30, "anchor"));
+    rtqMethods.put("5597279446477272174", new RTQ(29, "aaaa"));
+    rtqMethods.put("5597279446477273812", new RTQ(30, "aaaa"));
+    rtqMethods.put("8944013247822378624", new RTQ(31, "anchor"));
   }
   @NotNull
   @Override
@@ -3252,6 +3271,8 @@ public class QueriesGenerated extends QueryProviderBase {
         case 29:
           return QueriesGenerated.referenceMacro_GetReferent_10_0(ctx);
         case 30:
+          return QueriesGenerated.referenceMacro_GetReferent_10_1(ctx);
+        case 31:
           return QueriesGenerated.referenceMacro_GetReferent_14_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -3431,7 +3452,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a224(String p0, SNode p1) {
+  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a524(String p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_ProjectDependency$bb);
     n0.setProperty(PROPS.path$URGX, p0);
     n0.setReferenceTarget(LINKS.project$ciHu, p1);
@@ -3517,7 +3538,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SReferenceLink layout$GC7_ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x63a87b9320d3d0a4L, 0x63a87b9320d3d0a7L, "layout");
     /*package*/ static final SContainmentLink artifacts$GBS$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x63a87b9320d3d0a4L, 0x63a87b9320d3d0a6L, "artifacts");
     /*package*/ static final SContainmentLink layout$r7bw = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a1cL, "layout");
-    /*package*/ static final SContainmentLink containerName$ES_Y = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
     /*package*/ static final SContainmentLink compositePart$blMW = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
     /*package*/ static final SContainmentLink archivePath$ic$p = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, 0x233d92f9e34a784cL, "archivePath");
     /*package*/ static final SReferenceLink for$UmSz = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5f1f0652f6049405L, 0x5f1f0652f6049406L, "for");
@@ -3529,6 +3549,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink classpath$WEG$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, 0x3395e884b61d4cbdL, "classpath");
     /*package*/ static final SContainmentLink classpath$$srm = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6fcf41976cfa6175L, 0x6e014d63c0847621L, "classpath");
     /*package*/ static final SContainmentLink jars$4Au$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61fe867L, 0x3395e884b61fe869L, "jars");
+    /*package*/ static final SContainmentLink containerName$ES_Y = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac7f8cL, 0x3cca41cd0fe75496L, "containerName");
     /*package*/ static final SContainmentLink path$xmoo = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
     /*package*/ static final SContainmentLink path$Wlt3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb00L, "path");
     /*package*/ static final SReferenceLink targetFolder$gAO3 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x508044c9892402f6L, 0x508044c9892402f7L, "targetFolder");
