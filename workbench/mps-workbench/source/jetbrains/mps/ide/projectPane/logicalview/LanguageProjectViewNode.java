@@ -370,14 +370,22 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
     @Override
     public boolean canNavigate() {
-      return true;
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      return mpsProject.getModelAccess().computeReadAction(() ->
+        getValue().resolve(mpsProject.getRepository()) != null
+      );
     }
 
     @Override
     public void navigate(boolean requestFocus) {
       MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
       mpsProject.getModelAccess().runReadAction(() -> {
-        ProjectPane.getInstance(mpsProject).selectModel(getValue().resolve(mpsProject.getRepository()), requestFocus);
+        SModel model = getValue().resolve(mpsProject.getRepository());
+        if (model != null) {
+          ProjectPane.getInstance(mpsProject).selectModel(model, requestFocus);
+        } else {
+          LOG.warn("can't navigate to null model: "+getValue());
+        }
       });
     }
   }
@@ -400,17 +408,28 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
       presentation.setIcon(layeredIcon(icon, Nodes.Symlink));
     }
 
+    @Override
+    protected void appendInplaceComments(@NotNull InplaceCommentAppender appender) {
+      super.appendInplaceComments(appender);
+    }
 
     @Override
     public boolean canNavigate() {
-      return true;
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+      return mpsProject.getModelAccess().computeReadAction(() ->
+                 getValue().resolve(mpsProject.getRepository())  != null);
     }
 
     @Override
     public void navigate(boolean requestFocus) {
       MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
       mpsProject.getModelAccess().runReadAction(() -> {
-        ProjectPane.getInstance(mpsProject).selectModule(getValue().resolve(mpsProject.getRepository()), requestFocus);
+        SModule module = getValue().resolve(mpsProject.getRepository());
+        if (module != null) {
+          ProjectPane.getInstance(mpsProject).selectModule(module, requestFocus);
+        } else {
+          LOG.warn("can't navigate to null module: "+getValue());
+        }
       });
     }
   }
