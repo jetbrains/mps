@@ -54,6 +54,8 @@ import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.checking.EditorChecker;
 import jetbrains.mps.typesystem.checking.TypesEditorChecker;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
+import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.smodel.event.SModelImportEvent;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -267,6 +269,11 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
   @Override
   public boolean needsUpdateAfterPropertyEvent(SModelPropertyEvent event) {
     return EditorSettings.getInstance().isAutoQuickFix() && PROPS.name$MnvL.getName().equals(event.getPropertyName());
+  }
+
+  @Override
+  protected boolean needsUpdateAfterEvent(SModelEvent event) {
+    return event instanceof SModelImportEvent || super.needsUpdateAfterEvent(event);
   }
 
   private static final class PROPS {

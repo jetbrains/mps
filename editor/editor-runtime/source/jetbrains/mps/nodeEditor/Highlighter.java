@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,6 +46,7 @@ import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.event.SModelEvent;
+import jetbrains.mps.smodel.event.SModelImportEvent;
 import jetbrains.mps.smodel.event.SModelReplacedEvent;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.runtime.ModuleDeploymentChange;
@@ -377,7 +378,7 @@ public class Highlighter implements IHighlighter, Disposable {
     List<SModelEvent> events = myEventCollector.drainEvents();
 
     for (SModelEvent event : events) {
-      if (event instanceof SModelReplacedEvent) {
+      if (event instanceof SModelReplacedEvent || event instanceof SModelImportEvent) {
         final SModelReference mref = event.getModel().getReference();
         myEditorTracker.markEditorsOfModelUnchecked(mref);
       }
