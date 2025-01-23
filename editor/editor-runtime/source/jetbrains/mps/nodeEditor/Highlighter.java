@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.diagnostic.StartUpPerformanceService;
 import com.intellij.ide.PowerSaveMode;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationListener;
@@ -71,7 +72,7 @@ public class Highlighter implements IHighlighter, Disposable {
   private static final Logger LOG = Logger.getLogger(Highlighter.class);
 
   private volatile boolean myPaused;
-
+  private volatile boolean initialEntireFileHighlightingReported = false;
   private ScheduledExecutorService myBackgroundExecutor;
   private ScheduleHighlighterUpdate myScheduleHighlighterUpdate;
 
@@ -300,6 +301,7 @@ public class Highlighter implements IHighlighter, Disposable {
 
   public void stopUpdater() {
     myScheduleHighlighterUpdate = null;
+    initialEntireFileHighlightingReported = false;
     myBackgroundExecutor.shutdown();
     try {
       myBackgroundExecutor.awaitTermination(100, TimeUnit.MILLISECONDS);
@@ -511,6 +513,10 @@ public class Highlighter implements IHighlighter, Disposable {
         myCommandWatcher.resetGracePeriod();
         myEditorTracker.markEverythingUnchecked();
       } finally {
+        if(!initialEntireFileHighlightingReported) {
+          initialEntireFileHighlightingReported = true;
+          ApplicationManager.getApplication().getService(StartUpPerformanceService.class).editorRestoringTillHighlighted();
+        }
         scheduleNext();
       }
     }
