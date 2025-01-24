@@ -25,11 +25,14 @@ import org.jetbrains.mps.openapi.model.SNode
  * Jvm platform is a bit specific since metadata is loaded from the class @Metadata annotations
  */
 object KotlinJvmModelKind : KotlinModelKind(TargetPlatform(setOf(JvmPlatform)), "jvm", "kotlin_jvm") {
-    override fun load(topFiles: List<IFile>, packageName: PackageName, mask: SignatureMask): List<StubRoot> {
+    override fun load(topFiles: List<IFile>, implicitPackageName: PackageName, mask: SignatureMask): List<StubRoot> {
         return topFiles.filter { it.extension == "class" && !it.name.contains("$") }.mapNotNull { file ->
-            val kotlinData = file.parseJvmDescriptor(packageName)
+            val kotlinData = file.parseJvmDescriptor(implicitPackageName)
                 ?: // Java class
                 return@mapNotNull JavaClassRoot(file)
+
+            // Metadata may specify an original package
+            val packageName = PackageName(kotlinData.packageName)
 
             when (val metadata = KotlinClassMetadata.readStrict(kotlinData)) {
                 is KotlinClassMetadata.Class -> {
