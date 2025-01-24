@@ -5,7 +5,7 @@ import jetbrains.mps.kotlin.stubs.loading.signature.signature
 import jetbrains.mps.kotlin.stubs.smodel.KotlinLanguageUtil
 import jetbrains.mps.kotlin.stubs.smodel.metadata.KtModuleParser
 import jetbrains.mps.kotlin.stubs.smodel.metadata.KtReadContext
-import kotlinx.metadata.KmPackage
+import kotlin.metadata.KmPackage
 import org.jetbrains.mps.openapi.model.SNode
 
 data class PackageRoot(val name: String, val packageName: PackageName, val content: List<KmPackage>) : StubRoot {

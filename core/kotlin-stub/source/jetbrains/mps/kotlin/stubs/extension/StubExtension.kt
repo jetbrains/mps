@@ -1,8 +1,9 @@
 package jetbrains.mps.kotlin.stubs.extension
 
-import kotlinx.metadata.*
+import kotlin.metadata.*
+import kotlin.metadata.internal.extensions.*
 
-open class StubExtension(val annotations: MutableList<KmAnnotation> = mutableListOf()) : KmExtensionVisitor {
+open class StubExtension(val annotations: MutableList<KmAnnotation> = mutableListOf()) : KmExtension {
     override val type
         get() = extensionType
 
@@ -23,14 +24,22 @@ open class StubExtension(val annotations: MutableList<KmAnnotation> = mutableLis
 
 }
 
-fun <T> KmExtensionType.ifAnnotation(data: () -> T): T? = if (this == StubExtension.extensionType) data() else null
+// Implementations for all types we're interested in
+class StubConsExt : StubExtension(), KmConstructorExtension
+class StubTypeParamExt : StubExtension(), KmTypeParameterExtension
+class StubValueParamExt : StubExtension(), KmValueParameterExtension
+class StubClassExt : StubExtension(), KmClassExtension
+class StubFunExt : StubExtension(), KmFunctionExtension
+class StubPropExt : StubExtension(), KmPropertyExtension
+class StubTypeAliasExt : StubExtension(), KmTypeAliasExtension
+class StubTypeExt : StubExtension(), KmTypeExtension {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+        return true
+    }
 
-
-open class StubConsExt : StubExtension(), KmConstructorExtensionVisitor
-open class StubTypeParamExt : StubExtension(), KmTypeParameterExtensionVisitor
-open class StubValueParamExt : StubExtension(), KmValueParameterExtensionVisitor
-open class StubClassExt : StubExtension(), KmClassExtensionVisitor
-open class StubFunExt : StubExtension(), KmFunctionExtensionVisitor
-open class StubPropExt : StubExtension(), KmPropertyExtensionVisitor
-open class StubTypeAliasExt : StubExtension(), KmTypeAliasExtensionVisitor
-open class StubTypeExt : StubExtension(), KmTypeExtensionVisitor
+    override fun hashCode(): Int {
+        return javaClass.hashCode()
+    }
+}

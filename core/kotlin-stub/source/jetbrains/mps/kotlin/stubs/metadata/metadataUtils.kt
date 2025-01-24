@@ -1,7 +1,7 @@
 package jetbrains.mps.kotlin.stubs.metadata
 
-import kotlinx.metadata.KmPackage
-import kotlinx.metadata.internal.common.KmModuleFragment
+import kotlin.metadata.KmPackage
+import kotlin.metadata.internal.common.KmModuleFragment
 
 fun KmModuleFragment.isEmpty() = classes.isEmpty() && pkg?.isEmpty() ?: true
 

@@ -15,8 +15,8 @@ import jetbrains.mps.kotlin.stubs.smodel.metadata.KtReadContext
 import jetbrains.mps.kotlin.stubs.smodel.references.ClassStereotype
 import jetbrains.mps.kotlin.stubs.smodel.references.JavaClassReference
 import jetbrains.mps.vfs.IFile
-import kotlinx.metadata.KmClass
-import kotlinx.metadata.jvm.KotlinClassMetadata
+import kotlin.metadata.KmClass
+import kotlin.metadata.jvm.KotlinClassMetadata
 import org.jetbrains.mps.openapi.model.SNode
 
 /**
@@ -31,7 +31,7 @@ object KotlinJvmModelKind : KotlinModelKind(TargetPlatform(setOf(JvmPlatform)), 
                 ?: // Java class
                 return@mapNotNull JavaClassRoot(file)
 
-            when (val metadata = KotlinClassMetadata.read(kotlinData)) {
+            when (val metadata = KotlinClassMetadata.readStrict(kotlinData)) {
                 is KotlinClassMetadata.Class -> {
                     if (mask.accept(metadata.kmClass))
                         loadClassRoot(metadata.kmClass, packageName, file)
@@ -63,7 +63,7 @@ object KotlinJvmModelKind : KotlinModelKind(TargetPlatform(setOf(JvmPlatform)), 
         ?.findChild(className.substringAfterLast("/").replace(".", "$") + ".class")
         ?.takeIf(IFile::exists)
         ?.parseJvmDescriptor(packageName)
-        ?.let(KotlinClassMetadata.Companion::read)
+        ?.let(KotlinClassMetadata.Companion::readStrict)
 
     private fun loadClassRoot(root: KmClass, packageName: PackageName, existingClass: IFile): ClassRoot {
         val nestedClasses = root.nestedClasses.mapNotNull {

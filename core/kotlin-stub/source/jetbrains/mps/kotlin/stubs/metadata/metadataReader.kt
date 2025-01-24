@@ -3,16 +3,17 @@ package jetbrains.mps.kotlin.stubs.metadata
 import jetbrains.mps.kotlin.stubs.platform.isKlibMetadataFileName
 import jetbrains.mps.kotlin.stubs.platform.isKotlinJsFileName
 import jetbrains.mps.kotlin.stubs.platform.isKotlinMetadataFileName
-import kotlinx.metadata.internal.accept
-import kotlinx.metadata.internal.common.KmModuleFragment
-import kotlinx.metadata.internal.common.KotlinCommonMetadata
-import kotlinx.metadata.internal.metadata.ProtoBuf
-import kotlinx.metadata.internal.metadata.builtins.BuiltInsBinaryVersion
-import kotlinx.metadata.internal.metadata.builtins.BuiltInsProtoBuf
-import kotlinx.metadata.internal.metadata.deserialization.NameResolverImpl
-import kotlinx.metadata.internal.protobuf.CodedInputStream
-import kotlinx.metadata.internal.protobuf.ExtensionRegistryLite
+import kotlin.metadata.internal.common.KmModuleFragment
+import kotlin.metadata.internal.common.KotlinCommonMetadata
+import kotlin.metadata.internal.metadata.ProtoBuf
+import kotlin.metadata.internal.metadata.builtins.BuiltInsBinaryVersion
+import kotlin.metadata.internal.metadata.builtins.BuiltInsProtoBuf
+import kotlin.metadata.internal.metadata.deserialization.NameResolverImpl
+import kotlin.metadata.internal.protobuf.CodedInputStream
+import kotlin.metadata.internal.protobuf.ExtensionRegistryLite
 import java.io.InputStream
+import kotlin.metadata.internal.toKmClass
+import kotlin.metadata.internal.toKmPackage
 
 /**
  * Component agnostic way to read metadata from a file.
@@ -42,7 +43,7 @@ fun InputStream.readKtMetadata(fileName: String): KmModuleFragment? {
         }
 
         fileName.isKotlinMetadataFileName ->
-            KotlinCommonMetadata.read(readAllBytes())?.toKmModuleFragment()
+            KotlinCommonMetadata.read(readAllBytes())?.kmModuleFragment
 
         else -> {
             // TODO load version from klib descriptor and check it
@@ -59,13 +60,8 @@ fun InputStream.parseModuleFragment(): KmModuleFragment {
     val fragment = KmModuleFragment()
     val strings = NameResolverImpl(proto.strings, proto.qualifiedNames)
     if (proto.hasPackage()) {
-        fragment.visitPackage()?.let { proto.`package`.accept(it, strings) }
+        fragment.pkg = proto.`package`.toKmPackage(strings)
     }
-    proto.class_List.forEach { klass ->
-        fragment.visitClass()?.let {
-            klass.accept(it, strings)
-        }
-    }
-    fragment.visitEnd()
+    proto.class_List.mapTo(fragment.classes) { it.toKmClass(strings) }
     return fragment
 }

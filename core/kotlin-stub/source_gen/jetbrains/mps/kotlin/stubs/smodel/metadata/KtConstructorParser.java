@@ -4,8 +4,8 @@ package jetbrains.mps.kotlin.stubs.smodel.metadata;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
-import kotlinx.metadata.KmConstructor;
-import kotlinx.metadata.Attributes;
+import kotlin.metadata.KmConstructor;
+import kotlin.metadata.Attributes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;

@@ -1,7 +1,7 @@
 package jetbrains.mps.kotlin.stubs.metadata
 
-import kotlinx.metadata.internal.metadata.builtins.BuiltInsBinaryVersion
-import kotlinx.metadata.internal.metadata.deserialization.BinaryVersion
+import kotlin.metadata.internal.metadata.builtins.BuiltInsBinaryVersion
+import kotlin.metadata.internal.metadata.deserialization.BinaryVersion
 
 
 // JS versions follow a different count from the builtins version. Since the necessary classes are not bundled in available libraries,

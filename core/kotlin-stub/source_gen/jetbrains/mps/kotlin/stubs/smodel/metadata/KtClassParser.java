@@ -4,14 +4,14 @@ package jetbrains.mps.kotlin.stubs.smodel.metadata;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
-import kotlinx.metadata.KmClass;
+import kotlin.metadata.KmClass;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import kotlinx.metadata.Attributes;
+import kotlin.metadata.Attributes;
 import java.util.Objects;
-import kotlinx.metadata.ClassKind;
+import kotlin.metadata.ClassKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.stubs.loading.ids.KotlinId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
