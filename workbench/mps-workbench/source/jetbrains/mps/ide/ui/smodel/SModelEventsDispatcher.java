@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,7 +107,7 @@ public class SModelEventsDispatcher {
     protected void eventsHappened(List<SModelEvent> events) {
       Map<SModel, List<SModelEvent>> descriptorsToEventsMap = new HashMap<>();
       for (SModelEvent event : events) {
-        SModel descriptor = event.getModelDescriptor();
+        SModel descriptor = event.getModel();
         List<SModelEvent> collectedEvents = descriptorsToEventsMap.get(descriptor);
         if (collectedEvents == null) {
           collectedEvents = new ArrayList();
