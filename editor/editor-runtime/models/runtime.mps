@@ -9113,38 +9113,6 @@
             <ref role="37wK5l" to="w1kc:~SModelAdapter.&lt;init&gt;()" resolve="SModelAdapter" />
             <ref role="1Y3XeK" to="w1kc:~SModelAdapter" resolve="SModelAdapter" />
             <node concept="3Tm1VV" id="7c5YJMXrapq" role="1B3o_S" />
-            <node concept="3clFb_" id="7c5YJMXrapr" role="jymVt">
-              <property role="TrG5h" value="beforeModelDisposed" />
-              <node concept="3Tm1VV" id="7c5YJMXraps" role="1B3o_S" />
-              <node concept="3cqZAl" id="7c5YJMXrapt" role="3clF45" />
-              <node concept="37vLTG" id="7c5YJMXrapu" role="3clF46">
-                <property role="TrG5h" value="model" />
-                <node concept="3uibUv" id="7c5YJMXrapv" role="1tU5fm">
-                  <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
-                </node>
-              </node>
-              <node concept="3clFbS" id="7c5YJMXrapw" role="3clF47">
-                <node concept="1HWtB8" id="7c5YJMXrapx" role="3cqZAp">
-                  <node concept="3clFbS" id="7c5YJMXrapy" role="1HWHxc">
-                    <node concept="3clFbF" id="7c5YJMXwTiX" role="3cqZAp">
-                      <node concept="1rXfSq" id="7c5YJMXwTiW" role="3clFbG">
-                        <ref role="37wK5l" node="7c5YJMXwTiS" resolve="removeByModel" />
-                        <node concept="37vLTw" id="7c5YJMXwTiV" role="37wK5m">
-                          <ref role="3cqZAo" node="7c5YJMXrapu" resolve="model" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="37vLTw" id="7c5YJMXs2da" role="1HWFw0">
-                    <ref role="3cqZAo" node="7c5YJMXranz" resolve="myMapsLock" />
-                  </node>
-                </node>
-              </node>
-              <node concept="2AHcQZ" id="7c5YJMXraq4" role="2AJF6D">
-                <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-              </node>
-            </node>
-            <node concept="2tJIrI" id="1aqDMHHI04" role="jymVt" />
             <node concept="3clFb_" id="1aqDMHHK7u" role="jymVt">
               <property role="TrG5h" value="languageAdded" />
               <node concept="3Tm1VV" id="1aqDMHHK7v" role="1B3o_S" />

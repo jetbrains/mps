@@ -80,13 +80,6 @@ import com.intellij.openapi.application.ApplicationManager;
 
   private final SModelListener myModelListener = new SModelAdapter() {
     @Override
-    public void beforeModelDisposed(SModel model) {
-      synchronized (myMapsLock) {
-        removeByModel(model);
-      }
-    }
-
-    @Override
     public void languageAdded(SModelLanguageEvent event) {
       clearByModel(event.getModel());
     }
