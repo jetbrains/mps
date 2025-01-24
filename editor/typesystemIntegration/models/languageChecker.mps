@@ -2529,10 +2529,45 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3OAwXw0f8zs" role="jymVt" />
     <node concept="3uibUv" id="36YhQHI6usj" role="1zkMxy">
       <ref role="3uigEE" to="n70j:~BaseEventProcessingEditorChecker" resolve="BaseEventProcessingEditorChecker" />
     </node>
     <node concept="3Tm1VV" id="4nkKl$KPUHx" role="1B3o_S" />
+    <node concept="3clFb_" id="3OAwXw0fdwT" role="jymVt">
+      <property role="TrG5h" value="needsUpdateAfterEvent" />
+      <node concept="3Tmbuc" id="3OAwXw0fdwU" role="1B3o_S" />
+      <node concept="10P_77" id="3OAwXw0fdwW" role="3clF45" />
+      <node concept="37vLTG" id="3OAwXw0fdwX" role="3clF46">
+        <property role="TrG5h" value="event" />
+        <node concept="3uibUv" id="3OAwXw0fdwY" role="1tU5fm">
+          <ref role="3uigEE" to="j9co:~SModelEvent" resolve="SModelEvent" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="3OAwXw0fdwZ" role="3clF47">
+        <node concept="3clFbF" id="3OAwXw0fdx3" role="3cqZAp">
+          <node concept="22lmx$" id="3OAwXw0fqMO" role="3clFbG">
+            <node concept="2ZW3vV" id="3OAwXw0f$3R" role="3uHU7B">
+              <node concept="3uibUv" id="3OAwXw0fCeW" role="2ZW6by">
+                <ref role="3uigEE" to="j9co:~SModelImportEvent" resolve="SModelImportEvent" />
+              </node>
+              <node concept="37vLTw" id="3OAwXw0fvGv" role="2ZW6bz">
+                <ref role="3cqZAo" node="3OAwXw0fdwX" resolve="event" />
+              </node>
+            </node>
+            <node concept="3nyPlj" id="3OAwXw0fdx2" role="3uHU7w">
+              <ref role="37wK5l" to="n70j:~BaseEventProcessingEditorChecker.needsUpdateAfterEvent(jetbrains.mps.smodel.event.SModelEvent)" resolve="needsUpdateAfterEvent" />
+              <node concept="37vLTw" id="3OAwXw0fdx1" role="37wK5m">
+                <ref role="3cqZAo" node="3OAwXw0fdwX" resolve="event" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3OAwXw0fdx0" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="2uxkWp9VnLc">
     <property role="TrG5h" value="RefScopeCheckerInEditor" />

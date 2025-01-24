@@ -16,6 +16,9 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.smodel.event.SModelListener;
 import jetbrains.mps.smodel.SModelAdapter;
+import jetbrains.mps.smodel.event.SModelLanguageEvent;
+import jetbrains.mps.smodel.event.SModelImportEvent;
+import jetbrains.mps.smodel.event.SModelDevKitEvent;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.SModelInternal;
@@ -55,7 +58,7 @@ import com.intellij.openapi.application.ApplicationManager;
   private Map<EditorComponent, LanguageErrorsComponent> myEditorComponentToErrorMap = MapSequence.fromMap(new HashMap<EditorComponent, LanguageErrorsComponent>());
   private Map<SModel, Set<EditorComponent>> myModelToEditorComponentsMap = MapSequence.fromMap(new HashMap<SModel, Set<EditorComponent>>());
 
-  private EditorComponent.EditorDisposeListener myDisposeListener = new EditorComponent.EditorDisposeListener() {
+  private final EditorComponent.EditorDisposeListener myDisposeListener = new EditorComponent.EditorDisposeListener() {
     @Override
     public void editorWillBeDisposed(@NotNull EditorComponent editorComponent) {
       synchronized (myMapsLock) {
@@ -75,12 +78,37 @@ import com.intellij.openapi.application.ApplicationManager;
     }
   };
 
-  private SModelListener myModelListener = new SModelAdapter() {
+  private final SModelListener myModelListener = new SModelAdapter() {
     @Override
     public void beforeModelDisposed(SModel model) {
       synchronized (myMapsLock) {
         removeByModel(model);
       }
+    }
+
+    @Override
+    public void languageAdded(SModelLanguageEvent event) {
+      clearByModel(event.getModel());
+    }
+    @Override
+    public void languageRemoved(SModelLanguageEvent event) {
+      clearByModel(event.getModel());
+    }
+    @Override
+    public void importAdded(SModelImportEvent event) {
+      clearByModel(event.getModel());
+    }
+    @Override
+    public void importRemoved(SModelImportEvent event) {
+      clearByModel(event.getModel());
+    }
+    @Override
+    public void devkitAdded(SModelDevKitEvent event) {
+      clearByModel(event.getModel());
+    }
+    @Override
+    public void devkitRemoved(SModelDevKitEvent event) {
+      clearByModel(event.getModel());
     }
   };
 
@@ -104,6 +132,18 @@ import com.intellij.openapi.application.ApplicationManager;
     if (editorComponents != null) {
       for (EditorComponent editorComponent : editorComponents) {
         removeByEditorComponent(editorComponent);
+      }
+    }
+  }
+
+  private void clearByModel(SModel model) {
+    // when model's imports has been changed, tell all EC to re-highlight as imports may affect broken references
+    synchronized (myMapsLock) {
+      Set<EditorComponent> editorComponents = MapSequence.fromMap(myModelToEditorComponentsMap).get(model);
+      if (editorComponents != null) {
+        for (EditorComponent editorComponent : editorComponents) {
+          check_gbukv_a0a0a1a1a61(MapSequence.fromMap(myEditorComponentToErrorMap).get(editorComponent));
+        }
       }
     }
   }
@@ -188,4 +228,10 @@ import com.intellij.openapi.application.ApplicationManager;
     }
   }
 
+  private static void check_gbukv_a0a0a1a1a61(LanguageErrorsComponent checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.clear();
+    }
+
+  }
 }

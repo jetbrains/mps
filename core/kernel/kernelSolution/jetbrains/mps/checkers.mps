@@ -1078,6 +1078,7 @@
     </node>
     <node concept="312cEg" id="6qi2OtU3uew" role="jymVt">
       <property role="TrG5h" value="myInvalidNodes" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="6qi2OtU3uex" role="1B3o_S" />
       <node concept="2hMVRd" id="6qi2OtU3uey" role="1tU5fm">
         <node concept="3Tqbb2" id="6qi2OtU3uez" role="2hN53Y" />
@@ -1165,7 +1166,7 @@
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
       <property role="TrG5h" value="myModel" />
-      <property role="3TUv4t" value="false" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="6se4BTTGccD" role="1B3o_S" />
       <node concept="3uibUv" id="6se4BTTGkj9" role="1tU5fm">
         <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />

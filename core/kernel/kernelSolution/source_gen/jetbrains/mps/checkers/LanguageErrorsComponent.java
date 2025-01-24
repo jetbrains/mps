@@ -87,14 +87,14 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
   private final MultiMap<SNode, ApprovableError> myNodesToErrors = new SetBasedMultiMap<SNode, ApprovableError>();
   private final MultiMap<SNode, NodeReportItem> myPostprocessedNodesToErrors = new SetBasedMultiMap<SNode, NodeReportItem>();
   private final ManyToManyMap<SNode, SNode> myDependenciesToNodesAndViceVersa = new ManyToManyMap<SNode, SNode>();
-  private Set<SNode> myInvalidNodes = new HashSet<SNode>();
+  private final Set<SNode> myInvalidNodes = new HashSet<SNode>();
   private final Set<SNode> myDependenciesToInvalidate = new HashSet<SNode>();
   private final MyModelChangeListener myChangeListener = new MyModelChangeListener();
   private final MyModelUnloadListener myUnloadListener = new MyModelUnloadListener();
   private final Set<SModel> myListenedModels = new HashSet<SModel>();
   private boolean myFullCheckCompleted = false;
   private SNode myCurrentNode = null;
-  private SModel myModel;
+  private final SModel myModel;
 
   public LanguageErrorsComponent(SModel model) {
     myModel = model;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-b12ktf8z6tzio05jd1ibcul45mkelh7">
+<product version="3" modelHash="3ma43rohbccyvvpl58s2ep7ixx95qec">
   <files names="AbstractLeftEditorHighlighterMessage.java:DocumentationProvider.java:EditorCell_Empty.java:EditorUtil.java:ErrorComponents.java:HeadlessEditorComponent.java:HighlightUsagesSupport.java:IntelligentNodeMover.java:LanguageEditorChecker.java:ReferenceResolveInEditor.java:SideTransformInfoUtil.java" />
 </product>
 
