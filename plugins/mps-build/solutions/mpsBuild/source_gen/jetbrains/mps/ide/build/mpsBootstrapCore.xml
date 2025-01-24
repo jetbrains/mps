@@ -107,8 +107,8 @@
     <copy file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" todir="${build.layout}/lib" />
     <copy file="${artifacts.mpsTrueBootstrap}/mps-messages-for-legacy-constraints.jar" todir="${build.layout}/lib" />
     <copy file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" todir="${build.layout}/lib" />
-    <copy file="${artifacts.mpsTrueBootstrap}/kotlinx-metadata-jvm-0.7.0.jar" todir="${build.layout}/lib" />
-    <copy file="${artifacts.mpsTrueBootstrap}/kotlin-compiler-client-embeddable-1.9.20.jar" todir="${build.layout}/lib" />
+    <copy file="${artifacts.mpsTrueBootstrap}/kotlin-metadata-jvm-2.1.0.jar" todir="${build.layout}/lib" />
+    <copy file="${artifacts.mpsTrueBootstrap}/kotlin-compiler-client-embeddable-2.1.0.jar" todir="${build.layout}/lib" />
     <jar destfile="${build.layout}/lib/mps-core.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/vfs.jar1" />
       <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/util-core.jar1" />
@@ -16955,7 +16955,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/trove.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/kotlin-compiler-client-embeddable-1.9.20.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/kotlin-compiler-client-embeddable-2.1.0.jar" />
         <path refid="path.java.library.javac2" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
       </classpath>
@@ -16996,7 +16996,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util-8.jar" />
         <fileset file="${artifacts.IDEA}/lib/trove.jar" />
-        <fileset file="${artifacts.mpsTrueBootstrap}/kotlin-compiler-client-embeddable-1.9.20.jar" />
+        <fileset file="${artifacts.mpsTrueBootstrap}/kotlin-compiler-client-embeddable-2.1.0.jar" />
         <path refid="path.java.library.javac2" />
         <pathelement path="${build.tmp}/java.modules.cycle.1" />
         <path refid="path.jdk.classpath" />

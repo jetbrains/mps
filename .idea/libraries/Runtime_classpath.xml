@@ -22,8 +22,8 @@
       <root url="jar://$PROJECT_DIR$/lib/util-8.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/lib.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/bouncy-castle.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlin-compiler-client-embeddable-1.9.20.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlinx-metadata-jvm-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlin-compiler-client-embeddable-2.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlin-metadata-jvm-2.1.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-frontback.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/trove.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/opentelemetry.jar!/" />
