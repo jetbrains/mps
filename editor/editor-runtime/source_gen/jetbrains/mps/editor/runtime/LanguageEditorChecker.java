@@ -13,6 +13,8 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import jetbrains.mps.nodeEditor.checking.EditorChecker;
+import java.util.List;
+import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.nodeEditor.checking.UpdateResult;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.util.Cancellable;
@@ -30,7 +32,6 @@ import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.checkers.LanguageErrorsComponent;
 import java.util.HashSet;
-import java.util.List;
 import jetbrains.mps.errors.item.QuickFixBase;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -84,6 +85,12 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
       return false;
     }
     return true;
+  }
+
+
+  @Override
+  public void processEvents(List<SModelEvent> events) {
+    myErrorComponents.processEvents(events);
   }
 
   @NotNull
