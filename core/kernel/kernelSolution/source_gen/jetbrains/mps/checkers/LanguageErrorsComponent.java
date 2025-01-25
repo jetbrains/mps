@@ -39,7 +39,6 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.AbstractNodesReadListener;
 import jetbrains.mps.smodel.NodeReadEventsCaster;
 import org.jetbrains.mps.openapi.model.SNodeChangeListenerAdapter;
-import org.jetbrains.mps.openapi.model.SModelListenerBase;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -90,7 +89,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
   private final Set<SNode> myInvalidNodes = new HashSet<SNode>();
   private final Set<SNode> myDependenciesToInvalidate = new HashSet<SNode>();
   private final MyModelChangeListener myChangeListener = new MyModelChangeListener();
-  private final MyModelUnloadListener myUnloadListener = new MyModelUnloadListener();
   private final Set<SModel> myListenedModels = new HashSet<SModel>();
   private boolean myFullCheckCompleted = false;
   private SNode myCurrentNode = null;
@@ -159,14 +157,12 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     if (!(SetSequence.fromSet(myListenedModels).contains(modelDescriptor))) {
       // XX why access to myListenedModels is not synchronized?
       modelDescriptor.addChangeListener(myChangeListener);
-      modelDescriptor.addModelListener(myUnloadListener);
       SetSequence.fromSet(myListenedModels).addElement(modelDescriptor);
     }
   }
 
   private void removeModelListeners(SModel m) {
     m.removeChangeListener(myChangeListener);
-    m.removeModelListener(myUnloadListener);
   }
 
   private void invalidate() {
@@ -371,6 +367,18 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     return (Result) result[0];
   }
 
+  public void processModelGone(SModel model, SRepository repository) {
+    if (!(SetSequence.fromSet(myListenedModels).contains(model))) {
+      return;
+    }
+    // I suppose addDependency->addModelListener registers myModel in myListenedModels.
+    if (myModel != model) {
+      invalidateDependencies(getDependenciesToInvalidate(model, repository));
+    }
+    removeModelListeners(model);
+    SetSequence.fromSet(myListenedModels).removeElement(model);
+  }
+
   public class MyModelChangeListener extends SNodeChangeListenerAdapter {
     @Override
     public void referenceChanged(@NotNull SReferenceChangeEvent event) {
@@ -392,17 +400,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     @Override
     public void propertyChanged(@NotNull SPropertyChangeEvent event) {
       processEvent(event);
-    }
-  }
-
-  private class MyModelUnloadListener extends SModelListenerBase {
-    @Override
-    public void modelDetached(SModel model, SRepository repository) {
-      if (myModel != model) {
-        invalidateDependencies(getDependenciesToInvalidate(model, repository));
-      }
-      removeModelListeners(model);
-      SetSequence.fromSet(myListenedModels).removeElement(model);
     }
   }
 

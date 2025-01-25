@@ -21,10 +21,11 @@ import jetbrains.mps.smodel.event.SModelImportEvent;
 import jetbrains.mps.smodel.event.SModelDevKitEvent;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.smodel.SModelInternal;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -112,11 +113,15 @@ import com.intellij.openapi.application.ApplicationManager;
       return !(module.isReadOnly());
     }
     @Override
-    protected void stopListening(SModel model) {
+    protected void stopListening(final SModel model) {
+      final Wrappers._T<ArrayList<LanguageErrorsComponent>> cc = new Wrappers._T<ArrayList<LanguageErrorsComponent>>();
       synchronized (myMapsLock) {
         removeByModel(model);
+        cc.value = new ArrayList<>(MapSequence.fromMap(myEditorComponentToErrorMap).count());
+        Sequence.fromIterable(MapSequence.fromMap(myEditorComponentToErrorMap).values()).visitAll((e) -> cc.value.add(e));
       }
       removeModelListener(model);
+      cc.value.forEach((it) -> it.processModelGone(model, myRepository));
     }
   };
 
