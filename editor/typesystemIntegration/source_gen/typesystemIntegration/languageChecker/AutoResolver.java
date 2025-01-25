@@ -20,7 +20,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.checkers.LanguageErrorsComponent;
+import jetbrains.mps.editor.runtime.LanguageErrorsComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SReference;

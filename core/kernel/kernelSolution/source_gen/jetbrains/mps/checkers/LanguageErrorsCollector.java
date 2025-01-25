@@ -12,7 +12,7 @@ import org.jetbrains.mps.openapi.model.SNode;
  * and dependency tracking facility. 
  * <p>
  * Here by "dependency" is meant any node that is "accessed" while running checks on the "current" node, 
- * and only makes sense when used in conjunction with {@link jetbrains.mps.checkers.LanguageErrorsComponent }.
+ * and only makes sense when used in conjunction with {@code LanguageErrorsComponent}.
  * <p>
  * The method {@link jetbrains.mps.checkers.LanguageErrorsCollector#runCheckingAction(_FunctionTypes._return_P0_E0<? extends Result>) } can be used to automatically track and add all dependencies
  * that arise when the {@code action} is executed. 

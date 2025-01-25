@@ -7,7 +7,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import java.util.Map;
 import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.checkers.LanguageErrorsComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -35,10 +34,10 @@ import jetbrains.mps.smodel.event.SModelDevKitEvent;
 /**
  * A part of {@link jetbrains.mps.editor.runtime.LanguageEditorChecker }.
  * <p>
- * Aggregates several instances of {@link jetbrains.mps.checkers.LanguageErrorsComponent } by maintaining a map
+ * Aggregates several instances of {@link jetbrains.mps.editor.runtime.LanguageErrorsComponent } by maintaining a map
  * from {@link org.jetbrains.mps.openapi.model.SModel } to a set of {@link jetbrains.mps.nodeEditor.EditorComponent },
  * and for each editor component a map to the corresponding instance of 
- * {@link jetbrains.mps.checkers.LanguageErrorsComponent }.
+ * {@link jetbrains.mps.editor.runtime.LanguageErrorsComponent }.
  */
 @GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/8288306652661982667", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 /*package*/ class ErrorComponents {
