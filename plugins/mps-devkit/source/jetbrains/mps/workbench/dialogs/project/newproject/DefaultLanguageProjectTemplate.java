@@ -39,6 +39,7 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   private final NameLocationPanel mySettings;
   private final JCheckBox myRuntimeSolution;
   private final JCheckBox mySandboxSolution;
+  private final JCheckBox myGenerator;
 
   public DefaultLanguageProjectTemplate() {
     myRuntimeSolution = new JCheckBox("Create Runtime Solution");
@@ -55,17 +56,26 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
         fireSettingsChanged();
       }
     });
+    myGenerator = new JCheckBox("Create Generator");
+    myGenerator.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+        fireSettingsChanged();
+      }
+    });
     mySettings = new NameLocationPanel(new File("."), "Language name:", "Language file location:") {
       {
         // logic derived from NewLanguageSettings, see NewLanguage_Action for further considerations.
         add(myRuntimeSolution, 4, 0.0);
         add(mySandboxSolution, 5, 0.0);
+        add(myGenerator, 6, 0.0);
       }
       @Override
       public void reset() {
         super.reset();
         myRuntimeSolution.setSelected(false);
         mySandboxSolution.setSelected(false);
+        myGenerator.setSelected(true);
       }
     };
     mySettings.withDefaults("NewLanguage", "languages");
@@ -106,7 +116,7 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   public TemplateFiller getTemplateFiller() {
     return project -> StartupManager.getInstance(project.getProject()).runAfterOpened(() -> project.getModelAccess().executeCommandInEDT(() -> {
       final LanguageAndSolutionsProducer lp = new LanguageAndSolutionsProducer(project);
-      lp.withRuntimeSolution(myRuntimeSolution.isSelected()).withSandboxSolution(mySandboxSolution.isSelected());
+      lp.withRuntimeSolution(myRuntimeSolution.isSelected()).withSandboxSolution(mySandboxSolution.isSelected()).withGenerator(myGenerator.isSelected());
       try {
         lp.create(mySettings.getModuleName(), project.getFileSystem().getFile(mySettings.getModuleLocation()));
       } catch (IllegalStateException | IllegalArgumentException e) {
