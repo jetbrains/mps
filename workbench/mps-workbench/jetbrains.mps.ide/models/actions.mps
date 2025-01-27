@@ -1058,9 +1058,6 @@
         <property role="TrG5h" value="make" />
       </node>
       <node concept="2a7GMi" id="4pH6NAGIHxF" role="ftvYc" />
-      <node concept="tCFHf" id="hGnMFMX" role="ftvYc">
-        <ref role="tCJdB" node="hGnLICq" resolve="CloneModel" />
-      </node>
       <node concept="tCFHf" id="hZikBtS" role="ftvYc">
         <ref role="tCJdB" node="hZijjTd" resolve="CopyModelName" />
       </node>
@@ -1071,14 +1068,17 @@
         <ref role="tCJdB" node="4NbzjXXKNE8" resolve="PasteNode" />
       </node>
       <node concept="2a7GMi" id="hyabVYZ" role="ftvYc" />
-      <node concept="10WQ6h" id="Ymhd0bfr94" role="ftvYc">
-        <property role="TrG5h" value="modelUsages" />
+      <node concept="10WQ6h" id="1gEYwydCqUZ" role="ftvYc">
+        <property role="TrG5h" value="check" />
+      </node>
+      <node concept="tCFHf" id="hZstm8v" role="ftvYc">
+        <ref role="tCJdB" node="hZs6NFo" resolve="OptimizeModelImports" />
+      </node>
+      <node concept="tCFHf" id="hGnoTz2" role="ftvYc">
+        <ref role="tCJdB" node="hGnoi8Q" resolve="FixModuleImports" />
       </node>
       <node concept="10WQ6h" id="7TKpiq3XB37" role="ftvYc">
         <property role="TrG5h" value="analyze" />
-      </node>
-      <node concept="10WQ6h" id="1gEYwydCqUZ" role="ftvYc">
-        <property role="TrG5h" value="check" />
       </node>
       <node concept="2a7GMi" id="6I71fHozd1X" role="ftvYc" />
       <node concept="10WQ6h" id="hMfehyW" role="ftvYc">
@@ -1089,17 +1089,8 @@
         <property role="TrG5h" value="favorites" />
       </node>
       <node concept="2a7GMi" id="hyac280" role="ftvYc" />
-      <node concept="tCFHf" id="hZstm8v" role="ftvYc">
-        <ref role="tCJdB" node="hZs6NFo" resolve="OptimizeModelImports" />
-      </node>
-      <node concept="tCFHf" id="hGnoTz2" role="ftvYc">
-        <ref role="tCJdB" node="hGnoi8Q" resolve="FixModuleImports" />
-      </node>
-      <node concept="tCFHf" id="38LNA6Kd9E2" role="ftvYc">
-        <ref role="tCJdB" node="38LNA6KbjqB" resolve="ConvertToFilePerRootPersistence" />
-      </node>
-      <node concept="tCFHf" id="m_plemQDf4" role="ftvYc">
-        <ref role="tCJdB" node="m_plemQeXG" resolve="ConvertToDefaultPersistence" />
+      <node concept="tCFHf" id="hGnMFMX" role="ftvYc">
+        <ref role="tCJdB" node="hGnLICq" resolve="CloneModel" />
       </node>
       <node concept="tCFHf" id="36tV70ZqvAV" role="ftvYc">
         <ref role="tCJdB" node="36tV70Zqv$M" resolve="DeleteModels" />
@@ -1111,11 +1102,17 @@
           <property role="3clFbU" value="true" />
         </node>
       </node>
-      <node concept="2a7GMi" id="4VblCrNX9TI" role="ftvYc" />
-      <node concept="10WQ6h" id="5WjfCaA2my1" role="ftvYc">
-        <property role="TrG5h" value="run" />
+      <node concept="tCFHf" id="38LNA6Kd9E2" role="ftvYc">
+        <ref role="tCJdB" node="38LNA6KbjqB" resolve="ConvertToFilePerRootPersistence" />
       </node>
-      <node concept="2a7GMi" id="5WjfCaA2mvN" role="ftvYc" />
+      <node concept="tCFHf" id="m_plemQDf4" role="ftvYc">
+        <ref role="tCJdB" node="m_plemQeXG" resolve="ConvertToDefaultPersistence" />
+      </node>
+      <node concept="2a7GMi" id="4VblCrNX9TI" role="ftvYc" />
+      <node concept="10WQ6h" id="3WT5vWoZ9r_" role="ftvYc">
+        <property role="TrG5h" value="scripts" />
+      </node>
+      <node concept="2a7GMi" id="hyadnz7" role="ftvYc" />
       <node concept="tCFHf" id="cQiGNPbKJ" role="ftvYc">
         <ref role="tCJdB" node="hGAswG7" resolve="RevertMemoryChanges" />
       </node>
@@ -1128,13 +1125,17 @@
       <node concept="10WQ6h" id="hLQr8p5" role="ftvYc">
         <property role="TrG5h" value="ideavcs" />
       </node>
-      <node concept="2a7GMi" id="hyadnz7" role="ftvYc" />
-      <node concept="10WQ6h" id="3WT5vWoZ9r_" role="ftvYc">
-        <property role="TrG5h" value="scripts" />
+      <node concept="2a7GMi" id="5WjfCaA2mvN" role="ftvYc" />
+      <node concept="10WQ6h" id="5WjfCaA2my1" role="ftvYc">
+        <property role="TrG5h" value="run" />
       </node>
       <node concept="2a7GMi" id="4pH6NAGIG89" role="ftvYc" />
       <node concept="10WQ6h" id="2blMBvV$tE0" role="ftvYc">
         <property role="TrG5h" value="showHelp" />
+      </node>
+      <node concept="2a7GMi" id="4Mhwzy503nT" role="ftvYc" />
+      <node concept="10WQ6h" id="Ymhd0bfr94" role="ftvYc">
+        <property role="TrG5h" value="modelUsages" />
       </node>
       <node concept="2a7GMi" id="3WT5vWoZ9rB" role="ftvYc" />
       <node concept="tCFHf" id="hYoRn0d" role="ftvYc">
