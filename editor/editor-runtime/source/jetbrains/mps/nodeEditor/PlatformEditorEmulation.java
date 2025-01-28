@@ -736,7 +736,11 @@ public final class PlatformEditorEmulation implements Editor {
         if (isDisposed()) {
           return;
         }
-        jetbrains.mps.openapi.editor.cells.EditorCell cell = myEditorComponent.getRootCell().findLeaf(event.getX(), event.getY());
+        final jetbrains.mps.nodeEditor.cells.EditorCell rootCell = myEditorComponent.getRootCell();
+        if (rootCell == null) {
+          return;
+        }
+        jetbrains.mps.openapi.editor.cells.EditorCell cell = rootCell.findLeaf(event.getX(), event.getY());
         if (cell == null) {
           return;
         }
