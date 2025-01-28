@@ -22,18 +22,9 @@ import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.smodel.SModelFileTracker;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.openapi.vcs.FileStatusListener;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.ModelsEventsCollector;
-import com.intellij.util.containers.MultiMap;
-import org.jetbrains.mps.openapi.module.SRepository;
-import java.util.List;
-import jetbrains.mps.smodel.event.SModelEvent;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.Collection;
-import java.util.ArrayList;
+import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.openapi.project.ProjectManagerListener;
 
 @GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/3161776655522589894", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
@@ -41,14 +32,12 @@ public class CurrentDifferenceRegistry {
   private final Map<SModelReference, CurrentDifference> myCurrentDifferences = MapSequence.fromMap(new HashMap<SModelReference, CurrentDifference>());
   private final SRepositoryContentAdapter myModelRepositoryListener = new MyRepositoryListener();
   private final SimpleCommandQueue myCommandQueue;
-  private final MyEventsCollector myEventsCollector;
   private final CurrentDifferenceBroadcaster myGlobalBroadcaster;
   private final MyFileStatusListener myFileStatusListener = new MyFileStatusListener();
   private final MPSProject myMpsProject;
 
   public CurrentDifferenceRegistry(@NotNull Project project) {
     myMpsProject = ProjectHelper.fromIdeaProject(project);
-    myEventsCollector = new MyEventsCollector(myMpsProject.getRepository());
     myCommandQueue = new SimpleCommandQueue("ChangesManager command queue", project);
     myGlobalBroadcaster = new CurrentDifferenceBroadcaster(myCommandQueue);
   }
@@ -71,7 +60,6 @@ public class CurrentDifferenceRegistry {
       }
       MapSequence.fromMap(myCurrentDifferences).clear();
     }
-    myEventsCollector.dispose();
     myCommandQueue.dispose();
   }
 
@@ -173,14 +161,6 @@ public class CurrentDifferenceRegistry {
     return myGlobalBroadcaster;
   }
 
-  /*package*/ void addEventCollector(SModel model, SModelCommandListener listener) {
-    myEventsCollector.addListener(model, listener);
-  }
-
-  /*package*/ void removeEventCollector(SModel model, SModelCommandListener listener) {
-    myEventsCollector.removeListener(model, listener);
-  }
-
   public static CurrentDifferenceRegistry getInstance(Project project) {
     return project.getService(CurrentDifferenceRegistry.class);
   }
@@ -215,7 +195,9 @@ public class CurrentDifferenceRegistry {
     protected void startListening(@NotNull SModel model) {
       if (isIncluded(model)) {
         // we care about modelReplaced event
+        // FIXME now that each CurrentDifference/ChangeTracking got own model listener, perhaps, can utilize them? Just need to address ChangesTracking#doTracking trick.
         model.addModelListener(this);
+        // FWIW, it's highly unlikely we could track model which hasn't been tracked in a repository yet, therefore updateModelIfTracked is likely NO-OP
         updateModelIfTracked(model.getReference(), false);
       }
     }
@@ -235,44 +217,6 @@ public class CurrentDifferenceRegistry {
       updateModelIfTracked(model.getReference(), true);
     }
 
-  }
-
-  private static class MyEventsCollector extends ModelsEventsCollector {
-    private final MultiMap<SModelReference, SModelCommandListener> myListeners = new MultiMap<SModelReference, SModelCommandListener>();
-
-    /*package*/ MyEventsCollector(SRepository repo) {
-      super(repo.getModelAccess());
-    }
-
-    public void addListener(SModel model, SModelCommandListener listener) {
-      if (!(myListeners.containsKey(model.getReference()))) {
-        //  first time we see the model, tell EventCollector we are interested
-        startListeningToModel(model);
-      }
-      myListeners.putValue(model.getReference(), listener);
-    }
-    private void removeListener(SModel model, SModelCommandListener listener) {
-      myListeners.remove(model.getReference(), listener);
-      if (!(myListeners.containsKey(model.getReference()))) {
-        // no more listeners, no reason to listen any more
-        stopListeningToModel(model);
-      }
-    }
-    @Override
-    protected void eventsHappened(List<SModelEvent> list) {
-      MultiMap<SModelReference, SModelEvent> modelToEvents = new MultiMap<SModelReference, SModelEvent>();
-      for (SModelEvent event : ListSequence.fromList(list)) {
-        SModelReference mr = event.getModel().getReference();
-        modelToEvents.putValue(mr, event);
-      }
-      for (SModelReference mr : SetSequence.fromSet(modelToEvents.keySet())) {
-        Collection<SModelCommandListener> listeners = myListeners.get(mr);
-        final ArrayList<SModelEvent> eventsForTheModel = new ArrayList<SModelEvent>(modelToEvents.get(mr));
-        for (SModelCommandListener l : new ArrayList<SModelCommandListener>(listeners)) {
-          l.eventsHappenedInCommand(eventsForTheModel);
-        }
-      }
-    }
   }
 
   /**

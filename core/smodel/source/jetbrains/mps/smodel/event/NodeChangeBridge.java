@@ -11,9 +11,11 @@ import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 /**
  * A way to produce legacy {@link SModelEvent} based on new {@link SNodeChangeListener} events.
@@ -28,10 +30,33 @@ public class NodeChangeBridge implements SNodeChangeListener {
     return this;
   }
 
+  public boolean isActive() {
+    return myEnabled.get();
+  }
+
   public void drain(Consumer<? super SModelEvent> consumer) {
     synchronized (myEvents) {
       myEvents.forEach(consumer);
       myEvents.clear();
+    }
+  }
+
+  protected List<SModelEvent> drainToList() {
+    synchronized (myEvents) {
+      if (myEvents.isEmpty()) {
+        return Collections.emptyList();
+      }
+      ArrayList<SModelEvent> rv = new ArrayList<>(myEvents);
+      myEvents.clear();
+      return rv;
+    }
+  }
+
+  protected void recordEvents(@NotNull Stream<SModelEvent> events) {
+    if (myEnabled.get()) {
+      synchronized (myEvents) {
+        events.forEach(myEvents::add);
+      }
     }
   }
 

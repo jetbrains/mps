@@ -62,6 +62,11 @@ import jetbrains.mps.vcs.diff.changes.NodeChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
 import jetbrains.mps.vcs.diff.changes.HierarchicalNodeGroupChange;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
+import jetbrains.mps.smodel.event.NodeChangeBridge;
+import org.jetbrains.mps.openapi.model.SNodeChangeListener;
+import org.jetbrains.mps.openapi.repository.CommandListener;
+import org.jetbrains.mps.openapi.model.SModelListener;
+import jetbrains.mps.smodel.event.DependencyChangeBridge;
 import jetbrains.mps.smodel.event.SModelEventVisitorAdapter;
 import java.util.Map;
 import java.util.HashMap;
@@ -103,8 +108,9 @@ public final class ChangesTracking {
   private final CurrentDifference myDifference;
   private final SimpleCommandQueue myQueue;
   private final EditableSModel myModelDescriptor;
-  private final CurrentDifferenceRegistry myRegistry;
-  private final SModelCommandListener myEventCollector = new MyEventsCollector();
+
+  private final MyEventProcessor myEventProcessor = new MyEventProcessor();
+  private final EventCollector myEventCollector = new EventCollector();
   private boolean myDisposed = false;
   private boolean myDoTracking = false;
   private final BidirectionalMultiMap<SNodeId, ModelChange> myNodesToChanges = new BidirectionalMultiMap<SNodeId, ModelChange>();
@@ -119,26 +125,37 @@ public final class ChangesTracking {
     myProject = registry.getProject();
     myModelDescriptor = myDifference.getModelDescriptor();
     myQueue = registry.getCommandQueue();
-    myRegistry = registry;
     doTracking(isTracked());
   }
 
   private void doTracking(boolean flag) {
     if (myDoTracking != flag) {
       if (flag) {
-        myRegistry.addEventCollector(myModelDescriptor, myEventCollector);
+        installEventCollector();
       } else {
-        myRegistry.removeEventCollector(myModelDescriptor, myEventCollector);
+        uninstallEventCollector();
       }
       myDoTracking = flag;
     }
+  }
+
+  private void installEventCollector() {
+    myModelDescriptor.addModelListener(myEventCollector);
+    myModelDescriptor.addChangeListener(myEventCollector);
+    myModelDescriptor.getRepository().getModelAccess().addCommandListener(myEventCollector);
+  }
+
+  private void uninstallEventCollector() {
+    myModelDescriptor.getRepository().getModelAccess().removeCommandListener(myEventCollector);
+    myModelDescriptor.removeModelListener(myEventCollector);
+    myModelDescriptor.removeChangeListener(myEventCollector);
   }
 
   public void dispose() {
     synchronized (LOCK) {
       if (!(myDisposed)) {
         myDisposed = true;
-        myRegistry.removeEventCollector(myModelDescriptor, myEventCollector);
+        uninstallEventCollector();
         myQueue.runTask(() -> myDifference.removeChangeSet());
       }
     }
@@ -396,7 +413,7 @@ public final class ChangesTracking {
 
   @Nullable
   private SNode getOldNode(@NotNull SNodeId id) {
-    return check_5iuzi5_a0a15(check_5iuzi5_a0a0a15(myDifference.getChangeSet()), id);
+    return check_5iuzi5_a0a65(check_5iuzi5_a0a0a65(myDifference.getChangeSet()), id);
   }
 
   private void runUpdateTask(final _FunctionTypes._void_P0_E0 task, SNode currentNode, final SModelEvent event) {
@@ -471,11 +488,39 @@ public final class ChangesTracking {
     return fileSystem.asVirtualFile(f);
   }
 
-  public class MyEventsCollector extends SModelEventVisitorAdapter implements SModelCommandListener {
+  private class EventCollector extends NodeChangeBridge implements SNodeChangeListener, CommandListener, SModelListener {
+
+    @Override
+    public void commandStarted() {
+      active(true);
+    }
+    @Override
+    public void commandFinished() {
+      active(false);
+      // FIXME consider refactoring of MyEventProcessor to use SNodeChangeListener notifications instead of SModelEvent
+      List<SModelEvent> events = drainToList();
+      if (!(events.isEmpty())) {
+        myEventProcessor.eventsHappenedInCommand(events);
+      }
+    }
+
+    @Override
+    public void dependenciesChanged(SModel model, SModelListener.DependencyChange change) {
+      if (!(isActive())) {
+        return;
+      }
+      if (change instanceof DependencyChangeBridge) {
+        recordEvents(((DependencyChangeBridge) change).originalEvents());
+      } else {
+        assert false : "FIXME implement visitor for DependencyChange";
+      }
+    }
+  }
+
+  private class MyEventProcessor extends SModelEventVisitorAdapter {
     private Map<SNode, Set<SContainmentLink>> childChanged;
     private Set<SNodeId> rootsDeleted;
 
-    @Override
     public void eventsHappenedInCommand(List<SModelEvent> events) {
       childChanged = MapSequence.fromMap(new HashMap<SNode, Set<SContainmentLink>>());
       rootsDeleted = new HashSet<SNodeId>();
@@ -595,7 +640,7 @@ public final class ChangesTracking {
         myLastParentAndNewChildrenIds = MultiTuple.<SNodeId,List<SNodeId>>from(parentId, childrenRightAfterEvent);
         buildAndAddChanges((ChangeSetBuilder b) -> {
           SNode oldParentNode = getOldNode(parentId);
-          if (oldParentNode != null && ListSequence.fromList(childrenRightAfterEvent).all((it) -> check_5iuzi5_a0a0a0a0b0a0e0a0p0j36(check_5iuzi5_a0a0a0a0a0b0a0e0a0p0j36(myDifference.getChangeSet()), it) != null)) {
+          if (oldParentNode != null && ListSequence.fromList(childrenRightAfterEvent).all((it) -> check_5iuzi5_a0a0a0a0b0a0e0a0p0j07(check_5iuzi5_a0a0a0a0a0b0a0e0a0p0j07(myDifference.getChangeSet()), it) != null)) {
             List<SNodeId> oldChildrenIds = Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(oldParentNode, childRole)).select((it) -> it.getNodeId()).toList();
             b.buildForNodeRole(childRole, oldChildrenIds, childrenRightAfterEvent, parentId, parentId);
           }
@@ -636,7 +681,7 @@ public final class ChangesTracking {
     @Override
     public void visitLanguageEvent(SModelLanguageEvent event) {
       final SLanguage eventLang = event.getEventLanguage();
-      final SModelInternal model = as_5iuzi5_a0a1a31mc(event.getModel(), SModelInternal.class);
+      final SModelInternal model = as_5iuzi5_a0a1a31tc(event.getModel(), SModelInternal.class);
       final boolean deleted = !(event.isAdded());
       runUpdateTask(() -> {
         // XXX I have no idea why we skip adding a change object if we successfully removed one or more queued earlier.
@@ -671,31 +716,31 @@ public final class ChangesTracking {
       }, null, event);
     }
   }
-  private static SNode check_5iuzi5_a0a15(SModel checkedDotOperand, SNodeId id) {
+  private static SNode check_5iuzi5_a0a65(SModel checkedDotOperand, SNodeId id) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNode(id);
     }
     return null;
   }
-  private static SModel check_5iuzi5_a0a0a15(ChangeSet checkedDotOperand) {
+  private static SModel check_5iuzi5_a0a0a65(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getOldModel();
     }
     return null;
   }
-  private static SNode check_5iuzi5_a0a0a0a0b0a0e0a0p0j36(SModel checkedDotOperand, SNodeId it) {
+  private static SNode check_5iuzi5_a0a0a0a0b0a0e0a0p0j07(SModel checkedDotOperand, SNodeId it) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNode(it);
     }
     return null;
   }
-  private static SModel check_5iuzi5_a0a0a0a0a0b0a0e0a0p0j36(ChangeSet checkedDotOperand) {
+  private static SModel check_5iuzi5_a0a0a0a0a0b0a0e0a0p0j07(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNewModel();
     }
     return null;
   }
-  private static <T> T as_5iuzi5_a0a1a31mc(Object o, Class<T> type) {
+  private static <T> T as_5iuzi5_a0a1a31tc(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 
