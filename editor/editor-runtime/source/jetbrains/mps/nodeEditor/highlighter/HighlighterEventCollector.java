@@ -17,14 +17,16 @@ package jetbrains.mps.nodeEditor.highlighter;
 
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.smodel.ModelsEventsCollector;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
+import jetbrains.mps.smodel.event.DependencyChangeBridge;
+import jetbrains.mps.smodel.event.NodeChangeBridge;
 import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.smodel.event.SModelReplacedEvent;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
+import org.jetbrains.mps.openapi.repository.CommandListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +40,12 @@ public class HighlighterEventCollector {
 
   private final List<SModelEvent> myLastEvents = new ArrayList<>();
 
-  private ModelsEventsCollector myEventsCollector;
+  private final NodeChangeBridge myEventsCollector = new NodeChangeBridge();
+
+  private final WriteListener myWriteListener = new WriteListener();
 
   // Listen to modelReplaced event.
-  private final SRepositoryContentAdapter myModelReloadListener = new SRepositoryContentAdapter() {
+  private final SRepositoryContentAdapter myModelListener = new SRepositoryContentAdapter() {
 
     @Override
     protected boolean isIncluded(SModule module) {
@@ -51,12 +55,12 @@ public class HighlighterEventCollector {
     @Override
     protected void startListening(SModel model) {
       model.addModelListener(this);
-      getEventsCollector().startListeningToModel(model);
+      model.addChangeListener(myEventsCollector);
     }
 
     @Override
     protected void stopListening(SModel model) {
-      getEventsCollector().stopListeningToModel(model);
+      model.removeChangeListener(myEventsCollector);
       model.removeModelListener(this);
     }
 
@@ -73,20 +77,30 @@ public class HighlighterEventCollector {
         module.forEachRegisteredModel(m -> myLastEvents.add(new SModelReplacedEvent(m)));
       }
     }
+
+    @Override
+    public void dependenciesChanged(SModel model, DependencyChange change) {
+      if (change instanceof DependencyChangeBridge) {
+        synchronized (myEventsLock) {
+          ((DependencyChangeBridge) change).originalEvents().forEach(myLastEvents::add);
+        }
+      } else {
+        // transition code, just to move on quickly. As long as Highlighter sticks to SModelEvent API, no reason to translate events back and forth.
+        assert false : "At the moment, we rely on specific DependencyChange implementation";
+      }
+    }
   };
 
-  /*package*/ ModelsEventsCollector getEventsCollector() {
-    return myEventsCollector;
-  }
 
   /**
    * Returns a copy of the internal list of collected events and clears the internal list.
    */
   public List<SModelEvent> drainEvents() {
-    final List<SModelEvent> events = new ArrayList<>();
+    final List<SModelEvent> events;
     synchronized (myEventsLock) {
-      events.addAll(myLastEvents);
+      events = new ArrayList<>(myLastEvents);
       myLastEvents.clear();
+      myEventsCollector.drain(events::add);
     }
     return events;
   }
@@ -98,15 +112,8 @@ public class HighlighterEventCollector {
     if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
-    myEventsCollector = new ModelsEventsCollector(repository.getModelAccess()) {
-      @Override
-      protected void eventsHappened(List<SModelEvent> events) {
-        synchronized (myEventsLock) {
-          myLastEvents.addAll(events);
-        }
-      }
-    };
-    new RepoListenerRegistrar(repository, myModelReloadListener).attach();
+    new RepoListenerRegistrar(repository, myModelListener).attach();
+    myWriteListener.install(repository);
   }
 
   /**
@@ -116,8 +123,33 @@ public class HighlighterEventCollector {
     if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
-    new RepoListenerRegistrar(repository, myModelReloadListener).detach();
-    myEventsCollector.dispose();
-    myEventsCollector = null;
+    myWriteListener.uninstall(repository);
+    new RepoListenerRegistrar(repository, myModelListener).detach();
+  }
+
+  // I don't quite see a reason to track "inside command" state, but it's what ModelsEventsCollector does.
+  // I stick to 'command' only (although it's possible to modify models inside 'write', especially actions like added/removed imports)
+  // as Highlighter is about user interaction, and with user, modifications generally happen inside a command.
+  private class WriteListener implements CommandListener {
+
+    void install(SRepository repository) {
+      repository.getModelAccess().addCommandListener(this);
+      myEventsCollector.active(false); // (sic!), only command start activates collection.
+    }
+
+    void uninstall(SRepository repository) {
+      myEventsCollector.active(false);
+      repository.getModelAccess().removeCommandListener(this);
+    }
+
+    @Override
+    public void commandStarted() {
+      myEventsCollector.active(true);
+    }
+
+    @Override
+    public void commandFinished() {
+      myEventsCollector.active(false);
+    }
   }
 }
