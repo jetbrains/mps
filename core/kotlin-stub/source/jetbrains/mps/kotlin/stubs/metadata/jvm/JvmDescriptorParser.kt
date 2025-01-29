@@ -1,6 +1,5 @@
 package jetbrains.mps.kotlin.stubs.metadata.jvm
 
-import PackageName
 import jetbrains.mps.baseLanguage.javastub.ClassifierLoader
 import jetbrains.mps.kotlin.stubs.smodel.jvm.KotlinAwareClassifierLoader
 import jetbrains.mps.kotlin.stubs.loading.PackageName
