@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -133,6 +133,17 @@ public final class ModelListenerDispatch implements org.jetbrains.mps.openapi.mo
     for (SModelListener l : myListeners) {
       try {
         l.modelDetached(model, repository);
+      } catch (Throwable t) {
+        reportListenerError(l, t);
+      }
+    }
+  }
+
+  @Override
+  public void dependenciesChanged(SModel model, DependencyChange change) {
+    for (SModelListener l : myListeners) {
+      try {
+        l.dependenciesChanged(model, change);
       } catch (Throwable t) {
         reportListenerError(l, t);
       }
