@@ -48,12 +48,14 @@ public final class ModelEventDispatch {
   private final SModel myModel;
   // same as myModel, casted to EditableSModel for convenience, or null if myModel is not editable
   private final EditableSModel myEditableSModel;
+  private final Runnable myOnNodeChange;
   private final List<SNodeAccessListener> myAccessListeners = new CopyOnWriteArrayList<>();
   private final List<SNodeChangeListener> myChangeListeners = new CopyOnWriteArrayList<>();
 
-  public ModelEventDispatch(@NotNull SModel model) {
+  public ModelEventDispatch(@NotNull SModel model, @NotNull Runnable onNodeChange) {
     myModel = model;
     myEditableSModel = model instanceof EditableSModel ? (EditableSModel) model : null;
+    myOnNodeChange = onNodeChange;
   }
 
   public void addAccessListener(@Nullable SNodeAccessListener l) {
@@ -114,6 +116,7 @@ public final class ModelEventDispatch {
 
   public void fireReferenceChange(SNode node, SReferenceLink role, SReference oldValue, SReference newValue) {
     markEditableModelChanged();
+    myOnNodeChange.run();
     if (myChangeListeners.isEmpty()) {
       return;
     }
@@ -125,6 +128,7 @@ public final class ModelEventDispatch {
 
   public void firePropertyChange(SNode node, SProperty property, String oldValue, String newValue) {
     markEditableModelChanged();
+    myOnNodeChange.run();
     if (myChangeListeners.isEmpty()) {
       return;
     }
@@ -136,6 +140,7 @@ public final class ModelEventDispatch {
 
   public void fireNodeAdd(SNode node, SContainmentLink role, SNode child) {
     markEditableModelChanged();
+    myOnNodeChange.run();
     if (myChangeListeners.isEmpty()) {
       return;
     }
@@ -147,6 +152,7 @@ public final class ModelEventDispatch {
 
   public void fireNodeRemove(SNode node, SContainmentLink role, SNode child) {
     markEditableModelChanged();
+    myOnNodeChange.run();
     if (myChangeListeners.isEmpty()) {
       return;
     }
@@ -166,6 +172,8 @@ public final class ModelEventDispatch {
 
   // instead of EditableSModelBase attaching a change listener to itself to update its 'changed' state,
   // we update this state from event dispatcher
+  // Note, there's no distinct 'changed' event for EditableSModel, any model receives
+  // SModelListener#nodesChanged() with a help of myOnNodeChange.run()
   private void markEditableModelChanged() {
     if (myEditableSModel != null) {
       myEditableSModel.setChanged(true);

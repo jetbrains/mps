@@ -104,6 +104,15 @@ public interface SModelListener {
   }
 
   /**
+   * General notification when there a node changed in a model (changed property/reference, added/removed root/child).
+   * For use when specific change is of no importance, otherwise stick to {@link SNodeChangeListener}
+   * @param model affected model, never null
+   * @since 2025.1
+   */
+  default void nodesChanged(SModel model) {
+  }
+
+  /**
    * @see #dependenciesChanged(SModel, DependencyChange)
    * @since 2025.1
    */

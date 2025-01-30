@@ -30,7 +30,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * (using listener interface to fire events).
  * XXX NOTE: experimental code. I don't like multicast way of dispatch. To me, model instance as cons argument and fire* methods without
  * arguments is more appealing way of dispatching event.
- *
+ * <br/>
  * XXX Perhaps, shall rename {@link ModelEventDispatch} to {@code NodeEventDispatch} to avoid confusion, or even combine the two?
  * @author Artem Tikhomirov
  * @since 3.4
@@ -144,6 +144,17 @@ public final class ModelListenerDispatch implements org.jetbrains.mps.openapi.mo
     for (SModelListener l : myListeners) {
       try {
         l.dependenciesChanged(model, change);
+      } catch (Throwable t) {
+        reportListenerError(l, t);
+      }
+    }
+  }
+
+  @Override
+  public void nodesChanged(SModel model) {
+    for (SModelListener l : myListeners) {
+      try {
+        l.nodesChanged(model);
       } catch (Throwable t) {
         reportListenerError(l, t);
       }

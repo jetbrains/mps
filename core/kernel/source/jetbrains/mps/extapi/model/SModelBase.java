@@ -87,7 +87,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   protected SModelBase(@NotNull SModelReference modelReference, @NotNull DataSource source) {
     myModelReference = modelReference;
     mySource = source;
-    myNodeEventDispatch = new ModelEventDispatch(this);
+    myNodeEventDispatch = new ModelEventDispatch(this, this::fireModelNodesChanged);
     myModelEventDispatch = new ModelListenerDispatch();
   }
 
@@ -449,6 +449,10 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
   @Override
   protected void fireModelImportRemoved(SModelReference ref) {
     myModelEventDispatch.dependenciesChanged(this, new DependencyChangeBridge(new SModelImportEvent(this, ref, false)));
+  }
+
+  protected void fireModelNodesChanged() {
+    myModelEventDispatch.nodesChanged(this);
   }
 
   @Override
