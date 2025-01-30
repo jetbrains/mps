@@ -101,6 +101,26 @@ public class ProjectViewImpl extends com.intellij.ide.projectView.impl.ProjectVi
   }
 
   @Override
+  public boolean isFoldersAlwaysOnTop(String paneId) {
+    // force the option to always be true; MPS-38219
+    if (ProjectViewPane.ID.equals(paneId)) return true;
+    return super.isFoldersAlwaysOnTop(paneId);
+  }
+
+  @Override
+  @SuppressWarnings("removal")
+  public boolean isFoldersAlwaysOnTop() {
+    // force the option to always be true; MPS-38219
+    return true;
+  }
+
+  @Override
+  public void setFoldersAlwaysOnTop(boolean foldersAlwaysOnTop) {
+    // force the option to always be true; MPS-38219
+    // NOP
+  }
+
+  @Override
   public boolean isShowDescriptorModels(String id) {
     // FIXME respect the pane id
     return myShowDescriptorModels.isSelected();
