@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,10 +58,10 @@ public abstract class RegularModelDescriptor extends SModelBase {
       if (mySModel == null) {
         ModelLoadResult<jetbrains.mps.smodel.SModel> loadResult = createModel();
         mySModel = loadResult.getModelData();
-        mySModel.setModelDescriptor(this, getNodeEventDispatch());
         setLoadingState(loadResult.getState());
       }
     }
+    replaceModelAndFireEvent(null, mySModel);
     fireModelStateChanged(oldState, getLoadingState());
     return mySModel;
   }
@@ -91,19 +91,14 @@ public abstract class RegularModelDescriptor extends SModelBase {
    */
   protected void replace(@NotNull ModelLoadResult<jetbrains.mps.smodel.SModel> newModel) {
     final ModelLoadingState oldState;
+    final SModel oldModel;
     synchronized (myLoadLock) {
       oldState = getLoadingState();
-      if (mySModel != null) {
-        mySModel.dispose();
-        mySModel = null;
-      }
+      oldModel = mySModel;
       mySModel = newModel.getModelData();
-      if (mySModel != null) {
-        mySModel.setModelDescriptor(this, getNodeEventDispatch());
-      }
       setLoadingState(newModel.getState());
     }
+    replaceModelAndFireEvent(oldModel, mySModel);
     fireModelStateChanged(oldState, getLoadingState());
-    fireModelReplaced();
   }
 }

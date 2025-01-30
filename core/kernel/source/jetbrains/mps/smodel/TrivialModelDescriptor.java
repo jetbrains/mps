@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ public class TrivialModelDescriptor extends SModelBase {
   public TrivialModelDescriptor(@NotNull SModel modelData) {
     super(modelData.getReference(), new NullDataSource());
     myModelData = modelData;
-    modelData.setModelDescriptor(this, getNodeEventDispatch());
+    replaceModelAndFireEvent(null, modelData);
     setLoadingState(ModelLoadingState.FULLY_LOADED);
   }
 

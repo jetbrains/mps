@@ -485,7 +485,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
    * XXX there are two uses in subclasses of not-so-nice EditableSModelBase (lazy and custom) that can't get replaced readily with
    * nice and convenient RegularModelDescriptor.replace() call.
    */
-  protected synchronized void replaceModelAndFireEvent(jetbrains.mps.smodel.SModel oldModel, jetbrains.mps.smodel.SModel newModel) {
+  protected void replaceModelAndFireEvent(jetbrains.mps.smodel.SModel oldModel, jetbrains.mps.smodel.SModel newModel) {
     if (oldModel != null) {
       oldModel.dispose();
     }
@@ -493,7 +493,12 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
       newModel.setModelDescriptor(this, getNodeEventDispatch());
     }
 
-    fireModelReplaced();
+    if (oldModel != null && newModel != null) {
+      // there are events like model 'loaded' (null to something) and 'unloaded' (something to null), I don't see a reason
+      // to distrubute 'replaced' unless both are 'something'. However, there are exceptions (defects), see #unload(),
+      // where explicit fireModelReplaced() is necessary
+      fireModelReplaced();
+    }
 
     if (getRepository() instanceof MPSModuleRepository) { // for a model not yet visible to anyone, no reason to drop a cache
       // FIXME cache invalidation shall be a repository listener, and not done forcefully on model change
@@ -537,7 +542,6 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
 
   /**
    * CLIENTS SHALL NOT USE THIS METHOD. It's public merely to overcome java package boundaries (those of SModelData implementation and this class).
-   * FIXME Once deprecated SModel.setModelDescriptor is removed, visibility shall be changed to protected
    * FIXME This is a hack. We shall pass myEventDispatch the moment internal model is initialized.
    * However, it's tricky to find out exact moment with present approach (getSModelInternal() either
    * returns existing or creates new), fireModeStateChanged is feasible option, but misguiding as well.
@@ -546,7 +550,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
    * loading whole model.
    */
   @NotNull
-  public final ModelEventDispatch getNodeEventDispatch() {
+  protected final ModelEventDispatch getNodeEventDispatch() {
     return myNodeEventDispatch;
   }
 }
