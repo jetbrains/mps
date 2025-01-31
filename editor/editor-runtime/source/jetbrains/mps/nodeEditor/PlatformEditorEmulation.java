@@ -41,6 +41,7 @@ import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.util.NlsSafe;
+import com.intellij.openapi.wm.impl.IdeRootPane;
 import com.intellij.ui.HintHint;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.containers.ContainerUtil;
@@ -680,7 +681,7 @@ public final class PlatformEditorEmulation implements Editor {
   }
 
   private void showInfoToolTip(@NotNull MouseEvent event) {
-    if (getComponent().getRootPane() == null || MPSDocumentationManager.getInstance().isQuickDocPopupShown()) {
+    if (isNotInMainEditorPane() || MPSDocumentationManager.getInstance().isQuickDocPopupShown()) {
       return;
     }
 
@@ -702,6 +703,10 @@ public final class PlatformEditorEmulation implements Editor {
     final RelativePoint showPoint = getShowPoint(event, isGutter);
     Project project = ProjectHelper.toIdeaProject(ProjectHelper.getProject(myEditorComponent.getRepository()));
     myHintPopupController.showInfoToolTip(project, this, provider, tooltipRenderer, tooltipGroup, showPoint);
+  }
+
+  private boolean isNotInMainEditorPane() {
+    return getComponent().getRootPane() == null || !(getComponent().getRootPane() instanceof IdeRootPane);
   }
 
   @NotNull
