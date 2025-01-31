@@ -65,11 +65,6 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
   }
 
   @Override
-  public void rename(String newModelName, boolean changeFile) {
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
   public boolean isReadOnly() {
     return myReadOnly;
   }

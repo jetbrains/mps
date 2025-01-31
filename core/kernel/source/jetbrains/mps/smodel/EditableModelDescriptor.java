@@ -70,4 +70,10 @@ public abstract class EditableModelDescriptor extends RegularModelDescriptor imp
   public void removeChangeListener(SNodeChangeListener listener) {
     getNodeEventDispatch().removeChangeListener(listener);
   }
+
+  @Override
+  public void rename(@NotNull String newModelName, boolean changeFile) {
+    // this method is for EditableSModelBase implementation of EditableSModel only, no reason to force my subclasses override it.
+    throw new UnsupportedOperationException();
+  }
 }

@@ -141,10 +141,6 @@ public class XmlPersistenceModelDescriptor extends EditableModelDescriptor {
    * TODO the method below should not be needed
    */
   @Override
-  public void rename(@NotNull String string, boolean b) {
-  }
-
-  @Override
   public void reloadFromSource() {
   }
 }
