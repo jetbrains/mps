@@ -225,7 +225,7 @@ public class InitialStep extends BaseStep {
     Sequence.fromIterable(seq).select((this0) -> this0.getLanguage()).distinct().visitAll((it) -> MapSequence.fromMap(l2n).put(it, new MyTreeNode(NameUtil.compactNamespace(it.getQualifiedName()), MPSIcons.Nodes.Language)));
     ListSequence.fromList(msrScripts).visitAll((it) -> {
       MigrationScriptReference msr = (MigrationScriptReference) it.scriptReference();
-      String caption = (it.scriptPresent() ? it.caption() : String.format("Missing: <script for version %d", msr.getFromVersion()));
+      String caption = (it.scriptPresent() ? it.caption() : String.format("Missing: <script for version %d>", msr.getFromVersion()));
       MapSequence.fromMap(l2n).get(msr.getLanguage()).add(new MyTreeNode(caption, migrationIcon));
     });
     int migratedModulesNum = ListSequence.fromList(msrScripts).translate((this0) -> this0.affectedModules()).distinct().count();

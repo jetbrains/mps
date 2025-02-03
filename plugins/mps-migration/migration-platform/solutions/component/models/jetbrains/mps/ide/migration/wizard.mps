@@ -4421,7 +4421,7 @@
                         </node>
                         <node concept="2OqwBi" id="3xQJezsDZa1" role="3K4GZi">
                           <node concept="Xl_RD" id="4cEc5tJmnYW" role="2Oq$k0">
-                            <property role="Xl_RC" value="Missing: &lt;script for version %d" />
+                            <property role="Xl_RC" value="Missing: &lt;script for version %d&gt;" />
                           </node>
                           <node concept="2cAKMz" id="3xQJezsE2E7" role="2OqNvi">
                             <node concept="2OqwBi" id="3xQJezsFvRF" role="2cAKU6">
