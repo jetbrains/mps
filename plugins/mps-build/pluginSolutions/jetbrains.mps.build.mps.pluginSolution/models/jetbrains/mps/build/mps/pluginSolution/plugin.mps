@@ -15304,6 +15304,28 @@
                         <property role="28hIV_" value="TODO: replace with product icon" />
                       </node>
                       <node concept="28jJK3" id="3f6C5dcXMN_" role="39821P">
+                        <node concept="2$gBol" id="4qGTyVnHbF1" role="28jJR8">
+                          <property role="2$htvj" value="*" />
+                          <node concept="NbPM2" id="4qGTyVnHbF2" role="2$htvi">
+                            <node concept="3Mxwew" id="4qGTyVnHbF3" role="3MwsjC">
+                              <property role="3MwjfP" value="mps" />
+                              <node concept="2EMmih" id="4qGTyVnHbF4" role="lGtFl">
+                                <property role="P4ACc" value="798100da-4f0a-421a-b991-71f8c50ce5d2/4903714810883702019/4903714810883755350" />
+                                <property role="2qtEX9" value="text" />
+                                <property role="3hQQBS" value="BuildTextStringPart" />
+                                <property role="3qcH_f" value="true" />
+                                <node concept="3cpWs3" id="4qGTyVnHEr5" role="2c44t1">
+                                  <node concept="Xl_RD" id="4qGTyVnHEyO" role="3uHU7w">
+                                    <property role="Xl_RC" value=".icns" />
+                                  </node>
+                                  <node concept="37vLTw" id="4qGTyVnHbF5" role="3uHU7B">
+                                    <ref role="3cqZAo" node="2g$3PZUmxE8" resolve="scriptName" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
                         <node concept="55IIr" id="3f6C5dcXMNA" role="28jJRO">
                           <node concept="2c44te" id="3f6C5dcXMNB" role="lGtFl">
                             <node concept="1rXfSq" id="4hiugqyzaCs" role="2c44t1">
