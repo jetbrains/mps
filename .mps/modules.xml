@@ -191,8 +191,8 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/project/jetbrains.mps.lang.project.mpl" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/project/solutions/jetbrains.mps.lang.project.sandbox/jetbrains.mps.lang.project.sandbox.msd" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/quotation/jetbrains.mps.lang.quotation.mpl" folder="core.languages.quotation" />
-      <modulePath path="$PROJECT_DIR$/languages/languageDesign/refactoring/jetbrains.mps.lang.refactoring.mpl" folder="core.aspects.refactoring" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/refactoring.participant/jetbrains.mps.refactoring.participant.msd" folder="core.aspects.refactoring" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/refactoring/jetbrains.mps.lang.refactoring.mpl" folder="core.aspects.refactoring" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/resources/jetbrains.mps.lang.resources.mpl" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/scopes/jetbrains.mps.lang.scopes.mpl" folder="core.aspects.constraints" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/scopes/runtime/jetbrains.mps.lang.scopes.runtime.msd" folder="core.aspects.constraints" />
@@ -558,6 +558,8 @@
       <modulePath path="$PROJECT_DIR$/testbench/modules/build.mps.runner.test/jetbrains.mps.build.mps.runner.test.test5/jetbrains.mps.build.mps.runner.test.test5.msd" folder="plugins.build.runner.test" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/build.mps.runner.test/jetbrains.mps.build.mps.runner.test.test6/jetbrains.mps.build.mps.runner.test.test6.msd" folder="plugins.build.runner.test" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/build.mps.runner.test/project/solutions/jetbrains.mps.build.mps.runner.test.solution/jetbrains.mps.build.mps.runner.test.solution.msd" folder="plugins.build.runner.test" />
+      <modulePath path="$PROJECT_DIR$/testbench/modules/buildLangTarget/lang/jetbrains.mps.build.tests.hl.mpl" folder="tests.buildLangTarget" />
+      <modulePath path="$PROJECT_DIR$/testbench/modules/buildLangTarget/sample/jetbrains.mps.build.tests.hl.sample.msd" folder="tests.buildLangTarget" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/jetbrains.mps.baseLanguage.testRefs.testLang.mpl" folder="tests.BL references" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/jetbrains.mps.baseLanguage.testRefs/jetbrains.mps.baseLanguage.testRefs.msd" folder="tests.BL references" />
       <modulePath path="$PROJECT_DIR$/testbench/modules/simpleProject/solutions/simpleProject/simpleProject.msd" folder="tests.diskMemoryConflict" />

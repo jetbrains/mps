@@ -187,8 +187,8 @@
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/project/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/quotation/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/quotation/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/languages/languageDesign/refactoring/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/refactoring.participant/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/languageDesign/refactoring/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/refactoring/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/resources/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/languageDesign/resources/source_gen" includeSubdirectories="true" />
@@ -627,6 +627,9 @@
       <directory url="file://$PROJECT_DIR$/testbench/modules/build.mps.runner.test/jetbrains.mps.build.mps.runner.test.test5/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/build.mps.runner.test/jetbrains.mps.build.mps.runner.test.test6/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/build.mps.runner.test/project/solutions/jetbrains.mps.build.mps.runner.test.solution/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/modules/buildLangTarget/lang/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/modules/buildLangTarget/lang/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/testbench/modules/buildLangTarget/sample/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/jetbrains.mps.baseLanguage.testRefs.testLang/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/testbench/modules/jetbrains.mps.baseLanguage.testRefs/source_gen" includeSubdirectories="true" />
