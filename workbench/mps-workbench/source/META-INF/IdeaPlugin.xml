@@ -1102,7 +1102,7 @@
       <add-to-group group-id="Editor.Search.Filter.Results" />
     </action>
     <reference ref="Vcs.VcsClone">
-      <add-to-group group-id="WelcomeScreen.QuickStart" anchor="first" />
+      <add-to-group group-id="WelcomeScreen.QuickStart" anchor="last" />
     </reference>
     <action id="Vcs.CopyRevisionNumberAction" class="com.intellij.openapi.vcs.history.actions.CopyRevisionNumberAction" icon="AllIcons.Actions.Copy" use-shortcut-of="CopyReference" />
     <action id="Vcs.CopyCommitSubjectAction" class="com.intellij.openapi.vcs.history.actions.CopyCommitSubjectAction" icon="AllIcons.Actions.Copy" />
