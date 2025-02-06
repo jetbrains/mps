@@ -58,15 +58,26 @@ public final class MPSDocumentationEditorPane extends JEditorPane implements Dis
 
     setEditorKit(editorKit);
     setBorder(JBUI.Borders.empty());
-    getCaret().setVisible(false);
-//    setEnabled(false);
-    setRequestFocusEnabled(false);
-    setFocusTraversalKeysEnabled(false);
   }
 
   @Override
   public void dispose() {
     getCaret().setVisible(false);
+  }
+
+  @Override
+  public void setCaret(Caret c) {
+    super.setCaret(c);
+    c.setVisible(false);
+  }
+
+  @Override
+  public void setCaretPosition(int position) {
+    super.setCaretPosition(position);
+    final Caret caret = getCaret();
+    if( caret != null ) {
+      caret.setVisible(false);
+    }
   }
 
   private static int getPreferredContentWidth(int textLength) {
