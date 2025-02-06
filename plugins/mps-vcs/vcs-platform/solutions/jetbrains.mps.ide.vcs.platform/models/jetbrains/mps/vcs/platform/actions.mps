@@ -4455,6 +4455,7 @@
     <property role="TrG5h" value="ShowRootHistory" />
     <property role="2uzpH1" value="Show Root History" />
     <property role="2YLI8m" value="6u2MFnph2yg/read" />
+    <property role="1rBW0U" value="true" />
     <node concept="1DS2jV" id="5$O_bu7vyh_" role="1NuT2Z">
       <property role="TrG5h" value="project" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
