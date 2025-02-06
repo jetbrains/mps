@@ -57,6 +57,7 @@ public final class MPSDocumentationEditorPane extends JEditorPane implements Dis
 
     setEditorKit(editorKit);
     setBorder(JBUI.Borders.empty());
+    getCaret().setVisible(false);
   }
 
   @Override
