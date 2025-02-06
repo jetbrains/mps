@@ -91,7 +91,7 @@
 }, {
   "name" : "Apache Commons Text",
   "url" : "https://github.com/apache/commons-text",
-  "version" : "1.12.0",
+  "version" : "1.13.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/apache/commons-text/blob/master/LICENSE.txt"
 }, {
@@ -199,7 +199,7 @@
 }, {
   "name" : "Guava",
   "url" : "https://github.com/google/guava",
-  "version" : "33.3.1-jre",
+  "version" : "33.4.0-jre",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/google/guava/raw/master/LICENSE"
 }, {
@@ -259,7 +259,7 @@
 }, {
   "name" : "JCEF",
   "url" : "https://bitbucket.org/chromiumembedded/java-cef",
-  "version" : "122.1.9-gd14e051-chromium-122.0.6261.94-api-1.17-251-b2",
+  "version" : "122.1.9-gd14e051-chromium-122.0.6261.94-api-1.18-251-b27",
   "license" : "BSD 3-Clause",
   "licenseUrl" : "https://bitbucket.org/chromiumembedded/java-cef/src/master/LICENSE.txt"
 }, {
@@ -415,7 +415,7 @@
 }, {
   "name" : "JetBrains Runtime API",
   "url" : "https://github.com/JetBrains/JetBrainsRuntime",
-  "version" : "1.0.0",
+  "version" : "1.2.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/JetBrainsRuntime/blob/main/LICENSE"
 }, {
@@ -445,7 +445,7 @@
 }, {
   "name" : "Kotlin Standard Library",
   "url" : "https://github.com/JetBrains/kotlin",
-  "version" : "2.1.0",
+  "version" : "2.1.10",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
 }, {
@@ -475,7 +475,7 @@
 }, {
   "name" : "Kotlin reflection library",
   "url" : "https://github.com/JetBrains/kotlin",
-  "version" : "2.1.0",
+  "version" : "2.1.10",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt"
 }, {
@@ -649,7 +649,7 @@
 }, {
   "name" : "Xerial SQLite JDBC",
   "url" : "https://github.com/xerial/sqlite-jdbc",
-  "version" : "3.47.1.0",
+  "version" : "3.48.0.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/xerial/sqlite-jdbc/blob/master/LICENSE"
 }, {
@@ -679,13 +679,13 @@
 }, {
   "name" : "bouncy-castle-pgp",
   "url" : "https://www.bouncycastle.org",
-  "version" : "1.78.1",
+  "version" : "1.80",
   "license" : "MIT",
   "licenseUrl" : "https://www.bouncycastle.org/license.html"
 }, {
   "name" : "bouncy-castle-provider",
   "url" : "https://www.bouncycastle.org",
-  "version" : "1.78.1",
+  "version" : "1.80",
   "license" : "MIT",
   "licenseUrl" : "https://www.bouncycastle.org/license.html"
 }, {
@@ -697,7 +697,7 @@
 }, {
   "name" : "classgraph",
   "url" : "https://github.com/classgraph/classgraph",
-  "version" : "4.8.174",
+  "version" : "4.8.179",
   "license" : "codehaus",
   "licenseUrl" : "https://github.com/codehaus/classworlds/blob/master/classworlds/LICENSE.txt"
 }, {
@@ -781,19 +781,19 @@
 }, {
   "name" : "jb-jdi",
   "url" : "https://github.com/JetBrains/intellij-deps-jdi",
-  "version" : "2.38",
+  "version" : "2.39",
   "license" : "GPL 2.0 + Classpath",
   "licenseUrl" : "https://github.com/JetBrains/intellij-deps-jdi/raw/master/LICENSE.txt"
 }, {
   "name" : "jediterm-core",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.47",
+  "version" : "3.48",
   "license" : "LGPL 3.0",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
   "name" : "jediterm-ui",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.47",
+  "version" : "3.48",
   "license" : "LGPL 3.0",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
@@ -835,7 +835,7 @@
 }, {
   "name" : "kotlinx.html",
   "url" : "https://github.com/Kotlin/kotlinx.html",
-  "version" : "0.11.0",
+  "version" : "0.12.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.html/blob/master/LICENSE"
 }, {
@@ -961,25 +961,25 @@
 }, {
   "name" : "opentelemetry",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.45.0",
+  "version" : "1.46.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {
   "name" : "opentelemetry-exporter-otlp-common",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.45.0",
+  "version" : "1.46.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {
   "name" : "opentelemetry-extension-kotlin",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.45.0",
+  "version" : "1.46.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {
   "name" : "opentelemetry-semconv",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.28.0-alpha",
+  "version" : "1.29.0-alpha",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/semantic-conventions-java/blob/main/LICENSE"
 }, {
@@ -1033,7 +1033,7 @@
 }, {
   "name" : "sa-jdwp",
   "url" : "https://github.com/JetBrains/jdk-sa-jdwp",
-  "version" : "1.22",
+  "version" : "1.24",
   "license" : "GPL 2.0 + Classpath",
   "licenseUrl" : "https://github.com/JetBrains/jdk-sa-jdwp/raw/master/LICENSE.txt"
 }, {
@@ -1051,7 +1051,7 @@
 }, {
   "name" : "snakeyaml-engine",
   "url" : "https://bitbucket.org/snakeyaml/snakeyaml-engine/",
-  "version" : "2.8",
+  "version" : "2.9",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://bitbucket.org/snakeyaml/snakeyaml-engine/src/master/LICENSE.txt"
 }, {
@@ -1093,7 +1093,7 @@
 }, {
   "name" : "zstd-jni",
   "url" : "https://github.com/luben/zstd-jni",
-  "version" : "1.5.6-8",
+  "version" : "1.5.6-9",
   "license" : "BSD 2-Clause",
   "licenseUrl" : "https://github.com/luben/zstd-jni/blob/master/LICENSE"
 } ]
