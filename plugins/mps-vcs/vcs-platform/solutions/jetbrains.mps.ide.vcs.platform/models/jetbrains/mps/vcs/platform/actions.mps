@@ -497,12 +497,6 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="3w_vEw9Kvmn" role="1oa70y" />
     </node>
-    <node concept="1GtWCo" id="6S5fI02CGBb" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphUl0t" role="1GtWoa">
-        <ref role="1PxDUh" to="z2i8:~AllIcons$General" resolve="AllIcons.General" />
-        <ref role="3cqZAo" to="z2i8:~AllIcons$General.Reset" resolve="Reset" />
-      </node>
-    </node>
     <node concept="1DS2jV" id="78RbNhWi9JJ" role="1NuT2Z">
       <property role="TrG5h" value="editorContext" />
       <ref role="1DUlNI" to="k3nr:~MPSEditorDataKeys.EDITOR_CONTEXT" resolve="EDITOR_CONTEXT" />
@@ -536,6 +530,12 @@
         </node>
       </node>
     </node>
+    <node concept="1GtWCo" id="6S5fI02CGBb" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphUl0t" role="1GtWoa">
+        <ref role="1PxDUh" to="z2i8:~AllIcons$General" resolve="AllIcons.General" />
+        <ref role="3cqZAo" to="z2i8:~AllIcons$General.Reset" resolve="Reset" />
+      </node>
+    </node>
   </node>
   <node concept="sE7Ow" id="78RbNhWi9JS">
     <property role="1WHSii" value="Go to previous change" />
@@ -544,12 +544,6 @@
     <property role="72QZ$" value="true" />
     <property role="2uzpH1" value="Previous Change" />
     <property role="3GE5qa" value="Actions" />
-    <node concept="1GtWCo" id="6S5fI02CGBc" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphUlL_" role="1GtWoa">
-        <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
-        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.PreviousOccurence" resolve="PreviousOccurence" />
-      </node>
-    </node>
     <node concept="1DS2jV" id="78RbNhWi9JU" role="1NuT2Z">
       <property role="TrG5h" value="editorContext" />
       <ref role="1DUlNI" to="k3nr:~MPSEditorDataKeys.EDITOR_CONTEXT" resolve="EDITOR_CONTEXT" />
@@ -640,6 +634,12 @@
         </node>
       </node>
     </node>
+    <node concept="1GtWCo" id="6S5fI02CGBc" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphUlL_" role="1GtWoa">
+        <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
+        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.PreviousOccurence" resolve="PreviousOccurence" />
+      </node>
+    </node>
   </node>
   <node concept="sE7Ow" id="78RbNhWi9Ki">
     <property role="1WHSii" value="Go to next change" />
@@ -648,12 +648,6 @@
     <property role="72QZ$" value="true" />
     <property role="2uzpH1" value="Next Change" />
     <property role="3GE5qa" value="Actions" />
-    <node concept="1GtWCo" id="6S5fI02CGBd" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphUmys" role="1GtWoa">
-        <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
-        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.NextOccurence" resolve="NextOccurence" />
-      </node>
-    </node>
     <node concept="tnohg" id="78RbNhWi9Kk" role="tncku">
       <node concept="3clFbS" id="78RbNhWi9Kl" role="2VODD2">
         <node concept="3clFbF" id="3w_vEw9LKyZ" role="3cqZAp">
@@ -746,6 +740,12 @@
         </node>
       </node>
     </node>
+    <node concept="1GtWCo" id="6S5fI02CGBd" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphUmys" role="1GtWoa">
+        <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
+        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.NextOccurence" resolve="NextOccurence" />
+      </node>
+    </node>
   </node>
   <node concept="sE7Ow" id="78RbNhWi9KI">
     <property role="fJN8o" value="true" />
@@ -754,12 +754,6 @@
     <property role="3GE5qa" value="Actions" />
     <property role="2uzpH1" value="Show Difference" />
     <property role="1rBW0U" value="true" />
-    <node concept="1GtWCo" id="6S5fI02CGBe" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphUjnP" role="1GtWoa">
-        <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
-        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Diff" resolve="Diff" />
-      </node>
-    </node>
     <node concept="1DS2jV" id="78RbNhWi9KJ" role="1NuT2Z">
       <property role="TrG5h" value="editorContext" />
       <ref role="1DUlNI" to="k3nr:~MPSEditorDataKeys.EDITOR_CONTEXT" resolve="EDITOR_CONTEXT" />
@@ -909,6 +903,12 @@
         </node>
       </node>
     </node>
+    <node concept="1GtWCo" id="6S5fI02CGBe" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphUjnP" role="1GtWoa">
+        <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
+        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Diff" resolve="Diff" />
+      </node>
+    </node>
   </node>
   <node concept="sE7Ow" id="78RbNhWi9L_">
     <property role="fJN8o" value="true" />
@@ -923,12 +923,6 @@
       <property role="TrG5h" value="mpsProject" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="3w_vEw9KYqQ" role="1oa70y" />
-    </node>
-    <node concept="1GtWCo" id="6S5fI02CGBf" role="3Uehp1">
-      <node concept="10M0yZ" id="6XsdSphUnmB" role="1GtWoa">
-        <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
-        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Copy" resolve="Copy" />
-      </node>
     </node>
     <node concept="tnohg" id="78RbNhWi9LA" role="tncku">
       <node concept="3clFbS" id="78RbNhWi9LB" role="2VODD2">
@@ -989,6 +983,12 @@
             </node>
           </node>
         </node>
+      </node>
+    </node>
+    <node concept="1GtWCo" id="6S5fI02CGBf" role="3Uehp1">
+      <node concept="10M0yZ" id="6XsdSphUnmB" role="1GtWoa">
+        <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="AllIcons.Actions" />
+        <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Copy" resolve="Copy" />
       </node>
     </node>
   </node>
@@ -4455,6 +4455,7 @@
     <property role="TrG5h" value="ShowRootHistory" />
     <property role="2uzpH1" value="Show Root History" />
     <property role="2YLI8m" value="6u2MFnph2yg/read" />
+    <property role="1rBW0U" value="true" />
     <node concept="1DS2jV" id="5$O_bu7vyh_" role="1NuT2Z">
       <property role="TrG5h" value="project" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
