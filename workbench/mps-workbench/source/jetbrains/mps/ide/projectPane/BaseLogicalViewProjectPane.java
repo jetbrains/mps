@@ -110,7 +110,6 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
 
   private final MyRepositoryListener myRepositoryListener = new MyRepositoryListener();
   private final MyModuleListener myModuleListener = new MyModuleListener();
-  private final MyModelChangeListener myModelChangeListener = new MyModelChangeListener();
   protected boolean myDisposed;
 
   protected final MPSProject myProjectMPS;
@@ -413,14 +412,6 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     module.removeModuleListener(myModuleListener);
   }
 
-  private void registerListener(SModelInternal model) {
-    model.addModelListener(myModelChangeListener);
-  }
-
-  private void unregisterListener(SModelInternal model) {
-    model.removeModelListener(myModelChangeListener);
-  }
-
   private void forAllModulesInProject(Consumer<SModule> moduleConsumer) {
     if (myProject.isDisposed()) return;
     MPSProject mpsProject = myProjectMPS;
@@ -715,17 +706,16 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     @Override
     protected void startListening(SModel model) {
       model.addModelListener(this);
-      registerListener((SModelInternal) model);
     }
 
     @Override
     protected void stopListening(SModel model) {
       model.removeModelListener(this);
-      unregisterListener((SModelInternal) model);
     }
 
     @Override
     public void moduleAdded(@NotNull SModule module) {
+      // FIXME super.moduleAdded() to get this one registered to a new module
       registerListener(module);
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
         updateFromRoot(true);
@@ -763,19 +753,23 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     public void modelReplaced(SModel model) {
       forEachFile(model, f -> updateFrom(f, true));
     }
+
+    @Override
+    public void dependenciesChanged(SModel model, DependencyChange change) {
+      forEachFile(model, f -> updateFrom(f, true));
+    }
+
+    @Override
+    public void nodesChanged(SModel model) {
+      forEachFile(model, f -> updateFrom(f, true));
+    }
   }
 
   private class MyModuleListener implements SModuleListener {
 
     @Override
     public void modelAdded(SModule module, SModel model) {
-      registerListener((SModelInternal) model);
       forEachFile(module, f -> updateFrom(f, true));
-    }
-
-    @Override
-    public void beforeModelRemoved(SModule module, SModel model) {
-      unregisterListener((SModelInternal) model);
     }
 
     @Override
@@ -790,17 +784,4 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       }
     }
   }
-
-  private class MyModelChangeListener extends SModelAdapter {
-    @Override
-    public void modelChangedDramatically(SModel model) {
-      forEachFile(model, f -> updateFrom(f, true));
-    }
-
-    @Override
-    public void modelChanged(SModel model) {
-      forEachFile(model, f -> updateFrom(f, true));
-    }
-  }
-
 }
