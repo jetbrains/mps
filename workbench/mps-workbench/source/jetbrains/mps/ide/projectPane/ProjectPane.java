@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -184,8 +184,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
   }
   
   /*package*/ MPSProject getMPSProject() {
-    // Shall I use getTree().getProject() instead?
-    return getProject().getComponent(MPSProject.class);
+    return myProjectMPS;
   }
 
   @Override
@@ -270,8 +269,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
   @SuppressWarnings("removal")
   private void fireMessageUpdate(MessagesUpdate messagesUpdate, IFile iFile) {
     ProblemListener problemListener = getProject().getMessageBus().syncPublisher(ProblemListener.TOPIC);
-    MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
-    IdeaFileSystem fileSystem = mpsProject.getFileSystem();
+    IdeaFileSystem fileSystem = myProjectMPS.getFileSystem();
 
     VirtualFile virtualFile = fileSystem.asVirtualFile(iFile);
     if (virtualFile != null) {
@@ -434,7 +432,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
   @Nullable
   private VirtualFile getVirtualFile(IFile descriptorFile) {
     ThreadingAssertions.assertBackgroundThread();
-    IdeaFileSystem fileSystem = ProjectHelper.fromIdeaProject(myProject).getFileSystem();
+    IdeaFileSystem fileSystem = myProjectMPS.getFileSystem();
     VirtualFile virtualFile = fileSystem.asVirtualFile(descriptorFile);
     if (virtualFile == null) {
       IdeaFile ideaFile = fileSystem.getFile(descriptorFile.getPath());
