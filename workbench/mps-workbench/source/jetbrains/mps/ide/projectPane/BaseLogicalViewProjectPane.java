@@ -56,7 +56,6 @@ import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.IMakeNotificationListener;
-import jetbrains.mps.make.IMakeNotificationListener.Stub;
 import jetbrains.mps.make.MakeNotification;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.project.AbstractModule;
@@ -66,10 +65,7 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
-import jetbrains.mps.smodel.SModelAdapter;
-import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.runtime.ModuleDeploymentChange;
 import jetbrains.mps.smodel.runtime.ModuleDeploymentListener;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TempModule2;
@@ -85,7 +81,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.persistence.DataSource;
@@ -109,7 +104,6 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
   private static final Logger LOG = Logger.getLogger(BaseLogicalViewProjectPane.class);
 
   private final MyRepositoryListener myRepositoryListener = new MyRepositoryListener();
-  private final MyModuleListener myModuleListener = new MyModuleListener();
   protected boolean myDisposed;
 
   protected final MPSProject myProjectMPS;
@@ -386,7 +380,6 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     mpsProject.getModelAccess().removeCommandListener(myRepositoryListener);
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).detach();
     mpsProject.getPlatform().findComponent(MakeServiceComponent.class).get().removeListener(myMakeNotificationListener);
-    forAllModulesInProject(this::unregisterListener);
   }
 
   protected void addListeners() {
@@ -394,22 +387,12 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).attach();
     mpsProject.getModelAccess().addCommandListener(myRepositoryListener);
 
-    forAllModulesInProject(this::registerListener);
-
     // XXX here used to be a hasMakeService() check, which I found superfluous,
     //     as we always have make service in UI (at least, we never check for it in other locations)
     //     However, the idea to keep listeners inside MakeServiceComponent and install them into active
     //     IMakeService once it's updated looks nice
     mpsProject.getPlatform().findComponent(MakeServiceComponent.class).get().addListener(myMakeNotificationListener);
     mpsProject.getPlatform().findComponent(LanguageRegistry.class).addRegistryListener(myClassesListener);
-  }
-
-  private void registerListener(SModule module) {
-    module.addModuleListener(myModuleListener);
-  }
-
-  private void unregisterListener(SModule module) {
-    module.removeModuleListener(myModuleListener);
   }
 
   private void forAllModulesInProject(Consumer<SModule> moduleConsumer) {
@@ -714,9 +697,19 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     }
 
     @Override
-    public void moduleAdded(@NotNull SModule module) {
-      // FIXME super.moduleAdded() to get this one registered to a new module
-      registerListener(module);
+    protected void startListening(SModule module) {
+      if (!isIncluded(module)) {
+        return;
+      }
+      super.startListening(module);
+      if (!(module instanceof TempModule || module instanceof TempModule2)) {
+        updateFromRoot(true);
+      }
+    }
+
+    @Override
+    protected void stopListening(SModule module) {
+      super.stopListening(module);
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
         updateFromRoot(true);
       }
@@ -728,11 +721,10 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     }
 
     @Override
-    public void beforeModuleRemoved(@NotNull SModule module) {
+    public void moduleChanged(SModule module) {
       if (!(module instanceof TempModule || module instanceof TempModule2)) {
         updateFromRoot(true);
       }
-      unregisterListener(module);
     }
 
     @Override
@@ -762,26 +754,6 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     @Override
     public void nodesChanged(SModel model) {
       forEachFile(model, f -> updateFrom(f, true));
-    }
-  }
-
-  private class MyModuleListener implements SModuleListener {
-
-    @Override
-    public void modelAdded(SModule module, SModel model) {
-      forEachFile(module, f -> updateFrom(f, true));
-    }
-
-    @Override
-    public void modelRemoved(SModule module, SModelReference ref) {
-      forEachFile(module, f -> updateFrom(f, true));
-    }
-
-    @Override
-    public void moduleChanged(SModule module) {
-      if (!(module instanceof TempModule || module instanceof TempModule2)) {
-        updateFromRoot(true);
-      }
     }
   }
 }
