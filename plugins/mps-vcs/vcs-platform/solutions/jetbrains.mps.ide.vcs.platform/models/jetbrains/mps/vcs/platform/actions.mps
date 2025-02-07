@@ -3835,11 +3835,11 @@
             <property role="3TUv4t" value="true" />
             <node concept="3Tqbb2" id="P$ZiSerlCH" role="1tU5fm" />
             <node concept="2OqwBi" id="P$ZiSerkfS" role="33vP2m">
-              <node concept="37vLTw" id="2Xa_rpYpQjw" role="2Oq$k0">
-                <ref role="3cqZAo" node="2Xa_rpYpslz" resolve="component" />
-              </node>
               <node concept="liA8E" id="P$ZiSerkfW" role="2OqNvi">
                 <ref role="37wK5l" to="exr9:~EditorComponent.getEditedNode()" resolve="getEditedNode" />
+              </node>
+              <node concept="37vLTw" id="2Xa_rpYpQjw" role="2Oq$k0">
+                <ref role="3cqZAo" node="2Xa_rpYpslz" resolve="component" />
               </node>
             </node>
           </node>
@@ -3907,11 +3907,6 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
       <node concept="1oajcY" id="13$TqNLJqBL" role="1oa70y" />
     </node>
-    <node concept="1DS2jV" id="5LmJNNlM0cE" role="1NuT2Z">
-      <property role="TrG5h" value="context" />
-      <ref role="1DUlNI" to="k3nr:~MPSEditorDataKeys.EDITOR_CONTEXT" resolve="EDITOR_CONTEXT" />
-      <node concept="1oajcY" id="5LmJNNlM0cF" role="1oa70y" />
-    </node>
     <node concept="2ScWuX" id="3WCIgQv3c83" role="tmbBb">
       <node concept="3clFbS" id="3WCIgQv3c84" role="2VODD2">
         <node concept="3cpWs8" id="2ukUXcwdXAW" role="3cqZAp">
@@ -3971,9 +3966,6 @@
             <property role="3TUv4t" value="true" />
             <node concept="3Tqbb2" id="P$ZiSeqbj9" role="1tU5fm" />
             <node concept="2OqwBi" id="P$ZiSeq9pD" role="33vP2m">
-              <node concept="liA8E" id="P$ZiSeq9pH" role="2OqNvi">
-                <ref role="37wK5l" to="cj4x:~EditorComponent.getEditedNode()" resolve="getEditedNode" />
-              </node>
               <node concept="2OqwBi" id="7k6bNyCD_Mw" role="2Oq$k0">
                 <node concept="2OqwBi" id="7k6bNyCD_Mx" role="2Oq$k0">
                   <node concept="2WthIp" id="7k6bNyCD_My" role="2Oq$k0" />
@@ -3984,6 +3976,9 @@
                 <node concept="liA8E" id="7k6bNyCD_M$" role="2OqNvi">
                   <ref role="37wK5l" to="cj4x:~EditorContext.getEditorComponent()" resolve="getEditorComponent" />
                 </node>
+              </node>
+              <node concept="liA8E" id="P$ZiSeq9pH" role="2OqNvi">
+                <ref role="37wK5l" to="cj4x:~EditorComponent.getEditedNode()" resolve="getEditedNode" />
               </node>
             </node>
           </node>
@@ -4152,6 +4147,11 @@
         </node>
       </node>
       <node concept="3Tm6S6" id="10bCf_kmIMB" role="1B3o_S" />
+    </node>
+    <node concept="1DS2jV" id="5LmJNNlM0cE" role="1NuT2Z">
+      <property role="TrG5h" value="context" />
+      <ref role="1DUlNI" to="k3nr:~MPSEditorDataKeys.EDITOR_CONTEXT" resolve="EDITOR_CONTEXT" />
+      <node concept="1oajcY" id="5LmJNNlM0cF" role="1oa70y" />
     </node>
   </node>
   <node concept="tC5Ba" id="3WCIgQv3c8a">
@@ -4554,6 +4554,7 @@
     <property role="TrG5h" value="ShowRootHistory" />
     <property role="2uzpH1" value="Show Root History" />
     <property role="2YLI8m" value="6u2MFnph2yg/read" />
+    <property role="1rBW0U" value="true" />
     <node concept="1DS2jV" id="5$O_bu7vyh_" role="1NuT2Z">
       <property role="TrG5h" value="project" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />

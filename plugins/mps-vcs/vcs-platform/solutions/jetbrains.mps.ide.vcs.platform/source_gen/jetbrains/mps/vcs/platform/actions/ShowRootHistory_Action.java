@@ -26,6 +26,7 @@ public class ShowRootHistory_Action extends BaseAction {
     super("Show Root History", "", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.READ_PROJECT);
+    updateInBackground(true);
   }
   @Override
   public boolean isDumbAware() {

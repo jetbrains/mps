@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="2i2a5qu4sepzfzd6j5df91992nk5w6f">
+<product version="3" modelHash="-74u8suc978pg854ghcrhlo9l0uq5flv">
   <files names="AnnotatePreviousRevision_Action.java:AnnotateRevision_Action.java:Annotate_Action.java:CopyOldNodes_Action.java:CopyRevisionNumber_Action.java:GitShowCommitInLog_Action.java:GoToNextChange_Action.java:GoToPreviousChange_Action.java:HideRevision_Action.java:InstalVcsAddons_Action.java:MPSVcs.xml:MPSVcsGit.xml:NodeHistoryUtil.java:ReportModelMergeProblem_Action.java:ResolveNonconflictingChanges_Action.java:RollbackChanges_Action.java:ShowAffectedFiles_Action.java:ShowDiffFromAnnotation_Action.java:ShowDiffFromChanges_Action.java:ShowNodeHistory_Action.java:ShowRootHistory_Action.java:VcsActionsUtil.java" />
 </product>
 
