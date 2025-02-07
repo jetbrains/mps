@@ -254,15 +254,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane {
     return new ProjectViewTree(treeModel);
   }
 
-  /**
-   * @deprecated use {@link #rebuild()} instead
-   */
-  @Deprecated(since = "2020.3", forRemoval = true)
-  public void rebuildTree() {
-    // @see #updateFromRoot
-    updateFromRoot(true);
-  }
-
   public void activate() {
     ThreadUtils.assertEDT();
     activatePane(null, true);

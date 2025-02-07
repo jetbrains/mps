@@ -429,32 +429,11 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     });
   }
 
-  /**
-   * expects model read lock at least
-   *
-   * @deprecated don't use, prefer {@code SNodeReference} and {@code DataContext.getData()}
-   */
-  @Deprecated(forRemoval = true, since = "2021.3")
-  public SNode getSelectedSNode() {
-    List<SNode> result = getSelectedSNodes();
-    if (result.size() != 1) {
-      return null;
-    }
-    return result.get(0);
-  }
-
-  /**
-   * NB! The implementation of this method has been altered to rely on the modern implementation of underlying
-   * tree. The following comments may not be relevant.
-   * <p>
-   * expects model read lock at least
-   *
-   * @deprecated don't use, prefer {@code SNodeReference} and {@code DataContext.getData()}
-   */
-  @NotNull
   @Deprecated(forRemoval = true, since = "2021.3")
   public List<SNode> getSelectedSNodes() {
-    return ContainerUtil.filterIsInstance(getSelectedValues(getSelectedUserObjects()), SNode.class);
+    // MPS-extensions, CustomProjectView overrides the method
+    assert  false : "Method is kept solely to satisfy compilation of subclasses with overrides";
+    return null;
   }
 
   @NotNull
