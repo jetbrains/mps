@@ -114,6 +114,10 @@ import java.util.function.Predicate;
     myDisposed = true;
   }
 
+  /*package*/ void refresh() {
+    enqueueAllModulesInProject();
+  }
+
   protected Collection<SModuleReference> lookupProjectModule(IFile descriptionFile) {
     Collection<SModuleReference> result = myModuleReferencesCache.getOrDefault(descriptionFile, createCache());
     if (result.isEmpty()) {

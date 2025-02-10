@@ -62,6 +62,8 @@ public interface MissionControl {
 
   MessagesContainer getMessagesContainer();
 
+  void refresh();
+
   class Impl implements MissionControl, Disposable {
 
     public static CheckerCategory GENERATION_STATUS = new CheckerCategory(KindLevel.PROJECT, "generation status");
@@ -121,6 +123,11 @@ public interface MissionControl {
     @Override
     public MessagesContainer getMessagesContainer() {
       return myMessagesContainer;
+    }
+
+    @Override
+    public void refresh() {
+      myChangesMonitor.refresh();
     }
 
     public synchronized void stopAndRestartUpdate(boolean restart) {
@@ -271,6 +278,11 @@ public interface MissionControl {
     @Override
     public MessagesContainer getMessagesContainer() {
       return myMessagesContainer;
+    }
+
+    @Override
+    public void refresh() {
+      throw new UnsupportedOperationException();
     }
   }
 }
