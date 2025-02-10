@@ -1603,6 +1603,7 @@
     <property role="3GE5qa" value="Project.Sources" />
     <property role="TrG5h" value="BuildMps_ModuleResources" />
     <property role="R4oN_" value="auxiliary resource files to deploy with a module" />
+    <property role="34LRSv" value="resources" />
     <ref role="1TJDcQ" node="4zCbl23d1OJ" resolve="BuildMps_ModuleSource" />
     <node concept="1TJgyj" id="EpEP7hVcc7" role="1TKVEi">
       <property role="IQ2ns" value="763829979718664967" />
@@ -1882,6 +1883,7 @@
     <property role="3GE5qa" value="Project.Sources" />
     <property role="TrG5h" value="BuildMps_ModuleDoc" />
     <property role="R4oN_" value="documentation files" />
+    <property role="34LRSv" value="documentation" />
     <ref role="1TJDcQ" node="4zCbl23d1OJ" resolve="BuildMps_ModuleSource" />
     <node concept="1TJgyj" id="1znuW2OtALF" role="1TKVEi">
       <property role="IQ2ns" value="1790035444494658667" />

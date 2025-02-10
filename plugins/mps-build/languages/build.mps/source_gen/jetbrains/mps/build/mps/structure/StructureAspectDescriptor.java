@@ -896,6 +896,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/1790035444494658477");
     b.version(3);
     b.aggregate("files", 0x18d77bc0b4766c6bL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L).optional(false).ordered(true).multiple(false).origin("1790035444494658667").done();
+    b.alias("documentation");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForBuildMps_ModuleJavaSource() {
@@ -939,6 +940,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/763829979718664966");
     b.version(3);
     b.aggregate("files", 0xa99ab51d1ecc307L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L).optional(false).ordered(true).multiple(false).origin("763829979718664967").done();
+    b.alias("resources");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForBuildMps_ModuleRuntime() {
