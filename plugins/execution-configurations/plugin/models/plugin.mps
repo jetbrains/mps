@@ -17430,7 +17430,7 @@
                             <property role="3oM_SC" value="BaseOSProcessHandler" />
                           </node>
                           <node concept="3oM_SD" id="ATZLwXoflR" role="1PaTwD">
-                            <property role="3oM_SC" value="dispaches" />
+                            <property role="3oM_SC" value="dispatches" />
                           </node>
                           <node concept="3oM_SD" id="ATZLwXoflS" role="1PaTwD">
                             <property role="3oM_SC" value="notification" />
