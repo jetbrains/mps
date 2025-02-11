@@ -111,7 +111,7 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
           }
         }
         // once test execution is over, the runnable at thread pool get control, myFakeProcess receives exit code and is destroyed.
-        // Eventually, BaseOSProcessHandler dispaches notification that the process has been terminated.
+        // Eventually, BaseOSProcessHandler dispatches notification that the process has been terminated.
 
         // XXX Perhaps, we shall leave implementation of this method to BaseOSProcessHandler (which does Process.destroy()), and handle process destroy request instead?
       }
