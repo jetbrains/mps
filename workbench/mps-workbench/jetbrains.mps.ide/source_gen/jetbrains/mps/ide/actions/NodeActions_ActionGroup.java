@@ -36,8 +36,6 @@ public class NodeActions_ActionGroup extends GeneratedActionGroup {
     NodeActions_ActionGroup.this.addSeparator();
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.SetNodePackage_Action");
     NodeActions_ActionGroup.this.addSeparator();
-    NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ExpandNode_Action");
-    NodeActions_ActionGroup.this.addSeparator();
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CutNode_Action");
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CopyNode_Action");
     NodeActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.CopyNodeName_Action");

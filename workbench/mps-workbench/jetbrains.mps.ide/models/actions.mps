@@ -2105,86 +2105,6 @@
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.TARGET_MODEL" resolve="TARGET_MODEL" />
     </node>
   </node>
-  <node concept="sE7Ow" id="hGoorIk">
-    <property role="TrG5h" value="ExpandNode" />
-    <property role="2uzpH1" value="Expand All" />
-    <property role="3GE5qa" value="Menu.ProjectPane.Node.Actions" />
-    <property role="72QZ$" value="true" />
-    <property role="1rBW0U" value="true" />
-    <node concept="tnohg" id="hGoorIl" role="tncku">
-      <node concept="3clFbS" id="hGoorIm" role="2VODD2">
-        <node concept="3cpWs8" id="hGopulR" role="3cqZAp">
-          <node concept="3cpWsn" id="hGopulS" role="3cpWs9">
-            <property role="TrG5h" value="pane" />
-            <node concept="3uibUv" id="hGopulT" role="1tU5fm">
-              <ref role="3uigEE" to="rvbb:~ProjectPane" resolve="ProjectPane" />
-            </node>
-            <node concept="2YIFZM" id="6oBe0ilSk9g" role="33vP2m">
-              <ref role="1Pybhc" to="rvbb:~ProjectPane" resolve="ProjectPane" />
-              <ref role="37wK5l" to="rvbb:~ProjectPane.getInstance(jetbrains.mps.project.Project)" resolve="getInstance" />
-              <node concept="2OqwBi" id="6oBe0ilSk9j" role="37wK5m">
-                <node concept="2WthIp" id="6oBe0ilSk9k" role="2Oq$k0" />
-                <node concept="1DTwFV" id="6oBe0ilSk9l" role="2OqNvi">
-                  <ref role="2WH_rO" node="6oBe0ilSk9i" resolve="project" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="hGoq0Ya" role="3cqZAp">
-          <node concept="3cpWsn" id="hGoq0Yb" role="3cpWs9">
-            <property role="TrG5h" value="tree" />
-            <node concept="3uibUv" id="hGoq0Yc" role="1tU5fm">
-              <ref role="3uigEE" to="dxuu:~JTree" resolve="JTree" />
-            </node>
-            <node concept="2OqwBi" id="hGoq0Yd" role="33vP2m">
-              <node concept="37vLTw" id="3GM_nagTrBG" role="2Oq$k0">
-                <ref role="3cqZAo" node="hGopulS" resolve="pane" />
-              </node>
-              <node concept="liA8E" id="hGoq0Yf" role="2OqNvi">
-                <ref role="37wK5l" to="rvbb:~ProjectPane.getTree()" resolve="getTree" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="7xsW50SrJD5" role="3cqZAp">
-          <node concept="3clFbS" id="7xsW50SrJD7" role="3clFbx">
-            <node concept="3cpWs6" id="7xsW50SrLLH" role="3cqZAp" />
-          </node>
-          <node concept="3clFbC" id="7xsW50SrKOu" role="3clFbw">
-            <node concept="10Nm6u" id="7xsW50SrLlB" role="3uHU7w" />
-            <node concept="37vLTw" id="7xsW50SrJMn" role="3uHU7B">
-              <ref role="3cqZAo" node="hGoq0Yb" resolve="tree" />
-            </node>
-          </node>
-        </node>
-        <node concept="3SKdUt" id="3mc1ltnNC6T" role="3cqZAp">
-          <node concept="1PaTwC" id="3mc1ltnNC6U" role="1aUNEU">
-            <node concept="3oM_SD" id="3mc1ltnNC9A" role="1PaTwD">
-              <property role="3oM_SC" value="see" />
-            </node>
-            <node concept="3oM_SD" id="3mc1ltnNCb9" role="1PaTwD">
-              <property role="3oM_SC" value="FullyExpandTreeNodeAction" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3mc1ltnNBuh" role="3cqZAp">
-          <node concept="2YIFZM" id="3mc1ltnNBI6" role="3clFbG">
-            <ref role="37wK5l" to="lzb2:~TreeExpandCollapse.expandAll(javax.swing.JTree)" resolve="expandAll" />
-            <ref role="1Pybhc" to="lzb2:~TreeExpandCollapse" resolve="TreeExpandCollapse" />
-            <node concept="37vLTw" id="3mc1ltnNBK2" role="37wK5m">
-              <ref role="3cqZAo" node="hGoq0Yb" resolve="tree" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1DS2jV" id="6oBe0ilSk9i" role="1NuT2Z">
-      <property role="TrG5h" value="project" />
-      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
-      <node concept="1oajcY" id="7HZe2EwZDlr" role="1oa70y" />
-    </node>
-  </node>
   <node concept="sE7Ow" id="hGoCYw9">
     <property role="fJN8o" value="true" />
     <property role="TrG5h" value="OptimizeProjectImports" />
@@ -24792,10 +24712,6 @@
         <ref role="tCJdB" node="6PWCPPtVuGD" resolve="SetNodePackage" />
       </node>
       <node concept="2a7GMi" id="hyaahYG" role="ftvYc" />
-      <node concept="tCFHf" id="hGopj2x" role="ftvYc">
-        <ref role="tCJdB" node="hGoorIk" resolve="ExpandNode" />
-      </node>
-      <node concept="2a7GMi" id="hyaamKe" role="ftvYc" />
       <node concept="tCFHf" id="4npc6Q0o$r1" role="ftvYc">
         <ref role="tCJdB" node="4npc6Q0oxS9" resolve="CutNode" />
       </node>
