@@ -396,7 +396,10 @@
       <globmapper from="*" to="Info.plist" />
     </copy>
     <zip destfile="${build.layout}/${mps.build.number}-macos.zip">
-      <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}.app/Contents" />
+      <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}.app/Contents">
+        <exclude name="build.txt" />
+      </zipfileset>
+      <zipfileset file="${artifacts.mps}/build.txt" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
       <zipfileset file="${basedir}/build/resources/mps.icns" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
       <zipfileset file="${basedir}/bin/mac/libnst64.dylib" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" />
       <zipfileset file="${basedir}/bin/mac/libmacscreenmenu64.dylib" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" />
@@ -474,7 +477,10 @@
       <globmapper from="*" to="Info.plist" />
     </copy>
     <zip destfile="${build.layout}/${mps.build.number}-macos-aarch64.zip">
-      <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}.app/Contents" />
+      <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}.app/Contents">
+        <exclude name="build.txt" />
+      </zipfileset>
+      <zipfileset file="${artifacts.mps}/build.txt" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
       <zipfileset file="${basedir}/build/resources/mps.icns" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
       <zipfileset file="${basedir}/bin/mac/libnst64.dylib" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" />
       <zipfileset file="${basedir}/bin/mac/libmacscreenmenu64.dylib" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" />

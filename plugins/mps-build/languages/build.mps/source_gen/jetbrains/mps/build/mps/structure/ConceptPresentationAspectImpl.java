@@ -459,7 +459,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_BuildMps_ModuleDoc == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("documentation files");
-          cpb.rawPresentation("BuildMps_ModuleDoc");
+          cpb.rawPresentation("documentation");
           props_BuildMps_ModuleDoc = cpb.create();
         }
         return props_BuildMps_ModuleDoc;
@@ -489,7 +489,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_BuildMps_ModuleResources == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("auxiliary resource files to deploy with a module");
-          cpb.rawPresentation("BuildMps_ModuleResources");
+          cpb.rawPresentation("resources");
           props_BuildMps_ModuleResources = cpb.create();
         }
         return props_BuildMps_ModuleResources;

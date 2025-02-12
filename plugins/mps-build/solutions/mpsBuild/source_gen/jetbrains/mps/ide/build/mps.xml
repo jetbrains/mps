@@ -253,9 +253,6 @@
         <tokenfilter>
           <replaceregex pattern=".+" replace="${build.number}" flags="" />
         </tokenfilter>
-        <tokenfilter>
-          <replaceregex pattern="MPS-" replace="" flags="" />
-        </tokenfilter>
       </filterchain>
     </copy>
     <copy todir="${build.layout}">
