@@ -8,9 +8,7 @@
       <artifact name="kotlin-stdlib" m:classifier="javadoc" ext="jar"/>
 
       <!-- -all is the common library -->
-      <artifact name="kotlin-stdlib-all" ext="jar"/>
-      <artifact name="kotlin-stdlib-all" m:classifier="sources" ext="jar"/>
-      <artifact name="kotlin-stdlib-all" m:classifier="javadoc" ext="jar"/>
+      <artifact name="kotlin-stdlib" m:classifier="all" ext="jar"/>
     </dependency>
     <dependency org="org.jetbrains.kotlin" name="kotlin-compiler-embeddable" rev="${kotlin.version}">
       <!-- We only need that to extract builtins -->

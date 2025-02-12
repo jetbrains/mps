@@ -10,7 +10,7 @@
     <modelRoot contentPath="${mps_home}/plugins/mps-kotlin/lib" type="kotlin_common">
       <sourceRoot location="kotlin-builtins.jar" />
       <sourceRoot location="kotlin-stdlib-2.1.0.jar" />
-      <sourceRoot location="kotlin-stdlib-all-2.1.0.jar" />
+      <sourceRoot location="kotlin-stdlib-2.1.0-all.jar" />
     </modelRoot>
   </models>
   <dependencies>
