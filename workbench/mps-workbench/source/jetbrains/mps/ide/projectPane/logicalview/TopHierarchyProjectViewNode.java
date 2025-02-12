@@ -111,11 +111,7 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
         if (mpsProject.isProjectModule(sModule)) {
           return false; // only support "select in" for non-project modules
         }
-
-        VisibleModuleRegistry visibleModules = VisibleModuleRegistry.getInstance();
-        GlobalScope globalScope = new GlobalScope(mpsProject.getRepository());
-        ConditionalScope conditionalScope = new ConditionalScope(globalScope, visibleModules::isVisible, null);
-        return IterableUtil.indexOf(conditionalScope.getModules(), sModule) >= 0;
+        return VisibleModuleRegistry.getInstance().isVisible(sModule);
       });
     }
 
