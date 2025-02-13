@@ -31,11 +31,12 @@ import javax.swing.KeyStroke;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class BaseTabbedProjectTool extends BaseTool {
 
   private final List<IDisposableTab> myTabList = new ArrayList<>();
-  private boolean myContentRemovedListenerAdded = false;
+  private AtomicBoolean myContentRemovedListenerAdded = new AtomicBoolean(false);
 
   protected BaseTabbedProjectTool(Project project, String id, Map<String, KeyStroke> shortcutsByKeymap, Icon icon,
                                   ToolWindowAnchor anchor, boolean canCloseContent) {
@@ -147,7 +148,7 @@ public abstract class BaseTabbedProjectTool extends BaseTool {
   }
 
   private void addContentRemovedListenerIfNeeded() {
-    if (myContentRemovedListenerAdded) {
+    if (myContentRemovedListenerAdded.getAndSet(true)) {
       return;
     }
 
@@ -160,7 +161,6 @@ public abstract class BaseTabbedProjectTool extends BaseTool {
         tab.disposeTab();
       }
     });
-    myContentRemovedListenerAdded = true;
   }
 
   @Override
