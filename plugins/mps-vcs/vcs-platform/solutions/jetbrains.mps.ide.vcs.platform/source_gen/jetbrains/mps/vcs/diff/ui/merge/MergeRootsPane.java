@@ -202,7 +202,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     if (myTitleCustomizers != null) {
       List<JComponent> titles = ListSequence.fromList(new ArrayList<JComponent>());
       for (int i = 0; i < ListSequence.fromList(myTitles).count(); i++) {
-        ListSequence.fromList(titles).addElement(DiffUtil.createTitle(ListSequence.fromList(myTitles).getElement(i)));
+        ListSequence.fromList(titles).addElement(DiffUtil.createTitle(ListSequence.fromList(myTitles).getElement(i), ListSequence.fromList(myTitleCustomizers).getElement(i)));
       }
       return titles;
     }
