@@ -260,10 +260,8 @@ public class KtModuleIndexer {
     } else if (arg instanceof KmAnnotationArgument.ArrayKClassValue) {
       KmAnnotationArgument.ArrayKClassValue value = (KmAnnotationArgument.ArrayKClassValue) arg;
       putClassRef(value.getClassName());
-      if (value.getArrayDimensionCount() > 1) {
-        putConcepts(CONCEPTS.TypeProjection$5e);
-        putRef("kotlin/Array");
-      }
+      putConcepts(CONCEPTS.TypeProjection$5e);
+      putRef("kotlin/Array");
       putConcepts(CONCEPTS.MemberNavigationExpression$7I, CONCEPTS.ClassMemberTarget$le, CONCEPTS.ReceiverType$$f);
     } else if (arg instanceof KmAnnotationArgument.EnumValue) {
       KmAnnotationArgument.EnumValue value = ((KmAnnotationArgument.EnumValue) arg);

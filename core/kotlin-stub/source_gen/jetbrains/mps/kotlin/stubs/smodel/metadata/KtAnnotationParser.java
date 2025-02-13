@@ -77,14 +77,14 @@ public class KtAnnotationParser {
         // TODO is "u" and "L" included in string? that could simplify conditions
         return createIntegerLiteral_82z5d7_a5a0c0a0j(lit.getValue().toString(), uLong || lit instanceof KmAnnotationArgument.LongValue, unsigned);
       }
-    } else if (arg instanceof KmAnnotationArgument.ArrayKClassValue) {
-      KmAnnotationArgument.ArrayKClassValue value = (KmAnnotationArgument.ArrayKClassValue) arg;
-      SNode receiverType = arrayOf(classTypeOf(value.getClassName()), value.getArrayDimensionCount());
-      return createMemberNavigationExpression_82z5d7_a2a0a0j(receiverType);
     } else if (arg instanceof KmAnnotationArgument.KClassValue) {
       KmAnnotationArgument.KClassValue value = (KmAnnotationArgument.KClassValue) arg;
       SNode receiverType = classTypeOf(value.getClassName());
       return createMemberNavigationExpression_82z5d7_a2a0a0j(receiverType);
+    } else if (arg instanceof KmAnnotationArgument.ArrayKClassValue) {
+      KmAnnotationArgument.ArrayKClassValue value = (KmAnnotationArgument.ArrayKClassValue) arg;
+      SNode receiverType = arrayOf(classTypeOf(value.getClassName()), value.getArrayDimensionCount());
+      return createMemberNavigationExpression_82z5d7_a2a1a0j(receiverType);
     } else if (arg instanceof KmAnnotationArgument.EnumValue) {
       KmAnnotationArgument.EnumValue value = ((KmAnnotationArgument.EnumValue) arg);
       SNode enumClassType = classTypeOf(value.getEnumClassName());
@@ -92,7 +92,7 @@ public class KtAnnotationParser {
       // TODO in principle, we already resolve the parent class type, this makes superfluous solving
       SNode refExpression = context.createClassReference(value.getEnumClassName() + "." + value.getEnumEntryName(), ClassStereotype::createKotlinEnumConstantReference);
 
-      return createNavigationOperation_82z5d7_a6a1a0j(enumClassType, refExpression);
+      return createNavigationOperation_82z5d7_a6a2a0j(enumClassType, refExpression);
     } else if (arg instanceof KmAnnotationArgument.ArrayValue) {
       KmAnnotationArgument.ArrayValue array = ((KmAnnotationArgument.ArrayValue) arg);
       SNode collection = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af44aL, "jetbrains.mps.kotlin.structure.CollectionLiteral"));
@@ -123,13 +123,9 @@ public class KtAnnotationParser {
   }
 
   private SNode arrayOf(SNode type, int depth) {
-    if (depth == 0) {
-      return type;
-    } else {
-      SNode clType = classTypeOf("kotlin/Array");
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(clType, CONCEPTS.IProjectedTypeArguments$ql), LINKS.typeProjections$vhti)).addElement(createTypeProjection_82z5d7_a0a1a0a0n(arrayOf(type, depth - 1), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x21e0c923289a2189L, "jetbrains.mps.kotlin.structure.VarianceModifier"), 0x21e0c923289a2222L, "inv")));
-      return clType;
-    }
+    SNode clType = classTypeOf("kotlin/Array");
+    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(clType, CONCEPTS.IProjectedTypeArguments$ql), LINKS.typeProjections$vhti)).addElement(createTypeProjection_82z5d7_a0a1a31(arrayOf(type, depth - 1), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x21e0c923289a2189L, "jetbrains.mps.kotlin.structure.VarianceModifier"), 0x21e0c923289a2222L, "inv")));
+    return clType;
   }
 
 
@@ -176,7 +172,16 @@ public class KtAnnotationParser {
     n0.forChild(LINKS.target$aBAp).init(CONCEPTS.ClassMemberTarget$le);
     return n0.getResult();
   }
-  private static SNode createNavigationOperation_82z5d7_a6a1a0j(SNode p0, SNode p1) {
+  private static SNode createMemberNavigationExpression_82z5d7_a2a1a0j(SNode p0) {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MemberNavigationExpression$7I);
+    {
+      SNodeBuilder n1 = n0.forChild(LINKS.operand$8jSC).init(CONCEPTS.ReceiverType$$f);
+      n1.forChild(LINKS.type$NVFj).initNode(p0, CONCEPTS.IType$Ni, true);
+    }
+    n0.forChild(LINKS.target$aBAp).init(CONCEPTS.ClassMemberTarget$le);
+    return n0.getResult();
+  }
+  private static SNode createNavigationOperation_82z5d7_a6a2a0j(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NavigationOperation$4I);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.operand$YS5t).init(CONCEPTS.ReceiverType$$f);
@@ -185,7 +190,7 @@ public class KtAnnotationParser {
     n0.forChild(LINKS.target$C6zp).initNode(p1, CONCEPTS.INavigationTarget$Ae, true);
     return n0.getResult();
   }
-  private static SNode createTypeProjection_82z5d7_a0a1a0a0n(SNode p0, SEnumerationLiteral p1) {
+  private static SNode createTypeProjection_82z5d7_a0a1a31(SNode p0, SEnumerationLiteral p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypeProjection$5e);
     n0.forChild(LINKS.type$x3no).initNode(p0, CONCEPTS.IType$Ni, true);
     n0.setProperty(PROPS.variance$9nw2, SPropertyOperations.serializeEnummember(p1));

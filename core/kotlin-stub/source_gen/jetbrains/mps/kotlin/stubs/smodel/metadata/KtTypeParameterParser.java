@@ -5,8 +5,6 @@ package jetbrains.mps.kotlin.stubs.smodel.metadata;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import java.util.stream.Stream;
-
-import kotlin.metadata.Attributes;
 import org.jetbrains.mps.openapi.model.SNode;
 import kotlin.metadata.KmTypeParameter;
 import org.jetbrains.annotations.Nullable;
@@ -36,8 +34,7 @@ public class KtTypeParameterParser {
 
     // This doesn't seem documented, but the flags provided only contains whether the parameter is reified
     // see kotlinx.metadata.impl.readers.kt:typeParameterFlags (in kotlinx.metadata lib)
-
-    SPropertyOperations.assign(node, PROPS.isReified$AAd, Attributes.isReified(typeParam));
+    SPropertyOperations.assign(node, PROPS.isReified$AAd, (typeParam.getFlags$kotlin_metadata() & 0x1) == 1);
 
     final StringJoiner upperBoundIds = new StringJoiner("&");
     final List<SNode> upperBounds = new ArrayList<SNode>();
