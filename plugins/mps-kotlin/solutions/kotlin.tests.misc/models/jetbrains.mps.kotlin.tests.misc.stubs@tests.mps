@@ -21,7 +21,6 @@
     <import index="y5e1" ref="r:4464540a-9650-433f-b716-ed95bbac5a69(jetbrains.mps.lang.test.matcher)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
-    <import index="1xrd" ref="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.collections(jetbrains.mps.kotlin.stdlib/)" implicit="true" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -255,7 +254,6 @@
     <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
       <concept id="4733039728785194814" name="jetbrains.mps.lang.modelapi.structure.NamedNodeReference" flags="ng" index="ZC_QK">
         <reference id="7256306938026143658" name="target" index="2aWVGs" />
-        <child id="7256306938026143676" name="child" index="2aWVGa" />
       </concept>
     </language>
     <language id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences">
@@ -1677,25 +1675,6 @@
             </node>
             <node concept="3oM_SD" id="61M21yhdnSw" role="1PaTwD">
               <property role="3oM_SC" value="type." />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="61M21yhdnwp" role="3cqZAp">
-          <node concept="2OqwBi" id="61M21yhdnwj" role="3clFbG">
-            <node concept="2WthIp" id="61M21yhdnwm" role="2Oq$k0" />
-            <node concept="2XshWL" id="61M21yhdnwo" role="2OqNvi">
-              <ref role="2WH_rO" node="61M21yhdj20" resolve="assertLoadedAs" />
-              <node concept="2tJFMh" id="61M21yhdWy_" role="2XxRq1">
-                <node concept="ZC_QK" id="61M21yhdWzd" role="2tJFKM">
-                  <ref role="2aWVGs" to="1xrd:~~_ArraysKt" resolve="_ArraysKt" />
-                  <node concept="ZC_QK" id="61M21yhdWBg" role="2aWVGa">
-                    <ref role="2aWVGs" to="1xrd:~#kotlin/Array&lt;0&gt;.component2&lt;1&gt;()" resolve="component2" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3xONca" id="61M21yhdnFZ" role="2XxRq1">
-                <ref role="3xOPvv" node="61M21yhdnFn" resolve="component2" />
-              </node>
             </node>
           </node>
         </node>

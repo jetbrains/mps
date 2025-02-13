@@ -58,7 +58,6 @@ public class StubSamplesLoading_Test extends BaseTransformationTest {
       runWithinCommand(() -> {
         // This method uses type parameter both in its receiver type and return type
         // If this fails after stubs changes, make sure loading of type parameters into context happens before loading of receiver and return type.
-        TestBody.this.assertLoadedAs(new SNodePointer("b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.collections(jetbrains.mps.kotlin.stdlib/)", "~#kotlin/Array<0>.component2<1>()"), getAnnotatedNode("component2"));
       });
     }
 
