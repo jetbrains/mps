@@ -3,6 +3,8 @@
  */
 package jetbrains.mps.ide.editor;
 
+import com.intellij.openapi.keymap.Keymap;
+import com.intellij.openapi.keymap.ex.KeymapManagerEx;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.ComponentPluginFactory;
@@ -42,6 +44,13 @@ public final class MPSEditorPlugin extends ComponentPlugin implements ComponentH
     myCaretManager = init(new IdeaCaretManager());
     myStyleRegistry = init(new StyleRegistryIdeaImpl());
     myExtensionRegistry = init(new EditorExtensionRegistryImpl());
+
+    final Keymap[] allKeymaps = KeymapManagerEx.getInstanceEx().getAllKeymaps();
+    for (Keymap keymap : allKeymaps) {
+      if (keymap.getShortcuts("EditorScrollToCenter").length > 0) {
+        keymap.removeAllActionShortcuts("EditorScrollToCenter");
+      }
+    }
   }
 
   @Override
