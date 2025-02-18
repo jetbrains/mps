@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,13 @@ import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.generator.ModelDigestUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SModelId;
+import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
@@ -221,8 +223,9 @@ public class FilePerRootModelFactory implements ModelFactory, IndexAwareModelFac
     // FIXME seem that we don't handle nodes with the same name correctly. Check NodeHistoryUtil and its use of
     //       FilePerRootFormatUtil.getStreamNames(). Here, all nodes with the same name would retrieve the same stream
     MultiStreamDataSource source = (MultiStreamDataSource) model.getSource();
-    String fileName = node.getContainingRoot().getName() + MPSExtentions.DOT_MODEL_ROOT;
-    return source.getStreamByName(FilePerRootFormatUtil.asFileName(fileName));
+    String fileName = SPropertyOperations.getString(node.getContainingRoot(), SNodeUtil.property_INamedConcept_name);
+    // FIXME FilePerRootFormatUtil.getStreamNames() handles fileName.isEmpty scenario (i.e. not INamedConcept as root), why not here?
+    return source.getStreamByName(FilePerRootFormatUtil.asFileName(fileName) + MPSExtentions.DOT_MODEL_ROOT);
   }
 
   @Nullable
