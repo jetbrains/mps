@@ -331,7 +331,6 @@
       </concept>
       <concept id="1202776937179" name="jetbrains.mps.lang.generator.structure.AbandonInput_RuleConsequence" flags="lg" index="b5Tf3" />
       <concept id="1095416546421" name="jetbrains.mps.lang.generator.structure.MappingConfiguration" flags="ig" index="bUwia">
-        <property id="1184950341882" name="topPriorityGroup" index="3$yP7D" />
         <child id="8612733435393315377" name="referenceReductionRule" index="meg5s" />
         <child id="1200911492601" name="mappingLabel" index="2rTMjI" />
         <child id="1167172143858" name="weavingMappingRule" index="30SoJX" />
@@ -8050,7 +8049,6 @@
   </node>
   <node concept="bUwia" id="7a7y9hgcoaW">
     <property role="TrG5h" value="loadMods" />
-    <property role="3$yP7D" value="true" />
     <node concept="1puMqW" id="7a7y9hgcoaX" role="1puA0r">
       <ref role="1puQsG" node="2L4pT56hNAU" resolve="loadModules" />
     </node>
