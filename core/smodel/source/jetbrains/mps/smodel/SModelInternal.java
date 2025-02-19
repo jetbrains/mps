@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,20 +30,34 @@ import java.util.List;
 /**
  * Provisional interface our openapi.SModel implementations shall provide in order to manage model dependencies
  * and internal housekeeping tasks (also for legacy model listeners, pending removal).
- *
+ * <p>
  * We are not yet confident about API to add model dependencies (languages, models and alike), that's why we keep this
  * separate, non-{@code openapi} interface. Questions, among others, include whether we shall demand all models to support
  * imports editing, how to specify dependencies (extra composite Dependency objects or plain SModelReference/SLanguage is ok),
  * if this interface is intrinsic part of openapi.SModel or just comes with a help thereof (i.e. model.getDependencies() manager object),
  * and how to dispatch change notifications.
- *
+ * <p>
  * Please use utility {@link ModelImports} instead of cast to this class.
  */
 public interface SModelInternal extends ModelWithDisposeInfo  {
 
-  void addModelListener(@NotNull SModelListener listener);
+  /**
+   * @deprecated use contemporary {@link org.jetbrains.mps.openapi.model.SModelListener} and
+   *            {@link org.jetbrains.mps.openapi.model.SNodeChangeListener} instead.
+   *            Note, there's {@link jetbrains.mps.smodel.event.NodeChangeBridge} for transition purposes.
+   *            Legacy {@link SModelListener} will become no-op or removed in the next MPS release.
+   *            All the uses in MPS have been cleared (there's only 1 for tests left), DO NOT introduce any new.
+   */
+  @Deprecated(since = "2025.1", forRemoval = true)
+  default void addModelListener(@NotNull SModelListener listener) {
+  }
 
-  void removeModelListener(@NotNull SModelListener listener);
+  /**
+   * @deprecated see {@link #addModelListener(SModelListener)}, above, for explanation
+   */
+  @Deprecated(since = "2025.1", forRemoval = true)
+  default void removeModelListener(@NotNull SModelListener listener) {
+  }
 
   // FIXME rename to importedLanguages once original is removed
   java.util.Collection<SLanguage> importedLanguageIds();
