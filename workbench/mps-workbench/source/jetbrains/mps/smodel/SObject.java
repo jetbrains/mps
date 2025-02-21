@@ -29,6 +29,7 @@ import java.util.function.Predicate;
  */
 public final class SObject {
 
+
   public static SObject of(@NotNull SNode sNode) {
     return new SObject(sNode);
   }
@@ -44,6 +45,7 @@ public final class SObject {
   private final SNode sNode;
   private final SModel sModel;
   private final SModule sModule;
+  private int myHash = -1;
 
   private SObject(SNode sNode) {
     this.sNode = sNode;
@@ -139,9 +141,13 @@ public final class SObject {
     return sModule;
   }
 
+  @SuppressWarnings("ObjectInstantiationInEqualsHashCode")
   @Override
   public int hashCode() {
-    return Objects.hash(sNode, sModel, sModule);
+    if (myHash == -1) {
+      myHash = Objects.hash(sNode, sModel, sModule);
+    }
+    return myHash;
   }
 
   @Override
