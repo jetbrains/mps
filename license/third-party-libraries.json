@@ -193,7 +193,7 @@
 }, {
   "name" : "Gson",
   "url" : "https://github.com/google/gson",
-  "version" : "2.11.0",
+  "version" : "2.12.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/google/gson/blob/master/LICENSE"
 }, {
@@ -427,19 +427,19 @@
 }, {
   "name" : "Kotlin Coroutines for Guava",
   "url" : "https://github.com/Kotlin/kotlinx.coroutines",
-  "version" : "1.8.0-intellij-11",
+  "version" : "1.8.0-intellij-12",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin Coroutines for JDK 8",
   "url" : "https://github.com/Kotlin/kotlinx.coroutines",
-  "version" : "1.8.0-intellij-11",
+  "version" : "1.8.0-intellij-12",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt"
 }, {
   "name" : "Kotlin Coroutines for Slf4j",
   "url" : "https://github.com/Kotlin/kotlinx.coroutines",
-  "version" : "1.8.0-intellij-11",
+  "version" : "1.8.0-intellij-12",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt"
 }, {
@@ -487,13 +487,13 @@
 }, {
   "name" : "Ktor Client Core",
   "url" : "https://github.com/ktorio/ktor/tree/main/ktor-client/ktor-client-core",
-  "version" : "2.3.13",
+  "version" : "3.0.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "Ktor Client OkHttp",
   "url" : "https://github.com/ktorio/ktor/tree/main/ktor-client/ktor-client-okhttp",
-  "version" : "2.3.13",
+  "version" : "3.0.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
@@ -745,7 +745,7 @@
 }, {
   "name" : "hash4j",
   "url" : "https://github.com/dynatrace-oss/hash4j",
-  "version" : "0.19.0",
+  "version" : "0.20.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/dynatrace-oss/hash4j/blob/main/LICENSE"
 }, {
@@ -781,19 +781,19 @@
 }, {
   "name" : "jb-jdi",
   "url" : "https://github.com/JetBrains/intellij-deps-jdi",
-  "version" : "2.39",
+  "version" : "2.41",
   "license" : "GPL 2.0 + Classpath",
   "licenseUrl" : "https://github.com/JetBrains/intellij-deps-jdi/raw/master/LICENSE.txt"
 }, {
   "name" : "jediterm-core",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.49",
+  "version" : "3.50",
   "license" : "LGPL 3.0",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
   "name" : "jediterm-ui",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.49",
+  "version" : "3.50",
   "license" : "LGPL 3.0",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
@@ -811,7 +811,7 @@
 }, {
   "name" : "jsoup",
   "url" : "https://jsoup.org",
-  "version" : "1.18.1",
+  "version" : "1.18.3",
   "license" : "MIT",
   "licenseUrl" : "https://jsoup.org/license"
 }, {
@@ -829,7 +829,7 @@
 }, {
   "name" : "kotlinx-datetime-jvm",
   "url" : "https://github.com/Kotlin/kotlinx-datetime",
-  "version" : "0.6.1",
+  "version" : "0.6.2",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/Kotlin/kotlinx-datetime/blob/master/LICENSE.txt"
 }, {
@@ -841,43 +841,43 @@
 }, {
   "name" : "ktor-client-auth",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "2.3.13",
+  "version" : "3.0.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-cio-internal",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "2.3.13",
+  "version" : "3.0.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-content-negotiation",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "2.3.13",
+  "version" : "3.0.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-encoding",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "2.3.13",
+  "version" : "3.0.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-java",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "2.3.13",
+  "version" : "3.0.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-serialization-kotlinx-json",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "2.3.13",
+  "version" : "3.0.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor.io TLS",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "2.3.13",
+  "version" : "3.0.3",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
@@ -961,25 +961,25 @@
 }, {
   "name" : "opentelemetry",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.46.0",
+  "version" : "1.47.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {
   "name" : "opentelemetry-exporter-otlp-common",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.46.0",
+  "version" : "1.47.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {
   "name" : "opentelemetry-extension-kotlin",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.46.0",
+  "version" : "1.47.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/opentelemetry-java/blob/main/LICENSE"
 }, {
   "name" : "opentelemetry-semconv",
   "url" : "https://opentelemetry.io/",
-  "version" : "1.29.0-alpha",
+  "version" : "1.30.0-rc.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/open-telemetry/semantic-conventions-java/blob/main/LICENSE"
 }, {
