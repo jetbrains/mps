@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,6 @@ import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.util.PathSpecBundle;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.vfs.openapi.FileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
@@ -46,7 +45,6 @@ import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.persistence.ModulePersistenceContext;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Optional;
@@ -208,25 +206,6 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     LinkedHashSet<String> rv = new LinkedHashSet<>();
     myAdditionalSources.paths().filter(PathSpec::resolved).map(PathSpec::resolvedPath).forEach(rv::add);
     return rv;
-  }
-
-  /**
-   * @deprecated use {@link #setSourcePathSpec(PathSpecBundle)} instead
-   */
-  @Deprecated(since = "2023.1", forRemoval = true)
-  public void setAdditionalSourcePaths(Collection<String> newValue) {
-    final FileSystem fs = getAbstractModule().getFileSystem();
-    ArrayList<PathSpec> converted = new ArrayList<>();
-    newValue.stream().map(fs::getFile).map(PathSpec::new).forEach(converted::add);
-    setSourcePathSpec(new PathSpecBundle(converted));
-    // clear persisted values in MD just in case there are some, not to save them in addition to new path spec
-    ModuleDescriptor moduleDescriptor = getAbstractModule().getModuleDescriptor();
-    if (moduleDescriptor == null) {
-      return;
-    }
-    // here we imply getSourcePaths() returns value-by-reference
-    final Collection<String> persistedPaths = moduleDescriptor.getSourcePathPersistedValue();
-    persistedPaths.clear();
   }
 
   @Override
