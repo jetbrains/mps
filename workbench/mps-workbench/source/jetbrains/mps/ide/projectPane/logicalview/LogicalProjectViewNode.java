@@ -175,7 +175,7 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
     if (Registry.is("mps.projectView.generationRequired.icon")) {
       MissionControl missionControl = MissionControl.getInstance(getProject());
       if (missionControl != null) {
-        if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkModified, MessageStatus.OK, true)) {
+        if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::matches, this::shouldMarkModified, MessageStatus.OK, true)) {
           presentation.setIcon(getModifiedIcon(presentation.getIcon(true)));
         }
       }
@@ -187,7 +187,7 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
     if (!Registry.is("mps.projectView.generationRequired.icon")) {
       MissionControl missionControl = MissionControl.getInstance(getProject());
       if (missionControl != null) {
-        if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkModified, MessageStatus.OK, true)) {
+        if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::matches, this::shouldMarkModified, MessageStatus.OK, true)) {
           appender.append(String.format(" (%s)", GenerationStatus.REQUIRED.getMessage()), SimpleTextAttributes.GRAY_ATTRIBUTES);
         }
       }

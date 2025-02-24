@@ -204,7 +204,7 @@ import java.util.function.Predicate;
   }
 
   private MessagesUpdate checkModule(SModule module) {
-    boolean wereMessagesReported = myMessagesContainer.clearMessages(module.getModuleReference());
+    boolean wereMessagesReported = myMessagesContainer.clearMessages(module);
     MessagesUpdate event = wereMessagesReported ? MessagesUpdate.DISAPPEARED : MessagesUpdate.NONE;
     if (module != null) {
       List<ModuleReportItem> messages = new ArrayList<>();
@@ -213,7 +213,7 @@ import java.util.function.Predicate;
         addGenerationStatusMessages(module, messages, myGenerationStatusManager::generationRequired);
       }
       if (!messages.isEmpty()) {
-        myMessagesContainer.reportMessages(module.getModuleReference(), messages);
+        myMessagesContainer.reportMessages(module, messages);
         event = event == MessagesUpdate.NONE ? MessagesUpdate.APPEARED : MessagesUpdate.CHANGED;
       }
       module.getModels().forEach(this::enqueueUpdate);
@@ -232,7 +232,7 @@ import java.util.function.Predicate;
         addGenerationStatusMessages(model, messages, myGenerationStatusManager::generationRequired);
       }
       if (!messages.isEmpty()) {
-        myMessagesContainer.reportMessages(model.getReference(), messages);
+        myMessagesContainer.reportMessages(model, messages);
         event = event == MessagesUpdate.NONE ? MessagesUpdate.APPEARED : MessagesUpdate.CHANGED;
       }
     }
@@ -436,7 +436,7 @@ import java.util.function.Predicate;
     public void moduleRemoved(ModulePath modulePath, @NotNull SModule module) {
       enqueueAllModulesInProject();
       clearModuleReference(modulePath.getFile(), module.getModuleReference());
-      myMessagesContainer.clearMessages(module.getModuleReference());
+      myMessagesContainer.clearMessages(module);
       unregisterListener(module);
     }
 
