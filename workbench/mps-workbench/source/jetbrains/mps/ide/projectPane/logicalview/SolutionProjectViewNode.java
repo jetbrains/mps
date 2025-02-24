@@ -119,6 +119,11 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
     }
 
     @Override
+    protected boolean matches(SObject wildcard) {
+      return parentMatches(wildcard) && wildcard.testIfHasSModelOrWildcard(sModel -> filterModels(List.of(sModel)).isEmpty());
+    }
+
+    @Override
     public int getTypeSortWeight(boolean sortByType) {
       return ProjectViewWeights.STUBS_WEIGHT;
     }
@@ -184,6 +189,11 @@ public class SolutionProjectViewNode extends BaseModuleProjectViewNode<Solution>
                sObject.testIfHasSModel(sModel -> !filterModels(List.of(sModel)).isEmpty());
       }
       return false;
+    }
+
+    @Override
+    protected boolean matches(SObject wildcard) {
+      return parentMatches(wildcard) && wildcard.testIfHasSModelOrWildcard(sModel -> filterModels(List.of(sModel)).isEmpty());
     }
 
     @Override

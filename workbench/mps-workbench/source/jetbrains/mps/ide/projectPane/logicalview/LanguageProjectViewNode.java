@@ -10,7 +10,6 @@ import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.ide.util.treeView.InplaceCommentAppender;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.errors.MessageStatus;
@@ -184,10 +183,15 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
 
     @Override
     protected boolean containsSObject(SObject sObject) {
-      return sObject.testIfHasSModel(this::containsModel);
+      return sObject.testIfHasSModel(this::containsSModel);
     }
 
-    private boolean containsModel(SModel sModel) {
+    @Override
+    protected boolean matches(SObject wildcard) {
+      return parentMatches(wildcard) && wildcard.testIfHasSModelOrWildcard(this::containsSModel);
+    }
+
+    private boolean containsSModel(SModel sModel) {
       final Object parentValue = getParentValue();
       if (parentValue instanceof Language) {
         return ((Language) parentValue).getAccessoryModels().stream()
@@ -278,6 +282,11 @@ public class LanguageProjectViewNode extends BranchProjectViewNode<Language> {
     @Override
     protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSModel(this::containsSModel);
+    }
+    
+    @Override
+    protected boolean matches(SObject wildcard) {
+      return parentMatches(wildcard) && wildcard.testIfHasSModelOrWildcard(this::containsSModel);
     }
 
     private boolean containsSModel(SModel model) {

@@ -220,6 +220,11 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
     }
 
     @Override
+    protected boolean matches(SObject wildcard) {
+      return parentMatches(wildcard) && wildcard.testIfHasSModelOrWildcard(this::containsValue);
+    }
+
+    @Override
     protected  boolean isVirtualFolder(Object parentValue) {
       return parentValue instanceof Models;
     }
@@ -267,6 +272,11 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
     @Override
     protected boolean containsSObject(SObject sObject) {
       return sObject.testIfHasSNode(node -> containsValue(getRoot(node)));
+    }
+
+    @Override
+    protected boolean matches(SObject wildcard) {
+      return parentMatches(wildcard) && wildcard.testIfHasSNodeOrWildcard(this::containsValue);
     }
 
     @Override
