@@ -56,7 +56,7 @@ public final class CopyModuleHelper {
       throw new IllegalArgumentException("The module descriptor is null for the " + myOriginal);
     }
     AbstractModule copy;
-    ModuleDescriptor copyDescriptor = new DescriptorCopyOrganizer(myOriginal, myCopyName, myCopyLocation).copyDescriptor();
+    ModuleDescriptor copyDescriptor = new DescriptorCopyOrganizer(myOriginal, myCopyName).copyDescriptor();
     copy = createModule(myCopyLocation, copyDescriptor);
     try {
       addModuleToProject(copy);

@@ -5,14 +5,10 @@ package jetbrains.mps.ide.newModuleDialogs;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.util.ModulePathConverter;
-import jetbrains.mps.vfs.IFile;
-import jetbrains.mps.util.PathConverters;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
-import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.ModuleId;
 
 /**
@@ -28,18 +24,11 @@ import jetbrains.mps.project.ModuleId;
   private final AbstractModule myModuleToCopy;
   @NotNull
   private final String myNewName;
-  private final ModulePathConverter myModulePathConverter;
 
 
-  public DescriptorCopyOrganizer(@NotNull AbstractModule moduleToCopy, @NotNull String newName, @NotNull IFile newFile) {
+  public DescriptorCopyOrganizer(@NotNull AbstractModule moduleToCopy, @NotNull String newName) {
     myModuleToCopy = moduleToCopy;
     myNewName = newName;
-    if (moduleToCopy.getDescriptorFile() != null) {
-      // hackXXX methods need path conversion
-      myModulePathConverter = PathConverters.forDescriptorFiles(moduleToCopy.getDescriptorFile(), newFile);
-    } else {
-      myModulePathConverter = null;
-    }
     if (moduleToCopy.getModuleDescriptor() == null) {
       throw new UnsupportedOperationException("Cannot copy without descriptor so far");
     }
@@ -70,27 +59,8 @@ import jetbrains.mps.project.ModuleId;
         resetModelRoots(gd);
       });
     }
-    if (myModulePathConverter != null) {
-      hackModuleDescriptor(copyDescriptor);
-
-      if (copyDescriptor instanceof LanguageDescriptor) {
-        ((LanguageDescriptor) copyDescriptor).getGenerators().forEach(this::hackModuleDescriptor);
-      }
-      // JFTR, we may face copyDescriptor instanceof GeneratorDescriptor for standalone Generators 
-    }
+    // JFTR, we may face copyDescriptor instanceof GeneratorDescriptor for standalone Generators 
     return copyDescriptor;
-  }
-
-  @SuppressWarnings("removal")
-  private void hackModuleDescriptor(final ModuleDescriptor copyDescriptor) {
-    // will go away when these paths are restrained to be relative [from the module file] or absolute without regard to the module file
-    if (!(copyDescriptor.isOutputRootFromLegacy())) {
-      return;
-    }
-    String generatorOutputPath = ProjectPathUtil._getGeneratorOutputPathPrim(copyDescriptor);
-    if (generatorOutputPath != null) {
-      ProjectPathUtil._setGeneratorOutputPathPrim(copyDescriptor, myModulePathConverter.source2Target(generatorOutputPath));
-    }
   }
 
   private void resetModelRoots(final ModuleDescriptor copyDescriptor) {

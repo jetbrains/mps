@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -516,8 +516,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     copyDeploymentDescriptor(descriptorCopy);
     descriptorCopy.setLoadException(getLoadException());
     descriptorCopy.setOutputRoot(getOutputRoot());
-    // delete next line once 2023.3 is out; need just for the sake of DescriptorCopyOrganizer
-    descriptorCopy.markOutputRootLegacyValue(isOutputRootFromLegacy());
     return descriptorCopy;
   }
 
