@@ -123,8 +123,9 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
       ConditionalScope visibleScope = new ConditionalScope(globalScope, visibleModules::isVisible, null);
 
       ConditionalScope solutionsScope = new ConditionalScope(visibleScope, Solution.class::isInstance, null);
+      Collection<SModule> solutions = IterableUtil.asSet(solutionsScope.getModules());
       children.add(new ModulesPoolFolderProjectViewNode(getProject(), new SolutionsModulesPool(), getSettings(), 0,
-                                                        () -> IterableUtil.asList(solutionsScope.getModules())));
+                                                        () -> solutions, solutions::contains));
 
       ConditionalScope languagesScope = new ConditionalScope(visibleScope,
                                                              (m) -> m instanceof Language ||
@@ -133,13 +134,15 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
       ConditionalScope languagesAndGeneratorsScope = new ConditionalScope(visibleScope,
                                                              (m) -> m instanceof Language || m instanceof Generator,
                                                              null);
+      Collection<SModule> languages = IterableUtil.asSet(languagesScope.getModules());
+      Collection<SModule> languagesAndGenerators = IterableUtil.asSet(languagesAndGeneratorsScope.getModules());
       children.add(new ModulesPoolFolderProjectViewNode(getProject(), new LanguagesModulesPool(), getSettings(), 1,
-                                                        () -> IterableUtil.asList(languagesScope.getModules()),
-                                                        () -> IterableUtil.asList(languagesAndGeneratorsScope.getModules())));
+                                                        () -> languages, languagesAndGenerators::contains));
 
       ConditionalScope devkitsScope = new ConditionalScope(visibleScope, DevKit.class::isInstance, null);
+      Collection<SModule> devkits = IterableUtil.asSet(devkitsScope.getModules());
       children.add(new ModulesPoolFolderProjectViewNode(getProject(), new DevKitsModulesPool(), getSettings(), 2,
-                                                        () -> IterableUtil.asList(devkitsScope.getModules())));
+                                                        () -> devkits, devkits::contains));
     }
 
     @Override
@@ -162,21 +165,16 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     private final Supplier<Collection<SModule>> myModulesSupplier;
     private Predicate<SModule> myContainsCondition;
 
-    protected ModulesPoolFolderProjectViewNode(@NotNull Project project, VirtualFolder virtualFolder, ViewSettings viewSettings, int ordinal, Supplier<Collection<SModule>> modulesSupplier) {
-      super(project, virtualFolder, viewSettings);
-      myOrdinal = ordinal;
-      myModulesSupplier = modulesSupplier;
-      myContainsCondition = (m) -> myModulesSupplier.get().contains(m);
-    }
-
     protected ModulesPoolFolderProjectViewNode(@NotNull Project project,
                                                VirtualFolder virtualFolder,
                                                ViewSettings viewSettings,
                                                int ordinal,
                                                Supplier<Collection<SModule>> modulesSupplier,
-                                               Supplier<Collection<SModule>> allModulesSupplier) {
-      this(project, virtualFolder, viewSettings, ordinal, modulesSupplier);
-      myContainsCondition = (m) -> allModulesSupplier.get().contains(m);
+                                               Predicate<SModule> containsCondition) {
+      super(project, virtualFolder, viewSettings);
+      myOrdinal = ordinal;
+      myModulesSupplier = modulesSupplier;
+      myContainsCondition = containsCondition;
     }
 
     @Override
