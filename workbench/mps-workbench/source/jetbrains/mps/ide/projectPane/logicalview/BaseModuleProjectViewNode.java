@@ -62,7 +62,7 @@ public abstract class BaseModuleProjectViewNode<Value extends SModule> extends B
     super.appendInplaceComments(appender);
     MissionControl missionControl = MissionControl.getInstance(getProject());
     if (missionControl != null) {
-      if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::containsSObject, this::shouldMarkReadonly, MessageStatus.OK.OK, true)) {
+      if (missionControl.getMessagesContainer().hasMessagesInHierarchy(this::matches, this::shouldMarkReadonly, MessageStatus.OK.OK, true)) {
         appender.append(String.format(" (%s)", GenerationStatus.READONLY.getMessage()), SimpleTextAttributes.GRAY_ATTRIBUTES);
       }
     }
