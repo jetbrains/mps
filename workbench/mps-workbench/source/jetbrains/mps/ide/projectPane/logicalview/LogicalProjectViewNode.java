@@ -247,7 +247,29 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
     return contains;
   }
 
-  protected abstract boolean containsSObject(SObject sObject);
+  /**
+   * Test if an SObject is contained within this node's hierarchy.
+   * Always called in a read action.
+   */
+  protected boolean containsSObject(SObject sObject) {
+    return false;
+  }
+
+  /**
+   * Test if the node's value matches a wildcard specified in the parameter.
+   * For a non-wildcard SObject, this is equivalent to {@link #containsSObject(SObject)}.
+   * For a partially specified SObject, first ensure the node's parent matches it.
+   */
+  protected boolean matches(SObject wildcard) {
+    return containsSObject(wildcard);
+  }
+
+  protected boolean parentMatches(SObject wildcard) {
+    if (getParent() instanceof LogicalProjectViewNode) {
+      return ((LogicalProjectViewNode<?>) getParent()).matches(wildcard);
+    }
+    return false;
+  }
 
   public boolean canRepresent(Object element) {
     if (element instanceof VirtualFile) {

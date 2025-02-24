@@ -36,6 +36,11 @@ public class ModelHierarchyProjectViewNode extends SimpleModelProjectViewNode {
     return sObject.testIfHasSModel(this::containsSModel);
   }
 
+  @Override
+  protected boolean matches(SObject wildcard) {
+    return parentMatches(wildcard) && wildcard.testIfHasSModelOrWildcard(this::containsSModel);
+  }
+
   private boolean containsSModel(SModel sModel) {
     boolean contains = false;
     if (myHierarchy != null) {

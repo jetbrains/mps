@@ -73,6 +73,11 @@ public class SimpleModelProjectViewNode extends BranchProjectViewNode<SModel> {
   }
 
   @Override
+  protected boolean matches(SObject wildcard) {
+    return parentMatches(wildcard) && wildcard.testIfHasSModelOrWildcard(sModel -> Objects.equals(sModel, getValue()));
+  }
+
+  @Override
   protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
     NodesVirtualFolderHierarchy hierarchy = new NodesVirtualFolderHierarchy(IterableUtil.asCollection(getValue().getRootNodes()), this::getVirtualPackage);
     hierarchy.fillChildren("", children);

@@ -68,6 +68,11 @@ public class SimpleNodeProjectViewNode extends BranchProjectViewNode<SNode> impl
     return sObject.testIfHasSNode(this::isDescendant);
   }
 
+  @Override
+  protected boolean matches(SObject wildcard) {
+    return parentMatches(wildcard) && wildcard.testIfHasSNodeOrWildcard(this::isDescendant);
+  }
+
   private Boolean isDescendant(SNode sNode) {
     return ProjectHelper.fromIdeaProject(getProject())
                         .getModelAccess()
