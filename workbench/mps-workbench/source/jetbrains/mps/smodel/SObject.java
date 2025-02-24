@@ -29,40 +29,51 @@ import java.util.function.Predicate;
  */
 public final class SObject {
 
-
   public static SObject of(@NotNull SNode sNode) {
-    return new SObject(sNode);
+    return new SObject(sNode, false);
   }
 
   public static SObject of(@NotNull SModel sModel) {
-    return new SObject(sModel);
+    return new SObject(sModel, false);
+  }
+
+  public static SObject wildcardOf(@NotNull SModel sModel) {
+    return new SObject(sModel, true);
   }
 
   public static SObject of(@NotNull SModule sModule) {
-    return new SObject(sModule);
+    return new SObject(sModule, false);
+  }
+
+  public static SObject wildcardOf(@NotNull SModule sModule) {
+    return new SObject(sModule, true);
   }
 
   private final SNode sNode;
   private final SModel sModel;
   private final SModule sModule;
+  private final boolean wildcard;
   private int myHash = -1;
 
-  private SObject(SNode sNode) {
+  private SObject(SNode sNode, boolean wildcard) {
     this.sNode = sNode;
     this.sModel = sNode.getModel();
     this.sModule = sNode.getModel().getModule();
+    this.wildcard = wildcard;
   }
 
-  private SObject(SModel sModel) {
+  private SObject(SModel sModel, boolean wildcard) {
     this.sNode = null;
     this.sModel = sModel;
     this.sModule = sModel.getModule();
+    this.wildcard = wildcard;
   }
 
-  private SObject(SModule sModule) {
+  private SObject(SModule sModule, boolean wildcard) {
     this.sNode = null;
     this.sModel = null;
     this.sModule = sModule;
+    this.wildcard = wildcard;
   }
 
   public boolean hasSNode() {
@@ -71,6 +82,10 @@ public final class SObject {
 
   public boolean testIfHasSNode(Predicate<SNode> predicate) {
     return hasSNode() && predicate.test(sNode);
+  }
+
+  public boolean testIfHasSNodeOrWildcard(Predicate<SNode> predicate) {
+    return hasSNode() ? predicate.test(sNode) : wildcard;
   }
 
   public <T> T ifHasSNode(Function<SNode, T> fun) {
@@ -91,6 +106,10 @@ public final class SObject {
 
   public boolean testIfHasSModel(Predicate<SModel> predicate) {
     return hasSModel() && predicate.test(sModel);
+  }
+
+  public boolean testIfHasSModelOrWildcard(Predicate<SModel> predicate) {
+    return hasSModel() ? predicate.test(sModel) : wildcard;
   }
 
   public <T> T ifHasSModel(Function<SModel, T> fun) {
