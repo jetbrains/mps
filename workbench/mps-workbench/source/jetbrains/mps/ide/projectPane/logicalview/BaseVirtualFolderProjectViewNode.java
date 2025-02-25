@@ -81,13 +81,8 @@ public abstract class BaseVirtualFolderProjectViewNode<FolderType extends Virtua
 
   protected boolean containsValue(Object value) {
     String virtualFolder = getValue().getName();
-    return myHierarchy.allValues(virtualFolder).anyMatch(module -> {
-      if (Objects.equals(value, module)) return true;
-      if (module instanceof Language && value instanceof Generator)
-        return ProjectHelper.fromIdeaProject(getProject()).getRepository().getModelAccess()
-                            .computeReadAction(()-> ((Language) module).getOwnedGenerators().contains(value));
-      return false;
-    });
+    return myHierarchy.allValues(virtualFolder).anyMatch(v -> Objects.equals(value, v)) ||
+           myHierarchy.allAuxValues(virtualFolder).anyMatch(av -> Objects.equals(value, av));
   }
 
   @Override

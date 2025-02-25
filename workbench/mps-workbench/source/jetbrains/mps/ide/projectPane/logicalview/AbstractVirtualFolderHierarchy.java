@@ -9,6 +9,7 @@ import com.intellij.ide.util.treeView.AbstractTreeNode;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -23,9 +24,25 @@ import java.util.stream.Collectors;
  */
 public abstract class AbstractVirtualFolderHierarchy<U> extends VirtualFolderHelper<U> {
 
+  private final boolean myAllowValueVirtualFolders;
+
   protected AbstractVirtualFolderHierarchy(Collection<? extends U> values, Function<U, String> virtualFolderNameSupplier) {
-    super(values, virtualFolderNameSupplier);
+    this(values, virtualFolderNameSupplier, false);
   }
+
+  protected AbstractVirtualFolderHierarchy(Collection<? extends U> values, Function<U, String> virtualFolderNameSupplier,
+                                           boolean allowValueVirtualFolders) {
+    super(values, virtualFolderNameSupplier);
+    myAllowValueVirtualFolders = allowValueVirtualFolders;
+  }
+
+  protected AbstractVirtualFolderHierarchy(Collection<? extends U> values, Function<U, String> virtualFolderNameSupplier, Function<? super U, Collection<? extends U>> getAuxValues,
+                                           boolean allowValueVirtualFolders) {
+    super(values, virtualFolderNameSupplier, getAuxValues);
+    myAllowValueVirtualFolders = allowValueVirtualFolders;
+  }
+
+  protected abstract <T extends U> String asFolderName(T value);
 
   /**
    * Factory method for creating node instances corresponding to specified value object.
@@ -47,15 +64,17 @@ public abstract class AbstractVirtualFolderHierarchy<U> extends VirtualFolderHel
 
 
   public final <T> void fillChildren(String virtualFolder, Collection<AbstractTreeNode<?>> children) {
+    List<? extends ProjectViewNode<?>> valueNodes = values(virtualFolder)
+                                                        .map(t -> createValueNode(t, this::valueNodeFactory))
+                                                        .filter(Objects::nonNull)
+                                                        .collect(Collectors.toList());
+
+    Set<String> valueVirtualFolders = values(virtualFolder).map(this::asFolderName).collect(Collectors.toSet());
     List<? extends ProjectViewNode<?>> virtualFolderNodes = folders(virtualFolderToPrefix(virtualFolder))
+                                                              .filter((s) -> myAllowValueVirtualFolders || !valueVirtualFolders.contains(s))
                                                               .map(this::createVirtualFolderNode)
                                                               .filter(Objects::nonNull)
                                                               .collect(Collectors.toList());
-
-    List<? extends ProjectViewNode<?>> valueNodes = values(virtualFolder)
-                                                      .map(t -> createValueNode(t, this::valueNodeFactory))
-                                                      .filter(Objects::nonNull)
-                                                      .collect(Collectors.toList());
 
     children.addAll(virtualFolderNodes);
     children.addAll(valueNodes);
@@ -69,7 +88,7 @@ public abstract class AbstractVirtualFolderHierarchy<U> extends VirtualFolderHel
     // iff b and c are the only children of their respective parents
     while (true) {
       List<String> folders = folders(prefix).collect(Collectors.toList());
-      if (folders.size() == 1 && !values(compactedVirtualFolder).iterator().hasNext()) {
+      if (folders.size() == 1 && values(compactedVirtualFolder).findAny().isEmpty()) {
         compactedVirtualFolder = folders.get(0);
         prefix = compactedVirtualFolder + ".";
       } else {
