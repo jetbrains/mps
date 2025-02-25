@@ -31,6 +31,7 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
 import jetbrains.mps.smodel.persistence.def.IModelWriter;
 import jetbrains.mps.smodel.persistence.def.UserObjectEncoder;
+import jetbrains.mps.smodel.runtime.StaticScope;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
@@ -256,7 +257,10 @@ public class ModelWriter9 implements IModelWriter {
     Element nodeElement = new Element(ModelPersistence9.NODE);
     final ConceptInfo conceptInfo = myMetaInfo.find(node.getConcept());
     nodeElement.setAttribute(ModelPersistence9.CONCEPT_ID, conceptInfo.getIndex());
-    nodeElement.setAttribute(ModelPersistence9.ID, myIdEncoder.toText(node.getNodeId()));
+    if (conceptInfo.getScope() != StaticScope.NONE || conceptInfo.getKind() == jetbrains.mps.smodel.runtime.ConceptKind.INTERFACE) {
+      // == IdInfoReadHelper.canBeAssociationTarget()
+      nodeElement.setAttribute(ModelPersistence9.ID, myIdEncoder.toText(node.getNodeId()));
+    }
     final SContainmentLink roleInParent = node.getContainmentLink();
     if (roleInParent != null) {
       final AggregationLinkInfo aggregationLinkInfo = myMetaInfo.find(roleInParent);

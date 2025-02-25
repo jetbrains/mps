@@ -30,6 +30,7 @@ import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.persistence.def.v9.IdEncoder.EncodingException;
 import jetbrains.mps.smodel.runtime.ConceptKind;
+import jetbrains.mps.smodel.runtime.StaticScope;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -219,6 +220,10 @@ class IdInfoReadHelper {
   }
   public boolean isImplementationWithStub(@NotNull SConcept concept) {
     return myMetaRegistry.find(concept).isImplementationWithStub();
+  }
+  public boolean canBeAssociationTarget(@NotNull SConcept concept) {
+    ConceptInfo ci = myMetaRegistry.find(concept);
+    return ci.getScope() != StaticScope.NONE || ci.getKind() == ConceptKind.INTERFACE;
   }
 
   /**

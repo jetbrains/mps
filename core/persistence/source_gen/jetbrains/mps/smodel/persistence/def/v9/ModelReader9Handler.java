@@ -71,6 +71,8 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
   private UserObjectEncoder my_userObjectEncoderField;
   private boolean my_nodesIgnoredField;
   private boolean my_brokenInterimV9Field;
+  private long my_innerNodeCounterField;
+  private int my_innerRootCounterField;
   public ModelReader9Handler(SModelHeader header, SModel modelData, IdInfoReadHelper readHelper) {
     my_headerParam = header;
     my_modelDataParam = modelData;
@@ -180,6 +182,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       my_importHelperField = new ImportsHelper(ref);
       my_userObjectEncoderField = new UserObjectEncoder();
       my_brokenInterimV9Field = false;
+      my_innerRootCounterField = 0x3c3c00;
       ModelLoadResult result = new ModelLoadResult(my_modelDataParam, ModelLoadingState.NOT_LOADED);
       return result;
     }
@@ -281,6 +284,8 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     private void handleChild_8237920533349931307(Object resultObject, Object value) throws SAXException {
       Tuples._2<SNode, SContainmentLink> child = (Tuples._2<SNode, SContainmentLink>) value;
       my_modelDataParam.addRootNode(child._0());
+      my_innerRootCounterField++;
+      my_innerNodeCounterField = 0;
     }
     @Override
     protected void validate(Object resultObject) throws SAXException {
@@ -510,7 +515,7 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
   }
   public class NodeElementHandler extends ElementHandler {
     public NodeElementHandler() {
-      setRequiredAttributes("concept", "id");
+      setRequiredAttributes("concept");
     }
     @Override
     protected Tuples._2<SNode, SContainmentLink> createObject(Attributes attrs) throws SAXException {
@@ -520,7 +525,12 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       if (my_readHelperParam.isRequestedInterfaceOnly()) {
         interfaceNode = (my_readHelperParam.isInterface(concept) || attrs.getValue("role") == null);
       }
-      SNodeId nodeId = my_readHelperParam.readNodeId(attrs.getValue("id"));
+      SNodeId nodeId;
+      if (my_readHelperParam.canBeAssociationTarget(concept)) {
+        nodeId = my_readHelperParam.readNodeId(attrs.getValue("id"));
+      } else {
+        nodeId = new jetbrains.mps.smodel.SNodeId.Regular(++my_innerNodeCounterField | (((long) my_innerRootCounterField) << 40));
+      }
       SNode result = (interfaceNode ? new InterfaceSNode(concept, nodeId) : new SNode(concept, nodeId));
       // can be root
       return MultiTuple.<SNode,SContainmentLink>from(result, my_readHelperParam.readAggregation(attrs.getValue("role")));
