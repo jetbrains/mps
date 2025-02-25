@@ -125,14 +125,6 @@ public class IFileUtil {
     return file;
   }
 
-  /**
-   * @deprecated relies on a global FS instance we are going to throw away eventually.
-   */
-  @Deprecated(since = "2022.1", forRemoval = true)
-  public static IFile createTmpDir() {
-    return createTmpDir(jetbrains.mps.vfs.FileSystem.getInstance());
-  }
-
   public static IFile createTmpDir(FileSystem vfs) {
     // XXX Files.createTempDirectory + IFileSystem.getFile(java.io.File) would be better, IMO.
     IFile tmpHome = vfs.getFile(System.getProperty("java.io.tmpdir"));

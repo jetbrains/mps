@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@ import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.workbench.dialogs.project.newproject.ProjectFactory;
 import jetbrains.mps.workbench.dialogs.project.newproject.ProjectFactory.ProjectNotCreatedException;
 import jetbrains.mps.workbench.dialogs.project.newproject.ProjectOptions;
@@ -161,7 +162,7 @@ public class ProjectCreationTest implements EnvironmentAware {
     final Reference<Throwable> refThrowable = new Reference<>();
     ApplicationManager.getApplication().invokeAndWait(() -> {
       try {
-        myTmpDir = IFileUtil.createTmpDir();
+        myTmpDir = IFileUtil.createTmpDir(myEnv.getPlatform().findComponent(VFSManager.class).getUmbrellaFileSystemJavaIO());
         try {
           ProjectFactory factory = new ProjectFactory(projectOptionsProvider.getProjectOptions(myTmpDir));
           myProject = factory.createProject();
