@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -80,9 +80,7 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   @Deprecated
   public static final String EXCLUDED = "excluded";
 
-  // FIXME right now necessary for MPS-as-IDEA-plugin scenario, where we don't use MementoWithFS and
-  //       need to edit MR instance w/o SModule being ready/initialized yet (new MPSFacet story)
-  private /*final*/ FileSystem myFileSystem = jetbrains.mps.vfs.FileSystem.getInstance(); // TODO not read from memento
+  private /*final*/ FileSystem myFileSystem;
 
   /**
    * This is a private model root persistence notation, ought to be concealed from the general public
@@ -120,18 +118,6 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   public final void setContentDirectory(@NotNull IFile contentDir) {
     checkNotRegistered();
     myContentDir = new PathSpec(contentDir);
-  }
-
-  /**
-   * @deprecated use of this method is discouraged.
-   *    On one hand, it's reasonable to expect that FileBasedModelRoot knows about FileSystem,
-   *    on the other, uses seem to deal with limitation of the class itself (e.g. api to add source roots),
-   *    rather than need for MR to expose FS.
-   */
-  @NotNull
-  @Deprecated(since = "2021.3")
-  public final FileSystem getFileSystem() {
-    return myFileSystem;
   }
 
   /**
@@ -318,7 +304,8 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
   @Override
   public void setModule(@NotNull SModuleBase module) {
     super.setModule(module);
-    // FIXME just for the sake of getFileSystem(). Uses in Java and Kotlin stubs could get refactored, uses in JPS shall cease to exist soon
+    // FIXME just for the sake of attachPathListenerForEachSourceRoot(). Uses in Java and Kotlin stubs have been refactored, uses in JPS no longer exist
+    //       refactor listener to attach to IFile directly
     myFileSystem = module instanceof AbstractModule ? ((AbstractModule) module).getFileSystem() : null;
   }
 
