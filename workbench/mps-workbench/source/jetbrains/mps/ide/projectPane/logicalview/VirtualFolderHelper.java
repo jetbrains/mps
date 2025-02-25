@@ -88,6 +88,7 @@ public class VirtualFolderHelper<T> {
     myVirtualFolders.addAll(branches);
   }
 
+
   /**
    * Returns a stream of virtual folders that all share this prefix and have only
    * one segment after the separator. That is, include only the immediate "children"

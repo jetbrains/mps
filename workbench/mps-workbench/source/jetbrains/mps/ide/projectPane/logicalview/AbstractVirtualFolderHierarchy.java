@@ -36,6 +36,12 @@ public abstract class AbstractVirtualFolderHierarchy<U> extends VirtualFolderHel
     myAllowValueVirtualFolders = allowValueVirtualFolders;
   }
 
+  protected AbstractVirtualFolderHierarchy(Collection<? extends U> values, Function<U, String> virtualFolderNameSupplier, Function<? super U, Collection<? extends U>> getAuxValues,
+                                           boolean allowValueVirtualFolders) {
+    super(values, virtualFolderNameSupplier, getAuxValues);
+    myAllowValueVirtualFolders = allowValueVirtualFolders;
+  }
+
   protected abstract <T extends U> String asFolderName(T value);
 
   /**

@@ -53,6 +53,10 @@ public abstract class BranchProjectViewNode<Value> extends LogicalProjectViewNod
       super(values, virtualFolderNameSupplier, true);
     }
 
+    protected ModulesVirtualFolderHierarchy(Collection<? extends SModule> values, Function<SModule, String> virtualFolderNameSupplier, Function<? super SModule, Collection<? extends SModule>> getAuxValues) {
+      super(values, virtualFolderNameSupplier, getAuxValues,  true);
+    }
+
     @Override
     protected <T extends SModule> String asFolderName(T value) {
       return value.getModuleName();

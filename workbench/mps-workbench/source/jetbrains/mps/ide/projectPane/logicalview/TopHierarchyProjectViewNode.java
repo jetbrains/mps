@@ -41,6 +41,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -70,7 +71,9 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
 
     @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
-      AbstractVirtualFolderHierarchy<SModule> hierarchy = new ModulesVirtualFolderHierarchy(getValue().getProjectModules(), module -> getValue().getVirtualFolder(module));
+      AbstractVirtualFolderHierarchy<SModule> hierarchy = new ModulesVirtualFolderHierarchy(getValue().getProjectModules(),
+                                                                                            this::getVirtualFolder,
+                                                                                            this::getOwnedGenerators);
       hierarchy.fillChildren("", children);
     }
 
@@ -87,6 +90,17 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     @Override
     public int getTypeSortWeight(boolean sortByType) {
       return ProjectViewWeights.TOP_PROJECT_WEIGHT;
+    }
+
+    private @NotNull String getVirtualFolder(SModule module) {
+      return getValue().getVirtualFolder(module);
+    }
+
+    private Collection<Generator> getOwnedGenerators(SModule maybeLanguage) {
+      if (maybeLanguage instanceof Language) {
+        return ((Language) maybeLanguage).getOwnedGenerators();
+      }
+      return Collections.emptyList();
     }
   }
 
@@ -190,7 +204,9 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
 
     @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children) {
-      AbstractVirtualFolderHierarchy<SModule> hierarchy = new ModulesVirtualFolderHierarchy(myModulesSupplier.get(), this::getVirtualFolder);
+      AbstractVirtualFolderHierarchy<SModule> hierarchy = new ModulesVirtualFolderHierarchy(myModulesSupplier.get(),
+                                                                                            this::getVirtualFolder,
+                                                                                            this::getOwnedGenerators);
       hierarchy.fillChildren("", children);
     }
 
@@ -217,6 +233,13 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
         fqName = fqName.substring(0, fqName.indexOf('#'));
       }
       return NameUtil.namespaceFromLongName(fqName);
+    }
+
+    private Collection<Generator> getOwnedGenerators(SModule maybeLanguage) {
+      if (maybeLanguage instanceof Language) {
+        return ((Language) maybeLanguage).getOwnedGenerators();
+      }
+      return Collections.emptyList();
     }
 
   }
