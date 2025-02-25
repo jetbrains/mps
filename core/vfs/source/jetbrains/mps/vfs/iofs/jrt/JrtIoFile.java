@@ -118,6 +118,12 @@ public class JrtIoFile implements IFile {
   }
 
   @Override
+  @NotNull
+  public IFile stepIntoArchive() {
+    return this;
+  }
+
+  @Override
   public boolean isInZipArchive() {
     return false;
   }

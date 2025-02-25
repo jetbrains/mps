@@ -88,6 +88,7 @@ public class IFileUtil {
   /**
    * Fixme: will be replaced with the simple call getDescendant.
    * Resulting file is already inside jar, i.e. file in JarFileSystem, because we added JAR_SEPARATOR
+   * @deprecated there's new {@link IFile#stepIntoArchive()}, replace uses. Although using getDescendant() (^^^) might be an alternative to consider
    *
    * @param jarFile shall be {@link #isJarFile(IFile) java archive file}
    */

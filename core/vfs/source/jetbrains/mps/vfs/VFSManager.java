@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,9 +65,9 @@ public class VFSManager implements CoreComponent {
   public void init() {
     // provisional code to live as long as IoFileSystem is there. The idea is to provide access to VFSManager instance in locations where obtaining
     // ComponentHost is troublesome at the moment.
-    IoFileSystem.newInstance(this);
-    myDefaultLocalFileFS = new LocalIoFileSystem(this);
-    myDefaultJarFS = new JarIoFileSystem(this);
+    final FileSystem ioUmbrellaFileSystem = IoFileSystem.newInstance(this);
+    myDefaultLocalFileFS = new LocalIoFileSystem(this, ioUmbrellaFileSystem);
+    myDefaultJarFS = new JarIoFileSystem(this, ioUmbrellaFileSystem);
     myDefaultJrtFS = new JrtIoFileSystem(this);
   }
 
