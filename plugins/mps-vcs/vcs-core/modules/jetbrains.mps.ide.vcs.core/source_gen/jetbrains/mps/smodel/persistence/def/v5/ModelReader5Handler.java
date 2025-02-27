@@ -225,7 +225,7 @@ public class ModelReader5Handler extends XMLSAXHandler<ModelLoadResult> {
     private void handleChild_2286463592495498109(Object resultObject, Object value) throws SAXException {
       String[] child = (String[]) value;
       int version = Integer.parseInt(child[1]);
-      my_modelField.getImplicitImportsSupport().addAdditionalModelVersion(VCSPersistenceUtil.createModelReference(child[0]), version);
+      my_modelField.addModelImport(new SModel.ImportElement(VCSPersistenceUtil.createModelReference(child[0]), -1, version));
     }
     private void handleChild_2286463592495498227(Object resultObject, Object value) throws SAXException {
       String child = (String) value;

@@ -30,9 +30,6 @@ import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.smodel.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.HashMap;
-import java.util.List;
-import jetbrains.mps.smodel.ImplicitImportsLegacyHolder;
-import java.util.Comparator;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.HashSet;
@@ -43,6 +40,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SReference;
 import java.util.Map;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import java.util.List;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -151,9 +149,7 @@ public class TestPersistence_Test extends BaseTransformationTest {
     }
 
     public void assertDeepModelEquals(SModel expectedModel, SModel actualModel) {
-      this.assertSameImports(expectedModel, actualModel);
       this.assertSameModelImports(expectedModel, actualModel);
-      this.assertSameLanguageAspects(expectedModel, actualModel);
       this.assertSameNodesCollections("root", expectedModel.getRootNodes(), actualModel.getRootNodes());
     }
     public void assertSameNodesCollections(String objectName, Iterable<SNode> expected, Iterable<SNode> actual) {
@@ -172,46 +168,6 @@ public class TestPersistence_Test extends BaseTransformationTest {
     }
     public void assertSameModelImports(SModel expectedModel, SModel actualModel) {
       TestPersistenceHelper.assertListsEqual(this.getImportedModelUIDs(expectedModel), this.getImportedModelUIDs(actualModel), "model import");
-    }
-    public void assertSameLanguageAspects(SModel expectedModel, SModel actualModel) {
-      List<SModel.ImportElement> expectedLanguageAspects = expectedModel.getImplicitImportsSupport().getAdditionalModelVersions();
-      List<SModel.ImportElement> actualLanguageAspects = actualModel.getImplicitImportsSupport().getAdditionalModelVersions();
-      for (SModel.ImportElement expectedEl : expectedLanguageAspects) {
-        boolean found = false;
-        for (SModel.ImportElement actualEl : actualLanguageAspects) {
-          if (actualEl.getModelReference().equals(expectedEl.getModelReference())) {
-            found = true;
-            break;
-          }
-        }
-        if (!(found)) {
-          Assert.fail("Not found expected language aspect " + expectedEl.getModelReference());
-        }
-      }
-      for (SModel.ImportElement actualEl : actualLanguageAspects) {
-        boolean found = false;
-        for (SModel.ImportElement expectedEl : expectedLanguageAspects) {
-          if (actualEl.getModelReference().equals(expectedEl.getModelReference())) {
-            found = true;
-            break;
-          }
-        }
-        if (!(found)) {
-          Assert.fail("Unexpected language aspect " + actualEl.getModelReference());
-        }
-      }
-    }
-    public void assertSameImports(SModel expectedModel, SModel actualModel) {
-      final ImplicitImportsLegacyHolder is1 = expectedModel.getImplicitImportsSupport();
-      final ImplicitImportsLegacyHolder is2 = actualModel.getImplicitImportsSupport();
-      is1.calculateImplicitImports();
-      is2.calculateImplicitImports();
-      TestPersistenceHelper.assertListsEqual(is1.getAdditionalModelVersions(), is2.getAdditionalModelVersions(), new Comparator<SModel.ImportElement>() {
-        @Override
-        public int compare(SModel.ImportElement import1, SModel.ImportElement import2) {
-          return (import1.getModelReference().equals(import2.getModelReference()) ? 0 : 1);
-        }
-      }, "import");
     }
     public void assertDeepNodeEquals(SNode expectedNode, SNode actualNode) {
       Assert.assertEquals(this.getErrorString("concept", expectedNode, actualNode), expectedNode.getConcept().getQualifiedName(), actualNode.getConcept().getQualifiedName());

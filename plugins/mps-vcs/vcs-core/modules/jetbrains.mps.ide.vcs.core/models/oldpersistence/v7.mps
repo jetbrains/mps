@@ -2074,44 +2074,15 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="3McbO0WUe9c" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxghfm9" role="3clFbw">
-            <ref role="3cqZAo" node="3McbO0WUe8k" resolve="implicit" />
-          </node>
-          <node concept="9aQIb" id="3McbO0WUe9v" role="9aQIa">
-            <node concept="3clFbS" id="3McbO0WUe9w" role="9aQI4">
-              <node concept="3clFbF" id="3McbO0WUe9x" role="3cqZAp">
-                <node concept="2OqwBi" id="3McbO0WUe9z" role="3clFbG">
-                  <node concept="37vLTw" id="62HG2toyLSV" role="2Oq$k0">
-                    <ref role="3cqZAo" node="3McbO0WUe89" resolve="model" />
-                  </node>
-                  <node concept="liA8E" id="3McbO0WUe9B" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~SModel.addModelImport(jetbrains.mps.smodel.SModel$ImportElement)" resolve="addModelImport" />
-                    <node concept="37vLTw" id="3GM_nagTzNK" role="37wK5m">
-                      <ref role="3cqZAo" node="3McbO0WUe90" resolve="elem" />
-                    </node>
-                  </node>
-                </node>
-              </node>
+        <node concept="3clFbF" id="3McbO0WUe9x" role="3cqZAp">
+          <node concept="2OqwBi" id="3McbO0WUe9z" role="3clFbG">
+            <node concept="37vLTw" id="62HG2toyLSV" role="2Oq$k0">
+              <ref role="3cqZAo" node="3McbO0WUe89" resolve="model" />
             </node>
-          </node>
-          <node concept="3clFbS" id="3McbO0WUe9d" role="3clFbx">
-            <node concept="3clFbF" id="3McbO0WUe9h" role="3cqZAp">
-              <node concept="2OqwBi" id="3McbO0WUe9p" role="3clFbG">
-                <node concept="2OqwBi" id="7FmuP_qrhwm" role="2Oq$k0">
-                  <node concept="37vLTw" id="62HG2toyEkb" role="2Oq$k0">
-                    <ref role="3cqZAo" node="3McbO0WUe89" resolve="model" />
-                  </node>
-                  <node concept="liA8E" id="7FmuP_qribc" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~SModel.getImplicitImportsSupport()" resolve="getImplicitImportsSupport" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="3McbO0WUe9t" role="2OqNvi">
-                  <ref role="37wK5l" to="w1kc:~ImplicitImportsLegacyHolder.addAdditionalModelVersion(jetbrains.mps.smodel.SModel$ImportElement)" resolve="addAdditionalModelVersion" />
-                  <node concept="37vLTw" id="3GM_nagTw9w" role="37wK5m">
-                    <ref role="3cqZAo" node="3McbO0WUe90" resolve="elem" />
-                  </node>
-                </node>
+            <node concept="liA8E" id="3McbO0WUe9B" role="2OqNvi">
+              <ref role="37wK5l" to="w1kc:~SModel.addModelImport(jetbrains.mps.smodel.SModel$ImportElement)" resolve="addModelImport" />
+              <node concept="37vLTw" id="3GM_nagTzNK" role="37wK5m">
+                <ref role="3cqZAo" node="3McbO0WUe90" resolve="elem" />
               </node>
             </node>
           </node>

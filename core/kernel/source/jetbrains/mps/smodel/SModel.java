@@ -100,7 +100,7 @@ public class SModel implements SModelData, UpdateModeSupport {
   private List<ImportElement> myImports = new ArrayList<>();
   private INodeIdToNodeMap myIdToNodeMap;
   private StackTraceElement[] myDisposedStacktrace = null;
-  private ImplicitImportsLegacyHolder myLegacyImplicitImports;
+
   /**
    * update mode, aka full load mode, is the state we are attaching newly loaded children to a model loaded partially
    * since it could happen during model read, we can't rely on model read/write action mechanism.
@@ -740,10 +740,6 @@ public class SModel implements SModelData, UpdateModeSupport {
 
   public boolean deleteModelImport(ImportElement importElement) {
     if (myImports.remove(importElement)) {
-      if (myLegacyImplicitImports != null) {
-        // shall keep only if we do track implicit imports
-        myLegacyImplicitImports.addAdditionalModelVersion(importElement);  // to save version and ID if model was imported implicitly
-      }
       fireImportRemovedEvent(importElement.getModelReference());
       markChanged();
       return true;
@@ -751,22 +747,6 @@ public class SModel implements SModelData, UpdateModeSupport {
     return false;
   }
 
-  /**
-   * This is compatibility method with legacy persistence mechanism, unless used, no implicit imports are tracked.
-   * Drop once we no longer need to support serialization of old persistence formats (there's no reason to track
-   * implicit imports if we aren't going to serialize them afterwards)
-   * <p>
-   * It looks that there's no longer consumer of implicit imports. There's code to update them, but no code to read values, except
-   * for clients of #getAllImportElements()
-   */
-  @NotNull
-  @Deprecated(since = "3.4", forRemoval = true)
-  public ImplicitImportsLegacyHolder getImplicitImportsSupport() {
-    if (myLegacyImplicitImports == null) {
-      myLegacyImplicitImports = new ImplicitImportsLegacyHolder(this);
-    }
-    return myLegacyImplicitImports;
-  }
 
   /**
    * @deprecated though it's our internal API, there's 1 use in mbeddr of this exact method we need to fix first.
@@ -905,11 +885,6 @@ public class SModel implements SModelData, UpdateModeSupport {
 
   public void copyPropertiesTo(SModel to) {
 
-    if (myLegacyImplicitImports != null) {
-      for (ImportElement ie : myLegacyImplicitImports.getAdditionalModelVersions()) {
-        to.getImplicitImportsSupport().addAdditionalModelVersion(ie.copy());
-      }
-    }
     for (ImportElement ie : importedModels()) {
       to.addModelImport(ie.copy());
     }

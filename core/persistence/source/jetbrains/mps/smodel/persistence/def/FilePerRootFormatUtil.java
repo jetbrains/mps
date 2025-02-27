@@ -168,10 +168,6 @@ public class FilePerRootFormatUtil {
     final MetaModelInfoProvider mmiProvider = ModelPersistence.mmiProviderFor(modelData);
 
     // save into JDOM
-    if (persistenceVersion < 9) {
-      //noinspection removal
-      modelData.getImplicitImportsSupport().calculateImplicitImports();
-    }
     Map<String, Document> result = ModelPersistence.getPersistence(persistenceVersion).getModelWriter(mmiProvider).saveModelAsMultiStream(modelData);
 
     // write to storage

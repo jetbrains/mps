@@ -118,7 +118,7 @@ public class ModelReader4 implements IModelReader {
         }
       }
       if (aspectModelUID != null) {
-        model.getImplicitImportsSupport().addAdditionalModelVersion(VCSPersistenceUtil.createModelReference(aspectModelUID), version);
+        model.addModelImport(new SModel.ImportElement(VCSPersistenceUtil.createModelReference(aspectModelUID), -1, version));
       }
     }
   }
