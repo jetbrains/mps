@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.JavaFriendlyBase64;
 import jetbrains.mps.smodel.SNodeId.Foreign;
 import jetbrains.mps.smodel.SNodeId.Regular;
 import jetbrains.mps.smodel.StaticReference;
-import jetbrains.mps.smodel.StringBasedIdForJavaStubMethods;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
@@ -104,7 +103,7 @@ public final class IdEncoder implements IdInfoRegistry.IndexEncoder {
   }
 
   public SNodeId parseNodeId(String text) throws EncodingException {
-    if (!text.startsWith(Foreign.ID_PREFIX) && !text.startsWith(StringBasedIdForJavaStubMethods.ID_PREFIX)) {
+    if (!text.startsWith(Foreign.ID_PREFIX)) {
       try {
         long v = myBase64.parseLong(text);
         return new Regular(v);
