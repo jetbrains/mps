@@ -102,7 +102,7 @@ public class SNodeOperations {
   public static Set<String> getChildRoles(SNode n) {
     Set<String> res = SetSequence.fromSet(new HashSet<String>());
     for (SNode child : Sequence.fromIterable(n.getChildren())) {
-      SetSequence.fromSet(res).addElement(child.getRoleInParent());
+      SetSequence.fromSet(res).addElement(child.getContainmentLink().getName());
     }
     return res;
   }
@@ -135,7 +135,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isRoot(SNode n) {
-    // uses in mbeddt
+    // uses in mbeddr
     return n.getModel() != null && n.getParent() == null;
   }
   /**
@@ -199,18 +199,6 @@ public class SNodeOperations {
    */
   @Deprecated
   public static SNode getChild(SNode node, SContainmentLink role) {
-    Iterable<? extends SNode> children = node.getChildren(role);
-    if (!(children.iterator().hasNext())) {
-      return null;
-    }
-    return children.iterator().next();
-  }
-  /**
-   * 
-   * @deprecated rewrite using SContainmentLink, don't use by-string roles
-   */
-  @Deprecated
-  public static SNode getChild(SNode node, String role) {
     Iterable<? extends SNode> children = node.getChildren(role);
     if (!(children.iterator().hasNext())) {
       return null;

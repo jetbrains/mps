@@ -886,9 +886,8 @@
                 </node>
                 <node concept="3clFbF" id="fSGYFh8klH" role="3cqZAp">
                   <node concept="2OqwBi" id="fSGYFh8klI" role="3clFbG">
-                    <node concept="CQp69" id="fSGYFh8klJ" role="2Oq$k0" />
                     <node concept="liA8E" id="fSGYFh8klK" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SNode.setProperty(java.lang.String,java.lang.String)" resolve="setProperty" />
+                      <ref role="37wK5l" to="w1kc:~SNodeLegacy.setProperty(java.lang.String,java.lang.String)" resolve="setProperty" />
                       <node concept="37vLTw" id="rXLmmKAhs8" role="37wK5m">
                         <ref role="3cqZAo" node="rXLmmKAhs1" resolve="pname" />
                       </node>
@@ -897,6 +896,12 @@
                           <property role="3cmrfH" value="1" />
                         </node>
                         <node concept="CQp6Q" id="fSGYFh8klT" role="AHHXb" />
+                      </node>
+                    </node>
+                    <node concept="2ShNRf" id="4y5aVLuE7y8" role="2Oq$k0">
+                      <node concept="1pGfFk" id="4y5aVLuE7y9" role="2ShVmc">
+                        <ref role="37wK5l" to="w1kc:~SNodeLegacy.&lt;init&gt;(org.jetbrains.mps.openapi.model.SNode)" resolve="SNodeLegacy" />
+                        <node concept="CQp69" id="4y5aVLuE7ya" role="37wK5m" />
                       </node>
                     </node>
                   </node>

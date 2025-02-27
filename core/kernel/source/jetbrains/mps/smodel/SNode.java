@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -960,26 +960,8 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode, SNodeAssoci
 
   @Deprecated
   @Override
-  public void setReferenceTarget(String role, @Nullable org.jetbrains.mps.openapi.model.SNode target) {
-    new SNodeLegacy(this).setReferenceTarget(role, target);
-  }
-
-  @Deprecated
-  @Override
   public SNode getReferenceTarget(String role) {
     return new SNodeLegacy(this).getReferenceTarget(role);
-  }
-
-  @Deprecated
-  @Override
-  public SReference getReference(String role) {
-    return new SNodeLegacy(this).getReference(role);
-  }
-
-  @Deprecated
-  @Override
-  public void setReference(String role, @Nullable org.jetbrains.mps.openapi.model.SReference reference) {
-    new SNodeLegacy(this).setReference(role, reference);
   }
 
   @Deprecated

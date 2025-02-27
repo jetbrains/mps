@@ -4226,12 +4226,13 @@
             <node concept="3TQlhw" id="hPR1pGx" role="1Hhtcw">
               <node concept="3clFbS" id="hPR1pGy" role="2VODD2">
                 <node concept="3clFbF" id="hPR1pGz" role="3cqZAp">
-                  <node concept="2OqwBi" id="6lZ8OoRvh2_" role="3clFbG">
-                    <node concept="2JrnkZ" id="6lZ8OoRvh2A" role="2Oq$k0">
-                      <node concept="pncrf" id="6lZ8OoRvh2B" role="2JrQYb" />
+                  <node concept="2OqwBi" id="4y5aVLuC37L" role="3clFbG">
+                    <node concept="2OqwBi" id="6lZ8OoRvh2_" role="2Oq$k0">
+                      <node concept="pncrf" id="6lZ8OoRvh2B" role="2Oq$k0" />
+                      <node concept="2NL2c5" id="4y5aVLuC2zc" role="2OqNvi" />
                     </node>
-                    <node concept="liA8E" id="6lZ8OoRvh2C" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SNode.getRoleInParent()" resolve="getRoleInParent" />
+                    <node concept="liA8E" id="4y5aVLuC3v$" role="2OqNvi">
+                      <ref role="37wK5l" to="c17a:~SNamedElement.getName()" resolve="getName" />
                     </node>
                   </node>
                 </node>

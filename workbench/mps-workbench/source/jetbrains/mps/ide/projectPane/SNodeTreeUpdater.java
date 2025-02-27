@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -94,12 +94,12 @@ public abstract class SNodeTreeUpdater<T extends MPSTreeNode> {
         SNodeTreeNode childNode = (SNodeTreeNode) child;
         int index = IterableUtil.asList(parentNode.getChildren()).indexOf(childNode.getSNode());
         if (index <= indexof) continue;
-        SNodeTreeNode newTreeNode = new SNodeTreeNode(added, added.getRoleInParent());
+        SNodeTreeNode newTreeNode = new SNodeTreeNode(added, added.getContainmentLink().getName());
         treeModel.insertNodeInto(newTreeNode,
           parent, treeModel.getIndexOfChild(parent, childNode));
         continue outer;
       }
-      treeModel.insertNodeInto(new SNodeTreeNode(added, added.getRoleInParent()), parent, parent.getChildCount());
+      treeModel.insertNodeInto(new SNodeTreeNode(added, added.getContainmentLink().getName()), parent, parent.getChildCount());
     }
   }
 
