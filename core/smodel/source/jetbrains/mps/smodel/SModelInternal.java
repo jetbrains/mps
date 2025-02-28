@@ -20,6 +20,7 @@ import jetbrains.mps.smodel.event.SModelListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -109,4 +110,11 @@ public interface SModelInternal extends ModelWithDisposeInfo  {
   }
 
   void changeModelReference(SModelReference newModelReference);
+
+  /**
+   * @since 2025.1
+   */
+  default void changeNodeId(@NotNull SNodeId existingNodeId, @NotNull SNodeId newId) {
+    throw new UnsupportedOperationException();
+  }
 }

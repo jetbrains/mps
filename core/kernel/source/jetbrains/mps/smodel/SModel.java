@@ -877,6 +877,20 @@ public class SModel implements SModelData, UpdateModeSupport {
     myReference = newModelReference;
   }
 
+  public void changeNodeId(@NotNull org.jetbrains.mps.openapi.model.SNodeId existingNodeId, @NotNull org.jetbrains.mps.openapi.model.SNodeId newId) {
+    SNode existing = getNode_(existingNodeId);
+    if (existing == null) {
+      throw new IllegalArgumentException(String.format("No node with id %s in the model %s", existingNodeId, getModelName()));
+    }
+    if (getNode_(newId) != null) {
+      throw new IllegalArgumentException(String.format("Node with id %s already present in the model %s", existingNodeId, getModelName()));
+    }
+    org.jetbrains.mps.openapi.model.SNode removed = myIdToNodeMap.remove(existingNodeId);
+    assert removed == existing;
+    existing._setId(newId);
+    myIdToNodeMap.put(newId, existing);
+  }
+
   public SModel createEmptyCopy() {
     return new jetbrains.mps.smodel.SModel(getReference());
   }

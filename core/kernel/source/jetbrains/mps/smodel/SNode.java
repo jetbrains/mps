@@ -456,6 +456,9 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode, SNodeAssoci
     }
   }
 
+  /*package*/ final void _setId(@NotNull org.jetbrains.mps.openapi.model.SNodeId id) {
+    myId = id;
+  }
 
   /*package*/ SReference toAPI(SReferenceLink link, Object associationData) {
     // both arguments not null

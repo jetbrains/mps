@@ -28,6 +28,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -316,5 +317,11 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
   public void changeModelReference(SModelReference newModelReference) {
     assertCanChange();
     getSModel().changeModelReference(newModelReference);
+  }
+
+  @Override
+  public void changeNodeId(@NotNull SNodeId existingNodeId, @NotNull SNodeId newId) {
+    assertCanChange();
+    getSModel().changeNodeId(existingNodeId, newId);
   }
 }

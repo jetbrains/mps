@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,24 +23,13 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.HashMap;
 import java.util.Map;
 
+// can relocate to j.m.smodel and become package-local
 public final class UnregisteredNodes {
   private static final Logger LOG = Logger.getLogger(UnregisteredNodes.class);
 
   private final Map<SNodeId, SNode> myMap = new HashMap<>();
 
-  private static WarningLevel myWarningLevel = WarningLevel.ERROR;
   private final SModelReference myModelReference;
-
-  /**
-   * this flag was introduced to address MPS-18309, commit a73f01c9. It merely hides a problem rather than resolves any
-   * @deprecated caller shall take different approach to make sure it doesn't violate any SModel contract.
-   */
-@Deprecated(since = "2020.1", forRemoval = true)
-  public static WarningLevel setWarningLevel(WarningLevel level) {
-    WarningLevel oldLevel = myWarningLevel;
-    myWarningLevel = level;
-    return oldLevel;
-  }
 
   public UnregisteredNodes(SModelReference modelReference) {
     myModelReference = modelReference;
@@ -74,24 +63,8 @@ public final class UnregisteredNodes {
     }
     myMap.put(id, node);
     if (showError) {
-      switch (myWarningLevel) {
-        case ERROR:
-          IllegalStateException ex = new IllegalStateException("attempt to put another node with same key: " + myModelReference + "#" + id);
-          LOG.error(ex, ex);
-          break;
-        case WARNING:
-          LOG.warning("attempt to put another node with same key: " + myModelReference + "#" + id + ". Undo can be broken.");
-          myWarningLevel = WarningLevel.SILENT;
-          break;
-        case SILENT:
-          break;
-      }
+      IllegalStateException ex = new IllegalStateException("attempt to put another node with same key: " + myModelReference + "#" + id);
+      LOG.error(ex, ex);
     }
-  }
-
-  public enum WarningLevel {
-    ERROR,
-    WARNING,
-    SILENT
   }
 }
