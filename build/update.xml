@@ -487,8 +487,8 @@
              url="https://www.jetbrains.com/mps/download/previous.html"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2024" minorVersoin="1">
-      <build number="241.19072.1155" version="2024.1.1">
-        <message>JetBrains MPS 2024.1.1 is now available.</message>
+      <build number="241.19072.1238" version="2024.1.2">
+        <message>JetBrains MPS 2024.1.2 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download/previous.html" download="true"/>
       </build>
     </channel>
@@ -496,8 +496,8 @@
              url="https://www.jetbrains.com/mps/download/previous.html"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2024" minorVersoin="1">
-      <build number="241.19072.1155" version="2024.1.1">
-        <message>JetBrains MPS 2024.1.1 is now available.</message>
+      <build number="241.19072.1238" version="2024.1.2">
+        <message>JetBrains MPS 2024.1.2 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download/previous.html" download="true"/>
       </build>
     </channel>
@@ -505,8 +505,8 @@
              url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2024" minorVersoin="3">
-      <build number="243.21565.447" version="2024.3">
-        <message>JetBrains MPS 2024.3 is now available.</message>
+      <build number="243.24978.546" version="2024.3.1">
+        <message>JetBrains MPS 2024.3.1 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
@@ -514,8 +514,8 @@
              url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net/issues/MPS"
              majorVersion="2024" minorVersoin="3">
-      <build number="243.21565.447" version="2024.3">
-        <message>JetBrains MPS 2024.3 is now available.</message>
+      <build number="243.24978.546" version="2024.3.1">
+        <message>JetBrains MPS 2024.3.1 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
