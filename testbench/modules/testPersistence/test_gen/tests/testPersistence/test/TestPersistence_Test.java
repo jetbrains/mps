@@ -22,8 +22,8 @@ import jetbrains.mps.java.stub.JavaPackageNameStub;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SNodeId;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.smodel.SModelHeader;
+import jetbrains.mps.smodel.loading.ModelLoadResult;
 import jetbrains.mps.persistence.ByteArrayInputSource;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.extapi.model.SModelBase;
@@ -109,7 +109,9 @@ public class TestPersistence_Test extends BaseTransformationTest {
           PersistenceUtil.InMemoryStreamDataSource dataSource = new PersistenceUtil.InMemoryStreamDataSource();
           helper.saveTestModelInPersistence(dataSource, i);
           byte[] content = dataSource.getContentBytes();
-          ModelLoadResult result = ModelPersistence.readModel(SModelHeader.create(i), new ByteArrayInputSource(content), ModelLoadingState.FULLY_LOADED);
+          SModelHeader mh = SModelHeader.create(i);
+          mh.setModelReference(helper.getTestModel().getReference());
+          ModelLoadResult result = ModelPersistence.readModel(mh, new ByteArrayInputSource(content), ModelLoadingState.FULLY_LOADED);
 
           Assert.assertTrue(result.getState() == ModelLoadingState.FULLY_LOADED);
           TestBody.this.assertDeepModelEquals(helper.getTestModel().getSModel(), result.getModel());
