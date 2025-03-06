@@ -691,7 +691,7 @@
 }, {
   "name" : "caffeine",
   "url" : "https://github.com/ben-manes/caffeine",
-  "version" : "3.1.8",
+  "version" : "3.2.0",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ben-manes/caffeine/blob/master/LICENSE"
 }, {
