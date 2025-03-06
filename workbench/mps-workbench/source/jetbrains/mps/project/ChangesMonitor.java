@@ -446,6 +446,7 @@ import java.util.function.Predicate;
     @Override
     protected void stopListening(SModule module) {
       super.stopListening(module);
+      myMessagesContainer.clearMessages(module);
       enqueueAllModulesInProject();
     }
 
