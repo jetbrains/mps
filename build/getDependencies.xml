@@ -258,6 +258,13 @@
     <chmod file="${basedir}/../bin/win/WinProcessListHelper.exe" perm="755"/>
   </target>
 
+  <!-- Not used yet -->
+  <target name="embed-module-descriptors">
+    <loadfile property="fileContent" srcFile="${basedir}/../lib/modules/module-descriptors.xml"/>
+    <copy file="${basedir}/../workbench/mps-workbench/source/META-INF/IdeaPlugin.template.xml" tofile="${basedir}/../workbench/mps-workbench/source/META-INF/IdeaPlugin.xml"/>
+    <replace file="${basedir}/../workbench/mps-workbench/source/META-INF/IdeaPlugin.xml" token="@@MODULE_DESCRIPTORS@@" value="${fileContent}"/>
+  </target>
+
   <target name="update-licence-info">
     <replace dir="${basedir}/../license"  token="IntelliJ IDEA" value="MPS" includes="**/*.txt"/>
 
