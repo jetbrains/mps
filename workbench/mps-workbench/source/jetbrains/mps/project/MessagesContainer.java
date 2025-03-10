@@ -88,6 +88,7 @@ public class MessagesContainer implements Disposable {
 
     boolean hasModuleMessages(Predicate<SObject> predicate, Predicate<ReportItem> reportItemFilter, SRepository repository) {
       return myModuleMessages.entrySet().stream()
+          .filter(e -> e.getKey().resolve(repository) != null)
           .filter(e -> predicate.test(SObject.of(e.getKey().resolve(repository))))
           .flatMap(e -> e.getValue().stream())
           .anyMatch(reportItemFilter);
@@ -96,6 +97,7 @@ public class MessagesContainer implements Disposable {
     boolean hasModelMessages(Predicate<SObject> predicate, Predicate<ReportItem> reportItemFilter, SRepository repository) {
       return myModelsWithMessages.entrySet().stream()
              // first, find a module that matches
+             .filter(models -> models.getKey().resolve(repository) != null)
              .filter(models -> predicate.test(SObject.wildcardOf(models.getKey().resolve(repository))))
              .findFirst()
              .map(messages ->
