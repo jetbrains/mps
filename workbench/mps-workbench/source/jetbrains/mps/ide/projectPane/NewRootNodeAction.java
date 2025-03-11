@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -106,7 +106,7 @@ public class NewRootNodeAction extends BaseAction implements DumbAware {
         ((SModelInternal) myModel).addLanguage(l);
       }
       final SNode node = NodeFactoryManager.createNode(myNodeConcept, null, null, myModel);
-      SNodeAccessUtil.setProperty(node, SNodeUtil.property_BaseConcept_virtualPackage, myVirtualPackage);
+      SNodeAccessUtil.setPropertyValue(node, SNodeUtil.property_BaseConcept_virtualPackage, myVirtualPackage);
       myModel.addRootNode(node);
       for (CreateNodeExtension ext : CreateRootFilterEP.getInstance().getCreateNodeExtensions()) {
         if (ext.isApplicable(myModel)) {
