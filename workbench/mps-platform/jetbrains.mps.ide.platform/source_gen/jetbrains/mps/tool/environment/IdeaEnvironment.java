@@ -81,7 +81,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
     createIdeaApplication();
 
     // this is the only way currently to access the plugin loading errors 
-    List<HtmlChunk> errors = ListSequence.fromListWithValues(new ArrayList<>(), PluginManagerCore.getAndClearPluginLoadingErrors());
+    List<HtmlChunk> errors = ListSequence.fromListWithValues(new ArrayList<>(), PluginManagerCore.INSTANCE.getAndClearPluginLoadingErrors());
     for (HtmlChunk err : errors) {
       if (LOG.isErrorLevel()) {
         LOG.error("" + err.toString());
