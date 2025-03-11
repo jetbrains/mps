@@ -6459,19 +6459,19 @@
           </node>
         </node>
         <node concept="3clFbF" id="hSPVNdg" role="3cqZAp">
-          <node concept="2YIFZM" id="48c8IXZEIpl" role="3clFbG">
+          <node concept="2YIFZM" id="1JamMbI83aU" role="3clFbG">
+            <ref role="37wK5l" to="mhbf:~SNodeAccessUtil.setPropertyValue(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SProperty,java.lang.Object)" resolve="setPropertyValue" />
             <ref role="1Pybhc" to="mhbf:~SNodeAccessUtil" resolve="SNodeAccessUtil" />
-            <ref role="37wK5l" to="mhbf:~SNodeAccessUtil.setProperty(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.language.SProperty,java.lang.String)" resolve="setProperty" />
-            <node concept="37vLTw" id="1FyjGzIjLuN" role="37wK5m">
+            <node concept="37vLTw" id="1JamMbI83aV" role="37wK5m">
               <ref role="3cqZAo" node="1FyjGzIjIhd" resolve="snode" />
             </node>
-            <node concept="2OqwBi" id="1FyjGzIjJ62" role="37wK5m">
-              <node concept="2WthIp" id="1FyjGzIjJ65" role="2Oq$k0" />
-              <node concept="1DTwFV" id="1FyjGzIjJ67" role="2OqNvi">
+            <node concept="2OqwBi" id="1JamMbI83aW" role="37wK5m">
+              <node concept="2WthIp" id="1JamMbI83aX" role="2Oq$k0" />
+              <node concept="1DTwFV" id="1JamMbI83aY" role="2OqNvi">
                 <ref role="2WH_rO" node="1FyjGzIjkUx" resolve="selectedValue" />
               </node>
             </node>
-            <node concept="10Nm6u" id="48c8IXZEIps" role="37wK5m" />
+            <node concept="10Nm6u" id="1JamMbI83aZ" role="37wK5m" />
           </node>
         </node>
       </node>

@@ -35,8 +35,8 @@ public final class EscapeSpecialCharactersInProperties_MigrationScript extends B
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
         for (SProperty property : Sequence.fromIterable(node.getProperties())) {
-          String value = SNodeAccessUtil.getProperty(node, property);
-          if (value != null && !(value.equals(NameUtil.escapeInvisibleCharacters(value)))) {
+          Object value = SNodeAccessUtil.getPropertyValue(node, property);
+          if (value instanceof String && !(value.equals(NameUtil.escapeInvisibleCharacters((String) value)))) {
             return true;
           }
         }
@@ -45,13 +45,13 @@ public final class EscapeSpecialCharactersInProperties_MigrationScript extends B
       @Override
       public void doUpdateInstanceNode(SNode node) {
         for (SProperty property : Sequence.fromIterable(node.getProperties())) {
-          String value = SNodeAccessUtil.getProperty(node, property);
-          if (value == null) {
+          Object value = SNodeAccessUtil.getPropertyValue(node, property);
+          if (!(value instanceof String)) {
             continue;
           }
-          String escapedValue = NameUtil.escapeInvisibleCharacters(value);
+          String escapedValue = NameUtil.escapeInvisibleCharacters((String) value);
           if (!(value.equals(escapedValue))) {
-            SNodeAccessUtil.setProperty(node, property, escapedValue);
+            SNodeAccessUtil.setPropertyValue(node, property, escapedValue);
           }
         }
       }
