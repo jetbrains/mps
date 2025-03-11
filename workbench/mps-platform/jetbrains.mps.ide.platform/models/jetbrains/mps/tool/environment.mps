@@ -48,6 +48,8 @@
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="v50w" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.fileEditor.ex(MPS.IDEA/)" />
     <import index="g3j3" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:kotlinx.coroutines.future(MPS.IDEA/)" />
+    <import index="ctgy" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.plugins(MPS.IDEA/)" />
+    <import index="zdap" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.text(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -64,6 +66,7 @@
         <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
+      <concept id="8010275703121539591" name="jetbrains.mps.baseLanguage.structure.InferredType" flags="ng" index="2yE$l8" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
       </concept>
@@ -304,6 +307,9 @@
       <concept id="1226511727824" name="jetbrains.mps.baseLanguage.collections.structure.SetType" flags="in" index="2hMVRd">
         <child id="1226511765987" name="elementType" index="2hN53Y" />
       </concept>
+      <concept id="1151688443754" name="jetbrains.mps.baseLanguage.collections.structure.ListType" flags="in" index="_YKpA">
+        <child id="1151688676805" name="elementType" index="_ZDj9" />
+      </concept>
       <concept id="1153943597977" name="jetbrains.mps.baseLanguage.collections.structure.ForEachStatement" flags="nn" index="2Gpval">
         <child id="1153944400369" name="variable" index="2Gsz3X" />
         <child id="1153944424730" name="inputSequence" index="2GsD0m" />
@@ -312,6 +318,10 @@
       <concept id="1153944233411" name="jetbrains.mps.baseLanguage.collections.structure.ForEachVariableReference" flags="nn" index="2GrUjf">
         <reference id="1153944258490" name="variable" index="2Gs0qQ" />
       </concept>
+      <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
+        <child id="1237731803878" name="copyFrom" index="I$8f6" />
+      </concept>
+      <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
       <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
     </language>
@@ -443,6 +453,97 @@
             <ref role="37wK5l" node="6z7xhWku8L1" resolve="createIdeaApplication" />
           </node>
         </node>
+        <node concept="3clFbH" id="7RQMtR$gjsW" role="3cqZAp" />
+        <node concept="3SKdUt" id="6Vc2CbrnZxf" role="3cqZAp">
+          <node concept="1PaTwC" id="6Vc2CbrnZxg" role="1aUNEU">
+            <node concept="3oM_SD" id="6Vc2CbrnZxj" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="6Vc2Cbro4fs" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="6Vc2Cbro4ft" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="6Vc2Cbro4fI" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="6Vc2Cbro4fZ" role="1PaTwD">
+              <property role="3oM_SC" value="way" />
+            </node>
+            <node concept="3oM_SD" id="6Vc2Cbro4gg" role="1PaTwD">
+              <property role="3oM_SC" value="currently" />
+            </node>
+            <node concept="3oM_SD" id="6Vc2Cbro4h3" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="6Vc2Cbro4h4" role="1PaTwD">
+              <property role="3oM_SC" value="access" />
+            </node>
+            <node concept="3oM_SD" id="6Vc2Cbro4hl" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="6Vc2Cbro4hA" role="1PaTwD">
+              <property role="3oM_SC" value="plugin" />
+            </node>
+            <node concept="3oM_SD" id="6Vc2Cbro4iS" role="1PaTwD">
+              <property role="3oM_SC" value="loading" />
+            </node>
+            <node concept="3oM_SD" id="6Vc2Cbro4jp" role="1PaTwD">
+              <property role="3oM_SC" value="errors" />
+            </node>
+            <node concept="3oM_SD" id="6Vc2Cbro4in" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="7RQMtR$hEgL" role="3cqZAp">
+          <node concept="3cpWsn" id="7RQMtR$hEgM" role="3cpWs9">
+            <property role="TrG5h" value="errors" />
+            <node concept="_YKpA" id="7RQMtR$hCJX" role="1tU5fm">
+              <node concept="3uibUv" id="7RQMtR$hCK3" role="_ZDj9">
+                <ref role="3uigEE" to="zdap:~HtmlChunk" resolve="HtmlChunk" />
+              </node>
+              <node concept="2yE$l8" id="7RQMtR$hCK2" role="lGtFl" />
+            </node>
+            <node concept="2ShNRf" id="7RQMtR$hEgN" role="33vP2m">
+              <node concept="Tc6Ow" id="7RQMtR$hEgO" role="2ShVmc">
+                <node concept="2YIFZM" id="7RQMtR$hEgP" role="I$8f6">
+                  <ref role="37wK5l" to="ctgy:~PluginManagerCore.getAndClearPluginLoadingErrors()" resolve="getAndClearPluginLoadingErrors" />
+                  <ref role="1Pybhc" to="ctgy:~PluginManagerCore" resolve="PluginManagerCore" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1DcWWT" id="7RQMtR$hTt4" role="3cqZAp">
+          <node concept="3clFbS" id="7RQMtR$hTt7" role="2LFqv$">
+            <node concept="RRSsy" id="7RQMtR$i3ZO" role="3cqZAp">
+              <property role="RRSoG" value="gZ5fh_4/error" />
+              <node concept="3cpWs3" id="7RQMtR$iiax" role="RRSoy">
+                <node concept="2OqwBi" id="7RQMtR$impo" role="3uHU7w">
+                  <node concept="37vLTw" id="7RQMtR$iiko" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7RQMtR$hTt8" resolve="err" />
+                  </node>
+                  <node concept="liA8E" id="7RQMtR$iqac" role="2OqNvi">
+                    <ref role="37wK5l" to="zdap:~HtmlChunk.toString()" resolve="toString" />
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="7RQMtR$i3ZQ" role="3uHU7B" />
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWsn" id="7RQMtR$hTt8" role="1Duv9x">
+            <property role="TrG5h" value="err" />
+            <node concept="3uibUv" id="7RQMtR$hTtc" role="1tU5fm">
+              <ref role="3uigEE" to="zdap:~HtmlChunk" resolve="HtmlChunk" />
+            </node>
+          </node>
+          <node concept="37vLTw" id="7RQMtR$hTtd" role="1DdaDG">
+            <ref role="3cqZAo" node="7RQMtR$hEgM" resolve="errors" />
+          </node>
+        </node>
+        <node concept="3clFbH" id="7RQMtR$gjsY" role="3cqZAp" />
         <node concept="3SKdUt" id="61n5glKfyo1" role="3cqZAp">
           <node concept="1PaTwC" id="61n5glKfyo2" role="1aUNEU">
             <node concept="3oM_SD" id="61n5glKf_$J" role="1PaTwD">
