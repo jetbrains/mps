@@ -34,9 +34,6 @@
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
-      </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
@@ -562,13 +559,6 @@
       <property role="TrG5h" value="change" />
       <property role="IQ2nx" value="6785623076777470797" />
       <ref role="AX2Wp" node="3Ftr4R6BFqT" resolve="KeyMapChange" />
-      <node concept="3l_iC" id="3Ftr4R6BH7o" role="lGtFl">
-        <node concept="1TJgyi" id="5SFo3Mf0UHd" role="3l_iP">
-          <property role="IQ2nx" value="6785623076777470797" />
-          <property role="TrG5h" value="change" />
-          <ref role="AX2Wp" node="3Ftr4R6BFqT" resolve="KeyMapChange" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="h$$3T5C">
@@ -1085,13 +1075,6 @@
       <property role="TrG5h" value="keymap" />
       <property role="IQ2nx" value="1562714432501166281" />
       <ref role="AX2Wp" node="3Ftr4R6BFpg" resolve="Keymap" />
-      <node concept="3l_iC" id="3Ftr4R6BH7q" role="lGtFl">
-        <node concept="1TJgyi" id="1mJS7WEAV39" role="3l_iP">
-          <property role="TrG5h" value="keymap" />
-          <property role="IQ2nx" value="1562714432501166281" />
-          <ref role="AX2Wp" node="3Ftr4R6BFpg" resolve="Keymap" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="7vZlS_8XFtM" role="1TKVEl">
       <property role="TrG5h" value="isPluginXmlKeymap" />
@@ -1294,13 +1277,6 @@
       <property role="TrG5h" value="position" />
       <property role="IQ2nx" value="2498620720770664572" />
       <ref role="AX2Wp" node="3Ftr4R6BFqN" resolve="ToolPosition" />
-      <node concept="3l_iC" id="3Ftr4R6BH7s" role="lGtFl">
-        <node concept="1TJgyi" id="2aGS$UDXOxW" role="3l_iP">
-          <property role="TrG5h" value="position" />
-          <property role="IQ2nx" value="2498620720770664572" />
-          <ref role="AX2Wp" node="3Ftr4R6BFqN" resolve="ToolPosition" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyi" id="5FstybB4cXI" role="1TKVEl">
       <property role="TrG5h" value="icon" />
@@ -2342,13 +2318,6 @@
       <property role="TrG5h" value="keymap" />
       <property role="IQ2nx" value="471625927503603126" />
       <ref role="AX2Wp" node="3Ftr4R6BFpg" resolve="Keymap" />
-      <node concept="3l_iC" id="3Ftr4R6BH7u" role="lGtFl">
-        <node concept="1TJgyi" id="qbzkx3HQmQ" role="3l_iP">
-          <property role="IQ2nx" value="471625927503603126" />
-          <property role="TrG5h" value="keymap" />
-          <ref role="AX2Wp" node="3Ftr4R6BFpg" resolve="Keymap" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyj" id="qbzkx3HQ4A" role="1TKVEi">
       <property role="IQ2ns" value="471625927503601958" />

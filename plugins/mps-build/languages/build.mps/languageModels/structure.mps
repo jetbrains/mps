@@ -24,9 +24,6 @@
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
-      </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
@@ -198,13 +195,6 @@
       <property role="TrG5h" value="sourcesKind" />
       <property role="IQ2nx" value="269707337715731330" />
       <ref role="AX2Wp" node="3Ftr4R6BFCz" resolve="BuildMps_ModuleSourcesKind" />
-      <node concept="3l_iC" id="3Ftr4R6BH9S" role="lGtFl">
-        <node concept="1TJgyi" id="eYcmk9RcI2" role="3l_iP">
-          <property role="TrG5h" value="sourcesKind" />
-          <property role="IQ2nx" value="269707337715731330" />
-          <ref role="AX2Wp" node="3Ftr4R6BFCz" resolve="BuildMps_ModuleSourcesKind" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="2L4pT56gD3S">

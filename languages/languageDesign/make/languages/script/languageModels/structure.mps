@@ -18,9 +18,6 @@
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
-      <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
-        <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
-      </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
@@ -56,7 +53,6 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -73,13 +69,6 @@
       <property role="TrG5h" value="result" />
       <property role="IQ2nx" value="7077360340906447918" />
       <ref role="AX2Wp" node="3Ftr4R6BFoI" resolve="Result" />
-      <node concept="3l_iC" id="3Ftr4R6BH78" role="lGtFl">
-        <node concept="1TJgyi" id="68RPrIbaDgI" role="3l_iP">
-          <property role="TrG5h" value="result" />
-          <property role="IQ2nx" value="7077360340906447918" />
-          <ref role="AX2Wp" node="3Ftr4R6BFoI" resolve="Result" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="230qvwa_7a2">
@@ -369,13 +358,6 @@
       <property role="TrG5h" value="feedback" />
       <property role="IQ2nx" value="3668957831723333678" />
       <ref role="AX2Wp" node="3Ftr4R6BFoM" resolve="Feedback" />
-      <node concept="3l_iC" id="3Ftr4R6BH7a" role="lGtFl">
-        <node concept="1TJgyi" id="3bEKrlZKrwI" role="3l_iP">
-          <property role="TrG5h" value="feedback" />
-          <property role="IQ2nx" value="3668957831723333678" />
-          <ref role="AX2Wp" node="3Ftr4R6BFoM" resolve="Feedback" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="apaq_sBAA2">

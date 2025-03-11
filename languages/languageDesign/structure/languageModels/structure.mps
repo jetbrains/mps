@@ -711,13 +711,6 @@
       <property role="TrG5h" value="staticScope" />
       <property role="IQ2nx" value="5404671619616246344" />
       <ref role="AX2Wp" node="3Ftr4R6BF$w" resolve="StaticScope" />
-      <node concept="3l_iC" id="3Ftr4R6BH8F" role="lGtFl">
-        <node concept="1TJgyi" id="4G1g3fIR8D8" role="3l_iP">
-          <property role="TrG5h" value="staticScope" />
-          <property role="IQ2nx" value="5404671619616246344" />
-          <ref role="AX2Wp" node="3Ftr4R6BF$w" resolve="StaticScope" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyj" id="f_TJDff" role="1TKVEi">
       <property role="20kJfa" value="extends" />
