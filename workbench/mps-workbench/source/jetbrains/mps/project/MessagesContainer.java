@@ -136,6 +136,7 @@ public class MessagesContainer implements Disposable {
 
   protected void reportMessages(SModel model, Collection<? extends ReportItem> errors) {
     assert (!errors.isEmpty());
+    if (model.getModule() != null) return;
     for (ReportItem error : errors) {
       myIndices.get(error.getSeverity()).reportMessages(model.getModule().getModuleReference(), model.getReference(), errors);
     }
