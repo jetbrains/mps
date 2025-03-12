@@ -508,12 +508,12 @@
             </node>
             <node concept="2ShNRf" id="7RQMtR$hEgN" role="33vP2m">
               <node concept="Tc6Ow" id="7RQMtR$hEgO" role="2ShVmc">
-                <node concept="2OqwBi" id="oiQTjm_NW5" role="I$8f6">
-                  <node concept="10M0yZ" id="oiQTjm_L9P" role="2Oq$k0">
+                <node concept="2OqwBi" id="5eJ8wgjuOF7" role="I$8f6">
+                  <node concept="10M0yZ" id="5eJ8wgjuL8Q" role="2Oq$k0">
                     <ref role="3cqZAo" to="ctgy:~PluginManagerCore.INSTANCE" resolve="INSTANCE" />
                     <ref role="1PxDUh" to="ctgy:~PluginManagerCore" resolve="PluginManagerCore" />
                   </node>
-                  <node concept="liA8E" id="oiQTjm_RCc" role="2OqNvi">
+                  <node concept="liA8E" id="5eJ8wgjv1mS" role="2OqNvi">
                     <ref role="37wK5l" to="ctgy:~PluginManagerCore.getAndClearPluginLoadingErrors()" resolve="getAndClearPluginLoadingErrors" />
                   </node>
                 </node>
