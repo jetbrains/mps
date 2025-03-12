@@ -8047,12 +8047,6 @@
       </node>
     </node>
   </node>
-  <node concept="bUwia" id="7a7y9hgcoaW">
-    <property role="TrG5h" value="loadMods" />
-    <node concept="1puMqW" id="7a7y9hgcoaX" role="1puA0r">
-      <ref role="1puQsG" node="2L4pT56hNAU" resolve="loadModules" />
-    </node>
-  </node>
   <node concept="13MO4I" id="5WMFzVNuUen">
     <property role="TrG5h" value="reduceExternalJar" />
     <ref role="3gUMe" to="kdzh:4zCbl23cpcc" resolve="BuildMps_Module" />
@@ -10461,6 +10455,9 @@
           </node>
         </node>
       </node>
+    </node>
+    <node concept="1puMqW" id="sCBxvUuU$v" role="1puA0r">
+      <ref role="1puQsG" node="2L4pT56hNAU" resolve="loadModules" />
     </node>
   </node>
   <node concept="13MO4I" id="6Iq8148gMAG">
