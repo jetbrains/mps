@@ -339,5 +339,5 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
     }
 
   }
-  
+
 }
