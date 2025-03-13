@@ -853,8 +853,8 @@
       <node id="7500974686090462458" at="59,99,60,81" concept="9" />
       <node id="7500974686090462458" at="60,81,61,43" concept="2" />
       <node id="7500974686090462458" at="61,43,62,25" concept="8" />
-      <node id="7500974686090462458" at="65,48,66,36" concept="8" />
-      <node id="7500974686090462458" at="69,58,70,37" concept="2" />
+      <node id="7500974686090462492" at="65,48,66,36" concept="8" />
+      <node id="7500974686090462492" at="69,58,70,37" concept="2" />
       <node id="7500974686090462492" at="74,0,75,0" concept="3" trace="myJavaParameters" />
       <node id="7500974686090462458" at="79,11,80,48" concept="7" />
       <node id="7500974686090462492" at="81,39,82,59" concept="2" />
@@ -868,8 +868,8 @@
       <node id="7500974686090462458" at="20,0,22,0" concept="3" trace="myState" />
       <node id="7500974686090462458" at="23,0,26,0" concept="6" trace="checkConfiguration#(Ljetbrains/mps/execution/api/settings/PersistentConfigurationContext;)V" />
       <node id="7500974686090462458" at="32,73,35,5" concept="5" />
-      <node id="7500974686090462458" at="65,0,68,0" concept="6" trace="getJavaParameters#()Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;" />
-      <node id="7500974686090462458" at="69,0,72,0" concept="6" trace="setJavaParameters#(Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;)V" />
+      <node id="7500974686090462492" at="65,0,68,0" concept="6" trace="getJavaParameters#()Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;" />
+      <node id="7500974686090462492" at="69,0,72,0" concept="6" trace="setJavaParameters#(Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters;)V" />
       <node id="7500974686090462492" at="80,48,83,9" concept="5" />
       <node id="7500974686090462458" at="95,0,98,0" concept="1" trace="JavaRunParameters_Configuration#(Lcom/intellij/openapi/project/Project;)V" />
       <node id="7500974686090462458" at="99,0,102,0" concept="6" trace="createCloneTemplate#()Ljetbrains/mps/baseLanguage/execution/api/JavaRunParameters_Configuration;" />
@@ -890,8 +890,8 @@
       <scope id="695186566913727605" at="42,11,43,50" />
       <scope id="695186566913727601" at="44,31,45,38" />
       <scope id="7500974686090462458" at="52,50,53,18" />
-      <scope id="7500974686090462458" at="65,48,66,36" />
-      <scope id="7500974686090462458" at="69,58,70,37" />
+      <scope id="7500974686090462492" at="65,48,66,36" />
+      <scope id="7500974686090462492" at="69,58,70,37" />
       <scope id="7500974686090462492" at="81,39,82,59" />
       <scope id="7500974686090462458" at="85,47,86,64" />
       <scope id="7500974686090462458" at="91,27,92,21" />
@@ -907,9 +907,9 @@
       <scope id="7500974686090462458" at="23,0,26,0">
         <var name="context" id="7500974686090462458" />
       </scope>
-      <scope id="7500974686090462458" at="65,0,68,0" />
-      <scope id="7500974686090462458" at="69,0,72,0">
-        <var name="value" id="7500974686090462458" />
+      <scope id="7500974686090462492" at="65,0,68,0" />
+      <scope id="7500974686090462492" at="69,0,72,0">
+        <var name="value" id="7500974686090462492" />
       </scope>
       <scope id="7500974686090462458" at="95,0,98,0">
         <var name="project" id="7500974686090462505" />

@@ -483,7 +483,7 @@
       <node id="411797247021062466" at="15,0,16,0" concept="14" trace="ICON" />
       <node id="411797247021140431" at="17,0,18,0" concept="5" trace="word" />
       <node id="411797247021062466" at="18,54,19,46" concept="16" />
-      <node id="411797247021062466" at="19,46,20,25" concept="4" />
+      <node id="411797247021140431" at="19,46,20,25" concept="4" />
       <node id="411797247021062466" at="20,25,21,35" concept="4" />
       <node id="411797247021062466" at="21,35,22,52" concept="4" />
       <node id="411797247021062466" at="22,52,23,29" concept="4" />
@@ -508,7 +508,7 @@
       <node id="411797247021062466" at="25,0,29,0" concept="9" trace="isDumbAware#()Z" />
       <node id="411797247021062466" at="29,0,33,0" concept="9" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="411797247021062466" at="46,0,50,0" concept="9" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="411797247021062466" at="59,0,64,0" concept="15" trace="word_State#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="411797247021140431" at="59,0,64,0" concept="15" trace="word_State#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="411797247021147582" at="37,5,43,5" concept="0" />
       <node id="411797247021062466" at="18,0,25,0" concept="2" trace="AddWordToDictionary_Action#(Ljava/lang/String;)V" />
       <node id="411797247021062466" at="50,0,59,0" concept="9" trace="getActionId#()Ljava/lang/String;" />
@@ -532,14 +532,14 @@
         <var name="event" id="411797247021062466" />
       </scope>
       <scope id="411797247021062466" at="18,54,23,29" />
-      <scope id="411797247021062466" at="59,0,64,0">
-        <var name="object" id="411797247021062466" />
+      <scope id="411797247021140431" at="59,0,64,0">
+        <var name="object" id="411797247021140431" />
       </scope>
       <scope id="411797247021062466" at="51,31,57,26">
         <var name="res" id="411797247021062466" />
       </scope>
       <scope id="411797247021062466" at="18,0,25,0">
-        <var name="word_par" id="411797247021062466" />
+        <var name="word_par" id="411797247021140431" />
       </scope>
       <scope id="411797247021062466" at="50,0,59,0" />
       <scope id="411797247021062466" at="34,95,44,16" />

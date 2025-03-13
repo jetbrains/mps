@@ -238,8 +238,8 @@
       <node id="8750596094204760417" at="77,99,78,81" concept="10" />
       <node id="7902226081039505530" at="78,81,79,83" concept="3" />
       <node id="8750596094204760417" at="79,83,80,25" concept="9" />
-      <node id="8750596094204760417" at="83,48,84,18" concept="9" />
-      <node id="8750596094204760417" at="87,58,88,19" concept="3" />
+      <node id="7902226081039505530" at="83,48,84,18" concept="9" />
+      <node id="7902226081039505530" at="87,58,88,19" concept="3" />
       <node id="8750596094204760417" at="91,100,92,34" concept="13" />
       <node id="8750596094204760417" at="95,132,96,90" concept="9" />
       <node id="8750596094204760417" at="99,103,100,16" concept="9" />
@@ -254,8 +254,8 @@
       <node id="8750596094204760417" at="137,0,138,0" concept="11" trace="valid$x_$w" />
       <node id="8750596094204760417" at="59,73,62,5" concept="6" />
       <node id="7902226081039505530" at="62,5,65,5" concept="6" />
-      <node id="8750596094204760417" at="83,0,86,0" concept="7" trace="getNode#()Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;" />
-      <node id="8750596094204760417" at="87,0,90,0" concept="7" trace="setNode#(Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;)V" />
+      <node id="7902226081039505530" at="83,0,86,0" concept="7" trace="getNode#()Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;" />
+      <node id="7902226081039505530" at="87,0,90,0" concept="7" trace="setNode#(Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;)V" />
       <node id="8750596094204760417" at="91,0,94,0" concept="2" trace="DemoApplication_Configuration#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/configurations/ConfigurationFactory;Ljava/lang/String;)V" />
       <node id="8750596094204760417" at="102,0,105,0" concept="7" trace="createRunnerSettings#(Lcom/intellij/execution/configurations/ConfigurationInfoProvider;)Lcom/intellij/execution/configurations/ConfigurationPerRunnerSettings;" />
       <node id="8750596094204760417" at="105,0,108,0" concept="7" trace="getConfigurationEditor#()Ljetbrains/mps/execution/api/settings/SettingsEditorEx;" />
@@ -276,8 +276,8 @@
       <scope id="8750596094204760417" at="60,26,61,81" />
       <scope id="7902226081039505530" at="63,43,64,52" />
       <scope id="8750596094204760417" at="70,48,71,18" />
-      <scope id="8750596094204760417" at="83,48,84,18" />
-      <scope id="8750596094204760417" at="87,58,88,19" />
+      <scope id="7902226081039505530" at="83,48,84,18" />
+      <scope id="7902226081039505530" at="87,58,88,19" />
       <scope id="8750596094204760417" at="91,100,92,34" />
       <scope id="8750596094204760417" at="95,132,96,90" />
       <scope id="8750596094204760417" at="99,103,100,16" />
@@ -292,9 +292,9 @@
       <scope id="7902226081039505530" at="51,5,54,39">
         <var name="fieldElement" id="7902226081039505530" />
       </scope>
-      <scope id="8750596094204760417" at="83,0,86,0" />
-      <scope id="8750596094204760417" at="87,0,90,0">
-        <var name="value" id="8750596094204760417" />
+      <scope id="7902226081039505530" at="83,0,86,0" />
+      <scope id="7902226081039505530" at="87,0,90,0">
+        <var name="value" id="7902226081039505530" />
       </scope>
       <scope id="8750596094204760417" at="91,0,94,0">
         <var name="factory" id="8750596094204760417" />

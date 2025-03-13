@@ -1114,7 +1114,7 @@
       <node id="6423044698581900943" at="21,0,22,0" concept="14" trace="ICON" />
       <node id="6423044698581900980" at="23,0,24,0" concept="5" trace="script" />
       <node id="6423044698581900943" at="24,66,25,27" concept="16" />
-      <node id="6423044698581900943" at="25,27,26,29" concept="4" />
+      <node id="6423044698581900980" at="25,27,26,29" concept="4" />
       <node id="6423044698581900943" at="26,29,27,35" concept="4" />
       <node id="6423044698581900943" at="27,35,28,40" concept="4" />
       <node id="6423044698581900943" at="28,40,29,29" concept="4" />
@@ -1140,7 +1140,7 @@
       <node id="6423044698581900943" at="40,95,43,5" concept="8" />
       <node id="6423044698581901002" at="45,66,48,7" concept="8" />
       <node id="7073978993253827546" at="51,56,54,7" concept="8" />
-      <node id="6423044698581900943" at="78,0,81,0" concept="15" trace="script_State#(Ljetbrains/mps/migration/global/ProjectMigration;)Ljava/lang/String;" />
+      <node id="6423044698581900980" at="78,0,81,0" concept="15" trace="script_State#(Ljetbrains/mps/migration/global/ProjectMigration;)Ljava/lang/String;" />
       <node id="6423044698581900943" at="31,0,35,0" concept="9" trace="isDumbAware#()Z" />
       <node id="6423044698581900943" at="35,0,39,0" concept="9" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="7073978993253823620" at="61,0,66,0" concept="9" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
@@ -1158,8 +1158,8 @@
       <scope id="7073978993253827546" at="52,22,53,21" />
       <scope id="6423044698581900984" at="78,62,79,39" />
       <scope id="7073978993253823626" at="61,69,64,262" />
-      <scope id="6423044698581900943" at="78,0,81,0">
-        <var name="object" id="6423044698581900943" />
+      <scope id="6423044698581900980" at="78,0,81,0">
+        <var name="object" id="6423044698581900980" />
       </scope>
       <scope id="6423044698581900943" at="31,0,35,0" />
       <scope id="6423044698581900943" at="35,0,39,0">
@@ -1180,7 +1180,7 @@
         <var name="res" id="6423044698581900943" />
       </scope>
       <scope id="6423044698581900943" at="24,0,31,0">
-        <var name="script_par" id="6423044698581900943" />
+        <var name="script_par" id="6423044698581900980" />
       </scope>
       <scope id="6423044698581900943" at="59,96,67,0" />
       <scope id="6423044698581900943" at="69,0,78,0" />
