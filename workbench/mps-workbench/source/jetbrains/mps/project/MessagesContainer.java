@@ -73,7 +73,7 @@ public class MessagesContainer implements Disposable {
       Set<SModelReference> set = myModelsWithMessages.remove(moduleReference);
       if (set != null) {
         changed |= set.stream()
-                      .reduce(changed, (acc, modelRef) -> acc || myModelMessages.remove(modelRef) != null, (a, b) -> a || b);
+                      .reduce(false, (acc, modelRef) -> myModelMessages.remove(modelRef) != null || acc, (a, b) -> a || b);
       }
       return changed;
     }
