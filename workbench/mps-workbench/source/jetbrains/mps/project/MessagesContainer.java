@@ -129,17 +129,21 @@ public class MessagesContainer implements Disposable {
 
   protected void reportMessages(SModule module, Collection<? extends ReportItem> errors) {
     assert (!errors.isEmpty());
-    for (ReportItem error : errors) {
-      myIndices.get(error.getSeverity()).reportMessages(module.getModuleReference(), errors);
-    }
+    errors.stream()
+          .collect(Collectors.groupingBy(ReportItem::getSeverity))
+          .forEach((severity, errorsForSeverity) -> {
+            myIndices.get(severity).reportMessages(module.getModuleReference(), errorsForSeverity);
+          });
   }
 
   protected void reportMessages(SModel model, Collection<? extends ReportItem> errors) {
     assert (!errors.isEmpty());
     if (model.getModule() == null) return;
-    for (ReportItem error : errors) {
-      myIndices.get(error.getSeverity()).reportMessages(model.getModule().getModuleReference(), model.getReference(), errors);
-    }
+    errors.stream()
+          .collect(Collectors.groupingBy(ReportItem::getSeverity))
+          .forEach((severity, errorsForSeverity) -> {
+            myIndices.get(severity).reportMessages(model.getModule().getModuleReference(), model.getReference(), errorsForSeverity);
+          });
   }
 
   protected boolean clearMessages(SModuleReference moduleReference) {
