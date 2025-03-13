@@ -41,6 +41,8 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.concurrency.EdtExecutorService;
 import com.intellij.util.containers.ContainerUtil;
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.ide.actions.CopyNode_Action;
@@ -55,16 +57,19 @@ import jetbrains.mps.ide.ui.tree.VirtualFolder;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Models;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Modules;
 import jetbrains.mps.ide.ui.tree.VirtualFolder.Nodes;
+import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.MakeNotification;
 import jetbrains.mps.make.MakeServiceComponent;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
@@ -85,9 +90,11 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.repository.CommandListener;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
@@ -100,6 +107,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.Semaphore;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
@@ -401,7 +409,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
 
   protected void removeListeners() {
     jetbrains.mps.project.Project mpsProject = myProjectMPS;
-    mpsProject.getPlatform().findComponent(LanguageRegistry.class).removeRegistryListener(myClassesListener);
+    mpsProject.getComponent(ClassLoaderManager.class).removeListener(myClassesListener);
     mpsProject.getModelAccess().removeCommandListener(myRepositoryListener);
     new RepoListenerRegistrar(mpsProject.getRepository(), myRepositoryListener).detach();
     mpsProject.getPlatform().findComponent(MakeServiceComponent.class).get().removeListener(myMakeNotificationListener);
@@ -416,8 +424,8 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
     //     as we always have make service in UI (at least, we never check for it in other locations)
     //     However, the idea to keep listeners inside MakeServiceComponent and install them into active
     //     IMakeService once it's updated looks nice
-    mpsProject.getPlatform().findComponent(MakeServiceComponent.class).get().addListener(myMakeNotificationListener);
-    mpsProject.getPlatform().findComponent(LanguageRegistry.class).addRegistryListener(myClassesListener);
+    mpsProject.getComponent(MakeServiceComponent.class).get().addListener(myMakeNotificationListener);
+    mpsProject.getComponent(ClassLoaderManager.class).addListener(myClassesListener);
   }
 
   private void forAllModulesInProject(Consumer<SModule> moduleConsumer) {
@@ -510,7 +518,7 @@ public abstract class BaseLogicalViewProjectPane extends BaseProjectViewPaneWith
       return ActionPlace.PROJECT_PANE_PROJECT;
     } else if (selectedValue instanceof Generator) {
       return ActionPlace.PROJECT_PANE_GENERATOR;
-    } else if (selectedValue instanceof TransientModelsModule || selectedValue instanceof VirtualFolder.Transients) {
+    } else if (selectedValue instanceof TransientModelsModule) {
       return ActionPlace.PROJECT_PANE_TRANSIENT_MODULES;
     } else if (selectedValue instanceof Nodes) {
       return ActionPlace.PROJECT_PANE_PACKAGE;
