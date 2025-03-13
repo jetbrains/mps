@@ -35,7 +35,7 @@
     <property role="9BnSK" value="2025.1" />
     <property role="9BnSM" value="JetBrains" />
     <property role="9BnSP" value="http://www.jetbrains.com/mps/" />
-    <property role="9BnSO" value="232.1" />
+    <property role="9BnSO" value="251.1" />
     <property role="2PJ1tZ" value="true" />
     <property role="3FCvg6" value="true" />
     <node concept="2Tc6Op" id="kOhmwOHsmC" role="2Tc6Ou">
