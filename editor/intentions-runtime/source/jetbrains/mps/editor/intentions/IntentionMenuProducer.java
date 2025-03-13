@@ -157,8 +157,9 @@ public class IntentionMenuProducer {
   }
 
   private static void collectActionsAsIntentions(AnAction action, List<AnAction> actions, DataContext dataContext) {
-    if (action instanceof ActionGroup) {
-      for (AnAction child : ((ActionGroup) action).getChildren(null)) {
+    if (action instanceof ActionGroup actionGroup) {
+      AnAction [] children = (actionGroup instanceof DefaultActionGroup dag) ? dag.getChildren(ActionManager.getInstance()) : actionGroup.getChildren(null);
+      for (AnAction child : children) {
         collectActionsAsIntentions(child, actions, dataContext);
       }
     } else if (action instanceof BaseAction) {
