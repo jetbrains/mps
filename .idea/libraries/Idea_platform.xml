@@ -13,7 +13,6 @@
       <root url="jar://$PROJECT_DIR$/lib/lib.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-loader.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-frontback.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.libraries.compose.desktop.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.libraries.ktor.client.cio.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.libraries.ktor.client.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.libraries.microba.jar!/" />
@@ -39,8 +38,13 @@
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.vcs.dvcs.impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.vcs.impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.vcs.log.impl.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.smart.update.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/nio-fs.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.vcs.dvcs.impl.shared.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.vcs.impl.backend.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.vcs.impl.exec.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.vcs.impl.frontend.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.vcs.impl.lang.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/modules/intellij.platform.vcs.impl.shared.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

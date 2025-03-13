@@ -977,7 +977,7 @@
               <node concept="liA8E" id="htWZKDw4OV" role="2OqNvi">
                 <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                 <node concept="Xl_RD" id="htWZKDw4OW" role="37wK5m">
-                  <property role="Xl_RC" value="|(IdIndex Writer)" />
+                  <property role="Xl_RC" value="|(IdIndex Writer.*)" />
                 </node>
               </node>
             </node>
@@ -990,7 +990,7 @@
               <node concept="liA8E" id="htWZKDw6Ji" role="2OqNvi">
                 <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                 <node concept="Xl_RD" id="htWZKDw6Jj" role="37wK5m">
-                  <property role="Xl_RC" value="|(Stubs Writer)" />
+                  <property role="Xl_RC" value="|(Stubs Writer.*)" />
                 </node>
               </node>
             </node>
@@ -1004,6 +1004,19 @@
                 <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                 <node concept="Xl_RD" id="htWZKDw8KB" role="37wK5m">
                   <property role="Xl_RC" value="|(Trigram Writer)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="5zWe$BJdXXB" role="3cqZAp">
+            <node concept="2OqwBi" id="5zWe$BJdXXC" role="3clFbG">
+              <node concept="37vLTw" id="5zWe$BJdXXD" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="5zWe$BJdXXE" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="5zWe$BJdXXF" role="37wK5m">
+                  <property role="Xl_RC" value="|(Trigram.Index Writer.*)" />
                 </node>
               </node>
             </node>

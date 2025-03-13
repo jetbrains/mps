@@ -17,6 +17,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.ide.ThreadUtils;
+import javax.swing.SwingUtilities;
 import javax.swing.JComponent;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3105693458873676787", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -80,18 +81,25 @@ public class Inspector_Tool extends GeneratedTool {
     Inspector_Tool.this.myContainer.inspect(node, fileEditor, enabledHints, readOnly);
   }
   public EditorComponent getInspector() {
-    final Exception exception = ThreadUtils.runInUIThreadAndWait(() -> {
-      {
-        InspectorContainer container = Inspector_Tool.this.myContainer;
-        if (container != null && container.getComponent() == null) {
-          container.createTool();
-        }
-      }
-    });
-    if (exception != null) {
-      throw new RuntimeException("Inspector tool failed to initialize the UI in createTool().", exception);
+    final InspectorContainer container = Inspector_Tool.this.myContainer;
+    if (container == null) {
+      return null;
     }
-    return (Inspector_Tool.this.myContainer != null ? Inspector_Tool.this.myContainer.getInspectorComponent() : null);
+
+    if (container.getInspectorComponent() != null) {
+      return container.getInspectorComponent();
+    }
+
+    if (ThreadUtils.isInEDT()) {
+      container.createTool();
+    } else {
+      try {
+        SwingUtilities.invokeAndWait(() -> container.createTool());
+      } catch (Exception e) {
+        throw new RuntimeException(e);
+      }
+    }
+    return container.getInspectorComponent();
   }
   public JComponent getComponent() {
     InspectorContainer.MyPanel component = Inspector_Tool.this.myContainer.getComponent();

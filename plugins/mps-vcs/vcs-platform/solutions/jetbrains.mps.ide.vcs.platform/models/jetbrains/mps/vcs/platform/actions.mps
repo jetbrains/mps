@@ -2238,7 +2238,7 @@
       <node concept="37vLTG" id="78RbNhWi9OE" role="3clF46">
         <property role="TrG5h" value="fileStatusProvider" />
         <node concept="3uibUv" id="78RbNhWi9OF" role="1tU5fm">
-          <ref role="3uigEE" to="j86o:~VcsFileStatusProvider" resolve="VcsFileStatusProvider" />
+          <ref role="3uigEE" to="jlcu:~FileStatusManager" resolve="FileStatusManager" />
         </node>
       </node>
       <node concept="37vLTG" id="78RbNhWi9OG" role="3clF46">
@@ -2267,7 +2267,7 @@
                         <ref role="3cqZAo" node="78RbNhWi9OE" resolve="fileStatusProvider" />
                       </node>
                       <node concept="liA8E" id="78RbNhWi9Or" role="2OqNvi">
-                        <ref role="37wK5l" to="j86o:~VcsFileStatusProvider.getFileStatus(com.intellij.openapi.vfs.VirtualFile)" resolve="getFileStatus" />
+                        <ref role="37wK5l" to="jlcu:~FileStatusManager.getStatus(com.intellij.openapi.vfs.VirtualFile)" resolve="getStatus" />
                         <node concept="37vLTw" id="2BHiRxgm5EV" role="37wK5m">
                           <ref role="3cqZAo" node="78RbNhWi9OG" resolve="dir" />
                         </node>
@@ -2337,16 +2337,16 @@
             <property role="TrG5h" value="statusProvider" />
             <property role="3TUv4t" value="true" />
             <node concept="3uibUv" id="38wEix8dDOF" role="1tU5fm">
-              <ref role="3uigEE" to="j86o:~VcsFileStatusProvider" resolve="VcsFileStatusProvider" />
+              <ref role="3uigEE" to="jlcu:~FileStatusManager" resolve="FileStatusManager" />
             </node>
-            <node concept="2YIFZM" id="38wEix8dDOG" role="33vP2m">
-              <ref role="37wK5l" to="j86o:~VcsFileStatusProvider.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-              <ref role="1Pybhc" to="j86o:~VcsFileStatusProvider" resolve="VcsFileStatusProvider" />
-              <node concept="2OqwBi" id="38wEix8dJ4Y" role="37wK5m">
-                <node concept="37vLTw" id="38wEix8dDOH" role="2Oq$k0">
+            <node concept="2YIFZM" id="1M$6WUeKhMV" role="33vP2m">
+              <ref role="37wK5l" to="jlcu:~FileStatusManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <ref role="1Pybhc" to="jlcu:~FileStatusManager" resolve="FileStatusManager" />
+              <node concept="2OqwBi" id="1M$6WUeKhMW" role="37wK5m">
+                <node concept="37vLTw" id="1M$6WUeKhMX" role="2Oq$k0">
                   <ref role="3cqZAo" node="38wEix8dGgI" resolve="mpsProject" />
                 </node>
-                <node concept="liA8E" id="38wEix8dK_s" role="2OqNvi">
+                <node concept="liA8E" id="1M$6WUeKhMY" role="2OqNvi">
                   <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
                 </node>
               </node>

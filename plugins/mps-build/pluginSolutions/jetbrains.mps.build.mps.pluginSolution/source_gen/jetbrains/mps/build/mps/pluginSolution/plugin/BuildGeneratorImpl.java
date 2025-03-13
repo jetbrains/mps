@@ -121,7 +121,6 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
         copyIcon(instanceEx.getApplicationSvgIconUrl(), iconsDir, getProjectName().toLowerCase() + ".svg");
         copyIcon(instanceEx.getSmallApplicationSvgIconUrl(), iconsDir, getProjectName().toLowerCase() + "_16.svg");
         copyIcon(instanceEx.getSplashImageUrl(), iconsDir, "splash.png");
-        copyIcon(instanceEx.getWelcomeScreenLogoUrl(), iconsDir, "logo.png");
       }
     });
   }

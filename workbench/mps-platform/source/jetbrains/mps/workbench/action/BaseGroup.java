@@ -16,6 +16,7 @@
 package jetbrains.mps.workbench.action;
 
 import com.intellij.openapi.actionSystem.ActionGroup;
+import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -126,7 +127,7 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
   }
 
   public void addPlace(ActionPlace place, @Nullable Condition<BaseAction> condition) {
-    List<AnAction> actionList = Arrays.asList(getChildren((AnActionEvent) null));
+    List<AnAction> actionList = Arrays.asList(getChildren(ActionManager.getInstance()));
     addPlaceToActionList(actionList, place, condition);
   }
 
@@ -137,10 +138,9 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
   public static void addPlaceToActionList(List<? extends AnAction> actions, ActionPlace place, @Nullable Condition<BaseAction> condition) {
     for (AnAction child : actions) {
       if (child instanceof ActionGroup) {
-        List<AnAction> children = Arrays.asList(((ActionGroup) child).getChildren(null));
+        List<AnAction> children = ActionUtils.getChildren((ActionGroup) child);
         addPlaceToActionList(children,place,condition);
-      } else if (child instanceof BaseAction) {
-        BaseAction action = (BaseAction) child;
+      } else if (child instanceof BaseAction action) {
         if (condition == null || condition.met(action)) {
           action.addPlace(place);
         }

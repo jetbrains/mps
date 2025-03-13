@@ -76,7 +76,7 @@
       <not>
         <and>
           <!-- Assumes the presence of javadoc and such if the version is correct -->
-          <available file="${kotlin.core.libs}/kotlinx-metadata-jvm-${kotlinx.metadata.version}.jar"/>
+          <available file="${kotlin.core.libs}/kotlin-metadata-jvm-${kotlin.version}.jar"/>
           <available file="${kotlin.core.libs}/kotlin-compiler-client-embeddable-${kotlin.version}.jar"/>
         </and>
       </not>
@@ -95,7 +95,7 @@
     <condition property="kotlinpluginlibs.missing" value="true" else="false">
       <not>
         <and>
-          <available file="${kotlin.lib}/kotlin-stdlib-common-${kotlin.version}.jar"/>
+          <available file="${kotlin.lib}/kotlin-stdlib-all-${kotlin.version}.jar"/>
           <available file="${kotlin.lib}/kotlin-stdlib-${kotlin.version}.jar"/>
           <available file="${kotlin.lib}/kotlin-builtins.jar"/>
         </and>
@@ -256,6 +256,13 @@
     <chmod file="${basedir}/../bin/win/runnerw.exe" perm="755"/>
     <chmod file="${basedir}/../bin/win/vistalauncher.exe" perm="755"/>
     <chmod file="${basedir}/../bin/win/WinProcessListHelper.exe" perm="755"/>
+  </target>
+
+  <!-- Not used yet -->
+  <target name="embed-module-descriptors">
+    <loadfile property="fileContent" srcFile="${basedir}/../lib/modules/module-descriptors.xml"/>
+    <copy file="${basedir}/../workbench/mps-workbench/source/META-INF/IdeaPlugin.template.xml" tofile="${basedir}/../workbench/mps-workbench/source/META-INF/IdeaPlugin.xml"/>
+    <replace file="${basedir}/../workbench/mps-workbench/source/META-INF/IdeaPlugin.xml" token="@@MODULE_DESCRIPTORS@@" value="${fileContent}"/>
   </target>
 
   <target name="update-licence-info">
@@ -472,7 +479,7 @@
     <delete failonerror="false">
       <fileset dir="${kotlin.core.libs}">
         <!-- Versions not included so it can clear up previous version -->
-        <include name="kotlinx-metadata-jvm-*.jar" />
+        <include name="kotlin-metadata-jvm-*.jar" />
         <include name="kotlin-compiler-client-embeddable-*.jar" />
       </fileset>
     </delete>

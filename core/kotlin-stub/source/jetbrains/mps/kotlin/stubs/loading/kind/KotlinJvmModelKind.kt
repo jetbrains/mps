@@ -15,8 +15,8 @@ import jetbrains.mps.kotlin.stubs.smodel.metadata.KtReadContext
 import jetbrains.mps.kotlin.stubs.smodel.references.ClassStereotype
 import jetbrains.mps.kotlin.stubs.smodel.references.JavaClassReference
 import jetbrains.mps.vfs.IFile
-import kotlinx.metadata.KmClass
-import kotlinx.metadata.jvm.KotlinClassMetadata
+import kotlin.metadata.KmClass
+import kotlin.metadata.jvm.KotlinClassMetadata
 import org.jetbrains.mps.openapi.model.SNode
 
 /**
@@ -25,13 +25,16 @@ import org.jetbrains.mps.openapi.model.SNode
  * Jvm platform is a bit specific since metadata is loaded from the class @Metadata annotations
  */
 object KotlinJvmModelKind : KotlinModelKind(TargetPlatform(setOf(JvmPlatform)), "jvm", "kotlin_jvm") {
-    override fun load(topFiles: List<IFile>, packageName: PackageName, mask: SignatureMask): List<StubRoot> {
+    override fun load(topFiles: List<IFile>, implicitPackageName: PackageName, mask: SignatureMask): List<StubRoot> {
         return topFiles.filter { it.extension == "class" && !it.name.contains("$") }.mapNotNull { file ->
-            val kotlinData = file.parseJvmDescriptor(packageName)
+            val kotlinData = file.parseJvmDescriptor(implicitPackageName)
                 ?: // Java class
                 return@mapNotNull JavaClassRoot(file)
 
-            when (val metadata = KotlinClassMetadata.read(kotlinData)) {
+            // Metadata may specify an original package
+            val packageName = PackageName(kotlinData.packageName)
+
+            when (val metadata = KotlinClassMetadata.readStrict(kotlinData)) {
                 is KotlinClassMetadata.Class -> {
                     if (mask.accept(metadata.kmClass))
                         loadClassRoot(metadata.kmClass, packageName, file)
@@ -63,7 +66,7 @@ object KotlinJvmModelKind : KotlinModelKind(TargetPlatform(setOf(JvmPlatform)), 
         ?.findChild(className.substringAfterLast("/").replace(".", "$") + ".class")
         ?.takeIf(IFile::exists)
         ?.parseJvmDescriptor(packageName)
-        ?.let(KotlinClassMetadata.Companion::read)
+        ?.let(KotlinClassMetadata.Companion::readStrict)
 
     private fun loadClassRoot(root: KmClass, packageName: PackageName, existingClass: IFile): ClassRoot {
         val nestedClasses = root.nestedClasses.mapNotNull {

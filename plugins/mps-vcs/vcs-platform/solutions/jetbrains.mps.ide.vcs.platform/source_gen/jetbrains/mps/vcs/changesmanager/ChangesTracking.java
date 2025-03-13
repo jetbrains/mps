@@ -70,9 +70,6 @@ import jetbrains.mps.smodel.event.DependencyChangeBridge;
 import jetbrains.mps.smodel.event.SModelEventVisitorAdapter;
 import java.util.Map;
 import java.util.HashMap;
-import com.intellij.openapi.vcs.impl.VcsFileStatusProvider;
-import com.intellij.openapi.editor.Document;
-import com.intellij.openapi.fileEditor.FileDocumentManager;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
@@ -537,13 +534,12 @@ public final class ChangesTracking {
         List<IFile> collected = (List<IFile>) (((FileSystemBasedDataSource) dataSource).getAffectedFilesWithDirsExtracted().collect(Collectors.toList()));
         SetSequence.fromSet(affectedFiles).addSequence(ListSequence.fromList(collected));
       }
-      VcsFileStatusProvider provider = VcsFileStatusProvider.getInstance(myProject);
-      for (IFile iFile : SetSequence.fromSet(affectedFiles)) {
-        VirtualFile vFile = asVirtualFile(iFile);
-        if (vFile != null) {
-          Document document = FileDocumentManager.getInstance().getDocument(vFile);
-          if (document != null && provider != null) {
-            provider.refreshFileStatusFromDocument(vFile, document);
+      FileStatusManager provider = FileStatusManager.getInstance(myProject);
+      if (provider != null) {
+        for (IFile iFile : SetSequence.fromSet(affectedFiles)) {
+          VirtualFile vFile = asVirtualFile(iFile);
+          if (vFile != null) {
+            provider.fileStatusChanged(vFile);
           }
         }
       }

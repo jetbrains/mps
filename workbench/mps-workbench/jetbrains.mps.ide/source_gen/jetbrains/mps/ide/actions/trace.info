@@ -5866,113 +5866,122 @@
       <node id="3105693458873676787" at="22,81,23,73" concept="6" />
     </file>
     <file name="Inspector_Tool.java">
-      <node id="3105693458873676787" at="24,0,25,0" concept="16" trace="ICON" />
-      <node id="7481427614914919437" at="25,0,26,0" concept="7" trace="myContainer" />
-      <node id="6259354481128899555" at="26,0,27,0" concept="7" trace="myProject" />
-      <node id="3675669256581613056" at="29,42,30,43" concept="6" />
-      <node id="3675669256581613067" at="34,43,35,67" concept="13" />
-      <node id="3675669256581613089" at="39,101,40,95" concept="6" />
-      <node id="3675669256581613106" at="44,34,45,47" concept="13" />
-      <node id="3105693458873676787" at="48,42,49,109" concept="18" />
-      <node id="3105693458873676787" at="51,37,52,24" concept="6" />
-      <node id="7481427614914962946" at="52,24,53,70" concept="6" />
-      <node id="7481427614915433975" at="53,70,54,49" concept="6" />
-      <node id="6259354481128907505" at="54,49,55,44" concept="6" />
-      <node id="7337779345405896755" at="55,44,56,114" concept="6" />
-      <node id="7860626778516893122" at="59,9,60,140" concept="6" />
-      <node id="7481427614915181770" at="61,15,62,72" concept="6" />
-      <node id="7481427614915149238" at="62,72,63,45" concept="6" />
-      <node id="3105693458873676787" at="64,5,65,20" concept="6" />
-      <node id="3105693458873676787" at="68,44,69,16" concept="13" />
-      <node id="7481427614915195977" at="71,99,72,104" concept="12" />
-      <node id="7481427614915208987" at="72,104,73,70" concept="0" />
-      <node id="7481427614914912835" at="74,116,75,93" concept="14" />
-      <node id="7481427614914912853" at="75,93,76,115" concept="14" />
-      <node id="7481427614914912871" at="76,115,77,74" concept="14" />
-      <node id="7481427614914912804" at="77,74,78,18" concept="6" />
-      <node id="7481427614915220006" at="79,5,80,86" concept="6" />
-      <node id="7860626778516438093" at="84,7,85,71" concept="12" />
-      <node id="7481427614915442837" at="86,68,87,33" concept="6" />
-      <node id="7481427614915442723" at="91,28,92,107" concept="21" />
-      <node id="7481427614915442724" at="93,5,94,118" concept="13" />
-      <node id="313501912000877923" at="96,36,97,90" concept="12" />
-      <node id="313501912000889116" at="98,28,99,51" concept="6" />
-      <node id="313501912000895716" at="100,5,101,21" concept="13" />
-      <node id="3105693458873676787" at="48,0,51,0" concept="3" trace="Inspector_Tool#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="7481427614915442832" at="85,71,88,9" concept="10" />
-      <node id="7481427614915442714" at="90,7,93,5" concept="10" />
-      <node id="313501912000867581" at="97,90,100,5" concept="10" />
-      <node id="3675669256581613050" at="28,0,32,0" concept="11" trace="openToolLater#(Z)V" />
-      <node id="3675669256581613063" at="33,0,37,0" concept="11" trace="getInspector#()Ljetbrains/mps/nodeEditor/EditorComponent;" />
-      <node id="3675669256581613076" at="38,0,42,0" concept="11" trace="inspect#(Lorg/jetbrains/mps/openapi/model/SNode;Lcom/intellij/openapi/fileEditor/FileEditor;[Ljava/lang/String;Z)V" />
-      <node id="3675669256581613102" at="43,0,47,0" concept="11" trace="isAvailable#()Z" />
-      <node id="3105693458873676787" at="67,0,71,0" concept="11" trace="isInitiallyAvailable#()Z" />
-      <node id="3675669256582160770" at="58,25,64,5" concept="22" />
-      <node id="7481427614914912793" at="73,70,79,5" concept="10" />
-      <node id="7481427614915442830" at="83,72,89,7" concept="1" />
-      <node id="3105693458873676787" at="51,0,58,0" concept="11" trace="init#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="3105693458873676787" at="96,0,103,0" concept="11" trace="getComponent#()Ljavax/swing/JComponent;" />
-      <node id="7481427614915442699" at="82,41,90,7" concept="12" />
-      <node id="3105693458873676787" at="58,0,67,0" concept="11" trace="dispose#()V" />
-      <node id="7481427614914901109" at="71,0,82,0" concept="11" trace="inspect#(Lorg/jetbrains/mps/openapi/model/SNode;Lcom/intellij/openapi/fileEditor/FileEditor;[Ljava/lang/String;Z)V" />
-      <node id="7481427614915436593" at="82,0,96,0" concept="11" trace="getInspector#()Ljetbrains/mps/nodeEditor/EditorComponent;" />
-      <node id="3675669256581615164" at="27,0,48,0" concept="7" trace="accessor" />
-      <scope id="3675669256581613055" at="29,42,30,43" />
-      <scope id="3675669256581613066" at="34,43,35,67" />
-      <scope id="3675669256581613088" at="39,101,40,95" />
-      <scope id="3675669256581613105" at="44,34,45,47" />
-      <scope id="3105693458873676787" at="48,42,49,109" />
-      <scope id="3675669256582160771" at="59,9,60,140" />
-      <scope id="3105693458873676787" at="68,44,69,16" />
-      <scope id="7481427614915442836" at="86,68,87,33" />
-      <scope id="7481427614915442719" at="91,28,92,107" />
-      <scope id="313501912000867583" at="98,28,99,51" />
-      <scope id="3675669256582160773" at="61,15,63,45" />
-      <scope id="3105693458873676787" at="48,0,51,0">
+      <node id="3105693458873676787" at="25,0,26,0" concept="16" trace="ICON" />
+      <node id="7481427614914919437" at="26,0,27,0" concept="7" trace="myContainer" />
+      <node id="6259354481128899555" at="27,0,28,0" concept="7" trace="myProject" />
+      <node id="3675669256581613056" at="30,42,31,43" concept="6" />
+      <node id="3675669256581613067" at="35,43,36,67" concept="13" />
+      <node id="3675669256581613089" at="40,101,41,95" concept="6" />
+      <node id="3675669256581613106" at="45,34,46,47" concept="13" />
+      <node id="3105693458873676787" at="49,42,50,109" concept="18" />
+      <node id="3105693458873676787" at="52,37,53,24" concept="6" />
+      <node id="7481427614914962946" at="53,24,54,70" concept="6" />
+      <node id="7481427614915433975" at="54,70,55,49" concept="6" />
+      <node id="6259354481128907505" at="55,49,56,44" concept="6" />
+      <node id="7337779345405896755" at="56,44,57,114" concept="6" />
+      <node id="7860626778516893122" at="60,9,61,140" concept="6" />
+      <node id="7481427614915181770" at="62,15,63,72" concept="6" />
+      <node id="7481427614915149238" at="63,72,64,45" concept="6" />
+      <node id="3105693458873676787" at="65,5,66,20" concept="6" />
+      <node id="3105693458873676787" at="69,44,70,16" concept="13" />
+      <node id="7481427614915195977" at="72,99,73,104" concept="12" />
+      <node id="7481427614915208987" at="73,104,74,70" concept="0" />
+      <node id="7481427614914912835" at="75,116,76,93" concept="14" />
+      <node id="7481427614914912853" at="76,93,77,115" concept="14" />
+      <node id="7481427614914912871" at="77,115,78,74" concept="14" />
+      <node id="7481427614914912804" at="78,74,79,18" concept="6" />
+      <node id="7481427614915220006" at="80,5,81,86" concept="6" />
+      <node id="4492625960922299484" at="83,41,84,73" concept="12" />
+      <node id="4687694427459946238" at="85,28,86,18" concept="13" />
+      <node id="4687694427459947362" at="87,5,88,0" concept="15" />
+      <node id="4687694427459968355" at="89,52,90,47" concept="13" />
+      <node id="4687694427459976360" at="91,5,92,0" concept="15" />
+      <node id="4687694427459983958" at="93,32,94,29" concept="6" />
+      <node id="4687694427459994658" at="96,11,97,67" concept="6" />
+      <node id="4687694427460014695" at="98,29,99,38" concept="21" />
+      <node id="4687694427460265100" at="101,5,102,45" concept="13" />
+      <node id="313501912000877923" at="104,36,105,90" concept="12" />
+      <node id="313501912000889116" at="106,28,107,51" concept="6" />
+      <node id="313501912000895716" at="108,5,109,21" concept="13" />
+      <node id="3105693458873676787" at="49,0,52,0" concept="3" trace="Inspector_Tool#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="4687694427459939017" at="84,73,87,5" concept="10" />
+      <node id="4687694427459950173" at="88,0,91,5" concept="10" />
+      <node id="313501912000867581" at="105,90,108,5" concept="10" />
+      <node id="3675669256581613050" at="29,0,33,0" concept="11" trace="openToolLater#(Z)V" />
+      <node id="3675669256581613063" at="34,0,38,0" concept="11" trace="getInspector#()Ljetbrains/mps/nodeEditor/EditorComponent;" />
+      <node id="3675669256581613076" at="39,0,43,0" concept="11" trace="inspect#(Lorg/jetbrains/mps/openapi/model/SNode;Lcom/intellij/openapi/fileEditor/FileEditor;[Ljava/lang/String;Z)V" />
+      <node id="3675669256581613102" at="44,0,48,0" concept="11" trace="isAvailable#()Z" />
+      <node id="3105693458873676787" at="68,0,72,0" concept="11" trace="isInitiallyAvailable#()Z" />
+      <node id="4687694427460009067" at="95,12,100,7" concept="22" />
+      <node id="3675669256582160770" at="59,25,65,5" concept="22" />
+      <node id="7481427614914912793" at="74,70,80,5" concept="10" />
+      <node id="4687694427459989913" at="95,10,101,5" concept="1" />
+      <node id="3105693458873676787" at="52,0,59,0" concept="11" trace="init#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="3105693458873676787" at="104,0,111,0" concept="11" trace="getComponent#()Ljavax/swing/JComponent;" />
+      <node id="3105693458873676787" at="59,0,68,0" concept="11" trace="dispose#()V" />
+      <node id="4687694427459978572" at="92,0,101,5" concept="10" />
+      <node id="7481427614914901109" at="72,0,83,0" concept="11" trace="inspect#(Lorg/jetbrains/mps/openapi/model/SNode;Lcom/intellij/openapi/fileEditor/FileEditor;[Ljava/lang/String;Z)V" />
+      <node id="3675669256581615164" at="28,0,49,0" concept="7" trace="accessor" />
+      <node id="7481427614915436593" at="83,0,104,0" concept="11" trace="getInspector#()Ljetbrains/mps/nodeEditor/EditorComponent;" />
+      <scope id="3675669256581613055" at="30,42,31,43" />
+      <scope id="3675669256581613066" at="35,43,36,67" />
+      <scope id="3675669256581613088" at="40,101,41,95" />
+      <scope id="3675669256581613105" at="45,34,46,47" />
+      <scope id="3105693458873676787" at="49,42,50,109" />
+      <scope id="3675669256582160771" at="60,9,61,140" />
+      <scope id="3105693458873676787" at="69,44,70,16" />
+      <scope id="4687694427459939019" at="85,28,86,18" />
+      <scope id="4687694427459950175" at="89,52,90,47" />
+      <scope id="4687694427459978574" at="93,32,94,29" />
+      <scope id="4687694427460009068" at="96,11,97,67" />
+      <scope id="4687694427460009073" at="98,29,99,38" />
+      <scope id="313501912000867583" at="106,28,107,51" />
+      <scope id="3675669256582160773" at="62,15,64,45" />
+      <scope id="4687694427460009070" at="98,7,100,7">
+        <var name="e" id="4687694427460009074" />
+      </scope>
+      <scope id="3105693458873676787" at="49,0,52,0">
         <var name="project" id="3105693458873676787" />
       </scope>
-      <scope id="3675669256581613050" at="28,0,32,0">
+      <scope id="3675669256581613050" at="29,0,33,0">
         <var name="b" id="3675669256581613053" />
       </scope>
-      <scope id="3675669256581613063" at="33,0,37,0" />
-      <scope id="3675669256581613076" at="38,0,42,0">
+      <scope id="3675669256581613063" at="34,0,38,0" />
+      <scope id="3675669256581613076" at="39,0,43,0">
         <var name="enabledHints" id="3675669256581613083" />
         <var name="fileEditor" id="3675669256581613081" />
         <var name="node" id="3675669256581613079" />
         <var name="readOnly" id="3675669256581613086" />
       </scope>
-      <scope id="3675669256581613102" at="43,0,47,0" />
-      <scope id="3105693458873676787" at="67,0,71,0" />
-      <scope id="7481427614914912803" at="74,116,78,18" />
-      <scope id="7481427614915442831" at="84,7,88,9">
-        <var name="container" id="7860626778516438094" />
-      </scope>
-      <scope id="3105693458873676787" at="51,37,56,114" />
-      <scope id="3105693458873676789" at="96,36,101,21">
+      <scope id="3675669256581613102" at="44,0,48,0" />
+      <scope id="3105693458873676787" at="68,0,72,0" />
+      <scope id="7481427614914912803" at="75,116,79,18" />
+      <scope id="3105693458873676787" at="52,37,57,114" />
+      <scope id="4687694427459989914" at="95,12,100,7" />
+      <scope id="3105693458873676789" at="104,36,109,21">
         <var name="component" id="313501912000877924" />
       </scope>
-      <scope id="7481427614915442829" at="83,72,89,7" />
-      <scope id="3105693458873676787" at="51,0,58,0">
+      <scope id="3105693458873676787" at="52,0,59,0">
         <var name="project" id="3105693458873676787" />
       </scope>
-      <scope id="3105693458873676787" at="58,25,65,20" />
-      <scope id="3105693458873676787" at="96,0,103,0" />
-      <scope id="3105693458873676787" at="58,0,67,0" />
-      <scope id="7481427614914901111" at="71,99,80,86">
+      <scope id="3105693458873676787" at="59,25,66,20" />
+      <scope id="3105693458873676787" at="104,0,111,0" />
+      <scope id="3105693458873676787" at="59,0,68,0" />
+      <scope id="7481427614914901111" at="72,99,81,86">
         <var name="mpsProject" id="7481427614915195978" />
       </scope>
-      <scope id="7481427614914901109" at="71,0,82,0">
+      <scope id="7481427614914901109" at="72,0,83,0">
         <var name="enabledHints" id="7481427614914907941" />
         <var name="fileEditor" id="7481427614914904576" />
         <var name="node" id="7481427614914902733" />
         <var name="readOnly" id="7481427614914910323" />
       </scope>
-      <scope id="7481427614915436595" at="82,41,94,118">
-        <var name="exception" id="7481427614915442698" />
+      <scope id="7481427614915436595" at="83,41,102,45">
+        <var name="container" id="4492625960922299485" />
       </scope>
-      <scope id="7481427614915436593" at="82,0,96,0" />
-      <unit id="3675669256581613048" at="27,57,47,3" name="jetbrains.mps.ide.actions.Inspector_Tool$1" />
-      <unit id="3105693458873676787" at="22,0,104,0" name="jetbrains.mps.ide.actions.Inspector_Tool" />
+      <scope id="7481427614915436593" at="83,0,104,0" />
+      <unit id="3675669256581613048" at="28,57,48,3" name="jetbrains.mps.ide.actions.Inspector_Tool$1" />
+      <unit id="3105693458873676787" at="23,0,112,0" name="jetbrains.mps.ide.actions.Inspector_Tool" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3121818631993911011">

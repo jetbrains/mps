@@ -2869,14 +2869,14 @@
                 </node>
                 <node concept="2OqwBi" id="6ySnuJfjmnu" role="33vP2m">
                   <node concept="liA8E" id="6ySnuJfjmn_" role="2OqNvi">
-                    <ref role="37wK5l" to="j86o:~VcsFileStatusProvider.getFileStatus(com.intellij.openapi.vfs.VirtualFile)" resolve="getFileStatus" />
+                    <ref role="37wK5l" to="jlcu:~FileStatusManager.getStatus(com.intellij.openapi.vfs.VirtualFile)" resolve="getStatus" />
                     <node concept="37vLTw" id="523_aD7Z0go" role="37wK5m">
                       <ref role="3cqZAo" node="523_aD7YAjr" resolve="virtualFile" />
                     </node>
                   </node>
                   <node concept="2YIFZM" id="6xz27f4huAt" role="2Oq$k0">
-                    <ref role="37wK5l" to="j86o:~VcsFileStatusProvider.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
-                    <ref role="1Pybhc" to="j86o:~VcsFileStatusProvider" resolve="VcsFileStatusProvider" />
+                    <ref role="37wK5l" to="jlcu:~FileStatusManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                    <ref role="1Pybhc" to="jlcu:~FileStatusManager" resolve="FileStatusManager" />
                     <node concept="37vLTw" id="6xz27f4huJg" role="37wK5m">
                       <ref role="3cqZAo" node="523_aD7YVkZ" resolve="ideaProject" />
                     </node>
@@ -2948,7 +2948,7 @@
     <property role="9BnSM" value="JetBrains" />
     <property role="TrG5h" value="VCS Integration for MPS" />
     <property role="9BnSO" value="232.1" />
-    <property role="9BnSK" value="2024.3" />
+    <property role="9BnSK" value="2025.1" />
   </node>
   <node concept="1ESbSp" id="10cWl49AXwe">
     <property role="TrG5h" value="IDEAChangesViewPopup" />

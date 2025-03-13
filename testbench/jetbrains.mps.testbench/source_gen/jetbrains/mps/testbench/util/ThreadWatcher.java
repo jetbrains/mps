@@ -95,9 +95,10 @@ public class ThreadWatcher implements Output {
       builder.append("|(LocalStatisticsFileEventLogger)");
 
       // com.intellij.util.indexing.contentQueue.dev.LegacyMultiThreadedIndexWriter
-      builder.append("|(IdIndex Writer)");
-      builder.append("|(Stubs Writer)");
+      builder.append("|(IdIndex Writer.*)");
+      builder.append("|(Stubs Writer.*)");
       builder.append("|(Trigram Writer)");
+      builder.append("|(Trigram.Index Writer.*)");
       builder.append("|(Aux Index Writer .*)");
 
       // --------------------------------

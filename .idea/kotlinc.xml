@@ -10,4 +10,7 @@
      -->
     <option name="jvmTarget" value="11" />
   </component>
+  <component name="KotlinCompilerSettings">
+    <option name="additionalArguments" value="-Xskip-prerelease-check" />
+  </component>
 </project>

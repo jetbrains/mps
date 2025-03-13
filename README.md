@@ -22,10 +22,10 @@ Download IntelliJ IDEA from the JetBrains website. Community edition will work j
 2. Clone your fork to your local machine: git clone git@github.com:<yourGitHubName>/MPS.git. Depending on your internet connection, this may take a long time, MPS is big. Consider using the _--depth_ git parameter to clone only part of the history of the project to save time and space.
 3. It is preferable to work in your own branch, so create a new branch to work in git checkout -b my_branch_name.
 4. Open the project in [IntelliJ IDEA](http://www.jetbrains.com/idea) (either Community or Ultimate Edition). Since IDEA 2023.3 you have to install the Ant plugin as well as the Plugin DevKit plugin, without which the MPS project cannot be compiled.
-5. Attach JB JDK 17 to the project.
-    1. Download latest JB JDK 17 for your OS and your version of MPS. Go to [the MPS TeamCity site](https://teamcity.jetbrains.com/project/MPS?mode=builds#all-projects), scroll to the build configuration that corresponds to the MPS version that you are trying to build and locate the JDK distribution (e.g. _2022.2 -> Distribution -> Get Resources_). Click on the _Artifacts_ symbol of the last successful build of _Get Resources_ and choose the distribution that you need. Make sure you grab *jbrsdk* not *jbsdk*.
+5. Attach JB JDK 21 to the project.
+    1. Download latest JB JDK 21 for your OS and your version of MPS. Go to [the MPS TeamCity site](https://teamcity.jetbrains.com/project/MPS?mode=builds#all-projects), scroll to the build configuration that corresponds to the MPS version that you are trying to build and locate the JDK distribution (e.g. _2022.2 -> Distribution -> Get Resources_). Click on the _Artifacts_ symbol of the last successful build of _Get Resources_ and choose the distribution that you need. Make sure you grab *jbrsdk* not *jbsdk*.
     2. *Main menu -> File -> Project Structure* opens the Project Structure dialog.
-    3. Under *Platform Settings -> SDK*, add a new JDK named "JB JDK 17".
+    3. Under *Platform Settings -> SDK*, add a new JDK named "JB JDK 21".
 6. Additionally, create an *IntelliJ Platform Plugin SDK* in the same *Platform Settings -> SDK* dialog and name it "IDEA IC".
 The *ideaIntegrationCommon*, *IDEAPlugin* and *ups-idea-plugin* modules need this SDK and they will be using it automatically as soon as you create it and give it the "IDEA IC" name.
 For more details on how to add an IntelliJ Platform Plugin SDK, consult this [help page](http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/setting_up_environment.html).
@@ -47,7 +47,7 @@ _MPS is licensed under the Apache 2 open-source license. See the [complete MPS l
 System requirements
 -------------------
 
-To build JetBrains MPS from sources you need JDK 17. Older JDK versions are currently not supported for building MPS from sources.
+To build JetBrains MPS from sources you need JDK 21. Older JDK versions are currently not supported for building MPS from sources.
 
 IntelliJ IDEA Community or Ultimate edition shall be used to open the project. The versions of IntelliJ IDEA must reflect the version (branch) of the MPS project that you are opening:
 * IDEA 2019.3.* for MPS 2019.3 and the 193.* branches

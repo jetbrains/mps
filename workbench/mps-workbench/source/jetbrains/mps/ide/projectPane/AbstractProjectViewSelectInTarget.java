@@ -63,28 +63,28 @@ public abstract class AbstractProjectViewSelectInTarget implements SelectInTarge
     // inspired by com.intellij.ide.impl.ProjectViewSelectInTarget
 
     if (projectViewToolWindow == null) {
-      SelectInProjectViewImplKt.getLOG().debug("Not selecting anything because there is no project view tool window");
+      LOG.debug("Not selecting anything because there is no project view tool window");
       return;
     }
     VirtualFile virtualFile = context.getVirtualFile();
     Object selector = context.getSelectorInFile();
     ActionCallback result = new ActionCallback();
     Runnable runnable = () -> {
-      if (SelectInProjectViewImplKt.getLOG().isDebugEnabled()) {
-        SelectInProjectViewImplKt.getLOG().debug((requestFocus ? "Activated" : "Shown") + ". Changing project view to " + myMinorViewId);
+      if (LOG.isDebugLevel()) {
+        LOG.debug((requestFocus ? "Activated" : "Shown") + ". Changing project view to " + myMinorViewId);
       }
       projectView.changeViewCB(myMinorViewId, null).doWhenProcessed(() -> {
-        SelectInProjectViewImplKt.getLOG().debug("Changed. Delegating to SelectInProjectViewImpl to continue");
+        LOG.debug("Changed. Delegating to SelectInProjectViewImpl to continue");
         myProject.getService(SelectInProjectViewImpl.class).ensureSelected(myMinorViewId, virtualFile, () -> selector, requestFocus, true, result);
       });
     };
 
     if (requestFocus) {
-      SelectInProjectViewImplKt.getLOG().debug("Activating the project view tool window, will continue once activated");
+      LOG.debug("Activating the project view tool window, will continue once activated");
       projectViewToolWindow.activate(runnable, true);
     }
     else {
-      SelectInProjectViewImplKt.getLOG().debug("Showing the project view tool window, will continue once shown");
+      LOG.debug("Showing the project view tool window, will continue once shown");
       projectViewToolWindow.show(runnable);
     }
   }

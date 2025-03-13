@@ -5,8 +5,8 @@ import jetbrains.mps.kotlin.stubs.loading.signature.signature
 import jetbrains.mps.kotlin.stubs.smodel.KotlinLanguageUtil
 import jetbrains.mps.kotlin.stubs.smodel.metadata.KtClassParser
 import jetbrains.mps.kotlin.stubs.smodel.metadata.KtReadContext
-import kotlinx.metadata.KmClass
-import kotlinx.metadata.kind
+import kotlin.metadata.KmClass
+import kotlin.metadata.kind
 import org.jetbrains.mps.openapi.model.SNode
 
 // File, PackageName -> KotlinRoot

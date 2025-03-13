@@ -4,6 +4,9 @@
     <!-- Initialize and load properties                        -->
     <!-- ===================================================== -->
 
+    <property name="tc.root" location="${basedir}/../../.."/>
+    <property name="tc.community.root" location="${tc.root}/ij-community"/>
+    <property name="tc.android.root" location="${tc.root}/ij-android"/>
     <property name="jps.project.root" location="${basedir}/.."/>
     <property name="community.folder" location="${basedir}/../community"/>
     <property name="community.out" value="${basedir}/../out/jetbrains mps"/>
@@ -165,19 +168,6 @@
     <target name="patch" description="Apply MPS patches to IDEA Community sources">
         <echo message="Applying MPS patches to IDEA Community sources..."/>
 
-        <property name="RestarterMissingOnWindows"
-                  value="${basedir}/patches/MPS-37859-IJPL-165362.patch"/>
-        <echo message="Applying ${RestarterMissingOnWindows}"/>
-        <exec executable="git" dir="${community.folder}" failonerror="true">
-            <arg value="apply"/>
-            <arg value="&#45;-check"/>
-            <arg value="${RestarterMissingOnWindows}"/>
-        </exec>
-        <exec executable="git" dir="${community.folder}">
-            <arg value="apply"/>
-            <arg value="${RestarterMissingOnWindows}"/>
-        </exec>
-
         <property name="LoadModulesFromJars"
                   value="${basedir}/patches/LoadModulesFromJars.patch"/>
         <echo message="Applying ${LoadModulesFromJars}"/>
@@ -295,47 +285,6 @@
             <arg value="${patchJps}"/>
         </exec>
 
-        <property name="patchFixDefaultForVcs"
-                  value="${basedir}/patches/FixDefaultForVCSCodeReviewLayout.patch"/>
-        <echo message="Applying ${patchFixDefaultForVcs}"/>
-        <exec executable="git" dir="${community.folder}" failonerror="true">
-            <arg value="apply"/>
-            <arg value="&#45;-check"/>
-            <arg value="${patchFixDefaultForVcs}"/>
-        </exec>
-        <exec executable="git" dir="${community.folder}">
-            <arg value="apply"/>
-            <arg value="${patchFixDefaultForVcs}"/>
-        </exec>
-
-
-        <!--
-            <property name="patchJBUIScale"
-                      value="${basedir}/patches/JBUIScale.patch"/>
-            <echo message="Applying ${patchJBUIScale}"/>
-            <exec executable="git" dir="${community.folder}" failonerror="true">
-                <arg value="apply"/>
-                <arg value="&#45;-check"/>
-                <arg value="${patchJBUIScale}"/>
-            </exec>
-            <exec executable="git" dir="${community.folder}">
-                <arg value="apply"/>
-                <arg value="${patchJBUIScale}"/>
-            </exec>
-        -->
-
-        <property name="patchFixDefaultIndexerSerializer"
-                  value="${basedir}/patches/MPS-38116-fixed-default-serializer.patch"/>
-        <echo message="Applying ${patchFixDefaultIndexerSerializer}"/>
-        <exec executable="git" dir="${community.folder}" failonerror="true">
-            <arg value="apply"/>
-            <arg value="&#45;-check"/>
-            <arg value="${patchFixDefaultIndexerSerializer}"/>
-        </exec>
-        <exec executable="git" dir="${community.folder}">
-            <arg value="apply"/>
-            <arg value="${patchFixDefaultIndexerSerializer}"/>
-        </exec>
     </target>
 
     <!-- ===================================================== -->
@@ -343,7 +292,7 @@
     <!-- ===================================================== -->
 
     <!-- Exists as standalone task for TeamCity build -->
-    <target name="prepare" depends="patch,compiler,modules,kotlinc,jar-repositories,libraries"
+    <target name="prepare" depends="link,patch,compiler,modules,kotlinc,jar-repositories,libraries"
             description="Make all build preparation tasks"/>
 
     <!-- Exists as standalone task for TeamCity build -->
@@ -351,6 +300,11 @@
         <os family="windows" />
     </condition>
     <property name="script.suffix" value=".sh" />
+
+    <target name="link" description="Links IC and Android repositories into MPS project">
+        <symlink link="${community.folder}" resource="${tc.community.root}"/>
+        <symlink link="${community.folder}/android" resource="${tc.android.root}"/>
+    </target>
 
     <target name="compile" description="Runs building script.">
         <symlink link="${jps.project.root}/.mps" resource="${jps.project.root}/.idea"/>

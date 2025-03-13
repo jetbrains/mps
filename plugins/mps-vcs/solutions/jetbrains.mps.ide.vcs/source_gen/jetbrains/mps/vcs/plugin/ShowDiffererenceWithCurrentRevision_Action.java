@@ -14,7 +14,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.FileStatus;
-import com.intellij.openapi.vcs.impl.VcsFileStatusProvider;
+import com.intellij.openapi.vcs.FileStatusManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.MPSProject;
@@ -50,7 +50,7 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
 
     final Project ideaProject = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject();
     if (ProjectLevelVcsManager.getInstance(ideaProject).getVcsFor(virtualFile) != null) {
-      FileStatus fileStatus = VcsFileStatusProvider.getInstance(ideaProject).getFileStatus(virtualFile);
+      FileStatus fileStatus = FileStatusManager.getInstance(ideaProject).getStatus(virtualFile);
       return FileStatus.ADDED != fileStatus && FileStatus.UNKNOWN != fileStatus;
     }
     return false;

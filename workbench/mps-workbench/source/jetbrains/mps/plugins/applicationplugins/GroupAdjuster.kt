@@ -5,6 +5,7 @@ package jetbrains.mps.plugins.applicationplugins
 
 import com.intellij.openapi.actionSystem.ActionGroup
 import com.intellij.openapi.actionSystem.ActionManager
+import com.intellij.openapi.actionSystem.DefaultActionGroup
 import com.intellij.openapi.actionSystem.IdeActions
 import com.intellij.openapi.actionSystem.ex.ActionManagerEx
 import com.intellij.openapi.application.ApplicationManager
@@ -54,15 +55,15 @@ object GroupAdjuster {
 
         addPlace(ModuleActions_ActionGroup.ID, ActionPlace.MODULE_DEPENDENCIES)
 
-        val editorPopupGroup = ActionManager.getInstance().getAction(MPSActions.EDITOR_POPUP_GROUP) as ActionGroup
+        val editorPopupGroup = ActionManager.getInstance().getAction(MPSActions.EDITOR_POPUP_GROUP) as DefaultActionGroup
         if (editorPopupGroup != null) {
-            val actionList = Arrays.asList(*editorPopupGroup.getChildren(null))
+            val actionList = ActionUtils.getChildren(editorPopupGroup)
             BaseGroup.addPlaceToActionList(actionList, ActionPlace.EDITOR, null)
         }
 
-        val editorActionsGroup = ActionManager.getInstance().getAction(MPSActions.EDITOR_ACTIONS_GROUP) as ActionGroup
+        val editorActionsGroup = ActionManager.getInstance().getAction(MPSActions.EDITOR_ACTIONS_GROUP) as DefaultActionGroup
         if (editorActionsGroup != null) {
-            val actionList = Arrays.asList(*editorActionsGroup.getChildren(null))
+            val actionList = ActionUtils.getChildren(editorActionsGroup)
             BaseGroup.addPlaceToActionList(actionList, ActionPlace.EDITOR, null)
         }
 

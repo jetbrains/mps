@@ -43,7 +43,7 @@ import com.intellij.diff.DiffContentFactory;
 import com.intellij.openapi.vcs.changes.ContentRevision;
 import com.intellij.openapi.vcs.changes.BinaryContentRevision;
 import java.io.IOException;
-import com.intellij.openapi.vcs.impl.VcsFileStatusProvider;
+import com.intellij.openapi.vcs.FileStatusManager;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -192,7 +192,7 @@ public final class VcsActionsUtil {
     }
   }
 
-  private static Iterable<VirtualFile> collectUnversionedFiles(final VcsFileStatusProvider fileStatusProvider, @NotNull final VirtualFile dir) {
+  private static Iterable<VirtualFile> collectUnversionedFiles(final FileStatusManager fileStatusProvider, @NotNull final VirtualFile dir) {
     return ((_FunctionTypes._return_P0_E0<Iterable<VirtualFile>>) () -> {
       return (Iterable<VirtualFile>) () -> {
         return new YieldingIterator<VirtualFile>() {
@@ -226,7 +226,7 @@ __switch__:
                   this.__CP__ = 10;
                   break;
                 case 2:
-                  if (fileStatusProvider.getFileStatus(dir) == FileStatus.UNKNOWN) {
+                  if (fileStatusProvider.getStatus(dir) == FileStatus.UNKNOWN) {
                     this.__CP__ = 3;
                     break;
                   }
@@ -268,7 +268,7 @@ __switch__:
   }
 
   public static Iterable<VirtualFile> getUnversionedFilesForModules(@NotNull MPSProject mpsProject, List<SModule> module) {
-    final VcsFileStatusProvider statusProvider = VcsFileStatusProvider.getInstance(mpsProject.getProject());
+    final FileStatusManager statusProvider = FileStatusManager.getInstance(mpsProject.getProject());
     final FileSystemBridge fsb = mpsProject.getFileSystem();
     return ListSequence.fromList(module).ofType(AbstractModule.class).select((this0) -> this0.getDescriptorFile()).where(new NotNullWhereFilter()).select((this0) -> this0.getParent()).select(new _FunctionTypes._return_P1_E0<VirtualFile, IFile>() {
       public VirtualFile invoke(@NotNull IFile p1) {

@@ -15,9 +15,9 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
-    <import index="z352" ref="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be/java:kotlinx.metadata(jetbrains.mps.kotlin.stubs/)" />
     <import index="wjeu" ref="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be/java:jetbrains.mps.kotlin.stubs.loading.ids(jetbrains.mps.kotlin.stubs/)" />
     <import index="g3pb" ref="r:d76e16ee-a528-4ca0-b2d6-9eed9a9b1d1c(jetbrains.mps.kotlin.stubs.smodel.metadata)" />
+    <import index="4324" ref="6944825c-ddc2-4099-8cc7-5e6dbbf7f0be/java:kotlin.metadata(jetbrains.mps.kotlin.stubs/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -326,10 +326,10 @@
                   <node concept="3uibUv" id="3K5aa8YPZf1" role="0kSFW">
                     <ref role="3uigEE" to="c17a:~SConcept" resolve="SConcept" />
                   </node>
-                  <node concept="2YIFZM" id="3K5aa8YPZf2" role="0kSFX">
+                  <node concept="2YIFZM" id="2yhKA267zi5" role="0kSFX">
                     <ref role="37wK5l" to="g3pb:1u8LXP8dgRr" resolve="getClassConcept" />
                     <ref role="1Pybhc" to="g3pb:5D6Cze4pzNU" resolve="KtAttributes" />
-                    <node concept="37vLTw" id="3K5aa8YPZf3" role="37wK5m">
+                    <node concept="37vLTw" id="2yhKA267zi6" role="37wK5m">
                       <ref role="3cqZAo" node="3gCbjC7VM4$" resolve="kind" />
                     </node>
                   </node>
@@ -409,7 +409,7 @@
       <node concept="37vLTG" id="3gCbjC7VM4$" role="3clF46">
         <property role="TrG5h" value="kind" />
         <node concept="3uibUv" id="3gCbjC7VM4z" role="1tU5fm">
-          <ref role="3uigEE" to="z352:~ClassKind" resolve="ClassKind" />
+          <ref role="3uigEE" to="4324:~ClassKind" resolve="ClassKind" />
         </node>
       </node>
       <node concept="37vLTG" id="3gCbjC7VM8y" role="3clF46">

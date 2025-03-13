@@ -10358,25 +10358,6 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="3clFbF" id="ES2LjmiraN" role="3cqZAp">
-                          <node concept="1rXfSq" id="4hiugqyzhsd" role="3clFbG">
-                            <ref role="37wK5l" node="1q4WFGK39U1" resolve="copyIcon" />
-                            <node concept="2OqwBi" id="ES2LjmiraP" role="37wK5m">
-                              <node concept="37vLTw" id="3GM_nagTsGp" role="2Oq$k0">
-                                <ref role="3cqZAo" node="1q4WFGK3qG8" resolve="instanceEx" />
-                              </node>
-                              <node concept="liA8E" id="ES2LjmiraR" role="2OqNvi">
-                                <ref role="37wK5l" to="f061:~ApplicationInfoEx.getWelcomeScreenLogoUrl()" resolve="getWelcomeScreenLogoUrl" />
-                              </node>
-                            </node>
-                            <node concept="37vLTw" id="3GM_nagTyPD" role="37wK5m">
-                              <ref role="3cqZAo" node="1q4WFGK3qG7" resolve="iconsDir" />
-                            </node>
-                            <node concept="Xl_RD" id="ES2LjmiraT" role="37wK5m">
-                              <property role="Xl_RC" value="logo.png" />
-                            </node>
-                          </node>
-                        </node>
                       </node>
                       <node concept="2AHcQZ" id="3tYsUK_UxbK" role="2AJF6D">
                         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />

@@ -504,7 +504,7 @@
       <property role="2_Ic$B" value="true" />
       <property role="2_GNG2" value="1024" />
       <property role="3fwGa$" value="IntelliJ" />
-      <property role="TZNOO" value="11" />
+      <property role="TZNOO" value="17" />
       <node concept="3qWCbU" id="6Za9XhmfePk" role="2_Ic$A">
         <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
       </node>
@@ -1467,7 +1467,7 @@
       <property role="2_GNG2" value="1024" />
       <property role="3fwGa$" value="IntelliJ" />
       <property role="2_Ic$y" value="withoutXmls" />
-      <property role="TZNOO" value="11" />
+      <property role="TZNOO" value="17" />
       <node concept="3qWCbU" id="WgHS__ALjO" role="2_Ic$A">
         <property role="3qWCbO" value="**/*.properties, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       </node>
@@ -2098,7 +2098,7 @@
       <node concept="aVJcg" id="3AMbuf1a7Oc" role="aVJcv">
         <node concept="NbPM2" id="3AMbuf1a7Od" role="aVJcq">
           <node concept="3Mxwew" id="6sLRakuglFH" role="3MwsjC">
-            <property role="3MwjfP" value="2024" />
+            <property role="3MwjfP" value="2025" />
           </node>
         </node>
       </node>
@@ -2108,7 +2108,7 @@
       <node concept="aVJcg" id="3AMbuf1a7Og" role="aVJcv">
         <node concept="NbPM2" id="3AMbuf1a7Oh" role="aVJcq">
           <node concept="3Mxwew" id="5_GG3tAOKLM" role="3MwsjC">
-            <property role="3MwjfP" value="3" />
+            <property role="3MwjfP" value="1" />
           </node>
         </node>
       </node>
@@ -2122,7 +2122,11 @@
     <node concept="2kB4xC" id="3AMbuf1a7On" role="1l3spd">
       <property role="TrG5h" value="version.eap" />
       <node concept="aVJcg" id="3AMbuf1a7Oo" role="aVJcv">
-        <node concept="NbPM2" id="3AMbuf1a7Op" role="aVJcq" />
+        <node concept="NbPM2" id="3AMbuf1a7Op" role="aVJcq">
+          <node concept="3Mxwew" id="5AfPObRONBl" role="3MwsjC">
+            <property role="3MwjfP" value="EAP" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2kB4xC" id="5HVSRHdVf2d" role="1l3spd">
@@ -30164,8 +30168,8 @@
           </node>
         </node>
         <node concept="NbPM2" id="6Iq8148f_YW" role="HFWMp">
-          <node concept="3Mxwew" id="2$8uTVzLlTJ" role="3MwsjC">
-            <property role="3MwjfP" value="MPS243" />
+          <node concept="3Mxwew" id="5AfPObSmudR" role="3MwsjC">
+            <property role="3MwjfP" value="MPS251EAP" />
           </node>
         </node>
       </node>
@@ -30248,7 +30252,11 @@
             <ref role="3Mxwex" node="3AMbuf1N5Oy" resolve="version.bugfixNr" />
           </node>
         </node>
-        <node concept="NbPM2" id="3AMbuf6qfk7" role="3ZAF11" />
+        <node concept="NbPM2" id="3AMbuf6qfk7" role="3ZAF11">
+          <node concept="3Mxwey" id="5AfPObSmudQ" role="3MwsjC">
+            <ref role="3Mxwex" node="3AMbuf1a7On" resolve="version.eap" />
+          </node>
+        </node>
       </node>
       <node concept="2pNNFK" id="4Nc8eEDY$eW" role="27hc03">
         <property role="2pNNFO" value="youtrack" />
@@ -43028,10 +43036,10 @@
       <property role="26EafJ" value="lib/junit4.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7qC8" role="26Ea7d">
-      <property role="26EafJ" value="lib/kotlin-compiler-client-embeddable-1.9.20.jar" />
+      <property role="26EafJ" value="lib/kotlin-compiler-client-embeddable-2.1.0.jar" />
     </node>
     <node concept="26EafG" id="4nX__hM7qCy" role="26Ea7d">
-      <property role="26EafJ" value="lib/kotlinx-metadata-jvm-0.7.0.jar" />
+      <property role="26EafJ" value="lib/kotlin-metadata-jvm-2.1.0.jar" />
     </node>
     <node concept="26EafG" id="9nERkLKyHi" role="26Ea7d">
       <property role="26EafJ" value="lib/lib.jar" />
@@ -45468,8 +45476,8 @@
             <node concept="55IIr" id="1Zf1t7r6_nN" role="2HvfZ0">
               <node concept="2Ry0Ak" id="1Zf1t7r6_nT" role="iGT6I">
                 <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="1zYaU3R$rTZ" role="2Ry0An">
-                  <property role="2Ry0Am" value="vcs-github-community" />
+                <node concept="2Ry0Ak" id="537sSHLZCye" role="2Ry0An">
+                  <property role="2Ry0Am" value="vcs-github-IC" />
                 </node>
               </node>
             </node>
@@ -54765,7 +54773,7 @@
             <node concept="2Ry0Ak" id="6wLf4lx9D_g" role="iGT6I">
               <property role="2Ry0Am" value="lib" />
               <node concept="2Ry0Ak" id="6wLf4lx9D_j" role="2Ry0An">
-                <property role="2Ry0Am" value="kotlinx-metadata-jvm-0.7.0.jar" />
+                <property role="2Ry0Am" value="kotlin-metadata-jvm-2.1.0.jar" />
               </node>
             </node>
           </node>
@@ -54781,7 +54789,7 @@
             <node concept="2Ry0Ak" id="3lXF82mbBh5" role="iGT6I">
               <property role="2Ry0Am" value="lib" />
               <node concept="2Ry0Ak" id="3lXF82mbBja" role="2Ry0An">
-                <property role="2Ry0Am" value="kotlin-compiler-client-embeddable-1.9.20.jar" />
+                <property role="2Ry0Am" value="kotlin-compiler-client-embeddable-2.1.0.jar" />
               </node>
             </node>
           </node>
@@ -55957,7 +55965,7 @@
           <node concept="2Ry0Ak" id="342RIYSThyF" role="iGT6I">
             <property role="2Ry0Am" value="lib" />
             <node concept="2Ry0Ak" id="342RIYSThEH" role="2Ry0An">
-              <property role="2Ry0Am" value="kotlin-compiler-client-embeddable-1.9.20.jar" />
+              <property role="2Ry0Am" value="kotlin-compiler-client-embeddable-2.1.0.jar" />
             </node>
           </node>
         </node>
@@ -55968,7 +55976,7 @@
           <node concept="2Ry0Ak" id="2ZkYPo74Wvi" role="iGT6I">
             <property role="2Ry0Am" value="lib" />
             <node concept="2Ry0Ak" id="2ZkYPo74Wvl" role="2Ry0An">
-              <property role="2Ry0Am" value="kotlinx-metadata-jvm-0.7.0.jar" />
+              <property role="2Ry0Am" value="kotlin-metadata-jvm-2.1.0.jar" />
             </node>
           </node>
         </node>
@@ -57519,7 +57527,7 @@
           <node concept="398BVA" id="3PMETvloFjm" role="17Grwy">
             <ref role="398BVh" node="5MjKXSexX$G" resolve="platform_lib" />
             <node concept="2Ry0Ak" id="3PMETvloFkE" role="iGT6I">
-              <property role="2Ry0Am" value="kotlinx-metadata-jvm-0.7.0.jar" />
+              <property role="2Ry0Am" value="kotlin-metadata-jvm-2.1.0.jar" />
             </node>
           </node>
         </node>
@@ -57752,7 +57760,7 @@
                   <node concept="2Ry0Ak" id="1ACpgrwmP8b" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="1ACpgrwmP8c" role="2Ry0An">
-                      <property role="2Ry0Am" value="kotlin-stdlib-1.9.20.jar" />
+                      <property role="2Ry0Am" value="kotlin-stdlib-2.1.0.jar" />
                     </node>
                   </node>
                 </node>
@@ -57903,7 +57911,7 @@
                   <node concept="2Ry0Ak" id="4xYibpMP5B" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="4xYibpMP5C" role="2Ry0An">
-                      <property role="2Ry0Am" value="kotlin-stdlib-1.9.20.jar" />
+                      <property role="2Ry0Am" value="kotlin-stdlib-2.1.0.jar" />
                     </node>
                   </node>
                 </node>
@@ -57920,7 +57928,7 @@
                   <node concept="2Ry0Ak" id="4xYibpMP5X" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
                     <node concept="2Ry0Ak" id="4xYibpMP5Y" role="2Ry0An">
-                      <property role="2Ry0Am" value="kotlin-stdlib-common-1.9.20.jar" />
+                      <property role="2Ry0Am" value="kotlin-stdlib-all-2.1.0.jar" />
                     </node>
                   </node>
                 </node>

@@ -183,8 +183,8 @@ public class MPSPackageItemProviderTests {
     boolean filterElements =
         provider.filterElements(model.getNames(everywhere), pattern, everywhere, model, new EmptyProgressIndicator(new ModalityState() {
           @Override
-          public boolean dominates(@NotNull ModalityState anotherState) {
-            return false;
+          public boolean accepts(@NotNull ModalityState requestedModality) {
+            return true;
           }
 
           @Override
