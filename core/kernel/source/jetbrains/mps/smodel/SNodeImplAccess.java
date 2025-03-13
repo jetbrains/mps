@@ -5,12 +5,14 @@ package jetbrains.mps.smodel;
 
 import jetbrains.mps.smodel.AssociationData.DynamicPtr;
 import jetbrains.mps.smodel.AssociationData.LocalNodePtr;
-import jetbrains.mps.smodel.AssociationData.TransitionIndirect;
 import jetbrains.mps.smodel.AssociationData.TransitionDirect;
+import jetbrains.mps.smodel.AssociationData.TransitionIndirect;
 import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
@@ -71,5 +73,26 @@ public final class SNodeImplAccess {
       // IR used to do makeIndirect(true), hence 'force'
       return new TransitionIndirect(myNode.getModel(), true).makeIndirect(data, SNodeOperations::getResolveInfo);
     });
+  }
+
+  // PROVISIONAL CODE
+  // either come up with a better solution (not sequence of instanceof), or find a better place for the logic
+  // generally, we expect to get here outcome of `SReference.describeTarget()` (which is ResolveInfo.PS for most references)
+  // and the idea is keep knowledge about resolveInfo:String inside SReference implementation (not to cast to smodel.SReference
+  // to get actual value with `#getResolveInfo()`)
+  @Nullable
+  public static String extractResolveInfoText(@NotNull ResolveInfo resolveInfo) {
+    // XXX worth extracting something like ResolveInfoWithTextImpl interface
+    if (resolveInfo instanceof ResolveInfo.PS) {
+      return ((ResolveInfo.PS) resolveInfo).getValue();
+    }
+    if (resolveInfo instanceof ResolveInfo.D) {
+      return ((ResolveInfo.D) resolveInfo).getValue();
+    }
+    if (resolveInfo instanceof ResolveInfo.S) {
+      return ((ResolveInfo.S) resolveInfo).getValue();
+    }
+    // ResolveInfo.N for direct nodes doesn't list resolveInfo string, ignore
+    return null;
   }
 }

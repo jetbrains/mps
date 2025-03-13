@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel;
 
@@ -289,6 +289,7 @@ import java.util.function.Function;
   /*package*/ final class TransitionIndirect {
     private final boolean myForce;
     private final SModel mySourceModel;
+    private final SModelReference mySourceModelRef;
 
     TransitionIndirect(/*Nullable*/SModel model) {
       this(model, false);
@@ -297,6 +298,7 @@ import java.util.function.Function;
     TransitionIndirect(/*Nullable*/SModel model, boolean force) {
       // FIXME takes command context? but it might not be effective to mandate its instance?
       mySourceModel = model;
+      mySourceModelRef = model == null ? null : model.getReference();
       myForce = force;
     }
 
@@ -305,6 +307,11 @@ import java.util.function.Function;
     AssociationData makeIndirect(AssociationData data, Function<SNode, String> getResolveInfo) {
       if (!data.isDirectNode()) {
         // also covers DynamicPtr condition
+        //
+        // convert qualified references to the same model into 'local' pointers
+        if (data instanceof IndirectNodePtr && mySourceModelRef != null && mySourceModelRef.equals(data.getTargetModel())) {
+          return new LocalNodePtr(data.getTargetNode(), data.getRI());
+        }
         return data;
       }
       final SNode immatureNode = ((DirectNode) data).myImmatureTargetNode;

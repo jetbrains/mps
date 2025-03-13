@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -80,7 +80,13 @@ public final class DynamicReferenceUpdate {
         }
         continue;
       }
-      srcNode.setReference(dr.getLink(), ResolveInfo.of(target.getReference(), resolveInfo));
+      if (srcNode.getModel() != null && target.getModel() == srcNode.getModel()) {
+        // same-model ptr
+        // FIXME in fact, SNode impl shall fix ResolveInfo.PS -> ResolveInfo.D when source node's model is known and matches
+        srcNode.setReference(dr.getLink(), ResolveInfo.of(target.getNodeId(), resolveInfo));
+      } else {
+        srcNode.setReference(dr.getLink(), ResolveInfo.of(target.getReference(), resolveInfo));
+      }
     }
   }
 }
