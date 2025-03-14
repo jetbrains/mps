@@ -15029,8 +15029,8 @@
     <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-logging-languageModels">
       <fileset dir="${mps_home}/languages/baseLanguage/logging/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-logging-generators-baseLanguage-templates">
-      <fileset dir="${mps_home}/languages/baseLanguage/logging/generators/baseLanguage/templates" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-logging-generator-baseLanguage-templates">
+      <fileset dir="${mps_home}/languages/baseLanguage/logging/generator/baseLanguage/templates" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging-src.jar" duplicate="preserve">
       <fileset dir="${mps_home}/languages/baseLanguage/logging/generator/source_gen">
@@ -15047,7 +15047,7 @@
       </fileset>
       <zipfileset file="${mps_home}/languages/baseLanguage/logging/jetbrains.mps.baseLanguage.logging.mpl" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-logging-languageModels" prefix="module/languageModels" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-logging-generators-baseLanguage-templates" prefix="module/generators/baseLanguage/templates" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-baseLanguage-logging-generator-baseLanguage-templates" prefix="module/generator/baseLanguage/templates" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguage.logging.runtime.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguage.logging.runtime.jar/META-INF" />
