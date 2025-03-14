@@ -74,7 +74,7 @@ public class ModuleGenerationHolder {
     this.project = project;
     File tmpDir;
     try {
-      tmpDir = File.createTempFile("test-" + project.getName(), "tmp");
+      tmpDir = File.createTempFile("test-" + project.getName() + "-", "");
       tmpDir.delete();
       tmpDir.mkdir();
     } catch (IOException ex) {
