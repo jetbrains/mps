@@ -688,7 +688,7 @@
           <node concept="17R0WA" id="2T02ZhdGaa1" role="3clFbw">
             <node concept="359W_D" id="2T02ZhdGadc" role="3uHU7w">
               <ref role="359W_E" to="bj1v:2S_HFuhBwHz" resolve="PatternCondition" />
-              <ref role="359W_F" to="bj1v:2S_HFuhBx12" />
+              <ref role="359W_F" to="bj1v:2S_HFuhBx12" resolve="pattern" />
             </node>
             <node concept="2DA6wF" id="2T02ZhdG6Js" role="3uHU7B" />
           </node>
