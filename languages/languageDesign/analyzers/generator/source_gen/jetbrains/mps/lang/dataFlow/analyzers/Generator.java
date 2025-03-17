@@ -36,7 +36,6 @@ public class Generator extends TemplateModuleInterpreted2 {
 
   @Override
   protected void fillReferencedGenerators(TemplateModuleBase.ReferencedGenerators referencedGenerators) {
-    referencedGenerators.extended("e7d4970e-3e9f-4cf0-a129-f5976c82d635(jetbrains.mps.lang.pattern#1174810948060)");
     referencedGenerators.extended("bdfab909-4d8f-4566-b44e-c33957ce28ef(jetbrains.mps.lang.dataFlow#1206455293228)");
   }
 
@@ -51,6 +50,6 @@ public class Generator extends TemplateModuleInterpreted2 {
 
   @Override
   public Collection<TemplateMappingPriorityRule> getPriorities() {
-    return TemplateUtil.asCollection(TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("fead051a-767c-4c80-9582-25e0330f675a(jetbrains.mps.lang.dataFlow.analyzers#9177062368042328054)", TemplateUtil.createRefLocal()), TemplateUtil.createRefExternal("e7d4970e-3e9f-4cf0-a129-f5976c82d635(jetbrains.mps.lang.pattern#1174810948060)", TemplateUtil.createRefLocal())), TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("fead051a-767c-4c80-9582-25e0330f675a(jetbrains.mps.lang.dataFlow.analyzers#9177062368042328054)", TemplateUtil.createRefLocal()), TemplateUtil.createRefExternal("bdfab909-4d8f-4566-b44e-c33957ce28ef(jetbrains.mps.lang.dataFlow#1206455293228)", TemplateUtil.createRefLocal())));
+    return TemplateUtil.asCollection(TemplateUtil.createStrictlyTogetherRule(TemplateUtil.createRefExternal("fead051a-767c-4c80-9582-25e0330f675a(jetbrains.mps.lang.dataFlow.analyzers#9177062368042328054)", TemplateUtil.createRefLocal()), TemplateUtil.createRefExternal("bdfab909-4d8f-4566-b44e-c33957ce28ef(jetbrains.mps.lang.dataFlow#1206455293228)", TemplateUtil.createRefLocal())));
   }
 }
