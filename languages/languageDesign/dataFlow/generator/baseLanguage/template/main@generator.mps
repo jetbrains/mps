@@ -186,7 +186,6 @@
         <child id="1168024447342" name="sourceNodeQuery" index="3NFExx" />
       </concept>
       <concept id="1095416546421" name="jetbrains.mps.lang.generator.structure.MappingConfiguration" flags="ig" index="bUwia">
-        <property id="1184950341882" name="topPriorityGroup" index="3$yP7D" />
         <child id="1200911492601" name="mappingLabel" index="2rTMjI" />
         <child id="1167088157977" name="createRootRule" index="2VS0gm" />
         <child id="1167328349397" name="reductionMappingRule" index="3acgRq" />
@@ -402,7 +401,6 @@
   </registry>
   <node concept="bUwia" id="hzAlK0a">
     <property role="TrG5h" value="main" />
-    <property role="3$yP7D" value="true" />
     <node concept="2VPoh5" id="1_Iic4WSosy" role="2VS0gm">
       <ref role="2VPoh2" node="1_Iic4WSpJF" resolve="DataFlowAspectDescriptorImpl" />
       <ref role="2sBCQV" node="703txLtKMQJ" resolve="aspectDescriptorClass" />
