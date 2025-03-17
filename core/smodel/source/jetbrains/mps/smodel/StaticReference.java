@@ -32,7 +32,7 @@ import java.util.Objects;
  * Instances of this class are not supposed to be shared between threads in a multi-thread environment
  * (no synchronisation; model access is guarded by {@code SNode})
  */
-public final class StaticReference extends SReferenceBase {
+public final class StaticReference extends SReference {
 
   /**
    * Either DirectNode (including subclasses) or IndirectNodePtr, never null.

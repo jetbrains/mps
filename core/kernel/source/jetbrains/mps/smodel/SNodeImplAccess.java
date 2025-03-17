@@ -4,6 +4,7 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.smodel.AssociationData.DynamicPtr;
+import jetbrains.mps.smodel.AssociationData.IndirectNodePtr;
 import jetbrains.mps.smodel.AssociationData.LocalNodePtr;
 import jetbrains.mps.smodel.AssociationData.TransitionDirect;
 import jetbrains.mps.smodel.AssociationData.TransitionIndirect;
@@ -94,5 +95,21 @@ public final class SNodeImplAccess {
     }
     // ResolveInfo.N for direct nodes doesn't list resolveInfo string, ignore
     return null;
+  }
+
+  // all association links of this node and its descendants that point to original model get re-routed to another model
+  // since 2025.1
+  public void rerouteAssociationDeep(@NotNull SModelReference fromModel, @NotNull SModelReference toModel) {
+    final boolean currentIsTarget = toModel.equals(myNode.getModel().getReference());
+    myNode.forEachAssociationDeep(data -> {
+      if (!fromModel.equals(data.getTargetModel())) {
+        return data;
+      }
+      if (currentIsTarget) {
+        return new LocalNodePtr(data.getTargetNode(), data.getRI());
+      }
+      return new IndirectNodePtr(toModel, data.getTargetNode(), data.getRI());
+    });
+
   }
 }
