@@ -17,7 +17,7 @@ public interface WorkerCallback {
 
   void failBuild();
 
-  default void setForceFailBuild() {
+  default void setForceFailOnError() {
     // NOP
   }
 }
