@@ -21,6 +21,8 @@ public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
   private static final String LAUNCHER_SOLUTION = "c234a56a-502f-4751-aded-6f9846fff7ce(jetbrains.mps.lang.test.junit5)";
   private static final String LAUNCHER_METHOD = "launchTests";
 
+  private boolean myFailOnError = false;
+
   public LaunchTestWorker(Script whatToDo) {
     super(whatToDo);
   }
@@ -80,6 +82,13 @@ public class LaunchTestWorker extends WorkerBase implements WorkerCallback {
       }
     } else {
       failBuild();
+    }
+  }
+
+  @Override
+  protected void failBuild(String name) {
+    if (myFailOnError || (!(myErrors.isEmpty()) && myWhatToDo.getFailOnError())) {
+      forceFailBuild(name);
     }
   }
 

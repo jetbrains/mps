@@ -190,8 +190,12 @@ public abstract class WorkerBase {
   }
   protected void failBuild(String name) {
     if (!(myErrors.isEmpty()) && myWhatToDo.getFailOnError()) {
-      throw new BuildFailureException(this.formatErrorsReport(name).toString(), -13);
+      forceFailBuild(name);
     }
+  }
+
+  protected void forceFailBuild(String name) throws BuildFailureException {
+    throw new BuildFailureException(this.formatErrorsReport(name).toString(), -13);
   }
 
   /**

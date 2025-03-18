@@ -69,15 +69,13 @@ public class ScriptJUnit5Launcher extends AbstractJUnit5Launcher {
 
   private List<Class<?>> collectTestClasses(final Project project) {
     final List<Class<?>> testClasses = new ArrayList<>();
-    final TestDiscoveryVisitor visitor = new TestDiscoveryVisitor() {
-      @Override
-      public void visitTestRoot(SNode testRootNode, String testClassName, ClassLoader moduleClassLoader) {
-        try {
-          testClasses.add(moduleClassLoader.loadClass(testClassName));
+    final TestDiscoveryVisitor visitor = (testRootNode, testClassName, moduleClassLoader) -> {
+      try {
+        testClasses.add(moduleClassLoader.loadClass(testClassName));
 
-        } catch (ClassNotFoundException e) {
-          myWorkerCallback.error("error building test suite", e);
-        }
+      } catch (ClassNotFoundException e) {
+        myWorkerCallback.setForceFailBuild();
+        myWorkerCallback.error("error building test suite", e);
       }
     };
 
