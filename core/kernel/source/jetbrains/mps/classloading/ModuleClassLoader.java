@@ -233,7 +233,7 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
     Collection<ClassLoader> dependencyClassLoaders = getDependencyClassLoaders();
 
     if (LOG.isDebugLevel()) {
-      LOG.debug(String.format("Looking for %d among %d dependencies of %s", name, dependencyClassLoaders.size(), getName()));
+      LOG.debug(String.format("Looking for %s among %d dependencies of %s", name, dependencyClassLoaders.size(), getName()));
     }
 
     // loading from ModuleClassLoaders firstly; it's faster, we can tell right here if we can find class there.
