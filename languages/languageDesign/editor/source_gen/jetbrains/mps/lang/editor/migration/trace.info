@@ -1273,6 +1273,76 @@
       <unit id="5181650540338073526" at="26,0,71,0" name="jetbrains.mps.lang.editor.migration.DependentModulesUtil" />
     </file>
   </root>
+  <root nodeRef="r:85a46d2f-efef-4783-8e02-3976663ecd73(jetbrains.mps.lang.editor.migration)/5455738218399931658">
+    <file name="Migrate_CellModelTxPropertyToExtendCellModel_WithRole.java">
+      <node id="5455738218399931658" at="22,0,23,0" concept="4" trace="description" />
+      <node id="5455738218399931658" at="23,30,24,23" concept="9" />
+      <node id="5455738218399931658" at="27,33,28,16" concept="9" />
+      <node id="5455738218399931658" at="30,41,31,17" concept="3" />
+      <node id="5455738218399931658" at="31,17,32,16" concept="9" />
+      <node id="5455738218399952089" at="35,5,36,64" concept="8" />
+      <node id="5455738218399952089" at="36,64,37,90" concept="8" />
+      <node id="5455738218399952089" at="37,90,38,63" concept="8" />
+      <node id="5455738218399962819" at="39,258,40,129" concept="3" />
+      <node id="5455738218399975852" at="40,129,41,70" concept="3" />
+      <node id="5455738218400019539" at="47,5,48,64" concept="8" />
+      <node id="5455738218400019539" at="48,64,49,90" concept="8" />
+      <node id="5455738218400019539" at="49,90,50,63" concept="8" />
+      <node id="1216353055130413151" at="53,38,54,126" concept="9" />
+      <node id="5455738218399931658" at="60,50,61,147" concept="9" />
+      <node id="5455738218399931658" at="65,0,66,0" concept="12" trace="CellModel_TransactionalProperty$zZ" />
+      <node id="5455738218399931658" at="69,0,70,0" concept="12" trace="propertyOld$cqCy" />
+      <node id="5455738218399931658" at="70,0,71,0" concept="12" trace="relationDeclaration$E2hc" />
+      <node id="5455738218399931658" at="23,0,26,0" concept="7" trace="getCaption#()Ljava/lang/String;" />
+      <node id="1216353055130413147" at="53,0,56,0" concept="7" trace="getMessage#()Ljava/lang/String;" />
+      <node id="5455738218399931658" at="60,0,63,0" concept="7" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="5455738218399931658" at="26,0,30,0" concept="7" trace="isRerunnable#()Z" />
+      <node id="5455738218399931658" at="30,0,34,0" concept="7" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5455738218399949447" at="38,63,42,9" concept="3" />
+      <node id="5455738218400072201" at="51,263,56,10" concept="9" />
+      <node id="5455738218400139238" at="50,63,57,9" concept="9" />
+      <node id="5455738218399952089" at="34,42,43,5" concept="0" />
+      <node id="5455738218399931658" at="34,0,45,0" concept="7" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="5455738218400019539" at="46,45,58,5" concept="0" />
+      <node id="5455738218399931658" at="45,0,60,0" concept="7" trace="check#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
+      <scope id="5455738218399931658" at="23,30,24,23" />
+      <scope id="5455738218399931658" at="27,33,28,16" />
+      <scope id="1216353055130413150" at="53,38,54,126" />
+      <scope id="5455738218399931658" at="60,50,61,147" />
+      <scope id="5455738218399931658" at="30,41,32,16" />
+      <scope id="5455738218399960452" at="39,258,41,70" />
+      <scope id="5455738218399931658" at="23,0,26,0" />
+      <scope id="1216353055130413147" at="53,0,56,0" />
+      <scope id="5455738218399931658" at="60,0,63,0" />
+      <scope id="5455738218399931658" at="26,0,30,0" />
+      <scope id="5455738218399931658" at="30,0,34,0">
+        <var name="m" id="5455738218399931658" />
+      </scope>
+      <scope id="5455738218400052187" at="51,263,56,10" />
+      <scope id="5455738218399952089" at="35,5,42,9">
+        <var name="context" id="5455738218399952089" />
+        <var name="scope_1qfx22_a0e" id="5455738218399952089" />
+        <var name="scope_1qfx22_a0e_0" id="5455738218399952089" />
+      </scope>
+      <scope id="5455738218399931658" at="34,42,43,5" />
+      <scope id="5455738218400019539" at="47,5,57,9">
+        <var name="context" id="5455738218400019539" />
+        <var name="scope_1qfx22_a0f" id="5455738218400019539" />
+        <var name="scope_1qfx22_a0f_0" id="5455738218400019539" />
+      </scope>
+      <scope id="5455738218399931658" at="34,0,45,0">
+        <var name="m" id="5455738218399931658" />
+      </scope>
+      <scope id="5455738218399931658" at="46,45,58,5" />
+      <scope id="5455738218399931658" at="45,0,60,0">
+        <var name="m" id="5455738218399931658" />
+      </scope>
+      <unit id="5455738218399931658" at="64,0,67,0" name="jetbrains.mps.lang.editor.migration.Migrate_CellModelTxPropertyToExtendCellModel_WithRole$CONCEPTS" />
+      <unit id="1216353055130413145" at="52,19,56,9" name="jetbrains.mps.lang.editor.migration.Migrate_CellModelTxPropertyToExtendCellModel_WithRole$1" />
+      <unit id="5455738218399931658" at="68,0,72,0" name="jetbrains.mps.lang.editor.migration.Migrate_CellModelTxPropertyToExtendCellModel_WithRole$LINKS" />
+      <unit id="5455738218399931658" at="21,0,73,0" name="jetbrains.mps.lang.editor.migration.Migrate_CellModelTxPropertyToExtendCellModel_WithRole" />
+    </file>
+  </root>
   <root nodeRef="r:85a46d2f-efef-4783-8e02-3976663ecd73(jetbrains.mps.lang.editor.migration)/7062604503501116899">
     <file name="RemoveCellModelCollectionDeprecatedProps.java">
       <node id="7062604503501116899" at="20,0,21,0" concept="4" trace="description" />
