@@ -2383,7 +2383,7 @@
     <property role="TrG5h" value="CellModel_TransactionalProperty" />
     <property role="3GE5qa" value="CellModel" />
     <property role="EcuMT" value="1216380990741" />
-    <ref role="1TJDcQ" node="fHev3Dc" resolve="CellModel_AbstractLabel" />
+    <ref role="1TJDcQ" node="g_$h64z" resolve="CellModel_WithRole" />
     <node concept="1TJgyi" id="hVN9gW1" role="1TKVEl">
       <property role="TrG5h" value="runInCommand" />
       <property role="IQ2nx" value="1232439938817" />
@@ -2404,7 +2404,6 @@
     </node>
     <node concept="1TJgyj" id="hGPY767" role="1TKVEi">
       <property role="20kJfa" value="propertyOld" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1216381219207" />
       <ref role="20lvS9" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
       <node concept="asaX9" id="4IQFg3Z6Ax_" role="lGtFl" />
@@ -2413,11 +2412,18 @@
       <ref role="PrY4T" to="tpck:64$4ecGX64Q" resolve="ImplementationWithStubPart" />
     </node>
     <node concept="RPilO" id="7F6fz3H$PFS" role="lGtFl">
-      <ref role="RPilL" node="hGPY767" resolve="propertyOld" />
+      <ref role="RPilL" node="4IQFg3Z7hwT" />
       <node concept="ROjv2" id="7F6fz3H$PFT" role="ROhUF">
         <property role="1W_73P" value="{T " />
         <property role="1W_73K" value=" T}" />
       </node>
+    </node>
+    <node concept="1TJgyj" id="4IQFg3Z7hwT" role="1TKVEi">
+      <property role="IQ2ns" value="5455738218397636665" />
+      <property role="20kJfa" value="propertyDeclaration" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
+      <ref role="20ksaX" node="g_NtTq1" />
     </node>
   </node>
   <node concept="1TIwiD" id="hGPXuVX">

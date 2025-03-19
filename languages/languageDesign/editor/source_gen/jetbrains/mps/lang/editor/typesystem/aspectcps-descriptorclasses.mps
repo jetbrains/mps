@@ -33606,7 +33606,7 @@
                 <uo k="s:originTrace" v="n:4265636116363112781" />
               </node>
               <node concept="3TrEf2" id="2$L" role="2OqNvi">
-                <ref role="3Tt5mk" to="tpc2:hGPY767" resolve="propertyOld" />
+                <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" resolve="propertyDeclaration" />
                 <uo k="s:originTrace" v="n:1294271446804914626" />
               </node>
             </node>
@@ -34048,7 +34048,7 @@
                             <uo k="s:originTrace" v="n:4265636116363075501" />
                           </node>
                           <node concept="3TrEf2" id="2B1" role="2OqNvi">
-                            <ref role="3Tt5mk" to="tpc2:hGPY767" resolve="propertyOld" />
+                            <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" resolve="propertyDeclaration" />
                             <uo k="s:originTrace" v="n:2735767332089496717" />
                           </node>
                         </node>

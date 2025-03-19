@@ -62,7 +62,7 @@ public final class ChangeProperty_Intention extends AbstractIntentionDescriptor 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode transactional = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_TransactionalProperty$zZ, node);
-      SLinkOperations.setTarget(transactional, LINKS.propertyOld$cqCy, SLinkOperations.getTarget(node, LINKS.relationDeclaration$E2hc));
+      SLinkOperations.setTarget(transactional, LINKS.relationDeclaration$E2hc, SLinkOperations.getTarget(node, LINKS.relationDeclaration$E2hc));
       SLinkOperations.setTarget(node, LINKS.relationDeclaration$E2hc, null);
       List<SNode> copy = ListSequence.fromListWithValues(new ArrayList<SNode>(), SNodeOperations.getChildren(node));
       for (SNode child : ListSequence.fromList(copy)) {
@@ -98,7 +98,6 @@ public final class ChangeProperty_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyOld$cqCy = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "propertyOld");
     /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
   }
 }

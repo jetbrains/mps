@@ -8042,6 +8042,24 @@
       <node concept="17QB3L" id="4druX3VZWxD" role="3clF45" />
       <node concept="3Tm1VV" id="hKxW0fl" role="1B3o_S" />
     </node>
+    <node concept="13i0hz" id="4IQFg3Yq9LL" role="13h7CS">
+      <property role="TrG5h" value="getFeatureForCell" />
+      <ref role="13i0hy" node="4YnqLFjkxyn" resolve="getFeatureForCell" />
+      <node concept="3Tm1VV" id="4IQFg3Yq9LM" role="1B3o_S" />
+      <node concept="3clFbS" id="4IQFg3Yq9LP" role="3clF47">
+        <node concept="3clFbF" id="4IQFg3YqiwE" role="3cqZAp">
+          <node concept="2OqwBi" id="4IQFg3YqiOj" role="3clFbG">
+            <node concept="13iPFW" id="4IQFg3YqiwD" role="2Oq$k0" />
+            <node concept="3TrEf2" id="4IQFg3YqjgE" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tqbb2" id="4IQFg3Yq9LQ" role="3clF45">
+        <ref role="ehGHo" to="tpck:h0TrEE$" resolve="INamedConcept" />
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="hKy3lAe">
     <property role="3GE5qa" value="CellMenu" />

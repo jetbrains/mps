@@ -984,8 +984,8 @@
       <node id="1235489867936" at="50,5,51,30" concept="9" />
       <node id="1235489910446" at="58,87,59,66" concept="9" />
       <node id="1235490274981" at="63,78,64,116" concept="8" />
-      <node id="1235498534586" at="64,116,65,136" concept="2" />
-      <node id="1235498542505" at="65,136,66,76" concept="2" />
+      <node id="1235498534586" at="64,116,65,144" concept="2" />
+      <node id="1235498542505" at="65,144,66,76" concept="2" />
       <node id="8988565186379225710" at="66,76,67,116" concept="8" />
       <node id="8988565186379238802" at="68,55,69,73" concept="8" />
       <node id="8988565186379238808" at="69,73,70,42" concept="2" />
@@ -996,8 +996,7 @@
       <node id="1235489867936" at="83,86,84,18" concept="9" />
       <node id="1235489867936" at="90,48,91,43" concept="9" />
       <node id="1235489867936" at="97,0,98,0" concept="12" trace="CellModel_TransactionalProperty$zZ" />
-      <node id="1235489867936" at="101,0,102,0" concept="12" trace="propertyOld$cqCy" />
-      <node id="1235489867936" at="102,0,103,0" concept="12" trace="relationDeclaration$E2hc" />
+      <node id="1235489867936" at="101,0,102,0" concept="12" trace="relationDeclaration$E2hc" />
       <node id="1235489867936" at="54,0,56,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="1235489867936" at="33,0,36,0" concept="1" trace="ChangeProperty_Intention#()V" />
       <node id="1235489867936" at="47,99,50,5" concept="6" />
@@ -1060,9 +1059,9 @@
         <var name="node" id="1235489867936" />
       </scope>
       <unit id="1235489867936" at="96,0,99,0" name="jetbrains.mps.lang.editor.intentions.ChangeProperty_Intention$CONCEPTS" />
-      <unit id="1235489867936" at="100,0,104,0" name="jetbrains.mps.lang.editor.intentions.ChangeProperty_Intention$LINKS" />
+      <unit id="1235489867936" at="100,0,103,0" name="jetbrains.mps.lang.editor.intentions.ChangeProperty_Intention$LINKS" />
       <unit id="1235489867936" at="53,0,95,0" name="jetbrains.mps.lang.editor.intentions.ChangeProperty_Intention$IntentionImplementation" />
-      <unit id="1235489867936" at="30,0,105,0" name="jetbrains.mps.lang.editor.intentions.ChangeProperty_Intention" />
+      <unit id="1235489867936" at="30,0,104,0" name="jetbrains.mps.lang.editor.intentions.ChangeProperty_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1235489867936" at="82,47,83,57" concept="2" />
@@ -1079,9 +1078,9 @@
       <node id="1235490923121" at="50,5,51,30" concept="9" />
       <node id="1235490962260" at="58,87,59,66" concept="9" />
       <node id="1235490990293" at="63,78,64,103" concept="8" />
-      <node id="1235490990299" at="64,103,65,136" concept="2" />
-      <node id="1235498475175" at="65,136,66,68" concept="2" />
-      <node id="1235498604288" at="66,68,67,91" concept="2" />
+      <node id="1235490990299" at="64,103,65,144" concept="2" />
+      <node id="1235498475175" at="65,144,66,76" concept="2" />
+      <node id="1235498604288" at="66,76,67,91" concept="2" />
       <node id="8988565186379151580" at="67,91,68,116" concept="8" />
       <node id="1235497836443" at="69,55,70,73" concept="8" />
       <node id="8988565186379176602" at="70,73,71,42" concept="2" />
@@ -1093,8 +1092,7 @@
       <node id="1235490923121" at="91,48,92,56" concept="9" />
       <node id="1235490923121" at="98,0,99,0" concept="12" trace="CellModel_Property$uh" />
       <node id="1235490923121" at="102,0,103,0" concept="12" trace="relationDeclaration$E2hc" />
-      <node id="1235490923121" at="103,0,104,0" concept="12" trace="propertyOld$cqCy" />
-      <node id="1235490923121" at="104,0,105,0" concept="12" trace="handlerBlock$RPvD" />
+      <node id="1235490923121" at="103,0,104,0" concept="12" trace="handlerBlock$RPvD" />
       <node id="1235490923121" at="54,0,56,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="1235490923121" at="33,0,36,0" concept="1" trace="ChangeTransactionalProperty_Intention#()V" />
       <node id="1235490923121" at="47,99,50,5" concept="6" />
@@ -1157,9 +1155,9 @@
         <var name="node" id="1235490923121" />
       </scope>
       <unit id="1235490923121" at="97,0,100,0" name="jetbrains.mps.lang.editor.intentions.ChangeTransactionalProperty_Intention$CONCEPTS" />
-      <unit id="1235490923121" at="101,0,106,0" name="jetbrains.mps.lang.editor.intentions.ChangeTransactionalProperty_Intention$LINKS" />
+      <unit id="1235490923121" at="101,0,105,0" name="jetbrains.mps.lang.editor.intentions.ChangeTransactionalProperty_Intention$LINKS" />
       <unit id="1235490923121" at="53,0,96,0" name="jetbrains.mps.lang.editor.intentions.ChangeTransactionalProperty_Intention$IntentionImplementation" />
-      <unit id="1235490923121" at="30,0,107,0" name="jetbrains.mps.lang.editor.intentions.ChangeTransactionalProperty_Intention" />
+      <unit id="1235490923121" at="30,0,106,0" name="jetbrains.mps.lang.editor.intentions.ChangeTransactionalProperty_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1235490923121" at="97,47,98,70" concept="2" />

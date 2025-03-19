@@ -1241,7 +1241,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L);
           cpb.deprecateProperty(0x728347156800c331L, "allowEmptyTextOld");
           cpb.deprecateAssociation(0x11b35f87187L, "propertyOld");
-          cpb.presentationByReference(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "propertyOld", "{T ", " T}");
+          cpb.presentationByReference(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration", "{T ", " T}");
           props_CellModel_TransactionalProperty = cpb.create();
         }
         return props_CellModel_TransactionalProperty;

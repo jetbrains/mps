@@ -21,7 +21,7 @@ public class typeof_TransactionPropertyHandler_newValue_InferenceRule extends Ab
   }
   public void applyRule(final SNode value, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode transactionalProperty = SNodeOperations.getNodeAncestor(value, CONCEPTS.CellModel_TransactionalProperty$zZ, false, false);
-    SNode property = SLinkOperations.getTarget(transactionalProperty, LINKS.propertyOld$cqCy);
+    SNode property = SLinkOperations.getTarget(transactionalProperty, LINKS.relationDeclaration$E2hc);
     {
       SNode _nodeToCheck_1029348928467 = value;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2735767332089497934", 0, null);
@@ -44,7 +44,7 @@ public class typeof_TransactionPropertyHandler_newValue_InferenceRule extends Ab
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyOld$cqCy = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "propertyOld");
+    /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
     /*package*/ static final SReferenceLink dataType$5j5Y = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0xfc26f42fe5L, "dataType");
   }
 }

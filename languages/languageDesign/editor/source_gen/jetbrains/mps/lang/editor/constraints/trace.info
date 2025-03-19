@@ -514,7 +514,7 @@
       <node id="1216381238253" at="52,42,53,22" concept="7" />
       <node id="1216381238253" at="57,0,58,0" concept="10" trace="CellModel_TransactionalProperty$zZ" />
       <node id="1216381238253" at="58,0,59,0" concept="10" trace="BaseEditorComponent$49" />
-      <node id="1216381238253" at="62,0,63,0" concept="10" trace="propertyOld$cqCy" />
+      <node id="1216381238253" at="62,0,63,0" concept="10" trace="relationDeclaration$E2hc" />
       <node id="1216381238253" at="27,0,30,0" concept="0" trace="CellModel_TransactionalProperty_Constraints#()V" />
       <node id="1216381240441" at="38,0,42,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="1216381240441" at="42,0,48,0" concept="5" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />

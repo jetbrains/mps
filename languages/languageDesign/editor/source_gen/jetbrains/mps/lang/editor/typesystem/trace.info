@@ -1491,13 +1491,13 @@
       <node id="1747303154073920795" at="22,118,23,132" concept="7" />
       <node id="2735767332089496685" at="24,5,25,47" concept="7" />
       <node id="2735767332089496685" at="25,47,26,202" concept="7" />
-      <node id="2735767332089496685" at="26,202,27,389" concept="3" />
+      <node id="2735767332089496685" at="26,202,27,397" concept="3" />
       <node id="2735767332089496671" at="30,50,31,59" concept="8" />
       <node id="2735767332089496671" at="33,68,34,102" concept="8" />
       <node id="2735767332089496671" at="36,30,37,17" concept="8" />
       <node id="2735767332089496671" at="41,0,42,0" concept="11" trace="CellModel_TransactionalProperty$zZ" />
       <node id="2735767332089496671" at="42,0,43,0" concept="11" trace="TransactionPropertyHandler_oldValue$88" />
-      <node id="2735767332089496671" at="46,0,47,0" concept="11" trace="propertyOld$cqCy" />
+      <node id="2735767332089496671" at="46,0,47,0" concept="11" trace="relationDeclaration$E2hc" />
       <node id="2735767332089496671" at="47,0,48,0" concept="11" trace="dataType$5j5Y" />
       <node id="2735767332089496671" at="20,0,22,0" concept="1" trace="typeof_TransactionPropertyHandler_oldValue_InferenceRule#()V" />
       <node id="2735767332089496671" at="30,0,33,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -1510,7 +1510,7 @@
       <scope id="2735767332089496671" at="33,68,34,102" />
       <scope id="2735767332089496671" at="36,30,37,17" />
       <scope id="2735767332089496671" at="20,0,22,0" />
-      <scope id="2735767332089496685" at="24,5,27,389">
+      <scope id="2735767332089496685" at="24,5,27,397">
         <var name="_info_12389875345" id="2735767332089496685" />
         <var name="_nodeToCheck_1029348928467" id="2735767332089496685" />
       </scope>
@@ -1543,7 +1543,7 @@
     </file>
     <file name="typeof_TransactionPropertyHandler_newValue_InferenceRule.java">
       <node id="1294271446804914612" at="22,118,23,132" concept="7" />
-      <node id="1294271446804914621" at="23,132,24,94" concept="7" />
+      <node id="1294271446804914621" at="23,132,24,102" concept="7" />
       <node id="2735767332089497934" at="25,5,26,47" concept="7" />
       <node id="2735767332089497934" at="26,47,27,202" concept="7" />
       <node id="2735767332089497934" at="27,202,28,325" concept="3" />
@@ -1552,13 +1552,13 @@
       <node id="2735767332089497931" at="37,30,38,17" concept="8" />
       <node id="2735767332089497931" at="42,0,43,0" concept="11" trace="CellModel_TransactionalProperty$zZ" />
       <node id="2735767332089497931" at="43,0,44,0" concept="11" trace="TransactionPropertyHandler_newValue$c_" />
-      <node id="2735767332089497931" at="47,0,48,0" concept="11" trace="propertyOld$cqCy" />
+      <node id="2735767332089497931" at="47,0,48,0" concept="11" trace="relationDeclaration$E2hc" />
       <node id="2735767332089497931" at="48,0,49,0" concept="11" trace="dataType$5j5Y" />
       <node id="2735767332089497931" at="20,0,22,0" concept="1" trace="typeof_TransactionPropertyHandler_newValue_InferenceRule#()V" />
       <node id="2735767332089497931" at="31,0,34,0" concept="6" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="2735767332089497931" at="34,0,37,0" concept="6" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="2735767332089497931" at="37,0,40,0" concept="6" trace="overrides#()Z" />
-      <node id="2735767332089497934" at="24,94,29,5" concept="0" />
+      <node id="2735767332089497934" at="24,102,29,5" concept="0" />
       <node id="2735767332089497931" at="22,0,31,0" concept="6" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="2735767332089497931" at="20,69,20,69" />
       <scope id="2735767332089497931" at="31,50,32,59" />
