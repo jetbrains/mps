@@ -479,6 +479,10 @@
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
         <child id="1204796294226" name="closure" index="23t8la" />
       </concept>
+      <concept id="1176903168877" name="jetbrains.mps.baseLanguage.collections.structure.UnionOperation" flags="nn" index="4Tj9Z" />
+      <concept id="1176906603202" name="jetbrains.mps.baseLanguage.collections.structure.BinaryOperation" flags="nn" index="56pJg">
+        <child id="1176906787974" name="rightExpression" index="576Qk" />
+      </concept>
       <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
         <child id="540871147943773366" name="argument" index="25WWJ7" />
       </concept>
@@ -7589,78 +7593,108 @@
       <node concept="3clFbS" id="4IQFg3Zg1Oo" role="3clF47">
         <node concept="L3pyB" id="4IQFg3Zg6Np" role="3cqZAp">
           <node concept="3clFbS" id="4IQFg3Zg6Nr" role="L3pyw">
-            <node concept="3clFbF" id="4IQFg3Zg6a7" role="3cqZAp">
-              <node concept="2OqwBi" id="4IQFg3Zg7Zj" role="3clFbG">
-                <node concept="2OqwBi" id="4IQFg3ZgdFs" role="2Oq$k0">
-                  <node concept="qVDSY" id="4IQFg3Zg6a9" role="2Oq$k0">
-                    <node concept="chp4Y" id="4IQFg3Zg6oe" role="qVDSX">
-                      <ref role="cht4Q" to="tpc2:hGPXfkl" resolve="CellModel_TransactionalProperty" />
-                    </node>
-                  </node>
-                  <node concept="3zZkjj" id="4IQFg3Zgegf" role="2OqNvi">
-                    <node concept="1bVj0M" id="4IQFg3Zgegh" role="23t8la">
-                      <node concept="3clFbS" id="4IQFg3Zgegi" role="1bW5cS">
-                        <node concept="3clFbF" id="4IQFg3ZgeSD" role="3cqZAp">
-                          <node concept="2OqwBi" id="4IQFg3Zggj4" role="3clFbG">
-                            <node concept="2OqwBi" id="4IQFg3Zgf1e" role="2Oq$k0">
-                              <node concept="37vLTw" id="4IQFg3ZgeSC" role="2Oq$k0">
-                                <ref role="3cqZAo" node="4IQFg3Zgegj" resolve="cell" />
-                              </node>
-                              <node concept="3TrEf2" id="4IQFg3Zgg1a" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tpc2:hGPY767" resolve="propertyOld" />
-                              </node>
-                            </node>
-                            <node concept="3x8VRR" id="4IQFg3ZggMY" role="2OqNvi" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="gl6BB" id="4IQFg3Zgegj" role="1bW2Oz">
-                        <property role="TrG5h" value="cell" />
-                        <node concept="2jxLKc" id="4IQFg3Zgegk" role="1tU5fm" />
-                      </node>
-                    </node>
+            <node concept="3clFbF" id="4_KRdeof96V" role="3cqZAp">
+              <node concept="2OqwBi" id="4_KRdeof96W" role="3clFbG">
+                <node concept="qVDSY" id="4_KRdeof96Y" role="2Oq$k0">
+                  <node concept="chp4Y" id="4_KRdeof96Z" role="qVDSX">
+                    <ref role="cht4Q" to="tpc2:hGPXfkl" resolve="CellModel_TransactionalProperty" />
                   </node>
                 </node>
-                <node concept="2es0OD" id="4IQFg3Zg8Q1" role="2OqNvi">
-                  <node concept="1bVj0M" id="4IQFg3Zg8Q3" role="23t8la">
-                    <node concept="3clFbS" id="4IQFg3Zg8Q4" role="1bW5cS">
-                      <node concept="3clFbF" id="4IQFg3Zg9r3" role="3cqZAp">
-                        <node concept="37vLTI" id="4IQFg3Zgba3" role="3clFbG">
-                          <node concept="2OqwBi" id="4IQFg3Zgbl0" role="37vLTx">
-                            <node concept="37vLTw" id="4IQFg3ZgbdC" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4IQFg3Zg8Q5" resolve="cell" />
-                            </node>
-                            <node concept="3TrEf2" id="4IQFg3Zgch8" role="2OqNvi">
-                              <ref role="3Tt5mk" to="tpc2:hGPY767" resolve="propertyOld" />
+                <node concept="2es0OD" id="4_KRdeof97b" role="2OqNvi">
+                  <node concept="1bVj0M" id="4_KRdeof97c" role="23t8la">
+                    <node concept="3clFbS" id="4_KRdeof97d" role="1bW5cS">
+                      <node concept="3clFbJ" id="4_KRdeoflYo" role="3cqZAp">
+                        <node concept="3clFbS" id="4_KRdeoflYq" role="3clFbx">
+                          <node concept="3clFbF" id="4_KRdeofmR4" role="3cqZAp">
+                            <node concept="37vLTI" id="4_KRdeofmR5" role="3clFbG">
+                              <node concept="2OqwBi" id="4_KRdeofmR6" role="37vLTx">
+                                <node concept="37vLTw" id="4_KRdeofmR7" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="4_KRdeof97s" resolve="cell" />
+                                </node>
+                                <node concept="3TrEf2" id="4_KRdeofmR8" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="tpc2:hGPY767" />
+                                </node>
+                              </node>
+                              <node concept="2OqwBi" id="4_KRdeofmR9" role="37vLTJ">
+                                <node concept="37vLTw" id="4_KRdeofmRa" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="4_KRdeof97s" resolve="cell" />
+                                </node>
+                                <node concept="3TrEf2" id="4_KRdeofmRb" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" />
+                                </node>
+                              </node>
                             </node>
                           </node>
-                          <node concept="2OqwBi" id="4IQFg3Zg9Il" role="37vLTJ">
-                            <node concept="37vLTw" id="4IQFg3Zg9r2" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4IQFg3Zg8Q5" resolve="cell" />
-                            </node>
-                            <node concept="3TrEf2" id="4IQFg3ZgaGj" role="2OqNvi">
-                              <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" resolve="propertyDeclaration" />
+                          <node concept="3clFbF" id="4_KRdeofmRc" role="3cqZAp">
+                            <node concept="37vLTI" id="4_KRdeofmRd" role="3clFbG">
+                              <node concept="10Nm6u" id="4_KRdeofmRe" role="37vLTx" />
+                              <node concept="2OqwBi" id="4_KRdeofmRf" role="37vLTJ">
+                                <node concept="37vLTw" id="4_KRdeofmRg" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="4_KRdeof97s" resolve="cell" />
+                                </node>
+                                <node concept="3TrEf2" id="4_KRdeofmRh" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="tpc2:hGPY767" />
+                                </node>
+                              </node>
                             </node>
                           </node>
                         </node>
+                        <node concept="2OqwBi" id="4_KRdeofmhO" role="3clFbw">
+                          <node concept="2OqwBi" id="4_KRdeofmhP" role="2Oq$k0">
+                            <node concept="37vLTw" id="4_KRdeofmhQ" role="2Oq$k0">
+                              <ref role="3cqZAo" node="4_KRdeof97s" resolve="cell" />
+                            </node>
+                            <node concept="3TrEf2" id="4_KRdeofmhR" role="2OqNvi">
+                              <ref role="3Tt5mk" to="tpc2:hGPY767" />
+                            </node>
+                          </node>
+                          <node concept="3x8VRR" id="4_KRdeofmhS" role="2OqNvi" />
+                        </node>
                       </node>
-                      <node concept="3clFbF" id="4IQFg3ZgcAG" role="3cqZAp">
-                        <node concept="37vLTI" id="4IQFg3Zgdr2" role="3clFbG">
-                          <node concept="10Nm6u" id="4IQFg3Zgdw9" role="37vLTx" />
-                          <node concept="2OqwBi" id="4IQFg3ZgcEh" role="37vLTJ">
-                            <node concept="37vLTw" id="4IQFg3ZgcAE" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4IQFg3Zg8Q5" resolve="cell" />
+                      <node concept="3clFbJ" id="4_KRdeofgpI" role="3cqZAp">
+                        <node concept="3clFbS" id="4_KRdeofgpK" role="3clFbx">
+                          <node concept="3clFbF" id="4_KRdeof97e" role="3cqZAp">
+                            <node concept="37vLTI" id="4_KRdeof97f" role="3clFbG">
+                              <node concept="3clFbT" id="4_KRdeofdve" role="37vLTx">
+                                <property role="3clFbU" value="true" />
+                              </node>
+                              <node concept="2OqwBi" id="4_KRdeof97j" role="37vLTJ">
+                                <node concept="37vLTw" id="4_KRdeof97k" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="4_KRdeof97s" resolve="cell" />
+                                </node>
+                                <node concept="3TrcHB" id="4_KRdeofcR4" role="2OqNvi">
+                                  <ref role="3TsBF5" to="tpc2:g_O74Lt" resolve="allowEmptyText" />
+                                </node>
+                              </node>
                             </node>
-                            <node concept="3TrEf2" id="4IQFg3ZgdgM" role="2OqNvi">
-                              <ref role="3Tt5mk" to="tpc2:hGPY767" resolve="propertyOld" />
+                          </node>
+                          <node concept="3clFbF" id="4_KRdeofiiK" role="3cqZAp">
+                            <node concept="37vLTI" id="4_KRdeofkSp" role="3clFbG">
+                              <node concept="3clFbT" id="4_KRdeofl4q" role="37vLTx" />
+                              <node concept="2OqwBi" id="4_KRdeofiUo" role="37vLTJ">
+                                <node concept="37vLTw" id="4_KRdeofiiI" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="4_KRdeof97s" resolve="cell" />
+                                </node>
+                                <node concept="3TrcHB" id="4_KRdeofk1I" role="2OqNvi">
+                                  <ref role="3TsBF5" to="tpc2:7a3hLlC0ccL" resolve="allowEmptyTextOld" />
+                                </node>
+                              </node>
                             </node>
+                          </node>
+                        </node>
+                        <node concept="2OqwBi" id="4_KRdeof975" role="3clFbw">
+                          <node concept="37vLTw" id="4_KRdeof976" role="2Oq$k0">
+                            <ref role="3cqZAo" node="4_KRdeof97s" resolve="cell" />
+                          </node>
+                          <node concept="3TrcHB" id="4_KRdeofaGy" role="2OqNvi">
+                            <ref role="3TsBF5" to="tpc2:7a3hLlC0ccL" resolve="allowEmptyTextOld" />
                           </node>
                         </node>
                       </node>
                     </node>
-                    <node concept="gl6BB" id="4IQFg3Zg8Q5" role="1bW2Oz">
+                    <node concept="gl6BB" id="4_KRdeof97s" role="1bW2Oz">
                       <property role="TrG5h" value="cell" />
-                      <node concept="2jxLKc" id="4IQFg3Zg8Q6" role="1tU5fm" />
+                      <node concept="2jxLKc" id="4_KRdeof97t" role="1tU5fm" />
                     </node>
                   </node>
                 </node>
@@ -7691,74 +7725,171 @@
       <node concept="3clFbS" id="4IQFg3Zgi2W" role="3clF47">
         <node concept="L3pyB" id="4IQFg3Zgnhj" role="3cqZAp">
           <node concept="3clFbS" id="4IQFg3Zgnhk" role="L3pyw">
-            <node concept="3cpWs6" id="4IQFg3ZgOvA" role="3cqZAp">
-              <node concept="2OqwBi" id="4IQFg3Zgt5_" role="3cqZAk">
-                <node concept="2OqwBi" id="4IQFg3ZgoK9" role="2Oq$k0">
-                  <node concept="qVDSY" id="4IQFg3Zgo2E" role="2Oq$k0">
-                    <node concept="chp4Y" id="4IQFg3Zgo86" role="qVDSX">
-                      <ref role="cht4Q" to="tpc2:hGPXfkl" resolve="CellModel_TransactionalProperty" />
+            <node concept="3cpWs8" id="4_KRdeogqj2" role="3cqZAp">
+              <node concept="3cpWsn" id="4_KRdeogqj3" role="3cpWs9">
+                <property role="TrG5h" value="seqPropertyProblems" />
+                <node concept="A3Dl8" id="4_KRdeof$9S" role="1tU5fm">
+                  <node concept="3uibUv" id="4_KRdeojTuU" role="A3Ik2">
+                    <ref role="3uigEE" to="6f4m:3n7MNzO_IjP" resolve="Problem" />
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="4_KRdeogqj4" role="33vP2m">
+                  <node concept="2OqwBi" id="4_KRdeogqj5" role="2Oq$k0">
+                    <node concept="qVDSY" id="4_KRdeogqj6" role="2Oq$k0">
+                      <node concept="chp4Y" id="4_KRdeogqj7" role="qVDSX">
+                        <ref role="cht4Q" to="tpc2:hGPXfkl" resolve="CellModel_TransactionalProperty" />
+                      </node>
+                    </node>
+                    <node concept="3zZkjj" id="4_KRdeogqj8" role="2OqNvi">
+                      <node concept="1bVj0M" id="4_KRdeogqj9" role="23t8la">
+                        <node concept="3clFbS" id="4_KRdeogqja" role="1bW5cS">
+                          <node concept="3clFbF" id="4_KRdeogqjb" role="3cqZAp">
+                            <node concept="2OqwBi" id="4_KRdeogqjc" role="3clFbG">
+                              <node concept="2OqwBi" id="4_KRdeogqjd" role="2Oq$k0">
+                                <node concept="37vLTw" id="4_KRdeogqje" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="4_KRdeogqjh" resolve="cell" />
+                                </node>
+                                <node concept="3TrEf2" id="4_KRdeogqjf" role="2OqNvi">
+                                  <ref role="3Tt5mk" to="tpc2:hGPY767" resolve="propertyOld" />
+                                </node>
+                              </node>
+                              <node concept="3x8VRR" id="4_KRdeogqjg" role="2OqNvi" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="gl6BB" id="4_KRdeogqjh" role="1bW2Oz">
+                          <property role="TrG5h" value="cell" />
+                          <node concept="2jxLKc" id="4_KRdeogqji" role="1tU5fm" />
+                        </node>
+                      </node>
                     </node>
                   </node>
-                  <node concept="3zZkjj" id="4IQFg3Zgp_R" role="2OqNvi">
-                    <node concept="1bVj0M" id="4IQFg3Zgp_T" role="23t8la">
-                      <node concept="3clFbS" id="4IQFg3Zgp_U" role="1bW5cS">
-                        <node concept="3clFbF" id="4IQFg3Zgqf1" role="3cqZAp">
-                          <node concept="2OqwBi" id="4IQFg3ZgsdU" role="3clFbG">
-                            <node concept="2OqwBi" id="4IQFg3ZgqDc" role="2Oq$k0">
-                              <node concept="37vLTw" id="4IQFg3Zgqf0" role="2Oq$k0">
-                                <ref role="3cqZAo" node="4IQFg3Zgp_V" resolve="cell" />
-                              </node>
-                              <node concept="3TrEf2" id="4IQFg3ZgrIb" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tpc2:hGPY767" resolve="propertyOld" />
+                  <node concept="3$u5V9" id="4_KRdeogqjj" role="2OqNvi">
+                    <node concept="1bVj0M" id="4_KRdeogqjk" role="23t8la">
+                      <node concept="3clFbS" id="4_KRdeogqjl" role="1bW5cS">
+                        <node concept="3clFbF" id="4_KRdeogqjm" role="3cqZAp">
+                          <node concept="2ShNRf" id="4_KRdeogqjn" role="3clFbG">
+                            <node concept="YeOm9" id="4_KRdeogqjo" role="2ShVmc">
+                              <node concept="1Y3b0j" id="4_KRdeogqjp" role="YeSDq">
+                                <property role="2bfB8j" value="true" />
+                                <ref role="37wK5l" to="6f4m:4JdgAL_5wEf" resolve="NotMigratedNode" />
+                                <ref role="1Y3XeK" to="6f4m:4JdgAL_5vM9" resolve="NotMigratedNode" />
+                                <node concept="3Tm1VV" id="4_KRdeogqjq" role="1B3o_S" />
+                                <node concept="3clFb_" id="4_KRdeogqjr" role="jymVt">
+                                  <property role="TrG5h" value="getMessage" />
+                                  <property role="1EzhhJ" value="false" />
+                                  <node concept="17QB3L" id="4_KRdeogqjs" role="3clF45" />
+                                  <node concept="3Tm1VV" id="4_KRdeogqjt" role="1B3o_S" />
+                                  <node concept="3clFbS" id="4_KRdeogqju" role="3clF47">
+                                    <node concept="3clFbF" id="4_KRdeogqjv" role="3cqZAp">
+                                      <node concept="Xl_RD" id="4_KRdeogqjw" role="3clFbG">
+                                        <property role="Xl_RC" value="The deprecated propertyOld reference could not be migrated into the cell's propertyDeclaration reference" />
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="37vLTw" id="4_KRdeogqjx" role="37wK5m">
+                                  <ref role="3cqZAo" node="4_KRdeogqjy" resolve="cell" />
+                                </node>
                               </node>
                             </node>
-                            <node concept="3x8VRR" id="4IQFg3ZgsKH" role="2OqNvi" />
                           </node>
                         </node>
                       </node>
-                      <node concept="gl6BB" id="4IQFg3Zgp_V" role="1bW2Oz">
+                      <node concept="gl6BB" id="4_KRdeogqjy" role="1bW2Oz">
                         <property role="TrG5h" value="cell" />
-                        <node concept="2jxLKc" id="4IQFg3Zgp_W" role="1tU5fm" />
+                        <node concept="2jxLKc" id="4_KRdeogqjz" role="1tU5fm" />
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="3$u5V9" id="4IQFg3Zgvfo" role="2OqNvi">
-                  <node concept="1bVj0M" id="4IQFg3Zgvfq" role="23t8la">
-                    <node concept="3clFbS" id="4IQFg3Zgvfr" role="1bW5cS">
-                      <node concept="3clFbF" id="4IQFg3Zg$89" role="3cqZAp">
-                        <node concept="2ShNRf" id="13xmEyWwAxn" role="3clFbG">
-                          <node concept="YeOm9" id="13xmEyWwAxo" role="2ShVmc">
-                            <node concept="1Y3b0j" id="13xmEyWwAxp" role="YeSDq">
-                              <property role="2bfB8j" value="true" />
-                              <ref role="37wK5l" to="6f4m:4JdgAL_5wEf" resolve="NotMigratedNode" />
-                              <ref role="1Y3XeK" to="6f4m:4JdgAL_5vM9" resolve="NotMigratedNode" />
-                              <node concept="3Tm1VV" id="13xmEyWwAxq" role="1B3o_S" />
-                              <node concept="3clFb_" id="13xmEyWwAxr" role="jymVt">
-                                <property role="TrG5h" value="getMessage" />
-                                <property role="1EzhhJ" value="false" />
-                                <node concept="17QB3L" id="4IQFg3ZgO0E" role="3clF45" />
-                                <node concept="3Tm1VV" id="13xmEyWwAxt" role="1B3o_S" />
-                                <node concept="3clFbS" id="13xmEyWwAxu" role="3clF47">
-                                  <node concept="3clFbF" id="13xmEyWwAxv" role="3cqZAp">
-                                    <node concept="Xl_RD" id="13xmEyWwAxw" role="3clFbG">
-                                      <property role="Xl_RC" value="The deprecated propertyOld reference could not be migrated into the cell's propertyDeclaration reference" />
+              </node>
+            </node>
+            <node concept="3cpWs8" id="4_KRdeogrGK" role="3cqZAp">
+              <node concept="3cpWsn" id="4_KRdeogrGL" role="3cpWs9">
+                <property role="TrG5h" value="seqAllowEmptyProblems" />
+                <node concept="A3Dl8" id="4_KRdeogrrp" role="1tU5fm">
+                  <node concept="3uibUv" id="4_KRdeojVr8" role="A3Ik2">
+                    <ref role="3uigEE" to="6f4m:3n7MNzO_IjP" resolve="Problem" />
+                  </node>
+                </node>
+                <node concept="2OqwBi" id="4_KRdeogrGM" role="33vP2m">
+                  <node concept="2OqwBi" id="4_KRdeogrGN" role="2Oq$k0">
+                    <node concept="qVDSY" id="4_KRdeogrGO" role="2Oq$k0">
+                      <node concept="chp4Y" id="4_KRdeogrGP" role="qVDSX">
+                        <ref role="cht4Q" to="tpc2:hGPXfkl" resolve="CellModel_TransactionalProperty" />
+                      </node>
+                    </node>
+                    <node concept="3zZkjj" id="4_KRdeogrGQ" role="2OqNvi">
+                      <node concept="1bVj0M" id="4_KRdeogrGR" role="23t8la">
+                        <node concept="3clFbS" id="4_KRdeogrGS" role="1bW5cS">
+                          <node concept="3clFbF" id="4_KRdeogrGT" role="3cqZAp">
+                            <node concept="2OqwBi" id="4_KRdeogrGU" role="3clFbG">
+                              <node concept="37vLTw" id="4_KRdeogrGV" role="2Oq$k0">
+                                <ref role="3cqZAo" node="4_KRdeogrGX" resolve="cell" />
+                              </node>
+                              <node concept="3TrcHB" id="4_KRdeogrGW" role="2OqNvi">
+                                <ref role="3TsBF5" to="tpc2:7a3hLlC0ccL" resolve="allowEmptyTextOld" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="gl6BB" id="4_KRdeogrGX" role="1bW2Oz">
+                          <property role="TrG5h" value="cell" />
+                          <node concept="2jxLKc" id="4_KRdeogrGY" role="1tU5fm" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3$u5V9" id="4_KRdeogrGZ" role="2OqNvi">
+                    <node concept="1bVj0M" id="4_KRdeogrH0" role="23t8la">
+                      <node concept="3clFbS" id="4_KRdeogrH1" role="1bW5cS">
+                        <node concept="3clFbF" id="4_KRdeogrH2" role="3cqZAp">
+                          <node concept="2ShNRf" id="4_KRdeogrH3" role="3clFbG">
+                            <node concept="YeOm9" id="4_KRdeogrH4" role="2ShVmc">
+                              <node concept="1Y3b0j" id="4_KRdeogrH5" role="YeSDq">
+                                <property role="2bfB8j" value="true" />
+                                <ref role="37wK5l" to="6f4m:4JdgAL_5wEf" resolve="NotMigratedNode" />
+                                <ref role="1Y3XeK" to="6f4m:4JdgAL_5vM9" resolve="NotMigratedNode" />
+                                <node concept="3Tm1VV" id="4_KRdeogrH6" role="1B3o_S" />
+                                <node concept="3clFb_" id="4_KRdeogrH7" role="jymVt">
+                                  <property role="TrG5h" value="getMessage" />
+                                  <property role="1EzhhJ" value="false" />
+                                  <node concept="17QB3L" id="4_KRdeogrH8" role="3clF45" />
+                                  <node concept="3Tm1VV" id="4_KRdeogrH9" role="1B3o_S" />
+                                  <node concept="3clFbS" id="4_KRdeogrHa" role="3clF47">
+                                    <node concept="3clFbF" id="4_KRdeogrHb" role="3cqZAp">
+                                      <node concept="Xl_RD" id="4_KRdeogrHc" role="3clFbG">
+                                        <property role="Xl_RC" value="The deprecated allowEmptyTextOld property could not be migrated into the cell's allowEmptyText property" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
-                              </node>
-                              <node concept="37vLTw" id="13xmEyWwAxx" role="37wK5m">
-                                <ref role="3cqZAo" node="4IQFg3Zgvfs" resolve="cell" />
+                                <node concept="37vLTw" id="4_KRdeogrHd" role="37wK5m">
+                                  <ref role="3cqZAo" node="4_KRdeogrHe" resolve="cell" />
+                                </node>
                               </node>
                             </node>
                           </node>
                         </node>
                       </node>
+                      <node concept="gl6BB" id="4_KRdeogrHe" role="1bW2Oz">
+                        <property role="TrG5h" value="cell" />
+                        <node concept="2jxLKc" id="4_KRdeogrHf" role="1tU5fm" />
+                      </node>
                     </node>
-                    <node concept="gl6BB" id="4IQFg3Zgvfs" role="1bW2Oz">
-                      <property role="TrG5h" value="cell" />
-                      <node concept="2jxLKc" id="4IQFg3Zgvft" role="1tU5fm" />
-                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs6" id="4IQFg3ZgOvA" role="3cqZAp">
+              <node concept="2OqwBi" id="4_KRdeofpa3" role="3cqZAk">
+                <node concept="37vLTw" id="4_KRdeogqj$" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4_KRdeogqj3" resolve="seq" />
+                </node>
+                <node concept="4Tj9Z" id="4_KRdeofr0T" role="2OqNvi">
+                  <node concept="37vLTw" id="4_KRdeogrHg" role="576Qk">
+                    <ref role="3cqZAo" node="4_KRdeogrGL" resolve="seq" />
                   </node>
                 </node>
               </node>

@@ -11,12 +11,15 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class Migrate_CellModelTxPropertyToExtendCellModel_WithRole extends MigrationScriptBase {
   private final String description = "Replace the now deprecated \"propertyOld\" reference with the inherited one \"propertyDeclaration\"";
@@ -36,9 +39,15 @@ public class Migrate_CellModelTxPropertyToExtendCellModel_WithRole extends Migra
       SearchScope scope_1qfx22_a0e = CommandUtil.createScope(m);
       final SearchScope scope_1qfx22_a0e_0 = new EditableFilteringScope(scope_1qfx22_a0e);
       QueryExecutionContext context = () -> scope_1qfx22_a0e_0;
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_TransactionalProperty$zZ, false)).where((cell) -> (SLinkOperations.getTarget(cell, LINKS.propertyOld$cqCy) != null)).visitAll((cell) -> {
-        SLinkOperations.setTarget(cell, LINKS.relationDeclaration$E2hc, SLinkOperations.getTarget(cell, LINKS.propertyOld$cqCy));
-        SLinkOperations.setTarget(cell, LINKS.propertyOld$cqCy, null);
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_TransactionalProperty$zZ, false)).visitAll((cell) -> {
+        if ((SLinkOperations.getTarget(cell, LINKS.propertyOld$cqCy) != null)) {
+          SLinkOperations.setTarget(cell, LINKS.relationDeclaration$E2hc, SLinkOperations.getTarget(cell, LINKS.propertyOld$cqCy));
+          SLinkOperations.setTarget(cell, LINKS.propertyOld$cqCy, null);
+        }
+        if (SPropertyOperations.getBoolean(cell, PROPS.allowEmptyTextOld$gppz)) {
+          SPropertyOperations.assign(cell, PROPS.allowEmptyText$Nme7, true);
+          SPropertyOperations.assign(cell, PROPS.allowEmptyTextOld$gppz, false);
+        }
       });
     }
   }
@@ -48,13 +57,21 @@ public class Migrate_CellModelTxPropertyToExtendCellModel_WithRole extends Migra
       SearchScope scope_1qfx22_a0f = CommandUtil.createScope(m);
       final SearchScope scope_1qfx22_a0f_0 = new EditableFilteringScope(scope_1qfx22_a0f);
       QueryExecutionContext context = () -> scope_1qfx22_a0f_0;
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_TransactionalProperty$zZ, false)).where((cell) -> (SLinkOperations.getTarget(cell, LINKS.propertyOld$cqCy) != null)).select((cell) -> {
+      Iterable<Problem> seqPropertyProblems = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_TransactionalProperty$zZ, false)).where((cell) -> (SLinkOperations.getTarget(cell, LINKS.propertyOld$cqCy) != null)).select((cell) -> {
         return new NotMigratedNode(cell) {
           public String getMessage() {
             return "The deprecated propertyOld reference could not be migrated into the cell's propertyDeclaration reference";
           }
         };
       });
+      Iterable<Problem> seqAllowEmptyProblems = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_TransactionalProperty$zZ, false)).where((cell) -> SPropertyOperations.getBoolean(cell, PROPS.allowEmptyTextOld$gppz)).select((cell) -> {
+        return new NotMigratedNode(cell) {
+          public String getMessage() {
+            return "The deprecated allowEmptyTextOld property could not be migrated into the cell's allowEmptyText property";
+          }
+        };
+      });
+      return Sequence.fromIterable(seqPropertyProblems).union(Sequence.fromIterable(seqAllowEmptyProblems));
     }
   }
   public MigrationScriptReference getReference() {
@@ -66,7 +83,12 @@ public class Migrate_CellModelTxPropertyToExtendCellModel_WithRole extends Migra
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyOld$cqCy = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "propertyOld");
     /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink propertyOld$cqCy = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "propertyOld");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty allowEmptyText$Nme7 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x109741c4c5dL, "allowEmptyText");
+    /*package*/ static final SProperty allowEmptyTextOld$gppz = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x728347156800c331L, "allowEmptyTextOld");
   }
 }
