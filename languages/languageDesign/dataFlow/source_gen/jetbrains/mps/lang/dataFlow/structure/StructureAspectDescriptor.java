@@ -21,6 +21,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBeforePosition = createDescriptorForBeforePosition();
   /*package*/ final ConceptDescriptor myConceptBooleanInstructionOperation = createDescriptorForBooleanInstructionOperation();
   /*package*/ final ConceptDescriptor myConceptBuilderBlock = createDescriptorForBuilderBlock();
+  /*package*/ final ConceptDescriptor myConceptDataFlowAspectDeputy = createDescriptorForDataFlowAspectDeputy();
   /*package*/ final ConceptDescriptor myConceptDataFlowBuilderDeclaration = createDescriptorForDataFlowBuilderDeclaration();
   /*package*/ final ConceptDescriptor myConceptEmitCodeForStatement = createDescriptorForEmitCodeForStatement();
   /*package*/ final ConceptDescriptor myConceptEmitIfJumpStatement = createDescriptorForEmitIfJumpStatement();
@@ -59,13 +60,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
     deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
+    deps.employedLanguage(0xf4ad079dbc714ffbL, 0x96009328705cf998L, "jetbrains.mps.lang.descriptor");
     deps.employedLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure");
     deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAfterPosition, myConceptBaseEmitJumpStatement, myConceptBaseEmitVariableStatement, myConceptBaseInstructionOperation, myConceptBeforePosition, myConceptBooleanInstructionOperation, myConceptBuilderBlock, myConceptDataFlowBuilderDeclaration, myConceptEmitCodeForStatement, myConceptEmitIfJumpStatement, myConceptEmitJumpStatement, myConceptEmitLabelStatement, myConceptEmitMayBeUnreachable, myConceptEmitNopStatement, myConceptEmitReadStatement, myConceptEmitRetStatement, myConceptEmitStatement, myConceptEmitTryFinallyStatement, myConceptEmitWriteStatement, myConceptGetCodeForExpression, myConceptIBuilderMode, myConceptInsertAfter, myConceptInsertBefore, myConceptInsertPosition, myConceptInstructionGetSourceOperation, myConceptInstructionIsJump, myConceptInstructionIsNop, myConceptInstructionIsRet, myConceptInstructionType, myConceptIntraProcedural_BuilderMode, myConceptLabelPosition, myConceptNodeParameter, myConceptPosition, myConceptRelativePosition);
+    return Arrays.asList(myConceptAfterPosition, myConceptBaseEmitJumpStatement, myConceptBaseEmitVariableStatement, myConceptBaseInstructionOperation, myConceptBeforePosition, myConceptBooleanInstructionOperation, myConceptBuilderBlock, myConceptDataFlowAspectDeputy, myConceptDataFlowBuilderDeclaration, myConceptEmitCodeForStatement, myConceptEmitIfJumpStatement, myConceptEmitJumpStatement, myConceptEmitLabelStatement, myConceptEmitMayBeUnreachable, myConceptEmitNopStatement, myConceptEmitReadStatement, myConceptEmitRetStatement, myConceptEmitStatement, myConceptEmitTryFinallyStatement, myConceptEmitWriteStatement, myConceptGetCodeForExpression, myConceptIBuilderMode, myConceptInsertAfter, myConceptInsertBefore, myConceptInsertPosition, myConceptInstructionGetSourceOperation, myConceptInstructionIsJump, myConceptInstructionIsNop, myConceptInstructionIsRet, myConceptInstructionType, myConceptIntraProcedural_BuilderMode, myConceptLabelPosition, myConceptNodeParameter, myConceptPosition, myConceptRelativePosition);
   }
 
   @Override
@@ -86,6 +88,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptBooleanInstructionOperation;
       case LanguageConceptSwitch.BuilderBlock:
         return myConceptBuilderBlock;
+      case LanguageConceptSwitch.DataFlowAspectDeputy:
+        return myConceptDataFlowAspectDeputy;
       case LanguageConceptSwitch.DataFlowBuilderDeclaration:
         return myConceptDataFlowBuilderDeclaration;
       case LanguageConceptSwitch.EmitCodeForStatement:
@@ -219,6 +223,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/1206442659665");
     b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForDataFlowAspectDeputy() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.dataFlow", "DataFlowAspectDeputy", 0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x7fbdaa9796878e0bL);
+    b.class_(false, false, true);
+    b.parent(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x5fc6cc5c84f4bddbL);
+    b.origin("r:00000000-0000-4000-0000-011c8959037d(jetbrains.mps.lang.dataFlow.structure)/9204700781457411595");
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForDataFlowBuilderDeclaration() {

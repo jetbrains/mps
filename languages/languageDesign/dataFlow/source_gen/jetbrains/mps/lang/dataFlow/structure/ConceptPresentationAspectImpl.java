@@ -17,6 +17,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BeforePosition;
   private ConceptPresentation props_BooleanInstructionOperation;
   private ConceptPresentation props_BuilderBlock;
+  private ConceptPresentation props_DataFlowAspectDeputy;
   private ConceptPresentation props_DataFlowBuilderDeclaration;
   private ConceptPresentation props_EmitCodeForStatement;
   private ConceptPresentation props_EmitIfJumpStatement;
@@ -95,6 +96,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BuilderBlock = cpb.create();
         }
         return props_BuilderBlock;
+      case LanguageConceptSwitch.DataFlowAspectDeputy:
+        if (props_DataFlowAspectDeputy == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
+          cpb.rawPresentation("DataFlowAspectDeputy");
+          props_DataFlowAspectDeputy = cpb.create();
+        }
+        return props_DataFlowAspectDeputy;
       case LanguageConceptSwitch.DataFlowBuilderDeclaration:
         if (props_DataFlowBuilderDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
