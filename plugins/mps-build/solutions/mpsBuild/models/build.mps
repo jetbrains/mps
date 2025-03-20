@@ -57962,8 +57962,8 @@
                   <property role="2Ry0Am" value="mps-kotlin" />
                   <node concept="2Ry0Ak" id="4xYibpMP5X" role="2Ry0An">
                     <property role="2Ry0Am" value="lib" />
-                    <node concept="2Ry0Ak" id="4xYibpMP5Y" role="2Ry0An">
-                      <property role="2Ry0Am" value="kotlin-stdlib-all-2.1.0.jar" />
+                    <node concept="2Ry0Ak" id="2HZlT7eFxG9" role="2Ry0An">
+                      <property role="2Ry0Am" value="kotlin-stdlib-2.1.0-all.jar" />
                     </node>
                   </node>
                 </node>

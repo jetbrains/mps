@@ -1199,7 +1199,7 @@
       <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.1.0.jar" />
     </copy>
     <copy todir="${build.layout}/mps-kotlin/lib">
-      <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-all-2.1.0.jar" />
+      <fileset file="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-2.1.0-all.jar" />
     </copy>
     <jar destfile="${build.layout}/mps-kotlin/lib/kotlin-ide.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/kotlinIde" />
