@@ -103,6 +103,7 @@ public class MessagesContainer implements Disposable {
              .map(messages ->
                    // then, see if there is a matching model with messages
                    messages.getValue().stream()
+                           .filter(modelRef -> modelRef.resolve(repository) != null)
                            .filter(modelRef -> predicate.test(SObject.of(modelRef.resolve(repository))))
                            // finally, test with reportItemFilter
                            .flatMap(modelRef -> myModelMessages.getOrDefault(modelRef, Collections.emptyList()).stream())

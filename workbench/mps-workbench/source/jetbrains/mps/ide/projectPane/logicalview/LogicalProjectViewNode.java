@@ -212,8 +212,8 @@ public abstract class LogicalProjectViewNode<Value> extends ProjectViewNode<Valu
     MissionControl missionControl = MissionControl.getInstance(project);
     if (missionControl != null) {
       return getMPSSettings().isShowErrorsOnly() ?
-             missionControl.getMessagesContainer().hasErrorsInHierarchy(this::containsSObject) :
-             missionControl.getMessagesContainer().hasWarningsOrErrorsInHierarchy(this::containsSObject);
+             missionControl.getMessagesContainer().hasErrorsInHierarchy(this::matches) :
+             missionControl.getMessagesContainer().hasWarningsOrErrorsInHierarchy(this::matches);
     }
     return false;
   }
