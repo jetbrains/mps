@@ -135,7 +135,7 @@
     <property role="TrG5h" value="ModelChecker" />
     <node concept="1GtWCo" id="3iJf4n4Wsiq" role="1nVCmq">
       <node concept="10M0yZ" id="3etVqSRK$ao" role="1GtWoa">
-        <ref role="1PxDUh" to="l7us:~MPSIcons$ToolWindows" resolve="ToolWindows" />
+        <ref role="1PxDUh" to="l7us:~MPSIcons$ToolWindows" resolve="MPSIcons.ToolWindows" />
         <ref role="3cqZAo" to="l7us:~MPSIcons$ToolWindows.ModelChecker" resolve="ModelChecker" />
       </node>
     </node>

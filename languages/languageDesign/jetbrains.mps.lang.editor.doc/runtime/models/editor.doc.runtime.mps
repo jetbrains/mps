@@ -147,7 +147,7 @@
           </node>
           <node concept="2ShNRf" id="7XU1fOGns$D" role="37wK5m">
             <node concept="1pGfFk" id="2yJIINoLtoP" role="2ShVmc">
-              <ref role="37wK5l" node="2yJIINoLs_t" resolve="EditorCell_HtmlTag.CellLayout_HtmlTag123" />
+              <ref role="37wK5l" node="2yJIINoLs_t" resolve="EditorCell_HtmlTag.CellLayout_HtmlTag" />
               <node concept="37vLTw" id="47_zCsM$KoF" role="37wK5m">
                 <ref role="3cqZAo" node="45v$Up9z1ps" resolve="openTag" />
               </node>

@@ -1827,7 +1827,7 @@
                     <node concept="2OqwBi" id="5BKvc0JMw2l" role="37wK5m">
                       <node concept="30H73N" id="5BKvc0JMw2m" role="2Oq$k0" />
                       <node concept="3TrEf2" id="5BKvc0JMw2n" role="2OqNvi">
-                        <ref role="3Tt5mk" to="tpee:hqOqNr4" />
+                        <ref role="3Tt5mk" to="tpee:hqOqNr4" resolve="operation" />
                       </node>
                     </node>
                   </node>

@@ -4507,7 +4507,7 @@
               <ref role="3cqZAo" node="4ovgun2iRr" resolve="flag" />
             </node>
             <node concept="37vLTw" id="4ovgun1TaJ" role="37vLTJ">
-              <ref role="3cqZAo" node="4ovgun22w5" resolve="myWithoutGenerator" />
+              <ref role="3cqZAo" node="4ovgun22w5" resolve="myWithGenerator" />
             </node>
           </node>
         </node>
@@ -4631,9 +4631,9 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="4ovgun2xz7" role="2OqNvi">
-                  <ref role="37wK5l" node="4ovgun2a7h" resolve="withoutGenerator" />
+                  <ref role="37wK5l" node="4ovgun2a7h" resolve="withGenerator" />
                   <node concept="37vLTw" id="4ovgun2yzB" role="37wK5m">
-                    <ref role="3cqZAo" node="4ovgun22w5" resolve="myWithoutGenerator" />
+                    <ref role="3cqZAo" node="4ovgun22w5" resolve="myWithGenerator" />
                   </node>
                 </node>
               </node>

@@ -286,7 +286,7 @@
     </node>
     <node concept="3lhOvk" id="3$F7b_u1e2a" role="3lj3bC">
       <ref role="30HIoZ" to="bgp:3$F7b_u1e1m" resolve="Bundle" />
-      <ref role="3lhOvi" node="3$F7b_u1e2b" resolve="map_Bundle" />
+      <ref role="3lhOvi" node="3$F7b_u1e2b" resolve="map_Bundle2BuildProject" />
     </node>
   </node>
   <node concept="1l3spW" id="3$F7b_u1e2b">
@@ -493,7 +493,7 @@
                                 <ref role="3cqZAo" node="3$F7b_u3HeQ" resolve="cp" />
                               </node>
                               <node concept="3TrEf2" id="3$F7b_u3Lvp" role="2OqNvi">
-                                <ref role="3Tt5mk" to="3ior:7usrAn056vM" />
+                                <ref role="3Tt5mk" to="3ior:7usrAn056vM" resolve="tail" />
                               </node>
                             </node>
                             <node concept="zfrQC" id="3$F7b_u3MaD" role="2OqNvi" />
@@ -689,7 +689,7 @@
             <node concept="2ShNRf" id="706LmddXd4p" role="33vP2m">
               <node concept="1pGfFk" id="706LmddXeSZ" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="tken:6cqWk79z1ZM" />
+                <ref role="37wK5l" to="tken:6cqWk79z1ZM" resolve="ModuleLoader" />
                 <node concept="2OqwBi" id="706LmddXioZ" role="37wK5m">
                   <node concept="2OqwBi" id="706LmddXf4x" role="2Oq$k0">
                     <node concept="1Q6Npb" id="706LmddXeUk" role="2Oq$k0" />
@@ -727,7 +727,7 @@
             <node concept="liA8E" id="706LmddXo89" role="2OqNvi">
               <ref role="37wK5l" to="tken:6cqWk79_waj" resolve="checkAllModules" />
               <node concept="Rm8GO" id="6m8wrPD85O6" role="37wK5m">
-                <ref role="1Px2BO" to="tken:6m8wrPAZ5Tf" resolve="CheckType" />
+                <ref role="1Px2BO" to="tken:6m8wrPAZ5Tf" resolve="ModuleChecker.CheckType" />
                 <ref role="Rm8GQ" to="tken:6m8wrPAZbkd" resolve="LOAD_IMPORTANT_PART" />
               </node>
             </node>

@@ -905,7 +905,7 @@
                     <ref role="3cqZAo" node="5DBbMQ1GHRi" resolve="absCaller" />
                   </node>
                   <node concept="3uibUv" id="4LKOcpBfY_N" role="10QFUM">
-                    <ref role="3uigEE" node="5DBbMQ1GHeU" resolve="AbstractBuilder" />
+                    <ref role="3uigEE" node="5DBbMQ1GHeU" resolve="MethodReferences_Test.AbstractBuilder" />
                     <node concept="17QB3L" id="4LKOcpBfY_O" role="11_B2D" />
                     <node concept="17QB3L" id="4LKOcpBfY_P" role="11_B2D" />
                   </node>

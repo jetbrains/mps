@@ -151,7 +151,7 @@
       </concept>
       <concept id="1216380990741" name="jetbrains.mps.lang.editor.structure.CellModel_TransactionalProperty" flags="sg" stub="8104358048506729358" index="PXfge">
         <property id="1232439938817" name="runInCommand" index="3N9gSv" />
-        <reference id="1216381219207" name="property" index="PY72s" />
+        <reference id="1216381219207" name="propertyOld" index="PY72s" />
         <child id="1216381211800" name="handlerBlock" index="PY5m3" />
       </concept>
       <concept id="1216381054717" name="jetbrains.mps.lang.editor.structure.TransactionalPropertyHandler" flags="in" index="PXuZA" />

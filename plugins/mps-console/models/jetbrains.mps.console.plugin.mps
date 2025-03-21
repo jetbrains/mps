@@ -413,7 +413,7 @@
               </node>
               <node concept="2OqwBi" id="4GSEy3uNgeU" role="10QFUP">
                 <node concept="2WthIp" id="4GSEy3uNgeV" role="2Oq$k0">
-                  <ref role="32nkFo" node="2$nlLZbVXWa" resolve="ConsoleNewTool" />
+                  <ref role="32nkFo" node="2$nlLZbVXWa" resolve="ConsoleTool" />
                 </node>
                 <node concept="2BZ7hE" id="4GSEy3uNgeW" role="2OqNvi">
                   <ref role="2WH_rO" node="4GSEy3uM01_" resolve="myself" />
@@ -635,7 +635,7 @@
                 </node>
                 <node concept="10M0yZ" id="5VzHAnc510q" role="37vLTx">
                   <ref role="3cqZAo" to="l7us:~MPSIcons$ToolWindows.OpenTerminal_13x13" resolve="OpenTerminal_13x13" />
-                  <ref role="1PxDUh" to="l7us:~MPSIcons$ToolWindows" resolve="ToolWindows" />
+                  <ref role="1PxDUh" to="l7us:~MPSIcons$ToolWindows" resolve="MPSIcons.ToolWindows" />
                 </node>
               </node>
             </node>
@@ -692,7 +692,7 @@
                         <node concept="2OqwBi" id="4GSEy3uMlNu" role="3clFbG">
                           <node concept="2OqwBi" id="4GSEy3uN_Bw" role="2Oq$k0">
                             <node concept="2WthIp" id="4GSEy3uN_Bz" role="2Oq$k0">
-                              <ref role="32nkFo" node="2$nlLZbVXWa" resolve="ConsoleNewTool" />
+                              <ref role="32nkFo" node="2$nlLZbVXWa" resolve="ConsoleTool" />
                             </node>
                             <node concept="2XshWL" id="4GSEy3uN_B_" role="2OqNvi">
                               <ref role="2WH_rO" node="4GSEy3uNxSW" resolve="getMyself" />
@@ -753,7 +753,7 @@
                         <node concept="2OqwBi" id="9fcK6$QkOz" role="3clFbG">
                           <node concept="2OqwBi" id="9fcK6$QkO$" role="2Oq$k0">
                             <node concept="2WthIp" id="9fcK6$QkO_" role="2Oq$k0">
-                              <ref role="32nkFo" node="2$nlLZbVXWa" resolve="ConsoleNewTool" />
+                              <ref role="32nkFo" node="2$nlLZbVXWa" resolve="ConsoleTool" />
                             </node>
                             <node concept="2XshWL" id="9fcK6$QkOA" role="2OqNvi">
                               <ref role="2WH_rO" node="4GSEy3uNxSW" resolve="getMyself" />
@@ -769,7 +769,7 @@
                       </node>
                     </node>
                     <node concept="2AHcQZ" id="9fcK6$QdBj" role="2AJF6D">
-                      <ref role="2AI5Lk" to="wyt6:~Override" />
+                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                     </node>
                   </node>
                 </node>
@@ -794,7 +794,7 @@
                 </node>
                 <node concept="2ShNRf" id="5VzHAncb7Lz" role="37vLTx">
                   <node concept="1pGfFk" id="5VzHAncb7L$" role="2ShVmc">
-                    <ref role="37wK5l" to="qgo0:2wDkRIghB1S" />
+                    <ref role="37wK5l" to="qgo0:2wDkRIghB1S" resolve="OutputConsoleTab" />
                     <node concept="2OqwBi" id="2$nlLZbZQk2" role="37wK5m">
                       <node concept="2WthIp" id="2$nlLZbZQk5" role="2Oq$k0" />
                       <node concept="2BZ7hE" id="2$nlLZbZQk7" role="2OqNvi">
@@ -832,7 +832,7 @@
                   </node>
                   <node concept="2ShNRf" id="5VzHAnc510E" role="37vLTx">
                     <node concept="1pGfFk" id="5VzHAnc510F" role="2ShVmc">
-                      <ref role="37wK5l" to="qgo0:6ysF3v1PQFv" />
+                      <ref role="37wK5l" to="qgo0:6ysF3v1PQFv" resolve="DialogConsoleTab" />
                       <node concept="2OqwBi" id="2$nlLZbZQWi" role="37wK5m">
                         <node concept="2WthIp" id="2$nlLZbZQWl" role="2Oq$k0" />
                         <node concept="2BZ7hE" id="2$nlLZbZQWn" role="2OqNvi">
@@ -897,7 +897,7 @@
                     <property role="2bfB8j" value="true" />
                     <property role="373rjd" value="true" />
                     <ref role="1Y3XeK" to="eqyk:~IComponentDisposer" resolve="IComponentDisposer" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                     <node concept="3Tm1VV" id="4YIWOQyBxou" role="1B3o_S" />
                     <node concept="3clFb_" id="4YIWOQyBxoG" role="jymVt">
                       <property role="TrG5h" value="disposeComponent" />
@@ -927,7 +927,7 @@
                         </node>
                       </node>
                       <node concept="2AHcQZ" id="4YIWOQyBxoO" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" />
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                       </node>
                     </node>
                     <node concept="3uibUv" id="4YIWOQyBxoP" role="2Ghqu4">
@@ -1723,7 +1723,7 @@
     <node concept="1GtWCo" id="2$nlLZbW9FE" role="1nVCmq">
       <node concept="10M0yZ" id="2$nlLZbW9P$" role="1GtWoa">
         <ref role="3cqZAo" to="l7us:~MPSIcons$ToolWindows.OpenTerminal_13x13" resolve="OpenTerminal_13x13" />
-        <ref role="1PxDUh" to="l7us:~MPSIcons$ToolWindows" resolve="ToolWindows" />
+        <ref role="1PxDUh" to="l7us:~MPSIcons$ToolWindows" resolve="MPSIcons.ToolWindows" />
       </node>
     </node>
     <node concept="2xpIHi" id="2$nlLZbYkg9" role="uR5cp">

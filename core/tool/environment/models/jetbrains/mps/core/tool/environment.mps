@@ -2601,7 +2601,7 @@
             </node>
             <node concept="2ShNRf" id="1ROuiHSV4$" role="33vP2m">
               <node concept="1pGfFk" id="1ROuiHSV4_" role="2ShVmc">
-                <ref role="37wK5l" node="42pPXbiGsoN" />
+                <ref role="37wK5l" node="42pPXbiGsoN" resolve="LibraryContributorHelper" />
                 <node concept="2OqwBi" id="6oGbDMFIcTA" role="37wK5m">
                   <node concept="2OqwBi" id="6oGbDMFI8Xf" role="2Oq$k0">
                     <node concept="37vLTw" id="6oGbDMFI8gF" role="2Oq$k0">

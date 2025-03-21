@@ -287,7 +287,7 @@
         <node concept="3F1sOY" id="7wBXNqHfdoS" role="3EZMnx">
           <property role="39s7Ar" value="true" />
           <property role="1$x2rV" value="." />
-          <ref role="1NtTu8" to="5tjl:7wBXNqHfd9m" />
+          <ref role="1NtTu8" to="5tjl:7wBXNqHfd9m" resolve="reportsDir" />
           <node concept="ljvvj" id="7wBXNqHfdoT" role="3F10Kt">
             <property role="VOm3f" value="true" />
           </node>

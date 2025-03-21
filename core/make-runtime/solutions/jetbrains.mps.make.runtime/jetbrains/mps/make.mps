@@ -981,7 +981,7 @@
           <node concept="3KbdKl" id="19cQIvY8F8I" role="3KbHQx">
             <node concept="Rm8GO" id="19cQIvY8F8J" role="3Kbmr1">
               <ref role="Rm8GQ" node="7lTD6YZtjgj" resolve="SCRIPT_ABOUT_TO_START" />
-              <ref role="1Px2BO" node="7lTD6YZtjgd" resolve="Kind" />
+              <ref role="1Px2BO" node="7lTD6YZtjgd" resolve="MakeNotification.Kind" />
             </node>
             <node concept="3clFbS" id="19cQIvY8F8K" role="3Kbo56">
               <node concept="3clFbF" id="19cQIvY8F8L" role="3cqZAp">
@@ -998,7 +998,7 @@
           <node concept="3KbdKl" id="19cQIvY8F8P" role="3KbHQx">
             <node concept="Rm8GO" id="19cQIvY8F8Q" role="3Kbmr1">
               <ref role="Rm8GQ" node="7lTD6YZtjgl" resolve="SCRIPT_FINISHED" />
-              <ref role="1Px2BO" node="7lTD6YZtjgd" resolve="Kind" />
+              <ref role="1Px2BO" node="7lTD6YZtjgd" resolve="MakeNotification.Kind" />
             </node>
             <node concept="3clFbS" id="19cQIvY8F8R" role="3Kbo56">
               <node concept="3clFbF" id="19cQIvY8F8S" role="3cqZAp">
@@ -1015,7 +1015,7 @@
           <node concept="3KbdKl" id="19cQIvY8F8W" role="3KbHQx">
             <node concept="Rm8GO" id="19cQIvY8F8X" role="3Kbmr1">
               <ref role="Rm8GQ" node="5O50Cn9WpA7" resolve="SESSION_OPENED" />
-              <ref role="1Px2BO" node="7lTD6YZtjgd" resolve="Kind" />
+              <ref role="1Px2BO" node="7lTD6YZtjgd" resolve="MakeNotification.Kind" />
             </node>
             <node concept="3clFbS" id="19cQIvY8F8Y" role="3Kbo56">
               <node concept="3clFbF" id="19cQIvY8F8Z" role="3cqZAp">
@@ -1032,7 +1032,7 @@
           <node concept="3KbdKl" id="19cQIvY8F93" role="3KbHQx">
             <node concept="Rm8GO" id="19cQIvY8F94" role="3Kbmr1">
               <ref role="Rm8GQ" node="5O50Cn9WpYr" resolve="SESSION_CLOSED" />
-              <ref role="1Px2BO" node="7lTD6YZtjgd" resolve="Kind" />
+              <ref role="1Px2BO" node="7lTD6YZtjgd" resolve="MakeNotification.Kind" />
             </node>
             <node concept="3clFbS" id="19cQIvY8F95" role="3Kbo56">
               <node concept="3clFbF" id="19cQIvY8F96" role="3cqZAp">
@@ -1231,7 +1231,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="19cQIvY8Hc4" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="19cQIvY8Hxa" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="19cQIvY8Hzf" role="2B70Vg">
@@ -1329,7 +1329,7 @@
           <node concept="1Y3b0j" id="19cQIvY6vxa" role="YeSDq">
             <property role="2bfB8j" value="true" />
             <property role="373rjd" value="true" />
-            <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+            <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
             <ref role="1Y3XeK" node="7lTD6YZtjg2" resolve="IMakeNotificationListener" />
             <node concept="2tJIrI" id="19cQIvY6wmS" role="jymVt" />
             <node concept="3Tm1VV" id="19cQIvY6vxb" role="1B3o_S" />

@@ -504,7 +504,7 @@
                         <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
                       </node>
                       <node concept="37vLTw" id="9e_VjbpeWT" role="37wK5m">
-                        <ref role="3cqZAo" node="9e_VjbpeWK" resolve="normalPasteProvider" />
+                        <ref role="3cqZAo" node="9e_VjbpeWK" resolve="parentPP" />
                       </node>
                       <node concept="2OqwBi" id="7vB_l7TzDd" role="37wK5m">
                         <node concept="tl45R" id="7vB_l7TzDe" role="2Oq$k0" />
@@ -543,7 +543,7 @@
           <node concept="3y3z36" id="9e_VjbpheC" role="3clFbw">
             <node concept="10Nm6u" id="9e_Vjbphtg" role="3uHU7w" />
             <node concept="37vLTw" id="9e_VjbpgUs" role="3uHU7B">
-              <ref role="3cqZAo" node="9e_VjbpeWK" resolve="normalPasteProvider" />
+              <ref role="3cqZAo" node="9e_VjbpeWK" resolve="parentPP" />
             </node>
           </node>
         </node>

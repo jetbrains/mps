@@ -1672,7 +1672,7 @@
                   <ref role="3cqZAo" node="1wZEJo5vIks" resolve="transactionalProperty" />
                 </node>
                 <node concept="3TrEf2" id="2nRpujhk0id" role="2OqNvi">
-                  <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" />
+                  <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" resolve="propertyDeclaration" />
                 </node>
               </node>
               <node concept="3TrEf2" id="2nRpujhk0_a" role="2OqNvi">
@@ -1730,7 +1730,7 @@
               <ref role="3cqZAo" node="17Qbgo5Je6P" resolve="transactionalProperty" />
             </node>
             <node concept="3TrEf2" id="17Qbgo5Je72" role="2OqNvi">
-              <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" />
+              <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" resolve="propertyDeclaration" />
             </node>
           </node>
         </node>

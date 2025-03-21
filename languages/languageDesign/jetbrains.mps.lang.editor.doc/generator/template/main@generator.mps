@@ -253,7 +253,7 @@
             <node concept="3clFbH" id="cw$pjSPubh" role="3cqZAp">
               <node concept="raruj" id="cw$pjSPubi" role="lGtFl" />
               <node concept="5jKBG" id="cw$pjSPubj" role="lGtFl">
-                <ref role="v9R2y" node="7XU1fOGp8aY" resolve="reduce_CellModel_HtmlTag" />
+                <ref role="v9R2y" node="7XU1fOGp8aY" resolve="cellFactoryMethod_CellModel_HtmlTag" />
               </node>
             </node>
             <node concept="3clFbH" id="cw$pjSPubk" role="3cqZAp">
@@ -659,7 +659,7 @@
                     <ref role="3cqZAo" node="45v$Up9vQqK" resolve="closeBracket1" />
                   </node>
                   <node concept="37vLTw" id="45v$Up9z5O3" role="37wK5m">
-                    <ref role="3cqZAo" node="7XU1fOGpryL" resolve="conetentCell" />
+                    <ref role="3cqZAo" node="7XU1fOGpryL" resolve="conetntCell" />
                   </node>
                   <node concept="37vLTw" id="45v$Up9z0Th" role="37wK5m">
                     <ref role="3cqZAo" node="45v$Up9vRYY" resolve="openBracket2" />
@@ -1274,7 +1274,7 @@
                   <node concept="2OqwBi" id="hxx$N_o" role="3clFbG">
                     <node concept="30H73N" id="hsbBtFN" role="2Oq$k0" />
                     <node concept="3TrEf2" id="hsbBu2O" role="2OqNvi">
-                      <ref role="3Tt5mk" to="kaxz:7XU1fOGp86t" />
+                      <ref role="3Tt5mk" to="kaxz:7XU1fOGp86t" resolve="visibleCell" />
                     </node>
                   </node>
                 </node>
@@ -1292,7 +1292,7 @@
                   <node concept="2OqwBi" id="4DEH7GlykA8" role="3clFbG">
                     <node concept="30H73N" id="4DEH7GlykA9" role="2Oq$k0" />
                     <node concept="3TrEf2" id="4DEH7GlykAa" role="2OqNvi">
-                      <ref role="3Tt5mk" to="kaxz:5TFSJ7ml5bA" />
+                      <ref role="3Tt5mk" to="kaxz:5TFSJ7ml5bA" resolve="name" />
                     </node>
                   </node>
                 </node>

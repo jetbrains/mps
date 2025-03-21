@@ -698,7 +698,7 @@
                 <node concept="liA8E" id="58ou7t7ECvJ" role="2OqNvi">
                   <ref role="37wK5l" to="33ny:~List.add(java.lang.Object)" resolve="add" />
                   <node concept="37vLTw" id="58ou7t7Hk20" role="37wK5m">
-                    <ref role="3cqZAo" node="58ou7t7Hk1W" resolve="instantiate" />
+                    <ref role="3cqZAo" node="58ou7t7Hk1W" resolve="di" />
                   </node>
                 </node>
               </node>
@@ -4164,7 +4164,7 @@
         <node concept="1DcWWT" id="3SnNvqCaJCT" role="3cqZAp">
           <node concept="2OqwBi" id="3SnNvqCaJCU" role="1DdaDG">
             <node concept="37vLTw" id="58ou7t7H3dI" role="2Oq$k0">
-              <ref role="3cqZAo" node="58ou7t7H3dG" resolve="breakpointsProvider" />
+              <ref role="3cqZAo" node="58ou7t7H3dG" resolve="bp" />
             </node>
             <node concept="liA8E" id="3SnNvqCaJCW" role="2OqNvi">
               <ref role="37wK5l" to="rw00:3SnNvqCaJaQ" resolve="getAllKinds" />

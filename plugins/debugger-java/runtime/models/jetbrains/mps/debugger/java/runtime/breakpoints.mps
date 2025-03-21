@@ -535,7 +535,7 @@
           <node concept="2ShNRf" id="2WipSYwxaRl" role="3cqZAk">
             <node concept="1pGfFk" id="2WipSYwxaRm" role="2ShVmc">
               <property role="373rjd" value="true" />
-              <ref role="37wK5l" to="rw00:3SnNvqCaJVF" />
+              <ref role="37wK5l" to="rw00:3SnNvqCaJVF" resolve="BreakpointLocation" />
               <node concept="37vLTw" id="2WipSYwxaRn" role="37wK5m">
                 <ref role="3cqZAo" node="3Gc6Q_RZ3OO" resolve="myNode" />
               </node>
@@ -574,7 +574,7 @@
                 <node concept="2OqwBi" id="2WipSYwxe2v" role="37vLTx">
                   <node concept="2ShNRf" id="2WipSYwxe2w" role="2Oq$k0">
                     <node concept="1pGfFk" id="2WipSYwxe2x" role="2ShVmc">
-                      <ref role="37wK5l" node="3Gc6Q_RUiQ3" />
+                      <ref role="37wK5l" node="3Gc6Q_RUiQ3" resolve="BreakpointLocationUpdate" />
                       <node concept="37vLTw" id="2WipSYwxe2y" role="37wK5m">
                         <ref role="3cqZAo" node="3Gc6Q_RZ3OO" resolve="myNode" />
                       </node>
@@ -1687,7 +1687,7 @@
                 <node concept="2OqwBi" id="2WipSYwweIc" role="37vLTx">
                   <node concept="2ShNRf" id="2WipSYwweId" role="2Oq$k0">
                     <node concept="1pGfFk" id="2WipSYwweIe" role="2ShVmc">
-                      <ref role="37wK5l" node="3Gc6Q_RUiQ3" />
+                      <ref role="37wK5l" node="3Gc6Q_RUiQ3" resolve="BreakpointLocationUpdate" />
                       <node concept="37vLTw" id="2WipSYwweIf" role="37wK5m">
                         <ref role="3cqZAo" node="2wxFklq8GJ2" resolve="myNode" />
                       </node>
@@ -4203,7 +4203,7 @@
           <node concept="2ShNRf" id="2WipSYwwQKN" role="3cqZAk">
             <node concept="1pGfFk" id="2WipSYwwQKO" role="2ShVmc">
               <property role="373rjd" value="true" />
-              <ref role="37wK5l" to="rw00:3SnNvqCaJVF" />
+              <ref role="37wK5l" to="rw00:3SnNvqCaJVF" resolve="BreakpointLocation" />
               <node concept="37vLTw" id="2WipSYwwQKP" role="37wK5m">
                 <ref role="3cqZAo" node="3Gc6Q_S114s" resolve="myNode" />
               </node>
@@ -4242,7 +4242,7 @@
                 <node concept="2OqwBi" id="2WipSYwxmdg" role="37vLTx">
                   <node concept="2ShNRf" id="2WipSYwxmdh" role="2Oq$k0">
                     <node concept="1pGfFk" id="2WipSYwxmdi" role="2ShVmc">
-                      <ref role="37wK5l" node="3Gc6Q_RUiQ3" />
+                      <ref role="37wK5l" node="3Gc6Q_RUiQ3" resolve="BreakpointLocationUpdate" />
                       <node concept="37vLTw" id="2WipSYwxmdj" role="37wK5m">
                         <ref role="3cqZAo" node="3Gc6Q_S114s" resolve="myNode" />
                       </node>
@@ -5698,7 +5698,7 @@
                 </node>
               </node>
               <node concept="2AHcQZ" id="6NxWNcDWex4" role="2AJF6D">
-                <ref role="2AI5Lk" to="wyt6:~Override" />
+                <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
               </node>
             </node>
             <node concept="3Tm1VV" id="62lIp2ZYBSK" role="1B3o_S" />
@@ -5792,14 +5792,14 @@
               </node>
             </node>
             <node concept="37vLTw" id="62lIp2ZY6J$" role="37vLTJ">
-              <ref role="3cqZAo" node="62lIp2ZXXRE" resolve="myClassloaderManager" />
+              <ref role="3cqZAo" node="62lIp2ZXXRE" resolve="myDeployManager" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="62lIp2ZYiqk" role="3cqZAp">
           <node concept="2OqwBi" id="62lIp2ZYiQm" role="3clFbG">
             <node concept="37vLTw" id="62lIp2ZYiqi" role="2Oq$k0">
-              <ref role="3cqZAo" node="62lIp2ZXXRE" resolve="myClassloaderManager" />
+              <ref role="3cqZAo" node="62lIp2ZXXRE" resolve="myDeployManager" />
             </node>
             <node concept="liA8E" id="62lIp2ZYjem" role="2OqNvi">
               <ref role="37wK5l" to="vndm:~LanguageRegistry.addRegistryListener(jetbrains.mps.smodel.runtime.ModuleDeploymentListener)" resolve="addRegistryListener" />
@@ -5994,7 +5994,7 @@
         <node concept="3clFbF" id="62lIp2ZYpah" role="3cqZAp">
           <node concept="2OqwBi" id="62lIp2ZYpCb" role="3clFbG">
             <node concept="37vLTw" id="62lIp2ZYpaf" role="2Oq$k0">
-              <ref role="3cqZAo" node="62lIp2ZXXRE" resolve="myClassloaderManager" />
+              <ref role="3cqZAo" node="62lIp2ZXXRE" resolve="myDeployManager" />
             </node>
             <node concept="liA8E" id="62lIp2ZYq1Y" role="2OqNvi">
               <ref role="37wK5l" to="vndm:~LanguageRegistry.removeRegistryListener(jetbrains.mps.smodel.runtime.ModuleDeploymentListener)" resolve="removeRegistryListener" />
@@ -6008,7 +6008,7 @@
           <node concept="37vLTI" id="7QqFzpypCF7" role="3clFbG">
             <node concept="10Nm6u" id="7QqFzpypE8E" role="37vLTx" />
             <node concept="37vLTw" id="7QqFzpypAQK" role="37vLTJ">
-              <ref role="3cqZAo" node="62lIp2ZXXRE" resolve="myClassloaderManager" />
+              <ref role="3cqZAo" node="62lIp2ZXXRE" resolve="myDeployManager" />
             </node>
           </node>
         </node>

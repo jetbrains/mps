@@ -1185,7 +1185,7 @@
           <node concept="2OqwBi" id="7LE6pKGyYr5" role="2Oq$k0">
             <node concept="2OqwBi" id="7LE6pKGyYr6" role="2Oq$k0">
               <node concept="3TrEf2" id="7LE6pKGyYr8" role="2OqNvi">
-                <ref role="3Tt5mk" to="tpee:gyVODHa" />
+                <ref role="3Tt5mk" to="tpee:gyVODHa" resolve="body" />
               </node>
               <node concept="1YBJjd" id="7LE6pKGyYKW" role="2Oq$k0">
                 <ref role="1YBMHb" node="7LE6pKGyYqZ" resolve="afterTestsMethod" />

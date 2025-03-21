@@ -61865,11 +61865,11 @@
               <node concept="2pJPED" id="1vZ$eE4StTG" role="2pJPEn">
                 <ref role="2pJxaS" to="tpee:hqOqwz4" resolve="DotExpression" />
                 <node concept="2pIpSj" id="1vZ$eE4SuxC" role="2pJxcM">
-                  <ref role="2pIpSl" to="tpee:hqOq$gm" />
+                  <ref role="2pIpSl" to="tpee:hqOq$gm" resolve="operand" />
                   <node concept="2pJPED" id="1vZ$eE4SuKC" role="28nt2d">
                     <ref role="2pJxaS" to="tpee:f_0M0x6" resolve="StaticFieldReference" />
                     <node concept="2pIpSj" id="1vZ$eE4Svbe" role="2pJxcM">
-                      <ref role="2pIpSl" to="tpee:gDPxDYr" />
+                      <ref role="2pIpSl" to="tpee:gDPxDYr" resolve="classifier" />
                       <node concept="36biLy" id="1vZ$eE4Svp9" role="28nt2d">
                         <node concept="2OqwBi" id="1vZ$eE4SwsI" role="36biLW">
                           <node concept="2tJFMh" id="1vZ$eE4SvB3" role="2Oq$k0">
@@ -61891,7 +61891,7 @@
                       </node>
                     </node>
                     <node concept="2pIpSj" id="1vZ$eE4SzTP" role="2pJxcM">
-                      <ref role="2pIpSl" to="tpee:f_2Pw7K" />
+                      <ref role="2pIpSl" to="tpee:f_2Pw7K" resolve="staticFieldDeclaration" />
                       <node concept="36biLy" id="1vZ$eE4S$9n" role="28nt2d">
                         <node concept="2OqwBi" id="1vZ$eE4S$pX" role="36biLW">
                           <node concept="2tJFMh" id="1vZ$eE4S$pY" role="2Oq$k0">
@@ -61918,11 +61918,11 @@
                   </node>
                 </node>
                 <node concept="2pIpSj" id="1vZ$eE4S_du" role="2pJxcM">
-                  <ref role="2pIpSl" to="tpee:hqOqNr4" />
+                  <ref role="2pIpSl" to="tpee:hqOqNr4" resolve="operation" />
                   <node concept="2pJPED" id="1vZ$eE520F1" role="28nt2d">
                     <ref role="2pJxaS" to="tpee:hwliAcM" resolve="InstanceMethodCallOperation" />
                     <node concept="2pIpSj" id="1vZ$eE521ql" role="2pJxcM">
-                      <ref role="2pIpSl" to="tpee:hwllgre" />
+                      <ref role="2pIpSl" to="tpee:hwllgre" resolve="instanceMethodDeclaration" />
                       <node concept="36biLy" id="1vZ$eE521$N" role="28nt2d">
                         <node concept="2OqwBi" id="1vZ$eE521$O" role="36biLW">
                           <node concept="2tJFMh" id="1vZ$eE521$P" role="2Oq$k0">
@@ -62027,11 +62027,11 @@
               <node concept="2pJPED" id="1vZ$eE56LMU" role="2pJPEn">
                 <ref role="2pJxaS" to="tpee:hqOqwz4" resolve="DotExpression" />
                 <node concept="2pIpSj" id="1vZ$eE56LMV" role="2pJxcM">
-                  <ref role="2pIpSl" to="tpee:hqOq$gm" />
+                  <ref role="2pIpSl" to="tpee:hqOq$gm" resolve="operand" />
                   <node concept="2pJPED" id="1vZ$eE56LMW" role="28nt2d">
                     <ref role="2pJxaS" to="tpee:f_0M0x6" resolve="StaticFieldReference" />
                     <node concept="2pIpSj" id="1vZ$eE56LMX" role="2pJxcM">
-                      <ref role="2pIpSl" to="tpee:gDPxDYr" />
+                      <ref role="2pIpSl" to="tpee:gDPxDYr" resolve="classifier" />
                       <node concept="36biLy" id="1vZ$eE56LMY" role="28nt2d">
                         <node concept="2OqwBi" id="1vZ$eE56LMZ" role="36biLW">
                           <node concept="2tJFMh" id="1vZ$eE56LN0" role="2Oq$k0">
@@ -62053,7 +62053,7 @@
                       </node>
                     </node>
                     <node concept="2pIpSj" id="1vZ$eE56LN7" role="2pJxcM">
-                      <ref role="2pIpSl" to="tpee:f_2Pw7K" />
+                      <ref role="2pIpSl" to="tpee:f_2Pw7K" resolve="staticFieldDeclaration" />
                       <node concept="36biLy" id="1vZ$eE56LN8" role="28nt2d">
                         <node concept="2OqwBi" id="1vZ$eE56LN9" role="36biLW">
                           <node concept="2tJFMh" id="1vZ$eE56LNa" role="2Oq$k0">
@@ -62080,11 +62080,11 @@
                   </node>
                 </node>
                 <node concept="2pIpSj" id="1vZ$eE56LNi" role="2pJxcM">
-                  <ref role="2pIpSl" to="tpee:hqOqNr4" />
+                  <ref role="2pIpSl" to="tpee:hqOqNr4" resolve="operation" />
                   <node concept="2pJPED" id="1vZ$eE56LNj" role="28nt2d">
                     <ref role="2pJxaS" to="tpee:hwliAcM" resolve="InstanceMethodCallOperation" />
                     <node concept="2pIpSj" id="1vZ$eE56LNk" role="2pJxcM">
-                      <ref role="2pIpSl" to="tpee:hwllgre" />
+                      <ref role="2pIpSl" to="tpee:hwllgre" resolve="instanceMethodDeclaration" />
                       <node concept="36biLy" id="1vZ$eE56LNl" role="28nt2d">
                         <node concept="2OqwBi" id="1vZ$eE56LNm" role="36biLW">
                           <node concept="2tJFMh" id="1vZ$eE56LNn" role="2Oq$k0">

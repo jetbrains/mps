@@ -904,7 +904,7 @@
               <node concept="3cpWsn" id="77jl1fNfRL4" role="3cpWs9">
                 <property role="TrG5h" value="dialog" />
                 <node concept="3uibUv" id="77jl1fNfRL6" role="1tU5fm">
-                  <ref role="3uigEE" node="77jl1fNfRHd" resolve="CheckBeforeGenerationDialog" />
+                  <ref role="3uigEE" node="77jl1fNfRHd" resolve="ModelValidatorAdapter.CheckBeforeGenerationDialog" />
                 </node>
                 <node concept="2ShNRf" id="77jl1fNfVfE" role="33vP2m">
                   <node concept="1pGfFk" id="77jl1fNfVfP" role="2ShVmc">
@@ -1361,7 +1361,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="77jl1fNhhzy" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="77jl1fNhhmi" role="jymVt" />
@@ -2200,7 +2200,7 @@
     </node>
     <node concept="3Tm1VV" id="3etVqSRT$LR" role="1B3o_S" />
     <node concept="3uibUv" id="3etVqSRT$LS" role="1zkMxy">
-      <ref role="3uigEE" node="3etVqSRRx7i" />
+      <ref role="3uigEE" node="3etVqSRRx7i" resolve="SpecificChecker" />
     </node>
   </node>
   <node concept="312cEu" id="4ascWT9fo$P">
@@ -2268,7 +2268,7 @@
     <node concept="2tJIrI" id="4ascWT9gduz" role="jymVt" />
     <node concept="3Tm1VV" id="4ascWT9fo$Q" role="1B3o_S" />
     <node concept="3uibUv" id="4ascWT9f$vO" role="1zkMxy">
-      <ref role="3uigEE" node="3etVqSRRx7i" />
+      <ref role="3uigEE" node="3etVqSRRx7i" resolve="SpecificChecker" />
     </node>
     <node concept="3clFb_" id="4ascWT9gdxV" role="jymVt">
       <property role="TrG5h" value="check" />

@@ -4717,7 +4717,7 @@
                   <node concept="1eOMI4" id="4s8_snvw6As" role="2Oq$k0">
                     <node concept="10QFUN" id="4s8_snvw6Ap" role="1eOMHV">
                       <node concept="3uibUv" id="4s8_snvw6Au" role="10QFUM">
-                        <ref role="3uigEE" to="4324:~KmClassifier$Class" resolve="Class" />
+                        <ref role="3uigEE" to="4324:~KmClassifier$Class" resolve="KmClassifier.Class" />
                       </node>
                       <node concept="37vLTw" id="4s8_snvw6Av" role="10QFUP">
                         <ref role="3cqZAo" node="4s8_snvw22e" resolve="classifier" />
@@ -4826,7 +4826,7 @@
           </node>
           <node concept="2ZW3vV" id="4s8_snvw4KF" role="3clFbw">
             <node concept="3uibUv" id="4s8_snvw50C" role="2ZW6by">
-              <ref role="3uigEE" to="4324:~KmClassifier$Class" resolve="Class" />
+              <ref role="3uigEE" to="4324:~KmClassifier$Class" resolve="KmClassifier.Class" />
             </node>
             <node concept="37vLTw" id="4s8_snvw4rU" role="2ZW6bz">
               <ref role="3cqZAo" node="4s8_snvw22e" resolve="classifier" />
@@ -4835,7 +4835,7 @@
           <node concept="3eNFk2" id="4s8_snvwmev" role="3eNLev">
             <node concept="2ZW3vV" id="4s8_snvwnhn" role="3eO9$A">
               <node concept="3uibUv" id="4s8_snvwn$m" role="2ZW6by">
-                <ref role="3uigEE" to="4324:~KmClassifier$TypeAlias" resolve="TypeAlias" />
+                <ref role="3uigEE" to="4324:~KmClassifier$TypeAlias" resolve="KmClassifier.TypeAlias" />
               </node>
               <node concept="37vLTw" id="4s8_snvwmvZ" role="2ZW6bz">
                 <ref role="3cqZAo" node="4s8_snvw22e" resolve="classifier" />
@@ -4850,7 +4850,7 @@
                     <node concept="1eOMI4" id="4s8_snvwsou" role="2Oq$k0">
                       <node concept="10QFUN" id="4s8_snvwsor" role="1eOMHV">
                         <node concept="3uibUv" id="4s8_snvwsFf" role="10QFUM">
-                          <ref role="3uigEE" to="4324:~KmClassifier$TypeAlias" resolve="TypeAlias" />
+                          <ref role="3uigEE" to="4324:~KmClassifier$TypeAlias" resolve="KmClassifier.TypeAlias" />
                         </node>
                         <node concept="37vLTw" id="4s8_snvwsox" role="10QFUP">
                           <ref role="3cqZAo" node="4s8_snvw22e" resolve="classifier" />
@@ -4949,7 +4949,7 @@
           <node concept="3eNFk2" id="4s8_snvwEcg" role="3eNLev">
             <node concept="2ZW3vV" id="4s8_snvwFo9" role="3eO9$A">
               <node concept="3uibUv" id="4s8_snvwFMc" role="2ZW6by">
-                <ref role="3uigEE" to="4324:~KmClassifier$TypeParameter" resolve="TypeParameter" />
+                <ref role="3uigEE" to="4324:~KmClassifier$TypeParameter" resolve="KmClassifier.TypeParameter" />
               </node>
               <node concept="37vLTw" id="4s8_snvwETn" role="2ZW6bz">
                 <ref role="3cqZAo" node="4s8_snvw22e" resolve="classifier" />
@@ -4964,7 +4964,7 @@
                     <node concept="1eOMI4" id="4s8_snvwQ$W" role="2Oq$k0">
                       <node concept="10QFUN" id="4s8_snvwQ$X" role="1eOMHV">
                         <node concept="3uibUv" id="4s8_snvwQ$Y" role="10QFUM">
-                          <ref role="3uigEE" to="4324:~KmClassifier$TypeParameter" resolve="TypeParameter" />
+                          <ref role="3uigEE" to="4324:~KmClassifier$TypeParameter" resolve="KmClassifier.TypeParameter" />
                         </node>
                         <node concept="37vLTw" id="4s8_snvwQ$Z" role="10QFUP">
                           <ref role="3cqZAo" node="4s8_snvw22e" resolve="classifier" />
@@ -8266,11 +8266,11 @@
               <node concept="3cpWsn" id="4s8_snvhfgH" role="3cpWs9">
                 <property role="TrG5h" value="lit" />
                 <node concept="3uibUv" id="4s8_snvhfgF" role="1tU5fm">
-                  <ref role="3uigEE" to="4324:~KmAnnotationArgument$LiteralValue" resolve="LiteralValue" />
+                  <ref role="3uigEE" to="4324:~KmAnnotationArgument$LiteralValue" resolve="KmAnnotationArgument.LiteralValue" />
                 </node>
                 <node concept="10QFUN" id="4s8_snvhfgD" role="33vP2m">
                   <node concept="3uibUv" id="4s8_snvhfgB" role="10QFUM">
-                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$LiteralValue" resolve="LiteralValue" />
+                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$LiteralValue" resolve="KmAnnotationArgument.LiteralValue" />
                   </node>
                   <node concept="37vLTw" id="4s8_snvhfg_" role="10QFUP">
                     <ref role="3cqZAo" node="4s8_snvhfdb" resolve="arg" />
@@ -8282,7 +8282,7 @@
             <node concept="3clFbJ" id="4s8_snvhfgt" role="3cqZAp">
               <node concept="2ZW3vV" id="4s8_snvhfgr" role="3clFbw">
                 <node concept="3uibUv" id="4s8_snvhfgX" role="2ZW6by">
-                  <ref role="3uigEE" to="4324:~KmAnnotationArgument$BooleanValue" resolve="BooleanValue" />
+                  <ref role="3uigEE" to="4324:~KmAnnotationArgument$BooleanValue" resolve="KmAnnotationArgument.BooleanValue" />
                 </node>
                 <node concept="37vLTw" id="4s8_snvhfgV" role="2ZW6bz">
                   <ref role="3cqZAo" node="4s8_snvhfgH" resolve="lit" />
@@ -8320,7 +8320,7 @@
               <node concept="3eNFk2" id="4s8_snvhffT" role="3eNLev">
                 <node concept="2ZW3vV" id="4s8_snvhffR" role="3eO9$A">
                   <node concept="3uibUv" id="4s8_snvhfgp" role="2ZW6by">
-                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$StringValue" resolve="StringValue" />
+                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$StringValue" resolve="KmAnnotationArgument.StringValue" />
                   </node>
                   <node concept="37vLTw" id="4s8_snvhfgn" role="2ZW6bz">
                     <ref role="3cqZAo" node="4s8_snvhfgH" resolve="lit" />
@@ -8371,7 +8371,7 @@
               <node concept="3eNFk2" id="4s8_snvhfar" role="3eNLev">
                 <node concept="2ZW3vV" id="4s8_snvhfap" role="3eO9$A">
                   <node concept="3uibUv" id="4s8_snvhfal" role="2ZW6by">
-                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$CharValue" resolve="CharValue" />
+                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$CharValue" resolve="KmAnnotationArgument.CharValue" />
                   </node>
                   <node concept="37vLTw" id="4s8_snvhfah" role="2ZW6bz">
                     <ref role="3cqZAo" node="4s8_snvhfgH" resolve="lit" />
@@ -8409,7 +8409,7 @@
                 <node concept="22lmx$" id="4s8_snvhf9p" role="3eO9$A">
                   <node concept="2ZW3vV" id="4s8_snvhf9P" role="3uHU7B">
                     <node concept="3uibUv" id="4s8_snvhf9N" role="2ZW6by">
-                      <ref role="3uigEE" to="4324:~KmAnnotationArgument$DoubleValue" resolve="DoubleValue" />
+                      <ref role="3uigEE" to="4324:~KmAnnotationArgument$DoubleValue" resolve="KmAnnotationArgument.DoubleValue" />
                     </node>
                     <node concept="37vLTw" id="4s8_snvhf9L" role="2ZW6bz">
                       <ref role="3cqZAo" node="4s8_snvhfgH" resolve="lit" />
@@ -8417,7 +8417,7 @@
                   </node>
                   <node concept="2ZW3vV" id="4s8_snvhf9J" role="3uHU7w">
                     <node concept="3uibUv" id="4s8_snvhf9H" role="2ZW6by">
-                      <ref role="3uigEE" to="4324:~KmAnnotationArgument$FloatValue" resolve="FloatValue" />
+                      <ref role="3uigEE" to="4324:~KmAnnotationArgument$FloatValue" resolve="KmAnnotationArgument.FloatValue" />
                     </node>
                     <node concept="37vLTw" id="4s8_snvhf9F" role="2ZW6bz">
                       <ref role="3cqZAo" node="4s8_snvhfgH" resolve="lit" />
@@ -8488,7 +8488,7 @@
                       <node concept="10P_77" id="4s8_snvhfh5" role="1tU5fm" />
                       <node concept="2ZW3vV" id="4s8_snvhff1" role="33vP2m">
                         <node concept="3uibUv" id="4s8_snvhfeV" role="2ZW6by">
-                          <ref role="3uigEE" to="4324:~KmAnnotationArgument$ULongValue" resolve="ULongValue" />
+                          <ref role="3uigEE" to="4324:~KmAnnotationArgument$ULongValue" resolve="KmAnnotationArgument.ULongValue" />
                         </node>
                         <node concept="37vLTw" id="4s8_snvhfeP" role="2ZW6bz">
                           <ref role="3cqZAo" node="4s8_snvhfgH" resolve="lit" />
@@ -8508,7 +8508,7 @@
                           <node concept="22lmx$" id="4s8_snvhfix" role="3uHU7B">
                             <node concept="2ZW3vV" id="4s8_snvhffB" role="3uHU7B">
                               <node concept="3uibUv" id="4s8_snvhf8d" role="2ZW6by">
-                                <ref role="3uigEE" to="4324:~KmAnnotationArgument$UShortValue" resolve="UShortValue" />
+                                <ref role="3uigEE" to="4324:~KmAnnotationArgument$UShortValue" resolve="KmAnnotationArgument.UShortValue" />
                               </node>
                               <node concept="37vLTw" id="4s8_snvhf5D" role="2ZW6bz">
                                 <ref role="3cqZAo" node="4s8_snvhfgH" resolve="lit" />
@@ -8516,7 +8516,7 @@
                             </node>
                             <node concept="2ZW3vV" id="4s8_snvhfcP" role="3uHU7w">
                               <node concept="3uibUv" id="4s8_snvhfib" role="2ZW6by">
-                                <ref role="3uigEE" to="4324:~KmAnnotationArgument$UIntValue" resolve="UIntValue" />
+                                <ref role="3uigEE" to="4324:~KmAnnotationArgument$UIntValue" resolve="KmAnnotationArgument.UIntValue" />
                               </node>
                               <node concept="37vLTw" id="4s8_snvhf93" role="2ZW6bz">
                                 <ref role="3cqZAo" node="4s8_snvhfgH" resolve="lit" />
@@ -8525,7 +8525,7 @@
                           </node>
                           <node concept="2ZW3vV" id="4s8_snvhf4h" role="3uHU7w">
                             <node concept="3uibUv" id="4s8_snvhffF" role="2ZW6by">
-                              <ref role="3uigEE" to="4324:~KmAnnotationArgument$UByteValue" resolve="UByteValue" />
+                              <ref role="3uigEE" to="4324:~KmAnnotationArgument$UByteValue" resolve="KmAnnotationArgument.UByteValue" />
                             </node>
                             <node concept="37vLTw" id="4s8_snvhffn" role="2ZW6bz">
                               <ref role="3cqZAo" node="4s8_snvhfgH" resolve="lit" />
@@ -8604,7 +8604,7 @@
                             <node concept="22lmx$" id="4s8_snvhfiB" role="WxPPp">
                               <node concept="2ZW3vV" id="4s8_snvhffH" role="3uHU7w">
                                 <node concept="3uibUv" id="4s8_snvhfad" role="2ZW6by">
-                                  <ref role="3uigEE" to="4324:~KmAnnotationArgument$LongValue" resolve="LongValue" />
+                                  <ref role="3uigEE" to="4324:~KmAnnotationArgument$LongValue" resolve="KmAnnotationArgument.LongValue" />
                                 </node>
                                 <node concept="37vLTw" id="4s8_snvhf5L" role="2ZW6bz">
                                   <ref role="3cqZAo" node="4s8_snvhfgH" resolve="lit" />
@@ -8633,7 +8633,7 @@
           </node>
           <node concept="2ZW3vV" id="4s8_snvhf83" role="3clFbw">
             <node concept="3uibUv" id="4s8_snvhf81" role="2ZW6by">
-              <ref role="3uigEE" to="4324:~KmAnnotationArgument$LiteralValue" resolve="LiteralValue" />
+              <ref role="3uigEE" to="4324:~KmAnnotationArgument$LiteralValue" resolve="KmAnnotationArgument.LiteralValue" />
             </node>
             <node concept="37vLTw" id="4s8_snvhf7Z" role="2ZW6bz">
               <ref role="3cqZAo" node="4s8_snvhfdb" resolve="arg" />
@@ -8642,7 +8642,7 @@
           <node concept="3eNFk2" id="4s8_snvhf7X" role="3eNLev">
             <node concept="2ZW3vV" id="4s8_snvhf7V" role="3eO9$A">
               <node concept="3uibUv" id="4s8_snvhf7T" role="2ZW6by">
-                <ref role="3uigEE" to="4324:~KmAnnotationArgument$KClassValue" resolve="KClassValue" />
+                <ref role="3uigEE" to="4324:~KmAnnotationArgument$KClassValue" resolve="KmAnnotationArgument.KClassValue" />
               </node>
               <node concept="37vLTw" id="4s8_snvhf7R" role="2ZW6bz">
                 <ref role="3cqZAo" node="4s8_snvhfdb" resolve="arg" />
@@ -8653,11 +8653,11 @@
                 <node concept="3cpWsn" id="4s8_snvhf8l" role="3cpWs9">
                   <property role="TrG5h" value="value" />
                   <node concept="3uibUv" id="4s8_snvhf8h" role="1tU5fm">
-                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$KClassValue" resolve="KClassValue" />
+                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$KClassValue" resolve="KmAnnotationArgument.KClassValue" />
                   </node>
                   <node concept="10QFUN" id="4s8_snvhf8f" role="33vP2m">
                     <node concept="3uibUv" id="4s8_snvhf8b" role="10QFUM">
-                      <ref role="3uigEE" to="4324:~KmAnnotationArgument$KClassValue" resolve="KClassValue" />
+                      <ref role="3uigEE" to="4324:~KmAnnotationArgument$KClassValue" resolve="KmAnnotationArgument.KClassValue" />
                     </node>
                     <node concept="37vLTw" id="4s8_snvhf89" role="10QFUP">
                       <ref role="3cqZAo" node="4s8_snvhfdb" resolve="arg" />
@@ -8716,7 +8716,7 @@
           <node concept="3eNFk2" id="56eVghWjha7" role="3eNLev">
             <node concept="2ZW3vV" id="56eVghWjha8" role="3eO9$A">
               <node concept="3uibUv" id="56eVghWjha9" role="2ZW6by">
-                <ref role="3uigEE" to="4324:~KmAnnotationArgument$ArrayKClassValue" resolve="ArrayKClassValue" />
+                <ref role="3uigEE" to="4324:~KmAnnotationArgument$ArrayKClassValue" resolve="KmAnnotationArgument.ArrayKClassValue" />
               </node>
               <node concept="37vLTw" id="56eVghWjhaa" role="2ZW6bz">
                 <ref role="3cqZAo" node="4s8_snvhfdb" resolve="arg" />
@@ -8727,11 +8727,11 @@
                 <node concept="3cpWsn" id="56eVghWjhad" role="3cpWs9">
                   <property role="TrG5h" value="value" />
                   <node concept="3uibUv" id="56eVghWjhae" role="1tU5fm">
-                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$ArrayKClassValue" resolve="ArrayKClassValue" />
+                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$ArrayKClassValue" resolve="KmAnnotationArgument.ArrayKClassValue" />
                   </node>
                   <node concept="10QFUN" id="56eVghWjhaf" role="33vP2m">
                     <node concept="3uibUv" id="56eVghWjhag" role="10QFUM">
-                      <ref role="3uigEE" to="4324:~KmAnnotationArgument$ArrayKClassValue" resolve="ArrayKClassValue" />
+                      <ref role="3uigEE" to="4324:~KmAnnotationArgument$ArrayKClassValue" resolve="KmAnnotationArgument.ArrayKClassValue" />
                     </node>
                     <node concept="37vLTw" id="56eVghWjhah" role="10QFUP">
                       <ref role="3cqZAo" node="4s8_snvhfdb" resolve="arg" />
@@ -8801,7 +8801,7 @@
           <node concept="3eNFk2" id="4s8_snvhf67" role="3eNLev">
             <node concept="2ZW3vV" id="4s8_snvhf65" role="3eO9$A">
               <node concept="3uibUv" id="4s8_snvhf63" role="2ZW6by">
-                <ref role="3uigEE" to="4324:~KmAnnotationArgument$EnumValue" resolve="EnumValue" />
+                <ref role="3uigEE" to="4324:~KmAnnotationArgument$EnumValue" resolve="KmAnnotationArgument.EnumValue" />
               </node>
               <node concept="37vLTw" id="4s8_snvhf6P" role="2ZW6bz">
                 <ref role="3cqZAo" node="4s8_snvhfdb" resolve="arg" />
@@ -8812,12 +8812,12 @@
                 <node concept="3cpWsn" id="4s8_snvhf6D" role="3cpWs9">
                   <property role="TrG5h" value="value" />
                   <node concept="3uibUv" id="4s8_snvhf6_" role="1tU5fm">
-                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$EnumValue" resolve="EnumValue" />
+                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$EnumValue" resolve="KmAnnotationArgument.EnumValue" />
                   </node>
                   <node concept="1eOMI4" id="4s8_snvhf6v" role="33vP2m">
                     <node concept="10QFUN" id="4s8_snvhf6r" role="1eOMHV">
                       <node concept="3uibUv" id="4s8_snvhf6n" role="10QFUM">
-                        <ref role="3uigEE" to="4324:~KmAnnotationArgument$EnumValue" resolve="EnumValue" />
+                        <ref role="3uigEE" to="4324:~KmAnnotationArgument$EnumValue" resolve="KmAnnotationArgument.EnumValue" />
                       </node>
                       <node concept="37vLTw" id="4s8_snvhf5X" role="10QFUP">
                         <ref role="3cqZAo" node="4s8_snvhfdb" resolve="arg" />
@@ -8974,7 +8974,7 @@
           <node concept="3eNFk2" id="4s8_snvhf5l" role="3eNLev">
             <node concept="2ZW3vV" id="4s8_snvhf5j" role="3eO9$A">
               <node concept="3uibUv" id="4s8_snvhf5h" role="2ZW6by">
-                <ref role="3uigEE" to="4324:~KmAnnotationArgument$ArrayValue" resolve="ArrayValue" />
+                <ref role="3uigEE" to="4324:~KmAnnotationArgument$ArrayValue" resolve="KmAnnotationArgument.ArrayValue" />
               </node>
               <node concept="37vLTw" id="4s8_snvhf5d" role="2ZW6bz">
                 <ref role="3cqZAo" node="4s8_snvhfdb" resolve="arg" />
@@ -8985,12 +8985,12 @@
                 <node concept="3cpWsn" id="4s8_snvhf4N" role="3cpWs9">
                   <property role="TrG5h" value="array" />
                   <node concept="3uibUv" id="4s8_snvhf4J" role="1tU5fm">
-                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$ArrayValue" resolve="ArrayValue" />
+                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$ArrayValue" resolve="KmAnnotationArgument.ArrayValue" />
                   </node>
                   <node concept="1eOMI4" id="4s8_snvhf4F" role="33vP2m">
                     <node concept="10QFUN" id="4s8_snvhf4D" role="1eOMHV">
                       <node concept="3uibUv" id="4s8_snvhf4B" role="10QFUM">
-                        <ref role="3uigEE" to="4324:~KmAnnotationArgument$ArrayValue" resolve="ArrayValue" />
+                        <ref role="3uigEE" to="4324:~KmAnnotationArgument$ArrayValue" resolve="KmAnnotationArgument.ArrayValue" />
                       </node>
                       <node concept="37vLTw" id="4s8_snvhf4_" role="10QFUP">
                         <ref role="3cqZAo" node="4s8_snvhfdb" resolve="arg" />
@@ -9068,7 +9068,7 @@
           <node concept="3eNFk2" id="4s8_snvhfhT" role="3eNLev">
             <node concept="2ZW3vV" id="4s8_snvhffj" role="3eO9$A">
               <node concept="3uibUv" id="4s8_snvhfiv" role="2ZW6by">
-                <ref role="3uigEE" to="4324:~KmAnnotationArgument$AnnotationValue" resolve="AnnotationValue" />
+                <ref role="3uigEE" to="4324:~KmAnnotationArgument$AnnotationValue" resolve="KmAnnotationArgument.AnnotationValue" />
               </node>
               <node concept="37vLTw" id="4s8_snvhffh" role="2ZW6bz">
                 <ref role="3cqZAo" node="4s8_snvhfdb" resolve="arg" />
@@ -9079,12 +9079,12 @@
                 <node concept="3cpWsn" id="4s8_snvhfhz" role="3cpWs9">
                   <property role="TrG5h" value="annotation" />
                   <node concept="3uibUv" id="4s8_snvhfft" role="1tU5fm">
-                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$AnnotationValue" resolve="AnnotationValue" />
+                    <ref role="3uigEE" to="4324:~KmAnnotationArgument$AnnotationValue" resolve="KmAnnotationArgument.AnnotationValue" />
                   </node>
                   <node concept="1eOMI4" id="4s8_snvhfht" role="33vP2m">
                     <node concept="10QFUN" id="4s8_snvhfhv" role="1eOMHV">
                       <node concept="3uibUv" id="4s8_snvhfhF" role="10QFUM">
-                        <ref role="3uigEE" to="4324:~KmAnnotationArgument$AnnotationValue" resolve="AnnotationValue" />
+                        <ref role="3uigEE" to="4324:~KmAnnotationArgument$AnnotationValue" resolve="KmAnnotationArgument.AnnotationValue" />
                       </node>
                       <node concept="37vLTw" id="4s8_snvhfhH" role="10QFUP">
                         <ref role="3cqZAo" node="4s8_snvhfdb" resolve="arg" />
@@ -9321,7 +9321,7 @@
                 </node>
               </node>
               <node concept="3Tsc0h" id="56eVghWjTL5" role="2OqNvi">
-                <ref role="3TtcxE" to="hcm8:5GtPw5yMnlW" />
+                <ref role="3TtcxE" to="hcm8:5GtPw5yMnlW" resolve="typeProjections" />
               </node>
             </node>
             <node concept="TSZUe" id="56eVghWjTL6" role="2OqNvi">
@@ -9329,7 +9329,7 @@
                 <node concept="2pJPED" id="56eVghWjTL8" role="2pJPEn">
                   <ref role="2pJxaS" to="hcm8:2yYXHtl6Jfc" resolve="TypeProjection" />
                   <node concept="2pIpSj" id="56eVghWjTL9" role="2pJxcM">
-                    <ref role="2pIpSl" to="hcm8:2yYXHtl6JpZ" />
+                    <ref role="2pIpSl" to="hcm8:2yYXHtl6JpZ" resolve="type" />
                     <node concept="36biLy" id="56eVghWjTLa" role="28nt2d">
                       <node concept="1rXfSq" id="56eVghWjTLb" role="36biLW">
                         <ref role="37wK5l" node="4s8_snvhfc9" resolve="arrayOf" />

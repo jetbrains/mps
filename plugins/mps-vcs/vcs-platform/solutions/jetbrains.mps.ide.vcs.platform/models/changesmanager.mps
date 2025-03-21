@@ -2085,7 +2085,7 @@
             <node concept="3clFbF" id="7l6b$Kxs8ft" role="3cqZAp">
               <node concept="2OqwBi" id="7l6b$Kxs8lQ" role="3clFbG">
                 <node concept="37vLTw" id="7l6b$Kxs8lP" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7l6b$Kxs8ei" resolve="model" />
+                  <ref role="3cqZAo" node="7l6b$Kxs8ei" resolve="baseRev" />
                 </node>
                 <node concept="liA8E" id="7l6b$Kxs8lR" role="2OqNvi">
                   <ref role="37wK5l" to="mhbf:~SModel.load()" resolve="load" />
@@ -2094,7 +2094,7 @@
             </node>
             <node concept="3cpWs6" id="7l6b$Kxs8fv" role="3cqZAp">
               <node concept="37vLTw" id="7l6b$Kxs8fw" role="3cqZAk">
-                <ref role="3cqZAo" node="7l6b$Kxs8ei" resolve="model" />
+                <ref role="3cqZAo" node="7l6b$Kxs8ei" resolve="baseRev" />
               </node>
             </node>
           </node>
@@ -5128,7 +5128,7 @@
             </node>
             <node concept="2ShNRf" id="LH9FcH0bxj" role="33vP2m">
               <node concept="1pGfFk" id="LH9FcH0bxk" role="2ShVmc">
-                <ref role="37wK5l" node="2JwSLRbyYMl" />
+                <ref role="37wK5l" node="2JwSLRbyYMl" resolve="CurrentDifference" />
                 <node concept="Xjq3P" id="LH9FcH0bxl" role="37wK5m" />
                 <node concept="37vLTw" id="LH9FcH0bxm" role="37wK5m">
                   <ref role="3cqZAo" node="2JwSLRbyYTV" resolve="modelDescriptor" />
@@ -6852,12 +6852,12 @@
       <property role="TrG5h" value="myEventProcessor" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="1CWvv8TieVE" role="1tU5fm">
-        <ref role="3uigEE" node="2QnDi8Qvcci" resolve="MyEventsCollector" />
+        <ref role="3uigEE" node="2QnDi8Qvcci" resolve="ChangesTracking.MyEventProcessor" />
       </node>
       <node concept="3Tm6S6" id="6h1S4muGSdU" role="1B3o_S" />
       <node concept="2ShNRf" id="6h1S4muH4Sd" role="33vP2m">
         <node concept="HV5vD" id="6h1S4muH5Gn" role="2ShVmc">
-          <ref role="HV5vE" node="2QnDi8Qvcci" resolve="ChangesTracking.MyEventsCollector" />
+          <ref role="HV5vE" node="2QnDi8Qvcci" resolve="ChangesTracking.MyEventProcessor" />
         </node>
       </node>
     </node>
@@ -6867,12 +6867,12 @@
       <property role="TrG5h" value="myEventCollector" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="7KIHI4_NbW3" role="1tU5fm">
-        <ref role="3uigEE" node="7KIHI4_OfdP" resolve="EventCollector" />
+        <ref role="3uigEE" node="7KIHI4_OfdP" resolve="ChangesTracking.EventCollector" />
       </node>
       <node concept="3Tm6S6" id="7KIHI4_NbW4" role="1B3o_S" />
       <node concept="2ShNRf" id="7KIHI4_NbW5" role="33vP2m">
         <node concept="HV5vD" id="7KIHI4_NbW6" role="2ShVmc">
-          <ref role="HV5vE" node="7KIHI4_OfdP" resolve="EventCollector" />
+          <ref role="HV5vE" node="7KIHI4_OfdP" resolve="ChangesTracking.EventCollector" />
         </node>
       </node>
     </node>

@@ -11345,7 +11345,7 @@
         <node concept="3clFbF" id="4Kl3kPcEjJC" role="3cqZAp">
           <node concept="2OqwBi" id="4Kl3kPcEnPB" role="3clFbG">
             <node concept="37vLTw" id="1$OFLAqWB6Y" role="2Oq$k0">
-              <ref role="3cqZAo" node="1$OFLAqWB6U" resolve="internal" />
+              <ref role="3cqZAo" node="1$OFLAqWB6U" resolve="smi" />
             </node>
             <node concept="liA8E" id="4Kl3kPcEpdA" role="2OqNvi">
               <ref role="37wK5l" to="w1kc:~SModelInternal.changeNodeId(org.jetbrains.mps.openapi.model.SNodeId,org.jetbrains.mps.openapi.model.SNodeId)" resolve="changeNodeId" />

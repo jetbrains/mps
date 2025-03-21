@@ -12043,7 +12043,7 @@
                       <node concept="liA8E" id="5LbRjS1pyy8" role="2OqNvi">
                         <ref role="37wK5l" to="tqvn:~TemporaryModels.dispose(org.jetbrains.mps.openapi.model.SModel)" resolve="dispose" />
                         <node concept="37vLTw" id="4$9ziLZ_omZ" role="37wK5m">
-                          <ref role="3cqZAo" node="4$9ziLZ_omW" resolve="model" />
+                          <ref role="3cqZAo" node="4$9ziLZ_omW" resolve="modelToDispose" />
                         </node>
                       </node>
                       <node concept="2YIFZM" id="5LbRjS1pyya" role="2Oq$k0">

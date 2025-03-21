@@ -2412,7 +2412,7 @@
       <ref role="PrY4T" to="tpck:64$4ecGX64Q" resolve="ImplementationWithStubPart" />
     </node>
     <node concept="RPilO" id="7F6fz3H$PFS" role="lGtFl">
-      <ref role="RPilL" node="4IQFg3Z7hwT" />
+      <ref role="RPilL" node="4IQFg3Z7hwT" resolve="propertyDeclaration" />
       <node concept="ROjv2" id="7F6fz3H$PFT" role="ROhUF">
         <property role="1W_73P" value="{T " />
         <property role="1W_73K" value=" T}" />
@@ -2423,7 +2423,7 @@
       <property role="20kJfa" value="propertyDeclaration" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" to="tpce:f_TJgxF" resolve="PropertyDeclaration" />
-      <ref role="20ksaX" node="g_NtTq1" />
+      <ref role="20ksaX" node="g_NtTq1" resolve="relationDeclaration" />
     </node>
   </node>
   <node concept="1TIwiD" id="hGPXuVX">

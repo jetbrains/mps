@@ -32880,7 +32880,7 @@
         </node>
       </node>
       <node concept="m$_yC" id="6xueyVzZWkm" role="m$_yJ">
-        <ref role="m$_y1" node="4k71ibbLe59" />
+        <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />
       </node>
     </node>
     <node concept="398rNT" id="7pdFgzxlDn2" role="1l3spd">
@@ -49644,7 +49644,7 @@
       <node concept="25yagZ" id="3Mp$eHqrsSl" role="PiKyV">
         <node concept="3yqFpY" id="3Mp$eHqrsSh" role="25yagT">
           <node concept="3yqFqT" id="3Mp$eHqrsSj" role="3yqFpW">
-            <ref role="3yqFr6" node="2lbt9GM20nd" />
+            <ref role="3yqFr6" node="2lbt9GM20nd" resolve="modules" />
           </node>
         </node>
       </node>

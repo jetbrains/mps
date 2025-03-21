@@ -8815,7 +8815,7 @@
             </node>
             <node concept="2OqwBi" id="6MbZi$kHTcP" role="37vLTJ">
               <node concept="37vLTw" id="6MbZi$kHVIy" role="2Oq$k0">
-                <ref role="3cqZAo" node="6MbZi$kHVIu" resolve="replaceWithNew" />
+                <ref role="3cqZAo" node="6MbZi$kHVIu" resolve="lm" />
               </node>
               <node concept="3TrEf2" id="6MbZi$kHTWu" role="2OqNvi">
                 <ref role="3Tt5mk" to="tpf8:hurW$JJ" resolve="mappingLabel" />

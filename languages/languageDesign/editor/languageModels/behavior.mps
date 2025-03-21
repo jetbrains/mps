@@ -8051,7 +8051,7 @@
           <node concept="2OqwBi" id="4IQFg3YqiOj" role="3clFbG">
             <node concept="13iPFW" id="4IQFg3YqiwD" role="2Oq$k0" />
             <node concept="3TrEf2" id="4IQFg3YqjgE" role="2OqNvi">
-              <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" />
+              <ref role="3Tt5mk" to="tpc2:4IQFg3Z7hwT" resolve="propertyDeclaration" />
             </node>
           </node>
         </node>

@@ -2977,7 +2977,7 @@
                   <ref role="37wK5l" to="5fzo:~ModelPersistence.readModel(jetbrains.mps.smodel.SModelHeader,org.jetbrains.mps.openapi.persistence.StreamDataSource,jetbrains.mps.smodel.loading.ModelLoadingState)" resolve="readModel" />
                   <ref role="1Pybhc" to="5fzo:~ModelPersistence" resolve="ModelPersistence" />
                   <node concept="37vLTw" id="1gQqyiTiuZ7" role="37wK5m">
-                    <ref role="3cqZAo" node="1gQqyiTiuZ4" resolve="create" />
+                    <ref role="3cqZAo" node="1gQqyiTiuZ4" resolve="mh" />
                   </node>
                   <node concept="2ShNRf" id="7dMyuCcRyp" role="37wK5m">
                     <node concept="1pGfFk" id="7dMyuCd5Sk" role="2ShVmc">

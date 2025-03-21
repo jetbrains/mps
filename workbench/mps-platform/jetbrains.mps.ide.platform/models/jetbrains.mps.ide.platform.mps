@@ -868,7 +868,7 @@
               </node>
             </node>
             <node concept="37vLTw" id="7hqv7emwyEK" role="37vLTJ">
-              <ref role="3cqZAo" node="7hqv7emwz8W" resolve="participant" />
+              <ref role="3cqZAo" node="7hqv7emwz8W" resolve="myInternaModelsFindUsages" />
             </node>
           </node>
         </node>
@@ -895,7 +895,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="x4tNzP29en" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="x4tNzP29et" role="jymVt">
@@ -1016,7 +1016,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="x4tNzP29ez" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="3Ssq9B$kCQs" role="jymVt" />
@@ -1397,7 +1397,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="x4tNzP2fjg" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="2tJIrI" id="x4tNzP2hft" role="jymVt" />
@@ -1486,7 +1486,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="x4tNzP2qrZ" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
     </node>

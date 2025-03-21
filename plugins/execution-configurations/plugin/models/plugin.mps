@@ -14568,7 +14568,7 @@
               <node concept="3cpWs6" id="5_FROLlwQcw" role="3cqZAp">
                 <node concept="2ShNRf" id="5_FROLlwQcx" role="3cqZAk">
                   <node concept="HV5vD" id="5_FROLlwQcy" role="2ShVmc">
-                    <ref role="HV5vE" node="5_FROLlwagA" resolve="EmptyProcessHandler" />
+                    <ref role="HV5vE" node="5_FROLlwagA" resolve="JUnitOutOfProcessStarter.JUnitOutOfProcessStarter0.EmptyProcessHandler" />
                   </node>
                 </node>
               </node>
@@ -16938,7 +16938,7 @@
                             </node>
                           </node>
                           <node concept="2AHcQZ" id="1W7Tdy_U1VS" role="2AJF6D">
-                            <ref role="2AI5Lk" to="wyt6:~Override" />
+                            <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                           </node>
                         </node>
                       </node>

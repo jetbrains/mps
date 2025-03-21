@@ -2943,7 +2943,7 @@
             <property role="TrG5h" value="state" />
             <property role="3TUv4t" value="true" />
             <node concept="3uibUv" id="hGAoHk_" role="1tU5fm">
-              <ref role="3uigEE" to="rl1i:51NkKCgB3lM" resolve="BaseLanguageHierarchyViewTool" />
+              <ref role="3uigEE" to="rl1i:51NkKCgB3lM" resolve="BaseLanguageHierarchyViewToolState" />
             </node>
             <node concept="2OqwBi" id="1Vv_gC6YxMk" role="33vP2m">
               <node concept="37vLTw" id="1Vv_gC6Yx7$" role="2Oq$k0">
@@ -3002,7 +3002,7 @@
         <node concept="3clFbF" id="hGAoZ$M" role="3cqZAp">
           <node concept="2OqwBi" id="hGAp1_i" role="3clFbG">
             <node concept="37vLTw" id="3GM_nagTsqw" role="2Oq$k0">
-              <ref role="3cqZAo" node="hGAoHk$" resolve="tool" />
+              <ref role="3cqZAo" node="hGAoHk$" resolve="state" />
             </node>
             <node concept="liA8E" id="hGAp22C" role="2OqNvi">
               <ref role="37wK5l" to="rl1i:4$kvR95B1r8" resolve="showItemInHierarchy" />
@@ -3547,7 +3547,7 @@
         <node concept="3clFbF" id="hGApL20" role="3cqZAp">
           <node concept="2OqwBi" id="hGApL21" role="3clFbG">
             <node concept="37vLTw" id="3GM_nagTzxc" role="2Oq$k0">
-              <ref role="3cqZAo" node="hGApL1S" resolve="tool" />
+              <ref role="3cqZAo" node="hGApL1S" resolve="state" />
             </node>
             <node concept="liA8E" id="hGApL23" role="2OqNvi">
               <ref role="37wK5l" to="rl1i:4$kvR95B1r8" resolve="showItemInHierarchy" />
@@ -4927,7 +4927,7 @@
                     <property role="TrG5h" value="getErrorText" />
                     <node concept="3Tm1VV" id="6D91NdIQa9C" role="1B3o_S" />
                     <node concept="2AHcQZ" id="6D91NdIQa9D" role="2AJF6D">
-                      <ref role="2AI5Lk" to="zn9m:~NlsContexts$DetailedDescription" resolve="DetailedDescription" />
+                      <ref role="2AI5Lk" to="zn9m:~NlsContexts$DetailedDescription" resolve="NlsContexts.DetailedDescription" />
                     </node>
                     <node concept="2AHcQZ" id="6D91NdIQa9E" role="2AJF6D">
                       <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
@@ -50639,7 +50639,7 @@
       <property role="TrG5h" value="myNavSupportImpl" />
       <node concept="3Tm6S6" id="2sJZShLL0e7" role="1B3o_S" />
       <node concept="3uibUv" id="2sJZShLL0j0" role="1tU5fm">
-        <ref role="3uigEE" to="4o98:~DynamicComponentWarden$Token" resolve="Token" />
+        <ref role="3uigEE" to="4o98:~DynamicComponentWarden$Token" resolve="DynamicComponentWarden.Token" />
       </node>
     </node>
     <node concept="2uRRBj" id="BDT41mk5aU" role="2uRRBE">
@@ -50741,7 +50741,7 @@
                   <ref role="3VsUkX" to="kz9k:~NavigationSupport" resolve="NavigationSupport" />
                 </node>
                 <node concept="37vLTw" id="3XHo2y6AWvS" role="37wK5m">
-                  <ref role="3cqZAo" node="3XHo2y6AWvM" resolve="function" />
+                  <ref role="3cqZAo" node="3XHo2y6AWvM" resolve="lazyInstance" />
                 </node>
               </node>
             </node>
@@ -50846,7 +50846,7 @@
     <node concept="1GtWCo" id="1Vv_gC6WUAj" role="1nVCmq">
       <node concept="10M0yZ" id="1Vv_gC6WUAk" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Toolwindows.ToolWindowHierarchy" resolve="ToolWindowHierarchy" />
-        <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="Toolwindows" />
+        <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="AllIcons.Toolwindows" />
       </node>
     </node>
     <node concept="2xpIHi" id="1Vv_gC6WUAl" role="uR5cp">
@@ -50856,7 +50856,7 @@
             <node concept="2ShNRf" id="1Vv_gC6WUAp" role="37vLTx">
               <node concept="1pGfFk" id="1Vv_gC6WUAq" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="rl1i:51NkKCgB39D" />
+                <ref role="37wK5l" to="rl1i:51NkKCgB39D" resolve="HierarchyViewToolState" />
                 <node concept="2xqhHp" id="1Vv_gC6WUAr" role="37wK5m" />
                 <node concept="2WthIp" id="1Vv_gC6WUAs" role="37wK5m" />
               </node>
@@ -50918,7 +50918,7 @@
       <property role="TrG5h" value="toolState" />
       <node concept="3Tm6S6" id="1Vv_gC6Or8S" role="1B3o_S" />
       <node concept="3uibUv" id="1Vv_gC6OrIa" role="1tU5fm">
-        <ref role="3uigEE" to="rl1i:51NkKCgB3lM" resolve="BaseLanguageHierarchyViewTool" />
+        <ref role="3uigEE" to="rl1i:51NkKCgB3lM" resolve="BaseLanguageHierarchyViewToolState" />
       </node>
     </node>
     <node concept="2UmK3q" id="1Vv_gC6O4Si" role="2Um5zG">
@@ -50941,7 +50941,7 @@
     <node concept="1GtWCo" id="1Vv_gC6O5a7" role="1nVCmq">
       <node concept="10M0yZ" id="1Vv_gC6O5wH" role="1GtWoa">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Toolwindows.ToolWindowHierarchy" resolve="ToolWindowHierarchy" />
-        <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="Toolwindows" />
+        <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="AllIcons.Toolwindows" />
       </node>
     </node>
     <node concept="2xpIHi" id="1Vv_gC6OrTA" role="uR5cp">
@@ -50951,7 +50951,7 @@
             <node concept="2ShNRf" id="1Vv_gC6OsHz" role="37vLTx">
               <node concept="1pGfFk" id="1Vv_gC6Ouwi" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" to="rl1i:51NkKCgB3mv" resolve="BaseLanguageHierarchyViewTool" />
+                <ref role="37wK5l" to="rl1i:51NkKCgB3mv" resolve="BaseLanguageHierarchyViewToolState" />
                 <node concept="2xqhHp" id="1Vv_gC6OuyS" role="37wK5m" />
                 <node concept="2WthIp" id="1Vv_gC6VigJ" role="37wK5m" />
               </node>
@@ -50977,7 +50977,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1Vv_gC6Qfb7" role="2OqNvi">
-              <ref role="37wK5l" to="rl1i:1hqpk0YMs0Z" resolve="disposeComponent" />
+              <ref role="37wK5l" to="rl1i:1hqpk0YMs0Z" resolve="disposeHierarchyTool" />
             </node>
           </node>
         </node>
@@ -50990,7 +50990,7 @@
     <node concept="312cEg" id="6vjnGs7IGq_" role="jymVt">
       <property role="TrG5h" value="myComponent" />
       <node concept="3uibUv" id="6vjnGs7IGqB" role="1tU5fm">
-        <ref role="3uigEE" node="6vjnGs7ILw0" resolve="MyPanel" />
+        <ref role="3uigEE" node="6vjnGs7ILw0" resolve="InspectorContainer.MyPanel" />
       </node>
       <node concept="3Tm6S6" id="6vjnGs7IGqC" role="1B3o_S" />
     </node>
@@ -51004,7 +51004,7 @@
     <node concept="312cEg" id="6vjnGs7IGqH" role="jymVt">
       <property role="TrG5h" value="myMessagePanel" />
       <node concept="3uibUv" id="6vjnGs7IGqJ" role="1tU5fm">
-        <ref role="3uigEE" node="6vjnGs7IZ5q" resolve="MyMessagePanel" />
+        <ref role="3uigEE" node="6vjnGs7IZ5q" resolve="InspectorContainer.MyMessagePanel" />
       </node>
       <node concept="3Tm6S6" id="6vjnGs7IGqK" role="1B3o_S" />
     </node>
@@ -51075,7 +51075,7 @@
             </node>
             <node concept="2ShNRf" id="6vjnGs7Ltr4" role="37vLTx">
               <node concept="1pGfFk" id="6vjnGs7Ltr6" role="2ShVmc">
-                <ref role="37wK5l" node="6vjnGs7IZ5N" />
+                <ref role="37wK5l" node="6vjnGs7IZ5N" resolve="InspectorContainer.MyMessagePanel" />
                 <node concept="2OqwBi" id="6vjnGs7Ltr7" role="37wK5m">
                   <node concept="37vLTw" id="6vjnGs7Ltr8" role="2Oq$k0">
                     <ref role="3cqZAo" node="6vjnGs7KEb1" resolve="project" />
@@ -51098,7 +51098,7 @@
             </node>
             <node concept="2ShNRf" id="6vjnGs7KGT7" role="37vLTx">
               <node concept="1pGfFk" id="6vjnGs7KGTh" role="2ShVmc">
-                <ref role="37wK5l" node="6vjnGs7ILw1" />
+                <ref role="37wK5l" node="6vjnGs7ILw1" resolve="InspectorContainer.MyPanel" />
               </node>
             </node>
           </node>
@@ -52481,7 +52481,7 @@
           <node concept="1Y3b0j" id="3c2ArrunKnS" role="YeSDq">
             <property role="2bfB8j" value="true" />
             <property role="373rjd" value="true" />
-            <ref role="1Y3XeK" to="exr9:~InspectorTool$InspectorAccessor" resolve="InspectorAccessor" />
+            <ref role="1Y3XeK" to="exr9:~InspectorTool$InspectorAccessor" resolve="InspectorTool.InspectorAccessor" />
             <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
             <node concept="3Tm1VV" id="3c2ArrunKnT" role="1B3o_S" />
             <node concept="3clFb_" id="3c2ArrunKnU" role="jymVt">
@@ -52689,7 +52689,7 @@
                 <ref role="3cqZAo" node="6vjnGs7NfFd" resolve="node" />
               </node>
               <node concept="3uibUv" id="6vjnGs7Ni8s" role="2ZW6by">
-                <ref role="3uigEE" to="w1kc:~SNode" resolve="jetbrains.mps.smodel.SNode" />
+                <ref role="3uigEE" to="w1kc:~SNode" resolve="SNode" />
               </node>
             </node>
             <node concept="3fqX7Q" id="6vjnGs7Os07" role="3uHU7w">
@@ -53096,7 +53096,7 @@
             <node concept="2ShNRf" id="6vjnGs7NuBQ" role="37vLTx">
               <node concept="1pGfFk" id="6vjnGs7NZhE" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" node="6vjnGs7NL5m" />
+                <ref role="37wK5l" node="6vjnGs7NL5m" resolve="InspectorContainer" />
                 <node concept="2xqhHp" id="6vjnGs7NZhD" role="37wK5m" />
               </node>
             </node>

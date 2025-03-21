@@ -850,7 +850,7 @@
           <node concept="3clFbF" id="67Uy9BELLom" role="3cqZAp">
             <node concept="37vLTI" id="67Uy9BELLoo" role="3clFbG">
               <node concept="37vLTw" id="67Uy9BELLor" role="37vLTJ">
-                <ref role="3cqZAo" node="67Uy9BELLoi" resolve="myMonitor" />
+                <ref role="3cqZAo" node="67Uy9BELLoi" resolve="myProgressMonitor" />
               </node>
               <node concept="37vLTw" id="67Uy9BELLos" role="37vLTx">
                 <ref role="3cqZAo" node="67Uy9BELIqe" resolve="monitor" />

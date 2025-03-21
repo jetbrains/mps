@@ -11953,11 +11953,11 @@
                   <node concept="2OqwBi" id="6GoDrzaMkwq" role="2Oq$k0">
                     <node concept="13iPFW" id="6GoDrzaMkwr" role="2Oq$k0" />
                     <node concept="3TrEf2" id="6GoDrzaMkws" role="2OqNvi">
-                      <ref role="3Tt5mk" to="kdzh:FnaIS$F2cd" />
+                      <ref role="3Tt5mk" to="kdzh:FnaIS$F2cd" resolve="company" />
                     </node>
                   </node>
                   <node concept="3TrEf2" id="6GoDrzaMkwt" role="2OqNvi">
-                    <ref role="3Tt5mk" to="kdzh:FnaIS$F0fx" />
+                    <ref role="3Tt5mk" to="kdzh:FnaIS$F0fx" resolve="name" />
                   </node>
                 </node>
                 <node concept="2qgKlT" id="6GoDrzaMkwu" role="2OqNvi">

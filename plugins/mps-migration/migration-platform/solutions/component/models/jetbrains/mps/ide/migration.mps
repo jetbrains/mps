@@ -15001,7 +15001,7 @@
                       <property role="2bfB8j" value="true" />
                       <property role="373rjd" value="true" />
                       <ref role="1Y3XeK" to="mhbf:~SModelListener$DependencyChangeVisitor" resolve="SModelListener.DependencyChangeVisitor" />
-                      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                       <node concept="3Tm1VV" id="7KIHI4_Ie8C" role="1B3o_S" />
                       <node concept="3clFb_" id="7KIHI4_IqG5" role="jymVt">
                         <property role="TrG5h" value="languageAdded" />
@@ -15359,7 +15359,7 @@
           </node>
           <node concept="2ShNRf" id="$lftgT21cX" role="37wK5m">
             <node concept="1pGfFk" id="$lftgT21cY" role="2ShVmc">
-              <ref role="37wK5l" node="6s6EyfWC1D8" />
+              <ref role="37wK5l" node="6s6EyfWC1D8" resolve="NotifyingMigrationExecutor" />
               <node concept="37vLTw" id="$lftgT21cZ" role="37wK5m">
                 <ref role="3cqZAo" node="$lftgT1zeT" resolve="mpsProject" />
               </node>

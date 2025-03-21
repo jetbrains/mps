@@ -1329,7 +1329,7 @@
     <property role="3GE5qa" value="CellModel" />
     <ref role="1M2myG" to="tpc2:hGPXfkl" resolve="CellModel_TransactionalProperty" />
     <node concept="1N5Pfh" id="hGPYchT" role="1Mr941">
-      <ref role="1N5Vy1" to="tpc2:4IQFg3Z7hwT" />
+      <ref role="1N5Vy1" to="tpc2:4IQFg3Z7hwT" resolve="propertyDeclaration" />
       <node concept="3dgokm" id="5Vvmn_QkOfb" role="1N6uqs">
         <node concept="3clFbS" id="5Vvmn_QkOfc" role="2VODD2">
           <node concept="3cpWs8" id="5Vvmn_QkOfd" role="3cqZAp">

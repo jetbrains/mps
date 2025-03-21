@@ -495,7 +495,7 @@
                 <ref role="37wK5l" to="z1c3:~ProjectRepository.&lt;init&gt;(jetbrains.mps.project.Project,jetbrains.mps.extapi.module.SRepositoryExt,jetbrains.mps.extapi.module.SRepositoryRegistry,org.jetbrains.mps.openapi.module.ModelAccess)" resolve="ProjectRepository" />
                 <node concept="Xjq3P" id="79ZAv07BH9s" role="37wK5m" />
                 <node concept="37vLTw" id="72xjIHfHWS6" role="37wK5m">
-                  <ref role="3cqZAo" node="72xjIHfHWS0" resolve="findComponent" />
+                  <ref role="3cqZAo" node="72xjIHfHWS0" resolve="rootRepo" />
                 </node>
                 <node concept="2OqwBi" id="79ZAv07BKNn" role="37wK5m">
                   <node concept="37vLTw" id="79ZAv07BKbX" role="2Oq$k0">

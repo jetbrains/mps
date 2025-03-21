@@ -1789,7 +1789,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2hdvs6Xy3e6" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="6ysF3v1j_hD" role="jymVt" />
@@ -3634,7 +3634,7 @@
                           <node concept="3cpWs6" id="2BT5gU6P2p2" role="3cqZAp">
                             <node concept="2ShNRf" id="6ysF3v1j_d0" role="3cqZAk">
                               <node concept="1pGfFk" id="6ysF3v1j_d1" role="2ShVmc">
-                                <ref role="37wK5l" node="6ysF3v1j_w4" />
+                                <ref role="37wK5l" node="6ysF3v1j_w4" resolve="BaseConsoleTab.MyPasteProvider" />
                                 <node concept="37vLTw" id="2BT5gU6OFRy" role="37wK5m">
                                   <ref role="3cqZAo" node="2BT5gU6Om$O" resolve="parentPasteProvider" />
                                 </node>

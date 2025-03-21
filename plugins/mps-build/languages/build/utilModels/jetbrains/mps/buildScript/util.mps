@@ -804,7 +804,7 @@
                 </node>
                 <node concept="2fSANN" id="7u3RhgSwl1y" role="2OqNvi">
                   <node concept="37vLTw" id="7u3RhgSwA0_" role="2fWi3N">
-                    <ref role="3cqZAo" node="7u3RhgSwA0t" resolve="string" />
+                    <ref role="3cqZAo" node="7u3RhgSwA0t" resolve="mhKey" />
                   </node>
                 </node>
               </node>
@@ -821,7 +821,7 @@
                 <node concept="2OqwBi" id="5DY7s5F3vgE" role="37vLTx">
                   <node concept="2ShNRf" id="5DY7s5F3vdM" role="2Oq$k0">
                     <node concept="1pGfFk" id="5DY7s5F3vdO" role="2ShVmc">
-                      <ref role="37wK5l" node="5DY7s5F2Pa1" />
+                      <ref role="37wK5l" node="5DY7s5F2Pa1" resolve="MacroHelper.MacroContext" />
                       <node concept="37vLTw" id="3GM_nagTzzr" role="37wK5m">
                         <ref role="3cqZAo" node="5DY7s5F3vdd" resolve="buildProject" />
                       </node>

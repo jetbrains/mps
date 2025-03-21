@@ -749,7 +749,7 @@
               <node concept="2OqwBi" id="3OpFSgfD6wj" role="2Oq$k0">
                 <node concept="2WthIp" id="3OpFSgfD6wm" role="2Oq$k0" />
                 <node concept="1DTwFV" id="3OpFSgfD6wo" role="2OqNvi">
-                  <ref role="2WH_rO" node="2Lh2Nufz6VR" resolve="project" />
+                  <ref role="2WH_rO" node="2Lh2Nufz6VR" resolve="mpsProject" />
                 </node>
               </node>
               <node concept="liA8E" id="3OpFSgfD7Y0" role="2OqNvi">

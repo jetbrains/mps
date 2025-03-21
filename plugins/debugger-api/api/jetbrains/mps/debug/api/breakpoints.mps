@@ -715,7 +715,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2WipSYwyoP2" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="2WipSYwyp5w" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="2WipSYwypg5" role="2B70Vg">
@@ -751,7 +751,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="5Eb06neCW5i" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2tJIrI" id="3Gc6Q_RW_gf" role="jymVt" />
@@ -778,7 +778,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2WipSYwvaZs" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="2WipSYwvbfZ" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="2WipSYwvbq$" role="2B70Vg">
@@ -817,7 +817,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="2WipSYwtX92" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="2WipSYwvbvA" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="2WipSYwvbEb" role="2B70Vg">
@@ -1783,7 +1783,7 @@
               <node concept="1rXfSq" id="58ou7t7BX9W" role="3clFbG">
                 <ref role="37wK5l" node="3SnNvqCaK51" resolve="registerProvider" />
                 <node concept="37vLTw" id="58ou7t7C0t3" role="37wK5m">
-                  <ref role="3cqZAo" node="58ou7t7C0sZ" resolve="instantiate" />
+                  <ref role="3cqZAo" node="58ou7t7C0sZ" resolve="bp" />
                 </node>
               </node>
             </node>
@@ -2240,7 +2240,7 @@
             <node concept="liA8E" id="58ou7t7CABQ" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~Map.get(java.lang.Object)" resolve="get" />
               <node concept="37vLTw" id="58ou7t7CABR" role="37wK5m">
-                <ref role="3cqZAo" node="58ou7t7CABK" resolve="kind" />
+                <ref role="3cqZAo" node="58ou7t7CABK" resolve="identifier" />
               </node>
             </node>
           </node>

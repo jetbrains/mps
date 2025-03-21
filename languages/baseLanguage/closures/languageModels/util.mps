@@ -5269,7 +5269,7 @@
                   <node concept="2ShNRf" id="2YQyJG3iB_Y" role="3cqZAk">
                     <node concept="1pGfFk" id="2YQyJG3iB_Z" role="2ShVmc">
                       <property role="373rjd" value="true" />
-                      <ref role="37wK5l" node="5YrKoZhDRzF" />
+                      <ref role="37wK5l" node="5YrKoZhDRzF" resolve="FunctionalInterfaceHelper.FunctionalMethodResult" />
                       <node concept="37vLTw" id="2YQyJG3iBA0" role="37wK5m">
                         <ref role="3cqZAo" node="5YrKoZhDTdD" resolve="first" />
                       </node>
@@ -5573,7 +5573,7 @@
                         <node concept="33vP2l" id="1vV_iLMhHFE" role="1ajl9A">
                           <node concept="2c44te" id="1vV_iLMhHFF" role="lGtFl">
                             <node concept="37vLTw" id="1vV_iLMhMIl" role="2c44t1">
-                              <ref role="3cqZAo" node="1vV_iLMhMId" resolve="expandGenerics" />
+                              <ref role="3cqZAo" node="1vV_iLMhMId" resolve="returnType" />
                             </node>
                           </node>
                         </node>
