@@ -2,7 +2,7 @@
 <model ref="r:d304f97a-4373-40d5-95e5-cc6c67ad1aab(jetbrains.mps.lang.css.editor)">
   <persistence version="9" />
   <languages>
-    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="14" />
+    <use id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor" version="15" />
   </languages>
   <imports>
     <import index="ml8j" ref="r:f44e2e51-280f-4848-83e9-3e88ffa5ae92(jetbrains.mps.lang.css.structure)" implicit="true" />
