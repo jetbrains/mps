@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.classloading;
 
@@ -43,6 +43,7 @@ import java.util.LinkedHashSet;
   private final SRepository myRepository;
 
   private final UsedModulesCollector myModulesCollector;
+  private boolean myUseDD, myUseDepsCP, myCalculateDeps;
 
   public CLDependencies(@NotNull SRepository repository) {
     myRepository = repository;
@@ -56,6 +57,7 @@ import java.util.LinkedHashSet;
    *       dependency comes from - e.g. direct use or as a runtime of used language)
    */
   public Collection<SModuleReference> directlyUsedModules(SModule module) {
+    myUseDD = myUseDepsCP = myCalculateDeps = false;
     final Collection<SModuleReference> rv = new LinkedHashSet<>(20);
     DeploymentDescriptor dd = ddIfPresent(module);
     if (USE_DD && dd != null) {
@@ -63,6 +65,7 @@ import java.util.LinkedHashSet;
       for (Dependency dependency : dd.getDependencies()) {
         rv.add(dependency.getModuleRef());
       }
+      myUseDD = true;
     } else {
       // sources or no DD use
       final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
@@ -72,6 +75,7 @@ import java.util.LinkedHashSet;
       // Mimics logic of ModuleStaleFileManager.getCacheStreamHanderForModule()
       final IFile cr = jmf == null ? null : jmf.getOutputCacheRoot();
       if (cr != null && cr.findChild("deps.cp").exists()) {
+        myUseDepsCP = true;
         try {
           // XXX getRootElement throws ISE when there are no elements
           final ModelDependencies md = ModelDependencies.fromXml(JDOMUtil.loadDocument(cr.findChild("deps.cp")).getRootElement());
@@ -94,6 +98,7 @@ import java.util.LinkedHashSet;
       }
       // legacy  and source-only modules (like stub-only modules)
       if (jmf != null && jmf.getLoadClasses() == LoadClasses.ManagedByContributor) {
+        myCalculateDeps = true;
         // for stub-only scenario (LoadClasses.ManagedByContributor) or generally for any external CL, use 'direct dependencies' only
         //     to avoid calculating runtimes. All we can care of in stub-only case is that external code provides correct classes, no reason not to
         //     trust author that he specified sufficient dependencies.
@@ -103,6 +108,7 @@ import java.util.LinkedHashSet;
           rv.add(dep.getTargetModule()); // XXX just return SDependency. I wonder why DD uses Dependency, not SDependency?
         }
       } else {
+        myCalculateDeps = true;
         // FIXME when building dependencies of module.xml, we shall stick to identical logic, so that this code branch and ddIfPresent() branch, above,
         //       do the same thing both for deployed and from source scenarios!
         // CLDependencies is expected it to answer with all dependencies, not only those resolved (ModuleUpdater builds graph with missing modules
@@ -139,5 +145,18 @@ import java.util.LinkedHashSet;
   /*package*/ static boolean isClassLoadingDependency(SDependencyScope scope) {
     // inspired by GMDM & UsedModulesCollector, although it's odd to have it there - no apparent reason to believe they are employed for CL dependencies
     return scope != SDependencyScope.DESIGN && scope != SDependencyScope.GENERATES_INTO;
+  }
+
+  // next boolean methods are for debug puposes and are meaningful right after directlyUsedModules() call
+  /*package*/ boolean useDeploymentDescriptor() {
+    return myUseDD;
+  }
+  /*package*/ boolean useDepsCP() {
+    return myUseDepsCP;
+  }
+  /*package*/
+
+  public boolean isCalculateDeps() {
+    return myCalculateDeps;
   }
 }

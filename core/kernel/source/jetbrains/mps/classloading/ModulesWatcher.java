@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -326,6 +327,16 @@ public class ModulesWatcher {
   boolean isModuleWatched(SModule module) {
     synchronized (myDepGraphLock) {
       return myDepGraph.contains(module.getModuleReference());
+    }
+  }
+
+  /*package*/ void visitDependencies(@NotNull SModuleReference mref, @NotNull Consumer<CModule> visitor, boolean deep) {
+    synchronized (myDepGraphLock) {
+      if (deep) {
+        myDepGraph.visitOutgoingDeep(Collections.singleton(mref), visitor);
+      } else {
+        myDepGraph.forOutgoingShallow(mref).forEach(visitor);
+      }
     }
   }
 
