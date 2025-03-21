@@ -116,6 +116,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         style.set(StyleAttributes.FONT_STYLE, MPSFonts.BOLD);
         editorCell.getStyle().putAll(style);
         editorCell.setDefaultText("<no name>");
+
         setCellContext(editorCell);
         editorCell.setCommitInCommand(false);
       }

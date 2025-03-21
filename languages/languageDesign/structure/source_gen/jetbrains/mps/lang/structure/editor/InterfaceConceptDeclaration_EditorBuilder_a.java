@@ -132,6 +132,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell = EditorCell_Property.create(getEditorContext(), modelAccessor, myNode);
         editorCell.setCellId("name");
         editorCell.setDefaultText("<no name>");
+
         setCellContext(editorCell);
         editorCell.setCommitInCommand(false);
       }

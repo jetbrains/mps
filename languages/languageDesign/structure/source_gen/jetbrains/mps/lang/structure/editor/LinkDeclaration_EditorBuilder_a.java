@@ -124,7 +124,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
         new FieldStyleClass(this).apply(style, editorCell);
         editorCell.getStyle().putAll(style);
         editorCell.setDefaultText("<no role>");
-        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), provider.getCellContext(), new SubstituteInfoPartExt[]{new LinkDeclaration_null_postfixCellMenu_6h6dhy_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
+
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), provider.getCellContext(), new SubstituteInfoPartExt[]{new LinkDeclaration_role_postfixCellMenu_6h6dhy_a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
         setCellContext(editorCell);
         editorCell.setCommitInCommand(false);
       }
@@ -139,8 +140,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       getCellFactory().popCellContext();
     }
   }
-  public static class LinkDeclaration_null_postfixCellMenu_6h6dhy_a0a0 extends AbstractCellMenuPart_PropertyPostfixHints {
-    public LinkDeclaration_null_postfixCellMenu_6h6dhy_a0a0() {
+  public static class LinkDeclaration_role_postfixCellMenu_6h6dhy_a0a0 extends AbstractCellMenuPart_PropertyPostfixHints {
+    public LinkDeclaration_role_postfixCellMenu_6h6dhy_a0a0() {
     }
     @Override
     public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
