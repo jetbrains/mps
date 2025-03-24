@@ -1090,12 +1090,10 @@
                 <ref role="3cqZAo" node="4KDfkUwM97h" resolve="catGroup" />
               </node>
               <node concept="liA8E" id="4KDfkUwM97u" role="2OqNvi">
-                <ref role="37wK5l" to="qkt:~DefaultActionGroup.getChildren(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="getChildren" />
-                <node concept="10QFUN" id="5wk3WoDzLKQ" role="37wK5m">
-                  <node concept="3uibUv" id="5wk3WoDzMcH" role="10QFUM">
-                    <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
-                  </node>
-                  <node concept="10Nm6u" id="4KDfkUwM97v" role="10QFUP" />
+                <ref role="37wK5l" to="qkt:~DefaultActionGroup.getChildren(com.intellij.openapi.actionSystem.ActionManager)" resolve="getChildren" />
+                <node concept="2YIFZM" id="6$VEv9dx1tf" role="37wK5m">
+                  <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
                 </node>
               </node>
             </node>
