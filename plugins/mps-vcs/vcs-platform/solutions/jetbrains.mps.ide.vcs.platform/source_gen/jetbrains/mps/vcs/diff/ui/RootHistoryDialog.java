@@ -51,7 +51,6 @@ import com.intellij.openapi.vcs.VcsActions;
 import com.intellij.ui.PopupHandler;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Collection;
 import jetbrains.mps.vcs.history.CommitsGraph;
 import com.intellij.openapi.progress.util.BackgroundTaskUtil;
@@ -195,7 +194,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     popupActions.add(ShowAllAffectedGenericAction.getInstance());
     popupActions.add(ActionManager.getInstance().getAction(VcsActions.ACTION_COPY_REVISION_NUMBER));
     PopupHandler.installPopupHandler(myList, popupActions, ActionPlaces.UPDATE_POPUP, ActionManager.getInstance());
-    for (AnAction action : popupActions.getChildren((AnActionEvent) null)) {
+    for (AnAction action : popupActions.getChildren(ActionManager.getInstance())) {
       action.registerCustomShortcutSet(action.getShortcutSet(), mySplitter);
     }
 

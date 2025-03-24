@@ -18034,12 +18034,10 @@
               <ref role="3cqZAo" node="2cnBllv8NIv" resolve="popupActions" />
             </node>
             <node concept="liA8E" id="2cnBllv8RXT" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~DefaultActionGroup.getChildren(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="getChildren" />
-              <node concept="10QFUN" id="5_GG3tBxWdl" role="37wK5m">
-                <node concept="3uibUv" id="5_GG3tBxZbL" role="10QFUM">
-                  <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
-                </node>
-                <node concept="10Nm6u" id="2cnBllv8RXU" role="10QFUP" />
+              <ref role="37wK5l" to="qkt:~DefaultActionGroup.getChildren(com.intellij.openapi.actionSystem.ActionManager)" resolve="getChildren" />
+              <node concept="2YIFZM" id="1XhTWUYVuHO" role="37wK5m">
+                <ref role="37wK5l" to="qkt:~ActionManager.getInstance()" resolve="getInstance" />
+                <ref role="1Pybhc" to="qkt:~ActionManager" resolve="ActionManager" />
               </node>
             </node>
           </node>

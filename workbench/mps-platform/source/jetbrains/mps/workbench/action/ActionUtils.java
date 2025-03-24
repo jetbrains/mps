@@ -45,7 +45,7 @@ public class ActionUtils {
     } catch (Throwable t) {
       LOG.error(t);
     }
-    for (AnAction child : group.getChildren(null)) {
+    for (AnAction child : getChildren(group)) {
       try {
         child.update(e);
       } catch (Throwable t) {
