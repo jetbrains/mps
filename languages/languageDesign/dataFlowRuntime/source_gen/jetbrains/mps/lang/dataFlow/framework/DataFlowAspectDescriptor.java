@@ -5,11 +5,20 @@ package jetbrains.mps.lang.dataFlow.framework;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
+import java.util.Collections;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 /**
  * @author simon
  */
 public interface DataFlowAspectDescriptor extends ILanguageAspect {
   @NotNull
-  Collection<DataFlowConstructor> getConstructors(String analyzerId);
+  default Collection<DataFlowConstructor> getConstructors(String analyzerId) {
+    return Collections.emptyList();
+  }
+
+  @NotNull
+  default Collection<IDataFlowBuilder> getDataFlowBuilders(SAbstractConcept concept) {
+    return Collections.emptyList();
+  }
 }

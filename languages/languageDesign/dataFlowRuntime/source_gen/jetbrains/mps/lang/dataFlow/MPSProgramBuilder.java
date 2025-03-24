@@ -4,19 +4,20 @@ package jetbrains.mps.lang.dataFlow;
 
 import jetbrains.mps.lang.dataFlow.framework.StructuralProgramBuilder;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.Map;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.lang.dataFlow.framework.IDataFlowBuilder;
+import java.util.HashMap;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.dataFlow.framework.instructions.InstructionBuilder;
 import jetbrains.mps.lang.dataFlow.framework.ProgramBuilderContext;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.dataFlow.framework.IDataFlowBuilder;
 import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.EndTryInstruction;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.language.LanguageRuntime;
+import java.util.stream.Stream;
 import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptor;
-import jetbrains.mps.lang.dataFlow.framework.DataFlowAspectDescriptorBase;
 import java.util.Collection;
 import jetbrains.mps.lang.dataFlow.framework.IDataFlowModeId;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -27,6 +28,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
  */
 public class MPSProgramBuilder extends StructuralProgramBuilder<SNode> {
   private boolean myMayBeUnreachable = false;
+  private final Map<SAbstractConcept, IDataFlowBuilder> myCache = new HashMap<>();
   private SRepository myRepository;
 
   public MPSProgramBuilder() {
@@ -81,29 +83,30 @@ public class MPSProgramBuilder extends StructuralProgramBuilder<SNode> {
     }
   }
 
-  private IDataFlowBuilder getDataFlowBuilder(SAbstractConcept concept) {
-    LanguageRegistry instance = (myRepository != null ? LanguageRegistry.getInstance(myRepository) : LanguageRegistry.getInstance());
-    LanguageRuntime language = instance.getLanguage(concept.getLanguage());
-    if (language != null) {
-      DataFlowAspectDescriptor aspect = language.getAspect(DataFlowAspectDescriptor.class);
-      if (aspect instanceof DataFlowAspectDescriptorBase) {
-        Collection<IDataFlowBuilder> dataFlowBuilders = ((DataFlowAspectDescriptorBase) aspect).getDataFlowBuilders(concept);
-        Collection<IDataFlowModeId> contextModes = getBuilderContext().getBuilderModes();
-        for (IDataFlowModeId contextMode : CollectionSequence.fromCollection(contextModes)) {
+  private IDataFlowBuilder getDataFlowBuilder(final SAbstractConcept concept) {
+    LanguageRegistry langRegistry = (myRepository != null ? LanguageRegistry.getInstance(myRepository) : LanguageRegistry.getInstance());
+
+    if (!(myCache.containsKey(concept))) {
+      // XXX would be nice to have a method to visit concept hierarchy right away
+      langRegistry.withAvailableAspects(Stream.of(concept.getLanguage()), DataFlowAspectDescriptor.class, (dfa) -> {
+        Collection<IDataFlowBuilder> dataFlowBuilders = dfa.getDataFlowBuilders(concept);
+        for (IDataFlowModeId contextMode : CollectionSequence.fromCollection(getBuilderContext().getBuilderModes())) {
           for (IDataFlowBuilder builder : CollectionSequence.fromCollection(dataFlowBuilders)) {
             if (builder.getModes().contains(contextMode)) {
-              return builder;
+              myCache.put(concept, builder);
+              return;
             }
           }
         }
         for (IDataFlowBuilder builder : CollectionSequence.fromCollection(dataFlowBuilders)) {
           if (builder.getModes().isEmpty()) {
-            return builder;
+            myCache.put(concept, builder);
+            return;
           }
         }
-        return null;
-      }
+        myCache.put(concept, null);
+      });
     }
-    return null;
+    return myCache.get(concept);
   }
 }
