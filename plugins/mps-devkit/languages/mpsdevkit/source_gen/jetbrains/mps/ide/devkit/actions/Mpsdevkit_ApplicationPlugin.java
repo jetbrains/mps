@@ -73,6 +73,7 @@ public class Mpsdevkit_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new ShowEditorMenuItemTrace_Action());
     addAction(new ShowGenerationTrace_Action());
     addAction(new ShowGenerationTraceback_Action());
+    addAction(new ShowGeneratorTargetLanguages_Action());
     addAction(new ShowNodeInExplorer_Action());
     addAction(new ShowOriginNode_Action());
     addAction(new ShowStructure_Action());

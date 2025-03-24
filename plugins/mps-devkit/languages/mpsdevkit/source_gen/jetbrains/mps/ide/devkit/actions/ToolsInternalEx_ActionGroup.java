@@ -16,5 +16,7 @@ public class ToolsInternalEx_ActionGroup extends GeneratedActionGroup {
     ToolsInternalEx_ActionGroup.this.addAction("jetbrains.mps.ide.devkit.actions.FindWrongAspectDependencies_Action");
     ToolsInternalEx_ActionGroup.this.addAction("jetbrains.mps.ide.devkit.actions.FindCrossTemplateReferences_Action");
     ToolsInternalEx_ActionGroup.this.addAction("jetbrains.mps.ide.devkit.actions.FindReferencesToNonReferenceable_Action");
+    ToolsInternalEx_ActionGroup.this.addSeparator();
+    ToolsInternalEx_ActionGroup.this.addAction("jetbrains.mps.ide.devkit.actions.ShowGeneratorTargetLanguages_Action");
   }
 }
