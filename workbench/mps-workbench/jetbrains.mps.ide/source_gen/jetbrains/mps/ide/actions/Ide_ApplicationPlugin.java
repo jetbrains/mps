@@ -190,7 +190,7 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     insertGroupIntoAnother(Edit_ActionGroup.ID, "IDE_Edit_ActionGrouptoplevel", null);
     insertGroupIntoAnother(Goto_ActionGroup.ID, "GoToMenu", null);
     insertGroupIntoAnother(GoByReference_ActionGroup.ID, "GoToEditorPopupAddition_ActionGrouprefs", null);
-    insertGroupIntoAnother(EditorInternal_ActionGroup.ID, "jetbrains.mps.ide.editor.actions.EditorPopup_ActionGroup", null);
+    insertGroupIntoAnother(EditorInternal_ActionGroup.ID, DebugActions_ActionGroup.ID, DebugActions_ActionGroup.LABEL_ID_editor);
     insertGroupIntoAnother(ToolsInternal_ActionGroup.ID, "Internal", null);
     insertGroupIntoAnother(DebugActions_ActionGroup.ID, NodeActions_ActionGroup.ID, NodeActions_ActionGroup.LABEL_ID_debug);
     insertGroupIntoAnother(DebugActions_ActionGroup.ID, "EditorPopup_ActionGroupdebug", null);

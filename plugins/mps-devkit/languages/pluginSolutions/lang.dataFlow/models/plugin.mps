@@ -40,6 +40,9 @@
       </concept>
       <concept id="1203083511112" name="jetbrains.mps.lang.plugin.structure.ExecuteBlock" flags="in" index="tnohg" />
       <concept id="1203087890642" name="jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration" flags="ng" index="tC5Ba">
+        <property id="1204991940915" name="caption" index="2f7twF" />
+        <property id="1217005992861" name="isInvisibleWhenDisabled" index="1rdrE6" />
+        <property id="1213283637680" name="isPopup" index="1XlLyE" />
         <child id="1204991552650" name="modifier" index="2f5YQi" />
         <child id="1207145245948" name="contents" index="ftER_" />
       </concept>
@@ -768,6 +771,9 @@
   </node>
   <node concept="tC5Ba" id="4KDfkUwM7Go">
     <property role="TrG5h" value="DataFlowInternal" />
+    <property role="1XlLyE" value="true" />
+    <property role="1rdrE6" value="true" />
+    <property role="2f7twF" value="Data Flow Internals" />
     <node concept="ftmFs" id="4KDfkUwM7Gp" role="ftER_">
       <node concept="tCFHf" id="4KDfkUwM7Gq" role="ftvYc">
         <ref role="tCJdB" node="4KDfkUwM7Dx" resolve="PrintDFAResult" />
@@ -778,6 +784,10 @@
       <node concept="tCFHf" id="4KDfkUwM7Gs" role="ftvYc">
         <ref role="tCJdB" node="4KDfkUwM7Er" resolve="PrintReachingDefinintionsInformation" />
       </node>
+    </node>
+    <node concept="tT9cl" id="1Z3z4YN3G8w" role="2f5YQi">
+      <ref role="tU$_T" to="tprs:1GlxrIveqTo" resolve="DebugActions" />
+      <ref role="2f8Tey" to="tprs:6f0maSpvK1s" resolve="dataFlow" />
     </node>
   </node>
   <node concept="2DaZZR" id="6dAEaqvagLC" />

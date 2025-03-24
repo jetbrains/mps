@@ -1368,7 +1368,8 @@
     <property role="2pbKbs" value="true" />
     <property role="1XlLyE" value="true" />
     <node concept="tT9cl" id="hyfx1MW" role="2f5YQi">
-      <ref role="tU$_T" to="ekwn:1xsN4xJX8VI" resolve="EditorPopup" />
+      <ref role="tU$_T" node="1GlxrIveqTo" resolve="DebugActions" />
+      <ref role="2f8Tey" node="6f0maSpvUZm" resolve="editor" />
     </node>
     <node concept="ftmFs" id="h$fDvcf" role="ftER_" />
   </node>

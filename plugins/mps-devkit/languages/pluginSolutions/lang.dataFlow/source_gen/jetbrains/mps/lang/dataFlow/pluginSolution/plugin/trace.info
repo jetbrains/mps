@@ -89,7 +89,7 @@
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="5487985028841896569" at="27,13,28,47" concept="2" />
-      <node id="5487985028841896570" at="31,37,32,127" concept="2" />
+      <node id="5487985028841896570" at="32,133,33,127" concept="2" />
     </file>
   </root>
   <root nodeRef="r:97aec248-a91c-439e-a7f1-5184e2da6816(jetbrains.mps.lang.dataFlow.pluginSolution.plugin)/5487985028841896573">
@@ -290,21 +290,24 @@
   <root nodeRef="r:97aec248-a91c-439e-a7f1-5184e2da6816(jetbrains.mps.lang.dataFlow.pluginSolution.plugin)/5487985028841896728">
     <file name="DataFlowInternal_ActionGroup.java">
       <node id="5487985028841896728" at="10,0,11,0" concept="9" trace="ID" />
-      <node id="5487985028841896728" at="12,74,13,42" concept="10" />
-      <node id="5487985028841896728" at="13,42,14,25" concept="2" />
-      <node id="5487985028841896728" at="14,25,15,20" concept="2" />
-      <node id="5487985028841896730" at="15,20,16,123" concept="2" />
-      <node id="5487985028841896731" at="16,123,17,139" concept="2" />
-      <node id="5487985028841896732" at="17,139,18,145" concept="2" />
-      <node id="5487985028841896728" at="12,0,20,0" concept="1" trace="DataFlowInternal_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="5487985028841896728" at="12,74,18,145" />
-      <scope id="5487985028841896728" at="12,0,20,0">
+      <node id="5487985028841896728" at="12,74,13,45" concept="10" />
+      <node id="5487985028841896728" at="13,45,14,30" concept="2" />
+      <node id="5487985028841896728" at="14,30,15,25" concept="2" />
+      <node id="5487985028841896728" at="15,25,16,19" concept="2" />
+      <node id="5487985028841896730" at="16,19,17,123" concept="2" />
+      <node id="5487985028841896731" at="17,123,18,139" concept="2" />
+      <node id="5487985028841896732" at="18,139,19,145" concept="2" />
+      <node id="5487985028841896728" at="19,145,20,56" concept="2" />
+      <node id="5487985028841896728" at="12,0,22,0" concept="1" trace="DataFlowInternal_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
+      <scope id="5487985028841896728" at="12,74,20,56" />
+      <scope id="5487985028841896728" at="12,0,22,0">
         <var name="plugin" id="5487985028841896728" />
       </scope>
-      <unit id="5487985028841896728" at="9,0,21,0" name="jetbrains.mps.lang.dataFlow.pluginSolution.plugin.DataFlowInternal_ActionGroup" />
+      <unit id="5487985028841896728" at="9,0,23,0" name="jetbrains.mps.lang.dataFlow.pluginSolution.plugin.DataFlowInternal_ActionGroup" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="5487985028841896728" at="28,47,29,53" concept="2" />
+      <node id="2288827309568737824" at="31,37,32,133" concept="2" />
     </file>
   </root>
   <root nodeRef="r:97aec248-a91c-439e-a7f1-5184e2da6816(jetbrains.mps.lang.dataFlow.pluginSolution.plugin)/7162597690967657576">
@@ -314,18 +317,18 @@
       <node id="7162597690967657576" at="21,30,22,29" concept="8" />
       <node id="7162597690967657576" at="26,36,27,13" concept="8" />
       <node id="7162597690967657576" at="13,0,15,0" concept="1" trace="PluginSolution_ApplicationPlugin#()V" />
-      <node id="7162597690967657576" at="31,0,34,0" concept="5" trace="adjustRegularGroups#()V" />
       <node id="7162597690967657576" at="16,0,20,0" concept="5" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
+      <node id="7162597690967657576" at="31,0,35,0" concept="5" trace="adjustRegularGroups#()V" />
       <node id="7162597690967657576" at="21,0,31,0" concept="5" trace="createGroups#()V" />
       <scope id="7162597690967657576" at="13,45,13,45" />
       <scope id="7162597690967657576" at="17,27,18,16" />
-      <scope id="7162597690967657576" at="31,37,32,127" />
       <scope id="7162597690967657576" at="13,0,15,0" />
-      <scope id="7162597690967657576" at="31,0,34,0" />
+      <scope id="7162597690967657576" at="31,37,33,127" />
       <scope id="7162597690967657576" at="16,0,20,0" />
+      <scope id="7162597690967657576" at="31,0,35,0" />
       <scope id="7162597690967657576" at="21,30,29,53" />
       <scope id="7162597690967657576" at="21,0,31,0" />
-      <unit id="7162597690967657576" at="10,0,35,0" name="jetbrains.mps.lang.dataFlow.pluginSolution.plugin.PluginSolution_ApplicationPlugin" />
+      <unit id="7162597690967657576" at="10,0,36,0" name="jetbrains.mps.lang.dataFlow.pluginSolution.plugin.PluginSolution_ApplicationPlugin" />
     </file>
   </root>
 </debug-info>

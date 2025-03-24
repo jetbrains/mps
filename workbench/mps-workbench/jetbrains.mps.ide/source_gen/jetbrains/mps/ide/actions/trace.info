@@ -426,7 +426,7 @@
     </file>
     <file name="Ide_ApplicationPlugin.java">
       <node id="1204991232446" at="114,41,115,51" concept="6" />
-      <node id="1204998642876" at="192,106,193,124" concept="6" />
+      <node id="1204998642876" at="192,106,193,129" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991235731">
@@ -5889,7 +5889,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2899596005954254197">
     <file name="Ide_ApplicationPlugin.java">
       <node id="2899596005954254197" at="155,51,156,50" concept="6" />
-      <node id="2899596005954254200" at="193,124,194,75" concept="6" />
+      <node id="2899596005954254200" at="193,129,194,75" concept="6" />
     </file>
     <file name="ToolsInternal_ActionGroup.java">
       <node id="2899596005954254197" at="12,0,13,0" concept="16" trace="ID" />
