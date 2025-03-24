@@ -137,6 +137,8 @@ public class ThreadWatcher implements Output {
       // Kotlin coroutines threads
       builder.append("|(DefaultDispatcher-worker-.*)");
       builder.append("|(kotlinx.coroutines.DefaultExecutor)");
+      // kotlinx.coroutines.debug.internal.DebugProbesImpl.startWeakRefCleanerThread
+      builder.append("|(Coroutines Debugger Cleaner)");
 
       // RMI specific threads (used by KotlinCompilerRunner)
       builder.append("|(RMI .*)");

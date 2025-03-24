@@ -1308,6 +1308,26 @@
               </node>
             </node>
           </node>
+          <node concept="3SKdUt" id="6nsqgCob85p" role="3cqZAp">
+            <node concept="1PaTwC" id="6nsqgCob85q" role="1aUNEU">
+              <node concept="3oM_SD" id="6nsqgCob9nj" role="1PaTwD">
+                <property role="3oM_SC" value="kotlinx.coroutines.debug.internal.DebugProbesImpl.startWeakRefCleanerThread" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="6nsqgCob4cs" role="3cqZAp">
+            <node concept="2OqwBi" id="6nsqgCob4ct" role="3clFbG">
+              <node concept="37vLTw" id="6nsqgCob4cu" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="6nsqgCob4cv" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="6nsqgCob4cw" role="37wK5m">
+                  <property role="Xl_RC" value="|(Coroutines Debugger Cleaner)" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3clFbH" id="3PwYUBHDLVd" role="3cqZAp" />
           <node concept="3SKdUt" id="IWNIlDbf_r" role="3cqZAp">
             <node concept="1PaTwC" id="IWNIlDbf_s" role="1aUNEU">
