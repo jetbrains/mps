@@ -25,8 +25,9 @@ public final class CellModel_TransactionalProperty__BehaviorDescriptor extends B
   public static final SMethod<String> getOpeningText_idhKxU$w9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getOpeningText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220339714057L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<String> getClosingText_idhKxUEwj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClosingText").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220339738643L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
   public static final SMethod<SNode> getFeatureForCell_id4YnqLFjkxyn = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFeatureForCell").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5735170413438310551L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SNode> getActualPropertyDeclaration_id7ICDFkGJsmM = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getActualPropertyDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8910555159822452146L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOpeningText_idhKxU$w9, getClosingText_idhKxUEwj, getFeatureForCell_id4YnqLFjkxyn);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOpeningText_idhKxU$w9, getClosingText_idhKxUEwj, getFeatureForCell_id4YnqLFjkxyn, getActualPropertyDeclaration_id7ICDFkGJsmM);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -38,7 +39,14 @@ public final class CellModel_TransactionalProperty__BehaviorDescriptor extends B
     return "T}";
   }
   /*package*/ static SNode getFeatureForCell_id4YnqLFjkxyn(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$E2hc);
+    return ((SNode) CellModel_TransactionalProperty__BehaviorDescriptor.getActualPropertyDeclaration_id7ICDFkGJsmM.invoke(__thisNode__));
+  }
+  /*package*/ static SNode getActualPropertyDeclaration_id7ICDFkGJsmM(@NotNull SNode __thisNode__) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$E2hc) != null)) {
+      return SLinkOperations.getTarget(__thisNode__, LINKS.relationDeclaration$E2hc);
+    } else {
+      return SLinkOperations.getTarget(__thisNode__, LINKS.propertyOld$cqCy);
+    }
   }
 
   /*package*/ CellModel_TransactionalProperty__BehaviorDescriptor() {
@@ -62,6 +70,8 @@ public final class CellModel_TransactionalProperty__BehaviorDescriptor extends B
         return (T) ((String) getClosingText_idhKxUEwj(node));
       case 2:
         return (T) ((SNode) getFeatureForCell_id4YnqLFjkxyn(node));
+      case 3:
+        return (T) ((SNode) getActualPropertyDeclaration_id7ICDFkGJsmM(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -93,5 +103,6 @@ public final class CellModel_TransactionalProperty__BehaviorDescriptor extends B
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink propertyOld$cqCy = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "propertyOld");
   }
 }

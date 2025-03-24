@@ -73,6 +73,7 @@ import jetbrains.mps.baseLanguage.behavior.ConceptFunctionParameter__BehaviorDes
 import jetbrains.mps.lang.editor.behavior.ConceptFunctionParameter_editorContext__BehaviorDescriptor;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
+import jetbrains.mps.lang.editor.behavior.CellModel_TransactionalProperty__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.typesystem.RulesUtil;
 import jetbrains.mps.kernel.model.SModelUtil;
 import jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor;
@@ -2691,22 +2692,22 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.propertyDeclaration$kqmK);
   }
   public static SNode sourceNodeQuery_54_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.relationDeclaration$E2hc);
+    return (SNode) CellModel_TransactionalProperty__BehaviorDescriptor.getActualPropertyDeclaration_id7ICDFkGJsmM.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_54_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.relationDeclaration$E2hc);
+    return (SNode) CellModel_TransactionalProperty__BehaviorDescriptor.getActualPropertyDeclaration_id7ICDFkGJsmM.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_54_2(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.relationDeclaration$E2hc);
+    return (SNode) CellModel_TransactionalProperty__BehaviorDescriptor.getActualPropertyDeclaration_id7ICDFkGJsmM.invoke(_context.getNode());
   }
   public static SNode sourceNodeQuery_54_3(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.handlerBlock$RPvD), LINKS.body$e68K);
   }
   public static SNode sourceNodeQuery_54_4(final SourceSubstituteMacroNodeContext _context) {
-    return RulesUtil.datatypeBLType(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.relationDeclaration$E2hc), LINKS.dataType$5j5Y));
+    return RulesUtil.datatypeBLType(SLinkOperations.getTarget(CellModel_TransactionalProperty__BehaviorDescriptor.getActualPropertyDeclaration_id7ICDFkGJsmM.invoke(_context.getNode()), LINKS.dataType$5j5Y));
   }
   public static SNode sourceNodeQuery_54_5(final SourceSubstituteMacroNodeContext _context) {
-    return RulesUtil.datatypeBLType(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.relationDeclaration$E2hc), LINKS.dataType$5j5Y));
+    return RulesUtil.datatypeBLType(SLinkOperations.getTarget(CellModel_TransactionalProperty__BehaviorDescriptor.getActualPropertyDeclaration_id7ICDFkGJsmM.invoke(_context.getNode()), LINKS.dataType$5j5Y));
   }
   public static SNode sourceNodeQuery_55_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.modelAccessor$Ziqb), LINKS.getter$dO_A), LINKS.body$e68K);
