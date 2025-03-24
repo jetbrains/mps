@@ -69,6 +69,7 @@
     <import index="jgl2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution.testframework.export(MPS.IDEA/)" />
     <import index="qq03" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.actions(MPS.Platform/)" />
     <import index="lxc5" ref="r:b25f8540-4e18-427d-a8ac-60f947a3fbc1(jetbrains.mps.baselanguage.unitTest.execution)" />
+    <import index="l7us" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.icons(MPS.Platform/)" />
     <import index="4u8o" ref="r:a7abd5f1-5d9a-4c90-a542-3e14c173186d(jetbrains.mps.baseLanguage.unitTest.platform)" implicit="true" />
   </imports>
   <registry>
@@ -4529,9 +4530,9 @@
                 <node concept="Xl_RD" id="4LTxumxZyfY" role="37wK5m">
                   <property role="Xl_RC" value="Select currently running test in tree" />
                 </node>
-                <node concept="10M0yZ" id="4LTxumxZIyr" role="37wK5m">
-                  <ref role="1PxDUh" to="z2i8:~AllIcons$Nodes$Jsf" resolve="AllIcons.Nodes.Jsf" />
-                  <ref role="3cqZAo" to="z2i8:~AllIcons$Nodes$Jsf.Renderer" resolve="Renderer" />
+                <node concept="10M0yZ" id="6FTCJIUQw83" role="37wK5m">
+                  <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.TrackRunningTests" resolve="TrackRunningTests" />
+                  <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="MPSIcons.Nodes" />
                 </node>
               </node>
             </node>
