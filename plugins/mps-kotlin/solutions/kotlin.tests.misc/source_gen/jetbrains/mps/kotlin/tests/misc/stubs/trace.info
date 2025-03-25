@@ -22,52 +22,53 @@
       <node id="6949626076594506400" at="56,66,57,22" concept="2" />
       <node id="6949626076594535387" at="58,30,59,84" concept="6" />
       <node id="6949626076594535646" at="59,84,60,147" concept="6" />
-      <node id="2543656779682704414" at="64,75,65,50" concept="6" />
-      <node id="2543656779682704740" at="65,50,66,75" concept="6" />
-      <node id="2543656779682705847" at="66,75,67,36" concept="6" />
-      <node id="2543656779682707320" at="67,36,68,96" concept="6" />
-      <node id="2543656779682426994" at="68,96,69,92" concept="5" />
-      <node id="2543656779684497948" at="69,92,70,81" concept="5" />
-      <node id="2543656779684510164" at="71,30,72,96" concept="2" />
+      <node id="6949626076594534425" at="60,147,61,220" concept="2" />
+      <node id="2543656779682704414" at="65,75,66,50" concept="6" />
+      <node id="2543656779682704740" at="66,50,67,75" concept="6" />
+      <node id="2543656779682705847" at="67,75,68,36" concept="6" />
+      <node id="2543656779682707320" at="68,36,69,96" concept="6" />
+      <node id="2543656779682426994" at="69,96,70,92" concept="5" />
+      <node id="2543656779684497948" at="70,92,71,81" concept="5" />
+      <node id="2543656779684510164" at="72,30,73,96" concept="2" />
       <node id="2543656779682200127" at="25,0,27,0" concept="8" trace="ourParametersCacheExtension" />
       <node id="2543656779682200127" at="28,0,31,0" concept="1" trace="StubSamplesLoading_Test#()V" />
       <node id="2543656779682200127" at="43,0,46,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="2543656779684499150" at="70,81,73,7" concept="3" />
+      <node id="2543656779684499150" at="71,81,74,7" concept="3" />
       <node id="2543656779682234010" at="32,0,36,0" concept="4" trace="test_resultClassLoading#()V" />
       <node id="6949626076594506400" at="36,0,40,0" concept="4" trace="test_componentFunctionLoading#()V" />
       <node id="2543656779682200127" at="47,0,51,0" concept="4" trace="initTestNodes#()V" />
       <node id="2543656779682234010" at="52,0,56,0" concept="4" trace="test_resultClassLoading#()V" />
-      <node id="6949626076594506400" at="57,22,61,9" concept="2" />
-      <node id="6949626076594506400" at="56,0,63,0" concept="4" trace="test_componentFunctionLoading#()V" />
-      <node id="6949626076594516096" at="64,0,75,0" concept="4" trace="assertLoadedAs#(Lorg/jetbrains/mps/openapi/model/SNodeReference;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="6949626076594506400" at="57,22,62,9" concept="2" />
+      <node id="6949626076594506400" at="56,0,64,0" concept="4" trace="test_componentFunctionLoading#()V" />
+      <node id="6949626076594516096" at="65,0,76,0" concept="4" trace="assertLoadedAs#(Lorg/jetbrains/mps/openapi/model/SNodeReference;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="2543656779682200127" at="28,36,29,60" />
       <scope id="2543656779682234010" at="33,58,34,49" />
       <scope id="6949626076594506400" at="37,64,38,55" />
       <scope id="2543656779682200127" at="43,52,44,19" />
       <scope id="2543656779682200127" at="48,36,49,69" />
-      <scope id="2543656779684499152" at="71,30,72,96" />
+      <scope id="2543656779684499152" at="72,30,73,96" />
       <scope id="2543656779682234010" at="52,60,54,209" />
-      <scope id="6949626076594506400" at="58,30,60,147" />
       <scope id="2543656779682200127" at="28,0,31,0" />
       <scope id="2543656779682200127" at="43,0,46,0">
         <var name="owner" id="2543656779682200127" />
       </scope>
+      <scope id="6949626076594506400" at="58,30,61,220" />
       <scope id="2543656779682234010" at="32,0,36,0" />
       <scope id="6949626076594506400" at="36,0,40,0" />
       <scope id="2543656779682200127" at="47,0,51,0" />
       <scope id="2543656779682234010" at="52,0,56,0" />
-      <scope id="6949626076594506400" at="56,66,61,9" />
-      <scope id="6949626076594506400" at="56,0,63,0" />
-      <scope id="6949626076594516096" at="64,75,73,7">
+      <scope id="6949626076594506400" at="56,66,62,9" />
+      <scope id="6949626076594506400" at="56,0,64,0" />
+      <scope id="6949626076594516096" at="65,75,74,7">
         <var name="diff" id="2543656779684497949" />
         <var name="stubLoaded" id="2543656779682426995" />
       </scope>
-      <scope id="6949626076594516096" at="64,0,75,0">
+      <scope id="6949626076594516096" at="65,0,76,0">
         <var name="compareTo" id="6949626076594520201" />
         <var name="reference" id="6949626076594520140" />
       </scope>
-      <unit id="2543656779682200127" at="41,0,76,0" name="jetbrains.mps.kotlin.tests.misc.stubs.StubSamplesLoading_Test$TestBody" />
-      <unit id="2543656779682200127" at="23,0,77,0" name="jetbrains.mps.kotlin.tests.misc.stubs.StubSamplesLoading_Test" />
+      <unit id="2543656779682200127" at="41,0,77,0" name="jetbrains.mps.kotlin.tests.misc.stubs.StubSamplesLoading_Test$TestBody" />
+      <unit id="2543656779682200127" at="23,0,78,0" name="jetbrains.mps.kotlin.tests.misc.stubs.StubSamplesLoading_Test" />
     </file>
   </root>
   <root nodeRef="r:eec037d7-3e10-4036-974a-838b679589c3(jetbrains.mps.kotlin.tests.misc.stubs@tests)/3463082351151603486">

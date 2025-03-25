@@ -6,8 +6,10 @@ import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PropertyDeclaration_AddInitializer_QuickFix extends QuickFix_Runtime {
@@ -21,11 +23,13 @@ public class PropertyDeclaration_AddInitializer_QuickFix extends QuickFix_Runtim
     SNode assign = SNodeFactoryOperations.setNewChild(((SNode) PropertyDeclaration_AddInitializer_QuickFix.this.getField("property")[0]), LINKS.assignment$nl1j, CONCEPTS.PropertyDefaultAssignement$Ng);
 
     SNode call = SNodeFactoryOperations.setNewChild(assign, LINKS.expression$guTv, CONCEPTS.FunctionCallExpression$EQ);
+    SLinkOperations.setPointer(call, LINKS.function$Weyv, new SNodePointer("b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin(jetbrains.mps.kotlin.stdlib/)", "~.TODO()"));
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink assignment$nl1j = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, 0x28bef6d7551af7baL, "assignment");
     /*package*/ static final SContainmentLink expression$guTv = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af367L, 0x28bef6d7551af5eaL, "expression");
+    /*package*/ static final SReferenceLink function$Weyv = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af43fL, 0x1ba36e493d8ad4e9L, "function");
   }
 
   private static final class CONCEPTS {

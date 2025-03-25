@@ -1534,34 +1534,36 @@
   </root>
   <root nodeRef="r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)/6013275720582759478">
     <file name="PropertyDeclaration_AddInitializer_QuickFix.java">
-      <node id="6013275720582759478" at="14,56,15,126" concept="15" />
-      <node id="6013275720582770831" at="17,44,18,29" concept="10" />
-      <node id="6013275720582765930" at="20,35,21,201" concept="9" />
-      <node id="6013275720582769758" at="21,201,22,0" concept="12" />
-      <node id="1889888958295379677" at="22,0,23,119" concept="9" />
-      <node id="6013275720582759478" at="27,0,28,0" concept="13" trace="assignment$nl1j" />
-      <node id="6013275720582759478" at="28,0,29,0" concept="13" trace="expression$guTv" />
-      <node id="6013275720582759478" at="32,0,33,0" concept="13" trace="PropertyDefaultAssignement$Ng" />
-      <node id="6013275720582759478" at="33,0,34,0" concept="13" trace="FunctionCallExpression$EQ" />
-      <node id="6013275720582759478" at="14,0,17,0" concept="2" trace="PropertyDeclaration_AddInitializer_QuickFix#()V" />
-      <node id="6013275720582759478" at="17,0,20,0" concept="8" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="6013275720582759478" at="20,0,25,0" concept="8" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="6013275720582759478" at="14,56,15,126" />
-      <scope id="6013275720582770536" at="17,44,18,29" />
-      <scope id="6013275720582759478" at="14,0,17,0" />
-      <scope id="6013275720582759478" at="17,0,20,0">
+      <node id="6013275720582759478" at="16,56,17,126" concept="15" />
+      <node id="6013275720582770831" at="19,44,20,29" concept="10" />
+      <node id="6013275720582765930" at="22,35,23,201" concept="9" />
+      <node id="6013275720582769758" at="23,201,24,0" concept="12" />
+      <node id="1889888958295379677" at="24,0,25,119" concept="9" />
+      <node id="6013275720582759513" at="25,119,26,172" concept="4" />
+      <node id="6013275720582759478" at="30,0,31,0" concept="13" trace="assignment$nl1j" />
+      <node id="6013275720582759478" at="31,0,32,0" concept="13" trace="expression$guTv" />
+      <node id="6013275720582759478" at="32,0,33,0" concept="13" trace="function$Weyv" />
+      <node id="6013275720582759478" at="36,0,37,0" concept="13" trace="PropertyDefaultAssignement$Ng" />
+      <node id="6013275720582759478" at="37,0,38,0" concept="13" trace="FunctionCallExpression$EQ" />
+      <node id="6013275720582759478" at="16,0,19,0" concept="2" trace="PropertyDeclaration_AddInitializer_QuickFix#()V" />
+      <node id="6013275720582759478" at="19,0,22,0" concept="8" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="6013275720582759478" at="22,0,28,0" concept="8" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="6013275720582759478" at="16,56,17,126" />
+      <scope id="6013275720582770536" at="19,44,20,29" />
+      <scope id="6013275720582759478" at="16,0,19,0" />
+      <scope id="6013275720582759478" at="19,0,22,0">
         <var name="node" id="6013275720582759478" />
       </scope>
-      <scope id="6013275720582759480" at="20,35,23,119">
+      <scope id="6013275720582759480" at="22,35,26,172">
         <var name="assign" id="6013275720582765931" />
         <var name="call" id="1889888958295379678" />
       </scope>
-      <scope id="6013275720582759478" at="20,0,25,0">
+      <scope id="6013275720582759478" at="22,0,28,0">
         <var name="node" id="6013275720582759478" />
       </scope>
-      <unit id="6013275720582759478" at="26,0,30,0" name="jetbrains.mps.kotlin.typesystem.PropertyDeclaration_AddInitializer_QuickFix$LINKS" />
-      <unit id="6013275720582759478" at="31,0,35,0" name="jetbrains.mps.kotlin.typesystem.PropertyDeclaration_AddInitializer_QuickFix$CONCEPTS" />
-      <unit id="6013275720582759478" at="13,0,36,0" name="jetbrains.mps.kotlin.typesystem.PropertyDeclaration_AddInitializer_QuickFix" />
+      <unit id="6013275720582759478" at="35,0,39,0" name="jetbrains.mps.kotlin.typesystem.PropertyDeclaration_AddInitializer_QuickFix$CONCEPTS" />
+      <unit id="6013275720582759478" at="29,0,34,0" name="jetbrains.mps.kotlin.typesystem.PropertyDeclaration_AddInitializer_QuickFix$LINKS" />
+      <unit id="6013275720582759478" at="15,0,40,0" name="jetbrains.mps.kotlin.typesystem.PropertyDeclaration_AddInitializer_QuickFix" />
     </file>
   </root>
   <root nodeRef="r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)/655844405550943403">
