@@ -16,6 +16,7 @@
 package jetbrains.mps.extapi.persistence;
 
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
+import jetbrains.mps.util.containers.ConcurrentHashSet;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.refresh.CachingFileSystem;
@@ -56,6 +57,8 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
   private final IFile myFolder;
 
   private volatile long myLastAddRemove = -1L;
+  private volatile long myLastModified = -1L;
+  private ConcurrentHashSet<String> myIncludedFileNames = new ConcurrentHashSet<>();
 
   public FolderDataSource(@NotNull IFile folder) {
     this(folder, xxx -> true);
@@ -134,20 +137,21 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
 
   @Override
   public long getTimestamp() {
-    long max = myLastAddRemove;
-    boolean any = false;
-    for (IFile file : getChildrenFiles().collect(Collectors.toList())) {
-      if (!isIncluded(file)) {
-        continue;
-      }
-      any = true;
-
-      long timestamp = file.lastModified();
-      if (timestamp > max) {
-        max = timestamp;
+    if (myIncludedFileNames.isEmpty()) {
+      myLastModified = -1;
+      for (IFile file : getChildrenFiles().collect(Collectors.toList())) {
+        if (!isIncluded(file)) {
+          continue;
+        }
+        myIncludedFileNames.add(getStreamName(file));
+        myLastModified = Math.max(myLastModified, file.lastModified());
       }
     }
-    return any ? max : -1;
+    if (myIncludedFileNames.isEmpty()) {
+      // keep the invariant: an empty folder has -1 as the timestamp
+      return -1;
+    }
+    return Math.max(myLastModified, myLastAddRemove);
   }
 
   @Override
@@ -218,22 +222,31 @@ public class FolderDataSource extends DataSourceBase implements MultiStreamDataS
     for (IFile file : event.getChanged()) {
       if (isIncluded(file)) {
         affectedStreams.add(getStreamName(file));
+        myLastModified = Math.max(myLastModified, file.lastModified());
         break;
       }
     }
     for (IFile file : event.getCreated()) {
       if (isIncluded(file)) {
-        affectedStreams.add(getStreamName(file));
+        String name = getStreamName(file);
+        myIncludedFileNames.add(name);
+        affectedStreams.add(name);
         myLastAddRemove = new Date().getTime();
         break;
       }
     }
     for (IFile file : event.getRemoved()) {
       if (isIncluded(file)) {
-        affectedStreams.add(getStreamName(file));
+        String name = getStreamName(file);
+        myIncludedFileNames.remove(name);
+        affectedStreams.add(name);
         myLastAddRemove = new Date().getTime();
         break;
       }
+    }
+    if (myIncludedFileNames.isEmpty()) {
+      // keep the invariant: last changed timestamp must be -1 if the folder is effectively empty (no included files)
+      myLastModified = -1;
     }
     fireChanged(monitor, affectedStreams);
   }
