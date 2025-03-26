@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -159,18 +159,18 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     return myFileSystem;
   }
 
-  //----reference
   @NotNull
   @Override
   public SModuleId getModuleId() {
 //    assertCanRead(); @see getModuleReference()
-    return getModuleReference().getModuleId();
+    // keep the method here, despite identical default implenentation, to satisfy uses in MPS/MS-extensions/mbeddr code
+    return super.getModuleId();
   }
 
   @Override
-  public String getModuleName() {
-//    assertCanRead(); @see getModuleReference()
-    return getModuleReference().getModuleName();
+  public @Nullable String getModuleName() {
+    // keep the method here, despite identical default implenentation, to satisfy uses in MPS/MS-extensions/mbeddr code
+    return super.getModuleName();
   }
 
   @Override
@@ -249,7 +249,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
   @Override
   @NotNull
-  //module reference is immutable, so we cn return original
+  //module reference is immutable, so we can return original
   public SModuleReference getModuleReference() {
 //    assertCanRead(); ClassLoaderManager needs module reference. Do we need CLM to obtain read lock?
     return myModuleReference;

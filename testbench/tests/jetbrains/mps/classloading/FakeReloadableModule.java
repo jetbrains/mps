@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2023 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.classloading.ClassLoaderManager.DeploymentStatuses;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.modules.ModuleReference;
@@ -26,7 +25,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
-import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SModuleListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -69,17 +67,6 @@ public class FakeReloadableModule implements ReloadableModule {
   @Override
   public MPSModuleClassLoader getClassLoader() {
     throw new UnsupportedOperationException("Not implemented");
-  }
-
-  @NotNull
-  @Override
-  public SModuleId getModuleId() {
-    return myModuleReference.getModuleId();
-  }
-
-  @Override
-  public String getModuleName() {
-    return myModuleReference.getModuleName();
   }
 
   @NotNull
