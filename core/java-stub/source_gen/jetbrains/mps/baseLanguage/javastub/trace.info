@@ -2403,7 +2403,7 @@
       <node id="3902807789912264473" at="30,0,31,0" concept="6" trace="myPaths" />
       <node id="353338984289721919" at="31,0,32,0" concept="6" trace="mySkipPrivate" />
       <node id="4359902566557214906" at="32,0,33,0" concept="6" trace="myOnlyPublic" />
-      <node id="4359902566557275167" at="34,82,35,22" concept="5" />
+      <node id="4359902566557275167" at="34,75,35,22" concept="5" />
       <node id="4359902566557275179" at="35,22,36,20" concept="5" />
       <node id="4359902566557221145" at="39,70,40,37" concept="5" />
       <node id="4359902566557211388" at="40,37,41,16" concept="12" />
@@ -2438,7 +2438,7 @@
       <node id="2781727533174972961" at="84,0,87,0" concept="10" trace="getTopClassFiles#()Ljava/lang/Iterable;" />
       <node id="7243297557704338421" at="88,49,91,5" concept="9" />
       <node id="7243297557704352244" at="92,33,95,5" concept="9" />
-      <node id="4359902566557272294" at="34,0,38,0" concept="3" trace="ASMModelLoader#(Ljetbrains/mps/project/AbstractModule;Ljava/util/Collection;)V" />
+      <node id="4359902566557272294" at="34,0,38,0" concept="3" trace="ASMModelLoader#(Lorg/jetbrains/mps/openapi/module/SModule;Ljava/util/Collection;)V" />
       <node id="4359902566557177236" at="39,0,43,0" concept="10" trace="onlyPublicClasses#(Z)Ljetbrains/mps/baseLanguage/javastub/ASMModelLoader;" />
       <node id="4359902566557226236" at="44,0,48,0" concept="10" trace="skipPrivateMembers#(Z)Ljetbrains/mps/baseLanguage/javastub/ASMModelLoader;" />
       <node id="1801654912892294788" at="69,48,73,9" concept="9" />
@@ -2454,7 +2454,7 @@
       <scope id="2781727533174972965" at="84,45,85,171" />
       <scope id="7243297557704338423" at="89,29,90,19" />
       <scope id="7243297557704352246" at="93,37,94,19" />
-      <scope id="4359902566557272298" at="34,82,36,20" />
+      <scope id="4359902566557272298" at="34,75,36,20" />
       <scope id="4359902566557177240" at="39,70,41,16" />
       <scope id="4359902566557226240" at="44,72,46,16" />
       <scope id="1801654912892294790" at="70,24,72,43" />

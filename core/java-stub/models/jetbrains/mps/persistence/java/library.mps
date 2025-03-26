@@ -27,7 +27,6 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="i290" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.java.stub(MPS.Core/)" />
     <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" />
-    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="45y3" ref="r:eafb5d8e-2952-4826-b4ad-be2b9011f598(jetbrains.mps.baseLanguage.javastub.asm)" />
@@ -612,35 +611,6 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="4wYSx2JAsxZ" role="jymVt" />
-    <node concept="3clFb_" id="390SM3Indek" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getModule" />
-      <property role="DiZV1" value="false" />
-      <property role="od$2w" value="false" />
-      <node concept="3Tm1VV" id="390SM3Indel" role="1B3o_S" />
-      <node concept="2AHcQZ" id="390SM3Inden" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-      <node concept="3uibUv" id="390SM3InftM" role="3clF45">
-        <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
-      </node>
-      <node concept="3clFbS" id="390SM3Indeq" role="3clF47">
-        <node concept="3clFbF" id="390SM3Indet" role="3cqZAp">
-          <node concept="10QFUN" id="390SM3Inh$P" role="3clFbG">
-            <node concept="3uibUv" id="390SM3Inh_e" role="10QFUM">
-              <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
-            </node>
-            <node concept="3nyPlj" id="390SM3Indes" role="10QFUP">
-              <ref role="37wK5l" to="g3l6:~SModelBase.getModule()" resolve="getModule" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="390SM3Inder" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="390SM3Ineni" role="jymVt" />
     <node concept="3clFb_" id="2qqFBg4W_N$" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -825,7 +795,7 @@
                           <node concept="1pGfFk" id="2qqFBg4WBIc" role="2ShVmc">
                             <ref role="37wK5l" to="1ltj:3M1v4zmXszA" resolve="ASMModelLoader" />
                             <node concept="1rXfSq" id="2qqFBg4WBId" role="37wK5m">
-                              <ref role="37wK5l" node="390SM3Indek" resolve="getModule" />
+                              <ref role="37wK5l" to="g3l6:~SModelBase.getModule()" resolve="getModule" />
                             </node>
                             <node concept="2OqwBi" id="1S6fjTGmyig" role="37wK5m">
                               <node concept="1rXfSq" id="1S6fjTGmxkP" role="2Oq$k0">
@@ -1234,7 +1204,7 @@
               <node concept="1pGfFk" id="3M1v4zmXBiV" role="2ShVmc">
                 <ref role="37wK5l" to="1ltj:3M1v4zmXszA" resolve="ASMModelLoader" />
                 <node concept="1rXfSq" id="2qqFBg4Wzpp" role="37wK5m">
-                  <ref role="37wK5l" node="390SM3Indek" resolve="getModule" />
+                  <ref role="37wK5l" to="g3l6:~SModelBase.getModule()" resolve="getModule" />
                 </node>
                 <node concept="2OqwBi" id="1S6fjTGmD$3" role="37wK5m">
                   <node concept="1rXfSq" id="1S6fjTGmCF4" role="2Oq$k0">
@@ -1545,10 +1515,15 @@
                         <node concept="3cpWsn" id="2upfhDvp8gF" role="3cpWs9">
                           <property role="TrG5h" value="module" />
                           <node concept="3uibUv" id="2upfhDvp8gD" role="1tU5fm">
-                            <ref role="3uigEE" to="z1c3:~AbstractModule" resolve="AbstractModule" />
+                            <ref role="3uigEE" to="31cb:~SModuleBase" resolve="SModuleBase" />
                           </node>
-                          <node concept="1rXfSq" id="2upfhDvp8gG" role="33vP2m">
-                            <ref role="37wK5l" node="390SM3Indek" resolve="getModule" />
+                          <node concept="10QFUN" id="4cZ5ajch2Vt" role="33vP2m">
+                            <node concept="3uibUv" id="4cZ5ajch6dN" role="10QFUM">
+                              <ref role="3uigEE" to="31cb:~SModuleBase" resolve="SModuleBase" />
+                            </node>
+                            <node concept="1rXfSq" id="2upfhDvp8gG" role="10QFUP">
+                              <ref role="37wK5l" to="g3l6:~SModelBase.getModule()" resolve="getModule" />
+                            </node>
                           </node>
                         </node>
                       </node>
