@@ -602,12 +602,11 @@
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="h9AO$wG" role="1B3o_S">
-        <node concept="2ZBi8u" id="6PtsnHgjKDy" role="lGtFl">
-          <ref role="2rW$FS" node="6PtsnHgjKd4" resolve="MigrationScriptCons" />
-        </node>
-      </node>
+      <node concept="3Tm1VV" id="h9AO$wG" role="1B3o_S" />
       <node concept="3cqZAl" id="EQtaUM29Jf" role="3clF45" />
+      <node concept="2ZBi8u" id="6$D9GykhlDl" role="lGtFl">
+        <ref role="2rW$FS" node="6PtsnHgjKd4" resolve="MigrationScriptCons" />
+      </node>
     </node>
     <node concept="2tJIrI" id="rl14sQwxb8" role="jymVt" />
     <node concept="3clFb_" id="rl14sQwxpy" role="jymVt">
