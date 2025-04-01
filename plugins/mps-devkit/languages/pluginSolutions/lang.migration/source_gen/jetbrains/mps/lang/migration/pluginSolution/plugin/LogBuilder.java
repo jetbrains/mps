@@ -14,9 +14,14 @@ import java.util.HashMap;
 import jetbrains.mps.smodel.Language;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectSupport;
+import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.LanguageAspect;
-import jetbrains.mps.smodel.SModelInternal;
+import java.util.Optional;
+import jetbrains.mps.smodel.language.CreateAspectContext;
+import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.smodel.ModelImports;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -63,15 +68,31 @@ public class LogBuilder {
     // because it relies on order in which getChanges() is called for node subtree.
     myRefactoringStep = createRefactoringLog_1o8b1n_a0h0d(moduleVersion, (caption == null ? refactoringLogName + "_" + moduleVersion : caption));
     session.registerChange(() -> {
-      SModel migrationModel = LanguageAspect.MIGRATION.getOrCreate(module);
-      SModelInternal sm = (SModelInternal) (SModel) migrationModel;
+      // FIXME pretty much the same code in LanguageStructureMigrationParticipant
+      LanguageAspectDescriptor lad = LanguageAspectSupport.getAspectDescriptorById("migration");
+      Collection<SModel> aspectModels = lad.getAspectModels(module);
+      final Optional<SModel> migrationModel;
+      if (aspectModels.isEmpty()) {
+        CreateAspectContext cac = CreateAspectContext.create(module, MPSCoreComponents.getInstance().getPlatform(), null);
+        lad.create(cac);
+        migrationModel = lad.getAspectModels(module).stream().findFirst();
+      } else {
+        migrationModel = aspectModels.stream().findFirst();
+      }
+      if (migrationModel.isEmpty()) {
+        if (LOG.isErrorLevel()) {
+          LOG.error("Can't create migration aspect");
+        }
+        return;
+      }
+      ModelImports mi = new ModelImports(migrationModel.get());
       for (SModelReference reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myRefactoringStep, null, true, new SAbstractConcept[]{})).translate((it) -> SNodeOperations.getReferences(it)).select((it) -> it.getTargetSModelReference()).distinct()) {
-        if (!(SModelOperations.getImportedModelUIDs(migrationModel).contains(reference))) {
-          sm.addModelImport(reference);
+        if (!(SModelOperations.getImportedModelUIDs(migrationModel.get()).contains(reference))) {
+          mi.addModelImport(reference);
         }
       }
-      sm.addLanguage(MetaAdapterFactory.getLanguage(0x9882f4ad195546feL, 0x826994189e5dbbf2L, "jetbrains.mps.lang.migration.util"));
-      jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(migrationModel, myRefactoringStep);
+      mi.addUsedLanguage(MetaAdapterFactory.getLanguage(0x9882f4ad195546feL, 0x826994189e5dbbf2L, "jetbrains.mps.lang.migration.util"));
+      migrationModel.get().addRootNode(myRefactoringStep);
       module.setModuleVersion(moduleVersion + 1);
 
       Iterable<SModule> modules = searchScope.getModules();
