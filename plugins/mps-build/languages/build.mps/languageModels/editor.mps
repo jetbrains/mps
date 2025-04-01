@@ -2914,12 +2914,6 @@
           <node concept="3F0ifn" id="2g$3PZTSXxw" role="3EZMnx">
             <property role="3F0ifm" value="Build info" />
             <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
-            <node concept="3$7fVu" id="2g$3PZTSXxx" role="3F10Kt">
-              <property role="3$6WeP" value="0.5" />
-            </node>
-            <node concept="3$7jql" id="2g$3PZTSXxy" role="3F10Kt">
-              <property role="3$6WeP" value="0.5" />
-            </node>
             <node concept="ljvvj" id="2g$3PZTSYcT" role="3F10Kt">
               <property role="VOm3f" value="true" />
             </node>
@@ -2928,12 +2922,6 @@
             <node concept="3F0ifn" id="2g$3PZTSXxz" role="3EZMnx">
               <property role="3F0ifm" value="number" />
               <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
-              <node concept="3$7fVu" id="2g$3PZTSXx$" role="3F10Kt">
-                <property role="3$6WeP" value="0.5" />
-              </node>
-              <node concept="3$7jql" id="2g$3PZTSXx_" role="3F10Kt">
-                <property role="3$6WeP" value="0.5" />
-              </node>
             </node>
             <node concept="l2Vlx" id="2g$3PZTSXyb" role="2iSdaV" />
             <node concept="3F1sOY" id="6Iq8148fjWQ" role="3EZMnx">
@@ -2976,7 +2964,7 @@
           </node>
           <node concept="3EZMnI" id="5VYK1npI38N" role="3EZMnx">
             <node concept="3F0ifn" id="6Iq8148fjXk" role="3EZMnx">
-              <property role="3F0ifm" value="backgound image" />
+              <property role="3F0ifm" value="background image" />
               <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
             </node>
             <node concept="3F1sOY" id="6Iq8148fjXm" role="3EZMnx">
@@ -4160,7 +4148,7 @@
           <property role="VOm3f" value="true" />
         </node>
         <node concept="3F0ifn" id="1RsDREvHED5" role="3EZMnx">
-          <property role="3F0ifm" value="# Use 'Override Plugin Descriptor Layout' intension to configure it manually" />
+          <property role="3F0ifm" value="# Use 'Override Plugin Descriptor Layout' intention to configure it manually" />
           <ref role="1k5W1q" to="o2va:7UAfeVQSDww" resolve="comment" />
           <node concept="pVoyu" id="1RsDREvHEO$" role="3F10Kt">
             <property role="VOm3f" value="true" />

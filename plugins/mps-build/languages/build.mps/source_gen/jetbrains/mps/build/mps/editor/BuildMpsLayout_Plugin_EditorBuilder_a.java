@@ -301,7 +301,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private EditorCell createConstant_2() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "# Use 'Override Plugin Descriptor Layout' intension to configure it manually");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "# Use 'Override Plugin Descriptor Layout' intention to configure it manually");
     editorCell.setCellId("Constant_y1xun7_c3a");
     Style style = new StyleImpl();
     new commentStyleClass(this).apply(style, editorCell);
