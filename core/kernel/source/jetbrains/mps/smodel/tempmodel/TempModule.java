@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,11 @@
  */
 package jetbrains.mps.smodel.tempmodel;
 
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.classloading.MPSModuleClassLoader;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.ReloadableModuleBase;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
@@ -38,7 +42,7 @@ import java.util.Set;
  * TODO: it does not belong to any repository
  *       ^^ is this true?
  */
-public class TempModule extends ReloadableModuleBase implements SModule {
+public class TempModule extends AbstractModule implements SModule, ReloadableModule {
   private final ModuleDescriptor myDescriptor;
   private final JavaModuleFacet myJavaModuleFacet;
 
@@ -92,5 +96,23 @@ public class TempModule extends ReloadableModuleBase implements SModule {
   @Override
   public ModuleDescriptor getModuleDescriptor() {
     return myDescriptor;
+  }
+
+  @Override
+  @NotNull
+  public Class<?> getClass(@NotNull String classFqName) throws ClassNotFoundException {
+    return getClassLoader().loadClass(classFqName);
+  }
+
+  @Override
+  @NotNull
+  public Class<?> getOwnClass(@NotNull String classFqName) throws ClassNotFoundException {
+    return getClassLoader().loadOwnClass(classFqName);
+  }
+
+  @Override
+  @NotNull
+  public MPSModuleClassLoader getClassLoader() {
+    return ClassLoaderManager.getInstance().getClassLoader(this);
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.module;
 
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.MPSModuleClassLoader;
-import jetbrains.mps.classloading.ModuleClassLoader;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.vfs.IFile;
@@ -33,10 +32,6 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
   // the plan is to drop myManager field altogether, once ReloadableModule is reduced to a slim,
   // independent of SModule, interface for use solely in CLM's own hierarchy
   private final ClassLoaderManager myManager = ClassLoaderManager.getInstance(); // to remove this I need to insert CLM into constructor and that is not an easy task
-
-  protected ReloadableModuleBase(){
-    super();
-  }
 
   protected ReloadableModuleBase(@Nullable IFile file) {
     super(file);
@@ -56,17 +51,13 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
 
   @NotNull
   protected Class<?> getClass(String classFqName, boolean ownClassOnly) throws ClassNotFoundException {
-    ClassLoader classLoader = getClassLoader();
-    if (classLoader == null) {
-      throw new ModuleClassLoaderIsNullException(this);
+    MPSModuleClassLoader classLoader = getClassLoader();
+    if (ownClassOnly ) {
+      return classLoader.loadOwnClass(classFqName);
     }
-    String internClassName = /*InternUtil.intern*/(classFqName);
-    if (ownClassOnly && classLoader instanceof ModuleClassLoader) {
-      return ((ModuleClassLoader) classLoader).loadOwnClass(internClassName);
-    }
-    Class<?> aClass = classLoader.loadClass(internClassName);
+    Class<?> aClass = classLoader.loadClass(classFqName);
     if (aClass == null) {
-      throw new LoadedClassIsNullException(classLoader, internClassName);
+      throw new LoadedClassIsNullException(classLoader, classFqName);
     }
     return aClass;
   }
