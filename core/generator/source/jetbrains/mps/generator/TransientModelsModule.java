@@ -17,12 +17,13 @@ package jetbrains.mps.generator;
 
 import jetbrains.mps.extapi.model.ModelWithAttributes;
 import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.generator.TransientModelsProvider.TransientSwapSpace;
 import jetbrains.mps.generator.impl.ModelVault;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.SDependencyImpl;
-import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.EditableModelDescriptor;
 import jetbrains.mps.smodel.FastNodeFinderManager;
 import jetbrains.mps.smodel.Language;
@@ -45,21 +46,27 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.persistence.NullDataSource;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
 
-public class TransientModelsModule extends AbstractModule implements TransientSModule {
+public class TransientModelsModule extends SModuleBase implements TransientSModule {
   private static final Logger LOG = Logger.getLogger(TransientModelsModule.class);
 
+  private final SModuleReference myModuleReference;
   private final TransientModelsProvider myComponent;
 
   private final Set<SModel> myPublished = new ConcurrentHashSet<>();
@@ -74,7 +81,43 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
 
   /*package*/ TransientModelsModule(@NotNull TransientModelsProvider tmProvider, @NotNull SModuleReference moduleReference) {
     myComponent = tmProvider;
-    setModuleReference(moduleReference);
+    myModuleReference = moduleReference;
+  }
+
+  @NotNull
+  @Override
+  public SModuleReference getModuleReference() {
+    return myModuleReference;
+  }
+
+  @Override
+  public Set<SLanguage> getUsedLanguages() {
+    // pretty much inspired by local getDeclaredDependencies() and AM.getUsedLanguages()
+    assertCanRead();
+    Set<SLanguage> usedLanguages = new LinkedHashSet<>();
+    Set<SModuleReference> devkits = new LinkedHashSet<>();
+
+    for (SModel m : getModels()) {
+      final ModelImports mi = new ModelImports(m);
+      usedLanguages.addAll(mi.getUsedLanguages());
+      devkits.addAll(mi.getUsedDevKits());
+    }
+
+    if (getRepository() != null) {
+      // need to resolve devkit to get its exported languages. XXX however, need to account for evolution when TMM lives in its own repository (not project's)
+      devkits.stream().map(mr -> mr.resolve(getRepository())).filter(Objects::nonNull).forEach(dk -> ((DevKit) dk).getAllExportedLanguageIds().forEach(usedLanguages::add));
+    }
+    return usedLanguages;
+  }
+
+  @Override
+  public @NotNull Iterable<SModuleFacet> getFacets() {
+    return Collections.emptyList();
+  }
+
+  @Override
+  public Iterable<ModelRoot> getModelRoots() {
+    return Collections.emptyList();
   }
 
   @Override
@@ -271,6 +314,7 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
    */
   @Override
   public Iterable<SDependency> getDeclaredDependencies() {
+    final long start = System.nanoTime();
     assertCanRead();
     // SModelOperations.validateLanguagesAndImports could update this set for us (if I override addDependency() to record values),
     // but I don't think the method deserves to survive, and its extra use doesn't help this.
@@ -288,6 +332,8 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
     }
     ArrayList<SDependency> rv = new ArrayList<>(deps.size());
     deps.forEach(m -> rv.add(new SDependencyImpl(m, SDependencyScope.DEFAULT, false)));
+    final long end = System.nanoTime();
+    System.out.printf("TMM.getDeclaredDeps(): %d µs\n", (end - start)/1_000);
     return rv;
   }
 

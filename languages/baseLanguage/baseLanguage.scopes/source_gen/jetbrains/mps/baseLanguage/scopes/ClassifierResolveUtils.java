@@ -15,6 +15,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.scope.VisibleDepsSearchScope;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.LanguageID;
 import java.util.Collections;
@@ -75,7 +76,13 @@ public class ClassifierResolveUtils {
 
     // try to resolve as fq name in current scope
     SModule module = contextModel.getModule();
-    Iterable<SModel> visibleModels = ((AbstractModule) module).getScope().getModels();
+    Iterable<SModel> visibleModels;
+    if (module instanceof AbstractModule) {
+      // I wonder if getScope() shall be part of SModule/SModuleBase API, rather than AM's
+      visibleModels = ((AbstractModule) module).getScope().getModels();
+    } else {
+      visibleModels = new VisibleDepsSearchScope(module.getRepository(), module).getModels();
+    }
     final String stubStereoType = SModelStereotype.getStubStereotypeForId(LanguageID.JAVA);
     result = new ModelsByName(visibleModels).resolveClassifierByFqNameWithNonStubPriority(classifierName, stubStereoType);
     return (Sequence.fromIterable(result).count() == 1 ? Sequence.fromIterable(result).first() : null);
