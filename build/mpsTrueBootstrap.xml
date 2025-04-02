@@ -142,6 +142,9 @@
     <copy todir="${build.layout}">
       <fileset file="${mps_home}/lib/kotlin-metadata-jvm-2.1.0.jar" />
     </copy>
+    <copy todir="${build.layout}">
+      <fileset file="${mps_home}/lib/kotlinx-metadata-klib-0.0.6.jar" />
+    </copy>
     <mkdir dir="${build.layout}/to-be-imported" />
     <jar destfile="${build.layout}/to-be-imported/core-components.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-core-components" />

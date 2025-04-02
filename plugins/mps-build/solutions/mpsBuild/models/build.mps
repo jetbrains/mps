@@ -43038,6 +43038,9 @@
     <node concept="26EafG" id="4nX__hM7qCy" role="26Ea7d">
       <property role="26EafJ" value="lib/kotlin-metadata-jvm-2.1.0.jar" />
     </node>
+    <node concept="26EafG" id="3vFdno4LV98" role="26Ea7d">
+      <property role="26EafJ" value="lib/kotlinx-metadata-klib-0.0.6.jar" />
+    </node>
     <node concept="26EafG" id="9nERkLKyHi" role="26Ea7d">
       <property role="26EafJ" value="lib/lib.jar" />
     </node>
@@ -55958,6 +55961,17 @@
             <property role="2Ry0Am" value="lib" />
             <node concept="2Ry0Ak" id="2ZkYPo74Wvl" role="2Ry0An">
               <property role="2Ry0Am" value="kotlin-metadata-jvm-2.1.0.jar" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="28jJK3" id="3vFdno4M8Oa" role="39821P">
+        <node concept="398BVA" id="3vFdno4M8Ob" role="28jJRO">
+          <ref role="398BVh" node="6IJvZDkyhr7" resolve="mps_home" />
+          <node concept="2Ry0Ak" id="3vFdno4M8Oc" role="iGT6I">
+            <property role="2Ry0Am" value="lib" />
+            <node concept="2Ry0Ak" id="3vFdno4M8Oe" role="2Ry0An">
+              <property role="2Ry0Am" value="kotlinx-metadata-klib-0.0.6.jar" />
             </node>
           </node>
         </node>

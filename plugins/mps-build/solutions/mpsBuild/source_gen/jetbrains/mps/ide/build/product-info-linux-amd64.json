@@ -39,6 +39,7 @@
         "junit4.jar",
         "kotlin-compiler-client-embeddable-2.1.0.jar",
         "kotlin-metadata-jvm-2.1.0.jar",
+        "kotlinx-metadata-klib-0.0.6.jar",
         "lib.jar",
         "mps-annotations.jar",
         "mps-behavior-api.jar",
