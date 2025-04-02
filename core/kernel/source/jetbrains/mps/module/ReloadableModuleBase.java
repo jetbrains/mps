@@ -23,10 +23,6 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SModule;
-
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * ReloadableModule which delegates to ClassLoaderManager
@@ -37,7 +33,6 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
   // the plan is to drop myManager field altogether, once ReloadableModule is reduced to a slim,
   // independent of SModule, interface for use solely in CLM's own hierarchy
   private final ClassLoaderManager myManager = ClassLoaderManager.getInstance(); // to remove this I need to insert CLM into constructor and that is not an easy task
-  private final List<SModuleDependenciesListener> myListeners = new CopyOnWriteArrayList<>();
 
   protected ReloadableModuleBase(){
     super();
@@ -80,29 +75,5 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
   @Override
   public final MPSModuleClassLoader getClassLoader() {
     return myManager.getClassLoader(this);
-  }
-
-  // NOTE: for internal use
-  @Deprecated(forRemoval = true)
-  public final void addDependenciesListener(SModuleDependenciesListener listener) {
-    LOG.warnDeprecatedUse("This method is no-op, stop using SModuleDependenciesListener");
-  }
-
-  // NOTE: for internal use
-  @Deprecated(forRemoval = true)
-  public final void removeDependenciesListener(SModuleDependenciesListener listener) {
-    LOG.warnDeprecatedUse("This method is no-op, stop using SModuleDependenciesListener");
-  }
-
-  // NOTE: for internal use
-  // notifies about ANY changes in deps, used languages, etc.
-  // designed specifically for the class loading client
-  /**
-   * NOT IN USE ANY MORE
-   * @deprecated Use {@link org.jetbrains.mps.openapi.module.SModuleListener#moduleChanged(SModule)}
-   */
-  @Deprecated(since = "2024.2", forRemoval = true)
-  public interface SModuleDependenciesListener {
-    void dependenciesChanged(@NotNull ReloadableModuleBase module);
   }
 }

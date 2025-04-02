@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -436,14 +436,14 @@ public class ClassLoaderManager implements CoreComponent {
     refresh();
     // this is a hack. just a missstep towards better code (once reload process with a new watcher loguc is streamlined, we won't need casts)
     // perhaps, we can just ask watcher to give us tracked modules among these
-    Collection<ReloadableModuleBase> modulesToReload = new LinkedHashSet();
+    Collection<ReloadableModule> modulesToReload = new LinkedHashSet();
     for (SModule module : modules) {
       if (!(module instanceof TempModule) && module.getRepository() == null) {
         // FIXME I don't quite undertand how come TempModule from console could get repository == null (e4ebe803, MPS-20789 10yo! hotfix!!)
         throw new IllegalStateException(String.format("Cannot reload the module %s which does not belong to a repository", module));
       }
-      if (module instanceof ReloadableModuleBase) {
-        modulesToReload.add((ReloadableModuleBase) module);
+      if (module instanceof ReloadableModule) {
+        modulesToReload.add((ReloadableModule) module);
       }
     }
     // report modules as changed to trigger update of their CL
