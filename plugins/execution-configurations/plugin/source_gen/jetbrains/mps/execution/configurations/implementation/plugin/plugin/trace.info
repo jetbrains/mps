@@ -1342,69 +1342,68 @@
       <node id="5057842142812859069" at="83,46,84,149" concept="10" />
       <node id="5057842142812859090" at="84,149,85,28" concept="10" />
       <node id="5057842142812859096" at="86,11,87,30" concept="5" />
-      <node id="3818729150937328072" at="93,33,94,54" concept="5" />
-      <node id="5057842142812870714" at="95,9,96,20" concept="11" />
-      <node id="5057842142812644389" at="97,7,98,32" concept="11" />
-      <node id="5057842142812873002" at="99,5,100,16" concept="11" />
-      <node id="6816456863520857541" at="103,36,104,27" concept="11" />
-      <node id="4283566179239153969" at="107,43,108,30" concept="11" />
-      <node id="4586384769575960058" at="112,53,113,58" concept="10" />
-      <node id="5057842142812605012" at="113,58,114,75" concept="5" />
-      <node id="5057842142812626524" at="114,75,115,39" concept="5" />
-      <node id="5930496931441972411" at="120,0,121,0" concept="6" trace="myJavaModuleFacet" />
-      <node id="1210974528355010970" at="122,70,123,45" concept="16" />
-      <node id="1210974528355555083" at="123,45,124,104" concept="5" />
-      <node id="5930496931441985784" at="124,104,125,138" concept="5" />
-      <node id="5930496931442015699" at="130,47,131,54" concept="11" />
-      <node id="93303204049968958" at="134,33,135,18" concept="12" />
-      <node id="93303204049957503" at="135,18,136,19" concept="11" />
-      <node id="5057842142812510296" at="141,0,142,0" concept="14" trace="name$MnvL" />
-      <node id="3818729150937328072" at="92,54,95,9" concept="8" />
-      <node id="5057842142813065861" at="103,0,106,0" concept="9" trace="getArtifactsPath#()Ljava/lang/String;" />
-      <node id="4283566179239153967" at="107,0,110,0" concept="9" trace="getDeployScriptLocation#()Ljava/lang/String;" />
-      <node id="93303204049954371" at="134,0,138,0" concept="9" trace="isPackaged#()Z" />
-      <node id="5057842142812605006" at="111,25,116,7" concept="5" />
-      <node id="8244765753355853191" at="122,0,127,0" concept="3" trace="TemporalModuleWithDescriptorFile#(Ljetbrains/mps/vfs/IFile;)V" />
-      <node id="5930496931442004918" at="128,0,133,0" concept="9" trace="getFacets#()Ljava/lang/Iterable;" />
-      <node id="5057842142812859094" at="85,28,91,7" concept="20" />
-      <node id="5057842142812869931" at="91,7,97,7" concept="8" />
-      <node id="5057842142812534493" at="111,0,118,0" concept="9" trace="dispose#()V" />
-      <node id="5057842142812859067" at="82,88,99,5" concept="8" />
+      <node id="3818729150937328072" at="91,33,92,54" concept="5" />
+      <node id="5057842142812870714" at="93,9,94,20" concept="11" />
+      <node id="5057842142812644389" at="95,7,96,32" concept="11" />
+      <node id="5057842142812873002" at="97,5,98,16" concept="11" />
+      <node id="6816456863520857541" at="101,36,102,27" concept="11" />
+      <node id="4283566179239153969" at="105,43,106,30" concept="11" />
+      <node id="4586384769575960058" at="110,53,111,58" concept="10" />
+      <node id="5057842142812605012" at="111,58,112,75" concept="5" />
+      <node id="5057842142812626524" at="112,75,113,39" concept="5" />
+      <node id="5930496931441972411" at="118,0,119,0" concept="6" trace="myJavaModuleFacet" />
+      <node id="1210974528355010970" at="120,70,121,45" concept="16" />
+      <node id="1216725044612776548" at="121,45,122,145" concept="12" />
+      <node id="1216725044612840823" at="122,145,123,109" concept="12" />
+      <node id="1210974528355555083" at="123,109,124,104" concept="5" />
+      <node id="1216725044612852286" at="124,104,125,83" concept="12" />
+      <node id="1216725044612861430" at="125,83,126,52" concept="12" />
+      <node id="5930496931441985784" at="126,52,127,138" concept="5" />
+      <node id="5930496931442015699" at="136,47,137,54" concept="11" />
+      <node id="93303204049968958" at="140,33,141,18" concept="12" />
+      <node id="93303204049957503" at="141,18,142,19" concept="11" />
+      <node id="5057842142812510296" at="147,0,148,0" concept="14" trace="name$MnvL" />
+      <node id="3818729150937328072" at="90,54,93,9" concept="8" />
+      <node id="5057842142813065861" at="101,0,104,0" concept="9" trace="getArtifactsPath#()Ljava/lang/String;" />
+      <node id="4283566179239153967" at="105,0,108,0" concept="9" trace="getDeployScriptLocation#()Ljava/lang/String;" />
+      <node id="1216725044612875475" at="130,0,133,0" concept="9" trace="updateFacets#()V" />
+      <node id="5057842142812859094" at="85,28,89,7" concept="20" />
+      <node id="93303204049954371" at="140,0,144,0" concept="9" trace="isPackaged#()Z" />
+      <node id="5057842142812605006" at="109,25,114,7" concept="5" />
+      <node id="5930496931442004918" at="134,0,139,0" concept="9" trace="getFacets#()Ljava/lang/Iterable;" />
+      <node id="5057842142812869931" at="89,7,95,7" concept="8" />
+      <node id="5057842142812534493" at="109,0,116,0" concept="9" trace="dispose#()V" />
+      <node id="8244765753355853191" at="120,0,129,0" concept="3" trace="TemporalModuleWithDescriptorFile#(Ljetbrains/mps/vfs/IFile;)V" />
+      <node id="5057842142812859067" at="82,88,97,5" concept="8" />
       <node id="5057842142812537446" at="58,0,78,0" concept="3" trace="DeployScript#(Ljetbrains/mps/project/Project;Ljava/util/List;)V" />
-      <node id="5057842142812534989" at="79,0,102,0" concept="9" trace="make#()Ljava/lang/String;" />
-      <scope id="5057842142812859105" at="88,46,88,46" />
-      <scope id="5057842142812859109" at="89,45,89,45" />
-      <scope id="5057842142812859113" at="90,43,90,43" />
+      <node id="5057842142812534989" at="79,0,100,0" concept="9" trace="make#()Ljava/lang/String;" />
+      <scope id="5057842142812859105" at="88,90,88,90" />
+      <scope id="1216725044612875479" at="131,35,131,35" />
       <scope id="5057842142812859095" at="86,11,87,30" />
       <scope id="5057842142812859102" at="88,7,89,7">
         <var name="ignore" id="5057842142812859103" />
       </scope>
-      <scope id="5057842142812859106" at="89,7,90,7">
-        <var name="ignore" id="5057842142812859107" />
-      </scope>
-      <scope id="5057842142812859110" at="90,7,91,7">
-        <var name="ignore" id="5057842142812859111" />
-      </scope>
-      <scope id="3818729150937328072" at="93,33,94,54" />
-      <scope id="5057842142813065864" at="103,36,104,27" />
-      <scope id="4283566179239153968" at="107,43,108,30" />
-      <scope id="5930496931442004921" at="130,47,131,54" />
-      <scope id="93303204049954374" at="134,33,136,19" />
-      <scope id="5057842142813065861" at="103,0,106,0" />
-      <scope id="4283566179239153967" at="107,0,110,0" />
-      <scope id="5057842142812605011" at="112,53,115,39">
+      <scope id="3818729150937328072" at="91,33,92,54" />
+      <scope id="5057842142813065864" at="101,36,102,27" />
+      <scope id="4283566179239153968" at="105,43,106,30" />
+      <scope id="5930496931442004921" at="136,47,137,54" />
+      <scope id="93303204049954374" at="140,33,142,19" />
+      <scope id="5057842142813065861" at="101,0,104,0" />
+      <scope id="4283566179239153967" at="105,0,108,0" />
+      <scope id="5057842142812605011" at="110,53,113,39">
         <var name="projectRepo" id="4586384769575960059" />
       </scope>
-      <scope id="8244765753355853195" at="122,70,125,138" />
-      <scope id="5057842142812869934" at="92,54,96,20" />
-      <scope id="93303204049954371" at="134,0,138,0" />
-      <scope id="5057842142812534496" at="111,25,116,7" />
-      <scope id="8244765753355853191" at="122,0,127,0">
+      <scope id="1216725044612875475" at="130,0,133,0" />
+      <scope id="5057842142812869934" at="90,54,94,20" />
+      <scope id="93303204049954371" at="140,0,144,0" />
+      <scope id="5057842142812534496" at="109,25,114,7" />
+      <scope id="5930496931442004918" at="134,0,139,0" />
+      <scope id="5057842142812534493" at="109,0,116,0" />
+      <scope id="8244765753355853195" at="120,70,127,138" />
+      <scope id="8244765753355853191" at="120,0,129,0">
         <var name="baseDir" id="1210974528355012577" />
       </scope>
-      <scope id="5930496931442004918" at="128,0,133,0" />
-      <scope id="5057842142812534493" at="111,0,118,0" />
-      <scope id="5057842142812859068" at="83,46,98,32">
+      <scope id="5057842142812859068" at="83,46,96,32">
         <var name="future" id="5057842142812859070" />
         <var name="result" id="5057842142812859091" />
       </scope>
@@ -1414,18 +1413,18 @@
         <var name="pojoFS" id="3258360803640183374" />
         <var name="projectRepo" id="4586384769575946983" />
       </scope>
+      <scope id="5057842142812534992" at="80,24,98,16">
+        <var name="makeService" id="841871950379548502" />
+        <var name="session" id="5057842142812859050" />
+      </scope>
       <scope id="5057842142812537446" at="58,0,78,0">
         <var name="plugins" id="5057842142812538060" />
         <var name="project" id="5057842142812538305" />
       </scope>
-      <scope id="5057842142812534992" at="80,24,100,16">
-        <var name="makeService" id="841871950379548502" />
-        <var name="session" id="5057842142812859050" />
-      </scope>
-      <scope id="5057842142812534989" at="79,0,102,0" />
-      <unit id="5057842142812510296" at="140,0,143,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScript$PROPS" />
-      <unit id="8244765753355840208" at="119,0,139,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScript$TemporalModuleWithDescriptorFile" />
-      <unit id="5057842142812510296" at="47,0,144,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScript" />
+      <scope id="5057842142812534989" at="79,0,100,0" />
+      <unit id="5057842142812510296" at="146,0,149,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScript$PROPS" />
+      <unit id="8244765753355840208" at="117,0,145,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScript$TemporalModuleWithDescriptorFile" />
+      <unit id="5057842142812510296" at="47,0,150,0" name="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScript" />
     </file>
   </root>
   <root nodeRef="r:8aafee6a-4721-443e-8020-e8986ed3f25a(jetbrains.mps.execution.configurations.implementation.plugin.plugin)/5824636632659562896">
