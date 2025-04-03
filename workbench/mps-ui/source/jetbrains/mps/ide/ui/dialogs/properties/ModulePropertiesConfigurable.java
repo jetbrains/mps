@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,8 @@ import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.EmptyRunnable;
+import com.intellij.openapi.vfs.LocalFileSystem;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.refactoring.RefactoringBundle;
 import com.intellij.ui.AnActionButtonRunnable;
 import com.intellij.ui.AnActionButtonUpdater;
@@ -88,6 +90,7 @@ import jetbrains.mps.ide.ui.finders.LanguageModelImportFinder;
 import jetbrains.mps.ide.ui.finders.LanguageUsagesFinder;
 import jetbrains.mps.ide.ui.finders.ModelUsagesFinder;
 import jetbrains.mps.ide.ui.finders.ModuleUsagesFinder;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.module.PersistenceContextImpl;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
@@ -549,12 +552,23 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         myPlanPickScope.reset();
       } else {
         if (myGenOut != null) {
+
           String genOut = PathUtil.toSystemIndependent(myGenOut.getText());
           if (!genOut.equals(getGenOutPath())) {
-            // here we imply getGenOutPath uses AM.getOutputPath()
-            // TODO utilize the fact AM keeps IFile (or, perhaps, resort to PathSpec?)
-            myModule.setOutputPath(myModule.getFileSystem().getFile(genOut));
-            myModuleDescriptor.setOutputRoot(genOut);
+            if (genOut.isEmpty()) {
+              myModule.setOutputPath(null);
+              // this comes as MPS-36789 fix, the reason ins save(), above, first set MD, which triggers update of field values
+              // of AM from MD, effectively clearing AM.outputPath
+              myModuleDescriptor.setOutputRoot(genOut);
+            } else {
+              // here we imply getGenOutPath uses AM.getOutputPath()
+              VirtualFile vfGenOut = LocalFileSystem.getInstance().findFileByPath(myGenOut.getText());
+              // XXX in fact, due to save()/setMD logic (see comment above), there's no real need to set IFile, can do MD.setOutputRoot only!
+              FileSystemBridge fsb = myMPSProject.getFileSystem();
+              // utilize the fact AM keeps IFile (perhaps, shall resort to PathSpec, instead?)
+              myModule.setOutputPath(fsb.fromVirtualFile(vfGenOut));
+              myModuleDescriptor.setOutputRoot(genOut); // see above, have to decide how we edit a module
+            }
           }
         }
         if (myLanguageVersion != null) {

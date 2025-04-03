@@ -52,6 +52,8 @@ public final class NaiveJavaModuleFacet implements JavaModuleFacet {
   @Deprecated(since = "2025.1", forRemoval = true)
   public NaiveJavaModuleFacet(@NotNull AbstractModule owningModule, @Nullable String sourceGen, @NotNull String classesGen) {
     this(owningModule, (f) -> owningModule.getFileSystem().getFile(f.getAbsolutePath()), sourceGen, classesGen);
+    // FIXME to get rid of owningModule.getFileSystem() hack here, need to rework whole TempModel story.
+    //       In fact, owningModule here doesn't have any IFile to get FS from, it's just a weird way to access FS singleton though semi-"api" of AM
   }
 
   public NaiveJavaModuleFacet(@NotNull SModule owningModule, @NotNull Function<File, IFile> fsMap, @Nullable String sourceGen, @NotNull String classesGen) {

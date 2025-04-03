@@ -77,9 +77,9 @@ import java.util.function.Function;
 import static org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
 
 /**
- * First of all, this class serves as a file-based module. Obviously it requires a file which contains a persisted
- * module descriptor (see constructor).
- * Secondly, this class provides a common implementation of the module editing. Not only the implementation of
+ * {@code SModule} implementation backed by {@link ModuleDescriptor} usually comming from {@link IFile}.
+ * <p>
+ * This class provides a common implementation of the module editing. Not only the implementation of
  * simple interface {@link EditableSModule} is here but also a special editing mechanism is suggested below.
  * Nonetheless there are several flaws.
  * <p>
@@ -99,7 +99,6 @@ import static org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
  *
  * @see ModuleDescriptor for the details
  */
-@Immutable
 public abstract class AbstractModule extends SModuleBase implements EditableSModule {
   private static final Logger LOG = Logger.getLogger(AbstractModule.class);
 
@@ -154,7 +153,10 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     }
   }
 
-  @NotNull
+  /**
+   * @deprecated there's no guarantee {@code AbstractModule} is based on a file
+   */
+  @Deprecated(forRemoval = true, since = "2025.1")
   public FileSystem getFileSystem() {
     return myFileSystem;
   }

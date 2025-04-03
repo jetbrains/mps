@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2024 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2025 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.module;
 
@@ -31,7 +31,7 @@ public final class PersistenceContextImpl implements ModulePersistenceContext {
 
   private PersistenceContextImpl(AbstractModule am) {
     myMacroHelper = MacrosFactory.forModule(am);
-    myFileSystem = am.getFileSystem();
+    myFileSystem = am.getDescriptorFile() == null ? null : am.getDescriptorFile().getFileSystem();
   }
 
   public static MacroHelper macroHelper(@Nullable ModulePersistenceContext context) {

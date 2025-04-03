@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,6 +55,7 @@ import jetbrains.mps.ide.platform.ui.VirtualFileTableRenderer;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
@@ -68,6 +69,7 @@ import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.util.PathSpec;
 import jetbrains.mps.util.PathSpecBundle;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.util.PathUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
@@ -151,10 +153,12 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     }
   }
 
+  private final MPSProject myProject;
   private final JavaModuleFacetImpl myJavaModuleFacet;
 
-  public JavaModuleFacetTab(JavaModuleFacetImpl javaModuleFacet) {
+  public JavaModuleFacetTab(MPSProject project, JavaModuleFacetImpl javaModuleFacet) {
     super("Java", General.Java, PropertiesBundle.message("facet.java.tip"));
+    myProject = project;
     myJavaModuleFacet = javaModuleFacet;
   }
 
@@ -606,8 +610,14 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       SolutionDescriptor descriptor = (SolutionDescriptor) myJavaModuleFacet.getAbstractModule().getModuleDescriptor();
       assert descriptor != null;
       if(!myCompileOutPath.getText().isBlank()) {
-        IFile classesGen = myJavaModuleFacet.getAbstractModule().getFileSystem().getFile(new File(myCompileOutPath.getText()));
-        myJavaModuleFacet.setGeneratedClassesLocation(new PathSpec(classesGen));
+        VirtualFile vfCompileOut = LocalFileSystem.getInstance().findFileByPath(myCompileOutPath.getText());
+        if (vfCompileOut != null) {
+          FileSystemBridge fsb = myProject.getFileSystem();
+          IFile classesGen = fsb.fromVirtualFile(vfCompileOut);
+          myJavaModuleFacet.setGeneratedClassesLocation(new PathSpec(classesGen));
+        } else {
+          myJavaModuleFacet.setGeneratedClassesLocation(new PathSpec(PathUtil.toSystemIndependent(myCompileOutPath.getText())));
+        }
       }
       if (myCompileInMPS.isSelected()) {
         myJavaModuleFacet.setCompile(Compile.MPS);

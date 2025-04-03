@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.facets.JavaModuleFacet.Compile;
 import jetbrains.mps.project.facets.JavaModuleFacet.LoadClasses;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_AbstractRef;
@@ -39,6 +38,7 @@ import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -398,10 +398,12 @@ public class ValidationUtil {
     }
 
     final boolean packagedModule = module.isPackaged();
-    if (jmf != null && !jmf.getAdditionalSourcePaths().isEmpty() && !packagedModule) {
+    final FileSystem fs = module.getDescriptorFile() != null ? module.getDescriptorFile().getFileSystem() : null;
+    if (jmf != null && !jmf.getAdditionalSourcePaths().isEmpty() && !packagedModule && fs != null) {
       for (String sourcePath : jmf.getAdditionalSourcePaths()) {
+        // XXX I wonder if I shall utilize PathSpec and JMFI.getSourcePathSpec() (perhaps, exposed in JMF instead of bare String?)
         try {
-          IFile file = module.getFileSystem().getFile(sourcePath);
+          IFile file = fs.getFile(sourcePath);
           if (!file.exists()) {
             if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, "Can't find source path: " + sourcePath))) {
               return false;
@@ -415,15 +417,16 @@ public class ValidationUtil {
         }
       }
     }
-    if (jmf != null && !jmf.getLibraryClassPath().isEmpty()) {
+    if (jmf != null && !jmf.getLibraryClassPath().isEmpty() && fs != null) {
       for (String path : jmf.getLibraryClassPath()) {
         if (packagedModule && !path.endsWith(".jar")) {
           // FIXME provisional hack to deal with recently added {module}/classes in .msd to get rid of another JMFI hack.
           //       These paths are valid for source modules, and make no sense for deployed.
           continue;
         }
+        // same as above, there are PathSpec values for library CP in JMFI, would rather use these
         try {
-          IFile file = module.getFileSystem().getFile(path);
+          IFile file = fs.getFile(path);
           if (!file.exists()) {
             String msg = (new File(path).exists() ? "Idea VFS is not up-to-date. " : "") + "Can't find library: " + path;
             if (!processor.process(new ModuleValidationProblem(module, MessageStatus.ERROR, msg))) {

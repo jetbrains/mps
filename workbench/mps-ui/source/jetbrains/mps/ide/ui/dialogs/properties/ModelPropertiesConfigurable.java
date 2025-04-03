@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,6 +59,7 @@ import jetbrains.mps.ide.ui.finders.LanguageUsagesFinder;
 import jetbrains.mps.ide.ui.finders.ModelUsagesFinder;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ModuleInstanceCondition;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.VisibleModuleCondition;
@@ -69,6 +70,7 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.ModelDependencyScanner;
+import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.Computable;
@@ -106,7 +108,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
-  private ModelProperties myModelProperties;
+  private final ModelProperties myModelProperties;
   protected SModel myModelDescriptor;
   private boolean myInPlugin = false;
 
@@ -115,7 +117,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
   }
 
   public ModelPropertiesConfigurable(final SModel modelDescriptor, Project project, boolean inPlugin) {
-    super(project);
+    super((MPSProject) project);
     myModelDescriptor = modelDescriptor;
     // readAction here is a hack, rather action shall do read. Alas, there are few places to get fixed, can't do it right now.
     myModelProperties = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> new ModelProperties(modelDescriptor));
@@ -147,7 +149,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
     // unless model dispatch proper change events (which it does not at the moment), and project pane
     // got no other means to find out it needs to update generation status
     myMPSProject.getComponent(ModelGenerationStatusManager.class).invalidateData(Collections.singleton(myModelDescriptor));
-    new MissingDependenciesFixer(myModelDescriptor).fixModuleDependencies();
+    new ModelDependencyUpdate(myModelDescriptor).updateModuleDependencies(myMPSProject.getRepository());
 
     if (!(myModelDescriptor.getSource() instanceof NullDataSource)) {
       ((EditableSModel) myModelDescriptor).save();
