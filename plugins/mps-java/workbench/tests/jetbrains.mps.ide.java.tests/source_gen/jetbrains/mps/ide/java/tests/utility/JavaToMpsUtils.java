@@ -198,9 +198,6 @@ public class JavaToMpsUtils {
 
     SModel expected = SPointerOperations.resolveModel(expectedRef, myRepo);
 
-    // FIXME copy of JavaImports from result model TO expected is very suspicious!!!
-    copyModelClassImports(resultModel, expected);
-
     boolean wereErrors = compare2models(resultModel, expected);
     Assert.assertFalse(wereErrors);
   }
@@ -273,6 +270,8 @@ public class JavaToMpsUtils {
       SModel binModel = MapSequence.fromMap(leftModelMap).get(name);
       SModel srcModel = MapSequence.fromMap(rightModelMap).get(name);
 
+      // FIXME copy of JavaImports from result model TO expected is very suspicious!!!
+      //      FWIW, I removed one from checkSourceModel() and it's fine
       copyModelClassImports(binModel, srcModel);
     }
 
