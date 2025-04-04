@@ -13,6 +13,7 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.List;
@@ -25,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public class NodePatcher {
+/*package*/ class NodePatcher {
   public NodePatcher() {
   }
   public static void removeStatements(SNode node) {
@@ -38,10 +39,11 @@ public class NodePatcher {
    * It makes node matching hard, as we don't know whether to set this property in
    * in the parser or not.
    * This method normalises classifier in this respect.
+   * FIXME I wonder if it's still actual?!
    */
   public static void fixNonStatic(SNode node) {
     for (SNode cls : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.Classifier$Ix, true, new SAbstractConcept[]{}))) {
-      if (SNodeAccessUtil.getProperty(cls, PROPS.nonStatic$aWW8) == null) {
+      if (SNodeAccessUtil.getPropertyValue(cls, PROPS.nonStatic$aWW8) == null) {
         SPropertyOperations.assign(cls, PROPS.nonStatic$aWW8, true);
       }
     }
@@ -64,7 +66,7 @@ public class NodePatcher {
     }
   }
   public static void removeSourceLevelAnnotations(SNode node, SRepository repo) {
-    final SNode retentionAnno = ListSequence.fromList(SModelOperations.roots(PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.annotation(JDK/)").resolve(repo), CONCEPTS.Annotation$he)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals("Retention"));
+    final SNode retentionAnno = ListSequence.fromList(SModelOperations.roots(SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.annotation(JDK/)"), repo), CONCEPTS.Annotation$he)).findFirst((it) -> SPropertyOperations.getString(it, PROPS.name$MnvL).equals("Retention"));
 
     for (SNode thisAnnoInst : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.AnnotationInstance$yl, false, new SAbstractConcept[]{}))) {
       // getting value of retention annotation for this annotation

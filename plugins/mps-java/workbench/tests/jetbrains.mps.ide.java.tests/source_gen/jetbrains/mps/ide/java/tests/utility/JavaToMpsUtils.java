@@ -9,6 +9,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.text.TextGeneratorEngine;
 import jetbrains.mps.java.core.newparser.JavaParser;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.java.core.newparser.FeatureKind;
 import java.util.List;
 import org.junit.Assert;
@@ -35,16 +36,11 @@ import jetbrains.mps.extapi.module.ModelDiscoveryDelta;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.extapi.model.SModelBase;
-import jetbrains.mps.util.FileUtil;
-import org.jetbrains.mps.openapi.persistence.Memento;
-import jetbrains.mps.persistence.MementoImpl;
-import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
-import jetbrains.mps.project.structure.model.ModelRootDescriptor;
+import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
-import java.util.Collections;
-import jetbrains.mps.java.core.newparser.DirParser;
-import java.io.IOException;
+import jetbrains.mps.java.core.newparser.JavaToMpsConverter;
+import jetbrains.mps.messages.LogHandler;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.java.library.JavaClassStubsModelRoot;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -78,7 +74,7 @@ public class JavaToMpsUtils {
     try {
       JavaParser parser = new JavaParser();
       SModel mdl;
-      mdl = PersistenceFacade.getInstance().createModelReference("r:3b854700-e92a-453d-8d33-ea563b87dd15(jetbrains.mps.ide.java.testMaterial.placeholder)").resolve(myRepo);
+      mdl = SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("r:3b854700-e92a-453d-8d33-ea563b87dd15(jetbrains.mps.ide.java.testMaterial.placeholder)"), myRepo);
       FeatureKind howToParse = (onlyStubs ? FeatureKind.CLASS_STUB : FeatureKind.CLASS);
       List<SNode> res = parser.parse(code, howToParse, null, true).getNodes();
       Assert.assertSame(ListSequence.fromList(res).count(), 1);
@@ -188,61 +184,29 @@ public class JavaToMpsUtils {
   }
 
   public void checkSourceModel(IFile dirPath, SModelReference expectedRef) {
-    try {
-      SModule testMaterials;
+    // FIXME pass myRepo to use for temp module/model
+    final SModel resultModel = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.nonReloadableModule());
 
-      String tmpDir = FileUtil.createTmpDir().getAbsolutePath();
-
-      Memento mem = new MementoImpl();
-      mem.put("contentPath", tmpDir);
-      mem.put("type", PersistenceRegistry.DEFAULT_MODEL_ROOT);
-
-      Memento memIn = mem.createChild(FileBasedModelRoot.SOURCE_ROOTS);
-      memIn.put("path", tmpDir);
-
-      ModelRootDescriptor mrDesc = new ModelRootDescriptor(PersistenceRegistry.DEFAULT_MODEL_ROOT, mem);
-
-      // DirParser uses API to create models through ModelRoot, therefore we've got root descriptor here
-      // OTOH, it seems Utils is the only client of DirParser now, and we don't need to keep it generic,
-      //       and could use whatever we like for model creation, e.g. explicit new RegularModelDescriptor
-      //       along with SModuleBase.registerModel().
-      TempModuleOptions tempModOpts = TempModuleOptions.forNewModule(Collections.singleton(mrDesc));
-      testMaterials = tempModOpts.createModule();
-
-      // It looks like dirParser and its use of YetUnknownResolver needs a model from a module attached to a
-      // repository (to get references resolved). The best we can do here is to have own repository for the
-      // testMaterials module which is capable to delegate to another (one supplied at construction).
-      DirParser dirParser = new DirParser(testMaterials, myRepo.getModelAccess(), dirPath);
-      // XXX the use of model access in DirParser looks odd. Here, we are inside a command already (test setting),
-      // and DirParser assumes it can execute command, so we can not be in model read here. As long as it's the
-      // only use of DirParser, perhaps, we shall not use ModelAccess at all, as we ensure we're inside command.
-
-      dirParser.parseDirs();
-
-      List<SModel> parsedModels = dirParser.getAffectedModels();
-      assert ListSequence.fromList(parsedModels).count() == 1;
-      final SModel resultModel = ListSequence.fromList(parsedModels).getElement(0);
-
-      SModel expected = expectedRef.resolve(myRepo);
-      for (SNode root : ListSequence.fromList(SModelOperations.roots(expected, CONCEPTS.Classifier$Ix))) {
-        NodePatcher.fixNonStatic(root);
-      }
-
-      for (SNode root : ListSequence.fromList(SModelOperations.roots(resultModel, CONCEPTS.Classifier$Ix))) {
-        NodePatcher.fixNonStatic(root);
-      }
+    JavaToMpsConverter dirParser = new JavaToMpsConverter(resultModel, myRepo, new LogHandler(Logger.getLogger(getClass())));
+    dirParser.convertToMps(dirPath.getChildren(), new EmptyProgressMonitor());
+    // It looks like dirParser and its use of YetUnknownResolver needs a model from a module attached to a
+    // repository (to get references resolved). The best we can do here is to have own repository for the
+    // testMaterials module which is capable to delegate to another (one supplied at construction).
 
 
-      copyModelClassImports(resultModel, expected);
-
-      boolean wereErrors = compare2models(resultModel, expected);
-      Assert.assertFalse(wereErrors);
-
-    } catch (JavaParseException e) {
-      throw new RuntimeException(e);
-    } catch (IOException e) {
-      throw new RuntimeException(e);
+    SModel expected = SPointerOperations.resolveModel(expectedRef, myRepo);
+    for (SNode root : ListSequence.fromList(SModelOperations.roots(expected, CONCEPTS.Classifier$Ix))) {
+      NodePatcher.fixNonStatic(root);
     }
+
+    for (SNode root : ListSequence.fromList(SModelOperations.roots(resultModel, CONCEPTS.Classifier$Ix))) {
+      NodePatcher.fixNonStatic(root);
+    }
+
+    copyModelClassImports(resultModel, expected);
+
+    boolean wereErrors = compare2models(resultModel, expected);
+    Assert.assertFalse(wereErrors);
   }
 
   public void compareBinAndSrcStubs(IFile binPath, IFile sourcePath) {
