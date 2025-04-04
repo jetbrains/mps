@@ -284,8 +284,8 @@
   </registry>
   <node concept="1lH9Xt" id="4ackmjcdGr8">
     <property role="TrG5h" value="RoundTrip" />
-    <property role="26Nn1l" value="true" />
     <property role="3DII0k" value="2hh8MJdVwqX/command" />
+    <property role="26Nn1l" value="true" />
     <node concept="1LZb2c" id="1mbB$5PHimu" role="1SL9yI">
       <property role="TrG5h" value="Simple" />
       <node concept="3cqZAl" id="1mbB$5PHimv" role="3clF45" />
@@ -641,7 +641,6 @@
     <node concept="1qefOq" id="4ackmjcdGrf" role="1SKRRt">
       <node concept="312cEu" id="4ackmjcdT3W" role="1qenE9">
         <property role="TrG5h" value="SimpleClass" />
-        <property role="2bfB8j" value="true" />
         <node concept="3Tm1VV" id="4ackmjcdT3X" role="1B3o_S" />
         <node concept="3xLA65" id="4ackmjcdTq3" role="lGtFl">
           <property role="TrG5h" value="SimpleClass" />
@@ -686,7 +685,6 @@
     <node concept="1qefOq" id="4ackmjcdT42" role="1SKRRt">
       <node concept="312cEu" id="4ackmjcdT45" role="1qenE9">
         <property role="TrG5h" value="Claz2" />
-        <property role="2bfB8j" value="true" />
         <property role="1sVAO0" value="true" />
         <node concept="3Tm1VV" id="4ackmjcdT46" role="1B3o_S" />
         <node concept="3xLA65" id="70HT6wFrG9i" role="lGtFl">
@@ -772,7 +770,6 @@
     <node concept="1qefOq" id="70HT6wFrXJ9" role="1SKRRt">
       <node concept="312cEu" id="70HT6wFrXJa" role="1qenE9">
         <property role="TrG5h" value="Claz3" />
-        <property role="2bfB8j" value="true" />
         <node concept="3Tm1VV" id="70HT6wFrXJb" role="1B3o_S" />
         <node concept="3xLA65" id="70HT6wFrXJg" role="lGtFl">
           <property role="TrG5h" value="ClassFields" />
@@ -828,7 +825,6 @@
     <node concept="1qefOq" id="66hA68pgQXE" role="1SKRRt">
       <node concept="3HP615" id="66hA68pgQXF" role="1qenE9">
         <property role="TrG5h" value="GenericIface" />
-        <property role="2bfB8j" value="true" />
         <node concept="3Tm1VV" id="66hA68pgQXG" role="1B3o_S" />
         <node concept="16euLQ" id="66hA68pgQXI" role="16eVyc">
           <property role="TrG5h" value="X" />
@@ -904,7 +900,6 @@
     </node>
     <node concept="1qefOq" id="1c0m78RPXEs" role="1SKRRt">
       <node concept="312cEu" id="1c0m78RPXIs" role="1qenE9">
-        <property role="2bfB8j" value="true" />
         <property role="TrG5h" value="OuterClass" />
         <node concept="3clFb_" id="1c0m78RQ1BM" role="jymVt">
           <property role="1EzhhJ" value="false" />
@@ -947,7 +942,6 @@
     </node>
     <node concept="1qefOq" id="1c0m78S61Sh" role="1SKRRt">
       <node concept="312cEu" id="1c0m78S61Xa" role="1qenE9">
-        <property role="2bfB8j" value="true" />
         <property role="TrG5h" value="VarargMethods" />
         <node concept="3clFb_" id="1c0m78S61YB" role="jymVt">
           <property role="1EzhhJ" value="false" />
@@ -1136,7 +1130,6 @@
     <node concept="1qefOq" id="2s3iUbfrLZK" role="1SKRRt">
       <node concept="312cEu" id="2s3iUbfevlC" role="1qenE9">
         <property role="TrG5h" value="DiamondOp" />
-        <property role="2bfB8j" value="true" />
         <node concept="3Tm1VV" id="2s3iUbfevlD" role="1B3o_S" />
         <node concept="2YIFZL" id="2s3iUbfevlX" role="jymVt">
           <property role="TrG5h" value="main" />
