@@ -148,7 +148,8 @@ public class ASTConverter {
       if (SNodeOperations.isInstanceOf(cls, CONCEPTS.ClassConcept$bK)) {
         SPropertyOperations.assign(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$bK), PROPS.isStatic$3WAz, flagSet(x.modifiers, ClassFileConstants.AccStatic));
       } else if (SNodeOperations.isInstanceOf(cls, CONCEPTS.Interface$db)) {
-        SPropertyOperations.assign(cls, PROPS.nonStatic$aWW8, true);
+        // as well as Annotation, sub-concept of Interface - they are always 'static'
+        SPropertyOperations.assign(cls, PROPS.nonStatic$aWW8, false);
       }
 
       if (myOnlyStubs) {
