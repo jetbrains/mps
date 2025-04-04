@@ -148,7 +148,6 @@
   </registry>
   <node concept="312cEu" id="7GTlfWVJcNN">
     <property role="TrG5h" value="Closures" />
-    <property role="2bfB8j" value="true" />
     <node concept="3Tm1VV" id="7GTlfWVJcNO" role="1B3o_S" />
     <node concept="3HP615" id="7GTlfWVJcNP" role="jymVt">
       <property role="TrG5h" value="IGeneric" />

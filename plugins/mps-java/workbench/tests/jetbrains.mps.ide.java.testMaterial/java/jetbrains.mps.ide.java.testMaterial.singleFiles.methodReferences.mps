@@ -138,7 +138,6 @@
   </registry>
   <node concept="312cEu" id="7GTlfWVJch4">
     <property role="TrG5h" value="MethodReferences" />
-    <property role="2bfB8j" value="true" />
     <node concept="3Tm1VV" id="7GTlfWVJch5" role="1B3o_S" />
     <node concept="3clFb_" id="7GTlfWVJcj4" role="jymVt">
       <property role="TrG5h" value="testInstanceMethodCall" />

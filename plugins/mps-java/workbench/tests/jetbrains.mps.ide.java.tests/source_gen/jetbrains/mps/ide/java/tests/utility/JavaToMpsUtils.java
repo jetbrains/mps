@@ -178,7 +178,6 @@ public class JavaToMpsUtils {
       ListSequence.fromList(expectedModels).addElement(m);
       for (SNode root : ListSequence.fromList(SModelOperations.roots(m, null))) {
         NodePatcher.removeStatements(SNodeOperations.cast(root, CONCEPTS.Classifier$Ix));
-        NodePatcher.fixNonStatic(SNodeOperations.cast(root, CONCEPTS.Classifier$Ix));
       }
     }
     compare(models, expectedModels);
@@ -202,14 +201,8 @@ public class JavaToMpsUtils {
 
 
     SModel expected = SPointerOperations.resolveModel(expectedRef, myRepo);
-    for (SNode root : ListSequence.fromList(SModelOperations.roots(expected, CONCEPTS.Classifier$Ix))) {
-      NodePatcher.fixNonStatic(root);
-    }
 
-    for (SNode root : ListSequence.fromList(SModelOperations.roots(resultModel, CONCEPTS.Classifier$Ix))) {
-      NodePatcher.fixNonStatic(root);
-    }
-
+    // FIXME copy of JavaImports from result model TO expected is very suspicious!!!
     copyModelClassImports(resultModel, expected);
 
     boolean wereErrors = compare2models(resultModel, expected);
