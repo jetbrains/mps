@@ -26,8 +26,8 @@ public class ProjectViewWeights {
   public static final int DEVKIT_WEIGHT = 40;
 
   // solution
-  public static final int STUBS_WEIGHT = 10;
-  public static final int TESTS_WEIGHT = 20;
+  public static final int STUBS_WEIGHT = 100;
+  public static final int TESTS_WEIGHT = 200;
 
   // language
   public static final int LANGUAGE_ASPECT_WEIGHT = 10;

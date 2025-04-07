@@ -80,8 +80,4 @@ public class ModelHierarchyProjectViewNode extends SimpleModelProjectViewNode {
     return lastDot >= 0 ? fullName.substring(lastDot + 1) : fullName;
   }
 
-  @Override
-  public int getTypeSortWeight(boolean sortByType) {
-    return ProjectViewWeights.MODEL_WEIGHT;
-  }
 }
