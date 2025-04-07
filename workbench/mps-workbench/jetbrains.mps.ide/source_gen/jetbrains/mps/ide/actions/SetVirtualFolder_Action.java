@@ -129,6 +129,7 @@ public class SetVirtualFolder_Action extends BaseAction {
     // used to take VF common for all modules, but I don't see any reason not to take just any, we ask user for input anyway
     // if necessary, however, we can tell if there's common VF by allVFs.size() == 1
     String nameHint = (((String) MapSequence.fromMap(_params).get("targetName")) != null ? ((String) MapSequence.fromMap(_params).get("targetName")) : allVFs.stream().findAny().orElse(""));
+    nameHint = (nameHint.startsWith(".") ? nameHint.substring(1) : nameHint);
     InputValidator validator = new InputValidatorEx() {
       @NlsContexts.DetailedDescription
       @Nullable
@@ -151,7 +152,7 @@ public class SetVirtualFolder_Action extends BaseAction {
       }
     };
 
-    final String inputValue = trim_5evjxr_a0a8a7(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.module.set.virtual.folder.title"), Messages.getQuestionIcon(), nameHint, validator));
+    final String inputValue = trim_5evjxr_a0a9a7(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.module.set.virtual.folder.title"), Messages.getQuestionIcon(), nameHint, validator));
     // Only do something on OK ...
     if (inputValue == null) {
       return;
@@ -205,7 +206,7 @@ public class SetVirtualFolder_Action extends BaseAction {
     mpsProject.getRepository().getModelAccess().executeCommand(command);
     ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
   }
-  public static String trim_5evjxr_a0a8a7(String str) {
+  public static String trim_5evjxr_a0a9a7(String str) {
     return (str == null ? null : str.trim());
   }
 }

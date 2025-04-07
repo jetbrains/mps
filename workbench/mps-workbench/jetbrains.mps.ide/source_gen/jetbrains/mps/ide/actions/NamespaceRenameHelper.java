@@ -5,6 +5,7 @@ package jetbrains.mps.ide.actions;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import java.util.Arrays;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6595589484396473808", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 /*package*/ final class NamespaceRenameHelper {
@@ -23,6 +24,20 @@ import org.jetbrains.annotations.Nullable;
    * @return copy of originalString with modifiedPrefix in place of originalPrefix or without originalPrefix + '.' if modifiedPrefix is null or blank
    */
   /*package*/ static String withReplacedPrefix(@NotNull String originalString, @NotNull String originalPrefix, @Nullable String modifiedPrefix) {
+    // NOTE: originalString may indeed start with '.' (legacy contract)
+    checkNamespace(originalPrefix);
+    int prefixStart = originalString.indexOf(originalPrefix);
+    if (prefixStart < 0) {
+      throw new IllegalArgumentException(String.format("prefix '%s' is not found in original namespace '%s'", originalPrefix, originalString));
+    } else
+    if (prefixStart == 1 && originalString.charAt(0) == '.') {
+      // special case: leading dot in namespace
+      originalString = originalString.substring(1);
+    } else
+    if (prefixStart > 0) {
+      throw new IllegalArgumentException(String.format("prefix '%s' is not a prefix of original namespace '%s'", originalPrefix, originalString));
+    }
+
     final boolean strMatchPrefix = originalString.equals(originalPrefix);
     final boolean removePrefix = modifiedPrefix == null || modifiedPrefix.isBlank();
 
@@ -34,10 +49,27 @@ import org.jetbrains.annotations.Nullable;
       return modifiedPrefix;
     }
 
+    if (originalString.charAt(originalPrefix.length()) != '.') {
+      throw new IllegalArgumentException(String.format("prefix '%s' is not followed by dot in original namespace '%s'", originalPrefix, originalString));
+    }
+
     if (!(removePrefix)) {
+      checkNamespace(modifiedPrefix);
       return modifiedPrefix + originalString.substring(originalPrefix.length());
     }
 
     return originalString.substring(originalPrefix.length() + 1);
+  }
+
+  private static void checkNamespace(String namespace) {
+    String normalized = ((namespace == null ? "" : namespace));
+    normalized = String.join(".", Arrays.asList(normalized.split("\\.+")));
+    if (!(normalized.equals(namespace))) {
+      throw new IllegalArgumentException("invalid namespace: " + namespace);
+    }
+    normalized = ((normalized.startsWith(".") ? normalized.substring(1) : normalized));
+    if (!(normalized.equals(namespace))) {
+      throw new IllegalArgumentException("invalid namespace: " + namespace);
+    }
   }
 }

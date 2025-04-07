@@ -123,7 +123,7 @@ public class SetNodePackage_Action extends BaseAction {
       packages.value = SetNodePackage_Action.this.fetchExistingPackages(((List<SNode>) MapSequence.fromMap(_params).get("nodes")), _params);
       nameHint.value = (nameHint.value == null ? SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first(), PROPS.virtualPackage$EkXl) : nameHint.value);
     });
-
+    nameHint.value = ((nameHint.value != null && nameHint.value.startsWith(".") ? nameHint.value.substring(1) : nameHint.value));
     InputValidator validator = new InputValidator() {
       @Override
       public boolean checkInput(@NlsSafe String virtualFolder) {
