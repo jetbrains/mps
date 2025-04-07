@@ -137,4 +137,35 @@ public abstract class BranchProjectViewNode<Value> extends LogicalProjectViewNod
     }
   }
 
+  protected class TransientModelsVirtualFolderHierarchy extends ModelsVirtualFolderHierarchy {
+
+    protected TransientModelsVirtualFolderHierarchy(Collection<? extends SModel> values, Function<SModel, String> virtualFolderNameSupplier) {
+      super(values, virtualFolderNameSupplier);
+    }
+
+    @Override
+    protected <T extends SModel> String asFolderName(T value) {
+      if (value instanceof SModel) {
+        return value.getName().getValue(); // with stereotype
+      } else {
+        return null;
+      }
+    }
+
+    @Override
+    protected <T extends SModel> ProjectViewNode<?> valueNodeFactory(T value) {
+      if (value instanceof SModel) {
+        return new ModelHierarchyProjectViewNode(getProject(), value, getSettings(), this){
+          @Override
+          protected @NotNull String asVirtualFolderName() {
+            return getValue().getName().getValue(); // with stereotype
+          }
+        };
+      } else {
+        return null;
+      }
+    }
+
+  }
+
 }

@@ -305,7 +305,7 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
 
     @Override
     protected void fillChildren(Collection<AbstractTreeNode<?>> children, Collection<SModel> models) {
-      AbstractVirtualFolderHierarchy<?> hierarchy = new ModelsVirtualFolderHierarchy(models, this::getVirtualFolder);
+      AbstractVirtualFolderHierarchy<?> hierarchy = new TransientModelsVirtualFolderHierarchy(models, this::getVirtualFolder);
       hierarchy.fillChildren("", children);
     }
 
