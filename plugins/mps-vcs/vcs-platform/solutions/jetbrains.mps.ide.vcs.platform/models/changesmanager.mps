@@ -7287,9 +7287,24 @@
                     </node>
                   </node>
                 </node>
-                <node concept="3clFbF" id="7KIHI4A5ZY6" role="3cqZAp">
-                  <node concept="1rXfSq" id="7KIHI4A5ZXZ" role="3clFbG">
-                    <ref role="37wK5l" node="7KIHI4A3Bww" resolve="uninstallEventCollector" />
+                <node concept="3clFbJ" id="385DPfiTYht" role="3cqZAp">
+                  <node concept="3clFbS" id="385DPfiTYhv" role="3clFbx">
+                    <node concept="3clFbF" id="7KIHI4A5ZY6" role="3cqZAp">
+                      <node concept="1rXfSq" id="7KIHI4A5ZXZ" role="3clFbG">
+                        <ref role="37wK5l" node="7KIHI4A3Bww" resolve="uninstallEventCollector" />
+                      </node>
+                    </node>
+                    <node concept="3clFbF" id="385DPfiV3di" role="3cqZAp">
+                      <node concept="37vLTI" id="385DPfiVisr" role="3clFbG">
+                        <node concept="3clFbT" id="385DPfiVnYm" role="37vLTx" />
+                        <node concept="37vLTw" id="385DPfiV3dg" role="37vLTJ">
+                          <ref role="3cqZAo" node="4henvQNveHu" resolve="myDoTracking" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="385DPfiUcGG" role="3clFbw">
+                    <ref role="3cqZAo" node="4henvQNveHu" resolve="myDoTracking" />
                   </node>
                 </node>
                 <node concept="3clFbF" id="38WJxXow_BX" role="3cqZAp">

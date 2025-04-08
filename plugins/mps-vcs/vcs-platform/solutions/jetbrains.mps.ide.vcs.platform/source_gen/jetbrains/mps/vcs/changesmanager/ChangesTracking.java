@@ -152,7 +152,10 @@ public final class ChangesTracking {
     synchronized (LOCK) {
       if (!(myDisposed)) {
         myDisposed = true;
-        uninstallEventCollector();
+        if (myDoTracking) {
+          uninstallEventCollector();
+          myDoTracking = false;
+        }
         myQueue.runTask(() -> myDifference.removeChangeSet());
       }
     }
