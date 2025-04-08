@@ -24,9 +24,6 @@
       <implementation-class>jetbrains.mps.ide.MPSCoreComponents</implementation-class>
     </component>
 
-    <component>
-      <implementation-class>jetbrains.mps.ide.vfs.IdeaFileSystem</implementation-class>
-    </component>
   </application-components>
 
   <applicationListeners>
@@ -81,6 +78,8 @@
     <applicationService
             serviceInterface="jetbrains.mps.ide.platform.watching.ReloadManager"
             serviceImplementation="jetbrains.mps.ide.platform.watching.ReloadManagerComponent" />
+
+    <applicationService serviceImplementation="jetbrains.mps.ide.vfs.IdeaFileSystem" />
 
     <projectService serviceImplementation="jetbrains.mps.ide.vfs.ProjectRootListenerComponent" />
     <projectService serviceImplementation="jetbrains.mps.ide.codeStyle.CodeStyleSettingsComponent" /> <!-- NEED loadForDefaultProject, how to  -->

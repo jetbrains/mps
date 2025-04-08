@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,12 +28,14 @@ import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
 import jetbrains.mps.ide.project.WorkbenchPathMacros;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.WorkbenchModelAccess;
+import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -56,6 +58,9 @@ public class MPSCoreComponents implements Disposable {
   // better than ApplicationLifecycleListener. Perhaps, shall introduce an extension like ComponentPluginFactory for
   // initializations like that.
   private WorkbenchPathMacros myPathMacros;
+
+  // once there are no direct uses of IdeaFuleSystem.getInstance(), can transform into into POJO and initialize as ComponentPlugin, perhaps?
+  private IdeaFileSystem myIdeaFileSystem;
 
   public MPSCoreComponents() {
     @NotNull ManagingFS fs = ManagingFS.getInstance();
@@ -85,10 +90,14 @@ public class MPSCoreComponents implements Disposable {
       throw new IllegalStateException("Failed to initialize WorkbenchPathMacros, necessary to be ready before any attempt to load a module");
     }
     myPlatform.findComponent(PathMacros.class).addMacrosProvider(myPathMacros);
+    myIdeaFileSystem = IdeaFileSystem.getInstance();
+    myIdeaFileSystem.install(myPlatform.findComponent(VFSManager.class));
   }
 
   @Override
   public void dispose() {
+    myIdeaFileSystem.uninstall(myPlatform.findComponent(VFSManager.class));
+    myIdeaFileSystem = null;
     myPlatform.findComponent(PathMacros.class).removeMacrosProvider(myPathMacros);
     myPathMacros = null;
     myPlatform.dispose();
