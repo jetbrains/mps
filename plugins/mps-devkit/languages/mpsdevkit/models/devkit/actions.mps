@@ -1451,7 +1451,7 @@
               <node concept="1pGfFk" id="4ovgun0rtT" role="2ShVmc">
                 <ref role="37wK5l" to="dxuu:~JCheckBox.&lt;init&gt;(java.lang.String)" resolve="JCheckBox" />
                 <node concept="Xl_RD" id="4ovgun0rtU" role="37wK5m">
-                  <property role="Xl_RC" value="Create Generator" />
+                  <property role="Xl_RC" value="Create Generator (as part of the language)" />
                 </node>
               </node>
             </node>

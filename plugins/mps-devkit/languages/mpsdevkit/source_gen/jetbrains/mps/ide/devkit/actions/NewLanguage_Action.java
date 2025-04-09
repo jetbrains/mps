@@ -58,7 +58,7 @@ public class NewLanguage_Action extends BaseAction {
     final String virtualFolder = event.getData(MPSDataKeys.NAMESPACE);
     final JCheckBox runtime = new JCheckBox("Create Runtime Solution");
     final JCheckBox sandbox = new JCheckBox("Create Sandbox Solution");
-    final JCheckBox generator = new JCheckBox("Create Generator");
+    final JCheckBox generator = new JCheckBox("Create Generator (as part of the language)");
     final NameLocationPanel cfg = new NameLocationPanel(NewModuleDialog.projectHome(mpsProject), "Language name:", "Language file location:") {
       {
         // copied from NewLanguageSettings. I don't like this, but don't want to spend time designing 
