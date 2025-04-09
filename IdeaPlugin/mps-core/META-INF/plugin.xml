@@ -52,9 +52,6 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.repository.RepositoryInPluginInitializer</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.idea.core.project.PluginsPathMacroCrutch</implementation-class>
     </component>
   </application-components>
