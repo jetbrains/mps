@@ -27319,13 +27319,10 @@
                   </node>
                 </node>
                 <node concept="3LWZYx" id="2CLHf7NVw98" role="2HvfZ1">
-                  <property role="3LWZYw" value="breakgen*" />
+                  <property role="3LWZYw" value="defender-exclusions*" />
                 </node>
               </node>
               <node concept="2HvfSZ" id="2Rmwjku$_Tn" role="39821P">
-                <node concept="3LWZYq" id="34Kz121j5Oy" role="2HvfZ1">
-                  <property role="3LWZYl" value="launcher.exe" />
-                </node>
                 <node concept="55IIr" id="2Rmwjku$_Tp" role="2HvfZ0">
                   <node concept="2Ry0Ak" id="2Rmwjku$_V1" role="iGT6I">
                     <property role="2Ry0Am" value="bin" />
@@ -28622,7 +28619,7 @@
             </node>
             <node concept="2HvfSZ" id="3eZ5xnhFhrF" role="39821P">
               <node concept="3LWZYx" id="3eZ5xnhFhrG" role="2HvfZ1">
-                <property role="3LWZYw" value="breakgen*" />
+                <property role="3LWZYw" value="defender-exclusions*" />
               </node>
               <node concept="55IIr" id="3eZ5xnhFhrH" role="2HvfZ0">
                 <node concept="2Ry0Ak" id="3eZ5xnhFhrI" role="iGT6I">
@@ -28634,9 +28631,6 @@
               </node>
             </node>
             <node concept="2HvfSZ" id="2Rmwjku$Abd" role="39821P">
-              <node concept="3LWZYq" id="3eZ5xnhFhqE" role="2HvfZ1">
-                <property role="3LWZYl" value="launcher.exe" />
-              </node>
               <node concept="55IIr" id="2Rmwjku$Abf" role="2HvfZ0">
                 <node concept="2Ry0Ak" id="2Rmwjku$AdK" role="iGT6I">
                   <property role="2Ry0Am" value="bin" />

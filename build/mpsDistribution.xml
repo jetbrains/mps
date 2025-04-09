@@ -150,11 +150,9 @@
     <zip destfile="${build.layout}/${mps.build.number}.zip">
       <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}" />
       <zipfileset dir="${basedir}/bin/win" prefix="MPS ${mpsBootstrapCore.version}/bin/win">
-        <include name="breakgen*" />
+        <include name="defender-exclusions*" />
       </zipfileset>
-      <zipfileset dir="${basedir}/bin/win/amd64" prefix="MPS ${mpsBootstrapCore.version}/bin/win">
-        <exclude name="launcher.exe" />
-      </zipfileset>
+      <zipfileset dir="${basedir}/bin/win/amd64" prefix="MPS ${mpsBootstrapCore.version}/bin/win" />
       <zipfileset file="${basedir}/bin/linux/amd64/libdbm.so" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" />
       <zipfileset file="${basedir}/bin/linux/amd64/fsnotifier" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" filemode="755" />
       <zipfileset file="${basedir}/bin/linux/amd64/restarter" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" filemode="755" />
@@ -317,11 +315,9 @@
     <zip destfile="${build.layout}/${mps.build.number}-windows.zip">
       <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}" />
       <zipfileset dir="${basedir}/bin/win" prefix="MPS ${mpsBootstrapCore.version}/bin">
-        <include name="breakgen*" />
+        <include name="defender-exclusions*" />
       </zipfileset>
-      <zipfileset dir="${basedir}/bin/win/amd64" prefix="MPS ${mpsBootstrapCore.version}/bin">
-        <exclude name="launcher.exe" />
-      </zipfileset>
+      <zipfileset dir="${basedir}/bin/win/amd64" prefix="MPS ${mpsBootstrapCore.version}/bin" />
       <zipfileset file="${basedir}/build/resources/mps.ico" prefix="MPS ${mpsBootstrapCore.version}/bin" />
       <zipfileset file="${basedir}/lib/jna/win32-x86-64/jnidispatch.dll" prefix="MPS ${mpsBootstrapCore.version}/lib/jna" />
       <zipfileset dir="${basedir}/lib/pty4j/win/x86-64" prefix="MPS ${mpsBootstrapCore.version}/lib/pty4j/win/x86-64" />
