@@ -63,6 +63,9 @@ public class MPSCoreComponents implements Disposable {
   private IdeaFileSystem myIdeaFileSystem;
 
   public MPSCoreComponents() {
+    //
+    // FIXME check ApplicationInitializedListener and <applicationInitializedListener> extpoint if they can serve MPSCoreComponents initialization task
+    //
     @NotNull ManagingFS fs = ManagingFS.getInstance();
     // Make sure WMA has a chance to MA.setInstance() *before* MPSModuleRepository and its GlobalModelAccess need one
     ModelAccess access = WorkbenchModelAccess.getInstance();

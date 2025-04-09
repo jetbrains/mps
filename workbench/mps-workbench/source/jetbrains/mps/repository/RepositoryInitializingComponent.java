@@ -39,7 +39,7 @@ public final class RepositoryInitializingComponent implements BaseComponent {
 
   public RepositoryInitializingComponent() {
     ApplicationManager.getApplication().getService(FSNotificationsImprover.class); // Need this service to be initialized before other activity
-    final ApplicationPluginManager apm = ApplicationManager.getApplication().getComponent(ApplicationPluginManager.class);
+    final ApplicationPluginManager apm = ApplicationManager.getApplication().getService(ApplicationPluginManager.class);
     if (apm == null) {
       // not 100% sure if considerations of ApplicationPluginManager.initComponent() are still valid.
       // At least GeneratedActionGroup has been rewritten in 2021.1 and no longer asks component.
