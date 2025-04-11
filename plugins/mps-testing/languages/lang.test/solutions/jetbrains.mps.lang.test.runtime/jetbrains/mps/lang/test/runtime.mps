@@ -12626,7 +12626,10 @@
                                           <node concept="10Nm6u" id="27de2I772dU" role="37wK5m" />
                                           <node concept="2YIFZM" id="BMoFi_uakp" role="37wK5m">
                                             <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
-                                            <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule()" resolve="nonReloadableModule" />
+                                            <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule(org.jetbrains.mps.openapi.module.SRepository)" resolve="nonReloadableModule" />
+                                            <node concept="37vLTw" id="4fJe$AG6ILF" role="37wK5m">
+                                              <ref role="3cqZAo" node="BMoFi_qkyU" resolve="repository" />
+                                            </node>
                                           </node>
                                         </node>
                                         <node concept="2YIFZM" id="BMoFi_uakq" role="2Oq$k0">
@@ -15271,6 +15274,94 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="4fJe$AG7hEW" role="3cqZAp">
+          <node concept="1PaTwC" id="4fJe$AG7hEX" role="1aUNEU">
+            <node concept="3oM_SD" id="4fJe$AG7hEY" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kkh" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kkz" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kk$" role="1PaTwD">
+              <property role="3oM_SC" value="project's" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kl5" role="1PaTwD">
+              <property role="3oM_SC" value="repository" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7klm" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kln" role="1PaTwD">
+              <property role="3oM_SC" value="temp" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7klS" role="1PaTwD">
+              <property role="3oM_SC" value="models" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7km9" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kma" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kmb" role="1PaTwD">
+              <property role="3oM_SC" value="entirely" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kms" role="1PaTwD">
+              <property role="3oM_SC" value="correct" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7ko2" role="1PaTwD">
+              <property role="3oM_SC" value="-" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kmX" role="1PaTwD">
+              <property role="3oM_SC" value="would" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7knu" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7knv" role="1PaTwD">
+              <property role="3oM_SC" value="great" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7knK" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7knL" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7koN" role="1PaTwD">
+              <property role="3oM_SC" value="separate" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kpO" role="1PaTwD">
+              <property role="3oM_SC" value="repo" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kpP" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kpQ" role="1PaTwD">
+              <property role="3oM_SC" value="test" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kqn" role="1PaTwD">
+              <property role="3oM_SC" value="models" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kqo" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kqp" role="1PaTwD">
+              <property role="3oM_SC" value="well" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kqE" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7kqF" role="1PaTwD">
+              <property role="3oM_SC" value="transients/temp" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG7krY" role="1PaTwD">
+              <property role="3oM_SC" value="models" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="4K12N3pL6PM" role="3cqZAp">
           <node concept="3cpWsn" id="4K12N3pL6PN" role="3cpWs9">
             <property role="TrG5h" value="model" />
@@ -15287,7 +15378,15 @@
                 </node>
                 <node concept="2YIFZM" id="6oGy5BbQmCB" role="37wK5m">
                   <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
-                  <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule()" resolve="nonReloadableModule" />
+                  <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule(org.jetbrains.mps.openapi.module.SRepository)" resolve="nonReloadableModule" />
+                  <node concept="2OqwBi" id="4fJe$AG7bMq" role="37wK5m">
+                    <node concept="37vLTw" id="4fJe$AG7bMr" role="2Oq$k0">
+                      <ref role="3cqZAo" node="hPjx680" resolve="myProject" />
+                    </node>
+                    <node concept="liA8E" id="4fJe$AG7bMs" role="2OqNvi">
+                      <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -15331,6 +15430,122 @@
         </node>
         <node concept="3clFbJ" id="5zRGbU5zTJS" role="3cqZAp">
           <node concept="3clFbS" id="5zRGbU5zTJU" role="3clFbx">
+            <node concept="3SKdUt" id="4fJe$AG6PLz" role="3cqZAp">
+              <node concept="1PaTwC" id="4fJe$AG6PL$" role="1aUNEU">
+                <node concept="3oM_SD" id="4fJe$AG6PL_" role="1PaTwD">
+                  <property role="3oM_SC" value="XXX" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6SuS" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6SuU" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6Svr" role="1PaTwD">
+                  <property role="3oM_SC" value="necessary" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6Swc" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6Swd" role="1PaTwD">
+                  <property role="3oM_SC" value="have" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6Swe" role="1PaTwD">
+                  <property role="3oM_SC" value="distinct" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6Swf" role="1PaTwD">
+                  <property role="3oM_SC" value="module," />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6Sww" role="1PaTwD">
+                  <property role="3oM_SC" value="can't" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6Swx" role="1PaTwD">
+                  <property role="3oM_SC" value="we" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6Swy" role="1PaTwD">
+                  <property role="3oM_SC" value="share" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6Swz" role="1PaTwD">
+                  <property role="3oM_SC" value="one" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6SwO" role="1PaTwD">
+                  <property role="3oM_SC" value="with" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6Sx5" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6SxQ" role="1PaTwD">
+                  <property role="3oM_SC" value="one" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6Syn" role="1PaTwD">
+                  <property role="3oM_SC" value="of" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6SyS" role="1PaTwD">
+                  <property role="3oM_SC" value="'model'?" />
+                </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="4fJe$AG6UyK" role="3cqZAp">
+              <node concept="1PaTwC" id="4fJe$AG6UyL" role="1aUNEU">
+                <node concept="3oM_SD" id="4fJe$AG6UyM" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6UyP" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WMu" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WMv" role="1PaTwD">
+                  <property role="3oM_SC" value="Note," />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WMK" role="1PaTwD">
+                  <property role="3oM_SC" value="TemporaryModels.dispose()" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WOh" role="1PaTwD">
+                  <property role="3oM_SC" value="doesn't" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WP2" role="1PaTwD">
+                  <property role="3oM_SC" value="expect" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WPj" role="1PaTwD">
+                  <property role="3oM_SC" value="more" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WP$" role="1PaTwD">
+                  <property role="3oM_SC" value="than" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WPP" role="1PaTwD">
+                  <property role="3oM_SC" value="1" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WQm" role="1PaTwD">
+                  <property role="3oM_SC" value="temp" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WRR" role="1PaTwD">
+                  <property role="3oM_SC" value="model" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WS8" role="1PaTwD">
+                  <property role="3oM_SC" value="per" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WTd" role="1PaTwD">
+                  <property role="3oM_SC" value="module," />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WTu" role="1PaTwD">
+                  <property role="3oM_SC" value="have" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WTJ" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WTK" role="1PaTwD">
+                  <property role="3oM_SC" value="be" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WTL" role="1PaTwD">
+                  <property role="3oM_SC" value="careful" />
+                </node>
+                <node concept="3oM_SD" id="4fJe$AG6WUM" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="5zRGbU5$3mG" role="3cqZAp">
               <node concept="37vLTI" id="5zRGbU5$3mI" role="3clFbG">
                 <node concept="2OqwBi" id="5zRGbU5yP9D" role="37vLTx">
@@ -15345,7 +15560,15 @@
                     </node>
                     <node concept="2YIFZM" id="5zRGbU5yP9H" role="37wK5m">
                       <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
-                      <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule()" resolve="nonReloadableModule" />
+                      <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule(org.jetbrains.mps.openapi.module.SRepository)" resolve="nonReloadableModule" />
+                      <node concept="2OqwBi" id="4fJe$AG77YC" role="37wK5m">
+                        <node concept="37vLTw" id="4fJe$AG75d9" role="2Oq$k0">
+                          <ref role="3cqZAo" node="hPjx680" resolve="myProject" />
+                        </node>
+                        <node concept="liA8E" id="4fJe$AG7ahl" role="2OqNvi">
+                          <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                        </node>
+                      </node>
                     </node>
                   </node>
                 </node>

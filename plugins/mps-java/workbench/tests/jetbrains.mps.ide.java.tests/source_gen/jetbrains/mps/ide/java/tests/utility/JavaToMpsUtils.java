@@ -180,8 +180,8 @@ public class JavaToMpsUtils {
   }
 
   public void checkSourceModel(IFile dirPath, SModelReference expectedRef) {
-    // FIXME pass myRepo to use for temp module/model
-    final SModel resultModel = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.nonReloadableModule());
+    // XXX not sure using myRepo for temp module/model is entirely correct, perhaps, distinct repository won't hurt
+    final SModel resultModel = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.nonReloadableModule(myRepo));
 
     JavaToMpsConverter dirParser = new JavaToMpsConverter(resultModel, myRepo, new LogHandler(Logger.getLogger(getClass())));
     dirParser.convertToMps(IFileUtil.getAllFiles(dirPath), new EmptyProgressMonitor());

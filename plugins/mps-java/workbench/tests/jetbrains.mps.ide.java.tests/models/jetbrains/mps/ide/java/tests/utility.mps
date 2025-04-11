@@ -22,7 +22,6 @@
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="la4b" ref="r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)" />
-    <import index="unno" ref="r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)" />
     <import index="ft0j" ref="r:adc783db-1c21-4910-9cf7-6a22bf949a4a(jetbrains.mps.persistence.java.library)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
@@ -1760,21 +1759,21 @@
         <node concept="3SKdUt" id="57g7aqQCMfj" role="3cqZAp">
           <node concept="1PaTwC" id="57g7aqQCMfk" role="1aUNEU">
             <node concept="3oM_SD" id="57g7aqQCQCj" role="1PaTwD">
-              <property role="3oM_SC" value="FIXME" />
+              <property role="3oM_SC" value="XXX" />
             </node>
             <node concept="3oM_SD" id="57g7aqQCQCk" role="1PaTwD">
-              <property role="3oM_SC" value="pass" />
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG9otj" role="1PaTwD">
+              <property role="3oM_SC" value="sure" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG9otO" role="1PaTwD">
+              <property role="3oM_SC" value="using" />
             </node>
             <node concept="3oM_SD" id="57g7aqQCR$T" role="1PaTwD">
               <property role="3oM_SC" value="myRepo" />
             </node>
-            <node concept="3oM_SD" id="57g7aqQCRJk" role="1PaTwD">
-              <property role="3oM_SC" value="to" />
-            </node>
-            <node concept="3oM_SD" id="57g7aqQCRTJ" role="1PaTwD">
-              <property role="3oM_SC" value="use" />
-            </node>
-            <node concept="3oM_SD" id="57g7aqQCS4a" role="1PaTwD">
+            <node concept="3oM_SD" id="4fJe$AG9ouA" role="1PaTwD">
               <property role="3oM_SC" value="for" />
             </node>
             <node concept="3oM_SD" id="57g7aqQCSe_" role="1PaTwD">
@@ -1782,6 +1781,30 @@
             </node>
             <node concept="3oM_SD" id="57g7aqQCSzq" role="1PaTwD">
               <property role="3oM_SC" value="module/model" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG9ouR" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG9ovE" role="1PaTwD">
+              <property role="3oM_SC" value="entirely" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG9ovV" role="1PaTwD">
+              <property role="3oM_SC" value="correct," />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG9owc" role="1PaTwD">
+              <property role="3oM_SC" value="perhaps," />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG9owt" role="1PaTwD">
+              <property role="3oM_SC" value="distinct" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG9owY" role="1PaTwD">
+              <property role="3oM_SC" value="repository" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG9oxf" role="1PaTwD">
+              <property role="3oM_SC" value="won't" />
+            </node>
+            <node concept="3oM_SD" id="4fJe$AG9oxw" role="1PaTwD">
+              <property role="3oM_SC" value="hurt" />
             </node>
           </node>
         </node>
@@ -1798,8 +1821,11 @@
               <node concept="liA8E" id="57g7aqQA9sN" role="2OqNvi">
                 <ref role="37wK5l" to="tqvn:~TemporaryModels.createReadOnly(jetbrains.mps.smodel.tempmodel.TempModuleOptions)" resolve="createReadOnly" />
                 <node concept="2YIFZM" id="57g7aqQA9sO" role="37wK5m">
-                  <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule()" resolve="nonReloadableModule" />
+                  <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule(org.jetbrains.mps.openapi.module.SRepository)" resolve="nonReloadableModule" />
                   <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
+                  <node concept="37vLTw" id="4fJe$AG9jzu" role="37wK5m">
+                    <ref role="3cqZAo" node="Tb4Psnn4qH" resolve="myRepo" />
+                  </node>
                 </node>
               </node>
             </node>

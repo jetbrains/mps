@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,13 @@
 package jetbrains.mps.smodel.tempmodel;
 
 import jetbrains.mps.extapi.module.SRepositoryExt;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collections;
 import java.util.Set;
@@ -46,12 +49,23 @@ public abstract class TempModuleOptions {
   }
 
   /**
-   * PROVISIONAL CODE, DO NOT USE OUTSIDE OF MPS
-   * @return options to instantiate {@link jetbrains.mps.module.ReloadableModule non-reloadable} temp module.
-   * Module has no Java Module facet nor model roots.
+   * Module has no Java Module facet nor model roots. Doesn't participate in class-loading, doesn't affect graph of module classloaders.
+   *
+   * @param repository where to register the new temporary module 
+   * @return options to instantiate {@link ReloadableModule non-reloadable} temp module.
    */
+  public static TempModuleOptions nonReloadableModule(@NotNull SRepository repository) {
+    assert repository instanceof SRepositoryExt : "Only SRepositoryExt is supported";
+    return new NonReloadableNewModuleOptions((SRepositoryExt) repository);
+  }
+
+  /**
+   * @deprecated Use {@link #nonReloadableModule(SRepository)} instead. This method was intended for internal use and no external uses are expected.
+   *             Remove once 2025.1 is out.
+   */
+  @Deprecated(since = "2025.1", forRemoval = true)
   public static TempModuleOptions nonReloadableModule() {
-    return new NonReloadableNewModuleOptions(MPSModuleRepository.getInstance());
+    return nonReloadableModule(MPSModuleRepository.getInstance());
   }
 
 

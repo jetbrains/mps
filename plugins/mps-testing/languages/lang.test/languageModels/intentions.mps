@@ -1807,8 +1807,14 @@
                   <property role="3clFbU" value="false" />
                 </node>
                 <node concept="2YIFZM" id="6oGy5BbRaro" role="37wK5m">
-                  <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule()" resolve="nonReloadableModule" />
+                  <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule(org.jetbrains.mps.openapi.module.SRepository)" resolve="nonReloadableModule" />
                   <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
+                  <node concept="2OqwBi" id="4fJe$AG8vwE" role="37wK5m">
+                    <node concept="1XNTG" id="4fJe$AG8uUU" role="2Oq$k0" />
+                    <node concept="liA8E" id="4fJe$AG8wa4" role="2OqNvi">
+                      <ref role="37wK5l" to="cj4x:~EditorContext.getRepository()" resolve="getRepository" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>

@@ -61,7 +61,7 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
     public void test_lightQuotation_nodeId() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
+        SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule(myProject.getRepository()));
         SNodeId.Regular id = new SNodeId.Regular(239);
         SNode node = createReturnStatement_fw7ydn_a0c0a0b0f8(model, id);
         SModelOperations.addRootNode(model, node);
@@ -72,7 +72,7 @@ public class QuotationModelNodeId_Test extends BaseTransformationTest {
     public void test_quotation_nodeId() throws Exception {
       initTestNodes();
       runWithinCommand(() -> {
-        SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule());
+        SModel model = TemporaryModels.getInstance().createEditable(false, TempModuleOptions.nonReloadableModule(myProject.getRepository()));
         SNodeId.Regular id = new SNodeId.Regular(239);
         SNode node = _quotation_createNode_fw7ydn_a0c0a0b0g8(model, id);
         SModelOperations.addRootNode(model, node);

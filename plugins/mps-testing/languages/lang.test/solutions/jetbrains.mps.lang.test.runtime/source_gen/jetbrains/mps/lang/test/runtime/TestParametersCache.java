@@ -150,7 +150,7 @@ public final class TestParametersCache implements TestRule {
             throw new CouldNotFindModelException(String.format("Can't find model %s in supplied repository %s.", myModelRef, repository));
           }
           myTestModel = modelDescriptor;
-          SModel transientModel = TemporaryModels.getInstance().create(false, true, null, TempModuleOptions.nonReloadableModule());
+          SModel transientModel = TemporaryModels.getInstance().create(false, true, null, TempModuleOptions.nonReloadableModule(repository));
           final ModelImports mi = new ModelImports(transientModel);
           mi.copyEmployedDevKitsFrom(modelDescriptor);
           // test nodes we're gonna copy into transient model may reference auxiliary nodes in the original model, need to make sure
