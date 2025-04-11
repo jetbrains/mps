@@ -36,16 +36,24 @@ public abstract class TempModuleOptions {
     return new ExistingModuleOptions(m);
   }
 
+  /**
+   * @deprecated this API is flawed. In most cases, {@link #nonReloadableModule(SRepository)} is a proper replacement
+   */
+  @Deprecated(since = "2025.1", forRemoval = true)
   public static TempModuleOptions forNewModule(Set<ModelRootDescriptor> modelRoots, boolean withSourceGen, boolean withJavaFacet) {
     return new NewModuleOptions(modelRoots, withSourceGen, withJavaFacet);
   }
 
+  /**
+   * @deprecated this API is flawed. In most cases, {@link #nonReloadableModule(SRepository)} is a proper replacement
+   */
+  @Deprecated(since = "2025.1", forRemoval = true)
   public static TempModuleOptions forNewModule(Set<ModelRootDescriptor> modelRoots) {
     return forNewModule(modelRoots, false, false);
   }
 
   public static TempModuleOptions forDefaultModule() {
-    return forNewModule(Collections.emptySet());
+    return forNewModule(Collections.emptySet(), false, false);
   }
 
   /**
@@ -69,7 +77,7 @@ public abstract class TempModuleOptions {
   }
 
 
-    public static TempModuleOptions forDefaultModuleWithSourceAndClassesGen() {
+  public static TempModuleOptions forDefaultModuleWithSourceAndClassesGen() {
     // todo: builder here
     return new NewModuleOptions(Collections.emptySet(), true, true);
   }

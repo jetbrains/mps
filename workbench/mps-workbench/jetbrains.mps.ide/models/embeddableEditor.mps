@@ -678,9 +678,17 @@
                         <node concept="2OqwBi" id="1xyr94TjHAt" role="37vLTx">
                           <node concept="liA8E" id="1xyr94TjHAu" role="2OqNvi">
                             <ref role="37wK5l" to="tqvn:~TemporaryModels.createReadOnly(jetbrains.mps.smodel.tempmodel.TempModuleOptions)" resolve="createReadOnly" />
-                            <node concept="2YIFZM" id="1xyr94TjHAw" role="37wK5m">
+                            <node concept="2YIFZM" id="4fJe$AGc9DE" role="37wK5m">
+                              <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule(org.jetbrains.mps.openapi.module.SRepository)" resolve="nonReloadableModule" />
                               <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
-                              <ref role="37wK5l" to="tqvn:~TempModuleOptions.forDefaultModule()" resolve="forDefaultModule" />
+                              <node concept="2OqwBi" id="4fJe$AGcenO" role="37wK5m">
+                                <node concept="37vLTw" id="4fJe$AGcdtb" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="1xyr94Ti776" resolve="project" />
+                                </node>
+                                <node concept="liA8E" id="4fJe$AGcf$T" role="2OqNvi">
+                                  <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                                </node>
+                              </node>
                             </node>
                           </node>
                           <node concept="2YIFZM" id="1xyr94TjHAx" role="2Oq$k0">

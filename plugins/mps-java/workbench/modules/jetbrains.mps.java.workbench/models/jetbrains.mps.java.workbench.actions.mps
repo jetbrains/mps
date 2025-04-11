@@ -1687,9 +1687,17 @@
                           <node concept="3clFbT" id="5wjl$8BEnaQ" role="37wK5m">
                             <property role="3clFbU" value="true" />
                           </node>
-                          <node concept="2YIFZM" id="1xyr94TjHAw" role="37wK5m">
-                            <ref role="37wK5l" to="tqvn:~TempModuleOptions.forDefaultModule()" resolve="forDefaultModule" />
+                          <node concept="2YIFZM" id="4fJe$AGasjk" role="37wK5m">
+                            <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule(org.jetbrains.mps.openapi.module.SRepository)" resolve="nonReloadableModule" />
                             <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
+                            <node concept="2OqwBi" id="4fJe$AGaHCf" role="37wK5m">
+                              <node concept="37vLTw" id="4fJe$AGaECk" role="2Oq$k0">
+                                <ref role="3cqZAo" node="5wEedBrIoaZ" resolve="myProject" />
+                              </node>
+                              <node concept="liA8E" id="4fJe$AGaN7Y" role="2OqNvi">
+                                <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                              </node>
+                            </node>
                           </node>
                         </node>
                         <node concept="2YIFZM" id="1xyr94TjHAx" role="2Oq$k0">
@@ -7219,9 +7227,17 @@
                           <node concept="3clFbT" id="4xkp$4SvHbu" role="37wK5m">
                             <property role="3clFbU" value="true" />
                           </node>
-                          <node concept="2YIFZM" id="4xkp$4SvHbv" role="37wK5m">
+                          <node concept="2YIFZM" id="4fJe$AGaTmB" role="37wK5m">
+                            <ref role="37wK5l" to="tqvn:~TempModuleOptions.nonReloadableModule(org.jetbrains.mps.openapi.module.SRepository)" resolve="nonReloadableModule" />
                             <ref role="1Pybhc" to="tqvn:~TempModuleOptions" resolve="TempModuleOptions" />
-                            <ref role="37wK5l" to="tqvn:~TempModuleOptions.forDefaultModule()" resolve="forDefaultModule" />
+                            <node concept="2OqwBi" id="4fJe$AGaXel" role="37wK5m">
+                              <node concept="37vLTw" id="4fJe$AGaW4V" role="2Oq$k0">
+                                <ref role="3cqZAo" node="4xkp$4SvH9P" resolve="project" />
+                              </node>
+                              <node concept="liA8E" id="4fJe$AGaZ1l" role="2OqNvi">
+                                <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                              </node>
+                            </node>
                           </node>
                         </node>
                         <node concept="2YIFZM" id="4xkp$4SvHbw" role="2Oq$k0">
