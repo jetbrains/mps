@@ -172,6 +172,7 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     return myId;
   }
 
+  // FIXME WHY NOT SModuleId
   public final void setId(ModuleId id) {
     myId = id;
   }

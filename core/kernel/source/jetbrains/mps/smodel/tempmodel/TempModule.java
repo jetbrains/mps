@@ -24,13 +24,17 @@ import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleReference;
+import jetbrains.mps.smodel.MPSModuleOwner;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.module.SModuleId;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -42,9 +46,14 @@ import java.util.Set;
  */
 public class TempModule extends AbstractModule implements SModule, ReloadableModule {
   private final ModuleDescriptor myDescriptor;
-  private final JavaModuleFacet myJavaModuleFacet;
+  private final List<SModuleFacet> myModuleFacets;
 
+  /**
+   * @deprecated don't use directly, rely on {@link TemporaryModels} API to create a temp model
+   */
+  @Deprecated(since = "2025.1", forRemoval = true)
   public TempModule(Set<ModelRootDescriptor> modelRoots, boolean withSourceGen, boolean withJavaFacet) {
+    super((IFile) null);
     if (withSourceGen && !withJavaFacet) {
       throw new IllegalArgumentException("Don't have GenerationTargetFacet implementation other than JavaModuleFacet handy, either write one or re-consider arguments");
     }
@@ -56,13 +65,26 @@ public class TempModule extends AbstractModule implements SModule, ReloadableMod
     myDescriptor.getModelRootDescriptors().addAll(modelRoots);
 
     if (withJavaFacet) {
-      myJavaModuleFacet = new NaiveJavaModuleFacet(this,
+      myModuleFacets = List.of(new NaiveJavaModuleFacet(this,
                                                   withSourceGen ? "TEMP_SOURCE_GEN"
                                                                 : null,
-                                                   "TEMP_CLASSES_GEN");
+                                                   "TEMP_CLASSES_GEN"));
     } else {
-      myJavaModuleFacet = null;
+      myModuleFacets = Collections.emptyList();
     }
+  }
+
+  /*package*/ TempModule(SModuleFacet... facets) {
+    // FIXME remove MD altogether
+    myDescriptor = new ModuleDescriptor();
+    ModuleId id = ModuleId.regular();
+    myDescriptor.setId(id);
+    myDescriptor.setNamespace("TempModule" + id);
+    setModuleReference(myDescriptor.getModuleReference());
+
+    myModuleFacets = Arrays.asList(facets);
+    // FIXME likely would be better to move next to module's register()/untegister() code
+    myModuleFacets.forEach(f -> f.attach(this));
   }
 
   @Override
@@ -84,7 +106,7 @@ public class TempModule extends AbstractModule implements SModule, ReloadableMod
   @NotNull
   @Override
   public Iterable<SModuleFacet> getFacets() {
-    return myJavaModuleFacet != null ? Collections.singleton(myJavaModuleFacet) : Collections.emptySet();
+    return myModuleFacets;
   }
 
   public String toString() {

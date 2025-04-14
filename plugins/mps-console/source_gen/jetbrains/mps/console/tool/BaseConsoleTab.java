@@ -25,8 +25,12 @@ import jetbrains.mps.nodeEditor.commands.CommandContextImpl;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import javax.swing.KeyStroke;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
-import jetbrains.mps.smodel.tempmodel.TemporaryModels;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.util.IFileUtil;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
+import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -190,7 +194,11 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   }
 
   protected void createConsoleModel() {
-    this.myModel = TemporaryModels.getInstance().createLongTerm("ConsoleModel", TempModuleOptions.forDefaultModuleWithSourceAndClassesGen());
+    // would be nice to get own repo for console operations, and use one for editor, make and command execution
+    final SRepository repo4console = myProject.getRepository();
+    IFile tmpDir = IFileUtil.createTmpDir(myProject.getFileSystem());
+    JavaModuleFacet jmf = TempModuleOptions.javaFacet().withSourceGen(tmpDir.findChild("src-gen")).withClassesGen(tmpDir.findChild("cls-gen")).build();
+    this.myModel = TemporaryModels.getInstance().createLongTerm("ConsoleModel", TempModuleOptions.forNewModule(repo4console, jmf));
     if (myModel == null) {
       if (LOG.isErrorLevel()) {
         LOG.error("Error: could not create console model");
