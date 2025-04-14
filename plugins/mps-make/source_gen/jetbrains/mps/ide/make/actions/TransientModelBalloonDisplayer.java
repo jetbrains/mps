@@ -45,7 +45,7 @@ public final class TransientModelBalloonDisplayer implements Disposable {
     }
     // Assumes EDT
     boolean sticky = NotificationsConfigurationImpl.getSettings(ID).getDisplayType() == NotificationDisplayType.STICKY_BALLOON;
-    BalloonBuilder builder = JBPopupFactory.getInstance().createHtmlTextBalloonBuilder("Saving transient models is on", MessageType.INFO, null).setHideOnAction(!(sticky)).setHideOnClickOutside(!(sticky)).setHideOnKeyOutside(!(sticky));
+    BalloonBuilder builder = JBPopupFactory.getInstance().createHtmlTextBalloonBuilder("Saving transient models is on. This may slow down generation.", MessageType.WARNING, null).setHideOnAction(!(sticky)).setHideOnClickOutside(!(sticky)).setHideOnKeyOutside(!(sticky));
     if (!(sticky)) {
       builder.setFadeoutTime(3000);
     }

@@ -1545,7 +1545,7 @@
       <node id="1297216816042174719" at="43,23,44,13" concept="10" />
       <node id="3839308812912144914" at="45,5,46,18" concept="11" />
       <node id="621016502014035560" at="46,18,47,127" concept="9" />
-      <node id="4517385494359470564" at="47,127,48,235" concept="9" />
+      <node id="4517385494359470564" at="47,127,48,270" concept="9" />
       <node id="4517385494359470595" at="49,20,50,35" concept="4" />
       <node id="7035395638377099138" at="51,5,52,52" concept="9" />
       <node id="4517385494359433625" at="52,52,53,0" concept="12" />
@@ -1570,7 +1570,7 @@
       <node id="9186796564629073673" at="90,49,91,83" concept="9" />
       <node id="9186796564629073680" at="91,83,92,102" concept="4" />
       <node id="1297216816042154419" at="42,34,45,5" concept="7" />
-      <node id="4517385494359470588" at="48,235,51,5" concept="7" />
+      <node id="4517385494359470588" at="48,270,51,5" concept="7" />
       <node id="621016502014035524" at="82,40,85,5" concept="7" />
       <node id="721478377485341573" at="31,0,35,0" concept="2" trace="TransientModelBalloonDisplayer#(Lcom/intellij/openapi/wm/StatusBar;Ljetbrains/mps/ide/make/actions/TransientModelsWidget;)V" />
       <node id="9186796564629060696" at="90,0,94,0" concept="14" trace="setShowPopup#(Z)V" />

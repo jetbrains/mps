@@ -10612,10 +10612,10 @@
                     <node concept="liA8E" id="3UKYyL8N77G" role="2OqNvi">
                       <ref role="37wK5l" to="gspm:~JBPopupFactory.createHtmlTextBalloonBuilder(java.lang.String,com.intellij.openapi.ui.MessageType,javax.swing.event.HyperlinkListener)" resolve="createHtmlTextBalloonBuilder" />
                       <node concept="Xl_RD" id="3UKYyL8N77H" role="37wK5m">
-                        <property role="Xl_RC" value="Saving transient models is on" />
+                        <property role="Xl_RC" value="Saving transient models is on. This may slow down generation." />
                       </node>
-                      <node concept="10M0yZ" id="6Nbkq$5NTI3" role="37wK5m">
-                        <ref role="3cqZAo" to="jkm4:~MessageType.INFO" resolve="INFO" />
+                      <node concept="10M0yZ" id="7mjDUUT_UAJ" role="37wK5m">
+                        <ref role="3cqZAo" to="jkm4:~MessageType.WARNING" resolve="WARNING" />
                         <ref role="1PxDUh" to="jkm4:~MessageType" resolve="MessageType" />
                       </node>
                       <node concept="10Nm6u" id="3UKYyL8N77K" role="37wK5m" />
