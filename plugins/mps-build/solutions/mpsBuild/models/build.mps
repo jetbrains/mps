@@ -29420,10 +29420,7 @@
           </node>
           <node concept="3_J27D" id="5BQuGro_mE$" role="Nbhlr">
             <node concept="3Mxwew" id="5BQuGro_mE_" role="3MwsjC">
-              <property role="3MwjfP" value="MPS " />
-            </node>
-            <node concept="3Mxwey" id="5BQuGro_mEA" role="3MwsjC">
-              <ref role="3Mxwex" node="5HVSRHdVf2d" resolve="version" />
+              <property role="3MwjfP" value="MPS" />
             </node>
             <node concept="3Mxwew" id="6b3RMotyFHz" role="3MwsjC">
               <property role="3MwjfP" value=".app" />
@@ -29911,10 +29908,7 @@
           </node>
           <node concept="3_J27D" id="1dONgcPskJk" role="Nbhlr">
             <node concept="3Mxwew" id="1dONgcPskJl" role="3MwsjC">
-              <property role="3MwjfP" value="MPS " />
-            </node>
-            <node concept="3Mxwey" id="1dONgcPskJm" role="3MwsjC">
-              <ref role="3Mxwex" node="5HVSRHdVf2d" resolve="version" />
+              <property role="3MwjfP" value="MPS" />
             </node>
             <node concept="3Mxwew" id="1dONgcPskJn" role="3MwsjC">
               <property role="3MwjfP" value=".app" />
