@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2024 JetBrains s.r.o.
+ * Copyright 2003-2025 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -70,7 +71,15 @@ public abstract class ReferenceInfo {
   protected final ResolveInfo createStaticReference(@NotNull PostponedReference ref, @NotNull final SNode target) {
     // FIXME investigate scenario when target is detached node and target.getReference() doesn't yield anything
     //       ResolveInfo.of() could make use of.
-    if (ref.getSourceNode().getModel() != null && target.getModel() != null) {
+    final SModel srcModel = ref.getSourceNode().getModel();
+    final SModel trgModel = target.getModel();
+    if (srcModel != null && trgModel != null) {
+      if (srcModel == trgModel) {
+        // it's very tempting to use ResolveInfo.of(target) but this breaks 1 scenario in MPS-extensions
+        // (no transient models, no in-place) - for some reason FullCopyFacility and ReferenceInfo_CopiedInputNode fails to copy reference
+        // (smth like EditorComponentWithParameters in conditionalEditor, manifested with IOOBE)
+        return ResolveInfo.of(target.getNodeId(), SNodeOperations.getResolveInfo(target));
+      }
       // 'mature' reference (includes source node into condition to make sure indirect reference could get resolved later,
       //    although I'd prefer not to check this eventually (now I'm fighting other issues, namely use if ResolveInfoExt and SReference factories).
       // use of SNodeOperations.getResolveInfo (instead of simple node.getName that used to be in j.m.smodel.SReference#create)
