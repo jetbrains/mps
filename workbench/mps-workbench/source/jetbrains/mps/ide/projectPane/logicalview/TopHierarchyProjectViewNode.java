@@ -327,7 +327,10 @@ public abstract class TopHierarchyProjectViewNode<Value> extends BranchProjectVi
 
     @Override
     public int getTypeSortWeight(boolean sortByType) {
-      return ProjectViewWeights.CHECKPOINT_MODULE_WEIGHT;
+      if ("checkpoints".equals(getValue().getModuleName())) {
+        return ProjectViewWeights.CHECKPOINT_MODULE_WEIGHT;
+      }
+      return ProjectViewWeights.TRANSIENT_MODULE_WEIGHT;
     }
 
   }
