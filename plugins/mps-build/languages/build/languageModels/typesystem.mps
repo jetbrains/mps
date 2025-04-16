@@ -2411,5 +2411,56 @@
       </node>
     </node>
   </node>
+  <node concept="18kY7G" id="56QrJhyEtg2">
+    <property role="TrG5h" value="check_BuildFolderMacro" />
+    <property role="3GE5qa" value="Macro" />
+    <node concept="3clFbS" id="56QrJhyEtg3" role="18ibNy">
+      <node concept="3clFbJ" id="56QrJhyEtke" role="3cqZAp">
+        <node concept="3clFbS" id="56QrJhyEtkg" role="3clFbx">
+          <node concept="a7r0C" id="56QrJhyEAR2" role="3cqZAp">
+            <node concept="Xl_RD" id="56QrJhyEATl" role="a7wSD">
+              <property role="Xl_RC" value="mps_home macro should point to the unzipped generic MPS distribution" />
+            </node>
+            <node concept="1YBJjd" id="56QrJhyEBCp" role="1urrMF">
+              <ref role="1YBMHb" node="56QrJhyEtg5" resolve="buildFolderMacro" />
+            </node>
+          </node>
+        </node>
+        <node concept="1Wc70l" id="56QrJhyE$xT" role="3clFbw">
+          <node concept="2OqwBi" id="56QrJhyEA96" role="3uHU7w">
+            <node concept="2OqwBi" id="56QrJhyE$L5" role="2Oq$k0">
+              <node concept="1YBJjd" id="56QrJhyE$$8" role="2Oq$k0">
+                <ref role="1YBMHb" node="56QrJhyEtg5" resolve="buildFolderMacro" />
+              </node>
+              <node concept="3TrEf2" id="56QrJhyE_np" role="2OqNvi">
+                <ref role="3Tt5mk" to="3ior:6qcrfIJFv3E" resolve="defaultPath" />
+              </node>
+            </node>
+            <node concept="3w_OXm" id="56QrJhyEAG1" role="2OqNvi" />
+          </node>
+          <node concept="2OqwBi" id="56QrJhyExYi" role="3uHU7B">
+            <node concept="Xl_RD" id="56QrJhyExtD" role="2Oq$k0">
+              <property role="Xl_RC" value="mps_home" />
+            </node>
+            <node concept="liA8E" id="56QrJhyE$1B" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
+              <node concept="2OqwBi" id="56QrJhyEtyw" role="37wK5m">
+                <node concept="1YBJjd" id="56QrJhyEtmx" role="2Oq$k0">
+                  <ref role="1YBMHb" node="56QrJhyEtg5" resolve="buildFolderMacro" />
+                </node>
+                <node concept="3TrcHB" id="56QrJhyEvqN" role="2OqNvi">
+                  <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="56QrJhyEtg5" role="1YuTPh">
+      <property role="TrG5h" value="buildFolderMacro" />
+      <ref role="1YaFvo" to="3ior:6qcrfIJFt02" resolve="BuildFolderMacro" />
+    </node>
+  </node>
 </model>
 
