@@ -80,6 +80,18 @@ public abstract class BaseLibraryManager implements PersistentStateComponent<Lib
     myLibraryState.getLibraries().remove(l.getName());
   }
 
+  /**
+   *
+   * @return The original library with macros
+   */
+  public Library getLibrary(String name) {
+    return myLibraryState.getLibraries().get(name);
+  }
+
+  /**
+   *
+   * @return Copies of libraries with macros removed
+   */
   public Set<Library> getUILibraries() {
     return myLibraryState.getLibraries().values().stream().map(this::removeMacros).collect(Collectors.toSet());
   }
