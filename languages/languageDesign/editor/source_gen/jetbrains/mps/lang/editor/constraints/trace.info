@@ -1231,54 +1231,54 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)/1873972548978313577">
     <file name="IStyle_Constraints.java">
-      <node id="1873972548978313577" at="36,31,37,30" concept="12" />
-      <node id="1873972548978313577" at="47,63,48,140" concept="7" />
-      <node id="6836281137582783668" at="51,80,52,124" concept="6" />
-      <node id="6836281137582783677" at="52,124,53,0" concept="9" />
-      <node id="6836281137582783678" at="53,0,54,90" concept="6" />
-      <node id="6836281137582783699" at="56,47,57,84" concept="2" />
-      <node id="6836281137582783706" at="59,13,60,0" concept="9" />
-      <node id="6836281137582783707" at="60,0,61,236" concept="6" />
-      <node id="6836281137582783745" at="61,236,62,0" concept="9" />
-      <node id="6836281137582783746" at="62,0,63,91" concept="7" />
-      <node id="1873972548978313577" at="71,0,72,0" concept="10" trace="IStyle$eb" />
-      <node id="1873972548978313577" at="36,0,39,0" concept="0" trace="IStyle_Constraints#()V" />
-      <node id="6836281137582783694" at="55,182,58,15" concept="4" />
-      <node id="1873972548978313577" at="46,0,50,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="6836281137582783685" at="54,90,59,13" concept="3" />
-      <node id="1873972548978313577" at="50,0,65,0" concept="5" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="1873972548978313577" at="44,152,65,10" concept="7" />
-      <node id="1873972548978313577" at="43,0,67,0" concept="5" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_DefaultScopeProvider;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="1873972548978313577" at="41,127,67,6" concept="7" />
-      <node id="1873972548978313577" at="40,0,69,0" concept="5" trace="calculateDefaultScopeConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="1873972548978313577" at="36,31,37,30" />
-      <scope id="1873972548978313577" at="47,63,48,140" />
-      <scope id="6836281137582783698" at="56,47,57,84" />
-      <scope id="1873972548978313577" at="36,0,39,0" />
-      <scope id="6836281137582783693" at="55,182,58,15" />
-      <scope id="1873972548978313577" at="46,0,50,0" />
-      <scope id="6836281137582783685" at="54,90,59,13">
+      <node id="1873972548978313577" at="35,31,36,30" concept="12" />
+      <node id="1873972548978313577" at="46,63,47,140" concept="7" />
+      <node id="6836281137582783668" at="50,80,51,100" concept="6" />
+      <node id="6836281137582783677" at="51,100,52,0" concept="9" />
+      <node id="6836281137582783678" at="52,0,53,90" concept="6" />
+      <node id="6836281137582783699" at="55,47,56,84" concept="2" />
+      <node id="6836281137582783706" at="58,13,59,0" concept="9" />
+      <node id="6836281137582783707" at="59,0,60,231" concept="6" />
+      <node id="6836281137582783745" at="60,231,61,0" concept="9" />
+      <node id="6836281137582783746" at="61,0,62,91" concept="7" />
+      <node id="1873972548978313577" at="70,0,71,0" concept="10" trace="IStyle$eb" />
+      <node id="1873972548978313577" at="35,0,38,0" concept="0" trace="IStyle_Constraints#()V" />
+      <node id="6836281137582783694" at="54,182,57,15" concept="4" />
+      <node id="1873972548978313577" at="45,0,49,0" concept="5" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="6836281137582783685" at="53,90,58,13" concept="3" />
+      <node id="1873972548978313577" at="49,0,64,0" concept="5" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="1873972548978313577" at="43,152,64,10" concept="7" />
+      <node id="1873972548978313577" at="42,0,66,0" concept="5" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_DefaultScopeProvider;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="1873972548978313577" at="40,127,66,6" concept="7" />
+      <node id="1873972548978313577" at="39,0,68,0" concept="5" trace="calculateDefaultScopeConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <scope id="1873972548978313577" at="35,31,36,30" />
+      <scope id="1873972548978313577" at="46,63,47,140" />
+      <scope id="6836281137582783698" at="55,47,56,84" />
+      <scope id="1873972548978313577" at="35,0,38,0" />
+      <scope id="6836281137582783693" at="54,182,57,15" />
+      <scope id="1873972548978313577" at="45,0,49,0" />
+      <scope id="6836281137582783685" at="53,90,58,13">
         <var name="module" id="6836281137582783692" />
       </scope>
-      <scope id="1873972548978313577" at="51,80,63,91">
+      <scope id="1873972548978313577" at="50,80,62,91">
         <var name="contextLanguages" id="6836281137582783679" />
         <var name="contextModule" id="6836281137582783669" />
         <var name="styles" id="6836281137582783708" />
       </scope>
-      <scope id="1873972548978313577" at="50,0,65,0">
+      <scope id="1873972548978313577" at="49,0,64,0">
         <var name="_context" id="1873972548978313577" />
       </scope>
-      <scope id="1873972548978313577" at="44,152,65,10" />
-      <scope id="1873972548978313577" at="43,0,67,0">
+      <scope id="1873972548978313577" at="43,152,64,10" />
+      <scope id="1873972548978313577" at="42,0,66,0">
         <var name="checkingNodeContext" id="1873972548978313577" />
         <var name="context" id="1873972548978313577" />
       </scope>
-      <scope id="1873972548978313577" at="41,127,67,6" />
-      <scope id="1873972548978313577" at="40,0,69,0" />
-      <unit id="1873972548978313577" at="70,0,73,0" name="jetbrains.mps.lang.editor.constraints.IStyle_Constraints$CONCEPTS" />
-      <unit id="1873972548978313577" at="45,19,65,9" name="jetbrains.mps.lang.editor.constraints.IStyle_Constraints$1$1" />
-      <unit id="1873972548978313577" at="42,15,67,5" name="jetbrains.mps.lang.editor.constraints.IStyle_Constraints$1" />
-      <unit id="1873972548978313577" at="35,0,74,0" name="jetbrains.mps.lang.editor.constraints.IStyle_Constraints" />
+      <scope id="1873972548978313577" at="40,127,66,6" />
+      <scope id="1873972548978313577" at="39,0,68,0" />
+      <unit id="1873972548978313577" at="69,0,72,0" name="jetbrains.mps.lang.editor.constraints.IStyle_Constraints$CONCEPTS" />
+      <unit id="1873972548978313577" at="44,19,64,9" name="jetbrains.mps.lang.editor.constraints.IStyle_Constraints$1$1" />
+      <unit id="1873972548978313577" at="41,15,66,5" name="jetbrains.mps.lang.editor.constraints.IStyle_Constraints$1" />
+      <unit id="1873972548978313577" at="34,0,73,0" name="jetbrains.mps.lang.editor.constraints.IStyle_Constraints" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)/2314756748950088815">
