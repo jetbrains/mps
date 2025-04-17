@@ -208,7 +208,7 @@ public class SNodeOperations {
   /**
    * This will be replaced by getting resolve info from a reference in a context containing it
    * [artem] Well, I believe this one has to be replaced with Scope, with IResolveInfo being a default fallback. 
-   *   Neither this method nor SNodeUtil shall be used by MPS code as it makes an assumption scope impl complies with the way we build resolveInfo here.
+   *   This method shall be used by MPS code as it makes an assumption scope impl complies with the way we build resolveInfo here.
    *   Instead, it's Scope responsibility to build and process resolveInfo
    * 
    * @deprecated use scopes to obtain actual resolveInfo; Use reference.resolveInfo to find out value stored with an association link instance.

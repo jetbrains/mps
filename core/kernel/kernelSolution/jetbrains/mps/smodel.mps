@@ -1689,42 +1689,6 @@
         </node>
       </node>
     </node>
-    <node concept="2YIFZL" id="FmAKtTFKin" role="jymVt">
-      <property role="TrG5h" value="getResolveInfo" />
-      <node concept="17QB3L" id="FmAKtTFKir" role="3clF45" />
-      <node concept="3Tm1VV" id="FmAKtTFKip" role="1B3o_S" />
-      <node concept="3clFbS" id="FmAKtTFKiq" role="3clF47">
-        <node concept="3clFbF" id="FmAKtTFKiu" role="3cqZAp">
-          <node concept="2OqwBi" id="FmAKtTFKiw" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxglI8p" role="2Oq$k0">
-              <ref role="3cqZAo" node="FmAKtTFKis" resolve="node" />
-            </node>
-            <node concept="3TrcHB" id="FmAKtTFKi$" role="2OqNvi">
-              <ref role="3TsBF5" to="tpck:hqLvdgl" resolve="resolveInfo" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="FmAKtTFKis" role="3clF46">
-        <property role="TrG5h" value="node" />
-        <node concept="3Tqbb2" id="FmAKtTFKit" role="1tU5fm">
-          <ref role="ehGHo" to="tpck:hqLv6T6" resolve="IResolveInfo" />
-        </node>
-      </node>
-      <node concept="P$JXv" id="2rC_Cqzb9cJ" role="lGtFl">
-        <node concept="TZ5HI" id="2rC_Cqzb9cK" role="3nqlJM">
-          <node concept="TZ5HA" id="2rC_Cqzb9cL" role="3HnX3l">
-            <node concept="1dT_AC" id="2rC_Cqzb9lZ" role="1dT_Ay">
-              <property role="1dT_AB" value="if you got node&lt;IResolveInfo&gt;, use node.resolveInfo directly; if not, consider using Scope.getReferenceText not to rely on specific implementation." />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="2rC_Cqzb9cM" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="7nnMVFCi0_n" role="jymVt" />
     <node concept="2YIFZL" id="5hkhCOa5zXt" role="jymVt">
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />

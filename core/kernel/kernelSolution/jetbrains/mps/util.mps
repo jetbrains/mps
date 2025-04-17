@@ -4192,7 +4192,7 @@
         </node>
         <node concept="TZ5HA" id="3TdPJoXEMnd" role="TZ5H$">
           <node concept="1dT_AC" id="3TdPJoXEMne" role="1dT_Ay">
-            <property role="1dT_AB" value="  Neither this method nor SNodeUtil shall be used by MPS code as it makes an assumption scope impl complies with the way we build resolveInfo here." />
+            <property role="1dT_AB" value="  This method shall be used by MPS code as it makes an assumption scope impl complies with the way we build resolveInfo here." />
           </node>
         </node>
         <node concept="TZ5HA" id="3TdPJoXEMFK" role="TZ5H$">

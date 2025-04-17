@@ -99,15 +99,6 @@ public final class SNodeUtil {
   public static String getConceptAlias(SNode concept) {
     return SPropertyOperations.getString(concept, PROPS.conceptAlias$OL_L);
   }
-  /**
-   * 
-   * @deprecated if you got node<IResolveInfo>, use node.resolveInfo directly; if not, consider using Scope.getReferenceText not to rely on specific implementation.
-   */
-  @Deprecated
-  public static String getResolveInfo(SNode node) {
-    return SPropertyOperations.getString(node, PROPS.resolveInfo$lW9a);
-  }
-
   public static boolean isSideTransformInfo(SNode node) {
     return SNodeOperations.getConcept(node).equals(CONCEPTS.SideTransformInfo$Hi);
   }
@@ -121,6 +112,5 @@ public final class SNodeUtil {
 
   private static final class PROPS {
     /*package*/ static final SProperty conceptAlias$OL_L = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
-    /*package*/ static final SProperty resolveInfo$lW9a = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
   }
 }
